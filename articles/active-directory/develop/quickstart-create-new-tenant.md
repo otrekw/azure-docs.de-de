@@ -1,6 +1,7 @@
 ---
-title: Erstellen eines Azure Active Directory-Mandanten
-description: Erfahren Sie, wie Sie einen Azure AD-Mandanten erstellen, der für die Registrierung und Erstellung von Anwendungen verwendet wird.
+title: 'Schnellstart: Erstellen eines Azure Active Directory-Mandanten'
+titleSuffix: Microsoft identity platform
+description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Active Directory-Mandanten für die Entwicklung von Anwendungen erstellen, die Microsoft Identity Platform zur Authentifizierung und Autorisierung verwenden.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120812"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575978"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Schnellstart: Einrichten eines Mandanten
 
@@ -26,6 +27,10 @@ Die Microsoft Identity Platform ermöglicht es Entwicklern, Anwendungen für ein
 Ein Mandant ist eine Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die ein Unternehmen oder ein App-Entwickler erhält, wenn das Unternehmen oder der App-Entwickler eine Beziehung zu Microsoft eingeht (z.B. die Registrierung für Azure, Microsoft Intune oder Microsoft 365).
 
 Jeder Azure AD-Mandant ist getrennt und separat von anderen Azure AD-Mandanten und verfügt über eine eigene Darstellung von Geschäfts-, Schul- oder Uniidentitäten, Consumeridentitäten (wenn es sich um einen Azure AD B2C-Mieter handelt) und App-Registrierungen. Eine App-Registrierung in Ihrem Mandanten kann Authentifizierungen von Konten nur in Ihrem Mandanten oder von allen Mandanten zulassen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="determining-environment-type"></a>Bestimmen des Umgebungstyps
 
@@ -71,6 +76,5 @@ Um mit dem Erstellen von Apps zu beginnen, die sich bei sozialen und lokalen Kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Registrieren einer App](quickstart-register-app.md) und Integrieren mit Microsoft Identity Platform. 
-* Informationen zu den [Authentifizierungsgrundlagen](./authentication-vs-authorization.md)
-* Weitere Informationen über die Beziehung zwischen Abonnements und einem Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> [!div class="nextstepaction"]
+> [Registrieren Sie eine App](quickstart-register-app.md), um diese in Microsoft Identity Platform zu integrieren.

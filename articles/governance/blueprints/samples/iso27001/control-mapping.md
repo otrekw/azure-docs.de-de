@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „ISO 27001“
 description: Steuerungszuordnung des ISO 27001-Blaupausenbeispiels. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 5ae720bd5be9d80d8e1be8315d2aea88a99dc54e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a0d5b1118e1e063f7b4f8757e7d1b3935dc1a37c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927265"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535762"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Steuerungszuordnung des ISO 27001-Blaupausenbeispiels
 
@@ -47,7 +47,7 @@ Durch Kenntnis der Ressourcen, die gegen diese Richtlinien verstoßen, können S
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 Verwaltung von Rechten für den privilegierten Zugriff
 
-Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem vier [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer- und/oder Schreibberechtigungen und Konten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. In Azure ist die rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Mit dieser Blaupause werden auch drei Azure Policy-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte RBAC-Regeln fehleranfällig sind.
+Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem vier [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer- und/oder Schreibberechtigungen und Konten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Azure-Ressourcen hat. Mit dieser Blaupause werden auch drei Azure Policy-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten Azure RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
@@ -69,7 +69,7 @@ Mit dieser Blaupause werden drei [Azure Policy](../../../policy/overview.md)-Def
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 Überprüfung der Zugriffsrechte für Benutzer
 
-In Azure ist die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../../../role-based-access-control/overview.md) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden vier [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um Konten zu überwachen, die für die Überprüfung priorisiert sind, einschließlich veralteter Konten und externer Konten mit erhöhten Rechten.
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden vier [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um Konten zu überwachen, die für die Überprüfung priorisiert sind, einschließlich veralteter Konten und externer Konten mit erhöhten Rechten.
 
 - Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
@@ -78,7 +78,7 @@ In Azure ist die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../../
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 Entfernung oder Anpassung von Zugriffsrechten
 
-In Azure ist die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../../../role-based-access-control/overview.md) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Mithilfe von [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) und RBAC können Sie Benutzerrollen aktualisieren, um Organisationsänderungen umzusetzen. Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Mit dieser Blaupause werden zwei [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um veraltete Konten zu überwachen, die bei der Entfernung berücksichtigt werden sollten.
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Mithilfe von [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) und Azure RBAC können Sie Benutzerrollen aktualisieren, um Organisationsänderungen umzusetzen. Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Mit dieser Blaupause werden zwei [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um veraltete Konten zu überwachen, die bei der Entfernung berücksichtigt werden sollten.
 
 - Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.

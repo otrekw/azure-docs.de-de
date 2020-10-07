@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: e1893c32ed486772e56432f6263626d0ee1a65df
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531881"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569782"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Aktionen des Azure Front Door-Regelmoduls
 
 Im [AFD-Regelmodul](front-door-rules-engine.md) besteht eine Regel aus null oder mehr Übereinstimmungsbedingungen und Aktionen. Dieser Artikel enthält detaillierte Beschreibungen der Aktionen, die Sie im AFD-Regelmodul verwenden können.
 
-Eine Aktion definiert das Verhalten, das auf den Anforderungstyp angewendet wird, der durch mindestens eine Übereinstimmungsbedingung bestimmt wurde. Im AFD-Regelmodul kann eine Regel bis zu fünf Aktionen enthalten, aber nur eine davon darf eine Außerkraftsetzungsaktion (Weiter- oder Umleitung) für die Routenkonfiguration sein.
+Eine Aktion definiert das Verhalten, das auf den Anforderungstyp angewendet wird, der durch mindestens eine Übereinstimmungsbedingung bestimmt wurde. Im AFD-Regelmodul kann eine Regel bis zu fünf Aktionen enthalten. Dabei kann es sich nur um eine Außerkraftsetzungsaktion (Weiter- oder Umleitung) für die Routenkonfiguration handeln.
 
 Die folgenden Aktionen können auch im Azure Front Door-Regelmodul verwendet werden.  
 
@@ -35,9 +35,9 @@ Verwenden Sie diese Aktion, um Header zu ändern, die in den an ihren Ursprung g
 
 Aktion | HTTP-Headername | Wert
 -------|------------------|------
-Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der Wert an den vorhandenen Wert angefügt. | String
-Overwrite | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der vorhandene Wert von dem angegebenen Wert überschrieben. | String
-Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Anforderung gelöscht. | String
+Anfügen | Wenn diese Option ausgewählt wird und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der Wert an den vorhandenen Wert angefügt. | String
+Overwrite | Wenn diese Option ausgewählt wird und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der vorhandene Wert von dem angegebenen Wert überschrieben. | String
+Löschen | Wenn diese Option mit übereinstimmenden Regeln ausgewählt wird und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Anforderung gelöscht. | String
 
 ## <a name="modify-response-header"></a>Antwortheader ändern
 
@@ -47,9 +47,9 @@ Verwenden Sie diese Aktion, um Header zu ändern, die in den an Ihre Clients zur
 
 Aktion | HTTP-Headername | Wert
 -------|------------------|------
-Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, wird der **Wert** an den vorhandenen Wert angefügt. | String
+Anfügen | Wenn diese Option ausgewählt wird und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, wird der **Wert** an den vorhandenen Wert angefügt. | String
 Overwrite | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, überschreibt der **Wert** den vorhandenen Wert. | String
-Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Antwort gelöscht. | String
+Löschen | Wenn diese Option ausgewählt wird, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Antwort gelöscht. | String
 
 ## <a name="route-configuration-overrides"></a>Außerkraftsetzung der Routenkonfiguration 
 
@@ -75,10 +75,10 @@ Leiten Sie mit dieser Aktion Clients an eine neue URL weiter. Diese Aktion enth�
 
 Feld | BESCHREIBUNG 
 ------|------------
-Back-End-Pool | Wählen Sie den Back-End-Pool für die Außerkraftsetzung aus, von dem die Anforderungen verarbeitet werden sollen. Dadurch werden alle vorkonfigurierten Back-End-Pools angezeigt, die sich derzeit in Ihrem Front Door-Profil befinden. 
+Back-End-Pool | Wählen Sie den Back-End-Pool zum Überschreiben und Verarbeiten der Anforderungen aus. Dadurch werden auch alle vorkonfigurierten Back-End-Pools angezeigt, die derzeit in Ihrem Front Door-Profil enthalten sind. 
 Weiterleitungsprotokoll | Übereinstimmungsanforderung, HTTP, HTTPS.
-URL Rewrite | Verwenden Sie diese Aktion, um den Pfad einer Anforderung auf dem Weg zu Ihrem Ursprung erneut zu generieren. Wenn diese Option aktiviert ist, finden Sie unten weitere erforderliche Felder.
-Caching | „Aktiviert“, „Deaktiviert“ Wenn diese Option aktiviert ist, finden Sie unten weitere erforderliche Felder. 
+URL Rewrite | Verwenden Sie diese Aktion, um den Pfad einer Anforderung auf dem Weg zu Ihrem Ursprung erneut zu generieren. Wenn diese Option aktiviert ist, finden Sie nachfolgend weitere erforderliche Felder.
+Caching | „Aktiviert“, „Deaktiviert“ Wenn diese Option aktiviert ist, finden Sie nachfolgend weitere erforderliche Felder. 
 
 #### <a name="url-rewrite"></a>URL Rewrite
 
@@ -90,7 +90,7 @@ Benutzerdefinierter Weiterleitungspfad | Definieren Sie den Pfad, an den die Anf
 
 #### <a name="caching"></a>Caching
 
-Verwenden Sie diese Einstellungen, um zu steuern, wie Dateien für Anforderungen zwischengespeichert werden, die Abfragezeichenfolgen enthalten, und ob der Inhalt basierend auf allen Parameter oder ausgewählten Parametern zwischengespeichert werden soll. Sie können zusätzliche Einstellungen verwenden, um den Wert für die Gültigkeitsdauer (Time to Live, TTL) zu überschreiben, um zu steuern, wie lange Inhalte im Cache für Anforderungen bleiben, die von den Bedingungen der Regelübereinstimmung angegeben sind. Um das Zwischenspeichern als Aktion zu erzwingen, legen Sie das Feld „Zwischenspeichern“ auf „Aktiviert“ fest. Dabei werden die folgenden Optionen angezeigt: 
+Mit diesen Einstellungen können Sie steuern, wie Dateien für Anforderungen, die Abfragezeichenfolgen enthalten, zwischengespeichert werden. Sie bestimmen, ob der Inhalt basierend auf allen Parametern oder ausgewählten Parametern zwischengespeichert werden soll. Sie können zusätzliche Einstellungen verwenden, um den Wert für die Gültigkeitsdauer (Time to Live, TTL) zu überschreiben und so zu steuern, wie lange Inhalte im Cache verbleiben. Um das Zwischenspeichern als Aktion zu erzwingen, legen Sie das Feld „Zwischenspeichern“ auf „Aktiviert“ fest. Wenn Sie das Zwischenspeichern erzwingen, werden die folgenden Optionen angezeigt: 
 
 Cacheverhalten |  BESCHREIBUNG              
 ---------------|----------------
@@ -107,6 +107,6 @@ Cachedauer | Dauer bis Cacheablauf in Tagen, Stunden, Minuten, Sekunden. Alle We
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihre erste [Regelmodulkonfiguration](front-door-tutorial-rules-engine.md) einrichten. 
+- Erfahren Sie, wie Sie Ihr erstes [Regelmodul](front-door-tutorial-rules-engine.md) konfigurieren. 
 - Weitere Informationen zu [Übereinstimmungsbedingungen des Regelmoduls](front-door-rules-engine-match-conditions.md)
 - Weitere Informationen zum [Azure Front Door-Regelmodul](front-door-rules-engine.md)

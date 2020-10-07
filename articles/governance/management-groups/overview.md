@@ -1,14 +1,15 @@
 ---
 title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governance
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: contperfq1
+ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533804"
 ---
 # <a name="what-are-azure-management-groups"></a>Was sind Azure-Verwaltungsgruppen?
 
@@ -21,11 +22,13 @@ Beispielsweise können Sie eine Richtlinie auf eine Verwaltungsgruppe anwenden, 
 
 Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbauen, um Ihre Ressourcen für die einheitliche Richtlinien- und Zugriffsverwaltung in einer Hierarchie zu organisieren. Das folgende Diagramm zeigt ein Beispiel zum Erstellen einer Hierarchie für die Governance unter Verwendung von Verwaltungsgruppen.
 
-:::image type="content" source="./media/tree.png" alt-text="Beispiel für eine Hierarchiestruktur einer Verwaltungsgruppe" border="false":::
+:::image type="complex" source="./media/tree.png" alt-text="Diagramm eines Beispiels für die Verwaltungsgruppenhierarchie." border="false":::
+   Diagramm einer Stammverwaltungsgruppe, die sowohl Verwaltungsgruppen als auch Abonnements enthält. Einige untergeordnete Verwaltungsgruppen enthalten Verwaltungsgruppen, einige enthalten Abonnements und einige enthalten beides. Eines der Beispiele in der Beispielhierarchie umfasst vier Ebenen von Verwaltungsgruppen, wobei die untergeordnete Ebene alle Abonnements enthält.
+:::image-end:::
 
 Sie können eine Hierarchie erstellen, die eine Richtlinie anwendet, z. B. die VM-Standorte auf die Region „USA, Westen“ in der Gruppe „Produktion“ begrenzt. Diese Richtlinie wird an alle EA-Abonnements (Enterprise Agreement) vererbt, die Nachfolger dieser Verwaltungsgruppe sind, und gilt für alle virtuellen Computer dieser Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
 
-Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [Azure-Rollenzuweisung](../../role-based-access-control/overview.md) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt. Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles ermöglichen, was sie benötigen, ohne dass in einem Skript RBAC für verschiedene Abonnements eingerichtet werden muss.
+Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [Azure-Rollenzuweisung](../../role-based-access-control/overview.md) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt. Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles ermöglichen, was sie benötigen, ohne dass in einem Skript Azure RBAC für verschiedene Abonnements eingerichtet werden muss.
 
 ### <a name="important-facts-about-management-groups"></a>Wichtige Fakten zu Verwaltungsgruppen
 
@@ -147,7 +150,9 @@ Rollendefinitionen können an beliebiger Stelle innerhalb der Verwaltungsgruppen
 
 Wir betrachten nun als Beispiel einen kleinen Abschnitt einer Hierarchie für ein visuelles Element.
 
-:::image type="content" source="./media/subtree.png" alt-text="Unterstruktur" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Diagramm eines Beispiels für die Verwaltungsgruppenhierarchie." border="false":::
+   Das Diagramm konzentriert sich auf die Stammverwaltungsgruppe mit den untergeordneten Verwaltungsgruppen „IT“ und „Marketing“. Die Verwaltungsgruppe „IT“ weist eine einzige untergeordnete Verwaltungsgruppe namens „Production“ auf, während die Verwaltungsgruppe „Marketing“ über zwei untergeordnete kostenlose Testabonnements verfügt.
+:::image-end:::
 
 Angenommen, für die Verwaltungsgruppe „Marketing“ ist eine benutzerdefinierte Rolle definiert. Diese benutzerdefinierte Rolle wird dann zwei kostenlosen Abonnements zugewiesen.  
 
@@ -164,7 +169,7 @@ Es gibt verschiedene Optionen, um dieses Szenario zu beheben:
 Es bestehen Einschränkungen für die Verwendung benutzerdefinierter Rollen für Verwaltungsgruppen. 
 
  - Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren. Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden. Diese Situation tritt auf, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung in ein anderes übergeordnetes Element verschoben wird, das nicht über die Rollendefinition verfügt.  
- - Aktionen der RBAC-Datenebene können in benutzerdefinierten Rollen für Verwaltungsgruppen nicht definiert werden. Diese Einschränkung besteht, weil bei RBAC-Aktionen ein Latenzproblem beim Aktualisieren der Ressourcenanbieter für die Datenebene auftritt.
+ - Aktionen der Datenebene des Ressourcenanbieters können in benutzerdefinierten Rollen für Verwaltungsgruppen nicht definiert werden. Diese Einschränkung besteht, weil beim Aktualisieren der Ressourcenanbieter für die Datenebene ein Latenzproblem auftritt.
    An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
  - Der Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist. Wenn ein Tippfehler vorhanden oder eine falsche Verwaltungsgruppen-ID aufgelistet ist, wird die Rollendefinition dennoch erstellt.  
 
@@ -189,7 +194,7 @@ Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsg
 
 Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen gesucht werden. Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Aktivitätsprotokolle mit Verwaltungsgruppen" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Diagramm eines Beispiels für die Verwaltungsgruppenhierarchie." border="false":::
 
 Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 

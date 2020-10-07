@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76900180"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568656"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der Tabellen-API
 
@@ -34,7 +34,7 @@ Das Azure Cosmos DB Table API SDK wählt je nach Kontokonfiguration und aktuelle
 
 * **Leseanforderungen:** Alle Leseanforderungen werden an die konfigurierte aktuelle Region (`CurrentRegion`) gesendet. Basierend auf der jeweiligen Nähe wählt das SDK automatisch eine Fallbackregion mit Georeplikation aus, um für Hochverfügbarkeit zu sorgen.
 
-* **Schreibanforderungen:** Das SDK sendet alle Schreibanforderungen automatisch an die aktuelle Schreibregion. Unter einem Multimaster-Konto werden die Schreibanforderungen auch von der aktuellen Region bereitgestellt. Basierend auf der jeweiligen Nähe wählt das SDK automatisch eine Fallbackregion mit Georeplikation aus, um für Hochverfügbarkeit zu sorgen.
+* **Schreibanforderungen:** Das SDK sendet alle Schreibanforderungen automatisch an die aktuelle Schreibregion. Unter einem Konto mit Schreibvorgängen in mehreren Regionen werden die Schreibanforderungen auch von der aktuellen Region bereitgestellt. Basierend auf der jeweiligen Nähe wählt das SDK automatisch eine Fallbackregion mit Georeplikation aus, um für Hochverfügbarkeit zu sorgen.
 
 Wenn Sie die `CurrentRegion`-Eigenschaft auch angeben, nutzt das SDK die aktuelle Schreibregion für alle Vorgänge.
 

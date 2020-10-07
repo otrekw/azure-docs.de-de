@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085717"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537455"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 
@@ -127,10 +127,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 7. Klicken Sie auf **Erstellen**.
 8. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
-   ![Data Factory-Startseite](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![Screenshot mit einer Meldung, dass die Bereitstellung abgeschlossen ist, und einer Option zum Wechseln zur Ressource](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
-   ![Data Factory-Startseite](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![Screenshot der von Ihnen bereitgestellten Data Factory](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
 11. Wechseln Sie im linken Bereich der Seite **Erste Schritte** zur Registerkarte **Bearbeiten**, wie in der folgenden Abbildung gezeigt:
 
@@ -289,10 +289,10 @@ In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lo
 
 11. Klicken Sie auf die Vorschauoption, um sich zu vergewissern, dass die geänderten Zeilen durch die Abfrage korrekt zurückgegeben werden.
 
-    ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![Screenshot der Vorschau zum Überprüfen der Abfrage](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. Wechseln Sie zur Registerkarte **Senke**, und geben Sie im Feld **Sink Dataset** (Senkendataset) das Azure Storage-Dataset an.
 
-    ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![Screenshot der Registerkarte „Senke“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. Kehren Sie zur Canvas der Hauptpipeline zurück, und verbinden Sie nacheinander die Aktivität **Lookup** mit der Aktivität **If-Bedingung**. Ziehen Sie die **grüne** Schaltfläche der Aktivität **Lookup** zur Aktivität **If-Bedingung**.
 
     ![Verbinden von Lookup- und Copy-Aktivität](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -333,7 +333,7 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
     ```
 4. Klicken Sie auf die Registerkarte **Senke** der Aktivität **Copy** und anschließend auf **Öffnen**, um die Dataseteigenschaften zu bearbeiten. Klicken Sie auf die Registerkarte **Parameter**, und fügen Sie einen neuen Parameter namens **triggerStart** hinzu.    
 
-    ![Konfiguration des Senkendatasets: 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![Screenshot des Hinzufügens eines neuen Parameters zur Registerkarte „Parameter“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. Konfigurieren Sie als Nächstes die Dataseteigenschaften, um die Daten mit datumsbasierten Partitionen in einem Unterverzeichnis von **customers/incremental** zu speichern.
    1. Klicken Sie in den Dataseteigenschaften auf die Registerkarte **Verbindung**, und fügen Sie dynamische Inhalte für die Abschnitte **Verzeichnis** und **Datei** hinzu. 
    2. Geben Sie im Abschnitt **Verzeichnis** den folgenden Ausdruck ein, indem Sie unter dem Textfeld auf den Link für dynamischen Inhalt klicken:

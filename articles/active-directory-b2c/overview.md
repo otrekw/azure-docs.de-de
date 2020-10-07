@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184059"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396534"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
@@ -105,7 +105,7 @@ Das Klicken auf die Schaltfläche **Erstellen** bewirkt, dass Azure AD B2C den B
 
 Wenn ein Kunde eine der Optionen unter **Business Customers** (Geschäftskunden) auswählt, ruft die Woodgrove Groceries-Website eine andere Azure AD B2C-Richtlinie als die Richtlinie für Einzelkunden auf.
 
-Mit dieser Richtlinie wird dem Benutzer die Möglichkeit geboten, für die Registrierung und Anmeldung seine Unternehmensanmeldeinformationen zu verwenden. Im Woodgrove-Beispiel werden Benutzer aufgefordert, sich mit einem beliebigen Office 365- oder Azure AD-Konto anzumelden. Diese Richtlinie verwendet eine [mehrinstanzenfähige Azure AD-Anwendung](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) und den Azure AD-Endpunkt `/common`, um einen Verbund von Azure AD B2C mit einem beliebigen Office 365-Kunden an einem beliebigen Standort zu bilden.
+Mit dieser Richtlinie wird dem Benutzer die Möglichkeit geboten, für die Registrierung und Anmeldung seine Unternehmensanmeldeinformationen zu verwenden. Im Woodgrove-Beispiel werden Benutzer aufgefordert, sich mit einem beliebigen Geschäfts-, Schul- oder Unikonto anzumelden. Diese Richtlinie verwendet eine [mehrinstanzenfähige Azure AD-Anwendung](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) und den Azure AD-Endpunkt `/common`, um einen Verbund von Azure AD B2C mit einem beliebigen Microsoft 365-Kunden an einem beliebigen Standort zu bilden.
 
 ### <a name="authenticate-partners"></a>Authentifizieren von Partnern
 

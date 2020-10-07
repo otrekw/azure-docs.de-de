@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287031"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud
 
@@ -205,7 +205,7 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 2. Wählen Sie das **Plussymbol (+)** aus, und suchen Sie nach **Azure Active Directory**.
 3. Wählen Sie in den Suchergebnissen **Azure Active Directory** aus.
 4. Klicken Sie auf **Erstellen**.</br>
-![Erstellen](media/tutorial-password-hash-sync/create1.png)</br>
+![Screenshot, der zeigt, wie ein Azure AD-Mandant erstellt wird](media/tutorial-password-hash-sync/create1.png)</br>
 5. Geben Sie einen **Namen für die Organisation** an, zusammen mit dem **Namen der Anfangsdomäne**. Klicken Sie anschließend auf **Erstellen**. Hierdurch wird Ihr Verzeichnis erstellt.
 6. Sobald dies abgeschlossen ist, klicken Sie auf **diesen Link**, um das Verzeichnis zu verwalten.
 
@@ -213,10 +213,10 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 Nachdem nun ein Azure AD-Mandant vorhanden ist, erstellen wir ein globales Administratorkonto.  Dieses Konto dient zum Erstellen des Azure AD Connector-Kontos während der Installation von Azure AD Connect.  Das Azure AD Connector-Konto wird zum Schreiben von Informationen in Azure AD verwendet.   Gehen Sie zum Erstellen des globalen Administratorkontos wie folgt vor:
 
 1.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.</br>
-![Erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Screenshot: Ausgewählte Option „Benutzer“ im Abschnitt „Verwalten“, in dem Sie einen globalen Administrator in Azure AD erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Wählen Sie **Alle Benutzer** und dann **+ Neuer Benutzer** aus.
 3.  Geben Sie für diesen Benutzer einen Namen und Benutzernamen an. Dieser wird Ihr globaler Administrator für den Mandanten. Sie sollten außerdem die **Verzeichnisrolle** in **Globaler Administrator** ändern. Sie können auch das temporäre Kennwort anzeigen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.</br>
-![Erstellen](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Screenshot: Schaltfläche „Erstellen“, die beim Erstellen eines globalen Administrators in Azure AD ausgewählt wird](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Sobald dies abgeschlossen ist, öffnen Sie einen neuen Webbrowser, und melden Sie sich mit dem neuen globalen Administratorkonto und dem temporären Kennwort bei „myapps.microsoft.com“ an.
 5. Ändern Sie das Kennwort für den globalen Administrator in einen Wert, den Sie sich merken können.
 
@@ -226,12 +226,12 @@ Nachdem wir nun über einen Mandanten und einen globalen Administrator verfügen
 1. Stellen Sie im [Azure-Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) sicher, dass das Blatt **Alle Benutzer** geschlossen ist.
 2. Wählen Sie links **Benutzerdefinierte Domänennamen**.
 3. Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.</br>
-![Verbund](media/tutorial-federation/custom1.png)</br>
+![Screenshot: Hervorgehobene Schaltfläche „Benutzerdefinierte Domäne hinzufügen“](media/tutorial-federation/custom1.png)</br>
 4. Geben Sie unter **Benutzerdefinierte Domänennamen** den Namen Ihrer benutzerdefinierten Domäne in das Feld ein, und klicken Sie auf **Domäne hinzufügen**.
 5. Im Bildschirm mit dem benutzerdefinierten Domänennamen erhalten Sie entweder TXT- oder MX-Informationen.  Diese Informationen müssen den DNS-Informationen der Domänenregistrierungsstelle unter Ihrer Domäne hinzugefügt werden.  Sie müssen also zu Ihrer Domänenregistrierungsstelle wechseln und dort entweder die TXT- oder die MX-Informationen in den DNS-Einstellungen für Ihre Domäne eingeben.  Dies gestattet Azure die Verifizierung Ihrer Domäne.  Es kann bis zu 24 Stunden dauern, bis Azure die Verifizierung abgeschlossen hat.  Weitere Informationen finden Sie in der Dokumentation unter [Hinzufügen einer benutzerdefinierten Domäne](../../active-directory/fundamentals/add-custom-domain.md).</br>
-![Verbund](media/tutorial-federation/custom2.png)</br>
+![Screenshot, der zeigt, wo Sie die TXT- oder MX-Informationen hinzufügen](media/tutorial-federation/custom2.png)</br>
 6. Klicken Sie auf die Schaltfläche „Überprüfen“, um sicherzustellen, dass sie verifiziert wurde.</br>
-![Verbund](media/tutorial-federation/custom3.png)</br>
+![Screenshot: Meldung zu erfolgreicher Überprüfung nach dem Auswählen von „Überprüfen“](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Herunterladen und Installieren von Azure AD Connect
 Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es installiert wurde, führen Sie die Expressinstallation durch.  Gehen Sie folgendermaßen vor:
@@ -242,7 +242,7 @@ Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es i
 4. Klicken Sie im Bildschirm „Expresseinstellungen“ auf **Anpassen**.  
 5. Im Bildschirm zum Installieren der erforderlichen Komponenten. Klicken Sie auf **Installieren**.  
 6. Wählen Sie im Bildschirm mit der Benutzeranmeldung **Verbund mit AD FS** aus, und klicken Sie auf **Weiter**.
-![Verbund](media/tutorial-federation/fed1.png)
+![Screenshot, der zeigt, wo der Verbund mit AD FS ausgewählt wird](media/tutorial-federation/fed1.png)
 
 1. Geben Sie im Bildschirm „Mit Azure AD verbinden“ den Benutzernamen und das Kennwort des globalen Administrators ein, den wir weiter oben erstellt haben, und klicken Sie auf **Weiter**.
 2. Klicken Sie im Bildschirm „Verzeichnisse verbinden“ auf **Verzeichnis hinzufügen**.  Wählen Sie dann **Neues AD-Konto erstellen** aus, und geben Sie den contoso\Administrator-Benutzernamen und das Kennwort ein, und klicken Sie auf **OK**.
@@ -257,7 +257,7 @@ Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es i
 11. Wählen Sie **Auf Verbundservern installiertes Zertifikat verwenden** aus, und klicken Sie auf **Durchsuchen**.
 12. Geben Sie „DC1“ in das Suchfeld ein, und wählen Sie es aus, wenn es gefunden wurde.  Klicken Sie auf **OK**.
 13. Wählen Sie im Dropdown **Zertifikatdatei** den Eintrag **adfs.contoso.com** aus, das Zertifikat, das wir weiter oben erstellt haben.  Klicken Sie auf **Weiter**.
-![Verbund](media/tutorial-federation/fed2.png)
+![Screenshot, der zeigt, wo die von Ihnen erstellte Zertifikatsdatei ausgewählt wird](media/tutorial-federation/fed2.png)
 
 1. Klicken Sie im Bildschirm „AD FS-Server“ auf **Durchsuchen**, und geben Sie „DC1“ in das Suchfeld ein, und wählen Sie es aus, wenn es gefunden wurde.  Klicken Sie auf **OK**.  Klicken Sie auf **Weiter**.
 ![Verbund](media/tutorial-federation/fed3.png)

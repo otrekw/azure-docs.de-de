@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651334"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449556"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Was ist Apache Kafka in Azure HDInsight?
 
@@ -33,7 +33,9 @@ Dies sind spezifische Merkmale von Kafka in HDInsight:
 
     Weitere Informationen finden Sie unter [Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](apache-kafka-high-availability.md).
 
-* Mit HDInsight können Sie die Anzahl von Workerknoten (zum Hosten des Kafka-Brokers) nach der Clustererstellung ändern. Die Skalierung kann über das Azure-Portal, Azure PowerShell und andere Azure-Verwaltungsoberflächen durchgeführt werden. Für Kafka sollten Sie für Partitionsreplikate nach Skalierungsvorgängen einen Ausgleichsvorgang durchführen. Durch das Ausgleichen von Partitionen kann für Kafka die neue Anzahl von Workerknoten genutzt werden.
+* Mit HDInsight können Sie die Anzahl von Workerknoten (zum Hosten des Kafka-Brokers) nach der Clustererstellung ändern. Die Hochskalierung kann über das Azure-Portal, Azure PowerShell und andere Azure-Verwaltungsoberflächen durchgeführt werden. Für Kafka sollten Sie für Partitionsreplikate nach Skalierungsvorgängen einen Ausgleichsvorgang durchführen. Durch das Ausgleichen von Partitionen kann für Kafka die neue Anzahl von Workerknoten genutzt werden.
+
+   HDInsight Kafka unterstützt kein Herunterskalieren oder Verringern der Anzahl der Broker innerhalb eines Clusters. Wenn versucht wird, die Anzahl der Knoten zu verringern, wird der Fehler `InvalidKafkaScaleDownRequestErrorCode` zurückgegeben.
 
     Weitere Informationen finden Sie unter [Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](apache-kafka-high-availability.md).
 
@@ -59,7 +61,7 @@ Die Replikation wird genutzt, um die Partitionen auf Knoten zu duplizieren und f
 
 Im Folgenden sind allgemeine Aufgaben und Muster aufgelistet, die mithilfe von Kafka in HDInsight ausgeführt werden können:
 
-|Zweck |BESCHREIBUNG |
+|Verwendung |Beschreibung |
 |---|---|
 |Replikation von Apache Kafka-Daten|Kafka verfügt über das MirrorMaker-Hilfsprogramm, mit dem Daten zwischen Kafka-Clustern repliziert werden. Informationen zur Verwendung von MirrorMaker finden Sie unter [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](apache-kafka-mirroring.md).|
 |Veröffentlichen-Abonnieren-Messagingmuster|Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
@@ -67,7 +69,7 @@ Im Folgenden sind allgemeine Aufgaben und Muster aufgelistet, die mithilfe von K
 |Horizontale Skalierung|Bei Kafka werden Streams über die Knoten im HDInsight-Cluster hinweg partitioniert. Consumerprozesse können einzelnen Partitionen zugeordnet werden, um beim Nutzen von Datensätzen für einen Lastenausgleich zu sorgen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
 |Geordnete Bereitstellung|In jeder Partition werden die Datensätze im Stream in der Reihenfolge gespeichert, in der sie empfangen wurden. Indem ein Consumerprozess pro Partition zugeordnet wird, können Sie sicherstellen, dass die Datensätze in der richtigen Reihenfolge verarbeitet werden. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
 |Nachrichten|Da das Veröffentlichen-Abonnieren-Messagingmuster unterstützt wird, wird Kafka häufig als Nachrichtenbroker genutzt.|
-|Aktivitätsüberwachung|Da Kafka die geordnete Protokollierung von Datensätzen unterstützt, kann die Anwendung zum Nachverfolgen und Neuerstellen von Aktivitäten verwendet werden. Beispiele hierfür sind Benutzeraktionen auf einer Website oder in einer Anwendung.|
+|Aktivitätsnachverfolgung|Da Kafka die geordnete Protokollierung von Datensätzen unterstützt, kann die Anwendung zum Nachverfolgen und Neuerstellen von Aktivitäten verwendet werden. Beispiele hierfür sind Benutzeraktionen auf einer Website oder in einer Anwendung.|
 |Aggregation|Mit der Datenstromverarbeitung können Sie Informationen aus unterschiedlichen Datenströmen aggregieren, um die Informationen zu operativen Daten zu kombinieren und zu zentralisieren.|
 |Transformation|Mit der Datenstromverarbeitung können Sie Daten aus mehreren Eingabethemen zu einem oder mehreren Ausgabethemen kombinieren und erweitern.|
 

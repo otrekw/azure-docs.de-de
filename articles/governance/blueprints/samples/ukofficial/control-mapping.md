@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels für UK OFFICIAL und UK NHS
 description: Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078999"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540386"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 
@@ -76,7 +76,7 @@ Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview
 
 ## <a name="9-secure-user-management"></a>9 Sichere Benutzerverwaltung 
 
-Azure implementiert eine rollenbasierte Zugriffskontrolle (RBAC), die Ihnen hilft, zu verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Überwachen von externen Konten mit Besitzer- und/oder Lese-/Schreibberechtigungen sowie von Konten mit Besitzer-, Lese- und/oder Schreibberechtigungen, für die keine mehrstufige Authentifizierung (MFA) aktiviert ist, hilft Ihnen die Blaupause, Zugriffsrechte einzuschränken und zu steuern.
+Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Überwachen von externen Konten mit Besitzer- und/oder Lese-/Schreibberechtigungen sowie von Konten mit Besitzer-, Lese- und/oder Schreibberechtigungen, für die keine mehrstufige Authentifizierung (MFA) aktiviert ist, hilft Ihnen die Blaupause, Zugriffsrechte einzuschränken und zu steuern.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden

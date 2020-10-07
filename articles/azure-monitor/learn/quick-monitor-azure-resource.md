@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324266"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448198"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Schnellstart: Überwachen einer Azure-Ressource mit Azure Monitor
 [Azure Monitor](../overview.md) beginnt in dem Moment, in dem Azure-Ressourcen erstellt werden, mit dem Sammeln von Daten aus diesen Ressourcen. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für eine Ressource automatisch gesammelt werden, und erläutert, wie Sie die Daten für eine bestimmte Ressource im Azure-Portal anzeigen können. Später können Sie Einstellungen für die Sammlung weiterer Daten konfigurieren und zum Azure Monitor-Menü wechseln, um mit denselben Tools auf Daten zuzugreifen, die für alle Ressourcen in Ihrem Abonnement gesammelt wurden.
@@ -40,11 +40,11 @@ Das Aktivitätsprotokoll bietet Einblicke in die Vorgänge, die für die einzeln
 1. Wählen Sie oben im Menü für Ihre Ressource die Option **Aktivitätsprotokoll** aus.
 2. Der aktuelle Filter ist so eingestellt, dass Ereignisse in Bezug auf Ihre Ressource angezeigt werden. Wenn keine Ereignisse angezeigt werden, ändern Sie den **Zeitraum**, um den Zeitbereich zu vergrößern.
 
-    ![Aktivitätsprotokoll](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![Screenshot eines Ressourcenaktivitätsprotokolls im Azure-Portal mit einer Liste der Vorgänge für die Ressource, die anhand der Standardfilterkriterien generiert wurde](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. Wenn Sie Ereignisse aus anderen Ressourcen in Ihrem Abonnement anzeigen möchten, ändern Sie Kriterien im Filter, oder entfernen Sie Filtereigenschaften.
 
-    ![Aktivitätsprotokoll](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![Screenshot eines Ressourcenaktivitätsprotokolls im Azure-Portal mit einer Liste der Vorgänge für die Ressource, die anhand geänderter Filterkriterien generiert wurde](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,15 +54,15 @@ Metriken sind numerische Werte, die einen Aspekt Ihrer Ressource zu einem bestim
 1. Wählen Sie im Menü Ihrer Ressource im Abschnitt **Überwachung** die Option **Metriken** aus. Damit wird der Metrik-Explorer geöffnet, und der Bereich ist auf Ihre Ressource festgelegt.
 2. Klicken Sie auf **Metrik hinzufügen**, um dem Diagramm eine Metrik hinzuzufügen.
    
-   ![Metrik-Explorer](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Screenshot des Metrik-Explorers im Azure-Portal mit den Metriken für eine Ressource. Die Dropdownliste „Metrik“ ist zum Hinzufügen neuer Metriken geöffnet.](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. Wählen Sie aus der Liste eine **Metrik** und dann eine **Aggregation** aus. Damit wird definiert, wie die Werte für jedes Zeitintervall erfasst werden.
 
-    ![Metrik-Explorer](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Screenshot des Metrik-Explorers im Azure-Portal mit den Metriken für eine Ressource. Die Dropdownliste „Aggregation“ ist geöffnet, und „Durchschnitt“ ist ausgewählt.](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. Klicken Sie auf **Metrik hinzufügen**, um weitere Kombinationen aus Metrikwerten und Aggregationen zum Diagramm hinzuzufügen.
 
-    ![Metrik-Explorer](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Screenshot des Metrik-Explorers im Azure-Portal mit den Metriken für eine Ressource.](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 

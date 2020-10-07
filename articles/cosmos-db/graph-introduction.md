@@ -1,18 +1,18 @@
 ---
 title: Einführung in die Gremlin-API von Azure Cosmos DB
 description: Erfahren Sie, wie Sie anhand der Graph-Abfragesprache Gremlin von Apache TinkerPop umfangreiche Diagramme mit niedrigen Latenzen durch Azure Cosmos DB speichern, abfragen und traversieren können.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: 3dc534d1cbb195cd93ede091503222b297b17059
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: jasonh
+ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523739"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409611"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Einführung in die Gremlin-API von Azure Cosmos DB
 
@@ -106,7 +106,7 @@ Graphdatenbanken werden oft NoSQL- oder nicht relationalen Datenbanken zugeordne
 
 Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedrückt werden können. Die folgende Abbildung zeigt eine Geschäftsanwendung, die Daten zu Benutzern, Interessen und Geräten in Form eines Diagramms verwaltet.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Beispieldatenbank mit Personen, Geräten und Interessen" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Architektur von Azure Cosmos DB-Diagrammen" border="false"::: 
 
 Dieser Graph weist folgende *Vertex*-Typen (in Gremlin auch „Bezeichnung“ genannt) auf:
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 66eee67ae191d764228a85aaf1e63eae43208cc3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255986"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537734"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 
@@ -128,14 +128,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 
 Mit der Importprogrammoption für MongoDB-Dateiquellen können Sie Dateien aus einer einzelnen MongoDB-Sammlung importieren, Dokumente optional mit einer Abfrage filtern und die Dokumentstruktur mithilfe einer Projektion ändern.  
 
-:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="Screenshot der Optionen für MongoDB-Quellen":::
-
-Die Verbindungszeichenfolge weist das MongoDB-Standardformat auf:
-
-`mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database>`
-
-> [!NOTE]
-> Verwenden Sie den Befehl "Überprüfen", um sicherzustellen, dass auf die im Feld "Verbindungszeichenfolge" angegebene MongoDB-Instanz zugegriffen werden kann.
+:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools" angegebene MongoDB-Instanz zugegriffen werden kann.
 
 Geben Sie den Namen der Sammlung ein, aus der Daten importiert werden sollen. Optional können Sie eine Datei für eine Abfrage (z. B. `{pop: {$gt:5000}}`) oder eine Projektion (z. B. `{loc:0}`) angeben oder bereitstellen, um die zu importierenden Daten zu filtern und zu strukturieren.
 
@@ -156,7 +149,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 
 Mit der Importprogrammoption für JSON-Dateiquellen und MongoDB-Exportdateien können Sie eine oder mehrere JSON-Dateien importieren, die mit dem mongoexport-Dienstprogramm erzeugt wurden.  
 
-:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="Screenshot der Optionen für MongoDB-Exportquellen":::
+:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Wenn Sie Ordner hinzufügen, die zu importierende JSON-Dateien aus einem MongoDB-Export enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
 
@@ -170,12 +163,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 Mit der Importprogrammoption für SQL-Quellen können Sie Datensätze aus einer einzelnen SQL Server-Datenbank importieren und mithilfe einer Abfrage filtern. Darüber hinaus können Sie die Dokumentstruktur ändern, indem Sie ein Schachtelungstrennzeichen angeben (mehr dazu weiter unten).  
 
-:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="Screenshot der Optionen für SQL-Dateiquellen – Datenbank-Migrationstools":::
-
-Die Verbindungszeichenfolge weist das standardmäßige Format für SQL-Verbindungszeichenfolgen auf.
-
-> [!NOTE]
-> Verwenden Sie den Befehl "Überprüfen", um sicherzustellen, dass auf die im Feld "Verbindungszeichenfolge" angegebene SQL Server-Instanz zugegriffen werden kann.
+:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools" angegebene SQL Server-Instanz zugegriffen werden kann.
 
 Die Schachtelungstrennzeicheneigenschaft wird zum Erstellen hierarchischer Beziehungen (Filialdokumente) während des Imports verwendet. Betrachten Sie die folgende SQL-Abfrage:
 
@@ -183,11 +171,7 @@ Die Schachtelungstrennzeicheneigenschaft wird zum Erstellen hierarchischer Bezie
 
 Diese Abfrage gibt die folgenden (partiellen) Ergebnisse zurück:
 
-:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="Screenshot der SQL-Abfrageergebnisse":::
-
-Beachten Sie die Aliase, wie z. B. Address.AddressType und Address.Location.StateProvinceName. Indem Sie das Schachtelungstrennzeichen „.“ angeben, erstellt das Importtool während des Imports die Filialdokumente „Address“ und „Address.Location“. Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
-
-*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
+:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools" } }*
 
 Hier finden Sie einige Befehlszeilenbeispiele zum Importieren aus SQL Server:
 
@@ -203,15 +187,11 @@ dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=Adventur
 
 Mit der Importprogrammoption für CSV-Dateiquellen können Sie eine oder mehrere CSV-Dateien importieren. Wenn Sie Ordner hinzufügen, die zu importierende CSV-Dateien enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
 
-:::image type="content" source="media/import-data/csvsource.png" alt-text="Screenshot der Optionen für CSV-Quellen – CSV in JSON":::
+:::image type="content" source="media/import-data/csvsource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Ähnlich wie bei SQL-Quelldateien wird die Schachtelungstrennzeicheneigenschaft zum Erstellen hierarchischer Beziehungen (Filialdokumente) während des Imports verwendet. Betrachten Sie folgende CSV-Kopfzeile und Datenzeilen:
 
-:::image type="content" source="./media/import-data/csvsample.png" alt-text="Screenshot der CSV-Beispieldatensätze – CSV in JSON":::
-
-Beachten Sie die Aliase wie z. B."DomainInfo.Domain_Name" und "RedirectInfo.Redirecting". Durch Angabe des Schachtelungstrennzeichens „.“ erstellt das Importtool während des Imports die Filialdokumente „DomainInfo“ und „RedirectInfo“. Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
-
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+:::image type="content" source="./media/import-data/csvsample.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools" }*
 
 Das Importtool versucht, Typinformationen für Werte ohne Anführungszeichen in CSV-Dateien abzuleiten. (Werte in Anführungszeichen werden immer als Zeichenfolgen behandelt.)  Typen werden in der folgenden Reihenfolge identifiziert: number, datetime, boolean.  
 
@@ -232,7 +212,7 @@ Mit der Importprogrammoption für Azure Table Storage-Quellen können Sie Daten 
 
 Sie können aus Azure Table Storage importierte Daten zur Verwendung mit der Tabellen-API in Azure Cosmos DB-Tabellen und -Entitäten ausgeben. Importierte Daten können zur Verwendung mit der SQL-API auch in Sammlungen und Dokumente ausgegeben werden. Die Tabellen-API ist jedoch nur als Ziel im Befehlszeilenprogramm verfügbar. Es ist nicht möglich, Daten über die Benutzeroberfläche des Datenmigrationstools in die Tabellen-API zu exportieren. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table-import.md).
 
-:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Screenshot der Optionen für Azure-Tabellenspeicherquellen":::
+:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Die Verbindungszeichenfolge für den Azure-Tabellenspeicher weist folgendes Format auf:
 
@@ -262,9 +242,9 @@ dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;Account
 
 Mit der Importprogrammoption für Amazon DynamoDB-Dateiquellen können Sie Daten aus einer einzelnen Amazon DynamoDB-Tabelle importieren. Optional können die zu importierenden Entitäten gefiltert werden. Mehrere Vorlagen werden für einen einfachen Import bereitgestellt.
 
-:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="Screenshot der Optionen für Amazon DynamoDB-Dateiquellen – Datenbank-Migrationstools":::
+:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
-:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="Screenshot der Optionen für Amazon DynamoDB-Dateiquellen – Datenbank-Migrationstools":::
+:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Das Format der Amazon-DynamoDB-Verbindungszeichenfolge ist:
 
@@ -283,19 +263,14 @@ dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.ama
 
 Mit den Importprogrammoptionen für JSON-Dateien, MongoDB-Exportdateien und die CSV-Dateien können Sie eine oder mehrere Dateien aus Azure Blob Storage importieren. Nach Angabe von Blob-Container-URL und Kontoschlüssel geben Sie einen regulären Ausdruck ein, um die zu importierenden Dateien auszuwählen.
 
-:::image type="content" source="./media/import-data/blobsource.png" alt-text="Screenshot der Optionen für Blob-Dateiquellen":::
-
-Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von JSON-Dateien aus Azure Blob Storage:
-
-```console
-dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
+:::image type="content" source="./media/import-data/blobsource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 ```
 
 ## <a name="import-from-a-sql-api-collection"></a><a id="SQLSource"></a>Importieren aus einer SQL-API-Sammlung
 
 Mit der Importprogrammoption für Azure Cosmos DB-Quellen können Sie Daten aus Azure Cosmos-Containern importieren und optional Dokumente mithilfe einer Abfrage filtern.  
 
-:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="Screenshot der Optionen für Azure Cosmos DB-Quellen":::
+:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Die Azure Cosmos DB-Verbindungszeichenfolge weist folgendes Format auf:
 
@@ -320,7 +295,7 @@ Die Importprogrammoption für Azure Cosmos DB-Quellen weist die folgenden erweit
 3. Wiederholungsintervall: Gibt an, wie lange bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
 4. Verbindungsmodus: Gibt den Verbindungsmodus an, der mit Azure Cosmos DB verwendet werden soll. Verfügbare Optionen sind DirectTcp, DirectHttps und Gateway. Die Direktverbindungsmodi sind schneller, der Gatewaymodus ist besser für Firewalls geeignet, da nur Port 443 verwendet wird.
 
-:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="Screenshot der erweiterten Optionen für Azure Cosmos DB-Quellen":::
+:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 > [!TIP]
 > Standardmäßig verwendet das Importtool den Verbindungsmodus DirectTcp. Wenn Firewallprobleme auftreten, wechseln Sie zum Gatewaymodus, da dieser nur Port 443 erfordert.
@@ -345,9 +320,9 @@ dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;Ac
 
 Die Importprogrammoption für HBase-Quellen können Sie zum Importieren von Daten aus einer HBase-Tabelle und optional zum Filtern der Daten verwenden. Mehrere Vorlagen werden für einen einfachen Import bereitgestellt.
 
-:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="Screenshot der Optionen für HBase-Quellen":::
+:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
-:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="Screenshot der Optionen für HBase-Quellen":::
+:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Das Format der Verbindungszeichenfolge „HBase Stargate“ lautet:
 
@@ -366,7 +341,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 Mit dem Azure Cosmos DB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte Azure Cosmos DB-Prozedur verwenden. Das Tool unterstützt den Import in einen Azure Cosmos-Container mit einer einzelnen Partition. Das Tool unterstützt auch den Shardimport, bei dem Daten über mehrere Azure Cosmos-Container mit einer einzelnen Partition hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partition-data.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und anschließend aus den Zielsammlungen gelöscht.  
 
-:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Screenshot der Optionen für Azure Cosmos DB-Massenvorgänge":::
+:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Die Azure Cosmos DB-Verbindungszeichenfolge weist folgendes Format auf:
 
@@ -396,11 +371,11 @@ Optional können Sie angeben, welches Feld in der Importquelle während des Impo
 
 Während des Imports steht eine Reihe von erweiterten Optionen zur Verfügung. Erstens: Zwar enthält das Tool eine standardmäßige gespeicherte Prozedur für den Massenimport (BulkInsert.js), Sie können jedoch auch eine eigene gespeicherte Prozedur für den Import angeben.
 
- :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="Screenshot der Azure Cosmos DB-Option zum Masseneinfügen mit gespeicherten Prozeduren":::
+ :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Darüber hinaus können Sie beim Importieren von Datentypen (beispielsweise aus SQL Server oder MongoDB) zwischen drei Importoptionen wählen:
 
- :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Screenshot der Optionen für den Azure Cosmos DB-Import von Datum und Uhrzeit":::
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 * Zeichenfolge: Als Zeichenfolgenwert beibehalten
 * Epoche: Als numerischen Epochenwert beibehalten
@@ -416,7 +391,7 @@ Das Azure Cosmos DB-Massenimportprogramm weist die folgenden erweiterten Optione
 6. Wiederholungsintervall: Gibt an, wie lange bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
 7. Verbindungsmodus: Gibt den Verbindungsmodus an, der mit Azure Cosmos DB verwendet werden soll. Verfügbare Optionen sind DirectTcp, DirectHttps und Gateway. Die Direktverbindungsmodi sind schneller, der Gatewaymodus ist besser für Firewalls geeignet, da nur Port 443 verwendet wird.
 
-:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="Screenshot der erweiterten Optionen für den Azure Cosmos DB-Massenimport":::
+:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 > [!TIP]
 > Standardmäßig verwendet das Importtool den Verbindungsmodus DirectTcp. Wenn Firewallprobleme auftreten, wechseln Sie zum Gatewaymodus, da dieser nur Port 443 erfordert.
@@ -425,7 +400,7 @@ Das Azure Cosmos DB-Massenimportprogramm weist die folgenden erweiterten Optione
 
 Mit dem Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen können Sie Datensätze einzeln aus einer verfügbaren Quelloption importieren. Sie können diese Option auswählen, wenn Sie Datensätze in eine vorhandene Sammlung importieren, die das Kontingent an gespeicherten Prozeduren erreicht hat. Das Tool unterstützt den Import in einen einzelnen Azure Cosmos-Container (mit einer Partition und mit mehreren Partitionen). Das Tool unterstützt auch den Shardimport, bei dem Daten über mehrere Azure Cosmos-Container mit einer einzelnen Partition oder mehreren Partitionen hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partition-data.md).
 
-:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Screenshot der Optionen für den sequenziellen Azure Cosmos DB-Datensatzimport":::
+:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Die Azure Cosmos DB-Verbindungszeichenfolge weist folgendes Format auf:
 
@@ -455,7 +430,7 @@ Optional können Sie angeben, welches Feld in der Importquelle während des Impo
 
 Während des Imports steht eine Reihe von erweiterten Optionen zur Verfügung. Beim Importieren von Datentypen (beispielsweise aus SQL Server oder MongoDB) können Sie zunächst zwischen drei Importoptionen wählen:
 
- :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Screenshot der Optionen für den Azure Cosmos DB-Import von Datum und Uhrzeit":::
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 * Zeichenfolge: Als Zeichenfolgenwert beibehalten
 * Epoche: Als numerischen Epochenwert beibehalten
@@ -470,7 +445,7 @@ Das Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen weis
 5. Wiederholungsintervall: Gibt an, wie lange bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
 6. Verbindungsmodus: Gibt den Verbindungsmodus an, der mit Azure Cosmos DB verwendet werden soll. Verfügbare Optionen sind DirectTcp, DirectHttps und Gateway. Die Direktverbindungsmodi sind schneller, der Gatewaymodus ist besser für Firewalls geeignet, da nur Port 443 verwendet wird.
 
-:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="Screenshot der erweiterten Optionen für den sequenziellen Azure Cosmos DB-Datensatzimport":::
+:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 > [!TIP]
 > Standardmäßig verwendet das Importtool den Verbindungsmodus DirectTcp. Wenn Firewallprobleme auftreten, wechseln Sie zum Gatewaymodus, da dieser nur Port 443 erfordert.
@@ -479,7 +454,7 @@ Das Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen weis
 
 Wenn Sie zulassen, dass das Migrationstool während des Imports Azure Cosmos DB-SQL-API-Sammlungen erstellt, können Sie die Indizierungsrichtlinie der Sammlungen angeben. Navigieren Sie in den erweiterten Optionen für den Azure Cosmos DB-Massenimport und den sequenziellen Azure Cosmos DB-Datensatzimport zum Abschnitt zur Indizierungsrichtlinie.
 
-:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="Screenshot der erweiterten Optionen für die Azure Cosmos DB-Indizierungsrichtlinie":::
+:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 Mit der erweiterten Option der Indizierungsrichtlinie können Sie eine Indizierungsrichtliniendatei auswählen, manuell eine Indizierungsdatei eingeben oder aus einer Reihe von Standardvorlagen wählen (durch Rechtsklick auf das Textfeld der Indizierungsrichtlinie).
 
@@ -488,7 +463,7 @@ Das Tool bietet folgende Richtlinienvorlagen:
 * Standard. Diese Richtlinie empfiehlt sich, wenn Sie Gleichheitsabfragen für Zeichenfolgen ausführen. Sie funktioniert auch bei ORDER BY-, Bereichs- und Gleichheitsabfragen für Zahlen. Der Indexspeicheraufwand dieser Richtlinie ist geringer als bei „Bereich“.
 * Bereich. Verwenden Sie diese Richtlinie, wenn Sie ORDER BY-, Bereichs- und Gleichheitsabfragen für Zahlen und Zeichenfolgen ausführen. Der Indexspeicheraufwand dieser Richtlinie ist höher als bei „Standard“ oder „Hash“.
 
-:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="Screenshot der erweiterten Optionen für die Azure Cosmos DB-Indizierungsrichtlinie":::
+:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 > [!NOTE]
 > Wenn Sie keine Indizierungsrichtlinie angeben, wird die Standardrichtlinie verwendet. Weitere Informationen zu den Indizierungsrichtlinien finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](index-policy.md).
@@ -497,43 +472,9 @@ Das Tool bietet folgende Richtlinienvorlagen:
 
 Mit dem Azure Cosmos DB-JSON-Exportprogramm können Sie alle verfügbaren Quelloptionen in eine JSON-Datei exportieren, die ein Array von JSON-Dokumenten enthält. Das Tool verarbeitet den Export für Sie. Alternativ können Sie den resultierenden Migrationsbefehl anzeigen und den Befehl selbst ausführen. Die generierte JSON-Datei kann lokal oder in Azure Blob Storage gespeichert werden.
 
-:::image type="content" source="./media/import-data/jsontarget.png" alt-text="Screenshot der Option zum Erstellen lokaler Azure Cosmos DB JSON-Dateiexporte":::
+:::image type="content" source="./media/import-data/jsontarget.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
-:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="Screenshot der Option zum Erstellen von Azure Cosmos DB JSON Azure Blob Storage-Exporten":::
-
-Optional können Sie die generierte JSON-Datei optimieren. Dadurch wird die Größe des resultierenden Dokuments reduziert und die Lesbarkeit der Inhalte verbessert.
-
-* Standardmäßiger JSON-Export
-
-  ```JSON
-  [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
-  ```
-
-* Optimierter JSON-Export
-
-  ```JSON
-    [
-     {
-    "id": "Sample",
-    "Title": "About Paris",
-    "Language": {
-      "Name": "English"
-    },
-    "Author": {
-      "Name": "Don",
-      "Location": {
-        "City": "Paris",
-        "Country": "France"
-      }
-    },
-    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.",
-    "PageViews": 10000,
-    "Topics": [
-      {
-        "Title": "History of Paris"
-      },
-      {
-        "Title": "Places to see in Paris"
+:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools"
       }
     ]
     }]
@@ -556,23 +497,23 @@ Geben Sie auf dem Bildschirm "Erweiterte Konfiguration" den Speicherort der Prot
 3. Wenn Sie eine vorhandene Datei auswählen, wird die Datei überschrieben. Eine Option zum Anfügen ist nicht verfügbar.
 4. Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen protokolliert werden sollen. Entscheiden Sie zum Schluss, wie häufig der Fortschritt in der Bildschirmmeldung zur Übertragung aktualisiert werden soll.
 
-   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="Screenshot des Bildschirms für die erweiterte Konfiguration":::
+   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>Bestätigen der Importeinstellungen und Anzeigen der Befehlszeile
 
 1. Nachdem Sie die Quell- und Zielinformationen sowie die erweiterte Konfiguration angegeben haben, überprüfen Sie die Migrationszusammenfassung, und zeigen Sie ggf. den resultierenden Migrationsbefehl an, oder kopieren Sie den Befehl. (Das Kopieren des Befehls ist hilfreich, wenn Sie Importvorgänge automatisieren möchten.)
 
-    :::image type="content" source="./media/import-data/summary.png" alt-text="Screenshot des Übersichtsbildschirms":::
+    :::image type="content" source="./media/import-data/summary.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
-    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="Screenshot des Übersichtsbildschirms":::
+    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 2. Wenn Sie die Quell- und Zieloptionen zu Ihrer Zufriedenheit eingerichtet haben, klicken Sie auf **Importieren**. Während des Importvorgangs werden die verstrichene Zeit, die Anzahl von Übertragungen sowie Fehlerinformationen (sofern Sie in der erweiterten Konfiguration keinen Dateinamen angegeben haben) aktualisiert. Nach Abschluss des Vorgangs können Sie die Ergebnisse exportieren (um beispielsweise Importfehler zu behandeln).
 
-    :::image type="content" source="./media/import-data/viewresults.png" alt-text="Screenshot der Option zum Erstellen von Azure Cosmos DB JSON-Exporten":::
+    :::image type="content" source="./media/import-data/viewresults.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 3. Sie können auch einen neuen Import starten, indem Sie entweder alle Werte zurücksetzen oder die vorhandenen Einstellungen beibehalten. (Sie können beispielsweise die Informationen zur Verbindungszeichenfolge, die Auswahl von Quelle und Ziel usw. beibehalten.)
 
-    :::image type="content" source="./media/import-data/newimport.png" alt-text="Screenshot der Option zum Erstellen von Azure Cosmos DB JSON-Exporten":::
+    :::image type="content" source="./media/import-data/newimport.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

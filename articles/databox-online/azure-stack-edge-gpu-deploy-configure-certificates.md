@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903225"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446323"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren von Zertifikaten für Ihr Azure Stack Edge Pro-Gerät mit GPU
 
@@ -51,11 +51,11 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
     - Wenn Sie den Gerätenamen oder die DNS-Domäne geändert haben, wird als Status der Zertifikate **Nicht gültig** angezeigt. 
 
-        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         Wählen Sie ein Zertifikat aus, um die Statusdetails anzuzeigen.
 
-        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         Der Grund dafür ist, dass die Zertifikate nicht den aktualisierten Gerätenamen oder die aktualisierte DNS-Domäne aufweisen (diese werden für „Antragstellername“ und „Alternativer Antragstellername“ verwendet). Wählen Sie zur erfolgreichen Aktivierung Ihres Geräts eine der folgenden Optionen aus: 
     
@@ -108,11 +108,11 @@ Führen Sie diese Schritte aus, um die Azure Stack Edge Pro-Gerätezertifikate n
 
 4. Wählen Sie den Downloadlink für ein Zertifikat aus, und speichern Sie das Zertifikat bei Aufforderung. 
 
-    ![Zertifikat generieren und herunterladen 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![Zertifikat generieren und herunterladen 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. Wiederholen Sie diesen Vorgang für alle Zertifikate, die Sie herunterladen möchten. 
     
-    ![Zertifikat generieren und herunterladen 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![Zertifikat generieren und herunterladen 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     Die vom Gerät generierten Zertifikate werden als DER-Zertifikate im folgendem Namensformat gespeichert: 
 
@@ -135,31 +135,31 @@ Befolgen Sie diese Schritte, um Ihre eigenen Zertifikate einschließlich Signatu
 
 1. Um ein Zertifikat hochzuladen, wählen Sie auf der Seite **Zertifikat** die Option **+ Zertifikat hinzufügen** aus.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. Laden Sie zuerst die Signaturkette hoch, und wählen Sie **Überprüfen und hinzufügen** aus.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. Jetzt können Sie andere Zertifikate hochladen. Sie können z. B. die Zertifikate für Azure Resource Manager- und Blob Storage-Endpunkte hochladen.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     Sie können auch das Zertifikat der lokalen Webbenutzeroberfläche hochladen. Nachdem Sie dieses Zertifikat hochgeladen haben, müssen Sie den Browser starten und den Cache leeren. Sie müssen dann eine Verbindung mit der lokalen Webbenutzeroberfläche des Geräts herstellen.  
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     Sie können auch das Knotenzertifikat hochladen.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     Sie können jederzeit ein Zertifikat auswählen und die Details anzeigen, um sicherzustellen, dass die Informationen mit Ihrem hochgeladenen Zertifikat übereinstimmen.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     Die Seite „Zertifikate“ muss aktualisiert werden, um die neu hinzugefügten Zertifikate widerzuspiegeln.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche 10](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > Mit Ausnahme der öffentlichen Azure-Cloud sind für alle Cloudkonfigurationen (Azure Government oder Azure Stack) Signaturkettenzertifikate erforderlich, die vor der Aktivierung bereitgestellt werden müssen.

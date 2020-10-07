@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Verwaltungseinheiten (Vorschau) – Azure AD | Microsoft-Dokumentation
+title: Verwaltungseinheiten in Azure Active Directory | Microsoft-Dokumentation
 description: Verwenden von Verwaltungseinheiten zum präziseren Delegieren von Berechtigungen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376382"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447915"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory (Vorschau)
+# <a name="administrative-units-in-azure-active-directory"></a>Verwaltungseinheiten in Azure Active Directory
 
-In diesem Artikel werden Verwaltungseinheiten in Azure Active Directory (Azure AD) beschrieben. Eine Verwaltungseinheit ist eine Azure AD Ressource, bei der es sich um einen Container für andere Azure AD Ressourcen handeln kann. In dieser Vorschauversion kann eine Verwaltungseinheit nur Benutzer und Gruppen enthalten.
+In diesem Artikel werden Verwaltungseinheiten in Azure Active Directory (Azure AD) beschrieben. Eine Verwaltungseinheit ist eine Azure AD Ressource, bei der es sich um einen Container für andere Azure AD Ressourcen handeln kann. Eine Verwaltungseinheit kann nur Benutzer und Gruppen enthalten.
 
 Verwaltungseinheiten ermöglichen es Ihnen, Administratorberechtigungen zu erteilen, die auf eine von Ihnen definierte Abteilung, Region oder ein anderes Segment Ihrer Organisation beschränkt sind. Mithilfe von Verwaltungseinheiten können Sie Berechtigungen an regionale Administratoren delegieren oder Richtlinien auf granularer Ebene festlegen. Beispielsweise kann ein Benutzerkontoadministrator nur in seiner Verwaltungseinheit Profilinformationen aktualisieren, Kennwörter zurücksetzen und Benutzern Lizenzen zuweisen.
 
@@ -44,11 +44,11 @@ Bei der Verwendung von Verwaltungseinheiten ist für jeden Administrator einer V
 
 ## <a name="manage-administrative-units"></a>Verwalten von Verwaltungseinheiten
 
-In dieser Vorschauversion können Sie Verwaltungseinheiten im Azure-Portal, mithilfe von PowerShell-Cmdlets oder mit Microsoft Graph verwalten. Ausführliche Informationen finden Sie in unserer Dokumentation:
+Sie können Verwaltungseinheiten im Azure-Portal, mithilfe von PowerShell-Cmdlets und -Skripts oder mit Microsoft Graph verwalten. Ausführliche Informationen finden Sie in unserer Dokumentation:
 
 - [Erstellen, Entfernen, Auffüllen und Hinzufügen von Rollen zu Verwaltungseinheiten](roles-admin-units-manage.md): Umfassende schrittweise Anleitungen
-- [Arbeiten mit Verwaltungseinheiten](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): Arbeiten mit Verwaltungseinheiten mithilfe von PowerShell
-- [Unterstützung von Verwaltungseinheiten in Microsoft Graph](/graph/api/resources/administrativeunit?view=graph-rest-beta): Ausführliche Dokumentation zu Verwaltungseinheiten in Microsoft Graph.
+- [Arbeiten mit Verwaltungseinheiten](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): Arbeiten mit Verwaltungseinheiten mithilfe von PowerShell
+- [Unterstützung von Verwaltungseinheiten in Microsoft Graph](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): Ausführliche Dokumentation zu Verwaltungseinheiten in Microsoft Graph.
 
 ### <a name="planning-your-administrative-units"></a>Planen Ihrer Verwaltungseinheiten
 
@@ -95,9 +95,6 @@ Berechtigungen |   MS Graph/PowerShell   | Azure AD-Portal | Microsoft 365 Admin
 Auf den Bereich der Verwaltungseinheit bezogene Verwaltung von Gruppeneigenschaften und Gruppenmitgliedern     |  Unterstützt   |    Unterstützt    |  Nicht unterstützt
 Auf den Bereich der Verwaltungseinheit bezogene Verwaltung der Gruppenlizenzierung   |    Unterstützt  |    Unterstützt   |   Nicht unterstützt
 
-> [!NOTE]
->
-> Auf den Bereich der Verwaltungseinheit bezogene Administratoren können keine Regeln für dynamische Gruppenmitgliedschaften verwalten.
 
 Der mithilfe von Verwaltungseinheiten angewendete Bereich gilt nur für Verwaltungsberechtigungen. Verwaltungseinheiten verhindern nicht, dass Mitglieder oder Administratoren ihre [Standardbenutzerberechtigungen](../fundamentals/users-default-permissions.md) verwenden, um zu anderen Benutzern, Gruppen oder Ressourcen außerhalb der Verwaltungseinheit zu navigieren. In Microsoft 365 Admin Center werden Benutzer außerhalb der Verwaltungseinheiten eines bereichsbezogenen Administrators zwar herausgefiltert, können aber zu anderen Benutzern im Azure AD-Portal, in PowerShell und in anderen Microsoft-Diensten navigieren.
 

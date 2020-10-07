@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 34257281470f051f3d385aa729ca5a4f3591e61c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322681"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Python-Beispiele für Azure Cosmos DB
 
@@ -22,6 +22,7 @@ ms.locfileid: "88586249"
 > * [.NET V2 SDK-Beispiele](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK-Beispiele](sql-api-dotnet-v3sdk-samples.md)
 > * [Java v4 SDK-Beispiele](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK-Beispiele](sql-api-spring-data-sdk-samples.md)
 > * [Node.js-Beispiele](sql-api-nodejs-samples.md)
 > * [Python-Beispiele](sql-api-python-samples.md)
 > * [Katalog mit Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

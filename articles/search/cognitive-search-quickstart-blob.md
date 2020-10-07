@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300033"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396789"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal
 
@@ -50,7 +50,7 @@ In den folgenden Schritten richten Sie einen Blobcontainer in Azure Storage ein,
 
 1. Klicken Sie im Container auf **Hochladen**, um die im ersten Schritt heruntergeladenen Beispieldateien hochzuladen. Ihnen steht ein breites Spektrum an Inhaltstypen zur Verfügung – einschließlich Bild- und Anwendungsdateien, die in ihrem nativen Format nicht für die Volltextsuche geeignet sind.
 
-   ![Quelldateien in Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 Nun können Sie zum Datenimport-Assistenten wechseln.
 
@@ -60,13 +60,13 @@ Nun können Sie zum Datenimport-Assistenten wechseln.
 
 1. [Navigieren Sie zu Ihrem Suchdienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), und klicken Sie auf der Seite „Übersicht“ auf der Befehlsleiste auf **Daten importieren**, um die kognitive Anreicherung in vier Schritten einzurichten.
 
-   ![Befehl zum Importieren von Daten](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
 
 1. Wählen Sie unter **Verbindung mit Ihren Daten herstellen** die Option **Azure Blob Storage** sowie das erstellte Storage-Konto und den erstellten Container aus. Geben Sie der Datenquelle einen Namen, und verwenden Sie für alles andere die Standardwerte. 
 
-   ![Azure-Blobkonfiguration](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
     Wechseln Sie zur nächsten Seite.
 
@@ -76,7 +76,7 @@ Konfigurieren Sie als nächstes die KI-Anreicherung, um OCR, Bildanalyse und Ver
 
 1. In dieser Schnellstartanleitung verwenden wir die Cognitive Services-Ressource vom Typ **Free**. Die Beispieldaten umfassen 14 Dateien. Das kostenlose Kontingent von 20 Transaktionen für Cognitive Services ist somit für diese Schnellstartanleitung ausreichend. 
 
-   ![Anfügen von Cognitive Services: Anfügen eines Basisdiensts](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 1. Erweitern Sie **Anreicherungen hinzufügen**, und wählen Sie vier Auswahlmöglichkeiten. 
 
@@ -86,7 +86,7 @@ Konfigurieren Sie als nächstes die KI-Anreicherung, um OCR, Bildanalyse und Ver
 
    Wählen Sie die Entitätserkennung (Personen, Organisationen, Orte) und Bildanalysequalifikationen aus.
 
-   ![Anfügen von Cognitive Services: Auswählen von Diensten für das Skillset](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
    Wechseln Sie zur nächsten Seite.
 
@@ -102,7 +102,7 @@ Für diesen Schnellstart legt der Assistent sinnvolle Standardwerte fest:
 
 + Standardattribute sind **Abrufbar** und **Durchsuchbar**. **Durchsuchbar** ermöglicht die Volltextsuche in einem Feld. **Abrufbar** bedeutet, dass Feldwerte in Ergebnissen zurückgegeben werden können. Der Assistent geht davon aus, dass diese Felder abrufbar und durchsuchbar sein sollen, da Sie sie über eine Qualifikationsgruppe erstellt haben.
 
-  ![Indexfelder](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 Beachten Sie, dass das Attribut **Abrufbar** für das Feld `content` durchgestrichen und mit einem Fragezeichen versehen ist. Bei textlastigen Blobdokumenten enthält das Feld `content` den Großteil der Datei, der mehrere tausende Zeilen umfassen kann. Ein solches Feld ist in den Suchergebnissen unpraktisch und sollte für diese Demo ausgeschlossen werden. 
 
@@ -118,7 +118,7 @@ Der Indexer ist eine allgemeine Ressource, die den Indizierungsvorgang antreibt.
 
 1. Auf der Seite **Indexer** können Sie den Standardnamen übernehmen und auf die Zeitplanoption **Einmal** klicken, um ihn sofort auszuführen. 
 
-   ![Indexerdefinition](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 1. Klicken Sie auf **Senden**, um den Indexer zu erstellen und gleichzeitig auszuführen.
 
@@ -126,7 +126,7 @@ Der Indexer ist eine allgemeine Ressource, die den Indizierungsvorgang antreibt.
 
 Die Indizierung kognitiver Qualifikationen dauert länger als die übliche textbasierte Indizierung. Dies gilt insbesondere für OCR und Bildanalyse. Navigieren Sie zum Überwachen des Fortschritts zur Übersichtsseite, und klicken Sie in der Mitte der Seite auf **Indexer**.
 
-  ![Azure Cognitive Search-Benachrichtigung](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 Warnungen sind hinsichtlich der umfangreichen Spanne von Inhaltstypen normal. Einige Inhaltstypen sind für bestimmte Skills ungültig, und bei niedrigeren Tarifen gelten üblicherweise [Grenzwerte für Indexer](search-limits-quotas-capacity.md#indexer-limits). Beispielsweise treten im Free-Tarif Benachrichtigungen über Kürzungen auf den Indexergrenzwert von 32.000 Zeichen auf. Bei Ausführung dieser Demo auf einer höheren Ebene würden viele Kürzungswarnungen wegfallen.
 
@@ -134,11 +134,11 @@ Um Warnungen oder Fehler zu überprüfen, klicken Sie in der Liste „Indexer“
 
 Klicken Sie auf dieser Seite erneut auf den Status „Warnung“, um die Liste der Warnungen anzuzeigen, die der unten gezeigten ähneln. 
 
-  ![Indexerwarnungsliste](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 Wenn Sie auf eine bestimmte Statuszeile klicken, werden Details angezeigt. Diese Warnung besagt, dass die Zusammenführung nach Erreichen eines maximalen Schwellenwerts beendet wurde (diese spezielle PDF-Datei ist groß).
 
-  ![Warnungsdetails](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Abfragen im Suchexplorer
 
@@ -157,7 +157,7 @@ Die Ergebnisse werden im JSON-Format zurückgegeben, was sehr ausführlich und s
 
 Bei Abfragezeichenfolgen wird die Groß-/Kleinschreibung beachtet. Wenn Sie also eine Meldung „Unbekanntes Feld“ erhalten, überprüfen Sie **Felder** oder **Indexdefinition (JSON)** , um Name und Schreibweise zu überprüfen. 
 
-  ![Suchexplorer-Beispiel](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Quelldateien in Azure Blob Storage" border="false":::
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 

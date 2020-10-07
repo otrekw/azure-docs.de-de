@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 45c9625f0a762a0879473cc64c38d791c804d087
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642179"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530662"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Schnellstart: Erstellen eines Apache HBase-Clusters in Azure HDInsight mithilfe einer ARM-Vorlage
 
@@ -48,7 +48,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
 1. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Subscription|Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
     |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
@@ -73,7 +73,7 @@ Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster lösch
 
 Navigieren Sie im Azure-Portal zu Ihrem Cluster, und wählen Sie **Löschen** aus.
 
-![Resource Manager-Vorlage: HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
+![Screenshot eines HDInsight-Clusters mit der zu löschenden Ressourcengruppe](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight-Cluster als auch das Standardspeicherkonto.
 

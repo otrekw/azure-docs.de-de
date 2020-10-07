@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 19bf43cfd305e74aadaf16dddc7bce318e193c84
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: f08b7a49d961c3408af6e5360344bdf500a8ac07
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640241"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542324"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Schnellstart: Erstellen eines Interactive Query-Clusters in Azure HDInsight mit einer ARM-Vorlage
 
@@ -73,7 +73,7 @@ Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster lösch
 
 Navigieren Sie im Azure-Portal zu Ihrem Cluster, und wählen Sie **Löschen** aus.
 
-![Resource Manager-Vorlage: HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
+![Screenshot mit einem HD Insight-Cluster mit der zu löschenden Ressourcengruppe](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight-Cluster als auch das Standardspeicherkonto.
 

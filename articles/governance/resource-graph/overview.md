@@ -3,12 +3,12 @@ title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
 ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798532"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531682"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -59,7 +59,7 @@ Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwend
 
 ## <a name="permissions-in-azure-resource-graph"></a>Berechtigungen in Azure Resource Graph
 
-Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte für die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) und mindestens über Lesezugriff auf die abzufragenden Ressourcen verfügen. Wenn Sie nicht mindestens `read`-Berechtigungen für das Azure-Objekt bzw. die Objektgruppe haben, werden keine Ergebnisse zurückgegeben.
+Um Resource Graph verwenden zu können, müssen Sie über die entsprechenden Rechte für die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md) und mindestens über Lesezugriff auf die abzufragenden Ressourcen verfügen. Wenn Sie nicht mindestens `read`-Berechtigungen für das Azure-Objekt bzw. die Objektgruppe haben, werden keine Ergebnisse zurückgegeben.
 
 > [!NOTE]
 > Ressource Graph verwendet die Abonnements, die für einen Prinzipal während der Anmeldung verfügbar sind. Um Ressourcen eines neuen Abonnements anzuzeigen, die während einer aktiven Sitzung hinzugefügt wurden, muss der Prinzipal den Kontext aktualisieren. Diese Aktion erfolgt nach dem Abmelden und erneuten Anmelden automatisch.

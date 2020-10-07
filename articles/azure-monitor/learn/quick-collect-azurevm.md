@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067548"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448262"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor
 
@@ -87,7 +87,7 @@ Azure Monitor kann Ereignisse aus den Windows-Ereignisprotokollen oder Linux-Sys
 
 7. Wenn Sie die Windows-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.
 
-    ![Standardmäßige Windows-Leistungsindikatoren ausgewählt](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![Screenshot des Bereichs „Windows-Leistungsindikatoren“ mit einer Liste ausgewählter Indikatoren und der ausgewählten Schaltfläche „Ausgewählte Leistungsindikatoren hinzufügen“](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     Wählen Sie **Ausgewählte Leistungsindikatoren hinzufügen** aus.  Sie werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.
   
@@ -107,7 +107,7 @@ Azure Monitor kann Ereignisse aus den Windows-Ereignisprotokollen oder Linux-Sys
 
 6. Wenn Sie die Linux-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.
 
-    ![Standardmäßige Windows-Leistungsindikatoren ausgewählt](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![Screenshot des Bereichs „Linux-Leistungsindikatoren“ mit einer Liste ausgewählter Indikatoren und der ausgewählten Schaltfläche „Ausgewählte Leistungsindikatoren hinzufügen“](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Wählen Sie **Nachstehende Konfiguration auf meine Computer anwenden**  und dann **Ausgewählte Leistungsindikatoren hinzufügen** aus.  Sie werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.  
 

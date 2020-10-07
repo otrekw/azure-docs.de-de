@@ -1,19 +1,19 @@
 ---
-title: PowerShell-Skript zum Ändern der Failoverpriorität für ein Azure Cosmos-Konto mit einem Master
-description: 'Azure PowerShell-Skriptbeispiel: Ändern der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos DB-Konto mit einem Master'
+title: PowerShell-Skript zum Ändern der Failoverpriorität für ein Azure Cosmos-Konto mit einer einzelnen Schreibregion
+description: 'Azure PowerShell-Skriptbeispiel: Ändern der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos-Konto mit einer einzelnen Schreibregion'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 07561de8236a06a3ac34aa8867a07890aaf0656f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505267"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570590"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Ändern der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos DB-Konto mit einem Master mithilfe von PowerShell
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>Ändern der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos-Konto mit einer einzelnen Schreibregion mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

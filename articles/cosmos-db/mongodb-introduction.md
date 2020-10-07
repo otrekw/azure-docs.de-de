@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 81fceb210981e5755bcdd8e241b381d161d4f637
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299846"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570209"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
@@ -36,7 +36,7 @@ Die mithilfe der Azure Cosmos DB-API für MongoDB erstellten neuen Konten sind s
 * Aufrechterhalten der Portierbarkeit und Unabhängigkeit von Cloudanbietern Ihrer Anwendung.
 * Verfügbarkeit von branchenführenden, finanziell abgesicherten SLAs für die gängigen NoSQL-APIs, die von Cosmos DB unterstützt werden.
 * Elastischen Skalieren des bereitgestellten Durchsatzes und Speichers für Ihre Cosmos-Datenbanken basierend auf Ihrem Bedarf. Sie zahlen nur für den benötigten Durchsatz und Speicher. Dies führt zu erheblichen Kosteneinsparungen.
-* Umfassende und sofort verfügbare globale Verteilung mit Multimasterreplikation.
+* Globale, sofort einsatzbereite Verteilung mit Replikation von Schreibvorgängen in mehreren Regionen.
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 

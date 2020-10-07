@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/20/2020
+ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 4f61dcfa37547fe46a582a4a7ebb28ac68fe6c74
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8910983ea5946c88d3d560c0cf0a321f8bd2c4ab
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308677"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569973"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL-API: Java SDK v4-Beispiele
 
@@ -21,6 +21,7 @@ ms.locfileid: "87308677"
 > * [.NET V2 SDK-Beispiele](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK-Beispiele](sql-api-dotnet-v3sdk-samples.md)
 > * [Java v4 SDK-Beispiele](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK-Beispiele](sql-api-spring-data-sdk-samples.md)
 > * [Node.js-Beispiele](sql-api-nodejs-samples.md)
 > * [Python-Beispiele](sql-api-python-samples.md)
 > * [Katalog mit Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -75,7 +76,7 @@ Sie können die Beispiele entweder in einer IDE (Eclipse, IntelliJ oder VSCODE) 
 Diese Umgebungsvariablen müssen festgelegt sein,
 
 ```
-ACCOUNT_HOST=your account hostname;ACCOUNT_KEY=your account master key
+ACCOUNT_HOST=your account hostname;ACCOUNT_KEY=your account primary key
 ```
 
 um den Beispielen Lese-/Schreibzugriff auf Ihr Konto zu gewähren.

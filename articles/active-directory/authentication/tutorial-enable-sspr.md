@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399972"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530730"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
@@ -116,7 +116,7 @@ Wenn Benutzer zusätzliche Hilfe beim SSPR-Prozess benötigen, können Sie den L
 Wenn SSPR aktiviert und konfiguriert ist, testen Sie den SSPR-Prozess mit einem Benutzer aus der Gruppe, die Sie im vorherigen Abschnitt ausgewählt haben, etwa *Test-SSPR-Group*. Im folgenden Beispiel wird das Konto *testuser* verwendet. Geben Sie ein eigenes Benutzerkonto an, das Teil der Gruppe ist, für die Sie im ersten Abschnitt dieses Tutorials SSPR aktiviert haben.
 
 > [!NOTE]
-> Wenn Sie die Self-Service-Kennwortzurücksetzung testen, verwenden Sie ein Konto ohne Administratorrechte. Administratoren können die Self-Service-Kennwortzurücksetzung immer durchführen und müssen zum Zurücksetzen ihres Kennworts zwei Authentifizierungsverfahren verwenden.
+> Wenn Sie die Self-Service-Kennwortzurücksetzung testen, verwenden Sie ein Konto ohne Administratorrechte. Standardmäßig ist für Administratoren die Self-Service-Kennwortzurücksetzung aktiviert, und sie müssen zum Zurücksetzen ihres Kennworts zwei Authentifizierungsverfahren verwenden. Weitere Informationen finden Sie unter [Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 1. Wenn Sie den manuellen Registrierungsvorgang anzeigen möchten, öffnen Sie ein neues Browserfenster im InPrivate- oder Inkognitomodus, und navigieren Sie zu [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Benutzer sollten bei der nächsten Anmeldung zu diesem Registrierungsportal weitergeleitet werden.
 1. Melden Sie sich als Testbenutzer ohne Administratorrechte an, z. B. *testuser*, und registrieren Sie Ihre Kontaktinformationen für die Authentifizierungsmethoden.

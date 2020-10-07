@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531864"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569764"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen des Azure Front Door-Regelmoduls
 
 Im [AFD-Regelmodul](front-door-rules-engine.md) besteht eine Regel aus null oder mehr Übereinstimmungsbedingungen und einer Aktion. Dieser Artikel enthält detaillierte Beschreibungen der Übereinstimmungsbedingungen, die Sie im AFD-Regelmodul verwenden können.
 
-Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. Eine Regel kann aus bis zu 10 Übereinstimmungsbedingungen bestehen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert. Für alle Übereinstimmungsbedingungen, die mehrere Werte unterstützen (unten als „durch Leerzeichen getrennt“ angegeben), wird der Operator „ODER“ angenommen.
+Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. Eine Regel kann aus bis zu 10 Übereinstimmungsbedingungen bestehen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert. Für alle Übereinstimmungsbedingungen, die mehrere Werte unterstützen (als „durch Leerzeichen getrennt“ angegeben), wird der Operator „ODER“ angenommen.
 
 Sie können eine Übereinstimmungsbedingung z.B. für Folgendes verwenden:
 
@@ -84,7 +84,7 @@ Keine IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
   - **IPv6-Beispiel:** *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* entspricht allen Anforderungen, die von einer der Adressen 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80 eingehen.
 - Die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel:
   - **IPv4-Beispiel:** *5.5.5.64/26* entspricht allen Anforderungen, die von den Adressen 5.5.5.64 bis 5.5.5.127 eingehen.
-  - **IPv6-Beispiel:** Die Angabe *1:2:3:/48* führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.
+  - **IPv6-Beispiel:** Die Angabe *1:2:3:/48* führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3: ffff:ffff:ffff:ffff:ffff.
 
 ## <a name="request-body"></a>Anforderungstext
 
@@ -204,11 +204,11 @@ Für Regeln, die Werte aus der Liste der Standardoperatoren akzeptieren, sind di
 - Nicht größer als
 - Nicht größer als oder gleich
 
-Für numerische Operatoren wie *Kleiner als* oder *Größer als oder gleich* basiert der verwendete Vergleich auf der Länge. In diesem Fall muss der Wert in der Übereinstimmungsbedingung eine ganze Zahl sein, die der Länge entspricht, die Sie vergleichen möchten. 
+Für numerische Operatoren wie *Kleiner als* oder *Größer als oder gleich* basiert der verwendete Vergleich auf der Länge. Der Wert in der Übereinstimmungsbedingung muss eine ganze Zahl sein, die der Länge entspricht, die Sie vergleichen möchten. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihre erste [Regelmodulkonfiguration](front-door-tutorial-rules-engine.md) einrichten. 
+- Erfahren Sie, wie Sie Ihr erstes [Regelmodul](front-door-tutorial-rules-engine.md) konfigurieren. 
 - Weitere Informationen zu [Regelmodulaktionen](front-door-rules-engine-actions.md)
 - Weitere Informationen zum [Azure Front Door-Regelmodul](front-door-rules-engine.md)

@@ -1,7 +1,7 @@
 ---
-title: Hinzufügen der Anmeldung zur Microsoft Identity Platform-ASP.NET-Web-App
+title: 'Tutorial: Erstellen einer ASP.NET-Web-App, die Microsoft Identity Platform für die Authentifizierung verwendet'
 titleSuffix: Microsoft identity platform
-description: Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Lösung mithilfe einer herkömmlichen webbrowserbasierten Anwendung und des OpenID Connect-Standards
+description: In diesem Tutorial erstellen Sie eine ASP.NET-Webanwendung, die Microsoft Identity Platform und die OWIN-Middleware verwendet, um die Benutzeranmeldung zu ermöglichen.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165582"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574227"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -25,10 +25,18 @@ Diese Anleitung veranschaulicht das Implementieren der Anmeldung bei Microsoft m
 
 Am Ende dieser Anleitung kann Ihre Anwendung Anmeldungen von persönlichen Konten (etwa outlook.com und live.com) akzeptieren. Darüber hinaus können sich Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen, die in Microsoft Identity Platform integriert wurden, bei Ihrer App anmelden.
 
-> Für diesen Leitfaden wird Microsoft Visual Studio 2019 benötigt.  Sie haben beides nicht?  Sie können Visual Studio 2019 [hier](https://www.visualstudio.com/downloads/) kostenlos herunterladen.
+Dieses Tutorial umfasst folgende Punkte:
 
->[!NOTE]
-> Wenn Sie mit Microsoft Identity Platform noch nicht vertraut sind, wird empfohlen, mit dem Schnellstart [Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md) zu beginnen.
+> [!div class="checklist"]
+> * Erstellen eines Projekts namens *ASP.NET-Webanwendung* in Visual Studio
+> * Hinzufügen der offenen Webschnittstelle für die .NET (OWIN)-Middlewarekomponenten
+> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
+> * Registrieren der App im Azure-Portal
+> * Testen der App
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) mit installierter Workload **ASP.NET und Webentwicklung**
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 
@@ -264,7 +272,7 @@ Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmeld
     ```
 
 ### <a name="more-information"></a>Weitere Informationen
-Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](./howto-add-branding-in-azure-ad-apps.md "Brandingrichtlinien").
+Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Schaltfläche „Anmelden mit Microsoft“](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](./howto-add-branding-in-azure-ad-apps.md "Brandingrichtlinien").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Hinzufügen eines Controllers zum Anzeigen von Ansprüchen des Benutzers
 Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, um einen Controller zu schützen. Dieses Attribut beschränkt den Zugriff auf den Controller, indem nur authentifizierte Benutzer zugelassen werden. Der folgende Code verwendet das Attribut zum Anzeigen von Benutzeransprüchen, die als Teil der Anmeldung abgerufen wurden:
@@ -392,7 +400,7 @@ Um Ihre Anwendung in Visual Studio zu testen, drücken Sie F5, um das Projekt au
 
 Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) oder ein persönliches Microsoft-Konto (<span>live.</span>com oder <span>outlook.</span>com).
 
-![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Schaltfläche „Anmelden mit Microsoft“ auf der Anmeldeseite im Browser](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -417,7 +425,7 @@ Um die Benutzeransprüche anzuzeigen, wählen Sie den Link zum Navigieren zur Co
 
 Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit den grundlegenden Eigenschaften des Benutzers sehen:
 
-|Eigenschaft |Wert |BESCHREIBUNG |
+|Eigenschaft |Wert |Beschreibung |
 |---|---|---|
 |**Name** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
 |**Benutzername** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername|
@@ -470,20 +478,11 @@ Sie können den Anmeldezugriff auf die Benutzerkonten beschränken, die in einer
 
 Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie im Artikel zur [TokenValidationParameters-Klasse](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters).
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie, wie Web-Apps Web-APIs anrufen können.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Informationen zum Erstellen der in diesem Schnellstart verwendeten Anwendung
-
-Informieren Sie sich ausführlicher über Web-Apps, die Web-APIs mit Microsoft Identity Platform aufrufen:
+Informieren Sie sich über das Aufrufen geschützter Web-APIs durch Web-Apps mit Microsoft Identity Platform:
 
 > [!div class="nextstepaction"]
 > [Aufrufen von Web-APIs durch Web-Apps](scenario-web-app-sign-user-overview.md)
-
-Lesen Sie, wie Sie Web-Apps erstellen, die Microsoft Graph aufrufen:
-
-> [!div class="nextstepaction"]
-> [Erstellen von ASP.NET-MVC-Apps mit Microsoft Graph](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

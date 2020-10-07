@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356348"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -46,7 +46,7 @@ Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Verwend
 1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Warten Sie, bis die Seite geladen wurde, und klicken Sie dann auf die Registerkarte **Automatisch skalieren**.
 2. Eine Liste der Ressourcen in Ihrem Abonnement, die die automatische Skalierung unterstützen, wird hier aufgeführt. Ermitteln Sie den App Service-Plan, der zuvor im Tutorial erstellt wurde, und klicken Sie darauf.
 
-    ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Screenshot des Azure-Portals mit nacheinander ausgewählten Optionen „Überwachen“ und „Automatisch skalieren“](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. Klicken Sie in der Einstellung für die automatische Skalierung auf die Schaltfläche **Automatische Skalierung aktivieren**.
 
@@ -59,7 +59,7 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm für die automat
 2. Vergewissern Sie sich im Standardprofil, dass der **Skalierungsmodus** auf „Auf eine bestimmte Anzahl von Instanzen skalieren“ festgelegt ist.
 3. Legen Sie die Anzahl der Instanzen auf **1** fest. Durch diese Einstellung wird sichergestellt, dass das die Anzahl der Instanzen im Standardprofil auf „1“ zurückgesetzt wird, wenn kein anderes Profil aktiv oder wirksam ist.
 
-   ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Screenshot der Seite mit der Einstellung für die Autoskalierung mit einem für die Einstellung eingegebenen Namen](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Erstellen eines Wiederholungsprofils

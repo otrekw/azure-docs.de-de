@@ -1,6 +1,7 @@
 ---
-title: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App | Azure
-description: Hier erfahren Sie, wie Sie „Bei Microsoft anmelden“ für eine ASP.NET-Web-App mit OpenID Connect implementieren.
+title: 'Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App | Azure'
+titleSuffix: Microsoft identity platform
+description: In diesem Schnellstart erfahren Sie, wie Sie „Mit Microsoft anmelden“ mit OpenID Connect in eine ASP.NET-Web-App implementieren.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,19 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
+ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691291"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576964"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App
 In diesem Schnellstart verwenden Sie ein Codebeispiel, um zu lernen, wie eine ASP. NET-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.  (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Voraussetzungen
+>
+> * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+> * [.NET Framework 4.7.2+](https://dotnet.microsoft.com/download/visual-studio-sdks)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
 > Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
 > * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -69,7 +76,7 @@ In diesem Schnellstart verwenden Sie ein Codebeispiel, um zu lernen, wie eine AS
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
-> Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert. 
+> Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert.
 
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Schritt 3: Ausführen Ihres Visual Studio-Projekts
@@ -114,7 +121,7 @@ Sie können die Authentifizierungspipeline mit cookiebasierter Authentifizierung
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb  
+Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="owin-startup-class"></a>OWIN-Startklasse
@@ -195,13 +202,11 @@ public void SignIn()
 
 Sie können einen Controller oder Controlleraktionen mithilfe des `[Authorize]`-Attributs schützen. Dieses Attribut schränkt den Zugriff auf den Controller oder die Aktionen ein, indem es nur authentifizierten Benutzern den Zugriff auf die Aktionen im Controller erlaubt. Dies bedeutet, dass die Authentifizierungsaufforderung automatisch erfolgt, wenn ein *nicht authentifizierter* Benutzer versucht, auf eine der Aktionen oder den Controller zuzugreifen, die mit dem Attribut `[Authorize]` versehen sind.
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Probieren Sie das ASP.NET-Tutorial aus, um eine vollständige Schritt-für-Schritt-Anleitung zum Erstellen von Anwendungen und neuen Features zu erhalten, einschließlich einer vollständigen Erläuterung dieses Schnellstarts.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Informieren Sie sich über die Schritte zum Erstellen der in diesem Schnellstart verwendeten Anwendung.
-
 > [!div class="nextstepaction"]
-> [Beim Tutorial anmelden](./tutorial-v2-asp-webapp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](tutorial-v2-asp-webapp.md)
