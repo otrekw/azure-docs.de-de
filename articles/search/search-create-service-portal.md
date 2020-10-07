@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268365"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741005"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -47,7 +47,7 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 
 1. Suchen Sie mithilfe der Suchleiste nach „kognitive Azure-Suche“, oder navigieren über **Web** > **Azure Cognitive Search** (Kognitive Azure-Suche) zu der Ressource.
 
-![Erstellen einer Ressource im Portal](./media/search-create-service-portal/find-search3.png "Erstellen einer Ressource im Portal")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 ## <a name="choose-a-subscription"></a>Wählen Sie ein Abonnement.
 
@@ -59,11 +59,11 @@ Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für Ihre Azur
 
 Wenn Sie keine Ressourcen in einer einzigen Gruppe kombinieren oder vorhandene Ressourcengruppen mit Ressourcen gefüllt sind, die in nicht verbundenen Lösungen verwendet werden, erstellen Sie eine neue Ressourcengruppe nur für die Ressource für die kognitive Azure-Suche. 
 
-![Erstellen einer neuen Ressourcengruppe](./media/search-create-service-portal/new-resource-group.png "Erstellen einer neuen Ressourcengruppe")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 Im weiteren Verlauf können Sie aktuelle und prognostizierte Kosten insgesamt nachverfolgen oder Gebühren für einzelne Ressourcen anzeigen. Im folgenden Screenshot wird die Art der Kosteninformationen dargestellt, die Sie erwarten können, wenn Sie mehrere Ressourcen in einer Gruppe kombinieren.
 
-![Verwalten von Kosten auf Ressourcengruppenebene](./media/search-create-service-portal/resource-group-cost-management.png "Verwalten von Kosten auf Ressourcengruppenebene")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 > [!TIP]
 > Ressourcengruppen vereinfachen die Bereinigung, da durch Löschen einer Gruppe alle darin enthaltenen Dienste gelöscht werden. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen.
@@ -114,11 +114,11 @@ Denken Sie daran, dass ein Tarif nicht geändert werden kann, nachdem der Dienst
 
 Nachdem Sie die erforderlichen Informationen angegeben haben, erstellen Sie den Dienst. 
 
-![Überprüfen und Erstellen des Diensts](./media/search-create-service-portal/new-service3.png "Überprüfen und Erstellen des Diensts")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 Ihr Dienst wird innerhalb weniger Minuten bereitgestellt. Sie können den Fortschritt über Azure-Benachrichtigungen überwachen. Heften Sie den Dienst ggf. an Ihr Dashboard an, um in Zukunft einfacher darauf zugreifen zu können.
 
-![Überwachen und Anheften des Diensts](./media/search-create-service-portal/monitor-notifications.png "Überwachen und Anheften des Diensts")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Abrufen eines Schlüssels und URL-Endpunkts
 
@@ -128,7 +128,7 @@ Falls Sie nicht das Portal verwenden, müssen Sie den URL-Endpunkt und einen Aut
 
 2. Kopieren Sie auf der Seite **Schlüssel** einen der Administratorschlüssel (diese sind gleichwertig). Administrator-API-Schlüssel sind für das Erstellen, Aktualisieren und Löschen von Objekten in Ihrem Dienst erforderlich. Im Gegensatz dazu bieten Abfrageschlüssel Lesezugriff auf den Indexinhalt.
 
-   ![Übersichtsseite des Diensts mit URL-Endpunkt](./media/search-create-service-portal/get-url-key.png "URL-Endpunkt und andere Dienstdetails")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 Endpunkt und Schlüssel sind für portalbasierte Aufgaben nicht erforderlich. Das Portal ist bereits mit Ihrer Ressource für die kognitive Azure-Suche mit Administratorrechten verknüpft. Eine exemplarische Vorgehensweise für das Portal finden Sie unter [Schnellstart: Erstellen eines Azure Search-Indexes im Azure-Portal](search-get-started-portal.md).
 
@@ -149,7 +149,7 @@ Durch das Hinzufügen von Ressourcen wird Ihre monatliche Rechnung höher. Der [
 2. Wählen Sie im linken Navigationsbereich die Optionen **Einstellungen** > **Skalierung** aus.
 3. Verwenden Sie den Schieberegler, um Ressourcen jedes Typs hinzuzufügen.
 
-![Hinzufügen einer Kapazität](./media/search-create-service-portal/settings-scale.png "Hinzufügen von Kapazität durch Replikate und Partitionen")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
 
 > [!Note]
 > In höheren Tarifen stehen pro Partition mehr Speicher und eine höhere Geschwindigkeit zur Verfügung. Weitere Informationen finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).

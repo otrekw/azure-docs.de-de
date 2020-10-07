@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586452"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767639"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Java Spring-App mit Azure App Configuration
 
@@ -32,7 +32,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine Java 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+7. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
     | Schlüssel | Wert |
     |---|---|
@@ -40,7 +40,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine Java 
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
 
-7. Wählen Sie **Übernehmen**.
+8. Wählen Sie **Übernehmen**.
 
 ## <a name="create-a-spring-boot-app"></a>Erstellen einer Spring Boot-App
 

@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Unterstützung der 
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568368"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91653569"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure-Schemaregistrierung in Event Hubs (Vorschau)
 In vielen Ereignisstreaming- und Messagingszenarien enthält die Ereignis- oder Nachrichtennutzlast strukturierte Daten, die entweder serialisiert oder mithilfe eines schemagesteuerten Formats wie Apache Avro deserialisiert werden. Absender und Empfänger können die Integrität der Daten mit einem Schemadokument wie bei einem JSON-Schema überprüfen. Bei schemagesteuerten Formaten ist die Bereitstellung des Schemas für den Nachrichtenconsumer eine Voraussetzung für den Consumer, und die Daten deserialisieren zu können. 
@@ -19,7 +19,6 @@ Die **Azure-Schemaregistrierungs** ist eine Funktion von Event Hubs, die ein zen
 > [!NOTE]
 > - Die Funktion **Schemaregistrierung** ist derzeit als **Vorschau** verfügbar und nicht für Produktionsworkloads vorgesehen.
 > - Das Feature ist nur in den Tarifen **Standard** und **Dediziert** verfügbar, nicht im Tarif **Basic**.
-> - Diese Vorschau ist derzeit nur in der Region **USA, Westen-Mitte** verfügbar. 
 
 Bei schemagesteuerten Serialisierungsframeworks wie Apache Avro kann die Externalisierung von Serialisierungsmetadaten in gemeinsam genutzte Schemas auch dazu beitragen, den Mehraufwand für Typinformationen und Feldnamen pro Nachricht, die in jedem Datensatz enthalten sind, drastisch zu reduzieren, der bei getaggten Formaten wie JSON anfällt. Durch die Speicherung von Schemas zusammen mit den Ereignissen und innerhalb der Ereignisinfrastruktur wird sichergestellt, dass die für die Serialisierung/Deserialisierung erforderlichen Metadaten immer erreichbar sind und Schemas nicht falsch platziert werden können. 
 

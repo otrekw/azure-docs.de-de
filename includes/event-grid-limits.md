@@ -5,28 +5,37 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7e7a0424e4454639211c6494aab0700e75269361
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83720879"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745428"
 ---
-Die folgenden Grenzwerte gelten für Systemthemen und benutzerdefinierte Themen von Azure Event Grid, *nicht* für Ereignisdomänen.
+Die folgenden Grenzwerte gelten für Azure Event Grid-**Themen** (Systemthemen, benutzerdefinierte Themen und Partnerthemen). 
 
 | Resource | Begrenzung |
 | --- | --- |
 | Benutzerdefinierte Themen pro Azure-Abonnement | 100 |
 | Ereignisabonnements pro Thema | 500 |
-| Veröffentlichungsrate für ein benutzerdefiniertes Thema (eingehend) | 5\.000 Ereignisse pro Sekunde pro Thema |
-| Ereignisgröße | 1 MB. Vorgänge werden jedoch in Schritten von 64 KB in Rechnung gestellt. Daher fallen für Ereignisse über 64 KB Betriebsgebühren wie für mehrere Ereignisse an. Beispielsweise würde ein Ereignis mit einer Größe von 130 KB Vorgangsgebühren verursachen, als würde es sich um drei separate Ereignisse handeln.  |
+| Veröffentlichungsrate für ein benutzerdefiniertes Thema oder Partnerthema (eingehend) | 5\.000 Ereignisse/Sek. oder 1 MB/Sek. (je nachdem, welcher Wert zuerst erreicht wird)<br/>Gilt nicht für Systemthemen. |
+| Ereignisgröße | 1 MB  |
+| Private Endpunktverbindungen pro Thema  | 64 | 
+| IP-Firewallregeln pro Thema | 16 | 
+
+Für Azure Event Grid-**Domänen** gelten die folgenden Grenzwerte: 
+
+| Resource | Begrenzung |
+| --- | --- |
 | Themen pro Ereignisdomäne | 100.000 |
 | Ereignisabonnements pro Thema innerhalb einer Domäne | 500 |
 | Domänenbereich-Ereignisabonnements | 50 |
-| Veröffentlichungsrate für eine Ereignisdomäne (Eingang) | 5\.000 Ereignisse pro Sekunde |
+| Veröffentlichungsrate für eine Ereignisdomäne (Eingang) | 5\.000 Ereignisse/Sek. oder 1 MB/Sek. (je nachdem, welcher Wert zuerst erreicht wird) |
 | Ereignisdomänen pro Azure-Abonnement | 100 |
-| Private Endpunktverbindungen pro Thema oder Domäne | 64 | 
-| IP-Firewallregeln pro Thema oder Domäne | 16 | 
+| Private Endpunktverbindungen pro Domäne | 64 | 
+| IP-Firewallregeln pro Domäne | 16 | 
+
+

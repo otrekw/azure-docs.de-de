@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944272"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91665394"
 ---
 # <a name="communication-services-notifications"></a>Communication Services-Benachrichtigungen
 
@@ -36,7 +36,7 @@ Erfahren Sie mehr über die [Ereignisbehandlung in Azure Communication Services]
 
 Sie können einen Azure Notification Hub mit Ihrer Communication Services-Ressource verbinden, um automatisch Pushbenachrichtigungen an das mobile Gerät eines Benutzers zu senden, wenn er einen eingehenden Anruf erhält. Verwenden Sie diese Pushbenachrichtigungen, um Ihre Anwendung im Hintergrund zu reaktivieren und die Benutzeroberfläche anzuzeigen, über die Benutzer den Anruf annehmen oder ablehnen können. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagramm, das die Integration von Communication Services in Azure Notification Hubs zeigt":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagramm, das die Integration von Communication Services in Event Grid zeigt":::
 
 Communication Services verwendet Azure Notification Hub als Passthroughdienst, um mit den verschiedenen plattformspezifischen Pushbenachrichtigungsdiensten über die [Direct Send](https://docs.microsoft.com/rest/api/notificationhubs/direct-send)-API zu kommunizieren. Auf diese Weise können Sie Ihre vorhandenen Azure Notification Hub-Ressourcen und -Konfigurationen wiederverwenden, um geringe Latenzzeiten und zuverlässige Anrufbenachrichtigungen für Ihre Anwendungen bereitzustellen.
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 Navigieren Sie im Azure-Portal zu Ihrer Azure Communication Services-Ressource. Wählen Sie in der Communication Services-Ressource im linken Menü der Seite „Communication Services“ die Option „Pushbenachrichtigungen“ aus, und stellen Sie eine Verbindung mit dem zuvor bereitgestellten Benachrichtigungshub her. Sie müssen die Verbindungszeichenfolge und die Ressourcen-ID hier angeben:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Screenshot, der die Einstellungen für Pushbenachrichtigungen im Azure-Portal zeigt":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Diagramm, das die Integration von Communication Services in Event Grid zeigt":::
 
 #### <a name="device-registration"></a>Geräteregistrierung 
 

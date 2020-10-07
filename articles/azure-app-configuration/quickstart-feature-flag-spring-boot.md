@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 220d446990a9c362c30b3352e247af2b76d3d128
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019741"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767665"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -30,7 +30,7 @@ Die Spring Boot-Bibliotheken für die Featureverwaltung erweitern das Framework 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Feature-Manager** >  **+Hinzufügen** aus, um ein Featureflag namens `Beta` hinzuzufügen.
+7. Wählen Sie **Feature-Manager** >  **+Hinzufügen** aus, um ein Featureflag namens `Beta` hinzuzufügen.
 
     > [!div class="mx-imgBorder"]
     > ![Aktivieren eines Featureflags mit dem Namen „Beta“](media/add-beta-feature-flag.png)

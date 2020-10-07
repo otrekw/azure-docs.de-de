@@ -10,12 +10,12 @@ ms.date: 09/03/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: 3fe27bf31385e0310211b5e1b0b7bbfa636eb19b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9265caa3054cde6af311e655db2b2496524e8d24
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944857"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757134"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie die Python-Clientbibliothek für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -107,7 +107,7 @@ sms_response = sms_client.send(
 
 ```
 
-Ersetzen Sie `<leased-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Instanz zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten. Alle Telefonnummernparameter müssen dem [E.164-Standard](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164) entsprechen.
+Ersetzen Sie `<leased-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Instanz zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten. 
 
 Der Parameter `send_sms_options` ist ein optionaler Parameter zum Konfigurieren von Zustellberichten. Dies ist in Szenarien hilfreich, in denen Ereignisse ausgegeben werden sollen, wenn SMS-Nachrichten zugestellt wurden. Informationen zum Konfigurieren von Zustellberichten für SMS-Nachrichten finden Sie in der Schnellstartanleitung [Behandeln von SMS-Ereignissen](../handle-sms-events.md).
 

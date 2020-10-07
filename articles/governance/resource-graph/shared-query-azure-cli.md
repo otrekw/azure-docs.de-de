@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit der Azure CLI'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure CLI und zum Erstellen einer freigegebenen Abfrage aus.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050946"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667519"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Schnellstart: Erstellen einer freigegebenen Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -24,7 +24,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="add-the-resource-graph-extension"></a>Hinzufügen der Resource Graph-Erweiterung
 
-Um die Azure-Befehlszeilenschnittstelle für die Arbeit mit Azure Resource Graph zu aktivieren, muss die Erweiterung hinzugefügt werden. Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/r/microsoft/azure-cli/) oder lokaler Installation.
+Um die Azure-Befehlszeilenschnittstelle für die Arbeit mit Azure Resource Graph zu aktivieren, muss die Erweiterung hinzugefügt werden. Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/_/microsoft-azure-cli) oder lokaler Installation.
 
 1. Überprüfen Sie, ob die aktuelle Azure CLI-Version (mindestens **2.8.0**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows).
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575060"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767733"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Schnellstart: Erstellen einer .NET Core-App mit App Configuration
 
@@ -28,7 +28,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine .NET 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+7. Wählen Sie **Konfigurations-Explorer** > **Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
     | Schlüssel | Wert |
     |---|---|
@@ -36,7 +36,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine .NET 
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
 
-7. Wählen Sie **Übernehmen**.
+8. Wählen Sie **Übernehmen**.
 
 ## <a name="create-a-net-core-console-app"></a>Erstellen einer .NET Core-Konsolen-App
 

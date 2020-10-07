@@ -4,21 +4,21 @@ description: Hier erfahren Sie, wie Sie das Sicherheitsmodul für den Azure RTOS
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944410"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759731"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Schnellstart: Sicherheitsmodul für Azure RTOS (Vorschau)
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält eine Erläuterung der Voraussetzungen vor den ersten Sch
 - NXP i.MX RT1060 EVK
 - Mikrochip SAM E54 Xplained Pro EVK
 
-Laden Sie eine der ZIP-Dateien für das jeweilige Board und Tool (IAR, die semi-IDE oder den PC) Ihrer Wahl aus der [GitHub-Ressource des Sicherheitsmoduls für Azure RTOS](hhtps://github.com/azure-rtos/azure-iot-preview/releases) herunter, kompilieren Sie sie, und führen Sie sie aus.
+Laden Sie eine der ZIP-Dateien für das jeweilige Board und Tool (IAR, die semi-IDE oder den PC) Ihrer Wahl aus der [GitHub-Ressource des Sicherheitsmoduls für Azure RTOS](https://github.com/azure-rtos/azure-iot-preview/releases) herunter, kompilieren Sie sie, und führen Sie sie aus.
 
 ### <a name="azure-resources"></a>Azure-Ressourcen
 
@@ -63,10 +63,10 @@ Die Log Analytics-Datenerfassung in IoT Hub ist in der Defender für IoT-Lösung
 1. Klicken Sie auf **Datensammlung**. 
 1. Legen Sie in der Option **Arbeitsbereichskonfiguration** den Umschalter auf **Ein** fest. 
 1. Erstellen Sie einen neuen Log Analytics-Arbeitsbereich, oder fügen Sie einen bereits vorhandenen an. Stellen Sie sicher, dass die Option **Access raw security data (Zugreifen auf Sicherheitsrohdaten)** ausgewählt ist. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS-Konfiguration mit den zwei ausgewählten Optionen „Datensammlung“ und „Sicherheitsrohdaten“":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Option „Access Data Collection“ (Zugreifen auf Datensammlung) für Azure RTOS":::
 1. Wählen Sie **Speichern** aus.
 1. Kehren Sie zur Liste Ihrer Azure-Ressourcen zurück, und überprüfen Sie, ob der von Ihnen erstellte und angefügte Log Analytics-Arbeitsbereich für den IoT Hub als aktiviert angezeigt wird.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="In der Liste Ihrer Azure-Ressourcen überprüfen, ob der richtige Log Analytics-Arbeitsbereich für eine IoT Hub-Instanz hinzugefügt wurde"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Option „Access Data Collection“ (Zugreifen auf Datensammlung) für Azure RTOS"::: 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

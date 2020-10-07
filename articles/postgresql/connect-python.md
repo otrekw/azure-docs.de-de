@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Herstellen einer Verbindung mit Python: Azure Database for PostgreSQL-Einzelserver'
 description: Diese Schnellstartanleitung enthält Python-Codebeispiele, die Sie verwenden können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901823"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91707896"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von Python zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
 
@@ -105,7 +105,7 @@ conn.close()
 
 Nach erfolgreicher Ausführung generiert der Code die folgende Ausgabe:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Befehlszeilenausgabe":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Azure Database for PostgreSQL-Servername":::
 
 ## <a name="read-data"></a>Lesen von Daten
 Im folgenden Codebeispiel wird eine Verbindung mit Ihrer Azure Database for PostgreSQL-Datenbank hergestellt und [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) mit der SQL-Anweisung **SELECT** verwendet, um Daten zu lesen. Diese Funktion akzeptiert eine Abfrage und gibt ein Resultset zurück, das mithilfe von [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) durchlaufen werden kann. 

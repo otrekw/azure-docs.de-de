@@ -5,17 +5,22 @@ services: storage
 author: twooley
 ms.service: storage
 ms.topic: include
-ms.date: 06/22/2018
+ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334761"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665601"
 ---
-Azure Data Lake Storage Gen1 ist ein unternehmensweites Repository mit Hyperskalierung für Big Data-Analyseworkloads. Sie können mit Data Lake Storage Gen1 Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen an einem einzigen Ort erfassen. Es gibt keine Beschränkung für die Datenmenge, die Sie in einem Data Lake Storage Gen1-Konto speichern können.
+**Azure Data Lake Storage Gen2** ist kein dedizierter Dienst- oder Speicherkontotyp. Es handelt sich dabei um das aktuelle Release von Funktionen für Big Data-Analysen.  Diese Funktionen sind in einem Speicherkonto vom Typ „Allgemein v2“ oder „BlockBlobStorage“ verfügbar, und Sie können sie durch Aktivieren des Features **Hierarchischer Namespace** des Kontos abrufen. Informationen zu Skalierungszielen finden Sie in den folgenden Artikeln: 
+
+- [Skalierbarkeitsziele für Blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)
+- [Skalierbarkeitsziele für Standardspeicherkonten](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account?toc=/azure/storage/blobs/toc.json#scale-targets-for-standard-storage-accounts)
+
+**Azure Data Lake Storage Gen1** ist ein dedizierter Dienst. Es handelt sich dabei um ein unternehmensweites riesiges Repository für Big Data-Analyseworkloads. Sie können mit Data Lake Storage Gen1 Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen an einem einzigen Ort erfassen. Es gibt keine Beschränkung für die Datenmenge, die Sie in einem Data Lake Storage Gen1-Konto speichern können.
 
 | **Ressource** | **Begrenzung** | **Kommentare** |
 | --- | --- | --- |

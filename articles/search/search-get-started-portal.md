@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307720"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740925"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 
@@ -35,7 +35,7 @@ Viele Kunden beginnen mit dem kostenlosen Dienst (Free). Diese Version ist auf d
 
 In Abschnitten des Service-Dashboards sehen Sie, über wie viele Indizes, Indexer und Datenquellen Sie bereits verfügen. 
 
-![Listen mit Indizes, Indexern und Datenquellen](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Erstellen eines Index und Laden von Daten
 
@@ -49,11 +49,11 @@ Für dieses Tutorial verwenden Sie ein integriertes Beispieldataset, das über d
 
 1. [Suchen Sie Ihren Suchdienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), und klicken Sie auf der Übersichtsseite auf der Befehlsleiste auf **Daten importieren**, um einen Suchindex zu erstellen und aufzufüllen.
 
-   ![Befehl zum Importieren von Daten](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 1. Klicken Sie im Assistenten auf **Mit Ihren Daten verbinden** > **Beispiele** > **hotels-sample**. Diese Datenquelle ist integriert. Wenn Sie eine eigene Datenquelle erstellen, müssen Sie einen Namen, einen Typ und Verbindungsinformationen angeben. Nach der Erstellung wird sie zu einer vorhandenen Datenquelle, die in anderen Importvorgängen wiederverwendet werden kann.
 
-   ![Auswählen des Beispieldatasets](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 1. Wechseln Sie zur nächsten Seite.
 
@@ -63,7 +63,7 @@ Der Assistent unterstützt die Erstellung einer [Pipeline für KI-Anreicherung](
 
 Überspringen Sie diesen Schritt vorerst, und wechseln Sie direkt zu **Zielindex anpassen**.
 
-   ![Überspringen des Schritts zu kognitiven Qualifikationen](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 > [!TIP]
 > Sie können ein Beispiel für die AI-Indizierung in einem [Schnellstart](cognitive-search-quickstart-blob.md) oder [Tutorial](cognitive-search-tutorial-blob.md) durchgehen.
@@ -87,7 +87,7 @@ Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeic
 
    Wenn Sie den Assistenten ein zweites Mal unter Verwendung einer vorhandenen Quelle mit Hoteldaten ausführen, wird der Index nicht mit Standardattributen konfiguriert. Sie müssen Attribute für künftige Importe manuell auswählen. 
 
-   ![Generierter Hotelindex](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 2. Wechseln Sie zur nächsten Seite.
 
@@ -100,7 +100,7 @@ Mit diesem Objekt wird ein ausführbarer Prozess definiert. Sie könnten zwar au
 
 Klicken Sie auf **Senden**, um den Indexer zu erstellen und gleichzeitig auszuführen.
 
-  ![Hotelindexer](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 ## <a name="monitor-progress"></a>Fortschritt überwachen
 
@@ -108,7 +108,7 @@ Der Assistent sollte die Liste der Indexer anzeigen, in der Sie den Fortschritt 
 
 Es kann einige Minuten dauern, bis die Seite im Portal aktualisiert ist, aber der neu erstellte Indexer sollte in der Liste angezeigt werden. Der Status sollte „In Bearbeitung“ oder „Erfolgreich“ lauten, und die Anzahl indizierter Dokumente sollte angegeben sein.
 
-   ![Statusmeldung des Indexers](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 ## <a name="view-the-index"></a>Anzeigen des Index
 
@@ -116,13 +116,13 @@ Die Hauptseite des Diensts enthält Links zu den Ressourcen, die in Ihrem Azure 
 
 Warten Sie, bis die Portalseite aktualisiert wurde. Nach einigen Minuten sollte der Index mit der Dokumentanzahl und der Speichergröße angezeigt werden.
 
-   ![Liste „Indizes“ im Dashboard des Diensts](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 In dieser Liste können Sie auf den gerade erstellten Index für *hotels-sample* klicken und das Indexschema anzeigen. Optional können Sie auch neue Felder hinzufügen. 
 
 Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. In den meisten Fällen ist es nicht möglich, bereits vorhandene Felder zu ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Cognitive Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
 
-   ![Beispiel für Indexdefinition](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 Andere Konstrukte, z.B. Bewertungsprofile und CORS-Optionen, können jederzeit hinzugefügt werden.
 
@@ -140,15 +140,15 @@ Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](/
 
 1. Klicken Sie auf der Befehlsleiste auf **Suchexplorer** .
 
-   ![Suchexplorerbefehl](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 2. Wählen Sie in der Dropdownliste **Index** den Eintrag *hotels-sample-index* aus. Klicken Sie auf die Dropdownliste **API-Version**, um herauszufinden, welche REST-APIs verfügbar sind. Verwenden Sie für die Abfragen unten die allgemein verfügbare Version (2020-06-30).
 
-   ![Index- und API-Befehle](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 3. Fügen Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
 
-   ![Abfragezeichenfolge und Schaltfläche „Suchen“](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
 ## <a name="example-queries"></a>Beispielabfragen
 

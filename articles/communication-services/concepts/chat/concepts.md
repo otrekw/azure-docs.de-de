@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944371"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762041"
 ---
 # <a name="chat-concepts"></a>Chatkonzepte
 
@@ -28,7 +28,7 @@ Weitere Informationen zu den einzelnen Sprachen und Funktionen der Clientbibliot
 
 Chatkonversationen erfolgen innerhalb von Chatthreads. Ein Chatthread kann viele Nachrichten und Benutzer umfassen. Jede Nachricht gehört zu einem einzelnen Thread, und ein Benutzer kann einem oder mehreren Threads angehören. 
 
-Die einzelnen Benutzer im Chatthread werden als Mitglieder bezeichnet. In einem Chatthread sind bis zu 250 Mitglieder möglich. Nur Threadmitglieder können Nachrichten senden und empfangen oder Mitglieder zu einem Chatthread hinzufügen bzw. daraus entfernen. Die maximal zulässige Nachrichtengröße beträgt ca. 28 KB. Communication Services speichert den Chatverlauf, bis Sie einen Löschvorgang für den Chatthread ausführen. Mithilfe des `List/Get Messages`-Vorgangs können Sie alle Nachrichten in einem Chatthread abrufen.
+Die einzelnen Benutzer im Chatthread werden als Mitglieder bezeichnet. In einem Chatthread sind bis zu 250 Mitglieder möglich. Nur Threadmitglieder können Nachrichten senden und empfangen oder Mitglieder zu einem Chatthread hinzufügen bzw. daraus entfernen. Die maximal zulässige Nachrichtengröße beträgt ca. 28 KB. Mithilfe des `List/Get Messages`-Vorgangs können Sie alle Nachrichten in einem Chatthread abrufen. Communication Services speichert den Chatverlauf, bis Sie einen Löschvorgang für den Chatthread oder die Nachricht ausführen oder bis keine Mitglieder mehr im Chatthread verbleiben – an diesem Punkt ist er verwaist und wird für die Löschung verarbeitet.   
 
 Für Chatthreads mit mehr als 20 Mitgliedern sind Lesebestätigungen und Eingabeindikatorfunktionen deaktiviert. 
 
@@ -128,9 +128,9 @@ Sie können [Azure Cognitive-APIs](https://docs.microsoft.com/azure/cognitive-se
 
 Eine Möglichkeit, um dies zu erreichen, besteht darin, dass Ihr vertrauenswürdiger Dienst als Mitglied eines Chatthreads fungiert. Angenommen, Sie möchten die Sprachübersetzung aktivieren. Dieser Dienst ist dafür zuständig, auf Nachrichten zu lauschen, die von anderen Mitgliedern ausgetauscht werden [1], Cognitive-APIs aufzurufen, um den Inhalt in die gewünschte Sprache zu übersetzen [2,3] und das übersetzte Ergebnis als Nachricht im Chatthread zu senden [4]. 
 
-So enthält der Nachrichtenverlauf sowohl die ursprünglichen als auch übersetzte Nachrichten. In der Clientanwendung können Sie Logik hinzufügen, um die ursprüngliche oder die übersetzte Nachricht anzuzeigen. Informationen zur Verwendung von Cognitive APIs zum Übersetzen von Text in verschiedene Sprachen finden Sie in [diesem Schnellstart](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate). 
+So enthält der Nachrichtenverlauf sowohl die ursprünglichen als auch übersetzte Nachrichten. In der Clientanwendung können Sie Logik hinzufügen, um die ursprüngliche oder die übersetzte Nachricht anzuzeigen. Informationen zur Verwendung von Cognitive APIs zum Übersetzen von Text in verschiedene Sprachen finden Sie in [diesem Schnellstart](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator). 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagramm, das zeigt, wie Cognitive Services mit Communication Services interagieren":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagramm, das die Chatarchitektur von Communication Services zeigt":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,15 +3,15 @@ title: 'Schnellstart: Erstellen einer C#-ASP.NET Core-App'
 description: Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie Ihre erste ASP.NET Core-App bereitstellen.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 08/01/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.date: 09/24/2020
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973762"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91661124"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure
 
@@ -175,6 +175,8 @@ So führen Sie diesen Schnellstart durch:
 * <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
 * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Installation des aktuellen .NET Core 3.1 SDK</a>
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="create-the-app-locally"></a>Lokales Erstellen der App
 
 Erstellen Sie in einem Terminalfenster auf Ihrem Computer ein Verzeichnis mit dem Namen `hellodotnetcore`, und wechseln Sie dorthin.
@@ -214,13 +216,23 @@ git add .
 git commit -m "first commit"
 ```
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
@@ -265,6 +277,8 @@ To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
    d87e6ca..d6b5447  master -> master
 </pre>
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="browse-to-the-app"></a>Navigieren zur App
 
 Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung.
@@ -278,6 +292,8 @@ Der .NET Core-Beispielcode wird in App Service unter Linux mit einem integrierte
 ![In Azure ausgeführte Beispiel-App](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
 **Glückwunsch!** Sie haben Ihre erste .NET Core-App für App Service unter Linux bereitgestellt.
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualisieren und erneutes Bereitstellen des Codes
 
@@ -298,6 +314,8 @@ Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das
 
 ![In Azure ausgeführte aktualisierte Beispiel-App](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="manage-your-new-azure-app"></a>Verwalten Ihrer neuen Azure-App
 
 Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte App zu verwalten.
@@ -313,6 +331,8 @@ Die Übersichtsseite Ihrer App wird angezeigt. Hier können Sie einfache Verwalt
 Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App angezeigt. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998404"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767707"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Azure Functions-App
 
@@ -31,14 +31,14 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um Unte
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Feature-Manager** >  **+Hinzufügen** aus, um ein Featureflag namens `Beta` hinzuzufügen.
+7. Wählen Sie **Feature-Manager** >  **+Hinzufügen** aus, um ein Featureflag namens `Beta` hinzuzufügen.
 
     > [!div class="mx-imgBorder"]
     > ![Aktivieren eines Featureflags mit dem Namen „Beta“](media/add-beta-feature-flag.png)
 
     Definieren Sie `label` und `Description` vorerst nicht.
 
-7. Wählen Sie **Übernehmen** aus, um das neue Featureflag zu speichern.
+8. Wählen Sie **Übernehmen** aus, um das neue Featureflag zu speichern.
 
 ## <a name="create-a-functions-app"></a>Erstellen einer Functions-App
 

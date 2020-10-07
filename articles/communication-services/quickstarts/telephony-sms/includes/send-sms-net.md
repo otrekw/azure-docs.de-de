@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303312"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779126"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie die C#-Clientbibliothek für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -59,7 +59,7 @@ dotnet build
 Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `dotnet add package` das .NET-Paket der Clientbibliothek für SMS von Azure Communication Services.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
 ```
 
 Fügen Sie am Anfang von **Program.cs** eine Anweisung vom Typ `using` hinzu, um den Namespace `Azure.Communication` einzuschließen.
@@ -106,7 +106,7 @@ smsClient.Send(
 );
 ```
 
-Ersetzen Sie `<leased-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten. Alle Telefonnummernparameter müssen dem [E.164-Standard](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164) entsprechen.
+Ersetzen Sie `<leased-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten.
 
 Der Parameter `EnableDeliveryReport` ist ein optionaler Parameter zum Konfigurieren von Zustellberichten. Dies ist in Szenarien hilfreich, in denen Ereignisse ausgegeben werden sollen, wenn SMS-Nachrichten zugestellt wurden. Informationen zum Konfigurieren von Zustellberichten für SMS-Nachrichten finden Sie in der Schnellstartanleitung [Behandeln von SMS-Ereignissen](../handle-sms-events.md).
 

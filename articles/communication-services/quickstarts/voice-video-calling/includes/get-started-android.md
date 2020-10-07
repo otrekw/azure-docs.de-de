@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944820"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779327"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für Android beginnen.
 
@@ -19,12 +19,10 @@ In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibl
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio) zum Erstellen Ihrer Android-Anwendung
-- Ein [Benutzerzugriffstoken](../../access-tokens.md) für Azure Communication Service
-- Eine bereitgestellte Communication Services-Ressource [Erstellen einer Communication Services-Ressource](../../create-communication-resource.md)
-
+- Eine bereitgestellte Communication Services-Ressource. [Erstellen einer Communication Services-Ressource](../../create-communication-resource.md)
+- Ein [Benutzerzugriffstoken](../../access-tokens.md) für Ihren Azure Communication Service
 
 ## <a name="setting-up"></a>Einrichten
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>Erstellen Sie eine Android-App mit einer leeren Aktivität.
 
@@ -34,11 +32,11 @@ Wählen Sie in Android Studio „Start a new Android Studio project“ (Neues An
 
 Wählen Sie unter „Phone and Tablet“ (Telefon und Tablet) die Projektvorlage „Empty Activity“ (Leere Aktivität) aus.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Screenshot, der die Option „Empty Activity“ (Leere Aktivität) zeigt, die auf dem Bildschirm für die Projektvorlage ausgewählt ist":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Ein Screenshot, der die Schaltfläche „Start a new Android Studio project“ (Neues Android Studio-Projekt starten) zeigt, die in Android Studio ausgewählt ist":::
 
 Wählen Sie die Clientbibliothek „API 26: Android 8.0 (Oreo)“ oder höher aus.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Screenshot, der die Option „Empty Activity“ (Leere Aktivität) zeigt, die auf dem Bildschirm für die Projektvorlage 2 ausgewählt ist":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Ein Screenshot, der die Schaltfläche „Start a new Android Studio project“ (Neues Android Studio-Projekt starten) zeigt, die in Android Studio ausgewählt ist":::
 
 
 ### <a name="install-the-package"></a>Installieren des Pakets
@@ -80,7 +78,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 ```
@@ -126,7 +124,7 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>Festlegen des Layouts für die App
+### <a name="set-up-the-layout-for-the-app"></a>Festlegen des Layouts für die App
 
 Zwei Eingaben sind erforderlich: eine Texteingabe für die Angerufenen-ID und eine Schaltfläche zum Tätigen des Anrufs. Diese können über den Designer oder durch Bearbeiten der Layout-XML-Datei hinzugefügt werden. Erstellen Sie eine Schaltfläche mit der ID von `call_button` und einer Texteingabe für `callee_id`. Navigieren Sie zu (`app/src/main/res/layout/activity_main.xml`), und ersetzen Sie den Inhalt der Datei durch Folgendes:
 
@@ -315,4 +313,8 @@ private void startCall() {
 
 Die App kann jetzt mithilfe der Schaltfläche „Run app“ (App ausführen) auf der Symbolleiste gestartet werden (UMSCHALT + F10). Überprüfen Sie, ob Sie Anrufe tätigen können, indem Sie `8:echo123` anrufen. Eine vorab aufgezeichnete Nachricht wird wiederholt und gibt anschließend Ihre Nachricht an Sie selbst wieder.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Screenshot, der die fertige Anwendung zeigt":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Ein Screenshot, der die Schaltfläche „Start a new Android Studio project“ (Neues Android Studio-Projekt starten) zeigt, die in Android Studio ausgewählt ist":::
+
+## <a name="sample-code"></a>Beispielcode
+
+Sie können die Beispiel-App von [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) herunterladen.

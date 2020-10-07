@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101008"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91666533"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Schnellstart: Erkunden der Azure Time Series Insights Gen2-Demoumgebung
 
@@ -100,7 +100,7 @@ Mithilfe von Azure Time Series Insights Gen2 und Sensortelemetriedaten haben wir
 
       [![Erweitern der Zeitspanne auf 60 Tage](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. Es können weitere Sensordatenpunkte hinzugefügt werden, um den Kontext zu erweitern. Je mehr Sensoren wir anzeigen, desto vollständiger ist unser Verständnis des Problems. Wir setzen einen Marker, um die tatsächlichen Werte anzuzeigen. 
+1. Es können weitere Sensordatenpunkte hinzugefügt werden, um den Kontext zu erweitern. Je mehr Sensoren wir anzeigen, desto vollständiger ist unser Verständnis des Problems. Wir setzen einen Marker, um die tatsächlichen Werte anzuzeigen.
 
     1. Wählen Sie **Generator System** und anschließend diese drei Sensoren aus: **GridVoltagePhase1**, **GridVoltagePhase2** und **GridVoltagePhase3**.
     1. Setzen Sie einen Marker für den letzten Datenpunkt im sichtbaren Bereich.

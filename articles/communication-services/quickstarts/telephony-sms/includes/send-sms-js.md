@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: cdd4988f9a23904c0771852c4539aa9bce2ee683
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944841"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757135"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie die JavaScript-Clientbibliothek für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -97,16 +97,20 @@ const smsClient = new SmsClient(connectionString);
 Senden Sie eine SMS-Nachricht durch Aufrufen der Methode `send`. Fügen Sie am Ende der Methode **send-sms.js** den folgenden Code hinzu:
 
 ```javascript
-await smsClient.send({
-  from: "<leased-phone-number>",
-  to: ["<to-phone-number>"],
-  message: "Hello World 👋🏻 via Sms"
-}, {
-  enableDeliveryReport: true //Optional parameter
-});
+async function main() {
+  await smsClient.send({
+    from: "<leased-phone-number>",
+    to: ["<to-phone-number>"],
+    message: "Hello World 👋🏻 via Sms"
+  }, {
+    enableDeliveryReport: true //Optional parameter
+  });
+}
+
+main();
 ```
 
-Ersetzen Sie `<leased-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten. Alle Telefonnummernparameter müssen dem [E.164-Standard](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164) entsprechen.
+Ersetzen Sie `<leased-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten.
 
 Der Parameter `enableDeliveryReport` ist ein optionaler Parameter zum Konfigurieren von Zustellberichten. Dies ist in Szenarien hilfreich, in denen Ereignisse ausgegeben werden sollen, wenn SMS-Nachrichten zugestellt wurden. Informationen zum Konfigurieren von Zustellberichten für SMS-Nachrichten finden Sie in der Schnellstartanleitung [Behandeln von SMS-Ereignissen](../handle-sms-events.md).
 

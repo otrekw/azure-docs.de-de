@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: f9d82c78ec0f5cd1b86d3fa885f89a25ec6e3672
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ccab295d39e463d4b6d1e764862678469fba751
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348199"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776407"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Spring Data Azure Cosmos DB v3-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -86,7 +86,7 @@ Beginnen wir nun mit der Verwendung von Code. Klonen Sie zunächst eine SQL-API-
 Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. Dieser Befehl erstellt eine Kopie der Beispiel-App auf Ihrem Computer.
 
 ```bash
-git clone https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos
+git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started.git
 ```
 
 ## <a name="review-the-code"></a>Überprüfen des Codes

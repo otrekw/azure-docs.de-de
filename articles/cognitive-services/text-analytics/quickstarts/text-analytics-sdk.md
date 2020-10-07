@@ -1,27 +1,28 @@
 ---
-title: 'Schnellstart: Textanalyse-Clientbibliothek v3 | Microsoft-Dokumentation'
+title: 'Schnellstart: Textmining mithilfe der Textanalyse-Clientbibliothek'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird gezeigt, wie Sie Ihre Anwendungen mit der Textanalyse-API von Azure Cognitive Services verbinden.
+description: Verwenden Sie diese Schnellstartanleitung, um Stimmungsanalyse und mehr mithilfe der Textanalyse-API aus Azure Cognitive Services durchzuführen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+keywords: Textmining, Stimmungsanalyse, Textanalyse
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931181"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710779"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek
 
-Hier finden Sie Informationen zu den ersten Schritten mit der Textanalyse-Clientbibliothek. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
+Verwenden Sie diesen Artikel, um in die Textanalyse-Clientbibliothek einzusteigen. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für Textmining.
 
 Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 
@@ -36,6 +37,8 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 > * Die neueste stabile Version der Textanalyse-API ist `3.0`.
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 

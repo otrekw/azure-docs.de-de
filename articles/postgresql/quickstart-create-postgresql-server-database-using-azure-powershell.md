@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen eines Servers – Azure PowerShell – Azure Database for PostgreSQL-Einzelserver'
 description: Schnellstartanleitung zum Erstellen eines Azure Database for PostgreSQL-Einzelservers mithilfe von Azure PowerShell
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f04c4c52b2c1e2b347699168b3255d2f809278b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902687"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91705312"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mithilfe von PowerShell
 
@@ -169,7 +169,7 @@ pgAdmin ist ein Open-Source-Tool, das zusammen mit PostgreSQL verwendet wird. Si
 
 1. Füllen Sie im Dialogfeld **Erstellen – Server** auf der Registerkarte **Verbindung** die folgende Einstellungstabelle aus.
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="Die Registerkarte „Verbindung“":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="Die Registerkarte „Allgemein“":::
 
     pgAdmin-Parameter |Wert|BESCHREIBUNG
     ---|---|---
@@ -193,7 +193,7 @@ pgAdmin ist ein Open-Source-Tool, das zusammen mit PostgreSQL verwendet wird. Si
 
 1. Wählen Sie im Listenfeld den **Besitzer** der Datenbank aus. Wählen Sie den Anmeldenamen des Serveradministrators aus (in diesem Beispiel **my admin**).
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Erstellen einer Datenbank in pgAdmin":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Die Registerkarte „Allgemein“":::
 
 1. Wählen Sie **Speichern** aus, um eine neue leere Datenbank zu erstellen.
 
