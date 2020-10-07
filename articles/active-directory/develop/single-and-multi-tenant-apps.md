@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 09/24/2020
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705638"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395905"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Mandanten in Azure Active Directory
 
@@ -43,7 +43,7 @@ Im Azure-Portal können Sie Ihre App als einzel- oder mehrinstanzenfähig konfig
 Das Erstellen guter mehrinstanzenfähiger Apps kann aufgrund der Vielzahl unterschiedlicher Richtlinien, die IT-Administratoren in ihren Mandanten festlegen können, eine Herausforderung darstellen. Wenn Sie eine mehrinstanzenfähige App erstellen möchten, wenden Sie die folgenden bewährten Methoden an:
 
 * Testen Sie Ihre App in einem Mandanten, für den [Richtlinien für bedingten Zugriff](../azuread-dev/conditional-access-dev-guide.md) konfiguriert sind.
-* Befolgen Sie das Prinzip des geringstmöglichen Benutzerzugriffs, um sicherzustellen, dass Ihre App nur Berechtigungen anfordert, die sie tatsächlich benötigt. Vermeiden Sie es, Berechtigungen anzufordern, die die Zustimmung des Administrators erfordern, da dies Benutzer in einigen Unternehmen daran hindern kann, Ihre App überhaupt zu nutzen. 
+* Befolgen Sie das Prinzip des geringstmöglichen Benutzerzugriffs, um sicherzustellen, dass Ihre App nur Berechtigungen anfordert, die sie tatsächlich benötigt. 
 * Geben Sie geeignete Namen und Beschreibungen für alle Berechtigungen an, die Sie als Teil Ihrer App bereitstellen. Auf diese Weise können sich Benutzer und Administratoren besser informieren, welchen Berechtigungen sie zustimmen, wenn sie versuchen, die APIs Ihrer App zu verwenden. Weitere Informationen finden Sie im Abschnitt zu den bewährten Methoden im [Berechtigungsleitfaden](v2-permissions-and-consent.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

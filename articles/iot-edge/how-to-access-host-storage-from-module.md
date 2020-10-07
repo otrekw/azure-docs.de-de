@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 4af63421e831318e6250825cffd1abad415b85bb
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257477"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447837"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
 
@@ -85,7 +85,7 @@ Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](
 
 ## <a name="encrypted-data-in-module-storage"></a>Verschlüsselte Daten im Modulspeicher
 
-Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show) anzeigen.
+Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show) anzeigen.
 
 Wenn Sie Dateien zwischen Modulen über Generationen hinweg austauschen möchten, dürfen sie keine Geheimnisse enthalten, da sie sonst nicht entschlüsselt werden können.
 

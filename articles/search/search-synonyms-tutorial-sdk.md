@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 982aa4bdb37af53999e75b7e33db990adb057938
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019758"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538805"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Beispiel: Hinzufügen von Synonymen für die kognitive Azure-Suche in C#
 
@@ -23,8 +23,8 @@ Anhand von Synonymen wird eine Abfrage erweitert, indem Begriffe, die als semant
 In der kognitiven Azure-Suche werden Synonyme in einer *Synonymzuordnung* anhand von *Zuordnungsregeln* für gleichwertige Begriffe definiert. Dieses Beispiel behandelt die wesentlichen Schritte zum Hinzufügen und Verwenden von Synonymen bei einem vorhandenen Index. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Synonymzuordnung mithilfe der Klasse [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 
-> * Festlegen der Eigenschaft [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in Feldern, die die Abfrageerweiterung über Synonyme unterstützen sollen
+> * Erstellen einer Synonymzuordnung mithilfe der Klasse [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) 
+> * Festlegen der Eigenschaft [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) in Feldern, die die Abfrageerweiterung über Synonyme unterstützen sollen
 
 Sie können ein für Synonyme aktiviertes Feld auf die übliche Weise abfragen. Für den Zugriff auf Synonyme ist keine zusätzliche Abfragesyntax erforderlich.
 
@@ -97,7 +97,7 @@ results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
 WriteDocuments(results);
 ```
 Diese Begriffe sind in den beiden indizierten Dokumenten nicht enthalten, sodass wir für das `RunQueriesWithNonExistentTermsInIndex`-Element die folgende Ausgabe erhalten:
-~~~
+```
 Search the entire index for the phrase "five star":
 
 no document matched
@@ -109,7 +109,7 @@ no document matched
 Search the entire index for the terms 'economy' AND 'hotel':
 
 no document matched
-~~~
+```
 
 ## <a name="enable-synonyms"></a>Aktivieren von Synonymen
 
@@ -148,7 +148,7 @@ Die Aktivierung von Synonymen ist ein Prozess mit zwei Schritten. Zuerst ist es 
 
 Nachdem die Synonymzuordnung hochgeladen wurde und der Index für die Verwendung der Synonymzuordnung aktualisiert wurde, wird beim zweiten `RunQueriesWithNonExistentTermsInIndex`-Aufruf Folgendes ausgegeben:
 
-~~~
+```
 Search the entire index for the phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
@@ -160,7 +160,7 @@ Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concier
 Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
-~~~
+```
 Mit der ersten Abfrage wird das Dokument über die Regel `five star=>luxury` gefunden. Bei der zweiten Abfrage wird die Suche mit `internet,wifi` erweitert, und bei der dritten Abfrage wird sowohl `hotel, motel` als auch `economy,inexpensive=>budget` verwendet, um die Dokumente anhand der Übereinstimmungen zu finden.
 
 Durch das Hinzufügen von Synonymen wird die Sucherfahrung nachhaltig verändert. In diesem Beispiel wurden mit den ursprünglichen Abfragen keine aussagekräftigen Ergebnisse zurückgegeben, obwohl die im Index enthaltenen Dokumente relevant waren. Durch die Aktivierung von Synonymen können wir einen Index erweitern, um gängige Begriffe einzubeziehen, ohne hierfür die zugrunde liegenden Daten des Index ändern zu können.

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294865"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740682"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Erstellen einer einfachen Abfrage in Azure Cognitive Search
 
@@ -37,13 +37,13 @@ Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer H
 
 Nachdem Sie den Anforderungsheader angegeben haben, können Sie ihn für alle Abfragen in diesem Artikel wiederverwenden, indem Sie lediglich die Zeichenfolge **search=** austauschen. 
 
-  ![Festlegen von Parametern für Postman-Anforderungsheader](media/search-query-lucene-examples/postman-header.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 ### <a name="set-the-request-url"></a>Festlegen der Anforderungs-URL
 
 Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, die den Azure Cognitive Search-Endpunkt und die Suchzeichenfolge enthält.
 
-  ![Postman-Anforderungsheader GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 Die URL-Komposition umfasst die folgenden Elemente:
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
 
-  ![Postman-Beispielantwort](media/search-query-lucene-examples/postman-sample-results.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von „1“ kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine Kriterien angewandt wurden. Bei einer NULL-Suche ohne Kriterien werden Zeilen in willkürlicher Reihenfolge zurückgegeben. Wenn Sie tatsächliche Kriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 Wenn sie zusammen verwendet werden, wird der Filter zuerst auf den gesamten Index angewendet, und anschließend wird die Suche für die Ergebnisse des Filters ausgeführt. Filter können daher eine nützliche Methode zum Verbessern der Abfrageleistung darstellen, da sie die Menge der Dokumente reduzieren, die bei der Suchabfrage verarbeitet werden müssen.
 
-  ![Filtern von Abfrageantworten](media/search-query-simple-examples/filtered-query.png)
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 Wenn Sie dies mithilfe von GET in Postman testen möchten, können Sie die folgende Zeichenfolge einfügen:
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  ![Bereichsfilter für numerische Bereiche](media/search-query-simple-examples/rangefilternumeric.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  ![Bereichsfilter für Textbereiche](media/search-query-simple-examples/rangefiltertext.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 Dies können Sie mithilfe von GET auch in Postman testen:
 
@@ -251,14 +251,14 @@ Bei Verwendung der Standardeinstellung für „searchMode“ (any) werden 2.800 
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![Suchmodus „any“](media/search-query-simple-examples/searchmodeany.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 Wenn Sie searchMode in `all` ändern, kommt es für die Kriterien zu einem kumulativen Effekt, und es wird ein kleineres Resultset mit nur 21 Dokumenten zurückgegeben. Dies sind Dokumente, die den gesamten Begriff „fire department“ enthalten, abzüglich der Jobs unter der Metrotech Center-Adresse.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![Suchmodus „all“](media/search-query-simple-examples/searchmodeall.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Festlegen von Parametern für Postman-Anforderungsheader" border="false":::
 
 ## <a name="example-8-structuring-results"></a>Beispiel 8: Strukturieren von Ergebnissen
 

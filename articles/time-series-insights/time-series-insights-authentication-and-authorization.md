@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690390"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665808"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -85,7 +85,7 @@ Wenn Sie in **Schritt 3** die Anmeldeinformationen Ihrer Anwendung und Ihrer Ben
 
    1. In C# können Sie das Token für die Anwendung mit dem folgenden Code abrufen. Ein vollständiges Beispiel zum Abfragen von Daten aus einer Gen1-Umgebung finden Sie unter [Abfragen von Daten mit C#](time-series-insights-query-data-csharp.md).
 
-        Informationen zum Zugreifen auf den C#-Code finden Sie im Repository [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs). 
+        Informationen zum Zugreifen auf den C#-Code finden Sie im Repository [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs).
 
    1. Das Token kann dann im `Authorization`-Header übergeben werden, wenn die Anwendung die Azure Time Series Insights-API aufruft.
 
@@ -117,7 +117,7 @@ Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 > [!IMPORTANT]
 > Das Token muss spezifisch für die `https://api.timeseries.azure.com/`-Ressource (auch als „Zielgruppe“ des Tokens bezeichnet) ausgestellt werden.
 
-> * Ihre [Postman](https://www.getpostman.com/)-**AuthURL** lautet darum: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`.
+> * Ihre [Postman](https://www.getpostman.com/)-**AuthURL** lautet darum: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com//.default`.
 > * `https://api.timeseries.azure.com/` ist gültig, `https://api.timeseries.azure.com` jedoch nicht.
 
 Optionale Anforderungsheader werden nachfolgend beschrieben.

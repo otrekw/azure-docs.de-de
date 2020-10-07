@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362158"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358541"
 ---
 # <a name="what-is-custom-commands"></a>Was sind benutzerdefinierte Befehle?
 
@@ -52,7 +52,7 @@ Wenn Sie mit der Schnellstartanleitung fertig sind, sehen Sie sich unsere Leitf�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Kostenloses Testen des Speech-Diensts](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)
 * [Beispiele finden Sie in unserem Repository für Sprachassistenten auf GitHub](https://aka.ms/speech/cc-samples)
 * [Wechseln Sie zum Speech Studio, um Benutzerdefinierte Befehle auszuprobieren](https://speech.microsoft.com/customcommands)
 * [Abrufen des Speech SDK](speech-sdk.md)

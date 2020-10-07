@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918824"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360122"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrieren in eine Clientanwendung mithilfe des Speech SDK
 
@@ -34,7 +34,7 @@ Eine Anwendung für benutzerdefinierte Befehle ist erforderlich, um diesen Artik
 Außerdem benötigen Sie:
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) oder höher. Dieses Handbuch basiert auf Visual Studio 2019.
-> * Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
+> * Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](overview.md#try-the-speech-service-for-free), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
 > * [Aktivieren Ihres Geräts für die Entwicklung](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>Schritt 1: Veröffentlichen der Anwendung für benutzerdefinierte Befehle

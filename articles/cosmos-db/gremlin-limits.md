@@ -1,23 +1,23 @@
 ---
 title: Grenzwerte für Azure Cosmos DB Gremlin
 description: Referenzdokumentation zu Laufzeitbeschränkungen der Graph-Engine
-author: LuisBosquez
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: lbosq
-ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: sngun
+ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72029847"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400467"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB: Gremlin-Grenzwerte
 In diesem Artikel werden die Grenzwerte der Azure Cosmos DB Gremlin-Engine beschrieben, und es wird erläutert, wie sie sich auf Kundendurchläufe auswirken können.
 
-Cosmos DB Gremlin baut auf der Cosmos DB-Infrastruktur auf. Aus diesem Grund gelten weiterhin alle Grenzwerte, die in [Azure Cosmos DB-Diensteinschränkungen](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) erläutert werden. 
+Cosmos DB Gremlin baut auf der Cosmos DB-Infrastruktur auf. Aus diesem Grund gelten weiterhin alle Grenzwerte, die in [Azure Cosmos DB-Diensteinschränkungen](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) erläutert werden.
 
 ## <a name="limits"></a>Einschränkungen
 
@@ -34,5 +34,5 @@ Wenn der Gremlin-Grenzwert erreicht wird, wird der Durchlauf mit einem **x-ms-st
 *Ressourcentoken pro Stunde* | **100** | Die Anzahl eindeutiger Ressourcentoken, die von Gremlin-Clients zum Herstellen einer Verbindung mit dem Gremlin-Konto in einer Region verwendet werden. Wenn die Anwendung das stündliche eindeutige Tokenlimit überschreitet, wird bei der nächsten Authentifizierungsanforderung `"Exceeded allowed resource token limit of 100 that can be used concurrently"` zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure Cosmos DB: Gremlin-Antwortheader](gremlin-headers.md) 
+* [Azure Cosmos DB: Gremlin-Antwortheader](gremlin-headers.md)
 * [Azure Cosmos DB-Ressourcentoken mit Gremlin](how-to-use-resource-tokens-gremlin.md)

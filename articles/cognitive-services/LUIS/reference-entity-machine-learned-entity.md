@@ -3,19 +3,17 @@ title: Entität vom Typ „Machine Learning“ – LUIS
 titleSuffix: Azure Cognitive Services
 description: Die Machine Learning-Entität stellt die bevorzugte Entität für das Erstellen von LUIS-Anwendungen dar.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
-ms.author: diberry
-ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684582"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542239"
 ---
 # <a name="machine-learning-entity"></a>Machine Learning-Entität
 

@@ -4,17 +4,17 @@ description: Erfahren Sie mehr, über die Features für Kundendatenanforderungen
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501694"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665904"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -54,13 +54,13 @@ Es ist zudem möglich, Exportvorgänge für Zugriffsrichtlinien über den Vorgan
 
 Möglicherweise gelangen personenbezogene Daten in den Time Series Insights-Speicher: ein anderes Szenario als bei Benutzer- und Administratordaten. Wenn Sie die in Time Series Insights gespeicherten Daten als personenbezogene Daten einstufen, können Sie diese Daten mit den folgenden Schritten exportieren und löschen:
 
-**Anzeigen und Exportieren von Daten**
+### <a name="view-and-export-data"></a>Anzeigen und Exportieren von Daten
 
 Zum Anzeigen und Exportieren von in Time Series Insights gespeicherten Daten müssen Sie die entsprechenden Daten suchen. Sie können Daten über den Time Series Insights-Explorer oder die Time Series Insights-Abfrage-APIs anzeigen und exportieren. Um Daten über den Time Series Insights-Explorer anzuzeigen und zu exportieren, suchen Sie zunächst die betreffenden Benutzerdaten. Klicken Sie nach der Suche mit der rechten Maustaste auf das Diagramm, und wählen Sie **Ereignisse untersuchen** aus. Im dann angezeigten Raster mit den Ereignissen stehen Optionen zum Exportieren der Daten als CSV- und JSON-Datei zur Verfügung.
 
 Weitere Informationen finden Sie unter [Azure Time Series Insights-Explorer](time-series-insights-explorer.md).
 
-**Löschen von Daten**
+### <a name="delete-data"></a>Löschen von Daten
 
 Derzeit ist in Time Series Insights die differenzierte Löschung von Daten nicht möglich. Time Series Insights bietet jedoch die Möglichkeit, die in Time Series Insights gespeicherten Kundendaten durch Konfigurieren von Aufbewahrungsrichtlinien zu entfernen. Sie können die Aufbewahrungsdauer für die gesamte Time Series Insights-Umgebung in die Anzahl von Tagen anpassen, die Ihren Anforderungen für Löschvorgänge entspricht.
 

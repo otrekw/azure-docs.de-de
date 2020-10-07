@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e71c426fee62187bb680c7b8bd1af92d87e85274
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e54e8e9de1df4c8a1c870285d36e4580daaa698a
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288808"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667825"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>Bereitstellen und Verwalten von Azure Time Series Insights Gen2
 
@@ -30,12 +30,13 @@ Wenn Sie eine Azure Time Series Insights Gen2-Umgebung bereitstellen, erstellen 
 * Einen optionalen warmen Speicher für schnellere und unbegrenzte Abfragen
 
 > [!TIP]
+>
 > * Erfahren Sie, [wie Sie Ihre Umgebung planen](./time-series-insights-update-plan.md).
 > * Hier finden Sie weitere Informationen zum [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md) und zum [Hinzufügen einer IoT Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
 Sie lernen Folgendes:
 
-1.  Ordnen Sie jede Azure Time Series Insights Gen2-Umgebung einer Ereignisquelle zu. Außerdem geben Sie eine Timestamp-ID-Eigenschaft und eine eindeutige Consumergruppe an, um sicherzustellen, dass die Umgebung auf die entsprechenden Ereignisse zugreifen kann.
+1. Ordnen Sie jede Azure Time Series Insights Gen2-Umgebung einer Ereignisquelle zu. Außerdem geben Sie eine Timestamp-ID-Eigenschaft und eine eindeutige Consumergruppe an, um sicherzustellen, dass die Umgebung auf die entsprechenden Ereignisse zugreifen kann.
 
 1. Nach Abschluss der Bereitstellung können Sie Ihre Zugriffsrichtlinien und andere Umgebungsattribute gemäß Ihren geschäftlichen Anforderungen ändern.
 
@@ -45,6 +46,7 @@ Sie lernen Folgendes:
 ## <a name="create-the-environment"></a>Erstellen der Umgebung
 
 So erstellen Sie eine Azure Time Series Insights Gen2-Umgebung
+
 1. Erstellen Sie eine Azure Time Series Insights-Ressource unter *Internet der Dinge* im [Azure-Portal](https://portal.azure.com/).
 
 1. Wählen Sie **Gen2(L1)** als **Ebene** aus. Geben Sie einen Umgebungsnamen an, und wählen Sie die zu verwendende Abonnementgruppe und Ressourcengruppe aus. Wählen Sie dann einen unterstützten Ort zum Hosten der Umgebung aus.
@@ -54,18 +56,20 @@ So erstellen Sie eine Azure Time Series Insights Gen2-Umgebung
 1. Geben Sie eine Time Series-ID ein.
 
     > [!NOTE]
+    >
     > * Bei der Time Series-ID muss die *Groß-/Kleinschreibung* beachtet werden. Sie ist zudem *unveränderlich*. (Nach dem Festlegen kann sie nicht mehr geändert werden.)
     > * Time Series-IDs können aus bis zu *drei* Schlüsseln bestehen. Stellen Sie sich dies als einen Primärschlüssel in einer Datenbank vor, der eindeutig jeden Gerätesensor darstellt, der Daten an Ihre Umgebung senden würde. Dabei könnte es sich um eine Eigenschaft oder eine Kombination aus bis zu drei Eigenschaften handeln.
     > * Hier finden Sie weitere Informationen zum [Auswählen einer Time Series-ID](time-series-insights-update-how-to-id.md)
 
-1. Erstellen Sie ein Azure-Speicherkonto, indem Sie einen Speicherkontonamen und Kontotyp auswählen und eine [Replikations](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal)auswahl treffen. Hierdurch wird automatisch ein Azure Storage-Konto erstellt. Standardmäßig wird ein Konto vom Typ [Universell v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) erstellt. Das Konto wird in derselben Region wie die Azure Time Series Insights Gen2-Umgebung erstellt, die Sie zuvor ausgewählt haben. Alternativ können Sie auch Ihren eigenen Speicher (BYOS) über eine [ARM-Vorlage](./time-series-insights-manage-resources-using-azure-resource-manager-template.md) verwenden, wenn Sie eine neue Azure Time Series Gen2-Umgebung erstellen. 
+1. Erstellen Sie ein Azure-Speicherkonto, indem Sie einen Speicherkontonamen und Kontotyp auswählen und eine [Replikations](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal)auswahl treffen. Hierdurch wird automatisch ein Azure Storage-Konto erstellt. Standardmäßig wird ein Konto vom Typ [Universell v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) erstellt. Das Konto wird in derselben Region wie die Azure Time Series Insights Gen2-Umgebung erstellt, die Sie zuvor ausgewählt haben.
+Alternativ können Sie auch Ihren eigenen Speicher (BYOS) über eine [ARM-Vorlage](./time-series-insights-manage-resources-using-azure-resource-manager-template.md) verwenden, wenn Sie eine neue Azure Time Series Gen2-Umgebung erstellen.
 
 1. **(Optional)** Aktivieren Sie den warmen Speicher für Ihre Umgebung, wenn Sie schnellere und unbegrenzte Abfragen über die neuesten Daten in Ihrer Umgebung wünschen. Sie können auch einen warmen Speicher über die Option **Speicherkonfiguration** im linken Navigationsbereich erstellen oder löschen, nachdem Sie eine Azure Time Series Insights Gen2-Umgebung erstellt haben.
 
 1. **(Optional)** Sie können jetzt eine Ereignisquelle hinzufügen. Sie können aber auch warten, bis die Instanz bereitgestellt wurde.
 
-   * Azure Time Series Insights unterstützt [Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) und [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) als Ereignisquellenoptionen. Zwar können Sie bei der Erstellung der Umgebung nur eine einzelne Ereignisquelle hinzufügen, doch können Sie später eine weitere Ereignisquelle hinzufügen. 
-   
+   * Azure Time Series Insights unterstützt [Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) und [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) als Ereignisquellenoptionen. Zwar können Sie bei der Erstellung der Umgebung nur eine einzelne Ereignisquelle hinzufügen, doch können Sie später eine weitere Ereignisquelle hinzufügen.
+
      Sie können eine vorhandene Consumergruppe auswählen oder eine neue Consumergruppe erstellen, wenn Sie die Ereignisquelle hinzufügen. Beachten Sie, dass die Ereignisquelle immer eine eindeutige Consumergruppe erfordert, damit Ihre Umgebung Daten in diese einlesen kann.
 
    * Wählen Sie die entsprechende Timestamp-Eigenschaft aus. Standardmäßig verwendet Azure Time Series Insights die in der Warteschlange verbrachte Zeit einer Nachricht für jede Ereignisquelle.
@@ -99,8 +103,8 @@ Sie können Ihre Azure Time Series Insights Gen2-Umgebung über das Azure-Portal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über allgemein verfügbare Umgebungen sowie Gen2-Umgebungen von Azure Time Series Insights, indem Sie [Planen Ihrer Umgebung](./time-series-insights-update-plan.md) lesen.
+* Erfahren Sie mehr über allgemein verfügbare Umgebungen sowie Gen2-Umgebungen von Azure Time Series Insights, indem Sie [Planen Ihrer Umgebung](./time-series-insights-update-plan.md) lesen.
 
-- Informieren Sie sich über das [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+* Informieren Sie sich über das [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-- Konfigurieren [einer IoT-Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md).
+* Konfigurieren [einer IoT-Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md).

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372738"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533057"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Vorbereiten eines CentOS-basierten virtuellen Computers für Azure
 
@@ -163,7 +163,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein CentOS-Linux-Betr
     sudo yum install microsoft-hyper-v
     ```
 
-    Alternativ können Sie auch die Anweisungen für die manuelle Installation auf der [Downloadseite von LIS](https://www.microsoft.com/download/details.aspx?id=51612) ausführen, um das RPM auf Ihrem virtuellen Computer zu installieren.
+    Alternativ können Sie auch die Anweisungen für die manuelle Installation auf der [Downloadseite von LIS](https://www.microsoft.com/download/details.aspx?id=55106) ausführen, um das RPM auf Ihrem virtuellen Computer zu installieren.
 
 12. Installieren Sie den Azure Linux-Agent und die Abhängigkeiten. waagent-Dienst starten und aktivieren:
 

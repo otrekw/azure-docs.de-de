@@ -1,18 +1,18 @@
 ---
 title: MongoDB-Erweiterungsbefehle zum Verwalten von Daten in der Azure Cosmos DB-API für MongoDB
 description: In diesem Artikel wird beschrieben, wie Sie MongoDB-Erweiterungsbefehle zum Verwalten von Daten verwenden, die in der API für MongoDB von Azure Cosmos DB gespeichert sind.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: jasonh
+ms.custom: devx-track-js
+ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415090"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409679"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von MongoDB-Erweiterungsbefehlen zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB 
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: f26b02755c68b4ece4edca8cbbd90ec3330c5d1d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 97381a58cdb759dec30e75860505b3a260223d76
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032502"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761191"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Entwicklungstools auf der Data Science Virtual Machine
 
@@ -24,6 +24,6 @@ ms.locfileid: "90032502"
 
 | Tool | DSVM unter Windows | DSVM unter Linux | Windows 2019 Server-DSVM | Ubuntu 18.04-DSVM | Hinweise zur Verwendung |
 |---|:-:|:-:|:-:|:-:|:--|
-| [Microsoft 365 Apps for Enterprise](/microsoft-365/business/microsoft-365-apps-for-enterprise-product) mit freigegebener Aktivierung: Excel, Word und PowerPoint | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | Sie können Microsoft 365 Apps for Enterprise aktivieren:<br/><ul><li>Weitere Informationen finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Office 365 ProPlus](/deployoffice/overview-shared-computer-activation).</ul> |
+| [Microsoft 365 Apps for Enterprise](https://www.microsoft.com/microsoft-365/business/microsoft-365-apps-for-enterprise) mit freigegebener Aktivierung: Excel, Word und PowerPoint | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | Sie können Microsoft 365 Apps for Enterprise aktivieren:<br/><ul><li>Weitere Informationen finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Office 365 ProPlus](/deployoffice/overview-shared-computer-activation).</ul> |
 | [Power BI Desktop](https://powerbi.microsoft.com/) | <span class='green-check'>&#9989;</span></br> (2.73.55xx) | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span></br> (2.73.55xx) | <span class='red-x'>&#10060;</span> | |
 | Microsoft Edge Browser | <span class='red-x'>&#10060;</span> | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | |

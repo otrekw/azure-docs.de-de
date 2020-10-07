@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Sprachübersetzung
-ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401213"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630069"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 
@@ -58,10 +58,10 @@ Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](https:/
 * [Speech-Geräte-SDK](speech-devices-sdk.md)
 * [REST-API: Spracherkennung](rest-speech-to-text.md)
 * [REST-API: Sprachsynthese](rest-text-to-speech.md)
-* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+* [REST-API: Batchtranskription und Anpassung](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ausführen des [Schnellstarts](get-started-speech-translation.md) zur Sprachübersetzung
-* [Kostenloses Testen des Speech-Diensts](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)
 * [Abrufen des Speech SDK](speech-sdk.md)

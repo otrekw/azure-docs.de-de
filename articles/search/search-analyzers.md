@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009626"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532260"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analysetools für Textverarbeitung in der kognitiven Azure-Suche
 
@@ -147,7 +147,7 @@ Das Beispiel im Detail:
 * In diesem Fall ist „my_analyzer“ die benutzerdefinierte Analyse, die wiederum den angepassten Standard-Tokenizer „my_standard_tokenizer“ und zwei token-Filter („lowercase“ und den angepassten asciifolding-Filter „my_asciifolding“) verwendet.
 * Zudem werden 2 benutzerdefinierte char-Filter definiert: „map_dash“ und „remove_whitespace“. Der erste ersetzt alle Striche durch Unterstriche, der zweite entfernt alle Leerzeichen. Leerzeichen müssen in den Zuordnungsregeln UTF-8-kodiert sein. Die char-Filter werden vor der Tokenisierung angewendet und wirken sich auf die resultierenden Token aus (der Standardtokenisierer trennt bei Gedankenstrichen und Leerzeichen, nicht aber bei Unterstrichen).
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Das Beispiel im Detail:
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Die Standardanalyse ist die Standardeinstellung. Angenommen, Sie möchten die St
 
 Das Element „analyzer“ überschreibt die Standardanalyse für das jeweilige Feld. Es findet keine globale Überschreibung statt. In diesem Beispiel verwendet `text1` die Analyse „pattern“ und `text2` die Standardanalyse, da hierfür keine Analyse angegeben ist.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Das Element „analyzer“ überschreibt die Standardanalyse für das jeweilige 
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Das Element „analyzer“ überschreibt die Standardanalyse für das jeweilige 
 Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschiedliche Analyzer für Indizierung und Suchvorgänge anzugeben. **searchAnalyzer**- und **indexAnalyzer**-Attribut müssen als Paar angegeben werden und ersetzen das Einzelattribut **analyzer**.
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschied
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschied
 
 Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanalyse verwendet werden, während für andere Felder weiterhin die Standardanalyse (oder eine andere vordefinierte oder benutzerdefinierte Analyse) verwendet wird. Bei Verwendung einer Sprachanalyse muss sie sowohl für die Indizierung als auch für Suchvorgänge verwendet werden. Bei Feldern mit Sprachanalyse können für Indizierung und Suche keine unterschiedlichen Analysen verwendet werden.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanal
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C#-Beispiele
 
@@ -317,7 +317,7 @@ Jedes in unveränderter Form ohne Konfiguration verwendete Analysetool wird in e
 
 In diesem Beispiel werden Beschreibungsfeldern Microsoft-Analysetools für Englisch und Französisch zugewiesen. Es ist ein Codeausschnitt aus einer größeren Definition des Hotelindex, der unter Verwendung der Hotelklasse in der Datei „hotels.cs“ des Beispiels [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) erstellt wird.
 
-Rufen Sie das [Analysetool](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) unter Angabe des Typs [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) auf, mit dem ein in der kognitiven Azure-Suche unterstütztes Textanalysetool bereitgestellt wird.
+Rufen Sie das [Analysetool](/dotnet/api/microsoft.azure.search.models.analyzer) unter Angabe des Typs [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername) auf, mit dem ein in der kognitiven Azure-Suche unterstütztes Textanalysetool bereitgestellt wird.
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Rufen Sie das [Analysetool](/dotnet/api/microsoft.azure.search.models.analyzer?v
 
 Wenn eine Anpassung oder Konfiguration erforderlich ist, müssen Sie ein Analysetoolkonstrukt zu einem Index hinzufügen. Nach der Definition können Sie es der Felddefinition hinzufügen, wie im vorherigen Beispiel gezeigt.
 
-Erstellen Sie ein [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)-Objekt. Weitere Beispiele finden Sie unter [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Erstellen Sie ein [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer)-Objekt. Weitere Beispiele finden Sie unter [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {

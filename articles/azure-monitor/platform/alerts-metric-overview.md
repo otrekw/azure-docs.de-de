@@ -1,15 +1,15 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-ms.date: 08/16/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595562"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578069"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -143,6 +143,7 @@ Diese Funktion wird derzeit für Plattformmetriken (keine benutzerdefinierten Me
 | NetApp Files-Kapazitätspools | **Ja** | **Ja** | **Ja** |
 | NetApp Files-Volumes | **Ja** | **Ja** | **Ja** |
 | Schlüsseltresore | **Ja** | **Ja** | **Ja** |
+| Azure Cache for Redis | **Ja** | **Ja** | **Ja** |
 | Data Box Edge-Geräte | **Ja** | **Ja** | **Ja** |
 
 <sup>1</sup> Für Netzwerkmetriken (Eingehender Netzwerkverkehr gesamt, Ausgehender Netzwerkverkehr gesamt, Eingehende Datenflüsse, Ausgehende Datenflüsse, Maximale Erstellungsrate für eingehende Datenflüsse, Maximale Erstellungsrate für ausgehende Datenflüsse) virtueller Computer nicht unterstützt.

@@ -3,12 +3,12 @@ title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-D
 description: Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Service Bus
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341484"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372522"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -149,7 +149,7 @@ Wenn Sie versuchen, eine Kopplung zwischen einem primären Namespace mit einem p
 > [!NOTE]
 > Wenn Sie versuchen, den primären Namespace mit einem privaten Endpunkt und dem sekundären Namespace zu koppeln, prüft der Überprüfungsprozess lediglich, ob ein privater Endpunkt im sekundären Namespace vorhanden ist. Es wird nicht überprüft, ob der Endpunkt funktioniert oder nach dem Failover ausgeführt wird. Sie selbst müssen sicherstellen, dass der sekundäre Namespace mit dem privaten Endpunkt nach dem Failover erwartungsgemäß funktioniert.
 >
-> Gehen Sie wie folgt vor, um die Konfigurationen des privaten Endpunkts zu testen: Senden Sie von einem Ort außerhalb des virtuellen Netzwerks eine [Get queues](/rest/api/servicebus/queues/get)-Anforderung an den sekundären Namespace, und überprüfen Sie, ob Sie eine Fehlermeldung vom Dienst erhalten.
+> Gehen Sie wie folgt vor, um die Konfigurationen des privaten Endpunkts zu testen: Senden Sie von einem Ort außerhalb des virtuellen Netzwerks eine [Get queues](/rest/api/servicebus/stable/queues/get)-Anforderung an den sekundären Namespace, und überprüfen Sie, ob Sie eine Fehlermeldung vom Dienst erhalten.
 
 ### <a name="existing-pairings"></a>Vorhandene Kopplungen
 Wenn die Kopplung zwischen dem primären und dem sekundären Namespace bereits vorhanden ist, kann für den primären Namespace kein privater Endpunkt erstellt werden. Erstellen Sie zunächst einen privaten Endpunkt für den sekundären Namespace und dann einen privaten Endpunkt für den primären Endpunkt, um das Problem zu beheben.
@@ -179,7 +179,7 @@ Der Vorteil dieses Ansatzes besteht darin, dass ein Failover auf Anwendungsebene
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hier](/rest/api/servicebus/disasterrecoveryconfigs) finden Sie Informationen zur REST-API-Referenz für die georedundante Notfallwiederherstellung.
+- [Hier](/rest/api/servicebus/stable/disasterrecoveryconfigs) finden Sie Informationen zur REST-API-Referenz für die georedundante Notfallwiederherstellung.
 - Führen Sie das [Beispiel auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) zur georedundanten Notfallwiederherstellung aus.
 - Sehen Sie sich das [Beispiel zur georedundanten Notfallwiederherstellung, mit dem Nachrichten an einen Alias gesendet werden](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) an.
 

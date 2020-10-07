@@ -3,20 +3,18 @@ title: Verwenden von Features zum Verbessern der LUIS-Wortliste
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie Language Understanding (LUIS), um App-Features hinzuzufügen, die die Erkennung oder Vorhersage von Absichten und Entitäten verbessern können, die Kategorien und Muster
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075205"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540879"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Verstärken des Signals von Wortlisten mithilfe von Features
 

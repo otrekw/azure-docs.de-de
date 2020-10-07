@@ -1,16 +1,14 @@
 ---
 title: Bewährte Methoden für den Azure Service Fabric-Anwendungsentwurf
 description: Hier finden Sie bewährte Methoden und Entwurfsüberlegungen für das Entwickeln von Anwendungen und Diensten mit Azure Service Fabric.
-author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: mfussell
-ms.openlocfilehash: 742cd9b1e7480fcc510b61d8987e42b499a1ff20
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538497"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Bewährte Methoden für den Azure Service Fabric-Anwendungsentwurf
 

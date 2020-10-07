@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362745"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
@@ -59,13 +59,13 @@ Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines de
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Verbinden von Azure Sentinel mit Ihrer Threat Intelligence-Plattform
 
-## <a name="prerequisites"></a>Voraussetzungen  
+### <a name="prerequisites"></a>Voraussetzungen  
 
 - Azure AD-Rolle des Unternehmensadministrators oder Sicherheitsadministrators, um Berechtigungen für Ihr TIP-Produkt oder Ihre benutzerdefinierte Anwendung zu erteilen, die die direkte Integration mit der tiIndicators-API von Microsoft Graph-Sicherheit verwendet.
 
 - Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich, um Ihre Bedrohungsindikatoren zu speichern.
 
-## <a name="instructions"></a>Instructions
+### <a name="instructions"></a>Instructions
 
 1. [Registrieren Sie eine Anwendung](/graph/auth-v2-service#1-register-your-app) in Azure Active Directory, um eine Anwendungs-ID, ein Anwendungsgeheimnis und eine Azure Active Directory-Mandanten-ID zu erhalten. Sie benötigen diese Werte, wenn Sie Ihr integriertes TIP-Produkt oder Ihre integrierte Anwendung konfigurieren, die eine direkte Integration mit der tiIndicators-API der Microsoft Graph-Sicherheit verwendet.
 
@@ -89,13 +89,13 @@ Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines de
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Verbinden von Azure Sentinel mit TAXII-Servern
 
-## <a name="prerequisites"></a>Voraussetzungen  
+### <a name="prerequisites"></a>Voraussetzungen
 
 - Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich, um Ihre Bedrohungsindikatoren zu speichern.
 
 - TAXII 2.0-Server-URI und Sammlungs-ID
 
-## <a name="instructions"></a>Instructions
+### <a name="instructions"></a>Instructions
 
 1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Datenconnectors**, und wählen Sie den Connector **Threat Intelligence – TAXII (Vorschauversion)** aus.
 

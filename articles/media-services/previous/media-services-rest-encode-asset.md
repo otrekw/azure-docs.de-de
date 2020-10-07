@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d2e7be89b3319445a69d5b91990e9888cccd484a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0bff0c6b3ef7934188b548bd06c35d83b323fde
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359595"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Codieren eines Medienobjekts mit Media Encoder Standard
 
@@ -101,7 +101,7 @@ Im folgenden Beispiel wird gezeigt, wie das AssetName-Attribut festgelegt wird:
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-## <a name="considerations"></a>Überlegungen
+### <a name="considerations"></a>Überlegungen
 * TaskBody-Eigenschaften müssen literale XML-Elemente verwenden, um die Anzahl der vom Task verwendeten Eingabe- oder Ausgabemedienobjekte zu definieren. Der Artikel „Aufgabe“ enthält die XML-Schemadefinition für den XML-Code.
 * In der "TaskBody"-Definition muss jeder interne Wert für `<inputAsset>` und `<outputAsset>` als "JobInputAsset(value)" oder "JobOutputAsset(value)" festgelegt werden.
 * Eine Aufgabe kann mehrere Ausgabemedienobjekte besitzen. Ein JobOutputAsset(x)-Objekt kann nur ein Mal als Ausgabe einer Aufgabe in einem Auftrag verwendet werden.

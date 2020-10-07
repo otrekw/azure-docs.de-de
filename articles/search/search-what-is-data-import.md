@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932762"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538786"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 
@@ -35,7 +35,7 @@ Dieser Ansatz ist flexibler als ein Pull-Modell, da Sie Dokumente einzeln oder i
 Sie können die folgenden APIs verwenden, um ein oder mehrere Dokumente in einen Index zu laden:
 
 + [Hinzufügen, Aktualisieren oder Löschen von Dokumenten (REST-API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction-Klasse](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) oder [indexBatch-Klasse](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [indexAction-Klasse](/dotnet/api/microsoft.azure.search.models.indexaction) oder [indexBatch-Klasse](/dotnet/api/microsoft.azure.search.models.indexbatch) 
 
 Es gibt derzeit keine Toolunterstützung für die Push-Übertragung von Daten über das Portal.
 

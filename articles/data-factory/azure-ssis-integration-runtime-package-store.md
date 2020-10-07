@@ -11,17 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 09/06/2020
-ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.date: 09/29/2020
+ms.openlocfilehash: 158adb6b35b488c310bd2912d4076b86579383a4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505487"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446397"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Verwalten von Paketen mit dem Paketspeicher für Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Wenn Sie Ihre lokalen SQL Server Integration Services-Workloads (SSIS) in die Cloud verschieben möchten, können Sie Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen einer Azure-SSIS IR-Instanz](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure). Die Azure-SSIS IR unterstützt Folgendes:
 

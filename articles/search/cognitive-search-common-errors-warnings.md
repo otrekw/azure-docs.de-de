@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362813"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -59,9 +59,9 @@ Der Indexer mit einer Blob-Datenquelle konnte die Inhalte oder Metadaten nicht a
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
-| Blob überschreitet das Größenlimit | Das Dokument ist `'150441598'` Bytes groß und überschreitet daher das Größenlimit von `'134217728'` Bytes für die Dokumentenextrahierung für Ihre aktuelle Dienstebene. | [Blob-Indizierungsfehler](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| Blob weist nicht unterstützten Inhaltstyp auf | Das Dokument weist den nicht unterstützten Inhaltstyp `'image/png'` auf | [Blob-Indizierungsfehler](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| Blob ist verschlüsselt | Das Dokument konnte nicht verarbeitet werden. Es ist möglicherweise verschlüsselt oder kennwortgeschützt. | Sie können das Blob mit [Blob-Einstellungen](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed) überspringen. |
+| Blob überschreitet das Größenlimit | Das Dokument ist `'150441598'` Bytes groß und überschreitet daher das Größenlimit von `'134217728'` Bytes für die Dokumentenextrahierung für Ihre aktuelle Dienstebene. | [Blob-Indizierungsfehler](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| Blob weist nicht unterstützten Inhaltstyp auf | Das Dokument weist den nicht unterstützten Inhaltstyp `'image/png'` auf | [Blob-Indizierungsfehler](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| Blob ist verschlüsselt | Das Dokument konnte nicht verarbeitet werden. Es ist möglicherweise verschlüsselt oder kennwortgeschützt. | Sie können das Blob mit [Blob-Einstellungen](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex) überspringen. |
 | Vorübergehende Probleme | „Fehler beim Verarbeiten des Blobs: Anforderung abgebrochen: Die Anforderung wurde angebrochen.“ „Zeitüberschreitung beim Verarbeiten des Dokuments.“ | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Date
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Error: Die integrierte Änderungsnachverfolgungs-Richtlinie kann nicht verwendet werden, da die Tabelle einen zusammengesetzten Primärschlüssel aufweist.
 
-Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
+Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 

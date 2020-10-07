@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 7087fb7b1de0b16480d0bb02043b40e0e97204f6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4c56f8cba232220844a8a8f9c408a60c89c581cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449956"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613627"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Funktionsabdeckung für Azure PaaS-Ressourcen<a name="paas-services"></a>
 
@@ -36,9 +36,9 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 |Azure Container Registry|-|-|✔|
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
-|Azure Database for MySQL*|✔|✔|-|
-|Azure Database for PostgreSQL*|✔|✔|-|
+|Azure Data Lake Storage|✔|✔|-|
+|Azure Database for MySQL*|-|✔|-|
+|Azure Database for PostgreSQL*|-|✔|-|
 |Azure Event Hubs-Namespace|✔|-|-|
 |Azure Functions-App|✔|-|-|
 |Azure-Schlüsseltresor|✔|✔|-|
@@ -49,7 +49,7 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 |Verwaltete Azure SQL-Instanz|✔|✔|✔|
 |Azure Service Bus-Namespace|✔|-|-|
 |Azure Service Fabric-Konto|✔|-|-|
-|Azure Storage-Konten|✔|-|-|
+|Azure Storage-Konten|✔|✔|-|
 |Azure Stream Analytics|✔|-|-|
 |Azure-Abonnement|✔ **|✔|-|
 |Virtuelles Azure-Netzwerk</br> (einschließlich Subnetze, NICs und Netzwerksicherheitsgruppen)|✔|-|-|

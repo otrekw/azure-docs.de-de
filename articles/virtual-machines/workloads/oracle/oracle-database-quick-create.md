@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/28/2020
+ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 5a94fa917625a32c0ae8b47a4d1a380e3f18d053
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 31743fd292bb45ee7107bc17f7d5dc43db8ed3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274689"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728283"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -141,7 +141,7 @@ Die Oracle-Software ist bereits im Marketplace-Image installiert. Erstellen Sie 
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
-           -datafileDestination "/u01/app/oracle/oradata/"
+           -datafileDestination "/u01/app/oracle/oradata/" \
            -ignorePreReqs
     ```
 

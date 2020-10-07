@@ -4,12 +4,12 @@ description: Autoskalierung in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073477"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567263"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Übersicht über die Autoskalierung in Microsoft Azure
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -102,11 +102,14 @@ Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 | VMs: Klassisch |[Scaling Classic Virtual Machine Availability Sets (Skalieren von klassischen VM-Verfügbarkeitsgruppen)](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | VMs: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | VMs: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| VMs: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
+| VMs: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Azure App Service |[Hochskalieren einer App in Azure App Service](../../app-service/manage-scale-up.md)|
 | API Management-Dienst|[Automatisches Skalieren einer Azure API Management-Instanz](../../api-management/api-management-howto-autoscale.md)
 | Azure Data Explorer-Cluster|[Verwalten der Skalierung von Azure Data Explorer-Clustern bei sich änderndem Bedarf](/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[Hochskalieren einer App in Azure App Service](../../app-service/manage-scale-up.md)|
 | Logic Apps |[Hinzufügen von ISE-Kapazität (Integration Service Environment, Integrationsdienstumgebung)](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
+| Spring Cloud |[Einrichten der Autoskalierung für Microserviceanwendungen](../../spring-cloud/spring-cloud-tutorial-setup-autoscale.md)|
+| Service Bus |[Automatisches Aktualisieren von Messagingeinheiten eines Azure Service Bus-Namespace](../../service-bus-messaging/automate-update-messaging-units.md)|
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur automatischen Skalierung können Sie den obigen exemplarischen Vorgehensweisen für die automatische Skalierung oder den folgenden Ressourcen entnehmen:
 

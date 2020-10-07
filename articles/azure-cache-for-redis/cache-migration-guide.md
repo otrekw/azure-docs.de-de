@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372067"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrieren zu Azure Cache for Redis
 In diesem Artikel werden verschiedene Vorgehensweisen zum Migrieren einer vorhandenen, lokal oder in einem anderen Clouddienst ausgeführten Redis Cache-Instanz zu Azure Cache for Redis beschrieben.
@@ -34,7 +34,7 @@ Es gibt verschiedene Möglichkeiten, zwischen verschiedenen Caches zu wechseln. 
    | ------------ | ---------- | ------------- |
    | Erstellen eines neuen Caches | Die am einfachsten zu implementierende Methode. | Daten müssen im neuen Cache wieder aufgefüllt werden, was bei vielen Anwendungen möglicherweise nicht funktioniert. |
    | Exportieren und Importieren von Daten über eine RDB-Datei | Im Allgemeinen mit jedem Redis-Cache kompatibel. | Einige Daten könnten verloren gehen, wenn sie nach dem Generieren der RDB-Datei in den vorhandenen Cache geschrieben werden. | 
-   | Duale Schreibvorgänge in zwei Caches | Kein Datenverlust und keine Ausfallzeiten. Unterbrechungsfreie Vorgänge im vorhandenen Cache. Einfacheres Testen des neuen Caches. | Für einen längeren Zeitraum sind zwei Caches erforderlich. | 
+   | Duale Schreibvorgänge in zwei Caches | Kein Datenverlust und keine Ausfallzeiten Unterbrechungsfreie Vorgänge im vorhandenen Cache. Einfacheres Testen des neuen Caches. | Für einen längeren Zeitraum sind zwei Caches erforderlich. | 
    | Programmgesteuertes Migrieren von Daten | Vollständige Kontrolle über die Verlagerung der Daten. | Erfordert benutzerdefinierten Code. | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>Erstellen einer neuen Azure Cache for Redis-Instanz

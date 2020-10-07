@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 46b95c438830a488494d50308d71a115d6f0da42
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982141"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446379"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Verschieben von Ressourcen in eine neue Region – Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ Die Replikation aller Datenbanken auf den Instanzen wird automatisch initiiert. 
 
 ### <a name="monitor-the-preparation-process"></a>Überwachen des Vorbereitungsprozesses
 
-Sie können in regelmäßigen Abständen [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) aufrufen, um die Replikation Ihrer Datenbanken von der Quelle zum Ziel zu überwachen. Das Ausgabeprojekt von `Get-AzSqlDatabaseFailoverGroup` umfasst eine Eigenschaft für den **ReplicationState**:
+Sie können in regelmäßigen Abständen [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) aufrufen, um die Replikation Ihrer Datenbanken von der Quelle zum Ziel zu überwachen. Das Ausgabeprojekt von `Get-AzSqlDatabaseFailoverGroup` umfasst eine Eigenschaft für den **ReplicationState**:
 
 - **ReplicationState = 2** (CATCH_UP) gibt an, dass die Datenbank synchronisiert ist und das Failover sicher ausgeführt werden kann.
 - **ReplicationState = 0** (SEEDING) gibt an, dass das Seeding für die Datenbank noch nicht abgeschlossen ist und bei einem Failover ein Fehler auftritt.
@@ -182,7 +182,7 @@ Sobald **ReplicationState**`2` ist, verbinden Sie sich mit der jeweiligen Datenb
 ### <a name="initiate-the-move"></a>Initiieren der Verschiebung
 
 1. Stellen Sie über den sekundären Endpunkt `<fog-name>.secondary.database.windows.net` eine Verbindung mit der verwalteten Zielinstanz her.
-1. Verwenden Sie [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2), um die sekundäre verwaltete Instanz auf die primäre mit vollständiger Synchronisation umzuschalten. Dieser Vorgang wird erfolgreich ausgeführt, oder es wird ein Rollback ausgeführt.
+1. Verwenden Sie [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup), um die sekundäre verwaltete Instanz auf die primäre mit vollständiger Synchronisation umzuschalten. Dieser Vorgang wird erfolgreich ausgeführt, oder es wird ein Rollback ausgeführt.
 1. Vergewissern Sie sich, dass der Befehl erfolgreich abgeschlossen wurde, indem Sie `nslook up <fog-name>.secondary.database.windows.net` verwenden, um sicherzustellen, dass der DNS CNAME-Eintrag auf die IP-Adresse der Zielregion verweist. Wenn beim Switch-Befehl ein Fehler auftritt, wird CNAME nicht aktualisiert.
 
 ### <a name="remove-the-source-managed-instances"></a>Entfernen der verwalteten Quellinstanzen

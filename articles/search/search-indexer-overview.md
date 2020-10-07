@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971387"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397894"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexer in Azure Cognitive Search
 
@@ -60,7 +60,7 @@ Bei einer anfänglichen Ausführung, bei der der Index leer ist, liest ein Index
 
 Für jedes Dokument, das ein Indexer erfasst, implementiert oder koordiniert er mehrere Schritte, vom Abrufen des Dokuments bis hin zu einer endgültigen Suchmaschinenübergabe für die Indizierung. Optional ist ein Indexer auch bei der Initiierung von Skillset-Ausführungen und -Ausgaben dienlich, vorausgesetzt, dass ein Skillset definiert ist.
 
-![Indexerphasen](./media/search-indexer-overview/indexer-stages.png "Indexerphasen")
+:::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="Indexerphasen" border="false":::
 
 ### <a name="stage-1-document-cracking"></a>Phase 1: Dokumententschlüsselung
 
@@ -88,7 +88,7 @@ Wie bei Feldzuordnungen, die Literalwerte aus den Quellfeldern den Zielfeldern z
 
 Die nächste Abbildung zeigt eine Beispieldarstellung einer Indexer-[Debugsitzung](cognitive-search-debug-session.md)der Indexerphasen: Dokumententschlüsselung, Feldzuordnungen, Skillset-Ausführung und Ausgabefeldzuordnungen.
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="Beispieldebugsitzung" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="Indexerphasen" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>Grundlegende Konfigurationsschritte
 

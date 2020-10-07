@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918093"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537904"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL: doppelte Infrastrukturverschlüsselung
-
-> [!NOTE]
-> Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an AskAzureDBforPostgreSQL@service.microsoft.com.
 
 Azure Database for PostgreSQL arbeitet mit der [Verschlüsselung gespeicherter ruhender Daten](concepts-security.md#at-rest) unter Verwendung von Schlüsseln, die von Microsoft verwaltet werden. Daten, einschließlich Sicherungen, werden auf Datenträgern verschlüsselt, wobei diese Verschlüsselung stets aktiviert ist und nicht deaktiviert werden kann. Die Verschlüsselung beruht auf einem gemäß FIPS 140-2 validierten kryptografischen Modul und einem AES-256-Bit-Verschlüsselungsverfahren für die Azure-Speicherverschlüsselung.
 

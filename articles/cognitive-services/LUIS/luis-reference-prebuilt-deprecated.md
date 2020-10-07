@@ -3,20 +3,18 @@ title: 'Veraltete vordefinierte Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zu veralteten vordefinierten Entitäten in LUIS (Language Understanding Intelligent Service).
 services: cognitive-services
-author: diberry
 ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a050990c28b9137440ec05d918774d76f216be8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270674"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540845"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Veraltete vordefinierte Entitäten in einer LUIS-App
 Die folgenden vordefinierten Entitäten sind veraltet und können neuen LUIS-Apps nicht hinzugefügt werden.

@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73820176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261871"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Verwenden der Dashboardfunktionen des Solution Accelerators für Connected Factory
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Im Schnellstart [Bereitstellen einer cloudbasierten Lösung zum Verwalten industrieller IoT-Geräte](quickstart-connected-factory-deploy.md) haben Sie erfahren, wie Sie im Dashboard navigieren und auf Alarme reagieren. Hier lernen Sie zusätzliche Dashboardfunktionen kennen, mit denen Sie Ihre industriellen IoT-Geräte überwachen und verwalten können.
 

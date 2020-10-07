@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935465"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403380"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -110,12 +110,11 @@ Bei der portalbasierten Indizierung (wie im Schnellstart beschrieben) wird durch
 ## <a name="tip-8-increase-indexing-throughput"></a>Tipp 8: Erhöhen Sie den Durchsatz der Indizierung.
 
 Für eine [parallele Indizierung](search-howto-large-index.md) platzieren Sie Ihre Daten in mehrere Container oder mehrere virtuelle Ordner innerhalb desselben Containers. Erstellen Sie dann mehrere Datenquellen-Indexer-Paare. Alle Indexer können das gleiche Skillset verwenden und in den gleichen Zielsuchindex schreiben, sodass Ihre Such-App über diese Partitionierung nicht informiert sein muss.
-Weitere Informationen finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Weitere Informationen
+
 + [Schnellstart: Erstellen einer KI-Anreicherungspipeline im Portal](cognitive-search-quickstart-blob.md)
 + [Tutorial: REST-APIs für KI-Anreicherungen](cognitive-search-tutorial-blob.md)
 + [Angeben von Anmeldeinformationen](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Zuordnen angereicherter Felder zu einem Index](cognitive-search-output-field-mapping.md)

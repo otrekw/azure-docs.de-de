@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973040"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448928"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -610,7 +610,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |query_hash_s|Der Abfragehash der fehlerhaften Abfrage (falls verfügbar) |
 |query_plan_hash_s|Hash des Abfrageplans der fehlerhaften Abfrage (falls verfügbar) |
 
-Weitere Informationen zu [SQL-Fehlermeldungen](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
+Weitere Informationen zu [SQL-Fehlermeldungen](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors).
 
 #### <a name="database-wait-statistics-dataset"></a>Dataset zur Wartestatistik der Datenbank
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74379121"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627371"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -40,7 +40,6 @@ Dieser Artikel enthält Anleitungen zur Problembehandlung zum Beheben potenziell
 
 - Azure AD Hybrid Join für Windows-Geräte mit einer Vorgängerversion funktioniert etwas anders als unter Windows 10. Viele Kunden wissen nicht, dass sie Active Directory-Verbunddienste (AD FS) (für Verbunddomänen) oder nahtloses einmaliges Anmelden (für verwaltete Domänen) benötigen.
 - Wenn Kunden mit Verbunddomänen den Dienstverbindungspunkt so konfigurieren, dass er auf den verwalteten Domänennamen zeigt (z.B. „contoso.onmicrosoft.com“ statt „contoso.com“), funktioniert Azure AD Hybrid Join nicht für Windows-Geräte mit einer Vorgängerversion.
-- Die maximale Anzahl von Geräten pro Benutzer gilt derzeit auch für in Azure AD Hybrid eingebundene Geräte mit einer Vorgängerversion. 
 - Das gleiche physische Gerät erscheint mehrmals in Azure AD, wenn sich mehrere Domänenbenutzer auf Geräten mit einer Vorgängerversion anmelden, die in Azure AD Hybrid eingebunden sind.  Beispiel: Wenn *jdoe* und *jharnett* sich auf einem Gerät anmelden, wird für jeden dieser Benutzer eine separate Registrierung (DeviceID) auf der Registerkarte **USER** erstellt. 
 - Aufgrund einer Neuinstallation des Betriebssystems oder einer manuellen Neuregistrierung können Sie mehrere Einträge für ein Gerät auf der Registerkarte „Benutzerinformationen“ abrufen.
 - Bei der anfänglichen Gerätekonfiguration für die Registrierung bzw. den Beitritt von Geräten wird zunächst eine Anmeldung oder Sperren/Entsperren versucht. Es kann eine Verzögerung von bis zu 5 Minuten auftreten, die durch eine Aufgabe der Aufgabenplanung ausgelöst wird. 
@@ -91,7 +90,7 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
 
     ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokoll\Microsoft-Workplace Join**.
+Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft-Workplace Join**.
   
 **Die häufigsten Ursachen für Fehler bei der Azure AD-Hybrideinbindung sind:** 
 

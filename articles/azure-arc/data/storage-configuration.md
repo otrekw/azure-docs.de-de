@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317326"
 ---
 # <a name="storage-configuration"></a>Speicherkonfiguration
 
@@ -151,10 +151,11 @@ Bei der Auswahl einer Speicherklasse für die Datencontrollerpods gilt es die fo
 
 - Sie **müssen** eine freigegebene Remotespeicherklasse verwenden, um die Dauerhaftigkeit der Daten sicherzustellen. Außerdem kann so ein Pod oder Knoten nach einem Ausfall wieder eine Verbindung mit dem persistenten Volume herstellen.
 - Da in der Regel nur geringe Datenmengen in die SQL-Controllerinstanz, Metrikdatenbank und Protokolldatenbank geschrieben werden, die zudem auch nicht wartezeitanfällig sind, ist kein extrem leistungsstarker Speicher erforderlich. Wenn Benutzer häufig die Grafana- und Kibana-Schnittstellen verwenden und Sie über eine große Anzahl von Datenbankinstanzen verfügen, profitieren die Benutzer möglicherweise von einem leistungsstarken Speicher.
-- Die erforderliche Speicherkapazität ist in Abhängigkeit von der Anzahl der bereitgestellten Datenbankinstanzen variabel, da Protokolle und Metriken für jede Datenbankinstanz gesammelt werden. Daten werden für zwei Wochen in den Protokoll- und Metrikdatenbanken aufbewahrt, bevor sie gelöscht werden. TODO: Wie viel Speicher ist pro Datenbankinstanz erforderlich?
+- Die erforderliche Speicherkapazität ist in Abhängigkeit von der Anzahl der bereitgestellten Datenbankinstanzen variabel, da Protokolle und Metriken für jede Datenbankinstanz gesammelt werden. Daten werden für zwei Wochen in den Protokoll- und Metrikdatenbanken aufbewahrt, bevor sie gelöscht werden. 
 - Das Ändern der Speicherklasse nach der Bereitstellung ist sehr schwierig, nicht dokumentiert und wird nicht unterstützt. Achten Sie darauf, die Speicherklasse zum Zeitpunkt der Bereitstellung ordnungsgemäß auszuwählen.
 
-> **Hinweis:** Wenn keine Speicherklasse angegeben wird, wird die Standardspeicherklasse verwendet. Pro Kubernetes-Cluster kann nur eine Standardspeicherklasse vorhanden sein. Sie können die [Standardspeicherklasse ändern](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
+> [!NOTE]
+> Wenn keine Speicherklasse angegeben wird, wird die Standardspeicherklasse verwendet. Pro Kubernetes-Cluster kann nur eine Standardspeicherklasse vorhanden sein. Sie können die [Standardspeicherklasse ändern](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
 
 ### <a name="database-instance-storage-configuration"></a>Konfiguration des Datenbankinstanzspeichers
 
@@ -162,7 +163,8 @@ Jede Datenbankinstanz verfügt über persistente Daten-, Protokoll- und Sicherun
 
 Wenn Sie mithilfe der Befehle `azdata arc sql mi create` oder `azdata arc postgres server create` eine Instanz erstellen, gibt es zwei Parameter, die zum Festlegen der Speicherklassen verwendet werden können:
 
-> **Hinweis:** Einige dieser Parameter befinden sich in der Entwicklung und werden für `azdata arc sql mi create` und `azdata arc postgres server create` in zukünftigen Versionen verfügbar.
+> [!NOTE]
+> Einige dieser Parameter befinden sich in der Entwicklung und werden für `azdata arc sql mi create` und `azdata arc postgres server create` in zukünftigen Versionen verfügbar.
 
 |Parametername bzw. Kurzname|Syntaxelemente|
 |---|---|

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646936"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710718"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -193,7 +193,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure-Portal angezeigt werden:
 
-:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure-Portal angezeigt wird.":::
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -242,7 +242,7 @@ Geben Sie den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Suppo
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Bei unscharfen Bildern wird Ihre Übermittlung abgelehnt.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
@@ -559,7 +559,7 @@ Erstellen Sie ein separates eindeutiges Azure-Abonnement, und stellen Sie es ber
 * **Azure AD-Mandanten-ID** (erforderlich): Geben Sie Ihre [Mandanten-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **Eigenschaften**, und suchen Sie dann die **Verzeichnis-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden. Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
 * **Azure AD tenant name** (Name des Azure AD-Mandanten) (erforderlich für Dynamics 365): Geben Sie den Namen Ihrer Azure Active Directory-Instanz (AD) ein. Um diesen Namen zu suchen, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Oben rechts wird der Mandantenname unter Ihrem Kontonamen angegeben.
 * **Azure AD-App-ID** (erforderlich): Geben Sie Ihre [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Navigationsmenü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen**, und suchen Sie dann die **Anwendungs-ID** (z. B. „50c464d3-4930-494c-963c-1e951d15360e“), um diese ID zu finden.
-* **Clientgeheimnis für Azure Active Directory-Anwendung** (erforderlich): Geben Sie den [geheimen Clientschlüssel](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Navigationsmenü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, und wählen Sie dann die Testversion Ihrer App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. (Stellen Sie sicher, dass Sie sich den Wert notieren, bevor Sie diese Seite schließen.)
+* **Clientgeheimnis für Azure Active Directory-Anwendung** (erforderlich): Geben Sie den [geheimen Clientschlüssel](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Navigationsmenü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, und wählen Sie dann die Testversion Ihrer App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. (Stellen Sie sicher, dass Sie sich den Wert notieren, bevor Sie diese Seite schließen.)
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 

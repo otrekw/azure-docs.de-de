@@ -3,14 +3,14 @@ title: Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupy
 description: Erfahren Sie, wie Sie ein Lab einrichten, um Data Science mit Python und Jupyter Notebook zu vermitteln.
 author: emaher
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445014"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533519"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupyter Notebook
 In diesem Artikel wird erläutert, wie eine Vorlage eines virtuellen Computers (VM) in Lab Services mit den Tools eingerichtet wird, die erforderlich sind, um den Kursteilnehmern die Verwendung von [Jupyter Notebook](http://jupyter-notebook.readthedocs.io/) beizubringen, und wie die Kursteilnehmer eine Verbindung zu ihren Notebook-Instanzen in ihren VMs herstellen können.

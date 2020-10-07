@@ -3,12 +3,12 @@ title: Leitfaden für beschleunigte Classroom-Lab-Einrichtung für Azure Lab Ser
 description: Dieser Leitfaden unterstützt Lab-Ersteller beim schnellen Einrichten eines Lab-Kontos für die Verwendung innerhalb ihrer Bildungseinrichtung.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445575"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652209"
 ---
 # <a name="classroom-lab-setup-guide"></a>Einrichtungsleitfaden für Classroom-Labs
 
@@ -60,9 +60,6 @@ Lab Services verwendet ein Preismodell mit nutzungsbasierter Bezahlung. Dies bed
 - **Zeitplan:** Mit einem Zeitplan können Sie automatisch steuern, wann die VMs Ihrer Labs gestartet und heruntergefahren werden.
 - **Kontingent**: Das Kontingent steuert die Anzahl der Stunden, die Kursteilnehmer außerhalb der geplanten Stunden auf eine VM können. Wenn das Kontingent erreicht wird, während ein Kursteilnehmer es verwendet, wird die VM automatisch heruntergefahren. Der Kursteilnehmer kann die VM nur dann neu starten, wenn das Kontingent verlängert wurde.
 - **Automatisches Herunterfahren**: Wenn diese Einstellung aktiviert ist, bewirkt das automatische Herunterfahren, dass Windows-VMs nach einem bestimmten Zeitraum automatisch heruntergefahren werden, nachdem ein Kursteilnehmer die Verbindung mit einer Remotedesktopprotokoll-Sitzung (RDP) getrennt hat. Diese Einstellung ist standardmäßig deaktiviert.  
-
-    > [!NOTE]
-    > Diese Einstellung ist derzeit nur für Windows vorhanden.
 
 ### <a name="how-will-students-save-their-work"></a>Wie speichern Kursteilnehmer ihre Arbeit?
 

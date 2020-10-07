@@ -1,14 +1,16 @@
 ---
 title: Verwalten von Modell- und Lerneinstellungen – Personalisierung
 description: Die maschinell erlernten Modell- und Lerneinstellungen können zur Sicherung in Ihre eigene Quellcodeverwaltung exportiert werden.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344355"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303453"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Verwalten von Modell- und Lerneinstellungen
 
@@ -27,7 +29,7 @@ Die maschinell erlernten Modell- und Lerneinstellungen können zur Sicherung in 
 
     ![Löschen Sie im Azure-Portal Daten aus der Personalisierungsressource.](./media/settings/clear-data-from-personalizer-resource.png)
 
-    |value|Zweck|
+    |Wert|Zweck|
     |--|--|
     |Protokollierte Personalisierungs- und Relevanzdaten.|Diese Protokolldaten werden in Offline-Auswertungen verwendet. Löschen Sie die Daten, wenn Sie Ihre Ressource zurücksetzen.|
     |Setzen Sie das Personalisierungsmodell zurück.|Dieses Modell ändert sich bei jedem erneuten Training. Diese Trainingshäufigkeit wird in der **Uploadfrequenz für das Modell** auf der Seite **Konfiguration** angegeben. |
@@ -41,7 +43,7 @@ Die [Lernrichtlinieneinstellungen](concept-active-learning.md#understand-learnin
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und wählen Sie Ihre Personalisierungsressource aus.
 1. Wählen Sie im Abschnitt **Ressourcenmanagement** die Option **Modell- und Lerneinstellungen** aus.
-1. Wählen Sie für **Lerneinstellungen importieren**  die Datei aus, die Sie mit dem oben angegebenen JSON-Format erstellt haben, und wählen Sie dann die Schaltfläche **Hochladen** aus.
+1. Wählen Sie für **Lerneinstellungen importieren ** die Datei aus, die Sie mit dem oben angegebenen JSON-Format erstellt haben, und wählen Sie dann die Schaltfläche **Hochladen** aus.
 
     Warten Sie auf die Benachrichtigung, dass die Lernrichtlinie erfolgreich hochgeladen wurde.
 

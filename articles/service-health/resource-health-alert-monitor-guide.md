@@ -3,21 +3,18 @@ title: Erstellen von Ressourcenintegritätswarnungen über das Azure-Portal
 description: Erstellen Sie über das Azure-Portal Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091571"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540675"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe des Azure-Portals
 
 Dieser Artikel zeigt, wie Sie Aktivitätsprotokollwarnungen für Ressourcenintegritätsbenachrichtigungen im Azure-Portal einrichten.
 
 Azure Resource Health informiert Sie über den aktuellen und den vergangenen Integritätsstatus Ihrer Azure-Ressourcen. Azure Resource Health-Warnungen können Sie nahezu in Echtzeit informieren, wenn sich der Integritätsstatus dieser Ressourcen ändert. Die programmgesteuerte Erstellung von Resource Health-Warnungen ermöglicht Benutzern das Massenerstellen und -anpassen von Warnungen.
-
-> [!NOTE]
-> Resource Health-Warnungen sind derzeit als Vorschau verfügbar.
 
 Ressourcenintegritätsbenachrichtigungen werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge von Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Ressourcenintegrität zu vereinfachen.
 Sie können eine Warnung erhalten, wenn eine Azure-Ressource Benachrichtigungen zur Ressourcenintegrität an Ihr Azure-Abonnement sendet. Sie können die Warnung konfigurieren auf der Grundlage von:

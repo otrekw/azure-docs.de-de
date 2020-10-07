@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705893"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631306"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -97,7 +97,7 @@ Da der Endpunkt „/common“ keinem Mandanten entspricht und kein Aussteller is
     https://sts.windows.net/{tenantid}/
 ```
 
-Aus diesem Grund kann eine mehrinstanzenfähige Anwendung keine Token überprüfen, indem einfach der Ausstellerwert in den Metadaten mit dem `issuer` -Wert im Token abgeglichen wird. Eine mehrinstanzenfähige Anwendung benötigt Logik, um basierend auf der Mandanten-ID im Ausstellerwert zu entscheiden, welche Ausstellerwerte zulässig sind. 
+Aus diesem Grund kann eine mehrinstanzenfähige Anwendung keine Token überprüfen, indem einfach der Ausstellerwert in den Metadaten mit dem `issuer` -Wert im Token abgeglichen wird. Eine mehrinstanzenfähige Anwendung benötigt Logik, um basierend auf der Mandanten-ID im Ausstellerwert zu entscheiden, welche Ausstellerwerte zulässig sind.
 
 Wenn eine mehrinstanzenfähige Anwendung nur Anmeldungen von bestimmten Mandanten zulässt, die sich für den Dienst registriert haben, muss der Ausstellerwert oder der Anspruchswert `tid` im Token überprüft werden. So wird sichergestellt, dass dieser Mandant in der Liste der Abonnenten enthalten ist. Wenn eine mehrinstanzenfähige Anwendung nur von Personen genutzt wird und keine Zugriffsentscheidungen basierend auf Mandanten trifft, kann der Ausstellerwert vollständig ignoriert werden.
 
@@ -116,7 +116,7 @@ Dieser Zustimmungsprozess wird durch die von der Anwendung angeforderten Berecht
 * Eine delegierte Berechtigung gewährt einer Anwendung die Möglichkeit, für einen Teil der Funktionen, die der Benutzer ausführen kann, als angemeldeter Benutzer zu agieren. Sie können einer Anwendung z.B. die delegierte Berechtigung zum Lesen des Kalenders des angemeldeten Benutzers erteilen.
 * Eine nur für die App geltende Berechtigung wird der Identität der Anwendung direkt gewährt. Beispielsweise können Sie einer Anwendung die nur für die App geltende Berechtigung zum Lesen der Liste der Benutzer in einem Mandanten erteilen, unabhängig davon, wer sich bei der Anwendung angemeldet hat.
 
-Einigen Berechtigungen kann ein regulärer Benutzer zustimmen, während andere die Zustimmung eines Mandantenadministrators erfordern. 
+Einigen Berechtigungen kann ein regulärer Benutzer zustimmen, während andere die Zustimmung eines Mandantenadministrators erfordern.
 
 ### <a name="admin-consent"></a>Administratorzustimmung
 
@@ -179,10 +179,6 @@ Wenn ein Administrator einer Anwendung für alle Benutzer in einem Mandanten sei
 
 Mehrinstanzenfähige Anwendungen können auch Zugriffstoken abrufen, um APIs aufzurufen, die von Azure AD geschützt sind. Ein häufiger Fehler bei der Verwendung von Active Directory Authentication Library (ADAL) mit einer mehrinstanzenfähigen Anwendung ist, zuerst ein Token für einen Benutzer mithilfe von „/common“ anzufordern, eine Antwort zu erhalten und dann ein weiteres Token für denselben Benutzer ebenfalls mit „/common“ anzufordern. Da die Antwort von Azure AD von einem Mandanten stammt (und nicht von „/common“), speichert ADAL das Token als Token vom Mandanten zwischen. Beim nachfolgenden Aufruf von „/common“ zum Abrufen eines Zugriffstokens für den Benutzer wird der Cacheeintrag übersehen, und der Benutzer wird aufgefordert, sich erneut anzumelden. Um zu vermeiden, dass Cacheeinträge übersehen werden, stellen Sie sicher, dass nachfolgende Aufrufe für einen bereits angemeldeten Benutzer dem Endpunkt des Mandanten gelten.
 
-## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen Benutzer über einen beliebigen Azure AD-Mandanten anmelden kann. Nach der Aktivierung der einmaligen Anmeldung (SSO) zwischen Ihrer App und Azure AD können Sie auch Ihre Anwendung aktualisieren, um auf von Microsoft-Ressourcen bereitgestellte APIs wie Microsoft 365 zuzugreifen. Auf diese Weise können Sie in Ihrer Anwendung für ein personalisiertes Benutzererlebnis sorgen, um den Benutzern beispielsweise Kontextinformationen anzuzeigen, z.B. ihr Profilfoto oder ihren nächsten Kalendertermin. Weitere Informationen zu API-Aufrufen von Azure AD und Microsoft 365-Diensten wie Exchange, SharePoint, OneDrive, OneNote usw. finden Sie unter [Microsoft Graph-API][MSFT-Graph-overview].
-
 ## <a name="related-content"></a>Verwandte Inhalte
 
 * [Beispiel für eine mehrinstanzenfähige Anwendung](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
@@ -191,6 +187,10 @@ In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen
 * [Integrieren von Anwendungen in Azure Active Directory][AAD-Integrating-Apps]
 * [Azure Active Directory-Zustimmungsframework][AAD-Consent-Overview]
 * [Microsoft Graph-API-Berechtigungsbereiche][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen Benutzer über einen beliebigen Azure AD-Mandanten anmelden kann. Nach der Aktivierung der einmaligen Anmeldung (SSO) zwischen Ihrer App und Azure AD können Sie auch Ihre Anwendung aktualisieren, um auf von Microsoft-Ressourcen bereitgestellte APIs wie Microsoft 365 zuzugreifen. Auf diese Weise können Sie in Ihrer Anwendung für ein personalisiertes Benutzererlebnis sorgen, um den Benutzern beispielsweise Kontextinformationen anzuzeigen, z.B. ihr Profilfoto oder ihren nächsten Kalendertermin. Weitere Informationen zu API-Aufrufen von Azure AD und Microsoft 365-Diensten wie Exchange, SharePoint, OneDrive, OneNote usw. finden Sie unter [Microsoft Graph-API][MSFT-Graph-overview].
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88941994"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447317"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows-kritischer Fehler: 0x00000074 Fehlerhafte Systemkonfigurationsinformationen
 
@@ -61,10 +61,10 @@ Der Stillstandcode **BAD_SYSTEM_CONFIG_INFO** tritt auf, wenn die Registrierungs
 1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
 1. Prüfen Sie auf eine Beschädigung der Struktur.
 1. Stellen Sie über die Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
-1. Kopieren Sie den Ordner `\windows\system32\config`, und speichern Sie ihn entweder in der fehlerfreien Datenträgerpartition oder an einem anderen sicheren Speicherort. Sichern Sie diesen Ordner vorsichtshalber, da Sie kritische Registrierungsdateien bearbeiten werden.
+1. Kopieren Sie den Ordner `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`, und speichern Sie ihn entweder in der fehlerfreien Datenträgerpartition oder an einem anderen sicheren Speicherort. Sichern Sie diesen Ordner vorsichtshalber, da Sie kritische Registrierungsdateien bearbeiten werden. 
 
 > [!NOTE]
-> Erstellen Sie eine Kopie des Ordners `\windows\system32\config` als Sicherung für den Fall, dass Sie an der Registrierung vorgenommene Änderungen rückgängig machen müssen.
+> Erstellen Sie eine Kopie des Ordners `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` als Sicherung für den Fall, dass Sie an der Registrierung vorgenommene Änderungen rückgängig machen müssen.
 
 ### <a name="check-for-hive-corruption"></a>Prüfen auf Beschädigung der Struktur
 
@@ -72,7 +72,7 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
 
 1. Öffnen Sie auf der Reparatur-VM die Anwendung **Registrierungs-Editor**. Geben Sie in der Windows-Suchleiste „REGEDIT“ ein, um danach zu suchen.
 1. Wählen Sie im Registrierungs-Editor den Eintrag **HKEY_LOCAL_MACHINE** aus, um ihn hervorzuheben, und wählen Sie dann **Datei > Struktur laden...** im Menü aus.
-1. Navigieren Sie zu `\windows\system32\config\SYSTEM`, und wählen Sie **Öffnen** aus.
+1. Navigieren Sie zu `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`, und wählen Sie **Öffnen** aus.
 1. Wenn Sie zur Eingabe eines Namens aufgefordert werden, geben Sie **BROKENSYSTEM** ein.
 
    1. Wenn die Struktur nicht geöffnet werden kann oder leer ist, dann ist sie beschädigt. Falls die Struktur beschädigt ist, [öffnen Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

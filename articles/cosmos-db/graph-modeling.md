@@ -1,18 +1,18 @@
 ---
 title: Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie mithilfe der Gremlin-API von Azure Cosmos DB eine Graphdatenbank modellieren. In diesem Artikel wird beschrieben, in welchen Fällen eine Graphdatenbank verwendet werden sollte. Außerdem enthält er Informationen zu bewährten Methoden zum Modellieren von Entitäten und Beziehungen.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: lbosq
-ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261816"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409764"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 
@@ -105,7 +105,7 @@ Die Verwendung aussagekräftiger Beziehungsbezeichnungen kann zur Verbesserung d
 * Verwenden Sie spezifische Begriffe für Beziehungsbezeichnungen.
 * Ordnen Sie die Bezeichnung des Quellscheitelpunkts der Bezeichnung des Zielscheitelpunkts mit dem Beziehungsnamen zu.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Beispiele für Beziehungsbezeichnungen" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Entitätsmodell mit Scheitelpunkten für Eigenschaften" border="false":::
 
 Je spezifischer die Bezeichnung, die bei der Traversierung zum Filtern der Kanten verwendet wird, desto besser. Diese Entscheidung kann sich auch erheblich auf die Abfragekosten auswirken. Die Abfragekosten können jederzeit [mithilfe des Schritts „Ausführungsprofil“](graph-execution-profile.md) ausgewertet werden.
 

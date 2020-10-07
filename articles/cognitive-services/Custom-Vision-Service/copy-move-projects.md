@@ -9,18 +9,18 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 5285dfb23476662a13162788b2ec497b4fe49228
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532944"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758573"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopieren und Verschieben von Custom Vision-Projekten
 
 Nachdem Sie ein Custom Vision-Projekt erstellt und trainiert haben, sollten Sie das Projekt in eine andere Ressource kopieren. Beispielsweise können Sie ein Projekt aus einer Entwicklungsumgebung in eine Produktionsumgebung verschieben oder ein Projekt in einem Konto in einer anderen Azure-Region sichern, um die Datensicherheit zu erhöhen.
 
-Die APIs **[ExportProjekt](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3])** und **[ImportProjekt](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** ermöglichen dies, indem sie Projekte von einem Custom Vision-Konto in andere kopieren können. Der vorliegende Leitfaden zeigt, wie Sie diese REST-APIs mit cURL verwenden. Sie können auch einen HTTP-Anforderungsdienst wie Postman verwenden, um die Anforderungen auszugeben.
+Die APIs **[ExportProjekt](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** und **[ImportProjekt](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** ermöglichen dies, indem sie Projekte von einem Custom Vision-Konto in andere kopieren können. Der vorliegende Leitfaden zeigt, wie Sie diese REST-APIs mit cURL verwenden. Sie können auch einen HTTP-Anforderungsdienst wie Postman verwenden, um die Anforderungen auszugeben.
 
 ## <a name="business-scenarios"></a>Geschäftsszenarien
 

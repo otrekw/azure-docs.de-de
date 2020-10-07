@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905415"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578477"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -131,7 +131,7 @@ Weitere Informationen finden Sie zudem unter [Bereitstellen und Verwalten von Az
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Mandantenübergreifende Verwaltung von Arbeitsbereichen mithilfe von Azure Lighthouse
 
-Wie oben erwähnt, können sich die verschiedenen Azure Sentinel-Arbeitsbereiche je nach Szenario in unterschiedlichen Azure AD-Mandanten befinden. Sie können [Azure Lighthouse](../lighthouse/overview.md) verwenden, um alle arbeitsbereichsübergreifenden Aktivitäten über Mandantengrenzen hinweg auszuweiten. So können die zum verwaltenden Mandanten gehörenden Benutzer mandantenübergreifend in Azure Sentinel-Arbeitsbereichen arbeiten. Nachdem Azure Lighthouse [integriert](../lighthouse/how-to/onboard-customer.md) wurde, verwenden Sie die [Verzeichnis- und Abonnementauswahl](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants) im Azure-Portal, um alle Abonnements mit Arbeitsbereichen auszuwählen, die verwaltet werden sollen. Auf diese Weise stellen Sie sicher, dass alle Arbeitsbereiche in den verschiedenen Arbeitsbereichsselektoren im Portal verfügbar sind.
+Wie oben erwähnt, können sich die verschiedenen Azure Sentinel-Arbeitsbereiche je nach Szenario in unterschiedlichen Azure AD-Mandanten befinden. Sie können [Azure Lighthouse](../lighthouse/overview.md) verwenden, um alle arbeitsbereichsübergreifenden Aktivitäten über Mandantengrenzen hinweg auszuweiten. So können die zum verwaltenden Mandanten gehörenden Benutzer mandantenübergreifend in Azure Sentinel-Arbeitsbereichen arbeiten. Nachdem Azure Lighthouse [integriert](../lighthouse/how-to/onboard-customer.md) wurde, verwenden Sie die [Verzeichnis- und Abonnementauswahl](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-in-managed-tenants) im Azure-Portal, um alle Abonnements mit Arbeitsbereichen auszuwählen, die verwaltet werden sollen. Auf diese Weise stellen Sie sicher, dass alle Arbeitsbereiche in den verschiedenen Arbeitsbereichsselektoren im Portal verfügbar sind.
 
 Bei Verwendung von Azure Lighthouse empfiehlt es sich, eine Gruppe für jede Azure Sentinel-Rolle zu erstellen und Berechtigungen von jedem Mandanten an diese Gruppen zu delegieren.
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b124f828c4a6a019c45243528ed2d957e3f781f3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fe5940083d04c1b5cc60b21834adf609e523e059
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191409"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666244"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Leitfaden zu Hochverfügbarkeit und Notfallwiederherstellung für Data Lake Storage Gen1
 
@@ -37,8 +37,6 @@ Dank automatisierter Replikate sorgt Data Lake Storage Gen1 zwar für Datenresil
 Zur Verhinderung des versehentlichen Löschens empfiehlt es sich, geeignete Zugriffsrichtlinien für Ihr Data Lake Storage Gen1-Konto festzulegen. Dies beinhaltet auch die Anwendung von [Azure-Ressourcensperren](../azure-resource-manager/management/lock-resources.md), um wichtige Ressourcen zu sperren, sowie die Anwendung einer Zugriffssteuerung auf Konto- und Dateiebene mithilfe der verfügbaren [Data Lake Storage Gen1-Sicherheitsfeatures](data-lake-store-security-overview.md). Darüber hinaus ist es ratsam, routinemäßig Kopien Ihrer kritischen Daten per [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) oder [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) in einem anderen Data Lake Storage Gen1-Konto, Ordner oder Azure-Abonnement zu erstellen. Diese Vorgehensweise kann verwendet werden, um Daten nach einer Beschädigung oder nach dem Löschen wiederherzustellen. Azure Data Factory ist ein nützlicher Dienst zum regelmäßigen Erstellen und Bereitstellen von Pipelines für die Datenverschiebung.
 
 Sie können die [Diagnoseprotokollierung](data-lake-store-diagnostic-logs.md) für ein Data Lake Storage Gen1-Konto aktivieren, um Überwachungsprotokolle zum Datenzugriff zu erfassen. Die Überwachungsprotokolle enthalten Informationen darüber, wer eine Datei möglicherweise gelöscht oder aktualisiert hat.
-
-Sie können versuchen, ein gelöschtes Element wiederherzustellen, indem Sie das Azure PowerShell-Modul [Az.DataLakeStore](https://docs.microsoft.com/powershell/module/az.datalakestore/) für Data Lake Storage Gen1 verwenden. Informationen hierzu finden Sie unter dem Befehl [Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem). Lesen Sie unbedingt den Abschnitt [Beschreibung](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description), bevor Sie versuchen, diesen Befehl zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

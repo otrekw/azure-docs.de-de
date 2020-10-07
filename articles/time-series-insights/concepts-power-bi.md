@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: f2e1985dbc0860297b4f11b4d0a53affa26423d0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/28/2020
+ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495311"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460882"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Verbinden von Azure Time Series Insights Gen2 mit Power BI  
 
@@ -33,8 +33,8 @@ Azure Time Series Insights ist jetzt nahtlos in [Power BI](https://powerbi.micro
 
 Durch das Verbinden Ihrer Daten mit Power BI können Sie nun folgende Aktionen ausführen:
 
-* Ausführen von Korrelationen mit anderen Datenquellen, die von Power BI unterstützt werden, und Zugreifen auf zahlreiche unterschiedliche Datenvisualisierungsoptionen. 
-* Erstellen von Power BI-Dashboards und -Berichten mit Ihren Time Series Insight-Daten und Teilen dieser mit Ihrer Organisation. 
+* Ausführen von Korrelationen mit anderen Datenquellen, die von Power BI unterstützt werden, und Zugreifen auf zahlreiche unterschiedliche Datenvisualisierungsoptionen.
+* Erstellen von Power BI-Dashboards und -Berichten mit Ihren Time Series Insight-Daten und Teilen dieser mit Ihrer Organisation.
 * Entsperren Sie Daten-Interop-Szenarien auf einfache und benutzerfreundliche Weise, und gewinnen Sie schneller als je zuvor Erkenntnisse.
 * Ändern Sie Azure Time Series Insights-Daten in Power BI mithilfe des leistungsstarken erweiterten Editors.
 
@@ -42,19 +42,19 @@ Durch das Verbinden Ihrer Daten mit Power BI können Sie nun folgende Aktionen a
 
 Das Verbinden Ihrer Daten dauert weniger als eine Minute. Durch schnelles Exportieren Ihrer Ansicht aus dem Azure Time Series Insights-Explorer nach Power BI können alle Personen in Ihrer Organisation intuitiv auf Daten zugreifen und diese visuell darstellen.
 
-Zu den Konfigurationsoptionen zählen die Auswahl zwischen **Roh**en Daten und Daten auf **Aggregatebene** sowie die Auswahl eines gewünschten Zeitbereichs. 
+Zu den Konfigurationsoptionen zählen die Auswahl zwischen **Roh**en Daten und Daten auf **Aggregatebene** sowie die Auswahl eines gewünschten Zeitbereichs.
 
-Sobald die Daten verbunden sind, stehen Ihnen alle umfassenden Visualisierungs- und Diagrammerstellungstools von Power BI zur Verfügung, mit denen Sie Ihre Möglichkeiten zum Teilen von Daten noch weiter verbessern können. 
+Sobald die Daten verbunden sind, stehen Ihnen alle umfassenden Visualisierungs- und Diagrammerstellungstools von Power BI zur Verfügung, mit denen Sie Ihre Möglichkeiten zum Teilen von Daten noch weiter verbessern können.
 
    [![Beispiele für die Diagrammerstellung in Power BI](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
 
 Lesen Sie [Verbinden von Azure Time Series Insights mit Power BI](./how-to-connect-power-bi.md), um ausführliche Anleitungen zu erhalten.
 
 ## <a name="flexible-workflow"></a>Flexibler Workflow
- 
+
 Verwenden Sie den Connector an beliebiger Stelle in Ihrem Workflow:
 
-* Wenn Sie sich im Azure Time Series Insights-Explorer befinden, können Sie Ihre Ansicht schnell nach Power BI exportieren. 
+* Wenn Sie sich im Azure Time Series Insights-Explorer befinden, können Sie Ihre Ansicht schnell nach Power BI exportieren.
 * Wenn Sie bereits in Power BI arbeiten, erweitern Sie Ihre vorhandenen Visualisierungsszenarien mithilfe von Azure Time Series Insights-Abfragedaten.
 
 Komplexere Abfrage- und Bearbeitungsfunktionen in Power BI erhalten Sie über den erweiterten Editor von Power BI.

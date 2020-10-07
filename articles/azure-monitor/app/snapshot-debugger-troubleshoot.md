@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707831"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760511"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden. Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
@@ -62,7 +62,7 @@ Wenn die Anwendung eine Vorschauversion von .NET Core verwendet und der Momentau
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgraden auf die neueste Version des NuGet-Pakets
 
-Wenn der Momentaufnahmedebugger über den [Application Insights-Bereich im Portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aktiviert wurde, sollte in Ihrer Anwendung bereits das aktuellste NuGet-Paket ausgeführt werden. Wurde der Momentaufnahmedebugger durch Einbinden des NuGet-Pakets [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) aktiviert, verwenden Sie den NuGet-Paket-Manager in Visual Studio, um sicherzustellen, dass Sie die neueste Version von „Microsoft.ApplicationInsights.SnapshotCollector“ verwenden. Versionsanmerkungen finden Sie unter https://github.com/Microsoft/ApplicationInsights-Home/issues/167.
+Wenn der Momentaufnahmedebugger über den [Application Insights-Bereich im Portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aktiviert wurde, sollte in Ihrer Anwendung bereits das aktuellste NuGet-Paket ausgeführt werden. Wurde der Momentaufnahmedebugger durch Einbinden des NuGet-Pakets [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) aktiviert, verwenden Sie den NuGet-Paket-Manager in Visual Studio, um sicherzustellen, dass Sie die neueste Version von „Microsoft.ApplicationInsights.SnapshotCollector“ verwenden.
 
 ## <a name="check-the-uploader-logs"></a>Überprüfen der Uploaderprotokolle
 

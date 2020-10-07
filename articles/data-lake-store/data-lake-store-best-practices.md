@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440829"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667740"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
 
@@ -33,7 +33,7 @@ Angenommen, Sie verfügen über einen Ordner mit 100.000 untergeordneten Objekte
 
 Beim Arbeiten mit Big Data in Data Lake Storage Gen1 wird in den meisten Fällen ein Dienstprinzipal genutzt, damit Dienste wie Azure HDInsight die Daten verwenden können. Es kann aber auch Fälle geben, in denen einzelne Benutzer ebenfalls Zugriff auf die Daten benötigen. In diesen Fällen müssen Sie Azure Active Directory-[Sicherheitsgruppen](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) nutzen, anstatt Ordnern und Dateien einzelne Benutzer zuzuweisen.
 
-Nachdem einer Sicherheitsgruppe Berechtigungen zugewiesen wurden, sind für das Hinzufügen oder Entfernen von Benutzern der Gruppe keine Updates für Data Lake Storage Gen1 erforderlich. So können Sie auch sicherstellen, dass die Grenze von [32 Zugriffs- und Standard-ACLs](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) nicht überschritten wird (dies umfasst auch die vier ACLs im POSIX-Format, die jeder Datei und jedem Ordner immer zugeordnet sind: [der zuständige Benutzer](data-lake-store-access-control.md#the-owning-user), [die zuständige Gruppe](data-lake-store-access-control.md#the-owning-group), [die Maske](data-lake-store-access-control.md#the-mask) und andere).
+Nachdem einer Sicherheitsgruppe Berechtigungen zugewiesen wurden, sind für das Hinzufügen oder Entfernen von Benutzern der Gruppe keine Updates für Data Lake Storage Gen1 erforderlich. So können Sie auch sicherstellen, dass die Grenze von [32 Zugriffs- und Standard-ACLs](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) nicht überschritten wird (dies umfasst auch die vier ACLs im POSIX-Format, die jeder Datei und jedem Ordner immer zugeordnet sind: [der zuständige Benutzer](data-lake-store-access-control.md#the-owning-user), [die zuständige Gruppe](data-lake-store-access-control.md#the-owning-group), [die Maske](data-lake-store-access-control.md#the-mask) und andere).
 
 ### <a name="security-for-groups"></a>Sicherheit für Gruppen
 

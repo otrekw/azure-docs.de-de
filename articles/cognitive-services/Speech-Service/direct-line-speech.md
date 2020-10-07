@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357640"
 ---
 # <a name="what-is-direct-line-speech"></a>Was ist Direct Line Speech?
 
@@ -27,7 +27,7 @@ Direct Line Speech bietet ein Höchstmaß an Anpassungsmöglichkeiten und Vielse
 
 ## <a name="getting-started-with-direct-line-speech"></a>Erste Schritte mit Direct Line Speech
 
-Die ersten Schritte zum Erstellen eines Sprachassistenten mit Direct Line Speech sind das [Abrufen eines Speech-Abonnementschlüssels](get-started.md), das Erstellen eines neuen, diesem Abonnement zugeordneten Bots und das Verbinden des Bot mit dem Direct Line Speech-Kanal.
+Die ersten Schritte zum Erstellen eines Sprachassistenten mit Direct Line Speech sind das [Abrufen eines Speech-Abonnementschlüssels](overview.md#try-the-speech-service-for-free), das Erstellen eines neuen, diesem Abonnement zugeordneten Bots und das Verbinden des Bot mit dem Direct Line Speech-Kanal.
 
    ![Konzeptionelle Darstellung des Orchestrierungsdienst-Flows von Direct Line Speech](media/voice-assistants/overview-directlinespeech.png "Flow des Speech-Kanals")
 
@@ -64,7 +64,7 @@ Direct Line Speech und die damit verbundene Funktionalität für Sprachassistent
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Kostenloses Testen des Speech-Diensts](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)
 * [Abrufen des Speech SDK](speech-sdk.md)
 * [Erstellen und Bereitstellen eines Basisbots](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Abrufen der Lösung für virtuelle Assistenten und der Unternehmensvorlage](https://github.com/Microsoft/AI)

@@ -3,12 +3,12 @@ title: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage
 description: Erfahren Sie, wie Sie eine vorhandene Vorlagenspezifikation in einer verknüpften Bereitstellung bereitstellen.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 799dac2bb553983b16f734d1d1abc2ad9281fb58
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369109"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage (Vorschau)
 
@@ -120,7 +120,7 @@ Die Vorlagenspezifikations-ID wird mithilfe der [`resourceID()`](template-functi
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Versions.Id
 ```
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)

@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919708"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531024"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL: doppelte Infrastrukturverschlüsselung
-
-> [!NOTE]
-> Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an AskAzureDBforMySQL@service.microsoft.com.
 
 Azure Database for MySQL arbeitet mit der [Verschlüsselung gespeicherter ruhender Daten](concepts-security.md#at-rest) unter Verwendung von Schlüsseln, die von Microsoft verwaltet werden. Daten, einschließlich Sicherungen, werden auf Datenträgern verschlüsselt, wobei diese Verschlüsselung stets aktiviert ist und nicht deaktiviert werden kann. Die Verschlüsselung beruht auf einem gemäß FIPS 140-2 validierten kryptografischen Modul und einem AES-256-Bit-Verschlüsselungsverfahren für die Azure-Speicherverschlüsselung.
 

@@ -3,16 +3,16 @@ title: Verbinden Ihrer Nicht-Azure-Computer mit Azure Security Center
 description: Erfahren Sie, wie Sie Ihre Nicht-Azure-Computer mit Security Center verbinden.
 author: memildin
 ms.author: memildin
-ms.date: 9/30/2020
+ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3cdff2b844aa68de7f07faf69710aeabb5513093
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576058"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91612216"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Verbinden Ihrer Nicht-Azure-Computer mit Security Center
 

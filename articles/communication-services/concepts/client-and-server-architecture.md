@@ -6,15 +6,15 @@ author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 38d6b131c972b4fd890af53624fdd6a36b3ecb6c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930503"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666941"
 ---
 # <a name="client-and-server-architecture"></a>Client- und Serverarchitektur
 
@@ -43,13 +43,13 @@ Weitere Informationen finden Sie unter [Bewährte Methoden für die Identitätsv
 
 JavaScript-Clientbibliotheken von Azure Communication Services können Webanwendungen mit Rich-Text-, Sprach- und Videointeraktion ermöglichen. Die Anwendung interagiert direkt mit Azure Communication Services über die Clientbibliothek, um auf die Datenebene zuzugreifen und Text-, Sprach- und Videokommunikation in Echtzeit zu bieten. Ein Beispiel eines Flows durch die Architektur finden Sie nachstehend:
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Diagramm der Browser-zu-Browser-Architektur für Communication Services":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Diagramm der Architektur von Benutzerzugriffstoken":::
 
 ## <a name="native-app-communication"></a>Kommunikation über native Apps
 
 Viele Szenarien eignen sich am besten für native Anwendungen. Azure Communication Services unterstützt sowohl Browser-zu-App- als auch App-zu-App-Kommunikation.  Beim Aufbau einer nativen Anwendungserfahrung werden Benutzer durch Pushbenachrichtigungen in die Lage versetzt, Anrufe entgegenzunehmen, auch wenn die Anwendung nicht läuft. Azure Communication Services ermöglicht dies auf einfache Weise mit integrierten Pushbenachrichtigungen an Google Firebase, Apple Push Notification Service und den Windows-Pushbenachrichtigungsdienst. Ein Beispiel eines Flows durch die Architektur finden Sie nachstehend:
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Diagramm der Architektur von Communication Services für die Kommunikation über native Apps":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Diagramm der Architektur von Benutzerzugriffstoken":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Sprach- und SMS-Kommunikation über das Telefonfestnetz
 
@@ -58,7 +58,7 @@ Die Kommunikation über das Telefonfestnetz kann die Reichweite Ihrer Anwendung 
 > [!Note]
 > Während der Public Preview-Phase steht die Bereitstellung von US-Telefonnummern für Kunden mit Rechnungsanschrift innerhalb der USA und Kanadas zur Verfügung. 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagramm der Festnetzarchitektur von Communication Services":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagramm der Architektur von Benutzerzugriffstoken":::
 
 Weitere Informationen zu Festnetz- und SMS-Lösungen finden Sie unter [Planen Ihrer Festnetz- und SMS-Lösung](../concepts/telephony-sms/plan-solution.md).
 
@@ -66,7 +66,7 @@ Weitere Informationen zu Festnetz- und SMS-Lösungen finden Sie unter [Planen Ih
 
 Azure Communication Services unterstützt die Mensch-zu-System-Kommunikation über Text- und Sprachkanäle mit Diensten, die direkt auf die Datenebene von Azure Communication Services zugreifen. So können Sie beispielsweise einen Bot eingehende Telefonanrufe beantworten oder an einem Webchat teilnehmen lassen. Azure Communication Services bietet Clientbibliotheken, die diese Anruf- und Chatszenarien ermöglichen. Ein Beispiel eines Flows durch die Architektur finden Sie nachstehend:
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Diagramm der Botarchitektur von Communication Services":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Diagramm der Architektur von Benutzerzugriffstoken":::
 
 ## <a name="networking"></a>Netzwerk
 

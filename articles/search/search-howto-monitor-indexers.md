@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 649611b2e378cd43286b193c6d40b03b743905cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000072"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541236"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Überwachen des Status und der Ergebnisse von Indexern der kognitiven Azure-Suche
 
@@ -189,4 +189,4 @@ Weitere Details zu Statuscodes und zu Informationen für die Indexerüberwachung
 
 Details zu dokumentspezifischen Fehlern oder Warnungen können über die Listen `IndexerExecutionResult.Errors` und `IndexerExecutionResult.Warnings` abgerufen werden.
 
-Weitere Informationen zu den .NET SDK-Klassen für die Indexerüberwachung finden Sie unter [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) und [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).
+Weitere Informationen zu den .NET SDK-Klassen für die Indexerüberwachung finden Sie unter [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo) und [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult).

@@ -1,14 +1,14 @@
 ---
 title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 description: Erfahren Sie, wie Sie Azure Sentinel auf delegierten Kundenressourcen effektiv verwalten.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019732"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596938"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 
@@ -35,6 +35,9 @@ Das zentrale Bereitstellungsmodell bietet folgende Vorzüge:
 - Daten aus allen Datenquellen und Datenconnectors, die in Azure Sentinel integriert sind (wie etwa Azure AD-Aktivitätsprotokolle, Office 365-Protokolle oder Benachrichtigungen von Microsoft Threat Protection), verbleiben in den einzelnen Kundenmandanten.
 - Die Netzwerklatenz wird verringert.
 - Neue Niederlassungen oder Kunden lassen sich einfach hinzufügen oder entfernen.
+
+> [!NOTE]
+> Sie können delegierte Ressourcen verwalten, die sich in unterschiedlichen [Regionen](../../availability-zones/az-overview.md#regions) befinden. Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.
 
 ## <a name="granular-role-based-access-control-rbac"></a>Detaillierte rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 

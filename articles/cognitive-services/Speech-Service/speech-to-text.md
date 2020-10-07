@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359935"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -58,5 +58,5 @@ Bei der Batchtranskription handelt es sich um eine Reihe von Rest-API-Vorgängen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Kostenloses Testen des Speech-Diensts](get-started.md)
+- [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)
 - [Abrufen des Speech SDK](speech-sdk.md)

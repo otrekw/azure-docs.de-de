@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647655"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708185"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -80,7 +80,7 @@ Ihr Herausgeberprofil umfasst den Namen Ihres Unternehmens und die MPN-ID. Sie m
     
 1. Wählen Sie **Einstellungen** > **Partnereinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
 
-Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Weitere Informationen finden Sie unter [Übersicht über den kommerziellen Marketplace](./commercial-marketplace-overview.md). Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
+Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>Erstellen eines Kontos mithilfe vorhandener Microsoft Partner Center-Registrierungen
 
@@ -129,7 +129,7 @@ Schließen Sie nach der Anmeldung die Einrichtung Ihres Kontos ab, indem Sie die
     
 1. Wählen Sie **Einstellungen** > **Partnereinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
 
-Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Weitere Informationen finden Sie unter [Übersicht über den kommerziellen Marketplace](./commercial-marketplace-overview.md). Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
+Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>Wie gehe ich vor, wenn ich bereits bei einem Entwicklerprogramm registriert bin?
 
@@ -157,7 +157,7 @@ Schließen Sie nach der Anmeldung bei Partner Center die Einrichtung Ihres Konto
     
 1. Wählen Sie **Einstellungen** > **Partnereinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
 
-Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Weitere Informationen finden Sie unter [Übersicht über den kommerziellen Marketplace](./commercial-marketplace-overview.md). Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
+Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Herausgeber, die vom Cloud-Partnerportal verschoben wurden
 
@@ -190,4 +190,5 @@ Nach Abschluss dieses Vorgangs können Sie den neu erstellten Herausgeber verwal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Was ist der kommerzielle Marketplace von Microsoft?](../overview.md)
 - [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](./manage-account.md)

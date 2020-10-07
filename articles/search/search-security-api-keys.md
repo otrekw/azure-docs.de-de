@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294780"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740631"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Dienst für die kognitive Azure-Suche
 
@@ -21,7 +21,7 @@ Für alle Anforderungen an einen Suchdienst wird ein schreibgeschützter API-Sch
 
 Schlüssel werden während der Dienstbereitstellung mit dem Suchdienst erstellt. Sie können Schlüsselwerte im [Azure-Portal](https://portal.azure.com) anzeigen und abrufen.
 
-![Portalseite > Einstellungen abrufen > Abschnitt „Schlüssel“](media/search-manage/azure-search-view-keys.png)
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="Portalseite &gt; Einstellungen abrufen &gt; Abschnitt „Schlüssel“" border="false":::
 
 ## <a name="what-is-an-api-key"></a>Was ist ein API-Schlüssel?
 
@@ -47,7 +47,7 @@ Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API]
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
 3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**, um Administrator- und Abfrageschlüssel anzuzeigen.
 
-   ![Portalseite > Einstellungen anzeigen > Abschnitt „Schlüssel“](media/search-security-overview/settings-keys.png)
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portalseite &gt; Einstellungen abrufen &gt; Abschnitt „Schlüssel“" border="false":::
 
 ## <a name="create-query-keys"></a>Erstellen von Abfrageschlüsseln
 
@@ -61,7 +61,7 @@ Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wi
 4. Klicken Sie auf **Abfrageschlüssel verwalten**.
 5. Verwenden Sie einen bereits für Ihren Dienst generierten Abfrageschlüssel, oder erstellen Sie bis zu 50 neue Abfrageschlüssel. Der Standardabfrageschlüssel ist nicht benannt. Sie können zusätzliche Abfrageschlüssel jedoch für eine einfachere Verwaltbarkeit benennen.
 
-   ![Erstellen oder Verwenden von Abfrageschlüsseln](media/search-security-overview/create-query-key.png) 
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portalseite &gt; Einstellungen abrufen &gt; Abschnitt „Schlüssel“" border="false":::
 
 > [!Note]
 > Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Index für die kognitive Azure-Suche in C#](./search-get-started-dotnet.md).

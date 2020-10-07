@@ -1,19 +1,19 @@
 ---
 title: Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte (klassischer Editor) – Azure IoT Edge
 description: Einrichten von Continuous Integration und Continuous Deployment mithilfe des klassischen Editors – Azure IoT Edge mit Azure DevOps, Azure Pipelines
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033488"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447796"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte (klassischer Editor)
 
@@ -160,7 +160,7 @@ Diese Pipeline ist jetzt für die automatische Ausführung konfiguriert, wenn Si
 >[!NOTE]
 >Wenn Sie in ihrer Pipeline **mehrstufige Bereitstellungen** verwenden möchten, ist dies leider nicht möglich. Mehrstufige Bereitstellungen werden in Azure IoT Edge-Aufgaben in Azure DevOps nämlich noch nicht unterstützt.
 >
->Sie können jedoch mithilfe einer [Azure CLI-Aufgabe in Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) Ihre Bereitstellung als eine mehrstufige Bereitstellung erstellen. Für den Wert **Inlineskript** können Sie den [Befehl „az iot edge deployment create“](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) verwenden:
+>Sie können jedoch mithilfe einer [Azure CLI-Aufgabe in Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) Ihre Bereitstellung als eine mehrstufige Bereitstellung erstellen. Für den Wert **Inlineskript** können Sie den [Befehl „az iot edge deployment create“](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) verwenden:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

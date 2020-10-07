@@ -1,0 +1,19 @@
+---
+author: normesta
+ms.service: storage
+ms.topic: include
+ms.date: 09/28/2020
+ms.author: normesta
+ms.openlocfilehash: 6bda702a90d1204de6f2b80ced9a4704f1e8426d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710988"
+---
+| Dimensionsname | BESCHREIBUNG |
+| ------------------- | ----------------- |
+| **GeoType** | Transaktion aus dem primären oder sekundären Cluster. Die verfügbaren Werte sind **Primary** und **Secondary**. Gilt für georedundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beim Lesen von Objekten aus dem sekundären Mandanten. |
+| **ResponseType** | Transaktionsantworttyp. Verfügbaren Werte: <br/><br/> <li>**ServerOtherError**: Alle weiteren serverseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li>**ServerBusyError**: Authentifizierte Anforderung, die den HTTP-Statuscode 503 zurückgegeben hat. </li> <li>**ServerTimeoutError**: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Das Timeout ist auf einen Serverfehler zurückzuführen. </li> <li>**AuthorizationError**: Authentifizierte Anforderung, die aufgrund eines nicht autorisierten Datenzugriffs oder aufgrund eines Autorisierungsfehlers nicht erfolgreich war. </li> <li>**NetworkError**: Authentifizierte Anforderung, die aufgrund von Netzwerkfehlern nicht erfolgreich war. Tritt üblicherweise auf, wenn ein Client vor Ablauf des Timeouts vorzeitig eine Verbindung trennt. </li><li>**ClientAccountBandwidthThrottlingError**: Die Bandbreite für die Anforderung wird aufgrund einer Überschreitung der [Skalierbarkeitslimits für Speicherkonten](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account?toc=/azure/storage/blobs/toc.json) gedrosselt.</li><li>**ClientAccountRequestThrottlingError**: Die Anforderungsrate für die Anforderung wird aufgrund einer Überschreitung der [Skalierbarkeitslimits für Speicherkonten](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account?toc=/azure/storage/blobs/toc.json) gedrosselt.<li>**ClientThrottlingError**: Anderer Fehler bei der clientseitigen Drosselung. ClientAccountBandwidthThrottlingError und ClientAccountRequestThrottlingError sind ausgeschlossen.</li> <li>**ClientTimeoutError**: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Wenn das Netzwerktimeout des Clients oder das Anforderungstimeout auf einen niedrigeren Wert festgelegt ist als vom Speicherdienst erwartet, handelt es sich um ein erwartetes Timeout. Andernfalls wird „ServerTimeoutError“ gemeldet. </li> <li>**ClientOtherError**: Alle weiteren clientseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li>**Erfolg**: Erfolgreiche Anforderung.</li> <li> **SuccessWithThrottling**: Erfolgreiche Anforderung, wenn ein SMB-Client bei den ersten Versuchen gedrosselt wird, der Vorgang aber letztendlich erfolgreich ist.</li> |
+| **ApiName** | Der Name des Vorgangs. 
+| **Authentifizierung** | Der in Transaktionen verwendete Authentifizierungstyp. Verfügbaren Werte: <br/> <li>**AccountKey**: Die Transaktion wird mit dem Speicherkontoschlüssel authentifiziert.</li> <li>**SAS**: Die Transaktion wird mit Shared Access Signatures authentifiziert.</li> <li>**OAuth**: Die Transaktion wird mit OAuth-Zugriffstoken authentifiziert.</li> <li>**Anonymous**: Die Transaktion wird anonym angefordert. Sie enthält keine Preflight-Anforderungen.</li> <li>**AnonymousPreflight**: Die Transaktion ist eine Preflightanforderung.</li> |

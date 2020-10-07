@@ -14,21 +14,22 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d8cc24722832fac9b2d353a6d87772ffce6c0a4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527121"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598144"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Übersicht zu Media Services v3 mit Widevine-Lizenzvorlage
 
 Mit Azure Media Services können Sie Ihre Inhalte mit **Google Widevine** verschlüsseln. Media Services bietet darüber hinaus einen Dienst zum Übermitteln von Widevine-Lizenzen. Widevine-Lizenzen können mithilfe von Azure Media Services-APIs konfiguriert werden. Wenn ein Player versucht, Ihre durch Widevine geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzbereitstellungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, stellt der Dienst die Lizenz aus. Sie wird an den Client gesendet und dient zum Entschlüsseln und Wiedergeben des angegebenen Inhalts.
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 Eine Widevine-Lizenzanforderung ist als JSON-Nachricht formatiert.  
 
->[!NOTE]
-> Sie können eine leere Nachricht ohne Werte erstellen, indem Sie einfach „{}“ verwenden. Dann wird eine Lizenzvorlage mit Standardeinstellungen erstellt. Die Standardeinstellungen funktionieren in den meisten Fällen. Microsoft-basierte Lizenzübermittlungsszenarien sollten immer die Standardeinstellungen verwenden. Wenn Sie die Werte für „provider“ und „content_id“ festlegen müssen, muss der Anbieter den Widevine-Anmeldeinformationen entsprechen.
+
 
 ```json
 {  
@@ -60,6 +61,9 @@ Eine Widevine-Lizenzanforderung ist als JSON-Nachricht formatiert.
     }
 }
 ```
+
+>[!NOTE]
+> Sie können eine leere Nachricht ohne Werte erstellen, indem Sie einfach „{}“ verwenden. Dann wird eine Lizenzvorlage mit Standardeinstellungen erstellt. Die Standardeinstellungen funktionieren in den meisten Fällen. Microsoft-basierte Lizenzübermittlungsszenarien sollten immer die Standardeinstellungen verwenden. Wenn Sie die Werte für „provider“ und „content_id“ festlegen müssen, muss der Anbieter den Widevine-Anmeldeinformationen entsprechen.
 
 ## <a name="json-message"></a>JSON-Nachricht
 

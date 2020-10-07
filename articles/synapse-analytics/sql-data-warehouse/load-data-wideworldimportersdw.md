@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369092"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Tutorial: Laden von Daten in den SQL-Pool von Azure Synapse Analytics
 
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um einen leeren SQL-Pool zu erstellen.
 
 1. Klicken Sie auf **Überprüfen und erstellen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus, um Ihr Data Warehouse zu erstellen. Sie können den Fortschritt überwachen, indem Sie die Seite **Bereitstellung wird durchgeführt** im Menü **Benachrichtigungen** öffnen.
 
-     ![Benachrichtigung](./media/load-data-wideworldimportersdw/notification.png)
+     ![Screenshot, in dem Benachrichtigungen für „Bereitstellung wird durchgeführt“ gezeigt sind](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 

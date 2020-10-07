@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601094"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710599"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -26,6 +26,8 @@ Jede Anforderung muss Ihren Zugriffsschlüssel und einen HTTP-Endpunkt enthalten
 Denken Sie daran, dass Textanalyse zustandslos ist, weshalb es keine zu verwaltenden Datenobjekte gibt. Ihr Text wird hochgeladen, beim Empfang analysiert, und Ergebnisse werden sofort an die aufrufende Anwendung zurückgegeben.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

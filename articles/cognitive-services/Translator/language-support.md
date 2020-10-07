@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300220"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568096"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -38,6 +38,7 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |:-----|:-----:|
 |Afrikaans| `af`|
 |Arabisch|    `ar`    |
+|Assamesisch|  `as`    |
 |Bengalisch|    `bn`    |
 |Bosnisch (Lateinisch)|   `bs`    |
 |Bulgarisch| `bg`    |
@@ -71,7 +72,6 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |Japanisch|  `ja`    |
 |Kannada|`kn`|
 |Kasachisch|`kk`|
-|Suaheli| `sw`    |
 |Klingonisch|   `tlh-Latn`  |
 |Klingonisch (plqaD)|   `tlh-Piqd`  |
 |Koreanisch |`ko`   |
@@ -102,6 +102,7 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |Slowakisch|    `sk`    |
 |Slowenisch| `sl`    |
 |Spanisch|   `es`    |
+|Suaheli|   `sw`    |
 |Schwedisch|   `sv`    |
 |Tahitisch|  `ty`    |
 |Tamilisch| `ta`    |
@@ -152,7 +153,6 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 |Irisch | `ga`|
 |Italienisch|   `it`    |
 |Japanisch|  `ja`    |
-|Suaheli| `sw`    |
 |Klingonisch|   `tlh-Latn`  |
 |Koreanisch |`ko`   |
 |Kurdisch (zentral)  |`ku-Arab`  |
@@ -173,6 +173,7 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 |Slowakisch|    `sk`    |
 |Slowenisch| `sl`    |
 |Spanisch|   `es`    |
+|Suaheli|   `sw`    |
 |Schwedisch|   `sv`    |
 |Tahitisch|  `ty`    |
 |Thailändisch|  `th`    |
@@ -246,7 +247,6 @@ Referenzdokumentation zu den Vorgängen [Dictionary Lookup](reference/v3-0-dicti
 | Indonesisch      | `id`          |
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
-| Suaheli      | `sw`          |
 | Klingonisch      | `tlh`          |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
@@ -263,6 +263,7 @@ Referenzdokumentation zu den Vorgängen [Dictionary Lookup](reference/v3-0-dicti
 | Slowakisch     | `sk`          |
 | Slowenisch      | `sl`          |
 | Spanisch      | `es`          |
+| Suaheli      | `sw`          |
 | Schwedisch      | `sv`          |
 | Tamilisch      | `ta`          |
 | Thailändisch      | `th`          |
@@ -314,7 +315,6 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
 |Kannada|`kn`|
-| Suaheli|    `sw`    |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
@@ -335,6 +335,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Slowakisch     | `sk`          |
 | Slowenisch      | `sl`          |
 | Spanisch      | `es`          |
+| Suaheli|  `sw`    |
 | Schwedisch      | `sv`          |
 |Tahitisch|  `ty`    |
 | Thailändisch      | `th`          |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906375"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613644"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Häufig gestellte Fragen von Kunden, die bereits Azure Monitor-Protokolle verwenden<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ Eine Security Center-Lösung wird in dem Arbeitsbereich installiert, der im Date
 Wenn Security Center erkennt, dass ein virtueller Computer bereits mit einem Arbeitsbereich verbunden ist, den Sie erstellt haben, aktiviert Security Center Lösungen in diesem Arbeitsbereich gemäß Ihrer Preiskonfiguration. Da die Lösungen mittels [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md) nur auf die relevanten virtuellen Azure-Computer angewendet werden, bleibt die Abrechnung unverändert.
 
 - **Azure Defender aus:** Security Center installiert die Lösung SecurityCenterFree im Arbeitsbereich. Ihnen wird nichts in Rechnung gestellt.
-- 
 - **Azure Defender ein:** Security Center installiert die Lösung Security im Arbeitsbereich.
 
    ![Lösungen im Standardarbeitsbereich](./media/security-center-platform-migration-faq/solutions.png)

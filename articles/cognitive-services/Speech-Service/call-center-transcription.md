@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462733"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630150"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -142,9 +142,9 @@ Auf GitHub steht Beispielcode für jedes der Features des Speech-Diensts zur Ver
 - [Speech-Geräte-SDK](speech-devices-sdk.md)
 - [REST-API: Spracherkennung](rest-speech-to-text.md)
 - [REST-API: Sprachsynthese](rest-text-to-speech.md)
-- [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+- [REST-API: Batchtranskription und Anpassung](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Kostenloses Testen des Speech-Diensts](get-started.md)
+> [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)

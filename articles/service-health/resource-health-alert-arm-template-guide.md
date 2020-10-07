@@ -3,21 +3,18 @@ title: Vorlage zum Erstellen von Resource Health-Warnungen
 description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 399c37f123d06e251514d0cafc3c1c4918ce3edd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537428"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
 In diesem Artikel wird gezeigt, wie Sie mithilfe von Azure Resource Manager-Vorlagen und Azure PowerShell programmgesteuert Resource Health-Aktivitätsprotokollwarnungen erstellen.
 
 Azure Resource Health informiert Sie über den aktuellen und den vergangenen Integritätsstatus Ihrer Azure-Ressourcen. Azure Resource Health-Warnungen können Sie nahezu in Echtzeit informieren, wenn sich der Integritätsstatus dieser Ressourcen ändert. Die programmgesteuerte Erstellung von Resource Health-Warnungen ermöglicht Benutzern das Massenerstellen und -anpassen von Warnungen.
-
-> [!NOTE]
-> Resource Health-Warnungen sind derzeit als Vorschau verfügbar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

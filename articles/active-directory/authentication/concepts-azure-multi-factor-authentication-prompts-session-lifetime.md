@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052663"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595551"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication
 
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um Richtlinien für bedingten Zugriff f�
 1. Wählen Sie **Sicherheit** und anschließend **Bedingter Zugriff** aus.
 1. Konfigurieren Sie eine Richtlinie mithilfe der in diesem Artikel beschriebenen empfohlenen Optionen für die Sitzungsverwaltung.
 
-Zum Überprüfen der Tokengültigkeitsdauer [verwenden Sie Azure AD PowerShell, um Azure AD-Richtlinien abzufragen](../develop/active-directory-configurable-token-lifetimes.md#prerequisites). Deaktivieren Sie alle Richtlinien, die Sie eingerichtet haben.
+Zum Überprüfen der Tokengültigkeitsdauer [verwenden Sie Azure AD PowerShell, um Azure AD-Richtlinien abzufragen](../develop/configure-token-lifetimes.md#prerequisites). Deaktivieren Sie alle Richtlinien, die Sie eingerichtet haben.
 
 Wenn mehr als eine Einstellung in Ihrem Mandanten aktiviert ist, empfehlen wir Ihnen, die Einstellungen ausgehend von der für Sie verfügbaren Lizenzierung zu aktualisieren. Wenn Sie beispielsweise über Azure AD Premium-Lizenzen verfügen, sollten Sie nur die Richtlinie für bedingten Zugriff für die *Anmeldehäufigkeit* und die *persistente Browsersitzung* verwenden. Wenn Sie über Microsoft 365-Apps oder Azure AD Free-Lizenzen verfügen, verwenden Sie die Konfiguration *Remain signed-in?* (Angemeldet bleiben?).
 

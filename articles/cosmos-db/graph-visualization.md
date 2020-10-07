@@ -1,18 +1,18 @@
 ---
 title: Visualisieren von Diagrammdaten in der Azure Cosmos DB-Gremlin-API
 description: Erfahren Sie, wie Sie Azure Cosmos DB-Diagrammdaten in Visualisierungslösungen (Linkurious Enterprise, Cambridge Intelligence) integrieren.
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9850af3ea2365aa73d8b9f08b2e706c79062860
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261782"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400518"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Visualisieren der in der Gremlin-API von Azure Cosmos DB gespeicherten Diagrammdaten mit Datenvisualisierungslösungen
 
@@ -26,11 +26,11 @@ Sie können die in der Gremlin-API von Azure Cosmos DB gespeicherten Daten mit v
 
 Die interaktive Benutzeroberfläche von Linkurious Enterprise bietet eine einfache Möglichkeit, komplexe Daten zu untersuchen. Sie können nach bestimmten Entitäten suchen, Verbindungen erweitern, um versteckte Beziehungen aufzudecken, und Layouts Ihrer Wahl anwenden, um komplexe Netzwerke zu entwirren. Linkurious Enterprise ist jetzt mit der Gremlin-API von Azure Cosmos DB kompatibel. Die Plattform eignet sich für umfassende Szenarien zur Visualisierung von Diagrammen und unterstützt Lese- und Schreibfunktionen auf der Benutzeroberfläche. Sie können eine [Demo von Linkurious mit Azure Cosmos DB](https://linkurio.us/contact/) anfordern.
 
-:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious-Demo" border="false":::
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious-Logo" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence-Logo" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Linkurious-Logo" border="false":::
 
 Die Diagrammvisualisierungs-Toolkits von [Cambridge Intelligence](https://cambridge-intelligence.com/products/) unterstützen nun Azure Cosmos DB. Die folgenden zwei Visualisierungstoolkits werden von Azure Cosmos DB unterstützt:
 
@@ -38,15 +38,15 @@ Die Diagrammvisualisierungs-Toolkits von [Cambridge Intelligence](https://cambri
 
 - [Re-Graph für React-Entwickler](https://cambridge-intelligence.com/regraph/)
 
-:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence-Demo" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Linkurious-Logo" border="false":::
 
 Mit diesen Toolkits können Sie leistungsstarke Anwendungen zur Visualisierung und Analyse von Diagrammen für Ihren Anwendungsfall entwickeln. Sie nutzen leistungsstarkes WebGL-Rendering (Web Graphics Library) und sorgfältig erstellten Code, um den Benutzern eine schnelle und aufschlussreiche Visualisierung zu bieten. Diese Tools sind mit jedem Browser, Gerät, Server und jeder Datenbank kompatibel und werden mit Schritt-für-Schritt-Anleitungen, vollständig dokumentierten APIs und interaktiven Demos geliefert.
 
-:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence-Demo" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Linkurious-Logo" border="false":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte
- 
+
 - [Toolkits testen](https://cambridge-intelligence.com/try/)
 - [Übersicht über die KeyLines-Technologie](https://cambridge-intelligence.com/keylines/technology/)
 - [Übersicht über die Re-Graph-Technologie](https://cambridge-intelligence.com/regraph/technology/)

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931285"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760305"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Hochladen von Abrechnungsdaten in Azure und Anzeigen im Azure-Portal
 
@@ -30,7 +30,7 @@ In Zukunft gibt es zwei Modi, in denen Sie Ihre Azure Arc-fähigen Datendienste 
 - **Indirekt verbunden**: Es gibt keine direkte Verbindung mit Azure. Daten werden nur über einen Export-/Uploadprozess an Azure gesendet. Alle Bereitstellungen der Azure Arc-Datendienste arbeiten heute während der Vorschauphase in diesem Modus.
 - **Direkt verbunden**: In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, auf dem die Azure Arc-fähigen Datendienste ausgeführt werden. Dies ermöglicht mehr Funktionen und erlaubt es Ihnen auch, das Azure-Portal und die Azure CLI zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  Dieser Konnektivitätsmodus ist in der Vorschau noch nicht verfügbar, wird jedoch in Kürze bereitgestellt werden.
 
-Sie können mehr über den Unterschied zwischen den [Verbindungsmodi](/docs/connectivity.md) erfahren.
+Sie können mehr über den Unterschied zwischen den [Verbindungsmodi](https://docs.microsoft.com/azure/azure-arc/data/connectivity) erfahren.
 
 Im indirekt verbundenen Modus werden Abrechnungsdaten regelmäßig aus dem Azure Arc-Datencontroller in eine sichere Datei exportiert und dann in Azure hochgeladen und verarbeitet.  Im zukünftigen direkt verbundenen Modus werden die Abrechnungsdaten ungefähr ein Mal pro Stunde automatisch an Azure gesendet, um einen Einblick in die Kosten Ihrer Dienste nahezu in Echtzeit zu ermöglichen. Der Prozess des Exports und Uploads der Daten im indirekt verbundenen Modus kann auch mit Hilfe von Skripts automatisiert werden, oder wir erstellen einen Dienst, der dies für Sie erledigt.
 

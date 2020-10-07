@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936162"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743181"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Debugsitzungen in Azure Cognitive Search
 
@@ -35,8 +35,7 @@ Wenn die Anreicherungspipeline keine Fehler enthält, kann eine Debugsitzung ver
 
 Sie müssen über eine vorhandene KI-Anreicherungspipeline einschließlich einer Datenquelle, eines Skillsets, eines Indexers und eines Index verfügen, um eine Debugsitzung starten zu können. Zum Konfigurieren einer Debugsitzung müssen Sie die Sitzung benennen und ein universelles Speicherkonto bereitstellen, das zum Zwischenspeichern der Ausführungen von Skills während der Indexerausführung verwendet wird. Außerdem müssen Sie den auszuführenden Indexer auswählen. Der Indexer verweist auf die Datenquelle, das Skillset und den Index. Die Debugsitzung verwendet standardmäßig das erste Dokument in der Datenquelle. Alternativ können Sie ein zu durchlaufendes Dokument in der Datenquelle angeben.
 
-> [!div class="mx-imgBorder"]
-> ![Erstellen einer Debugsitzung](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Erstellen einer Debugsitzung":::
 
 ## <a name="debug-session-features"></a>Debugsitzungsfeatures
 
@@ -52,8 +51,7 @@ In der Ansicht **Skill Graph** (Skilldiagramm) wird eine hierarchische visuelle 
 
 Durch Klicken auf einen Skill im Diagramm werden die damit verbundenen Skills hervorgehoben sowie die Knoten, die die Eingaben für diesen Skill erstellen, und die, die seine Ausgaben akzeptieren. Für alle Skillknoten werden jeweils dessen Typ, Fehler oder Warnungen und die Anzahl der Ausführungen angezeigt. In der Ansicht **Skill Graph** (Skilldiagramm) wählen Sie aus, welchen Skill Sie debuggen oder verbessern möchten. Wenn Sie einen Skill auswählen, werden die zugehörigen Details im Skilldetailbereich rechts neben dem Diagramm angezeigt.
 
-> [!div class="mx-imgBorder"]
-> ![Skill Graph (Skilldiagramm)](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Erstellen einer Debugsitzung":::
 
 ## <a name="skill-details"></a>Skilldetails
 
@@ -75,8 +73,7 @@ Wenn Sie einen benutzerdefinierten Skill erstellen oder einen bei einem benutzer
 
 Im Bereich **Enriched Data Structure** (Angereicherte Datenstruktur) werden Anreicherungen über das Skillset für das Dokument angezeigt, und der Kontext für jede Anreicherung und den zugrunde liegenden Skill wird dort detailliert beschrieben. Mit **Expression evaluator** (Ausdrucksauswertung) kann auch der Inhalt für die einzelnen Anreicherungen angezeigt werden.
 
-> [!div class="mx-imgBorder"]
-> ![Angereicherte Datenstruktur](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Erstellen einer Debugsitzung":::
 
 ## <a name="expression-evaluator"></a>Expression evaluator (Ausdrucksauswertung)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294528"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -102,10 +102,10 @@ Der Log Analytics-Agent für Linux besteht aus mehreren Paketen. Die Releasedate
 
 **Paket** | **Version** | **Beschreibung**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | Der Log Analytics-Agent für Linux
+omsagent | 1.13.9 | Der Log Analytics-Agent für Linux
 omsconfig | 1.1.1 | Konfigurations-Agent für den Log Analytics-Agent
-omi | 1.6.3 | Open Management Infrastructure (OMI) – ein kompakter CIM-Server. *Beachten Sie, dass OMI Stammzugriff erfordert, um einen Cron-Auftrag auszuführen, der für das Funktionieren des Diensts erforderlich ist.*
-scx | 1.6.3 | OMI-CIM-Anbieter für Leistungsmetriken für das Betriebssystem
+omi | 1.6.4 | Open Management Infrastructure (OMI) – ein kompakter CIM-Server. *Beachten Sie, dass OMI Stammzugriff erfordert, um einen Cron-Auftrag auszuführen, der für das Funktionieren des Diensts erforderlich ist.*
+scx | 1.6.4 | OMI-CIM-Anbieter für Leistungsmetriken für das Betriebssystem
 apache-cimprov | 1.0.1 | Apache HTTP Server-Anbieter für die Leistungsüberwachung für OMI Nur installiert, wenn Apache HTTP Server erkannt wird.
 mysql-cimprov | 1.0.1 | MySQL Server-Anbieter für die Leistungsüberwachung für OMI Nur installiert, wenn MySQL/MariaDB-Server erkannt wird.
 docker-cimprov | 1.0.0 | Docker-Anbieter für OMI. Nur installiert, wenn Docker erkannt wird.

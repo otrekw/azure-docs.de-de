@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935023"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397367"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
 
@@ -76,7 +76,8 @@ Bei einem mehrinstanzenfähigen Szenario nutzt der Anwendungsentwickler einen od
 3. *Kombination beider Muster:* Größeren, aktiveren Mandanten werden dedizierte Dienste zugewiesen, während kleineren Mandanten einzelne Indizes in gemeinsam genutzten Diensten zugeteilt werden.
 
 ## <a name="1-index-per-tenant"></a>1. Index pro Mandant
-![Eine Abbildung des Index-pro-Mandant-Modells](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Eine Abbildung des Index-pro-Mandant-Modells" border="false":::
 
 Bei einem Index-pro-Mandant-Modell nutzen mehrere Mandanten einen einzelnen Dienst der kognitiven Azure-Suche, wobei jeder Mandant einen eigenen Index hat.
 
@@ -93,7 +94,8 @@ Die kognitive Azure-Suche ermöglicht die Skalierung von einzelnen Indizes sowie
 Wenn die Gesamtanzahl der Indizes für einen einzelnen Dienst zu groß wird, muss ein anderer Dienst bereitgestellt werden, um die neuen Mandanten zu unterstützen. Wenn Indizes zwischen Suchdiensten verschoben werden müssen, weil neue Dienste hinzugefügt werden, müssen die Daten aus dem Index manuell in einen anderen Index kopiert werden, da das Verschieben eines Index in der kognitiven Azure-Suche nicht zulässig ist.
 
 ## <a name="2-service-per-tenant"></a>2. Dienst pro Mandant
-![Eine Abbildung des Dienst-pro-Mandant-Modells](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Eine Abbildung des Index-pro-Mandant-Modells" border="false":::
 
 Bei einer Dienst-pro-Mandant-Architektur hat jeder Mandant einen eigenen Suchdienst.
 
