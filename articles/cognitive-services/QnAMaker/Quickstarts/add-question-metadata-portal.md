@@ -1,14 +1,16 @@
 ---
 title: 'Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal'
 description: In diesem Schnellstart erfahren Sie, wie Sie Frage-Antwort-Paare mit Metadaten hinzufügen, damit Ihre Benutzer die richtige Antwort auf ihre Frage finden können.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331388"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776747"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal
 

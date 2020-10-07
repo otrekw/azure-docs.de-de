@@ -130,3 +130,7 @@
       href: /rest/api/consumption/usagedetails
     - name: 'Cost Management: Nutzungs-REST-API (Reservierungsdetails)'
       href: /rest/api/consumption/reservationsdetails
+- name: Ressourcen
+  items:
+    - name: 'Sparen von Kosten mit reservierten Instanzen: Lernmodul'
+      href: /learn/modules/save-money-with-azure-reserved-instances

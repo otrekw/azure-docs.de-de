@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336939"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651903"
 ---
 # <a name="analyze-unexpected-charges"></a>Analysieren unerwarteter Gebühren
 
@@ -26,7 +26,7 @@ Die Art des Erwerbs Ihrer Azure-Dienste hilft Ihnen bei der Bestimmung der Metho
 
 Die folgenden Artikel enthalten ausführliche Schritte zur Überprüfung Ihrer Rechnung auf der Grundlage Ihres Kundentyps. Die Artikel enthalten jeweils eine Anleitung zum Herunterladen einer CSV-Datei mit Nutzungs- und Kostendetails für einen bestimmten Abrechnungszeitraum.
 
-- [Überprüfungsprozess für Rechnungen mit nutzungsbasierter Zahlung](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Überprüfungsprozess für Rechnungen mit nutzungsbasierter Zahlung](review-individual-bill.md#charges)
 - [Überprüfungsprozess für Enterprise Agreement-Rechnungen](review-enterprise-agreement-bill.md)
 - [Überprüfungsprozess für MCA-Rechnungen (Microsoft Customer Agreement, Microsoft-Kundenvereinbarung)](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Überprüfungsprozess für MPA-Rechnungen (Microsoft Partner Agreement, Microsoft Partner-Vereinbarung)](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
