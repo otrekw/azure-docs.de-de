@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89458331"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Table Storage
@@ -106,7 +106,7 @@ Bei der Bandbreite liegt das Problem häufig in der Clientkapazität. Größere 
 
 Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Fehlern und Paketverlusten führen, den effektiven Durchsatz verringern.  Die Verwendung von WireShark oder NetMon kann bei der Diagnose dieses Problems helfen.  
 
-### <a name="location"></a>Position
+### <a name="location"></a>Standort
 
 In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise über eine Azure-Web-App verfügen, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.  
 

@@ -9,10 +9,10 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944200"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -132,7 +132,7 @@ Führen Sie die Azure-Funktion mithilfe von `F5` lokal aus. Dadurch wird die Azu
 
 Öffnen Sie die URL in Ihrem Browser. Daraufhin wird ein Antworttext mit der Kommunikationsbenutzer-ID, dem Token und dessen Ablaufdatum angezeigt.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Screenshot mit einer Beispielantwort für die erstellte Azure-Funktion":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Diagramm für die Architektur vertrauenswürdiger Dienste":::
 
 ## <a name="deploy-the-function-to-azure"></a>Bereitstellen der Funktion in Azure
 

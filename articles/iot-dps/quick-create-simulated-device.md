@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: 5d52cd134c8c0f1702f57bff1f60bffa12ef6f4d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5d594aeaee7b80bcac28f060a1d86e6c08d2cf05
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687224"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90524724"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten TPM-Geräts mithilfe des Azure IoT C SDK
 
@@ -25,7 +25,7 @@ ms.locfileid: "81687224"
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie einen TPM-Gerätesimulator (Trusted Platform Module) auf einem Windows-Entwicklungscomputer erstellen und ausführen. Sie verbinden dieses simulierte Gerät mit einem IoT Hub über eine Instanz des Device Provisioning-Diensts. Zur Registrieren des Geräts bei einer Instanz des Device Provisioning-Diensts zum Simulieren einer Startsequenz für das Gerät wird Beispielcode aus dem [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet.
 
-Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie mit dieser Schnellstartanleitung fortfahren. 
+Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](about-iot-dps.md#provisioning-process). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie mit dieser Schnellstartanleitung fortfahren. 
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
 - [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
@@ -39,7 +39,7 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
 Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie in der SDK-Dokumentation im entsprechenden Abschnitt unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md).
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
 
 * Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
@@ -74,7 +74,7 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
 
 ## <a name="build-the-sdk-and-run-the-tpm-device-simulator"></a>Erstellen des SDK und Ausführen des TPM-Gerätesimulators
 
-In diesem Abschnitt erstellen Sie das Azure IoT C SDK, das den TPM-Gerätesimulator-Beispielcode enthält. Dieses Beispiel stellt einen TPM-[Nachweismechanismus](concepts-security.md#attestation-mechanism) über SAS-Tokenauthentifizierung (Shared Access Signature) bereit.
+In diesem Abschnitt erstellen Sie das Azure IoT C SDK, das den TPM-Gerätesimulator-Beispielcode enthält. Dieses Beispiel stellt einen TPM-[Nachweismechanismus](concepts-service.md#attestation-mechanism) über SAS-Tokenauthentifizierung (Shared Access Signature) bereit.
 
 1. Führen Sie aus dem Unterverzeichnis `cmake`, das Sie im Git-Repository „azure-iot-sdk-c“ erstellt haben, den folgenden Befehl zum Erstellen des Beispiels aus. Von diesem Build-Befehl wird außerdem eine Visual Studio-Projektmappe für das simulierte Gerät generiert.
 

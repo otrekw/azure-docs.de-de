@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944772"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -23,11 +23,11 @@ Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an, um e
 
 Geben Sie **Communication** in **Search the Marketplace** (Marketplace durchsuchen) oder in die Suchleiste oben im Portal ein.
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Screenshot, der eine Suche nach Communication Services in der Suchleiste zeigt":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Screenshot mit der hervorgehobenen Schaltfläche zum Erstellen einer Ressource im Azure-Portal":::
 
 Wählen Sie in den Ergebnissen **Communication Services** und anschließend **Hinzufügen** aus.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Screenshot, der das Azure-Panel mit der hervorgehobenen Schaltfläche „Hinzufügen“ zeigt":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Screenshot mit der hervorgehobenen Schaltfläche zum Erstellen einer Ressource im Azure-Portal":::
 
 Sie können Ihre Communication Services-Ressource jetzt konfigurieren. Auf der ersten Seite des Erstellungsprozesses werden Sie aufgefordert, Folgendes anzugeben:
 

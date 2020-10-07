@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944137"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Schnellstart: Untersuchen von Sicherheitswarnungen
@@ -44,12 +44,12 @@ Beim Öffnen der einzelnen aggregierten Warnungen werden die ausführliche Warnu
 
 1. Wählen Sie in der Liste unter **IoT Hub** > **Sicherheit** > **Warnungen** eine beliebige Sicherheitswarnung aus. 
 1. Überprüfen Sie für die Warnungen aller Geräte jeweils die **Beschreibung**, den **Schweregrad**, die **Quelle der Erkennung** und die **Gerätedetails** aller Geräte, von denen die Warnung im Aggregationszeitraum ausgegeben wurde.
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Drilldown und Überprüfung der Details der einzelnen Geräte in einer aggregierten Warnung"::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Untersuchen von neuen IoT-Sicherheitswarnungen anhand des Flags für neue Warnungen"::: 
 1. Verwenden Sie nach dem Überprüfen der spezifischen Warnungsinformationen den **Schritt für die manuelle Behebung**, um das Problem, das zur Warnung geführt hat, zu entschärfen bzw. zu beheben. 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Schritte für die manuelle Behebung, um die Sicherheitswarnungen Ihres Geräts zu beheben bzw. zu entschärfen":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Untersuchen von neuen IoT-Sicherheitswarnungen anhand des Flags für neue Warnungen":::
 
 1. Falls eine weitere Untersuchung erforderlich ist, können Sie den Link verwenden, um die **Warnungen in Log Analytics zu untersuchen**. 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Weitere Untersuchung einer Warnung über den Log Analytics-Link, der auf dem Bildschirm angezeigt wird":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Untersuchen von neuen IoT-Sicherheitswarnungen anhand des Flags für neue Warnungen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

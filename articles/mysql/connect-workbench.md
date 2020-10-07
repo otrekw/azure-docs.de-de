@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896328"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von MySQL Workbench zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
@@ -49,7 +49,7 @@ So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-
 
 2.    Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Einrichten einer neuen Verbindung":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Servername für Azure-Datenbank für MySQL":::
 
 | **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** |
 |---|---|---|
@@ -103,7 +103,7 @@ So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-
 
     Der Screenshot zeigt ein Beispiel für SQL-Code in SQL Workbench und die Ausgabe nach der Ausführung.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="SQL-Registerkarte in MySQL Workbench für die Ausführung von SQL-Beispielcode":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Servername für Azure-Datenbank für MySQL":::
 
 2. Um den SQL-Beispielcode auszuführen, klicken Sie auf der Registerkarte **SQL-Datei** auf der Symbolleiste auf das Blitzsymbol.
 3. Beachten Sie die drei im Registerkartenformat angezeigten Ergebnisse im Abschnitt **Ergebnisraster** in der Mitte der Seite. 

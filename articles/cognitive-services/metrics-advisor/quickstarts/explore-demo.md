@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944620"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Schnellstart: Erkunden der Metrics Advisor-Demo mit Beispieldaten
@@ -44,14 +44,14 @@ Klicken Sie auf den Datenfeed *Sample - Cost/Revenue - City/Category* (Beispiel:
 * Protokolle zu Datenfeedaktualisierungen.   
 * Informationen und Einstellungen für den Datenfeed.
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="Datenfeedansicht" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="Liste mit Beispieldaten" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>Anzeigen von Zeitreihenvisualisierungen und -konfigurationen
 
 Klicken Sie im Datenfeed *Sample - Cost/Revenue - City/Category* (Beispiel: Kosten/Umsatz: Stadt/Kategorie) auf die Metrik *cost* (Kosten). Die zugeordnete Zeitreihe wird mit Dimensionssegmenten und mit Visualisierungen gemäß den historischen Metrikdaten dargestellt. Das blaue Band um die Metrikdaten stellt den erwarteten Wertebereich aus den Machine Learning-Modellen von Metrics Advisor dar. Punkte außerhalb dieses Bands werden als rote Punkte dargestellt. Hierbei handelt es sich um erkannte Anomalien. 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="Reihenvisualisierung" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="Liste mit Beispieldaten" lightbox="../media/series-visualization.png":::
 
 Die Anomalieerkennung kann durch Optimieren der **Erkennungskonfigurationen** im linken Bereich der Metrikdetailseite konfiguriert werden. Ihnen stehen mehrere Anomalieerkennungsmethoden zur Verfügung. Diese können auch miteinander kombiniert werden. Außerdem können Sie verschiedene Empfindlichkeiten, Erkennungsrichtungen und andere Konfigurationen ausprobieren. Über den Link **Advanced configuration** (Erweiterte Konfiguration) im unteren Bereich der **Erkennungskonfigurationen** können Sie komplexere und stärker angepasste Erkennungseinstellungen für Gruppen oder einzelne Reihen erstellen. 
 
@@ -59,7 +59,7 @@ Darüber hinaus können Sie die Anomalieerkennung durch Feedback für den Erkenn
 
 Am unteren Rand des Bereichs **Add feedback** (Feedback hinzufügen) befindet sich der Link **To incident hub** (Zum Incidenthub). Über diesen Link gelangen Sie zur Seite für die Incidentanalyse sowie zur Ursachenanalyse für den Incident.  
 
-:::image type="content" source="../media/incident-link.png" alt-text="Incidentlink" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Liste mit Beispieldaten" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>Erkunden der Ergebnisse der Anomalieerkennung und Durchführen einer Ursachenanalyse
 
@@ -67,7 +67,7 @@ Wenn Sie in einer Anomalie auf den Link **To incident hub** (Zum Incidenthub) kl
 
 Im Abschnitt **Diagnose** werden eine Struktur des Incidents sowie mehrere Registerkarten für die Incidentdiagnose angezeigt.
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidentdiagnose" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Liste mit Beispieldaten" lightbox="../media/incident-diagnostic.png":::
 
 Die Ermittlung der Grundursache ermöglicht die Ergreifung von Problembehandlungsmaßnahmen, bevor sich die Situation verschlechtert. Durch Klicken auf die anderen bereitgestellten Diagnosefeatures können auch weitere Erkenntnisse erkundet werden. 
 

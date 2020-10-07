@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442139"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen einer Web-API
@@ -95,7 +95,7 @@ Um den Beispielbereich `Employees.Write.All` hinzuzufügen, führen Sie die im A
 
 Wenn Sie die beiden in den vorherigen Abschnitten beschriebenen Beispielbereiche erfolgreich hinzugefügt haben, werden sie, ähnlich wie in der folgenden Abbildung gezeigt, im Bereich **Eine API verfügbar machen** der App-Registrierung Ihrer Web-API angezeigt:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Screenshot des Bereiches „Eine API verfügbar machen“ mit zwei verfügbar gemachten Bereichen.":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Bereich „Eine API verfügbar machen“ der App-Registrierung im Azure-Portal":::
 
 Wie aus der Abbildung hervorgeht, wird die vollständige Zeichenfolge eines Bereichs durch die Verkettung von **Anwendungs-ID-URI** der Web-API und **Bereichsname** des Bereichs gebildet.
 

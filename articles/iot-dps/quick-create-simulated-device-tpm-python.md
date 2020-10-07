@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 53590344a45990187b5ca8aba4eca18da526f308
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 6e778541023befc756e61be9b9646bf37c82c47c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872615"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90530606"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des Python-Geräte-SDK für den IoT Hub Device Provisioning-Dienst
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung erstellen Sie ein simuliertes IoT-Gerät auf ein
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Kenntnis der [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md).
+- Mit Konzepten für die [Bereitstellung](about-iot-dps.md#provisioning-process) vertraut sein.
 - Ausführung der Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md).
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) mit Desktopentwicklung mit C++.
