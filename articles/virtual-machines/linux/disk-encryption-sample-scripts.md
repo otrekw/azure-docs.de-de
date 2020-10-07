@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: abf805d24d164ba31daa4d77d6360629632bfcf0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279789"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption-Beispielskripts für virtuelle Linux-Computer
 
@@ -136,7 +136,7 @@ Es gibt drei Möglichkeiten, den Fortschritt der Betriebssystemverschlüsselung 
 
   Wechseln Sie zum [Azure-Ressourcen-Explorer](https://resources.azure.com/), und erweitern Sie diese Hierarchie im Auswahlbereich auf der linken Seite:
 
-  ~~~~
+  ```
   |-- subscriptions
      |-- [Your subscription]
           |-- resourceGroups
@@ -146,7 +146,7 @@ Es gibt drei Möglichkeiten, den Fortschritt der Betriebssystemverschlüsselung 
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-  ~~~~                
+  ```                
 
   Scrollen Sie unter „InstanceView“ nach unten, um den Verschlüsselungsstatus Ihrer Laufwerke anzuzeigen.
 

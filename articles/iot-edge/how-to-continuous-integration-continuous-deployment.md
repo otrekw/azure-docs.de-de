@@ -3,17 +3,17 @@ title: Continuous Integration und Continuous Deployment für Azure IoT Edge-Ger�
 description: Einrichten von Continuous Integration und Continuous Deployment mithilfe von YAML– Azure IoT Edge mit Azure DevOps, Azure Pipelines
 author: shizn
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b68e354099a0038e1b418d6973eca2c774aed94
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281625"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte
 

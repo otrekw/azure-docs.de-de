@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ac1df12b10e32f35e8edbd52c3488b2d38db638a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: df9447160fe6a0aa2a3ae001ad8a337c3ff488f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275942"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Planen von Machine Learning-Pipelines mit dem Azure Machine Learning-SDK für Python
 
@@ -83,7 +83,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Pipelines, die durch Dateiänderungen ausgelöst werden, sind möglicherweise effizienter als zeitbasierte Pläne. Vielleicht möchten Sie zum Beispiel einen Vorverarbeitungsschritt ausführen, wenn eine Datei geändert oder einem Datenverzeichnis eine neue Datei hinzugefügt wird. Sie können alle Änderungen an einem Datenspeicher oder Änderungen in einem bestimmten Verzeichnis des Datenspeichers überwachen. Wenn Sie ein bestimmtes Verzeichnis überwachen, lösen Änderungen in den Unterverzeichnissen dieses Verzeichnisses _keine_ Ausführung aus.
 
-Um einen `Schedule` zu erstellen, der auf Dateiänderungen reagiert, müssen Sie den `datastore`-Parameter im Aufruf auf [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) festlegen. Zum Überwachen eines Ordners legen Sie das `path_on_datastore`-Argument fest.
+Um einen `Schedule` zu erstellen, der auf Dateiänderungen reagiert, müssen Sie den `datastore`-Parameter im Aufruf auf [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) festlegen. Zum Überwachen eines Ordners legen Sie das `path_on_datastore`-Argument fest.
 
 Mit dem `polling_interval`-Argument können Sie das Intervall, in dem der Datenspeicher auf Änderungen geprüft wird, in Minuten angeben.
 

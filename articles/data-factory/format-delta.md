@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276502"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Deltaformat in Azure Data Factory
 
@@ -41,6 +41,7 @@ Die folgende Tabelle enthält die von einer Deltaquelle unterstützten Eigenscha
 | Komprimierungstyp | Der Komprimierungstyp der Deltatabelle. | nein | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | Komprimierungsgrad | Wählen Sie aus, ob die Komprimierung schnellstmöglich abgeschlossen oder die resultierende Datei optimal komprimiert werden soll. | Erforderlich, wenn `compressedType` angegeben wird. | `Optimal` oder `Fastest` | compressionLevel |
 | Zeitreise | Wählen Sie aus, ob eine ältere Momentaufnahme einer Deltatabelle abgefragt werden soll. | nein | Abfragen nach Zeitstempel: Timestamp <br> Abfragen nach Version: Integer | timestampAsOf <br> versionAsOf |
+| Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>Schema importieren
 
@@ -69,7 +70,7 @@ source(output(movieId as integer,
 
 Die folgende Tabelle enthält die von einer Deltasenke unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `delta` sein | ja | `delta` | format |
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |

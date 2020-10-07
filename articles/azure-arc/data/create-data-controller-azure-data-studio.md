@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273142"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Erstellen eines Datencontrollers in Azure Data Studio
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Bereitstellungs-Assisten
 9. Geben Sie einen Namen für den Datencontroller und für den Namespace ein, in dem der Datencontroller erstellt wird.  
 
 > [!NOTE]
-> Wenn der Namespace bereits vorhanden ist, wird er verwendet, wenn er noch keine anderen Kubernetes-Objekte (Pods usw.) enthält.  Wenn der Namespace nicht vorhanden ist, wird versucht, den Namespace zu erstellen.  Zum Erstellen eines Namespace in einem Kubernetes-Cluster sind Administratorrechte für den Kubernetes-Cluster erforderlich.  Wenn Sie keine Administratorrechte für den Kubernetes-Cluster besitzen, bitten Sie den Kubernetes-Clusteradministrator, die ersten Schritte im Artikel zum [Erstellen eines Datencontrollers mithilfe nativer Kubernetes-Tools](./create-data-controller-using-k8s-native-tools.md) auszuführen. Diese Schritte müssen von einem Kubernetes-Administrator ausgeführt werden, bevor Sie diesen Assistenten abschließen.
+> Wenn der Namespace bereits vorhanden ist, wird er verwendet, wenn er noch keine anderen Kubernetes-Objekte (Pods usw.) enthält.  Wenn der Namespace nicht vorhanden ist, wird versucht, den Namespace zu erstellen.  Zum Erstellen eines Namespace in einem Kubernetes-Cluster sind Administratorrechte für den Kubernetes-Cluster erforderlich.  Wenn Sie keine Administratorrechte für den Kubernetes-Cluster besitzen, bitten Sie den Kubernetes-Clusteradministrator, die ersten Schritte im Artikel zum [Erstellen eines Datencontrollers mithilfe nativer Kubernetes-Tools](./create-data-controller-using-kubernetes-native-tools.md) auszuführen. Diese Schritte müssen von einem Kubernetes-Administrator ausgeführt werden, bevor Sie diesen Assistenten abschließen.
 
 > [!NOTE]
 > Hinweis: Der Datencontroller- und Namespacename werden verwendet, um eine benutzerdefinierte Ressource im Kubernetes-Cluster zu erstellen. Daher müssen sie den [Namenskonventionen von Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names) entsprechen.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278616"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault
 Azure Monitor für Key Vault ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
@@ -25,21 +25,6 @@ Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung u
 -    **Anpassbarkeit**. Dadurch können Sie ändern, welche Metriken angezeigt werden, auf Ihre Grenzwerte abgestimmte Schwellenwerte festlegen und Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an Azure-Dashboards angeheftet werden.
 
 Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. Die metrikbasierten Überwachungsdaten stehen allen Benutzern zur Verfügung. Für die Einbeziehung protokollbasierter Visualisierungen müssen die Benutzer jedoch unter Umständen die [Protokollierung ihrer Azure Key Vault-Instanz aktivieren](../../key-vault/general/logging.md).
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>Konfigurieren Ihrer Schlüsseltresore für die Überwachung
-
-> [!NOTE]
-> Die Aktivierung von Protokollen ist ein kostenpflichtiger Dienst für zusätzliche Überwachungsfunktionen.
-
-1. Auf der Registerkarte „Vorgänge und Wartezeit“ können Sie ermitteln, wie viele und welche Schlüsseltresore aktiviert sind. Wählen Sie die Schaltfläche **Aktivieren** aus, um mit der Erfassung zu beginnen. Dadurch gelangen Sie zu einer separaten Arbeitsmappe, in der die Schlüsseltresore aufgeführt sind, für die Diagnoseprotokolle aktiviert werden müssen.
-
-    ![Screenshot: Registerkarte „Vorgänge und Wartezeit“ mit blauer Aktivierungsschaltfläche](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. Klicken Sie zum Aktivieren von Diagnoseprotokollen unterhalb der Aktionenspalte auf den Link **Aktivieren**, und erstellen Sie eine neue Diagnoseeinstellung, durch die Protokolle an einen Log Analytics-Arbeitsbereich gesendet werden. Es empfiehlt sich, alle Protokolle an den gleichen Arbeitsbereich zu senden.
-
-3. Nachdem Sie die Diagnoseeinstellungen gespeichert haben, können Sie alle protokollbasierten Diagramme und Visualisierungen unterhalb der Key Vault-Erkenntnisse anzeigen. Beachten Sie, dass es einige Minuten oder Stunden dauern kann, bis die Protokolle aufgefüllt werden.
-
-4. Weitere Informationen zur Aktivierung von Diagnoseprotokollen für Ihren Key Vault-Dienst finden Sie im [vollständigen Leitfaden](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Anzeigen in Azure Monitor
 
@@ -165,10 +150,6 @@ Die Anzahl auswähl- und anzeigbarer Schlüsseltresore ist auf 200 begrenzt. Es 
 Es werden nur Abonnements angezeigt, die Schlüsseltresore enthalten (aus dem gewählten Abonnementfilter). Diese werden im Header des Azure-Portals unter „Verzeichnis + Abonnement“ ausgewählt.
 
 ![Screenshot: Abonnementfilter](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Ich erhalte eine Fehlermeldung mit dem Hinweis, dass bei der Abfrage die maximal zulässige Anzahl von Arbeitsbereichen/Regionen überschritten wird. Was kann ich tun?
-
-Aktuell sind maximal 25 Regionen und 200 Arbeitsbereiche zulässig. Verringern Sie die Anzahl von Abonnements und/oder Ressourcengruppen, um Ihre Daten anzuzeigen.
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Wie kann ich Änderungen an Key Vault-Erkenntnissen vornehmen oder weitere Visualisierungen hinzufügen?
 

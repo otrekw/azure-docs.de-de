@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266058"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -66,8 +66,8 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 
 | | Office-Web-Apps | Office Win32-Apps | Office für iOS | Office für Android | Office für Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Unterstützt | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
-| **Exchange Online** | Unterstützt | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
+| **SharePoint Online** | Nicht unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **Exchange Online** | Nicht unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
 ### <a name="client-side-claim-challenge"></a>Clientseitige Anspruchsaufforderung
 

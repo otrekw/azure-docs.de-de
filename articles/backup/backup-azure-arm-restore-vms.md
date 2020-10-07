@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 90179ee78569f1c7b0a7bdf4b4da031c26f01783
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271867"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -163,9 +163,6 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-arm-restore-vms/sec-rp.png)
 
 ![Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/rest-config.png)
-
->[!NOTE]
->Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere VMs in dieser Ressourcengruppe verwendet werden.
 
 ![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 

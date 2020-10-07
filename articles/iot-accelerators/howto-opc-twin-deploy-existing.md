@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282118"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Bereitstellen von OPC Twin in einem vorhandenen Projekt
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 Das OPC Twin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Twin- und Registry-Dienste (Gerätezwilling und Registrierung) zur Verfügung.
 

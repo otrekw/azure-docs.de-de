@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170138"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259321"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von IDology mit Azure Active Directory B2C 
 
@@ -67,7 +67,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ### <a name="part-1---deploy-the-api"></a>Teil 1: Bereitstellen der API
 
-Stellen Sie den angegebenen API-Code für einen Azure-Dienst bereit. Der Code kann mit [dieser Anleitung](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019) aus Visual Studio veröffentlicht werden.
+Stellen Sie den angegebenen [API-Code](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) für einen Azure-Dienst bereit. Der Code kann mit [dieser Anleitung](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019) aus Visual Studio veröffentlicht werden.
 
 Sie benötigen die URL des bereitgestellten Diensts, um Azure AD mit den erforderlichen Einstellungen zu konfigurieren.
 

@@ -3,12 +3,12 @@ title: Offlinesicherung mit Azure Data Box für DPM und MABS
 description: Sie können Azure Data Box verwenden, um anfängliche Sicherungsdaten offline von DPM und MABS zu erstellen.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271493"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offlineseeding mit Azure Data Box für DPM und MABS (Vorschau)
 
@@ -110,7 +110,7 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Übertragen von Erstsicherungsdaten auf Azure Data Box-Geräte
 
-1. Führen Sie auf dem DPM/MABS-Server die Schritte zum [Erstellen einer neuen Schutzgruppe](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) aus. Wenn Sie der vorhandenen Schutzgruppe einen Onlineschutz hinzufügen, klicken Sie mit der rechten Maustaste auf die vorhandene Schutzgruppe, wählen Sie **Onlineschutz hinzufügen aus**, und beginnen Sie mit **Schritt 8**.
+1. Führen Sie auf dem DPM/MABS-Server die Schritte zum [Erstellen einer neuen Schutzgruppe](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) aus. Wenn Sie der vorhandenen Schutzgruppe einen Onlineschutz hinzufügen, klicken Sie mit der rechten Maustaste auf die vorhandene Schutzgruppe, wählen Sie **Onlineschutz hinzufügen aus**, und beginnen Sie mit **Schritt 8**.
 2. Geben Sie auf der Seite **Gruppenmitglieder auswählen** die Computer und Quellen an, die Sie sichern möchten.
 3. Wählen Sie auf der Seite **Datenschutzmethode auswählen** aus, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Stellen Sie sicher, dass Sie **Onlineschutz** auswählen.
 

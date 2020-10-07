@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271646"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 
@@ -38,8 +38,8 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 
 Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange-Server zu installieren:
 
-1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Verwaltungskonsole **Verwaltung > Agents > Installieren** auswählen. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Verwaltungskonsole **Verwaltung > Agents > Installieren** auswählen. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](/system-center/dpm/deploy-dpm-protection-agent) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
 
