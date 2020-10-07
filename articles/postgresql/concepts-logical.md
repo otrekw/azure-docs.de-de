@@ -1,17 +1,17 @@
 ---
 title: Logische Decodierung – Azure Database for PostgreSQL (Einzelserver)
 description: Im Folgenden werden die logische Decodierung und wal2json für Change Data Capture in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903895"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708610"
 ---
 # <a name="logical-decoding"></a>Logische Decodierung
  
@@ -56,7 +56,7 @@ Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Int
 
 2. Starten Sie den Server neu, um die Änderung zu übernehmen, indem Sie **Ja** auswählen.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL: Replikation: Bestätigen des Neustarts":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL: Replikation: Azure-Replikationsunterstützung":::
 
 
 ## <a name="start-logical-decoding"></a>Starten der logischen Decodierung

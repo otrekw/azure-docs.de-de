@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/25/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a43d7e3e406e4a248e0ac2c27fb74a2f1b036cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d81cc6c94c04c683362fd12cd6777c304a4b0a84
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361975"
 ---
 # <a name="confidential-computing-at-the-edge"></a>Confidential Computing im Edge-Bereich
 
@@ -42,8 +42,8 @@ Open Enclave unterstützt mehrere Hardwareplattformen. Die IoT Edge-Unterstützu
 
 Das Open Enclave-Repository enthält außerdem Beispiele, die Entwicklern den Einstieg erleichtern sollen. Wenn Sie weitere Informationen benötigen, wählen Sie einen der folgenden Einführungsartikel aus:
 
-* [Entwickeln von Open Enclave SDK-Beispielen unter Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
-* [Entwickeln von Open Enclave SDK-Beispielen unter Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)
+* [Entwickeln von Open Enclave SDK-Beispielen unter Linux](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesLinux.md)
+* [Entwickeln von Open Enclave SDK-Beispielen unter Windows](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesWindows.md)
 
 ## <a name="hardware"></a>Hardware
 

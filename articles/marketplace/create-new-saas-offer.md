@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380461"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708899"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -69,7 +69,7 @@ Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen K
 Verbinden Sie Ihr Customer Relationship Management (CRM)-System mit Ihrem Angebot im kommerziellen Marketplace, damit Sie Kundenkontaktinformationen erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt einsetzt. Sie können diese Verbindung während oder nach der Erstellung des Angebots jederzeit ändern.
 
 > [!NOTE]
-> Sie müssen die Leadverwaltung konfigurieren, wenn Sie Ihr Angebot über Microsoft verkaufen oder die Auflistungsoption **Kontakt mit mir aufnehmen** ausgewählt haben. Ausführliche Anleitungen finden Sie unter [Leadverwaltung für den kommerziellen Marketplace](lead-management-for-cloud-marketplace.md).
+> Sie müssen die Leadverwaltung konfigurieren, wenn Sie Ihr Angebot über Microsoft verkaufen oder die Auflistungsoption **Kontakt mit mir aufnehmen** ausgewählt haben. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>So konfigurieren Sie die Verbindungsdetails im Partner Center
 
