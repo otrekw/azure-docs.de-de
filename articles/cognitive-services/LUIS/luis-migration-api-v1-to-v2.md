@@ -3,20 +3,18 @@ title: Migration von API-Version 1 zu API-Version 2
 titleSuffix: Azure Cognitive Services
 description: Die Endpunkt- und Erstellungs-APIs der Version 1 von Language Understanding sind veraltet. In dieser Anleitung erfahren Sie, wie Sie zu den Endpunkt- und Erstellungs-APIs der Version 2 migrieren.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344746"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541321"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
 Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)- und [Erstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs der Version 2 migrieren.

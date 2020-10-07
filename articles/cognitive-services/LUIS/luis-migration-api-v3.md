@@ -1,15 +1,16 @@
 ---
 title: Änderungen an Vorhersageendpunkten in der V3-API
 description: Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: diberry
-ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541338"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 

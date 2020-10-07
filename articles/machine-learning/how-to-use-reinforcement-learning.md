@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d3a7b04e6169df21ad30017b72f70ff667429b23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902386"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541712"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
@@ -215,7 +215,7 @@ else:
 
 In diesem Abschnitt erfahren Sie, wie Sie mit dem [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) einen Trainingsauftrag an Azure Machine Learning übermitteln.
 
-Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie auf einfache Weise festlegen, wie eine Skriptausführung konfiguriert werden soll. Weitere Informationen zum Azure Machine Learning-Schätzmuster finden Sie unter [Trainieren von Modellen mit einem Estimator](how-to-train-ml-models.md).
+Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie auf einfache Weise festlegen, wie eine Skriptausführung konfiguriert werden soll. 
 
 ### <a name="define-a-worker-configuration"></a>Definieren einer Workerkonfiguration
 
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Initiieren einer Ausführung
 
-Eine [Ausführung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) verarbeitet den Ausführungsverlauf laufender oder abgeschlossener Aufträge. 
+Eine [Ausführung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) verarbeitet den Ausführungsverlauf laufender oder abgeschlossener Aufträge. 
 
 ```python
 run = exp.submit(config=rl_estimator)

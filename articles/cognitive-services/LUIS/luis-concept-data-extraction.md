@@ -1,15 +1,16 @@
 ---
 title: Extrahieren von Daten – LUIS
 description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Entitäten. Erfahren Sie, welche Art von Daten von LUIS (Language Understanding Intelligent Service) extrahiert werden können.
-author: diberry
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682196"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541780"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.

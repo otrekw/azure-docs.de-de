@@ -3,20 +3,18 @@ title: 'Trainieren von Apps: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Sie trainieren die Version Ihrer LUIS-App, indem Sie ihr Fähigkeiten vermitteln, mit denen sie natürliche Sprache besser verstehen kann. Trainieren Sie Ihre LUIS-App, nachdem Sie Ihr Modell aktualisiert haben, indem Sie Entitäten, Absichten und Äußerungen hinzufügen, bearbeiten, bezeichnen oder löschen.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7511d7379e7b51b19e3436ed7cef53fb914b80ac
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343070"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541372"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Trainieren Ihrer aktiven Version der LUIS-App
 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645652"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576590"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -52,7 +52,7 @@ Internetprotokoll mit bedingter Bereitschaft | Nur verfügbar für Bewertungen v
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Vorgeschlagenes Migrationstool in der importbasierten AVS-Bewertung als unbekannt markiert
 
-Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool in einer AVS-Bewertung unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
+Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool in einer AVS-Bewertung unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). [Weitere Informationen](../azure-vmware/tutorial-deploy-vmware-hcx.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux-VMs sind in einer Azure-VM-Bewertung „bedingt bereit“
 

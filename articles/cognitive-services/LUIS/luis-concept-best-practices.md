@@ -1,15 +1,16 @@
 ---
 title: Bewährte Methoden für das Entwickeln von LUIS-Apps
 description: Erfahren Sie, wie Sie mit bewährten Methoden die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a16267b0bc5d9b550c73dc4e1dafee8304ec0237
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683762"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541820"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App:
