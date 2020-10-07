@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263277"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256584"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
@@ -249,7 +249,7 @@ Unabhängig vom Datenfluss beim Abrufen haben Antwortparameter immer die gleiche
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| `token` | Das Token, das zum Aufrufen des UserInfo-Endpunkts verwendet wird.|
+| `access_token` | Das Token, das zum Aufrufen des UserInfo-Endpunkts verwendet wird.|
 | `token_type` | Immer „Bearer“ |
 | `expires_in`| Gibt die Dauer bis zum Ablauf des Zugriffstokens an (in Sekunden). |
 | `scope` | Die Berechtigungen, die für das Zugriffstoken gewährt wurden.  Beachten Sie Folgendes: Da der UserInfo-Endpunkt unter MS Graph gehostet wird, sind hier ggf. weitere Graph-Bereiche aufgelistet (z. B. „user.read“), falls diese für die App zuvor gewährt wurden.  Der Grund ist, dass ein Token für eine bestimmte Ressource immer alle gewährten Berechtigungen umfasst, über die der Client derzeit verfügt.  |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
-ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254804"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Erstellen von Warnungen aus Azure Monitor für VMs
 [Warnungen in Azure Monitor](../platform/alerts-overview.md) informieren Sie proaktiv über interessante Daten und Muster in Ihren Überwachungsdaten. Azure Monitor für VMs enthält keine vorkonfigurierten Warnungsregeln, doch Sie können eigene Regeln basierend auf den gesammelten Daten erstellen. Dieser Artikel enthält Anleitungen zum Erstellen von Warnungsregeln sowie eine Reihe von Beispielabfragen.
@@ -22,8 +22,8 @@ Azure Monitor verfügt über [verschiedene Typen von Warnungsregeln](../platform
 
 In Azure Monitor gibt es zwei Typen von Protokollwarnungen:
 
-- Bei [Warnungen des Typs „Anzahl von Ergebnissen“](../platform/alerts-unified-log.md#number-of-results-alert-rules) wird eine einzelne Warnung erzeugt, wenn eine Abfrage mindestens eine angegebene Anzahl von Datensätzen zurückgibt. Diese eignen sich ideal für nicht numerische Daten, wie z. B. Windows- und Syslog-Ereignisse, die vom [Log Analytics-Agent](../platform/log-analytics-agent.md) gesammelt werden, oder zum Analysieren von Leistungstrends auf mehreren Computern.
-- Bei [Warnungen des Typs „Metrische Maßeinheit“](../platform/alerts-unified-log.md#metric-measurement-alert-rules) wird eine separate Warnung für jeden Datensatz in einer Abfrage erzeugt, dessen Wert einen in der Warnungsregel definierten Schwellenwert überschreitet. Diese Warnungsregeln eignen sich ideal für Leistungsdaten, die von Azure Monitor für VMs gesammelt werden, da hiermit für jeden Computer individuelle Warnungen erstellt werden können.
+- Bei [Warnungen des Typs „Anzahl von Ergebnissen“](../platform/alerts-unified-log.md#count-of-the-results-table-rows) wird eine einzelne Warnung erzeugt, wenn eine Abfrage mindestens eine angegebene Anzahl von Datensätzen zurückgibt. Diese eignen sich ideal für nicht numerische Daten, wie z. B. Windows- und Syslog-Ereignisse, die vom [Log Analytics-Agent](../platform/log-analytics-agent.md) gesammelt werden, oder zum Analysieren von Leistungstrends auf mehreren Computern.
+- Bei [Warnungen des Typs „Metrische Maßeinheit“](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) wird eine separate Warnung für jeden Datensatz in einer Abfrage erzeugt, dessen Wert einen in der Warnungsregel definierten Schwellenwert überschreitet. Diese Warnungsregeln eignen sich ideal für Leistungsdaten, die von Azure Monitor für VMs gesammelt werden, da hiermit für jeden Computer individuelle Warnungen erstellt werden können.
 
 
 ## <a name="alert-rule-walkthrough"></a>Exemplarische Vorgehensweise für Warnungsregeln

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server mit Azure Backup Server
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262993"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Sichern eines Exchange-Servers in Azure mit Azure Backup Server
 
@@ -23,8 +23,8 @@ Bevor Sie fortfahren, stellen Sie sicher, dass Azure Backup Server [installiert 
 
 Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchange-Server zu installieren:
 
-1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der MABS-Verwaltungskonsole **Verwaltung > Agents > Installieren** auswählen. Ausführliche Schritte finden Sie unter [Installieren des MABS-Schutz-Agents](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).
+1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der MABS-Verwaltungskonsole **Verwaltung > Agents > Installieren** auswählen. Ausführliche Schritte finden Sie unter [Installieren des MABS-Schutz-Agents](/system-center/dpm/deploy-dpm-protection-agent).
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
 

@@ -5,15 +5,15 @@ description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell websitespe
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 01/24/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 340b184ac56d4734431b154ec647e5e7af19ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267243"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurieren von websitespezifischen WAF-Richtlinien mithilfe von Azure PowerShell
 
@@ -25,14 +25,13 @@ Indem Sie WAF-Richtlinien auf einen Listener anwenden, können Sie WAF-Einstellu
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen einer WAF-Richtlinie
-> * Erstellen eines Anwendungsgateways mit aktivierter WAF
-> * Anwenden der WAF-Richtlinie: global, websitespezifisch und URI-spezifisch (Vorschauversion)
-> * Erstellen einer Skalierungsgruppe für virtuelle Computer
-> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
-> * Testen des Anwendungsgateways
+* Einrichten des Netzwerks
+* Erstellen einer WAF-Richtlinie
+* Erstellen eines Anwendungsgateways mit aktivierter WAF
+* Anwenden der WAF-Richtlinie: global, websitespezifisch und URI-spezifisch (Vorschauversion)
+* Erstellen einer Skalierungsgruppe für virtuelle Computer
+* Erstellen eines Speicherkontos und Konfigurieren der Diagnose
+* Testen des Anwendungsgateways
 
 ![Web Application Firewall – Beispiel](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 

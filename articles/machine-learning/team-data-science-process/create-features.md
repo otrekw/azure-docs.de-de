@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250656"
 ---
 # <a name="feature-engineering-in-data-science"></a>Featureentwicklung im Data Science-Prozess
 
-In diesem Artikel erfahren Sie mehr über Feature Engineering und seine Rolle bei der Datenaufbereitung in Machine Learning. Lernen Sie aus den anschaulichen Beispielen, die aus [Azure Machine Learning Studio (Classic)](../studio/what-is-ml-studio.md) entnommen wurden. 
+In diesem Artikel erfahren Sie mehr über Feature Engineering und seine Rolle bei der Datenaufbereitung in Machine Learning. Lernen Sie aus den anschaulichen Beispielen, die aus [Azure Machine Learning Studio (Classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) entnommen wurden. 
 
 * **Featureentwicklung**: Das Erstellen neuer Features aus Rohdaten, um die Vorhersageleistung des Lernalgorithmus zu erhöhen. Die entwickelten Features sollten zusätzliche Informationen erfassen, die im ursprünglichen Satz der Features nicht leicht ersichtlich sind.
 * **Featureauswahl**: Das Auswählen der wichtigsten Teilmenge von Features, um die Anzahl der Dimensionen des Trainingsproblems zu verringern.

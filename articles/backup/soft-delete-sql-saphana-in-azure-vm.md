@@ -3,59 +3,18 @@ title: Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und 
 description: Erfahren Sie, wie das vorläufige Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads Sicherungen noch sicherer macht.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254294"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads
 
 Azure Backup bietet nun vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads. Diese Funktion ergänzt das bereits unterstützte [Szenario für vorläufiges Löschen virtueller Azure-Computer](soft-delete-virtual-machines.md).
 
 [Vorläufiges Löschen](backup-azure-security-feature-cloud.md) ist ein Sicherheitsfeature für den Schutz von Sicherungsdaten auch nach dem Löschen. Mit dem vorläufigen Löschen werden selbst beim Löschen der Sicherung einer Datenbank durch einen böswilligen Akteur oder beim versehentlichen Löschen der Sicherungsdaten diese noch 14 Tage lang aufbewahrt. Dies ermöglicht die Wiederherstellung dieses Sicherungselements ohne Datenverluste. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an.
-
->[!NOTE]
->Nachdem die Vorschau für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im selben Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
-
-## <a name="steps-to-enroll-in-preview"></a>Schritte zum Registrieren für die Vorschau
-
-1. Melden Sie sich bei Ihrem Azure-Konto an.
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. Wählen Sie das Abonnement aus, das Sie für die Vorschau registrieren möchten:
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. Registrieren Sie dieses Abonnement im Vorschauprogramm:
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. Warten Sie 30 Minuten, bis das Abonnement bei der Vorschau registriert wurde.
-
-5. Führen Sie die folgenden Cmdlets aus, um den Status zu überprüfen:
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. Führen Sie den folgenden Befehl aus, sobald das Abonnement als registriert angezeigt wird:
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->Jedes Mal, wenn in einem Abonnement mit aktiviertem vorläufigem Löschen ein neuer Tresor erstellt wird, muss der folgende Befehl erneut ausgeführt werden, um das Feature für den neu erstellten Tresor zu aktivieren.<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>Vorläufiges Löschen für SQL-Server auf einer Azure-VM über das Azure-Portal
 

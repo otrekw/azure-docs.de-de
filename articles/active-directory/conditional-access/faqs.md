@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258624"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Häufig gestellte Fragen zum bedingten Zugriff mit Azure Active Directory
 
@@ -31,11 +31,11 @@ Richtlinien werden für B2B-Kollaborationsbenutzer (Business-to-Business) erzwun
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Gelten SharePoint Online-Richtlinien auch für OneDrive for Business?
 
-Ja. Eine SharePoint Online-Richtlinie gilt auch für OneDrive for Business. Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedingten Zugriff](service-dependencies.md). Ziehen Sie außerdem in Betracht, stattdessen Richtlinien für die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365-preview) anzuwenden.
+Ja. Eine SharePoint Online-Richtlinie gilt auch für OneDrive for Business. Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedingten Zugriff](service-dependencies.md). Ziehen Sie außerdem in Betracht, stattdessen Richtlinien für die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365) anzuwenden.
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Warum kann ich keine Richtlinien direkt in Client-Apps wie Word oder Outlook festlegen?
 
-Mit einer Richtlinie für bedingten Zugriff werden die Anforderungen für den Zugriff auf einen Dienst festgelegt. Die Richtlinie wird erzwungen, wenn die Authentifizierung für diesen Dienst durchgeführt wird. Die Richtlinie wird nicht direkt für eine Clientanwendung festgelegt. Stattdessen wird sie angewendet, wenn ein Client einen Dienst aufruft. Eine Richtlinie, die für SharePoint festgelegt wurde, gilt beispielsweise für Clients, die SharePoint aufrufen. Eine Richtlinie, die für Exchange festgelegt wurde, gilt für Outlook. Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedingten Zugriff](service-dependencies.md). Ziehen Sie außerdem in Betracht, stattdessen Richtlinien für die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365-preview) anzuwenden.
+Mit einer Richtlinie für bedingten Zugriff werden die Anforderungen für den Zugriff auf einen Dienst festgelegt. Die Richtlinie wird erzwungen, wenn die Authentifizierung für diesen Dienst durchgeführt wird. Die Richtlinie wird nicht direkt für eine Clientanwendung festgelegt. Stattdessen wird sie angewendet, wenn ein Client einen Dienst aufruft. Eine Richtlinie, die für SharePoint festgelegt wurde, gilt beispielsweise für Clients, die SharePoint aufrufen. Eine Richtlinie, die für Exchange festgelegt wurde, gilt für Outlook. Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedingten Zugriff](service-dependencies.md). Ziehen Sie außerdem in Betracht, stattdessen Richtlinien für die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365) anzuwenden.
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Gilt eine Richtlinie für bedingten Zugriff für Dienstkonten?
 
@@ -53,7 +53,7 @@ Microsoft Teams wird in Richtlinien für bedingten Zugriff auch separat als Clou
 
 Microsoft Teams-Desktopclients für Windows und Mac unterstützen die moderne Authentifizierung. Die moderne Authentifizierung ermöglicht die ADAL-basierte Anmeldung (Azure Active Directory Authentication Library) plattformübergreifend für Microsoft Office-Clientanwendungen.
 
-Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedingten Zugriff](service-dependencies.md). Ziehen Sie außerdem in Betracht, stattdessen Richtlinien für die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365-preview) anzuwenden.
+Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedingten Zugriff](service-dependencies.md). Ziehen Sie außerdem in Betracht, stattdessen Richtlinien für die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365) anzuwenden.
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Warum funktionieren in Microsoft Teams einige Registerkarten nach dem Aktivieren von Richtlinien für bedingten Zugriff nicht?
 

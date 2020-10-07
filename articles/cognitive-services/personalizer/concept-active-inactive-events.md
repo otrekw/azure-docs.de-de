@@ -1,14 +1,16 @@
 ---
 title: 'Aktive und inaktive Ereignisse: Personalisierung'
 description: In diesem Artikel wird beschrieben, wie Sie aktive und inaktive Ereignisse im Personalisierungsdienst verwenden.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253648"
 ---
 # <a name="active-and-inactive-events"></a>Aktive und inaktive Ereignisse
 

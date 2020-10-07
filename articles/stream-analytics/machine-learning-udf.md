@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: devx-track-js
+ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900894"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249483"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
@@ -51,13 +51,13 @@ Sie können Azure Machine Learning-Funktionen direkt im Azure-Portal oder in Vis
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="Hinzufügen einer UDF in Visual Studio Code":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Hinzufügen einer Azure Machine Learning-UDF in Visual Studio Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Hinzufügen einer UDF in Visual Studio Code":::
 
 2. Geben Sie den Namen der Funktion ein, und geben Sie die Einstellungen in der Konfigurationsdatei an, indem Sie **Aus ihren Abonnements auswählen** in CodeLens verwenden.
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Auswählen einer Azure Machine Learning-UDF in Visual Studio Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Hinzufügen einer UDF in Visual Studio Code":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Konfigurieren einer Azure Machine Learning-UDF in Visual Studio Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Hinzufügen einer UDF in Visual Studio Code":::
 
 In der folgenden Tabelle werden alle Eigenschaften von Azure Machine Learning Service-Funktionen in Stream Analytics beschrieben.
 
@@ -137,7 +137,7 @@ FROM input
 
 SELECT udf.score(Dataframe)
 INTO output
-FROM input
+FROM Dataframe
 ```
 
 Der folgende JSON-Code ist eine Beispielanforderung für die obige Abfrage:

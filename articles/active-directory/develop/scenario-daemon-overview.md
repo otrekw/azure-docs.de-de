@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c01724340df7e0efffe9847b49e1fe9d444ee01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257621"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Szenario: Daemon-App zum Aufrufen von Web-APIs
 
 Erfahren Sie alles über die Erstellung einer Daemonanwendung, die Web-APIs aufruft.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -58,6 +54,10 @@ Für Entwickler umfasst die End-to-End-Umgebung für dieses Szenario die folgend
 - Bei der [Anwendungsregistrierung](./scenario-daemon-app-registration.md) ist der Antwort-URI nicht erforderlich. Sie müssen Geheimnisse oder Zertifikate bzw. signierte Assertionen für Azure AD freigeben. Sie müssen auch Anwendungsberechtigungen anfordern und Administratorzustimmung erteilen, um diese App-Berechtigungen zu verwenden.
 - Die [Anwendungskonfiguration](./scenario-daemon-app-configuration.md) muss die Clientanmeldeinformationen bereitstellen, die bei der Anwendungsregistrierung für Azure AD freigegeben wurden.
 - Der [Bereich](scenario-daemon-acquire-token.md#scopes-to-request) zum Abrufen eines Tokens über den Clientanmeldeinformations-Flow muss statisch sein.
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

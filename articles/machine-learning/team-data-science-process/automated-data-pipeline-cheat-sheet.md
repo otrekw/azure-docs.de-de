@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250639"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Cheat Sheet für eine automatisierte Datenpipeline für Azure Machine Learning-Vorhersagen
 Das **Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning** hilft Ihnen bei der Navigation durch die Technologie, mit deren Hilfe Sie Ihre Daten an Ihren Machine Learning-Webdienst senden können, in dem sie von Ihrem Predictive Analytics-Modell bewertet werden.
@@ -35,7 +35,6 @@ Sie können das Cheat Sheet hier herunterladen: **[Cheat Sheet für eine automat
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Weitere Hilfe zu Machine Learning Studio
-* Eine Übersicht über Microsoft Azure Machine Learning finden Sie unter [Einführung in das maschinelle Lernen in Microsoft Azure](../studio/what-is-machine-learning.md).
-* Informationen zum Bereitstellen eines Webdiensts zur Bewertung finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/deploy-a-machine-learning-web-service.md).
-* Weitere Erläuterungen zur Nutzung eines Bewertungswebdiensts finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](../studio/consume-web-services.md).
-
+* Eine Übersicht über Microsoft Azure Machine Learning finden Sie unter [Einführung in das maschinelle Lernen in Microsoft Azure](../classic/index.yml).
+* Informationen zum Bereitstellen eines Webdiensts zur Bewertung finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../classic/deploy-a-machine-learning-web-service.md).
+* Weitere Erläuterungen zur Nutzung eines Bewertungswebdiensts finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](../classic/consume-web-services.md).

@@ -11,12 +11,12 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b27675f152132a015a6dc6f5aea35aff036e1a63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897559"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251013"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst
 
@@ -50,7 +50,7 @@ Diese Ressourcen können gelöscht werden, indem Sie sie aus der Liste und dann 
 
 Ausführungsverlaufsdokumente, die persönliche Benutzerinformationen enthalten können, werden im Speicherkonto im Blobspeicher in Unterordnern von `/azureml` gespeichert. Sie können die Daten aus dem Portal herunterladen und löschen.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Screenshot des azureml-Verzeichnisses im Speicherkonto, innerhalb des Portals":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Screenshot des Portals mit hervorgehobenem Löschsymbol":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Exportieren und Löschen von Machine Learning-Ressourcen mit Azure Machine Learning Studio
 
@@ -62,7 +62,7 @@ Sie können Trainingsartefakte aus experimentellen Ausführungen mit dem Studio 
 
 Sie können ein registriertes Modell herunterladen, indem Sie zu dem gewünschten **Modell** navigieren und **Herunterladen** auswählen. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Screenshot der Studiomodellseite mit hervorgehobener Option „Herunterladen“":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Screenshot des Portals mit hervorgehobenem Löschsymbol":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Exportieren und Löschen von Ressourcen mit dem Python SDK
 
@@ -84,8 +84,8 @@ Die folgenden Machine Learning-Ressourcen können mit dem Python SDK gelöscht w
 
 | type | Funktionsaufruf | Notizen | 
 | --- | --- | --- |
-| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Verwenden von `delete-dependent-resources` zum Überlappen des Löschvorgangs |
-| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#&preserve-view=truedelete--) | | 
-| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#&preserve-view=truedelete--) | |
+| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Verwenden von `delete-dependent-resources` zum Überlappen des Löschvorgangs |
+| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | | 
+| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | |
 | `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) | | 
 

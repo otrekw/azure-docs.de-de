@@ -3,13 +3,13 @@ title: 'Azure Relay Hybrid Connections: HTTP-Anforderungen in Node'
 description: Schreiben einer Node.js-Konsolenanwendung für HTTP-Anforderungen von Azure Relay Hybrid Connections in Node
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff6b4e6b99299091910df537bf90984f493405e3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 249b4fa231cd54a1a8054b32985ed0e48fcc16f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263758"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Erste Schritte mit HTTP-Anforderungen von Relay Hybrid Connections in Node
 

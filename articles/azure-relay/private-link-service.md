@@ -1,25 +1,19 @@
 ---
 title: Integrieren von Azure Relay in den Azure Private Link-Dienst
 description: Es wird beschrieben, wie Sie Azure Relay in den Azure Private Link-Dienst integrieren.
-ms.date: 06/23/2020
+ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719426"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263851"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrieren von Azure Relay in Azure Private Link (Vorschau)
 Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Private Link? (Vorschau)](../private-link/private-link-overview.md).
 
 Ein **privater Endpunkt** ist eine Netzwerkschnittstelle, mit der Ihre Workloads, die in einem virtuellen Netzwerk ausgeführt werden, eine private und sichere Verbindung mit einem Dienst herstellen können, der über eine **Private Link-Ressource** verfügt (z. B. über einen Relaynamespace). Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-Verbindungen, VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbonenetzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine gewünschte Granularitätsebene für die Zugriffssteuerung festlegen, indem Sie Verbindungen mit bestimmten Azure Relay-Namespaces zulassen. 
-
-
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
->
-> Wir unterstützen derzeit Private Link-Verbindungen für Absenderclients. 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Hinzufügen eines privaten Endpunkts über das Azure-Portal

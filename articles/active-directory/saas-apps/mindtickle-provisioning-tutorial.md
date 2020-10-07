@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256447"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MindTickle für die automatische Benutzerbereitstellung
 
@@ -97,11 +97,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://admin.mindtickle.com/scim` ein. Geben Sie den zuvor abgerufenen **JWT-Token**-Wert in das Textfeld „Geheimes Token“ ein, und geben Sie dann den **JWT-Token**-Wert ein, der vom MindTickle-Supportteam bereitgestellt wurde. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit myPolicies herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr MindTickle-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254073"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -229,7 +229,7 @@ Die Protokolle werden bedarfsgesteuert mit der IoT Edge-Methode `getRTCVLogs` im
 >[!NOTE]
 > Wenn Sie die `getRTCVLogs`-Methode mit einer leeren Nutzlast aufrufen, wird eine Liste aller auf dem Gerät bereitgestellten Container zurückgegeben. Beim Methodennamen muss die Groß-/Kleinschreibung beachtet werden. Wenn ein falscher Methodenname angegeben wurde, erhalten Sie einen 501-Fehler.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Aufrufen der getRTCVLogs-Methode":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Telemetriebericht in Azure Monitor":::
 ![Seite der direkten getRTCVLogs-Methode](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -313,8 +313,7 @@ Wenn die folgende Meldung in den Modulprotokollen angezeigt wird, bedeutet dies 
 
 „Container weist keinen gültigen Zustand auf. Bei der Abonnementüberprüfung ist ein Fehler mit dem Status 'Konflikt' aufgetreten. Der API-Schlüssel ist nicht für den angegebenen Containertyp vorgesehen.“
 
-Weitere Informationen finden Sie unter [Anfordern der Genehmigung für die Containerausführung](spatial-analysis-container.md#request-approval-to-run-the-container). 
-
+Weitere Informationen finden Sie unter [Anfordern der Genehmigung für die Containerausführung](spatial-analysis-container.md#request-approval-to-run-the-container).
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Problembehandlung beim Azure Stack Edge-Gerät
 

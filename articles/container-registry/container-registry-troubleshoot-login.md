@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253353"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -107,7 +107,7 @@ Verwandte Links:
 * [Anmelden mit einem Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md)
 * [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md)
 * [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Erstellen eines neuen Anwendungsgeheimnisses](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [Erstellen eines neuen Anwendungsgeheimnisses](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Azure AD-Authentifizierungs- und Autorisierungscodes](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>Überprüfen, ob Anmeldeinformationen abgelaufen sind
