@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88684115"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Schnellstart: Erstellen eines Recovery Services-Tresors mithilfe einer ARM-Vorlage
@@ -63,7 +63,7 @@ Zum Bereitstellen der Vorlage sind das **Abonnement**, die **Ressourcengruppe** 
 
 1. Wählen Sie die Schaltfläche **Kaufen** aus, um mit der Bereitstellung des Tresors zu beginnen. Nach einer erfolgreichen Bereitstellung wird eine Benachrichtigung angezeigt.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Erfolgreiche Tresorbereitstellung":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Vorlage zum Erstellen eines Recovery Services-Tresors":::
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 

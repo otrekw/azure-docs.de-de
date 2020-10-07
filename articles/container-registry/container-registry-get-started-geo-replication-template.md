@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649600"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Schnellstart: Erstellen einer georeplizierten Containerregistrierung mithilfe einer ARM-Vorlage
@@ -62,7 +62,7 @@ Weitere Beispiele für Azure Container Registry-Vorlagen finden Sie im [Schnells
 
  3. Wenn Sie die Bedingungen akzeptieren, wählen Sie **Kaufen** aus. Nach der erfolgreichen Erstellung der Registrierung erhalten Sie eine Benachrichtigung:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Benachrichtigung im Portal":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Vorlageneigenschaften":::
 
  Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -74,11 +74,11 @@ Verwenden Sie das Azure-Portal oder ein Tool wie die Azure CLI, um die Eigenscha
 
 1. Notieren Sie sich auf der Seite **Übersicht** den **Anmeldeserver** der Registrierung. Verwenden Sie diesen URI, wenn Sie Docker verwenden, um Images zu markieren und in Ihre Registrierung zu pushen. Informationen finden Sie unter [Pushen Ihres ersten Images mit der Docker CLI](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Registrierungsübersicht":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Vorlageneigenschaften":::
 
 1. Bestätigen Sie auf der Seite **Replikationen** die Standorte des Stammreplikats und des über die Vorlage hinzugefügten Replikats. Fügen Sie bei Bedarf weitere Replikate auf dieser Seite hinzu.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Registrierungsreplikationen":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Vorlageneigenschaften":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

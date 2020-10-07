@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815860"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Verwenden Sie das Azure-Portal zum Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links.
@@ -52,7 +52,7 @@ Sie müssen das virtuelle Netzwerk des virtuellen Computers notieren, an den Ihr
 
 Wenn Ihre Ressource erstellt wurde, navigieren Sie direkt zu ihr.
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Screenshot: Schaltfläche „Zu Ressource wechseln“ im Portal":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Screenshot: Blatt zum Erstellen des Datenträgerzugriffs. Eingeben des gewünschten Namens, Auswählen einer Region und einer Ressourcengruppe und Fortfahren":::
 
 ## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
@@ -61,13 +61,13 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 1. Wählen Sie über die Datenträgerzugriffsressource die Option **Verbindungen mit privatem Endpunkt** aus.
 1. Wählen Sie **+ Privaten Endpunkt hinzufügen** aus.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Screenshot: Blatt „Übersicht“ für Ihre Datenträgerzugriffsressource. „Verbindungen mit privatem Endpunkt“ ist hervorgehoben.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Screenshot: Blatt zum Erstellen des Datenträgerzugriffs. Eingeben des gewünschten Namens, Auswählen einer Region und einer Ressourcengruppe und Fortfahren":::
 
 1. Auswählen einer Ressourcengruppe
 1. Geben Sie den Namen ein, und wählen Sie die Region aus, in der Ihre Datenträgerzugriffsressource erstellt wurde.
 1. Klicken Sie auf **Weiter: Ressource >** .
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (erstes Blatt) Wenn Sie nicht die entsprechende Region auswählen, treten später möglicherweise Probleme auf.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Screenshot: Blatt zum Erstellen des Datenträgerzugriffs. Eingeben des gewünschten Namens, Auswählen einer Region und einer Ressourcengruppe und Fortfahren":::
 
 1. Wählen Sie auf dem Blatt **Ressource** die Option **Mit einer Azure-Ressource in meinem Verzeichnis verbinden** aus.
 1. Wählen Sie für **Ressourcentyp** den Wert **Microsoft.Compute/diskAccesses** aus.
@@ -75,7 +75,7 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 1. Übernehmen Sie unter **Untergeordnete Zielressource** den Wert **Datenträger**.
 1. Wählen Sie **Weiter: Konfiguration >** .
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (zweites Blatt) mit hervorgehobenen Werten (Ressourcentyp, Ressource, Untergeordnete Zielressource)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Screenshot: Blatt zum Erstellen des Datenträgerzugriffs. Eingeben des gewünschten Namens, Auswählen einer Region und einer Ressourcengruppe und Fortfahren":::
 
 1. Wählen Sie das virtuelle Netzwerk aus, auf das Sie den Datenträgerexport beschränken möchten. Andere virtuelle Netzwerke können den Datenträger nicht exportieren.
 
@@ -85,7 +85,7 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 1. Auswählen des geeigneten Subnetzes
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (drittes Blatt) mit hervorgehobenem virtuellem Netzwerk und Subnetz":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Screenshot: Blatt zum Erstellen des Datenträgerzugriffs. Eingeben des gewünschten Namens, Auswählen einer Region und einer Ressourcengruppe und Fortfahren":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Aktivieren des privaten Endpunkts auf Ihrem Datenträger
 
@@ -94,7 +94,7 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 1. Wählen Sie **Private endpoint (through disk access)** (Privater Endpunkt (über Datenträgerzugriff)) und dann den zuvor erstellten Datenträgerzugriff aus.
 1. Wählen Sie **Speichern** aus.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Screenshot: Blatt „Netzwerk“ für verwaltete Datenträger. Privater Endpunkt und ausgewählter Datenträgerzugriff hervorgehoben. Durch das Speichern wird der Datenträger für diesen Zugriff konfiguriert.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Screenshot: Blatt zum Erstellen des Datenträgerzugriffs. Eingeben des gewünschten Namens, Auswählen einer Region und einer Ressourcengruppe und Fortfahren":::
 
 Die Konfiguration privater Links ist nun abgeschlossen, und Sie können sie beim Importieren und Exportieren Ihrer verwalteten Datenträger verwenden.
 

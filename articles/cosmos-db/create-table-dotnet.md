@@ -10,10 +10,10 @@ ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e49ecf0f8e88e0de22117a5ed85b8352e73a2f5d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89020234"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App per .NET SDK und Azure Cosmos DB 
@@ -104,15 +104,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Verbindungszeichenfolge**. Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE**.
 
-   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Anzeigen und Kopieren der primären Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“":::
-
-2. Öffnen Sie in Visual Studio die Datei **Settings.json**. 
-
-3. Fügen Sie die **PRIMÄRE VERBINDUNGSZEICHENFOLGE** aus dem Portal in den StorageConnectionString-Wert ein. Fügen Sie die Zeichenfolge innerhalb der Anführungszeichen ein.
-
-   ```csharp
-   {
-      "StorageConnectionString": "<Primary connection string from Azure portal>"
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Öffnen der Projektmappe"
    }
    ```
 
@@ -124,25 +116,25 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 1. Klicken Sie in Visual Studio im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CosmosTableSamples**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. 
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="Verwalten von NuGet-Paketen":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="Öffnen der Projektmappe":::
 
 2. Geben Sie im NuGet-Feld **Durchsuchen** die Zeichenfolge „Microsoft.Azure.Cosmos.Table“ ein. Dadurch wird die Clientbibliothek „Cosmos DB-Tabellen-API“ gefunden. Beachten Sie, dass diese Bibliothek derzeit für .NET Framework und .NET Standard verfügbar ist. 
    
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="NuGet-Registerkarte „Durchsuchen“":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="Öffnen der Projektmappe":::
 
 3. Klicken Sie auf **Installieren**, um die Bibliothek **Microsoft.Azure.Cosmos.Table** zu installieren. Dadurch werden das Paket der Azure Cosmos DB-Tabellen-API sowie sämtliche Abhängigkeiten installiert.
 
 4. Wenn Sie die gesamte App ausführen, werden Beispieldaten in die Tabellenentität eingefügt und am Ende gelöscht. Sie sehen also nicht, dass Daten eingefügt werden, wenn Sie das gesamte Beispiel ausführen. Sie können aber Haltepunkte einfügen, um die Daten anzuzeigen. Öffnen Sie die Datei „BasicSamples.cs“, und klicken Sie mit der rechten Maustaste in Zeile 52. Wählen Sie **Haltepunkt** und dann **Haltepunkt einfügen**. Fügen Sie in Zeile 55 einen weiteren Haltepunkt ein.
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Hinzufügen eines Haltepunkts"::: 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Öffnen der Projektmappe"::: 
 
 5. Drücken Sie die Taste F5, um die Anwendung auszuführen. Im Konsolenfenster wird der Name der neuen Tabellendatenbank in Azure Cosmos DB angezeigt (in diesem Fall: demoa13b1). 
     
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Konsolenausgabe":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Öffnen der Projektmappe":::
 
    Kehren Sie bei Erreichen des ersten Haltepunkts wieder zum Daten-Explorer im Azure-Portal zurück. Klicken Sie auf die Schaltfläche **Aktualisieren**, erweitern Sie die Demo-Tabelle, und klicken Sie auf **Entitäten**. Die Registerkarte **Entitäten** auf der rechten Seite zeigt die neue Entität, die für Walter Harp hinzugefügt wurde. Die Telefonnummer für die neue Entität lautet 425-555-0101.
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Neue Entität":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Öffnen der Projektmappe":::
     
    Wenn der Fehler mit dem Hinweis angezeigt wird, dass die Datei „Settings.json“ beim Ausführen des Projekts nicht gefunden werden kann, können Sie das Problem lösen, indem Sie den Projekteinstellungen den folgenden XML-Eintrag hinzufügen. Klicken Sie mit der rechten Maustaste auf „CosmosTableSamples“, wählen Sie „CosmosTableSamples.csproj bearbeiten“ aus, und fügen Sie die folgende „itemGroup“ hinzu: 
 
