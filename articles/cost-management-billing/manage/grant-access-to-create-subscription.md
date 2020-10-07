@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943160"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371880"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau)
 
@@ -23,11 +23,11 @@ Als Azure-Kunde mit einem [Enterprise Agreement (EA)](https://azure.microsoft.co
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
-Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) verfügen, um [Abonnements in diesem Konto zu erstellen](programmatically-create-subscription.md). Sie können einem Benutzer oder einer Gruppe von Benutzern die RBAC-Rolle „Besitzer“ in einem Registrierungskonto zuweisen, indem Sie folgende Schritte ausführen:
+Benutzer müssen in einem Registrierungskonto über die [Azure RBAC-Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) verfügen, um [Abonnements in diesem Konto zu erstellen](programmatically-create-subscription.md). Sie können einem Benutzer oder einer Gruppe von Benutzern die Azure RBAC-Rolle „Besitzer“ in einem Registrierungskonto zuweisen, indem Sie folgende Schritte ausführen:
 
 1. Abrufen der Objekt-ID des Registrierungskontos, dem Sie den Zugriff gewähren möchten
 
-    Sie müssen entweder der Kontobesitzer sein oder in diesem Konto über die RBAC-Rolle „Besitzer“ verfügen, um anderen in einem Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen zu können.
+    Sie müssen entweder der Kontobesitzer sein oder in diesem Konto über die Azure RBAC-Rolle „Besitzer“ verfügen, um anderen in einem Registrierungskonto die Azure RBAC-Rolle „Besitzer“ zuweisen zu können.
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +62,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
     }
     ```
 
-    Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in dem Sie die RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `name`-Wert dieses Kontos. Wenn Sie beispielsweise dem SignUpEngineering@contoso.com-Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Dies ist die Objekt-ID des Registrierungskontos. Kopieren Sie diesen Wert, um ihn im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
+    Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, dem Sie die Azure RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `name`-Wert dieses Kontos. Wenn Sie beispielsweise dem Registrierungskonto SignUpEngineering@contoso.com die Azure RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Dies ist die Objekt-ID des Registrierungskontos. Kopieren Sie diesen Wert, um ihn im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, dem Sie die RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `ObjectId`-Wert dieses Kontos. Wenn Sie beispielsweise dem SignUpEngineering@contoso.com-Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Kopieren Sie diese Objekt-ID, um sie im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
+    Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, dem Sie die Azure RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `ObjectId`-Wert dieses Kontos. Wenn Sie beispielsweise dem Registrierungskonto SignUpEngineering@contoso.com die Azure RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Kopieren Sie diese Objekt-ID, um sie im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
     # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -111,18 +111,18 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     ---
 
-    Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in dem Sie die RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `name`-Wert dieses Kontos. Wenn Sie beispielsweise dem SignUpEngineering@contoso.com-Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Dies ist die Objekt-ID des Registrierungskontos. Kopieren Sie diesen Wert, um ihn im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
+    Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, dem Sie die Azure RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `name`-Wert dieses Kontos. Wenn Sie beispielsweise dem Registrierungskonto SignUpEngineering@contoso.com die Azure RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Dies ist die Objekt-ID des Registrierungskontos. Kopieren Sie diesen Wert, um ihn im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
-1. <a id="userObjectId"></a>Abrufen der Objekt-ID des Benutzers oder der Gruppe, dem bzw. der Sie die RBAC-Rolle „Besitzer“ zuweisen möchten
+1. <a id="userObjectId"></a>Abrufen der Objekt-ID des Benutzers oder der Gruppe, dem bzw. der Sie die Azure RBAC-Rolle „Besitzer“ zuweisen möchten
 
     1. Suchen Sie im Azure-Portal nach **Azure Active Directory**.
     1. Wenn Sie einem Benutzer Zugriff gewähren möchten, klicken Sie im Menü auf der linken Seite auf **Benutzer**. Um einer Gruppe Zugriff zu erteilen, wählen Sie **Gruppen** aus.
-    1. Wählen Sie den Benutzer oder die Gruppe aus, dem bzw. der Sie die RBAC-Rolle „Besitzer“ zuweisen möchten.
+    1. Wählen Sie den Benutzer oder die Gruppe aus, dem bzw. der Sie die Azure RBAC-Rolle „Besitzer“ zuweisen möchten.
     1. Wenn Sie einen Benutzer ausgewählt haben, finden Sie die Objekt-ID auf der Seite „Profil“. Wenn Sie eine Gruppe ausgewählt haben, befindet sich die Objekt-ID auf der Seite „Übersicht“. Kopieren Sie die **ObjectID**, indem Sie auf das Symbol rechts neben dem Textfeld klicken. Halten Sie diesen Wert bereit, damit Sie ihn im nächsten Schritt als `userObjectId` verwenden können.
 
-1. Zuweisen der RBAC-Rolle „Besitzer“ zu einem Benutzer oder einer Gruppe im Registrierungskonto
+1. Zuweisen der Azure RBAC-Rolle „Besitzer“ zu einem Benutzer oder einer Gruppe im Registrierungskonto
 
-    Verwenden Sie die Werte, die Sie in den ersten beiden Schritten erfasst haben, um dem Benutzer oder der Gruppe die RBAC-Rolle „Besitzer“ im Registrierungskonto zuzuweisen.
+    Verwenden Sie die Werte, die Sie in den ersten beiden Schritten erfasst haben, um dem Benutzer oder der Gruppe die Azure RBAC-Rolle „Besitzer“ im Registrierungskonto zuzuweisen.
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +174,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Sobald ein Benutzer ein RBAC-Besitzer für Ihr Registrierungskonto ist, kann er darunter [programmgesteuert Abonnements erstellen](programmatically-create-subscription.md). Ein Abonnement, das von einem delegierten Benutzer erstellt wurde, weist weiterhin den ursprünglichen Kontobesitzer als Dienstadministrator auf, verfügt aber standardmäßig auch über den delegierten Benutzer als RBAC-Besitzer.
+    Sobald ein Benutzer ein Azure RBAC-Besitzer für Ihr Registrierungskonto ist, kann er darunter [programmgesteuert Abonnements erstellen](programmatically-create-subscription.md). Ein Abonnement, das von einem delegierten Benutzer erstellt wurde, weist weiterhin den ursprünglichen Kontobesitzer als Dienstadministrator auf, verfügt aber standardmäßig auch über den delegierten Benutzer als Azure RBAC-Besitzer.
 
     ---
 

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362769"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 
@@ -53,19 +53,19 @@ In diesem Abschnitt werden häufige Szenarien zum Organisieren von Kosten und di
 |---------|---------|
 |Jack registriert sich bei Azure und benötigt eine einzelne monatliche Rechnung. | Ein Abrechnungsprofil und ein Rechnungsabschnitt. Diese Struktur wird automatisch für Jack eingerichtet, wenn er sich bei Azure registriert, und es sind keine weiteren Schritte erforderlich. |
 
-![Infografik für ein einfaches Abrechnungsszenario](./media/mca-section-invoice/organize-billing-scenario1.png)
+![Infografik für ein Szenario mit einzelner Abrechnung](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |Szenario  |Struktur  |
 |---------|---------|
 |Contoso ist eine kleine Organisation, die eine monatliche Rechnung benötigt, die Kosten jedoch nach ihren Abteilungen gruppiert: Marketing und Engineering.  | Ein Abrechnungsprofil für Contoso und je ein Rechnungsabschnitt für die Abteilungen Marketing und Engineering. |
 
-![Infografik für ein einfaches Abrechnungsszenario](./media/mca-section-invoice/organize-billing-scenario2.png)
+![Infografik für ein Szenario mit mehreren Abrechnungen](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Szenario  |Struktur  |
 |---------|---------|
 |Fabrikam ist ein mittelständisches Unternehmen, das separate Rechnungen für seine Abteilungen Engineering und Marketing benötigt. Für die Engineeringabteilung sollen die Kosten nach Umgebungen gruppiert werden: Produktion und Entwicklung.  | Je ein Abrechnungsprofil für die Abteilungen Marketing und Engineering. Für die Engineeringabteilung je ein Rechnungsabschnitt für die Produktions- und die Entwicklungsumgebung. |
 
-![Infografik für ein einfaches Abrechnungsszenario](./media/mca-section-invoice/organize-billing-scenario3.png)
+![Infografik für ein Szenario mit mehreren Abrechnungen, wobei für die Produktions- und Entwicklungsumgebung jeweils getrennt abgerechnet wird](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>Erstellen eines neuen Rechnungsabschnitts
 
@@ -79,7 +79,7 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 
 3. Wählen Sie im linken Bereich die Option **Abrechnungsprofile** aus. Wählen Sie in der Liste ein Abrechnungsprofil aus. Der neue Abschnitt wird auf der Rechnung des ausgewählten Abrechnungsprofils angezeigt.
 
-   [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Screenshot der Liste mit Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. Wählen Sie im linken Bereich **Rechnungsabschnitte** und dann oben auf der Seite **Hinzufügen** aus.
 
@@ -107,7 +107,7 @@ Um ein Abrechnungsprofil erstellen zu können, müssen Sie ein **Besitzer des Ab
 
 3. Wählen Sie im linken Bereich **Abrechnungsprofile** und dann oben auf der Seite **Hinzufügen** aus.
 
-   [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Screenshot der Liste mit Abrechnungsprofilen und ausgewählter Option „Hinzufügen“](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Nachdem Sie Ihr Abrechnungskonto entsprechend Ihren Anforderungen angepasst habe
 
 2. Suchen Sie nach **Abonnements**.
 
-   [![Screenshot der Suche im Portal nach einem Abonnement](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Screenshot der Suche im Azure-Portal nach einem Abonnement](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. Wählen Sie oben auf der Seite die Option **Hinzufügen**.
 
-   ![Screenshot der Schaltfläche „Hinzufügen“ in der Ansicht „Abonnements“](./media/mca-section-invoice/subscription-add.png)
+   ![Screenshot der Schaltfläche „Hinzufügen“ in der Ansicht „Abonnements“ für ein neues Abonnement](./media/mca-section-invoice/subscription-add.png)
 
 4. Wenn Sie Zugriff auf mehrere Abrechnungskonten haben, wählen Sie das Abrechnungskonto Ihrer Microsoft-Kundenvereinbarung aus.
 
-   ![Screenshot der Schaltfläche „Hinzufügen“ in der Ansicht „Abonnements“](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![Screenshot des Bereichs „Abonnement erstellen“](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. Wählen Sie das Abrechnungsprofil aus, dem die Abonnementnutzung berechnet wird. Die Gebühren für die Azure-Nutzung und andere Käufe für dieses Abonnement werden der Rechnung des ausgewählten Abrechnungsprofils angerechnet.
 
@@ -166,7 +166,7 @@ Wenn Sie bereits über Azure-Abonnements oder andere Produkte wie Azure Marketpl
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot der Suche im Portal nach Abonnements](./media/mca-section-invoice/search-cmb.png)
+   ![Screenshot: Suche im Azure-Portal nach „Kostenverwaltung + Abrechnung“](./media/mca-section-invoice/search-cmb.png)
 
 3. Wenn Sie ein Abonnement mit einem neuen Rechnungsabschnitt verknüpfen möchten, wählen Sie auf der linken Seite des Bildschirms **Azure-Abonnements** aus. Wählen Sie für andere Produkte wie Azure Marketplace- und AppSource-Ressourcen **Laufende Gebühren** aus.
 

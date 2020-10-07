@@ -1,30 +1,30 @@
 ---
-title: Übertragen von Azure-Abonnements von einem Partner auf einen anderen (Vorschau)
+title: Übertragen von Abonnements unter einem Azure-Plan von einem Partner auf einen anderen (Vorschau)
 description: In diesem Artikel erfahren Sie, was Sie wissen sollten, bevor und nachdem Sie den Abrechnungsbesitz Ihres Azure-Abonnements übertragen haben.
 author: bandersmsft
 ms.reviewer: mcville
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: 246128ec3d26e4bf3f2a5a8f0660aab7d9daca3d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89554197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372288"
 ---
-# <a name="transfer-azure-subscriptions-from-one-partner-to-another-preview"></a>Übertragen von Azure-Abonnements von einem Partner auf einen anderen (Vorschau)
+# <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>Übertragen von Abonnements unter einem Azure-Plan von einem Partner auf einen anderen (Vorschau)
 
 In diesem Artikel erfahren Sie, was Sie wissen sollten, bevor und nachdem Sie den Abrechnungsbesitz Ihres Azure-Abonnements übertragen haben. Um die Übertragung eines Azure-Abonnements unter einem Azure-Plan von einem Microsoft-Partner auf einen anderen zu initiieren, müssen Sie sich an Ihren Partner wenden. Der Partner sendet Ihnen Anweisungen zu den ersten Schritten. Nachdem die Übertragung abgeschlossen ist, wird der Abrechnungsbesitz Ihres Abonnements geändert.
 
 ## <a name="user-access"></a>Benutzerzugriff
 
-Der Zugriff auf vorhandene Benutzer, Gruppen oder Dienstprinzipale, die per rollenbasierter Azure-Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC) zugewiesen wurden, ist von der Übertragung nicht betroffen. Mit [Azure RBAC](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen Benutzer für diese Ressourcen ausführen können und auf welche Bereiche sie zugreifen können. Der neue Partner erhält durch die Abonnementübertragung keinen RBAC-Zugriff auf Ihre Ressourcen. Ihr vorheriger Partner behält seinen RBAC-Zugriff.
+Der Zugriff auf vorhandene Benutzer, Gruppen oder Dienstprinzipale, die per rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) zugewiesen wurden, ist von der Übertragung nicht betroffen. Mit [Azure RBAC](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen Benutzer für diese Ressourcen ausführen können und auf welche Bereiche sie zugreifen können. Der neue Partner erhält durch die Abonnementübertragung keinen Azure RBAC-Zugriff auf Ihre Ressourcen. Ihr vorheriger Partner behält seinen Azure RBAC-Zugriff.
 
-Daher ist es wichtig, dass Sie den Azure RBAC-Zugriff des alten Partners entfernen und dem neuen Partner Zugriff gewähren. Weitere Informationen dazu, wie Sie Ihrem neuen Partner Zugriff gewähren, finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md) Weitere Informationen dazu, wie Sie den RBAC-Zugriff Ihres vorherigen Partners entfernen, finden Sie unter [Entfernen einer Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment).
+Daher ist es wichtig, dass Sie den Azure RBAC-Zugriff des alten Partners entfernen und dem neuen Partner Zugriff gewähren. Weitere Informationen dazu, wie Sie Ihrem neuen Partner Zugriff gewähren, finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md) Weitere Informationen dazu, wie Sie den Azure RBAC-Zugriff Ihres vorherigen Partners entfernen, finden Sie unter [Entfernen einer Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment).
 
-Außerdem erhält der neue Partner nicht automatisch Zugriff vom Typ [Administrator im Namen von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf Of, AOBO) auf Ihre Abonnements. AOBO ist für Ihren Partner erforderlich, um die Azure-Abonnements in Ihrem Namen zu verwalten. Weitere Informationen dazu, wie Sie Ihrem neuen Partner AOBO-Zugriff gewähren, finden Sie unter [Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto](billing-subscription-transfer.md).
+Außerdem erhält der neue Partner nicht automatisch Zugriff vom Typ [Administrator im Namen von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf Of, AOBO) auf Ihre Abonnements. AOBO ist für Ihren Partner erforderlich, um die Azure-Abonnements in Ihrem Namen zu verwalten. Weitere Informationen zu Azure-Berechtigungen finden Sie unter [Abrufen von Berechtigungen zum Verwalten des Diensts oder Abonnements eines Kunden](/partner-center/customers-revoke-admin-privileges).
 
 ## <a name="stop-a-transfer"></a>Abbrechen einer Übertragung
 
@@ -38,5 +38,5 @@ Mithilfe einer der Optionen auf der [Microsoft-Website für rechtliche Angelegen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wie Sie Ihrem neuen Partner RBAC-Zugriff gewähren, erfahren Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md)
-- Wie Sie Ihrem neuen Partner AOBO-Zugriff gewähren, finden Sie unter [Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto](billing-subscription-transfer.md).
+- Wie Sie Ihrem neuen Partner Azure RBAC-Zugriff gewähren, erfahren Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
+- [Abrufen von Berechtigungen zum Verwalten des Diensts oder Abonnements eines Kunden](/partner-center/customers-revoke-admin-privileges)

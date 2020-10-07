@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358031"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Tutorial: Einrichten von PBR-Materialien (Physically Based Rendering, physikalisch basiertes Rendering) in Maya
 
@@ -79,7 +79,7 @@ In Maya ist die Instanziierung ein einfacher Prozess.
 1. Wählen Sie im Dialogfeld **Duplicate Special Options** (Optionen für „Inhalte duplizieren“) unter **Geometry type** (Geometrietyp) die Option **Instance** (Instanz) aus. 
 1. Wählen Sie **Duplicate Special** (Inhalte duplizieren) aus.
 
-   ![Instanziierung](media/instancing.jpg)
+   ![Der Screenshot zeigt ein Maya-Fenster mit geöffnetem Dialogfeld „Duplicate Special Options“ (Optionen für „Inhalte duplizieren“) und ausgewählter Option „Duplicate Special“ (Inhalte duplizieren).](media/instancing.jpg)
 
 Durch diese Aktion wird eine Instanz Ihres Objekts erstellt. Sie kann unabhängig von ihrem übergeordneten Element sowie unabhängig von anderen Instanzen des übergeordneten Elements bewegt, gedreht und skaliert werden. 
 

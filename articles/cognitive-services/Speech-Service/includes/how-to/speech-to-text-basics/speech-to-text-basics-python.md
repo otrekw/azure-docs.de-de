@@ -4,18 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 13ab7fc5b4461559fc54b5643d22ca309c752a37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 92fb6bb470c6ab9c1a8f1f0542c26a8fef07e6b3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376678"
 ---
+Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
+
+## <a name="skip-to-samples-on-github"></a>Mit den Beispielen auf GitHub fortfahren
+
+Greifen Sie auf GitHub auf die [Python-Schnellstartbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) zu, falls Sie direkt zum Beispielcode springen möchten.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Artikel wird Folgendes vorausgesetzt:
 
-* Sie verfügen über ein Azure-Konto und über ein Abonnement für den Speech-Dienst. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](../../../get-started.md).
+* Sie verfügen über ein Azure-Konto und über ein Abonnement für den Speech-Dienst. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-and-import-the-speech-sdk"></a>Installieren und Importieren des Speech SDK
 

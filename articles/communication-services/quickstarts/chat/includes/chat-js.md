@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376543"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
@@ -90,6 +90,8 @@ Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **clie
 ### <a name="create-a-chat-client"></a>Erstellen eines Chatclients
 
 Zum Erstellen eines Chatclients in Ihrer Web-App verwenden Sie den Communication Services-Endpunkt und das Zugriffstoken, das im Rahmen der Schritte zur Erfüllung der Voraussetzungen generiert wurde. Mit Benutzerzugriffstoken können Sie Clientanwendungen erstellen, die gegenüber Azure Communication Services direkt authentifiziert werden. Nachdem Sie diese Token auf Ihrem Server generiert haben, übergeben Sie sie zurück an ein Clientgerät. Sie müssen die `AzureCommunicationUserCredential`-Klasse aus `Common client library` verwenden, um das Token an Ihren Chatclient zu übergeben.
+
+Erstellen Sie eine **client.js**-Datei im Stammverzeichnis Ihres Projekts. Wir verwenden diese Datei zum Hinzufügen der Chatfunktion mithilfe der JavaScript-Clientbibliothek für Chats von Azure Communication Services.
 
 ```JavaScript
 

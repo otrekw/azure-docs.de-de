@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 233cc5330096b9b6419c8024205a41646ddd9519
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371863"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements von anderen Konten
 
@@ -152,7 +152,7 @@ Bei der Übertragung von EA-Abonnements (Enterprise Agreement) oder Microsoft-Ku
 
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 
-Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per (rollenbasierter Azure-Zugriffssteuerung (RBAC))[../role-based-access-control/overview.md] zugewiesen wurde, ist von dieser Übertragung nicht betroffen.
+Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen.
 
 ### <a name="azure-support-plan"></a>Azure-Supportplan
 

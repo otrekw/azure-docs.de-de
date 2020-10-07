@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371948"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Erste Schritte mit dem Azure Enterprise Portal
 
@@ -242,10 +242,10 @@ Beachten Sie beim Übertragen von Konten die folgenden wichtigen Informationen:
 
 - Wenn Sie eine Abonnementübertragung abschließen, aktualisiert Microsoft den Kontobesitzer.
 
-Beachten Sie diese Richtlinien für die rollenbasierte Zugriffssteuerung (RBAC):
+Beachten Sie diese Azure RBAC-Richtlinien (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure):
 
-- Wenn Sie Abonnementübertragungen zwischen zwei Organisations-IDs im gleichen Mandanten durchführen, werden RBAC-Richtlinien und vorhandene Dienstadministrator- und Co-Administrator-Rollen beibehalten.
-- Andere Abonnementübertragungen führen zum Verlust Ihrer RBAC-Richtlinien und Rollenzuweisungen.
+- Wenn Sie Abonnementübertragungen zwischen zwei Organisations-IDs im gleichen Mandanten durchführen, werden Azure RBAC-Richtlinien und vorhandene Dienstadministrator- und Co-Administrator-Rollen beibehalten.
+- Andere Abonnementübertragungen führen zum Verlust Ihrer Azure RBAC-Richtlinien und Rollenzuweisungen.
 - Richtlinien und Administratorrollen werden nicht über verschiedene Verzeichnisse hinweg übertragen. Dienstadministratoren werden auf den Besitzer des Zielkontos aktualisiert.
 
 Führen Sie vor dem Ändern des Kontobesitzers die folgenden Aktionen durch:
@@ -569,7 +569,7 @@ Ein Ausgabenkontingent kann auf der Abteilungsebene festgelegt werden. Daraufhin
 
 Wählen Sie zum Definieren des Ausgabenkontingents eine Abteilung aus, und klicken Sie dann auf das Bearbeitungssymbol. Nachdem Sie die Details des Ausgabenlimits bearbeitet haben, klicken Sie auf **Speichern**.
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Ich habe Ressourcengruppen verwendet, um die RBAC zu implementieren und die Nutzung zu verfolgen. Wie kann ich die zugehörigen Nutzungsdetails anzeigen?
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Ich habe Ressourcengruppen verwendet, um Azure RBAC zu implementieren und die Nutzung zu verfolgen. Wie kann ich die zugehörigen Nutzungsdetails anzeigen?
 
 Wenn Sie _Ressourcengruppen_ und _Tags_ verwenden, werden diese Informationen auf Dienstebene nachverfolgt, und Sie können in der CSV-Downloaddatei mit ausführlichen Nutzungsdaten darauf zugreifen. Weitere Informationen finden Sie im Azure Enterprise Portal unter [Nutzungsbericht herunterladen](https://ea.azure.com/report/downloadusage).
 

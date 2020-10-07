@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Trainieren Ihres ersten Machine Learning-Modells – Python'
 titleSuffix: Azure Machine Learning
-description: Teil 3 der Einstiegsreihe zu Azure Machine Learning zeigt, wie ein Machine Learning-Modell trainiert wird.
+description: In Teil 3 der Einstiegsreihe zu Azure Machine Learning wird veranschaulicht, wie ein Machine Learning-Modell trainiert wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,28 +11,28 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369959"
 ---
-# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Tutorial: Trainieren Ihres ersten Machine Learning-Modells (Teil 3 von 4)
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Tutorial: Trainieren Ihres ersten Machine Learning-Modells (Teil 3 von 4)
 
 In diesem Tutorial wird gezeigt, wie Sie ein Machine Learning-Modell in Azure Machine Learning trainieren.
 
-Dieses Tutorial ist **Teil 3 der vierteiligen Tutorialreihe**, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial baut auf den Schritten aus [Teil 1: Einrichten](tutorial-1st-experiment-sdk-setup-local.md) und [Teil 2: Ausführen von „Hallo Welt“](tutorial-1st-experiment-hello-world.md) der Reihe auf.
+Dieses Tutorial ist *Teil 3 einer vierteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure durchführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten](tutorial-1st-experiment-sdk-setup-local.md) und [Teil 2: Ausführen von „Hello World!“](tutorial-1st-experiment-hello-world.md) der Reihe.
 
 In diesem Tutorial führen Sie den nächsten Schritt aus, indem Sie ein Skript senden, das ein Machine Learning-Modell trainiert. Dieses Beispiel hilft Ihnen zu verstehen, wie Azure Machine Learning ein konsistentes Verhalten zwischen lokalem Debuggen und Remoteausführungen erleichtert.
 
 In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
-> * Erstellen des Trainingsskripts
+> * Erstellen Sie ein Trainingsskript.
 > * Definieren einer Azure Machine Learning-Umgebung mit Conda
 > * Erstellen eines Steuerungsskripts
-> * Kennenlernen der Azure Machine Learning-Klassen (Umgebung, Ausführung, Metriken)
+> * Kennenlernen der Azure Machine Learning-Klassen (`Environment`, `Run`, `Metrics`)
 > * Senden und Ausführen des Trainingsskripts
 > * Anzeigen Ihrer Codeausgabe in der Cloud
 > * Protokollieren von Metriken in Azure Machine Learning
@@ -40,10 +40,10 @@ In diesem Tutorial führen Sie Folgendes durch:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie [Teil 1](tutorial-1st-experiment-sdk-setup-local.md) aus, wenn Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich verfügen.
-* Einsteigerkenntnisse der Python-Sprache und der Machine Learning-Workflows.
-* Lokale Entwicklungsumgebung. Dies schließt Visual Studio Code, Jupyter oder PyCharm ein, ist aber nicht auf diese beschränkt.
-* Python (Version 3.5–3.7).
+* Durcharbeitung von [Teil 2](tutorial-1st-experiment-hello-world.md) der Reihe.
+* Kenntnisse der Python-Sprache und der Machine Learning-Workflows auf Einstiegsniveau.
+* Lokale Entwicklungsumgebung, z. B. Visual Studio Code, Jupyter oder PyCharm.
+* Python (Version 3.5 bis 3.7).
 
 ## <a name="create-training-scripts"></a>Erstellen der Trainingsskripts
 
@@ -77,7 +77,7 @@ class Net(nn.Module):
         return x
 ```
 
-Als Nächstes definieren Sie das Trainingsskript. Dieses Skript lädt das CIFAR10-Dataset mithilfe der PyTorch-`torchvision.dataset`-APIs herunter, richtet das in `model.py` definierte Netzwerk ein und trainiert es zwei Epochen lang mithilfe von Standard-SGD und Kreuzentropieverlust.
+Als Nächstes definieren Sie das Trainingsskript. Mit diesem Skript wird das CIFAR10-Dataset mithilfe der PyTorch-`torchvision.dataset`-APIs heruntergeladen, das in `model.py` definierte Netzwerk eingerichtet und zwei Epochen lang das Training mit Standard-SGD und Kreuzentropieverlust durchgeführt.
 
 Erstellen Sie ein `train.py`-Skript im Unterverzeichnis `src`:
 
@@ -90,7 +90,7 @@ import torchvision.transforms as transforms
 
 from model import Net
 
-# download CIFAR 10 data
+# download CIFAR10 data
 trainset = torchvision.datasets.CIFAR10(
     root="./data",
     train=True,
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
 ```
 
-Sie verfügen nun über die folgende Verzeichnisstruktur:
+Sie verfügen jetzt über die folgende Verzeichnisstruktur:
 
 ```txt
 tutorial
@@ -153,9 +153,9 @@ tutorial
 └──03-run-hello.py
 ```
 
-## <a name="define-a-python-environment"></a>Definieren einer Python-Umgebung
+## <a name="create-a-python-environment"></a>Erstellen einer Python-Umgebung
 
-Zu Demonstrationszwecken verwenden wir eine Conda-Umgebung (die Schritte für eine virtuelle PIP-Umgebung sind fast identisch).
+Zu Demonstrationszwecken verwenden wir eine Conda-Umgebung. (Die Schritte für eine virtuelle PIP-Umgebung sind fast identisch.)
 
 Erstellen Sie im verborgenen Verzeichnis `.azureml` eine Datei mit dem Namen `pytorch-env.yml`.
 
@@ -171,23 +171,23 @@ dependencies:
     - torchvision
 ```
 
-Diese Umgebung verfügt über alle Abhängigkeiten, die für das Modell und das Trainingsskript erforderlich sind. Beachten Sie, dass es keine Abhängigkeit vom Azure Machine Learning Python SDK gibt.
+Diese Umgebung verfügt über alle Abhängigkeiten, die für das Modell und das Trainingsskript erforderlich sind. Beachten Sie, dass keine Abhängigkeit vom Azure Machine Learning SDK für Python vorhanden ist.
 
 ## <a name="test-locally"></a>Lokales Testen
 
-Testen Sie Ihre Skriptausführungen lokal mithilfe dieser Umgebung mit dem folgenden Befehl:
+Verwenden Sie den folgenden Code, um zu testen, ob Ihr Skript lokal in dieser Umgebung ausgeführt wird:
 
 ```bash
 conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env             # activate conda environment
-python src/train.py                    # train model
+conda activate pytorch-env                      # activate conda environment
+python src/train.py                             # train model
 ```
 
 Nachdem Sie dieses Skript ausgeführt haben, werden die Daten in ein Verzeichnis mit dem Namen `tutorial/data` heruntergeladen.
 
 ## <a name="create-the-control-script"></a>Erstellen des Steuerungsskripts
 
-Der Unterschied zum folgenden Steuerskript und dem zum Senden von „Hallo Welt“ verwendeten besteht darin, dass Sie einige zusätzliche Zeilen hinzufügen, um die Umgebung festzulegen.
+Der Unterschied zwischen dem folgenden Steuerungsskript und dem Skript, das Sie zum Übermitteln von „Hello World!“ verwendet haben, besteht darin, dass Sie einige zusätzliche Zeilen zum Festlegen der Umgebung hinzufügen.
 
 Erstellen Sie eine neue Python-Datei im Verzeichnis `tutorial` mit dem Namen `04-run-pytorch.py`:
 
@@ -217,10 +217,10 @@ if __name__ == "__main__":
 
 :::row:::
    :::column span="":::
-      `env = Environment.from_conda_specification( ... )`
+      `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning verwendet das Konzept einer [Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true), um eine reproduzierbare versionierte Python-Umgebung zum Ausführen von Experimenten darzustellen. Eine Umgebung kann ganz einfach aus einer lokalen Conda- oder PIP-Umgebung erstellt werden.
+      Bei Azure Machine Learning wird das Konzept einer [Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) verwendet, um eine reproduzierbare versionierte Python-Umgebung zum Ausführen von Experimenten darzustellen. Eine Umgebung kann ganz einfach aus einer lokalen Conda- oder PIP-Umgebung erstellt werden.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -228,21 +228,26 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      Fügt die Umgebung der [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) hinzu.
+      Fügt die Umgebung der [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-Klasse hinzu.
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Senden der Ausführung an Azure Machine Learning
+## <a name="submit-the-run-to-azure-machine-learning"></a>Senden der Ausführung an Azure Machine Learning
 
-Wenn Sie die lokale Umgebung gewechselt haben, stellen Sie sicher, dass Sie wieder zu einer Umgebung wechseln, in der das Azure Machine Learning Python SDK installiert ist, und führen Sie Folgendes aus:
+Falls Sie die lokale Umgebung gewechselt haben, sollten Sie zurück zu einer Umgebung navigieren, in der das Azure Machine Learning SDK für Python installiert ist. 
+
+Führen Sie dann Folgendes aus:
 
 ```bash
 python 04-run-pytorch.py
 ```
 
 >[!NOTE] 
-> Wenn Sie dieses Skript zum ersten Mal ausführen, erstellt Azure Machine Learning ein neues Docker-Image aus ihrer PyTorch-Umgebung. Die gesamte Ausführung kann 5–10 Minuten dauern. Die Docker-Buildprotokolle werden in Azure Machine Learning Studio angezeigt: Klicken Sie auf den Link zu Machine Learning Studio, wählen Sie die Registerkarte „Ausgaben + Protokolle“ und dann `20_image_build_log.txt` aus.
-Dieses Image wird auch in zukünftigen Ausführungen verwendet, sodass sie viel schneller ausgeführt werden.
+> Wenn Sie dieses Skript zum ersten Mal ausführen, erstellt Azure Machine Learning ein neues Docker-Image aus Ihrer PyTorch-Umgebung. Die gesamte Ausführung kann fünf bis zehn Minuten dauern. 
+>
+> Die Docker-Buildprotokolle werden in Azure Machine Learning Studio angezeigt. Folgen Sie dem Link zu Studio, und wählen Sie die Registerkarte **Ausgaben und Protokolle** und dann `20_image_build_log.txt` aus.
+>
+> Dieses Image wird auch in zukünftigen Ausführungen verwendet, um die Dauer deutlich zu verkürzen.
 
 Nachdem das Image erstellt wurde, wählen Sie `70_driver_log.txt` aus, um die Ausgabe des Trainingsskripts anzuzeigen.
 
@@ -266,23 +271,25 @@ Finished Training
 ```
 
 > [!WARNING]
-> Wenn der Fehler `Your total snapshot size exceeds the limit` angezeigt wird, deutet dies darauf hin, dass sich das Verzeichnis `data` im `source_directory` befindet, das in `ScriptRunConfig` verwendet wird.
-> Stellen Sie sicher, dass Sie `data` aus `src` verschieben.
+> Wenn der Fehler `Your total snapshot size exceeds the limit` angezeigt wird, befindet sich das Verzeichnis `data` unter dem Wert `source_directory`, der in `ScriptRunConfig` verwendet wird.
+>
+> Verschieben Sie `data` aus `src` heraus.
 
-Umgebungen können mit `env.register(ws)` in einem Arbeitsbereich registriert werden, sodass Sie einfach freigegeben, wiederverwendet und mit Versionsangabe versehen werden können. Umgebungen erleichtern das Reproduzieren vorheriger Ergebnisse und die Zusammenarbeit im Team.
+Umgebungen können mit `env.register(ws)` für einen Arbeitsbereich registriert werden. Anschließend können sie problemlos freigegeben, wiederverwendet und versioniert werden. Umgebungen erleichtern das Reproduzieren vorheriger Ergebnisse und die Zusammenarbeit im Team.
 
 Azure Machine Learning bietet auch eine Sammlung zusammengestellter Umgebungen. Solche Umgebungen sind für gängige Machine Learning-Szenarien verfügbar und werden durch zwischengespeicherte Docker-Images unterstützt. Zwischengespeicherte Docker-Images beschleunigen die erste Remoteausführung.
 
-Kurz gesagt: Mit registrierten Umgebungen können Sie Zeit sparen. Weitere Informationen finden Sie in der [Dokumentation zu Umgebungen](./how-to-use-environments.md).
+Kurz gesagt: Mit registrierten Umgebungen können Sie Zeit sparen. Weitere Informationen finden Sie unter [Verwenden von Umgebungen](./how-to-use-environments.md).
 
 ## <a name="log-training-metrics"></a>Protokollieren von Trainingsmetriken
 
 Nachdem Sie nun über ein Modelltraining in Azure Machine Learning verfügen, beginnen Sie mit dem Nachverfolgen einiger Leistungsmetriken.
+
 Das aktuelle Trainingsskript gibt Metriken auf dem Terminal aus. Azure Machine Learning bietet einen Mechanismus zum Protokollieren von Metriken mit weiteren Funktionen. Durch Hinzufügen von wenigen Codezeilen können Sie Metriken in Studio visualisieren und Metriken aus mehreren Ausführungen vergleichen.
 
 ### <a name="modify-trainpy-to-include-logging"></a>Ändern Sie `train.py` so, dass die Protokollierung eingeschlossen wird.
 
-Ändern Sie das `train.py`-Skript so, dass es zwei zusätzliche Codezeilen umfasst:
+Ändern Sie Ihr Skript `train.py` so, dass es zwei weitere Codezeilen enthält:
 
 ```python
 # train.py
@@ -298,9 +305,16 @@ from azureml.core import Run
 # ADDITIONAL CODE: get Azure Machine Learning run from the current context
 run = Run.get_context()
 
-# download CIFAR 10 data
-trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+# download CIFAR10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
 
 if __name__ == "__main__":
 
@@ -341,7 +355,7 @@ if __name__ == "__main__":
 
 #### <a name="understand-the-additional-two-lines-of-code"></a>Erläuterungen zu den beiden zusätzlichen Codezeilen
 
-In `train.py` greifen Sie _innerhalb_ des Trainingsskripts selbst mit der Methode `Run.get_context()` auf das Run-Objekt zu und verwenden dieses zum Protokollieren der Metriken:
+In `train.py` greifen Sie _innerhalb_ des Trainingsskripts selbst mit der Methode `Run.get_context()` auf das Run-Objekt zu und verwenden es zum Protokollieren der Metriken:
 
 ```python
 # in train.py
@@ -354,7 +368,7 @@ run.log('loss', loss)
 
 Vorteile der Metriken in Azure Machine Learning:
 
-- Metriken sind nach Experiment und Ausführung angeordnet, sodass sie leicht nachverfolgt und verglichen werden können.
+- Metriken sind nach Experiment und Ausführung strukturiert und können daher leicht nachverfolgt und verglichen werden.
 - Sie verfügen über eine Benutzeroberfläche zur Visualisierung der Trainingsleistung in Studio.
 - Sie sind skalierbar konzipiert, sodass Sie auch bei Hunderten von Experimenten von diesen Vorteilen profitieren.
 
@@ -377,22 +391,22 @@ dependencies:
         - azureml-sdk
 ```
 
-### <a name="submit-run-to-azure-machine-learning"></a>Senden der Ausführung an Azure Machine Learning
+### <a name="submit-the-run-to-azure-machine-learning"></a>Senden der Ausführung an Azure Machine Learning
 Übermitteln Sie dieses Skript noch einmal:
 
 ```bash
 python 04-run-pytorch.py
 ```
 
-Wenn Sie Studio jetzt besuchen, öffnen Sie die Registerkarte „Metriken“, auf der Sie nun Liveupdates zum Modelltrainingsverlust sehen.
+Bei diesem Zugriff auf Studio öffnen Sie die Registerkarte **Metriken**, auf der nun Liveupdates zum Modelltrainingsverlust angezeigt werden.
 
-:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Diagramm zum Trainingsverlust auf der Registerkarte „Metriken“":::
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Diagramm: Trainingsverlust auf der Registerkarte „Metriken“":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Sitzung haben Sie ein Upgrade von einem einfachen „Hello World!“-Skript zu einem realistischeren Trainingsskript durchgeführt, das eine bestimmte Python-Umgebung für die Ausführung benötigt. Sie haben gesehen, wie Sie mit Azure Machine Learning-Umgebungen eine lokale Conda-Umgebung in die Cloud übertragen. Schließlich haben Sie erfahren, wie Sie mit einigen wenigen Codezeilen Metriken für Azure Machine Learning protokollieren können.
+In dieser Sitzung haben Sie ein Upgrade von einem einfachen „Hello World!“-Skript zu einem realistischeren Trainingsskript durchgeführt, das eine bestimmte Python-Umgebung für die Ausführung benötigt. Sie haben gesehen, wie Sie mit Azure Machine Learning-Umgebungen eine lokale Conda-Umgebung in die Cloud verlagern. Schließlich haben Sie erfahren, wie Sie mit einigen wenigen Codezeilen Metriken für Azure Machine Learning protokollieren können.
 
-Es gibt weitere Möglichkeiten, Azure Machine Learning-Umgebungen zu erstellen, z. B. [mit der PIP-Datei „requirements.txt“](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-) oder sogar [aus einer vorhandenen lokalen Conda-Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-).
+Es gibt weitere Möglichkeiten, Azure Machine Learning-Umgebungen zu erstellen, z. B. [mit der PIP-Datei „requirements.txt“](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-) oder [aus einer vorhandenen lokalen Conda-Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-).
 
 In der nächsten Sitzung sehen Sie, wie Sie mit Daten in Azure Machine Learning arbeiten, indem Sie das CIFAR10-Dataset in Azure hochladen.
 
@@ -400,4 +414,4 @@ In der nächsten Sitzung sehen Sie, wie Sie mit Daten in Azure Machine Learning 
 > [Tutorial: Verwenden eigener Daten](tutorial-1st-experiment-bring-data.md)
 
 >[!NOTE] 
-> Wenn Sie die Tutorialreihe hier beenden und nicht mit dem nächsten Schritt fortfahren möchten, vergessen Sie bitte nicht, [Ihre Ressourcen zu bereinigen](tutorial-1st-experiment-bring-data.md#clean-up-resources).
+> Wenn Sie die Tutorialreihe hier beenden und nicht mit dem nächsten Schritt fortfahren möchten, sollten Sie nicht vergessen, [Ihre Ressourcen zu bereinigen](tutorial-1st-experiment-bring-data.md#clean-up-resources).

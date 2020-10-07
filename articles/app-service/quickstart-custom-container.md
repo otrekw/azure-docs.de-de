@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961362"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91356416"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Ausführen eines benutzerdefinierten Containers in Azure
 
@@ -57,7 +57,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Wenn die _Dockerfile_-Datei nicht automatisch geöffnet wird, öffnen Sie sie im **Projektmappen-Explorer**.
 
-1. Sie benötigen ein [unterstütztes übergeordnetes Image](#use-a-different-parent-image). Ändern Sie das übergeordnete Image, indem Sie die Zeile `FROM` durch den folgenden Code ersetzen und die Datei dann speichern:
+1. Sie benötigen ein [unterstütztes übergeordnetes Image](configure-custom-container.md#supported-parent-images). Ändern Sie das übergeordnete Image, indem Sie die Zeile `FROM` durch den folgenden Code ersetzen und die Datei dann speichern:
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -169,22 +169,16 @@ Die gestreamten Protokolle sehen wie folgt aus:
 
 ![Aktualisierte Web-App in Azure](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>Verwenden eines anderen übergeordneten Images
-
-Sie können für die Ausführung Ihrer App auch ein anderes benutzerdefiniertes Docker-Image verwenden. Sie müssen jedoch das passende [übergeordnete Image (Basisimage)](https://docs.docker.com/develop/develop-images/baseimages/) für das gewünschte Framework auswählen:
-
-- Verwenden Sie zum Bereitstellen von .NET Framework-Apps ein übergeordnetes Image, das auf dem [LTSC](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server Core 2019 basiert. 
-- Verwenden Sie zum Bereitstellen von .NET Core-Apps ein übergeordnetes Image, das auf dem Release [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) von Windows Server Nano 1809 basiert. 
-
-Während des App-Starts dauert das Herunterladen eines übergeordneten Images eine Weile. Sie können die Startzeit jedoch reduzieren, indem Sie eins der folgenden übergeordneten Images verwenden, die bereits in Azure App Service zwischengespeichert sind:
-
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809: Dieses Image ist der Basiscontainer, der in allen [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/)- und Windows Nano Server-Images von Microsoft verwendet wird.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Migrieren zum Windows-Container in Azure](tutorial-custom-container.md)
+
+Oder sehen Sie sich weitere Ressourcen an:
+
+> [!div class="nextstepaction"]
+> [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 Stellen Sie abschließend sicher, dass Ihre Azure Container Registry-Instanz verbunden ist. Wählen Sie dazu das Docker-Logo in der Aktivitätsleiste aus, und navigieren Sie zu **REGISTRIERUNGEN**.
 
-![Registrierungen](./media/quickstart-docker/registries.png)
+![Screenshot, der den Wert „Registrierungen“ mit erweitertem Azure und einer Datei mit der Dateinamenerweiterung „.io“ zeigt.](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>Bereitstellen des Images in Azure App Service
 
@@ -260,5 +254,10 @@ Sehen Sie sich als Nächstes die anderen Azure-Erweiterungen an.
 * [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 Oder installieren Sie das [Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)-Erweiterungspaket, um alle Erweiterungen auf einmal erhalten.
+
+Sehen Sie sich weitere Ressourcen an:
+
+> [!div class="nextstepaction"]
+> [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
 
 ::: zone-end

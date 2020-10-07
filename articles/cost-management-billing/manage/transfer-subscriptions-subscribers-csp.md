@@ -5,19 +5,19 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371404"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
-In diesem Artikel werden allgemeine Schritte zum Übertragen von Azure-Abonnements zwischen Cloud Solution Provider-Partnern (CSP-Partnern) und ihren Kunden beschrieben.
+In diesem Artikel werden allgemeine Schritte zum Übertragen von Azure-Abonnements zwischen Cloud Solution Provider-Partnern (CSP-Partnern) und ihren Kunden beschrieben. Die hier aufgeführten Informationen sollen den Azure-Abonnenten bei der Koordination mit dem Partner unterstützen. Die Informationen, die Microsoft-Partner für den Übertragungsprozess verwenden, werden in [Erfahren Sie, wie Sie die Azure-Abonnements eines Kunden auf einen anderen Partner übertragen](/partner-center/switch-azure-subscriptions-to-a-different-partner) beschrieben.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Übertragen von Enterprise Agreement-Abonnements auf einen CSP-Partner
 
@@ -38,7 +38,7 @@ Um andere Azure-Abonnements an einen CSP-Partner zu übertragen, muss der Abonne
     > [!IMPORTANT]
     > - Wenn Sie ein Abonnement einem anderen Azure AD-Verzeichnis zuordnen, verlieren Benutzer, denen Rollen mit der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
     > - Richtlinienzuweisungen werden auch aus einem Abonnement entfernt, wenn das Abonnement einem anderen Verzeichnis zugeordnet ist.
-1. Das Benutzerkonto, das Sie für die Übertragung verwenden, muss für beide Abonnements über [RBAC](add-change-subscription-administrator.md)-Besitzerzugriff verfügen.
+1. Das Benutzerkonto, das Sie für die Übertragung verwenden, muss für beide Abonnements über [Azure RBAC](add-change-subscription-administrator.md)-Besitzerzugriff verfügen.
 1. [Überprüfen](/rest/api/resources/resources/validatemoveresources) Sie zu Beginn, ob alle Azure-Ressourcen aus dem Quellabonnement in das Zielabonnement verschoben werden können.  
     Einige Azure-Ressourcen können nicht zwischen Abonnements verschoben werden. Die komplette Liste der Azure-Ressourcen, die verschoben werden können, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../../azure-resource-manager/management/move-support-resources.md).
     > [!IMPORTANT]
@@ -57,10 +57,10 @@ Um andere Abonnements von einem CSP-Partner auf ein anderes Azure-Angebot zu üb
     Beachten Sie, dass das Änderungsverzeichnis nicht das CSP-Abonnement ist. Sie nehmen beispielsweise eine Übertragung von einem CSP-Abonnement zu einem Abonnement mit nutzungsbasierter Bezahlung vor. Sie müssen das Verzeichnis des Abonnements mit nutzungsbasierter Bezahlung so ändern, dass es dem Verzeichnis entspricht.
 
     > [!IMPORTANT]
-    >  - Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen über die [RBAC](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
+    >  - Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen über [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
     >  - Richtlinienzuweisungen werden auch aus einem Abonnement entfernt, wenn das Abonnement einem anderen Verzeichnis zugeordnet ist.
 
-1. Das Benutzerkonto, das Sie für die Übertragung verwenden, muss für beide Abonnements über [RBAC](add-change-subscription-administrator.md)-Besitzerzugriff verfügen.
+1. Das Benutzerkonto, das Sie für die Übertragung verwenden, muss für beide Abonnements über [Azure RBAC](add-change-subscription-administrator.md)-Besitzerzugriff verfügen.
 1. [Überprüfen](/rest/api/resources/resources/validatemoveresources) Sie zu Beginn, ob alle Azure-Ressourcen aus dem Quellabonnement in das Zielabonnement verschoben werden können.
     > [!IMPORTANT]
     >  - Einige Azure-Ressourcen können nicht zwischen Abonnements verschoben werden. Die komplette Liste der Azure-Ressourcen, die verschoben werden können, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../../azure-resource-manager/management/move-support-resources.md).

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376627"
 ---
 ## <a name="local-settings-file"></a>Datei für lokale Einstellungen
 
@@ -40,7 +40,7 @@ Diese Einstellungen werden bei der lokalen Ausführung von Projekten unterstütz
 
 | Einstellung      | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Wenn diese Einstellung auf `true` festgelegt wird, werden alle Werte mithilfe eines Schlüssels des lokalen Computers verschlüsselt. Wird mit `func settings`-Befehlen verwendet. Der Standardwert ist `false`. |
+| **`IsEncrypted`** | Wenn diese Einstellung auf `true` festgelegt wird, werden alle Werte mithilfe eines Schlüssels des lokalen Computers verschlüsselt. Wird mit `func settings`-Befehlen verwendet. Der Standardwert ist `false`. Es empfiehlt sich ggf., die Datei „local.settings.json“ auf dem lokalen Computer zu verschlüsseln, wenn sie Geheimnisse (etwa Dienstverbindungszeichenfolgen) enthält. Der Host entschlüsselt die Einstellungen bei der Ausführung automatisch. Verwenden Sie den Befehl `func settings decrypt`, bevor Sie versuchen, lokal verschlüsselte Einstellungen zu lesen. |
 | **`Values`** | Ein Array von Anwendungseinstellungen und Verbindungszeichenfolgen, die bei der lokalen Ausführung eines Projekts verwendet werden. Diese Schlüssel-Wert-Paare (Zeichenfolge-Zeichenfolge) entsprechen den Anwendungseinstellungen in Ihrer Funktions-App in Azure, etwa [`AzureWebJobsStorage`]. Viele Trigger und Bindungen verfügen über eine Eigenschaft, die auf eine App-Einstellung für die Verbindungszeichenfolge verweist, z. B. `Connection` für den [Blob Storage-Trigger](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). Für diese Eigenschaften muss eine Anwendungseinstellung im Array `Values` definiert sein. Eine Liste der häufig verwendeten Einstellungen finden Sie in der nachfolgenden Tabelle. <br/>Werte müssen Zeichenfolgen und dürfen nicht JSON-Objekte oder Arrays sein. Einstellungsnamen dürfen weder einen Doppelpunkt (`:`) noch einen doppelten Unterstrich (`__`) enthalten. Doppelte Unterstriche sind von der Runtime reserviert, und der Doppelpunkt ist für die Unterstützung der [Abhängigkeitsinjektion](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings) reserviert. |
 | **`Host`** | Die Einstellungen in diesem Abschnitt passen den Hostprozess von Functions bei der lokalen Ausführung von Projekten an. Diese Einstellungen sind getrennt von den host.json-Einstellungen, die auch bei der Ausführung von Projekten in Azure angewendet werden. |
 | **`LocalHttpPort`** | Legt den Standardport fest, der bei der Ausführung des lokalen Functions-Host verwendet wird (`func host start` und `func run`). Die Befehlszeilenoption `--port` hat Vorrang vor dieser Einstellung. |

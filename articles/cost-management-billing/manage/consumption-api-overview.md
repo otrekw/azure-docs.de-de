@@ -8,12 +8,12 @@ ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: e2252d13dd39587e7730b141a6096afc0a34dbc1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07595eed70850ce5270a261d588a33b68ff964fe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371931"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure-Nutzungs-API: Übersicht
 
@@ -38,7 +38,7 @@ Verwenden Sie die Nutzungsdetails-API zum Abrufen von Daten zu Kosten und Nutzun
 Die API umfasst:
 
 -   **Verbrauchsdaten auf Zählerebene**: Daten zu Nutzungskosten, dem Zähler, der die Gebühr erzeugt, und der Azure-Ressource, auf die sich die Gebühr bezieht, können eingesehen werden. Alle Nutzungsdetail-Datensätze sind einem täglichen Bucket zugeordnet.
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Filterung**: Reduzieren Sie Ihr API-Ergebnis mit den folgenden Filtern auf einen kleineren Satz von Nutzungsdetail-Datensätzen:
     - Start der Nutzung/Ende der Nutzung
     - Ressourcengruppe
@@ -55,7 +55,7 @@ Verwenden Sie die API für Marketplace-Gebühren, um Kosten- und Nutzungsdaten f
 Die API umfasst:
 
 -   **Verbrauchsdaten auf Zählerebene**: Daten zu Marketplace-Nutzungskosten, dem Zähler, der die Gebühr erzeugt, und der Azure-Ressource, auf die sich die Gebühr bezieht, können eingesehen werden. Alle Nutzungsdetail-Datensätze sind einem täglichen Bucket zugeordnet.
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Filterung**: Reduzieren Sie Ihr API-Ergebnis mit den folgenden Filtern auf einen kleineren Satz von Marketplace-Datensätzen:
     - Start der Nutzung/Ende der Nutzung
     - Ressourcengruppe
@@ -70,7 +70,7 @@ Verwenden Sie die API für Bilanzen, um eine monatliche Übersicht über Informa
 
 Die API umfasst:
 
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Nur für Enterprise Agreement-Kunden**: Diese API ist nur für EA-Kunden verfügbar.
     - Kunden benötigen für das Aufrufen dieser API die Berechtigungen eines Unternehmensadministrators.
 
@@ -82,7 +82,7 @@ Enterprise Agreement-Kunden können diese API nutzen, um Kosten- oder Nutzungsbu
 
 Die API umfasst:
 
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Nur für Enterprise Agreement-Kunden**: Diese API ist nur für EA-Kunden verfügbar.
 -   **Konfigurierbare Benachrichtigungen**: Geben Sie Benutzer an, die benachrichtigt werden sollen, wenn das Budget überschritten wird.
 -   **Auf Nutzung oder Kosten basierende Budgets**: Erstellen Sie Ihr Budget je nach Bedarf auf Basis des Verbrauchs oder der Kosten.
@@ -100,7 +100,7 @@ Verwenden Sie diese API, um Empfehlungen für den Kauf reservierter VM-Instanzen
 
 Die API umfasst:
 
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Filterung**: Passen Sie Ihre Empfehlungsergebnisse mit den folgenden Filtern an:
     - `Scope`
     - Rückblickperiode
@@ -114,7 +114,7 @@ Verwenden Sie die API für Reservierungsdetails, um Informationen zu bereits erw
 
 Die API umfasst:
 
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Filterung**: Reduzieren Sie Ihr API-Ergebnis mit den folgenden Filtern auf einen kleineren Satz von Reservierungen:
     - Datumsbereich
 -   **Reservierungsinformationen für verschiedene Angebotstypen**: Reservierungsinformationen sind zurzeit für Enterprise Agreement- und Web Direct-Kunden verfügbar.
@@ -127,7 +127,7 @@ Verwenden Sie die API für Reservierungszusammenfassungen, um aggregierte Inform
 
 Die API umfasst:
 
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Filterung**: Passen Sie Ihre Ergebnisse an, wenn Sie das Tagesintervall mit dem folgenden Filter verwenden:
     - Usage Date
 -   **Reservierungsinformationen für verschiedene Angebotstypen**: Reservierungsinformationen sind zurzeit für Enterprise Agreement- und Web Direct-Kunden verfügbar.
@@ -140,7 +140,7 @@ Enterprise-Kunden können diese API nutzen, um ihre benutzerdefinierten Preise f
 
 Die API umfasst:
 
--   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+-   **Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)** : Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder mit [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 -   **Nur für Enterprise Agreement-Kunden**: Diese API ist nur für EA-Kunden verfügbar. Web Direct-Kunden können Preise mithilfe der RateCard-API abrufen.
 
 Weitere Informationen finden Sie in den technischen Angaben zur [Preisblatt-API](https://docs.microsoft.com/rest/api/consumption/pricesheet).

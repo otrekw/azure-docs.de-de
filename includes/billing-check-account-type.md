@@ -4,18 +4,18 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: bc60e7d39e6dbdf04744a10ef6c6f286e1b1ea52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6787983421285122834479cb652fec52ee7bf72b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75984362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360689"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
  
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
  
-   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
+   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
  
 3. Wenn Sie Zugriff auf genau einen Abrechnungsbereich haben, wählen Sie auf der linken Seite **Eigenschaften** aus.
  

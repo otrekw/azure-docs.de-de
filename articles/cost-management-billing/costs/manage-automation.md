@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372186"
 ---
 # <a name="manage-costs-with-automation"></a>Verwalten der Kosten per Automatisierung
 
@@ -234,7 +234,7 @@ Ein Budget in Ihrer Azure-Umgebung kann auf verschiedenste Arten konfiguriert we
 - **Zeitraum**: Gibt die Gültigkeitsdauer Ihres Budgets an. Die Budgetüberwachung ist nur während des Gültigkeitszeitraums aktiv, und Warnungen werden nur innerhalb dieses Zeitraums ausgegeben.
 - **Benachrichtigungen**
   - Kontakt-E-Mail-Adressen: An diese E-Mail-Adressen werden Warnungen gesendet, wenn für ein Budget Kosten anfallen und die definierten Schwellenwerte überschritten werden.
-  - Kontaktrollen: Bei dieser Option werden E-Mail-Warnungen an alle Benutzer mit einer entsprechenden Azure RBAC-Rolle im angegebenen Bereich gesendet. So können beispielsweise Abonnementbesitzer eine Warnung für ein Budget erhalten, das im Abonnementbereich erstellt wurde.
+  - Kontaktrollen: Bei dieser Option werden E-Mail-Warnungen an alle Benutzer mit einer entsprechenden Azure-Rolle im angegebenen Bereich gesendet. So können beispielsweise Abonnementbesitzer eine Warnung für ein Budget erhalten, das im Abonnementbereich erstellt wurde.
   - Kontaktgruppen: Bei Überschreitung eines Warnungsschwellenwerts werden vom Budget die konfigurierten Aktionsgruppen aufgerufen.
 - **Kostendimensionsfilter**: Die Filtermöglichkeiten, die in der Kostenanalyse oder über die Abfrage-API zur Verfügung stehen, sind auch für Ihr Budget verfügbar. Verwenden Sie diesen Filter, um den Kostenbereich einzuschränken, der durch das Budget überwacht wird.
 

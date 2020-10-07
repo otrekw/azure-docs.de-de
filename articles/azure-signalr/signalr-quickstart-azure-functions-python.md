@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstartanleitung: Serverlose Anwendungen mit Azure SignalR Service – Python'
-description: Eine Schnellstartanleitung für die Verwendung des Azure SignalR-Diensts und von Azure Functions zum Erstellen eines Chatraums.
+description: Eine Schnellstartanleitung für die Verwendung des Azure SignalR-Diensts und von Azure Functions zum Erstellen eines Chatraums mithilfe von Python.
 author: anthonychu
 ms.service: signalr
 ms.devlang: python
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: d7d893d3de5541bf1108a9182dfee6ad995e061b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355640"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von Python
 
@@ -57,7 +57,7 @@ Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azu
 
 1. Wählen Sie die primäre Verbindungszeichenfolge aus, und kopieren Sie diese.
 
-    ![Erstellen des SignalR-Diensts](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![Wählen Sie die primäre Verbindungszeichenfolge aus, und kopieren Sie diese.](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. Öffnen Sie in Ihrem Code-Editor den Ordner *src/chat/python* im geklonten Repository.
 

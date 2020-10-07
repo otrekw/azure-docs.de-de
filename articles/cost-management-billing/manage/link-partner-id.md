@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371829"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -151,9 +151,9 @@ Berichte zur Cloudproduktleistung stehen für Partner im Partner Center unter [D
 
 Der Kunde wird aus folgenden Gründen in den Berichten nicht angezeigt:
 
-1. Das verknüpfte Benutzerkonto verfügt nicht über [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) auf ein Azure-Kundenabonnement oder eine entsprechende Ressource.
+1. Das verknüpfte Benutzerkonto verfügt nicht über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) für ein Azure-Kundenabonnement oder eine entsprechende Ressource.
 
-2. Das Azure-Abonnement, für das der Benutzer über [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) verfügt, wird nicht verwendet.
+2. Das Azure-Abonnement, für das der Benutzer über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) verfügt, wird nicht verwendet.
 
 **Funktioniert das Verknüpfen der Partner-ID mit Azure Stack?**
 

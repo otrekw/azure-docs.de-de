@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5fef68c9de4dae8063799255fcc7d68ff6b1e6b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370333"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Registrieren für ein Azure-Abonnement mit Ihrem Microsoft 365-Konto
 
-Wenn Sie über ein Microsoft 365-Abonnement verfügen, können Sie mit Ihrem Microsoft 365-Konto ein Azure-Abonnement erstellen. Melden Sie sich mit Ihrem Microsoft 365-Benutzernamen und -Kennwort beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie virtuelle Computer einrichten oder andere Azure-Dienste verwenden möchten, müssen Sie sich für ein Azure-Abonnement registrieren. Sie können Ihr Azure-Abonnement gemeinsam mit anderen nutzen und [rollenbasierte Zugriffssteuerung verwenden, um den Zugriff auf Ihr Azure-Abonnement und Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Wenn Sie über ein Microsoft 365-Abonnement verfügen, können Sie mit Ihrem Microsoft 365-Konto ein Azure-Abonnement erstellen. Melden Sie sich mit Ihrem Microsoft 365-Benutzernamen und -Kennwort beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie virtuelle Computer einrichten oder andere Azure-Dienste verwenden möchten, müssen Sie sich für ein Azure-Abonnement registrieren. Sie können Ihr Azure-Abonnement gemeinsam mit anderen nutzen und die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) verwenden, um den Zugriff auf Ihr Azure-Abonnement und die entsprechenden Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 Wenn Sie bereits über ein Microsoft 365-Konto und ein Azure-Abonnement verfügen, finden Sie weitere Informationen unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -57,4 +57,4 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Nutzen Sie Ihr Azure-Abonnement gemeinsam mit anderen, und [verwenden Sie rollenbasierte Zugriffssteuerung, um den Zugriff auf Ihr Azure-Abonnement und Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+- Nutzen Sie Ihr Azure-Abonnement gemeinsam mit anderen, und [verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC), um den Zugriff auf Ihr Azure-Abonnement und die entsprechenden Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

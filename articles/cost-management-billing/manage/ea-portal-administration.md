@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371914"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -175,7 +175,7 @@ In diesem Dokument werden häufig gestellte Fragen im Zusammenhang mit dem Konto
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Wie viele Azure-Kontobesitzer sind pro Abonnement zulässig?
 
-Pro Abonnement ist immer nur ein einzelner Kontobesitzer zulässig.  Weitere Rollen können mithilfe des rollenbasierten Zugriffs oder der Zugriffssteuerung (IAM) im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Abonnement“ (links oben auf der Seite) hinzugefügt werden.
+Pro Abonnement ist immer nur ein einzelner Kontobesitzer zulässig.  Weitere Rollen können mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Abonnement“ (links oben auf der Seite) hinzugefügt werden.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kann ein Azure-Kontobesitzer unter mehreren Abteilungen aufgeführt werden?
 
@@ -191,7 +191,7 @@ Ein Azure-Kontobesitzer kann eine unbegrenzte Anzahl von Abonnements erstellen u
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Wie kann ich auf alle Abonnements meiner Organisation zugreifen bzw. diese anzeigen?
 
-Hierzu muss aktuell eine Richtlinie verwendet werden. Ihr Konto muss also für jedes erstellte Abonnement mithilfe des rollenbasierten Zugriffs einer Abonnementrolle hinzugefügt werden.
+Hierzu muss aktuell eine Richtlinie verwendet werden. Ihr Konto muss also für jedes erstellte Abonnement mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) einer Abonnementrolle hinzugefügt werden.
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Wo kann ich ein Abonnement erstellen?
 

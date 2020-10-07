@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f738daab7ddcf0403f546e7c9ffeaeccb66bc6b7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75392140"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91355641"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Erstellen einer Instanz des Azure SignalR-Diensts
 
@@ -20,7 +20,7 @@ Ihre Anwendung stellt eine Verbindung mit einer Instanz des SignalR-Diensts in A
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche „Neu“. Geben Sie im Bildschirm „Neu“ die Angabe *SignalR-Dienst* in das Suchfeld ein, und drücken Sie die EINGABETASTE.
 
-    ![Suchen nach SignalR-Dienst](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
+    ![Der Screenshot zeigt die Suche nach SignalR Service im Azure-Portal.](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
 
 1. Wählen Sie **SignalR-Dienst** aus den Suchergebnissen aus, und wählen Sie dann **Erstellen** aus.
 
@@ -36,7 +36,7 @@ Ihre Anwendung stellt eine Verbindung mit einer Instanz des SignalR-Diensts in A
     | **Einheitenanzahl** |  Nicht verfügbar | Die Einheitenanzahl gibt an, wie viele Verbindungen Ihre Instanz des SignalR-Diensts akzeptieren kann. Dies kann nur im Tarif „Standard“ konfiguriert werden. |
     | **Dienstmodus** |  Serverlos | Zur Verwendung mit Azure Functions oder der REST-API. |
 
-    ![Erstellen des SignalR-Diensts](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
+    ![Der Screenshot zeigt die Registerkarte „SignalR-Grundeinstellungen“ mit Werten.](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Wählen Sie **Erstellen** aus, um mit der Bereitstellung der Instanz des SignalR-Diensts zu beginnen.
 

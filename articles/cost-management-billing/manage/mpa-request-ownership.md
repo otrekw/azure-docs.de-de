@@ -1,6 +1,6 @@
 ---
 title: Übernehmen des Abrechnungsbesitzes für Azure-Abonnements im Falle einer Microsoft-Partnervereinbarung (Microsoft Partner Agreement, MPA)
-description: Hier erfahren Sie, wie Sie von anderen Benutzern den Abrechnungsbesitz für Azure-Abonnements anfordern.
+description: Hier erfahren Sie, wie Sie von anderen Benutzern den Abrechnungsbesitz von Azure-Abonnements für die Microsoft Partner-Vereinbarung (Microsoft Partner Agreement, MPA) anfordern.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371013"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
@@ -35,7 +35,7 @@ Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen.
 
 1. Melden Sie sich mit CSP-Administrator-Agent-Anmeldeinformationen im CSP-Mandanten beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
-    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mpa-request-ownership/search-cmb.png)
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal zum Anfordern des Abrechnungsbesitzes](./media/mpa-request-ownership/search-cmb.png)
 1. Wählen Sie auf der linken Seite **Kunden** und anschließend einen Kunden aus der Liste aus.  
     [![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Wählen Sie links unten die Option **Übertragungsanforderungen** und anschließend **Neue Anforderung hinzufügen** aus.  
@@ -56,7 +56,7 @@ Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
-    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal zum Überprüfen des Status der Übertragungsanforderung](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Wählen Sie auf der linken Seite **Kunden** aus.  
     [![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Wählen Sie in der Liste den Kunden aus, für den Sie die Übertragungsanforderung gesendet haben.
@@ -127,7 +127,7 @@ Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschobe
 
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 
-Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Azure-Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen. Der Partner erhält keinen neuen RBAC-Zugriff auf die Abonnements.
+Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen. Der Partner erhält keinen neuen Azure RBAC-Zugriff auf die Abonnements.
 
 Die Partner müssen mit dem Kunden zusammenarbeiten, um Zugriff auf Abonnements zu erhalten. Die Partner benötigen Zugriff vom Typ [Administrator im Auftrag von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf of, AOBO) oder [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) auf offene Supporttickets.
 
@@ -174,4 +174,4 @@ Informationen zum Hinzufügen eines Benutzers zum Verzeichnis finden Sie unter [
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Der Abrechnungsbesitz für die Azure-Abonnements wird auf Sie übertragen. Überwachen Sie die Gebühren für die entsprechenden Abonnements über das [Azure-Portal](https://portal.azure.com).
-* Arbeiten Sie mit dem Kunden zusammen, um Zugriff auf die übertragenen Azure-Abonnements zu erhalten. [Verwalten Sie den Zugriff auf Azure-Ressourcen mit RBAC.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* Arbeiten Sie mit dem Kunden zusammen, um Zugriff auf die übertragenen Azure-Abonnements zu erhalten. [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

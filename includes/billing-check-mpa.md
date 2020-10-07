@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 0cdcc26ca0ae64455f8a27b13c2e4bc87e0ecb68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 18f36664b670c7c19ac3783c1e9699d61ff354d7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74222644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361182"
 ---
 Überprüfen Sie den Vertragstyp, um zu bestimmen, ob Sie Zugriff auf ein Abrechnungskonto für eine Microsoft-Partnervereinbarung haben.
  
@@ -17,7 +17,7 @@ ms.locfileid: "74222644"
  
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
  
-   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-check-mpa/search-cmb.png)
+   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-check-mpa/search-cmb.png)
  
 3. Wenn Sie Zugriff auf genau einen Abrechnungsbereich haben, wählen Sie auf der linken Seite **Eigenschaften** aus. Sie haben Zugriff auf ein Abrechnungskonto, wenn der Typ des Abrechnungskontos **Microsoft-Partnervereinbarung** ist.
  

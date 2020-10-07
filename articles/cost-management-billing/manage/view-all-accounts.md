@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360690"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Abrechnungskonten und -bereiche im Azure-Portal
 
@@ -80,7 +80,7 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und V
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. Wählen Sie auf der Übersichtsseite **Wechseln Sie den Bereich** aus.
 
@@ -92,7 +92,7 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und V
 
 4. Wählen Sie einen Bereich aus, um Details dazu anzuzeigen.
 
-   ![Screenshot von Abrechnungsbereichen](./media/view-all-accounts/list-of-scopes.png)
+   ![Screenshot von Abrechnungsbereichen, die Sie auswählen können, um Details anzuzeigen](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>Überprüfen Sie den Typ Ihres Abrechnungskontos.
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

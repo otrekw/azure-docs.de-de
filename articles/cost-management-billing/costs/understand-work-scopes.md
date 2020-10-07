@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 64e7f0eae10f590ffd268b43b63a5d8cb0987c57
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372356"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -26,7 +26,7 @@ Ein _Bereich_ ist ein Knoten in der Azure-Ressourcenhierarchie, in dem Azure AD-
 - Abrechnungsdaten, z.B. Zahlungen und Rechnungen
 - Clouddienste wie Kosten und die Richtliniengovernance
 
-In Bereichen können Sie Abrechnungsdaten verwalten, mit für Zahlungen spezifischen Rollen arbeiten, Rechnungen einsehen und die allgemeine Kontenverwaltung durchführen. Rechnungs- und Kontorollen werden getrennt von den Rollen für die Ressourcenverwaltung verwaltet, die [Azure RBAC](../../role-based-access-control/overview.md) (rollenbasierte Zugriffssteuerung) verwenden. Um den Zweck der einzelnen Bereiche, einschließlich der Unterschiede bei der Zugriffssteuerung, klar zu unterscheiden, werden diese als _Abrechnungsbereiche_ und _RBAC-Bereiche_ bezeichnet.
+In Bereichen können Sie Abrechnungsdaten verwalten, mit für Zahlungen spezifischen Rollen arbeiten, Rechnungen einsehen und die allgemeine Kontenverwaltung durchführen. Rechnungs- und Kontorollen werden getrennt von den Rollen für die Ressourcenverwaltung verwaltet, die [Azure RBAC](../../role-based-access-control/overview.md) (rollenbasierte Zugriffssteuerung) verwenden. Um den Zweck der einzelnen Bereiche, einschließlich der Unterschiede bei der Zugriffssteuerung, klar zu unterscheiden, werden diese als _Abrechnungsbereiche_ und _Azure RBAC-Bereiche_ bezeichnet.
 
 Weitere Informationen zu Bereichen finden Sie im Video zur [Einrichtung von Hierarchien in Cost Management](https://www.youtube.com/watch?v=n3TLRaYJ1NY). Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
@@ -34,7 +34,7 @@ Weitere Informationen zu Bereichen finden Sie im Video zur [Einrichtung von Hier
 
 ## <a name="how-cost-management-uses-scopes"></a>Zweck von Bereichen in Cost Management
 
-Cost Management ist in allen Bereichen oberhalb von Ressourcen aktiv, damit Organisationen Kosten auf der Ebene verwalten können, auf der sie Zugriff haben, und zwar unabhängig davon, ob es sich um das gesamte Abrechnungskonto oder eine einzelne Ressourcengruppe handelt. Obwohl sich Abrechnungsbereiche je nach Vertrag mit Microsoft (Abonnementtyp) unterscheiden, gilt dies nicht für RBAC-Bereiche.
+Cost Management ist in allen Bereichen oberhalb von Ressourcen aktiv, damit Organisationen Kosten auf der Ebene verwalten können, auf der sie Zugriff haben, und zwar unabhängig davon, ob es sich um das gesamte Abrechnungskonto oder eine einzelne Ressourcengruppe handelt. Obwohl sich Abrechnungsbereiche je nach Vertrag mit Microsoft (Abonnementtyp) unterscheiden, gilt dies nicht für Azure RBAC-Bereiche.
 
 ## <a name="azure-rbac-scopes"></a>Azure RBAC-Bereiche
 
@@ -98,7 +98,7 @@ EA-Abrechnungsbereiche unterstützen die folgenden Rollen:
 - **Unternehmensbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abrechnungskontoeinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Abteilungsadministrator**: Ermöglicht das Verwalten der Abteilungseinstellungen, wie z.B. Kostenstelle, sowie den Zugriff auf und die Anzeige aller Kosten sowie das Verwalten der Kostenkonfiguration. Beispiele: Budgets und Exporte.  Die Abrechnungskontoeinstellung **Abteilung – Gebühren anzeigen** muss für Abteilungsadministratoren und Benutzer mit Leseberechtigung aktiviert sein, um Kosten einzusehen. Wenn die Option **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
 - **Abteilungsbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abteilungseinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. Wenn die Option **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
-- **Kontobesitzer**: Ermöglicht das Verwalten von Registrierungskontoeinstellungen (z.B. Kostenstelle), das Anzeigen aller Kosten und das Verwalten der Kostenkonfiguration (z.B. Budgets und Exporte) für das Registrierungskonto. Die Abrechnungskontoeinstellung **Kontobesitzer – Gebühren anzeigen** muss für Kontobesitzer und RBAC-Benutzer aktiviert sein, um Kosten einzusehen.
+- **Kontobesitzer**: Ermöglicht das Verwalten von Registrierungskontoeinstellungen (z.B. Kostenstelle), das Anzeigen aller Kosten und das Verwalten der Kostenkonfiguration (z.B. Budgets und Exporte) für das Registrierungskonto. Die Abrechnungskontoeinstellung **Kontobesitzer – Gebühren anzeigen** muss für Kontobesitzer und Azure RBAC-Benutzer aktiviert sein, um Kosten einzusehen.
 
 EA-Abrechnungskontobenutzer haben keinen direkten Zugriff auf Rechnungen. Rechnungen sind in einem externen Volumenlizenzierungssystem verfügbar.
 

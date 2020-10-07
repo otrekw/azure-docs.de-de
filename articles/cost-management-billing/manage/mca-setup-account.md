@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371795"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -132,7 +132,7 @@ Die Azure-Dienste in Ihrem Abonnement werden ohne Unterbrechung ausgeführt. Wir
 
 ### <a name="user-access-to-azure-resources"></a>Benutzerzugriff auf Azure-Ressourcen
 
-Zugriff auf Azure-Ressourcen, der mithilfe von Azure RBAC (Role Based Access Control, rollenbasierte Zugriffssteuerung) festgelegt wurde, ist während der Umstellung nicht beeinträchtigt.
+Zugriff auf Azure-Ressourcen, der mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) festgelegt wurde, ist während der Umstellung nicht beeinträchtigt.
 
 ### <a name="azure-reservations"></a>Azure-Reservierungen
 
@@ -225,7 +225,7 @@ Azure-Reservierungen in Ihrer Enterprise Agreement-Registrierung werden zum neue
 
 4. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
 
-   ![Screenshot mit dem Zugriff von Unternehmensadministratoren nach der Umstellung](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![Screenshot mit dem Zugriff von Unternehmensadministratoren, die nach der Umstellung als Besitzer des Abrechnungskontos aufgeführt sind](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 Unternehmensadministratoren sind als Besitzer des Abrechnungskontos aufgeführt, während Unternehmensadministratoren mit Leseberechtigungen als Benutzer mit Leseberechtigung für das Abrechnungskonto aufgeführt sind. Wenn Sie der Meinung sind, dass der Zugriff für einen Unternehmensadministrator fehlt, können Sie diesem im Azure-Portal die Zugriffsberechtigung erteilen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
@@ -241,7 +241,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungskontos aufgeführt,
 
 4. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
 
-   ![Screenshot mit dem Zugriff von Unternehmensadministratoren nach der Umstellung](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![Screenshot mit dem Zugriff von Unternehmensadministratoren, die nach der Umstellung als Besitzer des Abrechnungsprofils aufgeführt sind](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt, während Unternehmensadministratoren mit Nur-Lese Berechtigungen als Benutzer mit Leseberechtigung für das Abrechnungsprofil aufgeführt sind. Wenn Sie der Meinung sind, dass der Zugriff für einen Unternehmensadministrator fehlt, können Sie diesem im Azure-Portal die Zugriffsberechtigung erteilen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
