@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100914"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Registrieren oder Erneuern eines Azure Dev Tools für den Unterricht-Abonnements
@@ -33,19 +33,19 @@ Dieser Artikel beschreibt das Verfahren zum Registrieren bei Azure Dev Tools fü
 
 1. Vervollständigen Sie die **Informationen zu Ihrer Einrichtung**, wenn Sie sich zum ersten Mal registrieren. Bei einer Erneuerung werden diese Informationen automatisch ausgefüllt.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Eingeben von Informationen zur Einrichtung." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
     
 1. Geben Sie Ihre **Abrechnungsinformationen** ein. Wenn Ihre Einrichtung einen Volumenlizenzvertrag nutzt, können Sie die Nummer des Volumenlizenzvertrags eingeben. Wenn Sie sich für ein neues Abonnement registrieren und ein anderes Zahlungsmittel als eine Kreditkarte verwenden, kann es während des Zahlungsvorgangs zu einer Verzögerung beim Zugriff auf Ihr Abonnement kommen. Sie erhalten E-Mails, die den aktuellen Zahlungsfortschritt angeben.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Eingeben von Abrechnungsinformationen." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
     
 1. Wählen Sie den **Abonnementplan** aus, und bestätigen Sie den **Abonnementadministrator** für das Abonnement. Die E-Mail-Domäne des Abonnementadministrators ermöglicht Kursteilnehmern in derselben Domäne einfachen Zugriff zum Herunterladen ihrer Softwarevorteile.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Auswählen des Abonnementplans." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
     
 1. Bestätigen Sie alle Kaufinformationen, und klicken Sie auf **Bestellen**. Bestätigungs-E-Mails werden an Ihren Posteingang gesendet, die Aktualisierungen zum Zahlungsstatus und allen möglichen nächsten Schritten enthalten.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Bestätigender Bestellung." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Erneuern eines vorhandenen Abonnements
 

@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
 ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87283893"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe einer ARM-Vorlage
@@ -94,23 +94,23 @@ Weitere Azure Data Factory-Vorlagenbeispiele finden Sie im [Schnellstartvorlagen
 
 1. Wählen Sie **Zu Ressourcengruppe wechseln** aus.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Ressourcengruppe":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 2.  Vergewissern Sie sich, dass Ihre Azure Data Factory-Instanz erstellt wurde.
     1. Der Azure Data Factory-Name hat das Format „datafactory\<uniqueid\>“.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Data Factory-Beispiel":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 2. Vergewissern Sie sich, dass Ihr Speicherkonto erstellt wurde.
     1. Der Speicherkontoname hat das Format „storage\<uniqueid\>“.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Speicherkonto":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 3. Wählen Sie den Namen des erstellten Speicherkontos und anschließend die Option **Container** aus.
     1. Wählen Sie auf der Seite **Container** den erstellten Blobcontainer aus.
         1. Der Blobcontainername hat das Format „blob\<uniqueid\>“.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blobcontainer":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 ### <a name="upload-a-file"></a>Hochladen einer Datei
 
@@ -126,7 +126,7 @@ Weitere Azure Data Factory-Vorlagenbeispiele finden Sie im [Schnellstartvorlagen
 
 6. Wählen Sie das Symbol **Schließen** (das **X**) aus, um die Seite **Blob hochladen** zu schließen.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Hochladen der Datei in den Eingabeordner":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 Lassen Sie die Seite „Container“ geöffnet, da Sie dort am Ende dieses Schnellstarts die Ausgabe überprüfen können.
 
@@ -136,17 +136,17 @@ Lassen Sie die Seite „Container“ geöffnet, da Sie dort am Ende dieses Schne
 
 2. Wählen Sie die Kachel **Erstellen und überwachen** aus. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Erstellen und überwachen":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 2. Wählen Sie die Registerkarte **Ersteller** :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: aus.
 
 3. Wählen Sie die erstellte Pipeline „ArmtemplateSampleCopyPipeline“ aus.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM-Vorlagenpipeline":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 4. Wählen Sie **Trigger hinzufügen** > **Trigger Now** (Jetzt auslösen) aus.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Trigger":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 5. Wählen Sie im rechten Bereich unter **Pipelineausführung**die Option **OK** aus.
 
@@ -156,7 +156,7 @@ Lassen Sie die Seite „Container“ geöffnet, da Sie dort am Ende dieses Schne
 
 2. Sie sehen die Aktivitätsausführungen, die der Pipelineausführung zugeordnet sind. In dieser Schnellstartanleitung verfügt die Pipeline nur über eine Aktivität vom Typ „Kopieren“. Aus diesem Grund wird eine Ausführung für diese Aktivität angezeigt.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Erfolgreiche Ausführung":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 ### <a name="verify-the-output-file"></a>Überprüfen der Ausgabedatei
 
@@ -168,7 +168,7 @@ Die Pipeline erstellt automatisch einen Ausgabeordner im Blobcontainer Anschlie�
 
 3. Überprüfen Sie, ob die Datei **emp.txt** in den Ausgabeordner kopiert wurde. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Ausgabe":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Bereitstellen einer ADF-ARM-Vorlage":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

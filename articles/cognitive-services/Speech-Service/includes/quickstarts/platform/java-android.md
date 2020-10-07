@@ -12,10 +12,10 @@ ms.date: 10/11/2019
 ms.custom: devx-track-java
 ms.author: erhopf
 ms.openlocfilehash: 814a182b07d3be75608cbabbdd00ffa190939b3f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87375232"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für Java unter Android installieren. Die Einrichtung basiert auf dem Maven-Paket für das Speech SDK sowie auf Android Studio 3.3.
