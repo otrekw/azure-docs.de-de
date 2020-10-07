@@ -1,14 +1,16 @@
 ---
 title: 'Verwalten von Wissensdatenbanken: QnA Maker'
 description: Über QnA Maker können Sie zur Verwaltung Ihrer Wissensdatenbanken auf deren Einstellungen und Inhalte zugreifen.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551777"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777733"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Erstellen einer Wissensdatenbank und Verwalten der Einstellungen
 

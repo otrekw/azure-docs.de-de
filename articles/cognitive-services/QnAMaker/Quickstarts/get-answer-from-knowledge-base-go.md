@@ -1,16 +1,18 @@
 ---
 title: 'Schnellstart: Abrufen von Antworten aus einer Wissensdatenbank – REST, Go – QnA Maker'
 description: In diesem Go-REST-basierten Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer Wissensdatenbank abrufen.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: f9d9b995f8e78ec91bd26c31dde16b97188f0371
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f826802de2aa979b5af6174fccda2f0203eba433
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269181"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777621"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Go
 

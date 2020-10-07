@@ -2,7 +2,7 @@
 title: Integration von Azure ExpressRoute und Oracle Cloud Infrastructure | Microsoft-Dokumentation
 description: Integration von Azure ExpressRoute und Oracle Cloud Infrastructure (OCI) FastConnect unterstützt cloudübergreifende Oracle-Anwendungslösungen
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220472"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776577"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
@@ -96,7 +96,7 @@ Bei der Installation der Agents in beiden Clouds können Sie den [Netzwerkleistu
 
 Um die Verbindung zu löschen, müssen die folgenden Schritte in der angegebenen Reihenfolge ausgeführt werden. Andernfalls wird die ExpressRoute-Verbindung in einen Fehlerzustand versetzt.
 
-1. Löschen Sie die ExpressRoute-Verbindung. Sie löschen die Verbindung, indem Sie auf der zugehörigen Seite auf das Symbol **Löschen** klicken. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet).
+1. Löschen Sie die ExpressRoute-Verbindung. Sie löschen die Verbindung, indem Sie auf der zugehörigen Seite auf das Symbol **Löschen** klicken. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources).
 1. Löschen Sie Oracle FastConnect in der Oracle Cloud Console.
 1. Nachdem die Oracle FastConnect-Verbindung gelöscht wurde, können Sie die Azure ExpressRoute-Verbindung löschen.
 

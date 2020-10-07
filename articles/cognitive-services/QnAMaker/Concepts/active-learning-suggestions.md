@@ -1,14 +1,16 @@
 ---
 title: 'Vorschläge für aktives Lernen: QnA Maker'
 description: Durch Vorschläge für aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804214"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777036"
 ---
 # <a name="active-learning-suggestions"></a>Vorschläge für aktives Lernen
 

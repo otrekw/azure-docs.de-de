@@ -1,17 +1,17 @@
 ---
 title: Tarife – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel werden die Compute- und Speicheroptionen in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 77ce6c8112e8c694b4ccb6a657b24649437d2f07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5760d5e140919c9309b22f6f597e73c88f7a9069
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279235"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710276"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Tarife in Azure Database for PostgreSQL – Einzelserver
 

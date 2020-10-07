@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: c7d574bf172a792c59e4b00ea9ad0366ad1f17ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a121751e71bffdb76341f6a7dc2a01a22240019b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922853"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534467"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Erstellen eines Index für mehrere Sprachen in der kognitiven Azure-Suche
 
@@ -67,4 +67,4 @@ Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als .NET-Entwickler können Sie Sprachanalysen mit dem [.NET SDK für die kognitive Azure-Suche](https://www.nuget.org/packages/Microsoft.Azure.Search) und der [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)-Eigenschaft konfigurieren.
+Als .NET-Entwickler können Sie Sprachanalysen mit dem [.NET SDK für die kognitive Azure-Suche](https://www.nuget.org/packages/Microsoft.Azure.Search) und der [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer)-Eigenschaft konfigurieren.

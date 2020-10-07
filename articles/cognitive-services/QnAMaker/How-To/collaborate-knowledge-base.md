@@ -1,14 +1,16 @@
 ---
 title: 'Zusammenarbeit an der Wissensdatenbank: QnA Maker'
 description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Diese Funktion wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) bereitgestellt.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926846"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776849"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Zusammenarbeit mit Autoren und Redakteuren
 
@@ -62,7 +64,7 @@ Wenn sich die Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, be
 
 Wenn sie eine Wissensdatenbank auswählen, wird ihre aktuelle Rolle auf dieser QnA Maker-Ressource neben dem Namen der Wissensdatenbank angezeigt.
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Screenshot der Wissensdatenbank im Bearbeitungsmodus mit Rollennamen in Klammern neben dem Namen der Wissensdatenbank in der linken oberen Ecke der Webseite.":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Hinzufügen einer IAM-Rolle in QnA Maker.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

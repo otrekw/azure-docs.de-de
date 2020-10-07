@@ -1,16 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen einer Wissensdatenbank – REST, Python – QnA Maker'
 description: Diese Python-basierte Schnellstartanleitung für Java führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: afee82b66f9803333e27f029ecb487a47ba5dd9e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6155722b81b32e426a91a283910e8bdce926e342
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259726"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777645"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von Python
 

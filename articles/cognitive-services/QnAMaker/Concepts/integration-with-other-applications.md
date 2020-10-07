@@ -1,14 +1,16 @@
 ---
 title: 'Integration in andere Anwendungen: QnA Maker'
 description: QnA Maker lässt sich in Clientanwendungen wie etwa Chatbots sowie in andere Dienste zur natürlichsprachlichen Verarbeitung wie LUIS (Language Understanding) integrieren.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: ff5e64dd31542b1e31df6d9ca709567b322995ce
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804186"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776526"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Entwerfen einer Wissensdatenbank für Clientanwendungen
 

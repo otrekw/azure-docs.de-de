@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894722"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439001"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -229,4 +229,4 @@ Einige der Funktionen, die über die REST-API verfügbar sind:
 In diesem Dokument haben Sie erfahren, wie Sie mithilfe der adaptiven Anwendungssteuerung in Azure Security Center Zulassungslisten von Anwendungen definieren, die auf Azure- und Nicht-Azure-Computern ausgeführt werden. Weitere Informationen zu einigen anderen Cloudworkload-Schutzfeatures in Security Center finden Sie unter:
 
 * [Grundlegendes zum Just-In-Time(JIT)-VM-Zugriff](just-in-time-explained.md)
-* [Integration von Security Center in Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+* [Integration von Security Center in Azure Kubernetes Service](defender-for-kubernetes-introduction.md)

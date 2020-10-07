@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71203654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281914"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Verwalten des OPC Vault-Zertifikatdiensts
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 In diesem Artikel werden die administrativen Aufgaben für den OPC Vault-Zertifikatverwaltungsdienst in Azure erläutert. Er enthält Informationen zum Erneuern von Zertifizierungsstellenzertifikaten (ZS-Zertifikaten) des Zertifikatausstellers, zum Erneuern der Zertifikatssperrliste sowie zum Gewähren und Widerrufen des Benutzerzugriffs.
 
@@ -75,7 +78,7 @@ Ein authentifizierter Benutzer im Mandanten kann sich beim Dienst standardmäßi
 8. Wählen Sie **Zuweisen** aus.
 9. Bei Benutzern mit der Rolle „Administrator“ oder „Genehmigende Person“ setzen Sie den Vorgang mit dem Hinzufügen von Azure Key Vault-Zugriffsrichtlinien fort.
 
-### <a name="remove-user"></a>Entfernen von Benutzern
+### <a name="remove-user"></a>Benutzer entfernen
 
 1. Öffnen Sie das Azure-Portal.
 2. Wechseln Sie zu **Azure Active Directory** > **Unternehmensanwendungen**.

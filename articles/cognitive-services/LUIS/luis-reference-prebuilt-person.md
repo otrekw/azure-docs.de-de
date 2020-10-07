@@ -3,20 +3,18 @@ title: Vordefinierte PersonName-Entität – LUIS
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vordefinierten personName-Entität in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b0153d79aaf7b88fea958ab36183e57b41af204
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273436"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535422"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>Vordefinierte PersonName-Entität für eine LUIS-App
 Die vordefinierte personName-Entität erkennt die Namen von Personen. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit personName hinzufügen. Die personName-Entität wird in den [Kulturen](luis-reference-prebuilt-entities.md) Englisch und Chinesisch unterstützt.

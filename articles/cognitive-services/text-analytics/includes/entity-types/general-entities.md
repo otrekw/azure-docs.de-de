@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 32e80c50ff6f543679852cbd7e5ce9bda92d01e1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 630f04bf2cc9e7de6331f9d25754a20fe2327d76
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140924"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779174"
 ---
 Die folgenden Entitätskategorien werden beim Senden von Anforderungen an den `/entities/recognition/general`-Endpunkt zurückgegeben.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534793"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filter in der kognitiven Azure-Suche 
 
@@ -138,7 +138,7 @@ Diese Artikel bieten eine umfassende Anleitung zu bestimmten Anwendungsfällen:
 
 In der REST-API ist „filterable“ (filterbar) für einfache Felder standardmäßig *aktiviert*. Filterbare Felder erhöhen die Indexgröße. Stellen Sie sicher, dass Sie `"filterable": false` für Felder festlegen, die Sie nicht in einem Filter verwenden möchten. Weitere Informationen zu Einstellungen für Felddefinitionen finden Sie unter [Erstellen eines Indexes](/rest/api/searchservice/create-index).
 
-Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. Sie können Felder filterbar machen, indem Sie die Eigenschaft [IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) des entsprechenden [Feld](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)-Objekts auf `true` festlegen. Das ist auch deklarativ möglich, indem Sie das Attribut [IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute) verwenden. Im folgenden Beispiel ist das Attribut auf die `BaseRate`-Eigenschaft einer Modellklasse festgelegt, die der Indexdefinition zugeordnet wird.
+Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. Sie können Felder filterbar machen, indem Sie die Eigenschaft [IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable) des entsprechenden [Feld](/dotnet/api/microsoft.azure.search.models.field)-Objekts auf `true` festlegen. Das ist auch deklarativ möglich, indem Sie das Attribut [IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute) verwenden. Im folgenden Beispiel ist das Attribut auf die `BaseRate`-Eigenschaft einer Modellklasse festgelegt, die der Indexdefinition zugeordnet wird.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

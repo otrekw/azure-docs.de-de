@@ -2,13 +2,13 @@
 title: Konfigurieren von Kubernetes-Clustern mit Azure Arc-Aktivierung mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor die Überwachung für Container auf Kubernetes-Clustern mit Azure Arc-Aktivierung konfigurieren können.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977537"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620289"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung
 
@@ -21,8 +21,6 @@ Azure Monitor für Container kann für mindestens eine vorhandene Bereitstellung
 Azure Monitor für Container unterstützt wie im Artikel [Übersicht](container-insights-overview.md) beschrieben die Überwachung von Kubernetes mit Azure Arc-Aktivierung (Vorschau) mit Ausnahme der folgenden Features:
 
 - Livedaten (Vorschauversion)
-
-- [Sammeln von Metriken](container-insights-update-metrics.md) von Clusterknoten und Pods sowie das Speichern in der Azure Monitor-Metrikdatenbank
 
 Folgendes wird mit Azure Monitor für Container offiziell unterstützt:
 
@@ -106,7 +104,7 @@ Wenn Sie die Überwachung Ihres Clusters mithilfe eines zuvor heruntergeladenen 
 1. Laden Sie das Skript herunter, und speichern Sie es in einem lokalen Ordner, der Ihren Cluster über die folgenden Befehle mit dem Überwachungs-Add-on konfiguriert:
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. Konfigurieren Sie die `$azureArcClusterResourceId`-Variable, indem Sie die entsprechenden Werte für `subscriptionId`, `resourceGroupName` und `clusterName` festlegen, die die Ressourcen-ID Ihrer Kubernetes-Clusterressource mit Azure Arc-Aktivierung darstellen.

@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 6646016a4529f46431ecb622c7546140a93a5d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871480"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534946"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>Registrieren von Peering Service über das Azure-Portal
 
-Azure Peering Service ist ein Netzwerkdienst zur Verbesserung der Kundenkonnektivität mit Microsoft Cloud Services wie Office 365, Dynamics 365, SaaS-Diensten (Software-as-a-Service), Azure und anderen Microsoft-Diensten, auf die über das öffentliche Internet zugegriffen werden kann.
+Azure Peering Service ist ein Netzwerkdienst zur Verbesserung der Kundenkonnektivität mit Microsoft Cloud Services wie Microsoft 365, Dynamics 365, SaaS-Diensten (Software-as-a-Service), Azure und anderen Microsoft-Diensten, auf die über das öffentliche Internet zugegriffen werden kann.
 
 In diesem Artikel erfahren Sie, wie Sie eine Peering Service-Verbindung über das Azure-Portal registrieren.
 
@@ -72,14 +72,14 @@ Navigieren Sie in einem Browser zum Azure-Portal, und melden Sie sich mit Ihrem 
 1. Wählen Sie im unteren Bereich des Abschnitts **Präfixe** die Option **Neues Präfix erstellen** aus. Dann werden Textfelder angezeigt. Geben Sie anschließend den Namen der Präfixressource und die Präfixe ein, die dem Dienstanbieter zugeordnet werden.
 
 1. Wählen Sie **Präfixschlüssel** aus, und fügen Sie den Präfixschlüssel hinzu, der Ihnen von Ihrem Anbieter (ISP oder IXP) zugeteilt wurde. Mit diesem Schlüssel kann MS das Präfix und den Anbieter überprüfen, die Ihr IP-Präfix zugeordnet haben.
-   > ![Registerkarte „Peering Service-Konfiguration registrieren“](./media/peering-service-portal/peering-serviceconfiguration.png)
+   > ![Screenshot, der die Registerkarte „Konfiguration“ der Seite „Peering Service-Verbindung erstellen“ zeigt, auf der Sie den Präfixschlüssel eingeben können.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. Wählen Sie unten links auf der Seite die Schaltfläche **Überprüfen + erstellen** aus. Die Seite **Überprüfen + erstellen** wird angezeigt, und Azure überprüft Ihre Konfiguration.
     
 
 1. Wenn die Meldung **Überprüfung erfolgreich** wie hier angezeigt wird, wählen Sie **Erstellen** aus.
 
-   > ![Registerkarte „Peering Service-Konfiguration registrieren“](./media/peering-service-portal/peering-service-prefix.png)
+   > ![Screenshot, der die Registerkarte „Überprüfen und erstellen“ der Seite „Peering Service-Verbindung erstellen“ zeigt.](./media/peering-service-portal/peering-service-prefix.png)
 
 
 1. Nachdem Sie eine Peering Service Verbindung registriert haben, wird für die darin enthaltenen Präfixe eine zusätzliche Prüfung durchgeführt. Sie können den Prüfungsstatus unter dem Abschnitt **Präfixe** des Ressourcennamens überprüfen. Wenn die Überprüfung fehlschlägt, wird eine der folgenden Fehlermeldungen angezeigt:
@@ -108,7 +108,7 @@ Aktivieren Sie auf der Seite **Alle Ressourcen** das Kontrollkästchen für den 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
-- Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).
+- Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).
 - Informationen zum Messen der Telemetrie finden Sie unter [Messen der Verbindungstelemetrie](measure-connection-telemetry.md).
 - Informationen zum Registrieren der Verbindung mithilfe von Azure PowerShell finden Sie unter [Registrieren einer Peering Service-Verbindung – Azure PowerShell](powershell.md).
 - Informationen zum Registrieren der Verbindung über die Azure CLI finden Sie unter [Registrieren einer Peering Service-Verbindung – Azure CLI](cli.md).

@@ -1,14 +1,16 @@
 ---
 title: 'Entwerfen für eine Sprache: QnA Maker'
 description: Die QnA Maker-Ressource und alle Wissensdatenbanken innerhalb dieser Ressource unterstützen nur eine einzelne Sprache. Diese einzelne Sprache ist erforderlich, um bestmögliche Antwortergebnisse für eine Abfrage zu erzielen.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e09e15f71b0574a5612e7f9bacd8aaa4739a441c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76843420"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777002"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>Entwerfen einer Wissensdatenbank für die Inhaltssprache
 
