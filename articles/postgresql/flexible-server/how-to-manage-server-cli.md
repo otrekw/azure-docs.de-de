@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8f078c2c7b22a27c1fd87030361fc56d4495177c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0f3c21d5c7f328ddef000ca7f1eaa9d5e18e6ca9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931789"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761888"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Verwalten von Azure Database for PostgreSQL – Flexible Server mithilfe der Azure CLI
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Skalieren von Compute und Speicher
 
-Mithilfe des folgenden Befehls können Sie Ihren Computetarif, Ihre virtuelle Kerne und Ihren Speicher mühelos hochskalieren. Sie können den gesamten Servervorgang anzeigen, indem Sie den Befehl [az postgres flexible-server server overview](/cli/azure/PostgreSQL/server) ausführen.
+Mithilfe des folgenden Befehls können Sie Ihren Computetarif, Ihre virtuelle Kerne und Ihren Speicher mühelos hochskalieren. Sie können den gesamten Servervorgang anzeigen, indem Sie den Befehl [az postgres flexible-server server overview](https://azure.microsoft.com/services/postgresql/) ausführen.
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144

@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336717"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766976"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -61,8 +61,8 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 | iothub-connection-module-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **moduleId** des Geräts, das die Nachricht sendet. | Nein | connectionModuleId |
 | iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **connectionDeviceGenerationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | Nein |connectionDeviceGenerationId |
 | iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet.| Nein | connectionAuthMethod |
-| dt-dataschema | Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. | Nein | – |
-| dt-subject | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. | Ja | N/V |
+| dt-dataschema | Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. | Nein | – |
+| dt-subject | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. | Ja | N/V |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systemeigenschaften von **C2D**-IoT Hub-Nachrichten
 

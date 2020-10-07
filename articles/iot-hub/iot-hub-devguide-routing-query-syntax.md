@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336496"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767357"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -59,8 +59,8 @@ Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identi
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
 | iothub-connection-device-id | string | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
 | iothub-enqueuedtime | string | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
-| dt-dataschema | string |  Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. Verwenden Sie `$dt-dataschema` für die Abfrage. |
-| dt-subject | Zeichenfolge | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. Verwenden Sie `$dt-subject` für die Abfrage. |
+| dt-dataschema | string |  Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. Verwenden Sie `$dt-dataschema` für die Abfrage. |
+| dt-subject | Zeichenfolge | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. Verwenden Sie `$dt-subject` für die Abfrage. |
 
 Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Zusätzlich zu den Eigenschaften in der obigen Tabelle können Sie auch **connectionDeviceId** und **connectionModuleId** abfragen.
 

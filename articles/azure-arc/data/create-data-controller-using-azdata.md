@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8651921dafd5727f79e4ab3919e188d4b8612465
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931601"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761684"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Erstellen eines Azure Arc-Datencontrollers mit der Azure Data CLI (azdata)
 
@@ -155,7 +155,7 @@ Um einen Datencontroller in Azure Red Hat OpenShift zu erstellen, müssen Sie di
 > [!NOTE]
 >   Verwenden Sie hier und im Befehl `azdata arc dc create` unten denselben Namespace. Beispiel: `arc`.
 
-Zunächst müssen Sie die benutzerdefinierte Sicherheitskontexteinschränkung (Security Context Constraint, SCC) von [GitHub](https://raw.githubusercontent.com/microsoft/azure_arc/master/data_services/deployment/yaml/arc-data-scc.yaml) herunterladen und auf Ihren Cluster anwenden.
+Zunächst müssen Sie die benutzerdefinierte Sicherheitskontexteinschränkung (Security Context Constraint, SCC) von [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) herunterladen und auf Ihren Cluster anwenden.
 
 Führen Sie den folgenden Befehl zum Erstellen des Datencontrollers aus.
 > [!NOTE]

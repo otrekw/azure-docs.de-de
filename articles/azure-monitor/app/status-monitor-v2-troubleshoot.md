@@ -5,18 +5,17 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041407"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761463"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Behandeln von Problemen mit dem Application Insights-Agent (ehemals „Statusmonitor v2“)
 
 Wenn Sie die Überwachung aktivieren, können Probleme auftreten, die die Datensammlung verhindern.
 In diesem Artikel sind alle bekannten Probleme und Beispiele für die Problembehandlung aufgeführt.
-Wenn bei Ihnen ein Problem auftritt, das hier nicht aufgeführt ist, können Sie mit uns über [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) Kontakt aufnehmen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -72,12 +71,10 @@ Führen Sie nach Ausführung des Befehls „Enable“ die folgenden Schritte aus
 ### <a name="iis-nested-applications"></a>Geschachtelte IIS-Anwendungen
 
 In Version 1.0 werden geschachtelte Anwendungen in IIS nicht instrumentiert.
-Wir verfolgen dieses Problem [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/369).
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Die erweiterte SDK-Konfiguration ist nicht verfügbar.
 
 Die SDK-Konfiguration ist in Version 1.0 für den Endbenutzer nicht verfügbar.
-Wir verfolgen dieses Problem [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/375).
 
     
     
@@ -156,4 +153,3 @@ Lesen Sie die [API-Referenz](status-monitor-v2-api-reference.md) mit einer ausf�
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich in der [API-Referenz](status-monitor-v2-overview.md#powershell-api-reference) über Parameter, die Sie möglicherweise übersehen haben.
-- Wenn bei Ihnen ein Problem auftritt, das hier nicht aufgeführt ist, können Sie mit uns über [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) Kontakt aufnehmen.

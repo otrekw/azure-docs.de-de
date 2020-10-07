@@ -3,12 +3,12 @@ title: Netzwerksicherheit für Azure Event Hubs
 description: In diesem Artikel wird beschrieben, wie Sie Zugriff über private Endpunkte konfigurieren.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521852"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767799"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Netzwerksicherheit für Azure Event Hubs 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Hubs verwenden: 
@@ -16,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen 
 - Diensttags
 - IP-Firewallregeln
 - Netzwerkdienstendpunkte
-- Private Endpunkte (Vorschau)
+- Private Endpunkte
 
 
 ## <a name="service-tags"></a>Diensttags
@@ -74,9 +74,6 @@ Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher 
 
 > [!NOTE]
 > Diese Funktion wird nur für den **Dedicated**-Tarif unterstützt. Weitere Informationen zum Dedicated-Tarif finden Sie unter [Übersicht über Event Hubs Dedicated](event-hubs-dedicated-overview.md). 
->
-> Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
-
 
 Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für einen Event Hub](private-link-service.md).
 

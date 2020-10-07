@@ -3,12 +3,12 @@ title: Netzwerksicherheit für Azure Service Bus
 description: In diesem Artikel werden Netzwerksicherheitsfeatures wie Diensttags, IP-Firewallregeln, Dienstendpunkte und private Endpunkte beschrieben.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341144"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766392"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netzwerksicherheit für Azure Service Bus 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Service Bus verwenden: 
@@ -16,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen 
 - Diensttags
 - IP-Firewallregeln
 - Netzwerkdienstendpunkte
-- Private Endpunkte (Vorschau)
+- Private Endpunkte
 
 
 ## <a name="service-tags"></a>Diensttags
@@ -81,8 +81,6 @@ Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-
 
 > [!NOTE]
 > Dieses Feature wird mit dem Tarif **Premium** von Azure Service Bus unterstützt. Weitere Informationen zum Premium-Tarif finden Sie im Artikel [Service Bus Premium- und Standard-Tarif für Messaging](service-bus-premium-messaging.md).
->
-> Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
 
 
 Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für einen Service Bus-Namespace](private-link-service.md).
