@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
 ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87919938"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf Data Science Virtual Machine basierende Teamanalyse und KI-Umgebung 
@@ -40,7 +40,7 @@ In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorherigen T
 * [Netzwerksicherheit](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [Überwachung](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) und [Verwaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Richtlinieneinstellung und -erzwingung](../../governance/policy/overview.md)
 * [Antischadsoftware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Verschlüsselung](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)

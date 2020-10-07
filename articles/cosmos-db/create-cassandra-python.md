@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: f376a1f3601c976ff1efdaee1da6181510a9cf64
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88234940"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem Python-SDK und Azure Cosmos DB
@@ -157,11 +157,11 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen. 
 
-    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Anzeigen und Überprüfen der Ausgabe":::
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Anzeigen und Kopieren eines Benutzernamens, Kennworts und Kontaktpunkts für den Zugriff im Azure-Portal auf dem Blatt „Verbindungszeichenfolge“":::
     
 4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden. 
 
-    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Anzeigen der Daten im Daten-Explorer":::
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Anzeigen und Kopieren eines Benutzernamens, Kennworts und Kontaktpunkts für den Zugriff im Azure-Portal auf dem Blatt „Verbindungszeichenfolge“":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 

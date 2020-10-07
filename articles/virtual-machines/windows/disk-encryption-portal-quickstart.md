@@ -8,10 +8,10 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88510629"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Schnellstart: Erstellen und Verschlüsseln eines virtuellen Windows-Computers mit dem Azure-Portal
@@ -45,7 +45,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Wählen Sie die Registerkarte „Verwaltung“ aus, und vergewissern Sie sich, dass Sie ein Diagnosespeicherkonto besitzen. Falls Sie keine Speicherkonten besitzen, wählen Sie „Neu erstellen“ aus, geben Sie einen Namen für Ihr Konto ein, und wählen Sie „OK“ aus.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Bildschirm zur Ressourcengruppenerstellung":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Bildschirm: Erstellung der Windows-VM":::
 
 1. Klicken Sie auf „Überprüfen und erstellen“.
 1. Auf der Seite zum **Erstellen eines virtuellen Computers** werden die Details des virtuellen Computers angezeigt, den Sie erstellen möchten. Klicken Sie auf **Erstellen**, wenn Sie so weit sind.
@@ -59,19 +59,19 @@ Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie 
 1. Wählen Sie auf der oberen Leiste **Zusätzliche Einstellungen** aus.
 1. Wählen Sie unter **Verschlüsselungseinstellungen** > **Zu verschlüsselnde Datenträger** die Option **Datenträger für Betriebssystem und Daten** aus.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Auswählen von „Datenträger“ und „Verschlüsselung“":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Bildschirm: Erstellung der Windows-VM":::
 
 1. Wählen Sie unter **Verschlüsselungseinstellungen** die Option **Wählen Sie einen Schlüsseltresor und einen Schlüssel für die Verschlüsselung aus** aus.
 1. Wählen Sie im Fenster zum **Auswählen des Schlüssels aus Azure Key Vault** die Option **Neue erstellen** aus.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Auswählen von „Datenträger“ und „Verschlüsselung“":::
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Bildschirm: Erstellung der Windows-VM":::
 
 1. Wählen Sie links von **Schlüsseltresor und Schlüssel** die Option **Klicken Sie hier, um einen Schlüssel auszuwählen.** aus.
 1. Wählen Sie unter **Auswählen des Schlüssels aus Azure Key Vault** unterhalb des Felds **Schlüsseltresor** die Option **Neu erstellen** aus.
 1. Vergewissern Sie sich, dass auf dem Bildschirm **Schlüsseltresor erstellen** die Ressourcengruppe *myResourceGroup* angegeben ist, und geben Sie einen Namen für Ihren Schlüsseltresor an.  Jeder Schlüsseltresor in Azure muss einen eindeutigen Namen haben.
 1. Aktivieren Sie auf der Registerkarte **Zugriffsrichtlinien** das Kontrollkästchen **Azure Disk Encryption für Volumeverschlüsselung**.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="Auswählen von „Datenträger“ und „Verschlüsselung“":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="Bildschirm: Erstellung der Windows-VM":::
 
 1. Klicken Sie auf **Überprüfen + erstellen**.  
 1. Nachdem der Schlüsseltresor die Überprüfung bestanden hat, wählen Sie **Erstellen** aus. Sie gelangen zurück zum Fenster zum **Auswählen eines Schlüssels aus Azure Key Vault**.

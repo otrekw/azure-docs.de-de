@@ -16,10 +16,10 @@ ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88607210"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal
@@ -345,7 +345,7 @@ Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausg
 
 4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Erstellen eines Lastenausgleichs im Basic-Tarif" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Erstellen einer Load Balancer Standard-Instanz" border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
 

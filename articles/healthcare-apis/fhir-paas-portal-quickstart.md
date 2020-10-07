@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851935"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Schnellstart: Bereitstellen von Azure API for FHIR mithilfe des Azure-Portals
@@ -37,13 +37,13 @@ Sie können nach Azure API for FHIR suchen, indem Sie „FHIR“ ins Suchfeld ei
 
 Wählen Sie **Erstellen** aus, um ein neues Azure API for FHIR-Konto zu erstellen:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Erstellen eines Azure API for FHIR-Kontos":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Suchen nach APIs für das Gesundheitswesen":::
 
 ## <a name="enter-account-details"></a>Eingeben der Kontodetails
 
 Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe, wählen Sie einen Namen für das Konto aus, und klicken Sie abschließend auf **Überprüfen + erstellen**:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Details der neuen API für das Gesundheitswesen":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Suchen nach APIs für das Gesundheitswesen":::
 
 Bestätigen Sie die Erstellung, und warten Sie auf die Bereitstellung der FHIR-API.
 
@@ -51,7 +51,7 @@ Bestätigen Sie die Erstellung, und warten Sie auf die Bereitstellung der FHIR-A
 
 Sie können auch auf **Weiter: Zusätzliche Einstellungen** klicken, um die Authentifizierungseinstellungen anzuzeigen. In der Standardkonfiguration für Azure API for FHIR [werden Datenebenenrollen mithilfe von Azure RBAC zugewiesen](configure-azure-rbac.md). In diesem Modus wird die Autorität für den FHIR-Dienst auf den Azure Active Directory-Mandanten des Abonnements festgelegt:
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Standard-Authentifizierungseinstellungen":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Suchen nach APIs für das Gesundheitswesen":::
 
 Beachten Sie, dass das Feld für die Eingabe zulässiger Objekt-IDs abgeblendet ist, da in diesem Fall Azure RBAC verwendet wird, um Rollenzuweisungen zu konfigurieren.
 

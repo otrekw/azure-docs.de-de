@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511370"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
@@ -97,7 +97,7 @@ Wiederholen Sie die obigen Schritte, um eine zweite Aufgabe zu erstellen. Geben 
 
 Die von Ihnen erstellten Beispielaufgaben werden in wenigen Minuten abgeschlossen. Wählen Sie zum Anzeigen der Ausgabe einer abgeschlossenen Aufgabe die Aufgabe und dann **Dateien auf Knoten** aus. Wählen Sie die Datei `stdout.txt` aus, um die Standardausgabe der Aufgabe anzuzeigen. Der Inhalt lautet in etwa wie folgt:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Screenshot: Ausgabe einer abgeschlossenen Aufgabe":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Screenshot: Batch-Dienst in Azure Marketplace":::
 
 Darin sind die Azure Batch-Umgebungsvariablen zu sehen, die auf dem Knoten festgelegt sind. Beim Erstellen Ihrer eigenen Batch-Aufträge und -Aufgaben können Sie auf diese Umgebungsvariablen in Aufgabenbefehlszeilen sowie in den Apps und Skripts verweisen, die über die Befehlszeilen ausgeführt werden.
 

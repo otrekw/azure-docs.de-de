@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642264"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen von Azure Functions-Ressourcen aus einer ARM-Vorlage
@@ -117,7 +117,7 @@ Kopieren Sie in der Ausgabe die URL des HTTP-Triggers. Mit dieser testen Sie die
 
 1. Nachdem die Veröffentlichung abgeschlossen ist, kopieren Sie die **Site-URL**.
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Kopieren der Site-URL aus der Veröffentlichungszusammenfassung":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Vorhandenes Veröffentlichungsziel auswählen":::
 
 1. Fügen Sie den Pfad `/api/<FUNCTION_NAME>?name=Functions` an, wobei `<FUNCTION_NAME>` der Name Ihrer Funktion ist. Die URL, über die Ihre Funktion mit HTTP-Trigger aufgerufen wird, hat das folgende Format:
 

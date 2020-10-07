@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
 ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88226079"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Windows verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription-service.md) zu verwenden. Für die Unterhaltungstranskription wird nur [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) unterstützt. Für andere Speech-Funktionen werden lineare Mikrofonarrays unterstützt, die eine Mikrofonarray-Geometrie bereitstellen.

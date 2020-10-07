@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87498921"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark in Azure Synapse Analytics
@@ -32,7 +32,7 @@ Apache Spark stellt Primitive für In-Memory-Clustercomputing bereit. Bei einem 
 
 Spark-Pools in Azure Synapse bieten einen vollständig verwalteten Spark-Dienst. Im Anschluss werden die Vorteile der Erstellung eines Spark-Pools in Synapse Analytics aufgeführt:
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 | --- | --- |
 | Geschwindigkeit und Effizienz |Spark-Instanzen werden in etwa zwei Minuten (weniger als 60 Knoten) bzw. in etwa fünf Minuten (mehr als 60 Knoten) gestartet. Die Instanz wird standardmäßig fünf Minuten nach dem letzten ausgeführten Auftrag heruntergefahren, sofern sie nicht durch eine Notebookverbindung aufrechterhalten wird. |
 | Einfache Erstellung |Über das Azure-Portal, mithilfe von Azure PowerShell oder über das Synapse Analytics .NET SDK lässt sich innerhalb weniger Minuten ein neuer Spark-Pool in Azure Synapse erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Synapse Analytics mithilfe von Webtools](../quickstart-create-apache-spark-pool-studio.md). |

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88031792"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure-Containerregistrierung über das Azure-Portal
@@ -31,7 +31,7 @@ Klicken Sie auf **Ressource erstellen** > **Container** > **Container Registry**
 
 Geben Sie auf der Registerkarte **Grundlagen** Werte für **Ressourcengruppe** und **Registrierungsname** ein. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Erstellen Sie im Rahmen dieser Schnellstartanleitung eine neue Ressourcengruppe namens `myResourceGroup` am Standort `West US`, und wählen Sie für **SKU** die Option „Basic“ aus.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Erstellen einer Containerregistrierung im Portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 
 Übernehmen Sie für die übrigen Einstellungen die Standardwerte. Wählen Sie dann **Überprüfen + erstellen** aus. Überprüfen Sie die Einstellungen, und wählen Sie anschließend **Erstellen** aus.
 
@@ -39,7 +39,7 @@ In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*
 
 Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Containerregistrierung im Portal aus. 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Containerregistrierungsübersicht im Portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 
 Notieren Sie sich den Registrierungsnamen und den Wert unter **Anmeldeserver**. Sie verwenden diese Werte in den folgenden Schritten bei den Push- und Pullvorgängen für Images mit Docker.
 
@@ -65,7 +65,7 @@ Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück.
 
 Navigieren Sie zum Auflisten der Images in Ihrer Registrierung im Portal zu Ihrer Registrierung, und wählen Sie **Repositorys** und dann das Repository **hello-world** aus, das Sie mit `docker push` erstellt haben.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Auflisten von Containerimages im Portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 
 Wenn Sie das Repository **hello-world** auswählen, wird unter **Tags** das mit `v1` gekennzeichnete Image angezeigt.
 
@@ -75,7 +75,7 @@ Wenn Sie das Repository **hello-world** auswählen, wird unter **Tags** das mit 
 
 Navigieren Sie zum Bereinigen von Ressourcen im Portal zur Ressourcengruppe **myResourceGroup**. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe, die Containerregistrierung und die dort gespeicherten Containerimages zu entfernen.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Löschen der Ressourcengruppe im Portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Navigieren zur Containerregistrierung im Portal":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte
