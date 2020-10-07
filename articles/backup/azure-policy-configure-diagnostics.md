@@ -3,12 +3,12 @@ title: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 description: Konfigurieren von Log Analytics-Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich mithilfe von Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293083"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 
@@ -34,7 +34,7 @@ Um die Richtlinie für Tresore dem erforderlichen Bereich zuzuweisen, führen Si
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zum Dashboard **Richtlinie**.
 2. Wählen Sie im Menü auf der linken Seite **Definitionen** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
-3. Filtern Sie die Liste nach **Category=Monitoring**. Suchen Sie die Richtlinie mit dem Namen **[Vorschau]: Bereitstellen von Diagnoseeinstellungen für den Recovery Services-Tresor im Log Analytics-Arbeitsbereich für ressourcenspezifische Kategorien**.
+3. Filtern Sie die Liste nach **Category=Backup**. Suchen Sie die Richtlinie mit dem Namen **[Vorschau]: Bereitstellen von Diagnoseeinstellungen für den Recovery Services-Tresor im Log Analytics-Arbeitsbereich für ressourcenspezifische Kategorien**.
 
     ![Bereich „Richtliniendefinition“](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

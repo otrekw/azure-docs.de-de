@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: afbc16f0fb30c1ada22b668771525288602cda44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296636"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -31,7 +31,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 > 
 > * [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md)
 >   <br/>
-> * [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
+> * [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../classic/create-workspace.md)
 > 
 > 
 

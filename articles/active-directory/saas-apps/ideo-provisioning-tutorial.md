@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: f1b42619a80610a1732fb763dd4994241bf584fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32010263829f57dc00781811eaa2535cff57b10e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304864"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von IDEO für die automatische Benutzerbereitstellung
 
@@ -84,11 +84,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor vom IDEO-Supportteam bereitgestellten Werte für **SCIM 2.0-Basis-URL und Zugriffstoken** in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit IDEO herstellen kann. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr IDEO-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

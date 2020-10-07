@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302042"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
 
@@ -54,7 +54,7 @@ Auf der Bestandsseite werden die folgenden Tools angezeigt:
 - **Zusammenfassungen** – Bevor Sie Filter definieren, wird oben in der Bestandsansicht ein auffälliger Streifen mit Werten angezeigt:
 
     - **Ressourcen gesamt**: Die Gesamtanzahl der mit Azure Security Center verbundenen Ressourcen.
-    - **Fehlerhafte Ressourcen:** Ressourcen mit aktiven Sicherheitsempfehlungen. [Weitere Informationen zu Sicherheitsempfehlungen](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+    - **Fehlerhafte Ressourcen:** Ressourcen mit aktiven Sicherheitsempfehlungen. [Weitere Informationen zu Sicherheitsempfehlungen](security-center-recommendations.md).
     - **Nicht überwachte Ressourcen**: Ressourcen mit Agent-Überwachungsproblemen – Der Log Analytics-Agent wurde bereitgestellt, aber der Agent sendet keine Daten oder hat andere Integritätsprobleme.
 
 - **Filter** – Die zahlreichen Filter am oberen Rand der Seite bieten eine Möglichkeit, die Liste der Ressourcen schnell entsprechend der Frage zu verfeinern, die Sie zu beantworten versuchen. Wenn Sie beispielsweise die Frage *Auf welchen meiner Computer mit dem Tag „Produktion“ fehlt der Log Analytics-Agent?* beantworten möchten, könnten Sie den Filter **Agent-Überwachung** mit dem Filter **Tags** kombinieren, wie im folgenden Clip gezeigt:
@@ -94,7 +94,7 @@ Mit Hilfe der [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/data
 
 1. Wählen Sie die entsprechenden Optionen in den Filtern aus, um die spezifische Abfrage zu erstellen, die Sie ausführen möchten.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Filteroptionen für den Bestand" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Filtern nach Produktionsressourcen, die nicht überwacht werden" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Standardmäßig werden die Ressourcen nach der Anzahl aktiver Sicherheitsempfehlungen sortiert.
 
@@ -114,12 +114,12 @@ Mit Hilfe der [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/data
 
     - **Aus:** Ressourcen, die nicht durch einen Azure Defender-Plan geschützt sind. Sie können mit der rechten Maustaste auf eine dieser Ressourcen klicken und ein Upgrade ausführen:
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgrade einer Ressource zu Azure Defender durch Klicken mit der rechten Maustaste" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Filtern nach Produktionsressourcen, die nicht überwacht werden" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - **Ein:** Ressourcen, die durch einen Azure Defender-Plan geschützt sind
     - **Partiell:** Dies gilt für **Abonnements**, bei denen einige, aber nicht alle Azure Defender-Pläne deaktiviert sind. Für das folgende Abonnement sind z. B. fünf Azure Defender-Pläne deaktiviert. 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Abonnement mit teilweiser Aktivierung in Azure Defender":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Filtern nach Produktionsressourcen, die nicht überwacht werden":::
 
 1. Um die Ergebnisse der Abfrage weiter zu untersuchen, wählen Sie die Ressourcen aus, die für Sie von Interesse sind.
 
@@ -140,7 +140,7 @@ In der Bestandsansicht werden Ihre mit Security Center verbundenen Ressourcen au
 
 Der folgende Screenshot zeigt z. B. einen Benutzer mit Zugriff auf 38 Abonnements, von denen jedoch nur 10 Empfehlungen aufweisen. Wenn Sie also nach **Ressourcentyp = Abonnements** filtern, werden nur die 10 Abonnements mit aktiven Empfehlungen im Bestand angezeigt:
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Es werden nicht alle Abonnements zurückgegeben, wenn keine aktiven Empfehlungen vorliegen":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Filtern nach Produktionsressourcen, die nicht überwacht werden":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Warum werden für einige meiner Ressourcen in den Spalten für Azure Defender- oder Agent-Überwachung leere Werte angezeigt?
 
@@ -148,7 +148,7 @@ Nicht alle von Security Center überwachten Ressourcen verfügen über Agents. D
 
 Wenn Preise oder Agent-Überwachung für eine Ressource nicht relevant sind, wird in diesen Ressourcenbestandspalten nichts angezeigt.
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Für einige Ressourcen werden leere Informationen in den Spalten für Agent- oder Azure Defender-Überwachung angezeigt":::.
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Filtern nach Produktionsressourcen, die nicht überwacht werden":::.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

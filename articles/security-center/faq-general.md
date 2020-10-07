@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783213"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301447"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Häufig gestellte Fragen – allgemeine Fragen zu Azure Security Center
 
@@ -70,7 +70,6 @@ Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. W
 Hier sind nur Empfehlungen aufgeführt, die in den Sicherheitsrichtlinien aktiviert sind.
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>Wodurch wird eine Sicherheitswarnung ausgelöst?
 Azure Security Center erfasst, analysiert und kombiniert automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von Partnerlösungen wie Antischadsoftware und Firewalls. Wurden Bedrohungen erkannt, wird eine Sicherheitswarnung erstellt. Beispiele für eine Erkennung sind:
 
@@ -78,10 +77,6 @@ Azure Security Center erfasst, analysiert und kombiniert automatisch Protokollda
 * Erweiterte Schadsoftware, die mithilfe der Windows-Fehlerberichterstattung erkannt wurde
 * Brute-Force-Angriffe gegen virtuelle Computer
 * Sicherheitswarnungen von integrierten Partnersicherheitslösungen wie Antischadsoftware oder Web Application Firewalls
-
-
-## <a name="why-did-secure-score-values-change"></a>Warum haben sich die Werte der Sicherheitsbewertung geändert? <a name="secure-score-faq"></a>
-Seit Februar 2019 hat Security Center die Bewertung von einigen Empfehlungen angepasst, um ihrem Schweregrad besser zu entsprechen. Aufgrund dieser Anpassung sind Änderungen im Gesamtwert der Sicherheitsbewertung möglich.  Weitere Informationen zur Sicherheitsbewertung finden Sie unter [Erweiterte Sicherheitsbewertung in Azure Security Center](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Wo liegt bei der Bedrohungserkennung und Ausgabe von Warnungen der Unterschied zwischen Microsoft Security Response Center und Azure Security Center?

@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297469"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Überwachen der Migrationsaktivität mithilfe von Azure Database Migration Service
 In diesem Artikel erfahren Sie, wie der Fortschritt einer Migration auf Datenbankebene und Tabellenebene überwacht wird.

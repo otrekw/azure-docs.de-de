@@ -1,14 +1,16 @@
 ---
 title: Funktionsweise der Personalisierung – Personalisierung
 description: Die _Personalisierungsschleife_ verwendet maschinelles Lernen, um das Modell zu erstellen, das die Top-Aktion für Ihre Inhalte vorhersagt. Das Modell wird ausschließlich anhand Ihrer Daten trainiert, die Sie mit den Rang- und Relevanzaufrufen an das Modell gesendet haben.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303606"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
 

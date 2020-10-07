@@ -2,13 +2,13 @@
 title: Systemthemen in Azure Event Grid
 description: Hier werden die Systemthemen in Azure Event Grid beschrieben.
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297282"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systemthemen in Azure Event Grid
 Ein Systemthema in Event Grid stellt ein oder mehrere Ereignisse dar, die von Azure-Diensten wie Azure Storage und Azure Event Hubs veröffentlicht wurden. Beispielsweise kann ein Systemthema **alle Blobereignisse** oder nur für ein **bestimmtes Speicherkonto** veröffentlichte **Bloberstellungs-** und **Bloblöschungsereignisse** darstellen. Wenn in diesem Beispiel ein Blob in das Speicherkonto hochgeladen wird, veröffentlicht der Dienst Azure Storage ein **Bloberstellungsereignis** im Systemthema in Event Grid. Event Grid leitet dieses Ereignis dann an die [Abonnenten](event-handlers.md) des Themas weiter, die es empfangen und verarbeiten. 
@@ -22,6 +22,7 @@ Dies ist eine aktuelle Liste der Azure-Dienste, die das Erstellen von Systemthem
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)

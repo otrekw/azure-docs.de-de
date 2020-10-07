@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300308"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics-Aufträge eff
 
 Eine Machine Learning-Funktion kann in Stream Analytics wie ein normaler Funktionsaufruf in der Stream Analytics-Abfragesprache verwendet werden. Im Hintergrund handelt es sich bei den Funktionsaufrufen aber um Azure Machine Learning-Webdienstanforderungen.
 
-Sie können den Durchsatz von Machine Learning-Webdienstanforderungen verbessern, indem Sie mehrere Zeilen im selben Webdienst-API-Aufruf zusammen im Batch verarbeiten. Diese Gruppierung wird als Mini-Batch bezeichnet. Weitere Informationen finden Sie unter [Azure Machine Learning Studio-Webdienste (klassisch)](../machine-learning/studio/consume-web-services.md). Die Unterstützung für Azure Machine Learning Studio (klassisch) in Stream Analytics befindet sich in der Vorschau.
+Sie können den Durchsatz von Machine Learning-Webdienstanforderungen verbessern, indem Sie mehrere Zeilen im selben Webdienst-API-Aufruf zusammen im Batch verarbeiten. Diese Gruppierung wird als Mini-Batch bezeichnet. Weitere Informationen finden Sie unter [Azure Machine Learning Studio-Webdienste (klassisch)](../machine-learning/classic/consume-web-services.md). Die Unterstützung für Azure Machine Learning Studio (klassisch) in Stream Analytics befindet sich in der Vorschau.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurieren eines Stream Analytics-Auftrags mit Machine Learning-Funktionen
 
@@ -58,7 +58,7 @@ Wenn ***B*** die Batchgröße und ***L*** die Webdienstlatenz bei Batchgröße B
 
 Sie können auch den Parameter „Max. gleichzeitige Aufrufe“ für den Machine Learning-Webdienst konfigurieren. Es wird empfohlen, diesen Parameter auf den maximalen Wert (derzeit 200) festzulegen.
 
-Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierung für Machine Learning-Webdienste](../machine-learning/studio/create-endpoint.md).
+Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierung für Machine Learning-Webdienste](../machine-learning/classic/create-endpoint.md).
 
 ## <a name="example--sentiment-analysis"></a>Beispiel: Stimmungsanalyse
 Das folgende Beispiel enthält einen Stream Analytics-Auftrag mit der Machine Learning-Funktion für die Stimmungsanalyse, die im [Tutorial zur Machine Learning-Integration für Stream Analytics](stream-analytics-machine-learning-integration-tutorial.md)beschrieben ist.

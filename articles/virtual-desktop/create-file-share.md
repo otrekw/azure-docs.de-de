@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287320"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und AD DS
 
@@ -154,7 +154,7 @@ So konfigurieren Sie NTFS-Berechtigungen:
 2. Führen Sie den folgenden Befehl aus, um die Azure-Dateifreigabe bereitzustellen und ihr einen Laufwerkbuchstaben zuzuweisen:
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. Führen Sie den folgenden Befehl aus, um die Zugriffsberechtigungen für die Azure-Dateifreigabe zu überprüfen:

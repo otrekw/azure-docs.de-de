@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289054"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>Verwenden von T-SQL-Schleifen in Synapse SQL
 In diesem Artikel erhalten Sie wichtige Tipps zur Verwendung von T-SQL-Schleifen, zum Ersetzen von Cursorn und zur Entwicklung verwandter Lösungen mit SQL-Pool in Synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Zweck der WHILE-Schleifen
 
-Synapse SQL unterstützt die [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15)-Schleife für die wiederholte Ausführung von Anweisungsblöcken. Die WHILE-Schleife wird so lange ausgeführt, wie die angegebenen Bedingungen wahr sind oder bis die Schleife im Code mit dem Schlüsselwort BREAK gezielt beendet wird. 
+Synapse SQL unterstützt die [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true)-Schleife für die wiederholte Ausführung von Anweisungsblöcken. Die WHILE-Schleife wird so lange ausgeführt, wie die angegebenen Bedingungen wahr sind oder bis die Schleife im Code mit dem Schlüsselwort BREAK gezielt beendet wird. 
 
-Schleifen im SQL-Pool sind nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, schreibgeschützte Cursor für den schnellen Vorlauf. Daher sind [WHILE]-Schleifen eine gute Alternative zum Ersetzen von Cursorn.
+Schleifen im SQL-Pool sind nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, schreibgeschützte Cursor für den schnellen Vorlauf. Daher sind WHILE-Schleifen eine gute Alternative zum Ersetzen von Cursorn.
 
 ## <a name="replace-cursors-in-sql-pool"></a>Ersetzen von Cursorn im SQL-Pool
 
