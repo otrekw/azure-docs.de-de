@@ -1,5 +1,5 @@
 ---
-title: Abfragen einer SQL-Datenbank mithilfe des Abfrage-Editors im Azure-Portal
+title: Abfragen einer SQL-Datenbank mithilfe des Abfrage-Editors im Azure-Portal (Vorschau)
 description: Hier erfahren Sie, wie Sie den Abfrage-Editor verwenden, um T-SQL-Abfragen (Transact-SQL) für eine Datenbank in Azure SQL-Datenbank auszuführen.
 titleSuffix: Azure SQL Database
 keywords: Verbindung mit SQL-Datenbank herstellen, SQL-Datenbank abfragen, Azure-Portal, Portal, Abfrage-Editor
@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441774"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91409584"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe des Abfrage-Editors im Azure-Portal
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Schnellstart: Verwenden des Abfrage-Editors (Vorschau) des Azure-Portals, um eine Azure SQL-Datenbank abzufragen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Der Abfrage-Editor ist ein Tool im Azure-Portal zur Ausführung von SQL-Abfragen für Ihre Datenbank in Azure SQL-Datenbank oder Ihr Data Warehouse in Azure Synapse Analytics. 

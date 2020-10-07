@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Mandantenmodells (Vorschau) – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Generieren Sie automatisch ein sicheres, konformes Mandantenmodell (Custom Speech mit Office 365-Daten), das Ihre Office 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen.
+description: Generieren Sie automatisch ein sicheres, konformes Mandantenmodell (Custom Speech mit Microsoft 365-Daten), das Ihre Microsoft 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934479"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399702"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Tutorial: Erstellen eines Mandantenmodells (Vorschau)
 
-Ein Mandantenmodell (Custom Speech mit Office 365-Daten) ist ein auswählbarer Dienst für Office 365-Unternehmenskunden, der automatisch ein benutzerdefiniertes Spracherkennungsmodell aus den Office 365-Daten Ihrer Organisation generiert. Das Modell ist für technische und andere Fachbegriffe sowie für Personennamen optimiert und zeichnet sich durch hohe Sicherheit und Konformität aus.
+Ein Mandantenmodell (Custom Speech mit Microsoft 365-Daten) ist ein auswählbarer Dienst für Microsoft 365-Unternehmenskunden, der automatisch ein benutzerdefiniertes Spracherkennungsmodell aus den Microsoft 365-Daten Ihrer Organisation generiert. Das Modell ist für technische und andere Fachbegriffe sowie für Personennamen optimiert und zeichnet sich durch hohe Sicherheit und Konformität aus.
 
 > [!IMPORTANT]
-> Wenn Ihre Organisation sich über den Mandantenmodelldienst registriert, kann der Speech-Dienst möglicherweise auf das Sprachmodell Ihrer Organisation zugreifen. Das Modell wird anhand von E-Mails und Dokumenten der öffentlichen Office 365-Gruppe erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können. Der Office 365-Administrator Ihrer Organisation kann die Nutzung des organisationsweiten Sprachmodells über das Office 365-Verwaltungsportal aktivieren und deaktivieren.
+> Wenn Ihre Organisation sich über den Mandantenmodelldienst registriert, kann der Speech-Dienst möglicherweise auf das Sprachmodell Ihrer Organisation zugreifen. Das Modell wird anhand von E-Mails und Dokumenten der öffentlichen Microsoft 365-Gruppe erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können. Der Administrator Ihrer Organisation kann die Nutzung des organisationsweiten Sprachmodells über das Verwaltungsportal aktivieren und deaktivieren.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="enroll-in-the-tenant-model-service"></a>Registrieren beim Mandantenmodelldienst
 
-Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich beim Mandantenmodelldienst registrieren. Die Registrierung erfolgt im Microsoft 365 Admin Center und kann nur durch Ihren Microsoft 365-Administrator durchgeführt werden.
+Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich beim Mandantenmodelldienst registrieren. Die Registrierung erfolgt im Microsoft 365 Admin Center und kann nur durch Ihren Administrator durchgeführt werden.
 
 1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) an.
 
@@ -69,7 +69,7 @@ Um Ihr Mandantenmodell mit dem Speech SDK zu verwenden, benötigen Sie eine Spee
 
 ## <a name="create-a-language-model"></a>Erstellen eines Sprachmodells
 
-Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert hat, können Sie ein Sprachmodell erstellen, das auf Ihren Office 365-Daten basiert.
+Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert hat, können Sie ein Sprachmodell erstellen, das auf Ihren Microsoft 365-Daten basiert.
 
 1. Melden Sie sich bei [Speech Studio](https://speech.microsoft.com/) an.
 1. Klicken Sie oben rechts auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Einstellungen für Mandantenmodell** aus.
@@ -79,7 +79,7 @@ Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert h
    Speech Studio informiert Sie in einer Meldung darüber, ob Sie dazu berechtigt sind, ein Mandantenmodell zu erstellen.
 
    > [!NOTE]
-   > Office 365 Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Für Kunden vom Typ „Kunden-Lockbox“, „Kundenschlüssel“ oder „Office 365 Government“ ist dieses Feature nicht verfügbar. Informationen dazu, ob Ihr Kundenkonto den Typ „Kunden-Lockbox“ oder „Kundenschlüssel“ aufweist, finden Sie hier:
+   > Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Für Kunden vom Typ „Kunden-Lockbox“, „Kundenschlüssel“ oder „Office 365 Government“ ist dieses Feature nicht verfügbar. Informationen dazu, ob Ihr Kundenkonto den Typ „Kunden-Lockbox“ oder „Kundenschlüssel“ aufweist, finden Sie hier:
    > * [Kunden-Lockbox](/microsoft-365/compliance/customer-lockbox-requests)
    > * [Kundenschlüssel](/microsoft-365/compliance/customer-key-overview)
    > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
@@ -302,7 +302,7 @@ Als Nächstes müssen Sie das Projekt über die Befehlszeile neu erstellen und a
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-In diesem Tutorial haben Sie erfahren, wie Sie Office 365-Daten verwenden, um ein benutzerdefiniertes Spracherkennungsmodell mit dem Speech SDK zu erstellen, bereitzustellen und zu verwenden.
+In diesem Tutorial haben Sie erfahren, wie Sie Microsoft 365-Daten verwenden, um ein benutzerdefiniertes Spracherkennungsmodell mit dem Speech SDK zu erstellen, bereitzustellen und zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689523"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447551"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Tutorial: Überprüfen der Rechnung für Ihre Microsoft-Kundenvereinbarung
 
@@ -106,7 +106,7 @@ Wählen Sie am oberen Bildschirmrand die Registerkarte **Zusammenfassung** aus.
 
 Im Gebührenabschnitt werden die Gebühren für den bisherigen Kalendermonat und die Gebühren für den letzten Monat angezeigt.
 
-![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![Screenshot mit einer Übersicht des Abrechnungsprofils](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 Die Gebühren für den bisherigen Kalendermonat sind die ausstehenden Gebühren für den aktuellen Monat. Sie werden abgerechnet, wenn die Rechnung für den Monat generiert wird. Wenn die Rechnung für den letzten Monat noch nicht generiert wurde, sind die Gebühren im letzten Monat auch ausstehende Gebühren. Diese ausstehenden Gebühren werden dann in Ihrer nächsten Rechnung aufgeführt.
 
@@ -138,7 +138,7 @@ Wählen Sie links auf der Seite die Option **Alle Abonnements** aus.
 
 Auf der Azure-Abonnementseite werden die Gebühren des aktuellen und des letzten Monats für jedes Abonnement im Abrechnungsprofil angezeigt. Die Gebühren für den bisherigen Kalendermonat sind die ausstehenden Gebühren für den aktuellen Monat. Sie werden abgerechnet, wenn die Rechnung für den Monat generiert wird. Wenn die Rechnung für den letzten Monat noch nicht generiert wurde, sind die Gebühren im letzten Monat auch ausstehende Gebühren.
 
-![Screenshot der Liste der Azure-Abonnements für das Abrechnungsprofil](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![Im Screenshot werden Abonnements mit Gebühren für den bisherigen Kalendermonat und Gebühren für den letzten Monat angezeigt.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Analysieren Ihrer Azure-Nutzungsgebühren
 
@@ -172,7 +172,7 @@ Sie können die CSV-Datei zu Azure-Nutzung und -Gebühren filtern, um die Nutzun
 
 Die folgende Abbildung zeigt die Liste der Abonnements im Azure-Portal.
 
-![Screenshot der Liste der Azure-Abonnements für das Abrechnungsprofil](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![Im Screenshot wird die Liste der Abonnements im Azure-Portal mit einem hervorgehobenen Abonnement angezeigt.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 Filtern Sie in der CSV-Datei zu Azure-Nutzung und -Gebühren die Spalte **subscriptionName** nach **WA_Subscription**, um die detaillierten Nutzungsgebühren für „WA_Subscription“ anzuzeigen.
 

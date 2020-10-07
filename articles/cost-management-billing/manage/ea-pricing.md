@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b4905b1aba11a2f8c457d4785897cbe70dd31f76
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63e648681a63daafe1eaeb1d2e8e5a6cd607aa70
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687415"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446344"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Anzeigen und Herunterladen der Azure-Preise für Ihre Organisation
 
@@ -28,17 +28,17 @@ Je nach den durch den Unternehmensadministrator für Ihre Organisation festgeleg
 1. Melden Sie sich als Unternehmensadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
 
-   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/ea-pricing/portal-cm-billing-search.png)
+   ![Screenshot der Suche im Azure-Portal](./media/ea-pricing/portal-cm-billing-search.png)
 
 1. Wählen Sie unter dem Rechnungskonto **Verbrauch + Gebühren** aus.
 
    ![Screenshot von „Verbrauch + Gebühren“ unter „Abrechnung“](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Wählen Sie ![Screenshot, der die Suche im Azure-Portal zeigt](./media/ea-pricing/download-icon.png) und dann **Herunterladen** für den Monat aus.
+1. Wählen Sie ![Symbol „Herunterladen“](./media/ea-pricing/download-icon.png) für den Monat **Herunterladen** aus.
 
 1. Wählen Sie unter **Preisblatt** die Option **CSV herunterladen** aus.
 
-   ![Screenshot der Schaltfläche „CSV herunterladen“ auf dem Preisblatt](./media/ea-pricing/download-ea-price-sheet.png)
+   ![Screenshot mit den Optionen für „Nutzung und Gebühren herunterladen“](./media/ea-pricing/download-ea-price-sheet.png)
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Herunterladen der Preise für ein MCA- oder MPA-Konto
 
@@ -79,7 +79,7 @@ Sie können auch anhand der Preise Ihrer Organisation eine Schätzung der Kosten
 1. Wählen Sie unter **Programs and Offer (Programme und Angebot)**  > **Lizenzierungsprogramm** die Option **Enterprise Agreement (EA)** aus.
 1. Wählen Sie unter **Programs and Offer (Programme und Angebot)**  > **Ausgewählter Vertrag** die Option **Nichts ausgewählt** aus.
 
-    ![Screenshot der Schaltfläche „CSV herunterladen“ auf dem Preisblatt](./media/ea-pricing/ea-pricing-calculator-estimate.png)
+    ![Screenshot der verfügbaren Programme und Angebote](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 
 1. Wählen Sie die Organisation aus.
 1. Wählen Sie **Übernehmen**.

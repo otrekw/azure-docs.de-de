@@ -6,25 +6,26 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 04/20/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050536"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408368"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Schnellstart: Erstellen eines Chatraums mit ASP.NET und SignalR Service
 
-Azure SignalR Service basiert auf [SignalR für ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction). Diese Version ist **nicht** zu 100 % kompatibel mit ASP.NET SignalR. In Azure SignalR Service wurde das ASP.NET SignalR-Datenprotokoll basierend auf den neuesten ASP.NET Core-Technologien neu implementiert. Bei der Verwendung von Azure SignalR Service für ASP.NET SignalR werden einige ASP.NET SignalR-Funktionen nicht mehr unterstützt, z.B. gibt Azure SignalR keine Nachrichten wieder, wenn der Client erneut eine Verbindung herstellt. Der Forever Frame-Transport und JSONP werden ebenfalls nicht unterstützt. Einige Codeänderungen und die richtige Version der abhängigen Bibliotheken sind erforderlich, damit die ASP.NET SignalR-Anwendung mit SignalR Service funktioniert. 
+Azure SignalR Service basiert auf [SignalR für ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1). Diese Version ist **nicht** zu 100 % kompatibel mit ASP.NET SignalR. In Azure SignalR Service wurde das ASP.NET SignalR-Datenprotokoll basierend auf den neuesten ASP.NET Core-Technologien neu implementiert. Bei der Verwendung von Azure SignalR Service für ASP.NET SignalR werden einige ASP.NET SignalR-Funktionen nicht mehr unterstützt, z.B. gibt Azure SignalR keine Nachrichten wieder, wenn der Client erneut eine Verbindung herstellt. Der Forever Frame-Transport und JSONP werden ebenfalls nicht unterstützt. Einige Codeänderungen und die richtige Version der abhängigen Bibliotheken sind erforderlich, damit die ASP.NET SignalR-Anwendung mit SignalR Service funktioniert.
 
-Eine vollständige Liste des Funktionsvergleichs zwischen ASP.NET SignalR und ASP.NET Core SignalR finden Sie im [Dokument zu den Versionsunterschieden](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2).
+Eine vollständige Liste des Funktionsvergleichs zwischen ASP.NET SignalR und ASP.NET Core SignalR finden Sie im [Dokument zu den Versionsunterschieden](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1).
 
 In diesem Schnellstart erfahren Sie, wie Sie ASP.NET und Azure SignalR Service für eine ähnliche [Chatraumanwendung](./signalr-quickstart-dotnet-core.md) verwenden.
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
@@ -71,7 +72,7 @@ Während der Dienst bereitgestellt wird, arbeiten wird mit dem Code. Klonen Sie 
 
 1. Wählen Sie die primäre Verbindungszeichenfolge aus, und kopieren Sie diese.
 
-1. Legen Sie nun die Verbindungszeichenfolge in der Datei „web.config“ fest.
+1. Legen Sie nun die Verbindungszeichenfolge in der Datei *web.config* fest.
 
     ```xml
     <configuration>
@@ -82,7 +83,7 @@ Während der Dienst bereitgestellt wird, arbeiten wird mit dem Code. Klonen Sie 
     </configuration>
     ```
 
-1. In *Startup.cs* müssen Sie anstelle von `MapSignalR()``MapAzureSignalR({your_applicationName})` aufrufen und die Verbindungszeichenfolge übergeben, damit die Anwendung eine Verbindung mit dem Dienst herstellt, anstatt SignalR selbst zu hosten. Ersetzen Sie `{YourApplicationName}` durch den Namen Ihrer Anwendung. Dieser Name ist ein eindeutiger Name, um diese Anwendung von Ihren anderen Anwendungen zu unterscheiden. Sie können `this.GetType().FullName` als Wert verwenden.
+1. In *Startup.cs* müssen Sie anstelle von `MapSignalR()``MapAzureSignalR({YourApplicationName})` aufrufen und die Verbindungszeichenfolge übergeben, damit die Anwendung eine Verbindung mit dem Dienst herstellt, anstatt SignalR selbst zu hosten. Ersetzen Sie `{YourApplicationName}` durch den Namen Ihrer Anwendung. Dieser Name ist ein eindeutiger Name, um diese Anwendung von Ihren anderen Anwendungen zu unterscheiden. Sie können `this.GetType().FullName` als Wert verwenden.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -103,24 +104,19 @@ Während der Dienst bereitgestellt wird, arbeiten wird mit dem Code. Klonen Sie 
     > [!NOTE]
     > In der Implementierung wird ein Endpunkt `/signalr/negotiate` für die Aushandlung durch das Azure SignalR Service SDK bereitgestellt. Er gibt eine spezielle Aushandlungsantwort zurück, wenn Clients versuchen, eine Verbindung herzustellen, und leitet Clients an den in der Verbindungszeichenfolge definierten Dienstendpunkt weiter.
 
-1. Drücken Sie **F5**, um das Projekt im Debugmodus auszuführen. Sie können erkennen, dass die Anwendung lokal ausgeführt wird. Anstatt eine SignalR-Laufzeit durch die Anwendung selbst zu hosten, wird nun eine Verbindung mit Azure SignalR Service hergestellt.
+1. Drücken Sie <kbd>F5</kbd>, um das Projekt im Debugmodus auszuführen. Sie können erkennen, dass die Anwendung lokal ausgeführt wird. Anstatt eine SignalR-Laufzeit durch die Anwendung selbst zu hosten, wird nun eine Verbindung mit Azure SignalR Service hergestellt.
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-
-
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.
-> 
-> 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
 Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In dieser Schnellstartanleitung wurde eine Ressourcengruppe mit dem Namen *SignalRTestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
 
-   
 ![Löschen](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
@@ -135,4 +131,3 @@ In diesem Schnellstart haben Sie eine neue Azure SignalR Service-Ressource erste
 > [Azure SignalR Service mit ASP.NET Core](./signalr-quickstart-dotnet-core.md)
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsnet)
-

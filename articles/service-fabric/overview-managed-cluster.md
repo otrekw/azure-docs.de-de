@@ -4,10 +4,10 @@ description: Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des A
 ms.topic: overview
 ms.date: 09/28/2020
 ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91410397"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Verwaltete Service Fabric-Cluster (Vorschau)

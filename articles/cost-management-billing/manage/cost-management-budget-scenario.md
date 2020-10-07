@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690186"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446447"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Verwalten von Kosten mit Azure-Budgets
 
@@ -152,7 +152,7 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 1. Wählen Sie **OK** aus, um den Ausdruck festzulegen.
 1. Wählen Sie **ist größer als oder gleich** im Dropdownlistenfeld der **Bedingung** aus.
 1. Geben Sie im Feld **Wert auswählen** der Bedingung `.8` ein.  
-    ![Azure – Logik-App – Floatausdruck mit einem Wert](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Screenshot des Dialogfelds „Bedingung“ mit ausgewählten Werten](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. Wählen Sie im Feld „Bedingung“ die Optionen **Hinzufügen** > **Zeile hinzufügen** aus, um einen zusätzlichen Teil der Bedingung hinzuzufügen.
 1. Wählen Sie im Feld **Bedingung** das Textfeld mit dem Eintrag `Choose a value` aus.
 1. Wählen Sie am oberen Rand der Liste **Ausdruck** aus, und geben Sie den folgenden Ausdruck im Ausdrucks-Editor ein: `float()`.
@@ -160,7 +160,7 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 1. Wählen Sie **OK** aus, um den Ausdruck festzulegen.
 1. Wählen Sie **ist kleiner als** im Dropdownlistenfeld **Bedingung** aus.
 1. Geben Sie im Feld **Wert auswählen** der Bedingung `1` ein.  
-    ![Azure – Logik-App – Floatausdruck mit einem Wert](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Screenshot des Dialogfelds „Bedingung“ mit zwei Bedingungen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. Wählen Sie im Feld **Bei TRUE** die Option **Aktion hinzufügen** aus. Sie fügen eine HTTP-POST-Aktion hinzu, die optionale virtuelle Computer herunterfährt.  
     ![Azure – Logik-App – Hinzufügen einer Aktion](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. Geben Sie **HTTP** ein, um nach der HTTP-Aktion zu suchen, und wählen Sie die **HTTP – HTTP**-Aktion aus.  
@@ -183,7 +183,7 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 Überprüfen Sie mit einer Bedingungsanweisung, ob der Schwellenwert 100% des Budgets erreicht oder überschritten hat. Wenn der Schwellenwert erreicht wurde, senden Sie einen HTTP-POST unter Verwendung des Webhooks mit dem Namen **Complete**. Diese Aktion fährt alle übrigen virtuellen Computer herunter.
 
 1. Wählen Sie **Nächster Schritt** > **Bedingung hinzufügen** aus.  
-    ![Azure – Logik-App – Aktion hinzufügen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Screenshot des Dialogfelds „Bei TRUE“, in dem „Aktion hinzufügen“ hervorgehoben ist](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. Wählen Sie im Feld **Bedingung** das Textfeld mit dem Eintrag `Choose a value` aus, um eine Liste der verfügbaren Werte anzuzeigen.
 1. Wählen Sie am oberen Rand der Liste **Ausdruck** aus, und geben Sie den folgenden Ausdruck im Ausdrucks-Editor ein: `float()`.
 1. Wählen Sie **Dynamischer Inhalt** aus, platzieren Sie den Cursor innerhalb der Klammern (), und wählen Sie **NotificationThresholdAmount** in der Liste aus, um den vollständigen Ausdruck einzutragen.
@@ -194,11 +194,11 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 1. Geben Sie im Feld **Wert auswählen** für die Bedingung `1` ein.  
     ![Azure – Logik-App – Bedingungswert festlegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. Wählen Sie im Feld **Bei TRUE** die Option **Aktion hinzufügen** aus. Sie fügen eine HTTP-POST-Aktion hinzu, die alle verbleibenden virtuellen Computer herunterfährt.  
-    ![Azure – Logik-App – Hinzufügen einer Aktion](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Screenshot des Dialogfelds „Bei TRUE“, in dem Sie eine H T T P-POST-Aktion hinzufügen können](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. Geben Sie **HTTP** ein, um nach der HTTP-Aktion zu suchen, und wählen Sie die **HTTP – HTTP**-Aktion aus.
 1. Wählen Sie **post** als Wert für **Methode** aus.
 1. Geben Sie die URL für den Webhook mit dem Namen **Complete** ein, den Sie zuvor in diesem Tutorial mit dem Wert **Uri** erstellt haben.  
-    ![Azure – Logik-App – Hinzufügen einer Aktion](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Screenshot des Dialogfelds „H T T P“, in dem Sie den U R L-Wert eingeben können](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. Wählen Sie im Feld **Bei TRUE** die Option **Aktion hinzufügen** aus. Sie fügen eine E-Mail-Aktion hinzu, die eine E-Mail-Benachrichtigung mit dem Hinweis an den Empfänger sendet, dass die verbleibenden virtuellen Computer heruntergefahren wurden.
 1. Suchen Sie nach „send email“, und wählen Sie eine *E-Mail*-Aktion auf Basis des von Ihnen verwendeten E-Mail-Diensts aus.
 1. Fügen Sie den Text für **An**, **Betreff** und **Text** für die E-Mail hinzu, die dem Empfänger mitteilt, dass die optionalen VMs heruntergefahren wurden. Verwenden Sie **BudgetName** und den dynamischen Inhalt **NotificationThresholdAmount** zum Auffüllen der Felder „Betreff“ und „Text“.  
