@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377074"
 ---
 ## <a name="use-custom-page-content"></a>Verwenden benutzerdefinierter Seiteninhalte
 
@@ -167,7 +167,7 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie bereit sind:
 
 1. Wiederholen Sie den CORS-Konfigurationsschritt. Geben Sie für **Zulässige Ursprünge** den Wert `https://www.test-cors.org` ein.
 1. Navigieren Sie zu [www.test-cors.org](https://www.test-cors.org/). 
-1. Fügen Sie im Feld **Remote-URL** die URL Ihrer HTML-Datei ein. Zum Beispiel, `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
+1. Fügen Sie im Feld **Remote-URL** die URL Ihrer HTML-Datei ein. Zum Beispiel, `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
 1. Wählen Sie **Anforderung senden** aus.
     Das Ergebnis sollte `XHR status: 200` lauten. 
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, ob Ihre CORS-Einstellungen richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.

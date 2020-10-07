@@ -4,12 +4,12 @@ description: Dieser Artikel enthält einen Leitfaden für eine Azure DevTest Lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367749"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs: Referenzarchitektur für Unternehmen
 Dieser Artikel enthält eine Referenzarchitektur als Unterstützung für die Bereitstellung einer Azure DevTest Labs-basierten Lösung in einem Unternehmen. Dies umfasst Folgendes:
@@ -46,7 +46,7 @@ DevTest Labs verfügt zwar nicht über integrierte Kontingente oder Grenzwerte, 
     - **Verwenden gemeinsamer öffentlicher IP-Adressen:** Alle virtuellen Computer mit gleicher Größe und Region werden in derselben Ressourcengruppe platziert. Diese Konfiguration stellt einen Mittelweg zwischen Ressourcengruppenkontingenten und Ressourcentypkontingenten pro Ressourcengruppe dar, wenn virtuelle Computer öffentliche IP-Adressen besitzen dürfen.
 - **Ressourcen pro Ressourcengruppe, pro Ressourcentyp**: Das Standardlimit für [Ressourcen pro Ressourcengruppe, pro Ressourcentyp](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) liegt bei 800.  Bei Verwendung der Konfiguration *Alle virtuellen Computer in einer Ressourcengruppe* wird dieses Abonnementlimit deutlich früher erreicht – insbesondere, wenn die virtuellen Computer über zahlreiche zusätzliche Datenträger verfügen.
 - **Speicherkonten**: Ein Lab in DevTest Labs wird mit einem Speicherkonto bereitgestellt. Das Azure-Kontingent für [Anzahl von Speicherkonten pro Region und Abonnement beträgt 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Die maximale Anzahl der DevTest Labs in derselben Region beträgt ebenfalls 250.
-- **Rollenzuweisungen:** Mit einer Rollenzuweisung wird einem Benutzer oder Dienstprinzipal Zugriff auf eine Ressource gewährt (Besitzer, Ressource, Berechtigungsstufe). In Azure gilt ein [Limit von 2.000 Rollenzuweisungen pro Abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits). Standardmäßig erstellt der DevTest Labs-Dienst eine Ressourcengruppe für jeden virtuellen Computer. Der Besitzer erhält die Berechtigung *Besitzer* für die DevTest Labs-VM und *Leser* für die Ressourcengruppe. Auf diese Weise verwendet jede von Ihnen neu erstellte VM zusätzlich zu den Zuweisungen, die verwendet werden, wenn Sie den Benutzern die Berechtigung für das Lab erteilen, zwei Rollenzuweisungen.
+- **Rollenzuweisungen:** Mit einer Rollenzuweisung wird einem Benutzer oder Dienstprinzipal Zugriff auf eine Ressource gewährt (Besitzer, Ressource, Berechtigungsstufe). In Azure gilt ein [Limit von 2.000 Rollenzuweisungen pro Abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits). Standardmäßig erstellt der DevTest Labs-Dienst eine Ressourcengruppe für jeden virtuellen Computer. Der Besitzer erhält die Berechtigung *Besitzer* für die DevTest Labs-VM und *Leser* für die Ressourcengruppe. Auf diese Weise verwendet jede von Ihnen neu erstellte VM zusätzlich zu den Zuweisungen, die verwendet werden, wenn Sie den Benutzern die Berechtigung für das Lab erteilen, zwei Rollenzuweisungen.
 - **API-Lesevorgänge/-Schreibvorgänge:** Es gibt verschiedene Möglichkeiten, Azure und DevTest Labs zu automatisieren, einschließlich REST-APIs, PowerShell, Azure CLI und Azure SDK. Durch die Automatisierung können Sie einen anderen Grenzwert für API-Anforderungen erreichen: Pro Abonnement sind bis zu [12.000 Leseanforderungen und 1.200 Schreibanforderungen pro Stunde](../azure-resource-manager/management/request-limits-and-throttling.md) zulässig. Berücksichtigen Sie diesen Grenzwert bei der Automatisierung von DevTest Labs.
 
 ## <a name="manageability-considerations"></a>Überlegungen zur Verwaltbarkeit

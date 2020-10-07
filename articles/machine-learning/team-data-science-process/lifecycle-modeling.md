@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336444"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modellierungsphase des Team Data Science-Prozesslebenszyklus
 
@@ -53,7 +53,7 @@ Dieser Schritt erfordert eine kreative Kombination von Sachkenntnis mit den im D
 Eine technische Anleitung zur Featureentwicklung bei Verwendung verschiedener Azure-Datentechnologien finden Sie unter [Featureentwicklung im Data Science-Prozess](create-features.md). 
 
 ### <a name="model-training"></a>Modelltraining
-Je nach Art der Frage, die beantwortet werden soll, stehen gegebenenfalls relativ viele Algorithmen für die Modellierung zur Verfügung. Eine Anleitung zur Auswahl der Algorithmen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Dieser Artikel verwendet zwar Azure Machine Learning, aber die darin enthaltenen Informationen sind für alle Machine Learning-Projekte nützlich. 
+Je nach Art der Frage, die beantwortet werden soll, stehen gegebenenfalls relativ viele Algorithmen für die Modellierung zur Verfügung. Eine Anleitung zur Auswahl der Algorithmen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](../how-to-select-algorithms.md). Dieser Artikel verwendet zwar Azure Machine Learning, aber die darin enthaltenen Informationen sind für alle Machine Learning-Projekte nützlich. 
 
 Der Prozess für das Modelltraining umfasst die folgenden Schritte: 
 

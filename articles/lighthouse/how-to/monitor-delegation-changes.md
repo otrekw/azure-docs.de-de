@@ -3,12 +3,12 @@ title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
 ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336597"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
@@ -46,7 +46,7 @@ Da dies ein umfassender Zugriff ist, wird empfohlen, diese Rolle einem Dienstpri
 
 - [Erstellen Sie ein neues Dienstprinzipalkonto](../../active-directory/develop/howto-create-service-principal-portal.md), das nur für diese Funktion verwendet wird, statt diese Rolle einem vorhandenen Dienstprinzipal zuzuweisen, der für andere Automatisierungen verwendet wird.
 - Stellen Sie sicher, dass dieser Dienstprinzipal keinen Zugriff auf delegierte Kundenressourcen hat.
-- [Verwenden Sie ein Zertifikat zum Authentifizieren](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in), und [speichern Sie es sicher in Azure Key Vault](../../key-vault/general/best-practices.md).
+- [Verwenden Sie ein Zertifikat zum Authentifizieren](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options), und [speichern Sie es sicher in Azure Key Vault](../../key-vault/general/best-practices.md).
 - Beschränken Sie die Anzahl der Benutzer, die entsprechenden Zugriff zum Handeln im Namen des Dienstprinzipals haben.
 
 > [!NOTE]

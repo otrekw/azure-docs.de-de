@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336648"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern für ein Dataset mit 1 TB
 
@@ -67,7 +67,7 @@ Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen
 
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit Ihrem HDInsight-Cluster. Mit diesem Speicherkonto wird auf Daten zugegriffen, die innerhalb des Clusters verarbeitet werden können.
    * Aktivieren Sie nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von den beim Erstellen des Clusters angegebenen unterscheiden): Führen Sie die folgenden Schritte aus.
-3. [Erstellen eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs:](../studio/create-workspace.md) Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
+3. [Erstellen eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs:](../classic/create-workspace.md) Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>Abrufen und Verwenden von Daten aus einer öffentlichen Quelle
 Um auf das [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) -DataSet zuzugreifen, klicken Sie auf den Link, akzeptieren Sie die Nutzungsbedingungen, und geben Sie einen Namen an. Hier finden Sie eine Momentaufnahme:
@@ -695,4 +695,3 @@ Der Standard-API-Schlüssel wurde durch den API-Schlüssel unseres Webdiensts er
 Für die beiden im JSON-Framework für das Python-Skript angefragten Testbeispiele erhalten Sie Antworten im Format „Bewertete Bezeichnungen, bewertete Wahrscheinlichkeiten“. In diesem Fall wurden die Standardwerte des vorab erstellten Codes ausgewählt (Nullen für alle numerischen Spalten und die Zeichenfolge „value“ für alle Kategoriespalten).
 
 Abschließend kann gesagt werden, dass unsere exemplarische Vorgehensweise das Verarbeiten umfangreicher Datasets mit Azure Machine Learning zeigt. Sie haben mit einem Terabyte an Daten begonnen, ein Vorhersagemodell erstellt und dieses als Webdienst in der Cloud bereitgestellt.
-

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 35e5e688f5589c23c7c583c7bcbca3fd0956eec7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336308"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Geplante Wartung in Azure Database for PostgreSQL – Flexible Server
  
@@ -46,5 +46,5 @@ Wenn ein Wartungsereignis vom System abgebrochen wird oder nicht erfolgreich abg
 ## <a name="next-steps"></a>Nächste Schritte
  
 * Weitere Informationen zum [Bearbeiten eines Wartungszeitplans](how-to-maintenance-portal.md)
-* Weitere Informationen zum Abonnieren von [Benachrichtigungen zu bevorstehenden Wartungsarbeiten](/azure/service-health/service-notifications.md) mit Azure Service Health
-* Weitere Informationen zur [Einrichtung von Benachrichtigungen zu bevorstehenden geplanten Wartungsereignissen](/azure/service-health/resource-health-alert-monitor-guide.md)
+* Weitere Informationen zum Abonnieren von [Benachrichtigungen zu bevorstehenden Wartungsarbeiten](../../service-health/service-notifications.md) mit Azure Service Health
+* Weitere Informationen zur [Einrichtung von Benachrichtigungen zu bevorstehenden geplanten Wartungsereignissen](../../service-health/resource-health-alert-monitor-guide.md)

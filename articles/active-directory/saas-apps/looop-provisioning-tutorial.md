@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f8bec6b3065cc58f9589cfba0d6f494a9d065355
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333561"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Looop für die automatische Benutzerbereitstellung
 
@@ -113,11 +113,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<organisation_domain>.looop.co/scim/v2` ein. Beispiel: `https://demo.looop.co/scim/v2`. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Looop abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Looop herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Looop-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 

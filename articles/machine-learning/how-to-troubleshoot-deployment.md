@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333771"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problembehandlung bei der Docker-Bereitstellung von Modellen mit Azure Kubernetes Service und Azure Container Instances 
 
@@ -26,7 +26,7 @@ Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Con
 
 * Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 * Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Zum lokalen Debuggen benötigen Sie eine funktionierende Docker-Installation auf Ihrem lokalen System.
 
@@ -34,7 +34,7 @@ Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Con
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Schritte für die Docker-Bereitstellung von Machine Learning-Modellen
 
-Wenn Sie ein Modell in Azure Machine Learning bereitstellen, verwenden Sie die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API und ein [Environment](how-to-use-environments.md)-Objekt. Der Dienst erstellt während der Bereitstellungsphase ein Docker-Basisimage und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
+Wenn Sie ein Modell in Azure Machine Learning bereitstellen, verwenden Sie die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API und ein [Environment](how-to-use-environments.md)-Objekt. Der Dienst erstellt während der Bereitstellungsphase ein Docker-Basisimage und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
 
 1. Registrieren des Modells in der Modellregistrierung des Arbeitsbereichs.
 
@@ -50,7 +50,7 @@ Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Mo
 
 Beim Auftreten eines Problems besteht der erste Schritt darin, die (zuvor beschriebene) Bereitstellungsaufgabe in einzelne Schritte aufzuschlüsseln, um das Problem zu isolieren.
 
-Wenn Sie [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter verwenden, kann Ihr Code in drei Hauptschritte unterteilt werden:
+Wenn Sie [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter verwenden, kann Ihr Code in drei Hauptschritte unterteilt werden:
 
 1. Registrieren des Modells. Hier finden Sie Beispielcode dazu:
 
@@ -161,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Das Skript wird aus dem Speicherort erneut geladen, der durch das vom Dienst verwendete `InferenceConfig`-Objekt angegeben wird.
 
-Um das Modell, Conda-Abhängigkeiten oder eine Bereitstellungskonfiguration zu ändern, verwenden Sie [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-). Das folgende Beispiel aktualisiert das vom Dienst verwendete Modell:
+Um das Modell, Conda-Abhängigkeiten oder eine Bereitstellungskonfiguration zu ändern, verwenden Sie [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-). Das folgende Beispiel aktualisiert das vom Dienst verwendete Modell:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Löschen des Diensts
 
-Verwenden Sie zum Löschen des Diensts [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--).
+Verwenden Sie zum Löschen des Diensts [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--).
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Untersuchen des Docker-Protokolls
 
@@ -199,7 +199,7 @@ Verwenden Sie die Informationen im Abschnitt [Untersuchen des Docker-Protokolls]
 
 ## <a name="function-fails-get_model_path"></a>Fehler bei der Funktion: get_model_path()
 
-Oftmals wird in der `init()`-Funktion im Bewertungsskript die Funktion [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) aufgerufen, um eine Modelldatei oder einen Ordner mit Modelldateien im Container zu finden. Wenn die Datei oder der Ordner für das Modell nicht gefunden werden kann, tritt bei der Funktion ein Fehler auf. Die einfachste Möglichkeit zum Debuggen dieses Fehlers besteht darin, den unten dargestellten Python-Code in der Containershell auszuführen:
+Oftmals wird in der `init()`-Funktion im Bewertungsskript die Funktion [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) aufgerufen, um eine Modelldatei oder einen Ordner mit Modelldateien im Container zu finden. Wenn die Datei oder der Ordner für das Modell nicht gefunden werden kann, tritt bei der Funktion ein Fehler auf. Die einfachste Möglichkeit zum Debuggen dieses Fehlers besteht darin, den unten dargestellten Python-Code in der Containershell auszuführen:
 
 ```python
 from azureml.core.model import Model

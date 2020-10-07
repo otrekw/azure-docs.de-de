@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1a2cf4b9b476a8f31f38fea45b2e1ef3fe4307
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0b80c2f125e7eddaa427b75e3e0fe2aff6c679be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334326"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-Format in Azure Data Factory
 
@@ -217,6 +217,7 @@ In der folgenden Tabelle sind die von einer JSON-Quelle unterstützten Eigenscha
 | Mit Kommentaren | Wählen Sie **Mit Kommentaren** aus, wenn die JSON-Daten Kommentare im C- oder C++-Stil enthalten. | nein | `true` oder `false` | asComments |
 | Einfache Anführungszeichen | Liest JSON-Spalten, die nicht in Anführungszeichen eingeschlossen sind. | nein | `true` oder `false` | singleQuoted |
 | Umgekehrter Schrägstrich mit Escapezeichen | Wählen Sie **Umgekehrter Schrägstrich mit Escapezeichen** aus, wenn in den JSON-Daten umgekehrte Schrägstriche als Escapezeichen verwendet werden. | nein | `true` oder `false` | backslashEscape |
+| Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
 ### <a name="source-format-options"></a>Quellformatoptionen
 

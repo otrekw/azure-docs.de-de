@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b06120437555ec71bc431cb1429120cb5e1987f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336291"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>Verwalten der Einstellungen für die geplante Wartung für Azure Database for PostgreSQL – Flexible Server
  
@@ -31,9 +31,9 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>Benachrichtigungen zu geplanten Wartungsereignissen
  
-Mit Azure Service Health können Sie [Benachrichtigungen anzeigen](/azure/service-health/service-notifications.md), die bevorstehende und durchgeführte Wartungsarbeiten auf Ihrer Flexible Server-Instanz betreffen. Sie können auch Warnungen in Azure Service Health [einrichten](/azure/service-health/resource-health-alert-monitor-guide.md), um Benachrichtigungen zu Wartungsereignissen zu erhalten.
+Mit Azure Service Health können Sie [Benachrichtigungen anzeigen](../../service-health/service-notifications.md), die bevorstehende und durchgeführte Wartungsarbeiten auf Ihrer Flexible Server-Instanz betreffen. Sie können auch Warnungen in Azure Service Health [einrichten](../../service-health/resource-health-alert-monitor-guide.md), um Benachrichtigungen zu Wartungsereignissen zu erhalten.
  
 ## <a name="next-steps"></a>Nächste Schritte  
  
 * Weitere Informationen zur [geplanten Wartung in Azure Database for PostgreSQL – Flexible Server](concepts-maintenance.md)
-* Weitere Informationen zu [Azure Service Health](/azure/service-health/overview.md)
+* Weitere Informationen zu [Azure Service Health](../../service-health/overview.md)

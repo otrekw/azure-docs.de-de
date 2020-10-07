@@ -1,14 +1,14 @@
 ---
 title: Integrieren von Azure Event Hubs in den Azure Private Link-Dienst
 description: Erfahren Sie, wie Sie Azure Event Hubs in den Azure Private Link-Dienst integrieren.
-ms.date: 07/29/2020
+ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334241"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Gewähren des Zugriffs auf Azure Event Hubs-Namespaces über private Endpunkte 
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
@@ -24,7 +24,6 @@ Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-
 > 
 > Nachstehend finden Sie einige der Dienste, die nicht auf Event Hubs-Ressourcen zugreifen können, wenn private Endpunkte aktiviert sind. Beachten Sie, dass diese Liste **NICHT** alle Komponenten enthält.
 >
-> - Azure Stream Analytics
 > - Azure IoT Hub-Routen
 > - Azure IoT Device Explorer
 > - Azure Event Grid
@@ -65,7 +64,7 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
 1. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. 
 1. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Seite „Netzwerk“ – Registerkarte „Verbindungen mit privatem Endpunkt“ – Link „Privaten Endpunkt hinzufügen“":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Registerkarte „Netzwerk“ mit ausgewählter Option „Netzwerk“":::
 7. Führen Sie auf der Seite **Grundlagen** die folgenden Schritte aus: 
     1. Wählen Sie das **Azure-Abonnement** aus, in dem Sie den privaten Endpunkt erstellen möchten. 
     2. Wählen Sie die **Ressourcengruppe** für die private Endpunktressource aus.

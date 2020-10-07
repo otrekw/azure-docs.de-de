@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363102"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrieren von Azure Firewall mit Azure Load Balancer Standard
 
@@ -64,6 +64,10 @@ Mit einem internen Lastenausgleich (Load Balancer) wird der Load Balancer mit ei
 Es gibt kein Problem mit asymmetrischem Routing in diesem Szenario. Die eingehenden Pakete treffen an der öffentlichen IP-Adresse der Firewall ein, werden in die private IP-Adresse des Load Balancers übersetzt und kehren dann über denselben Rückgabepfad an die private IP-Adresse der Firewall zurück.
 
 Somit können Sie dieses Szenario ähnlich zum Szenario mit öffentlichem Load Balancer bereitstellen, jedoch ohne die Notwendigkeit für eine Hostroute für die öffentliche IP-Adresse der Firewall.
+
+>[!NOTE]
+>Die virtuellen Computer im Back-End-Pool verfügen mit dieser Konfiguration nicht über ausgehende Internetkonnektivität. </br> Weitere Informationen zu ausgehender Konnektivität finden Sie unter: </br> **[Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Optionen zum Bereitstellen von Konnektivität: </br> **[Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)](../load-balancer/egress-only.md)** </br> [**Was ist Virtual Network NAT?**](../virtual-network/nat-overview.md)
+
 
 ## <a name="additional-security"></a>Zusätzliche Sicherheit
 

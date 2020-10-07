@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273913"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336512"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -89,7 +89,7 @@ Sie können in drei Schritten eine Azure-Umgebung für die erweiterte Analyse ei
    
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit dem HDInsight-Cluster, wenn Sie diesen erstellen. Dieses Speicherkonto greift auf Daten zu, die innerhalb des Clusters verarbeitet werden.
    * Sie müssen nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters aktivieren. Navigieren Sie zur Registerkarte **Konfiguration**, und wählen Sie **Remote aktivieren** aus. Mit diesem Schritt werden die Benutzeranmeldeinformationen für die Remoteanmeldung angegeben.
-3. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md): Sie verwenden diesen Arbeitsbereich zum Erstellen von Machine Learning-Modellen. Diese Aufgabe wird ausgeführt, nachdem Sie mit dem HDInsight-Cluster eine anfängliche Datenuntersuchung und ein Downsampling durchgeführt haben.
+3. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../classic/create-workspace.md): Sie verwenden diesen Arbeitsbereich zum Erstellen von Machine Learning-Modellen. Diese Aufgabe wird ausgeführt, nachdem Sie mit dem HDInsight-Cluster eine anfängliche Datenuntersuchung und ein Downsampling durchgeführt haben.
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
 > [!NOTE]
@@ -915,7 +915,7 @@ Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learni
   Hier lautet der Bestimmungskoeffizient 0,709, was impliziert, dass etwa 71 Prozent der Varianz durch die Modellkoeffizienten erklärt werden.
 
 > [!IMPORTANT]
-> Weitere Informationen zu Machine Learning und dazu, wie Sie darauf zugreifen und es verwenden, finden Sie unter [Was ist Machine Learning?](../studio/what-is-machine-learning.md). Zudem umfasst der [Azure KI-Katalog](https://gallery.cortanaintelligence.com/) eine große Palette an Experimenten und bietet eine umfassende Einführung in die Möglichkeiten von Machine Learning.
+> Weitere Informationen zu Machine Learning und dazu, wie Sie darauf zugreifen und es verwenden, finden Sie unter [Was ist Machine Learning?](../classic/index.yml). Zudem umfasst der [Azure KI-Katalog](https://gallery.cortanaintelligence.com/) eine große Palette an Experimenten und bietet eine umfassende Einführung in die Möglichkeiten von Machine Learning.
 > 
 > 
 
@@ -937,6 +937,3 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-

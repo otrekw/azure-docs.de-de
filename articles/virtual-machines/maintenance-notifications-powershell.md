@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9942ad359bf1e1e7a02f30979ba4a9325d90d484
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336053"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Behandeln von geplanten Wartungen mithilfe von PowerShell
 
@@ -27,9 +27,21 @@ Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. 
 Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 ```
 
+Output
+
+```
+MaintenanceRedeployStatus               : 
+  IsCustomerInitiatedMaintenanceAllowed : True
+  PreMaintenanceWindowStartTime         : 5/14/2018 12:30:00 PM
+  PreMaintenanceWindowEndTime           : 5/19/2018 12:30:00 PM
+  MaintenanceWindowStartTime            : 5/21/2018 4:30:00 PM
+  MaintenanceWindowEndTime              : 6/4/2018 4:30
+  LastOperationResultCode               : None 
+```
+
 Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeben: 
 
-| value | BESCHREIBUNG   |
+| Wert | Beschreibung   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |
