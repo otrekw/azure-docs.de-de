@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249501"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Verwaltete private Endpunkte in Synapse (Vorschau)
 
@@ -27,7 +27,9 @@ Azure Synapse unterstützt private Links. Mit einem privaten Link können Sie ü
 
 Bei der Verwendung eines privaten Links wird der Datenverkehr zwischen Ihrem virtuellen Netzwerk und einem Arbeitsbereich vollständig über das Microsoft-Backbone-Netzwerk übertragen. Private Link schützt vor einer möglichen Datenexfiltration. Ein privater Link zu einer Ressource wird durch die Erstellung eines privaten Endpunkts eingerichtet.
 
-Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk, um den Dienst effektiv in Ihr virtuelles Netzwerk einzubinden. Private Endpunkte werden einer bestimmten Ressource in Azure und nicht dem gesamten Dienst zugeordnet. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link/).
+Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk, um den Dienst effektiv in Ihr virtuelles Netzwerk einzubinden. Private Endpunkte werden einer bestimmten Ressource in Azure und nicht dem gesamten Dienst zugeordnet. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. 
+
+Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link/).
 
 >[!IMPORTANT]
 >Verwaltete private Endpunkte werden nur in Azure Synapse-Arbeitsbereichen mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk unterstützt.
@@ -35,9 +37,9 @@ Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netz
 >[!NOTE]
 >Der gesamte ausgehende Datenverkehr aus dem verwalteten virtuellen Arbeitsbereichsnetzwerk wird in Zukunft blockiert – mit Ausnahme von Datenverkehr über verwaltete private Endpunkte. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
 
-Wenn Sie einen verwalteten privaten Endpunkt in Azure Synapse erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird ausgelöst. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich.
+Wenn Sie einen verwalteten privaten Endpunkt in Azure Synapse erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird gestartet. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich.
 
-Wenn der Besitzer die Verbindung genehmigt, wird der private Link eingerichtet. Andernfalls wird der private Link nicht eingerichtet. In beiden Fällen wird der verwaltete private Endpunkt mit dem Status der Verbindung aktualisiert.
+Wenn der Besitzer die Verbindung genehmigt, wird der private Link eingerichtet. Wenn der Besitzer die Verbindung jedoch nicht genehmigt, wird der private Link nicht eingerichtet. In beiden Fällen wird der verwaltete private Endpunkt mit dem Status der Verbindung aktualisiert.
 
 Nur ein verwalteter privater Endpunkt im genehmigten Zustand kann Datenverkehr an eine angegebene Ressource für private Links senden.
 
@@ -56,4 +58,4 @@ Diese beiden verwalteten privaten Endpunkte werden automatisch für Sie erstellt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen von verwalteten privaten Endpunkten für Ihre Datenquellen](./how-to-create-managed-private-endpoints.md)
+Weitere Informationen finden Sie im Artikel [Erstellen eines verwalteten privaten Endpunkts zu Ihrer Datenquelle (Vorschau)](./how-to-create-managed-private-endpoints.md).

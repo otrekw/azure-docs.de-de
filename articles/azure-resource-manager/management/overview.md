@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie den Azure-Ressourcen-Manager für die 
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293947"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372271"
 ---
 # <a name="what-is-azure-resource-manager"></a>Was ist Azure Resource Manager?
 
@@ -49,7 +49,7 @@ Resource Manager ermöglicht Folgendes:
 
 * Definieren der Abhängigkeiten zwischen Ressourcen, sodass diese in der korrekten Reihenfolge bereitgestellt werden
 
-* Anwenden der Zugriffssteuerung auf alle Dienste, da die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) nativ in die Verwaltungsplattform integriert ist
+* Anwenden der Zugriffssteuerung auf alle Dienste, da die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) nativ in die Verwaltungsplattform integriert ist
 
 * Anwenden von Tags auf Ressourcen, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren
 
@@ -83,7 +83,7 @@ Beim Definieren der Ressourcengruppe sind einige wichtige Faktoren zu beachten:
 
    Ist die Region der Ressourcengruppe vorübergehend nicht verfügbar, können Sie keine Ressourcen in der Ressourcengruppe aktualisieren, da die Metadaten nicht verfügbar sind. Die Ressourcen in anderen Regionen funktionieren weiterhin wie erwartet, doch können Sie diese nicht aktualisieren. Weitere Informationen zum Entwerfen zuverlässiger Anwendungen finden Sie unter [Entwerfen zuverlässiger Azure-Anwendungen](/azure/architecture/checklist/resiliency-per-service).
 
-* Eine Ressourcengruppe kann zum Festlegen der Zugriffssteuerung für administrative Aktionen verwendet werden. Zum Verwalten einer Ressourcengruppe können Sie [Azure-Richtlinien](../../governance/policy/overview.md), [RBAC-Rollen](../../role-based-access-control/role-assignments-portal.md) oder [Ressourcensperren](lock-resources.md) zuweisen.
+* Eine Ressourcengruppe kann zum Festlegen der Zugriffssteuerung für administrative Aktionen verwendet werden. Zum Verwalten einer Ressourcengruppe können Sie [Azure-Richtlinien](../../governance/policy/overview.md), [Azure-Rollen](../../role-based-access-control/role-assignments-portal.md) oder [Ressourcensperren](lock-resources.md) zuweisen.
 
 * Sie können auf eine Ressourcengruppe [Tags anwenden](tag-resources.md). Die Ressourcen in der Ressourcengruppe erben diese Tags nicht.
 

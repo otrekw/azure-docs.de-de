@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532408"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405070"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -71,21 +71,24 @@ Der Prozess zur Bereitstellung in Azure App Service verwendet automatisch Ihre A
 Führen Sie den folgenden Maven-Befehl aus, um die Bereitstellung zu konfigurieren. Dieser Befehl unterstützt Sie beim Einrichten des App Service-Betriebssystems, der Java-Version und der Tomcat-Version.
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Wählen Sie bei entsprechender Aufforderung **Windows** aus, indem Sie `2` eingeben.
-2. Verwenden Sie die Java-Standardversion (1.8.), indem Sie die EINGABETASTE drücken.
-3. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
+1. Wenn die Eingabeaufforderung für die **Abonnementoption** angezeigt wird, wählen Sie das richtige `Subscription` aus, indem Sie die Ziffer am Zeilenanfang eingeben.
+1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
+1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `2` eingeben.
+1. Verwenden Sie die Java-Standardversion (1.8.), indem Sie die EINGABETASTE drücken.
+1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     Die Zusammenfassungsausgabe sieht in etwa wie der unten gezeigte Codeausschnitt aus.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Wählen Sie bei entsprechender Aufforderung **Windows** aus, indem Sie `2` eingeben.
+1. Wenn die Eingabeaufforderung für die **Abonnementoption** angezeigt wird, wählen Sie das richtige `Subscription` aus, indem Sie die Ziffer am Zeilenanfang eingeben.
+1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
+1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `2` eingeben.
 1. Verwenden Sie die Java-Standardversion (1.8.), indem Sie die EINGABETASTE drücken.
 1. Verwenden Sie den Standardwebcontainer (Tomcat 8.5), indem Sie die EINGABETASTE drücken.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Wählen Sie bei entsprechender Aufforderung **Linux** aus, indem Sie die EINGABETASTE drücken.
-2. Verwenden Sie die Java-Standardversion (1.8.), indem Sie die EINGABETASTE drücken.
-3. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
+1. Wenn die Eingabeaufforderung für die **Abonnementoption** angezeigt wird, wählen Sie das richtige `Subscription` aus, indem Sie die Ziffer am Zeilenanfang eingeben.
+1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
+1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie die Java-Standardversion (1.8.), indem Sie die EINGABETASTE drücken.
+1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Wählen Sie bei entsprechender Aufforderung **Linux** aus, indem Sie die EINGABETASTE drücken.
+1. Wenn die Eingabeaufforderung für die **Abonnementoption** angezeigt wird, wählen Sie das richtige `Subscription` aus, indem Sie die Ziffer am Zeilenanfang eingeben.
+1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
+1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 1. Verwenden Sie die Java-Standardversion (1.8.), indem Sie die EINGABETASTE drücken.
 1. Verwenden Sie den Standardwebcontainer (Tomcat 8.5), indem Sie die EINGABETASTE drücken.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -195,9 +207,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 Sie können bei Bedarf die Konfigurationen für App Service direkt in der Datei `pom.xml` ändern. Im Folgenden sind einige gängige Konfigurationen aufgeführt:
 
-Eigenschaft | Erforderlich | BESCHREIBUNG | Version
+Eigenschaft | Erforderlich | Beschreibung | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
+`<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
 `<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
 `<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+

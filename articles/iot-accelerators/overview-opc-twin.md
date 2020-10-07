@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281693"
 ---
 # <a name="what-is-opc-twin"></a>Was ist OPC-Zwilling?
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den derzeit aktuellen Inhalt lesen.
 
 OPC Twin umfasst Microservices, die über Azure IoT Edge und IoT Hub eine Verbindung zwischen der Cloud und dem Fabriknetzwerk herstellen. OPC-Zwilling bietet Erkennungs- und Registrierungsfunktionen und ermöglicht die Fernsteuerung von Industriegeräten über Rest-APIs. OPC-Zwilling erfordert kein OPC UA SDK (Unified Architecture), ist unabhängig von der Programmiersprache und kann in einen serverlosen Workflow integriert werden. In diesem Artikel werden einige Anwendungsfälle für OPC-Zwilling beschrieben.
 
@@ -41,5 +44,4 @@ OPC -Zwilling kann über REST-APIs mit Anwendungen in einer beliebigen Programm
 
 Nachdem Sie sich hier über OPC-Zwilling und entsprechende Verwendungsmöglichkeiten informiert haben, können Sie mit dem nächsten Thema fortfahren:
 
-> [!div class="nextstepaction"]
-> [OPC Twin-Architektur](overview-opc-vault.md)
+[OPC Twin-Architektur](overview-opc-vault.md)

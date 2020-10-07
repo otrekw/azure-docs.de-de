@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren mehrerer Tabellen mithilfe von PowerShell
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer SQL Server-Datenbank in eine Datenbank in Azure SQL-Datenbank kopiert werden.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer SQL Server-Datenbank in Azure SQL-Datenbank geladen werden.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250960"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541831"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in Azure SQL-Datenbank mithilfe von PowerShell
 
@@ -821,11 +821,11 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die **ForE
 4. Wählen Sie auf der Seite **Data Factory** die Option **Erstellen und überwachen** aus, um Azure Data Factory auf einer separaten Registerkarte zu starten.
 
 5. Wählen Sie auf der Seite **Erste Schritte** links die Option **Überwachen** aus. 
-![Pipelineausführungen](media/doc-common-process/get-started-page-monitor-button.png)    
+![Screenshot: Seite „Erste Schritte“ für Azure Data Factory](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. Alle Pipelineausführungen mit dem dazugehörigen Status werden angezeigt. Beachten Sie, dass der Status der Pipelineausführung im folgenden Beispiel **Erfolgreich** lautet. Überprüfen Sie die an die Pipeline übergebenen Parameter, indem Sie in der Spalte **Parameter** auf den Link klicken. Wenn ein Fehler auftritt, wird in der Spalte **Fehler** ein Link angezeigt.
 
-    ![Pipelineausführungen](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![Screenshot: Pipelineausführungen für eine Data Factory einschließlich Ihrer Pipeline](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Wenn Sie in der Spalte **Aktionen** den Link auswählen, werden alle Aktivitätsausführungen der Pipeline angezeigt. 
 
 8. Wählen Sie **Alle Pipelineausführungen** aus, um zurück zur Ansicht **Pipelineausführungen** zu wechseln. 

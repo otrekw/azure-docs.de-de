@@ -6,80 +6,70 @@ author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 09/03/2020
 ms.author: pimorano
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260358"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Schnellstart: Erstellen eines Synapse-Arbeitsbereichs
-
 In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal erläutert.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+## <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
-## <a name="prerequisites"></a>Voraussetzungen
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
+1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
+1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich mit diesen Einstellungen zu erstellen:
 
-- [Azure Data Lake Storage Gen2-Speicherkonto](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+    |Registerkarte|Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
+    |---|---|---|---|
+    |Grundlagen|**Arbeitsbereichsname**|Sie können einen beliebigen Namen eingeben.| In diesem Dokument wird **myworkspace** verwendet.|
+    |Grundlagen|**Region**|Wählen Sie dieselbe Region wie für das Speicherkonto aus.|
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+1. Zum Erstellen eines Arbeitsbereichs benötigen Sie ein ADLSGEN2-Konto. Am einfachsten ist es, ein solches Konto neu zu erstellen. Wenn Sie ein vorhandenes Konto verwenden möchten, müssen Sie einige zusätzliche Konfigurationsschritte ausführen. 
+1. OPTION 1: Erstellen eines neuen ADLSGEN2-Kontos 
+    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Neu erstellen**, und geben Sie **contosolake** als Namen ein.
+    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Dateisystem**, und geben Sie **users** als Namen ein.
+1. OPTION 2: Anweisungen finden Sie unter **Vorbereiten eines Speicherkontos** am Ende dieses Dokuments.
+1. Ihr Azure Synapse-Arbeitsbereich verwendet dieses Speicherkonto als „primäres“ Speicherkonto und den Container zum Speichern von Arbeitsbereichsdaten. Im Arbeitsbereich werden Daten in Apache Spark-Tabellen gespeichert. Die Spark-Anwendungsprotokolle werden im Ordner **/synapse/workspacename** gespeichert.
+1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
+## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal
+Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
 
-1. Geben Sie im Suchbereich von Microsoft Azure den Suchbegriff **Synapse-Arbeitsbereiche** ein, und wählen Sie dann diesen Dienst aus.
-![Suchleiste im Azure-Portal mit der Eingabe „Azure Synapse-Arbeitsbereiche“.](media/quickstart-create-synapse-workspace/workspace-search.png)
-2. Klicken Sie auf der Seite **Synapse workspaces** (Synapse-Arbeitsbereiche) auf **+ Hinzufügen**.
-![Hervorgehobener Befehl zum Erstellen eines neuen Azure Synapse-Arbeitsbereichs.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
-3. Füllen Sie das Formular für den **Azure Synapse-Arbeitsbereich** mit den folgenden Informationen aus:
+* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Wählen Sie oben im Abschnitt **Übersicht** die Option **Synapse Studio starten** aus.
+* Navigieren Sie zu `https://web.azuresynapse.net`, und melden Sie sich bei Ihrem Arbeitsbereich an.
 
-    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
-    | :------ | :-------------- | :---------- |
-    | **Abonnement** | *Ihr Abonnement* | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-    | **Ressourcengruppe** | *Beliebige Ressourcengruppe* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Benennungsregeln und Einschränkungen). |
-    | **Arbeitsbereichsname** | mysampleworkspace | Gibt den Namen des Arbeitsbereichs an, der auch für Verbindungsendpunkte verwendet wird.|
-    | **Region** | USA (Ost 2) | Gibt den Standort des Arbeitsbereichs an.|
-    | **Data Lake Storage Gen2** | Konto: `storage account name` </br> Dateisystem: `root file system to use` | Gibt den Namen des ADLS Gen2-Speicherkontos, das als primärer Speicher verwendet werden soll, sowie das zu verwendende Dateisystem an.|
-    ||||
+## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>Vorbereiten eines vorhandenen Speicherkontos für die Verwendung mit Synapse Analytics
 
-    ![Flow für die Arbeitsbereichsbereitstellung: Registerkarte „Grundeinstellungen“](media/quickstart-create-synapse-workspace/create-workspace-03.png)
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Navigieren Sie zu einem vorhandenen ADLSGEN2-Speicherkonto.
+1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus. Weisen Sie anschließend die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind:
+    * Weisen Sie sich selbst die Rolle **Besitzer** zu.
+    * Weisen Sie sich selbst die Rolle **Besitzer von Speicherblobdaten** zu.
+1. Wählen Sie im linken Bereich die Option **Container** aus, und erstellen Sie einen Container.
+1. Sie können dem Container einen beliebigen Namen geben. In diesem Dokument hat der Container den Namen **users**.
+1. Übernehmen Sie die Standardeinstellung **Öffentliche Zugriffsebene**, und wählen Sie anschließend **Erstellen** aus.
 
-    Das Speicherkonto kann wie folgt angegeben werden:
-    - Über eine Liste der ADLS Gen2-Konten, die in Ihrem Abonnement verfügbar sind
-    - Manuelle Eingabe unter Verwendung des Kontonamens
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>Konfigurieren des Zugriffs auf das Speicherkonto vom Arbeitsbereich
 
-    > [!IMPORTANT]
-    > Der Azure Synapse-Arbeitsbereich muss Lese- und Schreibvorgänge im ausgewählten ADLS Gen2-Konto ausführen können. Darüber hinaus müssen Sie für jedes Speicherkonto, das Sie als primäres Speicherkonto verknüpfen, bei der Erstellung des Speicherkontos den **hierarchischen Namespace** aktiviert haben.
-    >
-    > Unterhalb der ADLS Gen2-Auswahlfelder wird ein Hinweis angezeigt, dass der verwalteten Identität des Arbeitsbereichs die Rolle **Mitwirkender an Storage-Blobdaten** für das Data Lake Storage Gen2-Dateisystem zugewiesen und ihm dadurch Vollzugriff gewährt wird.
+Verwaltete Identitäten für Ihren Azure Synapse-Arbeitsbereich verfügen unter Umständen bereits über Zugriff auf das Speicherkonto. Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 
-4. (Optional) Ändern Sie ggf. die Standardeinstellungen auf der Registerkarte **Sicherheit + Netzwerkbetrieb**:
-5. (Optional) Fügen Sie Tags auf der Registerkarte **Tags** hinzu.
-6. Auf der Registerkarte **Zusammenfassung** werden die erforderlichen Überprüfungen ausgeführt, um sicherzustellen, dass der Arbeitsbereich erfolgreich erstellt werden kann. Klicken Sie nach der Überprüfung auf **Erstellen**. ![Flow für die Arbeitsbereichsbereitstellung: Registerkarte zur Bestätigung.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. Wenn die Ressourcenerstellung erfolgreich abgeschlossen wurde, wird in der Liste der Synapse-Arbeitsbereiche ein Eintrag für den erstellten Arbeitsbereich angezeigt. ![Liste der Synapse-Arbeitsbereiche mit dem neu bereitgestellten Arbeitsbereich](media/quickstart-create-synapse-workspace/create-workspace-07.png)
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) und dann das primäre Speicherkonto, das Sie für Ihren Arbeitsbereich ausgewählt haben.
+1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
+1. Weisen Sie die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind. Wir verwenden für die Identität und den Namen des Arbeitsbereichs den gleichen Namen.
+    * Weisen Sie für die Rolle **Mitwirkender an Storage-Blobdaten** des Speicherkontos **myworkspace** als Identität des Arbeitsbereichs zu.
+    * Weisen Sie **myworkspace** als Namen für den Arbeitsbereich zu.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Führen Sie die folgenden Schritte aus, um den Azure Synapse-Arbeitsbereich zu löschen.
-> [!WARNING]
-> Wenn Sie einen Azure Synapse-Arbeitsbereich löschen, werden die Analyse-Engines und die Daten, die in der Datenbank der enthaltenen SQL-Pools gespeichert sind, sowie die Arbeitsbereichsmetadaten entfernt. Es kann keine Verbindung mehr mit den SQL-Endpunkten und den Apache Spark-Endpunkten hergestellt werden. Alle Codeartefakte werden gelöscht (Abfragen, Notebooks, Auftragsdefinitionen und Pipelines).
->
-> Das Löschen des Arbeitsbereichs wirkt sich **nicht** auf die Daten in der Data Lake Store Gen2-Instanz aus, die mit dem Arbeitsbereich verknüpft ist.
-
-Führen Sie die folgenden Schritte aus, wenn Sie den Azure Synapse-Arbeitsbereich löschen möchten:
-
-1. Navigieren Sie zu dem Azure Synapse-Arbeitsbereich, der gelöscht werden soll.
-1. Klicken Sie auf der Befehlsleiste auf **Löschen**.
- ![Übersicht über den Azure Synapse-Arbeitsbereich: hervorgehobener Befehl zum Löschen](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. Bestätigen Sie den Löschvorgang, und klicken Sie auf die Schaltfläche **Löschen**.
- ![Übersicht über den Azure Synapse-Arbeitsbereich: Bestätigungsdialogfeld zum Löschen des Arbeitsbereichs](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. Wenn der Vorgang erfolgreich abgeschlossen wurde, wird der Azure Synapse-Arbeitsbereich nicht mehr in der Liste der Arbeitsbereiche aufgeführt.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als Nächstes können Sie [SQL-Pools](quickstart-create-sql-pool-studio.md) oder [Apache Spark-Pools](quickstart-create-apache-spark-pool-studio.md) erstellen, um mit der Analyse und Untersuchung Ihrer Daten zu beginnen.
+* [Erstellen eines SQL-Pools](quickstart-create-sql-pool-studio.md) 
+* [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool-portal.md)
+* [Verwenden von SQL On-Demand](quickstart-sql-on-demand.md)

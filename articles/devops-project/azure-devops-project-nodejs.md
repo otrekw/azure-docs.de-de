@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer CI/CD-Pipeline für eine PWA mit GatsbyJS und Azure DevOps Starter
-description: DevOps Starter erleichtert die ersten Schritte mit Azure. Damit können Sie eine App in einem Azure-Dienst Ihrer Wahl in einigen wenigen Schritten starten.
+description: Hier erfahren Sie, wie Sie eine progressive NodeJS-Web-App (PWA) erstellen, indem Sie GatsbyJS und die vereinfachte Erstellungsumgebung von Azure DevOps Starter verwenden.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 5453677826e1490977257fd75e10308ee45df00a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318618"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline in Azure Pipelines für Node.js mit Azure DevOps Starter
 
@@ -37,7 +37,7 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
    ![Erstellen einer Azure-Ressource im Azure-Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. Geben Sie in das Suchfeld **DevOps Starter** ein, und wählen Sie die Option dann aus. Klicken Sie auf **Hinzufügen**, um eine neue zu erstellen.
+1. Geben Sie in das Suchfeld **DevOps Starter** ein, und wählen sie die Option dann aus. Klicken Sie auf **Hinzufügen**, um einen neuen zu erstellen.
 
     ![Das DevOps Starter-Dashboard](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -75,7 +75,7 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
 1. Über Ihr Azure DevOps-Projekt können Sie Teammitglieder zur Zusammenarbeit einladen und ein Kanban-Board einrichten, um mit der Nachverfolgung Ihrer Arbeit zu beginnen. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
 
-![Azure DevOps-Übersicht](_img/azure-devops-project-nodejs/azure-devops-overview.png)
+![Übersicht über Azure DevOps](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
 ## <a name="clone-the-repo-and-install-your-gatsby-pwa"></a>Klonen des Repositorys und Installieren Ihrer Gatsby-PWA
 

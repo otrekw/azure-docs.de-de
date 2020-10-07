@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329454"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 
@@ -314,6 +314,8 @@ Ihre Dateien sind zwischen der Azure-Dateifreigabe und Windows Server jetzt sync
 ![Azure Storage erfolgreich synchronisiert](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die in diesem Tutorial erstellten Ressourcen bereinigen möchten, entfernen Sie zuerst die Endpunkte aus dem Speichersynchronisierungsdienst. Heben Sie anschließend die Registrierung des Servers beim Speichersynchronisierungsdienst auf, entfernen Sie die Synchronisierungsgruppen, und löschen Sie den Synchronisierungsdienst.
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 

@@ -3,13 +3,13 @@ title: 'Tutorial: Auslösen der Imageerstellung bei der Aktualisierung eines Bas
 description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Container Registry-Aufgabe so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn ein Basisimage in der gleichen Registrierung aktualisiert wird.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262245"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
@@ -133,7 +133,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Navigieren Sie in Ihrem Browser zu `http://localhost:8080`. Daraufhin sollte eine Webseite mit der Node.js-Versionsnummer angezeigt werden, wie im folgenden Beispiel zu sehen. In einem späteren Schritt passen Sie die Version an, indem Sie der Versionszeichenfolge ein „a“ hinzufügen.
 
-![Screenshot der im Browser gerenderten Beispielanwendung][base-update-01]
+![Screenshot einer im Browser gerenderten Beispielanwendung][base-update-01]
 
 Führen Sie den folgenden Befehl aus, um den Container zu beenden und zu entfernen:
 

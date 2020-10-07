@@ -4,12 +4,12 @@ description: Passen Sie eine C# .NET-Web-App mit einer Personalisierungsschleife
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316221"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Tutorial: Hinzufügen einer Personalisierung zu einer .NET-Web-App
 
@@ -254,7 +254,7 @@ Erstellen Sie HttpRequestFeaturesExample mit einer der folgenden Methoden, und f
 Über einen Webbrowser können Sie eine Rangfolge- und eine Belohnungsanforderung senden und deren Antworten sowie die aus Ihrer Umgebung extrahierten HTTP-Anforderungsfeatures anzeigen.
 
 > [!div class="mx-imgBorder"]
-> ![Erstellen und Ausführen des HTTPRequestFeaturesExample-Projekts. Ein Browserfenster wird geöffnet, in dem die Einzelseitenanwendung angezeigt wird.](./media/tutorial-web-app/web-app-single-page.png)
+> ![Screenshot: Beispiel des HTTP-Anforderungsfeatures in einem Webbrowser](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>Veranschaulichung der Personalisierungsschleife
 
@@ -267,7 +267,7 @@ Erstellen Sie HttpRequestFeaturesExample mit einer der folgenden Methoden, und f
 1. Legen Sie den Belohnungswert fest, und wählen Sie dann die Schaltfläche **Send Reward Request** (Belohnungsanforderung senden) aus. Wenn Sie den Belohnungswert nicht ändern, sendet die Clientanwendung immer den Wert `1` an die Personalisierung.
 
     > [!div class="mx-imgBorder"]
-    > ![Erstellen und Ausführen des HTTPRequestFeaturesExample-Projekts. Ein Browserfenster wird geöffnet, in dem die Einzelseitenanwendung angezeigt wird.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Screenshot: Abschnitt zur Belohnungsanforderung](./media/tutorial-web-app/reward-score-api-call.png)
 
     Bei Ihrer eigenen zukünftigen Anwendung kann die Generierung des Belohnungsergebnisses nach dem Sammeln von Informationen über das Benutzerverhalten auf dem Client zusammen mit Geschäftslogik auf dem Server erfolgen.
 

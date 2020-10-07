@@ -1,6 +1,6 @@
 ---
 title: Tutorial`:` Verwenden einer verwalteten Identität für den Zugriff auf Azure Storage per Zugriffsschlüssel – Linux – Azure AD
-description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers verwenden, um auf Azure Storage zuzugreifen.
+description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers verwenden, um über einen Zugriffsschlüssel auf Azure Storage zuzugreifen.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 312ca5f693c42d70ecb5e210ef0d30df5c9739bb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e99a199fcc5f43f3710fe2e2fcfe55b7e624987b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317462"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage über Zugriffsschlüssel
 

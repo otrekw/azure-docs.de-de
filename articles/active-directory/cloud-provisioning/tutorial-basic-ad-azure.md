@@ -10,18 +10,18 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266308"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Tutorial: Grundlegende Active Directory-Umgebung
 
 In diesem Tutorial werden die einzelnen Schritte zum Erstellen einer grundlegenden Active Directory Umgebung erläutert. 
 
-![Erstellen](media/tutorial-single-forest/diagram1.png)
+![Diagramm: Grundlegende Azure AD-Umgebung](media/tutorial-single-forest/diagram1.png)
 
 Mithilfe der Umgebung, die Sie im Tutorial erstellen, können Sie verschiedene Aspekte von Hybrididentitätsszenarien testen. Diese Umgebung ist zudem Voraussetzung für einige Tutorials.  Wenn Sie bereits über eine vorhandene Active Directory Umgebung verfügen, können Sie diese stattdessen verwenden.  Diese Informationen richten sich an Einzelpersonen ohne Vorkenntnisse.
 
@@ -200,7 +200,7 @@ Jetzt müssen Sie einen Azure AD-Mandanten erstellen, damit Sie Ihre Benutzer mi
 2. Wählen Sie das **Plussymbol (+)** aus, und suchen Sie nach **Azure Active Directory**.
 3. Wählen Sie in den Suchergebnissen **Azure Active Directory** aus.
 4. Klicken Sie auf **Erstellen**.</br>
-![Erstellen](media/tutorial-single-forest/create1.png)</br>
+![Screenshot: Seite „Azure Active Directory“ im Azure-Portal](media/tutorial-single-forest/create1.png)</br>
 5. Geben Sie einen **Namen für die Organisation** an, zusammen mit dem **Namen der Anfangsdomäne**. Klicken Sie anschließend auf **Erstellen**. Hierdurch wird Ihr Verzeichnis erstellt.
 6. Sobald dies abgeschlossen ist, klicken Sie auf **diesen Link**, um das Verzeichnis zu verwalten.
 
@@ -208,7 +208,7 @@ Jetzt müssen Sie einen Azure AD-Mandanten erstellen, damit Sie Ihre Benutzer mi
 Nachdem nun ein Azure AD-Mandant vorhanden ist, erstellen Sie ein globales Administratorkonto.  Gehen Sie zum Erstellen des globalen Administratorkontos wie folgt vor:
 
 1.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.</br>
-![Erstellen](media/tutorial-single-forest/administrator1.png)</br>
+![Screenshot: Menü „Übersicht“ mit ausgewählter Option „Benutzer“](media/tutorial-single-forest/administrator1.png)</br>
 2.  Wählen Sie **Alle Benutzer** und dann **+ Neuer Benutzer** aus.
 3.  Geben Sie für diesen Benutzer einen Namen und Benutzernamen an. Dieser wird Ihr globaler Administrator für den Mandanten. Sie sollten außerdem die **Verzeichnisrolle** in **Globaler Administrator** ändern. Sie können auch das temporäre Kennwort anzeigen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.</br>
 ![Erstellen](media/tutorial-single-forest/administrator2.png)</br>

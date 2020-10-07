@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af5efd7c9b3c486e608c39c230700b52dd17a260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371625"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
@@ -215,7 +215,7 @@ groupid=$(az ad group show --group mygroup --query objectId --output tsv)
 
 ### <a name="get-the-role-definition-id"></a>Abrufen der Rollendefinitions-ID
 
-Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten RBAC-Rolle, der Sie Zugriff auf den Benutzer, die Benutzergruppe oder Anwendung gewähren möchten. In der Regel verwenden Sie die Rolle „Besitzer, „Mitwirkender“ oder „Leser“. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
+Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten Azure-Rolle, der Sie Zugriff auf den Benutzer, die Benutzergruppe oder Anwendung gewähren möchten. In der Regel verwenden Sie die Rolle „Besitzer, „Mitwirkender“ oder „Leser“. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -401,7 +401,7 @@ Sie können überprüfen, ob die Anwendungsdefinitionsdateien in Ihrem bereitges
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Sicherstellen, dass Benutzer Ihre Definition sehen können
 
-Sie haben zwar Zugriff auf die Definition der verwalteten Anwendung, möchten aber sicherstellen, dass andere Benutzer in Ihrer Organisation darauf zugreifen können. Erteilen Sie ihnen mindestens die Leserrolle für die Definition. Diese Zugriffsebene haben sie möglicherweise vom Abonnement oder von der Ressourcengruppe geerbt. Informationen zum Überprüfen, wer Zugriff auf die Definition hat, sowie zum Hinzufügen von Benutzern oder Gruppen finden Sie unter [Manage access using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md) (Verwalten des Zugriffs mithilfe von RBAC und Azure-Portal).
+Sie haben zwar Zugriff auf die Definition der verwalteten Anwendung, möchten aber sicherstellen, dass andere Benutzer in Ihrer Organisation darauf zugreifen können. Erteilen Sie ihnen mindestens die Leserrolle für die Definition. Diese Zugriffsebene haben sie möglicherweise vom Abonnement oder von der Ressourcengruppe geerbt. Informationen zum Überprüfen, wer Zugriff auf die Definition hat, sowie zum Hinzufügen von Benutzern oder Gruppen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

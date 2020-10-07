@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: b43fd5c432b06902de0a898fc4bb0f114143b3ba
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0e0f6ff89f59b862ea15148124f44abc3ed196bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375277"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254346"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -65,7 +65,7 @@ Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem 
 
 ### <a name="nsg-tags"></a>NSG-Tags
 
-Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](../virtual-network/security-overview.md#service-tags) für *Azure AD* und *Azure Storage* erstellen.  Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
+Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](../virtual-network/security-overview.md#service-tags) für Azure AD (*AzureActiveDirectory*) und Azure Storage (*Storage*) erstellen. Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
 
 1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
 
@@ -75,7 +75,7 @@ Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden
 
 1. Wählen Sie **Hinzufügen** aus, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
-Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Storage und Azure AD erstellen. Weitere Informationen zu Diensttags finden Sie in [diesem Artikel](../virtual-network/service-tags-overview.md).
+Auf ähnliche Weise können Sie [NSG-Ausgangssicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags) für Azure Storage und Azure AD erstellen. Weitere Informationen zu Diensttags finden Sie in [diesem Artikel](../virtual-network/service-tags-overview.md).
 
 ### <a name="azure-firewall-tags"></a>Azure Firewall-Tags
 

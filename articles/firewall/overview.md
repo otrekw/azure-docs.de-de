@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 08/25/2020
+ms.date: 09/24/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 0572613fe33d525ed1a5a42c627de3ce1049a290
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 24b30842bea51394a375cf48e09b7547e057405c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261735"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -55,7 +55,8 @@ Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktioniere
 |NAT-Regeln mit Ports zwischen 64000 und 65535 werden nicht unterstützt.|Azure Firewall lässt beliebige Ports im Bereich 1-65535 in Netzwerk- und Anwendungsregeln zu. NAT-Regeln unterstützen jedoch nur Ports im Bereich 1-63999.|Dies ist eine aktuelle Beschränkung.
 |Konfigurationsaktualisierungen können durchschnittlich fünf Minuten dauern.|Eine Aktualisierung der Azure Firewall-Konfiguration kann durchschnittlich zwischen drei und fünf Minuten dauern, und parallele Aktualisierungen werden nicht unterstützt.|Es wird bereits nach einer Lösung gesucht.|
 |Azure Firewall verwendet SNI-TLS-Header zum Filtern von HTTPS- und MSSQL-Datenverkehr.|Wenn die Browser- oder Serversoftware die Erweiterung Server Name Indication (SNI) nicht unterstützt, können Sie keine Verbindung über Azure Firewall herstellen.|Wenn die Browser- oder Serversoftware SNI nicht unterstützt, können Sie möglicherweise die Verbindung mithilfe einer Netzwerkregel anstelle einer Anwendungsregel steuern. Eine Liste der Software, die SNI unterstützt, finden Sie unter [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication).|
-|Benutzerdefiniertes DNS (Vorschau) kann nicht mit Tunnelerzwingung verwendet werden.|Ist Tunnelerzwingung aktiviert, funktioniert benutzerdefiniertes DNS (Vorschau) nicht.|Es wird bereits nach einer Lösung gesucht.
+|Benutzerdefiniertes DNS (Vorschau) kann nicht mit Tunnelerzwingung verwendet werden.|Ist Tunnelerzwingung aktiviert, funktioniert benutzerdefiniertes DNS (Vorschau) nicht.|Es wird bereits nach einer Lösung gesucht.|
+|Unterstützung für neue öffentliche IP-Adressen für mehrere Verfügbarkeitszonen|Sie können keine neue IP-Adresse hinzufügen, wenn Sie eine Firewall mit zwei Verfügbarkeitszonen bereitstellen (entweder 1 und 2, 2 und 3 oder 1 und 3).|Dies ist eine Einschränkung bei öffentlichen IP-Adressressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

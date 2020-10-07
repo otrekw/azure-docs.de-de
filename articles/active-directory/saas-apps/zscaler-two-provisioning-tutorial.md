@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3cd69876eb5fa18d9763bd7f89233d7608384ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317503"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Two für die automatische Benutzerbereitstellung
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zscaler Two synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler Two für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    ![Attributzuordnungen](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
+    ![Screenshot: Abschnitt „Attributzuordnungen“ mit sieben Zuordnungen](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Zscaler Two** (Azure Active Directory-Gruppen mit Zscaler Two synchronisieren):
 
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Zscaler Two synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler Two für Updatevorgänge verwendet. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    ![Attributzuordnungen](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
+    ![Screenshot: Attributzuordnungen mit drei Zuordnungen](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, hilft Ihnen die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](./../active-directory-saas-scoping-filters.md) weiter.
 

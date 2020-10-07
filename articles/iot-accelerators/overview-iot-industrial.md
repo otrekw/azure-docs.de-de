@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281812"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Was ist Industrial IoT (IIoT)?
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den derzeit aktuellen Inhalt lesen.
 
 IIoT ist das Internet der Dinge für die Industrie. IIoT ermöglicht die Verbesserung der Effizienz durch den Einsatz von IoT in der Fertigungsindustrie. 
 
@@ -31,7 +34,7 @@ Beschleunigen Sie den Zugriff auf Computer im Fertigungsbereich mit OPC Twin, u
 > Weitere Informationen zu Azure Industrial IoT-Diensten finden Sie im [GitHub-Repository](https://github.com/Azure/Industrial-IoT) sowie in der [Dokumentation](https://azure.github.io/Industrial-IoT/).
 Sollten Sie noch nicht mit der Funktionsweise von Azure IoT Edge-Modulen vertraut sein, lesen Sie zunächst folgende Artikel:
 - [About Azure IoT Edge (Informationen zu Azure IoT Edge)](../iot-edge/about-iot-edge.md)
-- [Grundlegendes zu Azure IoT Edge-Modulen](../iot-edge/iot-edge-modules.md)
+- [Azure IoT Edge-Module](../iot-edge/iot-edge-modules.md)
 
 ## <a name="connected-factory"></a>Verbundene Factory
 
@@ -49,5 +52,4 @@ OPC Vault ist eine Implementierung von OPC UA GDS (Global Discovery Server) u
 
 Nach dieser Einführung in Industrial IoT und die dazugehörigen Komponenten können Sie mit dem nächsten Thema fortfahren:
 
-> [!div class="nextstepaction"]
-> [Was ist die OPC-Geräteverwaltung (Open Platform Communications) von Azure IoT?](overview-opc-twin.md)
+[Was ist die OPC-Geräteverwaltung (Open Platform Communications) von Azure IoT?](overview-opc-twin.md)

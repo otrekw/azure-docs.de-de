@@ -1,6 +1,6 @@
 ---
 title: Grundlegende Konzepte für Apache Spark
-description: Dieser Artikel enthält eine Einführung in Apache Spark in Azure Synapse Analytics sowie in die verschiedenen Konzepte.
+description: Einführung in Apache Spark in Azure Synapse Analytics sowie in die verschiedenen Konzepte.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260137"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Grundlegende Konzepte für Apache Spark in Azure Synapse Analytics
 
@@ -36,7 +36,7 @@ Informationen zum Erstellen eines Spark-Pools sowie alle verfügbaren Eigenschaf
 
 Spark-Instanzen werden erstellt, wenn Sie eine Verbindung mit einem Spark-Pool herstellen, eine Sitzung erstellen und einen Auftrag ausführen. Da mehrere Benutzer Zugriff auf einen einzelnen Spark-Pool haben können, wird für jeden Benutzer, der eine Verbindung herstellt, eine neue Spark-Instanz erstellt. 
 
-Wenn Sie einen zweiten Auftrag übermitteln und Kapazität im Pool sowie in der Spark-Instanz verfügbar ist, wird der Auftrag von der bereits vorhandenen Instanz verarbeitet. Ist dagegen nur Kapazität auf der Poolebene verfügbar, wird eine neue Spark-Instanz erstellt.
+Wenn Sie einen zweiten Auftrag übermitteln und Kapazität im Pool verfügbar ist, verfügt auch die Spark-Instanz über Kapazität. In diesem Fall wird der Auftrag von der bereits vorhandenen Instanz verarbeitet. Andernfalls wird eine neue Spark-Instanz erstellt, wenn Kapazität auf Poolebene verfügbar ist.
 
 ## <a name="examples"></a>Beispiele
 

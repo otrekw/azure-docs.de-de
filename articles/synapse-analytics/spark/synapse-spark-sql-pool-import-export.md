@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259917"
 ---
 # <a name="introduction"></a>Einführung
 
@@ -30,7 +30,7 @@ Der Connector „Azure Synapse Apache Spark pool to Synapse SQL“ ist eine Date
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Authentifizierung in Azure Synapse Analytics
 
-Die Authentifizierung zwischen Systemen erfolgt in Azure Synapse Analytics nahtlos. Es gibt einen Tokendienst, der eine Verbindung mit Azure Active Directory herstellt, um Sicherheitstoken für den Zugriff auf das Speicherkonto oder den Data Warehouse-Server zu erhalten.
+Die Authentifizierung zwischen Systemen erfolgt in Azure Synapse Analytics nahtlos. Der Tokendienst stellt eine Verbindung mit Azure Active Directory her, um Sicherheitstoken für den Zugriff auf das Speicherkonto oder den Data Warehouse-Server zu erhalten.
 
 Aus diesem Grund ist es nicht erforderlich, Anmeldeinformationen zu erstellen oder in der Connector-API anzugeben, solange AAD-Authentifizierung im Speicherkonto und auf dem Data Warehouse-Server konfiguriert ist. Andernfalls kann die SQL-Authentifizierung angegeben werden. Ausführlichere Informationen finden Sie im Abschnitt [Verbrauch](#usage).
 
@@ -65,7 +65,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 ## <a name="usage"></a>Verwendung
 
-Die „import“-Anweisungen sind nicht erforderlich. Sie werden für die Notebookumgebung vorab importiert.
+Die import-Anweisungen sind nicht erforderlich. Sie werden für die Notebookumgebung vorab importiert.
 
 ### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Übertragen von Daten zu oder von einem mit dem Arbeitsbereich verbundenen SQL-Pool
 
@@ -98,7 +98,7 @@ TableType-Werte
 - Constants.INTERNAL: Verwaltete Tabelle im SQL-Pool
 - Constants.EXTERNAL: Externe Tabelle im SQL-Pool
 
-Verwaltete SQL-Pool-Tabelle
+Verwaltete SQL-Pooltabelle
 
 ```scala
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
@@ -106,7 +106,7 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 Externe SQL-Pool-Tabelle
 
-Zum Schreiben einer externen SQL-Pool-Tabelle müssen im SQL-Pool eine externe Datenquelle (EXTERNAL DATA SOURCE) und ein externes Dateiformat (EXTERNAL FILE FORMAT) vorhanden sein.  Weitere Informationen finden Sie unter [Erstellen einer externen Datenquelle](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) und [Externe Dateiformate](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) im SQL-Pool.  Unten sind Beispiele für die Erstellung einer externen Datenquelle und von externen Dateiformaten im SQL-Pool angegeben.
+Zum Schreiben einer externen SQL-Pool-Tabelle müssen im SQL-Pool eine externe Datenquelle (EXTERNAL DATA SOURCE) und ein externes Dateiformat (EXTERNAL FILE FORMAT) vorhanden sein.  Weitere Informationen finden Sie unter [Erstellen einer externen Datenquelle](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) und [Externe Dateiformate](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) im SQL-Pool.  Unten sind Beispiele für die Erstellung einer externen Datenquelle und von externen Dateiformaten im SQL-Pool angegeben.
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:

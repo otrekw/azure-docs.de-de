@@ -2,7 +2,7 @@
 title: Dynamische Paketerstellung in Azure Media Services v3
 titleSuffix: Azure Media Services
 description: Dieser Artikel bietet eine Übersicht über die dynamische Paketerstellung in Azure Media Services.
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296228"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische Paketerstellung in Media Services v3
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291618"
 
 Mit Microsoft Azure Media Services können zahlreiche Medienquelldateiformate codiert und über verschiedene Streamingprotokolle mit oder ohne Inhaltsschutz bereitgestellt werden, um alle gängigen Geräte (etwa mit iOS und Android) abzudecken. Diese Clients benötigen verschiedene Protokolle. So müssen Streams für iOS beispielsweise im HLS-Format (HTTP Live Streaming) vorliegen, während Android-Geräte neben HLS auch MPEG-DASH unterstützen.
 
-In Media Services repräsentiert ein [Streamingendpunkt](streaming-endpoint-concept.md) (Ursprung) einen dynamischen Just-In-Time-Paketerstellungs- und Ursprungsdienst, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann. Der Streamingendpunkt verwendet hierbei eines der im nächsten Abschnitt beschriebenen allgemeinen Streamingmedienprotokolle. Die Funktion für die *dynamische Paketerstellung* ist standardmäßig auf allen Streamingendpunkten (Standard oder Premium) vorhanden.
+In Media Services repräsentiert ein [Streamingendpunkt](streaming-endpoint-concept.md) (Ursprung) einen dynamischen Just-In-Time-Paketerstellungs- und Ursprungsdienst, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann. Der Streamingendpunkt verwendet hierbei eines der im nächsten Abschnitt beschriebenen allgemeinen Streamingmedienprotokolle. Die Funktion für die *dynamische Paketerstellung* ist standardmäßig auf allen Streamingendpunkten vorhanden.
 
 > [!NOTE]
 > Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
@@ -132,7 +132,7 @@ Informationen zum Livestreaming in Media Services v3 finden Sie unter [Übersich
 Die dynamische Paketerstellung unterstützt Videodateien, die im MP4-Containerdateiformat vorliegen und Videodaten enthalten, die mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert sind.
 
 > [!NOTE]
-> Mit der *dynamischen Paketerstellung* wurden Auflösungen von bis zu 4K und Bildfrequenzen von bis zu 60 Frames/Sekunde getestet. Der [Premium-Encoder](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs.
+> Mit der *dynamischen Paketerstellung* wurden Auflösungen von bis zu 4K und Bildfrequenzen von bis zu 60 Frames/Sekunde getestet.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 

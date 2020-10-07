@@ -1,16 +1,16 @@
 ---
 title: Erstellen Ihrer ersten dauerhaften Funktion in Azure Functions mithilfe von PowerShell
-description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion mit Visual Studio Code erstellen und veröffentlichen.
+description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion in PowerShell mithilfe von Visual Studio Code erstellen und veröffentlichen.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317258"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Erstellen Ihrer ersten dauerhaften Funktion in PowerShell
 

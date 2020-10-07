@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313092"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Tutorial:  Einrichten der Kennworthashsynchronisierung als Sicherung für AD FS in Azure AD Connect
 
@@ -74,7 +74,7 @@ Nachfolgend wird veranschaulicht, wie Sie auf die Kennworthashsynchronisierung u
 
 1. Rufen Sie [https://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.</br>
-   ![Überprüfen](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Screenshot: Erfolgsmeldung beim Testen der Anmeldung ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>Rückkehr zum Verbund
 Es wird nun gezeigt, wie eine Rückkehr zum Verbund erfolgt.  Führen Sie dazu folgende Schritte aus:
@@ -91,7 +91,7 @@ Es wird nun gezeigt, wie eine Rückkehr zum Verbund erfolgt.  Führen Sie dazu f
 10. Klicken Sie nach Abschluss der Konfiguration auf **Weiter**.
 ![Konfigurieren](media/tutorial-phs-backup/backup4.png)</br>
 11. Klicken Sie im Fenster **Verbundkonnektivität überprüfen** auf **Überprüfen**.  Sie müssen möglicherweise DNS-Einträge konfigurieren (A- und AAAA-Einträge hinzufügen), damit dieser Schritt erfolgreich ausgeführt werden kann.
-![Überprüfen](media/tutorial-phs-backup/backup5.png)</br>
+![Screenshot: Bildschirm „Verbundkonnektivität überprüfen“ und Schaltfläche „Überprüfen“](media/tutorial-phs-backup/backup5.png)</br>
 12. Klicken Sie auf **Beenden**.
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>Zurücksetzen der Vertrauensstellung zwischen AD FS und Azure
@@ -106,7 +106,7 @@ Nun muss die Vertrauensstellung zwischen AD FS und Azure zurückgesetzt werden.
 6.  Geben Sie im Fenster **Mit Azure AD verbinden** den Benutzernamen und das Kennwort für „contoso\Administrator“ ein, und klicken Sie auf **Weiter**.
 7.  Klicken Sie im Fenster **Zertifikate** auf **Weiter**.
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Testanmeldung mit einem unserer Benutzer
+## <a name="test-signing-in-with-a-user"></a>Testen der Anmeldung mit einem Benutzer
 
 1.  Rufen Sie [https://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.

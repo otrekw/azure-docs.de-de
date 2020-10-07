@@ -3,14 +3,14 @@ title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005053"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574455"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>Was ist Azure VMware Solution (Vorschauversion)?
+# <a name="what-is-azure-vmware-solution"></a>Was ist Azure VMware Solution?
 
 Von Azure VMware Solution werden private Clouds in Azure bereitgestellt. Die privaten Clouds enthalten vSphere-Cluster, die auf dedizierter Bare-Metal-Azure-Infrastruktur basieren. Private Cloudcluster können von mindestens drei Hosts auf maximal 16 Hosts skaliert werden, und eine einzelne private Cloud kann mehrere Cluster enthalten. Alle privaten Clouds werden mit vCenter Server, vSAN, vSphere und NSX-T bereitgestellt. Sie können Workloads aus Ihren lokalen Umgebungen migrieren, neue virtuelle Computer erstellen oder bereitstellen und Azure-Dienste von Ihren privaten Clouds aus nutzen.
 
@@ -28,9 +28,7 @@ Neue private Clouds werden über das Azure-Portal oder mithilfe der Azure-Befehl
 
 ## <a name="networking"></a>Netzwerk
 
-Wenn eine private Cloud bereitgestellt wird, werden private Netzwerke für Verwaltung, Bereitstellung und vMotion erstellt. Diese privaten Netzwerke werden für den Zugriff auf vCenter und NSX-T Manager sowie für vMotion oder die Bereitstellung virtueller Computer verwendet. Auf die privaten Netzwerke kann über ein VNET in Azure oder über lokale Umgebungen zugegriffen werden. ExpressRoute Global Reach wird verwendet, um private Clouds mit lokalen Umgebungen zu verbinden. Für diese Verbindung ist ein VNET mit einer ExpressRoute-Leitung in Ihrem Abonnement erforderlich.
-
-Internetzugriff und Azure-Dienste werden beim Bereitstellen einer privaten Cloud bereitgestellt. Dadurch können virtuelle Computer in Netzwerken mit Produktionsworkloads Azure- oder internetbasierte Dienste nutzen. Der Internetzugriff ist für neue private Clouds standardmäßig deaktiviert und kann jederzeit aktiviert oder deaktiviert werden.
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
 Weitere Informationen zu Netzwerken und zur Interkonnektivität finden Sie im [Artikel zu Netzwerkkonzepten](concepts-networking.md).
 
@@ -46,7 +44,7 @@ Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VM
 
 ## <a name="monitoring-your-private-cloud"></a>Überwachen Ihrer privaten Cloud
 
-Sie können [Protokolle in Azure Monitor](../azure-monitor/overview.md) verwenden, um Protokolle auf Ihren virtuellen Computern zu sammeln, die in Ihrer privaten Azure VMware Solution-Cloud ausgeführt werden. Sie können den [MMA-Agent auf virtuellen Linux- und Windows-Computern, die in Ihren privaten Azure VMware Solution-Clouds ausgeführt werden, herunterladen und installieren](../azure-monitor/platform/log-analytics-agent.md#installation-options) und die gleichen Abfragen verwenden, die Sie auch auf Ihren lokalen virtuellen Computern ausführen. Nichtsdestotrotz können Sie die gleichen Abfragen ausführen, die Sie normalerweise auf Ihren virtuellen Computern ausführen würden. Weitere Informationen zum Erstellen von Abfragen finden Sie unter [Wie erfahre ich, wie ich Abfragen schreiben kann?](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Nach der Bereitstellung von Azure VMware Solution in Ihrem Abonnement werden automatisch [Azure Monitor-Protokolle](../azure-monitor/overview.md) generiert. Darüber hinaus können Sie Protokolle auf den einzelnen virtuellen Computern in Ihrer privaten Cloud erfassen. Sie können den [MMA-Agent auf virtuellen Linux- und Windows-Computern, die in Ihren privaten Azure VMware Solution-Clouds ausgeführt werden, herunterladen und installieren](../azure-monitor/platform/log-analytics-agent.md#installation-options) sowie die [Azure-Diagnoseerweiterung](../azure-monitor/platform/diagnostics-extension-overview.md) aktivieren. Sie können sogar die gleichen Abfragen ausführen, die Sie normalerweise auf Ihren virtuellen Computern ausführen. Weitere Informationen zum Erstellen von Abfragen finden Sie unter [Wie erfahre ich, wie ich Abfragen schreiben kann?](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Überwachungsmuster innerhalb von Azure VMware Solution ähneln Azure Virtual Machines innerhalb der IaaS-Plattform. Weitere Informationen und Anleitungen finden Sie unter [Überwachen von virtuellen Azure-Computern mit Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

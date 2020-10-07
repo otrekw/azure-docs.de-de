@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251772"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360836"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Bereitstellungscenter für Azure Kubernetes
 
@@ -54,7 +54,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 1. Wählen Sie den AKS-Cluster und dann auf dem linken Blatt **Bereitstellungscenter (Vorschau)** aus. Wählen Sie **Erste Schritte** aus.
 
-   ![settings](media/deployment-center-launcher/settings.png)
+   ![Screenshot: Azure-Portal mit einem Pfeil, der auf das Bereitstellungscenter zeigt](media/deployment-center-launcher/settings.png)
 
 1. Wählen Sie den Speicherort des Codes und dann **Weiter** aus. Wählen Sie anschließend eins der derzeit unterstützten Repository aus: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** oder **GitHub**.
 
@@ -66,7 +66,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
     - **GitHub:** Autorisieren Sie das Repository für Ihr GitHub-Konto, und wählen Sie es aus.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Animation: Prozess in GitHub, in dessen Rahmen GitHub als Quelle und anschließend Ihr Repository ausgewählt wird](media/deployment-center-launcher/github.gif)
 
 
 1. Das Bereitstellungscenter analysiert das Repository und erkennt das Dockerfile. Zur Aktualisierung des Dockerfile können Sie die ermittelte Portnummer bearbeiten.
@@ -75,7 +75,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
     Ist im Repository kein Dockerfile enthalten, wird vom System eine Meldung mit dem Hinweis angezeigt, dass eins committet werden muss.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Screenshot: Bereitstellungscenter mit der Meldung, dass das Dockerfile nicht im Repository gefunden wurde](media/deployment-center-launcher/dockerfile.png)
 
 1. Wählen Sie eine vorhandene Containerregistrierung aus, oder erstellen Sie eine, und wählen Sie dann **Fertig stellen** aus. Die Pipeline wird automatisch erstellt, und ein Build wird in [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) in die Warteschlange eingereiht.
 
@@ -87,7 +87,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 1. Nach der Bereitstellung werden die Erfolgsprotokolle angezeigt.
 
-    ![Protokolle](media/deployment-center-launcher/logs.png)
+    ![Screenshot: Bereitstellungscenter, in dem „Release-1“ mit einem grünen Häkchen markiert ist](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>Überprüfen der CI-Pipeline
 

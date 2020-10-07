@@ -1,6 +1,6 @@
 ---
 title: Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs und der iOS SDK-Version 2.0.4
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und dem Apple Push Notification Service Pushbenachrichtigungen an iOS-Geräte senden.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und dem Apple Push Notification Service Pushbenachrichtigungen an iOS-Geräte senden (Version 2.0.4).
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/19/2020
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: d89d46e3365a97d9deea8a89de2d9a1d5799cb72
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318193"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs (Version 2.0.4)
 
@@ -53,30 +53,11 @@ Bevor Sie fortfahren, vergewissern Sie sich, dass Sie das vorherige Tutorial zu 
 
    Wenn das neue in Xcode erstellte Bereitstellungsprofil nicht angezeigt wird, versuchen Sie, die Profile für Ihre Signaturidentität zu aktualisieren. Klicken Sie in der Menüleiste auf **Xcode**,  dann auf **Voreinstellungen**, auf die Registerkarte **Konto**, auf die Schaltfläche **Details anzeigen**, auf die Signaturidentität und anschließend rechts unten auf die Schaltfläche „Aktualisieren“.
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Details anzeigen":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Auswählen einer Vorlage":::
 
 4. Wählen Sie auf der Registerkarte **Signieren und Funktionen** die Option **+ Funktion** aus. Doppelklicken Sie zum Aktivieren auf **Pushbenachrichtigungen**. 
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Funktion":::
-
-5. Fügen Sie die Module für das Azure Notification Hubs SDK hinzu.
-
-   Sie können das Azure Notification Hubs SDK in Ihre App integrieren. Verwenden Sie dazu [CocoaPods](https://cocoapods.org/), oder fügen Sie die Binärdateien Ihrem Projekt manuell hinzu.
-
-   - Integration über CocoaPods: Fügen Sie Ihrer Podfile-Datei die folgenden Abhängigkeiten hinzu, um das Azure Notification Hubs SDK in Ihre App zu integrieren:
-
-      ```ruby
-      pod 'AzureNotificationHubs-iOS'
-      ```
-
-      - Führen Sie „pod install“ aus, um Ihren neu definierten Pod zu installieren, und öffnen Sie „.xcworkspace“.
-
-         Wenn beim Ausführen von „pod install“ ein Fehler wie **Es konnte keine Spezifikation für AzureNotificationHubs-iOS gefunden werden** angezeigt wird, führen Sie `pod repo update` aus, um die neuesten Pods aus dem CocoaPods-Repository abzurufen, und führen Sie dann „pod install“ aus.
-
-   - Integration über Carthage: Fügen Sie Ihrer Cartfile-Datei die folgenden Abhängigkeiten hinzu, um das Azure Notification Hubs SDK in Ihre App zu integrieren:
-
-      ```ruby
-      github "Azure/azure-notificationhubs-ios"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Auswählen einer Vorlage"
       ```
 
       - Aktualisieren und erstellen Sie als Nächstes die Abhängigkeiten:
@@ -93,7 +74,7 @@ Bevor Sie fortfahren, vergewissern Sie sich, dass Sie das vorherige Tutorial zu 
 
         - Klicken Sie in Xcode mit der rechten Maustaste auf Ihr Projekt, und klicken Sie dann auf die Option **Dateien hinzufügen zu**, um den Ordner **WindowsAzureMessaging.framework** zu Ihrem Xcode-Projekt hinzuzufügen. Klicken Sie auf **Optionen**, vergewissern Sie sich, dass die Option **Elemente kopieren, wenn nötig** aktiviert ist, und klicken Sie dann auf **Hinzufügen**.
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Hinzufügen des Frameworks":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Auswählen einer Vorlage":::
 
 6. Fügen Sie Ihrem Projekt eine neue Headerdatei namens **Constants.h** hinzu. Klicken Sie hierzu mit der rechten Maustaste auf den Projektnamen, und wählen Sie **Neue Datei...** aus. Wählen Sie dann **Headerdatei** aus. Diese Datei enthält die Konstanten für Ihren Notification Hub. Wählen Sie dann  **Weiter** aus. Geben Sie der Datei den Namen **Constants.h**.
 
@@ -110,13 +91,7 @@ Bevor Sie fortfahren, vergewissern Sie sich, dass Sie das vorherige Tutorial zu 
 
 8. Fügen Sie für „Constants.h“ die Implementierungsdatei hinzu. Klicken Sie hierzu mit der rechten Maustaste auf den Projektnamen, und wählen Sie **Neue Datei...** aus. Wählen Sie **Objective-C-Datei** und anschließend **Weiter** aus. Geben Sie der Datei den Namen **Constants.m**.
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Hinzufügen der Implementierungsdatei":::
-
-9. Öffnen Sie die Datei **Constants.m**, und ersetzen Sie ihren Inhalt durch den folgenden Code. Ersetzen Sie die Platzhalter für Zeichenfolgenliterale `NotificationHubConnectionString` und `NotificationHubConnectionString` durch den Hubnamen und die **DefaultListenSharedAccessSignature**, die Sie zuvor aus dem Portal abgerufen haben:
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Auswählen einer Vorlage"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -450,7 +425,7 @@ Bevor Sie fortfahren, vergewissern Sie sich, dass Sie das vorherige Tutorial zu 
 
 Mit der Option **Testsendevorgang** im [Azure-Portal](https://portal.azure.com/) können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="Testsendevorgang":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="Auswählen einer Vorlage":::
 
 Pushbenachrichtigungen werden normalerweise mithilfe einer kompatiblen Bibliothek über einen Back-End-Dienst wie Mobile Apps oder ASP.NET gesendet. Falls für Ihr Back-End keine Bibliothek verfügbar ist, können Sie Benachrichtigungen auch direkt über die REST-API senden.
 
@@ -467,13 +442,13 @@ Zum Testen von Pushbenachrichtigungen unter iOS müssen Sie die App auf einem ph
 
 1. Führen Sie die App aus, und überprüfen Sie, ob die Registrierung erfolgreich ist. Klicken Sie dann auf **OK**.
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Registrieren":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Auswählen einer Vorlage":::
 
 2. Als Nächstes senden Sie zu Testzwecken eine Pushbenachrichtigung über das [Azure-Portal](https://portal.azure.com/), wie im vorherigen Abschnitt beschrieben.
 
 3. Die Pushbenachrichtigung wird an alle Geräte gesendet, die dafür registriert sind, die Benachrichtigungen vom angegebenen Notification Hub zu erhalten.
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Testsendevorgang":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Auswählen einer Vorlage":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

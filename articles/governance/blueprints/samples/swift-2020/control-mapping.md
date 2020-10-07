@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
 description: Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 06a334ff05db1cfc7ad1fb09e370963486ee1515
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 868971b0523e077f0f76c0340a87df550448913a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297416"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540811"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels
 
@@ -31,7 +31,7 @@ Diese Blaupause hilft Ihnen bei der Überprüfung von Konten, die u. U. nicht d
 
 ## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2.6, 5.1, 6.4 und 6.5A Kontoverwaltung | Rollenbasierte Schemas
 
-In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-access-control/overview.md) (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden auch [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte RBAC-Regeln fehleranfällig sind.
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](../../../../role-based-access-control/overview.md) (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Mit dieser Blaupause werden auch [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten Azure RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind.
 
 - Ein Azure Active Directory-Administrator sollte für SQL-Server-Instanzen bereitgestellt werden
 - Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden
@@ -54,7 +54,7 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 ## <a name="13-51-and-64-least-privilege--review-of-user-privileges"></a>1.3, 5.1 und 6.4 Ansatz der geringsten Rechte | Kontrolle von Benutzerberechtigungen
 
-In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-access-control/overview.md) (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um Konten zu überwachen, die zur Überprüfung priorisiert werden sollten. Die Überprüfung dieser Kontoindikatoren kann Ihnen helfen, sicherzustellen, dass die Steuerungen mit den geringsten Rechten implementiert sind.
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um Konten zu überwachen, die zur Überprüfung priorisiert werden sollten. Die Überprüfung dieser Kontoindikatoren kann Ihnen helfen, sicherzustellen, dass die Steuerungen mit den geringsten Rechten implementiert sind.
 
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 - Überwachungsergebnisse von Windows-VMs anzeigen, die nicht in die angegebene Domäne eingebunden sind

@@ -4,12 +4,12 @@ description: Hier erfahren, wie Sie eine Agent-basierte Migration virtueller VMw
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296143"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrieren von VMware-VMs zu Azure (Agent-basiert)
 
@@ -251,7 +251,7 @@ Wählen Sie virtuelle Computer für die Migration aus.
 
 1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
 
-    ![Replizieren von VMs](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Screenshot: Bildschirm „Server“ in Azure Migrate. Die Schaltfläche „Replizieren“ ist unter „Azure Migrate: Servermigration“ im Abschnitt „Migrationstools“ hervorgehoben.](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere-Hypervisor** aus.
 3. Wählen Sie unter **Lokale Appliance** den Namen der Azure Migrate-Appliance aus, die Sie eingerichtet haben.
@@ -259,7 +259,7 @@ Wählen Sie virtuelle Computer für die Migration aus.
 5. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus.
 6. Geben Sie unter **Gastanmeldeinformationen** das VM-Administratorkonto an, das für die Pushinstallation des Mobility-Diensts verwendet wird. Klicken Sie anschließend auf **Next: Virtuelle Computer**.
 
-    ![Replizieren von VMs](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![Screenshot: Registerkarte „Quelleinstellungen“ auf dem Bildschirm „Replizieren“. Das Feld „Gastanmeldeinformationen“ ist hervorgehoben, und der Wert ist auf „VM-admin-account“ festgelegt.](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. Wählen Sie unter **Virtuelle Computer** die Computer aus, die Sie replizieren möchten.
 

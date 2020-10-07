@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297662"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App
 
@@ -85,18 +85,18 @@ Achten Sie darauf, die Datei vor dem Fortfahren zu speichern.
 
 Sie haben ein Modell festgelegt und verwenden nun in den verbleibenden Schritten die Beispiel-App für die Interaktion mit der Azure Digital Twins-Instanz. Führen Sie das Projekt über diese Schaltfläche auf der Symbolleiste aus:
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Visual Studio-Startschaltfläche (SampleClientApp-Projekt)":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 Ein Konsolenfenster wird geöffnet, führt die Authentifizierung durch und wartet auf einen Befehl. 
 * Die Authentifizierung erfolgt über den Browser: Ihr Standardwebbrowser wird mit einer Authentifizierungsaufforderung geöffnet. Melden Sie sich über diese Aufforderung mit Ihren Azure-Anmeldeinformationen an. Sie können dann die Browserregisterkarte oder das Browserfenster schließen.
 
 Hier sehen Sie einen Screenshot der Projektkonsole:
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Willkommensnachricht der Befehlszeilen-App":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 > [!TIP]
 > Geben Sie zum Abrufen einer Liste mit allen möglichen Befehlen, die Sie mit diesem Projekt verwenden können, `help` in der Projektkonsole ein, und drücken Sie die EINGABETASTE.
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Ausgabe des Befehls „help“":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 Führen Sie die Projektkonsole für die restlichen Schritte in diesem Tutorial weiter aus.
 
@@ -117,7 +117,7 @@ In der Ausgabe sollte die erfolgreiche Erstellung der Modelle angegeben sein.
 
 Vergewissern Sie sich, dass die Modelle erstellt wurden, indem Sie den Befehl `GetModels true` ausführen. Dadurch werden alle hochgeladenen Modelle aus der Azure Digital Twins-Instanz abgefragt und ausführliche Informationen ausgegeben. Suchen Sie in den Ergebnissen nach dem bearbeiteten *Room*-Modell:
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Ergebnisse von „GetModels“ mit dem aktualisierten Room-Modell":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 #### <a name="errors"></a>Errors
 
@@ -165,7 +165,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 In der Ausgabe dieser Befehle sollte die erfolgreiche Erstellung der Zwillinge angegeben sein. 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Auszug aus den Ergebnissen der CreateDigitalTwin-Befehle mit „floor0“, „floor1“, „room0“ und „room1“":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 Sie können auch mit dem Befehl `Query` überprüfen, ob die Zwillinge erstellt wurden. Mit diesem Befehl werden alle digitalen Zwillinge der Azure Digital Twins-Instanz abgefragt. Suchen Sie in den Ergebnissen nach den Zwillingen *floor0*, *floor1*, *room0* und *room1*.
 
@@ -205,7 +205,7 @@ CreateRelationship floor1 contains room1 relationship1
 
 Die Ausgabe dieser Befehle bestätigt, dass die Beziehungen erfolgreich erstellt wurden:
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Auszug aus den Ergebnissen der CreateRelationship-Befehle mit „relationship0“ und „relationship1“":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 Sie können die Beziehungen auch mit einem der folgenden Befehle überprüfen, mit dem Beziehungen in der Azure Digital Twins-Instanz abgefragt werden.
 * So zeigen Sie alle Beziehungen an, die von jeder Etage ausgehen (Anzeige der Beziehungen von einer Seite):
@@ -219,13 +219,13 @@ Sie können die Beziehungen auch mit einem der folgenden Befehle überprüfen, m
     ```
 * So fragen Sie diese Beziehungen einzeln ab: 
     ```cmd/sh
-    GetRelationship floor0 contains relationship0
-    GetRelationship floor1 contains relationship1
+    GetRelationship floor0 relationship0
+    GetRelationship floor1 relationship1
     ```
 
 Die Zwillinge und Beziehungen, die Sie in diesem Tutorial eingerichtet haben, bilden den folgenden konzeptionellen Graphen:
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Graph, in dem „floor0“ über „relationship0“ mit „room0“ verbunden und „floor1“ über „relationship1“ mit „room1“ verbunden ist" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>Abfragen des Zwillingsgraphen zum Beantworten von Umgebungsfragen
 
@@ -239,10 +239,10 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 
     Auf diese Weise können Sie schnell eine Bestandsaufnahme Ihrer Umgebung machen und sicherstellen, dass in Azure Digital Twins alles wunschgemäß dargestellt wird. Das Ergebnis ist eine Ausgabe, die jeden digitalen Zwilling mit seinen Details enthält. Hier sehen Sie einen Auszug:
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Partielle Ergebnisse der Zwillingsabfrage mit „room0“ und „floor1“":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
     >[!NOTE]
-    >Der Befehl `Query` ohne zusätzliche Argumente entspricht `Query SELECT * FROM DIGITALTWINS`.
+    >Im Beispielprojekt entspricht der Befehl `Query` ohne zusätzliche Argumente `Query SELECT * FROM DIGITALTWINS`. Wenn Sie alle Zwillinge in Ihrer Instanz mithilfe der [Abfrage-APIs](how-to-use-apis-sdks.md) oder der [CLI-Befehle](how-to-use-cli.md) abfragen möchten, verwenden Sie die längere (vollständige) Abfrage.
 
 * **Welche Räume sind in meiner Umgebung vorhanden?** (Abfrage nach Modell)
 
@@ -252,7 +252,7 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 
     Sie können Ihre Abfrage auf Zwillinge eines bestimmten Typs beschränken, um spezifischere Informationen zu den dargestellten Elementen zu erhalten. Im Ergebnis werden *room0* und *room1*, aber **nicht** *floor0* oder *floor1* angezeigt (da es sich dabei um Etagen und nicht um Räume handelt).
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Ergebnisse der Modellabfrage, die nur „room0“ und „room1“ zeigen":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 * **Welche Räume befinden sich auf *floor0*?** (Abfrage nach Beziehung)
 
@@ -262,7 +262,7 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 
     Sie können Abfragen basierend auf den Beziehungen in Ihrem Graphen durchführen, um Informationen zu den Beziehungen zwischen Zwillingen zu erhalten oder um die Abfrage auf einen bestimmten Bereich zu beschränken. Auf *floor0* befindet sich nur *room0*, daher ist dies der einzige Raum im Ergebnis.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Ergebnisse der Beziehungsabfrage mit „room0“":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 * **Welche Zwillinge in meiner Umgebung haben eine Temperatur über 75?** (Abfrage nach Eigenschaft)
 
@@ -272,7 +272,7 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 
     Sie können den Graphen auf der Grundlage von Eigenschaften abfragen, um eine Vielzahl von Fragen zu beantworten. Dazu zählt auch das Auffinden von Ausreißern in Ihrer Umgebung, die möglicherweise Ihre Aufmerksamkeit erfordern. Andere Vergleichsoperatoren ( *<* , *>* , *=* oder *!=* ) werden ebenfalls unterstützt. *room1* wird hier in den Ergebnissen angezeigt, da die Temperatur 80 beträgt.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Ergebnisse der Eigenschaftenabfrage, in denen nur „room1“ angezeigt wird":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 * **Welche Räume auf *floor0* haben eine Temperatur über 75?** (Verbundabfrage)
 
@@ -282,7 +282,7 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 
     Sie können die Abfragen oben auch wie in SQL mithilfe von Kombinationsoperatoren (etwa `AND`, `OR`, `NOT`) kombinieren. Diese Abfrage verwendet `AND`, um die vorherige Abfrage der Zwillingstemperatur spezifischer zu gestalten. Das Ergebnis enthält jetzt nur noch Räume mit einer Temperatur von über 75, die sich auf *floor0* befinden – in diesem Fall kein Raum. Das Resultset ist leer.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Ergebnisse der Verbundabfrage ohne Ergebnisse":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -1,6 +1,6 @@
 ---
-title: Ändern von Microsoft Identity Platform-App-Konten | Azure
-description: Konfigurieren Sie eine bei der Microsoft Identity Platform registrierte Anwendung, um zu ändern, welche Benutzer oder Konten auf die Anwendung zugreifen können.
+title: 'Schnellstart: Ändern von Microsoft Identity Platform-App-Konten | Azure'
+description: In dieser Schnellstartanleitung konfigurieren Sie eine bei Microsoft Identity Platform registrierte Anwendung, um zu ändern, welche Benutzer oder Konten auf die Anwendung zugreifen können.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258012"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten
 
@@ -27,11 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Konfiguration Ihrer An
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
-
-* Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
-* Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
-  * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
+* Abschluss von [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
@@ -78,13 +74,5 @@ Die implizite OAuth 2.0-Genehmigung ist für Anwendungen standardmäßig deaktiv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung an:
-
-* [Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md)
-* [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
-* [Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md)
-* [Entfernen einer bei der Microsoft Identity Platform registrierten Anwendung](quickstart-remove-app.md)
-
-Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
-
-Weitere Informationen zu den Brandingrichtlinien, die Sie bei der Entwicklung von Anwendungen mit Azure Active Directory verwenden sollten, finden Sie unter [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md).
+> [!div class="nextstepaction"]
+> [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md)

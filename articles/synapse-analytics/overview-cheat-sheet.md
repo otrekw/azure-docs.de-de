@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260664"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet für Azure Synapse Analytics
 
@@ -22,18 +22,21 @@ ms.locfileid: "85807025"
 
 Im Cheatsheet für Azure Synapse Analytics werden Schritt für Schritt die grundlegenden Konzepte des Diensts sowie wichtige Befehle erläutert. Dieser Artikel ist hilfreich für Neueinsteiger sowie für Benutzer, die sich für eine Zusammenfassung der wichtigsten Azure Synapse-Themen interessieren.
 
-## <a name="architecture"></a>Aufbau
+## <a name="basics"></a>Grundlagen
 
-> [!div class="mx-imgBorder"]
->![Architektur von Synapse](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+Ein **Synapse-Arbeitsbereich** bietet einen sicherungsfähigen abgegrenzten Bereich für die Zusammenarbeit an cloudbasierten Unternehmensanalysen in Azure. Ein Arbeitsbereich wird in einer bestimmten Region bereitgestellt und verfügt über ein zugeordnetes ADLS Gen2-Konto und Dateisystem (zum Speichern temporärer Daten). Ein Arbeitsbereich befindet sich unter einer Ressourcengruppe.
+
+Ein Arbeitsbereich ermöglicht die Ausführung von Analysen mit SQL und Apache Spark. Für SQL- und Spark-Analysen verfügbare Ressourcen werden in SQL- und Spark-**Pools** organisiert. 
+
+## <a name="synapse-sql"></a>Synapse-SQL
+**Synapse SQL** ermöglicht T-SQL-basierte Analysen in Synapse-Arbeitsbereichen. Synapse SQL hat zwei Verbrauchsmodelle: dediziert und serverlos.  Verwenden Sie für das dedizierte Modell dedizierte **SQL-Pools**. Ein Arbeitsbereich kann eine beliebige Anzahl dieser Pools enthalten. Verwenden Sie zur Nutzung des serverlosen Modells den serverlosen SQL-Pool „SQL On-Demand“. Jeder Arbeitsbereich verfügt über einen dieser Pools.
+
+## <a name="apache-spark-for-synapse"></a>Apache Spark für Synapse
+Erstellen und verwenden Sie zur Nutzung von Spark-Analysen **Spark-Pools** in Ihrem Synapse-Arbeitsbereich.
 
 ## <a name="terminology"></a>Begriff
 | Begriff                         | Definition      |
 |:---                                 |:---                 |
-| **Synapse-Arbeitsbereich** | Eine sicherungsfähige Zusammenarbeitsgrenze für cloudbasierte Unternehmensanalysen in Azure. Ein Arbeitsbereich wird in einer bestimmten Region bereitgestellt und verfügt über ein zugeordnetes ADLS Gen2-Konto und Dateisystem (zum Speichern temporärer Daten). Ein Arbeitsbereich befindet sich unter einer Ressourcengruppe. |
-| **Synapse SQL**   | Ermöglicht das Ausführen von Analysen mit Pools oder On-Demand-Funktionen.  |
-| **SQL-Pool**   | In einem Arbeitsbereich können null bis n bereitgestellte SQL-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Jeder SQL-Pool verfügt über eine zugeordnete Datenbank. Ein SQL-Pool kann manuell oder automatisch skaliert, angehalten und fortgesetzt werden. Ein SQL-Pool kann zwischen 100 DWU und 30.000 DWU skaliert werden.       |
-| **SQL On-Demand**   | Verteiltes, für große Datenmengen konzipiertes Datenverarbeitungssystem, mit dem Sie T-SQL-Abfragen für Daten in einem Data Lake ausführen können. Da es sich hierbei um ein serverloses System handelt, muss keine Infrastruktur verwaltet werden.       |
 |**Apache Spark für Synapse** | In einem Spark-Pool verwendete Spark-Runtime. Die aktuell unterstützte Version ist Spark 2.4 mit Python 3.6.1, Scala 2.11.12, .NET-Unterstützung für Apache Spark 0.5 und Delta Lake 0.3.  | 
 | **Apache Spark-Pool**  | In einem Arbeitsbereich können null bis n bereitgestellte Spark-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Ein Spark-Pool kann automatisch angehalten, fortgesetzt und skaliert werden.  |
 | **Spark-Anwendung**  |   Besteht aus einem Treiberprozess und einem Satz von Executorprozessen. Eine Spark-Anwendung wird in einem Spark-Pool ausgeführt.            |

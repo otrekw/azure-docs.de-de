@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie physische Computer mit 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 7091d95a07da60faed7012df04c05def340df7b4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2f9b3d43effff49da6aa348e22c0c974606f4c2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296330"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -228,14 +228,14 @@ Wählen Sie nun Computer für die Migration aus.
 
 1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
 
-    ![Replizieren von VMs](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
+    ![Screenshot: Bildschirm „Azure Migrate – Server“ mit hervorgehobener Schaltfläche „Replizieren“ unter „Azure Migrate: Servermigration“ im Abschnitt „Migrationstools“](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
 2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus.
 3. Wählen Sie unter **Lokale Appliance** den Namen der Azure Migrate-Appliance aus, die Sie eingerichtet haben.
 4. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus.
 6. Wählen Sie unter **Gastanmeldeinformationen** das Dummykonto aus, das Sie zuvor während des [Replikationsinstaller-Setups](#download-the-replication-appliance-installer) erstellt haben, um den Mobilitätsdienst manuell zu installieren. (Die Pushinstallation wird nicht unterstützt.) Klicken Sie anschließend auf **Next: Virtuelle Computer**.   
 
-    ![Replizieren von VMs](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Screenshot: Registerkarte „Quelleinstellungen“ im Bildschirm „Replizieren“ mit hervorgehobenem Feld „Gastanmeldeinformationen“](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
 7. Übernehmen Sie im Bereich **Virtuelle Computer** unter **Migrationseinstellungen aus einer Bewertung importieren?** die Standardeinstellung **Nein, ich gebe die Migrationseinstellungen manuell an**.
 8. Wählen Sie alle VMs aus, die Sie migrieren möchten. Klicken Sie anschließend auf **Next: Zieleinstellungen**.
@@ -264,9 +264,9 @@ Wählen Sie nun Computer für die Migration aus.
     - **Verfügbarkeitsgruppe**: Geben Sie die zu verwendende Verfügbarkeitsgruppe an.
 
 > [!NOTE]
->Wenn Sie eine andere Verfügbarkeitsoption für eine Gruppe von virtuellen Computern auswählen möchten, fahren Sie mit Schritt 1 fort, und wiederholen Sie die Schritte, indem Sie nach dem Starten der Replikation für eine Gruppe von virtuellen Computern unterschiedliche Verfügbarkeitsoptionen auswählen.
+> Wenn Sie eine andere Verfügbarkeitsoption für eine Gruppe von virtuellen Computern auswählen möchten, fahren Sie mit Schritt 1 fort, und wiederholen Sie die Schritte, indem Sie nach dem Starten der Replikation für eine Gruppe von virtuellen Computern unterschiedliche Verfügbarkeitsoptionen auswählen.
 
-    ![Compute settings](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
+   ![Computeeinstellungen](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
 13. Geben Sie unter **Datenträger** an, ob die VM-Datenträger in Azure repliziert werden sollen, und wählen Sie den Datenträgertyp (SSD Standard/HDD Standard oder Managed Disks Premium) in Azure aus. Klicken Sie dann auf **Weiter**.
     - Sie können Datenträger von der Replikation ausschließen.

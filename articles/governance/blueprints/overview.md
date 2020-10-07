@@ -3,12 +3,12 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050776"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541763"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -78,7 +78,9 @@ Jede **veröffentlichte** **Version** einer Blaupause kann (mit einem maximal 90
 
 ## <a name="permissions-in-azure-blueprints"></a>Berechtigungen in Azure Blueprint
 
-Zur Verwendung von Blaupausen müssen Ihnen über die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) Berechtigungen erteilt werden. Zur Erstellung von Blaupausen sind für Ihr Konto die folgenden Berechtigungen erforderlich:
+Zur Verwendung von Blaupausen müssen Ihnen über die [rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md) Berechtigungen erteilt werden. Zum Lesen oder Anzeigen einer Blaupause im Azure-Portal muss Ihr Konto über Lesezugriff für den Bereich verfügen, in dem sich die Blaupausendefinition befindet.
+
+Zur Erstellung von Blaupausen sind für Ihr Konto die folgenden Berechtigungen erforderlich:
 
 - `Microsoft.Blueprint/blueprints/write`: Erstellen einer Blaupausendefinition
 - `Microsoft.Blueprint/blueprints/artifacts/write`: Erstellen von Artefakten in einer Blaupausendefinition

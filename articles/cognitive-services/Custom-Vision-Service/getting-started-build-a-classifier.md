@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277341"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Schnellstart: Erstellen einer Klassifizierung mit Custom Vision
 
-In dieser Schnellstartanleitung erfahren Sie, wie eine Klassifizierung über die Custom Vision-Website erstellt wird. Nach der Erstellung eines Klassifizierungsmodells können Sie den Custom Vision Service für die Bildklassifizierung verwenden.
+In dieser Schnellstartanleitung erfahren Sie, wie eine Bildklassifizierung über die Custom Vision-Website erstellt wird. Nachdem Sie ein Modell erstellt haben, können Sie es mit neuen Bildern testen und schließlich in Ihre eigene Bilderkennungssoftware integrieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
@@ -27,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Eine Reihe von Bildern zum Trainieren Ihrer Klassifizierung. Tipps zum Auswählen von Bildern finden Sie unten.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
+## <a name="create-custom-vision-resources"></a>Erstellen von Custom Vision-Ressourcen
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +46,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 1. Geben Sie einen Namen und eine Beschreibung für das Projekt ein. Wählen Sie dann eine Ressourcengruppe aus. Wenn Ihr angemeldetes Konto einem Azure-Konto zugeordnet ist, zeigt die Dropdownliste „Ressourcengruppe“ alle Ihre Azure-Ressourcengruppen an, die eine Custom Vision Service-Ressource enthalten. 
 
    > [!NOTE]
-   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie im Custom Vision-Portal dasselbe „Verzeichnis“ wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
+   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie auf der Custom Vision-Website dasselbe „Verzeichnis“ wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
 
 1. Wählen Sie unter __Projekttypen__ die Option __Klassifizierung__ aus. Wählen Sie unter __Klassifizierungstypen__ je nach Ihrem Anwendungsfall entweder **Multilabel** (Mehrere Bezeichnungen) oder **Multiclass** (Mehrere Klassen) aus. Die Klassifizierung mit mehreren Bezeichnungen wendet eine beliebige Anzahl Ihrer Tags (null oder mehr) auf ein Bild an, während die Klassifizierung mit mehreren Klassen Bilder in einzelne Kategorien sortiert (jedes übermittelte Bild wird dem wahrscheinlichsten Tag zugeteilt). Sie können den Klassifizierungstyp später bei Bedarf ändern.
 
@@ -120,3 +121,4 @@ In dieser Schnellstartanleitung haben Sie erfahren, wie ein Bildklassifizierungs
 > [!div class="nextstepaction"]
 > [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
 
+* [Was ist Custom Vision?](./overview.md)

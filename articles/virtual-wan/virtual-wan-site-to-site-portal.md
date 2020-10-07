@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f39f5a8f758f390536e5d113629b185252c05d9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525161"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439368"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -231,7 +231,7 @@ Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, könne
 
 Sie können Ihre VPN Gateway-Einstellungen jederzeit anzeigen und konfigurieren, indem Sie **Anzeigen/Konfigurieren** auswählen.
 
-:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Anzeigen der Konfiguration" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Screenshot: Seite „VPN (Site-to-Site)“ mit einem Pfeil, der auf die Aktion „Anzeigen/Konfigurieren“ zeigt" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 Auf der Seite **VPN-Gateway bearbeiten** werden die folgenden Einstellungen angezeigt:
 
@@ -240,7 +240,7 @@ Auf der Seite **VPN-Gateway bearbeiten** werden die folgenden Einstellungen ange
 * BGP-IP-Standardadresse für VPN Gateway (von Azure zugewiesen)
 * Konfigurationsoption für benutzerdefinierte BGP-IP-Adresse: Dieses Feld ist für APIPA (Automatic Private IP Addressing) reserviert. Azure unterstützt BGP-IP-Adressen in den Bereichen „169.254.21.*“ und „169.254.22.*“. Azure akzeptiert BGP-Verbindungen in diesen Bereichen, wählt jedoch die Verbindung mit der standardmäßigen BGP-IP-Adresse.
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Anzeigen der Konfiguration" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Screenshot: Seite „VPN (Site-to-Site)“ mit einem Pfeil, der auf die Aktion „Anzeigen/Konfigurieren“ zeigt" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

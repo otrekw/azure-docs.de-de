@@ -1,17 +1,15 @@
 ---
 title: Packen und Bereitstellen von Containern
 description: In diesem Tutorial wird beschrieben, wie Sie die Definition einer Azure Service Fabric-Anwendung mit Yeoman generieren und aus der Anwendung ein Paket erstellen.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252748"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539876"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung mithilfe von Yeoman
 
@@ -278,7 +276,7 @@ Navigieren Sie in einem Browser zu Service Fabric Explorer (http:\//containertes
 
 Um eine Verbindung mit der ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und navigieren Sie zur Cluster-URL, etwa http:\//containertestcluster.eastus.cloudapp.azure.com:80. Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
 
-![votingapp][votingapp]
+![Screenshot: Azure-Abstimmungs-App mit Schaltflächen für Katzen, Hunde und das Zurücksetzen sowie den Summen][votingapp]
 
 ## <a name="clean-up"></a>Bereinigung
 

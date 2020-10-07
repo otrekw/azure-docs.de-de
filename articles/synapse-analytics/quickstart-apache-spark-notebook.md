@@ -4,17 +4,17 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der 
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260766"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Schnellstart: Erstellen eines Apache Spark-Pools in Azure Synapse Analytics mithilfe von Webtools
 
@@ -49,7 +49,7 @@ Ein Notebook ist eine interaktive Umgebung, die verschiedene Programmiersprachen
 4. Geben Sie im Fenster **Eigenschaften** einen Namen für das Notebook an.
 5. Klicken Sie auf der Symbolleiste auf **Veröffentlichen**.
 6. Ist im Arbeitsbereich nur ein einzelner Apache Spark-Pool vorhanden, wird er standardmäßig ausgewählt. Sollte kein Apache Spark-Pool ausgewählt sein, wählen Sie mithilfe der Dropdownliste den korrekten Pool aus.
-7. Klicken Sie auf **Code hinzufügen**. Die Standardsprache ist `Pyspark`. Da hier eine Mischung aus Pyspark und Spark SQL verwendet wird, können Sie die Standardauswahl beibehalten.
+7. Klicken Sie auf **Code hinzufügen**. Die Standardsprache ist `Pyspark`. Da hier eine Mischung aus Pyspark und Spark SQL verwendet wird, können Sie die Standardauswahl beibehalten. Weitere unterstützte Sprachen sind Scala und .NET für Spark.
 8. Als Nächstes wird ein einfaches manipulierbares Spark-Objekt vom Typ „DataFrame“ erstellt. In diesem Fall wird es auf der Grundlage von Code erstellt. Es gibt drei Zeilen und drei Spalten:
 
    ```python

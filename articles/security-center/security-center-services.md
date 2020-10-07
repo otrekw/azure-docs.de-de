@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904700"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439417"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
@@ -42,12 +42,12 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 |[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
 |Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|-|-|-|Ja|
-|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Kostenlos<br><br>Nicht-Azure: Ja|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
 |Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
 |[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
-|Bewertung der Datenträgerverschlüsselung|✔|✔|-|Kostenlos|
-|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Kostenlos|
-|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Kostenlos|
+|Bewertung der Datenträgerverschlüsselung|✔</br>(für [unterstützte Szenarien](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nein|
+|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Nein|
+|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Nein|
 
 
 ### <a name="linux-machines"></a>[**Linux-Computer**](#tab/features-linux)
@@ -66,12 +66,12 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 |[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
 |Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|✔|✔|✔|Ja|
-|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Kostenlos<br><br>Nicht-Azure: Ja|
-|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Kostenlos<br><br>Nicht-Azure: Ja|
-|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Kostenlos|
-|Bewertung der Datenträgerverschlüsselung|✔|✔|-|Kostenlos|
-|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Kostenlos|
-|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Kostenlos|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
+|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Nicht-Azure: Ja|
+|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nein|
+|Bewertung der Datenträgerverschlüsselung|✔</br>(für [unterstützte Szenarien](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nein|
+|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Nein|
+|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Nein|
 
 --- 
 

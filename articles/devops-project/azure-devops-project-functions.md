@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355473"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Bereitstellung in Azure Functions mit DevOps Starter
 
@@ -95,7 +95,7 @@ Mit DevOps Starter wird automatisch eine CI/CD-Pipeline in Ihrer Azure DevOps-Or
 
 1. Klicken Sie unter **Build** auf den Link. Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
 
-    ![Entwickeln](_img/azure-devops-project-functions/build.png)
+    ![Screenshot: DevOps Starter-Dashboard im Azure-Portal mit einem Pfeil, der auf einen Link unter „Build“ in der CI/CD-Pipeline zeigt](_img/azure-devops-project-functions/build.png)
 
 1. Wählen Sie **Bearbeiten** aus. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können. Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise wird Quellcode aus dem Git-Repository abgerufen, die Anwendung wird erstellt, Komponententests werden ausgeführt, und für Bereitstellungen verwendete Ausgaben werden veröffentlicht.
 

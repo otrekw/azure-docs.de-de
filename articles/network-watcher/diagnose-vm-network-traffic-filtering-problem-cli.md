@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr – Azure-Befehlszeilenschnittstelle'
 titleSuffix: Azure Network Watcher
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
+description: Hier erfahren Sie, wie Sie die Azure CLI verwenden, um mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9fcc26d17b9bb1d67d85a1775c4df191fe3524f0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 871c4fc69daac9d5f515fdf3e4ec0ca1de6fbe08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502051"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295956"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure CLI
 

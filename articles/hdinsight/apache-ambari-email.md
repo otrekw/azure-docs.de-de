@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081899"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541661"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Tutorial: Konfigurieren von Apache Ambari-E-Mail-Benachrichtigungen in Azure HDInsight
 
@@ -54,7 +54,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Wählen Sie im Fenster **Manage Alert Notifications** (Warnungsbenachrichtigungen verwalten) das Symbol **+** aus.
 
-    ![Ambari – Warnungsbenachrichtigung erstellen](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![Screenshot: Dialogfeld „Manage Alert Notifications“ (Warnungsbenachrichtigungen verwalten)](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. Geben Sie im Dialogfenster **Create Alert Notification** (Warnungsbenachrichtigung erstellen) die folgenden Informationen an:
 
@@ -75,7 +75,7 @@ In diesem Tutorial lernen Sie Folgendes:
     |Kennwortbestätigung|Geben Sie das Kennwort erneut ein.|
     |Start TLS (TLS starten)|Aktivieren Sie dieses Kontrollkästchen.|
 
-    ![Ambari – Warnungsbenachrichtigung erstellen](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![Screenshot: Create Alert Notification (Warnungsbenachrichtigung erstellen)](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     Wählen Sie **Speichern** aus. Sie kehren zum Fenster **Manage Alert Notifications** (Warnungsbenachrichtigungen verwalten) zurück.
 

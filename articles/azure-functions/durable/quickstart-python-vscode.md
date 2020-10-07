@@ -1,16 +1,16 @@
 ---
 title: Erstellen Ihrer ersten dauerhaften Funktion in Azure mit Python
-description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion mit Visual Studio Code erstellen und veröffentlichen.
+description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion in Python mithilfe von Visual Studio Code erstellen und veröffentlichen.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: c9ca6d52bd71683344115004ec17a981b03f0a24
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85198905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294848"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Erstellen Ihrer ersten dauerhaften Funktion in Python
 

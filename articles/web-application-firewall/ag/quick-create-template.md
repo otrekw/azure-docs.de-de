@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure WAF v2 für Application Gateway: Azure Resource Manager-Vorlage'
 titleSuffix: Azure Application Gateway
-description: Hier erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Web Application Firewall v2 für Azure Application Gateway erstellen.
+description: Hier erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Schnellstartvorlage (ARM-Vorlage) eine Web Application Firewall v2-Instanz für Azure Application Gateway erstellen.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266954"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure WAF v2 für Application Gateway mithilfe einer ARM-Vorlage
 
@@ -59,7 +59,7 @@ Stellen Sie die ARM-Vorlage in Azure bereit:
    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
 
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
-3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
+3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 96b91c08e0bf9a176af2ed844cd63a2cfa1e233d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9765f685f2fccc9332a2f07d907aac415aa2c57f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589638"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333918"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer: Konzepte
 
@@ -85,7 +85,7 @@ Ohne Floating IP wird von Azure ein herkömmliches Zuordnungsschema für IP-Adre
 
 ## <a name="limitations"></a><a name = "limitations"></a>Einschränkungen
 
-- Floating IP wird für sekundäre IP-Konfigurationen in Szenarien mit internem Lastenausgleich derzeit nicht unterstützt.
+- Floating IP wird für sekundäre IP-Konfigurationen in Szenarien mit internem Lastenausgleich oder öffentlichem Lastenausgleich derzeit nicht unterstützt.
 
 - Eine Lastenausgleichsregel kann sich nicht über zwei virtuelle Netzwerke erstrecken.  Front-Ends und ihre Back-End-Instanzen müssen sich im gleichen virtuellen Netzwerk befinden.  
 

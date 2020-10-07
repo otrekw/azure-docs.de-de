@@ -3,17 +3,17 @@ title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 – JavaScript'
 description: In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek, Version 12 für JavaScript ein Container und ein Blob im Blobspeicher (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c4343012c7d0abb7c8b8a22da687dc5ac668dc19
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js
+ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514378"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307533"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js
 
@@ -312,7 +312,8 @@ In dieser Schnellstartanleitung wurde beschrieben, wie Sie Blobs mit JavaScript 
 Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Dokumentation zu Azure für JavaScript](/azure/developer/javascript/)
+> [Azure für JavaScript- und Node.js-Entwickler](/azure/developer/javascript/)
 
-* Weitere Informationen finden Sie in der [Azure Storage Blob client library for JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob) (Azure Storage Blob-Clientbibliothek für JavaScript).
+* Informationen zum Bereitstellen einer Web-App, die Azure Blob Storage verwendet, finden Sie unter [Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true).
 * Blobspeicher-Beispiel-Apps finden Sie unter [Getting started with samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) (Erste Schritte mit Beispielen).
+* Weitere Informationen finden Sie in der [Azure Storage Blob client library for JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob) (Azure Storage Blob-Clientbibliothek für JavaScript).

@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Überprüfen der Rechtschreibung mit der REST-API und Java – Bing-Rechtschreibprüfung'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik
+description: Erste Schritte mit der Bing-Rechtschreibprüfungs-REST-API und Java zum Überprüfen von Rechtschreibung und Grammatik.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 56a5215daea9289a481e0a51575ef0ee3cbdb3a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 02e83d2a18958e23f412af7b9685ddd1ab400aac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322073"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316629"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Java
 

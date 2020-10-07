@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333493"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler ZSCloud für die automatische Benutzerbereitstellung
 
@@ -120,7 +120,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zscaler ZSCloud synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler ZSCloud für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    ![Attributzuordnungen](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![Screenshot: Abschnitt „Attributzuordnungen“ mit sieben Zuordnungen](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Zscaler ZSCloud** (Azure Active Directory-Gruppen mit Zscaler ZSCloud synchronisieren):
 
@@ -128,7 +128,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Zscaler ZSCloud synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler ZSCloud für Updatevorgänge verwendet. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    ![Attributzuordnungen](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![Screenshot: Attributzuordnungen mit drei Zuordnungen](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, hilft Ihnen die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](./../active-directory-saas-scoping-filters.md) weiter.
 

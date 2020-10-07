@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63bd6be9b21a506054ab5a02fa7f5d6751f303a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266325"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Tutorial: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
 
@@ -61,16 +61,16 @@ Die Umgebung, die Sie in diesem Tutorial erstellen, können Sie zu Testzwecken v
 5. Führen Sie den Azure AD Connect-Bereitstellungs-Agent aus.
 6. **Akzeptieren** Sie auf dem Begrüßungsbildschirm die Lizenzbedingungen, und klicken Sie auf **Installieren**.
 
-   ![Bildschirm „Willkommen“](media/how-to-install/install1.png)
+   ![Screenshot: Begrüßungsbildschirm „Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket“](media/how-to-install/install1.png)
 
 7. Nach Abschluss dieses Vorgangs wird der Konfigurations-Assistent gestartet.  Melden Sie sich mit dem Konto Ihres globalen Azure AD-Administrators an.  Beachten Sie, dass die Anmeldung blockiert wird, wenn Sie die verstärkte Sicherheitskonfiguration für IE aktiviert haben.  Schließen Sie in diesem Fall die Installation, deaktivieren Sie die verstärkte Sicherheitskonfiguration für IE in Server-Manager, und klicken Sie auf den **Assistenten für den AAD Connect-Bereitstellungs-Agent**, um die Installation neu zu starten.
 8. Klicken Sie auf dem Bildschirm **Active Directory verbinden** auf **Verzeichnis hinzufügen**, und melden Sie sich dann mit Ihrem Active Directory-Domänenadministratorkonto an.  HINWEIS:  Für das Domänenadministratorkonto sollten keine Anforderungen zum Ändern des Kennworts gelten. Wenn das Kennwort abläuft oder geändert wird, müssen Sie den Agent mit den neuen Anmeldeinformationen neu konfigurieren. Dadurch wird Ihr lokales Verzeichnis hinzugefügt.  Klicken Sie auf **Weiter**.
 
-   ![Bildschirm „Willkommen“](media/how-to-install/install3.png)
+   ![Screenshot: Bildschirm „Active Directory verbinden“](media/how-to-install/install3.png)
 
 9. Klicken Sie auf dem Bildschirm **Konfiguration abgeschlossen** auf **Bestätigen**.  Dadurch wird der Agent registriert und neu gestartet.
 
-   ![Bildschirm „Willkommen“](media/how-to-install/install4.png)
+   ![Screenshot: Bildschirm „Konfiguration abgeschlossen“](media/how-to-install/install4.png)
 
 10. Sobald dieser Vorgang abgeschlossen ist, sollte der folgende Hinweis angezeigt werden: **Ihre Agent-Konfiguration wurde erfolgreich überprüft.**  Sie können dann auf **Beenden** klicken.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install5.png)</br>

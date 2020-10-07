@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 265bc1bb86c7fe8424656aa9adb30ddbe847e6fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985657"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318590"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Was ist Azure Stack Edge Pro R?
 
-Azure Stack Edge Pro R ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein widerstandsfähiges, robustes Edgegerät der Serverklasse für die Datenübertragung über das Netzwerk in Azure. Diese Geräte sind mit einer Grafikverarbeitungseinheit (Graphical Processing Unit, GPU) ausgestattet und für KI, Analysen und serverloses Computing optimiert. Die robusten Geräte eignen sich für den Einsatz in widrigen Umgebungen.
+Azure Stack Edge Pro R ist ein robustes Edgecomputinggerät für die Verwendung in rauen Umgebungen. Azure Stack Edge Pro R wird als HaaS-Lösung (Hardware-as-a-Service) ausgeliefert. Microsoft liefert Ihnen ein von der Cloud verwaltetes Gerät, das als Netzwerkspeichergateway fungiert und über einen Grafikprozessor (Graphical Processing Unit, GPU) verfügt, der beschleunigte KI-Rückschlüsse ermöglicht.
 
 Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge Pro R-Lösung, ihre wichtigsten Funktionen und die Szenarien, in denen Sie dieses Gerät bereitstellen können.
 
@@ -28,14 +28,13 @@ Azure Stack Edge Pro R weist die folgenden Merkmale auf:
 
 |Funktion |Beschreibung  |
 |---------|---------|
-|Robuste Hardware| Robuste Hardware der Serverklasse, die für widrige Umgebungen ausgelegt ist Tragbares Gerät in einem Transportbehälter für 2 Personen. |
+|Robuste Hardware| Robuste Hardware der Serverklasse, die für widrige Umgebungen ausgelegt ist Gerät in einer tragbaren Transportbox |
 |Von der Cloud verwaltet     |Das Gerät und der Dienst werden über das Azure-Portal verwaltet.|
 |Workloads für Edgecomputing   |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten. Unterstützt VMs und Workloads in Containern.|
 |Beschleunigte KI-Rückschlüsse| Ausgestattet mit einer Nvidia T4-GPU.|
-|Hohe Leistung | Hochleistungscompute und -datenübertragungen.|
 |Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud. Lokaler Cache auf dem Gerät wird für schnellen Zugriff auf zuletzt verwendete Dateien verwendet.|
 |Modus „Getrennt“| Gerät und Dienst können optional über Azure Stack Hub verwaltet werden. Bereitstellen, Ausführen und Verwalten von Anwendungen im Offlinemodus. <br> Der Modus „Getrennt“ unterstützt Szenarien für das Hochladen von Daten im Offlinemodus.|
-|Unterstützte Protokolle     |Unterstützung der standardmäßigen SMB-, NFS- und REST-Protokolle für die Datenerfassung. <br> Weitere Informationen zu den unterstützten Versionen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro R](azure-stack-edge-gpu-system-requirements.md).|
+|Unterstützte Dateiübertragungsprotokolle     |Unterstützung der standardmäßigen SMB-, NFS- und REST-Protokolle für die Datenerfassung. <br> Weitere Informationen zu den unterstützten Versionen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro R](azure-stack-edge-gpu-system-requirements.md).|
 |Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
 |Doppelte Verschlüsselung    | Sich selbst verschlüsselnde Laufwerke stellen die erste Verschlüsselungsebene dar. VPN bietet die zweite Verschlüsselungsebene. BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.|
 |Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken.|
@@ -61,13 +60,13 @@ Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge Pro R für sch
 
 Die Azure Stack Edge Pro R-Lösung umfasst eine Azure Stack Edge Pro R-Ressource, ein robustes, physisches Azure Stack Edge Pro R-Gerät und eine lokale Webbenutzeroberfläche.
 
-- **Physisches Azure Stack Edge Pro R-Gerät**: Das Azure Stack Edge Pro R-Gerät, das für das Senden von Daten an Azure konfiguriert werden kann. Das Gerät ist ein 1U-Server mit einem robusten von Microsoft bereitgestellten Gehäuse. Optional ist der Server mit einer unterbrechungsfreien Stromversorgung (auch 1U) verfügbar.
+- **Physisches Azure Stack Edge Pro R-Gerät:** Ein Compute- und Speichergerät mit einem Knoten in einer robusten Transportbox. Eine optionale unterbrechungsfreie Stromversorgung (USV) ist ebenfalls verfügbar.
 
     ![Das Azure Stack Edge Pro R-Gerät mit einem Knoten](media/azure-stack-edge-j-series-overview/device-image-1.png)
 
 - **Azure Stack Edge-Ressource:** Eine Ressource im Azure-Portal, mit der Sie ein robustes Azure Stack Edge Pro R-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
 
-- **Lokale Webbenutzeroberfläche für Azure Stack Edge Pro R**: Mithilfe der lokalen Webbenutzeroberfläche für die anfängliche Gerätekonfiguration können Sie Diagnosen ausführen, das Azure Stack Edge Pro R-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
+- **Lokale Webbenutzeroberfläche von Azure Stack Edge Pro R**: Eine browserbasierte lokale Benutzeroberfläche auf Ihrem Azure Stack Edge Pro R-Gerät, die in erster Linie der anfänglichen Konfiguration des Geräts dient. Über die lokale Webbenutzeroberfläche können Sie zudem Diagnosen ausführen, das Azure Stack Edge Pro-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
 
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
@@ -75,6 +74,8 @@ Die Azure Stack Edge Pro R-Lösung umfasst eine Azure Stack Edge Pro R-Ressour
 Das physische Azure Stack Edge Pro R-Gerät, die Azure-Ressource und das Zielspeicherkonto, an das Sie Daten übertragen, müssen sich nicht in derselben Region befinden.
 
 - **Ressourcenverfügbarkeit**: Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). 
+
+- **Geräteverfügbarkeit:** Eine Liste aller Länder, in denen das Azure Stack Edge Pro R-Gerät verfügbar ist, finden Sie auf der Seite [Azure Stack Edge – Preise](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR) auf der Registerkarte **Azure Stack Edge Pro R** im Abschnitt **Verfügbarkeit**.
 
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Die Regionen, in denen die Speicherkonten Azure Stack Edge Pro R-Daten speichern, sollten sich in der Nähe des Gerätestandorts befinden, um optimale Leistung zu erzielen. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
 

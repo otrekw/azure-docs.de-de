@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Serverlose Anwendungen mit Azure SignalR Service (C#)'
-description: Eine Schnellstartanleitung für die Verwendung des Azure SignalR-Diensts und von Azure Functions zum Erstellen eines Chatraums.
+description: Hier finden Sie eine Schnellstartanleitung für die Verwendung von Azure SignalR Service und Azure Functions zum Erstellen eines Chatraums mithilfe von C#.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369126"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von C\#
 
@@ -21,11 +21,11 @@ Mit dem Azure SignalR-Dienst können Sie Ihrer Anwendung ganz einfach Echtzeitfu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
 Sie können dieses Tutorial auch über die Befehlszeile (macOS, Windows oder Linux) ausführen und dabei [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) das [.NET Core SDK](https://dotnet.microsoft.com/download) und Ihren bevorzugten Code-Editor verwenden.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/dotnet), bevor Sie beginnen.
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qscsharp)
 
@@ -55,13 +55,13 @@ Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azu
 
 1. Wählen Sie die primäre Verbindungszeichenfolge aus, und kopieren Sie diese.
 
-1. Kehren Sie zu Visual Studio zurück, und benennen Sie im Projektmappen-Explorer *local.settings.sample.json* in *local.settings.json* um.
+1. Kehren Sie zu Visual Studio zurück, und benennen Sie im **Projektmappen-Explorer** die Datei *local.settings.sample.json* in *local.settings.json* um.
 
-1. Fügen Sie in **local.settings.json** die Verbindungszeichenfolge in den Wert der **AzureSignalRConnectionString**-Einstellung ein. Speichern Sie die Datei .
+1. Fügen Sie in *local.settings.json* die Verbindungszeichenfolge in den Wert der **AzureSignalRConnectionString**-Einstellung ein. Speichern Sie die Datei .
 
-1. Öffnen Sie **Functions.cs**. Es gibt zwei durch HTTP ausgelöste Funktionen in dieser Funktions-App:
+1. Öffnen Sie *Functions.cs*. Es gibt zwei durch HTTP ausgelöste Funktionen in dieser Funktions-App:
 
-    - **GetSignalRInfo**: Verwendet die *SignalRConnectionInfo*-Eingabebindung, um gültige Verbindungsinformationen zu generieren und zurückzugeben.
+    - **GetSignalRInfo**: Verwendet die `SignalRConnectionInfo`-Eingabebindung, um gültige Verbindungsinformationen zu generieren und zurückzugeben.
     - **SendMessages**: Empfängt eine Chatnachricht im Anforderungstext und verwendet die *SignalR*-Ausgabebindung, um die Nachricht an alle verbundenen Clientanwendungen zu senden.
 
 1. Verwenden Sie eine der folgenden Optionen, um die Azure-Funktions-App lokal zu starten.

@@ -1,5 +1,5 @@
 ---
-title: Upgrade auf v3.0 der Maschinelles Sehen-API
+title: Upgraden auf Read 3.0 der Maschinelles Sehen-API
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie ein Upgrade von v2.0/v2.1 auf v3.0 der Lese-API für maschinelles Sehen ausführen.
 services: cognitive-services
@@ -11,59 +11,71 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5910c40729d07d5a759b2e5cc7b7a4272524c150
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253852"
 ---
-# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>Upgrade von v2.0/v2.1 auf v3.0 der Lese-API für maschinelles Sehen
+# <a name="upgrade-from-read-v2x-to-read-v3x"></a>Upgraden von Read 2.x auf Read 3.x
 
-In dieser Anleitung wird gezeigt, wie Sie ein Upgrade des vorhandenen v2.0- oder v2.1-REST-API-Codes für maschinelles Sehen auf v3.0-Lesevorgänge ausführen. 
+In diesem Leitfaden erfahren Sie, wie Sie Ihren vorhandenen Container- oder Cloud-API-Code von Read 2.x auf Read 3.0 und 3.1 (Vorschauversion) upgraden.
 
-## <a name="upgrade-batch-read-file-to-read"></a>Upgrade von `Batch Read File` auf `Read`
+## <a name="determine-your-api-path"></a>Bestimmen Ihres API-Pfads
+Verwenden Sie die folgende Tabelle, um die **Versionszeichenfolge** im API-Pfad auf der Grundlage der Read-Version 3.x zu ermitteln, zu der Sie migrieren:
 
+|Produkttyp| Version | Versionszeichenfolge im API-Pfad der Version 3.x |
+|:-----|:----|:----|
+|Dienst | Read 3.0 | **v3.0** |
+|Container | Read 3.0 (Vorschauversion) | **v3.0** |
+|Dienst/Container | Read 3.1 (Vorschauversion) | **v3.1-preview.2** |
 
-1. Ändern Sie den API-Pfad für `Batch Read File` 2.x wie folgt:
+Verwenden Sie als Nächstes die folgenden Abschnitte, um Ihre Vorgänge einzugrenzen, und ersetzen Sie die **Versionszeichenfolge** in Ihrem API-Pfad durch den Wert aus der Tabelle. Aktualisieren Sie also beispielsweise den API-Pfad für Cloud- und Containerversionen vom Typ **Read 3.1 (Vorschauversion)** wie folgt: **https://{endpoint}/vision/v3.1-preview.2/read/analyze[?language]** .
 
+## <a name="servicecontainer"></a>Dienst/Container
 
-    |Read 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/**v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/**v3.0/read/analyze**[?language]|
+### `Batch Read File`
+
+|Read 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyze[?language]|
     
-    Ein neuer optionaler _Sprachparameter_ ist verfügbar. Wenn Sie die Sprache Ihres Dokuments nicht kennen oder es möglicherweise mehrsprachig ist, schließen Sie diesen Parameter nicht ein. 
+Ein neuer optionaler _Sprachparameter_ ist verfügbar. Wenn Sie die Sprache Ihres Dokuments nicht kennen oder es möglicherweise mehrsprachig ist, schließen Sie diesen Parameter nicht ein. 
 
-2. Ändern Sie den API-Pfad für `Get Read Results` in 2.x wie folgt:
+### `Get Read Results`
 
-    |Read 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/**v2.0**/read/**operations**/{operationId}     |https://{endpoint}/vision/**v3.0**/read/**analyzeResults**/{operationId}|
+|Read 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/read/operations**/{operationId}     |https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyzeResults/{operationId}|
 
-3. Ändern Sie den Code zum Überprüfen der JSON-Ergebnisse in `Get Read Operation Result`. Wenn der Aufruf von `Get Read Operation Result` erfolgreich ist, wird im JSON-Text ein Feld für die Statuszeichenfolge zurückgegeben. Die folgenden Werte von v2.0 wurden geändert, damit Sie besser an den anderen Cognitive Service-REST-APIs ausgerichtet sind. 
+### <a name="get-read-operation-result-status-flag"></a>Statusflag `Get Read Operation Result`
+
+Wenn der Aufruf von `Get Read Operation Result` erfolgreich ist, wird im JSON-Text ein Feld für die Statuszeichenfolge zurückgegeben.
  
-    |Read 2.x |Read 3.0  |
-    |----------|-----------|
-    |`"NotStarted"` |   `"notStarted"`|
-    |`"Running"` | `"running"`|
-    |`"Failed"` | `"failed"`|
-    |`"Succeeded"` | `"succeeded"`|
+|Read 2.x |Read 3.x  |
+|----------|-----------|
+|`"NotStarted"` |   `"notStarted"`|
+|`"Running"` | `"running"`|
+|`"Failed"` | `"failed"`|
+|`"Succeeded"` | `"succeeded"`|
     
-4. Ändern Sie den Code, um die JSON-Datei mit dem endgültigen Erkennungsergebnis aus `Get Read Operation Result` zu interpretieren. 
+### <a name="api-response-json"></a>API-Antwort (JSON) 
 
-    Beachten Sie die folgenden Änderungen in der JSON-Datei:
+Beachten Sie die folgenden Änderungen in der JSON-Datei:
+* In v2.x gibt `Get Read Operation Result` die JSON-Datei der OCR-Erkennung zurück, wenn der Status `Succeeded"` ist. In v3.0 ist dieses Feld `succeeded`.
+* Zum Abrufen des Stamms für das Seitenarray ändern Sie die JSON-Hierarchie von `recognitionResults` in `analyzeResult`/`readResults`. Die JSON-Hierarchie pro Zeile und Seite bleibt unverändert, sodass keine Codeänderungen erforderlich sind.
+* Der Seitenwinkel `clockwiseOrientation` wurde in `angle` umbenannt, und der Bereich wurde von 0 bis 360 Grad in -180 bis 180 Grad geändert. Je nach Ihrem Code müssen Sie möglicherweise Änderungen vornehmen, da die meisten mathematischen Funktionen beide Bereiche verarbeiten können.
+
+Mit der API 3.0 werden außerdem die folgenden Verbesserungen eingeführt, die Sie optional nutzen können:
+* `createdDateTime` und `lastUpdatedDateTime` werden hinzugefügt, um die Nachverfolgung der Verarbeitungsdauer zu ermöglichen. Weitere Informationen finden Sie in der Dokumentation. 
+* `version` gibt Aufschluss über die Version der API, die zum Generieren von Ergebnissen verwendet wurde.
+* Eine wortbasierte `confidence` wurde hinzugefügt. Dieser Wert wird so kalibriert, dass der Wert 0,95 bedeutet, dass die Erkennung mit einer Wahrscheinlichkeit von 95 % richtig ist. Anhand des Konfidenz-Score kann ausgewählt werden, welcher Text zur Überprüfung durch Personen gesendet werden soll. 
     
-    - In v2.x gibt `"Get Read Operation Result"` die JSON-Datei der OCR-Erkennung zurück, wenn der Status `"Succeeded"` ist. In v3.0 ist dieses Feld `"succeeded"`.
-    - Zum Abrufen des Stamms für das Seitenarray ändern Sie die JSON-Hierarchie von `"recognitionResults"` in `"analyzeResult"`/`"readResults"`. Die JSON-Hierarchie pro Zeile und Seite bleibt unverändert, sodass keine Codeänderungen erforderlich sind.
-    -   Der Seitenwinkel `"clockwiseOrientation"` wurde in `"angle"` umbenannt, und der Bereich wurde von 0 bis 360 Grad in -180 bis 180 Grad geändert. Je nach Ihrem Code müssen Sie möglicherweise Änderungen vornehmen, da die meisten mathematischen Funktionen beide Bereiche verarbeiten können.
-    -   Mit der v3.0-API werden auch die folgenden Verbesserungen eingeführt, die Sie optional nutzen können: – `"createdDateTime"` und `"lastUpdatedDateTime"` werden hinzugefügt, damit Sie die Verarbeitungsdauer nachverfolgen können. Weitere Informationen finden Sie in der Dokumentation. 
-        - `"version"` gibt Aufschluss über die Version der API, die zum Generieren von Ergebnissen verwendet wurde.
-        - Eine wortbasierte `"confidence"` wurde hinzugefügt. Dieser Wert wird so kalibriert, dass der Wert 0,95 bedeutet, dass die Erkennung mit einer Wahrscheinlichkeit von 95 % richtig ist. Anhand des Konfidenz-Score kann ausgewählt werden, welcher Text zur Überprüfung durch Personen gesendet werden soll. 
     
+In 2.X lautet das Ausgabeformat wie folgt: 
     
-        In 2.X lautet das Ausgabeformat wie folgt: 
-    
-    ```json
+```json
     {
         {
                 "status": "Succeeded",
@@ -104,12 +116,12 @@ In dieser Anleitung wird gezeigt, wie Sie ein Upgrade des vorhandenen v2.0- oder
                             },
             // The rest of result is omitted for brevity 
             
-    }
-    ```
+}
+```
     
-    In v3.0 wurde es angepasst:
+In v3.0 wurde es angepasst:
     
-    ```json
+```json
     {
         {
             "status": "succeeded",
@@ -156,56 +168,56 @@ In dieser Anleitung wird gezeigt, wie Sie ein Upgrade des vorhandenen v2.0- oder
         // The rest of result is omitted for brevity 
         
     }
-    ```
+```
 
-## <a name="upgrade-from-recognize-text-to-read"></a>Upgrade von `Recognize Text` auf `Read`
+## <a name="service-only"></a>Nur Dienst
+
+### `Recognize Text`
 `Recognize Text` ist ein *Vorschauvorgang*, der in allen Versionen der *Maschinelles Sehen-API* als veraltet markiert wird. Sie müssen von `Recognize Text` zu `Read` (v3.0) oder `Batch Read File` (v2.0, v2.1) migrieren. v3.0 von `Read` enthält neuere, bessere Modelle für die Texterkennung und zusätzliche Features, daher wird empfohlen. Durchführen des Upgrades von `Recognize Text` auf `Read`:
 
-1. Ändern Sie den API-Pfad für `Recognize Text` v2.x wie folgt:
-
-
-    |Texterkennung 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/**v2.0/recognizeText[?mode]**|https://{endpoint}/vision/**v3.0/read/analyze**[?language]|
+|Texterkennung 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/recognizeText[?mode]**|https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyze[?language]|
     
-    Der _mode_-Parameter wird in `Read` nicht unterstützt. Sowohl handgeschriebener als auch gedruckter Text werden automatisch unterstützt.
+Der _mode_-Parameter wird in `Read` nicht unterstützt. Sowohl handgeschriebener als auch gedruckter Text werden automatisch unterstützt.
     
-    In v3.0 ist neuer optionaler _Sprachparameter_ verfügbar. Wenn Sie die Sprache Ihres Dokuments nicht kennen oder es möglicherweise mehrsprachig ist, schließen Sie diesen Parameter nicht ein. 
+In v3.0 ist neuer optionaler _Sprachparameter_ verfügbar. Wenn Sie die Sprache Ihres Dokuments nicht kennen oder es möglicherweise mehrsprachig ist, schließen Sie diesen Parameter nicht ein. 
 
-2. Ändern Sie den API-Pfad für `Get Recognize Text Operation Result` v2.x wie folgt:
+### `Get Recognize Text Operation Result`
 
-    |Texterkennung 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/**v2.0/textOperations/** {operationId}|https://{endpoint}/vision/**v3.0/read/analyzeResults**/{operationId}|
+|Texterkennung 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/textOperations/** {operationId}|https://{endpoint}/vision/<**Versionszeichenfolge**>/read/analyzeResults/{operationId}|
 
-3. Ändern Sie den Code zum Überprüfen der JSON-Ergebnisse in `Get Recognize Text Operation Result`. Wenn der Aufruf von `Get Read Operation Result` erfolgreich ist, wird im JSON-Text ein Feld für die Statuszeichenfolge zurückgegeben. 
+### <a name="get-recognize-text-operation-result-status-flags"></a>Statusflags vom Typ `Get Recognize Text Operation Result`
+Wenn der Aufruf von `Get Recognize Text Operation Result` erfolgreich ist, wird im JSON-Text ein Feld für die Statuszeichenfolge zurückgegeben. 
  
-    |Texterkennung 2.x |Read 3.0  |
-    |----------|-----------|
-    |`"NotStarted"` |   `"notStarted"`|
-    |`"Running"` | `"running"`|
-    |`"Failed"` | `"failed"`|
-    |`"Succeeded"` | `"succeeded"`|
+|Texterkennung 2.x |Read 3.x  |
+|----------|-----------|
+|`"NotStarted"` |   `"notStarted"`|
+|`"Running"` | `"running"`|
+|`"Failed"` | `"failed"`|
+|`"Succeeded"` | `"succeeded"`|
+
+### <a name="api-response-json"></a>API-Antwort (JSON)
+
+Beachten Sie die folgenden Änderungen in der JSON-Datei:    
+* In v2.x gibt `Get Read Operation Result` die JSON-Datei der OCR-Erkennung zurück, wenn der Status `Succeeded` ist. In v3.x ist dieses Feld `succeeded`.
+* Zum Abrufen des Stamms für das Seitenarray ändern Sie die JSON-Hierarchie von `recognitionResult` in `analyzeResult`/`readResults`. Die JSON-Hierarchie pro Zeile und Seite bleibt unverändert, sodass keine Codeänderungen erforderlich sind.
+
+Mit der v3.0-API werden außerdem die folgenden Verbesserungen eingeführt, die Sie optional nutzen können. Ausführlichere Informationen finden Sie in der API-Referenz:
+* `createdDateTime` und `lastUpdatedDateTime` werden hinzugefügt, um die Nachverfolgung der Verarbeitungsdauer zu ermöglichen. Weitere Informationen finden Sie in der Dokumentation. 
+* `version` gibt Aufschluss über die Version der API, die zum Generieren von Ergebnissen verwendet wurde.
+* Eine wortbasierte `confidence` wurde hinzugefügt. Dieser Wert wird so kalibriert, dass der Wert 0,95 bedeutet, dass die Erkennung mit einer Wahrscheinlichkeit von 95 % richtig ist. Anhand des Konfidenz-Score kann ausgewählt werden, welcher Text zur Überprüfung durch Personen gesendet werden soll. 
+* `angle`: Die allgemeine Ausrichtung des Texts im Uhrzeigersinn, gemessen in Grad zwischen (-180, 180).
+* `width` und `"height"` geben Ihnen die Dimensionen Ihres Dokuments, und `"unit"` stellt die Einheit dieser Dimensionen (Pixel oder Zoll, je nach Dokumenttyp) bereit.
+* `page`: Mehrseitige Dokumente werden unterstützt.
+* `language`: Die Eingabesprache des Dokuments (aus dem optionalen _Sprachparameter_).
 
 
-4. Ändern Sie den Code, um die JSON-Datei mit dem endgültigen Erkennungsergebnis aus `Get Recognize Text Operation Result` zu interpretieren, um `Get Read Operation Result` zu unterstützen
-
-    Beachten Sie die folgenden Änderungen in der JSON-Datei:    
-
-    - In v2.x gibt `"Get Read Operation Result"` die JSON-Datei der OCR-Erkennung zurück, wenn der Status `"Succeeded"` ist. In v3.0 ist dieses Feld `"succeeded"`.
-    - Zum Abrufen des Stamms für das Seitenarray ändern Sie die JSON-Hierarchie von `"recognitionResult"` in `"analyzeResult"`/`"readResults"`. Die JSON-Hierarchie pro Zeile und Seite bleibt unverändert, sodass keine Codeänderungen erforderlich sind.
-    -   Mit der v3.0-API werden außerdem die folgenden Verbesserungen eingeführt, die Sie optional nutzen können. Weitere Informationen finden Sie in der API-Referenz: – `"createdDateTime"` und `"lastUpdatedDateTime"` werden hinzugefügt, damit Sie die Verarbeitungsdauer nachverfolgen können. Weitere Informationen finden Sie in der Dokumentation. 
-        - `"version"` gibt Aufschluss über die Version der API, die zum Generieren von Ergebnissen verwendet wurde.
-        - Eine wortbasierte `"confidence"` wurde hinzugefügt. Dieser Wert wird so kalibriert, dass der Wert 0,95 bedeutet, dass die Erkennung mit einer Wahrscheinlichkeit von 95 % richtig ist. Anhand des Konfidenz-Score kann ausgewählt werden, welcher Text zur Überprüfung durch Personen gesendet werden soll. 
-        - `"angle"`: Die allgemeine Ausrichtung des Texts im Uhrzeigersinn, gemessen in Grad zwischen (-180, 180).
-        -  `"width"` und `"height"` geben Ihnen die Dimensionen Ihres Dokuments, und `"unit"` stellt die Einheit dieser Dimensionen (Pixel oder Zoll, je nach Dokumenttyp) bereit.
-        - `"page"`: Mehrseitige Dokumente werden unterstützt.
-        - `"language"`: Die Eingabesprache des Dokuments (aus dem optionalen _Sprachparameter_).
-
-
-    In 2.X lautet das Ausgabeformat wie folgt: 
+In 2.X lautet das Ausgabeformat wie folgt: 
     
-    ```json
+```json
     {
         {
                 "status": "Succeeded",
@@ -241,11 +253,11 @@ In dieser Anleitung wird gezeigt, wie Sie ein Upgrade des vorhandenen v2.0- oder
             // The rest of result is omitted for brevity 
             
     }
-    ```
+```
     
-    In v3.0 wurde es angepasst:
+In v3.x wurde es angepasst:
     
-    ```json
+```json
     {
         {
             "status": "succeeded",
@@ -291,8 +303,12 @@ In dieser Anleitung wird gezeigt, wie Sie ein Upgrade des vorhandenen v2.0- oder
         // The rest of result is omitted for brevity 
         
     }
-    ```
-    
-## <a name="all-other-operations"></a>Alle anderen Vorgänge
+```
 
-Es gibt keine weiteren Breaking Changes zwischen v2.X und v3.0 der Maschinelles Sehen-API. Sie können einfach den API-Pfad ändern, um `v2.0` durch `v3.0` zu ersetzen.
+## <a name="container-only"></a>Nur Container
+
+### `Synchronous Read`
+
+|Read 2.0 |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/read/core/Analyze**     |https://{endpoint}/vision/<**Versionszeichenfolge**>/read/syncAnalyze[?language]|

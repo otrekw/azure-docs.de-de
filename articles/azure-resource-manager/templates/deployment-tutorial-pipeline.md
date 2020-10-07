@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Teste
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892676"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333236"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -180,7 +180,7 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
     * **Bereitstellungsmodus**: Wählen Sie **Inkrementell** aus.
     * **Bereitstellungsname**: Geben Sie **DeployPipelineTemplate** ein. Wählen Sie **Erweitert** aus, damit **Bereitstellungsname** angezeigt wird.
 
-    ![Azure Resource Manager/Azure DevOps/Azure Pipelines: Schritt](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![Screenshot: Seite „ARM-Vorlagenbereitstellung“ mit den eingegebenen erforderlichen Werten](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. Wählen Sie **Hinzufügen**.
 
@@ -188,7 +188,7 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
 
     Die YML-Datei sollte in etwa wie folgt aussehen:
 
-    ![Azure Resource Manager/Azure DevOps/Azure Pipelines: YAML](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![Screenshot: Seite „Überprüfen“ mit der neuen Pipeline mit dem Titel „Pipeline-YAML überprüfen“](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. Klicken Sie auf **Speichern und ausführen**.
 1. Wählen Sie im Bereich **Speichern und ausführen** erneut die Option **Speichern und ausführen** aus. Eine Kopie der YAML-Datei wird im verbundenen Repository gespeichert. Sie können die YAML-Datei anzeigen, indem Sie zu Ihrem Repository navigieren.

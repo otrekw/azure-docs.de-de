@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313161"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Tutorial:  Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS)
 
@@ -184,7 +184,7 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 2. Wählen Sie das **Plussymbol (+)** aus, und suchen Sie nach **Azure Active Directory**.
 3. Wählen Sie in den Suchergebnissen **Azure Active Directory** aus.
 4. Klicken Sie auf **Erstellen**.</br>
-![Erstellen](media/tutorial-password-hash-sync/create1.png)</br>
+![Screenshot, der zeigt, wie ein Azure AD-Mandant erstellt wird](media/tutorial-password-hash-sync/create1.png)</br>
 5. Geben Sie einen **Namen für die Organisation** an, zusammen mit dem **Namen der Anfangsdomäne**. Klicken Sie anschließend auf **Erstellen**. Hierdurch wird Ihr Verzeichnis erstellt.
 6. Sobald dies abgeschlossen ist, klicken Sie auf **diesen Link**, um das Verzeichnis zu verwalten.
 
@@ -192,10 +192,10 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 Nachdem nun ein Azure AD-Mandant vorhanden ist, erstellen wir ein globales Administratorkonto.  Dieses Konto dient zum Erstellen des Azure AD Connector-Kontos während der Installation von Azure AD Connect.  Das Azure AD Connector-Konto wird zum Schreiben von Informationen in Azure AD verwendet.   Gehen Sie zum Erstellen des globalen Administratorkontos wie folgt vor:
 
 1.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.</br>
-![Erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Screenshot: Ausgewählte Option „Benutzer“ im Abschnitt „Verwalten“, in dem Sie einen globalen Administrator in Azure AD erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Wählen Sie **Alle Benutzer** und dann **+ Neuer Benutzer** aus.
 3.  Geben Sie für diesen Benutzer einen Namen und Benutzernamen an. Dieser wird Ihr globaler Administrator für den Mandanten. Sie sollten außerdem die **Verzeichnisrolle** in **Globaler Administrator** ändern. Sie können auch das temporäre Kennwort anzeigen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.</br>
-![Erstellen](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Screenshot: Schaltfläche „Erstellen“, die beim Erstellen eines globalen Administrators in Azure AD ausgewählt wird](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Sobald dies abgeschlossen ist, öffnen Sie einen neuen Webbrowser, und melden Sie sich mit dem neuen globalen Administratorkonto und dem temporären Kennwort bei „myapps.microsoft.com“ an.
 5. Ändern Sie das Kennwort für den globalen Administrator in einen Wert, den Sie sich merken können.
 
@@ -206,7 +206,7 @@ Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es i
 2. Navigieren Sie zu **AzureADConnect.msi**, und doppelklicken Sie darauf.
 3. Aktivieren Sie auf der Willkommensseite das Kontrollkästchen zum Zustimmen zu den Lizenzbedingungen, und klicken Sie auf **Weiter**.  
 4. Klicken Sie im Bildschirm "Expresseinstellungen" auf **Expresseinstellungen verwenden**.</br>  
-![Erstellen](media/tutorial-password-hash-sync/express1.png)</br>
+![Screenshot: Bildschirm „Expresseinstellungen“ und Schaltfläche „Expresseinstellungen verwenden“](media/tutorial-password-hash-sync/express1.png)</br>
 5. Geben Sie auf dem Bildschirm „Mit Azure AD verbinden“ den Benutzernamen und das Kennwort des globalen Administrators für Azure AD ein. Klicken Sie auf **Weiter**.  
 6. Geben Sie auf dem Bildschirm „Mit AD DS verbinden“ den Benutzernamen und das Kennwort für ein Enterprise-Administratorkonto ein. Klicken Sie auf **Weiter**.  
 7. Klicken Sie im Bildschirm "Bereit zur Konfiguration" auf **Installieren**.

@@ -2,19 +2,19 @@
 title: 'Tutorial: Zugreifen auf Ihre private Cloud'
 description: Hier erfahren Sie, wie Sie auf eine private Azure VMware Solution-Cloud zugreifen
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 73226c6aa567dc5fbe18251bed4812637664a02c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: b7f21dbba5256712607241bb1258962fc22418fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750539"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578416"
 ---
-# <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-private-cloud"></a>Tutorial: Hier erfahren Sie, wie Sie auf eine private Azure VMware Solution-Cloud zugreifen.
+# <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Tutorial: Zugreifen auf eine private Azure VMware Solution-Cloud
 
-Während der Vorschauphase können Sie Ihre private Cloud nicht mit Ihrer lokalen vCenter-Instanz verwalten. Daher sind zusätzliche Einrichtungsschritte erforderlich, und es muss über eine Jumpbox eine Verbindung mit einer lokalen vCenter-Instanz hergestellt werden. 
+Azure VMware Solution lässt die Verwaltung der privaten Cloud mit Ihrer lokalen vCenter-Instanz nicht zu. Daher sind zusätzliche Einrichtungsschritte erforderlich, und es muss über eine Jumpbox eine Verbindung mit einer lokalen vCenter-Instanz hergestellt werden. 
 
-In diesem Tutorial erstellen Sie einen virtuellen Windows-Computer für eine Jumpbox in der Ressourcengruppe, die Sie im vorherigen Tutorial ([Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure](tutorial-configure-networking.md)) erstellt haben, und melden sich bei vCenter an. Dieser virtuelle Computer befindet sich im von Ihnen erstellten virtuellen Netzwerk und ermöglicht den Zugriff auf vCenter und NSX Manager. 
+In diesem Tutorial erstellen Sie eine Jumpbox in der Ressourcengruppe, die Sie im [vorherigen Tutorial](tutorial-configure-networking.md) erstellt haben, und melden sich bei vCenter an. Die Jumpbox ist ein virtueller Windows-Computer im selben virtuellen Netzwerk, das Sie erstellt haben.  Sie ermöglicht den Zugriff auf vCenter und NSX Manager. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -24,51 +24,35 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-a-new-windows-virtual-machine"></a>Erstellen eines neuen virtuellen Windows-Computers
 
-1. Wählen Sie in der Ressourcengruppe **+ Hinzufügen** aus, suchen Sie nach **Microsoft Windows 10**, wählen Sie die Option aus, und klicken Sie anschließend auf **Erstellen**.
-
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="Hinzufügen eines neuen virtuellen Windows 10-Computers für eine Jumpbox" border="true":::
-
-1. Geben Sie die erforderlichen Informationen in die Felder ein, und wählen Sie anschließend **Überprüfen + erstellen** aus. Weitere Informationen zu den Feldern finden Sie in der folgenden Tabelle:
-
-   | Feld | Wert |
-   | --- | --- |
-   | **Abonnement** | Dieser Wert ist bereits mit dem Abonnement aufgefüllt, zu dem die Ressourcengruppe gehört. |
-   | **Ressourcengruppe** | Dieser Wert ist bereits für die aktuelle Ressourcengruppe aufgefüllt. Hierbei sollte es sich um die Ressourcengruppe handeln, die Sie in einem vorherigen Tutorial erstellt haben. |
-   | **Name des virtuellen Computers** | Geben Sie einen eindeutigen Namen für den virtuellen Computer ein. |
-   | **Region** | Wählen Sie den geografischen Standort des virtuellen Computers aus. |
-   | **Verfügbarkeitsoptionen** | Übernehmen Sie den Standardwert. |
-   | **Image** | Wählen Sie das VM-Image aus. |
-   | **Größe** | Übernehmen Sie die Standardgröße. |
-   | **Authentifizierungstyp**  | Wählen Sie **Kennwort** aus. |
-   | **Benutzername** | Geben Sie den Benutzernamen für die Anmeldung bei dem virtuellen Computer ein. |
-   | **Kennwort** | Geben Sie das Kennwort für die Anmeldung bei dem virtuellen Computer ein. |
-   | **Kennwort bestätigen** | Geben Sie das Kennwort für die Anmeldung bei dem virtuellen Computer ein. |
-   | **Öffentliche Eingangsports** | Wählen Sie **Keine**. Wenn Sie „Keine“ auswählen, können Sie [JIT-Zugriff](../security-center/security-center-just-in-time.md#jit-configure) verwenden, um den Zugriff auf den virtuellen Computer nur dann zu steuern, wenn Sie darauf zugreifen möchten.  |
-
-1. Klicken Sie nach Angabe der erforderlichen Informationen auf **Überprüfen + erstellen**. 
-1. Wählen Sie nach erfolgreicher Überprüfung die Option **Erstellen** aus, um den VM-Erstellungsprozess zu starten.
-
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss11-review-create-wjb01.png" alt-text="Erstellen eines neuen virtuellen Windows 10-Computers für eine Jumpbox" border="true":::
+[!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>Herstellen einer Verbindung mit der lokalen vCenter-Instanz Ihrer privaten Cloud
 
-1. Melden Sie sich von der Jumpbox aus mit VMware vCenter-SSO beim vSphere-Client an. Melden Sie sich mit einem Cloudadministrator-Benutzernamen beim vSphere-Client an. Sollte eine Warnung mit einem Hinweis auf ein potenzielles Sicherheitsrisiko angezeigt werden, akzeptieren Sie das Sicherheitsrisiko. Melden Sie sich bei VMware vCenter mit Anmeldeinformationen für einmaliges Anmelden an, und vergewissern Sie sich, dass die Benutzeroberfläche erfolgreich angezeigt wird.
+1. Melden Sie sich über die Jumpbox mit einmaligem Anmelden von VMware vCenter beim vSphere-Client an. Verwenden Sie dazu einen Cloudadministrator-Benutzernamen, und vergewissern Sie sich, dass die Benutzeroberfläche angezeigt wird.
 
-1. Wählen Sie im Azure-Portal Ihre private Cloud aus, und navigieren Sie in der Ansicht **Übersicht** zu **Identität > Standard**. Die URLs und Anmeldeinformationen für vCenter und NSX-T Manager der privaten Cloud werden angezeigt.
+1. Wählen Sie im Azure-Portal Ihre private Cloud aus, und navigieren Sie in der Ansicht **Übersicht** zu **Identität > Standard**. 
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Anzeigen der URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
+   Die URLs und Benutzeranmeldeinformationen für vCenter und NSX-T Manager der privaten Cloud werden angezeigt.
 
-1. Navigieren Sie zu dem virtuellen Computer, den Sie im vorherigen Schritt erstellt haben, und stellen Sie eine Verbindung mit dem virtuellen Computer her. Eine ausführliche Anleitung zum Herstellen der Verbindung mit dem virtuellen Computer finden Sie unter [Verbinden mit dem virtuellen Computer](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine).
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Anzeigen der URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
 
-1. Öffnen Sie auf dem virtuellen Windows-Computer einen Browser, und navigieren Sie auf zwei Tabs zu den URLs für vCenter und NSX-T Manager. Geben Sie auf dem vCenter-Tab die Benutzeranmeldeinformationen `cloudadmin@vmcp.local` aus dem vorherigen Schritt ein.
+1. Navigieren Sie zu dem virtuellen Computer, den Sie im vorherigen Schritt erstellt haben, und stellen Sie eine Verbindung mit dem virtuellen Computer her. 
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Anmelden bei der privaten Cloud: vCenter" border="true":::
+   Wenn Sie Hilfe beim Herstellen einer Verbindung mit dem virtuellen Computer benötigen, finden Sie ausführliche Informationen unter [Verbinden mit dem virtuellen Computer](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine).
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter-Portal" border="true":::
+1. Öffnen Sie auf dem virtuellen Windows-Computer einen Browser, und navigieren Sie auf zwei Tabs zu den URLs für vCenter und NSX-T Manager. 
+
+1. Geben Sie auf dem vCenter-Tab die Benutzeranmeldeinformationen `cloudadmin@vmcp.local` aus dem vorherigen Schritt ein.
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Anzeigen der URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="Anzeigen der URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
 
 1. Melden Sie sich auf dem zweiten Browsertab bei NSX-T Manager an.
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Melden Sie sich auf dem zweiten Browsertab bei NSX-T Manager an." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Anzeigen der URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -78,7 +62,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines virtuellen Windows-Computers zum Herstellen der Verbindung mit vCenter
 > * Anmelden bei vCenter über Ihren virtuellen Computer
 
-Im nächsten Tutorial erfahren Sie, wie Sie Ihre private Azure VMware Solution-Cloud skalieren:
+Im nächsten Tutorial erfahren Sie, wie Sie im Rahmen der Einrichtung der lokalen Verwaltung für Ihre privaten Cloudcluster ein virtuelles Netzwerk erstellen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Skalieren einer privaten Azure VMware Solution-Cloud (Vorschauversion)](tutorial-scale-private-cloud.md)
+> [Erstellen eines virtuellen Netzwerks](tutorial-configure-networking.md)
+
+

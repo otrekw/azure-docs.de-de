@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312956"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Was ist der Azure AD Connect-Administrator-Agent? 
 Der Azure AD Connect-Administrator-Agent ist eine neue Komponente von Azure Active Directory Connect, die auf einem Azure Active Directory Connect-Server installiert werden kann. Er wird zum Sammeln spezifischer Daten aus der Active Directory-Umgebung verwendet, die einem Microsoft-Supporttechniker bei der Problembehandlung helfen, wenn Sie eine Supportanfrage senden. 
@@ -46,7 +46,7 @@ Geben Sie, wenn Sie dazu aufgefordert werden, Ihre Anmeldeinformationen als glob
 
 Nach der Installation des Agents werden die folgenden beiden neuen Programme auf Ihrem Server in der Systemsteuerung in der Liste „Programme hinzufügen/entfernen“ angezeigt: 
 
-![Administrator-Agent](media/whatis-aadc-admin-agent/adminagent1.png)
+![Screenshot: Liste „Programme hinzufügen/entfernen“, die die von Ihnen hinzugefügten neuen Programme enthält](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Welche Daten in meinem Synchronisierungsdienst werden dem Microsoft-Supporttechniker angezeigt? 
 Wenn Sie eine Supportanfrage senden, kann der Microsoft-Supporttechniker für einen bestimmten Benutzer die entsprechenden Daten in Active Directory, den Azure Active Directory-Connectorbereich auf dem Azure Active Directory Connect-Server und die Metaverse auf dem Azure Active Directory Connect-Server anzeigen. 
@@ -69,7 +69,7 @@ Wenn der Microsoft-Supporttechniker nach der Installation des Agents bei einer S
 3. Speichern Sie die Konfigurationsdatei.
 4. Starten Sie den Dienst des Azure AD Connect-Administrator-Agents neu, wie unten dargestellt.
 
-![Administrator-Agent](media/whatis-aadc-admin-agent/adminagent2.png)
+![Screenshot, der zeigt, wo der Azure AD-Administrator-Agent neu gestartet wird](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

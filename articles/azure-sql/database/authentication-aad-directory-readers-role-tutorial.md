@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278021"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Tutorial: Zuweisen der Rolle „Verzeichnisleseberechtigte“ zu einer Azure AD-Gruppe und Verwalten von Rollenzuweisungen
 
@@ -55,7 +55,7 @@ Weitere Informationen zu den Vorteilen, die das Zuweisen der Rolle „Verzeichni
 
 Navigieren Sie zum Überprüfen und Verwalten der erstellten Gruppe im Azure-Portal wieder zum Bereich **Gruppen**, und suchen Sie nach dem Gruppennamen. Weitere Besitzer und Mitglieder können nach dem Auswählen der Gruppe unter der Einstellung **Verwalten** über das Menü **Besitzer** bzw. **Mitglieder** hinzugefügt werden. Unter **Zugewiesene Rollen** können Sie außerdem die zugewiesenen Rollen der Gruppe überprüfen.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="azure-ad-group-created":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-new-group":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Hinzufügen einer verwalteten Azure SQL-Identität zur Gruppe
 
@@ -68,17 +68,17 @@ Für die folgenden Schritte wird der Benutzer vom Typ „Globaler Administrator�
 
 1. Suchen Sie im Azure-Portal nach dem Namen Ihrer Ressource vom Typ **SQL Managed Instance**.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="azure-ad-managed-instance":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-new-group":::
 
    Im Rahmen der Erstellung Ihrer SQL Managed Instance-Instanz wurde eine Azure-Identität für Ihre Instanz erstellt. Die erstellte Identität hat den gleichen Namen wie das Präfix Ihres SQL Managed Instance-Namens. Den Dienstprinzipal für Ihre SQL Managed Instance-Identität, die als Azure AD-Anwendung erstellt wurde, finden Sie wie folgt:
 
     - Navigieren Sie zur Ressource **Azure Active Directory**. Wählen Sie unter der Einstellung **Verwalten** die Option **Unternehmensanwendungen** aus. Die **Objekt-ID** ist die Identität der Instanz.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="azure-ad-managed-instance-service-principal":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 1. Navigieren Sie zur Ressource **Azure Active Directory**. Navigieren Sie unter **Verwalten** zu **Gruppen**. Wählen Sie die von Ihnen erstellte Gruppe aus. Wählen Sie unter der Einstellung **Verwalten** Ihrer Gruppe die Option **Mitglieder** aus. Wählen Sie **Mitglieder hinzufügen** aus, und fügen Sie Ihren SQL Managed Instance-Dienstprinzipal als Gruppenmitglied hinzu, indem Sie nach dem oben gefundenen Namen suchen.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="azure-ad-add-managed-instance-service-principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 > [!NOTE]
 > Es kann einige Minuten dauern, bis die Berechtigungen des Dienstprinzipals im gesamten Azure-System verteilt wurden und auf die Azure AD Graph-API zugegriffen werden kann. Warten Sie ggf. einige Minuten, bevor Sie einen Azure AD-Administrator für SQL Managed Instance bereitstellen.

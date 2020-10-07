@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit F5 | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und F5 konfigurieren.
+description: In diesem Artikel lernen Sie die Schritte kennen, die Sie zum Integrieren von F5 in Azure Active Directory (Azure AD) ausführen müssen.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306173"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory (AD) mit F5
 
@@ -39,8 +39,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* F5 unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* Einmaliges Anmelden von F5 kann auf drei unterschiedliche Arten konfiguriert werden:
+F5 unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+
+Einmaliges Anmelden von F5 kann auf drei unterschiedliche Arten konfiguriert werden:
 
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine Advanced Kerberos-Anwendung](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 

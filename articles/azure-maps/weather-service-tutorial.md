@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python) | Microsoft Azure Maps'
-description: In diesem Tutorial erfahren Sie, wie Sie Sensordaten unter Verwendung von Azure Notebooks (Python) mit Wettervorhersagedaten des Microsoft Azure Maps-Wetterdiensts verknüpfen.
+description: Tutorial zum Verknüpfen von Sensordaten mit Wettervorhersagedaten des Microsoft Azure Maps-Wetterdiensts unter Verwendung von Azure Notebooks (Python)
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/29/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310100"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
@@ -182,9 +182,6 @@ Mit den unten angegebenen Diagrammen werden die Vorhersagedaten visualisiert. In
 
 ![Diagramm für die Windgeschwindigkeit](./media/weather-service-tutorial/speed-date-plot.png) ![Diagramm für die Windrichtung](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Tutorial haben Sie gelernt, wie Sie Azure Maps-REST-APIs aufrufen, um Wettervorhersagedaten zu erhalten. Außerdem wurde gezeigt, wie Sie die Daten in Diagrammen visualisieren.
 
 Weitere Informationen zum Aufrufen von Azure Maps-REST-APIs in Azure Notebooks finden Sie unter [Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
@@ -196,4 +193,9 @@ Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie u
 
 Eine vollständige Liste mit den Azure Maps-REST-APIs finden Sie unter [Azure Maps-Dokumentation](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
-Weitere Informationen zu Azure Notebooks finden Sie unter [Azure Notebooks-Dokumentation](https://docs.microsoft.com/azure/notebooks).
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Azure Notebooks finden Sie hier:
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

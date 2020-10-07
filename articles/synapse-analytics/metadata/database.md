@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409311594cc26680217948e2394420fdaea29024
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260851"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gemeinsam genutzte Azure Synapse Analytics-Datenbank
 
@@ -23,7 +23,7 @@ Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arb
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Eine mit einem Spark-Auftrag erstellte Datenbank wird mit dem gleichen Namen für alle aktuellen und zukünftigen Spark-Pools (Vorschauversion) im Arbeitsbereich sowie für die SQL On-Demand-Engine sichtbar.
+Eine mit einem Spark-Auftrag erstellte Datenbank wird mit dem gleichen Namen für alle aktuellen und zukünftigen Spark-Pools (Vorschauversion) im Arbeitsbereich, einschließlich der SQL On-Demand-Engine, sichtbar.
 
 Die Spark-Standarddatenbank `default` wird auch im SQL On-Demand-Kontext als Datenbank namens `default` angezeigt.
 

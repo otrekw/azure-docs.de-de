@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure Table Storage
-description: Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud.
+description: Hier erfahren Sie, wie Sie mit Azure Table Storage flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und andere Arten von Metadaten speichern.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76770739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318720"
 ---
 # <a name="azure-table-storage-overview"></a>Übersicht über Azure Table Storage
 
@@ -30,7 +30,7 @@ Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwend
 
 * Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 
-* [Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit dem .NET SDK](table-storage-how-to-use-dotnet.md)
+* [Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK](table-storage-how-to-use-dotnet.md)
 
 * In der Referenzdokumentation für den Tabellenspeicherdienst finden Sie alle Details zu verfügbaren APIs:
 

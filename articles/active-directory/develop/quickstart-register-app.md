@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258131"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -59,13 +59,13 @@ Wenn die Registrierung abgeschlossen ist, wird im Azure-Portal für die App-Regi
 
 Die Client-ID wird auch vom Code Ihrer Anwendung (oder üblicherweise von einer in Ihrer Anwendung verwendeten Authentifizierungsbibliothek) als ein Kriterium bei der Überprüfung der von Microsoft Identity Platform empfangenen Sicherheitstoken verwendet.
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Screenshot des Azure-Portals in einem Webbrowser mit dem Bereich „Übersicht“ einer App-Registrierung.":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Screenshot des Azure-Portals in einem Webbrowser mit dem Bereich „Anwendung registrieren“.":::
 
 ## <a name="add-a-redirect-uri"></a>Hinzufügen eines Umleitungs-URI
 
 Ein Umleitungs-URI ist die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.
 
-In einer Webanwendung für die Produktion beispielsweise ist der Umleitungs-URI häufig ein öffentlicher Endpunkt (z. B. `https://contoso.com/auth-response`), auf dem Ihre App ausgeführt wird. Bei der Entwicklung wird häufig auch der Endpunkt hinzugefügt, auf dem Sie Ihre App lokal ausführen, z. B. `https://127.0.0.1/auth-response`.
+In einer Webanwendung für die Produktion beispielsweise ist der Umleitungs-URI häufig ein öffentlicher Endpunkt (z. B. `https://contoso.com/auth-response`), auf dem Ihre App ausgeführt wird. Bei der Entwicklung wird häufig auch der Endpunkt hinzugefügt, auf dem Sie Ihre App lokal ausführen, z. B. `https://127.0.0.1/auth-response` oder `http://localhost/auth-response`.
 
 Durch Konfigurieren Ihrer [Plattformeinstellungen](#configure-platform-settings) können Sie Umleitungs-URIs für Ihre registrierten Anwendungen hinzufügen und ändern.
 
@@ -80,7 +80,7 @@ So konfigurieren Sie Anwendungseinstellungen auf Basis der Zielplattform oder de
 1. Wählen Sie unter **Plattformkonfigurationen** die Option **Plattform hinzufügen** aus.
 1. Wählen Sie unter **Plattformen konfigurieren** die Kachel für Ihren Anwendungstyp (Plattform) aus, um die Einstellungen zu konfigurieren.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Screenshot des Plattformkonfigurationsbereichs im Azure-Portal" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Screenshot des Azure-Portals in einem Webbrowser mit dem Bereich „Anwendung registrieren“." border="false":::
 
     | Plattform | Konfigurationseinstellungen |
     | -------- | ---------------------- |
@@ -101,7 +101,7 @@ Anmeldeinformationen werden von vertraulichen Clientanwendungen verwendet, die a
 
 Sie können Ihrer vertraulichen Client-App-Registrierung sowohl Zertifikate als auch geheime Clientschlüssel (Zeichenfolge) als Anmeldeinformationen hinzufügen.
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Screenshot des Azure-Portals mit dem Bereich „Zertifikate und Geheimnisse“ einer App-Registrierung":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Screenshot des Azure-Portals in einem Webbrowser mit dem Bereich „Anwendung registrieren“.":::
 
 ### <a name="add-a-certificate"></a>Hinzufügen eines Zertifikats
 

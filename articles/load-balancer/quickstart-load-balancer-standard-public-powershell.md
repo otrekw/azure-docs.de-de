@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 3589aeb21053525e481f3448270d236265dd698e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333980"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für virtuelle Computer mithilfe von Azure PowerShell
 
@@ -61,7 +61,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen. Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
-## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
+## <a name="create-a-public-ip-address-in-the-standard-sku"></a>Erstellen einer öffentlichen IP-Adresse in der Standard-SKU
 
 Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. 
 
@@ -215,7 +215,7 @@ $lb =
 New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
 ```
 
-## <a name="configure-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
+## <a name="configure-virtual-network-in-the-standard-sku"></a>Konfigurieren eines virtuellen Netzwerks in der Standard-SKU
 
 Erstellen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen, bevor Sie virtuelle Computer bereitstellen und Ihren Lastenausgleich testen.
 
@@ -712,7 +712,7 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen. Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
-## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
+## <a name="create-a-public-ip-address-in-the-basic-sku"></a>Erstellen einer öffentlichen IP-Adresse in der Basic-SKU
 
 Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. 
 
@@ -854,7 +854,7 @@ $lb =
 New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
 ```
 
-## <a name="configure-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
+## <a name="configure-virtual-network-in-the-basic-sku"></a>Konfigurieren eines virtuellen Netzwerks in der Basic-SKU
 
 Erstellen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen, bevor Sie virtuelle Computer bereitstellen und Ihren Lastenausgleich testen.
 

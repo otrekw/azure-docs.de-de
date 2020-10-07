@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249415"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>Schützen Ihrer Anmeldeinformationen mithilfe von verknüpften Diensten und der Tokenbibliothek
-Es kommt häufig vor, dass auf Daten aus externen Quellen zugegriffen werden muss. Wenn die externe Datenquelle keinen anonymen Zugriff zulässt, müssen Sie die Verbindung wahrscheinlich mithilfe von Anmeldeinformationen, einem geheimen Schlüssel oder einer Verbindungszeichenfolge absichern.  Azure Synapse Analytics bietet verknüpfte Dienste, um den Integrationsprozess zu vereinfachen. Dabei werden die Verbindungsdetails in einem verknüpften Dienst oder in Azure Key Vault gespeichert. Nachdem Sie einen verknüpften Dienst erstellt haben, kann Apache Spark auf den verknüpften Dienst zurückgreifen, um die Verbindungsinformationen im Code anzuwenden. Weitere Informationen finden Sie unter [Verknüpfte Dienste](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Es kommt häufig vor, dass auf Daten aus externen Quellen zugegriffen werden muss. Wenn die externe Datenquelle keinen anonymen Zugriff zulässt, müssen Sie die Verbindung wahrscheinlich mithilfe von Anmeldeinformationen, einem geheimen Schlüssel oder einer Verbindungszeichenfolge absichern.  
+
+Azure Synapse Analytics bietet verknüpfte Dienste, um den Integrationsprozess zu vereinfachen. Dabei werden die Verbindungsdetails in einem verknüpften Dienst oder in Azure Key Vault gespeichert. Nachdem Sie einen verknüpften Dienst erstellt haben, kann Apache Spark auf den verknüpften Dienst zurückgreifen, um die Verbindungsinformationen im Code anzuwenden. 
+
+Weitere Informationen finden Sie unter [Verknüpfte Dienste](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 > [!NOTE]
 > Wenn Sie innerhalb Ihres Arbeitsbereichs auf Dateien aus Azure Data Lake Storage zugreifen, wird AAD-Pass-Through für die Authentifizierung verwendet. Daher ist es nicht erforderlich, die Tokenbibliothek zu verwenden. 
 
@@ -26,7 +30,7 @@ Es kommt häufig vor, dass auf Daten aus externen Quellen zugegriffen werden mus
 * Verknüpfter Dienst: Sie müssen einen verknüpften Dienst für die externe Datenquelle erstellen und aus der Tokenbibliothek auf den verknüpften Dienst verweisen. Erfahren Sie mehr über [verknüpfte Dienste](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>Herstellen einer Verbindung mit ADLS Gen2 außerhalb des Synapse-Arbeitsbereichs
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>Herstellen einer Verbindung mit ADLS Gen2 außerhalb des Synapse-Arbeitsbereichs
 
 Synapse bietet eine integrierte Funktion für verknüpfte Dienste für Azure Data Lake Storage Gen2.
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>Verwenden der Tokenbibliothek
+## <a name="use-the-token-library"></a>Verwenden der Tokenbibliothek
 
 Zum Herstellen einer Verbindung mit anderen verknüpften Diensten können Sie die Tokenbibliothek (TokenLibrary) direkt aufrufen.
 

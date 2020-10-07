@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258097"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App
 
@@ -193,15 +193,16 @@ Wenn Sie das Webbeispiel in Tomcat bereitstellen möchten, müssen Sie einige Ä
 3.   Der HTTP-Standardport von Tomcat ist 8080. Es wird jedoch eine HTTPS-Verbindung über Port 8443 benötigt. Gehen Sie wie folgt vor, um dies zu konfigurieren:
         - Öffnen Sie „tomcat/conf/server.xml“.
         - Suchen Sie nach dem Tag `<connector>`, und ersetzen Sie den vorhandenen Connector durch Folgendes:
-        ```
+
+        ```xml
         <Connector
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="8443" maxThreads="200"
                    scheme="https" secure="true" SSLEnabled="true"
                    keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
                    clientAuth="false" sslProtocol="TLS"/>
-        ``` 
-       
+        ```
+
 4. Öffnen Sie eine Eingabeaufforderung, wechseln Sie zum Stammordner dieses Beispiels (in dem sich die Datei „pom.xml“ befindet), und führen Sie `mvn package` aus, um das Projekt zu erstellen.
     - Dadurch wird eine Datei namens `msal-web-sample-0.1.0.war` im Verzeichnis „/targets“ generiert.
     - Benennen Sie die Datei in `msal4jsample.war` um.
@@ -249,16 +250,11 @@ Fügen Sie einen Verweis auf MSAL für Java hinzu, indem Sie am Anfang der Datei
 import com.microsoft.aad.msal4j.*;
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über Berechtigungen und die Einwilligung:
+Eine ausführlichere Erläuterung zum Entwickeln von Web-Apps, die Benutzer bei Microsoft Identity Platform anmelden, finden Sie in unserer mehrteiligen Szenarioreihe:
 
 > [!div class="nextstepaction"]
-> [Berechtigungen und Einwilligung](./v2-permissions-and-consent.md)
-
-Weitere Informationen zum Authentifizierungsfluss für dieses Szenario finden Sie unter dem OAuth 2.0-Autorisierungscodeflow:
-
-> [!div class="nextstepaction"]
-> [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](./v2-oauth2-auth-code-flow.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md?tabs=java)

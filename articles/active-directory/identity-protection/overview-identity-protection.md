@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265271"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -53,8 +53,8 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 | Anonyme IP-Adresse | Anmeldung von einer anonymen IP-Adresse (z.B. Tor-Browser, anonymisierte VPNs) |
 | Ungewöhnliche Anmeldeeigenschaften | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden |
 | Mit Schadsoftware verknüpfte IP-Adresse | Anmeldung von einer mit Schadsoftware verknüpften IP-Adresse |
-| Kompromittierte Anmeldeinformationen | Diese Risikoerkennung gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. |
-| Kennwortspray | Gibt an, dass für mehrere Benutzernamen unter Verwendung allgemeiner Kennwörtern einheitliche Brute-Force-Angriff ausgeführt werden. |
+| Kompromittierte Anmeldeinformationen | Gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. |
+| Kennwortspray | Gibt an, dass für mehrere Benutzernamen unter Verwendung allgemeiner Kennwörtern koordinierte Brute-Force-Angriffe ausgeführt werden. |
 | Azure AD Threat Intelligence | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert |
 
 Weitere Informationen zu diesen Risiken sowie zu deren Berechnung finden Sie im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md).
@@ -96,13 +96,13 @@ Benutzer müssen über die Rolle „Benutzer mit Leseberechtigung für Sicherhei
 
 Derzeit kann die Rolle „Sicherheitsoperator“ nicht auf den Bericht „Riskante Anmeldungen“ zugreifen.
 
-Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei denen das Risiko als Bedingung berücksichtigt wird. Weitere Informationen hierzu finden Sie im Artikel [Bedingter Zugriff: Bedingungen](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
+Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei denen das Anmelderisiko als Bedingung berücksichtigt wird. Weitere Informationen finden Sie im Artikel [Bedingter Zugriff: Bedingungen](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Funktion | Details  | Azure AD Free-/Office 365-Apps | Azure AD Premium P1|Azure AD Premium P2 |
+| Funktion | Details  | Azure AD Free/Microsoft 365-Apps | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
 | Risikorichtlinien | Benutzerrisiko-Richtlinie (über Identity Protection)  | Nein | Nein |Ja | 
 | Risikorichtlinien | Anmelderisiko-Richtlinie (über Identity Protection oder bedingten Zugriff)  | Nein |  Nein |Ja |

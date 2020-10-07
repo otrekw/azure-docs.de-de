@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280588"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud
 
@@ -353,23 +353,9 @@ Sie können auch im Azure-Portal navigieren, um die URL zu suchen.
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie mit der nächsten Schnellstartanleitung in dieser Reihe fortfahren möchten, überspringen Sie diesen Schritt.
-
-In diesen Schnellstartanleitungen haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten und diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal oder durch Ausführen des folgenden Befehls in Cloud Shell:
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-Im Rahmen einer vorherigen Schnellstartanleitung haben Sie auch den Standardnamen der Ressourcengruppe festgelegt. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, löschen Sie diesen Standardwert, indem Sie den folgenden CLI-Befehl ausführen:
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
+
+In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
+
 > [!div class="nextstepaction"]
 > [Protokolle, Metriken und Ablaufverfolgung](spring-cloud-quickstart-logs-metrics-tracing.md)
-

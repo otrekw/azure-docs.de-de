@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361907"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Tutorial: Konfigurieren des Protokollanalyseassistenten
 
@@ -72,7 +72,7 @@ Das Konfigurieren eines Protokollanalyse-Arbeitsbereichs besteht aus zwei Haupts
 
 3. Klicken Sie auf der Seite der Protokollanalyse-Arbeitsbereiche auf **Hinzufügen**.
 
-    ![Hinzufügen](./media/tutorial-log-analytics-wizard/add.png)
+    ![Screenshot: Schaltfläche „Hinzufügen“ auf der Seite „Log Analytics-Arbeitsbereiche“](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  Führen Sie auf der Seite **Log Analytics-Arbeitsbereich erstellen** die folgenden Schritte aus:
 
@@ -305,7 +305,7 @@ In diesem Verfahren wird gezeigt, wie Sie mithilfe der Schnellstartvorlage eine 
 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Arbeitsmappen**.
 
-    ![Arbeitsmappen](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Screenshot: „Überwachung“ im Azure-Portalmenü mit ausgewählter Option „Arbeitsmappen“](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. Klicken Sie im Abschnitt **Schnellstart** auf **Leer**.
 
@@ -357,7 +357,7 @@ In diesem Verfahren wird gezeigt, wie einer vorhandenen Arbeitsmappenvorlage ein
 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Arbeitsmappen**.
 
-    ![Arbeitsmappen](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Screenshot: „Überwachung“ im Menü mit ausgewählter Option „Arbeitsmappen“](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. Klicken Sie im Abschnitt **Bedingter Zugriff** auf **Erkenntnisse und Berichte zum bedingten Zugriff**.
 

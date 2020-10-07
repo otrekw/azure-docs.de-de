@@ -10,15 +10,15 @@ keywords: azure media services, streamen
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268671"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – Node.js
 
@@ -74,7 +74,7 @@ Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
 Nach der Ausführung sollte etwa folgende Ausgabe angezeigt werden:
 
-![Ausführen](./media/stream-files-nodejs-quickstart/run.png)
+![Screenshot: Befehlsfenster mit der Ausgabe der StreamFileSample-Beispiel-App und den URLs von drei Dateien, die in das lokale Verzeichnis heruntergeladen werden](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Testen mit Azure Media Player
 

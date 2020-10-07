@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260730"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
@@ -105,7 +105,7 @@ Führen Sie den folgenden Befehl aus, um mit SparkSQL eine verwaltete Spark-Tabe
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Dadurch wird die Tabelle `myParquetTable` in der Datenbank `mytestdb` erstellt. Nach einer kurzen Verzögerung wird die Tabelle in SQL On-Demand angezeigt. Führen Sie beispielsweise die folgende Anweisung über SQL On-Demand aus:
+Mit diesem Befehl wird die Tabelle `myParquetTable` in der Datenbank `mytestdb` erstellt. Nach einer kurzen Verzögerung wird die Tabelle in SQL On-Demand angezeigt. Führen Sie beispielsweise die folgende Anweisung über SQL On-Demand aus:
 
 ```sql
     USE mytestdb;

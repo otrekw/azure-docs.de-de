@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268451"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Schnellstart: Erstellen einer Hyperscale (Citus)-Servergruppe im Azure-Portal
 
@@ -25,7 +25,7 @@ Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverf
 
 Nachdem Sie mithilfe von psql eine Verbindung mit dem Hyperscale-Koordinatorknoten hergestellt haben, können Sie einige grundlegende Aufgaben ausführen.
 
-Innerhalb der Hyperscale-Server gibt es drei Arten von Tabellen:
+Innerhalb der Hyperscale (Citus)-Server gibt es drei Arten von Tabellen:
 
 - Verteilte oder Shardtabellen (zur besseren Leistungsskalierung und Parallelisierung aufgeteilt)
 - Verweistabellen (mehrere Kopien beibehalten)
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Als Nächstes verwenden Sie diese Postgres-Tabellen auf dem Koordinatorknoten und weisen Hyperscale an, diese per Sharding auf die Worker zu verteilen. Zu diesem Zweck führen Sie eine Abfrage für jede Tabelle aus und geben dabei den Schlüssel für das Sharding an. Im aktuellen Beispiel wird ein Sharding sowohl für die Ereignis- als auch die Benutzertabelle nach `user_id` durchgeführt:
+Als Nächstes verwenden Sie diese Postgres-Tabellen im Koordinatorknoten und weisen Hyperscale (Citus) an, diese per Sharding auf die Worker zu verteilen. Zu diesem Zweck führen Sie eine Abfrage für jede Tabelle aus und geben dabei den Schlüssel für das Sharding an. Im aktuellen Beispiel wird ein Sharding sowohl für die Ereignis- als auch die Benutzertabelle nach `user_id` durchgeführt:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 Bisher waren bei den Abfragen ausschließlich „github\_events“ einbezogen, doch können diese Informationen auch mit „github\_users“ kombiniert werden. Da ein Sharding sowohl für Benutzer als auch Ereignisse mit demselben Bezeichner (`user_id`) durchgeführt wurde, werden die Zeilen beider Tabellen mit übereinstimmenden Benutzer-IDs auf denselben Datenbankknoten [zusammengestellt](concepts-hyperscale-colocation.md) und können auf einfache Weise verknüpft werden.
 
-Bei einer Verknüpfung basierend auf `user_id` kann Hyperscale deren Ausführung per Pushvorgang in Shards für die parallele Ausführung auf Workerknoten übertragen. Suchen Sie beispielsweise nach den Benutzern, die die größte Anzahl von Repositorys erstellt haben:
+Bei einer Verknüpfung basierend auf `user_id` kann Hyperscale (Citus) deren Ausführung per Pushvorgang in Shards für die parallele Ausführung auf Workerknoten übertragen. Suchen Sie beispielsweise nach den Benutzern, die die größte Anzahl von Repositorys erstellt haben:
 
 ```sql
 SELECT gu.login, count(*)

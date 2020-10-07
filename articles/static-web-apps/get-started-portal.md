@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280560"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App im Azure-Portal
 
@@ -37,9 +37,9 @@ Nachdem das Repository nun erstellt wurde, können Sie im Azure-Portal eine stat
 1. Wählen Sie **Static Web Apps (Vorschau)** aus.
 1. Klicken Sie auf **Erstellen**
 
-Konfigurieren Sie auf der Registerkarte _Grundlagen_ zunächst Ihre neue App, und verknüpfen Sie sie mit einem GitHub-Repository.
+Konfigurieren Sie im Abschnitt _Grundlagen_ zunächst Ihre neue App, und verknüpfen Sie sie mit einem GitHub-Repository.
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Registerkarte „Grundlagen“":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Abschnitt „Grundlagen“":::
 
 1. Wählen Sie Ihr _Azure-Abonnement_ aus.
 1. Wählen Sie eine neue _Ressourcengruppe_ aus, oder erstellen Sie sie.
@@ -51,7 +51,7 @@ Konfigurieren Sie auf der Registerkarte _Grundlagen_ zunächst Ihre neue App, un
 
 Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Details zum Repository":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Abschnitt „Grundlagen“":::
 
 1. Wählen Sie Ihre bevorzugte _Organisation_ aus.
 1. Wählen Sie in der Dropdownliste _Repository_ den Eintrag **my-first-web-static-app** aus.
@@ -94,18 +94,18 @@ Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Schaltfläche „Bewerten + erstellen“":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Abschnitt „Grundlagen“":::
 
     > [!NOTE]
     > Sie können die [Workflowdatei](github-actions-workflow.md) bearbeiten, um diese Werte nach der Erstellung der App zu ändern.
 
 1. Klicken Sie auf **Erstellen**.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Schaltfläche „Erstellen“":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Abschnitt „Grundlagen“":::
 
 1. Wählen Sie **Zu Ressource wechseln** aus.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Schaltfläche „Zu Ressource wechseln“":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Abschnitt „Grundlagen“":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

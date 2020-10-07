@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71200146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281587"
 ---
 # <a name="opc-vault-architecture"></a>OPC Vault-Architektur
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den derzeit aktuellen Inhalt lesen.
 
 Dieser Artikel enthält eine Übersicht über den OPC Vault-Microservice und das IoT Edge-Modul von OPC Vault.
 

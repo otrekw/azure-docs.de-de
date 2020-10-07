@@ -3,12 +3,12 @@ title: Bereitstellen einer .NET-App in einem Container in Azure Service Fabric
 description: Hier erfahren Sie, wie Sie eine vorhandene .NET-Anwendung mit Visual Studio in einen Container packen und Container in Service Fabric lokal debuggen. Die Containeranwendung wird per Push an eine Azure-Containerregistrierung übertragen und in einem Service Fabric-Cluster bereitgestellt. Bei der Bereitstellung in Azure nutzt die Anwendung Azure SQL-Datenbank für die dauerhafte Speicherung von Daten.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4ef696156b6386c7aa1a027dcc61c988ba4692a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314299"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 2. Vergewissern Sie sich, dass die Fabrikam Fiber CallCenter-Anwendung ohne Fehler erstellt und ausgeführt wird.  Starten Sie Visual Studio als **Administrator**, und öffnen Sie die Datei [FabrikamFiber.CallCenter.sln][link-fabrikam-github].  Drücken Sie F5, um die Anwendung zu debuggen und auszuführen.
 
-   ![Fabrikam-Webbeispiel][fabrikam-web-page]
+   ![Screenshot: Startseite der auf dem lokalen Host ausgeführten Fabrikam Fiber CallCenter-Anwendung. Auf der Seite wird ein Dashboard mit einer Liste von Supportanrufen angezeigt.][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>Packen der Anwendung in Container
 
@@ -235,7 +235,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 Im Fenster „Ausgabe“ können Sie den Fortschritt der Bereitstellung nachverfolgen. Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse und den Anwendungsport ein. Beispiel: `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
-![Fabrikam-Webbeispiel][fabrikam-web-page-deployed]
+![Screenshot: Startseite der auf azure.com ausgeführten Fabrikam Fiber CallCenter-Anwendung. Auf der Seite wird ein Dashboard mit einer Liste von Supportanrufen angezeigt.][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Einrichten von Continuous Integration und Continuous Deployment (CI/CD) mit einem Service Fabric-Cluster
 

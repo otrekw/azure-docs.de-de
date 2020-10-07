@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320930"
 ---
 # <a name="language-support-for-immersive-reader"></a>Sprachunterstützung für den plastischen Reader
 
@@ -30,7 +30,8 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Arabisch (Saudi-Arabien) | ar-SA |
 | Bulgarisch | bg |
 | Bulgarisch (Bulgarien) | bg-BG |
-| Katalanisch | ca-ES |
+| Katalanisch | ca |
+| Katalanisch (Katalanisch) | ca-ES |
 | Chinesisch | zh |
 | Chinesisch (China) | zh-CN |
 | Chinesisch (Hongkong SAR) | zh-HK |
@@ -40,7 +41,8 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Chinesisch (vereinfacht) | zh-Hans |
 | Chinesisch (Vereinfacht, China) | zh-Hans-CN |
 | Chinesisch (Vereinfacht, Singapur) | zh-Hans-SG |
-| Chinesisch (traditionell) | zh-Hant-CN |
+| Chinesisch (traditionell) | zh-Hant |
+| Traditionelles Chinesisch (China) | zh-Hant-CN |
 | Chinesisch (traditionell, Hongkong SAR) | zh-Hant-HK |
 | Chinesisch (traditionell, Macau SAR) | zh-Hant-MO |
 | Chinesisch traditionell (Taiwan) | zh-Hant-TW |
@@ -103,7 +105,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Slowakisch | sk |
 | Slowakisch (Slowakei) | sk-SK |
 | Slowenisch | sl |
-| Slowenisch (Slowenien) | sl-SL |
+| Slowenisch (Slowenien) | sl-SI |
 | Spanisch | es |
 | Spanisch (Lateinamerika) | es-419 |
 | Spanisch (Mexiko) | es-MX |
@@ -126,13 +128,15 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Sprache | Tag |
 |----------|-----|
 | Afrikaans | af |
+| Arabisch | ar |
 | Arabisch (ägyptisch) | ar-EG |
 | Arabisch (Saudi-Arabien) | ar-SA |
 | Bengalisch | bn |
 | Bosnisch | bs |
 | Bulgarisch | bg |
 | Bulgarisch (Bulgarien) | bg-BG |
-| Katalanisch | ca-ES |
+| Katalanisch | ca |
+| Katalanisch (Katalanisch) | ca-ES |
 | Chinesisch | zh |
 | Chinesisch (China) | zh-CN |
 | Chinesisch (Hongkong SAR) | zh-HK |
@@ -142,7 +146,8 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Chinesisch (vereinfacht) | zh-Hans |
 | Chinesisch (Vereinfacht, China) | zh-Hans-CN |
 | Chinesisch (Vereinfacht, Singapur) | zh-Hans-SG |
-| Chinesisch (traditionell) | zh-Hant-CN |
+| Chinesisch (traditionell) | zh-Hant |
+| Traditionelles Chinesisch (China) | zh-Hant-CN |
 | Chinesisch (traditionell, Hongkong SAR) | zh-Hant-HK |
 | Chinesisch (traditionell, Macau SAR) | zh-Hant-MO |
 | Chinesisch traditionell (Taiwan) | zh-Hant-TW |
@@ -152,6 +157,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Tschechisch (Tschechische Republik) | cs-CZ |
 | Dänisch | da |
 | Dänisch (Dänemark) | da-DK |
+| Dari (Afghanistan) | prs |
 | Niederländisch | nl |
 | Niederländisch (Niederlande) | nl-NL |
 | Englisch | en |
@@ -176,6 +182,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Deutsch (Österreich) | de-AT |
 | Deutsch (Deutschland) | de-DE |
 | Deutsch (Schweiz)| de-CH |
+| Gujarati | gu |
 | Griechisch | el |
 | Griechisch (Griechenland) | el-GR |
 | Haitianisch (kreolisch) | ht |
@@ -198,6 +205,8 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Suaheli | sw |
 | Koreanisch | ko |
 | Koreanisch (Korea) | ko-KR |
+| Kurdisch (zentral) | ku |
+| Kurdisch (nördlich) | kmr |
 | Lettisch | lv |
 | Litauisch | lt |
 | Madagassisch | mg |
@@ -206,8 +215,11 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Malayalam | ml |
 | Maltesisch | Mt |
 | Maori | mi |
+| Marathi | mr |
 | Norwegisch Bokmål| nb |
 | Norwegisch Bokmål (Norwegen) | nb-NO |
+| Oriya | oder |
+| Paschtu (Afghanistan) | ps |
 | Persisch | fa |
 | Polnisch | pl |
 | Polnisch (Polen) | pl-PL |
@@ -227,7 +239,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Slowakisch | sk |
 | Slowakisch (Slowakei) | sk-SK |
 | Slowenisch | sl |
-| Slowenisch (Slowenien) | sl-SL |
+| Slowenisch (Slowenien) | sl-SI |
 | Spanisch | es |
 | Spanisch (Lateinamerika) | es-419 |
 | Spanisch (Mexiko) | es-MX |
@@ -257,12 +269,14 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 
 | Sprache | Tag |
 |----------|-----|
+| Arabisch | ar |
 | Arabisch (ägyptisch) | ar-EG |
 | Arabisch (Saudi-Arabien) | ar-SA |
 | Baskisch | eu |
 | Bulgarisch | bg |
 | Bulgarisch (Bulgarien) | bg-BG |
-| Katalanisch | ca-ES |
+| Katalanisch | ca |
+| Katalanisch (Katalanisch) | ca-ES |
 | Chinesisch (vereinfacht) | zh-Hans |
 | Chinesisch (Vereinfacht, China) | zh-Hans-CN |
 | Chinesisch (Vereinfacht, Singapur) | zh-Hans-SG |
@@ -338,7 +352,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Slowakisch | sk |
 | Slowakisch (Slowakei) | sk-SK |
 | Slowenisch | sl |
-| Slowenisch (Slowenien) | sl-SL |
+| Slowenisch (Slowenien) | sl-SI |
 | Spanisch | es |
 | Spanisch (Lateinamerika) | es-419 |
 | Spanisch (Mexiko) | es-MX |
@@ -365,7 +379,8 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Baskisch | eu |
 | Bulgarisch | bg |
 | Bulgarisch (Bulgarien) | bg-BG |
-| Katalanisch | ca-ES |
+| Katalanisch | ca |
+| Katalanisch (Katalanisch) | ca-ES |
 | Kroatisch | hr |
 | Kroatisch (Kroatien) | hr-HR |
 | Tschechisch | cs |
@@ -423,7 +438,7 @@ In diesem Artikel sind die unterstützten Sprachen für Funktionen des plastisch
 | Slowakisch | sk |
 | Slowakisch (Slowakei) | sk-SK |
 | Slowenisch | sl |
-| Slowenisch (Slowenien) | sl-SL |
+| Slowenisch (Slowenien) | sl-SI |
 | Spanisch | es |
 | Spanisch (Lateinamerika) | es-419 |
 | Spanisch (Mexiko) | es-MX |

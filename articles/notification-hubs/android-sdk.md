@@ -1,6 +1,6 @@
 ---
 title: Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs und Firebase SDK-Version 1.0.0-preview1
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Google Firebase Cloud Messaging Pushbenachrichtigungen an Android-Geräte senden.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Google Firebase Cloud Messaging Pushbenachrichtigungen an Android-Geräte senden (Version 1.0.0-preview1).
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018228"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315188"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Firebase SDK-Version 1.0.0-preview1
 
@@ -62,23 +62,23 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
 2. Klicken Sie nach der Erstellung Ihres Projekts auf  **Add Firebase to your Android app** (Firebase der Android-App hinzufügen).
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Firebase hinzufügen":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Projekt konfigurieren":::
 
 3. Führen Sie auf der Seite  **Add Firebase to your Android app**  (Firebase der Android-App hinzufügen) Folgendes aus:
 
    1. Kopieren Sie für  **Android package name** (Name des Android-Pakets) den Wert der **applicationId** in die Datei **build.gradle** Ihrer Anwendung. In diesem Beispiel lautet er  `com.fabrikam.fcmtutorial1app`.
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Angeben des Paketnamens":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Projekt konfigurieren":::
 
    2. Wählen Sie  **App registrieren** aus.
 
 4. Wählen Sie  **Download google-services.json** (google-services.json herunterladen) aus, speichern Sie die Datei im Ordner **app** des Projekts, und wählen Sie dann  **Next** (Weiter) aus.
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google-Dienst herunterladen":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Projekt konfigurieren":::
 
 5. Klicken Sie in der Firebase-Konsole auf das Zahnrad für Ihr Projekt. Wählen Sie dann  **Projekteinstellungen** aus.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projekteinstellungen":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projekt konfigurieren":::
 
 6. Wenn Sie die Datei **google-services.json** nicht in den Ordner **app** Ihres Android Studio-Projekts heruntergeladen haben, können Sie dies auf dieser Seite tun.
 
@@ -94,7 +94,7 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
 3. Wählen Sie auf der Seite **Notification Hubs** auf der Symbolleiste **Hinzufügen** aus.
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Hub hinzufügen":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Projekt konfigurieren":::
 
 4. Gehen Sie auf der Seite **Notification Hubs** folgendermaßen vor:
 
@@ -108,15 +108,15 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
    5. Wählen Sie  **Erstellen** aus.
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Erstellen eines Hubs":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Projekt konfigurieren":::
 
 5. Wählen Sie **Benachrichtigungen** (Glockensymbol) und dann **Zu Ressource wechseln** aus. Sie können auch die Liste auf der Seite **Notification Hubs** aktualisieren und Ihren Hub auswählen.
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Auswählen des Hubs":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Projekt konfigurieren":::
 
 6. Wählen Sie in der Liste **Zugriffsrichtlinien** aus. Beachten Sie, dass zwei Verbindungszeichenfolgen verfügbar sind. Sie werden später für die Behandlung von Pushbenachrichtigungen benötigt.
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Zugriffsrichtlinien":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Projekt konfigurieren":::
 
    > [!IMPORTANT]
    > Verwenden  **Sie in Ihrer Anwendung nicht die Richtlinie** DefaultFullSharedAccessSignature. Diese Richtlinie darf nur im App-Back-End verwendet werden.
@@ -129,7 +129,7 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
 3. Wählen Sie auf der Symbolleiste **Speichern** aus.
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Serverschlüssel":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Projekt konfigurieren":::
 
 4. Im Azure-Portal wird in einer Meldung angezeigt, dass der Hub aktualisiert wurde. Die Schaltfläche **Speichern**  ist deaktiviert.
 
@@ -143,15 +143,15 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
 
 2. Wählen Sie die Zielversion des Android SDK aus, das in Ihrem Projekt verwendet wird. Wählen Sie dann **Paketdetails anzeigen** aus.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="SDK-Manager":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="Projekt konfigurieren":::
 
 3. Wählen Sie **Google-APIs** aus, falls diese noch nicht installiert wurden.
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="APIs":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="Projekt konfigurieren":::
 
 4. Wechseln Sie zur Registerkarte **SDK** Tools. Wählen Sie Google Play Services noch nicht installiert haben, wählen Sie **Google Play Services** , wie in der folgenden Abbildung gezeigt, aus. Wählen Sie dann **Anwenden** aus, um die Installation auszuführen. Notieren Sie den SDK-Pfad, den Sie in einem späteren Schritt angeben müssen.
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play Services":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Projekt konfigurieren":::
 
 5. Wählen Sie **OK** aus, wenn das Dialogfeld **Änderung bestätigen** angezeigt wird. Die gewünschten Komponenten werden mit dem entsprechenden Installationsprogramm installiert. Wählen Sie **Fertig stellen**  aus, wenn die Installation der Komponenten abgeschlossen ist.
 
@@ -237,11 +237,11 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
 
 4. Stellen Sie sicher, dass Sie über ein virtuelles Gerät zum Ausführen der App verfügen. Wenn Sie keines haben, fügen Sie wie folgt eines hinzu:
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Geräte-Manager":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Virtuelle Geräte":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Projekt konfigurieren":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Projekt konfigurieren":::
    3. Führen Sie die App auf Ihrem ausgewählten Gerät aus, und vergewissern Sie sich, dass sie richtig beim Hub registriert wird.
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Geräteregistrierung":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Projekt konfigurieren":::
 
       > [!NOTE]
       > Bei der Registrierung treten beim ersten Starten unter Umständen Fehler auf, bis die `onTokenRefresh()`-Methode des Instanz-ID-Diensts aufgerufen wird. Durch eine Aktualisierung sollte eine erfolgreiche Registrierung beim Notification Hub initiiert werden.
@@ -258,7 +258,7 @@ Sie können Pushbenachrichtigungen aus dem [Azure-Portal](https://portal.azure.
 
 4. Sie sehen das Ergebnis des Vorgangs in der Liste am unteren Rand der Portalseite.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Testbenachrichtigung senden":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Projekt konfigurieren":::
 
 5. Die Benachrichtigung wird auf Ihrem Gerät angezeigt.
 

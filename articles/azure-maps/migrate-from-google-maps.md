@@ -1,24 +1,24 @@
 ---
-title: 'Tutorial: Migrieren von Google Maps zu Azure Maps | Microsoft Azure Maps'
-description: Hier finden Sie ein Tutorial zum Migrieren von Google Maps zu Microsoft Azure Maps. In diesem Leitfaden wird die Umstellung auf Azure Maps-APIs und SDKs erläutert.
+title: Migrieren von Google Maps zu Azure Maps | Microsoft Azure Maps
+description: Hier erfahren Sie mehr über die Migration von Google Maps zu Microsoft Azure Maps. In diesem Leitfaden wird die Umstellung auf Azure Maps-APIs und SDKs erläutert.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 09/23/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264166"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Migrieren von Google Maps zu Azure Maps
 
-Dieses Tutorial bietet Einblicke in die Migration von Web-, Mobil- und serverbasierten Anwendungen von Google Maps zur Microsoft Azure Maps-Plattform. Dieses Tutorial enthält vergleichende Codebeispiele, Migrationsvorschläge und Best Practices für die Migration zu Azure Maps.
+Dieser Artikel bietet Einblicke in die Migration von Web- und Mobilanwendungen sowie von serverbasierten Anwendungen von Google Maps zur Microsoft Azure Maps-Plattform. Dieses Tutorial enthält vergleichende Codebeispiele, Migrationsvorschläge und Best Practices für die Migration zu Azure Maps.
 
 ## <a name="azure-maps-platform-overview"></a>Übersicht über die Azure Maps-Plattform
 
@@ -80,6 +80,15 @@ Nachfolgend finden Sie einen allgemeinen Migrationsplan.
 5. Testen Sie Ihre migrierte Anwendung.
 6. Stellen Sie die migrierte Anwendung in der Produktionsumgebung bereit.
 
+## <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
+
+Führen Sie die folgenden Schritte aus, um ein Azure Maps-Konto zu erstellen und Zugriff auf die Azure Maps-Plattform zu erhalten:
+
+1. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+3. Erstellen Sie ein [Azure Maps-Konto](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
+4. [Rufen Sie den Azure Maps-Abonnementschlüssel ab](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details), oder richten Sie Azure Active Directory-Authentifizierung ein, um die Sicherheit zu erhöhen.
+
 ## <a name="azure-maps-technical-resources"></a>Technische Azure Maps-Ressourcen
 
 Nachfolgend finden Sie eine Liste nützlicher technischer Ressourcen für Azure Maps.
@@ -98,15 +107,10 @@ Nachfolgend finden Sie eine Liste nützlicher technischer Ressourcen für Azure 
 
 Entwickler können über die [Foren](https://aka.ms/AzureMapsForums) oder über eine der vielen Azure-Supportoptionen Unterstützung bei der Migration erhalten: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-## <a name="next-steps"></a>Nächste Schritte
+In den folgenden Artikeln erfahren Sie, wie Sie Ihre Google Maps-Anwendungen migrieren: 
 
-In den folgenden Artikeln erfahren Sie im Detail, wie Sie Ihre Google Maps-Anwendung migrieren:
+[Migrieren einer Android-App](migrate-from-google-maps-android-app.md) 
 
-> [!div class="nextstepaction"]
-> [Migrieren einer Web-App](migrate-from-google-maps-web-app.md)
+[Migrieren eines Webdiensts](migrate-from-google-maps-web-services.md) 
 
-> [!div class="nextstepaction"]
-> [Migrieren einer Android-App](migrate-from-google-maps-android-app.md)
-
-> [!div class="nextstepaction"]
-> [Migrieren eines Webdiensts](migrate-from-google-maps-web-services.md)
+[Migrieren einer Web-App](migrate-from-google-maps-web-app.md)

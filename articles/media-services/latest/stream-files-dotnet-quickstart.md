@@ -1,6 +1,6 @@
 ---
 title: 'Streamen von Videodateien mit Azure Media Services: .NET | Microsoft Docs'
-description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
+description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um mithilfe von .NET ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268688"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – .NET
 
@@ -70,7 +70,7 @@ Wenn Sie die App ausführen, werden URLs angezeigt, die zur Wiedergabe des Video
 1. Drücken Sie STRG+F5 zum Ausführen der *EncodeAndStreamFiles*-Anwendung.
 2. Wählen Sie das **HLS**-Protokoll von Apple (endet auf *manifest(format=m3u8-aapl)* ) aus, und kopieren Sie die Streaming-URL aus der Konsole.
 
-![Output](./media/stream-files-tutorial-with-api/output.png)
+![Screenshot: Ausgabe der EncodeAndStreamFiles-App in Visual Studio mit drei Streaming-URLs für die Verwendung in Azure Media Player](./media/stream-files-tutorial-with-api/output.png)
 
 Im [Quellcode](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) des Beispiels können Sie sehen, wie die URL erstellt wird. Um sie zu erstellen, müssen Sie den Hostnamen des Streamingendpunkts und den Streaminglocatorpfad miteinander verketten.  
 

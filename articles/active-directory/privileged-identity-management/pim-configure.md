@@ -10,24 +10,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 08/08/2020
+ms.date: 09/29/2020
 ms.author: curtand
-ms.custom: pim
+ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0b7bcfa6569edd93373f493cfaa7deff2976d35
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047818"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540828"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
- Privileged Identity Management (PIM) ist ein Dienst in Azure Active Directory (Azure AD), mit dem Sie den Zugriff auf wichtige Ressourcen innerhalb Ihrer Organisation verwalten, steuern und überwachen können. Diese Ressourcen umfassen Ressourcen in Azure AD, Azure und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
+ Privileged Identity Management (PIM) ist ein Dienst in Azure Active Directory (Azure AD), mit dem Sie den Zugriff auf wichtige Ressourcen innerhalb Ihrer Organisation verwalten, steuern und überwachen können. Diese Ressourcen umfassen Ressourcen in Azure AD, Azure und anderen Microsoft-Onlinediensten wie Microsoft 365 oder Microsoft Intune. Im folgenden Video werden wichtige PIM-Konzepte und -Features vorgestellt.
+<br><br>
+
+> [!VIDEO https://www.youtube.com/embed/f-0K7mRUPpQ]
 
 ## <a name="reasons-to-use"></a>Argumente für die Verwendung
 
-Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering halten, da sich dadurch das Risiko verringert, dass ein böswilliger Akteur Zugriff darauf erhält oder dass ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert. Benutzer müssen jedoch in Azure AD, Azure, Office 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Organisationen können Benutzern privilegierten Just-In-Time-Zugriff auf Azure-Ressourcen und Azure AD gewähren. Dabei muss jedoch überwacht werden, wofür diese Benutzer ihre Administratorrechte nutzen.
+Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering halten, da sich dadurch das Risiko verringert, dass ein böswilliger Akteur Zugriff darauf erhält oder dass ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert. Benutzer müssen jedoch in Azure AD, Azure, Microsoft 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Organisationen können Benutzern privilegierten Just-In-Time-Zugriff auf Azure-Ressourcen und Azure AD gewähren. Dabei muss jedoch überwacht werden, wofür diese Benutzer ihre Administratorrechte nutzen.
 
 ## <a name="what-does-it-do"></a>Behandelte Themen
 

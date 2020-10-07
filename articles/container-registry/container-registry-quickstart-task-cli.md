@@ -1,20 +1,21 @@
 ---
-title: 'Schnellstart: Erstellen und Ausführen eines Containerimages'
-description: Führen Sie mit Azure Container Registry schnell Aufgaben aus, um bei Bedarf ein Docker-Containerimage in der Cloud zu erstellen und auszuführen.
+title: 'Schnellstart: Bedarfsgesteuertes Erstellen eines Containerimages in Azure'
+description: Verwenden Sie Azure Container Registry-Befehle, um bei Bedarf schnell ein Docker-Containerimage in der Cloud zu erstellen, mithilfe von Push zu übertragen und auszuführen.
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753704"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538205"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Schnellstart: Erstellen und Ausführen eines Containerimages mithilfe von Azure Container Registry Tasks
 
-In dieser Schnellstartanleitung verwenden Sie Befehle von Azure Container Registry Tasks, um ein Docker-Containerimage schnell zu erstellen, mithilfe von Push zu übertragen und nativ in Azure auszuführen. Dabei lernen Sie, wie Sie Ihren Inner Loop-Entwicklungszyklus in die Cloud auslagern. [ACR Tasks][container-registry-tasks-overview] ist eine Suite mit Features in Azure Container Registry, die Sie beim Verwalten und Ändern von Containerimages während des gesamten Containerlebenszyklus unterstützt. 
+In dieser Schnellstartanleitung verwenden Sie [Azure Container Registry Tasks][container-registry-tasks-overview]-Befehle, um ohne lokale Docker-Installation schnell ein Docker-Containerimage zu erstellen, mithilfe von Push zu übertragen und nativ in Azure auszuführen. ACR Tasks ist eine Suite mit Features in Azure Container Registry, die Sie beim Verwalten und Ändern von Containerimages während des gesamten Containerlebenszyklus unterstützt. In diesem Beispiel wird gezeigt, wie Sie den Inner Loop-Entwicklungszyklus für Containerimages mit bedarfsgesteuerten Builds mithilfe eines lokalen Dockerfile in die Cloud auslagern. 
 
-Im Anschluss an diese Schnellstartanleitung können Sie sich mit komplexeren Features von ACR Tasks beschäftigen. ACR Tasks ermöglicht unter anderem die Automatisierung von Imagebuildvorgängen auf der Grundlage von Codecommits oder Basisimageaktualisierungen sowie das parallele Testen mehrerer Container. 
+Im Anschluss an diese Schnellstartanleitung können Sie sich in [diesen Tutorials](container-registry-tutorial-quick-task.md) mit komplexeren Features von ACR Tasks beschäftigen. ACR Tasks ermöglicht unter anderem die Automatisierung von Imagebuildvorgängen auf der Grundlage von Codecommits oder Basisimageaktualisierungen sowie das parallele Testen mehrerer Container. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
 
@@ -45,7 +46,7 @@ In diesem Beispiel wird eine Registrierung vom Typ *Basic* erstellt. Dabei hande
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Erstellen und Pushen eines Images auf der Grundlage eines Dockerfile
 
-Erstellen und pushen Sie nun ein Image mithilfe von Azure Container Registry. Erstellen Sie zunächst ein Arbeitsverzeichnis und anschließend ein Dockerfile namens *Dockerfile* mit der einzigen Zeile: `FROM hello-world`. Dies ist ein einfaches Beispiel für die Erstellung eines Linux-Containerimages aus dem `hello-world`-Image in Docker Hub. Sie können jedoch Ihr eigenes Standard-Dockerfile sowie Images für andere Plattformen erstellen. Wenn Sie an einer bash-Shell arbeiten, erstellen Sie das Dockerfile mit dem folgenden Befehl:
+Erstellen und pushen Sie nun ein Image mithilfe von Azure Container Registry. Erstellen Sie zunächst ein lokales Arbeitsverzeichnis und anschließend ein Dockerfile namens *Dockerfile* mit der einzigen Zeile `FROM hello-world`. Dies ist ein einfaches Beispiel für die Erstellung eines Linux-Containerimages aus dem `hello-world`-Image in Docker Hub. Sie können jedoch Ihr eigenes Standard-Dockerfile sowie Images für andere Plattformen erstellen. Wenn Sie an einer bash-Shell arbeiten, erstellen Sie das Dockerfile mit dem folgenden Befehl:
 
 ```bash
 echo FROM hello-world > Dockerfile

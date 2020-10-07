@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Azure IoT Hub Device Provisioning Service mithilfe der Azure-Befehlszeilenschnittstelle
+title: 'Schnellstart: Einrichten von Azure IoT Hub Device Provisioning Service mithilfe der Azure-Befehlszeilenschnittstelle'
 description: 'Schnellstart: Einrichten von Azure IoT Hub Device Provisioning Service (DPS) mithilfe der Azure-Befehlszeilenschnittstelle'
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497663"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330246"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> Diese beiden Befehle eignen sich für einen unter Bash ausgeführten Host. Bei Verwendung einer lokalen Windows-/Befehlsshell oder eines PowerShell-Hosts müssen Sie die Befehle an die korrekte Syntax für die jeweilige Umgebung anpassen.
+> Diese beiden Befehle eignen sich für einen unter Bash ausgeführten Host.
+> 
+> Passen Sie bei Verwendung einer lokalen Windows-/Befehlsshell oder eines PowerShell-Hosts die Befehle an die korrekte Syntax für die jeweilige Umgebung an.
+>
+> Überprüfen Sie bei Verwendung von Azure Cloud Shell, ob im Dropdownmenü für Umgebungen auf der linken Seite des Shellfensters **Bash** ausgewählt ist.
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>Verknüpfen der IoT Hub-Instanz und des Bereitstellungsdiensts

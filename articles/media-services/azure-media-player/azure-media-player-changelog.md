@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432656"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315081"
 ---
-# <a name="changelog"></a>Änderungsprotokoll #
+# <a name="changelog"></a>Änderungsprotokoll
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (offizielles Update, 21. September 2020)
+
+### <a name="features-236"></a>Features 2.3.6
+
+Reine Audiounterstützung für die azureHtml5JS-Technologie (DASH), Unterstützung des Spätstarts der Livetranskription sowie Unterstützung des Änderns der Sprache in der Livetranskription hinzugefügt
+
+### <a name="bug-fixes-236"></a>Fehlerbehebungen 2.3.6
+
+Wenn bei der HLS-Wiedergabe auf Apple-Geräten „playsinline“ verwendet wird, wird das Video durch Klicken auf die Schaltfläche „LIVE“ neu gestartet. Durch das AMP-Posterbild wird manchmal eine Ausnahme ausgelöst. Die Lautstärkeschaltfläche war bei der HLS FairPlay-Wiedergabe nicht vorhanden. [Barrierefreiheit] Bei Verwendung der Tastatur sind keine QuickInfos für Schaltflächen definiert. [Barrierefreiheit] Das Helligkeitsverhältnis für die Statusleiste ist geringer als 1,3:1. [Barrierefreiheit] Der Tastaturfokus kehrt manchmal nicht zur Schaltfläche für die Videoqualität zurück. [Barrierefreiheit] Steuerelemente werden auf dem Videobildschirm nicht angezeigt und können daher von der Sprachausgabe nicht gefunden werden.
+
+### <a name="changes-236"></a>Änderungen 2.3.6
+
+An aufrufende Anwendungen werden aussagekräftige KeyDelivery-Fehler zurückgegeben.
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (Offizielles Update vom 1. Juni 2020)
 

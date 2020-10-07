@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer CI/CD-Pipeline für Java – Azure DevOps Starter'
-description: DevOps Starter erleichtert die ersten Schritte mit Azure. Damit können Sie eine App in einem Azure-Dienst Ihrer Wahl in einigen wenigen Schritten starten.
+description: Hier erfahren Sie, wie Sie die vereinfachte Benutzeroberfläche von Azure DevOps Starter zum Einrichten einer CI/CD-Pipeline (Continuous Integration und Continuous Delivery) für Ihre Java-App in Azure Pipelines verwenden.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 738822d2dd4a67ea0b5c83c6c5f6c289e93766c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 29b05feab0a44629c3d450709a3bc05481be6e84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327785"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330365"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Einrichten einer CI/CD-Pipeline für eine Java-App mit Azure DevOps Starter
 
@@ -84,7 +84,7 @@ Nun wird angezeigt, dass ein Buildvorgang ausgeführt wird. Die Änderungen, die
 
  Im vorherigen Schritt wurde von DevOps Starter automatisch eine vollständige CI/CD-Pipeline konfiguriert. Untersuchen Sie die Pipeline, und passen Sie sie bei Bedarf an. Führen Sie die folgenden Schritte aus, um sich mit den Build- und Releasepipelines vertraut zu machen:
 
-1. Klicken Sie oben im DevOps Starter-Dashboard auf die Option **Buildpipelines**. Über diesen Link werden eine Browserregisterkarte und die Buildpipeline für Ihr neues Projekt geöffnet.
+1. Wählen Sie oben im DevOps Starter-Dashboard die Option **Buildpipelines** aus. Über diesen Link werden eine Browserregisterkarte und die Buildpipeline für Ihr neues Projekt geöffnet.
 
 1. Zeigen Sie auf das Feld **Status**, und wählen Sie dann die Auslassungspunkte (...) aus. Mit dieser Aktion wird ein Menü geöffnet, über das Sie verschiedene Aktivitäten starten können. So können Sie beispielsweise einen neuen Build zur Warteschlange hinzufügen, einen Build anhalten und die Buildpipeline bearbeiten.
 
@@ -124,7 +124,7 @@ Im Bereich **Verlauf** wird ein Überwachungsprotokoll mit den letzten Änderung
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Azure App Service-Instanz und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie die Funktion **Löschen** im DevOps Starter-Dashboard.
+Sie können die Azure App Service-Instanz und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie die Funktion **Löschen** auf dem DevOps Starter-Dashboard.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Azure IoT Hub Device Provisioning mithilfe einer Azure Resource Manager-Vorlage
+title: 'Schnellstart: Einrichten von Azure IoT Hub Device Provisioning mithilfe einer Azure Resource Manager-Vorlage'
 description: 'Azure-Schnellstart: Einrichten von Azure IoT Hub Device Provisioning Service (DPS) mit einer Vorlage'
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74969580"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297146"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts mit einer Azure Resource Manager-Vorlage
 
@@ -300,7 +300,7 @@ Für die Vorlage, die Sie im letzten Schritt definiert haben, werden Parameter z
 
 Verwenden Sie die folgenden Azure CLI-Befehle, um Ihre Vorlagen bereitzustellen und die Bereitstellung zu überprüfen.
 
-1. Navigieren Sie zum Bereitstellen der Vorlage zu dem Ordner, der die Vorlage und die Parameterdateien enthält, und führen Sie den folgenden [Befehl aus, um eine Bereitstellung zu starten](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+1. Navigieren Sie zum Bereitstellen der Vorlage zu dem Ordner, der die Vorlage und die Parameterdateien enthält, und führen Sie den folgenden [Befehl aus, um eine Bereitstellung zu starten](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ Verwenden Sie die folgenden Azure CLI-Befehle, um Ihre Vorlagen bereitzustellen 
    ![Bereitstellen der Ausgabe](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Führen Sie zum Überprüfen Ihrer Bereitstellung den folgenden [Befehl zum Auflisten von Ressourcen](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) aus, und suchen Sie in der Ausgabe nach dem neuen Bereitstellungsdienst und dem IoT Hub:
+2. Führen Sie zum Überprüfen Ihrer Bereitstellung den folgenden [Befehl zum Auflisten von Ressourcen](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) aus, und suchen Sie in der Ausgabe nach dem neuen Bereitstellungsdienst und dem IoT Hub:
 
     ```azurecli
      az resource list -g {your resource group name}

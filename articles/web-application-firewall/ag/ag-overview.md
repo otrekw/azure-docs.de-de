@@ -5,15 +5,15 @@ description: Dieser Artikel enthält eine Übersicht über Web Application Firew
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226997"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91267022"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Was ist Azure Web Application Firewall in Azure Application Gateway?
 
@@ -75,9 +75,21 @@ In diesem Abschnitt werden die wichtigsten Vorteile der WAF für Application Gat
 - Führen Sie für Ihren Datenverkehr eine Geofilterung durch, um für bestimmte Länder/Regionen den Zugriff auf Ihre Anwendungen zuzulassen bzw. zu blockieren. (Vorschauversion)
 - Schützen Sie Ihre Anwendungen vor Bots, indem Sie den Regelsatz für die Risikominderung für Bots verwenden. (Vorschauversion)
 
-## <a name="waf-policy"></a>WAF-Richtlinie
+## <a name="waf-policy-and-rules"></a>WAF-Richtlinien und -Regeln
 
-Wenn Sie eine Web Application Firewall für eine Application Gateway-Instanz aktivieren möchten, müssen Sie eine WAF-Richtlinie erstellen. Diese Richtlinie enthält sämtliche verwalteten Regeln, benutzerdefinierten Regeln, Ausschlüsse und anderen Anpassungen (etwa das Dateiuploadlimit). 
+Wenn Sie eine Web Application Firewall für Application Gateway aktivieren möchten, müssen Sie eine WAF-Richtlinie erstellen. Diese Richtlinie enthält sämtliche verwalteten Regeln, benutzerdefinierten Regeln, Ausschlüsse und anderen Anpassungen (etwa das Dateiuploadlimit).
+
+Sie können eine WAF-Richtlinie konfigurieren und diese Richtlinie zu Schutzzwecken einem oder mehreren Anwendungsgateways zuordnen. Eine WAF-Richtlinie besteht aus zwei verschiedenen Arten von Sicherheitsregeln:
+
+- Benutzerdefinierte, von Ihnen erstellte Regeln
+
+- Verwaltete Regelsätze (eine Sammlung vorkonfigurierter Regelsätze, die von Azure verwaltet werden)
+
+Wenn beides vorhanden ist, werden die benutzerdefinierten Regeln vor den Regeln eines verwalteten Regelsatzes verarbeitet. Eine Regel besteht aus einer Übereinstimmungsbedingung, einer Priorität und einer Aktion. Folgende Aktionstypen werden unterstützt: „ALLOW“, „BLOCK“ und „LOG“. Sie können eine vollständig angepasste Richtlinie erstellen, die Ihre speziellen Anforderungen an die Anwendungssicherheit erfüllt, indem Sie verwaltete und benutzerdefinierte Regeln kombinieren.
+
+Die Regeln innerhalb einer Richtlinie werden nach Priorität verarbeitet. Bei der Priorität handelt es sich um eine eindeutige ganze Zahl, die die Reihenfolge der Regelverarbeitung definiert. Kleinere ganzzahlige Wert stehen für eine höhere Priorität und werden vor Regeln mit einem höheren ganzzahligen Wert ausgewertet. Sobald eine Übereinstimmung mit einer Regel erkannt wird, wird die entsprechende Aktion, die in der Regel definiert wurde, auf die Anforderung angewendet. Nach der Verarbeitung einer derartigen Übereinstimmung werden Regeln mit niedrigerer Priorität nicht weiter verarbeitet.
+
+Einer von Application Gateway bereitgestellten Webanwendung kann eine WAF-Richtlinie auf globaler Ebene, auf Websiteebene oder auf URI-Ebene zugeordnet sein.
 
 ### <a name="core-rule-sets"></a>Kernregelsätze
 
@@ -159,6 +171,11 @@ Mit der integrierten Arbeitsmappe für Firewallereignisse der Azure WAF erhalten
 
 
 ![Azure WAF: Arbeitsmappe mit Firewallereignissen](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>Azure Monitor-Arbeitsmappe für WAF
+
+Diese Arbeitsmappe ermöglicht die benutzerdefinierte Visualisierung sicherheitsrelevanter WAF-Ereignisse über mehrere filterbare Panels hinweg. Sie kann mit allen WAF-Typen (etwa mit Application Gateway, Front Door und CDN) verwendet und nach WAF-Typ oder einer bestimmten WAF-Instanz gefiltert werden. Zum Importieren kann eine Sie ARM- oder eine Katalogvorlage verwendet werden. Informationen zum Bereitstellen dieser Arbeitsmappe finden Sie unter [Azure Monitor-Arbeitsmappe für WAF](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
 
 #### <a name="logging"></a>Protokollierung
 

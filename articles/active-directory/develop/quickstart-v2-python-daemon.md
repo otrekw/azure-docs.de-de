@@ -1,6 +1,7 @@
 ---
-title: 'Microsoft Identity Platform: .Python-Daemon | Azure'
-description: Hier erfahren Sie, wie ein Python-Prozess unter Verwendung der App-eigenen Identität ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
+title: 'Schnellstart: Aufrufen von Microsoft Graph über einen Python-Daemon | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung erfahren Sie, wie ein Python-Prozess unter Verwendung der App-eigenen Identität ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257740"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App unter Verwendung der Identität der App
 
@@ -224,18 +225,3 @@ Weitere Informationen zu Daemon-Anwendungen finden Sie auf der Landing Page des 
 
 > [!div class="nextstepaction"]
 > [Daemon-App zum Aufrufen von Web-APIs](scenario-daemon-overview.md)
-
-Das Tutorial zur Daemon-Anwendung finden Sie unter:
-
-> [!div class="nextstepaction"]
-> [Tutorial für eine Python-Daemon-Konsole](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-Informieren Sie sich über Berechtigungen und die Einwilligung:
-
-> [!div class="nextstepaction"]
-> [Berechtigungen und Einwilligung](v2-permissions-and-consent.md)
-
-Weitere Informationen zum Authentifizierungsfluss für dieses Szenario finden Sie unter dem OAuth 2.0-Clientanmeldeinformations-Flow:
-
-> [!div class="nextstepaction"]
-> [OAuth 2.0-Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md)

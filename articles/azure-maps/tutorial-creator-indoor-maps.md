@@ -1,21 +1,21 @@
 ---
-title: Verwenden von Creator zum Erstellen von Gebäudeplänen
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Maps Creator Gebäudepläne erstellen.
+title: 'Tutorial: Verwenden von Creator zum Erstellen von Gebäudeplänen'
+description: Tutorial zum Erstellen von Gebäudeplänen mithilfe von Azure Maps Creator
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371421"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>Verwenden von Creator zum Erstellen von Gebäudeplänen
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>Tutorial: Verwenden von Creator zum Erstellen von Gebäudeplänen
 
 In diesem Tutorial wird die Erstellung von Gebäudeplänen gezeigt. Sie erfahren in diesem Tutorial, wie Sie mithilfe der API folgende Aktionen ausführen:
 
@@ -35,7 +35,7 @@ Zum Erstellen von Gebäudeplänen ist Folgendes erforderlich:
 1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 3. [Erstellen einer Creator-Ressource](how-to-manage-creator.md)
-4. Herunterladen des [Beispielzeichenpakets](https://github.com/Azure-Samples/am-creator-indoor-data-examples)
+4. Herunterladen des [Beispielzeichenpakets](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)
 
 In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
 
@@ -404,43 +404,11 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 
 Mit der [API zum Abrufen von Featurezuständen](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) können Sie den Zustand eines Features unter Verwendung der zugehörigen Feature-ID (`ID`) abrufen. Mit der [API zum Löschen von Featurezuständen](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview) können Sie das Zustandsset und die zugehörigen Ressourcen löschen.
 
+Weitere Informationen zu den verschiedenen Azure Maps Creator-Diensten aus diesem Artikel finden Sie unter [Creator für Gebäudepläne](creator-indoor-maps.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Hochladen des Zeichnungspakets für Ihren Gebäudeplan
-> * Konvertieren Ihres Zeichnungspakets in Kartendaten
-> * Erstellen eines Datasets auf der Grundlage Ihrer Kartendaten
-> * Erstellen eines Kachelsets auf der Grundlage der Daten in Ihrem Dataset
-> * Abfragen des Azure Maps-WFS-Diensts, um Informationen zu Ihren Kartenfeatures zu erhalten
-> * Erstellen eines Featurezustandssets unter Verwendung Ihrer Kartenfeatures und der Daten in Ihrem Dataset
-> * Aktualisieren Ihres Featurezustandssets
-
-Damit verfügen Sie über die erforderlichen Kenntnisse für die nächsten Leitfäden:
+Informationen zur Verwendung des Moduls „Gebäudepläne“ finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwenden des Moduls „Gebäudepläne“](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [Implementieren dynamischer Stile für Creator-Gebäudepläne](indoor-map-dynamic-styling.md)
-
-Weitere Informationen zu den verschiedenen Azure Maps-Diensten aus diesem Artikel finden Sie hier:
-
-> [!div class="nextstepaction"]
-> [Datenupload](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Datenkonvertierung](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Dataset](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [Kachelset](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [Featurezustandsset](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [WFS-Dienst](creator-indoor-maps.md#web-feature-service-api)
+> [Verwenden des Moduls „Gebäudepläne“ von Azure Maps](how-to-use-indoor-module.md)
