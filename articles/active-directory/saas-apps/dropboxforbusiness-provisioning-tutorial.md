@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: e3dd0a31e23418c5871ac3db80b2ba1543576fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305657"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dropbox für Unternehmen für die automatische Benutzerbereitstellung
 
@@ -91,11 +91,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Es wird ein Dropbox für Unternehmen-Anmeldedialogfeld in einem neuen Browserfenster geöffnet.
 

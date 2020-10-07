@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/29/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 11043d6686bd762b1c0a9827c7edb2230487cc72
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314435"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
@@ -67,7 +67,7 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
         - **Fehlerhafte Ressourcen**: Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.
         - **Nicht anwendbare Ressourcen**: Ressourcen, für die die Empfehlung keine definitive Antwort geben kann. Auf dieser Registerkarte werden auch Gründe für die jeweilige Ressource angegeben. 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nicht anwendbare Ressourcen mit Gründen":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Seite mit den Empfehlungsdetails":::
 
 ## <a name="preview-recommendations"></a>Vorschau der Empfehlungen
 
@@ -77,7 +77,7 @@ Sie sollten nach Möglichkeit weiterhin korrigiert werden, damit sie nach Ablauf
 
 Beispiel für eine Vorschauempfehlung:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Empfehlung mit dem Flag „Vorschau“":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Seite mit den Empfehlungsdetails":::
  
 ## <a name="next-steps"></a>Nächste Schritte
 

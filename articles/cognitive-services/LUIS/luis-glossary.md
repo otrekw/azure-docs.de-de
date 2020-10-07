@@ -1,14 +1,16 @@
 ---
 title: LUIS-Glossar
 description: In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309488"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.

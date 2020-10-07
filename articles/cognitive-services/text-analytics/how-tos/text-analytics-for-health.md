@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309199"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)
 
@@ -73,7 +73,7 @@ Text Analytics for Health unterstützt nur Dokumente in englischer Sprache.
 
 ## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
 
-Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. Zurzeit fallen für die Verwendung von Text Analytics for Health keine Gebühren an. 
+Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](https://aka.ms/csgate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. Zurzeit fallen für die Verwendung von Text Analytics for Health keine Gebühren an. 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 

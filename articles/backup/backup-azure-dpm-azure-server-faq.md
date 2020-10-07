@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 00eb064aaf549ee0d83d0cf7d9c9b47c2dc5ef78
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324942"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server und DPM – häufig gestellte Fragen
 
@@ -39,7 +39,7 @@ Für die vorhandenen DPM-Server mit Datenquellen, die in der Cloud (mithilfe ein
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Gibt es Empfehlungen zum Konfigurieren von Ausschlüssen für Antivirussoftware?
 
-Ja, der Antivirenausschluss sollte konfiguriert werden. Informationen zu Ausschlüssen für DPM finden Sie unter [Ausführen von Antivirensoftware auf dem DPM-Server](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). Informationen zu Ausschlüssen für MABS finden Sie unter [Konfigurieren von Antivirensoftware für MABS-Server](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
+Ja, der Antivirenausschluss sollte konfiguriert werden. Informationen zu Ausschlüssen für DPM finden Sie unter [Ausführen von Antivirensoftware auf dem DPM-Server](https://docs.microsoft.com/system-center/dpm/run-antivirus-server). Informationen zu Ausschlüssen für MABS finden Sie unter [Konfigurieren von Antivirensoftware für MABS-Server](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware- und Hyper-V-Sicherung
 

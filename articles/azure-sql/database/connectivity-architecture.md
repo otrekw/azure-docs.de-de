@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325384"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

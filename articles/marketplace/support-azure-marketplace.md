@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329753"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Support für den kommerziellen Microsoft-Marketplace
 
@@ -38,8 +38,7 @@ Haben Sie Fragen dazu, wie Sie als Publisher für den kommerziellen Microsoft-Ma
 ## <a name="marketing-resources"></a>Marketingressourcen  
 
 | Supportkanal | BESCHREIBUNG | Verfügbarkeit |  
-|:--- |:--- |:--- |  
-| E-Mail: [cosell@microsoft.com](mailto:cosell@microsoft.com) | Unterstützung für Onboardingprozesse und Fragen im Zusammenhang mit dem Co-Sell-Programm. | Befindet sich in der Zone mit „Pacific Time“. |  
+|:--- |:--- |:--- |
 | E-Mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Unterstützung zu GTM-Vorteilen und Programmfragen | Die Geschäftszeiten sind in „Pacific Time“ angegeben. |  
 | E-Mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antworten auf Fragen zur Nutzung für Azure-Logos und zum Branding. |  |  
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314486"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -29,8 +29,8 @@ Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und er
 Verwenden Sie für die ersten Schritte mit Security Center die folgenden Ressourcen:
 
 Artikel
-- [Einführung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- [Schnellstarthandbuch zu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Einführung in Azure Security Center](security-center-introduction.md)
+- [Schnellstarthandbuch zu Azure Security Center](security-center-get-started.md)
 
 Videos
 - [Kurzes Einführungsvideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
@@ -42,7 +42,7 @@ Zur optimalen Nutzung von Security Center sollten Sie verstanden haben, wie der 
 
 Verwenden Sie die folgenden Ressourcen als Hilfe bei der Planung und beim Betrieb.
 
-- [Planungs- und Betriebshandbuch für Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Onboarding von Computern für Security Center

@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: Überprüfen und Testen von Änderungen eines Pull Requests direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js
+ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316102"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 

@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326166"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Einrichten der lokalen Entwicklung für Azure Static Web Apps (Vorschau)
 
@@ -75,7 +75,7 @@ Die Live Server-Erweiterung für Visual Studio Code verfügt über einen Webserv
 
 1. Geben Sie im Suchfeld den Suchbegriff **clone** ein, und wählen Sie **Git: Clone** aus.
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="Option „git clone“ in Visual Studio Code":::
+    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="GitHub-Fenster für neues Repository":::
 
 1. Geben Sie den folgenden Wert als **Repository-URL** ein.
 
@@ -87,7 +87,7 @@ Die Live Server-Erweiterung für Visual Studio Code verfügt über einen Webserv
 
 1. Wählen Sie **Öffnen** aus, wenn Sie zum Öffnen des geklonten Repositorys aufgefordert werden.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="In neuem Fenster öffnen":::
+    :::image type="content" source="media/local-development/open-new-window.png" alt-text="GitHub-Fenster für neues Repository":::
 
 Visual Studio Code öffnet das geklonte Projekt im Editor.
 
@@ -99,7 +99,7 @@ Visual Studio Code öffnet das geklonte Projekt im Editor.
 
     Im Browser wird ein Tab geöffnet, um die Anwendung anzuzeigen.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="Einfache statische Website, die im Browser ausgeführt wird":::
+    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="GitHub-Fenster für neues Repository":::
 
     Diese Anwendung sendet eine HTTP-Anforderung an den Endpunkt `api/message`. Derzeit tritt für diese Anforderung ein Fehler auf, weil der API-Teil der Anwendung gestartet werden muss.
 
@@ -113,13 +113,13 @@ Beim API-Erstellungsprozess wird für Visual Studio Code eine Startkonfiguration
 
 1. Es wird eine neue Terminalinstanz geöffnet, in der die Ausgabe des API-Buildprozesses angezeigt wird.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Ausführung der API im Visual Studio Code-Terminal":::
+    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="GitHub-Fenster für neues Repository":::
 
    Die Statusleiste in Visual Studio Code ist jetzt orange gekennzeichnet. Diese Farbe gibt an, dass die API nun ausgeführt wird und der Debugger angefügt wurde.
 
 1. Drücken Sie als Nächstes **STRG/CMD**, und klicken Sie im Terminal auf die URL, um ein Browserfenster zum Aufrufen der API zu öffnen.
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Browseranzeige mit dem Ergebnis des API-Aufrufs":::
+    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="GitHub-Fenster für neues Repository":::
 
 ### <a name="debugging-the-api"></a>Debuggen der API
 
@@ -127,19 +127,19 @@ Beim API-Erstellungsprozess wird für Visual Studio Code eine Startkonfiguration
 
 1. Klicken Sie in Zeile 2 auf den linken Randbereich, um einen Breakpoint festzulegen. Ein roter Punkt wird angezeigt, um anzugeben, dass der Breakpoint festgelegt wurde.
 
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Breakpoint in Visual Studio Code":::
+    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="GitHub-Fenster für neues Repository":::
 
 1. Aktualisieren Sie im Browser die Seite, die unter <http://127.0.0.1:7071/api/message> ausgeführt wird.
 
 1. Der Breakpoint wird in Visual Studio Code erreicht, und die Ausführung des Programms wird angehalten.
 
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Erreichter Breakpoint in Visual Studio Code":::
+   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="GitHub-Fenster für neues Repository":::
 
    Eine vollständige [Benutzeroberfläche zum Debuggen Ihrer API ist in Visual Studio Code verfügbar](https://code.visualstudio.com/Docs/editor/debugging).
 
 1. Wählen Sie in der Debugleiste die Schaltfläche **Weiter** aus, um die Ausführung fortzusetzen.
 
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Schaltfläche „Weiter“ in Visual Studio Code":::
+    :::image type="content" source="media/local-development/continue-button.png" alt-text="GitHub-Fenster für neues Repository":::
 
 ### <a name="calling-the-api-from-the-application"></a>Aufrufen der API aus der Anwendung
 
@@ -192,7 +192,7 @@ Weitere Informationen zum Konfigurieren von Umgebungsdateien für Front-End-Java
 
 1. Geben Sie **Live Server** ein, und wählen Sie **Live Server: Stop Live Server** (Live Server: Live Server beenden) aus.
 
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Befehl zum Beenden von Live Server in der Visual Studio-Befehlspalette":::
+    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="GitHub-Fenster für neues Repository":::
 
 1. Drücken Sie **F1**, um die Befehlspalette zu öffnen.
 
@@ -200,7 +200,7 @@ Weitere Informationen zum Konfigurieren von Umgebungsdateien für Front-End-Java
 
 1. Aktualisieren Sie die Anwendung, die unter `http://locahost:3000` ausgeführt wird. Im Browser wird jetzt die Meldung angezeigt, die von der API zurückgegeben wurde.
 
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Anzeige von „Hello from API“ im Browser":::
+    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="GitHub-Fenster für neues Repository":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

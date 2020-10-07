@@ -1,14 +1,16 @@
 ---
 title: Gute Beispieläußerungen – LUIS
 description: Äußerungen sind Eingaben vom Benutzer, die Ihre App interpretieren muss. Sammeln Sie Ausdrücke, die Benutzer möglicherweise eingeben. Fügen Sie Äußerungen ein, die dieselbe Bedeutung haben, aber andere Wortlängen oder einen anderen Satzbau aufweisen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685277"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316391"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 

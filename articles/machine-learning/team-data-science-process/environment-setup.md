@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6d1185e13397b3e466bd1e8d609a46f2f68bf390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b5571f24cc7acfd35cf2979318110ba2eecbb0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320539"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess
 Der Team Data Science-Prozess verwendet verschiedene Data Science-Umgebungen für die Speicherung, Verarbeitung und Analyse von Daten. Dazu zählen Azure Blob Storage, verschiedene Typen von virtuellen Azure-Computern, HDInsight (Hadoop)-Cluster und Azure Machine Learning-Arbeitsbereiche. Die Entscheidung, welche Art von Umgebung Sie verwenden, hängt von der Art und der Menge der Daten ab, die modelliert werden sollen, sowie vom Ziel für die Daten in der Cloud. 
@@ -28,7 +28,7 @@ In den folgenden Artikeln wird das Einrichten der verschiedenen Data Science-Umg
 
 * [Azure Storage-Konto](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop)-Cluster](customize-hadoop-cluster.md)
-* [Azure Machine Learning Studio-Arbeitsbereich (klassisch)](../studio/create-workspace.md)
+* [Azure Machine Learning Studio-Arbeitsbereich (klassisch)](../classic/create-workspace.md)
 
 Die **Microsoft Data Science Virtual Machine (DSVM)** ist auch als Image des virtuellen Azure-Computers (VM) verfügbar. Diese VM ist vorinstalliert und mit einigen gängigen Tools konfiguriert, die häufig für Datenanalysen und Machine Learning verwendet werden. Die DSVM steht unter Windows und Linux zur Verfügung. Weitere Informationen finden Sie unter [Einführung in den cloudbasierten virtuellen Computer für Data Science für Linux und Windows](../data-science-virtual-machine/overview.md).
 

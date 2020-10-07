@@ -1,14 +1,16 @@
 ---
 title: Entwerfen mit Modellen – LUIS
 description: Language Understanding bietet verschiedene Typen von Modellen. Einige Modelle können auf mehr als eine Weise eingesetzt werden.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316510"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Entwerfen mit Absichts- und Entitätsmodellen
 

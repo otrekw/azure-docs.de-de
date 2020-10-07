@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4f3e01147e44b495a666d11a3927eabbbe0dec0e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329192"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BitaBIZ für die automatische Benutzerbereitstellung
 
@@ -106,11 +106,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte von **URL des SCIM-Bereitstellungsendpunkts** und **Bearertoken** in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit BitaBIZ herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr BitaBIZ-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 

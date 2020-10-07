@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320522"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
@@ -98,7 +98,7 @@ Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen i
 Weitere Beispiele, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind in Form von exemplarischen Vorgehensweisen verfügbar. Sie sind im Artikel [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 
 > [!NOTE]
-> Informationen zur Bereitstellung mit Azure Machine Learning Studio finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/deploy-a-machine-learning-web-service.md).
+> Informationen zur Bereitstellung mit Azure Machine Learning Studio finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../classic/deploy-a-machine-learning-web-service.md).
 >
 >
 
@@ -111,5 +111,3 @@ Wenn sich mehrere Modelle in der Produktion befinden, kann es nützlich sein, [A
 In [Nachverfolgen des Fortschritts von Data Science-Projekten](track-progress.md) wird gezeigt, wie ein Datenanalyst den Status eines Data Science-Projekts nachverfolgen kann.
 
 Unter [Modellvorgang und CI-CD](ci-cd-flask.md) wird gezeigt, wie CI/CD mit entwickelten Modellen ausgeführt werden kann.
-
-

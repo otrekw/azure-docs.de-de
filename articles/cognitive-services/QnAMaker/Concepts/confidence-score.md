@@ -1,7 +1,7 @@
 ---
 title: 'Zuverlässigkeitsbewertung: QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
+description: Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327152"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Die Zuverlässigkeitsbewertung einer Antwort
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist.
@@ -76,7 +76,7 @@ Der Testindex enthält alle QnA-Paare Ihrer Wissensdatenbanken. Wenn Sie den Tes
 * Organisieren Sie Ihre Wissensdatenbank wie folgt:
     * 1 Ressource beschränkt auf 1 KB: Beschränken Sie Ihre einzelne QnA-Ressource (und den resultierenden Azure Cognitive Search-Testindex) auf eine einzelne Wissensdatenbank.
     * 2 Ressourcen – 1 für Tests, 1 für die Produktion: Nutzen Sie zwei QnA Maker-Ressourcen, eine für Tests (mit eigenen Test- und Produktionsindizes) und eine für das Produkt (ebenfalls mit eigenen Test- und Produktionsindizes).
-* Verwenden Sie immer dieselben Parameter, z. B. **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** , wenn Sie Ihre Test- und Produktionswissensdatenbank abfragen.
+* Verwenden Sie immer dieselben Parameter, z. B. **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)**, wenn Sie Ihre Test- und Produktionswissensdatenbank abfragen.
 
 Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
 

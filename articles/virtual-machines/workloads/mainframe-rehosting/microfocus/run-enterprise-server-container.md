@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974062"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319995"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Ausführen von Micro Focus Enterprise Server 5.0 in einem Docker-Container auf Azure
 
@@ -121,9 +121,9 @@ An diesem Punkt wird die VM ausgeführt und mithilfe von RDP verbunden. Sie sind
 
 1.  Um Enterprise Server 5.0 und die acctdemo-Anwendung zu starten, geben Sie an der Eingabeaufforderung Folgendes ein:
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  Installieren Sie einen 3270-Terminalemulator, beispielsweise [x3270](http://x3270.bgp.nu/), und verwenden Sie ihn, um über Port 9040 eine Verbindung mit dem ausgeführten Image herzustellen.
 
@@ -133,15 +133,15 @@ An diesem Punkt wird die VM ausgeführt und mithilfe von RDP verbunden. Sie sind
 
     2.  Um die IP-Adresse für den acctdemo-Container abzurufen, verwenden Sie die Container-ID aus dem vorherigen Schritt in folgender Weise:
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
     Beispiel:
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. Halten Sie die IP-Adresse des acctdemo-Images fest. Beispielsweise ist die Adresse in der folgenden Ausgabe 172.19.202.52.
 

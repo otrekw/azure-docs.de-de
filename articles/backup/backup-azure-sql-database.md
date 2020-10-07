@@ -3,12 +3,12 @@ title: Sichern von SQL Server-Datenbanken in Azure
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316839"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -33,7 +33,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 * Weil das Plug-In die Daten direkt an den Recovery Services-Tresor sendet, ist kein Stagingspeicherort erforderlich. Die Daten werden verschlüsselt und vom Azure Backup-Dienst in Speicherkonten gespeichert.
 * Wenn die Datenübertragung abgeschlossen ist, bestätigt der Koordinator den Commit mit dem Sicherungsdienst.
 
-  ![Die Architektur von SQL Backup](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![Die Architektur von SQL Backup](./media/backup-azure-sql-database/azure-backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Vorbereitung
 

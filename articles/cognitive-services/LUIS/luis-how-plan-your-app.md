@@ -1,14 +1,16 @@
 ---
 title: Planen Ihrer App – LUIS
 description: Beschreiben Sie kurz relevante App-Absichten und -Entitäten, und erstellen Sie dann Ihre Anwendungspläne in Language Understanding Intelligent Service (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309454"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Planen Ihres LUIS-App-Schemas mit Motivdomäne und Datenextraktion
 

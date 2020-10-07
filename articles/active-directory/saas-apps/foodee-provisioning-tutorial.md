@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331158"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung
 
@@ -106,11 +106,11 @@ Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure A
 
 1. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 1. Wählen Sie in der Dropdownliste **Bereitstellungsmodus** den Eintrag **Automatisch** aus.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 1. Führen Sie unter **Administratoranmeldeinformationen** die folgenden Schritte aus:
 

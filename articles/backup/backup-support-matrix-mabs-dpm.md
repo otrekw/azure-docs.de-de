@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332694"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -24,7 +24,7 @@ MABS basiert auf System Center DPM und bietet ähnliche Funktionen mit einigen U
 
 - Für die Ausführung von MABS ist keine Lizenz für System Center erforderlich.
 - In Azure ist für MABS und für DPM die langfristige Sicherungsspeicherung möglich. Darüber hinaus können Sie mit DPM Daten zur langfristigen Speicherung auf Band sichern. Diese Funktion ist in MABS nicht enthalten.
-- [Sie können einen primären DPM-Server mit einem sekundären DPM-Server sichern.](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) Der sekundäre Server schützt die primäre Serverdatenbank und die auf dem primären Server gespeicherten Datenquellenreplikate. Wenn der primäre Server ausfällt, kann der sekundäre Server die vom primären Server geschützten Workloads weiterhin schützen, bis der primäre Server wieder verfügbar ist.  Diese Funktion ist in MABS nicht enthalten.
+- [Sie können einen primären DPM-Server mit einem sekundären DPM-Server sichern.](/system-center/dpm/back-up-the-dpm-server) Der sekundäre Server schützt die primäre Serverdatenbank und die auf dem primären Server gespeicherten Datenquellenreplikate. Wenn der primäre Server ausfällt, kann der sekundäre Server die vom primären Server geschützten Workloads weiterhin schützen, bis der primäre Server wieder verfügbar ist.  Diese Funktion ist in MABS nicht enthalten.
 
 Sie können MABS über das [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520) herunterladen. Es kann lokal oder auf einem virtuellen Azure-Computer ausgeführt werden.
 
@@ -158,7 +158,7 @@ Keine Verbindung für mehr als 15 Tage | Abgelaufen oder Bereitstellung aufgehob
 |Anforderung |Details |
 |---------|---------|
 |Domain    | Der DPM/MABS-Server muss sich in einer Windows Server 2019-, Windows Server 2016-, Windows Server 2012 R2- oder Windows Server 2012-Domäne befinden.        |
-|Domänenvertrauensstellung   |  DPM/MABS unterstützt Datenschutz über Gesamtstrukturen hinweg, sofern Sie auf Gesamtstrukturebene eine bidirektionale Vertrauensstellung zwischen den einzelnen Gesamtstrukturen einrichten.   <BR><BR>   Server und Arbeitsstationen können in einer Gesamtstruktur, die eine bidirektionale Vertrauensstellung mit der DPM/MABS-Serverdomäne hat, von DPM/MABS domänenübergreifend geschützt werden. Informationen zum Schützen von Computern in Arbeitsgruppen oder nicht vertrauenswürdigen Domänen finden Sie unter [Sichern und Wiederherstellen von Workloads in Arbeitsgruppen und nicht vertrauenswürdigen Domänen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019).  |
+|Domänenvertrauensstellung   |  DPM/MABS unterstützt Datenschutz über Gesamtstrukturen hinweg, sofern Sie auf Gesamtstrukturebene eine bidirektionale Vertrauensstellung zwischen den einzelnen Gesamtstrukturen einrichten.   <BR><BR>   Server und Arbeitsstationen können in einer Gesamtstruktur, die eine bidirektionale Vertrauensstellung mit der DPM/MABS-Serverdomäne hat, von DPM/MABS domänenübergreifend geschützt werden. Informationen zum Schützen von Computern in Arbeitsgruppen oder nicht vertrauenswürdigen Domänen finden Sie unter [Sichern und Wiederherstellen von Workloads in Arbeitsgruppen und nicht vertrauenswürdigen Domänen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains).  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM- oder MABS-Speicherunterstützung
 
@@ -185,7 +185,7 @@ Informationen zu den verschiedenen Servern und Workloads, die Sie mit Azure Back
 
 ## <a name="supported-backups-to-dpm"></a>Unterstützte Sicherungen in DPM
 
-Informationen zu den verschiedenen Servern und Workloads, die Sie mit Data Protection Manager schützen können, finden Sie im Artikel [Was kann mit DPM gesichert werden?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
+Informationen zu den verschiedenen Servern und Workloads, die Sie mit Data Protection Manager schützen können, finden Sie im Artikel [Was kann mit DPM gesichert werden?](/system-center/dpm/dpm-protection-matrix).
 
 - Clusterworkloads, die mit DPM oder MABS gesichert werden, müssen sich in derselben Domäne wie DPM bzw. MABS oder in einer untergeordneten oder vertrauenswürdigen Domäne befinden.
 - Sie können die NTLM- oder Zertifikatauthentifizierung verwenden, um Daten in nicht vertrauenswürdigen Domänen oder Arbeitsgruppen zu sichern.

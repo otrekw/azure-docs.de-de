@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331963"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,6 +114,7 @@ In der folgenden Tabelle sind die von einer Excel-Quelle unterstützten Eigensch
 | Spalte, in der der Dateiname gespeichert wird | Erstellt eine neue Spalte mit dem Namen und Pfad der Quelldatei.       | nein       | String                                                    | rowUrlColumn                      |
 | Nach Abschluss          | Löscht oder verschiebt die Dateien nach der Verarbeitung. Dateipfad beginnt mit dem Containerstamm | nein       | Löschen: `true` oder `false` <br> Verschieben: `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | Nach der letzten Änderung filtern   | Filtern Sie Dateien nach dem Zeitpunkt ihrer letzten Änderung. | nein       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
+| Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Quellbeispiel
 

@@ -1,14 +1,16 @@
 ---
 title: Grenzwerte – LUIS
 description: Dieser Artikel behandelt die bekannten Einschränkungen von Azure Cognitive Services Language Understanding (LUIS). LUIS weist Begrenzungen in mehreren Bereichen auf. Modellbegrenzungen steuern Absichten, Entitäten und Features in LUIS. Kontingentgrenzen basierend auf dem Schlüsseltyp. Tastenkombinationen steuern die LUIS-Website.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324704"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Begrenzungen für das LUIS-Modell und die Schlüssel
 LUIS weist Begrenzungen in mehreren Bereichen auf. Der erste ist die [Modellbegrenzung](#model-limits), die Absichten, Entitäten und Features in LUIS steuert. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich von Begrenzungen umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.

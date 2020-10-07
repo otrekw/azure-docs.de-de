@@ -1,14 +1,16 @@
 ---
 title: Verwenden von NLP mit QnA Maker für Chatbots
 description: 'Mit Cognitive Services werden zwei Dienste für die Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) bereitgestellt: Language Understanding und QnA Maker. Beide dienen jeweils einem anderen Zweck. Machen Sie sich damit vertraut, wann Sie diese Dienste einsetzen sollten und wie sie sich gegenseitig ergänzen.'
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527ead6bbd1a56aa4a4c95591325abfd4a7a21ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c1c0bdcd620b29e3bbf4c6bb21d5213131d25cdb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497793"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327237"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-chat-bot-conversations"></a>Verwenden von Cognitive Services mit Verarbeitung natürlicher Sprache (NLP) zur Erweiterung von Chatbotkonversationen
 

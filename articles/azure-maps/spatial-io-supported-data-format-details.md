@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310168"
 ---
 # <a name="supported-data-format-details"></a>Details zu unterstützten Datenformaten
 
@@ -431,5 +431,4 @@ Falls keine Typinformationen aus der Kopfzeile extrahiert werden können und bei
 
 In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
-> [!div class="nextstepaction"]
-> [Lesen und Schreiben von räumlichen Daten](spatial-io-read-write-spatial-data.md)
+[Lesen und Schreiben von räumlichen Daten](spatial-io-read-write-spatial-data.md)

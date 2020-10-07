@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546b664c74980b3522fefed82c00eec414641eaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326625"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indizieren von räumlichen Daten mit Azure Cosmos DB
 
@@ -77,15 +77,15 @@ Der folgende JSON-Codeausschnitt zeigt eine Indizierungsrichtlinie mit aktiviert
 **JSON-Richtlinie für die Containerindizierung mit räumlicher Indizierung mit dem Datentyp „geography“**
 
 ```json
-    {
-       "automatic":true,
-       "indexingMode":"Consistent",
-        "includedPaths": [
+{
+    "automatic": true,
+    "indexingMode": "Consistent",
+    "includedPaths": [
         {
             "path": "/*"
         }
-        ],
-        "spatialIndexes": [
+    ],
+    "spatialIndexes": [
         {
             "path": "/*",
             "types": [
@@ -96,8 +96,8 @@ Der folgende JSON-Codeausschnitt zeigt eine Indizierungsrichtlinie mit aktiviert
             ]
         }
     ],
-       "excludedPaths":[]
-    }
+    "excludedPaths": []
+}
 ```
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Erstellen Sie einen Begrenzungsrahmen, der alle (oder die meisten) Ihre(r) Daten
 Nachstehend finden Sie ein Beispiel für eine Indizierungsrichtlinie, die **geometry**-Daten indiziert, wobei **geospatialConfig** auf `geometry` festgelegt ist:
 
 ```json
- {
+{
     "indexingMode": "consistent",
     "automatic": true,
     "includedPaths": [

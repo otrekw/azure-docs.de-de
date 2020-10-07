@@ -5,13 +5,13 @@ ms.date: 12/03/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie beim Entwickeln von Anwendungen mit Azure Dev Spaces Kubernetes-Geheimnisse zur Laufzeit oder Erstellungszeit nutzen können.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25d67d9ace6870eed283302256e3fa85661a0672
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308723"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Verwalten von Geheimnissen beim Arbeiten mit einem Azure Dev Space
 

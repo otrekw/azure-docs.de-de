@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330637"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Hinzufügen von Geplauder zu einer Wissensdatenbank
 
@@ -72,7 +72,7 @@ Wählen Sie zum Anzeigen der Metadaten auf der Symbolleiste **Ansichtsoptionen**
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Hinzufügen zusätzlicher Geplauderfragen und -antworten
 Sie können ein neues Frage- und Antwortpaar für Smalltalk hinzufügen, das nicht im vordefinierten Dataset enthalten ist. Stellen Sie sicher, dass Sie kein QnA-Paar duplizieren, das bereits im Geplauderdataset enthalten ist. Wenn Sie neue Geplauder-QnAs hinzufügen, werden diese Ihrer **redaktionellen** Quelle hinzugefügt. Um sicherzustellen, dass der Ranker versteht, dass es sich um Smalltalk handelt, fügen Sie das Metadaten-Schlüssel-Wertpaar „Editorial: chitchat“ hinzu, wie in der folgenden Abbildung gezeigt:
 
-![![Add chit-chat QnAs]\(../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+:::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="Hinzufügen von Geplauder-QnAs" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Löschen von Geplauder aus einer vorhandenen Wissensdatenbank
 Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellungen**. Ihre spezifische Geplauderquelle wird als Datei mit dem ausgewählten Persönlichkeitsnamen aufgelistet. Sie können diese als Quelldatei löschen.

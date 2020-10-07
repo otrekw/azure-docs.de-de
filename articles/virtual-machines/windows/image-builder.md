@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320012"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 
@@ -161,7 +161,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Für das Quellimage müssen Sie immer [eine Version angeben](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). Sie können nicht `latest` verwenden.
+> Für das Quellimage müssen Sie immer [eine Version angeben](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version). Sie können nicht `latest` verwenden.
 > Wenn Sie die Ressourcengruppe, in der das Image verteilt wird, hinzufügen oder ändern, müssen Sie sicherstellen, dass die [Berechtigungen für die Ressourcengruppe festgelegt sind](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group).
  
 ## <a name="create-the-image"></a>Erstellen des Images
@@ -185,7 +185,7 @@ Außerdem erstellt Image Builder im Hintergrund eine Stagingressourcengruppe in 
 > Sie dürfen die Stagingressourcengruppe nicht direkt löschen. Löschen Sie zuerst das Artefakt der Imagevorlage. Dabei wird die Stagingressourcengruppe automatisch gelöscht.
 
 Gehen Sie folgendermaßen vor, wenn der Dienst während der Übermittlung der Imagekonfigurationsvorlage einen Fehler meldet:
--  Sehen Sie sich [diese Problembehandlungsschritte](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) an. 
+-  Sehen Sie sich [diese Problembehandlungsschritte](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) an. 
 - Sie müssen die Vorlage mit dem folgenden Codeausschnitt löschen, bevor Sie die Übermittlung erneut versuchen.
 
 ```azurecli-interactive
@@ -208,7 +208,7 @@ az resource invoke-action \
 
 Warten Sie, bis der Build abgeschlossen ist. Der Vorgang kann bis zu 15 Minuten dauern.
 
-Wenn Fehler auftreten sollten, prüfen Sie die Schritte unter [Problembehandlung](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting).
+Wenn Fehler auftreten sollten, prüfen Sie die Schritte unter [Problembehandlung](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors).
 
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers

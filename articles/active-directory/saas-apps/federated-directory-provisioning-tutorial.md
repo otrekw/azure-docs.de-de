@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: c083b0ca7fa506bb951a9ef27d2af04d61482eda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319944"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Federated Directory für die automatische Benutzerbereitstellung
 
@@ -128,11 +128,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld „Mandanten-URL“ `https://api.federated.directory/v2/` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Federated Directory abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Federated Directory herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Federated Directory-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320063"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Vorschau: Erstellen eines Windows-Image und Verteilen in einem Katalog für freigegebene Images 
 
@@ -22,7 +22,7 @@ Wir verwenden eine JSON-Vorlage, um das Image zu konfigurieren. Wir verwenden di
 
 Die Vorlage verwendet [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als Wert für den `distribute`-Abschnitt der Vorlage, um das Image in einem Katalog für freigegebene Images zu verteilen.
 
-Azure Image Builder führt automatisch Sysprep aus, um das Image zu generalisieren. Dies ist ein generischer Sysprep-Befehl, den Sie bei Bedarf [außer Kraft setzen](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) können. 
+Azure Image Builder führt automatisch Sysprep aus, um das Image zu generalisieren. Dies ist ein generischer Sysprep-Befehl, den Sie bei Bedarf [außer Kraft setzen](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) können. 
 
 Achten Sie darauf, wie oft Sie Anpassungen nacheinander vornehmen. Sie können den Sysprep-Befehl auf einem einzelnen Windows-Image bis zu 8-mal ausführen. Nach dem achten Ausführen von Sysprep müssen Sie das Windows-Image neu erstellen. Weitere Informationen finden Sie unter [Grenzwerte für die Ausführung von Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 

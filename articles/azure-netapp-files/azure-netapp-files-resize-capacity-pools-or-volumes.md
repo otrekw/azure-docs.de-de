@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/14/2019
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 7d1c54d05430600e9fffa2659dbaaf6db0b086b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325503"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Ändern der Größe eines Kapazitätspools oder Volumes
 Sie können die Größe eines Kapazitätspools oder eines Volumes nach Bedarf anpassen. 
@@ -40,3 +40,8 @@ Sie können die Größe eines Volumes nach Bedarf anpassen. Der Kapazitätsverbr
 2. Klicken Sie mit der rechten Maustaste auf den Namen des Volumes, dessen Größe Sie anpassen möchten, oder klicken Sie auf am Ende der Zeile mit dem Volume auf das Symbol „...“, um das Kontextmenü anzuzeigen.
 3. Mithilfe der Kontextmenüoptionen können Sie die Größe des Volumes ändern oder es löschen.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
+- [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md)
+- [Dynamisches Ändern der Dienstebene eines Volumes](dynamic-change-volume-service-level.md) 

@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329481"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Volltextsuche in Azure Cognitive Search
 
@@ -51,7 +51,7 @@ Eine Suchanfrage ist eine vollständige Spezifikation dessen, was in einem Resul
 
 Das folgende Beispiel ist eine Suchanforderung, die Sie per [REST-API](/rest/api/searchservice/search-documents) an die kognitive Azure-Suche senden können.  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 Für diese Anforderung führt das Suchmodul die folgenden Schritte aus:
 
@@ -76,9 +76,9 @@ In diesem Artikel geht es hauptsächlich um die Verarbeitung der *Suchabfrage*: 
 
 Wie bereits erwähnt, ist die Abfragezeichenfolge die erste Zeile der Anfrage: 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 Der Abfrageparser trennt Operatoren (z.B. `*` und `+` im Beispiel) von Suchbegriffen und unterteilt die Suchabfrage in *Unterabfragen* eines unterstützten Typs: 
 
@@ -104,9 +104,9 @@ Ein anderer Parameter der Suchanfrage, der sich auf die Analyse auswirkt, ist de
 
 Bei `searchMode=any`, also der Standardeinstellung, lautet die Trennung zwischen „spacious“ und „air-condition“ OR (`||`), sodass der Text der Beispielabfrage Folgendem entspricht: 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 Explizite Operatoren, z.B. `+` in `+"Ocean view"`, sind in der booleschen Abfrage eindeutig (der Begriff *muss* übereinstimmen). Weniger eindeutig ist, wie die restlichen Begriffe interpretiert werden müssen: „spacious“ und „air-condition“. Soll das Suchmodul nach Übereinstimmungen für „ocean view“ *und* „spacious“ *und* „air-condition“ suchen? Oder soll nach „ocean view“ und *einem* der beiden anderen Begriffe gesucht werden? 
 
@@ -114,9 +114,9 @@ Standardmäßig (`searchMode=any`) wird vom Suchmodul die weniger eingeschränkt
 
 Angenommen, wir legen jetzt `searchMode=all` fest. In diesem Fall wird die Leerstelle als Vorgang vom Typ „and“ interpretiert. Jeder der restlichen Begriffe muss im Dokument vorhanden sein, damit sich dafür eine Übereinstimmung ergibt. Die sich ergebende Beispielabfrage wird dann wie folgt interpretiert: 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 Eine geänderte Abfragestruktur für diese Abfrage, bei der ein übereinstimmendes Dokument der Schnittpunkt aller drei Unterabfragen ist, würde wie folgt lauten: 
 
@@ -152,16 +152,16 @@ Wenn die Standardanalyse den Ausdruck verarbeitet, werden „ocean view“ und �
 
 Das Verhalten einer Analyse kann mit der [Analyse-API](/rest/api/searchservice/test-analyzer) getestet werden. Geben Sie den Text ein, den Sie analysieren möchten, um zu ermitteln, welche Ausdrücke von der jeweiligen Analyse generiert werden. Sie können beispielsweise die folgende Anfrage ausgeben, um zu ermitteln, wie die Standardanalyse den Text „air-condition“ verarbeitet:
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 Die Standardanalyse teilt den Eingabetext in die folgenden beiden Token auf und fügt Attribute wie Start- und Endoffset (zur Hervorhebung von Treffern) und die Position (für den Wortgruppenabgleich) hinzu:
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Die Standardanalyse teilt den Eingabetext in die folgenden beiden Token auf und 
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Die lexikalische Analyse gilt nur für Abfragetypen, für die vollständige Ausd
 
 Der Dokumentabruf bezieht sich auf das Suchen nach Dokumenten mit übereinstimmenden Ausdrücken im Index. Diese Phase lässt sich am besten anhand eines Beispiels beschreiben. Wir beginnen mit einem Hotelindex mit dem folgenden einfachen Schema: 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Der Dokumentabruf bezieht sich auf das Suchen nach Dokumenten mit übereinstimme
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 Wir nehmen weiter an, dass dieser Index die folgenden vier Dokumente enthält: 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Wir nehmen weiter an, dass dieser Index die folgenden vier Dokumente enthält:
         }
     ]
 }
-~~~~
+```
 
 **Indizieren von Ausdrücken**
 
@@ -321,10 +321,12 @@ Jedem Dokument eines Suchergebnisses wird eine Relevanzbewertung zugewiesen. Die
 ### <a name="scoring-example"></a>Beispiel für die Bewertung
 
 Für die drei Dokumente, für die sich Übereinstimmungen mit unserer Beispielabfrage ergeben haben, galt Folgendes:
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 Für Dokument 1 hat die Abfrage die beste Übereinstimmung ergeben, da sowohl der Begriff *spacious* als auch der erforderliche Ausdruck *ocean view* im Feld „description“ vorkommt. Für die nächsten beiden Dokumente ergibt sich nur eine Übereinstimmung mit dem Ausdruck *ocean view*. Es ist vielleicht überraschend, dass die Relevanzbewertung für Dokument 2 und 3 unterschiedlich ist, obwohl beide zu einer Übereinstimmung für die Abfrage geführt haben. Dies liegt daran, dass die Bewertungsformel über mehr Komponenten als nur TF/IDF verfügt. In diesem Fall wurde Dokument 3 eine etwas höhere Bewertung zugewiesen, da dessen Beschreibung kürzer ist. Informieren Sie sich über [Lucene's Practical Scoring Formula](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) (Bewertungsformel von Lucene), damit Sie verstehen, wie sich die Feldlänge und andere Faktoren auf die Relevanzbewertung auswirken können.
 

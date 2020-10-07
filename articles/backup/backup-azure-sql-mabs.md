@@ -3,12 +3,12 @@ title: Sichern von SQL Server mithilfe von Azure Backup Server
 description: Dieser Artikel enthält Informationen zur Konfiguration für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: b47cb74c6e5dbb868c03f8f7b79c00b0c4ce7886
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316918"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Sichern von SQL Server in Azure mithilfe von Azure Backup Server
 
@@ -24,10 +24,10 @@ Das Sichern und Wiederherstellen einer SQL Server-Datenbank unter Verwendung vo
 
 * Wenn Sie über eine Datenbank mit Dateien auf einer Remotedateifreigabe verfügen, werden die darauf enthaltenen Daten nicht geschützt und ein Fehler mit der ID 104 ausgegeben. Der Schutz von SQL Server-Daten auf einer Remotedateifreigabe wird von MABS nicht unterstützt.
 * Datenbanken, die auf SMB-Remotefreigaben gespeichert sind, können von MABS nicht geschützt werden.
-* Stellen Sie sicher, dass die [Replikate der Verfügbarkeitsgruppe als schreibgeschützt konfiguriert sind](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Stellen Sie sicher, dass die [Replikate der Verfügbarkeitsgruppe als schreibgeschützt konfiguriert sind](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * Sie müssen das Systemkonto **NTAuthority\System** der Systemadministratorgruppe in SQL Server explizit hinzufügen.
-* Wenn Sie für eine teilweise eigenständige Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [eigenständige Datenbanken](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) aktiviert wurde.
-* Wenn Sie für eine Filestream-Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [Filestream-Datenbanken](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) aktiviert wurde.
+* Wenn Sie für eine teilweise eigenständige Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [eigenständige Datenbanken](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) aktiviert wurde.
+* Wenn Sie für eine Filestream-Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [Filestream-Datenbanken](/sql/relational-databases/blob/enable-and-configure-filestream) aktiviert wurde.
 * Schutz für SQL Server AlwaysOn:
   * Verfügbarkeitsgruppen werden von MABS beim Ausführen von Abfragen während der Erstellung von Schutzgruppen erkannt.
   * Ein Failover wird von MABS erkannt, und die Datenbank wird weiterhin geschützt.
@@ -45,7 +45,7 @@ Das Sichern und Wiederherstellen einer SQL Server-Datenbank unter Verwendung vo
     * Bei einem Sicherungsfehler auf dem ausgewählten Knoten ist der Sicherungsvorgang fehlerhaft.
     * Die Wiederherstellung am ursprünglichen Speicherort wird nicht unterstützt.
 * Sicherungsprobleme bei SQL Server 2014 oder höher:
-  * SQL Server 2014 wurde durch eine neue Funktion zum Erstellen einer [Datenbank für lokale SQL Server-Instanzen in Windows Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15) erweitert. Diese Konfiguration kann nicht mithilfe von MABS geschützt werden.
+  * SQL Server 2014 wurde durch eine neue Funktion zum Erstellen einer [Datenbank für lokale SQL Server-Instanzen in Windows Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) erweitert. Diese Konfiguration kann nicht mithilfe von MABS geschützt werden.
   * Die Sicherungseinstellung „Sekundär bevorzugen“ verursacht bei Verwendung der Option „SQL AlwaysOn“ einige bekannte Probleme. Von MABS wird immer eine Sicherung für das sekundäre Replikat ausgeführt. Wenn kein sekundäres Replikat gefunden wird, tritt bei der Sicherung ein Fehler auf.
 
 ## <a name="before-you-start"></a>Vorbereitung

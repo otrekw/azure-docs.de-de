@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b42833056d6c9c0e6053dbf34c7de17b4136a797
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331215"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 15Five für die automatische Benutzerbereitstellung
 
@@ -96,11 +96,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5.  Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **„SCIM 2.0 base URL“ und „Permanent Token“** („SCIM 2.0-Basis-URL“ und „Permanentes Token“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit 15Five herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 15Five-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 

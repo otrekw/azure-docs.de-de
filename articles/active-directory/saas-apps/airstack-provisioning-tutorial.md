@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: d89107a795c658161c2b543f2aacfb37398efb3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3990f9533aa6746011b1f070139b39ec884711c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305847"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Airstack für die automatische Benutzerbereitstellung
 
@@ -103,11 +103,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api-as.lenovosoftware.com/0/as/common/scim` ein. Geben Sie den Wert des **SCIM-Authentifizierungstokens** ein, den Sie zuvor unter **geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Airstack herstellen kann. Falls der Verbindungsaufbau fehlschlägt, stellen Sie sicher, dass Ihr Airstack-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 

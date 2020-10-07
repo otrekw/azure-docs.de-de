@@ -3,12 +3,12 @@ title: Neuerungen in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordnern und Workloads.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182138"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332762"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Neuerungen in Microsoft Azure Backup Server (MABS)
 
@@ -23,7 +23,7 @@ Microsoft Azure Backup Server (MABS) Version 3 UR1 ist das neueste Update und e
 
 Mit MABS V2 wurde [Modern Backup Storage](backup-mabs-add-storage.md) (MBS) zur Verbesserung der Speichernutzung und -leistung eingeführt. MBS verwendet ReFS als zugrunde liegendes Dateisystem und ist darauf ausgelegt, Hybridspeicher wie z. B. mehrstufigen Speicher zu nutzen.
 
-Um die Skalierung und Leistung von MBS zu erreichen, empfiehlt sich die Verwendung eines geringen Anteils (4 % des gesamten Speichers) des Flashspeichers (SSD) mit MABS V3 UR1 als mehrstufigem Volume in Verbindung mit dem DPM-HDD-Speicher. MABS V3 UR1 mit mehrstufigem Speicher bietet um 50–70 % schnellere Sicherungen. Die Schritte zum Konfigurieren des mehrstufigen Speichers finden Sie im DPM-Artikel unter [Einrichten von MBS mit mehrstufigem Speicher](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage).
+Um die Skalierung und Leistung von MBS zu erreichen, empfiehlt sich die Verwendung eines geringen Anteils (4 % des gesamten Speichers) des Flashspeichers (SSD) mit MABS V3 UR1 als mehrstufigem Volume in Verbindung mit dem DPM-HDD-Speicher. MABS V3 UR1 mit mehrstufigem Speicher bietet um 50–70 % schnellere Sicherungen. Die Schritte zum Konfigurieren des mehrstufigen Speichers finden Sie im DPM-Artikel unter [Einrichten von MBS mit mehrstufigem Speicher](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage).
 
 ### <a name="support-for-refs-volumes"></a>Unterstützung für ReFS-Volumes
 

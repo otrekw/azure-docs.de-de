@@ -6,15 +6,15 @@ services: virtual-wan
 author: erjosito
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: 98142e3a8904bcbb0352fa768fc72966412dae0b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306632"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Verwenden von Private Link in Virtual WAN
 
@@ -38,11 +38,11 @@ Sie können einen Private Link-Endpunkt für viele verschiedene Dienste erstelle
 
 Nachdem Sie die Azure SQL-Datenbank erstellt haben, können Sie die privaten Endpunkte durchsuchen, um die IP-Adresse des privaten Endpunkts zu überprüfen:
 
-:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="Private Endpunkte" lightbox="./media/howto-private-link/endpoints.png":::
+:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="Erstellen eines Private Link" lightbox="./media/howto-private-link/endpoints.png":::
 
 Wenn Sie auf den privaten Endpunkt klicken, den wir erstellt haben, werden die private IP-Adresse sowie ihr vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) angezeigt. Beachten Sie, dass der private Endpunkt über eine IP-Adresse im Bereich des VNET verfügt, in dem er bereitgestellt wurde (10.1.3.0/24):
 
-:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="SQL-Endpunkt" lightbox="./media/howto-private-link/sql-endpoint.png":::
+:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="Erstellen eines Private Link" lightbox="./media/howto-private-link/sql-endpoint.png":::
 
 ## <a name="verify-connectivity-from-the-same-vnet"></a><a name="connectivity"></a>Überprüfen der Konnektivität aus demselben VNET
 
@@ -61,7 +61,7 @@ Address: 10.1.3.228
 
 Wie Sie aus der vorherigen Ausgabe ersehen können, ist der FQDN `wantest.database.windows.net` zu `wantest.privatelink.database.windows.net` zugeordnet, und die am privaten Endpunkt erstellte private DNS-Zone wird in die private IP-Adresse `10.1.3.228` aufgelöst. Die Überprüfung der privaten DNS-Zone ergibt, dass für den privaten Endpunkt, der der privaten IP-Adresse zugeordnet ist, ein A-Eintrag vorhanden ist:
 
-:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="DNS-Zone" lightbox="./media/howto-private-link/dns-zone.png":::
+:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="Erstellen eines Private Link" lightbox="./media/howto-private-link/dns-zone.png":::
 
 Nachdem wir die DNS-Auflösung erfolgreich überprüft haben, können wir versuchen, eine Verbindung mit der Datenbank herzustellen:
 
@@ -87,7 +87,7 @@ Sobald die Konnektivität zwischen dem VNET oder der Verzweigung mit dem VNET be
 
 In diesem Beispiel stellen wir die Verbindung aus einem anderen VNET her. Zuerst fügen wir die private DNS-Zone an das neue VNET an, damit die Workloads den vollqualifizierten Domänennamen der Azure SQL-Datenbank in die private IP-Adresse auflösen können. Dies erfolgt durch Verknüpfen der privaten DNS-Zone mit dem neuen VNET:
 
-:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="DNS-Link" lightbox="./media/howto-private-link/dns-link.png":::
+:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="Erstellen eines Private Link" lightbox="./media/howto-private-link/dns-link.png":::
 
 Nun sollte jeder virtuelle Computer im zugeordneten VNET den FQDN der Azure SQL-Datenbank ordnungsgemäß in die private IP-Adresse des Private Link auflösen:
 
@@ -104,7 +104,7 @@ Address: 10.1.3.228
 
 Um zu überprüfen, ob das VNET (10.1.1.0/24) über Konnektivität mit dem ursprünglichen VNET verfügt, in dem der private Endpunkt konfiguriert wurde (10.1.3.0/24), können Sie die effektive Routingtabelle auf jedem virtuellen Computer im VNET überprüfen:
 
-:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="Effektive Routen" lightbox="./media/howto-private-link/effective-routes.png":::
+:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="Erstellen eines Private Link" lightbox="./media/howto-private-link/effective-routes.png":::
 
 Wie Sie sehen können, gibt es eine Route, die auf das VNET 10.1.3.0/24 verweist, das von den Gateways für virtuelle Netzwerke in Azure Virtual WAN eingefügt wurde. Jetzt können wir die Konnektivität mit der Datenbank testen:
 

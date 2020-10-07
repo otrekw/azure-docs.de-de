@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085024"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310185"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK: unterstützte Browser
 
@@ -76,8 +76,6 @@ Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen
 
 Erfahren Sie mehr über das Web SDK von Azure Maps:
 
-> [!div class="nextstepaction"]
-> [Kartensteuerelement](how-to-use-map-control.md)
+[Kartensteuerelement](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [Services-Modul](how-to-use-services-module.md)
+[Services-Modul](how-to-use-services-module.md)

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fd7ba2eeddb3eddd98f97bda1a26c69c2cfa77c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315302"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 
@@ -40,7 +40,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
 * Ein in Ihrem Arbeitsbereich registriertes trainiertes Machine Learning-Modell. Falls Sie kein Modell besitzen, können Sie anhand der Informationen unter [Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning](tutorial-train-models-with-aml.md) ein Modell trainieren und registrieren.
 
     > [!IMPORTANT]
@@ -101,7 +101,7 @@ Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstel
 
 ## <a name="create-the-image"></a>Erstellen des Images
 
-Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
+Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
 > Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).

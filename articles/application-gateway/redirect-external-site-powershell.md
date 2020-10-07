@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5b2bb50fc2ad8084d79097fe7acb449821d0a4da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331062"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit externer Umleitung durch Azure PowerShell
 
@@ -156,9 +156,4 @@ Daraufhin sollte *bing.com* in Ihrem Browser aufgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Listeners und einer Umleitungsregel
-> * Erstellen eines Anwendungsgateways
+- [Erstellen eines Anwendungsgateways mit interner Umleitung mithilfe von Azure PowerShell](redirect-internal-site-powershell.md)

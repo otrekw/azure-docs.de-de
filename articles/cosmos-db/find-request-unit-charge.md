@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316187"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Ermitteln der Gebühr für eine Anforderungseinheit in Azure Cosmos DB
 
@@ -188,7 +188,7 @@ Aktuell können Sie die Anforderungsgebühr im Azure-Portal nur für eine Abfrag
 
 1. Wählen Sie **Query Stats** (Abfragestatistik) aus, um die tatsächliche Anforderungsgebühr für die ausgeführte Anforderung anzuzeigen.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Screenshot: Anforderungsgebühr für eine MongoDB-Abfrage im Azure-Portal":::
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Screenshot: Anforderungsgebühr für eine SQL-Abfrage im Azure-Portal":::
 
 ### <a name="use-the-mongodb-net-driver"></a>Verwenden des .NET-Treibers von MongoDB
 

@@ -3,12 +3,12 @@ title: Sichern des Windows-Systemstatus in Azure
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server-Computern in Azure sichern.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332887"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Sichern des Windows-Systemstatus in Azure
 
@@ -38,7 +38,7 @@ Vergewissern Sie sich beim Erstellen eines Recovery Services-Tresors, dass die S
     ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Wählen Sie die passende Speicherreplikationsoption für Ihren Tresor aus.
 
-    ![Speicherkonfigurationsoptionen](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Speicherkonfigurationsoptionen](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration-for-vault.png)
 
     Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin die Option **Georedundant**. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokal redundanten](../storage/common/storage-redundancy.md#locally-redundant-storage) und [zonenredundanten](../storage/common/storage-redundancy.md#zone-redundant-storage) Speicher finden Sie in [dieser Übersicht über Speicherredundanz](../storage/common/storage-redundancy.md).
 

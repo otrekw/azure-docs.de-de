@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über den Azure Maps-Suchdienst. Sehen Sie, wie S
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310984"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 
@@ -95,7 +95,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
 
 4. Das Standardverhalten besteht darin, die ganze Welt zu durchsuchen, wodurch unnötige Ergebnisse zurückgegeben werden können. Als Nächstes führen wir eine Suche nach „pizza“ nur in den USA durch. Fügen Sie dem Abschnitt `countrySet`Params**den Schlüssel** hinzu, und legen Sie seinen Wert auf `US` fest. Durch das Festlegen des Schlüssels `countrySet` auf `US` werden die Ergebnisse auf die USA beschränkt.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Suche nach „pizza“ in den USA":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Suchen nach einer Adresse":::
 
     Die Ergebnisse werden nun durch den Ländercode begrenzt, und die Abfrage gibt Pizzerien in den USA zurück.
 
@@ -143,13 +143,13 @@ In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Para
     | returnRoadUse | true | Gibt den Straßentyp an der Adresse zurück. Eine Übersicht der möglichen Straßentypen finden Sie im Abschnitt [URI-Parameter](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Gibt den Typ der Übereinstimmung zurück. Eine Übersicht der möglichen Werte finden Sie unter [SearchAddressReverseResult](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult).
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Umgekehrte Suche":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Suchen nach einer Adresse":::
 
 5. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 
 6. Als Nächstes fügen wir den Schlüssel `entityType` hinzu und legen seinen Wert auf `Municipality` fest. Der Schlüssel `entityType` überschreibt den Schlüssel `returnMatchType` im vorherigen Schritt. Wir müssen außerdem `returnSpeedLimit` und `returnRoadUse` entfernen, weil wir Informationen zur Gemeinde anfordern.  Eine Liste aller möglichen Typen finden Sie unter [EntityType](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Umgekehrte Suche nach „entityType“":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Suchen nach einer Adresse":::
 
 7. Klicken Sie auf **Send**. Vergleichen Sie die Ergebnisse mit denen in Schritt 5.  Der angeforderte Entitätstyp lautet jetzt `municipality`, deshalb enthält die Antwort keine Informationen zur Anschrift. Der zurückgegebene `geometryId`-Wert kann darüber hinaus zum Anfordern eines Begrenzungspolygons über die Azure Maps-[API zum Abrufen von Suchpolygonen](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) verwendet werden.
 
@@ -168,7 +168,7 @@ In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach e
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suche nach einer Querstraße":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suchen nach einer Adresse":::
   
 3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. Beachten Sie, dass die Antwort den Wert `Occidental Avenue South` für `crossStreet` enthält.
 

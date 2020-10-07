@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308417"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Verwenden von Apache Spark zum Lesen und Schreiben von Apache HBase-Daten
 
@@ -162,8 +162,8 @@ In der folgenden Tabelle werden beispielsweise zwei Versionen und die entspreche
 
     |Spark-Version| HDI HBase-Version  | SHC-Version    |  Get-Help  |
     | :-----------:| :----------: | :-----------: |:----------- |
-    |      2.1    | HDI 3.6 (HBase 1.1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2.4    | HDI 4.0 (HBase 2.0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.1    | HDI 3.6 (HBase 1.1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4.0 (HBase 2.0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
 2. Lassen Sie diese Instanz der Spark-Shell geöffnet, und fahren Sie mit dem [Definieren von Katalog und Abfrage](#define-a-catalog-and-query) fort. Wenn Sie die JAR-Dateien nicht finden, die Ihren Versionen im SHC Core-Respository entsprechen, lesen Sie weiter. 
 

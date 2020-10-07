@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 09/09/2020
-ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331657"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
@@ -32,22 +32,23 @@ Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verf�
 
 - API Management
 - Azure App Service
-- Azure Database for MySQL
-- Azure Databricks
-- Azure Synapse Analytics
 - Cognitive Services
 - Container Registry
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Data Box
+- Azure-Daten-Explorer
 - Azure Data Factory
 - Azure Database for PostgreSQL
-- Azure Kubernetes Service
-- Azure Data Box
+- Azure Functions
 - HDInsight
-- Funktionen
+- Azure Kubernetes Service
+- Azure Monitor
 - Azure Storage
 - Azure SQL-Datenbank
-- Azure-Daten-Explorer
-- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger)
 - Azure-Abonnementübertragung
+- Azure Synapse Analytics
+- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger)
 
 Wenn Sie Kunden-Lockbox für diese Vorschauangebote für Ihre Organisation aktivieren möchten, registrieren Sie sich für dir [Public Preview von Kunden-Lockbox für Azure](https://aka.ms/customerlockbox/insiderprogram).
 

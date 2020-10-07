@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321974"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung
 
@@ -97,11 +97,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** in das Feld **Mandanten-URL** die URL `https://<myPoliciesCustomDomain>.mypolicies.com/scim` ein. Dabei steht `<myPoliciesCustomDomain>` für Ihre benutzerdefinierte myPolicies-Domäne. Sie können Ihre myPolicies-Kundendomäne über Ihre URL abrufen.
 Beispiel: `<demo0-qa>`.mypolicies.com

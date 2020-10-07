@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025114"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321882"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway
 
@@ -91,7 +91,7 @@ In diesem Leitfaden wird das **Entwicklerportal** über Application Gateway für
 > 
 > Zu Application Gateway-WAF-Regeln, die möglicherweise die Funktionalität des Portals unterbrechen, gehören:
 > 
-> - `920330`, `931130`, `942100`, `942110`, `942180`, `942200`, `942260`, `942370`, `949110`, `980130` für den Verwaltungsmodus
+> - `920300`, `920330`, `931130`, `942100`, `942110`, `942180`, `942200`, `942260`, `942340`, `942370` für den Verwaltungsmodus
 > - `942200`, `942260`, `942370`, `942430`, `942440` für das veröffentlichte Portal
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erstellen einer Ressourcengruppe für den Resource Manager

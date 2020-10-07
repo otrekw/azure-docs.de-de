@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2020
-ms.locfileid: "90817869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326659"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring Data Azure Cosmos DB v3 für die Core (SQL)-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -96,17 +96,6 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Dokumentenvorgänge
 
-Erstellen:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
-
-Delete (Löschen):
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
-
-# <a name="query"></a>[Abfrage](#tab/queries)
-
-Abfrage:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
-
 ---
 
 ## <a name="resources"></a>Ressourcen
@@ -115,58 +104,7 @@ Abfrage:
 
 * **Tutorial**: [Spring Data Azure Cosmos DB-Tutorial auf GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
-## <a name="release-history"></a>Releaseverlauf
-
-### <a name="300-beta2-september-17-2020"></a>3.0.0-Beta.2 (17. September 2020)
-
-#### <a name="new-features"></a>Neue Funktionen
-
-* Die Artefakt-ID wurde auf `azure-spring-data-cosmos` aktualisiert.
-* Die azure-cosmos-Abhängigkeit wurde auf `4.5.0` aktualisiert.
-* `Query Annotation`-Unterstützung für native Abfragen.
-* Unterstützung für Java 11.
-* Unterstützung für geschachtelten Partitionsschlüssel durch Verfügbarmachen des Felds `partitionKeyPath` in der Anmerkung `@Container` wurde hinzugefügt.
-* Unterstützung für den Abfragetyp `limit` wurde hinzugefügt, sodass `top` und `first` beim Definieren von Repository-APIs verwendet werden kann.
-
-#### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen
-
-* Ein Fehler im Zusammenhang mit geschachteltem Partitionsschlüssel bei Verwendung mit der Anmerkung `@GeneratedValue` wurde behoben.
-
-### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta.1 (17. August 2020)
-
-#### <a name="new-features"></a>Neue Funktionen
-
-* Aktualisiert die Gruppen-ID auf `com.azure`.
-* Aktualisiert die Artefakt-ID auf `azure-spring-data-2-3-cosmos`.
-* Aktualisiert die azure-cosmos-SDK-Abhängigkeit auf `4.3.2-beta.2`.
-* Fügt Unterstützung für das Überwachen von Entitäten hinzu: automatische Verwaltung der mit Anmerkungen versehenen Felder `createdBy`, `createdDate`, `lastModifiedBy` und `lastModifiedDate`.
-* Fügt `@GeneratedValue`-Anmerkungsunterstützung für die automatische ID-Generierung bei ID-Feldern vom Typ `String` hinzu.
-* Fügt Unterstützung für mehrere Datenbankkonfigurationen bei einem einzelnen Azure Cosmos DB-Konto mit mehreren Datenbanken und bei mehreren Azure Cosmos DB-Konten mit mehreren Datenbanken hinzu.
-* Fügt Unterstützung für die Anmerkung `@Version` für ein beliebiges Zeichenfolgenfeld hinzu.
-* Aktualisiert Synchronisierungs-API-Rückgabetypen in `Iterable`-Typen statt `List`.
-* Macht `CosmosClientBuilder` aus dem Azure Cosmos DB SDK als Spring Bean für die Klasse `@Configuration` verfügbar.
-* Aktualisiert `CosmosConfig`, sodass Abfragemetriken und die Prozessorimplementierung für die Abfragediagnose darin enthalten sind.
-* Fügt Unterstützung für die Rückgabe des Datentyps `Optional` für einzelne Ergebnisabfragen hinzu.
-
-#### <a name="renames"></a>Umbenennungen
-
-* `CosmosDbFactory` in `CosmosFactory`.
-* `CosmosDBConfig` in `CosmosConfig`.
-* `CosmosDBAccessException` in `CosmosAccessException`.
-* `Document`-Anmerkung in die `Container`-Anmerkung.
-* `DocumentIndexingPolicy`-Anmerkung in die `CosmosIndexingPolicy`-Anmerkung.
-* `DocumentQuery` in `CosmosQuery`.
-* application.properties-Flag `populateQueryMetrics` in `queryMetricsEnabled`.
-
-#### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen
-
-* Tasks zur Diagnoseprotokollierung werden als `Parallel`-Threads geplant, um das Blockieren von Netty-E/A-Threads zu vermeiden.
-* Korrigiert die optimistische Sperre beim Löschvorgang.
-* Behebt ein Problem beim Versehen von Abfragen mit Escapezeichen für die `IN`-Klausel.
-* Behebt ein Problem, indem der Datentyp `long` für `@Id` zugelassen wird.
-* Behebt ein Problem, indem `boolean`, `long`, `int` und `double` als Datentypen für die Anmerkung `@PartitionKey` zugelassen werden.
-* Korrigiert die Schlüsselwörter `IgnoreCase` und `AllIgnoreCase` für Abfragen ohne Berücksichtigung von Groß-/Kleinschreibung.
-* Entfernt den Standardwert für Anforderungseinheiten (4.000), wenn Container automatisch erstellt werden.
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

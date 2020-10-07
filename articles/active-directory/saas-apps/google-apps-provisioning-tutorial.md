@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 27e34a66bb6dfa642b84bd8997b2b02c4981788e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f2f62fe158b946e00c7f81d0cb7eeb0d8f09437
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331127"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -133,13 +133,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**. Klicken Sie auf **Erste Schritte**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
       ![Blatt „Erste Schritte“](./media/google-apps-provisioning-tutorial/get-started.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. In einem neuen Browserfenster werden Sie zum Dialogfeld für die Google-Autorisierung geleitet.
 

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 67529ce3546046eaba75bd3beacd7bb9b96445fe
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331759"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Geplante Wartung in Azure Database for MySQL: Flexible Server
 
@@ -46,5 +46,5 @@ In seltenen Fällen kann ein Wartungsereignis vom System abgebrochen oder mögli
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum [Bearbeiten eines Wartungszeitplans](how-to-maintenance-portal.md)
-* Weitere Informationen zum Abonnieren von [Benachrichtigungen zu bevorstehenden Wartungsarbeiten](/azure/service-health/service-notifications.md) mit Azure Service Health
-* Weitere Informationen zur [Einrichtung von Benachrichtigungen zu bevorstehenden geplanten Wartungsereignissen](/azure/service-health/resource-health-alert-monitor-guide.md)
+* Weitere Informationen zum Abonnieren von [Benachrichtigungen zu bevorstehenden Wartungsarbeiten](../../service-health/service-notifications.md) mit Azure Service Health
+* Weitere Informationen zur [Einrichtung von Benachrichtigungen zu bevorstehenden geplanten Wartungsereignissen](../../service-health/resource-health-alert-monitor-guide.md)

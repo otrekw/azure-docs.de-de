@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322307"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Erstellen, Ausführen und Löschen von Azure ML-Ressourcen mithilfe von REST
 
 
 
-Es gibt verschiedene Möglichkeiten zur Verwaltung Ihrer Azure ML-Ressourcen. Sie können das [-Portal](https://portal.azure.com/), die [Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder das [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) verwenden. Sie können auch die REST-API verwenden. Die REST-API verwendet HTTP-Verben in einer Standardmethode zum Erstellen, Abrufen, Aktualisieren und Löschen von Ressourcen. Die REST-API funktioniert mit jeder Sprache oder jedem Tool, die bzw. das HTTP-Anforderungen ausführen kann. Durch die unkomplizierte Struktur von REST sind diese APIs häufig eine gute Wahl in Skriptumgebungen sowie für MLOps-Automatisierung. 
+Es gibt verschiedene Möglichkeiten zur Verwaltung Ihrer Azure ML-Ressourcen. Sie können das [-Portal](https://portal.azure.com/), die [Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) oder das [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) verwenden. Sie können auch die REST-API verwenden. Die REST-API verwendet HTTP-Verben in einer Standardmethode zum Erstellen, Abrufen, Aktualisieren und Löschen von Ressourcen. Die REST-API funktioniert mit jeder Sprache oder jedem Tool, die bzw. das HTTP-Anforderungen ausführen kann. Durch die unkomplizierte Struktur von REST sind diese APIs häufig eine gute Wahl in Skriptumgebungen sowie für MLOps-Automatisierung. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

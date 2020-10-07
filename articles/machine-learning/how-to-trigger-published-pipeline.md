@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318295"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Auslösen der Ausführung einer Machine Learning-Pipeline aus einer Logik-App
 
@@ -94,3 +94,14 @@ Führen Sie nach der Bereitstellung Ihrer Logik-App die folgenden Schritte aus, 
     > ![HTTP-Einstellungen](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Wählen Sie **Speichern** aus. Der Zeitplan ist nun bereit.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen finden Sie unter
+
+> [!div class="nextstepaction"]
+> [Verwenden von Azure Machine Learning-Pipelines für die Batchbewertung](tutorial-pipeline-batch-scoring-classification.md)
+
+* Weitere Informationen zu [Pipelines](concept-ml-pipelines.md)
+* Erfahren Sie mehr über das [Erkunden von Azure Machine Learning mit Jupyter](samples-notebooks.md)
+

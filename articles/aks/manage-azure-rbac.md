@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Azure RBAC für Kubernetes-Autorisierung mit Azure Kubernetes Service (AKS) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329090"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Verwenden von Azure RBAC für Kubernetes-Autorisierung (Vorschau)
 
@@ -28,7 +28,6 @@ Die Möglichkeit, RBAC für Kubernetes-Ressourcen aus Azure zu verwalten, bietet
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Voraussetzungen 
-- Registrieren Sie sich für die Vorschauversion <https://aka.ms/aad-rbac-sign-up-form>.
 - Stellen Sie sicher, dass Sie mindestens über Version 2.9.0 der Azure-Befehlszeilenschnittstelle verfügen.
 - Stellen Sie sicher, dass das `EnableAzureRBACPreview`-Featureflag aktiviert ist.
 - Stellen Sie sicher, dass die `aks-preview` [-CLI-Erweiterung][az-extension-add] v0.4.55 oder höher installiert ist.
@@ -44,7 +43,7 @@ Registrieren Sie das `EnableAzureRBACPreview`-Featureflag mit dem Befehl [az fea
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-Nach dem Übermitteln des obigen Vorschauformulars müssen Sie eine Genehmigung erhalten, bevor das Flag erfolgreich registriert werden kann. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
+ Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
@@ -285,4 +284,4 @@ az group delete -n MyResourceGroup
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true

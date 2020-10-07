@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317003"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Konfigurieren eines verteilten Netzwerknamens für eine FCI 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,7 @@ Um mögliche Besitzer zu aktualisieren, führen Sie die folgenden Schritte aus:
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="Kontextmenü für die DNN-Ressource mit hervorgehobenem Befehl „Eigenschaften“.":::
 1. Deaktivieren Sie das Kontrollkästchen für alle Knoten, die nicht an der Failoverclusterinstanz teilnehmen. Die Liste möglicher Besitzer für die DNN-Ressource sollte mit der Liste möglicher Besitzer für die SQL Server-Instanzressource übereinstimmen. Wenn z. B. Data3 nicht an der FCI teilnimmt, ist die folgende Abbildung ein Beispiel für das Entfernen von Data3 aus der Liste möglicher Besitzer für die DNN-Ressource: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Deaktivieren Sie das Kontrollkästchen neben den Knoten, die nicht an der FCI beteiligt sind, für mögliche Besitzer der DNN-Ressource.":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Kontextmenü für die DNN-Ressource mit hervorgehobenem Befehl „Eigenschaften“.":::
 
 1. Klicken Sie auf **OK**, um die Einstellungen zu speichern. 
 

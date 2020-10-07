@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319791"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Konfigurieren der Application Gateway-Infrastruktur
 
@@ -20,10 +20,10 @@ Die Application Gateway-Infrastruktur umfasst das virtuelle Netzwerk, Subnetze, 
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>Virtuelles Netzwerk und dediziertes Subnetz
 
-Ein Application Gateway ist eine dedizierte Bereitstellung in Ihrem virtuellen Netzwerk. Innerhalb Ihres virtuellen Netzwerks ist ein dediziertes Subnetz für das Application Gateway erforderlich. Sie können in einem Subnetz mehrere Instanzen einer bestimmten Application Gateway-Bereitstellung betreiben. Außerdem können Sie weitere Application Gateway-Instanzen im Subnetz bereitstellen. Aber Sie können keine andere Ressource im Application Gateway-Subnetz bereitstellen.
+Ein Application Gateway ist eine dedizierte Bereitstellung in Ihrem virtuellen Netzwerk. Innerhalb Ihres virtuellen Netzwerks ist ein dediziertes Subnetz für das Application Gateway erforderlich. Sie können in einem Subnetz mehrere Instanzen einer bestimmten Application Gateway-Bereitstellung betreiben. Außerdem können Sie weitere Application Gateway-Instanzen im Subnetz bereitstellen. Aber Sie können keine andere Ressource im Application Gateway-Subnetz bereitstellen. Sie können ein Standard_v2- und ein standardmäßiges Azure Application Gateway nicht parallel in demselben Subnetz betreiben.
 
 > [!NOTE]
-> Sie können ein Standard_v2- und ein standardmäßiges Azure Application Gateway nicht parallel in demselben Subnetz betreiben.
+> [Richtlinien für VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoint-policies-overview.md) werden derzeit in einem Application Gateway-Subnetz nicht unterstützt.
 
 ### <a name="size-of-the-subnet"></a>Subnetzgröße
 

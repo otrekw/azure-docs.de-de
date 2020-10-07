@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e24c08c9689394fa6efdbc03d960c597496e8ad
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b1bb22b702cae77ba40fbeeaca1c11c9063bffe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331606"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-Sicherheitsbaseline für Azure DDoS Protection Standard
 
@@ -96,7 +96,7 @@ Integrieren Sie einen Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine
 
 Außerdem umfasst Azure Active Directory (AAD) integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
-- [Grundlegendes zu Berechtigungen in Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md#permissions)
+- [Grundlegendes zu Berechtigungen in Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
 
 - [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 

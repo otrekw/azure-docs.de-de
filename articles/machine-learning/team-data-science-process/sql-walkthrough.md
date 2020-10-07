@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027476"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331895"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -83,7 +83,7 @@ In diesem Tutorial wird der parallele Massenimport von Daten in SQL Server gezei
 So richten Sie Ihre Azure Data Science-Umgebung ein:
 
 1. [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md)
-2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
+2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../classic/create-workspace.md)
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), der als Server für SQL Server und ein IPython Notebook fungiert.
    
    > [!NOTE]
@@ -626,9 +626,9 @@ Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine L
 3. Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 
 ## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Erstellen von Modellen in Azure Machine Learning
-Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md).
+Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../classic/create-workspace.md).
 
-1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
+1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio?](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. Melden Sie sich in [Azure Machine Learning Studio](https://studio.azureml.net)an.
 3. Die Startseite von Studio enthält eine Vielzahl an Informationen, Videos, Tutorials, Links zu Modulreferenzen und andere Ressourcen. Weitere Informationen zu Azure Machine Learning finden Sie im [Azure Machine Learning-Dokumentationscenter](https://azure.microsoft.com/documentation/services/machine-learning/).
 
@@ -668,7 +668,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 > 
 
 ## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
-Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](../studio/deploy-a-machine-learning-web-service.md).
+Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](../classic/deploy-a-machine-learning-web-service.md).
 
 So stellen Sie einen neuen Webdienst bereit:
 

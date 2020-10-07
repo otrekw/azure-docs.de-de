@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328104"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Vorschau: Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 
@@ -271,7 +271,7 @@ Außerdem erstellt Image Builder im Hintergrund eine Stagingressourcengruppe in 
 
 Gehen Sie folgendermaßen vor, wenn der Dienst während der Übermittlung der Imagekonfigurationsvorlage einen Fehler meldet:
 
-- Weitere Informationen finden Sie unter [Problembehandlung im Zusammenhang mit AIB-Fehlern (Azure VM Image Builder)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting).
+- Weitere Informationen finden Sie unter [Problembehandlung im Zusammenhang mit AIB-Fehlern (Azure VM Image Builder)](../linux/image-builder-troubleshoot.md).
 - Löschen Sie die Vorlage mithilfe des folgenden Beispiels, bevor Sie den Vorgang wiederholen.
 
 ```azurepowershell-interactive
@@ -288,7 +288,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 Warten Sie, bis der Image-Erstellungsprozess beendet ist. Dieser Schritt kann bis zu einer Stunde dauern.
 
-Wenn Fehler auftreten, beachten Sie das Dokument [Problembehandlung bei AIB-Fehlern (Azure VM Image Build)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting).
+Wenn Fehler auftreten, beachten Sie das Dokument [Problembehandlung bei AIB-Fehlern (Azure VM Image Build)](../linux/image-builder-troubleshoot.md).
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 

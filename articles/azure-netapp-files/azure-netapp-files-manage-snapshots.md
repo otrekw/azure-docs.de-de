@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325688"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
@@ -65,7 +65,7 @@ Die Funktion **Momentaufnahmenrichtlinie** steht derzeit als Vorschau zur Verfü
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-Sie können auch die Azure CLI-Befehle [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) und [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
+Sie können auch die [Azure CLI-Befehle](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
 
 ### <a name="create-a-snapshot-policy"></a>Erstellen einer Momentaufnahmenrichtlinie 
 
@@ -221,6 +221,6 @@ Wenn Sie das beim Erstellen des Volumes Kontrollkästchen „Momentaufnahmepfad 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+* [Problembehandlung für Momentaufnahmenrichtlinien](troubleshoot-snapshot-policies.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Video „Azure NetApp Files Snapshots 101“](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

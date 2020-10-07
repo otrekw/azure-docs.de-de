@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328494"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -113,7 +113,7 @@ Als nächstes schließen Sie die „Verschiebung“ Ihrer Instanz ab, indem Sie 
 
 ### <a name="create-a-new-instance"></a>Erstellen einer neuen Instanz
 
-Erstellen Sie zunächst **eine neue Azure Digital Twins-Instanz in Ihrer Zielregion**. Führen Sie dazu die Schritte in [*Gewusst wie: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-scripted.md) aus, wobei Sie diese Hinweise im Auge behalten:
+Erstellen Sie zunächst **eine neue Azure Digital Twins-Instanz in Ihrer Zielregion**. Führen Sie dazu die Schritte in [*Gewusst wie: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md) aus, wobei Sie diese Hinweise im Auge behalten:
 * Sie können denselben Namen für die neue Instanz beibehalten, **wenn** sie sich in einer anderen Ressourcengruppe befindet. Wenn Sie dieselbe Ressourcengruppe verwenden müssen, die Ihre ursprüngliche Instanz enthält, dann benötigt Ihre neue Instanz einen eigenen, eindeutigen Namen.
 * Geben Sie die neue Zielregion ein, wenn Sie zur Eingabe eines Standorts aufgefordert werden.
 * Sie müssen die Registrierung der App **nicht** erneut erstellen. Ihre neue Instanz kann dieselbe App-Registrierung wiederverwenden, über die Sie bereits verfügen.

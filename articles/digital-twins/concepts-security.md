@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827527"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331878"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -83,7 +83,7 @@ Azure Digital Twins bietet Verschlüsselung von ruhenden Daten und bei der Über
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu diesen Konzepten finden Sie in der Anleitung [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-scripted.md).
+* Weitere Informationen zu diesen Konzepten finden Sie in der Anleitung [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md).
 
 * Weitere Informationen zur Interaktion mit diesen Konzepten über den Clientanwendungscode finden Sie unter [*Vorgehensweise: Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md).
 

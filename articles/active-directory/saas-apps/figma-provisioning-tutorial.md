@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322033"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Figma für die automatische Benutzerbereitstellung
 
@@ -110,11 +110,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die URL `https://www.figma.com/scim/v2/<TenantID>` als **Mandanten-URL** ein. **TenantID** ist hierbei der Wert, den Sie zuvor von Figma abgerufen haben. Geben Sie den Wert für das **API-Token** im Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Figma herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Figma-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

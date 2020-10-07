@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321848"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -162,11 +162,11 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 | isEnabled | true | Aktiviert oder deaktiviert die Stichprobenentnahme. | 
 | maxTelemetryItemsPerSecond | 20 | Die Zielanzahl der Telemetrieelemente, die pro Sekunde auf den einzelnen Serverhosts protokolliert werden. Reduzieren Sie diesen Wert, wenn Ihre App auf vielen Hosts ausgeführt wird, um Ihre Zielgeschwindigkeit für den gesamten Datenverkehr einzuhalten. | 
 | evaluationInterval | 01:00:00 | Das Intervall, in dem die aktuelle Telemetrierate erneut ausgewertet wird. Die Auswertung wird als gleitender Durchschnitt ausgeführt. Wenn bei Ihrer Telemetrie plötzliche Spitzen auftreten, sollten Sie dieses Intervall verkürzen. |
-| initialSamplingPercentage| 1.0 | Der anfängliche Prozentsatz für die Stichprobenentnahme, der zu Beginn der Stichprobenentnahme angewendet wird, um den Prozentsatz dynamisch zu variieren. Reduzieren Sie den Wert nicht, solange Sie debuggen. |
+| initialSamplingPercentage| 100.0 | Der anfängliche Prozentsatz für die Stichprobenentnahme, der zu Beginn der Stichprobenentnahme angewendet wird, um den Prozentsatz dynamisch zu variieren. Reduzieren Sie den Wert nicht, solange Sie debuggen. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | Wenn der Prozentwert für die Stichprobenentnahme geändert wird, bestimmt diese Eigenschaft, wie schnell Application Insights den Prozentsatz für die Stichprobenentnahme danach erhöhen darf, um mehr Daten zu erfassen. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | Wenn der Prozentwert für die Stichprobenentnahme geändert wird, bestimmt diese Eigenschaft, wie schnell Application Insights den Prozentsatz für die Stichprobenentnahme danach reduzieren darf, um weniger Daten zu erfassen. |
 | minSamplingPercentage | 0,1 | Diese Eigenschaft bestimmt den mindestens zulässigen Wert für den variierenden Prozentsatz der Stichprobenentnahme. |
-| maxSamplingPercentage | 0,1 | Diese Eigenschaft bestimmt den maximal zulässigen Wert für den variierenden Prozentsatz der Stichprobenentnahme. |
+| maxSamplingPercentage | 100.0 | Diese Eigenschaft bestimmt den maximal zulässigen Wert für den variierenden Prozentsatz der Stichprobenentnahme. |
 | movingAverageRatio | 1.0 | Die Gewichtung, die bei der Berechnung des gleitenden Durchschnitts dem jüngsten Wert beigemessen wird. Verwenden Sie einen Wert kleiner oder gleich 1. Bei einem kleineren Wert reagiert der Algorithmus langsamer auf plötzliche Veränderungen. |
 | excludedTypes | NULL | Eine durch Semikolons getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind `Dependency`, `Event`, `Exception`, `PageView`, `Request` und `Trace`. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
 | includedTypes | NULL | Eine durch Semikolons getrennte Liste von Typen, für die Stichproben erstellt werden sollen. Eine leere Liste gibt an, dass Stichproben für alle Typen erstellt werden sollen. In `excludedTypes` aufgeführte Typen überschreiben die hier aufgeführten Typen. Anerkannte Typen sind `Dependency`, `Event`, `Exception`, `PageView`, `Request` und `Trace`. Für alle Instanzen der angegebenen Typen werden Stichproben erstellt. Die nicht angegebenen und nicht implizierten Typen werden ohne Stichprobenentnahme übertragen. |

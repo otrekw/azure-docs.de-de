@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: 616cdb1d0940ea6f64c3be3d687adaa9c2a98cc2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be68ad35deca754df70bb51e83929e73ff132ba6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315404"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 
@@ -71,7 +71,7 @@ In der nachstehenden Tabelle finden Sie Informationen zu verschiedenen Debugopti
 
 | Bibliothek                    | type   | Beispiel                                                          | Destination                                  | Ressourcen                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | Metrik | `run.log(name, val)`                                             | Benutzeroberfläche des Azure Machine Learning-Portals             | [Nachverfolgen von Experimenten](how-to-track-experiments.md)<br>[Klasse „azureml.core.Run“](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Azure Machine Learning SDK | Metrik | `run.log(name, val)`                                             | Benutzeroberfläche des Azure Machine Learning-Portals             | [Nachverfolgen von Experimenten](how-to-track-experiments.md)<br>[Klasse „azureml.core.Run“](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)                                                                                                                                                 |
 | Python-Druck/-Protokollierung    | Log    | `print(val)`<br>`logging.info(message)`                          | Treiberprotokolle, Azure Machine Learning-Designer | [Nachverfolgen von Experimenten](how-to-track-experiments.md)<br><br>[Python-Protokollierung](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Log    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – Ablaufverfolgung                | [Debuggen von Pipelines in Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Cookbook zur Python-Protokollierung](https://docs.python.org/3/howto/logging-cookbook.html) |
 
