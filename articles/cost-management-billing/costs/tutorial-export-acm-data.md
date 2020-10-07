@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683265"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447612"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -91,9 +91,9 @@ Exporte für Verwaltungsgruppen anderer Abonnementtypen werden nicht unterstütz
 
 1. Wenn Sie noch keine Verwaltungsgruppe haben, erstellen Sie eine, und weisen Sie ihr Abonnements zu.
 1. Legen Sie in der Kostenanalyse den Bereich auf Ihre Verwaltungsgruppe fest, und wählen Sie **Diese Verwaltungsgruppe auswählen** aus.  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Beispiel mit der Option „Diese Verwaltungsgruppe auswählen“" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Beispiel für einen neuen Export" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. Erstellen Sie einen Export im Bereich, um Kostenverwaltungsdaten für die Abonnements in der Verwaltungsgruppe abzurufen.  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Beispiel mit der Option zum Erstellen eines neuen Exports mit einem Verwaltungsgruppenbereich":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Beispiel für einen neuen Export":::
 
 ## <a name="verify-that-data-is-collected"></a>Überprüfen, ob Daten gesammelt wurden
 
@@ -128,11 +128,11 @@ Sie können auch die exportierte CSV-Datei im Azure-Portal herunterladen. In den
 
 Sie können den Ausführungsverlauf Ihres geplanten Exports anzeigen, indem Sie auf der Listenseite „Exporte“ einen einzelnen Export auswählen. Auf dieser Seite können Sie auch schnell die Ausführungszeit Ihrer vorherigen Exporte und den Zeitpunkt der nächsten Ausführung eines Exports anzeigen. Der folgende Screenshot zeigt ein Beispiel für den Ausführungsverlauf.
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Beispiel für den Ausführungsverlauf eines Exports":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Beispiel für einen neuen Export":::
 
 Wählen Sie einen Export aus, um den zugehörigen Ausführungsverlauf anzuzeigen.
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Beispiel für den Ausführungsverlauf eines Exports":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Beispiel für einen neuen Export":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Zugreifen auf exportierte Daten über andere Systeme
 

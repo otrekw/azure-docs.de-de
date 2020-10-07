@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4889e73e851e285c84d5d4429298e9a7cdacc140
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014386"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537598"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Erstellen einer Vorschlagsfunktion zum Ermöglichen von AutoVervollständigen und vorgeschlagenen Ergebnissen in einer Abfrage
 
@@ -26,7 +26,7 @@ Der folgende Screenshot aus dem Beispiel [Erstellen Ihrer ersten App in C#](tuto
 
 Sie können diese Features einzeln oder zusammen verwenden. Um dieses Verhalten in der kognitiven Azure-Suche zu implementieren, gibt es eine Index- und eine Abfragekomponente. 
 
-+ Fügen Sie im Index eine Vorschlagsfunktion zu einem Index hinzu. Sie können das Portal, eine [REST-API](/rest/api/searchservice/create-index) oder das [.NET SDK](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet) verwenden. Im weiteren Verlauf dieses Artikels geht es um die Erstellung einer Vorschlagsfunktion.
++ Fügen Sie im Index eine Vorschlagsfunktion zu einem Index hinzu. Sie können das Portal, eine [REST-API](/rest/api/searchservice/create-index) oder das [.NET SDK](/dotnet/api/microsoft.azure.search.models.suggester) verwenden. Im weiteren Verlauf dieses Artikels geht es um die Erstellung einer Vorschlagsfunktion.
 
 + Rufen Sie in der Abfrageanforderung eine der [folgenden APIs](#how-to-use-a-suggester) auf.
 
@@ -111,7 +111,7 @@ Fügen Sie Vorschlagsfunktionen in der REST-API über [Index erstellen](/rest/ap
 
 ## <a name="create-using-net"></a>Erstellen mit .NET
 
-Definieren Sie in C# ein [Suggester-Objekt](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` ist eine Sammlung, aber sie kann nur ein Element enthalten. 
+Definieren Sie in C# ein [Suggester-Objekt](/dotnet/api/microsoft.azure.search.models.suggester). `Suggesters` ist eine Sammlung, aber sie kann nur ein Element enthalten. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -138,7 +138,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |Der Name der Vorschlagsfunktion.|
 |`searchMode`  |Die Strategie, mit der nach möglichen Ausdrücken gesucht wird. Aktuell wird nur der Modus `analyzingInfixMatching` unterstützt, der derzeit am Anfang eines Begriffs Übereinstimmungen findet.|
-|`sourceFields`|Eine Liste mit einem oder mehreren Feldern, die als Quelle für den Inhalt von Vorschlägen dienen. Felder müssen vom Typ `Edm.String` und `Collection(Edm.String)` sein. Wenn ein Analysetool für das Feld angegeben wird, muss es sich um ein benanntes Analysetool aus [dieser Liste](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (kein benutzerdefiniertes Analysetool) handeln.<p/> Folgende Vorgehensweise wird empfohlen: Geben Sie nur die Felder an, die sich für eine erwartete und angemessene Antwort eignen, sei es eine vollständige Zeichenfolge in einer Suchleiste oder eine Dropdownliste.<p/>Ein Hotelname ist ein guter Kandidat, weil er präzise ist. Ausführliche Felder wie Beschreibungen und Kommentare sind zu informationsreich. Sich wiederholende Felder wie Kategorien und Tags sind ebenso weniger effektiv. In den Beispielen schließen wir ohnehin „category“ ein, um zu zeigen, dass Sie mehrere Felder einbeziehen können. |
+|`sourceFields`|Eine Liste mit einem oder mehreren Feldern, die als Quelle für den Inhalt von Vorschlägen dienen. Felder müssen vom Typ `Edm.String` und `Collection(Edm.String)` sein. Wenn ein Analysetool für das Feld angegeben wird, muss es sich um ein benanntes Analysetool aus [dieser Liste](/dotnet/api/microsoft.azure.search.models.analyzername) (kein benutzerdefiniertes Analysetool) handeln.<p/> Folgende Vorgehensweise wird empfohlen: Geben Sie nur die Felder an, die sich für eine erwartete und angemessene Antwort eignen, sei es eine vollständige Zeichenfolge in einer Suchleiste oder eine Dropdownliste.<p/>Ein Hotelname ist ein guter Kandidat, weil er präzise ist. Ausführliche Felder wie Beschreibungen und Kommentare sind zu informationsreich. Sich wiederholende Felder wie Kategorien und Tags sind ebenso weniger effektiv. In den Beispielen schließen wir ohnehin „category“ ein, um zu zeigen, dass Sie mehrere Felder einbeziehen können. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -148,8 +148,8 @@ Eine Vorschlagsfunktion wird in einer Abfrage verwendet. Nachdem Sie eine Vorsch
 
 + [Vorschläge-REST-API](/rest/api/searchservice/suggestions) 
 + [AutoVervollständigen-REST-API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [SuggestWithHttpMessagesAsync method](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?
++ [AutocompleteWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 In einer Suchanwendung sollte für Clientcode eine Bibliothek wie [jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) verwendet werden, um die partielle Abfrage zu erfassen und die Übereinstimmung bereitzustellen. Weitere Informationen zu dieser Aufgabe finden Sie unter [Hinzufügen von AutoVervollständigen oder Vorschlägen zu Clientcode](search-autocomplete-tutorial.md).
 

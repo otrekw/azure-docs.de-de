@@ -1,5 +1,5 @@
 ---
-title: Anhalten und Fortsetzen von Computeressourcen im Synapse-SQL-Pool über das Azure-Portal
+title: 'Schnellstart: Anhalten und Fortsetzen von Computeressourcen im Synapse-SQL-Pool über das Azure-Portal'
 description: Verwenden Sie das Azure-Portal, um Computeressourcen für den SQL-Pool anzuhalten und Kosten zu sparen. Setzen Sie die Computeressourcen fort, wenn Sie das Data Warehouse verwenden möchten.
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214467"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91567637"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen im Synapse-SQL-Pool über das Azure-Portal
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um einen SQL-Pool anzuhalten:
 5. Sie werden in einer Meldung aufgefordert, das Fortsetzen des Vorgangs zu bestätigen. Klicken Sie auf **Ja**.
 6. Warten Sie einen Moment, und beachten Sie, dass der **Status** als **Wird angehalten** angezeigt wird.
 
-    ![Status „Wird angehalten“](./media/pause-and-resume-compute-portal/pausing.png)
+    ![Screenshot, in dem das Azure-Portal für ein Beispiel-Data Warehouse mit dem „Status“-Wert „Wird angehalten“ gezeigt ist](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. Nach Abschluss des Anhaltevorgangs lautet der Status **Angehalten**, und für die Optionsschaltfläche wird **Starten** angezeigt.
 8. Die Computeressourcen für den SQL-Pool sind nun offline. Ihnen werden erst wieder Computeressourcen in Rechnung gestellt, wenn Sie den Dienst fortsetzen.
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um einen SQL-Pool fortzusetzen:
 5. Sie werden in einer Meldung aufgefordert, den Startvorgang zu bestätigen. Klicken Sie auf **Ja**.
 6. Beachten Sie, dass der **Status** als **Wird fortgesetzt** angezeigt wird.
 
-    ![Wird fortgesetzt](./media/pause-and-resume-compute-portal/resuming.png)
+    ![Screenshot, in dem das Azure-Portal für ein Beispiel-Data Warehouse mit ausgewählter Schaltfläche „Starten“ und dem „Status“-Wert „Wird fortgesetzt“ gezeigt ist](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. Wenn der SQL-Pool wieder online ist, lautet der Status **Online**, und für die Optionsschaltfläche wird **Anhalten** angezeigt.
 8. Die Computeressourcen für den SQL-Pool sind nun online, und Sie können den Dienst verwenden. Es fallen wieder Kosten für die Computeressourcen an.

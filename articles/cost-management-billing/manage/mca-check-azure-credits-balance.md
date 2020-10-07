@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690577"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447633"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Nachverfolgen des Azure-Gutschriftensaldos der Microsoft-Kundenvereinbarung
 
@@ -35,11 +35,11 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-    ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Portal](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. Wählen Sie auf der Abrechnungsbereicheseite das Abrechnungskonto aus, für das Sie das Guthaben nachverfolgen möchten. Das Abrechnungskonto sollte vom Typ **Microsoft-Kundenvereinbarung** sein.
 
-    ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![Screenshot von Abrechnungsbereichen](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
 
 3. Wählen Sie auf der linken Seite **Zahlungsmethoden** aus, und wählen Sie dann **Azure-Guthaben** aus.
 
-   ![Screenshot: Guthaben für ein Abrechnungsprofil](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Screenshot der geschätzten und aktuellen Salden](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. Die Azure-Guthabenseite umfasst die folgenden Abschnitte:
 

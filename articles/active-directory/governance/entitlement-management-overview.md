@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594321"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597384"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -78,7 +78,8 @@ Die Berechtigungsverwaltung führt in Azure AD das Konzept von *Zugriffspaketen*
 Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Microsoft 365-Gruppen basieren.  Beispiel:
 
 - Sie können Benutzerlizenzen für Microsoft 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket vergeben und die [gruppenbasierte Lizenzierung](../users-groups-roles/licensing-groups-assign.md) für diese Gruppe konfigurieren.
-- Sie können Benutzern mithilfe einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Erstellen einer [Azure-Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md) für diese Gruppe Zugriff zum Verwalten von Azure-Ressourcen erteilen.
+- Sie können Benutzern mithilfe einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und durch Erstellen einer [Azure-Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md) für diese Gruppe Zugriff zum Verwalten von Azure-Ressourcen erteilen.
+- Sie können mithilfe von Gruppen, die Azure AD-Rollen in einem Zugriffspaket zugewiesen werden können, und durch das [Zuweisen einer Azure AD-Rolle zu dieser Gruppe](../users-groups-roles/roles-groups-assign-role.md) Benutzern Zugriff zum Verwalten von Azure AD-Rollen gewähren.
 
 ## <a name="how-do-i-control-who-gets-access"></a>Wie kann gesteuert werden, wer Zugriff erhält?
 

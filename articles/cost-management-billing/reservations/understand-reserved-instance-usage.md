@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681922"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447884"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung
 
@@ -74,7 +74,7 @@ Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Regi
 
 Filtern Sie nach der Verbrauchseinheit **Nutzung reservierter Instanzen**, und wählen Sie dann die entsprechende **Kategorie der Verbrauchseinheit** (Azure SQL-Datenbank oder Azure Cosmos DB) aus. Die Anzeige sollte in etwa wie im folgenden Screenshot aussehen:
 
-![CSV-Datei zu reservierten SQL-Datenbank-Kapazitäten](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Screenshot eines Eintrags für „Kategorie der Verbrauchseinheit“](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 Die Zeile **Nutzung reservierter Instanzen** enthält die Gesamtanzahl der Kernstunden, die durch die Reservierung abgedeckt werden. Der Preis für diese Zeile beträgt 0,00 USD, da die Kosten durch die Reservierung abgedeckt sind.
 
@@ -82,7 +82,7 @@ Die Zeile **Nutzung reservierter Instanzen** enthält die Gesamtanzahl der Kerns
 
 Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservierungs-ID** ein. Der folgende Screenshot zeigt die Felder, die im Zusammenhang mit der Reservierung von SQL-Datenbank-Kapazitäten stehen.
 
-![CSV-Datei zu reservierten SQL-Datenbank-Kapazitäten](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Screenshot mit Details einer C S V-Datei für reservierte Kapazität](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. Die **ReservationId** im Feld **Zusätzliche Informationen** bezieht sich auf die Reservierung der SQL-Datenbank-Kapazität, die auf die SQL-Datenbank-Ressource angewendet wurde.
 2. **ConsumptionMeter** ist die Verbrauchseinheit-ID für die SQL-Datenbank-Ressource.

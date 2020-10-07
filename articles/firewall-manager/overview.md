@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 09/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399447"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596677"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -89,6 +89,7 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Für Anwendungsregeln tritt auf einem geschützten Hub ein Fehler auf, wenn ein benutzerdefiniertes DNS (Vorschau) konfiguriert ist.|Benutzerdefiniertes DNS (Vorschau) funktioniert nicht in Bereitstellungen von geschützten Hubs und virtuellen Hubnetzwerkbereitstellungen, bei denen die Tunnelerzwingung aktiviert ist.|Wir arbeiten derzeit an der Fehlerbehebung.|
 |DDoS Protection Standard wird bei geschützten virtuellen Hubs nicht unterstützt.|DDoS Protection Standard ist nicht in vWANs integriert.|Wird untersucht|
 |Aktivitätsprotokolle werden nicht vollständig unterstützt.|Firewallrichtlinie unterstützt derzeit keine Aktivitätsprotokolle.|Wird untersucht|
+|Konfigurieren von privaten SNAT-IP-Adressbereichen|[Einstellungen für den privaten IP-Bereich](../firewall/snat-private-range.md) werden ignoriert, wenn eine Azure Firewall-Richtlinie konfiguriert ist. Es wird das Azure Firewall-Standardverhalten verwendet, d. h., es erfolgt keine SNAT bei Netzwerkregeln, wenn sich die Ziel-IP-Adresse in einem privaten IP-Adressbereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) befindet.|Wird untersucht
 
 ## <a name="next-steps"></a>Nächste Schritte
 

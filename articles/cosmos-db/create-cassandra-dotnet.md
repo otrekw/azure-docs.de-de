@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f17385307995d87f2d5792a7e9ce19ad0260cbcc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010238"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627362"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem .NET-SDK und Azure Cosmos DB
 
@@ -158,13 +158,13 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     ```
 3. Drücken Sie STRG+F5, um die Anwendung auszuführen. Ihre App wird im Konsolenfenster angezeigt. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Anzeigen und Überprüfen der Ausgabe":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Verbindungszeichenfolge“":::
 
     Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen. 
     
 4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Anzeigen der Daten im Daten-Explorer":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Verbindungszeichenfolge“":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 

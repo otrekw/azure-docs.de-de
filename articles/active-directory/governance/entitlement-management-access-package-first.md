@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707491"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597500"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
 Das Verwalten des Zugriffs auf alle Ressourcen, die von Mitarbeitern benötigt werden, etwa Gruppen, Anwendungen und Websites, ist eine wichtige Aufgabe für Organisationen. Sie möchten Mitarbeitern den richtigen Umfang an Zugriff gewähren, den sie benötigen, um produktiv zu sein, und Sie möchten deren Zugriff entfernen, wenn er nicht mehr benötigt wird.
 
-In diesem Tutorial arbeiten Sie als IT-Administrator für die Woodgrove Bank. Sie wurden gebeten, ein Paket von Ressourcen für eine Marketingkampagne zu erstellen, das interne Benutzern selbst anfordern können. Anforderungen bedürfen keiner Genehmigung, und der Zugriff eines Benutzer läuft nach 30 Tagen ab. Für dieses Tutorial gehören die Ressourcen der Marketingkampagne nur zu einer einzelnen Gruppe, sie könnten aber auch einer Sammlung von Gruppen, Anwendungen oder SharePoint Online-Websites angehören.
+In diesem Tutorial arbeiten Sie als IT-Administrator für die Woodgrove Bank. Sie wurden gebeten, ein Paket von Ressourcen für eine Marketingkampagne zu erstellen, das interne Benutzer für Anforderungen per Self-Service verwenden können. Anforderungen bedürfen keiner Genehmigung, und der Zugriff eines Benutzer läuft nach 30 Tagen ab. Für dieses Tutorial gehören die Ressourcen der Marketingkampagne nur zu einer einzelnen Gruppe, sie könnten aber auch einer Sammlung von Gruppen, Anwendungen oder SharePoint Online-Websites angehören.
 
-![Übersicht über das Szenario](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![Diagramm mit einer Übersicht über das Szenario](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -110,17 +110,21 @@ Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von
 
      Standardmäßig werden Gruppen im Katalog „Allgemein“ angezeigt. Wenn Sie eine Gruppe auswählen, die sich außerhalb des Katalogs „Allgemein“ befindet, wird sie dem Katalog „Allgemein“ hinzugefügt. Gruppen außerhalb des Katalogs können durch Aktivierung des Kontrollkästchens **Alle anzeigen** angezeigt werden.
 
-    ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Screenshot der Registerkarte „Ressourcenrollen“ unter „Neues Zugriffspaket“ und des Fensters „Gruppen auswählen“](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Klicken Sie auf **Auswählen**, um die Gruppe zur Liste hinzuzufügen.
 
 11. Wählen Sie in der Dropdownliste **Rolle** den Eintrag **Mitglied** aus.
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >Die einem Zugriffspaket hinzugefügten Gruppen, denen Rollen zugewiesen werden können, werden mit dem Untertyp **Rolle zuweisbar** angegeben. Weitere Informationen zu Gruppen, die Azure AD-Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md). Wenn eine Gruppe, der Rollen zugewiesen werden können und die Sie hinzufügen möchten, nicht angezeigt wird, oder wenn Sie eine solche Gruppe nicht hinzufügen können, stellen Sie sicher, dass Sie über die erforderliche Azure AD-Rolle und -Berechtigungsverwaltungsrolle zum Ausführen dieses Vorgangs verfügen. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > Bei der Verwendung von [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) sind außer „Besitzer“ keine anderen Rollen verfügbar. Dies ist beabsichtigt.
     > ![Übersicht über das Szenario](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. Klicken Sie auf **Weiter**, um die Registerkarte **Anforderungen** zu öffnen.
 

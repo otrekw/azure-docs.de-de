@@ -1,5 +1,5 @@
 ---
-title: Skalieren von Computeressourcen in Azure Synapse Analytics – T-SQL
+title: 'Schnellstart: Skalieren von Computeressourcen in Azure Synapse Analytics – T-SQL'
 description: Skalieren Sie Computeressourcen in Azure Synapse Analytics mithilfe von T-SQL und SQL Server Management Studio (SSMS). Skalieren Sie Computeressourcen auf, um eine bessere Leistung zu erzielen, oder skalieren Sie sie ab, um Kosten einzusparen.
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212920"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91569897"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Schnellstart: Skalieren von Computeressourcen in Azure Synapse Analytics mithilfe von T-SQL
 
@@ -132,7 +132,7 @@ So fragen Sie den Status der Dienstobjektänderung ab:
 
 ## <a name="check-data-warehouse-state"></a>Überprüfen des Data Warehouse-Zustands
 
-Mit einem angehaltenen Data Warehouse kann über T-SQL keine Verbindung hergestellt werden. Den aktuellen Zustand des Data Warehouse können Sie mithilfe eines PowerShell-Cmdlets anzeigen. Ein entsprechendes Beispiel finden Sie unter [Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse mithilfe von PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
+Mit einem angehaltenen Data Warehouse kann über T-SQL keine Verbindung hergestellt werden. Den aktuellen Zustand des Data Warehouse können Sie mithilfe eines PowerShell-Cmdlets anzeigen. Ein entsprechendes Beispiel finden Sie unter [Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse mithilfe von Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
 
 ## <a name="check-operation-status"></a>Überprüfen des Vorgangsstatus
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683299"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447702"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Aufgaben für Kontoadministratoren im Azure-Portal
 
@@ -35,14 +35,14 @@ Diese Aufgaben können nur vom Kontoadministrator ausgeführt werden.
 
 1. Wählen Sie in der Liste **Meine Abonnements** das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten.
 
-   ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![Screenshot der Seite „Kostenverwaltung + Abrechnung“, auf der Sie ein Abonnement auswählen können.](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > Wenn einige Ihrer Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie das Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
 
 1. Wählen Sie die Option **Zahlungsmethoden**.
 
-    ![Screenshot: Ausgewähltes Blatt „Zahlungsmethoden“](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![Screenshot der Seite „Zahlungsmethoden“, auf der Sie eine Zahlungsmethode hinzufügen können](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 Hier können Sie eine neue Kreditkarte hinzufügen, die aktive Zahlungsmethode ändern, Kreditkartendetails bearbeiten und Kreditkarten löschen.
 
@@ -100,7 +100,7 @@ Wenn Sie zur Zahlung per Rechnung (Scheck/Überweisung) berechtigt sind, können
 
 1. Wählen Sie auf der Befehlsleiste die Option **Zahlung per Rechnung** aus.
 
-    ![Screenshot: Ausgewähltes Blatt „Zahlungsmethoden“](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![Screenshot der Seite „Zahlungsmethoden“ mit ausgewählter Option „Zahlung per Rechnung“](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. Geben Sie die Adresse für die Zahlungsmethode „Rechnung“ ein.
 1. Klicken Sie auf **Weiter**.
@@ -124,7 +124,7 @@ Für Abonnements mit Verpflichtungsplänen oder mit nutzungsbasierter Bezahlung 
 
 1. Wählen Sie in der Liste **Meine Abonnements** Ihr Visual Studio Enterprise-Abonnement aus.
 
-   ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![Screenshot des Bereichs „Meine Abonnements“, in dem Sie Ihr Visual Studio Enterprise-Abonnement auswählen können](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Wenn einige Ihrer Visual Studio-Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie ein Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
@@ -152,7 +152,7 @@ Wenn Sie über ein Azure in Open License-Abonnement verfügen, können Sie Ih
 
 1. Wählen Sie in der Liste **Meine Abonnements** Ihr Azure in Open-Abonnement aus.
 
-    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![Screenshot des Bereichs „Meine Abonnements“, in dem Sie Ihr Azure in Open-Abonnement auswählen können](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Wenn Ihr Abonnement hier nicht angezeigt wird, liegt dies möglicherweise daran, dass Sie das zugehörige Verzeichnis zu irgendeinem Zeitpunkt geändert haben. Sie müssen das Verzeichnis dieses Abonnements in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
@@ -183,4 +183,4 @@ Wenn Sie über ein Azure in Open License-Abonnement verfügen, können Sie Ih
 Virtuelle Karten oder Prepaidkarten werden nicht unterstützt. Wenn beim Hinzufügen oder Aktualisieren einer gültigen Kreditkarte Fehler auftreten, versuchen Sie, den Browser im privaten Modus zu öffnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informieren Sie sich ausführlicher über das [Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung](getting-started.md).
+- Weitere Informationen über das [Analysieren unerwarteter Gebühren](../understand/analyze-unexpected-charges.md)

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086775"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597984"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>Erstellen einer SAS-Definition und Abrufen von Shared Access Signature-Token im Code
 
@@ -42,6 +42,9 @@ Nach der Erstellung der SAS-Definition können Sie SAS-Token wie Geheimnisse mit
 Wenn Ihr Shared Access Signature-Token in Kürze abläuft, können Sie das gleiche Geheimnis erneut abrufen, um ein neues Token zu generieren.
 
 Eine Anleitung zur Verwendung von aus Key Vault abgerufenen SAS-Token für den Zugriff auf Azure Storage-Dienste finden Sie unter [Verwenden einer Konto-SAS von einem Client](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client).
+
+> [!NOTE]
+> Die App muss das SAS-Token aktualisieren können, wenn sie von Azure Storage den Statuscode 403 empfängt, damit Sie im Falle eines kompromittierten Schlüssels die Schlüsselrotation beschleunigen können. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [mithilfe von SAS eingeschränkten Zugriff auf Azure Storage-Ressourcen gewähren](../../storage/common/storage-sas-overview.md).

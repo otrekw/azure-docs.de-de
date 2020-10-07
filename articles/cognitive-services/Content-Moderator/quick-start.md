@@ -1,31 +1,34 @@
 ---
-title: 'Schnellstart: Testen von Content Moderator im Web – Content Moderator'
+title: 'Schnellstart: Testen von Content Moderator im Web'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart verwenden Sie das Onlineprüfungstool Content Moderator, um die grundlegende Funktionalität von Content Moderator zu testen, ohne Code schreiben zu müssen.
+description: Verwenden Sie das Onlineprüfungstool Content Moderator, um die grundlegende Funktionalität von Content Moderator zu testen, ohne Code schreiben zu müssen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: cog-serv-seo-aug-2020
+keywords: Content Moderator, Inhaltsmoderation
+ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332626"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596796"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Schnellstart: Testen von Content Moderator im Web
 
-In diesem Schnellstart verwenden Sie das Onlineprüfungstool Content Moderator, um die grundlegende Funktionalität von Content Moderator zu testen, ohne Code schreiben zu müssen. Wenn Sie diesen Dienst noch schneller in Ihre App integrieren möchten, finden Sie im Abschnitt [Nächste Schritte](#next-steps) weitere Schnellstarts.
+In diesem Schnellstart verwenden Sie das Onlineprüfungstool Content Moderator, um die grundlegende Funktionalität von Content Moderator zu testen, ohne Code schreiben zu müssen. Wenn Sie diesen Dienst noch schneller in Ihre Inhaltsmoderations-App integrieren möchten, finden Sie im Abschnitt [Nächste Schritte](#next-steps) weitere Schnellstarts.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Aus einem Webbrowser
 
 ## <a name="set-up-the-review-tool"></a>Einrichten des Prüfungstools
+
 Das Content Moderator-Prüfungstool ist ein webbasiertes Tool, mit dem menschliche Reviewer Cognitive Services bei der Entscheidungsfindung unterstützen können. In dieser Anleitung werden Sie durch den kurzen Einrichtungsprozess für das Prüfungstool geführt, sodass Sie sehen können, wie der Content Moderator-Dienst funktioniert. Navigieren Sie zur Website des [Content Moderator-Prüfungstools](https://contentmoderator.cognitive.microsoft.com/), und registrieren Sie sich.
 
 ![Content Moderator-Homepage](images/homepage.PNG)
@@ -82,6 +85,6 @@ Sie können auch mit den nächsten Schritten fortfahren, um sich über die Verwe
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie die Moderations-APIs selbst in Ihrer App verwenden.
-- Implementieren Sie die Bildmoderation. Nutzen Sie die [API-Konsole](try-image-api.md) oder die [.NET SDK-Schnellstartanleitung](dotnet-sdk-quickstart.md), um Bilder zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte mithilfe von Tags, Zuverlässigkeitsbewertungen und anderen extrahierten Informationen zu erkennen.
-- Implementieren Sie die Textmoderation. Nutzen Sie die [API-Konsole](try-text-api.md) oder die [.NET SDK-Schnellstartanleitung](dotnet-sdk-quickstart.md), um Textinhalte auf obszöne, computergestützte unerwünschte Textklassifizierung (Vorschau) und personenbezogene Daten zu überprüfen.
+- Implementieren Sie die Bildmoderation. Nutzen Sie die [API-Konsole](try-image-api.md) oder den [Schnellstart zum Verwenden der Content Moderator-Clientbibliothek](client-libraries.md), um Bilder zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte mithilfe von Tags, Zuverlässigkeitsbewertungen und anderen extrahierten Informationen zu erkennen.
+- Implementieren Sie die Textmoderation. Nutzen Sie die [API-Konsole](try-text-api.md) oder den [Schnellstart zum Verwenden der Content Moderator-Clientbibliothek](client-libraries.md), um Textinhalte auf anstößige Ausdrücke, computergestützte Klassifizierung von unerwünschtem Text (Vorschau) und personenbezogene Daten zu überprüfen.
 - Implementieren Sie die Videomoderation. Befolgen Sie die [Anleitung zur Videomoderation für C#](video-moderation-api.md), um Videos zu scannen und potenziell jugendgefährdende und freizügige Inhalte zu erkennen. 

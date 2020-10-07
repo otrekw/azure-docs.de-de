@@ -1,24 +1,26 @@
 ---
-title: 'Schnellstart: Beschriften von Formularen, Trainieren eines Modells und Analysieren eines Formulars mithilfe des Tools für die Beschriftung von Beispielen – Formularerkennung'
+title: 'Schnellstart: Beschriften von Formularen, Trainieren eines Modells und Analysieren von Formularen mithilfe des Tools für die Beschriftung von Beispielen – Formularerkennung'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung verwenden Sie das Formularerkennungstool für die Beschriftung von Beispielen, um Formulardokumente manuell zu beschriften. Danach trainieren Sie ein benutzerdefiniertes Modell mit den beschrifteten Dokumenten und verwenden das Modell, um Schlüssel-Wert-Paare zu extrahieren.
+description: In dieser Schnellstartanleitung verwenden Sie das Formularerkennungstool für die Beschriftung von Beispielen, um Formulardokumente manuell zu beschriften. Danach trainieren Sie ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit den beschrifteten Dokumenten und verwenden das Modell, um Schlüssel-Wert-Paare zu extrahieren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: Verarbeiten von Dokumenten
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418958"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597731"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
-In dieser Schnellstartanleitung verwenden Sie die Formularerkennungs-REST-API zusammen mit dem Tool für die Beschriftung von Beispielen, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Trainieren mit Beschriftungen](../overview.md#train-with-labels) der Übersicht.
+In dieser Schnellstartanleitung verwenden Sie die Formularerkennungs-REST-API zusammen mit dem Tool für die Beschriftung von Beispielen, um ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit manuell beschrifteten Daten zu trainieren. Weitere Informationen zum überwachten Lernen mit der Formularerkennung finden Sie im Abschnitt [Trainieren mit Beschriftungen](../overview.md#train-with-labels) der Übersicht.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
@@ -137,7 +139,7 @@ Im Tool für die Beschriftung von Beispielen werden Ihre Konfigurationen und Ein
 * **API-Schlüssel**: Der Schlüssel Ihres Formularerkennungsabonnements.
 * **Beschreibung** (optional): Projektbeschreibung.
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Seite mit neuem Projekt im Tool für die Beschriftung von Beispielen":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Verbindungseinstellungen des Tools für die Beschriftung von Beispielen":::
 
 ## <a name="label-your-forms"></a>Beschriften Ihrer Formulare
 
@@ -153,7 +155,7 @@ Klicken Sie im linken Bereich auf **OCR in allen Dateien ausführen**, um Textla
 
 Es zeigt außerdem, welche Tabellen automatisch extrahiert wurden. Klicken Sie auf das Tabellen-/Rastersymbol auf der linken Seite des Dokuments, um die extrahierte Tabelle anzuzeigen. Da in dieser Schnellstartanleitung der Tabelleninhalt automatisch extrahiert wird, versehen Sie ihn nicht mit Bezeichnungen, sondern verlassen sich stattdessen auf die automatisierte Extraktion.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Tabellenvisualisierung im Tool für die Beschriftung von Beispielen":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Verbindungseinstellungen des Tools für die Beschriftung von Beispielen":::
 
 ### <a name="apply-labels-to-text"></a>Anwenden von Beschriftungen auf Text
 
@@ -199,7 +201,7 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Haupt-Editor-Fenster des Tools für die Beschriftung von Beispielen":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Verbindungseinstellungen des Tools für die Beschriftung von Beispielen":::
 
 
 Führen Sie die oben genannten Schritte aus, um mindestens fünf Ihrer Formulare zu beschriften.
@@ -254,7 +256,7 @@ Klicken Sie im linken Bereich auf das Symbol „Trainieren“, um die Seite „T
 * Die Liste der Beschriftungen und die geschätzte Genauigkeit für jede Beschriftung.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Trainingsansicht":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Verbindungseinstellungen des Tools für die Beschriftung von Beispielen":::
 
 Untersuchen Sie nach Abschluss des Trainings den Wert **Durchschnittliche Genauigkeit**. Wenn dieser Wert niedrig ist, sollten Sie weitere Eingabedokumente hinzufügen und die oben beschriebenen Schritte wiederholen. Die von Ihnen bereits beschrifteten Dokumente verbleiben im Projektindex.
 
@@ -273,7 +275,7 @@ Mit der Modellerstellung können Sie bis zu 100 Modelle mit einer einzelnen Mod
 
 Um Modelle im Tool für die Beschriftung von Beispielen zu erstellen, klicken Sie auf der linken Seite auf das Symbol zum Erstellen von Modellen (zusammengeführter Pfeil). Wählen Sie auf der linken Seite die Modelle aus, die Sie zusammen erstellen möchten. Modelle mit dem Pfeilsymbol sind bereits zusammengesetzte Modelle. Klicken Sie auf die Schaltfläche „Erstellen“. Geben Sie im Popupfenster einen Namen für das neue erstellte Modell ein, und klicken Sie auf „Erstellen“. Nach Abschluss des Vorgangs sollte das neue erstellte Modell in der Liste angezeigt werden. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Benutzeroberflächenansicht für die Modellerstellung":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Verbindungseinstellungen des Tools für die Beschriftung von Beispielen":::
 
 ---
 
@@ -306,7 +308,10 @@ Wechseln Sie abschließend auf die Hauptseite (Haussymbol), und klicken Sie auf 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie erfahren, wie Sie das Formularerkennungstool für die Beschriftung von Beispielen verwenden, um ein Modell mit manuell beschrifteten Daten zu trainieren. Wenn Sie das Beschriftungstool in Ihre eigene Anwendung integrieren möchten, verwenden Sie die REST-APIs, die das Training von beschrifteten Daten verarbeiten.
+In dieser Schnellstartanleitung haben Sie erfahren, wie Sie das Formularerkennungstool für die Beschriftung von Beispielen verwenden, um ein Modell mit manuell beschrifteten Daten zu trainieren. Wenn Sie ein eigenes Hilfsprogramm zum Beschriften von Trainingsdaten erstellen möchten, verwenden Sie die REST-APIs für das Trainieren beschrifteter Daten.
 
 > [!div class="nextstepaction"]
 > [Trainieren mit Beschriftungen mit Python](./python-labeled-data.md)
+
+* [Was ist die Formularerkennung?](../overview.md)
+* [Schnellstarts zum Verwenden der Clientbibliothek für die Formularerkennung](client-library.md)

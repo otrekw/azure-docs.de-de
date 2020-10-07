@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987136"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91449472"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau)
 
@@ -53,7 +53,7 @@ Um ein SAS-Token abzurufen, navigieren Sie zu **Azure-Portal > Speicherkonto > S
 >
 > SAS-Token: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-Sie müssen datenbankbezogene oder serverbezogene Anmeldeinformationen erstellen, um den Zugriff mit dem SAS-Token zu ermöglichen.
+Um Zugriff über ein SAS-Token zu ermöglichen, müssen Sie datenbankbezogene oder serverbezogene Anmeldeinformationen erstellen. 
 
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
@@ -87,7 +87,7 @@ Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storag
 | [Verwaltete Identität](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt      | Unterstützt        | Unterstützt     |
 | [Benutzeridentität](?tabs=user-identity#supported-storage-authorization-types)    | Unterstützt\*      | Unterstützt\*        | Unterstützt\*     |
 
-\* SAS-Token und Azure AD-Identität können für den Zugriff auf einen Speicher verwendet werden, der nicht durch eine Firewall geschützt ist.
+\* SAS-Token und Azure AD-Identität können für den Zugriff auf Speicher verwendet werden, der nicht durch eine Firewall geschützt ist.
 
 > [!IMPORTANT]
 > Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann nur die verwaltete Identität verwendet werden. Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
@@ -119,7 +119,7 @@ Um reibungslose Azure AD-Pass-Through-Vorgänge sicherzustellen, verfügen alle 
 
 ## <a name="server-scoped-credential"></a>Serverbezogene Anmeldeinformationen
 
-Serverbezogene Anmeldeinformationen werden verwendet, wenn die SQL-Anmeldung die `OPENROWSET`-Funktion ohne `DATA_SOURCE` aufruft, um Dateien in einem Speicherkonto zu lesen. Der Name der serverbezogenen Anmeldeinformation **muss** der URL des Azure-Speichers entsprechen. Eine Anmeldeinformation wird durch Ausführen von [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) hinzugefügt. Sie müssen ein CREDENTIAL NAME-Argument angeben. Dieses muss entweder einem Teil des Pfads oder dem gesamten Pfad zu den Daten in Storage entsprechen (siehe unten).
+Serverbezogene Anmeldeinformationen werden verwendet, wenn die SQL-Anmeldung die `OPENROWSET`-Funktion ohne `DATA_SOURCE` aufruft, um Dateien in einem Speicherkonto zu lesen. Der Name der serverbezogenen Anmeldeinformation **muss** der URL des Azure-Speichers entsprechen. Eine Anmeldeinformation wird durch Ausführen von [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) hinzugefügt. Sie müssen ein CREDENTIAL NAME-Argument angeben. Dieses muss entweder einem Teil des Pfads oder dem gesamten Pfad zu den Daten in Storage entsprechen (siehe unten).
 
 > [!NOTE]
 > Das Argument `FOR CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt.
@@ -138,7 +138,7 @@ Serverbezogene Anmeldeinformationen ermöglichen den Zugriff auf den Azure-Speic
 
 Azure AD-Benutzer können auf alle Dateien im Azure-Speicher zugreifen, wenn sie über die Rolle `Storage Blob Data Owner`, `Storage Blob Data Contributor` oder `Storage Blob Data Reader` verfügen. Azure AD-Benutzer benötigen keine Anmeldeinformationen für den Zugriff auf den Speicher. 
 
-SQL-Benutzer können nicht Azure AD-Authentifizierung für den Zugriff auf den Speicher verwenden.
+SQL-Benutzer können Azure AD-Authentifizierung nicht für den Zugriff auf den Speicher verwenden.
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
@@ -170,7 +170,7 @@ Es ist keine datenbankbezogene Anmeldeinformation für den Zugriff auf öffentli
 
 ## <a name="database-scoped-credential"></a>Datenbankbezogene Anmeldeinformationen
 
-Datenbankbezogene Anmeldeinformationen werden verwendet, wenn ein Prinzipal die `OPENROWSET`-Funktion mit `DATA_SOURCE` aufruft oder Daten aus [externen Tabellen](develop-tables-external-tables.md) auswählt, die nicht auf öffentliche Dateien zugreifen. Die datenbankbezogene Anmeldeinformation muss nicht mit dem Namen des Speicherkontos übereinstimmen, da sie explizit in der Datenquelle verwendet wird, die den Speicherort des Speichers definiert.
+Datenbankbezogene Anmeldeinformationen werden verwendet, wenn ein Prinzipal die `OPENROWSET`-Funktion mit `DATA_SOURCE` aufruft oder Daten aus [externen Tabellen](develop-tables-external-tables.md) auswählt, die nicht auf öffentliche Dateien zugreifen. Die datenbankweit gültigen Anmeldeinformationen müssen nicht mit dem Namen des Speicherkontos übereinstimmen. Sie werden explizit in dem DATA_SOURCE-Ausdruck verwendet, der den Standort des Speichers definiert.
 
 Datenbankbezogene Anmeldeinformationen ermöglichen den Zugriff auf den Azure-Speicher mithilfe der folgenden Authentifizierungstypen:
 
@@ -184,7 +184,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 )
 ```
 
-SQL-Benutzer können nicht Azure AD-Authentifizierung für den Zugriff auf den Speicher verwenden.
+SQL-Benutzer können Azure AD-Authentifizierung nicht für den Zugriff auf den Speicher verwenden.
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
@@ -268,7 +268,7 @@ Der Datenbankbenutzer kann den Inhalt der Dateien aus der Datenquelle mithilfe e
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
-                                DATA_SOURCE = [mysample],
+                                DATA_SOURCE = 'mysample',
                                 FORMAT='PARQUET') as rows;
 GO
 ```
@@ -314,7 +314,7 @@ Der Datenbankbenutzer kann den Inhalt der Dateien aus der Datenquelle mithilfe e
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = 'mysample', FORMAT='PARQUET') as rows;
 GO
 ```
 

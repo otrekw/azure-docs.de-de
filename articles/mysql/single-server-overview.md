@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 38cf9f5d5102fa4cc322b1a9c7134db85de87814
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944443"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91564781"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
 
@@ -20,11 +20,11 @@ ms.locfileid: "90944443"
 - Einzelner Server 
 - Flexible Server (Vorschau)
 
-In diesem Artikel erhalten Sie eine Übersicht und eine Einführung in die grundlegenden Konzepte des Bereitstellungsmodells Azure Database for MySQL Single Server. Weitere Informationen zum Bereitstellungsmodus Flexible Server finden Sie in der Übersicht zu [Flexible Server](flexible-server/index.yml).
+In diesem Artikel erhalten Sie eine Übersicht und eine Einführung in die grundlegenden Konzepte des Bereitstellungsmodells Azure Database for MySQL Single Server. Weitere Informationen zum Bereitstellungsmodus Flexible Server finden Sie in der Übersicht zu [Flexible Server](flexible-server/index.yml). Informationen dazu, wie Sie entscheiden, welche Bereitstellungsoption für Ihre Workload geeignet ist, finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](select-right-deployment-type.md).
 
 ## <a name="overview"></a>Übersicht
 
-Bei Azure Database for MySQL Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform ist für die Verarbeitung der meisten Datenbankverwaltungsfunktionen (z. B. Patching, Sicherungen, Hochverfügbarkeit und Sicherheit) mit minimaler Benutzerkonfiguration und -steuerung konzipiert. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die MySQL Community-Versionen 5.6, 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar. 
+Bei Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform ist für die Verarbeitung der meisten Datenbankverwaltungsfunktionen (z. B. Patching, Sicherungen, Hochverfügbarkeit und Sicherheit) mit minimaler Benutzerkonfiguration und -steuerung konzipiert. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die MySQL Community-Versionen 5.6, 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar. 
 
 Single Server-Instanzen eignen sich am besten für cloudnative Anwendungen, da sie für das automatisierte Patchen ohne genauen Patchzeitplan und ohne benutzerdefinierte MySQL-Konfigurationseinstellungen konzipiert sind. 
 
@@ -39,7 +39,7 @@ Wenn bei geplanten oder ungeplanten Failoverereignissen der Server ausfällt, ge
 3. Die MySQL-Datenbank-Engine wird im neuen Computecontainer online geschaltet.
 4. Der Gatewaydienst stellt ein transparentes Failover sicher, sodass keine Änderungen an der Anwendung erforderlich sind. 
   
-Für gewöhnlich dauert das Failover zwischen 60 und 120 Sekunden. Da der Single Server-Dienst cloudnativ konzipiert wurde, ist die Unterstützung von 99,99 Prozent Verfügbarkeit möglich, wodurch die Kosten für einen passiven unmittelbar betriebsbereiten Standbyservers entfallen.
+Für gewöhnlich dauert das Failover zwischen 60 und 120 Sekunden. Da der Single Server-Dienst cloudnativ konzipiert wurde, ist die Unterstützung von 99,99 Prozent Verfügbarkeit möglich, wodurch die Kosten für einen passiven unmittelbar betriebsbereiten Standbyserver entfallen.
 
 Durch das globale Netzwerk aus durch Microsoft verwalteten Rechenzentren stellt die branchenführende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel (SLA) von 99,99 Prozent sicher, dass Ihre Anwendungen rund um die Uhr ausgeführt werden.
 
@@ -51,15 +51,15 @@ Der Dienst führt automatisches Patchen für die zugrunde liegende Hardware, das
 
 ## <a name="automatic-backups"></a>Automatische Sicherungen
 
-Für Azure Database for MySQL Single Server werden Sicherungen automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Mithilfe von Sicherungen können Sie den Server zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums der Sicherung wiederherstellen. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Die Aufbewahrungsdauer kann optional auf bis zu 35 Tage festgelegt werden. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet. Ausführliche Informationen finden Sie im Artikel zu [Sicherungen](concepts-backup.md).
+Für Azure Database for MySQL Single Server werden Sicherungen automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Mithilfe von Sicherungen können Sie den Server zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums der Sicherung wiederherstellen. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Die Aufbewahrungsdauer kann optional auf bis zu 35 Tage festgelegt werden. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet. Ausführliche Informationen finden Sie im Artikel zu [Sicherungen](concepts-backup.md).
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
 
-Der Single Server-Dienst ist in drei SKU-Tarifen verfügbar: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Der Basic-Tarif eignet sich am besten für die kostengünstige Entwicklung und Workloads mit geringer Parallelität. Die Tarife „Universell“ und „Speicheroptimiert“ eignen sich besser für Produktionsworkloads, die eine hohe Parallelität, Skalierung und vorhersagbare Leistung erfordern. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Die Speicherskalierung geschieht online und unterstützt das automatische Wachstum des Speichers. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie zahlen nur für die Ressourcen, die Sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-service-tiers.md).
+Der Single Server-Dienst ist in drei SKU-Tarifen verfügbar: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Der Basic-Tarif eignet sich am besten für die kostengünstige Entwicklung und Workloads mit geringer Parallelität. Die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ eignen sich besser für Produktionsworkloads, die eine hohe Parallelität, Skalierung und vorhersagbare Leistung erfordern. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Die Speicherskalierung geschieht online und unterstützt das automatische Wachstum des Speichers. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie zahlen nur für die Ressourcen, die Sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-service-tiers.md).
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>Sicherheit, Compliance und Governance auf Unternehmensniveau
 
-Der Single Server-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten, z. B. auch Sicherungen, sowie temporäre Dateien, die während der Ausführung von Abfragen erstellt wurden, werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel können vom System (Standard) oder vom [Kunden](concepts-data-encryption-mysql.md) verwaltet werden. Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Layer Security (SSL/TLS), was standardmäßig erzwungen wird. Der Dienst unterstützt die TLS-Versionen 1.2, 1.1 und 1.0 mit der Möglichkeit, die [mindestens erforderliche TLS-Version](concepts-ssl-connection-security.md) zu erzwingen. 
+Der Single Server-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten einschließlich Sicherungen und während der Ausführung von Abfragen erstellte temporäre Daten werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel können vom System (Standard) oder vom [Kunden](concepts-data-encryption-mysql.md) verwaltet werden. Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Layer Security (SSL/TLS), was standardmäßig erzwungen wird. Der Dienst unterstützt die TLS-Versionen 1.2, 1.1 und 1.0 mit der Möglichkeit, die [mindestens erforderliche TLS-Version](concepts-ssl-connection-security.md) zu erzwingen. 
 
 Der Dienst ermöglicht den privaten Zugriff auf die Server über [Private Link](concepts-data-access-security-private-link.md) und bietet [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md). Advanced Threat Protection erkennt auffällige Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen.
 

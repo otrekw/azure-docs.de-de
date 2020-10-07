@@ -9,15 +9,18 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 06/30/2020
-ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/30/2020
+ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059351"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613780"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Schnellstart: Erkunden von Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 Dieser Schnellstart für den Azure Time Series Insights-Explorer unterstützt Sie bei den ersten Schritten mit Azure Time Series Insights in einer kostenlosen Demoumgebung. In dieser Schnellstartanleitung erfahren Sie, wie Sie große IoT-Datenmengen im Webbrowser visualisieren, und lernen die wichtigsten Features kennen, die nun allgemein verfügbar sind.
 
