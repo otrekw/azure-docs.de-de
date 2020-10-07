@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0f3e517e60037de6456bc3a549e072e58e2fa67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244737"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91285417"
 ---
 # <a name="claim-and-claim-rules"></a>Anspruch und Anspruchsregeln
 
@@ -60,7 +60,7 @@ Die Bedingung ist wie folgt strukturiert:
 Identifier:[ClaimPropertyCondition, ClaimPropertyCondition,…]
 ```
 
-Die Bedingung setzt sich aus einzelnen Bedingungen für verschiedene Eigenschaften eines Anspruchs zusammen. Eine Bedingung kann über einen optionalen Bezeichner verfügen, mit dem auf die Ansprüche verwiesen werden kann, die die Bedingung erfüllen. Dieser Verweis kann in den anderen Bedingungen oder in der Aktion der gleichen Regel verwendet werden.
+Die Liste der Bedingungen setzt sich aus einzelnen Bedingungen für verschiedene Eigenschaften eines Anspruchs zusammen. Eine Bedingung kann über einen optionalen Bezeichner verfügen, mit dem auf die Ansprüche verwiesen werden kann, die die Bedingung erfüllen. Dieser Verweis kann in den anderen Bedingungen oder in der Aktion der gleichen Regel verwendet werden.
 
 Beispiel:
 

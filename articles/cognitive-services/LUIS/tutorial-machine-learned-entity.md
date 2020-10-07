@@ -1,14 +1,16 @@
 ---
 title: 'Tutorial: Extrahieren strukturierter Daten mit einer Machine Learning-Entität – LUIS'
 description: Extrahieren strukturierter Daten aus einer Äußerung mithilfe einer Machine Learning-Entität. Fügen Sie untergeordnete Entitäten mit Features hinzu, um die Genauigkeit der Extraktion zu erhöhen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334724"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe von Machine Learning-Entitäten in Language Understanding (LUIS)
 
@@ -79,12 +81,12 @@ Um Details einer Pizzabestellung zu extrahieren, erstellen Sie eine Machine Lear
 
 1. Wählen Sie im Feld **Entitätstyp auswählen** die Option **Struktur hinzufügen** und dann **Weiter** aus. Die Struktur ist erforderlich, um untergeordnete Entitäten wie die Größe und Menge hinzuzufügen.
 
-    ![Hinzufügen einer Struktur zur Entität](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![Der Screenshot zeigt das Fenster „Entitätstyp auswählen“ mit aktivierter Option „Struktur hinzufügen“.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. Wählen Sie im Feld **Add subentities (optional)** (Untergeordnete Entitäten hinzufügen (optional)) **+** in der Zeile `Order` aus, fügen Sie `Size` und `Quantity` als untergeordnete Entitäten hinzu, und wählen Sie dann **Erstellen** aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Hinzufügen einer Struktur zur Entität](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![Der Screenshot zeigt das Fenster „Untergeordnete Entitäten hinzufügen (optional)“ mit hervorgehobenem untergeordneten Entitäten.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>Bearbeiten von untergeordneten Entitäten zum Verbessern der Extraktion
 
@@ -121,7 +123,7 @@ Das Hinzufügen einer Liste bekannter Größen, die von der Clientanwendung erka
 
 
     > [!div class="mx-imgBorder"]
-    > ![Hinzufügen einer Struktur zur Entität](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![Der Screenshot zeigt das SizeList-Fenster und Listenelemente mit ausgewählter Option „XLarge“ an.](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>Hinzufügen eines Features aus der SizeList-Entität
 
@@ -160,7 +162,7 @@ Das Hinzufügen einer vordefinierten Zahlenentität unterstützt auch die Extrak
 Wählen Sie auf der Seite mit Entitätsdetails der Entität **Order** (Bestellung) das Sternsymbol `*` für beide Features aus, **@ SizeList** und **@ number**. Das Sternsymbol wird in der gleichen Bezeichnung wie der Name des Features angezeigt.
 
 > [!div class="mx-imgBorder"]
-> ![Hinzufügen einer Struktur zur Entität](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![Der Screenshot zeigt das @SizeList-Feature mit dem Sternsymbol und einer Erforderlich-Warnung.](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ Wählen Sie zum Trainieren der App **Trainieren** aus. Das Training wendet die �
 1. Um aus der Vorhersage eine bezeichnete Entität zu machen, aktivieren Sie das Markierungshäkchen in der gleichen Zeile.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot eines Teils einer neuen Beispieläußerung, die mithilfe einer Entität vorhergesagt wurde](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![Der Screenshot zeigt eine Beispieläußerung mit hervorgehobenem Markierungshäkchen.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     An diesem Punkt funktioniert die Machine Learning-Entität, da sie die Entität innerhalb einer neuen Beispieläußerung finden kann. Wenn die Entität beim Hinzufügen von Beispieläußerungen nicht korrekt vorhergesagt wird, sollten Sie die Entität und die untergeordneten Entitäten bezeichnen. Wenn die Entität richtig vorhergesagt wird, stellen Sie sicher, dass Sie die Vorhersagen bestätigen.
 

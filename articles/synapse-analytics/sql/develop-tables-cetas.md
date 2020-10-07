@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885342"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288765"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS mit Synapse SQL
 
@@ -29,7 +29,6 @@ Sie können CREATE EXTERNAL TABLE AS SELECT (CETAS) im SQL-Pool oder in SQL On-D
 
 ## <a name="cetas-in-sql-pool"></a>CETAS im SQL-Pool
 
-Informationen zum SQL-Pool sowie zur Verwendung und Syntax von CETAS finden Sie im Artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Zusätzlich finden Sie Anleitungen zur Verwendung von CTAS mit dem SQL-Pool im Artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 Informationen zum SQL-Pool sowie zur Verwendung und Syntax von CETAS finden Sie im Artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Zusätzlich finden Sie Anleitungen zur Verwendung von CTAS mit dem SQL-Pool im Artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="cetas-in-sql-on-demand"></a>Verwenden von CETAS in SQL On-Demand
@@ -161,7 +160,7 @@ CETAS kann zum Speichern von Resultsets mit den folgenden SQL-Datentypen verwend
 > [!NOTE]
 > LOBs können nicht mit CETAS verwendet werden.
 
-Die folgenden Datentypen können im SELECT-Teil von CETAS nicht verwendet werden:
+Die folgenden Datentypen können nicht im SELECT-Teil von CETAS verwendet werden:
 
 - NCHAR
 - NVARCHAR

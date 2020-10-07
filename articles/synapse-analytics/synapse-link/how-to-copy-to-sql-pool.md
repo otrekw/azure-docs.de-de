@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658343"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91287849"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Kopieren von Daten von Azure Cosmos DB in einen SQL-Pool mithilfe von Apache Spark
 
@@ -29,12 +29,12 @@ Azure Synapse Link für Azure Cosmos DB ermöglicht Benutzern das Ausführen von
 * [Einrichten des richtigen Setups zum Importieren von Daten in einen SQL-Pool aus Spark](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Schritte
-In diesem Tutorial stellen Sie eine Verbindung mit dem Analysespeicher her, sodass der Transaktionsspeicher nicht beeinträchtigt wird. (Es werden keine Anforderungseinheiten beansprucht.) Für diese Aufgabe werden Sie die folgenden Schritte ausführen:
+In diesem Tutorial stellen Sie eine Verbindung mit dem Analysespeicher her, sodass der Transaktionsspeicher nicht beeinträchtigt wird (es werden keine Anforderungseinheiten beansprucht). Wir durchlaufen die folgenden Schritte:
 1. Einlesen des Cosmos DB-HTAP-Containers in einen Spark-Datenrahmen
 2. Aggregieren der Ergebnisse in einem neuen Datenrahmen
 3. Erfassen der Daten in einem SQL-Pool
 
-[![Schritte für Spark zu SQL](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![Schritte für Spark zu SQL 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Daten
 In diesem Beispiel verwenden wir einen HTAP-Container namens **RetailSales**. Er ist Teil eines verknüpften Diensts namens **ConnectedData** und hat das folgende Schema:
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-Ihre Abfrage zeigt die folgenden Ergebnisse in einem Diagrammmodus: [![Schritte für Spark zu SQL](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+Ihre Abfrage zeigt die folgenden Ergebnisse in einem Diagrammmodus: [![Schritte für Spark zu SQL 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Abfragen des Azure Cosmos DB-Analysespeichers mit Apache Spark](./how-to-query-analytical-store-spark.md)

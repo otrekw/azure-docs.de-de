@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erstellen einer Shopsuche mit Azure Maps | Microsoft Azure Maps'
-description: Hier erfahren Sie, wie Sie Webanwendungen für die Shopsuche erstellen. Verwenden Sie das Azure Maps Web SDK, um eine Webseite zu erstellen, den Suchdienst abzufragen und Ergebnisse auf einer Karte anzuzeigen.
+description: Tutorial zum Erstellen von Webanwendungen für die Shopsuche. Verwenden Sie das Azure Maps Web SDK, um eine Webseite zu erstellen, den Suchdienst abzufragen und Ergebnisse auf einer Karte anzuzeigen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335261"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
 In diesem Tutorial wird der Prozess für die Erstellung einer einfachen Shopsuche mit Azure Maps beschrieben. Shopsuchen werden häufig verwendet. Ein Großteil der Konzepte, die für diesen Anwendungstyp genutzt werden, gilt auch für viele andere Arten von Anwendungen. Die Bereitstellung einer Shopsuche für Kunden ist für die meisten Unternehmen unerlässlich, die Produkte direkt an Verbraucher verkaufen. In diesem Tutorial lernen Sie Folgendes:
-    
+
 > [!div class="checklist"]
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API von Azure
 > * Laden von benutzerdefinierten Daten aus einer Datei und Anzeigen auf einer Karte
@@ -924,34 +924,21 @@ Wenn Sie die Größe des Browserfensters auf eine Breite von weniger als 700 Pix
 
 ![Screenshot: Version der Shopsuche für kleinere Bildschirme](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
-## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Tutorial wurde beschrieben, wie Sie mit Azure Maps eine einfache Shopsuche erstellen. Die in diesem Tutorial erstellte Shopsuche verfügt unter Umständen bereits über alle Funktionen, die Sie benötigen. Sie können der Shopsuche aber Features hinzufügen oder erweiterte Features verwenden, um eine benutzerdefinierte Benutzeroberfläche zu erzielen: 
 
-> [!div class="checklist"]
-> * Aktivieren Sie im Suchfeld [Vorschläge während der Eingabe](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI).  
-> * Fügen Sie [Unterstützung für mehrere Sprachen](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization) hinzu. 
-> * Ermöglichen Sie für Benutzer das [Filtern von Standorten anhand einer Route](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-> * Fügen Sie die Option zum [Festlegen von Filtern](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property) hinzu. 
-> * Fügen Sie Unterstützung für das Angeben eines Anfangssuchwerts hinzu, indem Sie eine Abfragezeichenfolge verwenden. Wenn Sie diese Option in Ihre Shopsuche einfügen, können Benutzer Lesezeichen für Suchen festlegen und Suchvorgänge teilen. Außerdem ist dies eine einfache Methode, mit der Sie Suchen von einer anderen Seite an diese Seite übergeben können.  
-> * Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](https://docs.microsoft.com/azure/app-service/quickstart-html) bereit. 
-> * Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor).
+ * Aktivieren Sie im Suchfeld [Vorschläge während der Eingabe](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI).  
+ * Fügen Sie [Unterstützung für mehrere Sprachen](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization) hinzu. 
+ * Ermöglichen Sie für Benutzer das [Filtern von Standorten anhand einer Route](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+ * Fügen Sie die Option zum [Festlegen von Filtern](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property) hinzu. 
+ * Fügen Sie Unterstützung für das Angeben eines Anfangssuchwerts hinzu, indem Sie eine Abfragezeichenfolge verwenden. Wenn Sie diese Option in Ihre Shopsuche einfügen, können Benutzer Lesezeichen für Suchen festlegen und Suchvorgänge teilen. Außerdem ist dies eine einfache Methode, mit der Sie Suchen von einer anderen Seite an diese Seite übergeben können.  
+ * Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](https://docs.microsoft.com/azure/app-service/quickstart-html) bereit. 
+ * Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true).
 
-> [!div class="nextstepaction"]
-> [Anzeigen des vollständigen Quellcodes](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
+Sie können [vollständigen Quellcode anzeigen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), ein [Livebeispiel anzeigen](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) und mehr über die abgedeckten Bereiche und die Funktionen von Azure Maps erfahren, indem Sie [Zoomstufen und das Kachelraster](zoom-levels-and-tile-grid.md) verwenden. Sie können ferner [datengestützte Formatvorlagenausdrücke verwenden](data-driven-style-expressions-web-sdk.md), um sie auf Ihre Geschäftslogik anzuwenden.
 
-> [!div class="nextstepaction"]
-> [Anzeigen eines Livebeispiels](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-Weitere Informationen zur Abdeckung und zu den Funktionen von Azure Maps finden Sie unter:
-
-> [!div class="nextstepaction"]
-> [Zoomfaktoren und Linienraster](zoom-levels-and-tile-grid.md)
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Codebeispiele und eine Benutzeroberfläche für das interaktive Codieren:
 
 > [!div class="nextstepaction"]
 > [Verwenden des Kartensteuerelements](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-web-sdk.md)

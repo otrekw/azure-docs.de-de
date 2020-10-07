@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 501681a17603fb21e073b04e48d23f1b566f8128
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4730f05adc2625ac576f5963f68d8e3ca8ede355
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89067687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331504"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-VM-Erweiterung für Windows
 
@@ -36,7 +36,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Er
 
 | Log Analytics-Agent-Paketversion für Windows | Version der Log Analytics-VM-Erweiterung für Windows | Veröffentlichungsdatum | Versionsinformationen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18038 | 1.0.18040.2 | August 2020   | <ul><li>Löst ein Problem in Azure Arc</li></ul> |
+| 10.20.18040 | 1.0.18040.2 | August 2020   | <ul><li>Löst ein Problem in Azure Arc</li></ul> |
 | 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Ermöglicht Konnektivität über Private Link mithilfe von Azure Monitor Private Link-Bereichen.</li><li>Fügt eine Drosselung bei der Erfassung hinzu, um einen versehentlichen plötzlichen Anstieg der Erfassung in einem Arbeitsbereich zu vermeiden.</li><li>Fügt Unterstützung für zusätzliche Azure Government-Clouds und -Regionen hinzu.</li><li>Behebt einen Fehler, der zum Absturz von HealthService.exe führte.</li></ul> |
 | 10.20.18029 | 1.0.18029 | März 2020   | <ul><li>Fügt Unterstützung für SHA-2-Codesignaturen hinzu.</li><li>Verbessert Installation und Verwaltung von VM-Erweiterungen.</li><li>Behebt einen Fehler in Azure Arc für die Integration von Servern.</li><li>Fügt ein integriertes Tool zur Problembehandlung für den Kundensupport hinzu.</li><li>Fügt Unterstützung für zusätzliche Azure Government Regionen hinzu.</li> |
 | 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li></ul> |

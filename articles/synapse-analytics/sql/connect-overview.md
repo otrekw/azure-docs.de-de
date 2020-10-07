@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9a9b8b9ed3e65ae9b8500017b838dc320ecbaac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005019"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91289394"
 ---
 # <a name="connect-to-synapse-sql"></a>Herstellen einer Verbindung mit Synapse SQL
 Stellen Sie eine Verbindung mit der Synapse SQL-Funktion in Azure Synapse Analytics her.
@@ -37,8 +37,8 @@ Der Servername für SQL On-Demand im folgenden Beispiel lautet „showdemoweu-o
 So ermitteln Sie den vollqualifizierten Servernamen
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie auf **Synapse workspaces** (Synapse-Arbeitsbereiche).
-3. Klicken Sie auf den Arbeitsbereich, mit dem Sie eine Verbindung herstellen möchten.
+2. Wählen Sie **Synapse workspaces** (Synapse-Arbeitsbereiche) aus.
+3. Wählen Sie den Arbeitsbereich aus, mit dem Sie eine Verbindung herstellen möchten.
 4. Navigieren Sie zur Übersicht.
 5. Suchen Sie den vollständigen Servernamen.
 
@@ -51,7 +51,7 @@ So ermitteln Sie den vollqualifizierten Servernamen
 ![Vollständiger Servername: SQL On-Demand](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Unterstützte Treiber und Verbindungszeichenfolgen
-Synapse SQL unterstützt [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) und [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Um zur neuesten Version und Dokumentation zu gelangen, klicken Sie auf einen der genannten Treiber. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber klicken Sie im Azure-Portal auf **Datenbank-Verbindungszeichenfolgen anzeigen**, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
+Synapse SQL unterstützt [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) und [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Um zur neuesten Version und Dokumentation zu gelangen, wählen Sie einen der genannten Treiber aus. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber wählen Sie im Azure-Portal die Option **Datenbank-Verbindungszeichenfolgen anzeigen** aus, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
 
 > [!NOTE]
 > Es empfiehlt sich, das Verbindungstimeout auf 300 Sekunden festzulegen, damit die Verbindung bei kurzen Ausfällen bestehen bleibt.
@@ -81,14 +81,14 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Verbindungseinstellungen
-Bei der Verbindungs- und Objekterstellung werden von Synapse SQL einige Einstellungen standardisiert. Diese Einstellungen können nicht überschrieben werden:
+Bei der Verbindungs- und Objekterstellung werden von Synapse SQL einige Einstellungen standardisiert. Diese Einstellungen können nicht überschrieben werden, und zu ihnen gehören:
 
 | Datenbankeinstellung | Wert |
 |:--- |:--- |
-| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |EIN |
-| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |EIN |
-| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |dmy |
-| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
+| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |EIN |
+| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |EIN |
+| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |dmy |
+| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |7 |
 
 ## <a name="recommendations"></a>Empfehlungen
 

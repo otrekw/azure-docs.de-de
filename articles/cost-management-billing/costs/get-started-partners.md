@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372254"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -22,7 +22,7 @@ Azure Cost Management ist für direkte Partner, die ihre Kunden in eine Microsof
 
 Bei direkten Partnern und indirekten Anbietern können der globale Administrator und die Administrator-Agents zu den fakturierten Preisen im Partnermandanten auf Cost Management zugreifen und die Kosten verwalten.
 
-Handelspartner und Kunden können im Kundenmandanten auf Cost Management zugreifen und Kosten für die Abonnements anzeigen. Die Kosten werden in dieser Ansicht zu Einzelhandelspreisen berechnet und angezeigt. Allerdings müssen sie über RBAC-Zugriff auf das Abonnement im Kundenmandanten verfügen, um Kosten anzeigen zu können. Die Richtlinie für die Sichtbarkeit von Kosten muss vom Anbieter für den Kundenmandanten aktiviert werden.
+Handelspartner und Kunden können im Kundenmandanten auf Cost Management zugreifen und Kosten für die Abonnements anzeigen. Die Kosten werden in dieser Ansicht zu Einzelhandelspreisen berechnet und angezeigt. Allerdings müssen sie über Azure RBAC-Zugriff auf das Abonnement im Kundenmandanten verfügen, um Kosten anzeigen zu können. Die Richtlinie für die Sichtbarkeit von Kosten muss vom Anbieter für den Kundenmandanten aktiviert werden.
 
 Kunden können Cost Management-Funktionen verwenden, wenn sie von ihrem CSP-Partner aktiviert werden.
 
@@ -55,13 +55,13 @@ Azure Cost Management erfordert Lesezugriff auf Ihr Abrechnungskonto oder Ihr Ab
 
 Weitere Informationen zum Aktivieren und Zuweisen der Zugriffsrechte auf Azure Cost Management für ein Abrechnungskonto finden Sie unter [Zuweisen von Benutzerrollen und Berechtigungen](/partner-center/permissions-overview). Die Rollen **Globaler Administrator** und **Administrator-Agent** können die Kosten für ein Abrechnungskonto verwalten.
 
-Damit der Zugriff auf Azure Cost Management in den Abonnementbereichen möglich ist, können alle Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung Zugriff auf ein Abonnement gewährt wurde, Kosten zu Einzelhandelspreisen (nutzungsbasierte Bezahlung) anzeigen. Die [Richtlinie für die Sichtbarkeit von Kosten muss für den Kundenmandanten](#enable-the-policy-to-view-azure-usage-charges) aber aktiviert sein. Eine vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
+Damit der Zugriff auf Azure Cost Management in den Abonnementbereichen möglich ist, können alle Benutzer, die über Azure RBAC-Zugriff auf ein Abonnement verfügen, Kosten zu Einzelhandelspreisen (nutzungsbasierte Bezahlung) anzeigen. Die [Richtlinie für die Sichtbarkeit von Kosten muss für den Kundenmandanten](#enable-the-policy-to-view-azure-usage-charges) aber aktiviert sein. Eine vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Zweck von Bereichen in Cost Management
 
-In Bereichen können Sie Abrechnungsdaten verwalten, mit für Zahlungen spezifischen Rollen arbeiten, Rechnungen einsehen und die allgemeine Kontenverwaltung durchführen. Rechnungs- und Kontorollen werden getrennt von Bereichen für die Ressourcenverwaltung verwaltet, die Azure RBAC (rollenbasierte Zugriffssteuerung) verwenden. Um den Zweck der einzelnen Bereiche, einschließlich der Unterschiede bei der Zugriffssteuerung, klar zu unterscheiden, werden diese als Abrechnungsbereiche und RBAC-Bereiche bezeichnet.
+In Bereichen können Sie Abrechnungsdaten verwalten, mit für Zahlungen spezifischen Rollen arbeiten, Rechnungen einsehen und die allgemeine Kontenverwaltung durchführen. Rechnungs- und Kontorollen werden getrennt von Bereichen für die Ressourcenverwaltung verwaltet, die Azure RBAC (rollenbasierte Zugriffssteuerung) verwenden. Um den Zweck der einzelnen Bereiche, einschließlich der Unterschiede bei der Zugriffssteuerung, klar zu unterscheiden, werden diese als Abrechnungsbereiche und Azure RBAC-Bereiche bezeichnet.
 
-Informationen zu Abrechnungsbereichen und RBAC-Bereichen sowie zur Funktionsweise der Kostenverwaltung mit Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+Informationen zu Abrechnungsbereichen und Azure RBAC-Bereichen sowie zur Funktionsweise der Kostenverwaltung mit Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Verwalten von Kosten mit Abrechnungsbereichen von Partnermandanten
 
@@ -116,9 +116,9 @@ Nur die Benutzer mit den Rollen **Globaler Administrator** und **Administrator-A
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Aktivieren der Kostenverwaltung für Abonnements des Kundenmandanten
 
-Partner können den Zugriff auf Cost Management aktivieren, nachdem Kunden in eine Microsoft-Kundenvereinbarung aufgenommen wurden. Partner können dann eine Richtlinie aktivieren, mit der Kunden ihre Kosten für die in Azure genutzten Dienste anzeigen können, die nach nutzungsbasierten Preisen berechnet werden. Die Kosten werden in der Abrechnungswährung der Kunden für ihren Verbrauch im RBAC-Abonnement- und Ressourcengruppenbereich angezeigt.
+Partner können den Zugriff auf Cost Management aktivieren, nachdem Kunden in eine Microsoft-Kundenvereinbarung aufgenommen wurden. Partner können dann eine Richtlinie aktivieren, mit der Kunden ihre Kosten für die in Azure genutzten Dienste anzeigen können, die nach nutzungsbasierten Preisen berechnet werden. Die Kosten werden in der Abrechnungswährung der Kunden für ihren Verbrauch im Azure RBAC-Abonnement- und Ressourcengruppenbereich angezeigt.
 
-Wenn der Partner die Richtlinie für Kostensichtbarkeit aktiviert hat, kann jeder Benutzer mit Azure Resource Manager-Zugriff auf das Abonnement die Kosten, die sich aus nutzungsbasierten Preisen zusammensetzen, verwalten und analysieren. Reseller und Kunden, die über den entsprechenden RBAC-Zugriff auf die Azure-Abonnements verfügen, können Kosten anzeigen.
+Wenn der Partner die Richtlinie für Kostensichtbarkeit aktiviert hat, kann jeder Benutzer mit Azure Resource Manager-Zugriff auf das Abonnement die Kosten, die sich aus nutzungsbasierten Preisen zusammensetzen, verwalten und analysieren. Reseller und Kunden, die über den entsprechenden Azure RBAC-Zugriff auf die Azure-Abonnements verfügen, können Kosten anzeigen.
 
 Unabhängig von der Richtlinie können globale Administratoren und Administrator-Agents des Anbieters die Abonnementkosten anzeigen, wenn sie Zugriff auf das Abonnement und die Ressourcengruppe haben.
 
@@ -149,9 +149,9 @@ Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste 
 
 [![Anzeigen der Kostenanalyse als Kunde](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-Kostenanalyse, Budgets und Warnungen sind für die Abonnement- und Ressourcengruppen-RBAC-Bereiche für nutzungsbasierte Kosten verfügbar.
+Kostenanalyse, Budgets und Warnungen sind für die Azure RBAC-Bereiche „Abonnement“ und „Ressourcengruppe“ für nutzungsbasierte Kosten verfügbar.
 
-In amortisierten Ansichten und für tatsächlichen Koste für reservierte Instanzen in den RBAC-Bereichen werden keine Gebühren angezeigt. Kosten für reservierte Instanzen werden nur in Abrechnungsbereichen angezeigt, in denen die Einkäufe getätigt wurden.
+In amortisierten Ansichten und für tatsächliche Kosten für reservierte Instanzen in den Azure RBAC-Bereichen werden keine Gebühren angezeigt. Kosten für reservierte Instanzen werden nur in Abrechnungsbereichen angezeigt, in denen die Einkäufe getätigt wurden.
 
 Die Einzelhandelspreise, die zum Berechnen der in der Ansicht enthaltenen Kosten verwendet werden, entsprechen den Preisen, die im Azure-Preisrechner für alle Kunden angezeigt werden. Die angezeigten Kosten enthalten keine Rabatte oder Guthaben, über die der Partner ggf. verfügt, z. B. vom Partner erworbene Guthaben, tarifspezifische Rabatte und Rabatte für globale Dienste.
 
@@ -159,7 +159,7 @@ Die Einzelhandelspreise, die zum Berechnen der in der Ansicht enthaltenen Kosten
 
 Partner mit Zugriff auf Abrechnungsbereiche im Partnermandanten können Kosten in der Kostenanalyse für einen bestimmten Kunden oder für eine Rechnung untersuchen und analysieren. In der Ansicht [Kostenanalyse](quick-acm-cost-analysis.md) können Sie auch [Ansichten speichern](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) und Daten in [CSV- und PNG-Dateien](quick-acm-cost-analysis.md#download-usage-data) exportieren.
 
-Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung im Kundenmandanten Zugriff auf ein Abonnement gewährt wurde, können auch Einzelhandelskosten für Abonnements im Kundenmandanten analysieren, Ansichten speichern und Daten in CSV- und PNG-Dateien exportieren.
+Azure RBAC-Benutzer mit Zugriff auf ein Abonnement können auch Einzelhandelskosten für Abonnements im Kundenmandanten analysieren, Ansichten speichern und Daten in CSV- und PNG-Dateien exportieren.
 
 Sie können die Filter- und Gruppierungsfunktionen in der Kostenanalyse verwenden, um die Kosten anhand mehrerer Feldern zu analysieren. Partnerspezifische Felder werden im nächsten Abschnitt angezeigt.
 
@@ -223,8 +223,8 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | costinBillingCurrency | Geschätzte erweiterte oder gemischte Kosten vor Steuern in der Abrechnungswährung. | – |
 | costinPricingCurrency | Erweiterte oder gemischte Kosten vor Steuern in der Währung, die mit den Preisen korreliert. | – |
 | **costinUSD** | Geschätzte erweiterte oder gemischte Kosten vor Steuern in USD. | – |
-| **paygCostInBillingCurrency** | Zeigt Kosten an, wenn die Preise als Verkaufspreise angegeben sind. Zeigt die Preise für die nutzungsbasierte Bezahlung in der Abrechnungswährung an. Nur verfügbar bei RBAC-Bereichen. | – |
-| **paygCostInUSD** | Zeigt Kosten an, wenn die Preise als Verkaufspreise angegeben sind. Zeigt die Preise für die nutzungsbasierte Bezahlung in USD an. Nur verfügbar bei RBAC-Bereichen. | – |
+| **paygCostInBillingCurrency** | Zeigt Kosten an, wenn die Preise als Verkaufspreise angegeben sind. Zeigt die Preise für die nutzungsbasierte Bezahlung in der Abrechnungswährung an. Nur verfügbar bei Azure RBAC-Bereichen. | – |
+| **paygCostInUSD** | Zeigt Kosten an, wenn die Preise als Verkaufspreise angegeben sind. Zeigt die Preise für die nutzungsbasierte Bezahlung in USD an. Nur verfügbar bei Azure RBAC-Bereichen. | – |
 | exchangeRate | Der für die Umrechnung aus der Preiswährung in die Abrechnungswährung verwendete Wechselkurs. | Wird im Partner Center als PCToBCExchangeRate bezeichnet. Der Wechselkurs Preiswährung/Abrechnungswährung.|
 | exchangeRateDate | Das Datum des für die Umrechnung aus der Preiswährung in die Abrechnungswährung verwendeten Wechselkurses. | Wird im Partner Center als PCToBCExchangeRateDat bezeichnet. Das Datum des Wechselkurses Preiswährung/Abrechnungswährung.|
 | isAzureCreditEligible | Gibt an, ob die Kosten mit Azure-Guthaben bezahlt werden können. | – |
@@ -262,7 +262,7 @@ Sie können auch nach der **PartnerEarnedCreditApplied**-Eigenschaft gruppieren 
 
 Partner mit Zugriff auf Abrechnungsbereiche in einem Partnermandanten können ihre Kosten- und Nutzungsdaten in ein Blob in Azure Storage exportieren. Das Blob muss sich in einem Abonnement im Mandant des Partners befinden, bei dem es sich nicht um ein gemeinsames Abonnement für einen Dienst oder das Abonnement eines Kunden handelt. Wenn Sie Kostendaten exportieren möchten, sollten Sie im Partnermandanten ein unabhängiges Abonnement mit nutzungsbasierter Bezahlung einrichten, um die exportierten Kostendaten zu hosten. Das Speicherkonto für die Exporte wird im Azure Storage-Blob erstellt, das im Abonnement mit nutzungsbasierter Bezahlung gehostet wird. Je nach Bereich, in dem der Partner den Export ausführt, werden die dazugehörigen Daten in regelmäßigen Abständen automatisch in das Speicherkonto exportiert.
 
-Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung Zugriff auf das Abonnement erteilt wurde, können die Kostendaten auch in ein Azure Storage-Blob exportieren, das in einem beliebigen Abonnement im Kundenmandanten gehostet wird.
+Benutzer mit Azure RBAC-Zugriff auf das Abonnement können die Kostendaten auch in ein Azure Storage-Blob exportieren, das in einem beliebigen Abonnement im Kundenmandanten gehostet wird.
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Erstellen eines Exports in einem Partnermandanten oder Kundenmandanten
 
@@ -276,7 +276,7 @@ Wählen Sie dann **Hinzufügen** aus, und geben Sie den Namen ein, und wählen S
 
 Wenn Sie einen Export im Partnermandanten erstellen, wählen Sie das Abonnement mit nutzungsbasierter Bezahlung im Partnermandanten aus. Erstellen Sie mit diesem Abonnement ein Azure Storage-Konto.
 
-Wählen Sie für Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung Zugriff auf den Kundenmandanten gewährt wurde, ein Abonnement im Kundenmandanten aus. Erstellen Sie mit diesem Abonnement ein Azure Storage-Konto.
+Wählen Sie für Azure RBAC-Benutzer im Kundenmandanten ein Abonnement im Kundenmandanten aus. Erstellen Sie mit diesem Abonnement ein Azure Storage-Konto.
 
 Überprüfen Sie die Angaben, und klicken Sie dann auf **Erstellen**, um den Export zu planen.
 

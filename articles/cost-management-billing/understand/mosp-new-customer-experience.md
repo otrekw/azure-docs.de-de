@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371741"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -113,7 +113,7 @@ Die folgenden Abschnitte enthalten zusätzliche Informationen zu Ihrer neuen Ben
 
 **Keine Ausfallzeiten für Dienste** Für die Azure-Dienste unter Ihrem Abonnement kommt es nicht zu Unterbrechungen. Es wird lediglich Ihre Benutzeroberfläche für die Abrechnung aktualisiert. Dies hat keinerlei Auswirkungen auf vorhandene Ressourcen, Ressourcengruppen oder Verwaltungsgruppen.
 
-**Keine Änderungen an Azure-Ressourcen** Der Zugriff auf Azure-Ressourcen, die per Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) festgelegt wurden, wird durch die Aktualisierung nicht beeinträchtigt.
+**Keine Änderungen an Azure-Ressourcen** Der Zugriff auf Azure-Ressourcen, die per rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) festgelegt wurden, wird durch die Aktualisierung nicht beeinträchtigt.
 
 **Frühere Rechnungen sind auf der neuen Benutzeroberfläche verfügbar** Rechnungen, die vor der Aktualisierung Ihres Kontos generiert wurden, sind im Azure-Portal weiterhin verfügbar.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958336"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91331096"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway mithilfe von Azure PowerShell
 
@@ -53,6 +53,8 @@ Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist
 1. Erstellen Sie die Subnetzkonfigurationen mithilfe von `New-AzVirtualNetworkSubnetConfig`.
 2. Erstellen Sie das virtuelle Netzwerk mit den Subnetzkonfigurationen mithilfe von `New-AzVirtualNetwork`. 
 3. Erstellen Sie die öffentliche IP-Adresse mithilfe von `New-AzPublicIpAddress`. 
+> [!NOTE]
+> [Richtlinien für VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoint-policies-overview.md) werden derzeit in einem Application Gateway-Subnetz nicht unterstützt.
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `

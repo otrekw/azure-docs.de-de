@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a4b61b89921b41476ff1c2196502092809862a82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d43c223c0a3e67ff784688255bd75fc61e5c120c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495498"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288017"
 ---
 # <a name="sql-authentication"></a>SQL-Authentifizierung
 
@@ -34,7 +34,7 @@ Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory
 
 - **Serveradministrator**
 
-  Wenn Sie eine Azure Synapse Analytics-Instanz erstellen, müssen Sie eine **Serveradministratoranmeldung** angeben. Vom SQL-Server wird dieses Konto als Anmeldung für die Masterdatenbank erstellt. Dieses Konto stellt die Verbindung per SQL Server-Authentifizierung (Benutzername und Kennwort) her. Nur eines dieser Konten kann vorhanden sein.
+  Wenn Sie eine Azure Synapse Analytics-Instanz erstellen, müssen Sie eine **Serveradministratoranmeldung** benennen. Vom SQL-Server wird dieses Konto als Anmeldung für die Masterdatenbank erstellt. Dieses Konto stellt die Verbindung per SQL Server-Authentifizierung (Benutzername und Kennwort) her. Nur eines dieser Konten kann vorhanden sein.
 
 - **Azure Active Directory-Administrator**
 
@@ -44,7 +44,7 @@ Die Konten **Serveradministrator** und **Azure AD-Administrator** weisen die fol
 
 - Sie sind die einzigen Konten, mit denen automatisch eine Verbindung mit einer beliebigen SQL-Datenbank auf dem Server hergestellt werden kann. (Zum Herstellen einer Verbindung mit einer Benutzerdatenbank müssen andere Konten entweder der Besitzer der Datenbank sein oder in der Benutzerdatenbank über ein Benutzerkonto verfügen.)
 - Für diese Konten wird auf Benutzerdatenbanken mit dem Benutzer `dbo` zugegriffen, und alle Berechtigungen sind in den Benutzerdatenbanken enthalten. (Der Besitzer einer Benutzerdatenbank greift auf die Datenbank ebenfalls als Benutzer `dbo` zu.)
-- Die Konten greifen auf die Datenbank `master` nicht als Benutzer `dbo` zu und verfügen für „master“ über eingeschränkte Berechtigungen.
+- Die Konten greifen auf die `master`-Datenbank nicht als Benutzer `dbo` zu und haben eingeschränkte Berechtigungen in „master“.
 - Diese Konten sind **keine** Mitglieder der festen Standardserverrolle `sysadmin` von SQL Server, die in SQL-Datenbank nicht verfügbar ist.  
 - Mit diesen Konten können Datenbanken, Anmeldungen, Benutzer in „master“ und IP-Firewallregeln auf Serverebene erstellt, geändert und verworfen werden.
 - Sie können Mitglieder für die Rollen `dbmanager` und `loginmanager` hinzufügen und entfernen.
@@ -61,7 +61,7 @@ CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Sobald die Anmeldung erstellt wurde, können Sie Benutzer in den einzelnen Datenbanken innerhalb des SQL On-Demand-Endpunkts erstellen und diesen Benutzern die erforderlichen Berechtigungen erteilen. Zum Erstellen eines Benutzers können Sie die folgende Syntax verwenden:
+Sobald die Anmeldung erstellt wurde, können Sie Benutzer in den einzelnen Datenbanken im SQL On-Demand-Endpunkt erstellen und diesen Benutzern die erforderlichen Berechtigungen erteilen. Zum Erstellen eines Benutzers können Sie die folgende Syntax verwenden:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -132,7 +132,7 @@ Die andere Administratorrolle ist die Rolle „loginmanager“ (Anmeldungs-Manag
 
 ## <a name="non-administrator-users"></a>Benutzer ohne Administratorrechte
 
-Im Allgemeinen benötigen Konten ohne Administratorrechte keinen Zugriff auf die Masterdatenbank. Erstellen Sie eigenständige Datenbankbenutzer auf Datenbankebene, indem Sie die [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) -Anweisung (Transact-SQL) verwenden. 
+Üblicherweise benötigen Konten ohne Administratorrechte keinen Zugriff auf die Masterdatenbank. Erstellen Sie eigenständige Datenbankbenutzer auf Datenbankebene, indem Sie die [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) -Anweisung (Transact-SQL) verwenden. 
 
 Der Benutzer kann ein eigenständiger Datenbankbenutzer mit Azure Active Directory-Authentifizierung (bei Konfiguration Ihrer Umgebung für die Azure AD-Authentifizierung), ein eigenständiger Datenbankbenutzer mit SQL Server-Authentifizierung oder ein Benutzer mit SQL Server-Authentifizierung basierend auf einer SQL Server-Authentifizierungsanmeldung (im vorherigen Schritt erstellt) sein.  
 
@@ -205,7 +205,7 @@ Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbank-E
 Beachten Sie beim Verwalten von Anmeldungen und Benutzern in SQL-Datenbank die folgenden Punkte:
 
 - Sie müssen über eine Verbindung mit der Datenbank **master** verfügen, wenn Sie die `CREATE/ALTER/DROP DATABASE`-Anweisungen ausführen.
-- Der Datenbankbenutzer, der der Anmeldung **Serveradministrator** entspricht, kann nicht geändert oder verworfen werden.
+- Der Datenbankbenutzer, der der Anmeldung **Serveradministrator** entspricht, kann weder geändert noch verworfen werden.
 - „Englisch (USA)“ ist die Standardsprache des Anmeldungstyps **Serveradministrator**.
 - Nur die Administratoren (Anmeldung **Serveradministrator** oder Azure AD-Administrator) und die Mitglieder der Datenbankrolle **dbmanager** in der Datenbank **master** verfügen über die Berechtigung zum Ausführen der Anweisungen `CREATE DATABASE` und `DROP DATABASE`.
 - Sie müssen über eine Verbindung mit der Datenbank „master“ verfügen, wenn Sie die `CREATE/ALTER/DROP LOGIN` -Anweisungen ausführen. Von der Verwendung von Anmeldungen wird jedoch abgeraten. Verwenden Sie stattdessen Benutzer von eigenständigen Datenbanken.
@@ -231,7 +231,7 @@ Beachten Sie beim Verwalten von Anmeldungen und Benutzern in SQL-Datenbank die f
 - Beim Ausführen der Anweisung `CREATE USER` mit der Option `FOR/FROM LOGIN` muss sie die einzige Anweisung in einem Transact-SQL-Batch sein.
 - Beim Ausführen der Anweisung `ALTER USER` mit der Option `WITH LOGIN` muss sie die einzige Anweisung in einem Transact-SQL-Batch sein.
 - Für `CREATE/ALTER/DROP` benötigt ein Benutzer die Berechtigung `ALTER ANY USER` für die Datenbank.
-- Wenn der Besitzer einer Datenbankrolle versucht, dieser Datenbankrolle einen anderen Datenbankbenutzer hinzuzufügen oder ihn aus ihr zu entfernen, tritt eventuell der folgende Fehler auf: **Benutzer oder Rolle „Name“ ist in dieser Datenbank nicht vorhanden.** Dieser Fehler tritt auf, da der Benutzer für den Besitzer nicht sichtbar ist. Gewähren Sie dem Rollenbesitzer die Berechtigung `VIEW DEFINITION` für den Benutzer, um dieses Problem zu beheben. 
+- Wenn der Besitzer einer Datenbankrolle versucht, dieser Datenbankrolle einen anderen Datenbankbenutzer hinzuzufügen oder ihn aus ihr zu entfernen, tritt eventuell der folgende Fehler auf: **Benutzer oder Rolle „Name“ ist in dieser Datenbank nicht vorhanden.** Dieser Fehler tritt auf, weil der Benutzer für den Besitzer nicht sichtbar ist. Gewähren Sie dem Rollenbesitzer die Berechtigung `VIEW DEFINITION` für den Benutzer, um dieses Problem zu beheben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
