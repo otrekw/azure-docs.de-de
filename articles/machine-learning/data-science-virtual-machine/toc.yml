@@ -56,6 +56,8 @@
           href: dsvm-common-identity.md
         - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
           href: dsvm-secure-access-keys.md
+    - name: Aktualisieren von Data Science Virtual Machine auf Ubuntu 18.04
+      href: ubuntu-upgrade.md
 - name: Ressourcen
   items:
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
