@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266495"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -40,7 +40,7 @@ Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung di
 - Eine Testumgebung mit Version 1.4.32.0 oder höher der Azure AD Connect-Synchronisierung.
 - Eine Organisationseinheit oder Gruppe, die im Synchronisierungsbereich enthalten ist und für die Pilotbereitstellung verwendet werden kann. Wir empfehlen, mit einer kleinen Gruppe von Objekten zu beginnen.
 - Ein Server unter Windows Server 2012 R2 oder höher, der den Bereitstellungs-Agent hostet.  Dies darf nicht der Azure AD Connect-Server sein.
-- Als Quellanker für die AAD Connect-Synchronisierung muss entweder *objectGuid* oder *ms-ds-consistencyGUID* verwendet werden.
+- Als Quellanker für die Azure AD Connect-Synchronisierung muss entweder *objectGuid* oder *ms-ds-consistencyGUID* verwendet werden.
 
 ## <a name="update-azure-ad-connect"></a>Aktualisieren von Azure AD Connect
 
@@ -54,7 +54,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
 3.  Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $false` aus.
 
 >[!NOTE] 
->Wenn Sie Ihren eigenen benutzerdefinierten Scheduler für die AAD Connect-Synchronisierung ausführen, deaktivieren Sie den Scheduler. 
+>Falls Sie Ihren eigenen benutzerdefinierten Scheduler für die Azure AD Connect-Synchronisierung ausführen, deaktivieren Sie den Scheduler. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Erstellen einer benutzerdefinierten Eingangsregel für Benutzer
 
@@ -62,7 +62,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
  ![Menü „Synchronisierungsregel-Editor“](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. Wählen Sie in der Dropdownliste die Richtung **Eingehend** aus, und klicken Sie auf **Neue Regel hinzufügen**.
- ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![Screenshot: Fenster „Synchronisationsregeln anzeigen und verwalten“ mit Hervorhebung der Option „Eingehend“ und der Schaltfläche „Neue Regel hinzufügen“](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. Geben Sie auf der Seite **Beschreibung** Folgendes ein, und klicken Sie anschließend auf **Weiter**:
 
@@ -74,7 +74,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
     **Verknüpfungstyp:** Join<br>
     **Rangfolge:** Geben Sie einen Wert an, der im System eindeutig ist.<br>
     **Tag:** Lassen Sie dieses Feld leer.<br>
-    ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![Screenshot: Seite „Eingehende Synchronisierungsregel erstellen“ (Beschreibung) mit eingegebenen Werten](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. Geben Sie auf der Seite **Bereichsfilter** die Organisationseinheit oder Sicherheitsgruppe ein, auf der die Pilotbereitstellung basieren soll.  Fügen Sie zum Filtern nach der Organisationseinheit den Teil des Distinguished Name (DN) hinzu, der für die Organisationseinheit steht. Die Regel wird auf alle Benutzer in dieser Organisationseinheit angewendet.  Wenn der DN auf „OU=CPUsers,DC=contoso,DC=com“ endet, fügen Sie den folgenden Filter hinzu.  Klicken Sie dann auf **Weiter**. 
 
@@ -83,31 +83,31 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
     |Bereichsorganisationseinheit|DN|ENDSWITH|Distinguished Name der Organisationseinheit.|
     |Bereichsgruppe||ISMEMBEROF|Distinguished Name der Sicherheitsgruppe.|
 
-    ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![Screenshot: Seite „Eingehende Synchronisierungsregel erstellen“ (Bereichsfilter) mit eingegebenem Bereichsfilterwert](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Klicken Sie auf der Seite **Verknüpfungsregeln** auf **Weiter**.
  6. Fügen Sie auf der Seite **Transformationen** eine Transformation vom Typ „Konstante“ hinzu, und setzen Sie das Attribut „cloudNoFlow“ auf „True“. Klicken Sie auf **Hinzufügen**.
- ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![Screenshot: Seite „Eingehende Synchronisierungsregel erstellen“ (Transformationen) mit hinzugefügtem Konstantentransformationsfluss](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Diese Schritte müssen für alle Objekttypen (Benutzer, Gruppen und Kontakte) ausgeführt werden. Wiederholen Sie die Schritte pro konfiguriertem AD-Connector bzw. pro AD-Gesamtstruktur. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Erstellen einer benutzerdefinierten Ausgangsregel für Benutzer
 
  1. Wählen Sie in der Dropdownliste die Richtung **Ausgehend** aus, und klicken Sie auf **Regel hinzufügen**.
- ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![Screenshot: Richtungsauswahl „Ausgehend“ und hervorgehobene Schaltfläche „Neue Regel hinzufügen“](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. Geben Sie auf der Seite **Beschreibung** Folgendes ein, und klicken Sie anschließend auf **Weiter**:
 
     **Name:** Geben Sie einen aussagekräftigen Namen für die Regel ein.<br>
     **Beschreibung:** Geben Sie eine aussagekräftige Beschreibung ein.<br>
-    **Verbundenes System:** Wählen Sie den AAD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
+    **Verbundenes System:** Wählen Sie den Azure AD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
     **Objekttyp des verbundenen Systems:** Benutzer<br>
     **Metaverse-Objekttyp:** Person<br>
     **Verknüpfungstyp:** JoinNoFlow<br>
     **Rangfolge:** Geben Sie einen Wert an, der im System eindeutig ist.<br>
     **Tag:** Lassen Sie dieses Feld leer.<br>
     
-    ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![Screenshot: Seite „Beschreibung“ mit eingegebenen Eigenschaften](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. Wählen Sie auf der Seite **Bereichsfilter** das Attribut **cloudNoFlow**, den Operator „Gleich“ und den Wert **True** aus. Klicken Sie dann auf **Weiter**.
  ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Diese Schritte müssen für alle Objekttypen (Benutzer, Gruppen und Kontakte) au
 2. Laden Sie den Agent für die Azure AD Connect-Cloudbereitstellung herunter. Eine entsprechende Anleitung finden Sie [hier](how-to-install.md#install-the-agent).
 3. Führen Sie den Azure AD Connect-Cloudbereitstellungs-Agent aus (AADConnectProvisioningAgent.Installer).
 3. **Akzeptieren** Sie auf dem Begrüßungsbildschirm die Lizenzbedingungen, und klicken Sie auf **Installieren**.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install1.png)</br>
+![Screenshot: Begrüßungsbildschirm des Microsoft Azure AD Connect-Bereitstellungs-Agents](media/how-to-install/install1.png)</br>
 
 4. Nach Abschluss dieses Vorgangs wird der Konfigurations-Assistent gestartet.  Melden Sie sich mit dem Konto Ihres globalen Azure AD-Administrators an.
 5. Klicken Sie auf dem Bildschirm **Connect Active Directory** (Active Directory verbinden) auf **Verzeichnis hinzufügen**, und melden Sie sich dann mit Ihrem Active Directory-Administratorkonto an.  Dadurch wird Ihr lokales Verzeichnis hinzugefügt.  Klicken Sie auf **Weiter**.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install3.png)</br>
+![Screenshot: Bildschirm „Active Directory verbinden“ mit eingegebenem Verzeichniswert](media/how-to-install/install3.png)</br>
 
 6. Klicken Sie auf dem Bildschirm **Konfiguration abgeschlossen** auf **Bestätigen**.  Dadurch wird der Agent registriert und neu gestartet.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install4.png)</br>
+![Screenshot: Bildschirm „Konfiguration abgeschlossen“ mit ausgewählter Schaltfläche „Bestätigen“](media/how-to-install/install4.png)</br>
 
 7. Sobald dieser Vorgang abgeschlossen ist, sollte der Hinweis angezeigt werden, dass **die Agent-Konfiguration erfolgreich überprüft wurde**.  Sie können dann auf **Beenden** klicken.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install5.png)</br>

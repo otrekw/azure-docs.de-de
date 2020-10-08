@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3e9075014863e653a986dc4dbec7b9bc5e9f31bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ee4d3957403e169d41fb9e3befa0d62e4b0d9075
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421194"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597860"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Erstellen von Azure Time Series Insights Gen1-Ressourcen mit Azure Resource Manager-Vorlagen
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel wird das Erstellen und Bereitstellen von Azure Time Series Insights-Ressourcen mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/), PowerShell und des Azure Time Series Insights-Ressourcenanbieters beschrieben.
 
@@ -49,7 +52,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Klonen oder kopieren Sie die Vorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) von GitHub.
 
-   * Erstellen einer Parameterdatei
+   - Erstellen einer Parameterdatei
 
      Kopieren Sie die Datei [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json), um eine Parameterdatei zu erstellen.
 
@@ -57,7 +60,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
     <div id="required-parameters"></div>
 
-   * Erforderliche Parameter
+   - Erforderliche Parameter
 
      | Parameter | BESCHREIBUNG |
      | --- | --- |
@@ -69,7 +72,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
     <div id="optional-parameters"></div>
 
-   * Optionale Parameter
+   - Optionale Parameter
 
      | Parameter | BESCHREIBUNG |
      | --- | --- |
@@ -84,7 +87,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
      | accessPolicyReaderObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über Lesezugriff auf die Umgebung verfügen sollen. Die Objekt-ID des Dienstprinzipals kann abgerufen werden, indem das **Get-AzADUser** oder das **Get-AzADServicePrincipal**-Cmdlet aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
      | accessPolicyContributorObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über den Zugriff „Mitwirkender“ auf die Umgebung verfügen sollen. Die Objekt-ID des Dienstprinzipals kann abgerufen werden, indem das **Get-AzADUser** oder das **Get-AzADServicePrincipal**-Cmdlet aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
 
-   * Beispielsweise wird die folgende Parameterdatei verwendet, um eine Umgebung und eine Ereignisquelle zu erstellen, über die Ereignisse von einem vorhandenen Event Hub gelesen werden. Außerdem werden hiermit zwei Zugriffsrichtlinien erstellt, mit denen der Zugriff „Mitwirkender“ auf die Umgebung gewährt wird.
+   - Beispielsweise wird die folgende Parameterdatei verwendet, um eine Umgebung und eine Ereignisquelle zu erstellen, über die Ereignisse von einem vorhandenen Event Hub gelesen werden. Außerdem werden hiermit zwei Zugriffsrichtlinien erstellt, mit denen der Zugriff „Mitwirkender“ auf die Umgebung gewährt wird.
 
      ```JSON
      {
@@ -114,12 +117,12 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
                      "AGUID001-0000-0000-0000-000000000000",
                      "AGUID002-0000-0000-0000-000000000000"
                  ]
-             }    
+             }
          }
      }
      ```
 
-    * Weitere Informationen finden Sie im Artikel [Parameter](../azure-resource-manager/templates/parameter-files.md).
+   - Weitere Informationen finden Sie im Artikel [Parameter](../azure-resource-manager/templates/parameter-files.md).
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Lokales Bereitstellen der Schnellstartvorlage mit PowerShell
 
@@ -128,19 +131,19 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Melden Sie sich in PowerShell bei Ihrem Azure-Konto an.
 
-    * Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
+    - Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
 
       ```powershell
       Connect-AzAccount
       ```
 
-    * Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen:
+    - Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen:
 
       ```powershell
       Get-AzSubscription
       ```
 
-    * Dieser Befehl gibt eine Liste der verfügbaren Azure-Abonnements zurück. Wählen Sie ein Abonnement für die aktuelle Sitzung aus, indem Sie folgenden Befehl ausführen. Ersetzen Sie `<YourSubscriptionId>` durch die GUID des Azure-Abonnements, das Sie verwenden möchten:
+    - Dieser Befehl gibt eine Liste der verfügbaren Azure-Abonnements zurück. Wählen Sie ein Abonnement für die aktuelle Sitzung aus, indem Sie folgenden Befehl ausführen. Ersetzen Sie `<YourSubscriptionId>` durch die GUID des Azure-Abonnements, das Sie verwenden möchten:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -148,13 +151,13 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Erstellen Sie eine neue Ressourcengruppe, falls noch keine vorhanden ist.
 
-   * Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel:
+   - Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
      ```
 
-   * Nach erfolgreicher Ausführung wird eine Zusammenfassung der neuen Ressourcengruppe angezeigt:
+   - Nach erfolgreicher Ausführung wird eine Zusammenfassung der neuen Ressourcengruppe angezeigt:
 
      ```powershell
      ResourceGroupName : MyDemoRG
@@ -166,7 +169,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Testen Sie die Bereitstellung.
 
-   * Überprüfen Sie Ihre Bereitstellung, indem Sie das Cmdlet `Test-AzResourceGroupDeployment` ausführen. Geben Sie beim Testen der Bereitstellung die Parameter exakt so an wie beim Ausführen der Bereitstellung.
+   - Überprüfen Sie Ihre Bereitstellung, indem Sie das Cmdlet `Test-AzResourceGroupDeployment` ausführen. Geben Sie beim Testen der Bereitstellung die Parameter exakt so an wie beim Ausführen der Bereitstellung.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -174,27 +177,27 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Erstellen der Bereitstellung
 
-    * Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/templates/deployment-modes.md).
+    - Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/templates/deployment-modes.md).
 
-    * Mit dem folgenden Befehl werden Sie aufgefordert, die fünf erforderlichen Parameter im PowerShell-Fenster einzugeben:
+    - Mit dem folgenden Befehl werden Sie aufgefordert, die fünf erforderlichen Parameter im PowerShell-Fenster einzugeben:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
-    * Um stattdessen eine Parameterdatei zu verwenden, geben Sie folgenden Befehl ein:
+    - Um stattdessen eine Parameterdatei zu verwenden, geben Sie folgenden Befehl ein:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * Sie können beim Ausführen des Bereitstellungs-Cmdlets auch Inlineparameter verwenden. Der Befehl lautet wie folgt:
+    - Sie können beim Ausführen des Bereitstellungs-Cmdlets auch Inlineparameter verwenden. Der Befehl lautet wie folgt:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/templates/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
+    - Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/templates/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -202,7 +205,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Überprüfen der Bereitstellung
 
-    * Wenn die Ressourcen erfolgreich bereitgestellt wurden, wird im PowerShell-Fenster eine Zusammenfassung der Bereitstellung angezeigt:
+    - Wenn die Ressourcen erfolgreich bereitgestellt wurden, wird im PowerShell-Fenster eine Zusammenfassung der Bereitstellung angezeigt:
 
       ```powershell
        DeploymentName          : MyDemoDeployment
@@ -243,7 +246,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Bereitstellen der Schnellstartvorlage über das Azure-Portal
 
-   * Die Startseite der Schnellstartvorlage auf GitHub enthält auch die Schaltfläche **Deploy to Azure** (In Azure bereitstellen). Wenn Sie darauf klicken, wird im Azure-Portal die Seite „Benutzerdefinierte Bereitstellung“ geöffnet. Auf dieser Seite können Sie Werte für jeden Parameter aus der Tabelle mit den [erforderlichen Parametern](#required-parameters) oder den [optionalen Parametern](#optional-parameters) eingeben oder auswählen. Wenn Sie nach dem Angeben der Einstellungen auf die Schaltfläche **Kauf** klicken, wird die Vorlagenbereitstellung initiiert.
+   - Die Startseite der Schnellstartvorlage auf GitHub enthält auch die Schaltfläche **Deploy to Azure** (In Azure bereitstellen). Wenn Sie darauf klicken, wird im Azure-Portal die Seite „Benutzerdefinierte Bereitstellung“ geöffnet. Auf dieser Seite können Sie Werte für jeden Parameter aus der Tabelle mit den [erforderlichen Parametern](#required-parameters) oder den [optionalen Parametern](#optional-parameters) eingeben oder auswählen. Wenn Sie nach dem Angeben der Einstellungen auf die Schaltfläche **Kauf** klicken, wird die Vorlagenbereitstellung initiiert.
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">

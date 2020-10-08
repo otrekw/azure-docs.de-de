@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 06fccd410f3edf5dbd63fa9959aad2d65a626a0d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e74b48ca526d977da33dcdccae84491213856079
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86503783"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90533378"
 ---
-<Token>**BETRIFFT:** ![ja](../media/applies-to/yes.png)SQL Server auf Azure-VMs </Token> 
+<Token>**GILT FÜR:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server auf Azure-VMs </Token> 
 

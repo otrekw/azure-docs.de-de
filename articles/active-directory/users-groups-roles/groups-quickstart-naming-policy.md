@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de0212739f5cd24cec9ab58bdaf4d2b272f31200
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213683"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90054363"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Schnellstart: Benennungsrichtlinie für Gruppen in Azure Active Directory
 
@@ -68,6 +68,6 @@ Das ist alles. Sie haben Ihre Benennungsrichtlinie festgelegt und benutzerdefini
 
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Benennungsrichtlinie für Ihre Azure AD-Organisation im Azure-Portal festlegen.
 
-Im nächsten Artikel finden Sie weitere Informationen zu den PowerShell-Cmdlets für eine Benennungsrichtlinie, technischen Einschränkungen, zum Hinzufügen einer Liste der benutzerdefinierten blockierten Wörter und zu den Benutzeroberflächen für Endbenutzer in Office 365-Apps.
+Im nächsten Artikel finden Sie weitere Informationen zu den PowerShell-Cmdlets für eine Benennungsrichtlinie, technische Einschränkungen, zum Hinzufügen einer benutzerdefinierten Liste der blockierten Wörter und zu den Benutzeroberflächen für Endbenutzer in Microsoft 365-Apps.
 > [!div class="nextstepaction"]
 > [Durchsetzen einer Benennungsrichtlinie und Verwenden von PowerShell](groups-naming-policy.md)

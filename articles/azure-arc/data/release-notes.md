@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931141"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319725"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Versionshinweise – Azure Arc-fähige Datendienste (Vorschauversion)
 
@@ -28,6 +28,14 @@ Azure Arc-fähige Datendienste sind für die öffentliche Vorschauversion freige
 - PostgreSQL Hyperscale
 
 Anweisungen finden Sie unter [Was sind Azure Arc-fähige Datendienste?](overview.md)
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+Für diese Version gelten die folgenden Probleme:
+
+* **Löschen einer PostgreSQL Hyperscale-Servergruppe**: Wenn Sie die Konfiguration Ihrer Servergruppe oder -instanz geändert haben, warten Sie, bis der Bearbeitungsvorgang abgeschlossen ist, bevor Sie eine PostgreSQL Hyperscale-Servergruppe löschen.
+
+* **`azdata notebook run` kann fehlschlagen**: Um dieses Problem zu umgehen, führen Sie `azdata notebook run` in einer virtuellen Python-Umgebung aus. Dieses Problem tritt auch bei einem fehlerhaften Versuch auf, eine verwaltete SQL-Instanz oder eine PostgreSQL Hyperscale-Servergruppe mithilfe des Azure Data Studio-Bereitstellungs-Assistenten zu erstellen. In diesem Fall können Sie das Notebook öffnen und oben im Notebook auf die Schaltfläche **Alle ausführen** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

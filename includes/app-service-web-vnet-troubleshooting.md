@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255242"
 ---
 Die Funktion ist zwar einfach einzurichten, dies bedeutet jedoch nicht, dass keinerlei Probleme auftreten. Sollten beim Zugreifen auf den gewünschten Endpunkt Probleme auftreten, können Sie einige Hilfsprogramme verwenden, um die Verbindung über die App-Konsole zu testen. Sie können zwei Konsolen verwenden. Eine ist die Kudu-Konsole, und die andere ist die Konsole im Azure-Portal. Greifen Sie in der App auf **Tools** > **Kudu** zu, um zur Kudu-Konsole zu gelangen. Sie können auch die Kudo-Konsole unter „[sitename].scmn.azurewebsites.net“ erreichen. Wechseln Sie nach dem Laden der Website zur Registerkarte **Debugging-Konsole**. Um auf die über das Azure-Portal gehostete Konsole zuzugreifen, greifen Sie in der App auf **Tools** > **Konsole** zu.
 
 #### <a name="tools"></a>Tools
-Die Tools **ping**, **nslookup** und **tracert** funktionieren aufgrund von Sicherheitseinschränkungen nicht über die Konsole. Es wurden zwei separate Tools hinzugefügt, um diese Lücke zu füllen. Zum Testen der DNS-Funktionalität haben wir ein Tool mit dem Namen **nameresolver.exe** hinzugefügt. Die Syntax ist:
+In nativen Windows-Apps funktionieren die Tools **ping**, **nslookup** und **tracert** funktionieren aufgrund von Sicherheitseinschränkungen nicht über die Konsole (sie funktionieren in [benutzerdefinierten Windows-Containern](../articles/app-service/quickstart-custom-container.md)). Es wurden zwei separate Tools hinzugefügt, um diese Lücke zu füllen. Zum Testen der DNS-Funktionalität haben wir ein Tool mit dem Namen **nameresolver.exe** hinzugefügt. Die Syntax ist:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 Sie können „nameresolver“ verwenden, um die Hostnamen zu überprüfen, von denen Ihre App abhängig ist. So können Sie testen, ob für das DNS etwas falsch konfiguriert ist oder ob ggf. kein Zugriff auf Ihren DNS-Server besteht. Den von Ihrer App verwendeten DNS-Server können Sie in der Konsole in den Umgebungsvariablen WEBSITE_DNS_SERVER und WEBSITE_DNS_ALT_SERVER einsehen.
+
+> [!NOTE]
+> „nameresolver.exe“ funktioniert zurzeit nicht in benutzerdefinierten Windows-Containern.
+>
 
 Mit dem nächsten Tool können Sie die TCP-Verbindung mit einer Host-Port-Kombination testen. Dieses Tool hat den Namen **tcpping** und die folgende Syntax:
 

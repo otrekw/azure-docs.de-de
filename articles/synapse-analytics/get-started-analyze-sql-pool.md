@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erste Schritte zum Analysieren von Daten mit dem SQL-Pool'
+title: 'Tutorial: Erste Schritte beim Analysieren von Daten mit dedizierten SQL-Pools'
 description: In diesem Tutorial verwenden Sie die NYC Taxi-Beispieldaten, um die Analysefunktionen des SQL-Pools zu erforschen.
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300121"
 ---
-# <a name="analyze-data-with-sql-pools"></a>Analysieren von Daten mit SQL-Pools
+# <a name="analyze-data-with-sql-dedicated-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
-Azure Synapse Analytics bietet Ihnen die Möglichkeit, Daten mit dem SQL-Pool zu analysieren. In diesem Tutorial verwenden Sie die NYC Taxi-Beispieldaten, um die Analysefunktionen des SQL-Pools zu erforschen.
+Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizierten SQL-Pool. In diesem Tutorial werden die NYC Taxi-Daten verwendet, um die Analysefunktionen eines dedizierten SQL-Pools zu untersuchen.
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Laden der NYC Taxi-Daten in SQLDB1
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics bietet Ihnen die Möglichkeit, Daten mit dem SQL-Pool zu
     ```
 1. Die Ausführung dieses Skripts dauert ungefähr eine Minute. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen **dbo.Trip**.
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Untersuchen der NYC Taxi-Daten im SQL-Pool
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Untersuchen der NYC Taxi-Daten im dedizierten SQL-Pool
 
 1. Navigieren Sie in Synapse Studio zum Hub **Daten**.
 1. Navigieren Sie zu **SQLDB1** > **Tabellen**. Es werden mehrere geladene Tabellen angezeigt.

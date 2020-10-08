@@ -1,6 +1,6 @@
 ---
 title: Verzweigen und Verketten von Aktivitäten in einer Pipeline mithilfe des Azure-Portals
-description: Erfahren Sie, wie Sie den Datenfluss in Azure Data Factory, durch die Verkettung und Verzweigung von Aktivitäten steuern.
+description: Hier erfahren Sie, wie Sie den Datenfluss in einer Azure Data Factory-Pipeline über das Azure-Portal steuern.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983733"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568539"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Verzweigen und Verketten von Aktivitäten in einer Azure Data Factory-Pipeline mithilfe des Azure-Portals
 
@@ -184,7 +184,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
    ![Ziehen und Ablegen der Kopieraktivität](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. Wechseln Sie im unteren Bereich des Fensters **Eigenschaften** für die Aktivität **Kopieren** zur Registerkarte **Quelle**, und klicken Sie auf **+ Neu**. In diesem Schritt erstellen Sie ein Quelldataset für die Kopieraktivität.
 
-   ![Quelldataset](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![Screenshot: Erstellen eines Quelldatasets für die Kopieraktivität](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. Wählen Sie im Fenster **Neues Dataset** die Option **Azure Blob Storage** aus, und klicken Sie dann auf **Fertig stellen**.
 
    ![Auswählen von „Azure Blob Storage“](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         ![Einstellungen für die zweite Webaktivität](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. Wählen Sie im Pipeline-Designer die Aktivität **Kopieren** aus, klicken Sie auf die Schaltfläche **+->** , und wählen Sie **Fehler** aus.  
 
-    ![Einstellungen für die zweite Webaktivität](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![Screenshot: Auswählen von „Fehler“ für die Kopieraktivität im Pipeline-Designer](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Ziehen Sie die **rote** Schaltfläche neben der Kopieraktivität auf die zweite Webaktivität (**SendFailureEmailActivity**). Sie können die Aktivitäten verschieben, sodass die Pipeline wie in der folgenden Abbildung aussieht:
 
     ![Vollständige Pipeline mit allen Aktivitäten](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
     ![Erfolgreiche Pipelineausführung](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. Klicken **Sie zum Anzeigen von**Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Sie können zur vorherigen Ansicht zurückkehren, indem Sie oben auf **Pipelines** klicken. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**.
 
-    ![Aktivitätsausführungen](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![Screenshot: Anzeigen der Liste mit Aktivitätsausführungen](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Auslösen einer nicht erfolgreichen Pipelineausführung
 1. Wechseln Sie im linken Bereich zur Registerkarte **Bearbeiten**.

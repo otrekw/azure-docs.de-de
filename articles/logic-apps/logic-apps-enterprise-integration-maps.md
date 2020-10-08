@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072656"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570776"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformieren von XML mit Zuordnungen in Azure Logic Apps mithilfe von Enterprise Integration Pack
 
@@ -69,7 +69,7 @@ Zum Erstellen und Hinzufügen von Zuordnungen benötigen Sie keine Logik-App. Da
 
 1. Nachdem die Seite **Assemblys** geöffnet wurde, wählen Sie **Hinzufügen** aus.
 
-   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Screenshot, der die Schaltfläche „Hinzufügen“ auf der Seite „Assemblys“ hervorhebt.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 Je nach Größe Ihrer Assemblydatei führen Sie die Schritte zum Upload einer Assembly aus, die entweder [maximal 2 MB](#smaller-assembly) groß oder [größer als 2 MB (maximal 8 MB)](#larger-assembly) ist.
 Die Grenzwerte für die Anzahl von Assemblys in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322511"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -114,7 +114,7 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 
    Beachten Sie die Option zum **Hinzufügen zu einem vorhandenen Gatewaycluster**, die Sie auswählen, wenn Sie zusätzliche Gateways für Szenarien [Hochverfügbarkeit](#high-availability) installieren.
 
-1. Überprüfen Sie die Region für den Gatewayclouddienst und die [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)-Instanz, die von Ihrer Gatewayinstallation verwendet wird. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant für Ihr Azure-Konto.
+1. Überprüfen Sie die Region für den Gatewayclouddienst und die [Azure Service Bus Messaging-Instanz](../service-bus-messaging/service-bus-messaging-overview.md), die von Ihrer Gatewayinstallation verwendet wird. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant für Ihr Azure-Konto.
 
    ![Bestätigen der Region für den Gatewaydienst und Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 
 ## <a name="check-or-adjust-communication-settings"></a>Überprüfen oder Anpassen von Kommunikationseinstellungen
 
-Das lokale Datengateway ist für Cloudkonnektivität von [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) abhängig und richtet die entsprechenden ausgehenden Verbindungen zu der dem Gateway zugeordneten Azure-Region ein. Wenn in Ihrer Arbeitsumgebung der Datenverkehr über einen Proxy oder eine Firewall an das Internet weitergeleitet werden muss, verhindert diese Einschränkung unter Umständen, dass das lokale Datengateway eine Verbindung mit dem Gatewayclouddienst und Azure Service Bus herstellt. Das Gateway verfügt über mehrere Kommunikationseinstellungen, die Sie anpassen können. Weitere Informationen finden Sie in den folgenden Themen:
+Das lokale Datengateway ist für Cloudkonnektivität von [Azure Service Bus Messaging](../service-bus-messaging/service-bus-messaging-overview.md) abhängig und richtet die entsprechenden ausgehenden Verbindungen zu der dem Gateway zugeordneten Azure-Region ein. Wenn in Ihrer Arbeitsumgebung der Datenverkehr über einen Proxy oder eine Firewall an das Internet weitergeleitet werden muss, verhindert diese Einschränkung unter Umständen, dass das lokale Datengateway eine Verbindung mit dem Gatewayclouddienst und Azure Service Bus Messaging herstellt. Das Gateway verfügt über mehrere Kommunikationseinstellungen, die Sie anpassen können. Weitere Informationen finden Sie in den folgenden Themen:
 
 * [Anpassen von Kommunikationseinstellungen für das lokale Datengateway](/data-integration/gateway/service-gateway-communication)
 * [Konfigurieren von Proxyeinstellungen für das lokale Datengateway](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ Benutzer in Ihrer Organisation können auf lokale Daten zugreifen, für die sie 
 
 Das Gateway ermöglicht die schnellere und sicherere Kommunikation hinter den Kulissen. Diese Kommunikation erfolgt zwischen einem Benutzer in der Cloud, dem Gatewayclouddienst und ihrer lokalen Datenquelle. Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen dem Benutzer, dem Gateway und Ihrer lokalen Datenquelle weiter.
 
-Das Gateway funktioniert mit Firewalls und verwendet nur ausgehende Verbindungen. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Diese Service Bus-Instanz erstellt einen Kanal zwischen dem Gateway und dem aufrufenden Dienst, speichert jedoch keine Daten. Alle über das Gateway übertragenen Daten sind verschlüsselt.
+Das Gateway funktioniert mit Firewalls und verwendet nur ausgehende Verbindungen. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Das Gateway sendet die Daten von lokalen Quellen durch verschlüsselte Kanäle über [Azure Service Bus Messaging](../service-bus-messaging/service-bus-messaging-overview.md). Diese Service Bus-Instanz erstellt einen Kanal zwischen dem Gateway und dem aufrufenden Dienst, speichert jedoch keine Daten. Alle über das Gateway übertragenen Daten sind verschlüsselt.
 
 ![Architektur für das lokale Datengateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ In den folgenden Schritten wird beschrieben, was geschieht, wenn Sie mit einem E
 
 1. Der Clouddienst erstellt eine Abfrage mit den verschlüsselten Anmeldeinformationen für die lokale Datenquelle. Der Dienst sendet dann die Abfrage und die Anmeldeinformationen zur Verarbeitung an die Gatewaywarteschlange.
 
-1. Der Gatewayclouddienst analysiert die Abfrage und pusht die Anforderung dann an Azure Service Bus.
+1. Der Gatewayclouddienst analysiert die Abfrage und pusht die Anforderung dann an Azure Service Bus Messaging.
 
-1. Azure Service Bus sendet die ausstehenden Anforderungen an das Gateway.
+1. Azure Service Bus Messaging sendet die ausstehenden Anforderungen an das Gateway.
 
 1. Das Gateway ruft die Abfrage ab, entschlüsselt die Anmeldeinformationen und stellt anhand dieser Anmeldeinformationen eine Verbindung mit mindestens einer Datenquelle her.
 

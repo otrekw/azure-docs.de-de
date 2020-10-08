@@ -1,14 +1,14 @@
 ---
-title: Fehlerreferenz für Integritätsprüfung
+title: Fehlerreferenz für Registrierungsintegritätsprüfung
 description: Fehlercodes und mögliche Lösungen für Probleme, die beim Ausführen des Diagnosebefehls az acr check-health in Azure Container Registry gefunden wurden.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978313"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565597"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 
@@ -90,7 +90,7 @@ Dieser Fehler bedeutet, dass der Registrierungsanmeldeserver nicht mit einem Zug
 
 Dieser Fehler bedeutet, dass der Client keine sichere Verbindung mit der Containerregistrierung herstellen konnte. Dieser Fehler tritt im Allgemeinen auf, wenn Sie einen Proxyserver ausführen oder verwenden.
 
-*Mögliche Lösungen*: Weitere Informationen zum Arbeiten hinter einem Proxy [finden Sie hier](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Mögliche Lösungen*: Weitere Informationen zum Arbeiten hinter einem Proxy [finden Sie hier](/cli/azure/use-cli-effectively).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

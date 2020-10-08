@@ -4,12 +4,12 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319553"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -34,6 +34,10 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
    * [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen)
    * [Anleitung zum Verschieben von Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Anleitung zum Verschieben von Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+
+1. Wenn Sie eine Ressource verschieben, der (oder einer dieser untergeordneten Ressource) eine Azure-Rolle direkt zugewiesen wurde, wird die Rollenzuweisung nicht verschoben und verwaist. Nach der Verschiebung müssen Sie die Rollenzuweisung erneut erstellen. Schließlich wird die verwaiste Rollenzuweisung automatisch entfernt, doch es ist eine bewährte Methode, die Rollenzuweisung vor dem Verschieben der Ressource zu entfernen.
+
+    Weitere Informationen zum Verwalten von Rollenzuweisungen finden Sie unter [Auflisten von Azure-Rollenzuweisungen](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) und [Hinzufügen oder Entfernen von Rollenzuweisungen](../../role-based-access-control/role-assignments-portal.md).
 
 1. Quellen- und Zielabonnements müssen aktiv sein. Wenn beim Aktivieren eines Kontos, das deaktiviert wurde, Schwierigkeiten auftreten, [erstellen Sie eine Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md). Wählen Sie **Abonnementverwaltung** als Problemtyp aus.
 
@@ -174,11 +178,11 @@ Wenn Sie die Ressourcengruppe anzeigen, ist die Option zum Verschieben deaktivie
 
 Um die Option zum Verschieben zu aktivieren, wählen Sie die Ressourcen aus, die Sie verschieben möchten. Aktivieren Sie das Kontrollkästchen oben in der Liste, um alle Ressourcen auszuwählen. Oder wählen Sie Ressourcen einzeln aus. Nachdem Sie Ressourcen ausgewählt haben, ist die Option zum Verschieben aktiviert.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="Auswählen von Ressourcen":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="Deaktivierte Option zum Verschieben":::
 
 Wählen Sie die Schaltfläche **Verschieben** aus.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Optionen für den Verschiebevorgang":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Deaktivierte Option zum Verschieben":::
 
 Diese Schaltfläche bietet Ihnen drei Optionen:
 
@@ -190,11 +194,11 @@ Wählen Sie aus, ob Sie die Ressource in eine neue Ressourcengruppe oder ein neu
 
 Wählen Sie die Zielressourcengruppe aus. Bestätigen, dass Sie Skripts für diese Ressourcen aktualisieren müssen, und wählen Sie **OK**aus. Wenn Sie Verschieben in ein neues Abonnement ausgewählt haben, müssen Sie auch das Zielabonnement auswählen.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="Auswählen des Ziels":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="Deaktivierte Option zum Verschieben":::
 
 Nachdem Sie überprüft haben, dass die Ressourcen verschoben werden können, wird eine Benachrichtigung angezeigt, dass der Verschiebevorgang ausgeführt wird.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="Benachrichtigung":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="Deaktivierte Option zum Verschieben":::
 
 Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
 

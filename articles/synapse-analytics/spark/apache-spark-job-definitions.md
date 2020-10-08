@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio'
-description: 'Tutorial: Erstellen Sie Spark-Auftragsdefinitionen mithilfe von Azure Synapse Analytics, und übermitteln Sie sie an einen Pool für Apache Spark für Azure Synapse Analytics.'
+description: In diesem Tutorial erfahren Sie, wie Sie Spark-Auftragsdefinitionen mithilfe von Azure Synapse Analytics erstellen und an einen Pool für Apache Spark für Azure Synapse Analytics übermitteln.
 author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 787e9efa8ef11a83b63719cad51f9b26e055620d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260273"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
@@ -47,11 +47,11 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
 
      ![Beispieldateien](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Klicken Sie auf **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2**, und laden Sie **wordcount.py** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch. 
+3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.py** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch. 
 
      ![Python-Datei hochladen](./media/apache-spark-job-definitions/upload-python-file.png)
 
-4. Klicken Sie auf den Hub **Entwickeln** und dann auf das Plussymbol (+), und wählen Sie **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. 
+4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. 
 
      ![Neue Definition für Python erstellen](./media/apache-spark-job-definitions/create-new-definition.png)
 
@@ -75,7 +75,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
 
      ![Festlegen des Werts der Spark-Auftragsdefinition für Python](./media/apache-spark-job-definitions/create-py-definition.png)
 
-7. Klicken Sie auf **Veröffentlichen**, um die Apache Spark-Auftragsdefinition zu speichern.
+7. Wählen Sie **Veröffentlichen** aus, um die Apache Spark-Auftragsdefinition zu speichern.
 
      ![Py-Definition veröffentlichen](./media/apache-spark-job-definitions/publish-py-definition.png)
 
@@ -89,11 +89,11 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
  
      ![Beispieldateien für Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Klicken Sie auf **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2**, und laden Sie **wordcount.jar** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
+ 3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.jar** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
  
      ![Scala-Struktur vorbereiten](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Klicken Sie auf den Hub **Entwickeln** und dann auf das Plussymbol (+), und wählen Sie **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
+ 4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
 
  5. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **Spark (Scala)** aus.
 
@@ -116,7 +116,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
 
      ![Festlegen des Werts der Spark-Auftragsdefinition für Scala](./media/apache-spark-job-definitions/create-scala-definition.png)
 
- 7. Klicken Sie auf **Veröffentlichen**, um die Apache Spark-Auftragsdefinition zu speichern.
+ 7. Wählen Sie **Veröffentlichen** aus, um die Apache Spark-Auftragsdefinition zu speichern.
 
       ![Scala-Definition veröffentlichen](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
@@ -129,11 +129,11 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 
      ![Beispieldateien für dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Klicken Sie auf **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2**, und laden Sie **wordcount.zip** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
+ 3. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** aus, und laden Sie **wordcount.zip** und **shakespeare.txt** in das ADLS Gen2-Dateisystem hoch.
  
      ![DotNet-Struktur vorbereiten](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Klicken Sie auf den Hub **Entwickeln** und dann auf das Plussymbol (+), und wählen Sie **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
+ 4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
 
  5. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **.NET Spark (C#/F#)** aus.
 
@@ -156,7 +156,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 
      ![Festlegen des Werts der Spark-Auftragsdefinition für DotNet](./media/apache-spark-job-definitions/create-dotnet-definition.png)
 
- 7. Klicken Sie auf **Veröffentlichen**, um die Apache Spark-Auftragsdefinition zu speichern.
+ 7. Wählen Sie **Veröffentlichen** aus, um die Apache Spark-Auftragsdefinition zu speichern.
 
       ![DotNet-Definition veröffentlichen](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
@@ -165,29 +165,29 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 Nachdem Sie eine Apache Spark-Auftragsdefinition erstellt haben, können Sie sie an einen Apache Spark-Pool übermitteln. Stellen Sie sicher, dass Sie der **Besitzer der Speicherblobdaten** des ADLS Gen2-Dateisystems sind, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>Szenario 1: Übermitteln einer Apache Spark-Auftragsdefinition
- 1. Öffnen Sie ein Apache Spark-Auftragsdefinitionsfenster, indem Sie darauf klicken.
+ 1. Öffnen Sie durch Auswählen ein Apache Spark-Auftragsdefinitionsfenster.
 
       ![Öffnen der zu übermittelnden Spark-Auftragsdefinition ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
- 2. Klicken Sie auf die Schaltfläche **Übermitteln**, um Ihr Projekt an den ausgewählten Apache Spark-Pool zu übermitteln. Sie können auf die Registerkarte **Spark monitoring URL** (Spark-Überwachungs-URL) klicken, um die Protokollabfrage der Apache Spark-Anwendung anzuzeigen.
+ 2. Wählen Sie die Schaltfläche **Übermitteln** aus, um Ihr Projekt an den ausgewählten Apache Spark-Pool zu übermitteln. Sie können die Registerkarte **Spark monitoring URL** (Spark-Überwachungs-URL) auswählen, um die Protokollabfrage der Apache Spark-Anwendung anzuzeigen.
 
-    ![Klicken Sie auf die Schaltfläche „Übermitteln“, um die Spark-Auftragsdefinition zu übermitteln.](./media/apache-spark-job-definitions/submit-spark-definition.png)
+    ![Auswählen der Schaltfläche „Übermitteln“, um die Spark-Auftragsdefinition zu übermitteln](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
     ![Dialogfeld für die Spark-Übermittlung](./media/apache-spark-job-definitions/submit-definition-result.png)
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>Szenario 2: Anzeigen des Status der Apache Spark-Auftragsausführung
 
- 1. Klicken Sie auf **Überwachen**, und wählen Sie dann die Option **Apache Spark-Anwendungen** aus. Navigieren Sie zur übermittelten Apache Spark-Anwendung.
+ 1. Wählen Sie **Überwachen** und anschließend die Option **Apache Spark-Anwendungen** aus. Navigieren Sie zur übermittelten Apache Spark-Anwendung.
 
      ![Anzeigen der Spark-Anwendung](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 2. Klicken Sie dann auf eine Apache Spark-Anwendung. Das Auftragsfenster **SparkJobDefinition** wird angezeigt. Sie können den Status der Auftragsausführung in diesem Fenster anzeigen.
+ 2. Wählen Sie dann eine Apache Spark-Anwendung aus. Daraufhin wird das Auftragsfenster **SparkJobDefinition** angezeigt. Sie können den Status der Auftragsausführung in diesem Fenster anzeigen.
      
      ![Anzeigen der Protokollabfrage für die Spark-Anwendung](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>Szenario 3: Überprüfen der Ausgabedatei
 
- 1. Klicken Sie auf **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** (hozhaobdbj), und öffnen Sie den zuvor erstellten Ordner **result**. Sie können zum Ordner „result“ navigieren und überprüfen, ob die Ausgabe generiert wurde.
+ 1. Wählen Sie **Daten** -> **Verknüpft** -> **Azure Data Lake Storage Gen2** (hozhaobdbj) aus, und öffnen Sie den zuvor erstellten Ordner **result**. Sie können zum Ordner „result“ navigieren und überprüfen, ob die Ausgabe generiert wurde.
 
      ![Anzeigen der Ausgabedatei](./media/apache-spark-job-definitions/view-output-file.png)
 
@@ -197,7 +197,7 @@ In diesem Abschnitt fügen Sie eine Apache Spark-Auftragsdefinition in einer Pip
 
  1. Öffnen Sie eine vorhandene Apache Spark-Auftragsdefinition.
 
- 2. Klicken Sie oben rechts in der Apache Spark-Auftragsdefinition auf das Symbol, wählen Sie **Vorhandene Pipeline** oder **Neue Pipeline** aus. Weitere Informationen finden Sie auf der Seite „Pipeline“.
+ 2. Wählen Sie das Symbol rechts oben in der Apache Spark-Auftragsdefinition und anschließend **Vorhandene Pipeline** oder **Neue Pipeline** aus. Weitere Informationen finden Sie auf der Seite „Pipeline“.
 
      ![Hinzufügen zur Pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
@@ -205,5 +205,5 @@ In diesem Abschnitt fügen Sie eine Apache Spark-Auftragsdefinition in einer Pip
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial erfahren Sie, wie Sie Apache Spark-Auftragsdefinitionen mithilfe von Azure Synapse Studio erstellen und anschließend an einen Apache Spark-Pool übermitteln. Als Nächstes können Sie Azure Synapse Studio verwenden, um Power BI-Datasets zu erstellen und Power BI-Daten zu verwalten.
+Als Nächstes können Sie Azure Synapse Studio verwenden, um Power BI-Datasets zu erstellen und Power BI-Daten zu verwalten. Weitere Informationen finden Sie im Artikel [Schnellstart: Verknüpfen eines Power BI-Arbeitsbereichs mit einem Synapse-Arbeitsbereich](../quickstart-power-bi.md). 
 

@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren von TLS-Terminierung mit Key Vault-Zertifikaten – PowerShell
 titleSuffix: Azure Application Gateway
-description: Erfahren Sie, wie Sie Azure Application Gateway mit Key Vault für Serverzertifikate integrieren können, die einem HTTPS-fähigen Listener zugeordnet sind.
+description: Erfahren Sie, wie Sie ein Azure PowerShell-Skript verwenden, um Ihren Schlüsseltresor in Ihr Anwendungsgateway für TLS/SSL-Terminierungszertifikate zu integrieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323422"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurieren der TLS-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
 

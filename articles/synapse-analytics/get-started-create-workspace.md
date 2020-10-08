@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300104"
 ---
-# <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
+# <a name="prerequisites"></a>Voraussetzungen
+
+Um alle Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff auf eine Ressourcengruppe, für die Ihnen die Rolle **Besitzer** zugewiesen wurde. Erstellen Sie den Synapse-Arbeitsbereich in dieser Ressourcengruppe.
+
+## <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
 In diesem Tutorial erfahren Sie, wie Sie einen Synapse-Arbeitsbereich, einen SQL-Pool und einen Apache Spark-Pool erstellen. 
 

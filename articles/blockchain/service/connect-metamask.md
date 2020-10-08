@@ -4,12 +4,12 @@ description: Stellen Sie mithilfe von MetaMask eine Verbindung mit einem Azure B
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920582"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90530436"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Schnellstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts
 
@@ -89,7 +89,7 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
     Unter **contract simple** wird eine statische Variable namens **balance** deklariert. Zudem werden zwei Funktionen definiert. Die **add**-Funktion fügt eine Zahl zu **balance** hinzu. Die **get**-Funktion gibt den Wert von **balance** zurück.
 1. Zum Kompilieren des Vertrags wählen Sie zuerst den Bereich „Solidity Compiler“ aus und dann die Option **Compile simple.sol**.
 
-    ![Kompilieren](./media/connect-metamask/compile.png)
+    ![Screenshot: Kompilierung eines Vertrags](./media/connect-metamask/compile.png)
 
 1. Wählen Sie den Bereich **Bereitstellen und ausführen** aus, und legen Sie dann **Umgebung** auf **Web3 (injiziert)** fest, um über MetaMask eine Verbindung mit Ihrem Blockchainmitglied herzustellen.
 
@@ -97,7 +97,7 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
 
 1. Wählen Sie den Smart Contract **simple** und dann die Option **Deploy** (Bereitstellen) aus.
 
-    ![Bereitstellen](./media/connect-metamask/deploy.png)
+    ![Screenshot: Bereitstellung und Ausführung von Transaktionen mit einem Vertrag und der Option „Bereitstellen“ ausgewählt](./media/connect-metamask/deploy.png)
 
 
 1. Eine MetaMask-Benachrichtigung mit der Warnung wird angezeigt, dass nicht genügend Mittel vorhanden sind, um die Transaktion auszuführen.

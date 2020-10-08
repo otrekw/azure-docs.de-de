@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287711"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnose von Konnektivitätsproblemen zwischen Azure Synapse Studio (Vorschauversion) mit PowerShell-Skript
 
@@ -27,13 +27,13 @@ Azure Synapse Studio (Vorschauversion) hängt von einer Reihe von ordnungsgemä�
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
-Klicken Sie mit der rechten Maustaste auf den folgenden Link und dann auf „Ziel speichern unter“:
+Klicken Sie mit der rechten Maustaste auf den folgenden Link, und wählen Sie „Ziel speichern unter“ aus:
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Alternativ dazu können Sie den Link direkt öffnen und die geöffnete Skriptdatei speichern. Speichern Sie die Adresse des obigen Links nicht, da sie sich zukünftig ändern kann.
 
-Klicken Sie im Datei-Explorer mit der rechten Maustaste auf die heruntergeladene Skriptdatei, und klicken Sie dann auf „Mit PowerShell ausführen“.
+Klicken Sie im Datei-Explorer mit der rechten Maustaste auf die heruntergeladene Skriptdatei, und wählen Sie „Mit PowerShell ausführen“ aus.
 
 ![Ausführen heruntergeladener Skriptdateien mit PowerShell](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 

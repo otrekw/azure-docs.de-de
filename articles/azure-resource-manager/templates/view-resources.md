@@ -3,12 +3,12 @@ title: Ermitteln von Ressourceneigenschaften
 description: Beschreibt, wie Sie nach Ressourceneigenschaften suchen.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327747"
 ---
 # <a name="discover-resource-properties"></a>Ermitteln von Ressourceneigenschaften
 
@@ -74,7 +74,7 @@ Der Ressourcen-Explorer ist in das Azure-Portal eingebettet. Bevor Sie diese Met
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Geben Sie im Suchfeld **Ressourcen-Explorer** ein, und wählen Sie dann **Ressourcen-Explorer** aus.
 
-    ![Azure-Portal Ressourcen-Explorer](./media/view-resources/azure-portal-resource-explorer.png)
+    ![Screenshot, der das Suchen nach dem Ressourcen-Explorer im Azure-Portal zeigt.](./media/view-resources/azure-portal-resource-explorer.png)
 
 1. Erweitern Sie auf der linken Seite **Abonnements** und dann Ihr Azure-Abonnement. Sie finden das Speicherkonto entweder unter **Providers** (Anbieter) oder unter **ResourceGroups** (Ressourcengruppen).
 

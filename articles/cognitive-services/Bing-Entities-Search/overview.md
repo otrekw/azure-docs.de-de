@@ -1,7 +1,7 @@
 ---
 title: Was ist die Bing-Entitätssuche-API?
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Bing-Entitätssuche-API zum Extrahieren und Suchen von Entitäten und Orten in Suchabfragen.
+description: Hier erhalten Sie Informationen zur Bing-Entitätssuche-API und zum Extrahieren und Suchen von Entitäten und Orten in Suchabfragen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: e0402b1695e1d5f5c9f29d128f4cd405f219e724
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604810"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90532493"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Was ist die Bing-Entitätssuche-API?
 

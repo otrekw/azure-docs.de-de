@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/01/2020
+ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 11184b2e9770ba6fd7c4ec9d04862c0890ac94c6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930439"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336529"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -55,7 +55,7 @@ Wenn eine Region ausfällt, wird der Datenverkehr an den nächstgelegenen fehler
 
 Der Integritätstest des regionsübergreifenden Lastenausgleichs erfasst alle 20 Sekunden Informationen zur Verfügbarkeit. Wenn die Verfügbarkeit eines regionalen Lastenausgleichs auf 0 sinkt, erkennt der regionsübergreifende Lastenausgleich den Fehler. Der regionale Lastenausgleich wird dann von der Rotation ausgenommen. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Abbildung der Ansicht des globalen Regionsdatenverkehrs." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Abbildung des regionsübergreifenden Lastenausgleichs." border="true":::
 
 ### <a name="ultra-low-latency"></a>Extrem geringe Latenz
 

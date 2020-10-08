@@ -4,18 +4,18 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 07/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 6c348b3dd0005eeab154aa2d74abc617cbd1d0cb
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fbde8bc28f8fc34b7a6a6443950b8733c6dcff45
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529386"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672373"
 ---
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-Wenn sich Ihr Datenspeicher in einem lokalen Netzwerk, in einem virtuellen Azure-Netzwerk oder in einer virtuellen privaten Amazon-Cloud befindet, müssen Sie eine [selbstgehostete Integration Runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) einrichten, um eine Verbindung herzustellen.
+Wenn sich Ihr Datenspeicher in einem lokalen Netzwerk, in einem virtuellen Azure-Netzwerk oder in einer virtuellen privaten Amazon-Cloud befindet, müssen Sie eine [selbstgehostete Integration Runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) konfigurieren, um eine Verbindung herzustellen.
 
-Handelt es sich bei Ihrem Datenspeicher um einen verwalteten Clouddatendienst, können Sie Azure Integration Runtime verwenden. Ist der Zugriff auf IP-Adressen beschränkt, die in der Whiteliste der Firewallregeln enthalten sind, können Sie [Azure Integration Runtime-IPs](../articles/data-factory/azure-integration-runtime-ip-addresses.md) zur Zulassungsliste hinzufügen. 
+Handelt es sich bei Ihrem Datenspeicher um einen verwalteten Clouddatendienst, können Sie alternativ Azure Integration Runtime verwenden. Ist der Zugriff auf IP-Adressen beschränkt, die in den Firewallregeln genehmigt sind, können Sie [Azure Integration Runtime-IPs](../articles/data-factory/azure-integration-runtime-ip-addresses.md) zur Positivliste hinzufügen. 
 
 Weitere Informationen zu den von Data Factory unterstützten Netzwerksicherheitsmechanismen und -optionen finden Sie unter [Datenzugriffsstrategien](../articles/data-factory/data-access-strategies.md).

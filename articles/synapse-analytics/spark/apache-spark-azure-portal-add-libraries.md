@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b7aea6565e8301e2aeb96263b8e7b1d2ea64995d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589543"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649897"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 
@@ -85,7 +85,7 @@ So installieren Sie eine Bibliothek direkt aus dem Azure-Portal in einem Spark-P
 
  4. Laden Sie die Umgebungskonfigurationsdatei mithilfe der Dateiauswahl hoch.
 
-![Hinzufügen von Python-Bibliotheken](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Hinzufügen von Python-Bibliotheken")
+![Screenshot, der die Schaltfläche zum Hochladen der Umgebungskonfigurationsdatei hervorhebt.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Hinzufügen von Python-Bibliotheken")
 
 ### <a name="verify-installed-libraries"></a>Überprüfen von installierten Bibliotheken
 

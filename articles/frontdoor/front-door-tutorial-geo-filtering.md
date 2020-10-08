@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Konfigurieren einer WAF-Richtlinie mit Geofilterung – Azure Front Door'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Richtlinie für die Geofilterung erstellen und Ihrem vorhandenen Front Door-Front-End-Host zuordnen.
+description: In diesem Tutorial erfahren Sie, wie Sie eine WAF-Richtlinie für die Geofilterung erstellen und Ihrem vorhandenen Front Door-Front-End-Host zuordnen.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f9b5869f7dd472c50ffb2c1c0dce765200f53882
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324024"
 ---
 # <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Tutorial: Einrichten einer WAF-Richtlinie mit Geofilterung für Ihre Front Door-Instanz
 In diesem Tutorial wird veranschaulicht, wie Sie mit Azure PowerShell eine Beispielrichtlinie für die Geofilterung erstellen und sie Ihrem vorhandenen Front Door-Front-End-Host zuordnen. Diese Beispielrichtlinie für die Geofilterung blockiert Anforderungen aus allen Ländern/Regionen, mit Ausnahme der USA.

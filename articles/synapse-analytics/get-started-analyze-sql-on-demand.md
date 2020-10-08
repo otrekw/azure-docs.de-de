@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erste Schritte zum Analysieren von Daten mit SQL On-Demand'
+title: 'Tutorial: Erste Schritte bei Analysieren von Daten mit SQL ohne Server'
 description: In diesem Tutorial erfahren Sie, wie Sie Daten mit SQL On-Demand mithilfe von Daten analysieren, die sich in Spark-Datenbanken befinden.
 services: synapse-analytics
 author: saveenr
@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 93ebc1c5e89e54f4813f270b9f8b7b13f672fbe3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300223"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>Analysieren von Daten mit SQL On-Demand
 
-In diesem Tutorial erfahren Sie, wie Sie Daten mit SQL On-Demand mithilfe von Daten analysieren, die sich in Spark-Datenbanken befinden. 
+In diesem Tutorial erfahren Sie, wie Sie Daten mit SQL ohne Server analysieren und dabei einen On-Demand-SQL-Pool sowie Daten in Spark-Datenbanken verwenden. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage--using-sql-on-demand"></a>Analysieren von NYC Taxi-Daten im Blobspeicher mithilfe von SQL On-Demand
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-sql-on-demand-pool"></a>Analysieren von NYC Taxi-Daten im Blobspeicher mithilfe eines SQL On-Demand-Pools
 
 1. Klicken Sie im Hub **Daten** unter **Verknüpft** mit der rechten Maustaste auf **Azure Blob Storage > Beispieldatasets > nyc_tlc_yellow**, und wählen Sie **OBERSTE 100 Zeilen auswählen** aus.
 1. Dadurch wird ein neues SQL-Skript mit dem folgendem Code erstellt:

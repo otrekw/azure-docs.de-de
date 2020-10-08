@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269555"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
 
@@ -96,7 +96,7 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
    1. Erweitern Sie jeden Schritt, für den eine autorisierte Verbindung erforderlich ist, und klicken Sie auf **Neue hinzufügen**.
 
-      ![Hinzufügen einer neuen Verbindung](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
+      ![Screenshot, der die ausgewählte Schaltfläche „Neu hinzufügen“ im Outlook-Fenster „Verbindungen“ zeigt.](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. Melden Sie sich bei jedem Dienst an, oder geben Sie die erforderlichen Anmeldeinformationen zum Autorisieren der Verbindung an.
 

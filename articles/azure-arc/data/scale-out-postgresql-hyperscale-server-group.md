@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285382"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Aufskalieren der Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe durch Hinzufügen weiterer Workerknoten
 In diesem Dokument wird erläutert, wie Sie eine Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe aufskalieren. Dies geschieht anhand eines Szenarios. **Wenn Sie das Szenario nicht durchlaufen möchten und sich lediglich über das Konzept des Aufskalierens informieren möchten, fahren Sie mit dem Absatz [Aufskalieren](#scale-out)** fort.
@@ -151,7 +151,11 @@ Das allgemeine Format des Befehls zum Aufskalieren lautet:
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-Erhöhen Sie z. B. die Anzahl der Workerknoten von 2 auf 4, indem Sie den folgenden Befehl ausführen:
+> [!CAUTION]
+> Diese Vorschauversion unterstützt kein nachfolgendes Abskalieren. Beispielsweise ist es noch nicht möglich, die Anzahl der Workerknoten zu reduzieren. Falls dies erforderlich wird, müssen Sie die Daten extrahieren/sichern, die Servergruppe löschen, eine neue Servergruppe mit weniger Workerknoten erstellen und die Daten dann importieren.
+
+In diesem Beispiel erhöhen wir die Anzahl der Workerknoten von 2 auf 4, indem wir den folgenden Befehl ausführen:
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
@@ -196,7 +200,8 @@ Mit dem Befehl wird neben der Anzahl der Workerknoten die Liste der Servergruppe
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **Hinweis:** Wenn Sie eine Servergruppe der Version 11 von PostgreSQL anstelle von Version 12 erstellt haben, führen Sie stattdessen den folgenden Befehl aus: _kubectl get postgresql-11_
+> [!NOTE]
+> Wenn Sie eine Servergruppe der Version 11 von PostgreSQL anstelle von Version 12 erstellt haben, führen Sie stattdessen den folgenden Befehl aus: _kubectl get postgresql-11_
 
 #### <a name="with-a-sql-query"></a>Mit einer SQL-Abfrage:
 Stellen Sie mit dem Clienttool Ihrer Wahl eine Verbindung mit Ihrer Servergruppe her, und führen Sie die folgende Abfrage aus:
@@ -230,7 +235,6 @@ Notieren Sie sich die Ausführungszeit.
 >* [Hochleistungs-HTAP mit Azure PostgreSQL Hyperscale (Citus)](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [Entwickeln von HTAP-Anwendungen mit Python und Azure PostgreSQL Hyperscale (Citus)](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> Diese Vorschauversion unterstützt kein nachfolgendes Abskalieren. Beispielsweise ist es noch nicht möglich, die Anzahl der Workerknoten zu reduzieren. Falls dies erforderlich wird, müssen Sie die Daten extrahieren/sichern, die Servergruppe löschen, eine neue Servergruppe mit weniger Workerknoten erstellen und die Daten dann importieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

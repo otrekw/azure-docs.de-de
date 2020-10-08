@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67178619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361387"
 ---
 Führen Sie die Schritte für Ihre spezifische Situation aus.
 
@@ -35,7 +35,7 @@ Führen Sie diese Schritte nur aus, wenn es keine Möglichkeit gibt, den Compute
     - S. No: die Seriennummer des Prozessservers.
     - IP/Name: Die IP-Adresse und der Name des Computers, auf dem der Prozessserver ausgeführt wird.
     - Heartbeat: Der letzte Heartbeat vom Computer des Prozessservers.
-    ![Unregister-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ![Screenshot: Informationen im Klartext zu Ihren Prozessservern sowie der Aufforderung, einen der oben genannten Server auszuwählen, um seine Registrierung aufzuheben(media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
 4. Geben Sie die Seriennummer des Prozessservers an, dessen Registrierung Sie aufheben möchten.
 5. Durch Aufheben der Registrierung eines Prozessservers werden alle zugehörigen Details aus dem System entfernt, und es wird folgende Meldung angezeigt: **Servername> (Server-IP-Adresse) wurde erfolgreich deinstalliert**

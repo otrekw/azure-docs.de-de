@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288068"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Unterstützung der Datenbanksortierung für Synapse SQL
 
@@ -24,7 +24,7 @@ Sie können die standardmäßige Datenbanksortierung im Azure-Portal ändern, we
 Mit der CREATE DATABASE-Anweisung können Sie die standardmäßige Datenbanksortierung von Synapse SQL On-Demand zur Erstellungszeit angeben.
 
 ## <a name="change-collation"></a>Ändern der Sortierung
-Aktualisieren Sie zum Ändern der Standardsortierung für die SQL-Pooldatenbank einfach das Feld „Sortierung“ auf der Bereitstellungsoberfläche. Beispiel: Wenn Sie die Standardsortierung so ändern möchten, dass die Groß-/Kleinschreibung beachtet wird, ändern Sie einfach den Namen „SQL_Latin1_General_CP1_CI_AS“ der Sortierung in „SQL_Latin1_General_CP1_CS_AS“. 
+Aktualisieren Sie zum Ändern der Standardsortierung für die SQL-Pooldatenbank das Feld „Sortierung“ auf der Bereitstellungsoberfläche. Beispiel: Wenn Sie die Standardsortierung so ändern möchten, dass die Groß-/Kleinschreibung beachtet wird, ändern Sie den Namen „SQL_Latin1_General_CP1_CI_AS“ der Sortierung in „SQL_Latin1_General_CP1_CS_AS“. 
 
 Um die Standardsortierung für eine SQL On-Demand-Datenbank zu ändern, können Sie die ALTER DATABASE-Anweisung verwenden.
 

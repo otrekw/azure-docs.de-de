@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320595"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90032995"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Vorschau)
 
@@ -85,7 +85,7 @@ Cluster, die in zwei Regionen bereitgestellt werden, werden unter normalen Umst�
 - Der [Azure Traffic Manager](../traffic-manager/index.yml) für die Region erkennt, dass der Integritätstest beeinträchtigt wird, und schaltet den Endpunkt in eine gekoppelte Region um.
 - Vorhandene Verbindungen können nicht verwendet werden, und interne Serverfehler oder Timeoutprobleme werden empfangen.
 - Alle Vorgänge auf Steuerungsebene werden blockiert. Kunden können keine Nachweisanbieter erstellen und Richtlinien in der primären Region aktualisieren.
-- Alle Vorgänge auf Datenebene, einschließlich Nachweisen und Aufrufen, funktionieren weiterhin in der primären Region.
+- Alle Vorgänge auf Datenebene, einschließlich Nachweisaufrufen, funktionieren weiterhin in der primären Region.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [grundlegende Konzepte von Azure Attestation](basic-concepts.md).

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c2dd0ce3c3e9a0f1f699b58ed2657394ad9acbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273222"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio-Dashboards
 
@@ -49,7 +49,7 @@ NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)
 controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
 ```
 
-Wenn Sie einen LoadBalancer-Typ verwenden, sollten Sie die externe IP-Adresse und Portnummer 300080 kopieren.  Wenn Sie NodePort verwenden, sollten Sie die IP-Adresse Ihres Kubernetes-API-Servers und die in der Spalte „PORT(S)“ aufgeführte Portnummer verwenden.
+Wenn Sie einen LoadBalancer-Typ verwenden, sollten Sie die externe IP-Adresse und Portnummer kopieren. Wenn Sie NodePort verwenden, sollten Sie die IP-Adresse Ihres Kubernetes-API-Servers und die in der Spalte „PORT(S)“ aufgeführte Portnummer verwenden.
 
 Anschließend sollten Sie eine URL für Ihren Endpunkt erstellen, indem Sie diese Informationen wie folgt kombinieren:
 

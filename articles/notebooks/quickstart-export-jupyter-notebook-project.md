@@ -3,12 +3,12 @@ title: Exportieren eines Jupyter Notebook-Projekts aus Azure Notebooks (Vorscha
 description: Hier wird beschrieben, wie Sie schnell ein Jupyter Notebook-Projekt exportieren.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892098"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90030445"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Schnellstart: Exportieren eines Jupyter Notebook-Projekts in Azure Notebooks (Vorschauversion)
 
@@ -34,7 +34,7 @@ Ein vorhandenes Azure Notebooks-Projekt.
 
 Nachdem Sie Ihre Projektdateien heruntergeladen haben, können Sie sie mit anderen Jupyter Notebook-Lösungen nutzen. Einige der in den folgenden Abschnitten beschriebenen Optionen umfassen Folgendes: 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
-- [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces)
+- [GitHub Codespaces](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
@@ -58,14 +58,13 @@ Nach dem [Herunterladen](#export-an-azure-notebooks-project) Ihrer Projektdateie
 
 Sie können auch das [Azure Notebooks-Umgebungsskript](#create-an-environment-for-notebooks) mit Visual Studio Code verwenden, um eine Umgebung zu erstellen, die Azure Notebooks (Vorschauversion) entspricht.
 
-## <a name="use-notebooks-in-visual-studio-codespaces"></a>Verwenden von Notebooks in Visual Studio Codespaces
+## <a name="use-notebooks-in-github-codespaces"></a>Verwenden von Notebooks in GitHub Codespaces
 
-Visual Studio Codespaces verfügt über in der Cloud gehostete Umgebungen, in denen Sie Ihre Notebooks mit Visual Studio Code oder Ihrem Webbrowser bearbeiten können. Sie erhalten die gleiche leistungsfähige Jupyter-Umgebung wie in VS Code, ohne dass Sie Installationen auf Ihrem Gerät durchführen müssen. Wenn Sie keine lokale Umgebung einrichten möchten und eine cloudbasierte Lösung bevorzugen, ist die Erstellung eines Codespace eine gute Option. Erste Schritte:
-
+GitHub Codespaces verfügt über in der Cloud gehostete Umgebungen, in denen Sie Ihre Notebooks mit Visual Studio Code oder Ihrem Webbrowser bearbeiten können. Sie erhalten die gleiche leistungsfähige Jupyter-Umgebung wie in VS Code, ohne dass Sie Installationen auf Ihrem Gerät durchführen müssen. Wenn Sie keine lokale Umgebung einrichten möchten und eine cloudbasierte Lösung bevorzugen, ist die Erstellung eines Codespace eine gute Option. Erste Schritte:
 1. Führen Sie den [Download](#export-an-azure-notebooks-project) Ihrer Projektdateien durch.
-1. [Erstellen Sie ein GitHub-Repository](https://help.github.com/github/getting-started-with-github/create-a-repo) zum Speichern Ihrer Notebooks. 
+1. [Erstellen Sie ein GitHub-Repository](https://help.github.com/github/getting-started-with-github/create-a-repo) zum Speichern Ihrer Notebooks.   
 1. [Fügen Sie Ihre Dateien dem Repository hinzu](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository).
-1. Richten Sie Visual Studio Codespaces über den [Browser](https://docs.microsoft.com/visualstudio/online/how-to/browser), [Visual Studio](https://docs.microsoft.com/visualstudio/online/how-to/vside) oder [Visual Studio Code](https://docs.microsoft.com/visualstudio/online/how-to/vscode) ein.
+1. [Beantragen Sie Zugriff auf die Vorschauversion von GitHub Codespaces.](https://github.com/features/codespaces)
 
 ## <a name="use-notebooks-with-azure-machine-learning"></a>Verwenden von Notebooks mit Azure Machine Learning
 
@@ -93,7 +92,7 @@ Mit [Azure Lab Services](https://azure.microsoft.com/services/lab-services/) kö
 
 ## <a name="use-github"></a>Verwenden von GitHub
 
-Mit GitHub können Sie kostenlos und mit Quellcodeverwaltung Notebooks (und andere Dateien) speichern, für andere Benutzer freigeben und zusammen bearbeiten. Wenn Sie nach einer Möglichkeit suchen, Ihre Projekte gemeinsam zu nutzen und mit anderen Benutzern zusammenzuarbeiten, ist GitHub eine gute Option. Darüber hinaus ist auch die Kombination mit [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces) möglich, um eine leistungsfähige Entwicklungsumgebung zu schaffen. Erste Schritte mit GitHub
+Mit GitHub können Sie kostenlos und mit Quellcodeverwaltung Notebooks (und andere Dateien) speichern, für andere Benutzer freigeben und zusammen bearbeiten. Wenn Sie nach einer Möglichkeit suchen, Ihre Projekte gemeinsam zu nutzen und mit anderen Benutzern zusammenzuarbeiten, ist GitHub eine gute Option, die mit [GitHub Codespaces](#use-notebooks-in-github-codespaces) kombiniert werden kann, um eine leistungsfähige Entwicklungsumgebung zu schaffen. Erste Schritte mit GitHub
 
 1. Führen Sie den [Download](#export-an-azure-notebooks-project) Ihrer Projektdateien durch.
 1. [Erstellen Sie ein GitHub-Repository](https://help.github.com/github/getting-started-with-github/create-a-repo) zum Speichern Ihrer Notebooks. 
@@ -103,6 +102,6 @@ Mit GitHub können Sie kostenlos und mit Quellcodeverwaltung Notebooks (und ande
 
 - [Python in Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial)
 - [Azure Machine Learning und Jupyter Notebooks](../machine-learning/how-to-run-jupyter-notebooks.md)
-- [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [Weitere Informationen zu GitHub Codespaces](https://github.com/features/codespaces)
 - [Azure Lab Services](https://azure.microsoft.com/services/lab-services/)
 - [GitHub](https://help.github.com/github/getting-started-with-github/)

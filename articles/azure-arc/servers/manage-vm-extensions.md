@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329073"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -34,7 +34,7 @@ Die Funktionalität der VM-Erweiterungen ist nur in den [unterstützten Regionen
 
 ## <a name="extensions"></a>Erweiterungen
 
-In dieser Vorschau unterstützen wir die folgenden VM-Erweiterungen auf Windows- und Linux-Computern.
+In dieser Version unterstützen wir die folgenden VM-Erweiterungen auf Windows- und Linux-Computern.
 
 |Durchwahl |OS |Herausgeber |Zusätzliche Informationen |
 |----------|---|----------|-----------------------|
@@ -66,10 +66,7 @@ Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Z
 
 Überprüfen Sie, ob Ihr Computer mit den [unterstützten Versionen](agent-overview.md#supported-operating-systems) des Windows- und Linux-Betriebssystems für den Azure Connected Machine-Agent übereinstimmt.
 
-Dies ist die Mindestversion des Connected Machine-Agents, der mit diesem Feature unterstützt wird:
-
-* Windows: 0.7.x
-* Linux: 0.8.x
+Die Mindestversion des Connected Machine-Agents, die mit dieser Funktion unter Windows und Linux unterstütz wird, ist Version 1.0.
 
 Informationen für das Upgrade Ihres Computers auf die erforderliche Agent-Version finden Sie unter [Agent aktualisieren](manage-agent.md#upgrading-agent).
 
@@ -77,7 +74,7 @@ Informationen für das Upgrade Ihres Computers auf die erforderliche Agent-Versi
 
 VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server verwalteten Computer angewendet werden.
 
-1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://aka.ms/arcserver-preview).
+1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
 
 2. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
 
@@ -719,22 +716,10 @@ Das Entfernen mindestens einer Erweiterung von einem Arc-fähigen Server kann nu
 
 4. Wählen Sie **Deinstallieren** aus. Wenn Sie zur Bestätigung aufgefordert werden, wählen Sie **Ja** aus, um fortzufahren.
 
-## <a name="troubleshooting"></a>Problembehandlung
-
-Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal abgerufen werden.
-
-Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
-
-1. Um die Protokolldatei des Gast-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` für Windows und in `/var/lib/GuestConfig/ext_mgr_logs` für Linux ansehen.
-
-2. Überprüfen Sie die Erweiterungsprotokolle für die spezifische Erweiterung auf weitere Details in `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` für Windows. Die Erweiterungsausgabe wird für jede unter Linux installierte Erweiterung in einer Datei unter `/var/lib/GuestConfig/extension_logs` protokolliert.
-
-3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannte Probleme, etc. Informationen zur weiteren Problembehandlung für jede Erweiterung finden Sie im Abschnitt **Problembehandlung und Support** in der Übersicht für die jeweilige Erweiterung. Dies schließt die Beschreibung der Fehlercodes ein, die in das Protokoll geschrieben werden. Die Artikel zur Erweiterung sind in der [Tabelle der Erweiterungen](#extensions) weiter oben in diesem Artikel verlinkt.
-
-4. Sehen Sie sich die Systemprotokolle an. Überprüfen Sie, ob es andere Vorgänge gab, die möglicherweise die Erweiterung beeinträchtigt haben, z.B. eine lange Installation einer anderen Anwendung, für die exklusiver Zugriff auf den Paket-Manager notwendig war.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
+* Informationen zur Problembehandlung finden Sie im [Problembehandlungs-Handbuch für VM-Erweiterungen](troubleshoot-vm-extensions.md).
 
-- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
+
+* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.

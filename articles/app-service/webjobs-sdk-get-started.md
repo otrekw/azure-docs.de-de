@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959054"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652039"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -264,13 +264,13 @@ In diesem Abschnitt wird das Projekt lokal erstellt und ausgeführt, und die Fun
 
 1. Geben Sie *queue* als Namen für die Warteschlange ein, und wählen Sie dann **OK** aus.
 
-   ![Erstellen einer Warteschlange](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Screenshot, der zeigt, wo Sie die Warteschlange erstellen und sie „Warteschlange“ nennen. ](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. Klicken Sie mit der rechten Maustaste auf den Knoten für die neue Warteschlange, und wählen Sie dann **Warteschlange anzeigen** aus.
 
 1. Wählen Sie das Symbol **Nachricht hinzufügen** aus.
 
-   ![Erstellen einer Warteschlange](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Screenshot, der das Symbol „Nachricht hinzufügen“ hervorhebt.](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. Geben Sie im Dialogfeld **Nachricht hinzufügen** die Zeichenfolge *Hello World!* als **Nachrichtentext** ein, und wählen Sie dann **OK** aus. Es gibt jetzt eine Nachricht in der Warteschlange.
 

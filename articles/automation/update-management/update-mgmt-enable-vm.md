@@ -2,15 +2,15 @@
 title: Aktivieren der Azure Automation-Updateverwaltung von einer Azure-VM aus
 description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung von einer Azure-VM aus aktivieren.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/16/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 27832190125840e367edbfb2db8e4134f98b192d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dead4649635bebd9f73f79937dea1d24565f273e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327793"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Aktivieren der Updateverwaltung über einen virtuellen Azure-Computer
 
@@ -35,13 +35,15 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie den virtuellen Computer aus, für den Sie die Updateverwaltung aktivieren möchten. VMs können in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Sie
 
-3. Wählen Sie auf der Seite des virtuellen Computers unter **Vorgänge** die Option **Updateverwaltung** aus.
+3. Wählen Sie auf der Seite des virtuellen Computers unter **Vorgänge** die Option **Gast- und Hostaktualisierungen** aus.
+
+    ![Auswählen von „Gast- und Hostupdates“ im linken Bereich](media/update-mgmt-enable-vm/select-guest-and-os-updates.png)
 
 4. Sie müssen über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um zu bestimmen, ob der virtuelle Computer für einen Arbeitsbereich aktiviert ist. Informationen zu weiteren erforderlichen Berechtigungen finden Sie unter [Erforderliche Berechtigungen für das Aktivieren von Computern](../automation-role-based-access-control.md#feature-setup-permissions). Informationen zum gleichzeitigen Aktivieren mehrerer Computer finden Sie unter [Aktivieren der Updateverwaltung aus einem Automation-Konto](update-mgmt-enable-automation-account.md).
 
-5. Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Updateverwaltung zu aktivieren. Nach dem Aktivieren der Updateverwaltung kann es ca. 15 Minuten dauern, bis Sie die Updatebewertung der VM anzeigen können.
+5. Wählen Sie auf der Seite zum Aktivieren der Updateverwaltung den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Updateverwaltung zu aktivieren. Nach dem Aktivieren der Updateverwaltung kann es ca. 15 Minuten dauern, bis Sie die Updatebewertung der VM anzeigen können.
 
-    ![Aktivieren der Updateverwaltung](media/update-mgmt-enable-vm/manageupdates-update-enable.png)
+    ![Aktivieren der Updateverwaltung](media/update-mgmt-enable-vm/enable-update-management.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

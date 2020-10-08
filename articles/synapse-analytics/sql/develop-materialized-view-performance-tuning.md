@@ -1,6 +1,6 @@
 ---
 title: Leistungsoptimierung mit materialisierten Sichten
-description: Empfehlungen und Überlegungen, die Sie kennen sollten, wenn Sie materialisierte Sichten zur Verbesserung Ihrer Abfrageleistung verwenden.
+description: Empfehlungen und Überlegungen zu materialisierten Sichten zur Verbesserung Ihrer Abfrageleistung.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289037"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -29,7 +29,7 @@ Eine Standardsicht berechnet die zugehörigen Daten jedes Mal, wenn sie verwende
 
 Eine materialisierte Sicht berechnet vorab, speichert und verwaltet die zugehörigen Daten im SQL-Pool wie eine Tabelle.  Die Neuberechnung ist nicht jedes Mal erforderlich, wenn eine materialisierte Sicht verwendet wird.  Deshalb können Abfragen, die alle Daten oder eine Teilmenge davon in materialisierten Sichten verwenden, eine schnellere Leistung erzielen.  Noch besser: Weil Abfragen eine materialisierte Sicht verwenden können, ohne direkt darauf zu verweisen, muss der Anwendungscode nicht geändert werden.  
 
-Die meisten Anforderungen an eine Standardsicht gelten weiterhin für eine materialisierte Sicht. Ausführliche Informationen zur Syntax für materialisierte Sichten und andere Anforderungen finden Sie unter [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Die meisten Anforderungen an eine Standardsicht gelten weiterhin für eine materialisierte Sicht. Ausführliche Informationen zur Syntax für materialisierte Sichten und andere Anforderungen finden Sie unter [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 | Vergleich                     | Sicht                                         | Materialisierte Sicht
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +55,8 @@ Eine ordnungsgemäß entworfene materialisierte Sicht bietet folgende Vorteile:
 Im Vergleich zu anderen Data Warehouse-Anbietern bieten die im SQL-Pool implementierten materialisierten Sichten die folgenden zusätzlichen Vorteile:
 
 - Automatische und synchrone Datenaktualisierung bei Datenänderungen in Basistabellen. Es ist keine Benutzeraktion erforderlich.
-- Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Häufige Szenarios  
 
@@ -143,13 +143,17 @@ Der Data Warehouse-Optimierer kann bereitgestellte materialisierte Sichten autom
 
 **Überwachen von materialisierten Sichten**
 
-Eine materialisierte Sicht wird im Data Warehouse wie eine Tabelle mit gruppiertem Columnstore-Index (CCI) gespeichert.  Das Lesen von Daten aus einer materialisierten Sicht besteht aus dem Überprüfen des Indexes und Anwenden von Änderungen aus dem Deltaspeicher.  Wenn die Anzahl der Zeilen im Deltaspeicher zu hoch ist, kann die Auflösung einer Abfrage aus einer materialisierten Sicht länger dauern als das direkte Abfragen der Basistabellen.  Um eine Leistungsbeeinträchtigung bei der Abfrage zu vermeiden, empfiehlt es sich, [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zur Überwachung von „overhead_ratio (total_rows/base_view_row)“ der Sicht auszuführen.  Wenn der Wert für „overhead_ratio“ zu hoch ist, sollten Sie die materialisierte Sicht neu erstellen, damit alle Zeilen im Deltaspeicher in den Columnstore-Index verschoben werden.  
+Eine materialisierte Sicht wird im Data Warehouse wie eine Tabelle mit gruppiertem Columnstore-Index (CCI) gespeichert.  Das Lesen von Daten aus einer materialisierten Sicht besteht aus dem Überprüfen des Indexes und Anwenden von Änderungen aus dem Deltaspeicher.  Wenn die Anzahl der Zeilen im Deltaspeicher zu hoch ist, kann die Auflösung einer Abfrage aus einer materialisierten Sicht länger dauern als das direkte Abfragen der Basistabellen.  
+
+Um eine Leistungsbeeinträchtigung bei der Abfrage zu vermeiden, empfiehlt es sich, [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zur Überwachung von „overhead_ratio (total_rows/base_view_row)“ der Sicht auszuführen.  Wenn der Wert für „overhead_ratio“ zu hoch ist, sollten Sie die materialisierte Sicht neu erstellen, damit alle Zeilen im Deltaspeicher in den Columnstore-Index verschoben werden.  
 
 **Materialisierte Sicht und Zwischenspeichern von Resultsets**
 
 Diese beiden Features werden im SQL-Pool ungefähr zeitgleich zur Optimierung der Abfrageleistung eingeführt. Das Zwischenspeichern von Resultsets wird verwendet, um hohe Parallelität und schnelle Antwortzeiten aus sich wiederholenden Abfragen für statische Daten zu erzielen.  
 
-Um das zwischengespeicherte Ergebnis verwenden zu können, muss die Form des Caches, der die Abfrage anfordert, mit der Abfrage übereinstimmen, die den Cache erzeugt hat.  Außerdem muss das zwischengespeicherte Ergebnis für die gesamte Abfrage gelten.  Materialisierte Sichten lassen Datenänderungen in den Basistabellen zu.  Daten in materialisierten Sichten können auf einen Teil einer Abfrage angewendet werden.  Diese Unterstützung ermöglicht es, dass dieselben materialisierten Sichten von unterschiedlichen Abfragen verwendet werden können, die einige Berechnungen für eine schnellere Leistung gemeinsam nutzen.
+Um das zwischengespeicherte Ergebnis verwenden zu können, muss die Form des Caches, der die Abfrage anfordert, mit der Abfrage übereinstimmen, die den Cache erzeugt hat.  Außerdem muss das zwischengespeicherte Ergebnis für die gesamte Abfrage gelten.  
+
+Materialisierte Sichten lassen Datenänderungen in den Basistabellen zu.  Daten in materialisierten Sichten können auf einen Teil einer Abfrage angewendet werden.  Diese Unterstützung ermöglicht es, dass dieselben materialisierten Sichten von unterschiedlichen Abfragen verwendet werden können, die einige Berechnungen für eine schnellere Leistung gemeinsam nutzen.
 
 ## <a name="example"></a>Beispiel
 
@@ -352,7 +356,7 @@ GROUP BY c_customer_id
 
 ```
 
-Überprüfen Sie erneut den Ausführungsplan der ursprünglichen Abfrage.  Nun wird die Anzahl der Verknüpfungen von 17 in 5 geändert, und es gibt keine Zufallswiedergabe mehr.  Klicken Sie im Plan auf das Symbol für den Filtervorgang. In der Ausgabeliste wird angezeigt, dass die Daten aus den materialisierten Sichten anstatt aus Basistabellen gelesen werden.  
+Überprüfen Sie erneut den Ausführungsplan der ursprünglichen Abfrage.  Nun wird die Anzahl der Verknüpfungen von 17 in 5 geändert, und es gibt keine Zufallswiedergabe mehr.  Wählen Sie das Symbol für den Filtervorgang im Plan aus. In der Ausgabeliste wird angezeigt, dass die Daten aus den materialisierten Sichten anstatt aus Basistabellen gelesen werden.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

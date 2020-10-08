@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976298"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569653"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung mithilfe von Azure Virtual WAN
 
@@ -40,7 +40,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 * Beschaffen Sie sich einen IP-Adressbereich für Ihre Hubregion. Der Hub ist ein virtuelles Netzwerk, das von Virtual WAN erstellt und verwendet wird. Der von Ihnen für den Hub angegebene Adressbereich darf sich nicht mit einem Ihrer vorhandenen virtuellen Netzwerke überlappen, mit denen Sie eine Verbindung herstellen. Außerdem ist keine Überlappung mit Ihren Adressbereichen möglich, mit denen Sie lokal eine Verbindung herstellen. Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, sollten Sie sich an eine Person wenden, die Ihnen diese Informationen zur Verfügung stellen kann.
 
-* Zum Herstellen einer Verbindung mit dem Hubgateway muss eine ExpressRoute Premium-Leitung verwendet werden.
+* Zum Herstellen einer Verbindung mit dem Hubgateway muss eine Premium- oder Standard-ExpressRoute-Leitung verwendet werden.
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
@@ -105,7 +105,7 @@ In diesem Abschnitt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und e
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Verbinden Ihrer Leitung mit dem Hubgateway
 
-Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. ExpressRoute Premium-Leitungen, die sich an von ExpressRoute Global Reach unterstützten Standorten befinden, können eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen.
+Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. Premium- oder Standard-ExpressRoute-Leitungen, die sich an Standorten mit ExpressRoute Global Reach-Unterstützung, können eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen und von allen Virtual WAN-Transitfunktionen (VPN-zu-VPN-, VPN- und ExpressRoute-Transit) profitieren. Premium- oder Standard-ExpressRoute-Leitungen an Standorten ohne Global Reach-Unterstützung können zwar eine Verbindung mit Azure-Ressourcen herstellen, aber keine Virtual WAN-Transitfunktionen nutzen.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Verbinden der Leitung mit dem Hubgateway
 
@@ -114,7 +114,7 @@ Wechseln Sie im Portal zur Seite **Virtueller Hub -> Konnektivität -> ExpressRo
 1. Wählen Sie die Leitung aus.
 2. Wählen Sie **Leitung(en) verbinden** aus.
 
-   ![Leitung(en) verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "Leitungen verbinden")
+   ![Leitungen verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "Leitungen verbinden")
 
 ### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>Herstellen einer Verbindung durch Einlösen eines Autorisierungsschlüssels
 
@@ -125,7 +125,7 @@ Verwenden Sie den Autorisierungsschlüssel und den Leitungs-URI, die Ihnen zur V
    ![Screenshot: ExpressRoute für einen virtuellen Hub mit ausgewählter Option „Autorisierungsschlüssel einlösen“](./media/virtual-wan-expressroute-portal/redeem.png "einlösen")
 2. Füllen Sie auf der Seite „Autorisierungsschlüssel einlösen“ die Werte aus.
 
-   ![Einlösen von Schlüsselwerten](./media/virtual-wan-expressroute-portal/redeemkey2.png "Schlüsselwerte einlösen")
+   ![Schlüsselwerte einlösen](./media/virtual-wan-expressroute-portal/redeemkey2.png "Schlüsselwerte einlösen")
 3. Klicken Sie auf **Hinzufügen**, um den Schlüssel hinzuzufügen.
 4. Zeigen Sie die Leitung an. Bei einer eingelösten Leitung wird nur der Name (ohne Typ, Anbieter und andere Informationen) angezeigt, da sie sich in einem anderen Abonnement als dem des Benutzers befindet.
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516395"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90084429"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor
 [Azure Monitor](../overview.md) beginnt sofort nach der Erstellung virtueller Azure-Computer mit der Datenerfassung. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für einen virtuellen Azure-Computer automatisch gesammelt werden und wie sie im Azure-Portal angezeigt werden können. Anschließend erfahren Sie, wie Sie [Azure Monitor für VMs](../insights/vminsights-overview.md) für Ihren virtuellen Computer aktivieren, sodass Agents auf dem virtuellen Computer Daten aus dem Gastbetriebssystem erfassen und analysieren können (einschließlich Prozesse und deren Abhängigkeiten).
@@ -85,15 +85,15 @@ Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, muss er für die P
 
 7. Klicken Sie auf Ihren virtuellen Computer, und wählen Sie die Registerkarte **Leistung** aus. Diese befindet sich im Menü **Überwachung** auf der Kachel **Insights**. Dadurch wird eine ausgewählte Gruppe von Leistungsindikatoren angezeigt, die vom Gastbetriebssystem Ihres virtuellen Computers erfasst werden. Scrollen Sie nach unten, um weitere Indikatoren anzuzeigen, und zeigen Sie mit dem Mauszeiger auf ein Diagramm, um den Durchschnitt und die Perzentile zu unterschiedlichen Zeiten anzuzeigen.
 
-    ![Leistung](media/quick-monitor-azure-vm/performance.png)
+    ![Screenshot: Bereich „Leistung“](media/quick-monitor-azure-vm/performance.png)
 
 9. Wählen Sie **Zuordnung** aus, um das Zuordnungsfeature zu öffnen, das die auf dem virtuellen Computer ausgeführten Prozesse und deren Abhängigkeiten anzeigt. Wählen Sie **Eigenschaften** aus, um den Eigenschaftenbereich zu öffnen, falls er noch nicht geöffnet ist.
 
-    ![Karte](media/quick-monitor-azure-vm/map.png)
+    ![Screenshot: Bereich „Zuordnung“](media/quick-monitor-azure-vm/map.png)
 
 11. Erweitern Sie die Prozesse für Ihren virtuellen Computer. Wählen Sie einen der Prozesse aus, um seine Details anzuzeigen und die zugehörigen Abhängigkeiten hervorzuheben.
 
-    ![Prozesse](media/quick-monitor-azure-vm/processes.png)
+    ![Screenshot: Bereich „Zuordnung“ mit erweiterten Prozessen für einen virtuellen Computer](media/quick-monitor-azure-vm/processes.png)
 
 12. Wählen Sie erneut Ihren virtuellen Computer und anschließend **Protokollereignisse** aus. 
 

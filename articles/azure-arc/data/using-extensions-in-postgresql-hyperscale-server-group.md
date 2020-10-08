@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931292"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631765"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwenden von PostgreSQL-Erweiterungen in Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen
 
@@ -30,6 +30,7 @@ Zusätzlich zu den Erweiterungen in [`contrib`](https://www.postgresql.org/docs/
 - `pg_cron`, V: 1.2
 - `plpgsql`, V: 1.0
 - `postgis`, V: 3.0.2
+- `plv8`, V: 2.3.14
 
 Diese Liste wird im Laufe der Zeit weiterentwickelt, und Updates werden in diesem Dokument veröffentlicht. Es ist noch nicht möglich, Erweiterungen hinzuzufügen, die über jene in der oben aufgeführten Liste hinausgehen.
 
@@ -240,3 +241,7 @@ Ausführliche Informationen zur Syntax finden Sie in der [pg_cron-Infodatei](htt
 >[!NOTE]
 >Das Löschen der `citus`-Erweiterung wird nicht unterstützt. Die `citus`-Erweiterung ist erforderlich, um die Hyperscalefunktion bereitzustellen.
 
+## <a name="next-steps"></a>Nächste Schritte:
+- Die zugehörige Dokumentation finden Sie unter [plv8](https://plv8.github.io/).
+- Die zugehörige Dokumentation finden Sie unter [PostGIS](https://postgis.net/).
+- Die zugehörige Dokumentation finden Sie unter [`pg_cron`](https://github.com/citusdata/pg_cron).

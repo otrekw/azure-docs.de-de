@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604307"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575298"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -215,11 +215,11 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen unter folgender URL an: [https://portal.azure.com](https://portal.azure.com).
 2. Wählen Sie **+ Ressource erstellen** aus, und suchen Sie nach *Azure Data Box*. Wählen Sie **Azure Data Box** aus.
 
-   ![Auswählen von Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Screenshot: Abschnitt „Neu“ mit „Azure Data Box“ im Suchfeld](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. Klicken Sie auf **Erstellen**.
 
-   ![Auswählen von Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Screenshot: Abschnitt „Azure Data Box“ mit hervorgehobener Option „Erstellen“](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Überprüfen Sie, ob der Data Box-Dienst in Ihrer Region verfügbar ist. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend **Übernehmen** aus.
 
@@ -235,7 +235,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 5. Wählen Sie **Data Box** aus. Die maximal nutzbare Kapazität für eine einzelne Bestellung beträgt 80 TB. Sie können mehrere Bestellungen für größere Datenmengen erstellen.
 
-    ![Auswählen von Data Box-Option 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Screenshot: Die verschiedenen zur Auswahl stehenden Datengrößen: „Data Box Disk“ (40 TB), „Data Box“ (100 TB), „Data Box Heavy“ (1.000 TB) und „Eigene Datenträger einsenden“ (1 TB).](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. Wechseln Sie in **Bestellung** zur Registerkarte **Grundlagen**. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend Folgendes aus: **Weiter: Datenziel>** .
 
@@ -245,7 +245,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Resource group    | Die Ressourcengruppe, die Sie zuvor ausgewählt haben. |
     |Name des Importauftrags | Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.    |
 
-    ![Auswählen von Data Box-Option 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Screenshot: Bestell-Assistent mit dem Schritt „Grundlagen“ und korrekten Angaben](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Standardmäßig wird das Kennwort zum Entsperren des Geräts mit einem von Microsoft verwalteten Schlüssel verschlüsselt. Nachdem Sie die Bestellung abgeschlossen haben, können Sie einen kundenseitig verwalteten Schlüssel hinzufügen. Ein kundenseitig verwalteter Schlüssel ermöglicht es Ihnen, Ihren eigenen Schlüssel von einem Azure Key Vault-Schlüssel zu verwenden, um Ihr Kennwort zum Entsperren des Geräts zu schützen. Weitere Informationen finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box](data-box-customer-managed-encryption-key-portal.md)
 
@@ -265,7 +265,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |---------|---------|
     |Ressourcengruppen     | Erstellen Sie neue Ressourcengruppen, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Eine bereits vorhandene Ressourcengruppe kann nur verwendet werden, wenn diese zuvor beim Erstellen eines Data Box-Auftrags für einen verwalteten Datenträger durch den Data Box-Dienst erstellt wurde. <br> Bei Angabe mehrerer Ressourcengruppen müssen diese jeweils durch ein Semikolon getrennt werden. Es werden maximal zehn Ressourcengruppen unterstützt.|
 
-    ![Data Box-Auftrag für verwalteten Datenträger](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Screenshot: Bestell-Assistent mit dem Schritt „Datenziel“ und korrekten Angaben](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs als Seitenblobs in das Stagingspeicherkonto hoch, konvertiert es in verwaltete Datenträger und verschiebt es in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
    > [!NOTE]
@@ -286,11 +286,11 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 8. Wählen Sie unter **Kontaktdetails** die Option **+ Lieferadresse hinzufügen** aus.
 
-    ![Data Box-Auftrag für verwalteten Datenträger](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Screenshot: Bestell-Assistent mit dem Schritt „Kontaktdetails“ und hervorgehobener Option „Lieferadresse hinzufügen“](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. Geben Sie unter **Lieferadresse** Ihren Vor- und Nachnamen, den Namen und die Postanschrift des Unternehmens sowie eine gültige Telefonnummer an. Wählen Sie **Adresse überprüfen** aus. Der Dienst überprüft anhand der Lieferadresse die Verfügbarkeit des Diensts. Wenn der Dienst für die angegebene Lieferadresse verfügbar ist, erhalten Sie eine entsprechende Benachrichtigung.
 
-   ![Data Box-Auftrag für verwalteten Datenträger](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![Screenshot: Dialogfeld „Lieferadresse hinzufügen“ mit Hervorhebung der gewünschten Versandoption und der Option „Lieferadresse hinzufügen“](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Wenn Sie den selbstverwalteten Versand ausgewählt haben, erhalten Sie nach der erfolgreichen Auftragserteilung eine E-Mail-Benachrichtigung. Weitere Informationen zum selbstverwalteten Versand finden Sie unter [Verwenden des selbstverwalteten Versands](data-box-portal-customer-managed-shipping.md).
 
@@ -300,13 +300,13 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
     Es wird empfohlen, eine E-Mail-Gruppenadresse zu verwenden, damit Sie weiterhin Benachrichtigungen erhalten, wenn ein Administrator die Gruppe verlässt.
 
-    ![Data Box-Auftrag für verwalteten Datenträger](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![Screenshot: E-Mail-Abschnitt des Schritts „Kontaktdetails“ des Bestell-Assistenten mit Hervorhebung des E-Mail-Textfelds und der Option „Weiter: Überprüfen + bestellen“](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. Überprüfen Sie die Informationen in **Überprüfen + bestellen** im Zusammenhang mit der Bestellung, den Kontakt, die Benachrichtigungen und die Datenschutzbestimmungen. Aktivieren Sie das Kontrollkästchen für die Zustimmung zu den Datenschutzbestimmungen.
 
 13. Wählen Sie **Bestellen** aus. Die Erstellung des Auftrags dauert einige Minuten.
 
-    ![Data Box-Auftrag für verwalteten Datenträger](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![Screenshot: Bestell-Assistent mit dem Schritt „Überprüfen + bestellen“ und der hervorgehobenen Option „Bestellen“](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

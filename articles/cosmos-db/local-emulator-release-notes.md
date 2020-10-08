@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988186"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566687"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-Emulator: Versionshinweise und Informationen zum Download
 
@@ -31,7 +31,7 @@ Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Li
 In dieser Version wurden zwei neue Startoptionen für den Cosmos-Emulator hinzugefügt: 
 
 * „/EnablePreview“: Mit dieser Option werden Previewfunktionen für den Emulator aktiviert. Auf die Previewfunktionen, die sich noch in der Entwicklung befinden, können Sie über CI und das Schreiben von Beispielen zugreifen.
-* „/EnableAadAuthentication“: Diese Option ermöglicht es dem Emulator, benutzerdefinierte Azure Active Directory-Token als Alternative zu den Azure Cosmos-Hauptschlüsseln zu akzeptieren. Diese Funktion befindet sich noch in der Entwicklung. Bestimmte Rollenzuweisungen und andere Einstellungen im Zusammenhang mit Berechtigungen werden derzeit nicht unterstützt.
+* „/EnableAadAuthentication“: Diese Option ermöglicht es dem Emulator, benutzerdefinierte Azure Active Directory-Token als Alternative zu den Azure Cosmos-Primärschlüsseln zu akzeptieren. Diese Funktion befindet sich noch in der Entwicklung. Bestimmte Rollenzuweisungen und andere Einstellungen im Zusammenhang mit Berechtigungen werden derzeit nicht unterstützt.
 
 ### <a name="2112-07-july-2020"></a>2.11.2 (7. Juli 2020)
 

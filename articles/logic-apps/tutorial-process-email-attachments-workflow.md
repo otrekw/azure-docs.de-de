@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334088"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Tutorial: Automatisieren von Aufgaben zur Verarbeitung von E-Mails mithilfe von Azure Logic Apps, Azure Functions und Azure Storage
 
@@ -323,7 +323,7 @@ Nun fügen Sie eine Bedingung hinzu, die nur E-Mails auswählt, die über Anlage
 
    1. Klicken Sie in der ersten Zeile unter **Und** innerhalb des linken Felds. Wählen Sie aus der Liste mit dynamischem Inhalt, die angezeigt wird, die Eigenschaft **Hat Anlage** aus.
 
-      ![Erstellen der Bedingung](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![Screenshot: Eigenschaft „Und“ für die Bedingung und Eigenschaftsauswahl „Enthält Anlagen“](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. Behalten Sie im mittleren Feld den Operator **gleich** bei.
 
@@ -458,7 +458,7 @@ Fügen Sie im nächsten Schritt eine Aktion hinzu, die in Ihrem Speichercontaine
 
    Wenn Sie fertig sind, sieht die Aktion wie das folgende Beispiel aus:
 
-   ![Fertiggestellte Aktion „Blob erstellen“](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![Screenshot: Beispiel einer abgeschlossenen Aktion vom Typ „Blob erstellen“](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. Speichern Sie Ihre Logik-App.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e7d424435c29eb3e7a6779a7036816a7bedd2085
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278293"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
@@ -45,6 +45,7 @@ Die Azure NetApp Files-Volumereplikation ist derzeit in den folgenden festen Reg
 * Japan, Osten und Japan, Westen
 * Vereinigtes Königreich, Süden und Deutschland, Westen-Mitte
 * Asien, Südosten und Australien, Osten
+* „Indien, Mitte“ und „Indien, Süden“
 
 ## <a name="service-level-objectives"></a>Servicelevel-Zielpunkte (SLO)
 

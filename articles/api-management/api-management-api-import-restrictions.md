@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335499"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 
@@ -54,6 +54,10 @@ Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stel
 -   `Examples` wird nicht unterstützt, aber `example`.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI-Import-, Update- und Exportmechanismen
+
+### <a name="general"></a><a name="open-import-export-general"> </a>Allgemein
+
+-   Die aus dem API Management-Dienst exportierten API-Definitionen sind hauptsächlich für Anwendungen gedacht, die extern zum API Management-Dienst sind, die die im API Management-Dienst gehostete API aufrufen müssen. Exportierte API-Definitionen sind nicht für einen erneuten Import in denselben oder einen anderen API Management-Dienst gedacht. Informationen zur Konfigurationsverwaltung von API-Definitionen in verschiedenen Diensten/Umgebungen finden Sie in der Dokumentation zur Verwendung des API Management-Diensts mit Git. 
 
 ### <a name="add-new-api-via-openapi-import"></a>Hinzufügen einer neuen API über OpenAPI-Import
 

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255243"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -56,7 +56,7 @@ Für jede Instanz des Plans wird eine Adresse verwendet. Wenn Sie Ihre App auf f
 
 Wenn Ihre Apps in einem anderen Plan ein VNET erreichen sollen, das bereits mit Apps in einem anderen Plan verbunden ist, müssen Sie ein anderes Subnetz als das von der bereits vorhandenen VNET-Integration verwendete auswählen.
 
-Das Feature wird für Windows- und Linux-Web-Apps vollständig unterstützt. Das Verhalten ist in Windows- und Linux-Apps gleich.
+Das Feature wird für Windows- und Linux-Apps vollständig unterstützt, einschließlich [benutzerdefinierten Containern](../articles/app-service/quickstart-custom-container.md). Das Verhalten ist in Windows- und Linux-Apps gleich.
 
 ### <a name="service-endpoints"></a>Dienstendpunkte
 

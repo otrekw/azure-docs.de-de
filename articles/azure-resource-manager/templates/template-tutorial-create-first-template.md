@@ -2,20 +2,20 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069236"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409215"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
-In diesem Tutorial lernen Sie die ARM-Vorlagen (Azure Resource Manager) kennen. Es wird gezeigt, wie Sie eine Startvorlage erstellen und in Azure bereitstellen. Sie erfahren mehr über die Struktur der Vorlage und die Tools, die Sie für die Arbeit mit Vorlagen benötigen. Dieses Tutorial dauert ungefähr **12 Minuten**, die tatsächliche Zeit variiert jedoch je nach Anzahl der Tools, die Sie installieren müssen.
+Dieses Tutorial enthält eine Einführung in ARM-Vorlagen (Azure Resource Manager). Es wird gezeigt, wie Sie eine Startvorlage erstellen und in Azure bereitstellen. Sie erfahren mehr über die Struktur der Vorlage und die Tools, die Sie für die Arbeit mit Vorlagen benötigen. Dieses Tutorial dauert ungefähr **12 Minuten**, die tatsächliche Zeit variiert jedoch je nach Anzahl der Tools, die Sie installieren müssen.
 
 Dieses Tutorial ist das erste einer Reihe. Im Laufe der Reihe ändern Sie die Startvorlage Schritt für Schritt, bis Sie alle wichtigen Bestandteile einer ARM-Vorlage erkundet haben. Diese Elemente sind die Bausteine für weitaus komplexere Vorlagen. Wir hoffen, dass Sie am Ende der Reihe Ihre eigenen Vorlagen erstellen können und bereit sind, Ihre Bereitstellungen mit Vorlagen zu automatisieren.
 
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="get-tools"></a>Erforderliche Tools
 
-Zunächst sorgen wir dafür, dass Sie über die Tools verfügen, die Sie zum Erstellen und Bereitstellen von Vorlagen benötigen.
+Zunächst sorgen wir dafür, dass Sie über die Tools verfügen, die Sie zum Erstellen und Bereitstellen von Vorlagen benötigen. Installieren Sie diese Tools auf Ihrem lokalen Computer.
 
 ### <a name="editor"></a>Editor
 

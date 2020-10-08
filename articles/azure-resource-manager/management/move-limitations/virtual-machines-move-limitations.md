@@ -2,13 +2,13 @@
 title: Verschieben virtueller Azure-Computer in ein neues Abonnement oder in eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/21/2020
+ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317105"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer
 
@@ -50,7 +50,7 @@ Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud
    1. Ermitteln Sie den Speicherort Ihres virtuellen Computers.
    2. Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<VM location>_1`. Der Name weist z. B. das Format *AzureBackupRG_westus2_1* auf.
    3. Aktivieren Sie im Azure-Portal die Option **Ausgeblendete Typen anzeigen**.
-   4. Suchen Sie die Ressource mit dem Typ **Microsoft.Compute/restorePointCollections** und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`.
+   4. Suchen Sie die Ressource mit dem Typ **Microsoft.Compute/restorePointCollections** und dem Namensmuster `AzureBackup_<VM name>_###########`.
    5. Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
    6. Nach Abschluss des Löschvorgangs können Sie den virtuellen Computer verschieben.
 
@@ -63,16 +63,31 @@ Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud
 
 1. Suchen Sie nach einer Ressourcengruppe mit diesem Namensmuster: `AzureBackupRG_<VM location>_1`. Der Name kann z. B. `AzureBackupRG_westus2_1` lauten.
 
-1. Verwenden Sie den folgenden Befehl, um die Wiederherstellungspunktsammlung abzurufen.
+1. Wenn Sie nur einen virtuellen Computer verschieben, rufen Sie die Wiederherstellungspunktsammlung für diesen virtuellen Computer ab.
 
-   ```azurepowershell
-   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
    ```
 
-1. Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
+   Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
 
-   ```azurepowershell
-   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. Wenn Sie alle virtuellen Computer mit Sicherungen an diesem Standort verschieben, rufen Sie die Wiederherstellungspunktsammlungen für diese virtuellen Computer ab.
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   Löschen Sie jede Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
    ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -81,18 +96,28 @@ Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud
 
 1. Suchen Sie nach einer Ressourcengruppe mit diesem Namensmuster: `AzureBackupRG_<VM location>_1`. Der Name kann z. B. `AzureBackupRG_westus2_1` lauten.
 
-1. Verwenden Sie den folgenden Befehl zum Abrufen der Wiederherstellungspunktsammlung.
+1. Wenn Sie nur einen virtuellen Computer verschieben, rufen Sie die Wiederherstellungspunktsammlung für diesen virtuellen Computer ab.
 
-   ```azurecli
-   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
    ```
 
-1. Suchen Sie nach der Ressource mit dem Namensmuster `AzureBackup_<VM name>_###########`.
+   Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
 
-1. Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
-   ```azurecli
-   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+1. Wenn Sie alle virtuellen Computer mit Sicherungen an diesem Standort verschieben, rufen Sie die Wiederherstellungspunktsammlungen für diese virtuellen Computer ab.
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   Löschen Sie jede Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte

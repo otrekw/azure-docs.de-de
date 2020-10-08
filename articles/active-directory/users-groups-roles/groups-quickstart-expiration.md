@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213732"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90054397"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Schnellstart: Festlegen des Ablaufs von Microsoft 365-Gruppen in Azure Active Directory
 
@@ -33,7 +33,7 @@ Eine Ablaufrichtlinie ist einfach:
 - Eine gelöschte Microsoft 365-Gruppe kann innerhalb von 30 Tagen durch einen Gruppenbesitzer oder einen Azure AD-Administrator wiederhergestellt werden.
 
 > [!NOTE]
-> Gruppen verwenden jetzt Azure AD-Intelligence für die automatische Verlängerung, je nachdem, ob sie kürzlich verwendet wurden. Diese Verlängerungsentscheidung basiert auf Benutzeraktivitäten in Gruppen für Office 365-Dienste wie Outlook, SharePoint, Teams, Yammer und anderen.
+> Gruppen verwenden jetzt Azure AD-Intelligence für die automatische Verlängerung, je nachdem, ob sie kürzlich verwendet wurden. Diese Verlängerungsentscheidung basiert auf Benutzeraktivitäten in Gruppen für Microsoft 365-Dienste wie Outlook, SharePoint, Teams, Yammer und anderen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

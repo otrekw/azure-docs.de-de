@@ -1,5 +1,5 @@
 ---
-title: Worum handelt es sich bei Translator? - Translator
+title: Microsoft Translator-Dienst
 titlesuffix: Azure Cognitive Services
 description: Integrieren Sie Translator in Ihre Anwendungen, Websites, Tools und in andere Lösungen, um Benutzererlebnisse in mehreren Sprachen bereitzustellen.
 services: cognitive-services
@@ -8,29 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 09/11/2020
 ms.author: swmachan
-ms.custom: seodec18
-ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.custom: cog-serv-seo-aug-2020
+keywords: translator, text translation, machine translation, translation service
+ms.openlocfilehash: 32ae7f75c1b953e8af7dfef83c1971c2f78b0b62
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425958"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90530334"
 ---
-# <a name="what-is-translator"></a>Worum handelt es sich bei Translator?
+# <a name="what-is-the-translator-service"></a>Was ist der Translator-Dienst?
 
-Azure Cognitive Services Translator ist ein Clouddienst für maschinelle Übersetzung und gehört zur [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-Familie kognitiver APIs zur Erstellung intelligenter Apps. Translator lässt sich einfach in Ihre Anwendungen, Websites, Tools und Lösungen integrieren. Mit dieser App können Benutzererlebnisse in [mehr als 70 Sprachen](languages.md) bereitgestellt werden. Darüber hinaus kann sie auf jeder Hardwareplattform mit beliebigem Betriebssystem für Textübersetzung verwendet werden.
+Translator ist ein Clouddienst für maschinelle Übersetzung und gehört zur [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-Familie kognitiver APIs für die Erstellung intelligenter Apps. Translator lässt sich einfach in Ihre Anwendungen, Websites, Tools und Lösungen integrieren. Mit dieser App können Benutzeroberflächen in [mehr als 70 Sprachen](languages.md) bereitgestellt werden. Darüber hinaus kann sie auf jeder Hardwareplattform mit beliebigem Betriebssystem für die Textübersetzung verwendet werden.
 
 ## <a name="about-microsoft-translator"></a>Informationen zu Microsoft Translator
 
-Azure Cognitive Services Translator ist ein cloudbasierter Dienst für die maschinelle Übersetzung. Translator kommt in zahlreichen Produkten und Diensten von Microsoft zum Einsatz und wird in Anwendungen und Workflows von Tausenden von Unternehmen auf der ganzen Welt genutzt, die mit ihren Inhalten ein globales Publikum erreichen möchten.
+Translator kommt in zahlreichen Produkten und Diensten von Microsoft zum Einsatz und wird in Anwendungen und Workflows von Tausenden von Unternehmen auf der ganzen Welt genutzt, die mit ihren Inhalten ein globales Publikum erreichen möchten.
 
-Von Translator unterstützte Sprachübersetzung ist ebenfalls über den [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/) verfügbar. Sie vereint Funktionen der Sprachübersetzungs-API und von Custom Speech Service  in einem einheitlichen und vollständig anpassbaren Dienst. 
+Die von Translator unterstützte Sprachübersetzung ist ebenfalls über den [Azure Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/) verfügbar. Sie vereint Funktionen der Sprachübersetzungs-API und von Custom Speech Service  in einem einheitlichen und vollständig anpassbaren Dienst. 
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-Microsoft Translator unterstützt mehrere Sprachen für Übersetzung, Transliteration, Spracherkennung und Wörterbücher. Eine vollständige Liste finden Sie unter [Sprach- und Regionsunterstützung für die Textübersetzungs-API](language-support.md). Sie können auch programmgesteuert mit der [REST-API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) auf die Liste zugreifen.  
+Der Translator-Dienst unterstützt mehrere Sprachen für Textübersetzung, Transliteration, Spracherkennung und Wörterbücher. Eine vollständige Liste finden Sie unter [Sprach- und Regionsunterstützung für die Textübersetzungs-API](language-support.md). Sie können auch programmgesteuert mit der [REST-API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) auf die Liste zugreifen.  
 
 ## <a name="microsoft-translator-neural-machine-translation"></a>Neuronale maschinelle Übersetzungen von Microsoft Translator
 
@@ -40,18 +41,19 @@ Im Vergleich zu SMT liefert NMT bessere Übersetzungen – nicht nur im Hinblick
 
 NMT-Modelle sind das Herzstück der API und für Endbenutzer nicht sichtbar. Der einzige wahrnehmbare Unterschied ist die höhere Übersetzungsqualität – insbesondere für Sprachen wie Chinesisch, Japanisch und Arabisch.
 
-Weitere Informationen zur Funktionsweise von NMT finden Sie [hier](https://www.microsoft.com/en-us/translator/mt.aspx#nnt).
+Erfahren Sie mehr über die [Funktionsweise der neuronalen maschinellen Übersetzung](https://www.microsoft.com/en-us/translator/mt.aspx#nnt).
 
-## <a name="language-customization"></a>Sprachanpassung
+## <a name="improve-translations-with-custom-translator"></a>Verbessern von Übersetzungen mit dem benutzerdefinierten Translator
 
 Benutzerdefinierter Translator ist eine Erweiterung des Translator-Diensts und kann in Verbindung mit Translator verwendet werden, um das neuronale Übersetzungssystem anzupassen und die Übersetzung für Ihre spezifische Terminologie und Ihren individuellen Stil anzupassen.
 
 Mit Custom Translator können Sie Übersetzungssysteme erstellen, die Ihre unternehmens- oder branchenspezifische Terminologie verwenden. Mithilfe des Kategorieparameters können Sie Ihr benutzerdefiniertes Übersetzungssystem dann ganz einfach über den regulären Translator-Dienst in Ihre vorhandenen Anwendungen, Workflows und Websites sowie über verschiedene Gerätetypen hinweg integrieren.
 
-Weitere Informationen zur [Sprachanpassung](customization.md)
+[Hier finden Sie weitere Informationen zum benutzerdefinierten Translator](customization.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Registrieren Sie sich](translator-text-how-to-signup.md) für einen Zugriffsschlüssel.
+- Testen Sie den [Schnellstart](quickstart-translator.md), um den Translator-Dienst schnell aufzurufen.
 - Die [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) bietet die technische Dokumentation für die APIs.
 - [Preisübersicht](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

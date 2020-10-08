@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289887"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595521"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Bewährte Methoden für die Auswahl einer Time Series-ID
 
@@ -23,7 +23,7 @@ Dieser Artikel fasst die Wichtigkeit der Time Series-ID für Ihre Azure Time Ser
 
 ## <a name="choose-a-time-series-id"></a>Auswählen einer Time Series-ID
 
-Die Auswahl einer geeigneten Time Series-ID ist entscheidend. Das Auswählen einer Time Series-ID ist wie das Auswählen eines Partitionsschlüssels für eine Datenbank. Dies ist erforderlich, wenn Sie eine Azure Time Series Insights Gen2-Umgebung erstellen. 
+Die Auswahl einer geeigneten Time Series-ID ist entscheidend. Das Auswählen einer Time Series-ID ist wie das Auswählen eines Partitionsschlüssels für eine Datenbank. Dies ist erforderlich, wenn Sie eine Azure Time Series Insights Gen2-Umgebung erstellen.
 
 > [!IMPORTANT]
 > Für Zeitreihen-IDs gilt Folgendes:
@@ -40,7 +40,7 @@ Zu den wichtigsten bewährten Methoden gehören:
 * Die Time Series-ID sollte auf Blattknotenebene Ihres [Zeitreihenmodells](./concepts-model-overview.md) eindeutig sein.
 * Das Zeichenlimit für die Zeichenfolge des Eigenschaftsnamens der Time Series-ID ist 128. Für den Eigenschaftswert der Time Series-ID ist das Zeichenlimit 1.024.
 * Wenn ein eindeutiger Eigenschaftswert für die Time Series-ID fehlt, wird er als Nullwert behandelt und folgt derselben Regel der Eindeutigkeitseinschränkung.
-* Ist Ihre Zeitreihen-ID (Time Series-ID) in einem komplexen JSON-Objekt geschachtelt, müssen Sie gemäß den eingangsbezogenen [Vereinfachungsregeln](./concepts-json-flattening-escaping-rules.md) vorgehen, wenn Sie den Eigenschaftsnamen angeben. Sehen Sie sich das Beispiel [B](concepts-json-flattening-escaping-rules.md#example-b) an. 
+* Ist Ihre Zeitreihen-ID (Time Series-ID) in einem komplexen JSON-Objekt geschachtelt, müssen Sie gemäß den eingangsbezogenen [Vereinfachungsregeln](./concepts-json-flattening-escaping-rules.md) vorgehen, wenn Sie den Eigenschaftsnamen angeben. Sehen Sie sich das Beispiel [B](concepts-json-flattening-escaping-rules.md#example-b) an.
 * Darüber hinaus können Sie bis zu *drei* Schlüsseleigenschaften als Ihre Time Series-ID auswählen. Deren Kombination ergibt einen zusammengesetzten Schlüssel, der die Time Series-ID darstellt.  
   > [!NOTE]
   > Ihre drei Schlüsseleigenschaften müssen Zeichenfolgen sein.
@@ -75,7 +75,7 @@ Beispielrohereignis:
 ```
 
 Im Azure-Portal können Sie diesen zusammengesetzten Schlüssel dann folgendermaßen eingeben:
- 
+
 [![Konfigurieren der Zeitreihen-ID für die Umgebung](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
   > [!NOTE]

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269368"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -122,7 +122,7 @@ Die Premium-ISE-Basiseinheit hat eine feste Kapazität. Falls Sie mehr Durchsatz
    * [**Manuelles Skalieren**](#manual-scale): Skalieren auf Grundlage der Anzahl der Verarbeitungseinheiten, die Sie verwenden möchten.
    * [**Benutzerdefinierte Autoskalierung**](#custom-autoscale): Skalieren auf Grundlage von Leistungsmetriken durch Auswählen unter verschiedenen Kriterien und Angeben der Schwellenwertbedingungen zur Erfüllung dieser Kriterien.
 
-   ![Auswählen des gewünschten Skalierungstyps](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![Screenshot, der die Seite „Aufskalieren“ mit ausgewähltem „Manuelle Skalierung“ zeigt.](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 

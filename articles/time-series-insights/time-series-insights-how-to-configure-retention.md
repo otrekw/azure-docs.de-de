@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der Vermerkdauer in Ihrer Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Datenaufbewahrung in Ihrer Azure Time Series Insights-Umgebung konfigurieren.
+description: Erfahren Sie, wie Sie die Vermerkdauer in Ihrer Azure Time Series Insights-Umgebung konfigurieren.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495124"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569413"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Konfigurieren der Datenaufbewahrung in Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel wird beschrieben, wie Sie die **Datenaufbewahrungsdauer** und das **Verhalten bei Überschreitung des Speicherlimits** in Azure Time Series Insights konfigurieren.
 

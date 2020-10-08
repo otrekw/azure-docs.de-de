@@ -6,20 +6,29 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 09/22/2020
+ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325537"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern 
 
 Volumes für virtuelle Windows- oder Linux-Computer lassen sich nach Bedarf einbinden. Dies kann jederzeit wieder rückgängig gemacht werden.  Die Einbindungsanweisungen für virtuelle Linux-Computer stehen in Azure NetApp Files zur Verfügung.  
 
-> [!IMPORTANT] 
-> Sie benötigen mindestens eine Exportrichtlinie, um auf ein NFS-Volume zugreifen zu können.
+## <a name="requirements"></a>Requirements (Anforderungen) 
+
+* Sie benötigen mindestens eine Exportrichtlinie, um auf ein NFS-Volume zugreifen zu können.
+* Um ein NFS-Volume erfolgreich einzubinden, stellen Sie sicher, dass die folgenden NFS-Ports zwischen den Client- und NFS-Volumes geöffnet sind:
+    * 111 = `RPCBIND/Portmapper`
+    * 635 = `mountd`
+    * 2049 = `nfs`
+    * 4045 = `nlockmgr` (nur NFSv3)
+    * 4046 = `status` (nur NFSv3)
+
+## <a name="steps"></a>Schritte
 
 1. Klicken Sie auf das Blatt **Volumes**, und wählen Sie dann das Volume aus, für das die Einbindung erfolgen soll. 
 2. Klicken Sie für das ausgewählte Volume auf **Einbindungsanweisungen**, und führen Sie die Schritte aus, um das Volume einzubinden. 

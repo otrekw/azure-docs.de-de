@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292454"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
@@ -247,7 +247,7 @@ Einige Endpunkte, Dienste, Systeme oder APIs geben eine Antwort mit dem Statusco
 
 Wenn ein HTTP-Trigger oder eine HTTP-Aktion diese Header enthält, entfernt Logic Apps sie aus der generierten Anforderungsnachricht, ohne eine Warnung oder einen Fehler anzuzeigen:
 
-* `Accept-*`
+* `Accept-*`-Header, außer für `Accept-version`
 * `Allow`
 * `Content-*` mit den folgenden Ausnahmen: `Content-Disposition`, `Content-Encoding` und `Content-Type`.
 * `Cookie`

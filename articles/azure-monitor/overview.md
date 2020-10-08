@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505821"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90088628"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -42,13 +42,13 @@ Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an, 
 
 Für viele Azure-Ressourcen können die von Azure Monitor gesammelten Daten direkt auf ihrer Übersichtsseite im Azure-Portal angezeigt werden. Werfen Sie beispielsweise einen Blick auf eine beliebige VM, dann sehen Sie eine Reihe von Diagrammen, die Leistungsmetriken darstellen. Klicken Sie auf eines dieser Diagramme, um die Daten im Azure-Portal im [Metrik-Explorer](platform/metrics-charts.md) anzuzeigen. Hier können Sie die Werte mehrerer Metriken im zeitlichen Verlauf als Diagramm darstellen.  Sie können die Diagramme interaktiv nutzen oder an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen.
 
-![Metriken](media/overview/metrics.png)
+![Diagramm der Metrikdaten, die zur Verwendung in Visualisierungen an den Metrik-Explorer übermittelt werden](media/overview/metrics.png)
 
 Die in Azure Monitor gesammelten Protokolldaten können mit [Abfragen](log-query/log-query-overview.md) analysiert werden, die die gesammelten Daten schnell abrufen, konsolidieren und analysieren.  Sie können Abfragen mit [Log Analytics](./log-query/log-query-overview.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit verschiedenen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](platform/alerts-overview.md) speichern.
 
 Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Abfragesprache Kusto](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z.B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](log-query/get-started-queries.md) nutzen.  Es ist eine spezielle Anleitung für Benutzer vorhanden, die bereits mit [SQL](log-query/sql-cheatsheet.md) und [Splunk](log-query/splunk-cheatsheet.md) vertraut sind.
 
-![Protokolle](media/overview/logs.png)
+![Diagramm der Protokolldaten, die zur Analyse an Log Analytics übertragen werden](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Welche Daten sammelt Azure Monitor?
 
@@ -103,12 +103,12 @@ Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den B
 
 Warnungsregeln in Azure Monitor verwenden [Aktionsgruppen](platform/action-groups.md), die eindeutige Sätze von Empfängern und Aktionen enthalten, die gemeinsam von mehreren Regeln übergreifend verwendet werden können. Je nach Ihren Anforderungen können Aktionsgruppen Aktionen wie das Verwenden von Webhooks ausführen, um externe Aktionen mithilfe von Warnungen zu starten oder die Integration in Ihre ITSM-Tools zu ermöglichen.
 
-![Alerts](media/overview/alerts.png)
+![Screenshot: Warnungen in Azure Monitor mit Schweregrad, Warnungen insgesamt und anderen Informationen](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Autoscale
 Bei der automatischen Skalierung können Sie jeweils die richtige Menge an Ressourcen ausführen, um die Lasten für Ihre Anwendung zu bewältigen. Es ermöglicht Ihnen das Erstellen von Regeln, die von Azure Monitor gesammelte Metriken verwenden, um zu bestimmen, wann Ressourcen automatisch hinzugefügt werden sollen, um eine höhere Last zu verarbeiten, und außerdem Geld zu sparen, indem Ressourcen entfernt werden, die nur im Leerlauf ausgeführt werden. Sie geben eine Minimal- und eine Maximalanzahl von Instanzen an und legen die Logik zum Herauf- oder Herabsetzen der Ressourcen fest.
 
-![Autoscale](media/overview/autoscale.png)
+![Diagramm: Autoskalierung mit mehreren Servers auf einer Linie mit der Bezeichnung „Processor Time > 80%“ (Prozessorzeit > 80 %) und zwei Servern als Minimum, drei Servern als aktuelle Kapazität und fünf Servern als Maximum](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>Visualisieren von Überwachungsdaten
 [Visualisierungen](visualizations.md) wie Diagramme und Tabellen sind effektive Tools zur Zusammenfassung von Überwachungsdaten und zu ihrer Präsentation für verschiedene Zielgruppen. Azure Monitor verfügt über eigene Features zum Visualisieren von Überwachungsdaten und nutzt andere Azure-Dienste, um sie für verschiedene Zielgruppen zu veröffentlichen.
@@ -116,12 +116,12 @@ Bei der automatischen Skalierung können Sie jeweils die richtige Menge an Resso
 ### <a name="dashboards"></a>Dashboards
 Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie verschiedene Arten von Daten, einschließlich Metriken und Protokolle, in einem einzelnen Bereich im [Azure-Portal](https://portal.azure.com) kombinieren. Sie können das Dashboard optional gemeinsam mit anderen Azure-Benutzern nutzen. Über die Ausgabe beliebiger Protokollabfragen oder Metrikdiagramme hinaus können Elemente im gesamten Azure Monitor einem Azure-Dashboard hinzugefügt werden. Beispielsweise können Sie ein Dashboard erstellen, das Kacheln kombiniert, die ein Diagramm der Metriken, eine Tabelle mit Aktivitätsprotokollen, ein Nutzungsdiagramm von Application Insights und die Ausgabe einer Protokollabfrage zeigen.
 
-![Dashboard](media/overview/dashboard.png)
+![Screenshot: Azure Dashboard, einschließlich Anwendungs- und Sicherheitskacheln sowie anderen anpassbaren Informationen](media/overview/dashboard.png)
 
 ### <a name="views"></a>Sichten
 [Ansichten](./platform/view-designer.md) stellen Protokolldaten in Azure Monitor visuell dar.  Jede Ansicht enthält eine einzelne Kachel, auf der ein Drilldown zu einer Kombination aus Visualisierungen möglich ist, z.B. Balken- und Liniendiagramme sowie Listen, in denen wichtige Daten zusammengefasst sind.  Überwachungslösungen enthalten Ansichten, in denen Daten für eine bestimmte Anwendung zusammengefasst sind, und Sie können Ihre eigenen Ansichten erstellen, um Daten aus beliebigen Protokollabfragen darzustellen. Wie andere Elemente in Azure Monitor können Ansichten zu Azure-Dashboards hinzugefügt werden.
 
-![Sicht](media/overview/view.png)
+![Screenshot: Kachel für die Containerüberwachungslösung und die Detailansicht, die geöffnet wird, wenn Sie auf die Kachel klicken](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) ist ein Business Analytics-Dienst, der interaktive Visualisierungen für eine Vielzahl von Datenquellen bereitstellt und eine effektive Möglichkeit darstellt, Daten für andere Personen innerhalb und außerhalb Ihrer Organisation verfügbar zu machen. Sie können Power BI für den [automatischen Import von Protokolldaten aus Azure Monitor](./platform/powerbi.md) konfigurieren, um diese zusätzlichen Visualisierungen zu nutzen.

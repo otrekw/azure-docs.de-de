@@ -2,20 +2,20 @@
 title: Datenresidenz
 description: Datenresidenz und Informationen zu Azure Arc-fähigen Servern.
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8b4b8171bd7133e52928a5227c488bd6234ce686
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 73acb07b8caa3c1368c936463f04969c29d37985
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327764"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Server mit Azure Arc-Unterstützung: Datenresidenz
 
 In diesem Artikel wird das Konzept der Datenresidenz und dessen Anwendung auf Azure Arc-fähigen Servern erläutert.
 
-Azure Arc-fähige Server sind in den **USA, in Europa oder in der Asien-Pazifik-Region** **[verfügbar](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** .
+Azure Arc-fähige Server sind in den **USA, in Europa, dem Vereinigten Königreich oder in der Asien-Pazifik-Region** **[verfügbar](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** .
 
 ## <a name="data-residency"></a>Datenresidenz
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085143"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652005"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -73,7 +73,7 @@ when making changes in one don't forget the other two.
 
 3. Verwenden Sie die in der Tabelle angegebenen Einstellungen **WebJob hinzufügen**.
 
-   ![Seite „WebJob hinzufügen“](./media/web-sites-create-web-jobs/addwjcontinuous.png)
+   ![Screenshot, der die Einstellungen von „WebJob hinzufügen“ zeigt, die Sie konfigurieren müssen.](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Einstellung      | Beispielwert   | BESCHREIBUNG  |
    | ------------ | ----------------- | ------------ |
@@ -111,7 +111,7 @@ when making changes in one don't forget the other two.
 
 3. Verwenden Sie die in der Tabelle angegebenen Einstellungen **WebJob hinzufügen**.
 
-   ![Seite „WebJob hinzufügen“](./media/web-sites-create-web-jobs/addwjtriggered.png)
+   ![Screenshot, der die Einstellungen zeigt, die für das Erstellen eines manuell ausgelösten WebJobs konfiguriert werden müssen.](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Einstellung      | Beispielwert   | BESCHREIBUNG  |
    | ------------ | ----------------- | ------------ |

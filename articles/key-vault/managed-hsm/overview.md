@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 9eee3d5bc53ebe40ba4462f394ffe30cea6b70fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998379"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91320556"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Was ist verwaltetes HSM von Azure Key Vault (Vorschauversion)?
 
@@ -33,7 +33,7 @@ Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfü
 
 - **Zentrale Schlüsselverwaltung:** Verwalten Sie kritische Schlüssel mit hohem Wert für Ihre gesamte Organisation an einem zentralen Ort. Dank präziser schlüsselspezifischer Berechtigungen können Sie den Zugriff auf die einzelnen Schlüssel gemäß dem Prinzip der möglichst geringen Zugriffsberechtigungen steuern.
 - **Isolierte Zugriffssteuerung:** Mit dem Zugriffssteuerungsmodell der lokalen RBAC für verwaltete HSMs haben designierte HSM-Clusteradministratoren die volle Kontrolle über die HSMs und damit sogar Vorrang vor Verwaltungsgruppen-, Abonnement- und Ressourcengruppenadministratoren.
-- **FIPS 140-2 Level 3-zertifizierte HSMs:** Schützen Sie Ihre Daten, und erfüllen Sie Complianceanforderungen mit FIPS 140-2 Level 3-zertifizierten HSMs (Federal Information Protection Standard). Verwaltete HSMs verwenden HSMs der Marvell LiquidSecurity-Familie.
+- **FIPS 140-2 Level 3-zertifizierte HSMs:** Schützen Sie Ihre Daten, und erfüllen Sie Complianceanforderungen mit FIPS 140-2 Level 3-zertifizierten HSMs (Federal Information Protection Standard). Verwaltete HSMs verwenden HSM-Adapter von Marvell LiquidSecurity.
 - **Überwachen und Überprüfen:** Profitieren Sie von der vollständigen Azure Monitor-Integration. Erhalten Sie umfassende Protokolle aller Aktivitäten über Azure Monitor. Verwenden Sie Azure Log Analytics für Analysen und Warnungen.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Integration in Azure- und Microsoft-Dienste (PaaS/SaaS) 

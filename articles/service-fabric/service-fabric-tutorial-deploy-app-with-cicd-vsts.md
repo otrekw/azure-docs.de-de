@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326336"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -65,11 +65,11 @@ Erstellen Sie ein neues lokales Git-Repository für das Projekt, indem Sie auf d
 
 Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Azure DevOps übertragen** auf die Schaltfläche **Git-Repository veröffentlichen**.
 
-![Git-Repository pushen][push-git-repo]
+![Screenshot: Team Explorer-Synchronisierungsfenster in Visual Studio. Unter „Per Push an Azure DevOps übertragen“ ist die Schaltfläche „Git-Repository veröffentlichen“ hervorgehoben.][push-git-repo]
 
 Überprüfen Sie Ihre E-Mail-Adresse, und wählen Sie in der Dropdownliste **Azure DevOps-Domäne** Ihr Konto aus. Geben Sie den Repositorynamen ein, und wählen Sie **Repository veröffentlichen** aus.
 
-![Git-Repository pushen][publish-code]
+![Screenshot: Einstellungen für „Per Push an Azure DevOps übertragen“. Die Einstellungen für „E-Mail“, „Konto“ und „Repositoryname“ sowie die Schaltfläche „Repository veröffentlichen“ sind hervorgehoben.][publish-code]
 
 Durch das Veröffentlichen des Repositorys wird in Ihrem Konto ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Projekt aus. Sie können den Code im Web anzeigen, indem Sie **Im Web anzeigen** auswählen.
 
@@ -123,7 +123,7 @@ Fügen Sie bei Verwendung von Azure Active Directory-Anmeldeinformationen den **
 
 Klicken Sie auf **Hinzufügen**, um die Clusterverbindung zu speichern.
 
-Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**-> **+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
+Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**->**+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
 
 ![Hinzufügen des Artefakts][add-artifact]
 
@@ -155,7 +155,7 @@ Um den Buildstatus zu überprüfen, wechseln Sie in Visual Studio in **Team Expl
 
 Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Beachten Sie, dass die Anwendungsversion in diesem Beispiel 1.0.0.20170815.3 lautet.
 
-![Service Fabric Explorer][sfx1]
+![Screenshot: In einem Browserfenster ausgeführte Voting-App in Service Fabric Explorer. Die App-Version 1.0.0.20170815.3 ist hervorgehoben.][sfx1]
 
 ## <a name="update-the-application"></a>Aktualisieren der Anwendung
 
@@ -163,11 +163,11 @@ Nehmen Sie in der Anwendung Codeänderungen vor.  Speichern und committen Sie di
 
 Sobald das Upgrade der Anwendung gestartet wird, können Sie in Service Fabric Explorer den Upgradestatus beobachten:
 
-![Service Fabric Explorer][sfx2]
+![Screenshot: Voting-App in Service Fabric Explorer. Die Statusmeldung „Upgrade wird durchgeführt“ und eine Meldung vom Typ „Das Upgrade wird ausgeführt...“ sind hervorgehoben.][sfx2]
 
 Das Anwendungsupgrade kann mehrere Minuten dauern. Wenn das Upgrade abgeschlossen ist, wird die nächste Version der Anwendung ausgeführt.  In diesem Beispiel: 1.0.0.20170815.4
 
-![Service Fabric Explorer][sfx3]
+![Screenshot: In einem Browserfenster ausgeführte Voting-App in Service Fabric Explorer. Die aktualisierte App-Version 1.0.0.20170815.4 ist hervorgehoben.][sfx3]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

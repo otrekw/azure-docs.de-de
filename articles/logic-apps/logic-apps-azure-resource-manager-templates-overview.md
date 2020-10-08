@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269045"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -34,12 +34,14 @@ Weitere Informationen zu Resource Manager-Vorlagen finden Sie in den folgenden T
 * [Bewährte Methoden für Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-best-practices.md)
 * [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
+Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten, Integrationskontoartefakte und Integrationsdienstumgebungen gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
+
 Logik-App-Beispielvorlagen finden Sie in den folgenden Beispielen:
 
 * [Vollständige Beispielvorlage](#full-example-template), die für die Beispiele in diesem Thema verwendet wird
 * [Logik-App-Beispielvorlage für Schnellstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) in GitHub
 
-Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten und Integrationskontoartefakte gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
+Beginnen Sie für die Logic Apps-REST-API mit der [Übersicht über die Azure Logic Apps-REST-API](/rest/api/logic).
 
 <a name="template-structure"></a>
 
@@ -280,7 +282,7 @@ Allgemeine Informationen zu Vorlagenressourcen und deren Attributen finden Sie i
 
 ### <a name="logic-app-resource-definition"></a>Ressourcendefinition einer Logik-App
 
-Die Ressourcendefinition ihrer Logik-App beginnt mit dem `properties`-Objekt, das folgende Informationen enthält:
+Die [Workflowressourcendefinition Ihrer Logik-App in einer Vorlage](/azure/templates/microsoft.logic/workflows) beginnt mit dem `properties`-Objekt, das folgende Informationen enthält:
 
 * Der Zustand Ihrer Logik-App bei der Bereitstellung
 * Die ID für jedes Integrationskonto, das von ihrer Logik-App verwendet wird
@@ -325,7 +327,7 @@ Die Ressourcendefinition ihrer Logik-App beginnt mit dem `properties`-Objekt, da
 
 Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-App:
 
-| attribute | Erforderlich | type | BESCHREIBUNG |
+| attribute | Erforderlich | type | Beschreibung |
 |-----------|----------|------|-------------|
 | `state` | Ja | String | Der Zustand Ihrer Logik-App bei der Bereitstellung, wobei `Enabled` bedeutet, dass Ihre Logik-App aktiv ist, und `Disabled` bedeutet, dass Ihre Logik-App inaktiv ist. Die Option `Disabled` können Sie beispielsweise verwenden, wenn Ihre Logik-App noch nicht aktiviert, aber bereits als Entwurfsversion bereitgestellt werden soll. |
 | `integrationAccount` | Nein | Object | Wird in Ihrer Logik-App ein Integrationskonto verwendet, das Artefakte für B2B-Szenarien (Business-to-Business) speichert, enthält dieses Objekt das `id`-Attribut, das die ID für das Integrationskonto angibt. |
@@ -334,7 +336,31 @@ Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-A
 | `accessControl` | Nein | Object | Hiermit werden Sicherheitsattribute für Ihre Logik-App angegeben, etwa Einschränken des IP-Zugriffs auf Anforderungstrigger oder Ausführungsverlaufseingaben und -ausgaben. Weitere Informationen finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten und Integrationskontoartefakte gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
+Weitere Informationen zu Ressourcendefinitionen für diese Logic Apps-Objekte finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions):
+
+* [Workflowressourcendefinition](/azure/templates/microsoft.logic/workflows)
+* [Integrationsdienstumgebungs-Ressourcendefinition](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [Integrationsdienstumgebung: verwaltete API-Ressourcendefinition](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+
+* [Integrationskonto-Ressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts)
+
+* Integrationskontoartefakte:
+
+  * [Vereinbarungsressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/agreements)
+
+  * [Assmblyressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/assemblies)
+
+  * [Batchkonfigurations-Ressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/batchconfigurations)
+
+  * [Zertifikatressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/certificates)
+
+  * [Zuordnungsressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/maps)
+
+  * [Partnerressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/partners)
+
+  * [Schemaressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/schemas)
+
+  * [Sitzungsressourcendefinition](/azure/templates/microsoft.logic/integrationaccounts/sessions)
 
 <a name="workflow-definition-parameters"></a>
 

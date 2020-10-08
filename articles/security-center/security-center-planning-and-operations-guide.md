@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447414"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713793"
 ---
 # <a name="planning-and-operations-guide"></a>Leitfaden zu Planung und Betrieb
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -120,7 +120,7 @@ Security Center-Richtlinien enthalten folgende Komponenten:
 - [Datensammlung:](security-center-enable-data-collection.md) Agent-Bereitstellung und Datensammlungseinstellungen.
 - [Sicherheitsrichtlinie:](tutorial-security-policy.md) Eine Azure-Richtlinie, die festlegt, welche Kontrollen von Security Center überwacht und empfohlen werden. Sie können aber auch [Azure Policy](../governance/policy/overview.md) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
 - [E-Mail-Benachrichtigungen:](security-center-provide-security-contact-details.md) Sicherheitskontakte und Benachrichtigungseinstellungen.
-- [Tarif:](security-center-pricing.md) Der Tarif mit oder ohne Azure Defender bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements, Ressourcengruppen und Arbeitsbereiche angegeben werden.)
+- [Tarif:](security-center-pricing.md) Der Tarif mit oder ohne Azure Defender bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements und Arbeitsbereiche oder Ressourcengruppen mithilfe der API angegeben werden.)
 
 > [!NOTE]
 > Die Angabe eines Sicherheitskontakts stellt sicher, dass Azure bei einem Sicherheitsvorfall die richtige Person in Ihrer Organisation erreicht. Weitere Informationen zur Aktivierung dieser Empfehlung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md) .
@@ -161,7 +161,7 @@ Für Arbeitsbereiche, die von Azure Security Center erstellt wurden, werden die 
 > Microsoft unternimmt große Anstrengungen, um für den Datenschutz und die Sicherheit dieser Daten zu sorgen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten. Weitere Informationen zur Behandlung von Daten und zum Datenschutz finden Sie unter [Azure Security Center-Datensicherheit](security-center-data-security.md).
 >
 
-## <a name="onboarding-non-azure-resources"></a>Integration Azure-fremder Ressourcen
+## <a name="onboard-non-azure-resources"></a>Integrieren Azure-fremder Ressourcen
 
 Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen die entsprechenden Ressourcen jedoch zunächst integriert werden. Weitere Informationen zum Integrieren Azure-fremder Ressourcen finden Sie im Artikel zum [Integrieren Azure-fremder Computer](quickstart-onboard-machines.md).
 
@@ -219,11 +219,9 @@ Das folgende Beispiel zeigt eine verdächtige RDP-Aktivität:
 
 Diese Seite enthält Details zur Angriffszeit, den Hostnamen der Quelle, den virtuellen Zielcomputer sowie empfohlene Schritte. In bestimmten Fällen sind die Quellinformationen des Angriffs möglicherweise leer. Weitere Informationen hierzu finden Sie unter [Fehlende Quellinformationen in Azure Security Center-Warnungen](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) .
 
-Auf dieser Seite können Sie auch eine Untersuchung starten, um den Angriffsverlauf nachzuvollziehen und zu ermitteln, wie der Angriff durchgeführt wurde, welche Systeme möglicherweise betroffen sind und welche Anmeldeinformationen verwendet wurden. Außerdem können Sie sich eine grafische Darstellung der gesamten Angriffskette ansehen.
-
 Nach Ermittlung des betroffenen Systems können Sie eine zuvor erstellte [Workflowautomatisierung](workflow-automation.md) ausführen. Dabei handelt es sich um eine Sammlung von Prozeduren, die aus Security Center ausgeführt werden können, sobald sie durch eine Warnung ausgelöst wurden.
 
-Das Video [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Nutzen von Azure Security Center und Microsoft Operations Management Suite für eine Reaktion auf Vorfälle) enthält Demos, mit denen verdeutlicht wird, wie Sie Security Center in den einzelnen Phasen nutzen können.
+Das Video [(Nutzen von Azure Security Center und Microsoft Operations Management Suite für eine Reaktion auf Vorfälle)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) enthält Demos, mit denen verdeutlicht wird, wie Sie Security Center in den einzelnen Phasen nutzen können.
 
 > [!NOTE]
 > Unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) erhalten Sie weitere Informationen dazu, wie Security Center-Funktionen Sie während des Prozesses zur Reaktion auf Vorfälle unterstützen.

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289935"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653756"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnose und Problembehandlung in einer Azure Time Series Insights Gen2-Umgebung
 
@@ -43,17 +43,17 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
 - Dem Schlüssel Ihrer Ereignisquelle fehlt eine erforderliche Berechtigung.
 
-  * Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
+  - Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
 
     [![Überprüfen der IoT Hub-Berechtigungen](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * Die Richtlinien **iothubowner** und **service** funktionieren beide, da sie über die Berechtigung **Dienstverbindung** verfügen.
+    - Die Richtlinien **iothubowner** und **service** funktionieren beide, da sie über die Berechtigung **Dienstverbindung** verfügen.
 
-  * Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
+  - Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
   
     [![Überprüfen der Event Hub-Berechtigungen](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * Die Richtlinien **read** und **write** funktionieren beide, da sie über die Berechtigung **Lauschen** verfügen.
+    - Die Richtlinien **read** und **write** funktionieren beide, da sie über die Berechtigung **Lauschen** verfügen.
 
 - Ihre bereitgestellte Consumergruppe ist für Time Series Insights nicht exklusiv.
 
@@ -77,28 +77,28 @@ Möglicherweise werden Sie Daten ohne die Time Series-ID.
 
 - Möglicherweise wurde der Ereignisquellenschlüssel neu generiert, und ihre Gen2-Umgebung benötigt den neuen Ereignisquellenschlüssel.
 
-Dieses Problem tritt auf, wenn der Schlüssel, der beim Erstellen der Ereignisquelle angegeben wurde, nicht mehr gültig ist. In Time Series Insights werden in Ihrem Hub Telemetriedaten, aber keine empfangenen Nachrichten angezeigt. Wenn Sie nicht sicher sind, ob der Schlüssel neu generiert wurde, können Sie das Aktivitätsprotokoll Ihres Event Hubs nach „Namespace-Autorisierungsregeln erstellen oder aktualisieren“ oder „Dient zum Erstellen oder Aktualisieren von Iot Hub-Ressourcen“ für den IoT-Hub durchsuchen. 
+Dieses Problem tritt auf, wenn der Schlüssel, der beim Erstellen der Ereignisquelle angegeben wurde, nicht mehr gültig ist. In Time Series Insights werden in Ihrem Hub Telemetriedaten, aber keine empfangenen Nachrichten angezeigt. Wenn Sie nicht sicher sind, ob der Schlüssel neu generiert wurde, können Sie das Aktivitätsprotokoll Ihres Event Hubs nach „Namespace-Autorisierungsregeln erstellen oder aktualisieren“ oder „Dient zum Erstellen oder Aktualisieren von IoT Hub-Ressourcen“ für den IoT-Hub durchsuchen.
 
-Um Ihre Time Series Insights Gen2-Umgebung mit dem neuen Schlüssel zu aktualisieren, öffnen Sie die Hubressource im Azure-Portal und kopieren den neuen Schlüssel. Navigieren Sie zu ihrer TSI-Ressource, und klicken Sie auf „Ereignisquellen“. 
+Um Ihre Time Series Insights Gen2-Umgebung mit dem neuen Schlüssel zu aktualisieren, öffnen Sie die Hubressource im Azure-Portal und kopieren den neuen Schlüssel. Navigieren Sie zu ihrer TSI-Ressource, und klicken Sie auf „Ereignisquellen“.
 
-   [![Aktualisieren des Schlüssels.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![Screenshot, der die T S I-Ressource mit aufgerufenem Element des Menüs „Ereignisquellen“ zeigt.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
 Wählen Sie die Ereignisquelle(n) aus, deren Erfassung beendet wurde, fügen Sie den neuen Schlüssel ein, und klicken Sie auf „Speichern“.
 
-   [![Aktualisieren des Schlüssels.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![Screenshot, der die T S I-Ressource mit eingegebenem I o T Hub-Richtlinienschlüssel zeigt.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problem: Die Timestamp-Eigenschaft für den Namen meiner Ereignisquelle funktioniert nicht.
 
 Stellen Sie sicher, dass Name und Wert den folgenden Regeln entsprechen:
 
-* Der Name der Timestamp-Eigenschaft beachtet Groß-/Kleinschreibung.
-* Der Wert für die Timestamp-Eigenschaft, der als JSON-Zeichenfolge von Ihrer Ereignisquelle eingeht, hat das Format `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Ein Beispiel für eine solche Zeichenfolge ist `"2008-04-12T12:53Z"`.
+- Der Name der Timestamp-Eigenschaft beachtet Groß-/Kleinschreibung.
+- Der Wert für die Timestamp-Eigenschaft, der als JSON-Zeichenfolge von Ihrer Ereignisquelle eingeht, hat das Format `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Ein Beispiel für eine solche Zeichenfolge ist `"2008-04-12T12:53Z"`.
 
 Sie können am einfachsten sicherstellen, dass Ihr Name der Timestamp-Eigenschaft erfasst wird und richtig funktioniert, indem Sie den Time Series Insights Gen2-Explorer verwenden. Wählen Sie im Time Series Insights Gen2-Explorer mithilfe des Diagramms einen Zeitraum aus, nachdem Sie den Namen der Timestamp-Eigenschaft angegeben haben. Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie die Option **Ereignisse untersuchen** aus. Die erste Spaltenüberschrift ist der Name Ihrer Timestamp-Eigenschaft. Er sollte neben dem Wort `Timestamp` die Zeichenfolge `($ts)` aufweisen, statt:
 
-* `(abc)`, was anzeigt, dass Time Series Insights die Datenwerte als Zeichenfolgen liest.
-* Das **Kalender**symbol, das anzeigt, dass Time Series Insights die Datenwerte als Datum/Uhrzeit-Wert liest.
-* `#`, was anzeigt, dass Time Series Insights die Datenwerte als ganze Zahl liest.
+- `(abc)`, was anzeigt, dass Time Series Insights die Datenwerte als Zeichenfolgen liest.
+- Das **Kalender**symbol, das anzeigt, dass Time Series Insights die Datenwerte als Datum/Uhrzeit-Wert liest.
+- `#`, was anzeigt, dass Time Series Insights die Datenwerte als ganze Zahl liest.
 
 Wenn die Timestamp-Eigenschaft nicht explizit angegeben ist, wird der Zeitpunkt der Einreihung eine Ereignisses in die Warteschlange für einen IoT-Hub oder Event Hub als Standardzeitstempel verwendet.
 
@@ -129,9 +129,9 @@ Dieses Problem kann auftreten, wenn in Ihrer Umgebung keine Zeitreihenmodell-Hie
 
 Dieses Problem kann auftreten, wenn Sie nicht die neueste Version des Power BI-Connectors in Power BI Desktop in verwenden.
 
-[![Bei Instanzen ohne übergeordnetes Element wird eine Warnung angezeigt.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![Screenshot, der das Dialogfeld „Es kann keine Verbindung hergestellt werden“ zeigt.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* Überprüfen Sie die Version Ihres Power BI Desktops, und stellen Sie sicher, dass Sie die Version von Juli 2020 verwenden. Falls nicht, aktualisieren Sie Ihren Power BI Desktop, und führen Sie den Connector erneut aus. 
+- Überprüfen Sie die Version Ihres Power BI Desktops, und stellen Sie sicher, dass Sie die Version von Juli 2020 verwenden. Falls nicht, aktualisieren Sie Ihren Power BI Desktop, und führen Sie den Connector erneut aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

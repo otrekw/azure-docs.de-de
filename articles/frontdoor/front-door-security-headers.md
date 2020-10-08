@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Hinzufügen von Sicherheitsheadern mit Regel-Engines: Azure Front Door'
-description: In diesem Artikel erfahren Sie, wie Sie einen Sicherheitsheader über das Regelmodul in Azure Front Door konfigurieren.
+description: In diesem Tutorial erfahren Sie, wie Sie einen Sicherheitsheader per Regel-Engine in Azure Front Door konfigurieren.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 204a7676fd03466929fc67a0879ff28e0318d21d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085234"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91270048"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Tutorial: Hinzufügen von Sicherheitsheadern mit Regel-Engines
 
