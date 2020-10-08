@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057116"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826930"
 ---
 # <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
@@ -43,8 +43,8 @@ Verwenden Sie die folgende Tabelle, um die Zugriffsanforderungen für Ihre Custo
 
 |Role  |Berechtigungen  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | Vollzugriff auf Projekte, einschließlich der Möglichkeit zum Erstellen, Bearbeiten oder Löschen eines Projekts.        |
-|`Cognitive Service Custom Vision Trainer`     | Vollzugriff ohne der Möglichkeit zum Erstellen oder Löschen eines Projekts. Trainer können Projekte anzeigen und bearbeiten und die Modelle trainieren, veröffentlichen, die Veröffentlichung von Projekten aufheben oder sie exportieren.        |
-|`Cognitive Service Custom Vision Labeler`     | Die Möglichkeit zum Hochladen, Bearbeiten oder Löschen von Trainingsbildern und zum Erstellen, Hinzufügen, Entfernen oder Löschen von Tags. Beschriftungsersteller können Projekte anzeigen, jedoch nichts außer Trainingsbildern und Tags aktualisieren.         |
-|`Cognitive Service Custom Vision Deployment`     | Die Möglichkeit zum Veröffentlichen, Aufheben der Veröffentlichung oder Exportieren von Modellen. Bereitsteller können Projekte anzeigen, jedoch Projekte, Trainingsbilder oder Tags nicht aktualisieren.        |
-|`Cognitive Service Custom Vision Reader`     | Die Möglichkeit zur Anzeige von Projekten. Leser können keine Änderungen vornehmen.        |
+|`Cognitive Services Custom Vision Contributor`     | Vollzugriff auf Projekte, einschließlich der Möglichkeit zum Erstellen, Bearbeiten oder Löschen eines Projekts.        |
+|`Cognitive Services Custom Vision Trainer`     | Vollzugriff ohne der Möglichkeit zum Erstellen oder Löschen eines Projekts. Trainer können Projekte anzeigen und bearbeiten und die Modelle trainieren, veröffentlichen, die Veröffentlichung von Projekten aufheben oder sie exportieren.        |
+|`Cognitive Services Custom Vision Labeler`     | Die Möglichkeit zum Hochladen, Bearbeiten oder Löschen von Trainingsbildern und zum Erstellen, Hinzufügen, Entfernen oder Löschen von Tags. Beschriftungsersteller können Projekte anzeigen, jedoch nichts außer Trainingsbildern und Tags aktualisieren.         |
+|`Cognitive Services Custom Vision Deployment`     | Die Möglichkeit zum Veröffentlichen, Aufheben der Veröffentlichung oder Exportieren von Modellen. Bereitsteller können Projekte anzeigen, jedoch Projekte, Trainingsbilder oder Tags nicht aktualisieren.        |
+|`Cognitive Services Custom Vision Reader`     | Die Möglichkeit zur Anzeige von Projekten. Leser können keine Änderungen vornehmen.        |

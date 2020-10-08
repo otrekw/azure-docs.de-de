@@ -3,14 +3,14 @@ title: Bereitstellen auf einem dedizierten Host
 description: Verwenden eines dedizierten Hosts, um eine echte Isolation auf Hostebene für Ihre Azure Container Instances-Workloads zu erreichen
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259646"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825603"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Bereitstellen auf dedizierten Hosts
 

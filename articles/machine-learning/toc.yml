@@ -15,7 +15,7 @@
 - name: Tutorials
   expanded: true
   items:
-    - name: Erste Schritte mit Python
+    - name: "Erste Schritte mit Python (Tag\_1)"
       expanded: true
       items:
         - name: 1. Einrichten des lokalen Computers
@@ -188,6 +188,8 @@
             - name: Verwenden von Private Link
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: Verwenden von benutzerdefiniertem DNS
+              href: how-to-custom-dns.md
             - name: Konfigurieren von sicheren Webdiensten
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
