@@ -4,14 +4,14 @@ description: Erfahren Sie, wie App Service-Pläne in Azure App Service funktioni
 keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, Skalierbarkeit, App Service-Plan, App Service-Kosten
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958511"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742972"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -22,32 +22,32 @@ Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, West
 - Region („USA, Westen“, „USA, Osten“ usw.)
 - Anzahl von VM-Instanzen
 - Größe von VM-Instanzen (Klein, Mittel, Groß)
-- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated)
+- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated)
 
 Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Es gibt verschiedene Kategorien von Tarifen:
 
 - **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das Aufskalieren nicht möglich.
-- **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium** und **PremiumV2** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
+- **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium**, **PremiumV2** und **PremiumV3** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
 - **Isoliert**: In diesem Tarif werden dedizierte Azure-VMs in dedizierten virtuellen Azure-Netzwerken ausgeführt. Er stellt zusätzlich zur Computeisolation Netzwerkisolation für Ihre Apps bereit. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Für jeden Tarif wird auch eine bestimmte Teilmenge mit App Service-Features bereitgestellt. Zu diesen Features gehören benutzerdefinierte Domänen und TLS/SSL-Zertifikate, automatische Skalierung, Bereitstellungsslots, Sicherungen, Traffic Manager-Integration und mehr. Je höher der Tarif, desto mehr Features sind verfügbar. Informationen dazu, welche Features für einen Tarif unterstützt werden, finden Sie unter [App Service-Pläne](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-<a name="new-pricing-tier-premiumv2"></a>
+<a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Der neue **PremiumV2**-Tarif bietet [VMs der Dv2-Serie](../virtual-machines/dv2-dsv2-series.md) mit schnelleren Prozessoren, SSD-Speicher und einem doppelt so großen Arbeitsspeicher-zu-Kern-Verhältnis gegenüber dem **Standard**-Tarif. **PremiumV2** bietet die gleichen erweiterten Funktionen wie der Standard-Plan, unterstützt aber dank einer höheren Anzahl von Instanzen eine größere Skalierung. Alle im vorhandenen **Premium**-Tarif verfügbaren Funktionen sind in **PremiumV2** enthalten.
+> Der neue **PremiumV3**-Tarif garantiert [VMs der Dv3-Serie](../virtual-machines/dv3-dsv3-series.md) mit schnelleren Prozessoren, SSD-Speicher und einem vierfachen Arbeitsspeicher-zu-Kern-Verhältnis gegenüber dem **Standard**-Tarif. **PremiumV3** bietet dieselben erweiterten Funktionen wie der **Standard**-Tarif, unterstützt aber dank einer höheren Anzahl von Instanzen auch eine größere Skalierung. Alle im vorhandenen **PremiumV2**-Tarif verfügbaren Funktionen sind in **PremiumV3** enthalten.
 >
 > Ähnlich wie bei anderen dedizierten Tarifen sind drei VM-Größen für diese Ebene verfügbar:
 >
-> - Klein (ein CPU-Kern, 3,5 GiB Arbeitsspeicher) 
-> - Mittel (zwei CPU-Kerne, 7 GiB Arbeitsspeicher) 
-> - Groß (vier CPU-Kerne, 14 GiB Arbeitsspeicher)  
+> - Klein (2 CPU-Kerne, 8 GiB Arbeitsspeicher) 
+> - Mittel (4 CPU-Kerne, 16 GiB Arbeitsspeicher) 
+> - Groß (8 CPU-Kerne, 32 GiB Arbeitsspeicher)  
 >
-> Weitere Informationen zum **PremiumV2**-Tarif finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
+> Weitere Informationen zum **PremiumV3**-Tarif finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 >
-> Informationen zu den ersten Schritten mit dem neuen **PremiumV2**-Tarif finden Sie unter [Configure PremiumV2 tier for Azure App Service (Konfigurieren des PremiumV2-Tarifs für App Service)](app-service-configure-premium-tier.md).
+> Informationen zu den ersten Schritten mit dem neuen **PremiumV3**-Tarif finden Sie unter [Konfigurieren des PremiumV3-Tarifs für App Service](app-service-configure-premium-tier.md).
 
 ## <a name="how-does-my-app-run-and-scale"></a>Wie wird meine App ausgeführt und skaliert?
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird die Abrechnung von App Service-Apps beschrieben. Ausfü
 Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr für die verbrauchten Computeressourcen an.
 
 - Beim Tarif **Shared** erhält jede App ein Kontingent von CPU-Minuten, sodass für _jede App_ eine Gebühr gemäß dem CPU-Kontingent anfällt.
-- Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
+- Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**, **PremiumV3**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
 - Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird berechnet. Darüber hinaus fällt eine Stempelgebührpauschale für die Ausführung der eigentlichen App Service-Umgebung an.
 
 Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, TLS/SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:

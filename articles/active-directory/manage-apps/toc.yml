@@ -110,18 +110,26 @@
   items:
     - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
       items:
-        - name: Konfigurieren der Benutzereinwilligung
-          href: configure-user-consent.md
-        - name: Verwalten und Bewerten von Anforderungen zur Einwilligung
-          href: manage-consent-requests.md
-        - name: Erteilen einer mandantenweiten Administratoreinwilligung
-          href: grant-admin-consent.md
-        - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
-          href: configure-admin-consent-workflow.md
+        - name: Einwilligung und Berechtigungen
+          items:
+            - name: Konfigurieren der Benutzereinwilligung
+              href: configure-user-consent.md
+            - name: Konfigurieren der Gruppenbesitzereinwilligung
+              href: configure-user-consent-groups.md
+            - name: Konfigurieren von Berechtigungsklassifizierungen
+              href: configure-permission-classifications.md
+            - name: Verwalten von Richtlinien für die App-Zustimmung
+              href: manage-app-consent-policies.md
+            - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
+              href: configure-admin-consent-workflow.md
+            - name: Verwalten und Bewerten von Anforderungen zur Einwilligung
+              href: manage-consent-requests.md
+            - name: Erteilen einer mandantenweiten Administratoreinwilligung
+              href: grant-admin-consent.md
+            - name: 'Überprüfen von Berechtigungen, die Apps erteilt wurden'
+              href: manage-application-permissions.md
         - name: Verwalten der Benutzerzuweisung für eine App
           href: assign-user-or-group-access-portal.md
-        - name: 'Überprüfen von Berechtigungen, die Apps erteilt wurden'
-          href: manage-application-permissions.md
         - name: Erstellen von Auflistungen in „Meine Apps“
           href: access-panel-collections.md
         - name: Verwenden des Self-Service-App-Zugriffs

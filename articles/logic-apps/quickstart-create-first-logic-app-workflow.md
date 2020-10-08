@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/23/2020
-ms.openlocfilehash: 980e3e036257bbf5aa9743025bbfb55065176a39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133298"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89658302"
 ---
 # <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten automatisierten Integrationsworkflows mit Azure Logic Apps – Azure-Portal
 
@@ -20,7 +20,7 @@ In dieser Schnellstartanleitung werden die grundlegenden allgemeinen Konzepte vo
 
 ![Konzeptionelle Grafik, die einen allgemeinen Logik-App-Beispielworkflow darstellt.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Für dieses Szenario benötigen Sie ein Azure-Abonnement oder müssen sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Darüber hinaus ist ein E-Mail-Konto von einem von Azure Logic Apps unterstützten Dienst wie Office 365 Outlook, Outlook.com oder Gmail erforderlich. Weitere unterstützte E-Mail-Dienste finden Sie im [Artikel zu den Connectors](/connectors/). In diesem Beispiel wird ein Office 365 Outlook-Konto für die Logik-App verwendet. Wenn Sie einen anderen E-Mail-Dienst verwenden, sind die allgemeinen Schritte identisch, doch kann die Benutzeroberfläche geringfügig abweichen.
+Für dieses Szenario benötigen Sie ein Azure-Abonnement oder müssen sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Darüber hinaus ist ein E-Mail-Konto von einem von Azure Logic Apps unterstützten Dienst wie Office 365 Outlook, Outlook.com oder Gmail erforderlich. Weitere unterstützte E-Mail-Dienste finden Sie im [Artikel zu den Connectors](/connectors/). Die Logik-App verwendet in diesem Beispiel ein Geschäfts-, Schul- oder Unikonto. Wenn Sie einen anderen E-Mail-Dienst verwenden, sind die allgemeinen Schritte identisch, doch kann die Benutzeroberfläche geringfügig abweichen.
 
 > [!IMPORTANT]
 > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).

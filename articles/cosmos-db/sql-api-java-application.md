@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079942"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801595"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Tutorial: Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der SQL-API
 
@@ -47,7 +47,7 @@ Bevor Sie mit diesem Lernprogramm zur Anwendungsentwicklung beginnen, benötigen
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable).
+* [Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true).
 * [Eclipse IDE für Java EE-Entwickler.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Eine Azure-Website mit aktivierter Java-Laufzeitumgebung (z.B. Tomcat oder Jetty).](../app-service/quickstart-java.md)
 
@@ -67,7 +67,7 @@ So erstellen Sie eine JSP-Anwendung
 
 1. Zunächst beginnen wir mit der Erstellung eines Java-Projekts. Starten Sie Eclipse, klicken Sie auf **Datei**, dann auf **Neu** und schließlich auf **Dynamisches Webprojekt**. Wenn **Dynamic Web Project** nicht als verfügbares Projekt aufgeführt ist, gehen Sie wie folgt vor: Klicken Sie auf **Datei**, dann auf **Neu** und anschließend auf **Projekt**. Erweitern Sie die Option **Web**, klicken Sie auf **Dynamic Web Project**, und klicken Sie anschließend auf **Weiter**.
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP-Java-Anwendungsentwicklung":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Java-Anwendung „My ToDo List“":::
 
 1. Geben Sie einen **Projektnamen** in das Feld Projektname ein, wählen Sie optional im Dropdownmenü **Ziellaufzeit** einen Wert aus (z. B. Apache Tomcat v7.0), und klicken Sie dann auf **Fertig stellen**. Durch das Auswählen einer Ziellaufzeit können Sie das Projekt lokal über Eclipse ausführen.
 
@@ -75,7 +75,7 @@ So erstellen Sie eine JSP-Anwendung
 
 1. Geben Sie der Datei im Dialogfeld **Neue JSP-Datei** den Namen **index.jsp**. Behalten Sie für den übergeordneten Ordner **WebContent** bei, wie in der folgenden Abbildung gezeigt, und klicken dann auf **Weiter**.
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Erstellen einer neuen JSP-Datei – Java-Webanwendungstutorial":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Java-Anwendung „My ToDo List“":::
 
 1. Wählen Sie im Dialogfeld **JSP-Vorlage auswählen** im Rahmen dieses Lernprogramms **Neue JSP-Datei (HTML)** , und klicken Sie dann auf **Fertig stellen**.
 
@@ -91,7 +91,7 @@ So erstellen Sie eine JSP-Anwendung
 
 1. Wenn Sie in Schritt 2 eine Ziellaufzeitversion festgelegt haben, können Sie auf **Projekt** und dann auf **Ausführen** klicken, um die JSP-Anwendung lokal auszuführen:
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World (Java-Anwendungstutorial)":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Java-Anwendung „My ToDo List“":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>Installieren des SQL Java SDK
 

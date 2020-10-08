@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
-ms.openlocfilehash: 4fd87cb17fc222f5014585e8f1e87e3f58a58574
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 8e53e8ad26ddac1006a28fea2ddee9990533e8c9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89596408"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89647898"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mithilfe einer ARM-Vorlage
 
@@ -87,11 +87,11 @@ Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Neben Azure Pow
 
 1. Die Ressourcengruppe sollte die folgenden Ressourcen enthalten:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Ressourcengruppe der DNS-Zonenbereitstellung":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Resource Manager-Vorlage für Azure DNS-Zone: PowerShell-Bereitstellungsausgabe":::
 
 1. Wählen Sie die DNS-Zone mit dem Suffix **<span>azurequickstart.</span>org** aus, um zu überprüfen, ob die Zone ordnungsgemäß mit einem **A**-Eintrag erstellt wurde, der auf die Werte **1.2.3.4** und **1.2.3.5** verweist.
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="DNS-Zonenbereitstellung":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Resource Manager-Vorlage für Azure DNS-Zone: PowerShell-Bereitstellungsausgabe":::
 
 1. Kopieren Sie einen der Namen der Namenserver aus dem vorherigen Schritt.
 
@@ -109,13 +109,13 @@ Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Neben Azure Pow
 
    Es sollte ein Screenshot angezeigt werden, der in etwa wie folgt aussieht:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS zone nslookup":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Resource Manager-Vorlage für Azure DNS-Zone: PowerShell-Bereitstellungsausgabe":::
 
 Der Hostname **wwww<span>.2lwynbseszpam.azurequickstart.</span>org** wird in **1.2.3.4** und **1.2.3.5** aufgelöst, genau wie von Ihnen konfiguriert. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die mit der ExpressRoute-Leitung erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die ExpressRoute-Leitung und alle zugehörigen Ressourcen entfernt.
+Wenn Sie die mit der DNS-Zone erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die DNS-Zone und alle zugehörigen Ressourcen entfernt.
 
 Rufen Sie zum Löschen der Ressourcengruppe das Cmdlet `Remove-AzResourceGroup` auf:
 

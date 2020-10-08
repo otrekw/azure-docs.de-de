@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b247009669d6008644c9beb54fb687138b81716
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 803663f845272c6b1573fceed8025cc23483ec09
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266410"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628739"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrieren einer vorhandenen Gesamtstruktur in eine neue Gesamtstruktur mit einem einzelnen Azure AD-Mandanten
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Agent ausge
 5.  Klicken Sie auf **Neue Konfiguration**
 ![Screenshot des Bildschirms „Azure AD-Bereitstellung (Vorschau)“ mit hervorgehobenem Link „Neue Konfiguration“.](media/tutorial-single-forest/configure1.png)
 7.  Geben Sie im Konfigurationsbildschirm eine **E-Mail-Adresse für Benachrichtigungen** ein, verschieben Sie den Selektor auf **Aktivieren**, und klicken Sie auf **Speichern**.
-![Screenshot des Bildschirms „Konfigurieren“ mit ausgefüllter Benachrichtigungs-E-Mail und ausgewählter Option „Aktivieren“](media/tutorial-single-forest/configure2.png)
+![Screenshot des Bildschirms „Konfigurieren“ mit ausgefüllter Benachrichtigungs-E-Mail und ausgewählter Option „Aktivieren“](media/how-to-configure/configure2.png)
 1.  Der Konfigurationsstatus sollte jetzt **Fehlerfrei** lauten.
 ![Screenshot des Bildschirms „Azure AD-Bereitstellung (Vorschau)“, der den Status „Fehlerfrei“ anzeigt](media/how-to-configure/manage4.png)
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646615"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739907"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 
@@ -54,6 +54,10 @@ Apps in App Service werden auf Workerrollen gehostet. Der Tarif „Basic“ und
 
 Wenn regionale VNet-Integration aktiviert ist, sendet Ihre App ausgehende Aufrufe an das Internet über die üblichen Kanäle. Ihre App verwendet nach wie vor die ausgehenden Adressen, die im Portal für die App-Eigenschaften aufgeführt sind. Was sich für Ihre App ändert, sind Aufrufe an per Dienstendpunkt geschützte Dienste oder RFC 1918-Adressen. Diese Aufrufe werden in Ihr VNET geleitet. Wenn WEBSITE_VNET_ROUTE_ALL auf „1“ festgelegt ist, kann der gesamte ausgehende Datenverkehr in Ihr VNET gesendet werden.
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` wird in Windows-Containern aktuell nicht unterstützt.
+> 
+
 Die Funktion unterstützt nur eine virtuelle Schnittstelle pro Worker. Eine virtuelle Schnittstelle pro Worker bedeutet eine regionale VNET-Integration pro App Service Plan. Alle Apps im selben App Service-Plan können dieselbe VNet-Integration verwenden. Wenn eine App eine Verbindung mit einem zusätzlichen VNET herstellen muss, müssen Sie einen weiteren App Service-Plan erstellen. Die verwendete virtuelle Schnittstelle ist keine Ressource, auf die Kunden direkten Zugriff haben.
 
 Aufgrund der Funktionsweise dieser Technologie wird der Datenverkehr in Verbindung mit der VNet-Integration nicht in Azure Network Watcher- oder NSG-Flussprotokollen (Netzwerksicherheitsgruppe) aufgeführt.
@@ -72,7 +76,8 @@ Die von einem Gateway abhängige VNET-Integration unterstützt das Herstellen ei
 Sie können keine von einem Gateway abhängige VNet-Integration verwenden:
 
 * Mit einem VNET, das mit Azure ExpressRoute verbunden ist.
-* Aus einer Linux-App
+* Aus einer Linux-App.
+* Aus einem [Windows-Container](quickstart-custom-container.md).
 * Für den Zugriff auf durch Dienstendpunkte geschützte Ressourcen.
 * Mit einem Koexistenzgateway, das sowohl ExpressRoute als auch Point-to-Site- oder Site-to-Site-VPNs unterstützt.
 
@@ -139,7 +144,7 @@ Bei der Funktion für die regionale VNet-Integration fallen neben den Gebühren 
 
 Bei der Verwendung der von einem Gateway abhängigen VNet-Integrationsfunktion fallen drei Gebühren an:
 
-* **Gebühren laut App Service-Plantarif**: Ihre Apps müssen sich in einem der App Service-Pläne „Standard“, „Premium“ oder „PremiumV2“ befinden. Weitere Informationen zu diesen Kosten finden Sie unter [App Service-Preise][ASPricing].
+* **Gebühren laut App Service-Plantarif**: Ihre Apps müssen sich in einem der App Service-Pläne „Standard“, „Premium“, „PremiumV2“ oder „PremiumV3“ befinden. Weitere Informationen zu diesen Kosten finden Sie unter [App Service-Preise][ASPricing].
 * **Datenübertragungskosten**: Es gibt eine Gebühr für ausgehende Daten, auch wenn sich das VNET im selben Rechenzentrum befindet. Diese Gebühren werden unter [Datenübertragung – Preisübersicht][DataPricing] beschrieben.
 * **Kosten für VPN Gateway**: Es gibt Kosten für das virtuelle Netzwerkgateway, das für das Point-to-Site-VPN erforderlich ist. Weitere Informationen finden Sie unter [VPN-Gateway: Preise][VNETPricing].
 

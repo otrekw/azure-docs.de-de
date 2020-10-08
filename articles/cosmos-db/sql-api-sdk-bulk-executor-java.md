@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 60c2b3e194fc7703ad1c3f1d3138f9a2c6301f33
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 72a224d4ad1807d095baa8db819878bf2e22e133
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585048"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802717"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java-BulkExecutor-Bibliothek: Informationen zum Download
 
@@ -44,7 +44,7 @@ ms.locfileid: "88585048"
 |**Bulk Executor-Bibliothek auf GitHub**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API-Dokumentation**| [Java-API-Referenzdokumentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**Erste Schritte**|[Erste Schritte mit dem Java SDK für die BulkExecutor-Bibliothek](bulk-executor-java.md)|
-|**Unterstützte Mindestlaufzeit**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+|**Unterstützte Mindestlaufzeit**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Versionshinweise
 

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/19/2019
-ms.openlocfilehash: d469566d7ae5feda37944dda5a0702dca6fca19b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/06/2020
+ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515579"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802061"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -86,7 +86,7 @@ Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) enthält Service Hea
 ## <a name="azure-resources"></a>Azure-Ressourcen
 Metriken und Ressourcenprotokolle enthalten Informationen zum _internen_ Betrieb von Azure-Ressourcen. Diese sind für die meisten Azure-Dienste verfügbar, und Überwachungslösungen und Insights bieten zusätzliche Daten für bestimmte Dienste.
 
-![Azure-Ressourcensammlung](media/data-sources/azure-resources.png)
+![Azure-Ressourcensammlung](media/data-sources/data-source-azure-resources.svg)
 
 
 ### <a name="platform-metrics"></a>Plattformmetriken 

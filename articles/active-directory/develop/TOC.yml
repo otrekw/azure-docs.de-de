@@ -384,6 +384,9 @@
             - name: Migrieren von Apps von ADAL zu MSAL
               href: msal-migration.md
               displayName: migration
+    - name: Microsoft Identity Web-Bibliothek
+      href: microsoft-identity-web.md
+      displayName: 'auth, library, .NET Core'
     - name: Authentifizierungsprotokolle
       displayName: Auth protocol
       items:
@@ -532,10 +535,6 @@
     - name: Anwendungskonfiguration
       displayName: App configuration
       items:
-        - name: Trainingshandbuch zu App-Registrierungen im Azure-Portal
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Oberfläche für App-Registrierungen im Azure-Portal
-          href: app-registration-portal-training-guide.md
         - name: Umwandeln einer App mit nur einem Mandanten in eine mehrinstanzenfähige App
           href: howto-convert-app-to-be-multi-tenant.md
         - name: Erstellen eines Dienstprinzipals

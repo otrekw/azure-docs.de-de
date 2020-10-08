@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548513"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760193"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Tutorial: Moderieren von Facebook-Posts und -Kommentaren mit Azure Content Moderator
 
 In diesem Tutorial wird beschrieben, wie Sie Azure Content Moderator verwenden, um Posts und Kommentare auf einer Facebook-Seite zu moderieren. Facebook sendet die von Besuchern geposteten Inhalte an den Content Moderator-Dienst. Über Ihre Content Moderator-Workflows werden entweder die Inhalte veröffentlicht, oder es werden mit dem entsprechenden Tool Bewertungen erstellt. Dies richtet sich nach den Inhaltspunktzahlen und Schwellenwerten. Das [Demovideo von der Build 2017](https://channel9.msdn.com/Events/Build/2017/T6033) enthält ein funktionsfähiges Beispiel für dieses Szenario.
+
+> [!IMPORTANT]
+> Im Jahr 2018 wurde von Facebook eine strengere Überprüfungsrichtlinie für Facebook-Apps eingeführt. Die Schritte in diesem Tutorial können nur ausgeführt werden, wenn Ihre App vom Facebook-Überprüfungsteam überprüft und genehmigt wurde.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -33,9 +36,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 In diesem Diagramm sind die einzelnen Komponenten dieses Szenarios dargestellt:
 
 ![Diagramm: Content Moderator empfängt Informationen von Facebook über „FBListener“ und sendet Informationen über „CMListener“](images/tutorial-facebook-moderation.png)
-
-> [!IMPORTANT]
-> Im Jahr 2018 wurde von Facebook eine strengere Überprüfungsrichtlinie für Facebook-Apps eingeführt. Die Schritte in diesem Tutorial können nur ausgeführt werden, wenn Ihre App vom Facebook-Überprüfungsteam überprüft und genehmigt wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -1,14 +1,14 @@
 ---
 title: Übersicht über die Verwaltung in Azure – Azure Governance
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
-ms.date: 07/06/2020
+ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041913"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89662137"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Was sind die Azure-Verwaltungsbereiche?
 
@@ -18,7 +18,9 @@ Governance in Azure ist ein Aspekt der Azure-Verwaltung. Dieser Artikel behandel
 
 Das folgende Diagramm veranschaulicht die verschiedenen Bereiche der Verwaltung, die zum Warten einer Anwendung oder Ressource erforderlich sind. Diese unterschiedlichen Bereiche können als ein Lebenszyklus betrachtet werden. Jeder Bereich wird während der gesamten Lebensdauer einer Ressource in kontinuierlicher Folge benötigt. Dieser Ressourcenlebenszyklus beginnt mit der anfänglichen Bereitstellung, anschließend erfolgt der fortgesetzte Betrieb und zuletzt die Außerkraftsetzung.
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Verwaltungsdisziplinen in Azure" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Diagramm: Verwaltungsdisziplinen in Azure" border="false":::
+   Das Diagramm zeigt die Elemente „Migrieren“, „Schützen“, „Absichern“, „Überwachen“, „Konfigurieren“ und „Steuern“ der kreisförmig angeordneten Dienstleistungen, die die Verwaltung und Governance in Azure unterstützen. Unter „Schützen“ werden die Unterelemente „Sicherheitsverwaltung“ und „Bedrohungsschutz“ aufgelistet. Unter „Absichern“ werden die Unterelemente „Sicherung“ und „Notfallwiederherstellung“ aufgelistet. Unter „Überwachen“ werden die Unterelemente „App-Überwachung, Infrastrukturüberwachung und Netzwerküberwachung“ und „Log Analytics und Diagnose“ aufgelistet. Unter „Konfigurieren“ werden die Unterelemente „Konfiguration“, „Updateverwaltung“, „Automatisierung“ und „Skripterstellung“ aufgelistet. Unter „Steuern“ werden die Unterelemente „Richtlinienverwaltung“ und „Kostenverwaltung“ aufgelistet.
+:::image-end:::
 
 Kein einzelner Azure-Dienst erfüllt die Anforderungen eines bestimmten Verwaltungsbereichs vollständig. Stattdessen wird jeder Bereich von mehreren Diensten umgesetzt, die zusammenarbeiten. Einige Dienste (z.B. Application Insights) bieten gezielte Überwachungsfunktionen für Webanwendungen. Andere (wie Azure Monitor-Protokolle) speichern die Verwaltungsdaten für andere Dienste. Diese Funktion ermöglicht es Ihnen, Daten verschiedener Typen zu analysieren, die von verschiedenen Diensten erfasst werden.
 

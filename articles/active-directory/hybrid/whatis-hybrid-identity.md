@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278648"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90016647"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Was bedeutet Hybrididentität in Azure Active Directory?
 
@@ -45,7 +45,7 @@ Im Folgenden sind einige verbreitete Hybrididentitäts- und Zugriffsverwaltungss
 |Ziel|PHS und SSO<sup>1</sup>| PTA und SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |Automatisches Synchronisieren neuer Benutzer-, Kontakt- und Gruppenkonten, die in meiner lokalen Active Directory-Instanz erstellt werden, mit der Cloud|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
-|Einrichten meines Mandanten für Office 365-Hybridszenarios|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
+|Einrichten meines Mandanten für Microsoft 365-Hybridszenarios|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Ermöglichen der Anmeldung und des Zugriffs auf Clouddienste für meine Benutzer mit ihrem lokalen Kennwort|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Implementieren des einmaligen Anmeldens mit Anmeldeinformationen des Unternehmens|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|  
 |Sicherstellen, dass keine Kennworthashes in der Cloud gespeichert werden| |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 

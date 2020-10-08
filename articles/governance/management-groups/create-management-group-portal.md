@@ -1,13 +1,13 @@
 ---
-title: 'Schnellstart: Erstellen einer Verwaltungsgruppe mit dem Portal'
+title: Erstellen einer Verwaltungsgruppe mit dem Portal
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 09/10/2020
 ms.locfileid: "89661740"
 ---
 # <a name="quickstart-create-a-management-group"></a>Schnellstart: Erstellen einer Verwaltungsgruppe
@@ -18,7 +18,7 @@ Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgrupp
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses](https://azure.microsoft.com/free/) Konto erstellen, bevor Sie beginnen.
 
 - Alle Azure AD-Benutzer im Mandanten können eine Verwaltungsgruppe erstellen, ohne dafür die Schreibberechtigung für die Verwaltungsgruppe zu benötigen, wenn der [Hierarchieschutz](./how-to/protect-resource-hierarchy.md#setting---require-authorization) nicht aktiviert ist. Diese neue Verwaltungsgruppe ist dann der Stammverwaltungsgruppe oder der [Standardverwaltungsgruppe](./how-to/protect-resource-hierarchy.md#setting---default-management-group) untergeordnet, und dem Ersteller wird die Rolle „Besitzer“ zugewiesen. Der Verwaltungsgruppendienst ermöglicht dies, damit Rollen nicht auf Stammebene zugewiesen werden müssen. Bei der Erstellung der Stammverwaltungsgruppe hat kein Benutzer auf sie Zugriff. Der Sinn dahinter, dass Verwaltungsgruppen zu Beginn auf Stammebene erstellt werden können, ist die Vermeidung der Hürde, erst nach den globalen Administratoren für Azure AD suchen zu müssen, bevor Verwaltungsgruppen verwendet werden können.
 
@@ -61,4 +61,4 @@ In dieser Schnellstartanleitung haben Sie eine Verwaltungsgruppe zum Organisiere
 Weitere Informationen zu Verwaltungsgruppen und zur Verwaltung Ihrer Ressourcenhierarchie finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwalten von Ressourcen mit Verwaltungsgruppen](./manage.md)
+> Verwalten von Ressourcen mit Verwaltungsgruppen

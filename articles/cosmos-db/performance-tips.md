@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008368"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802139"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Leistungstipps für Azure Cosmos DB und .NET SDK v2
 
@@ -42,7 +42,7 @@ Das [.NET v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) wurde veröff
 
 Für eine bessere Leistung wird die Windows-64-Bit-Hostverarbeitung empfohlen. Das SQL SDK enthält die native Datei „ServiceInterop.dll“, um Abfragen lokal zu analysieren und zu optimieren. „ServiceInterop.dll“ wird nur auf der Windows x64-Plattform unterstützt. Bei Linux und anderen nicht unterstützten Plattformen, bei denen die Datei „ServiceInterop.dll“ nicht verfügbar ist, erfolgt ein zusätzlicher Netzwerkaufruf an das Gateway, um die optimierte Abfrage zu erhalten. Bei den folgenden Anwendungstypen wird standardmäßig die 32-Bit-Hostverarbeitung verwendet. Um die Hostverarbeitung auf die 64-Bit-Verarbeitung umzustellen, führen Sie je nach Typ Ihrer Anwendung die folgenden Schritte aus:
 
-- Bei ausführbaren Anwendungen legen Sie zum Ändern der Hostverarbeitung im Fenster **Projekteigenschaften** auf der Registerkarte **Build** die Option [Zielplattform](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) auf **x64** fest.
+- Bei ausführbaren Anwendungen legen Sie zum Ändern der Hostverarbeitung im Fenster **Projekteigenschaften** auf der Registerkarte **Build** die Option [Zielplattform](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) auf **x64** fest.
 
 - Bei VSTest-basierten Testprojekten können Sie die Hostverarbeitung ändern, indem Sie in der Menüoption **Visual Studio Test** die Option **Test** > **Testeinstellungen** > **Default Processor Architecture as X64** (Standardprozessorarchitektur als x64) auswählen.
 
@@ -203,7 +203,7 @@ Mithilfe von [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-requ
 > [!NOTE] 
 > Die `maxItemCount`-Eigenschaft sollte nicht nur für die Paginierung verwendet werden. Ihr Hauptverwendungszweck ist die Verbesserung der Leistung von Abfragen durch Reduzierung der maximalen Anzahl von Elementen, die auf einer einzigen Seite zurückgegeben werden.  
 
-Sie können die Seitengröße auch mithilfe der verfügbaren Azure Cosmos DB-SDKs festlegen. Mit der [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet)-Eigenschaft in `FeedOptions` können Sie die maximale Anzahl von Elementen festlegen, die beim Enumerationsvorgang zurückgegeben werden. Wenn `maxItemCount` auf „-1“ festgelegt ist, ermittelt das SDK automatisch den optimalen Wert abhängig von der Größe des Dokuments. Beispiel:
+Sie können die Seitengröße auch mithilfe der verfügbaren Azure Cosmos DB-SDKs festlegen. Mit der [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true)-Eigenschaft in `FeedOptions` können Sie die maximale Anzahl von Elementen festlegen, die beim Enumerationsvorgang zurückgegeben werden. Wenn `maxItemCount` auf „-1“ festgelegt ist, ermittelt das SDK automatisch den optimalen Wert abhängig von der Größe des Dokuments. Beispiel:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

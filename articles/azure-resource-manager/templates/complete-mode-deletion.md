@@ -2,13 +2,13 @@
 title: Löschung des vollständigen Modus
 description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 08fed3420cf74d328dd9a92a6a2c9235c5d11300
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 10/06/2020
+ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855164"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766720"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -20,12 +20,18 @@ Die mit **Nein** markierten Ressourcentypen werden nicht automatisch gelöscht, 
 
 Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](cross-scope-deployment.md) bereitstellen, können Ressourcen, die sich in der Ressourcengruppe befinden, die im Bereitstellungsvorgang angegeben wurde, gelöscht werden. Ressourcen in den sekundären Ressourcengruppen werden nicht gelöscht.
 
+Die Ressourcen werden nach dem Ressourcenanbieter-Namespace aufgelistet. Informationen zur Zuordnung des Namespace von Ressourcenanbietern zu den entsprechenden Azure-Diensten finden Sie unter [Ressourcenanbieter für Azure-Dienste](../management/azure-services-resource-providers.md).
+
+> [!NOTE]
+> Verwenden Sie immer den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md), bevor Sie eine Vorlage im vollständigen Modus bereitstellen. Anhand von Was-wäre-wenn-Vorgänge können Sie sehen, welche Ressourcen erstellt, gelöscht oder geändert werden. Verwenden Sie Was-wäre-wenn-Vorgänge, um ein unbeabsichtigtes Löschen von Ressourcen zu vermeiden.
+
 Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [Microsoft.Addons](#microsoftaddons)
 > - [Microsoft.ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft.Advisor](#microsoftadvisor)
+> - [Microsoft.AgFoodPlatform](#microsoftagfoodplatform)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
@@ -69,6 +75,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
+> - [Microsoft.D365CustomerInsights](#microsoftd365customerinsights)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
@@ -158,6 +165,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft.ScVmm](#microsoftscvmm)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -237,6 +245,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | metadata | Nein |
 > | empfehlungen | Nein |
 > | suppressions | Nein |
+
+## <a name="microsoftagfoodplatform"></a>Microsoft.AgFoodPlatform
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | farmBeats | Ja |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -399,6 +414,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | cloudManifestFiles | Nein |
 > | edgeSubscriptions | Ja |
+> | linkedSubscriptions | Ja |
 > | registrations | Ja |
 > | registrations/customerSubscriptions | Nein |
 > | registrations/products | Nein |
@@ -454,6 +470,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/billingProfiles/pricesheet | Nein |
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Nein |
 > | billingAccounts/billingProfiles/products | Nein |
+> | billingAccounts/billingProfiles/reservations | Nein |
 > | billingAccounts/billingProfiles/transactions | Nein |
 > | billingAccounts/billingProfiles/validateDetachPaymentMethodEligibility | Nein |
 > | billingAccounts/billingRoleAssignments | Nein |
@@ -497,6 +514,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/patchOperations | Nein |
 > | billingAccounts/paymentMethods | Nein |
 > | billingAccounts/products | Nein |
+> | billingAccounts/reservations | Nein |
 > | billingAccounts/transactions | Nein |
 > | billingPeriods | Nein |
 > | billingPermissions | Nein |
@@ -578,6 +596,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Redis/privateEndpointConnections | Nein |
 > | Redis/privateLinkResources | Nein |
 > | redisEnterprise | Ja |
+> | RedisEnterprise/privateEndpointConnectionProxies | Nein |
+> | RedisEnterprise/privateEndpointConnectionProxies/validate | Nein |
+> | RedisEnterprise/privateEndpointConnections | Nein |
+> | RedisEnterprise/privateLinkResources | Nein |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -592,6 +614,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | catalogs | Nein |
 > | commercialReservationOrders | Nein |
 > | Börse | Nein |
+> | ownReservations | Nein |
 > | placePurchaseOrder | Nein |
 > | reservationOrders | Nein |
 > | reservationOrders/calculateRefund | Nein |
@@ -745,6 +768,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | availabilitySets | Ja |
 > | cloudServices | Ja |
+> | cloudServices/networkInterfaces | Nein |
+> | cloudServices/publicIPAddresses | Nein |
+> | cloudServices/roleInstances | Nein |
+> | cloudServices/roleInstances/networkInterfaces | Nein |
+> | cloudServices/roles | Nein |
 > | diskAccesses | Ja |
 > | diskEncryptionSets | Ja |
 > | disks | Ja |
@@ -917,6 +945,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | associations | Nein |
 > | resourceProviders | Ja |
 
+## <a name="microsoftd365customerinsights"></a>Microsoft.D365CustomerInsights
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | instances | Ja |
+
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
@@ -1025,6 +1060,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/privateLinkResources | Nein |
 > | servers/queryTexts | Nein |
 > | servers/recoverableServers | Nein |
+> | servers/start | Nein |
+> | servers/stop | Nein |
 > | servers/topQueryStatistics | Nein |
 > | servers/virtualNetworkRules | Nein |
 > | servers/waitStatistics | Nein |
@@ -1034,6 +1071,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
+> | flexibleServers | Ja |
 > | servers | Ja |
 > | servers/advisors | Nein |
 > | servers/keys | Nein |
@@ -1042,7 +1080,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/privateLinkResources | Nein |
 > | servers/queryTexts | Nein |
 > | servers/recoverableServers | Nein |
+> | servers/start | Nein |
+> | servers/stop | Nein |
 > | servers/topQueryStatistics | Nein |
+> | servers/upgrade | Nein |
 > | servers/virtualNetworkRules | Nein |
 > | servers/waitStatistics | Nein |
 
@@ -1217,6 +1258,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | namespaces/eventhubs/authorizationrules | Nein |
 > | namespaces/eventhubs/consumergroups | Nein |
 > | namespaces/networkrulesets | Nein |
+> | namespaces/privateEndpointConnections | Nein |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
@@ -1313,8 +1355,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | services/iomtconnectors/connections | Nein |
 > | services/iomtconnectors/mappings | Nein |
 > | services/privateEndpointConnectionProxies | Nein |
-> | services/privateEndpointConnections | Ja |
-> | services/privateLinkResources | Ja |
+> | services/privateEndpointConnections | Nein |
+> | services/privateLinkResources | Nein |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1322,7 +1364,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | machines | Ja |
+> | machines/assessPatches | Nein |
 > | machines/extensions | Ja |
+> | machines/installPatches | Nein |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -1393,6 +1437,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | vaults | Ja |
 > | vaults/accessPolicies | Nein |
 > | vaults/eventGridFilters | Nein |
+> | vaults/keys | Nein |
+> | vaults/keys/versions | Nein |
 > | vaults/secrets | Nein |
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
@@ -1463,8 +1509,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces | Ja |
 > | workspaces/computes | Nein |
 > | workspaces/eventGridFilters | Nein |
-> | workspaces/inferenceEndpoints | Ja |
-> | workspaces/inferenceEndpoints/deployments | Ja |
 > | workspaces/linkedServices | Nein |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
@@ -1669,6 +1713,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | frontdoorWebApplicationFirewallPolicies | Ja |
 > | getDnsResourceReference | Nein |
 > | internalNotify | Nein |
+> | ipGroups | Ja |
 > | loadBalancers | Ja |
 > | localNetworkGateways | Ja |
 > | natGateways | Ja |
@@ -1832,6 +1877,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | accounts | Ja |
+> | deletedAccounts | Nein |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
@@ -1931,6 +1977,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | applications | Ja |
 > | saasresources | Nein |
 
+## <a name="microsoftscvmm"></a>Microsoft.ScVmm
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | clouds | Ja |
+> | VirtualMachines | Ja |
+> | VirtualMachineTemplates | Ja |
+> | VirtualNetworks | Ja |
+> | vmmservers | Ja |
+
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1962,6 +2019,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | discoveredSecuritySolutions | Nein |
 > | externalSecuritySolutions | Nein |
 > | InformationProtectionPolicies | Nein |
+> | iotDefenderSettings | Nein |
 > | iotSecuritySolutions | Ja |
 > | iotSecuritySolutions/analyticsModels | Nein |
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | Nein |
@@ -1970,6 +2028,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | iotSecuritySolutions/iotAlertTypes | Nein |
 > | iotSecuritySolutions/iotRecommendations | Nein |
 > | iotSecuritySolutions/iotRecommendationTypes | Nein |
+> | iotSensors | Nein |
 > | jitNetworkAccessPolicies | Nein |
 > | jitPolicies | Nein |
 > | Richtlinien | Nein |
@@ -1988,6 +2047,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | securityStatusesSummaries | Nein |
 > | serverVulnerabilityAssessments | Nein |
 > | settings | Nein |
+> | sqlVulnerabilityAssessments | Nein |
 > | subAssessments | Nein |
 > | Tasks | Nein |
 > | topologies | Nein |
@@ -2039,6 +2099,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | namespaces/disasterrecoveryconfigs | Nein |
 > | namespaces/eventgridfilters | Nein |
 > | namespaces/networkrulesets | Nein |
+> | namespaces/privateEndpointConnections | Nein |
 > | namespaces/queues | Nein |
 > | namespaces/queues/authorizationrules | Nein |
 > | namespaces/topics | Nein |
@@ -2153,6 +2214,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
+> | deletedAccounts | Nein |
 > | storageAccounts | Ja |
 > | storageAccounts/blobServices | Nein |
 > | storageAccounts/fileServices | Nein |

@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erstellen Sie mit einer Azure Resou
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689846"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89651434"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer ARM-Vorlage
 
@@ -20,7 +20,7 @@ Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer R
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ In der Vorlage ist die folgende Ressource definiert:
 
 1. Wählen Sie die folgende Abbildung aus, um sich am Azure-Portal anzumelden und die Vorlage zu öffnen:
 
-   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
@@ -72,7 +72,7 @@ Einige zusätzliche Ressourcen:
 
 Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie dann die von Ihnen erstellte Richtlinienzuweisung _Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden_.
 
-:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Übersichtsseite zur Richtlinienkonformität" border="false":::
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false":::
 
 Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform sind, werden diese unter **Nicht konforme Ressourcen** angezeigt.
 
@@ -86,7 +86,7 @@ Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_, und wählen Sie **Zuweisung löschen**.
 
-   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Löschen einer Zuweisung auf der Übersichtsseite zur Konformität" border="false":::
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Schaltfläche zum Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

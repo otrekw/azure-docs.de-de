@@ -1,47 +1,53 @@
 ---
-title: Worum handelt es sich bei der Textanalyse-API? - Funktionen -
+title: 'Azure Cognitive Services: Textmining und -analyse mit der Textanalyse-API'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Textanalyse-API von Azure Cognitive Services für Stimmungsanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Entitätserkennung.
+description: Hier erfahren Sie mehr über Textmining mit der Textanalyse-API. Verwenden Sie es für Stimmungsanalysen, Spracherkennung und andere Arten der Verarbeitung natürlicher Sprache.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: Textmining, Stimmungsanalyse, Textanalyse
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000956"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89647466"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
-Die Textanalyse-API ist ein cloudbasierter Dienst für die erweiterte Verarbeitung natürlicher Sprache anhand von unformatiertem Text. Sie bietet vier Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Erkennung benannter Entitäten.
+Die Textanalyse-API ist ein cloudbasierter Dienst für Features zur Verarbeitung natürlicher Sprache, z. B. Textmining und -analyse, einschließlich Stimmungsanalysen, Opinion Mining, Schlüsselbegriffserkennung, Spracherkennung und Erkennung benannter Entitäten.
 
-Die API ist ein Teil von [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können.
+Die API ist ein Teil von [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/text-analytics-sdk.md) verwenden.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Der Begriff „Textanalyse“ hat verschiedene Bedeutungen, in Cognitive Services stellt die Textanalyse-API jedoch vier Analysearten bereit, die nachfolgend beschrieben werden. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/text-analytics-sdk.md) verwenden.
+## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-## <a name="sentiment-analysis"></a>Standpunktanalyse
-Ermitteln Sie mithilfe der [Standpunktanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md), was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Stimmung analysieren. Die API gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung.<br /> Die Analysemodelle sind mithilfe großer Textmengen und Microsoft-Technologien für natürliche Sprache vortrainiert. Für [ausgewählte Sprachen](text-analytics-supported-languages.md) kann die API jeden bereitgestellten unformatierten Text analysieren und bewerten und der aufrufenden Anwendung direkt Ergebnisse zurückgeben.
+Ermitteln Sie anhand der [Stimmungsanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md), was Menschen von Ihrer Marke oder Ihrem Thema halten, indem Sie unformatierten Text auf Hinweise einer positiven oder negativen Stimmung analysieren. Das API-Feature gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung.
+
+Opinion Mining ist ab Version 3.1 Preview ein Feature der Stimmungsanalyse. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
-[Extrahieren Sie automatisch Schlüsselbegriffe](how-tos/text-analytics-how-to-keyword-extraction.md), um schnell die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
+
+Verwenden Sie die [Schlüsselbegriffserkennung](how-tos/text-analytics-how-to-keyword-extraction.md), um schnell die Hauptkonzepte eines Texts zu identifizieren. Im Text „Das Essen war köstlich, und es gab hervorragendes Personal“ gibt die Schlüsselbegriffserkennung beispielsweise die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
 
 ## <a name="language-detection"></a>Spracherkennung
-Sie können für eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen [die Sprache von Eingabetexten erkennen](how-tos/text-analytics-how-to-language-detection.md) und einen einzigen Sprachcode für jedes Dokument melden, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt.
+
+Die Spracherkennung kann eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen [die Sprache von Eingabetexten erkennen](how-tos/text-analytics-how-to-language-detection.md) und einen einzigen Sprachcode für jedes Dokument melden, das auf Anforderung gesendet wird. Der Sprachcode wird mit einer Zuverlässigkeitsbewertung bereitgestellt.
 
 ## <a name="named-entity-recognition"></a>Erkennung benannter Entitäten
-[Identifizieren und kategorisieren Sie Entitäten](how-tos/text-analytics-how-to-entity-linking.md) in Ihrem Text als Personen, Orte, Organisationen, Datums-/Zeitangaben, Mengen, Prozentsätze, Währungen usw. Bekannte Entitäten werden ebenfalls erkannt und mit weiteren Informationen im Internet verknüpft.
+
+Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifizieren und kategorisieren](how-tos/text-analytics-how-to-entity-linking.md), die als Personen, Orte, Organisationen und Mengen erkannt werden. Bekannte Entitäten werden ebenfalls erkannt, und es werden Links zu weiteren Informationen im Internet bereitgestellt.
 
 ## <a name="use-containers"></a>Verwenden von Containern
 
-[Verwenden Sie die Container für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md), um lokal Schlüsselbegriffe zu extrahieren, die Sprache zu ermitteln and die Stimmung zu analysieren. Installieren Sie dazu standardisierte Dock-Container, die sich näher bei Ihren Daten befinden.
+[Verwenden Sie die Textanalysecontainer](how-tos/text-analytics-how-to-install-containers.md) als lokale Lösung für das Textmining und die Verwendung der API. Mithilfe dieser Docker-Container können Sie in Ihren Daten Schlüsselbegriffe extrahieren, Sprachen erkennen und die Stimmung erkennen.
 
 ## <a name="typical-workflow"></a>Typischer Workflow
 
