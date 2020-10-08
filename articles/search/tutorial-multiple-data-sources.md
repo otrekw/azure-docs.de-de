@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998457"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819801"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Tutorial: Indizieren von mehreren Datenquellen mithilfe des .NET SDK
 
@@ -61,19 +61,19 @@ In diesem Beispiel werden zwei kleine Datensätze verwendet, die sieben fiktive 
 
 1. Wählen Sie **Daten-Explorer** und danach **Neue Datenbank** aus.
 
-   ![Erstellen einer neuen Datenbank](media/tutorial-multiple-data-sources/cosmos-newdb.png "Erstellen einer neuen Datenbank")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 1. Geben Sie den Namen **hotel-rooms-db** ein. Übernehmen Sie für die übrigen Einstellungen die Standardwerte.
 
-   ![Konfigurieren der Datenbank](media/tutorial-multiple-data-sources/cosmos-dbname.png "Konfigurieren der Datenbank")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 1. Erstellen Sie einen neuen Container. Verwenden Sie die soeben erstellte Datenbank. Geben Sie **hotels** als Containername ein, und verwenden Sie **/HotelId** als Partitionsschlüssel.
 
-   ![Hinzufügen eines Containers](media/tutorial-multiple-data-sources/cosmos-add-container.png "Hinzufügen eines Containers")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 1. Wählen Sie unterhalb von **hotels** den Eintrag **Elemente** aus, und klicken Sie auf der Befehlsleiste auf **Element hochladen**. Navigieren Sie im Projektordner zur Datei **cosmosdb/HotelsDataSubset_CosmosDb.json**, und wählen Sie die Datei aus.
 
-   ![Hochladen in die Azure Cosmos DB-Sammlung](media/tutorial-multiple-data-sources/cosmos-upload.png "Hochladen in die Cosmos DB-Sammlung")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 1. Aktualisieren Sie mithilfe der Schaltfläche „Aktualisieren“ die Elementansicht in der Hotelsammlung. Daraufhin sollten sieben neue Datenbankdokumente aufgeführt werden.
 
@@ -83,11 +83,11 @@ In diesem Beispiel werden zwei kleine Datensätze verwendet, die sieben fiktive 
 
 1. [Erstellen Sie einen Blobcontainer](../storage/blobs/storage-quickstart-blobs-portal.md) mit dem Namen **hotel-rooms** zum Speichern der exemplarischen JSON-Hotelzimmerdateien. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
 
-   ![Erstellen eines Blobcontainers](media/tutorial-multiple-data-sources/blob-add-container.png "Erstellen eines Blobcontainers")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 1. Nachdem der Container erstellt wurde, öffnen Sie ihn, und wählen Sie auf der Befehlsleiste die Option **Hochladen** aus. Navigieren Sie zu dem Ordner, der die Beispieldateien enthält. Wählen Sie alle Dateien aus, und klicken Sie dann auf **Hochladen**.
 
-   ![Hochladen von Dateien](media/tutorial-multiple-data-sources/blob-upload.png "Hochladen von Dateien")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 Nach Abschluss des Uploadvorgangs sollten die Dateien in der Liste für den Datencontainer angezeigt werden.
 
@@ -105,7 +105,7 @@ Für die Interaktion mit dem Azure Cognitive Search-Dienst benötigen Sie die 
 
    Rufen Sie auch den Abfrageschlüssel ab. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
 
-   ![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -115,7 +115,7 @@ Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her 
 
 1. Suchen Sie auf der Registerkarte **Durchsuchen** nach **Microsoft.Azure.Search** (Version 9.0.1 oder höher), und führen Sie die Installation durch. Klicken Sie sich durch die zusätzlichen Dialogfelder, um die Installation abzuschließen.
 
-    ![Hinzufügen von Azure-Bibliotheken per NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 1. Suchen Sie nach dem NuGet-Paket **Microsoft.Extensions.Configuration.Json**, und installieren Sie es ebenfalls.
 
@@ -352,7 +352,7 @@ Nach Ausführung des Programms können Sie den aufgefüllten Suchindex über den
 
 Öffnen Sie im Azure-Portal die Seite **Übersicht** für den Suchdienst, und suchen Sie in der Liste **Indexes** nach dem Index **hotel-rooms-sample**.
 
-  ![Liste mit den Azure Cognitive Search-Indizes](media/tutorial-multiple-data-sources/index-list.png "Liste mit den Azure Cognitive Search-Indizes")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Erstellen einer neuen Datenbank" border="false":::
 
 Klicken Sie in der Liste auf den Index „hotel-rooms-sample“. Daraufhin wird eine Suchexploreroberfläche für den Index angezeigt. Geben Sie eine Abfrage für einen Begriff wie „Luxury“ ein. Daraufhin sollte in den Ergebnissen mindestens ein Dokument angezeigt werden, und dieses Dokument sollte eine Liste mit Zimmerobjekten aus dem zugehörigen Zimmerarray enthalten.
 

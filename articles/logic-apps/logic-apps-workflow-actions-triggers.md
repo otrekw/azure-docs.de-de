@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd95e3ed6b4c31072d7e754c731e748f12db3329
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322392"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821960"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
@@ -2416,8 +2416,6 @@ Hier finden Sie einige Erwägungen für den Fall, dass Sie die Parallelität auf
 * Wenn Parallelität aktiviert ist, wird das [SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)-Limit für das [Auflösen von Arraybatches](#split-on-debatch) wesentlich reduziert. Wenn die Anzahl der Elemente dieses Limit überschreitet, wird die SplitOn-Funktion deaktiviert.
 
 * Die Parallelität kann nicht deaktiviert werden, nachdem Sie die Parallelitätssteuerung aktiviert haben.
-
-* Wenn Parallelität aktiviert ist, wird das [SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)-Limit für das [Auflösen von Arraybatches](#split-on-debatch) wesentlich reduziert. Wenn die Anzahl der Elemente dieses Limit überschreitet, wird die SplitOn-Funktion deaktiviert.
 
 * Wenn Parallelität aktiviert ist, könnte eine Logik-App-Instanz mit langer Ausführungszeit dazu führen, dass neue Logik-App-Instanzen in den Wartezustand wechseln. Dieser Zustand verhindert, dass Azure Logic Apps neue Instanzen erstellt, und er tritt auch dann ein, wenn die Anzahl gleichzeitiger Ausführungen kleiner als die angegebene maximale Anzahl gleichzeitiger Ausführungen ist.
 
