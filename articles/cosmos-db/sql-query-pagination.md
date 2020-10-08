@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 7f7f895b61e3c638cb347a2d73bb5ee458b31acd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498819"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804196"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Paginierung in Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Wenn die Abfrage ein Fortsetzungstoken zurückgibt, stehen zusätzliche Abfragee
 
 In der REST-API von Azure Cosmos DB können Sie Fortsetzungstoken mit dem `x-ms-continuation`-Header verwalten. Wie bei Abfragen mit dem .NET oder Java SDK bedeutet ein nicht leerer `x-ms-continuation`-Antwortheader, dass die Abfrage zusätzliche Ergebnisse aufweist.
 
-Sofern Sie dieselbe SDK-Version verwenden, laufen Fortsetzungstoken nie ab. Sie können optional [die Größe eines Fortsetzungstokens einschränken](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Unabhängig von der Datenmenge oder der Anzahl physischer Partitionen auf Ihrem Container geben Abfragen ein einzelnes Fortsetzungstoken zurück.
+Sofern Sie dieselbe SDK-Version verwenden, laufen Fortsetzungstoken nie ab. Sie können optional [die Größe eines Fortsetzungstokens einschränken](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Unabhängig von der Datenmenge oder der Anzahl physischer Partitionen auf Ihrem Container geben Abfragen ein einzelnes Fortsetzungstoken zurück.
 
 Sie können keine Fortsetzungstoken für Abfragen mit [GROUP BY](sql-query-group-by.md) oder [DISTINCT](sql-query-keywords.md#distinct) verwenden, da diese Abfragen eine beträchtliche Zustandsmenge speichern müssten. Bei Abfragen mit `DISTINCT` können Sie Fortsetzungstoken verwenden, wenn Sie der Abfrage `ORDER BY` hinzufügen.
 

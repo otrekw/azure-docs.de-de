@@ -256,6 +256,12 @@
               href: configure-tokens-custom-policy.md
             - name: Konfigurieren des Sitzungsverhaltens
               href: session-behavior-custom-policy.md
+        - name: API-Connectors
+          items:
+            - name: Übersicht
+              href: api-connectors-overview.md
+            - name: Hinzufügen eines API-Connectors
+              href: add-api-connector.md
         - name: Externes Pass-Through-IdP-Token
           href: idp-pass-through-custom.md
         - name: Adaptive Umgebung

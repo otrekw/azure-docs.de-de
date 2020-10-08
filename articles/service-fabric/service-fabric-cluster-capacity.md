@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718100"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817738"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -34,7 +34,7 @@ Für jeden Cluster muss ein **primärer Knotentyp** festgelegt werden, der kriti
 
 **Nicht primäre Knotentypen** können verwendet werden, um Anwendungsrollen (wie *Front-End-* oder *Back-End-Dienste*) zu definieren und die Dienste in einem Cluster physisch zu isolieren. Service Fabric-Cluster können null oder mehr nicht primäre Knotentypen aufweisen.
 
-Der primäre Knotentyp wird mit dem Attribut `isPrimary` unter der Knotentypdefinition in der Azure Resource Manager-Vorlage konfiguriert. Die vollständige Liste der Knotentypeigenschaften finden Sie unter [NodeTypeDescription-Objekt](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object). Öffnen Sie eine *AzureDeploy.json*-Datei aus den [Service Fabric-Clusterbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/), und suchen Sie mit *Auf Seite suchen* nach dem `nodetTypes`-Objekt, um die Verwendung zu testen.
+Der primäre Knotentyp wird mit dem Attribut `isPrimary` unter der Knotentypdefinition in der Azure Resource Manager-Vorlage konfiguriert. Die vollständige Liste der Knotentypeigenschaften finden Sie unter [NodeTypeDescription-Objekt](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object). Öffnen Sie eine *AzureDeploy.json*-Datei aus den [Service Fabric-Clusterbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/), und suchen Sie mit *Auf Seite suchen* nach dem `nodeTypes`-Objekt, um die Verwendung zu testen.
 
 ### <a name="node-type-planning-considerations"></a>Aspekte der Knotentypplanung
 

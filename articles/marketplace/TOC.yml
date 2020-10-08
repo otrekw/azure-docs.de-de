@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Erstellen technischer Ressourcen für virtuelle Azure-Computer
               items:
-                - name: 'Zertifizierung virtueller Computer: Probleme und Lösungen'
+                - name: Probleme bei der Zertifizierung virtueller Computer
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Erstellen einer technischen Azure-VM-Ressource
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -328,6 +328,8 @@
       href: partner-center-portal/support.md
     - name: Geografische Verfügbarkeit und Währungen
       href: marketplace-geo-availability-currencies.md
+    - name: Ermitteln von Mandanten- und Objekt-IDs
+      href: find-tenant-object-id.md
     - name: Unterstützte Länder und Regionen
       href: sell-from-countries.md
     - name: Unterstützte HTML-Tags

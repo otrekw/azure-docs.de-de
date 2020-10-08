@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035058"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804009"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 
@@ -88,7 +88,7 @@ Alternativ können Sie die folgenden CLI- und PS-Befehle mit den Parametern --pu
 2. Wählen Sie den Namen des Präfix der öffentlichen IP-Adresse aus, das Sie anzeigen oder aus der Liste löschen oder dessen Einstellungen Sie ändern möchten.
 3. Führen Sie eine der folgenden Aktionen aus, je nachdem, ob Sie das Präfix der öffentlichen IP-Adresse anzeigen, löschen oder ändern möchten.
    - **Anzeigen**: Der Abschnitt **Übersicht** enthält wichtige Einstellungen für das Präfix der öffentlichen IP-Adresse.
-   - **Löschen:** Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Löschen:** Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).
 
 **Befehle**
 
