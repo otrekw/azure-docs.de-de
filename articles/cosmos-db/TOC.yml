@@ -607,7 +607,7 @@
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
           href: online-backup-and-restore.md
-        - name: Compliance
+        - name: Kompatibilität
           href: compliance.md
         - name: "Azure\_Policy-Unterstützung"
           href: policy.md
