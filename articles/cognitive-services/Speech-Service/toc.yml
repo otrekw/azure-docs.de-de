@@ -148,7 +148,7 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
-    - name: Referenz
+    - name: Verweis
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -274,181 +274,6 @@
           href: ../luis/luis-language-support.md
         - name: Unterstützung für Regionen
           href: regions.md#intent-recognition
-- name: Konversationsszenarien
-  items:
-    - name: Dokumentation zu Konversationsszenarien
-      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
-      href: index-conversation-scenarios.yml
-    - name: Unterhaltungstranskription
-      items:
-        - name: Übersicht
-          items:
-            - name: Was ist Unterhaltungstranskription?
-              href: conversation-transcription.md
-        - name: Anleitungen
-          items:
-            - name: Behandeln von Callcenterszenarien
-              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-              href: call-center-transcription.md
-            - name: Unterhaltungstranskription in Echtzeit
-              href: how-to-use-conversation-transcription.md
-            - name: Asynchrone Unterhaltungstranskription
-              href: how-to-async-conversation-transcription.md
-        - name: Verweis
-          items:
-            - name: Sprach-SDK
-              items:
-                - name: C++
-                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/cppref'
-                - name: C#
-                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/csharpref'
-                - name: Java
-                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
-                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javascriptref'
-                - name: Objective-C
-                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/objectivecref'
-                - name: Python
-                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/pythonref'
-                - name: Versionshinweise
-                  displayName: 'release notes,updates,what''s new,what is new,changes'
-                  href: releasenotes.md
-            - name: REST-APIs
-              items:
-                - name: REST-APIs für die Unterhaltungstranskription
-                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-    - name: Konversation mit mehreren Geräten
-      items:
-        - name: Übersicht
-          items:
-            - name: Worum handelt es sich bei der Konversation mit mehreren Geräten?
-              href: multi-device-conversation.md
-        - name: Schnellstart
-          items:
-            - name: Starten einer Konversation und Beitreten zu einer Konversation
-              href: quickstarts/multi-device-conversation.md
-        - name: Verweis
-          items:
-            - name: Sprach-SDK
-              items:
-                - name: C++
-                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: C#
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
-                - name: Java
-                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
-- name: Sprachassistenten
-  items:
-    - name: Dokumentation zu Sprachassistenten
-      href: index-voice-assistants.yml
-    - name: Übersicht
-      items:
-        - name: Was ist ein Sprachassistent?
-          href: voice-assistants.md
-        - name: Beispiele für Sprachassistenten (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Benutzerdefinierte Befehle
-      items:
-        - name: Was sind benutzerdefinierte Befehle?
-          href: custom-commands.md
-        - name: Schnellstarts
-          items:
-            - name: Erstellen einer App für benutzerdefinierte Befehle
-              href: quickstart-custom-commands-application.md
-        - name: Anleitungen
-          items:
-            - name: Entwickeln
-              items:
-                - name: Erstellen einer Anwendung mit einfachen Befehlen
-                  href: how-to-custom-commands-create-application-with-simple-commands.md
-                - name: Hinzufügen von Parametern zu Befehlen
-                  href: how-to-custom-commands-add-parameters-to-commands.md
-                - name: Hinzufügen von Konfigurationen zu Befehlsparametern
-                  href: how-to-custom-commands-add-parameter-configuration.md
-                - name: Hinzufügen von Interaktionsregeln
-                  href: how-to-custom-commands-add-interaction-rules.md
-                - name: Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
-                  href: how-to-custom-commands-add-language-generation-templates.md
-                - name: Verwenden von Custom Voice
-                  href: how-to-custom-commands-use-custom-voice.md
-            - name: Integrieren
-              items:
-                - name: Integrieren in eine Client-App mithilfe des Sprach-SDK
-                  href: how-to-custom-commands-setup-speech-sdk.md
-                - name: Senden einer Aktivität an eine Clientanwendung
-                  href: how-to-custom-commands-send-activity-to-client.md
-                - name: Einrichten von Webendpunkten
-                  href: how-to-custom-commands-setup-web-endpoints.md
-            - name: Bereitstellen
-              items:
-                - name: Continuous Deployment mit Azure DevOps
-                  href: how-to-custom-commands-deploy-cicd.md
-            - name: Test
-              items:
-                - name: Testen Ihrer App für benutzerdefinierte Befehle
-                  href: how-to-custom-commands-developer-flow-test.md
-            - name: Debuggen
-              items:
-                - name: Debuggen von Fehlern beim Erstellen der App
-                  href: how-to-custom-commands-debug-build-time.md
-                - name: Debuggen von Fehlern beim Ausführen der App
-                  href: how-to-custom-commands-debug-runtime.md
-            - name: References
-              items:
-                - name: Konzepte benutzerdefinierter Befehle
-                  href: custom-commands-references.md
-        - name: Ressourcen
-          items:
-            - name: Beispiele für benutzerdefinierte Befehle (GitHub)
-              href: 'https://aka.ms/speech/cc-samples'
-            - name: Beispiele für Sprachassistenten (GitHub)
-              href: 'http://aka.ms/speech/va-samples'
-            - name: Häufig gestellte Fragen zu Sprachassistenten
-              href: faq-voice-assistants.md
-            - name: Sprach-SDK
-              href: speech-sdk.md
-            - name: Verschlüsselung ruhender Daten mithilfe benutzerdefinierter Befehle
-              href: custom-commands-encryption-of-data-at-rest.md
-    - name: Direct Line Speech
-      items:
-        - name: Was ist Direct Line Speech?
-          href: direct-line-speech.md
-        - name: Schnellstarts
-          items:
-            - name: Erstellen eines benutzerdefinierten Sprachassistenten
-              href: quickstarts/voice-assistants.md
-        - name: Tutorials
-          items:
-            - name: "Ermöglichen der Verwendung von Sprache mit dem Speech\_SDK"
-              href: tutorial-voice-enable-your-bot-speech-sdk.md
-        - name: Ressourcen
-          items:
-            - name: Häufig gestellte Fragen zu Sprachassistenten
-              href: faq-voice-assistants.md
-    - name: Sprachassistenten unter Windows
-      items:
-        - name: Übersicht über Sprachassistenten unter Windows
-          href: windows-voice-assistants-overview.md
-        - name: Anleitungen
-          items:
-            - name: Beginnen mit der Entwicklung Ihres Assistenten mit Windows
-              href: how-to-windows-voice-assistants-get-started.md
-            - name: Aktivieren der Sprachaktivierung
-              href: windows-voice-assistants-implementation-guide.md
-        - name: Ressourcen
-          items:
-            - name: Datenschutzanforderungen und -richtlinien
-              href: windows-voice-assistants-automatic-enablement-guidelines.md
-            - name: Best Practices für Assistenten
-              href: windows-voice-assistants-best-practices.md
-            - name: Beispiele und häufig gestellte Fragen
-              href: windows-voice-assistants-faq.md
 - name: Sprechererkennung
   items:
     - name: Übersicht über die Sprechererkennung
@@ -465,6 +290,183 @@
       href: custom-keyword-overview.md
     - name: Grundlagen zu benutzerdefinierten Schlüsselwörtern
       href: custom-keyword-basics.md
+- name: Detaillierte Informationen zu Szenarien
+  items:
+    - name: Konversationsszenarien
+      items:
+        - name: Dokumentation zu Konversationsszenarien
+          displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
+          href: index-conversation-scenarios.yml
+        - name: Unterhaltungstranskription
+          items:
+            - name: Übersicht
+              items:
+                - name: Was ist Unterhaltungstranskription?
+                  href: conversation-transcription.md
+            - name: Anleitungen
+              items:
+                - name: Behandeln von Callcenterszenarien
+                  displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+                  href: call-center-transcription.md
+                - name: Unterhaltungstranskription in Echtzeit
+                  href: how-to-use-conversation-transcription.md
+                - name: Asynchrone Unterhaltungstranskription
+                  href: how-to-async-conversation-transcription.md
+            - name: Verweis
+              items:
+                - name: Sprach-SDK
+                  items:
+                    - name: C++
+                      displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/cppref'
+                    - name: C#
+                      displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/csharpref'
+                    - name: Java
+                      displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javaref'
+                    - name: JavaScript
+                      displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javascriptref'
+                    - name: Objective-C
+                      displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/objectivecref'
+                    - name: Python
+                      displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/pythonref'
+                    - name: Versionshinweise
+                      displayName: 'release notes,updates,what''s new,what is new,changes'
+                      href: releasenotes.md
+                - name: REST-APIs
+                  items:
+                    - name: REST-APIs für die Unterhaltungstranskription
+                      href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+        - name: Konversation mit mehreren Geräten
+          items:
+            - name: Übersicht
+              items:
+                - name: Worum handelt es sich bei der Konversation mit mehreren Geräten?
+                  href: multi-device-conversation.md
+            - name: Schnellstart
+              items:
+                - name: Starten einer Konversation und Beitreten zu einer Konversation
+                  href: quickstarts/multi-device-conversation.md
+            - name: Verweis
+              items:
+                - name: Sprach-SDK
+                  items:
+                    - name: C++
+                      href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
+                    - name: C#
+                      href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
+                    - name: Java
+                      href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
+    - name: Sprachassistenten
+      items:
+        - name: Dokumentation zu Sprachassistenten
+          href: index-voice-assistants.yml
+        - name: Übersicht
+          items:
+            - name: Was ist ein Sprachassistent?
+              href: voice-assistants.md
+            - name: Beispiele für Sprachassistenten (GitHub)
+              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Benutzerdefinierte Befehle
+          items:
+            - name: Was sind benutzerdefinierte Befehle?
+              href: custom-commands.md
+            - name: Schnellstarts
+              items:
+                - name: Erstellen einer App für benutzerdefinierte Befehle
+                  href: quickstart-custom-commands-application.md
+            - name: Anleitungen
+              items:
+                - name: Entwickeln
+                  items:
+                    - name: Erstellen einer Anwendung mit einfachen Befehlen
+                      href: how-to-custom-commands-create-application-with-simple-commands.md
+                    - name: Hinzufügen von Parametern zu Befehlen
+                      href: how-to-custom-commands-add-parameters-to-commands.md
+                    - name: Hinzufügen von Konfigurationen zu Befehlsparametern
+                      href: how-to-custom-commands-add-parameter-configuration.md
+                    - name: Hinzufügen von Interaktionsregeln
+                      href: how-to-custom-commands-add-interaction-rules.md
+                    - name: Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
+                      href: how-to-custom-commands-add-language-generation-templates.md
+                    - name: Verwenden von Custom Voice
+                      href: how-to-custom-commands-use-custom-voice.md
+                - name: Integrieren
+                  items:
+                    - name: Integrieren in eine Client-App mithilfe des Sprach-SDK
+                      href: how-to-custom-commands-setup-speech-sdk.md
+                    - name: Senden einer Aktivität an eine Clientanwendung
+                      href: how-to-custom-commands-send-activity-to-client.md
+                    - name: Einrichten von Webendpunkten
+                      href: how-to-custom-commands-setup-web-endpoints.md
+                - name: Bereitstellen
+                  items:
+                    - name: Continuous Deployment mit Azure DevOps
+                      href: how-to-custom-commands-deploy-cicd.md
+                - name: Test
+                  items:
+                    - name: Testen Ihrer App für benutzerdefinierte Befehle
+                      href: how-to-custom-commands-developer-flow-test.md
+                - name: Debuggen
+                  items:
+                    - name: Debuggen von Fehlern beim Erstellen der App
+                      href: how-to-custom-commands-debug-build-time.md
+                    - name: Debuggen von Fehlern beim Ausführen der App
+                      href: how-to-custom-commands-debug-runtime.md
+                - name: References
+                  items:
+                    - name: Konzepte benutzerdefinierter Befehle
+                      href: custom-commands-references.md
+            - name: Ressourcen
+              items:
+                - name: Beispiele für benutzerdefinierte Befehle (GitHub)
+                  href: 'https://aka.ms/speech/cc-samples'
+                - name: Beispiele für Sprachassistenten (GitHub)
+                  href: 'http://aka.ms/speech/va-samples'
+                - name: Häufig gestellte Fragen zu Sprachassistenten
+                  href: faq-voice-assistants.md
+                - name: Sprach-SDK
+                  href: speech-sdk.md
+                - name: Verschlüsselung ruhender Daten mithilfe benutzerdefinierter Befehle
+                  href: custom-commands-encryption-of-data-at-rest.md
+        - name: Direct Line Speech
+          items:
+            - name: Was ist Direct Line Speech?
+              href: direct-line-speech.md
+            - name: Schnellstarts
+              items:
+                - name: Erstellen eines benutzerdefinierten Sprachassistenten
+                  href: quickstarts/voice-assistants.md
+            - name: Tutorials
+              items:
+                - name: "Ermöglichen der Verwendung von Sprache mit dem Speech\_SDK"
+                  href: tutorial-voice-enable-your-bot-speech-sdk.md
+            - name: Ressourcen
+              items:
+                - name: Häufig gestellte Fragen zu Sprachassistenten
+                  href: faq-voice-assistants.md
+        - name: Sprachassistenten unter Windows
+          items:
+            - name: Übersicht über Sprachassistenten unter Windows
+              href: windows-voice-assistants-overview.md
+            - name: Anleitungen
+              items:
+                - name: Beginnen mit der Entwicklung Ihres Assistenten mit Windows
+                  href: how-to-windows-voice-assistants-get-started.md
+                - name: Aktivieren der Sprachaktivierung
+                  href: windows-voice-assistants-implementation-guide.md
+            - name: Ressourcen
+              items:
+                - name: Datenschutzanforderungen und -richtlinien
+                  href: windows-voice-assistants-automatic-enablement-guidelines.md
+                - name: Best Practices für Assistenten
+                  href: windows-voice-assistants-best-practices.md
+                - name: Beispiele und häufig gestellte Fragen
+                  href: windows-voice-assistants-faq.md
 - name: Tools
   items:
     - name: Sprach-SDK
@@ -489,6 +491,8 @@
               href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+            - name: Go
+              href: 'https://github.com/microsoft/cognitive-services-speech-sdk-go'
     - name: Speech-Befehlszeilenschnittstelle
       displayName: SPX
       items:
@@ -588,7 +592,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md
