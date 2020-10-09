@@ -30,7 +30,7 @@
           items:
             - name: Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
               href: ../../site-recovery/azure-to-azure-quickstart.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Virtual Machines
           items:

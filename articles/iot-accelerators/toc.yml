@@ -34,7 +34,7 @@
       href: quickstart-device-simulation-deploy.md
     - name: Testen einer Predictive Maintenance-Lösung
       href: quickstart-predictive-maintenance-deploy.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Remoteüberwachung
       items:
@@ -74,7 +74,7 @@
           href: overview-opc-twin-architecture.md
         - name: "OPC\_Vault-Architektur"
           href: overview-opc-vault-architecture.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Remoteüberwachung
       items:
@@ -220,9 +220,9 @@
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Remoteüberwachung
       items:
         - name: Referenzhandbuch für Entwickler (.NET)
