@@ -23,7 +23,7 @@
     - name: Erstellen einer Blaupause – ARM-Vorlage
       displayName: 'assign, compliance, resource manager'
       href: ../../azure-resource-manager/templates/deploy-to-subscription.md?toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json#azure-blueprints
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen aus einem Blaupausenbeispiel
       displayName: 'template, resource group, rbac, role assignment'
