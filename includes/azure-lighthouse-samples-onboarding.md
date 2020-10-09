@@ -9,10 +9,10 @@ ms.date: 07/07/2020
 ms.author: jenhayes
 ms.custom: include file
 ms.openlocfilehash: d80786bbdfc4f53254dc98d79ac3badcf5dd3b24
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111654"
 ---
 Wir stellen verschiedene Vorlagen bereit, um bestimmte Onboardingszenarien zu behandeln. Wählen Sie die am besten geeignete Option aus, und achten Sie darauf, die Parameterdatei an Ihre Umgebung anzupassen. Weitere Informationen zur Verwendung dieser Dateien in der Bereitstellung finden Sie unter [Onboarding eines Kunden für Azure Lighthouse durchführen](../articles/lighthouse/how-to/onboard-customer.md).
