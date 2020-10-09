@@ -48,7 +48,7 @@
       displayName: ARM
     - name: Bring Your Own Key-Spezifikation
       href: byok-specification.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ../policy-reference.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Ressourcen
