@@ -10,11 +10,11 @@
   items:
     - name: REST-API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
-        - name: Javascript
+        - name: JavaScript
           href: quickstarts/javascript.md
 - name: Konzepte
   items:
@@ -22,9 +22,9 @@
       href: concepts/send-ink-data.md
 - name: Beispiele
   items:
-    - name: 'C# und universelle Windows-Plattform (UWP)'
+    - name: C# und universelle Windows-Plattform (UWP)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# und Windows Presentation Foundation (WPF)'
+    - name: C# und Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: JavaScript-Webbrowser-App
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -38,7 +38,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
     - name: PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Sprachunterstützung
       href: language-support.md

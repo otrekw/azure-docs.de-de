@@ -9,7 +9,7 @@
   items:
     - name: Ausführen eines Genomics-Beispielworkflows
       href: quickstart-run-genomics-workflow-portal.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwenden verschiedener Eingabedateiformate
       items:
@@ -29,7 +29,7 @@
       href: troubleshooting-guide-genomics.md
     - name: Einreichen einer Supportanfrage
       href: file-support-ticket-genomics.md
-    - name: Verlauf der Versionsveröffentlichungen
+    - name: Versionsverlauf
       href: version-release-history-genomics.md
     - name: Geschäftskontinuität
       href: business-continuity-genomics.md

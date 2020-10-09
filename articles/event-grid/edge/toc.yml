@@ -6,7 +6,7 @@
   items:
     - name: Was ist Event Grid in IoT Edge?
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Lokales Veröffentlichen und Abonnieren von Ereignissen
       href: pub-sub-events-webhook-local.md
@@ -36,7 +36,7 @@
       href: delivery-output-batching.md
     - name: Erweiterte Filterung
       href: advanced-filtering.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Beibehalten des Status
       items:
