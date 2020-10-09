@@ -49,7 +49,7 @@
           href: troubleshoot-agent-onboard.md
         - name: Probleme mit VM-Erweiterungen
           href: troubleshoot-vm-extensions.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Datenresidenz
       href: data-residency.md
