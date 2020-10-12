@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316578"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 
@@ -39,7 +39,7 @@ Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags
 |[Sonstige API-Aufrufe](https://go.microsoft.com/fwlink/?linkid=865446) (Transaktionen pro Sekunde)|10|10|
 |Akzeptierte Bildtypen|JPG, PNG, BMP, GIF|JPG, PNG, BMP, GIF|
 |Min. Bildhöhe/-breite in Pixel|256 (siehe Hinweis)|256 (siehe Hinweis)|
-|Max. Bildhöhe/-breite in Pixel|Unbegrenzt|unbegrenzt|
+|Max. Bildhöhe/-breite in Pixel|10.240|10.240|
 |Maximale Bildgröße (Upload des Trainingsbilds) |6 MB|6 MB|
 |Maximale Bildgröße (Vorhersage)|4 MB|4 MB|
 |Maximale Anzahl von Regionen pro Objekterkennungs-Trainingsimage|300|300|
@@ -47,3 +47,4 @@ Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags
 
 > [!NOTE]
 > Bilder unter 256 Pixel werden akzeptiert, jedoch hochskaliert.
+> Das Seitenverhältnis des Bilds sollte nicht größer als 25 sein.

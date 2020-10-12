@@ -3,12 +3,12 @@ title: Azure VM-Bewertungen mit der Azure Migrate-Serverbewertung
 description: Erfahren Sie mehr über Bewertungen mit der Azure Migrate-Serverbewertung.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275522"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Serverbewertungsübersicht (Migration zu Azure-VMs)
 
@@ -80,7 +80,7 @@ Wenn Sie die Appliance für die Ermittlung verwenden, führt die Appliance folge
     - **Virtuelle Hyper-V-Computer:** Ein Abtastpunkt wird alle 30 Sekunden erfasst.
     - **Physische Server**: Ein Abtastpunkt wird alle fünf Minuten erfasst.
 
-1. Die Appliance fasst die Abtastpunkte alle zehn Minuten zu einem einzigen Abtastpunkt zusammen. Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus allen Stichproben aus. Anschließend sendet sie den Datenpunkt an Azure.
+1. Die Appliance kombiniert die Beispielpunkte so, dass bei VMware- und Hyper-V-Servern alle 10 Minuten und bei physischen Servern alle 5 Minuten ein einziger Datenpunkt erstellt wird. Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus allen Stichproben aus. Anschließend sendet sie den Datenpunkt an Azure.
 1. Die Serverbewertung speichert alle im zehnminütigen Intervall erfassten Datenpunkte des letzten Monats.
 1. Beim Erstellen einer Bewertung ermittelt die Serverbewertung den geeigneten Datenpunkt, um die richtige Größe zu bestimmen. Die Ermittlung basiert auf dem Perzentilwert für den *Leistungsverlauf* und dem *Perzentilwert der Nutzung*.
 
