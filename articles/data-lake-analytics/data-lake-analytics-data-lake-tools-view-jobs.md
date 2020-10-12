@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131887"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282611"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics
 Der Azure Data Lake Analytics-Dienst archiviert die übermittelten Aufträge in einem Abfragespeicher. In diesem Artikel erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht in Azure Data Lake-Tools für Visual Studio verwenden, um die Verlaufsinformationen zu Aufträgen zu suchen. 
@@ -38,7 +38,7 @@ Die Auftragsansicht enthält Folgendes:
     
       Der Auftragsstatus stellt die Phasen des Auftrags dar:
     
-      ![Azure Data Lake Analytics – Phasenstatus](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![Screenshot der Phasen eines Azure Data Lake Analytics-Auftrags](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Wird vorbereitet: Laden Sie Ihr Skript in die Cloud hoch, und kompilieren und optimieren Sie das Skript mithilfe des Kompilierungsdiensts.
     * In Warteschlange eingereiht: Aufträge werden in die Warteschlange eingereiht, während sie auf ausreichend Ressourcen warten, oder die Aufträge überschreiten die maximale Anzahl gleichzeitiger Aufträge pro Kontobeschränkung. Die Prioritätseinstellung bestimmt die Reihenfolge der in der Warteschlange eingereihten Aufträge – je niedriger die Zahl, desto höher die Priorität.
@@ -50,7 +50,7 @@ Die Auftragsansicht enthält Folgendes:
     
       Die grundlegenden Auftragsinformationen werden im unteren Teil des Bereichs „Auftragszusammenfassung“ angezeigt.
     
-      ![Azure Data Lake Analytics – Phasenstatus](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![Screenshot der Auftragszusammenfassung mit Beschreibungen in Textfeldern](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * Job Result (Auftragsergebnis): Erfolgreich oder fehlerhaft. Der Auftrag kann in jeder Phase einen Fehler hervorrufen.
     * Total Duration (Gesamtdauer): Gesamtbetrachtungszeit (Dauer) zwischen dem Zeitpunkt der Übermittlung und dem Endzeitpunkt.
@@ -63,7 +63,7 @@ Die Auftragsansicht enthält Folgendes:
     * Parallelität: Die angeforderte maximale Anzahl von gleichzeitigen Azure Data Lake Analytics-Einheiten (Azure Data Lake Analytics Units; ADLAUs), sogenannte Scheitelpunkte. Derzeit entspricht ein Scheitelpunkt einem virtuellen Computer mit zwei virtuellen Kernen und 6 GB RAM, obwohl dies in zukünftigen Data Lake Analytics-Updates upgegradet werden kann.
     * Bytes Left (Übrige Bytes): Bytes, die bis zum Abschließen des Auftrags noch verarbeitet werden müssen.
     * Bytes read/written (Gelesene/geschriebene Bytes): Bytes, die seit dem Beginn der Ausführung des Auftrags gelesen oder geschrieben wurden.
-    * Total Vertices (Summe der Scheitelpunkte): Der Auftrag wird in viele Arbeitsschritte unterteilt, und jeder Arbeitsschritt wird Scheitelpunkt genannt. Dieser Wert beschreibt, aus wie vielen Arbeitsschritten der Auftrag besteht. Scheitelpunkte können als eine grundlegende Prozesseinheit verstanden werden, sogenannte Azure Data Lake Analytics-Einheiten, und parallel ausgeführt werden. 
+    * Total Vertices (Summe der Scheitelpunkte): Der Auftrag wird in viele Arbeitsschritte unterteilt, und jeder Arbeitsschritt wird Scheitelpunkt genannt. Dieser Wert beschreibt, aus wie vielen Arbeitsschritten der Auftrag besteht. Scheitelpunkte können als eine grundlegende Prozesseinheit (sogenannte Azure Data Lake Analytics-Einheiten) verstanden und parallel ausgeführt werden. 
     * Completed/Running/Failed (Abgeschlossen/Wird ausgeführt/Fehler): Die Anzahl der abgeschlossen, ausgeführten und fehlerhaften Scheitelpunkte. Scheitelpunkte können sowohl aufgrund von Benutzercode als auch von Systemfehlern Fehler ausgeben. Das System führt für fehlerhafte Scheitelpunkte aber automatisch einige Wiederholungsversuche aus. Wenn der Scheitelpunkt nach den Wiederholungsversuchen weiterhin Fehler hervorruft, verursacht der gesamte Auftrag einen Fehler.
 * Auftragsdiagramm
   
@@ -71,7 +71,7 @@ Die Auftragsansicht enthält Folgendes:
   
     ![Azure Data Lake Analytics – Phasenstatus](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    Ein Auftrag wird in viele Arbeitsschritte unterteilt. Jeder Arbeitsschritt wird Scheitelpunkt genannt. Die Scheitelpunkte werden als Superscheitelpunkt (Super Vertex), d.h. in Phasen, gruppiert und als Auftragsdiagramm angezeigt. Die grünen Kästchen im Auftragsdiagramm zeigen die Phasen an.
+    Ein Auftrag wird in viele Arbeitsschritte unterteilt. Jeder Arbeitsschritt wird Scheitelpunkt genannt. Die Scheitelpunkte werden als Superscheitelpunkt (Super Vertex), d. h. in Phasen, gruppiert und als Auftragsgraph visualisiert. Die grünen Kästchen im Auftragsdiagramm zeigen die Phasen an.
   
     Jeder Scheitelpunkt einer Phase verrichtet dieselbe Arbeit mit unterschiedlichen Teilen der gleichen Daten. Wenn beispielsweise hunderte von Scheitelpunkten aus einer Datei mit TB-Daten lesen, liest jeder Scheitelpunkt einen Abschnitt. Diese Schnittpunkte werden in derselben Phase gruppiert und arbeiten mit verschiedenen Teilen der gleichen Eingabedatei.
   

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320743"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91617161"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Was ist Azure Stack Edge Pro mit GPU?
 
@@ -73,7 +73,7 @@ Das physische Azure Stack Edge Pro-Gerät, die Azure-Ressource und das Zielspeic
 
 - **Ressourcenverfügbarkeit:** : Für diese Vorschauversion ist die Ressource in den Regionen „USA, Osten“, „Europa, Westen“, und „Asien, Südosten“ verfügbar.
 
-- **Geräteverfügbarkeit** – Eine Liste aller Länder, in denen das Azure Stack Edge Pro-Gerät verfügbar ist, finden Sie auf der Registerkarte **Azure Stack Edge Pro** für [Azure Stack Edge Pro-Preise](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) im Abschnitt **Verfügbarkeit**.
+- **Geräteverfügbarkeit** – Eine Liste aller Länder/Regionen, in denen das Azure Stack Edge Pro-Gerät verfügbar ist, finden Sie auf der Registerkarte **Azure Stack Edge Pro** für [Azure Stack Edge Pro-Preise](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) im Abschnitt **Verfügbarkeit**.
     
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Für eine optimale Leistung sollten sich die Regionen, in denen die Speicherkonten Azure Stack Edge Pro-Daten speichern, in der Nähe des Gerätestandorts befinden. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
 

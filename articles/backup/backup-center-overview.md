@@ -2,13 +2,13 @@
 title: Übersicht über Backup Center
 description: Dieser Artikel enthält eine Übersicht zu Backup Center für Azure.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993227"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614280"
 ---
 # <a name="overview-of-backup-center"></a>Übersicht über Backup Center
 
@@ -39,11 +39,15 @@ Der erste Bildschirm, der angezeigt wird, ist der Bildschirm **Übersicht**. Er 
 
 Über die Kachel **Sicherungsinstanzen** erhalten Sie eine zusammenfassende Ansicht aller Sicherungsinstanzen in Ihrem Sicherungsbestand. Sie können z. B. die Anzahl der Sicherungsinstanzen sehen, die sich im Zustand „Vorläufig gelöscht“ befinden, und der Anzahl der Instanzen gegenüberstellen, die noch für den Schutz konfiguriert sind. Wenn Sie eine der Zahlen auf dieser Kachel auswählen, können Sie weitere Informationen zu Sicherungsinstanzen für einen bestimmten Datenquellentyp und Schutzzustand anzeigen.
 
-Führen Sie die folgenden Schritte aus, um die verschiedenen Funktionen von Backup Center zu verstehen und zu erfahren, wie Sie diese Funktionen zur effizienten Verwaltung Ihres Sicherungsbestands nutzen können.
+Sehen Sie sich das folgende Video an, um die Funktionen von Backup Center zu verstehen:
+
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+Führen Sie die [nächsten Schritte](#next-steps) aus, um die verschiedenen Funktionen von Backup Center zu verstehen und zu erfahren, wie Sie diese Funktionen zur effizienten Verwaltung Ihres Sicherungsbestands nutzen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Überwachen und Betreiben von Sicherungen](backup-center-monitor-operate.md)
-* [Steuern Ihres Sicherungsbestands](backup-center-govern-environment.md)
+* [Überwachen und Betreiben von Sicherungen mit Backup Center](backup-center-monitor-operate.md)
+* [Steuern Ihres Sicherungsbestands mit Backup Center](backup-center-govern-environment.md)
 * [Gewinnen von Einblicken in Ihre Sicherungen](backup-center-obtain-insights.md)
 * [Ausführen von Aktionen mithilfe des Backup Centers](backup-center-actions.md)

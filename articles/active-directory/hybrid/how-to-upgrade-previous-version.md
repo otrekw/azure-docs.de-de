@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319859"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -106,7 +106,7 @@ Manchmal sollen diese Außerkraftsetzungen aber möglicherweise nicht direkt nac
 
 1. **Deaktivieren** Sie während des Upgrades die Option **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde**. Dadurch wird der Synchronisierungsplaner deaktiviert und sichergestellt, dass der Synchronisierungszyklus nicht automatisch beginnt, bevor die Außerkraftsetzungen entfernt wurden.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![Screenshot mit der Option „Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde“, die Sie deaktivieren müssen](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. Führen Sie nach Abschluss des Upgrades das folgende Cmdlet aus, um zu ermitteln, welche Außerkraftsetzungen hinzugefügt wurden: `Get-ADSyncSchedulerConnectorOverride | fl`
 
