@@ -2,13 +2,13 @@
 title: Einführung in Azure Advisor
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
 ms.topic: article
-ms.date: 02/01/2019
-ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654020"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405206"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -68,7 +68,9 @@ Um eine Empfehlung zurückzustellen oder zu verwerfen, klicken Sie auf den Link 
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 
 * [Erste Schritte mit Advisor](advisor-get-started.md)
+* [Advisor-Bewertung](azure-advisor-score.md)
 * [Verbessern der Zuverlässigkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 * [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
