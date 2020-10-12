@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332728"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -155,7 +155,7 @@ Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete vir
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Die Unterstützung der Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern befindet sich in allen Regionen in der öffentlichen Vorschau.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
+Azure-VM-Datenträger (für Daten) | Unterstützung für die Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
 Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.

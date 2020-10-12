@@ -1,7 +1,7 @@
 ---
 title: Durchführen eines Upgrades der Bing-News-Suche-API von v5 auf v7
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel werden die Teile Ihrer Anwendung angegeben, die Sie zur Verwendung von Version 7 aktualisieren müssen.
+description: In diesem Artikel werden die Teile Ihrer Anwendung für die Bing-News-Suche angegeben, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316646"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die News-Suche-API
 

@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274111"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -52,11 +52,11 @@ Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Az
    ![AAD- und ADFS-Vertrauensstellung reparieren](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen des globalen Administrators für Azure AD an, und klicken Sie auf **Weiter**.
-   ![Herstellen einer Verbindung mit Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Screenshot der Seite „Mit Azure AD verbinden“ mit eingegebenen Beispielanmeldeinformationen](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. Geben Sie auf der Seite **Anmeldeinformationen für den Remotezugriff** die Anmeldeinformationen für den Domänenadministrator ein.
 
-   ![Anmeldeinformationen für den Remotezugriff](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Screenshot der Seite „Anmeldeinformationen für den Remotezugriff“ mit eingegebenen Beispielanmeldeinformationen](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     Nachdem Sie auf **Weiter** geklickt haben, überprüft Azure AD Connect die Zertifikatsintegrität und zeigt etwaige Probleme an.
 
@@ -64,7 +64,7 @@ Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Az
 
     Auf der Seite **Bereit zur Konfiguration** wird die Liste der Aktionen angezeigt, die ausgeführt werden, um die Vertrauensstellung zu reparieren.
 
-    ![Bereit zur Konfiguration](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Screenshot der Seite „Bereit zur Konfiguration“ mit einer Aktionsliste](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Klicken Sie auf **Installieren** , um die Vertrauensstellung zu reparieren.
 
@@ -98,7 +98,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
 2. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen des globalen Administrators für Azure AD ein und klicken Sie auf **Weiter**.
 
-   ![Stellen Sie eine Verbindung mit Azure AD her.](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Screenshot der Seite „Mit Azure AD verbinden“ mit eingegebenen Beispielanmeldeinformationen](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Geben Sie die Anmeldeinformationen des Domänenadministrators an.
 
@@ -106,9 +106,9 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
 4. Sie werden von Azure AD Connect zum Eingeben des Kennworts für die PFX-Datei aufgefordert, die Sie beim Konfigurieren der neuen AD FS-Farm mit Azure AD Connect angegeben haben. Klicken Sie auf **Kennwort eingeben** , um das Kennwort für die PFX-Datei anzugeben.
 
-   ![Zertifikatkennwort](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Screenshot der Seite „SSL-Zertifikat angeben“ mit geöffnetem Fenster „Zertifikatkennwort“](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![Angabe des TLS-/SSL-Zertifikats](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Screenshot der Seite „SSL-Zertifikat angeben“, nachdem ein Kennwort für die PFX-Datei eingegeben wurde](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. Geben Sie auf der Seite **AD FS-Server** den Servernamen oder die IP-Adresse ein, der bzw. die der AD FS-Farm hinzugefügt werden soll.
 
@@ -116,9 +116,9 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
 6. Klicken Sie auf **Weiter** und führen Sie die Schritte auf der letzten **Konfigurationsseite** aus. Nachdem Azure AD Connect die Server der AD FS-Farm hinzugefügt hat, haben Sie die Möglichkeit, die Konnektivität zu überprüfen.
 
-   ![Bereit zur Konfiguration](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Screenshot der Seite „Bereit zur Konfiguration“ mit einer Liste der Aktionen, die nach dem Klicken auf „Installieren“ ausgeführt werden können](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![Installation abgeschlossen](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![Screenshot der Seite „Installation abgeschlossen“, auf der die Meldung „Die Intranetkonfiguration wurde erfolgreich überprüft“ angezeigt wird ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>Hinzufügen eines AD FS-WAP-Servers 
 
@@ -131,7 +131,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
 2. Geben Sie die Anmeldeinformationen des globalen Azure-Administrators an.
 
-   ![Stellen Sie eine Verbindung mit Azure AD her.](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Screenshot der Seite „Mit Azure AD verbinden“, auf der ein Benutzername und ein Kennwort als Beispiel eingegeben sind](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. Geben Sie auf der Seite **SSL-Zertifikat angeben** das Kennwort für die PFX-Datei an, die Sie beim Konfigurieren der AD FS-Farm mit Azure AD Connect angegeben haben.
    ![Zertifikatkennwort](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
 6. Auf der Seite **Bereit zur Konfiguration** zeigt der Assistent die Liste mit den Aktionen an, die ausgeführt werden.
 
-   ![Bereit zur Konfiguration](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Screenshot der Seite „Bereit zur Konfiguration“ mit der Liste der Aktionen, die ausgeführt werden können](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen. Nach Abschluss der Konfiguration bietet der Assistent Ihnen die Möglichkeit, die Verbindung mit den Servern zu überprüfen. Klicken Sie auf **Überprüfen** , um die Konnektivität zu überprüfen.
 
