@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523314"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276662"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurieren von Azure-SSIS Integration Runtime für hohe Leistung
 
@@ -122,8 +122,7 @@ Die Y-Achse zeigt die Anzahl von Paketen, deren Ausführung innerhalb einer Stun
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Wenn Sie bereits einen leistungsstarken Workerknoten für die Paketausführung verwenden, lässt sich der allgemeine Integration Runtime-Durchsatz ggf. durch Erhöhen von **AzureSSISMaxParallelExecutionsPerNode** steigern. Für Standard_D1_v2-Knoten werden 1 bis 4 parallele Ausführungen pro Knoten unterstützt. Für alle anderen Arten von Knoten werden 1 bis (2 x Anzahl der Kerne, 8) Ausführungen pro Knoten unterstützt. Wenn Sie mehr **AzureSSISMaxParallelExecutionsPerNode** als maximal von uns unterstützt wünschen, können Sie ein Supportticket öffnen, und wir können den maximalen Wert für Sie heraufsetzen. Danach müssen Sie  **AzureSSISMaxParallelExecutionsPerNode** mit Azure PowerShell aktualisieren.
-Einen geeigneten ungefähren Wert können Sie auf der Grundlage der Kosten für Ihr Paket und der folgenden Konfigurationen für Workerknoten ermitteln. Weitere Informationen finden Sie unter [Universelle VM-Größen](../virtual-machines/windows/sizes-general.md).
+Wenn Sie bereits einen leistungsstarken Workerknoten für die Paketausführung verwenden, lässt sich der allgemeine Integration Runtime-Durchsatz ggf. durch Erhöhen von **AzureSSISMaxParallelExecutionsPerNode** steigern. Wenn Sie den maximalen Wert erhöhen möchten, müssen Sie Azure PowerShell verwenden, um **AzureSSISMaxParallelExecutionsPerNode** zu aktualisieren. Einen geeigneten ungefähren Wert können Sie auf der Grundlage der Kosten für Ihr Paket und der folgenden Konfigurationen für Workerknoten ermitteln. Weitere Informationen finden Sie unter [Universelle VM-Größen](../virtual-machines/windows/sizes-general.md).
 
 | Size             | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
