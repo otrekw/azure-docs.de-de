@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324296"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
 
@@ -26,16 +26,16 @@ Wenn Sie die Azure Data Factory-Kopieraktivität verwenden, um Daten von der Que
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Beibehalten von Metadaten für die Lake-Migration
 
-Wenn Sie Daten von einem Data Lake zu einem anderen migrieren, z. B. [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), können Sie festlegen, dass die Dateimetadaten zusammen mit den Daten beibehalten werden.
+Wenn Sie Daten von einem Data Lake zu einem anderen migrieren, z. B. [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) und [Azure File Storage](connector-azure-file-storage.md), können Sie festlegen, dass die Dateimetadaten zusammen mit den Daten beibehalten werden.
 
 Die Kopieraktivität unterstützt die Beibehaltung der folgenden Attribute beim Kopieren von Daten:
 
 - **Alle vom Kunden angegebenen Metadaten** 
 - Und die folgenden **fünf integrierten Systemeigenschaften des Datenspeichers**: `contentType`, `contentLanguage` (mit Ausnahme von Amazon S3) `contentEncoding`, `contentDisposition`, `cacheControl`.
 
-**Behandeln von Unterschieden in Metadaten:** Amazon S3 und Azure Storage erlauben unterschiedliche Zeichensätze in den Schlüsseln der vom Kunden angegebenen Metadaten. Wenn Sie sich für die Beibehaltung von Metadaten bei Verwendung der Kopieraktivität entscheiden, ersetzt ADF die ungültigen Zeichen automatisch durch „_“.
+**Behandeln von Unterschieden in Metadaten:** Amazon S3 und Azure Storage erlauben unterschiedliche Zeichensätze in den Schlüsseln der vom Kunden angegebenen Metadaten. Wenn Sie sich bei Verwendung der Kopieraktivität für die Beibehaltung von Metadaten entscheiden, ersetzt ADF die ungültigen Zeichen automatisch durch „_“.
 
-Wenn Sie Dateien unverändert von Amazon S3/Azure Data Lake Storage Gen2/Azure Blob in Azure Data Lake Storage Gen2/Azure Blob mit dem Binärformat kopieren, können Sie die Option **Beibehalten** auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung oder auf der Seite **Einstellungen** im Tool zum Kopieren von Daten verwenden.
+Wenn Sie Dateien unverändert von Amazon S3/Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage in Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage mit Binärformat kopieren, finden Sie die dazu erforderliche Option **Beibehalten** auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung oder auf der Seite **Einstellungen** im Tool zum Kopieren von Daten.
 
 ![Kopieraktivität mit Beibehaltung von Metadaten](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 

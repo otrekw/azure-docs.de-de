@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 05f81e4d93244db854bf8d0ec254ee647f81d9cc
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326676"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB-Connector für Apache Spark für die Core-API (SQL): Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -56,12 +56,20 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 
 | Resource | Link |
 |---|---|
-| **SDK-Download** | [Download von Apache Spark](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) |
+| **SDK-Download** | [Herunterladen der neuesten JAR-Datei](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG), [Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) |
 |**API-Dokumentation** | [Spark Connector-Referenz]() |
 |**Am SDK mitwirken** | [Azure Cosmos DB-Connector für Apache Spark auf GitHub](https://github.com/Azure/azure-cosmosdb-spark) | 
 |**Erste Schritte** | [Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>Releaseverlauf
+
+### <a name="330"></a>3.3.0
+#### <a name="new-features"></a>Neue Funktionen
+- Fügt die neue Konfigurationsoption `changefeedstartfromdatetime` hinzu, mit der die Startzeit für die Verarbeitung des Änderungsfeeds angegeben wird. Weitere Informationen finden Sie unter [Konfigurationsoptionen](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references).
+
+### <a name="320"></a>3.2.0
+#### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen
+- Korrigiert eine Regression, die zu einer übermäßigen Speicherauslastung für die Executor großer Resultsets (z. B. mit Millionen Zeilen) und damit letztendlich zum Fehler `java.lang.OutOfMemoryError: GC overhead limit exceeded` geführt hat.
 
 ### <a name="311"></a>3.1.1
 #### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen

@@ -1,47 +1,40 @@
 ---
 title: Webhookaktionen für Protokollwarnungen in Azure-Warnungen
-description: In diesem Artikel wird beschrieben, wie Sie eine Protokollwarnungsregel mit einem Log Analytics-Arbeitsbereich mit Application Insights erstellen, wie die Warnung Daten per Pushvorgang als HTTP-Webhook überträgt sowie die Details der verschiedenen möglichen Anpassungen.
+description: Beschreibt das Konfigurieren eines Protokollwarnungspushes mit Webhookaktion und verfügbaren Anpassungen.
 author: yanivlavi
 ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294307"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
-Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit, [sie mithilfe von Aktionsgruppen so zu konfigurieren](action-groups.md), dass sie eine oder mehrere Aktionen ausführt. Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und zeigt, wie Sie einen benutzerdefinierten, JSON-basierten Webhook konfigurieren.
+
+[Protokollwarnungen](alerts-log.md) unterstützen das [Konfigurieren von Webhookaktionsgruppen](action-groups.md#webhook). In diesem Artikel wird beschrieben, welche Eigenschaften verfügbar sind und wie Sie einen benutzerdefinierten JSON-Webhook konfigurieren.
 
 > [!NOTE]
-> Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) für Ihre Webhookintegrationen verwenden. Das allgemeine Warnungsschema bietet den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor. Beachten Sie, dass beim allgemeinen Warnungsschema die benutzerdefinierte JSON-Option für Protokollwarnungen nicht berücksichtigt wird. Es wird die Nutzlast des allgemeinen Warnungsschemas übernommen, wenn diese ausgewählt ist, unabhängig von der Anpassung, die Sie möglicherweise auf Ebene der Warnungsregel vorgenommen haben. [Hier finden Sie Informationen zu den Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDefinitions).
-
-## <a name="webhook-actions"></a>Webhookaktionen
-
-Mit Webhookaktionen können Sie einen externen Prozess über eine einzige HTTP POST-Anforderung aufrufen. Der aufgerufene Dienst sollte Webhooks unterstützen, und es sollte festgelegt werden, wie empfangene Nutzlasten verwendet werden.
-
-Webhook-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaften.
-
-| Eigenschaft | BESCHREIBUNG |
-|:--- |:--- |
-| **Webhook-URL** |Die URL des Webhooks. |
-| **Benutzerdefinierte JSON-Nutzlast** |Die benutzerdefinierte Nutzlast, die mit dem Webhook gesendet werden soll, wenn diese Option während der Warnungserstellung ausgewählt wird. Weitere Informationen finden Sie unter [Verwalten von Protokollwarnungen](alerts-log.md).|
+> Der benutzerdefinierte JSON-Webhook wird derzeit in der API-Version `2020-05-01-preview` nicht unterstützt.
 
 > [!NOTE]
-> Die Schaltfläche **Webhook anzeigen** zusammen mit der Option **Benutzerdefinierte JSON-Nutzlast für Webhook einschließen** für die Protokollwarnung zeigt die Beispielnutzlast für den Webhook für die bereitgestellte Anpassung an. Es sind keine tatsächlichen Daten enthalten, aber sie ist repräsentativ für ein JSON-Schema, das für Protokollwarnungen verwendet wird. 
+> Sie sollten das [allgemeine Warnungsschema](alerts-common-schema.md) für Ihre Webhookintegrationen verwenden. Das allgemeine Warnungsschema bietet den Vorteil einer einzelnen, erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor. Für Protokollwarnungsregeln, für die eine benutzerdefinierte JSON-Nutzlast definiert ist, wird das Nutzlastschema durch die Aktivierung des allgemeinen Schemas auf das [hier](alerts-common-schema-definitions.md#log-alerts) beschriebene zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Größere Warnungen enthalten keine Suchergebnisse. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der Log Analytics-API auf die Suchergebnisse zugreifen.
 
-Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um die an den externen Dienst gesendeten Daten handelt. Die Nutzlast enthält standardmäßig die Werte in der folgenden Tabelle. Sie können diese Nutzlast auch durch eine benutzerdefinierte eigene Nutzlast ersetzen. Verwenden Sie in diesem Fall die Variablen in der Tabelle für die einzelnen Parameter, um deren Wert in die benutzerdefinierte Nutzlast einzubinden.
+## <a name="webhook-payload-properties"></a>Webhook-Nutzlasteigenschaften
 
+Mit Webhookaktionen können Sie eine einzelne HTTP POST-Anforderung aufrufen. Der aufgerufene Dienst sollte Webhooks unterstützen und wissen, wie er die empfangene Nutzlast verwenden soll.
+
+Standardmäßige Webhookaktionseigenschaften und deren benutzerdefinierte JSON-Parameternamen:
 
 | Parameter | Variable | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |Der Name der Warnungsregel. |
 | *Severity* |#severity |Festgelegter Schweregrad für die erste ausgelöste Protokollwarnung |
-| *AlertThresholdOperator* |#thresholdoperator |Schwellenwertoperator für die Warnungsregel, der größer als oder kleiner als verwendet. |
+| *AlertThresholdOperator* |#thresholdoperator |Schwellenwertoperator für die Warnungsregel |
 | *AlertThresholdValue* |#thresholdvalue |Wert des Schwellenwerts für die Warnungsregel |
 | *LinkToSearchResults* |#linktosearchresults |Link zum Analyseportal, das die Datensätze aus der Abfrage zurückgibt, mit der die Warnung erstellt wurde. |
 | *LinkToSearchResultsAPI* |#linktosearchresultsapi |Link zur Analytics-API, die die Datensätze aus der Abfrage zurückgibt, mit der die Warnung erstellt wurde |
@@ -54,15 +47,15 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | *SearchQuery* |#searchquery |Von der Warnungsregel verwendete Protokollsuchabfrage |
 | *SearchResults* |"IncludeSearchResults": true|Hierbei handelt es sich um die von der Abfrage als JSON-Tabelle zurückgegebenen Datensätze, beschränkt auf die ersten 1.000 Datensätze. "IncludeSearchResults": true wird in einer benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt. |
 | *Dimensionen* |"IncludeDimensions": true|Hierbei handelt es sich um Dimensionswertkombinationen, die diese Warnung ausgelöst haben, als JSON-Abschnitt. "IncludeDimensions": true wird in einer benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt. |
-| *Warnungstyp*| #alerttype | Der Typ der konfigurierten Protokollwarnungsregel als [metrische Maßeinheit](alerts-unified-log.md#metric-measurement-alert-rules) oder [Anzahl von Ergebnissen](alerts-unified-log.md#number-of-results-alert-rules).|
+| *Warnungstyp*| #alerttype | Der Typ der konfigurierten Protokollwarnungsregel als [metrische Maßeinheit oder Anzahl von Ergebnissen](alerts-unified-log.md#measure).|
 | *WorkspaceID* |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs. |
 | *Anwendungs-ID* |#applicationid |ID Ihrer Application Insights-App. |
-| *Abonnement-ID* |#subscriptionid |ID des von Ihnen verwendeten Azure-Abonnements. 
+| *Abonnement-ID* |#subscriptionid |ID des von Ihnen verwendeten Azure-Abonnements. |
 
-> [!NOTE]
-> Die aufgeführten Links übergeben Parameter wie *SearchQuery*, *Search Interval StartTime* und *Search Interval End time* in der URL an das Azure-Portal oder die API.
+## <a name="custom-webhook-payload-definition"></a>Nutzlastdefinition für benutzerdefinierten Webhook
 
-Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält. Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter.
+Mit **Benutzerdefinierte JSON-Nutzdaten für Webhook einschließen** können Sie eine benutzerdefinierte JSON-Nutzlast mit den oben genannten Parametern erhalten. Sie können auch zusätzliche Eigenschaften generieren.
+Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält. Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter:
 
 ```json
 
@@ -77,18 +70,21 @@ Diese Beispielnutzlast wird ähnlich wie hier dargestellt aufgelöst, wenn sie a
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
-Da alle Variablen in einem benutzerdefinierten Webhook innerhalb einer JSON-Umschließung wie „#searchinterval“ angegeben werden müssen, weist auch der resultierende Webhook Variablendaten in Umschließungen auf, etwa „00:05:00“.
+Variablen in einem benutzerdefinierten Webhook müssen in einer JSON-Struktur angegeben werden. Die Ausgabe zu dem Verweis „#searchresultcount“ im obigen Webhookbeispiel hängt z. B. von den Warnungsergebnissen ab.
 
-Um Suchergebnisse in eine benutzerdefinierte Nutzlast einzuschließen, muss **IncudeSearchResults** als Eigenschaft der obersten Ebene in der JSON-Nutzlast festgelegt werden. 
+Fügen Sie zum Einschließen von Suchergebnissen **IncludeSearchResults** als Eigenschaft der obersten Ebene im benutzerdefinierten JSON-Code hinzu. Die Suchergebnisse werden als JSON-Struktur eingeschlossen, sodass nicht auf Ergebnisse in benutzerdefinierten Feldern verwiesen werden kann. 
+
+> [!NOTE]
+> Die Schaltfläche **Webhook anzeigen** neben der Option **Benutzerdefinierte JSON-Nutzlast für Webhook einschließen** zeigt eine Vorschau der bereitgestellten Informationen an. Es sind keine tatsächlichen Daten enthalten, aber sie ist repräsentativ für das verwendete JSON-Schema. 
 
 ## <a name="sample-payloads"></a>Beispielnutzlasten
 Dieser Abschnitt zeigt Beispielnutzlasten für Webhooks für Protokollwarnungen. Die Beispielnutzlasten enthalten Beispiele dafür, wenn die Nutzlast Standard ist und wenn sie benutzerdefiniert ist.
 
-### <a name="standard-webhook-for-log-alerts"></a>Standardwebhook für Protokollwarnungen 
-Beide Beispiele enthalten eine Pseudonutzlast mit nur zwei Spalten und zwei Zeilen.
+### <a name="log-alert-for-log-analytics"></a>Protokollwarnung für Log Analytics
+Die folgende Beispielnutzlast ist für eine Standardwebhookaktion gedacht, die für Warnungen verwendet wird, die auf Log Analytics basieren:
 
-#### <a name="log-alert-for-log-analytics"></a>Protokollwarnung für Log Analytics
-Die folgende Beispielnutzlast ist für eine Standardwebhookaktion *ohne benutzerdefinierte JSON-Option* gedacht, die für Warnungen verwendet wird, die auf Log Analytics basieren.
+> [!NOTE]
+> Der Wert des Felds „Severity“ ändert sich, wenn Sie [von der älteren Log Analytics-Warnungs-API](api-alerts.md) zur [aktuellen scheduledQueryRules-API gewechselt haben](alerts-log-api-switch.md).
 
 ```json
 {
@@ -152,14 +148,10 @@ Die folgende Beispielnutzlast ist für eine Standardwebhookaktion *ohne benutzer
     "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
 }
- ```
+```
 
-> [!NOTE]
-> Der Wert des Felds „Schweregrad“ könnte sich ändern, wenn Sie [Ihre API-Einstellung für Protokollwarnungen in Log Analytics gewechselt](alerts-log-api-switch.md) haben.
-
-
-#### <a name="log-alert-for-application-insights"></a>Protokollwarnung für Application Insights
-Die folgende Beispielnutzlast ist für einen Standardwebhook *ohne benutzerdefinierte JSON-Option* gedacht, wenn er für Protokollwarnungen verwendet wird, die auf Application Insights basieren.
+### <a name="log-alert-for-application-insights"></a>Protokollwarnung für Application Insights
+Die folgende Beispielnutzlast ist für einen Standardwebhook gedacht, wenn er für Protokollwarnungen verwendet wird, die auf Application Insights-Ressourcen basieren:
     
 ```json
 {
@@ -225,8 +217,73 @@ Die folgende Beispielnutzlast ist für einen Standardwebhook *ohne benutzerdefin
 }
 ```
 
-#### <a name="log-alert-with-custom-json-payload"></a>Protokollwarnung mit benutzerdefinierter JSON-Nutzlast
-Sie können beispielsweise Folgendes verwenden, um eine benutzerdefinierte Nutzlast zu erstellen, die nur den Warnungsnamen und die Suchergebnisse enthält: 
+### <a name="log-alert-for-other-resources-logs-from-api-version-2020-05-01-preview"></a>Protokollwarnung für andere Ressourcenprotokolle (von API-Version `2020-05-01-preview`)
+
+> [!NOTE]
+> Für die API-Version `2020-05-01-preview` und ressourcenbezogene Protokollwarnungen fallen aktuell keine zusätzlichen Gebühren an.  Die Preise für Previewfunktionen werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, die neue API-Version und ressourcenbezogene Protokollwarnungen über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt.
+
+Die folgende Beispielnutzlast ist für einen Standardwebhook gedacht, wenn er für Protokollwarnungen verwendet wird, die auf anderen Ressourcenprotokollen (mit Ausnahme von Arbeitsbereichen und Application Insights) basieren:
+
+```json
+{
+    "schemaId": "azureMonitorCommonAlertSchema",
+    "data": {
+        "essentials": {
+            "alertId": "/subscriptions/12345a-1234b-123c-123d-12345678e/providers/Microsoft.AlertsManagement/alerts/12345a-1234b-123c-123d-12345678e",
+            "alertRule": "AcmeRule",
+            "severity": "Sev4",
+            "signalType": "Log",
+            "monitorCondition": "Fired",
+            "monitoringService": "Log Alerts V2",
+            "alertTargetIDs": [
+                "/subscriptions/12345a-1234b-123c-123d-12345678e/resourcegroups/ai-engineering/providers/microsoft.compute/virtualmachines/testvm"
+            ],
+            "originAlertId": "123c123d-1a23-1bf3-ba1d-dd1234ff5a67",
+            "firedDateTime": "2020-07-09T14:04:49.99645Z",
+            "description": "log alert rule V2",
+            "essentialsVersion": "1.0",
+            "alertContextVersion": "1.0"
+        },
+        "alertContext": {
+            "properties": null,
+            "conditionType": "LogQueryCriteria",
+            "condition": {
+                "windowSize": "PT10M",
+                "allOf": [
+                    {
+                        "searchQuery": "Heartbeat",
+                        "metricMeasure": null,
+                        "targetResourceTypes": "['Microsoft.Compute/virtualMachines']",
+                        "operator": "LowerThan",
+                        "threshold": "1",
+                        "timeAggregation": "Count",
+                        "dimensions": [
+                            {
+                                "name": "ResourceId",
+                                "value": "/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm"
+                            }
+                        ],
+                        "metricValue": 0.0,
+                        "failingPeriods": {
+                            "numberOfEvaluationPeriods": 1,
+                            "minFailingPeriodsToAlert": 1
+                        },
+                        "linkToSearchResultsUI": "https://portal.azure.com#@12f345bf-12f3-12af-12ab-1d2cd345db67/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F12345a-1234b-123c-123d-12345678e%2FresourceGroups%2FTEST%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Ftestvm%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToFilteredSearchResultsUI": "https://portal.azure.com#@12f345bf-12f3-12af-12ab-1d2cd345db67/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F12345a-1234b-123c-123d-12345678e%2FresourceGroups%2FTEST%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Ftestvm%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z"
+                    }
+                ],
+                "windowStartTime": "2020-07-07T13:54:34Z",
+                "windowEndTime": "2020-07-09T13:54:34Z"
+            }
+        }
+    }
+}
+```
+
+### <a name="log-alert-with-a-custom-json-payload"></a>Protokollwarnung mit einer benutzerdefinierten JSON-Nutzlast
+Sie können beispielsweise diese Konfiguration verwenden, um eine benutzerdefinierte Nutzlast zu erstellen, die nur den Warnungsnamen und die Suchergebnisse enthält: 
 
 ```json
     {

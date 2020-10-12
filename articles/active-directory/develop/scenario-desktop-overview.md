@@ -12,38 +12,28 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257553"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Szenario: Desktop-App, die Web-APIs aufruft
 
 Erfahren Sie alles, was Sie brauchen, um eine Desktop-App zu erstellen, die Web-APIs aufruft.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="get-started"></a>Erste Schritte
 
-Sofern nicht bereits geschehen, erstellen Sie nun Ihre erste Anwendung, indem Sie den Schritten in der .NET Desktop-Schnellstartanleitung, der Universal Windows Platform (UWP)-Schnellstartanleitung oder der Schnellstartanleitung für native macOS-Apps folgen:
+Erstellen Sie, falls noch nicht geschehen, Ihre erste App, indem Sie einen der folgenden Schnellstarts abschließen:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer UWP-App aus](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API aus einer nativen macOS-App](./quickstart-v2-ios.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus](./quickstart-v2-windows-desktop.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer UWP-App aus](./quickstart-v2-uwp.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API aus einer nativen macOS-App](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Übersicht
 
-Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung anmelden sowie Web-APIs wie Microsoft Graph, andere Microsoft-APIs oder Ihre eigene Web-API aufrufen. Sie haben hierfür mehrere Möglichkeiten:
+Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung anmelden sowie Web-APIs wie Microsoft Graph, andere Microsoft-APIs oder Ihre eigene Web-API aufrufen. Sie haben mehrere Möglichkeiten:
 
 - Sie können den interaktiven Tokenabruf verwenden:
 
@@ -64,6 +54,10 @@ Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung an
 ## <a name="specifics"></a>Besonderheiten
 
 Desktopanwendungen weisen eine Reihe von Besonderheiten auf. Diese hängen hauptsächlich davon ab, ob Ihre Anwendung die interaktive oder eine andere Authentifizierung verwendet.
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Was sind bei Azure AD registrierte Geräte?
-description: Erfahren Sie, wie Sie mithilfe der Geräteidentitätsverwaltung Geräte verwalten können, die auf Ressourcen in Ihrer Umgebung zugreifen.
+description: Erfahren Sie, wie Sie mit bei Azure AD registrierten Geräten für Ihre Benutzer das BYOD-Szenario (Bring Your Own Device) bzw. mobile Geräte unterstützen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256437"
 ---
 # <a name="azure-ad-registered-devices"></a>Bei Azure AD registrierte Geräte
 

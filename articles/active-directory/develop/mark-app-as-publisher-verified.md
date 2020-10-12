@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258335"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Markieren Ihrer App als durch den Herausgeber verifiziert
 
-Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe seines Microsoft Partner Network-Kontos überprüft und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat. In diesem Artikel wird beschrieben, wie Sie die [Herausgeberüberprüfung](publisher-verification-overview.md) ausführen.
+Wenn eine App-Registrierung einen verifizierten Herausgeber hat, bedeutet dies, dass der Herausgeber der App seine Identität mithilfe seines Microsoft Partner Network (MPN)-Kontos [verifiziert](/partner-center/verification-responses) und dieses MPN-Konto mit seiner App-Registrierung verknüpft hat. In diesem Artikel wird beschrieben, wie Sie die [Herausgeberüberprüfung](publisher-verification-overview.md) ausführen.
 
 ## <a name="quickstart"></a>Schnellstart
 Wenn Sie bereits bei Microsoft Partner Network (MPN) registriert sind und die [Voraussetzungen](publisher-verification-overview.md#requirements) erfüllt haben, können Sie sofort loslegen: 
@@ -42,9 +42,9 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](publisher-verification-overvi
 
 1. Stellen Sie sicher, dass Sie über die [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) bei einem Organisationskonto (Azure AD) angemeldet sind, das autorisiert ist, Änderungen an der/den App(s), die Sie als durch den Herausgeber verifiziert markieren möchten, und am MPN-Konto in Partner Center vorzunehmen.
 
-    - In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden Rollen sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
+    - In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden [Rollen](../users-groups-roles/directory-assign-admin-roles.md) sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
 
-    - In Partner Center muss dieser Benutzer über die folgenden Rollen verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird). 
+    - In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird). 
 
 1. Navigieren Sie zum App-Registrierungsportal:  
 

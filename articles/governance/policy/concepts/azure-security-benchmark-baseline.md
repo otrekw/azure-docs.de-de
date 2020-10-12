@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231468"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540981"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy-Sicherheitsbaseline für den Vergleichstest für die Azure-Sicherheit
 
@@ -76,7 +76,7 @@ Sie können auch eine Lösung für Just-in-Time-/Just-Enough-Zugriff aktivieren,
 
 **Leitfaden**: Steuern Sie den Zugriff auf Azure Policy mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
 
-* [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 * [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
