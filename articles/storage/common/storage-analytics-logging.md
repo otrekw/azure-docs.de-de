@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b4e2fa95b9a5eebf393d7c64feecd3997b7ecfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280027"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -206,7 +206,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 
 Weitere Informationen zum Herunterladen bestimmter Dateien finden Sie unter [Herunterladen bestimmter Dateien](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
 
-Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in den Dateien anzeigen. Diese Protokolldateien verwenden ein durch Trennzeichen getrenntes Textformat, das viele Protokolllesetools wie Microsoft Message Analyzer analysieren können. (Weitere Informationen finden Sie im Leitfaden [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).) Die verschiedenen Tools umfassen unterschiedliche Funktionen zum Formatieren, Filtern, Sortieren und Durchsuchen der Inhalte der Protokolldateien. Weitere Informationen zum Format und Inhalt von Protokolldateien der Speicherprotokollierung finden Sie unter [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format) und [Protokollierte Vorgänge und Statusmeldungen in Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
+Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in den Dateien anzeigen. Diese Protokolldateien verwenden ein durch Trennzeichen getrenntes Textformat, das viele Protokolllesetools analysieren können. (Weitere Informationen finden Sie im Leitfaden [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).) Die verschiedenen Tools umfassen unterschiedliche Funktionen zum Formatieren, Filtern, Sortieren und Durchsuchen der Inhalte der Protokolldateien. Weitere Informationen zum Format und Inhalt von Protokolldateien der Speicherprotokollierung finden Sie unter [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format) und [Protokollierte Vorgänge und Statusmeldungen in Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

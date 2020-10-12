@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312905"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Box für die automatische Benutzerbereitstellung
 
@@ -93,17 +93,17 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
-    ![Bereitstellung](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Screenshot der Registerkarte „Bereitstellung“ für Box im Azure-Portal. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und unter „Administratoranmeldeinformationen“ ist „Autorisieren“ hervorgehoben.](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**, um ein Dialogfeld für die Anmeldung bei Box in einem neuen Browserfenster zu öffnen.
 
 6. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren**. 
    
-    ![Aktivieren der automatischen Benutzerbereitstellung](./media/box-userprovisioning-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
+    ![Screenshot der Anmeldung zum Gewähren des Zugriffs auf den Box-Bildschirm, der einen Eintrag für E-Mail und Kennwort sowie die Schaltfläche „Autorisieren“ zeigt](./media/box-userprovisioning-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
 
 7. Klicken Sie auf **Zugriff gewähren auf Box**, um diesen Vorgang zu autorisieren und zum Azure-Portal zurückzukehren. 
    
-    ![Aktivieren der automatischen Benutzerbereitstellung](./media/box-userprovisioning-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
+    ![Screenshot des Bildschirms „Zugriff gewähren“ in Box mit einer erklärenden Meldung und die Schaltfläche „Zugriff gewähren auf Box“](./media/box-userprovisioning-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
 
 8. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Box-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Box-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt **Autorisieren**.
 

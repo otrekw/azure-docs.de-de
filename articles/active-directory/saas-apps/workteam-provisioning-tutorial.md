@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa11cd9dedc2446b3952378e53b1f7248abbfa47
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526226"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317502"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workteam für die automatische Benutzerbereitstellung
 
@@ -54,15 +54,15 @@ Bevor Sie Workteam für die automatische Benutzerbereitstellung in Azure AD konf
 
 1. Melden Sie sich bei [Workteam](https://app.workte.am/account/signin) an. Klicken Sie auf **Organization settings** (Organisationseinstellungen) > **SETTINGS** (EINSTELLUNGEN).
 
-    ![Workteam](media/workteam-provisioning-tutorial/settings.png)
+    ![Screenshot der Workteam-Benutzeroberfläche mit den hervorgehobenen Optionen „Organization settings“ (Organisationseinstellungen) und „SETTINGS“ (EINSTELLUNGEN).](media/workteam-provisioning-tutorial/settings.png)
 
 2. Scrollen Sie nach unten, und aktivieren Sie die Bereitstellungsfunktionen von Workteam.
 
-    ![Workteam](media/workteam-provisioning-tutorial/icon.png)
+    ![Screenshot des unteren Bereichs des Abschnitts „SETTINGS“ (EINSTELLUNGEN) mit hervorgehobenem Zahnradsymbol „SCIM User Provisioning“ (SCIM-Benutzerbereitstellung).](media/workteam-provisioning-tutorial/icon.png)
 
 3. Kopieren Sie die **Basis-URL** und das **Bearertoken**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Workteam-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben.
 
-    ![Workteam](media/workteam-provisioning-tutorial/scim.png)
+    ![Screenshot des Dialogfelds „SCIM Settings“ (SCIM-Einstellungen), in dem die Textfelder „BASE URL“ (Basis-URL) und „BEARER TOKEN“ (BEARERTOKEN) hervorgehoben sind.](media/workteam-provisioning-tutorial/scim.png)
 
 
 ## <a name="add-workteam--from-the-gallery"></a>Hinzufügen von Workteam aus dem Katalog
@@ -106,11 +106,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **Basis-URL** und **Bearertoken** in das Feld **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Workteam herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Workteam-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
