@@ -4,17 +4,17 @@ description: 'Azure-Sicherheitsvergleichstest V2: Ressorcenverwaltung'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318023"
 ---
-# <a name="security-control-asset-management"></a>Sicherheitskontrolle: Ressourcenverwaltung
+# <a name="security-control-v2-asset-management"></a>Sicherheitskontrolle V2: Ressourcenverwaltung
 
 Die Ressourcenverwaltung deckt Kontrollen ab, mit denen die Sichtbarkeit und Governance der Sicherheit von Azure-Ressourcen sichergestellt werden soll. Dies umfasst Empfehlungen zu Berechtigungen für Sicherheitspersonal, den sicheren Zugriff auf den Ressourcenbestand und das Verwalten von Genehmigungen für Dienste und Ressourcen (Bestand, Nachverfolgung und Richtigkeit).
 
@@ -22,7 +22,7 @@ Die Ressourcenverwaltung deckt Kontrollen ab, mit denen die Sichtbarkeit und Gov
 
 | Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
-| AM-1 | 1.1, 1.2, 1.3, 1.4, 9.1, 12.1 | CM-7, CM-8, CM-11, PM-5 |
+| AM-1 | 1.1, 1.2 | CM-8, PM-5 |
 
 Stellen Sie sicher, dass Sicherheitsteams die Berechtigungen „Sicherheitsleseberechtigter“ in Ihrem Azure-Mandanten und Ihren Abonnements erhalten, damit sie mit Azure Security Center Sicherheitsrisiken überwachen können. 
 
@@ -38,7 +38,7 @@ Hinweis: Möglicherweise sind zusätzliche Berechtigungen erforderlich, um Einbl
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden:**
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ Hinweis: Möglicherweise sind zusätzliche Berechtigungen erforderlich, um Einbl
 
 | Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
-| AM-2 | 1.5 | CM-8, PM-5 |
+| AM-2 | 1.1, 1.2,  1.4, 1.5,  9.1, 12.1 | CM-8, PM-5 |
 
 Stellen Sie sicher, dass Sicherheitsteams Zugriff auf einen fortlaufend aktualisierten Bestand der Ressourcen in Azure haben. Sicherheitsteams benötigen diesen Bestand häufig, um die potenziellen Angriffsflächen ihrer Organisation im Hinblick auf neue Risiken zu evaluieren, sowie als Quelle für die kontinuierliche Verbesserung der Sicherheit. 
 
@@ -64,7 +64,7 @@ Organisieren Sie Ressourcen logisch gemäß der Taxonomie Ihrer Organisation mit
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden:**
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -86,7 +86,7 @@ Verwenden Sie Azure Policy, um die Dienste, die von Benutzern in Ihrer Umgebung 
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden:**
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Entfernen Sie Azure-Ressourcen, wenn diese nicht mehr benötigt werden.
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden:**
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Mithilfe des bedingten Azure AD-Zugriffs können Sie die Möglichkeiten von Ben
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden:**
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,7 +136,7 @@ Mithilfe des bedingten Azure AD-Zugriffs können Sie die Möglichkeiten von Ben
 
 | Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
-| AM-6 | 2.6 | AC-3, CM-7, CM-8, CM-10, CM-11 |
+| AM-6 | 2.6, 2.7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 
 Stellen Sie sicher, dass nur autorisierte Software ausgeführt und die Ausführung jeglicher nicht autorisierter Software in Azure Virtual Machines blockiert wird.
 
@@ -156,7 +156,7 @@ Sie können auch eine Drittanbieterlösung verwenden, um nicht genehmigte Softwa
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden:**
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
