@@ -1,6 +1,6 @@
 ---
 title: Versionshinweise zu Azure Data Box Gateway 1905 | Microsoft-Dokumentation
-description: In diesem Artikel werden schwerwiegende offene Probleme und Lösungen im Release zur allgemeinen Verfügbarkeit von Azure Data Box Gateway beschrieben.
+description: In diesem Artikel werden schwerwiegende offene Probleme und Lösungen im Release zur allgemeinen Verfügbarkeit von Azure Data Box Gateway 1905 beschrieben.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b97165f19ac07e5a783203ece1a28420f731b649
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320675"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Versionshinweise zu Azure Data Box Edge und Azure Data Box Gateway 1905
 

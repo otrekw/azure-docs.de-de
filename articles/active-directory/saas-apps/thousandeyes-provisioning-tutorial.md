@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355821"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ThousandEyes für die automatische Benutzerbereitstellung
 
@@ -63,11 +63,11 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Th
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    ![Screenshot der Registerkarte „Bereitstellung“ für ThousandEyes, auf der für den Bereitstellungsmodus die Option „Automatisch“ ausgewählt ist.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
 5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte **OAuth Bearer Token** ein. (Sie finden das Token in Ihrem ThousandEyes-Konto im Abschnitt **Profile** (Profil) oder können es dort generieren).
 
-    ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
+    ![Screenshot, in dem gezeigt wird, wo der Link „Kontoeinstellungen“ für die aktuelle Kontogruppe zu finden ist.](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
 6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer ThousandEyes-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr ThousandEyes-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie Schritt 5.
 

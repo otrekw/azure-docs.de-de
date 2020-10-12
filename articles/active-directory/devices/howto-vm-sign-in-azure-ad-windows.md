@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287099"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -49,7 +49,7 @@ Während der Vorschauphase dieser Funktion werden derzeit die folgenden Windows-
 - Windows 10 1809 und höher
 
 > [!IMPORTANT]
-> Eine Remoteverbindung mit in Azure AD eingebundenen virtuellen Computern ist nur auf Windows 10-PCs zulässig, die über Azure AD oder im **selben** Verzeichnis wie der virtuelle Computer regulär oder hybrid eingebunden sind. 
+> Eine Remoteverbindung mit in Azure AD eingebundenen virtuellen Computern ist nur von Windows 10-PCs zulässig, die entweder in Azure AD registriert (ab Windows 10 20H1) oder über Azure AD normal oder hybrid im **selben** Verzeichnis wie der virtuelle Computer eingebunden sind. 
 
 Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Regionen unterstützt:
 

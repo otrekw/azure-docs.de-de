@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 7fbf7743eb1c037a364e1004fc3be30db6777bb0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f4c6eb8ad8e3d69d2b3545bc5754e1a632f5cc8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285796"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -58,11 +58,11 @@ Bevor Sie Snowflake für die automatische Benutzerbereitstellung mit Azure AD ko
 
 2.  Für Ihren Snowflake-Mandanten wird ein SCIM-Zugriffstoken generiert. Um dieses abzurufen, klicken Sie auf den unten hervorgehoben dargestellten Link.
 
-    ![Snowflake: SCIM hinzufügen](media/Snowflake-provisioning-tutorial/image01.png)
+    ![Screenshot eines Arbeitsblatts auf der Benutzeroberfläche von Snowflake mit aufgerufenem SCIM-Zugriffstoken](media/Snowflake-provisioning-tutorial/image01.png)
 
 3. Kopieren Sie den generierten Tokenwert, und klicken Sie auf **Done** (Fertig). Dieser Wert wird auf der Registerkarte „Bereitstellung“ für Ihre Snowflake-Anwendung im Azure-Portal in das Feld **Geheimes Token** eingegeben.
 
-    ![Snowflake: SCIM hinzufügen](media/Snowflake-provisioning-tutorial/image02.png)
+    ![Screenshot des Abschnitts „Details“, in dem das Token in das Textfeld kopiert und die Option „Fertig“ aufgerufen wurde](media/Snowflake-provisioning-tutorial/image02.png)
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Snowflake aus dem Azure AD-Anwendungskatalog
 
@@ -93,11 +93,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor für die SCIM 2.0-Basis-URL und das Authentifizierungstoken abgerufenen Werte in das Feld **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Snowflake herstellen kann. Wenn die Verbindung nicht möglich ist, müssen Sie sicherstellen, dass Ihr Snowflake-Konto über Administratorberechtigungen verfügt. Versuchen Sie es anschließend noch mal.
 
