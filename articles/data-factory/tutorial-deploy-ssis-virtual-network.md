@@ -1,6 +1,6 @@
 ---
 title: Tutorial zum Konfigurieren einer Azure-SSIS Integration Runtime für die Verknüpfung mit einem virtuellen Netzwerk
-description: Erfahren Sie, wie Sie eine Azure-SSIS Integration Runtime mit einem Azure Virtual Network verknüpfen.
+description: Erfahren Sie, wie Sie eine Azure-SSIS Integration Runtime mit einem virtuellen Azure-Netzwerk verknüpfen.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292301"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurieren einer Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) für die Verknüpfung mit einem virtuellen Netzwerk
 

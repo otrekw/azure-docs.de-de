@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321945"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
@@ -77,6 +77,14 @@ Diese Art von Fehler tritt auf, wenn die Anwendung, die ein Benutzer versucht zu
     -   Erteilen der Anwendungsberechtigungen über das Azure-Portal
 
     -   Hinzufügen der Anwendung aus dem Azure AD-Anwendungskatalog
+
+## <a name="risky-app-error-and-warning"></a>Fehler und Warnungen bei riskanter App
+* Diese App ist möglicherweise riskant. Wenn Sie dieser App vertrauen, bitten Sie Ihren Administrator, Ihnen Zugriff zu erteilen.
+* Diese App ist möglicherweise riskant. Fahren Sie nur fort, wenn Sie dieser App vertrauen.
+
+Diese beiden Meldungen werden angezeigt, wenn Microsoft festgestellt hat, dass die Einwilligungsanforderung riskant sein kann. Neben einer Reihe anderer Faktoren kann dies vorkommen, wenn der App-Registrierung kein [verifizierter Herausgeber](../develop/publisher-verification-overview.md) hinzugefügt wurde. Die erste Meldung wird dem Endbenutzer angezeigt, wenn der [Workflow für die Administratorzustimmung](configure-admin-consent-workflow.md) deaktiviert ist. Die zweite Meldung wird dem Endbenutzer angezeigt, wenn der Workflow für die Administratorzustimmung aktiviert ist und eine Weiterleitung an die Administratoren erfolgt. 
+
+Der Endbenutzer kann für Apps, die als riskant erkannt wurden, keine Einwilligung erteilen. Administratoren können dies zwar tun, sollten die App aber sehr sorgfältig evaluieren und Vorsicht walten lassen. Wenn die App bei weiterer Überprüfung immer noch verdächtig scheint, kann sie über den Zustimmungsbildschirm an Microsoft gemeldet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
