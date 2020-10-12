@@ -4,19 +4,19 @@ description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294074"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API 
 
-Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
-
 > [!IMPORTANT]
-> Wie [bereits angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), können in Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln **nur** mit der scheduledQueryRules-[REST-API](/rest/api/monitor/scheduledqueryrules/), der [Azure Resource Manager-Vorlage](./alerts-log.md#managing-log-alerts-using-azure-resource-template) und dem [PowerShell-Cmdlet](./alerts-log.md#managing-log-alerts-using-powershell) verwaltet werden. Kunden können für ältere Arbeitsbereiche problemlos [ihre bevorzugte Methode zur Verwaltung von Warnungsregeln umstellen](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api), um „scheduledQueryRules“ in Azure Monitor als Standard zu verwenden und viele [neue Vorteile](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) zu nutzen. Hierzu zählen beispielsweise die Möglichkeit zur Verwendung nativer PowerShell-Cmdlets, ein längerer Rückschauzeitraum in Regeln sowie die Erstellung von Regeln in einer separaten Ressourcengruppe oder in einem separaten Abonnement.
+> Wie [angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) werden bei Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln mithilfe der aktuellen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules/) verwaltet. Kunden wird empfohlen, bei älteren Arbeitsbereichen [zur aktuellen API zu wechseln](./alerts-log-api-switch.md), um die [Vorteile](./alerts-log-api-switch.md#benefits) von scheduledQueryRules in Azure Monitor zu nutzen. In diesem Artikel wird die Verwaltung von Warnungsregeln mithilfe der Legacy-API beschrieben.
+
+Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
 
 Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. In diesem Dokument finden Sie Beispiele, in denen über eine PowerShell-Befehlszeile per [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open-Source-Befehlszeilentool, mit dem das Aufrufen der Azure Resource Manager-API vereinfacht wird. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die Protokollsuch-API von Log Analytics zuzugreifen. Mit diesen Tools können Sie die RESTful-API von Azure Resource Manager für Aufrufe an Log Analytics-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API wird Ihnen Suchergebnisse im JSON-Format ausgeben, und Sie können die Suchergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
 
@@ -27,7 +27,7 @@ Derzeit können Warnungen nur mit einer gespeicherten Suche in Log Analytics ers
 Eine gespeicherte Suche kann über einen oder mehrere Zeitpläne verfügen. Der Zeitplan definiert, wie oft die Suche durchgeführt wird und welches Zeitintervall für die Identifizierung der Kriterien verwendet wird.
 Die Zeitplaneigenschaften sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Intervall |Wie oft die Suche durchgeführt wird. Dieser Wert wird in Minuten gemessen. |
 | QueryTimeSpan |Das Zeitintervall, in dem die Kriterien ausgewertet werden. Der Wert muss größer oder gleich dem Intervall sein. Dieser Wert wird in Minuten gemessen. |
@@ -95,7 +95,7 @@ Ein Zeitplan kann mehrere Aktionen umfassen. Mit einer Aktion können ein oder m
 
 Die Eigenschaften aller Aktionen sind in der folgenden Tabelle aufgeführt.  Unterschiedliche Arten von Warnungen verfügen über unterschiedliche Eigenschaften, die weiter unten beschrieben sind.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `Type` |Der Typ der Aktion.  Derzeit sind die möglichen Werte „Warnung“ und „Webhook“. |
 | `Name` |Der Anzeigename für die Warnung. |
@@ -139,7 +139,7 @@ Ein Zeitplan sollte nur über genau eine Warnungsaktion verfügen.  Warnungsakti
 | `Section` | BESCHREIBUNG | Verwendung |
 |:--- |:--- |:--- |
 | Schwellenwert |Kriterien für den Zeitpunkt der Ausführung einer Aktion.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
-| severity |Bezeichnung zum Klassifizieren einer Warnung bei Auslösung.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
+| Schweregrad |Bezeichnung zum Klassifizieren einer Warnung bei Auslösung.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
 | Suppress |Option zum Beenden von Benachrichtigungen bei Warnungen. | Für jede Warnung optional, vor oder nach der Ausweitung auf Azure. |
 | Aktionsgruppen |IDs von Azure-Aktionsgruppen, in denen erforderliche Aktionen angegeben sind, z.B. E-Mails, SMS, Sprachanrufe, Webhooks, Automation-Runbooks, ITSM-Connectors usw.| Erforderlich, nachdem Warnungen auf Azure erweitert wurden|
 | Anpassen von Aktionen|Ändern der Standardausgabe für ausgewählte Aktionen der Aktionsgruppe| Optional für jede Warnung, kann verwendet werden, nachdem Warnungen auf Azure erweitert wurden. |
@@ -149,7 +149,7 @@ Eine Warnungsaktion sollte nur über genau einen Schwellenwert verfügen.  Wenn 
 
 Die Eigenschaften von Schwellenwerten sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `Operator` |Operator für den Schwellenwertvergleich. <br> gt = Greater Than (Größer als) <br> lt = Less Than (Kleiner als) |
 | `Value` |Der Wert für den Schwellenwert. |
@@ -185,14 +185,14 @@ $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','p
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 ```
 
-#### <a name="severity"></a>severity
+#### <a name="severity"></a>Schweregrad
 Mit Log Analytics können Sie Ihre Warnungen zur einfacheren Verwaltung und Selektierung in Kategorien klassifizieren. Der definierte Schweregrad der Warnung lautet: „Information“, „Warnung“ oder „Kritisch“. Diese sind der normalisierten Schweregradskala von Azure-Warnungen folgendermaßen zugeordnet:
 
 |Log Analytics-Schweregrad  |Azure-Warnungsschweregrad  |
 |---------|---------|
 |`critical` |Schweregrad 0|
 |`warning` |Schweregrad 1|
-|`informational` | Schweregrad 2|
+|`informational` | Schweregrad 2|
 
 Unten ist eine Beispielantwort für eine Aktion angegeben, die nur einen Schwellenwert und einen Schweregrad aufweist. 
 
