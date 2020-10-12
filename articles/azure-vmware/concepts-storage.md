@@ -1,16 +1,16 @@
 ---
 title: 'Konzepte: Speicher'
-description: Erfahren Sie mehr über die wichtigsten Speicherfunktionen in privaten Clouds in der Vorschau von Azure VMware Solution.
+description: Erfahren Sie mehr über die wichtigsten Speicherfunktionen in privaten Clouds in Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024314"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316816"
 ---
-# <a name="azure-vmware-solution-preview-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution Vorschau
+#  <a name="azure-vmware-solution-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution
 
 Private Azure VMware Solution-Clouds bieten nativen, clusterweiten Speicher mit VMware vSAN. Der gesamte lokale Speicher jedes Hosts in einem Cluster wird in einem vSAN-Datenspeicher verwendet, und Verschlüsselung ruhender Daten ist verfügbar und standardmäßig aktiviert. Sie können Azure Storage-Ressourcen zum Erweitern der Speicherfunktionen Ihrer privaten Clouds verwenden.
 
@@ -28,7 +28,7 @@ Der lokale Speicher in Clusterhosts wird im clusterweiten vSAN-Datenspeicher ver
 
 ## <a name="data-at-rest-encryption"></a>Verschlüsselung ruhender Daten
 
-vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung. Die Schlüsselverschlüsselungsschlüssel sind in einem Azure Key Vault gespeichert, und wenn ein Host aus irgendeinem Grund aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
+vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung. Schlüssel werden verschlüsselt gespeichert und von einem HSM-basierten Azure Key Vault-Hauptschlüssel umschlossen. Wenn ein Host aus irgendeinem Grund aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
 
 ## <a name="scaling"></a>Skalierung
 

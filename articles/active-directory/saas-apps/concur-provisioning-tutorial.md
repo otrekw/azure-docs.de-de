@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551165"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317445"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Concur für die automatische Benutzerbereitstellung
 
@@ -96,7 +96,7 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
 
 9. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
  
-    ![Bereitstellung](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Screenshot der Registerkarte „Bereitstellung“ für Concur im Azure-Portal. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und die Schaltfläche „Verbindung testen“ ist hervorgehoben.](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den **Benutzernamen** und das **Kennwort** Ihres Concur-Administrators ein.
 
