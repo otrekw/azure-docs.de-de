@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure CLI
-description: Erstellen Sie eine Skalierungsgruppe mithilfe eines generalisierten Images in einer Shared Image Gallery.
+description: Erstellen Sie eine Skalierungsgruppe mithilfe eines generalisierten Images in einer Shared Image Gallery. mit der Azure CLI.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 841247c03d9f3b151a0c75430715c03b009d831a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287065"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure CLI
 
@@ -63,4 +63,4 @@ Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebe
 - [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](troubleshooting-shared-images.md) nach.
+Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) nach.
