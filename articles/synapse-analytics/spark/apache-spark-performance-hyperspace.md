@@ -10,33 +10,35 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249364"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hyperspace: Ein Indizierungsuntersystem für Apache Spark
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace: Ein Indizierungssubsystem für Apache Spark
 
-Hyperspace bietet Apache Spark-Benutzern die Möglichkeit, Indizes für ihre Datasets (z. B. CSV, JSON, Parquet usw.) zu erstellen und diese zur potenziellen Beschleunigung von Abfragen und Workloads zu nutzen.
+Hyperspace bietet Apache Spark-Benutzern die Möglichkeit, Indizes für ihre Datasets (z. B. CSV, JSON und Parquet) zu erstellen und diese zur potenziellen Beschleunigung von Abfragen und Workloads zu nutzen.
 
 In diesem Artikel werden die Grundlagen von Hyperspace vorgestellt, wobei seine Einfachheit hervorgehoben und gezeigt wird, wie es von nahezu jedermann verwendet werden kann.
 
-Haftungsausschluss: Hyperspace unterstützt Sie unter zwei Umständen beim Beschleunigen Ihrer Workloads/Abfragen:
+Haftungsausschluss: Hyperspace unterstützt Sie unter zwei Umständen beim Beschleunigen Ihrer Workloads oder Abfragen:
 
-* Abfragen enthalten Filter für Prädikate mit hoher Selektivität (wenn Sie z. B. 100 übereinstimmende Zeilen aus einer Million Kandidatenzeilen auswählen möchten)
-* Abfragen enthalten einen Join, der starke Shufflevorgänge erfordert (wenn Sie z. B. ein 100 GB-Dataset mit einem 10 GB-Dataset verknüpfen möchten)
+* Die Abfragen enthalten Filter für Prädikate mit hoher Selektivität. Beispielsweise können Sie 100 übereinstimmende Zeilen aus einer Million Kandidatenzeilen auswählen.
+* Die Abfragen enthalten einen Join, der umfassende Shufflevorgänge erfordert. Beispielsweise können Sie ein 100-GB-Dataset mit einem 10-GB-Dataset verknüpfen.
 
-Vielleicht sollten Ihre Workloads sorgfältig überwachen und von Fall zu Fall bestimmen, ob die Indizierung für Sie hilfreich ist.
+Sie sollten Ihre Workloads sorgfältig überwachen und von Fall zu Fall bestimmen, ob die Indizierung für Sie hilfreich ist.
 
 Dieses Dokument liegt für [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) und [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) auch in Notebookform vor.
 
 ## <a name="setup"></a>Setup
 
-Beginnen Sie mit einer neuen Spark-Sitzung. Da es sich bei diesem Dokument um ein Tutorial handelt, das lediglich veranschaulichen soll, was Hyperspace bieten kann, werden Sie eine Konfigurationsänderung vornehmen, die es uns erlaubt, hervorzuheben, wie Hyperspace bei kleinen Datasets vorgeht. Standardmäßig verwendet Spark Broadcastjoins zur Optimierung von Joinabfragen, wenn die Datengröße für eine Joinseite klein ist (was bei den Beispieldaten, die wir in diesem Tutorial verwenden, der Fall ist). Daher deaktivieren wir Broadcastjoins, sodass Spark später beim Ausführen von Joinabfragen entsprechende Sort-Merge-Joins verwendet. Dies dient vor allem dazu zu zeigen, wie Hyperspace-Indizes im großen Stil zur Beschleunigung von Joinabfragen verwendet würden.
+Beginnen Sie mit einer neuen Spark-Sitzung. Da es sich bei diesem Dokument um ein Tutorial handelt, das lediglich veranschaulichen soll, was Hyperspace bieten kann, werden Sie eine Konfigurationsänderung vornehmen, die es uns erlaubt, hervorzuheben, wie Hyperspace bei kleinen Datasets vorgeht. 
 
-Die Ausgabe der Ausführung der nachfolgenden Zelle zeigt einen Verweis auf die erfolgreich erstellte Spark-Sitzung und gibt „-1“ als Wert für die geänderte Joinkonfiguration aus, was anzeigt, dass der Broadcastjoin erfolgreich deaktiviert wurde.
+Standardmäßig verwendet Spark Broadcastjoins zur Optimierung von Joinabfragen, wenn die Datengröße für eine Joinseite klein ist (was bei den Beispieldaten, die wir in diesem Tutorial verwenden, der Fall ist). Daher deaktivieren wir Broadcastjoins, sodass Spark später beim Ausführen von Joinabfragen entsprechende Sort-Merge-Joins verwendet. Dies dient vor allem dazu zu zeigen, wie Hyperspace-Indizes im großen Stil zur Beschleunigung von Joinabfragen verwendet würden.
+
+Die Ausgabe der Ausführung der nachfolgenden Zelle zeigt einen Verweis auf die erfolgreich erstellte Spark-Sitzung und gibt „-1“ als Wert für die geänderte Joinkonfiguration aus. Damit wird angezeigt, dass der Broadcastjoin erfolgreich deaktiviert wurde.
 
 :::zone pivot = "programming-language-scala"
 
@@ -44,7 +46,7 @@ Die Ausgabe der Ausführung der nachfolgenden Zelle zeigt einen Verweis auf die 
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -88,13 +90,13 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 -1
 ```
 
-## <a name="data-preparation"></a>Vorbereitung der Daten
+## <a name="data-preparation"></a>Datenvorbereitung
 
-Zur Vorbereitung Ihrer Umgebung erstellen Sie Beispieldatensätze, die Sie als Parquet-Datendateien speichern. Obwohl Parquet zur Veranschaulichung verwendet wird, können Sie auch andere Formate wie CSV verwenden. In den folgenden Zellen sehen Sie, wie Sie mehrere Hyperspace-Indizes für dieses Beispieldataset erstellen und Spark dazu bringen können, diese bei der Ausführung von Abfragen zu verwenden.
+Zur Vorbereitung Ihrer Umgebung erstellen Sie Beispieldatensätze, die Sie als Parquet-Datendateien speichern. Parquet wird hier zur Veranschaulichung verwendet, Sie können aber auch andere Formate wie CSV verwenden. In den folgenden Zellen sehen Sie, wie Sie mehrere Hyperspace-Indizes für dieses Beispieldataset erstellen und Spark anweisen, diese bei der Ausführung von Abfragen zu verwenden.
 
-Die Beispieldatensätze entsprechen zwei Datasets: Abteilung und Mitarbeiter. Sie sollten die Pfade „empLocation“ und „deptLocation“ so konfigurieren, dass sie für das Speicherkonto auf den gewünschten Speicherort zum Speichern der generierten Datendateien verweisen.
+Die Beispieldatensätze entsprechen zwei Datasets: Abteilung und Mitarbeiter. Sie sollten die Pfade empLocation und deptLocation so konfigurieren, dass sie für das Speicherkonto auf den gewünschten Speicherort zum Speichern der generierten Datendateien verweisen.
 
-Die Ausgabe der Ausführung der nachfolgenden Zelle zeigt den Inhalt unserer Datasets als Listen von Dreiergruppen an, gefolgt von Verweisen auf Datenrahmen, die erstellt wurden, um den Inhalt der einzelnen Datasets an unserem bevorzugten Speicherort zu speichern.
+Die Ausgabe der Ausführung der folgenden Zelle zeigt den Inhalt der Datasets als Listen von Dreiergruppen an, gefolgt von Verweisen auf Datenrahmen, die erstellt wurden, um den Inhalt der einzelnen Datasets am bevorzugten Speicherort zu speichern.
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,7 +242,7 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-Lassen Sie uns den Inhalt der oben erstellten Parquet-Dateien überprüfen, um sicherzustellen, dass sie die erwarteten Datensätze im richtigen Format enthalten. Wir verwenden diese Datendateien später zum Erstellen von Hyperspace-Indizes und zum Ausführen von Beispielabfragen.
+Überprüfen Sie den Inhalt der oben erstellten Parquet-Dateien, um sicherzustellen, dass sie die erwarteten Datensätze im richtigen Format enthalten. Sie verwenden diese Datendateien später zum Erstellen von Hyperspace-Indizes und zum Ausführen von Beispielabfragen.
 
 Beim Ausführen der folgenden Zelle zeigt die Ausgabe die Zeilen in Datenrahmen für Mitarbeiter und Abteilung in tabellarischer Form an. Es sollte 14 Mitarbeiter und 4 Abteilungen geben, die jeweils mit einer der Dreiergruppen übereinstimmen, die Sie in der vorherigen Zelle erstellt haben.
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -329,16 +331,20 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 ## <a name="indexes"></a>Indizes
 
-Mit Hyperspace können Sie Indizes für Datensätze erstellen, die aus persistierten Datendateien gescannt wurden. Nach erfolgreicher Erstellung wird ein Eintrag, der dem Index entspricht, zu den Hyperspace-Metadaten hinzugefügt. Diese Metadaten werden später vom Optimierer von Apache Spark (mit unseren Erweiterungen) während der Abfrageverarbeitung verwendet, um die richtigen Indizes zu finden und zu verwenden.
+Mit Hyperspace können Sie Indizes für Datensätze erstellen, die aus persistierten Datendateien gescannt wurden. Nach erfolgreicher Erstellung wird den Hyperspace-Metadaten ein Eintrag hinzugefügt, der dem Index entspricht. Diese Metadaten werden später vom Optimierer von Apache Spark (mit unseren Erweiterungen) während der Abfrageverarbeitung verwendet, um die richtigen Indizes zu finden und zu verwenden.
 
-Nachdem Indizes erstellt wurden, können Sie verschiedene Aktionen durchführen:
+Nachdem Indizes erstellt wurden, können Sie verschiedene Aktionen ausführen:
+
+* **Aktualisieren bei Änderungen an den zugrunde liegenden Daten:** Sie können einen vorhandenen Index aktualisieren, um die Änderungen zu übernehmen.
+* **Löschen, wenn der Index nicht benötigt wird:** Sie können einen vorläufigen Löschvorgang durchführen. Dabei wird der Index nicht physisch gelöscht, sondern als „gelöscht“ markiert, sodass er nicht mehr in Ihren Workloads verwendet wird.
+* **Bereinigen, wenn ein Index nicht mehr benötigt wird:** Sie können einen Index bereinigen, was eine vollständige physische Löschung des Indexinhalts und der zugehörigen Metadaten aus den Hyperspace-Metadaten erzwingt.
 
 Aktualisieren – Wenn sich die zugrunde liegenden Daten ändern, können Sie einen vorhandenen Index aktualisieren, um dies zu erfassen.
 Löschen – Wenn der Index nicht benötigt wird, können Sie einen vorläufigen Löschvorgang durchführen, d. h. der Index wird nicht physisch gelöscht, sondern als „gelöscht“ markiert, sodass er nicht mehr in Ihren Workloads verwendet wird.
-Bereinigen – Wenn ein Index nicht mehr benötigt wird, können Sie ihn bereinigen, was eine vollständige physische Löschung des Indexinhalts und der zugehörigen Metadaten aus den Metadaten von Hyperspace erzwingt.
+
 Die folgenden Abschnitte zeigen, wie solche Vorgänge zur Indexverwaltung in Hyperspace durchgeführt werden können.
 
-Zuerst müssen Sie die erforderlichen Bibliotheken importieren und eine Instanz von Hyperspace erstellen. Sie werden diese Instanz später zum Aufrufen verschiedener Hyperspace-APIs verwenden, um Indizes für Ihre Beispieldaten zu erstellen und diese Indizes zu ändern.
+Zuerst müssen Sie die erforderlichen Bibliotheken importieren und eine Instanz von Hyperspace erstellen. Sie verwenden diese Instanz später zum Aufrufen verschiedener Hyperspace-APIs, um Indizes für Ihre Beispieldaten zu erstellen und diese Indizes zu ändern.
 
 Die Ausgabe der Ausführung der folgenden Zelle zeigt einen Verweis auf die erstellte Instanz von Hyperspace.
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 Sie müssen zwei Informationen angeben, um einen Hyperspace-Index zu erstellen:
 
-Einen Spark-Datenrahmen, der auf die zu indexierenden Daten verweist.
-Ein Indexkonfigurationsobjekt: IndexConfig, das den Indexnamen sowie die indizierten und eingeschlossenen Spalten des Index angibt.
-Sie beginnen damit, drei Hyperspace-Indizes für unsere Beispieldaten zu erstellen. Zwei Indizes für das Dataset „Abteilung“ namens „deptIndex1“ und „deptIndex2“ und einen Index für das Dataset „Mitarbeiter“ namens „empIndex“. Für jeden Index benötigen Sie eine entsprechende Indexkonfiguration (IndexConfig), um den Namen zusammen mit den Spaltenlisten für die indizierten und eingeschlossenen Spalten zu erfassen. Durch Ausführen der folgenden Zelle werden diese Indexkonfigurationen erstellt und in der Ausgabe aufgelistet.
+* Einen Spark-Datenrahmen, der auf die zu indexierenden Daten verweist.
+* Ein Indexkonfigurationsobjekt (IndexConfig), das den Indexnamen sowie die indizierten und eingeschlossenen Spalten des Index angibt.
+
+Sie beginnen damit, drei Hyperspace-Indizes für die Beispieldaten zu erstellen: zwei Indizes für das Abteilungsdataset namens „deptIndex1“ und „deptIndex2“ und einen Index für das Mitarbeiterdataset namens „empIndex“. Für jeden Index benötigen Sie eine entsprechende Indexkonfiguration (IndexConfig), um den Namen zusammen mit den Spaltenlisten für die indizierten und eingeschlossenen Spalten zu erfassen. Durch Ausführen der folgenden Zelle werden diese Indexkonfigurationen erstellt und in der Ausgabe aufgelistet.
 
 > [!Note]
 > Eine Indexspalte ist eine Spalte, die in Ihren Filtern oder Joinbedingungen angezeigt wird. Eine eingeschlossene Spalte ist eine Spalte, die in Ihrer Auswahl bzw. Ihrem Projekt aufgeführt wird.
@@ -454,8 +461,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
-Jetzt erstellen Sie drei Indizes mithilfe Ihrer Indexkonfigurationen. Zu diesem Zweck rufen Sie den Befehl „createIndex“ für unsere Hyperspace-Instanz auf. Dieser Befehl erfordert eine Indexkonfiguration und den Datenrahmen, der die zu indizierenden Zeilen enthält. Die Ausführung der folgenden Zelle erstellt drei Indizes.
+Jetzt erstellen Sie drei Indizes mithilfe Ihrer Indexkonfigurationen. Zu diesem Zweck rufen Sie den Befehl „createIndex“ für unsere Hyperspace-Instanz auf. Dieser Befehl erfordert eine Indexkonfiguration und den Datenrahmen, der die zu indizierenden Zeilen enthält. Bei Ausführung der folgenden Zelle werden drei Indizes erstellt.
 
 :::zone pivot = "programming-language-scala"
 
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>Indizes auflisten
 
-Der folgende Code zeigt, wie Sie alle verfügbaren Indizes in einer Hyperspace-Instanz auflisten können. Er verwendet die API „Indizes“, die Informationen über vorhandene Indizes als Spark-Datenrahmen zurückgibt, sodass Sie zusätzliche Vorgänge ausführen können. Sie können z. B. gültige Vorgänge für diesen Datenrahmen aufrufen, um seinen Inhalt zu prüfen oder ihn weiter zu analysieren (z. B. bestimmte Indizes filtern oder sie nach einer gewünschten Eigenschaft gruppieren).
+Der folgende Code zeigt, wie Sie alle verfügbaren Indizes in einer Hyperspace-Instanz auflisten können. Er verwendet die API „Indizes“, die Informationen über vorhandene Indizes als Spark-Datenrahmen zurückgibt, sodass Sie zusätzliche Vorgänge ausführen können. 
 
-Die folgende Zelle verwendet die „show“-Aktion des Datenrahmens, um die Zeilen vollständig auszugeben und Details unserer Indizes in tabellarischer Form anzuzeigen. Für jeden Index können Sie alle Informationen anzeigen, die Hyperspace über ihn in den Metadaten gespeichert hat. Sie werden sofort Folgendes bemerken:
+Sie können z. B. gültige Vorgänge für diesen Datenrahmen aufrufen, um seinen Inhalt zu prüfen oder ihn weiter zu analysieren (z. B. bestimmte Indizes filtern oder sie nach einer gewünschten Eigenschaft gruppieren).
 
-* „config.indexName“, „config.indexedColumns“, „config.includedColumns“ und „status.status“ sind die Felder, auf die sich ein Benutzer normalerweise bezieht.
-* „dfSignature“ wird automatisch vom Hyperspace generiert und ist für jeden Index eindeutig. Hyperspace verwendet diese Signatur intern, um den Index zu verwalten und zur Abfragezeit zu verwerten.
+Die folgende Zelle verwendet die show-Aktion des Datenrahmens, um die Zeilen vollständig auszugeben und Details der Indizes in tabellarischer Form anzuzeigen. Für jeden Index können Sie alle Informationen anzeigen, die Hyperspace über ihn in den Metadaten gespeichert hat. Sie werden sofort Folgendes bemerken:
 
-In der folgenden Ausgabe sollten alle drei Indizes den Status „AKTIV“ aufweisen, und ihr Name, die indizierten Spalten und die eingeschlossenen Spalten sollten mit dem übereinstimmen, was wir oben in den Indexkonfigurationen definiert haben.
+* „config.indexName“, „config.indexedColumns“, „config.includedColumns“ und „status.status“ sind die Felder, auf die ein Benutzer normalerweise verweist.
+* „dfSignature“ wird automatisch von Hyperspace generiert und ist für jeden Index eindeutig. Hyperspace verwendet diese Signatur intern, um den Index zu verwalten und zur Abfragezeit zu verwerten.
+
+
+In der folgenden Ausgabe sollten alle drei Indizes den Status „AKTIV“ aufweisen, und ihr Name, die indizierten Spalten und die eingeschlossenen Spalten sollten mit dem übereinstimmen, was Sie oben in den Indexkonfigurationen definiert haben.
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,9 +563,11 @@ Ergebnis:
 
 ## <a name="delete-indexes"></a>Indizes löschen
 
-Sie können einen bestehenden Index löschen, indem Sie die API „deleteIndex“ verwenden und den Indexnamen angeben. Beim Löschen des Index wird ein vorläufiger Löschvorgang durchgeführt: Es wird hauptsächlich der Status des Index in den Hyperspace-Metadaten von „AKTIV“ auf „GELÖSCHT“ aktualisiert. Dadurch wird der gelöschte Index von jeder zukünftigen Abfrageoptimierung ausgeschlossen und Hyperspace wählt diesen Index nicht mehr für eine Abfrage aus. Indexdateien für einen gelöschten Index bleiben jedoch weiterhin verfügbar (da es sich um ein vorläufiges Löschen handelt), sodass der Index auf Wunsch des Benutzers wiederhergestellt werden kann.
+Sie können einen bestehenden Index löschen, indem Sie die API „deleteIndex“ verwenden und den Indexnamen angeben. Beim Löschen des Index wird ein vorläufiger Löschvorgang durchgeführt: Es wird hauptsächlich der Status des Index in den Hyperspace-Metadaten von „AKTIV“ auf „GELÖSCHT“ aktualisiert. Dadurch wird der gelöschte Index von jeder zukünftigen Abfrageoptimierung ausgeschlossen und Hyperspace wählt diesen Index nicht mehr für eine Abfrage aus. 
 
-Die folgende Zelle löscht den Index namens „deptIndex2“ und listet danach Hyperspace-Metadaten auf. Die Ausgabe sollte der obigen Zelle für „Indizes auflisten“ ähnlich sein, mit Ausnahme von „deptIndex2“, dessen Status jetzt in „GELÖSCHT“ geändert werden sollte.
+Indexdateien für einen gelöschten Index bleiben jedoch weiterhin verfügbar (da es sich um ein vorläufiges Löschen handelt), sodass der Index auf Wunsch des Benutzers wiederhergestellt werden kann.
+
+Die folgende Zelle löscht den Index „deptIndex2“ und listet danach Hyperspace-Metadaten auf. Die Ausgabe sollte der obigen Zelle für „Indizes auflisten“ ähnlich sein, mit Ausnahme von „deptIndex2“, dessen Status jetzt in „GELÖSCHT“ geändert werden sollte.
 
 :::zone pivot = "programming-language-scala"
 
@@ -666,7 +677,7 @@ Ergebnis:
 
 ## <a name="vacuum-indexes"></a>Indizes bereinigen
 
-Sie können einen endgültigen Löschvorgang durchführen, d. h. Dateien und den Metadateneintrag für einen gelöschten Index mithilfe des Befehls „vacuumIndex“ vollständig entfernen. Einmal durchgeführt, kann diese Aktion nicht rückgängig gemacht werden, da sie alle Indexdateien physisch löscht (weshalb es sich um einen endgültigen Löschvorgang handelt).
+Sie können einen endgültigen Löschvorgang durchführen. Damit werden die Dateien und der Metadateneintrag für einen gelöschten Index mithilfe des Befehls **vacuumIndex** vollständig entfernt. Diese Aktion kann nicht rückgängig gemacht werden. Sie löscht alle Indexdateien physisch und wird deshalb als endgültiger Löschvorgang bezeichnet.
 
 Die folgende Zelle bereinigt den Index „deptIndex2“ und zeigt nach dem Bereinigen Hyperspace-Metadaten an. Sie sollten Metadateneinträge für die beiden Indizes „deptIndex1“ und „empIndex“ sehen, beide mit dem Status „AKTIV“, und keinen Eintrag für „deptIndex2“.
 
@@ -711,13 +722,14 @@ Ergebnis:
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>Hyperspace aktivieren/deaktivieren
+## <a name="enable-or-disable-hyperspace"></a>Aktivieren/deaktivieren von Hyperspace
 
 Hyperspace bietet APIs zum Aktivieren oder Deaktivieren der Indexnutzung mit Spark.
 
-Mithilfe des Befehls „enableHyperspace“ werden die Hyperspace-Optimierungsregeln für den Spark-Optimierer sichtbar, und sie verwerten vorhandene Hyperspace-Indizes zur Optimierung der Benutzerabfragen.
-Durch die Verwendung des Befehls „disableHyperspace“ gelten die Hyperspace-Regeln während der Abfrageoptimierung nicht mehr. Sie sollten beachten, dass die Deaktivierung von Hyperspace keine Auswirkungen auf erstellte Indizes hat, da diese unverändert bleiben.
-Die folgende Zelle zeigt, wie Sie Hyperspace mithilfe dieser Befehle aktivieren oder deaktivieren können. Die Ausgabe zeigt lediglich einen Verweis auf die vorhandene Spark-Sitzung, deren Konfiguration aktualisiert wird.
+* Mithilfe des Befehls **enableHyperspace** werden die Hyperspace-Optimierungsregeln für den Spark-Optimierer sichtbar, und sie nutzen vorhandene Hyperspace-Indizes zur Optimierung der Benutzerabfragen.
+* Bei Verwendung des Befehls **disableHyperspace** gelten die Hyperspace-Regeln während der Abfrageoptimierung nicht mehr. Das Deaktivieren von Hyperspace hat keine Auswirkungen auf erstellte Indizes, da diese unverändert bleiben.
+
+Die folgende Zelle zeigt, wie Sie Hyperspace mithilfe dieser Befehle aktivieren oder deaktivieren können. Die Ausgabe zeigt einen Verweis auf die vorhandene Spark-Sitzung, deren Konfiguration aktualisiert wird.
 
 :::zone pivot = "programming-language-scala"
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 Gegenwärtig verfügt Hyperspace über Regeln zur Nutzung von Indizes für zwei Gruppen von Abfragen:
 
 * Auswahlabfragen mit Filterprädikaten für Lookup oder Bereichsauswahl.
-* Verknüpfen Sie Abfragen mit einem Gleichheits-Join-Prädikat (d. h. „Equi-joins“).
+* Verknüpfen Sie Abfragen mit einem Gleichheits-Joinprädikat (d. h. equijoins – Gleichheitsverknüpfung).
 
 ## <a name="indexes-for-accelerating-filters"></a>Indizes zur Beschleunigung von Filtern
 
-Die erste Beispielabfrage führt einen Lookup für Datensätze vom Typ „Abteilung“ durch (siehe folgende Zelle). In SQL sieht diese Abfrage wie folgt aus:
+Die erste Beispielabfrage führt einen Lookup für Datensätze zur Abteilung durch, wie in der folgenden Zelle gezeigt. In SQL sieht die Abfrage folgendermaßen aus:
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-Das Ergebnis der Ausführung der folgenden Zelle zeigt:
+Die Ausgabe der Ausführung der folgenden Zelle zeigt:
 
 * Abfrageergebnis, bei dem es sich um einen einzelnen Abteilungsnamen handelt.
 * Abfrageplan, den Spark zur Ausführung der Abfrage verwendet hat.
 
-Im Abfrageplan zeigt der „FileScan“-Operator am unteren Rand des Plans die Datenquelle an, aus der die Datensätze gelesen wurden. Der Speicherort dieser Datei gibt den Pfad zur neuesten Version des Index „deptIndex1“ an. Dies zeigt, dass Spark gemäß der Abfrage und mithilfe der Hyperspace-Optimierungsregeln beschlossen hat, den richtigen Index zur Runtime zu verwerten.
+Im Abfrageplan zeigt der **FileScan**-Operator am unteren Rand des Plans die Datenquelle an, aus der die Datensätze gelesen wurden. Der Speicherort dieser Datei gibt den Pfad zur neuesten Version des Index „deptIndex1“ an. Diese Informationen zeigen, dass Spark gemäß der Abfrage und mithilfe der Hyperspace-Optimierungsregeln zur Laufzeit beschlossen hat, den richtigen Index zu verwerten.
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-Das zweite Beispiel ist eine Bereichsauswahlabfrage für Datensätze vom Typ „Abteilung“. In SQL sieht diese Abfrage wie folgt aus:
+Das zweite Beispiel ist eine Bereichsauswahlabfrage für Datensätze vom Typ „Abteilung“. In SQL sieht die Abfrage folgendermaßen aus:
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-Ähnlich wie im ersten Beispiel zeigt die Ausgabe der folgenden Zelle die Abfrageergebnisse (Namen von zwei Abteilungen) und den Abfrageplan. Der Speicherort der Datendatei im FileScan-Operator zeigt, dass „deptIndex1“ zur Ausführung der Abfrage verwendet wurde.
+Ähnlich wie im ersten Beispiel zeigt die Ausgabe der folgenden Zelle die Abfrageergebnisse (Namen von zwei Abteilungen) und den Abfrageplan. Der Speicherort der Datendatei im **FileScan**-Operator zeigt, dass „deptIndex1“ zur Ausführung der Abfrage verwendet wurde.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,7 +1053,6 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
 Das dritte Beispiel ist eine Abfrage, die Abteilungs- und Mitarbeiterdatensätze über die Abteilungs-ID verknüpft. Die entsprechende SQL-Anweisung ist unten dargestellt:
 
 ```sql
@@ -1049,8 +1060,7 @@ SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-Die Ausgabe der Ausführung der folgenden Zelle zeigt die Abfrageergebnisse, d. h. die Namen von 14 Mitarbeitern und den Namen der Abteilung, in der die einzelnen Mitarbeiter arbeiten. Der Abfrageplan ist ebenfalls in der Ausgabe enthalten. Beachten Sie, wie die Dateispeicherorte für zwei FileScan-Operatoren zeigen, dass Spark die Indizes „empIndex“ und „deptIndex1“ verwendet hat, um die Abfrage auszuführen.
+Die Ausgabe der Ausführung der folgenden Zelle zeigt die Abfrageergebnisse. Dies sind die Namen von 14 Mitarbeitern und der Name der Abteilung, in der die einzelnen Mitarbeiter arbeiten. Der Abfrageplan ist ebenfalls in der Ausgabe enthalten. Beachten Sie, wie die Dateispeicherorte für zwei **FileScan**-Operatoren zeigen, dass Spark die Indizes „empIndex“ und „deptIndex1“ verwendet hat, um die Abfrage auszuführen.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>API erläutern
 
-Indizes sind hervorragend, aber woher wissen Sie, ob sie verwendet werden? Hyperspace ermöglicht es Benutzern, ihren ursprünglichen Plan mit dem aktualisierten indexabhängigen Plan zu vergleichen, bevor sie ihre Abfrage ausführen. Sie haben die Möglichkeit, zur Anzeige der Befehlsausgabe zwischen den Modi HTML/Klartext/Konsole zu wählen.
+Indizes sind hervorragend, aber woher wissen Sie, ob sie verwendet werden? Hyperspace ermöglicht es Benutzern, ihren ursprünglichen Plan mit dem aktualisierten indexabhängigen Plan zu vergleichen, bevor sie ihre Abfrage ausführen. Sie haben die Möglichkeit, zur Anzeige der Befehlsausgabe zwischen den Modi HTML, Klartext oder Konsole zu wählen.
 
 Die folgende Zelle zeigt ein Beispiel mit HTML. Der hervorgehobene Abschnitt stellt den Unterschied zwischen ursprünglichen und aktualisierten Plänen zusammen mit den verwendeten Indizes dar.
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>Indizes aktualisieren
 
-Wenn sich die ursprünglichen Daten, für die ein Index erstellt wurde, ändern, erfasst der Index nicht mehr den neuesten Stand der Daten. Sie können einen solchen veralteten Index mithilfe des Befehls „refreshIndex“ aktualisieren. Dadurch wird der Index vollständig neu erstellt und gemäß den neuesten Datensätzen aktualisiert (keine Sorge, wir zeigen Ihnen, wie Sie Ihren Index in anderen Notebooks inkrementell aktualisieren können).
+Wenn sich die ursprünglichen Daten, für die ein Index erstellt wurde, ändern, erfasst der Index nicht mehr den neuesten Stand der Daten. Sie können einen solchen veralteten Index mithilfe des Befehls **refreshIndex** aktualisieren. Dieser Befehl bewirkt, dass der Index vollständig neu erstellt und entsprechend den neuesten Datensätzen aktualisiert wird. In anderen Notebooks erfahren Sie, wie Sie Ihren Index inkrementell aktualisieren.
 
 Die beiden folgenden Zellen zeigen ein Beispiel für dieses Szenario:
 
-* Die erste Zelle fügt zwei weitere Abteilungen zu den ursprünglichen Abteilungsdaten hinzu. Sie liest die Liste der Abteilungen und gibt sie aus, um zu überprüfen, ob neue Abteilungen ordnungsgemäß hinzugefügt wurden. Die Ausgabe zeigt insgesamt sechs Abteilungen: vier alte und zwei neue. Der Aufruf von „refreshIndex“ aktualisiert „deptIndex1“, sodass der Index neue Abteilungen erfasst.
-* In der zweiten Zelle wird unser Abfragebeispiel für die Bereichsauswahl ausgeführt. Die Ergebnisse sollten jetzt vier Abteilungen enthalten: zwei haben wir bereits bei der obigen Abfrage gesehen, und zwei sind die neuen Abteilungen, die wir gerade hinzugefügt haben.
+* Die erste Zelle fügt den ursprünglichen Abteilungsdaten zwei weitere Abteilungen hinzu. Sie liest eine Liste der Abteilungen und gibt sie aus, um zu überprüfen, ob die neuen Abteilungen ordnungsgemäß hinzugefügt wurden. Die Ausgabe zeigt insgesamt sechs Abteilungen: vier alte und zwei neue. Der Aufruf von **refreshIndex** aktualisiert „deptIndex1“, sodass der Index neue Abteilungen erfasst.
+* In der zweiten Zelle wird das Abfragebeispiel für die Bereichsauswahl ausgeführt. Die Ergebnisse sollten jetzt vier Abteilungen enthalten: Zwei haben Sie bereits bei der obigen Abfrage gesehen, und zwei sind die neuen Abteilungen, die Sie gerade hinzugefügt haben.
 
 ### <a name="specific-index-refresh"></a>Spezifische Indexaktualisierung
 
