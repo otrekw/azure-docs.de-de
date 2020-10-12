@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706318"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531240"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
 
@@ -38,12 +38,12 @@ Zum Schützen Ihrer Cloudressource richten Sie eine Anspruchsregel ein, damit Ac
 
 5. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln im Dropdownmenü die Option **Passthrough oder eingehenden Anspruch filtern**, und klicken Sie auf **Weiter**.
 
-   ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/trustedip3.png)
+   ![Screenshot des Assistenten zum Hinzufügen von Transformationsanspruchsregeln, in dem Sie eine Anspruchsregelvorlage auswählen](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Benennen Sie die Regel. 
 7. Wählen Sie **Authentifizierungsmethodenreferenzen** als eingehenden Anspruchstyp aus.
 8. Wählen Sie **Durchlauf aller Anspruchswerte**.
-    ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/configurewizard.png)
+    ![Screenshot des Assistenten zum Hinzufügen von Transformationsanspruchsregeln, in dem Sie „Alle Anspruchswerte zulassen“ auswählen](./media/howto-mfa-adfs/configurewizard.png)
 9. Klicken Sie auf **Fertig stellen**. Schließen Sie die AD FS-Verwaltungskonsole.
 
 ## <a name="trusted-ips-for-federated-users"></a>Vertrauenswürdige IPs für Partnerbenutzer
@@ -63,7 +63,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Erstellen Sie zwei A
 4. Klicken Sie unter „Ausstellungstransformationsregeln“ auf **Regel hinzufügen**.
    ![Hinzufügen einer Anspruchsregel](./media/howto-mfa-adfs/trustedip2.png)
 5. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln im Dropdownmenü die Option **Passthrough oder eingehenden Anspruch filtern**, und klicken Sie auf **Weiter**.
-   ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/trustedip3.png)
+   ![Screenshot des Assistenten zum Hinzufügen von Transformationsanspruchsregeln, in dem Sie „Passthrough oder eingehenden Anspruch filtern“ auswählen](./media/howto-mfa-adfs/trustedip3.png)
 6. Geben Sie der Regel im Feld neben „Anspruchsregelname“ einen Namen. Beispiel: InsideCorpNet.
 7. Wählen Sie in der Dropdownliste neben „Eingehender Anspruchstyp“ die Option **Innerhalb des Unternehmensnetzwerks**.
    ![Hinzufügen eines Anspruchs vom Typ „Innerhalb des Unternehmensnetzwerks“](./media/howto-mfa-adfs/trustedip4.png)

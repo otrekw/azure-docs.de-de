@@ -1,16 +1,16 @@
 ---
 title: Zusammenstellen von Linux-VMs
-description: Erfahren Sie, wie das Zusammenstellen von Azure-VM-Ressourcen die Latenz verbessern kann.
+description: Erfahren Sie, wie das Zusammenstellen von Azure-VM-Ressourcen für Linux die Latenz verbessern kann.
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279722"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>Zusammenstellen von Ressourcen für geringere Latenz
 

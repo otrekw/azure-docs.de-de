@@ -9,36 +9,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276939"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell
 
-Wenn Sie das benutzerdefinierte Modell zur Formularerkennung verwenden, stellen Sie Ihre eigenen Trainingsdaten bereit, damit das Modell mit Ihren branchenspezifischen Formularen trainiert werden kann. 
+Wenn Sie das benutzerdefinierte Modell zur Formularerkennung verwenden, stellen Sie dem Vorgang [Trainieren eines benutzerdefinierten Modells](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) Ihre eigenen Trainingsdaten bereit, sodass das Modell mit Ihren branchenspezifischen Formularen trainiert werden kann. Folgen Sie diesem Leitfaden, um zu erfahren, wie Daten für ein effektives Training des Modells gesammelt und vorbereitet werden können.
 
 Wenn Sie das Modell ohne manuelle Bezeichnungen trainieren, können Sie fünf ausgefüllte Formulare oder ein leeres Formular (der Dateiname muss das Wort „empty“ enthalten) und zwei ausgefüllte Formulare verwenden. Selbst wenn Sie über genügend ausgefüllte Formulare verfügen, kann das Hinzufügen eines leeren Formulars zu Ihrem Trainingsdataset die Genauigkeit des Modells verbessern.
 
 Wenn Sie manuell bezeichnete Trainingsdaten verwenden möchten, müssen Sie mit mindestens fünf ausgefüllten Formularen desselben Typs beginnen. Sie können trotzdem nicht bezeichnete Formulare und ein leeres Formular zusätzlich zum erforderlichen Dataset verwenden.
 
+## <a name="custom-model-input-requirements"></a>Eingabeanforderungen für benutzerdefinierte Modelle
+
+Stellen Sie zunächst sicher, dass Ihr Trainingsdataset den Eingabeanforderungen für die Formularerkennung entspricht.
+
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
+
 ## <a name="training-data-tips"></a>Tipps zu Trainingsdaten
 
-Es ist wichtig, ein Dataset zu verwenden, das für das Trainieren optimiert ist. Verwenden Sie die folgenden Tipps, um sicherzustellen, dass Sie die besten Ergebnisse aus dem Vorgang [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) (Benutzerdefiniertes Modell trainieren)-erzielen:
+Befolgen Sie diese zusätzlichen Tipps, um Ihr Dataset für das Training weiter zu optimieren.
 
 * Verwenden Sie nach Möglichkeit textbasierte PDF-Dokumente anstelle von bildbasierten Dokumenten. Gescannte PDF-Dateien werden als Bilder behandelt.
 * Verwenden Sie als ausgefüllte Formulare Exemplare, in denen alle Felder ausgefüllt sind.
 * Verwenden Sie Formulare mit verschiedenen Werten in jedem Feld.
 * Wenn Ihre Formularbilder eine mäßige Qualität aufweisen, verwenden Sie ein größeres Dataset (beispielsweise 10–15 Bilder).
-* Die Gesamtgröße des Trainingsdataset kann bis zu 500 Seiten betragen.
-
-## <a name="general-input-requirements"></a>Allgemeine Eingabeanforderungen
-
-Achten Sie darauf, dass Ihr Trainingsdataset auch den Eingabeanforderungen für alle Inhalte der Formularerkennung genügt. 
-
-[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>Hochladen Ihrer Trainingsdaten
 
@@ -73,7 +72,12 @@ Wenn Sie dem Anforderungstext den folgenden Inhalt hinzufügen, wird die API mit
 
 Nachdem Sie nun gelernt haben, wie Sie ein Trainingsdataset erstellen, folgen Sie den Anweisungen in einem Schnellstart, um ein benutzerdefiniertes Formularerkennungsmodell zu trainieren und es mit Ihren Formularen zu verwenden.
 
+* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der Clientbibliothek](./quickstarts/client-library.md)
 * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL](./quickstarts/curl-train-extract.md)
 * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](./quickstarts/python-train-extract.md)
 * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](./quickstarts/label-tool.md)
 * [Trainieren mit Bezeichnungen mit der REST-API und Python](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Was ist die Formularerkennung?](./overview.md)

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333102"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Problembehandlung von Azure SQL Edge-Bereitstellungen 
 
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 Nun können Sie Befehle wie über das Terminal innerhalb des Containers ausführen. Wenn Sie fertig sind, geben Sie `exit` ein. Dadurch wird die interaktive Befehlssitzung beendet, aber der Container wird weiter ausgeführt.
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>Behandeln von Problemen mit Datenstreaming
-
-Standardmäßig werden die Protokolle der Azure SQL Edge-Streaming-Engine in eine Datei namens `current` geschrieben, die sich im Verzeichnis **/var/opt/MSSQL/Log/Services/00000001-0000-0000-0000-000000000000** befindet. Auf die Datei kann entweder direkt über das zugeordnete Volume oder den zugeordneten Datenvolumecontainer oder dadurch zugegriffen werden, dass eine interaktive Eingabeaufforderungssitzung für den SQL Edge-Container gestartet wird. 
-
-Außerdem können Sie, wenn Sie über die Clienttools eine Verbindung mit der SQL Edge-Instanz herstellen können, den folgenden T-SQL-Befehl verwenden, um auf das aktuelle Protokoll der Streaming-Engine zuzugreifen. 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>Aktivieren der ausführlichen Protokollierung
 
 Wenn die Standardprotokollebene für die Streaming-Engine nicht genügend Informationen bereitstellt, kann die Debugprotokollierung für die Streaming-Engine in SQL Edge aktiviert werden. Um die Debugprotokollierung zu aktivieren, fügen Sie Ihrer SQL Edge-Bereitstellung die Umgebungsvariable `RuntimeLogLevel=debug` hinzu. Nach dem Aktivieren der Debugprotokollierung sollten Sie versuchen, das Problem zu reproduzieren, und überprüfen Sie die Protokolle hinsichtlich relevanter Meldungen oder Ausnahmen. 
 
+> [!NOTE]
+> Die Option für die ausführliche Protokollierung sollte nur für die Problembehandlung und nicht für reguläre Produktionsworkloads verwendet werden. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
