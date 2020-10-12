@@ -7,16 +7,16 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325792"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
+# <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions
 
-Dieser Artikel erläutert das Arbeiten mit Triggern mit Timer in Azure Functions. Mit einem Trigger mit Timer können Sie eine Funktion nach einem Zeitplan ausführen. 
+Dieser Artikel erläutert das Arbeiten mit Triggern mit Timer in Azure Functions. Mit einem Trigger mit Timer können Sie eine Funktion nach einem Zeitplan ausführen.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -80,6 +80,21 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Ein[Timerobjekt](#usage) wird an die Funktion übergeben.
@@ -111,9 +126,44 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Im folgenden Beispiel wird veranschaulicht, wie die Dateien *function.json* und *run.ps1* für einen Timertrigger in [PowerShell](./functions-reference-powershell.md) konfiguriert werden.
+
+```json
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+# Get the current universal time in the default string format.
+$currentUTCtime = (Get-Date).ToUniversalTime()
+
+# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+if ($Timer.IsPastDue) {
+    Write-Host "PowerShell timer is running late!"
+}
+
+# Write an information log with the current time.
+Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+```
+
+Eine Instanz des [timer-Objekts](#usage) wird als erstes Argument an die Funktion übergeben.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Im folgenden Beispiel wird eine Triggerbindung mit Timer verwendet, deren Konfiguration in der Datei *function.json* beschrieben ist. Die eigentliche [Python-Funktion](functions-reference-python.md), von der die Bindung genutzt wird, ist in der Datei *__init__.py* beschrieben. Das an die Funktion übergebene Objekt hat den Typ [azure.functions.TimerRequest-Objekt](/python/api/azure-functions/azure.functions.timerrequest). Mit der Funktionslogik werden Daten in die Protokolle geschrieben, um anzugeben, ob der aktuelle Aufruf aufgrund eines versäumten Zeitplantermins erfolgt. 
+Im folgenden Beispiel wird eine Triggerbindung mit Timer verwendet, deren Konfiguration in der Datei *function.json* beschrieben ist. Die eigentliche [Python-Funktion](functions-reference-python.md), von der die Bindung genutzt wird, ist in der Datei *__init__.py* beschrieben. Das an die Funktion übergebene Objekt hat den Typ [azure.functions.TimerRequest-Objekt](/python/api/azure-functions/azure.functions.timerrequest). Mit der Funktionslogik werden Daten in die Protokolle geschrieben, um anzugeben, ob der aktuelle Aufruf aufgrund eines versäumten Zeitplantermins erfolgt.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -145,21 +195,6 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
@@ -188,14 +223,6 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Attribute werden von JavaScript nicht unterstützt.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Attribute werden von Python nicht unterstützt.
-
 # <a name="java"></a>[Java](#tab/java)
 
 Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
@@ -210,6 +237,18 @@ public void keepAlive(
      context.getLogger().info("Timer is triggered: " + timerInfo);
 }
 ```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribute werden von PowerShell nicht unterstützt.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
 
 ---
 
@@ -229,7 +268,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Es wird empfohlen, **runOnStartup** in der Produktionsumgebung nicht auf `true` festzulegen. Bei Verwendung dieser Einstellung wird der Code zu schwer vorhersehbaren Zeiten ausgeführt. In bestimmten Produktionseinstellungen können diese zusätzlichen Ausführungen zu deutlich höheren Kosten für Anwendungen führen, die in nutzungsbasierten Tarifen gehostet werden. So wird z. B. der Trigger immer dann mit aktiviertem **runOnStartup** aufgerufen, wenn Ihre Funktions-App skaliert wird. Stellen Sie sicher, dass Sie das Produktionsverhalten Ihrer Funktionen vollständig verstehen, bevor Sie **runOnStartup** in der Produktionsumgebung aktivieren.   
+> Es wird empfohlen, **runOnStartup** in der Produktionsumgebung nicht auf `true` festzulegen. Bei Verwendung dieser Einstellung wird der Code zu schwer vorhersehbaren Zeiten ausgeführt. In bestimmten Produktionseinstellungen können diese zusätzlichen Ausführungen zu deutlich höheren Kosten für Anwendungen führen, die in nutzungsbasierten Tarifen gehostet werden. So wird z. B. der Trigger immer dann mit aktiviertem **runOnStartup** aufgerufen, wenn Ihre Funktions-App skaliert wird. Stellen Sie sicher, dass Sie das Produktionsverhalten Ihrer Funktionen vollständig verstehen, bevor Sie **runOnStartup** in der Produktionsumgebung aktivieren.
 
 ## <a name="usage"></a>Verwendung
 
@@ -250,8 +289,7 @@ Bei Aufruf einer Trigger-mit-Timer-Funktion wird ein Timerobjekt an die Funktion
 
 Die Eigenschaft `IsPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf später als geplant erfolgt. Beispielsweise kann ein Neustart der Funktionen-App dazu führen, dass ein Aufruf nicht erkannt wird.
 
-
-## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke 
+## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke
 
 Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um NCRONTAB-Ausdrücke zu interpretieren. Ein NCRONTAB-Ausdruck ähnelt einem CRON-Ausdruck, enthält jedoch am Anfang ein zusätzliches sechstes Feld für sekundengenaue Zeitangaben:
 
@@ -300,12 +338,12 @@ Im Gegensatz zu einem CRON-Ausdruck gibt ein `TimeSpan`-Wert das Zeitintervall z
 
 Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `hh:mm:ss`, wenn `hh` kleiner ist als 24. Wenn die ersten beiden Ziffern 24 oder höher sind, ist das Format `dd:hh:mm`. Im Folgenden finden Sie einige Beispiele:
 
-|Beispiel |Auslösung  |
-|---------|---------|
-|"01:00:00" | stündlich        |
-|"00:01:00"|minütlich         |
-|"24:00:00" | alle 24 Tage        |
-|„1.00:00:00“ | täglich        |
+| Beispiel      | Auslösung |
+|--------------|----------------|
+| "01:00:00"   | stündlich     |
+| "00:01:00"   | minütlich   |
+| "24:00:00"   | alle 24 Tage  |
+| „1.00:00:00“ | täglich      |
 
 ## <a name="scale-out"></a>Horizontales Skalieren
 

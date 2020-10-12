@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320046"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Korrigieren von geänderten Standardregeln in Azure AD Connect
 
@@ -73,7 +73,7 @@ Wenn die Erweiterungen nicht funktionieren, versuchen Sie, zwei neue Synchronisi
 #### <a name="add-an-inbound-sync-rule"></a>Hinzufügen einer Synchronisierungsregel für eingehenden Datenverkehr
 Eine Synchronisierungsregel für eingehenden Datenverkehr bedeutet, dass die Quelle für das Attribut ein Connectorbereich und das Ziel der Metaverse ist. Wenn beispielsweise ein neuer Attributfluss vom lokalen Active Directory nach Azure Active Directory eingerichtet werden soll, erstellen Sie eine neue Synchronisierungsregel für eingehenden Datenverkehr. Starten Sie den **Synchronisierungsregel-Editor**, wählen Sie **Eingehend** als Richtung aus, und wählen Sie **Neue Regel hinzufügen** aus. 
 
- ![Synchronisierungsregel-Editor](media/how-to-connect-fix-default-rules/default3a.png)
+ ![Screenshot: „Synchronisierungsregel-Editor“ mit den ausgewählten Optionen „Eingehend“ und „Neue Regel hinzufügen“](media/how-to-connect-fix-default-rules/default3a.png)
 
 Benennen Sie die Regel nach Ihren eigenen Namenskonventionen. Hier verwenden wir **Custom In from AD - User**. Das heißt, dass es sich um eine benutzerdefinierte Regel für eingehenden Datenverkehr aus dem Active Directory-Connectorbereich zum Metaverse handelt.   
 
@@ -176,7 +176,7 @@ Wählen Sie **Vorschau** aus.
 
 Wählen Sie im Vorschaufenster **Vorschau generieren** und **Importattributfluss** im linken Bereich aus.
 
-![Vorschau](media/how-to-connect-fix-default-rules/default14.png)
+![Screenshot: Fenster „Vorschau“ mit den ausgewählten Optionen „Import-Attributfluss“ und „Vorschau generieren“](media/how-to-connect-fix-default-rules/default14.png)
  
 Hier stellen Sie fest, dass die neu hinzugefügte Regel für das Objekt ausgeführt wird und dass das Attribut `cloudFiltered` auf „True“ festgelegt wurde.
 

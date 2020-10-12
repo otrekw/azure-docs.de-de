@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320811"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Rollenbasierte Zugriffssteuerung in Kubernetes auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -91,25 +91,7 @@ Nachfolgend finden Sie ein Diagramm, das die Implementierung von RBAC auf einem 
 
 In diesem Diagramm haben Alice, Bob und Chuck nur Zugriff auf zugewiesene Benutzernamespaces, in diesem Fall `ns1`, `ns2` und `ns3`. Innerhalb dieser Namespaces haben sie Administratorzugriff. Der Clusteradministrator hat hingegen Administratorzugriff auf Systemnamespaces und clusterweite Ressourcen.
 
-Mit `kubectl`-Befehlen können Sie Namespaces und Benutzer erstellen, Benutzer zu Namespaces zuweisen oder `kubeconfig`-Dateien herunterladen. Allgemein sieht der Workflow so aus:
-
-1. Erstellen Sie einen Namespace und einen Benutzer.  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. Erstellen Sie einen Benutzer.  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. Ordnen Sie den Namespace dem Benutzer zu, den Sie erstellt haben.  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. Speichern Sie die Benutzerkonfiguration in `C:\Users\<username>\.kube`.  
-
-5. Installieren Sie `kubectl`, und beginnen Sie mit dem Bereitstellen von Anwendungen in `kubectl`. 
-
-Detaillierte Anweisungen finden Sie unter [Zugreifen auf Kubernetes-Cluster über kubectl auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+Als Benutzer können Sie Namespaces und Benutzer erstellen, Benutzer zu Namespaces zuweisen oder `kubeconfig`-Dateien herunterladen. Detaillierte Anweisungen finden Sie unter [Zugreifen auf Kubernetes-Cluster über kubectl auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
 Wenn Sie mit Namespaces und Benutzern auf Ihren Azure Stack Edge Pro-Geräten arbeiten, gelten die folgenden Vorbehalte:

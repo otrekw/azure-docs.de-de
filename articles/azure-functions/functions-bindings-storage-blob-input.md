@@ -1,17 +1,17 @@
 ---
 title: Azure Blob Storage-Eingabebindung für Azure Functions
-description: Erfahren Sie, wie Sie Azure Blob Storage-Daten für eine Azure-Funktion bereitstellen.
+description: Erfahren Sie, wie Sie Azure Blob Storage-Eingabebindungsdaten für eine Azure-Funktion bereitstellen.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: de590af49e39832a52bf733319b86300ecab2a34
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213284"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325775"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob Storage-Eingabebindung für Azure Functions
 

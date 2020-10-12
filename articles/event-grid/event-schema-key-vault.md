@@ -3,12 +3,12 @@ title: Azure Key Vault als Event Grid-Quelle
 description: Beschreibt die Eigenschaften und das Schema, die für Azure Key Vault-Ereignisse im Azure Event Grid verfügbar sind
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324075"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid-Quelle
 
@@ -78,17 +78,12 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 |Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Überwachen von Key Vault-Ereignissen mit Azure Event Grid](../key-vault/general/event-grid-overview.md) | Übersicht über die Integration von Key Vault in Event Grid. |
-| [Tutorial: Erstellen und Überwachen von Key Vault-Ereignissen mit Event Grid](../key-vault/general/event-grid-tutorial.md) | Erfahren Sie, wie Sie Event Grid-Benachrichtigungen für Key Vault einrichten. |
+| [Tutorial: Erstellen und Überwachen von Key Vault-Ereignissen mit Event Grid](../key-vault/general/event-grid-logicapps.md) | Erfahren Sie, wie Sie Event Grid-Benachrichtigungen für Key Vault einrichten. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
-* Weitere Informationen zur Key Vault-Integration für Event Grid finden Sie unter [Überwachen von Key Vault mit Azure Event Grid](../key-vault/general/event-grid-overview.md).
-* Ein Tutorial zur Key Vault-Integration für Event Grid finden Sie unter [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid](../key-vault/general/event-grid-tutorial.md).
-* Weitere Anleitungen für Key Vault und Azure Automation finden Sie unter:
-    - [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
-    - [Überwachen von Key Vault mit Azure Event Grid](../key-vault/general/event-grid-overview.md)
-    - [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid](../key-vault/general/event-grid-tutorial.md)
-    - [Azure Automation – Übersicht](../automation/index.yml)
+* Weitere Informationen zu Key Vault finden Sie unter [Was ist Azure Key Vault?](../key-vault/general/overview.md)
+

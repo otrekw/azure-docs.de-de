@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: c11fd7a9cb6fdd3eb976d0b9e6a91fdc69bf9fba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320454"
 ---
 # <a name="system-tables-and-views"></a>Systemtabellen und Sichten
 
@@ -27,7 +27,7 @@ Sie können diese Tabellen nach der Anmeldung beim Koordinatorknoten mithilfe vo
 
 > [!NOTE]
 >
-> Hyperscale-Servergruppen, auf denen ältere Versionen der Citus-Engine ausgeführt werden, bieten möglicherweise nicht alle unten aufgeführten Tabellen.
+> Servergruppen mit Hyperscale (Citus), auf denen ältere Versionen der Citus-Engine ausgeführt werden, bieten möglicherweise nicht alle unten aufgeführten Tabellen.
 
 ### <a name="partition-table"></a>Partitionstabelle
 
@@ -524,5 +524,5 @@ In diesem Beispiel stammen die Abfragen vom Koordinator, aber die Sicht kann auc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie einige [Hyperscale-Funktionen](reference-hyperscale-functions.md) Systemtabellen ändern.
+* Erfahren Sie, wie einige [Funktionen von Hyperscale (Citus)](reference-hyperscale-functions.md) Systemtabellen ändern.
 * Machen Sie sich mit den Konzepten von [Knoten und Tabellen](concepts-hyperscale-nodes.md) vertraut.

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61442218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323956"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrieren von SIM-Daten in die Remoteüberwachungslösung
 
@@ -61,7 +61,7 @@ Folgende Konnektivitätsparameter werden veröffentlicht:
 * Netzbasierter Standort
 * Datenverbrauch
 
-![Dashboard](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
+![Screenshot des Fensters „Geräte-Explorer“ im Dashboard für die Azure IoT-Remoteüberwachung. Eine Zeile mit Gerätedetails zu „WeatherStation“ ist hervorgehoben.](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

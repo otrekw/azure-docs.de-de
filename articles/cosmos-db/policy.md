@@ -1,23 +1,26 @@
 ---
 title: Verwenden von Azure Policy zum Implementieren von Governance und Kontrollen für Azure Cosmos DB-Ressourcen
 description: Erfahren Sie, wie Sie Azure Policy zum Implementieren von Governance und Kontrollen für Azure Cosmos DB-Ressourcen verwenden.
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320896"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Verwenden von Azure Policy zum Implementieren von Governance und Kontrollen für Azure Cosmos DB-Ressourcen
 
 [Azure Policy](../governance/policy/overview.md) unterstützt das Erzwingen von Governancestandards für eine Organisation, mit denen die Ressourcencompliance bewertet und eine automatische Korrektur implementiert werden kann. Zu den gängigen Anwendungsfällen gehören Sicherheit, Kostenverwaltung und Konfigurationskonsistenz.
 
 Azure Policy bietet integrierte Richtliniendefinitionen. Sie können benutzerdefinierte Richtliniendefinitionen für Szenarien erstellen, die nicht durch die integrierten Richtliniendefinitionen abgedeckt werden. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
+
+> [!IMPORTANT]
+> Azure Policy wird auf Ressourcenanbieterebene für Azure-Dienste erzwungen. Über Cosmos DB-SDKs können die meisten Verwaltungsvorgänge für Datenbank-, Container- und Durchsatzressourcen ausgeführt werden. Diese umgehen den Cosmos DB-Ressourcenanbieter, sodass alle Richtlinien ignoriert werden, die mit Azure Policy erstellt wurden. Informationen zur Erzwingung von Richtlinien finden Sie unter [Verhindern von Änderungen aus den Azure Cosmos DB-SDKs](role-based-access-control.md#prevent-sdk-changes).
 
 ## <a name="assign-a-built-in-policy-definition"></a>Zuweisen einer integrierten Richtliniendefinition
 
@@ -123,7 +126,7 @@ Der Screenshot zeigt die folgenden Ergebnisse der Konformitätsauswertung für A
 - Null von zwei Konten entsprechen einer Richtlinie, die erfordert, dass das Konto für mehrere Schreibstandorte konfiguriert sein muss.
 - Null von zwei Konten entsprechen einer Richtlinie, wonach Ressourcen in zulässigen Azure-Regionen bereitgestellt wurden.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Aufgeführte Konformitätsergebnisse für Azure Policy-Zuweisungen":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Suchen integrierter Richtliniendefinitionen für Azure Cosmos DB":::
 
 Informationen zum Korrigieren nicht konformer Ressourcen finden Sie im Artikel zum [Korrigieren von Ressourcen mit Azure Policy](../governance/policy/how-to/remediate-resources.md).
 

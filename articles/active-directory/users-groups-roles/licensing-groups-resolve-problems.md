@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7006ecd760a886fdebe50becb2ab366ff79cf057
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319808"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -87,7 +87,7 @@ Stellen Sie zur Behebung dieses Problems sicher, dass der erforderliche Plan Ben
 
 ## <a name="usage-location-isnt-allowed"></a>Verwendungsstandort ist nicht zulässig
 
-**Problem:** Einige Microsoft-Dienste sind aufgrund der vor Ort geltenden Gesetze und Bestimmungen nicht an allen Standorten verfügbar. Um eine Lizenz einem Benutzer zuweisen können, müssen Sie zunächst die Eigenschaft **Usage location** (Verwendungsstandort) für den Benutzer angeben. Den Standort können Sie im Azure-Portal unter **Benutzer** > **Profil** > **Einstellungen** angeben.
+**Problem:** Einige Microsoft-Dienste sind aufgrund der vor Ort geltenden Gesetze und Bestimmungen nicht an allen Standorten verfügbar. Um eine Lizenz einem Benutzer zuweisen können, müssen Sie zunächst die Eigenschaft **Usage location** (Verwendungsstandort) für den Benutzer angeben. Den Standort können Sie im Azure-Portal unter **Benutzer** > **Profil** > **Bearbeiten** angeben.
 
 Wenn Azure AD versucht, einem Benutzer, dessen Verwendungsstandort nicht unterstützt wird, eine Gruppenlizenz zuzuweisen, tritt ein Fehler auf, der für den Benutzer aufgezeichnet wird.
 

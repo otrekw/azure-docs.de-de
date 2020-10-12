@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
-ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885294"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321423"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In diesem Artikel werden die Grundlagen zum Schutz der Datenschicht einer Anwendung mit [Azure SQL-Datenbank](sql-database-paas-overview.md) und [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) beschrieben. Die beschriebene Sicherheitsstrategie folgt dem Defense-in-Depth-Schichtenmodell, das in der folgenden Abbildung dargestellt ist und von außen nach innen durchlaufen wird:
 
-![sql security layer.png](./media/security-overview/sql-security-layer.png)
+![Diagramm des Defense-in-Depth-Schichtenmodells. Kundendaten werden in Schichten von Netzwerksicherheit, Zugriffsverwaltung sowie Bedrohungs- und Informationsschutz umschlossen.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
@@ -77,7 +77,7 @@ Es hat sich bewährt, benutzerdefinierte Rollen bei Bedarf zu erstellen. Fügen 
 
 Mithilfe der Sicherheit auf Zeilenebene können Kunden den Zugriff auf die Zeilen in einer Datenbanktabelle auf Grundlage der Merkmale des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Sicherheit auf Zeilenebene kann auch verwendet werden, um benutzerdefinierte bezeichnungsbasierte Sicherheitskonzepte zu implementieren. Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security).
 
-![azure database rls.png](./media/security-overview/azure-database-rls.png)
+![Das Diagramm zeigt, dass die Sicherheit auf Zeilenebene einzelne Zeilen einer SQL-Datenbank vor dem Zugriff durch Benutzer über eine Client-App schützt.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Bedrohungsschutz
 
@@ -91,7 +91,7 @@ Bei der Überwachung von SQL-Datenbank und SQL Managed Instance werden Datenbank
 
 Advanced Threat Protection analysiert Ihre Protokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten wie SQL-Injektion, potenzielle Dateninfiltration und Brute-Force-Angriffe oder für Anomalien in den Zugriffsmustern erstellt, um Berechtigungserweiterungen und die Verwendung gefährdeter Anmeldeinformationen zu erfassen. Sie können die Warnungen im [Azure Security Center](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Advanced Threat Protection kann pro Server für eine zusätzliche Gebühr aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Advanced Threat Protection von SQL-Datenbank](threat-detection-configure.md).
 
-![azure database td.jpg](./media/security-overview/azure-database-td.jpg)
+![Das Diagramm zeigt, dass die SQL-Bedrohungserkennung den Zugriff auf die SQL-Datenbank für eine Web-App von einem externen Angreifer und böswilligen Insider überwacht.](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Informationsschutz und -verschlüsselung
 
@@ -122,13 +122,13 @@ In Azure werden standardmäßig alle neu erstellten Datenbanken verschlüsselt, 
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (Verschlüsselung während der Verwendung)
 
-![azure database ae.png](./media/security-overview/azure-database-ae.png)
+![Das Diagramm zeigt die Grundlagen des Always Encrypted Features. Auf eine SQL-Datenbank mit einer Sperre wird nur von einer App zugegriffen, die einen Schlüssel enthält.](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) ist eine Funktion zum Schutz vor dem Zugriff auf vertrauliche Daten (z.B. Kreditkartennummern, nationale Identifikationsnummern oder Daten, die _nur bei Bedarf bekannt sein sollten_), die in bestimmten Datenbankspalten gespeichert sind. Dies schließt Datenbankadministratoren und anderen privilegierte Benutzer ein, die autorisiert sind, für Verwaltungsaufgaben auf die Datenbank zuzugreifen, jedoch keinen Zugriff auf die entsprechenden Daten in den verschlüsselten Spalten benötigen. Die Daten werden immer verschlüsselt. Das bedeutet, dass die verschlüsselten Daten nur für die Verarbeitung durch Clientanwendungen mit Zugriff auf den Verschlüsselungsschlüssel entschlüsselt werden. Der Verschlüsselungsschlüssel wird nie gegenüber SQL-Datenbank oder SQL Managed Instance offengelegt und kann im [Windows-Zertifikatspeicher](always-encrypted-certificate-store-configure.md) oder in [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) gespeichert werden.
 
 ### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung
 
-![azure database ddm.png](./media/security-overview/azure-database-ddm.png)
+![Das Diagramm zeigt die dynamische Datenmaskierung. Eine Geschäftsanwendung sendet Daten an eine SQL-Datenbank, die die Daten vor dem Zurücksenden an die Anwendung maskiert.](./media/security-overview/azure-database-ddm.png)
 
 Die dynamische Datenmaskierung beschränkt die Offenlegung vertraulicher Daten, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung werden in Azure SQL-Datenbank und SQL Managed Instance automatisch potenziell vertrauliche Daten ermittelt und direkt umsetzbare Empfehlungen bereitgestellt, um diese Felder mit minimalen Auswirkungen auf die Anwendungsschicht zu maskieren. Hierzu werden die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern verborgen, ohne dass die Daten in der Datenbank geändert werden. Weitere Informationen finden Sie unter [Erste Schritte mit der dynamischen Datenmaskierung für SQL-Datenbank und SQL Managed Instance](dynamic-data-masking-overview.md).
 
