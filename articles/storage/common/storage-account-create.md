@@ -1,27 +1,27 @@
 ---
 title: Speicherkonto erstellen
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure CLI ein Speicherkonto erstellen. Ein Azure-Speicherkonto stellt einen eindeutigen Namespace in Microsoft Azure zum Speichern und Zugreifen auf Ihre Daten bereit.
+description: Erfahren Sie, wie Sie ein Speicherkonto zum Speichern von Blobs, Dateien, Warteschlangen und Tabellen erstellen. Ein Azure Storage-Konto stellt einen eindeutigen Namespace in Microsoft Azure zum Lesen und Schreiben Ihre Daten bereit.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069832"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333578"
 ---
-# <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
+# <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
-In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/management/overview.md) ein Speicherkonto erstellen.  
+In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure) oder eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/management/overview.md) ein Speicherkonto erstellen.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die in diesem Arti
 
 ### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diesen Artikel müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Die Beispiele in diesem Artikel erfordern Version 2.0.4 oder höher der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
@@ -104,11 +104,9 @@ az login
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Sie können nun ein Speicherkonto erstellen.
-
 Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
-Ein **universelles v2**-Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In den hier beschriebenen Schritten wird ein Speicherkonto vom Typ „Universell v2“ erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich.
+Ein **universelles v2**-Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In den hier beschriebenen Schritten wird ein Speicherkonto vom Typ „Universell v2“ erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich. Weitere Informationen zu den Arten von Speicherkonten und anderen Speicherkontoeinstellungen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> Wenn Sie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, schließen Sie `--enable-hierarchical-namespace true` in diese Parameterliste ein. 
+> Wenn Sie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, schließen Sie `--enable-hierarchical-namespace true` in diese Parameterliste ein.
 
 Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikationsoption zu erstellen, setzen Sie für den Parameter **sku** den gewünschten Wert in der folgenden Tabelle ein.
 
@@ -230,8 +228,6 @@ Informationen zum Ändern dieser Vorlage und zum Erstellen neuer Vorlagen finden
 - [Weitere Beispiele für Speicherkontovorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ---
-
-Weitere Informationen zu verfügbaren Replikationsoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
 ## <a name="delete-a-storage-account"></a>Löschen von Speicherkonten
 
@@ -287,26 +283,6 @@ Alternativ können Sie die Ressourcengruppe löschen, wodurch das Speicherkonto 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein Speicherkonto vom Typ „Universell v2“ erstellt. Weitere Informationen zum Hoch- und Herunterladen von Blobs in Ihr Speicherkonto bzw. aus diesem finden Sie in den Schnellstarts für Blob Storage.
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [Arbeiten mit Blobs unter Verwendung des Azure-Portals](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [Arbeiten mit Blobs unter Verwendung der PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [Arbeiten mit Blobs unter Verwendung der Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[Vorlage](#tab/template)
-
-> [!div class="nextstepaction"]
-> [Arbeiten mit Blobs unter Verwendung des Azure-Portals](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [Speicherkontoübersicht](storage-account-overview.md)
+- [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md)
+- [Verschieben eines Azure Storage-Kontos in eine andere Region](storage-account-move.md)
