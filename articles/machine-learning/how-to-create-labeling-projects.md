@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897958"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776118"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -156,6 +156,9 @@ Die genaue Anzahl beschrifteter Bilder, die zum Starten Beschriftungsunterstütz
 
 Da die abschließenden Beschriftungen weiterhin von den Eingaben des Beschriftungserstellers abhängig sind, wird diese Technologie manchmal auch als *Human-in-the-Loop*-Beschriftung bezeichnet.
 
+> [!NOTE]
+> Von der ML-gestützten Datenbeschriftung werden keine Standardspeicherkonten unterstützt, die hinter einem [virtuellen Netzwerk](how-to-network-security-overview.md) gesichert sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Das nicht standardmäßige Speicherkonto kann hinter dem virtuellen Netzwerk gesichert werden. 
+
 ### <a name="clustering"></a>Clustering
 
 Nachdem eine bestimmte Anzahl von Beschriftungen übermittelt wurde, beginnt das Machine Learning-Modell für die Bildklassifizierung damit, ähnliche Bilder zu gruppieren.  Diese ähnlichen Bilder werden den Beschriftungserstellern im gleichen Bildschirm angezeigt, um das manuelle Taggen zu beschleunigen. Das Clustering ist besonders hilfreich, wenn der Beschriftungsersteller ein Raster mit vier, sechs oder neun Bildern verwendet. 
@@ -186,7 +189,7 @@ Um das Projekt anzuhalten oder neu zu starten, schalten Sie den Status **Wird au
 
 Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Dashboard für Datenbeschriftung":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Assistent zum Erstellen von Bezeichnungsprojekten":::
 
 Das Fortschrittsdiagramm zeigt an, wie viele Elemente beschriftet wurden und wie viele noch übrig sind.  Für ausstehende Elemente kann Folgendes gelten:
 
