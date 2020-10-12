@@ -1,15 +1,15 @@
 ---
 title: Regionszuordnungen für Azure Monitor für Container
-description: Dieser Artikel beschreibt die zwischen Azure Monitor für Container, dem Log Analytics-Arbeitsbereich und benutzerdefinierten Metriken unterstützten Regionszuordnungen.
+description: Hier werden die zwischen Azure Monitor für Container, dem Log Analytics-Arbeitsbereich und benutzerdefinierten Metriken unterstützten Regionszuordnungen beschrieben.
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3e8ead78c5e0e534e07c1e2ab0e25eb3f5a90c38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e3b8635c70dfdf33b0a062be80c948cd77923cc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194987"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272904"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Von Azure Monitor für Container unterstützte Regionszuordnungen
 
@@ -17,7 +17,8 @@ ms.locfileid: "84194987"
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics-Arbeitsbereich unterstützt Zuordnungen
 
-Die AKS-Clusterressourcen oder der Log Analytics-Arbeitsbereich können sich in anderen Regionen befinden, und die folgende Tabelle zeigt unsere Zuordnungen.
+Unterstützte AKS-Regionen sind unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service) aufgeführt. Der Log Analytics-Arbeitsbereich muss sich in derselben Region befinden. Ausgenommen sind davon die in der folgenden Tabelle aufgeführten Regionen. Achten Sie auf Aktualisierungen in den [AKS-Versionshinweisen](https://github.com/Azure/AKS/releases).
+
 
 |**AKS-Clusterregion** | **Log Analytics-Arbeitsbereichsregion** |
 |-----------------------|------------------------------------|
@@ -25,43 +26,24 @@ Die AKS-Clusterressourcen oder der Log Analytics-Arbeitsbereich können sich in 
 |Südafrika, Nord |Europa, Westen |
 |Südafrika, West |Europa, Westen |
 |**Australien** | |
-|Australien, Osten |Australien, Osten |
-|Australien, Mitte |Australien, Mitte |
 |Australien, Mitte 2 |Australien, Mitte |
-|Australien, Osten |Australien, Osten |
-|**Asien-Pazifik** | |
-|Asien, Osten |Asien, Osten |
-|SoutheastAsia |SoutheastAsia |
 |**Brasilien** | |
 |Brasilien, Süden | USA, Süden-Mitte |
 |**Kanada** ||
-|CanadaCentral |CanadaCentral |
 |CanadaEast |CanadaCentral |
 |**Europa** | |
-|Frankreich, Mitte |Frankreich, Mitte |
 |Frankreich, Süden |Frankreich, Mitte |
-|Europa, Norden |Europa, Norden |
-|UKSouth |UKSouth |
 |UK, Westen |UKSouth |
-|Europa, Westen |Europa, Westen |
 |**Indien** | |
-|CentralIndia |CentralIndia |
 |SouthIndia |CentralIndia |
 |WestIndia |CentralIndia |
 |**Japan** | |
-|JapanEast |JapanEast |
 |Japan, Westen |JapanEast |
 |**Korea** | |
-|KoreaCentral |KoreaCentral |
 |KoreaSouth |KoreaCentral |
 |**USA** | |
-|USA, Mitte |USA, Mitte|
-|EastUS |EastUS |
-|EastUS2 |EastUS2 |
-|USA, Westen |USA, Westen |
-|WestUS2 |WestUS2 |
 |USA, Westen-Mitte<sup>1</sup>|EastUS<sup>1</sup>|
-|US Government, Virginia |US Government, Virginia |
+
 
 <sup>1</sup> Aufgrund von Kapazitätseinschränkungen ist die Region nicht verfügbar, wenn neue Ressourcen erstellt werden. Dies beinhaltet einen Log Analytics-Arbeitsbereich. Allerdings sollten bereits in der Region vorhandene verknüpfte Ressourcen weiterhin funktionieren.
 
