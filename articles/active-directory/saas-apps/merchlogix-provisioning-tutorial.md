@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273346"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MerchLogix für die automatische Benutzerbereitstellung
 
@@ -55,7 +55,7 @@ Bevor Sie MerchLogix für die automatische Benutzerbereitstellung mit Azure AD k
 
 5. Wählen Sie im Ergebnisbereich **MerchLogix** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um MerchLogix der Liste der SaaS-Anwendungen hinzuzufügen.
 
-    ![Screenshot: Bereitstellung von MerchLogix][4]
+    ![Screenshot des Abschnitts „Aus dem Katalog hinzufügen“ mit dem aufgerufenen Textfeld „Name eingeben“][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>Zuweisen von Benutzern zu MerchLogix
 
@@ -88,7 +88,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Screenshot: Bereitstellung von MerchLogix](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![Screenshot des Abschnitts „Bereitstellung“ für MerchLogix mit aufgerufener Option „Bereitstellung“. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und die Option „Verbindung testen“ wurde aufgerufen.](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. Führen Sie im Abschnitt **Administratoranmeldeinformationen** folgende Aktionen aus:
 
