@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002687"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400314"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
@@ -54,7 +54,7 @@ Der Artikel konzentriert sich auf die folgenden wesentlichen Funktionen der Azur
 
 SSO bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
 
-Viele Organisationen nutzen SaaS-Anwendungen, z.B. Office 365, Box und Salesforce, um die Benutzerproduktivität zu steigern. In der Vergangenheit musste das IT-Personal Benutzerkonten in jeder SaaS-Anwendung individuell erstellen und aktualisieren, und Benutzer mussten sich für jede SaaS-Anwendung ein Kennwort merken.
+Viele Organisationen nutzen SaaS-Anwendungen, z. B. Microsoft 365, Box und Salesforce, um die Benutzerproduktivität zu steigern. In der Vergangenheit musste das IT-Personal Benutzerkonten in jeder SaaS-Anwendung individuell erstellen und aktualisieren, und Benutzer mussten sich für jede SaaS-Anwendung ein Kennwort merken.
 
 Azure AD weitet lokale Active Directory-Umgebungen auf die Cloud aus und ermöglicht Benutzern auf diese Weise, sich mit ihrem primären Organisationskonto nicht nur bei den mit ihrer Domäne verknüpften Geräten und Unternehmensressourcen anzumelden, sondern auch bei sämtlichen Web- und SaaS-Anwendungen, die sie für ihre Arbeit benötigen.
 
@@ -147,14 +147,14 @@ Weitere Informationen:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Mithilfe von Azure AD Privileged Identity Management (PIM) können Sie Ihre privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Office 365 und Microsoft Intune verwalten, steuern und überwachen.
+Mithilfe von Azure AD Privileged Identity Management (PIM) können Sie Ihre privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Microsoft 365 und Microsoft Intune verwalten, steuern und überwachen.
 
-Manchmal müssen Benutzer privilegierte Vorgänge in Azure- oder Office 365-Ressourcen oder anderen SaaS-Apps ausführen. Dieses Erfordernis bedeutet häufig, dass Organisationen diesen Benutzern in Azure AD dauerhaften privilegierten Zugriff gewähren müssen. Diese Zugriffsart stellt ein wachsendes Sicherheitsrisiko für die in der Cloud gehosteten Ressourcen dar, da Organisationen die Aktionen, die diese Benutzer mit ihren Administratorberechtigungen ausführen, nicht ausreichend überwachen können. Darüber hinaus kann die Sicherheit der gesamten Cloud in Gefahr sein, wenn ein Benutzerkonto mit privilegiertem Zugriff kompromittiert wird. Mit Azure AD Privileged Identity Management können Sie dieses Risiko abmildern.
+Manchmal müssen Benutzer privilegierte Vorgänge in Azure- oder Microsoft 365-Ressourcen oder anderen SaaS-Apps ausführen. Dieses Erfordernis bedeutet häufig, dass Organisationen diesen Benutzern in Azure AD dauerhaften privilegierten Zugriff gewähren müssen. Diese Zugriffsart stellt ein wachsendes Sicherheitsrisiko für die in der Cloud gehosteten Ressourcen dar, da Organisationen die Aktionen, die diese Benutzer mit ihren Administratorberechtigungen ausführen, nicht ausreichend überwachen können. Darüber hinaus kann die Sicherheit der gesamten Cloud in Gefahr sein, wenn ein Benutzerkonto mit privilegiertem Zugriff kompromittiert wird. Mit Azure AD Privileged Identity Management können Sie dieses Risiko abmildern.
 
 Azure AD Privileged Identity Management gibt Ihnen diese Möglichkeiten:
 
 * Ermitteln, welche Benutzer Azure AD-Administratoren sind.
-* Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff (JIT) auf Microsoft Online Services wie z.B. Office 365 und Intune.
+* Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff (JIT) auf Microsoft Online Services wie z. B. Microsoft 365 und Intune.
 * Abrufen von Berichten zum Administratorzugriffsverlauf und zu Änderungen bei Administratorzuweisungen.
 * Aktivieren von Benachrichtigungen zum Zugriff auf eine privilegierte Rolle.
 
@@ -174,7 +174,7 @@ Weitere Informationen:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybrididentitätsverwaltung/Azure AD Connect
 
-Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität. Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Er zeichnet sich durch Folgendes aus:
+Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität. Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen. Dadurch können Sie für Ihre Benutzer eine gemeinsame Identität für in Azure AD integrierte Microsoft 365-, Azure- und SaaS-Anwendungen bereitstellen. Er zeichnet sich durch Folgendes aus:
 
 * Synchronization
 * AD FS und Verbundintegration

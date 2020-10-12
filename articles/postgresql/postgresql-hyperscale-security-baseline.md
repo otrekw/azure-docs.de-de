@@ -1,22 +1,22 @@
 ---
-title: Azure-Sicherheitsbaseline für Azure Database for PostgreSQL (Hyperscale)
-description: Die Hyperscale-Sicherheitsbaseline für Azure Database for PostgreSQL enthält Anleitungen und Ressourcen für die Vorgehensweise bei der Implementierung der Sicherheitsempfehlungen aus dem Azure-Sicherheitsvergleichstest.
+title: Azure-Sicherheitsbaseline für Azure Database for PostgreSQL – Hyperscale (Citus)
+description: Die Sicherheitsbaseline für Azure Database for PostgreSQL mit Hyperscale (Citus) enthält Anleitungen und Ressourcen für die Vorgehensweise bei der Implementierung der Sicherheitsempfehlungen aus dem Azure-Sicherheitsvergleichstest.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318125"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL (Hyperscale)
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL – Hyperscale (Citus)
 
-Die Azure-Sicherheitsbaseline für Azure Database for PostgreSQL: Hyperscale enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
+Die Azure-Sicherheitsbaseline für Azure Database for PostgreSQL mit Hyperscale (Citus) enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
 Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
