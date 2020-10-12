@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
-ms.date: 7/31/2020
-ms.openlocfilehash: d8055c89af8adcb88a2055e617e27c030e05d5ae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: sstein
+ms.date: 09/16/2020
+ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330705"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,12 +44,12 @@ Die Vorgehensweise zum Ändern der Dienstebene oder der Computegröße eines Poo
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Wartezeit beim Ändern der Dienstebene oder beim Skalieren der Computegröße
 
-Die geschätzte Latenz beim Ändern der Dienstebene oder beim erneuten Skalieren der Computegröße einer Einzeldatenbank oder eines Pools für elastische Datenbanken wird wie folgt parametrisiert:
+Beim Ändern der Dienstebene, beim Skalieren der Computegröße einer Einzeldatenbank oder eines Pools für elastische Datenbanken, beim Verschieben einer Datenbank in einen/aus einem Pool für elastische Datenbanken oder beim Verschieben einer Datenbank zwischen Pools für elastische Datenbanken wird die geschätzte Wartezeit wie folgt parametrisiert:
 
 |Dienstebene|Einzeldatenbank des Tarifs „Basic“,</br>Standard (S0-S1)|Pools für elastische Datenbanken des Tarifs „Basic“,</br>Standard (S2-S12), </br>Einzeldatenbank oder Pool für elastische Datenbanken des Tarifs „Universell“|Einzeldatenbank oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“|Hyperscale
 |:---|:---|:---|:---|:---|
 |**Einzeldatenbank des Tarifs „Basic“,</br> Standard (S0-S1)**|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
-|**Pool für elastische Datenbanken des Tarifs „Basic“, </br>Standard (S2–S12), </br>Einzeldatenbank oder Pool für elastische Datenbanken des Tarifs „Universell“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
+|**Pool für elastische Datenbanken des Tarifs „Basic“, </br>Standard (S2–S12), </br>Einzeldatenbank oder Pool für elastische Datenbanken des Tarifs „Universell“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Bei Einzeldatenbanken konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten bei Einzeldatenbanken</br>&bull; &nbsp;Bei Pools für elastische Datenbanken proportional zur Anzahl der Datenbanken|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
 |**Einzeldatenbank oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
 |**Hyperscale**|N/V|N/V|N/V|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als zwei Minuten|
 
@@ -57,7 +57,7 @@ Die geschätzte Latenz beim Ändern der Dienstebene oder beim erneuten Skalieren
 >
 > - Beim Ändern der Dienstebene oder Skalieren der Computegröße für einen Pool für elastische Datenbanken muss der verwendete Speicherplatz aller Datenbanken im Pool addiert werden, um die Schätzung zu berechnen.
 > - Wenn eine Datenbank in einen oder aus einem Pool für elastische Datenbanken verschoben wird, ist für die Wartezeit nur der Speicherplatz relevant, der von der Datenbank verwendet wird, nicht der verwendete Speicherplatz des Pools für elastische Datenbanken.
-> - Bei Pools für elastische Datenbanken vom Typ „Standard“ und „Universell“ verhält sich die Latenzzeit beim Verschieben einer Datenbank in einen/aus einem Pool für elastische Datenbanken oder zwischen Pools für elastische Datenbanken proportional zur Datenbankgröße, wenn für den Pool für elastische Datenbanken [PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)-Speicher (Premium File Share, Premium-Dateifreigabe) verwendet wird. Um zu ermitteln, ob ein Pool PFS-Speicher verwendet, führen Sie die folgende Abfrage im Kontext einer beliebigen Datenbank im Pool aus. Lautet der Wert in der AccountType-Spalte `PremiumFileStorage`, verwendet der Pool PFS-Speicher.
+> - Bei Pools für elastische Datenbanken vom Typ „Standard“ und „Universell“ verhält sich die Latenzzeit beim Verschieben einer Datenbank in einen/aus einem Pool für elastische Datenbanken oder zwischen Pools für elastische Datenbanken proportional zur Datenbankgröße, wenn für den Pool für elastische Datenbanken [PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)-Speicher (Premium File Share, Premium-Dateifreigabe) verwendet wird. Um zu ermitteln, ob ein Pool PFS-Speicher verwendet, führen Sie die folgende Abfrage im Kontext einer beliebigen Datenbank im Pool aus. Wenn der Wert in der Spalte „AccountType“ `PremiumFileStorage` oder `PremiumFileStorage-ZRS` lautet, verwendet der Pool PFS-Speicher.
 
 ```sql
 SELECT s.file_id,

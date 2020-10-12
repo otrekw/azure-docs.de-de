@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331249"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
 Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+
+
 
 Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
 
@@ -45,7 +47,7 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
-Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Überwachung** die Option **Überwachungsprotokolle** aus. Beachten Sie, dass Überwachungsprotokolle eine Latenz von bis zu einer Stunde haben können, es kann also so lange dauern, bis die Daten der Überwachungsaktivität im Portal angezeigt werden, nachdem Sie die Aufgabe abgeschlossen haben.
+Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Überwachung** die Option **Überwachungsprotokolle** aus. 
 
 
 
@@ -62,15 +64,15 @@ Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Inf
 
 Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spalten** klicken.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/columns.png "Überwachungsprotokolle")
+![Überwachungsspalten](./media/concept-audit-logs/columns.png "Überwachungsspalten")
 
 Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits angezeigt werden.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/columnselect.png "Überwachungsprotokolle")
+![Felder entfernen](./media/concept-audit-logs/columnselect.png "Felder entfernen")
 
 Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/details.png "Überwachungsprotokolle")
+![Element auswählen](./media/concept-audit-logs/details.png "Element auswählen")
 
 
 ## <a name="filtering-audit-logs"></a>Filtern von Überwachungsprotokollen
@@ -85,7 +87,7 @@ Sie können die Überwachungsdaten in den folgenden Feldern filtern:
 - Initiiert von (Akteur)
 - Datumsbereich
 
-![Überwachungsprotokolle](./media/concept-audit-logs/filter.png "Überwachungsprotokolle")
+![Filterobjekt](./media/concept-audit-logs/filter.png "Filter-Objekt")
 
 Bei Verwendung des Filters **Dienst** können Sie in einer Dropdownliste die folgenden Dienste auswählen:
 
@@ -157,7 +159,7 @@ Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit u
 
 Sie können die gefilterten Daten (bis zu 250.000 Datensätze) auch herunterladen, indem Sie die Schaltfläche **Herunterladen** auswählen. Sie können die Protokolle im CSV- oder JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/download.png "Überwachungsprotokolle")
+![Herunterladen von Daten](./media/concept-audit-logs/download.png "Herunterladen von Daten")
 
 ## <a name="audit-logs-shortcuts"></a>Verknüpfungen für Überwachungsprotokolle
 
@@ -170,7 +172,7 @@ Neben **Azure Active Directory** bietet das Azure-Portal noch zwei weitere Einst
 
 Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie beispielsweise Antworten auf folgende Fragen erhalten:
 
-- Welche Arten von Updates wurden von den Benutzern angewendet?
+- Welche Typen von Updates wurden auf Benutzer angewendet?
 
 - Wie viele Benutzer wurden geändert?
 
@@ -188,11 +190,11 @@ Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie 
 
 Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Benutzer** im Abschnitt **Überwachung**. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/users.png "Überwachungsprotokolle")
+![Benutzer](./media/concept-audit-logs/users.png "Benutzer")
 
 Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Gruppen** im Abschnitt **Überwachung**. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/groups.png "Überwachungsprotokolle")
+![Filtergruppen](./media/concept-audit-logs/groups.png "Filtergruppen")
 
 ### <a name="enterprise-applications-audit-logs"></a>Überwachungsprotokolle für Unternehmensanwendungen
 
@@ -206,7 +208,7 @@ Mit Überwachungsberichten, die auf Anwendungen basieren, können Sie beispielsw
 
 Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendungen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** des Blatts **Unternehmensanwendungen** verwenden. Bei diesem Einstiegspunkt ist für **Aktivitätsressourcentyp** bereits vorab die Option **Unternehmensanwendungen** ausgewählt.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/enterpriseapplications.png "Überwachungsprotokolle")
+![Unternehmensanwendungen](./media/concept-audit-logs/enterpriseapplications.png "Unternehmensanwendungen")
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365-Aktivitätsprotokolle
 

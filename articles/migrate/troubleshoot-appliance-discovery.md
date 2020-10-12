@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331776"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -234,6 +234,7 @@ Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
 9033: Es kann keine Ermittlung durchgeführt werden, weil der VM-Benutzername ungültige Zeichen enthält.     |   Im Benutzernamen wurden ungültige Zeichen gefunden.   |   Geben Sie die VM-Anmeldeinformationen erneut an, und stellen Sie hierbei sicher, dass keine ungültigen Zeichen vorhanden sind.
 9034: Der angegebene Benutzername weist nicht das UPN-Format auf.    |   Der Benutzername weist nicht das UPN-Format auf.  |   Stellen Sie sicher, dass der Benutzername im UPN-Format (User Pincipal Name) vorliegt.
 9035: Es kann keine Ermittlung durchgeführt werden, weil der PowerShell-Sprachmodus nicht auf „FullLanguage“ festgelegt ist.  |   Der Sprachmodus für PowerShell in der Gast-VM ist nicht auf „FullLanguage“ festgelegt.   |   Stellen Sie sicher, dass der PowerShell-Sprachmodus auf „FullLanguage“ festgelegt ist.
+9037: Die Datensammlung wurde vorübergehend angehalten, weil die VM-Antwortzeit zu hoch ist.    |   Die ermittelte VM braucht zu lange, um zu antworten.     |   Keine weiteren Maßnahmen erforderlich. Ein Wiederholungsversuch wird in 24 Stunden für die Anwendungsermittlung und in 3 Stunden für die Abhängigkeitsanalyse (ohne Agent) ausgeführt.
 10000: Der Betriebssystemtyp wird nicht unterstützt.   |   Das auf dem Server ausgeführte Betriebssystem ist weder Windows noch Linux.    |   Als Betriebssystemtypen werden nur Windows und Linux unterstützt.
 10001: Das Skript für die Serverermittlung wurde nicht in der Appliance gefunden.    |   Die Ermittlung funktioniert nicht wie erwartet.   |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
 10002: Die Ermittlungsaufgabe wurde nicht rechtzeitig abgeschlossen.     |   Der Ermittlungs-Agent funktioniert nicht wie erwartet.     |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
