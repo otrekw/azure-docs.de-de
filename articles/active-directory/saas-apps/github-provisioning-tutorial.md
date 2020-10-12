@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589213"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358320"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
@@ -71,11 +71,11 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Gi
 
 6. Melden Sie sich im neuen Fenster mit Ihrem Administratorkonto bei GitHub an. Wählen Sie im daraufhin angezeigten Autorisierungsdialogfeld das GitHub-Team aus, für das Sie die Bereitstellung aktivieren möchten, und wählen Sie dann **Autorisieren**. Kehren Sie anschließend zum Azure-Portal zurück, um die Konfiguration der Bereitstellung abzuschließen.
 
-    ![Autorisierungsdialogfeld](./media/github-provisioning-tutorial/GitHub2.png)
+    ![Screenshot der Anmeldeseite für GitHub.](./media/github-provisioning-tutorial/GitHub2.png)
 
 7. Geben Sie im Azure-Portal die **Mandanten-URL** ein, und klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer GitHub-App herstellen kann. Überprüfen Sie bei einem Verbindungsfehler, ob das GitHub-Konto über Administratorberechtigungen verfügt und die **Mandanten-URL** korrekt eingegeben wurde. Wiederholen Sie anschließend den Autorisierungsschritt. (Sie können die **Mandanten-URL** durch eine Regel ersetzen: `https://api.github.com/scim/v2/organizations/<Organization_name>`. Die Organisationen finden Sie im GitHub-Konto unter **Einstellungen** > **Organisationen**).
 
-    ![Autorisierungsdialogfeld](./media/github-provisioning-tutorial/GitHub3.png)
+    ![Screenshot der Seite „Organisationen“ in GitHub.](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen „Bei Fehler E-Mail-Benachrichtigung senden“.
 

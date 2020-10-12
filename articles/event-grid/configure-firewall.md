@@ -3,12 +3,12 @@ title: Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen
 description: In diesem Artikel wird beschrieben, wie Firewalleinstellungen für Azure Event Grid-Themen oder -Domänen konfiguriert werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324160"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen 
 Standardmäßig kann auf Themen und Domänen über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken. Herausgeber, die von einer anderen IP-Adresse stammen, werden abgelehnt und erhalten eine 403-Antwort (Verboten). Weitere Informationen zu Netzwerksicherheitsfunktionen, die von Event Grid unterstützt werden, finden Sie unter [Netzwerksicherheit für Event Grid](network-security.md).
@@ -23,7 +23,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal eingehende IP-Fir
 
     Sie können den Datenverkehr mithilfe von IP-basierten Firewallregeln einschränken. Geben Sie eine einzelne IPv4-Adresse oder einen Bereich von IP-Adressen in CIDR-Notation (Classless Inter-Domain Routing) an. 
 
-    ![Seite „Öffentliche Netzwerke“](./media/configure-firewall/public-networks-page.png)
+    ![Screenshot, der die Seite „Öffentlicher Netzwerkzugriff“ mit der ausgewählten Option „Öffentliche Netzwerke“ zeigt.](./media/configure-firewall/public-networks-page.png)
 3. Wählen Sie **Nur private Endpunkte** aus, damit nur private Endpunktverbindungen auf diese Ressource zugreifen können. Verwenden Sie die Registerkarte **Private Endpunktverbindungen** auf dieser Seite, um Verbindungen zu verwalten. 
 
     ![Seite „Öffentliche Netzwerke“](./media/configure-firewall/private-endpoints-page.png)

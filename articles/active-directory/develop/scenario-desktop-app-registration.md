@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257508"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -33,7 +33,6 @@ Wenn Ihre Desktopanwendung die interaktive Authentifizierung verwendet, können 
 ### <a name="audience-for-desktop-app-silent-flows"></a>Zielgruppe für automatische Desktop-App-Flüsse
 
 - Um die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwenden zu können, muss Ihre Anwendung Benutzer bei Ihrem Mandanten anmelden, beispielsweise wenn Sie LOB-Entwickler (Line of Business) sind. In Azure Active Directory-Organisationen muss Ihre Anwendung Benutzer bei Ihrem Mandanten anmelden, wenn es sich um ein ISV-Szenario handelt. Diese Authentifizierungsflows werden für persönliche Microsoft-Konten nicht unterstützt.
-- Wenn Sie den Gerätecodeflow verwenden möchten, können Sie noch keine Benutzer mit ihren persönlichen Microsoft-Konten anmelden.
 - Wenn Sie Benutzer mit Identitäten sozialer Netzwerke anmelden, die eine B2C-Autorität und -Richtlinie übergeben, können Sie ausschließlich die interaktive Authentifizierung oder die Authentifizierung über Benutzername und Kennwort verwenden.
 
 ## <a name="redirect-uris"></a>Umleitungs-URIs
@@ -45,11 +44,14 @@ Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Fl
   > [!IMPORTANT]
   > Aktuell verwendet MSAL.NET standardmäßig in Desktopanwendungen, die unter Windows ausgeführt werden (`urn:ietf:wg:oauth:2.0:oob`), einen anderen Umleitungs-URI. In Zukunft möchten wir diese Standardeinstellung ändern. Daher empfehlen wir Ihnen die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient`.
 
-- Wenn Sie eine native Objective-C-oder Swift-App für macOS erstellen, sollten Sie den Umleitungs-URI basierend auf der Paket-ID Ihrer Anwendung im folgenden Format registrieren: msauth.<ihre.app.paket.id>://auth. Ersetzen Sie <ihre.app.paket.id> durch die Paket-ID Ihrer Anwendung.
+- Wenn Sie eine native Objective-C-oder Swift-App für macOS erstellen, sollten Sie den Umleitungs-URI basierend auf der Paket-ID Ihrer Anwendung im folgenden Format registrieren: `msauth.<your.app.bundle.id>://auth`. Ersetzen Sie `<your.app.bundle.id>` durch die Paket-ID Ihrer Anwendung.
 - Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Microsoft Identity Platform v 2.0-Endpunkt aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
-- Damit Gerätecodeflow, integrierte Windows-Authentifizierung sowie Benutzername und Kennwort von einem vertraulichen Clientanwendungsflow unterschieden werden können, der ebenfalls über keine Umleitungs-URIs verfügt (der bei Daemon-Anwendungen verwendete Client-Anmeldeinformationsflow), müssen Sie ausdrücken, dass es sich bei Ihrer Anwendung um eine öffentliche Clientanwendung handelt. Um diese Konfiguration zu erreichen, wechseln Sie zum Abschnitt **Authentifizierung** für Ihre Anwendung. Wählen Sie im Unterabschnitt **Erweiterte Einstellungen** im Abschnitt **Standardclienttyp** bei **Hiermit wird eine Anwendung als öffentlicher Client eingestuft** die Option **Ja** aus.
+- Um [Gerätecodeflow](scenario-desktop-acquire-token.md#device-code-flow), [integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) sowie [Benutzername und Kennwort](scenario-desktop-acquire-token.md#username-and-password) von einer vertraulichen Clientanwendung mit einem vertraulichen Clientanwendungsflow, der in [Daemonanwendungen](scenario-daemon-overview.md) verwendet wird, zu unterscheiden (alle benötigen keinen Umleitungs-URI), müssen Sie Ihre Anwendung als öffentliche Clientanwendung konfigurieren. Gehen Sie für diese Konfiguration wie folgt vor:
 
-  ![Zulassen eines öffentlichen Clients](media/scenarios/default-client-type.png)
+    1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **App-Registrierungen** Ihre App aus, und wählen Sie dann **Authentifizierung** aus.
+    1. Wählen Sie unter **Erweiterte Einstellungen** > **Standardclienttyp** > **Anwendung als öffentlichen Client behandeln** die Option **Ja** aus.
+
+        :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Aktivieren der Einstellung für die Behandlung als öffentlicher Client im Bereich „Authentifizierung“ im Azure-Portal":::
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 

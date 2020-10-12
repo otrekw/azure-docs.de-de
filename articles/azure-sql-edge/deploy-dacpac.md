@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887491"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293899"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL-Datenbank-DACPAC- und -BACPAC-Pakete in SQL Edge
 
 Azure SQL Edge ist eine optimierte relationale Datenbank-Engine für IoT- und Edge-Bereitstellungen. Sie basiert auf den aktuellen Versionen der Microsoft SQL Server-Datenbank-Engine, die branchenführende Leistung, Sicherheit und Abfrageverarbeitung bietet. Zusammen mit den branchenführenden Funktionen für die Verwaltung relationaler Datenbanken von SQL Server bietet Azure SQL Edge integrierte Streamingfunktionen für Echtzeitanalysen und komplexe Ereignisverarbeitung.
 
-Azure SQL Edge bietet auch eine native Implementierung von „SqlPackage.exe“, mit der Sie während der Bereitstellung von SQL Edge ein [SQL-Datenbank-DACPAC- und -BACPAC-Paket](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) bereitstellen können. 
+Azure SQL Edge bietet einen nativen Mechanismus, mit dem Sie ein [SQL-Datenbank-DACPAC- und -BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications)-Paket während oder nach der Bereitstellung von SQL Edge bereitstellen können.
 
 SQL-Datenbank-DACPAC- und -BACPAC-Pakete können über die Umgebungsvariable `MSSQL_PACKAGE` in SQL Edge bereitgestellt werden. Diese Umgebungsvariable kann mit den folgenden Elementen konfiguriert werden.  
 - Dem Speicherort eines lokalen Ordners in dem SQL-Container, der die DACPAC- und BACPAC-Dateien enthält. Dieser Ordner kann mithilfe von Bereitstellungspunkten oder Datenvolumecontainern einem Hostvolume zugeordnet werden. 
@@ -64,6 +64,10 @@ Führen Sie die folgenden Schritte aus, um ein SQL-Datenbank-DAC-Paket `(*.dacpa
 5. Nach dem Modulupdate werden die Paketdateien heruntergeladen, entzippt und für die SQL Edge-Instanz bereitgestellt.
 
 Bei jedem Neustart des Azure SQL Edge-Containers versucht SQL Edge, das gezippte Dateipaket herunterzuladen und auf Änderungen zu überprüfen. Wenn eine neue Version der DACPAC-Datei gefunden wird, werden die Änderungen in der Datenbank in SQL Edge bereitgestellt.
+
+## <a name="known-issue"></a>Bekanntes Problem
+
+Bei einigen DACPAC- oder BACPAC-Bereitstellungen tritt möglicherweise ein Befehlstimeout auf. Dies führt zu einem Fehler beim DACPAC-Bereitstellungsvorgang. Wenn dieses Problem bei Ihnen auftritt, verwenden Sie die Datei „SQLPackage.exe“ (oder die SQL-Clienttools) zum manuellen Installieren von DACPAC oder BACPAC. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

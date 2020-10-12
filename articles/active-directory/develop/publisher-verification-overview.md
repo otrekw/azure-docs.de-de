@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258148"
 ---
 # <a name="publisher-verification"></a>Herausgeberüberprüfung
 
@@ -33,11 +33,12 @@ Die Herausgeberüberprüfung bietet die folgenden Vorteile:
 
 - **Verbessertes Branding**: In der Azure AD-[Zustimmungsaufforderung](application-consent-experience.md), auf der Seite „Unternehmens-Apps“ und auf weiteren von Endbenutzern und Administratoren verwendeten Benutzeroberflächen wird ein Überprüfungsbadge angezeigt. 
 
-- **Reibungslosere Einführung in Unternehmen**: Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt. 
+- **Reibungslosere Einführung in Unternehmen**: Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt.
 
-- **Verbesserte Risikobewertung**: Die Erkennungen von Microsoft für „riskante“ Zustimmungsanforderungen enthalten die Herausgeberüberprüfung als Signal. 
+> [!NOTE]
+> Ab November 2020 können Endbenutzer den meisten neu registrierten mehrinstanzenfähigen Apps ohne verifizierten Herausgeber keine Benutzerzustimmung mehr erteilen. Dies gilt für Apps, die nach dem 8. November 2020 registriert werden. Verwenden Sie OAuth 2.0, um Berechtigungen anzufordern, die über das grundlegende Benutzerprofil mit Anmelden und Lesen hinausgehen, und fordern Sie in anderen Mandanten als dem, für den die App registriert ist, die Zustimmung von den Benutzern an. Auf dem Zustimmungsbildschirm wird eine Warnung angezeigt, welche die Benutzer informiert, dass diese Apps riskant sind und von nicht verifizierten Herausgebern stammen.    
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 Für die Herausgeberüberprüfung bestehen bestimmte Voraussetzungen, von denen einige bereits von vielen Microsoft-Partnern erfüllt wurden. Sie lauten wie folgt: 
 
 -  Eine MPN-ID für ein gültiges [Microsoft Partner Network](https://partner.microsoft.com/membership)-Konto, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde. Bei diesem MPN-Konto muss es sich um das [globale Partnerkonto (Partner Global Account, PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) für Ihre Organisation handeln. 
@@ -69,7 +70,7 @@ Nachstehend finden Sie einige häufig gestellte Fragen zum Herausgeberüberprüf
 
   Entwickler, die auch Microsoft 365 integrieren, können aus diesen Programmen zusätzliche Vorteile ziehen. Weitere Informationen finden Sie unter [Microsoft 365-Herausgebernachweis](/microsoft-365-app-certification/docs/attestation) und [Microsoft 365-App-Zertifizierungsprogramm](/microsoft-365-app-certification/docs/certification). 
 
-- **Entspricht dies dem Azure AD-Anwendungskatalog?** Nein. Das Herausgeberüberprüfungsprogramm ist ein ergänzendes, aber vom [Azure Active Directory-Anwendungskatalog](../azuread-dev/howto-app-gallery-listing.md) getrenntes Programm. Entwickler, die die oben genannten Kriterien erfüllen, sollten die Herausgeberüberprüfung unabhängig von der Teilnahme an diesem Programm ausführen. 
+- **Entspricht dies dem Azure AD-Anwendungskatalog?** Nein. Das Herausgeberüberprüfungsprogramm ist ein ergänzendes, aber vom [Azure Active Directory-Anwendungskatalog](v2-howto-app-gallery-listing.md) getrenntes Programm. Entwickler, die die oben genannten Kriterien erfüllen, sollten die Herausgeberüberprüfung unabhängig von der Teilnahme an diesem Programm ausführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [eine App als durch den Herausgeber verifiziert markieren](mark-app-as-publisher-verified.md).

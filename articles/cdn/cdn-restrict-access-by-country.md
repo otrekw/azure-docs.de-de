@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358133"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Einschränken von Azure-CDN-Inhalten nach Land/Region
 
@@ -38,7 +38,7 @@ Für Profile des Typs **Azure CDN Premium von Verizon** müssen Sie die Geofilte
 ### <a name="define-the-directory-path"></a>Definieren des Verzeichnispfads
 Um auf das Geofilterungsfeature zuzugreifen, wählen Sie Ihren CDN-Endpunkt im Portal aus, und wählen Sie dann im linken Menü unter „EINSTELLUNGEN“ **Geofilterung** aus. 
 
-![Geofilterungsstandard](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![Screenshot der ausgewählten Geofilterung im Menü für einen Endpunkt](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 Geben Sie im Feld **PFAD** den relativen Pfad zu dem Speicherort an, für den Benutzern der Zugriff gewährt oder verweigert wird. 
 
@@ -67,7 +67,7 @@ Wählen Sie in der Liste **LÄNDERCODES** die Länder/Regionen aus, die Sie für
 
 Wählen Sie nach dem Auswählen der Länder/Regionen **Speichern** aus, um die neue Geofilterungsregel zu aktivieren. 
 
-![Geofilterungsregeln](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![Screenshot der Ländercodes zum Blockieren oder Zulassen von Ländern oder Regionen](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Um eine Regel zu löschen, wählen Sie sie in der Liste auf der Seite **Geofilterung** aus, und wählen Sie dann **Löschen**.
@@ -79,7 +79,7 @@ Für Profile des Typs **Azure CDN Premium von Verizon** sieht die Benutzeroberfl
 
 2. Wählen Sie im Verizon-Portal **HTTP Groß** und dann **Länderfilterung** aus.
 
-    ![Geofilterungsstandard](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Screenshot der Auswahl der Länderfilterung in Azure CDN](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. Wählen Sie **Länderfilter hinzufügen** aus.
 
@@ -93,7 +93,7 @@ Für Profile des Typs **Azure CDN Premium von Verizon** sieht die Benutzeroberfl
     
     Die neue Regel wird in der Tabelle auf der Seite **Länderfilterung** angezeigt.
 
-    ![Geofilterungsregeln](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![Screenshot der Anzeige der Regel in der Länderfilterung](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wählen Sie in der Filterungsregeltabelle für Länder/Regionen das Löschsymbol neben einer Regel aus, um sie zu löschen, oder das Bearbeitungssymbol, um sie zu bearbeiten.
