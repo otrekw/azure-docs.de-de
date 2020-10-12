@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319910"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau) 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -116,12 +116,12 @@ Die folgenden Schritte können verwendet werden, um die Mitgliedschaftsbeschrän
 1. Öffnen Sie den Azure AD-Synchronisierungsregel-Editor. 
 2. Wählen Sie im Editor **Ausgehend** als Richtung aus. 
 3. Klicken Sie auf die Synchronisierungsregel **Out to AAD – Group Join**. 
-4. Klicken Sie auf die Schaltfläche **Bearbeiten** und dann auf ![Synchronisierungsregel bearbeiten](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png).
+4. Klicken Sie auf die Schaltfläche **Bearbeiten**. ![Screenshot des Fensters „Synchronisationsregeln anzeigen und verwalten“ mit der ausgewählten Regel „Out to AAD – Group Join“](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Klicken Sie auf die Schaltfläche **Ja**, um die Standardregel zu deaktivieren und eine bearbeitbare Kopie zu erstellen.
- ![Bearbeiten der Synchronisierungsregel](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![Screenshot des Fensters „Bestätigung der reservierten Regel bearbeiten“ mit ausgewählter Schaltfläche „Ja“](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. Legen Sie im Popupfenster auf der Seite **Beschreibung** die Rangfolge auf einen verfügbaren Wert zwischen 1 und 99 fest. ![Synchronisierungsregel bearbeiten](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. Legen Sie im Popupfenster auf der Seite **Beschreibung** die Rangfolge auf einen verfügbaren Wert zwischen 1 und 99 fest. ![Screenshot des Fensters „Ausgehende Synchronisierungsregel bearbeiten“ mit hervorgehobener Option „Rangfolge“](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. Aktualisieren Sie auf der Seite **Transformationen** den Wert für **Quelle** für die **Mitglieder**transformationn und ersetzen Sie „50.000“ durch einen Wert zwischen 50.001 und 250.000. Diese Ersetzung erhöht die maximale Mitgliederzahl der Gruppen, die mit Azure AD synchronisiert werden. Es empfiehlt sich, mit einer Zahl von 100.000 zu beginnen, um zu verstehen, welche Auswirkungen die Synchronisierung großer Gruppen auf Ihre Synchronisierungsleistung hat. 
  
