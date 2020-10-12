@@ -3,34 +3,35 @@ title: Azure-Hybridvorteil und virtuelle Linux-Computer
 description: Mit dem Azure-Hybridvorteil können Sie bei virtuellen Linux-Computern, die in Azure ausgeführt werden, Geld sparen.
 services: virtual-machines
 documentationcenter: ''
-author: asinn826
+author: mathapli
 manager: westonh
-editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: a9ea3b21908d1f461745ffe2689b36f8efcb6f89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279772"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure-Hybridvorteil – Anwendung bei virtuelle Linux-Computern
+# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Vorschau: Azure-Hybridvorteil – Anwendung bei virtuelle Linux-Computern
 
 ## <a name="overview"></a>Übersicht
 
-Mit dem Azure-Hybridvorteil können Sie Ihren lokalen RHEL- (Red Hat Enterprise Linux) und SLES-Server (SUSE Linux Enterprise) ganz einfach zu Azure migrieren, indem Sie Ihr eigenes, bereits vorhandenes Red Hat- oder SUSE-Softwareabonnement verwenden. Dank diesem Vorteil bezahlen Sie lediglich die Infrastrukturkosten Ihres virtuellen Computers, da die Softwaregebühr durch Ihr RHEL- bzw. SLES-Abonnement abgedeckt ist. Der Vorteil gilt für alle RHEL und SLES Marketplace-Images mit nutzungsbasierter Bezahlung.
+Mit dem Azure-Hybridvorteil können Sie die virtuellen Computer (VMs) Ihrer lokalen RHEL- (Red Hat Enterprise Linux) und SLES-Server (SUSE Linux Enterprise Server) ganz einfach zu Azure migrieren, indem Sie Ihr eigenes, bereits vorhandenes Red Hat- oder SUSE-Softwareabonnement verwenden. Dank diesem Vorteil bezahlen Sie lediglich die Infrastrukturkosten Ihres virtuellen Computers, da die Softwaregebühr durch Ihr RHEL- bzw. SLES-Abonnement abgedeckt ist. Der Vorteil gilt für alle RHEL und SLES Marketplace-Images mit nutzungsbasierter Bezahlung.
+
+> [!IMPORTANT]
+> Der Azure-Hybridvorteil für Linux-VMs befindet sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="benefit-description"></a>Beschreibung des Vorteils
 
 Mit dem Azure-Hybridvorteil können Sie Ihre lokalen RHEL- und SLES-Server ganz einfach zu Azure migrieren, indem Sie die nutzungsbasierte Bezahlung (PAYG, Pay As You Go) von vorhandenen RHEL- und SLES-VMs in Azure in eine BYOS-Abrechnung (Bring Your Own Subscription) umwandeln. In der Regel wird für virtuelle Computer, die über PAYG-Images in Azure bereitgestellt werden, nicht nur eine Infrastrukturgebühr, sondern auch eine Softwaregebühr berechnet. Mit dem Azure-Hybridvorteil können virtuelle Computer mit nutzungsbasierter Bezahlung ohne erneute Bereitstellung auf ein BYOS-Abrechnungsmodell umgestellt werden, wodurch das Risiko eines Ausfalls vermieden wird.
 
-![Darstellung der Kosten für den Azure-Hybridvorteil auf virtuellen Linux-Computern](./media/ahb-linux/azure-hybrid-benefit-cost.png)
+:::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Darstellung der Kosten für den Azure-Hybridvorteil auf virtuellen Linux-Computern.":::
 
 Wenn Sie den Vorteil für einen virtuellen RHEL- oder SLES-Computer aktivieren, wird Ihnen keine zusätzliche Softwaregebühr berechnet, die normalerweise für einen virtuellen PAYG-Computer anfällt. Stattdessen wird für Ihren virtuellen Computer eine BYOS-Gebühr berechnet, die nur die Hardwaregebühr, jedoch keine Softwaregebühr beinhaltet.
 
