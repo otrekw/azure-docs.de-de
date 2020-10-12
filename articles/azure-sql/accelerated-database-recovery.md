@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327628"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Beschleunigte Datenbankwiederherstellung in Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Die **beschleunigte Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist ein Feature der SQL Server-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei zeitintensiven Transaktionen. Dies ist auf einen Neuentwurf des Wiederherstellungsverfahrens der SQL Server-Datenbank-Engine zurückzuführen. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server auf Azure-VM und für Datenbanken in Azure Synapse Analytics (zurzeit in der Vorschauphase) verfügbar. Die Hauptvorteile der schnellen Datenbankwiederherstellung sind:
+Die **beschleunigte Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist ein Feature der SQL Server-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei zeitintensiven Transaktionen. Dies ist auf einen Neuentwurf des Wiederherstellungsverfahrens der SQL Server-Datenbank-Engine zurückzuführen. 
+
+ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance, Datenbanken in Azure Synapse Analytics (zurzeit in der Vorschauphase) und SQL Server auf Azure-VMs (ab SQL Server 2019) verfügbar. 
+
+> [!NOTE] 
+> ADR ist in Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig aktiviert. Das Deaktivieren von ADR für eines dieser beiden Produkte wird nicht unterstützt. 
+
+## <a name="overview"></a>Übersicht
+
+Die Hauptvorteile der schnellen Datenbankwiederherstellung sind:
 
 - **Schnelle und konsistente Datenbankwiederherstellung**
 

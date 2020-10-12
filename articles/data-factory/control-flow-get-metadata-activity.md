@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297605"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 
@@ -35,7 +35,7 @@ Die folgende Funktionalität ist in der Ablaufsteuerung verfügbar:
 
 ## <a name="capabilities"></a>Funktionen
 
-Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Metadateninformationen als Ausgabe zurück. Derzeit werden die folgenden Connectors und entsprechenden abrufbaren Metadaten unterstützt. Die maximale Größe der zurückgegebenen Metadaten beträgt 2 MB.
+Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Metadateninformationen als Ausgabe zurück. Derzeit werden die folgenden Connectors und entsprechenden abrufbaren Metadaten unterstützt. Die maximale Größe der zurückgegebenen Metadaten beträgt ca. 4 MB.
 
 >[!NOTE]
 >Bei der Ausführung der Aktivität „Metadaten abrufen“ in einer selbstgehosteten Integration Runtime werden die aktuellen Funktionen unter Version 3.6 oder höher unterstützt.
@@ -87,7 +87,7 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 | contentMD5 | MD5 der Datei. Gilt nur für Dateien. |
 | structure | Datenstruktur der Datei oder Tabelle in der relationalen Datenbank. Der Rückgabewert ist eine Liste von Spaltennamen und Spaltentypen. |
 | columnCount | Anzahl der Spalten in der Datei oder relationalen Tabelle. |
-| exists| Gibt an, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist. Beachten Sie Folgendes: Wenn `exists` in der Feldliste der Aktivität „Metadaten abrufen“ angegeben ist, schlägt die Aktivität selbst dann nicht fehl, wenn die Datei, der Ordner oder die Tabelle nicht vorhanden ist. Stattdessen wird `exists: false` in der Ausgabe zurückgegeben. |
+| exists| Gibt an, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist. Wenn `exists` in der Feldliste der Aktivität „Metadaten abrufen“ angegeben ist, führt die Aktivität selbst dann nicht zu einem Fehler, wenn die Datei, der Ordner oder die Tabelle nicht vorhanden ist. Stattdessen wird `exists: false` in der Ausgabe zurückgegeben. |
 
 >[!TIP]
 >Wenn Sie überprüfen möchten, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist, geben Sie `exists` in der Feldliste der Aktivität „Metadaten abrufen“ an. Anschließend können Sie das Ergebnis (`exists: true/false`) in der Ausgabe der Aktivität überprüfen. Falls `exists` nicht in der Feldliste angegeben ist, schlägt die Aktivität „Metadaten abrufen“ fehl, wenn das Objekt nicht gefunden wird.
