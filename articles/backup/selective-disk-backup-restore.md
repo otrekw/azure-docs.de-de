@@ -4,19 +4,16 @@ description: In diesem Artikel lernen Sie die selektive Datenträgersicherung un
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506694"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271374"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
 Azure Backup unterstützt die Sicherung aller Datenträger (Betriebssystem und Daten) einer VM mithilfe der VM-Sicherungslösung. Mithilfe der Funktionalität der selektiven Datenträgersicherung und -wiederherstellung können Sie nun eine Teilmenge der Datenträger auf einem virtuellen Computer sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält nur die Datenträger, die im Sicherungsvorgang enthalten sind. So können Sie außerdem während des Wiederherstellungsvorgangs vom angegebenen Wiederherstellungspunkt aus eine Teilmenge der Datenträger wiederherstellen. Dies gilt sowohl für Wiederherstellungen von Momentaufnahmen als auch vom Tresor.
-
->[!NOTE]
->Selektive Datenträgersicherung und -wiederherstellung für virtuelle Azure-Computer befindet sich in allen Regionen in der öffentlichen Vorschau.
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -38,7 +35,7 @@ Stellen Sie sicher, dass Sie Az CLI Version 2.0.80 oder höher verwenden. Sie k�
 az --version
 ```
 
-Melden Sie sich bei der Abonnement-ID an, in der der Recovery Services-Tresor und die VM vorhanden sind:
+Melden Sie sich bei der Abonnement-ID an, die den Recovery Services-Tresor und die VM enthält:
 
 ```azurecli
 az account set -s {subscriptionID}
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 Wenn sich die VM nicht in derselben Ressourcengruppe wie der Tresor befindet, verweist **ResourceGroup** auf die Ressourcengruppe, in der der Tresor erstellt wurde. Geben Sie anstelle des VM-Namens die VM-ID wie folgt an.
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Ändern des Schutzes für bereits gesicherte VMs mit Azure CLI
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>Wiederherstellen von Datenträgern mit Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Ausschließliches Wiederherstellen von Betriebssystemdatenträgern mit Azure CLI
@@ -289,11 +286,32 @@ Die Funktionalität der selektiven Datenträgersicherung wird für klassische un
 
 Die Wiederherstellungsoptionen **Neue VM erstellen** und **Vorhandene ersetzen** werden für den virtuellen Computer, für den die Funktionalität der selektiven Datenträgersicherung aktiviert ist, nicht unterstützt.
 
+Zurzeit unterstützt die Azure VM-Sicherung keine VMs mit angefügten Ultra-Datenträgern oder freigegebenen Datenträgern. Eine selektive Datenträgersicherung kann in Fällen, die den Datenträger ausschließen und die VM sichern, nicht verwendet werden.
+
 ## <a name="billing"></a>Abrechnung
 
 Die Sicherung virtueller Azure-Computer folgt dem vorhandenen, [hier](https://azure.microsoft.com/pricing/details/backup/) im Detail erläuterten Preismodell.
 
-Die **Kosten der geschützten Instanz (PI, Protected Instance)** werden nur dann für den Betriebssystemdatenträger berechnet, wenn Sie sich für die Sicherung mithilfe der Option **Nur Betriebssystemdatenträger** entscheiden.  Wenn Sie die Sicherung konfigurieren und mindestens einen Datenträger auswählen, werden die PI-Kosten für alle Datenträger berechnet, die dem virtuellen Computer angefügt sind. Die **Sicherungsspeicherkosten** werden nur auf der Grundlage der eingeschlossenen Datenträger berechnet, sodass Sie bei den Speicherkosten sparen. Die **Momentaufnahmenkosten** werden immer für alle Datenträger der VM (ein- und ausgeschlossene) berechnet.  
+Die **Kosten der geschützten Instanz (PI, Protected Instance)** werden nur dann für den Betriebssystemdatenträger berechnet, wenn Sie sich für die Sicherung mithilfe der Option **Nur Betriebssystemdatenträger** entscheiden.  Wenn Sie die Sicherung konfigurieren und mindestens einen Datenträger auswählen, werden die PI-Kosten für alle Datenträger berechnet, die dem virtuellen Computer angefügt sind. Die **Sicherungsspeicherkosten** werden nur auf der Grundlage der eingeschlossenen Datenträger berechnet, sodass Sie bei den Speicherkosten sparen. Die **Momentaufnahmenkosten** werden immer für alle Datenträger der VM (ein- und ausgeschlossene) berechnet.
+
+Wenn Sie das Feature „Regionsübergreifende Replikation“ (Cross Region Restore, CRR) gewählt haben, werden die [CRR-Preise](https://azure.microsoft.com/pricing/details/backup/) auf die Kosten für Sicherungsspeicher (nach Ausschluss des Datenträgers) angewendet.
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Wie werden die PI-Kosten nur für die Sicherung des Betriebssystemdatenträgers in Windows und Linux berechnet?
+
+Die PI-Kosten werden basierend auf der tatsächlichen (genutzten) Größe der VM berechnet.
+
+- Windows: Die Berechnung des genutzten Speicherplatzes basiert auf dem Laufwerk, auf dem das Betriebssystem gespeichert ist (normalerweise Laufwerk C:).
+- Linux: Die Berechnung des genutzten Speicherplatzes basiert auf dem Gerät, auf dem das Stammdateisystem ( / ) eingebunden ist.
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>Ich habe nur die Sicherung des Betriebssystemdatenträgers konfiguriert. Warum wird die Momentaufnahme für alle Datenträger ausgeführt?
+
+Mithilfe der Features für selektive Datenträgersicherung können Sie die Speicherkosten für den Sicherungstresor einsparen, indem Sie die in der Sicherung enthaltenen Datenträger härten. Allerdings wird die Momentaufnahme für alle Datenträger erstellt, die an die VM angefügt sind. Deshalb werden die Momentaufnahmenkosten immer für alle Datenträger der VM (ein- und ausgeschlossene) berechnet. Weitere Informationen finden Sie unter [Abrechnung](#billing).
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>Ich kann die Sicherung für den virtuellen Azure-Computer durch Ausschließen des Ultra-Datenträgers oder der an die VM angefügten freigegebenen Datenträger nicht konfigurieren.
+
+Das Feature „Selektive Datenträgersicherung“ ist eine Funktion, die basierend auf der Lösung „Sicherung virtueller Azure-Computer“ bereitgestellt wird. Zurzeit unterstützt die Azure VM-Sicherung keine VMs mit angefügtem Ultra-Datenträger oder freigegebenen Datenträgern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
