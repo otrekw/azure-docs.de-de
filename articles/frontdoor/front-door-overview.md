@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: 039e5b94bbd9d3b6c3edcb92eff88e7a9931205d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448729"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773449"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 
@@ -56,7 +56,7 @@ Wichtige Features von Front-Door:
 
 * Definieren Ihrer eigenen **[benutzerdefinierten Domäne](front-door-custom-domain.md)** . 
 
-* Anwendungssicherheit mit benutzerdefinierter **[WAF-Regeln (Web Application Firewall )](../web-application-firewall/overview.md)** und **[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)** .
+* Anwendungssicherheit mit integrierter **[Web Application Firewall (WAF)](../web-application-firewall/overview.md)** .
 
 * Umleiten von HTTP-Datenverkehr an HTTPS mit **[URL-Redirect](front-door-url-redirect.md)** .
 
