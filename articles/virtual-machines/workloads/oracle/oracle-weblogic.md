@@ -1,6 +1,6 @@
 ---
-title: Lösungen zu Oracle WebLogic Server in Azure
-description: Erfahren Sie, wie Oracle WebLogic Server in Microsoft Azure ausgeführt wird.
+title: Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Machines
+description: Erfahren Sie, wie Oracle WebLogic Server in Microsoft Azure Virtual Machines ausgeführt wird.
 services: virtual-machines-linux
 documentationcenter: ''
 author: rezar
@@ -11,16 +11,16 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2020
+ms.date: 09/23/2020
 ms.author: rezar
-ms.openlocfilehash: e408f9e245fb78b475a194bc0db6f1edfdf85b41
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274366"
 ---
-# <a name="solutions-for-running-oracle-weblogic-server-on-azure"></a>Lösungen für die Ausführung von Oracle WebLogic Server in Azure
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Machines gibt es?
 
 Auf dieser Seite werden die Lösungen zum Ausführen von Oracle WebLogic Server (WLS) auf virtuellen Azure-Computern beschrieben. Diese Lösungen werden gemeinsam von Oracle und Microsoft entwickelt.
 

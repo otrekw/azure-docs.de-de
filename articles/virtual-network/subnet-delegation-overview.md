@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2019
 ms.author: kumud
-ms.openlocfilehash: b33ff808b802b6848e2d5debaf515a73bf21a1bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fbb683754aed5b2a2e6e9c022713b7e87ad9ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74281064"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329206"
 ---
 # <a name="what-is-subnet-delegation"></a>Was ist die Subnetzdelegierung?
 
@@ -51,6 +51,7 @@ Jeder Azure-Dienst definiert ein eigenes Bereitstellungsmodell, in dem diese def
 - Vorgabe der Mindestanzahl von IP-Adressen im delegierten Subnetz
 - Vorgabe des IP-Adressbereichs im delegierten Subnetz aus dem privaten IP-Adressbereich (10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12)
 - Vorgabe, dass die benutzerdefinierte DNS-Konfiguration einen Azure DNS-Eintrag besitzt
+- Vorgabe, dass die Delegierung entfernt wird, bevor das Subnetz oder virtuelle Netzwerk gelöscht werden kann.
 
 Eingefügte Dienste können folgendermaßen auch eigene Richtlinien hinzufügen:
 - **Sicherheitsrichtlinien:** Sammlung von Sicherheitsregeln, die für einen bestimmten Dienst erforderlich sind
