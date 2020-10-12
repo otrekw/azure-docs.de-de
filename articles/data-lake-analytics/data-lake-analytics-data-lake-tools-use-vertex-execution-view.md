@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 2fdce38b19cd38439baa5d640707d159cd713657
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8688af24e2b67f0e21de8344188b9a946f3258b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331946"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Verwenden der Scheitelpunktausführungsansicht in Data Lake Tools für Visual Studio
 Erfahren Sie, wie Scheitelpunktausführungsansicht zum Prüfen der Data Lake Analytics-Aufträge verwenden können.
@@ -20,20 +20,20 @@ Erfahren Sie, wie Scheitelpunktausführungsansicht zum Prüfen der Data Lake Ana
 ## <a name="open-the-vertex-execution-view"></a>Öffnen Sie die Scheitelpunktausführungsansicht
 Öffnen Sie in Data Lake Tools für Visual Studio einen U-SQL-Auftrag. Klicken Sie links unten auf **Vertexausführungsansicht**. Sie werden möglicherweise aufgefordert, zuerst Profile zu laden. Dies kann abhängig von Ihrer Netzwerkkonnektivität einige Zeit in Anspruch nehmen.
 
-![Vertexausführungsansicht in Data Lake Analytics Tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
+![Screenshot der Scheitelpunktausführungsansicht in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
 ## <a name="understand-vertex-execution-view"></a>Grundlegendes zur Vertexausführungsansicht
 Die Vertexausführungsansicht hat drei Teile:
 
-![Vertexausführungsansicht in Data Lake Analytics Tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
+![Screenshot der Scheitelpunktausführungsansicht mit hervorgehobener Vertexauswahl und hervorgehobenen Bereichen in der Mitte oben und unten.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
 In der **Vertexauswahl** links können Sie Vertices nach Features auswählen (z.B. die zehn am meisten gelesenen Datenobjekte oder nach Phase). Einer der am häufigsten verwendeten Filter ist der für die **Vertices auf dem kritischen Pfad**. Der **kritischen Pfad** ist die längste Kette von Vertices eines U-SQL-Auftrags. Das Verstehen des kritischen Pfads ist nützlich für das Optimieren Ihrer Aufträge, indem geprüft wird, welcher Vertex die meiste Zeit benötigt.
   
-![Vertexausführungsansicht in Data Lake Analytics Tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
+![Screenshot des Bereichs in der Mitte oben in der Scheitelpunktausführungsansicht mit dem Status „Wird ausgeführt“ für alle Scheitelpunkte](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
 Der obere mittlere Bereich zeigt den **Ausführungsstatus aller Vertices**.
   
-![Vertexausführungsansicht in Data Lake Analytics Tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
+![Screenshot des Bereichs in der Mitte unten in der Scheitelpunktausführungsansicht mit Informationen zu jedem Scheitelpunkt](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
 Der untere mittlere Bereich zeigt Informationen zu jedem Vertex:
 * Process Name (Prozessname): Der Name der Vertexinstanz. Er besteht aus verschiedenen Teilen in StageName|VertexName|VertexRunInstance. Beispielsweise steht der Vertex SV7_Split[62].v1 für die zweite sich in Ausführung befindliche Instanz (.v1, der Index beginnt ab 0) der Vertexnummer 62 in der Phase SV7_Split.

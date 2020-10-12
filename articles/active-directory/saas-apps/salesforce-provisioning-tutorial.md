@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Salesforce konfigurieren.
+description: Erfahren Sie, welche Schritte in Salesforce und Azure AD ausgeführt werden müssen, um Benutzerkonten von Azure AD automatisch in Salesforce bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273295"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung
 
