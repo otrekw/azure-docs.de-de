@@ -5,31 +5,28 @@ description: Erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Le
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: jordane
-author: jpe316
+ms.author: sagopal
+author: saachigopal
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea8b100e8a690cf4f400dda02f2a58b6500d5f31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328444"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 
-
 Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Basisimage verwenden können, wenn Sie trainierte Modelle mit Azure Machine Learning bereitstellen.
 
-Wenn Sie ein trainiertes Modell für einen Webdienst oder ein IoT Edge-Gerät bereitstellen, wird ein Paket erstellt, das einen Webserver enthält, der eingehende Anforderungen verarbeitet.
+Azure Machine Learning verwendet ein standardmäßiges Docker-Basisimage, wenn kein Image angegeben wird. Sie können das spezifische Docker-Image ermitteln, das mit `azureml.core.runconfig.DEFAULT_CPU_IMAGE`verwendet wird. Sie können auch Azure Machine Learning-__Umgebungen__ verwenden, um ein bestimmtes Basisimage auszuwählen oder ein von Ihnen bereitgestelltes benutzerdefiniertes Image zu verwenden.
 
-Azure Machine Learning stellt ein standardmäßiges Docker-Basisimage bereit, sodass es nicht erforderlich ist, dass Sie ein solches Image erstellen. Sie können auch Azure Machine Learning-__Umgebungen__ verwenden, um ein bestimmtes Basisimage auszuwählen oder ein von Ihnen bereitgestelltes benutzerdefiniertes Image zu verwenden.
+Ein Basisimage wird als Ausgangspunkt verwendet, wenn ein Image für eine Bereitstellung erstellt wird. Es stellt das zugrunde liegende Betriebssystem und die Komponenten zur Verfügung. Der Bereitstellungsprozess fügt dann dem Image zusätzliche Komponenten wie Ihr Modell, Ihre Conda-Umgebung und andere Objekte hinzu.
 
-Ein Basisimage wird als Ausgangspunkt verwendet, wenn ein Image für eine Bereitstellung erstellt wird. Es stellt das zugrunde liegende Betriebssystem und die Komponenten zur Verfügung. Der Bereitstellungsprozess fügt dann dem Image zusätzliche Komponenten wie Ihr Modell, Ihre Conda-Umgebung und andere Objekte hinzu, bevor es bereitgestellt wird.
-
-In der Regel erstellen Sie ein benutzerdefiniertes Basisimage, wenn Sie Docker dazu verwenden möchten, Ihre Abhängigkeiten zu verwalten, eine strengere Kontrolle über Komponentenversionen zu behalten oder während der Bereitstellung Zeit zu sparen. Beispielsweise können Sie auf eine bestimmte Version von Python, Conda oder einer anderen Komponente standardisieren. Möglicherweise möchten Sie auch die von Ihrem Modell benötigte Software installieren, bei der der Installationsprozess sehr lange dauert. Die Installation der Software beim Erstellen des Basisimages bedeutet, dass Sie diese nicht für jede Bereitstellung installieren müssen.
+In der Regel erstellen Sie ein benutzerdefiniertes Basisimage, wenn Sie Docker dazu verwenden möchten, Ihre Abhängigkeiten zu verwalten, eine strengere Kontrolle über Komponentenversionen zu behalten oder während der Bereitstellung Zeit zu sparen. Möglicherweise möchten Sie auch die von Ihrem Modell benötigte Software installieren, bei der der Installationsprozess sehr lange dauert. Die Installation der Software beim Erstellen des Basisimages bedeutet, dass Sie diese nicht für jede Bereitstellung installieren müssen.
 
 > [!IMPORTANT]
 > Bei der Bereitstellung eines Modells können Sie Kernkomponenten wie den Webserver oder IoT Edge-Komponenten nicht überschreiben. Diese Komponenten bieten eine bekannte Arbeitsumgebung, die von Microsoft getestet und unterstützt wird.
@@ -46,7 +43,7 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 
 * Eine Azure Machine Learning-Arbeitsgruppe. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 * Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Ein [Azure Container Registry](/azure/container-registry) oder eine andere Docker-Registrierung, die über das Internet zugänglich ist.
 * Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__-Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
@@ -62,8 +59,6 @@ Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Conta
     > [!WARNING]
     > Die Azure Container Registry für Ihren Arbeitsbereich wird __erstellt, wenn Sie ein Modell zum ersten Mal über den Arbeitsbereich trainieren oder bereitstellen__. Wenn Sie einen neuen Arbeitsbereich, aber kein Training oder Modell erstellt haben, existiert für den Arbeitsbereich keine Azure Container Registry.
 
-    Informationen zum Abrufen des Namens der Azure Container Registry für Ihren Arbeitsbereich finden Sie im Abschnitt [Abrufen von Informationen aus der Container Registry](#getname) in diesem Artikel.
-
     Wenn Sie Images verwenden, die in einer __eigenständigen Containerregistrierung__ gespeichert sind, müssen Sie einen Dienstprinzipal konfigurieren, der mindestens Leserechte hat. Sie geben dann die Dienstprinzipal-ID (Benutzername) und das Kennwort an jeden weiter, der Images aus der Registrierung verwendet. Die Ausnahme ist, wenn Sie die Containerregistrierung öffentlich zugänglich machen.
 
     Informationen zum Erstellen einer privaten Azure Container Registry finden Sie unter [Erstellen einer privaten Containerregistrierung](/azure/container-registry/container-registry-get-started-azure-cli).
@@ -72,12 +67,29 @@ Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Conta
 
 * Azure Container Registry und Imageinformationen: Geben Sie den Imagenamen an jeden weiter, der ihn verwenden muss. Beispielsweise wird ein Image namens `myimage`, das in einer Registrierung namens `myregistry` gespeichert ist, als `myregistry.azurecr.io/myimage` referenziert, wenn das Image für die Modellimplementierung verwendet wird.
 
-* Anforderungen an Images: Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
+### <a name="image-requirements"></a>Bildanforderungen
 
-    * Ubuntu 16.04 oder höher.
-    * Conda 4.5.# oder höher.
-    * Python 3.5.#, 3.6.# oder 3.7.#
+Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
+* Ubuntu 16.04 oder höher.
+* Conda 4.5.# oder höher.
+* Python 3.5 oder höher.
 
+Um Datasets zu verwenden, installieren Sie das libfuse-dev-Paket. Stellen Sie außerdem sicher, dass Sie ggf. erforderliche Benutzerspeicherpakete installieren.
+
+Azure ML verwaltet eine Reihe von CPU- und GPU-Basisimages, die in Microsoft-Container Registry veröffentlicht werden, die Sie optional nutzen (oder darauf verweisen) können, anstatt Ihr eigenes benutzerdefiniertes Image zu erstellen. Die Dockerfile-Dateien für diese Images finden Sie im GitHub-Repository [Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers).
+
+Für GPU-Images bietet Azure ML derzeit sowohl cuda9- als auch cuda10-Basisimages. Die wichtigsten Abhängigkeiten, die in diesen Basisimages installiert werden, sind:
+
+| Abhängigkeiten | IntelMPI-CPU | OpenMPI-CPU | IntelMPI-GPU | OpenMPI-GPU |
+| --- | --- | --- | --- | --- |
+| miniconda | ==4.5.11 | ==4.5.11 | ==4.5.11 | ==4.5.11 |
+| mpi | intelmpi==2018.3.222 |openmpi==3.1.2 |intelmpi==2018.3.222| openmpi==3.1.2 |
+| cuda | - | - | 9.0/10.0 | 9.0/10.0/10.1 |
+| cudnn | - | - | 7.4/7.5 | 7.4/7.5 |
+| nccl | - | - | 2.4 | 2.4 |
+| Git | 2.7.4 | 2.7.4 | 2.7.4 | 2.7.4 |
+
+Die CPU-Images werden aus Ubuntu 16.04 erstellt. Die GPU-Images für cuda9 werden aus nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04 erstellt. Die GPU-Images für cuda10 werden aus nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 erstellt.
 <a id="getname"></a>
 
 ### <a name="get-container-registry-information"></a>Abrufen von Informationen aus der Container Registry
@@ -117,7 +129,7 @@ Wenn Sie bereits Modelle mit Azure Machine Learning trainiert oder bereitgestell
 
 ### <a name="build-a-custom-base-image"></a>Erstellen eines benutzerdefinierten Basisimages
 
-Die Schritte in diesem Abschnitt führen zur Erstellung eines benutzerdefinierten Docker-Images in Ihrer Azure Container Registry.
+Die Schritte in diesem Abschnitt führen zur Erstellung eines benutzerdefinierten Docker-Images in Ihrer Azure Container Registry. Beispiele für Dockerfile-Dateien finden Sie im GitHub-Repository [Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers)).
 
 1. Erstellen Sie eine neue Textdatei mit dem Namen `Dockerfile`, und verwenden Sie den folgenden Text als Inhalt:
 
@@ -131,11 +143,12 @@ Die Schritte in diesem Abschnitt führen zur Erstellung eines benutzerdefinierte
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
+    ENV DEBIAN_FRONTEND=noninteractive
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
-        apt-get install -y fuse \
-        apt-get clean && \
+        apt-get install -y fuse && \
+        apt-get clean -y && \
         rm -rf /var/lib/apt/lists/*
 
     RUN useradd --create-home dockeruser
@@ -206,7 +219,7 @@ Microsoft stellt mehrere Docker-Images in einem öffentlich zugänglichen Reposi
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Enthält ONNX Runtime für CPU-Rückschlüsse |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Enthält ONNX Runtime und CUDA für GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Enthält ONNX Runtime und TensorRT für GPU |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Enthält ONNX Runtime und OpenVINO für Intel<sup></sup> Vision Accelerator Design auf Basis von Movidius<sup>TM</sup> MyriadX VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm` | Enthält ONNX Runtime und OpenVINO für Intel<sup></sup> Vision Accelerator Design auf Basis von Movidius<sup>TM</sup> MyriadX VPUs |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Enthält ONNX Runtime und OpenVINO für Intel<sup></sup> Movidius<sup>TM</sup> USB-Sticks |
 
 Weitere Informationen zu ONNX Runtime-Basisimages finden Sie im Abschnitt zur [ONNX Runtime-Dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) im GitHub-Repository.
@@ -338,4 +351,4 @@ Weitere Informationen zur Bereitstellung eines Modells mit der ML-CLI finden Sie
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr darüber, [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
-* Erfahren Sie, wie ein [Trainieren und Bereitstellen von Machine Learning-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops) erfolgt.
+* Erfahren Sie, wie ein [Trainieren und Bereitstellen von Machine Learning-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops&preserve-view=true) erfolgt.

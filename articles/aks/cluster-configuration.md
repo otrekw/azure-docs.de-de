@@ -3,28 +3,30 @@ title: Clusterkonfiguration in Azure Kubernetes Services (AKS)
 description: Erfahren Sie, wie Sie in Azure Kubernetes Service (AKS) einen Cluster konfigurieren.
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255297"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
 Im Rahmen der Erstellung eines AKS-Clusters müssen Sie möglicherweise Ihre Clusterkonfiguration an Ihre Anforderungen anpassen. In diesem Artikel werden einige Optionen zur Anpassung Ihres AKS-Clusters vorgestellt.
 
-## <a name="os-configuration-preview"></a>Betriebssystemkonfiguration (Vorschau)
+## <a name="os-configuration"></a>Betriebssystemkonfiguration
 
-AKS unterstützt jetzt in der Vorschau Ubuntu 18.04 als Knotenbetriebssystem. In der Vorschauphase sind sowohl Ubuntu 16.04 als auch Ubuntu 18.04 verfügbar.
+AKS unterstützt jetzt Ubuntu 18.04 als Knotenbetriebssystem (OS) in allgemeiner Verfügbarkeit für Cluster in Kubernetes-Versionen, die höher als 1.18.8 sind. Für Versionen unter 1.18.x ist AKS Ubuntu 16.04 weiterhin das Standardbasisimage. Ab Kubernetes v1.18.x ist die Standardbasis AKS Ubuntu 18.04.
 
 > [!IMPORTANT]
-> Knotenpools, die auf Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein erforderliches `AKS Ubuntu 18.04`-Knotenimage. Knotenpools auf einer unterstützten Kubernetes-Version vor 1.18 erhalten `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.18 oder höher aktualisiert wird.
+> Knotenpools, die unter Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools auf einer unterstützten Kubernetes-Version vor 1.18 erhalten `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.18 oder höher aktualisiert wird.
 > 
 > Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden. Informieren Sie sich über das [Testen von Ubuntu 18.04-Knotenpools](#use-aks-ubuntu-1804-existing-clusters-preview).
+
+Im folgenden Abschnitt wird erläutert, wie Sie AKS Ubuntu 18.04 auf Clustern, die noch keine Kubernetes-Version 1.18.x oder höher verwenden oder die erstellt wurden, bevor diese Funktion allgemein verfügbar wurde, mithilfe der Vorschau der Betriebssystemkonfiguration verwenden und testen.
 
 Die folgenden Ressourcen müssen installiert sein:
 
@@ -44,13 +46,13 @@ Registrieren Sie das Feature `UseCustomizedUbuntuPreview`:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure unterstützt [virtuelle Computer (VMs) der Generation 2 (Gen2)](../virtual
 VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht mehr die BIOS-basierte Architektur von VMs der Generation 1.
 Nur bestimmte SKUs und Größen unterstützen Gen2-VMs. Überprüfen Sie die [Liste der unterstützten Größen](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes), um festzustellen, ob Ihre SKU Gen2 unterstützt oder erfordert.
 
-Zusätzlich unterstützen nicht alle VM-Images Gen2. Auf AKS-Gen2 wird für VMs das neue [AKS Ubuntu 18.04-Image](#os-configuration-preview) verwendet. Dieses Image unterstützt alle Gen2-SKUs und -Größen.
+Zusätzlich unterstützen nicht alle VM-Images Gen2. Auf AKS-Gen2 wird für VMs das neue [AKS Ubuntu 18.04-Image](#os-configuration) verwendet. Dieses Image unterstützt alle Gen2-SKUs und -Größen.
 
 Um Gen2-VMs während der Vorschauphase verwenden zu können, benötigen Sie Folgendes:
 - Installation der `aks-preview`-CLI-Erweiterung
@@ -191,13 +193,13 @@ Registrieren Sie das Feature `Gen2VMPreview`:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ Registrieren Sie das Feature `EnableEphemeralOSDiskPreview`:
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+Ein kurzlebiges Betriebssystem erfordert mindestens Version 0.4.63 der aks-preview-CLI-Erweiterung.
 
 Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in neuen Clustern (Vorschauversion)
 
-Konfigurieren Sie den Cluster für die Verwendung kurzlebiger Betriebssystemdatenträger bei der Clustererstellung. Verwenden Sie das Flag `--aks-custom-headers`, um die Art des Betriebssystemdatenträgers für den neuen Cluster auf ein kurzlebiges Betriebssystem festzulegen.
+Konfigurieren Sie den Cluster für die Verwendung kurzlebiger Betriebssystemdatenträger bei der Clustererstellung. Verwenden Sie das Flag `--node-osdisk-type`, um die Art des Betriebssystemdatenträgers für den neuen Cluster auf ein kurzlebiges Betriebssystem festzulegen.
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Wenn Sie einen herkömmlichen Cluster mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. Sie können auch weitere kurzlebige Betriebssystemknotenpools hinzufügen, wie im Anschluss beschrieben.
+Wenn Sie einen herkömmlichen Cluster mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--node-osdisk-type` aus oder geben `--node-osdisk-type=Managed` an. Sie können auch weitere kurzlebige Betriebssystemknotenpools hinzufügen, wie im Anschluss beschrieben.
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in vorhandenen Clustern (Vorschauversion)
-Konfigurieren Sie einen neuen Knotenpool für die Verwendung kurzlebiger Betriebssystemdatenträger. Verwenden Sie das Flag `--aks-custom-headers`, um die Art des Betriebssystemdatenträgers für diesen Knotenpool festzulegen.
+Konfigurieren Sie einen neuen Knotenpool für die Verwendung kurzlebiger Betriebssystemdatenträger. Verwenden Sie das Flag `--node-osdisk-type`, um die Art des Betriebssystemdatenträgers für diesen Knotenpool festzulegen.
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > Mit einem kurzlebigen Betriebssystem können Sie VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Im Fall von AKS werden in der Betriebssystemdatenträger-Konfiguration des Standardknotens 100 GiB verwendet. Sie benötigen also eine VM-Größe, deren Cache größer als 100 GiB ist. Die Cachegröße von „Standard_DS2_v2“ beträgt 86 GiB und ist somit nicht ausreichend. Standard_DS3_v2 weist eine Cachegröße von 172 GiB auf und ist damit groß genug. Sie können auch `--node-osdisk-size` verwenden, um die Standardgröße des Betriebssystemdatenträgers zu verringern. Die Mindestgröße für AKS-Images beträgt 30 GiB. 
 
-Wenn Sie Knotenpools mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+Wenn Sie Knotenpools mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--node-osdisk-type` weg.
 
 ## <a name="custom-resource-group-name"></a>Name der benutzerdefinierten Ressourcengruppe
 

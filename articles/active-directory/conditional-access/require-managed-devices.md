@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258641"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -109,7 +109,7 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
    1. Wählen Sie **Fertig**aus.
-1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365 (Vorschau)** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365** aus.
 1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
    1. Schließen Sie **Android** und **iOS** ein.
