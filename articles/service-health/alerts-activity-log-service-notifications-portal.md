@@ -1,14 +1,14 @@
 ---
 title: Empfangen von Aktivitätsprotokollwarnungen zu Azure-Dienstbenachrichtigungen über das Azure-Portal
-description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn Ereignisse beim Azure-Dienst eintreten.
+description: Erfahren Sie, wie Sie über das Azure-Portal Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen einrichten.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289785"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen über das Azure-Portal
 ## <a name="overview"></a>Übersicht

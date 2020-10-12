@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992783"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289768"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurieren von Azure Defender für Storage
 
@@ -23,11 +23,11 @@ Azure Defender für Storage ermöglicht die Nutzung intelligenter Sicherheitsfun
 
 Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
-Der Dienst erfasst Ressourcenprotokolle von an Blob Storage und Azure Files (Vorschauversion) gesendete Lese-, Schreib- und Löschanforderungen, um Bedrohungen zu erkennen. Wenn Sie Warnungen von Azure Defender untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md#configure-logging).
+Der Dienst erfasst Ressourcenprotokolle von an Blob Storage und Azure Files gesendete Lese-, Schreib- und Löschanforderungen, um Bedrohungen zu erkennen. Wenn Sie Warnungen von Azure Defender untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Azure Defender für Storage ist derzeit für Blob Storage, Azure Files (Vorschau) und Azure Data Lake Storage Gen2 (Vorschau) verfügbar. Zu den Kontotypen, die Azure Defender unterstützen, gehören Konten vom Typ „Allgemein v2“ sowie Blockblob- und Blob Storage-Konten. Azure Defender für Storage ist in allen öffentlichen Clouds und Clouds der US-Regierungsbehörden verfügbar, nicht aber in anderen Sovereign Cloud- oder Azure Government-Cloudregionen.
+Azure Defender für Storage ist derzeit für Blob Storage, Azure Files und Azure Data Lake Storage Gen2 verfügbar. Zu den Kontotypen, die Azure Defender unterstützen, gehören Konten vom Typ „Allgemein v2“ sowie Blockblob- und Blob Storage-Konten. Azure Defender für Storage ist in allen öffentlichen Clouds und Clouds der US-Regierungsbehörden verfügbar, nicht aber in anderen Sovereign Cloud- oder Azure Government-Cloudregionen.
 
 Konten mit für Data Lake Storage aktivierten hierarchischen Namespaces unterstützen Transaktionen, die sowohl die Azure Blob Storage-APIs als auch die Data Lake Storage-APIs verwenden. Azure-Dateifreigaben unterstützen Transaktionen über SMB.
 
@@ -37,8 +37,8 @@ Die folgende Liste biete eine Übersicht über die Verfügbarkeit von Azure Defe
 
 - Status des Release:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (allgemeine Verfügbarkeit)
-  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Die Vorschauversion unterstützt SMB- und REST-Transaktionen.)
-  - Azure Data Lake Storage Gen2 (Vorschauversion)
+  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (allgemeine Verfügbarkeit)
+  - Azure Data Lake Storage Gen2 (allgemeine Verfügbarkeit)
 - Clouds:<br>
     ✔ Kommerzielle Clouds<br>
     ✔ US Gov<br>
