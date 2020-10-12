@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971175"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539893"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Zuweisen einer Rolle zu einer Gruppe mithilfe von Privileged Identity Management
 
@@ -35,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie einer Gruppe mithilfe von Azure AD 
 
 1. Wählen Sie eine Rolle und dann eine Gruppe aus. Es werden nur Gruppen angezeigt, die für die Rollenzuweisung berechtigt sind (Gruppen, denen Rollen zugewiesen werden können), nicht alle Gruppen.
 
-    ![Auswählen des Benutzers, dem Sie die Rolle zuweisen](./media/roles-groups-pim-eligible/select-member.png)
+    ![Screenshot der Seite „Zuweisungen hinzufügen“ mit den hervorgehobenen Abschnitten „Rolle auswählen“ und „Mitglied(er) auswählen“.](./media/roles-groups-pim-eligible/select-member.png)
 
 1. Wählen Sie die gewünschte Mitgliedschaftseinstellung aus. Wählen Sie für Rollen, die eine Aktivierung erfordern, die Option **Berechtigt** aus. Standardmäßig ist der Benutzer permanent berechtigt, doch Sie können auch eine Start- und Endzeit für die Berechtigung des Benutzers festlegen. Wenn Sie fertig sind, klicken Sie auf „Speichern“ und „Hinzufügen“, um die Rollenzuweisung abzuschließen.
 

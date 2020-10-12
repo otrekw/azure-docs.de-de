@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321406"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQ
 
 Sowohl in serverlosen als auch in bereitgestellten Computedatenbanken können Cacheeinträge entfernt werden, wenn der gesamte verfügbare Arbeitsspeicher verwendet wird.
 
-Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.  Außerdem kann es nach Ende der Benutzeraktivität zu einer zusätzlichen Verzögerung kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen inaktive Datensätze generiert, die zum Löschen markiert sind. Sie werden jedoch erst physisch gelöscht, wenn der inaktive Cleanupprozess inaktiver Datensätze ausgeführt wird, der das Lesen von Datenseiten in den Cache beinhalten kann.
+Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.  Außerdem kann es nach Ende der Benutzeraktivität zu einer zusätzlichen Verzögerung kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen und QDS-Cleanuptasks inaktive Datensätze generiert, die zum Löschen markiert sind. Physisch werden sie jedoch erst gelöscht, wenn der inaktive Cleanupprozess inaktiver Datensätze ausgeführt wird, der das Lesen von Datenseiten in den Cache umfassen kann.
 
 #### <a name="cache-hydration"></a>Cachehydration
 
