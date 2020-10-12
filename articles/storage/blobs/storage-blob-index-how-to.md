@@ -1,6 +1,6 @@
 ---
-title: Verwenden des Blobindex zum Verwalten und Suchen von Daten in Azure Blob Storage
-description: Hier finden Sie Beispiele für die Verwendung von Blobindextags zum Kategorisieren, Verwalten und Abfragen von Daten, um Blobobjekte zu ermitteln.
+title: Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure Blob Storage
+description: Hier finden Sie Beispiele für die Verwendung von Blobindextags zum Kategorisieren, Verwalten und Abfragen von Daten für Blobobjekte.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
@@ -9,18 +9,18 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 41a21545939c5d15c8e2c4034a9648e98aa5a73e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280282"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschauversion) zum Verwalten und Suchen von Daten in Azure Blob Storage
 
 Blobindextags kategorisieren Daten in Ihrem Speicherkonto mithilfe von Schlüssel-Wert-Tagattributen. Diese Tags werden automatisch indiziert und als abfragbarer mehrdimensionaler Index verfügbar gemacht, um Daten einfach finden zu können. In diesem Artikel wird erörtert, wie Sie Daten mithilfe von Blobindextags festlegen, abrufen und suchen.
 
-Weitere Informationen zum Blobindex finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
+Weitere Informationen zur Blobindexfunktion finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 > [!NOTE]
 > Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
@@ -86,7 +86,7 @@ static async Task BlobIndexTagsOnCreate()
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
 
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -139,7 +139,7 @@ static async Task BlobIndexTagsExample()
           AppendBlobClient appendBlob = container.GetAppendBlobClient("myAppendBlob1.logs");
           await appendBlob.CreateAsync();
 
-          // Set or Update Blob Index tags on existing blob
+          // Set or update blob index tags on existing blob
           Dictionary<string, string> tags = new Dictionary<string, string>
           {
               { "Project", "Contoso" },
@@ -148,7 +148,7 @@ static async Task BlobIndexTagsExample()
           };
           await appendBlob.SetTagsAsync(tags);
 
-          // Get Blob Index tags
+          // Get blob index tags
           Response<IDictionary<string, string>> tagsResponse = await appendBlob.GetTagsAsync();
           Console.WriteLine(appendBlob.Name);
           foreach (KeyValuePair<string, string> tag in tagsResponse.Value)
@@ -156,7 +156,7 @@ static async Task BlobIndexTagsExample()
               Console.WriteLine($"{tag.Key}={tag.Value}");
           }
 
-          // List Blobs with all options returned including Blob Index tags
+          // List blobs with all options returned including blob index tags
           await foreach (BlobItem blobItem in container.GetBlobsAsync(BlobTraits.All))
           {
               Console.WriteLine(Environment.NewLine + blobItem.Name);
@@ -166,7 +166,7 @@ static async Task BlobIndexTagsExample()
               }
           }
 
-          // Delete existing Blob Index tags by replacing all tags
+          // Delete existing blob index tags by replacing all tags
           Dictionary<string, string> noTags = new Dictionary<string, string>();
           await appendBlob.SetTagsAsync(noTags);
 
@@ -205,7 +205,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
-      // Blob Index queries and selection
+      // Blob index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -227,7 +227,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
            
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -286,7 +286,7 @@ static async Task FindBlobsByTagsExample()
 
 3. Wählen Sie *Regel hinzufügen* aus, und füllen Sie dann die Felder des Formulars „Aktionssatz“ aus.
 
-4. Wählen Sie „Filtersatz“ aus, um optionale Filter für „Präfixübereinstimmung“ und „Blobindexübereinstimmung“ hinzuzufügen. ![Hinzufügen von Filtern für Blobindextags für die Lebenszyklusverwaltung](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Wählen Sie **Filtersatz** aus, um optionale Filter für die Präfixübereinstimmung und Blobindexübereinstimmung hinzuzufügen. ![Hinzufügen von Filtern für Blobindextags für die Lebenszyklusverwaltung](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
 
 5. Wählen Sie **Überprüfen + hinzufügen** aus, um die Regeleinstellungen zu überprüfen. ![Beispiel für eine Regel zur Lebenszyklusverwaltung mit dem Filter für Blobindextags](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
@@ -299,6 +299,5 @@ Richtlinien für die [Lebenszyklusverwaltung](storage-lifecycle-management-conce
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über den Blobindex. Sehen Sie sich hierzu [Verwalten und Ermitteln von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md ) an.
-
-Erfahren Sie mehr über die Lebenszyklusverwaltung. Sehen Sie sich hierzu [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md) an.
+ - Erfahren Sie mehr über den Blobindex unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md ).
+ - Erfahren Sie mehr über die Lebenszyklusverwaltung. Sehen Sie sich hierzu [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md) an.

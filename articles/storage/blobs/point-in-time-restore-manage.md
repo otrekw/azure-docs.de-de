@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280469"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Durchführen einer Point-in-Time-Wiederherstellung von Blockblobdaten
 
@@ -54,9 +54,7 @@ Die folgende Abbildung zeigt ein Speicherkonto, das für die Point-in-Time-Wiede
 
 Um die Point-in-Time-Wiederherstellung mit PowerShell zu konfigurieren, installieren Sie zunächst mindestens Version 2.6.0 des Moduls [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage). Rufen Sie dann den Befehl Enable-AzStorageBlobRestorePolicy auf, um die Point-in-Time-Wiederherstellung für das Speicherkonto zu aktivieren.
 
-Im folgenden Beispiel wird vorläufiges Löschen aktiviert, die Beibehaltungsdauer für vorläufiges Löschen festgelegt, der Änderungsfeed aktiviert und dann die Point-in-Time-Wiederherstellung aktiviert. Verwenden Sie vor dem Ausführen des Beispiels das Azure-Portal oder eine Azure Resource Manager-Vorlage, um auch Blobversionsverwaltung zu aktivieren.
-
-Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen, wenn Sie das Beispiel ausführen:
+Im folgenden Beispiel wird vorläufiges Löschen aktiviert, die Beibehaltungsdauer für vorläufiges Löschen festgelegt, der Änderungsfeed und die Versionsverwaltung aktiviert und dann die Point-in-Time-Wiederherstellung aktiviert.    Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen, wenn Sie das Beispiel ausführen:
 
 ```powershell
 # Sign in to your Azure account.
@@ -71,10 +69,11 @@ Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
 
-# Enable change feed.
+# Enable change feed and versioning.
 Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -EnableChangeFeed $true
+    -EnableChangeFeed $true `
+    -IsVersioningEnabled $true
 
 # Enable point-in-time restore with a retention period of 7 days.
 # The retention period for point-in-time restore must be at least
