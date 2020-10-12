@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7bf9e7a4c17134a47cbaafbc2bde25d467c6a978
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f6bb119e5e82ce642722d0f739177fc1e4c06c25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255726"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Signagelive für die automatische Benutzerbereitstellung
 
@@ -95,11 +95,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ im Feld **Mandanten-URL** den Wert ` https://samlapi.signagelive.com/scim/v2` ein. Geben Sie im Feld **Geheimes Token** den Wert **Bearertoken** ein, der vom technischen Entwicklungsteam bereitgestellt wird. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Signagelive herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Signagelive-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
     ![Mandanten-URL und -token](common/provisioning-testconnection-tenanturltoken.png)
@@ -112,19 +112,19 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Signagelive synchronisieren** aus.
 
-    ![Benutzerzuordnungen in Signagelive](media/signagelive-provisioning-tutorial/usermapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit Signagelive synchronisieren“.](media/signagelive-provisioning-tutorial/usermapping.png)
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Signagelive synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Signagelive für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Signagelive-Benutzerattribute](media/signagelive-provisioning-tutorial/userattribute.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit sieben Zuordnungen.](media/signagelive-provisioning-tutorial/userattribute.png)
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppe mit Signagelive synchronisieren** aus.
 
-    ![Benutzerzuordnungen in Signagelive](media/signagelive-provisioning-tutorial/groupmapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Gruppen mit Signagelive synchronisieren“.](media/signagelive-provisioning-tutorial/groupmapping.png)
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Signagelive synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppenkonten in Signagelive für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Signagelive-Benutzerattribute](media/signagelive-provisioning-tutorial/groupattribute.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit drei Zuordnungen.](media/signagelive-provisioning-tutorial/groupattribute.png)
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
