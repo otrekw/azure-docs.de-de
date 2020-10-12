@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zur Azure Migrate-Servermigration
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Azure Migrate-Servermigration für das Migrieren von Computern.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050657"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275539"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
@@ -18,6 +18,28 @@ Dieser Artikel beantwortet häufige Fragen zu Azure Migrate: Servermigration“ 
 - Fragen zur [Azure Migrate-Appliance](common-questions-appliance.md)
 - Fragen zur [Ermittlung, Bewertung und Abhängigkeitsvisualisierung](common-questions-discovery-assessment.md)
 - Antworten auf Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum)
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>Konvertiert Azure Migrate auf UEFI basierende Computer in BIOS-basierte Computer und migriert Sie als virtuelle Azure-Computer der Generation 1 zu Azure?
+Von der Azure Das Servermigrationstool migriert alle UEFI-basierten Computer als virtuelle Azure-Computer der Generation 2 zu Azure. Die Konvertierung von UEFI-basierten VMs in BIOS-basierte VMS wird nicht mehr unterstützt. Beachten Sie, dass alle BIOS-basierten Computer nur als Azure-VMs der Generation 1 zu Azure migriert werden.
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>Wie kann ich UEFI-basierte Computer als virtuelle Azure-Computer der Generation 1 zu Azure migrieren?
+Von der Azure Das Servermigrationstool migriert UEFI-basierte Computer als virtuelle Azure-Computer der Generation 2 zu Azure. Wenn Sie diese zu virtuellen Computern der Azure-Generation 1 migrieren möchten, konvertieren Sie den Starttyp vor dem Starten der Replikation in BIOS, und verwenden Sie dann Azure Migrate: Servermigrationstool für die Migration zu Azure.
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>Welche Betriebssysteme werden für die Migration von UEFI-basierten Computern zu Azure unterstützt?
+
+| **Für UEFI-basierte Computer unterstützte Betriebssysteme** | **VMware ohne Agent zu Azure**                                                                                                             | **Hyper-V ohne Agent zu Azure** | **Agent-basierte VMware, physische und andere Clouds zu Azure** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019, 2016, 2012 R2, 2012                 | J                                                                                                                                         | J                              | J                                                          |
+| Windows 10 Pro, Windows 10 Enterprise                   | J                                                                                                                                         | J                              | J                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | J                                                                                                                                         | J                              | J                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | J                                                                                                                                         | J                              | J                                                          |
+| Ubuntu Server 16.04, 18.04, 19.04, 19.10                | J                                                                                                                                         | J                              | J                                                          |
+| RHEL 8.1, 8.0, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x        | J<br>                 _RHEL 8.x erfordert [manuelle Vorbereitung](https://go.microsoft.com/fwlink/?linkid=2143939)_   | J                              | J                                                          |
+| Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 6.x               | J<br>_Cent OS 8.x erfordert [manuelle Vorbereitung](https://go.microsoft.com/fwlink/?linkid=2143939)_ | J                              | J                                                          |
+| Oracle Linux 7.7, 7.7-CI                                |  J                                                                                                                                        | J                              | J                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Kann ich den Recovery Services-Tresor verwenden, der von Azure Migrate für Notfallwiederherstellungsszenarien erstellt wurde?
+Die Verwendung des Recovery Services-Tresors, der von Azure Migrate für Notfallwiederherstellungsszenarien erstellt wurde, wird nicht empfohlen. Dies kann zu Fehlern beim Starten der Replikation in Azure Migrate führen. 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Wo sollte ich die Replikationsappliance für Agent-basierte Migrationen installieren?
 
@@ -200,11 +222,6 @@ Die Azure Migrate-Servermigrationsfunktionen unterstützen derzeit nur Migration
 
 Die Replikation ohne Agent hat einige Auswirkungen auf die Leistung von VMware vCenter Server- und VMware ESXi-Hosts. Da die Replikation ohne Agent Momentaufnahmen verwendet, verbraucht sie IOPS im Speicher, sodass eine gewisse IOPS-Speicherbandbreite erforderlich ist. Wir raten davon ab, die Replikation ohne Agent zu verwenden, wenn es in Ihrer Umgebung Einschränkungen hinsichtlich Speicher oder IOPS gibt.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Kann ich eine Migration ohne Agents von UEFI-VMs zu Azure Gen 2 durchführen?
-
-Nein. Sie können die Optionen [Agent-basierte VMware-Migration](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [Hyper-V-Migration](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) oder [Migration physikalischer Server](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) verwenden, um diese VMs zu Gen 2-Azure-VMs zu migrieren.
-
-***Hinweis:*** Wählen Sie eine geeignete VM-Größe aus, die UEFI der Generation 2 in Azure unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

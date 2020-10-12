@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040593"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396245"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 2. Navigieren Sie im Bereich für die **SQL-Datenbank** oder den **SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**.
 3. Wenn Sie eine Serverüberwachungsrichtlinie einrichten möchten, wählen Sie auf dem Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** aus. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern. Eine Richtlinien für die Serverüberwachung gelten für alle vorhandenen und neu erstellten Datenbanken auf diesem Server.
 
-    ![Navigationsbereich](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![Der Screenshot zeigt den Link „Servereinstellungen anzeigen“, der auf dem Blatt für die Datenbanküberwachung hervorgehoben ist.](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. Wenn Sie die Überwachung auf Datenbankebene aktivieren möchten, ändern Sie **Überwachung** in **EIN**. Wenn die Serverüberwachung aktiviert ist, existiert die konfigurierte Datenbanküberwachung parallel zur Serverüberwachung.
 
@@ -119,7 +119,7 @@ Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbere
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Weitere Informationen zu Azure Monitor-Protokollarbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment).
+Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment).
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
@@ -163,7 +163,7 @@ Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möcht
 
 - Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie in der Datenbank oben auf der Seite **Überwachung** auf **Überwachungsprotokolle anzeigen**.
 
-    ![Navigationsbereich](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Der Screenshot zeigt die Schaltfläche „Überwachungsprotokolle anzeigen“, die auf dem Blatt für die Datenbanküberwachung hervorgehoben ist.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     Der Bereich **Überwachungsdatensätze** wird geöffnet, in dem Sie die Protokolle anzeigen können.
 
@@ -171,14 +171,14 @@ Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möcht
   - Sie können zwischen Überwachungsdatensätzen wechseln, die anhand der *Serverüberwachungsrichtlinie* oder der *Datenbanküberwachungsrichtlinie* erstellt wurden, indem Sie die Option unter **Überwachungsquelle** ändern.
   - Sie können nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen, indem Sie das Kontrollkästchen **Nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen** aktivieren.
 
-       ![Navigationsbereich]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![Der Screenshot zeigt die Optionen zum Anzeigen der Überwachungsdatensätze.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - Verwenden Sie die Systemfunktion **sys.fn_get_audit_file** (T-SQL), um die Daten der Überwachungsprotokolle im Tabellenformat zurückzugeben. Weitere Informationen zur Verwendung dieser Funktion finden Sie unter [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Verwenden von **Überwachungsdateien zusammenführen** in SQL Server Management Studio (ab SSMS 17):
     1. Wählen Sie im SSMS-Menü **Datei** > **Öffnen** > **Überwachungsdateien zusammenführen**.
 
-        ![Navigationsbereich](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![Der Screenshot zeigt die Menüoption „Überwachungsdateien zusammenführen“.](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. Das Dialogfeld **Überwachungsdateien hinzufügen** wird geöffnet. Wählen Sie eine der Optionen zum **Hinzufügen** aus, um festzulegen, ob die Überwachungsdateien von einem lokalen Datenträger zusammengeführt oder aus Azure Storage importiert werden sollen. Sie müssen Ihre Azure Storage-Details und Ihren Kontoschlüssel angeben.
 
     3. Nachdem Sie alle zusammenzuführenden Dateien hinzugefügt haben, klicken Sie auf **OK**, um die Zusammenführung abzuschließen.
@@ -218,7 +218,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 1. Öffnen Sie **Speicherdetails**. Wählen Sie im Feld **Speicherzugriffsschlüssel** die Option **Sekundär** aus, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf der Seite für die Überwachungskonfiguration auf **Speichern**.
 
-    ![Navigationsbereich](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![Der Screenshot zeigt den Prozess zum Auswählen eines sekundären Speicherzugriffsschlüssels.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Wechseln Sie zur Seite für die Speicherkonfiguration, und generieren Sie erneut den primären Zugriffsschlüssel.
 
     ![Navigationsbereich](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

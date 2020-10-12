@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a3424a42e86b47d4103dd41ca143b5bc7be3796a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 52c18f8d51f18b9bc167a99fbafda2365824dfc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312123"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler für die automatische Benutzerbereitstellung
 
@@ -92,63 +92,63 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
+    ![Screenshot der Randleiste der Zscaler-Unternehmensanwendung mit hervorgehobener Option „Bereitstellung“](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
+    ![Screenshot der Seite „Bereitstellung“, auf der der Bereitstellungsmodus auf „Automatisch“ festgelegt ist](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** wie in Schritt 6 beschrieben die **Mandanten-URL** und das **geheime Token** Ihres Zscaler-Kontos ein.
 
 6. Navigieren Sie auf der Benutzeroberfläche des Zscaler-Portals zu **Administration > Authentication Settings** (Verwaltung > Authentifizierungseinstellungen), und klicken Sie unter **Authentication Type** (Authentifizierungstyp) auf **SAML**, um die **Mandanten-URL** und das **geheime Token** abzurufen.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/secret-token-1.png)
+    ![Screenshot der Seite „Authentifizierungseinstellungen“](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
     Klicken Sie auf **Configure SAML** (SAML konfigurieren), um die Optionen für die **SAML-Konfiguration**zu öffnen.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/secret-token-2.png)
+    ![Screenshot des Dialogfelds „SAML konfigurieren“ mit aufgerufenen Textfeldern für Basis-URL und Bearertoken](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
     Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren) aus, um die **Basis-URL** und das **Bearertoken** abzurufen, und speichern Sie anschließend die Einstellungen. Kopieren Sie im Azure-Portal die **Basis-URL** in das Feld **Mandanten-URL** und das **Bearertoken** in das Feld **Geheimes Token**.
 
 7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sich zu vergewissern, dass Azure AD eine Verbindung mit Zscaler herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Zscaler-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/test-connection.png)
+    ![Screenshot des Abschnitts „Administratoranmeldeinformationen“ mit der aufgerufenen Option „Verbindung testen“](./media/zscaler-provisioning-tutorial/test-connection.png)
 
 8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/notification.png)
+    ![Screenshot des Textfelds „Benachrichtigungs-E-Mail“](./media/zscaler-provisioning-tutorial/notification.png)
 
 9. Klicken Sie auf **Speichern**.
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Users to Zscaler** (Azure Active Directory-Benutzer mit Zscaler synchronisieren) aus.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/user-mappings.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit Zscaler synchronisieren“](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zscaler synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Benutzerkonten in Zscaler für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![Screenshot: Abschnitt „Attributzuordnungen“ mit sieben Zuordnungen](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Zscaler** (Azure Active Directory-Gruppen mit Zscaler synchronisieren) aus.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/group-mappings.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Gruppen mit Zscaler synchronisieren“](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
 13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Zscaler synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Gruppen in Zscaler für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
+    ![Screenshot: Attributzuordnungen mit drei Zuordnungen](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](./../active-directory-saas-scoping-filters.md).
 
 15. Soll der Azure AD-Bereitstellungsdienst für Zscaler aktiviert werden, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/provisioning-status.png)
+    ![Screenshot, in dem die Option „Bereitstellungsstatus“ auf „Ein“ festgelegt ist](./media/zscaler-provisioning-tutorial/provisioning-status.png)
 
 16. Legen Sie die Benutzer bzw. Gruppen fest, die in Zscaler bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/scoping.png)
+    ![Screenshot der Einstellung „Bereich“ mit hervorgehobener Option „Nur zugewiesene Benutzer und Gruppen synchronisieren“](./media/zscaler-provisioning-tutorial/scoping.png)
 
 17. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-    ![Zscaler-Bereitstellung](./media/zscaler-provisioning-tutorial/save-provisioning.png)
+    ![Screenshot der Randleiste der Zscaler-Unternehmensanwendung mit aufgerufener Option „Speichern“](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Zscaler ausgeführt werden.
 

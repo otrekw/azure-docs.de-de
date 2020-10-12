@@ -4,17 +4,17 @@ description: 'Azure-Sicherheitsvergleichstest V2: Netzwerksicherheit'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329430"
 ---
-# <a name="security-control-network-security"></a>Sicherheitskontrolle: Netzwerksicherheit
+# <a name="security-control-v2-network-security"></a>Sicherheitskontrolle V2: Netzwerksicherheit
 
 Netzwerksicherheit deckt Steuerelemente zum Sichern und Schützen von Azure-Netzwerken ab. Dies umfasst das Sichern von virtuellen Netzwerken, das Einrichten privater Verbindungen, das Verhindern und Entschärfen externer Angriffe und das Sichern des DNS.
 
@@ -30,15 +30,19 @@ Beschränken oder ermöglichen Sie den Datenverkehr zwischen internen Ressourcen
 
 Verwenden Sie die adaptive Netzwerkhärtung in Azure Security Center, um Netzwerksicherheitsgruppen-Konfigurationen zu empfehlen, die Ports und Quell-IP-Adressen gemäß externer Regeln für den Netzwerk-Datenverkehr einschränken.
 
+Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen wie SSL/TLSv1, TLSv1, LM/SMBv1, WDigest, nicht signierte LDAP-Bindungen und schwache Chiffren in Kerberos zu ermitteln.
+
 - [Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [Bereitstellen und Konfigurieren von Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Adaptive Netzwerkhärtung in Azure Security Center](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Arbeitsmappe für unsichere Protokolle in Azure Sentinel](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -48,13 +52,13 @@ Verwenden Sie die adaptive Netzwerkhärtung in Azure Security Center, um Netzwer
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2: Verbinden privater Netzwerke
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-2 | – | CA-3, AC-17, MA-4 |
 
 Stellen Sie mit Azure ExpressRoute oder dem virtuellen privaten Azure-Netzwerk (VPN) private Verbindungen mit Azure-Rechenzentren und lokaler Infrastruktur in einer Housingumgebung her. ExpressRoute-Verbindungen werden nicht über das öffentliche Internet hergestellt und bieten mehr Zuverlässigkeit, eine höhere Geschwindigkeit und weniger Latenz als herkömmliche Internetverbindungen. Für Point-to-Site-VPN und Site-to-Site-VPN können Sie lokale Geräte oder Netzwerke mit einem virtuellen Netzwerk verbinden, indem Sie eine beliebige Kombination dieser VPN-Optionen und Azure ExpressRoute verwenden.
 
-Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mittels Peering virtueller Netzwerke her. Der Netzwerkdatenverkehr zwischen mittels Peering verbundenen virtuellen Netzwerken ist privat und wird im Azure-Backbone-Netzwerk verwaltet. 
+Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mittels Peering virtueller Netzwerke oder über Private Link her. Der Netzwerkdatenverkehr zwischen mittels Peering verbundenen virtuellen Netzwerken ist privat und wird im Azure-Backbone-Netzwerk verwaltet. 
 
 - [ExpressRoute-Konnektivitätsmodelle](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 - [Peering von virtuellen Netzwerken](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Private Link](../../private-link/private-link-service-overview.md)
+
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -74,7 +80,7 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Einrichten des Zugriffs über das private Netzwerk auf Azure-Dienste
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
@@ -88,7 +94,7 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -98,7 +104,7 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: Schützen von Anwendungen und Diensten vor externen Netzwerkangriffen.
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-4 | 9.5, 12.3, 12.9 | SC-5, SC-7 |
 
@@ -108,6 +114,7 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 -   Schützen Sie mit WAF-Funktionen (Web Application Firewall) in Azure Application Gateway, Azure Front Door und Azure Content Delivery Network (CDN) Ihre Anwendungen, Dienste und APIs gegen Angriffe auf Anwendungsebene. 
 
 -   Schützen Sie Ihre Ressourcen durch Aktivieren des DDoS-Standardschutzes in Ihren virtuellen Azure-Netzwerken vor DDoS-Angriffen. 
+-   Verwenden Sie Azure Security Center, um Risiken durch Fehlkonfigurationen im Zusammenhang mit den oben genannten Punkten zu erkennen. 
 
 - [Azure Firewall-Dokumentation](/azure/firewall/)
 
@@ -117,13 +124,13 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Keine
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: Bereitstellen von Angriffserkennungs-/Eindringschutzsystemen (Intrusion Detection/Intrusion Prevention Systems, IDS/IPS)
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-5 | 12.6, 12.7 | SI-4 |
 
@@ -139,7 +146,7 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -149,7 +156,7 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: Vereinfachen von Netzwerksicherheitsregeln
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -165,7 +172,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -175,7 +182,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7: Secure Domain Name Service (DNS)
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-7 | – | SC-20, SC-21 |
 
@@ -191,7 +198,7 @@ Wenn Azure DNS als autorisierender DNS-Dienst verwendet wird, stellen Sie sicher
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

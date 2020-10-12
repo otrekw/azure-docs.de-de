@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331198"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -91,7 +91,7 @@ Ihre aktuelle Infrastruktur und Richtlinien wirken sich auf den Entwurf für die
 
 ## <a name="plan-an-azure-ad-reporting-and-monitoring-deployment"></a>Planen einer Bereitstellung für eine Azure AD-Berichterstellung und -Überwachung
 
-Die Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen Anforderungen zu erfüllen, Einblicke in die Verwendungsmuster zu gewinnen und den Sicherheitsstatus Ihrer Organisation zu verbessern.
+Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen Anforderungen zu erfüllen, Einblicke in die Verwendungsmuster zu gewinnen und den Sicherheitsstatus Ihrer Organisation zu erhöhen.
 
 ### <a name="business-use-cases"></a>Anwendungsfälle für Unternehmen
 
