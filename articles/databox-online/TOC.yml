@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8. Konfigurieren der Computeumgebung
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: '9A. Hinzufügen, Herstellen einer Verbindung mit einer Freigabe'
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: '9B. Hinzufügen, Herstellen einer Verbindung mit Speicherkonten'
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Konzepte
       items:
         - name: Überprüfen der Anforderungen
@@ -87,6 +83,8 @@
               items:
                 - name: Zustandslose App
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: Entwickeln eines C#-Moduls
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: Über Azure Arc (Vorschau)
               items:
                 - name: Aktivieren von Arc im Kubernetes-Cluster
@@ -123,12 +121,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Beheben von Zertifikatfehlern
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: Entwickeln eines C#-Moduls
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Verwalten von Edgecomputing
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Verwalten von Speichergateways
           items:
+            - name: 'Hinzufügen, Herstellen einer Verbindung mit einer Freigabe'
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 'Hinzufügen, Herstellen einer Verbindung mit Speicherkonten'
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: Freigaben
               href: azure-stack-edge-j-series-manage-shares.md
             - name: Benutzer
@@ -149,6 +149,10 @@
               href: azure-stack-edge-return-device.md
             - name: Gerät ersetzen
               href: azure-stack-edge-replace-device.md
+            - name: Vorbereitung auf Gerätefehler
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: Wiederherstellung nach Gerätefehler
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: Überwachen
           items:
             - name: Verwenden von Metrikdiagrammen

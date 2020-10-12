@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032111"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707981"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -229,7 +229,7 @@ Das Benutzerkonto muss über Berechtigungen vom Typ *Besitzer* oder *Mitwirkende
 
 Kunden können Lösungen im kommerziellen Marketplace an 141 Standorten weltweit erhalten.
 
-Eine Liste der Standorte finden Sie unter [Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber](partner-center-portal/tax-details-paid-transactions.md).
+Eine Liste der Standorte finden Sie unter [Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Welche Währungen werden im kommerziellen Marketplace unterstützt?
 
@@ -274,32 +274,32 @@ Normalerweise werden den Kunden monatlich alle Käufe im vorherigen Abrechnungsz
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Wie oft erhalte ich Auszahlungen für Verkäufe über den kommerziellen Marketplace?
 
-Auszahlungen erfolgen monatlich. Informationen zu Zahlungsplänen, zum Auffinden bevorstehender Auszahlungen in Partner Center und zum Umgang mit Zahlungsversäumnissen seitens der Kunden finden Sie unter [Auszahlungsrichtliniendetails](partner-center-portal/payout-policy-details.md).
+Auszahlungen erfolgen monatlich. Informationen zu Zahlungsplänen, zum Auffinden bevorstehender Auszahlungen in Partner Center und zum Umgang mit Zahlungsversäumnissen seitens der Kunden finden Sie unter [Auszahlungsrichtliniendetails](/partner-center/payout-policy-details?context=/azure/marketplace/context/context).
 
 - Für Transaktionen, bei denen der Kunde ein Enterprise Agreement genutzt hat, erfolgen Auszahlungen im nächsten Auszahlungszyklus 30 Tage nach der Kundenrechnung. 
 - Für Transaktionen, bei denen der Kunde eine Kreditkarte verwendet hat, gilt ein zusätzlicher Rückstellungszeitraum von 30 Tagen nach Erhalt der Zahlung. So wird einem möglichen Betrug vorgebeugt und sichergestellt, dass die Kreditkarte gedeckt ist und dass keine Rückbuchungen durchgeführt werden.
 
 Auszahlungen erfolgen erst, wenn der Umsatz einen kombinierten Mindestwert von 50,00 USD erreicht hat.
 
-Weitere Informationen finden Sie unter [Zahlungsschwellenwerte, -methoden und -zeitrahmen](partner-center-portal/payment-thresholds-methods-timeframes.md).
+Weitere Informationen finden Sie unter [Zahlungsschwellenwerte, -methoden und -zeitrahmen](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>In welchen Ländern/Regionen werden Steuern in meinem Namen verwaltet?
 
 Kunden können im kommerziellen Marketplace Lösungen auf der ganzen Welt finden. Außerdem werden die Steuern an vielen Standorten von uns abgewickelt. 
 
-Eine vollständige Liste der Standorte finden Sie unter [Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber](partner-center-portal/tax-details-paid-transactions.md).
+Eine vollständige Liste der Standorte finden Sie unter [Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Wo finde ich die Auszahlungsberichte für den kommerziellen Marketplace?
 
 Benutzer mit Berechtigungen vom Typ *Besitzer* oder *Mitwirkender im Finanzbereich* können Auszahlungsberichte im Partner Center anzeigen. Diese Benutzer können in der oberen rechten Ecke auf Berichte zugreifen, indem sie das Symbol einer Hand auswählen, die eine Rechnung hält.
 
-Weitere Informationen finden Sie unter [Zahlungsberichte](partner-center-portal/payout-summary.md).
+Weitere Informationen finden Sie unter [Auszahlungsauszüge](/partner-center/payout-statement?context=/azure/marketplace/context/context).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Wie konfiguriere ich Methode und Ziel für Auszahlungen?
 
 Im Partner Center können Benutzer mit Berechtigungen vom Typ *Besitzer* das Auszahlungskonto und Steuerformulare einrichten. Zu diesem Zweck wählen sie oben rechts die Schaltfläche **Einstellungen** (Zahnradsymbol) aus.
 
-Weitere Informationen finden Sie unter [Einrichten von Auszahlungskonten und Steuerformularen](partner-center-portal/set-up-your-payout-account-tax-forms.md).
+Weitere Informationen finden Sie unter [Einrichten von Auszahlungskonten und Steuerformularen](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context).
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Werden Rückgaben und Rückerstattungen im kommerziellen Marketplace unterstützt?
 
@@ -311,9 +311,8 @@ Um Rückerstattungen zu erhalten, können Kunden Abonnements innerhalb eines fes
 
 Hier finden Sie einige Ressourcen für den Einstieg:
 
-- [Einführung in den kommerziellen Microsoft-Marketplace](/azure/marketplace/marketplace-publishers-guide)
+- [Was ist der kommerzielle Marketplace von Microsoft?](overview.md)
 - [Partnerhub für den kommerziellen Microsoft-Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Willkommen beim kommerziellen Marketplace](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Wie kann ich mit Microsoft und anderen Partnern in Verbindung treten?
 
@@ -324,7 +323,7 @@ Wir empfehlen die folgenden Ressourcen:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Wo erfahre ich mehr über das Partner Center?
 
-- [Dokumentation zu Partner Center](https://docs.microsoft.com/partner-center/)
+- [Dokumentation zu Partner Center](/partner-center/)
 - [Willkommen beim kommerziellen Marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Wo erfahre ich mehr über das Microsoft Admin Center?
