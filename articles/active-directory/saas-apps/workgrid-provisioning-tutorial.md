@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 28efbb605221b9f613b39c2a72d47c7606afb67e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312226"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workgrid für die automatische Benutzerbereitstellung
 
@@ -54,15 +54,15 @@ Bevor Sie Workgrid für die automatische Benutzerbereitstellung in Azure AD kon
 
 1. Melden Sie sich bei Workgrid an. Navigieren Sie zu **Users > User Provisioning** (Benutzer > Benutzerbereitstellung).
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/user.png)
+    ![Screenshot der Workgrid-Benutzeroberfläche mit den hervorgehobenen Optionen „Users“ (Benutzer) und „User Provisioning“ (Benutzerbereitstellung).](media/Workgrid-provisioning-tutorial/user.png)
 
 2. Klicken Sie unter **Account Management API** (Kontoverwaltungs-API) auf **Create Credentials** (Anmeldeinformationen erstellen).
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/scim.png)
+    ![Screenshot des Abschnitts „Account Management API“ (Kontoverwaltungs-API) mit hervorgehobener Option „Create Credentials“ (Anmeldeinformationen erstellen).](media/Workgrid-provisioning-tutorial/scim.png)
 
 3. Kopieren Sie die Werte für **SCIM Endpoint** (SCIM-Endpunkt) und **Access Token** (Zugriffstoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Workgrid-Anwendung in die Felder **Mandanten-URL** und **Geheimes Token** eingegeben.
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/token.png)
+    ![Screenshot des Abschnitts „Account Management API“ (Kontoverwaltungs-API), in dem „SCIM Endpoint“ (SCIM-Endpunkt) und „Access Token“ (Zugriffstoken) hervorgehoben sind.](media/Workgrid-provisioning-tutorial/token.png)
 
 
 ## <a name="add-workgrid--from-the-gallery"></a>Hinzufügen von Workgrid aus dem Katalog
@@ -106,11 +106,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **SCIM Endpoint** (SCIM-Endpunkt) und **Access Token** (Zugriffstoken) in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Workgrid herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Workgrid-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
@@ -124,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Workgrid synchronisieren** aus.
 
-    ![Benutzerzuordnungen in Workgrid](media/Workgrid-provisioning-tutorial/usermapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit Workgrid synchronisieren“.](media/Workgrid-provisioning-tutorial/usermapping.png)
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Workgrid synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Workgrid für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
@@ -132,11 +132,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Workgrid** (Azure Active Directory-Gruppen mit Workgrid synchronisieren) aus.
 
-    ![Benutzerzuordnungen in Workgrid](media/Workgrid-provisioning-tutorial/groupmapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Gruppen mit Workgrid synchronisieren“.](media/Workgrid-provisioning-tutorial/groupmapping.png)
 
 12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Workgrid synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Workgrid für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Benutzerzuordnungen in Workgrid](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit drei Zuordnungen.](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

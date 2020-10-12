@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071073"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329345"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -34,8 +34,8 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 | Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nein |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nein |
 
-<sup>1</sup>Windows 10, Versionen 1507, 1607, 1709, 1803, 1809, 1903 und 1909.  
-<sup>2</sup>Windows Server, Versionen 1809, 1903 und 1909.  
+<sup>1</sup>Windows 10, Versionen 1507, 1607, 1803, 1809, 1903, 1909 und 2004.  
+<sup>2</sup>Windows Server, Versionen 1809, 1903, 1909 und 2004.  
 <sup>3</sup>Regulärer Microsoft-Support für Windows 7 und Windows Server 2008 R2 wurde beendet. Es ist möglich, zusätzlichen Support nur für Sicherheitsupdates über das [ESU-Programm (Extended Security Update)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates) zu erwerben. Es wird dringend empfohlen, diese Betriebssysteme zu migrieren.
 
 > [!Note]  
@@ -67,12 +67,12 @@ So erhalten Sie das Skript
 
 1. Wählen Sie **Verbinden**.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Screenshot des Verbindungssymbols für die Dateifreigabe":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Beispiel":::
 
 1. Wählen Sie den Laufwerkbuchstaben aus, unter dem die Freigabe eingebunden werden soll.
 1. Kopieren Sie das bereitgestellte Skript.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Beispieltext":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Beispiel":::
 
 1. Fügen Sie das Skript in eine Shell auf dem Host ein, auf dem Sie die Dateifreigabe einbinden möchten, und führen Sie es aus.
 
