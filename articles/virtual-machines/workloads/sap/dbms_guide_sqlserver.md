@@ -4,23 +4,23 @@ description: Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP-
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: Azure, SQL Server, SAP, Always On
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2018
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc7d62cc89e240d931f3d0f255a917a73a4114c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274298"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -309,36 +309,36 @@ ms.locfileid: "88654581"
 
 
 
-Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von SQL Server für SAP-Workload in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](./get-started.md) zu lesen. 
+Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von SQL Server für SAP-Workload in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](./dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](./get-started.md) zu lesen. 
 
 
 
 > [!IMPORTANT]
-> Dieser Artikel berücksichtigt die Windows-Version auf SQL Server. SAP unterstützt die Linux-Version von SQL Server mit keiner SAP-Software. Der Artikel geht nicht auf die Microsoft Azure SQL-Datenbank ein. Dabei handelt es sich um ein PaaS-Angebot (Platform as a Service) von Microsoft Azure Platform. In diesem Dokument geht es um das Ausführen des bekannten SQL Server-Produkts für lokale Bereitstellungen auf virtuellen Azure-Computern, wobei die IaaS-Funktion (Infrastructure as a Service) von Azure genutzt wird. Die Datenbankfunktionen und -Features für diese beiden Angebote unterscheiden sich und dürfen nicht verwechselt werden. Weitere Informationen: <https://azure.microsoft.com/services/sql-database/>
+> Dieser Artikel berücksichtigt die Windows-Version auf SQL Server. SAP unterstützt die Linux-Version von SQL Server mit keiner SAP-Software. Der Artikel geht nicht auf die Microsoft Azure SQL-Datenbank ein. Dabei handelt es sich um ein PaaS-Angebot (Platform as a Service) von Microsoft Azure Platform. In diesem Dokument geht es um das Ausführen des bekannten SQL Server-Produkts für lokale Bereitstellungen auf virtuellen Azure-Computern, wobei die IaaS-Funktion (Infrastructure as a Service) von Azure genutzt wird. Die Datenbankfunktionen und -features für diese beiden Angebote unterscheiden sich und dürfen nicht verwechselt werden. Weitere Informationen: <https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
 Generell wird empfohlen, die neuesten SQL Server-Releases zu verwenden, um SAP-Workload in Azure IaaS auszuführen. Die neuesten SQL Server-Releases bieten eine bessere Integration in einige Azure-Dienste und -Funktionen. Außerdem umfassen sie Änderungen, die Abläufe in einer Azure IaaS-Infrastruktur optimieren.
 
-Es wird empfohlen, [diese][virtual-machines-sql-server-infrastructure-services] Dokumentation zu lesen, bevor Sie fortfahren.
+Es wird empfohlen, den Artikel [Was ist SQL Server auf Azure Virtual Machines (Windows)?][https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview ] zu lesen, bevor Sie fortfahren.
 
 In den folgenden Abschnitten werden Inhalte aus dieser Dokumentation unter dem oben genannten Link zusammengefasst und erwähnt. Außerdem werden Besonderheiten in Bezug auf SAP erwähnt, und einige Konzepte werden ausführlicher beschrieben. Es wird jedoch dringend empfohlen, zuerst die oben genannte Dokumentation durchzuarbeiten, bevor Sie die SQL Server-spezifische Dokumentation lesen.
 
 Einige spezifische Informationen für SQL Server in IaaS sollten Sie vor dem Fortfahren kennen:
 
-* **SQL-Versionsunterstützung:** Für SAP-Kunden wird SQL Server 2008 R2 und höher auf virtuellen Microsoft Azure-Computern unterstützt. Frühere Versionen werden nicht unterstützt. Ausführliche Informationen finden Sie in der allgemeinen [Supporterklärung](https://support.microsoft.com/kb/956893). Generell wird SQL Server 2008 auch von Microsoft unterstützt. Aufgrund spezieller Funktionen für SAP, die in SQL Server 2008 R2 eingeführt wurden, ist die Mindestversion für SAP jedoch SQL Server 2008 R2. Generell wird empfohlen, die neuesten SQL Server-Releases zu verwenden, um SAP-Workload in Azure IaaS auszuführen. Die neuesten SQL Server-Releases bieten eine bessere Integration in einige Azure-Dienste und -Funktionen. Außerdem umfassen sie Änderungen, die Abläufe in einer Azure IaaS-Infrastruktur optimieren. Deswegen bezieht sich dieses Dokument nur auf SQL Server 2016 und SQL Server 2017.
-* **SQL-Leistung:** Unter Microsoft Azure gehostete virtuelle Computer bieten im Vergleich zu anderen Virtualisierungsangeboten in der öffentlichen Cloud eine gute Leistung. Die einzelnen Ergebnisse können allerdings variieren. Weitere Informationen finden Sie im Artikel [Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
-* **Verwenden von Images aus Azure Marketplace:** Die schnellste Möglichkeit zum Bereitstellen eines neuen virtuellen Microsoft Azure-Computers besteht darin, ein Image aus dem Azure Marketplace zu verwenden. Einige Images in Azure Marketplace enthalten die neuesten SQL Server-Releases. Die Images, bei denen SQL Server bereits installiert ist, können nicht sofort für SAP NetWeaver-Anwendungen verwendet werden. Dies liegt daran, dass innerhalb dieser Images die standardmäßige SQL Server-Sortierung und nicht die für SAP NetWeaver-Systeme erforderliche Sortierung installiert ist. Um solche Images zu verwenden, lesen Sie sich die Schritte im Kapitel [Verwenden eines SQL Server-Images aus dem Microsoft Azure Marketplace][dbms-guide-5.6] durch. 
+* **SQL-Versionsunterstützung**: Für SAP-Kunden wird SQL Server 2008 R2 und höher auf virtuellen Microsoft Azure-Computern unterstützt. Frühere Versionen werden nicht unterstützt. Ausführliche Informationen finden Sie in der allgemeinen [Supporterklärung](https://support.microsoft.com/kb/956893). Generell wird SQL Server 2008 auch von Microsoft unterstützt. Aufgrund spezieller Funktionen für SAP, die in SQL Server 2008 R2 eingeführt wurden, ist die Mindestversion für SAP jedoch SQL Server 2008 R2. Generell wird empfohlen, die neuesten SQL Server-Releases zu verwenden, um SAP-Workload in Azure IaaS auszuführen. Die neuesten SQL Server-Releases bieten eine bessere Integration in einige Azure-Dienste und -Funktionen. Außerdem umfassen sie Änderungen, die Abläufe in einer Azure IaaS-Infrastruktur optimieren. Deswegen bezieht sich dieses Dokument nur auf SQL Server 2016 und SQL Server 2017.
+* **SQL-Leistung**: Unter Microsoft Azure gehostete virtuelle Computer erbringen im Vergleich zu anderen Virtualisierungsangeboten in der öffentlichen Cloud eine gute Leistung. Die einzelnen Ergebnisse können allerdings variieren. Weitere Informationen finden Sie im Artikel [Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
+* **Verwenden von Images aus Azure Marketplace**: Die schnellste Möglichkeit zum Bereitstellen eines neuen virtuellen Microsoft Azure-Computers besteht darin, ein Image aus dem Azure Marketplace zu verwenden. Einige Images in Azure Marketplace enthalten die neuesten SQL Server-Releases. Die Images, bei denen SQL Server bereits installiert ist, können nicht sofort für SAP NetWeaver-Anwendungen verwendet werden. Dies liegt daran, dass innerhalb dieser Images die standardmäßige SQL Server-Sortierung und nicht die für SAP NetWeaver-Systeme erforderliche Sortierung installiert ist. Um solche Images zu verwenden, lesen Sie sich die Schritte im Kapitel [Verwenden eines SQL Server-Images aus dem Microsoft Azure Marketplace][dbms-guide-5.6] durch. 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Empfehlungen für die VM-/VHD-Struktur für SAP-bezogene SQL Server-Bereitstellungen
-In Übereinstimmung mit der allgemeinen Beschreibung sollten sich ausführbare SQL Server-Dateien im Systemverzeichnis des Betriebssystemdatenträgers (Laufwerk „C:\“\) der VM befinden bzw. bei der Installation dort abgelegt werden.  Üblicherweise werden die meisten SQL Server-Systemdatenbanken durch die SAP NetWeaver-Workload nicht stark genutzt. Daher können die Systemdatenbanken von SQL Server („master“, „msdb“ und „model“) auf dem Laufwerk „C:\“ verbleiben. Eine Ausnahme ist tempdb. Diese Datenbank erfordert im Falle von SAP-Workload möglicherweise ein höheres Volumen für Daten oder für E/A-Vorgänge. E/A-Workloads sollten nicht auf die Betriebssystem-VHD angewendet werden. Trifft dies auf Ihr System zu, sollten Sie die folgenden Schritte ausführen:
+In Übereinstimmung mit der allgemeinen Beschreibung, sollten Betriebssystem, die ausführbaren SQL Server-Dateien und bei zweischichtigen SAP-Systemen die ausführbaren SAP-Dateien auf getrennten Azure-Datenträgern gespeichert oder installiert werden. Üblicherweise werden die meisten SQL Server-Systemdatenbanken durch die SAP NetWeaver-Workload nicht stark genutzt. Dennoch sollten sich die Systemdatenbanken von SQL Server (master, msdb und model) zusammen mit den anderen SQL Server-Verzeichnissen auf einem separaten Azure-Datenträger befinden. Die tempdb von SQL Server sollte sich entweder auf dem nicht persistenten Laufwerk „D:\“ oder auf einem separaten Datenträger befinden.
 
 
 * Für alle SAP-zertifizierten VM-Typen (siehe SAP-Hinweis [1928533]), außer für VMs der A-Serie, können tempdb-Daten- und Protokolldateien auf dem nicht permanenten Laufwerk D:\ platziert werden. 
-* Dennoch wird empfohlen, mehrere tempdb-Datendateien zu verwenden. Beachten Sie, dass das Laufwerkvolumen bei „D:\“ je nach VM-Typ variieren kann. Weitere Informationen zur genauen Größe des Laufwerks „D:\“ verschiedener virtueller Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../sizes.md).
+* Bei älteren SQL Server-Releases, bei denen SQL Server die tempdb standardmäßig mit einer Datendatei installiert, sollten Sie mehrere tempdb-Datendateien verwenden. Beachten Sie, dass das Laufwerkvolumen bei „D:\“ je nach VM-Typ variieren kann. Weitere Informationen zur genauen Größe des Laufwerks „D:\“ verschiedener virtueller Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../sizes.md).
 
-Mithilfe dieser Konfigurationen kann tempdb mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. Außerdem bietet das nicht permanente Laufwerk „D:\“ eine bessere E/A-Latenz und einen höheren E/A-Durchsatz (mit Ausnahme von VMs der A-Serie). Um die richtige tempdb-Größe zu bestimmen, können Sie die tempdb-Größen auf vorhandenen Systemen überprüfen. 
+Mithilfe dieser Konfigurationen kann die tempdb mehr Speicherplatz und – noch wichtiger – mehr IOPS und Speicherbandbreite nutzen, als auf dem Systemlaufwerk verfügbar ist. Außerdem bietet das nicht persistente Laufwerk „D:\“ eine bessere E/A-Latenz und einen höheren E/A-Durchsatz (mit Ausnahme von VMs der A-Serie). Um die richtige tempdb-Größe zu bestimmen, können Sie die tempdb-Größen auf vorhandenen Systemen überprüfen. 
 
 >[!NOTE]
 > Falls Sie tempdb-Datendateien und Protokolldateien in einem Ordner auf dem Laufwerk „D:\“ ablegen, müssen Sie sicherstellen, dass der Ordner nach einem Neustart der VM vorhanden ist. Da das Laufwerk „D:\“ nach dem Neustart einer VM neu initialisiert wird, werden alle Datei- und Verzeichnisstrukturen gelöscht. Eine Möglichkeit, eventuelle Verzeichnisstrukturen auf Laufwerk „D:\“ vor dem Start des SQL Server-Diensts erneut zu erstellen, finden Sie in [diesem Artikel](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
@@ -347,11 +347,10 @@ Eine VM-Konfiguration, die SQL Server mit einer SAP-Datenbank ausführt und bei 
 
 ![Diagramm einer einfachen VM-Datenträgerkonfiguration für SQL Server](./media/dbms_sqlserver_deployment_guide/Simple_disk_structure.PNG)
 
-Das obige Diagramm zeigt ein einfaches Szenario. Wie in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert, sind Anzahl und Größe von Storage Premium-Datenträgern von verschiedenen Faktoren abhängig. Generell wird Folgendes empfohlen:
+Das obige Diagramm zeigt ein einfaches Szenario. Wie in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert, sind der Azure Storage-Typ sowie die Anzahl und Größe von Datenträgern von verschiedenen Faktoren abhängig. Generell wird Folgendes empfohlen:
 
-- Mit Speicherplätzen ein Volume oder eine kleine Anzahl von Volumes erstellen, die die SQL Server-Datendateien enthalten. Diese Konfiguration ist darauf zurückzuführen, dass es in der Praxis zahlreiche SAP-Datenbanken mit unterschiedlich großen Datenbankdateien mit unterschiedlichen E/A-Workloads gibt.
-- Mit Speicherplätzen ausreichend IOPS für die SQL Server-Transaktionsprotokolldatei bereitstellen. Potenzieller IOPS-Workload ist oft die Richtlinie für die Größe des Transaktionsprotokollvolumes und nicht das potenzielle Volume der SQL Server-Transaktion.
-- Verwenden Sie das Laufwerk „D:\“ für tempdb, solange die Leistung gut genug ist. Wenn die Leistung des Gesamtworkloads durch tempdb auf Laufwerk „D:\“ eingeschränkt wird, verschieben Sie tempdb auf einen separaten Storage Premium-Datenträger, wie in [diesem Artikel](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) empfohlen.
+- Verwenden Sie für die SQL Server-Datendateien ein großes Volume. Diese Konfiguration ist darauf zurückzuführen, dass es in der Praxis zahlreiche SAP-Datenbanken mit unterschiedlich großen Datenbankdateien mit unterschiedlichen E/A-Workloads gibt.
+- Verwenden Sie das Laufwerk „D:\“ für tempdb, solange die Leistung gut genug ist. Wenn die Leistung des Gesamtworkloads durch die tempdb auf Laufwerk „D:\“ eingeschränkt wird, verschieben Sie die tempdb auf einen separaten Azure Storage Premium- oder Ultra-Datenträger, wie in [diesem Artikel](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) empfohlen.
 
 
 ### <a name="special-for-m-series-vms"></a>Besonderheiten von VMs der M-Serie
@@ -359,7 +358,7 @@ Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in das Transaktionsprot
   
 
 ### <a name="formatting-the-disks"></a>Formatieren der Datenträger
-Für SQL Server sollte die NTFS-Blockgröße für Datenträger, die SQL Server-Daten und -Protokolldateien enthalten, 64 KB betragen. Es ist nicht erforderlich, Laufwerk „D:\“ zu formatieren. Dieses Laufwerk ist bereits vorformatiert.
+Für SQL Server sollte die NTFS-Blockgröße für Datenträger, die SQL Server-Daten und -Protokolldateien enthalten, 64 KB betragen. Es ist nicht erforderlich, Laufwerk „D:\“ zu formatieren. Dieses Laufwerk ist bereits vorformatiert.
 
 Um sicherzustellen, dass die Wiederherstellung oder Erstellung von Datenbanken die Datendateien nicht initialisiert, indem der Inhalt der Dateien gelöscht wird, sollten Sie überprüfen, ob der Benutzerkontext, in dem der SQL Server-Dienst ausgeführt wird, eine bestimmte Berechtigung hat. Normalerweise verfügen die Benutzer in der Windows-Administratorengruppe über diese Berechtigungen. Wenn der SQL Server-Dienst im Benutzerkontext eines Benutzers ausgeführt wird, der kein Windows-Administrator ist, müssen Sie diesem Benutzer das Benutzerrecht **Volumenwartungsaufgaben durchführen** zuweisen.  Ausführliche Informationen finden Sie im Microsoft Knowledge Base-Artikel: <https://support.microsoft.com/kb/2574695>
 
@@ -385,13 +384,13 @@ SQL Server 2014 und höher bietet die Möglichkeit, Datenbankdateien direkt in A
 * Hostbasiertes Caching, wie es für Azure Storage Premium-Datenträger verfügbar ist, steht nicht zur Verfügung, wenn Sie SQL Server-Datendateien direkt in Azure-Blobs platzieren.
 * Auf VMs der M-Serie kann Azure-Schreibbeschleunigung nicht verwendet werden, um Schreibvorgänge im Bereich unter Millisekunden für SQL Server-Transaktionsprotokolldateien zu unterstützen. 
 
-Weitere Informationen zu dieser Funktionalität finden Sie im Artikel [SQL Server-Datendateien in Microsoft Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-2017).
+Weitere Informationen zu dieser Funktionalität finden Sie im Artikel [SQL Server-Datendateien in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure).
 
 Für Produktionssysteme wird empfohlen, diese Konfiguration zu vermeiden und SQL Server-Daten und -Protokolldateien direkt in Azure Storage Premium-VHDs statt direkt in Azure-Blobs zu speichern.
 
 
 ## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014-Pufferpoolerweiterung
-Mit SQL Server 2014 wurde eine neue Funktion eingeführt, die sogenannte [Pufferpoolerweiterung](/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017). Diese Funktion erweitert den Pufferpool von SQL Server, der im Arbeitsspeicher mit einem Cache zweiter Ebene gespeichert wird, der von lokalen SSDs eines Servers oder der VM unterstützt wird. Die Pufferpoolerweiterung ermöglicht einen umfangreicheren Arbeitssatz von Daten „im Arbeitsspeicher“. Im Vergleich zum Zugriff auf Azure-Standardspeicher ist der Zugriff auf die Erweiterung des Pufferpools, der auf lokalen SSDs einer Azure-VM gespeichert wird, um viele Faktoren schneller. Vergleicht man die Pufferpoolerweiterung mit dem Azure Storage Premium-Lesecache – für SQL Server-Datendateien empfohlen – bietet die Pufferpoolerweiterung keine erheblichen Vorteile. Der Grund dafür ist, dass beide Caches (SQL Server-Pufferpoolerweiterung und Storage Premium-Lesecache) die lokalen Datenträger des Azure-Serverknotens verwenden.
+Mit SQL Server 2014 wurde eine neue Funktion eingeführt, die sogenannte [Pufferpoolerweiterung](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension). Diese Funktion erweitert den Pufferpool von SQL Server, der im Arbeitsspeicher mit einem Cache zweiter Ebene gespeichert wird, der von lokalen SSDs eines Servers oder der VM unterstützt wird. Die Pufferpoolerweiterung ermöglicht einen umfangreicheren Arbeitssatz von Daten „im Arbeitsspeicher“. Im Vergleich zum Zugriff auf Azure-Standardspeicher ist der Zugriff auf die Erweiterung des Pufferpools, der auf lokalen SSDs einer Azure-VM gespeichert wird, um viele Faktoren schneller. Vergleicht man die Pufferpoolerweiterung mit dem Azure Storage Premium-Lesecache – für SQL Server-Datendateien empfohlen – bietet die Pufferpoolerweiterung keine erheblichen Vorteile. Der Grund dafür ist, dass beide Caches (SQL Server-Pufferpoolerweiterung und Storage Premium-Lesecache) die lokalen Datenträger des Azure-Serverknotens verwenden.
 
 Die bislang gesammelten Erfahrungen mit der SQL Server-Pufferpoolerweiterung mit SAP-Workload sind unterschiedlich und lassen noch keine eindeutigen Rückschlüsse darauf zu, ob sie in allen Fällen eingesetzt werden soll. Im Idealfall passt der von der SAP-Anwendung benötigte Arbeitssatz in den Hauptspeicher. Da Azure mittlerweile VMs mit bis zu 4 TB Arbeitsspeicher bereitstellt, sollte der Arbeitssatz im Arbeitsspeicher bleiben können. Deswegen ist die Verwendung der Pufferpoolerweiterung auf einige seltene Fälle beschränkt und sollte nicht die Regel sein.  
 
@@ -409,9 +408,9 @@ Sie haben mehrere Möglichkeiten, „manuelle“ Sicherungen vorzunehmen:
 
 Die erste Methode ist weitverbreitet und wird auch oft lokal angewendet. Dennoch müssen Sie den Sicherungsspeicherort längerfristig bestimmen. Da Sie Ihre Sicherungen nicht länger als 30 Tage im lokal installierten Azure Storage aufbewahren wollen, benötigen Sie Azure Backup-Dienste oder ein anderes Sicherungs-/Wiederherstellungstool von einem Drittanbieter, um den Zugriff und die Aufbewahrung für Ihre Sicherungen zu verwalten. Alternativ können Sie einen großen Dateiserver in Azure mithilfe von Windows-Speicherplätzen erstellen.
 
-Die zweite Methode wird im Artikel [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) behandelt. Diese Funktionalität unterscheidet sich bei den verschiedenen SQL Server-Versionen. Sehen Sie sich deswegen die Dokumentation des jeweiligen SQL Server-Releases an. Beachten Sie, dass in diesem Artikel viele Einschränkungen aufgeführt werden. Sie haben folgende Sicherungsmöglichkeiten:
+Die zweite Methode wird im Artikel [SQL Server-Sicherung über URLs](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/backup-restore) behandelt. Diese Funktionalität unterscheidet sich bei den verschiedenen SQL Server-Versionen. Sehen Sie sich deswegen die Dokumentation des jeweiligen SQL Server-Releases an. Beachten Sie, dass in diesem Artikel viele Einschränkungen aufgeführt werden. Sie haben folgende Sicherungsmöglichkeiten:
 
-- Ein einzelnes Azure-Seitenblob, das die Größe der Sicherungen auf 1.000 GB beschränkt. Dadurch wird auch der mögliche Durchsatz eingeschränkt.
+- Ein einzelnes Azure-Seitenblob, das die Größe der Sicherungen auf 1.000 GB beschränkt. Diese Einschränkung begrenzt auch den möglichen Durchsatz.
 - Mehrere (bis zu 64) Azure-Blockblobs, die theoretisch eine Sicherungsgröße von 12 TB bieten. Tests mit Kundendatenbanken ergaben jedoch, dass die maximale Sicherungsgröße kleiner als der theoretische Grenzwert sein kann. In diesem Fall müssen Sie die Aufbewahrung von und den Zugriff auf Sicherungen verwalten.
 
 
@@ -420,14 +419,14 @@ Die automatisierte Sicherung ist ein automatischer Sicherungsdienst für die SQL
 
 Weitere Informationen zu den Funktionen dieser Methode finden Sie in den folgenden Artikeln:
 
-- SQL Server 2014: [Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
-- SQL Server 2016/2017: [Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup.md)
+- SQL Server 2014:[ Automatisierte Sicherung für SQL Server 2014-VMs (Ressourcen-Manager)](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
+- SQL Server 2016/2017:[ Automatisierte Sicherung v2 für virtuelle Azure-Computer (Ressourcen-Manager)](../../../azure-sql/virtual-machines/windows/automated-backup.md)
 
-Die Dokumentation zeigt, dass die Funktionalität mit den neueren SQL Server-Releases verbessert wurde. Weitere Informationen zu automatisierten Sicherungen für SQL Server finden Sie im Artikel [SQL Server Managed Backup für Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017). Die theoretische Sicherungsgröße beträgt 12 TB.  Die automatisierten Sicherungen können eine gute Methode für die Sicherung von bis zu 12 TB sein. Da mehrere Blobs parallel beschrieben werden, ist ein Durchsatz von über 100 MB/Sekunde zu erwarten. 
+Die Dokumentation zeigt, dass die Funktionalität mit den neueren SQL Server-Releases verbessert wurde. Weitere Informationen zu automatisierten Sicherungen für SQL Server finden Sie im Artikel [SQL Server Managed Backup für Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure). Die theoretische Sicherungsgröße beträgt 12 TB.  Die automatisierten Sicherungen können eine gute Methode für die Sicherung von bis zu 12 TB sein. Da mehrere Blobs parallel beschrieben werden, ist ein Durchsatz von über 100 MB/Sekunde zu erwarten. 
  
 
 ### <a name="azure-backup-for-sql-server-vms"></a>Automatisierte Sicherung für SQL Server-VMS
-Diese neue Methode für SQL Server-Sicherungen wird ab Juni 2018 von den Azure Backup-Diensten als Public Preview angeboten. Die Methode zum Sichern von SQL Server ist die gleiche wie bei anderen Drittanbietertools: mithilfe der VSS/VDI-Schnittstelle von SQL Server werden Sicherungen an einen Zielspeicherort gestreamt. In diesem Fall ist am Zielspeicherort der Azure Recovery Services-Tresor.
+Diese neue Methode für SQL Server-Sicherungen wird ab Juni 2018 von den Azure Backup-Diensten als Public Preview angeboten. Die Methode zum Sichern von SQL Server ist die gleiche wie bei anderen Drittanbietertools: mithilfe der VSS/VDI-Schnittstelle von SQL Server werden Sicherungen an einen Zielspeicherort gestreamt. In diesem Fall ist der Zielspeicherort ein Azure Recovery Services-Tresor.
 
 Ausführlichere Informationen zu dieser Sicherungsmethode, die zahlreiche Vorteile wie zentrale Sicherungskonfigurationen, Überwachung und Verwaltung bietet, [finden Sie hier](../../../backup/backup-azure-sql-database.md). 
 
@@ -466,13 +465,13 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 Wenn das nicht der Fall ist, BEENDEN Sie die SAP-Bereitstellung, und untersuchen Sie, warum der setup-Befehl nicht wie erwartet funktioniert hat. Die Bereitstellung von SAP NetWeaver-Anwendungen auf SQL Server-Instanzen mit anderen SQL Server-Codeseiten als den oben genannten wird **NICHT** unterstützt.
 
 ## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server-Hochverfügbarkeit für SAP in Azure
-Mit SQL Server in Azure IaaS-Bereitstellungen für SAP haben Sie verschiedene Möglichkeiten, die DBMS-Schicht hochverfügbar zu implementieren. Wie im Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert, bietet Azure verschiedene SLAs zur Betriebszeit einer einzelnen VM und von zwei VM-Instanzen, die in einer Azure-Verfügbarkeitsgruppe bereitgestellt werden. Es wird davon ausgegangen, dass Sie eine Betriebszeit-SLA für Ihre Produktionsbereitstellungen wünschen, die die Bereitstellung in Azure-Verfügbarkeitsgruppen erfordert. In diesem Fall müssen Sie mindestens zwei VMs in einer solchen Verfügbarkeitsgruppe bereitstellen. Eine VM wird die aktive SQL Server-Instanz ausführen. Die andere VM wird die passive Instanz ausführen.
+Mit SQL Server in Azure IaaS-Bereitstellungen für SAP haben Sie verschiedene Möglichkeiten, die DBMS-Schicht hochverfügbar zu implementieren. Wie im Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert, bietet Azure verschiedene SLAs zur Betriebszeit einer einzelnen VM und von zwei VMs, die in einer Azure-Verfügbarkeitsgruppe bereitgestellt werden. Es wird davon ausgegangen, dass Sie eine Betriebszeit-SLA für Ihre Produktionsbereitstellungen wünschen, die die Bereitstellung in Azure-Verfügbarkeitsgruppen erfordert. In diesem Fall müssen Sie mindestens zwei VMs in einer solchen Verfügbarkeitsgruppe bereitstellen. Eine VM wird die aktive SQL Server-Instanz ausführen. Die andere VM wird die passive Instanz ausführen.
 
-### <a name="sql-server-clustering-using-windows-scale-out-file-server"></a>SQL Server-Clustering mit dem Windows-Dateiserver mit horizontaler Skalierung
-Mit Windows Server 2016 führte Microsoft [direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) ein. Basierend auf der Bereitstellung direkter Speicherplätze wird das SQL Server-FCI-Clustering unterstützt. Weitere Informationen finden Sie im Artikel [Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md). Die Lösung benötigt eine Azure Load Balancer-Instanz für den Umgang mit der virtuellen IP-Adresse der Clusterressourcen. Die SQL Server-Datenbankdateien werden in Speicherplätzen gespeichert. Daher müssen Sie die Windows-Speicherplätze auf Basis von Azure Storage Premium erstellen. Da diese Lösung noch nicht lange unterstützt wird, gibt es keine bekannten SAP-Kunden, die diese Lösung in SAP-Produktionsszenarien einsetzen.  
+### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>SQL Server-Clustering mit dem Windows-Dateiserver mit horizontaler Skalierung oder freigegebenen Azure-Datenträgern
+Mit Windows Server 2016 führte Microsoft [direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) ein. Basierend auf der Bereitstellung direkter Speicherplätze wird das SQL Server-FCI-Clustering allgemeinen unterstützt. Azure bietet auch [freigegebene Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/disks-shared-enable?tabs=azure-cli), die für das Windows-Clustering verwendet werden können. Für SAP-Workloads werden diese Hochverfügbarkeitsoptionen nicht unterstützt. 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server-Protokollversand
-Eine der Methoden für Hochverfügbarkeit (High Availability, HA) ist der SQL Server-Protokollversand. Wenn die an der Hochverfügbarkeitskonfiguration beteiligten VMs über eine funktionierende Namensauflösung verfügen, besteht kein Problem, und die Einrichtung in Azure unterscheidet sich nicht von anderen, lokal ausgeführten Einrichtungen. Dies gilt für die Einrichtung des Protokollversands und den zugehörigen Prinzipien. Weitere Informationen zum SQL Server-Protokollversand finden Sie im Artikel [Informationen zum Protokollversand (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server?view=sql-server-2017).
+Eine der Methoden für Hochverfügbarkeit (High Availability, HA) ist der SQL Server-Protokollversand. Wenn die an der Hochverfügbarkeitskonfiguration beteiligten VMs über eine funktionierende Namensauflösung verfügen, besteht kein Problem, und die Einrichtung in Azure unterscheidet sich nicht von anderen, lokal ausgeführten Einrichtungen. Dies gilt für die Einrichtung des Protokollversands und den zugehörigen Prinzipien. Weitere Informationen zum SQL Server-Protokollversand finden Sie im Artikel [Informationen zum Protokollversand (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server).
 
 Die Funktion „SQL Server-Protokollversand“ wurde in Azure kaum verwendet, um Hochverfügbarkeit in einer Azure-Region zu erzielen. Allerdings setzen SAP-Kunden den Protokollversand in den folgenden Fällen erfolgreich mit Azure ein:
 
@@ -514,16 +513,16 @@ Eine ausführliche Dokumentation der Bereitstellung von Always On mit SQL Server
 
 SQL Server Always On ist die am häufigsten in Azure verwendete Funktionalität für Hochverfügbarkeit und Notfallwiederherstellung für SAP-Workloadbereitstellungen. Die meisten Kunden nutzen Always On für Hochverfügbarkeit innerhalb einer einzelnen Azure-Region. Wenn die Bereitstellung auf nur zwei Knoten beschränkt ist, haben Sie zwei Verbindungsmöglichkeiten:
 
-- Verwenden des Verfügbarkeitsgruppenlisteners. Wenn Sie den Verfügbarkeitsgruppenlistener verwenden, müssen Sie eine Azure Load Balancer-Instanz bereitstellen. Dies ist in der Regel die Standardbereitstellungsmethode. SAP-Anwendungen sind so konfiguriert, dass sie sich mit dem Verfügbarkeitsgruppenlistener und nicht mit einem einzelnen Knoten verbinden.
+- Verwenden des Verfügbarkeitsgruppenlisteners. Wenn Sie den Verfügbarkeitsgruppenlistener verwenden, müssen Sie eine Azure Load Balancer-Instanz bereitstellen. Dies ist die Standardbereitstellungsmethode. SAP-Anwendungen sind so konfiguriert, dass sie sich mit dem Verfügbarkeitsgruppenlistener und nicht mit einem einzelnen Knoten verbinden.
 - Verwenden des Konnektivitätsparameters der SQL Server-Datenbankspiegelung. In diesem Fall müssen Sie die Konnektivität der SAP-Anwendungen so konfigurieren, dass beide Knotennamen benannt sind. Ausführliche Informationen zu dieser SAP-Konfiguration finden Sie im SAP-Hinweis [965908](https://launchpad.support.sap.com/#/notes/965908). Indem Sie diese Option verwenden, müssen Sie den Verfügbarkeitsgruppenlistener nicht konfigurieren. Und daher ist kein Azure-Lastenausgleich erforderlich, um die Hochverfügbarkeit von SQL Server sicherzustellen. Dadurch ist die Netzwerklatenz zwischen der SAP-Anwendungsschicht und der DBMS-Schicht geringer. Denn der auf der SQL Server-Instanz eingehende Datenverkehr wird über keine Azure Load Balancer-Instanz weitergeleitet. Beachten Sie jedoch, dass diese Option nur funktioniert, wenn Sie Ihre Verfügbarkeitsgruppe auf zwei Instanzen beschränken. 
 
 Einige Kunden verwenden SQL Server Always On für zusätzliche Notfallwiederherstellungsfunktionen zwischen unterschiedlichen Azure-Regionen. Einige Kunden nutzen auch die Möglichkeit, Sicherungen von einem sekundären Replikat durchzuführen. 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server – Transparent Data Encryption
-Viele Kunden verwenden SQL Server [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) beim Bereitstellen ihrer SAP-SQL Server-Datenbanken in Azure. Die TDE-Funktion von SQL Server wird vollständig von SAP unterstützt (siehe SAP-Hinweis [1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
+Viele Kunden verwenden SQL Server [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) beim Bereitstellen ihrer SAP-SQL Server-Datenbanken in Azure. Die TDE-Funktion von SQL Server wird vollständig von SAP unterstützt (siehe SAP-Hinweis [1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
 
 ### <a name="applying-sql-server-tde"></a>Anwenden von TDE (SQL Server)
-Wenn Sie eine heterogene Migration aus einem anderen lokalen DBMS nach Windows/SQL Server in Azure ausführen, erstellen Sie vorab eine leere Zieldatenbank in SQL Server. Im nächsten Schritt wenden Sie die TDE-Funktion von SQL Server an. Währenddessen wird Ihr Produktionssystem lokal ausgeführt. Sie sollten in dieser Reihenfolge vorgehen, weil die Verschlüsselung der leeren Datenbank einige Zeit dauern kann. Die SAP-Importvorgänge importieren die Daten dann während der Downtime in die verschlüsselte Datenbank. Der Import in eine verschlüsselte Datenbank dauert wesentlich kürzer als das Verschlüsseln der Datenbank nach dem Export während der Downtime. Beim Versuch, TDE auf SAP-Workload anzuwenden, die auf der Datenbank ausgeführt werden, sind Probleme aufgetreten. Daher wird empfohlen, die TDE-Bereitstellung als eine Aktivität zu behandeln, die ohne SAP-Workload auf der jeweiligen Datenbank ausgeführt werden muss.
+Wenn Sie eine heterogene Migration aus einem anderen lokalen DBMS nach Windows/SQL Server in Azure ausführen, erstellen Sie vorab eine leere Zieldatenbank in SQL Server. Im nächsten Schritt wenden Sie die TDE-Funktion von SQL Server an. Währenddessen wird Ihr Produktionssystem lokal ausgeführt. Sie sollten in dieser Reihenfolge vorgehen, weil die Verschlüsselung der leeren Datenbank einige Zeit dauern kann. Die SAP-Importvorgänge importieren die Daten dann während der Downtime in die verschlüsselte Datenbank. Der Import in eine verschlüsselte Datenbank dauert wesentlich kürzer als das Verschlüsseln der Datenbank nach dem Export während der Downtime. Beim Versuch, TDE auf SAP-Workloads anzuwenden, die auf der Datenbank ausgeführt werden, sind Probleme aufgetreten. Daher wird empfohlen, die TDE-Bereitstellung als eine Aktivität zu behandeln, die ohne SAP-Workload auf der jeweiligen Datenbank ausgeführt werden muss.
 
 In Fällen, in denen Sie SAP-SQL Server-Datenbanken aus einem lokalen System nach Azure verschieben, wird empfohlen zu testen, auf welcher Infrastruktur Sie die Verschlüsselung am schnellsten anwenden können. Beachten Sie Folgendes:
 
@@ -531,16 +530,16 @@ In Fällen, in denen Sie SAP-SQL Server-Datenbanken aus einem lokalen System nac
 - In älteren SQL Server-Releases war die Sicherungskomprimierung nicht mehr effizient, wenn die SQL Server-Datenbank verschlüsselt wurde. Dieses Verhalten war ggf. problematisch, wenn Sie Ihre SQL Server-Datenbank lokal verschlüsseln und dann eine Sicherung in Azure kopieren wollten, um die Datenbank in Azure wiederherzustellen. Die SQL Server-Sicherungskomprimierung erzielt in der Regel ein Komprimierungsverhältnis von Faktor 4.
 - Mit SQL Server 2016 hat SQL Server eine neue Funktionalität eingeführt, die es ermöglicht, auch verschlüsselte Datenbanken effizient zu komprimieren. In [diesem Blog](/archive/blogs/sqlcat/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases) finden Sie weitere Informationen.
  
-Wenn Sie die Anwendung der TDE-Verschlüsselung ohne oder mit wenig SAP-Workload behandeln, testen Sie in Ihrer spezifischen Konfiguration, ob es besser ist, TDE auf Ihre SAP-Datenbank lokal oder in Azure anzuwenden. Azure bietet mehr Flexibilität in Bezug auf die Überbereitstellung und Verkleinerung der Infrastruktur, nachdem TDE angewendet wurde.
+Wenn Sie die Anwendung der TDE-Verschlüsselung ohne oder mit kleinen SAP-Workloads nutzen, testen Sie in Ihrer spezifischen Konfiguration, ob es besser ist, TDE lokal oder in Azure auf Ihre SAP-Datenbank anzuwenden. Azure bietet mehr Flexibilität in Bezug auf die Überbereitstellung und Verkleinerung der Infrastruktur, nachdem TDE angewendet wurde.
 
 ### <a name="using-azure-key-vault"></a>Verwenden von Azure Key Vault
 Azure bietet den Dienst [Key Vault](https://azure.microsoft.com/services/key-vault/) zum Speichern von Verschlüsselungsschlüsseln an. SQL Server auf der anderen Seite bietet einen Connector, um Azure Key Vault als Speicher für die TDE-Zertifikate zu nutzen.
 
 Weitere Informationen zum Verwenden von Azure Key Vault für SQL Server-TDE finden Sie in den folgenden Artikeln:
 
-- [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server?view=sql-server-2017)
-- [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server-TDE): Setupschritte](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault?view=sql-server-2017)
-- [SQL Server-Connector – Wartung & Problembehandlung](/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?view=sql-server-2017)
+- [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)
+- [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server-TDE): Setupschritte](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault)
+- [SQL Server-Connector – Wartung & Problembehandlung](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?)
 - [Weitere Fragen von Kunden zu SQL Server Transparent Data Encryption – TDE & Azure Key Vault](/archive/blogs/saponsqlserver/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault) (in englischer Sprache)
 
 
@@ -565,3 +564,9 @@ In diesem Handbuch finden Sie eine Reihe von Empfehlungen. Es ist ratsam, das Ha
 9. Verwenden Sie die höchstmögliche Datenbankkomprimierung. Hierbei handelt es sich um Seitenkomprimierung für SQL Server.
 10. Verwenden Sie SQL Server-Images aus dem Azure Marketplace mit großer Sorgfalt. Wenn Sie SQL Server verwenden, müssen Sie die Instanzensortierung vor der Installation eines SAP NetWeaver-Systems ändern.
 11. Installieren und konfigurieren Sie die SAP-Hostüberwachung für Azure wie im [Bereitstellungshandbuch][deployment-guide] beschrieben.
+
+
+## <a name="next-steps"></a>Nächste Schritte
+Artikel lesen 
+
+- [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)
