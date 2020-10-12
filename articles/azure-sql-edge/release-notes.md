@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900590"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284481"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge: Versionshinweise 
 
@@ -23,17 +23,23 @@ In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für 
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001549"></a>SQL-Engine-Buildnummer – 15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>SQL-Engine-Buildnummer – 15.0.2000.1552
 
 ### <a name="whats-new"></a>Neuigkeiten
 1. Auf Ubuntu 18.04 basierende Containerimages. 
 2. Unterstützung für `IGNORE NULL`- und `RESPECT NULL`-Syntax mit `LAST_VALUE()`- und `FIRST_VALUE()`-Funktionen. 
 3. Verbesserungen der Zuverlässigkeit für PREDICT mit ONNX.
-4. Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung.      
-   - Unterstützung für optimierte Bereinigung für gruppierte Columnstore-Indizes.
+4. Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung.
+   - Ringpufferunterstützung für die Aufgabe „Bereinigung der Datenaufbewahrung“ zur Problembehandlung.
 5. Unterstützung für neue Funktionen 
    - Schnelle Wiederherstellung
    - Automatische Optimierung von Abfragen
+   - Aktivieren von parallelen Ausführungsszenarien
+6. Verbesserungen der Energiesparfunktion bei niedrigem Energiestatus
+7. Streaming der Unterstützung für neue Funktionen 
+   - [Momentaufnahmefenster](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics): neuer Fenstertyp, der das Gruppieren nach gleichzeitig eintreffenden Ereignissen ermöglicht. 
+   - Aktivieren Sie [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) und [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) als analytische Funktion. Dadurch können (nach der Spalte Ihrer Wahl sortierte) Datensätze zurückgegeben werden, ohne dass sie Teil eines Fensters sein müssen. 
+   - Verbesserungen bei [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Fehlerbehebungen
 1. Zusätzliche Fehlermeldungen und Details zur Problembehandlung von TQL-Streamingvorgängen. 
@@ -41,9 +47,13 @@ In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für 
 3. Fehlerbehebungen für TQL-Streamingmodule: 
    - Bereinigung für beendeten Streamingauftrag 
    - Korrekturen für Lokalisierung und Verbesserungen bei der Unicode-Verarbeitung
+   - Verbesserte Debugfähigkeit bei Edge-TSQL-Streaming ermöglicht Benutzern das Abfragen von Auftragsfehlern aus „get_streaming_job“.
 4. Auf der Datenaufbewahrungsrichtlinie basierende Bereinigung
    - Korrekturen für die Erstellung von Aufbewahrungsrichtlinien und Bereinigungsszenarien.
 5. Korrekturen für Timertasks im Hintergrund, um Energieeinsparungen für den Energiesparmodus zu verbessern.
+
+### <a name="known-issues"></a>Bekannte Probleme 
+1. T-SQL-Funktion „Date_Bucket“ kann in einer berechneten Spalte nicht verwendet werden.
 
 
 ## <a name="ctp-23"></a>CTP 2.3
