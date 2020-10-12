@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283036"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -35,10 +35,11 @@ Im Folgenden erfahren Sie, wie Sie in verschiedenen Vorgängen zur Gesichtserken
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie sollten mit den Konzepten der KI-Gesichtserkennung und -identifikation vertraut sein. Wenn dies nicht der Fall ist, lesen Sie zuerst die folgenden Schrittanleitungen:
+Sie sollten mit den Konzepten der KI-Gesichtserkennung und -identifikation vertraut sein. Wenn dies nicht der Fall ist, lesen Sie zuerst die folgenden Anleitungen:
 
+* [Konzepte der Gesichtserkennung](../concepts/face-detection.md)
+* [Konzepte der Gesichtserkennung](../concepts/face-recognition.md)
 * [Gewusst wie: Gesichtserkennung in Bildern](HowtoDetectFacesinImage.md)
-* [Gewusst wie: Gesichtsidentifikation in Bildern](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>Erkennen von Gesichtern mit dem angegebenen Modell
 
