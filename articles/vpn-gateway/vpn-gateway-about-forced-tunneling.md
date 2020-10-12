@@ -1,18 +1,18 @@
 ---
 title: 'Azure-VPN Gateway: Konfigurieren der Tunnelerzwingung – Site-to-Site-Verbindungen: klassisch'
-description: 'Gewusst wie: „Erzwingen“ der Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort.'
+description: Erfahren Sie, wie Tunnelerzwingung für virtuelle Netzwerke konfiguriert wird, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5999ef8431ce1e128c3775450eedf13644505918
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313534"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell
 

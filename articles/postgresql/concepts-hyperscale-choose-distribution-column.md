@@ -1,18 +1,18 @@
 ---
 title: Auswählen von Verteilungsspalten – Hyperscale (Citus) – Azure Database for PostgreSQL
-description: Erfahren Sie, wie Verteilungsspalten in gängigen Hyperscale-Szenarien in Azure Database for PostgreSQL verwendet werden.
+description: Erfahren Sie, wie Verteilungsspalten in gängigen Szenarien in Azure Database for PostgreSQL – Hyperscale (Citus) – verwendet werden.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975668"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314911"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Auswählen von Verteilungsspalten in Azure Database for PostgreSQL: Hyperscale (Citus)
 
