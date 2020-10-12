@@ -4,13 +4,13 @@ description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktualisier
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: caaf5469eace891f2996a565af183b411ad1d740
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333340"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrieren zu arbeitsbereichsbasierten Application Insights-Ressourcen
 
@@ -34,12 +34,11 @@ Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neues
 
 Wenn Sie zu einer arbeitsbereichsbasierten Ressource migrieren, werden keine Daten aus dem Speicher der klassischen Ressource in den neuen arbeitsbereichsbasierten Speicher übertragen. Wenn Sie sich für die Migration entscheiden, ändern Sie stattdessen den Speicherort, an den neue Daten geschrieben werden, in einen Log Analytics-Arbeitsbereich und behalten gleichzeitig den Zugriff auf die Daten in der klassischen Ressource. 
 
-Die Daten in der klassischen Ressource bleiben erhalten. Hierfür gelten die Aufbewahrungseinstellungen, die zum Zeitpunkt der Erfassung gegolten haben. Alle neuen Daten, die nach der Migration erfasst werden, unterliegen den Aufbewahrungseinstellungen für den zugeordneten Log Analytics-Arbeitsbereich. 
-
+Die Daten in der klassischen Ressource bleiben erhalten, und es gelten die Aufbewahrungseinstellungen in Ihrer klassischen Application Insight-Ressource. Alle neuen Daten, die nach der Migration erfasst werden, unterliegen den [Aufbewahrungseinstellungen](../platform/manage-cost-storage.md#change-the-data-retention-period) für den zugeordneten Log Analytics-Arbeitsbereich, der auch [unterschiedliche Aufbewahrungseinstellungen nach Datentyp](../platform/manage-cost-storage.md#retention-by-data-type) unterstützt.
 Die Migration ist **dauerhaft und kann nicht rückgängig gemacht werden**. Nach der Migration einer Ressource zum arbeitsbereichsbasierten Application Insights ist sie immer eine arbeitsbereichsbasierte Ressource. Nach der Migration können Sie jedoch den Zielarbeitsbereich beliebig oft ändern. 
 
 > [!NOTE]
-> Die Abrechnung der Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen erfolgt über den Log Analytics-Arbeitsbereich, in dem sich die Daten befinden. [Erfahren Sie mehr]( ./pricing.md#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen. (Für Daten aus klassischen Application Insights-Ressourcen, die vor der Migration erfasst wurden, gelten für die Dauer der Speicherung weiterhin die Application Insights-Aufbewahrungseinstellungen und -preise.) 
+> Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen werden [über den Log Analytics-Arbeitsbereich abgerechnet](../platform/manage-cost-storage.md), in dem sich die Daten befinden. Wenn Sie vor der Migration eine Datenaufbewahrung von mehr als 90 Tagen für Daten ausgewählt haben, die in der klassischen Application Insights-Ressource erfasst werden, wird die Datenaufbewahrung weiterhin über diese Application Insights-Ressource abgerechnet. [Erfahren Sie mehr]( ./pricing.md#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen.
 
 Wenn Sie eine vorhandene Ressource nicht migrieren müssen und stattdessen eine neue arbeitsbereichsbasierte Application Insights-Ressource erstellen möchten, finden Sie weitere Informationen in der [Anleitung zum Erstellen arbeitsbereichsbasierter Ressourcen](create-workspace-resource.md).
 

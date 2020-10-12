@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281950"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Verwenden des OPC Vault-Zertifikatverwaltungsdiensts
+
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den Inhalt auf dem neuesten Stand lesen.
 
 In diesem Artikel wird erläutert, wie Sie Anwendungen registrieren und signierte Anwendungszertifikate für Ihre OPC UA-Geräte ausstellen.
 
@@ -31,7 +34,7 @@ Erstellen Sie das ZS-Zertifikat des Zertifikatausstellers, falls dies noch nicht
 
 ## <a name="secure-opc-ua-applications"></a>Schützen von OPC UA-Anwendungen
 
-### <a name="step-1-register-your-opc-ua-application"></a>Schritt 1: Registrieren Ihrer OPC UA-Anwendung 
+### <a name="step-1-register-your-opc-ua-application"></a>Schritt 1: Registrieren Ihrer OPC UA-Anwendung 
 
 > [!IMPORTANT]
 > Die Rolle „Writer“ ist erforderlich, um eine Anwendung registrieren zu können.
