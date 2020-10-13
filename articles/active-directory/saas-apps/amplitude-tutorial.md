@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b05a85dd61cdf4edc366edc3fbf20e4097308d09
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545472"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Amplitude
 
@@ -141,15 +141,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie in der linken Navigationsleiste auf **Admin planen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/amplitude-tutorial/configure1.png)
+    ![Screenshot: Amplitude-Menü mit ausgewählter Option „Plan Admin“ (Admin planen)](./media/amplitude-tutorial/configure1.png)
 
 1. Wählen Sie aus der **SSO-Integration** die Option **Microsoft Azure Active Directory-Metadaten**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/amplitude-tutorial/configure2.png)
+    ![Screenshot: Bereich „Plan Admin“ (Admin planen) mit hervorgehobenem Link „Microsoft Azure Active Directory Metadata“ (Microsoft Azure Active Directory-Metadaten)](./media/amplitude-tutorial/configure2.png)
 
 1. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/amplitude-tutorial/configure3.png)
+    ![Screenshot: Abschnitt „Set Up Single Sign-on“ (SSO einrichten) mit den in diesem Schritt beschriebenen Werten](./media/amplitude-tutorial/configure3.png)
 
     a. Öffnen Sie die aus dem Azure-Portal heruntergeladene **Metadaten-XML** im Editor, und fügen Sie den Inhalt im Textfeld **Microsoft Azure Active Directory-Metadaten** ein.
 

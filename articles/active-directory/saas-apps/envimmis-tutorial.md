@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551743"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Tutorial: Azure Active Directory-Integration mit Envi MMIS
 
@@ -99,7 +99,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Envi MMI
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Envi MMIS](common/idp-intiated.png)
+    ![Screenshot von „S A M L-Basiskonfiguration“, auf dem „Bezeichner“, „Antwort-U R L“ und die Schaltfläche „Speichern“ hervorgehoben sind](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Envi MMI
 
 2. Klicken Sie auf die Registerkarte **My Domain**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/envimmis-tutorial/configure1.png)
+    ![Screenshot des Menüs „Benutzer“, in dem „My Domain“ ausgewählt ist](./media/envimmis-tutorial/configure1.png)
 
 3. Klicken Sie auf **Bearbeiten**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/envimmis-tutorial/configure2.png)
+    ![Screenshot der ausgewählten Schaltfläche „Hinzufügen“](./media/envimmis-tutorial/configure2.png)
 
 4. Aktivieren Sie das Kontrollkästchen **Use remote authentication** (Remoteauthentifizierung verwenden), und wählen Sie dann **HTTP Redirect** (HTTP-Umleitung) in der Dropdownliste **Authentication Type** (Authentifizierungstyp) aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/envimmis-tutorial/configure3.png)
+    ![Screenshot der Registerkarte „Details“, auf der „Use remote authentication“ aktiviert und „H T T P Redirect“ ausgewählt ist](./media/envimmis-tutorial/configure3.png)
 
 5. Wählen Sie die Registerkarte **Resources** (Ressourcen) aus, und klicken Sie dann auf **Upload Metadata** (Metadaten hochladen).
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/envimmis-tutorial/configure4.png)
+    ![Screenshot der Registerkarte „Ressourcen“, auf der die Aktion „Upload Metadata“ ausgewählt ist](./media/envimmis-tutorial/configure4.png)
 
 6. Führen Sie im Popupmenü **Upload Metadata** (Metadaten hochladen) die folgenden Schritte aus:
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/envimmis-tutorial/configure5.png)
+    ![Screenshot des Popupmenüs „Upload Metadata“, in dem die Option „Datei“ ausgewählt und das Symbol „Datei auswählen“ und die Schaltfläche „OK“ hervorgehoben sind](./media/envimmis-tutorial/configure5.png)
 
     a. Wählen Sie im Dropdownmenü **Upload from** (Hochladen aus) die Option **File** (Datei) aus.
 
@@ -223,11 +223,11 @@ Damit sich Azure AD-Benutzer bei Envi MMIS anmelden können, müssen sie in Envi
 
 2. Klicken Sie auf die Registerkarte **User List** (Benutzerliste).
 
-    ![Mitarbeiter hinzufügen](./media/envimmis-tutorial/user1.png)
+    ![Screenshot des Menüs „User“, in dem „User List“ ausgewählt ist](./media/envimmis-tutorial/user1.png)
 
 3. Klicken Sie auf die Schaltfläche **Add User** (Benutzer hinzufügen).
 
-    ![Mitarbeiter hinzufügen](./media/envimmis-tutorial/user2.png)
+    ![Screenshot des Abschnitts „Users“, in dem die Schaltfläche „Add User“ ausgewählt ist](./media/envimmis-tutorial/user2.png)
 
 4. Führen Sie im Abschnitt **Add User** die folgenden Schritte aus:
 

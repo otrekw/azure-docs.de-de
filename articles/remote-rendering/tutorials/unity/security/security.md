@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021322"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650475"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Tutorial: Schützen von Azure-Remote Rendering und Modellspeicher
 
@@ -163,7 +163,7 @@ Wir ändern **RemoteRenderingCoordinator**, um ein benutzerdefiniertes Modell au
     ```
 
     Dieser Code fügt Ihrer **RemoteRenderingCoordinator**-Komponente drei zusätzliche Zeichenfolgenvariablen hinzu.
-    ![Verknüpftes Modell](./media/storage-account-linked-model.png)
+    ![Screenshot: Hervorhebung der Optionen für den Speicherkontonamen, Blobcontainernamen und den Modellpfad der RemoteRenderingCoordinator-Komponente](./media/storage-account-linked-model.png)
 
 1. Fügen Sie der **RemoteRenderingCoordinator**-Komponente Werte hinzu. Wenn Sie den [Schnellstart für Modellkonvertierung](../../../quickstarts/convert-model.md) befolgt haben, lauten Ihre Werte wie folgt:
 
@@ -392,12 +392,13 @@ Wenn die AAD-Authentifizierung aktiv ist, müssen Sie sich im Unity Editor jedes
     * Die **Azure-Mandanten-ID** ist die *Verzeichnis-ID (Mandant)* in Ihrer AAD-Appregistrierung (siehe Abbildung unten).
     * Die **Azure Remote Rendering-Konto-ID** ist dieselbe **Konto-ID**, die Sie für **RemoteRenderingCoordinator** verwendet haben.
 
-    ![AAD-Authentifizierungskomponente](./media/app-overview-data.png)
+    ![Screenshot: Hervorhebung der Anwendungs-ID (Client) und der Verzeichnis-ID (Mandant)](./media/app-overview-data.png)
 
 1. Klicken Sie im Unity-Editor auf „Abspielen“, und stimmen Sie dem Ausführen einer Sitzung zu.
     Da die **AADAuthentication**-Komponente über einen Ansichtscontroller verfügt, wird sie automatisch verknüpft, um nach dem modalen Sitzungsautorisierungsbereich eine Eingabeaufforderung anzuzeigen.
 1. Befolgen Sie die Anweisungen im Bereich rechts neben **AppMenu**.
-    Die Anzeige sollte in etwa der folgenden Ausgabe entsprechen: ![AAD-Authentifizierungskomponente](./media/device-flow-instructions.png) Nach der Eingabe der bereitgestellten Codierung auf Ihrem sekundären Gerät (oder im Browser auf demselben Gerät) und dem Einloggen mit Ihren Anmeldeinformationen wird ein Zugriffstoken an die anfordernde Anwendung zurückgegeben. Dies ist in diesem Fall der Unity-Editor.
+    Die Anzeige sollte in etwa der folgenden Ausgabe entsprechen: ![Abbildung des Anweisungsbereichs rechts neben „AppMenu“](./media/device-flow-instructions.png)
+    Nach der Eingabe der bereitgestellten Codierung auf Ihrem sekundären Gerät (oder Browser auf demselben Gerät) und dem Einloggen mit Ihren Anmeldeinformationen wird ein Zugriffstoken an die anfordernde Anwendung zurückgegeben. Dies ist in diesem Fall der Unity Editor.
 1. Jetzt sollten alle Prozesse in der Anwendung normal fortgesetzt werden. Überprüfen Sie die Unity-Konsole auf Fehler, wenn Sie die einzelnen Schritte nicht erwartungsgemäß durchführen können.
 
 ## <a name="build-to-device"></a>Entwickeln auf dem Gerät

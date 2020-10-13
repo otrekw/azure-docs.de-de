@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6050b9f4a14f39245c7424f47dae081e9efc6ff1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544076"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hive
 
@@ -147,11 +147,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf das **Benutzerprofil** und anschließend auf **Your workspace** (Ihr Arbeitsbereich).
 
-    ![Hive-Konfiguration](./media/hive-tutorial/configure1.png)
+    ![Screenshot der Hive-Website, auf der im Menü „Your workspace“ (Ihr Arbeitsbereich) ausgewählt ist](./media/hive-tutorial/configure1.png)
 
 1. Klicken Sie auf **Auth** (Authentifizierung), und führen Sie die folgenden Schritte aus:
 
-    ![Hive-Konfiguration](./media/hive-tutorial/configure2.png)
+    ![Screenshot der Seite „Auth“ (Authentifizierung), auf der Sie die beschriebenen Aufgaben ausführen](./media/hive-tutorial/configure2.png)
 
     a. Kopieren Sie den Wert für **Your Workspace ID** (Ihre Arbeitsbereichs-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** an die Werte für **Anmelde-URL** und **Antwort-URL** an.
 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992265"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760392"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Notfallwiederherstellung für „Verwaltetes HSM“
 
@@ -30,7 +30,7 @@ Sie können die HSM-Instanz in derselben oder einer anderen Region neu erstellen
 Hier sind die Schritte des Verfahrens für die Notfallwiederherstellung angegeben:
 
 1. Erstellen einer neuen HSM-Instanz
-1. Aktivieren der „Sicherheitsdomänenwiederherstellung“ Ein neues RSA-Schlüsselpaar (Austauschschlüssel für Sicherheitsdomäne) wird für die Sicherheitsdomänenübertragung generiert und als Antwort gesendet. Hierfür wird ein „SecurityDomainExchangeKey“ (öffentlicher Schlüssel) heruntergeladen.
+1. Aktivieren der „Sicherheitsdomänenwiederherstellung“ Ein neues RSA-Schlüsselpaar (Austauschschlüssel für Sicherheitsdomäne) wird für die Sicherheitsdomänenübertragung generiert und als Antwort gesendet. Diese wird als „SecurityDomainExchangeKey“ (öffentlicher Schlüssel) heruntergeladen.
 1. Erstellen Sie die „Datei für die Sicherheitsdomänenübertragung“, und laden Sie sie anschließend hoch. Sie benötigen die privaten Schlüssel, mit denen die Sicherheitsdomäne verschlüsselt wird. Die privaten Schlüssel werden lokal verwendet und bei diesem Prozess nie an einen anderen Ort übertragen.
 1. Erstellen Sie eine Sicherung des neuen HSM. Vor einer Wiederherstellung ist auch dann eine Sicherung erforderlich, wenn das HSM leer ist. Sicherungen ermöglichen einen einfachen Rollback.
 1. Wiederherstellen der letzten HSM-Sicherung vom Quell-HSM
@@ -102,7 +102,7 @@ Zum Erstellen einer HSM-Sicherung benötigen Sie Folgendes:
 - Ein Speicherkonto, unter dem die Sicherung gespeichert wird.
 - Einen Blobspeichercontainer in diesem Speicherkonto, in dem vom Sicherungsprozess ein neuer Ordner zum Speichern der verschlüsselten Sicherung erstellt wird.
 
-Im Beispiel unten verwenden wir den Befehl `az keyvault backup` für die HSM-Sicherung im Speichercontainer **mhsmbackupcontainer** und das Speicherkonto **ContosoBackup**. Wir erstellen ein SAS-Token, das innerhalb von 30 Minuten abläuft, und stellen es zum Schreiben der Sicherung für das verwaltete HSM bereit.
+Im Beispiel unten verwenden wir den Befehl `az keyvault backup` für die HSM-Sicherung im Speichercontainer **mhsmbackupcontainer**, der sich im Speicherkonto **ContosoBackup** befindet. Wir erstellen ein SAS-Token, das innerhalb von 30 Minuten abläuft, und stellen es zum Schreiben der Sicherung für das verwaltete HSM bereit.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd07370c75ac64fa8e3806fed50a64db90122c76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537925"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708304"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AcquireIO
 
@@ -134,15 +134,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im linken Bereich des Menüs auf **App Store**.
 
-     ![AcquireIO-Konfiguration](./media/acquireio-tutorial/config01.png)
+     ![Screenshot, in dem der App Store hervorgehoben ist](./media/acquireio-tutorial/config01.png)
 
 1. Scrollen Sie nach unten zu **Active Directory**, und klicken Sie auf **Installieren**.
 
-    ![AcquireIO-Konfiguration](./media/acquireio-tutorial/config02.png)
+    ![Screenshot, in dem der Abschnitt „Active Directory“ und die Schaltfläche „Installieren“ hervorgehoben sind](./media/acquireio-tutorial/config02.png)
 
 1. Führen Sie im Popupfenster „Active Directory“ die folgenden Schritte aus:
 
-    ![AcquireIO-Konfiguration](./media/acquireio-tutorial/config03.png)
+    ![Screenshot des Bildschirms „Active Directory“](./media/acquireio-tutorial/config03.png)
 
     a. Klicken Sie auf **Kopieren**, um die Antwort-URL für Ihre Instanz zu kopieren, und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** im Textfeld **Antwort-URL** ein.
 
@@ -162,7 +162,7 @@ Damit sich Azure AD-Benutzer bei AcquireIO anmelden können, müssen sie in Acq
 
 1. Klicken Sie im linken Bereich des Menüs auf **Profiles** (Profile), und navigieren Sie zu **Add Profile** (Profil hinzufügen).
 
-     ![AcquireIO-Konfiguration](./media/acquireio-tutorial/config04.png)
+     ![Screenshot, in dem im Menü auf der linken Seite des Bildschirms „Profile“ sowie die Option „Profil hinzufügen“ hervorgehoben sind](./media/acquireio-tutorial/config04.png)
 
 1. Führen Sie auf der Registerkarte **Add customer** (Kunden hinzufügen) die folgenden Schritte aus:
 

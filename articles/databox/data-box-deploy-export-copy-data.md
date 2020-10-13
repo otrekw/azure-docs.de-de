@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259126"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742382"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Tutorial: Kopieren von Daten aus Azure Data Box über SMB (Vorschau)
 
@@ -50,7 +50,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
 1. Zunächst müssen Sie sich authentifizieren und eine Sitzung starten. Navigieren Sie zu **Verbindung herstellen und Daten kopieren**. Wählen Sie **Get credentials** (Anmeldeinformationen abrufen) aus, um die Anmeldeinformationen für den Zugriff auf die mit Ihrem Speicherkonto verknüpften Freigaben abzurufen. 
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
@@ -75,7 +75,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
 4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>` an. Wählen Sie **OK** aus, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Die Freigaben sollten jetzt als Ordner angezeigt werden.
     

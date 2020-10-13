@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551284"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760936"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex Meetings
 
@@ -164,11 +164,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Common Site Settings** (Allgemeine Websiteeinstellungen) und dann zu **SSO Configuration** (SSO-Konfiguration).
  
-    ![Einmaliges Anmelden konfigurieren](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![Screenshot der Cisco Webex Administration, in der „Common Site Settings“ (Allgemeine Websiteeinstellungen) und „S S O Configuration“ (SSO-Konfiguration) ausgewählt sind](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. Führen Sie auf der Seite **Webex Administration** (Webex-Verwaltung) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![Screenshot der Seite „Webex Administration“ mit den in diesem Schritt beschriebenen Informationen](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. Wählen Sie unter **Federation Protocol** (Verbundprotokoll) die Option **SAML 2.0** aus.
 

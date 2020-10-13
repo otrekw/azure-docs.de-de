@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/08/2019
+ms.date: 09/22/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f1099a3564a5891a69429d78bda8177094538e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c460775bcb63028f03d0e8d0b1f7ed1507cdb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259457"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem LinkedIn-Konto mithilfe von Azure Active Directory B2C
 
@@ -25,11 +25,14 @@ ms.locfileid: "85388016"
 Um ein LinkedIn-Konto als [Identitätsanbieter](authorization-code-flow.md) in Azure Active Directory B2C (Azure AD B2C) verwenden zu können, müssen Sie in Ihrem Mandanten eine Anwendung erstellen, die es darstellt. Wenn Sie noch über kein LinkedIn-Konto verfügen, können Sie sich unter [https://www.linkedin.com/](https://www.linkedin.com/) registrieren.
 
 1. Melden Sie sich auf der [LinkedIn-Entwickler-Website](https://www.developer.linkedin.com/) mit den Anmeldeinformationen für Ihr LinkedIn-Konto an.
-1. Wählen Sie **My Apps** (Meine Apps) aus, und klicken Sie dann auf **Create Application** (Anwendung erstellen).
-1. Geben Sie Informationen für **Company Name** (Firmenname), **Application Name** (Anwendungsname), **Application Description** (Anwendungsbeschreibung), **Application Logo** (Anwendungslogo), **Application Use** (Anwendungsverwendung), **Website URL** (Website-URL), **Business Email** (E-Mail geschäftlich) und **Business Phone** (Telefon geschäftlich) ein.
-1. Akzeptieren Sie die **LinkedIn API Terms of Use**, und klicken Sie auf **Submit**.
-1. Kopieren Sie die Werte für **Client ID** und **Client Secret**. Sie finden sie unter **Authentication Keys** (Authentifizierungsschlüssel). Sie benötigen beide Angaben, um LinkedIn als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
-1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Authorized Redirect URLs** (Autorisierte Umleitungs-URLs) ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält. Wählen Sie **Add** (Hinzufügen) aus, und klicken Sie dann auf **Update** (Aktualisieren).
+1. Wählen Sie **My Apps** (Meine Apps) aus, und klicken Sie dann auf **Create App** (App erstellen).
+1. Geben Sie **App-Name**, **LinkedIn-Seite**, **URL der Datenschutzrichtlinie** und **App-Logo** ein.
+1. Akzeptieren Sie die **API-Nutzungsbedingungen** von LinkedIn, und klicken Sie auf **Create app** (App erstellen).
+1. Wählen Sie die Registerkarte **Authentifizierung** aus. Kopieren Sie unter **Authentication Keys** (Authentifizierungsschlüssel) die Werte für **Client ID** (Client-ID) und **Client Secret** (Geheimer Clientschlüssel). Sie benötigen beide Angaben, um LinkedIn als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
+1. Wählen Sie neben **Authorized redirect URLs for your app** (Autorisierte Umleitungs-URLs für Ihre App) den Bearbeitungsstift und anschließend **Add redirect URL** (Umleitungs-URL hinzufügen) aus. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein, und ersetzen Sie dabei `your-tenant-name` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält. Wählen Sie **Update** aus.
+2. Standardmäßig wird Ihre LinkedIn-App nicht für Bereiche genehmigt, die mit der Anmeldung zusammenhängen. Wählen Sie zum Anfordern einer Überprüfung die Registerkarte **Products** (Produkte) und anschließend **Sign In with LinkedIn** (Mit LinkedIn anmelden) aus. Nach Abschluss der Überprüfung werden Ihrer Anwendung die erforderlichen Bereiche hinzugefügt.
+   > [!NOTE]
+   > Die derzeit für Ihre App zulässigen Bereiche werden auf der Registerkarte **Auth** (Authentifizierung) im Abschnitt **OAuth 2.0 scopes** (OAuth 2.0-Bereiche) angezeigt.
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Konfigurieren eines LinkedIn-Kontos als Identitätsanbieter
 

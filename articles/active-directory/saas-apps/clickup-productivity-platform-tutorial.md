@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551812"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Tutorial: Azure Active Directory-Integration mit ClickUp Productivity Platform
 
@@ -118,17 +118,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
 2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie anschließend die Option **Einstellungen** aus.
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Screenshot des ClickUp Productivity-Mandanten, bei dem das Symbol „Einstellungen“ ausgewählt ist](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![Screenshot der Einstellungen](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. Wählen Sie als Anbieter für einmaliges Anmelden die Option **Microsoft**.
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![Screenshot des Bereichs „Authentifizierung“, in dem Microsoft ausgewählt ist](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für ClickUp Productivity Platform** die folgenden Schritte aus:
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![Screenshot der Seite „Einmaliges Anmelden konfigurieren für Microsoft“, auf der Sie die Entitäts-I D kopieren und die Azure-Verbundmetadaten-U R L speichern können](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Klicken Sie auf **Kopieren**, um den Wert im Feld „Entity ID“ (Entitäts-ID) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
     
@@ -136,7 +136,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
 5. Klicken Sie zum Abschließen des Setups auf **Authenticate With Microsoft to complete setup** (Zum Beenden des Setups bei Microsoft authentifizieren), und führen Sie die Authentifizierung mit dem Microsoft-Konto durch.
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![Screenshot der Schaltfläche zum Authentifizieren bei Microsoft zum Abschließen des Setups](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -195,13 +195,13 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie anschließend die Option **Personen** aus.
    
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Screenshot des ClickUp Productivity-Mandanten](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![Screenshot des ausgewählten Links „Personen“](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. Geben Sie die E-Mail-Adresse des Benutzers im Textfeld ein, und klicken Sie auf **Einladen**.
 
-    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![Screenshot der Teambenutzereinstellungen, in denen Sie Personen per §-Mail einladen können](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > Der Benutzer erhält die Benachrichtigung und muss die Einladung annehmen, um das Konto aktivieren zu können.

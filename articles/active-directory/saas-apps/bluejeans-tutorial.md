@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545402"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740446"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BlueJeans for Azure AD
 
@@ -150,7 +150,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Wechseln Sie zu **ADMIN \> GROUP SETTINGS \> SECURITY** (ADMINISTRATOR > GRUPPENEINSTELLUNGEN > SICHERHEIT).
 
-    ![Administrator](./media/bluejeans-tutorial/ic785868.png "Admin")
+    ![Screenshot eines Teils eines Browserfensters, in dem die Registerkarte „Administrator“ sowie „Gruppeneinstellung“ und „Sicherheit“ ausgewählt sind](./media/bluejeans-tutorial/ic785868.png "Admin")
 
 3. Führen Sie im Abschnitt **SECURITY** (SICHERHEIT) die folgenden Schritte aus:
 
@@ -192,14 +192,14 @@ In diesem Abschnitt wird in BlueJeans for Azure AD ein Benutzer namens B. Si
 
 2. Navigieren Sie zu **ADMIN \> MANAGE USERS \> ADD USER** (ADMINISTRATOR > BENUTZER VERWALTEN > BENUTZER HINZUFÜGEN).
 
-    ![Administrator](./media/bluejeans-tutorial/ic785877.png "Admin")
+    ![Screenshot eines Teils eines Browserfensters, in dem die Registerkarte „Administrator“ sowie „Benutzer verwalten“ und „Benutzer hinzufügen“ ausgewählt sind](./media/bluejeans-tutorial/ic785877.png "Admin")
 
     > [!IMPORTANT]
     > Die Registerkarte **ADD USER** (BENUTZER HINZUFÜGEN) ist nur verfügbar, wenn auf der Registerkarte **SECURITY** (SICHERHEIT) die Option **Enable automatic provisioning** (Automatische Bereitstellung aktivieren) deaktiviert ist.
 
 3. Führen Sie im Abschnitt **ADD USER** (BENUTZER HINZUFÜGEN) die folgenden Schritte aus:
 
-    ![Benutzer hinzufügen](./media/bluejeans-tutorial/ic785886.png "Benutzer hinzufügen")
+    ![Screenshot des Abschnitts „Benutzer hinzufügen“, in dem Sie die in diesem Schritt beschriebenen Informationen eingeben](./media/bluejeans-tutorial/ic785886.png "Benutzer hinzufügen")
 
     a. Geben Sie im Textfeld **First name** (Vorname) den Vornamen des Benutzers ein, z. B. **B**.
 
@@ -219,7 +219,7 @@ In diesem Abschnitt wird in BlueJeans for Azure AD ein Benutzer namens B. Si
 
     i. Klicken Sie auf **CONTINUE** (WEITER).
 
-    ![Benutzer hinzufügen](./media/bluejeans-tutorial/ic785887.png "Benutzer hinzufügen")
+    ![Screenshot des Abschnitts „Benutzer hinzufügen“, in dem Einstellungen und Funktionen angezeigt werden und die Schaltfläche „Benutzer hinzufügen“ ausgewählt ist](./media/bluejeans-tutorial/ic785887.png "Benutzer hinzufügen")
 
     J. Klicken Sie auf **BENUTZER HINZUFÜGEN**.
 

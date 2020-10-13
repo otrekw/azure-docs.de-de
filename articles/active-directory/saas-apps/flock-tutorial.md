@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554960"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Tutorial: Azure Active Directory-Integration in Flock
 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 2. Wählen Sie im linken Navigationsbereich die Registerkarte **Authentication** (Authentifizierung) und dann **SAML Authentication** (SAML-Authentifizierung) aus.
 
-    ![Flock-Konfiguration](./media/flock-tutorial/configure1.png)
+    ![Screenshot: Registerkarte „Authentifizierung“ mit ausgewählter Option „SAML-Authentifizierung“](./media/flock-tutorial/configure1.png)
 
 3. Führen Sie im Abschnitt für die **SAML-Authentifizierung** die folgenden Schritte aus:
 
@@ -203,11 +203,11 @@ Damit sich Azure AD-Benutzer bei Flock anmelden können, müssen sie in Flock be
 
 2. Klicken Sie im linken Navigationsbereich auf **Manage Team** (Team verwalten).
 
-    ![Mitarbeiter hinzufügen](./media/flock-tutorial/user1.png)
+    ![Screenshot: Option „Team verwalten“ ausgewählt](./media/flock-tutorial/user1.png)
 
 3. Klicken Sie auf die Registerkarte **Add Member** (Mitglied hinzufügen), und wählen Sie **Team Members** (Teammitglieder) aus.
 
-    ![Mitarbeiter hinzufügen](./media/flock-tutorial/user2.png)
+    ![Screenshot: Registerkarte „Add Member“ (Mitglied hinzufügen) mit der Option „Team Members“ (Teammitglieder) ausgewählt](./media/flock-tutorial/user2.png)
 
 4. Geben Sie die E-Mail-Adresse des Benutzers ein, z. B. **Brittasimon\@contoso.com**, und wählen Sie dann **Add Users** (Benutzer hinzufügen) aus.
 

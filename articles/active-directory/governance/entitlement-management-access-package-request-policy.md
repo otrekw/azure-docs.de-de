@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980220"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449979"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -125,8 +125,8 @@ Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verze
     |  |  |
     | --- | --- |
     | **Bestimmte verbundene Organisationen** | Wählen Sie diese Option aus, wenn Sie aus einer Liste mit Organisationen auswählen möchten, die Ihr Administrator zuvor hinzugefügt hat. Alle Benutzer aus den ausgewählten Organisationen können dieses Zugriffspaket anfordern. |
-    | **Alle verbundenen Organisationen** | Wählen Sie diese Option aus, wenn alle Benutzer aus allen Ihren verbundenen Organisationen dieses Zugriffspaket anfordern können. |
-    | **Alle Benutzer (alle verbundenen Organisationen und alle neuen externen Benutzer)** | Wählen Sie diese Option aus, wenn alle Benutzer von allen verbundenen Organisationen dieses Zugriffspaket anfordern können und die Einstellungen der B2B-Zulassungsliste oder -Verweigerungsliste für jeden neuen externen Benutzer Vorrang haben soll. |
+    | **Alle konfigurierten verbundenen Organisationen** | Wählen Sie diese Option aus, wenn alle Benutzer aus allen Ihren konfigurierten verbundenen Organisationen dieses Zugriffspaket anfordern können. Nur Benutzer aus konfigurierten verbundenen Organisationen können Zugriffspakete anfordern, die Benutzern aus allen konfigurierten Organisationen angezeigt werden. |
+    | **Alle Benutzer (alle verbundenen Organisationen und alle neuen externen Benutzer)** | Wählen Sie diese Option aus, wenn beliebige Benutzer im Internet die Möglichkeit haben sollen, dieses Zugriffspaket anzufordern.  Falls sie nicht zu einer verbundenen Organisation in Ihrem Verzeichnis gehören, wird für sie automatisch eine verbundene Organisation erstellt, wenn Sie das Paket anfordern. Die automatisch erstellte verbundene Organisation befindet sich im Zustand **Vorgeschlagen**. Weitere Informationen zum Zustand „Vorgeschlagen“ finden Sie unter [Zustandseigenschaften verbundener Organisationen](entitlement-management-organization.md#state-properties-of-connected-organizations). |
 
     Eine verbundene Organisation ist ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, mit der eine Beziehung besteht.
 

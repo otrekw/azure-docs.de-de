@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555155"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Tutorial: Azure Active Directory-Integration mit FileCloud
 
@@ -130,19 +130,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit FileClou
 
 2. Klicken Sie im linken Navigationsbereich auf **Einstellungen**. 
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Screenshot: „Einstellungen“ im linken Navigationsbereich](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. Klicken Sie im Abschnitt „Einstellungen“ auf die Registerkarte **SSO**. 
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![Screenshot: Abschnitt „Einstellungen“ mit ausgewählter Registerkarte „SSO“](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. Wählen Sie **SAML** im Bereich **Einstellungen für einmaliges Anmelden (SSO)** als **Standard-SSO-Typ** aus.
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![Screenshot: Panel „Single Sign On (SSO) Settings“ (Einstellungen für einmaliges Anmelden) mit ausgewählter Option „SAML“](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. Fügen Sie in das Textfeld **IdP End Point URL** (IdP-Endpunkt-URL) den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![Screenshot: Abschnitt „SAML Settings“ (SAML-Einstellungen) mit der Option „IdP End Point URL“ (Endpunkt-URL für den Identitätsanbieter) hervorgehoben](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. Öffnen Sie die heruntergeladene Metadatendatei im Editor, kopieren Sie den Inhalt in Ihre Zwischenablage, und fügen Sie ihn in das Textfeld **IdP-Metadaten** im Bereich **SAML-Einstellungen** ein.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551029"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817042"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Tutorial: Integrieren von Freedcamp in Azure Active Directory
 
@@ -108,11 +108,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **My Account** (Mein Konto).
 
-    ![Freedcamp-Konfiguration](./media/freedcamp-tutorial/config01.png)
+    ![Screenshot: Ausgewählte Optionen „Profil“ und „Mein Konto“](./media/freedcamp-tutorial/config01.png)
 
 5. Klicken Sie links auf der Menüleiste auf **SSO**, und führen Sie auf der Seite **Your SSO connections** (Ihre SSO-Verbindungen) die folgenden Schritte aus:
 
-    ![Freedcamp-Konfiguration](./media/freedcamp-tutorial/config02.png)
+    ![Screenshot: „SSO“ (Einmaliges Anmelden) in der linken Menüleiste ausgewählt und die Seite „Your SSO Connections“ (Ihre Verbindungen mit einmaligem Anmelden) mit eingegeben Werten und ausgewählter Schaltfläche „Submit“ (Übermitteln)](./media/freedcamp-tutorial/config02.png)
 
     a. Geben Sie im Textfeld **Title** (Titel) den Titel ein.
 
@@ -168,7 +168,7 @@ Damit sich Azure AD-Benutzer bei Freedcamp anmelden können, müssen sie in Fre
 
 3. Führen Sie auf der rechten Seite der Seite „Manage System“ (System verwalten) die folgenden Schritte aus:
 
-    ![Freedcamp-Konfiguration](./media/freedcamp-tutorial/config04.png)
+    ![Screenshot: Ausgewählte Schaltfläche „Add Or Invite Users“ (Benutzer hinzufügen oder einladen), hervorgehobenes Feld „E-Mail-Adresse“ und ausgewählte Schaltfläche „Benutzer hinzufügen“](./media/freedcamp-tutorial/config04.png)
 
     a. Klicken Sie auf **Add or invite Users** (Benutzer hinzufügen oder einladen).
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 831ce1ccb2c09a85ddfff8fa65172b1871119a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ba6dda86475456b6797d27e11727d70261be2e1a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079892"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439992"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
@@ -203,14 +203,14 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Klicken Sie auf die Schaltfläche **...Mehr** und anschließend auf **Remotezugriff zurücksetzen**:
    
-    ![Zurücksetzen der RDP-Konfiguration im Azure-Portal](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
+    ![Zurücksetzen der RDP-Konfiguration im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
 2. **Überprüfen Sie die Cloud Services-Endpunkte.** In diesem Problembehandlungsschritt wird überprüft, ob Ihre Cloud Services-Instanz Endpunkte enthält, die RDP-Datenverkehr zulassen. Der Standardport für RDP ist der TCP-Port 3389. Unter Umständen wird bei der Erstellung Ihres virtuellen Computers nicht automatisch eine Regel zum Zulassen von RDP-Datenverkehr erstellt.
    
    Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Klicken Sie auf die Schaltfläche **Endpunkte**, um die Endpunkte anzuzeigen, die derzeit für Ihren virtuellen Computer konfiguriert sind. Vergewissern Sie sich, dass Endpunkte vorhanden sind, die RDP-Datenverkehr über den TCP-Port 3389 zulassen.
    
    Das folgende Beispiel zeigt gültige Endpunkte, die RDP-Datenverkehr zulassen:
    
-   ![Überprüfen der Cloud Services-Endpunkte im Azure-Portal](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
+   ![Überprüfen von Cloud Services-Endpunkten im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
    Sollte kein Endpunkt vorhanden sein, der RDP-Datenverkehr zulässt, [erstellen Sie einen Cloud Services-Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints). Lassen Sie TCP für den privaten Port 3389 zu.
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
@@ -220,17 +220,17 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Ressourcenintegrität**. Fehlerfreie virtuelle Computer haben den Status **Verfügbar**:
    
-    ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
+    ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort des lokalen Administratorkontos zurückgesetzt, das Sie angeben, falls Sie sich bei den Anmeldeinformationen unsicher sind oder die Anmeldeinformationen vergessen haben.  Sobald Sie sich beim virtuellen Computer angemeldet haben, müssen Sie das Kennwort für diesen Benutzer zurücksetzen.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Geben Sie Ihren Benutzernamen und ein neues Kennwort ein. Klicken Sie abschließend auf die Schaltfläche **Speichern**:
    
-    ![Zurücksetzen der Benutzeranmeldeinformationen im Azure-Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
+    ![Zurücksetzen der Benutzeranmeldeinformationen im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **Starten Sie den virtuellen Computer neu.** Dieser Problembehandlungsschritt dient zum Beheben von Problemen, die auf den eigentlichen virtuellen Computer zurückzuführen sind.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus, und klicken Sie auf die Registerkarte **Übersicht**. Klicken Sie auf die Schaltfläche **Neu starten**:
    
-    ![Neustarten des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+    ![Neustarten des virtuellen Computers im Azure-Portal für einen virtuellen Computer mit klassischem Bereitstellungsmodell](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
 7. Stellen Sie sicher, dass alle lokalen Firewalls oder Firewalls auf dem Computer ausgehenden Datenverkehr an TCP-Port 3389 für Azure zulassen.
 

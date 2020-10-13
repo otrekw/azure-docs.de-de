@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962229"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739832"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Erstellen von zwei sicher verbundenen Web-Apps mit privatem Endpunkt und VNET-Integration
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie einen [privaten E
 - Bereitstellen eines VNET
 - Erstellen des ersten Subnetzes für die Integration
 - Erstellen des zweiten Subnetzes für den privaten Endpunkt und Festlegen eines bestimmten Parameters zum Deaktivieren von Netzwerkrichtlinien
-- Bereitstellen eines App Service-Plans vom Typ „PremiumV2“ (mindestens erforderliche SKU für das Feature „Privater Endpunkt“)
+- Bereitstellen eines App Service-Plans vom Typ „PremiumV2“ oder „PremiumV3“ (für das Feature „Privater Endpunkt“ erforderlich)
 - Erstellen der Front-End-Web-App mit spezifischen App-Einstellungen für die Verwendung der privaten DNS-Zone ([Ausführlichere Informationen](../web-sites-integrate-with-vnet.md#azure-dns-private-zones))
 - Herstellen einer Verbindung zwischen der Front-End-Web-App und dem Integrationssubnetz
 - Erstellen der Back-End-Web-App

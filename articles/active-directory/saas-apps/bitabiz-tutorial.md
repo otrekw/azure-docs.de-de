@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531057"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Tutorial: Azure Active Directory-Integration mit BitaBIZ
 
@@ -132,15 +132,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BitaBIZ 
 
 2. Klicken Sie auf **SETUP ADMIN** (ADMINISTRATOR EINRICHTEN).
 
-    ![BitaBIZ-Konfiguration](./media/bitabiz-tutorial/settings1.png)
+    ![Screenshot: Teil eines Browserfensters mit ausgewählter Schaltfläche „Setup Admin“ (Administrator einrichten)](./media/bitabiz-tutorial/settings1.png)
 
 3. Klicken Sie im Abschnitt **Add value** (Aufwerten) auf **Microsoft integrations** (Microsoft-Integrationen).
 
-    ![BitaBIZ-Konfiguration](./media/bitabiz-tutorial/settings2.png)
+    ![Screenshot: Fenster „Wert hinzufügen“ mit ausgewählter Option „Microsoft integrations“ (Microsoft-Integrationen)](./media/bitabiz-tutorial/settings2.png)
 
 4. Scrollen Sie zum Abschnitt **Microsoft Azure AD (Enable single sign on)** (Microsoft Azure AD (einmaliges Anmelden aktivieren)), und führen Sie die folgenden Schritte aus:
 
-    ![BitaBIZ-Konfiguration](./media/bitabiz-tutorial/settings3.png)
+    ![Screenshot: Microsoft Azure AD-Abschnitt, in dem Sie die in diesem Schritt beschriebenen Informationen eingeben](./media/bitabiz-tutorial/settings3.png)
 
     a. Kopieren Sie den Wert aus dem Textfeld **Entity ID (”Identifier” in Azure AD)** (Entitäts-ID ("Bezeichner" in Azure AD)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein. 
 
@@ -218,19 +218,19 @@ Im Fall von BitaBIZ muss die Bereitstellung manuell durchgeführt werden.
 
 2. Klicken Sie auf **SETUP ADMIN** (ADMINISTRATOR EINRICHTEN).
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/settings1.png)
+    ![Screenshot: Teil Ihres Browserfensters mit ausgewählter Schaltfläche „Setup Admin“ (Administrator einrichten)](./media/bitabiz-tutorial/settings1.png)
 
 3. Klicken Sie im Abschnitt **Organization** (Organisation) auf **Add users** (Benutzer hinzufügen).
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/user1.png)
+    ![Screenshot: Abschnitt „Unternehmen“ mit ausgewählter Option „Benutzer hinzufügen“](./media/bitabiz-tutorial/user1.png)
 
 4. Klicken Sie auf **Add new employee** (Neuen Mitarbeiter hinzufügen).
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/user2.png)
+    ![Screenshot: „Benutzer hinzufügen“ mit ausgewählter Option „Add new employee“ (Neuen Mitarbeiter hinzufügen)](./media/bitabiz-tutorial/user2.png)
 
 5. Führen Sie auf der Dialogfeldseite **Add new employee** (Neuen Mitarbeiter hinzufügen) die folgenden Schritte aus:
 
-    ![Hinzufügen eines Benutzers in BitaBIZ](./media/bitabiz-tutorial/user3.png)
+    ![Screenshot der Seite, auf der Sie die in diesem Schritt beschriebenen Informationen eingeben](./media/bitabiz-tutorial/user3.png)
 
     a. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein (beispielsweise „Britta“).
 

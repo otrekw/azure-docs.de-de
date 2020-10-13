@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925650"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759903"
 ---
 ::: zone target="docs"
 
@@ -268,7 +268,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
     
 8. Nachdem der Datenträger entsperrt wurde, können Sie zum Bereitstellungspunkt wechseln und den Inhalt des Datenträgers anzeigen. Nun können Sie die Daten in *BlockBlob*- oder *PageBlob*-Ordner kopieren. 
 
-    ![Inhalt des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+    ![Inhalt des Data Box-Datenträgers 2](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
 Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Behandlung von Problemen beim Entsperren](data-box-disk-troubleshoot-unlock.md) weitere Informationen. 

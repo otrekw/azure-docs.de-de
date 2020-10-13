@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550107"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775438"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Darwinbox
 
@@ -143,19 +143,19 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Darwinbox“ klicken, sollten Sie 
 
 1. Öffnen Sie die Darwinbox-Mobilanwendung. Klicken Sie auf **Enter Organization URL** (Organisations-URL eingeben), geben Sie Ihre Organisations-URL in das Textfeld ein, und klicken Sie auf die Pfeilschaltfläche.
 
-    ![Mobile Darwinbox-App](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![Screenshot der mobilen Darwinbox-App, in der „Enter Organization U R L“ (Organisations-U R L eingeben) ausgewählt und eine Beispielorganisation sowie die Pfeilschaltfläche hervorgehoben sind](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. Wenn Sie über mehrere Domänen verfügen, klicken Sie auf die gewünschte Domäne.
 
-    ![Mobile Darwinbox-App](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![Screenshot des Bildschirms „Choose your domain“ (Domäne auswählen), auf dem eine Beispieldomäne ausgewählt ist](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Geben Sie Ihre Azure AD-E-Mail-Adresse in die Darwinbox-Anwendung ein, und klicken Sie auf **Next** (Weiter).
 
-    ![Mobile Darwinbox-App](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![Screenshot des Bildschirms „Anmelden“, auf dem die Schaltfläche „Weiter“ hervorgehoben ist](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Geben Sie Ihr Azure AD-Kennwort in die Darwinbox-Anwendung ein, und klicken Sie auf **Sign in** (Anmelden).
 
-    ![Mobile Darwinbox-App](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![Screenshot des Bildschirms „Kennwort eingeben“, auf dem die Schaltfläche „Weiter“ hervorgehoben ist](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. Nach erfolgreicher Anmeldung wird die Startseite der Anwendung angezeigt:
 

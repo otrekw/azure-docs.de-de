@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555299"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817060"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Tutorial: Integrieren von ExpenseIn in Azure Active Directory
 
@@ -135,11 +135,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 1. Klicken Sie oben auf der Seite auf **Admin** (Administrator), navigieren Sie zu **Single Sign-On** (Einmaliges Anmelden), und klicken Sie auf **Add provider** (Anbieter hinzufügen).
 
-     ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config01.png)
+     ![Screenshot: Registerkarte „Admin“ (Administrator) und Seite „Single Sign-On – Providers“ (Einmaliges Anmelden – Anbieter) mit der ausgewählten Option „Add Provider“ (Anbieter hinzufügen)](./media/expenseIn-tutorial/config01.png)
 
 1. Führen Sie im Popupfenster **New Identity Provider** (Neuer Identitätsanbieter) die folgenden Schritte aus:
 
-    ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config02.png)
+    ![Screenshot: Popupelement „Edit Identity Provider“ (Identitätsanbieter bearbeiten) mit eingegebenen Werten](./media/expenseIn-tutorial/config02.png)
 
     a. Geben Sie im Textfeld **Provider Name** (Anbietername) den Namen ein, z. B. „Azure“.
 
@@ -163,7 +163,7 @@ Damit sich Azure AD-Benutzer bei ExpenseIn anmelden können, müssen sie in Expe
 
 2. Klicken Sie oben auf der Seite auf **Admin** (Administrator), navigieren Sie zu **Users** (Benutzer), und klicken Sie auf **New User** (Neuer Benutzer).
 
-     ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config03.png)
+     ![Screenshot: Registerkarte „Admin“ (Administrator) und Seite „Manage Users“ (Benutzer verwalten) mit ausgewählter Option „New User“ (Neuer Benutzer)](./media/expenseIn-tutorial/config03.png)
 
 3. Führen Sie auf der Registerkarte **Details** die folgenden Schritte aus:
 

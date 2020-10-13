@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542801"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Tutorial: Azure Active Directory-Integration mit Brightidea
 
@@ -112,14 +112,14 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Nachdem die Metadatendatei erfolgreich hochgeladen wurde, werden die Werte **Bezeichner** und **Antwort-URL** im Textfeld des Brightidea-Abschnitts automatisch aufgefüllt:
 
-    ![image](common/idp-intiated.png)
+    ![Screenshot der grundlegenden S A M L-Konfiguration, in der Sie I D und Antwort-U R L eingeben und „Speichern“ auswählen](common/idp-intiated.png)
 
     > [!Note]
     > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Screenshot von „Zusätzliche U R Ls festlegen“, wo Sie eine Anmelde-U R L eingeben können](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 2. Navigieren Sie in Ihrem Brightidea-System zu **Enterprise Setup** (Unternehmenseinrichtung) -> Registerkarte **Authentication** (Authentifizierung). Dort befinden sich zwei untergeordnete Registerkarten: „Auth Selection“ (Authentifizierungsauswahl) und „SAML Profiles“ (SAML-Profile).
 
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure1.png)
+    ![Screenshot: Brightidea-Website mit ausgewählter Registerkarte „Authentication“](./media/brightidea-tutorial/configure1.png)
 
 3. Wählen Sie **Auth Selection** (Authentifizierungsauswahl) aus. Standardmäßig werden nur zwei Standardmethoden angezeigt: „Brightidea Login“ (Brightidea-Anmeldung) und „Registration“ (Registrierung). Wenn eine SSO-Methode hinzugefügt wird, wird sie in der Liste angezeigt.
 
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure2.png)
+    ![Screenshot der Registerkarte „Authentication“ auf Brightidea, auf der „Auth Selection“ ausgewählt ist](./media/brightidea-tutorial/configure2.png)
 
 4. Wählen Sie **SAML Profiles** (SAML-Profile) aus, und gehen Sie wie folgt vor:
 
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure3.png)
+    ![Screenshot der Registerkarte „Authentication“ auf Brightidea, auf der „SAML Profiles“ mit den Optionen zum Herunterladen von Metadaten und Hinzufügen eines neuen Profils ausgewählt ist](./media/brightidea-tutorial/configure3.png)
 
     a. Klicken Sie auf **Download Metadata** (Metadaten herunterladen), und laden Sie sie im Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals hoch.
 
     b. Klicken Sie unter **Identity Provider Setting** (Identitätsanbietereinstellung) auf die Schaltfläche **Add New** (Neu hinzufügen), und führen Sie die folgenden Schritte aus:
     
-    ![Brightidea-Konfiguration](./media/brightidea-tutorial/configure4.png)
+    ![Screenshot der Brightidea-Identitätsanbietereinstellungen, in denen Sie Informationen eingeben](./media/brightidea-tutorial/configure4.png)
     
    * Geben Sie den **Namen des SAML-Profils**ein (beispielsweise `Azure Ad SSO`).
     

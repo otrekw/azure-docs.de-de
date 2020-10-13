@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Angular-Single-Page-Webanwendung – Azure'
+title: 'Tutorial: Erstellen einer Angular-App, die Microsoft Identity Platform für die Authentifizierung verwendet | Azure'
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie, wie Angular-SPAs eine API aufrufen können, für die Zugriffstoken vom Microsoft Identity Platform-Endpunkt erforderlich sind.
+description: In diesem Tutorial erstellen Sie eine Angular-Single-Page-App, die Microsoft Identity Platform zum Anmelden von Benutzern und zum Abrufen eines Zugriffstokens verwendet, um im Namen der Benutzer die Microsoft Graph-API aufzurufen.
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256924"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611247"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)
 
-In diesem Tutorial werden folgende Aktionen für eine Angular-Single-Page-Webanwendung (SPA) beschrieben:
-- Anmelden von persönlichen Konten sowie von Geschäfts-, Schul- oder Unikonten
-- Abrufen eines Zugriffstokens
-- Aufrufen der Microsoft Graph-API oder anderer APIs, für die Zugriffstoken des *Microsoft Identity Platform-Endpunkts* erforderlich sind
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Angular-Single-Page-App (SPA) entwickeln, bei der sich Benutzer mit persönlichen Microsoft-Konten und Geschäfts-, Schul- oder oder Unikonten anmelden und die Microsoft Graph-API in ihrem Namen aufrufen können.
 
->[!NOTE]
->In diesem Tutorial werden die erforderlichen Schritte zum Erstellen einer neuen Angular-SPA mithilfe der Microsoft-Authentifizierungsbibliothek beschrieben. Eine Beispiel-App zum Herunterladen finden Sie in der [Schnellstartanleitung](quickstart-v2-angular.md).
+Dieses Tutorial umfasst folgende Punkte:
+
+> [!div class="checklist"]
+> * Erstellen eines Angular-Projekts mit `npm`
+> * Registrieren der Anwendung im Azure-Portal
+> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
+> * Testen der App
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* [Node.js](https://nodejs.org/en/download/) zum Ausführen eines lokalen Webservers
+* [Visual Studio Code](https://code.visualstudio.com/download) oder einen anderen Editor zum Bearbeiten von Projektdateien
 
 ## <a name="how-the-sample-app-works"></a>Funktionsweise der Beispiel-App
 
 ![Abbildung zur Veranschaulichung, wie die in diesem Tutorial generierte Beispiel-App funktioniert](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>Weitere Informationen
-
-Die in diesem Tutorial erstellte Beispiel-App ermöglicht einer Angular-SPA das Abfragen der Microsoft Graph-API oder einer Web-API, die Token vom Microsoft Identity Platform-Endpunkt akzeptiert. Die MSAL für Angular ist ein Wrapper der MSAL.js-Kernbibliothek. Hiermit können Angular-Anwendungen (6+) die Authentifizierung für Unternehmensbenutzer per Microsoft Azure Active Directory, Benutzer von Microsoft-Konten und Benutzer mit Social Media-Identität (z. B. Facebook, Google und LinkedIn) durchführen. Die Bibliothek ermöglicht es den Anwendungen zudem, Zugriff auf Microsoft Cloud Services oder Microsoft Graph zu erhalten.
+Die in diesem Tutorial erstellte Beispiel-App ermöglicht einer Angular-SPA das Abfragen der Microsoft Graph-API oder einer Web-API, die von der Microsoft Identity Platform ausgegebene Token akzeptiert. Verwendet wird die Microsoft Authentication Library (MSAL) für Angular, ein Wrapper der Core-MSAL.js-Bibliothek. Mit MSAL Angular können Anwendungen für Angular 6+ Unternehmensbenutzer per Azure Active Directory sowie Benutzer von Microsoft-Konten und Benutzer mit Social Media-Identität (z. B. Facebook, Google und LinkedIn) authentifizieren. Die Bibliothek ermöglicht es Anwendungen zudem, Zugriff auf Microsoft Cloud Services und Microsoft Graph zu erhalten.
 
 In diesem Szenario wird nach der Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen über den Autorisierungsheader hinzugefügt. Die MSAL übernimmt die Tokenbeschaffung und -erneuerung.
 
@@ -48,13 +54,6 @@ In diesem Tutorial wird die folgende Bibliothek verwendet:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library für JavaScript: Angular-Wrapper|
 
 Den Quellcode für die MSAL.js-Bibliothek finden Sie auf GitHub im Repository [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js).
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Für dieses Tutorial benötigen Sie Folgendes:
-
-* Ein lokaler Webserver, z. B. [Node.js](https://nodejs.org/en/download/). Die Anleitungen in diesem Tutorial basieren auf Node.js.
-* Eine IDE (Integrated Development Environment, integrierte Entwicklungsumgebung), z. B. [Visual Studio Code](https://code.visualstudio.com/download), um die Projektdateien zu bearbeiten.
 
 ## <a name="create-your-project"></a>Erstellen Ihres Projekts
 
@@ -343,6 +342,7 @@ Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Falls Sie mit der Identitäts- und Zugriffsverwaltung noch nicht eingehend vertraut sind, können Sie verschiedene Artikel lesen, um sich über die Konzepte der modernen Authentifizierung zu informieren. Beginnen Sie mit [Authentifizierung im Vergleich zu Autorisierung](authentication-vs-authorization.md).
+Vertiefen Sie Ihr Wissen über die SPA-Entwicklung mit Microsoft Identity Platform in der mehrteiligen Artikelreihe.
 
-Wenn Sie sich eingehender mit der Entwicklung von Single-Page-Webanwendungen auf der Microsoft Identity Platform beschäftigen möchten, kann Ihnen die mehrteilige Artikelreihe [Szenario: Single-Page-Webanwendung](scenario-spa-overview.md) den Einstieg erleichtern.
+> [!div class="nextstepaction"]
+> [Szenario: Einseitige Anwendung](scenario-spa-overview.md)

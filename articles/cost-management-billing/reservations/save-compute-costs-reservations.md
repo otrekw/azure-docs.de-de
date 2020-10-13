@@ -1,23 +1,23 @@
 ---
 title: Was sind Azure-Reservierungen?
-description: Erfahren Sie mehr über Azure-Reservierungen und -Preise, um Kosten für virtuelle Computer, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen und andere Ressourcen zu sparen.
+description: Hier erfahren Sie mehr über Azure-Reservierungen und -Preise, um Kosten bei den reservierten Instanzen für virtuelle Computer, SQL-Datenbank, Azure Cosmos DB und andere Ressourcen zu sparen.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682585"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652362"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
-Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei mehreren Produkten für Pläne mit einer Laufzeit von einem Jahr oder drei Jahren entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen ermöglichen Kostensenkungen von bis zu 72 Prozent im Vergleich zur nutzungsbasierten Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus. Nach dem Kauf einer Reservierung gilt der Rabatt automatisch für die übereinstimmenden Ressourcen.
+Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei mehreren Produkten für Pläne mit einer Laufzeit von einem Jahr oder drei Jahren entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen ermöglichen eine deutliche Senkung der Kosten für Ihre Ressource von bis zu 72 % im Vergleich zur nutzungsbasierten Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus. Nach dem Kauf einer Reservierung gilt der Rabatt automatisch für die übereinstimmenden Ressourcen.
 
 Sie können für eine Reservierung im Voraus oder monatlich bezahlen. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden. Die monatliche Zahlung ist für Azure-Reservierungen verfügbar, nicht für Produkte von Drittanbietern.
 
@@ -50,9 +50,9 @@ Weitere Informationen finden Sie unter  [Ermitteln der zu erwerbenden Reservie
 
 Sie können Reservierungen über das Azure-Portal, APIs, PowerShell und die CLI erwerben. 
 
-Navigieren Sie für den Kauf zum Azure-Portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs). 
+Wechseln Sie für den Kauf zum [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs).
 
-Weitere Informationen finden Sie unter [Vorbereiten des Kaufs einer Reservierung](prepare-buy-reservation.md). 
+Weitere Informationen finden Sie unter  [Kaufen einer Reservierung](prepare-buy-reservation.md).
 
 ## <a name="how-is-a-reservation-billed"></a>Wie wird eine Reservierung abgerechnet? 
 
@@ -106,7 +106,7 @@ Softwarepläne:
 
 - **SUSE Linux**: Eine Reservierung deckt die Kosten für den Softwareplan ab. Die Rabatte gelten nur für SUSE-Verbrauchseinheiten und nicht für die Nutzung virtueller Computer.
 - **Red Hat-Pläne**: Eine Reservierung deckt die Kosten für den Softwareplan ab. Die Rabatte gelten nur für RedHat-Verbrauchseinheiten und nicht für die Nutzung virtueller Computer.
-- **Azure VMware Solution by CloudSimple**: Eine Reservierung deckt die VMWare CloudSimple-Knoten ab. Kosten für zusätzliche Softwarekosten fallen weiterhin an.
+- **Azure VMware Solution by CloudSimple**: Eine Reservierung deckt die VMware CloudSimple-Knoten ab. Kosten für zusätzliche Softwarekosten fallen weiterhin an.
 - **Azure Red Hat OpenShift**: Eine Reservierung gilt für die OpenShift-Kosten, nicht für die Azure-Infrastrukturkosten.
 
 Bei virtuellen Windows-Computern und SQL-Datenbank wird der Reservierungsrabatt nicht auf die Softwarekosten angewendet. Die Lizenzkosten können Sie mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) abdecken.

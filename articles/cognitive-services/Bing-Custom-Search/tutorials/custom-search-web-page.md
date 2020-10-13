@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921939"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742501"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
@@ -118,7 +118,7 @@ Die benutzerdefinierte Suche stellt eine gehostete Benutzeroberfläche zum Rende
   
 5. Wählen Sie Ihre Abonnementschlüssel in den Dropdownlisten aus. Alternativ können Sie den Abonnementschlüssel manuell eingeben.
   
-   ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Screenshot: Abonnementschlüssel der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ Im weiteren Verlauf dieses Tutorials wird **Option 1: JavaScript-Codeausschnitt*
   
 4. Wählen Sie im Fenster **Neue ASP.NET Core-Webanwendung** die Option **Webanwendung** aus, und klicken Sie auf **OK**.  
   
-   ![Screenshot des Fensters des neuen Projekts](./media/custom-search-new-webapp.png)  
+   ![Screenshot: Fenster „Neue ASP.NET Core-Webanwendung“](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Bearbeiten von „Index.cshtml“
 

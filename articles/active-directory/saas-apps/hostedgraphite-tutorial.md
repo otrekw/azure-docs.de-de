@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521874"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Tutorial: Azure Active Directory-Integration mit Hosted Graphite
 
@@ -100,7 +100,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Hosted Gr
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Hosted Graphite](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners sowie einer Antwort-URL und zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.hostedgraphite.com/metadata/<user id>`
 
@@ -108,7 +108,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Hosted Gr
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Hosted Graphite](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.hostedgraphite.com/login/saml/<user id>/`
 
@@ -135,23 +135,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Hosted Gr
 
 2. Wechseln Sie über die Randleiste zur Seite **SAML Setup** (**Access -> SAML Setup**).
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![Screenshot: Menü „Access“ (Zugriff) mit ausgewählter Option „SAML Setup“ (SAML-Einrichtung)](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. Vergewissern Sie sich, dass diese URls Ihrer Konfiguration entsprechen, die Sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** durchgeführt haben.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![Screenshot: Grundlegende SAML-Konfiguration](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. Fügen Sie in den Textfeldern **Entity or Issuer ID** (Entitäts- oder Aussteller-ID) und **SSO-Anmelde-URL** die Werte von **Azure AD-Bezeichner** bzw. **Anmelde-URL** ein, die Sie im Azure-Portal kopiert haben.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![Screenshot: Einträge für den Identitätsanbieter](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. Wählen Sie für **Default User Role** (Standardbenutzerrolle) die Option **Schreibgeschützt**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![Screenshot: schreibgeschützte Standardbenutzerrolle](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![Screenshot: X.509-Zertifikat](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 

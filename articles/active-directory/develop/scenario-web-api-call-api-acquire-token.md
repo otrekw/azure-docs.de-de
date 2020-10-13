@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab0b74ffbcd8167613c6a8470e2f9102566edc60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257230"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Eine Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App
 
@@ -27,7 +27,10 @@ Nach dem Erstellen eines Clientanwendungsobjekts rufen Sie damit ein Token ab. D
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Im Folgenden finden Sie ein Beispiel für Code mit Microsoft.Identity.Web, der in den Aktionen der API-Controller aufgerufen wird. Er ruft eine nachgelagerte API namens *todolist* auf. Um ein Token zum Aufrufen der nachgelagerten API (Downstream-API) abzurufen, fügen Sie den `ITokenAcquisition`-Dienst per Abhängigkeitsinjektion in den Konstruktor Ihres Controllers (oder bei Verwendung von Blazor in den Seitenkonstruktor) ein, und Sie verwenden ihn in den Controlleraktionen. Sie erhalten ein Token für den Benutzer (`GetAccessTokenForUserAsync`) oder im Falle eines Daemonszenarios für die Anwendung selbst (`GetAccessTokenForAppAsync`).
+Von *Microsoft.Identity.Web* werden Erweiterungsmethoden hinzugefügt, die praktische Dienste zum Aufrufen von Microsoft Graph oder einer Downstream-Web-API bereitstellen. Eine ausführliche Beschreibung dieser Methoden finden Sie unter [Web-App, die Web-APIs aufruft: Aufrufen einer Web-API](scenario-web-api-call-api-call-api.md). Mit diesen Hilfsmethoden ist kein manueller Tokenabruf erforderlich.
+
+Wenn Sie allerdings manuell ein Token abrufen möchten, zeigt der folgende Code anhand eines Beispiels, wie Sie dies mithilfe von *Microsoft.Identity.Web* in einem API-Controller tun können. Er ruft eine nachgelagerte API namens *todolist* auf.
+Um ein Token zum Aufrufen der nachgelagerten API (Downstream-API) abzurufen, fügen Sie den `ITokenAcquisition`-Dienst per Abhängigkeitsinjektion in den Konstruktor Ihres Controllers (oder bei Verwendung von Blazor in den Seitenkonstruktor) ein, und Sie verwenden ihn in den Controlleraktionen. Sie erhalten ein Token für den Benutzer (`GetAccessTokenForUserAsync`) oder im Falle eines Daemonszenarios für die Anwendung selbst (`GetAccessTokenForAppAsync`).
 
 ```csharp
 [Authorize]
@@ -83,7 +86,7 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Eine Python-Web-API muss eine Middleware verwenden, um das vom Client empfangene Bearertoken zu überprüfen. Die Web-API kann dann das Zugriffstoken für die Downstream-API mithilfe der MSAL-Python-Bibliothek über einen Aufruf der [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)-Methode abrufen. Es steht leider noch kein Beispiel zur Veranschaulichung dieses Flows mit MSAL Python zur Verfügung.
+Bei einer Python-Web-API muss das vom Client empfangene Bearertoken mithilfe von Middleware überprüft werden. Die Web-API kann dann das Zugriffstoken für eine Downstream-API unter Verwendung der MSAL Python-Bibliothek durch Aufrufen der Methode [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) abrufen. Es ist noch kein Beispiel verfügbar, das diesen Flow mit MSAL Python veranschaulicht.
 
 ---
 

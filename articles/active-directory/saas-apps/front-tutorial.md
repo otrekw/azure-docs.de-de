@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550978"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Tutorial: Azure Active Directory-Integration mit Front
 
@@ -128,23 +128,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Front di
 
 2. Wechseln Sie zu **Settings (Zahnradsymbol unten auf der linken Randleiste) > Preferences** (Einstellungen > Voreinstellungen).
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_000.png)
+    ![Screenshot: Ausgewähltes Zahnradsymbol für Einstellungen mit hervorgehobener Option „Preferences“ (Einstellungen)](./media/front-tutorial/tutorial_front_000.png)
 
 3. Klicken Sie auf den Link **Single Sign On** .
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_001.png)
+    ![Screenshot: Abschnitt „Company preferences“ (Unternehmenseinstellungen) mit ausgewähltem Link „Single Sign On“ (Einmaliges Anmelden)](./media/front-tutorial/tutorial_front_001.png)
 
 4. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** den Eintrag **SAML** aus.
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_002.png)
+    ![Screenshot: Dropdownliste „Single Sign On“ (Einmaliges Anmelden) mit ausgewählter Option „SAML“](./media/front-tutorial/tutorial_front_002.png)
 
 5. Geben Sie im Textfeld **Entry Point** (Einstiegspunkt) den Wert für die **Anmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
     
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_003.png)
+    ![Screenshot: Textfeld „Einstiegspunkt“](./media/front-tutorial/tutorial_front_003.png)
 
 6. Öffnen Sie die heruntergeladene Datei **Zertifikat (Base64)** in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Signaturzertifikat** ein.
     
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/front-tutorial/tutorial_front_004.png)
+    ![Screenshot: „Signaturzertifikat“ hervorgehoben und Textfeld abgeblendet](./media/front-tutorial/tutorial_front_004.png)
 
 7. Führen Sie im Abschnitt **Service provider settings** die folgenden Schritte aus:
 

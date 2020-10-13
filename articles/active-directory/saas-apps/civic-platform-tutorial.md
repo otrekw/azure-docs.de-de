@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520379"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760630"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Tutorial: Integrieren von Civic Platform in Azure Active Directory
 
@@ -91,7 +91,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+    ![Screenshot der Seite „S A M L-Signaturzertifikat“, auf der Sie die App-Verbundmetadaten-U R L kopieren können](common/copy-metadataurl.png)
 
 1. Navigieren Sie in Azure AD zu **Azure Active Directory** > **App-Registrierungen**, und wählen Sie Ihre Anwendung aus.
 
@@ -120,21 +120,21 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf **Standard Choices** (Standardauswahl).
 
-    ![Downloadlink für das Zertifikat](media/civic-platform-tutorial/standard-choices.png)
+    ![Screenshot der Atlassian Cloud-Website, auf der unter „Administrator Tools“ die Option „Standard Choices“ hervorgehoben ist](media/civic-platform-tutorial/standard-choices.png)
 
 1. Erstellen Sie die Standardauswahl **ssoconfig**.
 
 1. Suchen Sie nach **ssoconfig**, und übermitteln Sie diese.
 
-    ![Downloadlink für das Zertifikat](media/civic-platform-tutorial/sso-config.png)
+    ![Screenshot der Standard Choices-Suche mit der Eingabe „S S O Config“](media/civic-platform-tutorial/sso-config.png)
 
 1. Erweitern Sie SSOCONFIG, indem Sie auf den roten Punkt klicken.
 
-    ![Downloadlink für das Zertifikat](media/civic-platform-tutorial/sso-config01.png)
+    ![Screenshot der Standard Choices-Auswahl, in der S S O CONFIG verfügbar ist](media/civic-platform-tutorial/sso-config01.png)
 
 1. Geben Sie im folgenden Schritt auf das einmalige Anmelden (SSO) bezogene Konfigurationsinformationen an:
 
-    ![Downloadlink für das Zertifikat](media/civic-platform-tutorial/sso-config02.png)
+    ![Screenshot der Standard Choices-Elementbearbeitung für S S O CONFIG](media/civic-platform-tutorial/sso-config02.png)
 
     1. Geben Sie im Feld **applicationid** den Wert für die **Anwendungs-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 

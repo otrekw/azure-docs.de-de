@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900024"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743402"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Tutorial: Installieren von Azure Stack Edge Pro mit GPU
 
@@ -124,7 +124,7 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 3. Befestigen Sie die linke und die rechte Schiene mit jeweils zwei Schrauben an den vorderen vertikalen Rackflanschen.
 4. Schieben Sie die linke und die rechte hintere Klammer von hinten gegen die hinteren vertikalen Rackflansche, und befestigen Sie sie ebenfalls mit jeweils zwei Schrauben.
 
-    ![Installieren und Entfernen der Schienen mit Werkzeug](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Installieren und Entfernen der Schienen mit Werkzeug 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>Installieren des Systems in einem Rack
 
@@ -207,11 +207,11 @@ Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwer
 
     - Gerät mit 3 PCI-Einschubfächern und einer GPU
 
-        ![Rückseite eines verkabelten Geräts](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![Rückseite eines verkabelten Geräts 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - Gerät mit 3 PCI-Einschubfächern und zwei GPUs
 
-        ![Rückseite eines verkabelten Geräts](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![Rückseite eines verkabelten Geräts 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. Machen Sie die Datenträgerslots und den Netzschalter auf der Vorderseite des Geräts ausfindig.
 

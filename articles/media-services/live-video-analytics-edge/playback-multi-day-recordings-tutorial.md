@@ -3,12 +3,12 @@ title: 'Wiedergeben von mehrtägigen Aufzeichnungen: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Media Service-APIs verwenden, um eine mehrtägige fortlaufende Videoaufzeichnung wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530572"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803431"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Tutorial: Wiedergeben von mehrtägigen Aufzeichnungen  
 
@@ -70,13 +70,21 @@ Im Rahmen des [CVR-Tutorials](continuous-video-recording-tutorial.md) haben Sie 
 } 
 ```
 
-In Visual Studio Code können Sie auf das Ausführen-Symbol auf der linken Seite klicken (oder STRG+UMSCHALT+D eingeben), um die Ausführung der verfügbaren Anwendungen auszulösen:
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
+1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
-![Screenshot: Menü in Visual Studio Code mit dem ausgewählten Ausführungselement](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-Wählen Sie im Dropdownfeld die AMS Asset Player-Anwendung aus, wie unten dargestellt, und drücken Sie F5, um das Debuggen einzuleiten.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Erweiterungseinstellungen":::
+1. Suchen Sie nach dem Kontrollkästchen „Show Verbose Message“ (Ausführliche Meldung anzeigen), und aktivieren Sie es.
 
-![Screenshot: Menü in Visual Studio Code mit ausgewählter AMS Asset Player-Anwendung](./media/playback-multi-day-recordings-tutorial/debug.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Erweiterungseinstellungen":::
+1. <!--In Visual Studio Code, you can click-->Klicken Sie auf das Ausführen-Symbol auf der linken Seite (oder drücken Sie STRG+UMSCHALT+D), um die Ausführung der verfügbaren Anwendungen zu starten:
+
+    ![Screenshot: Menü in Visual Studio Code mit dem ausgewählten Ausführungselement](./media/playback-multi-day-recordings-tutorial/run.png)
+1. Wählen Sie im Dropdownfeld die AMS Asset Player-Anwendung aus, wie unten dargestellt, und drücken Sie F5, um das Debuggen einzuleiten.
+
+    ![Screenshot: Menü in Visual Studio Code mit ausgewählter AMS Asset Player-Anwendung](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 Die Beispielanwendung wird erstellt, startet Ihre Standardbrowser-App und öffnet die Seite des AMS Asset Players.
 

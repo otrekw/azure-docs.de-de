@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7d1ea6c1ee21970a598855471284130160e1d65
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18a034c6af9659e113a821e072098aee873c2ee2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537901"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration in Adobe Sign
 
@@ -151,7 +151,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Adobe Si
 
 1. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
   
-   ![Screenshot der SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789521.png "SAML-Einstellungen")
+   ![Screenshot, in dem die S A M L-Einstellungen mit „S A M L Mandatory“ hervorgehoben sind](./media/adobe-echosign-tutorial/ic789521.png "SAML-Einstellungen")
    
    ![Screenshot der SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789522.png "SAML-Einstellungen")
 

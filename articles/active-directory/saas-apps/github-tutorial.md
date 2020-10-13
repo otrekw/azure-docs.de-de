@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985892"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821168"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub
 
@@ -91,7 +91,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 5. Die GitHub-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute, wobei **Eindeutiger Benutzerbezeichner (Namens-ID)** hier **user.userprincipalname** zugeordnet wird. Die GitHub-Anwendung erwartet, dass **Eindeutiger Benutzerbezeichner (Namens-ID)** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher bearbeiten, indem Sie auf das Symbol **Bearbeiten** klicken und die Zuordnung entsprechend ändern.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Abschnitt „User Attributes“ (Benutzerattribute) mit dem Symbol „Bearbeiten“ ausgewählt](common/edit-attribute.png)
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -149,11 +149,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Einstellungen**, und klicken Sie auf **Sicherheit**.
 
-    ![Einstellungen](./media/github-tutorial/security.png)
+    ![Screenshot: GitHub-Menü „Organization settings“ (Organisationseinstellungen) mit ausgewählter Option „Security“ (Sicherheit)](./media/github-tutorial/security.png)
 
 3. Aktivieren Sie das Kontrollkästchen **SAML-Authentifizierung aktivieren**, um die Felder für die Konfiguration des einmaligen Anmeldens anzuzeigen. Führen Sie die folgenden Schritte aus:
 
-    ![Einstellungen](./media/github-tutorial/saml-sso.png)
+    ![Screenshot: Abschnitt „SAML Single Sign-On“ (Einmalige SAML-Anmeldung) mit aktiviertem Kontrollkästchen „Enable SAML authentication“ (SAML-Authentifizierung aktivieren) und hervorgehobenen URL-Textfeldern](./media/github-tutorial/saml-sso.png)
 
     a. Kopieren Sie den Wert für **URL für einmaliges Anmelden**, und fügen Sie ihn im Azure-Portal unter **Grundlegende SAML-Konfiguration** im Textfeld **Anmelde-URL** ein.
     
@@ -161,7 +161,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Konfigurieren Sie die folgenden Felder:
 
-    ![Einstellungen](./media/github-tutorial/configure.png)
+    ![Screenshot: Textfelder „Anmelde-URL“, „Aussteller“ und „Öffentliches Zertifikat“](./media/github-tutorial/configure.png)
 
     a. Fügen Sie im Textfeld **Sign-On URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -208,7 +208,7 @@ In diesem Abschnitt wird in GitHub eine Benutzerin namens Britta Simon erstellt.
 
     b. Klicken Sie auf **Einladung senden**.
 
-    ![Invite People (Personen einladen)](./media/github-tutorial/send-invitation.png "Invite People")
+    ![Screenshot: Dialogfeldseite „Invite Member“ (Mitglied einladen) mit dem Kontrollkästchen „Member“ (Mitglied) aktiviert und hervorgehobener Schaltfläche „Send invitation“ (Einladung senden)](./media/github-tutorial/send-invitation.png "Invite People")
 
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.

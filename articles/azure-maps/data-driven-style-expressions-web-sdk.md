@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311375"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -98,6 +98,8 @@ Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature
 | `['length', string | array]` | number | Ruft die Länge einer Zeichenfolge oder eines Arrays ab. |
 | `['in', boolean | string | number, array]` | boolean | Bestimmt, ob ein Element in einem Array vorhanden ist |
 | `['in', substring, string]` | boolean | Bestimmt, ob eine Teilzeichenfolge in einer Zeichenfolge vorhanden ist |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | number | Gibt die erste Position zurück, an der ein Element in einem Array oder eine Teilzeichenfolge in einer Zeichenfolge gefunden wird. Sollte die Eingabe nicht gefunden werden, wird `-1` zurückgegeben. Akzeptiert einen optionalen Index, ab dem mit der Suche begonnen werden soll. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string` \| array | Gibt ein Element aus einem Array oder eine Teilzeichenfolge aus einer Zeichenfolge ab einem angegebenen Startindex oder zwischen einem Start- und einem Endindex zurück (sofern festgelegt). Der Rückgabewert schließt den Startindex ein, aber nicht den Endindex. |
 
 **Beispiele**
 
@@ -151,8 +153,11 @@ Im Folgenden finden Sie einige weitere Beispiele für die Verwendung von Datenau
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,6 +167,12 @@ Im Folgenden finden Sie einige weitere Beispiele für die Verwendung von Datenau
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>Mathematische Ausdrücke
@@ -225,8 +236,8 @@ Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschie
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | Logische Negation. Gibt `true` zurück, wenn für die Eingabe `false` gilt, und `false`, wenn für die Eingabe `true` gilt. |
-| `['!= ', value, value]` | boolean | Gibt `true` zurück, wenn die Eingabewerte nicht gleich sind, andernfalls `false`. |
+| `['!', boolean]` | boolean | Logische Negation. Gibt `true` zurück, wenn für die Eingabe `false` gilt, und `false`, wenn für die Eingabe `true` gilt. |
+| `['!=', value, value]` | boolean | Gibt `true` zurück, wenn die Eingabewerte nicht gleich sind, andernfalls `false`. |
 | `['<', value, value]` | boolean | Gibt `true` zurück, wenn die erste Eingabe streng kleiner als die zweite Eingabe ist, andernfalls `false`. Die Argumente müssen entweder jeweils Zeichenfolgen oder Zahlen sein. |
 | `['<=', value, value]` | boolean | Gibt `true` zurück, wenn die erste Eingabe kleiner oder gleich der zweiten Eingabe ist, andernfalls `false`. Die Argumente müssen entweder jeweils Zeichenfolgen oder Zahlen sein. |
 | `['==', value, value]` | boolean | Gibt `true` zurück, wenn die Eingabewerte gleich sind, andernfalls `false`. Die Argumente müssen entweder jeweils Zeichenfolgen oder Zahlen sein. |

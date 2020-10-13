@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999570"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651444"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Tutorial: Exportieren von Daten aus Azure IoT Central und Visualisieren von Erkenntnissen in Power BI
 
@@ -409,7 +409,7 @@ Wählen Sie **Codeansicht** aus, um die Logik Ihrem Logik-App-Entwurf hinzuzufü
     * Wählen Sie das Feld **Zeitstempel** und dann in der Liste **Dynamischer Inhalt** die Option **x-opt-enqueuedtime** aus.
     * Wählen Sie das Feld **Dwell Time 1** (Wartezeit 1) und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **DwellTime1** aus.
     * Wählen Sie das Feld **Dwell Time 2** (Wartezeit 2) und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **DwellTime2** aus.
-    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **Dwell Time interface** (Schnittstelle für Wartezeit) sieht wie im folgenden Screenshot aus: ![Aktion „Occupancy“ (Auslastung)](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **Dwell Time interface** (Schnittstelle für Wartezeit) sieht wie im folgenden Screenshot aus: ![Screenshot: Aktion „Dwell Time interface“ (Schnittstelle für Wartezeit)](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Wählen Sie die Aktion **People Count interface** (Schnittstelle für Personenanzahl) und dann die Option **Aktion hinzufügen** aus.
 1. Geben Sie unter **Connectors und Aktionen durchsuchen** den Suchbegriff **Power BI** ein, und drücken Sie anschließend die **EINGABETASTE**.
 1. Wählen Sie die Aktion **Zeilen einem Dataset hinzufügen (Vorschauversion)** aus.
@@ -484,7 +484,7 @@ Fügen Sie vier Kartenkacheln hinzu, um für die beiden Kassen des Geschäfts di
 
 Ändern Sie die Größe und Anordnung der Kacheln in Ihrem Dashboard so, wie dies im folgenden Screenshot dargestellt ist:
 
-![Power BI-Dashboard](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![Screenshot: Power BI-Dashboard mit veränderter Größe und neu angeordneten Kacheln](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 Sie können einige zusätzliche Grafikressourcen hinzufügen, um das Dashboard weiter anzupassen:
 

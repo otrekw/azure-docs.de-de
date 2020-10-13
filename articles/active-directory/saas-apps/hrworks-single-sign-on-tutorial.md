@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549150"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820497"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit HRworks Single Sign-On
 
@@ -156,15 +156,15 @@ Zum Aktivieren von Azure AD-Benutzern müssen Sie sich an HRworks Single Sign-On
 
 1. Klicken Sie links in der Menüleiste auf **Administrator** > **Persons** > **Persons** > **New person** (Administrator > Personen > Personen > Neue Person).
 
-     ![Einmaliges Anmelden konfigurieren](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Screenshot: HRworks-Seite mit den ausgewählten Optionen „Persons“ und „New person“ (Personen und Neue Person)](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. Klicken Sie im Popupfenster auf **Next** (Weiter).
 
-    ![Einmaliges Anmelden konfigurieren](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![Screenshot: Liste der Länder, die Sie für die Person auswählen können](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. Fügen Sie im Popupelement **Create new person with country for legal terms** (Aus rechtlichen Gründen neue Person mit Land erstellen) die erforderlichen Details ein, z. B. **First name** (Vorname) und **Last name** (Nachname), und klicken Sie auf **Create** (Erstellen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![Screenshot: Textfelder, in die Sie den Vor- und Nachnamen der Person eingeben](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

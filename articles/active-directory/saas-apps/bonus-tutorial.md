@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548260"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Tutorial: Azure Active Directory-Integration mit Bonusly
 
@@ -222,11 +222,11 @@ Damit sich Azure AD-Benutzer bei Bonusly anmelden können, müssen sie in Bonusl
 
 1. Klicken Sie auf **Benutzer hinzufügen**.
 
-    ![Benutzer hinzufügen](./media/bonus-tutorial/ic781044.png "Benutzer hinzufügen")
+    ![Screenshot von „Benutzer verwalten“ mit der Option „Benutzer hinzufügen“](./media/bonus-tutorial/ic781044.png "Benutzer hinzufügen")
 
 1. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
 
-    ![Benutzer hinzufügen](./media/bonus-tutorial/ic781045.png "Benutzer hinzufügen")  
+    ![Screenshot des Dialogfelds „Benutzer hinzufügen“, in dem Sie diese Informationen eingeben können](./media/bonus-tutorial/ic781045.png "Benutzer hinzufügen")  
 
     a. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers ein (z.B. **Britta**).
 

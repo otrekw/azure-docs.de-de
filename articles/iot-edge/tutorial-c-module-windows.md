@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6ed981ab0b67aacaca5300dc3f77894805e3d1b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318329"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816375"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Tutorial: Entwickeln eines C-IoT Edge-Moduls für Windows-Geräte
 
@@ -344,11 +344,12 @@ Ihr Entwicklungscomputer hat jetzt Zugriff auf Ihre Containerregistrierung, und 
 
 ## <a name="deploy-modules-to-device"></a>Bereitstellen von Modulen auf dem Gerät
 
-Verwenden Sie den Visual Studio-Cloud-Explorer und die Erweiterung „Azure IoT-Tools“, um das Modulprojekt auf Ihrem IoT Edge-Gerät bereitzustellen. Sie haben schon ein Bereitstellungsmanifest für Ihr Szenario vorbereitet: die Datei **deployment.windows-amd64.json** im Ordner „config“. Nun müssen Sie nur noch ein Gerät auswählen, um die Bereitstellung zu empfangen.
+Verwenden Sie Visual Studio Cloud-Explorer und die Erweiterung „Azure IoT Edge Tools“ zum Bereitstellen des Modulprojekts auf Ihrem IoT Edge-Gerät. Sie haben schon ein Bereitstellungsmanifest für Ihr Szenario vorbereitet: die Datei **deployment.windows-amd64.json** im Ordner „config“. Nun müssen Sie nur noch ein Gerät auswählen, um die Bereitstellung zu empfangen.
+
 
 Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
-1. Erweitern Sie im Visual Studio-Cloud-Explorer die Ressourcen, um die Liste der IoT-Geräte anzuzeigen.
+1. Erweitern Sie in Visual Studio Cloud-Explorer die Ressourcen, um die Liste der IoT-Geräte anzuzeigen.
 
 2. Klicken Sie mit der rechten Maustaste auf den Namen des IoT Edge-Geräts, das die Bereitstellung erhalten soll.
 
@@ -356,7 +357,7 @@ Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
 4. Wählen Sie im Datei-Explorer im Ordner „config“ Ihrer Projektmappe die Datei **deployment.windows-amd64** aus.
 
-5. Aktualisieren Sie den Cloud-Explorer, um die bereitgestellten Module anzuzeigen, die unter Ihrem Gerät aufgeführt sind.
+5. Aktualisieren Sie Cloud-Explorer zum Anzeigen der bereitgestellten Module, die unter Ihrem Gerät aufgeführt sind.
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 

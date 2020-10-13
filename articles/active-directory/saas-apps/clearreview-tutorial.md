@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544683"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Tutorial: Azure Active Directory-Integration mit Clear Review
 
@@ -102,7 +102,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Clear Review](common/idp-intiated.png)
+    ![Screenshot der grundlegenden S A M L-Konfiguration, in der Sie I D und Antwort-U R L eingeben und „Speichern“ auswählen](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -110,7 +110,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Clear Review](common/metadata-upload-additional-signon.png)
+    ![Screenshot von „Zusätzliche U R Ls festlegen“, wo Sie eine Anmelde-U R L eingeben können](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<customer name>.clearreview.com`
 
@@ -119,15 +119,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 6. Die Clear Review-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die Clear Review-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot der Benutzerattribute mit ausgewähltem Symbol „Bearbeiten“](common/edit-attribute.png)
 
 7. Führen Sie im Dialogfeld **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
     a. Klicken Sie auf das **Symbol „Bearbeiten“** rechts vom **Namensbezeichnerwert**.
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![Screenshot von „Benutzerattribute und Ansprüche“, bei dem das Bearbeitungssymbol ausgewählt ist](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](./media/clearreview-tutorial/attribute01.png)
+    ![Screenshot des Dialogfelds „Benutzeransprüche verwalten“, in dem Sie die hier beschriebenen Werte eingeben können](./media/clearreview-tutorial/attribute01.png)
 
     b. Wählen Sie in der Liste **Quellattribut** den Attributwert **user.mail** für diese Zeile aus.
 
@@ -153,15 +153,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 2. Wählen Sie **Admin** aus dem linken Navigationsbereich aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Screenshot des Clear Review-Portals, in dem „Admin“ ausgewählt ist](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. Klicken Sie im Abschnitt **Integrationen** am unteren Rand der Seite auf die Schaltfläche **Änderung** rechts neben **Einstellungen für einmaliges Anmelden**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Screenshot der Schaltfläche „Ändern“ für einmaliges Anmelden](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. Führen Sie im Dialogfeld **Einzelanmeldungseinstellungen** die folgenden Schritte aus:
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Screenshot des Abschnitts „Einstellungen für einmaliges Anmelden“ zum Eingeben der Informationen in diesem Schritt](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. Fügen Sie in das Textfeld **Issuer URL** (Aussteller-URL) den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.
 

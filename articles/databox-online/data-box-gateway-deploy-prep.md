@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a8b53af6e23b2dd0ff011a6bfbf99a1da427063
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 1b49ce9f3b04a31e3f062c81f63d3e639a09c6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611635"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741940"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Data Box Gateway
 
@@ -120,7 +120,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Data Box Gateway
 
 Die Erstellung der Ressource dauert einige Minuten. Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
 
-![Überprüfen der Details für die Data Box Gateway-Ressource](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
+![Überprüfen der Details für die Data Box Gateway-Ressource 2](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
 ## <a name="download-the-virtual-device-image"></a>Herunterladen des Images des virtuellen Geräts
 

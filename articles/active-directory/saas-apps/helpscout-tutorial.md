@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548139"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Tutorial: Azure Active Directory-Integration mit Help Scout
 
@@ -89,7 +89,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Help Scout](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners sowie einer Antwort-URL und zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Der **Bezeichner** ist der **Benutzergruppen-URI (ID der Dienstanbieterentität)** aus Help Scout und beginnt mit `urn:`.
 
@@ -100,7 +100,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Help Scout](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://secure.helpscout.net/members/login/`.
 
@@ -183,15 +183,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im oberen Menü auf **Verwalten**, und wählen Sie anschließend im Dropdownmenü die Option **Unternehmen** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings1.png)
+    ![Screenshot: Menü „Verwalten“ mit ausgewählter Option „Unternehmen“](./media/helpscout-tutorial/settings1.png)
 
 1. Wählen Sie im linken Navigationsbereich **Authentication** (Authentifizierung) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings2.png)
+    ![Screenshot: Navigationsbereich „Authentication“ (Authentifizierung) ausgewählt](./media/helpscout-tutorial/settings2.png)
 
 1. Dadurch gelangen Sie zum Abschnitt mit den SAML-Einstellungen. Führen Sie dort die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings3.png)
+    ![Screenshot: Registerkarte „Einmaliges Anmelden“, auf der Sie die angegebenen Informationen eingeben](./media/helpscout-tutorial/settings3.png)
 
     a. Kopieren Sie den Wert für **Post-back URL (Assertion Consumer Service URL)** (Postback-URL (Assertionsverbraucherdienst-URL)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Antwort-URL** ein.
 
@@ -199,7 +199,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Aktivieren Sie **SAML aktivieren**, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings4.png)
+    ![Screenshot: Registerkarte „Einmaliges Anmelden“, auf der Sie SAML aktivieren und andere Informationen hinzufügen](./media/helpscout-tutorial/settings4.png)
 
     a. Fügen Sie in das Textfeld **Einfacher Anmeldungs-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

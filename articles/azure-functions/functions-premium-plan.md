@@ -5,13 +5,15 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
-ms.custom: references_regions
-ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.custom:
+- references_regions
+- fasttrack-edit
+ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145747"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578035"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -43,7 +45,7 @@ Wenn für einen bestimmten Tag keine Ereignisse und Ausführungen im Verbrauchsp
 Im Premium-Plan können Sie Ihre App jederzeit bereit für eine angegebene Anzahl von Instanzen vorhalten.  Die maximale Anzahl von jederzeit bereiten Instanzen beträgt 20.  Wenn Ereignisse mit dem Auslösen der App beginnen, werden Sie zuerst an die jederzeit bereiten Instanzen weitergeleitet.  Wenn die Funktion aktiv wird, werden zusätzliche Instanzen als Puffer „vorgewärmt“.  Dieser Puffer verhindert einen Kaltstart für neue Instanzen, die während der Skalierung erforderlich sind.  Diese gepufferten Instanzen werden als [vorgewärmte Instanzen](#pre-warmed-instances) aufgerufen.  Durch die Kombination aus jederzeit bereiten Instanzen und einem vorgewärmten Puffer kann Ihre App einen Kaltstart effektiv vermeiden.
 
 > [!NOTE]
-> Jeder Premium-Tarif verfügt immer über mindestens eine aktive und in Rechnung gestellte Instanz.
+> Jeder Premium-Tarif verfügt immer über mindestens eine aktive (in Rechnung gestellte) Instanz.
 
 Sie können die Anzahl der jederzeit bereiten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die Optionen zum **Aufskalieren** auswählen. Im Bearbeitungsfenster der Funktions-App sind jederzeit bereite Instanzen für diese App spezifisch.
 
@@ -59,9 +61,9 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Bei vorab aufgewärmten Instanzen handelt es sich um die Anzahl von Instanzen, die während Skalierungs- und Aktivierungsereignissen als Puffer vorgewärmt werden.  Vorab aufgewärmte Instanzen setzen die Pufferung fort, bis der Grenzwert für maximale horizontale Skalierung erreicht wird.  Die standardmäßige Anzahl vorab aufgewärmten Instanzen ist 1 und sollte für die meisten Szenarien auch 1 bleiben.  Wenn eine App eine lange Aufwärmphase aufweist (z. B. ein benutzerdefiniertes Containerimage), möchten Sie diesen Puffer möglicherweise vergrößern.  Eine vorab aufgewärmte Instanz wird erst dann aktiv, wenn alle aktiven Instanzen ausreichend ausgelastet wurden.
 
-Sehen Sie sich dieses Beispiel an, wie jederzeit bereite Instanzen und vorab aufgewärmte Instanzen zusammenarbeiten.  Für eine Premium-Funktions-App sind fünf jederzeit bereite Instanzen konfiguriert, und die Standardeinstellung bietet eine vorab aufgewärmte Instanz.  Wenn sich die App im Leerlauf befindet und keine Ereignisse als Auslöser vorhanden sind, wird die App für fünf Instanzen bereitgestellt und ausgeführt.  
+Sehen Sie sich dieses Beispiel an, wie jederzeit bereite Instanzen und vorab aufgewärmte Instanzen zusammenarbeiten.  Für eine Premium-Funktions-App sind fünf jederzeit bereite Instanzen konfiguriert, und die Standardeinstellung bietet eine vorab aufgewärmte Instanz.  Wenn sich die App im Leerlauf befindet und keine Ereignisse als Auslöser vorhanden sind, wird die App für fünf Instanzen bereitgestellt und ausgeführt.  Zu dieser Zeit wird Ihnen keine vorab aufgewärmte Instanz in Rechnung gestellt, da die jederzeit bereiten Instanzen nicht verwendet werden und nicht einmal eine vorab aufgewärmte Instanz zugeordnet ist.
 
-Sobald der erste Trigger eingeht, werden die fünf jederzeit bereiten Instanzen aktiv, und es wird eine zusätzliche vorab aufgewärmte Instanz zugeordnet.  Die App wird nun mit sechs bereitgestellten Instanzen ausgeführt: mit den fünf jetzt aktiven, jederzeit bereiten Instanzen und dem sechsten vorab aufgewärmten und inaktiven Puffer.  Wenn die Ausführungsrate weiterhin zunimmt, sind die fünf aktiven Instanzen schließlich ausgelastet.  Wenn die Plattform eine Skalierung über fünf Instanzen hinaus beschließt, erfolgt diese in die vorab aufgewärmte Instanz.  Wenn dies geschieht, gibt es nun sechs aktive Instanzen, und eine siebte Instanz wird sofort bereitgestellt und füllt den vorab aufgewärmten Puffer auf.  Diese Sequenz der Skalierung und Vorabaufwärmung wird fortgesetzt, bis die maximale Anzahl von Instanzen für die App erreicht ist.  Über den maximalen Wert hinaus werden keine Instanzen vorab aufgewärmt oder aktiviert.
+Sobald der erste Trigger eingeht, werden die fünf jederzeit bereiten Instanzen aktiv, und es wird eine vorab aufgewärmte Instanz zugeordnet.  Die App wird nun mit sechs bereitgestellten Instanzen ausgeführt: mit den fünf jetzt aktiven, jederzeit bereiten Instanzen und dem sechsten vorab aufgewärmten und inaktiven Puffer.  Wenn die Ausführungsrate weiterhin zunimmt, sind die fünf aktiven Instanzen schließlich ausgelastet.  Wenn die Plattform eine Skalierung über fünf Instanzen hinaus beschließt, erfolgt diese in die vorab aufgewärmte Instanz.  Wenn dies geschieht, gibt es nun sechs aktive Instanzen, und eine siebte Instanz wird sofort bereitgestellt und füllt den vorab aufgewärmten Puffer auf.  Diese Sequenz der Skalierung und Vorabaufwärmung wird fortgesetzt, bis die maximale Anzahl von Instanzen für die App erreicht ist.  Über den maximalen Wert hinaus werden keine Instanzen vorab aufgewärmt oder aktiviert.
 
 Sie können die Anzahl der vorab aufgewärmten Instanzen für eine App ändern, indem Sie die Azure CLI verwenden.
 
@@ -95,7 +97,7 @@ Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne A
 
 Wenn Sie den Plan erstellen, konfigurieren Sie zwei Einstellungen für die Plangröße: die Mindestanzahl von Instanzen (oder Plangröße) und den maximalen Burstgrenzwert.
 
-Wenn Ihre App Instanzen über die jederzeit bereiten Instanzen hinaus erfordert, kann die Aufskalierung fortgesetzt werden, bis die Anzahl von Instanzen den maximalen Burstgrenzwert erreicht.  Instanzen, die sich außerhalb Ihrer Plangröße befinden, werden Ihnen nur in Rechnung gestellt, während sie ausgeführt werden und für Sie bereitgestellt sind.  Wir bemühen uns, Ihre App bis auf den definierten maximalen Grenzwert zu skalieren.
+Wenn Ihre App Instanzen über die jederzeit bereiten Instanzen hinaus erfordert, kann die Aufskalierung fortgesetzt werden, bis die Anzahl von Instanzen den maximalen Burstgrenzwert erreicht.  Instanzen, die sich außerhalb Ihrer Plangröße befinden, werden Ihnen nur in Rechnung gestellt, während sie ausgeführt werden und Ihnen zugeordnet sind. Die Abrechnung erfolgt sekundengenau.  Wir bemühen uns, Ihre App bis auf den definierten maximalen Grenzwert zu skalieren.
 
 Sie können die Plangröße und die Maximalwerte im Azure-Portal konfigurieren, indem Sie die **Aufskalieren**-Optionen im Plan oder eine Funktions-App auswählen, die für diesen Plan bereitgestellt ist (unter **Plattformfeatures**).
 
@@ -120,7 +122,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 ### <a name="available-instance-skus"></a>Verfügbare Instanz-SKUs
 
-Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen aufskaliert werden.  
+Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl bereitgestellter Kerne und der bereitgestellte Arbeitsspeicher in Rechnung gestellt (sekundengenau für die Zeit, die Ihnen die Instanz zugeordnet ist).  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen aufskaliert werden.  
 
 |SKU|Kerne|Arbeitsspeicher|Storage|
 |--|--|--|--|
@@ -141,13 +143,15 @@ Sehen Sie sich die gesamte regionale Verfügbarkeit von Functions an: [Azure.com
 
 |Region| Windows | Linux |
 |--| -- | -- |
-|Australien, Mitte| 20 | Nicht verfügbar. |
-|Australien, Mitte 2| 20 | Nicht verfügbar. |
+|Australien, Mitte| 100 | Nicht verfügbar. |
+|Australien, Mitte 2| 100 | Nicht verfügbar. |
 |Australien (Osten)| 100 | 20 |
 |Australien, Südosten | 100 | 20 |
-|Brasilien Süd| 60 | 20 |
+|Brasilien Süd| 100 | 20 |
 |Kanada, Mitte| 100 | 20 |
 |USA (Mitte)| 100 | 20 |
+|China, Osten 2| 100 | 20 |
+|China, Norden 2| 100 | 20 |
 |Asien, Osten| 100 | 20 |
 |East US | 100 | 20 |
 |USA (Ost) 2| 100 | 20 |
@@ -156,17 +160,24 @@ Sehen Sie sich die gesamte regionale Verfügbarkeit von Functions an: [Azure.com
 |Japan, Osten| 100 | 20 |
 |Japan, Westen| 100 | 20 |
 |Korea, Mitte| 100 | 20 |
+|Korea, Süden| Nicht verfügbar | 20 |
 |USA Nord Mitte| 100 | 20 |
 |Nordeuropa| 100 | 20 |
-|Norwegen, Osten| 20 | 20 |
+|Norwegen, Osten| 100 | 20 |
 |USA Süd Mitte| 100 | 20 |
 |Indien (Süden) | 100 | Nicht verfügbar. |
 |Asien, Südosten| 100 | 20 |
+|Schweiz, Norden| 100 | Nicht verfügbar. |
+|Schweiz, Westen| 100 | Nicht verfügbar. |
 |UK, Süden| 100 | 20 |
 |UK, Westen| 100 | 20 |
+|US Gov Arizona| 100 | 20 |
+|US Government, Virginia| 100 | 20 |
+|US Nat East| 100 | Nicht verfügbar. |
+|US Nat West| 100 | Nicht verfügbar. |
 |Europa, Westen| 100 | 20 |
 |Indien, Westen| 100 | 20 |
-|USA, Westen-Mitte| 20 | 20 |
+|USA, Westen-Mitte| 100 | 20 |
 |USA (Westen)| 100 | 20 |
 |USA, Westen 2| 100 | 20 |
 

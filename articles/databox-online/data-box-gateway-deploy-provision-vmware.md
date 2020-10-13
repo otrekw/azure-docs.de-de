@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371285"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743946"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware
 
@@ -145,11 +145,11 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 
     Klicken Sie auf der gleichen Seite auf **Add hard disk** (Festplatte hinzufügen), und wählen Sie dann **Existing hard disk** (Vorhandene Festplatte) aus. Wählen Sie die VMDK-Datei im Datenspeicher aus. Dadurch wird ein Betriebssystemdatenträger hinzugefügt. 
 
-     ![Seite zum Anpassen von Einstellungen](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Seite zum Anpassen von Einstellungen 2](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Scrollen Sie nach unten, bis Sie den Eintrag **New hard disk** (Neue Festplatte) sehen, und erweitern Sie ihn, um die Einstellungen anzuzeigen. Legen Sie **Virtual Device Node** (Virtueller Geräteknoten) auf **IDE controller 0** (IDE-Controller 0) fest.
 
-     ![Seite zum Anpassen von Einstellungen](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Seite zum Anpassen von Einstellungen 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. *(Optional: Führen Sie diesen Schritt nur aus, wenn Sie VMware ESXi Server 6.7 verwenden.)* Klicken Sie auf der Seite **Customize settings** (Einstellungen anpassen) auf **VM options** (VM-Optionen). Navigieren Sie zu **Boot options > Firmware** (Startoptionen > Firmware), und ändern Sie die Option in **BIOS**. Standardmäßig ist der Wert auf „EFI“ festgelegt. Klicken Sie auf **Weiter**.
 
@@ -158,7 +158,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 18. Prüfen Sie auf der Seite **Für Fertigstellung bereit** alle Einstellungen, die der neuen virtuellen Maschine zugeordnet sind. Vergewissern Sie sich, dass für die CPU 4, für den Arbeitsspeicher 8.192 MB, für die Netzwerkschnittstelle 1 und für Festplatte 2 der IDE-Controller 0 angezeigt werden. Klicken Sie auf **Fertig stellen**.
    
     ![Seite „Zum Abschluss bereit“](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![Seite „Zum Abschluss bereit“](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Seite 2 „Zum Abschluss bereit“](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Ihre virtuelle Maschine wird nun bereitgestellt. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die neue VM der Liste der VMs hinzugefügt wird.
 

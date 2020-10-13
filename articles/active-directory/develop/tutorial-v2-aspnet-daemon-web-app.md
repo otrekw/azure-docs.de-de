@@ -1,5 +1,6 @@
 ---
-title: Erstellen eines mehrinstanzenfähigen Daemons, der den Microsoft Identity Platform-Endpunkt verwendet
+title: 'Tutorial: Erstellen eines mehrinstanzenfähigen Daemons mit Zugriff auf Microsoft Graph-Geschäftsdaten | Azure'
+titleSuffix: Microsoft identity platform
 description: In diesem Tutorial erfahren Sie, wie Sie von einer Windows-Desktopanwendung (WPF) aus eine durch Azure Active Directory geschützte ASP.NET-Web-API aufrufen. Der WPF-Client authentifiziert einen Benutzer, fordert ein Zugriffstoken an und ruft die Web-API auf.
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982850"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611094"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der den Microsoft Identity Platform-Endpunkt verwendet
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet
 
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Identity Plattform auf die Daten von Microsoft-Geschäftskunden in einem nicht interaktiven Prozess mit langer Ausführungsdauer zugreifen. Der Beispiel-Daemon verwendet die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md), um ein Zugriffstoken abzurufen. Dieses Token wird dann vom Daemon verwendet, um [Microsoft Graph](https://graph.microsoft.io) aufzurufen und auf Organisationsdaten zuzugreifen.
 
@@ -30,28 +31,23 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Identity Plattfo
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+- [Visual Studio 2017 oder 2019](https://visualstudio.microsoft.com/downloads/)
+- Einen Azure AD-Mandanten. Weitere Informationen finden Sie unter [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md).
+- Mindestens ein Benutzerkonto in Ihrem Azure AD-Mandanten. Dieses Beispiel funktioniert nicht mit einem Microsoft-Konto. Falls Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Microsoft-Konto angemeldet und bislang noch kein Benutzerkonto in Ihrem Verzeichnis erstellt haben, holen Sie dies nun nach.
+
+## <a name="scenario"></a>Szenario
+
 Die App wird als ASP.NET-MVC-Anwendung erstellt. Sie verwendet die OWIN OpenID Connect-Middleware für die Benutzeranmeldung.
 
 Bei der Daemon-Komponente in diesem Beispiel handelt es sich um einen API-Controller (`SyncController.cs`). Wenn der Controller aufgerufen wird, pullt er von Microsoft Graph eine Liste mit Benutzern im Azure AD-Mandanten (Azure Active Directory) des Kunden. `SyncController.cs` wird durch einen AJAX-Aufruf in der Webanwendung ausgelöst. Er verwendet die [Microsoft-Authentifizierungsbibliothek (MSAL) für .NET](msal-overview.md), um ein Zugriffstoken für Microsoft Graph abzurufen.
-
->[!NOTE]
-> Wenn Sie mit Microsoft Identity Platform noch nicht vertraut sind, wird empfohlen, mit dem Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App](quickstart-v2-netcore-daemon.md) zu beginnen.
-
-## <a name="scenario"></a>Szenario
 
 Da es sich bei der App um eine mehrinstanzenfähige App für Microsoft-Geschäftskunden handelt, müssen Kunden die Möglichkeit haben, sich zu registrieren oder die Anwendung mit ihren Unternehmensdaten zu verknüpfen. Im Zuge der Verknüpfung weist ein Unternehmensadministrator der App zunächst direkt *Anwendungsberechtigungen* zu, damit sie auf nicht interaktive Weise (ohne Beteiligung eines angemeldeten Benutzers) auf Unternehmensdaten zugreifen kann. Der Großteil der Logik in diesem Beispiel zeigt, wie diese Verknüpfung mithilfe des Identity Platform-Endpunkts [Administratoreinwilligung](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) implementiert wird.
 
 ![Diagramm: UserSync-App mit drei lokalen Elementen, die eine Verbindung mit Azure herstellen. Dabei erwirbt Start.Auth interaktiv ein Token für die Verbindungsherstellung mit Azure AD, AccountController holt die Administratoreinwilligung für die Verbindungsherstellung mit Azure AD ein, und SyncController liest die Benutzer für die Verbindungsherstellung mit Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 Weitere Informationen zu den Konzepten in diesem Beispiel finden Sie unter [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md).
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Für das Beispiel in dieser Schnellstartanleitung benötigen Sie Folgendes:
-
-- [Visual Studio 2017 oder 2019](https://visualstudio.microsoft.com/downloads/)
-- Einen Azure AD-Mandanten. Weitere Informationen finden Sie unter [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md).
-- Mindestens ein Benutzerkonto in Ihrem Azure AD-Mandanten. Dieses Beispiel funktioniert nicht mit einem Microsoft-Konto (ehemals Windows Live-Konto). Falls Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Microsoft-Konto angemeldet und bislang noch kein Benutzerkonto in Ihrem Verzeichnis erstellt haben, müssen Sie jetzt eines erstellen.
 
 ## <a name="clone-or-download-this-repository"></a>Klonen oder Herunterladen des Repositorys
 
@@ -256,17 +252,8 @@ Sollten Sie einen Fehler in MSAL.NET finden, erstellen Sie ein Problem unter [Gi
 Wenn Sie eine Empfehlung abgeben möchten, besuchen Sie die [Benutzerfeedback-Seite](https://feedback.azure.com/forums/169401-azure-active-directory).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich ausführlicher über die verschiedenen [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md), die von Microsoft Identity Platform unterstützt werden.
 
-Weitere Informationen finden Sie in der folgenden Konzeptdokumentation:
+Hier erfahren Sie mehr über das Erstellen von Daemon-Apps, die mithilfe von Microsoft Identity Platform auf geschützte Web-APIs zugreifen:
 
-- [Mandanten in Azure Active Directory](single-and-multi-tenant-apps.md)
-- [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](application-consent-experience.md)
-- [Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md)
-- [Grundlegendes zur Benutzer- und Administratoreinwilligung](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md)
-- [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
-- [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
-- [Öffentliche und vertrauliche Clientanwendungen](msal-client-applications.md)
-
-Eine Anleitung für eine einfachere mehrinstanzenfähige Daemon-Konsolenanwendung finden Sie unter [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App](quickstart-v2-netcore-daemon.md).
+> [!div class="nextstepaction"]
+> [Szenario: Daemon-App zum Aufrufen von Web-APIs](scenario-daemon-overview.md)

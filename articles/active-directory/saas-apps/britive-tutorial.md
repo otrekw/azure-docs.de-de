@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542682"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Britive
 
@@ -129,11 +129,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf das Symbol **Administratoreinstellungen**, und wählen Sie **Sicherheit** aus.
 
-    ![Britive-Konfiguration](./media/britive-tutorial/configure1.png)
+    ![Screenshot: Britive-Website mit hervorgehobenen Optionen „Einstellungen“ und „Sicherheit“](./media/britive-tutorial/configure1.png)
 
 1. Wählen Sie **SSO-Konfiguration** aus, und führen Sie die folgenden Schritte aus:
 
-    ![Britive-Konfiguration](./media/britive-tutorial/configure2.png)
+    ![Screenshot: Seite für die SSO-Konfiguration zum Eingeben der in diesem Schritt beschriebenen Informationen](./media/britive-tutorial/configure2.png)
 
     a. Kopieren Sie den Wert im Feld **Audience/Entity ID** (Zielgruppen-/Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
 
@@ -147,15 +147,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf das Symbol **Administratoreinstellungen**, und wählen Sie **Benutzerverwaltung** aus.
 
-    ![Britive-Konfiguration](./media/britive-tutorial/user1.png)
+    ![Screenshot: Britive-Website mit hervorgehobenen Optionen „Einstellungen“ und „Benutzerverwaltung“](./media/britive-tutorial/user1.png)
 
 1. Klicken Sie auf **BENUTZER HINZUFÜGEN**.
 
-    ![Britive-Konfiguration](./media/britive-tutorial/user2.png)
+    ![Screenshot: Schaltfläche „BENUTZER HINZUFÜGEN“](./media/britive-tutorial/user2.png)
 
 1. Geben Sie alle Benutzerdetails ein, die gemäß den Anforderungen Ihrer Organisation erforderlich sind, und klicken Sie auf **BENUTZER HINZUFÜGEN**.
 
-    ![Britive-Konfiguration](./media/britive-tutorial/user3.png)
+    ![Screenshot: Seite „Benutzer hinzufügen“ zum Eingeben von Benutzerinformationen](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

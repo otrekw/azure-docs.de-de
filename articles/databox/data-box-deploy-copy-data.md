@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053540"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766320"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
 1. Zunächst müssen Sie sich authentifizieren und eine Sitzung starten. Navigieren Sie zu **Verbindung herstellen und Daten kopieren**. Wählen Sie **SMB** aus, um die Anmeldeinformationen für den Zugriff auf die mit Ihrem Speicherkonto verknüpften Freigaben abzurufen. 
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![Abrufen von Anmeldeinformationen für SMB-Freigaben](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![Abrufen des Benutzernamens und des Kennworts für eine Freigabe](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrem Speicherkonto (*utsac1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -97,11 +97,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
 4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>` an. Wählen Sie **OK** aus, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     Die Freigaben sollten jetzt als Ordner angezeigt werden.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![Im Datei-Explorer angezeigte Freigaben](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopieren Sie im nächsten Schritt Ihre Daten. Bevor Sie mit dem Kopieren der Daten beginnen, sollten Sie folgende Aspekte beachten:
 
 * Stellen Sie sicher, dass Sie die Daten in Freigaben kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in die Freigabe für Blockblobs. Kopieren Sie die VHDs in einen Seitenblob. Wenn das Datenformat nicht mit dem entsprechenden Freigabetyp übereinstimmt, tritt später beim Hochladen der Daten in Azure ein Fehler auf.
-* Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
+* Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Größenbeschränkungen für Azure-Speicherkonten](data-box-limits.md#azure-storage-account-size-limits) beschrieben sind.
 * Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
 * Wir empfehlen Folgendes:
   * Sie verwenden SMB und NFS nicht gleichzeitig.
@@ -225,15 +225,15 @@ Weitere Informationen zum Robocopy-Befehl finden Sie unter [Robocopy and a few e
 
 Falls während des Kopiervorgangs Fehler auftreten, wird eine Benachrichtigung angezeigt.
 
-![Herunterladen und Anzeigen von Fehlern beim Verbinden und Kopieren](media/data-box-deploy-copy-data/view-errors-1.png)
+![Kopierfehlermeldung beim Verbinden und Kopieren](media/data-box-deploy-copy-data/view-errors-1.png)
 
 Wählen Sie **Problemliste herunterladen** aus.
 
-![Herunterladen und Anzeigen von Fehlern beim Verbinden und Kopieren](media/data-box-deploy-copy-data/view-errors-2.png)
+![Herunterladen und Anzeigen von Fehlern beim Verbinden und Kopieren 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Öffnen Sie die Liste, um die Details des Fehlers anzuzeigen, und wählen Sie die Lösungs-URL aus, um die empfohlene Lösung anzuzeigen.
 
-![Herunterladen und Anzeigen von Fehlern beim Verbinden und Kopieren](media/data-box-deploy-copy-data/view-errors-3.png)
+![Herunterladen und Anzeigen von Fehlern beim Verbinden und Kopieren 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Weitere Informationen finden Sie unter [Anzeigen von Fehlerprotokollen beim Kopieren von Daten auf die Data Box](data-box-logs.md#view-error-log-during-data-copy). Eine detaillierte Liste von Fehlern beim Datenkopiervorgang finden Sie unter [Behandeln von Problemen bei der Data Box](data-box-troubleshoot.md).
 

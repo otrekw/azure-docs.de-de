@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006464"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653671"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Tutorial: Anzeigen eines per Remotezugriff gerenderten Modells
 
@@ -76,10 +76,10 @@ Sie müssen die Datei `Packages/manifest.json` ändern, die sich in Ihrem Unity-
 
 Nachdem Sie das Manifest geändert und gespeichert haben, wird Unity automatisch aktualisiert. Vergewissern Sie sich, dass die Pakete in das Fenster *Project* (Projekt) geladen wurden:
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="Bestätigen des Imports von Paketen":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="Neues Unity-Projekt":::
 
 Wenn Ihre Pakete nicht geladen werden, überprüfen Sie die Unity-Konsole auf Fehler. Wenn keine Fehler vorliegen und die Pakete im Ordner **Packages** (Pakete) nach wie vor nicht angezeigt werden, überprüfen Sie die Umschaltfläche zur Paketsichtbarkeit.
-![Unity-Kameraeigenschaften](./media/unity-package-visibility.png)
+![Screenshot: Pfeil, der auf die Umschaltfläche für die Paketsichtbarkeit zeigt](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Stellen Sie sicher, dass Sie über die neueste Version des Pakets verfügen.
 
@@ -120,7 +120,7 @@ Die folgenden Schritte stellen sicher, dass das Projekt die neueste Version des 
 
 1. Wählen Sie im Menü auf der linken Seite **Graphics** (Grafik) aus.
 1. Ändern Sie die Einstellung **Scriptable Rendering Pipeline** (Skriptfähige Renderingpipeline) in *HybridRenderingPipeline*.
-    ![Ändern der Projektgrafikeinstellungen](./media/settings-graphics-render-pipeline.png)\
+    ![Screenshot: Veranschaulichung der Option zum Ändern der Einstellung „Scriptable Render Pipeline settings“ (Skriptfähige Renderingpipeline) in „HybridRenderingPipeline“](./media/settings-graphics-render-pipeline.png)\
     Manchmal füllt die Benutzeroberfläche die Liste der verfügbaren Pipelinetypen aus den Paketen nicht auf. In diesem Fall muss das Objekt *HybridRenderingPipeline* manuell auf das Feld gezogen werden:
     ![Ändern der Projektgrafikeinstellungen](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ Um von **NotAuthorized** zu **NoSession**zu gelangen, stellen wir den Benutzern 
 1. Ziehen Sie die Komponente auf ihr eigenes Ereignis, damit sie auf sich selbst verweist.
 ![Umgehen der Authentifizierung](./media/bypass-authorization-add-event.png)\
 1. Wählen Sie in der Dropdownliste **RemoteRenderingCoordinator > BypassAuthorization** aus.
-![Umgehen der Authentifizierung](./media/bypass-authorization-event.png)
+![Screenshot: Option „RemoteRenderingCoordinator.BypassAuthorization“](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>Erstellen einer Remotesitzung oder Teilnehmen
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 Wenn die erforderliche Grundlage erfüllt ist, können Sie ein Modell in die Remotesitzung laden und mit dem Empfangen von Frames beginnen.
 
-![ARR-Stapel 4](./media/remote-render-stack-4.png)
+![Abbildung des Prozessablaufs zum Vorbereiten des Ladens und Anzeigen eines Modells](./media/remote-render-stack-4.png)
 
 Die Methode **LoadModel** ist so konzipiert, dass ein Modellpfad, ein Fortschrittshandler und eine übergeordnete Transformation akzeptiert werden. Diese Argumente werden verwendet, um ein Modell in die Remotesitzung zu laden, die Benutzer über den Ladefortschritt zu informieren und das per Remotezugriff gerenderte Modell basierend auf der übergeordneten Transformation auszurichten.
 

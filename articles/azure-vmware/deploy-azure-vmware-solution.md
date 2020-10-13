@@ -2,13 +2,14 @@
 title: Bereitstellen und Konfigurieren von Azure VMware Solution
 description: Erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen.
 ms.topic: tutorial
+ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598167"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776424"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -28,17 +29,15 @@ Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Sol
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-
+>[!NOTE]
+>Eine umfassende Übersicht über diesen Schritt vermittelt das Video [Azure VMware Solution: Bereitstellen](https://www.youtube.com/embed/1JLB3L2WDWI). 
 
 ## <a name="create-the-jump-box"></a>Erstellen der Jumpbox (Jump Server)
 
 >[!IMPORTANT]
 >Wenn Sie die Option **Virtuelles Netzwerk** während des ersten Bereitstellungsschritts auf der Seite **Private VMWare-Cloud erstellen** nicht ausgefüllt haben, arbeiten Sie das Tutorial [Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure](tutorial-configure-networking.md) durch, **bevor** Sie mit diesem Abschnitt fortfahren.  
 
-
-
 Nachdem Sie Azure VMware Solution bereitgestellt haben, erstellen Sie die Jumpbox des virtuellen Netzwerks, über die Verbindungen mit vCenter und NSX hergestellt werden. Nachdem Sie ExpressRoute-Leitungen und ExpressRoute Global Reach konfiguriert haben, ist die Jumpbox nicht mehr erforderlich.  Sie ist jedoch praktisch, vCenter und NSX in ihrer Azure VMware Solution-Umgebung zu erreichen.  
-
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 

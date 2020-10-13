@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018857"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653161"
 ---
 # <a name="tutorial-manipulating-models"></a>Tutorial: Bearbeiten von Modellen
 
@@ -161,7 +161,7 @@ Wenn nun das **RemoteBounds**-Skript dem gleichen Spielobjekt hinzugefügt wird 
 
 1. Erneutes Ausführen der Anwendung Kurz nach dem Laden des Modells sehen Sie die Begrenzungen für das Remoteobjekt. Sie sehen dann in etwa die folgenden Werte:
 
-     ![Aktualisierte Begrenzungen](./media/updated-bounds.png)
+     ![Screenshot: Beispiel mit Remoteobjektbegrenzungen](./media/updated-bounds.png)
 
 Nun haben wir ein lokales **BoxCollider**-Element, das mit exakten Begrenzungen für das Unity-Objekt konfiguriert ist. Die Begrenzungen ermöglichen die Visualisierung und Interaktion mithilfe derselben Strategien, die wir für ein lokal gerendertes Objekt verwenden würden. Beispielsweise Skripts, die die Transformation, die Physik und vieles mehr ändern.
 

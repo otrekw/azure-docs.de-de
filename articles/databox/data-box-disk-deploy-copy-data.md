@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927112"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766835"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,7 @@ Beachten Sie Folgendes, bevor Sie die Daten auf die Datenträger kopieren:
 
 Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Daten von Ihrem Computer auf den Data Box-Datenträger zu kopieren.
 
-1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. Die Liste der vorab erstellten Ordner und Unterordner im Laufwerk unterscheidet sich je nach den bei der Data Box Disk-Bestellung ausgewählten Optionen.
+1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. Die Liste der vorab erstellten Ordner und Unterordner im Laufwerk unterscheidet sich je nach den bei der Data Box Disk-Bestellung ausgewählten Optionen. Wenn kein vorab erstellter Ordner vorhanden ist, erstellen Sie diesen nicht selbst, da der Upload in Azure beim Kopieren in einen von einem Benutzer erstellten Ordner nicht funktioniert.
 
     |Ausgewähltes Speicherziel  |Speicherkontotyp|Typ des Stagingspeicherkontos |Ordner und Unterordner  |
     |---------|---------|---------|------------------|
@@ -212,15 +212,15 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 3. Identifizieren Sie die zu kopierenden Quelldaten. In diesem Beispiel:
     - Folgende Blockblobdaten wurden identifiziert:
 
-         ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![Aufteilen/Kopieren von Daten 2](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - Folgende Seitenblobdaten wurden identifiziert:
 
-         ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![Aufteilen/Kopieren von Daten 3](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. Wechseln Sie zu dem Ordner, in dem die Software extrahiert wurde. Suchen Sie in diesem Ordner nach der Datei `SampleConfig.json`. Hierbei handelt es sich um eine schreibgeschützte Datei, die Sie ändern und speichern können.
 
-   ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![Aufteilen/Kopieren von Daten 4](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. Ändern Sie die Datei `SampleConfig.json`.
  
@@ -229,11 +229,11 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
    - Geben Sie die Laufwerkbuchstaben für die Zieldatenträger ein. Die Daten werden aus dem Quellpfad abgerufen und auf mehrere Datenträger kopiert.
    - Geben Sie einen Pfad für die Protokolldateien an. Standardmäßig wird als Ziel das aktuelle Verzeichnis verwendet, in dem sich auch die `.exe`-Datei befindet.
 
-     ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![Aufteilen/Kopieren von Daten 5](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. Navigieren Sie zur Überprüfung des Dateiformats zu `JSONlint`. Speichern Sie die Datei unter dem Namen `ConfigFile.json`. 
 
-     ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![Aufteilen/Kopieren von Daten 6](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Öffnen Sie ein Eingabeaufforderungsfenster. 
 
@@ -241,24 +241,24 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![Aufteilen/Kopieren von Daten 7](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Drücken Sie die EINGABETASTE, um das Skript fortzusetzen.
 
-    ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![Aufteilen/Kopieren von Daten 8](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. Nach dem Aufteilen und Kopieren des Datasets wird eine Zusammenfassung des Tools zum Aufteilen/Kopieren für die Kopiersitzung angezeigt. Nachfolgend sehen Sie eine Beispielausgabe.
 
-    ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![Aufteilen/Kopieren von Daten 9](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. Vergewissern Sie sich, dass die Daten auf die Zieldatenträger verteilt wurden. 
  
-    ![Aufteilen/Kopieren von Daten ](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Aufteilen/Kopieren von Daten 10](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![Aufteilen/Kopieren von Daten 11](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
     Bei näherer Betrachtung des Inhalts von Laufwerk `n:` sehen Sie, dass für Daten im Blockblob- und Seitenblobformat zwei entsprechende Unterordner erstellt wurden.
     
-     ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![Aufteilen/Kopieren von Daten 12](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. Sollte bei der Kopiersitzung ein Fehler aufgetreten sein, führen Sie den folgenden Befehl aus, um den Vorgang fortzusetzen:
 

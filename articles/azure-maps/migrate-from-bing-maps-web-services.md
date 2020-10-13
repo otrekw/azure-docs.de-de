@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108212"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741668"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>Migrieren von Webdiensten aus Bing Karten
 
@@ -249,7 +249,7 @@ Die Routenplanungs-API von Azure Maps bietet viele zusätzliche Funktionen, die 
 
 Es gibt mehrere Möglichkeiten, in Azure Maps Koordinaten an Straßen auszurichten.
 
--   Verwenden Sie die Wegbeschreibungs-API, um Koordinaten an einer logischen Wegführung entlang des Straßennetzwerks auszurichten bzw. die Ausrichtung zu lösen.
+-   Verwenden Sie die Wegbeschreibungs-API, um Koordinaten an einer logischen Wegführung entlang des Straßennetzwerks auszurichten.
 -   Verwenden Sie das Azure Maps Web SDK, um einzelne Koordinaten auf Vektorkacheln an der nächstgelegenen Straße auszurichten.
 -   Verwenden Sie die Azure Maps-Vektorkacheln direkt, um einzelne Koordinaten auszurichten.
 

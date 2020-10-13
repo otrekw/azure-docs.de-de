@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547493"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory-Integration mit IdeaScale
 
@@ -137,7 +137,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IdeaSca
 
 3. Navigieren Sie zu **Sicherheit \> Einstellungen für einmaliges Anmelden**.
 
-    ![Single Signon Settings (Einstellungen für einmaliges Anmelden)](./media/ideascale-tutorial/ic790848.png "Einstellungen für einmaliges Anmelden")
+    ![Screenshot: Ausgewählte Einstellungen für die einmalige Anmeldung im Menü „Sicherheit“](./media/ideascale-tutorial/ic790848.png "Einstellungen für einmaliges Anmelden")
 
 4. Wählen Sie für **SSO-Typ** die Einstellung **SAML 2.0** aus.
 
@@ -145,7 +145,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IdeaSca
 
 5. Führen Sie im Dialogfeld **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![Single Signon Settings (Einstellungen für einmaliges Anmelden)](./media/ideascale-tutorial/ic790850.png "Einstellungen für einmaliges Anmelden")
+    ![Screenshot: Dialogfeld: „Single Sign-On Settings“ (Einstellungen für einmaliges Anmelden)](./media/ideascale-tutorial/ic790850.png "Einstellungen für einmaliges Anmelden")
 
     a. Fügen Sie in das Textfeld **SAML IdP Entity ID** (SAML-IdP-Entitäts-ID) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 

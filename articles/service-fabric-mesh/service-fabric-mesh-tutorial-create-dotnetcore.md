@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011208"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653110"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten
 
@@ -59,7 +59,7 @@ Geben Sie im Feld **Name** die Zeichenfolge `todolistapp` ein, und legen Sie im 
 
 Vergewissern Sie sich, dass das Kontrollkästchen **Projektmappenverzeichnis erstellen** aktiviert ist, und klicken Sie auf **OK**, um das Service Fabric Mesh-Projekt zu erstellen.
 
-![Visual Studio-Dialogfeld für das neue Service Fabric Mesh-Projekt](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Screenshot: Erstellen eines Service Fabric Mesh-Projekts](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 Als Nächstes wird das Dialogfeld **Neuer Service Fabric-Dienst** angezeigt.
 
@@ -73,7 +73,7 @@ Legen Sie den Dienstnamen im Feld **Dienstname** auf **WebFrontEnd** fest. Klick
 
 Als Nächstes wird das Dialogfeld „ASP.NET Core-Webanwendung“ angezeigt. Wählen Sie **Webanwendung** aus, und klicken Sie dann auf **OK**.
 
-![Visual Studio-Dialogfeld für neue ASP.NET Core-Anwendung](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Screenshot: Hervorhebung der Webapplicationvorlage](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 Sie verfügen nun über eine Service Fabric Mesh-Anwendung. Erstellen Sie als Nächstes das Modell für Aufgabeninformationen.
 

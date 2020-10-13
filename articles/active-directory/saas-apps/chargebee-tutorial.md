@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529478"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760647"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Tutorial: Integrieren von Chargebee in Azure Active Directory
 
@@ -132,11 +132,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Klicken Sie im linken Bereich des Menüs auf **Settings** > **Security** > **Manage** (Einstellungen > Sicherheit > Verwalten).
 
-    ![Chargebee-Konfiguration](./media/chargebee-tutorial/config01.png)
+    ![Screenshot der Chargebee-Unternehmenswebsite, auf der „Einstellungen“, „Sicherheit“ und „Verwalten“ ausgewählt sind](./media/chargebee-tutorial/config01.png)
 
 5. Führen Sie im Popupfenster **Single Sign-On** (Einmaliges Anmelden) die folgenden Schritte aus:
 
-    ![Chargebee-Konfiguration](./media/chargebee-tutorial/config02.png)
+    ![Screenshot des Dialogfelds „Einmaliges Anmelden“, in dem „SAML“ und die Option zum Bestätigen ausgewählt sind](./media/chargebee-tutorial/config02.png)
 
     a. Wählen Sie **SAML** aus.
 
@@ -156,11 +156,11 @@ Damit sich Azure AD-Benutzer bei Chargebee anmelden können, müssen sie in Cha
 
 2. Klicken Sie im linken Bereich des Menüs auf **Customers** (Kunden), und navigieren Sie dann zu **Create a New Customer** (Neuen Kunden erstellen).
 
-    ![Freedcamp-Konfiguration](./media/chargebee-tutorial/config03.png)
+    ![Screenshot der Chargebee-Website, auf der „Customers“ (Kunden) und „Create a New Customer“ (Neuen Kunden erstellen) ausgewählt sind](./media/chargebee-tutorial/config03.png)
 
 3. Füllen Sie auf der Seite **New Customer** (Neuer Kunde) die unten gezeigten Felder aus, und klicken Sie zur Benutzererstellung auf **Create Customer** (Kunden erstellen).
 
-    ![Freedcamp-Konfiguration](./media/chargebee-tutorial/config04.png)
+    ![Screenshot der Seite „New Customer“ (Neuer Kunde), auf der Sie Kundeninformationen eingeben können](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

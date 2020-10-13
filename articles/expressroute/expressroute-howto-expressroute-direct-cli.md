@@ -1,23 +1,23 @@
 ---
 title: 'Azure ExpressRoute: Konfigurieren von ExpressRoute Direct: Befehlszeilenschnittstelle (CLI)'
-description: Es wird beschrieben, wie Sie Azure ExpressRoute Direct mit der Azure CLI so konfigurieren, dass eine direkte Verbindung mit dem globalen Netzwerk von Microsoft an Peeringstandorten auf der ganzen Welt hergestellt wird.
+description: Hier erfahren Sie, wie Sie Azure ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle so konfigurieren, dass eine direkte Verbindung mit dem globalen Netzwerk von Microsoft hergestellt wird.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395960"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569833"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle
 
-Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
+ExpressRoute Direct ermöglicht das Herstellen einer direkten Verbindung mit dem globalen Netzwerk von Microsoft – dank strategisch verteilten Peeringstandorten auf der ganzen Welt. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Erstellen der Ressource
 
@@ -209,6 +209,14 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
    }  
    ```
 
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Generieren des Genehmigungsschreibens (Letter of Authorization, LOA)
+
+Geben Sie den Namen der kürzlich erstellten ExpressRoute Direct-Ressource, den Namen der Ressourcengruppe und einen Kundennamen ein, für den das Genehmigungsschreiben erstellt werden soll, und definieren Sie optional einen Speicherort für das Dokument. Ohne Verweis auf einen Dateipfad wird das Dokument in das aktuelle Verzeichnis heruntergeladen.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
+
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>Ändern von AdminState für Links
 
 Verwenden Sie diesen Prozess, um einen Layer-1-Test durchzuführen. Stellen Sie sicher, dass jede Kreuzverbindung für die primären und sekundären Ports korrekt in jeden Router gepatcht ist.
@@ -285,9 +293,10 @@ Sie können standardmäßig zehn Leitungen im Abonnement erstellen, in dem die E
 
 Sie können zusätzliche Leitungsbandbreiten für ExpressRoute Direct nur verwenden, um die hier beschriebenen Szenarien zu unterstützen. Die Bandbreiten sind 40 GBit/s und 100 GBit/s.
 
-**SkuTier** kann Local, Standard oder Premium sein.
+**SkuTier** kann „Local“, „Standard“ oder „Premium“ sein.
 
-**SkuFamily** darf nur MeteredData sein, da „unlimited“ von ExpressRoute Direct nicht unterstützt wird.
+**SkuFamily** kann nur „MeteredData“ sein. „Unlimited“ wird für ExpressRoute Direct nicht unterstützt.
+
 Erstellen Sie in der ExpressRoute Direct-Ressource eine Leitung:
 
   ```azurecli

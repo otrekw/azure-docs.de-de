@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: b11955c040225f66bc3eda9fe762cb1cbfc2d308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9836c4e8f644a4e1b39e5aef7208262d6701f5bb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542852"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760681"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Tutorial: Integrieren von Aha! in Azure Active Directory
 
@@ -148,7 +148,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 6. Klicken Sie auf **Security and single sign-on**.
 
-    ![Security and single sign-on (Sicherheit und einmaliges Anmelden)](./media/aha-tutorial/IC798952.png "Security and single sign-on")
+    ![Screenshot: Menüoption „Security and single sign-on“ (Sicherheit und einmaliges Anmelden)](./media/aha-tutorial/IC798952.png "Security and single sign-on")
 
 7. Wählen Sie im Abschnitt **Einmaliges Anmelden** als **Identitätsanbieter** die Option **SAML2.0** aus.
 

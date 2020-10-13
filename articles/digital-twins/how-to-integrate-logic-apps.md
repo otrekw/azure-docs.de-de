@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983436"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326574"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integration in Logic Apps mit einem benutzerdefinierten Connector
 
@@ -28,7 +28,7 @@ In diesem Artikel verwenden Sie das [Azure-Portal](https://portal.azure.com), um
 Wenn Sie kein Azure-Abonnement haben, **erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** , bevor Sie beginnen.
 Melden Sie sich mit diesem Konto am [Azure-Portal](https://portal.azure.com) an. 
 
-Im Rest dieses Abschnitts werden die folgenden Schritte erläutert:
+Zu den Voraussetzungen zählen auch die folgenden Punkte. Im weiteren Verlauf dieses Abschnitts werden die folgenden Schritte erläutert:
 - Einrichten einer Azure Digital Twins-Instanz
 - Abrufen des geheimen Clientschlüssels für die Azure AD-App-Registrierung
 - Hinzufügen eines digitalen Zwillings
@@ -37,9 +37,9 @@ Im Rest dieses Abschnitts werden die folgenden Schritte erläutert:
 
 Um eine Instanz von Azure Digital Twins mit Logic Apps in diesem Artikel zu verbinden, müssen Sie die **Azure Digital Twins-Instanz** bereits eingerichtet haben. 
 
-Wenn Sie jetzt eine neue Instanz einrichten müssen, ist es am einfachsten, ein automatisiertes Bereitstellungsskriptbeispiel auszuführen. Führen Sie die Anweisungen unter [ *Richten Sie eine Instanz und Authentifizierung (geskripted)* ](how-to-set-up-instance-scripted.md) ein, um eine neue Instanz und die erforderliche Azure AD App-Registrierung einzurichten. Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
+Richten Sie zunächst eine Azure Digital Twins-Instanz und die erforderliche Authentifizierung ein, um damit arbeiten zu können. Anweisungen hierzu finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md). Abhängig von Ihrer bevorzugten Umgebung wird der Setupartikel für das [Azure-Portal](how-to-set-up-instance-portal.md), die [CLI](how-to-set-up-instance-cli.md) oder das [automatisierte Cloud Shell-Bereitstellungsskriptbeispiel](how-to-set-up-instance-scripted.md) bereitgestellt. Alle Versionen der Anleitung enthalten auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
 
-In diesem Tutorial benötigen Sie die folgenden Werte, die Sie bei der Einrichtung Ihrer Instanz verwendet haben. Wenn Sie diese Werte erneut abrufen müssen, verwenden Sie die unten aufgeführten Links zu den entsprechenden Abschnitten im Artikel zur Einrichtung, um sie im [Azure-Portal](https://portal.azure.com) zu ermitteln.
+In diesem Tutorial benötigen Sie mehrere Werte, die Sie bei der Einrichtung Ihrer Instanz verwendet haben. Wenn Sie diese Werte erneut abrufen müssen, verwenden Sie die unten aufgeführten Links zu den entsprechenden Abschnitten im Artikel zur Einrichtung, um sie im [Azure-Portal](https://portal.azure.com) zu ermitteln.
 * Azure Digital Twins-Instanz: **_Hostname_** ([im Portal suchen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure AD-App-Registrierung: **_Anwendungs-ID (Client)_** ([im Portal suchen](how-to-set-up-instance-portal.md#collect-important-values))
 * Azure AD-App-Registrierung: **_Verzeichnis-ID (Client)_** ([im Portal suchen](how-to-set-up-instance-portal.md#collect-important-values))
@@ -160,13 +160,13 @@ Sie sind jetzt fertig mit der Einrichtung eines benutzerdefinierten Connectors, 
 
 Nun erstellen Sie eine Logik-App, die Ihren neuen Connector zum Automatisieren von Azure Digital Twins-Updates verwendet.
 
-Navigieren Sie hierzu im Azure-Portal zur Seite [Logik-Apps (Verbrauch)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows). (Sie können diesen Link verwenden oder auf der Suchleiste des Portals danach suchen.) Klicken Sie auf die Schaltfläche *Hinzufügen*, um eine Logik-App zu erstellen.
+Suchen Sie im [Azure-Portal](https://portal.azure.com) über die Suchleiste nach *Logik-Apps*. Durch Auswählen dieser Option gelangen Sie zur Seite *Logic-Apps*. Klicken Sie auf die Schaltfläche *Logik-App erstellen*, um eine neue Logik-App zu erstellen.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Portalansicht einer Azure AD-App-Registrierung. Im Ressourcenmenü gibt es eine Hervorhebung von „Zertifikate und geheime Schlüssel“ und eine Hervorhebung auf der Seite von „Neuer geheimer Clientschlüssel“":::
 
-Geben Sie auf der anschließend angezeigten Seite *Logik-Apps (Verbrauch)* Ihr Abonnement und Ihre Ressourcengruppe ein. Wählen Sie außerdem einen Namen für Ihre Logik-App und den Standort aus.
+Geben Sie auf der anschließend angezeigten Seite *Logik-App* Ihr Abonnement und Ihre Ressourcengruppe ein. Wählen Sie außerdem einen Namen für Ihre Logik-App sowie den Bereitstellungsstandort aus.
 
-Wählen Sie die Schaltfläche _Überprüfen und erstellen_ aus.
+Klicken Sie auf die Schaltfläche _Überprüfen und erstellen_.
 
 Daraufhin gelangen Sie zur Registerkarte *Überprüfen und erstellen*, auf der Sie Ihre Angaben überprüfen und unten auf *Erstellen* klicken können, um die Ressource zu erstellen.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020107"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653127"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric mithilfe von Application Insights
 
@@ -191,7 +191,7 @@ Sie können auf eine der Ablaufverfolgungen klicken, um weitere Details anzuzeig
 
 Darüber hinaus können Sie im linken Menü der Übersichtsseite auf *Anwendungsübersicht* oder auf das Symbol **App-Übersicht** klicken, um zur App-Übersicht mit Ihren beiden verbundenen Diensten zu gelangen.
 
-![AI-Ablaufverfolgungsdetails](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![Screenshot: Hervorhebung der Anwendungsübersicht im linken Menü](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Die App-Übersichtsfunktion kann Sie beim Nachvollziehen der Anwendungstopologie unterstützen, insbesondere wenn Sie mehrere verschiedene Dienste hinzufügen, die zusammenarbeiten. Sie erhalten ebenfalls Daten zur Erfolgsrate der Anforderungen und werden bei der Diagnose fehlgeschlagener Anforderungen unterstützt, um nachzuvollziehen, warum Fehler aufgetreten sind. Weitere Informationen zur App-Übersichtsfunktion erhalten Sie unter [Application Map in Application Insights (Anwendungszuordnung in Application Insights)](../azure-monitor/app/app-map.md).
 

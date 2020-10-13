@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549414"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713808"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AskYourTeam
 
@@ -131,19 +131,19 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Klicken Sie auf **My Organisation** (Meine Organisation).
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/user1.png)
+    ![Screenshot: Link „Meine Organisation“](./media/askyourteam-tutorial/user1.png)
 
 1. Klicken Sie auf **Integrationen**.
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/configure1.png)
+    ![Screenshot: Link „Integrationen“](./media/askyourteam-tutorial/configure1.png)
 
 1. Klicken Sie auf **Edit Settings** (Einstellungen bearbeiten).
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/configure2.png)
+    ![Screenshot: Meldung für einmaliges Anmelden mit der Schaltfläche „Einstellungen bearbeiten“](./media/askyourteam-tutorial/configure2.png)
 
 1. Führen Sie auf der Seite **Edit Single Sign-On Integration** (SSO-Integration bearbeiten) die folgenden Schritte aus: 
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/configure3.png)
+    ![Screenshot: Seite „Edit Single Sign-On Integration“ (SSO-Integration bearbeiten) zum Eingeben der Werte für diesen Schritt](./media/askyourteam-tutorial/configure3.png)
 
     a. Fügen Sie im Textfeld **SAML Single Sign-On Service URL** (SAML-Dienst-URL für einmaliges Anmelden) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -168,15 +168,15 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Klicken Sie auf **My Organisation** (Meine Organisation).
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/user1.png)
+    ![Screenshot: Link „Meine Organisation“, wo die Aufgabe beginnt](./media/askyourteam-tutorial/user1.png)
 
 1. Klicken Sie auf **Users** (Benutzer), und wählen Sie **New User** (Neuer Benutzer) aus.
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/user2.png)
+    ![Screenshot: Link „Benutzer“ mit der Option „Neuer Benutzer“](./media/askyourteam-tutorial/user2.png)
 
 1. Führen Sie im Abschnitt **New user** (Neuer Benutzer) die folgenden Schritte aus:
 
-    ![AskYourTeam-Konfiguration](./media/askyourteam-tutorial/user3.png)
+    ![Screenshot: Abschnitt „Neuer Benutzer“ zum Eingeben von Benutzerinformationen](./media/askyourteam-tutorial/user3.png)
 
     1. Geben Sie im Textfeld **First name** (Vorname) den Vornamen des Benutzers ein.
 

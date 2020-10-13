@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c696d8834c24a792432469bf7b1adffc87f718ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372974"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611470"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Tutorial: Erstellen einer Blazor Server-App, die Microsoft Identity Platform für die Authentifizierung verwendet
 
@@ -40,7 +40,7 @@ Alle Apps, die Azure Active Directory (Azure AD) für die Authentifizierung ver
 
 Aktivieren Sie unter **Authentifizierung** > **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**, und wählen Sie dann die Schaltfläche **Speichern** aus.
 
-Und weil die App eine geschützte API (in diesem Fall Microsoft Graph) aufruft, benötigt sie schließlich einen geheimen Clientschlüssel, um ihre Identität zu überprüfen, wenn sie ein Zugriffstoken zum Aufrufen dieser API anfordert. 
+Und weil die App eine geschützte API (in diesem Fall Microsoft Graph) aufruft, benötigt sie schließlich einen geheimen Clientschlüssel, um ihre Identität zu überprüfen, wenn sie ein Zugriffstoken zum Aufrufen dieser API anfordert.
 
 1. Wählen Sie in derselben App-Registrierung unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
 2. Erstellen Sie einen **neuen geheimen Clientschlüssel**, der nie abläuft.
@@ -48,7 +48,7 @@ Und weil die App eine geschützte API (in diesem Fall Microsoft Graph) aufruft,
 
 ## <a name="create-the-app-using-the-net-cli"></a>Erstellen der App mithilfe der .NET-CLI
 
-Führen Sie den folgenden Befehl aus, um die Vorlagen für Microsoft.Identity.Web herunterzuladen, die wir in diesem Tutorial verwenden werden. 
+Führen Sie den folgenden Befehl aus, um die Vorlagen für Microsoft.Identity.Web herunterzuladen, die wir in diesem Tutorial verwenden werden.
 
 ```dotnetcli
 dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
@@ -74,19 +74,19 @@ Navigieren Sie jetzt in Ihrem Editor zu Ihrer neuen Blazor-App, und fügen Sie d
 
 ## <a name="test-the-app"></a>Testen der App
 
-Jetzt können Sie die App erstellen und ausführen. Wenn Sie diese Vorlagen-App ausführen, müssen Sie das auszuführende Framework mit „--framework“ angeben. In diesem Tutorial wird das .NET Core 3.1 SDK verwendet. 
+Jetzt können Sie die App erstellen und ausführen. Wenn Sie diese Vorlagen-App ausführen, müssen Sie das auszuführende Framework mit „--framework“ angeben. In diesem Tutorial wird das .NET Core 3.1 SDK verwendet.
 
 ```dotnetcli
 dotnet run --framework netcoreapp3.1
 ```
 
-Navigieren Sie in Ihrem Browser zu `https://localhost:5001`, und melden Sie sich mit einem Azure AD-Benutzerkonto an, um zu sehen, dass die App ausgeführt wird. 
+Navigieren Sie in Ihrem Browser zu `https://localhost:5001`, und melden Sie sich mit einem Azure AD-Benutzerkonto an, um zu sehen, dass die App ausgeführt wird.
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Abrufen von Daten aus Microsoft Graph
 
 [Microsoft Graph](/graph/overview) bietet eine Reihe von APIs, die den Zugriff auf die Microsoft 365-Daten Ihrer Benutzer ermöglichen. Wenn Sie Microsoft Identity Platform als Identitätsanbieter für Ihre App verwenden, können Sie einfacher auf diese Informationen zugreifen, weil Microsoft Graph die von Microsoft Identity Platform ausgestellten Token direkt unterstützt. In diesem Abschnitt fügen Sie Code hinzu, mit dem die E-Mails des angemeldeten Benutzers auf der Seite „Daten abrufen“ der Anwendung angezeigt werden können.
 
-Bevor Sie beginnen, müssen Sie sich bei Ihrer App abmelden, weil Sie Änderungen an den erforderlichen Berechtigungen vornehmen und Ihr aktuelles Token nicht funktioniert. Wenn Sie dies noch nicht getan haben, führen Sie Ihre App erneut aus, und wählen Sie **Abmelden** aus, bevor Sie den folgenden Code aktualisieren. 
+Bevor Sie beginnen, müssen Sie sich bei Ihrer App abmelden, weil Sie Änderungen an den erforderlichen Berechtigungen vornehmen und Ihr aktuelles Token nicht funktioniert. Wenn Sie dies noch nicht getan haben, führen Sie Ihre App erneut aus, und wählen Sie **Abmelden** aus, bevor Sie den folgenden Code aktualisieren.
 
 Jetzt aktualisieren Sie die Registrierung Ihrer App und den Code, um die E-Mails eines Benutzers per Pull abzurufen und die Nachrichten in der App anzuzeigen. Sie erreichen dies, indem Sie zunächst die Berechtigungen für die App-Registrierung in Azure AD erweitern, um den Zugriff auf die E-Mail-Daten zu ermöglichen. Fügen Sie dann der Blazor-App Code hinzu, um diese Daten auf einer der Seiten abzurufen und anzuzeigen.
 
@@ -201,5 +201,7 @@ Nachdem Sie die Zustimmung erteilt haben, können Sie zur Seite „Daten abrufen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bewährte Methoden und Empfehlungen für Microsoft Identity Platform](./identity-platform-integration-checklist.md)
-- [Grundlagen zu Microsoft Identity Web](https://github.com/AzureAD/microsoft-identity-web/wiki/Microsoft-Identity-Web-basics)
+Informieren Sie sich im Rahmen der mehrteiligen Szenarioreihe über das Aufrufen und Entwerfen von Web-Apps, mit denen Benutzer angemeldet werden.
+
+> [!div class="nextstepaction"]
+> [Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536256"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775163"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Tutorial: Integrieren von Displayr in Azure Active Directory
 
@@ -88,15 +88,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die Displayr-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Abschnitt „User Attributes“ (Benutzerattribute) mit dem Symbol „Bearbeiten“ hervorgehoben](common/edit-attribute.png)
 
 1. Darüber hinaus wird von der Displayr-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
     a. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen**.
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![Screenshot des Abschnitts „Benutzerattribute und Ansprüche“, in dem das Symbol „Stift“ neben „Im Anspruch zurückgegebene Gruppen“ ausgewählt ist](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![Screenshot des Fensters „Gruppenansprüche (Vorschau)“ mit ausgewählten Einstellungen](./media/displayr-tutorial/config05.png)
 
     b. Wählen Sie **Alle Gruppen** aus der Optionsfeldliste aus.
 
@@ -126,11 +126,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Klicken Sie auf **Einstellungen**, und navigieren Sie dann zu **Konto**.
 
-    ![Konfiguration](./media/displayr-tutorial/config01.png)
+    ![Screenshot, in dem das Symbol „Einstellungen“ und „Konto“ ausgewählt sind](./media/displayr-tutorial/config01.png)
 
 5. Wechseln Sie aus dem Hauptmenü zu **Einstellungen**, und scrollen Sie nach unten, um auf  **Einmaliges Anmelden konfigurieren (SAML)** zu klicken.
 
-    ![Konfiguration](./media/displayr-tutorial/config02.png)
+    ![Screenshot, in dem die Registerkarte „Einstellungen“ und die Aktion „Einmaliges Anmelden (S A M L)“ ausgewählt sind](./media/displayr-tutorial/config02.png)
 
 6. Führen Sie auf der Seite **Einmaliges Anmelden (SAML)** die folgenden Schritte aus:
 
@@ -190,11 +190,11 @@ Damit sich Azure AD-Benutzer bei Displayr anmelden können, müssen sie in Displ
 
 2. Klicken Sie auf **Einstellungen**, und navigieren Sie dann zu **Konto**.
 
-    ![Displayr-Konfiguration](./media/displayr-tutorial/config01.png)
+    ![Screenshot des Symbols „Einstellungen“ (Zahnrad), bei dem „Konto“ ausgewählt ist](./media/displayr-tutorial/config01.png)
 
 3. Wechseln Sie aus dem Hauptmenü zu **Einstellungen**, scrollen Sie nach unten, bis zum Abschnitt **Benutzer**, und klicken Sie auf **Neuer Benutzer**.
 
-    ![Displayr-Konfiguration](./media/displayr-tutorial/config07.png)
+    ![Screenshot der Registerkarte „Einstellungen“, auf der „Benutzer“ hervorgehoben und die Schaltfläche „Neuer Benutzer“ ausgewählt ist](./media/displayr-tutorial/config07.png)
 
 4. Führen Sie auf der Seite **Neuen Benutzer hinzufügen** die folgenden Schritte aus:
 

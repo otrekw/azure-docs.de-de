@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545249"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Tutorial: Azure Active Directory-Integration mit Image Relay
 
@@ -128,27 +128,27 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Image 
 
 2. Klicken Sie auf der Symbolleiste oben auf die Workload **Users & Permissions** (Benutzer und Berechtigungen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![Screenshot der Symbolleiste, auf der „Benutzer und Berechtigungen“ ausgewählt ist](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. Klicken Sie auf **Create New Permission**(Neue Berechtigung erstellen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![Screenshot eines Textfelds zum Eingeben des Berechtigungstitels und einer Option zum Auswählen des Berechtigungstyps](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. Aktivieren Sie in der Workload **Single Sign On Settings** (Einstellungen für einmaliges Anmelden) das Kontrollkästchen **This Group can only sign-in via Single Sign On** (Diese Gruppe kann sich nur per einmaligem Anmelden anmelden), und klicken Sie dann auf **Speichern**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![Screenshot der Einstellungen für einmaliges Anmelden, in denen Sie die Option auswählen können](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. Wechseln Sie zu **Kontoeinstellungen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Screenshot der Symbolleistenoption „Kontoeinstellungen“](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. Klicken Sie auf die Workload **Single Sign On Settings** (Einstellungen für einmaliges Anmelden).
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![Screenshot der Menüoption für die Einstellungen für einmaliges Anmelden](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. Führen Sie im Dialogfeld **SAML Settings** (SAML-Einstellungen) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Screenshot des Dialogfelds „SAML-Einstellungen“, in dem Sie diese Informationen eingeben können](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -160,19 +160,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Image 
 
     e. Klicken Sie unter **x.509-Zertifikat** auf **Zertifikat aktualisieren**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Screenshot der Option „Zertifikat aktualisieren“](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Textfeld **x.509 Certificate** (x.509-Zertifikat) ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Screenshot des x Punkt 509-Zertifikats](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. Aktivieren Sie im Abschnitt **Just-In-Time User Provisioning** (Just-In-Time-Benutzerbereitstellung) das Kontrollkästchen **Enable Just-In-Time User Provisioning** (Just-In-Time-Benutzerbereitstellung aktivieren).
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Screenshot des Abschnitts zur Just-In-Time-Benutzerbereitstellung, in dem das Steuerelement zum Aktivieren ausgewählt ist](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. Wählen Sie die Berechtigungsgruppe aus (z.B. **SSO Basic** (SSO allgemein)), bei der die Anmeldung nur per einmaligem Anmelden erfolgen soll.
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Screenshot des Abschnitts zur Just-In-Time-Benutzerbereitstellung, in dem „S S O Basic“ ausgewählt ist](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. Klicken Sie auf **Speichern**.
 
@@ -237,11 +237,11 @@ Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simo
 
 2. Wechseln Sie zu **Users & Permissions** (Benutzer und Berechtigungen), und klicken Sie auf **Create SSO User** (SSO-Benutzer erstellen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Screenshot des Menüs, in dem „S S O-Benutzer erstellen“ ausgewählt ist](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. Geben Sie die **E-Mail-Adresse**, den **Vornamen**, den **Nachnamen** und das **Unternehmen** des bereitzustellenden Benutzers an. Wählen Sie außerdem die Berechtigungsgruppe aus (z.B. „SSO Basic“). Dies ist die Gruppe, die sich nur per einmaligem Anmelden anmelden kann.
 
-    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![Screenshot der Seite „S S O-Benutzer erstellen“, auf der Sie die erforderlichen Informationen eingeben können](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. Klicken Sie auf **Erstellen**.
 

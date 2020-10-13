@@ -1,28 +1,22 @@
 ---
-title: Importieren und Veröffentlichen Ihrer ersten API in Azure API Management
-description: Hier wird beschrieben, wie Sie eine OpenAPI-Spezifikations-API in Azure API Management importieren und diese anschließend im Azure-Portal testen.
-services: api-management
-documentationcenter: ''
+title: 'Tutorial: Importieren und Veröffentlichen Ihrer ersten API in Azure API Management'
+description: In diesem Tutorial importieren Sie eine OpenAPI-Spezifikations-API in Azure API Management und testen diese anschließend im Azure-Portal.
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 71a239393c61dccf39ed505aa2b08d7612b7e370
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905549"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626955"
 ---
-# <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API
+# <a name="tutorial-import-and-publish-your-first-api"></a>Tutorial: Importieren und Veröffentlichen Ihrer ersten API
 
-In diesem Tutorial wird veranschaulicht, wie Sie eine Back-End-API mit OpenAPI-Spezifikation im JSON-Format in Azure API Management importieren. Microsoft stellt die Back-End-API bereit und hostet sie unter [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json) in Azure.
+In diesem Tutorial wird veranschaulicht, wie Sie eine Back-End-API mit OpenAPI-Spezifikation im JSON-Format in Azure API Management importieren. Microsoft stellt die in diesem Beispiel verwendete Back-End-API bereit und hostet sie in Azure unter [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json).
 
 Nachdem Sie die Back-End-API in API Management importiert haben, wird Ihre API Management-API zu einer Fassade für die Back-End-API. Sie können die Fassade an Ihre Anforderungen in API Management anpassen, ohne hierfür die Back-End-API bearbeiten zu müssen. Weitere Informationen finden Sie unter [Transformieren und Schützen Ihrer API](transform-api.md).
 
@@ -32,7 +26,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Importieren einer API in API Management
 > * Testen der API im Azure-Portal
 
-![Neue API](./media/api-management-import-and-publish/created-api.png)
+Nach dem Import können Sie die API im Azure-Portal verwalten.
+
+:::image type="content" source="media/import-and-publish/created-api.png" alt-text="Neue API in API Management":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,30 +37,32 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
+## <a name="import-and-publish-a-backend-api"></a>Importieren und Veröffentlichen einer Back-End-API
 
 In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifikation importieren und veröffentlichen.
 
-1. Wählen Sie im linken Navigationsbereich Ihrer API Management-Instanz im Abschnitt **API Management** die Option **APIs** aus.
-1. Wählen Sie die Kachel **OpenAPI** und dann auf dem Popupbildschirm die Option **Vollständig** aus.
-1. Verwenden Sie auf dem Bildschirm **Create from OpenAPI specification** (Aus OpenAPI-Spezifikation erstellen) die Werte aus der folgenden Tabelle, um Ihre API zu erstellen.
+1. Wählen Sie im linken Navigationsbereich der API Management-Instanz **APIs** aus.
+1. Wählen Sie die Kachel **OpenAPI** aus.
+1. Wählen Sie im Fenster **Aus OpenAPI-Spezifikation erstellen** die Option **Vollständig** aus.
+1. Geben Sie die Werte aus der folgenden Tabelle ein. Wählen Sie **Erstellen** aus, um die API zu erstellen.
 
-   Ein roter Stern neben einem Feld des Formulars gibt an, dass das Feld erforderlich ist. Sie können API-Werte während der Erstellung oder später über die Registerkarte **Einstellungen** festlegen.
+   Sie können API-Werte während der Erstellung oder später über die Registerkarte **Einstellungen** festlegen.
 
-   ![Erstellen einer API](./media/api-management-import-and-publish/create-api.png)
+   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="Neue API in API Management":::
+
 
    |Einstellung|Wert|BESCHREIBUNG|
    |-------|-----|-----------|
    |**OpenAPI-Spezifikation**|*https:\//conferenceapi.azurewebsites.net?format=json*|Der Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter.|
-   |**Anzeigename**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Der Name wird im Entwicklerportal angezeigt.|
+   |**Anzeigename**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Der Name im [Entwicklerportal](api-management-howto-developer-portal.md) angezeigte Name.|
    |**Name**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Ein eindeutiger Name für die API.|
    |**Beschreibung**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Eine optionale Beschreibung der API.|
-   |**URL-Schema**|**HTTPS**|Gibt an, welche Protokolle für den Zugriff auf die API verwendet werden können.|
+   |**URL-Schema**|**HTTPS**|Gibt an, welche Protokolle auf die API zugreifen können.|
    |**API-URL-Suffix**|*conference*|Das Suffix wird an die Basis-URL für den API Management-Dienst angehängt. API Management unterscheidet APIs anhand des Suffix. Daher muss jede API eines bestimmten Herausgebers ein eindeutiges Suffix haben.|
    |**Tags**| |Tags zum Organisieren von APIs für die Suche, Gruppierung oder Filterung.|
-   |**Produkte**|**Unbegrenzt**|Zuordnung von einer oder mehreren APIs. Jede API Management-Instanz enthält zwei Beispielprodukte: **Starter** und **Unbegrenzt**. Zur Veröffentlichung einer API muss diese einem Produkt zugeordnet werden (in diesem Beispiel **Unbegrenzt**).<br/>Sie können ein Produkt mit mehreren APIs versehen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. Geben Sie den Produktnamen ein, oder wählen Sie ihn aus, um diese API einem anderen Produkt hinzuzufügen. Wiederholen Sie diesen Schritt, um die API mehreren Produkten hinzuzufügen. Sie können APIs Produkten auch später über die Seite **Einstellungen** hinzufügen.<br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. <br/>Wenn Sie die API Management-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch alle Produkte der Instanz abonniert.|
-   |**Gateways**|**Verwaltet**|API-Gateways, die die API verfügbar machen. Dieses Feld ist nur bei Diensten mit **Developer**- und **Premium**-Tarif verfügbar.<br/>**Verwaltet** gibt an, dass das Gateway in den API Management-Dienst integriert ist und von Microsoft in Azure gehostet wird. Andere Gateways sind [selbstgehostete Gateways](self-hosted-gateway-overview.md) und nur bei Diensten mit Premium- und Developer-Tarif verfügbar. Sie können sie lokal oder in anderen Clouds bereitstellen.<br/>Wenn keine Gateways ausgewählt sind, ist die API nicht verfügbar, und Ihre API-Anforderungen können nicht erfolgreich ausgeführt werden.|
-   |**Versionsverwaltung für diese API?**|Auswählen bzw. Aufheben der Auswahl|Weitere Informationen zur Versionsverwaltung finden Sie unter [Veröffentlichen mehrerer Versionen Ihrer API](api-management-get-started-publish-versions.md).|
+   |**Produkte**|**Unbegrenzt**|Zuordnung von einer oder mehreren APIs. Jede API Management-Instanz enthält zwei Beispielprodukte: **Starter** und **Unbegrenzt**. Zur Veröffentlichung einer API muss diese einem Produkt zugeordnet werden (in diesem Beispiel **Unbegrenzt**).<br/><br/> Sie können ein Produkt mit mehreren APIs versehen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. Geben Sie den Produktnamen ein, oder wählen Sie ihn aus, um diese API einem anderen Produkt hinzuzufügen. Wiederholen Sie diesen Schritt, um die API mehreren Produkten hinzuzufügen. Sie können APIs Produkten auch später über die Seite **Einstellungen** hinzufügen.<br/><br/>  Weitere Informationen zu Produkten finden Sie unter [Erstellen und Veröffentlichen eines Produkts](api-management-howto-add-products.md).|
+   |**Gateways**|**Verwaltet**|API-Gateways, die die API verfügbar machen. Dieses Feld ist nur bei Diensten mit **Developer**- und **Premium**-Tarif verfügbar.<br/><br/>**Verwaltet** gibt an, dass das Gateway in den API Management-Dienst integriert ist und von Microsoft in Azure gehostet wird. [Selbstgehostete Gateways](self-hosted-gateway-overview.md) sind nur bei Diensten mit Premium- und Developer-Tarif verfügbar. Sie können sie lokal oder in anderen Clouds bereitstellen.<br/><br/> Wenn keine Gateways ausgewählt sind, ist die API nicht verfügbar, und Ihre API-Anforderungen können nicht erfolgreich ausgeführt werden.|
+   |**Versionsverwaltung für diese API?**|Auswählen bzw. Aufheben der Auswahl|Weitere Informationen finden Sie unter [Veröffentlichen mehrerer Versionen Ihrer API](api-management-get-started-publish-versions.md).|
 
    > [!NOTE]
    > Wenn Sie die API für API-Consumer veröffentlichen möchten, müssen Sie sie einem Produkt zuordnen.
@@ -77,15 +75,15 @@ Falls beim Importieren einer API-Definition Probleme auftreten, helfen Ihnen die
 
 Sie können API-Vorgänge direkt über das Azure-Portal aufrufen. Dies ist ein einfacher Weg, die Vorgänge anzuzeigen und zu testen.
 
-1. Wählen Sie im linken Navigationsbereich Ihrer API Management-Instanz im Abschnitt **API Management** die Option **APIs** und anschließend **Demo Conference API** aus.
+1. Wählen Sie im linken Navigationsbereich der API Management-Instanz **APIs** > **Demo Conference API** aus.
 1. Wählen Sie die Registerkarte **Test** und dann **GetSpeakers** aus. Auf der Seite werden **Abfrageparameter** und **Header** angezeigt (falls zutreffend). **Ocp-Apim-Subscription-Key** wird automatisch für den Abonnementschlüssel eingefügt, der dieser API zugeordnet ist.
 1. Wählen Sie **Senden** aus.
 
-   ![Testen der API](./media/api-management-import-and-publish/01-import-first-api-01.png)
+   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Neue API in API Management":::
 
    Das Back-End antwortet mit **200 OK** und einigen Daten.
 
-## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 

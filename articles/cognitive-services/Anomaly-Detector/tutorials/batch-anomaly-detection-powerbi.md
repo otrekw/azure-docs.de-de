@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905775"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660954"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -56,7 +56,7 @@ Power BI konvertiert die Zeitstempel in der ersten Spalte in den Datentyp `Date/
 
 Klicken Sie im Power Query-Editor auf das Menüband **Transformieren**. Öffnen Sie in der Gruppe **Beliebige Spalte** das Dropdownmenü **Datentyp:** , und wählen Sie **Text** aus.
 
-![Abbildung des Bildschirms „Navigator“ mit der Datenquelle in Power BI](../media/tutorials/data-type-drop-down.png)
+![Abbildung des Dropdownmenüs für den Datentyp](../media/tutorials/data-type-drop-down.png)
 
 Wenn Sie einen Hinweis zum Ändern des Spaltentyps erhalten, klicken Sie auf **Aktuelle ersetzen**. Klicken Sie anschließend auf dem Menüband **Start** auf **Schließen und übernehmen** oder **Übernehmen**.
 
@@ -66,7 +66,7 @@ Zum Formatieren und Senden der Datendatei an die Anomalieerkennungs-API können 
 
 Stellen Sie sicher, dass Ihre neue Abfrage ausgewählt ist, und klicken Sie dann auf **Erweiterter Editor**.
 
-![Abbildung der Schaltfläche „Erweiterter Editor“ in Power BI](../media/tutorials/advanced-editor-screen.png)
+![Abbildung des Bildschirms „Erweiterter Editor“](../media/tutorials/advanced-editor-screen.png)
 
 Verwenden Sie in „Erweiterter Editor“ den folgende Power Query M-Codeausschnitt, um die Spalten aus der Tabelle zu extrahieren und an die API zu senden. Anschließend erstellt die Abfrage aus der JSON-Antwort eine Tabelle und gibt diese zurück. Ersetzen Sie die Variable `apiKey` durch Ihren gültigen Anomalieerkennungs-API-Schlüssel und `endpoint` durch Ihren Endpunkt. Nachdem Sie die Abfrage in „Erweiterter Editor“ eingegeben haben, klicken Sie auf **Fertig**.
 
@@ -80,7 +80,7 @@ Verwenden Sie in „Erweiterter Editor“ den folgende Power Query M-Codeausschn
     jsonbody    = "{ ""Granularity"": ""daily"", ""Sensitivity"": 95, ""Series"": "& jsontext &" }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Content-Type" = "application/json", #"Ocp-Apim-Subscription-Key" = apikey],
-    bytesresp   = bytesresp  = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
+    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
@@ -114,7 +114,7 @@ Verwenden Sie in „Erweiterter Editor“ den folgende Power Query M-Codeausschn
 
 Rufen Sie die Abfrage auf dem Datenblatt durch Auswahl von `Sheet1` unter **Parameter eingeben** und Klicken auf **Aufrufen** auf.
 
-![Abbildung der Schaltfläche „Erweiterter Editor“](../media/tutorials/invoke-function-screenshot.png)
+![Abbildung der Aufruffunktion](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>Datenschutz und Authentifizierung für die Datenquelle
 
@@ -148,11 +148,11 @@ Fügen Sie die folgenden Felder aus der **aufgerufenen Funktion** dem Feld **Wer
 * LowerMargins
 * ExpectedValues
 
-![Abbildung des Bildschirms „Neues Quickmeasure“](../media/tutorials/chart-settings.png)
+![Abbildung der Diagrammeinstellungen](../media/tutorials/chart-settings.png)
 
 Klicken Sie nach dem Hinzufügen der Felder auf das Diagramm, und ändern Sie dessen Größe so, dass alle Datenpunkte angezeigt werden. Ihr Diagramm sieht etwa wie der folgende Screenshot aus:
 
-![Abbildung des Bildschirms „Neues Quickmeasure“](../media/tutorials/chart-visualization.png)
+![Abbildung der Diagrammvisualisierung](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>Anzeigen anomaler Datenpunkte
 
@@ -162,15 +162,15 @@ Klicken Sie rechts im Power BI-Fenster unter dem Bereich **FELDER** mit der rech
 
 Wählen Sie auf dem eingeblendeten Bildschirm als Berechnung **Gefilterter Wert** aus. Legen Sie **Basiswert** auf `Sum of Value` fest. Ziehen Sie dann `IsAnomaly` aus den Feldern von **Aufgerufene Funktion** auf **Filter**. Wählen Sie `True` im Dropdownmenü **Filter** aus.
 
-![Abbildung des Bildschirms „Neues Quickmeasure“](../media/tutorials/new-quick-measure-2.png)
+![Zweite Abbildung des neuen Bildschirms „Quickmeasures“](../media/tutorials/new-quick-measure-2.png)
 
 Nachdem Sie auf **OK** geklickt haben, sehen Sie unten in der Liste Ihrer Felder das Feld `Value for True`. Klicken Sie mit der rechten Maustaste darauf, und benennen Sie es in **Anomalie** um. Fügen Sie es dem Bereich **Werte** des Diagramms hinzu. Wählen Sie dann das Tool **Format** aus, und legen Sie den Typ der X-Achse auf **Kategorie** fest.
 
-![Abbildung des Bildschirms „Neues Quickmeasure“](../media/tutorials/format-x-axis.png)
+![Abbildung der Einstellungen für das Format der x-Achse](../media/tutorials/format-x-axis.png)
 
 Wenden Sie Farben auf Ihr Diagramm an, indem Sie auf das Tool **Format** und dann auf **Datenfarben** klicken. Ihr Diagramm sollte etwa wie folgt aussehen:
 
-![Abbildung des Bildschirms „Neues Quickmeasure“](../media/tutorials/final-chart.png)
+![Abbildung des endgültigen Diagramms](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

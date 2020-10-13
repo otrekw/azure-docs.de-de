@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537106"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741209"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BenSelect
 
@@ -89,15 +89,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die BenSelect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot der Benutzerattribute mit Standardattributen wie „givenname user.givenname“ und „emailaddress user.mail“.](common/edit-attribute.png)
 
 1. Klicken Sie auf das Symbol **Bearbeiten**, um den **Wert für Namensbezeichner** zu bearbeiten.
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![Screenshot des Bereichs „Benutzerattribute und Ansprüche“ mit hervorgehobenem Bearbeitungssymbol](media/benselect-tutorial/mail-prefix1.png)
 
 1. Führen Sie im Abschnitt **Benutzeransprüche verwalten** die folgenden Schritte aus:
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![Screenshot der Seite „Benutzeransprüche verwalten“ zum Eingeben der in diesem Schritt beschriebenen Werte](media/benselect-tutorial/mail-prefix2.png)
 
     a. Wählen Sie als **Quelle** die Option **Transformation** aus.
 

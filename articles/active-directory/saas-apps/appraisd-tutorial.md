@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547782"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714466"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Tutorial: Integrieren von Appraisd in Azure Active Directory
 
@@ -86,7 +86,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Appraisd erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die Appraisd-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Bereich „Benutzerattribute“ mit hervorgehobenem Bearbeitungssymbol](common/edit-attribute.png)
 
 1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Eintrag **Zertifikat (Base64)** . Klicken Sie auf **Herunterladen**, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -110,15 +110,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Klicken Sie oben rechts auf der Seite auf das Symbol **Settings** (Einstellungen), und navigieren Sie dann zu **Configuration** (Konfiguration).
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![Screenshot: Hervorgehobener Link für „Konfiguration“](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. Klicken Sie im linken Bereich des Menüs auf **SAM Single Sign-On** (Einmaliges Anmelden mit SAML).
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![Screenshot: Optionen für „Konfiguration“ mit hervorgehobener Option „Einmalige SAML-Anmeldung“](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. Führen Sie auf der **Konfigurationsseite für einmaliges Anmelden mit SAML 2.0** die folgenden Schritte aus:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![Screenshot: Seite „SAML 2.0 Single Sign-On configuration“ (Konfiguration des einmaligen Anmeldens mit SAML 2.0) zum Bearbeiten der Optionen „Default Relay State“ (Standardrelayzustand) und „Service-initiated login URL“ (Vom Dienst initiierte Anmelde-URL)](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. Kopieren Sie den Wert für den **Standardrelayzustand**, und fügen Sie ihn in das Textfeld **Relayzustand** im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ein.
 
@@ -126,7 +126,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 7. Scrollen Sie auf derselben Seite nach unten, und führen Sie unter **Benutzer werden identifiziert** die folgenden Schritte aus:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![Screenshot: Seite „Benutzer werden identifiziert“ zum Eingeben von Werten im Zusammenhang mit diesem Schritt](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. Fügen Sie in das Textfeld **URL für einmaliges Anmelden des Identitätsanbieters** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben, und klicken Sie auf **Speichern**.
 
@@ -174,15 +174,15 @@ Damit sich Azure AD-Benutzer bei Appraisd anmelden können, müssen sie in Appra
 
 2. Klicken Sie oben rechts auf der Seite auf das Symbol **Settings** (Einstellungen), und navigieren Sie dann zu **Administration Centre**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![Screenshot: Einstellungsoptionen zum Auswählen der Option „Administration centre“ (Verwaltungscenter)](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf **People** (Personen), und navigieren Sie dann zu **Add a new user** (Neuen Benutzer hinzufügen).
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![Screenshot: Seite „Appraisd“ mit hervorgehobenen Optionen „Personen“ und „Add a new user“ (Neuen Benutzer hinzufügen)](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. Führen Sie auf der Seite **Add a new user** (Neuen Benutzer hinzufügen) die folgenden Schritte aus:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![Screenshot: Seite „Add a new user“ (Neuen Benutzer hinzufügen)](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. Geben Sie im Textfeld **First name** (Vorname) den Vornamen des Benutzers ein, z. B. **Britta**.
 

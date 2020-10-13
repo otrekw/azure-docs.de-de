@@ -2,15 +2,15 @@
 title: Verwenden eines TLS-/SSL-Zertifikats im Code
 description: Erfahren Sie, wie Sie Clientzertifikate in Ihrem Code verwenden. Authentifizieren Sie sich bei Remoteressourcen mit einem Clientzertifikat, oder führen Sie Kryptografieaufgaben mit diesen aus.
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311817"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service
 
@@ -107,29 +107,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 Informationen zu Sprachen, die keine Unterstützung oder nur unzureichende Unterstützung für den Windows-Zertifikatspeicher bieten, finden Sie unter [Laden des Zertifikats aus einer Datei](#load-certificate-from-file).
 
-## <a name="load-certificate-in-linux-apps"></a>Laden eines Zertifikats in Linux-Apps
-
-Die App-Einstellungen `WEBSITE_LOAD_CERTIFICATES` machen die angegebenen Zertifikate für Ihre unter Linux gehosteten Apps (einschließlich benutzerdefinierter Container-Apps) als Dateien zugänglich. Die Dateien befinden sich in den folgenden Verzeichnissen:
-
-- Private Zertifikate: `/var/ssl/private` (Dateien vom Typ `.p12`)
-- Öffentliche Zertifikate: `/var/ssl/certs` (Dateien vom Typ `.der`)
-
-Die Zertifikatsdateinamen sind die Zertifikatfingerabdrücke. Der folgende C#-Code zeigt, wie ein öffentliches Zertifikat in eine Linux-App geladen wird.
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-Informationen zum Laden eines TLS-/SSL-Zertifikats aus einer Datei in Node.js, PHP, Python, Java oder Ruby finden Sie in der Dokumentation für die jeweilige Sprache oder Webplattform.
-
 ## <a name="load-certificate-from-file"></a>Laden des Zertifikats aus einer Datei
 
 Wenn Sie eine manuell hochgeladene Zertifikatsdatei laden müssen, sollte der Upload eher über [FTPS](deploy-ftp.md) statt beispielsweise über [Git](deploy-local-git.md) erfolgen. Halten Sie vertrauliche Daten wie beispielsweise ein privates Zertifikat aus der Quellcodeverwaltung heraus.
@@ -152,6 +129,39 @@ using System.Security.Cryptography.X509Certificates;
 
 ...
 var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Informationen zum Laden eines TLS-/SSL-Zertifikats aus einer Datei in Node.js, PHP, Python, Java oder Ruby finden Sie in der Dokumentation für die jeweilige Sprache oder Webplattform.
+
+## <a name="load-certificate-in-linuxwindows-containers"></a>Laden eines Zertifikats in Linux-/Windows-Containern
+
+Die App-Einstellung `WEBSITE_LOAD_CERTIFICATES` macht die angegebenen Zertifikate für Ihre Windows- oder Linux-Container-Apps (einschließlich integrierter Linux-Container) als Dateien zugänglich. Die Dateien befinden sich in den folgenden Verzeichnissen:
+
+| Containerplattform | Öffentliche Zertifikate | Private Zertifikate |
+| - | - | - |
+| Windows-Container | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Linux-Container | `/var/ssl/certs` | `/var/ssl/private` |
+
+Die Zertifikatsdateinamen sind die Zertifikatfingerabdrücke. 
+
+> [!NOTE]
+> Von App Service werden die Zertifikatpfade in Windows-Container als Umgebungsvariablen (`WEBSITE_PRIVATE_CERTS_PATH`, `WEBSITE_INTERMEDIATE_CERTS_PATH`, `WEBSITE_PUBLIC_CERTS_PATH` und `WEBSITE_ROOT_CERTS_PATH`) eingefügt. Für den Fall, dass sich die Zertifikatpfade später ändern, ist es besser, auf den Zertifikatpfad mit den Umgebungsvariablen zu verweisen, anstatt einen hartcodierten Zertifikatpfad zu verwenden.
+>
+
+Darüber hinaus laden [Windows Server Core-Container](configure-custom-container.md#supported-parent-images) die Zertifikate automatisch in den Zertifikatspeicher (in **LocalMachine\My**). Verwenden Sie zum Laden der Zertifikate das gleiche Muster wie beim [Laden eines Zertifikats in Windows-Apps](#load-certificate-in-windows-apps). Verwenden Sie für Windows Nano-basierte Container die oben angegebenen Dateipfade, um [das Zertifikat direkt aus der Datei zu laden](#load-certificate-from-file).
+
+Der folgende C#-Code zeigt, wie ein öffentliches Zertifikat in eine Linux-App geladen wird.
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate

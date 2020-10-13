@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547629"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Tutorial: Azure Active Directory-Integration mit Canvas
 
@@ -223,11 +223,11 @@ Damit sich Azure AD-Benutzer bei Canvas anmelden können, müssen sie in Canvas 
 
 3. Klicken Sie auf **Users**.
 
-   ![Benutzer](./media/canvas-lms-tutorial/ic775995.png "Benutzer")
+   ![Screenshot: Canvas-Menü mit der Option „Users“ (Benutzer) ausgewählt](./media/canvas-lms-tutorial/ic775995.png "Benutzer")
 
 4. Klicken Sie auf **Add New User**.
 
-   ![Benutzer](./media/canvas-lms-tutorial/ic775996.png "Benutzer")
+   ![Screenshot: Schaltfläche „Add a new user“ (Neuen Benutzer hinzufügen)](./media/canvas-lms-tutorial/ic775996.png "Benutzer")
 
 5. Führen Sie auf der Dialogseite "Add a New User" die folgenden Schritte aus:
 

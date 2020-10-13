@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501861"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739866"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box zum Importieren von Daten als verwaltete Datenträger in Azure
 
@@ -76,11 +76,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
     > [!NOTE]
     > Sie sind für alle Freigaben für verwaltete Datenträger identisch.
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Abrufen der Anmeldeinformationen für die Freigabe](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ die Werte für **Benutzername** und **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrer Ressource (*mydbmdrg1* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -102,7 +102,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
 4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>\<ShareName>` an. Klicken Sie auf **OK**, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     In jeder Freigabe sollten nun die folgenden vorab erstellten Ordner vorhanden sein.
     
@@ -115,7 +115,7 @@ Wenn Sie einen Linux-Hostcomputer verwenden, führen Sie die folgenden Schritte 
 
 1. Geben Sie die IP-Adressen der zulässigen Clients an, die auf die Freigabe zugreifen können. Wechseln Sie in der lokalen Webbenutzeroberfläche zur Seite **Verbindung herstellen und Daten kopieren**. Klicken Sie unter **NFS-Einstellungen** auf **NFS-Clientzugriff**.
 
-    ![Konfigurieren des NFS-Clientzugriffs 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![Konfigurieren des NFS-Clientzugriffs](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. Geben Sie die IP-Adresse des NFS-Clients an, und klicken Sie auf **Hinzufügen**. Sie können den Zugriff für mehrere NFS-Clients konfigurieren, indem Sie diesen Schritt wiederholen. Klicken Sie auf **OK**.
 

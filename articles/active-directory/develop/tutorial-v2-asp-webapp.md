@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574227"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627940"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Tutorial: Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
 Diese Anleitung veranschaulicht das Implementieren der Anmeldung bei Microsoft mithilfe einer ASP.NET MVC-Lösung mit einer herkömmlichen browserbasierten Anwendung und OpenID Connect.
 
@@ -69,7 +69,7 @@ In diesem Abschnitt werden das Installieren und Konfigurieren der Authentifizier
 
 ## <a name="add-authentication-components"></a>Hinzufügen von Authentifizierungskomponenten
 
-1. In Visual Studio: Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+1. In Visual Studio: Navigieren Sie zu **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 2. Fügen Sie *NuGet-Pakete für OWIN-Middleware* hinzu, indem Sie im Fenster „Paket-Manager-Konsole“ Folgendes eingeben:
 
     ```powershell
@@ -295,7 +295,7 @@ Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, 
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -313,7 +313,7 @@ Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, 
     ```
 
 ### <a name="more-information"></a>Weitere Informationen
-Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code sucht in der Liste der Ansprüche nach bestimmten Benutzerattributen, die im ID-Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt.
+Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code sucht in der Liste der Ansprüche nach bestimmten Benutzerattributen, die im ID-Token des Benutzers enthalten sind. Diese Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Erstellen einer Ansicht zum Anzeigen der Ansprüche des Benutzers
 
@@ -370,7 +370,7 @@ Führen Sie zur schnellen Registrierung Ihrer Anwendung die folgenden Schritte a
 Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 
 1. Öffnen Sie Visual Studio, und führen Sie die folgenden Schritte aus:
-   1. Wählen Sie im Projektmappen-Explorer das Projekt aus, und zeigen Sie das Fenster „Eigenschaften“ an. (Drücken Sie F4, wenn es nicht angezeigt wird.)
+   1. Wählen Sie im Projektmappen-Explorer das Projekt aus, und zeigen Sie das Eigenschaftenfenster an. (Drücken Sie F4, wenn es nicht angezeigt wird.)
    1. Ändern Sie „SSL aktiviert“ in `True`.
    1. Klicken Sie mit der rechten Maustaste in Visual Studio auf das Projekt, und wählen Sie **Eigenschaften** und dann die Registerkarte **Web** aus. Ändern Sie im Abschnitt **Server** die Einstellung **Projekt-URL** in die **SSL-URL**.
    1. Kopieren Sie die SSL-URL. Sie fügen diese URL im nächsten Schritt der Liste mit den Umleitungs-URLs im Registrierungsportal hinzu.<br/><br/>![Projekteigenschaften](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
@@ -427,10 +427,10 @@ Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit
 
 |Eigenschaft |Wert |Beschreibung |
 |---|---|---|
-|**Name** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
+|**Name** |Vollständiger Name des Benutzers | Dies ist der Vorname und der Nachname des Benutzers.
 |**Benutzername** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername|
 |**Subject** |Subject |Eine Zeichenfolge, die den Benutzer im Internet eindeutig identifiziert|
-|**Tenant ID** |Guid | Eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert|
+|**Tenant ID** |Guid | Dies ist eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert.|
 
 Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der in einem ID-Token enthaltenen Ansprüche](./id-tokens.md).
 

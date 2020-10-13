@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548352"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Amazon Web Services (AWS)
 
@@ -304,7 +304,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 18. Erstellen Sie eine neue Richtlinie für diesen Benutzer.
 
-    ![Screenshot: „Add user“ (Benutzer hinzufügen)](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Screenshot: Seite „Benutzer hinzufügen“, auf der Sie eine Richtlinie für den Benutzer erstellen können](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. Wählen Sie **Attach existing policies directly** (Vorhandene Richtlinien direkt anfügen) aus.
 
@@ -322,7 +322,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 20. Laden Sie die Anmeldeinformationen eines Benutzers herunter.
 
-    ![Screenshot: „Add user“ (Benutzer hinzufügen)](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Screenshot: Seite „Benutzer hinzufügen“ mit einer Schaltfläche zum Herunterladen einer CSV-Datei zum Abrufen von Benutzeranmeldeinformationen](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Kopieren Sie **Access key ID** (Zugriffsschlüssel-ID) und **Secret access key** (Geheimer Zugriffsschlüssel) des Benutzers.
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9cb5698f95aa220208fb02a35a52ff5363a173ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443365"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776441"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Erstellen eines Labs mit einer freigegebenen Ressource in Azure Lab Services
 
@@ -31,6 +31,20 @@ Bei der freigegebenen Ressource kann es sich um Software handeln, die auf einem 
 Im Diagramm ist außerdem eine Netzwerksicherheitsgruppe (NSG) zu sehen, die verwendet werden kann, um den Datenverkehr von den VMs der Kursteilnehmer einzuschränken.  Beispielsweise können Sie eine Sicherheitsregel schreiben, die festlegt, dass Datenverkehr von den IP-Adressen der Kursteilnehmer-VMs nur auf eine freigegebene Ressource und sonst nichts zugreifen kann.  Weitere Informationen zum Festlegen von Sicherheitsregeln finden Sie unter [Verwalten der Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md#work-with-security-rules). Wenn Sie den Zugriff auf eine freigegebene Ressource auf ein bestimmtes Lab einschränken möchten, rufen Sie die IP-Adresse für das Lab aus den [Lab-Einstellungen des Lab-Kontos](manage-labs.md#view-labs-in-a-lab-account) ab, und legen Sie eine Eingangsregel fest, die den Zugriff nur von dieser IP-Adresse zulässt.  Vergessen Sie nicht, für diese IP-Adresse die Ports 49152 bis 65535 zuzulassen.  Optional können Sie die private IP-Adresse der Kursteilnehmer-VMs mithilfe der [Seite „VM-Pool“](how-to-set-virtual-machine-passwords.md) ermitteln.
 
 Wenn es sich bei Ihrer freigegebenen Ressource um einen virtuellen Azure-Computer handelt, der erforderliche Software ausführt, müssen Sie möglicherweise die Firewall-Standardregeln für den virtuellen Computer ändern.
+
+### <a name="tips-for-shared-resources---license-server"></a>Tipps für freigegebene Ressourcen: Lizenzserver
+Eine der gängigeren gemeinsam genutzten Ressourcen ist ein Lizenzserver. Im Anschluss finden Sie ein paar Tipps zur erfolgreichen Einrichtung.
+#### <a name="server-region"></a>Serverregion
+Der Lizenzserver muss mit dem virtuellen Netzwerk verbunden sein, das mittels Peering mit dem Lab verbunden ist. Daher muss sich der Lizenzserver in der gleichen Region befinden wie das Labkonto.
+
+#### <a name="static-private-ip-and-mac-address"></a>Statische private IP-Adresse und MAC-Adresse
+Virtuelle Computer verfügen standardmäßig über eine dynamische private IP-Adresse. [Legen Sie die private IP-Adresse auf statisch fest, bevor Sie Software einrichten.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal) Dadurch werden die private IP-Adresse und die MAC-Adresse statisch.  
+
+#### <a name="control-access"></a>Steuern des Zugriffs
+Die Steuerung des Zugriffs auf den Lizenzserver ist entscheidend.  Nach der Einrichtung des virtuellen Computers ist weiterhin Zugriff erforderlich, um Wartungs-, Problembehandlungs- und Aktualisierungsaufgaben durchzuführen.  Im Anschluss finden Sie einige Möglichkeiten hierfür:
+- [Einrichten von JIT-Zugriff (Just-In-Time) in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
+- [Einrichten einer Netzwerksicherheitsgruppe, um den Zugriff einzuschränken](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [Einrichten von Bastion, um sicheren Zugriff auf den Lizenzserver zu ermöglichen](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Lab-Konto
 

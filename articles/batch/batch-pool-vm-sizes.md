@@ -2,14 +2,14 @@
 title: Auswählen von VM-Größen für Pools
 description: Wählen aus den verfügbaren VM-Größen für Computeknoten in Azure Batch-Pools
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271306"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -37,11 +37,11 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | Dv3, Dsv3 | Alle Größen |
 | Dav4<sup>1</sup> | Alle Größen |
 | Dasv4<sup>1</sup> | Alle Größen |
-| Ddv4, Ddsv4 |  Keine: Noch nicht verfügbar |
-| Ev3, Esv3 | Alle Größen, mit Ausnahme von E64is_v3 und E64i_v3 |
+| Ddv4, Ddsv4 |  Alle Größen |
+| Ev3, Esv3 | Alle Größen außer E64is_v3 |
 | Eav4<sup>1</sup> | Alle Größen |
 | Easv4<sup>1</sup> | Alle Größen |
-| Edv4, Edsv4 |  Keine: Noch nicht verfügbar |
+| Edv4, Edsv4 |  Alle Größen |
 | F, Fs | Alle Größen |
 | Fsv2 | Alle Größen |
 | G, Gs | Alle Größen |
@@ -52,7 +52,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | Ls | Alle Größen |
 | Lsv2<sup>1</sup> | Alle Größen |
 | M<sup>1</sup> | Alle Größen |
-| Mv2 | Keine: Noch nicht verfügbar |
+| Mv2<sup>1, 2</sup> | Alle Größen |
 | NC | Alle Größen |
 | NCv2<sup>1</sup> | Alle Größen |
 | NCv3<sup>1</sup> | Alle Größen |
@@ -60,10 +60,15 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | NDv2<sup>1</sup> | Keine: Noch nicht verfügbar |
 | SH | Alle Größen |
 | NVv3<sup>1</sup> | Alle Größen |
-| NVv4 | Keine |
+| NVv4 | Keine: Noch nicht verfügbar |
 | SAP HANA | Keine |
 
-<sup>1</sup> Diese VM-Größen können bei der Konfiguration des virtuellen Computers in Batch-Pools zugewiesen werden. Sie müssen aber ein neues Batch-Konto erstellen und eine bestimmte [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern. Diese Einschränkung wird aufgehoben, sobald das vCPU-Kontingent pro VM-Serie für Batch-Konten vollständig unterstützt wird.
+<sup>1</sup> Diese VM-Serien können bei der Konfiguration des virtuellen Computers in Batch-Pools zugewiesen werden. Sie müssen aber ein neues Batch-Konto erstellen und eine bestimmte [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern. Diese Einschränkung wird aufgehoben, sobald das vCPU-Kontingent pro VM-Serie für Batch-Konten vollständig unterstützt wird.
+
+<sup>2</sup> Diese VM-Serien können nur mit VM-Images der zweiten Generation verwendet werden.
+
+### <a name="using-generation-2-vm-images"></a>Verwenden von VM-Images der zweiten Generation
+Einige VM-Serien (etwa [Mv2](../virtual-machines/mv2-series.md)) können nur mit [VM-Images der zweiten Generation](../virtual-machines/generation-2.md) verwendet werden. VM-Images der zweiten Generation werden genau wie andere VM-Images unter Verwendung der Eigenschaft „sku“ der Konfiguration [imageReference](/rest/api/batchservice/pool/add#imagereference) angegeben. Die SKU-Zeichenfolgen besitzen ein Suffix wie „-g2“ oder „-gen2“. Eine Liste mit von Batch unterstützten VM-Images (einschließlich Images der zweiten Generation) können Sie über die [API zum Auflisten der unterstützten Images](/rest/api/batchservice/account/listsupportedimages), über [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure-Befehlszeilenschnittstelle](/cli/azure/batch/pool/supported-images) abrufen.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a9004577fa8d946281df88284139e2e507e485b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536426"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Deskradar
 
@@ -162,7 +162,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Führen Sie auf der Registerkarte **SAML 2.0** die folgenden Schritte aus:
 
-    ![Deskradar-Konfiguration](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![Screenshot: Registerkarte „SAML 2.0“ mit Pfeilen, die auf die Felder „SAML-SSO-URL“ und „Identifier Provider Issuer“ (Aussteller des Identitätsanbieters)](./media/deskradar-tutorial/14-paste-urls.jpg)
 
     a. Aktivieren Sie die Authentifizierungsmethode **SAML**.
 

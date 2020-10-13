@@ -3,15 +3,15 @@ title: Diagnostizieren von Problemen mit Windows Virtual Desktop – Azure
 description: Verwendung der Diagnosefunktion von Windows Virtual Desktop zum Diagnostizieren von Problemen.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279857"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Identifizieren und Diagnostizieren von Problemen mit Windows Virtual Desktop
 
@@ -24,10 +24,10 @@ Verbindungen, die Windows Virtual Desktop nicht erreichen, werden nicht in den D
 
 ## <a name="common-error-scenarios"></a>Allgemeine Fehlerszenarien
 
-Fehlerszenarien werden in die Bereiche „Dienstintern“ und „Außerhalb von Windows Virtual Desktop“ (extern) kategorisiert.
+In der Tabelle „WVDErrors“ werden Fehler für alle Aktivitätstypen nachverfolgt. Die Spalte „ServiceError“ enthält ein zusätzliches Flag („True“ oder „False“). Dieses Flag gibt Aufschluss darüber, ob der Fehler mit dem Dienst zusammenhängt.
 
-* Internes Problem: Betrifft Szenarien, die nicht vom Kunden gelöst werden können und als Supportfall behandelt werden müssen. Wenn Sie Feedback über die [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) bereitstellen, geben Sie die Korrelations-ID sowie den ungefähren Zeitrahmen an, in dem das Problem aufgetreten ist.
-* Externes Problem: Betrifft Szenarien, die vom Kunden gelöst werden können. Dies erfolgt außerhalb von Windows Virtual Desktop.
+* Lautet der Wert „True“, hat das Dienstteam dieses Problem möglicherweise bereits untersucht. Falls sich das Problem auf die Benutzerfreundlichkeit auswirkt und häufig auftritt, empfiehlt es sich, ein Supportticket für Windows Virtual Desktop zu erstellen.
+* Lautet der Wert „False“, handelt es sich möglicherweise um eine Fehlkonfiguration, die Sie selbst beheben können. Die Fehlermeldung kann Aufschluss über einen möglichen Ansatzpunkt geben.
 
 In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Administratoren ggf. auftreten können.
 
@@ -46,7 +46,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |Fehler beim Aufheben der Zuweisung des Benutzers zur Anwendungsgruppe|Die Veröffentlichung einer App-Gruppe für einen Benutzer konnte nicht aufgehoben werden. Überprüfen Sie, ob der Benutzer in Azure AD verfügbar ist. Überprüfen Sie, ob der Benutzer einer Benutzergruppe angehört, in der die App-Gruppe veröffentlicht wurde. |
 |Fehler beim Abrufen der verfügbaren Standorte |Überprüfen Sie den Standort der VM, der im Assistenten zum Erstellen von Hostpools verwendet wurde. Wenn das Image an diesem Standort nicht verfügbar ist, fügen Sie dort ein Image hinzu oder wählen einen anderen VM-Standort aus. |
 
-### <a name="external-connection-error-codes"></a>Externe Verbindung: Fehlercodes
+### <a name="connection-error-codes"></a>Verbindungsfehlercodes
 
 |Numerischer Code|Fehlercode|Vorgeschlagene Lösung|
 |---|---|---|

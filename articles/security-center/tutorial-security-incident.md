@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Reagieren auf Incidents – Azure Security Center'
-description: In diesem Tutorial erfahren Sie, wie Sie Sicherheitswarnungen selektieren, die Grundursache und den Bereich eines Vorfalls ermitteln und Sicherheitsdaten durchsuchen.
+title: 'Tutorial: Antworten auf Warnungen – Azure Security Center'
+description: In diesem Tutorial erfahren Sie, wie Sie Sicherheitswarnungen selektieren und die Grundursache und den Bereich eines Vorfalls ermitteln.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,105 +12,106 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336274"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614150"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsvorfälle
-Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Tutorial lernen Sie Folgendes:
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Tutorial: Selektieren, Untersuchen und Beantworten von Sicherheitswarnungen
+Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Sie können auch Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Informationsquellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. 
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Selektieren von Sicherheitswarnungen
-> * Durchführen von weiteren Untersuchungen, um die Grundursache und den Umfang eines Sicherheitsincidents zu ermitteln
-> * Durchsuchen von Sicherheitsdaten zur Unterstützung der Untersuchung
+> * Untersuchen einer Sicherheitswarnung zum Ermitteln der Grundursache
+> * Reagieren auf eine Sicherheitswarnung und Beseitigen der Grundursache
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durchlaufen der in diesem Tutorial behandelten Features muss Azure Defender aktiviert sein. Sie können Azure Defender kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). In der Schnellstartanleitung [Erste Schritte mit Security Center](security-center-get-started.md) werden die erforderlichen Schritte für das Upgrade erläutert.
 
-## <a name="scenario"></a>Szenario
-Contoso hat vor Kurzem einige lokale Ressourcen zu Azure migriert. Darunter sind auch einige VM-basierte Branchenworkloads und SQL-Datenbanken. Das Core Computer Security Incident Response Team (CSIRT) von Contoso hat ein Problem mit der Untersuchung von Sicherheitsvorfällen, da Security Intelligence-Funktionen nicht in die aktuellen Tools für die Reaktion auf Vorfälle integriert sind. Diese unzureichende Integration führt zu einem Problem während der Erkennungsphase (zu viele falsch positive Ergebnisse) und auch während der Bewertungs- und Diagnosephase. Im Rahmen der Migration wurde die Entscheidung getroffen, Security Center zu verwenden, um dieses Problem zu beheben.
-
-Die erste Phase dieser Migration endete nach der Einbindung aller Ressourcen und der Umsetzung aller Sicherheitsempfehlungen aus Security Center. Contoso CSIRT ist der zentrale Anlaufpunkt für Vorfälle, die sich auf die Computersicherheit beziehen. Das Team besteht aus einer Gruppe von Personen, die für die Bearbeitung aller Sicherheitsvorfälle zuständig sind. Die Teammitglieder haben klar definierte Pflichten, damit sichergestellt ist, dass kein Verantwortungsbereich offen bleibt.
-
-In diesem Szenario konzentrieren wir uns auf die Rollen der folgenden „Personae“, die Teil des Contoso CSIRT sind:
-
-![Lebenszyklus der Reaktion auf Vorfälle](./media/tutorial-security-incident/security-center-incident-response.png)
-
-Judy arbeitet im Security Operations-Bereich. Zu ihren Aufgaben zählen:
-
-* Überwachen von und Reagieren auf Sicherheitsbedrohungen rund um die Uhr
-* Eskalieren an den Besitzer der Cloudworkload oder den Sicherheitsanalysten (falls erforderlich)
-
-Sam ist Security Analyst und für folgende Aufgaben verantwortlich:
-
-* Untersuchen von Angriffen
-* Lösen von Warnungen
-* Zusammenarbeiten mit Besitzern von Workloads zur Ermittlung und Anwendung von Lösungen
-
-Sie sehen, dass Judy und Sam für unterschiedliche Aufgaben verantwortlich sind und zusammenarbeiten müssen, um Informationen aus Security Center auszutauschen.
 
 ## <a name="triage-security-alerts"></a>Selektieren von Sicherheitswarnungen
-Mit Security Center erhalten Sie einen einheitlichen Überblick über alle Sicherheitswarnungen. Sicherheitswarnungen werden basierend auf dem Schweregrad und bei einer möglichen Kombination von verwandten Warnungen in einem Sicherheitsincident eingestuft. Beachten Sie beim Selektieren von Warnungen und Incidents Folgendes:
+Mit Security Center erhalten Sie einen einheitlichen Überblick über alle Sicherheitswarnungen. Sicherheitswarnungen werden nach Schweregrad der erkannten Aktivität angeordnet. 
 
-- Schließen Sie Warnungen, für die keine zusätzliche Aktion erforderlich ist, z.B. bei einer falsch positiven Warnung.
-- Treffen Sie Vorkehrungen zur Begegnung von bekannten Angriffen, z.B. Blockierung von Netzwerkdatenverkehr von einer schädlichen IP-Adresse.
-- Ermitteln Sie Warnungen, die näher untersucht werden müssen.
+Beurteilen Sie die Warnungen auf der Seite **Sicherheitswarnungen**:
+
+:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Seite mit der Liste der Sicherheitswarnungen" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+
+Überprüfen Sie auf dieser Seite die aktiven Sicherheitswarnungen in Ihrer Umgebung, um die Warnungen auszuwählen, die Sie zuerst untersuchen möchten.
+
+Wenn Sie Sicherheitswarnungen selektieren, priorisieren Sie Warnungen nach ihrem Schweregrad, indem Sie sich den Warnungen mit höherem Schweregrad zuerst widmen. Weitere Informationen zum Schweregrad von Warnungen finden Sie unter [Wie werden Warnungen klassifiziert?](security-center-alerts-overview.md#how-are-alerts-classified).
+
+> [!TIP]
+> Sie können Azure Security Center mit verbreiteten SIEM-Lösungen wie Azure Sentinel verbinden und die Warnungen über ein Tool Ihrer Wahl nutzen. Weitere Informationen finden Sie unter [Exportieren von Warnungen in ein SIEM-System](continuous-export.md).
 
 
-1. Wählen Sie im Hauptmenü von Security Center unter **ERKENNUNG** die Option **Sicherheitswarnungen**:
+## <a name="investigate-a-security-alert"></a>Untersuchen einer Sicherheitswarnung
 
-   ![Sicherheitswarnungen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
+Gehen Sie wie folgt vor, sobald Sie entschieden haben, welche Warnung Sie zuerst untersuchen möchten:
 
-2. Wählen Sie in der Liste mit den Warnungen einen Sicherheitsincident (eine Sammlung von Warnungen) aus, um weitere Informationen zu diesem Incident zu erhalten. **Security incident detected** (Sicherheitsincident erkannt) wird geöffnet.
+1. Wählen Sie die gewünschte Warnung aus.
+1. Wählen Sie auf der Seite mit der Übersicht über die Warnungen die Ressource aus, die zuerst untersucht werden soll.
+1. Beginnen Sie mit der Untersuchung im linken Bereich, in dem allgemeine Informationen zur Sicherheitswarnung angezeigt werden.
 
-   ![Sicherheitsvorfall erkannt](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Seite mit der Liste der Sicherheitswarnungen":::
 
-3. Auf diesem Bildschirm ist oben die Beschreibung des Sicherheitsincidents und die Liste mit den Warnungen angegeben, die Teil des Incidents sind. Klicken Sie auf die Warnung, die Sie näher untersuchen möchten, um weitere Informationen zu erhalten.
+    In diesem Bereich wird Folgendes angezeigt:
+    - Schweregrad, Status und Aktivitätszeit der Warnung
+    - Beschreibung, die die genaue erkannte Aktivität erläutert
+    - Betroffene Ressourcen
+    - Kill Chain-Absicht der Aktivität auf der MITRE ATT&CK-Matrix
 
-   ![Warnungsdetails des Incidents](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+1. Ausführlichere Informationen zur Untersuchung der verdächtigen Aktivität finden Sie auf der Registerkarte **Warnungsdetails**.
 
-   Die Art der Warnung kann variieren. Weitere Informationen zur Art der Warnung und zu potenziellen Lösungsschritten finden Sie unter [Verstehen der Sicherheitswarnungen in Azure Security Center](security-center-alerts-type.md). Für Warnungen, die ohne Probleme geschlossen werden können, können Sie mit der rechten Maustaste auf die Warnung klicken und die Option **Schließen** wählen:
+1. Die Informationen auf dieser Seite reichen möglicherweise für eine Reaktion aus. Wenn Sie weitere Informationen benötigen:
 
-   ![Warnung](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+    - Wenden Sie sich an den Ressourcenbesitzer, um zu überprüfen, ob die erkannte Aktivität ein False Positive ist.
+    - Untersuchen der von der angegriffenen Ressource generierten unformatierten Protokolle
 
-4. Wenn die Grundursache und der Umfang der schädlichen Aktivität unbekannt sind, können Sie mit dem nächsten Schritt fortfahren, um dies weiter zu untersuchen.
+## <a name="respond-to-a-security-alert"></a>Reagieren auf eine Sicherheitswarnung
+Nachdem Sie eine Warnung untersucht und ihr Ausmaß ermittelt haben, können Sie in Azure Security Center auf Sicherheitswarnungen reagieren:
 
-## <a name="investigate-an-alert-or-incident"></a>Untersuchen einer Warnung oder eines Incidents
-1. Klicken Sie auf der Seite **Sicherheitswarnung** auf die Schaltfläche **Untersuchung starten**. (Falls Sie den Vorgang bereits gestartet haben, ändert sich der Name in **Untersuchung fortsetzen**.)
+1.  Öffnen Sie die Registerkarte **Aktion ausführen**, um die empfohlenen Reaktionen anzuzeigen.
 
-   ![Untersuchung](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Seite mit der Liste der Sicherheitswarnungen" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
-   Der Bereich für die Untersuchung ist eine grafische Darstellung der Entitäten (in Form einer Übersichtskarte), die mit dieser Sicherheitswarnung bzw. dem Sicherheitsincident verbunden sind. Wenn Sie in diesem Bereich auf eine Entität klicken, werden in den Informationen zur Entität die neuen Entitäten angezeigt, und der Bereich wird erweitert. Für die Entität, die im Bereich ausgewählt ist, werden die Eigenschaften rechts auf der Seite hervorgehoben. Die Informationen, die auf den einzelnen Registerkarten verfügbar sind, variieren je nach der ausgewählten Entität. Überprüfen Sie während des Untersuchungsvorgangs alle relevanten Informationen, um die Bewegungen des Angreifers besser zu verstehen.
+1.  Im Abschnitt **Auswirkungen der Bedrohung minimieren**, finden Sie die manuellen Schritte zur Behebung des Problems.
+1.  Um Ihre Ressourcen zu sichern und zukünftige Angriffe dieser Art zu verhindern, setzen Sie die Sicherheitsempfehlungen im Abschnitt **Künftige Angriffe verhindern** um.
+1.  Um eine Logik-App mit automatisierten Reaktionsschriften zu starten, verwenden Sie den Abschnitt **Automatisierte Antwort auslösen**.
+1.  Wenn die erkannte Aktivität *nicht* bösartig ist, können Sie künftige Warnungen dieser Art im Abschnitt **Ähnliche Warnungen unterdrücken** unterdrücken.
 
-2. Fahren Sie mit dem nächsten Schritt fort, wenn Sie mehr Beweise benötigen oder Entitäten, die während der Untersuchung gefunden wurden, näher untersuchen möchten.
+1.  Wenn Sie die Untersuchung der Warnung abgeschlossen und entsprechend reagiert haben, ändern Sie den Status in **Verworfen**.
 
-## <a name="search-data-for-investigation"></a>Durchsuchen von Daten zu Untersuchungszwecken
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Seite mit der Liste der Sicherheitswarnungen":::
 
-Sie können Suchfunktionen in Security Center verwenden, um weitere Beweise für kompromittierte Systeme und mehr Details zu den Entitäten zu finden, die Teil der Untersuchung sind.
+    Dadurch wird die Warnung aus der Hauptwarnungsliste entfernt. Mit dem Filter auf der Seite mit der Liste der Warnungen können Sie alle Warnungen mit dem Status **Verworfen** anzeigen.
 
-Öffnen Sie zum Durchführen einer Suche das Dashboard **Security Center**, klicken Sie im linken Navigationsbereich auf **Suchen**, wählen Sie den Arbeitsbereich aus, der die zu durchsuchenden Entitäten enthält, geben Sie die Suchabfrage ein, und klicken Sie auf die Suchschaltfläche.
+1.  Geben Sie optional Microsoft Feedback zu einer Warnung:
+    1. Markieren Sie die Warnung als **Hilfreich** oder **Nicht hilfreich**, und machen Sie entsprechende Angaben.
+    1. Wählen Sie einen Grund aus und fügen Sie einen Kommentar hinzu.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Seite mit der Liste der Sicherheitswarnungen":::
 
-Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Falls Sie weitere Schnellstartanleitungen und Tutorials durchgehen möchten, lassen Sie die automatische Bereitstellung sowie Azure Defender aktiviert. Falls Sie keine weiteren Schritte ausführen oder Azure Defender deaktivieren möchten, gehen Sie wie folgt vor:
+    > [!TIP]
+    > Wir berücksichtigen Ihr Feedback, um unsere Algorithmen zu verbessern und bessere Sicherheitswarnungen bereitzustellen.
+
+## <a name="end-the-tutorial"></a>Abschließen des Tutorials
+
+Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Falls Sie weitere Schnellstartanleitungen und Tutorials durchgehen möchten, lassen Sie die automatische Bereitstellung sowie Azure Defender aktiviert. 
+
+Wenn Sie nicht mit den anderen Tutorials fortfahren möchten oder wenn Sie eines dieser Features deaktivieren möchten:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie **Preise und Einstellungen** aus.
-1. Wählen Sie das Abonnement aus, das Sie herabstufen möchten.
-1. Legen Sie **Azure Defender** auf „Aus“ fest.
-1. Wählen Sie **Speichern** aus.
-
-Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
-
-1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
-2. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
-3. Wählen Sie im Bereich **Sicherheitsrichtlinie – Datensammlung** unter **Onboarding** die Option **Aus**, um die automatische Bereitstellung zu deaktivieren.
+1. Wählen Sie das relevante Abonnement aus.
+1. Wählen Sie zum Herabstufen **Azure Defender aus** aus.
+1. Um die automatische Bereitstellung zu deaktivieren, öffnen Sie die Seite **Datensammlung**, und legen Sie **Automatische Bereitstellung** auf **Aus** fest.
 4. Wählen Sie **Speichern** aus.
 
 >[!NOTE]
@@ -118,9 +119,8 @@ Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie Informationen zu Security Center-Features erhalten, die zum Reagieren auf einen Sicherheitsincident verwendet werden, z.B.:
+In diesem Tutorial haben Sie Informationen zu Security Center-Features erhalten, die zum Reagieren auf eine Sicherheitswarnung verwendet werden: Verwandte Informationen finden Sie hier:
 
-> [!div class="checklist"]
-> * Sicherheitsincident, bei dem es sich um eine Aggregation von verwandten Warnungen für eine Ressource handelt
-> * Bereich für die Untersuchung, bei dem es sich um eine grafische Darstellung der Entitäten handelt, die mit einer Sicherheitswarnung bzw. einem Sicherheitsincident verbunden sind
-> * Suchfunktionen zur Ermittlung von weiteren Beweisen für kompromittierte Systeme
+- [Reagieren auf Warnungen zu Azure Defender für Key Vault](defender-for-key-vault-usage.md)
+- [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md)
+- [Einführung in Azure Defender](azure-defender.md)

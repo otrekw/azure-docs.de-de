@@ -8,37 +8,36 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300104"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812317"
 ---
-# <a name="prerequisites"></a>Voraussetzungen
-
-Um alle Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff auf eine Ressourcengruppe, für die Ihnen die Rolle **Besitzer** zugewiesen wurde. Erstellen Sie den Synapse-Arbeitsbereich in dieser Ressourcengruppe.
-
-## <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
+# <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
 In diesem Tutorial erfahren Sie, wie Sie einen Synapse-Arbeitsbereich, einen SQL-Pool und einen Apache Spark-Pool erstellen. 
 
-## <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um alle Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff auf eine Ressourcengruppe, für die Ihnen die Rolle **Besitzer** zugewiesen wurde. Erstellen Sie den Synapse-Arbeitsbereich in dieser Ressourcengruppe.
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Erstellen eines Synapse-Arbeitsbereichs im Azure-Portal
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
 1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
 1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
-1. Wählen Sie unter **Grundlagen** einen Namen für den Arbeitsbereich aus. In diesem Tutorial wird **myworkspace** verwendet.
+1. Geben Sie unter **Grundlagen** die erforderlichen Felder ein, und wählen Sie einen Arbeitsbereichsnamen aus. In diesem Tutorial wird **myworkspace** verwendet.
 1. Zum Erstellen eines Arbeitsbereichs benötigen Sie ein ADLSGEN2-Konto. Am einfachsten ist es, ein solches Konto neu zu erstellen. Wenn Sie ein vorhandenes Konto verwenden möchten, müssen Sie einige zusätzliche Konfigurationsschritte ausführen. 
 1. OPTION 1: Erstellen eines neuen ADLSGEN2-Kontos 
     1. Navigieren Sie zu **Data Lake Storage Gen 2 auswählen**. 
     1. Klicken Sie auf **Neu erstellen**, und geben Sie den Namen **contosolake** ein.
-    1. Klicken Sie auf **Dateisystem**, und geben Sie den Namen **users** ein.
+    1. Klicken Sie auf **Dateisystem**, und nennen Sie es **Benutzer**. Dadurch wird ein Container namens **Benutzer** erstellt.
 1. OPTION 2: Verwenden eines vorhandenen ADLSGEN2-Kontos Anweisungen finden Sie unter **Vorbereiten eines ADLSGEN2-Speicherkontos** am Ende dieses Dokuments.
 1. Ihr Azure Synapse-Arbeitsbereich verwendet dieses Speicherkonto als „primäres“ Speicherkonto und den Container zum Speichern von Arbeitsbereichsdaten. Im Arbeitsbereich werden Daten in Apache Spark-Tabellen gespeichert. Die Spark-Anwendungsprotokolle werden im Ordner **/synapse/workspacename** gespeichert.
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
-
 
 ## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio
 
@@ -117,8 +116,8 @@ Konfigurieren Sie den Zugriff auf das Speicherkonto über den Arbeitsbereich. Ve
 1. Weisen Sie die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind. Wir verwenden für die Identität und den Namen des Arbeitsbereichs den gleichen Namen.
     * Weisen Sie für die Rolle **Mitwirkender an Storage-Blobdaten** des Speicherkontos **myworkspace** als Identität des Arbeitsbereichs zu.
     * Weisen Sie **myworkspace** als Namen für den Arbeitsbereich zu.
-
 1. Wählen Sie **Speichern** aus.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

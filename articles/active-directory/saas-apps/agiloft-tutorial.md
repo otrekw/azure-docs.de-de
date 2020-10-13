@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542954"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760721"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Tutorial: Azure Active Directory-Integration mit Agiloft
 
@@ -100,7 +100,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Agiloft 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Agiloft](common/idp-intiated.png)
+    ![Screenshot, in dem die Textfelder „Bezeichner“ und „Antwort-URL“ hervorgehoben sind](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
@@ -150,11 +150,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Agiloft 
 
 2. Klicken Sie (im linken Bereich) auf **Setup**, und wählen Sie anschließend **Access** (Zugriff) aus.
 
-    ![Agiloft-Konfiguration](./media/agiloft-tutorial/setup1.png)
+    ![Screenshot, in dem der Abschnitt „Access“ hervorgehoben ist](./media/agiloft-tutorial/setup1.png)
 
 3. Klicken Sie auf die Schaltfläche **Configure SAML 2.0 Single Sign-On** (SAML 2.0-SSO konfigurieren).
 
-    ![Agiloft-Konfiguration](./media/agiloft-tutorial/setup2.png)
+    ![Screenshot, in dem die Schaltfläche „Configure SAML 2.0 Single Sign-On“ (SAML 2.0-SSO konfigurieren) hervorgehoben ist](./media/agiloft-tutorial/setup2.png)
 
 4. Ein Dialogfeld für einen Assistenten wird angezeigt. Klicken Sie im Dialogfeld auf **Identity Provider Details** (Details des Identitätsanbieters), und füllen Sie die folgenden Felder aus:  
 

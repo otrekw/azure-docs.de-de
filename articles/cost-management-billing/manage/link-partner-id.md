@@ -4,16 +4,16 @@ description: Verfolgen Sie Bindungen mit Azure-Kunden nach, indem Sie eine Partn
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371829"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772718"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -43,7 +43,7 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 
 2. Melden Sie sich beim Azure-Portal an.
 
-3. Geben Sie die Microsoft-Partner-ID ein. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation.
+3. Geben Sie die Microsoft-Partner-ID ein. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation. Verwenden Sie die in Ihrem Partnerprofil angezeigte **zugeordnete MPN-ID**.
 
    ![Screenshot von „Mit einer Partner-ID verknüpfen“](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Verknüpfen Sie die neue Partner-ID. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation.
+3. Verknüpfen Sie die neue Partner-ID. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation. Verwenden Sie die in Ihrem Partnerprofil angezeigte **zugeordnete MPN-ID**.
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ Die Verknüpfung wird auf Benutzerkontoebene zugeordnet. Nur Sie können die Ver
 
 **Welche MPN-ID muss ich verwenden, wenn mein Unternehmen über mehrere MPN-IDs verfügt?**
 
-Standortbezogene Partnerkonten und die zugehörigen MPN-IDs sollten zum Verknüpfen der Partner-ID verwendet werden.  Unter [Partnerkonten](https://docs.microsoft.com/partner-center/account-structure) finden Sie weitere Informationen hierzu.
+Verwenden Sie die in Ihrem Partnerprofil angezeigte **zugeordnete MPN-ID**.
 
 **Wo finde ich die beeinflusste Umsatzberichterstattung für die verknüpfte Partner-ID?**
 

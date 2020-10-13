@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555736"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775140"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Tutorial: Integrieren von Dropbox Business in Azure Active Directory
 
@@ -145,27 +145,27 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 3. Wenn Sie Dropbox Business manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, navigieren Sie zu Ihrem Dropbox Business-Mandanten, und melden Sie sich bei diesem Mandanten an. Führen Sie die folgenden Schritte aus:
 
-    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/ic769509.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot der Anmeldeseite für Dropbox Business](./media/dropboxforbusiness-tutorial/ic769509.png "Einmaliges Anmelden konfigurieren")
 
 4. Klicken Sie auf das **Benutzersymbol**, und wählen Sie die Registerkarte **Einstellungen** aus.
 
-    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure1.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot, auf dem die Aktion „Benutzersymbol“ und „Einstellungen“ ausgewählt sind](./media/dropboxforbusiness-tutorial/configure1.png "Einmaliges Anmelden konfigurieren")
 
 5. Klicken Sie im Navigationsbereich auf der linken Seite auf **Verwaltungskonsole**.
 
-    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure2.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot, auf dem „Verwaltungskonsole“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure2.png "Einmaliges Anmelden konfigurieren")
 
 6. Klicken Sie in der **Verwaltungskonsole** im linken Navigationsbereich auf **Einstellungen**.
 
-    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure3.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot, auf dem „Einstellungen“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure3.png "Einmaliges Anmelden konfigurieren")
 
 7. Wählen Sie im Abschnitt **Authentifizierung** die Option **Einmaliges Anmelden** aus.
 
-    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure4.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot des Abschnitts „Authentifizierung“, in dem „Einmaliges Anmelden“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure4.png "Einmaliges Anmelden konfigurieren")
 
 8. Führen Sie im Abschnitt **Einmaliges Anmelden** die folgenden Schritte aus:  
 
-    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure5.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot mit den Konfigurationseinstellungen für einmaliges Anmelden](./media/dropboxforbusiness-tutorial/configure5.png "Einmaliges Anmelden konfigurieren")
 
     a. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** die Option **Erforderlich** aus.
 

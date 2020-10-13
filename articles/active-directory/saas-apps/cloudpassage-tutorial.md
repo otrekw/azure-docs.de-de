@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551658"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758328"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit CloudPassage
 
@@ -85,7 +85,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://portal.cloudpassage.com/saml/consume/accountid`. Sie können Ihren Wert für dieses Attribut abrufen, indem Sie auf die **Dokumentation der SSO-Einrichtung** im Abschnitt mit den **Einstellungen für einmaliges Anmelden** Ihres CloudPassage-Portals klicken.
 
-    ![Einmaliges Anmelden konfigurieren](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Screenshot: CloudPassage-Portal mit hervorgehobenem Link zur Dokumentation für die SSO-Einrichtung](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und Antwort-URL. Wenden Sie sich an das [Clientsupportteam von CloudPassage](https://www.cloudpassage.com/company/contact/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -146,15 +146,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im Menü am oberen Rand auf **Einstellungen** und dann auf **Websiteverwaltung**. 
    
-    ![Einmaliges Anmelden konfigurieren][12]
+    ![Screenshot: CloudPassage-Website mit ausgewählter Option „Websiteverwaltung“][12]
 
 1. Klicken Sie auf die Registerkarte **Authentifizierungseinstellungen** . 
    
-    ![Einmaliges Anmelden konfigurieren][13]
+    ![Screenshot: CloudPassage-Website mit ausgewählter Registerkarte „Authentifizierungseinstellungen“][13]
 
 1. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus: 
    
-    ![Einmaliges Anmelden konfigurieren][14]
+    ![Screenshot: Abschnitt „Einstellungen für einmaliges Anmelden“ zum Eingeben der Informationen in diesem Schritt][14]
 
     a. Aktivieren Sie das Kontrollkästchen **Einmaliges Anmelden aktivieren (SSO) (SSO-Setup-Dokumentation)** .
     
@@ -178,15 +178,15 @@ In diesem Abschnitt wird in CloudPassage ein Benutzer namens B. Simon erstellt.
 
 1. Klicken Sie auf der Symbolleiste am oberen Rand auf **Einstellungen** und dann auf **Websiteverwaltung**. 
    
-    ![Erstellen eines CloudPassage-Testbenutzers][22] 
+    ![Screenshot: CloudPassage mit ausgewählter Option „Websiteverwaltung“][22] 
 
 1. Klicken Sie auf die Registerkarte **Benutzer** und anschließend auf **Neuen Benutzer hinzufügen**. 
    
-    ![Erstellen eines CloudPassage-Testbenutzers][23]
+    ![Screenshot: CloudPassage-Websiteverwaltung mit ausgewählter Registerkarte „Benutzer“ und der Option zum Hinzufügen eines neuen Benutzers][23]
 
 1. Führen Sie im Abschnitt **Neuen Benutzer hinzufügen** die folgenden Schritte aus: 
    
-    ![Erstellen eines CloudPassage-Testbenutzers][24]
+    ![Screenshot: Abschnitt „Neuen Benutzer hinzufügen“ zum Eingeben von Benutzerinformationen][24]
     
     a. Geben Sie in das Textfeld **Vorname** den Namen Britta ein. 
   

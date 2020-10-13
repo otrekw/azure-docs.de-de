@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569653"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821884"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung mithilfe von Azure Virtual WAN
 
@@ -105,7 +105,7 @@ In diesem Abschnitt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und e
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Verbinden Ihrer Leitung mit dem Hubgateway
 
-Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. Premium- oder Standard-ExpressRoute-Leitungen, die sich an Standorten mit ExpressRoute Global Reach-Unterstützung, können eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen und von allen Virtual WAN-Transitfunktionen (VPN-zu-VPN-, VPN- und ExpressRoute-Transit) profitieren. Premium- oder Standard-ExpressRoute-Leitungen an Standorten ohne Global Reach-Unterstützung können zwar eine Verbindung mit Azure-Ressourcen herstellen, aber keine Virtual WAN-Transitfunktionen nutzen.
+Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. Premium- oder Standard-ExpressRoute-Leitungen, die sich an Standorten mit ExpressRoute Global Reach-Unterstützung befinden, können eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen und von allen Virtual WAN-Transitfunktionen (VPN-zu-VPN-, VPN- und ExpressRoute-Übertragung) profitieren. Premium- oder Standard-ExpressRoute-Leitungen an Standorten ohne Global Reach-Unterstützung können zwar eine Verbindung mit Azure-Ressourcen herstellen, aber keine Virtual WAN-Übertragungsfunktionen nutzen. ExpressRoute Local wird mit Azure Virtual WAN nicht unterstützt.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Verbinden der Leitung mit dem Hubgateway
 
@@ -114,7 +114,7 @@ Wechseln Sie im Portal zur Seite **Virtueller Hub -> Konnektivität -> ExpressRo
 1. Wählen Sie die Leitung aus.
 2. Wählen Sie **Leitung(en) verbinden** aus.
 
-   ![Leitungen verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "Leitungen verbinden")
+   ![Leitung(en) verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "Leitungen verbinden")
 
 ### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>Herstellen einer Verbindung durch Einlösen eines Autorisierungsschlüssels
 
@@ -125,7 +125,7 @@ Verwenden Sie den Autorisierungsschlüssel und den Leitungs-URI, die Ihnen zur V
    ![Screenshot: ExpressRoute für einen virtuellen Hub mit ausgewählter Option „Autorisierungsschlüssel einlösen“](./media/virtual-wan-expressroute-portal/redeem.png "einlösen")
 2. Füllen Sie auf der Seite „Autorisierungsschlüssel einlösen“ die Werte aus.
 
-   ![Schlüsselwerte einlösen](./media/virtual-wan-expressroute-portal/redeemkey2.png "Schlüsselwerte einlösen")
+   ![Einlösen von Schlüsselwerten](./media/virtual-wan-expressroute-portal/redeemkey2.png "Schlüsselwerte einlösen")
 3. Klicken Sie auf **Hinzufügen**, um den Schlüssel hinzuzufügen.
 4. Zeigen Sie die Leitung an. Bei einer eingelösten Leitung wird nur der Name (ohne Typ, Anbieter und andere Informationen) angezeigt, da sie sich in einem anderen Abonnement als dem des Benutzers befindet.
 

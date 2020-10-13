@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360547"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Wenn Sie proaktiv sicherstellen, dass Sie Zugriff auf GRUB und SysRq haben, kann Ihnen das viele Ausfallzeiten ersparen
 
@@ -210,11 +210,11 @@ Unterbrechen Sie den Startvorgangs, und greifen Sie auf das GRUB-Menü zu
 
 Wählen Sie „Erweiterte Optionen für Ubuntu“ aus, und drücken Sie die EINGABETASTE.
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![Screenshot: Serielle Konsole mit ausgewählten erweiterten Optionen für Ubuntu](./media/virtual-machines-serial-console/ubunturec1.png)
 
 Wählen Sie die Zeile aus, die *(Wiederherstellungsmodus)* enthält. Drücken Sie nicht EINGABE, sondern E.
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![Screenshot: Serielle Konsole mit ausgewählter Wiederherstellungsmodusversion](./media/virtual-machines-serial-console/ubunturec2.png)
 
 Suchen Sie die Zeile, die den Kernel lädt, und ersetzen Sie den letzten Parameter **nomodeset** durch das Ziel **console=ttyS0**
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![Screenshot: Serielle Konsole mit dem geänderten Wert](./media/virtual-machines-serial-console/ubunturec3.png)
 
 Drücken Sie **STRG-x**, um den Kernel zu starten und zu laden.
 Wenn alles funktioniert, werden diese zusätzlichen Optionen angezeigt, mit denen Sie weitere Wiederherstellungsoptionen ausführen können.
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![Screenshot: Serielle Konsole im Wiederherstellungsmenü mit zusätzlichen Wiederherstellungsoptionen](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB-Konfiguration
@@ -337,11 +337,11 @@ terminal --timeout=5 serial console
 
 Die letzte Zeile – *terminal –-timeout=5 serial console* verlängert den Timeoutwert von **GRUB** durch Hinzufügen einer 5 Sekunden langen Aufforderung **Press any key to continue** (Zum Fortfahren beliebige Taste drücken).
 
-![rh6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![Screenshot: Eine Konsole mit Ausgabe](./media/virtual-machines-serial-console/rh6-1.png)
 
 Das GRUB-Menü sollte am Bildschirm für den konfigurierten Timeout von 15 s angezeigt werden, ohne dass ein Druck auf ESC erforderlich ist. Achten Sie darauf, im Browser auf die Konsole zu klicken, um das Menü zu aktivieren und den erforderlichen Kernel auszuwählen.
 
-![rh6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![Screenshot: Eine Konsole mit zwei Linux-Optionen](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ Sie erhalten Zugriff auf eine Shell, ohne ein Kennwort eingeben zu müssen. Ansc
 Der Zugriff auf GRUB ermöglicht Ihnen, den Initialisierungsvorgang zu unterbrechen; diese Interaktion ist für viele Wiederherstellungsverfahren nützlich.
 Wenn Sie nicht über das Stammkennwort verfügen und für den Einzelbenutzermodus ein Kennwort erforderlich ist, können Sie beim Starten des Kernels das init-Programm durch eine Bash-Eingabeaufforderung ersetzen – dieser Interrupt kann durch Anfügen von „init=/bin/bash“ an die Startzeile des Kernels erreicht werden.
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![Screenshot: Eine Konsole mit der aktualisierten Startzeile](./media/virtual-machines-serial-console/bash1.png)
 
 Binden Sie Ihr /(root)-Dateisystem mit Lese-/Schreibzugriff mit diesem Befehl erneut ein:
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![Screenshot: Eine Konsole mit einer Aktion für erneutes Einbinden](./media/virtual-machines-serial-console/bash2.png)
 
 
 Nun können Sie eine Änderung des Stammkennworts oder viele andere Linux-Konfigurationsänderungen durchführen.
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![Screenshot: Eine Konsole, in der Sie das Stammkennwort und andere Konfigurationseinstellungen ändern können](./media/virtual-machines-serial-console/bash3.png)
 
 Starten Sie die VM mit diesem Befehl neu: 
 

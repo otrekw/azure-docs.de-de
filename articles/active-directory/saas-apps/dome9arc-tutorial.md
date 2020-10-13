@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555875"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775138"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point CloudGuard Dome9 Arc
 
@@ -156,11 +156,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie in der oberen rechten Ecke auf **Profileinstellungen** und dann auf **Kontoeinstellungen**. 
 
-    ![Check Point CloudGuard Dome9 Arc-Konfiguration](./media/dome9arc-tutorial/configure1.png)
+    ![Screenshot: Menü „Profileinstellungen“ mit ausgewählter Option „Kontoeinstellungen“](./media/dome9arc-tutorial/configure1.png)
 
 3. Navigieren Sie zu **SSO**, und klicken Sie dann auf **AKTIVIEREN**.
 
-    ![Check Point CloudGuard Dome9 Arc-Konfiguration](./media/dome9arc-tutorial/configure2.png)
+    ![Screenshot: Registerkarte „SSO“ (Einmaliges Anmelden) mit ausgewählter Option „Aktivieren“](./media/dome9arc-tutorial/configure2.png)
 
 4. Führen Sie im Abschnitt für die SSO-Konfiguration die folgenden Schritte aus:
 
@@ -189,11 +189,11 @@ Damit sich Azure AD-Benutzer bei Check Point CloudGuard Dome9 Arc anmelden kön
 
 2. Klicken Sie auf **Benutzer und Rollen** und dann auf **Benutzer**.
 
-    ![Mitarbeiter hinzufügen](./media/dome9arc-tutorial/user1.png)
+    ![Screenshot: „Benutzer und Rollen“ mit ausgewählter Aktion „Benutzer“](./media/dome9arc-tutorial/user1.png)
 
 3. Klicken Sie auf **BENUTZER HINZUFÜGEN**.
 
-    ![Mitarbeiter hinzufügen](./media/dome9arc-tutorial/user2.png)
+    ![Screenshot: „Benutzer und Rollen“ mit ausgewählter Schaltfläche „BENUTZER HINZUFÜGEN“](./media/dome9arc-tutorial/user2.png)
 
 4. Führen Sie im Abschnitt **Benutzer erstellen** die folgenden Schritte aus:
 

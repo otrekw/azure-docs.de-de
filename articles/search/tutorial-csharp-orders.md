@@ -7,20 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a6114791a1909a0cd02b96a4cdcc4c133b8e662e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280843"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667247"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Tutorial: Sortieren von Suchergebnissen mithilfe des .NET SDK
 
-Bis zu diesem Punkt in unserer Tutorialreihe werden Ergebnisse zurückgegeben und in einer Standardreihenfolge Reihenfolge angezeigt. Dies kann die Reihenfolge sein, in der sich die Daten befinden, oder es wurde möglicherweise ein standardmäßiges _Bewertungsprofil_ definiert, das verwendet wird, wenn keine Reihenfolgeparameter angegeben sind. In diesem Tutorial wird erläutert, wie Ergebnisse basierend auf einer primären Eigenschaft angeordnet werden, und wie diese Auswahl dann für Ergebnisse mit derselben primären Eigenschaft basierend auf einer sekundären Eigenschaft angeordnet werden. Als Alternative zur Sortierung nach Zahlenwerten zeigt das letzte Beispiel, wie nach einem benutzerdefinierten Bewertungsprofil sortiert wird. Wir werden uns auch etwas näher mit der Anzeige von _komplexen Typen_ befassen.
-
-Um die zurückgegebenen Ergebnisse leicht vergleichen zu können, baut dieses Projekt auf dem in [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) zum unendlichen Scrollen erstellt wurde.
+In dieser Tutorialreihe wurden Ergebnisse in einem [Standardordner](index-add-scoring-profiles.md#what-is-default-scoring) zurückgegeben und angezeigt. In diesem Tutorial fügen Sie primäre und sekundäre Sortierungskriterien hinzu. Als Alternative zur Sortierung nach Zahlenwerten zeigt das letzte Beispiel, wie Ergebnisse nach einem benutzerdefinierten Bewertungsprofil angeordnet werden. Wir werden uns auch etwas näher mit der Anzeige von _komplexen Typen_ befassen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -29,34 +27,42 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Filtern von Ergebnissen basierend auf der Entfernung von einem geografischen Punkt
 > * Sortieren von Ergebnissen basierend auf einem Bewertungsprofil
 
+## <a name="overview"></a>Übersicht
+
+Dieses Tutorial erweitert das im Tutorial [Hinzufügen von Paginierung zu Suchergebnissen mithilfe des .NET SDK](tutorial-csharp-paging.md) erstellte Projekt zum unendlichen Scrollen.
+
+Eine fertige Version des Codes in diesem Tutorial finden Sie im folgenden Projekt:
+
+* [5-order-results (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+* Lösung [2b-add-infinite-scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll): Dieses Projekt kann entweder Ihre eigene im vorherigen Tutorial erstellte Version oder eine Kopie von GitHub sein.
 
-Einsatzbereite Version des Projekts zum unendlichen Scrollen aus [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es über GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Dieses Tutorial wurde aktualisiert, um das Paket [Azure.Search.Documents (Version 11)](https://www.nuget.org/packages/Azure.Search.Documents/) verwenden zu können. Eine frühere Version des .NET SDK finden Sie im [Codebeispiel Microsoft.Azure.Search (Version 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
 ## <a name="order-results-based-on-one-property"></a>Sortieren von Ergebnissen basierend auf einer Eigenschaft
 
-Wenn wir Ergebnisse basierend auf einer Eigenschaft anordnen, z. B. Hotelbewertung, möchten wir nicht nur die geordneten Ergebnisse, sondern auch eine Bestätigung, dass die Reihenfolge korrekt ist. Mit anderen Worten, wenn wir nach Bewertung sortieren, müssen wir die Bewertung in der Ansicht anzeigen.
+Wenn wir Ergebnisse basierend auf einer Eigenschaft (z. B. Hotelbewertung) anordnen, möchten wir nicht nur die geordneten Ergebnisse, sondern auch eine Bestätigung, dass die Reihenfolge korrekt ist. Durch das Hinzufügen des Bewertungsfelds zu den Ergebnissen können wir bestätigen, dass die Ergebnisse richtig sortiert wurden.
 
-In diesem Tutorial werden wir auch die Anzeige der Ergebnisse für jedes Hotel etwas erweitern – um den günstigsten Zimmerpreis und den teuersten Zimmerpreis. Während wir uns mit der Sortierung befassen, werden wir auch Werte hinzufügen, um sicherzustellen, dass das, nachdem wir sortieren, auch in der Ansicht angezeigt wird.
+In dieser Übung werden wir auch die Anzeige der Ergebnisse für jedes Hotel etwas erweitern – um den günstigsten Zimmerpreis und den teuersten Zimmerpreis.
 
-Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansicht und der Controller müssen aktualisiert werden. Öffnen Sie zunächst den Home-Controller.
+Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Nur die Ansicht und der Controller müssen aktualisiert werden. Öffnen Sie zunächst den Home-Controller.
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Hinzufügen der OrderBy-Eigenschaft zu den Suchparametern
 
-1. Zum Anordnen von Ergebnissen basierend auf einer einzelnen numerischen Eigenschaft muss lediglich der Parameter **OrderBy** auf den Namen der Eigenschaft gesetzt werden. Fügen Sie in der Methode **Index(SearchData model)** den Suchparametern die folgende Zeile hinzu.
+1. Fügen Sie die **OrderBy**-Option dem Namen der Eigenschaft hinzu. Fügen Sie in der Methode **Index(SearchData model)** den Suchparametern die folgende Zeile hinzu.
 
     ```cs
-        OrderBy = new[] { "Rating desc" },
+    OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
     > Die Standardreihenfolge ist aufsteigend, aber Sie können der Eigenschaft **asc** hinzufügen, um dies deutlich zu machen. Die absteigende Reihenfolge wird durch Hinzufügen von **desc** festgelegt.
 
-2. Führen Sie nun die App aus, und geben Sie einen beliebigen Suchbegriff ein. Die Ergebnisse können in der richtigen Reihenfolge sein oder auch nicht, da weder Sie als Entwickler noch der Benutzer eine einfache Möglichkeit haben, die Ergebnisse zu überprüfen!
+1. Führen Sie nun die App aus, und geben Sie einen beliebigen Suchbegriff ein. Die Ergebnisse können in der richtigen Reihenfolge sein oder auch nicht, da weder Sie als Entwickler noch der Benutzer eine einfache Möglichkeit haben, die Ergebnisse zu überprüfen!
 
-3. Lassen Sie uns deutlich machen, dass die Ergebnisse nach der Bewertung geordnet sind. Ersetzen Sie zunächst die Klassen **box1** und **box2** in der Datei „hotels.css“ durch die folgenden Klassen (diese Klassen sind alle neuen, die wir für dieses Tutorial benötigen).
+1. Lassen Sie uns deutlich machen, dass die Ergebnisse nach der Bewertung geordnet sind. Ersetzen Sie zunächst die Klassen **box1** und **box2** in der Datei „hotels.css“ durch die folgenden Klassen (diese Klassen sind alle neuen, die wir für dieses Tutorial benötigen).
 
     ```html
     textarea.box1A {
@@ -114,22 +120,22 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
     }
     ```
 
-    >[!Tip]
-    >CSS-Dateien werden von Browsern in der Regel zwischengespeichert, was dazu führen kann, dass eine alte CSS-Datei verwendet wird und Ihre Änderungen ignoriert werden. Eine gute Möglichkeit, dies zu umgehen, besteht darin, dem Link eine Abfragezeichenfolge mit einem Versionsparameter hinzuzufügen. Beispiel:
+    > [!Tip]
+    > CSS-Dateien werden von Browsern in der Regel zwischengespeichert, was dazu führen kann, dass eine alte CSS-Datei verwendet wird und Ihre Änderungen ignoriert werden. Eine gute Möglichkeit, dies zu umgehen, besteht darin, dem Link eine Abfragezeichenfolge mit einem Versionsparameter hinzuzufügen. Beispiel:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >Aktualisieren Sie die Versionsnummer, wenn Sie glauben, dass eine alte CSS-Datei von Ihrem Browser verwendet wird.
+    > Aktualisieren Sie die Versionsnummer, wenn Sie glauben, dass eine alte CSS-Datei von Ihrem Browser verwendet wird.
 
-4. Fügen Sie die Eigenschaft **Rating** dem Parameter **Select** in der Methode **Index(SearchData model)** hinzu.
+1. Fügen Sie die Eigenschaft **Rating** dem Parameter **Select** in der Methode **Index(SearchData model)** hinzu.
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Öffnen Sie die Ansicht (index.cshtml), und ersetzen Sie die Renderingschleife ( **&lt;!-- Show the hotel data. --&gt;** ) durch den folgenden Code.
+1. Öffnen Sie die Ansicht (index.cshtml), und ersetzen Sie die Renderingschleife ( **&lt;!-- Show the hotel data. --&gt;** ) durch den folgenden Code.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -144,7 +150,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
                 }
     ```
 
-6. Die Bewertung muss sowohl auf der ersten angezeigten Seite als auch auf den folgenden Seiten verfügbar sein, die über unendliches Scrollen aufgerufen werden. Für die letztgenannte dieser beiden Situationen müssen wir sowohl die Aktion **Next** im Controller als auch die Funktion **scrolled** in der Ansicht aktualisieren. Ändern Sie zunächst im Controller die Methode **Next** in den folgenden Code. Dieser Code erstellt und kommuniziert den Bewertungstext.
+1. Die Bewertung muss sowohl auf der ersten angezeigten Seite als auch auf den folgenden Seiten verfügbar sein, die über unendliches Scrollen aufgerufen werden. Für die letztgenannte dieser beiden Situationen müssen wir sowohl die Aktion **Next** im Controller als auch die Funktion **scrolled** in der Ansicht aktualisieren. Ändern Sie zunächst im Controller die Methode **Next** in den folgenden Code. Dieser Code erstellt und kommuniziert den Bewertungstext.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -172,7 +178,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
         }
     ```
 
-7. Aktualisieren Sie nun die Funktion **scrolled** in der Ansicht, um den Bewertungstext anzuzeigen.
+1. Aktualisieren Sie nun die Funktion **scrolled** in der Ansicht, um den Bewertungstext anzuzeigen.
 
     ```javascript
             <script>
@@ -194,7 +200,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
 
     ```
 
-8. Führen Sie die App nun erneut aus. Suchen Sie nach einem gängigen Begriff wie „WiFi“ und vergewissern Sie sich, dass die Ergebnisse in absteigender Reihenfolge nach Hotelbewertung geordnet sind.
+1. Führen Sie die App nun erneut aus. Suchen Sie nach einem gängigen Begriff wie „WiFi“ und vergewissern Sie sich, dass die Ergebnisse in absteigender Reihenfolge nach Hotelbewertung geordnet sind.
 
     ![Sortierung basierend auf Bewertung](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
@@ -212,7 +218,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
         public double expensive { get; set; }
     ```
 
-2. Berechnen Sie die Zimmerpreise am Ende der Aktion **Index(SearchData model)** im Home-Controller. Fügen Sie die Berechnungen nach dem Speichern von temporären Daten hinzu.
+1. Berechnen Sie die Zimmerpreise am Ende der Aktion **Index(SearchData model)** im Home-Controller. Fügen Sie die Berechnungen nach dem Speichern von temporären Daten hinzu.
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -243,13 +249,13 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
                 }
     ```
 
-3. Fügen Sie die Eigenschaft **Rooms** dem Parameter **Select** in der Aktionsmethode **Index(SearchData model)** des Controllers hinzu.
+1. Fügen Sie die Eigenschaft **Rooms** dem Parameter **Select** in der Aktionsmethode **Index(SearchData model)** des Controllers hinzu.
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. Ändern Sie die Renderingschleife in der Ansicht, um den Preisbereich für die erste Seite der Ergebnisse anzuzeigen.
+1. Ändern Sie die Renderingschleife in der Ansicht, um den Preisbereich für die erste Seite der Ergebnisse anzuzeigen.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -266,7 +272,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
                 }
     ```
 
-5. Ändern Sie die Methode **Next** im Home-Controller, um den Preisbereich für nachfolgende Ergebnisseiten zu kommunizieren.
+1. Ändern Sie die Methode **Next** im Home-Controller, um den Preisbereich für nachfolgende Ergebnisseiten zu kommunizieren.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -296,7 +302,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
         }
     ```
 
-6. Aktualisieren Sie die Funktion **scrolled** in der Ansicht, um den Text der Zimmerpreise zu bearbeiten.
+1. Aktualisieren Sie die Funktion **scrolled** in der Ansicht, um den Text der Zimmerpreise zu bearbeiten.
 
     ```javascript
             <script>
@@ -318,7 +324,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
             </script>
     ```
 
-7. Führen Sie die App aus, und vergewissern Sie sich, dass die Zimmerpreisbereiche angezeigt werden.
+1. Führen Sie die App aus, und vergewissern Sie sich, dass die Zimmerpreisbereiche angezeigt werden.
 
     ![Anzeigen von Zimmerpreisbereichen](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
@@ -338,7 +344,7 @@ Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird
     >[!Tip]
     >In die Liste **OrderBy** können beliebig viele Eigenschaften eingegeben werden. Wenn Hotels die gleiche Bewertung und das gleiche Renovierungsdatum hätten, könnte eine dritte Eigenschaft zur Unterscheidung eingegeben werden.
 
-2. Auch hier müssen wir das Renovierungsdatum in der Ansicht sehen, nur um sicherzugehen, dass die Reihenfolge korrekt ist. Für eine Eigenschaft wie Renovierung wird wahrscheinlich nur das Jahr benötigt. Ändern Sie die Renderingschleife in der Ansicht in den folgenden Code.
+1. Auch hier müssen wir das Renovierungsdatum in der Ansicht sehen, nur um sicherzugehen, dass die Reihenfolge korrekt ist. Für eine Eigenschaft wie Renovierung wird wahrscheinlich nur das Jahr benötigt. Ändern Sie die Renderingschleife in der Ansicht in den folgenden Code.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -357,7 +363,7 @@ Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird
                 }
     ```
 
-3. Ändern Sie die Methode **Next** im Home-Controller, um die Jahreskomponente des letzten Renovierungsdatums weiterzuleiten.
+1. Ändern Sie die Methode **Next** im Home-Controller, um die Jahreskomponente des letzten Renovierungsdatums weiterzuleiten.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -389,7 +395,7 @@ Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird
         }
     ```
 
-4. Ändern Sie die Funktion **scrolled** in der Ansicht, um den Renovierungstext anzuzeigen.
+1. Ändern Sie die Funktion **scrolled** in der Ansicht, um den Renovierungstext anzuzeigen.
 
     ```javascript
             <script>
@@ -412,7 +418,7 @@ Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird
             </script>
     ```
 
-5. Führen Sie die App aus. Suchen Sie nach einem gängigen Begriff wie „Pool“ oder „Aussicht“, und vergewissern Sie sich, dass Hotels mit der gleichen Bewertung nun in absteigender Reihenfolge des Renovierungsdatums angezeigt werden.
+1. Führen Sie die App aus. Suchen Sie nach einem gängigen Begriff wie „Pool“ oder „Aussicht“, und vergewissern Sie sich, dass Hotels mit der gleichen Bewertung nun in absteigender Reihenfolge des Renovierungsdatums angezeigt werden.
 
     ![Sortieren nach Renovierungsdatum](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
@@ -431,13 +437,13 @@ Zum Anzeigen von Ergebnissen basierend auf der geografischen Entfernung sind meh
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. Mit dem obigen Filter werden die Ergebnisse _nicht_ nach Entfernung geordnet, sondern nur die Ausreißer entfernt. Zum Sortieren der Ergebnisse geben Sie eine **OrderBy**-Einstellung ein, die die geoDistance-Methode angibt.
+1. Mit dem obigen Filter werden die Ergebnisse _nicht_ nach Entfernung geordnet, sondern nur die Ausreißer entfernt. Zum Sortieren der Ergebnisse geben Sie eine **OrderBy**-Einstellung ein, die die geoDistance-Methode angibt.
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Obwohl die Ergebnisse von Azure Cognitive Search mit einem Entfernungsfilter zurückgegeben wurden, wird die berechnete Entfernung zwischen den Daten und dem angegebenen Punkt _nicht_ zurückgegeben. Berechnen Sie diesen Wert in der Ansicht oder im Controller neu, wenn Sie ihn in den Ergebnissen anzeigen möchten.
+1. Obwohl die Ergebnisse von Azure Cognitive Search mit einem Entfernungsfilter zurückgegeben wurden, wird die berechnete Entfernung zwischen den Daten und dem angegebenen Punkt _nicht_ zurückgegeben. Berechnen Sie diesen Wert in der Ansicht oder im Controller neu, wenn Sie ihn in den Ergebnissen anzeigen möchten.
 
     Der folgende Code berechnet die Entfernung zwischen zwei Lat-/Lng-Punkten.
 
@@ -460,7 +466,7 @@ Zum Anzeigen von Ergebnissen basierend auf der geografischen Entfernung sind meh
         }
     ```
 
-4. Nun müssen Sie diese Konzepte miteinander verbinden. Unser Tutorial behandelt jedoch nur diese Codeausschnitte, die Erstellung einer kartenbasierten App wird dem Leser als Übung überlassen. Um dieses Beispiel weiter zu vertiefen, sollten Sie entweder einen Städtenamen mit einem Radius eingeben oder einen Punkt auf einer Karte lokalisieren und einen Radius auswählen. Um diese Optionen weiter zu erkunden, beachten Sie die folgenden Ressourcen:
+1. Nun müssen Sie diese Konzepte miteinander verbinden. Unser Tutorial behandelt jedoch nur diese Codeausschnitte, die Erstellung einer kartenbasierten App wird dem Leser als Übung überlassen. Um dieses Beispiel weiter zu vertiefen, sollten Sie entweder einen Städtenamen mit einem Radius eingeben oder einen Punkt auf einer Karte lokalisieren und einen Radius auswählen. Um diese Optionen weiter zu erkunden, beachten Sie die folgenden Ressourcen:
 
 * [Dokumentation zu Azure Location Based Services (Vorschauversion)](../azure-maps/index.yml)
 * [Suchen nach einer Adresse mit dem Suchdienst von Azure Maps](../azure-maps/how-to-search-for-address.md)
@@ -492,7 +498,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
 
     ```
 
-2. Das folgende Bewertungsprofil steigert die Bewertung erheblich, wenn ein übergebener Parameter eines oder mehrere der Tags (die wir als „Ausstattungen“ bezeichnen) enthält. Der wichtigste Aspekt dieses Profils ist, dass ein Parameter mit Text angegeben werden _muss_. Wenn der Parameter leer oder nicht angegeben ist, wird ein Fehler ausgegeben.
+1. Das folgende Bewertungsprofil steigert die Bewertung erheblich, wenn ein übergebener Parameter eines oder mehrere der Tags (die wir als „Ausstattungen“ bezeichnen) enthält. Der wichtigste Aspekt dieses Profils ist, dass ein Parameter mit Text angegeben werden _muss_. Wenn der Parameter leer oder nicht angegeben ist, wird ein Fehler ausgegeben.
  
     ```cs
             {
@@ -510,7 +516,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
         }
     ```
 
-3. In diesem dritten Beispiel bedeutet die Bewertung eine deutliche Steigerung der Punktzahl. Das Datum der letzten Renovierung erhöht auch die Punktzahl, allerdings nur, wenn diese Daten innerhalb von 730 Tagen (2 Jahren) ab dem aktuellen Datum liegen.
+1. In diesem dritten Beispiel bedeutet die Bewertung eine deutliche Steigerung der Punktzahl. Das Datum der letzten Renovierung erhöht auch die Punktzahl, allerdings nur, wenn diese Daten innerhalb von 730 Tagen (2 Jahren) ab dem aktuellen Datum liegen.
 
     ```cs
             {
@@ -547,7 +553,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
 
 1. Öffnen Sie die Datei „index.cshtml“, und ersetzen Sie den Abschnitt &lt;body&gt; durch den folgenden Code.
 
-    ```cs
+    ```html
     <body>
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
@@ -653,7 +659,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
     </body>
     ```
 
-2. Öffnen Sie die Datei „SearchData.cs“, und ersetzen Sie die Klasse **SearchData** durch den folgenden Code.
+1. Öffnen Sie die Datei „SearchData.cs“, und ersetzen Sie die Klasse **SearchData** durch den folgenden Code.
 
     ```cs
     public class SearchData
@@ -692,7 +698,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
     }
     ```
 
-3. Öffnen Sie die Datei „hotels.css“, und fügen Sie die folgenden HTML-Klassen hinzu.
+1. Öffnen Sie die Datei „hotels.css“, und fügen Sie die folgenden HTML-Klassen hinzu.
 
     ```html
     .facetlist {
@@ -722,7 +728,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
     using System.Linq;
     ```
 
-2.  Für dieses Beispiel benötigen wir den ersten Aufruf von **Index**, um etwas mehr zu tun, als nur die ursprüngliche Ansicht zurückzugeben. Das Verfahren sucht nun nach bis zu 20 Ausstattungen, die in der Ansicht angezeigt werden sollen.
+1. Für dieses Beispiel benötigen wir den ersten Aufruf von **Index**, um etwas mehr zu tun, als nur die ursprüngliche Ansicht zurückzugeben. Das Verfahren sucht nun nach bis zu 20 Ausstattungen, die in der Ansicht angezeigt werden sollen.
 
     ```cs
         public async Task<ActionResult> Index()
@@ -752,7 +758,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
         }
     ```
 
-3. Wir benötigen zwei private Methoden, um die Facetten im Zwischenspeicher zu speichern und sie aus dem Zwischenspeicher wiederherzustellen und ein Modell auszufüllen.
+1. Wir benötigen zwei private Methoden, um die Facetten im Zwischenspeicher zu speichern und sie aus dem Zwischenspeicher wiederherzustellen und ein Modell auszufüllen.
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -790,7 +796,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
         }
     ```
 
-4. Wir müssen die Parameter **OrderBy** und **ScoringProfile** nach Bedarf festlegen. Ersetzen Sie die vorhandene Methode **Index(SearchData model)** durch die folgende.
+1. Wir müssen die Parameter **OrderBy** und **ScoringProfile** nach Bedarf festlegen. Ersetzen Sie die vorhandene Methode **Index(SearchData model)** durch die folgende.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -947,15 +953,15 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
 
 1. Führen Sie die App aus. In der Ansicht sollte eine umfassende Reihe von Ausstattungen angezeigt werden.
 
-2. Wenn Sie für die Sortierung „By numerical Rating“ (Nach numerischer Bewertung) auswählen, erhalten Sie die numerische Reihenfolge, die Sie bereits in diesem Tutorial implementiert haben, wobei unter den Hotels mit gleicher Bewertung das Renovierungsdatum entscheidend ist.
+1. Wenn Sie für die Sortierung „By numerical Rating“ (Nach numerischer Bewertung) auswählen, erhalten Sie die numerische Reihenfolge, die Sie bereits in diesem Tutorial implementiert haben, wobei unter den Hotels mit gleicher Bewertung das Renovierungsdatum entscheidend ist.
 
-![Sortierung von „beach“ (Strand) basierend auf Bewertung](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+   ![Sortierung von „beach“ (Strand) basierend auf Bewertung](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. Probieren Sie nun das Profil „By amenities“ (Nach Ausstattung) aus. Treffen Sie verschiedene Auswahlen von Ausstattungen, und überprüfen Sie, ob Hotels mit diesen Ausstattung auf der Ergebnisliste höhergestuft werden.
+1. Probieren Sie nun das Profil „By amenities“ (Nach Ausstattung) aus. Treffen Sie verschiedene Auswahlen von Ausstattungen, und überprüfen Sie, ob Hotels mit diesen Ausstattung auf der Ergebnisliste höhergestuft werden.
 
-![Sortierung von „beach“ (Strand) basierend auf Profil](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+   ![Sortierung von „beach“ (Strand) basierend auf Profil](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. Probieren Sie das „By Renovated date/Rating profile“ (nach Renovierungsdatum/Bewertungsprofil) aus, um zu sehen, ob Sie das erhalten, was Sie erwarten. Nur vor kurzem renovierte Hotels sollten bedingt durch _freshness_ (Aktualität) höhergestuft werden.
+1. Probieren Sie das „By Renovated date/Rating profile“ (nach Renovierungsdatum/Bewertungsprofil) aus, um zu sehen, ob Sie das erhalten, was Sie erwarten. Nur vor kurzem renovierte Hotels sollten bedingt durch _freshness_ (Aktualität) höhergestuft werden.
 
 ### <a name="resources"></a>Ressourcen
 

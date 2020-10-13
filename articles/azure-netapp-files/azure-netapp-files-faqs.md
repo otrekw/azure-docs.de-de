@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662447"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653620"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -132,6 +132,12 @@ Azure NetApp Files unterstützt NFSv3 und NFSv4.1. Für die [Volumeerstellung](a
 
 Sie können angeben, ob für das Stammkonto (Root) Zugriff auf das Volume besteht, indem Sie die Exportrichtlinie des Volumes verwenden. Weitere Informationen finden Sie unter [Konfigurieren der Exportrichtlinie für ein NFS-Volume](azure-netapp-files-configure-export-policy.md).
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>Kann ich den gleichen Dateipfad (Volumeerstellungstoken) für mehrere Volumes verwenden?
+
+Ja, das ist möglich. Der Dateipfad muss jedoch entweder in einem anderen Abonnement oder in einer anderen Region verwendet werden.   
+
+Ein Beispiel: Angenommen, Sie erstellen ein Volume namens `vol1`. Anschließend erstellen Sie ein weiteres Volume mit dem Namen `vol1` in einem anderen Kapazitätspool, aber im gleichen Abonnement und in der gleichen Region. In diesem Fall führt die Verwendung des gleichen Volumenamens (`vol1`) zu einem Fehler. Wenn Sie den gleichen Dateipfad verwenden möchten, muss sich der Name in einer anderen Region oder in einem anderen Abonnement befinden.
+
 ## <a name="smb-faqs"></a>Häufig gestellte Fragen zu SMB
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Welche SMB-Versionen werden von Azure NetApp Files unterstützt?
@@ -163,12 +169,6 @@ Azure NetApp Files unterstützt die Windows Server-Versionen 2008 R2 SP1 �
 Die vom SMB-Client gemeldete Volumegröße ist die maximale Größe, auf die das Azure NetApp Files-Volume vergrößert werden kann. Die Größe des Azure NetApp Files-Volumes, die auf dem SMB-Client angezeigt wird, spiegelt nicht das Kontingent oder die Größe des Volumes wieder. Sie können die Größe und das Kontingent des Azure NetApp Files-Volumes über das Azure-Portal oder die API abrufen.
 
 <!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
-
-<!--
 ### Does Azure NetApp Files support LDAP signing? 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Ich habe versucht, den Root-Benutzer und den lokalen Benutzer für den Zugriff auf ein Volume mit dualem Protokoll und dem NTFS-Sicherheitsstil auf einem UNIX-System zu verwenden. Warum ist der Fehler „Berechtigung verweigert“ aufgetreten?   
 
-Ein Volume mit dualem Protokoll unterstützt das NFS- und das SMB-Protokoll.  Wenn Sie versuchen, auf das eingebundene Volume auf dem UNIX-System zuzugreifen, versucht das System, den verwendeten UNIX-Benutzer einem Windows-Benutzer zuzuordnen. Wenn keine Zuordnung gefunden wird, tritt der Fehler „Berechtigung verweigert“ auf.  Dies trifft auch zu, wenn Sie den Root-Benutzer für den Zugriff verwenden.    
-
-Um den Fehler „Berechtigung verweigert“ zu vermeiden, sollten Sie sicherstellen, dass Windows Active Directory `pcuser` enthält, bevor Sie auf den Bereitstellungspunkt zugreifen. Wenn Sie `pcuser` hinzufügen, nachdem der Fehler „Berechtigung verweigert“ aufgetreten ist, müssen Sie 24 Stunden warten, bis der Cacheeintrag gelöscht wurde, bevor Sie erneut versuchen, auf das Volume zuzugreifen.
+Lösungsmöglichkeiten finden Sie unter [Problembehandlung für Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md).
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Warum tritt beim Erstellungsprozess ein Fehler mit der Meldung „Fehler beim Überprüfen der LDAP-Konfiguration; versuchen Sie es noch mal, nachdem Sie die LDAP-Konfiguration korrigiert haben.“ auf, wenn ich versuche, ein Dual-Protokoll-Volume zu erstellen?  
 
-Der Zeigereintrag (PTR) des AD-Hostcomputers ist möglicherweise auf dem DNS-Server nicht vorhanden. Sie müssen eine Reverse-Lookupzone auf dem DNS-Server erstellen und dann einen PTR-Eintrag des AD-Hostcomputers in dieser Reverse-Lookupzone hinzufügen.
-
-Nehmen wir beispielsweise an, dass die IP-Adresse des AD-Computers `1.1.1.1`, der Hostname des AD-Computers (wie mit dem Befehl `hostname` gefunden) `AD1` und der Domänenname `myDomain.com` ist.  Der PTR-Eintrag, der der Reverse-Lookupzone hinzugefügt wurde, sollte `1.1.1.1` -> `AD1.myDomain.com` sein.
+Lösungsmöglichkeiten finden Sie unter [Problembehandlung für Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md).
 
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 

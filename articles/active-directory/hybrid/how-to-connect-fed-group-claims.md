@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265468"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory
 
@@ -78,11 +78,11 @@ Um Gruppenansprüche für eine SAML-Anwendung (aus dem Katalog oder nicht aus de
 
 Klicken auf **Gruppenanspruch hinzufügen**  
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![Screenshot: Seite „Benutzerattribute und Ansprüche“ mit ausgewählter Option „Gruppenanspruch hinzufügen“](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 Verwenden Sie die Optionsfelder, um die Gruppen auszuwählen, die im Token enthalten sein sollen.
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![Screenshot: Fenster „Gruppenansprüche“ mit ausgewählter Option „Sicherheitsgruppen“](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Auswahl | BESCHREIBUNG |
 |----------|-------------|
@@ -93,15 +93,15 @@ Verwenden Sie die Optionsfelder, um die Gruppen auszuwählen, die im Token entha
 
 Um z.B. alle Sicherheitsgruppen auszugeben, in denen der Benutzer Mitglied ist, wählen Sie „Sicherheitsgruppen“ aus.
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![Screenshot: Fenster „Gruppenansprüche“ mit ausgewählter Option „Sicherheitsgruppen“ und geöffnetem Dropdownmenü „Quellattribut“](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Um Gruppen auszugeben, die Active Directory-Attribute verwenden, welche aus Active Directory und nicht aus Azure AD-ObjectIDs synchronisiert werden, wählen Sie das erforderliche Format aus der Dropdownliste aus. In den Ansprüchen sind nur Gruppen enthalten, die aus Active Directory synchronisiert werden.
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![Screenshot: Geöffnetes Dropdownmenü „Quellattribut“](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 Um nur die der Anwendung zugewiesenen Gruppen auszugeben, wählen Sie **Der Anwendung zugewiesene Gruppen** aus.
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![Screenshot: Fenster „Gruppenansprüche“ mit ausgewählter Option „Der Anwendung zugewiesene Gruppen“](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 Gruppen, die der Anwendung zugewiesen sind, werden in das Token eingeschlossen.  Andere Gruppen, in denen der Benutzer Mitglied ist, werden ausgelassen.  Bei dieser Option werden keine geschachtelten Gruppen eingeschlossen, und der Benutzer muss ein direktes Mitglied der Gruppe sein, die der Anwendung zugewiesen ist.
 
@@ -115,11 +115,11 @@ Die Art und Weise, in der Gruppenansprüche ausgegeben werden, kann durch die Ei
 
 Name des Gruppenanspruchs anpassen:  Wenn diese Option aktiviert ist, kann für Gruppenansprüche ein anderer Anspruchstyp angegeben werden.   Geben Sie den Anspruchstyp im Feld „Name“ und den optionalen Namespace für den Anspruch im Feld „Namespace“ ein.
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![Screenshot: Abschnitt „Erweiterte Optionen“ mit aktiviertem Kontrollkästchen „Name des Gruppenanspruchs anpassen“ und Angaben für Name und Namespace](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 Bei einigen Anwendungen ist es erforderlich, dass die Informationen zur Gruppenmitgliedschaft im Anspruch „role“ enthalten sind. Sie können optional die Gruppen des Benutzers als Rollen ausgeben, indem Sie das Kontrollkästchen „Gruppen als Rollenansprüche ausgeben“ aktivieren.
 
-![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![Screenshot: Abschnitt „Erweiterte Optionen“ mit den aktivierten Kontrollkästchen „Name des Gruppenanspruchs anpassen“ und „Gruppen als Rollenanspruch ausgeben“](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > Wenn die Option zum Ausgeben der Gruppendaten als Rollen verwendet wird, sind im Rollenanspruch nur Gruppen enthalten.  Anwendungsrollen, denen der Benutzer zugewiesen ist, sind im Rollenanspruch nicht enthalten.

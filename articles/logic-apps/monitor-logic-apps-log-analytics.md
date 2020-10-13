@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333952"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für Azure Logic Apps
 
@@ -19,7 +19,7 @@ Um während der Laufzeit umfangreichere Debuginformationen zu ihren Logik-Apps z
 
 Zum Einrichten der Protokollierung für Ihre Logik-App können Sie [beim Erstellen Ihrer Logik-App Log Analytics aktivieren](#logging-for-new-logic-apps), oder Sie können die [Logic Apps-Verwaltungslösung](#install-management-solution) in Ihrem Log Analytics-Arbeitsbereich für vorhandene Logik-Apps installieren. Diese Lösung bietet aggregierte Informationen für Ihre Logik-App-Ausführungen und umfasst spezifische Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs. Um dann die Protokollierung zu aktivieren und Abfragen für diese Informationen zu erstellen, [richten Sie Azure Monitor-Protokolle ein](#set-up-resource-logs).
 
-In diesem Artikel wird gezeigt, wie Sie Log Analytics aktivieren, wenn Sie Logik-Apps erstellen, wie Sie die Logic Apps-Verwaltungslösung installieren und einrichten, und wie Sie Abfragen für Azure Monitor-Protokolle einrichten und erstellen.
+In diesem Artikel erfahren Sie, wie Sie Log Analytics für neue und bereits vorhandene Logik-Apps aktivieren, wie Sie die Logic Apps-Verwaltungslösung installieren und einrichten und wie Sie Abfragen für Azure Monitor-Protokolle einrichten und erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -89,6 +89,9 @@ Sie können Log Analytics aktivieren, wenn Sie Ihre Logik-App erstellen.
 
 Wenn Sie Informationen zu Laufzeitereignissen und -daten in [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) speichern, können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu überprüfen.
 
+> [!NOTE]
+> Nach Aktivierung der Diagnoseeinstellungen kann es bis zu 30 Minuten dauern, bis Diagnosedaten an die Protokolle am angegebenen Ziel (beispielsweise Log Analytics, Event Hub oder Speicherkonto) übermittelt werden. Diese Verzögerung bedeutet, dass Diagnosedaten aus diesem Zeitraum möglicherweise nicht überprüft werden können. Abgeschlossene Ereignisse und [nachverfolgte Eigenschaften](#extend-data) werden unter Umständen erst nach zehn bis 15 Minuten in Ihrem Log Analytics-Arbeitsbereich angezeigt.
+
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Logik-App, und wählen Sie sie aus.
 
 1. Wählen Sie im Menü Ihrer Logik-App unter **Überwachung** die Option **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen** aus.
@@ -140,13 +143,12 @@ Im Anschluss an die Ausführung Ihrer Logik-App können Sie die Daten zu diesen 
 
    ![Anzeigen von Logik-App-Ausführungen und des Status](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
+   > [!NOTE]
+   > Die Funktion **Erneut übermitteln** auf dieser Seite ist aktuell nicht verfügbar.
+
    Für Aktionen, bei denen Sie [nachverfolgte Eigenschaften einrichten](#extend-data), können Sie diese Eigenschaften auch anzeigen, indem Sie in der Spalte **Nachverfolgte Eigenschaften** den Befehl **Anzeigen** auswählen. Sie können die nachverfolgten Eigenschaften mit dem Spaltenfilter durchsuchen.
 
    ![Anzeigen der überwachten Eigenschaften für eine Logik-App](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
-
-   > [!NOTE]
-   > Nachverfolgte Eigenschaften oder abgeschlossene Ereignisse können mit einer 10–15-minütigen Verzögerung im Log Analytics-Arbeitsbereich angezeigt werden.
-   > Außerdem ist die Funktion **Erneut übermitteln** auf dieser Seite zurzeit nicht verfügbar.
 
 1. Zum Filtern Ihrer Ergebnisse können Sie sowohl die clientseitige als auch die serverseitige Filterung durchführen.
 

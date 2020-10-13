@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: abeb52155b933c223ee0621e8ab203ac035e5f36
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0ce6e4dc44a19f4aaee35cc4477761010d76a96b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519707"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Comm100 Live Chat
 
@@ -144,7 +144,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im linken Bereich des Menüs auf **Security** (Sicherheit) und dann auf **Agent Single Sign-On** (Einmaliges Anmelden für Agents).
 
-   ![Comm100 Live Chat, „Security“ (Sicherheit)](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Screenshot der linken Seite des Kontomenüs, in dem „Security“ und „Agent Single Sign-On“ hervorgehoben sind](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
 1. Führen Sie auf der Seite **Agent Single Sign-On** (Einmaliges Anmelden für Agents) die folgenden Schritte aus:
 

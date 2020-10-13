@@ -2,18 +2,17 @@
 title: 'Tutorial: Neue Richtlinienzuweisung per Azure-Portal'
 description: In diesem Tutorial erstellen Sie über das Azure-Portal eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321865"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826600"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tutorial: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 
-Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln.
-In diesem Tutorial wird Schritt für Schritt der Prozess zum Erstellen einer Richtlinienzuweisung beschrieben, mit der Ihre Servercomputer mit Azure Arc-Aktivierung identifiziert werden. Anschließend werden die Computer mit Azure Arc-Aktivierung identifiziert, auf denen der Log Analytics-Agent nicht installiert ist.
+Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Azure Policy unterstützt die Überwachung des Zustands Ihres Arc-fähigen Servers mithilfe von Gastkonfigurationsrichtlinien. Gastkonfigurationsrichtlinien wenden derzeit keine Konfigurationen an, sie dienen lediglich zur Überwachung der Einstellungen des Computers. In diesem Tutorial durchlaufen Sie den Prozess zum Erstellen und Zuweisen einer Richtlinie und identifizieren, auf welchen Ihrer Arc-fähigen Server der Log Analytics-Agent nicht installiert ist.
 
 Am Ende dieses Prozesses können Sie erfolgreich Computer identifizieren, für die der Log Analytics-Agent für Windows oder Linux nicht installiert ist. Sie sind mit der Richtlinienzuweisung _nicht konform_.
 
@@ -23,7 +22,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 
-In diesem Tutorial erstellen Sie eine Richtlinienzuweisung und weisen die Richtliniendefinition _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_ zu.
+In diesem Tutorial erstellen Sie eine Richtlinienzuweisung und weisen die folgende Richtliniendefinition zu: _\[Preview]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein_.
 
 1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
 

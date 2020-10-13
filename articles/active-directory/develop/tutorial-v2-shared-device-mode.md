@@ -1,6 +1,7 @@
 ---
-title: Verwenden des Modus für gemeinsam genutzte Geräte mit MSAL Android | Azure
-description: Es wird beschrieben, wie Sie ein Android-Gerät für die Ausführung im Modus für die gemeinsame Nutzung vorbereiten und eine App für Mitarbeiter in Service und Produktion ausführen.
+title: 'Tutorial: Verwenden des Modus für gemeinsam genutzte Geräte mit der Microsoft-Authentifizierungsbibliothek (MSAL) für Android | Azure'
+titleSuffix: Microsoft identity platform
+description: In diesem Tutorial wird beschrieben, wie Sie ein Android-Gerät für die Ausführung im Modus für die gemeinsame Nutzung vorbereiten und eine App für Mitarbeiter in Service und Produktion ausführen.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +13,35 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355056"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611230"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Tutorial: Verwenden des Modus für gemeinsam genutzte Geräte in Ihrer Android-Anwendung
 
-> [!NOTE]
-> Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Dieses Tutorial enthält Anleitungen für Entwickler und Mandantenadministratoren zum Einrichten und Unterstützen des Modus für gemeinsam genutzte Geräte für eine Android-App.
+
+Dieses Tutorial umfasst folgende Punkte:
+
+> [!div class="checklist"]
+> * Herunterladen eines Codebeispiels
+> * Aktivieren und Erkennen des Modus für gemeinsam genutzte Geräte
+> * Erkennen des Modus für ein bzw. mehrere Konten
+> * Erkennen eines Benutzerwechsels und Aktivieren der globalen An- und Abmeldung
+> * Einrichten des Mandanten und Registrieren der Anwendung im Azure-Portal
+> * Einrichten eines Android-Geräts im Modus für gemeinsam genutzte Geräte
+> * Ausführen der Beispiel-App
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="developer-guide"></a>Entwicklerhandbuch
 
-Dieses Handbuch enthält eine Anleitung für Entwickler zum Implementieren des Modus für gemeinsam genutzte Geräte in einer Android-Anwendung per Microsoft Authentication Library (MSAL). Informationen zum Integrieren der MSAL in Ihre Android-App, Anmelden eines Benutzers, Aufrufen des Microsoft-Graphen und Abmelden eines Benutzers finden Sie im [Tutorial zu MSAL für Android](./tutorial-v2-android.md).
+Dieser Abschnitt des Tutorials enthält eine Anleitung für Entwickler zum Implementieren des Modus für gemeinsam genutzte Geräte in einer Android-Anwendung mithilfe der Microsoft-Authentifizierungsbibliothek (MSAL). Informationen zum Integrieren der MSAL in Ihre Android-App, Anmelden eines Benutzers, Aufrufen des Microsoft-Graphen und Abmelden eines Benutzers finden Sie im [Tutorial zu MSAL für Android](./tutorial-v2-android.md).
 
 ### <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -209,9 +222,11 @@ Weitere Informationen zur Vorgehensweise finden Sie unter [Anwendung registriere
 > [!NOTE]
 > Verwenden Sie beim Registrieren Ihrer App die Schnellstartanleitung auf der linken Seite, und wählen Sie **Android** aus. Sie gelangen auf eine Seite, auf der Sie zum Eingeben von **Paketname** und **Signaturhash** für Ihre App aufgefordert werden. Dies ist sehr wichtig, um sicherzustellen, dass Ihre App-Konfiguration funktioniert. Sie erhalten dann ein Konfigurationsobjekt für Ihre App, das Sie ausschneiden und in die Datei „auth_config.json“ einfügen können.
 
-![Bildschirm für App-Registrierung](media/tutorial-v2-shared-device-mode/register-app.png) Wählen Sie die Option **Diese Änderung für mich vornehmen** aus, und geben Sie die Werte, die von der Schnellstartanleitung abgefragt werden, im Azure-Portal an. Nach Abschluss dieses Vorgangs generieren wir alle Konfigurationsdateien, die Sie benötigen.
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-app.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
-![Bildschirm mit Konfigurationsinformationen für die App](media/tutorial-v2-shared-device-mode/config-info.png)
+Wählen Sie die Option **Make this change for me** (Diese Änderung für mich vornehmen) aus, und geben Sie die Werte ein, die von der Schnellstartanleitung im Azure-Portal abgefragt werden. Nach Abschluss dieses Vorgangs generieren wir alle Konfigurationsdateien, die Sie benötigen.
+
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
 ## <a name="set-up-a-tenant"></a>Einrichten eines Mandanten
 
@@ -227,25 +242,25 @@ Laden Sie die Microsoft Authenticator-App aus dem Google Play Store herunter. We
 
 Starten Sie die Authenticator-App, und navigieren Sie zur Hauptseite des Kontos. Wenn die Seite **Konto hinzufügen** angezeigt wird, können Sie das Gerät für die gemeinsame Nutzung bereitstellen.
 
-![Authenticator-Bildschirm „Konto hinzufügen“](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
- Wechseln Sie in der Menüleiste auf der rechten Seite zum Bereich **Einstellungen**. Wählen Sie unter **Geschäfts-, Schul- oder Unikonten** die Option **Geräteregistrierung** aus.
+Wechseln Sie in der Menüleiste auf der rechten Seite zum Bereich **Einstellungen**. Wählen Sie unter **Geschäfts-, Schul- oder Unikonten** die Option **Geräteregistrierung** aus.
 
- ![Authenticator-Bildschirm „Konto hinzufügen“](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
- Wenn Sie auf diese Schaltfläche klicken, werden Sie aufgefordert, den Zugriff auf die Gerätekontakte zu autorisieren. Der Grund ist die Kontointegration von Android auf dem Gerät. Wählen Sie **Zulassen** aus.
+Wenn Sie auf diese Schaltfläche klicken, werden Sie aufgefordert, den Zugriff auf die Gerätekontakte zu autorisieren. Der Grund ist die Kontointegration von Android auf dem Gerät. Wählen Sie **Zulassen** aus.
 
- ![Authenticator-Bildschirm „Konto hinzufügen“](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
 Der Cloudgeräteadministrator sollte unter **Oder als gemeinsam genutztes Gerät registrieren** seine geschäftliche E-Mail-Adresse für die Organisation eingeben. Klicken Sie anschließend auf die Schaltfläche **Als gemeinsam genutztes Gerät registrieren**, und geben Sie Ihre Anmeldeinformationen ein.
 
-![Bildschirm zum Registrieren des Geräts](media/tutorial-v2-shared-device-mode/register-device.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
-![Screenshot mit einer Anmeldeseite](media/tutorial-v2-shared-device-mode/sign-in.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
 Das Gerät befindet sich jetzt im Modus für gemeinsame Nutzung.
 
-![Bildschirm zum Registrieren des Geräts](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
  Alle An- und Abmeldungen auf dem Gerät sind globaler Art. Dies bedeutet, dass sie für alle Apps gelten, die in MSAL und Microsoft Authenticator auf dem Gerät integriert sind. Sie können nun Anwendungen auf dem Gerät bereitstellen, für die Funktionen des Modus für gemeinsam genutzte Geräte verwendet werden.
 
@@ -253,14 +268,17 @@ Das Gerät befindet sich jetzt im Modus für gemeinsame Nutzung.
 
 Nachdem Sie ein Gerät in den Modus für gemeinsame Nutzung versetzt haben, ist es für Ihre Organisation bekannt und wird im Organisationsmandanten nachverfolgt. Sie können Ihre gemeinsam genutzten Geräte anzeigen, indem Sie sich im Azure-Portal auf dem Blatt „Azure Active Directory“ den **Join-Typ** ansehen.
 
-![Blatt „Alle Geräte“ im Azure-Portal](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
 ## <a name="running-the-sample-app"></a>Ausführen der Beispiel-App
 
 Die Beispielanwendung ist eine einfache App, mit der die Graph-API Ihrer Organisation aufgerufen wird. Bei der ersten Ausführung werden Sie zum Einwilligen aufgefordert, weil es sich um eine neue Anwendung für Ihr Mitarbeiterkonto handelt.
 
-![Bildschirm mit Konfigurationsinformationen für die App](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Seite „Android-App konfigurieren“ der Schnellstartanleitung im Azure-Portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Modus für gemeinsam genutzte Geräte finden Sie unter [Modus für gemeinsam genutzte Geräte für Android-Geräte](msal-android-shared-devices.md).
+Hier erfahren Sie mehr über das Arbeiten mit der Microsoft-Authentifizierungsbibliothek und dem Modus für gemeinsam genutzte Geräte auf Android-Geräten:
+
+> [!div class="nextstepaction"]
+> [Modus für gemeinsam genutzte Geräte für Android-Geräte](msal-android-shared-devices.md)

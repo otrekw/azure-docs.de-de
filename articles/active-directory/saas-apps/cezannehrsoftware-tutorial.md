@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530075"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Tutorial: Azure Active Directory-Integration mit Cezanne HR Software
 
@@ -130,19 +130,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Cezanne 
 
 2. Klicken Sie im linken Navigationsbereich auf **System Setup**(Systeminstallation). Wechseln Sie zu **Sicherheitseinstellungen**. Navigieren Sie anschließend zu **Single Sign-On Configuration**(Konfiguration des einmaligen Anmeldens).
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Screenshot des Cezanne H R Software-Mandanten, bei dem „Sicherheitseinstellungen“ und „S S O-Konfiguration“ ausgewählt sind](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. Aktivieren Sie im Bereich **Allow users to log in using the following Single Sign-On (SSO) Service** (Benutzeranmeldung per SSO-Dienst zulassen) das Kontrollkästchen **SAML 2.0**, und wählen Sie die Option für die **Erweiterte Konfiguration** aus.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![Screenshot des Bereichs „Benutzer zulassen“, in dem „SAML 2.0“ und „Erweiterte Konfiguration“ ausgewählt sind](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. Klicken Sie auf die Schaltfläche **Neu hinzufügen** .
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Screenshot der Schaltfläche „Neu hinzufügen“](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. Führen Sie im Abschnitt **SAML 2.0 IDENTITY PROVIDERS** (SAML 2.0-IDENTITÄTSANBIETER) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![Screenshot eines Abschnitts, in dem Sie die in diesem Schritt beschriebenen Werte eingeben können](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. Geben Sie den Namen Ihres Identitätsanbieters als **Anzeigename**ein.
 
@@ -160,7 +160,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Cezanne 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![Screenshot der Schaltfläche „Speichern“ für die SSO-Konfiguration](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -223,11 +223,11 @@ Damit sich Azure AD-Benutzer bei Cezanne HR Software anmelden können, müssen s
 
 2. Klicken Sie im linken Navigationsbereich auf **System Setup**(Systeminstallation). Navigieren Sie zu **Benutzer verwalten**. Navigieren Sie anschließend zu **Neuen Benutzer hinzufügen**.
 
-    ![Neuer Benutzer](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Neuer Benutzer")
+    ![Screenshot des Cezanne H R Software-Mandanten, bei dem „Benutzer verwalten“ und „Neuen Benutzer hinzufügen“ ausgewählt sind](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Neuer Benutzer")
 
 3. Führen Sie im Abschnitt **Person Details** (Angaben zur Person) die folgenden Schritte aus:
 
-    ![Neuer Benutzer](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Neuer Benutzer")
+    ![Screenshot des Abschnitts „Person Details“, in dem Sie die in diesem Schritt beschriebenen Werte eingeben können](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Neuer Benutzer")
 
     a. Legen Sie **Interner Benutzer** auf „AUS“ fest.
 
@@ -239,7 +239,7 @@ Damit sich Azure AD-Benutzer bei Cezanne HR Software anmelden können, müssen s
 
 4. Führen Sie unter **Kontoinformationen** die folgenden Schritte aus:
 
-    ![Neuer Benutzer](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Neuer Benutzer")
+    ![Screenshot der Kontoinformationen, in denen Sie die in diesem Schritt beschriebenen Werte eingeben können](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Neuer Benutzer")
 
     a. Geben Sie im Textfeld **Benutzername** die E-Mail-Adresse des Benutzers, z.B. Brittasimon@contoso.com, ein.
 
@@ -251,15 +251,15 @@ Damit sich Azure AD-Benutzer bei Cezanne HR Software anmelden können, müssen s
 
 5. Navigieren Sie zur Registerkarte **Einmalige Anmeldung**, und wählen Sie im Bereich **SAML 2.0 Identifiers** (SAML 2.0-Bezeichner) die Option **Neu hinzufügen**.
 
-    ![Benutzer](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Benutzer")
+    ![Screenshot der Registerkarte „Einmaliges Anmelden“, auf der Sie „Neu hinzufügen“ auswählen können](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Benutzer")
 
 6. Wählen Sie unter **Identitätsanbieter** Ihren Identitätsanbieter aus, und geben Sie im Textfeld von **Benutzer-ID** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
-    ![Benutzer](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Benutzer")
+    ![Screenshot der SAML 2.0-Bezeichner, bei denen Sie Ihren Identitätsanbieter und die Benutzer-ID auswählen können](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Benutzer")
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Benutzer](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Benutzer")
+    ![Screenshot der Schaltfläche „Speichern“ für die Benutzereinstellungen](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Benutzer")
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

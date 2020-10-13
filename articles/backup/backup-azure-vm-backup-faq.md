@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370826"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -20,6 +20,12 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Welche VM-Images können für die Sicherung aktiviert werden, wenn ich sie erstelle?
 
 Wenn Sie eine VM erstellen, können Sie die Sicherung für VMs aktivieren, die [unterstützte Betriebssysteme](backup-support-matrix-iaas.md#supported-backup-actions) ausführen.
+
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Warum dauert die erste Sicherung so lange?
+
+Die erste Sicherung ist immer eine vollständige Sicherung, und die Dauer hängt von der Größe der Daten sowie vom Zeitpunkt der Sicherungsverarbeitung ab. <br>
+Informationen zur Verbesserung der Sicherungsleistung finden Sie unter [Bewährte Methoden](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices), [Überlegungen zu Sicherung und Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) und [Backupleistung](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance).<br>
+Die Gesamtdauer der Sicherung von weniger als 24 Stunden gilt für inkrementelle Sicherungen, aber möglicherweise nicht für die erste Sicherung.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Sind die Sicherungskosten in den VM-Kosten enthalten?
 
@@ -154,6 +160,10 @@ Für Vorgänge wie Geheimnis-/Schlüsselrollover ist dieser Schritt nicht erford
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>Kann ich auf den virtuellen Computer nach dessen Wiederherstellung zugreifen, die erforderlich war, weil ein virtueller Computer die Beziehung zum Domänencontroller unterbrochen hat?
 
 Ja, dieser Zugriff ist möglich. Weitere Informationen finden Sie in [diesem Artikel](./backup-azure-arm-restore-vms.md#post-restore-steps).
+
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Warum dauert der Wiederherstellungsvorgang so lange?
+
+Die gesamte Wiederherstellungszeit hängt von den Eingabe-/Ausgabevorgängen pro Sekunde (IOPS) und dem Durchsatz des Speicherkontos ab. Wenn das Zielspeicherkonto mit anderen anwendungsbezogenen Lese- und Schreibvorgängen beschäftigt ist, kann sich dies auf die gesamte Wiederherstellungszeit auswirken. Wählen Sie zum Verbessern des Wiederherstellungsvorgangs ein Speicherkonto ohne andere Anwendungsdaten aus.
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 

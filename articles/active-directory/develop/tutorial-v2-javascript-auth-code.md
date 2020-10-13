@@ -1,7 +1,7 @@
 ---
-title: JavaScript-Tutorial für Single-Page-Webanwendung – Autorisierungscodefluss | Azure
+title: 'Tutorial: Erstellen einer den Autorisierungscodefluss verwendenden JavaScript-Single-Page-Webanwendung | Azure'
 titleSuffix: Microsoft identity platform
-description: Es wird beschrieben, wie JavaScript-Single-Page-Anwendungen den Autorisierungscodefluss nutzen können, um eine API aufzurufen, für die Zugriffstoken des Azure Active Directory v2.0-Endpunkts erforderlich sind.
+description: In diesem Tutorial erstellen Sie eine JavaScript-Single-Page-Webanwendung, mit der sich Benutzer anmelden und den Authentifizierungscodefluss verwenden können, um ein Zugriffstoken von der Microsoft Identity Platform zu erhalten und die Microsoft Graph-API aufzurufen.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256805"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665870"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses
 
@@ -32,6 +32,11 @@ In diesem Tutorial wird gezeigt, wie Sie eine JavaScript-Single-Page-Webanwendun
 MSAL.js 2.0 verbessert MSAL.js 1.0 durch Unterstützung des Autorisierungscodeflusses im Browser anstelle des impliziten Genehmigungsflusses. MSAL.js 2.0 unterstütz den impliziten Fluss **NICHT**.
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* [Node.js](https://nodejs.org/en/download/) zum Ausführen eines lokalen Webservers
+* [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Code-Editor
 
 ## <a name="how-the-tutorial-app-works"></a>Funktionsweise der Tutorial-App
 
@@ -52,11 +57,6 @@ Möchten Sie stattdessen lieber das abgeschlossene Beispielprojekt dieses Tutori
 Um das Codebeispiel zu konfigurieren, bevor Sie es ausführen, wechseln Sie dann zum [Konfigurationsschritt](#register-your-application).
 
 Um mit dem Tutorial fortzufahren und die Anwendung selbst zu erstellen, fahren Sie mit dem nächsten Abschnitt, [Voraussetzungen](#prerequisites), fort.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-* [Node.js](https://nodejs.org/en/download/) zum Ausführen eines lokalen Webservers
-* [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Code-Editor
 
 ## <a name="create-your-project"></a>Erstellen Ihres Projekts
 
@@ -551,7 +551,9 @@ Wenn ein Benutzer das erste Mal die Schaltfläche **Anmelden** auswählt, ruft d
 
 An diesem Punkt wird ein mit PKCE geschützter Autorisierungscode an den mit CORS geschützten Tokenendpunkt gesendet und gegen Token ausgetauscht. Ein ID-Token, Zugriffstoken und Aktualisierungstoken werden von Ihrer Anwendung empfangen und von *msal.js* verarbeitet, und die in den Token enthaltenen Informationen werden jeweils zwischengespeichert.
 
-Das ID-Token enthält grundlegende Informationen zum Benutzer, z. B. dessen Anzeigenamen. Wenn Sie planen, von dem ID-Token bereitgestellte Daten zu nutzen, *muss* Ihr Back-End-Server dieses überprüfen, um zu garantieren, dass das Token für einen gültigen Benutzer Ihrer Anwendung ausgestellt wurde. Das Aktualisierungstoken verfügt über eine begrenzte Lebensdauer und läuft nach 24 Stunden ab. Über das Aktualisierungstoken können im Hintergrund neue Zugriffstoken bezogen werden.
+Das ID-Token enthält grundlegende Informationen zum Benutzer, z. B. dessen Anzeigenamen. Wenn Sie planen, von dem ID-Token bereitgestellte Daten zu nutzen, *muss* Ihr Back-End-Server dieses überprüfen, um zu garantieren, dass das Token für einen gültigen Benutzer Ihrer Anwendung ausgestellt wurde.
+
+Das Zugriffstoken hat eine begrenzte Lebensdauer und läuft nach 24 Stunden ab. Über das Aktualisierungstoken können im Hintergrund neue Zugriffstoken bezogen werden.
 
 Die SPA, die Sie in diesem Tutorial erstellt haben, ruft `acquireTokenSilent` bzw. `acquireTokenPopup` auf, um ein *Zugriffstoken* zu beziehen, das zum Abfragen von Informationen zum Benutzerprofil von der Microsoft Graph-API verwendet wird. Ein Beispiel zur Überprüfung des ID-Tokens finden Sie in der Beispielanwendung [active-directory-javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) auf GitHub. In diesem Beispiel wird für die Tokenüberprüfung eine ASP.NET-Web-API verwendet.
 
@@ -649,14 +651,7 @@ Wenn eine Back-End-API keinen Bereich benötigt, was nicht empfohlen wird, könn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine JavaScript-Single-Page-Webanwendung (SPA) erstellt, die die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für JavaScript v2.0 für Folgendes verwendet:
+Wenn Sie sich noch ausführlicher mit der Entwicklung von JavaScript-Single-Page-Webanwendungen auf der Microsoft Identity Platform beschäftigen möchten, können Sie sich die mehrteilige Szenarioreihe ansehen:
 
-> [!div class="checklist"]
-> * Ausführen des OAuth 2.0-Autorisierungscodeflusses mit PKCE
-> * Anmelden von persönlichen Microsoft-Konten sowie von Geschäfts-, Schul- oder Unikonten
-> * Abrufen eines Zugriffstokens
-> * Aufrufen der Microsoft Graph-API oder Ihrer eigenen API, für die Zugriffstoken vom Microsoft Identity Platform-Endpunkt abgerufen werden müssen.
-
-Weitere Informationen zum Authentifizierungscodefluss, einschließlich der Unterschiede zwischen den impliziten und Autorisierungscodeflüssen finden Sie unter [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodefluss](v2-oauth2-auth-code-flow.md).
-
-Wenn Sie sich eingehender mit der Entwicklung von Single-Page-Webanwendungen auf der Microsoft Identity Platform beschäftigen möchten, kann Ihnen die mehrteilige Artikelreihe [Szenario: Single-Page-Webanwendung](scenario-spa-overview.md) den Einstieg erleichtern.
+> [!div class="nextstepaction"]
+> [Szenario: Einseitige Anwendung](scenario-spa-overview.md)

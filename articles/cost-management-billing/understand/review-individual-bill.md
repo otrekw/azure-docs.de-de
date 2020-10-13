@@ -1,24 +1,24 @@
 ---
-title: Überprüfen Ihrer individuellen Azure-Rechnung
-description: Hier finden Sie Informationen zum besseren Verständnis Ihrer Rechnung und Ressourcennutzung, und Sie erfahren, wie Sie Gebühren für Ihr individuelles Azure-Abonnement überprüfen.
+title: Überprüfen Ihrer individuellen Rechnung für das Azure-Abonnement
+description: Hier finden Sie Informationen zum besseren Verständnis Ihrer Rechnung und Ressourcennutzung, und Sie erfahren, wie Sie Gebühren für Ihr individuelles Azure-Abonnement überprüfen, einschließlich der nutzungsbasierten Bezahlung.
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270524"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653280"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>Tutorial: Überprüfen Ihrer individuellen Azure-Rechnung
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Tutorial: Überprüfen Ihrer individuellen Rechnung für das Azure-Abonnement
 
-Dieser Artikel unterstützt Sie beim besseren Verständnis sowie bei der Überprüfung Ihrer Azure-Rechnung. In der Regel erhalten Sie für jeden Abrechnungszeitraum eine Rechnung per E-Mail. Die Rechnung stellt Ihre Azure-Rechnung dar. Die Kosteninformationen auf der Rechnung sind auch im Azure-Portal verfügbar. In diesem Tutorial vergleichen Sie Ihre Rechnung mit der Datei, die die ausführlichen Angaben zur täglichen Nutzung enthält, sowie mit der Kostenanalyse im Azure-Portal.
+Dieser Artikel hilft Ihnen beim besseren Verständnis und beim Überprüfen der Rechnung für Ihr Azure-Abonnement mit nutzungsbasierter Bezahlung oder Visual Studio. In der Regel erhalten Sie für jeden Abrechnungszeitraum eine Rechnung per E-Mail. Die Rechnung stellt Ihre Azure-Rechnung dar. Die Kosteninformationen auf der Rechnung sind auch im Azure-Portal verfügbar. In diesem Tutorial vergleichen Sie Ihre Rechnung mit der Datei, die die ausführlichen Angaben zur täglichen Nutzung enthält, sowie mit der Kostenanalyse im Azure-Portal.
 
 Dieses Tutorial ist nur für Azure-Kunden mit einem individuellen Abonnement relevant. Gängige individuelle Abonnements sind Abonnements mit nutzungsbasierter Bezahlung, die direkt über die Azure-Website erworben werden.
 
@@ -42,7 +42,7 @@ Seit dem Abschluss des Azure-Abonnements müssen mehr als 30 Tage vergangen sei
 
 - Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>Vergleichen abgerechneter Gebühren mit der Nutzungsdatei
+## <a name="compare-billed-charges-with-your-usage-file"></a>Vergleichen der abgerechneten Gebühren mit Ihrer Nutzungsdatei
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ Der für *Cost* (Kosten) addierte Wert muss exakt den *Nutzungsgebühren* für d
 
 Weitere Informationen finden Sie unter [Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung](understand-invoice.md) sowie unter [Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren](understand-usage.md).
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>Vergleichen von Gebühren und Nutzung in der Kostenanalyse
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Vergleichen der abgerechneten Gebühren und Nutzung in der Kostenanalyse
 
 Gebühren können auch mithilfe der Kostenanalyse im Azure-Portal überprüft werden. Wenn Sie sich einen schnellen Überblick über die in Rechnung gestellte Nutzung und Gebühren verschaffen möchten, wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus. Klicken Sie als Nächstes auf **Kostenanalyse** und anschließend in der Ansichtsliste auf **Rechnungsdetails**.
 
@@ -123,13 +123,15 @@ Die in der Kostenanalyse angezeigten Kosten müssen exakt den *Nutzungsgebühren
 
 ![Nutzungsgebühren (Rechnung)](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>Separat in Rechnung gestellte externe Dienste
+## <a name="external-marketplace-services-are-billed-separately"></a>Separate Abrechnung der externen Marketplace-Dienste
+
+<a name="external"></a>
 
 Externe Dienste oder Marketplace-Gebühren gelten für Ressourcen, die von Drittanbietern erstellt wurden. Diese Ressourcen können über den Azure Marketplace genutzt werden. Barracuda Firewall ist beispielsweise eine von einem Drittanbieter angebotene Azure Marketplace-Ressource. Alle Gebühren für die Firewall und die entsprechenden Verbrauchseinheiten werden als Gebühren für externe Dienste angezeigt.
 
 Gebühren für externe Dienste werden separat in Rechnung gestellt. Die Gebühren werden nicht in Ihrer Azure-Rechnung aufgeführt. Weitere Informationen finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](understand-azure-marketplace-charges.md).
 
-### <a name="resources-billed-by-usage-meters"></a>Nach Nutzungsverbrauchseinheiten in Rechnung gestellte Ressourcen
+### <a name="resources-are-billed-by-usage-meters"></a>Abrechnung von Ressourcen nach Nutzungsverbrauchseinheiten
 
 Azure wird nicht direkt nach Ressourcenkosten abgerechnet. Die Gebühren für eine Ressource werden mithilfe von Verbrauchseinheiten berechnet. Verbrauchseinheiten werden zum Nachverfolgen der Nutzung einer Ressource über die Dauer ihres Lebenszyklus verwendet. Diese Verbrauchseinheiten werden dann zum Berechnen der Rechnung verwendet.
 
@@ -152,7 +154,9 @@ Nachdem der virtuelle Computer erstellt wurde, beginnen diese Verbrauchseinheite
 
 Die zur Berechnung Ihrer Rechnung verwendeten Verbrauchseinheiten werden in der CSV-Nutzungsdatei angezeigt (siehe Beispiel oben).
 
-## <a name="pay-your-bill"></a><a name="payment"></a>Bezahlen Ihrer Rechnung
+## <a name="pay-your-bill"></a>Bezahlen Ihrer Rechnung
+
+<a name="payment"></a>
 
 Wenn Sie eine Kreditkarte als Zahlungsmethode eingerichtet haben, wird die Zahlung automatisch zehn Tage nach Abschluss des Abrechnungszeitraums berechnet. Auf Ihrem Kreditkartenbeleg lautet die Postenzeile dann **MSFT Azure**.
 

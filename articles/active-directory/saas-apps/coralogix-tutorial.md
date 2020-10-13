@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555901"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775620"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coralogix
 
@@ -95,13 +95,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
  1. Die Coralogix-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot des Dialogfelds „Benutzerattribute“, in dem die Schaltfläche „Bearbeiten“ hervorgehoben ist](common/edit-attribute.png)
 
 1. Bearbeiten Sie die Ansprüche im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** durch Klicken auf das Symbol **Bearbeiten**. Sie können die Ansprüche auch hinzufügen, indem Sie auf **Neuen Anspruch hinzufügen** klicken, um das SAML-Tokenattribut wie in der vorherigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
     
     a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Abbildung](./media/coralogix-tutorial/tutorial_usermail.png) ![Abbildung](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![Screenshot des Dialogfelds „Benutzerattribute und Ansprüche“, in dem die Schaltfläche „Bearbeiten“ hervorgehoben ist](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. Wählen Sie in der Liste **Namensbezeichnerformat auswählen** die Option **E-Mail-Adresse** aus.
 

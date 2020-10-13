@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542818"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758136"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Tutorial: Integrieren von AirWatch in Azure Active Directory
 
@@ -125,7 +125,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf die Registerkarte **Benutzer**, geben Sie im Textfeld **Basis-DN** Ihren Domänennamen ein, und klicken Sie dann auf **Speichern**.
 
-   ![Benutzer](./media/airwatch-tutorial/ic791922.png "Benutzer")
+   ![Screenshot, auf dem das Textfeld „Basis-DN“ hervorgehoben ist](./media/airwatch-tutorial/ic791922.png "Benutzer")
 
 1. Klicken Sie auf die Registerkarte **Server** .
 
@@ -133,7 +133,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt für **LDAP** die folgenden Schritte aus:
 
-    ![Upload](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Screenshot der Änderungen, die Sie im Abschnitt „LDAP“ vornehmen müssen](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. Wählen Sie unter **Verzeichnistyp** die Option **Keiner** aus.
 
@@ -223,7 +223,7 @@ Damit sich Azure AD-Benutzer bei AirWatch anmelden können, müssen sie in AirWa
 
 3. Klicken Sie im Menü **Users** (Benutzer) auf **List View** (Listenansicht), und klicken Sie dann auf **Add > Add User** (Hinzufügen > Benutzer hinzufügen).
   
-   ![Benutzer hinzufügen](./media/airwatch-tutorial/ic791930.png "Benutzer hinzufügen")
+   ![Screenshot, auf dem die Schaltflächen „Hinzufügen“ und „Benutzer hinzufügen“ hervorgehoben sind](./media/airwatch-tutorial/ic791930.png "Benutzer hinzufügen")
 
 4. Führen Sie im Dialogfeld **Add / Edit User** die folgenden Schritte aus:
 

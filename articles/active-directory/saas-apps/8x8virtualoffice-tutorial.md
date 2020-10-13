@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538653"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708797"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit 8x8
 
@@ -147,11 +147,11 @@ Der nächste Teil des Tutorials hängt von der Art Ihres 8x8-Abonnements ab:
 
 1. Klicken Sie auf der Startseite auf **Identity Management** (Identitätsverwaltung).
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+    ![Screenshot, auf dem die Kachel „Identity Management“ hervorgehoben ist](./media/8x8virtualoffice-tutorial/configure1.png)
 
 1. Aktivieren Sie **Single Sign On (SSO)** (Einmaliges Anmelden (SSO)), und wählen Sie dann **Microsoft Azure AD** aus.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+    ![Screenshot, auf dem die Optionen „Einmaliges Anmelden (S S O)“ und „Microsoft Azure A D“ hervorgehoben sind](./media/8x8virtualoffice-tutorial/configure2.png)
 
 1. Kopieren Sie die drei URLs und das Signaturzertifikat von der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** in Azure AD in den Abschnitt **Microsoft Azure AD SAML Settings** (Microsoft Azure AD-SAML-Einstellungen) in 8x8 Configuration Manager.
 
@@ -173,23 +173,23 @@ Der nächste Teil des Tutorials hängt von der Art Ihres 8x8-Abonnements ab:
 
 1. Wählen Sie im Anwendungsbereich die Option **Virtual Office Account Mgr** (Virtual Office-Konto-Manager) aus.
 
-    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+    ![Screenshot, auf dem die Kachel „Virtual Office Account M G R“ hervorgehoben ist](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
 1. Wählen Sie das Konto **Business** (Unternehmen) aus, und klicken Sie anschließend auf die Schaltfläche **Sign In** (Anmelden).
 
-    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
+    ![Screenshot, auf dem die Option „Business“ und die Schaltfläche „Sign In“ hervorgehoben sind](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Klicken Sie auf der Menüleiste auf die Registerkarte **ACCOUNTS** (Konten).
 
-    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+    ![Screenshot, auf dem in der Menüliste die Registerkarte „Accounts“ hervorgehoben ist](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
 1. Klicken Sie in der Liste unter „Accounts“ (Konten) auf **Single Sign On** (Einmaliges Anmelden).
 
-    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+    ![Screenshot, auf dem die Option „Einmaliges Anmelden“ hervorgehoben ist](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Wählen Sie als Authentifizierungsmethode die Option **Einmaliges Anmelden** aus, und klicken Sie anschließend auf **SAML**.
 
-    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+    ![Screenshot, auf dem „S A M L“ unter „Einmaliges Anmelden“ hervorgehoben ist](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
 1. Führen Sie im Abschnitt **SAML Single Sign-On** die folgenden Schritte aus:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536868"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Tutorial: Azure Active Directory-Integration mit Deputy
 
@@ -99,7 +99,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Deputy](common/idp-intiated.png)
+    ![Screenshot: Abschnitt „Grundlegende SAML-Konfiguration“ mit den Feldern „Bezeichner“ und „Antwort-URL“ sowie der hervorgehobenen Schaltfläche „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
@@ -171,7 +171,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
 
 1. Navigieren Sie zur folgenden URL: `https://(your-subdomain).deputy.com/exec/config/system_config`. Wechseln Sie zu **Sicherheitseinstellungen**, und klicken Sie auf **Bearbeiten**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Screenshot: Seite „Systemkonfiguration“ mit der ausgewählten Schaltfläche „Sicherheitseinstellungen – Bearbeiten“](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. Führen Sie auf der Seite **Sicherheitseinstellungen** die folgenden Schritte aus.
 

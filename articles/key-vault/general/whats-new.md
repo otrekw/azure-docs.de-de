@@ -1,5 +1,5 @@
 ---
-title: Neuerungen für Azure Key Vault | Microsoft-Dokumentation
+title: Neuerungen für Azure Key Vault
 description: Aktuelle Updates für Azure Key Vault
 services: key-vault
 author: msmbaldwin
@@ -7,39 +7,42 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 07/27/2020
+ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78d0f483bb18213fa7d6718f15dd77733a10049c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069355"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826925"
 ---
-# <a name="whats-new-for-azure-key-vault"></a>Neuerungen für Azure Key Vault
-
-> [!WARNING]
-> **Juli 2020:** Es gibt zwei Updates für Key Vault, die sich möglicherweise auf Implementierungen des Diensts auswirken: [Standardmäßig aktiviertes vorläufiges Löschen](#soft-delete-on-by-default) und [TLS-Zertifikatänderungen für Azure](#azure-tls-certificate-changes). Weitere Informationen siehe unten.
+# <a name="whats-new-for-azure-key-vault"></a>Neuerungen bei Azure Key Vault
 
 Dies sind die Neuerungen bei Azure Key Vault. Neue Funktionen und Verbesserungen werden außerdem im [Key Vault-Kanal von Azure Updates](https://azure.microsoft.com/updates/?category=security&query=Key%20vault) angekündigt.
 
-## <a name="soft-delete-on-by-default"></a>Standardmäßig aktiviertes vorläufiges Löschen
+## <a name="july-2020"></a>Juli 2020
+
+> [!WARNING]
+> Diese beiden Updates wirken sich potenziell auf Azure Key Vault-Implementierungen aus.
+
+### <a name="soft-delete-on-by-default"></a>Standardmäßig aktiviertes vorläufiges Löschen
 
 Ende 2020 **wird vorläufiges Löschen standardmäßig für alle Schlüsseltresore aktiviert**. Dies gilt sowohl für neue als auch für bereits vorhandene Schlüsseltresore. Ausführliche Informationen zu dieser Änderung, bei der es sich unter Umständen um einen Breaking Change handelt, sowie Schritte, mit denen Sie nach betroffenen Schlüsseltresoren suchen und sie vorab aktualisieren können, finden Sie im Artikel [Vorläufiges Löschen wird für alle Schlüsseltresore aktiviert](soft-delete-change.md). 
 
-## <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
+### <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
 
-Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten aus einer anderen Gruppe von Stammzertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird vorgenommen, da die aktuellen Zertifizierungsstellenzertifikate eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen.
+Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten aus einer anderen Gruppe von Stammzertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird vorgenommen, da die aktuellen Zertifikate der Zertifizierungsstellen [eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951).
 
 ### <a name="when-will-this-change-happen"></a>Wann wird diese Änderung durchgeführt?
 
-- Für Azure AD-Dienste (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
-- Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind. 
+- Für [Azure AD-Dienste](/azure/active-directory) (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
+- Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind.
 - Bereits vorhandene Azure-Endpunkte werden zwischen dem 13. August 2020 und dem 26. Oktober 2020 nach und nach umgestellt.
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](/azure/iot-dps/) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](/azure/iot-dps/) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Ausführliche Informationen finden Sie im Blogbeitrag zu den [TLS-Änderungen bei Azure IoT](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
+- [Azure Storage](/azure/storage) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Ausführliche Informationen finden Sie im Blogbeitrag zu den [TLS-Änderungen bei Azure Storage](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 
 > [!IMPORTANT]
-> Kunden müssen ihre Anwendungen nach dieser Änderung ggf. aktualisieren, um Konnektivitätsfehler beim Herstellen einer Verbindung mit Azure-Diensten zu vermeiden. 
+> Kunden müssen ihre Anwendungen nach dieser Änderung ggf. aktualisieren, um Konnektivitätsfehler beim Herstellen einer Verbindung mit Azure-Diensten zu vermeiden.
 
 ### <a name="what-is-changing"></a>Was ändert sich?
 
@@ -62,11 +65,11 @@ Von Azure-Diensten verwendete TLS-Zertifikate werden mit einer der folgenden Sta
 
 ### <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>Wann kann ich den alten Zwischenfingerabdruck entfernen?
 
-Die aktuellen Zertifizierungsstellenzertifikate bis zum 15. Februar 2021 *nicht* widerrufen. Nach diesem Datum können Sie die alten Fingerabdrücke aus Ihrem Code entfernen.
+Die aktuellen Zertifizierungsstellenzertifikate werden bis zum 15. Februar 2021 *nicht* widerrufen. Nach diesem Datum können Sie die alten Fingerabdrücke aus Ihrem Code entfernen.
 
 Sollte sich dieses Datum ändern, wird das neue Widerrufsdatum bekanntgegeben.
 
-### <a name="will-this-affect-me"></a>Bin ich davon betroffen?
+### <a name="will-this-change-affect-me"></a>Betrifft mich diese Änderung? 
 
 Wir gehen davon aus, dass **die meisten Azure-Kunden nicht betroffen sein werden**.  Ihre Anwendung kann jedoch betroffen sein, wenn darin explizit eine Liste zulässiger Zertifizierungsstellen angegeben wird. Dies wird als Anheften von Zertifikaten bezeichnet.
 
@@ -76,12 +79,12 @@ Im Anschluss finden Sie verschiedene Methoden, mit denen Sie ermitteln können, 
 
 - Wenn Sie über eine Anwendung mit Azure-API- oder Azure-Dienstintegration verfügen und nicht sicher sind, ob sie das Anheften von Zertifikaten nutzt, wenden Sie sich den Hersteller der Anwendung.
 
-- Für unterschiedliche Betriebssysteme und Sprach-Runtimes, die mit Azure-Diensten kommunizieren, sind möglicherweise zusätzliche Schritte erforderlich, um eine ordnungsgemäße Zertifikatkette mit den neuen Stammzertifizierungsstellen einzurichten: 
-    - **Linux:** Bei vielen Distributionen müssen die oben aufgeführten Zertifizierungsstellen zu „/etc/ssl/certs“ hinzugefügt werden. Spezifische Anweisungen finden Sie in der Dokumentation der Distribution.
+- Für unterschiedliche Betriebssysteme und Sprach-Runtimes, die mit Azure-Diensten kommunizieren, sind möglicherweise zusätzliche Schritte erforderlich, um eine ordnungsgemäße Zertifikatkette mit den neuen Stammzertifizierungsstellen einzurichten:
+    - **Linux:** Bei vielen Distributionen müssen die Zertifizierungsstellen zu „/etc/ssl/certs“ hinzugefügt werden. Spezifische Anweisungen finden Sie in der Dokumentation der Distribution.
     - **Java:** Stellen Sie sicher, dass der Java-Schlüsselspeicher die oben aufgeführten Zertifizierungsstellen enthält.
-    - **Windows in nicht verbundenen Umgebungen:** Für Systeme, die in nicht verbundenen Umgebungen betrieben werden, müssen die oben aufgeführten Stammzertifizierungsstellen dem Speicher für vertrauenswürdige Stammzertifizierungsstellen und die Zwischenzertifizierungsstellen dem Speicher für Zwischenzertifizierungsstellen hinzugefügt werden.
+    - **Windows in nicht verbundenen Umgebungen:** Für Systeme, die in nicht verbundenen Umgebungen ausgeführt werden, müssen die neuen Stammzertifizierungsstellen dem Speicher für vertrauenswürdige Stammzertifizierungsstellen und die Zwischenzertifizierungsstellen dem Speicher für Zwischenzertifizierungsstellen hinzugefügt werden.
     - **Android:** Überprüfen Sie die Dokumentation für Ihr Gerät und für Ihre Android-Version.
-    - **Andere Hardwaregeräte (insbesondere IoT):** Wenden Sie sich an den Hersteller des Geräts. 
+    - **Andere Hardwaregeräte (insbesondere IoT):** Wenden Sie sich an den Hersteller des Geräts.
 
 - Wenn Sie über eine Umgebung mit Firewallregeln verfügen, die dazu führen, dass ausgehende Aufrufe nur für bestimmte CRL-Downloadorte (Certificate Revocation List, Zertifikatsperrliste) und/oder OCSP-Überprüfungsorte (Online Certificate Status-Protokoll) zugelassen werden. In diesem Fall müssen die folgenden CRL- und OCSP-URLs zugelassen werden:
 

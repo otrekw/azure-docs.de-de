@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555961"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Tutorial: Azure Active Directory-Integration mit Datahug
 
@@ -99,7 +99,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Datahug 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Datahug](common/idp-intiated.png)
+    ![Screenshot: Abschnitt „Grundlegende SAML-Konfiguration“ mit den Feldern „Bezeichner“ und „Antwort-URL“ sowie der hervorgehobenen Schaltfläche „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://apps.datahug.com/identity/<uniqueID>`
 
@@ -206,11 +206,11 @@ Bei Datahug ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Zeigen Sie auf das **Zahnrad** in der rechten oberen Ecke, und klicken Sie auf **Einstellungen**.
    
-    ![Mitarbeiter hinzufügen](./media/datahug-tutorial/1.png)
+    ![Screenshot: Homepage „Datahug“ mit ausgewähltem Zahnradsymbol und der im Dropdownmenü ausgewählten Option „Einstellungen“](./media/datahug-tutorial/1.png)
 
 3. Wählen Sie **Personen** aus, und klicken Sie auf die Registerkarte **Benutzer hinzufügen**.
 
-    ![Mitarbeiter hinzufügen](./media/datahug-tutorial/2.png)
+    ![Screenshot: Seite „Einstellungen“ mit der Registerkarte „Personen“ und der ausgewählten Option „Benutzer hinzufügen“](./media/datahug-tutorial/2.png)
 
 4. Geben Sie die E-Mail-Adresse der Person ein, für die Sie ein Konto erstellen möchten, und klicken Sie auf **Hinzufügen**.
 

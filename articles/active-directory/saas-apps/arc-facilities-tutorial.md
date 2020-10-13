@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: bca696cc633a1d2a4fd64180135bb4b1e25f801c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 953b1d766788092564ae32f6c0ab1fb3e57c492f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540580"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ARC Facilities
 
@@ -84,15 +84,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die ARC Facilities-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Dialogfeld „Benutzerattribute“ mit hervorgehobenem Bearbeitungssymbol](common/edit-attribute.png)
 
 1. Darüber hinaus wird von der ARC Facilities-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
     a. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen**.
 
-    ![image](./media/arc-facilities-tutorial/config01.png)
+    ![Screenshot: Abschnitt „User Attributes & Claims“ (Benutzerattribute und -ansprüche) mit dem Stift neben „Im Anspruch zurückgegebene Gruppen“ hervorgehoben](./media/arc-facilities-tutorial/config01.png)
 
-    ![image](./media/arc-facilities-tutorial/config02.png)
+    ![Screenshot: „Gruppenansprüche“ mit den ausgewählten Optionen „Alle Gruppen“ und „Gruppen-ID“ und der hervorgehobenen Schaltfläche „Speichern“](./media/arc-facilities-tutorial/config02.png)
 
     b. Wählen Sie **Alle Gruppen** aus der Optionsfeldliste aus.
 

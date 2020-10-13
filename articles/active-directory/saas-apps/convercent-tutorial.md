@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522096"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Tutorial: Azure Active Directory-Integration mit Convercent
 
@@ -98,7 +98,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Converce
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Convercent](common/both-identifier.png)
+    ![Screenshot: Abschnitt „Grundlegende SAML-Konfiguration“ mit dem Feld „Bezeichner (Entitäts-ID)“ und der Schaltfläche „Speichern“ hervorgehoben](common/both-identifier.png)
 
     Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<instancename>.convercent.com/`.
 

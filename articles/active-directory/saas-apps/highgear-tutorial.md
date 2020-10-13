@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550604"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Tutorial: Azure Active Directory-Integration mit HighGear
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für HighGear](common/idp-intiated.png)
+    ![Screenshot der grundlegenden S A M L-Konfiguration, in der Sie I D und Antwort-U R L eingeben und „Speichern“ auswählen](common/idp-intiated.png)
 
     a. Fügen Sie im Textfeld **Bezeichner** die **ID der Dienstanbieterentität** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist.
 
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-     ![SSO-Informationen zur Domäne und zu den URLs für HighGear](common/metadata-upload-additional-signon.png)
+     ![Screenshot von „Zusätzliche U R Ls festlegen“, wo Sie eine Anmelde-U R L eingeben können](common/metadata-upload-additional-signon.png)
 
      Fügen Sie im Textfeld **URL für Anmeldung** die **ID der Dienstanbieterentität** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist. (Diese Entitäts-ID ist gleichzeitig die Basis-URL des HighGear-Systems, die bei der SP-initiierten Anmeldung verwendet wird.)
 

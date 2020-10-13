@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297279"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826191"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hightail
 
@@ -155,15 +155,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie in der oberen rechten Ecke der Seite auf das **Benutzersymbol**. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/hightail-tutorial/configure1.png)
+    ![Screenshot des Benutzersymbols](./media/hightail-tutorial/configure1.png)
 
 1. Klicken Sie auf die Registerkarte **Administratorkonsole anzeigen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hightail-tutorial/configure2.png)
+    ![Screenshot der Schaltfläche „Administratorkonsole anzeigen“ für den Benutzer](./media/hightail-tutorial/configure2.png)
 
 1. Klicken Sie im oberen Menü auf die Registerkarte **SAML**, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/hightail-tutorial/configure3.png)
+    ![Screenshot der Registerkarte „S A M L“, auf der Sie die Anmelde-U R L und das S A M L-Zertifikat eingeben können](./media/hightail-tutorial/configure3.png)
 
     a. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

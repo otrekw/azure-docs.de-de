@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554966"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Tutorial: Azure Active Directory-Integration mit Flatter Files
 
@@ -121,11 +121,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Flatter�
 
 2. Klicken Sie auf **DASHBOARD**. 
    
-    ![Einmaliges Anmelden konfigurieren](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![Screenshot der Flatter Files-App, in der „Dashboard“ ausgewählt ist](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. Klicken Sie auf **Settings** (Einstellungen), und führen Sie auf der Registerkarte **Company** (Unternehmen) die folgenden Schritte aus: 
    
-    ![Einmaliges Anmelden konfigurieren](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![Screenshot der Registerkarte „Company“ (Unternehmen), auf der „S A M L 2.0 for Authentication“ (S A M L 2.0 für die Authentifizierung) aktiviert und die Schaltfläche „Configure S A M L“ (S A M L konfigurieren) ausgewählt ist](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. Wählen Sie **Use SAML 2.0 for Authentication**aus.
     
@@ -207,7 +207,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie im Navigationsbereich links auf **Settings** (Einstellungen) und anschließend auf die Registerkarte **Users** (Benutzer).
    
-    ![Erstellen eines Flatter Files-Benutzers](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    ![Screenshot der Seite „Settings“, auf der die Registerkarte „Benutzer“ ausgewählt ist](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
 3. Klicken Sie auf **Benutzer hinzufügen**. 
 

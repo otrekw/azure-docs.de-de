@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521996"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715890"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Alibaba Cloud Service (rollenbasiertes SSO)
 
@@ -132,11 +132,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie auf der Registerkarte **Benutzer und Gruppen** „u2“ aus der Benutzerliste aus, und klicken Sie auf **Auswählen**. Klicken Sie dann auf **Zuweisen**.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Screenshot: Bereich „Zuweisung hinzufügen“ für Alibaba ohne ausgewählte „Benutzer und Gruppen“](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Zeigen Sie die zugewiesene Rolle an, und testen Sie „Alibaba Cloud Service (rollenbasiertes SSO)“.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![Screenshot: Benutzer „u2“ zugewiesene Rolle](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >Nach der Zuordnung des Benutzers (u2) wird die erstellte Rolle automatisch an den Benutzer angefügt. Wenn Sie mehrere Rollen erstellt haben, müssen Sie nach Bedarf die geeignete Rolle an den Benutzer anfügen. Wenn Sie rollenbasiertes SSO von Azure AD für mehrere Alibaba Cloud-Konten implementieren möchten, wiederholen Sie die vorherigen Schritte.
@@ -164,25 +164,25 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b. Klicken Sie auf **Berechtigungen ändern** , um die erforderlichen Berechtigungen zum Erstellen einer Rolle zu erhalten.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![Screenshot: Authentifizierung bei Graph-Tester mit Link zum Ändern von Berechtigungen](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. Wählen Sie die folgenden Berechtigungen aus der Liste aus, und klicken Sie auf **Berechtigungen ändern**, wie in der folgenden Abbildung dargestellt.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![Screenshot: Auswählbare Berechtigungen „Directory.AccessAsUser.All“, „Directory.Read.All“ und „Directory.ReadWrite.All“](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >Nach dem Zuweisen der Berechtigungen melden Sie sich wieder beim Graph-Tester an.
 
     d. Wählen Sie auf die Graph-Tester Seite aus der ersten Dropdownliste **GET** und aus der zweiten Dropdownliste **beta** aus. Geben Sie dann `https://graph.microsoft.com/beta/servicePrincipals` in das Feld neben den Dropdownlisten ein, und klicken Sie auf **Abfrage ausführen**.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![Screenshot: Graph-Tester mit den ausgewählten Optionen „GET“ und „beta“ sowie hervorgehobener Option „Abfrage ausführen“](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >Wenn Sie mehrere Verzeichnisse verwenden, können Sie `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` in das Feld der Abfrage eingeben.
 
     e. Extrahieren Sie im Abschnitt **Antwortvorschau** die appRoles-Eigenschaft aus „Dienstprinzipal“ für die zukünftige Verwendung.
 
-    ![Graph-Konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![Screenshot: Klartext im Abschnitt „Antwortvorschau“ zum Abrufen der Eigenschaft „appRoles“](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >Die appRoles-Eigenschaft finden Sie durch Eingabe von `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` in das Feld der Abfrage. Beachten Sie, dass `objectID` die Objekt-ID ist, die Sie auf der Azure AD-Seite **Eigenschaften** kopiert haben.
@@ -234,19 +234,19 @@ Nach Abschluss die vorherigen Konfigurationen testen Sie Alibaba Cloud Service (
 
 1. Wählen Sie im Azure-Portal auf der Seite **Alibaba Cloud Service (rollenbasiertes SSO)** die Option **Einmaliges Anmelden** aus, und klicken Sie auf **Testen**.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![Screenshot: Abschnitt „Test single sign-on with Alibaba Cloud Service (Role-based SSO)“ (SSO mit Alibaba Cloud Service testen (rollenbasiertes einmaliges Anmelden)) mit der Schaltfläche „Testen“](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. Klicken Sie auf **Als aktueller Benutzer anmelden**.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![Screenshot: Link „Als aktueller Benutzer anmelden“](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. Wählen Sie auf der Kontoauswahlseite „u2“ aus.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![Screenshot: Option für das einmalige Anmelden mit ausgewähltem Benutzer „u2“](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. Die folgende Seite wird angezeigt und zeigt an, dass das rollenbasierte SSO erfolgreich ausgeführt wurde.
 
-    ![Testkonfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![Screenshot: Seite „Products & Services“ (Produkte und Dienste), die anzeigt, dass der Test erfolgreich war ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

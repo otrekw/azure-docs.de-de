@@ -4,19 +4,19 @@ description: 'Azure-Sicherheitsvergleichstest V2: Reaktion auf Vorfälle'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059062"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326387"
 ---
-# <a name="security-control-incident-response"></a>Sicherheitskontrolle: Reaktion auf Vorfälle
+# <a name="security-control-v2-incident-response"></a>Sicherheitskontrolle V2: Reaktion auf Vorfälle
 
-Reaktion auf Vorfälle umfasst Kontrollelemente im Lebenszyklus der Reaktion auf Vorfälle – Vorbereitung, Erkennung und Analyse, Eindämmung und Aktivitäten nach dem Vorfall. Dazu gehört die Verwendung von Azure-Diensten wie Azure Security Center und Sentinel, um den Prozess der Reaktion auf Vorfälle zu automatisieren.
+Reaktion auf Vorfälle umfasst Kontrollen im Lebenszyklus der Reaktion auf Vorfälle: Vorbereitung, Erkennung und Analyse, Eindämmung und Aktivitäten nach dem Vorfall. Dazu gehört die Verwendung von Azure-Diensten wie Azure Security Center und Sentinel, um den Prozess der Reaktion auf Vorfälle zu automatisieren.
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Vorbereitung – Aktualisieren des Prozesses zur Reaktion auf Vorfälle für Azure
 
@@ -28,13 +28,13 @@ Stellen Sie sicher, dass Ihre Organisation über Prozesse verfügt, um auf Siche
 
 - [Implement security across the enterprise environment](https://aka.ms/AzSec4) (Implementieren von Sicherheit in der gesamten Unternehmensumgebung)
 
-- [Incident Response Reference Guide](https://aka.ms/IRRG) (Referenzleitfaden für die Reaktion auf Vorfälle)
+- [Referenzleitfaden für die Reaktion auf Vorfälle](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Vorbereitung auf Vorfälle](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ Richten Sie Kontaktinformationen für Sicherheitsvorfälle im Azure Security Cen
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Vorbereitung auf Vorfälle](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ Exportieren Sie Ihre Azure Security Center-Warnungen und -Empfehlungen über das
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Vorbereitung auf Vorfälle](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ Exportieren Sie Ihre Azure Security Center-Warnungen und -Empfehlungen über das
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-Stellen Sie sicher, dass Analysten bei der Untersuchung potenzieller Vorfälle verschiedene Datenquellen abfragen und verwenden können, um eine vollständige Übersicht über das Geschehnis zu erhalten. Sicherstellen, dass Erkenntnisse und Erfahrungen für andere Analysten und als zukünftige Referenzen festgehalten werden. 
+Stellen Sie sicher, dass Analysten bei der Untersuchung potenzieller Vorfälle verschiedene Datenquellen abfragen und verwenden können, um eine vollständige Übersicht über das Geschehnis zu erhalten. Es empfiehlt sich, verschiedene Protokolle zu sammeln, um die Aktivitäten eines potenziellen Angreifers über das gesamte Kill Chain-Spektrum hinweg nachzuverfolgen und Schwachpunkte zu vermeiden.  Stellen Sie außerdem sicher, dass Erkenntnisse und Erfahrungen für andere Analysten und als zukünftige Referenzen erfasst werden.  
 
 Zu den zu untersuchenden Datenquellen gehören die zentralisierten Protokollierungsquellen, die bereits von den zum Umfang gehörige Diensten und ausgeführten Systemen gesammelt werden, aber auch andere:
 
-Netzwerkdaten – verwenden Sie die Datenflussprotokolle der Netzwerksicherheitsgruppen, Azure Network Watcher und Azure Monitor, um Netzwerkflussprotokolle und andere Analyseinformationen zu erfassen. Momentaufnahmen von laufenden Systemen: 
+- Netzwerkdaten: Verwenden Sie die Datenflussprotokolle von Netzwerksicherheitsgruppen sowie Azure Network Watcher und Azure Monitor, um Netzwerkflussprotokolle und andere Analyseinformationen zu erfassen. 
 
--   Verwenden Sie die Momentaufnahmen-Funktion des virtuellen Azure-Computers, um eine Momentaufnahme der Festplatte des laufenden Systems zu erstellen. 
+- Momentaufnahmen von laufenden Systemen: 
 
--   Verwenden Sie die native Speicherabbildfunktion des Betriebssystems, um eine Momentaufnahme des Arbeitsspeichers des laufenden Systems zu erstellen.
+    - Verwenden Sie die Momentaufnahmenfunktion des virtuellen Azure-Computers, um eine Momentaufnahme der Festplatte des laufenden Systems zu erstellen. 
 
--   Verwenden Sie das Momentaufnahmenfeature der Azure-Dienste oder die eigene Funktion Ihrer Software, Momentaufnahmen der laufenden Systeme zu erstellen.
+    - Verwenden Sie die native Speicherabbildfunktion des Betriebssystems, um eine Momentaufnahme des Arbeitsspeichers des laufenden Systems zu erstellen.
+
+    - Verwenden Sie das Momentaufnahmenfeature der Azure-Dienste oder die Funktion Ihrer Software, um Momentaufnahmen der laufenden Systeme zu erstellen.
 
 Azure Sentinel bietet umfangreiche Datenanalysen über praktisch jede Protokollquelle sowie ein Fallverwaltungsportal zum Verwalten des gesamten Lebenszyklus von Vorfällen. Intelligenceinformationen während einer Untersuchung können zu Verfolgungs- und Berichtszwecken mit einem Vorfall verknüpft werden. 
 
@@ -116,9 +118,9 @@ Azure Sentinel bietet umfangreiche Datenanalysen über praktisch jede Protokollq
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Vorbereitung auf Vorfälle](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -126,7 +128,7 @@ Azure Sentinel bietet umfangreiche Datenanalysen über praktisch jede Protokollq
 
 ## <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5: Erkennung und Analyse – Priorisieren von Vorfällen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | IR-5 | 19,8 | CA-2, IR-4 |
 
@@ -134,7 +136,7 @@ Stellen Sie den Analysten Kontext bereit, auf welche Vorfälle sie sich zuerst k
 
 Azure Security Center weist jeder Warnung einen Schweregrad zu, damit Sie priorisieren können, welche Warnungen zuerst untersucht werden sollen. Der Schweregrad basiert darauf, wie zuversichtlich Security Center in Bezug auf den Befund oder die Analyse ist, die zum Auslösen der Warnung verwendet wird, sowie auf dem Zuverlässigkeitsgrad, dass hinter der Aktivität, die zu der Warnung führte, eine böswillige Absicht stand.
 
-Markieren Sie Abonnements außerdem mithilfe von Tags, und erstellen Sie ein Benennungssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren, insbesondere solche, die vertrauliche Daten verarbeiten.  Die Priorisierung der Behebung von Warnungen basierend auf der Wichtigkeit der Azure-Ressourcen und der Umgebung, in der der Vorfall aufgetreten ist, liegt in Ihrer Verantwortung.
+Markieren Sie Ressourcen außerdem mithilfe von Tags, und erstellen Sie ein Benennungssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren – insbesondere solche, von denen vertrauliche Daten verarbeitet werden.  Die Priorisierung der Behebung von Warnungen basierend auf der Wichtigkeit der Azure-Ressourcen und der Umgebung, in der der Vorfall aufgetreten ist, liegt in Ihrer Verantwortung.
 
 - [Sicherheitswarnungen in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Markieren Sie Abonnements außerdem mithilfe von Tags, und erstellen Sie ein Ben
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Vorbereitung auf Vorfälle](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -152,7 +154,7 @@ Markieren Sie Abonnements außerdem mithilfe von Tags, und erstellen Sie ein Ben
 
 ## <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6: Eindämmung, Ausmerzung und Wiederherstellung – Automatisieren der Behandlung von Vorfällen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | IR-6 | 19 | IR-4, IR-5, IR-6 |
 
@@ -166,9 +168,9 @@ Automatisieren Sie manuelle, sich wiederholende Aufgaben, um die Antwortzeit zu 
 
 **Verantwortlichkeit**: Kunde
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Vorbereitung auf Vorfälle](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 

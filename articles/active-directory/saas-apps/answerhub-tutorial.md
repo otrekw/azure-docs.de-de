@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544739"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Lernprogramm: Azure Active Directory-Integration mit AnswerHub
 
@@ -140,7 +140,7 @@ In diesem Abschnitt richten Sie einmaliges Anmelden für AnswerHub ein.
 
 4. Führen Sie auf der Registerkarte **IDP Config** (IDP-Konfiguration) die folgenden Schritte aus:
 
-    ![Registerkarte „Users & Groups“ (Benutzer und Gruppen)](./media/answerhub-tutorial/ic785172.png "SAML-Setup")  
+    ![Screenshot der AnswerHub-Seite, auf der die Registerkarte „Benutzer und Gruppen“ ausgewählt ist](./media/answerhub-tutorial/ic785172.png "SAML-Setup")  
   
     a. Fügen Sie im Feld **IDP Login Url** (IDP-Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
   
@@ -231,7 +231,7 @@ Damit sich Azure AD-Benutzer an AnswerHub anmelden können, müssen Sie diese in
 
 4. Wählen Sie im linken Bereich im Abschnitt **Benutzer verwalten** die Option **Create or import users** (Benutzer erstellen oder importieren) und dann **Benutzer und Gruppen**.
 
-   ![Registerkarte „Users & Groups“ (Benutzer und Gruppen)](./media/answerhub-tutorial/ic785175.png "Benutzer und Gruppen")
+   ![Screenshot der AnswerHub-Seite, auf der die Registerkarte „Benutzer und Gruppen“ ausgewählt und der Link „Create or import users“ (Benutzer erstellen oder importieren) hervorgehoben ist](./media/answerhub-tutorial/ic785175.png "Benutzer und Gruppen")
 
 5. Geben Sie in den entsprechenden Feldern die **E-Mail-Adresse**, den **Benutzernamen** und das **Kennwort** eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten, und wählen Sie anschließend **Speichern**.
 
