@@ -4,17 +4,17 @@ description: Verschlüsselungsbereiche ermöglichen Ihnen die Verwaltung der Ver
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326115"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Verschlüsselungsbereiche für Blobspeicher (Vorschau)
 
@@ -22,7 +22,7 @@ Verschlüsselungsbereiche ermöglichen Ihnen die Verwaltung der Verschlüsselung
 
 Standardmäßig wird ein Speicherkonto mit einem Schlüssel verschlüsselt, der für das gesamte Speicherkonto gilt. Mit einem Verschlüsselungsbereich können Sie angeben, dass ein oder mehrere Container mit einem Schlüssel verschlüsselt werden, der nur für diese Container gilt.
 
-Sie können entweder von Microsoft verwaltete Schlüssel oder kundenseitig verwaltete Schlüssel verwenden, die in Azure Key Vault oder Key Vault Managed Hardware Security Model (HSM, Vorschau) gespeichert sind, um den Schlüssel, der Ihre Daten verschlüsselt, zu schützen und den Zugriff darauf zu kontrollieren. Unterschiedliche Verschlüsselungsbereiche im gleichen Speicherkonto können entweder von Microsoft verwaltete oder kundenseitig verwaltete Schlüssel verwenden.
+Sie können entweder von Microsoft verwaltete Schlüssel oder kundenseitig verwaltete Schlüssel verwenden, die in Azure Key Vault gespeichert sind, um den Schlüssel, der Ihre Daten verschlüsselt, zu schützen und Zugriff darauf zu steuern. Unterschiedliche Verschlüsselungsbereiche im gleichen Speicherkonto können entweder von Microsoft verwaltete oder kundenseitig verwaltete Schlüssel verwenden.
 
 Nachdem Sie einen Verschlüsselungsbereich erstellt haben, können Sie diesen für eine Anforderung zum Erstellen eines Containers oder Blobs angeben. Weitere Informationen zum Erstellen eines Verschlüsselungsbereichs finden Sie unter [Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschau)](encryption-scope-manage.md).
 
@@ -50,7 +50,7 @@ Wenn Sie einen Verschlüsselungsbereich deaktivieren, schlagen alle nachfolgende
 
 Wenn ein Verschlüsselungsbereich deaktiviert ist, wird Ihnen dieser nicht mehr in Rechnung gestellt. Deaktivieren Sie alle Verschlüsselungsbereiche, die nicht benötigt werden, um unnötige Gebühren zu vermeiden.
 
-Wenn Ihr Verschlüsselungsbereich durch kundenseitig verwaltete Schlüssel geschützt ist, können Sie auch den zugehörigen Schlüssel im Schlüsseltresor oder verwalteten HSM löschen, um den Verschlüsselungsbereich zu deaktivieren. Beachten Sie, dass kundenseitig verwaltete Schlüssel gegen vorläufiges und endgültiges Löschen im Schlüsseltresor oder verwalteten HSM geschützt sind, und dass sich ein gelöschter Schlüssel entsprechend den dafür definierten Eigenschaften verhält. Weitere Information finden Sie in den folgenden Themen in der Azure Key Vault-Dokumentation:
+Wenn Ihr Verschlüsselungsbereich durch kundenseitig verwaltete Schlüssel geschützt ist, können Sie auch den zugehörigen Schlüssel im Schlüsseltresor löschen, um den Verschlüsselungsbereich zu deaktivieren. Beachten Sie, dass kundenseitig verwaltete Schlüssel gegen vorläufiges und endgültiges Löschen im Schlüsseltresor geschützt sind und dass sich ein gelöschter Schlüssel entsprechend den dafür definierten Eigenschaften verhält. Weitere Information finden Sie in den folgenden Themen in der Azure Key Vault-Dokumentation:
 
 - [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/soft-delete-powershell.md)
 - [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/soft-delete-cli.md)

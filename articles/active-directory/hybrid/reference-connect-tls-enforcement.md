@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: Erzwingen von TLS 1.2 für Azure Active Directory Connect| Microsoft-Dokumentation'
-description: In diesem Artikel sind alle Versionen von Azure AD Connect und Azure AD Sync aufgeführt.
+description: Erfahren Sie, wie Sie erzwingen, dass Ihr Azure AD Connect-Server nur Transport Layer Security (TLS) 1.2 verwendet.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,12 +15,12 @@ ms.date: 10/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c610eb8fe6caf308117fa7adfc6e2f2a35c6352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325894"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Erzwingen von TLS 1.2 für Azure AD Connect
 

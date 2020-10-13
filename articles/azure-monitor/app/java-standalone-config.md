@@ -4,12 +4,12 @@ description: Überwachen Sie die Anwendungsleistung für Java-Anwendungen in ein
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056097"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537656"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurationsoptionen: Eigenständige Java-Agents für Azure Monitor Application Insights
 
@@ -49,7 +49,18 @@ Dies ist erforderlich. Die Verbindungszeichenfolge finden Sie in der Application
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights-Verbindungszeichenfolge":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 Sie können auch die Verbindungszeichenfolge mit der Umgebungsvariablen `APPLICATIONINSIGHTS_CONNECTION_STRING` festlegen.
+
+Wird die Verbindungszeichenfolge nicht festgelegt, wird der Java-Agent deaktiviert.
 
 ## <a name="cloud-role-name"></a>Cloudrollenname
 
@@ -93,7 +104,7 @@ Sie können den Namen der Cloudrolleninstanz auch mithilfe der Umgebungsvariable
 
 Application Insights Java 3.0 Preview führt mithilfe von Log4j, Logback und java.util.logging eine automatische Anwendungsprotokollierung durch.
 
-Die gesamte Protokollierung erfolgt standardmäßig auf `WARN`-Ebene oder höher.
+Die gesamte Protokollierung erfolgt standardmäßig auf `INFO`-Ebene oder höher.
 
 Wenn Sie diesen Schwellenwert ändern möchten:
 
@@ -103,13 +114,15 @@ Wenn Sie diesen Schwellenwert ändern möchten:
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+Sie können den Protokollierungsschwellenwert auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` festlegen.
 
 Nachfolgend werden die gültigen `threshold`-Werte, die Sie in der Datei `ApplicationInsights.json` angeben können, und deren Zuordnung zu den Protokolliergraden in verschiedenen Frameworks für die Protokollierung gezeigt:
 
@@ -136,20 +149,24 @@ Wenn Sie einige für Sie relevante JMX-Metriken erfassen möchten:
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
-          "objectName": "java.lang:type=MemoryPool,name=Code Cache",
+          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
           "attribute": "Usage.used",
-          "display": "Code Cache Used"
+          "display": "MetaSpace Used"
         }
       ]
     }
   }
 }
 ```
+
+Sie können die JMX-Metriken auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_JMX_METRICS` festlegen.
+
+Beim Inhalt dieser Umgebungsvariablen muss es sich um JSON-Daten handeln, die der obigen Struktur entsprechen, z. B. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (einschließlich Metriken vom Spring Boot-Aktor)
 
@@ -214,6 +231,8 @@ Hier ist ein Beispiel, wie die Stichprobenentnahme auf **10 % aller Transaktion
   }
 }
 ```
+
+Sie können den Prozentsatz für die Stichprobenentnahme auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` festlegen.
 
 ## <a name="http-proxy"></a>HTTP-Proxy
 

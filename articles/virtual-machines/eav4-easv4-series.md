@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f95ffb662d830c432d3286eca8c935e2737f8043
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648359"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649557"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- und Easv4-Serie
 
@@ -20,15 +20,13 @@ Die Eav4-Serie und die Easv4-Serie verwenden den AMD-Prozessor EPYC<sup>TM</sup>
 
 ## <a name="eav4-series"></a>Eav4-Serie
 
-ACU: 230-260
-
-Storage Premium Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung: Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 230-260<br>
+[Storage Premium](premium-storage-performance.md): Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration](maintenance-and-updates.md): Unterstützt<br>
+[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+<br>
 
 Die Größen der Eav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Eav4-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Um SSD Premium zu verwenden, verwenden Sie die Größen der Easv4-Serie. Für Easv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Eav3-Serie.
 
@@ -37,7 +35,7 @@ Die Größen der Eav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 | Standard\_E2a\_v4|2|16|50|4|3000/46/23|2 | 1000 |
 | Standard\_E4a\_v4|4|32|100|8|6000/93/46|2 | 2000 |
 | Standard\_E8a\_v4|8|64|200|16|12000/187/93|4 | 4000 |
-| Standard\_E16a\_v4|16|128|400|32|24000/375/187|8 | 8\.000 |
+| Standard\_E16a\_v4|16|128|400|32|24000/375/187|8 | 8.000 |
 | Standard\_E20a\_v4|20|160|500|32|30.000/468/234|8 | 10000 |
 | Standard\_E32a\_v4|32|256|800|32|48000/750/375|8 | 16000 |
 | Standard\_E48a\_v4|48|384|1200|32|96.000/1.000 (500)|8 | 24.000 |
@@ -46,15 +44,13 @@ Die Größen der Eav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 
 ## <a name="easv4-series"></a>Easv4-Serie
 
-ACU: 230-260
-
-Storage Premium Unterstützt
-
-Storage Premium-Zwischenspeicherung: Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 230-260<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration](maintenance-and-updates.md): Unterstützt<br>
+[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+<br>
 
 Die Größen der Easv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Easv4-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen.
 
@@ -63,7 +59,7 @@ Die Größen der Easv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 74
 | Standard_E2as_v4|2|16|32|4|4000/32 (50)|3200/48|2 | 1000 |
 | Standard_E4as_v4|4|32|64|8|8000/64 (100)|6400/96|2 | 2000 |
 | Standard_E8as_v4|8|64|128|16|16000/128 (200)|12800/192|4 | 4000 |
-| Standard_E16as_v4|16|128|256|32|32.000/255 (400)|25600/384|8 | 8\.000 |
+| Standard_E16as_v4|16|128|256|32|32.000/255 (400)|25600/384|8 | 8.000 |
 | Standard_E20as_v4|20|160|320|32|40.000/320 (500)|32000/480|8 | 10000 |
 | Standard_E32as_v4|32|256|512|32|64.000/510 (800)|51200/768|8 | 16000 |
 | Standard_E48as_v4|48|384|768|32|96.000/1.020 (1.200)|76.800/1.148|8 | 24.000 |

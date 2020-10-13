@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: b8a6e1013c131778bacb11bd885b9280fb6c6077
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 97d3b87edad56394d42daca19cdb8dbf962fade9
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182172"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649506"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- und Esv4-Serie
 
@@ -29,15 +29,13 @@ Die Größen der Ev4-Serie laufen auf dem Intel Xeon&reg; Platinum 8272CL (Casca
 
 Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die Esv4-Größen, um Datenträger mit Premium-Speicher zu nutzen. Die Preis- und Abrechnungskennzahlen für die Esv4-Größen entsprechen denen der Ev4-Serie.
 
-ACU: 195–210
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195–210<br>
+[Storage Premium](premium-storage-performance.md): Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration](maintenance-and-updates.md): Unterstützt<br>
+[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|
@@ -55,15 +53,13 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 Die Größen der Esv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake). Instanzen der Esv4-Serie eignen sich ideal für arbeitsspeicherintensive Unternehmensanwendungen. Virtuelle Computer der Evs4-Serie verfügen über Hyperthreading-Technologie von Intel&reg;. Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechnet.
 
-ACU: 195-210
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 195-210<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration](maintenance-and-updates.md): Unterstützt<br>
+[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|

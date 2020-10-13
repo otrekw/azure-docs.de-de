@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663271"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776356"
 ---
 # <a name="composite-bar-renderer"></a>Renderer für zusammengesetzte Balken
 
@@ -124,11 +124,11 @@ Bei Rastervisualisierungen funktioniert das Sortieren der Zeilen für die Spalte
 3. Ändern Sie die Visualisierung in *Kacheln*.
 4. Führen Sie die Abfrage aus.
 5. Wählen Sie **Kacheleinstellungen** aus.
-6. Wählen Sie *Links* in den Titelfeldern aus.
+6. Wählen Sie *Links* in den Kachelfeldern aus.
 7. Geben Sie unter *Feldeinstellungen*die folgenden Einstellungen ein.
     1. Spalte verwenden: „Server“.
     2. Säulenrenderer: „Text“.
-8. Wählen Sie *Unten* in den Titelfeldern aus.
+8. Wählen Sie *Unten* in den Kachelfeldern aus.
 9. Geben Sie unter *Feldeinstellungen*die folgenden Einstellungen ein.
     1. Spalte verwenden: „Gesamt“.
     2. Säulenrenderer: „Zusammengesetzter Balken“.
@@ -143,9 +143,9 @@ Bei Rastervisualisierungen funktioniert das Sortieren der Zeilen für die Spalte
     4. Bezeichnung hinzufügen: `["online"] of ["total"] are healthy`.
 10. Klicken Sie auf **Übernehmen**.
 
-Titeleinstellungen für zusammengesetzte Balken:
+Kacheleinstellungen für zusammengesetzte Balken:
 
-![Screenshot der Titeleinstellungen für zusammengesetzte Balken mit den oben beschriebenen Einstellungen.](./media/workbooks-composite-bar/tiles-settings.png)
+![Screenshot der Kacheleinstellungen für zusammengesetzte Balken mit den oben beschriebenen Einstellungen](./media/workbooks-composite-bar/tiles-settings.png)
 
 Die Kachelansicht mit zusammengesetzten Balken mit den obigen Einstellungen sieht wie folgt aus:
 
@@ -157,7 +157,7 @@ Befolgen Sie die Anweisungen unten, um einen Renderer für zusammengesetzte Balk
 
 1. Wählen Sie **Hinzufügen** und dann *Abfrage hinzufügen* aus.
 2. Ändern Sie die Datenquelle in JSON, und geben Sie die Daten aus dem [vorherigen Beispiel](#adding-composite-bar-renderer) ein.
-3. Ändern Sie die Visualisierung in *Kacheln*.
+3. Ändern Sie die Visualisierung in *Graphe*.
 4. Führen Sie die Abfrage aus.
 5. Wählen Sie **Grapheinstellungen** aus.
 6. Wählen Sie *Mitteninhalt* in „Knotenformateinstellungen“ aus.

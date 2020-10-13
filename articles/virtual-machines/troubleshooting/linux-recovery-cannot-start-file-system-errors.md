@@ -1,6 +1,6 @@
 ---
 title: Beheben von Problemen beim Starten von Linux-VMs aufgrund von Dateisystemfehlern | Microsoft-Dokumentation
-description: Erläutert, warum Linux-VMs nicht gestartet werden können und wie das Problem behoben wird.
+description: Erfahren Sie, wie Sie Probleme beim Starten von Linux-VMs aufgrund von Dateisystemfehlern beheben.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f12b88a0ddbc6ae31f40ab31b0126e4fd66b1a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325945"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Dateisystemfehlern
 

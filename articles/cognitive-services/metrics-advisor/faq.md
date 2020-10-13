@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931269"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631737"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor: Häufig gestellte Fragen
 
@@ -74,9 +74,26 @@ Ausgehend von der Granularität der Daten weisen die Längen der Verlaufsdaten d
 
 ### <a name="more-concepts-and-technical-terms"></a>Weitere Konzepte und technische Begriffe
 
-Im [Glossar](glossary.md) finden Sie weitere Informationen.
+Weitere Informationen finden Sie auch im [Glossar](glossary.md).
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>Wie kann ich solche Typen von Anomalien erkennen? 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>Wie schreibe ich eine gültige Abfrage zum Erfassen meiner Daten?  
+
+Damit die Daten vom Metrics Advisor erfasst werden können, müssen Sie eine Abfrage erstellen, die die Dimensionen der Daten zu einem einzelnen Zeitstempel zurückgibt. Der Metrics Advisor führt diese Abfrage mehrmals aus, um die Daten von jedem Zeitstempel abzurufen. 
+
+Beachten Sie, dass die Abfrage zu einem bestimmten Zeitstempel höchstens einen Datensatz für jede Dimensionskombination zurückgeben sollte. Alle zurückgegebenen Datensätze müssen denselben Zeitstempel aufweisen. Es dürfen keine doppelten Datensätze von der Abfrage zurückgegeben werden.
+
+Angenommen, Sie erstellen die folgende Abfrage für eine tägliche Metrik: 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+Achten Sie darauf, dass Sie die richtige Granularität für Ihre Zeitreihe verwenden. Für eine stündliche Metrik verwenden Sie Folgendes: 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+Beachten Sie, dass diese Abfragen nur Daten zu einem einzigen Zeitstempel zurückgeben und alle Dimensionskombinationen enthalten, die vom Metrics Advisor erfasst werden. 
+
+:::image type="content" source="media/query-result.png" alt-text="Meldung, wenn eine F0-Ressource bereits vorhanden ist" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Wie erkenne ich Spitzen und Einbrüche als Anomalien?
 

@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalte
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003047"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776305"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -177,7 +177,7 @@ Weitere Informationen zu verfügbaren Filtern finden Sie unter [Seccomp][seccomp
 
 Kubernetes veröffentlicht neue Features viel schneller als herkömmliche Infrastrukturplattformen. Kubernetes-Updates beinhalten neue Features und Behebungen von Fehlern oder Sicherheitsproblemen. Neue Features durchlaufen normalerweise eine *Alphaversion* und dann eine *Betaversion* bevor sie *stabil* und allgemein verfügbar sind und zur Verwendung in der Produktion empfohlen werden. Dieser Veröffentlichungszyklus sollte es Ihnen ermöglichen, Kubernetes zu aktualisieren, ohne ständig auf Breaking Changes zu treffen oder Ihre Bereitstellungen und Vorlagen anpassen zu müssen.
 
-AKS unterstützt vier Nebenversionen von Kubernetes. Wenn also eine neue Neben-/Patchversion veröffentlicht wird, laufen die älteste Nebenversion und unterstützte Patchreleases aus. Kleinere Kubernetes-Updates werden regelmäßig durchgeführt. Sorgen Sie für einen Governance-Prozess, der regelmäßig notwendige Überprüfungen und Upgrades durchführt, damit der Support ohne Probleme funktioniert. Weitere Informationen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported-versions].
+AKS unterstützt drei Nebenversionen von Kubernetes. Wenn also eine neue Neben-/Patchversion veröffentlicht wird, laufen die älteste Nebenversion und unterstützte Patchreleases aus. Kleinere Kubernetes-Updates werden regelmäßig durchgeführt. Sorgen Sie für einen Governance-Prozess, der regelmäßig notwendige Überprüfungen und Upgrades durchführt, damit der Support ohne Probleme funktioniert. Weitere Informationen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported-versions].
 
 Wenn Sie überprüfen möchten, welche Versionen für Ihren Cluster verfügbar sind, verwenden Sie den Befehl [az aks get-upgrades][az-aks-get-upgrades] wie im folgenden Beispiel zu sehen:
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Anschließend können Sie Ihren AKS-Cluster mithilfe des Befehls [az aks upgrade][az-aks-upgrade] upgraden. Der Upgradeprozess sperrt Knoten sicher einen nach dem anderen ab und gleicht sie aus, legt einen Zeitplan für die verbleibenden Knoten fest und stellt dann einen neuen Knoten bereit, der die aktuellsten Versionen des Betriebssystems und von Kubernetes ausführt.
+
+Es wird dringend empfohlen, neue Nebenversionen in einer Entwicklertestumgebung zu testen, damit Sie für Ihre Workload überprüfen können, ob der Betrieb mit der neuen Kubernetes-Version weiterhin fehlerfrei funktioniert. Kubernetes kann APIs (z. B. in Version 1.16) als veraltet kennzeichnen, die Ihre Workloads ggf. nutzen. Wenn Sie neue Versionen in der Produktion einsetzen, sollten Sie in Erwägung ziehen, [mehrere Knotenpools für separate Versionen](use-multiple-node-pools.md) zu verwenden und einzelne Pools nacheinander zu aktualisieren, um das Rollout des Updates progressiv auf einem Cluster auszuführen. Wenn Sie mehrere Cluster ausführen, aktualisieren Sie jeweils einen Cluster, um Auswirkung oder Änderungen progressiv zu überwachen.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION

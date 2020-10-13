@@ -2,13 +2,13 @@
 title: 'Azure Service Bus: Anhalten von Messagingentitäten'
 description: In diesem Artikel wird erläutert, wie Sie Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements) vorübergehend anhalten und reaktivieren.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/29/2020
+ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078858"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575237"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 
@@ -18,28 +18,29 @@ Das Anhalten einer Entität wird üblicherweise aus dringenden administrativen G
 
 Das Anhalten oder Reaktivieren kann entweder vom Benutzer oder vom System durchgeführt werden. Das System hält Entitäten nur aufgrund von schwerwiegenden administrativen Gründen an, z.B. das Erreichen des Ausgabenlimits des Abonnements. Vom System deaktivierte Entitäten können nicht vom Benutzer reaktiviert werden, sondern werden wiederhergestellt, wenn die Ursache des Anhaltens behandelt wurde.
 
-Im Portal ermöglicht der Abschnitt **Übersicht** für die entsprechende Entität das Ändern des Zustands. Der aktuelle Zustand wird unter **Status** als Link angezeigt.
-
-Der folgende Screenshot zeigt die verfügbaren Zustände, in die die Entität geändert werden kann, indem Sie den Link auswählen: 
-
-![Screenshot der Service Bus-Funktion in der „Übersicht“ zum Ändern der Entitätszustandsoption.][1]
-
-Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Sie können die Vorgänge „Senden“ und „Empfangen“ auch separat deaktivieren, indem Sie die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs von Service Bus im .NET Framework SDK oder mit einer Azure Resource Manager-Vorlage über die Azure CLI oder Azure PowerShell verwenden.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="suspension-states"></a>Anhaltezustände
-
+## <a name="queue-status"></a>Warteschlangenstatus 
 Folgende Zustände können für eine Warteschlange festgelegt werden:
 
 -   **Aktiv:** Die Warteschlange ist aktiv.
--   **Disabled**: Die Warteschlange wurde angehalten.
+-   **Disabled**: Die Warteschlange wurde angehalten. Dies entspricht dem Festlegen von **SendDisabled** und **ReceiveDisabled**. 
 -   **SendDisabled**: Die Warteschlange ist teilweise angehalten, der Empfang ist zulässig.
 -   **ReceiveDisabled**: Die Warteschlange ist teilweise angehalten, das Senden ist zulässig.
 
-Für Abonnements und Themen können nur **Active** und **Disabled** festgelegt werden.
+### <a name="change-the-queue-status-in-the-azure-portal"></a>Ändern des Warteschlangenstatus im Azure-Portal: 
 
-Die Enumeration [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) definiert ebenfalls eine Reihe von Übergangszuständen, die nur vom System festgelegt werden können. Der PowerShell-Befehl zum Deaktivieren einer Warteschlange wird im folgenden Beispiel gezeigt. Der Befehl für die Reaktivierung ist identisch und legt `Status` auf **Active** fest.
+1. Navigieren Sie im Azure-Portal zu Ihrem Service Bus-Namespace. 
+1. Wählen Sie die Warteschlange aus, deren Status Sie ändern möchten. Die Warteschlangen werden im unteren Bereich in der Mitte angezeigt. 
+1. Auf der Seite **Service Bus-Warteschlange** wird der aktuelle Status der Warteschlange als Hyperlink angezeigt. Wenn die **Übersicht** nicht im linken Menü ausgewählt ist, wählen Sie diese Option aus, um den Status der Warteschlange anzuzeigen. Wählen Sie den aktuellen Status der Warteschlange aus, um ihn zu ändern. 
+
+    :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Auswählen des Warteschlangenstatus":::
+4. Wählen Sie den neuen Status für die Warteschlange und dann **OK** aus. 
+
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Auswählen des Warteschlangenstatus":::
+    
+Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Sie können die Vorgänge „Senden“ und „Empfangen“ auch separat deaktivieren, indem Sie die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs von Service Bus im .NET Framework SDK oder mit einer Azure Resource Manager-Vorlage über die Azure CLI oder Azure PowerShell verwenden.
+
+### <a name="change-the-queue-status-using-azure-powershell"></a>Ändern des Warteschlangenstatus mithilfe von Azure PowerShell
+Der PowerShell-Befehl zum Deaktivieren einer Warteschlange wird im folgenden Beispiel gezeigt. Der Befehl für die Reaktivierung ist identisch und legt `Status` auf **Active** fest.
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -48,6 +49,30 @@ $q.Status = "Disabled"
 
 Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
+
+## <a name="topic-status"></a>Themenstatus
+Das Ändern des Themenstatus im Azure-Portal ähnelt dem Ändern des Status einer Warteschlange. Wenn Sie den aktuellen Status eines Themas auswählen, wird die folgende Seite angezeigt, auf der Sie den Status ändern können. 
+
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Auswählen des Warteschlangenstatus":::
+
+Folgende Zustände können für ein Thema festgelegt werden:
+- **Aktiv:** Das Thema ist aktiv.
+- **Disabled**: Das Thema wurde angehalten.
+- **SendDisabled**: Dieselbe Auswirkung wie **Deaktiviert**.
+
+## <a name="subscription-status"></a>Abonnementstatus
+Das Ändern des Abonnementstatus im Azure-Portal ähnelt dem Ändern des Status eines Themas oder einer Warteschlange. Wenn Sie den aktuellen Status eines Abonnements auswählen, wird die folgende Seite angezeigt, auf der Sie den Status ändern können. 
+
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Auswählen des Warteschlangenstatus":::
+
+Folgende Zustände können für ein Thema festgelegt werden:
+- **Aktiv:** Das Thema ist aktiv.
+- **Disabled**: Das Thema wurde angehalten.
+- **ReceiveDisabled**: Dieselbe Auswirkung wie **Deaktiviert**.
+
+## <a name="other-statuses"></a>Andere Status
+Die Enumeration [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) definiert ebenfalls eine Reihe von Übergangszuständen, die nur vom System festgelegt werden können. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
