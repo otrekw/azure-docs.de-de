@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82182751"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570095"
 ---
-# <a name="conflict-types-and-resolution-policies"></a>Konflikttypen und Konfliktauflösungsrichtlinien
+# <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Konflikttypen und Konfliktauflösungsrichtlinien bei Verwendung mehrerer Schreibregionen
 
 Konflikte und Konfliktauflösungsrichtlinien sind anwendbar, wenn Ihr Azure Cosmos DB-Konto mit mehreren Schreibregionen konfiguriert ist.
 
@@ -50,6 +50,6 @@ Azure Cosmos DB bietet einen flexiblen, richtlinienbasierten Mechanismus zum Auf
 
 Erfahren Sie, wie Sie Richtlinien für die Konfliktauflösung konfigurieren:
 
-* [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
+* [Konfigurieren mehrerer Schreibregionen für Ihre Anwendungen](how-to-multi-master.md)
 * [Verwalten von Richtlinien für die Konfliktlösung](how-to-manage-conflicts.md)
 * [Lesen aus dem Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed)

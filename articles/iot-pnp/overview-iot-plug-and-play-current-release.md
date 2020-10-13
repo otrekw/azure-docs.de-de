@@ -3,17 +3,17 @@ title: Aktuelles Release von IoT Plug & Play | Microsoft-Dokumentation
 description: Hier erfahren Sie, was im aktuellen IoT Plug & Play-Release enthalten ist.
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/19/2020
+ms.date: 10/01/2020
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cfc9ca14a4b344423a27d9683114de5275fb20b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580789"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715563"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Inhalt des aktuellen IoT Plug & Play-Releases
 
@@ -46,27 +46,21 @@ Weitere Informationen zur Funktionsweise von IoT Plug & Play-Geräten mit DTDL
     > [!TIP]
     > Die Azure IoT-Erweiterung enthält Befehle zur Unterstützung der Gerätezertifizierung. Siehe `az iot product -h`.
 
-
-
 ## <a name="libraries-and-sdks"></a>Bibliotheken und SDKs
 
 Weitere Informationen zu den Bibliotheken und SDKs finden Sie unter [Microsoft-SDKs für IoT Plug & Play](libraries-sdks.md).
 
-- C-Geräte-SDK [VcPkg 19.07.2020](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c)
-- .NET-Geräte-SDK [NuGet Microsoft.Azure.Devices.Client 1.30.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)
-- Java-Geräte-SDK [Maven iot-device-client 1.25.0](https://search.maven.org/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
-- Python-Geräte-SDK [Pip azure-iot-device v2.2.0](https://pypi.org/project/azure-iot-device/)
-- Node.js-Geräte-SDK [npm azure-iot-device 1.17.1](https://www.npmjs.com/package/azure-iot-device)
-- .NET – IoT Hub-Dienst [NuGet Microsoft.Azure.Devices 1.22.0](https://www.nuget.org/packages/Microsoft.Azure.Devices/)
-- Java – IoT Hub-Dienst [Maven iot-service-client 1.25.0](https://search.maven.org/artifact/com.microsoft.azure.sdk.iot/iot-service-client)
-- Node.js – IoT Hub-Dienst [npm azure-iothub 1.12.5](https://www.npmjs.com/package/azure-iothub)
-- Python – IoT Hub/Digital Twins-Dienst [Pip azure-iot-hub 2.2.2](https://pypi.org/project/azure-iot-hub/)
+- C-Geräte-SDK [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md)
+- Eingebettetes C-Geräte-SDK [GitHub](https://github.com/Azure/azure-sdk-for-c/)
+- .NET-Geräte-SDK [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client)
+- Java-Geräte-SDK [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
+- Python-Geräte-SDK [pip 2.3.0](https://pypi.org/project/azure-iot-device/)
+- Node.js-Geräte-SDK [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)
+- .NET – IoT Hub-Dienst [NuGet 1.27.1](https://www.nuget.org/packages/Microsoft.Azure.Devices )
+- Java – IoT Hub-Dienst [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0)
+- Node.js – IoT Hub-Dienst [npm 1.13.0](https://www.npmjs.com/package/azure-iothub)
+- Python – IoT Hub/Digital Twins-Dienst [pip 2.2.3](https://pypi.org/project/azure-iot-hub)
 - DTDL-Modellparser [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser).
-
-### <a name="preview"></a>Vorschau
-
-- Azure SDK für Embedded [1.0.0-Preview.5](https://github.com/Azure/azure-sdk-for-c/releases/tag/1.0.0-preview.5)
-- Azure RTOS-IoT-Middleware [v6.0_beta3](https://github.com/azure-rtos/azure-iot-preview/releases/tag/v6.0_beta3)
 
 ## <a name="rest-apis"></a>REST-APIs
 
@@ -86,4 +80,3 @@ Aktuelle und vorherige Ankündigungen zu IoT Plug & Play finden Sie in den fol
 - [Geräte für IoT Plug & Play vorbereiten und zertifizieren (Veröffentlicht am 26. August 2020)](https://azure.microsoft.com/blog/prepare-and-certify-your-devices-for-iot-plug-and-play/)
 - [IoT Plug & Play jetzt in Vorschauversion verfügbar (Veröffentlicht am 22. August 2019)](https://azure.microsoft.com/blog/iot-plug-and-play-is-now-available-in-preview/)
 - [Build with Azure IoT Central and IoT Plug and Play (Lösungen mit Azure IoT Central und IoT Plug & Play erstellen, veröffentlicht am 7. Mai 2019)](https://azure.microsoft.com/blog/build-with-azure-iot-central-and-iot-plug-and-play/)
-

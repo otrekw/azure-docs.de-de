@@ -3,12 +3,12 @@ title: Übersicht über Azure Arc
 description: Hier erfahren Sie, was Azure Arc ist und wie es Kunden bei der Verwaltung und Governance ihrer Hybridressourcen mit anderen Azure-Diensten und -Features unterstützt.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335397"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714156"
 ---
 # <a name="azure-arc-overview"></a>Übersicht über Azure Arc
 
@@ -56,7 +56,7 @@ Die Funktionalität der Azure Arc-Steuerungsebene wird ohne Zusatzkosten angebot
 
 * Suche und Indizierung über Azure Resource Graph.
 
-* Zugriff und Sicherheit durch rollenbasierte Zugriffssteuerung (RBAC) und Abonnements.
+* Zugriff und Sicherheit durch Azure RBAC und Abonnements.
 
 * Umgebungen und Automatisierung über Vorlagen und Erweiterungen.
 

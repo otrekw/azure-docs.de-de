@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Azure Cosmos DB Ressourcen mit dem Azure
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116756"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570722"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 
@@ -69,7 +69,7 @@ Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen 
 
 Öffnen Sie die Registerkarte **Daten global replizieren**, und wählen Sie **Aktivieren** aus, um Schreibvorgänge für mehrere Regionen zu aktivieren. Nachdem Sie Schreibvorgänge für mehrere Regionen aktiviert haben, werden alle Leseregionen, die aktuell in Ihrem Konto konfiguriert sind, zu Lese- und Schreibregionen.
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Screenshot: Azure Cosmos-Konto konfiguriert Multimaster":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -77,11 +77,11 @@ Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit 
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit PowerShell](manage-with-powershell.md#multi-master).
+Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit PowerShell](manage-with-powershell.md#multi-region-writes).
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager-Vorlage
 
-Für ein Konto kann die Migration von Singlemaster zu Multimaster durch Bereitstellen der Resource Manager-Vorlage, die zum Erstellen des Kontos verwendet wurde, und Festlegen von `enableMultipleWriteLocations: true` durchgeführt werden. Die folgende Azure Resource Manager-Vorlage ist eine absolut minimale Vorlage, die ein Azure Cosmos-Konto für die SQL-API mit zwei Region und mehreren aktivierten Schreibstandorten bereitstellt.
+Die Migration von einer einzelnen Schreibregion zu mehreren Schreibregionen kann für ein Konto durch Bereitstellen der Resource Manager-Vorlage, die zum Erstellen des Kontos verwendet wurde, und Festlegen von `enableMultipleWriteLocations: true` durchgeführt werden. Die folgende Azure Resource Manager-Vorlage ist eine absolut minimale Vorlage, die ein Azure Cosmos-Konto für die SQL-API mit zwei Region und mehreren aktivierten Schreibstandorten bereitstellt.
 
 ```json
 {
@@ -149,13 +149,13 @@ Die Option für automatisches Failover ermöglicht Azure Cosmos DB das Failover 
 
 2. Wählen Sie im oberen Bereich die Option **Automatisches Failover** aus.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü „Daten global replizieren“":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 3. Vergewissern Sie sich im Bereich **Automatisches Failover**, dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist. 
 
 4. Wählen Sie **Speichern** aus.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenü für automatisches Failover":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -178,7 +178,7 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
 2. Wählen Sie im oberen Bereich die Option **Automatisches Failover** aus.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü „Daten global replizieren“":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 3. Vergewissern Sie sich im Bereich **Automatisches Failover**, dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist.
 
@@ -186,7 +186,7 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
 5. Wählen Sie **Speichern** aus.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenü für automatisches Failover":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -204,7 +204,7 @@ Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität mit Pow
 Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der Schreibregion des Kontos (Failoverpriorität = 0) in eine andere für das Konto konfigurierte Region.
 
 > [!NOTE]
-> Für Multimasterkonten kann kein manuelles Failover ausgeführt werden. Für Anwendungen, die das Azure Cosmos SDK verwenden, erkennt das SDK die eingetretene Nichtverfügbarkeit einer Region und leitet dann automatisch zur nächstgelegenen Region um, wenn die Multi-Homing-API im SDK verwendet wird.
+> Für Konten mit mehreren Schreibregionen kann kein manuelles Failover ausgeführt werden. Für Anwendungen, die das Azure Cosmos SDK verwenden, erkennt das SDK die eingetretene Nichtverfügbarkeit einer Region und leitet dann automatisch zur nächstgelegenen Region um, wenn die Multi-Homing-API im SDK verwendet wird.
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure-Portal
 
@@ -212,13 +212,13 @@ Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der 
 
 2. Wählen Sie im oberen Bereich des Menüs die Option **Manuelles Failover** aus.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü „Daten global replizieren“":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 3. Wählen Sie im Menü **Manuelles Failover** Ihre neue Schreibregion aus. Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie wissen, dass diese Option Ihre Schreibregion ändert.
 
 4. Wählen Sie **OK** aus, um das Failover zu starten.
 
-   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Portalmenü für manuelles Failover":::
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Menü zum Hinzufügen oder Entfernen von Regionen":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
 

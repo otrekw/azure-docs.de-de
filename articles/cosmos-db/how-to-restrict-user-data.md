@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031991"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570642"
 ---
-# <a name="restrict-user-access-to-data-operations-only"></a>Beschränken des Benutzerzugriffs ausschließlich auf Datenvorgänge
+# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Beschränken des Benutzerzugriffs auf Datenvorgänge in Azure Cosmos DB
 
 In Azure Cosmos DB gibt es zwei Möglichkeiten, Ihre Interaktionen mit dem Datenbankdienst zu authentifizieren:
+
 - Verwenden Ihrer Azure Active Directory-Identität bei der Interaktion mit dem Azure-Portal.
-- Verwenden von Azure Cosmos DB-[Schlüsseln](secure-access-to-data.md#master-keys) oder -[Ressourcentoken](secure-access-to-data.md#resource-tokens) beim Ausgeben von Aufrufen aus APIs und SDKs.
+- Verwenden von Azure Cosmos DB-[Schlüsseln](secure-access-to-data.md#primary-keys) oder -[Ressourcentoken](secure-access-to-data.md#resource-tokens) beim Ausgeben von Aufrufen aus APIs und SDKs.
 
 Jede Authentifizierungsmethode ermöglicht den Zugriff auf unterschiedliche Sätze von Vorgängen mit einer gewissen Überschneidung:
 

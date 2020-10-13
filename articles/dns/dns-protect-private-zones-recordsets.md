@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363221"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Schützen von privaten DNS-Zonen und -Einträgen
 
@@ -102,9 +102,9 @@ Berechtigungen werden auf Eintragssatzebene angewendet.  Der Benutzer erhält di
 
 RBAC-Berechtigungen auf Eintragssatzebene können im Azure-Portal mithilfe der Schaltfläche **Zugriffssteuerung (IAM)** auf der Seite des Eintragssatzes konfiguriert werden:
 
-![RBAC auf Ressourceneintragssatz-Ebene über das Azure-Portal](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![Der Screenshot zeigt die Schaltfläche für die Zugriffssteuerung (IAM).](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![RBAC auf Ressourceneintragssatz-Ebene über das Azure-Portal](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![Der Screenshot zeigt die Zugriffssteuerung mit aktivierter Option „Rollenzuweisung hinzufügen“.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können auch [mithilfe von Azure PowerShell erteilt werden](../role-based-access-control/role-assignments-powershell.md):
 
