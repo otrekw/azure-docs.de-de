@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594109"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825653"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Überprüfen von Pull Requests in Präproduktionsumgebungen in Azure Static Web Apps (Vorschau)
 
@@ -51,11 +51,11 @@ Nehmen Sie zunächst eine Änderung in Ihrem Repository vor. Sie können dies di
 
 1. Wechseln Sie zum Ordner _app_, und ändern Sie den Textinhalt. Sie können beispielsweise einen Titel oder Absatz ändern. Nachdem Sie die Datei gefunden haben, die Sie bearbeiten möchten, klicken Sie auf **Bearbeiten**, um die Änderung vorzunehmen.
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Schaltfläche „Datei bearbeiten“ auf der GitHub-Benutzeroberfläche":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
 
 1. Klicken Sie nach dem Vornehmen der Änderungen auf **Commit für Änderungen ausführen**, um Ihre Änderungen für den Branch zu committen.
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Schaltfläche „Commit für Änderungen ausführen“ auf der GitHub-Benutzeroberfläche":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
 
 ## <a name="create-a-pull-request"></a>Erstellen eines Pull Requests
 
@@ -63,13 +63,13 @@ Erstellen Sie als Nächstes einen Pull Request für diese Änderung.
 
 1. Öffnen Sie die Registerkarte **Pull Request** Ihres Projekts auf GitHub:
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Registerkarte „Pull Request“ in einem GitHub-Repository":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
 
 1. Klicken Sie auf die Schaltfläche **Compare & Pull Request** (Vergleich und Pull Request) Ihres Branchs.
 
 1. Sie können optional einige Details zu Ihren Änderungen einfügen und dann auf **Pull Request erstellen** klicken.
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Pull Request-Erstellung auf GitHub":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
 
 Sie können Prüfer zuweisen und Ihre Änderungen bei Bedarf mit Kommentaren versehen.
 
@@ -82,7 +82,7 @@ Nach der Erstellung des Pull Requests wird der Workflow für die [GitHub Actions
 
 Nachdem der Workflow das Erstellen und Bereitstellen Ihrer App abgeschlossen hat, wird Ihrem Pull Request vom GitHub-Bot ein Kommentar hinzugefügt, der die URL der Präproduktionsumgebung enthält. Sie können auf diesen Link klicken, um Ihre bereitgestellten Änderungen anzuzeigen.
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Pull Request-Kommentar mit der Präproduktions-URL":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
 
 Klicken Sie auf die generierte URL, um die Änderungen anzuzeigen.
 
@@ -96,7 +96,7 @@ Nach der Genehmigung der Änderungen können Sie diese in der Produktion veröff
 
 Klicken Sie auf **Merge pull request** (Pull Request zusammenführen):
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Schaltfläche „Merge pull request“ (Pull Request zusammenführen) auf der GitHub-Benutzeroberfläche":::
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
 
 Beim Zusammenführen werden Ihre Änderungen in den nachverfolgten Branch („Produktionsbranch“) kopiert. Anschließend beginnt der Bereitstellungsworkflow auf dem nachverfolgten Branch, und die Änderungen befinden sich nach dem erneuten Buildvorgang für die Anwendung im Livezustand.
 
