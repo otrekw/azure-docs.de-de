@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291666"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409713"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Anfordern einer Erhöhung von Kontingenten für Azure HDInsight
 
 Das Kontingent für CPU-Kerne trägt dazu bei, dass die Ressourcenauslastung gerecht zwischen allen Kunden in einer bestimmten Azure-Region verteilt wird. In bestimmten Fällen kann es jedoch sein, dass Ihre Geschäftsanforderungen mehr Clusterressourcen erfordern, als Ihr aktuelles Kontingent zulässt. In solchen Fällen können Sie eine Erhöhung des Kontingents für CPU-Kerne anfordern, sodass Sie Cluster bereitstellen können, die Ihren Anforderungen an die Datenverarbeitung entsprechen.
 
-Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten aufskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Beispielsweise kann Ihr Abonnement in der Region „USA, Osten“ ein Limit von 30 CPU-Kernen aufweisen, während in der Region „USA, Osten 2“ weitere 30 CPU-Kerne zulässig sind.
+Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten aufskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Beispielsweise kann Ihr Abonnement in der Region „USA, Osten“ ein Limit von 30 CPU-Kernen aufweisen, während in der Region „USA, Osten“ weitere 30 CPU-Kerne zulässig sind.
 
 ## <a name="gather-required-information"></a>Sammeln erforderlicher Informationen
 
