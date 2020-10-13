@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0b13dca7f4a33a7fb9ea55a1505c26a97160d0d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 882ed23fe9f7e759bef7464d512685163a26b288
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502944"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816182"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Vorgehensweise zum Aktualisieren des Azure Linux-Agents auf einer VM
 
@@ -33,34 +33,30 @@ Sie müssen zunächst immer nach einem Paket im Linux-Distributionsrepository su
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Von Azure unterstützte Linux-Distributionen](../linux/endorsed-distros.md).
 
-## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Unterstützte VM-Agent-Mindestversion in Azure
 Sehen Sie sich die Informationen zur [unterstützten Mindestversion für VM-Agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) an, bevor Sie den Vorgang fortsetzen.
 
-## <a name="updating-the-azure-linux-agent"></a>Aktualisieren des Azure Linux-Agents
 
 ## <a name="ubuntu"></a>Ubuntu
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 apt list --installed | grep walinuxagent
 ```
 
-#### <a name="update-package-cache"></a>Aktualisieren des Paketcaches
+Aktualisieren des Paketcaches
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo apt-get install walinuxagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist
-
-Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
+Sicherstellen, dass AutoUpdate aktiviert ist. Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
 
 ```bash
 cat /etc/waagent.conf
@@ -79,15 +75,13 @@ So wird die Ausführung aktiviert:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Neustarten des Waagent-Diensts
-
-#### <a name="restart-agent-for-1404"></a>Neustarten des Agents für 14.04
+Neustarten des waagengt-Diensts für 14.04
 
 ```bash
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>Neustarten des Agents für 16.04/17.04
+Neustarten des Waagent-Diensts für 16.04/17.04
 
 ```bash
 systemctl restart walinuxagent.service
@@ -97,25 +91,25 @@ systemctl restart walinuxagent.service
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Suchen nach verfügbaren Updates
+Suchen nach verfügbaren Updates
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist 
+Sicherstellen, dass AutoUpdate aktiviert ist 
 
 Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
 
@@ -136,35 +130,33 @@ So wird die Ausführung aktiviert:
 sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Neustarten des Waagent-Diensts
+Neustarten des Waagent-Diensts
 
 ```
 sudo service waagent restart
 ```
 
-### <a name="rhelcentos-7"></a>RHEL/CentOS 7
+## <a name="rhelcentos-7"></a>RHEL/CentOS 7
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Suchen nach verfügbaren Updates
+Suchen nach verfügbaren Updates
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo yum install WALinuxAgent  
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist 
-
-Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
+Sicherstellen, dass AutoUpdate aktiviert ist. Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
 
 ```bash
 cat /etc/waagent.conf
@@ -183,7 +175,7 @@ So wird die Ausführung aktiviert:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Neustarten des Waagent-Diensts
+Neustarten des Waagent-Diensts
 
 ```bash
 sudo systemctl restart waagent.service
@@ -193,23 +185,21 @@ sudo systemctl restart waagent.service
 
 ### <a name="suse-sles-11-sp4"></a>SUSE Linux Enterprise Server (SLES) 11 SP4
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Suchen nach verfügbaren Updates
+Suchen nach verfügbaren Updates. Die oben angegebene Ausgabe zeigt an, ob das Paket auf dem neuesten Stand ist.
 
-Die oben angegebene Ausgabe zeigt an, ob das Paket auf dem neuesten Stand ist.
-
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist 
+Sicherstellen, dass AutoUpdate aktiviert ist 
 
 Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
 
@@ -230,7 +220,7 @@ So wird die Ausführung aktiviert:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Neustarten des Waagent-Diensts
+Neustarten des Waagent-Diensts
 
 ```bash
 sudo /etc/init.d/waagent restart
@@ -238,23 +228,23 @@ sudo /etc/init.d/waagent restart
 
 ### <a name="suse-sles-12-sp2"></a>SUSE Linux Enterprise Server (SLES) 12 SP2
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Suchen nach verfügbaren Updates
+Suchen nach verfügbaren Updates
 
 Die Ausgabe des vorherigen Befehls zeigt dies, ob das Paket auf dem neuesten Stand ist.
 
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist 
+Sicherstellen, dass AutoUpdate aktiviert ist 
 
 Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
 
@@ -275,7 +265,7 @@ So wird die Ausführung aktiviert:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Neustarten des Waagent-Diensts
+Neustarten des Waagent-Diensts
 
 ```bash
 sudo systemctl restart waagent.service
@@ -285,51 +275,47 @@ sudo systemctl restart waagent.service
 
 ### <a name="debian-7-jesse-debian-7-stretch"></a>Debian 7 „Jessie“/Debian 7 „Stretch“
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 dpkg -l | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Aktualisieren des Paketcaches
+Aktualisieren des Paketcaches
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="enable-agent-auto-update"></a>Aktivieren der AutoUpdate-Funktion des Agents
-Da es sich bei dieser Debian-Version nicht um die Version 2.0.16 oder höher handelt, ist die AutoUpdate-Funktion nicht verfügbar. Die Ausgabe des oben genannten Befehls zeigt an, ob das Paket auf dem neuesten Stand ist.
-
-
+Aktivieren der automatischen Aktualisierung des Agents. Da es sich bei dieser Debian-Version nicht um Version 2.0.16 oder höher handelt, ist die AutoUpdate-Funktion nicht verfügbar. Die Ausgabe des oben genannten Befehls zeigt an, ob das Paket auf dem neuesten Stand ist.
 
 ### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 „Jessie“/Debian 9 „Stretch“
 
-#### <a name="check-your-current-package-version"></a>Überprüfen der aktuellen Paketversion
+Überprüfen der aktuellen Paketversion
 
 ```bash
 apt list --installed | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Aktualisieren des Paketcaches
+Aktualisieren des Paketcaches
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installieren der aktuellen Paketversion
+Installieren der aktuellen Paketversion
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist
-Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
+Sicherstellen, dass AutoUpdate aktiviert ist. Überprüfen, ob die Option aktiviert ist:
 
 ```bash
 cat /etc/waagent.conf
@@ -400,7 +386,7 @@ Installieren Sie wget (bei einigen Distributionen nicht standardmäßig installi
 ### <a name="1-download-the-latest-version"></a>1. Herunterladen der aktuellen Version
 Öffnen Sie [die Version des Azure Linux-Agent auf GitHub](https://github.com/Azure/WALinuxAgent/releases) auf einer Webseite, und finden Sie die neueste Versionsnummer heraus. (Die aktuelle Version finden Sie durch Eingabe von `waagent --version`.)
 
-#### <a name="for-version-22x-or-later-type"></a>Geben Sie für Version 2.2.x oder höher Folgendes ein:
+Geben Sie für Version 2.2.x oder höher Folgendes ein:
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.x.zip
 unzip v2.2.x.zip
@@ -417,16 +403,13 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2. Installieren des Azure Linux-Agents
 
-#### <a name="for-version-22x-use"></a>Verwenden Sie für Version 2.2.x Folgendes:
-Möglicherweise müssen Sie zuerst das Paket `setuptools` installieren (weitere Informationen finden Sie [hier](https://pypi.python.org/pypi/setuptools)). Führen Sie dann Folgendes aus:
+Verwenden Sie für Version 2.2.x Folgendes: Möglicherweise müssen Sie zuerst das Paket `setuptools` installieren (weitere Informationen finden Sie [hier](https://pypi.python.org/pypi/setuptools)). Führen Sie dann Folgendes aus:
 
 ```bash
 sudo python setup.py install
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Sicherstellen, dass AutoUpdate aktiviert ist
-
-Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
+Sicherstellen, dass AutoUpdate aktiviert ist. Überprüfen Sie zunächst, ob die Funktion aktiviert ist:
 
 ```bash
 cat /etc/waagent.conf

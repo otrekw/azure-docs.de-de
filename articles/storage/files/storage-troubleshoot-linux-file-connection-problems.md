@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707644"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716002"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
@@ -49,7 +49,7 @@ Häufige Ursachen für dieses Problem:
 
 ### <a name="solution"></a>Lösung
 
-Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089), um das Problem zu beheben. Dieses Tool ermöglicht Folgendes:
+Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux), um das Problem zu beheben. Dieses Tool ermöglicht Folgendes:
 
 * Überprüfen der Clientausführungsumgebung
 * Erkennen der nicht kompatiblen Clientkonfiguration, die zu einem Zugriffsfehler für Azure Files führen würde
@@ -150,7 +150,7 @@ Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speiche
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
-Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Schützen Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (Azure RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Eine Datei oder ein Verzeichnis in einer Azure-Dateifreigabe kann nicht gelöscht werden
@@ -298,6 +298,32 @@ Dieser Fehler wird protokolliert, weil Azure Files [SMB Multichannel derzeit nic
 
 ### <a name="solution"></a>Lösung
 Dieser Fehler kann ignoriert werden.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Kein Zugriff auf Ordner oder Dateien möglich, deren Name ein Leerzeichen oder einen Punkt am Ende hat
+
+Sie können während der Bereitstellung unter Linux nicht auf Ordner oder Dateien der Azure-Dateifreigabe zugreifen. Befehle wie „du“ und „ls“ und/oder Anwendungen von Drittanbietern können während des Zugriffs auf die Freigabe mit dem Fehler „Datei oder Verzeichnis nicht vorhanden“ fehlschlagen. Das Hochladen von Dateien in die genannten Ordner über das Portal ist jedoch möglich.
+
+### <a name="cause"></a>Ursache
+
+Die Ordner oder Dateien wurden von einem System hochgeladen, das die Zeichen am Ende des Namens in ein anderes Zeichen codiert. Dateien, die von einem Macintosh-Computer hochgeladen wurden, haben möglicherweise das Zeichen „0xf028“ oder „0xf029“ anstelle von „0x20“ (Leerzeichen) oder „0x2E“ (Punkt).
+
+### <a name="solution"></a>Lösung
+
+Verwenden Sie die mapchars-Option für die Freigabe, während Sie diese unter Linux bereitstellen: 
+
+nicht:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+sondern:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

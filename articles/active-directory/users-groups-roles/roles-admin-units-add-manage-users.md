@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen, Entfernen und Auflisten von Benutzern in Verwaltungseinheiten (Vorschau) – Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen, Entfernen und Auflisten von Benutzern in einer Verwaltungseinheit – Azure Active Directory | Microsoft-Dokumentation
 description: Verwalten von Benutzern und deren Rollenberechtigungen in einer Verwaltungseinheit in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850927"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818155"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Benutzern in einer Verwaltungseinheit in Azure Active Directory
 
@@ -31,30 +31,39 @@ Die Schritte zum Vorbereiten auf den Einsatz von PowerShell und Microsoft Graph 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Es gibt zwei Möglichkeiten, Benutzer einer Verwaltungseinheit zuzuweisen.
+Sie können Benutzer Verwaltungseinheiten einzeln oder in einem Massenvorgang zuweisen.
 
-1. Individuelle Zuweisung
+- Einzelne Zuweisung aus einem Benutzerprofil
 
-    1. Sie können im Portal zu Azure AD wechseln und „Benutzer“ auswählen. Wählen Sie dann den Benutzer aus, der einer Verwaltungseinheit zugewiesen werden soll. Anschließend können Sie im linken Bereich die Verwaltungseinheiten auswählen. Der Benutzer kann einer oder mehreren Verwaltungseinheiten zugewiesen werden. Dazu klicken Sie auf „Der Verwaltungseinheit zuweisen“ und wählen die Verwaltungseinheiten aus, denen der Benutzer zugewiesen werden soll.
+   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
+   1. Wählen Sie **Benutzer** und dann den Benutzer aus, der einer administrativen Einheit zugewiesen werden soll, um dessen Profil zu öffnen.
+   1. Wählen Sie **Verwaltungseinheiten** aus. Der Benutzer kann einer oder mehreren Verwaltungseinheiten zugewiesen werden. Wählen Sie dazu **Der Verwaltungseinheit zuweisen** und dann die Verwaltungseinheiten aus, denen der Benutzer zugewiesen werden soll.
 
        ![Auswählen von „Hinzufügen“ und Eingeben eines Namens für die Verwaltungseinheit](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. Sie können im Portal zu Azure AD wechseln und im linken Bereich „Verwaltungseinheiten“ auswählen. Wählen Sie dann die Verwaltungseinheit aus, der die Benutzer zugewiesen werden sollen. Wählen Sie im linken Bereich „Alle Benutzer“ aus, und wählen Sie dann „Mitglied hinzufügen“ aus. Sie können dann den Vorgang fortsetzen und im rechten Bereich einen oder mehrere Benutzer auswählen, die der Verwaltungseinheit zugewiesen werden sollen.
+- Einzelne Zuweisung aus einer Verwaltungseinheit
 
-        ![Auswählen einer Verwaltungseinheit und Auswählen von „Mitglied hinzufügen“](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
+   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
+   1. Wählen Sie **Verwaltungseinheiten** und dann die Verwaltungseinheit aus, der die Benutzer zugewiesen werden sollen.
+   1. Wählen Sie **Alle Benutzer** und dann **Mitglied hinzufügen** aus, um im Bereich **Mitglied hinzufügen** mindestens einen Benutzer auszuwählen, der der Verwaltungseinheit zugewiesen werden soll.
 
-1. Massenzuweisung
+        ![Auswählen einer Verwaltungseinheit und dann Auswählen von „Mitglied hinzufügen“](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-    Wechseln Sie im Portal zu „Azure AD“, und wählen Sie „Verwaltungseinheiten“ aus. Wählen Sie die Verwaltungseinheit aus, der Benutzer hinzugefügt werden sollen. Klicken Sie zum Fortfahren auf „Alle Benutzer > Mitglieder aus CSV-Datei hinzufügen“. Sie können dann die CSV-Vorlage herunterladen und die Datei bearbeiten. Das Format ist einfach. In jeder Zeile muss jeweils ein Benutzerprinzipalname (UPN) hinzugefügt werden. Nachdem Sie die Datei fertiggestellt haben, speichern Sie sie an einem geeigneten Speicherort. Sie wird dann in Schritt 3 hochgeladen, wie in der Momentaufnahme hervorgehoben.
+- Massenzuweisung
+
+   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
+   1. Wählen Sie **Verwaltungseinheiten** aus.
+   1. Wählen Sie die Verwaltungseinheit aus, der Benutzer hinzugefügt werden sollen.
+   1. Öffnen Sie **Alle Benutzer** > **Mitglieder aus CSV-Datei hinzufügen**. Anschließend können Sie die CSV-Vorlage herunterladen und die Datei bearbeiten. Das Format ist einfach. In jeder Zeile muss jeweils ein Benutzerprinzipalname hinzugefügt werden. Sobald die Datei bereit ist, speichern Sie sie an einem geeigneten Speicherort, und laden Sie sie dann als Teil dieses Schritts hoch.
 
     ![Massenzuweisung von Benutzern zu einer Verwaltungseinheit](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 ```
 
 In diesem Beispiel wird das Cmdlet „Add-AzureADAdministrativeUnitMember“ zum Hinzufügen des Benutzers zur Verwaltungseinheit verwendet. Die Objekt-ID der Verwaltungseinheit, der der Benutzer hinzugefügt werden soll, und die Objekt-ID des hinzuzufügenden Benutzers werden als Argument verwendet. Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert werden.
@@ -66,7 +75,7 @@ Http request
 POST /administrativeUnits/{Admin Unit id}/members/$ref
 Request body
 {
-  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
 }
 ```
 
@@ -74,7 +83,7 @@ Beispiel:
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
 }
 ```
 
@@ -82,24 +91,27 @@ Beispiel:
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Im Azure-Portal können Sie das Profil eines Benutzers öffnen, indem Sie zu „Azure AD > Benutzer“ wechseln. Klicken Sie auf den Benutzer, um das Profil des Benutzers zu öffnen.
+Im Azure-Portal können Sie das Profil eines Benutzers öffnen durch:
 
-![Öffnen eines Benutzerprofils in Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+1. Öffnen von **Azure AD** > **Benutzer**.
 
-Wählen Sie im linken Bereich **Verwaltungseinheiten** aus, um die Liste der Verwaltungseinheiten anzuzeigen, denen der Benutzer zugewiesen wurde.
+1. Wählen Sie den Benutzer aus, um dessen Profil zu öffnen.
 
-![Auflisten der Verwaltungseinheiten für einen Benutzer](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
+1. Wählen Sie **Verwaltungseinheiten** aus, um die Liste der Verwaltungseinheiten anzuzeigen, denen der Benutzer zugewiesen wurde.
+
+   ![Auflisten der Verwaltungseinheiten für einen Benutzer](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+Hinweis: „Get-AzureADAdministrativeUnitMember“gibt standardmäßig nur 100 Mitglieder zurück. Sie können „-All $true“ hinzufügen, um weitere Mitglieder abzurufen.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
-https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-au"></a>Entfernen eines einzelnen Benutzers aus einer Verwaltungseinheit
@@ -117,12 +129,12 @@ Sie können auch in **Azure AD** > **Verwaltungseinheiten** einen Benutzer entfe
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 ```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-   https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<user-id>/ $ref
+   https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/ $ref
 
 ## <a name="bulk-remove-more-than-one-user"></a>Massenentfernung von mehreren Benutzern
 

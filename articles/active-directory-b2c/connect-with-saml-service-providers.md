@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 10/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611603"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740376"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -252,6 +252,9 @@ Die endgültige Richtliniendatei der vertrauenden Seite sollte wie folgt aussehe
   </RelyingParty>
 </TrustFrameworkPolicy>
 ```
+
+> [!NOTE]
+> Beim Implementieren anderer Typen von Benutzerflows (z. B. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung) entspricht der Prozess im Wesentlichen dem in diesem Abschnitt beschriebenen Prozess. In Schritt 4 oben ändern Sie den letzten Schritt der User Journey von `JWTIssuer` in `Saml2AssertionIssuer`. Und in Schritt 6 oben ändern Sie im Abschnitt der vertrauenden Seite das **Protokoll** von `OpenIdConnect` in `SAML2`.
 
 ### <a name="32-upload-and-test-your-policy-metadata"></a>3.2 Hochladen und Testen der Richtlinienmetadaten
 
