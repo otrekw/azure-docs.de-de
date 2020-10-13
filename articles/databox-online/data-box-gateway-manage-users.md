@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38b4b701329cf35088d797b095fa3caca46f55b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338973"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743827"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Verwalten von Benutzern auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal
 
@@ -45,7 +45,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer hinzuzufügen:
 
 2. Geben Sie den Benutzernamen und das Kennwort für den Benutzer an, den Sie hinzufügen möchten. Bestätigen Sie das Kennwort, und klicken Sie auf **Hinzufügen**.
 
-    ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Klicken auf „Benutzer 2 hinzufügen“](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > Folgende Benutzer sind für das System reserviert und dürfen nicht verwendet werden: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
@@ -70,11 +70,11 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer zu löschen:
 
 2. Bestätigen Sie den Löschvorgang, wenn Sie dazu aufgefordert werden. 
 
-   ![Löschen eines Benutzers](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![Löschen eines Benutzers 2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 Die Benutzerliste wird nach dem Löschen des Benutzers entsprechend aktualisiert.
 
-![Löschen eines Benutzers](media/data-box-gateway-manage-users/delete-user-3.png)
+![Löschen eines Benutzers 3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

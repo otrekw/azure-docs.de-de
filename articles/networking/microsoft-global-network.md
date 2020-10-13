@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280901"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398388"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
 Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hoch entwickelte Architektur, die sich über mehr als 160.000 Meilen erstreckt, verbindet unsere Rechenzentren und Kunden. 
  
-Täglich stellen Kunden rund um die Welt Verbindungen mit Microsoft Azure, Bing, Dynamics 365, Office 365, XBox und vielen anderen Diensten her und übermitteln Billionen von Anforderungen. Unabhängig vom Typ erwarten die Kunden sofortige Zuverlässigkeit und Reaktion von unseren Diensten. 
+Täglich stellen Kunden rund um die Welt Verbindungen mit Microsoft Azure, Bing, Dynamics 365, Microsoft 365, XBox und vielen anderen Diensten her und übermitteln Billionen von Anforderungen. Unabhängig vom Typ erwarten die Kunden sofortige Zuverlässigkeit und Reaktion von unseren Diensten. 
  
 Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) ist ein zentraler Bestandteil für die Bereitstellung einer großartigen Cloudumgebung. Durch die Verbindung unserer Microsoft-[Rechenzentren](https://azure.microsoft.com/global-infrastructure/) in 54 Azure-Regionen und durch das große Netz von Edgeknoten, die strategisch auf der ganzen Welt positioniert sind, bietet unser globales Netzwerk sowohl die Verfügbarkeit, Kapazität als auch die Flexibilität, um sämtliche Anforderungen zu erfüllen.
 
