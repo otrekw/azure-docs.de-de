@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple – Einrichten der privaten Cloud als Standort für die Notfallwiederherstellung mit VMware Site Recovery Manager
-description: Hier wird beschrieben, wie Sie Ihre private CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads einrichten.
+description: Hier wird beschrieben, wie Sie Ihre private CloudSimple-Cloud als Standort für die Notfallwiederherstellung mithilfe von VMware Site Recovery Manager einrichten.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267056"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Einrichten der privaten Cloud als Notfallwiederherstellungsziel mit VMware Site Recovery Manager
 

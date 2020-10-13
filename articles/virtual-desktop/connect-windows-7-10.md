@@ -3,52 +3,46 @@ title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (Windows 10 oder
 description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Windows Desktop-Clients.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287337"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 
-> Gilt für: Windows 7, Windows 10 und Windows 10 IoT Enterprise
+> Gilt für: Windows 10, Windows 10 IoT Enterprise und Windows 7
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
 
-Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 7, Windows 10 und Windows 10 IoT Enterprise auf Windows Virtual Desktop-Ressourcen zugreifen. Der Client unterstützt weder Windows 8 noch Windows 8.1.
-
->[!NOTE]
->Der Windows-Client verwendet standardmäßig automatisch Windows Virtual Desktop (klassisch). Wenn der Client jedoch erkennt, dass der Benutzer auch über Azure Resource Manager-Ressourcen verfügt, werden die Ressourcen automatisch hinzugefügt, oder der Benutzer wird benachrichtigt, dass sie verfügbar sind.
-
-> [!IMPORTANT]
-> Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
-
-> [!IMPORTANT]
-> Windows Virtual Desktop verfügt derzeit nicht über Unterstützung für den Remotedesktopclient aus dem Windows Store.
+Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 10, Windows 10 IoT Enterprise und Windows 7 auf Windows Virtual Desktop-Ressourcen zugreifen. Der Client unterstützt weder Windows 8 noch Windows 8.1.
 
 ## <a name="install-the-windows-desktop-client"></a>Installieren des Windows Desktop-Clients
 
 Wählen Sie den Client aus, der Ihrer Windows-Version entspricht:
 
 - [Windows (64-Bit)](https://go.microsoft.com/fwlink/?linkid=2068602)
-- [Windows (32-Bit)](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows 32-Bit](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Sie können den Client für den aktuellen Benutzer installieren. Dafür sind keine Administratorrechte erforderlich. Der Administrator kann den Client aber auch so installieren und konfigurieren, dass alle Benutzer auf dem Gerät darauf zugreifen können.
 
 Nach der Installation kann der Client über das Startmenü gestartet werden, indem Sie nach **Remote Desktop** suchen.
 
+> [!IMPORTANT]
+> Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
+
 ## <a name="subscribe-to-a-workspace"></a>Abonnieren eines Arbeitsbereichs
 
-Es gibt zwei Möglichkeiten, einen Arbeitsbereich zu abonnieren. Der Client kann versuchen, die Ressourcen zu ermitteln, die Ihnen über Ihr Geschäfts-, Schul- oder Unikonto zur Verfügung stehen. Alternativ können Sie die URL, unter der sich die Ressourcen befinden, direkt angeben, falls der Client diese nicht finden kann. Sobald Sie einen Arbeitsbereich abonniert haben, können Sie auf eine der folgenden Arten Ressourcen starten:
+Es gibt zwei Möglichkeiten zum Abonnieren eines Arbeitsbereichs. Der Client kann versuchen, die Ressourcen, die dir über dein Geschäfts- oder Schul-/Unikonto zur Verfügung stehen, zu ermitteln, oder du kannst die URL, unter der deine Ressourcen zu finden sind, direkt angeben, falls der Client sie nicht finden kann. Sobald du einen Arbeitsbereich abonniert hast, kannst du Ressourcen mit einer der folgenden Methoden starten:
 
-- Navigieren Sie zum Connection Center, und doppelklicken Sie auf eine Ressource, um diese zu starten.
-- Alternativ können Sie zum Startmenü navigieren und nach einem Ordner mit dem Namen des Arbeitsbereichs suchen oder den Ressourcennamen in die Suchleiste eingeben.
+- Wechsle zum Connection Center, und doppelklicke auf eine Ressource, um sie zu starten.
+- Alternativ kannst du zum Startmenü navigieren und nach einem Ordner mit dem Namen des Arbeitsbereichs suchen oder den Namen der Ressource in die Suchleiste eingeben.
 
 ### <a name="subscribe-with-a-user-account"></a>Abonnieren mit einem Benutzerkonto
 
@@ -56,11 +50,14 @@ Es gibt zwei Möglichkeiten, einen Arbeitsbereich zu abonnieren. Der Client kann
 2. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
 3. Die Ressourcen werden nach Arbeitsbereichen gruppiert im Connection Center angezeigt.
 
+>[!NOTE]
+>Der Windows-Client verwendet standardmäßig automatisch Windows Virtual Desktop (klassisch). Wenn der Client jedoch erkennt, dass der Benutzer auch über Azure Resource Manager-Ressourcen verfügt, werden die Ressourcen automatisch hinzugefügt, oder der Benutzer wird benachrichtigt, dass sie verfügbar sind.
+
 ### <a name="subscribe-with-a-url"></a>Abonnieren mit einer URL
 
 1. Klicken Sie auf der Hauptseite des Clients auf **Subscribe with URL** (Mit URL abonnieren).
 2. Geben Sie die Arbeitsbereichs-URL oder Ihre E-Mail-Adresse ein:
-   - Wenn Sie die **Arbeitsbereichs-URL** verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat. Wenn Sie über Windows Virtual Desktop auf Ressourcen zugreifen, können Sie eine der folgenden URLs verwenden:
+   - Verwende im Fall einer **Arbeitsbereichs-URL** diejenige, die du vom Administrator erhalten hast. Wenn du auf Ressourcen von Windows Virtual Desktop zugreifst, kannst du eine der folgenden URLs verwenden:
      - Windows Virtual Desktop (klassisch): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows Virtual Desktop: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows Virtual Desktop (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`

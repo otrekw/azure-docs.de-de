@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078995"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395990"
 ---
 # <a name="security-control-data-protection"></a>Sicherheitskontrolle: Datenschutz
 
@@ -74,7 +74,7 @@ Befolgen Sie ggf. die Empfehlungen von Azure Security Center zur Verschlüsselun
 
 Wenn für Ihren spezifischen Dienst in Azure keine Funktion verfügbar ist, verwenden Sie ein aktives Ermittlungstools eines Drittanbieters, um alle vertraulichen Informationen zu bestimmen, die von den Technologiesystemen des Unternehmens gespeichert, verarbeitet oder übertragen werden, einschließlich der Systeme, die sich vor Ort oder bei einem Remotedienstanbieter befinden, und um den Bestand an vertraulichen Informationen des Unternehmens zu aktualisieren.
 
-Verwenden Sie Azure Information Protection, um vertrauliche Informationen in Office 365-Dokumenten zu bestimmen.
+Verwenden Sie Azure Information Protection, um vertrauliche Informationen in Microsoft 365-Dokumenten zu bestimmen.
 
 Verwenden Sie Azure SQL Information Protection, um die Klassifizierung und Bezeichnung von Informationen zu unterstützen, die in Azure SQL-Datenbank gespeichert sind.
 

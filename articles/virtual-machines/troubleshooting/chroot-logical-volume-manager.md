@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361465"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problembehandlung bei einem virtuellen Linux-Computer ohne Zugriff auf die serielle Azure-Konsole und bei Verwendung von LVM (Logical Volume Manager) im Datenträgerlayout
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Befehle können zum Installieren, Entfernen und Aktualisieren von Software verwendet werden. Führen Sie eine Problembehandlung für die virtuellen Computer aus, um Fehler zu beheben.
 
 
-Führen Sie den Befehl lsblk aus. Mithilfe von ![chroot](./media/chroot-logical-volume-manager/chrooted.png) ist „/rescue“ nun „/“, und „/rescue/boot“ ist „/boot“.
+Führen Sie den Befehl „lsblk“ aus. „/rescue“ ist nun „/“, und „/rescue/boot“ ist „/boot“. ![Screenshot: Konsolenfenster mit dem Befehl „lsblk“ und der Ausgabestruktur](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Ausführen von Korrekturen
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *Exemplarische Vorgehensweise*
 
 Mit dem Befehl **grep** werden die Kernel aufgelistet, die in **grub.cfg** bekannt sind.
-![Kernel](./media/chroot-logical-volume-manager/kernels.png)
+![Screenshot: Konsolenfenster mit dem Ergebnis einer grep-Suche nach Kernels](./media/chroot-logical-volume-manager/kernels.png)
 
 **grub2-editenv list** gibt an, welcher Kernel beim nächsten Start geladen wird. ![Kernel-Standardwert](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ Führen Sie den Befehl **lvs** aus, um zu überprüfen, welche **logischen Volum
 
 Beenden Sie die **chroot**-Umgebung, und binden Sie das erforderliche **logische Volume**  ein.
 
-![Erweitert](./media/chroot-logical-volume-manager/advanced.png)
+![Screenshot: Konsolenfenster mit dem Befehl „lvs“, Einbinden des logischen Volumes](./media/chroot-logical-volume-manager/advanced.png)
 
 Greifen Sie dann erneut auf die **chroot**-Umgebung zu, indem Sie folgenden Befehl ausführen:
 

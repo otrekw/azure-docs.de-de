@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360530"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -218,8 +218,8 @@ Die Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.tar.gz** enthält e
 
 Die Registerkarte **Übersicht** enthält grundlegende Ausführungsdetails und Informationen zum virtuellen Computer. Auf der Registerkarte **Ergebnisse** finden Sie eine Zusammenfassung der Empfehlungen aus den verschiedenen Abschnitten des PerfInsights-Berichts.
 
-![Screenshot: PerfInsights-Bericht](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Screenshot: PerfInsights-Bericht](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Screenshot: Registerkarte „Übersicht“ des PerfInsights-Berichts.](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Screenshot: Registerkarte „Linux“ des PerfInsights-Berichts](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.

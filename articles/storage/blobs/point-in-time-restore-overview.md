@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32d0c44abed2d4ace4c8896922ed7f6ed8b596ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326098"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Point-in-Time-Wiederherstellung für Blockblobs
 
@@ -37,15 +37,8 @@ Nur ein Wiederherstellungsvorgang kann für ein Speicherkonto gleichzeitig ausge
 
 Der Vorgang **Restore Blob Ranges** gibt eine Wiederherstellungs-ID zurück, die den Vorgang eindeutig identifiziert. Um den Status einer Point-in-Time-Wiederherstellung zu überprüfen, wenden Sie den Vorgang **Get Restore Status** mit der Wiederherstellungs-ID an, die vom Vorgang **Restore Blob Ranges** zurückgegeben wird.
 
-Beachten Sie die folgenden Einschränkungen für Wiederherstellungsvorgänge:
-
-- Ein Block, der über [Put Block](/rest/api/storageservices/put-block) oder [Put Block from URL](/rest/api/storageservices/put-block-from-url) hochgeladen, aber nicht über [Put Block List](/rest/api/storageservices/put-block-list) committet wurde, ist nicht Teil eines Blobs und wird daher nicht als Teil eines Wiederherstellungsvorgangs wiederhergestellt.
-- Ein Blob mit einer aktiven Leasedauer kann nicht wiederhergestellt werden. Wenn ein Blob mit einer aktiven Leasedauer in den Bereich der wiederherzustellenden Blobs eingeschlossen ist, schlägt der Wiederherstellungsvorgang atomisch fehl.
-- Momentaufnahmen werden nicht im Rahmen eines Wiederherstellungsvorgangs erstellt oder gelöscht. Nur das Basisblob wird in seinem vorherigen Zustand wiederhergestellt.
-- Wenn ein Blob innerhalb des Zeitraums zwischen dem aktuellen Moment und dem Wiederherstellungspunkt zwischen den heißen und kalten Speicherebenen verschoben wurde, wird das Blob auf der vorherigen Ebene wiederhergestellt. Ein Blob, das in die Archivebene verschoben wurde, wird jedoch nicht wiederhergestellt.
-
 > [!IMPORTANT]
-> Wenn Sie einen Wiederherstellungsvorgang ausführen, blockiert Azure Storage Datenvorgänge für die Blobs in den wiederhergestellten Bereichen für die Dauer des Vorgangs. Lese-, Schreib- und Löschvorgänge werden am primären Speicherort blockiert. Aus diesem Grund werden Vorgänge wie das Auflisten von Containern im Azure-Portal während des Wiederherstellungsvorgangs möglicherweise nicht erwartungsgemäß ausgeführt.
+> Wenn Sie einen Wiederherstellungsvorgang ausführen, blockiert Azure Storage für die Dauer dieses Vorgangs Datenvorgänge für die Blobs in den Bereichen, die wiederhergestellt werden. Lese-, Schreib- und Löschvorgänge werden am primären Speicherort blockiert. Aus diesem Grund werden Vorgänge wie das Auflisten von Containern im Azure-Portal während des Wiederherstellungsvorgangs möglicherweise nicht erwartungsgemäß ausgeführt.
 >
 > Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 
@@ -76,9 +69,12 @@ Um einen Wiederherstellungsvorgang zu initiieren, muss ein Client über Schreibb
 
 Die Point-in-Time-Wiederherstellung für Blockblobs weist die folgenden Einschränkungen und bekannten Probleme auf:
 
-- Nur Blockblobs in einem Standardspeicherkonto vom Typ „Universell V2“ können im Rahmen eines Point-in-Time-Wiederherstellungsvorgangs wiederhergestellt werden. Anfügeblobs, Seitenblobs und Premium-Blockblobs werden nicht wiederhergestellt. Wenn Sie während der Beibehaltungsdauer einen Container gelöscht haben, wird dieser Container nicht mit dem Point-in-Time-Wiederherstellungsvorgang wiederhergestellt. Weitere Informationen zum Schutz von Containern vor dem Löschen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
-- Nur Blockblobs auf der heißen oder kalten Speicherebene können in einem Point-in-Time-Wiederherstellungsvorgang wiederhergestellt werden. Das Wiederherstellen von Blockblobs auf Archivebene wird nicht unterstützt. Wenn ein Blob aus der heißen Speicherebene z. B. vor zwei Tagen in die Archivebene verschoben wurde und ein Wiederherstellungsvorgang für einen Punkt vor drei Tagen erfolgt, wird das Blob nicht in der heißen Zugriffsebene wiederhergestellt. Um ein archiviertes Blob wiederherzustellen, verschieben Sie es zuerst aus der Archivebene.
-- Wenn ein Blockblob in dem wiederherzustellenden Bereich über eine aktive Lease verfügt, verursacht der Point-in-Time-Wiederherstellungsvorgang einen Fehler. Unterbrechen Sie alle aktiven Leases, bevor Sie den Wiederherstellungsvorgang initiieren.
+- Nur Blockblobs in einem Standardspeicherkonto vom Typ „Universell V2“ können im Rahmen eines Point-in-Time-Wiederherstellungsvorgangs wiederhergestellt werden. Anfügeblobs, Seitenblobs und Premium-Blockblobs werden nicht wiederhergestellt. 
+- Wenn Sie während der Beibehaltungsdauer einen Container gelöscht haben, wird dieser Container nicht mit dem Point-in-Time-Wiederherstellungsvorgang wiederhergestellt. Bei dem Versuch, einen Bereich von Blobs wiederherzustellen, der Blobs in einem gelöschten Container beinhaltet, tritt bei der Zeitpunktwiederherstellung ein Fehler auf. Weitere Informationen zum Schutz von Containern vor dem Löschen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
+- Wenn ein Blob innerhalb des Zeitraums zwischen dem aktuellen Moment und dem Wiederherstellungspunkt zwischen den heißen und kalten Speicherebenen verschoben wurde, wird das Blob auf der vorherigen Ebene wiederhergestellt. Das Wiederherstellen von Blockblobs auf Archivebene wird nicht unterstützt. Wenn ein Blob aus der heißen Speicherebene z. B. vor zwei Tagen in die Archivebene verschoben wurde und ein Wiederherstellungsvorgang für einen Punkt vor drei Tagen erfolgt, wird das Blob nicht in der heißen Zugriffsebene wiederhergestellt. Um ein archiviertes Blob wiederherzustellen, verschieben Sie es zuerst aus der Archivebene. Weitere Informationen finden Sie unter [Aktivieren von Blobdaten aus der Archivspeicherebene](storage-blob-rehydration.md).
+- Ein Block, der über [Put Block](/rest/api/storageservices/put-block) oder [Put Block from URL](/rest/api/storageservices/put-block-from-url) hochgeladen, aber nicht über [Put Block List](/rest/api/storageservices/put-block-list) committet wurde, ist nicht Teil eines Blobs und wird daher nicht als Teil eines Wiederherstellungsvorgangs wiederhergestellt.
+- Ein Blob mit einer aktiven Leasedauer kann nicht wiederhergestellt werden. Wenn ein Blob mit einer aktiven Leasedauer in den Bereich der wiederherzustellenden Blobs eingeschlossen ist, schlägt der Wiederherstellungsvorgang atomisch fehl. Unterbrechen Sie alle aktiven Leases, bevor Sie den Wiederherstellungsvorgang initiieren.
+- Momentaufnahmen werden nicht im Rahmen eines Wiederherstellungsvorgangs erstellt oder gelöscht. Nur das Basisblob wird in seinem vorherigen Zustand wiederhergestellt.
 - Die Wiederherstellung flachen und hierarchischen Namespaces von Azure Data Lake Storage Gen2 wird nicht unterstützt.
 
 > [!IMPORTANT]

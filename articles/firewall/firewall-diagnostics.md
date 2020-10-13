@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/17/2020
 ms.author: victorh
-ms.openlocfilehash: 92fc4252dd52236e2cc4e8fdfdd2afa32059a721
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320641"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Überwachen von Azure Firewall-Protokollen und -Metriken
 
@@ -35,14 +35,17 @@ Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten daue
 1. Öffnen Sie im Azure-Portal die Ressourcengruppe Ihrer Firewall, und klicken Sie auf die Firewall.
 2. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
 
-   Für Azure Firewall sind zwei dienstspezifische Protokolle verfügbar:
+   Für Azure Firewall sind vier dienstspezifische Protokolle verfügbar:
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
+   * AzureFirewallThreatIntelLog
+   * AzureFirewallDnsProxy
+
 
 3. Klicken Sie auf **Diagnoseeinstellung hinzufügen**. Auf der Seite **Diagnoseeinstellungen** befinden sich die Einstellungen für die Diagnoseprotokolle.
 5. Da die Protokolle in diesem Beispiel in Azure Monitor-Protokollen gespeichert werden, geben Sie **Firewall log analytics** als Name ein.
-6. Klicken Sie unter **Protokoll** auf **AzureFirewallApplicationRule** und **AzureFirewallNetworkRule**, um Protokolle für Anwendungs- und Netzwerkregeln zu erfassen.
+6. Wählen Sie unter **Protokoll** die Einträge **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog** und **AzureFirewallDnsProxy** aus, um die Protokolle zu erfassen.
 7. Klicken Sie auf **An Log Analytics senden**, um Ihren Arbeitsbereich zu konfigurieren.
 8. Wählen Sie Ihr Abonnement aus.
 9. Wählen Sie **Speichern** aus.

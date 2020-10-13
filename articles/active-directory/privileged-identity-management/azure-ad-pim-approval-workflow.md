@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7e0f74f98adcc8a4e8aabc96f7f35c9c55ae277f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421534"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536357"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM
 
@@ -58,7 +58,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Suchen Sie nach der zu genehmigenden Anforderung, und wählen Sie diese aus. Daraufhin wird eine Seite zum Genehmigen oder Ablehnen von Anforderungen angezeigt.
 
-    ![Anforderungen genehmigen: Bereich zum Genehmigen oder Ablehnen von Anforderungen mit Details und dem Feld „Begründung“](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Screenshot: Seite „Anforderungen genehmigen – Azure AD-Rollen“](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
 1. Geben Sie im Feld **Begründung** die geschäftliche Begründung ein.
 

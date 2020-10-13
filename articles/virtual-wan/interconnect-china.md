@@ -1,22 +1,22 @@
 ---
 title: Herstellen einer Verbindung mit China über Azure Virtual WAN und einen sicheren Hub
-description: Sie erhalten Informationen darüber, wie Sie die per Virtual WAN automatisierte skalierbare Konnektivität zwischen Branches einrichten, über verfügbare Regionen und Partner.
+description: Hier erfahren Sie, wie Sie eine Verbindung mit China über Azure Virtual WAN und einen geschützten Hub herstellen.
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747613"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399107"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Herstellen einer Verbindung mit China über Azure Virtual WAN und einen sicheren Hub
 
-Bei der Betrachtung der allgemeinen Automobil-, Fertigungs- und Logistikbranche sowie anderer Institutionen wie Botschaften stellt sich oft die Frage, wie die Verbindung mit China verbessert werden kann. Diese Verbesserungen sind hauptsächlich für die Verwendung von Clouddiensten wie Office 365, Azure Global Services oder die Anbindung von Branches in China an einen Kundenbackbone relevant.
+Bei der Betrachtung der allgemeinen Automobil-, Fertigungs- und Logistikbranche sowie anderer Institutionen wie Botschaften stellt sich oft die Frage, wie die Verbindung mit China verbessert werden kann. Diese Verbesserungen sind hauptsächlich für die Verwendung von Clouddiensten wie Microsoft 365, Azure Global Services oder die Anbindung von Branches in China an einen Kundenbackbone relevant.
 
 In den meisten Fällen kämpfen Kunden gegen hohe Latenz, geringe Bandbreite, instabile Verbindung und hohe Kosten bei Verbindungen von außen (z. B. von Europa oder den USA) nach China.
 
@@ -44,9 +44,9 @@ Abhängig vom Anbieter und Ihren Anforderungen müssen Sie nun einen der folgend
 * Softwaredefiniertes WAN (SDWAN)
 * Dedizierter Internetzugang
 
-Als nächstes müssen Sie mit diesem Anbieter eine Abzweigung zum globalen Netzwerk von Microsoft und dem zugehörigen Umkreisnetzwerk in Hongkong, nicht in Peking (Beijing) oder Schanghai, vereinbaren. In diesem Fall ist Hongkong wegen der physischen Verbindung und der Position in China sehr wichtig.
+Als nächstes müssen Sie mit diesem Anbieter eine Abzweigung zum globalen Netzwerk von Microsoft und dem zugehörigen Umkreisnetzwerk in Hongkong, nicht in Peking oder Schanghai, vereinbaren. In diesem Fall ist Hongkong wegen der physischen Verbindung und der Position in China sehr wichtig.
 
-Obwohl die meisten Kunden denken, dass Singapur für die Verbindung am besten geeignet ist, da es bei der Betrachtung der Karte näher an China liegt, ist dies nicht richtig. Wenn Sie den Netzwerkglasfaserleitungen auf der Karte folgen, werden fast alle Netzwerkverbindungen über Peking (Beijing), Schanghai und Hongkong geleitet. Deshalb ist Hongkong eine bessere Wahl für Verbindungen mit China.
+Obwohl die meisten Kunden denken, dass Singapur für die Verbindung am besten geeignet ist, da es bei der Betrachtung der Karte näher an China liegt, ist dies nicht richtig. Wenn Sie den Netzwerkglasfaserleitungen auf der Karte folgen, werden fast alle Netzwerkverbindungen über Peking, Schanghai und Hongkong geleitet. Deshalb ist Hongkong eine bessere Wahl für Verbindungen mit China.
 
 Abhängig vom Anbieter können Sie unterschiedliche Dienstangebote erhalten. In der folgenden Tabelle finden Sie ein Beispiel für Anbieter und dem jeweils angebotenen Dienst, basierend auf den Informationen zum Zeitpunkt, zu dem dieser Artikel verfasst wurde.
 
@@ -95,7 +95,7 @@ Die folgende Abbildung zeigt beide Beispiele für dieses Szenario.
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Sichere Internetabzweigung für Office 365
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Sichere Internetabzweigung für Microsoft 365
 
 Ein weiterer Aspekt ist die Netzwerksicherheit und die Protokollierung für den Einstiegspunkt zwischen China und der über Virtual WAN angebundenen Backbonekomponente und dem Kundenbackbone. In den meisten Fällen ist es erforderlich, eine Abzweigung zum Internet in Hongkong vorzusehen, um das Microsoft-Umkreisnetzwerk und so die Azure Front Door-Server, die für Microsoft 365-Dienste verwendet werden, direkt zu erreichen.
 
@@ -109,7 +109,7 @@ Die folgende Abbildung zeigt ein Beispiel für dieses Szenario:
 
 Abhängig von Ihrer Auswahl für die Verbindung nach Hongkong kann sich die Gesamtarchitektur geringfügig ändern. In diesem Abschnitt werden drei verfügbare Architekturen mit unterschiedlichen Kombinationen von VPN oder SDWAN und/oder ExpressRoute gezeigt.
 
-Alle beschriebenen Optionen verwenden den sicheren Azure Virtual WAN-Hub für die direkte M365-Konnektivität in Hongkong. Diese Architekturen unterstützen auch die Complianceanforderungen für [Office 365 Multi-Geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) und sorgen dafür, dass der Datenverkehr in der Nähe des nächsten Office 365 Front Door-Standorts bleibt. So wird auch eine Verbesserung bei der Verwendung von Microsoft 365 ausgehend von China erreicht.
+Alle beschriebenen Optionen verwenden den geschützten Azure Virtual WAN-Hub für die direkte Microsoft 365-Konnektivität in Hongkong. Diese Architekturen unterstützen auch die Complianceanforderungen für [Microsoft 365 Multi-Geo](/microsoft-365/enterprise/microsoft-365-multi-geo) und sorgen dafür, dass der Datenverkehr in der Nähe des nächsten Azure Front Door-Standorts bleibt. So wird auch eine Verbesserung bei der Verwendung von Microsoft 365 ausgehend von China erreicht.
 
 Wenn Sie Azure Virtual WAN zusammen mit Internetverbindungen verwenden, kann jede Verbindung von zusätzlichen Diensten wie [Microsoft Azure Peering Services (MAPS)](https://docs.microsoft.com/azure/peering-service/about) profitieren. MAPS wurde erstellt, um den Datenverkehr zu optimieren, der von externen Internetdienstanbietern an das globale Netzwerk von Microsoft geht.
 

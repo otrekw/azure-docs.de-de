@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314877"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -74,7 +74,7 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Funktionen für die Implementierung von Zeitreisen. |
 > | [uuid-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Generiert universell eindeutige Bezeichner (UUIDs) |
 
-### <a name="hyperscale-extensions"></a>Hyperscale-Erweiterungen
+### <a name="hyperscale-citus-extensions"></a>Hyperscale (Citus)-Erweiterungen
 
 > [!div class="mx-tableFixed"]
 > | **Erweiterung** | **Beschreibung** |

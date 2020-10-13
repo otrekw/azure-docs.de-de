@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088560"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361346"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Verwenden von PerfInsights in Azure
 
@@ -259,8 +259,8 @@ In der Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.zip** finden Sie
 
 Wählen Sie die Registerkarte **Ergebnisse**.
 
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-finding-tab.png)
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-findings.png)
+![Screenshot: Registerkarte „Übersicht“ des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-finding-tab.png)
+![Screenshot: Registerkarte „Speicher“ des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.

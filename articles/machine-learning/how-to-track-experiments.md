@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7eaa2fbe6033f801a252f6f2c7afa5eb726bce2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318244"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Aktivieren der Protokollierung in Azure ML-Trainingsausführungen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Mit dem Python-SDK für Azure Machine Learning können Sie Echtzeitinformationen protokollieren, indem Sie sowohl das standardmäßige Python-Protokollierungspaket als auch SDK-spezifische Funktionen verwenden. Sie können lokal protokollieren und Protokolle an Ihren Arbeitsbereich im Portal senden.
 
@@ -37,17 +37,17 @@ Protokolle helfen bei der Diagnose von Fehlern und Warnungen und beim Nachverfol
 
 ## <a name="data-types"></a>Datentypen
 
-Sie können mehrere Datentypen protokollieren, einschließlich skalarer Werte, Listen, Tabellen, Images, Verzeichnisse und mehr. Weitere Informationen und Python-Codebeispiele für verschiedene Datentypen finden Sie auf der [Referenzseite für die Run-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true).
+Sie können mehrere Datentypen protokollieren, einschließlich skalarer Werte, Listen, Tabellen, Images, Verzeichnisse und mehr. Weitere Informationen und Python-Codebeispiele für verschiedene Datentypen finden Sie auf der [Referenzseite für die Run-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true).
 
 ## <a name="interactive-logging-session"></a>Interaktive Protokollierungssitzung
 
-Interaktive Protokollierungssitzungen werden in der Regel in Notebook-Umgebungen verwendet. Die Methode [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) startet eine interaktive Protokollierungssitzung. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt. Die Methode [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) beendet die Sitzungen und markiert die Ausführung als abgeschlossen.
+Interaktive Protokollierungssitzungen werden in der Regel in Notebook-Umgebungen verwendet. Die Methode [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-logging--args----kwargs-) startet eine interaktive Protokollierungssitzung. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt. Die Methode [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecomplete--set-status-true-) beendet die Sitzungen und markiert die Ausführung als abgeschlossen.
 
-## <a name="scriptrunconfig-logs"></a>ScriptRunConfig-Protokolle
+## <a name="scriptrun-logs"></a>ScriptRun-Protokolle
 
-In diesem Abschnitt erfahren Sie, wie Sie Protokollierungscode innerhalb von ScriptConfig-Ausführungen hinzufügen können. Sie können die Klasse [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) verwenden, um Skripts und Umgebungen für wiederholbare Ausführungen zu kapseln. Sie können diese Option auch verwenden, um ein visuelles Jupyter Notebooks-Widget zur Überwachung anzuzeigen.
+In diesem Abschnitt erfahren Sie, wie Sie Protokollierungscode innerhalb von Ausführungen hinzufügen, die beim Konfigurieren mit ScriptRunConfig erstellt werden. Sie können die Klasse [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) verwenden, um Skripts und Umgebungen für wiederholbare Ausführungen zu kapseln. Sie können diese Option auch verwenden, um ein visuelles Jupyter Notebooks-Widget zur Überwachung anzuzeigen.
 
-Dieses Beispiel führt einen Parameter-Sweep über Alphawerte durch und erfasst die Ergebnisse mit der Methode [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----).
+Dieses Beispiel führt einen Parameter-Sweep über Alphawerte durch und erfasst die Ergebnisse mit der Methode [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truelog-name--value--description----).
 
 1. Erstellen Sie ein Trainingsskript, das die Protokollierungslogik (`train.py`) enthält.
 
@@ -83,7 +83,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 Azure Machine Learning kann während des Trainings auch Informationen aus anderen Quellen protokollieren, etwa aus automatisierten Machine Learning-Ausführungen oder aus Docker-Containern, in denen der Auftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert, aber wenn Probleme auftreten und Sie sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
 
-Informationen zur Protokollierung von Metriken im Azure Machine Learning-Designer (Vorschauversion) finden Sie unter [Protokollieren von Metriken im Designer (Vorschauversion)](how-to-track-designer-experiments.md)
+Informationen zur Protokollierung von Metriken im Azure Machine Learning-Designer finden Sie unter [Protokollieren von Metriken im Designer](how-to-track-designer-experiments.md)
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 
@@ -97,6 +97,6 @@ Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:
 
 Lesen Sie diese Artikel, um mehr über die Verwendung von Azure Machine Learning zu erfahren:
 
-* Erfahren Sie, wie Sie [Metriken in Azure Machine Learning-Designer (Vorschauversion) protokollieren](how-to-track-designer-experiments.md).
+* Erfahren Sie, wie Sie [Metriken in Azure Machine Learning-Designer protokollieren](how-to-track-designer-experiments.md).
 
 * Ein Beispiel für die Registrierung des besten Modells und dessen Bereitstellung finden Sie im Tutorial [Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](tutorial-train-models-with-aml.md).

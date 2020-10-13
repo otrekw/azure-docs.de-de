@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326778"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -79,7 +79,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
 
    Dieses Beispiel wird mit **Azure AD-Integration** fortgesetzt:
 
-   ![Auswählen des zu verwendenden Authentifizierungstyps](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+   ![Screenshot: Verbindungsfenster „SQL Server“ mit der geöffneten Liste „Authentifizierungstyp“ und der ausgewählten Option „Azure AD-Integration“](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
 1. Nachdem Sie **Azure AD-Integration** ausgewählt haben, wählen Sie **Anmelden** aus. Je nachdem, ob Sie Azure SQL-Datenbank oder Azure SQL Managed Instance verwenden, wählen Sie Ihre Benutzeranmeldeinformationen für die Authentifizierung aus.
 

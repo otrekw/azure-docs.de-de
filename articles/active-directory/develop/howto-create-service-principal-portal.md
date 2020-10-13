@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265900"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
-In diesem Artikel wird beschrieben, wie Sie eine neue Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal erstellen, der mit der rollenbasierten Zugriffssteuerung verwendet werden kann. Wenn Sie über Anwendungen, gehostete Dienste oder automatische Tools verfügen, für die der Zugriff auf oder die Änderung von Ressourcen erforderlich ist, können Sie eine Identität für die App erstellen. Diese Identität wird als Dienstprinzipal bezeichnet. Der Zugriff auf Ressourcen wird durch die dem Dienstprinzipal zugewiesenen Rollen eingeschränkt. Dadurch können Sie steuern, auf welcher Ebene auf welche Ressourcen zugegriffen werden kann. Aus Sicherheitsgründen wird stets empfohlen, Dienstprinzipale mit automatisierten Tools zu verwenden, statt ihnen die Anmeldung mit einer Benutzeridentität zu erlauben. 
+In diesem Artikel wird beschrieben, wie Sie eine neue Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal erstellen, der mit der rollenbasierten Zugriffssteuerung verwendet werden kann. Wenn Sie über Anwendungen, gehostete Dienste oder automatische Tools verfügen, für die der Zugriff auf oder die Änderung von Ressourcen erforderlich ist, können Sie eine Identität für die App erstellen. Diese Identität wird als Dienstprinzipal bezeichnet. Der Zugriff auf Ressourcen wird durch die dem Dienstprinzipal zugewiesenen Rollen eingeschränkt. Dadurch können Sie steuern, auf welcher Ebene auf welche Ressourcen zugegriffen werden kann. Aus Sicherheitsgründen wird stets empfohlen, Dienstprinzipale mit automatisierten Tools zu verwenden, statt ihnen die Anmeldung mit einer Benutzeridentität zu erlauben.
 
 In diesem Artikel wird veranschaulicht, wie Sie das Portal zum Erstellen des Dienstprinzipals im Azure-Portal verwenden. Er konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.  Sie können auch [Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat verwenden](howto-authenticate-service-principal-powershell.md).
 
@@ -129,12 +129,13 @@ Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanford
 
    ![Anwendungs-ID (Client-ID) kopieren](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>Hochladen eines Zertifikats oder Erstellen eines Geheimnisses für die Anmeldung
-Für Dienstprinzipale sind zwei Arten von Authentifizierung verfügbar: kennwortbasierte Authentifizierung (Anwendungsgeheimnis) und zertifikatbasierte Authentifizierung.  Wir empfehlen die Verwendung eines Zertifikats, Sie können aber auch ein neues Anwendungsgeheimnis erstellen.
+## <a name="authentication-two-options"></a>Authentifizierung: Zwei Optionen
 
-### <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
+Für Dienstprinzipale sind zwei Arten von Authentifizierung verfügbar: kennwortbasierte Authentifizierung (Anwendungsgeheimnis) und zertifikatbasierte Authentifizierung. *Wir empfehlen die Verwendung eines Zertifikats*, Sie können aber auch ein Anwendungsgeheimnis erstellen.
 
-Sie können ein vorhandenes Zertifikat verwenden, wenn Sie eins besitzen.  Optional können Sie *ausschließlich für Testzwecke* ein selbstsigniertes Zertifikat erstellen. Zum Erstellen eines selbstsignierten Zertifikats öffnen Sie PowerShell, und führen Sie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) mit den folgenden Parametern aus, um das Zertifikat im Benutzerzertifikatspeicher auf Ihrem Computer zu erstellen: 
+### <a name="option-1-upload-a-certificate"></a>Option 1: Hochladen eines Zertifikats
+
+Sie können ein vorhandenes Zertifikat verwenden, wenn Sie eins besitzen.  Optional können Sie *ausschließlich für Testzwecke* ein selbstsigniertes Zertifikat erstellen. Zum Erstellen eines selbstsignierten Zertifikats öffnen Sie PowerShell, und führen Sie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) mit den folgenden Parametern aus, um das Zertifikat im Benutzerzertifikatspeicher auf Ihrem Computer zu erstellen:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -163,7 +164,7 @@ So laden Sie das Zertifikat hoch:
 
 Nach dem Registrieren des Zertifikats bei Ihrer Anwendung im Portal der Anwendungsregistrierung müssen Sie dem Code der Clientanwendung die Verwendung des Zertifikats ermöglichen.
 
-### <a name="create-a-new-application-secret"></a>Erstellen eines neuen Anwendungsgeheimnisses
+### <a name="option-2-create-a-new-application-secret"></a>Option 2: Erstellen eines neuen Anwendungsgeheimnisses
 
 Wenn Sie sich entscheiden, kein Zertifikat zu verwenden, können Sie ein neues Anwendungsgeheimnis erstellen.
 
@@ -178,14 +179,15 @@ Wenn Sie sich entscheiden, kein Zertifikat zu verwenden, können Sie ein neues A
    ![Den geheimen Wert kopieren, weil er später nicht mehr abgerufen werden kann](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Konfigurieren von Zugriffsrichtlinien für Ressourcen
-Beachten Sie, dass Sie möglicherweise zusätzliche Berechtigungen für Ressourcen konfigurieren müssen, auf die Ihre Anwendung zugreifen muss. Sie müssen beispielsweise auch die [Zugriffsrichtlinien eines Schlüsseltresors aktualisieren](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies), um der Anwendung Zugriff auf Schlüssel, Geheimnisse oder Zertifikate zu gewähren.  
+Beachten Sie, dass Sie möglicherweise zusätzliche Berechtigungen für Ressourcen konfigurieren müssen, auf die Ihre Anwendung zugreifen muss. Sie müssen beispielsweise auch die [Zugriffsrichtlinien eines Schlüsseltresors aktualisieren](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies), um der Anwendung Zugriff auf Schlüssel, Geheimnisse oder Zertifikate zu gewähren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Schlüsseltresor, und wählen Sie **Zugriffsrichtlinien** aus.  
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Schlüsseltresor, und wählen Sie **Zugriffsrichtlinien** aus.
 1. Wählen Sie **Zugriffsrichtlinie hinzufügen** und anschließend die Schlüssel-, Geheimnis- und Zertifikatberechtigungen aus, die Sie Ihrer Anwendung gewähren möchten.  Wählen Sie den zuvor erstellten Dienstprinzipal aus.
 1. Wählen Sie **Hinzufügen** aus, um die Zugriffsrichtlinie hinzuzufügen, und wählen Sie dann **Speichern** aus, um Ihre Änderungen zu übernehmen.
     ![Zugriffsrichtlinie hinzufügen](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat verwenden](howto-authenticate-service-principal-powershell.md).
-* Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).  
+* Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 * Eine Liste der verfügbaren Aktionen, die Benutzern erteilt oder verweigert werden können, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md).
+* Informationen zum Arbeiten mit App-Registrierungen mithilfe von **Microsoft Graph** finden Sie in der [Anwendungs-API-Referenz](/graph/api/resources/application).

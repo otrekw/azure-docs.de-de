@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Hyper-V-Bewertung mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318176"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -46,7 +46,7 @@ Um die Bewertung von Hyper-V-VMs einzurichten, erstellen Sie ein Azure Migrate-P
 | :----------------------------- | :------------------- |
 | **Betriebssystem** | Alle Betriebssysteme können für die Migration ausgewertet werden.  |
 | **Integrationsdienste**       | [Hyper-V Integration Services](/virtualization/hyper-v-on-windows/reference/integration-services) muss auf den von Ihnen bewerteten VMs ausgeführt werden, um Betriebssysteminformationen zu erfassen. |
-
+| **Storage** | Lokaler Datenträger, DAS, JBOD, Speicherplätze, CSV, SMB. Diese Hyper-V-Hostspeicher, in dem die VHD/VHDX gespeichert wird, werden unterstützt. <br/> Virtuelle IDE- und SCSI-Controller werden unterstützt.| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Anforderungen für die Azure Migrate-Appliance
 

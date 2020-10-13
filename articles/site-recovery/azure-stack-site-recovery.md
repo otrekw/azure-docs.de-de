@@ -3,12 +3,12 @@ title: Replizieren virtueller Azure Stack-Computer in Azure mit Azure Site Recov
 description: Hier erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für virtuelle Azure Stack-Computer mit dem Azure Site Recovery-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564308"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448974"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -164,13 +164,13 @@ Richten Sie den Konfigurationsservercomputer ein, registrieren Sie ihn im Tresor
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Quelle**.
 2. Klicken Sie in **Quelle vorbereiten** auf **+Konfigurationsserver**.
 
-    ![Quelle einrichten](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![Screenshot: Dialogfeld „+Konfigurationsserver“ mit der Meldung „Klicken Sie oben in der Befehlsleiste auf "+Konfigurationsserver", um einen Server in Ihrer Quellumgebung einzurichten und bei diesem Tresor zu registrieren.“](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
 5. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
 6. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen den Registrierungsschlüssel, wenn Sie das einheitliche Setup ausführen. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-    ![Quelle einrichten](./media/azure-stack-site-recovery/set-source2.png)
+    ![Screenshot: Dialogfeld „Server hinzufügen“, in dem „Servertyp“ auf „Konfigurationsserver“ festgelegt und die Schaltfläche „Tresorregistrierungsschlüssel herunterladen“ hervorgehoben ist](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Ausführen des einheitlichen Setups von Azure Site Recovery
@@ -314,26 +314,7 @@ Dann führen Sie ein Failover wie folgt aus:
 
 ### <a name="fail-back-to-azure-stack"></a>Failback zu Azure Stack
 
-Wenn der primäre Standort wieder betriebsbereit ist, können Sie ein Failback von Azure zu Azure Stack durchführen. Dazu müssen Sie die VHD des virtuellen Azure-Computers herunterladen und in Azure Stack hochladen.
-
-1. Fahren Sie den virtuellen Azure-Computer herunter, damit die VHD heruntergeladen werden kann.
-2. Zum Herunterladen der VHD installieren Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
-3. Navigieren Sie zu dem virtuellen Computer im Azure-Portal (mithilfe des Namens des virtuellen Computers).
-4. Klicken Sie unter **Datenträger** auf den Datenträgernamen, und erfassen Sie Einstellungen.
-
-    - Beispielsweise ist bei dem in diesem Test verwendeten VHD-URI Folgendes der Fall: `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` lässt sich in die folgenden Eingabeparameter unterteilen, die dann zum Herunterladen der VHD verwendet werden.
-        - Speicherkonto: 502055westcentralus
-        - Container: wahv9b8d2ceb284fb59287
-        - VHD-Name: copied-3676553984.vhd
-
-5. Verwenden Sie nun Azure Storage-Explorer zum Herunterladen der VHD.
-6. Laden Sie die VHD mithilfe [dieser Schritte](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm) in Azure Stack hoch.
-7. Fügen Sie die hochgeladenen VHDs im vorhandenen oder neuen virtuellen Computer an.
-8. Stellen Sie sicher, dass der Betriebssystemdatenträger korrekt ist, und starten Sie den virtuellen Computer.
-
-
-Zu diesem Zeitpunkt ist das Failback abgeschlossen.
-
+Wenn der primäre Standort wieder betriebsbereit ist, können Sie ein Failback von Azure zu Azure Stack durchführen. Führen Sie dazu die [hier](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005) beschriebenen Schritte aus.
 
 ## <a name="conclusion"></a>Zusammenfassung
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863415"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400110"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Unterstützung von Remotearbeit in Azure Firewall
 
@@ -24,7 +24,7 @@ Die Anordnung des Arbeitens im Homeoffice verlangt von vielen IT-Organisationen,
 
 ## <a name="azure-windows-virtual-desktop-support"></a>Unterstützung für Windows Virtual Desktop in Azure
 
-Bei Windows Virtual Desktop handelt es sich um einen umfassenden in Azure ausgeführten Dienst zur Desktop- und App-Virtualisierung. Es ist die einzige virtuelle Desktopinfrastruktur (VDI), die eine vereinfachte Verwaltung, mehrere Windows 10-Sitzungen, Optimierungen für Office 365 ProPlus und Unterstützung für Remotedesktopdienste-Umgebungen bietet. Sie können Ihre Windows-Desktops und -Apps in wenigen Minuten in Azure bereitstellen und skalieren und profitieren von integrierten Funktionen für Sicherheit und Compliance. Für Windows Virtual Desktop ist es nicht erforderlich, dass Sie den eingehenden Zugriff auf Ihr virtuelles Netzwerk öffnen. Sie müssen jedoch einen Satz ausgehender Netzwerkverbindungen für die virtuellen Windows Virtual Desktop-Computer zulassen, die in Ihrem virtuellen Netzwerk ausgeführt werden. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](protect-windows-virtual-desktop.md).
+Bei Windows Virtual Desktop handelt es sich um einen umfassenden in Azure ausgeführten Dienst zur Desktop- und App-Virtualisierung. Es ist die einzige virtuelle Desktopinfrastruktur (VDI), die eine vereinfachte Verwaltung, Windows 10-Mehrfachsitzungen, Optimierungen für Microsoft 365 Apps for Enterprise und Unterstützung für RDS-Umgebungen (Remote Desktop Services, Remotedesktopdienste) bietet. Sie können Ihre Windows-Desktops und -Apps in wenigen Minuten in Azure bereitstellen und skalieren und profitieren von integrierten Funktionen für Sicherheit und Compliance. Für Windows Virtual Desktop ist es nicht erforderlich, dass Sie den eingehenden Zugriff auf Ihr virtuelles Netzwerk öffnen. Sie müssen jedoch einen Satz ausgehender Netzwerkverbindungen für die virtuellen Windows Virtual Desktop-Computer zulassen, die in Ihrem virtuellen Netzwerk ausgeführt werden. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](protect-windows-virtual-desktop.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

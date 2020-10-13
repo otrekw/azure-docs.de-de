@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 30c60dbe74835cb67879f7e0cf9bf403dca17fd8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531087"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
 
@@ -80,7 +80,7 @@ Wenn Sie Datenverschlüsselung durch einen vom Kunden verwalteten Schlüssel ver
 * Stellen Sie sicher, dass sich Key Vault und Azure Database for MySQL in derselben Region befinden, um einen schnelleren Zugriff für wrap- und unwrap-Vorgänge bei DEKs sicherzustellen.
 * Schränken Sie Azure Key Vault auf den **privaten Endpunkt und die ausgewählten Netzwerke** ein, und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten*, die Ressourcen zu schützen.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Vertrauenswürdiger Dienst mit AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt":::
 
 Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 
@@ -121,9 +121,9 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 
 Nachdem Azure Database for MySQL mit dem vom Kunden verwalteten Schlüssel, der in Key Vault gespeichert ist, verschlüsselt wurde, wird jede neu erstellte Kopie des Servers ebenfalls verschlüsselt. Sie können diese neue Kopie durch einen lokalen oder Geowiederherstellungsvorgang oder durch Lesereplikate erstellen. Die Kopie kann jedoch so geändert werden, dass für die Verschlüsselung ein neuer kundenseitig verwalteter Schlüssel angegeben wird. Wenn der vom Kunden verwaltete Schlüssel geändert wird, beginnen alte Sicherungen des Servers damit, den neuesten Schlüssel zu verwenden.
 
-Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselung während der Wiederherstellung oder der Lesereplikaterstellung zu vermeiden, sollten Sie unbedingt die folgenden Schritte auf dem Master und den wiederhergestellten bzw. Replikatservern ausführen:
+Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselung während der Wiederherstellung oder der Lesereplikaterstellung zu vermeiden, sollten Sie unbedingt die folgenden Schritte auf dem Quellserver und den wiederhergestellten Servern bzw. Replikatservern ausführen:
 
-* Initiieren Sie die Wiederherstellung oder die Erstellung eines Lesereplikats auf dem Master für Azure Database for MySQL.
+* Initiieren Sie die Wiederherstellung oder die Lesereplikaterstellung in der Azure Database for MySQL-Instanz.
 * Der neu erstellte Server (wiederhergestellt oder Replikat) verbleibt im Zustand „Zugriff nicht möglich“, da seiner eindeutigen Identität noch keine Berechtigungen für Azure Key Vault erteilt wurden.
 * Überprüfen Sie auf dem wiederhergestellten Server oder dem Replikatserver erneut den kundenseitig verwalteten Schlüssel in den Einstellungen zur Datenverschlüsselung, um sicherzustellen, dass dem neu erstellten Server die Berechtigungen „wrap“ und „unwrap“ für den in Key Vault gespeicherten Schlüssel erteilt wurden.
 

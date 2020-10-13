@@ -1,24 +1,27 @@
 ---
 title: Deep Learning im Vergleich zu maschinellem Lernen
-titleSuffix: Azure
-description: Erfahren Sie, wie Deep Learning mit maschinellem Lernen (Machine Learning) und künstlicher Intelligenz zusammenhängt. Deep Learning wird in Szenarien wie Betrugserkennung, Sprach- und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen verwendet.
+titleSuffix: Azure Machine Learning
+description: Es wird beschrieben, wie Deep Learning mit maschinellem Lernen (Machine Learning) und KI zusammenhängt. Verwenden Sie in Azure Machine Learning die Deep Learning-Modelle für Betrugserkennung, Objekterkennung und mehr.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905140"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330127"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
-Dieser Artikel unterstützt Sie beim Vergleich von Deep Learning und maschinellem Lernen. Sie erfahren, worin sich die beiden Konzepte ähneln und unterscheiden und wie sie sich in die breitere Kategorie der künstlichen Intelligenz einordnen lassen. Dieser Artikel beschreibt auch, wie Deep Learning auf reale Szenarien angewandt werden kann, z.B. Betrugserkennung, Sprach-und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen.
+Dieser Artikel enthält einen Vergleich von Deep Learning und Machine Learning sowie eine Beschreibung, wie dies mit dem weiteren Feld der künstlichen Intelligenz zusammenhängt. Informieren Sie sich über Deep Learning-Lösungen, die Sie unter Azure Machine Learning erstellen können, z. B. Betrugserkennung, Sprach- und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen.
+
+Eine Anleitung zur Auswahl von Algorithmen für Ihre Lösungen finden Sie unter [Spickzettel für Machine Learning-Algorithmen](algorithm-cheat-sheet.md).
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Deep Learning, maschinelles Lernen und KI
 
@@ -37,7 +40,7 @@ Beachten Sie die folgenden Definitionen, um Deep Learning im Vergleich zu maschi
 
 - **Künstliche Intelligenz (KI)** ist ein Verfahren, mit dem Computer menschliche Intelligenz imitieren können. Sie umfasst auch maschinelles Lernen. 
  
-Es ist wichtig, die Beziehung zwischen künstlicher Intelligenz, maschinellem Lernen und Deep Learning zu verstehen. Maschinelles Lernen ist ein Weg, um künstliche Intelligenz zu erreichen. Mithilfe von Machine Learning- und Deep Learning-Techniken können Sie Computersysteme und Anwendungen erstellen, die Aufgaben erledigen, die in der Regel mit menschlicher Intelligenz verbunden werden. Zu diesen Aufgaben gehören Bilderkennung, Spracherkennung und Sprachübersetzung.
+Mithilfe von Machine Learning- und Deep Learning-Techniken können Sie Computersysteme und Anwendungen erstellen, die Aufgaben erledigen, die in der Regel mit menschlicher Intelligenz verbunden werden. Zu diesen Aufgaben gehören Bilderkennung, Spracherkennung und Sprachübersetzung.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Techniken von Deep Learning und maschinellem Lernen 
 
@@ -58,7 +61,7 @@ In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 
 Aufgrund der Struktur des künstlichen neuronalen Netzes zeichnet sich Deep Learning dadurch aus, dass Muster in unstrukturierten Daten identifiziert werden, z.B. Bilder, Sound, Video und Text. Aus diesem Grund verändert Deep Learning schnell viele Branchen, darunter Gesundheitswesen, Energie, Finanzwesen und Transportwesen. Diese Branchen überdenken jetzt traditionelle Geschäftsprozesse. 
 
-Einige der häufigsten Anwendungen für Deep Learning werden in den folgenden Abschnitten beschrieben.
+Einige der häufigsten Anwendungen für Deep Learning werden in den folgenden Abschnitten beschrieben. In Azure Machine Learning können Sie ein Modell aus Ihrem Build eines Open-Source-Frameworks verwenden oder das Modell mit den bereitgestellten Tools erstellen.
 
 ### <a name="named-entity-recognition"></a>Named-entity recognition (NER)
 
@@ -69,6 +72,8 @@ Named-entity recognition (Erkennung benannter Entitäten) ist eine Deep Learning
 Deep Learning wird in vielen Anwendungsfällen zur Objekterkennung angewandt. Die Objekterkennung erfolgt in zwei Schritten: Bildklassifizierung und anschließende Bildlokalisierung. Die Bild_klassifizierung_ identifiziert die Objekte des Bilds, z.B. Autos oder Personen. Die Bild_lokalisierung_ stellt die spezifische Position dieser Objekte bereit. 
 
 Objekterkennung wird bereits in Branchen wie Gaming, Einzelhandel, Tourismus und selbstfahrenden Autos eingesetzt.
+
+Informieren Sie sich über die Verwendung eines Bildklassifizierungsmodells aus einem Open-Source-Framework in Azure Machine Learning: [Klassifizieren von Bildern mit einem Pytorch-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Generierung der Bildbeschriftung
 
@@ -88,6 +93,8 @@ Die auf Deep Learning-Methoden basierende Textanalyse umfasst das Analysieren gr
 
 Unternehmen führen mit Deep Learning Textanalysen durch, um Insidergeschäfte zu erkennen und die Einhaltung gesetzlicher Vorschriften zu gewährleisten. Ein weiteres gängiges Beispiel ist Versicherungsbetrug: Mithilfe von Textanalysen wurden häufig große Mengen von Dokumenten analysiert, um zu ermitteln, mit welcher Wahrscheinlichkeit es sich bei einem Versicherungsanspruch um Betrug handelte. 
 
+Informieren Sie sich über die Verwendung eines TensorFlow-Modells in Azure Machine Learning: [Klassifizieren handschriftlicher Ziffern mit einem TensorFlow-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+
 ## <a name="artificial-neural-networks"></a>Künstliche neuronale Netze
 
 Künstliche neuronale Netze setzen sich aus Ebenen verbundener Knoten zusammen. Deep Learning-Modelle verwenden neuronale Netze mit einer sehr großen Anzahl von Schichten. 
@@ -106,18 +113,12 @@ Recurrent Neural Networks sind häufig verwendete künstliche neuronale Netze. D
 
 Ein Convolutional Neural Network (faltendes neuronales Netz, CNN) ist ein besonders effektives künstliches neuronales Netz und stellt eine einzigartige Architektur dar. Die Schichten sind in drei Dimensionen organisiert: Breite, Höhe und Tiefe. Die Neuronen in einer Schicht sind nicht mit allen Neuronen in der nächsten Schicht, sondern nur mit einem kleinen Bereich der Neuronen der Schicht verbunden. Die endgültige Ausgabe wird auf einen einzelnen Vektor mit Wahrscheinlichkeitsbewertungen reduziert, der entlang der Tiefendimension organisiert ist. 
 
-Convolutional Neural Networks werden in Bereichen wie Video- und Bilderkennung sowie Empfehlungssystemen eingesetzt.
+Convolutional Neural Networks wurden bereits in Bereichen wie Videoerkennung, Bilderkennung und Empfehlungssysteme verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie, wie Sie Deep Learning in [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri) verwenden:
-
-- [Klassifizieren handschriftlicher Ziffern mit einem TensorFlow-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Die folgenden Artikel enthalten weitere Optionen zur Verwendung von Open-Source-Deep Learning-Modellen in [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
 
 - [Klassifizieren von handschriftlichen Ziffern mithilfe einer TensorFlow-Schätzung und Keras](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Klassifizieren von Bildern mit einem Pytorch-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-Verwenden Sie außerdem das [Machine Learning Algorithm Cheat Sheet](algorithm-cheat-sheet.md), um Algorithmen für Ihr Modell auszuwählen.

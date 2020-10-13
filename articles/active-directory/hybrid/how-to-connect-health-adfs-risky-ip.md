@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660831"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306394"
 ---
 # <a name="risky-ip-report-public-preview"></a>Bericht über riskante IP-Adressen (öffentliche Vorschauversion)
 AD FS-Kunden können Endpunkte für die Kennwortauthentifizierung für den Zugriff über das Internet verfügbar machen, um Authentifizierungsdienste für Endbenutzer bereitzustellen, damit diese auf SaaS-Anwendungen wie Microsoft 365 zugreifen können. In diesem Fall ist es möglich, dass ein böswilliger Benutzer versucht, sich an Ihrem AD FS-System anzumelden, um das Kennwort eines Endbenutzers zu erraten und Zugriff auf Anwendungsressourcen zu erhalten. AD FS verfügt seit der Einbindung in Windows Server 2012 R2 über die Funktion zum Sperren von Extranet-Konten, um diese Arten von Angriffen zu verhindern. Falls Sie eine frühere Version verwenden, empfehlen wir Ihnen dringend, Ihr AD FS-System auf Windows Server 2016 zu aktualisieren. <br />
@@ -39,7 +39,7 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 > 
 
 ## <a name="what-is-in-the-report"></a>Inhalt des Berichts
-Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden über Webanwendungsproxy-Server aggregiert. Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Folgende Informationen werden angegeben: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
+Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden über Webanwendungsproxy-Server aggregiert. Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Er enthält die folgenden Informationen: ![Screenshot: Bericht über riskante IP-Adressen mit hervorgehobenen Spaltenüberschriften](./media/how-to-connect-health-adfs/report4a.png)
 
 | Berichtselement | BESCHREIBUNG |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden übe
 
 Im Berichtseintrag unten ist beispielsweise angegeben, dass für die IP-Adresse <i>104.2XX.2XX.9</i> am 28.02.2018 in der Stunde zwischen 18 und 19 Uhr keine Fehler der Art „Falsches Kennwort“ und 284 Fehler der Art „Extranetsperre“ aufgetreten sind. Von diesen Vorgängen waren 14 eindeutige Benutzer betroffen. Für das Aktivitätsereignis wurde der angegebene Stundenschwellenwert im Bericht überschritten. 
 
-![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4b.png)
+![Screenshot: Beispiel für den Eintrag im Bericht über riskante IP-Adressen](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - In der Berichtsliste werden nur Aktivitäten angezeigt, für die der festgelegte Schwellenwert überschritten wird. 
@@ -60,7 +60,7 @@ Im Berichtseintrag unten ist beispielsweise angegeben, dass für die IP-Adresse 
 > - In diesem Warnbericht werden keine Exchange-IP-Adressen oder privaten IP-Adressen angezeigt. Sie sind weiterhin in der Exportliste enthalten. 
 >
 
-![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4c.png)
+![Screenshot: Bericht über riskante IP-Adressen mit den hervorgehobenen Optionen „Herunterladen“, „Benachrichtigungseinstellungen“ und „Schwellenwerteinstellungen“](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>Load Balancer-IP-Adressen in der Liste
 Bei Anmeldeaktivitäten der Load Balancer-Aggregation ist ein Fehler aufgetreten, und der Warnungsschwellenwert wurde erreicht. Falls IP-Adressen des Lastenausgleichs angezeigt werden, sendet Ihr externer Lastenausgleich höchstwahrscheinlich die Client-IP-Adresse nicht, wenn er die Anforderung an den Webanwendungsproxy-Server übergibt. Konfigurieren Sie Ihren Lastenausgleich so, dass Forward-Client-IP-Adressen ordnungsgemäß weitergegeben werden. 

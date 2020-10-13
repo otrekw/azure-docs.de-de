@@ -1,6 +1,6 @@
 ---
 title: 'Hinzufügen eines Benutzerflows für die Self-Service-Registrierung: Azure AD'
-description: Richten Sie einen Verbund mit Facebook ein, damit sich externe Benutzer (Gäste) mit ihren eigenen Facebook-Konten bei Ihren Azure AD-Apps anmelden können.
+description: Erstellen Sie Benutzerflows für Apps, die von Ihrer Organisation entwickelt werden. Benutzer, die diese App aufrufen, können dann mithilfe der im Benutzerflow konfigurierten Optionen ein Gastkonto erhalten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287048"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App (Vorschau)
 > [!NOTE]

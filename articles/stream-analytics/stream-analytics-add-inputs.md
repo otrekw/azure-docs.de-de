@@ -2,26 +2,27 @@
 title: Grundlegendes zu Eingaben für Azure Stream Analytics
 description: In diesem Artikel wird das Konzept von Eingaben in einem Azure Stream Analytics-Auftrag beschrieben, wobei die Eingabe von Streamingdaten mit der Eingabe von Verweisdaten verglichen wird.
 author: jseb225
-ms.author: jeanb
+ms.author: krishmam
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 09/23/2020
+ms.openlocfilehash: b58a2b4cb5cd083f837eb598d4e5f330783181c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279993"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Grundlegendes zu Eingaben für Azure Stream Analytics
 
 Azure Stream Analytics-Aufträge stellen eine Verbindung mit einer oder mehreren Dateneingaben her. Jede Eingabe definiert eine Verbindung mit einer vorhandenen Datenquelle. Stream Analytics akzeptiert eingehende Daten aus verschiedenen Arten von Ereignisquellen einschließlich Event Hubs, IoT Hub und Blob Storage. Auf die Eingaben wird in der SQL-Streamingabfrage, die Sie für jeden Auftrag schreiben, namentlich verwiesen. In der Abfrage können Sie mehrere Eingaben verknüpfen, um Daten zu kombinieren oder Streamingdaten anhand einer Suche mit Verweisdaten zu vergleichen, und die Ergebnisse an Ausgaben übergeben. 
 
-Stream Analytics bietet eine erstklassige Integration in drei Arten von Ressourcen als Eingaben:
+Stream Analytics bietet eine erstklassige Integration in vier Arten von Ressourcen als Eingaben:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) 
 
 Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Stream Analytics-Auftrags oder aus einem anderen Abonnement stammen.
 
@@ -31,12 +32,12 @@ Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragseingaben könn
 Werden Daten mithilfe von Push an eine Datenquelle übertragen, werden sie vom Stream Analytics-Auftrag genutzt und in Echtzeit verarbeitet. Eingaben werden in zwei Typen unterteilt: Datenstromeingaben und Verweisdateneingaben.
 
 ### <a name="data-stream-input"></a>Datenstromeingabe
-Ein Datenstrom ist eine ungebundene Abfolge von Ereignissen im Verlauf der Zeit. Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten. Event Hubs, IoT Hubs und Blob Storage werden als Datenstrom-Eingabequellen unterstützt. Event Hubs werden verwendet, um Ereignisdatenströme von verschiedenen Geräten und Diensten zu erfassen. Bei diesen Datenströmen kann es sich beispielsweise um Aktivitätsfeeds sozialer Medien, Börseninformationen oder Daten von Sensoren handeln. IoT Hubs sind zum Sammeln von Daten von verbundenen Geräten in IoT-Szenarien (Internet of Things) optimiert.  Blob Storage kann als Eingabequelle für die Erfassung von Massendaten als Datenstrom (z.B. Protokolldateien) verwendet werden.  
+Ein Datenstrom ist eine ungebundene Abfolge von Ereignissen im Verlauf der Zeit. Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten. Event Hubs, IoT Hub, Azure Data Lake Storage Gen2 und Blob Storage werden als Datenstrom-Eingabequellen unterstützt. Event Hubs werden verwendet, um Ereignisdatenströme von verschiedenen Geräten und Diensten zu erfassen. Bei diesen Datenströmen kann es sich beispielsweise um Aktivitätsfeeds sozialer Medien, Börseninformationen oder Daten von Sensoren handeln. IoT Hubs sind zum Sammeln von Daten von verbundenen Geräten in IoT-Szenarien (Internet of Things) optimiert.  Blob Storage kann als Eingabequelle für die Erfassung von Massendaten als Datenstrom (z.B. Protokolldateien) verwendet werden.  
 
 Weitere Informationen zu Streamingdateneingaben finden Sie unter [Streamen von Daten als Eingabe in Stream Analytics](stream-analytics-define-inputs.md).
 
 ### <a name="reference-data-input"></a>Verweisdateneingabe
-Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Verweisdaten sind entweder vollständig statisch oder werden nur langsam geändert. Sie werden normalerweise zum Ausführen von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure Blob Storage und Azure SQL-Datenbank werden derzeit als Eingabequellen für Verweisdaten unterstützt. Quellblobs für Referenzdaten dürfen je nach Komplexität der Abfrage und zugeordneten Streamingeinheiten nicht mehr als 300 MB umfassen (weitere Informationen finden Sie im Abschnitt [Größenbeschränkung](stream-analytics-use-reference-data.md#size-limitation) in der Dokumentation zu Referenzdaten).
+Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Verweisdaten sind entweder vollständig statisch oder werden nur langsam geändert. Sie werden normalerweise zum Ausführen von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure Blob Storage, Azure Data Lake Storage Gen2 und Azure SQL-Datenbank werden derzeit als Eingabequellen für Verweisdaten unterstützt. Quellblobs für Referenzdaten dürfen je nach Komplexität der Abfrage und zugeordneten Streamingeinheiten nicht mehr als 300 MB umfassen (weitere Informationen finden Sie im Abschnitt [Größenbeschränkung](stream-analytics-use-reference-data.md#size-limitation) in der Dokumentation zu Referenzdaten).
 
 Weitere Informationen zu Verweisdateneingaben finden Sie unter [Verwenden von Verweisdaten für Suchvorgänge in Stream Analytics](stream-analytics-use-reference-data.md).
 

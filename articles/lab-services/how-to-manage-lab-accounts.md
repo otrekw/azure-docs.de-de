@@ -3,12 +3,12 @@ title: Verwalten von Lab-Konten in Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in einem Azure-Abonnement ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251659"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Erstellen und Verwalten von Labkonten
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -43,7 +43,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
         ![Labkonto erstellen -> Erweitert](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
 6. Klicken Sie auf **Weiter: Tags** unten auf der Seite, um zur Registerkarte **Tags** zu wechseln. Wählen Sie alle Tags aus, die Sie mit dem Labkonto verknüpfen möchten. Tags sind Name/Wert-Paare, die Ihnen das Kategorisieren von Ressourcen und die Anzeige einer konsolidierten Abrechnung ermöglichen, indem Sie dasselbe Tag auf mehrere Ressourcen und Ressourcengruppen anwenden. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
 
-    ![Labkonto erstellen -> Tags](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![Screenshot: Seite „Labkonto erstellen“ mit hervorgehobener Registerkarte „Tags“](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. Wählen Sie am unteren Rand dieser Seite **Überprüfen + erstellen** aus, um zur Registerkarte **Überprüfen + erstellen** zu wechseln. 
 4. Überprüfen Sie die Zusammenfassungsinformationen auf dieser Seite, und wählen Sie **Erstellen** aus. 
 

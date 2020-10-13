@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334598"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Zugreifen auf und Verwalten von IBM DB2-Ressourcen mithilfe von Azure Logic Apps
 
@@ -157,7 +157,7 @@ Um einen Datensatz in einer DB2-Datenbanktabelle abzurufen, verwenden Sie die Ak
    | **Bereichs-ID** | Ja | Die ID für den gewünschten Datensatz, wie z.B. „99999“ in diesem Beispiel |
    ||||
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Screenshot: Aktion „Zeile abrufen (Vorschau)“ mit der geöffneten Liste „Tabellenname“ und dem ausgewählten Wert „AREA“](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -192,7 +192,7 @@ Um alle Datensätze in einer DB2-Datenbanktabelle abzurufen, verwenden Sie die A
 
 1. Öffnen Sie die Liste **Tabellenname** und wählen Sie die gewünschte Tabelle, in diesem Beispiel „AREA“:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![Screenshot: Aktion „Zeile abrufen (Vorschau)“ mit dem ausgewählten Wert „AREA“ in der Liste „Tabellenname“](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Um einen Filter oder eine Abfrage für die Ergebnisse anzugeben, wählen Sie **Erweiterte Optionen anzeigen**.
 
@@ -241,7 +241,7 @@ Um einen einzelnen Datensatz zu einer DB2-Datenbanktabelle hinzuzufügen, verwen
 
    Beispiel:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![Screenshot: Logik-App-Designer mit der Aktion „Insert row (Preview)“ (Zeile einfügen (Vorschau)) und Beispieleigenschaftswerten](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -289,7 +289,7 @@ Um einen einzelnen Datensatz in einer DB2-Datenbanktabelle zu aktualisieren, ver
 
    Beispiel:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Screenshot: Logik-App-Designer mit der Aktion „Update row (Preview)“ (Zeile aktualisieren (Vorschau)), unter der Sie eine Tabelle auswählen](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -334,7 +334,7 @@ Um einen einzelnen Datensatz aus einer DB2-Datenbanktabelle zu löschen, verwend
 
    Beispiel:
 
-   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Screenshot: Logik-App-Designer mit der Aktion „Delete row (Preview)“ (Zeile löschen (Vorschau)), unter der Sie eine zu löschende Tabelle auswählen](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 

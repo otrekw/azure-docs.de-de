@@ -5,16 +5,16 @@ description: Verwenden Sie das Azure-Portal zum Verwalten der Authentifizierung,
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355855"
 ---
 # <a name="secure-a-daemon-application"></a>Schützen einer Daemon-Anwendung
 
@@ -120,14 +120,14 @@ Sie gewähren die *rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)* , in
     > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Klicken Sie auf der Registerkarte **Rollenzuweisungen** auf **Hinzufügen**, um eine Rollenzuweisung hinzuzufügen. 
-    
+
     > [!div class="mx-imgBorder"]
-    > ![Hinzufügen der Rollenzuweisung](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![Screenshot: Rollenzuweisungen mit ausgewählter Option „Hinzufügen“](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. Wählen Sie eine integrierte Azure Maps-Rollendefinition wie **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender** aus. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** oder verwaltete Identität mit **benutzerseitig zugewiesene verwaltete Identität** / **systemseitig zugewiesene verwaltete Identität** aus. Wählen Sie den Prinzipal aus. Klicken Sie dann auf **Speichern**.
 
     > [!div class="mx-imgBorder"]
-    > ![Hinzufügen der Rollenzuweisung](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
+    > ![Hinzufügen einer Rollenzuweisung](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
 
 4. Sie können auf der Registerkarte „Rollenzuweisungen“ überprüfen, ob die Rollenzuweisung angewendet wurde.
 

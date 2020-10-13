@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676045"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397282"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Steuern von Updates mit der Wartungssteuerung und dem Azure-Portal
 
@@ -76,7 +76,7 @@ Es gibt auch zwei Möglichkeiten, zu überprüfen, ob für eine Wartungskonfigur
 
 Sie können auch einen bestimmten Host mithilfe von **Virtual Machines** oder der Eigenschaften des dedizierten Hosts überprüfen. 
 
-![Screenshot des Überprüfens der Wartung für einen Host](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![Screenshot: Hervorgehobener Wartungsstatus](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>Anwenden von Updates
 
@@ -94,7 +94,7 @@ Sie können den Status der Updates für eine Konfiguration unter **Wartungskonfi
 
 Um eine Konfiguration zu löschen, öffnen Sie die Konfigurationsdetails, und klicken Sie auf **Löschen**.
 
-![Screenshot des Überprüfens der Wartung für einen Host](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![Screenshot: Löschen einer Konfiguration](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

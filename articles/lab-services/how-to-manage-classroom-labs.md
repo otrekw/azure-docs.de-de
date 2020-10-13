@@ -3,12 +3,12 @@ title: Verwalten von Classroom-Labs in Azure Lab Services | Microsoft-Dokumentat
 description: Erfahren Sie, wie Sie ein Classroom-Lab erstellen, alle Classroom-Labs anzeigen, den Registrierungslink für einen Lab-Benutzer freigeben oder ein Lab löschen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251676"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -32,7 +32,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     1. Überprüfen Sie den **Gesamtpreis pro Stunde** , der auf der Seite angezeigt wird. 
     1. Wählen Sie **Speichern** aus.
 
-        ![Fenster „Neues Lab“](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![Screenshot: Fenster „Neues Lab“](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > Wenn das Labkonto mit der Option [Auswahl des Labstandorts](allow-lab-creator-pick-lab-location.md) konfiguriert wurde, wird eine Option zum Auswählen eines Standorts für das Lab angezeigt. 

@@ -3,14 +3,14 @@ title: Übersicht der Azure Automation-Funktion „VMs außerhalb der Geschäfts
 description: In diesem Artikel wird die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ beschrieben, die VMs gemäß einem Zeitplan startet oder beendet und sie proaktiv in Azure Monitor-Protokollen überwacht.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/04/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317360"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -37,13 +37,15 @@ Die aktuelle Funktion hat folgende Einschränkungen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./manage-runas-account.md). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
+- Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./manage-runas-account.md). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
-Sie sollten für die Arbeit mit VMs, die für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktiviert sind, ein separates Automation-Konto verwenden. Die Azure-Modulversionen werden häufig aktualisiert, und ihre Parameter können sich ändern. Die Funktion wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihre Automation-Konten für die Produktion importieren.
+- Das verknüpfte Automation-Konto und der Log Analytics-Arbeitsbereich müssen sich in der gleichen Ressourcengruppe befinden.
+
+- Sie sollten für die Arbeit mit VMs, die für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktiviert sind, ein separates Automation-Konto verwenden. Die Azure-Modulversionen werden häufig aktualisiert, und ihre Parameter können sich ändern. Die Funktion wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihre Automation-Konten für die Produktion importieren.
 
 ## <a name="permissions"></a>Berechtigungen
 
-Sie müssen über bestimmte Berechtigungen verfügen, um die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktivieren zu können. Die Berechtigungen unterscheiden sich je nachdem, ob die Funktion ein Automation-Konto und einen Log Analytics Arbeitsbereich verwendet, die vorab erstellt wurden, oder ob sie ein neues Konto und einen neuen Arbeitsbereich erstellt. 
+Sie müssen über bestimmte Berechtigungen verfügen, um die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktivieren zu können. Die Berechtigungen unterscheiden sich je nachdem, ob die Funktion ein Automation-Konto und einen Log Analytics Arbeitsbereich verwendet, die vorab erstellt wurden, oder ob sie ein neues Konto und einen neuen Arbeitsbereich erstellt.
 
 Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Active Directory-Mandanten (AD) sind, müssen Sie keine Berechtigungen konfigurieren. Wenn Sie nicht über diese Rechte verfügen oder eine benutzerdefinierte Rolle konfigurieren möchten, stellen Sie sicher, dass Sie über die unten beschriebenen Berechtigungen verfügen.
 

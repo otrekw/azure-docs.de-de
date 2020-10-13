@@ -1,19 +1,19 @@
 ---
 title: Umleitung von HTTP an HTTPS mit der CLI
 titleSuffix: Azure Application Gateway
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen und ein Zertifikat für die TLS-Terminierung hinzufügen.
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI eine HTTP-zu-HTTPS-Umleitung erstellen und ein Zertifikat für den TLS-Abschluss hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594244"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331028"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
 
@@ -223,13 +223,6 @@ Wenn Sie ein selbstsigniertes Zertifikat verwendet haben und die Sicherheitswarn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Hinzufügen eines Listeners und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+- [Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle](redirect-internal-site-cli.md)
 
 

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288612"
 ---
 # <a name="use-transactions-in-sql-pool"></a>Verwenden von Transaktionen im SQL-Pool
 
@@ -29,7 +29,7 @@ Wie zu erwarten, unterstützen SQL-Pools Transaktionen als Teil der Data Warehou
 
 SQL-Pools implementieren ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist standardmäßig auf READ UNCOMMITTED (Lesen ohne Commit) festgelegt.  Sie können diese in READ COMMITTED SNAPSHOT ISOLATION (Read Committed-Momentaufnahmeisolation) ändern, indem Sie die Datenbankoption READ_COMMITTED_SNAPSHOT für eine Benutzerdatenbank aktivieren, wenn Sie mit der Masterdatenbank verbunden sind.  
 
-Nach der Aktivierung werden alle Transaktionen in dieser Datenbank unter READ COMMITTED SNAPSHOT ISOLATION ausgeführt, und die Einstellung READ UNCOMMITTED auf Sitzungsebene wird nicht berücksichtigt. Ausführliche Informationen finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).
+Nach der Aktivierung werden alle Transaktionen in dieser Datenbank unter READ COMMITTED SNAPSHOT ISOLATION ausgeführt, und die Einstellung READ UNCOMMITTED auf Sitzungsebene wird nicht berücksichtigt. Ausführliche Informationen finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="transaction-size"></a>Transaktionsgröße
 Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird pro Verteilung angewendet. Die Gesamtzuordnung kann also ermittelt werden, indem der Grenzwert mit der Verteilungsanzahl multipliziert wird. 
@@ -81,7 +81,7 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 
 Die Obergrenze für die Transaktionsgröße wird pro Transaktion oder Vorgang angewendet. Sie wird nicht übergreifend für alle gleichzeitigen Transaktionen angewendet. Daher ist es für jede Transaktion zulässig, diese Menge an Daten in das Protokoll zu schreiben.
 
-Informationen zum Optimieren und Reduzieren der Datenmenge, die in das Protokoll geschrieben wird, finden Sie im Artikel [Bewährte Methoden für Transaktionen](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Informationen zum Optimieren und Reduzieren der Datenmenge, die in das Protokoll geschrieben wird, finden Sie im Artikel [Optimieren von Transaktionen in Synapse SQL](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 > [!WARNING]
 > Die maximale Transaktionsgröße kann nur für Tabellen mit HASH- oder ROUND_ROBIN-Verteilung erreicht werden, bei denen die Daten gleichmäßig verteilt werden. Wenn bei der Transaktion Daten auf verzerrte Weise in die Verteilungen geschrieben werden, wird die Obergrenze wahrscheinlich vor der maximalen Transaktionsgröße erreicht.
@@ -134,7 +134,7 @@ SELECT @xact_state AS TransactionState;
 
 Der vorangehende Code gibt die folgende Fehlermeldung aus:
 
-Meldung 111233, Ebene 16, Status 1, Zeile 1 111233; Die aktuelle Transaktion wurde abgebrochen, und alle ausstehenden Änderungen wurden zurückgesetzt. Ursache: Eine Transaktion in einem Nur-Rollback-Status wurde vor einer DDL-, DML- oder SELECT-Anweisung nicht explizit zurückgesetzt.
+Meldung 111233, Ebene 16, Status 1, Zeile 1 111233; Die aktuelle Transaktion wurde abgebrochen, und alle ausstehenden Änderungen wurden zurückgesetzt. Ursache: Für eine Transaktion in einem Nur-Rollback-Status wurde vor einer DDL-, DML- oder SELECT-Anweisung kein explizites Rollback ausgeführt.
 
 Sie erhalten auch keine Ausgabe der ERROR_*-Funktionen.
 
@@ -181,7 +181,7 @@ Die einzige Änderung besteht darin, dass die ROLLBACK-Ausführung für die Tran
 
 ## <a name="error_line-function"></a>Error_Line()-Funktion
 
-Es ist auch erwähnenswert, dass die ERROR_LINE()-Funktion in SQL-Pools nicht implementiert oder unterstützt wird. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL-Pools zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Details finden Sie im Artikel [LABEL](develop-label.md).
+Es ist auch erwähnenswert, dass die ERROR_LINE()-Funktion in SQL-Pools nicht implementiert oder unterstützt wird. Wenn diese Funktion in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL-Pools zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Informationen finden Sie im Artikel [Verwenden von Abfragebezeichnungen in Synapse SQL](develop-label.md).
 
 ## <a name="use-of-throw-and-raiserror"></a>Verwenden von THROW und RAISERROR
 
@@ -193,9 +193,7 @@ THROW ist die modernere Implementierung zum Auslösen von Ausnahmen in SQL-Pools
 
 ## <a name="limitations"></a>Einschränkungen
 
-SQL-Pools verfügen über einige weitere Einschränkungen in Bezug auf Transaktionen.
-
-Dies sind:
+SQL-Pools verfügen über einige weitere Einschränkungen in Bezug auf Transaktionen. Dies sind:
 
 * Keine verteilten Transaktionen
 * Keine geschachtelten Transaktionen zulässig

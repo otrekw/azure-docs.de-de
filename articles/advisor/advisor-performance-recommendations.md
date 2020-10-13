@@ -2,13 +2,13 @@
 title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651571"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405155"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -63,8 +63,6 @@ Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](..
 
 Die Advisor-Analyse kann ergeben, dass Ihre Anwendung, die eine Verbindung mit einem MySQL-Server herstellt, Verbindungen möglicherweise nicht effizient verwaltet. Dieser Zustand kann zu unnötigem Ressourcenverbrauch und zu einer insgesamt höheren Anwendungslatenz führen. Zur Verbesserung der Verbindungsverwaltung empfehlen wir, die Anzahl kurzlebiger Verbindungen zu verringern und unnötige Leerlaufverbindungen zu beseitigen. Sie können diese Verbesserungen durch Konfigurieren einer serverseitigen Verbindungspoolfunktion wie ProxySQL vornehmen.
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Aktualisieren Sie Ihre aktuelle Version des SDK für die Computeverwaltung auf die neueste Version.
-Advisor ermittelt Abonnements, die mit veralteten Compute Management SDK-Versionen arbeiten. Dies kann sich auf die Sicherheit und Leistung Ihrer Workloads auswirken. Daher empfiehlt Advisor, auf die neueste Version des Compute Management SDK umzusteigen. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Hochskalieren zum Optimieren der Cachenutzung in Ihrem Azure Synapse Analytics-Tabellen zum Verbessern der Abfrageleistung
 
@@ -170,6 +168,14 @@ Die Advisor-Analyse zeigt, dass es für Ihren MySQL-Server ggf. zu unnötigem E/
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Verteilen der Daten in einer Servergruppe, um eine Workload auf Knoten zu verteilen
 Advisor identifiziert die Servergruppen, in denen die Daten nicht verteilt wurden, aber im Koordinator bleiben. Basierend darauf empfiehlt Advisor, dass für alle Vorteile von Hyperscale (Citus) Daten auf Workerknoten für Ihre Servergruppen verteilt werden sollten. Dies wird die Abfrageleistung durch Nutzung der Ressourcen der einzelnen Knoten in der Servergruppe verbessern. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Verbessern der Benutzerfreundlichkeit und der Konnektivität, indem Sie virtuelle Computer näher am Standort der Windows Virtual Desktop-Bereitstellung bereitstellen
+Wir haben festgestellt, dass sich Ihre virtuellen Computer nicht in der Region befinden, von der aus Ihre Benutzer eine WVD-Verbindung (Windows Virtual Desktop) herstellen, oder dass Ihre virtuellen Computer weit von dieser Region entfernt sind. Dies kann zu längeren Verbindungsreaktionszeiten führen und wirkt sich insgesamt negativ auf die Benutzerfreundlichkeit von WVD aus. Verwenden Sie bei der Erstellung virtueller Computer für Ihre Hostpools nach Möglichkeit eine Region, die sich näher beim Benutzer befindet. Eine geringe Entfernung verbessert die Zufriedenheit mit dem WVD-Dienst sowie die allgemeine Benutzerfreundlichkeit. [Hier](https://docs.microsoft.com/azure/virtual-desktop/connection-latency) erfahren Sie mehr zur Verbindungswartezeit.
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgrade auf die neueste Version des SDK des plastischen Readers
+Wir haben unter diesem Abonnement Ressourcen mit veralteten Versionen des SDK des plastischen Readers identifiziert. Die Verwendung der neuesten Version des SDK des plastischen Readers bietet Ihnen aktualisierte Sicherheit, Leistung und einen erweiterten Satz von Features, mit denen Sie Ihre Integrationsmöglichkeiten anpassen und verbessern können.
+Weitere Informationen zum [Immersive Reader SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
@@ -182,6 +188,7 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
+* [Advisor-Bewertung](azure-advisor-score.md)
 * [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
 * [Zuverlässigkeitsempfehlungen von Advisor](advisor-high-availability-recommendations.md)
 * [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)

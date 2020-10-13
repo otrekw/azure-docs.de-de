@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 675d9c76841ba1a4b94b666c7ff4ac4287fc5264
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286113"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SmartFile für die automatische Benutzerbereitstellung
 
@@ -58,9 +58,9 @@ Bevor Sie SmartFile für die automatische Benutzerbereitstellung mit Azure AD ko
 
 2. Kopieren Sie den **Product Key** und das **Product Password** (Produktkennwort), um ein Bearertoken zu generieren. Fügen Sie diese in einem Editor mit einem Doppelpunkt dazwischen ein.
     
-     ![SmartFile: Hinzufügen von SCIM](media/smartfile-provisioning-tutorial/auth.png)
+     ![Screenshot: Abschnitt „Product Key“ mit den hervorgehobenen Textfeldern „Product Key“ und „Product Password“ (Produktkennwort).](media/smartfile-provisioning-tutorial/auth.png)
 
-    ![SmartFile: Hinzufügen von SCIM](media/smartfile-provisioning-tutorial/key.png)
+    ![Screenshot: Klartext mit dem durch einen Doppelpunkt getrennten Product Key und Produktkennwort](media/smartfile-provisioning-tutorial/key.png)
 
 ## <a name="add-smartfile-from-the-gallery"></a>Hinzufügen von SmartFile aus dem Katalog
 
@@ -103,11 +103,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5.  Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<SmartFile sitename>.smartfile.com/ftp/scim` ein. Ein Beispiel ähnelt `https://demo1test.smartfile.com/ftp/scim`. Geben Sie den Wert des **Bearertokens** (ProductKey:ProductPassword) ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit SmartFile herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr SmartFile-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c562708dcf554afc8dfe4acf6b525db1db677f40
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.custom: devx-track-js
+ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324228"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
-Zurzeit sind die einzigen veröffentlichten Datenebenen-SDKs für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#) und JavaScript bestimmt. Informationen zum diesen SDKs und die APIs im Allgemeinen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes Datenebenen-SDK in der Sprache Ihrer Wahl generieren.
+Zurzeit sind die einzigen veröffentlichten Datenebenen-SDKs für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#), JavaScript und Java bestimmt. Informationen zum diesen SDKs und die APIs im Allgemeinen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes Datenebenen-SDK in der Sprache Ihrer Wahl generieren.
 
 >[!NOTE]
 > Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der [Steuerungsebenen-Swagger-Datei (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) anstelle des Datenebenen-SDK aus.

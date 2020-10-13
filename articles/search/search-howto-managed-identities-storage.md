@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275131"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität
 
@@ -143,6 +143,10 @@ Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird au
 Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](/rest/api/searchservice/create-indexer).
 
 Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>Zugreifen auf sichere Daten in Speicherkonten
+
+Azure-Speicherkonten können mithilfe von Firewalls und virtuellen Netzwerken weiter geschützt werden. Wenn Sie Inhalte aus einem Blobspeicherkonto oder Data Lake Gen2-Speicherkonto indizieren möchten, das mit einer Firewall oder einem virtuellen Netzwerk geschützt wird, befolgen Sie die Anweisungen unter [Sicheres Zugreifen auf Daten in Speicherkonten über eine Ausnahme für einen vertrauenswürdigen Dienst](search-indexer-howto-access-trusted-service-exception.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 

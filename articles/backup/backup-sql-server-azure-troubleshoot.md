@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332779"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -130,7 +130,7 @@ Gelegentlich können bei Sicherungs- und Wiederherstellungsvorgängen zufällige
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Die für die Wiederherstellung verwendete Protokollsicherung enthält massenprotokollierte Änderungen. Sie kann gemäß SQL-Richtlinien nicht verwendet werden, um an einem beliebigen Punkt anzuhalten. | Wenn sich eine Datenbank im massenprotokollierten Wiederherstellungsmodus befindet, können die Daten zwischen einer massenprotokollierten Transaktion und der nächsten protokollierten Transaktion nicht wiederhergestellt werden. | Wählen Sie einen anderen Zeitpunkt für die Wiederherstellung aus. [Weitere Informationen](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)
+| Die für die Wiederherstellung verwendete Protokollsicherung enthält massenprotokollierte Änderungen. Sie kann gemäß SQL-Richtlinien nicht verwendet werden, um an einem beliebigen Punkt anzuhalten. | Wenn sich eine Datenbank im massenprotokollierten Wiederherstellungsmodus befindet, können die Daten zwischen einer massenprotokollierten Transaktion und der nächsten protokollierten Transaktion nicht wiederhergestellt werden. | Wählen Sie einen anderen Zeitpunkt für die Wiederherstellung aus. [Weitere Informationen](/sql/relational-databases/backup-restore/recovery-models-sql-server)
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -172,7 +172,7 @@ Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden 
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-Die VM kann den Azure Backup-Dienst aufgrund von Problemen mit der Internetverbindung nicht erreichen. | Die VM benötigt eine ausgehende Verbindung zu den Diensten Azure Backup-Dienst, Azure Storage oder Azure Active Directory.| – Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie mithilfe des Diensttags „AzureBackup“ ausgehenden Zugriff auf die Dienste Azure Backup-Dienst, Azure Storage oder Azure Active Directory zulassen. Mithilfe folgender [Schritte](./backup-sql-server-database-azure-vms.md#nsg-tags) können Sie den Zugriff erteilen.<br>– Stellen Sie sicher, dass DNS Azure-Endpunkte löst.<br>– Überprüfen Sie, ob sich die VM hinter einem Lastenausgleich befindet, der den Zugriff auf das Internet blockiert. Durch das Zuweisen einer öffentlichen IP-Adresse funktioniert die Ermittlung.<br>– Überprüfen Sie, ob eine Firewall/ein Antivirenprogramm/ein Proxy Aufrufe der drei vorstehenden Zieldienste blockiert.
+Die VM kann den Azure Backup-Dienst aufgrund von Problemen mit der Internetverbindung nicht erreichen. | Die VM benötigt eine ausgehende Verbindung zu den Diensten Azure Backup-Dienst, Azure Storage oder Azure Active Directory.| – Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf den Azure Backup-Dienst und ebenso für die Dienste Azure AD (*AzureActiveDirectory*) und Azure Storage(*Storage*) mit dem Diensttag *AzureBackup* zulassen. Mithilfe folgender [Schritte](./backup-sql-server-database-azure-vms.md#nsg-tags) können Sie den Zugriff erteilen.<br>– Stellen Sie sicher, dass DNS Azure-Endpunkte löst.<br>– Überprüfen Sie, ob sich die VM hinter einem Lastenausgleich befindet, der den Zugriff auf das Internet blockiert. Durch das Zuweisen einer öffentlichen IP-Adresse funktioniert die Ermittlung.<br>– Überprüfen Sie, ob eine Firewall/ein Antivirenprogramm/ein Proxy Aufrufe der drei vorstehenden Zieldienste blockiert.
 
 ## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
 

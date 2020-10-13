@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322630"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -22,7 +22,7 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Anzeigen von Azure Digital Twins-Metriken
 
-1. Erstellen Sie eine Azure Digital Twins-Instanz. Anweisungen zum Einrichten einer Azure Digital Twins-Instanz finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-scripted.md).
+1. Erstellen Sie eine Azure Digital Twins-Instanz. Anweisungen zum Einrichten einer Azure Digital Twins-Instanz finden Sie unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md).
 
 2. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Azure Digital Twins-Instanz (Sie können die Seite für die Instanz öffnen, indem Sie ihren Namen in die Suchleiste des Portals eingeben). 
 
@@ -34,12 +34,12 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
     
 3. Sie können Ihre Metrikdaten an einen Event Hubs-Endpunkt oder ein Azure Storage-Konto senden, indem Sie im Menü **Diagnoseeinstellungen** und dann **Diagnoseeinstellung hinzufügen** auswählen.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot: Seite „Diagnoseeinstellungen“und Schaltfläche zum Hinzufügen":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins":::
 
     Weitere Informationen zu diesem Vorgang finden Sie unter [*Problembehandlung: Einrichten der Diagnose*](troubleshoot-diagnostics.md).
 
 4. Sie können Warnungen für Ihre Metrikdaten einrichten, indem Sie im Menü **Warnungen** und dann **+ Neue Warnungsregel** auswählen.
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot mit der Seite „Warnungen“ und der Schaltfläche zum Hinzufügen":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins":::
 
     Weitere Informationen zu diesem Vorgang finden Sie unter [*Problembehandlung: Einrichten von Warnungen*](troubleshoot-alerts.md).
 
@@ -69,7 +69,7 @@ Metriken im Zusammenhang mit Abrechnung:
 | Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | API-Abrechnungsvorgänge (Vorschau) | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl aller API-Anforderungen, die für den Azure Digital Twins-Dienst durchgeführt wurden. | ID der Verbrauchseinheit |
-| BillingMessagesProcessed | Verarbeitete Abrechnungsnachrichten (Vorschau) | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl von Nachrichten, die von Azure Digital Twins Zwillingen an externe Endpunkte gesendet werden. | ID der Verbrauchseinheit |
+| BillingMessagesProcessed | Verarbeitete Abrechnungsnachrichten (Vorschau) | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl von Nachrichten, die von Azure Digital Twins Zwillingen an externe Endpunkte gesendet werden.<br><br>Nutzdaten dürfen maximal 1 KB groß sein, da sie ansonsten nicht als einzelne Nachricht für die Abrechnung betrachtet wird. Umfangreichere Nutzdaten werden als zusätzliche Nachrichten in Schritten von 1 KB gezählt. (Eine Nachricht zwischen 1 und 2 KB wird also als zwei Nachrichten gezählt, eine Nachricht zwischen 2 und 3 KB als drei Nachrichten usw.)<br>Diese Einschränkung gilt auch für Antworten: Ein Aufruf, der 1,5 KB im Antworttext zurückgibt, wird beispielsweise als zwei Vorgänge in Rechnung gestellt. | ID der Verbrauchseinheit |
 | BillingQueryUnits | Abrechnungsabfrageeinheiten (Vorschau) | Anzahl | Gesamt | Die Anzahl der Abfrageeinheiten (ein intern berechnetes Measure der Dienstressourcennutzung), die zum Ausführen von Abfragen genutzt werden. Es ist auch eine Hilfs-API zum Messen von Abfrageeinheiten verfügbar: [QueryChargeHelper-Klasse](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | ID der Verbrauchseinheit |
 
 #### <a name="ingress-metrics"></a>Eingangsmetriken

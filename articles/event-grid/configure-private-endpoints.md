@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie private Endpunkte für Azur
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324143"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurieren privater Endpunkte für Azure Event Grid-Themen oder -Domänen
 Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) verwenden, um den Eingang von Ereignissen direkt aus Ihrem virtuellen Netzwerk in Ihre Themen und Domänen sicher über einen [privaten Link](../private-link/private-link-overview.md) zu ermöglichen, ohne das öffentliche Internet zu durchlaufen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihr Thema oder Ihre Domäne. Weitere konzeptionelle Informationen finden Sie unter [Netzwerksicherheit](network-security.md).
@@ -42,7 +42,7 @@ In diesem Abschnitt wird gezeigt, wie Sie das Azure-Portal verwenden, um einen p
         3. Vergewissern Sie sich, dass die **Unterressource des Ziels** auf **Thema** oder **Domäne** (basierend auf dem ausgewählten Ressourcentyp) festgelegt ist.    
         4. Klicken Sie auf **Weiter: Konfiguration >** unten auf der Seite. 
 
-            ![Privater Endpunkt: Ressourcenseite](./media/configure-private-endpoints/resource-page.png)
+            ![Screenshot: Seite „Privaten Endpunkt erstellen – Ressource“](./media/configure-private-endpoints/resource-page.png)
     2. Wenn Sie **Verbindung mit einer Ressource mithilfe einer Ressourcen-ID oder eines Alias herstellen** auswählen, führen Sie die folgenden Schritte aus:
         1. Geben Sie die ID der Ressource ein. Beispiel: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Geben Sie als **Ressource** die Option **Thema** oder **Domäne** ein. 
@@ -108,7 +108,7 @@ Sie können einen privaten Endpunkt ablehnen, der sich im Zustand „Ausstehend�
 
 1. Wählen Sie den **privaten Endpunkt** aus, den Sie ablehnen möchten, und wählen Sie auf der Symbolleiste dann **Ablehnen** aus.
 
-    ![Privater Endpunkt: Ablehnen](./media/configure-private-endpoints/reject-button.png)
+    ![Screenshot: „Netzwerk – Verbindung mit privatem Endpunkt (Vorschau)“ mit ausgewählter Option „Ablehnen“](./media/configure-private-endpoints/reject-button.png)
 1. Geben Sie im Dialogfeld **Verbindung ablehnen** einen Kommentar ein (optional), und wählen Sie dann **Ja** aus. 
 
     ![Privater Endpunkt: Ablehnen](./media/configure-private-endpoints/reject.png)

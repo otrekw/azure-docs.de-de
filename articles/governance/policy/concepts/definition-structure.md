@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330280"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -102,16 +102,19 @@ Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle üb
 
 `indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Ausgenommen hiervon sind **Ressourcengruppen** und **Abonnements**. Richtliniendefinitionen zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe oder ein Abonnement sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` oder `Microsoft.Resources/subscriptions` abzielen. Ein Beispiel finden Sie unter [Azure Policy-Muster: Tags – Beispiel 1](../samples/pattern-tags.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Ressourcenanbietermodi (Vorschau)
+### <a name="resource-provider-modes"></a>Ressourcenanbietermodi
 
-Die folgenden Ressourcenanbietermodi werden derzeit in der Vorschauphase unterstützt:
+Der folgende Ressourcenanbieterknoten wird vollständig unterstützt:
 
-- `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Definitionen, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceRegoPolicy](./effects.md#enforceregopolicy) verwenden. Dieses Modell ist _veraltet_.
-- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Definitionen, die diesen Ressourcenanbietermodus nutzen, verwenden die Auswirkungen _audit_, _deny_ und _disabled_. Die Verwendung der Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) ist nun _veraltet_.
+- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Definitionen, die diesen Ressourcenanbietermodus nutzen, verwenden die Auswirkungen _audit_, _deny_ und _disabled_. Die Verwendung der Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) ist _veraltet_.
+
+Die folgenden Ressourcenanbietermodi werden derzeit als **Vorschau** unterstützt:
+
+- `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Definitionen, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceRegoPolicy](./effects.md#enforceregopolicy) verwenden. Dieser Modus ist _veraltet_.
 - `Microsoft.KeyVault.Data` zur Verwaltung von Tresoren und Zertifikaten in [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
-> Ressourcenanbietermodi unterstützen in der Vorschauphase nur integrierte Richtliniendefinitionen und keine Initiativen.
+> Ressourcenanbietermodi unterstützen nur integrierte Richtliniendefinitionen.
 
 ## <a name="metadata"></a>Metadaten
 
@@ -552,9 +555,9 @@ Azure Policy unterstützt die folgenden Auswirkungstypen:
 - **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
 - **DeployIfNotExists** stellt eine verwandte Ressource bereit, falls noch keine vorhanden ist.
 - **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
-- **EnforceOPAConstraint** (Vorschau) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v3 für selbstverwaltete Kubernetes-Cluster in Azure (Vorschau).
-- **EnforceRegoPolicy** (Vorschau) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v2 in Azure Kubernetes Service.
 - **Modify** fügt die definierten Tags zu einer Ressource hinzu, aktualisiert sie oder entfernt sie aus einer Ressource.
+- **EnforceOPAConstraint** (veraltet) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v3 für selbstverwaltete Kubernetes-Cluster in Azure.
+- **EnforceRegoPolicy** (veraltet) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v2 in Azure Kubernetes Service.
 
 Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der Auswertung, den Eigenschaften und Beispielen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](effects.md).
 
@@ -592,6 +595,18 @@ Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
 - `requestContext().apiVersion`
   - Gibt die API-Version der Anforderung zurück, die die Richtlinienauswertung ausgelöst hat (z. B. `2019-09-01`).
     Dieser Wert ist die API-Version, die in der PUT/PATCH-Anforderung für Auswertungen bei der Erstellung/Aktualisierung von Ressourcen verwendet wurde. Bei der Kompatibilitätsauswertung vorhandener Ressourcen wird immer die neueste API-Version verwendet.
+- `policy()`
+  - Gibt die folgenden Informationen zur derzeit ausgewerteten Richtlinie zurück. Auf Eigenschaften kann über das zurückgegebene Objekt zugegriffen werden (Beispiel: `[policy().assignmentId]`).
+  
+  ```json
+  {
+    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+    "definitionReferenceId": "StorageAccountNetworkACLs"
+  }
+  ```
+  
   
 #### <a name="policy-function-example"></a>Beispiel für Richtlinienfunktion
 

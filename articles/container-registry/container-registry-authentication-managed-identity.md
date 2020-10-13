@@ -3,12 +3,12 @@ title: Authentifizieren mit einer verwalteten Identität
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253461"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -230,6 +230,8 @@ Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> Systemseitig verwaltete Dienstidentitäten können von App Service sowie für die Interaktion mit ACRs verwendet werden. Es ist jedoch nicht möglich, beides zu kombinieren, da App Service nicht über MSI mit einer ACR-Instanz kommunizieren kann. Die einzige Möglichkeit besteht darin, den Administrator für ACR zu aktivieren und den Benutzernamen und das Kennwort des Administrators zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

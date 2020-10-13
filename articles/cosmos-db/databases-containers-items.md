@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e1718ac9a7b7fcaab096595ea7341fcc90c2ddd6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3906878755b7c7c2e3801da1bfa70a50d73ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422333"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318788"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -47,7 +47,7 @@ Mit einer Azure Cosmos-Datenbank können Sie über die Azure Cosmos-APIs in der 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-Container
 
-Ein Azure Cosmos-Container ist die Skalierungseinheit für den bereitgestellten Durchsatz und den Speicher. Ein Container wird horizontal partitioniert und dann in mehreren Regionen repliziert. Die Elemente, die Sie dem Container hinzuzufügen, und der Durchsatz, den Sie für den Container bereitstellen, werden basierend auf dem Partitionsschlüssel automatisch auf eine Gruppe von logischen Partitionen verteilt. Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionsdaten](partition-data.md). 
+Ein Azure Cosmos-Container ist die Skalierungseinheit für den bereitgestellten Durchsatz und den Speicher. Ein Container wird horizontal partitioniert und dann in mehreren Regionen repliziert. Die Elemente, die Sie dem Container hinzufügen, werden basierend auf dem Partitionsschlüssel automatisch in logische Partitionen gruppiert und auf physische Partitionen verteilt. Der Durchsatz für einen Container wird gleichmäßig auf die physischen Partitionen verteilt. Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionsdaten](partition-data.md). 
 
 Beim Erstellen eines Azure Cosmos-Containers konfigurieren Sie den Durchsatz in einem der folgenden Modi:
 

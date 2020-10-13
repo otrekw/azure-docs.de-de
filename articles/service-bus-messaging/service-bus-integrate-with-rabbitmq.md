@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301104"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrieren von RabbitMQ in Azure Service Bus
 
@@ -38,27 +38,27 @@ Klicken Sie im Azure-Portal auf das große Plussymbol, um eine neue Ressource hi
 
 Wählen Sie anschließend „Integration“ aus, und klicken Sie auf „Azure Service Bus“, um einen Messagingnamespace zu erstellen:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure Service Bus auswählen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Ressource erstellen":::
 
 Sie werden aufgefordert, die Namespaceinformationen einzugeben. Wählen Sie das Azure-Abonnement aus, das Sie verwenden möchten. Wenn keine [Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md) vorhanden ist, können Sie eine neue erstellen.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Namespace erstellen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Ressource erstellen":::
 
 Verwenden Sie `rabbitmq` für `Namespace name`. Sie können jedoch einen beliebigen Namen verwenden. Legen Sie `East US` als Speicherort fest. Wählen Sie `Basic` als Tarif aus.
 
 Wenn alles ordnungsgemäß verläuft, wird der folgende Bestätigungsbildschirm angezeigt:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Bestätigung zur Erstellung des Namespace":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Ressource erstellen":::
 
 Ihr neuer `rabbitmq`-Namespace wird nun auch im Azure-Portal angezeigt. Klicken Sie darauf, um auf die Ressource zuzugreifen, damit Sie eine Warteschlange hinzufügen können.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Ressourcenliste mit neuem Namespace":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Ressource erstellen":::
 
 ## <a name="creating-our-azure-service-bus-queue"></a>Erstellen einer Azure Service Bus-Warteschlange
 
 Nachdem Sie den Azure Service Bus-Namespace erstellt haben, klicken Sie links unter `Entities` auf die Schaltfläche `Queues`, sodass Sie eine neue Warteschlange hinzufügen können:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Warteschlange erstellen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Ressource erstellen":::
 
 Der Name der Warteschlange lautet `from-rabbitmq` – nur zur Erinnerung, woher die Nachrichten stammen. Für alle anderen Optionen können Sie die Standardeinstellungen übernehmen. Sie können sie jedoch auch an die Anforderungen Ihrer App anpassen.
 
@@ -78,21 +78,21 @@ Nun müssen Sie die Anmeldeinformationen zum Herstellen der Verbindung zwischen 
 
 Sie müssen für Ihre Warteschlange eine [SAS-Richtlinie](../storage/common/storage-sas-overview.md) erstellen, damit diese von RabbitMQ zum Veröffentlichen von Nachrichten verwendet werden kann. Mithilfe einer SAS-Richtlinie können Sie angeben, welche Aktionen eine externe Partei für Ihre Ressource durchführen darf. Damit soll sichergestellt werden, dass RabbitMQ Nachrichten senden, die Warteschlange jedoch nicht belauschen oder verwalten kann.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS-Richtlinie hinzufügen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="Ressource erstellen":::
 
 Aktivieren Sie das Kontrollkästchen `Send`, und klicken Sie auf `Create`, um unsere SAS-Richtlinie hinzuzufügen.
 
 Nachdem Sie die Richtlinie erstellt haben, klicken Sie darauf, um die **primäre Verbindungszeichenfolge** anzuzeigen. Diese wird verwendet, damit RabbitMQ mit Azure Service Bus kommunizieren kann:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="SAS-Richtlinie abrufen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="Ressource erstellen":::
 
 Diese Verbindungszeichenfolge können Sie erst verwenden, nachdem Sie sie in das AMQP-Verbindungsformat von RabbitMQ konvertiert haben. Wechseln Sie also zum [Verbindungszeichenfolgenkonverter](https://red-mushroom-0f7446a0f.azurestaticapps.net/), fügen Sie im Formular Ihre Verbindungszeichenfolge ein, und klicken Sie auf „Konvertieren“. Daraufhin erhalten Sie eine Verbindungszeichenfolge, die Sie für RabbitMQ verwenden können. (Auf dieser Website wird alles lokal in Ihrem Browser ausgeführt, d. h., Ihre Daten werden nicht versendet.) Sie können den entsprechenden Quellcode auf [GitHub](https://github.com/videlalvaro/connstring_to_amqp) aufrufen.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Verbindungszeichenfolge konvertieren":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Ressource erstellen":::
 
 Öffnen Sie nun das RabbitMQ-Management-Plugin in einem unserer Browser `http://localhost:15672/#/dynamic-shovels`, und wechseln Sie zu `Admin -> Shovel Management`. Hier können Sie die neue Shovel-Instanz hinzufügen, mit der Nachrichten aus einer RabbitMQ-Warteschlange an die Azure Service Bus-Warteschlange gesendet werden.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="RabbitMQ Shovel hinzufügen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Ressource erstellen":::
 
 Rufen Sie hier die Shovel-Instanz `azure` auf, und wählen Sie `AMQP 0.9.1` als Quellenprotokoll aus. Im Screenshot wird `amqp://` angezeigt. Hierbei handelt es sich um den Standard-URI, der eine Verbindung mit einem lokalen RabbitMQ-Server herstellt. Passen Sie diesen an Ihre aktuelle Bereitstellung an.
 
@@ -110,15 +110,15 @@ Geben Sie im Feld `Address` den Namen der **Azure Service Bus-Warteschlange** ei
 
 Wechseln Sie in der RabbitMQ-Management-Schnittstelle zu `Queues`. Wählen Sie die Warteschlange `azure` aus, und suchen Sie nach dem Bereich `Publish message`. Es wird ein Formular angezeigt, in dem Sie Nachrichten direkt in der Warteschlange veröffentlichen können. In unserem Beispiel fügen wir `fist message` als `Payload` hinzu und klicken auf `Publish Message`:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Erste Nachricht veröffentlichen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Ressource erstellen":::
 
-Kehren Sie zu Azure zurück, und rufen Sie Ihre Warteschlange auf. Klicken Sie im linken Bereich auf `Service Bus Explorer`. Wenn alles ordnungsgemäß verlaufen ist, enthält Ihre Warteschlange nun zwei Nachrichten. Glückwunsch!
+Kehren Sie zu Azure zurück, und rufen Sie Ihre Warteschlange auf. Klicken Sie im linken Bereich auf `Service Bus Explorer` und dann auf die Schaltfläche _Einsehen_. Wenn alles ordnungsgemäß verlaufen ist, enthält Ihre Warteschlange nun zwei Nachrichten. Glückwunsch!
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure Service Bus-Warteschlange":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Ressource erstellen":::
 
 Überprüfen Sie, ob es sich bei der Nachricht tatsächlich um die Nachricht handelt, die Sie über RabbitMQ gesendet haben. Wählen Sie die Registerkarte `Peek` aus, und klicken Sie auf die Schaltfläche `Peek`, um die letzten Nachrichten in der Warteschlange abzurufen. Klicken Sie auf die Nachricht, um deren Inhalt zu überprüfen. Die Anzeige sollte wie in der folgenden Abbildung aussehen und Ihre `first message` sollte angezeigt werden.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Warteschlange einsehen":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Ressource erstellen":::
 
 ## <a name="lets-recap"></a>Zusammenfassung
 
@@ -136,3 +136,8 @@ Glückwunsch! Sie haben viel erreicht! Sie haben Ihre Nachrichten mit den folgen
 Nachdem Sie die vorherigen Schritte ausgeführt haben, haben Sie Bereiche Ihrer Organisation integriert, die außerhalb von Azure liegen. Mithilfe des Shovel-Plugins konnten Sie Nachrichten von RabbitMQ an Azure Service Bus übertragen. Dies hat enorme Vorteile, da Sie jetzt vertrauenswürdigen Drittanbietern gestatten können, ihre Apps mit Ihrer Azure-Bereitstellung zu verbinden.
 
 Am Ende geht es beim Messaging um das Aktivieren von Verbindungen. Mit dieser Technik haben wir gerade eine neue Möglichkeit eröffnet.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Weitere Informationen zu [Azure Service Bus](./service-bus-messaging-overview.md).
+- Weitere Informationen zur [Unterstützung für AMQP 1.0 in Service Bus](./service-bus-amqp-overview.md)

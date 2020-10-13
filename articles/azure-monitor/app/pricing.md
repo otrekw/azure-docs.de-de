@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930484"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400586"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -264,7 +264,7 @@ Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt.
 
 Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application Insights-Ressource die Seite **Nutzung und geschätzte Kosten** auf und wählen Sie die Option **Datenaufbewahrung**  aus:
 
-![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
+![Screenshot, der zeigt, wo der Datenaufbewahrungszeitraum geändert wird](./media/pricing/pricing-005.png)
 
 Wenn die Aufbewahrungsdauer gesenkt wird, besteht ein Toleranzzeitraum von mehreren Tagen, bevor die ältesten Daten entfernt werden.
 

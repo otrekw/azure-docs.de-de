@@ -1,6 +1,6 @@
 ---
 title: Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Microsoft-Dokumentation
-description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
+description: Hier erhalten Sie Informationen zu Azure AD-Anwendungsproxyconnectors.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319825"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 

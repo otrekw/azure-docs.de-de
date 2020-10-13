@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512333"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257451"
 ---
 # <a name="protected-web-api-code-configuration"></a>Geschützte Web-API: Codekonfiguration
 
@@ -111,6 +111,12 @@ Wenn Sie den vom App-Registrierungsportal vorgeschlagenen App-ID-URI akzeptiert 
 
 Wenn eine App in einer Controlleraktion aufgerufen wird, die ein Attribut vom Typ **[Authorize]** enthält, extrahieren ASP.NET und ASP.NET Core das Zugriffstoken aus dem Bearertoken des Autorisierungsheaders. Das Zugriffstoken wird dann an die JwtBearer-Middleware weitergeleitet, die die Microsoft-Identitätsmodellerweiterungen für .NET aufruft.
 
+#### <a name="microsoftidentityweb"></a>Microsoft.Identity.Web
+
+Microsoft empfiehlt die Verwendung des NuGet-Pakets [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) beim Entwickeln einer Web-API mit ASP.NET Core.
+
+_Microsoft.Identity.Web_ ist die verbindende Komponente zwischen ASP.NET Core, der Authentifizierungsmiddleware und der [Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)](msal-overview.md) für .NET. Das Paket ermöglicht eine übersichtlichere, stabilere Entwicklerumgebung und nutzt die Leistungsfähigkeit von Microsoft Identity Platform und Azure AD B2C.
+
 #### <a name="using-microsoftidentityweb-templates"></a>Verwenden von Microsoft.Identity.Web-Vorlagen
 
 Mithilfe von Microsoft.Identity.Web-Projektvorlagen können Sie eine Web-API von Grund auf neu erstellen. Weitere Informationen finden Sie unter [Microsoft.Identity.Web – Web-API-Projektvorlage](https://aka.ms/ms-id-web/webapi-project-templates).
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Aktuell erstellen die ASP.NET Core-Vorlagen Azure Active Directory-Web-APIs, die Benutzer innerhalb Ihrer Organisation oder einer anderen Organisation anmelden. Benutzer werden nicht mit persönlichen Konten angemeldet. Sie können jedoch die Vorlagen so ändern, dass der Microsoft Identity Platform-Endpunkt verwendet wird, indem Sie [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) (als NuGet-Paket verfügbar) verwenden. Ersetzen Sie dabei den Code in der Datei *Startup.cs*:
+ Aktuell erstellen die ASP.NET Core-Vorlagen Azure Active Directory-Web-APIs, die Benutzer innerhalb Ihrer Organisation oder einer anderen Organisation anmelden. Benutzer werden nicht mit persönlichen Konten angemeldet. Sie können jedoch die Vorlagen so ändern, dass der Microsoft Identity Platform-Endpunkt verwendet wird, indem Sie [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) verwenden. Ersetzen Sie dabei den Code in der Datei *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;

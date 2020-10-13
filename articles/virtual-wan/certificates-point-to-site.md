@@ -1,18 +1,18 @@
 ---
 title: Generieren und Exportieren von Zertifikaten für Benutzer-VPN-Verbindungen | Azure Virtual WAN
-description: Hier erhalten Sie Informationen zum Erstellen selbstsignierter Stammzertifikate, Exportieren des öffentlichen Schlüssels und Generieren von Clientzertifikaten mit PowerShell unter Windows 10 oder Windows Server 2016.
+description: Hier erhalten Sie Informationen zum Erstellen selbstsignierter Stammzertifikate, Exportieren des öffentlichen Schlüssels und Generieren von Clientzertifikaten für Benutzer-VPN-Verbindungen mithilfe von PowerShell unter Windows 10 oder Windows Server 2016.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: a5361df9e9cfc9f5d299d494ed634dcaaaf2e707
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2205f170ee846d4db94db7f524a1c424cfbc8f7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328037"
 ---
 # <a name="generate-and-export-certificates-for-user-vpn-connections"></a>Generieren und Exportieren von Zertifikaten für Benutzer-VPN-Verbindungen
 

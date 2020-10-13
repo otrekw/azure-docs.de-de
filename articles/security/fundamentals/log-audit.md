@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5ac9daeb741d400a759603c7a3e3e462cc9294f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75750789"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398868"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure-Sicherheitsprotokollierung und -Überwachung
 
@@ -68,4 +68,4 @@ In dem Artikel [Integrieren von Sicherheitslösungen in Azure Security Center](.
 
 - [Konfigurieren von Überwachungseinstellungen für eine Websitesammlung](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Wenn Sie Administrator einer Websitesammlung sind, können Sie den Verlauf der Aktionen für einzelne Benutzer und den Verlauf von Aktionen, die während eines bestimmten Zeitraums ausgeführt wurden, abrufen.
 
-- [Durchsuchen des Überwachungsprotokolls im Office 365 Security & Compliance Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Mit dem Office 365 Security & Compliance Center können Sie das vereinheitlichte Überwachungsprotokoll suchen, um Benutzer- und Administratoraktivitäten in Ihrer Office 365-Organisation anzuzeigen.
+- [Durchsuchen des Überwachungsprotokolls in Microsoft 365 Security Center:](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) Durchsuchen Sie mit Microsoft 365 Security Center das vereinheitlichte Überwachungsprotokoll, um Benutzer- und Administratoraktivitäten in Ihrer Organisation anzuzeigen.

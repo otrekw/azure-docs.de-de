@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264370"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -185,16 +185,16 @@ Mit der neuen [Azure Monitor-Integration](https://aka.ms/appsvcblog-azmon) könn
 
 In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibungen dieser aufgeführt: 
 
-| Protokolltyp | Windows-Unterstützung | Linux-Unterstützung (Docker) | BESCHREIBUNG |
-|-|-|-|
-| AppServiceConsoleLogs | Wird noch angekündigt | Ja | Standardausgabe und Standardfehler |
-| AppServiceHTTPLogs | Ja | Ja | Webserverprotokolle |
-| AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service-Umgebung: Skalierung, Konfigurationsänderungen und Statusprotokolle|
-| AppServiceAuditLogs | Ja | Ja | Anmeldeaktivität per FTP und Kudu |
-| AppServiceFileAuditLogs | Ja | TBD | Dateiänderungen am Websiteinhalt; nur für Premium-Tarif und höher verfügbar. |
-| AppServiceAppLogs | Wird noch angekündigt | Java SE & Tomcat | Anwendungsprotokolle |
-| AppServiceIPSecAuditLogs  | Ja | Ja | Anforderungen von IP-Regeln |
-| AppServicePlatformLogs  | Wird noch angekündigt | Ja | Containerprotokolle |
+| Protokolltyp | Windows | Windows-Container | Linux | Linux-Container | BESCHREIBUNG |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | Wird noch angekündigt | Wird noch angekündigt | Ja | Ja | Standardausgabe und Standardfehler |
+| AppServiceHTTPLogs | Ja | Wird noch angekündigt | Ja | Ja | Webserverprotokolle |
+| AppServiceEnvironmentPlatformLogs | Ja | – | Ja | Ja | App Service-Umgebung: Skalierung, Konfigurationsänderungen und Statusprotokolle|
+| AppServiceAuditLogs | Ja | Wird noch angekündigt | Ja | Ja | Anmeldeaktivität per FTP und Kudu |
+| AppServiceFileAuditLogs | Ja | Wird noch angekündigt | Wird noch angekündigt | Wird noch angekündigt | Dateiänderungen am Websiteinhalt; nur für Premium-Tarif und höher verfügbar. |
+| AppServiceAppLogs | ASP.NET | Wird noch angekündigt | Java SE & Tomcat | Java SE & Tomcat | Anwendungsprotokolle |
+| AppServiceIPSecAuditLogs  | Ja | Wird noch angekündigt | Ja | Ja | Anforderungen von IP-Regeln |
+| AppServicePlatformLogs  | Wird noch angekündigt | Wird noch angekündigt | Ja | Ja | Containervorgangsprotokolle |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nächste Schritte
 * [Abfrageprotokolle mit Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

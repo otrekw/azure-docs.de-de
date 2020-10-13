@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985917"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395888"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitätsdatenspeicher für europäische Kunden in Azure Active Directory
 Identitätsdaten werden von Azure AD an einem geografischen Standort gespeichert, der auf der Adresse beruht, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Microsoft 365 und Azure angegeben hat. Informationen darüber, wo Ihre Identitätsdaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
@@ -35,6 +35,10 @@ Bei der cloudbasierten Azure Multi-Factor Authentication erfolgt die Authentifiz
 * Multi-Factor Authentication-Anforderungen mit OATH-Codes, die von europäischen Rechenzentren stammen, werden in Europa überprüft.
 
 Weitere Informationen zu den Benutzerinformationen, die vom Azure MFA-Server (Multi-Factor Authentication Server) und von der cloudbasierten Azure MFA gesammelt werden, finden Sie unter [Azure Multi-Factor Authentication – Erfassen von Benutzerdaten](../authentication/howto-mfa-reporting-datacollection.md).
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Kennwortbasiertes einmaliges Anmelden für Unternehmensanwendungen
+ 
+Wenn ein Kunde eine neue Unternehmensanwendung erstellt (ob über den Azure AD-Katalog oder nicht) und kennwortbasiertes einmaliges Anmelden aktiviert, werden die Anmelde-URL der Anwendung und die benutzerdefinierten Erfassungsanmeldefelder in den USA gespeichert. Weitere Informationen zu diesem Feature finden Sie unter [Konfigurieren des kennwortbasierten einmaligen Anmeldens](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

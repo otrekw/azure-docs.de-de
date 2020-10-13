@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/28/2019
-ms.openlocfilehash: a02583825f4a1ef15992aa2307e7f666d5abeaba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b3eda2c8de8319552f32938f20ff98af0e0a49fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314826"
 ---
 # <a name="nodes-and-tables-in-azure-database-for-postgresql--hyperscale-citus"></a>Knoten und Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -24,7 +24,7 @@ Der Hostingtyp von Hyperscale (Citus) ermöglicht es Azure Database for PostgreS
 
 Jede Servergruppe verfügt über einen Koordinatorknoten und mehrere Worker(knoten). Anwendungen senden ihre Abfragen an den Koordinatorknoten, der sie an die relevanten Worker weiterleitet und die Ergebnisse sammelt. Anwendungen können keine direkte Verbindung mit Workern herstellen.
 
-Hyperscale (Citus) ermöglicht es dem Datenbankadministrator, Tabellen zu *verteilen* und verschiedene Zeilen auf verschiedenen Workerknoten zu speichern. Verteilte Tabellen sind entscheidend für die Leistung von Hyperscale. Wenn Tabellen nicht verteilt werden, verbleiben Sie vollständig auf dem Koordinatorknoten und profitieren nicht von computerübergreifender Parallelität.
+Hyperscale (Citus) ermöglicht es dem Datenbankadministrator, Tabellen zu *verteilen* und verschiedene Zeilen auf verschiedenen Workerknoten zu speichern. Verteilte Tabellen sind entscheidend für die Leistung von Hyperscale (Citus). Wenn Tabellen nicht verteilt werden, verbleiben Sie vollständig auf dem Koordinatorknoten und profitieren nicht von computerübergreifender Parallelität.
 
 Der Koordinator leitet jede Abfrage für verteilte Tabellen entweder an einen einzelnen Workerknoten weiter oder parallelisiert sie über mehrere Knoten, je nachdem, ob sich die erforderlichen Daten auf einem einzelnen oder auf mehreren Knoten befinden. Der Koordinator entscheidet anhand von Metadatentabellen, welche Aktion auszuführen ist. In diesen Tabellen werden die DNS-Namen und die Integrität der Workerknoten sowie die Verteilung der Daten auf Knoten nachverfolgt.
 

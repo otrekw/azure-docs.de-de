@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971650"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275284"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität
 
@@ -136,6 +136,14 @@ Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird au
 Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](/rest/api/searchservice/create-indexer).
 
 Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn Sie feststellen, dass Sie keine Daten aus Cosmos DB indizieren können, sollten Sie Folgendes beachten:
+
+1. Wenn die Cosmos DB-Kontoschlüssel vor Kurzem rotiert wurden, müssen Sie bis zu 15 Minuten warten, bis die Verbindungszeichenfolge für verwaltete Identitäten funktioniert.
+
+1. Überprüfen Sie, ob der Zugriff des Cosmos DB-Kontos auf ausgewählte Netzwerke beschränkt ist. Falls ja, lesen Sie die Informationen unter [Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures](search-indexer-securing-resources.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 

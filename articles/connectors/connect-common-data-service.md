@@ -7,12 +7,12 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284114"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334581"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Datensätzen in Common Data Service mithilfe von Azure Logic Apps
 
@@ -108,7 +108,7 @@ Für Trigger, die ausgeführt werden, wenn Datensätze aktualisiert werden, z. 
 
 1. Wählen Sie im Trigger aus der Liste **Add new parameter** (Neuen Parameter hinzufügen) **Attribute Filters** (Attributfilter) aus.
 
-   ![Hinzufügen der Eigenschaft „Attribute Filters“ (Attributfilter)](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![Screenshot: Aktion „Wenn ein Datensatz aktualisiert wird“ und die geöffnete Liste „Add new parameter“ (Neuen Parameter hinzufügen) mit der ausgewählten Eigenschaft „Attribute Filters“ (Attributfilter)](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
 1. Wählen Sie für jedes **Attribute Filters Item** (Attributfilterelement) das Attribut aus, das Sie auf Aktualisierungen überwachen möchten, beispielsweise:
 

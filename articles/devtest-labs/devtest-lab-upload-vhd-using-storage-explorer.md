@@ -3,12 +3,12 @@ title: Hochladen von VHD-Dateien in Azure DevTest Labs mit Storage-Explorer
 description: Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282526"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
 
@@ -90,13 +90,13 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
 
     1. Im rechten Bereich des Storage-Explorers sollte eine Liste der Blobs im Blobcontainer für **Uploads** des Labspeicherkontos angezeigt werden. Wählen Sie auf der Symbolleiste des Blob-Editors die Option **Upload** aus. 
         
-        ![Schaltfläche zum Hochladen][6]
+        ![Screenshot: Rechter Bereich des Storage-Explorers mit der ausgewählten Schaltfläche „Hochladen“][6]
     
     1. Wählen Sie im Dropdownmenü **Upload** den Eintrag **Dateien hochladen...** aus.
     
     1. Wählen Sie im Dialogfeld **Dateien hochladen** die Schaltfläche mit den Auslassungspunkten aus.
         
-        ![Datei auswählen][8]  
+        ![Screenshot: Dialogfeld „Dateien hochladen“ mit ausgewählten Auslassungspunkten][8]  
 
     1. Navigieren Sie im Dialogfeld **Dateien zum Hochladen auswählen** zu der gewünschten VHD-Datei, wählen Sie sie aus, und klicken Sie dann auf **Öffnen**.
     

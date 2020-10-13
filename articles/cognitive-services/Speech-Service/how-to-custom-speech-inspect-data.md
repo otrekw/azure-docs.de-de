@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319112"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 
@@ -79,11 +79,13 @@ Nachdem die Daten erfolgreich importiert wurden, können Sie in die Datasets kli
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>Bearbeiten der Transkription durch Anhören von Audio
 
-Nachdem die Daten erfolgreich hochgeladen wurden, klicken Sie auf den Namen der einzelnen Elemente, um Details zu den Daten anzuzeigen. Die Detailseite listet alle Dateien in Ihrem Dataset auf, und Sie können in die gewünschte Äußerung klicken. Für jede Äußerung können Sie die Audiodaten wiedergeben und die Transkriptionen untersuchen sowie die Transkriptionen bearbeiten, wenn Sie Fehler beim Einfügen, Löschen oder Ersetzen finden. Weitere Details zu Fehlertypen finden Sie unter der [Vorgehensweise zur Datenauswertung](how-to-custom-speech-evaluate-data.md).
+Nachdem die Daten erfolgreich hochgeladen wurden, klicken Sie auf den Namen der einzelnen Elemente, um Details zu den Daten anzuzeigen. Sie können auch mithilfe von **Zurück** und **Weiter** zwischen den einzelnen Dateien wechseln.
+
+Die Detailseite listet alle Segmente in jeder Audiodatei auf, und Sie können in die gewünschte Äußerung klicken. Für jede Äußerung können Sie die Audiodaten wiedergeben und die Transkriptionen untersuchen sowie die Transkriptionen bearbeiten, wenn Sie Fehler beim Einfügen, Löschen oder Ersetzen finden. Weitere Details zu Fehlertypen finden Sie unter der [Vorgehensweise zur Datenauswertung](how-to-custom-speech-evaluate-data.md).
 
 ![Editor-Seite](media/custom-speech/custom-speech-editor.png)
 
-Wenn die Audiodatei lang ist, wird sie automatisch in kleinere Abschnitte segmentiert. Sie können sie nacheinander mithilfe von **Zurück** und **Weiter** bearbeiten, um zwischen den Seiten zu wechseln. Nachdem Sie Änderungen vorgenommen haben, klicken Sie auf die Schaltfläche **Speichern**.
+Nachdem Sie Änderungen vorgenommen haben, klicken Sie auf die Schaltfläche **Speichern**.
 
 ### <a name="export-datasets-from-the-editor"></a>Exportieren von Datasets aus dem Editor
 

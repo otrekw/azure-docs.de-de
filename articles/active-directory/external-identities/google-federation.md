@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273992"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -78,10 +78,10 @@ Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um e
 
 11. Wählen Sie unter **Anwendungstyp** die Option **Webanwendung** aus, und versehen Sie die Anwendung mit einem geeigneten Namen, z. B. „Azure AD B2B“. Geben Sie dann unter **Autorisierte Weiterleitungs-URIs** die folgenden URIs ein:
     - `https://login.microsoftonline.com` 
-    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(Dabei ist `<directory id>` Ihre Verzeichnis-ID.)
+    - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br>(`<tenant id>` ist Ihre Mandanten-ID.)
    
     > [!NOTE]
-    > Sie finden Ihre Verzeichnis-ID unter https://portal.azure.com. Wählen Sie dort unter **Azure Active Directory** die Option **Eigenschaften** aus, und kopieren Sie die **Verzeichnis-ID**.
+    > Sie finden Ihre Mandanten-ID unter https://portal.azure.com. Wählen Sie dort unter **Azure Active Directory** die Option **Eigenschaften** aus, und kopieren Sie die **Mandanten-ID**.
 
     ![Screenshot des Abschnitts „Autorisierte Umleitungs-URIs“](media/google-federation/google-create-oauth-client-id.png)
 

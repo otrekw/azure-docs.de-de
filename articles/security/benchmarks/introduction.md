@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328257"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Einführung zum Azure Security-Vergleichstest
 
@@ -23,8 +23,8 @@ Microsoft hat festgestellt, dass die Verwendung von *Sicherheitsvergleichstests*
 
 Der Azure-Sicherheitsvergleichstest enthält eine Sammlung von wirkungsvollen Sicherheitsempfehlungen, mit denen Sie die von Ihnen in Azure genutzten Dienste sichern können:
 
-- Sicherheitskontrollelemente: Diese Empfehlungen gelten allgemein für Ihren Azure-Mandanten und die Azure-Dienste. Jede Empfehlung enthält eine Liste von Projektbeteiligter, die in der Regel an der Planung, Genehmigung oder Implementierung des Vergleichstests beteiligt sind. 
-- Grundwerte für Dienste: Diese wenden die Kontrollelemente auf einzelne Azure-Dienste an, um Empfehlungen für die Sicherheitskonfiguration des jeweiligen Diensts zu geben.
+- **Sicherheitskontrollelemente:** Diese Empfehlungen gelten allgemein für Ihren Azure-Mandanten und die Azure-Dienste. Jede Empfehlung enthält eine Liste von Projektbeteiligter, die in der Regel an der Planung, Genehmigung oder Implementierung des Vergleichstests beteiligt sind. 
+- **Dienstbaselines:** Diese wenden die Kontrollelemente auf einzelne Azure-Dienste an, um Empfehlungen für die Sicherheitskonfiguration des jeweiligen Diensts zu geben.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Implementieren des Azure-Sicherheitsvergleichstests
 - **Planen** Sie die Implementierung Ihres Azure-Sicherheitsvergleichstests, indem Sie die [Dokumentation](overview.md) für die Unternehmenskontrollelemente und dienstspezifischen Grundwerte zurate ziehen, um Ihr Kontrollframework und dessen Einhaltung der Richtlinien wie CIS (Controls v7.1) und NIST (SP800-53) zu planen.

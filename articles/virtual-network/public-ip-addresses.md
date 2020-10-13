@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329260"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -165,6 +165,13 @@ Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../ap
 * Weisen Sie einer Application Gateway-Front-End-Konfiguration der Version 1 eine **dynamische** öffentliche IP-Adresse mit Basic-SKU zu. 
 * Weisen Sie einer Front-End-Konfiguration der Version 2 eine **statische** Adresse mit Standard-SKU zu.
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+Von [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) können Richtlinien zur Anwendungs- und Netzwerkkonnektivität für Abonnements und virtuelle Netzwerke erstellt, erzwungen und protokolliert werden.
+
+Sie können einer Firewall nur **statische** öffentliche Standard-IP-Adressen zuordnen. Dadurch können externe Firewalls Datenverkehr aus Ihrem virtuellen Netzwerk identifizieren. 
+
+
 ## <a name="at-a-glance"></a>Auf einen Blick
 
 In der folgenden Tabelle sind die Eigenschaften, über die eine öffentliche IP-Adresse einer Ressource der obersten Ebene zugeordnet werden kann, und die möglichen Zuweisungsverfahren angegeben.
@@ -175,6 +182,7 @@ In der folgenden Tabelle sind die Eigenschaften, über die eine öffentliche IP-
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
 | VPN-Gateway |Gateway-IP-Konfiguration |Ja |Nein |
 | Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) |
+| Azure Firewall | Front-End-Konfiguration | Nein | Ja|
 
 ## <a name="limits"></a>Einschränkungen
 

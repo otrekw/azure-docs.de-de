@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311596"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -36,6 +36,8 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 * Das neue v2-Gateway hat neue öffentliche und private IP-Adressen. Es ist nicht möglich, die IP-Adressen, die dem vorhandenen v1-Gateway zugeordnet sind, nahtlos in v2 zu verschieben. Sie können dem neuen v2-Gateway jedoch eine vorhandene (nicht zugeordnete) öffentliche oder private IP-Adresse zuordnen.
 * Sie müssen einen IP-Adressraum für ein anderes Subnetz in Ihrem virtuellen Netzwerk bereitstellen, in dem sich Ihr v1-Gateway befindet. Mit dem Skript kann das v2-Gateway nicht in einem vorhandenen Subnetz erstellt werden, in dem es bereits ein v1-Gateway v1 gibt. Hat das vorhandene Subnetz jedoch bereits ein v2-Gateway, funktioniert dieses möglicherweise weiterhin, sofern genügend IP-Adressraum verfügbar ist.
+* Wenn Sie dem Subnetz des v2-Gateways eine Netzwerksicherheitsgruppe oder benutzerdefinierte Routen zugeordnet haben, vergewissern Sie sich, dass sie die [NSG-Anforderungen](../application-gateway/configuration-infrastructure.md#network-security-groups) und [UDR-Anforderungen](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes) erfüllen, um eine erfolgreiche Migration sicherzustellen.
+* [Richtlinien für VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoint-policies-overview.md) werden derzeit in einem Application Gateway-Subnetz nicht unterstützt.
 * Um eine TLS/SSL-Konfiguration zu migrieren, müssen Sie alle TLS/SSL-Zertifikate angeben, die in Ihrem v1-Gateway verwendet werden.
 * Haben Sie für Ihr v1-Gateway den FIPS-Modus aktiviert, wird dieser nicht in Ihr neues v2-Gateway migriert. Der FIPS-Modus wird in v2 nicht unterstützt.
 * In v2 wird IPv6 nicht unterstützt, weshalb v1-Gateways, für die IPv6 aktiviert ist, nicht migriert werden. Wenn Sie das Skript ausführen, wird es möglicherweise nicht vollständig ausgeführt.

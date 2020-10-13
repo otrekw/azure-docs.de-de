@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707780"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325554"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -38,20 +38,23 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
     Die Gesamtsumme des logischen Speichers (GiB), der in einem Kapazitätspool volumeübergreifend genutzt wird.  
 
 - *Gesamtgröße der Momentaufnahme für den Pool*    
-    Die Summe der Momentaufnahmegröße aller Volumes in dem Pool.
+    Die Summe der Momentaufnahmegrößen aller Volumes in dem Pool
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Nutzungsmetriken für Volumes
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *Zugeordnete Größe des Volumes*   
+    Die bereitgestellte Größe eines Volumes
+- *Größe des Volumekontingents*    
+    Die Kontingentgröße (GiB), mit der das Volume bereitgestellt wird   
 - *Vom Volume genutzte Größe*   
-    Der gesamte logische Speicher (GiB), der auf einem Volume genutzt wird.  
+    Logische Größe des Volumes (verwendete Bytes).  
     In diesem Größenwert ist der logische Speicherplatz enthalten, der von aktiven Dateisystemen und Momentaufnahmen verwendet wird.  
 - *Größe der Volumemomentaufnahme*   
-   Der inkrementelle logische Speicherplatz, der von Momentaufnahmen auf einem Volume belegt wird.  
+   Größe aller Momentaufnahmen in einem Volume  
 
 ## <a name="performance-metrics-for-volumes"></a>Leistungsmetriken für Volumes
 
@@ -63,11 +66,28 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
     Die Anzahl der Lesevorgänge auf dem Volume pro Sekunde.
 - *Schreib-IOPS*   
     Die Anzahl der Schreibvorgänge auf dem Volume pro Sekunde.
+- *Lesevorgänge in MiB/s*   
+    Lesedurchsatz in Bytes pro Sekunde
+- *Schreibvorgänge in MiB/s*   
+    Schreibdurchsatz in Bytes pro Sekunde
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriken für die Volumereplikation
 
 - *Ist Volumereplikationsstatus „Fehlerfrei“*    
-    Der Zustand der Replikationsbeziehung. 
+    Der Zustand der Replikationsbeziehung. Ein fehlerfreier Status wird durch `1` angegeben. Ein fehlerhafter Status wird durch `0` angegeben.
 
 - *Wird Volumereplikation übertragen*    
     Gibt an, ob der Status der Volumereplikation „Wird übertragen“ lautet. 

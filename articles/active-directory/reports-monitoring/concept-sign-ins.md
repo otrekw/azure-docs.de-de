@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603593"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361295"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -147,7 +147,7 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 |Authentifiziertes SMTP| |Wird von POP- und IMAP-Clients zum Senden von E-Mails verwendet.|
 |AutoErmittlung| |Wird von Outlook- und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und eine Verbindung damit herzustellen.|
 |Exchange ActiveSync| |Dieser Filter zeigt alle Anmeldeversuche, bei denen das EAS-Protokoll versucht wurde.|
-|Browser|![Häkchen](./media/concept-sign-ins/check.png)|Zeigt alle Anmeldeversuche von Benutzern über Webbrowser|
+|Browser|![Blaues Häkchen](./media/concept-sign-ins/check.png)|Zeigt alle Anmeldeversuche von Benutzern über Webbrowser|
 |Exchange ActiveSync| | Zeigt alle Anmeldeversuche von Benutzern mit Client-Apps, die Exchange Active Sync zur Herstellung einer Verbindung mit Exchange Online verwenden|
 |Exchange Online PowerShell| |Wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet. Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Exchange-Webdienste| |Eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird.|

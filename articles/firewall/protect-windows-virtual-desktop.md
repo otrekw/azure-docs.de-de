@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611134"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400160"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen
 
@@ -61,7 +61,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>Ausgehender Zugriff für Hostpools auf das Internet
 
-Je nach Anforderungen Ihrer Organisation sollten Sie sicheren ausgehenden Zugriff auf das Internet für Ihre Endbenutzer aktivieren. In Fällen, in denen die Liste der zulässigen Ziele klar definiert ist (z. B. beim [Zugriff auf Office 365](https://docs.microsoft.com/Office365/Enterprise/office-365-ip-web-service)), können Sie die Anwendungs- und Netzwerkregeln für Azure Firewall verwenden, um den erforderlichen Zugriff zu konfigurieren. Dadurch wird der Endbenutzerdatenverkehr direkt an das Internet geleitet, um eine optimale Leistung zu erzielen.
+Je nach Anforderungen Ihrer Organisation sollten Sie sicheren ausgehenden Zugriff auf das Internet für Ihre Endbenutzer aktivieren. In Fällen, in denen die Liste der zulässigen Ziele klar definiert ist (z. B. beim [Zugriff auf Microsoft 365](/microsoft-365/enterprise/microsoft-365-ip-web-service)), können Sie die Anwendungs- und Netzwerkregeln für Azure Firewall verwenden, um den erforderlichen Zugriff zu konfigurieren. Dadurch wird der Endbenutzerdatenverkehr direkt an das Internet geleitet, um eine optimale Leistung zu erzielen.
 
 Wenn Sie den ausgehenden Internetdatenverkehr von Benutzern mithilfe eines vorhandenen lokalen, sicheren Webgateways filtern möchten, können Sie Webbrowser oder andere Anwendungen, die auf dem Windows Virtual Desktop-Hostpool ausgeführt werden, mithilfe einer expliziten Proxykonfiguration konfigurieren. Weitere Informationen hierzu finden Sie beispielsweise unter [So verwenden Sie Microsoft Edge-Befehlszeilenoptionen zum Konfigurieren von Proxyeinstellungen](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings). Diese Proxyeinstellungen beeinflussen nur den Internetzugriff für Endbenutzer, wodurch der ausgehende Datenverkehr der Windows Virtual Desktop-Plattform direkt über Azure Firewall ermöglicht wird.
 

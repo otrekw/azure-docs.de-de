@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Zusammenfassung der Unterstützung der Azure Migrate-Appliance.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084769"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450043"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -47,12 +47,12 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Unterstützte Bereitstellung** | Bereitstellen als VMware VM mit OVA-Vorlage.<br/><br/> Bereitstellen als VMware VM oder physischer Computer mithilfe des PowerShell-Installationsskripts.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
-**OVA-Vorlage** | Laden Sie sie über das Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140333) herunter.<br/><br/> Die Downloadgröße beträgt 11,6 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+**OVA-Vorlage** | Laden Sie sie über das Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140333) herunter.<br/><br/> Die Downloadgröße beträgt 11,9 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
 **PowerShell-Skript** | Weitere Informationen finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem virtuellen VMware-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem vCenter Server, um einen virtuellen Computer zuzuordnen, der den Anforderungen entspricht.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.
 **VMware-Anforderungen** | Wenn Sie die Appliance als virtuellen VMware-Computer bereitstellen, muss er auf einem ESXi-Host mit der Version 5.5 oder höher bereitgestellt werden.<br/><br/> vCenter Server mit Version 5.5, 6.0, 6.5 oder 6.7
 **VDDK (Migration ohne Agent)** | Wenn Sie die Appliance als virtuellen VMware- Computer bereitstellen und eine Migration ohne Agent durchführen, muss das VMware vSphere VDDK auf dem virtuellen Computer der Appliance installiert sein.
-**Hashwert-OVA** | [Überprüfen](tutorial-assess-vmware.md#verify-security) Sie die OVA-Vorlagenhashwerte.
+**Hashwert-OVA** | [Überprüfen](tutorial-discover-vmware.md#verify-security) Sie die OVA-Vorlagenhashwerte.
 **Hashwert-PowerShell-Skript** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
 
@@ -67,11 +67,11 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Unterstützte Bereitstellung** | Bereitstellen als Hyper-V VM mithilfe einer VHD-Vorlage.<br/><br/> Bereitstellen als virtueller Hyper-V-Computer oder physischer Computer mithilfe des PowerShell-Installationsskripts.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 5000 virtuelle Hyper-V-Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
-**VHD-Vorlage** | Gezippte Ordner, einschließlich VHD. Laden Sie sie über das Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140422) herunter.<br/><br/> Die Downloadgröße beträgt 10,4 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+**VHD-Vorlage** | Gezippte Ordner, einschließlich VHD. Laden Sie sie über das Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140422) herunter.<br/><br/> Die Downloadgröße beträgt 8,91 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
 **PowerShell-Skript** | Weitere Informationen finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
-**Software/Hardware***   |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance als virtuellen Hyper-V-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem Hyper-V-Host, um 16 GB RAM, 8 vCPUs, ca. 80 GB Speicherplatz und einen externen Switch für den virtuellen Computer der Appliance zuzuweisen.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
+**Software/Hardware***   |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance als virtuellen Hyper-V-Computer ausführen, benötigen Sie genügend Ressourcen auf dem Hyper-V-Host zum Zuordnen der Hardwareanforderungen.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
 **Hyper-V-Anforderungen** | Wenn Sie die Appliance mit der VHD-Vorlage bereitstellen, entspricht die von Azure Migrate bereitgestellte Appliance der Hyper-V VM Version 5.0.<br/><br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden. 
-**Hashwert-VHD** | Hashwerte der VHD-Vorlage.
+**Hashwert-VHD** | [Überprüfen](tutorial-discover-hyper-v.md#verify-security) Sie die Hashwerte der VHD-Vorlage.
 **Hashwert-PowerShell-Skript** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
 
@@ -84,9 +84,9 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Unterstützte Bereitstellung** | Bereitstellen als dedizierter physischer Computer oder als virtueller Computer mithilfe eines PowerShell-Installationsskripts. Das Skript steht im Portal als Download zur Verfügung.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 1.000 physische Server ermitteln.
-**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter. [Weitere Informationen](tutorial-discover-physical.md)<br/><br/> Die Downloadgröße beträgt 85 MB.
-**Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.<br/> Das Ausführen der Appliance auf einem Computer mit Windows Server 2019 wird nicht unterstützt.
-**Hashwert** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
+**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter. [Weitere Informationen](tutorial-discover-physical.md)<br/><br/> Die Downloadgröße beträgt 85.8 MB.
+**Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs und etwa 80 GB Speicherplatz ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.<br/>_(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_
+**Hashwert** | [Überprüfen](tutorial-discover-physical.md#verify-security) Sie die PowerShell-Skripthashwerte.
 
 ## <a name="url-access"></a>URL-Zugriff
 

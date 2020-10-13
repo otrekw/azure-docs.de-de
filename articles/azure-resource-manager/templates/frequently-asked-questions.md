@@ -2,15 +2,15 @@
 title: Häufig gestellte Fragen zu Resource Manager-Vorlagen
 description: Häufig gestellte Fragen (FAQ) zu Azure Resource Manager-Vorlagen.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333119"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Häufig gestellte Fragen zu Resource Manager-Vorlagen
 
@@ -88,7 +88,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Ich habe gehört, dass Sie an einer neuen Vorlagensprache arbeiten. Wo finde ich weitere Informationen?**
 
-  Wenn Sie mehr über die neue Vorlagensprache erfahren möchten, [melden Sie sich für Benachrichtigungen an](https://aka.ms/armLangUpdates).
+  Informationen zum Anzeigen einer Vorschau der neuen Sprache finden Sie im [Repository zu Project Bicep](https://github.com/Azure/bicep). Wenn Sie in Bezug auf die neue Vorlagensprache auf dem Laufenden bleiben möchten, [melden Sie sich für Benachrichtigungen an](https://aka.ms/armLangUpdates).
 
 * **Soll das Erstellen von Vorlagen in YAML unterstützt werden?**
 

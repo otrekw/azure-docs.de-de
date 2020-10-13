@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313313"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
 Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und SMTP-**ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
@@ -124,7 +124,7 @@ Verwenden Sie für eine allgemeine Zeichenfolgensuche das Flag **-SearchString**
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 Admin Center
 Sie können Fehler bei der Verzeichnissynchronisierung im Microsoft 365 Admin Center anzeigen. Der Bericht im Microsoft 365 Admin Center enthält nur Objekte vom Typ **User**, für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten des Typs **Gruppen** und **Kontakte**.
 
-![Aktive Benutzer](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktive Benutzer")
+![Screenshot: Fehler bei der Verzeichnissynchronisierung im Microsoft 365 Admin Center](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktive Benutzer")
 
 Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung im Microsoft 365 Admin Center finden Sie unter [Ermitteln von Fehlern der Verzeichnissynchronisierung in Microsoft 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
@@ -132,7 +132,7 @@ Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung im M
 Wenn dieses neue Verhalten bei einem Objekt mit einem Konflikt aufgrund eines doppelten Attributs angewendet wird, enthält die standardmäßige Fehlerberichts-E-Mail für die Identitätssynchronisierung, die an den Kontakt für technische Benachrichtigungen des Mandanten gesendet wird, eine entsprechende Benachrichtigung. Bei diesem Verhalten gibt es jedoch eine wichtige Änderung. In der Vergangenheit wurden Informationen zu einem Konflikt aufgrund eines doppelten Attributs in jeden nachfolgenden Fehlerbericht einbezogen, bis der Konflikt behoben wurde. Bei Verwendung des neuen Verhaltens erscheint die Fehlerbenachrichtigung für einen bestimmten Konflikt lediglich einmal (zu dem Zeitpunkt, zu dem das in Konflikt stehende Attribut isoliert wird).
 
 Hier sehen Sie ein Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAddress-Konflikt:  
-    ![Aktive Benutzer](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktive Benutzer")  
+    ![Screenshot: Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAddress-Konflikt](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktive Benutzer")  
 
 ## <a name="resolving-conflicts"></a>Beheben von Konflikten
 Zur Behandlung von Fehlern aufgrund von doppelten Attributen werden die gleichen Strategien und Vorgehensweisen verwendet wie zuvor. Der einzige Unterschied besteht darin, dass für den Mandanten automatisch dienstseitig die Timer-Aufgabe ausgeführt wird, um dem entsprechenden Objekt nach Behebung des Konflikts das betreffende Attribut hinzuzufügen.

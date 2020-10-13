@@ -3,14 +3,14 @@ title: Abfragen von Protokollen der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie die Protokolle für die Updateverwaltung in Ihrem Log Analytics-Arbeitsbereich abfragen.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264302"
 ---
 # <a name="query-update-management-logs"></a>Abfragen von Protokollen der Updateverwaltung
 
@@ -110,7 +110,7 @@ Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstell
 | Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
 | ComputerEnvironment | Umgebung. Die Werte sind „Azure“ oder „Non-Azure“. |
 | CorrelationId | Eindeutiger Bezeichner für die Runbookauftragsausführung für das Update. |
-| EndTime | Der Zeitpunkt, an dem der Synchronisierungsprozess beendet wurde. |
+| EndTime | Der Zeitpunkt, an dem der Synchronisierungsprozess beendet wurde. *Diese Eigenschaft wird derzeit nicht verwendet. Siehe „TimeGenerated“* |
 | ErrorResult | Generierter Windows Update-Fehlercode, wenn die Installation eines Updates fehlschlägt. |
 | InstallationStatus | Die folgenden Installationszustände sind für Updates auf dem Clientcomputer möglich:<br> `NotStarted`: Der Auftrag wurde noch nicht ausgelöst.<br> `FailedToStart`: Der Auftrag konnte nicht auf dem Computer gestartet werden.<br> `Failed`: Der Auftrag wurde gestartet, ist aber mit einer Ausnahme fehlgeschlagen.<br> `InProgress`: Der Auftrag ist in Bearbeitung.<br> `MaintenanceWindowExceeded`: Wenn die Ausführung noch nicht erfolgt ist, aber das Wartungsfenster erreicht wurde.<br> `Succeeded`: Der Auftrag war erfolgreich.<br> `InstallFailed`: Die Installation des Updates ist fehlgeschlagen.<br> `NotIncluded`<br> `Excluded` |
 | KBID | ID des Knowledge Base-Artikels für das Windows Update. |
@@ -123,8 +123,8 @@ Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstell
 | ResourceType | Der Ressourcentyp. |
 | SourceComputerId | Eindeutiger Bezeichner, der den Quellcomputer darstellt. |
 | SourceSystem | Das Quellsystem des Datensatzes. Der Wert ist `OperationsManager`. |
-| StartTime | Die Uhrzeit, für die die Installation des Updates geplant ist. |
-| SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. | 
+| StartTime | Die Uhrzeit, für die die Installation des Updates geplant ist. *Diese Eigenschaft wird derzeit nicht verwendet. Siehe „TimeGenerated“* |
+| SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. |
 | SucceededOnRetry | Wert, der angibt, wann die Updateausführung beim ersten Versuch fehlgeschlagen ist und dass der aktuelle Vorgang ein Wiederholungsversuch ist. |
 | TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes. |
 | Titel | Der Titel des Updates. |

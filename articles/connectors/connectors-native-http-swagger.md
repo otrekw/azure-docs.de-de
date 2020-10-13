@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271187"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit Azure Logic Apps
 
@@ -54,17 +54,17 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Eingeben der URL für den Swagger-Endpunkt](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und der auf einen URL-Wert festgelegten Eigenschaft „Swagger-Endpunkt-URL“](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Wenn der Designer die von der Swagger-Datei beschriebenen Vorgänge anzeigt, wählen Sie den Vorgang aus, den Sie verwenden möchten.
 
-   ![Vorgänge in der Swagger-Datei](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und einer Liste mit Swagger-Vorgängen](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Geben Sie die je nach dem ausgewählten Vorgang variierenden Werte für die Triggerparameter an, die Sie in den Endpunktaufruf aufnehmen möchten. Geben Sie mithilfe einer Wiederholung an, wie oft der Trigger den Endpunkt aufrufen soll.
 
    Dieses Beispiel benennt den Trigger in „HTTP + Swagger trigger: Face – Detect“ („HTTP + Swagger“-Trigger: Gesicht – Erkennen) um, damit der Schritt eine aussagekräftigere Beschreibung hat.
 
-   ![Vorgangsdetails](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und dem Vorgang „ Gesicht – Erkennen“](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 

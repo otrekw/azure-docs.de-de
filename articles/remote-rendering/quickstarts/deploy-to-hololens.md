@@ -36,13 +36,13 @@ Stellen Sie sicher, dass Ihre Anmeldeinformationen ordnungsgemäß mit der Szene
 1. Ändern Sie *Platform* (Plattform) in **Universal Windows Platform** (Universelle Windows-Plattform).
 1. Legen Sie *Target Device* (Zielgerät) auf **HoloLens** fest.
 1. Legen Sie *Architecture* (Architektur) auf **ARM64** fest.
-1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project**\ (D3D-Projekt) fest.
+1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest.\
     ![Buildeinstellungen](./media/unity-build-settings.png)
 1. Wählen Sie **Switch to Platform** (Zu Plattform wechseln) aus.
 1. Wenn Sie auf **Build** (Erstellen) oder „Build And Run“ (Erstellen und ausführen) klicken, werden Sie zur Auswahl eines Ordners aufgefordert, in dem die Projektmappe gespeichert werden soll.
 1. Öffnen Sie die generierte Datei **Quickstart.sln** mit Visual Studio.
 1. Ändern Sie die Konfiguration in **Release** und **ARM64**.
-1. Ändern Sie den Debuggermodus in **Remote Machine**\ (Remotecomputer).
+1. Ändern Sie den Debuggermodus in **Remote Machine** (Remotecomputer).\
     ![Projektmappenkonfiguration](media/unity-deploy-config.png)
 1. Erstellen Sie die Lösung.
 1. Navigieren Sie für das Projekt „Schnellstart“ zu *Properties > Debugging* (Eigenschaften > Debuggen).

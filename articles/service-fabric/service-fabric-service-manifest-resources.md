@@ -2,22 +2,24 @@
 title: Angeben von Service Fabric-Dienstendpunkten
 description: 'Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstmanifest, einschließlich der Einrichtung von HTTPS-Endpunkten'
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354758"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht
-Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder geändert werden, ohne dass der kompilierte Code geändert werden muss. Service Fabric unterstützt die Konfiguration von Endpunktressourcen für den Dienst. Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das SecurityGroup-Element im Anwendungsmanifest gesteuert werden. Die Deklaration von Ressourcen ermöglicht es, dass diese Ressourcen zur Bereitstellungszeit geändert werden, sodass der Dienst keinen neuen Konfigurationsmechanismus einführen muss. Die Schemadefinition für die Datei „ServiceManifest.xml“ wird mit dem Service Fabric SDK und den Service Fabric-Tools unter *C:\Programm\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* installiert.
+Service Fabric-Anwendungen und -Dienste werden mit Manifestdateien definiert und mit einer Versionsangabe versehen. Eine allgemeine Übersicht über „ServiceManifest.xml“ und „ApplicationManifest.xml“ finden Sie unter [Service Fabric-Anwendungs- und -Dienstmanifeste](service-fabric-application-and-service-manifests.md).
+
+Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder geändert werden, ohne dass der kompilierte Code geändert werden muss. Service Fabric unterstützt die Konfiguration von Endpunktressourcen für den Dienst. Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das SecurityGroup-Element im Anwendungsmanifest gesteuert werden. Die Deklaration von Ressourcen ermöglicht es, dass diese Ressourcen zur Bereitstellungszeit geändert werden, sodass der Dienst keinen neuen Konfigurationsmechanismus einführen muss. Die Schemadefinition für die Datei „ServiceManifest.xml“ wird mit dem Service Fabric SDK und den Service Fabric-Tools unter *C:\Programme\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* installiert und ist unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md) dokumentiert.
 
 ## <a name="endpoints"></a>Endpunkte
 Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sollte ein Port nicht explizit angegeben sein. Sehen Sie sich beispielsweise den Endpunkt *ServiceEndpoint1* an, der im Codeausschnitt aus dem Manifest im Anschluss an diesen Absatz angegeben ist. Außerdem können Dienste auch einen bestimmten Port einer Ressource anfordern. Dienstreplikate, die auf unterschiedlichen Clusterknoten ausgeführt werden, können unterschiedlichen Portnummern zugewiesen werden, während für Replikate eines Diensts auf demselben Knoten derselbe Port verwendet wird. Die Dienstreplikate können dann diese Ports nach Bedarf für die Replikation und das Überwachen auf Clientanforderungen nutzen.
 
-Wenn Sie einen Dienst aktivieren, der einen HTTPS-Endpunkt angibt, legt Service Fabric den Zugriffssteuerungseintrag für den Port fest, bindet das angegebene Serverzertifikat an den Port und erteilt auch der Identität, als die der Dienst ausgeführt wird, Berechtigungen für den privaten Schlüssel des Zertifikats. Der Aktivierungsfluss wird jedes Mal aufgerufen, wenn Service Fabric gestartet oder die Zertifikatdeklaration der Anwendung über ein Upgrade geändert wird. Das Endpunktzertifikat wird auch auf Änderungen/Erneuerungen überwacht, und die Berechtigungen werden bei Bedarf regelmäßig erneut angewendet.
+Wenn Sie einen Dienst aktivieren, der einen HTTPS-Endpunkt angibt, legt Service Fabric den Zugriffssteuerungseintrag für den Port fest, bindet das angegebene Serverzertifikat an den Port und erteilt auch der Identität, als die der Dienst ausgeführt wird, Berechtigungen für den privaten Schlüssel des Zertifikats. Der Aktivierungsfluss wird jedes Mal aufgerufen, wenn Service Fabric gestartet oder die Zertifikatdeklaration der Anwendung über ein Upgrade geändert wird. Das Endpunktzertifikat wird auch auf Änderungen/Verlängerungen überwacht, und die Berechtigungen werden bei Bedarf regelmäßig erneut angewendet.
 
 Nach der Beendigung des Diensts bereinigt Service Fabric den Eintrag für die Endpunkt-Zugriffssteuerung und entfernt die Zertifikatbindung. Auf den privaten Schlüssel des Zertifikats angewendete Berechtigungen werden jedoch nicht bereinigt.
 
@@ -155,6 +157,8 @@ Im Folgenden finden Sie ein Beispiel für ein ApplicationManifest, das die für 
 
 Für Linux-Cluster wird für den **MY**-Speicher standardmäßig der Ordner **/var/lib/sfcerts** verwendet.
 
+Ein Beispiel für eine vollständige Anwendung, in der ein HTTPS-Endpunkt genutzt wird, finden Sie unter [Definieren eines HTTPS-Endpunkts im Dienstmanifest](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest).
+
 ## <a name="port-acling-for-http-endpoints"></a>Verwenden von Port-ACLs für HTTP-Endpunkte
 Service Fabric verwendet automatisch ACLs für HTTP(S)-Endpunkte, die standardmäßig angegeben werden. Es erfolgt **keine** automatische Verwendung von ACLs, wenn einem Endpunkt keine [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) zugeordnet ist und Service Fabric für die Ausführung mit einem Konto mit Administratorberechtigungen konfiguriert ist.
 
@@ -162,7 +166,7 @@ Service Fabric verwendet automatisch ACLs für HTTP(S)-Endpunkte, die standardm�
 
 Fügen Sie dem Anwendungsmanifest einen Abschnitt vom Typ „ResourceOverrides“ hinzu, der dem Abschnitt „ConfigOverrides“ gleichgestellt ist. In diesem Abschnitt können Sie die Außerkraftsetzung für den Abschnitt „Endpoints“ im Ressourcenabschnitt des Dienstmanifests angeben. Das Überschreiben von Endpunkten wird in Runtime 5.7.217/SDK 2.7.217 und höher unterstützt.
 
-Wenn Sie „EndPoint“ im Dienstmanifest mithilfe von „ApplicationParameters“ außer Kraft setzen möchten, ändern Sie das Anwendungsmanifest wie folgt:
+Wenn Sie „EndPoint“ im Dienstmanifest mit „ApplicationParameters“ außer Kraft setzen möchten, ändern Sie das Anwendungsmanifest wie folgt:
 
 Fügen Sie im Abschnitt „ServiceManifestImport“ einen neuen Abschnitt namens „ResourceOverrides“ hinzu.
 
@@ -194,13 +198,13 @@ Fügen Sie unter „Parameters“ Folgendes hinzu:
   </Parameters>
 ```
 
-Beim Bereitstellen der Anwendung können Sie die folgenden Werte als ApplicationParameters übergeben.  Beispiel:
+Beim Bereitstellen der Anwendung können Sie die unten angegebenen Werte als ApplicationParameters übergeben.  Beispiel:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Hinweis: Wenn für die Anwendungsparameter keine Werte angegeben wurden, wird der Standardwert für den entsprechenden EndPointName aus dem ServiceManifest verwendet.
+Hinweis: Wenn für einen bestimmten ApplicationParameter kein Wert angegeben wurde, wird der Standardwert für den entsprechenden EndPointName aus dem ServiceManifest verwendet.
 
 Beispiel:
 
@@ -214,6 +218,18 @@ Angenommen, Sie haben im Dienstmanifest Folgendes angegeben:
   </Resources>
 ```
 
-Und nehmen wir weiter an, der Port1- und der Protocol1-Wert für die Anwendungsparameter sind NULL oder leer. Der Port wird weiterhin von ServiceFabric bestimmt. Und das TCP-Protokoll wird verwendet.
+Wir nehmen weiter an, dass der Port1- und der Protocol1-Wert für die Anwendungsparameter jeweils NULL oder leer ist. Der Port wird von Service Fabric festgelegt, und als Protokoll wird „tcp“ verwendet.
 
-Angenommen, Sie geben einen falschen Wert an – beispielsweise den Zeichenfolgenwert „Foo“ anstelle einer ganzen Zahl für den Port.  Für den Befehl New-ServiceFabricApplication tritt ein Fehler mit dem Hinweis auf, dass der Außerkraftsetzungsparameter mit dem Namen „ServiceEndpoint1“ und dem Attribut „Port1“ im Abschnitt „ResourceOverrides“ ungültig ist. Außerdem werden Sie darauf hingewiesen, dass „Foo“ angegeben wurde, aber eine ganze Zahl erforderlich ist.
+Angenommen, Sie geben einen falschen Wert an – beispielsweise den Zeichenfolgenwert „Foo“ anstelle einer ganzen Zahl für den Port.  Für den Befehl „New-ServiceFabricApplication“ tritt ein Fehler mit dem folgenden Hinweis auf: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Artikel wurde beschrieben, wie Sie Endpunkte im Dienstmanifest von Service Fabric definieren. Ausführlichere Beispiele finden Sie unter:
+
+> [!div class="nextstepaction"]
+> [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md)
+
+Eine exemplarische Vorgehensweise zum Verpacken und Bereitstellen einer vorhandenen Anwendung in einem Service Fabric-Cluster finden Sie unter:
+
+> [!div class="nextstepaction"]
+> [Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric](service-fabric-deploy-existing-app.md)

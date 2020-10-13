@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261378"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -268,39 +268,7 @@ Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation 
 
 ## <a name="get-support"></a>Support
 
-Es gibt zwei Supportkanäle, abhängig vom Problem, mit dem Sie sich befassen.
-
-Wenn Probleme im Partner Center auftreten, z.B. beim Anzeigen des Berichts über die Zuordnung der Nutzung durch Kunden oder beim Anmelden, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![Screenshot: Seite „Support erhalten“](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-Wenn Sie Unterstützung beim Marketplace-Onboarding und/oder beim Zuordnen der Nutzung durch Kunden im Allgemeinen benötigen, wie z. B. beim Einrichten der Zuordnen der Nutzung durch Kunden, führen Sie die folgenden Schritte aus:
-
-1. Navigieren Sie zur [Supportseite](https://go.microsoft.com/fwlink/?linkid=844975).
-
-1. Wählen Sie unter **Problemtyp** die Option **Marketplace Onboarding** aus.
-
-1. Wählen Sie die **Kategorie** für Ihr Problem aus:
-
-   - Wählen Sie für Zuordnungsprobleme bei der Nutzung **Sonstige** aus.
-   - Wählen Sie bei Problemen mit dem Zugriff auf den Azure Marketplace **Zugriffsprobleme** aus.
-
-     ![Problemkategorie auswählen](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. Wählen Sie **Anfrage starten** aus.
-
-1. Geben Sie auf der nächsten Seite die erforderlichen Werte ein. Wählen Sie **Weiter**.
-
-1. Geben Sie auf der nächsten Seite die erforderlichen Werte ein.
-
-   > [!IMPORTANT]
-   > Geben Sie im Feld **Incident-Titel** den Wert **ISV-Nutzungsverfolgung** ein. Beschreiben Sie Ihr Problem im Detail.
-
-   ![„ISV-Nutzungsverfolgung“ als „Incident-Titel“ eingeben](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. Füllen Sie das Formular vollständig aus, und wählen Sie dann **Senden** aus.
-
-Sie können sich von einem technischen Berater eines Microsoft-Partners zudem zu Themen wie technischen Presales und Szenarios für die Bereitstellung und App-Entwicklung beraten lassen, wenn Sie die Zuordnung der Nutzung durch Kunden besser kennenlernen und einsetzen möchten.
+Informationen zu den Supportoptionen im kommerziellen Marketplace finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ in Partner Center](./partner-center-portal/support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>So fragen Sie technische Beratung an
 

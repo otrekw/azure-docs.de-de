@@ -3,12 +3,12 @@ title: Erstellen eines Zeitplans für Classroom-Labs in Azure Lab Services | Mic
 description: Erfahren Sie, wie Sie Zeitpläne für Classroom-Labs in Azure Lab Services erstellen, sodass virtuelle Computer in den Labs zu einem bestimmten Zeitpunkt gestartet und heruntergefahren werden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445779"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326438"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Erstellen und Verwalten von Zeitplänen für Classroom-Labs in Azure Lab Services 
 Mithilfe von Zeitplänen können Sie ein Classroom-Lab so konfigurieren, dass VMs im Lab automatisch zu einem bestimmten Zeitpunkt gestartet und heruntergefahren werden. Sie können einen einmaligen Zeitplan oder einen sich wiederholenden Zeitplan definieren. Die folgenden Verfahren zeigen die Schritte zum Erstellen und Verwalten von Zeitplänen für ein Classroom-Lab: 
@@ -27,7 +27,7 @@ Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmte
 
 1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie in der Symbolleiste die Option **Add scheduled event** (Geplantes Ereignis hinzufügen) aus. 
 
-    ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Screenshot: Azure Lab Services-Seite „Zeitplan“ mit ausgewählter Schaltfläche „Add scheduled event“ (Geplantes Ereignis hinzufügen)](./media/how-to-create-schedules/add-schedule-button.png)
 2. Vergewissern Sie sich, dass unter **Ereignistyp** die Option **Standard** ausgewählt ist. Wählen Sie **Start only** (Nur starten) aus, um nur die Startzeit für die VMs anzugeben. Wählen Sie **Stop only** (Nur beenden) aus, um nur die Endzeit für die VMs anzugeben. 
 7. Wählen Sie im Abschnitt **Wiederholen** den aktuellen Zeitplan aus. 
 

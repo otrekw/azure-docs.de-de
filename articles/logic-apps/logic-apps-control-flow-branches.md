@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269232"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Erstellen oder Verknüpfen paralleler Verzweigungen für Workflowaktionen in Azure Logic Apps
 
@@ -47,7 +47,7 @@ Ihre Logik-App wartet, bis alle Verzweigungen abgeschlossen sind, bevor der Work
 
 1. Suchen Sie über das Suchfeld nach der gewünschten Aktion, und wählen Sie sie aus.
 
-   ![Suchen und Auswählen der gewünschten Aktion](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Screenshot: Fenster „Aktion auswählen“ im Logik-App-Designer](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    Ihre ausgewählte Aktion wird jetzt z. B. im parallelen Branch angezeigt:
 
@@ -59,7 +59,7 @@ Ihre Logik-App wartet, bis alle Verzweigungen abgeschlossen sind, bevor der Work
 
 1. Suchen Sie über das Suchfeld nach der gewünschten Aktion, und wählen Sie sie aus.
 
-   ![Suchen und Auswählen der sequenziellen Aktion](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Screenshot: Fenster „Aktion auswählen“ und Suchfeld im Logik-App-Designer](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    Ihre ausgewählte Aktion wird jetzt z. B. im aktuellen Branch angezeigt:
 

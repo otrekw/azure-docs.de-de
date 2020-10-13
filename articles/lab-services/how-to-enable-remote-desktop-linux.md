@@ -3,12 +3,12 @@ title: Aktivieren des grafischen Remotedesktops für Linux in Azure Lab Services
 description: Es wird beschrieben, wie Sie Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services aktivieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251608"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Aktivieren des grafischen Remotedesktops für Linux-VMs in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -46,7 +46,7 @@ Dieser Schritt ist nur zum Herstellen einer Verbindung mit dem RDP erforderlich.
 
 1.  Während das Lab erstellt wird, hat der Kursleiter die Option, die **Remotedesktopverbindung zu aktivieren**.  Der Kursleiter muss diese Option **aktivieren**, um den Port der Linux-VM zu öffnen, der für RDP-Remotedesktopsitzungen erforderlich ist.  Wenn diese Option **deaktiviert** bleibt, ist nur der Port für SSH geöffnet.
   
-    ![Aktivieren der Remotedesktopverbindung für ein Linux-Image](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![Screenshot: Fenster „Neues Lab“ mit der Option „Remotedesktopverbindung aktivieren“](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. Wählen Sie im Meldungsfeld **Enabling Remote Desktop Connection** (Aktivieren der Remotedesktopverbindung) die Option **Continue with Remote Desktop** (Weiter mit Remotedesktop) aus. 
 

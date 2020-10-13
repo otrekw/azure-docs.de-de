@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mit Azure Site Recovery das Failover auf
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317887"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Ausführen eines Failovers vom lokalen Standort nach Azure
 
@@ -46,7 +46,7 @@ Führen Sie den Wiederherstellungsplan wie folgt aus:
 1. Wählen Sie im Site Recovery-Tresor **Wiederherstellungspläne** > *Name_des_Wiederherstellungsplans* aus.
 2. Klicken Sie auf **Failover**.
 
-    ![Screenshot des ADRP-Panels mit dem Menü „Mehr“, in dem „Failover“ ausgewählt ist](./media/site-recovery-failover/Failover.png)
+    ![Screenshot aus Azure Site Recovery mit dem ADRP-Panel und dem Menü „Mehr“, in dem „Failover“ ausgewählt ist](./media/site-recovery-failover/Failover.png)
 
 3. Wenn Sie in Azure replizieren, behalten Sie in **Failover** > **Failover-Richtung** die Standardeinstellung bei.
 4. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus.
@@ -81,7 +81,7 @@ Sie können ein geplantes Failover für virtuelle Hyper-V-Computer ausführen.
 
 Es gibt eine Reihe von Aufträgen, die mit einem Failover verknüpft sind.
 
-![Failover](./media/site-recovery-failover/FailoverJob.png)
+![Screenshot: Seite „Aufträge“ mit einer Liste der Aufträge, in der „Gruppe 1: Start (1)“ in der Spalte „Name“ erweitert ist. Die Zeile für den Auftrag „SQLServer“ ist hervorgehoben.](./media/site-recovery-failover/FailoverJob.png)
 
 - **Voraussetzungsüberprüfung**: Damit wird sichergestellt, dass alle erforderlichen Bedingungen für das Failover erfüllt sind.
 - **Failover**: Verarbeitet die Daten, sodass eine Azure-VM erstellt werden kann. Wenn Sie den **Neuesten** Wiederherstellungspunkt gewählt haben, wird ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.

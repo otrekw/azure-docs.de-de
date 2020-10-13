@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76902704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322426"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -103,15 +103,15 @@ Wir müssen die Quelle (Anforderung) des Patientendatensatzes aus dem Dynamics C
 
    **Protokolleintrag einfügen**
 
-   ![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Screenshot: Logik-App-Designer mit den Konfigurationseinstellungen für InsertLogEntry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Fehlereintrag einfügen**
 
-   ![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Screenshot: Logik-App-Designer mit den Konfigurationseinstellungen für CreateErrorRecord](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **Auf Fehler bei der Datensatzerstellung überprüfen**
 
-   ![Bedingung](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Screenshot: Bildschirm „CreateErrorRecord“ im Logik-App-Designer mit den Feldern zum Erstellen eines Fehlereintrags](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Logik-App-Quellcode
 

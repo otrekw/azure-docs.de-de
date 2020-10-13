@@ -3,18 +3,18 @@ title: Anzeigen von Azure Automation-Updatebewertungen
 description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Bereitstellungen der Updateverwaltung anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92861304a946e357b2b265cd825eceb8e22f7d2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264462"
 ---
-# <a name="view-update-assessments"></a>Anzeigen der Updatebewertungen
+# <a name="view-update-assessments-in-update-management"></a>Anzeigen von Updatebewertungen in der Updateverwaltung
 
-In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
+In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen. Sie können die Bewertungsinformationen für den ausgewählten virtuellen Azure-Computer, den ausgewählten Arc-fähigen Server oder das Automation-Konto übergreifend für alle konfigurierten Computer und Server anzeigen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -22,27 +22,33 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
 ## <a name="view-update-assessment"></a>Anzeigen der Updatebewertung
 
-In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
+Navigieren Sie zum Anzeigen der Updatebewertung über einen virtuellen Azure-Computer zu **Virtual Machines**, und wählen Sie Ihren virtuellen Computer in der Liste aus. Wählen Sie im Menü auf der linken Seite die Option **Gast- und Hostupdates** aus, und greifen Sie auf der Seite **Gast- und Hostupdates** dann auf die **Updateverwaltung** zu.
+
+In der Updateverwaltung können Sie Informationen zu Ihrem Computer, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
+
+[ ![Updateverwaltung: Ansicht für Azure-VM](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm.png)](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
+
+Navigieren Sie zum Anzeigen der Updatebewertung über einen Arc-fähigen Server zu **Server – Azure Arc**, und wählen Sie Ihren Server in der Liste aus. Wählen Sie im Menü auf der linken Seite die Option **Gast- und Hostupdates** aus. Navigieren Sie auf der Seite **Gast- und Hostupdates** zur **Updateverwaltung**.
+
+In der Updateverwaltung können Sie Informationen zu Ihrem Arc-fähigen Computer, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
+
+[ ![Updateverwaltung: Ansicht für Arc-fähige Server](./media/update-mgmt-view-update-assessments/update-assessment-arc-server.png)](./media/update-mgmt-view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+
+Navigieren Sie zum übergreifenden Anzeigen der Updatebewertung für alle Computer, einschließlich der Arc-fähigen Server Ihres Automation-Kontos, zu **Automation-Konten**, und wählen Sie Ihr Automation-Konto mit aktivierter Updateverwaltung in der Liste aus. Wählen Sie in Ihrem Automation-Konto im Menü auf der linken Seite die Option **Updateverwaltung** aus.
+
+Die Updates für Ihre Umgebung sind auf der Seite **Updateverwaltung** aufgeführt. Falls Updates fehlen, wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
 
 [ ![Standardansicht der Updateverwaltung](./media/update-mgmt-overview/update-management-view.png)](./media/update-mgmt-overview/update-management-view-expanded.png#lightbox)
 
-Führen Sie zum Anzeigen einer Updatebewertung folgende Schritte aus:
+Die Spalte **KONFORMITÄT** gibt Aufschluss darüber, wann der Computer zuletzt bewertet wurde. Die Spalte **UPDATE-AGENT-BEREITSCHAFT** gibt Aufschluss über die Integrität des Update-Agents. Liegt ein Problem vor, wählen Sie den Link aus, um zur Dokumentation für die Problembehandlung zu navigieren und Informationen zur Behebung des Problems zu erhalten.
 
-1. Navigieren Sie im Azure-Portal zu **Automation-Konten**, und wählen Sie in der Liste Ihr Automation-Konto mit aktivierter Updateverwaltung aus.
+Wählen Sie unter **Informationslink** den Link für ein Update aus, um den Supportartikel mit wichtigen Informationen zum Update zu öffnen.
 
-2. Wählen Sie in Ihrem Automation-Konto im Bereich auf der linken Seite **Updateverwaltung** aus.
+[ ![Anzeigen des Updatestatus](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
 
-3. Die Updates für Ihre Umgebung sind auf der Seite **Updateverwaltung** aufgeführt. Falls Updates fehlen, wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
+Klicken Sie im Update auf eine andere Stelle, um den Bereich „Protokollsuche“ zu öffnen. Die Abfrage für die Protokollsuche ist für das jeweilige Update vordefiniert. Sie können diese Abfrage ändern oder eine eigene erstellen, um ausführliche Informationen anzuzeigen.
 
-   Die Spalte **KONFORMITÄT** gibt Aufschluss darüber, wann der Computer zuletzt bewertet wurde. Die Spalte **UPDATE-AGENT-BEREITSCHAFT** gibt Aufschluss über die Integrität des Update-Agents. Liegt ein Problem vor, wählen Sie den Link aus, um zur Dokumentation für die Problembehandlung zu navigieren und Informationen zur Behebung des Problems zu erhalten.
-
-4. Wählen Sie unter **Informationslink** den Link für ein Update aus, um den Supportartikel mit wichtigen Informationen zum Update zu öffnen.
-
-     [ ![Anzeigen des Updatestatus](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
-
-5. Klicken Sie im Update auf eine andere Stelle, um den Bereich „Protokollsuche“ zu öffnen. Die Abfrage für die Protokollsuche ist für das jeweilige Update vordefiniert. Sie können diese Abfrage ändern oder eine eigene erstellen, um ausführliche Informationen anzuzeigen.
-
-    [ ![Anzeigen von Protokollabfrageergebnissen](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
+[ ![Anzeigen von Protokollabfrageergebnissen](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
 
 ## <a name="view-missing-updates"></a>Anzeigen fehlender Updates
 

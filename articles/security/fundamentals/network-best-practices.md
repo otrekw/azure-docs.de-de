@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36673533fbbfc913f742a32bd20cde2b238e2143
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757822"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397231"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -131,7 +131,7 @@ Viele Organisationen haben sich für die Hybrid-IT-Route entschieden. Bei Hybrid
 Bei einem Hybrid-IT-Szenario wird normalerweise eine Art von standortübergreifender Konnektivität verwendet. Standortübergreifende Konnektivität ermöglicht es dem Unternehmen, seine lokalen Netzwerke mit Azure Virtual Networks zu verbinden. Es sind zwei Lösungen für standortübergreifende Konnektivität verfügbar:
 
 * [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Dies ist eine vertrauenswürdige, zuverlässige und bewährte Technologie, aber die Verbindung erfolgt über das Internet. Die Bandbreite ist mit einem Maximum von ca. 1,25 GBit/s relativ begrenzt. Site-to-Site-VPN ist in einigen Szenarien eine wünschenswerte Option.
-* **Azure ExpressRoute**. Wir empfehlen, dass Sie für Ihre standortübergreifende Konnektivität [ExpressRoute](../../expressroute/expressroute-introduction.md) verwenden. Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Microsoft Cloud ausdehnen. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten wie Azure, Office 365 und Dynamics 365 herstellen. ExpressRoute ist ein dedizierter WAN-Link zwischen Ihrem lokalen Standort und einem Microsoft Exchange-Hostinganbieter. Da dies eine Telekommunikationsverbindung ist, werden Ihre Daten nicht über das Internet übertragen und unterliegen daher auch nicht den potenziellen Risiken der Internetkommunikation.
+* **Azure ExpressRoute**. Wir empfehlen, dass Sie für Ihre standortübergreifende Konnektivität [ExpressRoute](../../expressroute/expressroute-introduction.md) verwenden. Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Microsoft Cloud ausdehnen. Mit ExpressRoute können Sie Verbindungen mit Microsoft Cloud Services wie Azure, Microsoft 365 und Dynamics 365 herstellen. ExpressRoute ist ein dedizierter WAN-Link zwischen Ihrem lokalen Standort und einem Microsoft Exchange-Hostinganbieter. Da dies eine Telekommunikationsverbindung ist, werden Ihre Daten nicht über das Internet übertragen und unterliegen daher auch nicht den potenziellen Risiken der Internetkommunikation.
 
 Der Standort Ihrer ExpressRoute-Verbindung kann sich auf die Firewall-Kapazität, die Skalierbarkeit, die Zuverlässigkeit und die Sichtbarkeit des Netzwerkdatenverkehrs auswirken. Sie müssen ermitteln, wo Sie ExpressRoute in vorhandenen (lokalen) Netzwerken beenden sollten. Ihre Möglichkeiten:
 

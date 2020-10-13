@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295225"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -160,7 +160,7 @@ Sie können auch sehen, dass diese Synchronisierungsregel zur Kennwortsynchronis
 #### <a name="scoping-filter"></a>Bereichsfilter
 Der Abschnitt "Bereichsfilter" wird zum Konfigurieren verwendet, wann eine Synchronisierungsregel angewendet werden soll. Da der Name der betrachteten Synchronisierungsregel darauf hinweist, dass sie nur für aktivierte Benutzer angewendet werden soll, wird der Gültigkeitsbereich so konfiguriert, dass für das AD-Attribut **userAccountControl** das Bit 2 nicht gesetzt sein darf. Wenn vom Synchronisierungsmodul ein Benutzer in AD gefunden wird, wird diese Synchronisierungsregel angewendet, sofern **userAccountControl** auf den Dezimalwert 512 (aktivierter normaler Benutzer) festgelegt ist. Sie wird nicht angewendet, wenn für den Benutzer der Wert 514 für **userAccountControl** (deaktivierter normaler Benutzer) festgelegt ist.
 
-![Registerkarte „Bereichsdefinition“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Screenshot: Abschnitt „Bereichsfilter“ des Fensters „Eingehende Synchronisierungsregel bearbeiten“](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Der Bereichsfilter verfügt über Gruppen und Klauseln, die geschachtelt werden können. Alle Klauseln innerhalb einer Gruppe müssen erfüllt werden, damit eine Synchronisierungsregel angewendet wird. Wenn mehrere Gruppen definiert sind, muss mindestens eine Gruppe die Anforderungen erfüllen, damit die Regel angewendet wird. Dies bedeutet, dass zwischen Gruppen ein logisches ODER und innerhalb einer Gruppe ein logisches UND ausgewertet wird. Ein Beispiel für diese Konfiguration befindet sich in der Synchronisierungsregel **Out to AAD – Group Join** (Aus an AAD – Gruppenverknüpfung) für ausgehenden Datenverkehr. Es gibt verschiedene Synchronisierungsfiltergruppen, z.B. eine für Sicherheitsgruppen (`securityEnabled EQUAL True`) und eine für Verteilergruppen (`securityEnabled EQUAL False`).
 

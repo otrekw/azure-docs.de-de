@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846557"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361386"
 ---
 # <a name="manage-process-servers"></a>Verwalten von Prozessservern
 
@@ -41,11 +41,11 @@ Nehmen Sie einen Lastausgleich vor, indem Sie VMs zwischen zwei Prozessservern f
 2. Klicken Sie auf den Konfigurationsserver, bei dem die Prozessserver registriert sind.
 3. Klicken Sie auf den Prozessserver, bei dem Sie einen Lastausgleich für Datenverkehr vornehmen möchten.
 
-    ![Lastausgleich](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Screenshot: Prozessserver, für den Sie einen Lastausgleich für Datenverkehr vornehmen können](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. Klicken Sie auf **Lastausgleich**, und wählen Sie den Zielprozessserver aus, auf den Sie Computer verschieben möchten. Klicken Sie dann auf **OK**.
 
-    ![Laden des Prozessservers](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![Screenshot: Bereich „Lastenausgleich“ mit ausgewählter Option „Zielprozessserver auswählen“](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. Klicken Sie auf **Computer auswählen**, und wählen Sie die Computer aus, die Sie vom aktuellen Prozessserver auf den Zielprozessserver verschieben möchten. Für jeden virtuellen Computer werden Details zur durchschnittlichen Datenänderung angezeigt. Klicken Sie dann auf **OK**. 
 3. Überwachen Sie im Tresor den Fortschritt des Auftrags unter **Überwachung** > **Site Recovery-Aufträge**.
@@ -61,7 +61,7 @@ Verschieben Sie die gesamte von einem Prozessserver verarbeitete Workload folgen
 3. Klicken Sie auf den Prozessserver, von dem Sie die Workload wechseln möchten.
 4. Klicken Sie auf **Switch**, und wählen Sie den Zielprozessserver aus, auf den Sie die Workload verschieben möchten. Klicken Sie dann auf **OK**.
 
-    ![Schalter](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Screenshot: Bereich „Zielprozessserver auswählen“](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. Überwachen Sie im Tresor den Fortschritt des Auftrags unter **Überwachung** > **Site Recovery-Aufträge**.
 

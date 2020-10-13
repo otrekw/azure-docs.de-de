@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224491"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397248"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Datenverschlüsselung ruhender Azure-Daten
 
@@ -81,13 +81,13 @@ Die DEKs, die mit KEKs verschlüsselt wurden, werden separat gespeichert. Nur ei
 
 Microsoft Cloud-Dienste werden in drei Cloudmodellen verwendet: IaaS, PaaS und SaaS. Unten finden Sie Beispiele, wie diese in das jeweilige Modell passen:
 
-- Softwaredienste, sogenannte Software-as-a-Servive (SaaS), denen Anwendungen über die Cloud bereitgestellt werden, z.B. Office 365.
+- Softwaredienste, als Software-as-a-Service (SaaS) bezeichnet, mit denen Anwendungen über die Cloud bereitgestellt werden, z. B. Microsoft 365
 - Plattformdienste, mit denen Kunden die Cloud in ihren Anwendungen nutzen, z.B. für Speicherung, Analysen und Service Bus-Funktionalität.
 - IaaS-Dienste (Infrastructure-as-a-Service), in denen Kunden Betriebssysteme und Anwendungen bereitstellen, die in der Cloud gehostet werden. Zudem haben sie die Möglichkeit, auch andere Clouddienste zu nutzen.
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>Verschlüsselung ruhender Daten für SaaS-Kunden
 
-Software-as-a-Service-Kunden haben die Verschlüsselung ruhender Daten üblicherweise aktiviert oder sie steht zumindest in jedem Dienst zur Verfügung. Office 365 bietet mehrere Optionen, mit denen Kunden die Verschlüsselung ruhender Daten verifizieren oder aktivieren können. Informationen zu Office 365-Diensten finden Sie unter [Verschlüsselung in Office 365](https://docs.microsoft.com/office365/securitycompliance/encryption).
+Software-as-a-Service-Kunden haben die Verschlüsselung ruhender Daten üblicherweise aktiviert oder sie steht zumindest in jedem Dienst zur Verfügung. Microsoft 365 bietet mehrere Optionen, mit denen Kunden die Verschlüsselung ruhender Daten verifizieren oder aktivieren können. Informationen zu Microsoft 365-Diensten finden Sie unter [Verschlüsselung](/microsoft-365/compliance/encryption).
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Verschlüsselung ruhender Daten for PaaS-Kunden
 

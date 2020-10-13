@@ -3,12 +3,12 @@ title: Architektur der Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322256"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektur der Azure Migrate-Appliance
 
@@ -72,7 +72,7 @@ Die Appliance kommuniziert mit vCenter-Servern und Hyper-V-Hosts/Clustern über 
 2. **Sammeln von Metadaten und Leistungsdaten**:
     - Die Appliance verwendet eine Common Information Model (CIM)-Sitzung, um Hyper-V-VM-Daten vom Hyper-V-Host an Port 5985 zu sammeln.
     - Die Appliance kommuniziert standardmäßig über Port 443, um VMware-VM-Daten vom vCenter Server zu sammeln.
-3. **Senden von Daten**: Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Serverbewertung und die Azure Migrate-Servermigration. Die Verbindung der Appliance mit Azure kann über das Internet erfolgen, oder Sie können ExpressRoute mit öffentlichem/Microsoft-Peering verwenden.
+3. **Senden von Daten**: Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Serverbewertung und die Azure Migrate-Servermigration. Die Verbindung der Appliance mit Azure kann über das Internet oder über ExpressRoute (Microsoft-Peering erforderlich) erfolgen.
     - Bei Leistungsdaten sammelt die Appliance Nutzungsdaten in Echtzeit.
         - Die Leistungsdaten werden für VMware alle 20 Sekunden und für Hyper-V alle 30 Sekunden für jede Leistungsmetrik erfasst.
         - Die gesammelten Daten werden zu einem einzigen 10-Minuten-Datenpunkt zusammengeführt.

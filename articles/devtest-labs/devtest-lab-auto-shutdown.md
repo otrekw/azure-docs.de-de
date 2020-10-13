@@ -3,12 +3,12 @@ title: Verwalten von Richtlinien zum automatischen Herunterfahren in Azure DevTe
 description: Erfahren Sie, wie Sie eine Richtlinie zum automatischen Herunterfahren für ein Lab festlegen, sodass virtuelle Computer automatisch heruntergefahren werden, wenn sie nicht verwendet werden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320709"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Lab- und Compute-VMs in Azure DevTest Labs
 
@@ -162,7 +162,7 @@ Erstellen Sie zunächst mithilfe der folgenden Schritte eine Logik-App in Ihrem 
     }
     ```
     
-    ![JSON-Schema für Anforderungstext](./media/devtest-lab-auto-shutdown/request-json.png)
+    ![Screenshot: JSON-Schema für Anforderungstext](./media/devtest-lab-auto-shutdown/request-json.png)
 7. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
     1. Suchen Sie nach **Office 365 Outlook – E-Mail senden**. 
     2. Wählen Sie unter **Aktionen** die Option **E-Mail senden** aus. 

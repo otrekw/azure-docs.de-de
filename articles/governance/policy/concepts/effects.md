@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252003"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -24,7 +24,7 @@ Derzeit werden in einer Richtliniendefinition diese Auswirkungen unterstützt:
 - [Disabled](#disabled)
 - [Modify](#modify)
 
-Die Unterstützung folgender Auswirkungen wird _eingestellt_:
+Die folgenden Auswirkungen sind _veraltet_:
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -374,8 +374,8 @@ Wenn für **enforcementMode**  der Wert _Disabled_ festgelegt ist, werden Ressou
 
 Diese Auswirkung wird bei einer Richtliniendefinition mit dem _Modus_`Microsoft.Kubernetes.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v3-Zugangskontrollregeln, die mit [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für Kubernetes-Cluster in Azure.
 
-> [!NOTE]
-> [Azure Policy für Kubernetes](./policy-for-kubernetes.md) ist als Vorschauversion verfügbar und unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes**. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und die zugehörige Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
+> [!IMPORTANT]
+> Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und die zugehörige Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ### <a name="enforceopaconstraint-evaluation"></a>Auswertung von EnforceOPAConstraint
 
@@ -430,8 +430,8 @@ Beispiel: Gatekeeper v3-Zugangskontrollregel, um Ressourcenlimits für CPU- und 
 
 Diese Auswirkung wird bei einer Richtliniendefinition mit dem _Modus_`Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v2-Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
 
-> [!NOTE]
-> [Azure Policy für Kubernetes](./policy-for-kubernetes.md) ist als Vorschauversion verfügbar und unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der **Kubernetes**-Kategorie. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit **EnforceRegoPolicy**-Auswirkung und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
+> [!IMPORTANT]
+> Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ### <a name="enforceregopolicy-evaluation"></a>Auswertung von EnforceRegoPolicy
 

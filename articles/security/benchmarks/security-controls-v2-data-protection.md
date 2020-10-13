@@ -4,17 +4,17 @@ description: Datenschutz im Azure-Sicherheitsvergleichstest V2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314316"
 ---
-# <a name="security-control-data-protection"></a>Sicherheitskontrolle: Datenschutz
+# <a name="security-control-v2-data-protection"></a>Sicherheitskontrolle V2: Datenschutz
 
 Datenschutz deckt die Steuerung des Schutzes von Daten im Ruhezustand, während der Übertragung und über autorisierte Zugriffsmechanismen ab. Dies umfasst das Ermitteln, Klassifizieren, Schützen und Überwachen vertraulicher Datenressourcen über Zugriffssteuerung, Verschlüsselung und Protokollierung in Azure.
 
@@ -22,7 +22,7 @@ Datenschutz deckt die Steuerung des Schutzes von Daten im Ruhezustand, während 
 
 | Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
-| DP-1 | 14.5, 14.7 | SI-4, SC-28 |
+| DP-1 | 13.1, 14.5, 14.7 | SC-28 |
 
 Ermitteln, klassifizieren und bezeichnen Sie Ihre vertraulichen Daten, sodass Sie die entsprechenden Steuerungen entwerfen können, um sicherzustellen, dass vertrauliche Daten von den Technologiesystemen der Organisation sicher gespeichert, verarbeitet und übertragen werden. 
 
@@ -36,7 +36,7 @@ Sie können Azure SQL Information Protection verwenden, um die Klassifizierung u
 
 **Verantwortlichkeit**: Shared
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandel
 
 **Verantwortlichkeit**: Shared
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Wenn Compliance hinsichtlich Datenverlust (Data Loss Prevention, DLP) erforderli
 
 **Verantwortlichkeit**: Shared
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Security Operations Center (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Azure ermöglicht standardmäßig die Verschlüsselung von Daten während der Ü
 
 **Verantwortlichkeit**: Shared
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure bietet standardmäßig Verschlüsselung für ruhende Daten. Bei streng ver
 
 **Verantwortlichkeit**: Shared
 
-**Sicherheitsbeteiligte der Kunden**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

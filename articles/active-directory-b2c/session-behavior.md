@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren des Sitzungsverhaltens – Azure Active Directory B2C | Microsoft-Dokumentation
-description: Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
+description: Hier erfahren Sie, wie Sie das Sitzungsverhalten in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c47b0249824a3683b8f24cc01cc5eea5ccf32585
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f2d6d00ea06bb362d82b5fbdff658b729eed17cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258983"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 

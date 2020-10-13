@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, Spezifikationen, Hardware, DK, Funktionen, Tiefe, Farbe, RGB, IMU, Array, Tiefe, mehrere, Synchronisierung
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85276772"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361159"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronisierung mehrerer Azure Kinect DK-Geräte
 
@@ -26,7 +26,7 @@ Es gibt viele Gründe für die Verwendung mehrerer Azure Kinect DK-Geräte einsc
 
 - Einfügen von Verdeckungen. Obwohl die Azure Kinect DK-Datentransformationen ein einzelnes Bild hervorbringen, sind die beiden Kameras (Tiefe und RGB) tatsächlich etwas voneinander entfernt. Der Offset macht die Verdeckung möglich. Eine Okklusion tritt auf, wenn ein Vordergrundobjekt die Ansicht eines Teils eines Hintergrundobjekts für eine der beiden Kameras eines Geräts blockiert. Im resultierenden Farbbild scheint das Vordergrundobjekt einen Schatten auf das Hintergrundobjekt zu werfen.  
    Im folgenden Diagramm z. B. sieht die linke Kamera das graue Pixel „P2“. Allerdings blockieren die weißen Vordergrundobjektblöcke den IR-Strahl der rechten Kamera. Die rechte Kamera hat keine Daten für „P2“.  
-   ![Verdeckung](./media/occlusion.png)  
+   ![Diagramm: Zwei Kameras, die auf den gleichen Punkt gerichtet sind, und eine Kamera ist blockiert.](./media/occlusion.png)  
    Mit zusätzlichen synchronisierten Geräten können die verdeckten Daten bereitgestellt werden.
 - Scannen von Objekten in drei Dimensionen.
 - Erhöhen Sie die effektive Bildfrequenz auf einen Wert, der größer als 30 Frames pro Sekunde (FpS) ist.

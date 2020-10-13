@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308383"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -208,30 +208,9 @@ Nachdem Sie sich vergewissert haben, dass das Release vollständig und betriebsb
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Abfrageausführung in verschiedenen HDInsight-Versionen
 
-Zum Ausführen und Debuggen von Hive-/LLAP-Abfragen in einem HDInsight 3.6-Cluster stehen zwei Möglichkeiten zur Verfügung. HiveCLI bietet eine Befehlszeilenumgebung, und die Tez-Ansicht/Hive-Ansicht stellt einen Workflow mit grafischer Benutzeroberfläche (Graphical User Interface, GUI) bereit.
+Zum Ausführen und Debuggen von Hive-/LLAP-Abfragen in einem HDInsight 3.6-Cluster stehen zwei Möglichkeiten zur Verfügung. HiveCLI bietet eine Befehlszeilenumgebung, und die [Tez-Ansicht/Hive-Ansicht](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) stellt einen Workflow mit grafischer Benutzeroberfläche (Graphical User Interface, GUI) bereit.
 
-In HDInsight 4.0 wurde HiveCLI durch Beeline ersetzt. HiveCLI ist ein Thrift-Client für Hive-Server 1, und Beeline ist ein JDBC-Client, der Zugriff auf Hive-Server 2 bietet. Beeline kann auch zum Herstellen einer Verbindung mit einem beliebigen anderen JDBC-kompatiblen Datenbankendpunkt verwendet werden. Beeline ist in HDInsight 4.0 standardmäßig verfügbar und erfordert keinerlei Installation.
-
-In HDInsight 3.6 ist die Ambari-Hive-Ansicht der GUI-Client für die Interaktion mit dem Hive-Server. HDInsight 4.0 wird nicht mit Ambari View ausgeliefert. Wir haben unseren Kunden eine Möglichkeit zur Verfügung gestellt, Data Analytics Studio (DAS) zu verwenden, bei dem es sich nicht um einen HDInsight-Kerndienst handelt. DAS ist nicht standardmäßig in HDInsight-Clustern enthalten und kein offiziell unterstütztes Paket. DAS kann jedoch mit einer [Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md) wie folgt auf dem Cluster installiert werden:
-
-|Eigenschaft | Wert |
-|---|---|
-|Skripttyp|--Benutzerdefiniert|
-|Name|DAS|
-|Bash-Skript-URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Knotentyp(en)|Head|
-
-Warten Sie 10 bis 15 Minuten, und starten Sie dann Data Analytics Studio über die folgende URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
-
-Vor dem Zugriff auf DAS ist möglicherweise eine Aktualisierung der Ambari-Benutzeroberfläche oder ein Neustart aller Ambari-Komponenten erforderlich.
-
-Falls die von Ihnen ausgeführten Abfragen nach der Installation von DAS nicht in der Abfrageanzeige angezeigt werden, führen Sie die folgenden Schritte aus:
-
-1. Legen Sie die Konfigurationen für Hive, Tez und DAS wie in diesem [Leitfaden zur Problembehandlung für die DAS-Installation](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html) beschrieben fest.
-2. Stellen Sie sicher, dass die folgenden Azure-Speicherverzeichniskonfigurationen Seitenblobs und unter `fs.azure.page.blob.dirs` aufgelistet sind:
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. Starten Sie auf beiden Hauptknoten Hadoop Distributed File System, Hive, Tez und DAS neu.
+In HDInsight 4.0 wurde HiveCLI durch Beeline ersetzt. Die Tez-Ansicht/Hive-Ansicht stellt einen Workflow mit grafischer Benutzeroberfläche bereit. HiveCLI ist ein Thrift-Client für Hive-Server 1, und Beeline ist ein JDBC-Client, der Zugriff auf Hive-Server 2 bietet. Beeline kann auch zum Herstellen einer Verbindung mit einem beliebigen anderen JDBC-kompatiblen Datenbankendpunkt verwendet werden. Beeline ist in HDInsight 4.0 standardmäßig verfügbar und erfordert keinerlei Installation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320828"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Überwachen Ihres Azure Stack Edge Pro-GPU-Geräts über das Kubernetes-Dashboard
 
@@ -62,7 +62,7 @@ Das Kubernetes-Dashboard ist *schreibgeschützt* und wird auf dem Kubernetes-Mas
 
 Computingmodule sind Container mit implementierter Geschäftslogik. Sie können das Dashboard verwenden, um zu überprüfen, ob ein Computemodul auf dem Azure Stack Edge Pro-Gerät erfolgreich bereitgestellt wurde.
 
-Gehen Sie wie folgt vor, um den Modulstatus anzuzeigen:
+Gehen Sie auf dem Dashboard wie folgt vor, um den Modulstatus anzuzeigen:
 
 1. Navigieren Sie im linken Bereich des Dashboards zu **Namespace**. Filtern Sie nach dem Namespace, in dem die IoT Edge-Module angezeigt werden, in diesem Fall **iotedge**.
 1. Navigieren Sie im linken Bereich zu **Workloads > Bereitstellungen**.
@@ -114,9 +114,9 @@ Sie können auch nach einem bestimmten Namespace filtern. Im folgenden Beispiel 
 
 ![Anzeigen der CPU- und Speicherauslastung für Azure Arc-Bereitstellungen](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-Das Kubernetes-Add-On Metrics Server ermöglicht die automatische Skalierung von Pipelines, die der horizontalen automatischen Podskalierung [(Horizontal Pod Autoscaler)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) ähnelt.
+Der Kubernetes-Metrikserver ermöglicht die automatische Skalierung von Pipelines, etwa die [horizontale automatische Podskalierung](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Problembehandlung bei Kubernetes-Problemen <!--insert link-->.
+Informieren Sie sich über das [Beheben von Geräteproblemen](azure-stack-edge-gpu-troubleshoot.md).

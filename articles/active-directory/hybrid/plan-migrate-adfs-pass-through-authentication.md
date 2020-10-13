@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661885"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335968"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -283,9 +283,9 @@ Stellen Sie als Nächstes zusätzliche Authentifizierungsmethoden bereit:
 
 4. Führen Sie die Installation des Authentifizierungs-Agents durch. Während der Installation müssen Sie die Anmeldeinformationen eines Kontos vom Typ „Globaler Administrator“ eingeben.
 
-   ![Screenshot: Schaltfläche „Installieren“ auf der Seite mit dem Authentifizierungs-Agent-Paket für Microsoft Azure AD Connect](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Screenshot: Schaltfläche „Installieren“, mit der Sie das Authentifizierungs-Agent-Paket für Microsoft Azure AD Connect ausführen](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![Screenshot: Anmeldeseite](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Screenshot: Microsoft-Anmeldeseite](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Nachdem der Authentifizierungs-Agent installiert wurde, können Sie zu der Seite zurückkehren, auf der die Integrität der Passthrough-Authentifizierungs-Agents angezeigt wird, um den Status der zusätzlichen Agents zu überprüfen.
 
@@ -327,7 +327,7 @@ Aktivieren Sie zunächst die Passthrough-Authentifizierung:
    * **Nahtloses einmaliges Anmelden** ist auf **Aktiviert** festgelegt.
    * **Passthrough-Authentifizierung** ist auf **Aktiviert** festgelegt.
    
-   ![Screenshot: Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![Screenshot: Zu überprüfende Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. Klicken Sie auf **Passthrough-Authentifizierung**, und überprüfen Sie, ob der Status **Aktiv** lautet.<br />
    
    Wenn der Authentifizierungs-Agent nicht aktiv ist, sollten Sie einige [Problembehandlungsschritte](./tshoot-connect-pass-through-authentication.md) ausführen, bevor Sie im nächsten Schritt mit dem Prozess zum Konvertieren der Domäne fortfahren. Sie riskieren einen Ausfall der Authentifizierung, wenn Sie Ihre Domänen konvertieren, bevor Sie überprüft haben, ob Ihre Agents für die Passthrough-Authentifizierung erfolgreich installiert wurden und ob ihr Status im Azure-Portal **Aktiv** lautet.
@@ -368,7 +368,7 @@ Führen Sie die Konvertierung durch, indem Sie das Azure AD PowerShell-Modul ver
    * **Nahtloses einmaliges Anmelden** ist auf **Aktiviert** festgelegt.
    * **Passthrough-Authentifizierung** ist auf **Aktiviert** festgelegt.<br />
 
-   ![Screenshot: Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Screenshot mit den Einstellungen im Abschnitt „Benutzeranmeldung“ im Azure AD-Portal](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>Testen und nächste Schritte
 

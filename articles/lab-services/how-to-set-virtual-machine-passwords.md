@@ -3,12 +3,12 @@ title: Festlegen von Kennwörtern für VMs in Azure Lab Services | Microsoft-Dok
 description: Erfahren Sie, wie Sie Kennwörter für virtuelle Computer (VMs) in Classroom-Labs mit Azure Lab Services festlegen und zurücksetzen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334071"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -24,7 +24,7 @@ Führen Sie die folgenden Schritte aus, um die Labkapazität (Anzahl der virtuel
 2. Geben Sie die gewünschte neue **Anzahl virtueller Computer** für das Lab ein. Diese Zahl muss größer oder gleich der Anzahl von Benutzern sein, die im Lab registriert sind. 
 3. Wählen Sie anschließend **Speichern** aus. 
 
-    ![Schaltfläche „Start all“ (Alle starten)](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![Screenshot: Fenster „Labkapazität“ mit den ausgewählten Schaltflächen „Maximale VM-Anzahl im Lab“ und „Speichern“](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Wenn Sie die Kapazität erhöht haben, sehen Sie, wie die virtuellen Computer erstellt werden. Wenn die neue VM nicht in der Liste angezeigt wird, aktualisieren Sie die Seite. 
 
     ![Erstellung eines virtuellen Computers](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)

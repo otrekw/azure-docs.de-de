@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 39f277fffbb9a76a4be4bfa8aaedeaf3479a989f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328852"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinden von Azure mit ITSM-Tools unter Verwendung von Secure Export
 
@@ -112,11 +112,13 @@ In den folgenden Abschnitten finden Sie Einzelheiten dazu, wie Sie Ihr BMC Helix
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Azure AD wurde registriert.
-* Sie verfügen über die unterstützte Version von BMC Helix Multi-Cloud Service Management (Version 20.02 oder höher).
+* Sie verfügen über die unterstützte Version von BMC Helix Multi-Cloud Service Management (Version 19.08 oder höher).
 
 ### <a name="configure-the-bmc-helix-connection"></a>Konfigurieren der BMC Helix-Verbindung
 
-1. Befolgen Sie die Anweisungen unter [Enabling prebuilt integration with Azure Monitor for version 20.02](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html) (Aktivieren der vordefinierten Integration in Azure Monitor für Version 20.02).
+1. Befolgen Sie die Anweisungen zur jeweiligen Version:
+   * [Aktivieren der vordefinierten Integration in Azure Monitor für Version 20.02](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)
+   * [Aktivieren der vordefinierten Integration in Azure Monitor für Version 19.11](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html)
 
 1. Wechseln Sie bei der Konfiguration der Verbindung in BMC Helix zu Ihrer BMC-Integrationsinstanz, und führen Sie folgende Schritte aus:
 
@@ -138,4 +140,4 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+* [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)

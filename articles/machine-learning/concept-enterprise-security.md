@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988079"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302620"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -118,7 +118,7 @@ Sie können auch Azure Private Link für Ihren Arbeitsbereich aktivieren. Privat
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
 > [!IMPORTANT]
-> Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. Das `hbi_workspace`-Flag kann nur beim Erstellen eines Arbeitsbereichs festgelegt werden. Es kann für einen vorhandenen Arbeitsbereich nicht geändert werden.
+> Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. Das `hbi_workspace`-Flag kann nur beim Erstellen eines Arbeitsbereichs festgelegt werden. Es kann für einen vorhandenen Arbeitsbereich nicht geändert werden.
 
 Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken gesammelten Daten](#microsoft-collected-data) und ermöglicht eine [zusätzliche Verschlüsselung in von Microsoft verwalteten Umgebungen](../security/fundamentals/encryption-atrest.md). Darüber hinaus ermöglicht es folgende Aktionen:
 
@@ -156,7 +156,7 @@ Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden
     * `cmk_keyvault`: Dieser Parameter ist die Ressourcen-ID des Schlüsseltresors in Ihrem Abonnement. Dieser Schlüsseltresor muss sich in derselben Region und demselben Abonnement befinden, das Sie für den Azure Machine Learning-Arbeitsbereich verwenden werden. 
     
         > [!NOTE]
-        > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
+        > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
 Diese Cosmos DB-Instanz wird zusammen mit benötigten Ressourcen in einer von Microsoft verwalteten Ressourcengruppe in Ihrem Abonnement erstellt. Die verwaltete Ressourcengruppe wird im Format `<AML Workspace Resource Group Name><GUID>` benannt. Wenn im Azure Machine Learning-Arbeitsbereich ein privater Endpunkt verwendet wird, wird auch ein virtuelles Netzwerk für die Cosmos DB-Instanz erstellt. Dieses VNet wird zum Sichern der Kommunikation zwischen Cosmos DB und Azure Machine Learning verwendet.
 
@@ -197,7 +197,7 @@ Erstellen Sie zur Verwendung des Schlüssels bei der Bereitstellung eines Modell
 
 Weitere Informationen zum Erstellen und Verwenden einer Bereitstellungskonfiguration finden Sie in den folgenden Artikeln:
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)-Referenz
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)-Referenz
 * [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md)
 * [Bereitstellen eines Modells in Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
@@ -290,6 +290,10 @@ Details der Bewertungsanforderung werden in Application Insights gespeichert. Ap
 > Einige Aktionen im Azure Machine Learning-Arbeitsbereich protokollieren keine Informationen im Aktivitätsprotokoll. Der Start einer Trainingsausführung und die Registrierung eines Modells werden beispielsweise nicht protokolliert.
 >
 > Einige dieser Aktionen werden im Bereich **Aktivitäten** Ihres Arbeitsbereichs angezeigt, diese Benachrichtigungen geben jedoch nicht an, wer die Aktivität initiiert hat.
+
+### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
+
+Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Für Azure Machine Learning sollten Sie die Überprüfung der Azure Container Registry-Ressourcen sowie der Azure Kubernetes Service-Ressourcen aktivieren. Informationen finden Sie unter [Einführung in Azure Defender für Containerregistrierungen](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) und [Einführung in Azure Defender für Kubernetes](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
 
 ## <a name="data-flow-diagrams"></a>Datenflussdiagramme
 

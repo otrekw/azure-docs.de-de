@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung für StorSimple Virtual Array | Microsoft-Dokumentation
-description: Beschreibt die Diagnosefunktionen des StorSimple-Geräte-Manager-Diensts und erläutert, wie Sie sie zum Behandeln von Problemen mit Ihrem StorSimple Virtual Array verwenden können.
+description: Hier erfahren Sie mehr über die Self-Service-Funktion zur Problembehandlung, die im StorSimple-Geräte-Manager-Dienst bereitgestellt wird.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249534"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Behandeln von Problemen mit dem StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht

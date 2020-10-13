@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73743081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323021"
 ---
 # <a name="face-recognition-concepts"></a>Konzepte der Gesichtserkennung
 
@@ -69,6 +69,6 @@ Anhand der folgenden Tipps können Sie sicherstellen, dass Ihre Eingabebilder m�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie mit den Konzepten der Gesichtserkennung vertraut sind, erfahren Sie, wie Sie ein Skript schreiben, das Gesichter in einer trainierten PersonGroup erkennt.
+Nachdem Sie nun mit den Konzepten der Gesichtserkennung vertraut sind, schreiben Sie ein Skript, das Gesichter in einer trainierten Personengruppe (PersonGroup) erkennt.
 
-* [Identifizieren von Gesichtern in Bildern](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Schnellstart: Clientbibliothek zur Gesichtserkennung](../Quickstarts/client-libraries.md)

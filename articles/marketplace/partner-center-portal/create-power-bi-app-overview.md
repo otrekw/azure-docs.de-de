@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317602"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397418"
 ---
 # <a name="power-bi-app-creation-overview"></a>Übersicht über die Power BI-App-Erstellung
 
@@ -23,7 +23,7 @@ In diesem Artikel wird erläutert, wie Sie eine Power BI-App in Microsoft [AppS
 Vorteile der Veröffentlichung im kommerziellen Marketplace:
 
 - Bewerben Sie Ihr Unternehmen, indem Sie die Marke Microsoft nutzen.
-- In AppSource können Sie mehr als 100 Millionen Office 365- und Dynamics 365-Benutzer erreichen und im Azure Marketplace über 200.000 Organisationen.
+- In AppSource können Sie mehr als 100 Millionen Microsoft 365- und Dynamics 365-Benutzer erreichen und im Azure Marketplace über 200.000 Organisationen.
 - Nutzen Sie in diesen Marketplaces hochwertige Leads.
 - Lassen Sie Ihre Dienste durch die Außendienst- und Telefonmarketingteams von Microsoft bewerben.
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dcf80ffa26ecaeb0f4481b3997146c07bd89be10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259050"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von TypingDNA mit Azure Active Directory B2C
 
@@ -36,9 +36,9 @@ In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie eine Beispiel-App 
 
 2. Wenn der Benutzer die Seite übermittelt, berechnet die TypingDNA-Bibliothek das Eingabemuster des Benutzers. Anschließend werden die Informationen in ein ausgeblendetes Textfeld eingefügt, das Azure AD B2C gerendert hat. Dieses Feld ist mit CSS ausgeblendet.  
 
-    Das Beispiel enthält HTML-Dateien mit den JavaScript- und CSS-Änderungen. Darauf wird in den Inhaltsdefinitionen `api.selfasserted.tdnasignin` und `api.selfasserted.tdnasignup` verwiesen. Informationen zum Hosten Ihrer HTML-Dateien finden Sie unter [Hosten des Seiteninhalts](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content).
+    Das [Beispiel enthält HTML-Dateien](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) mit den JavaScript- und CSS-Änderungen. Darauf wird in den Inhaltsdefinitionen `api.selfasserted.tdnasignin` und `api.selfasserted.tdnasignup` verwiesen. Informationen zum Hosten Ihrer HTML-Dateien finden Sie unter [Hosten des Seiteninhalts](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content).
 
-3. Azure AD B2C verfügt jetzt über das Eingabemuster im Anspruchsbehälter, wenn der Benutzer seine Anmeldeinformationen übermittelt. Es muss eine API (Ihre API) zum Übergeben dieser Daten an den TypingDNA-REST-API-Endpunkt aufgerufen werden. Diese API ist im Beispiel enthalten (TypingDNA-API-Interface).
+3. Azure AD B2C verfügt jetzt über das Eingabemuster im Anspruchsbehälter, wenn der Benutzer seine Anmeldeinformationen übermittelt. Es muss eine API (Ihre API) zum Übergeben dieser Daten an den TypingDNA-REST-API-Endpunkt aufgerufen werden. Diese API ist im [Beispiel (TypingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) enthalten.
 4. Die API der mittleren Ebene übergibt dann die Daten des Eingabemusters an die TypingDNA-REST-API. Bei der Registrierung wird der [Endpunkt zur Benutzerüberprüfung](https://api.typingdna.com/index.html#api-API_Services-GetUser) aufgerufen, um zu bestätigen, dass der Benutzer noch nicht vorhanden war, und dann wird der Endpunkt zum [Speichern des Eingabemusters](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) aufgerufen, um das erste Eingabemuster des Benutzers zu speichern.
 
 > [!NOTE]
@@ -61,7 +61,7 @@ Die REST-API-Aufrufe werden mit `validationTechnicalProfiles` in `LocalAccountSi
 
 ### <a name="sign-in"></a>Anmeldung
 
-Bei nachfolgenden Anmeldungen wird das Eingabemuster des Benutzers auf die gleiche Weise wie bei der Registrierung mit dem benutzerdefinierten HTML-Code berechnet. Sobald das Eingabemuster im Azure AD B2C-Anspruchsbehälter enthalten ist, ruft Azure AD B2C Ihre API auf, um den TypingDNA-REST-API-Endpunkt aufzurufen. Der Endpunkt zur [Benutzerüberprüfung](https://api.typingdna.com/index.html#api-API_Services-GetUser) wird aufgerufen, um zu bestätigen, dass der Benutzer vorhanden ist. Als Nächstes wird der Endpunkt zum [Überprüfen des Eingabemusters](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) aufgerufen, um den `net_score`-Wert zurückzugeben. Dieser `net_score`-Wert gibt Aufschluss darüber, wie genau das Eingabemuster mit dem ursprünglichen Muster bei der Registrierung übereinstimmt.
+Bei nachfolgenden Anmeldungen wird das Eingabemuster des Benutzers auf die gleiche Weise wie bei der Registrierung mit dem [benutzerdefinierten HTML-Code](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignIn.cshtml) berechnet. Sobald das Eingabemuster im Azure AD B2C-Anspruchsbehälter enthalten ist, ruft Azure AD B2C Ihre API auf, um den TypingDNA-REST-API-Endpunkt aufzurufen. Der Endpunkt zur [Benutzerüberprüfung](https://api.typingdna.com/index.html#api-API_Services-GetUser) wird aufgerufen, um zu bestätigen, dass der Benutzer vorhanden ist. Als Nächstes wird der Endpunkt zum [Überprüfen des Eingabemusters](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) aufgerufen, um den `net_score`-Wert zurückzugeben. Dieser `net_score`-Wert gibt Aufschluss darüber, wie genau das Eingabemuster mit dem ursprünglichen Muster bei der Registrierung übereinstimmt.
 
 Dieses Eingabemuster wird mit `validationTechnicalProfiles` in `SelfAsserted-LocalAccountSignin-Email-TDNA` modelliert:
 
@@ -158,14 +158,14 @@ Diese Schwellenwerte sollten auf Ihren Anwendungsfall angepasst werden.
 
 ## <a name="integrate-typingdna-with-azure-ad-b2c"></a>Integrieren von TypingDNA in Azure AD B2C
 
-1. Hosten Sie die TypingDNA-API-Interface beim Hostinganbieter Ihrer Wahl.
-2. Ersetzen Sie in der TypingDNA-API-Interface-Lösung alle Instanzen von `apiKey` und `apiSecret` durch die Anmeldeinformationen aus Ihrem TypingDNA-Dashboard.
+1. Hosten Sie [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) beim Hostinganbieter Ihrer Wahl.
+2. Ersetzen Sie in der [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)-Lösung alle Instanzen von `apiKey` und `apiSecret` durch die Anmeldeinformationen aus Ihrem TypingDNA-Dashboard.
 3. Hosten Sie die HTML-Dateien beim Anbieter Ihrer Wahl, und befolgen Sie dabei die [hier](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) beschriebenen CORS-Anforderungen.
 4. Ersetzen Sie in der Datei `TrustFrameworkExtensions.xml` die LoadURI-Elemente für die Inhaltsdefinitionen `api.selfasserted.tdnasignup` und `api.selfasserted.tdnasignin` jeweils durch den URI Ihrer gehosteten HTML-Dateien.
 5. Erstellen Sie im **Azure-Portal** auf dem Blatt „Azure AD“ unter „Identity Experience Framework“ einen B2C-Richtlinienschlüssel. Verwenden Sie die Option `Generate`, und weisen Sie diesem Schlüssel den Namen `tdnaHashedId` zu.
 6. Ersetzen Sie in den Richtliniendateien die Mandanten-ID (TenantId).
-7. Ersetzen Sie die Dienst-URLs (ServiceURLs) in allen technischen TypingDNA-REST-API-Profilen (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) durch den Endpunkt für Ihre TypingDNA-API-Interface-API.
-8. Laden Sie die Richtliniendateien in Ihren Mandanten hoch.
+7. Ersetzen Sie die Dienst-URLs (ServiceURLs) in allen technischen TypingDNA-REST-API-Profilen (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) durch den Endpunkt für Ihre [TypingDNA-API-Interface-API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
+8. Laden Sie die [Richtliniendateien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy) in Ihren Mandanten hoch.
 
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 

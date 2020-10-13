@@ -1,6 +1,6 @@
 ---
 title: Bedingter Zugriff für Benutzer von B2B Collaboration – Azure AD
-description: Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für den selektiven Zugriff auf Ihre Unternehmensanwendungen.
+description: Hier erfahren Sie, wie Sie Richtlinien der mehrstufigen Authentifizierung für Azure Active Directory B2B-Benutzer erzwingen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274145"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 

@@ -3,13 +3,13 @@ title: Bereitstellungsverlauf
 description: Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgänge mit dem Portal, mit PowerShell, mit der Azure-Befehlszeilenschnittstelle (CLI) und der REST-API anzeigen.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284617"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Anzeigen des Bereitstellungsverlaufs mit Azure Resource Manager
 
@@ -21,7 +21,7 @@ Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [B
 
 ## <a name="get-deployments-and-correlation-id"></a>Abrufen von Bereitstellungen und der Korrelations-ID
 
-Sie können Details zu einer Bereitstellung über das Azure-Portal, die PowerShell, die Azure CLI oder die REST-API anzeigen. Jede Bereitstellung verfügt über eine Korrelations-ID, die zum Nachverfolgen verwandter Ereignisse verwendet wird. Sie kann hilfreich sein, wenn Sie bei der Behandlung von Problemen mit einer Bereitstellung mit dem technischen Support zusammenarbeiten.
+Sie können Details zu einer Bereitstellung über das Azure-Portal, die PowerShell, die Azure CLI oder die REST-API anzeigen. Jede Bereitstellung verfügt über eine Korrelations-ID, die zum Nachverfolgen verwandter Ereignisse verwendet wird. Wenn Sie eine [Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md) erstellen, werden Sie vom Support unter Umständen nach der Korrelations-ID gefragt. Der Support verwendet die Korrelations-ID, um die Vorgänge für die fehlerhafte Bereitstellung zu identifizieren.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -61,13 +61,13 @@ Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie [az deployment group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list).
+Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie [az deployment group list](/cli/azure/group/deployment#az-deployment-group-list).
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Um eine bestimmte Bereitstellung abzurufen, verwenden Sie [az deployment group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show).
+Um eine bestimmte Bereitstellung abzurufen, verwenden Sie [az deployment group show](/cli/azure/group/deployment#az-deployment-group-show).
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment

@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318703"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planen von U-SQL-Aufträgen mit SQL Server Integration Services (SSIS)
 
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um die Verbindung zwischen dem Task „A
 
 Fügen Sie in der SSIS-Paketentwurfsansicht den **Task „Azure Data Lake Store File System“** , einen **Foreach-Schleifencontainer** und den **Task „Azure Data Lake Analytics“** im Foreach-Schleifencontainer hinzu. Mithilfe des Tasks „Azure Data Lake Store File System“ können Sie U-SQL-Dateien in Ihrem ADLS-Konto in einen temporären Ordner herunterladen. Der Foreach-Schleifencontainer und der Task „Azure Data Lake Analytics“ dienen zum Übermitteln aller U-SQL-Dateien im temporären Ordner in das Azure Data Lake Analytics-Konto als U-SQL-Auftrag.
 
-![Verwenden von U-SQL-Dateien in Azure Data Lake Store](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![Diagram: Task „Azure Data Lake Store File System“, der einem Foreach-Schleifencontainer hinzugefügt wird](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Konfigurieren des Tasks „Azure Data Lake Store File System“
 
@@ -77,7 +77,7 @@ Fügen Sie in der SSIS-Paketentwurfsansicht den **Task „Azure Data Lake Store 
 
 3. Legen Sie **Dateien** unter **Enumeratorkonfiguration** auf `*.usql` fest, damit der Schleifencontainer nur die Dateien mit der Endung `.usql` abfängt.
 
-    ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![Screenshot: Foreach-Schleifen-Editor mit ausgewählter Option „Sammlung“ und den hervorgehobenen Abschnitten „Enumerator“ und „Enumeratorkonfiguration“](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. Fügen Sie auf der Seite **Variablenzuordnungen** eine benutzerdefinierte Variable hinzu, um den Dateinamen für jede U-SQL-Datei abzurufen. Legen Sie **Index** auf 0 fest, um den Dateinamen abzurufen. Bei diesem Beispiel definieren Sie die Variable `User::FileName`. Diese Variable wird verwendet, um eine Verbindung mit einer U-SQL-Skriptdatei dynamisch herzustellen und den Namen eines U-SQL-Auftrags im Task „Azure Data Lake Analytics“ festzulegen.
 
@@ -94,7 +94,7 @@ Fügen Sie in der SSIS-Paketentwurfsansicht den **Task „Azure Data Lake Store 
    1. Wählen Sie **\<New Connection...>** in der Einstellung „FileConnection“ aus.
    2. Legen Sie **Verwendungstyp** auf **Vorhandene Datei** und **Datei** auf den Pfad einer vorhandenen Datei fest.
 
-       ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Screenshot: Dateiverbindungs-Manager-Editor mit ausgewählter Option „Vorhandene Datei“ unter „Verwendungstyp“](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. Klicken Sie in der Ansicht **Verbindungs-Manager** mit der rechten Maustaste auf die zuvor erstellte Dateiverbindung, und wählen Sie **Eigenschaften** aus.
 

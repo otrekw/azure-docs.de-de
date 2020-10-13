@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317224"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Queue Storage-Ausgabebindungen für Azure Functions
 
@@ -365,7 +365,7 @@ Das Ausgabewarteschlangen-Element ist über `context.bindings.<NAME>` verfügbar
 
 # <a name="python"></a>[Python](#tab/python)
 
-Es gibt zwei Optionen für das Ausgeben einer Event Hub-Nachricht aus einer Funktion:
+Es gibt zwei Optionen für das Ausgeben einer Warteschlangennachricht aus einer Funktion:
 
 - **Rückgabewert**: Legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest. Mit dieser Konfiguration wird der Rückgabewert der Funktion als Queue Storage-Nachricht beibehalten.
 
@@ -373,11 +373,11 @@ Es gibt zwei Optionen für das Ausgeben einer Event Hub-Nachricht aus einer Funk
 
 # <a name="java"></a>[Java](#tab/java)
 
-Es gibt zwei Optionen für das Ausgeben einer Event Hub-Nachricht aus einer Funktion mittels der [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput)-Anmerkung:
+Es gibt zwei Optionen für das Ausgeben einer Warteschlangennachricht aus einer Funktion mittels der [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput)-Anmerkung:
 
-- **Rückgabewert**: Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Event Hub-Nachricht beibehalten.
+- **Rückgabewert**: Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Warteschlangennachricht beibehalten.
 
-- **Imperativ**: Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) an, wobei `T` ein POJO oder ein beliebiger nativer Java-Typ ist. Bei dieser Konfiguration wird bei Übergabe eines Werts an die `setValue`-Methode der Wert als Event Hub-Nachricht beibehalten.
+- **Imperativ**: Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) an, wobei `T` ein POJO oder ein beliebiger nativer Java-Typ ist. Bei dieser Konfiguration wird bei Übergabe eines Werts an die `setValue`-Methode der Wert als Warteschlangennachricht beibehalten.
 
 ---
 

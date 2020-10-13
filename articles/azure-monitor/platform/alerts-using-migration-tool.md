@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358660"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Verwenden des freiwilligen Migrationstools zum Migrieren Ihrer klassischen Warnungsregeln
 
@@ -49,7 +49,7 @@ Gehen Sie folgendermaßen vor, um die Migration Ihrer klassischen Warnungsregeln
 
 1. Wählen Sie **Zu neuen Regeln migrieren** aus, um zur Zielseite der Migration zu wechseln. Auf dieser Seite werden alle Ihre Abonnements und der jeweilige Migrationsstatus angezeigt:
 
-    ![migration-landing](media/alerts-migration/migration-landing.png "Regeln migrieren")
+    ![Screenshot: Seite „Warnungsregeln migrieren“](media/alerts-migration/migration-landing.png "Regeln migrieren")
 
     Alle Abonnements, die mit dem Tool migriert werden können, sind als **Bereit zur Migration** gekennzeichnet.
 
@@ -60,7 +60,7 @@ Gehen Sie folgendermaßen vor, um die Migration Ihrer klassischen Warnungsregeln
 
     Auf der dann geöffneten Seite werden die Details der klassischen Warnungsregeln angezeigt, die jeweils für ein Abonnement migriert werden. Sie können auch **Migrationsdetails für dieses Abonnement herunterladen** auswählen, um die Details im CSV-Format herunterzuladen.
 
-    ![migration-preview](media/alerts-migration/migration-preview.png "Migrationsvorschau anzeigen")
+    ![Screenshot: Seite „Warnungsregeln migrieren“ mit dem Link „Migrationsdetails für dieses Abonnement herunterladen“ und einem Feld für die Angabe von E-Mail-Adressen für Migrationsbenachrichtigungen](media/alerts-migration/migration-preview.png "Migrationsvorschau anzeigen")
 
 1. Geben Sie eine oder mehrere E-Mail-Adressen an, an die Benachrichtigungen zum Migrationsstatus gesendet werden sollen. Sie erhalten eine E-Mail, wenn die Migration abgeschlossen oder eine Aktion von Ihnen erforderlich ist.
 
@@ -69,7 +69,7 @@ Gehen Sie folgendermaßen vor, um die Migration Ihrer klassischen Warnungsregeln
     > [!IMPORTANT]
     > Nachdem Sie die Migration für ein Abonnement initiiert haben, können Sie für das Abonnement keine klassischen Warnungsregeln mehr bearbeiten oder erstellen. Durch diese Einschränkung wird sichergestellt, dass bei der Migration zu den neuen Regeln keine Änderungen an den klassischen Warnungsregeln verloren gehen. Obwohl Sie Ihre klassischen Warnungsregeln nicht ändern können, werden sie weiterhin ausgeführt und stellen Warnungen bereit, bis sie migriert wurden. Nachdem die Migration für Ihr Abonnement abgeschlossen ist, können Sie keine klassischen Warnungsregeln mehr verwenden.
 
-    ![migration-confirm](media/alerts-migration/migration-confirm.png "Migrationsstart bestätigen")
+    ![Screenshot: Bestätigungsaufforderung für Ihre Migration, einschließlich Links zu weiteren Informationen](media/alerts-migration/migration-confirm.png "Migrationsstart bestätigen")
 
 1. Wenn die Migration abgeschlossen oder eine Aktion von Ihnen erforderlich ist, erhalten Sie eine E-Mail an die zuvor angegebenen E-Mail-Adressen. Sie können den Status auch regelmäßig auf der Zielseite der Migration im Portal überprüfen.
 

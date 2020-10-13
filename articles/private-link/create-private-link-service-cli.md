@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737341"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358151"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Erstellen eines Private Link-Diensts mithilfe der Azure CLI
 In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Private Link-Dienst in Azure erstellen.
@@ -88,7 +88,7 @@ Der Private Link-Dienst benötigt innerhalb eines virtuellen Netzwerks eine IP-A
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Erstellen eines Private Link-Diensts mithilfe von Load Balancer Standard 
  
 Erstellen Sie mit [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) einen Private Link-Dienst unter Verwendung der Front-End-IP-Konfiguration von Load Balancer Standard. Bei diesem Beispiel wird ein Private Link-Dienst mit dem Namen *myPLS* unter Verwendung einer Load Balancer Standard-Instanz mit dem Namen *myLoadBalancer* in der Ressourcengruppe *myResourceGroup* erstellt. 
  

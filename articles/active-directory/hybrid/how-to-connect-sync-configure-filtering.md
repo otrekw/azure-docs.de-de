@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319978"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Microsoft 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, mit der sie E-Mails an andere Personen senden und diese anrufen können. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -113,7 +113,7 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
    ![Connectoreigenschaften](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Klicken Sie auf **Verzeichnispartitionen konfigurieren**.
 5. Aktivieren bzw. deaktivieren Sie je nach Bedarf die Domänen in der Liste **Select directory partitions** (Verzeichnispartitionen auswählen). Achten Sie darauf, dass nur die Partitionen ausgewählt sind, die Sie synchronisieren möchten.  
-   ![Partitionen](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![Screenshot: Verzeichnispartitionen im Fenster „Eigenschaften“](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Wenn Sie Ihre lokale Active Directory-Infrastruktur geändert und der Gesamtstruktur Domänen hinzugefügt oder daraus entfernt haben, können Sie auf die Schaltfläche **Aktualisieren** klicken, um eine aktualisierte Liste zu erhalten. Beim Aktualisieren werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie Anmeldeinformationen an, die Ihnen den Lesezugriff auf Windows Server Active Directory ermöglichen. Es muss sich nicht um den Benutzer handeln, der im Dialogfeld bereits angegeben ist.  
    ![Aktualisierung erforderlich](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, werden Sie in einer Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.

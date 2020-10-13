@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801358"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398577"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mithilfe von Workflows
 
@@ -22,8 +22,8 @@ Sie können Regeln in IoT Central erstellen, um als Reaktion auf telemetriebasi
 
 Der Azure IoT Central V3-Connector für Power Automate und Azure Logic Apps ermöglicht die Erstellung komplexerer Regeln, um Vorgänge in IoT Central zu automatisieren:
 
-- Wenn eine Regel in Ihrer Azure IoT Central-App ausgelöst wird, kann ein Workflow in Power Automate oder Azure Logic Apps ausgelöst werden. Durch diese Workflows können Aktionen in anderen Clouddiensten (beispielsweise Office 365) oder in einem Drittanbieterdienst ausgeführt werden.
-- Durch ein Ereignis in einem anderen Clouddienst (beispielsweise Office 365) kann ein Workflow in Power Automate oder Azure Logic Apps ausgelöst werden. Durch diese Workflows können Aktionen ausgeführt oder Daten aus Ihrer IoT Central-Anwendung abgerufen werden.
+- Wenn eine Regel in Ihrer Azure IoT Central-App ausgelöst wird, kann ein Workflow in Power Automate oder Azure Logic Apps ausgelöst werden. Durch diese Workflows können Aktionen in anderen Clouddiensten (beispielsweise Microsoft 365) oder in einem Drittanbieterdienst ausgeführt werden.
+- Durch ein Ereignis in einem anderen Clouddienst (beispielsweise Microsoft 365) kann ein Workflow in Power Automate oder Azure Logic Apps ausgelöst werden. Durch diese Workflows können Aktionen ausgeführt oder Daten aus Ihrer IoT Central-Anwendung abgerufen werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -75,7 +75,7 @@ Gehen Sie wie folgt vor, um den **Azure IoT Central V3 – Vorschau**-Connector 
 1. Wählen Sie in der Liste mit den Aktionen die gewünschte IoT Central-Aktion aus.
 1. Schließen Sie im Aktionsschritt die Konfiguration für die ausgewählte Aktion ab. Klicken Sie dann auf **Speichern**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Suchen nach dem Azure IoT Central V3-Connector, und wählen Sie eine Aktion aus":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Suchen nach dem Connector „Azure IoT Central - preview“ (Azure IoT Central (Vorschauversion)) und Auswählen des Triggers":::
 
 ## <a name="list-of-actions"></a>Liste mit Aktionen
 

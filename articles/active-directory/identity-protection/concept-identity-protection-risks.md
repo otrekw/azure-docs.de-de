@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016400"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327917"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -30,7 +30,7 @@ Identity Protection bietet Organisationen Zugriff auf leistungsstarke Ressourcen
 
 Es gibt zwei Arten von Risiken (**Benutzerrisiken** und **Anmelderisiken**) und zwei Arten der Erkennung oder Berechnung (**Echtzeit** und **Offline**).
 
-Erkennungen in Echtzeit werden bei der Berichterstellung möglicherweise 5-10 Minuten nicht angezeigt. Offlineerkennungen werden bei der Berichterstellung möglicherweise 2-4 Stunden nicht angezeigt.
+Erkennungen in Echtzeit werden bei der Berichterstellung möglicherweise 5-10 Minuten nicht angezeigt. Offlineerkennungen werden bei der Berichterstellung möglicherweise 2 bis 24 Stunden nicht angezeigt.
 
 ### <a name="user-risk"></a>Benutzerrisiko
 

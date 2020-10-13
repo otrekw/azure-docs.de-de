@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354869"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Einführung in das Service Fabric-Ressourcenmodell
 
@@ -66,7 +66,7 @@ Geheimnisressourcen können unabhängig von einer Anwendungs- oder Dienstressour
 
 Container stellen häufig temporäre Datenträger zur Verfügung. Temporäre Datenträger sind jedoch flüchtig, sodass Sie einen neuen temporären Datenträger erhalten und die Informationen verlieren, wenn ein Container abstürzt. Außerdem ist es schwierig, Informationen auf temporären Datenträgern mit anderen Containern gemeinsam zu verwenden. Volumes sind Verzeichnisse, die in Ihre Containerinstanzen eingebunden werden, und mit denen Sie Zustände erhalten können. Volumes bieten Ihnen einen universellen Dateispeicher und ermöglichen das Lesen und Schreiben von Dateien über normale Datenträger-E/A-Datei-APIs. Die Volumeressource ist eine deklarative Methode, um zu beschreiben, wie ein Verzeichnis und der Sicherungsspeicher für dieses eingebunden wird (Azure Files Volume oder Service Fabric Reliable Volume).  Weitere Informationen finden Sie unter [Speicherzustand](service-fabric-mesh-storing-state.md#volumes).
 
-![Volumes][Image3]
+![Die Abbildung zeigt den Dienst, der in einem Volume speichert, das sowohl in Service Fabric Reliable Volume und dann auf einem replizierten lokalen Datenträger als auch im Azure Files-Volume und im Netzwerkspeicher speichert.][Image3]
 
 ## <a name="programming-models"></a>Programmmodelle
 Die Dienstressource erfordert nur ein ausgeführtes Containerimage, das in den Codepaketen referenziert wird, die der Ressource zugeordnete sind. Sie können jeden Code, in einer beliebigen Sprache, mit einem beliebigen Framework im Container ausführen, ohne die spezifischen APIs von Service Fabric Mesh zu kennen oder zu verwenden. 

@@ -3,12 +3,12 @@ title: Konfigurieren von Einstellungen für den automatischen Start eines virtue
 description: Erfahren Sie, wie Sie Einstellungen für den automatischen Start für virtuelle Computer in einem Lab konfigurieren. Mit dieser Einstellung können virtuelle Computer im Lab nach einem Zeitplan automatisch gestartet werden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4ff2a156367b6a65e75b1c8b907da91dc3c88eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482784"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328478"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>Automatisches Starten virtueller Labcomputer  
 Mit Azure DevTest Labs können Sie virtuelle Computer in Ihrem Lab so konfigurieren, dass sie basierend auf einem Zeitplan automatisch gestartet und heruntergefahren werden. Weitere Informationen zum Konfigurieren der Einstellungen für automatisches Herunterfahren finden Sie unter [Verwalten von Richtlinien für das automatische Herunterfahren für ein Lab in Azure DevTest Labs](devtest-lab-auto-shutdown.md). 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie die Richtlinie für automatischen Start 
 1. Navigieren Sie zur Startseite für Ihr Lab. 
 2. Wählen Sie im linken Menü die Option **Konfiguration und Richtlinien** aus. 
 
-    ![Menü „Konfiguration und Richtlinien“](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+    ![Screenshot: Menü „Konfiguration und Richtlinien“ in DevTest Lab](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
 3. Führen Sie auf der Seite **Konfiguration und Richtlinien** die folgenden Schritte aus:
     
     1. Wählen Sie **Ein** für **Planung des automatischen Starts virtueller Computer zulassen** aus, um die Funktion für automatischen Start für dieses Lab zu aktivieren. 

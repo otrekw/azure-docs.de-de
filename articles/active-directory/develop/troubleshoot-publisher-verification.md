@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088322"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256890"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problembehandlung bei der Herausgeberüberprüfung
 Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
@@ -150,31 +150,45 @@ Nachfolgend finden Sie eine Liste möglicher Fehlercodes, die Sie entweder bei d
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-Die von Ihnen angegebene MPN-ID (<MPNID>) ist nicht vorhanden, oder Sie haben keinen Zugriff darauf. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal. 
+Die von Ihnen angegebene MPN-ID (<MPNID>) ist nicht vorhanden, oder Sie haben keinen Zugriff darauf. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal.
+    
+Dieser Fehler wird meist dadurch verursacht, dass der angemeldete Benutzer kein Mitglied der richtigen Rolle für das MPN-Konto in Partner Center ist. Eine Liste mit den berechtigten Rollen finden Sie unter [Anforderungen](publisher-verification-overview.md#requirements), und weitere Informationen erhalten Sie unter [Häufige Probleme](#common-issues). Der Fehler kann auch durch den Mandanten verursacht werden, bei dem die App registriert ist, wenn dieser nicht dem MPN-Konto hinzugefügt wurde, oder durch eine ungültige MPN-ID.
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal. 
+Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal.
+    
+Der häufigste Grund für diesen Fehler ist, dass eine MPN-ID angegeben wird, die zu einem Konto des Partnerstandorts (Partner Location Account, PLA) gehört. Nur globale Partnerkonten werden unterstützt. Ausführlichere Informationen finden Sie im Artikel mit den [Informationen zur Kontostruktur](/partner-center/account-structure).
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal. 
+Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal.
+    
+Der häufigste Grund ist, dass die falsche MPN-ID angegeben wurde.
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 Für die von Ihnen angegebene MPN-ID (<MPNID>) wurde der Überprüfungsvorgang nicht abgeschlossen. Führen Sie diesen Vorgang in Partner Center aus, und versuchen Sie es noch mal. 
+    
+Der häufigste Grund ist, dass das MPN-Konto den Prozess für die [Überprüfung](/partner-center/verification-responses) nicht abgeschlossen hat.
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal. 
+   
+Der häufigste Grund ist, dass die falsche MPN-ID angegeben wurde.
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal. 
+Die von Ihnen angegebene MPN-ID (<MPNID>) ist ungültig. Geben Sie eine gültige MPN-ID an, und versuchen Sie es noch mal.
+    
+Der häufigste Grund ist, dass die falsche MPN-ID angegeben wurde.
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-Die Zielanwendung (<AppId>) konnte nicht gefunden werden. Geben Sie eine gültige Anwendungs-ID an, und versuchen Sie es noch mal. 
+Die Zielanwendung (<AppId>) konnte nicht gefunden werden. Geben Sie eine gültige Anwendungs-ID an, und versuchen Sie es noch mal.
+    
+Der häufigste Grund ist ein Fall, bei dem die Überprüfung über die Graph-API durchgeführt wird und die angegebene ID der Anwendung fehlerhaft ist. Beachten Sie, dass nicht die App-ID oder die Client-ID, sondern die ID der Anwendung angegeben werden muss.
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Diese Funktion wird in einem per E-Mail verifizierten Mandanten nicht unterstüt
 
 Für die Zielanwendung (\<AppId\>) muss eine Herausgeberdomäne festgelegt sein. Legen Sie eine Herausgeberdomäne fest, und versuchen Sie es noch mal.
 
+Dieser Fehler tritt auf, wenn in der App keine [Herausgeberdomäne](howto-configure-publisher-domain.md) konfiguriert wurde.
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 Die Herausgeberdomäne (<publisherDomain>) der Zielanwendung stimmt nicht mit der zum Durchführen der E-Mail-Überprüfung in Partner Center verwendeten Domäne (<pcDomain>) überein. Stellen Sie sicher, dass diese Domänen übereinstimmen, und versuchen Sie es noch mal. 
+    
+Tritt auf, wenn weder die [Herausgeberdomäne](howto-configure-publisher-domain.md) noch die [benutzerdefinierten Domänen](../fundamentals/add-custom-domain.md), die dem Azure AD-Mandanten hinzugefügt wurden, mit der Domäne übereinstimmen, die zum Durchführen der E-Mail-Überprüfung in Partner Center verwendet wird.
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 Sie sind nicht berechtigt, die Eigenschaft für den verifizierten Herausgeber für die Anwendung (<AppId>) festzulegen. 
+  
+Dieser Fehler wird meist dadurch verursacht, dass der angemeldete Benutzer kein Mitglied der richtigen Rolle für das MPN-Konto in Azure AD ist. Eine Liste mit den berechtigten Rollen finden Sie unter [Anforderungen](publisher-verification-overview.md#requirements), und weitere Informationen erhalten Sie unter [Häufige Probleme](#common-issues).
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ Die MPN-ID wurde im Anforderungstext nicht angegeben, oder der Anforderungsinhal
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Diese Funktion wird für Microsoft-Kundenkonten nicht unterstützt. Es werden nur von einem Azure AD-Benutzer in Azure AD registrierte Anwendungen unterstützt. 
+Diese Funktion wird für Microsoft-Kundenkonten nicht unterstützt. Es werden nur von einem Azure AD-Benutzer in Azure AD registrierte Anwendungen unterstützt.
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+Tritt auf, wenn die mehrstufige Authentifizierung nicht durchgeführt wurde, bevor versucht wird, der App einen überprüften Herausgeber hinzuzufügen. Weitere Informationen finden Sie unter [Häufige Probleme](#common-issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -216,4 +240,4 @@ Wenn Sie alle vorstehenden Informationen gelesen und entsprechend angewendet hab
 - ID des Mandanten (TenantId), bei dem die App registriert ist
 - MPN-ID
 - Die ausgeführte REST-Anforderung 
-- Zurückgegebene(r) Fehlercode und Fehlermeldung 
+- Zurückgegebene(r) Fehlercode und Fehlermeldung

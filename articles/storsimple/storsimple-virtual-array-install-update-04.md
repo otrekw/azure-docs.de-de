@@ -1,6 +1,6 @@
 ---
 title: Installieren von Updates in StorSimple Virtual Array | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche der StorSimple Virtual Array-Lösung verwenden, um Updates und Hotfixes über das Azure-Portal anzuwenden.
+description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche der StorSimple Virtual Array-Lösung verwenden, um Update 0.4 über das Azure-Portal und die Hotfixmethode anzuwenden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529b93e7754df7aa0a981f4389108b8f53b4be2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300563"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Installieren von Update 0.4 für Ihre StorSimple Virtual Array-Lösung
 

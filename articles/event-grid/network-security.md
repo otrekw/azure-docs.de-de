@@ -1,16 +1,16 @@
 ---
 title: Netzwerksicherheit für Azure Event Grid-Ressourcen
-description: In diesem Artikel wird beschrieben, wie Sie Zugriff über private Endpunkte konfigurieren.
+description: In diesem Artikel wird beschrieben, wie Sie Diensttags für ausgehenden Datenverkehr, IP-Firewallregeln für eingehenden Datenverkehr und private Endpunkte für eingehenden Datenverkehr mit Azure Event Grid verwenden.
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326455"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netzwerksicherheit für Azure Event Grid-Ressourcen
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Grid verwenden: 

@@ -1,18 +1,18 @@
 ---
 title: Interpretieren Ihrer Scorecard | Microsoft-Dokumentation
-description: Häufig gestellte Fragen zu Azure Internet Analyzer.
+description: Hier erfahren Sie mehr über die Auswertung Ihrer Scorecard. Die Registerkarte „Scorecard“ enthält die aggregierten und analysierten Ergebnisse Ihrer Tests.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 5ed8621fbfd1528bfffeaa986fa9c2e17c19f82b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43d094193fb266d1ecec7089b44d8b3fd5e9b43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330212"
 ---
 # <a name="interpreting-your-scorecard"></a>Interpretieren Ihrer Scorecard
 

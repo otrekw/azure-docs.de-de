@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278633"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -49,7 +49,9 @@ Siehe [Application Gateway-Komponenten](https://docs.microsoft.com/azure/applica
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>In welchen Regionen ist Application Gateway verfügbar?
 
-Application Gateway ist in allen Regionen des globalen Azure verfügbar. Der Dienst ist auch in [Azure China 21Vianet](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/overview/clouds/government/) verfügbar.
+Application Gateway v1 (Standard und WAF) ist in allen Regionen der globalen Azure-Umgebung verfügbar. Der Dienst ist auch in [Azure China 21Vianet](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/overview/clouds/government/) verfügbar.
+
+Informationen zur Verfügbarkeit von Application Gateway v2 (Standard_v2 und WAF_v2) finden Sie unter [Unterstützte Regionen](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions).
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>Ist diese Bereitstellung für mein Abonnement dediziert, oder wird sie zur gemeinsamen Nutzung für Kunden freigegeben?
 
@@ -182,11 +184,15 @@ Nein. Aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitst
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Werden Netzwerksicherheitsgruppen im Application Gateway-Subnetz unterstützt?
 
-Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet)
+Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Unterstützt das Application Gateway-Subnetz benutzerdefinierte Routen?
 
 Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)
+
+### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Werden Dienstendpunktrichtlinien im Application Gateway-Subnetz unterstützt?
+
+Nein. [Dienstendpunktrichtlinien](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) für Speicherkonten werden im Application Gateway-Subnetz nicht unterstützt, und durch die Konfiguration solcher Richtlinien wird der Azure-Infrastrukturdatenverkehr blockiert.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Was sind die Grenzwerte für Application Gateway? Kann ich diese Grenzwerte erhöhen?
 
@@ -222,7 +228,7 @@ Wenn Sie mehrere Standorte für Application Gateway konfiguriert haben, wird im 
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kann ich nur einigen wenigen Quell-IP-Adressen Zugriff auf Application Gateway gewähren?
 
-Ja. Weitere Informationen finden Sie unter [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
+Ja. Weitere Informationen finden Sie unter [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Kann ich den gleichen Port sowohl für öffentliche als auch für private Listener verwenden?
 

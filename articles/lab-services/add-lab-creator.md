@@ -3,12 +3,12 @@ title: Hinzufügen von Benutzern als Lab-Ersteller in Azure Lab Services
 description: In diesem Artikel erfahren Sie, wie Sie einen Benutzer der Rolle „Lab-Ersteller“ für ein Labkonto in Azure Lab Services hinzufügen. Die Lab-Ersteller können Labs in diesem Labkonto erstellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444283"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399481"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Hinzufügen von Lab-Erstellern zu einem Labkonto in Azure Lab Services
 In diesem Artikel erfahren Sie, wie Sie Benutzer als Lab-Ersteller zu einem Labkonto in Azure Lab Services hinzufügen. Diese Benutzer können dann Classroom-Labs im Labkonto erstellen. 
@@ -31,7 +31,7 @@ Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu ert
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Hinzufügen eines Benutzers ohne Microsoft-Konto als Lab-Ersteller
 Wenn Sie einen Benutzer als Lab-Ersteller hinzufügen möchten, verwenden Sie sein E-Mail-Konto. Die folgenden Arten von E-Mail-Konten können verwendet werden:
 
-- Ein E-Mail-Konto, das vom Office 365-Azure Active Directory (AAD) Ihrer Universität bereitgestellt wird 
+- Ein E-Mail-Konto, das von der AAD-Instanz (Azure Active Directory) Ihrer Universität bereitgestellt wird
 - Ein Microsoft-E-Mail-Konto, z. B. `@outlook.com`, `@hotmail.com`, `@msn.com` oder `@live.com`
 - Ein Microsoft-fremdes E-Mail-Konto, z. B. ein von Yahoo oder Google bereitgestelltes. Diese Kontotypen müssen jedoch mit einem Microsoft-Konto verknüpft werden.
 - Ein GitHub-Konto. Dieses Konto muss mit einem Microsoft-Konto verknüpft werden.

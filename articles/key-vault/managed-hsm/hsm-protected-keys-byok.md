@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320624"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM (BYOK)
 
- Das verwaltete HSM von Azure Key Vault unterstützt den Import von Schlüsseln, die in Ihrem lokalen Hardwaresicherheitsmodul (HSM) generiert wurden. Die Schlüssel verlassen nie die HSM-Schutzgrenze. Dieses Szenario wird häufig als *Bring Your Own Key* (BYOK) bezeichnet. Das verwaltete HSM verwendet die nCipher nShield-HSM-Produktfamilie (validiert für FIPS 140-2 Level 3) zum Schützen der Schlüssel.
+ Das verwaltete HSM von Azure Key Vault unterstützt den Import von Schlüsseln, die in Ihrem lokalen Hardwaresicherheitsmodul (HSM) generiert wurden. Die Schlüssel verlassen nie die HSM-Schutzgrenze. Dieses Szenario wird häufig als *Bring Your Own Key* (BYOK) bezeichnet. Das verwaltete HSM verwendet die HSM-Adapter von Marvell LiquidSecurity (validiert für FIPS 140-2 Level 3) zum Schützen der Schlüssel.
 
 Verwenden Sie die Informationen in diesem Artikel zum Planen, Generieren und Übertragen Ihrer eigenen durch HSM geschützten Schlüssel für die Nutzung mit verwaltetem HSM.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327713"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten zwar eine deutliche Steigerung, aber in einigen Fällen können Sie damit die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -98,18 +98,34 @@ Beispielsweise wird mit den folgenden Abfragen genau das gleiche Ergebnis erziel
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+In einigen Fällen wird die ausgewertete Spalte implizit von der Abfrageverarbeitungs-Engine erstellt, da der Filter nicht nur auf das Feld angewendet wird:
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Verwenden effektiver Aggregationsbefehle und -dimensionen bei join- und summarize-Operatoren
 
@@ -279,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-Wenn im Fall oben die Verwendung von Unterabfragen nicht vermieden werden kann, besteht eine weitere Technik darin, die Abfrage-Engine mithilfe der [materialize()-Funktion](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor) darauf hinzuweisen, dass jeweils die gleichen Quelldaten verwenden werden. Dies ist nützlich, wenn die Quelldaten aus einer Funktion stammen, die mehrmals innerhalb der Abfrage verwendet wird.
+Wenn im Fall oben die Verwendung von Unterabfragen nicht vermieden werden kann, besteht eine weitere Technik darin, die Abfrage-Engine mithilfe der [materialize()-Funktion](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor) darauf hinzuweisen, dass jeweils die gleichen Quelldaten verwenden werden. Dies ist nützlich, wenn die Quelldaten aus einer Funktion stammen, die mehrmals innerhalb der Abfrage verwendet wird. „materialize“ wird angewendet, wenn die Ausgabe der Unterabfrage viel kleiner als die Eingabe ist. Die Ausgabe wird von der Abfrage-Engine zwischengespeichert und in allen Vorkommen wiederverwendet.
 
 
 

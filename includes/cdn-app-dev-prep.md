@@ -4,12 +4,12 @@ ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77608738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316754"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie CDN-Verwaltungscode schreiben können, müssen Sie einige Vorbereitungsschritte ausführen, damit der Code mit Azure Resource Manager interagieren kann. Dies umfasst die folgenden Vorbereitungsmaßnahmen:
@@ -26,10 +26,10 @@ Bevor Sie CDN-Verwaltungscode schreiben können, müssen Sie einige Vorbereitung
     ![Erstellen einer neuen Ressourcengruppe](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 3. Benennen Sie die Ressourcengruppe *CdnConsoleTutorial*.  Wählen Sie Ihr Abonnement aus, und wählen Sie einen Standort in Ihrer Nähe.  Wenn Sie möchten, können Sie das Kontrollkästchen **An Dashboard anheften** aktivieren, um die Ressourcengruppe an das Dashboard im Portal anzuheften.  Durch das Anheften lässt sie sich später einfacher wiederfinden.  Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Erstellen**.
 
-    ![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+    ![Screenshot: Dialogfeld „Ressourcengruppe“](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. Wenn Sie die Ressourcengruppe nicht an Ihr Dashboard angeheftet haben, können Sie nach der Erstellung danach suchen, indem Sie auf **Durchsuchen** > **Ressourcengruppen** klicken.  Klicken Sie auf die Ressourcengruppe, um sie zu öffnen.  Notieren Sie sich Ihre **Abonnement-ID**. Sie benötigen sie später.
 
-    ![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![Screenshot: Abschnitt „CdnConsoleTutorial“](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Erstellen der Azure AD-Anwendung und Anwenden von Berechtigungen
 Es gibt zwei Methoden der App-Authentifizierung mit Azure Active Directory: Als einzelner Benutzer oder Dienstprinzipal. Ein Dienstprinzipal ähnelt einem Dienstkonto in Windows.  Anstatt einem bestimmten Benutzer Berechtigungen für die Interaktion mit den CDN-Profilen zu gewähren, erteilen Sie die Berechtigungen dem Dienstprinzipal.  Dienstprinzipale werden im Allgemeinen für automatisierte, nicht interaktive Prozesse verwendet.  Auch wenn in diesem Tutorial eine interaktive Konsolen-App erstellt wird, verwenden wir hier einen Dienstprinzipal.

@@ -2,15 +2,17 @@
 title: 'Verwenden von Erstellungs- und Laufzeitschlüsseln: LUIS'
 description: Wenn Sie Language Understanding (LUIS) zum ersten Mal verwenden, müssen Sie keinen Erstellungsschlüssel erstellen. Wenn Sie die App veröffentlichen möchten und dann Ihren Laufzeitendpunkt verwenden, müssen Sie den Laufzeitschlüssel erstellen und ihn der App zuweisen.
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327220"
 ---
 # <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
 
@@ -27,9 +29,9 @@ LUIS lässt drei Arten von Azure-Ressourcen sowie eine Azure-fremde Ressource zu
 
 |Resource|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
 |--|--|--|--|
-|Erstellungsressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. [Erstellen Sie eine LUIS-Erstellungsressource](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal), wenn Sie LUIS-Apps programmgesteuert oder über das LUIS-Portal erstellen möchten. Sie müssen zunächst [Ihr LUIS-Konto migrieren](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration), damit Sie Ihre Azure-Erstellungsressourcen mit der Anwendung verknüpfen können. Sie können die Berechtigungen für die Erstellungsressource steuern, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen. <br><br> Für die LUIS-Erstellungsressource ist ein Tarif verfügbar:<br> Die * **F0-Erstellungsressource**, die Ihnen monatlich 1 Mio. kostenlose Erstellungstransaktionen und 1.000 kostenlose Anforderungen für den Vorhersageendpunkt bietet. |`LUIS.Authoring`|`Cognitive Services`|
-|Vorhersageressource| Nachdem Sie die LUIS-Anwendung veröffentlicht haben, verwenden Sie die Vorhersageressource/den Vorhersageschlüssel, um Anforderungen für den Vorhersageendpunkt abzufragen. Erstellen Sie eine LUIS-Vorhersageressource, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Erstellungs- oder Startressource zur Verfügung gestellt werden. <br><br> Für die Vorhersageressource sind zwei Tarife verfügbar:<br> Die * **F0-Vorhersageressource**, die Ihnen monatlich 10.000 kostenlose Anforderungen für den Vorhersageendpunkt bietet<br> Die * **S0-Vorhersageressource**, die der kostenpflichtige Tarif ist [Weitere Preisinformationen](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Start-/Testressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. Sie wird standardmäßig erstellt, wenn Sie bei der ersten Registrierung bei LUIS als Option die Startressource auswählen. Der Startschlüssel wird jedoch letztendlich nicht mehr unterstützt, und alle LUIS-Benutzer müssen [ihre Konten migrieren](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) und ihre LUIS-Anwendungen mit einer Erstellungsressource verknüpfen. Im Gegensatz zur Erstellungsressource erhalten Sie mit dieser Ressource keine Berechtigungen für die rollenbasierte Zugriffssteuerung. <br><br> Wie die Erstellungsressource bietet Ihnen die Startressource 1 Mio. kostenlose Erstellungstransaktionen und 1.000 kostenlose Anforderungen für den Vorhersageendpunkt.|-|Keine Azure-Ressource|
+|Erstellungsressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. [Erstellen Sie eine LUIS-Erstellungsressource](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal), wenn Sie LUIS-Apps programmgesteuert oder über das LUIS-Portal erstellen möchten. Sie müssen zunächst [Ihr LUIS-Konto migrieren](luis-migration-authoring.md#what-is-migration), damit Sie Ihre Azure-Erstellungsressourcen mit der Anwendung verknüpfen können. Sie können die Berechtigungen für die Erstellungsressource steuern, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen. <br><br> Für die LUIS-Erstellungsressource ist ein Tarif verfügbar:<br> Die * **F0-Erstellungsressource „Free“** , die Ihnen monatlich 1 Mio. kostenlose Erstellungstransaktionen und 1.000 kostenlose Testanforderungen für den Vorhersageendpunkt bietet |`LUIS.Authoring`|`Cognitive Services`|
+|Vorhersageressource| Nachdem Sie die LUIS-Anwendung veröffentlicht haben, verwenden Sie die Vorhersageressource/den Vorhersageschlüssel, um Anforderungen für den Vorhersageendpunkt abzufragen. Erstellen Sie eine LUIS-Vorhersageressource, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Erstellungs- oder Startressource zur Verfügung gestellt werden. <br><br> Für die Vorhersageressource sind zwei Tarife verfügbar:<br> Die * **F0-Vorhersageressource „Free“** , die Ihnen monatlich 10.000 kostenlose Anforderungen für den Vorhersageendpunkt bietet<br> Die * **S0-Vorhersageressource „Standard“** , die der kostenpflichtige Tarif ist [Weitere Preisinformationen](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Start-/Testressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. Sie wird standardmäßig erstellt, wenn Sie bei der ersten Registrierung bei LUIS als Option die Startressource auswählen. Der Startschlüssel wird jedoch letztendlich nicht mehr unterstützt, und alle LUIS-Benutzer müssen [ihre Konten migrieren](luis-migration-authoring.md#what-is-migration) und ihre LUIS-Anwendungen mit einer Erstellungsressource verknüpfen. Im Gegensatz zur Erstellungsressource erhalten Sie mit dieser Ressource keine Berechtigungen für die rollenbasierte Zugriffssteuerung. <br><br> Wie die Erstellungsressource bietet Ihnen die Startressource 1 Mio. kostenlose Erstellungstransaktionen und 1.000 kostenlose Testanforderungen für den Vorhersageendpunkt.|-|Keine Azure-Ressource|
 |[Cognitive Service-Ressourcenschlüssel für mehrere Dienste](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Anforderungen von Abfragevorhersageendpunkten, die mit LUIS und anderen unterstützten Cognitive Services geteilt werden.|`CognitiveServices`|`Cognitive Services`|
 
 

@@ -1,30 +1,21 @@
 ---
 title: Einbinden einer Azure-Dateifreigabe über SMB mit macOS | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mit dem Finder oder Terminal unter macOS eine Azure-Dateifreigabe über SMB einbinden. Azure Files ist das benutzerfreundliche Clouddateisystem von Microsoft.
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
-ms.author: renash
+ms.date: 09/23/2020
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326064"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Einbinden einer Azure-Dateifreigabe über SMB mit macOS
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können von macOS El Capitan 10.11 oder höher mit dem SMB 3-Protokoll nach Branchenstandard eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche und mithilfe des Terminals.
-
-> [!Note]  
-> Vor dem Einbinden einer Azure-Dateifreigabe über SMB sollten Sie die SMB-Paketsignatur deaktivieren. Andernfalls leidet unter Umständen die Leistung beim Zugriff auf die Azure-Dateifreigabe über macOS. Da die SMB-Verbindung verschlüsselt wird, hat dies keine Auswirkungen auf die Verbindungssicherheit. Über das Terminal können Sie die SMB-Paketsignatur mithilfe folgender Befehle deaktivieren, wie unter [Paketsignaturen für SMB 2- und SMB 3-Verbindungen deaktivieren](https://support.apple.com/HT205926) beschrieben:  
->    ```
->    sudo -s
->    echo "[default]" >> /etc/nsmb.conf
->    echo "signing_required=no" >> /etc/nsmb.conf
->    exit
->    ```
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können von macOS High Sierra 10.13 oder höher mit dem SMB 3-Protokoll nach Branchenstandard eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche und mithilfe des Terminals.
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>Voraussetzungen für das Einbinden von Azure-Dateifreigaben unter macOS
 * **Speicherkontoname**: Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
@@ -46,10 +37,10 @@ ms.locfileid: "88034446"
     ![Momentaufnahme einer eingebundenen Azure-Dateifreigabe](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Einbinden einer Azure-Dateifreigabe über das Terminal
-1. Ersetzen Sie `<storage-account-name>` durch den Namen Ihres Speicherkontos. Geben Sie den Speicherkontoschlüssel als Kennwort an, wenn Sie zur Eingabe eines Kennworts aufgefordert werden. 
+1. Ersetzen Sie  `<storage-account-name>`, `<storage-account-key>` und `<share-name>` durch die entsprechenden Werte für Ihre Umgebung.
 
     ```
-    mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
+    open smb://<storage-account-name>:<storage-account-key>@<storage-account-name>.file.core.windows.net/<share-name>
     ```
 
 2. **Verwenden Sie die Azure-Dateifreigabe nach Bedarf:** Die Azure-Dateifreigabe wird an dem Bereitstellungspunkt eingebunden, der durch den vorherigen Befehl angegeben wurde.  
@@ -57,9 +48,4 @@ ms.locfileid: "88034446"
     ![Momentaufnahme der eingebundenen Azure-Dateifreigabe](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Files erhalten Sie über diese Links.
-
-* [Auf dem Mac eine Verbindung über die Dateifreigabe herstellen](https://support.apple.com/HT204445)
-* [Häufig gestellte Fragen](../storage-files-faq.md)
-* [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
-* [Troubleshoot Azure File storage problems in Linux](storage-troubleshoot-linux-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Linux)    
+* [Herstellen einer Verbindung zwischen Ihrem Mac und freigegebenen Computern: Apple Support](https://support.apple.com/guide/mac-help/connect-mac-shared-computers-servers-mchlp1140/mac)

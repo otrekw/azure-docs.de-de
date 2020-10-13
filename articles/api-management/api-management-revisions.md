@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: b099a6ea706482e25b2c37a87cf0a24f2fe475bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528110"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403237"
 ---
 # <a name="revisions-in-azure-api-management"></a>Revisionen in Azure API Management
 
@@ -38,7 +38,7 @@ Auf jede Revision Ihrer API kann mit einer speziellen URL zugegriffen werden. F�
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-Standardmäßig weist jede Revision dieselben Sicherheitseinstellungen wie die aktuelle Revision auf. Sie können die Richtlinien für eine bestimmte Revision bewusst ändern, wenn Sie für jede Revision unterschiedliche Sicherheitseinstellungen anwenden möchten. Beispielsweise können Sie eine [IP-Whitelist-Richtlinie](./api-management-access-restriction-policies.md#RestrictCallerIPs) hinzufügen, um zu verhindern, dass externe Aufrufer auf eine Revision zugreifen, die sich noch in der Entwicklung befindet.
+Standardmäßig weist jede Revision dieselben Sicherheitseinstellungen wie die aktuelle Revision auf. Sie können die Richtlinien für eine bestimmte Revision bewusst ändern, wenn Sie für jede Revision unterschiedliche Sicherheitseinstellungen anwenden möchten. Beispielsweise können Sie eine [IP-Filterrichtlinie](./api-management-access-restriction-policies.md#RestrictCallerIPs) hinzufügen, um zu verhindern, dass externe Aufrufer auf eine Revision zugreifen, die sich noch in der Entwicklung befindet.
 
 Eine Revision kann offline geschaltet werden, sodass sie nicht mehr für Aufrufer zugänglich ist, auch wenn diese versuchen, über ihre URL auf die Revision zuzugreifen. Sie können eine Revision im Azure-Portal als offline kennzeichnen. Wenn Sie PowerShell verwenden, können Sie das Cmdlet `Set-AzApiManagementApiRevision` verwenden und das Argument `Path` auf `$null` festlegen.
 

@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318074"
 ---
 # <a name="laying-out-files-for-conversion"></a>Festlegen des Layouts von Dateien für die Konvertierung
 
@@ -28,6 +28,10 @@ Wenn die Pfade als relative Pfade gespeichert werden und die relative Position z
 
 > [!Note]
 > Sie sollten Dateien im Eingabecontainer platzieren, damit die relativen Speicherorte der Dateien dieselben sind wie beim Erstellen der Ressource.
+
+> [!Note]
+> Es wird empfohlen, Ressourcen mit relativen Pfaden zu erstellen.
+> Das Tutorial zum [Einrichten von Materialien für 3ds Max](../../tutorials/modeling/3dsmax-material-setup.md) enthält ein 3ds Max-Beispiel dafür, wie Sie sicherstellen, dass eine Ressource relative Pfade verwendet.
 
 ## <a name="finding-textures"></a>Suchen von Texturen
 

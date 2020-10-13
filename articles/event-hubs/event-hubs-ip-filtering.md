@@ -3,12 +3,12 @@ title: Firewallregeln für Azure Event Hubs | Microsoft-Dokumentation
 description: Verwenden von Firewallregeln zum Zulassen von Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: fbf3e67cdde43dbe3d5e02cd4b044d5473f409ac
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ab7f835187a33b5e4d95c160831337172a5ed74e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318533"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -43,7 +43,7 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 
     Wenn Sie die Option **Alle Netzwerke** auswählen, akzeptiert der Event Hub Verbindungen von beliebigen IP-Adressen (mit dem Zugriffsschlüssel). Diese Einstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
 
-    ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+    ![Screenshot: Seite „Firewall und virtuelle Netzwerke“ mit ausgewählter Option „Alle Netzwerke“](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Um den Zugriff auf bestimmte IP-Adressen zu beschränken, vergewissern Sie sich, dass die Option **Ausgewählte Netzwerke** ausgewählt ist. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
     1. Wählen Sie die Option **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP Zugriff auf den Namespace zu gewähren. 
     2. Geben Sie für **Adressbereich** eine bestimmte IPv4-Adresse oder einen Bereich von IPv4-Adressen in der CIDR-Notation ein. 

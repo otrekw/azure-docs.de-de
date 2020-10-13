@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448345"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395769"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatures und -dienste in Azure, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen.
@@ -66,7 +66,7 @@ Weitere Informationen:
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Mit Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z.B. Azure, Office 365 und CRM Online. Die Konnektivität kann wie folgt bereitgestellt werden:
+Mit Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen mit Microsoft Cloud Services herstellen, z. B. Azure, Microsoft 365 und CRM Online. Die Konnektivität kann wie folgt bereitgestellt werden:
 
 * Über ein Any-to-Any-Netzwerk (IP VPN)
 * Über ein Point-to-Point-Ethernet-Netzwerk

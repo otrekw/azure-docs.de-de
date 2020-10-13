@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323636"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Grundlegendes zu Apps und Bereitstellungen in Azure Spring Cloud
 
@@ -29,11 +29,11 @@ Der Standardtarif der Azure Spring Cloud ermöglicht, dass eine App eine Produkt
 ## <a name="app"></a>App
 Die folgenden Features/Eigenschaften werden auf App-Ebene definiert.
 
-| Enumeration | Definition |
+| Features | Beschreibung |
 |:--|:----------------|
 | Öffentlich</br>Endpunkt | Die URL für den Zugriff auf die App. |
 | Benutzerdefiniert</br>Domain | Der CNAME-Eintrag, der die benutzerdefinierte Domäne sichert. |
-| Dienst</br>Bindung | Die in der Datei „function.json“ und im Attribut *ServiceBusTrigger* festgelegten Bindungskonfigurationseigenschaften. |
+| Dienst</br>Bindung | Standardmäßige Verbindung mit anderen Azure-Diensten |
 | Verwaltet</br>Identity | Verwaltete Entität von Azure Active Directory, die es Ihrer App erlaubt, einfach auf andere Azure AD-geschützte Ressourcen wie Azure Key Vault zuzugreifen. |
 | Beständig</br>Storage | Einstellung, die es ermöglicht, dass Daten nach dem Neustart der App beibehalten werden können. |
 
@@ -41,14 +41,14 @@ Die folgenden Features/Eigenschaften werden auf App-Ebene definiert.
 
 Die folgenden Features/Eigenschaften werden auf der Bereitstellungsebene definiert und beim Wechsel der Produktions-/Stagingbereitstellung ausgetauscht.
 
-| Enumeration | Definition |
+| Features | Beschreibung |
 |:--|:----------------|
 | CPU | Anzahl der virtuellen Kerne pro App-Instanz. |
-| Arbeitsspeicher | Einstellung, die Arbeitsspeicher für die Hochskalierung und Aufskalierung von Bereitstellungen zuordnet. |
+| Arbeitsspeicher | GB an Arbeitsspeicher pro App-Instanz|
 | Instanz</br>Anzahl | Die Anzahl der App-Instanzen, manuell oder automatisch festgelegt. |
 | Automatische Skalierung | Anzahl der Skalierungsinstanzen, automatisch auf vordefinierten Regeln und Zeitplänen basierend. |
-| JVM</br>Optionen | Einstellung: JAVA_OPTS |
-| Environment</br>Variables | Einstellungen, die für die gesamte Azure Spring Cloud-Umgebung gelten. |
+| JVM</br>Optionen | Festlegen von JVM-Optionen  |
+| Environment</br>Variables | Festlegen von Umgebungsvariablen |
 | Typ</br>Version | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Beschränkungen

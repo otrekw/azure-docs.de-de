@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358780"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration von klassischen Warnungsregeln
 
@@ -76,7 +76,7 @@ Wenn Sie Logik-Apps mit klassischen Warnungen verwenden, müssen Sie den Logik-A
 
 1. Verwenden Sie die Vorlage „Azure Monitor – Metrics Alert Handler“ (Azure Monitor – Metrikwarnungshandler). Diese Vorlage enthält einen Auslöser **HTTP-Anforderung**, für den das entsprechende Schema definiert ist.
 
-    ![logic-app-template](media/alerts-migration/logic-app-template.png "Vorlage für Metrikwarnung")
+    ![Screenshot: Zwei Schaltflächen: „Leere Logik-App“ und „Azure Monitor – Metrics Alert Handler“ (Azure Monitor – Metrikwarnungshandler)](media/alerts-migration/logic-app-template.png "Vorlage für Metrikwarnung")
 
 1. Fügen Sie eine Aktion zum Hosten Ihrer Verarbeitungslogik hinzu.
 

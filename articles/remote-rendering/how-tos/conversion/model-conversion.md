@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506660"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318057"
 ---
 # <a name="convert-models"></a>Konvertieren von Modellen
 
@@ -21,9 +21,8 @@ Nach der Konvertierung kann ein Modell aus einem Azure Storage-Konto geladen wer
 
 Der Konvertierungsdienst unterstützt folgende Formate:
 
-- **FBX** (ab Version 2011)
-- **GLTF** (Version 2.x)
-- **GLB** (Version 2.x)
+- **FBX** (Version 2011 bis Version 2020)
+- **GLTF**/**GLB** (Version 2.x)
 
 Es gibt geringfügige Unterschiede zwischen den Formaten im Hinblick auf die Konvertierung von Materialeigenschaften, was unter [Materialzuordnung für Modellformate](../../reference/material-mapping.md) erläutert wird.
 

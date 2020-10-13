@@ -4,14 +4,14 @@ description: Erfahren Sie etwas über das Abfragen von geschachtelten JSON-Eigen
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270851"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Arbeiten mit JSON in Azure Cosmos DB
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Unterschied zwischen NULL und „nicht definiert“
+
+Ist eine Eigenschaft nicht in einem Element definiert, lautet ihr Wert `undefined`. Eine Eigenschaft mit dem Wert `null` muss explizit definiert und ihr muss der Wert `null` zugewiesen sein.
+
+Stellen Sie sich etwa das folgende Beispielelement vor:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+In diesem Beispiel hat die Eigenschaft `isRegistered` den Wert `undefined`, da sie im Element ausgelassen wird. Die Eigenschaft `creationDate` weist den Wert `null` auf.
+
+Azure Cosmos DB unterstützt zwei nützliche Systemfunktionen für die Typüberprüfung für Eigenschaften vom Typ `null` und `undefined`:
+
+* [IS_NULL](sql-query-is-null.md): Überprüft, ob ein Eigenschaftswert `null` lautet.
+* [IS_DEFINED](sql-query-is-defined.md): Überprüft, ob ein Eigenschaftswert definiert ist.
+
+Informationen zu unterstützten Operatoren für die Werte `null` und `undefined` finden Sie [hier](sql-query-operators.md).
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Reservierte Schlüsselwörter und Sonderzeichen in JSON-Code
 

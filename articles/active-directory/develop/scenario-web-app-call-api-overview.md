@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257128"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Szenario: Web-App, die Web-APIs aufruft
 
@@ -24,12 +24,7 @@ Erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer bei Microsoft Identit
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-In diesem Szenario wird angenommen, dass Sie mit dem folgenden Szenario vertraut sind:
-
-> [!div class="nextstepaction"]
-> [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)
+In diesem Szenario wird davon ausgegangen, dass Sie folgendes Szenario bereits abgeschlossen haben: [Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md).
 
 ## <a name="overview"></a>Übersicht
 
@@ -51,6 +46,10 @@ Die Entwicklung für dieses Szenario umfasst die folgenden speziellen Aufgaben:
 
 - Bei der [Anwendungsregistrierung](scenario-web-app-call-api-app-registration.md) müssen Sie einen Antwort-URI, ein Geheimnis oder ein Zertifikat bereitstellen, das für Azure AD freigegeben werden soll. Wenn Sie Ihre App an mehreren Standorten bereitstellen, geben Sie für jeden Standort einen Antwort-URI an.
 - Die [Anwendungskonfiguration](scenario-web-app-call-api-app-configuration.md) muss die Clientanmeldeinformationen bereitstellen, die bei der Anwendungsregistrierung für Azure AD freigegeben wurden.
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

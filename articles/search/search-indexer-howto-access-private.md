@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971432"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534725"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Zugreifen auf sichere Ressourcen über private Endpunkte
 
@@ -45,7 +45,7 @@ Die Liste der Azure-Ressourcen, für die ausgehende private Endpunktverbindungen
 Für die Zwecke dieses Leitfadens wird eine Mischung aus [ARMClient](https://github.com/projectkudu/ARMClient) und [Postman](https://www.postman.com/) verwendet, um die REST-API-Aufrufe zu veranschaulichen.
 
 > [!NOTE]
-> Im gesamten vorliegenden Leitfaden wird angenommen, dass der Name des Suchdiensts __contoso-search__ lautet, der in der Ressourcengruppe __contoso__ eines Abonnements mit der Abonnement-ID __00000000-0000-0000-0000-000000000000__ vorhanden ist. Die Ressourcen-ID dieses Diensts lautet `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`.
+> Im gesamten vorliegenden Leitfaden wird angenommen, dass der Name des Suchdiensts __contoso-search__ lautet, der in der Ressourcengruppe __contoso__ eines Abonnements mit der Abonnement-ID __00000000-0000-0000-0000-000000000000__ vorhanden ist. Die Ressourcen-ID dieses Suchdiensts lautet `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`.
 
 Im restlichen Leitfaden wird gezeigt, wie der Dienst __contoso-search__ konfiguriert werden kann, sodass seine Indexer auf Daten aus dem sicheren Speicherkonto `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage` zugreifen können.
 

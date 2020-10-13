@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924579"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400637"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Notfallwiederherstellung in einer mehrinstanzenfähigen Umgebung mit dem Cloud Solution Provider-Programm (CSP)
 
-Das [CSP-Programm](https://partner.microsoft.com/cloud-solution-provider) fördert ein besseres Zusammenspiel für Microsoft Cloud Services (einschließlich Office 365, Enterprise Mobility Suite und Microsoft Azure). Mit CSP können sich Partner um sämtliche Aspekte der Kundenbeziehung kümmern und als Hauptansprechpartner fungieren. Partner können Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren.
+Das [CSP-Programm](https://partner.microsoft.com/cloud-solution-provider) fördert ein besseres Zusammenspiel für Microsoft Cloud Services (einschließlich Microsoft 365, Enterprise Mobility Suite und Microsoft Azure). Mit CSP können sich Partner um sämtliche Aspekte der Kundenbeziehung kümmern und als Hauptansprechpartner fungieren. Partner können Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren.
 
 Mit [Azure Site Recovery](site-recovery-overview.md) können Partner die Notfallwiederherstellung für Kunden direkt im CSP-Programm verwalten. Sie können im CSP-Programm auch Site Recovery-Umgebungen einrichten, damit Kunden ihre eigenen Anforderungen an die Notfallwiederherstellung selbstständig verwalten können. In beiden Szenarien fungieren Partner als Verbindungsglied zwischen Site Recovery und ihren Kunden. Partner sind für die Kundenbeziehung zuständig und stellen Kunden die Nutzung von Site Recovery in Rechnung.
 

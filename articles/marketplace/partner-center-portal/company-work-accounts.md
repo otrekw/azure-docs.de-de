@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119751"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400263"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
 
@@ -20,7 +20,7 @@ Partner Center verwendet Geschäftskonten (auch bekannt als Azure Active Directo
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>Überprüfen, ob Ihr Unternehmen bereits über ein Geschäftskonto verfügt
 
-Wenn Ihr Unternehmen einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 abonniert hat, haben Sie bereits eine E-Mail-Kontodomäne (wird auch Azure Active Directory-Mandant bezeichnet), die mit Partner Center verwendet werden kann.
+Wenn Ihr Unternehmen einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Microsoft 365 abonniert hat, haben Sie bereits eine E-Mail-Kontodomäne (auch als Azure Active Directory-Mandant bezeichnet), die mit Partner Center verwendet werden kann.
 
 Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Verwaltungsportal an.

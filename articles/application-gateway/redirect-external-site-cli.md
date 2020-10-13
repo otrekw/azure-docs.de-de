@@ -1,18 +1,18 @@
 ---
 title: Umleiten externen Datenverkehrs mithilfe der CLI – Azure Application Gateway
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen, das internen Webdatenverkehr an den entsprechenden Pool umleitet.
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen, das externen Webdatenverkehr an den entsprechenden Pool umleitet.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331045"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI
 
@@ -131,8 +131,4 @@ Daraufhin sollte *bing.com* in Ihrem Browser aufgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> * Einrichten des Netzwerks
-> * Erstellen eines Listeners und einer Umleitungsregel
-> * Erstellen eines Anwendungsgateways
+- [Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle](redirect-internal-site-cli.md)

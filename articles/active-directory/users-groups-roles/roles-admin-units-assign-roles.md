@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen und Auflisten von Rollen im Bereich von Verwaltungseinheiten (Vorschau) – Azure Active Directory | Microsoft-Dokumentation
+title: 'Hinzufügen und Auflisten von Rollen im Bereich von Verwaltungseinheiten: Azure Active Directory | Microsoft-Dokumentation'
 description: Verwenden Sie Verwaltungseinheiten, um den Bereich der Rollenzuweisungen in Azure Active Directory einzuschränken
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/10/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475633"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450388"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Zuweisen von bereichsbezogenen Rollen zu einer Verwaltungseinheit
 
@@ -38,6 +38,12 @@ Lizenzadministrator  |  Kann nur in der Verwaltungseinheit Lizenzzuweisungen vor
 Kennwortadministrator  |  Kann nur in der zugewiesenen Verwaltungseinheit Kennwörter für Nicht-Administratoren und Kennwortadministratoren zurücksetzen.
 Benutzeradministrator  |  Kann nur in der zugewiesenen Verwaltungseinheit alle Aspekte von Benutzern und Gruppen verwalten, einschließlich der Kennwortzurücksetzung für Administratoren mit eingeschränkten Berechtigungen.
 
+## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Sicherheitsprinzipale, die einer der Verwaltungseinheit zugeordneten Rolle zugewiesen werden können
+Die folgenden Sicherheitsprinzipale können einer der Verwaltungseinheit zugeordneten Rolle zugewiesen werden:
+* Benutzer
+* Cloudgruppen, die einer Rolle zugewiesen werden können (Vorschau)
+* Dienstprinzipalname (Service Principal Name, SPN)
+
 ## <a name="assign-a-scoped-role"></a>Zuweisen einer bereichsbezogenen Rolle
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -50,15 +56,19 @@ Wählen Sie die zuzuweisende Rolle und dann **Zuweisungen hinzufügen** aus. Es 
 
 ![Auswählen der Rolle für den Bereich und dann Auswählen von „Zuweisungen hinzufügen“](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> Führen Sie zum Zuweisen einer Rolle für eine Verwaltungseinheit mithilfe von PIM die [hier](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope) beschriebenen Schritte aus.
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert werden.
@@ -67,7 +77,7 @@ Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert w
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +97,8 @@ Alle Rollenzuweisungen, die auf Verwaltungseinheiten bezogen sind, können im Ab
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert werden.
@@ -97,7 +107,7 @@ Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert w
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```

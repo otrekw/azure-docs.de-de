@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651988"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355736"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-Funktionen
 
@@ -147,9 +147,9 @@ Weitere Informationen finden Sie unter [Neuschreibung von HTTP-Headern und der U
 
 ## <a name="sizing"></a>Festlegen der Größe
 
-Die Standard_v2-SKU von Application Gateway kann für die automatische Skalierung oder für Bereitstellungen fester Größe konfiguriert werden. Diese SKU bietet keine verschiedenen Instanzgrößen. Weitere Informationen zur Leistung und zu den Preisen von v2 finden Sie unter [Automatische Skalierung von V2](application-gateway-autoscaling-zone-redundant.md) und [Preisgestaltung](understanding-pricing.md).
+Die Standard_v2-SKU von Application Gateway kann für die automatische Skalierung oder für Bereitstellungen fester Größe konfiguriert werden. Die v2-SKU bietet keine verschiedenen Instanzgrößen. Weitere Informationen zur Leistung und zu den Preisen von v2 finden Sie unter [Automatische Skalierung von V2](application-gateway-autoscaling-zone-redundant.md) und [Preisgestaltung](understanding-pricing.md).
 
-Application Gateway Standard wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
+Application Gateway Standard (v1) wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 
 Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
