@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987849"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827464"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die Sicherungen so konfigurieren, dass Sie für einen bis zu unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
@@ -92,7 +92,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 
     Während des Sicherungsvorgangs wird eine Fortschrittsmeldung angezeigt.
 
-Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine manuelle Sicherung initiieren.
+Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine manuelle Sicherung initiieren. Manuelle Sicherungen werden unbegrenzt aufbewahrt.
 
 <a name="automatedbackups"></a>
 
@@ -141,7 +141,7 @@ Führen Sie die Sicherungen wie gewohnt aus: [manuell](#create-a-manual-backup) 
 > [!NOTE]
 > Sie stellen Teilsicherungen Ihrer Website genauso wieder her, wie Sie eine [normale Sicherung wiederherstellen](web-sites-restore.md)würden. Der Wiederherstellungsvorgang wird richtig ausgeführt.
 > 
-> Bei der Wiederherstellung einer vollständigen Sicherung wird der gesamte Inhalt der Website durch den Inhalt der Sicherung ersetzt. Wenn eine Datei auf der Website vorhanden ist, aber nicht in der Sicherung, wird sie gelöscht. Wenn aber eine Teilsicherung wiederhergestellt wird, bleiben alle Inhalte von ausgeschlossenen Verzeichnissen bzw. alle ausgeschlossenen Dateien unverändert.
+> Bei der Wiederherstellung einer vollständigen Sicherung wird der gesamte Inhalt der Website durch den Inhalt der Sicherung ersetzt. Wenn eine Datei auf der Website vorhanden ist, aber nicht in der Sicherung, wird sie gelöscht. Wenn aber eine Teilsicherung wiederhergestellt wird, bleiben alle Inhalte von eingeschränkten Verzeichnissen bzw. alle eingeschränkten Dateien unverändert.
 > 
 
 

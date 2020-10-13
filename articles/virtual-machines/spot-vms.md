@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817183"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827822"
 ---
 # <a name="use-spot-vms-in-azure"></a>Verwenden von Spot-VMs in Azure
 
@@ -67,8 +67,22 @@ Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details
 
 Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
+Sie können auch Preisinformationen abfragen, indem Sie die [Azure-Einzelhandelspreis-API](/rest/api/cost-management/retail-prices/azure-retail-prices) verwenden, um Informationen zu Preisen von Spot-VMs abzufragen. `meterName` und `skuName` enthalten beide `Spot`.
 
 Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar (USD) mit bis zu 5 Dezimalstellen festlegen. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazitäten und Kontingente verfügbar sind.
+
+## <a name="pricing-and-eviction-history"></a>Preise und Entfernungsverlauf
+
+Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im Portal anzeigen. Wählen Sie **Preisverlauf anzeigen und Preise in Regionen in der Nähe vergleichen** aus, um eine Tabelle oder ein Diagramm der Preise für eine bestimmte Größe anzuzeigen.  Die Preis- und Entfernungsraten in den folgenden Abbildungen sind nur Beispiele. 
+
+**Diagramm**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="Screenshot: Regionsoptionen mit Unterschied in den Preisen und Entfernungsraten als Diagramm.":::
+
+**Tabelle**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="Screenshot: Regionsoptionen mit Unterschied in den Preisen und Entfernungsraten als Diagramm.":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
@@ -98,7 +112,7 @@ Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar
 **A:** Sie können Ihre Frage in [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Verwenden Sie die [Befehlszeilenschnittstelle](./linux/spot-cli.md), das [Portal](./windows/spot-portal.md), [ARM-Vorlagen](./linux/spot-template.md) oder [PowerShell](./windows/spot-powershell.md), um Spot-VMs bereitzustellen.
+Verwenden Sie die [Befehlszeilenschnittstelle](./linux/spot-cli.md), das [Portal](spot-portal.md), [ARM-Vorlagen](./linux/spot-template.md) oder [PowerShell](./windows/spot-powershell.md), um Spot-VMs bereitzustellen.
 
 Sie können auch eine [Skalierungsgruppe mit Spot-VM-Instanzen](../virtual-machine-scale-sets/use-spot.md) bereitstellen.
 

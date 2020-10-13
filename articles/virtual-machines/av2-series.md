@@ -7,27 +7,24 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437266"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650747"
 ---
 # <a name="av2-series"></a>Av2-Serie
 
 Die VMs der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden. Die Konfigurationen für CPU-Leistung und Arbeitsspeicher bei virtuellen Computern der Av2-Serie eignen sich am besten für Workloads der Einstiegsebene wie Entwicklung und Tests. Die Größe ist gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der für die Bereitstellung gewählten Hardware. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird. Einige mögliche Anwendungsfälle: Entwicklungs- und Testserver, Webserver mit geringem Datenverkehr, kleine bis mittelgroße Datenbanken, Proof of Concept und Coderepositorys.
 
-ACU: 100
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
-
+[ACU:](acu.md) 100<br>
+[Storage Premium:](premium-storage-performance.md) Nicht unterstützt <br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt <br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt <br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt <br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 <br>
+<br>
 
 | Size | Virtueller Kern | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s)
 |---|---|---|---|---|---|---|---|

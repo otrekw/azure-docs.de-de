@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 10/01/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419528"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650305"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Anmelden bei Azure Active Directory per E-Mail-Adresse als alternative Anmelde-ID (Vorschauversion)
 
@@ -28,6 +28,8 @@ Einige Organisationen sind aus folgenden Gründen nicht auf die Hybridauthentifi
 * Aufgrund von betrieblichen oder Compliancegründen möchte die Organisation den lokalen UPN nicht für die Anmeldung bei Azure AD verwenden.
 
 Zur Unterstützung der Umstellung auf die Hybridauthentifizierung können Sie nun Azure AD konfigurieren, damit Benutzer sich mit einer E-Mail-Adresse als alternativer Anmelde-ID in ihrer verifizierten Domäne anmelden können. Wenn *Contoso* beispielsweise in *Fabrikam*umbenannt wird, kann jetzt die E-Mail-Adresse als alternative Anmelde-ID anstelle des alten UPN `balas@contoso.com` verwendet werden. Für den Zugriff auf eine Anwendung oder Dienste melden sich Benutzer mit ihrer zugewiesenen E-Mail-Adresse wie `balas@fabrikam.com` bei Azure AD an.
+
+In diesem Artikel erfahren Sie, wie Sie die E-Mail-Adresse als alternative Anmelde-ID aktivieren und verwenden. Diese Funktion ist in der Azure AD Free Edition und höher verfügbar.
 
 > [!NOTE]
 > Die Anmeldung bei Azure AD mit der E-Mail-Adresse als alternativer Anmelde-ID ist ein öffentliches Vorschaufeature von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -45,6 +47,8 @@ Die typische Umgehung für dieses Problem besteht darin, den Azure AD-UPN auf di
 Ein anderer Ansatz besteht darin, die UPNs für Azure AD und die lokalen UPNs zu synchronisieren, damit sie denselben Wert aufweisen, und Azure AD dann so zu konfigurieren, dass Benutzer sich mit einer verifizierten E-Mail-Adresse in Azure AD anmelden können. Dazu definieren Sie mindestens eine E-Mail-Adresse im *ProxyAddresses*-Attribut des Benutzers im lokalen Verzeichnis. Das *ProxyAddresses*-Attribut wird dann mithilfe von Azure AD Connect automatisch mit Azure AD synchronisiert.
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
+
+Die Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternativer Anmelde-ID ist in der Azure AD Free Edition und höher verfügbar.
 
 In der aktuellen Vorschauversion gelten folgende Einschränkungen, wenn sich ein Benutzer mit einem Nicht-UPN-Wert (E-Mail-Adresse) als alternative Anmelde-ID anmeldet:
 

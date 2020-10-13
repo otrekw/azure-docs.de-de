@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555388"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826754"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrieren von Azure Active Directory mit E Sales Manager Remix
 
@@ -121,7 +121,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
 1. Wählen Sie unter **E Sales Manager Remix-Konfiguration** die Option **E Sales Manager Remix konfigurieren** aus.
 
-    ![E Sales Manager Remix-Konfiguration](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Der Screenshot zeigt den Abschnitt „E Sales Manager Remix-Konfiguration“ mit ausgewählter Option „E Sales Manager Remix konfigurieren“.](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     Das Fenster **Anmeldung konfigurieren** wird geöffnet.
 
