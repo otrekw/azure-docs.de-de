@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: df337736a676c40f1345310afb9a2e685ddc1d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0540fa9c7a29456aaf343adce83509b2d0e390e4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871320"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398919"
 ---
 # <a name="peering-service-connection"></a>Peering Service-Verbindung
 
@@ -29,7 +29,7 @@ Als Verbindung wird in der Regel ein logischer Satz von Informationen bezeichnet
 Der Kunde kann je nach Anforderung eine einzelne oder mehrere Verbindungen herstellen. Eine Verbindung wird auch als Einheit für die Telemetriesammlung verwendet. Um beispielsweise Telemetriewarnungen zu abonnieren, muss der Kunde die Verbindung definieren, die überwacht werden soll.
 
 > [!Note]
-> Wenn Sie sich für Peering Service registrieren, analysieren wir Ihre Windows- und Office 365-Telemetrie, um Latenzmessungen für die ausgewählten Präfixe bereitzustellen.
+> Wenn Sie sich für Peering Service registrieren, analysieren wir Ihre Windows- und Microsoft 365-Telemetrie, um Latenzmessungen für die ausgewählten Präfixe bereitzustellen.
 >Weitere Informationen zur Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).
 >
 

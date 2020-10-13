@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361569"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Sales Navigator für die automatische Benutzerbereitstellung
 
@@ -71,12 +71,12 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
     > [!NOTE]
     > Wenn die automatische Zuweisung von Lizenzen nicht aktiviert ist, bedeutet das, dass nur Benutzerdaten synchronisiert werden.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![Screenshot der globalen Einstellungen im LinkedIn-Kontocenter.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > Wenn die automatische Zuweisung von Lizenzen aktiviert ist, müssen Sie die Anwendungsinstanz und den Lizenztyp notieren. Lizenzen werden nach dem Prinzip „Wer zuerst kommt, malt zuerst“ zugewiesen, bis alle Lizenzen ausgeführt sind.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Screenshot der Seite „SCIM Setup“ (SCIM-Einrichtung).](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. Klicken Sie dann auf **Token generieren**. Ihr Zugriffstoken sollte unter dem Feld **Zugriffstoken** angezeigt werden.
 
@@ -90,7 +90,7 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 10. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![Screenshot der Seite für die LinkedIn Elevate-Bereitstellung.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
 
@@ -106,7 +106,7 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 14. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit LinkedIn Sales Navigator synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in LinkedIn Sales Navigator für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-    ![LinkedIn Sales Navigator-Bereitstellung](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Screenshot der Zuordnungen einschließlich der Attributzuordnungen.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. Um den Azure AD-Bereitstellungsdienst für LinkedIn Sales Navigator zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 

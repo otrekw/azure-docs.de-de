@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268722"
 ---
 # <a name="co-sell-partner-engagement"></a>Partner-Engagement für Co-Selling
 
@@ -36,7 +36,7 @@ Angebote, die den Status **Azure IP Co-Sell Incentivized** erhalten, profitieren
 * Die Marketplace-Servicegebühr wird von 20 % auf 10 % reduziert. Dieser Rabatt gilt für IaaS- oder SaaS-Angebote, die über den kommerziellen Marketplace verkauft werden. Weitere Informationen finden Sie unter [Reduzierte Servicegebühr](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee).
 * Cloud Solution Provider (CSP)-Partner erhalten für den Verkauf Ihrer SaaS- oder IaaS-Angebote einen Incentive von 10 %. Weitere Informationen über das CSP-Programm finden Sie unter [Cloud Solution Provider-Programm](cloud-solution-providers.md).
 * Der Verkauf Ihres Angebots über den kommerziellen Marketplace trägt zu den Azure Consumption Commitments der Kunden bei. Für berechtigte Kunden ist das Angebot im Azure-Portal mit **Für Azure-Vorteil berechtigt** gekennzeichnet. Weitere Informationen finden Sie unter [Vorteil eines Prepaidtarifs für den Azure-Verbrauch](azure-consumption-commitment-benefit.md).
-* Ihr Angebot erhält in den Storefronts den Badge **Bevorzugte Lösungen**. Der Badge bewirbt die Qualität und Leistung des Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen. Weitere Informationen finden Sie unter [Bevorzugte Lösungen in Microsoft AppSource und Azure Marketplace](preferred-solutions.md).
+* Angebote, die den Status **Azure IP Co-Sell Incentivized** oder **Business Applications – Co-Sell Incentivized** erreichen, erhalten das Badge **„Bevorzugte Lösungen“** in den Storefronts. Der Badge bewirbt die Qualität und Leistung eines Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen. Weitere Informationen finden Sie unter [Bevorzugte Lösungen in Microsoft AppSource und Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Veröffentlichungsschritte und -anforderungen für das Co-Selling
 

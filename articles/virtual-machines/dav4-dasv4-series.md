@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2548f002b2006b5d241c323ae880704bbe95301e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6ab532e3d824aa857a35bf2898aea2efba28df71
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649923"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653025"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4- und Dasv4-Serie
 
@@ -20,15 +20,13 @@ Die Dav4-Serie und die Dasv4-Serie sind neue Größen, bei denen der AMD-Prozess
 
 ## <a name="dav4-series"></a>Dav4-Serie
 
-ACU: 230 – 260
-
-Storage Premium Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung: Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU:](acu.md) 230 – 260<br>
+[Storage Premium:](premium-storage-performance.md) Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Um SSD Premium zu verwenden, verwenden Sie die Größen der Dasv4-Serie. Für Dasv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav4-Serie.
 
@@ -37,7 +35,7 @@ Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 | Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000/46/23   | 2 | 1000 |
 | Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000/93/46   | 2 | 2000 |
 | Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12000/187/93 | 4 | 4000 |
-| Standard_D16a_v4|  16 | 64 | 400 |32  | 24000/375/187 |8 | 8\.000 |
+| Standard_D16a_v4|  16 | 64 | 400 |32  | 24000/375/187 |8 | 8.000 |
 | Standard_D32a_v4|  32 | 128| 800 | 32 | 48000/750/375 |8 | 16000 |
 | Standard_D48a_v4| 48 | 192| 1200 | 32 | 96000/1000/500 | 8 | 24.000 |
 | Standard_D64a_v4| 64 | 256 | 1600 | 32 | 96000/1000/500 | 8 | 30.000 |
@@ -45,15 +43,13 @@ Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 
 ## <a name="dasv4-series"></a>Dasv4-Serie
 
-ACU:  230 – 260
-
-Storage Premium Unterstützt
-
-Storage Premium-Zwischenspeicherung: Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU:](acu.md) 230 – 260<br>
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+<br>
 
 Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Dasv4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.
 
@@ -62,7 +58,7 @@ Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 74
 | Standard_D2as_v4|2|8|16|4|4000/32 (50)|3200/48|2 | 1000 |
 | Standard_D4as_v4|4|16|32|8|8000/64 (100)|6400/96|2 | 2000 |
 | Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4 | 4000 |
-| Standard_D16as_v4|16|64|128|32|32.000/255 (400)|25600/384|8 | 8\.000 |
+| Standard_D16as_v4|16|64|128|32|32.000/255 (400)|25600/384|8 | 8.000 |
 | Standard_D32as_v4|32|128|256|32|64.000/510 (800)|51200/768|8 | 16000 |
 | Standard_D48as_v4|48|192|384|32|96.000/1.020 (1.200)|76.800/1.148|8 | 24.000 |
 | Standard_D64as_v4|64|256|512|32|128.000/1.020 (1.600)|80000/1200|8 | 30.000 | 

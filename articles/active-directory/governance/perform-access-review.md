@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265680"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
@@ -37,7 +37,7 @@ Sie können die Zugriffsüberprüfung über die Benachrichtigungs-E-Mail oder di
 
 1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachfolgend sehen Sie eine Beispiel-E-Mail, die zur Überprüfen des Zugriffs auf eine Gruppe auffordert.
 
-    ![Beispiel-E-Mail von Microsoft zum Überprüfen des Zugriffs auf eine Gruppe](./media/perform-access-review/access-review-email.png)
+    ![Screenshot mit einer Beispiel-E-Mail von Microsoft zum Überprüfen des Zugriffs auf eine Gruppe](./media/perform-access-review/access-review-email.png)
 
 1. Klicken Sie auf den Link **Start review** (Jetzt überprüfen), um die Zugriffsüberprüfung zu öffnen.
 
@@ -54,7 +54,7 @@ Sie können die Zugriffsüberprüfung über die Benachrichtigungs-E-Mail oder di
         > [!NOTE]
         > Wenn die Kachel **Zugriffsüberprüfungen** nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
 
-        ![Liste mit ausstehenden Zugriffsüberprüfungen für Apps und Gruppen](./media/perform-access-review/access-reviews-list.png)
+        ![Screenshot mit den ausstehenden Zugriffsüberprüfungen für Apps und Gruppen](./media/perform-access-review/access-reviews-list.png)
 
     1. Klicken Sie bei der Zugriffsüberprüfung, die Sie durchführen möchten, auf den Link **Überprüfung starten**.
 
@@ -99,7 +99,7 @@ Wir geben Ihnen Empfehlungen, die Sie mit einem einzigen Klick annehmen können,
 
 1. Klicken Sie in der blauen Leiste am unteren Rand der Seite auf **Empfehlungen akzeptieren**.
 
-    ![Öffnen der Liste mit den Zugriffsüberprüfungen mit Anzeige der Schaltfläche „Empfehlungen akzeptieren“](./media/perform-access-review/accept-recommendations.png)
+    ![Screenshot der Liste mit den offenen Zugriffsüberprüfungen und ausgewählter Schaltfläche „Empfehlungen akzeptieren“](./media/perform-access-review/accept-recommendations.png)
 
     Eine Zusammenfassung der Empfehlungen wird angezeigt.
 
