@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931372"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650288"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Einschränkungen in Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -26,6 +26,8 @@ Dieser Artikel beschreibt Einschränkungen im Azure Database for MySQL Flexible 
 > Wenn Sie nach Minimal-/Maximalwerten für Serverparameter wie `max_connections` und `innodb_buffer_pool_size` suchen, finden Sie diese Informationen nun im Artikel zu Serverparametern <!-- **[server parameters](./concepts-server-parameters.md)** --> .
 
 Azure Database für MySQL unterstützt das Anpassen einiger Serverparameter. Die Minimal- und Maximalwerte einiger Parameter (z. B. `max_connections`, `join_buffer_size`, `query_cache_size`) wird durch die Computeebene und die Computegröße des Servers bestimmt. Weitere Informationen zu diesen Einschränkungen <!-- [server parameters](./concepts-server-parameters.md)--> finden Sie unter den Serverparameterkonzepten.
+
+Kennwort-Plug-ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
 
 ## <a name="storage-engines"></a>Speicher-Engines
 

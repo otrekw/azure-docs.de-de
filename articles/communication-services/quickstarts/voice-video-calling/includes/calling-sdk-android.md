@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931645"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779373"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Fügen Sie dann in der Datei „build.gradle“ auf Modulebene die folgenden Zei
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Tätigen eines ausgehenden Anrufs und Teilnehmen an einem Gruppenanruf
 
-Um einen Anruf zu erstellen und zu starten, müssen Sie die `CallClient.call()`-Methode aufrufen und den `Identifier` des/der Angerufenen angeben.
-Um an einem Gruppenanruf teilzunehmen, müssen Sie die `CallClient.join()`-Methode aufrufen und die groupId angeben. Gruppen-IDs müssen das GUID- oder UUID-Format haben.
+Um einen Anruf zu erstellen und zu starten, müssen Sie die `CallAgent.call()`-Methode aufrufen und den `Identifier` des/der Angerufenen angeben.
+Um an einem Gruppenanruf teilzunehmen, müssen Sie die `CallAgent.join()`-Methode aufrufen und die groupId angeben. Gruppen-IDs müssen das GUID- oder UUID-Format haben.
 
 Erstellung und Start des Anrufs erfolgen synchron. Die Anrufinstanz ermöglicht Ihnen das Abonnieren aller Ereignisse im Rahmen des Anrufs.
 
@@ -106,10 +106,10 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Tätigen eines 1:1-Anrufs mit Videokamera
+### <a name="place-a-11-call-with-video-camera"></a>Tätigen eines 1:1-Anrufs mit Videokamera
 > [!WARNING]
 > Derzeit wird nur ein ausgehender lokaler Videostream unterstützt. Um einen Anruf mit Video zu tätigen, müssen Sie die lokalen Kameras mit der `getCameraList`-API von `deviceManager` aufzählen.
 Sobald Sie eine gewünschte Kamera ausgewählt haben, erzeugen Sie damit eine `LocalVideoStream`-Instanz und übergeben diese an `videoOptions` als Element im `localVideoStream`-Array an eine `call`-Methode.
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>Pushbenachrichtigung
+## <a name="push-notifications"></a>Pushbenachrichtigungen
 
 ### <a name="overview"></a>Übersicht
-Mobile Pushbenachrichtigungen sind die Popupbenachrichtigungen, die Sie auf einem Mobilgerät erhalten. Bei Anruffunktionen konzentrieren wir uns auf VoIP-Pushbenachrichtigungen (Voice over Internet Protocol). Wir bieten Ihnen die Möglichkeit, sich für Pushbenachrichtigungen zu registrieren, diese zu bearbeiten und ihre Registrierung aufzuheben.
+Mobile Pushbenachrichtigungen sind die Popupbenachrichtigungen, die auf mobilen Geräten angezeigt werden. Bei Anruffunktionen konzentrieren wir uns auf VoIP-Pushbenachrichtigungen (Voice over Internet Protocol). Wir werden uns für Pushbenachrichtigungen registrieren, Pushbenachrichtigungen bearbeiten und dann die Registrierung von Pushbenachrichtigungen aufheben.
 
-### <a name="prerequisite"></a>Voraussetzungen
+### <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Tutorial setzt voraus, dass Sie ein Firebase-Konto mit aktiviertem Firebase Cloud Messaging (FCM) eingerichtet haben und dass Ihre FCM-Instanz mit einer Azure Notification Hub-Instanz (ANH) verbunden ist. Weitere Informationen hierzu finden Sie unter [Verbinden von Firebase mit Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started).
-Außerdem geht das Tutorial davon aus, dass Sie zur Entwicklung Ihrer Anwendung mindestens die Android Studio-Version 3.6 einsetzen.
+Um diesen Abschnitt abzuschließen, erstellen Sie ein Firebase-Konto, und aktivieren Sie Cloud Messaging (FCM). Stellen Sie sicher, dass Firebase Cloud Messaging mit einer Azure Notification Hub-Instanz (ANH) verbunden ist. Anweisungen hierzu finden Sie unter [Verbinden von Firebase mit Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started).
+In diesem Abschnitt wird außerdem davon ausgegangen, dass Sie zur Entwicklung Ihrer Anwendung Android Studio Version 3.6 oder höher verwenden.
 
-Für die Android-Anwendung ist eine Reihe von Berechtigungen erforderlich, um Benachrichtigungen von FCM empfangen zu können. Fügen Sie in Ihrer Datei „AndroidManifest.xml“ direkt nach dem Tag *<manifest ...>* oder unter dem Tag *</application>* den folgenden Berechtigungssatz hinzu.
+Für die Android-Anwendung sind eine Reihe von Berechtigungen erforderlich, um Benachrichtigungen von Firebase Cloud Messaging empfangen zu können. Fügen Sie in Ihrer Datei `AndroidManifest.xml` direkt nach dem Tag *<manifest ...>* oder unter dem Tag *</application>* den folgenden Berechtigungssatz hinzu.
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ Für die Android-Anwendung ist eine Reihe von Berechtigungen erforderlich, um Be
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>Registrieren für Pushbenachrichtigungen
+### <a name="register-for-push-notifications"></a>Registrieren für Pushbenachrichtigungen
 
-- Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung registerPushNotification() für eine *CallAgent*-Instanz mit einem Geräteregistrierungstoken aufrufen.
+Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung `registerPushNotification()` für eine *CallAgent*-Instanz mit einem Geräteregistrierungstoken aufrufen.
 
-- Abrufen des Geräteregistrierungstokens
-1. Stellen Sie sicher, dass Sie die Firebase-Clientbibliothek zur Datei *build.gradle* Ihres Anwendungsmoduls hinzufügen, indem Sie dem Abschnitt *dependencies* die folgenden Zeilen hinzufügen, sofern noch nicht vorhanden:
+Um das Geräteregistrierungstoken zu erhalten, fügen Sie die Firebase-Clientbibliothek zur Datei *build.gradle* Ihres Anwendungsmoduls hinzu, indem Sie die folgenden Zeilen im Abschnitt `dependencies` hinzufügen, sofern noch nicht vorhanden:
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. Fügen Sie in der Datei *build.gradle* auf Projektebene im Abschnitt *dependencies* Folgendes hinzu, sofern noch nicht vorhanden:
+Fügen Sie in der Datei *build.gradle* auf Projektebene im Abschnitt `dependencies` Folgendes hinzu, sofern noch nicht vorhanden:
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. Fügen Sie das folgende Plug-In am Anfang der Datei hinzu, sofern noch nicht vorhanden:
+Fügen Sie das folgende Plug-In am Anfang der Datei hinzu, sofern noch nicht vorhanden:
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. Wählen Sie auf der Symbolleiste *Jetzt synchronisieren* aus.
+Wählen Sie auf der Symbolleiste *Jetzt synchronisieren* aus. Fügen Sie den folgenden Codeausschnitt hinzu, um das Geräteregistrierungstoken abzurufen, das von der Firebase Cloud Messaging-Clientbibliothek für die Clientanwendungsinstanz generiert wird. Stellen Sie sicher, dass Sie die unten aufgeführten Importe zum Header der Hauptaktivität für die Instanz hinzufügen. Sie sind erforderlich, damit der Ausschnitt das Token abruft.
 
-5. Fügen Sie den folgenden Codeausschnitt hinzu, um das Geräteregistrierungstoken abzurufen, das von der FCM-Clientbibliothek für die Clientanwendungsinstanz generiert wird. 
-- Fügen Sie diese Importe beispielsweise dem Header der Main-Activity hinzu. Sie sind erforderlich, damit der Ausschnitt das Token abruft.
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- Fügen Sie diesen Ausschnitt hinzu, um das Token abzurufen.
+
+Fügen Sie diesen Ausschnitt hinzu, um das Token abzurufen:
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. Registrieren Sie das Geräteregistrierungstoken bei der Communication Services-Clientbibliothek „Calling“ für Pushbenachrichtigungen zu eingehenden Anrufen.
+Registrieren Sie das Geräteregistrierungstoken bei der Communication Services-Clientbibliothek „Calling“ für Pushbenachrichtigungen zu eingehenden Anrufen.
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -218,10 +220,9 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>Behandlung von Pushbenachrichtigungen
 
-- Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent*-Instanz mit Nutzdaten auf.
+Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent*-Instanz mit Nutzdaten auf.
 
-1. Um die Nutzdaten von FCM zu erhalten, sind die folgenden Schritte erforderlich:
-- Erstellen Sie einen neuen Dienst (File > New > Service > Service), der die Firebase-Clientbibliotheksklasse *FirebaseMessagingService* erweitert, und stellen Sie sicher, dass Sie die *onMessageReceived*-Methode überschreiben. Diese Methode ist der Ereignishandler, der aufgerufen wird, wenn FCM die Pushbenachrichtigung an die Anwendung übermittelt.
+Um die Nutzlast von Firebase Cloud Messaging abzurufen, beginnen Sie mit der Erstellung eines neuen Diensts (Datei > Neu > Dienst > Dienst), der die Firebase-Clientbibliotheksklasse *FirebaseMessagingService* erweitert, und setzen Sie dann die `onMessageReceived`-Methode außer Kraft. Diese Methode ist der Ereignishandler, der aufgerufen wird, wenn Firebase Cloud Messaging die Pushbenachrichtigung an die Anwendung übermittelt.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- Fügen Sie auch der Datei „AndroidManifest.xml“ im Tag <application> die unten angegebene Dienstdefinition hinzu.
+Fügen Sie der Datei `AndroidManifest.xml` im Tag <application> die unten angegebene Dienstdefinition hinzu:
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- Sobald die Nutzdaten abgerufen wurden, können sie an die *Communication Services*-Clientbibliothek übergeben werden, um durch Aufrufen der *handlePushNotification*-Methode für eine *CallAgent*-Instanz verarbeitet zu werden.
+Sobald die Nutzdaten abgerufen wurden, können sie an die Communication Services-Clientbibliothek übergeben werden, um durch Aufrufen der `handlePushNotification`-Methode für eine `CallAgent`-Instanz verarbeitet zu werden.
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 Wenn die Verarbeitung der Pushbenachrichtigung erfolgreich ist und alle Ereignishandler ordnungsgemäß registriert sind, löst die Anwendung ein Klingeln aus.
 
-### <a name="unregister-push-notification"></a>Aufheben der Registrierung der Pushbenachrichtigung
+### <a name="unregister-push-notifications"></a>Aufheben der Registrierung der Pushbenachrichtigungen
 
-- Anwendungen können die Registrierung der Pushbenachrichtigung jederzeit aufheben. Rufen Sie einfach die `unregisterPushNotification()`-Methode für CallAgent auf.
+Anwendungen können die Registrierung der Pushbenachrichtigung jederzeit aufheben. Rufen Sie die Methode `unregisterPushNotification()` für callAgent auf, um die Registrierung aufzuheben.
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 Sie können auf Anrufeigenschaften zugreifen und während eines Anrufs verschiedene Vorgänge ausführen, um Einstellungen für Video und Audio zu verwalten.
 
 ### <a name="call-properties"></a>Anrufeigenschaften
-* Ruft die eindeutige ID für diesen Anruf ab.
+
+Ruft die eindeutige ID für diesen Anruf ab:
+
 ```java
 String callId = call.getCallId();
 ```
 
-* Um mehr über andere Anrufteilnehmer zu erfahren, sehen Sie sich die `remoteParticipant`-Sammlung für die `call`-Instanz an:
+Um mehr über andere Anrufteilnehmer zu erfahren, sehen Sie sich die `remoteParticipant`-Sammlung für die `call`-Instanz an:
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* Die Identität des Anrufers bei einem eingehenden Anruf.
+Die Identität des Anrufers bei einem eingehenden Anruf:
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* Ruft den Zustand des Anrufs ab.
+Ruft den Zustand des Anrufs ab: 
+
 ```java
 CallState callState = call.getState();
 ```
+
 Gibt eine Zeichenfolge zurück, die den aktuellen Zustand eines Anrufs darstellt:
 * None: ursprünglicher Anrufzustand
 * Incoming: gibt an, dass ein Anruf eingeht, der entweder angenommen oder abgelehnt werden muss
@@ -312,39 +320,45 @@ Gibt eine Zeichenfolge zurück, die den aktuellen Zustand eines Anrufs darstellt
 * Disconnected: der Endzustand des Anrufs
 
 
-* Um zu erfahren, warum ein Anruf beendet wurde, überprüfen Sie die `callEndReason`-Eigenschaft.
-Sie enthält Code/SubCode (TODO-Link zur Dokumentation).
+Um zu erfahren, warum ein Anruf beendet wurde, überprüfen Sie die `callEndReason`-Eigenschaft. Sie enthält Code/Subcode: 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* Um festzustellen, ob der aktuelle Anruf eingehend ist, prüfen Sie die `isIncoming`-Eigenschaft:
+Um festzustellen, ob der aktuelle Anruf eingehend ist, prüfen Sie die `isIncoming`-Eigenschaft:
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  Um festzustellen, ob das aktuelle Mikrofon stummgeschaltet ist, prüfen Sie die `muted`-Eigenschaft:
+Um festzustellen, ob das aktuelle Mikrofon stummgeschaltet ist, prüfen Sie die `muted`-Eigenschaft:
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* Um aktive Videostreams zu prüfen, sehen Sie sich die `localVideoStreams`-Sammlung an:
+Um aktive Videostreams zu prüfen, sehen Sie sich die `localVideoStreams`-Sammlung an:
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>Stummschalten und Aufheben der Stummschaltung
+
 Zum Stummschalten oder Aufheben der Stummschaltung des lokalen Endpunkts können Sie die asynchronen APIs `mute` und `unmute` verwenden:
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>Starten und Beenden des Sendens von lokalem Video
-Um ein Video zu starten, müssen Sie die Kameras mit der `getCameraList`-API für das `deviceManager`-Objekt aufzählen.
-Erstellen Sie dann eine neue Instanz von `LocalVideoStream` zur Übergabe der gewünschten Kamera, und übergeben Sie sie in der `startVideo`-API als Argument.
+
+Um ein Video zu starten, müssen Sie die Kameras mit der `getCameraList`-API für das `deviceManager`-Objekt aufzählen. Erstellen Sie dann eine neue Instanz von `LocalVideoStream` zur Übergabe der gewünschten Kamera, und übergeben Sie sie in der `startVideo`-API als Argument:
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 Sobald Sie erfolgreich mit dem Senden von Video beginnen, wird eine `LocalVideoStream`-Instanz der `localVideoStreams`-Sammlung für die Anrufinstanz hinzugefügt.
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 Um das lokale Video anzuhalten, übergeben Sie die `localVideoStream`-Instanz, die in der `localVideoStreams`-Sammlung verfügbar ist:
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -383,9 +399,9 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 Einem Remoteteilnehmer sind eine Reihe von Eigenschaften und Sammlungen zugeordnet:
 
 * Ruft den Bezeichner dieses Remoteteilnehmers ab.
-„Identity“ ist einer der „Identifier“-Typen.
+„Identity“ ist einer der „Identifier“-Typen
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * Ruft den Zustand dieses Remoteteilnehmers ab.
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 Um einen `RemoteVideoStream` von einem Remoteteilnehmer zu rendern, müssen Sie ein `OnVideoStreamsUpdated`-Ereignis abonnieren.
-Innerhalb des Ereignisses zeigt die Änderung der `isAvailable`-Eigenschaft in TRUE an, dass der Remoteteilnehmer gerade einen Stream sendet. Sobald dies geschieht, erstellen Sie eine neue Instanz von `Renderer`. Erstellen Sie dann eine neue `RendererView` unter Verwendung der asynchronen `createView`-API, und fügen Sie `view.target` an beliebiger Stelle auf der Benutzeroberfläche Ihrer Anwendung an.
+
+Innerhalb des Ereignisses zeigt der Wechsel der `isAvailable`-Eigenschaft zu „true“ an, dass der Remoteteilnehmer gerade einen Stream sendet. Sobald dies geschieht, erstellen Sie eine neue Instanz eines `Renderer`, dann erstellen Sie eine neue `RendererView` mithilfe der asynchronen `createView`-API, und fügen Sie `view.target` an beliebiger Stelle in der Benutzeroberfläche Ihrer Anwendung an.
+
 Immer wenn sich die Verfügbarkeit eines Remotestreams ändert, können Sie wählen, ob Sie den gesamten Renderer, eine bestimmte `RendererView` zerstören oder sie behalten möchten, was jedoch zur Anzeige leerer Videobilder führt.
 
 ```java

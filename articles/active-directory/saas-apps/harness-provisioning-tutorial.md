@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305631"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Harness für die automatische Benutzerbereitstellung
 
@@ -126,7 +126,7 @@ Führen Sie zum Konfigurieren der automatischen Benutzerbereitstellung für Harn
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. Geben Sie im Feld **Mandanten-URL** die URL **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** ein.  
+   a. Geben Sie im Feld **Mandanten-URL** die URL **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** ein. Wenn Sie in Harness angemeldet sind, können Sie Ihre Harness-Konto-ID über die URL in Ihrem Browser abrufen.
    b. Geben Sie im Feld **Geheimes Token** den Wert des SCIM-Authentifizierungstokens ein, den Sie in Schritt 6 des Abschnitts „Einrichten von Harness für die Bereitstellung“ gespeichert haben.  
    c. Um sicherzustellen, dass Azure AD eine Verbindung mit Harness herstellen kann, wählen Sie **Verbindung testen** aus. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr Harness-Konto über *Administratorberechtigungen* verfügt, und versuchen Sie es noch mal.
 
@@ -172,7 +172,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3751560125ea8ac6cc00ed63521bff30b751e688
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009595"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631377"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis bietet einen auf der Open-Source-Software [Redis](https://redis.io/) basierenden In-Memory-Datenspeicher. Redis verbessert die Leistung und Skalierbarkeit einer Anwendung, die intensiven Gebrauch von Back-End-Datenspeichern macht. Mit Redis können große Mengen von Anwendungsanforderungen verarbeitet werden, indem häufig verwendete Daten im Arbeitsspeicher des Servers behalten werden, um schnelle Schreib- und Lesevorgänge zu ermöglichen. Redis stellt eine kritische Datenspeicherlösung mit geringer Wartezeit und hohem Durchsatz für moderne Anwendungen bereit.
@@ -31,12 +31,20 @@ Azure Cache for Redis verbessert die Anwendungsleistung durch die Unterstützung
 | Einreihen von Aufträgen in eine Warteschlange und Message Queuing | Anwendungen fügen Aufgaben häufig einer Warteschlange hinzu, wenn die Ausführung der mit der Anforderung verbundenen Vorgänge länger dauert. Zeitintensive Vorgänge werden einer Warteschlange hinzugefügt und der Reihe nach verarbeitet – nicht selten von einem anderen Server.  Diese Methode der Verzögerung von Arbeit wird als Aufgaben-Queuing bezeichnet. Azure Cache for Redis bietet eine verteilte Warteschlange, um dieses Muster in Ihrer Anwendung zu ermöglichen.|
 | Verteilte Transaktionen | Anwendungen benötigen mitunter eine Reihe von Befehlen für einen Back-End-Datenspeicher, um einen einzelnen atomischen Vorgang auszuführen. Alle Befehle müssen erfolgreich ausgeführt oder jeweils mittels Rollback in den ursprünglichen Zustand zurückversetzt werden. Azure Cache for Redis unterstützt das Ausführen eines Batchs von Befehlen als einzelne [Transaktion](https://redis.io/topics/transactions). |
 
+## <a name="redis-versions"></a>Redis-Versionen
+
+Azure Cache for Redis unterstützt Redis Version 4.x und als Vorschau Version 6.0. Wir haben uns entschieden, Redis 5.0 zu überspringen, um Ihnen die neueste Version zu bieten. Zuvor hat Azure Cache for Redis nur eine einzelne Redis-Version bereitgestellt. Es wird ein neueres Hauptreleaseupgrade und mindestens eine ältere stabile Version bereitgestellt. Sie können [auswählen, welche Version](cache-how-to-version.md) am besten für Ihre Anwendung geeignet ist.
+
+> [!NOTE]
+> Redis 6.0 befindet sich zurzeit in der Vorschau. [Wenden Sie sich an uns](mailto:azurecache@microsoft.com), wenn Sie daran interessiert sind. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+
 ## <a name="service-tiers"></a>Dienstebenen
 Azure Cache for Redis ist in folgenden Tarifen verfügbar:
 
 | Tarif | BESCHREIBUNG |
 |---|---|
-Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere Arbeitsspeichergrößen (250 MB–53 GB) und eignet sich perfekt für Entwicklungs-/Testworkloads und nicht kritische Workloads. Für den Basic-Tarif steht keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) zur Verfügung. |
+| Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere Arbeitsspeichergrößen (250 MB–53 GB) und eignet sich perfekt für Entwicklungs-/Testworkloads und nicht kritische Workloads. Für den Basic-Tarif steht keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) zur Verfügung. |
 | Standard | Ein replizierter Cache in einer von Azure verwalteten Konfiguration mit zwei Knoten (primärer Knoten und Replikat) und [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) für Hochverfügbarkeit. |
 | Premium | Die Dienstebene „Premium“ ist die Ebene für Unternehmen. Caches im Premium-Tarif unterstützen mehr Funktionen und bieten einen höheren Durchsatz bei niedrigeren Latenzen. Caches im Premium-Tarif werden auf leistungsfähigerer Hardware bereitgestellt und bieten im Vergleich zu den Tarifen „Basic“ und „Standard“ eine bessere Leistung. Dieser Vorteil bedeutet, dass der Durchsatz für einen Cache derselben Größe in der Premium-Dienstebene höher ist als in der Standard-Dienstebene. |
 

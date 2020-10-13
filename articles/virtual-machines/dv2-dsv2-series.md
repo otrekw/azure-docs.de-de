@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ede5b84620217e472d930d86eaebfaad2397ca6b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648427"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649693"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2- und DSv2-Serie
 
@@ -22,15 +22,13 @@ Die Serien Dv2 und Dsv2, Nachfolger der ursprünglichen D-Serie, sind mit schnel
 
 Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt.
 
-ACU: 210–250
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 210–250<br>
+[Storage Premium](premium-storage-performance.md): Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration](maintenance-and-updates.md): Unterstützt<br>
+[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
@@ -44,21 +42,19 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt und verwendet Storage Premium.
 
-ACU: 210–250
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU](acu.md): 210–250<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration](maintenance-and-updates.md): Unterstützt<br>
+[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1 und 2<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
-| Standard_DS1_v2 | 1  | 3,5 | 7   | 4  | 4\.000/32 (43)    | 3200/48   | 2|750   |
-| Standard_DS2_v2 | 2  | 7   | 14  | 8  | 8\.000/64 (86)    | 6400/96   | 2|1500  |
-| Standard_DS3_v2 | 4  | 14  | 28  | 16 | 16.000/128 (172) | 12800/192 | 4|3000  |
+| Standard_DS1_v2 | 1  | 3,5 | 7   | 4  | 4000/32 (43)    | 3200/48   | 2|750   |
+| Standard_DS2_v2 | 2  | 7   | 14  | 8  | 8000/64 (86)    | 6400/96   | 2|1500  |
+| Standard_DS3_v2 | 4  | 14  | 28  | 16 | 16000/128 (172) | 12800/192 | 4|3000  |
 | Standard_DS4_v2 | 8  | 28  | 56  | 32 | 32.000/256 (344) | 25600/384 | 8|6000  |
 | Standard_DS5_v2 | 16 | 56  | 112 | 64 | 64.000/512 (688) | 51200/768 | 8|12000 |
 

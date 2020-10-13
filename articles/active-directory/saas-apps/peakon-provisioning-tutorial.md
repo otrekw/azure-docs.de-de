@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543668"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304665"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Peakon für die automatische Benutzerbereitstellung
 
@@ -56,11 +56,11 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 2.  Wählen Sie **Integrationen** aus.
     
-    ![Peakon-Mitarbeiterbereitstellung](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![Screenshot der Konfigurationsoptionen mit aufgerufener Option „Integrationen“](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
 3.  Aktivieren Sie **Mitarbeiterbereitstellung**.
 
-    ![Peakon-Mitarbeiterbereitstellung](media/Peakon-provisioning-tutorial/peakon05.png)
+    ![Screenshot des Abschnitts „Mitarbeiterbereitstellung“ mit aufgerufener Option „Aktivieren“](media/Peakon-provisioning-tutorial/peakon05.png)
 
 4.  Kopieren Sie die Werte für **SCIM 2.0-URL** und **OAuth-Bearertoken**. Diese Werte werden in das Feld **Mandanten-URL** und **Geheimes Token** auf der Registerkarte „Bereitstellung“ Ihrer Peakon-Anwendung im Azure-Portal eingegeben.
 
@@ -105,11 +105,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **SCIM 2.0-URL** und **OAuth-Bearertoken** ein, die zuvor unter **Mandanten-URL** bzw. **Geheimes Token** abgerufen wurden. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Peakon herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Peakon-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
