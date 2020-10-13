@@ -6,17 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 75299ab83543b0f28f4cf8f02e41b692c32d19ed
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 5a310dca40b8f5fea074c0cd3c75751d62ccb8f5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297894"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
 In Azure Cosmos DB können Sie die Gültigkeitsdauer (Time to Live, TTL) auf der Containerebene konfigurieren oder auf der Elementebene außer Kraft setzen, nachdem Sie sie für den Container festgelegt haben. Die Gültigkeitsdauer für einen Container kann über das Azure-Portal oder mithilfe der sprachspezifischen SDKs konfiguriert werden. Die Außerkraftsetzung der Gültigkeitsdauer auf der Elementebene kann mithilfe der SDKs konfiguriert werden.
+
+> Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](https://docs.microsoft.com/azure/cosmos-db/synapse-link) ermöglicht, klicken Sie [hier](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl).
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Aktivieren der Gültigkeitsdauer für einen Container über das Azure-Portal
 

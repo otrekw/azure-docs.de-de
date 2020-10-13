@@ -5,12 +5,12 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331929"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
 
@@ -26,7 +26,7 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
 2. Öffnen Sie Ihr Data Lake Analytics-Konto, und wählen Sie im Abschnitt __Überwachung__ die Option **Diagnoseprotokolle** aus. Wählen Sie anschließend __Diagnose aktivieren__.
 
-    ![Aktivieren der Diagnose zum Sammeln von Überwachungs- und Anforderungsprotokollen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Der Screenshot zeigt, dass die Aktion „Diagnoseprotokolle“ aktiviert und die Aktion „Diagnosen zum Erfassen der folgenden Protokolle aktivieren“ hervorgehoben ist.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. Geben Sie unter __Diagnoseeinstellungen__ einen __Namen__ für diese Protokollierungskonfiguration ein, und wählen Sie dann Protokollierungsoptionen aus.
 

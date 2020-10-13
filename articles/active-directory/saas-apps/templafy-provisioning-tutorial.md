@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: af75c80c4380754ef1b0020108d3b6ad953f242f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98eae8b63b9eaaa8cff800bade091f4b5d36d005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255688"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Templafy für die automatische Benutzerbereitstellung
 
@@ -58,11 +58,11 @@ Bevor Sie Templafy für die automatische Benutzerbereitstellung mit Azure AD ko
 
 2. Klicken Sie auf **Authentication Method** (Authentifizierungsmethode).
 
-    ![Templafy: Hinzufügen von SCIM](media/templafy-provisioning-tutorial/image01.png)
+    ![Screenshot des Abschnitts der Templafy-Verwaltung mit hervorgehobener Option „Authentifizierungsmethode“.](media/templafy-provisioning-tutorial/image01.png)
 
 3. Kopieren Sie den Wert von **SCIM Api Key** (SCIM-API-Schlüssel). Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ der Templafy-Anwendung in das Feld **Geheimes Token** eingegeben.
 
-    ![Templafy: Hinzufügen von SCIM](media/templafy-provisioning-tutorial/image02.png)
+    ![Screenshot des SCIM-API-Schlüssels.](media/templafy-provisioning-tutorial/image02.png)
 
 ## <a name="add-templafy-from-the-gallery"></a>Hinzufügen von Templafy aus dem Katalog
 
@@ -105,11 +105,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://scim.templafy.com/scim` ein. Geben Sie den Wert des **SCIM-API-Schlüssels** ein, den Sie zuvor unter **geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Templafy herstellen kann. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr Templafy-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
