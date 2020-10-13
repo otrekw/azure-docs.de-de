@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299909"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -179,7 +179,7 @@ Nach der Erstkonfiguration von Azure AD Connect durch den Assistenten können Si
 
 Auf der nächsten Seite werden Sie aufgefordert, die Anmeldeinformationen für Azure AD anzugeben.
 
-![Stellen Sie eine Verbindung mit Azure AD her.](./media/plan-connect-user-signin/changeusersignin2.png)
+![Screenshot, der zeigt, wo Sie die Anmeldeinformationen für Azure AD eingeben müssen](./media/plan-connect-user-signin/changeusersignin2.png)
 
 Wählen Sie auf der Seite **Benutzeranmeldung** die gewünschte Benutzeranmeldung aus.
 

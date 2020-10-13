@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003693"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825312"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis
 
@@ -111,6 +111,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 - [Warum ist bei dem Versuch, meinen verknüpften Cache zu löschen, ein Fehler beim Vorgang aufgetreten?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [Welche Region sollte ich für meinen sekundären verknüpften Cache verwenden?](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [Wie funktioniert ein Failover zum sekundären verknüpften Cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Kann ich die Firewall mit Georeplikation konfigurieren?](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Kann ich die Georeplikation bei einem Cache mit Standard- oder Basic-Tarif verwenden?
 
@@ -145,8 +146,8 @@ Ja. Die Georeplikation von Caches in VNETs wird mit Einschränkungen unterstütz
 - Es wird Unterstützung für die Georeplikation zwischen Caches im selben VNET geboten.
 - Die Georeplikation zwischen Caches in unterschiedlichen VNETs wird ebenfalls unterstützt.
   - Wenn sich die VNETs in derselben Region befinden, können Sie sie per [VNET-Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) oder per [VPN Gateway-VNET-zu-VNET-Verbindung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V) verbinden.
-  - Falls sich die VNETs in unterschiedlichen Regionen befinden, wird die Georeplikation per VNET-Peering aufgrund einer Einschränkung beim internen Lastenausgleich im Tarif „Basic“ nicht unterstützt. Weitere Informationen zu Einschränkungen beim VNET-Peering finden Sie im Artikel zu den [Anforderungen und Einschränkungen beim VNET-Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Die empfohlene Lösung ist die Verwendung einer VPN Gateway-VNET-zu-VNET-Verbindung.
-
+  - Wenn sich die VNETs in verschiedenen Regionen befinden, wird Georeplikation über VNET-Peering unterstützt, aber eine Client-VM in VNET 1 (Region 1) kann aufgrund einer Einschränkung mit internen Lastausgleichsmodulenvom Typ „Basic“ nicht über ihren DNS-Namen auf den Cache in VNET 2 (Region 2) zugreifen. Weitere Informationen zu Einschränkungen beim VNET-Peering finden Sie im Artikel zu den [Anforderungen und Einschränkungen beim VNET-Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Die empfohlene Lösung ist die Verwendung einer VPN Gateway-VNET-zu-VNET-Verbindung.
+  
 Mit [dieser Azure-Vorlage](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/) können Sie schnell zwei georeplizierte Caches in einem VNET bereitstellen, indem Sie eine VPN Gateway-VNET-zu-VNET-Verbindung verwenden.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Was ist der Replikationszeitplan für die Redis-Georeplikation?
@@ -185,7 +186,12 @@ Das automatische Failover über Azure-Regionen hinweg wird für georeplizierte C
 
 Heben Sie zuerst die Verknüpfung der Caches auf, um ein vom Kunden initiiertes Failover zu starten. Ändern Sie anschließend Ihren Redis-Client, um den Verbindungsendpunkt des (zuvor verknüpften) sekundären Caches zu verwenden. Wenn die Verknüpfung beider Caches aufgehoben wurde, wird der sekundäre Cache wieder zu einem Cache mit regulärem Lese-/Schreibzugriff und akzeptiert direkte Anforderungen von Redis-Clients.
 
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Kann ich eine Firewall mit Georeplikation konfigurieren?
+
+Ja, Sie können eine [Firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) mit Georeplikation konfigurieren. Damit Georeplikation mit einer Firewall funktioniert, müssen Sie sicherstellen, dass die IP-Adresse des sekundären Caches den Firewallregeln des primären Caches hinzugefügt wird.
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie mehr über Azure Cache for Redis-Features.
 
 * [Azure Cache for Redis-Dienstebenen](cache-overview.md#service-tiers)

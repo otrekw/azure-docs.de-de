@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure F
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299267"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
@@ -33,6 +33,7 @@ Mit einer Speicherklasse wird festgelegt, wie eine Azure-Dateifreigabe erstellt 
 * *Standard_ZRS:* zonenredundanter Standardspeicher (ZRS)
 * *Standard_RAGRS:* Georedundanter Standardspeicher mit Lesezugriff (Standard-RA-GRS)
 * *Premium_LRS:* lokal redundanter Premium-Speicher (LRS)
+* *Premium_ZRS:* zonenredundanter Premiumspeicher (ZRS)
 
 > [!NOTE]
 > Azure Files unterstützt Storage Premium in AKS-Clustern, auf denen Kubernetes 1.13 oder höher ausgeführt wird. Die kleinstmögliche Dateifreigabe ist 100 GB.

@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443856"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824147"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -38,6 +38,9 @@ Wenn die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja*
  ![Screenshot der Konnektivität mit Verweigern des Zugriffs auf das öffentliche Netzwerk][2]
 
 Bei allen Versuchen, die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja** festzulegen, ohne dass auf dem logischen Server private Endpunkte vorhanden sind, wird etwa folgende Fehlermeldung angezeigt:  
+
+> [!NOTE]
+> Legen Sie zum Definieren von Firewallregeln für virtuelle Netzwerke auf einem logischen Server, der bereits mit privaten Endpunkten konfiguriert wurde, die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Nein** fest.
 
 ```output
 Error 42102

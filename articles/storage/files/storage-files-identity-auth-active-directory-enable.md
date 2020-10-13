@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb408c762c33e4d146a2f0ef36f32e525b3859bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563402"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758267"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Übersicht – lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben
 
@@ -24,7 +24,7 @@ Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, u
 
 - AD DS-Identitäten, die für die lokale AD DS-Authentifizierung von Azure Files verwendet werden, müssen mit Azure AD synchronisiert sein. Kennworthashsynchronisierung ist optional. 
 - Unterstützt von Azure-Dateisynchronisierung verwaltete Azure-Dateifreigaben.
-- Unterstützt Kerberos-Authentifizierung mit AD mit RC4-HMAC- und AES 256-Verschlüsselung. AES 128-Kerberos-Verschlüsselung wird noch nicht unterstützt.
+- Unterstützt Kerberos-Authentifizierung mit AD mit RC4-HMAC- und [AES 256-Verschlüsselung](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). AES 128-Kerberos-Verschlüsselung wird noch nicht unterstützt.
 - Unterstützt Einmaliges Anmelden.
 - Wird nur auf Clients unterstützt, die auf Betriebssystemversionen nach Windows 7 oder Windows Server 2008 R2 ausgeführt werden.
 - Wird nur für die AD-Gesamtstruktur unterstützt, in der das Speicherkonto registriert ist. Sie können auf Azure-Dateifreigaben standardmäßig nur mit den AD DS-Anmeldeinformationen einer einzelnen Gesamtstruktur zugreifen. Wenn Sie von einer anderen Gesamtstruktur aus auf Ihre Azure-Dateifreigabe zugreifen müssen, stellen Sie sicher, dass Sie die richtige Gesamtstrukturvertrauensstellung konfiguriert haben. Weitere Informationen finden Sie unter [FAQ](storage-files-faq.md#ad-ds--azure-ad-ds-authentication).
@@ -54,7 +54,9 @@ Bevor Sie die AD DS-Authentifizierung für Azure-Dateifreigaben aktivieren, müs
 
     Stellen Sie sicher, dass das Speicherkonto mit den Dateifreigaben nicht bereits für Azure AD DS-Authentifizierung konfiguriert ist. Wenn die Azure Files-Azure AD DS-Authentifizierung für das Speicherkonto aktiviert ist, muss diese vor der Umstellung auf eine lokale AD DS-Authentifizierung deaktiviert werden. Dies bedeutet, dass vorhandene ACLs, die in der Azure AD DS-Umgebung konfiguriert sind, für die ordnungsgemäße Berechtigungserzwingung neu konfiguriert werden müssen.
 
-    Wenn beim Herstellen einer Verbindung mit Azure Files Probleme auftreten, können Sie das [Problembehandlungstool verwenden, das für Azure Files-Einbindungsfehler unter Windows veröffentlicht wurde](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Außerdem stehen [Anleitungen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) zur Umgehung von Szenarien bereit, wenn Port 445 blockiert ist. 
+
+    Wenn beim Herstellen einer Verbindung mit Azure Files Probleme auftreten, können Sie das [Problembehandlungstool verwenden, das für Azure Files-Einbindungsfehler unter Windows veröffentlicht wurde](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Außerdem stehen [Anleitungen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) zur Umgehung von Szenarien bereit, wenn Port 445 blockiert ist. 
+
 
 - Nehmen Sie alle relevanten Netzwerkkonfigurationen vor der Aktivierung und Konfiguration der AD DS-Authentifizierung für Ihre Azure-Dateifreigaben vor. Weitere Informationen finden Sie unter [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md).
 

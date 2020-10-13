@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308434"
 ---
 # <a name="azure-private-dns-faq"></a>Häufig gestellte Fragen zu privatem Azure-DNS
 
@@ -43,6 +43,14 @@ Ja. Sie müssen über eine Schreibvorgangsberechtigung für die virtuellen Netzw
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn Sie den virtuellen Computer löschen?
 
 Ja. Wenn Sie einen virtuellen Computer in einem verknüpften virtuellen Netzwerk mit aktivierter automatischer Registrierung löschen, werden die registrierten Einträge automatisch gelöscht.
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>Ich habe das Betriebssystem in meinem virtuellen Computer so umkonfiguriert, dass es einen neuen Hostnamen oder eine neue statische IP-Adresse aufweist. Warum sehe ich diese Änderung nicht auch in der privaten Zone?
+
+Die Datensätze der privaten Zone werden vom Azure-DHCP-Dienst aufgefüllt. Registrierungsnachrichten von Clients werden ignoriert. Wenn Sie die DHCP-Clientunterstützung in der VM durch Konfigurieren einer statischen IP-Adresse deaktiviert haben, werden Änderungen des Hostnamens oder der statischen IP-Adresse in der VM nicht in der Zone widergespiegelt.
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>Ich habe auf meinem virtuellen Windows-Computer ein bevorzugtes DNS-Suffix konfiguriert. Warum sind meine Datensätze immer noch in der mit dem virtuellen Netzwerk verbundenen Zone registriert?
+
+Der Azure DHCP-Dienst ignoriert jedes DNS-Suffix, wenn er die private DNS-Zone registriert. Wenn Ihr virtueller Computer z. B. für `contoso.com` als primäres DNS-Suffix konfiguriert ist, das virtuelle Netzwerk jedoch mit der privaten DNS-Zone `fabrikam.com` verbunden ist, wird die Registrierung des virtuellen Computers in der privaten DNS-Zone `fabrikam.com` angezeigt.
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>Kann ein automatisch registrierter Eintrag für einen virtuellen Computer in einer privaten Zone aus einem verknüpften virtuellen Netzwerk manuell gelöscht werden?
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 165a2c6221c8d3c14f71134deef962d0859bb438
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9a06dea64ffb348477308979fa07c0e2ce822b0c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816710"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825402"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Bereitstellen von Spot-VMs mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -64,8 +64,25 @@ az vm list \
    --output table
 ```
 
+## <a name="simulate-an-eviction"></a>Simulieren einer Entfernung
+
+Sie können die Entfernung einer Spot-VM [simulieren](/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
+
+Ersetzen Sie Folgendes durch Ihre Informationen: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 **Nächste Schritte**
 
-Sie können eine Spot-VM auch mit [Azure PowerShell](../windows/spot-powershell.md), dem [Portal](../windows/spot-portal.md) oder einer [Vorlage](spot-template.md) erstellen.
+Sie können eine Spot-VM auch mit [Azure PowerShell](../windows/spot-powershell.md), dem [Portal](../spot-portal.md) oder einer [Vorlage](spot-template.md) erstellen.
+
+Fragen Sie Preisinformationen ab, indem Sie die [Azure-Einzelhandelspreis-API](/rest/api/cost-management/retail-prices/azure-retail-prices) verwenden, um Informationen zu Preisen von Spot-VMs zu erhalten. `meterName` und `skuName` enthalten beide `Spot`.
 
 Informationen zu eventuell auftretenden Fehlern finden Sie unter [Fehlercodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
