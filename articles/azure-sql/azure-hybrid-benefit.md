@@ -9,14 +9,14 @@ ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f43d03f722617e88e7a00e71798351c88ce10e98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327594"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure-Hybridvorteil: Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Bei der bereitgestellten Computeebene des vCore-basierten Kaufmodells können Si
 > [!NOTE]
 > Um zu Azure-Hybridvorteil zu wechseln, ist keine Downtime erforderlich.
 
-![Preise](./media/azure-hybrid-benefit/pricing.png)
+![Preisstruktur für virtuelle Kerne](./media/azure-hybrid-benefit/pricing.png)
 
 ## <a name="choose-a-license-model"></a>Auswählen eines Lizenzmodells
 
