@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259423"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -88,23 +88,8 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
 
-Wenn Sie die Umleitungs-URL Ihres Identitätsanbieters konfigurieren, geben Sie `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` an. Ersetzen Sie **tenant** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) und **policyId** durch Ihre Richtlinien-ID (z.B. b2c_1_policy). Der Umleitungs-URI muss klein geschrieben sein. Fügen Sie eine Umleitungs-URL für alle Richtlinien hinzu, die die Anmeldung des Identitätsanbieters verwenden.
-
-Achten Sie bei Verwendung der Domäne **b2clogin.com** anstelle von **login.microsoftonline.com** darauf, b2clogin.com anstelle von login.microsoftonline.com zu verwenden.
+Wenn Sie den Umleitungs-URI Ihres Identitätsanbieters konfigurieren, geben Sie `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp` an. Ersetzen Sie `{tenant-name}` durch den Namen Ihres Mandanten (z. B. „contosob2c“) und `{policy-id}` durch den Bezeichner Ihrer Richtlinie (z. B. „b2c_1a_policy“). Der Umleitungs-URI muss klein geschrieben sein. Fügen Sie eine Umleitungs-URL für alle Richtlinien hinzu, die die Anmeldung des Identitätsanbieters verwenden.
 
 Beispiele:
 
 - [Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien](identity-provider-twitter-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

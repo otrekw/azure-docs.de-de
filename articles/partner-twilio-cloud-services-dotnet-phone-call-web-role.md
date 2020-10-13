@@ -1,6 +1,6 @@
 ---
 title: Tätigen eines Telefonanrufs über Twilio (.NET) | Microsoft Docs
-description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. In .NET geschriebene Codebeispiele.
+description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen. In .NET geschriebene Codebeispiele.
 services: ''
 documentationcenter: .net
 author: mimckitt
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268484"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Tätigen eines Telefonanrufs mithilfe von Twilio in einer Webrolle auf Azure
 In diesem Leitfaden wird veranschaulicht, wie Sie von einer in Azure gehosteten Webseite einen Anruf über Twilio tätigen können. Die resultierende Anwendung fordert den Benutzer auf, einen Anruf mit der angegebenen Nummer und Nachricht zu tätigen, wie im folgenden Screenshot dargestellt.
