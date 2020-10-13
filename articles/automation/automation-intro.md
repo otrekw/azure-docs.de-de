@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Updateverwaltu
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448056"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715967"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
 
@@ -64,7 +64,7 @@ Azure Automation besteht aus einem Satz von gemeinsam genutzten Ressourcen, die 
 
 ### <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Azure Automation unterstützt die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um den Zugriff auf das Automation-Konto und die zugehörigen Ressourcen zu steuern. Weitere Informationen zur Konfiguration der rollenbasierten Zugriffssteuerung für Ihr Automation-Konto, Ihre Runbooks und Ihre Aufträge finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
+Azure Automation unterstützt die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf das Automation-Konto und die zugehörigen Ressourcen zu steuern. Weitere Informationen zur Konfiguration von Azure RBAC für Ihr Automation-Konto, Ihre Runbooks und Ihre Aufträge finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
 
 ### <a name="source-control-integration"></a>Integration der Quellcodeverwaltung
 
@@ -86,7 +86,7 @@ Azure Automation unterstützt die Verwaltung des gesamten Lebenszyklus Ihrer Inf
 * **Ermitteln von Änderungen**: Identifizieren Sie Änderungen, die zu Fehlkonfigurationen führen können, und verbessern Sie die Konformität Ihrer Abläufe.
 * **Überwachen**: Ermitteln Sie Änderungen auf Computern, die Probleme verursachen, und beheben Sie diese, oder nutzen Sie die Eskalation an Verwaltungssysteme.
 * **Schützen**: Versetzen Sie Computer in Quarantäne, für die Sicherheitswarnungen ausgelöst werden. Legen Sie Anforderungen auf Gastsystemen fest.
-* **Steuern**: Richten Sie die rollenbasierte Zugriffssteuerung für Teams ein. Stellen Sie ungenutzte Ressourcen wieder her.
+* **Steuern**: Richten Sie Azure RBAC für Teams ein. Stellen Sie ungenutzte Ressourcen wieder her.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

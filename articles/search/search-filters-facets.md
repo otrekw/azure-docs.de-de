@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002622"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740869"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Erstellen eines Facettenfilters in der kognitiven Azure-Suche 
 
@@ -29,7 +29,8 @@ Die Facettennavigation wird zum selbstgesteuerten Filtern von Abfrageergebnissen
 
 Facets sind dynamisch und werden für eine Abfrage zurückgegeben. Suchantworten verfügen über die Facetkategorien, die zum Navigieren durch die Ergebnisse verwendet werden. Wenn Sie mit Facets nicht vertraut sind, hilft Ihnen die Darstellung einer Struktur für die Facetnavigation im folgenden Beispiel weiter.
 
-  ![Screenshot eines Suchdialogfelds mit gefilterten Suchergebnissen, die nach Geschäftstitel sortiert sind. Ein Pfeil weist darauf hin, dass es sich bei den Ergebnissen um Facets handelt, die in einer Struktur für die Facetnavigation angezeigt werden.](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="Gefilterte Suchergebnisse":::
+„Screenshot eines Suchdialogfelds mit gefilterten Suchergebnissen, die nach Geschäftstitel sortiert sind. Ein Pfeil weist darauf hin, dass es sich bei den Ergebnissen um Facets handelt, die in einer Struktur für die Facetnavigation angezeigt werden.“:::image-end:::
 
 Benötigen Sie ausführlichere Informationen zur Facetnavigation? Sie finden diese Informationen unter [Implementieren der Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md).
 
