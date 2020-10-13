@@ -8,33 +8,38 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898518"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536629"
 ---
 # <a name="densenet"></a>DenseNet
 
 In diesem Artikel wird beschrieben, wie Sie mit dem **DenseNet**-Modul im Azure Machine Learning-Designer ein Bildklassifizierungsmodell mithilfe des DenseNet-Algorithmus erstellen.  
 
-Dieser Klassifizierungsalgorithmus ist eine überwachte Lernmethode und erfordert ein Dataset mit Bezeichnungen. Weitere Anweisungen zum Abrufen eines Bildverzeichnisses mit Bezeichnungen finden Sie im Modul [Konvertieren in ein Bildverzeichnis](convert-to-image-directory.md). Sie können das Modell trainieren, indem Sie das Modell und das Bildverzeichnis mit Bezeichnungen als Eingaben für [Trainieren eines PyTorch-Modells](train-pytorch-model.md) angeben. Mit dem trainierten Modell können Sie anschließend Werte für neue Eingabebeispiele mithilfe von [Bewerten eines Bildmodells](score-image-model.md) vorhersagen.
+Dieser Klassifizierungsalgorithmus ist eine überwachte Lernmethode und erfordert ein Imageverzeichnis mit Bezeichnungen. 
+
+> [!NOTE]
+> Dieses Modul unterstützt nicht das Dataset mit Bezeichnungen, das aus *Datenbeschriftung* in Studio generiert wurde, sondern nur das Bildverzeichnis mit Bezeichnungen, das aus dem Modul [In Bildverzeichnis konvertieren](convert-to-image-directory.md) generiert wurde. 
+
+Sie können das Modell trainieren, indem Sie das Modell und das Bildverzeichnis mit Bezeichnungen als Eingaben für [Trainieren eines PyTorch-Modells](train-pytorch-model.md) angeben. Mit dem trainierten Modell können Sie anschließend Werte für neue Eingabebeispiele mithilfe von [Bewerten eines Bildmodells](score-image-model.md) vorhersagen.
 
 ### <a name="more-about-densenet"></a>Weitere Informationen zu DenseNet
 
-Weitere Details finden Sie unter [Dicht verbundene Convolutional Networks](https://arxiv.org/abs/1608.06993).
+Weitere Informationen zu DenseNet finden Sie in der Forschungsarbeit [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993).
 
 ## <a name="how-to-configure-densenet"></a>Konfigurieren von DenseNet
 
 1.  Fügen Sie Ihrer Pipeline im Designer das **DenseNet**-Modul hinzu.  
 
-2.  Geben Sie als **Modellnamen** den Namen einer bestimmten DenseNet-Struktur ein. Es stehen verschiedene unterstützte Strukturen zur Wahl, ‚densenet121‘, ‚densenet161‘, ‚densenet169‘, ‚densenet201‘.
+2.  Geben Sie als **Modellnamen** den Namen einer bestimmten DenseNet-Struktur ein. Es stehen verschiedene unterstützte Strukturen zur Wahl, „densenet121“, „densenet161“, „densenet169“, „densenet201“.
 
 3.  Geben Sie unter **Vortrainiert** an, ob ein in ImageNet vortrainiertes Modell verwendet werden soll. Bei Auswahl dieser Option können Sie das Modell basierend auf dem ausgewählten vortrainierten Modell optimieren. Wird die Auswahl aufgehoben, können Sie von Grund auf neu trainieren.
 
-4.  Geben Sie unter **Memory efficient** (arbeitsspeichereffizient) an, ob Prüfpunktausführung verwendet werden soll, die viel arbeitsspeichereffizienter, aber langsamer ist. Weitere Informationen finden Sie unter https://arxiv.org/pdf/1707.06990.pdf.
+4.  Geben Sie unter **Memory efficient** (arbeitsspeichereffizient) an, ob Prüfpunktausführung verwendet werden soll, die viel arbeitsspeichereffizienter, aber langsamer ist. Weitere Informationen finden Sie in der Forschungsarbeit [Memory-Efficient Implementation of DenseNets](https://arxiv.org/pdf/1707.06990.pdf).
 
 5.  Verbinden Sie die Ausgabe des **DenseNet**-Moduls, des Trainings- und Überprüfungsmoduls für das Bilddataset mit [Trainieren eines Pytorch-Modells](train-pytorch-model.md). 
 

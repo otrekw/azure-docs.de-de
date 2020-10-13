@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799195"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537003"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
@@ -59,7 +59,7 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 4. Geben Sie den Namen der App ein, für die das App-Kennwort benötigt wird, und klicken Sie dann auf **Weiter**.
 
-    ![Seite „App-Kennwort“ mit dem Namen der App](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Screenshot der Seite „App-Kennwort“ mit eingegebenem Namen der App.](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. Kopieren Sie den Text aus dem Feld **Kennwort**, fügen Sie ihn in den Bereich „Kennwort“ der App ein (in diesem Beispiel Outlook 2010), und klicken Sie auf **Fertig**.
 

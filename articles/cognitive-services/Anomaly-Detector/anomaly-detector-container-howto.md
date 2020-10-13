@@ -1,33 +1,38 @@
 ---
-title: Installieren und Ausführen von Containern für die Verwendung der Anomalieerkennungs-API
+title: Installieren und Ausführen von Docker-Containern für die Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Container für die Verwendung der erweiterten Algorithmen der Anomalieerkennungs-API installieren und verwenden.
+description: Verwenden Sie die Algorithmen der Anomalieerkennungs-API, um mithilfe eines Docker-Containers lokal Anomalien in Ihren Daten zu finden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: lokal, Docker, Container, Streaming, Algorithmen
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903552"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459999"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Installieren und Ausführen von Containern für die Anomalieerkennung 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Installieren und Ausführen von Docker-Containern für die Anomalieerkennungs-API 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-Die Anomalieerkennung umfasst die folgenden Funktionen für Container:
+Mithilfe von Containern können Sie die Anomalieerkennungs-API in Ihrer eigenen Umgebung verwenden. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für die Anomalieerkennung herunterladen, installieren und ausführen.
 
-| Funktion | Features |
-|--|--|
-| Anomalieerkennung | <li> Erkennt Anomalien in Echtzeit <li> Erkennt Anomalien für das ganze Dataset als Batch <li> Erkennt Trendänderungspunkte in Ihrem Dataset als Batch<li> Leitet den normalen zu erwartenden Bereich Ihrer Daten ab <li> Unterstützt die Anpassung der Anomalieerkennung an Ihre Daten |
+Die Anomalieerkennung bietet einen einzelnen Docker-Container für die lokale Verwendung der API. Verwenden Sie den Container für Folgendes:
+* Verwenden der Algorithmen der Anomalieerkennung für Ihre Daten
+* Überwachen von Streamingdaten und Erkennen von Anomalien in Echtzeit, wenn sie auftreten
+* Erkennen von Anomalien für das ganze Dataset als Batch 
+* Erkennen von Trendänderungspunkten in Ihrem Dataset als Batch
+* Anpassen der Sensitivität des Algorithmus für die Anomalieerkennung, damit er besser auf Ihre Daten ausgerichtet ist
 
-Ausführliche Informationen zu den APIs finden Sie unter:
+Ausführliche Informationen zur API finden Sie unter:
 * [Erfahren Sie mehr über den Anomalieerkennungs-API-Dienst.](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
