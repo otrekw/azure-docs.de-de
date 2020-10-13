@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85701f3d073b8f743ddf48910822f152420c4fc0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001381"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714807"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Blob Storage
 
@@ -66,7 +66,7 @@ Weitere Informationen zu den Skalierbarkeitszielen für den Warteschlangendienst
 Wenn Sie die maximal zulässige Anzahl von Speicherkonten für eine bestimmte Kombination aus Abonnement und Region fast erreicht haben, sollten Sie Ihr Szenario einschätzen und ermitteln, ob eine der folgenden Bedingungen zutrifft:
 
 - Verwenden Sie Speicherkonten zum Speichern nicht verwalteter Datenträger und zum Hinzufügen dieser Datenträger zu Ihren virtuellen Computern? Für dieses Szenario empfiehlt Microsoft verwaltete Datenträger. Verwaltete Datenträger werden automatisch skaliert, ohne dass einzelne Speicherkonten erstellt und verwaltet werden müssen. Weitere Informationen finden Sie unter [Einführung in verwaltete Azure-Datenträger](../../virtual-machines/managed-disks-overview.md).
-- Verwenden Sie ein Speicherkonto pro Kunde, um Daten zu isolieren? Für dieses Szenario empfiehlt Microsoft anstelle eines vollständigen Speicherkontos die Verwendung eines Blobcontainers für jeden Kunden. Azure Storage ermöglicht Ihnen jetzt die Zuweisung von Azure-Rollen pro Container. Weitere Informationen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](../common/storage-auth-aad-rbac-portal.md).
+- Verwenden Sie ein Speicherkonto pro Kunde, um Daten zu isolieren? Für dieses Szenario empfiehlt Microsoft anstelle eines vollständigen Speicherkontos die Verwendung eines Blobcontainers für jeden Kunden. Azure Storage ermöglicht Ihnen jetzt die Zuweisung von Azure-Rollen pro Container. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../common/storage-auth-aad-rbac-portal.md).
 - Verwenden Sie mehrere Speicherkonten zum horizontalen Partitionieren, um eingehenden und ausgehenden Datenverkehr, E/A-Vorgänge pro Sekunde (IOPS) oder die Kapazität zu erhöhen? In diesem Szenario empfiehlt Microsoft, höhere Grenzwerte für Speicherkonten zu nutzen, um möglichst die Anzahl der Speicherkonten zu verringern, die für Ihre Workload erforderlich sind. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/), wenn Sie höhere Grenzwerte für Ihr Speicherkonto benötigen. Weitere Informationen finden Sie unter [Ankündigung größerer Speicherkonten mit höherer Skalierung](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapazitäts- und Transaktionsziele
