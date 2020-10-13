@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 4e7d75bc1a2acd805e573d4c6ad80f9892045551
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5cd35b896419dd30a8a4a18056ac1ccd48d7df6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331708"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for MySQL – Flexible Server über die Azure CLI
 
@@ -33,17 +33,17 @@ In Azure Database for MySQL Flexible Server können Sie den Server nur während 
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte öffnen, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie die Blöcke anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um sie auszuführen.
 
-Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diesen Schnellstart mindestens Version 2.0 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diesen Schnellstart mindestens Version 2.0 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen sich mit dem Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mit dem Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **ID**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **ID**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -56,7 +56,7 @@ Sie können den `az mysql flexible-server`-Befehl verwenden, um die Flexible Ser
 > Mit diesem Befehl wird das Subnetz an **Microsoft.DBforMySQL/flexibleServers** delegiert. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for MySQL Flexible Servers genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden.
 >
 
-In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollständige Liste der konfigurierbaren CLI-Parameter. In den folgenden Befehlen können Sie beispielsweise optional die Ressourcengruppe festlegen.
+Die vollständige Liste von konfigurierbaren CLI-Parametern finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI. In den folgenden Befehlen können Sie beispielsweise optional die Ressourcengruppe festlegen.
 
 - Erstellen einer Flexible Server-Instanz mithilfe des virtuellen Standardnetzwerks/-subnetzes mit dem Standard Adresspräfix
     ```azurecli-interactive
@@ -77,7 +77,7 @@ In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollst�
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
     ```-->
-In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollständige Liste der konfigurierbaren CLI-Parameter.
+Die vollständige Liste von konfigurierbaren CLI-Parametern finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

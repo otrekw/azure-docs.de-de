@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527308"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534198"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -26,6 +26,8 @@ Ein Log Analytics-Arbeitsbereich bietet Folgendes:
 * Einen geografischen Standort für die Speicherung von Daten.
 * Datenisolation durch Gewähren von Zugriffsrechten für verschiedene Benutzer gemäß einer unserer empfohlenen Entwurfsstrategien.
 * Bereich für die Konfiguration von Einstellungen wie [Tarif](./manage-cost-storage.md#changing-pricing-tier), [Aufbewahrung](./manage-cost-storage.md#change-the-data-retention-period) und [Datenobergrenzen](./manage-cost-storage.md#manage-your-maximum-daily-data-volume).
+
+Arbeitsbereiche werden in physischen Clustern gehostet. Diese Cluster werden standardmäßig vom System erstellt und verwaltet. Bei Kunden, die mehr als 4 TB pro Tag erfassen, wird davon ausgegangen, dass sie eigene dedizierte Cluster für ihre Arbeitsbereiche erstellen, um so eine bessere Kontrolle und höhere Erfassungsrate zu ermöglichen.
 
 Dieser Artikel bietet eine ausführliche Übersicht über die Überlegungen zu Entwurf und Migration, eine Übersicht über die Zugriffssteuerung und Informationen zu den von uns empfohlenen Entwurfsimplementierungen für Ihre IT-Organisation.
 
@@ -125,27 +127,15 @@ Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, di
 
 Informationen zum Ändern des Zugriffssteuerungsmodus über das Portal, mit PowerShell oder mithilfe einer Resource Manager-Vorlage finden Sie unter [Konfigurieren des Zugriffssteuerungsmodus](manage-access.md#configure-access-control-mode).
 
-## <a name="ingestion-volume-rate-limit"></a>Ratenlimit für Datenerfassungsvolumen
+## <a name="scale-and-ingestion-volume-rate-limit"></a>Begrenzung der Skalierung und Erfassungsvolumenrate
 
-Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Mit der Volumenratenbegrenzung sollen Azure Monitor-Kunden vor plötzlichen Erfassungsspitzen in einer mehrinstanzenfähigen Umgebung isoliert werden. Ein Standardschwellenwert für die Erfassungsvolumenrate von 500 MB (komprimiert) ist in Arbeitsbereichen definiert. Dies entspricht ungefähr **6 GB/Minute** für nicht komprimierte Daten. Die tatsächliche Größe kann je nach Protokolllänge und Komprimierungsverhältnis zwischen Datentypen variieren. Die Volumenratenbegrenzung gilt für alle erfassten Daten, unabhängig davon, ob sie von Azure-Ressourcen mithilfe von [Diagnoseeinstellungen](diagnostic-settings.md), von der [Datensammler-API](data-collector-api.md) oder von Agents gesendet werden.
+Azure Monitor ist ein Hochleistungsdatendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Petabytes von Daten senden. Arbeitsbereiche sind in Hinsicht auf ihren Speicherplatz nicht begrenzt und können auf Petabytes von Daten anwachsen. Es ist nicht erforderlich, Arbeitsbereiche aufgrund der Skalierung aufzuteilen.
 
-Wenn Sie Daten an einen Arbeitsbereich mit einer Volumenrate senden, die mehr als 80 Prozent des im Arbeitsbereich konfigurierten Schwellenwerts beträgt, wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die erfasste Volumenrate höher ist als der Schwellenwert, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die Erfassungsvolumenrate weiterhin den Schwellenwert überschreitet oder Sie ihn wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung anfordern, indem Sie eine Supportanfrage öffnen. 
+Um Azure Monitor-Kunden und die Back-End-Infrastruktur zu schützen und zu isolieren, gibt es eine Standardbegrenzung für die Erfassungsrate, die vor Spitzen und Überflutungen schützen soll. Der Standardwert für die Ratenbegrenzung liegt bei **6 GB pro Minute** und ist so ausgelegt, dass eine normale Erfassung möglich ist. Weitere Informationen zur Messung der Erfassungsvolumenbegrenzung finden Sie unter [Azure Monitor-Diensteinschränkungen](../service-limits.md#data-ingestion-volume-rate).
 
-Möchten Sie eine Benachrichtigung erhalten, wenn Sie sich der Volumenratenbegrenzung in Ihrem Arbeitsbereich nähern oder wenn diese Begrenzung erreicht wird, erstellen Sie eine [Protokollwarnungsregel](alerts-log.md). Verwenden Sie dazu die folgende Abfrage mit einer Warnungslogik basierend auf der Anzahl von Ergebnissen größer null, mit einem Evaluierungszeitraum von fünf Minuten und einer Häufigkeit von fünf Minuten.
+Kunden, die weniger als 4 TB pro Tag erfassen, erreichen diese Grenzwerte in der Regel nicht. Kunden, bei denen höhere Erfassungsvolumen oder Spitzen während des normalen Betriebs auftreten, sollten eine Wechsel zu [dedizierten Clustern](../log-query/logs-dedicated-clusters.md) in Betracht ziehen, da dann der Grenzwert für die Erfassungsrate erhöht werden kann.
 
-Die Rate für das Erfassungsvolumen hat 80 Prozent des Schwellenwerts erreicht:
-```Kusto
-Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
-```
-
-Die Rate für das Erfassungsvolumen hat den Schwellenwert erreicht:
-```Kusto
-Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
-```
+Wenn die Erfassungsratenbegrenzung aktiviert ist oder 80 % des Schwellenwerts erreicht sind, wird der Tabelle *Vorgang* in Ihrem Arbeitsbereich ein Ereignis hinzugefügt. Es wird empfohlen, diese zu überwachen und eine Warnung zu erstellen. Weitere Informationen dazu finden Sie unter [Rate für Datenerfassungsvolumen](../service-limits.md#data-ingestion-volume-rate).
 
 
 ## <a name="recommendations"></a>Empfehlungen

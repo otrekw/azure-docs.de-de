@@ -3,12 +3,12 @@ title: Azure Event Grid-Abonnements über das Portal
 description: In diesem Artikel wird beschrieben, wie Sie Event Grid Abonnements für die unterstützten Quellen mithilfe des Azure-Portals erstellen, z. B. für Azure Blob Storage.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308502"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Abonnieren von Ereignissen über das Portal
 
@@ -40,7 +40,7 @@ Befolgen Sie die folgenden Schritte, um ein Event Grid-Abonnement für jede der 
 
 1. Stellen Sie zusätzliche Details zum Ereignisabonnement bereit, wie etwa den Endpunkt für die Behandlung von Ereignissen sowie einen Abonnementnamen.
 
-   ![Abonnementdetails bereitstellen](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Screenshot, der die Abschnitte „Endpunktdetails“ und „Ereignisabonnementdetails“ mit einem eingegebenen Wert für den Abonnementnamen zeigt.](./media/subscribe-through-portal/provide-subscription-details.png)
 
 1. Wählen Sie **Zusätzliche Features** aus, um die Verarbeitung unzustellbarer Nachrichten zu aktivieren und Wiederholungsrichtlinien anzupassen.
 
