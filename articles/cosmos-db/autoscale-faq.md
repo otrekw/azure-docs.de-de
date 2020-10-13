@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708001"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567586"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Häufig gestellte Fragen zum im Autoskalierungsmodus bereitgestellten Durchsatz von Azure Cosmos DB
 
@@ -37,14 +37,14 @@ Verwenden Sie [Azure Monitor-Metriken](how-to-choose-offer.md#measure-and-monito
 Jede Stunde wird Ihnen der höchste Durchsatz `T` in Rechnung gestellt, auf den das System innerhalb dieser Stunde skaliert wurde. Wenn Ihre Ressource während der Stunde keine Anforderungen empfangen hat oder nicht über `0.1 * Tmax` hinaus skaliert wurde, wird Ihnen der Mindestwert `0.1 * Tmax` in Rechnung gestellt. Ausführliche Informationen dazu finden Sie auf der Seite „Azure Cosmos DB – [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)“. 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>Wie wird die Autoskalierung auf meiner Rechnung angezeigt?
-Bei Einzelmasterkonten beträgt die Autoskalierungsrate pro 100 RU/s das 1,5-Fache der Rate des standardmäßig (manuell) bereitgestellten Durchsatzes. Auf Ihrer Rechnung wird die Verbrauchseinheit des vorhandenen standardmäßig bereitgestellten Durchsatzes angezeigt. Die Menge dieser Verbrauchseinheit wird mit 1,5 multipliziert. Wenn z. B. der höchste Wert für RU/s, auf die das System innerhalb einer Stunde skaliert wurde, 6.000 RU/s betrug, werden Ihnen für diese Stunde 60 × 1,5 = 90 Einheiten dieser Verbrauchseinheit in Rechnung gestellt.
+Bei Konten mit einer Schreibregion beträgt die Autoskalierungsrate pro 100 RU/s das 1,5-Fache der Rate des standardmäßig (manuell) bereitgestellten Durchsatzes. Auf Ihrer Rechnung wird die Verbrauchseinheit des vorhandenen standardmäßig bereitgestellten Durchsatzes angezeigt. Die Menge dieser Verbrauchseinheit wird mit 1,5 multipliziert. Wenn z. B. der höchste Wert für RU/s, auf die das System innerhalb einer Stunde skaliert wurde, 6.000 RU/s betrug, werden Ihnen für diese Stunde 60 × 1,5 = 90 Einheiten dieser Verbrauchseinheit in Rechnung gestellt.
 
-Bei Multimasterkonten ist die Autoskalierungsrate pro 100 RU/s mit der Rate des standardmäßig (manuell) bereitgestellten Multimasterdurchsatzes identisch. Auf Ihrer Rechnung wird die bestehende Multimaster-Verbrauchseinheit angezeigt. Da die Tarife identisch sind, wird bei Verwendung der Autoskalierung dieselbe Menge wie beim Standarddurchsatz angegeben.
+Bei Konten mit mehreren Schreibregionen ist die Autoskalierungsrate pro 100 RU/s mit der Rate des standardmäßig (manuell) bereitgestellten Durchsatzes für mehrere Schreibregionen identisch. Auf Ihrer Rechnung wird die bestehende Verbrauchseinheit für mehrere Schreibregionen angezeigt. Da die Tarife identisch sind, wird bei Verwendung der Autoskalierung dieselbe Menge wie beim Standarddurchsatz angegeben.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Funktioniert die Autoskalierung mit reservierter Kapazität?
-Ja. Wenn Sie bei einem Einzelmaster reservierte Kapazität erwerben, wird der Reservierungsrabatt für Ressourcen mit Autoskalierung in einem Verhältnis von 1,5 × der [Rate für die jeweilige Region](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region) auf die Verbrauchseinheit angewandt. 
+Ja. Wenn Sie reservierte Kapazität für Konten mit mehreren Schreibregionen erwerben, wird der Reservierungsrabatt für Ressourcen mit Autoskalierung in einem Verhältnis von 1,5 × der [Rate für die jeweilige Region](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region) auf die Verbrauchseinheit angewandt. 
 
-Die reservierte Kapazität für Multimaster funktioniert für Durchsatz mit Autoskalierung und den standardmäßig (manuell) bereitgestellten Durchsatz gleich. Weitere Informationen finden Sie unter [Reservierte Azure Cosmos DB-Kapazität](cosmos-db-reserved-capacity.md).
+Die reservierte Kapazität für mehrere Schreibregionen funktioniert für Durchsatz mit Autoskalierung und den standardmäßig (manuell) bereitgestellten Durchsatz gleich. Weitere Informationen finden Sie unter [Reservierte Azure Cosmos DB-Kapazität](cosmos-db-reserved-capacity.md).
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Funktioniert die Autoskalierung auch im Free-Tarif?
 Ja. Im Free-Tarif können Sie den Durchsatz mit Autoskalierung für einen Container verwenden. Unterstützung für Datenbanken mit gemeinsam genutztem Durchsatz mit Autoskalierung und einem benutzerdefinierten Höchstwert an RU/s ist noch nicht verfügbar. Weitere Informationen finden Sie unter [Abrechnung im Free-Tarif mit Autoskalierung](understand-your-bill.md#billing-examples-with-free-tier-accounts).
@@ -52,7 +52,7 @@ Ja. Im Free-Tarif können Sie den Durchsatz mit Autoskalierung für einen Contai
 ### <a name="is-autoscale-supported-for-all-apis"></a>Wird die Autoskalierung für alle APIs unterstützt?
 Ja, die Autoskalierung wird für alle APIs unterstützt: Core (SQL), Gremlin, Table, Cassandra und API für MongoDB.
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Wird die Autoskalierung für Multimasterkonten unterstützt?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>Wird die Autoskalierung für Konten mit mehreren Schreibregionen unterstützt?
 Ja. Die maximalen RU/s sind in jeder Region verfügbar, die dem Azure Cosmos DB-Konto hinzugefügt wird. 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Wie aktiviere ich die Autoskalierung für neue Datenbanken oder Container?

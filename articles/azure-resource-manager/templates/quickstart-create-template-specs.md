@@ -2,15 +2,15 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Erfahren Sie, wie Sie eine Vorlagenspezifikation aus einer ARM-Vorlage erstellen. Stellen Sie dann die Vorlagenspezifikation für eine Ressourcengruppe in Ihrem Abonnement bereit.
 author: tfitzmac
-ms.date: 09/25/2020
+ms.date: 10/02/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369214"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728776"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Schnellstart: Erstellen und Bereitstellen von Vorlagenspezifikationen (Vorschau)
 
@@ -27,7 +27,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto e
 
 ## <a name="create-template-spec"></a>Erstellen von Vorlagenspezifikationen
 
-Die Vorlagenspezifikation ist ein neuer Ressourcentyp namens **Microsoft.Resources/templateSpecs**. Sie können zur Erstellung Ihrer Vorlagenspezifikation Azure PowerShell, die Azure CLI oder eine ARM-Vorlage verwenden. Bei allen Optionen benötigen Sie ein ARM-Vorlage, die in der Vorlagenspezifikation verpackt ist.
+Die Vorlagenspezifikation ist ein Ressourcentyp namens **Microsoft.Resources/templateSpecs**. Sie können zur Erstellung Ihrer Vorlagenspezifikation Azure PowerShell, die Azure CLI oder eine ARM-Vorlage verwenden. Bei allen Optionen benötigen Sie ein ARM-Vorlage, die in der Vorlagenspezifikation verpackt ist.
 
 Bei PowerShell und der CLI wird die ARM-Vorlage als Parameter an den Befehl übergeben. Bei der ARM-Vorlage wird die ARM-Vorlage, die innerhalb der Vorlagenspezifikation verpackt werden soll, in die Definition der Vorlagenspezifikation eingebettet.
 

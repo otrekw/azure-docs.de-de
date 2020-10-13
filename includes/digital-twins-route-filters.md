@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 8/3/2020
 ms.author: baanders
-ms.openlocfilehash: c5b78d80b1aa958af50b81dc152b4a746ce85f70
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a1098088a38b23ec1074434e5424e261e60bcd55
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902193"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779641"
 ---
 | Filtername | BESCHREIBUNG | Filtertextschema | Unterstützte Werte | 
 | --- | --- | --- | --- |
@@ -18,19 +18,34 @@ ms.locfileid: "87902193"
 | type | Der [Ereignistyp](../articles/digital-twins/concepts-route-events.md#types-of-event-messages), der durch Ihre digitale Zwillingsinstanz fließt. | `type = '<eventType>'` | Folgende Werte für Ereignistypen sind möglich: <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | `Source` | Der Name der Azure Digital Twins-Instanz. | `source = '<hostname>'`| Folgende Werte für Hostnamen sind möglich: <br> **Für Benachrichtigungen**: `<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Für Telemetrie**: `<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
 | Subject | Eine Beschreibung des Ereignisses im Zusammenhang mit der oben genannten Ereignisquelle. | `subject = '<subject>'` | Folgende Werte für den Betreff sind möglich: <br>**Für Benachrichtigungen**: Der Betreff ist `<twinid>` <br> oder ein URI-Format für Betreffelemente, die durch mehrere Teile oder IDs eindeutig identifiziert werden:<br>`<twinid>/relationships/<relationshipid>`<br> **Für Telemetrie**: Der Betreff ist der Komponentenpfad (wenn die Telemetrie von einer Zwillingskomponente ausgegeben wird). Beispiel: `comp1.comp2`. Wenn die Telemetrie nicht von einer Komponente ausgegeben wird, dann ist ihr Betrefffeld leer. |
-| Datenschema | DTDL-Modell-ID | `dataschema = '<model-dtmi-ID>'` | **Für Telemetrie**: Das Datenschema ist die Modell-ID des Zwillings oder der Komponente, der bzw. die die Telemetrie ausgibt. Zum Beispiel, `dtmi:example:com:floor4;2` <br>**Für Benachrichtigungen**: Das Datenschema wird nicht unterstützt.|
+| Datenschema | DTDL-Modell-ID | `dataschema = '<model-dtmi-ID>'` | **Für Telemetrie**: Das Datenschema ist die Modell-ID des Zwillings oder der Komponente, der bzw. die die Telemetrie ausgibt. Zum Beispiel, `dtmi:example:com:floor4;2` <br>**Für Benachrichtigungen**: Der Zugriff auf das Datenschema kann im Benachrichtigungstext unter `$body.$metadata.$model` erfolgen.|
 | Inhaltstyp | Der Inhaltstyp des Datenwerts. | `datacontenttype = '<contentType>'` | Der Inhaltstyp lautet `application/json`. |
 | Spezifikationsversion | Die Version des von Ihnen verwendeten Ereignisschemas. | `specversion = '<version>'` | Die Version muss `1.0` sein. Dies gibt das CloudEvents-Schema, Version 1.0, an. |
+| Benachrichtigungstext | Verweisen auf eine beliebige Eigenschaft im Feld `data` einer Benachrichtigung. | `$body.<property>` | Weitere Informationen finden Sie unter [*Vorgehensweise: Informationen zu Ereignisdaten*](https://docs.microsoft.com/azure/digital-twins/how-to-interpret-event-data) für Beispiele von Benachrichtigungen. Auf jede Eigenschaft im Feld `data` kann mit `$body` verwiesen werden.
 
-Es ist auch möglich, Filter mit den folgenden Vorgängen zu kombinieren:
+Die folgenden Datentypen werden als Werte unterstützt, die von Verweisen auf die oben aufgeführten Daten zurückgegeben werden:
 
-| Filtername | Filtertextschema | Beispiel | 
-| --- | --- | --- |
-| AND/OR | `<filter1> AND <filter2>` | `type != 'microsoft.iot.telemetry' AND datacontenttype = 'application/json'` |
-| AND/OR | `<filter1> OR <filter2>` | `type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json'` |
-| Geschachtelte Vorgänge | `(<Comparison1>) AND (<Comparison2>)` | `(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')` |
+| Datentyp | Beispiel |
+|-|-|-|
+|**String**| `STARTS_WITH($body.$metadate.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
+|**Integer**|`$body.errorCode > 200`|
+|**Double**|`$body.temperature <= 5.5`|
+|**Bool**|`$body.poweredOn = true`|
+|**NULL**|`$body.prop != null`|
 
-> [!NOTE]
-> Während der Vorschau wird nur die Zeichenfolgengleichheit unterstützt (=, !=).
+Die folgenden Operatoren werden beim Definieren von Routenfiltern unterstützt:
+
+|Familie|Operatoren|Beispiel|
+|-|-|-|
+|Logisch|AND, OR, ( )|`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
+|Vergleich|<, <=, >, >=, =, !=|`$body.temperature <= 5.5`
+
+Die folgenden Funktionen werden beim Definieren von Routenfiltern unterstützt:
+
+|Funktion|Beschreibung|Beispiel|
+|--|--|--|
+|STARTS_WITH(x,y)|Gibt TRUE zurück, wenn der Wert `x` mit der Zeichenfolge `y` beginnt.|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
+|ENDS_WITH(x,y) | Gibt TRUE zurück, wenn der Wert `x` mit der Zeichenfolge `y` endet.|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|
+|CONTAINS(x,y)| Gibt TRUE zurück, wenn der Wert `x` die Zeichenfolge `y` enthält.|`CONTAINS(subject, '<twinID>')`|
 
 Wenn Sie einen Filter implementieren oder aktualisieren, kann es einige Minuten dauern, bis sich die Änderung in der Datenpipeline widerspiegelt.

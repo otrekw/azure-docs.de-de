@@ -2,26 +2,21 @@
 title: Problembehandlung der eingeschränkten Kerberos-Delegierung – Anwendungsproxy
 description: Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760438"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568728"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 
@@ -165,7 +160,7 @@ Wenn dies dennoch keine Abhilfe leistet, kann Microsoft-Support Ihnen weiter hel
 
 ## <a name="other-scenarios"></a>Andere Szenarien
 
-- Der Azure-Anwendungsproxy fordert vor dem Senden der Anforderung an eine Anwendung ein Kerberos-Ticket an. Bei einigen Drittanbieteranwendungen ist diese Authentifizierungsmethode unüblich. Bei diesen Anwendungen werden konventionellere Aushandlungen erwartet. Die erste Anforderung ist anonym, wodurch es der Anwendung ermöglicht wird, mit den Authentifizierungstypen zu antworten, die sie über eine 401-Meldung unterstützt.
+- Der Azure-Anwendungsproxy fordert vor dem Senden der Anforderung an eine Anwendung ein Kerberos-Ticket an. Bei einigen Drittanbieteranwendungen ist diese Authentifizierungsmethode unüblich. Bei diesen Anwendungen werden konventionellere Aushandlungen erwartet. Die erste Anforderung ist anonym, wodurch es der Anwendung ermöglicht wird, mit den Authentifizierungstypen zu antworten, die sie über eine 401-Meldung unterstützt. Diese Art der Kerberos-Aushandlung kann mithilfe der in diesem Dokument beschriebenen Schritte aktiviert werden: [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung](application-proxy-configure-single-sign-on-with-kcd.md).
 - Die Mehrfachhopauthentifizierung wird häufig in Szenarien verwendet, in denen eine Anwendung abgestuft wird, mit einem Back-End und Front-End, die beide eine Authentifizierung erfordern, z.B. SQL Server Reporting Services. Informationen zum Konfigurieren des Mehrfachhopszenarios finden Sie im Supportartikel [Eingeschränkte Kerberos-Delegierung mit eventuell erforderlicher Protokollübertragung in Mehrfachhopszenarien](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Nächste Schritte
