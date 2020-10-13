@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307448"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
 
@@ -43,7 +43,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Er
 
 | Version der Log Analytics-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -211,6 +211,8 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 | 19 | Fehler bei der OMI-Paketinstallation | 
 | 20 | Fehler bei der SCX-Paketinstallation |
 | 51 | Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt. | |
+| 52 | Diese Erweiterung ist aufgrund einer fehlenden Abhängigkeit fehlgeschlagen. | Überprüfen Sie die Ausgabe und die Protokolle, um weitere Informationen zur fehlenden Abhängigkeit zu erhalten. |
+| 53 | Diese Erweiterung ist aufgrund fehlender oder falscher Konfigurationsparameter fehlgeschlagen. | Überprüfen Sie die Ausgabe und die Protokolle, um weitere Informationen zum Fehler zu erhalten. Überprüfen Sie zusätzlich die Richtigkeit der Arbeitsbereichs-ID, und vergewissern Sie sich, dass der Computer mit dem Internet verbunden ist. |
 | 55 | Es kann keine Verbindung mit dem Azure Monitor-Dienst hergestellt werden, oder die erforderlichen Pakete fehlen, oder der dpkg-Paket-Manager ist gesperrt.| Stellen Sie sicher, dass das System entweder Internetzugriff hat oder dass ein gültiger HTTP-Proxy bereitgestellt wurde. Überprüfen Sie außerdem die Richtigkeit der Arbeitsbereichs-ID, und stellen Sie sicher, dass die Hilfsprogramme cURL und Tar installiert sind. |
 
 Weitere Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung für den Log Analytics-Agent für Linux](../../azure-monitor/platform/vmext-troubleshoot.md).

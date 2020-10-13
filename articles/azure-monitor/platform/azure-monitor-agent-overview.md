@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030826"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263775"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
@@ -38,6 +38,14 @@ Die Methoden zum Definieren der Datensammlung für die vorhandenen Agents unters
 - Die Diagnoseerweiterung verfügt über eine Konfiguration für jeden virtuellen Computer. Dadurch lassen sich ganz einfach unabhängige Definitionen für verschiedene virtuelle Computer definieren, die zentrale Verwaltung gestaltet sich jedoch schwierig. Daten können nur an Azure Monitor-Metriken, an Azure Event Hubs oder an Azure Storage gesendet werden. Für Linux-Agents ist der Telegraf-Agent erforderlich, um Daten an Azure Monitor-Metriken zu senden.
 
 Der Azure Monitor-Agent verwendet [Datensammlungsregeln (Data Collection Rules, DCR)](data-collection-rule-overview.md), um die Daten zu konfigurieren, die von den einzelnen Agents gesammelt werden sollen. Datensammlungsregeln ermöglichen die Verwaltung von Sammlungseinstellungen im großen Stil sowie die Verwendung individueller, bereichsspezifischer Konfigurationen für Untergruppen von Computern. Dank ihrer Unabhängigkeit von Arbeitsbereichen und virtuellen Computern können sie einmalig definiert und für verschiedene Computer und Umgebungen wiederverwendet werden. Weitere Informationen finden Sie unter [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](data-collection-rule-azure-monitor-agent.md).
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>Sollte ich zum Azure Monitor-Agent wechseln?
+Der Azure Monitor-Agent wird gleichzeitig mit den [ allgemein verfügbaren Agents für Azure Monitor](agents-overview.md) verwendet, Sie können jedoch erwägen, Ihre VMs während der öffentlichen Vorschauphase des Azure Monitor-Agents von den aktuellen Agents abzuziehen. Berücksichtigen Sie die folgenden Faktoren, wenn Sie diese Entscheidung treffen.
+
+- **Umgebungsanforderungen.** Azure Monitor-Agent unterstützt weniger Betriebssysteme, Umgebungen und Netzwerkanforderungen als die aktuellen Agents. Unterstützung von zukünftigen Umgebungen wie z. B. neuen Betriebssystemversionen und Netzwerk-Anforderungstypen wird wahrscheinlich nur in Azure Monitor-Agent bereitgestellt. Sie sollten bewerten, ob Ihre Umgebung von Azure Monitor-Agent unterstützt wird. Wenn dies nicht der Fall ist, müssen Sie den aktuellen Agent beibehalten. Wenn Azure Monitor-Agent Ihre aktuelle Umgebung unterstützt, sollten Sie einen Wechsel in Erwägung ziehen.
+- **Risikotoleranz der Public Preview.** Azure Monitor-Agent wurde für die derzeit unterstützten Szenarien zwar gründlich getestet, befindet sich jedoch weiterhin in der öffentlichen Vorschauphase. Versionsupdates und Funktionsverbesserungen erfolgen häufig und führen möglicherweise zu Fehlern. Sie sollten das Risiko eines Fehlers im Agent auf Ihren virtuellen Computern beurteilen, der u. U. die Datensammlung verhindert. Wenn eine Lücke in der Datensammlung keine erheblichen Auswirkungen auf ihre Dienste hat, können Sie mit Azure Monitor-Agent fortfahren. Bei einer geringen Toleranz für Instabilität sollten Sie die allgemein verfügbaren Agents beibehalten, bis Azure Monitor-Agent diesen Status erreicht.
+- **Aktuelle und neue Funktionsanforderungen.** Azure Monitor-Agent führt mehrere neue Funktionen wie Filterung, Bereichsdefinition und Multi-Homing ein, ist aber noch nicht gleichwertig mit den aktuellen Agents für andere Funktionen wie benutzerdefinierte Protokollsammlung und Integration mit Lösungen. Die meisten neuen Funktionen in Azure Monitor werden nur mit Azure Monitor-Agent zur Verfügung gestellt, sodass im Laufe der Zeit mehr Funktionen nur im neuen Agent verfügbar sind. Sie sollten berücksichtigen, ob der Azure Monitor-Agent die von Ihnen benötigten Funktionen hat und ob Sie auf einige Funktionen vorübergehend verzichten können, um andere wichtige Funktionen im neuen Agent zu erhalten. Wenn Azure Monitor-Agent über alle Kernfunktionen verfügt, die Sie benötigen, sollten Sie eine Umstellung darauf erwägen. Wenn es entscheidende Funktionen gibt, die Sie benötigen, fahren Sie mit dem aktuellen Agent fort, bis der Azure Monitor-Agent die Featureparität erreicht.
+- **Toleranz für Nacharbeit.** Wenn Sie eine neue Umgebung mit Ressourcen wie Bereitstellungsskripts und Onboardingvorlagen einrichten, sollten Sie überprüfen, ob Sie diese nachbearbeiten können, wenn Azure Monitor-Agent allgemein verfügbar wird. Wenn der Aufwand für diese Nachbearbeitung minimal ist, behalten Sie die aktuellen Agents vorerst bei. Wenn erheblicher Arbeitsaufwand erforderlich ist, sollten Sie Ihre neue Umgebung mit dem neuen Agent einrichten. Die allgemeine Verfügbarkeit von Azure Monitor-Agent sowie die Veröffentlichung eines Veraltungsdatums für die Log Analytics-Agents wird für 2021 erwartet. Die aktuellen Agents werden nach Beginn der Veraltungsphase noch einige Jahre lang unterstützt.
 
 
 
@@ -76,24 +84,8 @@ Der Azure Monitor-Agent sendet Daten an Azure Monitor-Metriken oder an einen L
 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-Der Azure Monitor-Agent unterstützt aktuell folgende Betriebssysteme:
+Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Log Analytics-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](agents-overview.md#supported-operating-systems).
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>1</sup>, 7
-  - Debian 9, 10
-  - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7
-  - SLES 11, 12, 15
-  - Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup>Für diese Verteilungen zum Senden von Syslog-Daten müssen Sie den rsyslog-Dienst einmal nach der Installation des Agents neu starten.
 
 
 ## <a name="security"></a>Sicherheit
