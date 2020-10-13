@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282305"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -25,6 +25,15 @@ Im weiteren Verlauf dieses Artikels finden Sie Beispiele für die Verwendung die
 ## <a name="query-syntax"></a>Abfragesyntax
 
 Dieser Abschnitt enthält Beispiele für Abfragen, die die Struktur der Abfragesprache veranschaulichen und mögliche Abfragevorgänge mit [digitalen Zwillingen](concepts-twins-graph.md) durchführen.
+
+### <a name="show-all-existing-digital-twins"></a>Anzeigen aller vorhandenen digitalen Zwillinge
+
+Im Folgenden finden Sie die grundlegende Abfrage, die eine Liste aller digitalen Zwillinge in der Instanz zurückgibt:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>Auswählen der obersten Elemente
 
@@ -208,8 +217,8 @@ Folgende Zeichenfolgenfunktionen werden unterstützt:
 
 | Funktion | Beschreibung |
 | -------- | ----------- |
-| STARTS_WITH(x, y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten beginnt. |
-| ENDS_WITH(x, y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten endet. |
+| STARTSWITH(x, y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten beginnt. |
+| ENDSWITH(x, y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten endet. |
 
 ## <a name="run-queries-with-an-api-call"></a>Ausführen von Abfragen mit einem API-Aufruf
 

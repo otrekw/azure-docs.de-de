@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317551"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665140"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace
 
@@ -45,6 +45,7 @@ Wenn Sie diese Meldung erhalten, bedeutet das, dass Analysedaten vorliegen, aber
 | Azure-Lizenztyp: Enterprise | Kunde, Bestellung | Der Endkunde erwirbt Azure und Ihr Marketplace-Angebot über ein Enterprise Agreement, das direkt mit Microsoft abgeschlossen wurde.|
 | Azure-Lizenztyp: Enterprise über Handelspartner  | Kunde, Bestellung | Der Endkunde erwirbt Azure und Ihr Marketplace-Angebot über einen Handelspartner, der sein Enterprise Agreement über Microsoft bereitstellt.|
 | Azure-Lizenztyp: Nutzungsbasierte Bezahlung| Kunde, Bestellung | Der Endkunde erwirbt Azure und Ihr Marketplace-Angebot über eine Vereinbarung mit nutzungsbasierter Bezahlung (Pay As You Go, PAYG), die direkt mit Microsoft abgeschlossen wird.|
+| ID des Abrechnungskontos| Kunde, Bestellung, Verbrauch| Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden.|
 | Cloudinstanzname| Order| Die Microsoft Cloud, in der die Bereitstellung eines virtuellen Computers erfolgt ist.|
 | Cloudinstanzname: Azure Global| Order| Die öffentliche globale Microsoft-Cloud.|
 | Cloudinstanzname: Azure Government | Order| Behördenspezifische Microsoft-Clouds für eines der folgenden Länder: China, Deutschland und USA.| |
@@ -100,5 +101,5 @@ Wenn Sie diese Meldung erhalten, bedeutet das, dass Analysedaten vorliegen, aber
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
+- Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).

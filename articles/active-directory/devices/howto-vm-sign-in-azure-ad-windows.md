@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287099"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826656"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -236,7 +236,7 @@ Die Erweiterung AADLoginForWindows muss installiert sein, damit der Azure AD-Ei
 
    > [!NOTE]
    > Wenn die Erweiterung nach dem anfänglichen Fehler neu gestartet wird, wird das Protokoll mit dem Bereitstellungsfehler als „CommandExecution_JJJJMMTTHHMMSSSSS.log“ gespeichert. "
-1. Öffnen Sie eine Eingabeaufforderung auf dem virtuellen Computer, und überprüfen Sie, ob diese Abfragen für den auf dem Azure-Host ausgeführten Instance Metadata Service-Endpunkt (IMDS) Folgendes zurückgeben:
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung auf dem virtuellen Computer, und überprüfen Sie, ob diese Abfragen für den auf dem Azure-Host ausgeführten Instance Metadata Service (IMDS)-Endpunkt Folgendes zurückgeben:
 
    | Auszuführender Befehl | Erwartete Ausgabe |
    | --- | --- |

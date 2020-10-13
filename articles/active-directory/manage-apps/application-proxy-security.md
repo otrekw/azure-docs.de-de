@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362145"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825900"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
@@ -83,7 +83,7 @@ Zur Erhöhung der Sicherheit von Anwendungen, die vom Azure AD-Anwendungsproxy v
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Dienst
 
-Über den Anwendungsproxy veröffentlichte Anwendungen sind vor verteilten Denial-of-Service-Angriffen (Distributed Denial of Service, DDoS) geschützt. **Azure DDoS Protection** ist ein Dienst, der mit der Azure-Plattform angeboten wird, um Ihre Azure-Ressourcen vor Denial-of-Service-Angriffen zu schützen. Der Tarif **Basic** ist für den Dienst automatisch aktiviert. Er ermöglicht eine permanente Datenverkehrsüberwachung und die Abwehr von häufigen Angriffen auf der Vermittlungsschicht in Echtzeit. Einzelheiten dazu finden Sie in der [Übersicht über Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Über den Anwendungsproxy veröffentlichte Anwendungen sind vor verteilten Denial-of-Service-Angriffen (Distributed Denial of Service, DDoS) geschützt. Dieser Schutz wird von Microsoft verwaltet und in allen unseren Rechenzentren automatisch aktiviert. Der Azure DDoS Protection-Dienst bietet eine ununterbrochene Datenverkehrsüberwachung sowie Echtzeit-Risikominderung von häufig vorkommenden Angriffen auf Netzwerkebene. 
 
 ## <a name="under-the-hood"></a>Hinter den Kulissen
 

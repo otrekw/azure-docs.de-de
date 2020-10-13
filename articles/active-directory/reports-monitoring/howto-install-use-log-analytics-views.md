@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358898"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory
 
@@ -56,7 +56,7 @@ Um die Log Analytics-Ansichten verwenden zu können, benötigen Sie Folgendes:
 
 3. Wählen Sie eine der beiden Ansichten aus, um zu den einzelnen Berichten zu wechseln. Sie können auch Benachrichtigungen für jeden der Berichtsparameter festlegen. Lassen Sie uns zum Beispiel eine Benachrichtigung bei jedem Mal festlegen, wenn es zu einem Anmeldefehler kommt. Zu diesem Zweck wählen Sie zuerst die Ansicht **Anmeldeereignisse** aus, dann den Bericht **Anmeldefehler im Laufe der Zeit**, und wählen Sie dann **Analytics** aus, um die Seite mit den Details zu öffnen, in denen sich die eigentliche Abfrage befindet, die dem Bericht zugrunde liegt. 
 
-    ![Details](./media/howto-install-use-log-analytics-views/details.png)
+    ![Screenshot der Analytics-Detailseite mit der Abfrage für den Bericht.](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. Wählen Sie **Benachrichtigung festlegen** aus, und wählen Sie dann **Immer wenn die benutzerdefinierte Protokollsuche &lt;Logik nicht definiert ist&gt;** im Abschnitt **Benachrichtigungskriterien** aus. Da wir immer dann benachrichtigen möchten, wenn ein Anmeldefehler auftritt, legen Sie den **Schwellenwert** der Standardbenachrichtigungslogik auf **1** fest, und wählen Sie dann **Fertig** aus. 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 5959ccd2699ef1162779a4a1d90ab6bb8af1bbbf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255824"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TheOrgWiki für die automatische Benutzerbereitstellung
 
@@ -55,23 +55,23 @@ Bevor Sie TheOrgWiki für die automatische Benutzerbereitstellung mit Azure AD k
 
 1. Melden Sie sich bei der [TheOrgWiki-Verwaltungskonsole](https://www.theorgwiki.com/login/) an. Klicken Sie auf **Verwaltungskonsole**.
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/login.png)
+    ![Screenshot von OrgWiki, in dem der Benutzeravatar und „Verwaltungskonsole“ hervorgehoben sind.](media/theorgwiki-provisioning-tutorial/login.png)
 
 2. Klicken Sie in der Verwaltungskonsole auf die Registerkarte **Einstellungen**. 
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![Screenshot der TheOrgWiki-Verwaltungskonsole mit hervorgehobener Registerkarte „Einstellungen“.](media/theorgwiki-provisioning-tutorial/settings.png)
     
 3. Navigieren Sie zu **Dienstkonten**.
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![Screenshot der Seite „Dienstkonten“ in der TheOrgWiki-Verwaltungskonsole.](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
 4. Klicken Sie auf **+Dienstkonto**. Wählen unter **Dienstkontotyp** die Option **Tokenbasiert** aus. Klicken Sie auf **Speichern**.
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![Screenshot des Dialogfelds „Neues Dienstkonto“, in dem die Optionen „Dienstkontotyp“, „Tokenbasiert“ und „Speichern“ hervorgehoben sind.](media/theorgwiki-provisioning-tutorial/auth.png)
 
 5.  Kopieren Sie die **aktiven Token**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ der TheOrgWiki-Anwendung in das Feld „Geheimes Token“ eingegeben.
      
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/token.png)
+    ![Screenshot des Dialogfelds „Token für SCIM-Bereitstellung verwalten“.](media/theorgwiki-provisioning-tutorial/token.png)
 
 ## <a name="add-theorgwiki-from-the-gallery"></a>Hinzufügen von TheOrgWiki über den Katalog
 
@@ -95,15 +95,15 @@ Bevor Sie TheOrgWiki für die automatische Benutzerbereitstellung mit Azure AD k
 
 5. Wählen Sie die Schaltfläche **Anmeldung bei TheOrgWiki** aus, über die Sie an die Anmeldeseite von TheOrgWiki umgeleitet werden. 
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![Screenshot der Anmeldeseite von TheOrgWiki mit hervorgehobener URL](media/theorgwiki-provisioning-tutorial/image00.png)
 
 6.  Wählen Sie in der oberen rechten Ecke **Anmelden** aus.
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![Screenshot der oberen rechten Ecke der Anmeldeseite mit hervorgehobener Option „Anmelden“.](media/theorgwiki-provisioning-tutorial/image02.png)
 
 7. Da TheOrgWiki eine OpenIDConnect-App ist, können Sie sich mit Ihrem Microsoft-Geschäftskonto bei TheOrgWiki anmelden.
 
-    ![TheOrgWiki Add SCIM](media/theorgwiki-provisioning-tutorial/image03.png)
+    ![Screenshot der Anmeldeseite von TheOrgWiki mit hervorgehobener Option „Bei Microsoft anmelden“.](media/theorgwiki-provisioning-tutorial/image03.png)
     
 8. Nach einer erfolgreichen Authentifizierung wird die Anwendung automatisch Ihrem Mandanten hinzugefügt, und Sie werden zu Ihrem TheOrgWiki-Konto umgeleitet.
 
@@ -126,11 +126,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` ein. 
 
