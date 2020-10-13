@@ -3,17 +3,17 @@ title: Neuheiten in Windows Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319813"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630013"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -25,6 +25,29 @@ Windows Virtual Desktop wird regelmäßig aktualisiert. In diesem Artikel werden
 - Behebung von Programmfehlern
 
 Dieser Artikel wird monatlich aktualisiert. Kehren Sie hier oft zurück, um mit neuen Updates auf dem Laufenden zu bleiben.
+
+## <a name="september-2020"></a>September 2020
+
+Änderungen im September 2020:
+
+- Wir haben die Leistung optimiert, indem wir die Verbindungslatenz in den folgenden Azure-Regionen reduziert haben:
+    - Deutschland
+    - Südafrika (nur für Validierungsumgebungen)
+
+Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/virtual-desktop/assessment/) verwenden, um die Qualität der Benutzererfahrung in diesen Bereichen zu schätzen.
+
+- Wir haben Version 1.2.1364 des Windows-Desktopclients für Windows Virtual Desktop veröffentlicht. In diesem Update haben wir die folgenden Änderungen vorgenommen:
+    - Es wurde ein Problem behoben, bei dem Einmaliges Anmelden (Single Sign-On, SSO) unter Windows 7 nicht funktionierte.
+    - Es wurde ein Problem behoben, das dazu geführt hat, dass der Client die Verbindung trennt, wenn ein Benutzer, der die Medienoptimierung für Teams aktiviert hat, versucht, einer Teams-Besprechung beizutreten bzw. diese anzurufen, während eine andere App einen Audiostream im exklusiven Modus geöffnet hat.
+    - Es wurde ein Problem behoben, bei dem Teams keine Audio- oder Videogeräte aufgezählt haben, wenn die Medienoptimierung für Teams aktiviert war.
+    - Ein Link namens „Need help with settings?“ (Benötigen Sie Hilfe mit den Einstellungen?), der zur Desktopeinstellungsseite führt, wurde ergänzt.
+    - Es wurde ein Problem mit der Schaltfläche „Abonnieren“ behoben, das bei der Verwendung von dunklen Designs mit hohem Kontrast auftrat.
+    
+- Dank der enormen Hilfe unserer Benutzer haben wir zwei kritische Probleme für den Microsoft Store-Remotedesktopclient behoben. Wir werden weiterhin Feedback überprüfen und Probleme beheben, während wir unser stufenweises Release des Clients auf mehr Benutzer weltweit ausweiten.
+    
+- Wir haben ein neues Feature hinzugefügt, mit dem Sie den VM-Speicherort, das Image, die Ressourcengruppe, den Präfixnamen und die Netzwerkkonfiguration als Teil des Workflows zum Hinzufügen einer VM zu Ihrer Bereitstellung im Azure-Portal ändern können.
+
+- IT-Spezialisten können nun mithilfe von Microsoft Endpoint Manager hybride mit Azure Active Directory verbundene Windows 10 Enterprise-VMs verwalten. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048).
 
 ## <a name="august-2020"></a>August 2020
 
@@ -144,4 +167,3 @@ Lesen Sie die folgenden Artikel, um sich über die Updates für unsere Clients f
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu zukünftigen Plänen finden Sie auf der [Roadmap für Microsoft 365 Windows Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
-

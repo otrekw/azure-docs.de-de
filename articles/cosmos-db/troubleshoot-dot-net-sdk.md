@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 3093996156a31d4a06f0d91dbca1bd00d58eacdb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330450"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802412"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse]
 * Weisen Sie Ihrem [virtuellen Azure-Computer eine öffentliche IP-Adresse](../load-balancer/troubleshoot-outbound-connection.md#assignilpip) zu.
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Hohe Netzwerklatenz
-Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet)-Eigenschaft im V2 SDK oder der [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
+Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true)-Eigenschaft im V2 SDK oder der [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
 
 Wenn keine [Timeouts](troubleshoot-dot-net-sdk-request-timeout.md) vorhanden sind und die Diagnose einzelne Anforderungen zeigt, bei denen die hohe Latenz durch den Unterschied zwischen `ResponseTime` und `RequestStartTime` wie folgt ersichtlich ist (in diesem Beispiel > 300 Millisekunden):
 

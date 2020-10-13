@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460863"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447089"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
@@ -83,7 +83,7 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 - Wenn Sie Gastbenutzern erlauben, andere Gastbenutzer in Ihr Verzeichnis einzuladen, können Gastbenutzereinladungen auch außerhalb der Berechtigungsverwaltung erfolgen. Es wird empfohlen, dass die Option **Gäste können einladen** auf **Nein** gesetzt wird, sodass nur ordnungsgemäß gesteuerte Einladungen möglich sind.
 - Wenn Sie die B2B-Zulassungsliste verwenden, müssen Sie sicherstellen, dass alle Domänen, mit denen Sie über die Berechtigungsverwaltung zusammenarbeiten möchten, zur Liste hinzugefügt werden. Wenn Sie stattdessen die B2B-Verweigerungliste verwenden, müssen Sie sicherstellen, dass alle Domänen, mit denen Sie zusammenarbeiten möchten, nicht zur Liste hinzugefügt werden.
-- Wenn Sie eine Richtlinie für die Berechtigungsverwaltung für **alle Benutzer** (alle verbundenen Organisationen und alle neuen externen Benutzer) erstellen, haben alle Einstellungen der B2B-Zulassungs- oder Verweigerungsliste Vorrang. Achten Sie daher darauf, die Domänen, die Sie in diese Richtlinie einbeziehen möchten, in Ihre Zulassungsliste aufzunehmen, wenn Sie eine verwenden, bzw. sie von Ihrer Verweigerungsliste auszuschließen, wenn Sie mit einer solchen Liste arbeiten.
+- Wenn Sie eine Richtlinie für die Berechtigungsverwaltung für **alle Benutzer** (alle verbundenen Organisationen und alle neuen externen Benutzer) erstellen und ein Benutzer nicht zu einer verbundenen Organisation in Ihrem Verzeichnis gehört, wird automatisch eine verbundene Organisation für ihn erstellt, wenn er das Paket anfordert. Alle Einstellungen Ihrer B2B-Zulassungs- oder Verweigerungsliste haben Vorrang. Achten Sie daher darauf, die Domänen, die Sie in diese Richtlinie einbeziehen möchten, in Ihre Zulassungsliste aufzunehmen, wenn Sie eine verwenden, bzw. sie von Ihrer Verweigerungsliste auszuschließen, wenn Sie mit einer solchen Liste arbeiten.
 - Wenn Sie eine Richtlinie zur Berechtigungsverwaltung erstellen möchten, die **alle Benutzer** umfasst (alle verbundenen Organisationen + alle neuen externen Benutzer), müssen Sie zunächst die Authentifizierung mit Einmalkennung per E-Mail für Ihr Verzeichnis aktivieren. Weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)](../external-identities/one-time-passcode.md#opting-in-to-the-preview).
 - Weitere Informationen über Einstellungen für externe Azure AD B2B-Zusammenarbeit finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../external-identities/delegate-invitations.md).
 

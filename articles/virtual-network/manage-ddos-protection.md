@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317683"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
 Erfahren Sie, wie Sie den DDoS-Schutz (Distributed Denial of Service) aktivieren oder deaktivieren und die Telemetrie von Azure DDoS Protection Standard verwenden, um einen DDoS-Angriff zu entschärfen. DDoS Protection Standard schützt Azure-Ressourcen wie virtuelle Computer, Lastenausgleichsmodule und Anwendungsgateways, denen eine [öffentliche Azure-IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist. Weitere Informationen zum DDoS Protection Standard-Dienst und seinen Funktionen finden Sie unter [Übersicht über DDoS Protection Standard](ddos-protection-overview.md).
 
-Melden Sie sich vor dem Ausführen der Schritte in diesem Tutorial unter https://portal.azure.com mit einem Konto beim Azure-Portal an, das der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen ist, der die entsprechenden, unter [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen wurden.
+Melden Sie sich vor dem Ausführen der Schritte in diesem Tutorial unter https://portal.azure.com mit einem Konto beim Azure-Portal an, das der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen ist, der die entsprechenden, unter [Berechtigungen](#permissions-and-restrictions) aufgeführten Aktionen zugewiesen wurden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -191,7 +191,7 @@ Mit Protokollen zum Entschärfungsverlauf für Angriffe können Sie den verworfe
     - **In einem Speicherkonto archivieren:** Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Ressourcenprotokollen](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **An einen Event Hub streamen:** Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe eines Azure-Event Hubs. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Ressourcenprotokollen an Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **An Log Analytics senden:** Schreibt Protokolle in den Azure Monitor-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Azure Monitor-Protokollen](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-1. Zum Anzeigen der Verlaufsprotokolldaten im Azure Analytics-Dashboard können Sie das Beispieldashboard von https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip importieren.
+1. Zum Anzeigen der Verlaufsprotokolldaten in der Azure Analytics-Arbeitsmappe können Sie das Beispieldashboard von https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook importieren.
 
 Flussprotokolle enthalten die folgenden Felder: 
 - Quell-IP
@@ -225,7 +225,7 @@ Für die Erkennung und Abwehr von DDoS-Angriffen werden insbesondere zwei Warnun
 
 Die Warnungen enthalten allgemeine Informationen zur angegriffenen öffentlichen IP-Adresse, zum geografischen Raum und zur Bedrohung sowie Schritte zur Behebung.
 
-## <a name="permissions"></a>Berechtigungen
+## <a name="permissions-and-restrictions"></a>Berechtigungen und Einschränkungen
 
 Zum Arbeiten mit DDoS-Schutzplänen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden Aktionen in der folgenden Tabelle zugewiesen wurden:
 
@@ -237,6 +237,9 @@ Zum Arbeiten mit DDoS-Schutzplänen muss Ihr Konto der Rolle [Netzwerkmitwirkend
 | Microsoft.Network/ddosProtectionPlans/join/action | Verknüpfen eines DDoS-Schutzplans              |
 
 Für eine Aktivierung des DDoS-Schutzes für ein virtuelles Netz müssen Ihrem Konto darüber hinaus die entsprechenden [Aktionen für virtuelle Netzwerke](manage-virtual-network.md#permissions) zugewiesen werden.
+
+### <a name="azure-policy"></a>Azure Policy
+Für Kunden, die verschiedene Abonnements haben und sicherstellen möchten, dass ein einziger Plan für Azure DDoS Protection Standard zur Kostenkontrolle für ihren Mandanten bereitgestellt wird, können Sie mit Azure Policy die [Erstellung von Azure DDoS Protection Standard-Plänen einschränken](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Diese Richtlinie blockiert die Erstellung von DDoS-Plänen, es sei denn, das Abonnement wurde zuvor als Ausnahme gekennzeichnet. Diese Richtlinie zeigt außerdem eine Liste aller Abonnements an, für die fälschlicherweise ein DDoS-Plan bereitgestellt wurde, und markiert diese als nicht kompatibel. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

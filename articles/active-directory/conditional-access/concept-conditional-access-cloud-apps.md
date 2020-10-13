@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6f65a43cf5730f56b43d79388a0e73ea93e3225b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258743"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801986"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -102,6 +102,7 @@ Die Microsoft Azure Management-Anwendung enthält mehrere zugrundeliegende Diens
    - Azure Resource Manager-Anbieter
    - APIs für das klassische Bereitstellungsmodell
    - Azure PowerShell
+   - Azure CLI
    - Administratorportal für Visual Studio-Abonnements
    - Azure DevOps
    - Azure Data Factory-Portal

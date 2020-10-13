@@ -1,22 +1,22 @@
 ---
-title: Einrichten von Warnungen und Benachrichtigungen (Azure-Portal)
+title: Einrichten von Warnungen und Benachrichtigungen im Azure-Portal
 description: Verwenden Sie das Azure-Portal, um Warnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen können, wenn die angegebenen Bedingungen erfüllt sind.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2b7457ad5870e31d682f8727901795c9d6d73f06
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442665"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444907"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics über das Azure-Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

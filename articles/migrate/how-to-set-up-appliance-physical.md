@@ -4,12 +4,12 @@ description: Erfahren Sie, wie eine Azure Migrate-Appliance für die Bewertung p
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085963"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448071"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
@@ -59,7 +59,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - Beispielverwendung für die Government-Cloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Überprüfen Sie die aktuelle Version der Appliance und die Hashwerte-Einstellungen.
+3.  Überprüfen Sie die aktuelle Version der Appliance und die Einstellungen für [Hashwerte](tutorial-discover-physical.md#verify-security).
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts

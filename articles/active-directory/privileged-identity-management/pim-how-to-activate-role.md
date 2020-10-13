@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317536"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
@@ -40,7 +40,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 
 # <a name="new-version"></a>[Neue Version](#tab/new)
 
-## <a name="activate-a-role"></a>Aktivieren einer Rolle
+## <a name="activate-a-role-for-new-version"></a>Aktivieren einer Rolle für die neue Version
 
 Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identity Management die Aktivierung anfordern, indem Sie die Option **Meine Rollen** öffnen.
 
@@ -80,7 +80,7 @@ Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identit
 
     ![Ausstehende Genehmigung für die Aktivierungsanforderung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
+## <a name="view-the-status-of-your-requests-for-new-version"></a>Anzeigen des Status Ihrer Anforderungen für die neue Version
 
 Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
 
@@ -92,7 +92,7 @@ Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
 
 1. Scrollen Sie nach rechts, um die Spalte **Anforderungsstatus** anzuzeigen.
 
-## <a name="cancel-a-pending-request"></a>Abbrechen einer ausstehenden Anforderung
+## <a name="cancel-a-pending-request-for-new-version"></a>Abbrechen einer ausstehenden Anforderung für die neue Version
 
 Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich ist, nicht mehr benötigen, können Sie eine ausstehende Anforderung jederzeit abbrechen.
 
@@ -106,7 +106,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
    ![Liste „Meine Anforderungen“ mit hervorgehobener Aktion „Abbrechen“](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>Problembehandlung
+## <a name="troubleshoot-for-new-version"></a>Problembehandlung bei der neuen Version
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
 
