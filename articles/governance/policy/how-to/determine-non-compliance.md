@@ -1,14 +1,14 @@
 ---
 title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
-ms.date: 07/06/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648562"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541270"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -104,11 +104,17 @@ In der folgenden Tabelle wird jeder mögliche _Grund_ der entsprechenden [Beding
 |Der aktuelle Wert darf nicht mit dem Zielwert übereinstimmen (keine Berücksichtigung der Groß-/Kleinschreibung). |notMatchInsensitively oder **nicht** matchInsensitively |
 |Keine der zugehörigen Ressourcen entspricht den Effektdetails in der Richtliniendefinition. |Eine Ressource des in **then.details.type** definierten Typs, die mit der im **if**-Abschnitt der Richtlinienregel definierten Ressource verwandt ist, ist nicht vorhanden. |
 
+## <a name="component-details-for-resource-provider-modes"></a>Komponentendetails für Ressourcenanbietermodi
+
+Bei Zuweisungen mit einem [Ressourcenanbietermodus](../concepts/definition-structure.md#resource-manager-modes) wählen Sie die _nicht konforme_ Ressource aus, um eine detailliertere Ansicht zu öffnen. Unter der Registerkarte **Komponentenkonformität** befinden sich zusätzliche Informationen, die spezifisch für den Modus „Ressourcenanbieter“ der zugewiesenen Richtlinie sind und die _nicht konforme_ **Komponente** und die **Komponenten-ID** anzeigen.
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
+
 ## <a name="compliance-details-for-guest-configuration"></a>Details zur Konformität für die Gastkonfiguration
 
-Für Überwachungsrichtlinien (_auditIfNotExists_) in der Kategorie _Gastkonfiguration_ können auf der VM mehrere Einstellungen ausgewertet werden, und Sie müssen die Details pro Einstellung anzeigen. Wenn Sie beispielsweise eine Überprüfung der Liste mit Kennwortrichtlinien durchführen und nur ein Eintrag den Status _Nicht konform_ aufweist, müssen Sie ermitteln, welche spezifischen Kennwortrichtlinien nicht konform sind und was der Grund dafür ist.
+Für Überwachungsrichtlinien (_auditIfNotExists_) in der Kategorie _Gastkonfiguration_ können auf dem virtuellen Computer mehrere Einstellungen ausgewertet werden, und Sie müssen die Details pro Einstellung anzeigen. Wenn Sie beispielsweise eine Überprüfung der Liste mit Kennwortrichtlinien durchführen und nur ein Eintrag den Status _Nicht konform_ aufweist, müssen Sie ermitteln, welche spezifischen Kennwortrichtlinien nicht konform sind und was der Grund dafür ist.
 
-Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf der VM, müssen aber melden, warum die VM _nicht konform_ ist.
+Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf dem virtuellen Computer, müssen aber melden, warum der virtuelle Computer _nicht konform_ ist.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
