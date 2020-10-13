@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316153"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory
 
@@ -116,7 +116,7 @@ Wenn Sie den Datenfluss in einer Debugtestausführung über eine Debugpipelineau
 
 - **Meldung**: There are a high number of null values or missing values which may be caused by having too few rows sampled. Try updating the debug row limit and refreshing the data. (Es ist eine hohe Anzahl von NULL-Werten oder fehlenden Werten vorhanden. Möglicherweise wurden von zu wenigen Zeilen Stichproben genommen. Aktualisieren Sie das Debugzeilenlimit, und aktualisieren Sie die Daten.)
 - **Ursachen**: Die Verknüpfungsbedingung wurde von keiner Zeile erfüllt oder bewirkte eine hohe Anzahl von NULL-Werten in der Datenvorschau.
-- **Empfehlung**: Wechseln Sie zu den Debugeinstellungen, und erhöhen Sie die maximale Anzahl der Quellzeilen. Stellen Sie sicher, dass Sie für Azure IR einen ausreichend großen Datenflusscluster ausgewählt haben, um mehr Daten verarbeiten zu können.
+- **Empfehlung**: Wechseln Sie zu den Debugeinstellungen, und erhöhen Sie die maximale Anzahl der Quellzeilen. Stellen Sie sicher, dass Sie für Azure IR einen ausreichend großen Datenflusscluster auswählen, um mehr Daten verarbeiten zu können.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Allgemeine Anleitungen zur Problembehandlung

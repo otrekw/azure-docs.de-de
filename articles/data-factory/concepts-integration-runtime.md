@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485718"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827525"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory 
 
@@ -69,7 +69,7 @@ Mit der Azure-Integrationslaufzeit wird die native Computeressource zum sicheren
 
 Die Aktivitätsverteilung ist ein einfacher Vorgang zum Weiterleiten der Aktivität an den Zielcomputedienst. Deshalb muss die Computegröße bei diesem Szenario nicht zentral hochskaliert werden.
 
-Informationen zum Erstellen und Konfigurieren einer Azure IR finden Sie in den entsprechenden Leitfäden zur jeweiligen Vorgehensweise. 
+Informationen zur Erstellung und Konfiguration einer Azure IR finden Sie unter [Erstellen und Konfigurieren von Azure Integration Runtime](create-azure-integration-runtime.md). 
 
 > [!NOTE] 
 > Azure Integration Runtime verfügt über Eigenschaften, die mit der Datenflussruntime in Zusammenhang stehen, die die zugrunde liegende Computeinfrastruktur definiert, auf der die Datenflüsse ausgeführt würden. 

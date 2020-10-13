@@ -2,14 +2,14 @@
 title: Speichern von unstrukturierten Daten mit Azure Cosmos DB und Functions
 description: Speichern von unstrukturierten Daten mit Azure Functions und Cosmos DB
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987974"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91661158"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Speichern von unstrukturierten Daten mit Azure Functions und Azure Cosmos DB
 
@@ -132,7 +132,7 @@ Dieses Codebeispiel liest die Abfragezeichenfolgen der HTTP-Anforderung und weis
 
 ## <a name="test-the-function-and-database"></a>Testen der Funktion und der Datenbank
 
-1. Klicken Sie auf **Test**. Wählen Sie unter **Abfrage** die Option **+ Parameter hinzufügen** aus, und fügen Sie der Abfragezeichenfolge die folgenden Parameter hinzu:
+1. Wählen Sie **Testen/Ausführen** aus. Wählen Sie unter **Abfrage** die Option **+ Parameter hinzufügen** aus, und fügen Sie der Abfragezeichenfolge die folgenden Parameter hinzu:
 
     + `name`
     + `task`
