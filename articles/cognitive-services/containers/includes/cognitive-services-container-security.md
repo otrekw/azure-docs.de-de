@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: fd2a6cdad01302501e30ec60a4d3ccf6efd9c266
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876821"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545437"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Containersicherheit in Azure Cognitive Services
 
@@ -27,7 +27,7 @@ Das Diagramm unten veranschaulicht den standardmäßigen und **nicht sicheren** 
 
 ![Containersicherheit](../media/container-security.svg)
 
-Als alternativer und *sicherer* Ansatz könnten Consumer von Cognitive Services-Containern einen Container mit einer Frontkomponente erweitern, wodurch der Containerendpunkt privat bleibt. Betrachten wir ein Szenario, in dem [Istio][istio] als Eingangsgateway verwendet wird. Istio unterstützt HTTPS/TLS und die Authentifizierung über Clientzertifikate. In diesem Szenario stellt das Istio-Front-End den Containerzugriff bereit und präsentiert das Clientzertifikat, das zuvor von Istio zur Whitelist hinzugefügt wurde.
+Als alternativer und *sicherer* Ansatz könnten Consumer von Cognitive Services-Containern einen Container mit einer Frontkomponente erweitern, wodurch der Containerendpunkt privat bleibt. Betrachten wir ein Szenario, in dem [Istio][istio] als Eingangsgateway verwendet wird. Istio unterstützt HTTPS/TLS und die Authentifizierung über Clientzertifikate. In diesem Szenario stellt das Istio-Front-End den Containerzugriff bereit und präsentiert das Clientzertifikat, das zuvor von Istio genehmigt wurde.
 
 [Nginx][nginx] ist eine weitere beliebte Option in derselben Kategorie. Sowohl Istio als auch Nginx fungieren als Dienstnetz und bieten zusätzliche Features wie Lastenausgleich, Routing und Ratensteuerung.
 

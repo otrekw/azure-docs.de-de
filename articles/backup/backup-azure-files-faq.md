@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377419"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729065"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -75,6 +75,23 @@ Ja. Informationen hierzu finden Sie in der ausführlichen Dokumentation unter [d
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Kann ich auf die von Azure Backup erstellten Momentaufnahmen zugreifen und sie einbinden?
 
 Auf alle von Azure Backup erstellten Momentaufnahmen kann im Portal, über PowerShell oder mithilfe der CLI über die Funktion zum Anzeigen von Momentaufnahmen zugegriffen werden. Weitere Informationen zu Azure Files-Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../storage/files/storage-snapshots-files.md).
+
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Was geschieht, nachdem ich eine gesicherte Dateifreigabe in ein anderes Abonnement verschoben habe?
+
+Sobald eine Dateifreigabe in ein anderes Abonnement verschoben wurde, wird sie von Azure Backup als neue Dateifreigabe betrachtet. Dazu werden folgende Schritte empfohlen:
+ 
+Szenario: Angenommen, Sie verfügen über eine Dateifreigabe DF1 im Abonnement A1, die mithilfe des Tresors T1 geschützt wird. Jetzt möchten Sie Ihre Dateifreigabe in das Abonnement A2 verschieben.
+ 
+1.  Verschieben Sie das gewünschte Speicherkonto und die Dateifreigabe (DF1) in ein anderes Abonnement (A2).
+2.  Lösen Sie in Tresor T1 den Vorgang „Beendigung des Schutzes mit Datenlöschung“ für DF1 aus.
+3.  Heben Sie die Registrierung des Speicherkontos auf, das DF1 aus Tresor T1 hostet.
+4.  Konfigurieren Sie die Sicherung für DF1, jetzt in A2 verschoben, mit einem Tresor (T2) in Abonnement A2 neu. 
+ 
+Beachten Sie, dass die mit T1 erstellten Momentaufnahmen nach Neukonfiguration der Sicherung mit T2 von Azure Backup nicht mehr verwaltet werden. Daher müssen Sie diese Momentaufnahmen je nach Ihren Anforderungen manuell löschen.
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Kann ich meine gesicherte Dateifreigabe in eine andere Ressourcengruppe verschieben?
+ 
+Ja. Sie können Ihre gesicherte Dateifreigabe in eine andere Ressourcengruppe verschieben. Allerdings müssen Sie die Sicherung für die Dateifreigabe neu konfigurieren, da sie von Azure Backup als neue Ressource behandelt würde. Außerdem werden die vor dem Verschieben der Ressourcengruppe erstellten Momentaufnahmen von Azure Backup nicht mehr verwaltet. Daher müssen Sie diese Momentaufnahmen je nach Ihren Anforderungen manuell löschen.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Welche maximale Aufbewahrungsdauer kann ich für Sicherungen konfigurieren?
 

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846910"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570085"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ Klicken Sie auf ein Aktivitätsfenster, um im rechten Bereich im Fenster **Eigen
 
 Wechseln Sie im rechten Bereich zur Registerkarte **Aktivitätsfenster-Explorer** , um weitere Details anzuzeigen.
 
-![Aktivitätsfenster-Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Der Screenshot zeigt, wie Sie auf die Registerkarte „Aktivitätsfenster-Explorer“ zugreifen können.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 Im Bereich **Versuche** sehen Sie auch **aufgelöste Variablen** für jeden Aktivitätsausführungsversuch.
 
@@ -217,7 +217,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 
 Wenn Sie in der Liste auf ein Aktivitätsfenster klicken, sehen Sie im **Aktivitätsfenster-Explorer** oder im Fenster **Eigenschaften** auf der rechten Seite die dazugehörigen Details.
 
-![Aktivitätsfenster-Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Der Screenshot zeigt, wie Details zu einem Aktivitätsfenster angezeigt werden können.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Aktualisieren von Aktivitätsfenstern
 Die Details werden nicht automatisch aktualisiert. Klicken Sie daher auf der Befehlsleiste auf „Aktualisieren“ (die zweite Schaltfläche), um die Liste der Aktivitätsfenster manuell zu aktualisieren.  
