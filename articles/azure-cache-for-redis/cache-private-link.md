@@ -1,42 +1,77 @@
 ---
 title: Azure Cache for Redis mit Azure Private Link (Vorschau)
-description: Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit dem von Azure Private Link betriebenen Azure Cache for Redis verbindet. In diesem Artikel erfahren Sie, wie Sie einen Azure-Cache, ein virtuelles Azure-Netzwerk und einen privaten Endpunkt im Azure-Portal erstellen.
+description: Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit dem von Azure Private Link betriebenen Azure Cache for Redis verbindet. In diesem Artikel erfahren Sie, wie Sie einen Azure-Cache, eine Azure Virtual Network-Instanz und einen privaten Endpunkt im Azure-Portal erstellen.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 09/22/2020
+ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421653"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650160"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure Cache for Redis mit Azure Private Link (Vorschau)
+# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis mit Azure Private Link (Public Preview)
+In diesem Artikel erfahren Sie, wie Sie im Azure-Portal ein virtuelles Netzwerk und eine Azure Cache for Redis-Instanz mit einem privaten Endpunkt erstellen. Außerdem erfahren Sie, wie Sie einer vorhandenen Azure Cache for Redis-Instanz einen privaten Endpunkt hinzufügen.
+
 Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit dem von Azure Private Link betriebenen Azure Cache for Redis verbindet. 
-
-In diesem Artikel erfahren Sie, wie Sie einen Azure Cache, ein virtuelles Azure-Netzwerk und einen privaten Endpunkt im Azure-Portal erstellen.  
-
-> [!IMPORTANT]
-> Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Azure-Abonnement –  [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> Diese Funktion befindet sich zurzeit in der Vorschauphase. [Wenden Sie sich an uns](mailto:azurecache@microsoft.com), wenn Sie daran interessiert sind.
+> Dieses Feature befindet sich zurzeit in der öffentlichen Vorschau für ausgewählte Regionen. Wenn Sie nicht über die Option zum Erstellen eines privaten Endpunkts verfügen, [wenden Sie sich an uns](mailto:azurecache@microsoft.com). Ihre Azure Cache for Redis-Instanz muss nach dem 28. Juli 2020 erstellt worden sein, damit Sie private Endpunkte verwenden können.
+>
+> Aktuelle Regionen mit öffentlicher Vorschau: „USA, Westen-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „Norwegen, Osten“, „Norwegen, Westen“, „Europa; Norden“, „Europa, Westen“, „Asien, Osten“, „Asien, Südosten“, „Japan, Osten“, „Japan, Westen“, „Schweiz, Norden“, „Schweiz, Westen“, „Indien, Mitte“, „Indien, Westen“, „VAE, Mitte“, „Südkorea, Mitte“, „Südkorea, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Südafrika, Norden“, „Frankreich, Süden“, „Frankreich, Mitte“, „Kanada, Osten“, „Kanada, Mitte“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Australien, Mitte“, „Indien, Westen“, „Indien, Süden“, „Australien, Osten“, „Brasilien, Südosten und „Brasilien, Süden“.
 >
 
-## <a name="create-a-cache"></a>Erstellen eines Caches
-1. Melden Sie sich zum Erstellen eines Caches beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Ressource erstellen** aus. 
+## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Erstellen eines privaten Endpunkts mit einer neuen Azure Cache for Redis-Instanz 
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Auswählen von „Ressource erstellen“":::
+In diesem Abschnitt erstellen Sie eine neue Azure Cache for Redis-Instanz mit einem privaten Endpunkt.
+
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann **Ressource erstellen** aus.
+
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Auswählen von „Ressource erstellen“.":::
+
+2. Wählen Sie auf der Seite **Neu** zuerst **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
+
+3. Wählen Sie **Hinzufügen** aus, um ein virtuelles Netzwerk zu erstellen.
+
+4. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem dieses virtuelle Netzwerk erstellt werden soll. | 
+   | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Name der Ressourcengruppe, in der Ihr virtuelles Netzwerk und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
+   | **Name** | Geben Sie einen Namen für das virtuelle Netzwerk ein. | Der Name muss mit einem Buchstaben oder einer Ziffer beginnen, auf einen Buchstaben, eine Ziffer oder einen Unterstrich enden und darf nur Buchstaben, Ziffern, Unterstriche, Punkte und Bindestriche enthalten. | 
+   | **Region** | Öffnen Sie die Dropdownliste, und wählen Sie eine Region aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihr virtuelles Netzwerk verwenden. |
+
+5. Wählen Sie die Registerkarte **IP-Adressen** aus, oder klicken Sie auf die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+
+6. Geben Sie auf der Registerkarte **IP-Adressen** den **IPv4-Adressraum** als eine oder mehrere Adresspräfixe in CIDR-Schreibweise an (z. B. 192.168.1.0/24).
+
+7. Klicken Sie unter **Subnetzname** auf **Standard**, um die Eigenschaften des Subnetzes zu bearbeiten.
+
+8. Geben Sie im Bereich **Subnetz bearbeiten** einen **Subnetznamen** sowie den **Subnetzadressbereich** an. Der Adressbereich des Subnetzes in CIDR-Schreibweise (z. B. 192.168.1.0/24). Er muss innerhalb des Adressraums des virtuellen Netzwerks liegen.
+
+9. Wählen Sie **Speichern** aus.
+
+10. Wählen Sie die Registerkarte **Überprüfen + erstellen**, oder klicken Sie auf die Schaltfläche **Überprüfen + erstellen**.
+
+11. Vergewissern Sie sich, dass alle Informationen richtig sind, und klicken Sie auf **Erstellen**, um das virtuelle Netzwerk bereitzustellen.
+
+### <a name="create-an-azure-cache-for-redis-instance-with-a-private-endpoint"></a>Erstellen eine einer Azure Cache for Redis-Instanz mit einem privatem Endpunkt
+Führen Sie zum Erstellen einer Cache-Instanz die folgenden Schritte aus:
+
+1. Wechseln Sie zurück zur Homepage des Azure-Portals, oder öffnen Sie das Randleistenmenü, und wählen Sie dann **Ressource erstellen** aus. 
    
 1. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann **Azure Cache for Redis** aus.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Auswählen von „Ressource erstellen“.":::
    
 1. Konfigurieren Sie auf der Seite **Neuer Redis Cache** die Einstellungen für den neuen Cache.
    
@@ -47,114 +82,114 @@ In diesem Artikel erfahren Sie, wie Sie einen Azure Cache, ein virtuelles Azure-
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
    | **Location** | Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihren Cache verwenden. |
    | **Preisstufe** | Öffnen Sie die Dropdownliste, und wählen Sie einen [Tarif](https://azure.microsoft.com/pricing/details/cache/) aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. Weitere Informationen finden Sie unter [What is Azure Cache for Redis](cache-overview.md) (Was ist Azure Cache for Redis?). |
-   
-1. Klicken Sie auf **Erstellen**. 
-   
-    :::image type="content" source="media/cache-private-link/3-new-cache.png" alt-text="Erstellen von Azure Cache for Redis.":::
-   
-   Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit.
+
+1. Wählen Sie die Registerkarte **Netzwerk** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Netzwerk**.
+
+1. Wählen Sie auf der Registerkarte **Netzwerk** die Option **Privater Endpunkt** als Konnektivitätsmethode aus.
+
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**, um Ihren privaten Endpunkt zu erstellen.
+
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Auswählen von „Ressource erstellen“.":::
+
+1. Konfigurieren Sie auf der Seite **Erstellen eines privaten Endpunkts** die Einstellungen für Ihren privaten Endpunkt mit dem virtuellen Netzwerk und Subnetz, die Sie im letzten Abschnitt erstellt haben, und wählen Sie **OK** aus. 
+
+1. Wählen Sie unten auf der Seite die Registerkarte **Weiter: Erweitert** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Erweitert**.
+
+1. Aktivieren Sie auf der Registerkarte **Erweitert** für eine Basic- oder Standard-Cache-Instanz die Aktivierungsoption, wenn Sie einen TLS-fremden Port aktivieren möchten.
+
+1. Konfigurieren Sie auf der Registerkarte **Advanced** für eine Premium-Cache-Instanz die Einstellungen für einen TLS-fremden Port, Clustering und Datenpersistenz.
+
+
+1. Wählen Sie die Registerkarte **Weiter: Tags** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Tags** (Weiter: Tags) aus.
+
+1. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten. 
+
+1. Wählen Sie **Überprüfen und erstellen** aus. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+
+1. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
+
+Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite  **Übersicht**  von Azure Cache for Redis überwachen. Wenn  **Wird ausgeführt** als  **Status**  angezeigt wird, ist der Cache einsatzbereit. 
     
-    :::image type="content" source="media/cache-private-link/4-status.png" alt-text="Azure Cache for Redis erstellt.":::
 
-## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Erstellen eines privaten Endpunkts mit einer vorhandenen Azure Cache for Redis-Instanz 
 
-In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
+In diesem Abschnitt fügen Sie einer vorhandenen Azure Cache for Redis-Instanz einen privaten Endpunkt hinzu. 
 
-1. Wählen Sie **Ressource erstellen**.
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks 
+Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk zu erstellen:
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Auswählen von „Ressource erstellen“.":::
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann **Ressource erstellen** aus.
 
 2. Wählen Sie auf der Seite **Neu** zuerst **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
 
-    :::image type="content" source="media/cache-private-link/5-select-vnet.png" alt-text="Erstellen eines virtuellen Netzwerks.":::
+3. Wählen Sie **Hinzufügen** aus, um ein virtuelles Netzwerk zu erstellen.
 
-3. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+4. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | **Einstellung**          | **Wert**                                                           |
-    |------------------|-----------------------------------------------------------------|
-    | **Projektdetails**  |                                                                 |
-    | Subscription     | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus.                                  |
-    | Ressourcengruppe   | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus. |
-    | **Instanzendetails** |                                                                 |
-    | Name             | Eingeben von **\<virtual-network-name>**                                    |
-    | Region           | Auswählen von **\<region-name>** |
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem dieses virtuelle Netzwerk erstellt werden soll. | 
+   | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Name der Ressourcengruppe, in der Ihr virtuelles Netzwerk und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
+   | **Name** | Geben Sie einen Namen für das virtuelle Netzwerk ein. | Der Name muss mit einem Buchstaben oder einer Ziffer beginnen, auf einen Buchstaben, eine Ziffer oder einen Unterstrich enden und darf nur Buchstaben, Ziffern, Unterstriche, Punkte und Bindestriche enthalten. | 
+   | **Region** | Öffnen Sie die Dropdownliste, und wählen Sie eine Region aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihr virtuelles Netzwerk verwenden. |
 
-4. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+5. Wählen Sie die Registerkarte **IP-Adressen** aus, oder klicken Sie auf die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
-5. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
+6. Geben Sie auf der Registerkarte **IP-Adressen** den **IPv4-Adressraum** als eine oder mehrere Adresspräfixe in CIDR-Schreibweise an (z. B. 192.168.1.0/24).
 
-    | Einstellung            | Wert                      |
-    |--------------------|----------------------------|
-    | IPv4-Adressraum | Eingeben von **\<IPv4-address-space>** |
+7. Klicken Sie unter **Subnetzname** auf **Standard**, um die Eigenschaften des Subnetzes zu bearbeiten.
 
-6. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
+8. Geben Sie im Bereich **Subnetz bearbeiten** einen **Subnetznamen** sowie den **Subnetzadressbereich** an. Der Adressbereich des Subnetzes in CIDR-Schreibweise (z. B. 192.168.1.0/24). Er muss innerhalb des Adressraums des virtuellen Netzwerks liegen.
 
-7. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
+9. Wählen Sie **Speichern** aus.
 
-    | Einstellung            | Wert                      |
-    |--------------------|----------------------------|
-    | Subnetzname | Eingeben von **\<subnet-name>** |
-    | Subnetzadressbereich | Eingeben von **\<subnet-address-range>**
+10. Wählen Sie die Registerkarte **Überprüfen + erstellen**, oder klicken Sie auf die Schaltfläche **Überprüfen + erstellen**.
 
-8. Wählen Sie **Speichern** aus.
+11. Vergewissern Sie sich, dass alle Informationen richtig sind, und klicken Sie auf **Erstellen**, um das virtuelle Netzwerk bereitzustellen.
 
-9. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
+### <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts 
 
-10. Klicken Sie auf **Erstellen**.
+Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt zu erstellen:
 
+1. Suchen Sie im Azure-Portal nach **Azure Cache for Redis**, und drücken Sie die EINGABETASTE, oder wählen Sie es in den Suchvorschlägen aus.
 
-## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts 
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Auswählen von „Ressource erstellen“.":::
 
-In diesem Abschnitt erstellen Sie einen privaten Endpunkt und verbinden diesen mit dem zuvor erstellten Cache.
+2. Wählen Sie die Cache-Instanz aus, der Sie einen privaten Endpunkt hinzufügen möchten.
 
-1. Suchen Sie nach **Private Link**, und drücken Sie die EINGABETASTE, oder wählen Sie den Eintrag aus den Suchvorschlägen aus.
+3. Wählen Sie im linken Bildschirmbereich **(VORSCHAU) Privater Endpunkt** aus.
 
-    :::image type="content" source="media/cache-private-link/7-create-private-link.png" alt-text="Suchen nach einem Private Link.":::
+4. Klicken Sie auf die Schaltfläche **Privater Endpunkt**, um Ihren privaten Endpunkt zu erstellen.
 
-2. Wählen Sie im linken Bildschirmbereich **Private Endpunkte** aus.
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Auswählen von „Ressource erstellen“.":::
 
-    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="Auswählen von Private Link.":::
+5. Konfigurieren Sie auf der Seite **Privaten Endpunkt erstellen** die Einstellungen für Ihren privaten Endpunkt.
 
-3. Wählen Sie die Schaltfläche **+ Hinzufügen** aus, um Ihren privaten Endpunkt zu erstellen. 
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem dieser private Endpunkt erstellt werden soll. | 
+   | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr privater Endpunkt und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
+   | **Name** | Geben Sie einen Namen für den privaten Endpunkt ein. | Der Name muss mit einem Buchstaben oder einer Ziffer beginnen, auf einen Buchstaben, eine Ziffer oder einen Unterstrich enden und darf nur Buchstaben, Ziffern, Unterstriche, Punkte und Bindestriche enthalten. | 
+   | **Region** | Öffnen Sie die Dropdownliste, und wählen Sie eine Region aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihren privaten Endpunkt verwenden. |
 
-    :::image type="content" source="media/cache-private-link/9-add-private-endpoint.png" alt-text="Einen Private Link hinzufügen.":::
+6. Klicken Sie auf die Schaltfläche **Weiter: Ressource** aus.
 
-4. Konfigurieren Sie auf der Seite **Privaten Endpunkt erstellen** die Einstellungen für Ihren privaten Endpunkt.
+7. Wählen Sie auf der Registerkarte **Ressource** Ihr Abonnement aus, wählen Sie `Microsoft.Cache/Redis` als Ressourcentyp aus, und wählen Sie dann den Cache aus, mit dem Sie den privaten Endpunkt verbinden möchten.
 
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | **PROJEKTDETAILS** | |
-    | Subscription | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. |
-    | Resource group | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus. |
-    | **INSTANZDETAILS** |  |
-    | Name |Geben Sie einen Namen für den privaten Endpunkt ein.  |
-    | Region |Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. |
-    |||
+8. Klicken Sie auf die Schaltfläche **Weiter: Konfiguration** aus.
 
-5. Wählen Sie unten auf der Seite die Schaltfläche **Next: Ressource** aus.
+9. Wählen Sie auf der Registerkarte **Konfiguration** das im vorherigen Abschnitt erstellte virtuelle Netzwerk und Subnetz aus.
 
-6. Wählen Sie auf der Registerkarte **Ressource** Ihr Abonnement aus, wählen Sie den Ressourcentyp „Microsoft.Cache/Redis“ aus, und wählen Sie dann den Cache aus, den Sie im vorherigen Abschnitt erstellt haben.
+10. Klicken Sie auf die Schaltfläche **Weiter: Tags** (Weiter: Tags) aus.
 
-    :::image type="content" source="media/cache-private-link/10-resource-private-endpoint.png" alt-text="Ressourcen für Private Link.":::
+11. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten.
 
-7. Wählen Sie unten auf der Seite die Schaltfläche **Next: Konfiguration** aus.
+12. Wählen Sie **Überprüfen und erstellen** aus. Sie werden zu der Registerkarte  **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
-8. Wählen Sie auf der Registerkarte **Konfiguration** das im vorherigen Abschnitt erstellte virtuelle Netzwerk und Subnetz aus.
-
-    :::image type="content" source="media/cache-private-link/11-configuration-private-endpoint.png" alt-text="Konfiguration für Private Link.":::
-
-9. Wählen Sie unten auf der Seite die Schaltfläche **Next: Tags** (Weiter: Tags) aus.
-
-10. Geben Sie auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten. Dieser Schritt ist optional.
-
-    :::image type="content" source="media/cache-private-link/12-tags-private-endpoint.png" alt-text="Tags für Private Link.":::
-
-11. Wählen Sie **Überprüfen und erstellen** aus. Sie werden zu der Registerkarte  **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
-
-12. Wenn die grüne Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+13. Wenn die grüne Meldung **Validierung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Private Link finden Sie in der [Dokumentation zu Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview). 
+Weitere Informationen zu Azure Private Link finden Sie in der [Dokumentation zu Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview). 
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4210ad382301851a41d3fbd7ee3dc20a748fb544
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732003"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802190"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
@@ -58,14 +58,14 @@ Zunächst müssen Sie das [Azure AD PowerShell-Vorschaumodul herunterladen](http
 Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu installieren:
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module AzureADPreview
+Import-Module AzureADPreview
 ```
 
 Überprüfen Sie mithilfe des folgenden Befehls, ob das Modul verwendet werden kann:
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
@@ -125,7 +125,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     Body
 
     ``` HTTP
-   {
+    {
        "description": "Can manage basic aspects of application registrations.",
        "displayName": "Application Support Administrator",
        "isEnabled": true,
@@ -138,11 +138,11 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
                ]
            }
        ]
-   }
+    }
     ```
 
-  > [!Note]
-  > „templateId“: „GUID“ ist ein optionaler Parameter, der je nach Anforderung im Text gesendet wird. Wenn Sie mehrere verschiedene benutzerdefinierte Rollen mit allgemeinen Parametern erstellen müssen, empfiehlt es sich, eine Vorlage zu erstellen und eine templateId zu definieren. Sie können mit dem PowerShell-Cmdlet „(New-Guid).Guid“ eine templateId im Voraus generieren. 
+    > [!Note]
+    > Die `"templateId": "GUID"` ist ein optionaler Parameter, der je nach der Anforderung im Text gesendet wird. Wenn Sie mehrere verschiedene benutzerdefinierte Rollen mit allgemeinen Parametern erstellen müssen, empfiehlt es sich, eine Vorlage zu erstellen und einen `templateId`-Wert zu definieren. Vorher können Sie mit dem PowerShell-Cmdlet `(New-Guid).Guid` einen `templateId`-Wert generieren. 
 
 1. Erstellen Sie die Rollenzuweisung.
 
@@ -163,7 +163,6 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
-
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Zuweisen einer auf eine Ressource begrenzten benutzerdefinierten Rolle
 

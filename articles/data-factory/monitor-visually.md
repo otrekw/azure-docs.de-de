@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801523"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570141"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -136,7 +136,7 @@ Sie können aber auch den Verlauf für erneute Ausführungen für eine bestimmte
 
 Sie können die durch eine Pipelineausführung verbrauchten Ressourcen anzeigen, indem Sie neben der Ausführung auf das Symbol für Verbrauch klicken. 
 
-![Überwachen des Verbrauchs](media/monitor-visually/monitor-consumption-1.png)
+![Der Screenshot zeigt, wo Sie die von einer Pipeline verbrauchten Ressourcen sehen können.](media/monitor-visually/monitor-consumption-1.png)
 
 Wenn Sie auf das Symbol klicken, wird ein Verbrauchsbericht zu den durch diese Pipelineausführung genutzten Ressourcen geöffnet. 
 
@@ -190,7 +190,7 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
     ![Feld für Zielkriterien](media/monitor-visually/add-criteria-1.png)
 
-    ![Liste der Kriterien](media/monitor-visually/add-criteria-2.png)
+    ![Der Screenshot zeigt, wo Sie eine Metrik auswählen, um die Warnungsbedingung einzurichten.](media/monitor-visually/add-criteria-2.png)
 
     ![Liste der Kriterien](media/monitor-visually/add-criteria-3.png)
 

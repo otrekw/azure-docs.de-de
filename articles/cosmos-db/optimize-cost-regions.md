@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d98c9a7e58f08d9ad63183805cd6cd0d2ab3b3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72753320"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570168"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Der bereitgestellte Durchsatz bei nur einer Region mit Schreibvorgängen kostet 
 
 ## <a name="costs-for-multiple-write-regions"></a>Kosten für mehrere Regionen mit Schreibvorgängen
 
-In einem Multimastersystem nehmen die netto verfügbaren Anforderungseinheiten (RUs) für Schreibvorgänge um das `N`-fache zu, wobei `N` für die Anzahl der Regionen mit Schreibvorgängen steht. Im Gegensatz zu einer einzelnen Region mit Schreibvorgängen kann hier jede Region Schreibanforderungen verarbeiten und sollte eine Konfliktlösung unterstützen. Die Workloadmenge für die Schreiber hat sich erhöht. Unter Gesichtspunkten der Kostenplanung müssen Sie, um weltweite Schreibvorgänge für `M` RUs/Sek. auszuführen, M `RUs` auf Container- oder Datenbankebene bereitstellen. Anschließend können Sie beliebig viele Regionen hinzufügen und diese für Schreibvorgänge verwenden, um weltweite Schreibvorgänge für `M` RUs auszuführen. 
+In einem System mit Schreibvorgängen in mehreren Regionen nehmen die tatsächlich verfügbaren Anforderungseinheiten (RUs) für Schreibvorgänge um das `N`-Fache zu, wobei `N` für die Anzahl der Schreibregionen steht. Im Gegensatz zu einer einzelnen Region mit Schreibvorgängen kann hier jede Region Schreibanforderungen verarbeiten und sollte eine Konfliktlösung unterstützen. Die Workloadmenge für die Schreiber hat sich erhöht. Unter Gesichtspunkten der Kostenplanung müssen Sie, um weltweite Schreibvorgänge für `M` RUs/Sek. auszuführen, M `RUs` auf Container- oder Datenbankebene bereitstellen. Anschließend können Sie beliebig viele Regionen hinzufügen und diese für Schreibvorgänge verwenden, um weltweite Schreibvorgänge für `M` RUs auszuführen. 
 
 ### <a name="example"></a>Beispiel
 

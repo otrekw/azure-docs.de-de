@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: aa70c9e5d67c759afe905e9e110d6bcd18555a8c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019239"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803788"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -171,6 +171,21 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsf
 | BESCHREIBUNG | Eine Beschreibung der Befehlsfunktion. |
 | Anforderung | Wenn aktiviert, eine Definition des Anforderungsparameters, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
 | Antwort | Wenn aktiviert, eine Definition der Befehlsantwort, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
+
+#### <a name="offline-commands"></a>Offlinebefehle
+
+Wenn ein Gerät zurzeit offline ist, können Sie Warteschlangenbefehle auswählen, indem Sie in der Gerätevorlage die Option **Warteschlange (falls offline)** für einen Befehl aktivieren.
+
+Bei dieser Option werden Benachrichtigungen mithilfe von IoT Hub-Cloud-zu-Gerät (C2D)-Nachrichten an Geräte gesendet. Weitere Informationen finden Sie im IoT Hub-Artikel [Senden von C2D-Nachrichten](../../iot-hub/iot-hub-devguide-messages-c2d.md).
+
+Cloud-zu-Gerät-Nachrichten:
+
+- Sind unidirektionale Benachrichtigungen aus Ihrer Lösung an das Gerät.
+- Gewährleisten mindestens einmal eine Nachrichtenübermittlung. IoT Hub speichert Cloud-zu-Gerät-Nachrichten in Warteschlangen pro Gerät, und gewährleistet so Resilienz bei Verbindungs- und Gerätefehlern.
+- Erfordert, dass das Gerät einen Meldungshandler zur Verarbeitung der Cloud-zu-Gerät-Nachricht implementiert.
+
+> [!NOTE]
+> Diese Option steht nur in der IoT Central-Webbenutzeroberfläche zur Verfügung. Diese Einstellung ist nicht enthalten, wenn Sie ein Modell oder eine Schnittstelle aus der Gerätevorlage exportieren.
 
 ## <a name="manage-an-interface"></a>Verwalten einer Schnittstelle
 

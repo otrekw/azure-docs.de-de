@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518995"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803737"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -150,7 +150,7 @@ Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgen
 
 * Der erste Wert ist die **zones**-Eigenschaft, die angibt, in welcher Verfügbarkeitszone die VM-Skalierungsgruppe bereitgestellt wird.
 * Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss.
-* Der dritte Wert ist die Eigenschaft „faultDomainOverride“ in der Erweiterung der Service Fabric-VM-Skalierungsgruppe. Der Wert für diese Eigenschaft sollte die Region und Zone enthalten, in der diese VM-Skalierungsgruppe platziert wird. Beispiel: „faultDomainOverride“: „eastus/az1“. Alle Ressourcen der VM-Skalierungsgruppe müssen in derselben Region positioniert werden, da Azure Service Fabric-Cluster keine regionenübergreifende Unterstützung aufweisen.
+* Der dritte Wert ist die Eigenschaft „faultDomainOverride“ in der Erweiterung der Service Fabric-VM-Skalierungsgruppe. Der Wert für diese Eigenschaft sollte nur die Zone enthalten, in der diese VM-Skalierungsgruppe platziert wird. Beispiel: „faultDomainOverride“: „az1“. Alle Ressourcen der VM-Skalierungsgruppe müssen in derselben Region positioniert werden, da Azure Service Fabric-Cluster keine regionsübergreifende Unterstützung aufweisen.
 
 ```json
 {
@@ -183,7 +183,7 @@ Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgen
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }
