@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317632"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828009"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-Verschlüsselung: IPsec über ExpressRoute für Virtual WAN
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie mit Azure Virtual WAN über das private 
 
 Das folgende Diagramm zeigt ein Beispiel für eine VPN-Verbindung über privates ExpressRoute-Peering:
 
-![VPN über ExpressRoute](./media/vpn-over-expressroute/vwan-vpn-over-er.png)
+:::image type="content" source="./media/vpn-over-expressroute/vwan-vpn-over-er.png" alt-text="VPN über ExpressRoute":::
 
 Das Diagramm zeigt ein Netzwerk innerhalb des lokalen Netzwerks, das über privates ExpressRoute-Peering mit dem VPN-Gateway des Azure-Hubs verbunden ist. Die Einrichtung de Verbindung ist unkompliziert:
 
@@ -76,7 +76,7 @@ Die Standortressource stimmt mit den Nicht-ExpressRoute-VPN-Standorten für ein 
 >
 
 1. Navigieren Sie in Ihrem Browser zum Azure-Portal. 
-1. Wählen Sie das WAN aus, das Sie erstellt haben. Wählen Sie auf der WAN-Seite unter **Konnektivität** die Option **VPN-Standorte** aus.
+1. Wählen Sie den Hub aus, den Sie erstellt haben. Wählen Sie auf der Seite des virtuellen WAN-Hubs unter **Konnektivität** die Option **VPN-Standorte** aus.
 1. Wählen Sie auf der Seite **VPN-Standorte** die Option **+Standort erstellen** aus.
 1. Füllen Sie auf der Seite **Create site** (Standort erstellen) die folgenden Felder aus:
    * **Abonnement**: Überprüfen Sie das Abonnement.
@@ -104,12 +104,17 @@ Die Standortressource stimmt mit den Nicht-ExpressRoute-VPN-Standorten für ein 
 Nachdem Sie den VPN-Standort erstellt und die Verbindung mit dem Hub hergestellt haben, führen Sie die folgenden Schritte aus, um die Verbindung für das private ExpressRoute-Peering zu konfigurieren:
 
 1. Kehren Sie zur Virtual WAN-Ressourcenseite zurück und wählen Sie die Hubressource aus. Oder navigieren Sie vom VPN-Standort zum verbundenen Hub.
-1. Wählen Sie unter **Konnektivität** die Option **VPN (Site-to-Site)** aus.
-1. Wählen Sie das Auslassungszeichen ( **...** ) neben dem VPN-Standort über ExpressRoute aus, und wählen Sie **VPN-Verbindung mit diesem Hub bearbeiten** aus.
-1. Wählen Sie für **Private Azure-IP-Adresse verwenden** den Wert **Ja** aus. Mit dieser Einstellung wird das Hub-VPN-Gateway so konfiguriert, dass für diese Verbindung anstelle der öffentlichen IP-Adressen private IP-Adressen innerhalb des Hubadressbereichs auf dem Gateway verwendet werden. Dadurch wird sichergestellt, dass der Datenverkehr aus dem lokalen Netzwerk die privaten ExpressRoute-Peeringpfade durchläuft und nicht das öffentliche Internet für diese VPN-Verbindung verwendet wird. Der folgende Screenshot zeigt die Einstellung.
 
-   ![Einstellung für die Verwendung einer privaten IP-Adresse für die VPN-Verbindung](./media/vpn-over-expressroute/vpn-link-configuration.png)
-   
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="VPN über ExpressRoute":::
+1. Wählen Sie unter **Konnektivität** die Option **VPN (Site-to-Site)** aus.
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="VPN über ExpressRoute":::
+1. Wählen Sie das Auslassungszeichen (**...**) neben dem VPN-Standort über ExpressRoute aus, und wählen Sie **VPN-Verbindung mit diesem Hub bearbeiten** aus.
+
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="VPN über ExpressRoute":::
+1. Wählen Sie für **Private Azure-IP-Adresse verwenden** den Wert **Ja** aus. Mit dieser Einstellung wird das Hub-VPN-Gateway so konfiguriert, dass für diese Verbindung anstelle der öffentlichen IP-Adressen private IP-Adressen innerhalb des Hubadressbereichs auf dem Gateway verwendet werden. Dadurch wird sichergestellt, dass der Datenverkehr aus dem lokalen Netzwerk die privaten ExpressRoute-Peeringpfade durchläuft und nicht das öffentliche Internet für diese VPN-Verbindung verwendet wird. Der folgende Screenshot zeigt die Einstellung:
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN über ExpressRoute" border="false":::
 1. Wählen Sie **Speichern** aus.
 
 Nachdem Sie Ihre Änderungen gespeichert haben, verwendet das VPN-Gateway des Hubs die privaten IP-Adressen des VPN-Gateways, um die IPsec/IKE-Verbindungen mit dem lokalen VPN-Gerät über ExpressRoute herzustellen.
@@ -225,11 +230,11 @@ Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, könne
 1. Auf der Seite **Übersicht** steht jeder Punkt auf der Karte für einen Hub.
 1. Im Abschnitt mit den **Hubs und Verbindungen** können Sie den Hub, die Site, die Region und den Status der VPN-Verbindung anzeigen. Sie können auch die Anzahl der ein- und ausgehenden Bytes anzeigen.
 
-## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7. Überwachen einer Verbindung
+## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6. Überwachen einer Verbindung
 
 Erstellen Sie eine Verbindung, um die Kommunikation zwischen einem virtuellen Azure-Computer (VM) und einem Remotestandort zu überwachen. Weitere Informationen zum Einrichten einer Verbindungsüberwachung finden Sie unter [Überwachen der Netzwerkkommunikation](~/articles/network-watcher/connection-monitor.md). Das Quellfeld ist die VM-IP in Azure, und die Ziel-IP ist die Standort-IP.
 
-## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. Bereinigen von Ressourcen
+## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7. Bereinigen von Ressourcen
 
 Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Führen Sie den folgenden PowerShell-Befehl aus, und ersetzen Sie `myResourceGroup` durch den Namen Ihrer Ressourcengruppe:
 

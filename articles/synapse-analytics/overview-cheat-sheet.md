@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260664"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91620272"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet für Azure Synapse Analytics
 
@@ -34,14 +34,18 @@ Ein Arbeitsbereich ermöglicht die Ausführung von Analysen mit SQL und Apache S
 ## <a name="apache-spark-for-synapse"></a>Apache Spark für Synapse
 Erstellen und verwenden Sie zur Nutzung von Spark-Analysen **Spark-Pools** in Ihrem Synapse-Arbeitsbereich.
 
-## <a name="terminology"></a>Begriff
+## <a name="sql-terminology"></a>SQL-Terminologie
+| Begriff                         | Definition      |
+|:---                                 |:---                 |
+| **SQL-Anforderung**  |   Ein Vorgang – beispielsweise eine Abfrage, die über einen SQL-Pool oder über SQL On-Demand ausgeführt wird. |
+
+## <a name="spark-terminology"></a>Spark-Terminologie
 | Begriff                         | Definition      |
 |:---                                 |:---                 |
 |**Apache Spark für Synapse** | In einem Spark-Pool verwendete Spark-Runtime. Die aktuell unterstützte Version ist Spark 2.4 mit Python 3.6.1, Scala 2.11.12, .NET-Unterstützung für Apache Spark 0.5 und Delta Lake 0.3.  | 
 | **Apache Spark-Pool**  | In einem Arbeitsbereich können null bis n bereitgestellte Spark-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Ein Spark-Pool kann automatisch angehalten, fortgesetzt und skaliert werden.  |
 | **Spark-Anwendung**  |   Besteht aus einem Treiberprozess und einem Satz von Executorprozessen. Eine Spark-Anwendung wird in einem Spark-Pool ausgeführt.            |
 | **Spark-Sitzung**  |   Einheitlicher Einstiegspunkt einer Spark-Anwendung. Ermöglicht die Interaktion mit den verschiedenen Funktionen von Spark sowie mit einer kleineren Anzahl von Konstrukten. Zum Ausführen eines Notebooks muss eine Sitzung erstellt werden. Eine Sitzung kann so konfiguriert werden, dass sie in einer bestimmten Anzahl von Executors mit einer bestimmten Größe ausgeführt wird. Eine Notebooksitzung ist standardmäßig für die Ausführung in zwei Executors mittlerer Größe konfiguriert. |
-| **SQL-Anforderung**  |   Ein Vorgang – beispielsweise eine Abfrage, die über einen SQL-Pool oder über SQL On-Demand ausgeführt wird. |
 |**Datenintegration**| Ermöglicht das Erfassen von Daten zwischen verschiedenen Quellen sowie das Orchestrieren von Aktivitäten, die innerhalb oder außerhalb eines Arbeitsbereichs ausgeführt werden.| 
 |**Artefakte**| Konzept, das alle Objekte umfasst, die ein Benutzer zum Verwalten von Datenquellen bzw. zum Entwickeln, Orchestrieren und Visualisieren benötigt.|
 |**Notebook**| Interaktive und reaktive Data Science- und Datentechnik-Schnittstelle mit Unterstützung von Scala, PySpark, C# und SparkSQL. |

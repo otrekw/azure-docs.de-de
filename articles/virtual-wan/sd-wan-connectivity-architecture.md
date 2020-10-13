@@ -1,19 +1,19 @@
 ---
-title: SD-WAN-Verbindungsarchitektur
+title: Virtual WAN- und SD-WAN-Konnektivitätsarchitekturen
 titleSuffix: Azure Virtual WAN
 description: Erfahren Sie etwas über das Verbinden eines privaten SD-WAN mit einem Azure Virtual WAN.
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 87e9549419bccc36d743871755e782a71e93e5e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267464"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828057"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-WAN-Konnektivitätsarchitektur mit Azure Virtual WAN
 
@@ -22,6 +22,7 @@ Azure Virtual WAN ist ein Netzwerkdienst, der viele Cloudverbindungs- und Sicher
 Obwohl es sich bei Azure Virtual WAN selbst um ein softwaredefiniertes WAN (SD-WAN) handelt, ist es auch darauf ausgelegt, eine nahtlose Verbindung mit den lokalen SD-WAN-Technologien und -Diensten zu ermöglichen. Viele dieser Dienste werden von unserem [Virtual WAN](virtual-wan-locations-partners.md)-Ökosystem und von Azure Networking Managed Services-Partnern [(MSPs)](../networking/networking-partners-msp.md) angeboten. Unternehmen, die Ihr privates WAN in ein SD-WAN umwandeln, haben beim Verbinden Ihres privaten SD-WAN mit Azure Virtual WAN verschiedene Optionen. Unternehmen können zwischen diesen Optionen wählen:
 
 * Modell mit direkter Verbindung
+* Direktes Interconnectmodell mit NVA-in-VWAN-Hub
 * Modell mit indirekter Verbindung
 * Modell mit verwaltetem Hybrid-WAN mit dem bevorzugten Anbieter für verwaltete Dienste ([Managed Service Provider, MSP](../networking/networking-partners-msp.md))
 
@@ -29,7 +30,7 @@ In allen diesen Fällen ist die Verbindung von Virtual WAN mit dem SD-WAN aus de
 
 ## <a name="direct-interconnect-model"></a><a name="direct"></a>Modell mit direkter Verbindung
 
-![Modell mit direkter Verbindung](./media/sd-wan-connectivity-architecture/direct.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="Modell mit direkter Verbindung":::
 
 Bei diesem Architekturmodell ist die Einrichtung an der Zweigniederlassung des Kunden (Customer-Premises Equipment, CPE) des SD-WAN direkt über IPsec-Verbindungen mit Virtual WAN-Hubs verbunden. Die Zweigniederlassungs-CPE kann auch über das private SD-WAN mit anderen Zweigniederlassungen verbunden werden, oder Sie können Virtual WAN für Verbindungen zwischen Zweigniederlassungen nutzen. Zweigniederlassungen, die auf ihre Workloads in Azure zugreifen müssen, können über die IPsec-Tunnel, die in Virtual WAN-Hubs enden, direkt und sicher auf Azure zugreifen.
 
@@ -41,9 +42,20 @@ In diesem Modell werden einige proprietäre Datenverkehrsoptimierungen, die auf 
 
 Mit Virtual WAN können Benutzer Azure-Pfadauswahl erhalten, eine richtlinienbasierte Pfadauswahl über mehrere ISP-Links aus der Zweigniederlassungs-CPE zu Virtual WAN-VPN-Gateways. Virtual WAN ermöglicht das Einrichten mehrerer Links (Pfade) aus derselben Zweigniederlassungs-CPE des SD-WAN. Jeder Link stellt eine Doppeltunnelverbindung von einer eindeutigen öffentlichen IP-Adresse der SD-WAN-CPE mit zwei verschiedenen Instanzen des Azure Virtual WAN-VPN-Gateways dar. SD-WAN-Anbieter können den optimalen Pfad zu Azure implementieren, basierend auf Datenverkehrsrichtlinien, die von Ihrer Richtlinien-Engine für die CPE-Links festgelegt werden. Auf Azure-Seite werden alle eingehenden Verbindungen gleich behandelt.
 
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>Direktes Interconnectmodell mit NVA-in-VWAN-Hub
+
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Modell mit direkter Verbindung":::
+
+Dieses Architekturmodell unterstützt die Bereitstellung einer [Network Virtual Appliance (NVA) von Drittanbietern direkt im virtuellen Hub](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub). Dadurch können Kunden ihr Zweigniederlassungs-CPE mit der gleichen Marken-NVA im virtuellen Hub verbinden und so proprietäre End-to-End-SD-WAN-Funktionen nutzen, wenn sie eine Verbindung mit Azure-Workloads herstellen. 
+
+Mehrere Virtual WAN-Partner haben eine Funktion entwickelt, die die NVA im Rahmen des Bereitstellungsprozesses automatisch konfiguriert. Nachdem das NVA im virtuellen Hub bereitgestellt wurde, müssen alle zusätzlichen Konfigurationsschritte, die für das NVA erforderlich sind, über das NVA-Partnerportal oder die Verwaltungsanwendung durchgeführt werden. Der direkte Zugriff auf das NVA ist nicht möglich. Die zur direkten Bereitstellung im Azure Virtual WAN-Hub verfügbaren NVAs werden speziell für die Verwendung im virtuellen Hub entwickelt. Partner, die NVAs im VWAN-Hub sowie deren Bereitstellungsleitfäden unterstützen, finden Sie im Artikel [Virtual WAN-Partner](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings).
+
+Die SD-WAN-CPE ist auch weiterhin der Ort, an dem die Datenverkehrsoptimierung und die Pfadauswahl implementiert und erzwungen werden.
+In diesem Modell wird die proprietäre Datenverkehrsoptimierung auf der Grundlage von Echtzeit-Datenverkehrsmerkmalen unterstützt, da die Konnektivität mit dem Virtual WAN über die SD-WAN-NVA im Hub erfolgt.
+
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Modell mit indirekter Verbindung
 
-![Modell mit indirekter Verbindung](./media/sd-wan-connectivity-architecture/indirect.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Modell mit direkter Verbindung":::
 
 In diesem Architekturmodell sind die Zweigniederlassungs-CPEs des SD-WAN indirekt mit Virtual WAN-Hubs verbunden. Wie in der Abbildung ersichtlich ist, wird eine CPE in einem virtuellen SD-WAN in einem Unternehmens-VNET bereitgestellt. Diese virtuelle CPE ist wiederum über IPsec mit den Virtual WAN-Hubs verbunden. Die virtuelle CPE übernimmt also die Aufgabe eines SD-WAN-Gateways zu Azure. Zweigniederlassungen, die auf ihre Workloads in Azure zugreifen müssen, können über das v-CPE-Gateway darauf zugreifen.
 
@@ -51,7 +63,7 @@ Da die Verbindungen mit Azure über das v-CPE-Gateway (NVA) erfolgen, findet der
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Modell mit verwaltetem Hybrid-WAN
 
-![Modell mit verwaltetem Hybrid-WAN](./media/sd-wan-connectivity-architecture/hybrid.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Modell mit direkter Verbindung":::
 
 In diesem Architekturmodell können Unternehmen einen verwalteten SD-WAN-Dienst nutzen, der von einem MSP-Partner (Managed Service Provider) angeboten wird. Dieses Modell ähnelt den oben beschriebenen direkten und indirekten Modellen. In diesem Modell werden jedoch der SD-WAN-Entwurf, die Orchestrierung und der Betrieb vom SD-WAN-Anbieter bereitgestellt.
 

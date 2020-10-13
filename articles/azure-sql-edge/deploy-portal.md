@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886765"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445729"
 ---
 # <a name="deploy-azure-sql-edge"></a>Bereitstellen von Azure SQL Edge 
 
@@ -62,7 +62,6 @@ Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem 
 
    |**Parameter**  |**Beschreibung**|
    |---------|---------|
-   | Name | Der Name für das Modul. |
    | MSSQL_SA_PASSWORD  | Ändern Sie den Standardwert, um ein sicheres Kennwort für das SQL Edge-Administratorkonto anzugeben. |
    | MSSQL_LCID   | Ändern Sie den Standardwert, um die gewünschte Sprach-ID festzulegen, die für SQL Edge verwendet werden soll. Beispielsweise steht „1036“ für „Französisch“. |
    | MSSQL_COLLATION | Ändern Sie den Standardwert, um die Standardsortierung für SQL Edge festzulegen. Diese Einstellung setzt die Standardzuordnung der Sprach-ID (LCID) für die Sortierung außer Kraft. |
@@ -110,7 +109,7 @@ Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem 
    
 8. Klicken Sie im Bereich **IoT Edge-Modul aktualisieren** auf **Aktualisieren**.
 9. Klicken Sie auf der Seite **Module für Gerät festlegen** auf **Weiter: Routen>** , wenn Sie Routen für Ihre Bereitstellung definieren müssen. Klicken Sie andernfalls auf **Überprüfen und erstellen**. Weitere Informationen zum Konfigurieren von Routen finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](../iot-edge/module-composition.md).
-11. Klicken Sie im Bereich **IoT Edge-Modul aktualisieren** auf **Erstellen**.
+11. Klicken Sie auf der Seite **Module für Gerät festlegen** auf **Erstellen**.
 
 ## <a name="connect-to-azure-sql-edge"></a>Herstellen einer Verbindung mit Azure SQL Edge
 

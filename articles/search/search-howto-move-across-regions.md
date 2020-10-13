@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007042"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629810"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verschieben Ihres Azure Cognitive Search-Diensts in eine andere Azure-Region
 
@@ -27,7 +27,7 @@ Gelegentlich fragen Kunden an, wie ein Suchdienst in eine andere Region verschob
 
 + Stellen Sie sicher, dass die Dienste und Features, die von Ihrem Konto verwendet werden, in der Zielregion unterstützt werden.
 
-+ Stellen Sie für Previewfunktionen sicher, dass Ihr Abonnement für die Zielregion auf der Whitelist steht.
++ Stellen Sie für Previewfunktionen sicher, dass Ihr Abonnement für die Zielregion genehmigt ist.
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
 
