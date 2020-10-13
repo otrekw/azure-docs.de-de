@@ -3,12 +3,12 @@ title: Verwalten von Formeln in Azure DevTest Labs zum Erstellen virtueller Comp
 description: Dieser Artikel veranschaulicht, wie Sie eine Formel anhand einer Basis (benutzerdefiniertes Image, Marketplace-Image oder eine andere Formel) oder aus einem vorhandenen virtuellen Computer erstellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308893"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 
@@ -60,7 +60,7 @@ In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis e
     - **Ablaufdatum und -zeit**: Dieses Feld kann nicht bearbeitet werden. 
     - **Diesen Computer als anforderbar festlegen**: Wenn Sie einen Computer als „anforderbar“ festlegen, bedeutet dies, dass dem Computer zum Zeitpunkt der Erstellung kein Besitz zugewiesen wird. Auf der Seite des Labs können Labbenutzer den Besitz des Computers übernehmen („abrufen“).  
 
-        ![Seite „Erweiterte Einstellungen“](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![Screenshot, der die erweiterten Einstellungen für die Seite „Formel erstellen (wiederverwendbare Basis)“ zeigt.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Wenn Sie ein Shared Image Gallery-Image als Basis ausgewählt haben, wird auch das Feld **Imageversion** angezeigt, in dem Sie die Version des Images aus dem Katalog auswählen können, das Sie als Basis verwenden möchten. 
 
         ![Seite „Erweiterte Einstellungen“](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -98,7 +98,7 @@ Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf der Seite für das Lab die Option **Formeln (wiederverwendbare Basen)** aus.
    
-    ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
+    ![Screenshot, der die Seite des Labs mit der Auswahl „Formeln (wiederverwendbare Basen)“ zeigt.](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Wählen Sie auf der Seite **Labformeln** die Formel aus, die Sie ändern möchten.
 6. Nehmen Sie auf der Seite **Formel aktualisieren** die gewünschten Änderungen vor, und wählen Sie **Aktualisieren** aus.
 
@@ -113,7 +113,7 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Wählen Sie auf der Seite **Labformeln** die Auslassungspunkte rechts neben der zu löschenden Formel aus.
    
-    ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
+    ![Screenshot, der die Seite „Lab-Formeln“ mit hervorgehobenen Auslassungspunkten für die Formeloptionen zeigt.](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. Wählen Sie im Kontextmenü der Formel die Option **Löschen**aus.
    
     ![Kontextmenü „Formel“](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)

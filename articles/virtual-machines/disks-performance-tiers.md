@@ -1,27 +1,34 @@
 ---
-title: Steigern der Leistung von verwalteten Azure-Datenträgern
-description: Hier erhalten Sie Informationen zu Leistungsstufen für verwaltete Datenträger sowie zum Upgrade der Leistungsstufen für Ihre verwalteten Datenträger.
+title: Ändern der Leistung verwalteter Azure-Datenträger
+description: Erfahren Sie mehr über Leistungsstufen für verwaltete Datenträger sowie über das Ändern der Leistungsstufen für vorhandene verwaltete Datenträger.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974137"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743725"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Leistungsstufen für verwaltete Datenträger (Vorschau)
 
-Azure Disk Storage bietet derzeit integrierte Burstfunktionen, um eine höhere Leistung bei der Handhabung von kurzfristigem, unerwarteten Datenverkehr zu erreichen. SSD Premium-Datenträger verfügen über die Flexibilität, die Leistung der Datenträger zu erhöhen, ohne die tatsächliche Größe der Datenträger zu erhöhen, sodass Sie Ihre Workloadleistungsanforderungen erfüllen und die Kosten senken können. Dieses Feature befindet sich derzeit in der Vorschauversion. Dies ist ideal für Ereignisse, die vorübergehend ein konstant höheres Leistungsniveau erfordern, z. B. Feiertagseinkäufe, Leistungstests oder die Ausführung einer Trainingsumgebung. Um diese Ereignisse zu behandeln, können Sie so lange wie nötig eine höhere Leistungsstufe wählen und zur ursprünglichen Stufe zurückkehren, wenn die zusätzliche Leistung nicht mehr erforderlich ist.
+Azure Disk Storage bietet derzeit integrierte Burstfunktionen, um eine höhere Leistung bei der Verarbeitung von kurzfristigem, unerwarteten Datenverkehr bereitzustellen. SSD Premium bietet die Flexibilität, die Datenträgerleistung zu erhöhen, ohne die tatsächliche Datenträgergröße heraufzusetzen. Diese Funktion ermöglicht es Ihnen, ihre Workloadleistungsanforderungen abzugleichen und Kosten zu senken. 
+
+> [!NOTE]
+> Diese Funktion steht derzeit als Vorschau zur Verfügung. 
+
+Diese Funktion eignet sich ideal für Ereignisse, die vorübergehend ein konstant höheres Leistungsniveau erfordern, z. B. Feiertagseinkäufe, Leistungstests oder die Ausführung einer Trainingsumgebung. Um diese Ereignisse zu verarbeiten, können Sie eine höhere Leistungsstufe verwenden, solange Sie diese benötigen. Anschließend können Sie zur ursprünglichen Stufe zurückkehren, wenn Sie die zusätzliche Leistung nicht mehr benötigen.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Wenn Sie einen Datenträger zum ersten Mal bereitstellen, wird die Baselineleistungsstufe für diesen Datenträger auf der Grundlage der bereitgestellten Datenträgergröße festgelegt. Es kann eine höhere Leistungsstufe gewählt werden, um eine höhere Nachfrage zu befriedigen, und wenn diese Leistung nicht mehr erforderlich ist, können Sie zur ursprünglichen Baselineleistungsstufe zurückkehren. Wenn Sie z. B. einen P10-Datenträger (128 GiB) zur Verfügung stellen, wird Ihre Baselineleistungsstufe auf P10 (500 IOPS und 100 MB/s) festgelegt. Sie können die Stufe so aktualisieren, dass sie der Leistung von P50 (7500 IOPS und 250 MB/s) entspricht, ohne die Datenträgergröße zu erhöhen und zu P10 zurückkehren, wenn die höhere Leistung nicht mehr benötigt wird.
+Wenn Sie einen Datenträger zum ersten Mal bereitstellen, wird die Baselineleistungsstufe für diesen Datenträger auf der Grundlage der bereitgestellten Datenträgergröße festgelegt. Sie können eine höhere Leistungsstufe verwenden, um höheren Bedarf zu erfüllen. Wenn Sie diese Leistungsstufe nicht mehr benötigen, können Sie zur anfänglichen Baselineleistungsstufe zurückkehren.
+
+Ihre Abrechnung ändert sich, wenn sich die Stufe ändert. Wenn Sie z. B. einen P10-Datenträger (128 GiB) zur Verfügung stellen, wird Ihre Baselineleistungsstufe auf P10 (500 IOPS und 100 MBit/s) festgelegt. Ihnen wird die P10-Rate in Rechnung gestellt. Sie können die Stufe auf die Leistung von P50 (7.500 IOPS und 250 MBit/s) aktualisieren, ohne die Größe des Datenträgers zu erhöhen. Während des Upgrades wird Ihnen die P50-Rate in Rechnung gestellt. Wenn Sie die höhere Leistung nicht mehr benötigen, können Sie zur P10-Stufe zurückkehren. Der Datenträger wird erneut mit der P10-Rate abgerechnet.
 
 | Datenträgergröße | Baselineleistungsstufe | Kann aktualisiert werden auf |
 |----------------|-----|-------------------------------------|
@@ -40,74 +47,65 @@ Wenn Sie einen Datenträger zum ersten Mal bereitstellen, wird die Baselineleist
 | 16 TiB | P70 | P80 |
 | 32 TiB | P80 | Keine |
 
+Informationen zur Abrechnung finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
+
 ## <a name="restrictions"></a>Beschränkungen
 
-- Wird derzeit nur für SSD Premium unterstützt.
-- Datenträger müssen von einer aktiven VM getrennt werden, bevor ein Stufenwechsel vorgenommen wird.
-- Die Verwendung der Leistungsstufen P60, P70 und P80 ist auf Datenträger mit 4096 GiB oder mehr beschränkt.
+- Dieses Feature wird derzeit nur für SSD Premium unterstützt.
+- Sie müssen den Datenträger von einer ausgeführten VM trennen, bevor Sie die Stufe des Datenträgers ändern können.
+- Die Verwendung der Leistungsstufen P60, P70 und P80 ist auf Datenträger mit 4.096 GiB oder mehr beschränkt.
+- Die Leistungsstufe eines Datenträgers kann nur ein Mal alle 24 Stunden geändert werden.
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Die Anpassung der Leistungsstufe eines verwalteten Datenträgers ist derzeit nur für Premium-SSDs in den folgenden Regionen verfügbar:
+Die Möglichkeit zum Anpassen der Leistungsstufe eines verwalteten Datenträgers ist zurzeit nur für SSD Premium in der Region „USA, Westen-Mitte“ verfügbar. 
 
-- USA, Westen-Mitte 
-- USA, Osten 2 
-- Europa, Westen
-- Australien, Osten 
-- Australien, Südosten 
-- Indien (Süden)
+## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Erstellen/Aktualisieren eines Datenträgers mit einer höheren Stufe als der Baselinestufe
 
-## <a name="createupdate-a-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Erstellen/Aktualisieren Sie einen Datenträger mit einer höheren Stufe als der Baselinestufe.
+```azurecli
+subscriptionId=<yourSubscriptionIDHere>
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+diskSize=<yourDiskSizeHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
 
-1. Erstellen Sie einen leeren Datenträger mit einer höheren Stufe als der Baselinestufe, oder aktualisieren Sie die Stufe eines Datenträgers, der höher als die Baselinestufe ist, mithilfe der Beispielvorlage [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json).
+az login
 
-     ```cli
-     subscriptionId=<yourSubscriptionIDHere>
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     diskSize=<yourDiskSizeHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az login
-    
-     az account set --subscription $subscriptionId
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
-     ```
+az account set --subscription $subscriptionId
 
-1. Bestätigen Sie die Stufe des Datenträgers.
+az disk create -n $diskName -g $resourceGroupName -l $region --sku Premium_LRS --size-gb $diskSize --tier $performanceTier
+```
+## <a name="create-an-os-disk-with-a-tier-higher-than-the-baseline-tier-from-an-azure-marketplace-image"></a>Erstellen eines Betriebssystemdatenträgers mit einer höheren Stufe als der Baselinestufe aus einem Azure Marketplace-Image
 
-    ```cli
-    az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
+image=Canonical:UbuntuServer:18.04-LTS:18.04.202002180
 
-## <a name="createupdate-an-os-disk-with-a-tier-higher-than-the-baseline-tier"></a>Erstellen/Aktualisieren Sie einen Betriebssystemdatenträger mit einer höheren Stufe als der Baselinestufe.
+az disk create -n $diskName -g $resourceGroupName -l $region --image-reference $image --sku Premium_LRS --tier $performanceTier
+```
+     
+## <a name="update-the-tier-of-a-disk"></a>Aktualisieren der Stufe eines Datenträgers
 
-1. Erstellen Sie einen Betriebssystemdatenträger aus einem Marketplace-Image, oder aktualisieren Sie den Datenträger eines Betriebssystemdatenträgers, der höher als die Baselinestufe ist, mithilfe der Beispielvorlage [CreateUpdateOSDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateOSDiskWithTier.json).
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
 
-     ```cli
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateOSDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier"
-     ```
- 
- 1. Bestätigen Sie die Stufe des Datenträgers.
- 
-     ```cli
-     az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
+```
+## <a name="show-the-tier-of-a-disk"></a>Anzeigen der Stufe eines Datenträgers
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die Größe eines Datenträgers ändern müssen, um die Vorteile der größeren Leistungsstufen zu nutzen, lesen Sie unsere Artikel zu diesem Thema:
+Wenn Sie die Größe eines Datenträgers ändern müssen, um die höheren Leistungsstufen zu nutzen, lesen Sie die folgenden Artikel:
 
 - [Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](linux/expand-disks.md)
 - [Erweitern eines verwalteten Datenträgers, der an einen virtuellen Windows-Computer angefügt ist](windows/expand-os-disk.md)

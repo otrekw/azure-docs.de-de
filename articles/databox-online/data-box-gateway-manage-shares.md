@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 847c8a07bfa245d0c9859bb3cf6f6ed233934250
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883540"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743878"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Verwalten von Freigaben auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal 
 
@@ -94,7 +94,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu aktualisieren:
 
 1. Navigieren Sie im Azure-Portal zu **Freigaben**. Klicken Sie auf die Freigabe, die Sie aktualisieren möchten.
 
-   ![Auswählen der Freigabe](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Auswählen von Freigabe 2](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. Klicken Sie auf **Aktualisieren**. 
 
@@ -124,11 +124,11 @@ Gehen Sie im Azure-Portal wie folgt vor, um Ihren Speicherzugriffsschlüssel zu 
 1. Navigieren Sie in Ihrer Ressource zu **Übersicht**. 
 2. Klicken Sie in der Liste mit den Freigaben auf eine Freigabe, die dem Speicherkonto zugeordnet ist, das Sie synchronisieren möchten. Klicken Sie auf **Speicherkontoschlüssel synchronisieren**. 
 
-     ![Synchronisieren des Speicherschlüssels (1)](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![Synchronisieren des Speicherschlüssels](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. Klicken Sie am unteren Rand der Seite auf **Ja** , wenn Sie zur Bestätigung aufgefordert werden. Schließen Sie das Dialogfeld, wenn die Synchronisierung abgeschlossen ist.
 
-     ![Synchronisieren des Speicherschlüssels (1)](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![Synchronisieren von Speicherschlüssel 2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > Dieser Vorgang muss nur einmal pro Speicherkonto ausgeführt werden. Er muss nicht für alle Freigaben wiederholt werden, die dem gleichen Speicherkonto zugeordnet sind.

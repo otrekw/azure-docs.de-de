@@ -3,12 +3,12 @@ title: Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs | Micros
 description: Erfahren Sie, wie Sie mit dem Azure-Portal ein lizenziertes Image in Azure DevTest Labs aktivieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276355"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs
 
@@ -47,7 +47,7 @@ Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image an
 
 1. Ermitteln Sie ein lizenziertes Image, auf das Benutzer Zugriff haben sollen, deren Bedingungen jedoch nicht akzeptiert wurden. In diesem Fall wird beispielsweise eventuell eine Data Science Virtual Machine (DSVM) mit dem Status **Bedingungen akzeptiert** oder **Überprüfung der Nutzungsbedingungen erforderlich** angezeigt.
 
-    ![Fenster „Programmgesteuerte Bereitstellung konfigurieren“](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Screenshot, der Data Science Virtual Machine-Images mit dem Angebotsstatus „Bedingungen akzeptiert“ und „Überprüfung der Nutzungsbedingungen erforderlich“ anzeigt.](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > Data Science VMs sind Azure-VM-Images, die mit verschiedenen beliebten Tools vorinstalliert, konfiguriert und getestet wurden. Diese Images werden häufig in den Bereichen Datenanalyse, maschinelles Lernen und KI-Training eingesetzt. Der Artikel [Einführung in Azure Data Science Virtual Machine für Linux und Windows](../machine-learning/data-science-virtual-machine/overview.md) enthält ausführliche Informationen über DSVMs.
