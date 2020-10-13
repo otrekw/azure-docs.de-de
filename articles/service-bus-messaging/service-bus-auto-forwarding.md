@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie eine Azure Service Bus-
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021713"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819582"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 
@@ -29,11 +29,11 @@ Die Zielentität muss vorhanden sein, wenn die Quellentität erstellt wird. Wenn
 
 Sie können die automatische Weiterleitung zum Aufskalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
 
-![Szenario mit automatischer Weiterleitung][0]
+![Abbildung eines Szenarios mit automatischer Weiterleitung, die eine Nachricht zeigt, die durch ein Auftragsthema verarbeitet wird, das zu einem von drei Auftragsthemen der zweiten Ebene verzweigt werden kann.][0]
 
 Sie können die automatische Weiterleitung auch verwenden, um Nachrichtenabsender von den Empfängern zu entkoppeln. Betrachten Sie z. B. ein ERP-System, das aus drei Modulen besteht: Auftragsverarbeitung, Bestandsverwaltung und Kundenbeziehungsmanagement. Jedes dieser Module generiert Nachrichten, die in ein entsprechendes Thema aufgenommen werden. Alice und Bob sind Vertriebsmitarbeiter, die an allen Nachrichten interessiert sind, die sich auf ihre Kunden beziehen. Zum Empfangen dieser Nachrichten erstellen Alice und Bob eine persönliche Warteschlange und ein Abonnement für jedes der ERP-Themen, das automatisch alle Nachrichten an ihre Warteschlange weiterleitet.
 
-![Szenario mit automatischer Weiterleitung][1]
+![Abbildung eines Szenarios mit automatischer Weiterleitung, in dem drei Verarbeitungsmodule Nachrichten über drei entsprechende Themen an zwei separate Warteschlangen senden.][1]
 
 Wenn Alice im Urlaub ist, wird ihre persönliche Warteschlange gefüllt, nicht das ERP-Thema. Da in diesem Szenario kein Vertriebsmitarbeiter Nachrichten empfangen hat, erreicht keines der ERP-Themen je das Kontingent.
 
@@ -52,6 +52,8 @@ Beim Verketteten einzelner Themen, um ein kombiniertes Thema mit vielen Abonneme
 Service Bus rechnet einen Vorgang für jede weitergeleitete Nachricht ab. Beispiel: Das Senden einer Nachricht an ein Thema mit 20 Abonnements, von denen jedes so konfiguriert ist, dass Nachrichten automatisch an eine andere Warteschlange oder ein Thema weitergeleitet werden, wird als 21 Vorgänge abgerechnet, wenn alle Abonnements der ersten Ebene eine Kopie der Nachricht erhalten.
 
 Um ein Abonnement zu erstellen, das mit einer anderen Warteschlange oder einem Thema verkettet ist, muss der Ersteller des Abonnements über die Berechtigung **Verwalten** für die Quell- und die Zielentität verfügen. Das Senden von Nachrichten an das Quellthema erfordert nur die Berechtigung **Senden** für das Quellthema.
+
+Erstellen Sie keine Kette, die 4 Hops überschreitet. Nachrichten, die 4 Hops überschreiten, sind unzustellbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

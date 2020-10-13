@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443341"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803856"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Verwenden von Transact-SQL (T-SQL) zum Erstellen und Verwalten von Aufträgen für die elastische Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.
 Der Name der Zielgruppe, der das Mitglied hinzugefügt wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **\@membership_type =** ] 'Mitgliedschaftstyp'  
-Gibt an, ob das Zielgruppenmitglied ein- bzw. ausgeschlossen wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“ mit dem Standardwert „Include“. Gültige Werte für „target_group_name“ sind „Include“ oder „Exclude“.
+Gibt an, ob das Zielgruppenmitglied ein- bzw. ausgeschlossen wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“ mit dem Standardwert „Include“. Gültige Werte für „membership_type“ sind „Include“ oder „Exclude“.
 
 [ **\@target_type =** ] 'Zieltyp'  
 Der Typ der Zieldatenbank oder der Sammlung von Datenbanken, einschließlich aller Datenbanken auf einem Server, alle Datenbanken in einem Pool für elastische Datenbanken, alle Datenbanken in einer Shardzuordnung oder einer einzelnen Datenbank. „target_type“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert. Gültige Werte für „target_type“ sind „SqlServer“, „SqlElasticPool“, „SqlDatabase“ oder „SqlShardMap“.
 
 [ **\@refresh_credential_name =** ] refresh_'Name_der_Anmeldeinformationen'  
-Name des Servers „refresh_credential_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
+Der Name der datenbankweit gültigen Anmeldeinformationen. „refresh_credential_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **\@server_name =** ] 'Servername'  
 Der Name des Servers, der der angegebenen Zielgruppe hinzugefügt werden soll. „server_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlServer“ aufweist. „server_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
@@ -1041,7 +1041,7 @@ Der Name der Datenbank, die der angegebenen Zielgruppe hinzugefügt werden soll.
 Der Name des Pools für elastische Datenbanken, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlElasticPool“ aufweist. „elastic_pool_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **\@shard_map_name =** ] 'Name_der_Shardzuordnung'  
-Der Name des Pools der Shardzuordnung, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlSqlShardMap“ aufweist. „shard_map_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
+Der Name des Pools der Shardzuordnung, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlShardMap“ aufweist. „shard_map_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **\@target_id =** ] target_group_id OUTPUT  
 Die Ziel-ID, die dem zu entfernenden Zielgruppenmitglied zugewiesen ist, wenn dieses erstellt und der Zielgruppe hinzugefügt wurde. „target_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“ mit dem NULL-Standardwert.
