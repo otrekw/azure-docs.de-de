@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116137"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819326"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -86,7 +86,7 @@ Wenn für den Anmeldefehler keine Lösung angegeben ist, schlagen wir vor, das T
 
 Sie können sich vielleicht erfolgreich anmelden und sehen dann die Anzeige einer Fehlermeldung auf der Anwendungsseite. Dies geschieht, wenn Azure AD ein Token für die Anwendung ausgestellt hat, aber die Anwendung die Antwort nicht akzeptiert.
 
-Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
+Um den Fehler zu beheben, führen Sie die folgenden Schritte aus, oder sehen Sie sich dieses [kurzes Video über die Verwendung von Azure AD zur Problembehandlung von SAML-SSO](https://www.youtube.com/watch?v=poQCJK0WPUk&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0&index=8) an:
 
 1. Wenn sich die Anwendung im Azure AD-Katalog befindet, sollten Sie sich vergewissern, dass Sie alle Schritte zur Integration der Anwendung in Azure AD ausgeführt haben. Die Integrationsanweisungen für Ihre Anwendung finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen](../saas-apps/tutorial-list.md).
 1. Rufen Sie die SAML-Antwort ab.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235722"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801799"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -169,22 +169,42 @@ Die Leistung ist davon abhängig, ob Ihr Bereitstellungsauftrag einen ersten Ber
 Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure AD unter [Provisioning logs (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) (Bereitstellungsprotokollen (Vorschau)) erfasst. Die Protokolle enthalten alle Lese- und Schreibvorgänge auf den Quell- und Zielsystemen sowie die Benutzerdaten, die im Rahmen des jeweiligen Vorgangs gelesen oder geschrieben wurden. Informationen zum Lesen der Bereitstellungsprotokolle im Azure-Portal finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Aufheben der Bereitstellung
+Der Azure AD-Bereitstellungsdienst sorgt für die Synchronisierung von Quell- und Zielsystem, indem die Bereitstellung von Konten aufgehoben wird, wenn Benutzerzugriff entfernt wurde.
 
-Der Azure AD-Bereitstellungsdienst sorgt für die Synchronisierung von Quell- und Zielsystem, indem die Bereitstellung von Konten aufgehoben wird, wenn Benutzer keinen Zugriff mehr haben sollen. 
+Der Bereitstellungsdienst unterstützt sowohl das Löschen als auch das Deaktivieren (manchmal auch als vorläufiges Löschen bezeichnet) von Benutzern. Die genaue Definition von „Deaktivieren“ und „Löschen“ variiert je nach Implementierung der Ziel-App, aber normalerweise ist durch ein „Deaktivieren“ gekennzeichnet, dass sich der Benutzer nicht anmelden kann. Ein „Löschen“ kennzeichnet, dass der Benutzer vollständig aus der Anwendung entfernt wurde. Bei einer SCIM-Anwendungen ist ein Deaktivieren eine Anforderung, die *active*-Eigenschaft für einen Benutzer auf „false“ festzulegen. 
 
-Ein Benutzer wird vom Azure AD-Bereitstellungsdienst aus einer Anwendung vorläufig gelöscht, wenn die Anwendung vorläufiges Löschen unterstützt (Aktualisierungsanforderung mit „active = false“) und eines der folgenden Ereignisse auftritt:
+**Konfigurieren Ihrer Anwendung, um einen Benutzer zu deaktivieren**
 
-* Das Benutzerkonto wird in Azure AD gelöscht.
-*   Die Zuweisung des Benutzers für die Anwendung wird aufgehoben.
-*   Der Benutzer erfüllt keinen Bereichsdefinitionsfilter mehr und befindet sich außerhalb des gültigen Bereichs.
-    * Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsdienst vorläufig gelöscht oder deaktiviert. Wenn Sie dieses Standardverhalten außer Kraft setzen möchten, können Sie das Flag „SkipOutOfScopeDeletions“ so festlegen, dass [Löschvorgänge für Benutzer außerhalb des gültigen Bereichs übersprungen werden](../app-provisioning/skip-out-of-scope-deletions.md).
-*   Die „AccountEnabled“-Eigenschaft ist auf „False“ festgelegt.
+Vergewissern Sie sich, dass das Kontrollkästchen für Updates aktiviert ist.
 
-Wenn eines der obigen vier Ereignisse auftritt und die Zielanwendung vorläufiges Löschen nicht unterstützt, sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der App zu löschen. 
+Stellen Sie sicher, dass Sie die Zuordnung für *active* für Ihre Anwendung haben. Wenn Sie eine Anwendung aus dem App-Katalog verwenden, kann die Zuordnung etwas unterschiedlich sein. Stellen Sie sicher, dass Sie die standardmäßige/vorgesehene Zuordnung für Kataloganwendungen verwenden.
 
-30 Tage nach dem Löschen eines Benutzers in Azure AD wird der Benutzer dauerhaft aus dem Mandanten gelöscht. Dann sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der Anwendung zu löschen. Während des Zeitfensters von 30 Tagen können Sie jederzeit [einen Benutzer manuell dauerhaft löschen](../fundamentals/active-directory-users-restore.md), wodurch eine Löschanforderung an die Anwendung gesendet wird.
 
-Wenn Ihre Attributzuordnungen das Attribut „IsSoftDeleted“ enthalten, wird es verwendet, um den Status des Benutzers zu bestimmen und festzulegen, ob eine Aktualisierungsanforderung mit „active = false“ gesendet werden soll, um den Benutzer vorläufig zu löschen. 
+**Konfigurieren Ihrer Anwendung, um einen Benutzer zu löschen**
+
+In den folgenden Szenarien wird ein Deaktivieren oder Löschen ausgelöst: 
+* Ein Benutzer wird in Azure AD vorläufig gelöscht (wird in den Papierkorb gesendet, und die AccountEnabled-Eigenschaft wird auf „false“ festgelegt).
+    30 Tage nach dem Löschen eines Benutzers in Azure AD wird der Benutzer dauerhaft aus dem Mandanten gelöscht. Dann sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der Anwendung zu löschen. Während des Zeitfensters von 30 Tagen können Sie jederzeit  [einen Benutzer manuell dauerhaft löschen](../fundamentals/active-directory-users-restore.md), wodurch eine Löschanforderung an die Anwendung gesendet wird.
+* Ein Benutzer wird dauerhaft aus dem Papierkorb in Azure AD gelöscht/entfernt.
+* Die Zuweisung eines Benutzers zu einer App wird aufgehoben.
+* Ein Benutzer wechselt von „im Gültigkeitsbereich“ zu „außerhalb des Gültigkeitsbereichs“ (er durchläuft keinen Bereichsfilter mehr).
+    
+Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsdienst vorläufig gelöscht oder deaktiviert. Wenn Sie dieses Standardverhalten außer Kraft setzen möchten, können Sie das Flag „SkipOutOfScopeDeletions“ so festlegen, dass  [Löschvorgänge von Benutzerkonten außerhalb des gültigen Bereichs übersprungen werden](skip-out-of-scope-deletions.md).
+
+Wenn eines der obigen vier Ereignisse auftritt und die Zielanwendung vorläufiges Löschen nicht unterstützt, sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der App zu löschen.
+
+Wenn Ihre Attributzuordnungen das Attribut „IsSoftDeleted“ enthalten, wird es verwendet, um den Status des Benutzers zu bestimmen und festzulegen, ob eine Aktualisierungsanforderung mit „active = false“ gesendet werden soll, um den Benutzer vorläufig zu löschen.
+
+**Bekannte Einschränkungen**
+
+* Wenn für einen Benutzer, der zuvor vom Bereitstellungsdienst verwaltet wurde, die Zuweisung zu einer App oder einer Gruppe, die einer App zugewiesen ist, aufgehoben wurde, senden wir eine Anforderung zum Deaktivieren. Ab diesem Punkt wird der Benutzer nicht mehr vom Dienst verwaltet, und wir senden keine Löschanforderung, wenn der Benutzer aus dem Verzeichnis gelöscht wird.
+* Bereitstellen eines Benutzers, der in Azure AD deaktiviert ist, wird nicht unterstützt. Der Benutzer muss in Azure AD aktiv sein, damit er bereitgestellt werden.
+* Wird ein Benutzer von einem vorläufig gelöschten zu einem aktiven Benutzer, aktiviert der Azure AD-Bereitstellungsdienst den Benutzer in der Ziel-App, stellt die Gruppenmitgliedschaften jedoch nicht automatisch wieder her. Die Ziel-App sollte die Gruppenmitgliedschaften für den Benutzer im inaktiven Zustand beibehalten. Wenn dies von der Ziel-App nicht unterstützt wird, können Sie die Bereitstellung neu starten, um die Gruppenmitgliedschaften zu aktualisieren. 
+
+**Empfehlung**
+
+Wenn Sie eine Anwendung entwickeln, sollten in dieser immer sowohl vorläufiges Löschen als auch endgültiges Löschen unterstützt werden. Dies ermöglicht Kunden eine Wiederherstellung, wenn ein Benutzer versehentlich deaktiviert wurde.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

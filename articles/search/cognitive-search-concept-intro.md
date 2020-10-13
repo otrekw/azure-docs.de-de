@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363136"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828089"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -51,7 +51,7 @@ Ein [Skillset](cognitive-search-defining-skillset.md) mit integrierten Fähigkei
 
 + Unstrukturierte oder teilweise strukturierte Dokumente mit Inhalten, die eine inhärente Bedeutung oder einen Kontext haben, der im größeren Dokument ausgeblendet ist. 
 
-  Insbesondere Blobs enthalten häufig einen großen Textteil in einem einzelnen „Feld“. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Fähigkeiten, die hilfreich sein können: Schlüsselbegriffserkennung, Stimmungsanalyse und Entitätserkennung (Personen, Organisationen und Standorte).
+  Blobs enthalten häufig umfangreiche Inhalte, die in ein einzelnes „Feld“ gepackt sind. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Fähigkeiten, die hilfreich sein können: Schlüsselbegriffserkennung, Stimmungsanalyse und Entitätserkennung (Personen, Organisationen und Standorte).
 
   Darüber hinaus können Sie mit integrierten Fähigkeiten Inhalte durch Textaufteilung, Textzusammenführung und Shape-Vorgänge neu strukturieren.
 

@@ -1,7 +1,7 @@
 ---
-title: Anmelden von Benutzern bei JavaScript-Single-Page-Webanwendungen (SPA) mit Autorisierungscode | Azure
+title: 'Schnellstart: Anmelden von Benutzern bei JavaScript-Single-Page-Webanwendungen (SPA) mit Autorisierungscode | Azure'
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie in einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflows Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können.
+description: In dieser Schnellstartanleitung Hier erfahren Sie, wie in einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflows Benutzer von persönlichen Konten sowie Geschäfts-, Schul- und Unikonten angemeldet werden können.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 224ce2ea64016db7b632ac36193f39e679c8da4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 35362733849305ad2ad7e008840d53ba085fa987
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257978"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613440"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA mithilfe des Autorisierungscodeflows
 

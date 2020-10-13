@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1386fdfafdea3112e26ce6480c7d20061236ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549669"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823031"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Litmus
 
@@ -167,7 +167,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Litmus-Konfiguration](./media/litmus-tutorial/user-profile.png)
 
-    a. Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. **B.Simon@contoso.com** .
+    a. Geben Sie in das Textfeld **Email** die E-Mail-Adresse des Benutzers ein, z. B. **B.Simon\@contoso.com**.
 
     b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein (z. B. **B**).
 

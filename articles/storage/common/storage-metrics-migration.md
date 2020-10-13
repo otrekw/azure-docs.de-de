@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie von Storage Analytics Metriken (klassische Me
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708576"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802836"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Wechseln zu Metriken in Azure Monitor
 
@@ -46,6 +46,8 @@ Für den Übergang zu Metriken in Azure Monitor wird folgende Vorgehensweise emp
 In diesem Abschnitt werden einige wichtige Unterschiede zwischen diesen beiden Metrikplattformen beschrieben.
 
 Der Hauptunterschied besteht darin, wie die Metriken verwaltet werden. Klassische Metriken werden von Azure Storage verwaltet, während Metriken in Azure Monitor von Azure Monitor verwaltet werden. Bei klassischen Metriken sammelt Azure Storage Metrikwerte, aggregiert sie und speichert sie dann in Tabellen, die sich im Speicherkonto befinden. Für Metriken in Azure Monitor sendet Azure Storage die Metrikdaten an das Azure Monitor-Back-End. Azure Monitor bietet eine einheitliche Überwachungsoberfläche, auch für Daten aus dem Azure-Portal sowie für erfasste Daten. 
+
+Klassische Metriken werden an ein Azure-Speicherkonto gesendet und in diesem gespeichert. Azure Monitor-Metriken können an mehrere Speicherorte gesendet werden. Ein Speicherkonto kann einer dieser Speicherorte sein, dies ist jedoch nicht erforderlich.  
 
 Mit Blick auf die unterstützten Metriken bieten klassische Metriken nur Werte zur **Kapazität** für Azure Blob Storage. Die Metriken in Azure Monitor umfassen Kapazitätsmetriken für Blobs, Tabellen, Dateien, Warteschlangen und Storage Premium. Klassische Metriken bieten **Transaktionsmetriken** für Blob-, Tabellen-, Azure Files- und Queue Storage. Metriken in Azure Monitor ergänzen diese Liste noch um Storage Premium.
 

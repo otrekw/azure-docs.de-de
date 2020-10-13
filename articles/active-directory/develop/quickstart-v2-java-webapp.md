@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Microsoft Identity Platform – Java-Web-App | Azure'
-description: Hier erfahren Sie, wie Sie „Bei Microsoft anmelden“ mithilfe von OpenID Connect für eine Java-Web-App implementieren.
+title: 'Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App | Azure'
+titleSuffix: Microsoft identity platform
+description: In diesem Schnellstart erfahren Sie, wie Sie „Mit Microsoft anmelden“ mit OpenID Connect in einer Java-Webanwendung implementieren.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258097"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743487"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App
 
@@ -257,4 +258,4 @@ import com.microsoft.aad.msal4j.*;
 Eine ausführlichere Erläuterung zum Entwickeln von Web-Apps, die Benutzer bei Microsoft Identity Platform anmelden, finden Sie in unserer mehrteiligen Szenarioreihe:
 
 > [!div class="nextstepaction"]
-[Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md?tabs=java)
+> [Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md?tabs=java)

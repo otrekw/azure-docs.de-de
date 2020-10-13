@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
       href: azure-netapp-files-network-topologies.md
+    - name: Manueller QoS-Kapazitätspool
+      href: manual-qos-capacity-pool-introduction.md
     - name: Regionsübergreifende Replikation
       items:
         - name: Grundlegendes zur regionsübergreifenden Replikation
@@ -126,7 +128,7 @@
 - name: Verweis
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.netapp/allversions
 - name: Ressourcen

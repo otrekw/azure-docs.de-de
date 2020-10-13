@@ -5,17 +5,37 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2020
-ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 09/23/2020
+ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045347"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812861"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Schutz von Daten in Azure Stream Analytics 
 
 Azure Stream Analytics ist eine vollständig verwaltete Platform-as-a-Service-Lösung, mit der Sie Echtzeit-Analysepipelines erstellen können. Alle aufwändigen Aufgaben, z. B. die Clusterbereitstellung, die Skalierung von Knoten zur Erfüllung Ihrer Nutzungsanforderungen und die Verwaltung interner Prüfpunkte, werden im Hintergrund verwaltet.
+
+## <a name="private-data-assets-that-are-stored"></a>Gespeicherte private Datenressourcen
+
+Azure Stream Analytics speichert die folgenden Metadaten und Daten zur Ausführung: 
+
+* Abfragedefinition und deren zugehörige Konfiguration  
+
+* Benutzerdefinierte Funktionen oder Aggregate  
+
+* Von der Stream Analytics-Runtime benötigte Prüfpunkte
+
+* Momentaufnahmen von Verweisdaten 
+
+* Verbindungsdetails der Ressourcen, die von Ihrem Stream Analytics-Auftrag verwendet werden
+
+Sie können sich weiter über die [Complianceangebote von Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) informieren, um Ihre Konformitätsverpflichtungen für regulierte Branchen oder Umgebungen zu erfüllen. 
+
+## <a name="in-region-data-residency"></a>Regionsbezogene Data Residency
+Azure Stream Analytics speichert Kundendaten und andere Metadaten, die oben beschrieben sind. Kundendaten werden von Azure Stream Analytics standardmäßig in einer einzigen Region gespeichert, sodass dieser Dienst automatisch die Anforderungen hinsichtlich regionsbezogener Data Residency erfüllt, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen.
+Außerdem können Sie auswählen, dass alle Datenassets (Kundendaten und andere Metadaten), die sich auf Ihren Stream Analytics-Auftrag beziehen, in einer einzigen Region gespeichert werden, indem Sie sie in einem Speicherkonto Ihrer Wahl verschlüsseln.
 
 ## <a name="encrypt-your-data"></a>Verschlüsseln Ihrer Daten
 
@@ -28,7 +48,14 @@ Die entsprechende Einstellung muss beim Erstellen eines Stream Analytics-Auftrag
 Die Aktualisierung oder Rotation von Schlüsseln für Ihr Speicherkonto ist mit dem Stream Analytics-Portal nicht möglich. Sie können die Schlüssel mit den REST-APIs aktualisieren.
 
 
-## <a name="configure-storage-account-for-private-data"></a>Konfigurieren des Speicherkontos für private Daten 
+### <a name="configure-storage-account-for-private-data"></a>Konfigurieren des Speicherkontos für private Daten 
+
+
+Verschlüsseln Sie Ihr Speicherkonto, um Ihre Daten zu schützen und den Speicherort Ihrer privaten Daten explizit auszuwählen. 
+
+Sie können sich weiter über die [Complianceangebote von Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) informieren, um Ihre Konformitätsverpflichtungen für regulierte Branchen oder Umgebungen zu erfüllen. 
+
+
 
 Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenressourcen zu konfigurieren. Diese Konfiguration erfolgt über Ihren Stream Analytics-Auftrag und nicht über Ihr Speicherkonto.
 
@@ -46,24 +73,10 @@ Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenr
 
    ![Einstellungen des Speicherkontos für private Daten](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Gespeicherte private Datenressourcen
 
-Alle privaten Daten, die von Stream Analytics dauerhaft aufbewahrt werden müssen, werden unter Ihrem Speicherkonto gespeichert. Beispiele für private Datenressourcen: 
 
-* Von Ihnen erstellte Abfragen und zugehörige Konfigurationen  
-
-* Benutzerdefinierte Funktionen 
-
-* Von der Stream Analytics-Runtime benötigte Prüfpunkte
-
-* Momentaufnahmen von Verweisdaten 
-
-Verbindungsdetails Ihrer Ressourcen, die von Ihrem Stream Analytics-Auftrag genutzt werden, werden ebenfalls gespeichert. Verschlüsseln Sie Ihr Speicherkonto, um Ihre gesamten Daten zu schützen. 
-
-Sie können sich weiter über die [Complianceangebote von Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) informieren, um Ihre Konformitätsverpflichtungen für regulierte Branchen oder Umgebungen zu erfüllen. 
-
-## <a name="known-issues"></a>Bekannte Probleme
-Es gibt ein bekanntes Problem, bei dem ein Auftrag, bei dem ein vom Kunden verwalteter Schlüssel verwendet wird, zu Fehlern führt, wenn die verwaltete Identität zur Authentifizierung bei Ein- oder Ausgaben verwendet wird. Derzeit wird an der Lösung für dieses Problem gearbeitet. Diese wird in naher Zukunft verfügbar gemacht. 
+### <a name="known-issues"></a>Bekannte Probleme
+Derzeit gibt es eine bekannte Beschränkung, für die ein Auftrag, bei dem ein vom Kunden verwalteter Schlüssel verwendet wird, zu Fehlern führt, wenn die verwaltete Identität zur Authentifizierung bei Ein- oder Ausgaben verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

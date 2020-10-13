@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520310"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759763"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Claromentis
 
@@ -138,19 +138,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf das **Anwendungssymbol**, und wählen Sie **Admin** aus.
 
-    ![Claromentis-Konfiguration](./media/claromentis-tutorial/config1.png)
+    ![Screenshot der „Claromentis“-Website mit ausgewähltem „Admin“-Symbol](./media/claromentis-tutorial/config1.png)
 
 1. Wählen Sie die Registerkarte **Custom Login Handler** (Benutzerdefinierter Anmeldehandler) aus.
 
-    ![Claromentis-Konfiguration](./media/claromentis-tutorial/config2.png)
+    ![Screenshot der Seite „Administration“ mit ausgewählter Option „Custom Login Handler“](./media/claromentis-tutorial/config2.png)
 
 1. Wählen Sie **SAML Config** (SAML-Konfiguration) aus.
 
-    ![Claromentis-Konfiguration](./media/claromentis-tutorial/config3.png)
+    ![Screenshot der Konfigurationsseite für SAML](./media/claromentis-tutorial/config3.png)
 
 1. Scrollen Sie auf der Registerkarte **SAML Config** (SAML-Konfiguration) zum Abschnitt **Config** (Konfiguration), und führen Sie die folgenden Schritte aus:
 
-    ![Claromentis-Konfiguration](./media/claromentis-tutorial/config4.png)
+    ![Screenshot des „Config“-Abschnitts der Seite, auf der Sie die in diesem Schritt beschriebenen Informationen eingeben können](./media/claromentis-tutorial/config4.png)
 
     a. Geben Sie in das Textfeld **Technical Contact Name** (Name des technischen Ansprechpartners) den Namen des technischen Ansprechpartners ein.
 
@@ -160,7 +160,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Scrollen Sie nach unten bis zu **Auth Sources** (Authentifizierungsquellen), und führen Sie die folgenden Schritte aus:
 
-    ![Claromentis-Konfiguration](./media/claromentis-tutorial/config5.png)
+    ![Screenshot des Abschnitts „Auth Sources“, in dem Sie die in diesem Schritt beschriebenen Informationen eingeben können](./media/claromentis-tutorial/config5.png)
 
     a. Fügen Sie in das Textfeld **IDP** den Wert für den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -172,7 +172,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Sie werden nun feststellen, dass im Abschnitt **Identity Provider** (Identitätsanbieter) im Abschnitt **SAML Config** (SAML-Konfiguration) alle URLs aufgefüllt wurden.
 
-    ![Claromentis-Konfiguration](./media/claromentis-tutorial/config6.png)
+    ![Screenshot der Seite „Identity Provider“, auf der URLs anzugeben sind](./media/claromentis-tutorial/config6.png)
 
     a. Kopieren Sie den Wert im Feld **Identifier (Entity ID)** (Bezeichner (Entitäts-ID)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein.
 

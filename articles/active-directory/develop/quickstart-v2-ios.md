@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Microsoft Identity Platform – iOS und macOS | Azure'
-description: Hier finden Sie Informationen zum Anmelden von Benutzern und zum Abfragen von Microsoft Graph in einer iOS- oder macOS-Anwendung.
+title: 'Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer iOS- oder macOS-App | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung erfahren Sie, wie aus einer iOS- oder macOS-App Benutzer angemeldet werden und ein Zugriffstoken aus der Microsoft Identity Platform abgerufen und die Microsoft Graph-API aufgerufen wird.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115253"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613457"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -25,13 +26,16 @@ Diese Schnellstartanleitung enthält ein Codebeispiel, das zeigt, wie eine nativ
 
 Dieser Schnellstart gilt für iOS- und macOS-Apps. Einige Schritte sind nur bei iOS-Apps erforderlich. Bei diesen Schritten wird darauf hingewiesen, dass sie nur für iOS gelten.
 
-![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-ios/ios-intro.svg)
+## <a name="prerequisites"></a>Voraussetzungen
 
-> [!NOTE]
-> **Voraussetzungen**
-> * XCode 10 oder höher
-> * iOS 10 oder höher
-> * macOS 10.12 oder höher
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* XCode 10 oder höher
+* iOS 10 oder höher
+* macOS 10.12 oder höher
+
+## <a name="how-the-sample-works"></a>Funktionsweise des Beispiels
+
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
@@ -70,16 +74,16 @@ Dieser Schnellstart gilt für iOS- und macOS-Apps. Einige Schritte sind nur bei 
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Bereits konfiguriert](media/quickstart-v2-ios/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [Herunterladen des Codebeispiels für iOS]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [Herunterladen des Codebeispiels für macOS]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
-> 
+>
 > - [Herunterladen des Codebeispiels für iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [Herunterladen des Codebeispiels für macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -262,13 +266,11 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > | `scopes` | Enthält die angeforderten Bereiche (`[ "user.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`)) |
 > | `account` | Das Konto, für das ein Token angefordert wird. In dieser Schnellstartanleitung wird eine einzelne Kontoanwendung angezeigt. Wenn Sie eine App mit mehreren Konten erstellen möchten, müssen Sie die Logik zum Identifizieren des gewünschten Kontos für Tokenanforderungen mit `accountsFromDeviceForParameters:completionBlock:` definieren und den richtigen `accountIdentifier` übergeben. |
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Probieren Sie das Tutorial für iOS und macOS aus, um eine vollständige Schritt-für-Schritt-Anleitung zum Erstellen von Anwendungen zu erhalten, einschließlich einer vollständigen Erläuterung dieser Schnellstartanleitung.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Informationen zum Erstellen der in diesem Schnellstart verwendeten Anwendung
+Fahren Sie mit dem Schritt-für-Schritt-Tutorial fort, in dem Sie eine iOS- oder macOS-App erstellen, aus der ein Zugriffstoken von der Microsoft Identity Platform abgerufen wird, das dann in der App verwendet wird, um die Microsoft Graph-API aufzurufen.
 
 > [!div class="nextstepaction"]
-> [Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App](tutorial-v2-ios.md)

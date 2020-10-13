@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891996"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823001"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI-Ausgabe für Azure Stream Analytics
 
@@ -43,6 +43,9 @@ Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Power BI-Ausgabe und
 Azure Stream Analytics erstellt für den Benutzer ein Power BI-Dataset und ein Tabellenschema, falls diese noch nicht vorhanden sind. In allen anderen Fällen wird die Tabelle mit neuen Werten aktualisiert. Derzeit kann innerhalb eines Datasets nur eine Tabelle vorhanden sein. 
 
 Power BI verwendet die FIFO-Aufbewahrungsrichtlinie (First In, First Out). Daten werden in einer Tabelle gesammelt, bis diese 200.000 Zeilen erreicht.
+
+> [!NOTE]
+> Es ist nicht zu empfehlen, mehrere Ausgaben zum Schreiben in dasselbe Dataset zu verwenden, da dies mehrere Probleme verursachen kann. Jede Ausgabe versucht, das Power BI-Dataset unabhängig zu erstellen, was dazu führen kann, dass mehrere Datasets denselben Namen haben. Außerdem wird, wenn die Ausgaben keine konsistenten Schemas haben, das Datasetschema bei jedem Schreibvorgang geändert, wodurch eine zu großen Anzahl von Schemaänderungsanforderungen verursacht wird. Selbst wenn sich diese Probleme vermeiden lassen, sind mehrere Ausgaben weniger leistungsfähig als eine einzelne zusammengeführte Ausgabe.
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Konvertieren eines Datentyps aus Stream Analytics in Power BI
 

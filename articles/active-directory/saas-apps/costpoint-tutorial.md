@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549244"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775668"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Tutorial: Integrieren von Costpoint in Azure Active Directory
 
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Die SAML-SSO-Konfiguration für Costpoint wird im Leitfaden **DeltekCostpoint711Security.pdf** erläutert. Laden Sie diesen Leitfaden von der Deltek Costpoint-Supportwebsite herunter, und sehen Sie sich die Abschnitte **SAML Single Sign-on Setup** (SAML-SSO-Einrichtung) > **Configure SAML Single Sign-on between Costpoint and Microsoft Azure** (Konfigurieren von SSO für SAML zwischen Costpoint und Azure AD) an. Befolgen Sie die Anweisungen, und generieren Sie die Datei **Costpoint SP Federation Metadata XML** (Costpoint-SP-Verbundmetadaten-XML). 
 
-![Costpoint-Konfigurationshilfsprogramm](./media/costpoint-tutorial/config-utility.png)
+![Screenshot des Fensters „Product Configuration Utility“, in dem die Registerkarte „WebLogic – Security“ ausgewählt ist](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>Hinzufügen von Costpoint aus dem Katalog
 

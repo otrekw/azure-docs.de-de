@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f9f56967c03556def3aa221f84ccd290c6090fd1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff6ba71f4606b3caf51007a9d75f3ca36bc99cda
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551148"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EZOfficeInventory
 
@@ -151,7 +151,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **Settings** > **Add Ons** (Einstellungen > Add-Ons).
 
-    ![EZOfficeInventory-Konfiguration](./media/ezofficeinventory-tutorial/configure01.png)
+    ![Screenshot der Seite „Settings“ mit ausgewählter Aktion „Add Ons“](./media/ezofficeinventory-tutorial/configure01.png)
 
 1. Scrollen Sie nach unten zum Abschnitt **SAML Integration** (SAML-Integration), und führen Sie die folgenden Schritte aus:
 

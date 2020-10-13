@@ -5,24 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981875"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819756"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-Authentifizierung: Konfigurieren eines VPN-Clients für P2S-OpenVPN-Protokollverbindungen
 
 Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für die Verbindung zu einem virtuellen Netzwerk mit einem Point-to-Site-VPN und Azure Active Directory-Authentifizierung. Damit Sie mit Azure AD eine Verbindung herstellen und eine Authentifizierung durchführen können, müssen Sie zuerst Ihren Azure AD-Mandanten konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md).
 
-> [!NOTE]
-> Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt.
->
-> Die Azure AD-Authentifizierung erfordert den nur für Windows 10 verfügbaren Azure-VPN-Client.
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>Arbeiten mit Clientprofilen
 
@@ -58,7 +54,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
 1. Markieren Sie das VPN-Clientprofil, das Sie exportieren möchten, wählen Sie **...** und dann **Exportieren** aus.
 
-    ![Export](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![Screenshot mit der Seite „Azure-VPN-Client“, auf der die Auslassungspunkte ausgewählt sind und „Exportieren“ hervorgehoben ist](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Wählen Sie den Speicherort aus, an dem Sie dieses Profil speichern möchten, lassen Sie den Dateinamen unverändert, und wählen Sie **Speichern** aus, um die XML-Datei zu speichern.
 
@@ -68,19 +64,19 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
 1. Wählen Sie auf der Seite **Importieren**aus.
 
-    ![Import](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![Screenshot mit ausgewählter Schaltfläche „Hinzufügen“ und hervorgehobener „Importieren“-Aktion unten links im Fenster](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Navigieren Sie zur XML-Datei für das Profil und wählen Sie sie aus. Wählen Sie bei ausgewählter Datei **Öffnen** aus.
 
-    ![Import](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![Screenshot, in dem eine ausgewählte Profil-XML-Datei gezeigt ist](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Geben Sie den Namen des Profils an und wählen Sie **Speichern** aus.
 
-    ![Import](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![Screenshot mit hervorgehobenem „Verbindungsname“ und ausgewählter Schaltfläche „Speichern“](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Wählen Sie **Verbinden** aus, um die Verbindung zum VPN herzustellen.
 
-    ![Import](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![Screenshot mit ausgewähltem VPN und ausgewählter Schaltfläche „Verbinden“](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Nachdem die Verbindung hergestellt wurde, wird das Symbol grün und **Verbunden** angezeigt.
 
@@ -90,7 +86,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
 1. Wählen Sie die Auslassungszeichen neben dem Clientprofil aus, das Sie löschen möchten. Wählen Sie dann **Entfernen** aus.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![Screenshot mit ausgewählten Auslassungspunkten und ausgewählter Option „Entfernen“](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Wählen Sie **Entfernen** aus, um den Löschvorgang durchzuführen.
 
@@ -100,19 +96,19 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
 1. Wählen Sie auf der Seite **+** aus und klicken Sie dann auf **+ Hinzufügen**.
 
-    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![Screenshot mit ausgewählter Schaltfläche „Hinzufügen“](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. Füllen Sie die Verbindungsinformationen aus. Wenden Sie sich an Ihren Administrator, wenn Sie die Werte nicht kennen. Wählen Sie nach Eingabe der Werte **Speichern** aus.
 
-    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![Screenshot mit den hervorgehobenen Eigenschaften der VPN-Verbindung und ausgewählter Schaltfläche „Speichern“](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. Wählen Sie **Verbinden** aus, um die Verbindung zum VPN herzustellen.
 
-    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![Screenshot mit ausgewählter Schaltfläche „Verbinden“](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. Wählen Sie die richtigen Anmeldeinformationen und dann **Weiter** aus.
 
-    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![Screenshot mit hervorgehobenen Beispielanmeldeinformationen und ausgewählter Schaltfläche „Weiter“](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. Nachdem die Verbindung erfolgreich hergestellt wurde, wird das Symbol grün und **Verbunden** angezeigt.
 
@@ -124,15 +120,15 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 
 1. Wählen Sie auf der Homepage für den VPN-Client **VPN-Einstellungen** aus.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![Screenshot der VPN-Startseite mit ausgewählter Option „VPN-Einstellungen“](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Wählen Sie im Dialogfeld zum Wechseln von Apps **Ja** aus.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![Screenshot des Dialogfelds „Wollten Sie die App wechseln?“ mit ausgewählter Schaltfläche „Ja“](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Vergewissern Sie sich, dass die Verbindung, die Sie festlegen möchten, noch nicht hergestellt ist, markieren Sie dann das Profil und aktivieren Sie das Kontrollkästchen **Automatisch verbinden**.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![Screenshot des Fensters „Einstellungen“ mit aktiviertem Kontrollkästchen „Automatisch verbinden“](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Wählen Sie **Verbinden** aus, um die VPN-Verbindung zu initiieren.
 
@@ -142,15 +138,15 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 
 1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose**-Tool verwenden. Wählen Sie die **...** neben der VPN-Verbindung aus, die Sie diagnostizieren möchten, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
 
-    ![Diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Screenshot, in dem die Auslassungspunkte und „Diagnose“ ausgewählt sind](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. Wählen Sie auf der Seite **Verbindungseigenschaften** die Option **Diagnose ausführen** aus.
 
-    ![Diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![Screenshot der Seite „Verbindungseigenschaften“ mit ausgewählter Option „Diagnose ausführen“](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Melden Sie sich mit Ihren Anmeldeinformationen an.
 
-    ![Diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![Screenshot des Dialogfelds „Melden Sie sich an“ mit einem ausgewählten „Geschäfts-, Schul- oder Unikonto“](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Zeigen Sie die Diagnoseergebnisse an.
 
@@ -194,7 +190,7 @@ Sie können die heruntergeladene XML-Datei für das Profil ändern und die Tags 
 ```
 
 > [!NOTE]
-> Der OpenVPN-Azure AD-Client verwendet DNS-Einträge der Richtlinientabelle für die Namensauflösung (Name Resolution Policy Table, NRPT). Dies bedeutet, dass in der Ausgabe von `ipconfig /all` keine DNS-Server aufgeführt werden. Verwenden Sie [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in PowerShell, um die von Ihnen derzeit verwendeten DNS-Einstellungen zu überprüfen.
+> Der OpenVPN-Azure AD-Client verwendet DNS-Einträge der Richtlinientabelle für die Namensauflösung (Name Resolution Policy Table, NRPT). Dies bedeutet, dass in der Ausgabe von `ipconfig /all` keine DNS-Server aufgeführt werden. Verwenden Sie [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) in PowerShell, um die von Ihnen derzeit verwendeten DNS-Einstellungen zu überprüfen.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Wie füge ich dem VPN-Client benutzerdefinierte Routen hinzu?

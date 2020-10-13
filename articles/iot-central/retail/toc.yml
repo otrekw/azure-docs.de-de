@@ -35,7 +35,11 @@
         - name: 0. Bereitstellen einer Anwendung für die Objekt- und Bewegungserkennung
           href: tutorial-video-analytics-deploy.md
         - name: 1. Erstellen einer Videoanalyseanwendung
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: Objekt- und Bewegungserkennung (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: Objekt- und Bewegungserkennung (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: "2. Konfigurieren eines IoT\_Edge-Geräts"
           items:
             - name: Erstellen eines Videoanalysegeräts am Edge (Linux-VM)

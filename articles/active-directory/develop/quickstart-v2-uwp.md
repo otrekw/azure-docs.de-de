@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Microsoft Identity Platform – Windows UWP | Azure'
-description: Hier erfahren Sie, wie eine Anwendung für die universelle Windows-Plattform (XAML) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
+title: 'Schnellstart: Anmelden von Benutzern und Aufrufen von Microsoft Graph in einer App für Universelle Windows-Plattform | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung erfahren Sie, wie eine Anwendung für die Universelle Windows-Plattform (UWP-Anwendung) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch Microsoft Identity Platform geschützt ist.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +12,23 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 5b954c5eae9c203efa65dc9dc1883d8e00f3937a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553873"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630524"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Schnellstart: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
 Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine UWP-Anwendung (Universelle Windows-Plattform) Benutzer mit persönlichen Konten oder Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Voraussetzungen
+>
+> * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
 > [!div renderon="docs" class="sxs-lookup"]
 > Die Schnellstartanwendung kann auf zwei Arten gestartet werden:

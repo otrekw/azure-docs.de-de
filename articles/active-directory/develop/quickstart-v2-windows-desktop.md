@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Microsoft Identity Platform – Windows Desktop'
-description: Hier erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
+title: 'Schnellstart: Anmelden von Benutzern und Aufrufen von Microsoft Graph in einer Desktop-App für Universelle Windows-Plattform | Azure'
+description: In dieser Schnellstartanleitung erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML-Anwendung) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,22 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114556"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613270"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-Anwendung (WPF-Anwendung) schreiben, die persönliche Konten oder Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Voraussetzungen
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) mit installierter Workload [Entwicklung für die universelle Windows-Plattform](/windows/uwp/get-started/get-set-up)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
 > Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
 > * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)

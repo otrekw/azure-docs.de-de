@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511777"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803941"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Failover auf ein physisches Gerät der StorSimple 8000-Serie
 
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem physischen Zielg
    
    1. Wählen Sie das Gerät aus, das Sie als Zielgerät für den Failovervorgang verwendet haben.
 
-       ![Gerät auswählen](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Auswählen von Gerät 2](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. Wechseln Sie zum Blatt **Volumecontainer**. Es sollten alle Volumecontainer und die Volumes des alten Geräts aufgeführt werden.
 

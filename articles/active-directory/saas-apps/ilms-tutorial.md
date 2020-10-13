@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545205"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826359"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Tutorial: Integrieren von iLMS in Azure Active Directory
 
@@ -130,29 +130,29 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 2. Klicken Sie auf der Registerkarte **Settings** auf **SSO:SAML**, um die SAML-Einstellungen zu öffnen, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/1.png)
+    ![Screenshot mit der iLMS-Registerkarte „Settings“, auf der Sie „SSO: SAML“ auswählen können](./media/ilms-tutorial/1.png)
 
 3. Erweitern Sie den Abschnitt **Service Provider**, und kopieren Sie die Werte für **Identifier** und **Endpoint (URL)** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/2.png) 
+    ![Screenshot mit SAML-Einstellungen, aus denen Sie die Werte abrufen können](./media/ilms-tutorial/2.png) 
 
 4. Klicken Sie im Abschnitt **Identity Provider** auf **Import Metadata**.
 
 5. Wählen Sie die Datei mit **Verbundmetadaten** aus, die Sie aus dem Abschnitt **SAML-Signaturzertifikat** des Azure-Portals heruntergeladen haben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Screenshot mit SAML-Einstellungen, in denen Sie die Metadatendatei auswählen können](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Wenn Sie die JIT-Bereitstellung aktivieren möchten, um iLMS-Konten für unbekannte Benutzer zu erstellen, führen Sie die folgenden Schritte aus:
 
     a. Aktivieren Sie das Kontrollkästchen **Create Un-recognized User Account**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Screenshot mit der Option „Create Un-recognized User Account“](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Ordnen Sie die Attribute in Azure AD den Attributen in iLMS zu. Geben Sie in der Spalte mit den Attributen den Attributnamen oder den Standardwert an.
 
     c. Wechseln Sie zur Registerkarte **Business Rules**, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/5.png)
+    ![Screenshot mit den Einstellungen für „Business Rules“, wo Sie die Informationen in diesem Schritt eingeben können](./media/ilms-tutorial/5.png)
 
     d. Aktivieren Sie das Kontrollkästchen **Create Un-recognized Regions, Divisions and Departments**, um Regionen, Sparten und Abteilungen zu erstellen, die zum Zeitpunkt des einmaligen Anmeldens noch nicht vorhanden waren.
 
@@ -164,7 +164,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 7. Klicken Sie auf die Schaltfläche **Save**, um die Änderungen zu speichern.
 
-    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/save.png)
+    ![Screenshot der Schaltfläche „Save“](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -206,11 +206,11 @@ Führen Sie die folgenden Schritte aus, wenn Sie einen Benutzer manuell erstelle
 
 2. Klicken Sie auf der Registerkarte **Users** auf **Register User**, um die Seite **Register User** zu öffnen.
 
-   ![Mitarbeiter hinzufügen](./media/ilms-tutorial/3.png)
+   ![Screenshot mit der iLMS-Registerkarte „Users“, auf der Sie „Register User“ auswählen können](./media/ilms-tutorial/3.png)
 
 3. Führen Sie auf der Seite **Register User** die folgenden Schritte aus.
 
-    ![Mitarbeiter hinzufügen](./media/ilms-tutorial/create_testuser_add.png)
+    ![Screenshot der Seite „Register User“, auf der Sie die angegebenen Informationen eingeben](./media/ilms-tutorial/create_testuser_add.png)
 
     a. Geben Sie im Textfeld **Vorname** den Vornamen ein, z.B. Britta.
 

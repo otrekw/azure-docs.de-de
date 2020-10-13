@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536188"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774112"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Discovery Benefits SSO
 
@@ -86,7 +86,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Eindeutiger Benutzerbezeichner (Namens-ID)** zu öffnen.
 
-    ![Discovery Benefits SSO-Konfiguration](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![Screenshot des Abschnitts „User Attributes & Claims“, in dem auf der rechten Seite die Auslassungspunkte für „Required claim“ ausgewählt sind](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Discovery Benefits SSO-Konfiguration](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     f. Die zusätzlichen Ansprüche, die für die SSO-Konfiguration erforderlich sind (`SSOInstance` und `SSOID`), wurden bereits automatisch eingefügt. Verwenden Sie das Symbol **Bearbeiten**, um die Werte gemäß Ihrer Organisation zuzuordnen.
 
-    ![Discovery Benefits SSO-Konfiguration](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![Screenshot des Bereichs „User Attributes & Claims“, in dem Werte „SSOInstance“ und „SSOID“ hervorgehoben sind](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 

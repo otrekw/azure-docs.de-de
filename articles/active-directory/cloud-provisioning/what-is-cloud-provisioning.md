@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a5a69bedb45f8037f3a97f5ebf4e2128930330a
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050601"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728351"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Was ist die Azure AD Connect-Cloudbereitstellung?
 Die Azure AD Connect-Cloudbereitstellung ist ein neuer Microsoft-Agent, der entwickelt wurde, um Ihre Hybrididentitätsziele für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erfüllen und zu erreichen.  Die Azure AD Connect-Cloudbereitstellung kann zusammen mit der Azure AD Connect-Synchronisierung verwendet werden und bietet die folgenden Vorteile:
@@ -31,9 +31,17 @@ Die Azure AD Connect-Cloudbereitstellung ist ein neuer Microsoft-Agent, der entw
 ## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Wie unterscheidet sich die Azure AD Connect-Cloudbereitstellung von der Azure AD Connect-Synchronisierung?
 Bei der Azure AD Connect-Cloudbereitstellung wird die Bereitstellung über AD für Azure AD in Microsoft Online Services orchestriert. Eine Organisation muss nur in ihrer lokalen und IaaS-gehosteten Umgebung einen einfachen Agent bereitstellen, der als Brücke zwischen Azure AD und AD fungiert. Die Bereitstellungskonfiguration wird in Azure AD gespeichert und als Teil des Diensts verwaltet.
 
+## <a name="azure-ad-connect-cloud-provisioning-video"></a>Azure AD Connect-Cloudbereitstellung – Video
+Das folgende kurze Video bietet eine hervorragende Übersicht über die Azure AD Connect-Cloudbereitstellung:
+
+> [!VIDEO https://youtube/embed/mOT3ID02_YQ]
+
+
+## <a name="comparison-between-azure-ad-connect-and-cloud-provisioning"></a>Vergleich zwischen Azure AD Connect und der Cloudbereitstellung
+
 Die folgende Tabelle bietet einen Vergleich zwischen der Azure AD Connect-Synchronisierung und der Azure AD Connect-Cloudbereitstellung:
 
-| Funktion | Azure Active Directory Connect-Synchronisierung| Azure Active Directory Connect-Cloudbereitstellung |
+| Feature | Azure Active Directory Connect-Synchronisierung| Azure Active Directory Connect-Cloudbereitstellung |
 |:--- |:---:|:---:|
 |Herstellen einer Verbindung mit einer einzelnen lokalen AD-Gesamtstruktur|● |● |
 | Herstellen einer Verbindung mit mehreren lokalen AD-Gesamtstrukturen |● |● |

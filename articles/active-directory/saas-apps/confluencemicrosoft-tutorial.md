@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892948"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775664"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Confluence SAML SSO by Microsoft
 
@@ -159,11 +159,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Screenshot, in dem das „Zahnrad“-Symbol ausgewählt und im Dropdownmenü die Option „Add-ons“ hervorgehoben ist](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56503) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Screenshot der Seite „Manage add-ons“ mit ausgewählter Aktion „Upload add-on“](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Führen Sie die folgenden Schritte aus, um das Reverseproxy- oder Lastenausgleichsszenario von Confluence auszuführen:
 
@@ -174,19 +174,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Einmaliges Anmelden konfigurieren](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![Screenshot der Datei „server.xml“, in der das Attribut zum „Connector“-Port hinzugefügt ist](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. Ändern Sie **Basis-URL** in **Systemeinstellungen** gemäß Proxy/Lastenausgleich.
 
-    ![Einmaliges Anmelden konfigurieren](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![Screenshot der Seite „Administration – Settings“ mit hervorgehobener „Base URL“](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![Screenshot des Abschnitts „User Installed“ mit hervorgehobener Schaltfläche „Configure“](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![Screenshot mit der Konfigurationsseite für einmaliges Anmelden](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -237,7 +237,7 @@ Um es Azure AD-Benutzern zu ermöglichen, sich auf dem lokalen Confluence-Server
 
 1. Klicken Sie im Abschnitt „Benutzer“ auf die Registerkarte **Benutzer hinzufügen**. Führen Sie auf der Dialogfeldseite **Benutzer hinzufügen** die folgenden Schritte aus:
 
-    ![Mitarbeiter hinzufügen](./media/confluencemicrosoft-tutorial/user2.png)
+    ![Screenshot des Fensters „Confluence administration“ mit ausgewählter Registerkarte „Add Users“ und eingegebenen „Add a User“-Informationen](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. Geben Sie im Textfeld **Username** (Benutzername) die E-Mail-Adresse des Benutzers ein, etwa von B. Simon.
 

@@ -1,7 +1,7 @@
 ---
-title: Anmelden von Benutzern in JavaScript-Single-Page-Web-Apps | Azure
+title: 'Schnellstart: Anmelden von Benutzern in JavaScript-Single-Page-Web-Apps | Azure'
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie eine JavaScript-App unter Verwendung von Microsoft Identity Platform eine API aufrufen kann, für die Zugriffstoken erforderlich sind.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie aus einer JavaScript-App eine API aufrufen, für die Zugriffstoken erforderlich sind, die über die Microsoft Identity Platform ausgegeben werden.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,23 +12,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b6e3e0c1ecf9ce3a9d86f6b03c3ad3efc5676b5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257927"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613321"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
-In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können. Eine JavaScript-Single-Page-Anwendung kann zudem ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
+In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können. Eine JavaScript-Single-Page-Anwendung kann zudem ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen. Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement ([kostenloses Azure-Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (zum Bearbeiten der Projektdateien)
-
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Registrieren und Herunterladen Ihrer Schnellstartanwendung
@@ -300,9 +299,4 @@ myMSALObj.acquireTokenPopup(requestObj)
 Eine ausführliche Anleitung zum Erstellen der Anwendung für diesen Schnellstart finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA](./tutorial-v2-javascript-spa.md)
-
-Die Dokumentation, häufig gestellte Fragen, Probleme und mehr zum MSAL-Repository finden Sie hier:
-
-> [!div class="nextstepaction"]
-> [MSAL.js – GitHub-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)](tutorial-v2-javascript-spa.md)

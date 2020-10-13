@@ -241,9 +241,9 @@
 - name: "Behandeln von Problemen mit Shared\_Image\_Gallery-Instanzen"
   items:
     - name: 'Behandeln von Problemen mit Shared Image Gallery: Windows'
-      href: ../windows/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
     - name: 'Behandeln von Problemen mit Shared Image Gallery: Linux'
-      href: ../linux/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
 - name: Probleme mit einer VM-Erweiterung
   items:
     - name: Übersicht über Azure-Erweiterungen

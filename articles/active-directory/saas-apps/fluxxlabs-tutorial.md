@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554860"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Fluxx Labs
 
@@ -139,15 +139,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Wählen Sie unten im Abschnitt **Settings** (Einstellungen) die Option **Admin** (Administrator).
 
-    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config1.png)
+    ![Screenshot des Abschnitts „Settings“ mit ausgewählter Option „Admin“](./media/fluxxlabs-tutorial/config1.png)
 
 3. Klicken Sie im Verwaltungsbereich auf **Plug-Ins** > **Integrations** (Integrationen) und anschließend auf **SAML SSO-(Disabled)** (SAML-SSO (Deaktiviert)).
 
-    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config2.png)
+    ![Screenshot der Registerkarte „Integrations“ mit ausgewählter Option „SAML SSO - (Disabled)“](./media/fluxxlabs-tutorial/config2.png)
 
 4. Führen Sie im Abschnitt mit den Attributen die folgenden Schritte aus:
 
-    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config3.png)
+    ![Screenshot des Abschnitts „Attributes“ mit aktivierter Option „SAML SSO“, in die Felder eingegebenen Werten und ausgewählter Schaltfläche „Save“](./media/fluxxlabs-tutorial/config3.png)
 
     a. Aktivieren Sie das Kontrollkästchen **SAML SSO** (SAML-SSO).
 
@@ -180,11 +180,11 @@ Damit sich Azure AD-Benutzer bei Fluxx Labs anmelden können, müssen sie in Flu
 
 2. Klicken Sie auf das unten angezeigte **Symbol**.
 
-    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config6.png)
+    ![Screenshot mit den Administratoroptionen, in dem das „Plus“-Symbol unter „Your Dashboard is Empty“ ausgewählt ist](./media/fluxxlabs-tutorial/config6.png)
 
 3. Klicken Sie auf dem Dashboard auf das unten dargestellte Symbol, um die Karte **New PEOPLE** (Neue PERSONEN) zu öffnen.
 
-    ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config4.png)
+    ![Screenshot des Menüs „Contact Management“, in dem das „Plus“-Symbol neben „People“ ausgewählt ist](./media/fluxxlabs-tutorial/config4.png)
 
 4. Führen Sie im Abschnitt **NEW PEOPLE** (NEUE PERSONEN) die folgenden Schritte aus:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4607d4dfba68ca8f78ec4e3aaa4da36966ea843a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543022"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760817"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Tutorial: Azure Active Directory-Integration mit Adobe Experience Manager
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Adobe Experience Manager](common/idp-intiated.png)
+    ![Screenshot des Abschnitts „Grundlegende SAML-Konfiguration“, in dem die Textfelder „Bezeichner“ und „Antwort-URL“ hervorgehoben sind](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** einen eindeutigen Wert ein, den Sie auch auf dem AEM-Server definieren.
 
@@ -136,35 +136,35 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 2. Wählen Sie **Settings** (Einstellungen) > **Security** (Sicherheit) > **Users** (Benutzer) aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![Screenshot mit der Kachel „Users“ im Adobe Experience Manager](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. Wählen Sie **Administrator** oder einen anderen relevanten Benutzer aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Screenshot, in dem der Benutzer „Administrator“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > TrustStore verwalten).
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Screenshot, in dem „Manage TrustStore“ unter „Account settings“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. Klicken Sie unter **Add Certificate from CER file** (Zertifikat aus CER-Datei hinzufügen) auf **Select Certificate File** (Zertifikatdatei auswählen). Suchen Sie die Zertifikatsdatei, die Sie bereits aus dem Azure-Portal heruntergeladen haben, und wählen Sie sie aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![Screenshot, in dem die Schaltfläche „Select Certificate File“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. Das Zertifikat wird dem TrustStore hinzugefügt. Notieren Sie den Alias des Zertifikats.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Screenshot, der zeigt, dass das Zertifikat zu „TrustStore“ hinzugefügt wurde](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. Wählen Sie auf der Seite **Users** (Benutzer) die Option **authentication-service** aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Sreenshot, in dem „authentication-service“ auf dem Bildschirm hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. Wählen Sie **Account Settings** (Kontoeinstellungen) > **Create/Manage KeyStore** (KeyStore erstellen/verwalten) aus. Erstellen Sie den KeyStore durch Angeben eines Kennworts.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Screenshot, in dem „Manage KeyStore“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. Wechseln Sie zurück zum Verwaltungsbildschirm. Klicken Sie dann auf **Settings** > **Operations** > **Web Console** (Einstellungen > Vorgänge > Webkonsole).
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Screenshot, in dem im Abschnitt „Settings“ unter „Operations“ die Option „Web Console“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     Dadurch wird die Konfigurationsseite geöffnet.
 
@@ -172,7 +172,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 10. Suchen Sie **Adobe Granite SAML 2.0 Authentication Handler**. Klicken Sie dann auf das Symbol zum **Hinzufügen**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Screenshot, in dem „Adobe Granite SAML 2.0 Authentication Handler“ hervorgehoben ist](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. Führen Sie auf dieser Seite die folgenden Aktionen aus:
 

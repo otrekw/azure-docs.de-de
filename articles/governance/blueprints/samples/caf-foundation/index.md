@@ -3,12 +3,12 @@ title: 'CAF-Basisblaupausenbeispiel: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für Azure
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531694"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950277"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
@@ -26,18 +26,19 @@ Diese Implementierung umfasst mehrere Azure-Dienste, die für die Bereitstellung
 
 - Eine [Azure Key Vault](../../../../key-vault/general/overview.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
 - [Log Analytics](../../../../azure-monitor/overview.md) wird bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre sichere Bereitstellung in [Speicherkonten](../../../../storage/common/storage-introduction.md) für die Diagnoseprotokollierung starten.
-- [Azure Security Center](../../../../security-center/security-center-intro.md) (Standardversion) schützt Ihre migrierten Workloads vor Bedrohungen.
-- Von der Blaupause werden außerdem [Azure-Richtlinien](../../../policy/overview.md) für Folgendes definiert und bereitgestellt: 
-  - Tagging (CostCenter) für Ressourcengruppen
-  - Anfügung des CostCenter-Tags an Ressourcen in der Ressourcengruppe
-  - Zulässige Azure-Region für Ressourcen und Ressourcengruppen
-  - Zulässige SKUs für Speicherkonten (werden bei der Bereitstellung ausgewählt)
-  - Zulässige SKUs für virtuelle Azure-Computer (werden bei der Bereitstellung ausgewählt)
-  - Erzwingung der Bereitstellung von Network Watcher 
-  - Erzwingung der sicheren Übertragungsverschlüsselung für das Azure Storage-Konto
-  - Ablehnung von Ressourcentypen (werden bei der Bereitstellung ausgewählt)  
-- Initiativen
-  - Aktivieren der Überwachung in Azure Security Center (über 100 Richtliniendefinitionen)
+- [Azure Security Center](../../../../security-center/security-center-introduction.md) (Standardversion) schützt Ihre migrierten Workloads vor Bedrohungen.
+- Von der Blaupause werden außerdem [Azure Policy](../../../policy/overview.md)-Definitionen definiert und bereitgestellt:
+  - Richtliniendefinitionen:
+    - Tagging (CostCenter) für Ressourcengruppen
+    - Anfügung des CostCenter-Tags an Ressourcen in der Ressourcengruppe
+    - Zulässige Azure-Region für Ressourcen und Ressourcengruppen
+    - Zulässige SKUs für Speicherkonten (werden bei der Bereitstellung ausgewählt)
+    - Zulässige SKUs für virtuelle Azure-Computer (werden bei der Bereitstellung ausgewählt)
+    - Erzwingung der Bereitstellung von Network Watcher 
+    - Erzwingung der sicheren Übertragungsverschlüsselung für das Azure Storage-Konto
+    - Ablehnung von Ressourcentypen (werden bei der Bereitstellung ausgewählt)  
+  - Richtlinieninitiativen:
+    - Aktivieren der Überwachung in Azure Security Center (über 100 Richtliniendefinitionen)
 
 Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azure Architecture Center: Referenzarchitekturen](/azure/architecture/reference-architectures/) veröffentlicht wurden.
 

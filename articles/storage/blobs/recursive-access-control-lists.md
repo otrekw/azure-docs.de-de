@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 10/06/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71c470bd1bb71b55d6643ac6305a054f1c934948
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f9f0983bdb5e8763d13eeab8ea21bef7fb9ef47f
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229038"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803329"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Rekursives Festlegen von Zugriffssteuerungslisten (ACLs) für Azure Data Lake Storage Gen2
 
@@ -55,7 +55,7 @@ Installieren Sie die erforderlichen Bibliotheken.
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Informationen zum Aktualisieren der PowerShell-Version finden Sie unter [Aktualisieren einer vorhandenen Windows PowerShell-Version](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+   Informationen zum Aktualisieren der PowerShell-Version finden Sie unter [Aktualisieren einer vorhandenen Windows PowerShell-Version](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell).
     
 3. Installieren Sie die aktuelle Version des PowerShellGet-Moduls.
 
@@ -71,7 +71,7 @@ Installieren Sie die erforderlichen Bibliotheken.
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+   Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -80,7 +80,7 @@ Installieren Sie die erforderlichen Bibliotheken.
 2. Installieren Sie das Vorschaupaket „Azure.Storage.Files.DataLake“ aus Ihrem Projektverzeichnis mit dem Befehl `dotnet add package`.
 
    ```console
-   dotnet add package Azure.Storage.Files.DataLake -v 12.3.0-dev.20200811.1 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
+   dotnet add package Azure.Storage.Files.DataLake -v 12.5.0-preview.1 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
    ```
 
 3. Fügen Sie die folgenden using-Anweisungen am Anfang Ihrer Codedatei ein.
@@ -138,7 +138,7 @@ Wählen Sie als Nächstes aus, wie Ihre Befehle die Autorisierung für das Speic
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Option 1: Abrufen der Autorisierung mithilfe von Azure Active Directory (AD)
 
-Bei diesem Ansatz stellt das System sicher, dass Ihr Benutzerkonto über die entsprechenden RBAC-Zuweisungen (rollenbasierte Zugriffssteuerung) und ACL-Berechtigungen verfügt. 
+Bei diesem Ansatz stellt das System sicher, dass Ihr Benutzerkonto über die entsprechenden Azure RBAC-Zuweisungen (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung von Azure) und ACL-Berechtigungen verfügt. 
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
@@ -153,7 +153,7 @@ In der folgenden Tabelle werden die einzelnen unterstützten Rollen und ihre Ein
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Option 2: Abrufen der Autorisierung mithilfe des Speicherkontoschlüssels
 
-Bei diesem Ansatz überprüft das System nicht die RBAC- oder ACL-Berechtigungen.
+Bei diesem Ansatz überprüft das System nicht die Azure RBAC- oder ACL-Berechtigungen.
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
@@ -174,7 +174,7 @@ Nachdem Sie das Paket installiert haben, fügen Sie am Anfang der Codedatei dies
 using Azure.Identity;
 ```
 
-Rufen Sie die Client-ID, ein Clientgeheimnis und die Mandanten-ID ab. Informationen zur Vorgehensweise finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [RBAC-Rollen](../../role-based-access-control/overview.md) (Role-Based Access Control) zuweisen. 
+Rufen Sie die Client-ID, ein Clientgeheimnis und die Mandanten-ID ab. Informationen zur Vorgehensweise finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [Azure RBAC-Rollen](../../role-based-access-control/overview.md) (Azure Role-Based Access Control) zuweisen. 
 
 |Role|ACL-Einstellungsfunktion|
 |--|--|
@@ -229,7 +229,7 @@ Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie e
 
 Sie können die [Azure-Identitätsclientbibliothek für Python](https://pypi.org/project/azure-identity/) verwenden, um Ihre Anwendung bei Azure AD zu authentifizieren.
 
-In diesem Beispiel wird eine **DataLakeServiceClient**-Instanz mithilfe einer Client-ID, eines Clientgeheimnisses und einer Mandanten-ID erstellt.  Informationen zum Abrufen dieser Werte finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [RBAC-Rollen](../../role-based-access-control/overview.md) (Role-Based Access Control) zuweisen. 
+In diesem Beispiel wird eine **DataLakeServiceClient**-Instanz mithilfe einer Client-ID, eines Clientgeheimnisses und einer Mandanten-ID erstellt.  Informationen zum Abrufen dieser Werte finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [Azure RBAC-Rollen](../../role-based-access-control/overview.md) (Azure Role-Based Access Control) zuweisen. 
 
 |Role|ACL-Einstellungsfunktion|
 |--|--|
@@ -279,7 +279,9 @@ except Exception as e:
 
 ## <a name="set-an-acl-recursively"></a>Rekursives Festlegen einer Zugriffssteuerungsliste
 
-Sie können Zugriffssteuerungslisten (ACLs) rekursiv festlegen.  
+Wenn Sie eine Zugriffssteuerungsliste *festlegen*, **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren*. Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert wird, anstatt sie zu ersetzen, finden Sie im Abschnitt [Rekursives Aktualisieren einer Zugriffssteuerungsliste](#update-an-acl-recursively) in diesem Artikel.   
+
+Dieser Abschnitt enthält Beispiele, wie eine Zugriffssteuerungsliste festgelegt wird. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -367,13 +369,17 @@ def set_permission_recursively():
 
 ## <a name="update-an-acl-recursively"></a>Rekursives Aktualisieren einer Zugriffssteuerungsliste
 
-Sie können eine vorhandene Zugriffssteuerungsliste rekursiv aktualisieren.
+Wenn Sie eine Zugriffssteuerungsliste *aktualisieren*, ändern Sie die Zugriffssteuerungsliste, anstatt sie zu ersetzen. Beispielsweise können Sie der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen, ohne dass sich dies auf andere Sicherheitsprinzipale auswirkt, die in der Zugriffssteuerungsliste aufgelistet sind.  Informationen dazu, wie eine Zugriffssteuerungsliste ersetzt wird, anstatt sie zu aktualisieren, finden Sie im Abschnitt [Rekursives Festlegen einer Zugriffssteuerungsliste](#set-an-acl-recursively) in diesem Artikel. 
+
+Um eine Zugriffssteuerungsliste zu aktualisieren, erstellen Sie ein neues Zugriffssteuerungsliste-Objekt mit dem Zugriffssteuerungslisteneintrag, den Sie aktualisieren möchten, und verwenden Sie dieses Objekt dann im Aktualisierungsvorgang der Zugriffssteuerungsliste. Rufen Sie nicht die vorhandene Zugriffssteuerungsliste ab, stellen Sie lediglich die zu aktualisierenden Zugriffssteuerungslisteneinträge bereit.
+
+Dieser Abschnitt enthält Beispiele, wie eine Zugriffssteuerungsliste aktualisiert wird.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Sie aktualisieren eine Zugriffssteuerungsliste rekursiv mithilfe des Cmdlets **Update-AzDataLakeGen2AclRecursive**. 
 
-Dieses Beispiel aktualisiert einen ACL-Eintrag mit Schreibberechtigung.
+Dieses Beispiel aktualisiert einen ACL-Eintrag mit Schreibberechtigung. 
 
 ```powershell
 $filesystemName = "my-container"
@@ -445,7 +451,9 @@ def update_permission_recursively():
 
 ## <a name="remove-acl-entries-recursively"></a>Rekursives Entfernen von ACL-Einträgen
 
-Sie können einen oder mehrere ACL-Einträge rekursiv entfernen.
+Sie können einen oder mehrere ACL-Einträge rekursiv entfernen. Um einen ACL-Eintrag zu entfernen, erstellen Sie ein neues ACL-Objekt für den zu entfernenden ACL-Eintrag, und verwenden Sie dieses Objekt dann im Entfernungsvorgang der ACL. Rufen Sie nicht die vorhandene ACL ab, stellen Sie lediglich die zu entfernenden ACL-Einträge bereit. 
+
+Dieser Abschnitt enthält Beispiele, wie eine ACL entfernt wird.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -548,7 +556,7 @@ public async Task<string> ResumeAsync(DataLakeServiceClient serviceClient,
     {
         var accessControlChangeResult =
             await directoryClient.SetAccessControlRecursiveAsync(
-                accessControlList, null, continuationToken: continuationToken);
+                accessControlList, continuationToken: continuationToken, null);
 
         if (accessControlChangeResult.Value.Counters.FailedChangesCount > 0)
         {

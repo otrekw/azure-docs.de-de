@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072994"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827301"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -39,8 +39,8 @@ Die folgende Tabelle bietet eine Übersicht über die Möglichkeiten zum Wechsel
 
 | Wechsel | … zu LRS | … zu GRS/RA-GRS | … zu ZRS | … zu GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>… von LRS</b> | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung<sup>1</sup> | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Zuerst Wechseln zu GRS/RA-GRS und dann Anfordern einer Livemigration<sup>1</sup> |
-| <b>… von GRS/RA-GRS</b> | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Zuerst Wechseln zu LRS und dann Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br /> Anfordern einer Livemigration |
+| <b>… von LRS</b> | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung<sup>1</sup> | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Zuerst Wechseln zu GRS/RA-GRS und dann Anfordern einer Livemigration<sup>1</sup> |
+| <b>… von GRS/RA-GRS</b> | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Zuerst Wechseln zu LRS und dann Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Anfordern einer Livemigration |
 | <b>… von ZRS</b> | Ausführen einer manuellen Migration | Ausführen einer manuellen Migration | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung<sup>1,2</sup> |
 | <b>… von GZRS/RA-GZRS</b> | Ausführen einer manuellen Migration | Ausführen einer manuellen Migration | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – |
 
@@ -48,11 +48,11 @@ Die folgende Tabelle bietet eine Übersicht über die Möglichkeiten zum Wechsel
 <sup>2</sup> Konvertierung aus ZRS in GZRS/RA-GZRS oder umgekehrt wird in den folgenden Regionen nicht unterstützt: „USA, Osten 2“, „USA, Osten“, „Europa, Westen“.
 
 > [!CAUTION]
-> Wenn Sie ein [Kontofailover](storage-disaster-recovery-guidance.md) für Ihr (RA-)GRS- oder (RA-)GZRS-Konto durchgeführt haben, ist das Konto in der neuen primären Region nach dem Failover lokal redundant. Livemigration zu ZRS oder GZRS für ein LRS-Konto, das sich aus einem Failover ergibt, wird nicht unterstützt. Sie müssen eine [manuelle Migration](#perform-a-manual-migration-to-zrs) zu ZRS oder GZRS durchführen.
+> Wenn Sie ein [Kontofailover](storage-disaster-recovery-guidance.md) für Ihr (RA-)GRS- oder (RA-)GZRS-Konto durchgeführt haben, ist das Konto in der neuen primären Region nach dem Failover lokal redundant. Livemigration zu ZRS oder GZRS für ein LRS-Konto, das sich aus einem Failover ergibt, wird nicht unterstützt. Dies gilt sogar für sogenannte Failbackvorgänge. Wenn Sie z. B. ein Kontofailover von RA-GZRS zum LRS-Konto in der sekundären Region durchführen und das Konto dann erneut für RA-GRS konfigurieren und ein weiteres Kontofailover zur ursprünglichen primären Region durchführen, können Sie sich nicht an den Support wenden, um die ursprüngliche Livemigration zu RA-GZRS in der primären Region durchzuführen. Stattdessen müssen Sie eine manuelle Migration zu ZRS oder GZRS durchführen.
 
 ## <a name="change-the-replication-setting"></a>Ändern der Replikationseinstellung
 
-Sie können das Azure-Portal, PowerShell oder die Azure CLI verwenden, um die Replikationseinstellung für ein Speicherkonto zu ändern, sofern Sie nicht die Art und Weise verändern, in der Daten in der primären Region repliziert werden. Wenn Sie von LRS in der primären Region zu ZRS in der primären Region oder umgekehrt migrieren, müssen Sie entweder eine [manuelle Migration](#perform-a-manual-migration-to-zrs) oder eine [Livemigration](#request-a-live-migration-to-zrs) durchführen.
+Sie können das Azure-Portal, PowerShell oder die Azure CLI verwenden, um die Replikationseinstellung für ein Speicherkonto zu ändern, sofern Sie nicht die Art und Weise verändern, in der Daten in der primären Region repliziert werden. Wenn Sie von LRS in der primären Region zu ZRS in der primären Region oder umgekehrt migrieren, müssen Sie entweder eine manuelle Migration oder eine Livemigration durchführen.
 
 Durch die Änderung des Replikationstyps für Ihr Speicherkonto ergeben sich keine Ausfallzeiten für Ihre Anwendungen.
 
@@ -89,7 +89,7 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>Ausführen einer manuellen Migration zu ZRS
+## <a name="perform-a-manual-migration-to-zrs-gzrs-or-ra-gzrs"></a>Ausführen einer manuellen Migration zu ZRS, GZRS oder RA-GZRS
 
 Wenn Sie durch Wechseln von LRS zu ZRS oder umgekehrt die Art und Weise ändern möchten, in der Daten in Ihrem Speicherkonto in der primären Region repliziert werden, können Sie eine manuelle Migration ausführen. Eine manuelle Migration bietet mehr Flexibilität als eine Livemigration. Bei einer manuellen Migration können Sie den zeitlichen Ablauf steuern. Verwenden Sie diese Option also, wenn die Migration an einem bestimmten Datum abgeschlossen sein soll.
 
@@ -102,9 +102,11 @@ Bei einer manuellen Migration kopieren Sie die Daten aus Ihrem vorhandenen Speic
 - Kopieren Sie Daten mithilfe eines vorhandenen Tools wie z. B. AzCopy, einer der Azure Storage-Clientbibliotheken oder zuverlässigen Drittanbietertools.
 - Wenn Sie mit Hadoop oder HDInsight vertraut sind, können Sie sowohl das Quell- als auch das Zielspeicherkonto an Ihren Cluster anfügen. Danach parallelisieren Sie den Datenkopiervorgang mit einem Tool wie z.B. DistCp.
 
-## <a name="request-a-live-migration-to-zrs"></a>Anfordern einer Livemigration zu ZRS
+## <a name="request-a-live-migration-to-zrs-gzrs-or-ra-gzrs"></a>Anfordern einer Livemigration zu ZRS, GZRS oder RA-GZRS
 
-Wenn Sie Ihr Speicherkonto von LRS oder GRS zu ZRS in der primären Region migrieren müssen, ohne dass dadurch Ausfallzeiten entstehen, können Sie eine Livemigration bei Microsoft anfordern. Während einer Livemigration können Sie ohne jegliche Verluste in Bezug auf Dauerhaftigkeit oder Verfügbarkeit auf die Daten in Ihrem Speicherkonto zugreifen. Die Azure Storage-SLA wird während des Migrationsprozesses aufrechterhalten. Bei einer Livemigration treten keine Datenverluste auf. Dienstendpunkte, Zugriffsschlüssel, Shared Access Signatures und andere Kontooptionen sind auch nach der Migration unverändert.
+Wenn Sie Ihr Speicherkonto von LRS zu ZRS in der primären Region migrieren müssen, ohne dass dadurch Ausfallzeiten entstehen, können Sie eine Livemigration bei Microsoft anfordern. Um von LRS zu GZRS oder RA-GZRS zu migrieren, wechseln Sie zunächst zu GRS oder RA-GRS, und fordern Sie dann eine Livemigration an. Auf gleiche Weise können Sie eine Livemigration von GRS oder RA-GRS zu GZRS oder RA-GZRS anfordern. Um von GRS oder RA-GRS zu ZRS zu migrieren, wechseln Sie zunächst zu LRS, und fordern Sie dann eine Livemigration an.
+
+Während einer Livemigration können Sie ohne jegliche Verluste hinsichtlich Dauerhaftigkeit oder Verfügbarkeit auf die Daten in Ihrem Speicherkonto zugreifen. Die Azure Storage-SLA wird während des Migrationsprozesses aufrechterhalten. Bei einer Livemigration treten keine Datenverluste auf. Dienstendpunkte, Zugriffsschlüssel, Shared Access Signatures und andere Kontooptionen sind auch nach der Migration unverändert.
 
 ZRS unterstützt nur Konten vom Typ „Allgemein v2“. Bevor Sie also eine Anforderung für eine Livemigration zu ZRS übermitteln, führen Sie ein Upgrade Ihres Speicherkontos auf „Allgemein v2“ durch. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md). Ein Speicherkonto muss Daten enthalten, damit eine Livemigration durchgeführt werden kann.
 
@@ -122,7 +124,10 @@ In folgenden Fällen müssen Sie eine manuelle Migration ausführen:
 Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. Wählen Sie im Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
 
 1. Wählen Sie **Neue Supportanfrage** aus.
-2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an. Wählen Sie im Abschnitt **Dienst** den Eintrag **Speicherkontoverwaltung** und die Ressource aus, die Sie in ZRS konvertieren möchten.
+2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an: 
+    - **Problemtyp**: Wählen Sie **Technisch** aus.
+    - **Dienst**: Wählen Sie **Meine Dienste** und **Speicherkontenverwaltung** aus.
+    - **Ressource:** Wählen Sie die Ressource aus, die Sie zu ZRS konvertieren möchten.
 3. Wählen Sie **Weiter** aus.
 4. Geben Sie im Abschnitt **Problem** die folgenden Werte an:
     - **Schweregrad**: Behalten Sie den Standardwert bei.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: ce0e1efc037832e1d8a8faaef1560f68c143db63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18c8cd675470d1f1f93baf5ab2a8f811d546ffac
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553022"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Tutorial: Azure Active Directory-Integration mit Infor CloudSuite
 
@@ -100,7 +100,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Infor Clo
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zu Infor CloudSuite-Domäne und -URLs](common/idp-intiated.png)
+    ![Screenshot: Grundlegende SAML-Konfiguration, in der Sie den Bezeichner und die Antwort-URL eingeben sowie auf „Speichern“ klicken können](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
@@ -122,7 +122,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Infor Clo
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zu Infor CloudSuite-Domäne und -URLs](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 

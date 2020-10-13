@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798534"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826567"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Tutorial: Visualisieren und Überwachen Ihrer Daten
 
@@ -44,19 +44,19 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
 
 1. Wechseln Sie zu **Workbooks** (Arbeitsmappen), und wählen Sie dann **Templates** (Vorlagen) aus, um die vollständige Liste der in Azure Sentinel integrierten Arbeitsmappen anzuzeigen. Wenn Sie feststellen möchten, welche für die Datentypen relevant sind, mit denen Sie eine Verbindung hergestellt haben, wird Ihnen im Feld **Required data types** (Erforderliche Datentypen) in jeder Arbeitsmappe der Datentyp neben einem grünen Häkchen aufgelistet, wenn Sie bereits relevante Daten an Azure Sentinel streamen.
   ![Go to workbooks](./media/tutorial-monitor-data/access-workbooks.png) (Zu Arbeitsmappen wechseln)
-1. Klicken Sie auf **View workbook** (Arbeitsmappe anzeigen), um die mit Ihren Daten aufgefüllte Vorlage anzuzeigen.
+1. Klicken Sie auf **View template** (Vorlage anzeigen), um die mit Ihren Daten aufgefüllte Vorlage anzuzeigen.
   
 1. Wenn Sie die Arbeitsmappe bearbeiten möchten, klicken Sie auf **Save** (Speichern), und wählen Sie dann den Speicherort aus, an dem Sie die JSON-Datei für die Vorlage speichern möchten. 
 
    > [!NOTE]
-   > Dadurch wird eine Azure-Ressource basierend auf der relevanten Vorlage erstellt, und die JSON-Vorlagendatei selbst und nicht die Daten werden gespeichert.
+   > Dadurch wird eine Azure-Ressource erstellt, die auf der relevanten Vorlage basiert, und die JSON-Datei der Arbeitsmappe, nicht die Daten, gespeichert.
 
 
-1. Wählen Sie **View workbook** (Arbeitsmappe anzeigen) aus. Klicken Sie dann oben auf **Edit** (Bearbeiten). Sie können die Arbeitsmappe jetzt bearbeiten und entsprechend Ihren Anforderungen anpassen. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md).
+1. Wählen Sie **View saved workbook** (Gespeicherte Arbeitsmappe anzeigen) aus. Klicken Sie dann oben auf **Edit** (Bearbeiten). Sie können die Arbeitsmappe jetzt bearbeiten und entsprechend Ihren Anforderungen anpassen. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md).
 ![View workbooks](./media/tutorial-monitor-data/workbook-graph.png) (Arbeitsmappen anzeigen)
 1. Nachdem Sie die Änderungen vorgenommen haben, können Sie die Arbeitsmappe speichern. 
 
-1. Sie können die Arbeitsmappe auch klonen: Wählen Sie **Edit** (Bearbeiten) und dann **Save as** (Speichern unter) aus, und speichern Sie sie unter einem anderen Namen in demselben Abonnement und in derselben Ressourcengruppe. Diese Arbeitsmappen werden auf der Registerkarte **My workbooks** (Meine Arbeitsmappen) angezeigt.
+1. Sie können die Arbeitsmappe auch klonen: Wählen Sie **Edit** (Bearbeiten) und dann **Save as** (Speichern unter) aus, und speichern Sie sie unter einem anderen Namen in demselben Abonnement und in derselben Ressourcengruppe. Diese geklonten Arbeitsmappen werden auf der Registerkarte **My workbooks** (Meine Arbeitsmappen) angezeigt.
 
 
 ## <a name="create-new-workbook"></a>Neue Arbeitsmappe erstellen
@@ -66,7 +66,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
 
 1. Um die Arbeitsmappe zu bearbeiten, wählen Sie **Edit** (Bearbeiten) aus, und fügen Sie dann nach Bedarf Text, Abfragen und Parameter hinzu. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md). 
 
-1. Stellen Sie bei der Erstellung einer Abfrage sicher, dass **Data source** (Datenquelle) auf **Logs** (Protokolle) und der **Resource type** (Ressourcentyp) auf **Log Analytics** (Protokollanalyse) festgelegt ist, und wählen Sie dann die relevanten Arbeitsbereiche aus. 
+1. Stellen Sie bei der Erstellung einer Abfrage sicher, dass **Data source** (Datenquelle) auf **Logs** (Protokolle) und **Resource type** (Ressourcentyp) auf **Log Analytics** (Protokollanalyse) festgelegt ist, und wählen Sie dann die relevanten Arbeitsbereiche aus. 
 
 1. Nachdem Sie die Arbeitsmappe erstellt haben, speichern Sie diese in dem Abonnement und in der Ressourcengruppe Ihres Azure Sentinel-Arbeitsbereichs.
 
@@ -79,15 +79,13 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
 
 ## <a name="how-to-delete-workbooks"></a>Löschen von Arbeitsmappen
 
-Sie können Arbeitsmappen löschen, die aus einer Azure Sentinel-Vorlage erstellt wurden. 
-
-Wählen Sie zum Löschen einer angepassten Arbeitsmappe auf der Seite der Arbeitsmappen die gewünschte gespeicherte Arbeitsmappe aus, und klicken Sie auf **Löschen**. Dadurch wird die gespeicherte Arbeitsmappe entfernt.
+Um eine gespeicherte Arbeitsmappe (entweder eine gespeicherte Vorlage oder eine angepasste Arbeitsmappe) zu löschen, wählen Sie diese auf der Seite „Arbeitsmappen“ aus, und wählen Sie **Löschen** aus. Dadurch wird die gespeicherte Arbeitsmappe entfernt.
 
 > [!NOTE]
-> Dadurch werden die Ressource und alle Änderungen, die Sie an der Vorlage vorgenommen haben, entfernt. Die ursprüngliche Vorlage bleibt verfügbar.
+> Dadurch werden sowohl die Arbeitsmappenressource als auch alle Änderungen entfernt, die Sie an der Vorlage vorgenommen haben. Die ursprüngliche Vorlage bleibt verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie Ihre Daten in Azure Sentinel anzeigen.
+In diesem Tutorial haben Sie gelernt, wie Sie Ihre Daten in Azure Sentinel über Azure-Arbeitsmappen visualisieren.
 
 Informationen zum Automatisieren Ihrer Reaktionen auf Bedrohungen finden Sie unter [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](tutorial-respond-threats-playbook.md).

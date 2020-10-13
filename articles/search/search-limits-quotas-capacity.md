@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462512"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825490"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -50,7 +50,7 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 
 <sup>1</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indizes. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
 
-<sup>2</sup> Die Verwendung einer sehr großen Zahl von Elementen in komplexen Sammlungen pro Dokument führt derzeit zu einer hohen Speicherauslastung. Dies ist ein bekanntes Problem. Bis das Problem behoben wird, ist die Zahl 3.000 eine sichere Obergrenze für alle Dienstebenen. Dieser Grenzwert wird nur für Indizierungsvorgänge erzwungen, für die die früheste allgemein verfügbare API-Version mit Unterstützung von Feldern komplexen Typs (`2019-05-06`) verwendet wird (oder eine höhere Version). Damit es nicht zu Beeinträchtigungen für Clients kommt, für die ggf. ältere API-Vorschauversionen (mit Unterstützung von Feldern komplexen Typs) genutzt werden, wird dieser Grenzwert für Indizierungsvorgänge mit diesen API-Vorschauversionen nicht erzwungen. Beachten Sie, dass API-Vorschauversionen nicht für die Verwendung für Produktionsszenarien bestimmt sind und dass wir Kunden dringend empfehlen, die Umstellung auf die neueste allgemein verfügbare API-Version durchzuführen.
+<sup>2</sup> Es gibt eine Obergrenze für Elemente, weil ein Vorhandensein vieler Elemente eine hohe Speichernutzung zur Folge hat. Ein Element einer komplexen Sammlung ist als Member dieser Sammlung definiert. Angenommen, es gibt ein [Hotel-Dokument mit einer komplexen Sammlung „Rooms“](search-howto-complex-data-types.md#indexing-complex-types), dann wird jedes Zimmer in der Sammlung „Rooms“ als ein Element angesehen. Bei einer Indizierung kann die Indizierungs-Engine maximal 3000 Elemente sicher im gesamten Dokument verarbeiten. [Dieser Grenzwert](search-api-migration.md#upgrade-to-2019-05-06) wurde in `api-version=2019-05-06` eingeführt und gilt nur für komplexe Sammlungen, nicht für Zeichenfolgensammlungen oder komplexe Felder.
 
 <a name="document-limits"></a>
 

@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530853"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824473"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
@@ -35,11 +35,13 @@ Zum Einstieg empfiehlt sich das [Dataset „Hotels“](https://github.com/Azure-
 
 Das folgende JSON-Dokument besteht aus einfachen und komplexen Feldern. Komplexe Felder, z. B. `Address` und `Rooms`, enthalten Unterfelder. `Address` umfasst einen einzelnen Wertesatz für diese Unterfelder, da es sich um ein einzelnes Objekt im Dokument handelt. Im Gegensatz dazu umfasst `Rooms` mehrere Wertesätze für die zugehörigen Unterfelder, jeweils einen Satz für jedes Objekt in der Sammlung.
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Das folgende JSON-Dokument besteht aus einfachen und komplexen Feldern. Komplexe
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<a name="indexing-complex-types></a>
+
+## <a name="indexing-complex-types"></a>Indizieren von komplexen Typen
+
+Für eine Indizierung dürfen maximal 3000 Elemente über alle komplexen Sammlungen hinweg in einem einzelnen Dokument vorhanden sein. Ein Element einer komplexen Sammlung ist ein Member dieser Sammlung, sodass im Fall von Räumen (die einzige komplexe Sammlung im Hotel-Beispiel) jeder Raum ein Element ist. Im obigen Beispiel würde das Hotel-Dokument 500 Raumelemente enthalten, wenn das „Secret Point Motel“ 500 Zimmer hätte. Bei verschachtelten komplexen Sammlungen wird jedes untergeordnete Element ebenfalls gezählt, zusätzlich zu dem äußeren (übergeordneten) Element.
+
+Diese Einschränkung gilt nur für komplexe Sammlungen, nicht für komplexe Typen (wie „Address“) oder Zeichenfolgensammlungen (wie „Tags“).
 
 ## <a name="creating-complex-fields"></a>Erstellen komplexer Felder
 
@@ -93,7 +104,7 @@ Im folgenden Beispiel ist ein JSON-Indexschema mit einfachen Feldern, Sammlungen
 
 ## <a name="updating-complex-fields"></a>Aktualisieren komplexer Felder
 
-Alle [Neuindizierungsregeln](search-howto-reindex.md), die allgemein für Felder gelten, gelten auch für komplexe Felder. Das Anpassen einiger Hauptregeln oder das Hinzufügen eines Felds erfordern keine Indexneuerstellung, aber die meisten anderen Änderungen erfordern dies.
+Alle [Neuindizierungsregeln](search-howto-reindex.md), die allgemein für Felder gelten, gelten auch für komplexe Felder. Eine kurze Wiederholung von einigen Hauptregeln: Das Hinzufügen eines Felds zu einem komplexen Typ erfordert keine Indexneuerstellung, aber die meisten anderen Änderungen erfordern dies.
 
 ### <a name="structural-updates-to-the-definition"></a>Strukturelle Aktualisierungen der Definition
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549330"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Lernprogramm: Azure Active Directory-Integration mit ClickTime
 
@@ -207,7 +207,7 @@ Im Fall von ClickTime ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Klicken Sie auf der Symbolleiste oben auf **Firma** und dann auf **Personen**.
    
-    ![Personen](./media/clicktime-tutorial/tic777282.png "Personen")
+    ![Screenshot des ClickTime-Mandanten, für den „Company“ und „People“ ausgewählt sind](./media/clicktime-tutorial/tic777282.png "Personen")
 
 1. Klicken Sie auf **Person hinzufügen**.
    
@@ -215,7 +215,7 @@ Im Fall von ClickTime ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Führen Sie im Abschnitt "New Person" die folgenden Schritte aus:
    
-    ![Personen](./media/clicktime-tutorial/tic777284.png "Personen")
+    ![Screenshot des Abschnitts „Add New Person“, in dem Sie die Informationen in diesem Schritt hinzufügen können](./media/clicktime-tutorial/tic777284.png "Personen")
    
     a.  Geben Sie im entsprechenden Textfeld den **vollständigen Namen** des Benutzers, z.B. **Britta Simon**, ein. 
   

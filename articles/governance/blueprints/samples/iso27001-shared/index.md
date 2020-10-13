@@ -3,12 +3,12 @@ title: 'Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels zur Blaupause „ISO 27001: Gemeinsame Dienste“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISO 27001-Kontrollen.'
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927350"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950549"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
@@ -27,12 +27,12 @@ Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung 
 
 - [Azure-Rollen](../../../../role-based-access-control/overview.md) für die Aufgabentrennung aus Sicht der Steuerungsebene. Vor der Bereitstellung jeder Infrastruktur werden drei Rollen definiert:
   - Die Rolle „NetOps“ verfügt über die Rechte zum Verwalten der Netzwerkumgebung, z. B. Firewalleinstellungen, NSG-Einstellungen, Routing und andere Netzwerkfunktionen.
-  - Die Rolle „SecOps“ verfügt über die erforderlichen Rechte zum Bereitstellen und Verwalten von [Azure Security Center](../../../../security-center/security-center-intro.md), Definieren von [Azure-Richtlinien](../../../policy/overview.md) sowie andere sicherheitsbezogene Rechte.
-  - Die Rolle „SysOps“ verfügt über die erforderlichen Rechte zum Definieren von [Azure-Richtlinien](../../../policy/overview.md) im Abonnement, Verwalten von [Log Analytics](../../../../azure-monitor/overview.md) für die gesamte Umgebung sowie andere betriebsbezogene Rechte.
+  - Die Rolle „SecOps“ verfügt über die erforderlichen Rechte zum Bereitstellen und Verwalten von [Azure Security Center](../../../../security-center/security-center-introduction.md) und zum Definieren von [Azure Policy](../../../policy/overview.md)-Definitionen sowie über andere sicherheitsbezogene Rechte.
+  - Die Rolle „SysOps“ verfügt über die erforderlichen Rechte zum Definieren von [Azure Policy](../../../policy/overview.md)-Definitionen im Abonnement und zum Verwalten von [Log Analytics](../../../../azure-monitor/overview.md) für die gesamte Umgebung sowie über andere betriebsbezogene Rechte.
 - [Log Analytics](../../../../azure-monitor/overview.md) wird als erster Azure-Dienst bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre sichere Bereitstellung starten.
 - Ein virtuelles Netzwerk, für das Subnetze zur Sicherstellung der Konnektivität mit einem lokalen Rechenzentrum, ein Eingangs- und Ausgangsstapel für Internetkonnektivität und ein Subnetz für gemeinsam genutzte Dienste mit NSGs und ASGs für die vollständige Mikrosegmentierung unterstützt werden und das Folgendes enthält:
   - Eine Jumpbox oder einen Bastionhost für Verwaltungszwecke, wobei der Zugriff nur über eine [Azure Firewall](../../../../firewall/overview.md) möglich ist, die im Eingangsstapelsubnetz bereitgestellt wird
-  - Zwei virtuelle Computer mit Ausführung von Active Directory Domain Services (AD DS) und DNS, auf die nur über die Jumpbox zugegriffen werden kann und die so konfiguriert werden können, dass die Replikation nur per AD über eine VPN- oder [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-Verbindung (keine Bereitstellung durch die Blaupause) durchgeführt wird
+  - Zwei virtuelle Computer mit Ausführung von Azure Active Directory Domain Services (Azure AD DS) und DNS, auf die nur über die Jumpbox zugegriffen werden kann und die so konfiguriert werden können, dass die Replikation nur per AD über eine VPN- oder [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-Verbindung (keine Bereitstellung durch die Blaupause) durchgeführt wird
   - Verwendung von [Azure Network Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) und DDoS-Standardschutz
 - Eine [Azure Key Vault](../../../../key-vault/general/overview.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
 

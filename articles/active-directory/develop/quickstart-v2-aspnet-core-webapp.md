@@ -1,7 +1,7 @@
 ---
-title: Hinzufügen von „Bei Microsoft anmelden“ zu ASP.NET Core-Web-Apps | Azure
+title: 'Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App | Azure'
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie Sie „Bei Microsoft anmelden“ mithilfe von OpenID Connect für eine ASP.NET Core-Web-App implementieren.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie „Mit Microsoft anmelden“ mit OpenID Connect in einer ASP.NET Core-Web-App implementieren.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,23 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902354"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613491"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
 In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie eine ASP.NET Core-Web-App persönliche Konten (beispielsweise „hotmail.com“ oder „outlook.com“) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure AD-Instanz (Azure Active Directory) anmelden kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Voraussetzungen
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) oder [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
 > Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
 > * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -108,7 +113,7 @@ In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie ein
 >
 > Nachdem Sie Ihre Einwilligung für die angeforderten Berechtigungen gegeben haben, wird in der App angezeigt, dass Sie sich erfolgreich mit Ihren Azure Active Directory-Anmeldeinformationen angemeldet haben.
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Webbrowser mit der ausgeführten Web-App und dem angemeldeten Benutzer":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Einwilligungsdialogfeld mit den Berechtigungen, die die App vom Benutzer anfordert":::
 
 ## <a name="more-information"></a>Weitere Informationen
 

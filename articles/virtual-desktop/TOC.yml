@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: "Herstellen einer Verbindung mit dem Microsoft\_Store-Client"
           href: connect-microsoft-store.md
+    - name: Konfigurieren von Geräteumleitungen
+      href: configure-device-redirections.md
     - name: Einrichten des PowerShell-Moduls
       href: powershell-module.md
     - name: Einen Hostpool und Sitzungshosts erstellen
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: Anwenden von Empfehlungen
       href: azure-advisor-recommendations.md
+    - name: Einrichten eines Notfallwiederherstellungsplans
+      href: disaster-recovery.md
 - name: Konzepte
   items:
     - name: Authentifizierung

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 77472e27a11614b7b5600f48e020afcceaeb967c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1cbc47820f4a9eeffc4e9fa3cf01290f7c35fd14
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525869"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Tutorial: Azure Active Directory-Integration mit Huddle
 
@@ -102,7 +102,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
     > [!NOTE]
     > Ihre Huddle-Instanz wird von der Domäne, die Sie unten eingeben, automatisch erkannt.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Huddle](common/idp-intiated.png)
+    ![Screenshot: Grundlegende SAML-Konfiguration, in der Sie den Bezeichner und die Antwort-URL eingeben sowie auf „Speichern“ klicken können](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein:
 
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Huddle](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 

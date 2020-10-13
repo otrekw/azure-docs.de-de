@@ -1,7 +1,7 @@
 ---
-title: Anmelden von Benutzern in Angular-Single-Page-Webanwendungen | Azure
+title: 'Schnellstart: Anmelden von Benutzern in Angular-Single-Page-Webanwendungen | Azure'
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie eine Angular-App unter Verwendung von Microsoft Identity Platform eine API aufrufen kann, für die Zugriffstoken erforderlich sind.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie aus einer Angular-App eine API aufrufen, für die Zugriffstoken erforderlich sind, die über die Microsoft Identity Platform ausgegeben werden.
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258029"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613423"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung
 

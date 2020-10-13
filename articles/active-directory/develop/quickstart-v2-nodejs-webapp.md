@@ -1,6 +1,7 @@
 ---
-title: 'Hinzufügen der OIDC-Anmeldung zu einer Node.js-Web-App: Microsoft Identity Platform | Azure'
-description: Hier erfahren Sie, wie Sie die Authentifizierung in einer Node.js-Webanwendung mit OpenID Connect implementieren.
+title: 'Schnellstart: Hinzufügen einer Benutzeranmeldung zu einer Node.js-Web-App | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Authentifizierung in einer Node.js-Webanwendung mit OpenID Connect implementieren.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257689"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613304"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Schnellstart: Hinzufügen der Anmeldung mit OpenID Connect zu einer Node.js-Web-App
 
@@ -24,11 +25,8 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die OpenID Connect-Authen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Beispiel benötigen Sie Folgendes:
-
-* Installation von Node.js (hier erhältlich: http://nodejs.org/ )
-
-* Ein [Microsoft-Konto](https://www.outlook.com) oder ein [Microsoft 365-Entwicklerprogramm](/office/developer-program/office-365-developer-program)
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Anwendung registrieren
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com/) an.
