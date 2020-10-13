@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564364"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822181"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -65,7 +65,7 @@ Das Azure Digital Twins-Tutorial [ *Erstellen einer End-to-End-Lösung*](./tutor
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. Erstellen Sie einen Azure Digital Twins-[Endpunkt](concepts-route-events.md#create-an-endpoint), der Ihr Event Grid-Thema mit ihrer Azure Digital Twins-Instanz verknüpft.
+4. Erstellen Sie einen Azure Digital Twins-[Endpunkt](concepts-route-events.md#create-an-endpoint), der Ihren Event Hub mit Ihrer Azure Digital Twins-Instanz verknüpft.
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -121,12 +121,14 @@ namespace SampleFunctionsApp
             Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
             foreach (var operation in message["patch"]) {
                 if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
+                {
                     //Convert from JSON patch path to a flattened property for TSI
                     //Example input: /Front/Temperature
                     //        output: Front.Temperature
                     string path = operation["path"].ToString().Substring(1);                    
                     path = path.Replace("/", ".");                    
                     tsiUpdate.Add(path, operation["value"]);
+                }
             }
             //Send an update if updates exist
             if (tsiUpdate.Count>0){
@@ -178,7 +180,7 @@ Als nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 2. Verwenden Sie die Verbindungszeichenfolge, die Sie als Ergebnis erhalten, um eine App-Einstellung in ihrer Funktions-App zu erstellen, die ihre Verbindungszeichenfolge enthält:
 
     ```azurecli
-    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
 ### <a name="set-the-time-series-insights-event-hub-connection-string"></a>Festlegen der Time Series Insights-Event Hub-Verbindungszeichenfolge
@@ -192,7 +194,7 @@ Als nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 2. Erstellen Sie in ihrer Funktions-App eine App-Einstellung, die ihre Verbindungszeichenfolge enthält:
 
     ```azurecli
-    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Erstellen und Verbinden einer Time Series Insights-Instanz
@@ -203,11 +205,11 @@ Als nächstes richten Sie eine Time Series Insights-Instanz ein, um die Daten au
     1. Wählen Sie den Tarif **Nutzungsbasierte Zahlung (Vorschau)** aus.
     2. Sie müssen eine **Time Series-ID** für diese Umgebung auswählen. Ihre Time Series-ID kann bis zu drei Werte aufweisen, mit denen Sie in Time Series Insights nach Ihren Daten suchen. Für dieses Tutorial können Sie **$dtId** verwenden. Weitere Informationen zur Auswahl eines ID-Werts finden Sie unter [*Bewährte Methoden für die Auswahl einer Time Series-ID*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Die Benutzeroberfläche eines Portals zum Erstellen einer Time Series Insights-Umgebung. Der Tarif „Nutzungsbasierte Zahlung (Vorschau)“ ist ausgewählt, und der Eigenschaftenname der Time Series-ID ist $dtId.":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei Time Series Insights hervorgehoben wird":::
 
 2. Klicken Sie auf **Weiter: Ereignisquelle**, und wählen Sie Ihre Event Hubs-Informationen von oben aus. Sie müssen auch eine neue Event Hubs-Consumergruppe erstellen.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Die Benutzeroberfläche eines Portals zum Erstellen einer Ereignisquelle einer Time Series Insights-Umgebung. Sie erstellen eine Ereignisquelle mit den Event Hub-Informationen von oben. Außerdem erstellen Sie eine neue Consumergruppe.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei Time Series Insights hervorgehoben wird":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Beginnen mit dem Senden von IoT-Daten an Azure Digital Twins
 
@@ -223,19 +225,19 @@ Nun sollten Daten in Ihre Time Series Insights-Instanz übertragen werden, die z
 
 1. Öffnen Sie Ihre Time Series Insights-Instanz im [Azure-Portal](https://portal.azure.com) (Sie können den Namen Ihrer Instanz in der Suchleiste des Portals suchen). Besuchen Sie die in der Instanzübersicht angezeigte *Time Series Insights-Explorer-URL*.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Auswählen der Time Series Insights-Explorer-URL auf der Übersichtsregisterkarte der Time Series Insights-Umgebung":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei Time Series Insights hervorgehoben wird":::
 
 2. Im Explorer werden Ihre drei Zwillinge von Azure Digital Twins auf der linken Seite angezeigt. Wählen Sie _**thermostat67**_ und **Temperature** aus, und klicken Sie auf **Hinzufügen**.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Auswählen von **thermostat67** und **temperature** und Klicken auf **Hinzufügen**":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei Time Series Insights hervorgehoben wird":::
 
 3. Sie sollten jetzt die anfänglichen Temperaturmesswerte Ihres Thermostats wie unten dargestellt sehen. Der gleiche Temperaturmesswert wird für *room21* und *floor1* aktualisiert, und Sie können diese Datenströme zusammen visualisieren.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Die anfänglichen Temperaturdaten werden im TSI-Explorer grafisch dargestellt. Es handelt sich um eine Linie zufälliger Werte zwischen 68 und 85.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei Time Series Insights hervorgehoben wird":::
 
 4. Nach einer viel längeren Ausführung der Simulation sieht die Visualisierung etwa wie folgt aus:
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Die Temperaturdaten für jeden Zwilling werden in drei parallelen Linien in unterschiedlichen Farben dargestellt.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei Time Series Insights hervorgehoben wird":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

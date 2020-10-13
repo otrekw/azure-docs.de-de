@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure SQL-Datenbank
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure SQL-Datenbank und verwaltete SQL-Instanzen. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 26fd71d829c4d844b20d0848ac1f0cd9040d0cbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8f18ced3e27357d38908c12caf17a325af997a7d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972759"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826612"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Integrierte Azure Policy-Richtliniendefinitionen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -24,6 +24,9 @@ Die Namen der einzelnen integrierten Richtliniendefinitionen sind Links zur ents
 ## <a name="azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und verwaltete SQL-Instanzen 
 
 [!INCLUDE [azure-policy-reference-service-sqldatabase](../../../includes/policy/reference/byrp/microsoft.sql.md)]
+
+## <a name="limitations"></a>Einschränkungen
+- Azure Policy, die für die Erstellung einer Azure SQL-Datenbank gilt, wird bei Verwendung von T-SQL oder SSMS nicht erzwungen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

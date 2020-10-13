@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986722"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295713"
 ---
 # <a name="server-group-size"></a>Größe der Servergruppe
 
@@ -26,13 +26,13 @@ Die Größe einer Servergruppe in Bezug auf die Anzahl von Knoten und die Hardwa
 
 Wenn Sie von einer vorhandenen PostgreSQL-Datenbankinstanz mit einem einzelnen Knoten zu Hyperscale (Citus) migrieren, empfiehlt sich die Auswahl eines Clusters, in dem die Anzahl der virtuellen Workerkerne und der Gesamtarbeitsspeicher den Werten der ursprünglichen Instanz entspricht. In solchen Szenarien konnten wir Leistungssteigerungen auf das Zwei- bis Dreifache feststellen, weil das Sharding die Ressourcennutzung verbessert, kleinere Indizes ermöglicht usw.
 
-Die Anzahl der für den Koordinatorknoten benötigten virtuellen Kerne richtet sich nach Ihrer vorhandenen Workload (Lese-/Schreibdurchsatz). Der Koordinatorknoten benötigt nicht so viel RAM wie Workerknoten, aber die RAM-Zuordnung wird basierend auf der Anzahl von virtuellen Kernen ermittelt (wie in den [Konfigurationsoptionen für Hyperscale](concepts-hyperscale-configuration-options.md) beschrieben). Daher ist die Anzahl von virtuellen Kernen die eigentliche Entscheidung.
+Die Anzahl der für den Koordinatorknoten benötigten virtuellen Kerne richtet sich nach Ihrer vorhandenen Workload (Lese-/Schreibdurchsatz). Der Koordinatorknoten benötigt nicht so viel RAM wie Workerknoten, aber die RAM-Zuordnung wird – basierend auf der Anzahl von virtuellen Kernen – ermittelt (wie in den [Konfigurationsoptionen für Hyperscale (Citus)](concepts-hyperscale-configuration-options.md) beschrieben). Daher ist die Anzahl von virtuellen Kernen die eigentliche Entscheidung.
 
 ### <a name="real-time-analytics-use-case"></a>Anwendungsfall für Echtzeitanalysen
 
 Virtuelle Kerne insgesamt: Wenn Arbeitsdaten in den RAM passen, können Sie von einer linearen Leistungsverbesserung bei Hyperscale (Citus) proportional zur Anzahl der Workerkerne ausgehen. Berücksichtigen Sie beim Ermitteln der richtigen Anzahl von virtuellen Kernen für Ihre Anforderungen die aktuelle Latenz für Abfragen in Ihrer Einzelknoten-Datenbank und die erforderliche Latenz in Hyperscale (Citus). Teilen Sie die aktuelle Wartezeit durch die gewünschte Wartezeit, und runden Sie das Ergebnis.
 
-Worker-RAM: Der beste Fall wäre die Bereitstellung von so viel Speicher, dass der Großteil des Arbeitssatzes in den Speicher passt. Die Art der Abfragen, die Ihre Anwendung verwendet, wirkt sich auf die Arbeitsspeicheranforderungen aus. Sie können EXPLAIN ANALYZE für eine Abfrage ausführen, um zu ermitteln, wie viel Arbeitsspeicher diese Abfrage benötigt. Denken Sie daran, dass virtuelle Kerne und RAM zusammen skaliert werden, wie im Artikel [Konfigurationsoptionen für Hyperscale](concepts-hyperscale-configuration-options.md) beschrieben.
+Worker-RAM: Der beste Fall wäre die Bereitstellung von so viel Speicher, dass der Großteil des Arbeitssatzes in den Speicher passt. Die Art der Abfragen, die Ihre Anwendung verwendet, wirkt sich auf die Arbeitsspeicheranforderungen aus. Sie können EXPLAIN ANALYZE für eine Abfrage ausführen, um zu ermitteln, wie viel Arbeitsspeicher diese Abfrage benötigt. Denken Sie daran, dass virtuelle Kerne und RAM zusammen skaliert werden, wie im Artikel [Konfigurationsoptionen für Hyperscale (Citus)](concepts-hyperscale-configuration-options.md) beschrieben.
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>Skalieren einer Hyperscale (Citus)-Servergruppe
 

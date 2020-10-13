@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705536"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825959"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -163,9 +163,9 @@ Wenn sie konfiguriert sind, werden BitLocker-Schlüssel für Windows 10-Geräte 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Warum sollte ich mir Gedanken über Windows Autopilot-Geräte machen?
 
 Wenn Sie ein Azure AD-Gerät löschen, das einem Windows Autopilot-Objekt zugeordnet war, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
-- Bei benutzergesteuerten Nicht-White-Glove-Bereitstellungen mit Windows Autopilot wird ein neues Azure AD-Gerät erstellt, das jedoch nicht mit der ZTDID gekennzeichnet wird.
+- Bei benutzergesteuerten Windows Autopilot-Bereitstellungen ohne Vorabbereitstellung wird ein neues Azure AD-Gerät erstellt, aber nicht mit der ZTDID gekennzeichnet.
 - Bei Windows Autopilot-Bereitstellungen im Selbstbereitstellungsmodus wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann.  (Dies ist ein Sicherheitsmechanismus, um sicherzustellen, dass keine „Eindringling“-Geräte versuchen, Azure AD ohne Anmeldeinformationen beizutreten.) Der Fehler weist auf eine fehlende ZTDID-Übereinstimmung hin.
-- Bei White-Glove-Bereitstellungen mit Windows Autopilot wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden White-Glove-Bereitstellungen denselben Selbstbereitstellungsmodus-Prozess, sodass sie die gleichen Sicherheitsmechanismen erzwingen.)
+- Bei Windows Autopilot-Bereitstellungen mit Vorabbereitstellung wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden Bereitstellungen mit Vorabbereitstellung denselben Selbstbereitstellungsmodus-Prozess, sodass sie dieselben Sicherheitsmechanismen erzwingen.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Wie kann ich ermitteln, welche Gerätetypen eingebunden sind?
 
