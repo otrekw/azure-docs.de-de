@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569661"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759644"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
 
@@ -54,7 +54,9 @@ Weitere Informationen finden Sie unter [Hochverfügbarkeit in Azure Database for
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatisches Patchen mit verwaltetem Wartungsfenster
 
-Der Dienst führt automatisches Patchen für die zugrunde liegende Hardware, das Betriebssystem und die Datenbank-Engine durch. Das Patchen umfasst Sicherheits- und Softwareupdates. Für die MySQL-Engine sind im Rahmen des geplanten Wartungsreleases auch kleinere Versionsupgrades enthalten. Benutzer können den Patchzeitplan so konfigurieren, dass er vom System verwaltet wird, oder einen eigenen Zeitplan definieren. Im Rahmen des Wartungszeitplans wird der Patch angewendet. Möglicherweise muss der Server als Teil des Patchprozesses neu gestartet werden, um das Update abzuschließen. Mithilfe des benutzerdefinierten Zeitplans können Benutzer ihren Patchzyklus überlegt gestalten und ein Wartungsfenster mit minimalen Auswirkungen auf das Unternehmen wählen. Im Allgemeinen gilt für den Dienst im Rahmen der kontinuierlichen Integration und Veröffentlichung ein monatlicher Releasezeitplan. 
+Der Dienst führt automatisches Patchen für die zugrunde liegende Hardware, das Betriebssystem und die Datenbank-Engine durch. Das Patchen umfasst Sicherheits- und Softwareupdates. Für die MySQL-Engine sind im Rahmen des geplanten Wartungsreleases auch kleinere Versionsupgrades enthalten. Benutzer können den Patchzeitplan so konfigurieren, dass er vom System verwaltet wird, oder einen eigenen Zeitplan definieren. Im Rahmen des Wartungszeitplans wird der Patch angewendet. Möglicherweise muss der Server als Teil des Patchprozesses neu gestartet werden, um das Update abzuschließen. Mithilfe des benutzerdefinierten Zeitplans können Benutzer ihren Patchzyklus überlegt gestalten und ein Wartungsfenster mit minimalen Auswirkungen auf das Unternehmen wählen. Im Allgemeinen gilt für den Dienst im Rahmen der kontinuierlichen Integration und Veröffentlichung ein monatlicher Releasezeitplan.
+
+Weitere Informationen finden Sie unter [Geplante Wartung](concepts-maintenance.md). 
 
 ## <a name="automatic-backups"></a>Automatische Sicherungen
 
@@ -87,13 +89,15 @@ Weitere Informationen finden Sie unter [Compute- und Speicherkonzepte](concepts-
 
 Der Flexible Server-Dienst ermöglicht Ihnen, Server bei Bedarf anzuhalten und zu starten, um Ihre Kosten zu optimieren. Die Abrechnung des Computetarifs wird sofort beendet, sobald der Server angehalten wird. Dies kann Ihnen erhebliche Kosteneinsparungen bei Entwicklung, Tests und zeitgebundenen, vorhersehbaren Produktionsworkloads ermöglichen. Der Server verbleibt sieben Tage im angehaltenen Zustand, es sei denn, er wird früher wieder gestartet. 
 
+Weitere Informationen finden Sie unter [Serverkonzepte](concept-servers.md). 
+
 ## <a name="enterprise-grade-security-and-privacy"></a>Sicherheit und Datenschutz auf Unternehmensniveau
 
 Der flexible Serverdienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten wie Sicherungen und temporäre Dateien, die während der Ausführung von Abfragen erstellt wurden, werden verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, wobei die Schlüssel (standardmäßig) vom System verwaltet werden. 
 
 Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Layer Security, was standardmäßig erzwungen wird. Flexible Server unterstützt nur verschlüsselte Verbindungen mit Transport Layer Security (TLS 1.2), und alle eingehenden Verbindungen mit TLS 1.0 und TLS 1.1 werden verweigert. 
 
-Weitere Informationen finden Sie unter [Verwenden verschlüsselter Verbindungen mit flexiblen Servern](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md).
+Weitere Informationen finden Sie unter [Verwenden verschlüsselter Verbindungen mit flexiblen Servern](https://docs.mongodb.com/manual/tutorial/configure-ssl).
 
 Flexible Server ermöglichen den vollständigen privaten Zugriff auf die Server eines [virtuellen Azure-Netzwerks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNET-Integration). Server im virtuellen Azure-Netzwerk können nur über private IP-Adressen erreicht und verbunden werden. Bei der VNET-Integration wird der öffentliche Zugriff verweigert, und Server können nicht über öffentliche Endpunkte erreicht werden. 
 

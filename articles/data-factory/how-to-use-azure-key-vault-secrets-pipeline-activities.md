@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417076"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537394"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Verwenden von Azure Key Vault-Geheimnissen in Pipelineaktivitäten
 
@@ -35,7 +35,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
 
 2. Öffnen Sie die Key Vault-Zugriffsrichtlinien, und fügen Sie die Berechtigungen für die verwaltete Identität zum Abrufen und Auflisten von Geheimnissen hinzu.
 
-    ![Key Vault-Zugriffsrichtlinien](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    ![Der Screenshot zeigt die Seite „Zugriffsrichtlinien“, auf der die Aktion „Zugriffsrichtlinie hinzufügen“ hervorgehoben ist.](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
     ![Key Vault-Zugriffsrichtlinien](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 

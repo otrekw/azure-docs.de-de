@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578018"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613661"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Tutorial: Herstellen einer Verbindung zwischen einer exemplarischen IoT Plug & Play-Geräteanwendung mit mehreren Komponenten und IoT Hub (Python)
 
@@ -57,13 +57,13 @@ In diesem Beispiel wird ein IoT Plug & Play-Temperaturregler implementiert. D
 Der Ordner *azure-iot-sdk-python\azure-iot-device\samples\pnp* enthält den Beispielcode für das IoT Plug & Play-Gerät. Das Beispiel mit dem Temperaturregler umfasst folgende Dateien:
 
 - temp_controller_with_thermostats.py
-- pnp_helper_preview_refresh.py
+- pnp_helper.py
 
 Der Temperaturregler hat mehrere Komponenten und eine Standardkomponente, die auf dem DTDL-Modell des Temperaturreglers basiert.
 
 Öffnen Sie die Datei *temp_controller_with_thermostats.py* in einem Editor Ihrer Wahl. Der Code in dieser Datei bewirkt Folgendes:
 
-1. Er importiert `pnp_helper_preview_refresh.py`, um Zugriff auf Hilfsmethoden zu erhalten.
+1. Er importiert `pnp_helper.py`, um Zugriff auf Hilfsmethoden zu erhalten.
 
 1. Er definiert zwei Modellbezeichner für digitale Zwillinge (Digital Twin Model Identifiers, DTMIs), um zwei Schnittstellen, die im DTDL-Modell definiert sind, eindeutig darzustellen. Von den Komponenten in einem echten Temperaturregler müssen die beiden folgenden Schnittstellen implementiert werden. Die beiden Schnittstellen sind bereits in einem zentralen Repository veröffentlicht. Die DTMIs müssen dem Benutzer bekannt sein und unterscheiden sich je nach Geräteimplementierungsszenario. Im vorliegenden Beispiel stellen die beiden Schnittstellen Folgendes dar:
 

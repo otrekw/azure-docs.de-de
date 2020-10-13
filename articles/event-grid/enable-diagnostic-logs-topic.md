@@ -3,12 +3,12 @@ title: 'Azure Event Grid: Aktivieren von Diagnoseprotokollen für Themen oder Do
 description: Dieser Artikel enthält schrittweise Anleitungen zum Aktivieren von Diagnoseprotokollen für ein Azure Event Grid-Thema.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297520"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Aktivieren von Diagnoseprotokollen für Azure Event Grid-Themen oder -Domänen
 Diagnoseeinstellungen ermöglichen es Event Grid-Benutzern, Protokolle zu **Veröffentlichungs- und Übermittlungsfehlern** entweder in einem Speicherkonto, einem Event Hub oder einem Log Analytics-Arbeitsbereich zu erfassen und anzuzeigen. Dieser Artikel enthält schrittweise Anleitungen zum Aktivieren dieser Einstellungen für ein Event Grid-Thema.
@@ -37,19 +37,19 @@ Diagnoseeinstellungen ermöglichen es Event Grid-Benutzern, Protokolle zu **Ver�
     
     ![Schaltfläche „Diagnoseeinstellung hinzufügen“](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Geben Sie einen **Namen** für die Diagnoseeinstellung an. 
-7. Wählen Sie im Abschnitt **Protokoll** die Optionen **DeliveryFailures** und **PublishFailures** aus. 
+6. Wählen Sie im Abschnitt **Protokoll** die Optionen **DeliveryFailures** und **PublishFailures** aus. 
     ![Auswählen der Fehler](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. Aktivieren Sie mindestens eines der Erfassungsziele für die Protokolle, und konfigurieren Sie diese dann, indem Sie eine zuvor erstellte Erfassungsressource auswählen. 
+7. Aktivieren Sie mindestens eines der Erfassungsziele für die Protokolle, und konfigurieren Sie diese dann, indem Sie eine zuvor erstellte Erfassungsressource auswählen. 
     - Wenn Sie **In ein Speicherkonto archivieren** auswählen, wählen Sie **Speicherkonto - Konfigurieren** aus, und wählen Sie dann das Speicherkonto in Ihrem Azure-Abonnement aus. 
 
-        ![Archivieren in ein Azure-Speicherkonto](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit aktivierter Option „In einem Azure-Speicherkonto archivieren“ sowie ein ausgewähltes Speicherkonto zeigt.](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - Wenn Sie **An einen Event Hub streamen** auswählen, wählen Sie **Event Hub - Konfigurieren** aus, und wählen Sie dann den Event Hubs-Namespace, den Event Hub und die Zugriffsrichtlinie aus. 
-        ![An einen Event Hub streamen](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit aktivierter Option „An einen Event Hub streamen“ zeigt.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Wenn Sie **An Log Analytics senden** auswählen, wählen Sie den Log Analytics-Arbeitsbereich aus.
-        ![An Log Analytics senden](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+        ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit aktivierter Option „An Log Analytics senden“ zeigt.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 8. Wählen Sie **Speichern** aus. Wählen Sie dann in der rechten oberen Ecke **X** aus, um die Seite zu schließen. 
 9. Vergewissern Sie sich nun auf der Seite **Diagnoseeinstellungen**, dass ein neuer Eintrag in der Tabelle **Diagnoseeinstellungen** angezeigt wird. 
-    ![Diagnoseeinstellung in der Liste](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit einem neuen Eintrag zeigt, der in der Tabelle „Diagnoseeinstellungen“ hervorgehoben ist.](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      Sie können auch die Erfassung aller Metriken für das Thema aktivieren. 
 

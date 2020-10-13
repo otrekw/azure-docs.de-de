@@ -4,15 +4,15 @@ description: Beschreibt das Ereignisschema für jede Kategorie im Azure-Aktivit�
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 06/09/2020
+ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829508"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612760"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt die Kategorien des Aktivitätsprotokolls und das jeweils zugehörige Schema. 
@@ -23,6 +23,17 @@ Das Schema variiert je nachdem, wie Sie auf das Protokoll zugreifen:
 - Im letzten Abschnitt, [Schema aus Speicherkonto und Event Hubs](#schema-from-storage-account-and-event-hubs) finden Sie Informationen zum Schema für eine [Diagnoseeinstellung](diagnostic-settings.md) zum Senden des Aktivitätsprotokolls an Azure Storage oder Azure Event Hubs.
 - Unter [Azure Monitor-Datenreferenz](/azure/azure-monitor/reference/) finden Sie das Schema, das zur Anwendung kommt, wenn Sie das Aktivitätsprotokoll über eine [Diagnoseeinstellung](diagnostic-settings.md) an einen Log Analytics-Arbeitsbereich senden.
 
+## <a name="severity-level"></a>Schweregrad
+Jeder Eintrag im Aktivitätsprotokoll weist einen Schweregrad auf. Der Schweregrad kann einen der folgenden Werte haben:  
+
+| Schweregrad | Beschreibung |
+|:---|:---|
+| Kritisch | Ereignisse, die die sofortige Aufmerksamkeit eines Systemadministrators erfordern. Kann darauf hinweisen, dass eine Anwendung oder ein System einen Fehler aufweist oder nicht mehr reagiert.
+| Fehler | Ereignisse, die auf ein Problem hinweisen, aber keine sofortige Aufmerksamkeit erfordern.
+| Warnung | Ereignisse, die eine Vorwarnung für potenzielle Probleme sind, obwohl es sich nicht um einen tatsächlichen Fehler handelt. Weist darauf hin, dass sich eine Ressource nicht in einem idealen Zustand befindet und sich dadurch später Fehler oder kritische Ereignisse ergeben könnten.  
+| Informational | Ereignisse, die nicht kritische Informationen an den Administrator weitergeben. Ähnelt einer Anmerkung vom Typ „Zu Ihrer Information“. 
+
+Die Entwickler der einzelnen Ressourcenanbieter wählen den Schweregrad ihrer Ressourceneinträge aus. Je nachdem, wie Ihre Anwendung aufgebaut ist, kann der tatsächliche Schweregrad für Sie variieren. Beispielsweise können Elemente, die für eine bestimmte Ressource isoliert „kritisch“ sind, nicht so wichtig sein wie „Fehler“ bei einem Ressourcentyp, der für Ihre Azure-Anwendung von zentraler Bedeutung ist. Berücksichtigen Sie dies bei der Entscheidung, für welche Ereignisse eine Warnung ausgegeben werden soll.  
 
 ## <a name="categories"></a>Kategorien
 Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. Die Kategorien sind in der folgenden Tabelle beschrieben. In den folgenden Abschnitten finden Sie detaillierte Informationen zu jeder Kategorie und dem zugehörigen Schema, wenn Sie über PowerShell, die CLI, das Portal oder die REST-API auf das Aktivitätsprotokoll zugreifen. Das Schema ist unterschiedlich, wenn Sie das [Aktivitätsprotokoll in den Speicher oder an Event Hubs streamen](./resource-logs.md#send-to-azure-event-hubs). Eine Zuordnung der Eigenschaften zum [Ressourcenprotokollschema](./resource-logs-schema.md) befindet sich im letzten Abschnitt dieses Artikels.
