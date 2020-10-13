@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549966"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801417"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Überwachen der Azure Cosmos DB-Daten mithilfe der Diagnoseeinstellungen in Azure
 
@@ -99,12 +99,12 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Az
    | render timechart
    ```
     
-1. Abrufen von Partitionsschlüsselstatistiken zum Auswerten der Schiefe in den drei wichtigsten Partitionen für das Datenbankkonto:
+1. Abrufen von Partitionsschlüsselstatistiken zum Auswerten der Schiefe in den drei wichtigsten Partitionen für ein Datenbankkonto:
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. Wie erhalte ich die Anforderungskosten für ressourcenintensive Abfragen?
@@ -214,14 +214,6 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Az
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Wie erhalten ich die Partitionsschlüsselstatistiken zum Auswerten der Schiefe in den obersten drei Partitionen für das Datenbankkonto?
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. Wie kann ich die P99- oder P50-Replikationslatenzen für Vorgänge, Anforderungsgebühren oder die Länge der Antwort abrufen?
 
    ```Kusto
@@ -238,7 +230,7 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Az
  
 1. Wie erhalte ich Controlplane-Protokolle?
  
-   Denken Sie daran, das Flag zu aktivieren, wie im Artikel [Deaktivieren von schlüsselbasiertem Metadatenschreibzugriff](audit-control-plane-logs.md#disable-key-based-metadata-write-access) beschrieben wird, und führen Sie die Vorgänge über Azure PowerShell, CLI oder ARM aus.
+   Denken Sie daran, das Flag zu aktivieren, wie es im Artikel [Deaktivieren des schlüsselbasierten Metadatenschreibzugriffs](audit-control-plane-logs.md#disable-key-based-metadata-write-access) beschrieben wird, und führen Sie die Vorgänge mithilfe von Azure PowerShell, der Azure CLI oder Azure Resource Manager aus.
  
    ```Kusto  
    AzureDiagnostics 

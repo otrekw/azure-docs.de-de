@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902921"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667434"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -88,7 +88,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (C
 | Trainieren von Computezielen | Proprietäres Computeziel, nur CPU-Unterstützung | Viele anpassbare [Computeziele für das Training](concept-compute-target.md#train). GPU- und CPU-Unterstützung | 
 | Computeziele für die Bereitstellung | Proprietäres Webdienstformat, nicht anpassbar | Viele anpassbare [Computeziele für die Bereitstellung](concept-compute-target.md#deploy). GPU- und CPU-Unterstützung |
 | ML-Pipeline | Nicht unterstützt | Erstellung von flexiblen modularen [Pipelines](concept-ml-pipelines.md) zum Automatisieren von Workflows |
-| MLOps | Einfache Modellverwaltung und -bereitstellung | Entitätsversionierung (Modell, Daten, Workflows), Workflowautomatisierung, Integration in CICD-Tools [und mehr](concept-model-management-and-deployment.md) |
+| MLOps | Grundlegende Modellverwaltung und Bereitstellung; reine CPU-Bereitstellungen | Entitätsversionierung (Modell, Daten, Workflows), Workflowautomatisierung, Integration in CICD-Tools, CPU- und GPU-Bereitstellungen [und mehr](concept-model-management-and-deployment.md) |
 | Modellformat | Proprietäres Format, nur Studio (klassisch) | Mehrere unterstützte Formate, je nach Typ des Trainingsauftrags |
 | Automatisiertes Modelltraining und Optimieren von Hyperparametern |  Nicht unterstützt | [Unterstützt](concept-automated-ml.md). Code First-Optionen und codefreie Optionen | 
 | Datendrifterkennung | Nicht unterstützt | [Unterstützt](how-to-monitor-datasets.md) |

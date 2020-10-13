@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 0e60ba0517fb3b9388045762853c651869cffb6a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986456"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823941"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Beispielbenutzerszenarien für die Textanalyse-API
 
@@ -41,7 +41,7 @@ Verwenden Sie die Schlüsselbegriffs- und Entitätserkennung zum Verarbeiten von
 
 ## <a name="monitor-your-products-social-media-feeds"></a>Überwachen der Feeds in sozialen Medien zu Ihrem Produkt
 
-Überwachen Sie auf der Twitter- oder Facebook-Seite Ihres Produkts das Benutzerfeedback. Nutzen Sie die Daten, um die Stimmung der Kunden bei der Einführung neuer Produkte zu analysieren, Schlüsselbegriffe zu Funktionen und Funktionswünschen zu extrahieren oder Kundenbeschwerden sofort zu bearbeiten. Sehen Sie sich die [Microsoft Flow-Beispielvorlage](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/) an.
+Überwachen Sie auf der Twitter- oder Facebook-Seite Ihres Produkts das Benutzerfeedback. Nutzen Sie die Daten, um die Stimmung der Kunden bei der Einführung neuer Produkte zu analysieren, Schlüsselbegriffe zu Funktionen und Funktionswünschen zu extrahieren oder Kundenbeschwerden sofort zu bearbeiten. Weitere Informationen finden Sie im Beispiel [Microsoft Power Automate-Vorlage](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
 ![Abbildung mit einer Beschreibung, wie Sie das Feedback zu Ihrem Produkt und Unternehmen in sozialen Medien mithilfe der Schlüsselbegriffserkennung überwachen können](media/use-cases/social-feed.svg)
 

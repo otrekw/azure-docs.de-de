@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021437"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91650458"
 ---
 # <a name="about-azure-remote-rendering"></a>Informationen zu Azure Remote Rendering
 
@@ -20,7 +20,7 @@ ms.locfileid: "84021437"
 
 *Azure Remote Rendering* (ARR) ist ein Dienst, mit dem Sie interaktive 3D-Inhalte in der Cloud in hoher Qualität rendern und in Echtzeit an Geräte streamen können, z. B. HoloLens 2.
 
-![Beispielmodell](../media/arr-engine.png)
+![Diagramm, das ein Beispiel für einen gerenderten hochwertigen, interaktiven 3D-Kraftfahrzeugmotor zeigt.](../media/arr-engine.png)
 
 Unabhängige Geräte verfügen über eingeschränkte Rechenleistung zum Rendern von komplexen Modellen. Für viele Anwendungen ist es aber nicht akzeptabel, die Qualität der visuellen Darstellung zu reduzieren. Der folgende bietet einen Vergleich des vollständig detaillierten Modells mit einem Modell, das mit einem gängigen Inhaltserstellungstool vereinfacht wurde:
 

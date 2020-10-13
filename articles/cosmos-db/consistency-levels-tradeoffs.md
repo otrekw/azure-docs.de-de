@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e2cb2b93010478338cd40236403da4ca0ca99fc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82191735"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825267"
 ---
-# <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung
+# <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Kompromisse in Bezug auf Latenz, Verfügbarkeit und Leistung bei verschiedenen Azure Cosmos DB-Konsistenzebenen
 
 Bei verteilten Datenbanken, die mithilfe der Replikation Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherstellen, müssen Kompromisse eingegangen werden. Diese Kompromisse betreffen die Lesekonsistenz im Vergleich zu Verfügbarkeit, Latenz und Durchsatz.
 
@@ -65,20 +65,20 @@ In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und de
 
 |**Region(en)**|**Replikationsmodus**|**Konsistenzebene**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Einzel- oder Multimaster|Jede Konsistenzebene|< 240 Minuten|< 1 Woche|
-|> 1|Einzelmaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|< 15 Minuten|
-|> 1|Einzelmaster|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|< 15 Minuten|
-|> 1|Einzelmaster|STARK (Strong)|0|< 15 Minuten|
-|> 1|Multimaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|0|
-|> 1|Multimaster|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|0|
+|1|Eine oder mehrere Schreibregionen|Jede Konsistenzebene|< 240 Minuten|< 1 Woche|
+|> 1|Eine Schreibregion|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|< 15 Minuten|
+|> 1|Eine Schreibregion|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|< 15 Minuten|
+|> 1|Eine Schreibregion|STARK (Strong)|0|< 15 Minuten|
+|> 1|Mehrere Schreibregionen|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|0|
+|> 1|Mehrere Schreibregionen|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|0|
 
 *K* = Anzahl von *„K“* -Versionen (d. h. Updates) eines Elements.
 
 *T* = Zeitintervall *„T“* seit dem letzten Update.
 
-## <a name="strong-consistency-and-multi-master"></a>Starke Konsistenz und Multimasterunterstützung
+## <a name="strong-consistency-and-multiple-write-regions"></a>Hohe Konsistenz und mehrere Schreibregionen
 
-Für Multimaster konfigurierte Cosmos-Konten können nicht für eine hohe Konsistenz konfiguriert werden, da es für ein verteiltes System nicht möglich ist, einen RPO-Wert von 0 (null) und einen RTO-Wert von 0 zu erreichen. Außerdem gibt es keine Vorteile hinsichtlich der Schreiblatenz für die Verwendung von hoher Konsistenz mit einem Multimaster, da jeder Schreibvorgang in eine beliebige Region repliziert und in allen konfigurierten Regionen innerhalb des Kontos festgeschrieben werden muss. Dies führt zur selben Schreiblatenz wie bei einem einzelnen Masterkonto.
+Mit mehreren Schreibregionen konfigurierte Cosmos-Konten können nicht für hohe Konsistenz konfiguriert werden, da es für ein verteiltes System nicht möglich ist, einen RPO-Wert von 0 (null) und einen RTO-Wert von 0 zu erreichen. Außerdem gibt es keine Vorteile hinsichtlich der Schreiblatenz bei Verwendung von hoher Konsistenz mit mehreren Schreibregionen, da die Schreibanforderung für jede Region repliziert und in allen konfigurierten Regionen innerhalb des Kontos festgeschrieben werden muss. Dies führt zur selben Schreiblatenz wie bei einem Konto mit nur einer Schreibregion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -86,4 +86,4 @@ Die folgenden Artikel bieten weitere Informationen zur globalen Verteilung und z
 
 - [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Hochverfügbarkeit](high-availability.md)
-- [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

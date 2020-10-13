@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046399"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569436"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Planen Ihrer Azure Time Series Insights Gen1-Umgebung
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights Gen1-Umgebung basierend auf der erwarteten Eingangsrate und den Anforderungen zur Datenaufbewahrung planen.
 
@@ -48,12 +51,12 @@ Standardmäßig werden Daten in Azure Time Series Insights basierend auf der ber
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
-Sie können die Einstellung **Datenaufbewahrungszeit** in Ihrer Azure Time Series Insights-Umgebung ändern. Es ist eine Aufbewahrungsdauer von bis zu 400 Tagen möglich. 
+Sie können die Einstellung **Datenaufbewahrungszeit** in Ihrer Azure Time Series Insights-Umgebung ändern. Es ist eine Aufbewahrungsdauer von bis zu 400 Tagen möglich.
 
 Azure Time Series Insights bietet zwei Modi:
 
-* Ein Modus ist für neueste Daten optimiert. Er erzwingt eine Richtlinie vom Typ **Alte Daten bereinigen**, sodass in der Instanz aktuelle Daten verfügbar sind. Dieser Modus ist standardmäßig aktiviert. 
-* Im anderen Modus werden die Daten so optimiert, dass die konfigurierten Grenzwerte für die Aufbewahrung eingehalten werden. **Eingehende Daten anhalten** verhindert die Erfassung neuer Daten, wenn diese Option als **Verhalten bei Überschreitung des Speicherlimits** ausgewählt ist.
+- Ein Modus ist für neueste Daten optimiert. Er erzwingt eine Richtlinie vom Typ **Alte Daten bereinigen**, sodass in der Instanz aktuelle Daten verfügbar sind. Dieser Modus ist standardmäßig aktiviert.
+- Im anderen Modus werden die Daten so optimiert, dass die konfigurierten Grenzwerte für die Aufbewahrung eingehalten werden. **Eingehende Daten anhalten** verhindert die Erfassung neuer Daten, wenn diese Option als **Verhalten bei Überschreitung des Speicherlimits** ausgewählt ist.
 
 Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewahrungsdauer anpassen und zwischen den beiden Modi wechseln.
 
@@ -83,7 +86,7 @@ Der zweite wichtige Bereich bei der Planung der Azure Time Series Insights-Umgeb
 
 Sie können die Kapazität einer SKU des Typs S1 oder S2 in einer einzelnen Umgebung auf 10 Einheiten erhöhen. Sie können nicht von einer S1-Umgebung zu einer S2-Umgebung migrieren. Sie können nicht von einer S2-Umgebung zu einer S1-Umgebung migrieren.
 
-Für die Eingangskapazität bestimmen Sie zunächst den Gesamteingang, den Sie pro Monat benötigen. Als Nächstes ermitteln Sie die Anforderungen pro Minute. 
+Für die Eingangskapazität bestimmen Sie zunächst den Gesamteingang, den Sie pro Monat benötigen. Als Nächstes ermitteln Sie die Anforderungen pro Minute.
 
 Bei der Kapazität pro Minute spielen Drosselung und Latenz eine Rolle. Wenn Sie eine Spitze im Dateneingang über einen Zeitraum unter 24 Stunden verzeichnen, kann Azure Time Series Insights dies mit einer Eingangsrate „aufholen“, die doppelt so hoch ist wie die in der vorherigen Tabelle aufgeführten Raten.
 

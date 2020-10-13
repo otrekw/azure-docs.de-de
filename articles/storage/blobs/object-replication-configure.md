@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707916"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715635"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurieren der Objektreplikation für Blockblobs
 
@@ -37,7 +37,7 @@ Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Die
 
 Wenn Sie die Objektreplikation konfigurieren, wird über den Azure Storage-Ressourcenanbieter eine Replikationsrichtlinie für das Zielkonto erstellt. Nachdem die Replikationsrichtlinie erstellt wurde, weist Azure Storage ihr eine Richtlinien-ID zu. Anschließend müssen Sie diese Replikationsrichtlinie dem Quellkonto mithilfe der Richtlinien-ID zuordnen. Die Richtlinien-ID muss für das Quell- und das Zielkonto identisch sein, damit die Replikation stattfinden kann.
 
-Zum Konfigurieren einer Richtlinie für die Objektreplikation für ein Speicherkonto muss Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugewiesen sein, die auf Ebene des Speicherkontos oder höher gilt. Weitere Informationen finden Sie in der Dokumentation zur rollenbasierten Zugriffssteuerung (RBAC) in Azure unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+Zum Konfigurieren einer Richtlinie für die Objektreplikation für ein Speicherkonto muss Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugewiesen sein, die auf Ebene des Speicherkontos oder höher gilt. Weitere Informationen finden Sie in der Dokumentation zur rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
 ### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>Konfigurieren der Objektreplikation, wenn Sie Zugriff auf beide Speicherkonten haben
 
@@ -238,7 +238,7 @@ az storage account or-policy show \
 
 Wenn Sie keine Berechtigungen für das Quellspeicherkonto haben, können Sie die Objektreplikation für das Zielkonto konfigurieren und eine JSON-Datei mit der Richtliniendefinition bereitstellen, damit ein anderer Benutzer die gleiche Richtlinie für das Quellkonto erstellen kann. Wenn sich das Quellkonto z. B. in einem anderen Azure AD-Mandanten als das Zielkonto befindet, können Sie mit diesem Ansatz die Objektreplikation konfigurieren.
 
-Beachten Sie, dass Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugewiesen sein muss, die auf die Ebene des Zielspeicherkontos oder höher gilt, damit Sie die Richtlinie erstellen können. Weitere Informationen finden Sie in der Dokumentation zur rollenbasierten Zugriffssteuerung (RBAC) in Azure unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+Beachten Sie, dass Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugewiesen sein muss, die auf die Ebene des Zielspeicherkontos oder höher gilt, damit Sie die Richtlinie erstellen können. Weitere Informationen finden Sie in der Dokumentation zur rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
 In der folgenden Tabelle sind die Werte zusammengefasst, die in den einzelnen Szenarien in der JSON-Datei für die Richtlinien-ID und die Regel-IDs verwendet werden sollen.
 

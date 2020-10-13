@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
-ms.date: 07/07/2020
+ms.author: peterlu
+author: peterclu
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, devx-track-python, references_regions, contperfq1
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893190"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825509"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
 
@@ -70,7 +70,7 @@ Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige 
 
 1. Erstellen Sie einen [Arbeitsbereich mit Private Link-Unterstützung](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint), um die Kommunikation zwischen Ihrem VNET und dem Arbeitsbereich zu ermöglichen.
 1. Fügen Sie Azure Key Vault mit einem [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md) oder einem [privaten Endpunkt](../key-vault/general/private-link-service.md) dem virtuellen Netzwerk hinzu. Legen Sie für Key Vault die Einstellung [„Zulassen, dass vertrauenswürdige Microsoft-Dienste diese Firewall umgehen“](how-to-secure-workspace-vnet.md#secure-azure-key-vault) fest.
-1. Fügen Sie Ihr Azure Storage-Konto mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) oder einem [privaten Endpunkt](../storage/common/storage-private-endpoints.md) dem virtuellen Netzwerk hinzu.
+1. Fügen Sie Ihr Azure Storage-Konto mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder einem [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) dem virtuellen Netzwerk hinzu.
 1. [Konfigurieren Sie die Verwendung eines privaten Endpunkts in Azure Container Registry](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) und [aktivieren Sie die Subnetzdelegierung in Azure Container Instances](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
 
 ![Architekturdiagramm, das darstellt, wie der Arbeitsbereich und die zugehörigen Ressourcen über Dienstendpunkte oder private Endpunkte in einem VNET miteinander kommunizieren](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -80,10 +80,8 @@ Ausführliche Anweisungen zum Ausführen dieser Schritte finden Sie unter [Secur
 ### <a name="limitations"></a>Einschränkungen
 
 Für das Schützen Ihres Arbeitsbereichs und zugehöriger Ressourcen in einem virtuellen Netzwerk gelten die folgenden Einschränkungen:
-- Private Link für Arbeitsbereiche ist nur in den folgenden Regionen verfügbar: USA, Osten, USA, Westen 2 und USA, Süden-Mitte.
-    - Diese Einschränkung gilt nicht für zugehörige Ressourcen. So können Sie beispielsweise für die Speicherung VNETs in jeder beliebigen Azure Machine Learning-Region aktivieren.
+- Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit Private Link ist in den Regionen Azure Government und Azure China 21Vianet nicht verfügbar.
 - Alle Ressourcen müssen sich innerhalb desselben VNET befinden. Sie können allerdings Subnetze innerhalb eines VNET einsetzen.
-- Einige Studiofunktionen wie Designer, AutoML, Beschriftung und die Datenprofilerstellung können mit Speicherkonten, für die Verwendung eines privaten Endpunkts konfiguriert ist, nicht verwendet werden. Wenn Sie diese Studiofunktionen benötigen, verwenden Sie stattdessen Dienstendpunkte.
 
 ## <a name="secure-the-training-environment"></a>Schützen der Trainingsumgebung
 
@@ -143,23 +141,29 @@ Das folgende Netzwerkdiagramm zeigt einen geschützten Azure Machine Learning-Ar
 
 [Schützen des Arbeitsbereichs](#secure-the-workspace-and-associated-resources) > [Schützen der Trainingsumgebung](#secure-the-training-environment) > [Schützen der Rückschlussumgebung](#secure-the-inferencing-environment) > **Aktivieren der Studio-Funktionalität** > [Konfigurieren der Firewalleinstellungen](#configure-firewall-settings)
 
-Zwar ist im Studio der Zugriff auf Daten in einem Speicherkonto, für das ein Dienstendpunkt konfiguriert wurde, grundsätzlich möglich, doch sind einige Funktionen standardmäßig deaktiviert:
+Wenn sich Ihr Speicher in einem VNet befindet, müssen Sie zunächst zusätzliche Konfigurationsschritte durchführen, um die volle Funktionalität im [Studio](overview-what-is-machine-learning-studio.md) zu aktivieren. Standardmäßig sind die folgenden Features deaktiviert:
 
 * Vorschau der Daten im Studio.
 * Visualisieren von Daten im Designer.
 * Senden eines AutoML-Experiments.
 * Starten eines Beschriftungsprojekts.
 
-Informationen zum Aktivieren des vollständigen Funktionsumfangs bei der Verwendung eines Speicherdienstendpunkts finden Sie unter [Use Azure Machine Learning studio in a virtual network](how-to-enable-studio-virtual-network.md#access-data-using-the-studio) (Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk). Derzeit unterstützt das Studio keine privaten Endpunkte für Speicher.
+Informationen zur Aktivierung der vollen Studio-Funktionalität innerhalb eines VNets finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Das Studio unterstützt Speicherkonten entweder unter Verwendung von Dienstendpunkten oder privaten Endpunkten.
 
 ### <a name="limitations"></a>Einschränkungen
-- Der Zugriff auf Daten in Speicherkonten, die für die Verwendung privater Endpunkte konfiguriert sind, ist im Studio nicht möglich. Damit der gesamte Funktionsumfang bereitsteht, müssen Sie Dienstendpunkte für den Speicher sowie die verwaltete Identität verwenden.
+- [Von der ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-labeling) werden keine Standardspeicherkonten unterstützt, die hinter einem virtuellen Netzwerk gesichert sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Beachten Sie, dass das nicht standardmäßige Speicherkonto hinter dem virtuellen Netzwerk gesichert werden kann. 
 
 ## <a name="configure-firewall-settings"></a>Konfigurieren der Firewalleinstellungen
 
 Konfigurieren Sie Ihre Firewall für die Steuerung des Zugriffs auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet. Zwar empfehlen wir die Verwendung von Azure Firewall, aber Sie sollten Ihr Netzwerk auch mit anderen Firewallprodukten schützen können. Wenn Sie Fragen dazu haben, wie Sie die Kommunikation über die Firewall zulassen, lesen Sie die Dokumentation für die von Ihnen verwendete Firewall.
 
 Weitere Informationen zu Firewalleinstellungen finden Sie unter [Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning](how-to-access-azureml-behind-firewall.md).
+
+## <a name="custom-dns"></a>Benutzerdefinierter DNS
+
+Wenn Sie eine benutzerdefinierte DNS-Lösung für Ihr virtuelles Netzwerk verwenden möchten, müssen Sie Hosteinträge für Ihren Arbeitsbereich hinzufügen.
+
+Weitere Informationen zu den erforderlichen Domänennamen und IP-Adressen finden Sie unter [Verwenden eines Arbeitsbereichs mit einem benutzerdefinierten DNS-Server](how-to-custom-dns.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

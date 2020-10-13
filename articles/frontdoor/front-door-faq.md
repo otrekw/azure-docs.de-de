@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324058"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819038"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Häufig gestellte Fragen zu Azure Front Door
 
@@ -248,6 +248,10 @@ Es kann zwei Gründe geben, warum der HTTPS-Datenverkehr für eine erfolgreiche 
 1. **Zertifikatantragsteller-Namenskonflikt**: Bei HTTPS-Verbindungen erwartet Front Door, dass Ihr Back-End ein Zertifikat von einer gültigen Zertifizierungsstelle vorlegt, und dass die Antragstellernamen mit dem Back-End-Hostnamen übereinstimmen. Wenn beispielsweise der Back-End-Hostname auf `myapp-centralus.contosonews.net` festgelegt ist und das Zertifikat, das Ihr Back-End während des TLS-Handshakes vorlegt, weder `myapp-centralus.contosonews.net` noch `*myapp-centralus*.contosonews.net` im Antragstellernamen aufweist, verweigert Front Door die Verbindung, und ein Fehler tritt auf. 
     1. **Lösung**: Auch wenn es im Hinblick auf Compliance nicht empfohlen wird, können Sie diesen Fehler umgehen, indem Sie die Prüfung des Zertifikatantragsteller-Namens für Ihre Front Door-Instanz deaktivieren. Diese Option finden Sie unter „Einstellungen“ im Azure-Portal und unter „BackendPoolsSettings“ in der API.
 2. **Back-End-Hostingzertifikat von einer ungültigen Zertifizierungsstelle**: In Front Door können nur Zertifikate von [gültigen Zertifizierungsstellen](/azure/frontdoor/front-door-troubleshoot-allowed-ca) am Back-End verwendet werden. Zertifikate von internen Zertifizierungsstellen oder selbstsignierten Zertifikate sind nicht zulässig.
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Kann ich bei Azure Front Door die Clientauthentizierung/gegenseitige Authentifizierung verwenden?
+
+Nein. Obwohl Azure Front Door TLS 1.2 unterstützt, bei dem die Clientauthentizierung/gegenseitige Authentifizierung in [RFC 5246](https://tools.ietf.org/html/rfc5246) eingeführt wurde, unterstützt Azure Front Door diese Authentifizierungsart zurzeit nicht.
 
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 

@@ -1,20 +1,20 @@
 ---
-title: 'Zertifizierung virtueller Computer: Probleme und Lösungen'
-description: In diesem Artikel werden häufige Fehlermeldungen für VM-Images erläutert. Darüber hinaus werden entsprechende Fehlerbehebungen erläutert.
+title: Häufige Probleme beim Zertifizieren von Images virtueller Computer für Azure Marketplace
+description: In diesem Artikel werden häufige Fehlermeldungen und Probleme beim Testen und Zertifizieren von VM-Images für Azure Marketplace erläutert. Außerdem werden die zugehörigen Lösungen erläutert.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296449"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803465"
 ---
-# <a name="issues-and-solutions-during-virtual-machine-certification"></a>Probleme und ihre Behebung bei der Zertifizierung virtueller Computer 
+# <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Häufige Probleme beim Zertifizieren von Images virtueller Computer für Azure Marketplace
 
 Beim Veröffentlichen Ihres VM-Images in Azure Marketplace überprüft das Azure-Team das VM-Image, um seine Startfähigkeit, Sicherheit und Kompatibilität mit Azure sicherzustellen. Wird einer der hochwertigen Tests nicht bestanden, tritt bei der Veröffentlichung ein Fehler auf, und Sie erhalten eine Fehlermeldung mit der Beschreibung des Problems.
 

@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: "Herstellen einer Verbindung mit dem Microsoft\_Store-Client"
           href: connect-microsoft-store.md
+        - name: Herstellen einer Verbindung mit Linux-Geräten
+          href: linux-overview.md
     - name: Konfigurieren von Geräteumleitungen
       href: configure-device-redirections.md
     - name: Einrichten des PowerShell-Moduls

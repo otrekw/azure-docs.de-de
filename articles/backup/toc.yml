@@ -284,6 +284,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: Wiederherstellen von VMware-VMs mit Azure Backup Server
           href: restore-azure-backup-server-vmware.md
+        - name: Sichern des MABS-Servers
+          href: backup-the-mabs-server.md
     - name: Azure Backup Server in Azure Stack
       items:
         - name: Installieren von Azure Backup Server
@@ -454,7 +456,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

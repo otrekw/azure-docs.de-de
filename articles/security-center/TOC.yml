@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender für Kubernetes
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: Azure Defender für Containerregistrierungen
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: Zusätzlicher Bedrohungsschutz
           href: other-threat-protections.md
     - name: Containersicherheitsfeatures von Security Center
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: Preise
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: Automatisieren des Onboardings mithilfe von PowerShell
       href: security-center-powershell-onboarding.md
+    - name: Aktivieren von Security Center für eine Verwaltungsgruppe
+      href: onboard-management-group.md
     - name: Konfigurieren der Datensammlung
       href: security-center-enable-data-collection.md
     - name: Einrichten von E-Mail-Benachrichtigungen
@@ -140,8 +142,6 @@
             - name: Automatisieren von Reaktionen auf Empfehlungen
               displayName: workflow
               href: workflow-automation.md
-            - name: Exportieren von Empfehlungen
-              href: continuous-export.md
             - name: Ausschließen einer Ressource aus einer Empfehlung
               href: exempt-resource.md
     - name: Azure Defender-Warnungen
@@ -180,6 +180,9 @@
             - name: Überprüfen und Beseitigen von Sicherheitsrisiken auf Ihren virtuellen Computern
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: Deaktivieren bestimmter ermittelter Sicherheitsrisiken
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Schützen von Verwaltungsports mit Just-In-Time-Zugriff für VMs
           items:
             - name: Übersicht über den Just-In-Time-Zugriff für VMs
@@ -213,6 +216,15 @@
     - name: Verwenden von Azure Defender für Containerregistrierungen
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: Exportieren von Warnungen und Empfehlungen
+      items:
+        - name: 'Exportieren in eine SIEM-, SOAR- oder ITSM-Lösung'
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: "Exportieren in einen Log\_Analytics-Arbeitsbereich oder in Azure Event Hub"
+          href: continuous-export.md
+        - name: Herunterladen eines CSV-Berichts aller Warnungen
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: Verarbeiten von Azure Defender-Warnungen
       items:
         - name: Verwalten von Sicherheitswarnungen
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: Erstellen von Threat Intelligence-Berichten
           href: security-center-threat-report.md
-        - name: Überprüfen der Warnungskonfiguration (EICAR-Testdatei)
+        - name: Überprüfen der Warnungskonfiguration
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: Automatisieren von Reaktionen auf Warnungen
           displayName: workflow
           href: workflow-automation.md
-        - name: Exportieren von Warnungen
-          displayName: continuous
-          href: continuous-export.md
     - name: Schützen Ihrer Kubernetes-Workloads
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: Benutzerdaten für Untersuchung verwalten
       href: security-center-investigation-user-data.md

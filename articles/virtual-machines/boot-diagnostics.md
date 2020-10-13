@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287082"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813235"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -25,6 +25,8 @@ Eine alternative Vorgehensweise bei der Startdiagnose ist die Verwendung eines v
 
 > [!IMPORTANT]
 > Azure-Kunden werden bis Ende Oktober 2020 nicht mit den Speicherkosten belastet, die bei der Startdiagnose über ein verwaltetes Speicherkonto anfallen.
+>
+> Die Datenblobs der Startdiagnose (die aus Protokollen und Images von Momentaufnahmen bestehen) werden in einem verwalteten Speicherkonto gespeichert. Kunden werden nur die von den Blobs genutzten GiBs berechnet, nicht für die bereitgestellte Größe des Datenträgers. Die Momentaufnahmezähler werden zur Abrechnung des verwalteten Speicherkontos verwendet. Da die verwalteten Konten entweder auf „Standard LRS“ oder „Standard ZRS“ erstellt werden, wird den Kunden nur die Größe ihrer Diagnosedatenblobs mit 0,05 USD/GB pro Monat berechnet. Weitere Informationen zu diesen Preisen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/). Kunden können sehen, dass diese Gebühr an ihren URI der VM-Ressource gebunden ist. 
 
 ## <a name="boot-diagnostics-view"></a>Ansicht der Startdiagnose
 Die Option der Startdiagnose befindet sich im Azure-Portal auf dem Blatt Ihrer VM im Abschnitt *Support und Problembehandlung*. Durch Auswählen der Startdiagnose werden ein Screenshot und Informationen des seriellen Protokolls angezeigt. Das serielle Protokoll enthält Kernelmeldungen, der Screenshot ist eine Momentaufnahme des aktuellen Zustands Ihrer VM. Je nachdem, ob auf der VM Windows oder Linux ausgeführt wird, unterscheiden sich die zu erwartenden Screenshots. Windows-Benutzern wird ein Desktophintergrund angezeigt, Linux-Benutzern eine Anmeldeaufforderung.

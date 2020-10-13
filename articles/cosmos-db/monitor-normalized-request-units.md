@@ -6,18 +6,18 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642077"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801476"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Überwachen von normalisierten RU/s für einen Azure Cosmos-Container oder ein -Konto
 
 Azure Monitor für Azure Cosmos DB verfügt über eine Metrikansicht zum Überwachen Ihres Kontos und zum Erstellen von Dashboards. Weil die Azure Cosmos DB-Metriken standardmäßig erfasst werden, müssen Sie bei diesem Feature nichts explizit aktivieren oder konfigurieren.
 
-Mithilfe der Metrik **Normalisierter RU-Verbrauch** wird erfasst, wie gut ausgelastet die Partitionsschlüsselbereiche im Hinblick auf den Datenverkehr sind. Azure Cosmos DB verteilt den Durchsatz gleichmäßig auf alle Partitionsschlüsselbereiche. Diese Metrik stellt eine Ansicht des maximalen Durchsatzverbrauchs für einen Partitionsschlüsselbereich pro Sekunde bereit. Verwenden Sie diese Metrik zum Berechnen der RU/s-Nutzung für den Partitionsschlüsselbereich bei einem bestimmten Container. Wenn Sie diese Metrik verwenden und ein hoher Prozentsatz der Auslastung von Anforderungseinheiten über alle Partitionsschlüsselbereiche in Azure Monitor angezeigt wird, sollten Sie den Durchsatz erhöhen, um die Anforderungen Ihrer Workload zu erfüllen. 
+Mithilfe der Metrik **Normalisierter RU-Verbrauch** wird erfasst, wie gut ausgelastet die Partitionsschlüsselbereiche im Hinblick auf den Datenverkehr sind. Azure Cosmos DB verteilt den Durchsatz gleichmäßig auf alle Partitionsschlüsselbereiche. Diese Metrik stellt eine Ansicht des maximalen Durchsatzverbrauchs für einen Partitionsschlüsselbereich pro Sekunde bereit. Verwenden Sie diese Metrik zum Berechnen der RU/s-Nutzung für den Partitionsschlüsselbereich bei einem bestimmten Container. Wenn Sie diese Metrik verwenden und ein hoher Prozentsatz der Auslastung von Anforderungseinheiten über alle Partitionsschlüsselbereiche in Azure Monitor angezeigt wird, sollten Sie den Durchsatz erhöhen, um die Anforderungen Ihrer Workload zu erfüllen. Beispiel: Die normalisierte Auslastung ist definiert als die maximale Auslastung der RU/s über alle Partitionsschlüsselbereiche. Nehmen Sie z. B. an, Ihr maximaler Durchsatz beträgt 20.000 RU/s und Sie haben zwei Partitionsschlüsselbereiche, P_1 und P_2, die jeweils auf 10.000 RU/s skaliert werden können. In einer bestimmten Sekunde, wenn P_1 6000 RUs und P_2 8000 RUs verwendet hat, ist die normalisierte Auslastung MAX(6000 RU / 10.000 RU, 8000 RU / 10.000 RU) = 0,8.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Was zu erwarten und zu tun ist, wenn der Wert für normalisierte RU/s höher ist
 
@@ -43,13 +43,13 @@ Kurz gesagt, kann mithilfe der Metrik **Normalisierter RU-Verbrauch** erkannt we
 
 3. Klicken Sie im Bereich **Metriken** auf **Ressource auswählen**. Wählen Sie dann das erforderliche **Abonnement** und die **Ressourcengruppe** aus. Wählen Sie unter **Ressourcentyp** die Option **Azure Cosmos DB-Konten** aus. Wählen Sie dann eins der vorhandenen Azure Cosmos-Konten und anschließend **Anwenden** aus.
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Auswählen eines Azure Cosmos-Kontos zum Anzeigen von Metriken":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Bereich „Metriken“ in Azure Monitor":::
 
 4. Als Nächstes können Sie eine Metrik aus der Liste der verfügbaren Metriken auswählen. Sie können spezifische Metriken für Anforderungseinheiten, Speicher, Wartezeit, Verfügbarkeit, Cassandra usw. auswählen. Ausführliche Informationen zu allen verfügbaren Metriken in dieser Liste finden Sie im Artikel [Metriken nach Kategorie](monitor-cosmos-db-reference.md). In diesem Beispiel wählen wir die Metrik **Normalisierter RU-Verbrauch** und **Max** als Aggregationswert aus.
 
    Zusätzlich zu diesen Angaben können Sie auch **Zeitbereich** und **Zeitgranularität** für die Metriken auswählen. Sie können Metriken maximal für die letzten 30 Tage anzeigen.  Nach Anwendung des Filters wird ein darauf basierendes Diagramm angezeigt.
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Auswählen einer Metrik über das Azure-Portal":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Bereich „Metriken“ in Azure Monitor":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Filter für normalisierten Anforderungseinheitenverbrauch
 
@@ -59,7 +59,7 @@ Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gr
 
 Die Metrik für den Verbrauch von normalisierten Anforderungseinheiten für jeden Container wird wie in der folgenden Abbildung dargestellt angezeigt:
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Anwenden von Filtern auf die Metrik für normalisierten Anforderungseinheitenverbrauch":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Bereich „Metriken“ in Azure Monitor":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

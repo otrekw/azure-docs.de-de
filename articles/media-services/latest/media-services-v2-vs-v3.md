@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298945"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651751"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 und v3
 
@@ -30,18 +30,17 @@ Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführ
 
 ## <a name="general-changes-from-v2"></a>Allgemeine Änderungen von v2
 
-* Für Medienobjekte (Ressourcen), die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](../../storage/common/storage-service-encryption.md).
-    * Sie können v3-APIs mit Ressourcen verwenden, die mit v2-APIs erstellt wurden, sofern für diese [Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) (AES-256) von Media Services bereitgestellt wurde.
-    * Mit der älteren AES-256-[Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) können Sie mithilfe von v3-APIs keine neuen Medienobjekte erstellen.
-* Die Eigenschaften des [Medienobjekt](assets-concept.md)s in v3 unterscheiden sich von denen in v2, siehe [Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2](#map-v3-asset-properties-to-v2).
+* Informationen zu Änderungen in Bezug auf Medienobjekte finden Sie weiter unten im Abschnitt [Für Medienobjekte spezifische Änderungen](#asset-specific-changes).
 * Die v3-SDKs sind jetzt vom Storage-SDK entkoppelt, wodurch sich eine bessere Kontrolle über das zu verwendende Storage-SDK ergibt und Versionsprobleme vermieden werden. 
 * In den v3-APIs werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von v2 Media Encoder Standard. Beispielsweise würde die Bitrate in v2 mit 128 (Kbit/s), in v3 jedoch mit 12.8000 (Bits/Sekunde) angegeben. 
 * Entities AssetFiles, AccessPolicies und IngestManifests sind in v3 nicht vorhanden.
-* Die Eigenschaft „IAsset.ParentAssets“ ist in v3 nicht vorhanden.
 * ContentKeys ist jetzt keine Entität mehr, sondern eine Eigenschaft des Streaminglocators.
 * Die Event Grid-Unterstützung ersetzt NotificationEndpoints.
 * Die folgenden Entitäten wurden umbenannt:
-    * Die Auftragsausgabe ersetzt die Aufgabe und ist jetzt Teil eines Auftrags.
+
+   * JobOutput (v3) ersetzt Aufgabe (v2) und ist jetzt Teil eines Auftrags. Eingaben und Ausgaben befinden sich jetzt auf der Auftragsebene. Weitere Informationen finden Sie unter [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md). 
+
+       Lauschen Sie auf EventGrid-Ereignisse, um den Verlauf des Auftragsstatus abzurufen. Weitere Informationen finden Sie unter [Behandeln von Event Grid-Ereignissen](reacting-to-media-services-events.md).
     * Der Streaminglocator ersetzt den Locator.
     * Das Liveereignis ersetzt den Kanal.<br/>Die Liveereignisabrechnung basiert auf Livekanal-Verbrauchseinheiten. Weitere Informationen finden Sie unter [Zustandswerte von Liveereignissen und Abrechnung](live-event-states-billing.md) und [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
     * Die Liveausgabe ersetzt das Programm.
@@ -89,6 +88,12 @@ Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Sc
 
 ## <a name="asset-specific-changes"></a>Für Medienobjekte spezifische Änderungen
 
+* Für Medienobjekte (Ressourcen), die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](../../storage/common/storage-service-encryption.md).
+    * Sie können v3-APIs mit Ressourcen verwenden, die mit v2-APIs erstellt wurden, sofern für diese [Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) (AES-256) von Media Services bereitgestellt wurde.
+    * Mit der älteren AES-256-[Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) können Sie mithilfe von v3-APIs keine neuen Medienobjekte erstellen.
+* Die Eigenschaften des [Medienobjekt](assets-concept.md)s in v3 unterscheiden sich von denen in v2, siehe [Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2](#map-v3-asset-properties-to-v2).
+* Die Eigenschaft „IAsset.ParentAssets“ ist in v3 nicht vorhanden.
+
 ### <a name="map-v3-asset-properties-to-v2"></a>Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2
 
 Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](/rest/api/media/assets/createorupdate#asset) in v3 den Eigenschaften in v2 zugeordnet werden.
@@ -124,7 +129,7 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen d
 
 Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige Szenarien.
 
-|Szenario|V2-API|V3-API|
+|Szenario|v2-API|v3-API|
 |---|---|---|
 |Erstellen eines Medienobjekts und Hochladen einer Datei |[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Übermitteln eines Auftrags|[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Zeigt, wie zuerst eine Transformation erstellt und dann ein Auftrag übermittelt wird.|

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016553"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759236"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Schnellstart: Erstellen einer ExpressRoute-Leitung mit privatem Peering mithilfe einer ARM-Vorlage
 
@@ -92,11 +92,11 @@ Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Neben Azure Pow
 
 1. Die Ressourcengruppe sollte die folgenden Ressourcen enthalten:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute-Bereitstellungsressourcengruppe":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute-Resource Manager-Vorlage: PowerShell-Bereitstellungsausgabe":::
 
 1. Wählen Sie die ExpressRoute-Leitung **er-ck01** aus, um zu überprüfen, ob der Leitungsstatus **Aktiviert**, der Anbieterstatus **Nicht bereitgestellt** und der Status für privates Peering **Bereitgestellt** lautet.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute-Bereitstellungsleitung":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute-Resource Manager-Vorlage: PowerShell-Bereitstellungsausgabe":::
 
 > [!NOTE]
 > Sie müssen den Anbieter anrufen, um den Bereitstellungsvorgang abzuschließen, damit Sie das virtuelle Netzwerk mit der Leitung verknüpfen können.
@@ -120,11 +120,7 @@ In dieser Schnellstartanleitung haben Sie Folgendes erstellt:
 * Öffentliche IP-Adresse
 * Netzwerksicherheitsgruppen
 
-Weitere Informationen zum Verknüpfen eines virtuellen Netzwerks mit einer Leitung finden Sie in den ExpressRoute-Tutorials.
+Informationen zum Verknüpfen eines virtuellen Netzwerks mit einer Leitung finden Sie in den ExpressRoute-Tutorials.
 
 > [!div class="nextstepaction"]
 > [ExpressRoute-Tutorials](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* Weitere Informationen zu ExpressRoute-Workflows finden Sie unter [ExpressRoute-Workflows](expressroute-workflows.md).
-* Weitere Informationen zum Verbindungspeering finden Sie unter [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md).
-* Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md).

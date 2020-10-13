@@ -1,5 +1,5 @@
 ---
-title: Kaufen von Software in AppSource | Azure Marketplace
+title: Kaufen von Software in Microsoft AppSource
 description: Schritte zum Kaufen von Software in AppSource | Azure Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032842"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708032"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Kaufen von Software in Microsoft AppSource
 
 Microsoft [AppSource](https://appsource.microsoft.com/) ermöglicht Kunden nun das Abonnieren von SaaS-Anwendungen, die von Microsoft-Partnern angeboten werden. Kunden können im Store zertifizierte Webanwendungen finden und die Gebühren, Upgrades, Downgrades und Stornierungen an zentraler Stelle mithilfe des Admin Centers von Microsoft verwalten. In diesem Artikel wird beschrieben, wie Sie eine App im Store kaufen können.
 
-AppSource bietet Ihnen eine Vielzahl von Apps zur Auswahl, darunter kostenlose, Test- und kostenpflichtige Abonnements. In diesem Artikel wird beschrieben, wie Sie über AppSource kostenpflichtige Abonnements erwerben können.
+AppSource bietet Ihnen eine Vielzahl von Apps zur Auswahl, darunter kostenlose Testversionen und kostenpflichtige Abonnements. In diesem Artikel wird beschrieben, wie Sie über AppSource kostenpflichtige Abonnements erwerben können.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -51,7 +51,7 @@ Für den Kauf von SaaS-Angeboten benötigen Sie Folgendes:
 
 Nach dem Eingang der Bestellung kann es bis zur Bestätigung einige Sekunden dauern. Sie erhalten einen Link zur Konfiguration Ihres SaaS-Abonnements auf der Seite sowie eine E-Mail zur Bestätigung des Kaufs und den Link zum Abschluss der Konfiguration.
 
-1. Klicken Sie auf der Seite **Auftragsbestätigung** auf **Konfigurieren**. Alternativ können Sie auch in der Bestätigungs-E-Mail auf den Link „Konfiguration“klicken.
+1. Klicken Sie auf der Seite **Auftragsbestätigung** auf **Konfigurieren**. Alternativ können Sie stattdessen in der Bestätigungs-E-Mail auf den Link „Konfiguration“ klicken.
 1. Schließen Sie die Bereitstellung und Einrichtung auf der Website des Softwareanbieters ab.
 
     > [!Note]
@@ -65,4 +65,4 @@ Kontaktieren Sie bei Unternehmensprodukten die [Hilfe hier](/office365/admin/con
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie in der [Dokumentation für den kommerziellen Marketplace](partner-center-portal/commercial-marketplace-overview.md).
+- [Microsoft Marketplace-Kundendokumentation](/marketplace/)

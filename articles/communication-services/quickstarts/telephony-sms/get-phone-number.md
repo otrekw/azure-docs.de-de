@@ -1,24 +1,24 @@
 ---
 title: 'Schnellstart: Beschaffen einer Telefonnummer über Azure Communication Services'
 description: Es wird beschrieben, wie Sie über das Azure-Portal eine Communication Services-Telefonnummer erwerben.
-author: ddematheu2
-manager: nimag
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: dademath
-ms.date: 07/09/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298115"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756921"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Schnellstart: Beschaffen einer Telefonnummer über das Azure-Portal
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Steigen Sie in Azure Communication Services ein, indem Sie über das Azure-Portal eine Telefonnummer erwerben.
 
@@ -41,7 +41,7 @@ Navigieren Sie im Ressourcenmenü zum Blatt „Telefonnummern“.
 
 Klicken Sie auf die Schaltfläche `Get` (Abrufen), um den Assistenten zu starten. Im Assistenten auf dem Blatt `Phone numbers` (Telefonnummern) werden einige Fragen gestellt, um die Telefonnummer zu ermitteln, die für Ihr Szenario am besten geeignet ist. 
 
-Zuerst müssen Sie eine Auswahl für `Country/region` (Land/Region) treffen, um anzugeben, wo die Telefonnummer bereitgestellt werden soll. Nach der Auswahl des Lands bzw. der Region müssen Sie den `phone plan` (Telefonplan) auswählen, der Ihre Anforderungen am besten erfüllt. 
+Zuerst müssen Sie eine Auswahl für `Country/region` (Land/Region) treffen, um anzugeben, wo die Telefonnummer bereitgestellt werden soll. Nach der Auswahl des Lands bzw. der Region müssen Sie den `use case` (Telefonplan) auswählen, der Ihre Anforderungen am besten erfüllt. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
 
@@ -50,23 +50,13 @@ Zuerst müssen Sie eine Auswahl für `Country/region` (Land/Region) treffen, um 
 Die Auswahl eines Telefonplans ist in zwei Schritte unterteilt: 
 
 1. Auswahl des [Nummerntyps](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
-2. Auswahl des [Plans](../../concepts/telephony-sms/plan-solution.md#plans)
+2. Auswahl des [Plans](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services)
 
 Derzeit gibt es zwei Nummerntypen: `Geographic` (Geografisch) und `Toll-free` (Gebührenfrei). Nachdem Sie einen Nummerntyp ausgewählt haben, werden Ihnen mehrere Pläne zur Auswahl angeboten.
 
-> [!NOTE]
-> Derzeit unterstützen wir nur die Auswahl von Telefonnummern für ein- ODER ausgehende Anrufe. Sie können aber eine Telefonnummer mit einer Aktivierung für eingehende Anrufe erwerben und dann die Anrufer-ID für ausgehende Anrufe konfigurieren, um sie an die Telefonnummer mit Aktivierung für eingehende Anrufe (Anzeige für Benutzer, wenn Sie diese über Ihre Communication Services-Anwendung anrufen) anzupassen.
-> Dies gilt nur für bidirektionale Anrufe. Die native Unterstützung für bidirektionale SMS ist vorhanden.
-
-In unserem Beispiel haben wir den Nummerntyp `Toll-free` (Gebührenfrei) und den Plan `Outbound calling` (Ausgehende Anrufe) ausgewählt.
+In unserem Beispiel haben wir den Nummerntyp `Toll-free` und den Plänen `Outbound calling` und `Inbound and Outbound SMS` ausgewählt.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
-
-### <a name="declare-purpose"></a>Deklarieren des Zwecks
-
-Im nächsten Schritt werden Sie nach dem Zweck der Telefonnummer gefragt. Wir erfassen diese Angabe, damit wir die geltenden Bestimmungen in Bezug auf Steuern und Notrufe erfüllen können.
-
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
 
 Klicken Sie als Nächstes unten auf der Seite auf die Schaltfläche `Next: Numbers` (Weiter: Nummern), um die Telefonnummern anzupassen, die Sie bereitstellen möchten.
 
@@ -106,12 +96,19 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Commun
 
 :::image type="content" source="../media/manage-phone-azure-portal-start.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
 
-Wählen Sie im Menü die Registerkarte „Telefonnummern“ aus, um Ihre Telefonnummern zu verwalten.
+Wählen Sie im Menü das Blatt „Telefonnummern“ aus, um Ihre Telefonnummern zu verwalten.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
 
 > [!NOTE]
 > Es kann einige Minuten dauern, bis die bereitgestellten Nummern auf dieser Seite angezeigt werden.
+
+### <a name="customizing-phone-number-plans"></a>Anpassen von Telefonnummernplänen
+Auf der Seite `Numbers` können Sie die Telefonnummer auswählen, indem Sie auf die Nummer klicken, für die Sie den Plan anpassen möchten.
+
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
+
+Wählen Sie die Funktionen aus der Liste der verfügbaren Anruf- und SMS-Funktionen aus, und klicken Sie dann auf `Confirm`, um die Auswahl anzuwenden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -119,7 +116,7 @@ Häufig gestellte Fragen und Probleme:
 
 - Derzeit wird der Erwerb von Telefonnummern nur in den USA unterstützt. Als Grundlage hierfür gilt die Rechnungsadresse des Abonnements, dem die Ressource zugeordnet ist. Derzeit ist es nicht möglich, eine Ressource in ein anderes Abonnement zu verschieben.
 
-- Wenn eine Telefonnummer gelöscht wurde, wird sie dadurch nicht freigegeben und kann bis zum Ende des Abrechnungszeitraums nicht erneut erworben werden.
+- Wenn eine Telefonnummer freigegeben wurde, kann sie bis zum Ende des Abrechnungszeitraums nicht freigegeben oder erneut erworben werden.
 
 - Wenn eine Communication Services-Ressource gelöscht wird, werden die Telefonnummern, die dieser Ressource zugeordnet sind, gleichzeitig automatisch freigegeben.
 

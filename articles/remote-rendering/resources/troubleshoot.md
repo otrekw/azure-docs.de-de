@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322188"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803822"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -88,7 +88,7 @@ Die Videoqualität kann durch die Netzwerkqualität oder einen fehlenden H.265-V
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Mit MRC aufgezeichnetes Video spiegelt nicht die Qualität des Liveerlebnisses wider
 
-Ein Video kann mit Hololens mithilfe von [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) aufgezeichnet werden. Das resultierende Video weist jedoch aus zwei Gründen eine schlechtere Qualität als das Liveerlebnis auf:
+Ein Video kann mit HoloLens mithilfe von [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) aufgezeichnet werden. Das resultierende Video weist jedoch aus zwei Gründen eine schlechtere Qualität als das Liveerlebnis auf:
 * Die Videobildfrequenz ist auf 30 Hz begrenzt, im Gegensatz zu 60 Hz beim Liveerlebnis.
 * Die Videobilder durchlaufen nicht den Verarbeitungsschritt [Late Stage Reprojection](../overview/features/late-stage-reprojection.md), daher wirkt das Video weniger flüssig.
 
@@ -185,7 +185,7 @@ Die `AudioPluginMsHRTF.dll` für Arm64 wurde dem *Windows Mixed Reality*-Paket *
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>Fehler „Bibliothek nicht gefunden“ für UWP-Anwendung oder DLL
 
-Innerhalb des C++-Nuget-Pakets gibt es die Datei `microsoft.azure.remoterendering.Cpp.targets`, die definiert, welche der binären Varianten verwendet werden soll. Um `UWP` zu identifizieren, prüfen die Bedingungen in der Datei auf `ApplicationType == 'Windows Store'`. Es muss daher sichergestellt werden, dass dieser Typ im Projekt festgelegt wird. Dies sollte der Fall sein, wenn Sie eine UWP-Anwendung oder DLL über den Projekt-Assistenten von Visual Studio erstellen.
+Innerhalb des C++-NuGet-Pakets gibt es die Datei `microsoft.azure.remoterendering.Cpp.targets`, die definiert, welche der binären Varianten verwendet werden soll. Um `UWP` zu identifizieren, prüfen die Bedingungen in der Datei auf `ApplicationType == 'Windows Store'`. Es muss daher sichergestellt werden, dass dieser Typ im Projekt festgelegt wird. Dies sollte der Fall sein, wenn Sie eine UWP-Anwendung oder DLL über den Projekt-Assistenten von Visual Studio erstellen.
 
 ## <a name="unstable-holograms"></a>Instabile Hologramme
 
@@ -193,7 +193,7 @@ Wenn bei Kopfbewegungen auch gerenderte Objekte bewegt werden, liegen möglicher
 
 Ein weiterer Grund für instabile Hologramme (wabernde, verzerrte, zitternde oder springende Hologramme) kann eine schlechte Netzwerkkonnektivität sein, insbesondere unzureichende Netzwerkbandbreite oder zu hohe Latenz. Ein guter Indikator für die Qualität der Netzwerkverbindung ist der [Leistungsstatistikwert](../overview/features/performance-queries.md) `ARRServiceStats.VideoFramesReused`. Wiederverwendete Frames deuten auf Situationen hin, in denen ein altes Videoframe auf der Clientseite wiederverwendet werden musste, da kein neues Videoframe verfügbar war – beispielsweise aufgrund von Paketverlusten oder von Schwankungen der Netzwerklatenz. Wenn `ARRServiceStats.VideoFramesReused` häufig größer als null ist, deutet dies auf ein Netzwerkproblem hin.
 
-Ein anderer Wert, der untersucht werden kann, ist `ARRServiceStats.LatencyPoseToReceiveAvg`. Er sollte konstant weniger als 100 ms betragen. Wenn höhere Werte angezeigt werden, bedeutet dies, dass Sie mit einem zu weit entfernten Rechenzentrum verbunden sind.
+Ein anderer Wert, der untersucht werden kann, ist `ARRServiceStats.LatencyPoseToReceiveAvg`. Er sollte konstant weniger als 100 ms betragen. Höhere Werte können darauf hinweisen, dass Sie mit einem zu weit entfernten Rechenzentrum verbunden sind.
 
 Eine Liste der möglichen Entschärfungen finden Sie in den [Richtlinien für die Netzwerkkonnektivität](../reference/network-requirements.md#guidelines-for-network-connectivity).
 
@@ -245,7 +245,9 @@ Koplanare Oberflächen können eine Reihe verschiedener Ursachen haben:
 
 * Oberflächen werden gezielt zum Anfassen erstellt, z. B. Bilder oder Text auf Wänden.
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Grafikartefakte mit Stereorendering mit mehreren Durchläufen in nativen C++-Apps
 
+In einigen Fällen können benutzerdefinierte native C++-Apps, die nach dem Aufruf von [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) einen Stereorenderingmodus mit mehreren Durchläufen für lokale Inhalte verwenden (Rendering für das linke und rechte Auge in getrennten Durchläufen), einen Treiberfehler auslösen. Der Fehler führt zu nicht deterministischen Rasterungsfehlern, die dazu führen, dass einzelne Dreiecke oder Teile von Dreiecken des lokalen Inhalts zufällig verschwinden. Aus Leistungsgründen wird ohnehin empfohlen, lokale Inhalte mit einem moderneren Stereorenderingverfahren mit einzelnem Durchlauf zu rendern, z. B. mithilfe von **SV_RenderTargetArrayIndex**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

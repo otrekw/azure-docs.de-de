@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3727c41c991b83bc3869279cbb0535a6185ff04d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015729"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743759"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Erstellen Sie eine einfache Konsolenanwendung zum Aufrufen des Actordiensts.
 
     Das NuGet-Paket und alle abhängigen Elemente werden im Projekt „ActorClient“ installiert.
 
-5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Verweis hinzufügen...** .  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
+5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Projektverweis hinzufügen...** .  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
     
     ![Dialogfeld „Verweis hinzufügen“][7]
 

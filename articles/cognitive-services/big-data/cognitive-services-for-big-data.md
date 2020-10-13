@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201792"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776628"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Azure Cognitive Services für Big Data
 
@@ -125,12 +125,14 @@ Cognitive Services für Big Data ist ein Beispiel für die Integration intellige
 - [Weitere Informationen zur Funktionsweise von Cognitive Services in Apache Spark&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [Schützen von Schneeleoparden mit Deep Learning und maschinellem Sehen in Spark](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [Microsoft Research-Podcast: MMLSpark, Grundlage für AI for Good mit Mark Hamilton](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [Akademisches Whitepaper: Intelligente Microservices im großen Stil](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>Webinare und Videos
 
 - [Azure Cognitive Services in Spark: Cluster mit eingebetteten intelligenten Diensten](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark Summit-Keynote: Skalierbare AI for Good-Lösung](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cognitive Services für Big Data in Cosmos DB](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [Blitzgespräch zu „Intelligente Microservices im großen Stil“](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

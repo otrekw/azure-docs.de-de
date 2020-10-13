@@ -4,15 +4,15 @@ description: Hier wird beschrieben, wie Sie ein Azure-VM-Angebot im kommerzielle
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: iqshahmicrosoft
-ms.author: iqshah
+author: github-2407
+ms.author: krsh
 ms.date: 08/14/2020
-ms.openlocfilehash: eea4ae449140334c422243b2ef2e9abce2534c39
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742756"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821324"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>Testen eines VM-Images für Azure Marketplace
 
@@ -247,22 +247,22 @@ In diesem Abschnitt wird beschrieben, wie Sie ein vom Benutzer bereitgestelltes 
 
 6. Geben Sie die Parameterwerte für die angezeigten Eigenschaftenseiten für die benutzerdefinierte Bereitstellung ein.
 
-| ResourceGroupName | Name einer vorhandenen Azure-Ressourcengruppe. Normalerweise verwenden Sie dieselbe Ressourcengruppe wie für Ihren Schlüsseltresor. |
-| --- | --- |
-| TemplateFile | Vollständiger Pfadname der Datei „VHDtoImage.json“. |
-| userStorageAccountName | Name des Speicherkontos. |
-| dnsNameForPublicIP | DNS-Name für die öffentliche IP-Adresse. Muss in Kleinbuchstaben angegeben werden. |
-| subscriptionId | Die Azure-Abonnement-ID. |
-| Standort | Standardmäßiger geografischer Azure-Standort der Ressourcengruppe. |
-| vmName | Der Name des virtuellen Computers. |
-| vhdUrl | Die Webadresse der virtuellen Festplatte. |
-| vmSize | Die Größe der VM-Instanz. |
-| publicIPAddressName | Der Name der öffentlichen IP-Adresse. |
-| virtualNetworkName | Der Name des virtuellen Netzwerks. |
-| nicName | Der Name der Netzwerkschnittstellenkarte für das virtuelle Netzwerk. |
-| adminUserName | Der Benutzername des Administratorkontos. |
-| adminPassword | Das Administratorkennwort. |
-|
+    | ResourceGroupName | Name einer vorhandenen Azure-Ressourcengruppe. Normalerweise verwenden Sie dieselbe Ressourcengruppe wie für Ihren Schlüsseltresor. |
+    | --- | --- |
+    | TemplateFile | Vollständiger Pfadname der Datei „VHDtoImage.json“. |
+    | userStorageAccountName | Name des Speicherkontos. |
+    | dnsNameForPublicIP | DNS-Name für die öffentliche IP-Adresse. Muss in Kleinbuchstaben angegeben werden. |
+    | subscriptionId | Die Azure-Abonnement-ID. |
+    | Standort | Standardmäßiger geografischer Azure-Standort der Ressourcengruppe. |
+    | vmName | Der Name des virtuellen Computers. |
+    | vhdUrl | Die Webadresse der virtuellen Festplatte. |
+    | vmSize | Die Größe der VM-Instanz. |
+    | publicIPAddressName | Der Name der öffentlichen IP-Adresse. |
+    | virtualNetworkName | Der Name des virtuellen Netzwerks. |
+    | nicName | Der Name der Netzwerkschnittstellenkarte für das virtuelle Netzwerk. |
+    | adminUserName | Der Benutzername des Administratorkontos. |
+    | adminPassword | Das Administratorkennwort. |
+
 
 7. Nachdem Sie diese Werte angegeben haben, wählen Sie **Kaufen** aus.
 
@@ -548,16 +548,15 @@ Kopieren Sie das folgende Skript, und bearbeiten Sie es, um Werte für die Varia
 
 ```PowerShell
 # storage account of existing generalized VHD
-
-$storageaccount = "testwinrm11815" # generalized VHD URL
+$storageaccount = "testwinrm11815"
+# generalized VHD URL
 $vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
 
 echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl
 $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
 
 # deploying VM with existing VHD
-
-New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName" -TemplateFile"C:\certLocation\VHDtoImage.json" - userStorageAccountName"$storageaccount" -dnsNameForPublicIP"$vmName" -subscriptionId"$mysubid" -location"$location" - vmName"$vmName" -vaultName"$kvname" -vaultResourceGroup"$rgName" -certificateUrl$objAzureKeyVaultSecret.Id -vhdUrl"$vhdUrl" - vmSize"Standard\_A2" -publicIPAddressName"myPublicIP1" -virtualNetworkName"myVNET1" -nicName"myNIC1" -adminUserName"isv" - adminPassword$pwd
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd
 ```
 
 ## <a name="run-validations"></a>Durchführen von Überprüfungen
@@ -1014,35 +1013,33 @@ Aufrufen der API in PowerShell:
 Das folgende Beispiel veranschaulicht einen PowerShell-Aufruf der API:
 
 ```POWERSHELL
-$accesstoken = “token”
-$headers = New-Object “System.Collections.Generic.Dictionary[[String],[String]]”
-$headers.Add(“Authorization”, “Bearer $accesstoken”)
-$DNSName = “\&lt;\&lt;Machine DNS Name\&gt;\&gt;”
-$UserName = “\&lt;\&lt;User ID\&gt;\&gt;”
-$Password = “\&lt;\&lt;Password\&gt;\&gt;”
-$OS = “Linux”
-$PortNo = “22”
-$CompanyName = “ABCD”
-$AppID = “\&lt;\&lt;Application ID\&gt;\&gt;”
-$TenantId = “\&lt;\&lt;Tenant ID\&gt;\&gt;”
+$accesstoken = "token"
+$headers = @{ "Authorization" = "Bearer $accesstoken" }
+$DNSName = "<Machine DNS Name>"
+$UserName = "<User ID>"
+$Password = "<Password>"
+$OS = "Linux"
+$PortNo = "22"
+$CompanyName = "ABCD"
+$AppID = "<Application ID>"
+$TenantId = "<Tenant ID>"
 
-$body =
-@{
-DNSName = $DNSName
-UserName = $UserName
-Password = $Password
-OS = $OS
-PortNo = $PortNo
-CompanyName = $CompanyName
-AppID = $AppID
-TenantId = $TenantId
-}| ConvertTo-Json
+$body = @{
+   "DNSName" = $DNSName
+   "UserName" = $UserName
+   "Password" = $Password
+   "OS" = $OS
+   "PortNo" = $PortNo
+   "CompanyName" = $CompanyName
+   "AppID" = $AppID
+   "TenantId" = $TenantId
+} | ConvertTo-Json
 
 $body
 
-$uri = “URL”
+$uri = "URL"
 
-$res = (Invoke-WebRequest -Method “Post” -Uri $uri -Body $body -ContentType “application/json” -Headers $headers).Content
+$res = (Invoke-WebRequest -Method "Post" -Uri $uri -Body $body -ContentType "application/json" -Headers $headers).Content
 ```
 
 <br>Im Folgenden ein Beispiel für das Aufrufen der API in PowerShell:
@@ -1052,11 +1049,20 @@ $res = (Invoke-WebRequest -Method “Post” -Uri $uri -Body $body -ContentType 
 <br>Bei Verwendung des vorherigen Beispiels können Sie den JSON-Code abrufen und analysieren, um die folgenden Details zu erhalten:
 
 ```PowerShell
-$resVar=$res|ConvertFrom-Json
+$resVar = $res | ConvertFrom-Json
+$actualresult = $resVar.Response | ConvertFrom-Json
 
-$actualresult =$resVar.Response |ConvertFrom-Json
+Write-Host "OSName: $($actualresult.OSName)"
+Write-Host "OSVersion: $($actualresult.OSVersion)"
+Write-Host "Overall Test Result: $($actualresult.TestResult)"
 
-Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actualresult.OSVersion)”Write-Host”Overall Test Result: $($actualresult.TestResult)”For ($i=0; $i -lt$actualresult.Tests.Length; $i++){ Write-Host”TestID: $($actualresult.Tests[$i].TestID)”Write-Host”TestCaseName: $($actualresult.Tests[$i].TestCaseName)”Write-Host”Description: $($actualresult.Tests[$i].Description)”Write-Host”Result: $($actualresult.Tests[$i].Result)”Write-Host”ActualValue: $($actualresult.Tests[$i].ActualValue)”}
+For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
+   Write-Host "TestID: $($actualresult.Tests[$i].TestID)"
+   Write-Host "TestCaseName: $($actualresult.Tests[$i].TestCaseName)"
+   Write-Host "Description: $($actualresult.Tests[$i].Description)"
+   Write-Host "Result: $($actualresult.Tests[$i].Result)"
+   Write-Host "ActualValue: $($actualresult.Tests[$i].ActualValue)"
+}
 ```
 
 <br>In diesem Beispielbildschirm mit `$res.Content` sind die Details der Testergebnisse im JSON-Format dargestellt:
@@ -1078,7 +1084,21 @@ Aufrufen der API in PowerShell:
 Das folgende Codebeispiel veranschaulicht einen PowerShell-Aufruf der API:
 
 ```PowerShell
-$accesstoken = “Get token for your Client AAD App”$headers = New-Object”System.Collections.Generic.Dictionary[[String],[String]]”$headers.Add(“Authorization”, “Bearer $accesstoken”)$Body = @{ “DNSName” = “XXXX.westus.cloudapp.azure.com”“UserName” = “XXX”“Password” = “XXX@123456”“OS” = “Windows”“PortNo” = “5986”“CompanyName” = “ABCD” “AppID” = “XXXX-XXXX-XXXX” “TenantId” = “XXXX-XXXX-XXXX” } | ConvertTo-Json$res = Invoke-WebRequest -Method”Post” -Uri$uri -Body$Body -ContentType”application/json” –Headers $headers;$Content = $res | ConvertFrom-Json
+$accesstoken = "Get token for your Client AAD App"
+$headers = @{ "Authorization" = "Bearer $accesstoken" }
+$Body = @{ 
+   "DNSName" = "XXXX.westus.cloudapp.azure.com"
+   "UserName" = "XXX"
+   "Password" = "XXX@123456"
+   "OS" = "Windows"
+   "PortNo" = "5986"
+   "CompanyName" = "ABCD"
+   "AppID" = "XXXX-XXXX-XXXX"
+   "TenantId" = "XXXX-XXXX-XXXX"
+} | ConvertTo-Json
+
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$Content = $res | ConvertFrom-Json
 ```
 
 Diese Beispielbildschirme zeigen ein Beispiel für das Aufrufen der API in PowerShell:
@@ -1492,11 +1512,20 @@ Diese Beispielbildschirme zeigen ein Beispiel für das Aufrufen der API in Power
 <br>Bei Verwendung des vorherigen Beispiels können Sie den JSON-Code abrufen und analysieren, um die folgenden Details zu erhalten:
 
 ```PowerShell
-$resVar=$res|ConvertFrom-Json
+$resVar = $res | ConvertFrom-Json
+$actualresult = $resVar.Response | ConvertFrom-Json
 
-$actualresult =$resVar.Response |ConvertFrom-Json
+Write-Host "OSName: $($actualresult.OSName)"
+Write-Host "OSVersion: $($actualresult.OSVersion)"
+Write-Host "Overall Test Result: $($actualresult.TestResult)"
 
-Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actualresult.OSVersion)”Write-Host”Overall Test Result: $($actualresult.TestResult)”For ($i=0; $i -lt$actualresult.Tests.Length; $i++){ Write-Host”TestID: $($actualresult.Tests[$i].TestID)”Write-Host”TestCaseName: $($actualresult.Tests[$i].TestCaseName)”Write-Host”Description: $($actualresult.Tests[$i].Description)”Write-Host”Result: $($actualresult.Tests[$i].Result)”Write-Host”ActualValue: $($actualresult.Tests[$i].ActualValue)”}
+For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
+   Write-Host "TestID: $($actualresult.Tests[$i].TestID)"
+   Write-Host "TestCaseName: $($actualresult.Tests[$i].TestCaseName)"
+   Write-Host "Description: $($actualresult.Tests[$i].Description)"
+   Write-Host "Result: $($actualresult.Tests[$i].Result)"
+   Write-Host "ActualValue: $($actualresult.Tests[$i].ActualValue)"
+}
 ```
 
 <br>In diesem Bildschirm mit `$res.Content` sind die Details der Testergebnisse im JSON-Format dargestellt:
@@ -1713,14 +1742,11 @@ Aufrufen der API in CURL:
 1. Verwenden Sie den curl-Befehl, um die API aufzurufen.
 2. Die Methode ist Post und der Inhaltstyp JSON, wie im folgenden Codeausschnitt dargestellt.
 
-```JSON
-CURL POST -H “Content-Type:application/json”
-
--H “Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-
-[https://isvapp.azure-api.net/selftest-vm](https://isvapp.azure-api.net/selftest-vm)
-
--d ‘{ “DNSName”:”XXXX.westus.cloudapp.azure.com”, “UserName”:”XXX”, “Password”:”XXXX@123456”, “OS”:”Linux”, “PortNo”:”22”, “CompanyName”:”ABCD”, “AppId”:”XXXX-XXXX-XXXX”, “TenantId “XXXX-XXXX-XXXX”}’
+```shell
+curl POST -H "Content-Type:application/json" -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX"
+https://isvapp.azure-api.net/selftest-vm -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "UserName":"XXX",
+"Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD", "AppId":"XXXX-XXXX-XXXX",
+"TenantId "XXXX-XXXX-XXXX"}'
 ```
 
 <br>Hier ein Beispiel zum Aufrufen der API mithilfe von CURL:

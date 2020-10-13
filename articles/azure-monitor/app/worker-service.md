@@ -4,16 +4,16 @@ description: Überwachen von .NET Core- und .NET Framework-Apps ohne HTTP mit Az
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760477"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816399"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)
 
-Für Application Insights wird ein neues SDK mit dem Namen `Microsoft.ApplicationInsights.WorkerService` veröffentlicht, das sich perfekt für Workloads ohne HTTP, z. B. Messaging, Hintergrundaufgaben, Konsolenanwendungen u. ä., eignet. Für diese Anwendungstypen gibt es keine eingehenden HTTP-Anforderungen wie bei einer herkömmlichen ASP.NET-/ASP.NET Core-Webanwendung. Deshalb wird die Verwendung von Application Insights-Paketen für [ASP.NET](asp-net.md)- und [ASP.NET Core](asp-net-core.md)-Anwendungen nicht unterstützt.
+Das [Application Insights SDK für Workerdienstanwendungen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ist ein neues SDK, das sich perfekt für Workloads ohne HTTP eignet, z. B. Messaging, Hintergrundaufgaben, Konsolenanwendungen usw. Für diese Anwendungstypen gibt es keine eingehenden HTTP-Anforderungen wie bei einer herkömmlichen ASP.NET-/ASP.NET Core-Webanwendung. Deshalb wird die Verwendung von Application Insights-Paketen für [ASP.NET](asp-net.md)- und [ASP.NET Core](asp-net-core.md)-Anwendungen nicht unterstützt.
 
 Das neue SDK sammelt keine Telemetriedaten. Stattdessen nutzt es andere bekannte automatische Application Insights-Collectors, z. B. [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) usw. Dieses SDK macht Erweiterungsmethoden in `IServiceCollection` verfügbar, um die Erfassung von Telemetriedaten zu aktivieren und zu konfigurieren.
 
@@ -138,7 +138,7 @@ In [diesem Dokument](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-
 
 Das vollständige Beispiel finden Sie [hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService).
 
-1. Installieren Sie das Paket „Microsoft.ApplicationInsights.WorkerService“ (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
+1. Installieren Sie das Paket [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
 2. Fügen Sie wie im folgenden Beispiel dargestellt `services.AddApplicationInsightsTelemetryWorkerService();` der `ConfigureServices()`-Methode hinzu:
 
 ```csharp
@@ -225,7 +225,7 @@ Wie am Anfang dieses Artikels erwähnt, kann das neue Paket verwendet werden, um
 
 Das vollständige Beispiel finden Sie [hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights).
 
-1. Installieren Sie das Paket „Microsoft.ApplicationInsights.WorkerService“ (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
+1. Installieren Sie das Paket [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
 
 2. Ändern Sie „Program.cs“ gemäß dem folgenden Beispiel.
 
@@ -293,7 +293,7 @@ Diese Konsolenanwendung verwendet dieselbe Standard-`TelemetryConfiguration` und
 
 ## <a name="run-your-application"></a>Ausführen der Anwendung
 
-Führen Sie Ihre Anwendung aus. Die Worker in den obigen Beispielen führen jede Sekunde einen HTTP-Aufruf von „bing.com“ aus und geben mithilfe von ILogger einige Protokolle aus. Diese Zeilen sind in einem `StartOperation`-Aufruf von `TelemetryClient` enthalten, der zum Erstellen eines Vorgangs verwendet wird (in diesem Beispiel `RequestTelemetry` mit dem Namen „operation“). Application Insights erfasst diese ILogger-Protokolle (standardmäßig mit dem Schweregrad „Warnung“ oder einem höheren Schweregrad) und Abhängigkeiten, und sie werden in einer Beziehung zwischen über- und untergeordneten Elementen mit `RequestTelemetry` korreliert. Die Korrelation kann auch prozessübergreifend und über Netzwerkgrenzen hinweg erfolgen. Wenn der Aufruf z. B. für eine andere überwachte Komponente erfolgt ist, wird sie ebenfalls mit dem übergeordneten Element korreliert.
+Führen Sie Ihre Anwendung aus. Die Worker in den obigen Beispielen führen jede Sekunde einen HTTP-Aufruf von „bing.com“ aus und geben mithilfe von `ILogger` einige Protokolle aus. Diese Zeilen sind in einem `StartOperation`-Aufruf von `TelemetryClient` enthalten, der zum Erstellen eines Vorgangs verwendet wird (in diesem Beispiel `RequestTelemetry` mit dem Namen „operation“). Application Insights erfasst diese ILogger-Protokolle (standardmäßig mit dem Schweregrad „Warnung“ oder einem höheren Schweregrad) und Abhängigkeiten, und sie werden in einer Beziehung zwischen über- und untergeordneten Elementen mit `RequestTelemetry` korreliert. Die Korrelation kann auch prozessübergreifend und über Netzwerkgrenzen hinweg erfolgen. Wenn der Aufruf z. B. für eine andere überwachte Komponente erfolgt ist, wird sie ebenfalls mit dem übergeordneten Element korreliert.
 
 Dieser benutzerdefinierte `RequestTelemetry`-Vorgang entspricht einer eingehenden Webanforderung in einer typischen Webanwendung. Obwohl es nicht erforderlich ist, einen Vorgang zu verwenden, eignet sich dies am besten für das [Korrelationsdatenmodell in Application Insights](./correlation.md). Dabei fungiert `RequestTelemetry` als übergeordneter Vorgang, und alle in der Workeriteration generierten Telemetriedaten werden als logisch zu demselben Vorgang gehörend behandelt. Mit diesem Ansatz wird auch sichergestellt, dass alle (automatisch und manuell) generierten Telemetriedaten dieselbe `operation_id` aufweisen. Wenn die Stichprobenentnahme auf der `operation_id` basiert, werden alle Telemetriedaten aus einer einzelnen Iteration entweder beibehalten oder gelöscht.
 

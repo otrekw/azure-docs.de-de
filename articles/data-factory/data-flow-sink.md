@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: b92b6930193b77d0fb50ad707001a6fca0401970
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404764"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828147"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
@@ -56,7 +56,9 @@ Azure Data Factory hat Zugriff auf über [90 native Connectors](connector-overvi
 
 ## <a name="sink-settings"></a>Senkeneinstellungen
 
-Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die Registerkarte **Senke**. Hier können Sie das Dataset auswählen oder erstellen, in das die Senke schreibt. Unten finden Sie ein Video, in dem verschiedene Senkenoptionen für Dateitypen mit Texttrennzeichen beschrieben werden:
+Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die Registerkarte **Senke**. Hier können Sie das Dataset auswählen oder erstellen, in das die Senke schreibt. Entwicklungswerte für Datasetparameter können in [Debugeinstellungen](concepts-data-flow-debug-mode.md) konfiguriert werden (dazu muss der Debugmodus aktiviert sein).
+
+Unten finden Sie ein Video, in dem verschiedene Senkenoptionen für Dateitypen mit Texttrennzeichen beschrieben werden:
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 

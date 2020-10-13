@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967212"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575179"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -33,7 +33,6 @@ Für den Inhalt der Datei sollte das folgende JSON-Schema erfüllt sein:
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ Ein Zentrieren des Modells kann in dieser Situation hilfreich sein.
 
 * `opaqueMaterialDefaultSidedness`: Vom Renderingmodul wird vorausgesetzt, dass undurchsichtige Materialien doppelseitig sind.
 Wenn diese Annahme für ein bestimmtes Modell nicht zutrifft, sollte dieser Parameter auf „SingleSided“ festgelegt werden. Weitere Informationen zu Rendering vom Typ :::no-loc text="single sided"::: finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
-
-### <a name="material-overrides"></a>Materialüberschreibungen
-
-* `material-override`: Dieser Parameter ermöglicht die Verarbeitung von Materialien, damit sie [während der Konvertierung angepasst werden können](override-materials.md).
 
 ### <a name="material-de-duplication"></a>Deduplizierung von Materialien
 
@@ -305,6 +300,8 @@ Bei diesen Anwendungsfällen weisen die Modelle häufig einen sehr hohen Detailg
 
 Das Bereitstellen von Einstellungen mithilfe der nicht modellspezifischen Datei `conversionSettings.json` wird weiterhin unterstützt, ist jedoch veraltet.
 Verwenden Sie stattdessen den modellspezifischen Dateinamen `<modelName>.ConversionSettings.json`.
+
+Die Verwendung einer `material-override`-Einstellung zum Identifizieren einer [Materialüberschreibungsdatei](override-materials.md) in der Datei mit den Konvertierungseinstellungen wird noch unterstützt, ist aber veraltet. Verwenden Sie stattdessen den modellspezifischen Dateinamen `<modelName>.MaterialOverrides.json`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

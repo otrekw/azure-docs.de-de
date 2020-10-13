@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666872"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578178"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 
@@ -61,7 +61,7 @@ Logic Apps ermöglicht Ihnen, benutzerfreundliche Token zu generieren, die die E
   
   2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel: 
 
-     ![Angeben einer JSON-Beispielnutzlast](./media/logic-apps-content-type/request-trigger.png)
+     ![Screenshot: Aktion „Beim Empfang einer HTTP-Anforderung“ mit JSON-Beispielnutzdaten](./media/logic-apps-content-type/request-trigger.png)
 
      Das generierte Schema wird jetzt in Ihrem Trigger angezeigt.
 

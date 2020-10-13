@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 96a085e3183289d9f2add054128c0faa6b0cdb29
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375489"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654470"
 ---
 Zum Erstellen eines Visual Studio-Projekts für die C++-Desktopentwicklung müssen Sie Visual Studio-Entwicklungsoptionen einrichten, das Projekt erstellen, die Zielarchitektur auswählen und das Speech SDK installieren.
 
@@ -19,13 +19,13 @@ Stellen Sie zunächst sicher, dass Visual Studio ordnungsgemäß für die C++-De
 
 1. Öffnen Sie Visual Studio 2019, um das **Startfenster** anzuzeigen.
 
-   ![Startfenster: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![Screenshot: Fenster „Start“ von Visual Studio 2019.](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Wählen Sie **Ohne Code fortfahren** aus, um zur Visual Studio-IDE zu wechseln.
 
 1. Wählen Sie auf der Visual Studio-Menüleiste **Extras** > **Tools und Features abrufen** aus, um den Visual Studio-Installer zu öffnen und das Dialogfeld **Änderung** anzuzeigen.
 
-   ![Registerkarte „Workloads“, Dialogfeld „Änderung“, Visual Studio-Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![Screenshot: Registerkarte „Workloads“ des Dialogfelds „Änderung“ für den Visual Studio-Installer.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. Suchen Sie auf der Registerkarte **Workloads** unter **Windows** nach der Workload **Desktopentwicklung mit C++** . Wenn das Kontrollkästchen neben dieser Workload nicht bereits aktiviert ist, aktivieren Sie es.
 

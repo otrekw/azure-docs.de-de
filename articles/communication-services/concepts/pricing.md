@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460933"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761225"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -59,7 +59,7 @@ Mit Communication Services können Sie Ihre Anwendung um eine Funktion zum Sende
 
 ### <a name="price"></a>Preis
 
-- Ihnen werden für jede gesendete Chatnachricht 0,0008 US-Dollar berechnet.
+Ihnen werden für jede gesendete Chatnachricht 0,0008 US-Dollar berechnet.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Preisbeispiel: Chat zwischen zwei Benutzern 
 
@@ -77,3 +77,46 @@ Rose sieht die Nachrichten und beteiligt sich am Chat. In der Zwischenzeit erhä
 **Berechnung der Kosten** 
 
 - Anzahl gesendeter Nachrichten (20 + 30 + 18 + 30 + 25 + 35) · 0,0008 USD = 0,1264 USD
+
+
+## <a name="telephony-and-sms"></a>Telefonie und SMS
+
+## <a name="price"></a>Preis 
+
+Telefoniedienste werden auf Minutenbasis abgerechnet, während SMS auf Nachrichtenbasis abgerechnet werden. Die Preise richten sich nach der Art und dem Standort der von Ihnen verwendeten Nummer sowie nach dem Ziel Ihrer Anrufe und SMS-Nachrichten.
+
+### <a name="telephone-calling"></a>Telefonanruf
+
+Herkömmliche Telefonanrufe (Anrufe, die über das Telefonfestnetz getätigt werden) sind für Telefonnummern mit Sitz in den USA zu nutzungsbasierten Preisen erhältlich. Der Preis ist ein Minutenpreis, der von der Art der verwendeten Nummer und dem Ziel des Anrufs abhängt. Preisdetails für die beliebtesten Anrufziele sind in der folgenden Tabelle aufgeführt. Eine vollständige Liste der Ziele finden Sie in der [detaillierten Preisliste](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv).
+
+
+#### <a name="united-states-calling-prices"></a>Preise für Anrufe in den USA
+
+Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren bis zum 30. Juni 2021:
+
+|Zahlentyp   |Anrufe tätigen   |Anrufe empfangen|
+|--------------|-----------|------------|
+|Lokal     |Ab 0,013 USD/Minute       |0,0085 USD/Minute        |
+|Gebührenfrei |0,013 USD/Minute   |0,0220 USD/Minute |
+
+#### <a name="other-calling-destinations"></a>Sonstige Anrufziele
+
+Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren bis zum 30. Juni 2021:
+
+|Tätigen von Anrufen nach   |Preis pro Minute|
+|-----------|------------|
+|Kanada     |Ab 0,013 USD/Minute   |
+|Vereinigtes Königreich     |Ab 0,015 USD/Minute   |
+|Deutschland     |Ab 0,015 USD/Minute   |
+|Frankreich     |Ab 0,016 USD/Minute   |
+
+
+### <a name="sms"></a>sms
+
+SMS bietet nutzungsbasierte Preise. Der Preis ist eine auf dem Ziel der Nachricht basierende Gebühr pro Nachricht. Nachrichten können über gebührenfreie Telefonnummern an Telefonnummern innerhalb der USA gesendet werden. Beachten Sie, dass lokale (geografische) Telefonnummern nicht zum Senden von SMS-Nachrichten verwendet werden können.
+
+Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren bis zum 30. Juni 2021:
+
+|Land   |Senden von Nachrichten|Empfangen von Nachrichten|
+|-----------|------------|------------|
+|USA (gebührenfrei)    |0,0075 USD/Nachricht   | 0,0075 USD/Nachricht |

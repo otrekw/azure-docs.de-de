@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323673"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742076"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -43,7 +43,8 @@ Damit Sie diese Herausforderungen in Bezug auf den Schutz bewältigen können, w
 
 -   **Schnellerer Aufbau des Schutzes**: In Security Center werden alle Vorgänge mit Cloudgeschwindigkeit durchgeführt. Aufgrund der nativen Integration ist die Bereitstellung von Security Center einfach, und Sie erhalten eine automatische Bereitstellung und den Schutz durch Azure-Dienste.
 
-[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+> [!NOTE]
+> Dieser Dienst unterstützt [Azure Lighthouse](../lighthouse/overview.md). Dies ermöglicht es Dienstanbietern, sich bei ihrem eigenen Mandanten anzumelden, um von Kunden delegierte Abonnements und Ressourcengruppen zu verwalten. In Azure Security Center-Szenarien muss ein Abonnement anstelle einzelner Ressourcengruppen delegiert werden.
 
 ## <a name="architecture"></a>Aufbau
 

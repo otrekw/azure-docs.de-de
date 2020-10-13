@@ -7,22 +7,25 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475497"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715075"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT-Modellrepository
 
 Das Azure IoT-Modellrepository ermöglicht Geräteentwicklern das Verwalten und Freigeben von IoT Plug & Play-Gerätemodellen. Bei den Gerätemodellen handelt es sich um JSON LD-Dokumente, die mit der [Digital Twins-Modellierungssprache (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert werden. Die im Modellrepositorydienst gespeicherten Modelle können entweder privat über die Zugriffssteuerung oder öffentlich ohne jegliche Authentifizierung mit Lösungsentwicklern geteilt werden, um die IoT Plug & Play-Cloudlösung zu integrieren und zu entwickeln.
 
+> [!NOTE]
+> Geräteentwickler können IoT Plug & Play-Gerätemodelle direkt auf einem Gerät implementieren, Module verwenden oder die Implementierung in einem IoT Edge-Modul durchführen.
+
 Für den Zugriff auf das Modellrepository stehen Ihnen folgende Optionen zur Verfügung:
 
 - [Das Portal für das Azure IoT-Modellrepository](https://aka.ms/iotmodelrepo)
 - [Die REST-API für das Azure IoT-Modellrepository](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Die Azure CLI-Befehle für das Azure IoT-Modellrepository](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)
+- [Die Azure CLI-Befehle für das Azure IoT-Modellrepository](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
 
 ## <a name="public-models"></a>Öffentliche Modelle
 
@@ -48,7 +51,7 @@ var modelId = "dtmi:com:mxchip:model;1";
 var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
-Informationen zum Anzeigen eines öffentlichen Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show).
+Informationen zum Anzeigen eines öffentlichen Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true).
 
 ## <a name="company-models"></a>Unternehmensmodelle
 
@@ -118,7 +121,7 @@ var modelId = "dtmi:com:mxchip:model;1";
 var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
-Informationen zum Anzeigen eines Unternehmensmodells oder eines freigegebenen Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show).
+Informationen zum Anzeigen eines Unternehmensmodells oder eines freigegebenen Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true).
 
 ### <a name="manage-roles"></a>Verwalten von Rollen
 
@@ -164,7 +167,7 @@ var modelId = "dtmi:com:mxchip:model;1";
 var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
 ```
 
-Informationen zum Hochladen eines Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl zum [Erstellen eines Modells](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create).
+Informationen zum Hochladen eines Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl zum [Erstellen eines Modells](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true).
 
 ### <a name="publish-a-model"></a>Veröffentlichen eines Modells
 
@@ -189,7 +192,10 @@ So veröffentlichen Sie ein Modell mithilfe des Portals:
 
 Informationen zum Veröffentlichen eines Modells mithilfe der REST-API finden Sie in der REST-API-Dokumentation unter [Veröffentlichen von Modellen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync). Geben Sie den Abfragezeichenfolgenparameter `update-metadata=true` an, um ein Modell mithilfe der REST-API zu veröffentlichen. Informationen zum Übergeben eines JWT-Autorisierungsheaders in der HTTP-Anforderung finden Sie unter [Übergeben eines Sicherheitstokens beim Zugriff auf Unternehmensmodelle mit einer REST-API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api).
 
-Informationen zum Veröffentlichen eines Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl zum [Veröffentlichen eines Modells](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish).
+Informationen zum Veröffentlichen eines Modells mithilfe der CLI finden Sie im Artikel zum Azure CLI-Befehl zum [Veröffentlichen eines Modells](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true).
+
+> [!NOTE]
+> Modelle müssen im Modellrepository veröffentlicht werden, bevor Sie die Zertifizierungstests ausführen. Weitere Informationen finden Sie unter [Zertifizieren von IoT Plug & Play-Geräten](howto-certify-device.md).
 
 ### <a name="share-a-model"></a>Freigeben eines Modells
 
@@ -227,4 +233,4 @@ Die folgenden Artikel können sich für die Arbeit mit Azure AD als nützlich er
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es wird empfohlen, dass Sie sich als Nächstes die [IoT Plug & Play-Architektur](concepts-architecture.md) ansehen.
+Als nächster Schritt wird empfohlen, sich die [IoT Plug & Play-Architektur](concepts-architecture.md) anzusehen.
