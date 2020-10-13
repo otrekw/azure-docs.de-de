@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358252"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Überprüfung auf Resource Health-Ereignisse, die sich auf Ihren AKS-Cluster auswirken (Vorschau)
 
@@ -33,7 +33,7 @@ Wenn Sie Ihre Containerworkloads in AKS ausführen, sollten Sie sicherstellen, d
 - Wählen Sie im linken Navigationsbereich den Eintrag **Resource Health** aus.
 - Wählen Sie Ihr Abonnement aus, und legen Sie als Ressourcentyp Azure Kubernetes Service (AKS) fest.
 
-![resource-health-check](./media/aks-resource-health/resource-health-check.png)
+![Screenshot, der die Ressourcenintegrität für AKS-Cluster zeigt.](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>Überprüfen des Integritätsstatus
 

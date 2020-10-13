@@ -4,19 +4,22 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334428"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 
 Durch Verwendung von Azure Private Link können Sie eine Verbindung mit einem Azure Cosmos-Konto über einen privaten Endpunkt herstellen. Bei einem privaten Endpunkt handelt es sich um eine Gruppe privater IP-Adressen in einem Subnetz innerhalb Ihres virtuellen Netzwerks. Sie können dann den Zugriff auf ein Azure Cosmos-Konto über private IP-Adressen einschränken. Durch die Kombination von Private Link und eingeschränkten NSG-Richtlinien kann das Risiko der Datenexfiltration verringert werden. Weitere Informationen zu privaten Endpunkten finden Sie im Artikel zu [Azure Private Link](../private-link/private-link-overview.md).
+
+> [!NOTE]
+> Private Link verhindert nicht, dass Ihre Azure Cosmos-Endpunkte durch ein öffentliches DNS aufgelöst werden. Das Filtern eingehender Anforderungen erfolgt auf Anwendungsebene, nicht auf Transport- oder Netzwerkebene.
 
 Private Link ermöglicht Benutzern den Zugriff auf ein Azure Cosmos-Konto innerhalb des virtuellen Netzwerks oder über ein mittels Peering verbundenes Netzwerk. Auf Ressourcen, die Private Link zugeordnet sind, kann auch lokal über privates Peering über VPN oder Azure ExpressRoute zugegriffen werden. 
 
@@ -95,7 +98,7 @@ Nach der Bereitstellung des privaten Endpunkts können Sie die IP-Adressen abfra
 1. Suchen Sie nach dem privaten Endpunkt, den Sie zuvor erstellt haben. In diesem Fall ist das **cdbPrivateEndpoint3**.
 1. Wählen Sie die Registerkarte **Übersicht** aus, um die DNS-Einstellungen und IP-Adressen anzuzeigen.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Private IP-Adressen im Azure-Portal":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Auswahl zum Erstellen eines privaten Endpunkts über das Azure-Portal":::
 
 Für jeden privaten Endpunkt werden mehrere IP-Adressen erstellt:
 
@@ -408,7 +411,7 @@ Für diese Konten müssen Sie einen privaten Endpunkt für jeden API-Typ erstell
 
 Nach der erfolgreichen Bereitstellung der Vorlage wird eine Ausgabe ähnlich der folgenden Abbildung angezeigt. Der Wert für `provisioningState` lautet `Succeeded`, wenn die privaten Endpunkte ordnungsgemäß eingerichtet sind.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Bereitstellungsausgabe für die Resource Manager-Vorlage":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Auswahl zum Erstellen eines privaten Endpunkts über das Azure-Portal":::
 
 Nach der Bereitstellung der Vorlage werden die privaten IP-Adressen innerhalb des Subnetzes reserviert. Die Firewallregel für das Azure Cosmos-Konto ist so konfiguriert, dass nur Verbindungen über den privaten Endpunkt angenommen werden.
 
@@ -627,7 +630,18 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Blockieren des Zugriffs auf öffentliche Netzwerke während der Kontoerstellung
 
-Wie im vorherigen Abschnitt beschrieben wurde und sofern keine bestimmten Firewallregeln festgelegt wurden, kann durch das Hinzufügen eines privaten Endpunkts nur über private Endpunkte auf Ihr Azure Cosmos-Konto zugegriffen werden. Dies bedeutet, dass das Azure Cosmos-Konto über öffentlichen Datenverkehr erreicht werden könnte, nachdem es erstellt wurde und bevor ein privater Endpunkt hinzugefügt wird. Wenn Sie sicherstellen möchten, dass der Zugriff auf öffentliche Netzwerke sogar vor der Erstellung von privaten Endpunkten deaktiviert wird, können Sie das Flag `publicNetworkAccess` während der Kontoerstellung auf `Disabled` festlegen. Ein Beispiel für die Verwendung dieses Flags finden Sie in [dieser Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/).
+Wie im vorherigen Abschnitt beschrieben wurde und sofern keine bestimmten Firewallregeln festgelegt wurden, kann durch das Hinzufügen eines privaten Endpunkts nur über private Endpunkte auf Ihr Azure Cosmos-Konto zugegriffen werden. Dies bedeutet, dass das Azure Cosmos-Konto über öffentlichen Datenverkehr erreicht werden könnte, nachdem es erstellt wurde und bevor ein privater Endpunkt hinzugefügt wird. Wenn Sie sicherstellen möchten, dass der Zugriff auf öffentliche Netzwerke sogar vor der Erstellung von privaten Endpunkten deaktiviert wird, können Sie das Flag `publicNetworkAccess` während der Kontoerstellung auf `Disabled` festlegen. Beachten Sie, dass dieses Flag Vorrang vor allen IP- oder VNET-Regeln hat. Der gesamte Datenverkehr in öffentlichen und virtuellen Netzwerken wird blockiert, wenn das Flag auf `Disabled` festgelegt ist, selbst wenn die Quell-IP-Adresse oder das virtuelle Netzwerk in der Firewallkonfiguration zugelassen wurde.
+
+Ein Beispiel für die Verwendung dieses Flags finden Sie in [dieser Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/).
+
+## <a name="adding-private-endpoints-to-an-existing-cosmos-account-with-no-downtime"></a>Hinzufügen privater Endpunkte zu einem vorhandenen Cosmos-Konto ohne Ausfallzeit
+
+Wenn einem vorhandenen Konto ein privater Endpunkt hinzugefügt wird, führt dies standardmäßig zu einer kurzen Ausfallzeit von etwa 5 Minuten. Befolgen Sie die nachstehenden Anweisungen, um diese Ausfallzeit zu vermeiden:
+
+1. Fügen Sie Ihrer Firewallkonfiguration IP- oder VNET-Regeln hinzu, um die Clientverbindungen explizit zuzulassen.
+1. Warten Sie 10 Minuten, um sicherzustellen, dass das Konfigurationsupdate angewandt wurde.
+1. Konfigurieren Sie den neuen privaten Endpunkt.
+1. Entfernen Sie die in Schritt 1 festgelegten Firewallregeln.
 
 ## <a name="port-range-when-using-direct-mode"></a>Portbereich bei Verwendung des direkten Modus
 
@@ -635,7 +649,7 @@ Wenn Sie Private Link mit einem Azure Cosmos-Konto über eine Verbindung im dire
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualisieren eines privaten Endpunkts beim Hinzufügen oder Entfernen einer Region
 
-Beim Hinzufügen oder Entfernen von Regionen in einem Azure Cosmos-Konto müssen Sie die DNS-Einträge für dieses Konto hinzufügen oder entfernen. Nachdem Regionen hinzugefügt oder entfernt wurden, können Sie die private DNS-Zone des Subnetzes aktualisieren, damit diese den hinzugefügten oder entfernten DNS-Einträgen und den zugehörigen privaten IP-Adressen entspricht.
+Sofern Sie keine private DNS-Zonengruppe verwenden, müssen Sie beim Hinzufügen oder Entfernen von Regionen in einem Azure Cosmos-Konto die DNS-Einträge für dieses Konto hinzufügen oder entfernen. Nachdem Regionen hinzugefügt oder entfernt wurden, können Sie die private DNS-Zone des Subnetzes aktualisieren, damit diese den hinzugefügten oder entfernten DNS-Einträgen und den zugehörigen privaten IP-Adressen entspricht.
 
 Angenommen, Sie stellen ein Azure Cosmos-Konto in drei Regionen bereit: „USA, Westen“, „USA, Mitte“ und „Europa, Westen“. Wenn Sie einen privaten Endpunkt für das Konto erstellen, werden vier private IP-Adressen im Subnetz reserviert. Es gibt eine IP-Adresse für jede der drei Regionen, und es gibt eine IP-Adresse für den globalen/regionsunabhängigen Endpunkt.
 
@@ -659,7 +673,7 @@ Bei Verwendung von Private Link mit einem Azure Cosmos-Konto gelten die folgende
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Einschränkungen bei der Integration für eine private DNS-Zone
 
-DNS-Einträge in der privaten DNS-Zone werden nicht automatisch entfernt, wenn Sie einen privaten Endpunkt löschen oder eine Region aus dem Azure Cosmos-Konto entfernen. Entfernen Sie die DNS-Einträge manuell, bevor Sie einen der folgenden Schritte ausführen:
+Sofern Sie keine private DNS-Zonengruppe verwenden, werden die DNS-Einträge in der privaten DNS-Zone nicht automatisch entfernt, wenn Sie einen privaten Endpunkt löschen oder eine Region aus dem Azure Cosmos-Konto entfernen. Entfernen Sie die DNS-Einträge manuell, bevor Sie einen der folgenden Schritte ausführen:
 
 * Hinzufügen eines neuen privaten Endpunkts, der mit dieser privaten DNS-Zone verknüpft ist
 * Hinzufügen einer neuen Region zu einem Datenbankkonto mit privaten Endpunkten, die mit dieser privaten DNS-Zone verknüpft sind

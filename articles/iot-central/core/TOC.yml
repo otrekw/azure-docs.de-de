@@ -170,9 +170,11 @@
             - name: Ein-/Ausschalten des Livechats
               href: howto-show-hide-chat.md
     - name: Problembehandlung
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: Geräteverbindungen
+          href: troubleshoot-connection.md
+    - name: Häufig gestellte Fragen
+      href: howto-faq.md
 - name: Verweis
   items:
     - name: Azure CLI

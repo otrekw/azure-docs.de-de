@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314929"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -35,7 +35,7 @@ Die aktuellen Preise für Sicherungsspeicher finden Sie auf der [Preisseite](htt
 In Azure Database for PostgreSQL wird beim Wiederherstellen eines Hyperscale (Citus)-Clusters aus den Sicherungskopien der ursprünglichen Knoten ein neuer Cluster erstellt. 
 
 > [!IMPORTANT]
->Sie können den Hyperscalecluster nur innerhalb desselben Abonnements und derselben Ressourcengruppe und mit einem anderen Clusternamen wiederherstellen.
+>Sie können den Cluster mit Hyperscale (Citus) nur innerhalb desselben Abonnements und derselben Ressourcengruppe und mit einem anderen Clusternamen wiederherstellen.
 
 
 > [!IMPORTANT]
