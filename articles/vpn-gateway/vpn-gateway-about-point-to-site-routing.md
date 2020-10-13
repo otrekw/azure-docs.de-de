@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440812"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447976"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 
 Anhand dieses Artikels können Sie das Verhalten von Azure Point-to-Site-VPN-Routing nachvollziehen. Das P2S VPN-Routingverhalten ist vom Clientbetriebssystem, dem für die VPN-Verbindung verwendeten Protokoll und der Art der Verbindung der virtuellen Netzwerke (VNets) untereinander abhängig.
 
-Azure unterstützt zurzeit zwei Protokolle für den Remotezugriff: IKEv2 und SSTP. IKEv2 wird unter zahlreichen Betriebssystemen (einschließlich Windows, Linux, MacOS, Android und iOS) unterstützt. SSTP wird nur unter Windows unterstützt. Wenn Sie eine Änderung an der Topologie Ihres Netzwerks vornehmen und Windows-VPN-Clients verwenden, muss das VPN-Clientpaket für Windows-Clients heruntergeladen und erneut installiert werden, damit die Änderungen auf den Client angewendet werden.
+Azure unterstützt zurzeit zwei Protokolle für den Remotezugriff: IKEv2 und SSTP. IKEv2 wird unter zahlreichen Betriebssystemen (einschließlich Windows, Linux, macOS, Android und iOS) unterstützt. SSTP wird nur unter Windows unterstützt. Wenn Sie eine Änderung an der Topologie Ihres Netzwerks vornehmen und Windows-VPN-Clients verwenden, muss das VPN-Clientpaket für Windows-Clients heruntergeladen und erneut installiert werden, damit die Änderungen auf den Client angewendet werden.
 
 > [!NOTE]
 > Dieser Artikel gilt nur für IKEv2.
@@ -195,7 +195,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Alle Clients können nur auf VNet1 zugreifen.
 
-![S2S mit mehreren VNETs und einer Filiale](./media/vpn-gateway-about-point-to-site-routing/7.jpg "S2S mit mehreren VNETs und einer Filiale")
+![Abbildung, die ein multi-VNet S2S und eine Zweigstelle zeigt.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "S2S mit mehreren VNETs und einer Filiale")
 
 ### <a name="address-space"></a>Adressraum
 

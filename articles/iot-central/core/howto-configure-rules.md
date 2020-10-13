@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362536"
 ---
 # <a name="configure-rules"></a>Konfigurieren von Regeln
 
@@ -33,7 +33,7 @@ Bedingungen sind die Grundlage für das Auslösen von Regeln. Wenn Sie einer Reg
 
 Im nachstehenden Screenshot wird mit den Bedingungen überprüft, wann die Temperatur höher als 70&deg;F und die Luftfeuchtigkeit niedriger als 10 ist. Wenn diese beiden Anweisungen wahr sind, wird die Regel als „true“ ausgewertet und löst eine Aktion aus.
 
-![Bedingungen](media/howto-configure-rules/conditions.png)
+![Der Screenshot zeigt einen Kühlschrankmonitor mit Bedingungen, die für Temperatur und Luftfeuchtigkeit angegeben wurden.](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>Verwenden einer Cloudeigenschaft in einem Wertefeld
 
