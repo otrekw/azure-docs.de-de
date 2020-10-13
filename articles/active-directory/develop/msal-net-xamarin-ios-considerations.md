@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594049"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258058"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Überlegungen zur Verwendung von Xamarin iOS mit MSAL.NET
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie in der [Dokumentation der iOS-Berechtigungen](h
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Aktivieren der Tokencachefreigabe über iOS-Anwendungen hinweg
 
-Ab MSAL 2.x können Sie eine Keychainzugriffsgruppe angeben, die zum Beibehalten des Tokencaches über mehrere Anwendungen hinweg verwendet wird. Diese Einstellung ermöglicht die gemeinsame Verwendung des Tokencaches über mehrere Anwendungen hinweg, die die gleiche Keychainzugriffsgruppe aufweisen. Sie können den Tokencache unter [ADAL.NET](https://aka.ms/adal-net)-Anwendungen, MSAL.NET Xamarin.iOS-Anwendungen und nativen iOS-Anwendungen teilen, die in [ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) oder [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc) entwickelt wurden.
+Ab MSAL 2.x können Sie eine Keychainzugriffsgruppe angeben, die zum Beibehalten des Tokencaches über mehrere Anwendungen hinweg verwendet wird. Diese Einstellung ermöglicht die gemeinsame Verwendung des Tokencaches über mehrere Anwendungen hinweg, die die gleiche Keychainzugriffsgruppe aufweisen. Sie können den Tokencache in [ADAL.NET](https://aka.ms/adal-net)-Anwendungen, MSAL.NET Xamarin.iOS-Anwendungen und nativen iOS-Anwendungen, die in [ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) oder [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc) entwickelt wurden, gemeinsam nutzen.
 
 Durch Teilen des Tokencaches ermöglichen Sie einmaliges Anmelden (SSO) für alle diese Anwendungen, die die gleiche Keychainzugriffsgruppe verwenden.
 

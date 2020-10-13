@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258607"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff? 
 
@@ -25,7 +25,7 @@ Mit Richtlinien für bedingten Zugriff können Sie Zugriffsanforderungen für We
 Wenn Sie direkt auf eine Site oder einen Dienst zugreifen, kann die Auswirkung einer zugehörigen Richtlinie normalerweise leicht bewertet werden. Wenn Sie beispielsweise über eine Richtlinie verfügen, die eine Multi-Factor Authentication für SharePoint Online erfordert, wird MFA bei jeder Anmeldung am SharePoint-Webportal erzwungen. Es ist aber nicht immer einfach, die Auswirkung einer Richtlinie zu bewerten, weil Cloud-Apps mit Abhängigkeiten von anderen Cloud-Apps vorhanden sind. Beispielsweise kann Microsoft Teams den Zugriff auf Ressourcen in SharePoint Online ermöglichen. Wenn Sie in Ihrem aktuellen Szenario also auf Microsoft Teams zugreifen, unterliegen Sie auch der SharePoint-MFA-Richtlinie. 
 
 > [!TIP]
-> Mithilfe der App [Office 365 (Vorschau)](concept-conditional-access-cloud-apps.md#office-365-preview) werden alle Office-Apps als Ziel verwendet, um Probleme mit Dienstabhängigkeiten im Office-Stack zu vermeiden.
+> Bei Verwendung der [Office 365-](concept-conditional-access-cloud-apps.md#office-365)App werden alle Office-Apps als Ziel verwendet, um Probleme mit Dienstabhängigkeiten im Office-Stack zu vermeiden.
 
 ## <a name="policy-enforcement"></a>Durchsetzung von Richtlinien 
 
@@ -40,7 +40,7 @@ In der Abbildung unten sind MS Teams-Dienstabhängigkeiten dargestellt. Durchgeh
 
 Die bewährte Methode besteht darin, für alle zugehörigen Apps und Dienste nach Möglichkeit immer gemeinsame Richtlinien festzulegen. Ein einheitlicher Sicherheitsstatus sorgt für die bestmögliche Benutzererfahrung. Wenn Sie beispielsweise eine gemeinsame Richtlinie für Exchange Online, SharePoint Online, Microsoft Teams und Skype for Business festlegen, werden unerwartete Eingabeaufforderungen, die sich aus der Anwendung unterschiedlicher Richtlinien auf Downstreamdienste ergeben können, deutlich reduziert. 
 
-Eine gute Möglichkeit, dies mit Anwendungen im Office-Stack zu erreichen, besteht darin, anstelle einzelner Anwendungen [Office 365 (Vorschau)](concept-conditional-access-cloud-apps.md#office-365-preview) zu verwenden.
+Eine gute Möglichkeit, dies mit Anwendungen im Office-Stack zu erreichen, besteht darin, anstelle einzelner Anwendungen als Ziel die [Office 365-App](concept-conditional-access-cloud-apps.md#office-365) zu verwenden.
 
 In der Tabelle unten sind die zusätzlichen Dienstabhängigkeiten aufgeführt, die von den Client-Apps erfüllt werden müssen.  
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336204"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -192,6 +192,24 @@ Stellen Sie sicher, dass der Starttyp des VSS-Anbieterdiensts auf **Automatic** 
         - VSS-Dienst
         - Azure Site Recovery-VSS-Anbieter
         - VDS-Dienst
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>Fehler-ID 95001: Unzureichende Berechtigungen
+
+Dieser Fehler tritt auf, wenn Sie versuchen, die Replikation zu aktivieren und die Anwendungsordner nicht über ausreichende Berechtigungen verfügen.
+
+**Problembehandlung**: Um dieses Problem zu beheben, stellen Sie sicher, dass der IUSR-Benutzer über die Rolle „Besitzer“ für alle unten aufgeführten Ordner verfügt:
+
+- *C\ProgramData\Microsoft Azure Site Recovery\private*
+- Das Installationsverzeichnis. Wenn das Installationsverzeichnis z. B. das Laufwerk „F“ ist, geben Sie die richtigen Berechtigungen für den folgenden Ordner ein:
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems*
+- Der Ordner *\pushinstallsvc* im Installationsverzeichnis. Wenn das Installationsverzeichnis z. B. das Laufwerk „F“ ist, geben Sie die richtigen Berechtigungen für den folgenden Ordner ein:
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
+- Der Ordner *\etc* im Installationsverzeichnis. Wenn das Installationsverzeichnis z. B. das Laufwerk „F“ ist, geben Sie die richtigen Berechtigungen für den folgenden Ordner ein:
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- Alle Elemente unter dem folgenden Pfad:
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

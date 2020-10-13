@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883435"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826839"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technische Spezifikationen für Azure Stack Edge Pro
 
@@ -25,8 +25,8 @@ Das Azure Stack Edge Pro-Gerät verfügt über die folgenden Spezifikationen fü
 
 | Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10-Kern-CPU                     |
-| Arbeitsspeicher              | 128 GB RAM                  |
+| CPU    | 2 X 10-Kern-CPU Intel Xeon Silver 4114 2,2 G                    |
+| Arbeitsspeicher              | 128 GB RAM (8 x 16 GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>FPGA-Spezifikationen
 
@@ -63,6 +63,15 @@ Ihr Azure Stack Edge Pro-Gerät hat 6 Netzwerkschnittstellen, PORT1 – PORT6.
 | Spezifikation           | BESCHREIBUNG                 |
 |-------------------------|----------------------------|
 |  Netzwerkschnittstellen    | 2 Netzwerkschnittstellen (1 GbE), 1 davon zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung Die andere Schnittstelle ist vom Benutzer konfigurierbar, kann für die Datenübertragung verwendet werden und ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>2 Netzwerkschnittstellen (25 GbE), die auch als 10-GbE-Schnittstellen betrieben werden können. Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden. <br> 2 Netzwerkschnittstellen (25 GbE): Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden.                  |
+
+Folgende Netzwerkadapter werden verwendet: 
+
+| Spezifikation           | BESCHREIBUNG                 |
+|-------------------------|----------------------------|
+|Netzwerktochterkarte (rNDC) |QLogic FastLinQ 41264 Dual Port 25 GbE SFP+, Dual Port 1 GbE, rNDC|
+|PCI-Netzwerkadapter |QLogic FastLinQ 41262 zwei Ports 25 Gbit/s SFP28 Adapter|
+
+Weitere Informationen finden Sie in der Hardwarekompatibilitätsliste von Intel QLogic für kompatiblen Gigabit Interface Converter (GBIC). Gigabit Interface Converter (GBIC) sind in der Lieferung von Azure Stack Edge nicht enthalten. 
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 

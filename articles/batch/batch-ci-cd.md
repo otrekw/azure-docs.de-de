@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229394"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760562"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -43,7 +43,7 @@ Die in diesem Beispiel verwendete Codebasisstruktur ähnelt dem Folgenden:
 
 * Ein **arm-templates**-Ordner mit einer Reihe von Azure Resource Manager-Vorlagen. Die Vorlagen werden in diesem Artikel erläutert.
 * Ein **client-application**-Ordner, der eine Kopie des Beispiels [Azure Batch .NET File Processing with ffmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) (Azure Batch .NET-Dateiverarbeitung mit ffmpeg) ist. Dies ist für diesen Artikel nicht erforderlich.
-* Ein **hpc-application**-Ordner, der die Windows-64-Bit-Version von [ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) ist.
+* Ein **hpc-application**-Ordner, der die Windows-64-Bit-Version von [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) ist.
 * Ein **pipelines**-Ordner. Dieser enthält eine YAML-Datei mit dem Konzept unseres Buildprozesses. Dies wird in diesem Artikel erläutert.
 
 In diesem Abschnitt wird davon ausgegangen, dass Sie mit der Versionskontrolle und dem Entwerfen von Resource Manager-Vorlagen vertraut sind. Wenn Sie mit diesen Konzepten nicht vertraut sind, finden Sie auf den folgenden Seiten weitere Informationen.
@@ -291,7 +291,7 @@ Sie können auch in einem separaten Artikel mehr über das [Erstellen verknüpft
 
 Infrastruktur und Software können als Code definiert und im selben Repository verbunden werden.
 
-Für diese Lösung wird ffmpeg als Anwendungspaket verwendet. Das ffmpeg-Paket kann [hier](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) heruntergeladen werden.
+Für diese Lösung wird ffmpeg als Anwendungspaket verwendet. Das ffmpeg-Paket kann [hier](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip) heruntergeladen werden.
 
 ![Git-Repository-Beispielstruktur](media/batch-ci-cd/git-repository.jpg)
 

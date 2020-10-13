@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324347"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schemaabweichung im Zuordnungsdatenfluss
 
@@ -60,7 +60,7 @@ Wenn die Schemaabweichung aktiviert ist, stellen Sie sicher, dass auf der Regist
 Wenn Ihr Datenfluss abweichende Spalten aufweist, können Sie in Ihren Transformationen mit den folgenden Methoden auf diese zugreifen:
 
 * Verwenden der Ausdrücke `byPosition` und `byName`, um auf eine Spalte explizit über Name oder Positionsnummer zu verweisen
-* Hinzufügen eines Spaltenmusters in einer Transformation des Typs „Abgeleitete Spalte“ oder „Aggregat“, um es mit einer beliebigen Kombination aus Name, Datenstrom, Position oder Typ abzugleichen
+* Hinzufügen eines Spaltenmusters in einer Transformation des Typs „Abgeleitete Spalte“ oder „Aggregat“, um es mit einer beliebigen Kombination aus Name, Datenstrom, Position, Ursprung oder Typ abzugleichen
 * Hinzufügen einer regelbasierten Zuordnung in einer Auswahl- oder Senkentransformation, um abweichende Spalten über ein Muster mit Spaltenaliasen abzugleichen
 
 Weitere Informationen zum Implementieren von Spaltenmustern finden Sie unter [Spaltenmuster im Zuordnungsdatenfluss](concepts-data-flow-column-pattern.md).

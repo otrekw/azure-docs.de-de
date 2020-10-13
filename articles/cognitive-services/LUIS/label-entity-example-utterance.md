@@ -1,14 +1,16 @@
 ---
 title: Bezeichnen einer Entität in einer Beispieläußerung
 description: Hier erfahren Sie, wie Sie eine Machine-Learning-Entität mit untergeordneten Entitäten in einer Beispieläußerung auf einer Absichtsdetailseite des LUIS-Portals bezeichnen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303725"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Bezeichnen einer Machine-Learning-Entität in einer Beispieläußerung
 
@@ -53,7 +55,7 @@ Die Entitätspalette stellt eine Alternative zur oben beschrieben Form der Bezei
 3. _Zeichnen_ Sie die Entität in der Beispieläußerung mithilfe des Cursors.
 
     > [!div class="mx-imgBorder"]
-    > ![Entitätenpalette für Machine-Learning-Entitäten](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+    > ![Screenshot der mit dem Cursor gezeichneten Entität](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>Hinzufügen einer Entität aus der Entitätenpalette als Feature
 

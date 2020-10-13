@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: c0a64c0a9653bd274e9298401163ad7abc1af99f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360768"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem REST-Endpunkt mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -404,7 +404,7 @@ Die Vorlage definiert zwei Parameter:
 3. Klicken Sie auf **Diese Vorlage verwenden**.
     ![Diese Vorlage verwenden](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. Sie sehen, dass die Pipeline erstellt wurde, wie im nachstehenden Beispiel gezeigt wird:  ![Pipeline](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. Sie sehen, dass die Pipeline erstellt wurde, wie im nachstehenden Beispiel gezeigt wird:  ![Der Screenshot zeigt die aus der Vorlage erstellte Pipeline.](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
 5. Wählen Sie die Aktivität **Web** aus. Geben Sie in **Einstellungen** die entsprechenden Werte für **URL**, **Methode**, **Header** und **Body** an, um das OAuth-Bearertoken aus der Anmelde-API des Diensts abzurufen, aus dem Sie Daten kopieren möchten. Der Platzhalter in der Vorlage zeigt ein Beispiel für Azure Active Directory (AAD) OAuth. Beachten Sie, dass die AAD-Authentifizierung vom REST-Connector systemintern unterstützt wird. Dies hier ist nur ein Beispiel für den OAuth-Fluss. 
 
