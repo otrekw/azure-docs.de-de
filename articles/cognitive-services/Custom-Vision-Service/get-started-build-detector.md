@@ -1,25 +1,27 @@
 ---
-title: 'Schnellstart: Erstellen einer Objekterkennung – Custom Vision Service'
+title: 'Schnellstart: Erstellen einer Objekterkennung mit der Custom Vision-Website'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Objekterkennungsmodell erstellen, trainieren und testen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: bilderkennung, bilderkennungs-app, custom vision
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549546"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596891"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Schnellstart: Informationen zum Erstellen einer Objekterkennung mit Custom Vision
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Schnellstart: Erstellen einer Objekterkennung mit der Custom Vision-Website
 
-In dieser Schnellstartanleitung erfahren Sie, wie ein Objekterkennungsmodul über die Custom Vision-Website erstellt wird. Nachdem Sie ein Erkennungsmodell erstellt haben, können Sie den Custom Vision-Dienst zur Objekterkennung verwenden.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Objekterkennungsmodell erstellen. Nachdem Sie ein Modell erstellt haben, können Sie es mit neuen Bildern testen und schließlich in Ihre eigene Bilderkennungs-App integrieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
@@ -27,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Eine Reihe von Bildern, mit denen Sie Ihr Erkennungsmodell trainieren können. Sie können den Satz von [Beispielbildern](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) auf GitHub verwenden. Oder Sie können Ihre eigenen Bilder mithilfe der folgenden Tipps auswählen.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
+## <a name="create-custom-vision-resources"></a>Erstellen von Custom Vision-Ressourcen
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +47,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 1. Geben Sie einen Namen und eine Beschreibung für das Projekt ein. Wählen Sie dann eine Ressourcengruppe aus. Wenn Ihr angemeldetes Konto einem Azure-Konto zugeordnet ist, zeigt die Dropdownliste „Ressourcengruppe“ alle Ihre Azure-Ressourcengruppen an, die eine Custom Vision Service-Ressource enthalten. 
 
    > [!NOTE]
-   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie im Custom Vision-Portal dasselbe „Verzeichnis“ wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
+   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie auf der Custom Vision-Website dasselbe „Verzeichnis“ wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
 
 1. Wählen Sie __Object Detection__ (Objekterkennung) unter __Project Types__ (Projekttypen) aus.
 
@@ -118,3 +120,4 @@ In diesem Quickstart haben Sie erfahren, wie Sie über die Custom Vision-Website
 > [!div class="nextstepaction"]
 > [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
 
+* [Was ist Custom Vision?](./overview.md)

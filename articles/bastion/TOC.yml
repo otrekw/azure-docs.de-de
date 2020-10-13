@@ -6,8 +6,12 @@
       href: bastion-overview.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines Bastionhosts über VM-Einstellungen
+    - name: Erstellen eines Hosts mithilfe von VM-Einstellungen
       href: quickstart-host-portal.md
+- name: Tutorials
+  items:
+    - name: Erstellen eines Hosts und Herstellen einer Verbindung mit einer Windows-VM
+      href: tutorial-create-host-portal.md
 - name: Konzepte
   items:
     - name: Unterstützung von Remotearbeit
@@ -16,7 +20,7 @@
       href: work-remotely-support.md
 - name: Anleitungen
   items:
-    - name: Erstellen eines Bastion-Hosts
+    - name: Erstellen eines Hosts
       items:
         - name: Azure-Portal
           href: bastion-create-host-portal.md

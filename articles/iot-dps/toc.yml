@@ -38,15 +38,17 @@
 - name: Tutorials
   items:
     - name: 1. Bereitstellen von verschiedenen Geräten mit Registrierungsgruppen
-      href: how-to-legacy-device-symm-key.md
+      items:
+        - name: Bereitstellen von Geräten mit symmetrischen Schlüsseln
+          href: how-to-legacy-device-symm-key.md
+        - name: Verwenden benutzerdefinierter Zuordnungsrichtlinien
+          href: tutorial-custom-allocation-policies.md
     - name: 2. Bereitstellen von Geräten für mehrere Hubs
       items:
         - name: Verknüpfen mehrerer Hubs mit DPS
           href: tutorial-provision-multiple-hubs.md
         - name: Bereitstellen für Mehrinstanzenfähigkeit
           href: how-to-provision-multitenant.md
-        - name: Verwenden benutzerdefinierter Zuordnungsrichtlinien
-          href: tutorial-custom-allocation-policies.md
 - name: Proben
   items:
     - name: Beispiel für einen Nachweis für ein simuliertes TPM-Gerät
