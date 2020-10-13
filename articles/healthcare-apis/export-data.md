@@ -7,45 +7,39 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 433d3391e7b2b99d72ea71f1b4d48c3e04a46afc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482316"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819979"
 ---
 # <a name="how-to-export-fhir-data"></a>Exportieren von FHIR-Daten
 
-Informationen zum Konfigurieren von Exporteinstellungen und zum Erstellen eines Azure Storage-Kontos finden Sie [hier](configure-export-data.md).
+Mit der Funktion für Massenexport können Daten vom FHIR-Server gemäß der [FHIR-Spezifikation](https://hl7.org/fhir/uv/bulkdata/export/index.html) exportiert werden. 
 
-## <a name="exporting-fhir-resources-using-export-command"></a>Exportieren von FHIR-Ressourcen mit dem Befehl $export
+Bevor Sie $export verwenden, müssen Sie sicherstellen, dass Azure API for FHIR für die Verwendung dieser Funktion konfiguriert ist. Informationen zum Konfigurieren von Exporteinstellungen und zum Erstellen eines Azure Storage-Kontos finden Sie auf der [Seite zum Konfigurieren von Exportdaten](configure-export-data.md).
 
-Nachdem Sie Azure API for FHIR für den Export konfiguriert haben, können Sie nun den Befehl $export verwenden, um die Daten aus dem Dienst in das beim Konfigurieren des Exports angegebene Speicherkonto zu exportieren. Informationen zum Aufrufen des Befehls $export auf dem FHIR-Server finden Sie in der Dokumentation zur Spezifikation von $export unter [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html). 
+## <a name="using-export-command"></a>Verwenden $export-Befehls
 
-Der Befehl $export in Azure API for FHIR verwendet einen optionalen _\_container_-Parameter, mit dem der Container in dem konfigurierten Speicherkonto, in das die Daten exportiert werden sollen, angegeben werden kann.
+Nachdem Sie Azure API for FHIR für den Export konfiguriert haben, können Sie den $export-Befehl verwenden, um die Daten aus dem Dienst zu exportieren. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Konfigurieren des Exports angegeben haben. Informationen zum Aufrufen des Befehls $export auf dem FHIR-Server finden Sie in der Dokumentation zur [$export-Spezifikation](https://hl7.org/Fhir/uv/bulkdata/export/index.html). 
+
+Der Befehl $export in Azure API for FHIR nimmt einen optionalen Parameter _\_container_ an, mit dem der Container im konfigurierten Speicherkonto angegeben wird, in das die Daten exportiert werden sollen. Wenn ein Container angegeben wird, werden die Daten in diesen Container in einen neuen Ordner mit dem Namen des Containers exportiert. Wenn kein Container angegeben wird, werden die Daten in einen neuen Container exportiert.
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
-> [!IMPORTANT]
-> Beachten Sie, dass Azure API for FHIR derzeit nur den Export auf Systemebene unterstützt, wie es in der Spezifikation von &export unter [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) definiert ist. Außerdem wird derzeit nur der Abfrageparameter _\_since_ unterstützt.
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-## <a name="exporting-de-identified-data-preview"></a>Exportieren anonymisierter Daten (Vorschauversion)
+Azure API for FHIR unterstützt $export auf System-, Patienten- und Gruppenebene. Beim Gruppenexport werden alle zugehörigen Ressourcen exportiert, die Merkmale der Gruppe werden jedoch nicht exportiert.
 
-Der Befehl $export kann auch verwendet werden, um anonymisierte Daten vom FHIR-Server zu exportieren. Er verwendet die Anonymisierungs-Engine der [FHIR-Tools für die Anonymisierung](https://github.com/microsoft/FHIR-Tools-for-Anonymization) und nimmt Details zur Anonymisierungskonfiguration in den Abfrageparametern entgegen. Sie können eine eigene Anonymisierungskonfigurationsdatei erstellen oder die [Beispielkonfigurationsdatei](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) für die HIPAA Safe Harbor-Methode als Ausgangspunkt verwenden. 
+> [!Note] 
+> $export exportiert doppelte vorhandene Ressourcen, wenn sich die Ressource in einem Depot mehrerer Ressourcen befindet oder in mehreren Gruppen vorhanden ist.
 
- `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
-
-|Query parameter (Abfrageparameter)            | Beispiel |Optionalität| BESCHREIBUNG|
-|---------------------------|---------|-----------|------------|
-| _\_anonymizationConfig_   |DemoConfig.json|Erforderlich für den anonymisierten Export |Name der Konfigurationsdatei. Weitere Informationen finden Sie im Format der Konfigurationsdatei [hier](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format). Diese Datei sollte in einem Container mit dem Namen **anonymization** in dem Azure Storage-Konto gespeichert werden, das als Exportspeicherort konfiguriert ist. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Optional für den anonymisierten Export|Dies ist das ETag der Konfigurationsdatei. Sie können das ETag mit dem Azure Storage-Explorer aus der Blobeigenschaft abrufen.|
-
-> [!IMPORTANT]
-> Beachten Sie, dass sowohl der unformatierte als auch der anonymisierte Export in das gleiche Azure Storage-Konto geschrieben wird, das im Rahmen der Exportkonfiguration angegeben wurde. Es wird empfohlen, für verschiedene anonymisierte Konfigurationen unterschiedliche Container zu verwenden und den Benutzerzugriff auf Containerebene zu verwalten.
+Darüber hinaus wird die Überprüfung des Exportstatus über die URL, die vom Location-Header während der Warteschlangendauer zurückgegeben wird, sowie das Abbrechen des eigentlichen Exportauftrags unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie FHIR-Ressourcen mithilfe des Befehls „$export“ exportieren (einschließlich anonymisierte Daten). Als Nächstes können Sie Ihre Exportdaten konfigurieren:
+In diesem Artikel haben Sie erfahren, wie Sie FHIR-Ressourcen mithilfe des Befehls $export exportieren. Nun können Sie sich mit unseren unterstützten Features vertraut machen.
  
 >[!div class="nextstepaction"]
->[Konfigurieren von Exportdaten](configure-export-data.md)
+>[Unterstützte Features](fhir-features-supported.md)

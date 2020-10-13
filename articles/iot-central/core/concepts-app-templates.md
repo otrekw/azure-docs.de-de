@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716570"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813065"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
@@ -30,12 +30,7 @@ Sie wählen die Anwendungsvorlage aus, wenn Sie Ihre Anwendung erstellen. Sie k�
 
 ## <a name="custom-templates"></a>Benutzerdefinierte Vorlagen
 
-Wenn Sie die Anwendung von Grund auf neu erstellen möchten, wählen Sie eine der beiden benutzerdefinierten Anwendungsvorlagen aus:
-
-- Benutzerdefinierte Anwendung
-- Benutzerdefinierte Anwendung (veraltet)
-
-Wählen Sie die Vorlage **Benutzerdefinierte Anwendung** aus, sofern Sie keinen bestimmten Grund haben, die Legacyvorlage zu verwenden.
+Wenn Sie Ihre Anwendung von Grund auf neu erstellen möchten, wählen Sie eine der **benutzerdefinierten Anwendungsvorlagen** aus.
 
 ## <a name="industry-focused-templates"></a>Branchenorientierten Vorlagen
 

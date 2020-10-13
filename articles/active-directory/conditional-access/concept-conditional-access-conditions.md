@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258711"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818356"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -49,6 +49,9 @@ Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstü
 - macOS
 
 Wenn Sie die ältere Authentifizierung mit der Bedingung **„Andere Clients“** blockieren, können Sie auch die Geräteplattform als Bedingung festlegen.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, dass Sie eine Richtlinie für bedingten Zugriff für nicht unterstützte Geräteplattformen haben. Wenn Sie beispielsweise den Zugriff auf Ihre Unternehmensressourcen aus Linux oder anderen nicht unterstützten Clients heraus blockieren möchten, sollten Sie eine Richtlinie mit einer Bedingung für Geräteplattformen konfigurieren, die ein beliebiges Gerät einschließt, unterstützte Geräteplattformen ausschließt und das Gewährungssteuerelement zum Blockieren des Zugriffs festlegt.
 
 ## <a name="locations"></a>Standorte
 

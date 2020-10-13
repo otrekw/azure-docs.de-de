@@ -1,6 +1,6 @@
 ---
 title: Gerätevorlagen in Azure IoT Central | Microsoft-Dokumentation
-description: Mit Azure IoT Central-Gerätevorlagen können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte festlegen.
+description: Mit Azure IoT Central-Gerätevorlagen können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte festlegen. Eine Gerätevorlage legt die Telemetrie, Eigenschaften und Befehle fest, die das Gerät implementieren muss. Außerdem definiert eine Gerätevorlage die Benutzeroberfläche für das Gerät in IoT Central, z. B. die von einem Operator verwendeten Formulare und Dashboards.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015091"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813167"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
 
@@ -26,12 +26,10 @@ Ein Lösungsgenerator fügt einer IoT Central-Anwendung Gerätevorlagen hinzu. E
 Eine Gerätevorlage enthält die folgenden Abschnitte:
 
 - _Ein Gerätefunktionsmodell_. In diesem Teil der Gerätevorlage wird definiert, wie das Gerät mit Ihrer Anwendung interagiert. Ein Geräteentwickler setzt die im Gerätefunktionsmodell definierten Verhalten um.
+    - _Schnittstellen_. Ein Gerätefunktionsmodell enthält eine oder mehrere Schnittstelle(n) zum Definieren der Telemetrie, Eigenschaften und Befehle, die das Gerät implementieren muss.
 - _Cloudeigenschaften_. In diesem Teil der Gerätevorlage kann der Entwickler der Lösung alle zu speichernden Gerätemetadaten angeben. Cloudeigenschaften werden nicht mit Geräten synchronisiert und sind ausschließlich in der Anwendung vorhanden. Cloudeigenschaften haben keinen Einfluss auf den Code, den ein Geräteentwickler zur Umsetzung des Gerätefunktionsmodells schreibt.
 - _Anpassungen_. In diesem Teil der Gerätevorlage kann der Lösungsentwickler einige der Definitionen im Gerätefunktionsmodell überschreiben. Anpassungen sind nützlich, wenn der Lösungsentwickler präzisieren möchte, wie die Anwendung mit einem Wert umgeht, z. B. wenn der Anzeigename für eine Eigenschaft oder die zur Anzeige eines Telemetriewerts verwendete Farbe geändert werden soll. Anpassungen wirken sich nicht auf den Code aus, der von einem Geräteentwickler zur Umsetzung des Gerätefunktionsmodells geschrieben wird.
 - _Ansichten_. In diesem Teil der Gerätevorlage kann der Lösungsentwickler Visualisierungen zum Anzeigen von Daten aus dem Gerät und Formulare zur Verwaltung und Steuerung eines Geräts definieren. Die Ansichten enthalten das Gerätefunktionsmodell, die Cloudeigenschaften und Anpassungen. Ansichten haben keinen Einfluss auf den Code, den ein Geräteentwickler zur Umsetzung des Gerätefunktionsmodells schreibt.
-
-> [!NOTE]
-> Das [Aktualisierungsrelease für IoT Plug & Play (öffentliche Vorschau)](../../iot-pnp/overview-iot-plug-and-play.md) richtet sich an Geräteentwickler und OEMs, damit sie mit dem Entwickeln von Geräten beginnen können, die für IoT Plug & Play vor der allgemeinen Verfügbarkeit zertifiziert werden können.
 
 ## <a name="device-capability-models"></a>Gerätefunktionsmodelle
 
@@ -108,11 +106,11 @@ Eine Schnittstelle umfasst einige Pflichtfelder:
 
 Es gibt einige optionale Felder, über die Sie dem Funktionsmodell weitere Details hinzufügen können, z. B. den Anzeigenamen und eine Beschreibung.
 
-### <a name="interface"></a>Schnittstelle
+## <a name="interfaces"></a>Schnittstellen
 
 Mit DTDL beschreiben Sie die Funktionen Ihres Geräts. Zusammengehörige Funktionen sind in Schnittstellen gruppiert. Schnittstellen beschreiben die Eigenschaften, Telemetrie und Befehle, die eine Komponente des Geräts implementiert:
 
-- `Properties`. Eigenschaften sind Datenfelder, die den Zustand des Geräts darstellen. Verwenden Sie Eigenschaften, um den dauerhaften Zustand des Geräts darzustellen, z. B. den Ein/Aus-Status einer Kühlmittelpumpe. Eigenschaften können außerdem grundlegende Geräteeigenschaften darstellen, z. B. die Firmwareversion des Geräts. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren.
+- `Properties`. Eigenschaften sind Datenfelder, die den Zustand des Geräts darstellen. Verwenden Sie Eigenschaften, um den dauerhaften Zustand des Geräts darzustellen, z. B. den Ein/Aus-Status einer Kühlmittelpumpe. Eigenschaften können außerdem grundlegende Geräteeigenschaften darstellen, z. B. die Firmwareversion des Geräts. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren. Nur Geräte können den Wert einer schreibgeschützten Eigenschaft aktualisieren. Ein Operator kann den Wert einer beschreibbaren Eigenschaft festlegen, die an ein Gerät gesendet werden soll.
 - `Telemetry`. Telemetriefelder stellen Messungen von Sensoren dar. Immer wenn das Gerät eine Sensormessung vornimmt, sollte ein Telemetrieereignis mit den Sensordaten gesendet werden.
 - `Commands`. Befehle stellen Methoden dar, die Benutzer des Geräts auf dem Gerät ausführen können, beispielsweise ein Befehl zum Zurücksetzen oder ein Befehl zum Ein- oder Ausschalten eines Lüfters.
 
@@ -159,7 +157,7 @@ Das folgende Beispiel zeigt die Definition der Schnittstelle „Environmental Se
 }
 ```
 
-In diesem Beispiel werden zwei Eigenschaften, ein Telemetrietyp und zwei Befehle gezeigt. Eine minimale Feldbeschreibung umfasst Folgendes:
+Dieses Beispiel zeigt zwei Eigenschaften (eine schreibgeschützte und eine beschreibbare), einen Telemetrietyp und zwei Befehle. Eine minimale Feldbeschreibung umfasst Folgendes:
 
 - `@type` zum Angeben des Typs der Funktion (`Telemetry`, `Property` oder `Command`).  In einigen Fällen enthält der Typ einen semantischen Typ, damit IoT Central einige Annahmen darüber treffen kann, wie der Wert zu behandeln ist.
 - `name` für den Telemetriewert.
@@ -168,7 +166,7 @@ In diesem Beispiel werden zwei Eigenschaften, ein Telemetrietyp und zwei Befehle
 
 Über optionale Felder, z. B. Anzeigename und Beschreibung, können Sie der Schnittstelle und den Funktionen weitere Details hinzufügen.
 
-### <a name="properties"></a>Eigenschaften
+## <a name="properties"></a>Eigenschaften
 
 Standardmäßig sind Eigenschaften schreibgeschützt. Schreibgeschützte Eigenschaften bedeuten, dass das Gerät Aktualisierungen der Eigenschaftswerte an Ihre IoT Central-Anwendung sendet. Ihre IoT Central-Anwendung kann den Wert einer schreibgeschützten Eigenschaft nicht festlegen.
 
@@ -180,13 +178,13 @@ Verwenden Sie keine Eigenschaften, um Telemetriedaten von Ihrem Gerät zu senden
 
 Bei beschreibbaren Eigenschaften gibt die Geräteanwendung den Statuscode, die Version und die Beschreibung eines gewünschten Zustands zurück, um anzugeben, ob der Eigenschaftswert empfangen und angewandt wurde.
 
-### <a name="telemetry"></a>Telemetrie
+## <a name="telemetry"></a>Telemetrie
 
 Mit IoT Central können Sie Telemetrie auf Dashboards und in Diagrammen anzeigen und Regeln verwenden, um Aktionen auszulösen, wenn Schwellenwerte erreicht werden. IoT Central verwendet die Informationen im Gerätefunktionsmodell wie Datentypen, Einheiten und Anzeigenamen, um zu bestimmen, wie Telemetriewerte angezeigt werden sollen.
 
 Sie können die Datenexportfunktion von IoT Central nutzen, um Telemetrie an andere Ziele wie Azure Storage oder Event Hubs zu streamen.
 
-### <a name="commands"></a>Befehle
+## <a name="commands"></a>Befehle
 
 Befehle sind entweder synchron oder asynchron. Ein synchroner Befehl muss standardmäßig innerhalb von 30 Sekunden ausgeführt werden, und das Gerät muss beim Eingehen des Befehls verbunden sein. Wenn das Gerät nicht rechtzeitig antwortet oder nicht verbunden ist, wird der Befehl nicht ausgeführt.
 

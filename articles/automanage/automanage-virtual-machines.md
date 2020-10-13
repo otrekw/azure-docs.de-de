@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931811"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816821"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
 
@@ -43,12 +43,12 @@ Es gibt mehrere Voraussetzungen zu beachten, bevor Sie versuchen, die automatisc
 
 - Nur Windows Server-VMs
 - VMs müssen aktiv sein
-- Nur VMs, die keiner Skalierungsgruppe angehören
 - VMs müssen sich in einer unterstützten Region befinden
 - Benutzer muss über die richtigen Berechtigungen verfügen
 - VMs dürfen nicht mit einem Log Analytics-Arbeitsbereich in einem anderen Abonnement verknüpft werden
+- Automatische Verwaltung unterstützt zurzeit keine Sandboxabonnements.
 
-Zum Aktivieren der automatischen Verwaltung ist die folgende RBAC-Berechtigung erforderlich: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+Sie müssen die Rolle **Mitwirkender** haben, um automatische Verwaltung mit einem vorhandenen Konto für die automatische Verwaltung zu aktivieren. Wenn Sie automatische Verwaltung mit einem neuen Konto für die automatische Verwaltung aktivieren, benötigen Sie die folgenden Berechtigungen: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
 
 Es ist auch wichtig zu beachten, dass die automatische Verwaltung nur Windows-VMs unterstützt, die sich in den folgenden Regionen befinden: Europa (Westen), USA (Osten), USA (Westen 2), Kanada (Mitte), USA (Westen-Mitte).
 
@@ -105,14 +105,14 @@ Das Konto für die automatische Verwaltung ist der Sicherheitskontext oder die I
 Wenn Sie in der Azure-Portalerfahrung die automatische Verwaltung auf Ihren VMs aktivieren, gibt es eine Dropdownliste „Erweitert“ auf dem Blatt **Bewährte Methode zum Aktivieren einer Azure-VM**, mit der Sie das Konto für die automatische Verwaltung zuweisen oder manuell erstellen können.
 
 > [!NOTE]
-> Zum Aktivieren der automatischen Verwaltung ist die folgende RBAC-Berechtigung erforderlich: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+> Sie müssen die Rolle **Mitwirkender** haben, um automatische Verwaltung mit einem vorhandenen Konto für die automatische Verwaltung zu aktivieren. Wenn Sie automatische Verwaltung mit einem neuen Konto für die automatische Verwaltung aktivieren, benötigen Sie die folgenden Berechtigungen: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
 
 
 ## <a name="status-of-vms"></a>Status von VMs
 
 Navigieren Sie im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte Methoden für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind. Hier wird der Gesamtstatus der einzelnen virtuellen Computer angezeigt.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Liste der konfigurierten virtuellen Computer":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Intelligentes Durchführen des Onboardings von Diensten.":::
 
 Für jede aufgelistete VM werden die folgenden Details angezeigt: Name, Konfigurationsprofil, Konfigurationsvoreinstellung, Status, Konto, Abonnement und Ressourcengruppe.
 
@@ -130,24 +130,24 @@ Möglicherweise entscheiden Sie sich eines Tages dafür, die automatische Verwal
 
 Navigieren Sie dazu im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte Methoden für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind. Aktivieren Sie das Kontrollkästchen neben dem virtuellen Computer, den Sie über die automatische Verwaltung deaktivieren möchten, und klicken Sie dann auf die Schaltfläche zum **Deaktivieren der automatischen Verwaltung**.
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Deaktivieren der automatischen Verwaltung auf einem virtuellen Computer":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Intelligentes Durchführen des Onboardings von Diensten.":::
 
 Lesen Sie die Meldung im angezeigten Popupelement sorgfältig durch, bevor Sie dem **Deaktivieren** zustimmen.
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> Das Deaktivieren der automatischen Verwaltung für eine VM führt zu folgendem Verhalten:
+>
+> - Die Konfiguration der VM und der Dienste, für die Onboarding durchgeführt wird, ändert sich nicht.
+> - Sämtliche Gebühren, die durch diese Dienste anfallen, bleiben abrechenbar und fallen weiterhin an.
+> - Das gesamte Verhalten der automatischen Verwaltung wird sofort beendet.
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 In erster Linie werden wir den virtuellen Computer nicht von einem der Dienste trennen, auf dem wir das Onboarding für ihn durchgeführt und ihn konfiguriert haben. Somit bleiben alle durch diese Dienste entstandenen Kosten weiterhin abrechenbar. Sie müssen ggf. das Onboarding aufheben. Jegliches Verhalten der automatischen Verwaltung wird sofort beendet. Wir werden z. B. die VM nicht mehr auf Datendrift überwachen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, dass die automatische Verwaltung für virtuelle Computer ein Mittel darstellt, mit dem Sie die Kenntnis, das Onboarding und die Konfiguration bewährter Methoden von Azure-Diensten beseitigen können. Wenn ein Computer, den Sie bei der automatischen Verwaltung für virtuelle Computer angemeldet haben, von den eingerichteten Konfigurationsprofilen abweicht, sorgen wir automatisch wieder für seine Compliance.
+In diesem Artikel haben Sie erfahren, dass die automatische Verwaltung für virtuelle Computer ein Mittel darstellt, mit dem Sie die Kenntnis, das Onboarding und die Konfiguration bewährter Methoden von Azure-Diensten beseitigen können. Wenn ein Computer, für den Sie bei der automatischen Verwaltung für virtuelle Computer Onboarding durchgeführt haben, von den eingerichteten Konfigurationsprofilen abweicht, sorgen wir automatisch wieder für seine Compliance.
 
 Versuchen Sie, die automatische Verwaltung für virtuelle Computer im Azure-Portal zu aktivieren.
 

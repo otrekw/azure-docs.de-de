@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907482"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819382"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -41,6 +41,9 @@ Um B2B-Benutzern den Zugriff auf lokale Anwendungen zu ermöglichen, die durch d
 
 - **Authentifizierung über den Azure AD-Anwendungsproxy**. B2B-Benutzer müssen sich bei der lokalen Anwendung authentifizieren können. Zu diesem Zweck müssen Sie die lokale App über den Azure AD-Anwendungsproxy veröffentlichen. Weitere Informationen finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](../manage-apps/application-proxy-enable.md) und [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../manage-apps/application-proxy-publish-azure-portal.md).
 - **Autorisierung über ein B2B-Benutzerobjekt im lokalen Verzeichnis**. Die Anwendung muss Zugriffsüberprüfungen für Benutzer ausführen können und ihnen Zugriff auf die richtigen Ressourcen gewähren. IWA und KCD erfordern für diese Autorisierung ein Benutzerobjekt im lokalen Windows Server Active Directory-Verzeichnis. Der Anwendungsproxy benötigt dieses Benutzerobjekt, um die Identität des Benutzers anzunehmen und ein Kerberos-Token für die App abzurufen (siehe [So funktioniert das einmalige Anmelden mit KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)). 
+
+   > [!NOTE]
+   > Stellen Sie beim Konfigurieren des Azure AD-Anwendungsproxys sicher, dass **Delegierte Identität für Anmeldung** auf **Benutzerprinzipalname** (Standard) für einmaliges Anmelden mit IWA festgelegt wird.
 
    Für das B2B-Benutzerszenario sind zwei Methoden verfügbar, die Sie zum Erstellen der für die Autorisierung erforderlichen Gastbenutzerobjekte im lokalen Verzeichnis verwenden können:
 

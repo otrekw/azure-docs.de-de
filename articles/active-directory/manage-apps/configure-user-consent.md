@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605157"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819272"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
@@ -26,21 +26,24 @@ Bevor eine Anwendung auf die Daten Ihrer Organisation zugreifen kann, muss ein B
 
 Wenn Sie es Benutzern ermöglichen, Apps Zugriff auf Daten zu gewähren, können Benutzer problemlos nützliche Anwendungen abrufen und produktiv arbeiten. In einigen Situationen kann diese Konfiguration jedoch ein Risiko darstellen, wenn Sie nicht sorgfältig überwacht und gesteuert wird.
 
+> [!IMPORTANT]
+> Um das Risiko zu verringern, dass böswillige Anwendungen versuchen, Benutzern den Zugriff auf Daten Ihrer Organisation zu gewähren, empfiehlt es sich, die Einwilligung des Benutzers nur für Anwendungen zuzulassen, die von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) veröffentlicht wurden.
+
 ## <a name="user-consent-settings"></a>Einstellungen für die Benutzereinwilligung
 
-Um zu steuern, in welchen Fällen Benutzer in Anwendungen einwilligen können, wählen Sie die Einwilligungsrichtlinie aus, die für alle Benutzer gelten soll. Dies sind die drei Optionen für Einwilligungsrichtlinien:
+Richtlinien zur Einwilligung für die App beschreiben Bedingungen, die erfüllt werden müssen, bevor bei einer App eingewilligt werden kann. Diese Richtlinien enthalten möglicherweise Bedingungen für die App, die Zugriff anfordert, sowie die von der App angeforderten Berechtigungen.
 
-* **Benutzereinwilligung deaktivieren**: Benutzer können Anwendungen keine Berechtigungen erteilen. Benutzer können sich weiterhin bei Apps anmelden, in die sie zuvor einwilligt haben oder in die Administratoren in Ihrem Namen einwilligt haben. Sie sind jedoch nicht berechtigt, in neue Berechtigungen oder neue Apps eigenständig einzuwilligen. Nur Benutzer, denen eine Verzeichnisrolle erteilt wurde, die die Berechtigung zum Erteilen von Einwilligung enthält, können in neue Berechtigungen oder neue Apps einwilligen.
+Indem Sie auswählen, welche Richtlinien zur Einwilligung für die App für alle Benutzer gelten sollen, können Sie Grenzwerte im Hinblick darauf festlegen, wann Endbenutzer Einwilligung für Apps erteilen dürfen und wann sie zum Anfordern einer Überprüfung und Genehmigung durch den Administrator aufgefordert werden sollen:
 
-* **Benutzer können in Apps von verifizierten Herausgebern einwilligen, aber nur für Berechtigungen, die Sie auswählen (Vorschau)** : Alle Benutzer können nur in Apps einwilligen, die von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) veröffentlicht wurden, sowie Apps, die in Ihrem Mandanten registriert sind. Benutzer können nur in die Berechtigungen einwilligen, die Sie als „geringe Auswirkung“ klassifiziert haben (auch als „geringes Risiko“ bezeichnet). Welche Anwendungen als „geringes Risiko“ angesehen werden, kann von Unternehmen zu Unternehmen stark variieren (wie etwa eine App, die die E-Mail-Adresse des Benutzers anzeigt). Daher werden die Berechtigungen mit „geringem Risiko“ vom Administrator für den Mandanten festgelegt.
+* **Benutzereinwilligung deaktivieren**: Benutzer können Anwendungen keine Berechtigungen erteilen. Benutzer können sich weiterhin bei Apps anmelden, in die sie zuvor einwilligt haben oder in die Administratoren in Ihrem Namen einwilligt haben. Sie sind jedoch nicht berechtigt, in neue Berechtigungen oder neue Apps eigenständig einzuwilligen. Nur Benutzer, denen eine Verzeichnisrolle mit der Berechtigung zum Erteilen von Einwilligung erteilt wurde, können in neue Apps einwilligen.
 
-  Stellen Sie sicher, dass [Berechtigungen klassifiziert werden](#configure-permission-classifications-preview), um auszuwählen, in welche Berechtigungen Benutzer einwilligen dürfen.
+* **Benutzer können in Apps von verifizierten Herausgebern oder Ihrer Organisation einwilligen, aber nur für Berechtigungen, die Sie auswählen** – Alle Benutzer können nur in Apps einwilligen, die von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) veröffentlicht wurden, und in Apps, die in Ihrem Mandanten registriert sind. Benutzer können nur in die Berechtigungen einwilligen, die Sie als „geringe Auswirkung“ klassifiziert haben. Sie müssen [Berechtigungen klassifizieren](configure-permission-classifications.md), um auszuwählen, in welche Berechtigungen Benutzer einwilligen dürfen.
 
-* **Benutzer können in alle Apps einwilligen**: Diese Option ermöglicht es allen Benutzern, für beliebige Anwendungen in eine beliebige Berechtigung einzuwilligen, die keine Administratoreinwilligung erfordert. 
+* **Benutzer können in alle Apps einwilligen** – Diese Option ermöglicht es allen Benutzern, für beliebige Anwendungen in jede beliebige Berechtigung einzuwilligen, die keine Administratoreinwilligung erfordert.
 
-   Um das Risiko zu verringern, dass böswillige Anwendungen versuchen, Benutzern den Zugriff auf Daten Ihrer Organisation zu gewähren, empfiehlt es sich, die Einwilligung des Benutzers nur für Anwendungen zuzulassen, die von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) veröffentlicht wurden.
+* **Benutzerdefinierte Richtlinie zur Einwilligung für die App**: Bei sogar mehr Optionen für die Bedingungen zur Steuerung der Benutzereinwilligung können Sie die [benutzerdefinierte Richtlinie zur Einwilligung für die App erstellen](manage-app-consent-policies.md#create-a-custom-app-consent-policy) und für Benutzereinwilligung konfigurieren.
 
-### <a name="configure-user-consent-settings-from-the-azure-portal"></a>Konfigurieren von Einstellungen für die Benutzereinwilligung im Azure-Portal
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So konfigurieren Sie die Einstellungen für die Benutzereinwilligung über das Azure-Portal:
 
@@ -51,14 +54,13 @@ So konfigurieren Sie die Einstellungen für die Benutzereinwilligung über das A
 
 :::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Einstellungen für die Benutzereinwilligung":::
 
-> [!TIP]
-> Ziehen Sie in Betracht, den [Workflow für Administratoreinwilligung zu aktivieren](configure-admin-consent-workflow.md), wenn Sie Benutzern das Anfordern einer Überprüfung und Genehmigung einer Anwendung durch einen Administrator ermöglichen möchten, der der Benutzer nicht zustimmen darf (z. B. wenn die Benutzereinwilligung deaktiviert wurde oder die Anwendung Berechtigungen anfordert, die der Benutzer nicht erteilen darf).
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="configure-user-consent-settings-using-powershell"></a>Konfigurieren von Einstellungen für Benutzereinwilligung mithilfe von PowerShell
+Sie können mithilfe des neuesten Azure AD PowerShell-Vorschaumoduls, [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true), auswählen, welche Richtlinie zur Einwilligung für die App die Benutzereinwilligung für Anwendungen regeln soll.
 
-Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) verwenden, um auszuwählen, welche Einwilligungsrichtlinie die Benutzereinwilligung für Anwendungen regelt.
+#### <a name="disable-user-consent"></a>Benutzereinwilligung deaktivieren
 
-* **Benutzereinwilligung deaktivieren**: Um Benutzereinwilligung zu deaktivieren, legen Sie die Einwilligungsrichtlinien fest, die die Benutzereinwilligung steuern, als leer fest:
+Legen Sie zum Deaktivieren der Benutzereinwilligung die Einwilligungsrichtlinien zur Steuerung dieser Einwilligung als „leer“ fest:
 
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
@@ -66,137 +68,52 @@ Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https
      -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
   ```
 
-* **Benutzereinwilligung für Apps von verifizierten Herausgebern für ausgewählte Berechtigungen zulassen (Vorschau)** : Um eingeschränkte Benutzereinwilligung nur für Apps von verifizierten Herausgebern und in Ihrem Mandanten registrierten Apps nur für Berechtigungen zu erlauben, die Sie als „Geringe Auswirkung“ klassifizieren, konfigurieren Sie die integrierte Einwilligungsrichtlinie mit dem Namen `microsoft-user-default-low`:
+#### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>Benutzereinwilligung zulassen, die einer Richtlinie zur Einwilligung für die App unterliegt
+
+Wählen Sie zum Zulassen der Benutzereinwilligung aus, welche Richtlinie zur Einwilligung für die App die Autorisierung von Benutzern zum Erteilen einer Einwilligung für Apps steuern soll:
 
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
-   Vergessen Sie nicht, [Berechtigungen zu klassifizieren](#configure-permission-classifications-preview), um auszuwählen, in welche Berechtigungen Benutzer einwilligen dürfen.
+Ersetzen Sie `{consent-policy-id}` durch die ID der Richtlinie, die Sie anwenden möchten. Sie können eine von Ihnen erstellte [benutzerdefinierte Richtlinie zur Einwilligung für die App](manage-app-consent-policies.md#create-a-custom-app-consent-policy) wählen oder aus den folgenden integrierten Richtlinien auswählen:
 
-* **Benutzereinwilligung für alle Apps zulassen**: Ermöglicht Benutzereinwilligung für alle Apps:
+| id | Beschreibung |
+|:---|:------------|
+| microsoft-user-default-low | **Für ausgewählte Berechtigungen die Benutzereinwilligung für Apps von verifizierten Herausgebern zulassen**<br /> Erlauben Sie eingeschränkte Benutzereinwilligung nur für Apps von verifizierten Herausgebern und für in Ihrem Mandanten registrierte Apps, sowie nur für Berechtigungen, die Sie als „geringe Auswirkung“ klassifizieren. (Vergessen Sie nicht, [Berechtigungen zu klassifizieren](configure-permission-classifications.md), um auszuwählen, in welche Berechtigungen Benutzer einwilligen dürfen.) |
+| microsoft-user-default-legacy | **Benutzereinwilligung für Apps zulassen**<br /> Diese Option ermöglicht es allen Benutzern, für beliebige Anwendungen in jede beliebige Berechtigung einzuwilligen, die keine Administratoreinwilligung erfordert. |
+  
+So aktivieren Sie beispielsweise eine Benutzereinwilligung, die der integrierten Richtlinie `microsoft-user-default-low` unterliegt:
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-legacy")
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy `
+   -Id "authorizationPolicy" `
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
+```
 
-   Diese Option ermöglicht es allen Benutzern, für beliebige Anwendungen in eine beliebige Berechtigung einzuwilligen, die keine Administratoreinwilligung erfordert. Es wird empfohlen, Benutzereinwilligung nur für Apps von verifizierten Herausgebern zuzulassen.
-
-## <a name="configure-permission-classifications-preview"></a>Konfigurieren von Berechtigungsklassifizierungen (Vorschau)
-
-Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unterschiedliche Berechtigungen gemäß den Richtlinien Ihres Unternehmens und den Risikobewertungen haben. Beispielsweise können Sie Berechtigungsklassifizierungen in Einwilligungsrichtlinien verwenden, um den Berechtigungssatz zu identifizieren, dem Benutzer zustimmen dürfen.
-
-> [!NOTE]
-> Derzeit wird nur die Berechtigungsklassifizierung „Geringe Auswirkung“ unterstützt. Nur delegierte Berechtigungen, für die keine Administratoreinwilligung erforderlich ist, können als „Geringe Auswirkung“ klassifiziert werden.
-
-### <a name="classify-permissions-using-the-azure-portal"></a>Klassifizieren von Berechtigungen mithilfe des Azure-Portals
-
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Einwilligung und Berechtigungen** > **Berechtigungsklassifizierungen** aus.
-1. Wählen Sie **Berechtigungen hinzufügen** aus, um eine weitere Berechtigung als „Geringe Auswirkung“ zu klassifizieren. 
-1. Wählen Sie die API und dann die delegierten Berechtigungen aus.
-
-In diesem Beispiel haben wir den minimalen Berechtigungssatz klassifiziert, der für einmaliges Anmelden erforderlich ist:
-
-:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="Einstellungen für die Benutzereinwilligung":::
+---
 
 > [!TIP]
-> Für die Microsoft Graph-API sind die minimalen Berechtigungen, die für einfaches einmaliges Anmelden erforderlich sind, `openid`, `profile`, `User.Read` und `offline_access`. Mit diesen Berechtigungen kann eine App die Profildetails des angemeldeten Benutzers lesen und diesen Zugriff auch dann beibehalten, wenn der Benutzer die App nicht mehr verwendet.
+> [Aktivieren Sie den Workflow für Administratoreinwilligung](configure-admin-consent-workflow.md), wenn Sie Benutzern das Anfordern einer Überprüfung und Genehmigung für eine Anwendung durch einen Administrator ermöglichen möchten, bei der ein Benutzer nicht einwilligen darf – z. B. wenn die Benutzereinwilligung deaktiviert wurde oder eine Anwendung Berechtigungen anfordert, die der Benutzer nicht erteilen darf.
 
-### <a name="classify-permissions-using-powershell"></a>Klassifizieren von Berechtigungen mithilfe von PowerShell
+## <a name="risk-based-step-up-consent"></a>Risikobasierte hochgestufte Einwilligung
 
-Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) verwenden, um Berechtigungen zu klassifizieren. Berechtigungsklassifizierungen werden für das **ServicePrincipal**-Objekt der API konfiguriert, die die Berechtigungen veröffentlicht.
+Die risikobasierte hochgestufte Einwilligung trägt zur Reduzierung der Benutzergefährdung durch böswillige Apps bei, die [unrechtmäßige Einwilligungsanforderungen](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) ausgeben. Wenn Microsoft eine risikobehaftete Anforderung der Endbenutzereinwilligung erkennt, wird die Anforderung stattdessen auf Administratoreinwilligung „hochgestuft“. Diese Funktion ist standardmäßig aktiviert, führt jedoch nur zu einer Änderung des Verhaltens, wenn die Endbenutzereinwilligung aktiviert ist.
 
-#### <a name="to-read-the-current-permission-classifications-for-an-api"></a>So lesen Sie die aktuellen Berechtigungsklassifizierungen für eine API:
+Wird eine risikobehaftete Einwilligungsanforderung erkannt, wird in der Einwilligungsaufforderung eine Meldung angezeigt, die besagt, dass eine Administratorgenehmigung erforderlich ist. Wenn der [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md) aktiviert ist, kann der Benutzer die Anforderung zur weiteren Überprüfung direkt von der Einwilligungsaufforderung an einen Administrator senden. Ist diese Funktion nicht aktiviert, wird die folgende Meldung angezeigt:
 
-1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+* **AADSTS90094:** &lt;Anzeigename der Client-App&gt; benötigt eine Berechtigung zum Zugriff auf Ressourcen in Ihrer Organisation, die nur ein Administrator erteilen kann. Bitten Sie einen Administrator, dieser App Berechtigungen zu erteilen, bevor Sie sie verwenden können.
 
-   ```powershell
-   $api = Get-AzureADServicePrincipal `
-       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
-   ```
+In diesem Fall wird auch ein Überwachungsereignis der Kategorie „ApplicationManagement“ mit dem Aktivitätstyp „Einwilligung in Anwendung“ und dem Statusgrund „Riskante Anwendung erkannt“ protokolliert.
 
-1. Lesen Sie die Klassifizierungen für delegierte Berechtigungen für die API:
+> [!IMPORTANT]
+> Administratoren sollten vor der Genehmigung einer Anforderung [alle Einwilligungsanforderungen sorgfältig auswerten](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent), besonders wenn Microsoft ein Risiko erkannt hat.
 
-   ```powershell
-   Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
-       -ServicePrincipalId $api.ObjectId | Format-Table Id, PermissionName, Classification
-   ```
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Deaktivieren oder erneutes Aktivieren der risikobasierten hochgestuften Einwilligung mit PowerShell
 
-#### <a name="to-classify-a-permission-as-low-impact"></a>So klassifizieren Sie eine Berechtigung als „Geringe Auswirkung“:
-
-1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
-
-   ```powershell
-   $api = Get-AzureADServicePrincipal `
-       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
-   ```
-
-1. Suchen Sie nach der delegierten Berechtigung, die Sie klassifizieren möchten:
-
-   ```powershell
-   $delegatedPermission = $api.OAuth2Permissions | Where-Object { $_.Value -eq "User.ReadBasic.All" }
-   ```
-
-1. Legen Sie die Berechtigungsklassifizierung mithilfe des Berechtigungsnamens und der ID fest:
-
-   ```powershell
-   Add-AzureADMSServicePrincipalDelegatedPermissionClassification `
-      -ServicePrincipalId $api.ObjectId `
-      -PermissionId $delegatedPermission.Id `
-      -PermissionName $delegatedPermission.Value `
-      -Classification "low"
-   ```
-
-#### <a name="to-remove-a-delegated-permission-classification"></a>So entfernen Sie eine Klassifizierung für eine delegierte Berechtigung:
-
-1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
-
-   ```powershell
-   $api = Get-AzureADServicePrincipal `
-       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
-   ```
-
-1. Suchen Sie nach der Klassifizierung für eine delegierte Berechtigung, die Sie entfernen möchten:
-
-   ```powershell
-   $classifications = Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
-       -ServicePrincipalId $api.ObjectId
-   $classificationToRemove = $classifications | Where-Object {$_.PermissionName -eq "User.ReadBasic.All"}
-   ```
-
-1. Löschen Sie die Berechtigungsklassifizierung:
-
-   ```powershell
-   Remove-AzureADMSServicePrincipalDelegatedPermissionClassification `
-       -ServicePrincipalId $api.ObjectId `
-       -Id $classificationToRemove.Id
-   ```
-
-## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen
-
-Gruppenbesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Beispielsweise kann ein Teambesitzer in Microsoft Teams einer App gestatten, alle Teamnachrichten des Teams zu lesen oder das Basisprofil der Mitglieder einer Gruppe aufzulisten.
-
-Sie können konfigurieren, welche Benutzer Apps in den Zugriff auf die Daten ihrer Gruppen einwilligen dürfen, oder Sie können diese Funktion deaktivieren.
-
-### <a name="configure-group-owner-consent-using-the-azure-portal"></a>Konfigurieren der Gruppenbesitzereinwilligung mithilfe des Azure-Portals
-
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Einwilligung und Berechtigungen** > **Einstellungen für Benutzereinwilligung** aus.
-3. Wählen Sie unter **Gruppenbesitzereinwilligung für Apps für Datenzugriff** die Option aus, die Sie aktivieren möchten.
-4. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
-
-In diesem Beispiel können alle Gruppenbesitzer einwilligen, dass Apps auf die Daten ihrer Gruppen zugreifen:
-
-:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="Einstellungen für die Benutzereinwilligung":::
-
-### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurieren der Gruppenbesitzereinwilligung mithilfe von PowerShell
-
-Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)) können Sie aktivieren oder deaktivieren, ob Gruppenbesitzer in Anwendungen einwilligen können, die auf die Daten Ihrer Organisation für die Gruppen zugreifen, die sie besitzen.
+Mit dem Modul „Azure AD PowerShell Preview“ ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)) können Sie die Hochstufung auf Administratoreinwilligung deaktivieren (wenn Microsoft Risiken erkennt) oder erneut aktivieren, wenn sie zuvor deaktiviert wurde.
 
 1. Stellen Sie sicher, dass Sie das Modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) verwenden. Dieser Schritt ist wichtig, wenn auf Ihrem Computer sowohl das Modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) als auch das Modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) installiert ist.
 
@@ -222,35 +139,25 @@ Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](https://docs.microso
         $settings = $template.CreateDirectorySetting()
     }
 
-    $enabledValue = $settings.Values | ? { $_.Name -eq "EnableGroupSpecificConsent" }
-    $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
 
-1. Sie müssen die Einstellungswerte verstehen. Es gibt zwei Einstellungswerte, die definieren, welche Benutzer einer App Zugriff auf die Daten ihrer Gruppe gewähren dürfen:
+1. Grundlegendes zum Einstellungswert:
 
-    | Einstellung       | Typ         | BESCHREIBUNG  |
+    | Einstellung       | type         | BESCHREIBUNG  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Boolean | Flag, das angibt, ob Gruppenbesitzer gruppenspezifische Berechtigungen erteilen dürfen. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Wenn _EnableGroupSpecificConsent_ auf TRUE und dieser Wert auf die Objekt-ID einer Gruppe festgelegt ist, werden die Mitglieder der identifizierten Gruppe autorisiert, den Gruppen, die Sie besitzen, gruppenspezifische Berechtigungen zu erteilen. |
+    | _BlockUserConsentForRiskyApps_   | Boolean |  Flag, das angibt, ob die Benutzereinwilligung beim Erkennen einer risikobehafteten Anforderung blockiert wird. |
 
-1. Aktualisieren Sie die Einstellungswerte für die gewünschte Konfiguration:
+1. Aktualisieren Sie den Einstellungswert für die gewünschte Konfiguration:
 
     ```powershell
-    # Disable group-specific consent entirely
-    $enabledValue.Value = "False"
-    $limitedToValue.Value = ""
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
     ```
 
     ```powershell
-    # Enable group-specific consent for all users
-    $enabledValue.Value = "True"
-    $limitedToValue.Value = ""
-    ```
-
-    ```powershell
-    # Enable group-specific consent for users in a given group
-    $enabledValue.Value = "True"
-    $limitedToValue.Value = "{group-object-id}"
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
     ```
 
 1. Speichern Sie die Einstellungen.
@@ -265,53 +172,12 @@ Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](https://docs.microso
     }
     ```
 
-## <a name="configure-risk-based-step-up-consent"></a>Konfigurieren der risikobasierten hochgestuften Einwilligung
-
-Die risikobasierte hochgestufte Einwilligung trägt zur Reduzierung der Benutzergefährdung durch böswillige Apps bei, die [unrechtmäßige Einwilligungsanforderungen](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) ausgeben. Wenn Microsoft eine risikobehaftete Anforderung der Endbenutzereinwilligung erkennt, wird die Anforderung stattdessen auf Administratoreinwilligung „hochgestuft“. Diese Funktion ist standardmäßig aktiviert, führt jedoch nur zu einer Änderung des Verhaltens, wenn die Endbenutzereinwilligung aktiviert ist.
-
-Wird eine risikobehaftete Einwilligungsanforderung erkannt, wird in der Einwilligungsaufforderung eine Meldung angezeigt, die besagt, dass eine Administratorgenehmigung erforderlich ist. Wenn der [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md) aktiviert ist, kann der Benutzer die Anforderung zur weiteren Überprüfung direkt von der Einwilligungsaufforderung an einen Administrator senden. Ist diese Funktion nicht aktiviert, wird die folgende Meldung angezeigt:
-
-* **AADSTS90094:** &lt;Anzeigename der Client-App&gt; benötigt eine Berechtigung zum Zugriff auf Ressourcen in Ihrer Organisation, die nur ein Administrator erteilen kann. Bitten Sie einen Administrator, dieser App Berechtigungen zu erteilen, bevor Sie sie verwenden können.
-
-In diesem Fall wird auch ein Überwachungsereignis der Kategorie „ApplicationManagement“ mit dem Aktivitätstyp „Einwilligung in Anwendung“ und dem Statusgrund „Riskante Anwendung erkannt“ protokolliert.
-
-> [!IMPORTANT]
-> Administratoren sollten vor der Genehmigung einer Anforderung [alle Einwilligungsanforderungen sorgfältig auswerten](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent), besonders wenn Microsoft ein Risiko erkannt hat.
-
-### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Deaktivieren oder erneutes Aktivieren der risikobasierten hochgestuften Einwilligung mit PowerShell
-
-Mit dem Modul „Azure AD PowerShell Preview“ ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)) können Sie die Hochstufung auf Administratoreinwilligung deaktivieren (wenn Microsoft Risiken erkennt) oder erneut aktivieren, wenn sie zuvor deaktiviert wurde.
-
-Hierfür können Sie die gleichen Schritte verwenden, die weiter oben unter [Konfigurieren der Gruppenbesitzereinwilligung mithilfe von PowerShell](#configure-group-owner-consent-using-powershell) beschrieben wurden, müssen aber einen anderen Einstellungswert ersetzen. Die Schritte unterscheiden sich in drei Punkten: 
-
-1. Machen Sie sich mit den Einstellungswerten für die risikobasierte hochgestufte Einwilligung vertraut:
-
-    | Einstellung       | Typ         | BESCHREIBUNG  |
-    | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Boolean |  Flag, das angibt, ob die Benutzereinwilligung beim Erkennen einer risikobehafteten Anforderung blockiert wird. |
-
-1. Ersetzen Sie in Schritt 3 den folgenden Wert:
-
-    ```powershell
-    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
-    ```
-    
-1. Ersetzen Sie in Schritt 5 einen der folgenden Werte:
-
-    ```powershell
-    # Disable risk-based step-up consent entirely
-    $riskBasedConsentEnabledValue.Value = "False"
-    ```
-
-    ```powershell
-    # Re-enable risk-based step-up consent, if disabled previously
-    $riskBasedConsentEnabledValue.Value = "True"
-    ```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen:
 
+* [Konfigurieren von Einstellungen für die Benutzereinwilligung](configure-user-consent.md)
+* [Verwalten von Richtlinien zur Einwilligung für die App](manage-app-consent-policies.md)
 * [Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
 * Weitere Informationen zum [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
 * [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830681"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818542"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
 **Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
@@ -62,11 +62,11 @@ Folgende Punkte sollten berücksichtigt werden:
     
     Wenn der Insights-Dienst keine Daten aus den VMs lesen kann, soll er Ihnen erwartungsgemäß eine E-Mail senden. Beispielsweise erhalten Sie eine E-Mail, wenn die virtuellen Computer außer Betrieb sind. Achten Sie unbedingt darauf, Ihre E-Mail unter der E-Mail-Adresse zu überprüfen, die Sie beim Erstellen Ihres Azure-Kontos angegeben haben.
     
-    Sie können sich außerdem die eigentlichen Daten ansehen. Sehen Sie sich das Azure-Speicherkonto in einem Cloud-Explorer an. Melden Sie sich beispielsweise beim [Visual Studio Cloud-Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2) an, und wählen Sie das verwendete Azure-Abonnement aus. Sehen Sie sich anschließend den Namen des Diagnosespeicherkontos an, auf den die Definition der Diagnoseerweiterung in Ihrer Bereitstellungsvorlage verweist.
+    Sie können sich außerdem die eigentlichen Daten ansehen. Sehen Sie sich das Azure-Speicherkonto in einem Cloud-Explorer an. Melden Sie sich beispielsweise bei [Visual Studio Cloud-Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2) an, und wählen Sie das verwendete Azure-Abonnement aus. Sehen Sie sich anschließend den Namen des Diagnosespeicherkontos an, auf den die Definition der Diagnoseerweiterung in Ihrer Bereitstellungsvorlage verweist.
     
     ![Cloud-Explorer][explorer]
     
-    Sie sehen eine Reihe von Tabellen, in denen die Daten aus den einzelnen VMs gespeichert sind. Sehen Sie sich beispielsweise die aktuellen Zeilen mit Linux- und CPU-Metriken an. Der Visual Studio Cloud-Explorer unterstützt eine Abfragesprache, sodass Sie eine Abfrage ausführen können. Beispielsweise können Sie eine Abfrage für „Timestamp gt datetime’2016-02-02T21:20:00Z’“ ausführen, um sicherzustellen, dass Sie die aktuellsten Ereignisse abrufen. Die Zeitzone entspricht UTC. Entsprechen die dort angezeigten Daten den von Ihnen eingerichteten Skalierungsregeln? Im folgenden Beispiel ist die CPU-Auslastung für Computer 20 in den letzten fünf Minuten auf 100 Prozent gestiegen.
+    Sie sehen eine Reihe von Tabellen, in denen die Daten aus den einzelnen VMs gespeichert sind. Sehen Sie sich beispielsweise die aktuellen Zeilen mit Linux- und CPU-Metriken an. Visual Studio Cloud-Explorer unterstützt eine Abfragesprache, sodass Sie eine Abfrage ausführen können. Beispielsweise können Sie eine Abfrage für „Timestamp gt datetime’2016-02-02T21:20:00Z’“ ausführen, um sicherzustellen, dass Sie die aktuellsten Ereignisse abrufen. Die Zeitzone entspricht UTC. Entsprechen die dort angezeigten Daten den von Ihnen eingerichteten Skalierungsregeln? Im folgenden Beispiel ist die CPU-Auslastung für Computer 20 in den letzten fünf Minuten auf 100 Prozent gestiegen.
     
     ![Speichertabellen][tables]
     
