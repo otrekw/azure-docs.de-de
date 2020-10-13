@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258743"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -31,9 +31,9 @@ Cloud-Apps oder -aktionen sind ein wichtiger Bestandteil einer Richtlinie für b
 
 Viele der vorhandenen Microsoft-Cloudanwendungen sind in der Liste der Anwendungen enthalten, die zur Auswahl stehen. 
 
-Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zugriff zuweisen. Zu einigen Apps wie Office 365 (Vorschauversion) und Microsoft Azure Management gehören mehrere untergeordnete Apps oder Dienste. Die folgende Liste ist nicht vollständig und kann sich ändern.
+Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zugriff zuweisen. Zu einigen Apps wie Office 365 und Microsoft Azure Management gehören mehrere untergeordnete Apps oder Dienste. Die folgende Liste ist nicht vollständig und kann sich ändern.
 
-- [Office 365 (Vorschauversion)](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL-Datenbank und Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Virtuelles privates Netzwerk (VPN):
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (Vorschauversion)
+### <a name="office-365"></a>Office 365
 
 Microsoft 365 stellt cloudbasierte Dienste für Produktivität und Zusammenarbeit wie Exchange, SharePoint und Microsoft Teams bereit. Microsoft 365-Clouddienste sind umfassend integriert, um nahtlose Funktionen für die Zusammenarbeit zu gewährleisten. Diese Integration kann beim Erstellen von Richtlinien zu Verwirrung führen, da einige Apps wie Microsoft Teams Abhängigkeiten von anderen Apps wie SharePoint oder Exchange aufweisen.
 
-Mit der Office 365-App (Vorschauversion) können Sie gleichzeitig auf all diese Dienste abzielen. Wir empfehlen die Verwendung der neuen Office 365-App (Vorschauversion), statt auf einzelne Cloud-Apps abzuzielen, um Probleme mit [Dienstabhängigkeiten](service-dependencies.md) zu vermeiden. Eine Ausrichtung auf diese Gruppe von Anwendungen trägt dazu bei, Probleme zu vermeiden, die aufgrund inkonsistenter Richtlinien und Abhängigkeiten auftreten können.
+Mit der Office 365-App können Sie gleichzeitig auf all diese Dienste abzielen. Wir empfehlen die Verwendung der neuen Office 365-App, statt auf einzelne Cloud-Apps abzuzielen, um Probleme mit [Dienstabhängigkeiten](service-dependencies.md) zu vermeiden. Eine Ausrichtung auf diese Gruppe von Anwendungen trägt dazu bei, Probleme zu vermeiden, die aufgrund inkonsistenter Richtlinien und Abhängigkeiten auftreten können.
 
-Administratoren können wahlweise bestimmte Apps von der Richtlinie ausschließen, indem sie die Office 365-App (Vorschauversion) einbeziehen und bestimmte Apps ihrer Wahl in der Richtlinie ausschließen.
+Administratoren können wahlweise bestimmte Apps von der Richtlinie ausschließen, indem sie die Office 365-App einbeziehen und bestimmte Apps ihrer Wahl in der Richtlinie ausschließen.
 
-Die Client-App von Office 365 (Vorschauversionen) enthält u.a. die folgenden wichtigen Anwendungen:
+Die Client-App von Office 365 enthält u.a. die folgenden wichtigen Anwendungen:
 
    - Microsoft Flow
    - Microsoft Forms

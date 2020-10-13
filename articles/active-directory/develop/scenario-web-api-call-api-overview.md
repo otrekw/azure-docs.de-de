@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dcf377797709b56b4db735dabf4d48cfae4fc06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257162"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Szenario: Web-API, die Web-APIs aufruft
 
@@ -24,7 +24,7 @@ Hier erfahren Sie, wie Sie eine Web-API erstellen, die Web-APIs aufruft.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Szenario, in dem eine geschützte Web-API Web-APIs aufruft, baut auf dem Szenario zum Schützen einer Web-API auf. Weitere Informationen zu diesem grundlegenden Szenario finden Sie unter [Szenario: Geschützte Web-API](scenario-protected-web-api-overview.md).
+Dieses Szenario, in dem eine geschützte Web-API andere Web-APIs aufruft, baut auf dem [Szenario: Geschützte Web-API](scenario-protected-web-api-overview.md) auf.
 
 ## <a name="overview"></a>Übersicht
 

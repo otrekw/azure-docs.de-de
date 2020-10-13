@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258778"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services
 
@@ -99,12 +99,12 @@ Wird beispielsweise eine unidirektionale Gesamtstruktur-Vertrauensstellung zwisc
 Bevor Sie eine Gesamtstruktur-Vertrauensstellung erstellen können, müssen Sie überprüfen, ob die richtige DNS-Infrastruktur (Domain Name System) vorhanden ist. Gesamtstruktur-Vertrauensstellungen können nur erstellt werden, wenn eine der folgenden DNS-Konfigurationen verfügbar ist:
 
 * Ein DNS-Stammserver ist der DNS-Stammserver für beide Gesamtstruktur-DNS-Namespaces: Die Stammzone enthält Delegierungen für jeden der DNS-Namespaces, und die Stammhinweise aller DNS-Server umfassen den DNS-Stammserver.
-* Ist kein freigegebener DNS-Stammserver vorhanden, werden für die DNS-Stammserver jedes Gesamtstruktur-DNS-Namespaces bedingte DNS-Weiterleitungen für jeden DNS-Namespace verwendet, um Abfragen auf Namen im anderen Namespace weiterzuleiten.
+* Wenn kein gemeinsam genutzter DNS-Stammserver vorhanden ist und die DNS-Stammserver in jedem Gesamtstruktur-DNS-Namespace bedingte DNS-Weiterleitungen für jeden DNS-Namespace verwenden, um Abfragen auf Namen im anderen Namespace weiterzuleiten.
 
     > [!IMPORTANT]
     > Für eine Azure AD Domain Services-Ressourcengesamtstruktur muss diese DNS-Konfiguration verwendet werden. Azure Active Directory Domain Services kann keinen anderen DNS-Namespace als den DNS-Namespace der Ressourcengesamtstruktur hosten. Bedingte Weiterleitungen ist die richtige Konfiguration.
 
-* Ist kein freigegebener DNS-Stammserver vorhanden, werden für die DNS-Stammserver jedes Gesamtstruktur-DNS-Namespaces sekundäre DNS-Zonen verwendet, die in jedem DNS-Namespace konfiguriert sind, um Abfragen auf Namen im anderen Namespace weiterzuleiten.
+* Wenn kein gemeinsam genutzter DNS-Stammserver vorhanden ist, werden für die DNS-Stammserver in jedem Gesamtstruktur-DNS-Namespaces sekundäre DNS-Zonen verwendet, die in jedem DNS-Namespace konfiguriert sind, um Abfragen auf Namen im anderen Namespace weiterzuleiten.
 
 Damit Sie eine Gesamtstruktur-Vertrauensstellung erstellen können, müssen Sie Mitglied der Gruppe „Domänen-Admins“ (in der Stammdomäne der Gesamtstruktur) oder der Gruppe „Organisations-Admins“ in Active Directory sein. Jeder Vertrauensstellung wird ein Kennwort zugewiesen, das die Administratoren in beiden Gesamtstrukturen kennen müssen. Mitglieder von „Organisations-Admins“ in beiden Gesamtstrukturen können die Vertrauensstellungen in beiden Gesamtstrukturen auf einmal erstellen, und es wird (in diesem Szenario) automatisch ein kryptografisch zufälliges Kennwort generiert und für beide Gesamtstrukturen geschrieben.
 
