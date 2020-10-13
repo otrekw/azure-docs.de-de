@@ -7,18 +7,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 976cb096ca654c38d7c4c2534bc6938026be5771
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397031"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802929"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB
 
 Mit der **Gültigkeitsdauer** (Time to Live, TTL) bietet Azure Cosmos DB die Möglichkeit, Elemente nach einem bestimmten Zeitraum automatisch aus einem Container zu löschen. Standardmäßig können Sie die Gültigkeitsdauer auf der Containerebene festlegen und den Wert für einzelne Elemente außer Kraft setzen. Wenn Sie eine Gültigkeitsdauer für einen Container oder ein Element festgelegt haben, werden die betroffenen Elemente nach Ablauf der angegebenen Zeit (seit der letzten Änderung des Elements) automatisch von Azure Cosmos DB gelöscht. Der Wert für die Gültigkeitsdauer wird in Sekunden konfiguriert. Wenn Sie eine Gültigkeitsdauer konfigurieren, löscht das System die abgelaufenen Elemente automatisch auf der Grundlage des entsprechenden Werts, ohne dass ein Löschvorgang explizit von der Clientanwendung initiiert werden muss. Der maximale Wert für TTL ist 2147483647.
 
 Das Löschen abgelaufener Elemente ist ein im Hintergrund ausgeführter Vorgang, bei dem die verbleibenden [Anforderungseinheiten](request-units.md) (also die nicht von Benutzeranforderungen verbrauchten Anforderungseinheiten) verbraucht werden. Wenn der Container mit Anforderungen überlastet ist und nicht genügend Anforderungseinheiten (RUs) verfügbar sind, wird die Datenlöschung auch nach Ablauf der Lebensdauer verzögert. Die Daten werden gelöscht, wenn genügend Anforderungseinheiten zum Ausführen des Löschvorgangs verfügbar sind. Obwohl die Datenlöschung verzögert wird, werden die Daten nach Ablauf der Lebensdauer über keine Abfragen (über keine API) zurückgegeben.
+
+> Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](https://docs.microsoft.com/azure/cosmos-db/synapse-link) ermöglicht, klicken Sie [hier](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl).
 
 ## <a name="time-to-live-for-containers-and-items"></a>Gültigkeitsdauer für Container und Elemente
 

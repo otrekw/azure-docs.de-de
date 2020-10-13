@@ -1,14 +1,14 @@
 ---
 title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541763"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91614256"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -74,7 +74,10 @@ Wenn eine Blaupause erstellt wird, befindet sie sich im **Entwurfsmodus**. Wenn 
 
 ## <a name="blueprint-assignment"></a>Blaupausenzuweisung
 
-Jede **veröffentlichte** **Version** einer Blaupause kann (mit einem maximal 90 Zeichen langen Namen) einem vorhandenen Abonnement zugewiesen werden. Im Portal wird standardmäßig die **Version** der Blaupause verwendet, die zuletzt **veröffentlicht** wurde. Wenn Artefaktparameter (oder Blaupausenparameter) vorhanden sind, werden die Parameter während des Zuweisungsvorgangs definiert.
+Jede **veröffentlichte** **Version** einer Blaupause kann (mit einem maximal 90 Zeichen langen Namen) einer vorhandenen Verwaltungsgruppe oder einem vorhandenen Abonnement zugewiesen werden. Im Portal wird standardmäßig die **Version** der Blaupause verwendet, die zuletzt **veröffentlicht** wurde. Wenn Artefaktparameter oder Blaupausenparameter vorhanden sind, werden die Parameter während des Zuweisungsvorgangs definiert.
+
+> [!NOTE]
+> Die Zuweisung einer Blaupausendefinition zu einer Verwaltungsgruppe bedeutet, dass das Zuweisungsobjekt bei der Verwaltungsgruppe vorhanden ist. Die Bereitstellung von Artefakten ist nach wie vor auf ein Abonnement ausgerichtet. Um eine Verwaltungsgruppenzuweisung durchzuführen, muss die REST-API [Erstellen oder Aktualisieren](/rest/api/blueprints/assignments/createorupdate) verwendet werden und der Anforderungstext muss einen Wert für `properties.scope` enthalten, um das Zielabonnement zu definieren.
 
 ## <a name="permissions-in-azure-blueprints"></a>Berechtigungen in Azure Blueprint
 

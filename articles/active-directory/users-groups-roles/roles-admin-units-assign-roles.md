@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450388"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818018"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Zuweisen von bereichsbezogenen Rollen zu einer Verwaltungseinheit
 
@@ -38,8 +38,10 @@ Lizenzadministrator  |  Kann nur in der Verwaltungseinheit Lizenzzuweisungen vor
 Kennwortadministrator  |  Kann nur in der zugewiesenen Verwaltungseinheit Kennwörter für Nicht-Administratoren und Kennwortadministratoren zurücksetzen.
 Benutzeradministrator  |  Kann nur in der zugewiesenen Verwaltungseinheit alle Aspekte von Benutzern und Gruppen verwalten, einschließlich der Kennwortzurücksetzung für Administratoren mit eingeschränkten Berechtigungen.
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Sicherheitsprinzipale, die einer der Verwaltungseinheit zugeordneten Rolle zugewiesen werden können
-Die folgenden Sicherheitsprinzipale können einer der Verwaltungseinheit zugeordneten Rolle zugewiesen werden:
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>Sicherheitsprinzipale, die einer bereichsbezogenen Rolle zugewiesen werden können
+
+Die folgenden Sicherheitsprinzipale können einer Rolle im Bereich von Verwaltungseinheiten zugewiesen werden:
+
 * Benutzer
 * Cloudgruppen, die einer Rolle zugewiesen werden können (Vorschau)
 * Dienstprinzipalname (Service Principal Name, SPN)

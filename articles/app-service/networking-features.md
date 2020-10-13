@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962093"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743045"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
 Anwendungen in Azure App Service können auf verschiedene Arten bereitgestellt werden. Für Apps, die von App Service gehostet werden, gilt standardmäßig, dass sie direkt über das Internet zugänglich sind und dass sie nur Endpunkte erreichen können, die im Internet gehostet werden. Viele Kundenanwendungen müssen jedoch den ein- und den ausgehenden Netzwerkdatenverkehr steuern. Es gibt mehrere Funktionen in App Service, mit denen diese Anforderungen erfüllt werden können. Die Herausforderung besteht darin, zu wissen, welche Funktion zur Lösung eines bestimmten Problems verwendet werden sollte. Dieses Dokument soll Kunden ermöglichen, anhand einiger exemplarischer Anwendungsfälle zu bestimmen, welche Funktion jeweils verwendet werden soll.
 
-Es gibt zwei primäre Bereitstellungsarten für Azure App Service. Es gibt den mehrinstanzenfähigen öffentlichen Dienst, der App-Service-Pläne in den Preis-SKUs (Tarife) „Free“, „Shared“, „Basic“, „Standard“, „Premium“ und „Premiumv2“ hostet. Außerdem gibt es die App Service-Umgebung (App Service Environment, ASE) für einzelne Mandanten, in der App Service Pläne für isolierte SKUs direkt in Ihrem Azure Virtual Network (VNet) gehostet werden. Sie verwenden unterschiedliche Funktionen abhängig davon, ob Sie mit dem mehrinstanzenfähigen Dienst oder in einer ASE arbeiten. 
+Es gibt zwei primäre Bereitstellungsarten für Azure App Service. Es gibt den mehrinstanzenfähigen öffentlichen Dienst, der App Service-Pläne in den Preis-SKUs (Tarife) „Free“, „Shared“, „Basic“, „Standard“, „Premium“, „PremiumV2“ und „PremiumV3“ hostet. Außerdem gibt es die App Service-Umgebung (App Service Environment, ASE) für einzelne Mandanten, in der App Service Pläne für isolierte SKUs direkt in Ihrem Azure Virtual Network (VNet) gehostet werden. Sie verwenden unterschiedliche Funktionen abhängig davon, ob Sie mit dem mehrinstanzenfähigen Dienst oder in einer ASE arbeiten. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Netzwerkfunktionen für mehrinstanzenfähigen App Service 
 
@@ -62,7 +62,7 @@ Anhand der folgenden Anwendungsfälle für ausgehenden Datenverkehr wird vorgesc
 
 ### <a name="default-networking-behavior"></a>Standardmäßiges Netzwerkverhalten
 
-Die Azure App Service-Skalierungseinheiten unterstützen viele Kunden in jeder Bereitstellung. Für die SKU-Pläne „Free“ und „Shared“ werden Kundenworkloads in mehrinstanzenfähigen Workern gehostet. Für den Plan „Basic“ und höhere Pläne werden Kundenworkloads gehostet, die nur einem App Service-Plan (ASP) zugeordnet sind. Wenn Sie den App Service-Plan „Standard“ hatten, werden alle Apps in diesem Plan im selben Worker ausgeführt. Wenn Sie den Worker aufskalieren, werden alle Apps in diesem Plan in einem neuen Worker für jede Instanz in Ihrem ASP repliziert. Die Worker, die für „Premiumv2“ verwendet werden, unterscheiden sich von den Workern, für die anderen Pläne verwendet werden. Jede App Service-Bereitstellung hat eine IP-Adresse, die für den gesamten eingehenden Datenverkehr zu Apps in dieser App Service-Bereitstellung verwendet wird. Es gibt jedoch an jeder Stelle 4 bis 11 Adressen, die für ausgehende Aufrufe verwendet werden. Diese Adressen werden von allen Apps in dieser App Service-Bereitstellung gemeinsam genutzt. Die ausgehenden Adressen sind entsprechend den verschiedenen Workertypen unterschiedlich. Das heißt, dass sich die Adressen, die für die ASPs „Free“, „Shared“, „Basic“, „Standard“ und „Premium“ verwendet werden, von den Adressen unterscheiden, die für ausgehende Aufrufe aus den „Premiumv2“-ASPs verwendet werden. Wenn Sie sich die Eigenschaften Ihrer App ansehen, sehen Sie die Eingangs- und die Ausgangsadressen, die von Ihrer App verwendet werden. Wenn Sie eine Abhängigkeit mit einer IP-Zugriffssteuerungsliste sperren müssen, verwenden Sie die ausgehenden IP-Adressen (possibleOutboundAddresses). 
+Die Azure App Service-Skalierungseinheiten unterstützen viele Kunden in jeder Bereitstellung. Für die SKU-Pläne „Free“ und „Shared“ werden Kundenworkloads in mehrinstanzenfähigen Workern gehostet. Für den Plan „Basic“ und höhere Pläne werden Kundenworkloads gehostet, die nur einem App Service-Plan (ASP) zugeordnet sind. Wenn Sie den App Service-Plan „Standard“ hatten, werden alle Apps in diesem Plan im selben Worker ausgeführt. Wenn Sie den Worker aufskalieren, werden alle Apps in diesem Plan in einem neuen Worker für jede Instanz in Ihrem ASP repliziert. Die Worker, die für „PremiumV2“ und „PremiumV3“ verwendet werden, unterscheiden sich von den Workern, die für die anderen Pläne verwendet werden. Jede App Service-Bereitstellung hat eine IP-Adresse, die für den gesamten eingehenden Datenverkehr zu Apps in dieser App Service-Bereitstellung verwendet wird. Es gibt jedoch an jeder Stelle 4 bis 11 Adressen, die für ausgehende Aufrufe verwendet werden. Diese Adressen werden von allen Apps in dieser App Service-Bereitstellung gemeinsam genutzt. Die ausgehenden Adressen sind entsprechend den verschiedenen Workertypen unterschiedlich. Das heißt, dass sich die Adressen, die für die ASPs „Free“, „Shared“, „Basic“, „Standard“ und „Premium“ verwendet werden, von den Adressen unterscheiden, die für ausgehende Aufrufe aus den ASPs „PremiumV2“ und „PremiumV3“ verwendet werden. Wenn Sie sich die Eigenschaften Ihrer App ansehen, sehen Sie die Eingangs- und die Ausgangsadressen, die von Ihrer App verwendet werden. Wenn Sie eine Abhängigkeit mit einer IP-Zugriffssteuerungsliste sperren müssen, verwenden Sie die ausgehenden IP-Adressen (possibleOutboundAddresses). 
 
 ![App-Eigenschaften](media/networking-features/app-properties.png)
 

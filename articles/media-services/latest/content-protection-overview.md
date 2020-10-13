@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401383"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595976"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Verwenden Sie Azure Media Services, um Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. Inhalt, der mit einem unverschlüsselten AES-Schlüssel verschlüsselt und per HTTPS gesendet wird, bleibt verschlüsselt, bis er den Client erreicht. 
+Verwenden Sie Azure Media Services, um Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. Inhalt, der mit einem unverschlüsselten AES-Schlüssel verschlüsselt und per HTTPS gesendet wird, bleibt verschlüsselt, bis er den Client erreicht.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 In Media Services v3 ist dem Streaminglocator ein Inhaltsschlüssel zugeordnet (siehe [dieses Beispiel](protect-with-aes128.md)). Bei Verwendung des Media Services-Schlüsselübermittlungsdiensts kann der Inhaltsschlüssel durch Azure Media Services generiert werden. Sie sollten den Inhaltsschlüssel selbst generieren, wenn Sie Ihren eigenen Schlüsselbereitstellungsdienst verwenden oder ein Hochverfügbarkeitsszenario, sodass Sie denselben Inhaltsschlüssel in zwei Rechenzentren benötigen.
 
@@ -136,7 +138,7 @@ HLS/CMAF + FairPlay (einschließlich HEVC/H.265) wird auf folgenden Geräten unt
 
 * iOS 11 oder höher.
 * iPhone 8 oder höher.
-* MacOS High Sierra mit Intel-CPU der 7. Generation.
+* macOS High Sierra mit Intel-CPU der 7. Generation
 
 ### <a name="mpeg-dash"></a>MPEG-DASH
 

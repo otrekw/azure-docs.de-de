@@ -1,5 +1,5 @@
 ---
-title: Erstellen der technischen Ressourcen für Azure-VMs
+title: Erstellen von technischen Ressourcen für ein VM-Angebot in Azure Marketplace
 description: Hier erfahren Sie, wie Sie die technischen Ressourcen für ein VM-Angebot für Azure Marketplace erstellen und konfigurieren.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646807"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803516"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>Erstellen der technischen Ressourcen für Azure-VMs
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Erstellen von technischen Ressourcen für ein VM-Angebot in Azure Marketplace
 
 Beim Veröffentlichen Ihrer Images virtueller Computer (VM) im Azure Marketplace überprüft das Azure-Team das VM-Image, um seine Startfähigkeit, Sicherheit und Kompatibilität mit Azure sicherzustellen. Wird einer der hochwertigen Tests nicht bestanden, schlägt die Veröffentlichung fehl, und eine Meldung mit dem Fehler und möglichen [Schritten zur Korrektur](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions) wird ausgegeben.
 
 In diesem Artikel wird beschrieben, wie Sie die technischen Ressourcen für ein VM-Angebot für Azure Marketplace erstellen und konfigurieren. Eine VM enthält zwei Komponenten: die virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem Betriebssystem und optionale zugeordnete Datenträger-VHDs:
 
-1. **Betriebssystem-VHD**: Enthält das Betriebssystem und die Lösung, die mit Ihrem Angebot bereitgestellt wird. Der Prozess zur Vorbereitung der VHD unterscheidet sich in Abhängigkeit davon, ob es sich um eine Linux-basierte, Windows-basierte oder benutzerdefinierte VM handelt.
+- **Betriebssystem-VHD**: Enthält das Betriebssystem und die Lösung, die mit Ihrem Angebot bereitgestellt wird. Der Prozess zur Vorbereitung der VHD unterscheidet sich in Abhängigkeit davon, ob es sich um eine Linux-basierte, Windows-basierte oder benutzerdefinierte VM handelt.
 
-2. **Datenträger-VHDs**: Dedizierter, beständiger Speicher für eine VM. Verwenden Sie nicht die Betriebssystem-VHD (z. B. das Laufwerk C), um beständige Informationen zu speichern.
+- **Datenträger-VHDs**: Dedizierter, beständiger Speicher für eine VM. Verwenden Sie nicht die Betriebssystem-VHD (z. B. das Laufwerk C), um beständige Informationen zu speichern.
 
 Ein VM-Image enthält einen Betriebssystemdatenträger und bis zu 16 Datenträger. Verwenden Sie eine VHD pro Datenträger, auch wenn der Datenträger leer ist.
 
@@ -98,17 +98,17 @@ Gehen Sie wie folgt vor, um das VM-Basisimage im [Azure-Portal](https://ms.porta
 4. Wählen Sie **+ Hinzufügen** aus, um die Seite **Virtuellen Computer erstellen** zu öffnen.
 5. Wählen Sie das Image in der Dropdownliste oder **Alle öffentlichen und privaten Images durchsuchen** aus, um nach allen verfügbaren VM-Images zu suchen. Beispiel:
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Zeigt ein Beispiel für ein VM-Image.":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Zeigt die ersten Schritte beim Erstellen einer Ressourcengruppe.":::
 
 6. Wählen Sie anhand der folgenden Empfehlungen die Größe der VM aus, die Sie bereitstellen möchten:
     1. Wenn Sie vorhaben, die VHD lokal zu entwickeln, spielt die Größe keine Rolle. Die Verwendung eines kleineren virtuellen Computers wird empfohlen.
     2. Wenn Sie vorhaben, das Image in Azure zu entwickeln, sollten Sie eine der empfohlenen VM-Größen für das ausgewählte Image verwenden.
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Zeigt die Auswahl der VM-Größe.":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Zeigt die ersten Schritte beim Erstellen einer Ressourcengruppe.":::
 
 7. Erweitern Sie unter **Datenträger** den Abschnitt **Erweitert**, und legen Sie die Option **Verwaltete Datenträger verwenden** auf **Nein** fest.
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Zeigt eine Option zum Verwenden verwalteter Datenträger.":::
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Zeigt die ersten Schritte beim Erstellen einer Ressourcengruppe.":::
 
 8. Geben Sie die anderen Details ein, die zum Erstellen der VM erforderlich sind.
 9. Wählen Sie **Bewerten + erstellen** aus, um Ihre Auswahl zu überprüfen. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
@@ -129,7 +129,7 @@ Erstellen Sie eine VM der 2. Generation (Gen2) im Azure-Portal.
 8. Wählen Sie eine empfohlene Größe der [unterstützten VMs der Generation 2](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) und eine Größe aus.
 9. Durchlaufen Sie den [Erstellungsflow im Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal), um die Erstellung des virtuellen Computers abzuschließen.
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="Zeigt die Option zum Auswählen der VM-Generation.":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="Zeigt die ersten Schritte beim Erstellen einer Ressourcengruppe.":::
 
 ## <a name="connect-to-your-azure-vm"></a>Herstellen einer Verbindung mit der Azure-VM
 
@@ -157,7 +157,7 @@ Zum Herstellen einer Verbindung mit einer Linux-basierten VM benötigen Sie eine
 7. Öffnen Sie die Anwendung PuTTY.
 8. Geben Sie im Dialogfeld für die PuTTY-Konfiguration die IP-Adresse oder den DNS-Namen Ihrer VM ein.
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Veranschaulicht die Einstellungen für das PuTTY-Terminal. Die Felder für den Hostnamen und den Port sind hervorgehoben.":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Zeigt die ersten Schritte beim Erstellen einer Ressourcengruppe.":::
 
 9. Wählen Sie **Öffnen** aus, um ein PuTTY-Terminal zu öffnen.
 10. Geben Sie den Kontonamen und das Kennwort Ihres Linux-VM-Kontos ein, wenn Sie dazu aufgefordert werden.

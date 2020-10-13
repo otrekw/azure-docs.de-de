@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330955"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803805"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor für Netzwerke (Vorschau)
 Azure Monitor für Netzwerke bietet eine umfassende Ansicht der [Integrität](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) und [Metriken](../platform/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration.  Außerdem erhalten Sie Zugriff auf alle Netzwerküberwachungsfunktionen, z. B. [Verbindungsmonitor](../../network-watcher/connection-monitor-preview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Traffic Analytics](../../network-watcher/traffic-analytics.md) und andere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics).
@@ -108,6 +108,43 @@ Das Diagnosetoolkit bietet Zugriff auf alle Diagnosefeatures, die für das Behan
 
 ![Registerkarte „Diagnosetoolkit“](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>Problembehandlung 
+
+Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
+
+Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Probleme unterstützen, die bei der Verwendung von Azure Monitor für Netzwerke auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+
+### <a name="resolving-performance-issues-or-failures"></a>Beheben von Leistungsproblemen oder Fehlern
+
+Informationen zur Behandlung netzwerkbezogener Probleme, die Sie mit Azure Monitor für Netzwerke identifizieren, finden Sie in der Dokumentation zur Problembehandlung für die fehlerhafte Ressource. Nachfolgend sind Links zur Problembehandlung für häufig verwendete Dienste aufgelistet.
+* Virtuelles Netzwerk (VNET)
+* Application Gateway
+* VPN Gateway
+* ExpressRoute 
+* Load Balancer 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>Warum werden nicht die Ressourcen aus allen Abonnements angezeigt, die ich ausgewählt habe?
+
+Network Insights kann nur Ressourcen aus fünf Abonnements gleichzeitig anzeigen. 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>Wie kann ich Änderungen an Network Insights vornehmen oder weitere Visualisierungen hinzufügen?
+
+Wenn Sie Änderungen vornehmen möchten, wählen Sie den Bearbeitungsmodus aus, um die Arbeitsmappe zu ändern. Anschließend können Sie Ihre Arbeit als neue Arbeitsmappe speichern, die an ein bestimmtes Abonnement und an eine bestimmte Ressourcengruppe gebunden ist.
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Welches Aggregationsintervall wird verwendet, wenn ein Teil der Arbeitsmappen angeheftet wird?
+
+Dies hängt vom gewählten Zeitbereich ab, da wir das Aggregationsintervall „Auto“ verwenden.
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Welcher Zeitbereich wird verwendet, wenn ein Teil der Arbeitsmappe angeheftet wird?
+
+Der Zeitbereich hängt von den Dashboardeinstellungen ab.
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>Was kann ich tun, wenn ich andere Daten anzeigen oder eigene Visualisierungen erstellen möchte? Wie kann ich Änderungen an den Network Insights vornehmen?
+
+Sie können die Arbeitsmappe, die in einem Seitenbereich und der Ansicht mit detaillierten Metriken angezeigt wird, im Bearbeitungsmodus bearbeiten und Ihre Arbeit als eine neue Arbeitsmappe speichern, die alle neuen Änderungen enthält.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Netzwerküberwachung finden Sie unter [Was ist Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).
+- Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

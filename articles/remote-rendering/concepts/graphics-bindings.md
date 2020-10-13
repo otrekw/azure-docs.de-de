@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561872"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802292"
 ---
 # <a name="graphics-binding"></a>Grafikbindung
 
@@ -120,7 +120,10 @@ Dabei muss der obige `ptr` ein Zeiger auf ein natives `ABI::Windows::Perception:
 
 #### <a name="render-remote-image"></a>Rendern des Remotebildes
 
-Am Anfang jedes Frames muss der Remoteframe in den Hintergrundpuffer gerendert werden. Hierfür wird `BlitRemoteFrame` aufgerufen. Dadurch werden sowohl Farb- als auch Tiefeninformationen in das derzeit gebundene Renderziel gefüllt. Daher muss dies unbedingt erfolgen, nachdem der Hintergrundpuffer als Renderziel gebunden wurde.
+Am Anfang jedes Frames muss der Remoteframe in den Hintergrundpuffer gerendert werden. Hierfür wird `BlitRemoteFrame` aufgerufen. Dadurch werden sowohl Farb- als auch Tiefeninformationen für beide Augen in das derzeit gebundene Renderziel gefüllt. Daher muss dies unbedingt erfolgen, nachdem der vollständige Hintergrundpuffer als Renderziel gebunden wurde.
+
+> [!WARNING]
+> Nachdem das Remotebild in den Hintergrundpuffer verschoben wurde, sollte der lokale Inhalt mit einem Stereorenderingverfahren mit einzelnem Durchlauf gerendert werden, z. B. mithilfe von **SV_RenderTargetArrayIndex**. Die Verwendung anderer Stereorenderingverfahren, wie das Rendering der einzelnen Augen in einem separaten Durchlauf, kann zu erheblichen Leistungseinbußen oder grafischen Artefakten führen und sollte vermieden werden.
 
 ```cs
 AzureSession currentSession = ...;

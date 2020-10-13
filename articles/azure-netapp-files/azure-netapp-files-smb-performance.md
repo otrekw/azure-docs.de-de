@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460448"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653688"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Häufig gestellte Fragen zur Leistung von SMB für Azure NetApp Files
 
@@ -46,7 +46,7 @@ Windows unterstützt SMB Multichannel seit Windows 2012, um eine optimale Leist
 
 Wenn Sie wissen möchten, ob die NICs Ihres virtuellen Azure-Computers RSS unterstützen, führen Sie den Befehl `Get-SmbClientNetworkInterface` wie folgt aus, und überprüfen Sie das Feld `RSS Capable`: 
 
-![RSS-Unterstützung für virtuelle Azure-Computer](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
+![Screenshot: RSS-Ausgabe für virtuellen Azure-Computer](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
 ## <a name="does-azure-netapp-files-support-smb-direct"></a>Unterstützt Azure NetApp Files SMB Direct?
 
@@ -60,9 +60,9 @@ Das SMB Multichannel-Feature ermöglicht einem SMB3-Client das Einrichten eines 
 
 Nein. Der SMB-Client passt die Anzahl der NICs an die vom SMB-Server zurückgegebene Anzahl an.  Auf jedes Speichervolume kann nur von genau einem einzigen Speicherendpunkt aus zugegriffen werden.  Das bedeutet, dass für jede SMB-Beziehung nur eine NIC verwendet wird.  
 
-Wie die Ausgabe von `Get-SmbClientNetworkInterace` unten zeigt, verfügt der virtuelle Computer über zwei Netzwerkschnittstellen: 15 und 12.  Wie unter dem Befehl `Get-SmbMultichannelConnection` gezeigt, wird trotz zweier RSS-fähiger NICs nur die Schnittstelle 12 in Verbindung mit der SMB-Freigabe verwendet. Schnittstelle 15 wird nicht verwendet.
+Wie die Ausgabe von `Get-SmbClientNetworkInterace` unten zeigt, verfügt der virtuelle Computer über zwei Netzwerkschnittstellen: 15 und 12.  Wie unter dem folgenden Befehl `Get-SmbMultichannelConnection` zu sehen ist, wird trotz zweier RSS-fähiger NICs nur die Schnittstelle 12 in Verbindung mit der SMB-Freigabe verwendet. Schnittstelle 15 wird nicht verwendet.
 
-![RSS-fähige NICs](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
+![Screenshot: Ausgabe für RSS-fähige NICs](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
 ## <a name="is-nic-teaming-supported-in-azure"></a>Wird NIC-Teaming von Azure unterstützt?
 
@@ -74,25 +74,61 @@ Die folgenden Tests und Diagramme veranschaulichen die Leistung von SMB Multicha
 
 ### <a name="random-io"></a>Zufällige E/A  
 
-Auf dem Client war SMB Multichannel deaktiviert, während die reinen 8-KiB-Lese- und -Schreibtests mit FIO und einem 40-GiB-Arbeitssatz durchgeführt wurden.  Die SMB-Freigabe wurde zwischen den einzelnen Tests getrennt, wobei die Anzahl der SMB-Clientverbindungen pro RSS-Netzwerkschnittstellen in Schritten zwischen den Einstellungen `1`, `4`, `8`, `16` und `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` erhöht wurde. Die Tests zeigen, dass die Standardeinstellung `4` für E/A-intensive Workloads ausreichend ist. Das Erhöhen auf `8` und `16` hatte keine Auswirkungen. 
+Auf dem Client war SMB Multichannel deaktiviert, während die reinen 4-KiB-Lese- und -Schreibtests mit FIO und einem 40-GiB-Arbeitssatz durchgeführt wurden.  Die SMB-Freigabe wurde zwischen den einzelnen Tests getrennt, wobei die Anzahl der SMB-Clientverbindungen pro RSS-Netzwerkschnittstellen in Schritten zwischen den Einstellungen `1`, `4`, `8`, `16` und `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` erhöht wurde. Die Tests zeigen, dass die Standardeinstellung `4` für E/A-intensive Workloads ausreichend ist. Die Auswirkungen der Erhöhung auf `8` und `16` sind vernachlässigbar. 
 
 Der Befehl `netstat -na | findstr 445` belegte, dass bei den Schritten von `1` auf `4` auf `8` und auf `16` zusätzliche Verbindungen hergestellt wurden.  Bei jedem Test wurden vier CPU-Kerne vollständig für SMB genutzt, was auch von der Statistik `Per Processor Network Activity Cycles` von perfmon bestätigt wurde (nicht in diesem Artikel enthalten).
 
-![Tests mit zufälligen E/A](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
+![Diagramm: Vergleich mit zufälligen E/A-Zugriffen für SMB Multichannel](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 
-Der virtuelle Azure-Computer wirkt sich nicht auf die Speicher-E/A-Limits von SMB (und NFS) aus.  Wie unten gezeigt, ist beim Instanztyp D16 die Rate für Speicher-IOPS mit Zwischenspeicherung auf 32.000 und für Speicher-IOPS ohne Zwischenspeicherung auf 25.600 beschränkt.  Das obige Diagramm zeigt jedoch deutlich mehr E/A-Vorgänge über SMB.
+Der virtuelle Azure-Computer wirkt sich nicht auf die Speicher-E/A-Limits von SMB (und NFS) aus.  Wie im folgenden Diagramm dargestellt, ist beim Instanztyp „D32ds“ die Rate für Speicher-IOPS mit Zwischenspeicherung auf 308.000 und für Speicher-IOPS ohne Zwischenspeicherung auf 51.200 beschränkt.  Das obige Diagramm zeigt jedoch deutlich mehr E/A-Vorgänge über SMB.
 
-![Vergleich mit zufälligen E/A](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
+![Diagramm: Vergleichstest mit zufälligen E/A-Zugriffen](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
 
 ### <a name="sequential-io"></a>Sequenzielle E/A 
 
-Auch mit sequenziellen 64-KiB-E/A wurden Tests durchgeführt, die den oben beschriebenen Tests mit zufälligen E/A ähneln. Obwohl die Zunahme der Anzahl der Clientverbindungen pro RSS-Netzwerkschnittstelle über 4 hinaus keine merkliche Auswirkung auf zufällige E/A hatte, gilt dies nicht für die sequenzielle E/A. Wie im folgenden Diagramm dargestellt, führt jede Erhöhung zu einer entsprechenden Steigerung des Lesedurchsatzes. Der Schreibdurchsatz blieb aufgrund der Einschränkungen der Netzwerkbandbreite durch Azure für jeden Instanztyp und jede Instanzgröße gleich. 
+Auch mit sequenziellen 64-KiB-E/A-Zugriffen wurden Tests durchgeführt, die den zuvor beschriebenen Tests mit zufälligen E/A-Zugriffen ähneln. Obwohl die Zunahme der Anzahl der Clientverbindungen pro RSS-Netzwerkschnittstelle über 4 hinaus keine merkliche Auswirkung auf zufällige E/A hatte, gilt dies nicht für die sequenzielle E/A. Wie im folgenden Diagramm dargestellt, führt jede Erhöhung zu einer entsprechenden Steigerung des Lesedurchsatzes. Der Schreibdurchsatz blieb aufgrund der Einschränkungen der Netzwerkbandbreite durch Azure für jeden Instanztyp und jede Instanzgröße gleich. 
 
-![Tests mit sequenziellen E/A](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
+![Diagramm: Testvergleich zum Durchsatz](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
 
-Azure legt für jeden Typ/jede Größe von virtuellen Computern Limits für die Netzwerkrate fest. Das Ratenlimit wird nur auf ausgehenden Datenverkehr angewandt. Die Anzahl der auf einem virtuellen Computer vorhandenen NICs hat keinen Einfluss auf die Gesamtbandbreite, die für den Computer verfügbar ist.  Für den Instanztyp D16 wird beispielsweise ein Netzwerklimit von 8.000 MBit/s (1.000 MiB/s) erzwungen.  Wie das Diagramm für sequenzielle E/A oben zeigt, wirkt sich das Limit auf den ausgehenden Datenverkehr (Schreibvorgänge), aber nicht auf Multichannel-Lesevorgänge aus.
+Azure legt für jeden Typ/jede Größe von virtuellen Computern Limits für die Netzwerkrate fest. Das Ratenlimit wird nur auf ausgehenden Datenverkehr angewandt. Die Anzahl der auf einem virtuellen Computer vorhandenen NICs hat keinen Einfluss auf die Gesamtbandbreite, die für den Computer verfügbar ist.  Für den Instanztyp D32ds wird beispielsweise ein Netzwerklimit von 16.000 MBit/s (2.000 MiB/s) erzwungen.  Wie das Diagramm für sequenzielle E/A oben zeigt, wirkt sich das Limit auf den ausgehenden Datenverkehr (Schreibvorgänge), aber nicht auf Multichannel-Lesevorgänge aus.
 
-![Vergleich mit sequenziellen E/A](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+![Diagramm: Vergleichstest mit sequenziellen E/A-Zugriffen](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+
+## <a name="what-performance-is-expected-with-a-single-instance-with-a-1-tb-dataset"></a>Welche Leistung ist bei einer einzelnen Instanz mit einem 1-TB-Dataset zu erwarten?
+
+Um Ihnen einen ausführlicheren Einblick in Workloads mit einer Mischung aus Lese- und Schreibvorgängen zu geben, ist in den folgenden beiden Diagrammen die Leistung eines einzelnen Cloudvolumes (50 TB) mit dem Servicelevel „Ultra“ und einem Dataset von 1 TB und SMB Multichannel (4) dargestellt. Es wurde eine optimale E/A-Tiefe (IODepth) von 16 verwendet. Zudem wurden Parameter für flexible E/A-Zugriffe (Flexible IO, FIO) genutzt, um die vollständige Verwendung der Netzwerkbandbreite (`numjobs=16`) sicherzustellen.
+
+Im folgenden Diagramm sind die Ergebnisse für 4.000 zufällige E/A-Zugriffe bei einer einzelnen VM-Instanz und einer Mischung aus Lese- und Schreibvorgängen in 10-Prozent-Intervallen dargestellt:
+
+![Diagramm: Windows 2019-Standardversion – _D32ds_v4 4K: Test mit zufälligen E/A-Zugriffen](../media/azure-netapp-files/smb-performance-standard-4k-random-io.png)
+
+Im folgenden Diagramm sind die Ergebnisse für sequenzielle E/A-Zugriffe dargestellt:
+
+![Diagramm: Windows 2019-Standardversion – _D32ds_v4 64K: Sequenzieller Durchsatz](../media/azure-netapp-files/smb-performance-standard-64k-throughput.png)
+
+## <a name="what-performance-is-expected-when-scaling-out-using-5-vms-with-a-1-tb-dataset"></a>Welche Leistung ist beim Aufskalieren mit fünf VMs bei einem 1-TB-Dataset zu erwarten?
+
+Bei diesen Tests mit fünf virtuellen Computern wird dieselbe Testumgebung wie bei der einzelnen VM verwendet, und jeder Prozess schreibt in seine eigene Datei.
+
+Im folgenden Diagramm sind die Ergebnisse für zufällige E/A-Zugriffe dargestellt:
+
+![Diagramm: Windows 2019-Standardversion – _D32ds_v4 4K: Test mit zufälligen E/A-Zugriffen bei fünf Instanzen](../media/azure-netapp-files/smb-performance-standard-4k-random-io-5-instances.png)
+
+Im folgenden Diagramm sind die Ergebnisse für sequenzielle E/A-Zugriffe dargestellt:
+
+![Diagramm: Windows 2019-Standardversion – _D32ds_v4 64K: Sequenzieller Durchsatz bei fünf Instanzen](../media/azure-netapp-files/smb-performance-standard-64k-throughput-5-instances.png)
+
+## <a name="how-do-you-monitor-hyper-v-ethernet-adapters-and-ensure-that-you-maximize-network-capacity"></a>Wie können Sie Hyper-V-Ethernet-Adapter überwachen und die Maximierung der Netzwerkkapazität sicherstellen?  
+
+Eine Strategie beim Testen mit FIO ist das Festlegen von `numjobs=16`. Hierbei wird für jeden Auftrag das Forken in 16 spezifische Instanzen durchgeführt, um für den Microsoft Hyper-V-Netzwerkadapter eine Maximierung zu erzielen.
+
+Sie können auf den einzelnen Adaptern im Windows-Systemmonitor die Aktivität überprüfen, indem Sie **Systemmonitor > Leistungsindikatoren hinzufügen > Netzwerkschnittstelle > Microsoft Hyper-V-Netzwerkadapter** auswählen.
+
+![Screenshot: Oberfläche zum Hinzufügen von Leistungsindikatoren für Systemmonitor](../media/azure-netapp-files/smb-performance-performance-monitor-add-counter.png)
+
+Wenn auf Ihren Volumes Datenverkehr verarbeitet wird, können Sie in Windows-Systemmonitor Ihre Adapter überwachen. Wenn Sie nicht alle 16 virtuellen Adapter verwenden, erzielen Sie ggf. keine Maximierung Ihrer Netzwerkbandbreitenkapazität.
+
+![Screenshot: Systemmonitor-Ausgabe](../media/azure-netapp-files/smb-performance-performance-monitor-output.png)
 
 ## <a name="is-accelerated-networking-recommended"></a>Wird beschleunigter Netzwerkbetrieb empfohlen?
 
@@ -107,7 +143,7 @@ Großrahmen werden für virtuelle Azure-Computer nicht unterstützt.
 
 ## <a name="is-smb-signing-supported"></a>Wird SMB Signing unterstützt? 
 
-Das SMB-Protokoll stellt die Grundlage für die Datei- und Druckfreigabe sowie andere Netzwerkvorgänge wie die Windows-Remoteverwaltung dar. Um Man-in-the-Middle-Angriffe zu verhindern, die SMB-Pakete während der Übertragung ändern, unterstützt das SMB-Protokoll das digitale Signieren von SMB-Paketen. 
+Das SMB-Protokoll stellt die Grundlage für die Datei- und Druckfreigabe sowie andere Netzwerkvorgänge wie die Windows-Remoteverwaltung dar. Das SMB-Protokoll unterstützt das digitale Signieren von SMB-Paketen, um Man-in-the-Middle-Angriffe zu vermeiden, die SMB-Pakete während der Übermittlung ändern. 
 
 SMB Signing wird für alle SMB-Protokollversionen unterstützt, die von Azure NetApp Files unterstützt werden. 
 
@@ -115,7 +151,7 @@ SMB Signing wird für alle SMB-Protokollversionen unterstützt, die von Azure Ne
 
 SMB Signing wirkt sich negativ auf die SMB-Leistung aus. Neben anderen möglichen Ursachen von Leistungsminderungen beansprucht das digitale Signieren jedes Pakets eine zusätzliche clientseitige CPU, wie die folgende perfmon-Ausgabe zeigt. In diesem Fall ist Kern 0 für SMB verantwortlich, also auch für SMB Signing.  Ein Vergleich mit den Zahlen für sequenzielle Lesevorgänge ohne Multichannel im vorherigen Abschnitt zeigt, dass SMB Signing den Gesamtdurchsatz von 875 MiB/s auf ungefähr 250 MiB/s senkt. 
 
-![Auswirkung auf die Leistung durch SMB Signing](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
+![Diagramm: Auswirkung von SMB Signing auf die Leistung](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte  

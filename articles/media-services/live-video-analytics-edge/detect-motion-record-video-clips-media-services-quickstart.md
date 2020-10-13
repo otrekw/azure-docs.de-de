@@ -3,12 +3,12 @@ title: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services
 description: In diesem Schnellstart erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videoclips in Azure Media Services aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569004"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776475"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Media Services
 
@@ -39,6 +39,16 @@ Nach Abschluss der nachfolgenden Schritte haben Sie mithilfe von Live Video Anal
 ## <a name="use-direct-method-calls"></a>Verwenden von Aufrufen direkter Methoden
 
 Sie können das Modul zum Analysieren von Livevideostreams verwenden, indem Sie direkte Methoden aufrufen. Ausführliche Informationen zu allen mit dem Modul bereitgestellten direkten Methoden finden Sie unter [Direkte Methoden für Live Video Analytics in IoT Edge](direct-methods.md). 
+
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
+1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Ereignisbasierte Videoaufzeichnung von Medienobjekten basierend auf Bewegungsereignissen":::
+1. Suchen Sie nach dem Kontrollkästchen „Show Verbose Message“ (Ausführliche Meldung anzeigen), und aktivieren Sie es.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ereignisbasierte Videoaufzeichnung von Medienobjekten basierend auf Bewegungsereignissen":::
 
 ### <a name="invoke-graphtopologylist"></a>Aufrufen von GraphTopologyList
 In diesem Schritt werden alle [Graphtopologien](media-graph-concept.md#media-graph-topologies-and-instances) im Modul aufgelistet.

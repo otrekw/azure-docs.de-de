@@ -4,17 +4,17 @@ description: Dieser Artikel beschreibt, wie Azure Cosmos DB Hochverfügbarkeit b
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9d1c8c6271d689b022a069de8e3392c0662dd6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706814"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826891"
 ---
-# <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
+# <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Wie bietet Azure Cosmos DB Hochverfügbarkeit? 
 
 Azure Cosmos DB repliziert Ihre Daten transparent in allen Azure-Regionen, die Ihrem Azure Cosmos-Konto zugeordnet sind. Azure Cosmos DB verwendet mehrere Redundanzebenen für Ihre Daten, wie in der folgenden Abbildung dargestellt:
 
@@ -30,7 +30,7 @@ Wenn Ihr Azure Cosmos-Konto über *N* Azure-Regionen verteilt ist, gibt es minde
 
 ## <a name="slas-for-availability"></a>SLAs für Verfügbarkeit
 
-Als global verteilte Datenbank bietet Azure Cosmos DB umfangreiche SLAs, die Durchsatz, Latenz im 99. Perzentil, Konsistenz und Hochverfügbarkeit umfassen. In der Tabelle unten sind die Garantieangaben für die Hochverfügbarkeit aufgeführt, die von Azure Cosmos DB für Konten mit einer oder mehreren Regionen gelten. Für Hochverfügbarkeit konfigurieren Sie Ihre Azure Cosmos-Konten immer mit mehreren Schreibregionen (auch Multimaster genannt).
+Als global verteilte Datenbank bietet Azure Cosmos DB umfangreiche SLAs, die Durchsatz, Latenz im 99. Perzentil, Konsistenz und Hochverfügbarkeit umfassen. In der Tabelle unten sind die Garantieangaben für die Hochverfügbarkeit aufgeführt, die von Azure Cosmos DB für Konten mit einer oder mehreren Regionen gelten. Für Hochverfügbarkeit konfigurieren Sie Ihre Azure Cosmos-Konten immer mit mehreren Schreibregionen.
 
 |Vorgangsart  | Eine Region |Mehrere Regionen (eine Schreibregion)|Mehrere Regionen (mehrere Schreibregionen) |
 |---------|---------|---------|-------|
@@ -46,7 +46,7 @@ Für die seltenen Fälle eines regionalen Ausfalls stellt Azure Cosmos DB siche
 
 - Bevor ein Schreibvorgang dem Client gegenüber bestätigt wird, wird bei Azure Cosmos DB von einem Quorum von Replikaten in der Region, die die Schreibvorgänge akzeptiert, ein dauerhaftes Commit ausgeführt.
 
-- Konten mit mehreren Regionen, die mit mehreren Schreibregionen/Multimaster konfiguriert sind, sind sowohl für Schreib- als auch für Lesevorgänge hoch verfügbar. Regionale Failover werden sofort ausgeführt und erfordern keine Änderungen von der Anwendung.
+- Konten mit mehreren Regionen, die mit mehreren Schreibregionen konfiguriert sind, sind sowohl für Schreib- als auch für Lesevorgänge hoch verfügbar. Regionale Failover werden sofort ausgeführt und erfordern keine Änderungen von der Anwendung.
 
 - Konten mit einer Region sind nach einem regionalen Ausfall ggf. nicht mehr verfügbar. Es wird immer empfohlen, **mindestens zwei Regionen** (idealerweise mindestens zwei Schreibregionen) für Ihr Azure Cosmos-Konto einzurichten, um die permanente Hochverfügbarkeit sicherzustellen.
 
@@ -79,10 +79,7 @@ Zonenredundanz ist eine *Ergänzungsfunktion* für die [Replikation in Schreibvo
 
 Wenn Sie für Ihr Azure Cosmos-Konto Schreibvorgänge in mehreren Regionen konfigurieren, können Sie die Zonenredundanz ohne zusätzliche Kosten aktivieren. Lesen Sie andernfalls weiter unten den Hinweis zu den Preisen für die Unterstützung der Zonenredundanz. Sie können die Zonenredundanz für eine vorhandene Region Ihres Azure Cosmos-Kontos aktivieren, indem Sie die Region entfernen und anschließend mit aktivierter Zonenredundanz wieder hinzufügen.
 
-Diese Funktion ist in den folgenden Regionen verfügbar: *„Vereinigtes Königreich, Süden“, „Asien, Südosten“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „Europa, Westen“, „USA, Westen 2“, „Japan, Osten“, „Europa, Norden“, „Frankreich, Mitte“, „Australien, Osten“* .
-
-> [!NOTE]
-> Wenn Sie Verfügbarkeitszonen für ein Azure Cosmos-Konto mit einer einzelnen Region aktivieren, fallen die gleichen Kosten an wie beim Hinzufügen einer weiteren Region zu Ihrem Konto. Ausführliche Informationen zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/) sowie im Artikel [Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB](optimize-cost-regions.md).
+Diese Funktion ist in den folgenden Regionen verfügbar: *„Vereinigtes Königreich, Süden“, „Asien, Südosten“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „Europa, Westen“, „USA, Westen 2“, „Japan, Osten“, „Europa, Norden“, „Frankreich, Mitte“, „Australien, Osten“, „USA, Osten 2 (EUAP)“* .
 
 In der folgenden Tabelle ist die Hochverfügbarkeitsfunktion verschiedener Kontokonfigurationen zusammengefasst:
 
@@ -97,7 +94,7 @@ In der folgenden Tabelle ist die Hochverfügbarkeitsfunktion verschiedener Konto
 |Wartezeit beim Schreiben | Regionsübergreifend | Regionsübergreifend | Niedrig |
 |Regionaler Ausfall: Datenverlust | Datenverlust |  Datenverlust | Datenverlust <br/><br/> Bei Verwendung der Konsistenz vom Typ „Begrenzte Veraltung“ mit mehreren Schreibregionen und mehreren Regionen sind Datenverluste auf die begrenzte Veraltung beschränkt, die für Ihr Konto konfiguriert ist. <br /><br />Sie können Datenverluste bei einem regionalen Ausfall vermeiden, indem Sie eine hohe Konsistenz mit mehreren Regionen konfigurieren. Bei dieser Option müssen aber Kompromisse in Bezug auf die Verfügbarkeit und Leistung eingegangen werden. Dies kann nur für Konten konfiguriert werden, die für Schreibvorgänge in eine einzelne Region eingerichtet wurden. |
 |Regionaler Ausfall: Verfügbarkeit | Verlust der Verfügbarkeit | Verlust der Verfügbarkeit | Kein Verlust der Verfügbarkeit |
-|Throughput | X RU/s (bereitgestellter Durchsatz) | X RU/s (bereitgestellter Durchsatz) | 2X RU/s (bereitgestellter Durchsatz) <br/><br/> Bei diesem Konfigurationsmodus wird im Vergleich zu einer einzelnen Region mit Verfügbarkeitszonen die doppelte Menge an Durchsatz benötigt, da zwei Regionen vorhanden sind. |
+|Throughput | X RU/s (bereitgestellter Durchsatz) | X RU/s (bereitgestellter Durchsatz * 1,25) | 2X RU/s (bereitgestellter Durchsatz) <br/><br/> Bei diesem Konfigurationsmodus wird im Vergleich zu einer einzelnen Region mit Verfügbarkeitszonen die doppelte Menge an Durchsatz benötigt, da zwei Regionen vorhanden sind. |
 
 > [!NOTE]
 > Für die Unterstützung von Verfügbarkeitszonen müssen für ein Azure Cosmos-Konto mit mehreren Regionen Schreibvorgänge in mehreren Regionen aktiviert sein.
@@ -129,6 +126,8 @@ Sie können Verfügbarkeitszonen aktivieren, indem Sie beim Erstellen eines Azur
 
 ## <a name="building-highly-available-applications"></a>Erstellen hochverfügbarer Anwendungen
 
+- Überprüfen Sie während dieser Ereignisse das erwartete [Verhalten der Azure Cosmos DB-SDKs](troubleshoot-sdk-availability.md) und welche Konfigurationen sich darauf auswirken.
+
 - Um Hochverfügbarkeit von Schreib- und Lesevorgängen zu garantieren, konfigurieren Sie Ihr Azure Cosmos-Konto so, dass es mindestens zwei Regionen mit mehreren Schreibregionen umfasst. Diese Konfiguration sorgt für höchste Verfügbarkeit, geringstmögliche Latenz und optimale Skalierbarkeit für Lese- und Schreibvorgänge und wird durch SLAs unterstützt. Weitere Informationen finden Sie unter [Konfigurieren eines Azure Cosmos-Kontos mit mehreren Schreibregionen](tutorial-global-distribution-sql-api.md).
 
 - Aktivieren Sie für Azure Cosmos-Konten mit mehreren Regionen, die mit einer einzelnen Schreibregion konfiguriert sind, [„Automatisches Failover“ über die Azure CLI oder das Azure-Portal](how-to-manage-database-account.md#automatic-failover). Wenn Sie das automatische Failover aktivieren, führt Cosmos DB bei einem regionalen Ausfall ein automatisches Failover für Ihr Konto aus.  
@@ -146,3 +145,4 @@ Als Nächstes können Sie die folgenden Artikel lesen:
 - [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
 - [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
 - [Konfigurieren eines Cosmos-Kontos mit mehreren Schreibregionen](how-to-multi-master.md)
+- [SDK-Verhalten in Umgebungen mit mehreren Regionen](troubleshoot-sdk-availability.md)

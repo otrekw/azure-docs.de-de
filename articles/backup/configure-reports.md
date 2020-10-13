@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180285"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567433"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -23,6 +23,7 @@ Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 - Sicherungsberichte werden für Azure-VMs, SQL auf Azure-VMs, SAP HANA auf Azure-VMs, Microsoft Azure Recovery Services-Agent (MARS), Microsoft Azure Backup Server (MABS) und System Center Data Protection Manager (DPM) unterstützt. Für Sicherungen von Azure-Dateifreigaben werden Daten für alle Datensätze angezeigt, die am 1. Juni 2020 oder danach erstellt wurden.
+- Bei der Sicherung von Azure-Dateifreigaben werden Daten in geschützten Instanzen derzeit nicht in den Berichten angezeigt (standardmäßig null für alle Sicherungselemente).
 - Bei DPM-Workloads werden Backup-Berichte für DPM, Version 5.1.363.0 und höher, sowie Agent, Version 2.0.9127.0 und höher, unterstützt.
 - Bei MABS-Workloads werden Backup-Berichte für MABS, Version 13.0.415.0 und höher, sowie Agent, Version 2.0.9170.0 und höher, unterstützt.
 - Backup-Berichte können für alle Sicherungselemente, Tresore, Abonnements und Regionen angezeigt werden, solange deren Daten an einen Log Analytics-Arbeitsbereich gesendet werden, auf den der Benutzer Zugriff hat. Zum Anzeigen von Berichten für eine Gruppe von Tresoren müssen Sie nur über Lesezugriff auf den Log Analytics-Arbeitsbereich verfügen, an den die Tresore ihre Daten senden. Sie benötigen keinen Zugriff auf die einzelnen Tresore.

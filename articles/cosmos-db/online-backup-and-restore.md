@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047627"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803873"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
@@ -22,11 +22,11 @@ Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ih
 
 Azure Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicherungen Ihrer Daten überaus redundant und gegen regionale Katastrophen geschützt sind. Die folgenden Schritte zeigen, wie Azure Cosmos DB eine Datensicherung ausführt:
 
-* Azure Cosmos DB erstellt alle 4 Stunden automatisch eine Sicherung Ihrer Datenbank, und es werden standardmäßig immer nur die neuesten beiden Sicherungen gespeichert. Wenn die Standardintervalle für Ihre Workloads nicht ausreichen, können Sie das Sicherungsintervall und den Aufbewahrungszeitraum im Azure-Portal ändern. Sie können die Konfiguration der Sicherung während oder nach der Erstellung des Azure Cosmos-Kontos ändern. Wenn der Container bzw. die Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen des angegebenen Containers bzw. der Datenbank 30 Tage lang auf.
+* Azure Cosmos DB erstellt alle vier Stunden automatisch eine vollständige Sicherung Ihrer Datenbank, und es werden standardmäßig immer nur die neuesten beiden Sicherungen gespeichert. Wenn die Standardintervalle für Ihre Workloads nicht ausreichen, können Sie das Sicherungsintervall und den Aufbewahrungszeitraum im Azure-Portal ändern. Sie können die Konfiguration der Sicherung während oder nach der Erstellung des Azure Cosmos-Kontos ändern. Wenn der Container bzw. die Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen des angegebenen Containers bzw. der Datenbank 30 Tage lang auf.
 
 * Azure Cosmos DB speichert diese Sicherungen in Azure Blob-Speicher, während sich die eigentlichen Daten lokal in Azure Cosmos DB befinden.
 
-* Um niedrige Latenz zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in Azure Blob Storage in der Region gespeichert, in der sich auch die aktuelle Schreibregion befindet (bzw. bei einer Multimaster-Konfiguration in **einer** der Schreibregionen). Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme der Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Die Region, in die die Sicherung repliziert wird, richtet sich nach Ihrer Quellregion und dem Regionspaar, das der Quellregion zugeordnet ist. Weitere Informationen finden Sie im Artikel mit der [Liste der georedundanten Azure-Regionspaare](../best-practices-availability-paired-regions.md). Sie können auf diese Sicherung nicht direkt zugreifen. Das Team von Azure Cosmos DB stellt Ihre Sicherung wieder her, wenn Sie dies über eine Supportanfrage anfordern.
+* Um eine geringe Wartezeit zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in Azure Blob Storage in der Region gespeichert, in der sich auch die aktuelle Schreibregion befindet (bzw. bei einer Konfiguration für Schreibvorgänge in mehreren Regionen in **einer** der Schreibregionen). Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme der Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Die Region, in die die Sicherung repliziert wird, richtet sich nach Ihrer Quellregion und dem Regionspaar, das der Quellregion zugeordnet ist. Weitere Informationen finden Sie im Artikel mit der [Liste der georedundanten Azure-Regionspaare](../best-practices-availability-paired-regions.md). Sie können auf diese Sicherung nicht direkt zugreifen. Das Team von Azure Cosmos DB stellt Ihre Sicherung wieder her, wenn Sie dies über eine Supportanfrage anfordern.
 
    Die folgende Abbildung zeigt, wie ein Azure Cosmos DB-Container (mit allen drei primären physischen Partitionen in „USA, Westen“) in einem Azure Blob Storage-Remotekonto in „USA, Westen“ gesichert und anschließend nach „USA, Osten“ repliziert wird:
 
@@ -44,7 +44,7 @@ Mithilfe von Azure Cosmos DB-SQL-API-Konten können Sie auch Ihre eigenen Sicher
 
 ## <a name="modify-the-backup-interval-and-retention-period"></a>Ändern des Sicherungsintervalls und des Aufbewahrungszeitraums
 
-Azure Cosmos DB erstellt alle 4 Stunden automatisch eine Sicherung Ihrer Daten, und es bleiben jeweils die neuesten beiden Sicherungen gespeichert. Diese Konfiguration ist die Standardoption, die ohne Zusatzkosten angeboten wird. Sie können das Standardsicherungsintervall und den Aufbewahrungszeitraum während der Erstellung des Azure Cosmos-Kontos oder nach dem Erstellen des Kontos ändern. Die Sicherungskonfiguration wird auf der Ebene des Azure Cosmos-Kontos festgelegt, und Sie müssen sie für jedes Konto vornehmen. Nachdem Sie die Sicherungsoptionen für ein Konto konfiguriert haben, wird es auf alle Container innerhalb dieses Kontos angewandt. Derzeit können Sie die Sicherungsoptionen nur im Azure-Portal ändern.
+Von Azure Cosmos DB wird alle vier Stunden automatisch eine vollständige Sicherung Ihrer Daten erstellt, und es sind immer die beiden neuesten Sicherungen gespeichert. Diese Konfiguration ist die Standardoption, die ohne Zusatzkosten angeboten wird. Sie können das Standardsicherungsintervall und den Aufbewahrungszeitraum während der Erstellung des Azure Cosmos-Kontos oder nach dem Erstellen des Kontos ändern. Die Sicherungskonfiguration wird auf der Ebene des Azure Cosmos-Kontos festgelegt, und Sie müssen sie für jedes Konto vornehmen. Nachdem Sie die Sicherungsoptionen für ein Konto konfiguriert haben, wird es auf alle Container innerhalb dieses Kontos angewandt. Derzeit können Sie die Sicherungsoptionen nur im Azure-Portal ändern.
 
 Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, stellen Sie **vor dem Erstellen einer Supportanfrage zum Wiederherstellen der Daten sicher, den Aufbewahrungszeitraum für Ihr Konto auf mindestens sieben Tage zu erhöhen. Es empfiehlt sich, den Aufbewahrungszeitraum innerhalb von 8 Stunden nach diesem Ereignis zu erhöhen.** Auf diese Weise hat das Azure Cosmos DB-Team genug Zeit, um Ihr Konto wiederherzustellen.
 
@@ -59,11 +59,11 @@ Gehen Sie anhand der folgenden Schritte vor, um die Standardsicherungsoptionen f
 
    * **Aufbewahrte Kopien der Daten:** Standardmäßig werden zwei Sicherungskopien Ihrer Daten kostenlos angeboten. Wenn Sie mehr als zwei Kopien benötigen, fallen zusätzliche Gebühr an. Im Abschnitt „Speichernutzung“ auf der Seite [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) finden Sie den genauen Preis für zusätzliche Kopien.
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurieren des Sicherungsintervalls und des Aufbewahrungszeitraums für ein vorhandenes Azure Cosmos-Konto" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage" border="true":::
 
 Wenn Sie während der Kontoerstellung Sicherungsoptionen konfigurieren, können Sie die **Sicherungsrichtlinie** konfigurieren, die **regelmäßig** oder **fortlaufend** sein kann. Bei einer Richtlinie für regelmäßige Sicherungen können Sie das Sicherungsintervall und den Aufbewahrungszeitraum für Sicherungen konfigurieren. Die Richtlinie für fortlaufende Sicherungen ist zurzeit nur bei der Registrierung verfügbar. Das Team von Azure Cosmos DB bewertet Ihre Workload und genehmigt Ihre Anforderung.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Konfigurieren von Richtlinien für regelmäßige oder fortlaufende Sicherungen für neue Azure Cosmos-Konten" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>Wiederherstellen von Daten aus einer Onlinesicherung
 
@@ -88,6 +88,13 @@ Wenn eine Azure Cosmos-Datenbank gelöscht wird, ist es möglich, die gesamte Da
 Wenn Elemente in einem Container versehentlich gelöscht oder geändert werden (der Fall der Datenbeschädigung), müssen Sie den Zeitpunkt angeben, der wiederhergestellt werden soll. Die Zeit ist bei einer Datenbeschädigung sehr wichtig. Da der Container aktiv ist, wird die Sicherung weiterhin ausgeführt. Wenn Sie also länger als den Aufbewahrungszeitraum warten (der Standardwert ist acht Stunden), werden die Sicherungen überschrieben. **Um zu verhindern, dass die Sicherung überschrieben wird, erhöhen Sie den Aufbewahrungszeitraum der Sicherung für Ihr Konto auf mindestens sieben Tage. Es empfiehlt sich, den Aufbewahrungszeitraum innerhalb von 8 Stunden nach der Datenbeschädigung zu erhöhen.**
 
 Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, sollten Sie sich innerhalb von 8 Stunden an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, damit das Azure Cosmos DB-Team Sie beim Wiederherstellen der Daten aus den Sicherungen unterstützen kann. Auf diese Weise hat das Supportteam von Azure Cosmos DB genug Zeit, Ihr Konto wiederherzustellen.
+
+> [!NOTE]
+> Nachdem Sie die Daten wiederhergestellt haben, werden nicht alle Quellfunktionen oder -einstellungen auf das wiederhergestellte Konto übertragen. Die folgenden Einstellungen werden nicht auf das neue Konto übertragen:
+
+> * VNET-Zugriffssteuerungslisten
+> * Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
+> * Einstellungen für mehrere Regionen  
 
 Wenn Sie den Durchsatz auf Datenbankebene bereitstellen, erfolgen die Sicherungs- und Wiederherstellungsprozesse auf der Ebene der gesamten Datenbank und nicht der einzelnen Container. In solchen Fällen können Sie keine Teilmenge der Container für die Wiederherstellung auswählen.
 

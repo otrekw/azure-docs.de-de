@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420437"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819934"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -57,7 +57,7 @@ Für die Auflistungsoptionen _Jetzt abrufen (kostenlos)_ , _Kostenlose Testversi
 
 Diese zusätzlichen technischen Anforderungen gelten nur für die Auflistungsoption _Über Microsoft verkaufen_ (transaktionsfähig):
 
-- Azure AD mit Single Sign-On-Identitätsverwaltung (SSO) und -Authentifizierung werden vorausgesetzt. Ausführliche Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](azure-ad-saas.md).
+- Azure AD mit SSO-Identitätsverwaltung (einmaliges Anmelden) und Authentifizierung ist für den kaufenden Benutzer erforderlich, der auf die Angebotsseite zugreift. Ausführliche Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](azure-ad-saas.md).
 - Zur Integration des Angebots in Azure Marketplace und Microsoft AppSource müssen Sie die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md) verwenden. Sie müssen einen Dienst verfügbar machen, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. Diagramme und ausführliche Erläuterungen zur Verwendung der gesammelten Felder finden Sie in der Dokumentation zu den [APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md).
 - Sie müssen mindestens einen Plan für Ihr Angebot erstellen. Der Plan für Ihr Angebot basiert auf dem Preismodell, das Sie vor der Veröffentlichung ausgewählt haben: _Pauschalgebühr_ oder _Pro Benutzer_. Weitere Details zu [Plänen](#plans) finden Sie weiter unten in diesem Artikel.
 - Der Kunde kann Ihr Angebot jederzeit stornieren.
@@ -100,7 +100,7 @@ Sie können eine Testversion für Ihre SaaS-App aktivieren. Über Testversionen 
 
 Um Kundeninformationen zu sammeln, müssen Sie Ihr Angebot mit Ihrem CRM-System (Customer Relationship Management) verbinden. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Onlineshop, auf dem der Kunde Ihr Angebot gefunden hat, werden an das von Ihnen konfigurierte CRM-System gesendet. Der kommerzielle Marketplace unterstützt eine Vielzahl von CRM-Systemen. Außerdem können Sie optional eine Azure-Tabelle verwenden oder einen HTTPS-Endpunkt mithilfe von Power Automate konfigurieren.
 
-Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zeitpunkt hinzugefügt oder geändert werden. Ausführliche Anleitungen finden Sie unter [Leadverwaltung für den kommerziellen Marketplace](lead-management-for-cloud-marketplace.md).
+Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zeitpunkt hinzugefügt oder geändert werden. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ## <a name="selecting-an-online-store"></a>Auswählen eines Onlineshops
 
@@ -158,11 +158,11 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
     Dieses Textfeld enthält Rich-Text-Editor-Steuerelemente, mit denen Sie die Beschreibung ansprechender gestalten können. Die Beschreibung kann mithilfe von HTML-Tags formatiert werden. Sie können in diesem Feld bis zu 3.000 Zeichen Text eingeben, einschließlich HTML-Markup. Weitere Tipps finden Sie unter [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 
 - **Anweisungen zu den ersten Schritten**: Wenn Sie Ihr Angebot über Microsoft (transaktionsfähiges Angebot) verkaufen möchten, muss dieses Feld ausgefüllt werden. Diese Anweisungen helfen Kunden, eine Verbindung mit Ihrem SaaS-Angebot herzustellen. Sie können bis zu 3.000 Zeichen Text sowie Links zu einer ausführlicheren Onlinedokumentation hinzufügen.
-- **Suchbegriffe** (optional): Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in dem/den Marketplace(s) nach Ihrem Angebot suchen können. Sie müssen den **Namen** und die **Beschreibung** des Angebots nicht einschließen: Dieser Text wird automatisch in die Suche aufgenommen.
+- **Suchbegriffe** (optional): Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in den Onlineshops nach Ihrem Angebot suchen können. Sie müssen den **Namen** und die **Beschreibung** des Angebots nicht einschließen: Dieser Text wird automatisch in die Suche aufgenommen.
 - **Link zur Datenschutzrichtlinie**: Die URL zur Datenschutzrichtlinie Ihres Unternehmens. Sie müssen eine gültige Datenschutzrichtlinie bereitstellen und sicherstellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt.
 - **Kontaktinformationen**: Die folgenden Kontakte müssen in Ihrem Unternehmen festgelegt werden:
   - **Supportkontakt**: Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse für Microsoft-Partner an. Diese werden dann von Kunden bei der Eröffnung von Supporttickets verwendet. Sie müssen auch die URL für Ihre Supportwebsite einschließen.
-  - **Technischer Ansprechpartner**: Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse an, die Microsoft direkt verwenden kann, wenn es Probleme mit Ihrem Angebot gibt. Diese Kontaktinformationen sind nicht im Marketplace aufgeführt.
+  - **Technischer Ansprechpartner**: Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse an, die Microsoft direkt verwenden kann, wenn es Probleme mit Ihrem Angebot gibt. Diese Kontaktinformationen sind nicht im kommerziellen Marketplace aufgeführt.
   - **Ansprechpartner für CSP-Programm** (optional): Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse an, wenn Sie sich für das CSP-Programm entscheiden, damit Sie bei Fragen von Partnern kontaktiert werden können. Sie können auch eine URL zu Ihren Marketingmaterialien hinzufügen.
 - **Nützliche Links** (optional): Sie können für Benutzer Ihres Angebots Links zu verschiedenen Ressourcen bereitstellen. Beispiele: Foren, FAQ und Versionshinweise.
 - **Unterstützende Dokumente**: Sie können bis zu drei kundenorientierte Dokumente bereitstellen, z. B. Whitepaper, Broschüren, Checklisten oder PowerPoint-Präsentationen.
@@ -174,9 +174,9 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 
   Diese Logos werden an unterschiedlichen Stellen in den Onlineshops verwendet:
 
-  -  Das kleine Logo erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource.
-  -  Das mittelgroße Logo wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.
-  -  Das große Logo wird auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource angezeigt.
+  - Das kleine Logo erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource.
+  - Das mittelgroße Logo wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.
+  - Das große Logo wird auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource angezeigt.
 
 - **Medien – Screenshots**: Fügen Sie gemäß den folgenden Anforderungen mindestens einen und höchstens fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert:
   - 1280 x 720 Pixel
@@ -194,7 +194,7 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 Eine Vorschauzielgruppe erhält vor der Liveveröffentlichung in den Onlineshops Zugriff auf Ihr Angebot, um die End-to-End-Funktionalität vorab zu testen. Auf der Seite **Vorschauzielgruppe** können Sie eine eingeschränkte Vorschauzielgruppe definieren. Diese Einstellung ist nicht verfügbar, wenn Sie Transaktionen unabhängig abwickeln möchten, anstatt ihr Angebot über Microsoft zu verkaufen. Wenn dies der Fall ist, können Sie diesen Abschnitt überspringen und zu [Zusätzliche Verkaufschancen](#additional-sales-opportunities) wechseln.
 
 > [!NOTE]
-> Eine Vorschauzielgruppe unterscheidet sich von einem privaten Plan. Ein privater Plan ist ein Angebot, das nur einem bestimmten Publikum zur Verfügung steht. Darüber hinaus können Sie einen benutzerdefinierten Plan mit bestimmten Kunden aushandeln. Weitere Informationen finden Sie im nächsten Abschnitt zu Plänen.
+> Eine Vorschauzielgruppe unterscheidet sich von einem privaten Plan. Ein privater Plan ist ein Angebot, das nur einem bestimmten Publikum zur Verfügung steht. Darüber hinaus können Sie einen benutzerdefinierten Plan mit bestimmten Kunden aushandeln. Weitere Informationen finden Sie im nächsten Abschnitt: zu Plänen.
 
 Sie können Einladungen an E-Mail-Adressen mit Microsoft-Konto (MSA) oder in Azure Active Directory (Azure AD) senden. Fügen Sie bis zu 10 E-Mail-Adressen manuell hinzu, oder importieren Sie über eine CSV-Datei bis zu 20 E-Mail-Adressen. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder für Aktualisierungen Ihres Angebots definieren.
 

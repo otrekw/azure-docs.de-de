@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398388"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819890"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
-Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hoch entwickelte Architektur, die sich über mehr als 160.000 Meilen erstreckt, verbindet unsere Rechenzentren und Kunden. 
+Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hoch entwickelte Architektur, die sich über mehr als 165.000 Meilen erstreckt, verbindet unsere Rechenzentren und Kunden. 
  
 Täglich stellen Kunden rund um die Welt Verbindungen mit Microsoft Azure, Bing, Dynamics 365, Microsoft 365, XBox und vielen anderen Diensten her und übermitteln Billionen von Anforderungen. Unabhängig vom Typ erwarten die Kunden sofortige Zuverlässigkeit und Reaktion von unseren Diensten. 
  
-Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) ist ein zentraler Bestandteil für die Bereitstellung einer großartigen Cloudumgebung. Durch die Verbindung unserer Microsoft-[Rechenzentren](https://azure.microsoft.com/global-infrastructure/) in 54 Azure-Regionen und durch das große Netz von Edgeknoten, die strategisch auf der ganzen Welt positioniert sind, bietet unser globales Netzwerk sowohl die Verfügbarkeit, Kapazität als auch die Flexibilität, um sämtliche Anforderungen zu erfüllen.
+Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) ist ein zentraler Bestandteil für die Bereitstellung einer großartigen Cloudumgebung. Durch die Verbindung unserer Microsoft-[Rechenzentren](https://azure.microsoft.com/global-infrastructure/) in 61 Azure-Regionen und durch das große Netz von Edgeknoten, die strategisch auf der ganzen Welt positioniert sind, bietet unser globales Netzwerk sowohl die Verfügbarkeit, Kapazität als auch die Flexibilität, um sämtliche Anforderungen zu erfüllen.
 
 ![Globales Microsoft-Netzwerk](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>Holen Sie sich das Premium-Cloudnetzwerk
  
-Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 165 Standorten mit mehr als 3.500 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
+Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 175 Standorten mit mehr als 4000 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
  
 Ganz gleich, ob Sie eine Verbindung von London nach Tokio oder von Washington DC nach Los Angeles herstellen, die Netzwerkleistung wird durch Faktoren wie Latenz, Jitter, Paketverlust und Durchsatz bestimmt und beeinflusst.  Bei Microsoft verwenden wir direkte Verbindungen anstelle von Transitverbindungen. Dies sorgt für einen symmetrischen Antwortdatenverkehr sowie für möglichst kurze und einfache Hops, Peering-Partner und Wege. 
 

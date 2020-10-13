@@ -8,13 +8,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/15/2019
-ms.openlocfilehash: a23883a783642f41351883f4261f6564289c6db8
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.date: 10/06/2020
+ms.openlocfilehash: ab7ed95ba4b9a4fa6f0bafb78ea80a2d4acac71d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742960"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827883"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow
 
@@ -87,6 +87,16 @@ ___
 Gibt den Winkel im Bogenmaß zwischen der positiven X-Achse einer Ebene und dem durch die Koordinaten angegebenen Punkt zurück.  
 * ``atan2(0, 0) -> 0.0``  
 ___
+### <code>byOrigin</code>
+<code><b>byOrigin(<i>&lt;column name&gt;</i> : string, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Wählt einen Spaltenwert nach Name im Ursprungsstream aus. Das zweite Argument ist der Name des Ursprungsstreams. Wenn mehrere Übereinstimmungen vorhanden sind, wird die erste Übereinstimmung zurückgegeben. Ist keine Übereinstimmung vorhanden, wird ein NULL-Wert zurückgegeben. Für den zurückgegebenen Wert muss eine Typkonvertierung anhand einer der Typkonvertierungsfunktionen (TO_DATE, TO_STRING, ...) durchgeführt werden. Spaltennamen, die zur Entwurfszeit bekannt sind, sollten nur mit ihrem Namen angegeben werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
+* ``toString(byOrigin('ancestor', 'ancestorStream'))``
+___
+### <code>byOrigins</code>
+<code><b>byOrigins(<i>&lt;column names&gt;</i> : array, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Wählt ein Array von Spalten nach Name im Stream aus. Das zweite Argument ist der Stream, aus dem es stammt. Wenn mehrere Übereinstimmungen vorhanden sind, wird die erste Übereinstimmung zurückgegeben. Ist keine Übereinstimmung vorhanden, wird ein NULL-Wert zurückgegeben. Für den zurückgegebenen Wert muss eine Typkonvertierung anhand einer der Typkonvertierungsfunktionen (TO_DATE, TO_STRING, ...) durchgeführt werden. Spaltennamen, die zur Entwurfszeit bekannt sind, sollten nur mit ihrem Namen angegeben werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.
+* ``toString(byOrigins(['ancestor1', 'ancestor2'], 'ancestorStream'))``
+___
 ### <code>byName</code>
 <code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 Wählt einen Spaltenwert nach Name im Stream aus. Sie können einen optionalen Streamnamen als zweites Argument übergeben. Wenn mehrere Übereinstimmungen vorhanden sind, wird die erste Übereinstimmung zurückgegeben. Ist keine Übereinstimmung vorhanden, wird ein NULL-Wert zurückgegeben. Für den zurückgegebenen Wert muss eine Typkonvertierung anhand einer der Typkonvertierungsfunktionen (TO_DATE, TO_STRING, ...) durchgeführt werden.  Spaltennamen, die zur Entwurfszeit bekannt sind, sollten nur mit ihrem Namen angegeben werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
@@ -112,7 +122,7 @@ Wählen Sie ein Array von Spalten nach Name im Stream aus. Sie können einen opt
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-Wählt einen Spaltenwert nach seiner relativen Position (1-basiert) im Stream aus. Liegt die Position außerhalb des gültigen Bereichs, wird ein NULL-Wert zurückgegeben. Für den zurückgegebenen Wert muss eine Typkonvertierung mit einer der Typkonvertierungsfunktionen (TO_DATE, TO_STRING, ...) durchgeführt werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
+Wählt einen Spaltenwert nach seiner relativen Position (1-basiert) im Stream aus. Liegt die Position außerhalb des gültigen Bereichs, wird ein NULL-Wert zurückgegeben. Für den zurückgegebenen Wert muss eine Typkonvertierung anhand einer der Typkonvertierungsfunktionen (TO_DATE, TO_STRING, ...) durchgeführt werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
 * ``toString(byPosition(1))``  
 * ``toDecimal(byPosition(2), 10, 2)``  
 * ``toBoolean(byName(4))``  
@@ -206,7 +216,7 @@ Berechnet den CRC32-Hash einer Gruppe von Spalten verschiedener primitiver Daten
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Ruft das aktuelle Datum ab, wenn dieser Auftrag ausgeführt wird. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). 
+Ruft das aktuelle Datum ab, wenn dieser Auftrag ausgeführt wird. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Informationen zu verfügbaren Formaten finden Sie unter der Java-Klasse `SimpleDateFormat`. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). 
 * ``currentDate() == toDate('2250-12-31') -> false``  
 * ``currentDate('PST')  == toDate('2250-12-31') -> false``  
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``  
@@ -218,7 +228,7 @@ Ruft den aktuellen Zeitstempel mit der lokalen Zeitzone ab, wenn der Auftrag aus
 ___
 ### <code>currentUTC</code>
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Ruft den aktuellen Zeitstempel als UTC ab. Wenn die aktuelle Zeit in einer anderen Zeitzone als der Zeitzone des Clusters interpretiert werden soll, können Sie eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Verwenden Sie zum Konvertieren der UTC-Zeit in eine andere Zeitzone „fromUTC()“.  
+Ruft den aktuellen Zeitstempel als UTC ab. Wenn die aktuelle Uhrzeit in einer anderen Zeitzone als der Zeitzone Ihres Clusters interpretiert werden soll, können Sie eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Informationen zu verfügbaren Formaten finden Sie unter der Java-Klasse `SimpleDateFormat`. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Verwenden Sie zum Konvertieren der UTC-Zeit in eine andere Zeitzone `fromUTC()`.  
 * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``  
 * ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
@@ -250,7 +260,7 @@ Konvertiert Bogenmaße zu Graden.
 ___
 ### <code>divide</code>
 <code><b>divide(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Dividiert ein Zahlenpaar. Entspricht dem Operator „/“.  
+Dividiert ein Zahlenpaar. Entspricht dem Operator `/`.  
 * ``divide(20, 10) -> 2``  
 * ``20 / 10 -> 2``  
 ___
@@ -281,7 +291,7 @@ Berechnet die Fakultät einer Zahl.
 ___
 ### <code>false</code>
 <code><b>false() => boolean</b></code><br/><br/>
-Gibt immer den Wert FALSE zurück. Verwenden Sie die Funktionssyntax „false()“, falls eine Spalte mit dem Namen „false“ vorhanden ist.  
+Gibt immer den Wert FALSE zurück. Verwenden Sie die Funktions`syntax(false())`, wenn eine Spalte mit dem Namen „false“ vorhanden ist.  
 * ``(10 + 20 > 30) -> false``  
 * ``(10 + 20 > 30) -> false()``
 ___
@@ -333,7 +343,7 @@ ___
 * ``fromBase64('Z3VuY2h1cw==') -> 'gunch.us'``  
 ___
 ### <code>fromUTC</code>
-<code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/> Wird in den Zeitstempel von UTC konvertiert. Sie können die Zeitzone optional in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/> Wird in den Zeitstempel von UTC konvertiert. Sie können die Zeitzone optional in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Sie wird standardmäßig festgelegt auf die aktuelle Zeitzone. Refer Java's `Simpledateformat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
@@ -356,11 +366,11 @@ ___
 * ``greatest(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS'), toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')``  
 ___
 ### <code>hasColumn</code>
-<code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/> Überprüft anhand des Namens, ob ein Spaltenwert im Stream vorhanden ist. Sie können einen optionalen Streamnamen als zweites Argument übergeben.  Spaltennamen, die zur Entwurfszeit bekannt sind, sollten nur mit ihrem Namen angegeben werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber parameter substitutions.  
+<code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/> Überprüft anhand des Namens, ob ein Spaltenwert im Stream vorhanden ist. Sie können einen optionalen Streamnamen als zweites Argument übergeben. Spaltennamen, die zur Entwurfszeit bekannt sind, sollten nur mit ihrem Namen angegeben werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber parameter substitutions.  
 * ``hasColumn('paren verwenden.t')``  
 ___
 ### <code>hour</code>
-<code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Stundenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Stundenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Die lokale Zeitzone dient als Standardlt. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``  
 * ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``  
 ___
@@ -515,7 +525,7 @@ ___
 * ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc verwendet werden.5a'``  
 ___
 ### <code>millisecond</code>
-<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Millisekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Millisekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Die lokale Zeitzone dient als Standardlt. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
 ___
 ### <code>milliseconds</code>
@@ -532,7 +542,7 @@ ___
 * ``toTimestamp('2019-02-03 05:21:34.851', 'yyyy-MM-dd HH:mm:ss.SSS') - toTimestamp('2019-02-03 05:21:36.923', 'yyyy-MM-dd HH:mm:ss.SSS') -> -2072``  
 ___
 ### <code>minute</code>
-<code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Minutenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Minutenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Die lokale Zeitzone dient als Standardlt. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``  
 * ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``  
 ___
@@ -550,7 +560,7 @@ ___
 * ``month(toDate('2012-8-8')) - ab.> 8``  
 ___
 ### <code>monthsBetween</code>
-<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/> Ruft die Anzahl der Monate zwischen zwei Datumsangaben ab. Sie können die Berechnung abrunden und eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/> Ruft die Anzahl der Monate zwischen zwei Datumsangaben ab. Sie können die Berechnung abrunden und eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Die lokale Zeitzone dient als Standardlt. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``  
 ___
 ### <code>multiply</code>
@@ -567,8 +577,8 @@ ___
 * ``nextSequence() == 12313112 -> fa vorangestellt.lse``  
 ___
 ### <code>normalize</code>
-<code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/> Normalisiert den Zeichenfolgenwert zum Trennen von unicode characters.  
-* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'bo-Akzentzeichen.ys'``  
+<code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/> Normalisiert den Zeichenfolgenwert zum Trennen von Unicode characters.  
+* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'bo.ys'``  
 ___
 ### <code>not</code>
 <code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/> Logische negation operator.  
@@ -586,7 +596,7 @@ ___
 * ``notNull('') -> t ist.rue``  
 ___
 ### <code>null</code>
-<code><b>null() => null</b></code><br/><br/> Gibt einen NULL-Wert zurück. Verwenden Sie die Funktionssyntax „null()“, wenn eine Spalte mit dem Namen „null“ vorhanden ist. Jeder Vorgang, in dem dieser Ausdruck verwendet wird, hat als esult in a NULL.  
+<code><b>null() => null</b></code><br/><br/> Gibt einen NULL-Wert zurück. Use the function `syntax „null()“, wenn eine Spalte mit dem Namen „null“ vorhanden ist. Jeder Vorgang, in dem dieser Ausdruck verwendet wird, hat als esult in a NULL.  
 * ``isNull('dumbo' + null) -> true``  
 * ``isNull(10 * null) -> true``  
 * ``isNull('') -> false``  
@@ -661,7 +671,7 @@ ___
 * ``rlike('bogus', `M[0-9]+.*`) -> fa übereinstimmt:lse``  
 ___
 ### <code>round</code>
-<code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/> Rundet eine Zahl mit optional angegebenen Dezimalstellen und einem optionalen Rundungsmodus. Wenn die Dezimalstellen nicht angegeben sind, lautet der Standardwert 0.  Wenn der Modus nicht angegeben ist, wird standardmäßig ROUND_HALF_UP(5) verwendet. Mögliche Werte für die Rundung (ru) sind 1: ROUND_UP, 2: ROUND_DOWN, 3: ROUND_CEILING, 4: ROUND_FLOOR, 5: ROUND_HALF_UP, 6: ROUND_HALF_DOWN, 7: ROUND_HALF_EVEN, 8: ROROUND_UNNECESSARY.  
+<code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/> Rundet eine Zahl mit optional angegebenen Dezimalstellen und einem optionalen Rundungsmodus. Wenn die Dezimalstellen nicht angegeben sind, lautet der Standardwert 0. Wenn der Modus nicht angegeben ist, wird standardmäßig ROUND_HALF_UP(5) verwendet. Mögliche Werte für die Rundung (ru) sind 1: ROUND_UP, 2: ROUND_DOWN, 3: ROUND_CEILING, 4: ROUND_FLOOR, 5: ROUND_HALF_UP, 6: ROUND_HALF_DOWN, 7: ROUND_HALF_EVEN, 8: ROROUND_UNNECESSARY.  
 * ``round(100.123) -> 100.0``  
 * ``round(2.5, 0) -> 3.0``  
 * ``round(5.3999999999999995, 2, 7) -> 5.40``  
@@ -677,7 +687,7 @@ ___
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!m angegeben sind.bo'``  
 ___
 ### <code>second</code>
-<code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Sekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> Ruft den Sekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Die lokale Zeitzone dient als Standardlt. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``  
 ___
 ### <code>seconds</code>
@@ -742,7 +752,7 @@ ___
 * ``startsWith('dumbo', 'du') -> t beginnt.rue``  
 ___
 ### <code>subDays</code>
-<code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/> Subtrahiert Monate von einem Datum oder einem Zeitstempel. Identisch: - operator for date.  
+<code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/> Subtrahiert Tage von einem Datum oder Zeitstempel. Identisch: - operator for date.  
 * ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
 ___
 ### <code>subMonths</code>
@@ -779,7 +789,7 @@ ___
 * ``isNull(toBoolean('truthy')) -> t).rue``  
 ___
 ### <code>toDate</code>
-<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/> Konvertiert die Eingabedatumszeichenfolge unter Verwendung eines optionalen Eingabedatumsformats in ein Datum. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. Wenn das Eingabedatumsformat weggelassen wird, ist das Standardformat jjjj-[M]M-[t]t. Zulässige Formate sind: [ jjjj, jjjj-[M]M, jjjj-[M]M-[t]t, jjjy-[M]M-[d]dT* ].  
+<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/> Konvertiert die Eingabedatumszeichenfolge in ein Datum und verwendet dazu ein optionales Eingabedatumsformat. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. Wenn das Eingabedatumsformat weggelassen wird, ist das Standardformat jjjj-[M]M-[t]t. Zulässige Formate sind: [ jjjj, jjjj-[M]M, jjjj-[M]M-[t]t, jjjy-[M]M-[d]dT* ].  
 * ``toDate('2012-8-18') -> toDate('2012-08-18')``  
 * ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-1.8')``  
 ___
@@ -833,21 +843,21 @@ ___
 * ``toString(4 == 20) -> 'false'``  
 ___
 ### <code>toTimestamp</code>
-<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/> Wandelt eine Zeichenfolge in einen Zeitstempel mit einem optionalen Zeitstempelformat um. Alle zulässigen Formate finden Sie unter „Java SimpleDateFormat“. Wenn das Zeitstempelformat nicht angegeben ist, wird das Standardmuster jjjj-[M]M-[t]t hh:mm:ss[.f...] verwendet. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Zeitstempel unterstützt die Genauigkeit auf Millisekunden mit dem Wert 999. Verfügbare Formate finden Sie unter „SimpleDateFormat von Java“. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/> Wandelt eine Zeichenfolge in einen Zeitstempel mit einem optionalen Zeitstempelformat um. Wenn das Zeitstempelformat nicht angegeben ist, wird das Standardmuster „jjjj-[M]M-[t]t hh:mm:ss[.f...]“ verwendet. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Das Zeitstempelformat unterstützt eine Genauigkeit von bis zu Millisekunden mit einem Wert von 999. Refer Java's `SimpleDateFormat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
 * ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
 * ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
 * ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
 ___
 ### <code>toUTC</code>
-<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/> Wandelt den Zeitstempel in UTC um. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/> Wandelt den Zeitstempel in UTC um. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Sie wird standardmäßig festgelegt auf die aktuelle Zeitzone. Refer Java's `Simpledateformat“-Klasse im Hinblick auf verfügbare Formate. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>translate</code>
-<code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/> Ersetzt eine Gruppe von Zeichen durch eine andere Gruppe von Zeichen in der Zeichenfolge. Die Zeichen werden 1:1 ersetzt. (o 1 replacement.  
+<code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/> Ersetzt eine Gruppe von Zeichen durch eine andere Gruppe von Zeichen in der Zeichenfolge. Die Zeichen werden 1:1 ersetzt.o 1 replacement.  
 * ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``  
-* ``translate('(gunchus)', '()', '[') -> '[gunch)us'``  
+* ``translate('(gunchus)', '()', '[') -> '[gunchus'``  
 ___
 ### <code>trim</code>
 <code><b>trim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/> Entfernt vorangestellte und nachgestellte Zeichen aus einer Zeichenfolge. Wenn der zweite Parameter nicht angegeben ist, werden Leerstellen entfernt. Andernfalls werden Zeichen entfernt, die im second parameter.  
@@ -855,9 +865,9 @@ ___
 * ``trim('!--!du!mbo!', '-!') -> 'du!m angegeben sind.bo'``  
 ___
 ### <code>true</code>
-<code><b>true() => boolean</b></code><br/><br/> Gibt immer den Wert TRUE zurück. Verwenden Sie die Funktionssyntax „true()“, wenn eine column named 'true'.  
+<code><b>true() => boolean</b></code><br/><br/> Gibt immer den Wert TRUE zurück. Use the function `syntax(true())“ bei einer Spaltemn named 'true'.  
 * ``(10 + 20 == 30) -> true``  
-* ``(10 + 20 == 30) -> tru vorhanden ist.e()``  
+* ``(10 + 20 == 30) -> true()``  
 ___
 ### <code>typeMatch</code>
 <code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/> Stimmt mit dem Typ der Spalte überein. Kann nur in Musterausdrücken verwendet werden. „number“ stimmt mit „short“, „integer“, „long“, „double“, „float“ oder „decimal“ überein, „integral“ stimmt mit „short“, „integer“ oder „long“ überein, „fractional“ stimmt mit „double“, „float“ oder „decimal“ überein, und „datetime“ stimmt mit „date“ oder timestamp type.  
@@ -1094,7 +1104,7 @@ Encodes the given string in base64.
 ___
 ### <code>fromUTC</code>
 <code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts to the timestamp from UTC. You can optionally pass the timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezoneRefer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Converts to the timestamp from UTC. You can optionally pass the timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezone. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
@@ -1121,12 +1131,12 @@ Returns the greatest value among the list of values as input skipping null value
 ___
 ### <code>hasColumn</code>
 <code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/>
-Checks for a column value by name in the stream. You can pass a optional stream name as the second argument.  Column names known at design time should be addressed just by their name. Computed inputs are not supported but you can use parameter substitutions.  
+Checks for a column value by name in the stream. You can pass a optional stream name as the second argument. Column names known at design time should be addressed just by their name. Computed inputs are not supported but you can use parameter substitutions.  
 * ``hasColumn('parent')``  
 ___
 ### <code>hour</code>
 <code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the hour value of a timestamp. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default.Refer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Gets the hour value of a timestamp. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``  
 * ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``  
 ___
@@ -1316,7 +1326,7 @@ Calculates the MD5 digest of set of column of varying primitive datatypes and re
 ___
 ### <code>millisecond</code>
 <code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the millisecond value of a date. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default.Refer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Gets the millisecond value of a date. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
 ___
 ### <code>milliseconds</code>
@@ -1326,7 +1336,7 @@ Duration in milliseconds for number of milliseconds.
 ___
 ### <code>minus</code>
 <code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Subtracts numbers. Subtract from a date number of days. Subtract duration from a timestamp. Subtract two timestamps to get difference in milliseconds. Same as the - operator.  
+Subtracts numbers. Subtract number of days from a date. Subtract duration from a timestamp. Subtract two timestamps to get difference in milliseconds. Same as the - operator.  
 * ``minus(20, 10) -> 10``  
 * ``20 - 10 -> 10``  
 * ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``  
@@ -1336,7 +1346,7 @@ Subtracts numbers. Subtract from a date number of days. Subtract duration from a
 ___
 ### <code>minute</code>
 <code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the minute value of a timestamp. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default.Refer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Gets the minute value of a timestamp. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``  
 * ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``  
 ___
@@ -1358,7 +1368,7 @@ Gets the month value of a date or timestamp.
 ___
 ### <code>monthsBetween</code>
 <code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
-Gets the number of months between two dates. You can round off the calculation.You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default.Refer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Gets the number of months between two dates. You can round off the calculation.You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``  
 ___
 ### <code>multiply</code>
@@ -1379,7 +1389,7 @@ Returns the next unique sequence. The number is consecutive only within a partit
 ___
 ### <code>normalize</code>
 <code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
-Normalize the string value to separate accented unicode characters.  
+Normalizes the string value to separate accented unicode characters.  
 * ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
 ___
 ### <code>not</code>
@@ -1402,7 +1412,7 @@ Checks if the value is not NULL.
 ___
 ### <code>null</code>
 <code><b>null() => null</b></code><br/><br/>
-Returns a NULL value. Use the function syntax(null()) if there is a column named 'null'. Any operation that uses will result in a NULL.  
+Returns a NULL value. Use the function `syntax(null())` if there is a column named 'null'. Any operation that uses will result in a NULL.  
 * ``isNull('dumbo' + null) -> true``  
 * ``isNull(10 * null) -> true``  
 * ``isNull('') -> false``  
@@ -1492,7 +1502,7 @@ Checks if the string matches the given regex pattern.
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Rounds a number given an optional scale and an optional rounding mode. If the scale is omitted, it is defaulted to 0.  If the mode is omitted, it is defaulted to ROUND_HALF_UP(5). The values for rounding include
+Rounds a number given an optional scale and an optional rounding mode. If the scale is omitted, it is defaulted to 0. If the mode is omitted, it is defaulted to ROUND_HALF_UP(5). The values for rounding include
 1 - ROUND_UP
 2 - ROUND_DOWN
 3 - ROUND_CEILING
@@ -1520,7 +1530,7 @@ Right trims a string of leading characters. If second parameter is unspecified, 
 ___
 ### <code>second</code>
 <code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the second value of a date. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default.Refer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Gets the second value of a date. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``  
 ___
 ### <code>seconds</code>
@@ -1598,7 +1608,7 @@ Checks if the string starts with the supplied string.
 ___
 ### <code>subDays</code>
 <code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-Subtract months from a date or timestamp. Same as the - operator for date.  
+Subtract days from a date or timestamp. Same as the - operator for date.  
 * ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
 ___
 ### <code>subMonths</code>
@@ -1643,7 +1653,7 @@ Converts a value of ('t', 'true', 'y', 'yes', '1') to true and ('f', 'false', 'n
 ___
 ### <code>toDate</code>
 <code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
-Converts input date string to date using an optional input date format. Refer Java's SimpleDateFormat for available formats. If the input date format is omitted, default format is yyyy-[M]M-[d]d. Accepted formats are :[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ].  
+Converts input date string to date using an optional input date format. Refer Java's `SimpleDateFormat` class for available formats. If the input date format is omitted, default format is yyyy-[M]M-[d]d. Accepted formats are :[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ].  
 * ``toDate('2012-8-18') -> toDate('2012-08-18')``  
 * ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
 ___
@@ -1705,7 +1715,7 @@ Converts a primitive datatype to a string. For numbers and date a format can be 
 ___
 ### <code>toTimestamp</code>
 <code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts a string to a timestamp given an optional timestamp format. Refer to Java SimpleDateFormat for all possible formats. If the timestamp is omitted the default pattern.yyyy-[M]M-[d]d hh:mm:ss[.f...] is used. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'.Timestamp supports up to millisecond accuracy with value of 999Refer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Converts a string to a timestamp given an optional timestamp format. If the timestamp is omitted the default pattern yyyy-[M]M-[d]d hh:mm:ss[.f...] is used. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. Timestamp supports up to millisecond accuracy with value of 999. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
 * ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
 * ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
@@ -1713,13 +1723,13 @@ Converts a string to a timestamp given an optional timestamp format. Refer to Ja
 ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts the timestamp to UTC. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezoneRefer Java's SimpleDateFormat for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Converts the timestamp to UTC. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezone. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
-Replace one set of characters by another set of characters in the string. Characters have  1 to 1 replacement.  
+Replace one set of characters by another set of characters in the string. Characters have 1 to 1 replacement.  
 * ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``  
 * ``translate('(gunchus)', '()', '[') -> '[gunchus'``  
 ___
@@ -1731,7 +1741,7 @@ Trims a string of leading and trailing characters. If second parameter is unspec
 ___
 ### <code>true</code>
 <code><b>true() => boolean</b></code><br/><br/>
-Always returns a true value. Use the function syntax(true()) if there is a column named 'true'.  
+Always returns a true value. Use the function `syntax(true())` if there is a column named 'true'.  
 * ``(10 + 20 == 30) -> true``  
 * ``(10 + 20 == 30) -> true()``  
 ___

@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933357"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827608"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -55,7 +55,7 @@ Beachten Sie, dass in den Ergebnissen alle Telemetrieelemente die Stamm-`operati
 
 Wenn der Aufruf `GET /api/stock/value` an einen externen Dienst erfolgt, müssen Sie die Identität dieses Servers kennen, damit Sie das Feld `dependency.target` entsprechend festlegen können. Wenn der externe Dienst keine Überwachung unterstützt, wird `target` auf den Hostnamen des Diensts festgelegt (z.B. `stock-prices-api.com`). Wenn sich dieser Dienst jedoch durch Zurückgeben eines vordefinierten HTTP-Headers identifiziert, enthält `target` die Dienstidentität, mit der Application Insights verteilte Ablaufverfolgungen durch Abfragen von Telemetriedaten von diesem Dienst erstellen kann.
 
-## <a name="correlation-headers"></a>Korrelations-Header
+## <a name="correlation-headers-using-w3c-tracecontext"></a>Korrelationsheader mit W3C TraceContext
 
 Application Insights geht zum [W3C Trace-Context](https://w3c.github.io/trace-context/) über, der Folgendes definiert:
 
@@ -71,62 +71,20 @@ Das [Korrelations-HTTP-Protokoll, das auch als „Request-ID“ bezeichnet wird]
 
 Application Insights definiert ferner die [Erweiterung](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) für das Korrelations-HTTP-Protokoll. Er verwendet Name/Wert-Paare für `Request-Context`, die die vom unmittelbaren Aufrufer oder Aufgerufenen verwendete Sammlung von Eigenschaften propagieren. Das Application Insights SDK legt mithilfe dieses Headers die Felder `dependency.target` und `request.source` fest.
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für klassische ASP.NET-Apps
- 
-  > [!NOTE]
-  >  Ab `Microsoft.ApplicationInsights.Web` und `Microsoft.ApplicationInsights.DependencyCollector` ist keine Konfiguration mehr erforderlich.
+Der [W3C Trace-Context](https://w3c.github.io/trace-context/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
 
-Die Unterstützung für den W3C Trace-Context erfolgt in abwärtskompatibler Weise. Es wird erwartet, dass die Korrelation mit Anwendungen funktioniert, die mit früheren Versionen des SDK instrumentiert sind (ohne W3C-Unterstützung).
+| Application Insights                   | W3C TraceContext                                      |
+|------------------------------------    |-------------------------------------------------|
+| `Id` der `Request` und `Dependency`     | [parent-id](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | [parent-id](https://w3c.github.io/trace-context/#parent-id) der übergeordneten Spanne dieser Spanne. Wenn es sich um eine Stammspanne handelt, muss dieses Feld leer sein.     |
 
-Wenn Sie weiterhin das ältere `Request-Id`-Protokoll verwenden möchten, können Sie Trace-Context mithilfe der folgenden Konfiguration deaktivieren:
 
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
+Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmodell](../../azure-monitor/app/data-model.md).
 
-Wenn Sie eine ältere Version des SDK ausführen, wird empfohlen, es zu aktualisieren oder die folgende Konfiguration anzuwenden, um den Trace-Context zu ermöglichen.
-Dieses Feature steht ab Version 2.8.0-beta1 in den Paketen `Microsoft.ApplicationInsights.Web` und `Microsoft.ApplicationInsights.DependencyCollector` zur Verfügung.
-Standardmäßig ist es deaktiviert. Zum Aktivieren nehmen Sie die folgenden Änderungen an `ApplicationInsights.config` vor:
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Aktivieren der Unterstützung der verteilten W3C-Ablaufverfolgung für .NET-Apps
 
-- Fügen Sie unter `RequestTrackingTelemetryModule` das Element `EnableW3CHeadersExtraction` hinzu, und legen Sie dessen Wert auf `true` fest.
-- Fügen Sie unter `DependencyTrackingTelemetryModule` das Element `EnableW3CHeadersInjection` hinzu, und legen Sie dessen Wert auf `true` fest.
-- Fügen Sie `W3COperationCorrelationTelemetryInitializer` unter `TelemetryInitializers` hinzu. Dies sieht etwa wie im folgenden Beispiel aus:
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für ASP.NET Core-Apps
-
- > [!NOTE]
-  > Ab Version 2.8.0 von `Microsoft.ApplicationInsights.AspNetCore` ist keine Konfiguration mehr erforderlich.
- 
-Die Unterstützung für den W3C Trace-Context erfolgt in abwärtskompatibler Weise. Es wird erwartet, dass die Korrelation mit Anwendungen funktioniert, die mit früheren Versionen des SDK instrumentiert sind (ohne W3C-Unterstützung).
-
-Wenn Sie weiterhin das ältere `Request-Id`-Protokoll verwenden möchten, können Sie Trace-Context mithilfe der folgenden Konfiguration deaktivieren:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-Wenn Sie eine ältere Version des SDK ausführen, wird empfohlen, es zu aktualisieren oder die folgende Konfiguration anzuwenden, um den Trace-Context zu ermöglichen.
-
-Dieses Feature befindet sich in `Microsoft.ApplicationInsights.AspNetCore` Version 2.5.0-beta1 und `Microsoft.ApplicationInsights.DependencyCollector` Version 2.8.0-beta1.
-Standardmäßig ist es deaktiviert. Um es zu aktivieren, legen Sie `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` auf `true` fest:
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+Die W3C TraceContext-basierte verteilte Ablaufverfolgung ist in allen aktuellen .NET Framework/.NET Core SDKs standardmäßig aktiviert, zusammen mit der Abwärtskompatibilität mit dem „Request-Id“-Legacyprotokoll.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Aktivieren der Unterstützung für die verteilte Ablaufverfolgung von W3C für Java-Apps
 
@@ -204,25 +162,11 @@ Dieses Feature befindet sich in `Microsoft.ApplicationInsights.JavaScript`. Stan
   </script>
   ```
 
-## <a name="opentracing-and-application-insights"></a>OpenTracing und Application Insights
-
-Die [OpenTracing-Datenmodellspezifikation](https://opentracing.io/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span` mit `span.kind = server`                    |
-| `Dependency`                           | `Span` mit `span.kind = client`                    |
-| `Id` der `Request` und `Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)     |
-
-Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmodell](../../azure-monitor/app/data-model.md).
-
-Definitionen von OpenTracing-Konzepten finden Sie in den [Spezifikationen](https://github.com/opentracing/specification/blob/master/specification.md) und [semantischen Konventionen](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) für OpenTracing.
-
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetriekorrelation in OpenCensus Python
 
-OpenCensus Python folgt den zuvor beschriebenen Spezifikationen für das `OpenTracing`-Datenmodell. Außerdem wird [W3C Trace-Context](https://w3c.github.io/trace-context/) unterstützt, ohne dass eine Konfiguration erforderlich ist.
+OpenCensus Python unterstützt [W3C Trace-Context](https://w3c.github.io/trace-context/), ohne dass eine zusätzliche Konfiguration erforderlich ist.
+
+Das OpenCensus-Datenmodell zu Referenzzwecken finden Sie [hier](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace).
 
 ### <a name="incoming-request-correlation"></a>Korrelation eingehender Anforderungen
 
@@ -306,24 +250,9 @@ Sie können die Protokolldaten mithilfe von `AzureLogHandler`exportieren. [hier 
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetriekorrelation in .NET
 
-Im Lauf der Zeit wurden in .NET verschiedene Möglichkeiten zur Korrelation von Telemetrie- und Diagnoseprotokollen definiert:
+.NET-Runtime unterstützt die verteilte Telemetriekorrelation mithilfe von [Activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) und [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 
-- `System.Diagnostics.CorrelationManager` ermöglicht die Nachverfolgung von [LogicalOperationStack und ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1).
-- `System.Diagnostics.Tracing.EventSource` und die Ereignisablaufverfolgung für Windows (ETW) definieren die [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads)-Methode.
-- `ILogger` verwendet [Protokollbereiche](/aspnet/core/fundamentals/logging#log-scopes).
-- Windows Communication Foundation (WCF) und HTTP bieten eine Propagierung des Kontexts „aktuell“.
-
-Allerdings wurde durch diese Methoden nicht die Unterstützung für automatische verteilte Ablaufverfolgung aktiviert. `DiagnosticSource` unterstützt die automatische computerübergreifende Korrelation. .NET-Bibliotheken unterstützen `DiagnosticSource` und ermöglichen die automatische computerübergreifende Propagierung des Korrelationskontexts durch die Übertragungsmethode, z.B. HTTP.
-
-Im [Benutzerleitfaden zu „Activity“](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) in `DiagnosticSource` werden die Grundlagen von Nachverfolgungsaktivitäten erläutert.
-
-ASP.NET Core 2.0 unterstützt die Extraktion von HTTP-Headern und das Starten neuer Aktivitäten.
-
-`System.Net.Http.HttpClient` unterstützt ab Version 4.1.0 die automatische Injektion von Korrelations-HTTP-Headern und die Nachverfolgung von HTTP-Aufrufen als Aktivitäten.
-
-Für das klassische ASP.NET ist das neue HTTP-Modul [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) verfügbar. Dieses Modul implementiert Telemetriekorrelationen mithilfe von `DiagnosticSource`. Es startet Aktivitäten basierend auf den eingehenden Anforderungsheadern. Außerdem korreliert es Telemetriedaten aus den verschiedenen Phasen der Anforderungsverarbeitung, selbst wenn jede Phase der Verarbeitung von Internetinformationsdiensten (Internet Information Services, IIS) in einem anderen verwalteten Thread ausgeführt wird.
-
-Das Application Insights SDK ab Version 2.4.0-beta1 verwendet `DiagnosticSource` und `Activity`, um Telemetriedaten zu sammeln und mit der aktuellen Aktivität zu verknüpfen.
+Das Application Insights .NET SDK verwendet `DiagnosticSource` und `Activity` , um Telemetriedaten zu sammeln und zu korrelieren.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetriekorrelation in Java

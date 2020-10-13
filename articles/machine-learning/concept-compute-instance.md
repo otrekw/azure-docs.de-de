@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/25/2020
-ms.openlocfilehash: ec7fc5cec7d8ba63d9a628c3ede978818a2c3012
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.date: 10/02/2020
+ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031023"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826906"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -24,7 +24,7 @@ Compute-Instanzen vereinfachen den Einstieg in die Azure Machine Learning-Entwic
 
 Nutzen Sie eine Compute-Instanz als Ihre vollständig konfigurierte und verwaltete Entwicklungsumgebung in der Cloud für maschinelles Lernen. Sie können auch als Computeziel für Entwicklungs- und Testzwecke für Training und Rückschluss verwendet werden.  
 
-Verwenden Sie für das Modelltraining in Produktionsqualität einen [Azure Machine Learning-Computecluster](how-to-create-attach-compute-sdk.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten. Verwenden Sie für die Modellimplementierung in Produktionsqualität den [Azure Kubernetes Service-Cluster](how-to-deploy-azure-kubernetes-service.md).
+Verwenden Sie für das Modelltraining in Produktionsqualität einen [Azure Machine Learning-Computecluster](how-to-create-attach-compute-cluster.md) mit Skalierungsmöglichkeiten dank mehrerer Knoten. Verwenden Sie für die Modellimplementierung in Produktionsqualität den [Azure Kubernetes Service-Cluster](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="why-use-a-compute-instance"></a>Gründe für eine Compute-Instanz
 
@@ -32,10 +32,12 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 
 |Hauptvorteile|BESCHREIBUNG|
 |----|----|
-|Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen. Sie können die VS Code Remote-Entwicklung auch mit [SSH](how-to-set-up-vs-code-remote.md) einrichten. |
+|Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen.<br/> Sie können auch [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) mit Compute-Instanzen verwenden.
 |Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>– Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Unterstützung virtueller Netzwerke](how-to-enable-virtual-network.md#compute-instance)<br/>- SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>TLS 1.2 aktiviert |
 |Vorkonfiguriert&nbsp;für&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
+
+Sie können selbst [eine Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create), oder ein Administrator kann [eine Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#create-on-behalf-of-preview).
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
 
@@ -45,7 +47,11 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 
 Eine Azure Machine Learning-Compute-Instanz ermöglicht Ihnen das Erstellen, Trainieren und Bereitstellen von Modellen in einer vollständig integrierten Notebookumgebung in Ihrem Arbeitsbereich.
 
-Diese Tools und Umgebungen sind in der Compute-Instanz installiert: 
+Sie können Jupyter-Notebooks in [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) unter Verwendung der Compute-Instanz als Remoteserver ausführen, ohne dass SSH erforderlich ist. Sie können die VS Code-Integration auch über die [Remote-SSH-Erweiterung](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/) aktivieren.
+
+Sie können [Pakete installieren](how-to-create-manage-compute-instance.md#install-packages) und [Kernel](how-to-create-manage-compute-instance.md#add-new-kernels) zu Ihrer Compute-Instanz hinzufügen.  
+
+Die folgenden Tools und Umgebungen sind in der Compute-Instanz bereits installiert: 
 
 |Allgemeine Tools und Umgebungen|Details|
 |----|:----:|
@@ -69,7 +75,7 @@ Diese Tools und Umgebungen sind in der Compute-Instanz installiert:
 |Anaconda Python||
 |Jupyter und Erweiterungen||
 |Jupyterlab und Erweiterungen||
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>aus PyPI|Umfasst die meisten der AzureML-Zusatzpakete.  Um die vollständige Liste anzuzeigen, [öffnen Sie auf Ihrer Compute-Instanz ein Terminalfenster](how-to-run-jupyter-notebooks.md#terminal), und führen Sie Folgendes aus: <br/> `conda list -n azureml_py36 azureml*` |
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>aus PyPI|Umfasst die meisten der AzureML-Zusatzpakete.  Um die vollständige Liste anzuzeigen, [öffnen Sie auf Ihrer Compute-Instanz ein Terminalfenster](how-to-run-jupyter-notebooks.md#terminal), und führen Sie Folgendes aus: <br/> `conda list -n azureml_py36 azureml*` |
 |Andere PyPi-Pakete|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-Pakete|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep Learning-Pakete|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -77,20 +83,6 @@ Diese Tools und Umgebungen sind in der Compute-Instanz installiert:
 |Python- und R-SDK-Beispiele für Azure Machine Learning||
 
 Python-Pakete sind alle in der **Python 3.6 – AzureML**-Umgebung installiert.  
-
-### <a name="installing-packages"></a>Installieren von Paketen
-
-Sie können Pakete direkt in einem Jupyter-Notebook oder in RStudio installieren:
-
-* Verwenden Sie die Registerkarte **Pakete** unten rechts oder die Registerkarte **Konsole** oben links.  
-* Python: Fügen Sie Installationscode hinzu, und führen Sie ihn in einer Zelle im Jupyter-Notebook aus.
-
-Sie können auch auf eine der folgenden Arten auf ein Terminalfenster zugreifen:
-
-* RStudio: Wählen Sie die Registerkarte **Terminal** oben links aus.
-* Jupyter Lab:  Wählen Sie die Kachel **Terminal** unter der Überschrift **Other** (Andere) auf der Registerkarte „Launcher“ aus.
-* Jupyter:  Wählen Sie **Neu > Terminal** oben rechts auf der Registerkarte „Dateien“ aus.
-* SSH-Verbindung mit dem Computer.  Installieren Sie dann Python-Pakete in der **Python 3.6 – AzureML**-Umgebung.  Installieren Sie R-Pakete in der **R**-Umgebung.
 
 ## <a name="accessing-files"></a>Zugreifen auf Dateien
 
@@ -144,7 +136,7 @@ Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-1st-experiment-sdk-setup.md#azure) erstellen.
 * Im Azure-Portal
 * Über eine Azure Resource Manager-Vorlage. Eine Beispielvorlage finden Sie unter [Erstellen einer Azure Machine Learning Compute-Instanzvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).
-* Mit dem [Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
+* Mit dem [Azure Machine Learning SDK](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-compute-instance.md)
 * Über die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md#computeinstance)
 
 Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können.
@@ -153,7 +145,7 @@ Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale
 ### <a name="create-on-behalf-of-preview"></a>Erstellen im Namen von (Vorschau)
 
 Als Administrator können Sie im Namen einer wissenschaftlichen Fachkraft für Daten eine Compute-Instanz erstellen und ihr die Instanz mit der folgenden Methode zuweisen:
-* [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/2020-06-01/workspaces/computes).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
+* [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
 * REST-API
 
 Die wissenschaftliche Fachkraft für Daten, für die Sie die Compute-Instanz erstellen, benötigt die folgenden RBAC-Berechtigungen: 
@@ -192,4 +184,5 @@ Neue Notebook-VMs können nicht erstellt werden. Sie können jedoch weiterhin au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- * [Tutorial: Trainieren Ihres ersten ML-Modells](tutorial-1st-experiment-sdk-train.md) zeigt, wie eine Compute-Instanz mit einem integrierten Notebook verwendet wird.
+* [Erstellen und Verwalten einer Compute-Instanz](how-to-create-manage-compute-instance.md)
+* [Tutorial: Trainieren Ihres ersten ML-Modells](tutorial-1st-experiment-sdk-train.md) zeigt, wie eine Compute-Instanz mit einem integrierten Notebook verwendet wird.

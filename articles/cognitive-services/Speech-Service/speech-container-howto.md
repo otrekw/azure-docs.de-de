@@ -1,23 +1,25 @@
 ---
-title: Installieren von Speech-Containern – Speech-Dienst
+title: Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts
 titleSuffix: Azure Cognitive Services
-description: Installieren Sie Speech-Container, und führen Sie sie aus. Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Die Sprachsynthese konvertiert Eingabetext in menschenähnliche synthetische Sprache.
+description: Verwenden Sie die Docker-Container für den Speech-Dienst, um Spracherkennung, Transkription, Generierung und mehr lokal durchzuführen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: Lokal, Docker, Container
+ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900467"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813269"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Installieren und Ausführen von Containern für den Speech-Dienst 
+# <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
 Container ermöglichen es Ihnen, einige der Speech-Dienst-APIs in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Speech-Container herunterladen, installieren und ausführen.
 
@@ -37,14 +39,14 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 >
 > Wenn Sie die Speech-Container verwenden möchten, müssen Sie eine Onlineanfrage einreichen und diese genehmigen lassen. Weitere Informationen finden Sie weiter unten im Abschnitt **Anfordern der Genehmigung für die Containerausführung**.
 
-| Funktion | Features | Neueste Version |
+| Container | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.3.1 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.3.1 |
-| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.5.0 |
-| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.5.0 |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.5.0 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.5.0 |
+| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.7.0 |
+| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.7.0 |
 | Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.0 |
-| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.1.0 |
+| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.2.0 |
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
@@ -96,7 +98,7 @@ Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, 
 
 ## <a name="request-approval-to-the-run-the-container"></a>Anfordern der Genehmigung für die Containerausführung
 
-Füllen Sie das [Anforderungsformular](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. 
+Füllen Sie das [Anforderungsformular](https://aka.ms/csgate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -136,6 +138,9 @@ Containerimages für Speech stehen in der folgenden Container Registry zur Verf�
 | Benutzerdefinierte Sprachsynthese | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest` |
 
 # <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
+
+> [!TIP]
+> Um die nützlichsten Ergebnisse zu erhalten, empfehlen wir, den Container für Speech-Spracherkennung mit den Containern für Sprache-in-Text oder die benutzerdefinierte Spracherkennung zu verwenden. 
 
 | Container | Repository |
 |-----------|------------|
@@ -245,7 +250,7 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.1.0-amd64-en-us-arianeural-preview
+1.2.0-amd64-en-us-arianeural-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stimmen des Containers **Text-zu-Sprache (neuronal)** finden Sie unter [Imagetags für „Text-zu-Sprache (neuronal)“](../containers/container-image-tags.md#neural-text-to-speech).
@@ -468,7 +473,7 @@ Dieser Befehl:
 * Wenn das benutzerdefinierte Modell zuvor bereits heruntergeladen wurde, wird die `ModelId` ignoriert.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
-# <a name="language-detection"></a>[Sprachenerkennung](#tab/lid)
+# <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
 
 Führen Sie zum Ausführen des Containers für die *Speech-Sprachenerkennung* den folgenden `docker run`-Befehl aus.
 
@@ -482,7 +487,7 @@ ApiKey={API_KEY}
 
 Dieser Befehl: 
 
-* Führt einen Speech-Sprachenerkennungscontainer aus dem Containerimage aus.
+* Führt einen Speech-Sprachenerkennungscontainer aus dem Containerimage aus. Gegenwärtig werden Ihnen für die Ausführung dieses Images keine Gebühren berechnet.
 * Ordnet 1 CPU-Kern und 1 GB Arbeitsspeicher zu.
 * Macht den TCP-Port 5003 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
@@ -509,7 +514,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | Container | SDK-Host-URL | Protocol |
 |--|--|--|
 | Standardmäßige und benutzerdefinierte Spracherkennung | `ws://localhost:5000` | WS |
-| Sprachsynthese (einschließlich standardmäßige, benutzerdefinierte und neuronale Sprachsynthese), Sprachenerkennung | `http://localhost:5000` | HTTP |
+| Sprachsynthese (einschließlich standardmäßige, benutzerdefinierte und neuronale Sprachsynthese), Speech-Sprachenerkennung | `http://localhost:5000` | HTTP |
 
 Weitere Informationen zur Verwendung der Protokolle WSS und HTTPS finden Sie unter [Containersicherheit](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 

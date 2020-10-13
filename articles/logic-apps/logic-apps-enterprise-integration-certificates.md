@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090330"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565258"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Verbessern der Sicherheit von B2B-Nachrichten mithilfe von Zertifikaten
 
@@ -51,11 +51,11 @@ Um ein *öffentliches Zertifikat* in Logik-Apps mit B2B-Funktionen verwenden zu 
    | **Certificate** | <*certificate-file-name*> (Name der Zertifikatdatei) | Klicken Sie neben dem Feld **Zertifikat** auf das Ordnersymbol, um die Zertifikatdatei zu suchen und auszuwählen, die Sie hochladen möchten. |
    ||||
 
-   ![Klicken auf „Hinzufügen“, Angeben der Zertifikatdetails](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![Screenshot, der zeigt, wo „Hinzufügen“ zur Angabe von Zertifikatdetails ausgewählt wird](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    Azure lädt das Zertifikat nach dem Überprüfen Ihrer Auswahl hoch.
 
-   ![Anzeigen des neuen Zertifikats in Azure](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![Screenshot, der zeigt, wo Azure das neue Zertifikat anzeigt](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>Hochladen eines privaten Zertifikats
 

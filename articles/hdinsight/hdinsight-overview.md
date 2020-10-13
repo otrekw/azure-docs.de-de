@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754870"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804060"
 ---
 # <a name="what-is-azure-hdinsight"></a>Worum handelt es sich bei Azure HDInsight?
 
@@ -35,13 +35,13 @@ In diesem Abschnitt werden die Funktionen von Azure HDInsight aufgeführt.
 
 |Funktion  |BESCHREIBUNG  |
 |---------|---------|
-|Cloudbasiert     |     Mit Azure HDInsight können Sie optimierte Cluster für [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md), [Spark](./spark/apache-spark-jupyter-spark-sql.md), [Interactive Query (LLAP)](./interactive-query/apache-interactive-query-get-started.md), [Kafka](./kafka/apache-kafka-get-started.md), [Storm](./storm/apache-storm-tutorial-get-started-linux.md), [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) und  [ML Services](./r-server/r-server-overview.md) in Azure erstellen. Darüber hinaus bietet HDInsight eine End-to-End-SLA für alle Ihre Produktionsworkloads.  |
-|Kostengünstig und skalierbar     | Mit HDInsight können Sie Workloads [zentral hoch- und herunterskalieren](./hdinsight-administer-use-portal-linux.md#scale-clusters) . Durch das  [Erstellen bedarfsgesteuerter Cluster](./hdinsight-hadoop-create-linux-clusters-adf.md)  können Sie Ihre Kosten senken, indem Sie nur für das bezahlen, was Sie tatsächlich nutzen. Außerdem können Sie Datenpipelines für die Operationalisierung Ihrer Aufträge erstellen. Die Entkoppelung von Compute und Speicher sorgt für bessere Leistung und mehr Flexibilität. |
-|Sicher und konform    | Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), [Verschlüsselung](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) und Integration von [Azure Active Directory](./domain-joined/hdinsight-security-overview.md) schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen [Compliancestandards](https://azure.microsoft.com/overview/trusted-cloud).        |
-|Überwachung    | Dank der Integration mit [Azure Monitor-Protokollen](./hdinsight-hadoop-oms-log-analytics-tutorial.md) bietet Azure HDInsight eine zentrale Oberfläche für die Überwachung Ihrer gesamten Cluster.        |
-|Globale Verfügbarkeit | HDInsight ist in mehr  [Regionen](https://azure.microsoft.com/regions/services/)  verfügbar als jede andere Big Data-Analyselösung. Zudem steht Azure HDInsight für Azure Government, China und Deutschland zur Verfügung, was die Erfüllung geschäftlicher Anforderungen in zentralen unabhängigen Bereichen ermöglicht. |  
-|Produktivität     |  Mit Azure HDInsight können Sie umfangreiche Produktivitätstools für Hadoop und Spark in Ihrer bevorzugten Entwicklungsumgebung nutzen. Zu diesen Entwicklungsumgebungen gehören [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md), [VSCode](./hdinsight-for-vscode.md), [Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) und [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md) für die Unterstützung von Scala, Python, R, Java und .NET. Datenanalysten können zudem über gängige Notebooks wie [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) und [Zeppelin](./spark/apache-spark-zeppelin-notebook.md) zusammenarbeiten.    |
-|Erweiterbarkeit     |  Sie können die HDInsight-Cluster um installierte Komponenten erweitern (z.B. Hue, Presto usw.), indem Sie [Skriptaktionen](./hdinsight-hadoop-customize-cluster-linux.md) verwenden, [Edgeknoten hinzufügen](./hdinsight-apps-use-edge-node.md) oder [andere, für Big Data zertifizierte Anwendungen integrieren](./hdinsight-apps-install-applications.md). HDInsight lässt sich mittels [One-Click-Bereitstellung](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) nahtlos in die gängigsten Big Data-Lösungen integrieren.|
+|Cloudbasiert     |     Mit Azure HDInsight können Sie optimierte Cluster für Hadoop, Spark, [Interactive Query (LLAP)](./interactive-query/apache-interactive-query-get-started.md), Kafka, Storm, HBase und ML Services in Azure erstellen. Darüber hinaus bietet HDInsight eine End-to-End-SLA für alle Ihre Produktionsworkloads.  |
+|Kostengünstig und skalierbar     | Mit HDInsight können Sie Workloads hoch- und herunterskalieren. Durch das Erstellen bedarfsgesteuerter Cluster können Sie Ihre Kosten senken, indem Sie nur für das bezahlen, was Sie tatsächlich nutzen. Außerdem können Sie Datenpipelines für die Operationalisierung Ihrer Aufträge erstellen. Die Entkoppelung von Compute und Speicher sorgt für bessere Leistung und mehr Flexibilität. |
+|Sicher und konform    | Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von Azure Virtual Network, Verschlüsselung und Integration von Azure Active Directory schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen Compliancestandards.        |
+|Überwachung    | Dank der Integration mit Azure Monitor-Protokollen bietet Azure HDInsight eine zentrale Oberfläche für die Überwachung Ihrer gesamten Cluster.        |
+|Globale Verfügbarkeit | HDInsight ist in mehr Regionen verfügbar als jede andere Big Data-Analyselösung. Zudem steht Azure HDInsight für Azure Government, China und Deutschland zur Verfügung, was die Erfüllung geschäftlicher Anforderungen in zentralen unabhängigen Bereichen ermöglicht. |  
+|Produktivität     |  Mit Azure HDInsight können Sie umfangreiche Produktivitätstools für Hadoop und Spark in Ihrer bevorzugten Entwicklungsumgebung nutzen. Zu diesen Entwicklungsumgebungen gehören Visual Studio, VSCode, Eclipse und IntelliJ für die Unterstützung von Scala, Python, R, Java und .NET. Datenanalysten können zudem über gängige Notebooks wie Jupyter und Zeppelin zusammenarbeiten.    |
+|Erweiterbarkeit     |  Sie können die HDInsight-Cluster um installierte Komponenten erweitern (z.B. Hue, Presto usw.), indem Sie Skriptaktionen verwenden, Edgeknoten hinzufügen oder andere, für Big Data zertifizierte Anwendungen integrieren. HDInsight lässt sich mittels One-Click-Bereitstellung nahtlos in die gängigsten Big Data-Lösungen integrieren.|
 
 ## <a name="scenarios-for-using-hdinsight"></a>Verwendungsszenarien für HDInsight
 
@@ -91,11 +91,11 @@ HDInsight umfasst bestimmte Clustertypen und Clusteranpassungsfunktionen, z.B. d
 
 ## <a name="open-source-components-in-hdinsight"></a>Open-Source-Komponenten in HDInsight
 
-Azure HDInsight ermöglicht die Erstellung von Clustern mit Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, HBase und R. Diese Cluster verfügen standardmäßig über weitere integrierte Open Source-Komponenten wie [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), [Avro](https://avro.apache.org/docs/current/spec.html), [Apache Hive](https://hive.apache.org), [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), [Apache Mahout](https://mahout.apache.org/), [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Phoenix](https://phoenix.apache.org/), [Apache Pig](https://pig.apache.org/), [Apache Sqoop](https://sqoop.apache.org/), [Apache Tez](https://tez.apache.org/), [Apache Oozie](https://oozie.apache.org/), [Apache ZooKeeper](https://zookeeper.apache.org/).  
+Azure HDInsight ermöglicht die Erstellung von Clustern mit Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, HBase und R. Diese Cluster verfügen standardmäßig über weitere integrierte Open Source-Komponenten wie Apache Ambari5, Avro5, Apache Hive3, HCatalog2, Apache Mahout2, Apache Hadoop MapReduce3, Apache Hadoop YARN2, Apache Phoenix3, Apache Pig3, Apache Sqoop3, Apache Tez3, Apache Oozie2 und Apache ZooKeeper5.  
 
 ## <a name="programming-languages-in-hdinsight"></a>Programmiersprachen in HDInsight
 
-HDInsight-Cluster, z.B. Spark, HBase, Kafka, Hadoop und andere, unterstützen viele Programmiersprachen. Einige Programmiersprachen werden nicht standardmäßig installiert. [Verwenden Sie eine Skriptaktion](./hdinsight-hadoop-script-actions-linux.md), um Bibliotheken, Module oder Pakete zu installieren, die standardmäßig nicht installiert sind.
+HDInsight-Cluster, z.B. Spark, HBase, Kafka, Hadoop und andere, unterstützen viele Programmiersprachen. Einige Programmiersprachen werden nicht standardmäßig installiert. Verwenden Sie eine Skriptaktion, um Bibliotheken, Module oder Pakete zu installieren, die standardmäßig nicht installiert sind.
 
 |Programmiersprache  |Information  |
 |---------|---------|
@@ -107,13 +107,10 @@ HDInsight-Cluster, z.B. Spark, HBase, Kafka, Hadoop und andere, unterstützen vi
 
 Sie können HDInsight-Entwicklungstools wie IntelliJ, Eclipse, Visual Studio Code und Visual Studio verwenden, um HDInsight-Datenabfragen und -aufträge zu erstellen und zu übermitteln – mit nahtloser Integration in Azure.
 
-* [Azure-Toolkit für IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [Azure-Toolkit für Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [Azure HDInsight-Tools für VS Code](./hdinsight-for-vscode.md)
-
-* [Azure Data Lake-Tools für Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* Azure-Toolkit für IntelliJ10
+* Azure-Toolkit für Eclipse6
+* Azure HDInsight-Tools für VS Code13
+* Azure Data Lake-Tools für Visual Studio9
 
 ## <a name="business-intelligence-on-hdinsight"></a>Business Intelligence in HDInsight
 
@@ -129,9 +126,18 @@ Bekannte Business Intelligence-Tools (BI) rufen Daten, die in HDInsight integrie
 
 * [Verbinden von Excel mit Apache Hadoop über den Microsoft Hive ODBC-Treiber](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (setzt Windows voraus)
 
+
+## <a name="in-region-data-residency"></a>Data Residency in der Region 
+
+Spark, Hadoop, LLAP, Storm und MLService speichern keine Kundendaten, daher erfüllen diese Dienste automatisch die Anforderungen an die Data Residency in der Region, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen. 
+
+Kafka und HBase speichern Kundendaten. Diese Daten werden von Kafka und HBase automatisch in einer einzigen Region gespeichert, sodass dieser Dienst die Anforderungen an die Data Residency in der Region erfüllt, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen. 
+
+
+Bekannte Business Intelligence-Tools (BI) rufen Daten, die in HDInsight integriert sind, entweder über das Power Query-Add-In oder den Microsoft Hive ODBC-Treiber ab, analysieren sie und erstellen Berichte.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines Apache Hadoop-Clusters in HDInsight](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * [Erstellen eines Apache Spark-Clusters: Portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Planen eines virtuellen Netzwerks für Azure HDInsight](hdinsight-plan-virtual-network-deployment.md)
 * [Unternehmenssicherheit in Azure HDInsight](./domain-joined/hdinsight-security-overview.md)

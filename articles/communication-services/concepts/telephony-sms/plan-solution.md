@@ -2,105 +2,79 @@
 title: Planen Ihrer Azure Communication Services-Lösung für Telefonie und SMS
 titleSuffix: An Azure Communication Services concept document
 description: Es wird beschrieben, wie Sie die Verwendung von Telefonnummern und der Telefoniefunktionen effektiv planen.
-author: stkozak
-manager: rampras
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: stkozak
-ms.date: 06/23/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: overview
+ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944242"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767134"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Planen Ihrer Telefonie- und SMS-Lösung
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-In diesem Dokument werden die verschiedenen Telefoniepläne und Nummerntypen von Azure Communication Services beschrieben. Es werden die einzelnen Entscheidungsabläufe beschrieben, um Ihnen die Auswahl eines Sprachdienstanbieters und der Telefonnummerntypen, Pläne und Funktionen zu erleichtern, die von Communication Services bereitgestellt werden.
 
-## <a name="about-phone-numbers-in-azure-communications-services"></a>Informationen zu Telefonnummern in Azure Communication Services
+Mit Azure Communication Services können Sie Telefonnummern verwenden, um Sprachanrufe zu tätigen und SMS-Nachrichten über das Telefonfestnetz (Public Switched Telephone Network, PSTN) zu versenden. In diesem Dokument werden die Telefonnummerntypen, Pläne und die regionale Verfügbarkeit für die Planung Ihrer Telefonie- und SMS-Lösung mithilfe von Communication Services überprüft.
 
-Azure Communication Services ermöglicht Ihnen die Verwendung von Telefonnummern zum Tätigen/Senden und Empfangen von Telefonanrufen und SMS-Nachrichten. Diese Telefonnummern können verwendet werden, um die Anrufer-ID für ausgehende Anrufe zu konfigurieren, die von Ihrem Dienst getätigt werden.
-  
-Falls Sie nicht über eine vorhandene Telefonnummer zum Importieren in Ihre Communication Services-Lösung verfügen, besteht die einfachste Vorgehensweise darin, über Azure Communication Services eine neue Telefonnummer zu beziehen. Dies dauert nur wenige Minuten.
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-Falls Sie eine vorhandene Telefonnummer in Ihrer Lösung weiter nutzen möchten (z. B. 1-800-COMPANY), können Sie sie vom vorhandenen Anbieter zu Communication Services portieren.
-
-Das folgende Diagramm soll Ihnen als Hilfe beim Navigieren durch die verfügbaren Optionen dienen:
-
-:::image type="content" source="../media/plan-solution/decision-tree-basic.png" alt-text="Diagramm: Treffen einer Entscheidung zu Ihren Telefonnummern":::
-
-Wir sehen uns nun die Typen und Funktionen der Telefonnummern an, die in Communication Services verfügbar sind. 
-
-## <a name="microsoft-direct-offer-of-phone-numbers-and-capabilities"></a>Direktes Microsoft-Angebot zu Telefonnummern und Funktionen
-
-Bei Azure Communication Services verfügen Entwickler über besondere Flexibilität. Für die meisten Telefonnummern können die Pläne beliebig zusammengestellt werden. Einige Entwickler benötigen nur einen Plan für eingehende Anrufe, und andere entscheiden sich ggf. für Pläne für eingehende Anrufe und ausgehende SMS. Sie können diese Pläne auswählen, wenn Sie Ihre Telefonnummern in Communication Services leasen bzw. portieren.
-
-Die Verfügbarkeit der Pläne richtet sich nach dem Land und dem Telefonnummerntyp, den Sie nutzen. Im Diagramm unten ist der Entscheidungsfluss dargestellt:    Die Verfügbarkeit der Pläne richtet sich nach dem genutzten Land und Telefonnummerntyp.
-
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Example for the decision flow"::: -->
-
-Bevor Sie einen Telefonnummerntyp auswählen können, sehen wir uns den Plan für internationale Telefonnummern an.
-
-### <a name="optional-reading-international-public-telecommunication-numbering-plan-e164"></a>Optionale Lektüre: International Public Telecommunication Numbering Plan (E.164)
-
-> [!NOTE]
-> Wir empfehlen Ihnen die Lektüre dieser Informationen auch für den Fall, dass Sie bereits mit dem E.164-Plan für Telefonnummern vertraut sind, um sich noch besser mit den Nummerntypen und Funktionen des direkten Azure Communication Services-Angebots vertraut zu machen.
-
-Der International Public Telecommunication Numbering Plan ist in der Empfehlung E.164 der International Telecommunication Union (ITU) definiert. Es handelt sich um eine konforme Nummer, wenn sie maximal 15 Ziffern lang ist.
-
-Die Telefonnummer besteht aus den folgenden Elementen:
-
--   Präfix „+“
--   Präfix für die internationale Vorwahl oder Landes-/Regionsvorwahl (ein, zwei oder drei Ziffern) 
--   *(Optional)* Nationale Vorwahl oder Nummerierungsplan, meist als Ortsvorwahl bezeichnet. Die Länge hängt hierbei vom jeweiligen Land ab. In den USA hat diese Vorwahl eine Länge von drei Ziffern. In Australien und Neuseeland wird nur eine Ziffer verwendet. In Deutschland, Japan, Mexiko und einigen anderen Ländern haben die Ortsvorwahlen unterschiedliche Längen. In Deutschland kann die Ortsvorwahl zwischen zwei und fünf Ziffern lang sein, während in Japan ein bis fünf Ziffern verwendet werden.
--   Eine Teilnehmerrufnummer
-
-> [!NOTE]
-> Die obige Klassifizierung entspricht nicht vollständig dem E.164-Standard der ITU und stellt lediglich eine vereinfachte Beschreibung dar. Die Teilnehmerrufnummer ist innerhalb des Standards beispielsweise noch weiter unterteilt. Falls Sie sich eingehender mit dem Plan für internationale Telefonnummern vertraut machen möchten, ist es ratsam, mit dem [E.164-Standard der ITU](https://www.itu.int/rec/T-REC-E.164) zu beginnen.  
-
-Hier sind einige Beispiele angegeben, die Ihnen das Verständnis des Telefonnummernplans erleichtern:
-
-Regionale Telefonnummer in den USA:
-
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Beispiel für eine regionale Telefonnummer in den USA":::
-
-Eine regionale Telefonnummer in Kanada:
-
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Beispiel für eine regionale Telefonnummer in Kanada":::
-
-Eine gebührenfreie Nummer in der Region Nordamerika:
-
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Beispiel für eine gebührenfreie Nummer in Nordamerika":::
-
-Eine Mobiltelefonnummer im Vereinigten Königreich:
-
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Beispiel für eine Mobiltelefonnummer im Vereinigten Königreich":::
-
-Als Nächstes sehen wir uns die spezifischen Telefonnummerntypen an, die in Azure Communication Services verfügbar sind.
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
+ 
+Communication Services bietet zwei Arten von Telefonnummern an: **lokale** und **gebührenfreie**. 
 
-Microsoft bietet regionale und gebührenfreie Pläne für Kurzwahl- und Mobiltelefonnummern in Ländern an, in denen dies möglich ist.
+### <a name="local-numbers"></a>Lokale Nummern
+Lokale (geografische) Nummern sind 10-stellige Telefonnummern, die aus den Ortsvorwahlen in den USA bestehen. Beispiel: `+1 (206) XXX-XXXX` ist eine lokale Nummer mit einer Ortsvorwahl von `206`. Diese Vorwahl ist der Stadt Seattle zugeordnet. Diese Telefonnummern werden im Allgemeinen von Einzelpersonen und lokalen Unternehmen verwendet. Azure Communication Services bietet lokale Nummern in den USA an. Über diese Nummern können Sie telefonieren, aber keine SMS-Nachrichten versenden. 
+
+### <a name="toll-free-numbers"></a>Gebührenfreie Nummern
+Gebührenfreie Nummern sind 10-stellige Telefonnummern mit unterschiedlichen Vorwahlen, die von jeder Telefonnummer aus gebührenfrei angerufen werden können. Beispiel: `+1 (800) XXX-XXXX` ist eine gebührenfreie Nummer in der Region Nordamerika. Diese Telefonnummern werden im Allgemeinen für Kundendienstzwecke verwendet. Azure Communication Services bietet gebührenfreie Nummern in den USA an. Über diese Nummern können Sie telefonieren und SMS-Nachrichten senden. Gebührenfreie Nummern können nicht von Personen verwendet, sondern nur Anwendungen zugewiesen werden.
+
+#### <a name="choosing-a-phone-number-type"></a>Auswählen eines Telefonnummerntyps
+
+Wenn Ihre Telefonnummer von einer Anwendung verwendet wird (z. B. um Anrufe zu tätigen oder Nachrichten im Auftrag Ihres Diensts zu senden), können Sie eine gebührenfreie oder lokale (geografische) Nummer auswählen. Sie können eine gebührenfreie Nummer auswählen, wenn Ihre Anwendung SMS-Nachrichten versendet und/oder Anrufe tätigt.
+
+Wenn Ihre Telefonnummer von einer Person (z. B. einem Benutzer Ihrer anrufenden Anwendung) verwendet wird, muss die lokale (geografische) Telefonnummer verwendet werden. 
 
 In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst: 
 
-| Telefonnummerntyp | Beispiel                              | Länderverfügbarkeit    | Gängiger Anwendungsfall                                                                                                     |
-| ----------------- | ------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Länderspezifisch          | +1 (geografische Ortsvorwahl) XXX XX XX  | USA, Kanada, Puerto Rico | Zuweisen von Telefonnummern für Benutzer in Ihren Anwendungen oder Zuweisen zu IVR-Systemen (Interactive Voice Response, Interaktive Sprachantwort) oder Bots |
-| Gebührenfrei         | +1 (gebührenfreie *Ortsvorwahl*) XXX XX XX | USA, Kanada, Puerto Rico | Zuweisen zu IVR-Systemen (Interactive Voice Response, Interaktive Sprachantwort) oder Bots, SMS-Anwendungen                                        |
+| Telefonnummerntyp | Beispiel                              | Länderverfügbarkeit    | Telefonnummernfähigkeit |Gängiger Anwendungsfall                                                                                                     |
+| ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
+| Lokal (geografisch)        | +1 (Ortsvorwahl) XXX XX XX  | US                      | Anrufe (ausgehend) | Zuweisen von Telefonnummern zu Benutzern in Ihren Anwendungen  |
+| Gebührenfrei         | +1 (gebührenfreie *Ortsvorwahl*) XXX XX XX | US                      | Anrufe (ausgehend), SMS (eingehend/ausgehend)| Zuweisen von Telefonnummern zu IVR-Systemen (Interactive Voice Response, Interaktive Sprachantwort) oder Bots, SMS-Anwendungen                                        |
 
-## <a name="plans"></a>Pläne 
 
-Nun sehen wir uns die Funktionen an, die Sie für Ihre Telefonnummern aktivieren können. Diese Funktionen variieren aufgrund der rechtlichen Anforderungen je nach Land. Azure Communication Services verfügt über die folgenden Funktionen:
+## <a name="phone-number-plans-in-azure-communication-services"></a>Telefonnummernpläne in Azure Communication Services 
 
-- **Unidirektionale ausgehende SMS**: Nützlich für die Benachrichtigung und Szenarien mit zweistufiger Authentifizierung.
-- **Bidirektionale ein- und ausgehende SMS**: Vordefiniertes Paket, bei dem die SMS als Teil eines Plans gesendet und empfangen werden kann.
-- **Anrufe über das Telefonfestnetz**: Sie können eingehende Anrufe auswählen und die Anrufer-ID verwenden, um ausgehende Anrufe zu tätigen.
+Für die meisten Telefonnummern können die Pläne beliebig zusammengestellt werden. Einige Entwickler benötigen nur einen Plan für ausgehende Anrufe, und andere entscheiden sich ggf. für Pläne für ausgehende Anrufe und ausgehende SMS. Diese Pläne können ausgewählt werden, wenn Sie Ihre Telefonnummern in Azure Communication Services leasen.
+
+Welche Pläne Ihnen zur Verfügung stehen, hängt von dem Land ab, in dem Sie tätig sind, von Ihrem Anwendungsfall und von der Art der Telefonnummer, die Sie gewählt haben. Diese Pläne variieren aufgrund der rechtlichen Anforderungen je nach Land. Azure Communication Services verfügt über die folgenden Pläne:
+
+- **Unidirektionale ausgehende SMS:** Dieser Plan ermöglicht es Ihnen, SMS-Nachrichten an Ihre Benutzer zu senden. Dieser Plan ist hilfreich für Szenarien wie Benachrichtigungen und zweistufige Authentifizierungswarnungen. 
+- **Bidirektionale ein- und ausgehende SMS:** Dieser Plan ermöglicht es Ihnen, Nachrichten von Ihren Benutzern mithilfe von Telefonnummern zu senden und zu empfangen. Dieser Plan ist in Kundendienstszenarien hilfreich.
+- **Unidirektionale ausgehende Telefonanrufe:** Dieser Plan ermöglicht es Ihnen, Ihre Benutzer anzurufen und die Anrufer-ID für ausgehende Anrufe, die von Ihrem Dienst getätigt werden, zu konfigurieren. Dieser Plan ist in Kundendienst- und Sprachbenachrichtigungsszenarien hilfreich.
+
+## <a name="countryregion-availability"></a>Verfügbarkeit in Land/Region
+
+In der folgenden Tabelle wird gezeigt, wo Sie verschiedene Telefonnummerntypen sowie die mit diesen Telefonnummerntypen verbundenen ein- und ausgehenden Anruf- und SMS-Funktionen abrufen können.
+
+|Nummerntyp| Abrufen von Nummern in | Tätigen von Anrufen nach                                        | Empfangen von Anrufen aus                                    |Senden von Nachrichten nach       | Empfangen von Nachrichten aus |
+|-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
+| Lokal (geografisch)  | US                 | USA, Kanada, Vereinigtes Königreich, Deutschland, Frankreich, +weitere*| USA, Kanada, Vereinigtes Königreich, Deutschland, Frankreich, +weitere* |Nicht verfügbar| Nicht verfügbar |
+| Gebührenfrei | US                 | US                                                   | US                                                    |US                | US |
+
+*Weitere Details zu Anrufzielen und Preisen finden Sie auf der [Seite mit der Preisübersicht](../pricing.md).
+
+## <a name="azure-subscriptions-eligibility"></a>Berechtigung für Azure-Abonnements
+
+Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können nicht über Testkonten abgerufen werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -113,5 +87,5 @@ Nun sehen wir uns die Funktionen an, die Sie für Ihre Telefonnummern aktivieren
 ### <a name="conceptual-documentation"></a>Dokumentation
 
 - [Sprach- und Videokonzepte](../voice-video-calling/about-call-types.md)
-- [Anruf- und SMS-Abläufe](../call-flows.md)
+- [Anrufabläufe](../call-flows.md)
 - [Preise](../pricing.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420525"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666782"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>Reserviertes Präfix für öffentliche IPv6-Adressen
 
@@ -28,7 +28,7 @@ Alle öffentlichen IP-Adressen, die Sie reservieren, sind einer Azure-Region Ihr
 > [!WARNING]
 > Achten Sie darauf, dass Sie Ihre öffentlichen IP-Adressen nicht versehentlich löschen. Durch das Löschen einer öffentlichen IP-Adresse wird sie aus Ihrem Abonnement entfernt, und Sie können sie nicht wiederherstellen (auch nicht mithilfe des Azure-Supports).
 
-Zusätzlich zum Reservieren einzelner IPv6-Adressen können Sie zusammenhängende Bereiche von Azure-IPv6-Adressen (als IP-Präfix bezeichnet) zur Verwendung reservieren.  Ähnlich wie einzelne IP-Adressen sind auch reservierte Präfixe einer Azure-Region Ihrer Wahl und Ihrem Azure-Abonnement zugeordnet. Das Reservieren eines vorhersagbaren, zusammenhängenden Bereichs von Adressen bietet viele Verwendungsmöglichkeiten. Beispielsweise können Sie die Aufnahme Ihrer in Azure gehosteten Anwendungen in die IP-*Whitelist* für Ihr Unternehmen und Ihre Kunden erheblich vereinfachen, da Ihre statischen IP-Bereiche problemlos in lokale Firewalls programmiert werden können.  Sie können nach Bedarf einzelne öffentliche IP-Adressen aus Ihrem IP-Präfix erstellen, und wenn Sie diese einzelnen öffentlichen IP-Adressen löschen, werden sie in den reservierten Bereich *zurückgegeben*, sodass Sie sie später wieder verwenden können. Alle IP-Adressen in Ihrem IP-Präfix sind für Ihre ausschließliche Nutzung reserviert, bis Sie Ihr Präfix löschen.
+Zusätzlich zum Reservieren einzelner IPv6-Adressen können Sie zusammenhängende Bereiche von Azure-IPv6-Adressen (als IP-Präfix bezeichnet) zur Verwendung reservieren.  Ähnlich wie einzelne IP-Adressen sind auch reservierte Präfixe einer Azure-Region Ihrer Wahl und Ihrem Azure-Abonnement zugeordnet. Das Reservieren eines vorhersagbaren, zusammenhängenden Bereichs von Adressen bietet viele Verwendungsmöglichkeiten. Beispielsweise können Sie die IP-*Filterung* Ihrer in Azure gehosteten Anwendungen für Ihr Unternehmen und Ihre Kunden erheblich vereinfachen, da Ihre statischen IP-Bereiche problemlos in lokale Firewalls programmiert werden können.  Sie können nach Bedarf einzelne öffentliche IP-Adressen aus Ihrem IP-Präfix erstellen, und wenn Sie diese einzelnen öffentlichen IP-Adressen löschen, werden sie in den reservierten Bereich *zurückgegeben*, sodass Sie sie später wieder verwenden können. Alle IP-Adressen in Ihrem IP-Präfix sind für Ihre ausschließliche Nutzung reserviert, bis Sie Ihr Präfix löschen.
 
 
 

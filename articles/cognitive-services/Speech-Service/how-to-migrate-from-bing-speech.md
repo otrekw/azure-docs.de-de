@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 43679c52727f8cc84c7292592b68dddae7f1ea68
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362077"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825597"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Speech-Dienst
 
@@ -42,8 +42,8 @@ Der Speech-Dienst ähnelt weitgehend der Bing-Spracheingabe, wobei die folgenden
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | Der Speech-Dienst unterstützt Windows 10, UWP (Universelle Windows-Plattform) und .NET Standard 2.0. |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Der Speech-Dienst unterstützt Windows und Linux. |
 | Java-SDK | :heavy_check_mark: | :heavy_check_mark: | Der Speech-Dienst unterstützt Android- und Speech-Geräte. |
-| Kontinuierliche Spracherkennung | 10 Minuten | Unbegrenzt (mit SDK) | Die WebSockets-Protokolle der Bing-Spracheingabe und des Speech-Diensts unterstützen bis zu 10 Minuten pro Aufruf. Das Spracherkennungs-SDK verbindet sich jedoch bei einem Timeout oder wenn die Verbindung getrennt wird automatisch erneut. |
-| Teil- oder Zwischenergebnisse | :heavy_check_mark: | :heavy_check_mark: | Mit WebSockets-Protokoll oder SDK. |
+| Kontinuierliche Spracherkennung | 10 Minuten | Unbegrenzt | Das Speech SDK unterstützt eine unbegrenzte kontinuierliche Erkennung und stellt die Verbindung bei einem Timeout oder einem Verbindungsabbruch automatisch wieder her. |
+| Teil- oder Zwischenergebnisse | :heavy_check_mark: | :heavy_check_mark: | Unterstützt mit dem Speech SDK. |
 | Benutzerdefinierte Spracherkennungsmodelle | :heavy_check_mark: | :heavy_check_mark: | Die Bing-Spracheingabe erfordert ein separates Custom Speech-Abonnement. |
 | Benutzerdefinierte Voicefonts | :heavy_check_mark: | :heavy_check_mark: | Die Bing-Spracheingabe erfordert ein separates Custom Voice-Abonnement. |
 | 24-KHz-Stimmen | :heavy_minus_sign: | :heavy_check_mark: |
@@ -53,7 +53,7 @@ Der Speech-Dienst ähnelt weitgehend der Bing-Spracheingabe, wobei die folgenden
 | Erkennungsmodus | Manuell über den Endpunkt-URI | Automatic | Der Erkennungsmodus ist im Speech-Dienst nicht verfügbar. |
 | Endpunktregion | Global | Länderspezifisch | Regionale Endpunkte verbessern die Latenz. |
 | REST-APIs | :heavy_check_mark: | :heavy_check_mark: | Die REST-APIs des Speech-Diensts sind kompatibel mit der Bing-Spracheingabe (unterschiedlicher Endpunkt). REST-APIs unterstützen Sprachsynthese- und eingeschränkte Spracherkennungsfunktionen. |
-| WebSockets-Protokolle | :heavy_check_mark: | :heavy_check_mark: | Die WebSockets-API des Speech-Diensts ist kompatibel mit der Bing-Spracheingabe (unterschiedlicher Endpunkt). Migrieren Sie nach Möglichkeit zum Spracherkennungs-SDK, um Ihren Code zu vereinfachen. |
+| WebSockets-Protokolle | :heavy_check_mark: | :heavy_minus_sign: | Das Speech SDK abstrahiert Websocketverbindungen für Funktionen, die eine ständige Verbindung mit dem Dienst erfordern, sodass es keine Unterstützung mehr gibt, diese manuell zu abonnieren. |
 | Dienst-zu-Dienst-API-Aufrufe | :heavy_check_mark: | :heavy_minus_sign: | Wird bei der Bing-Spracheingabe über die C#-Dienstbibliothek bereitgestellt. |
 | Open Source SDK | :heavy_check_mark: | :heavy_minus_sign: |
 
@@ -65,13 +65,9 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 
 Die [REST-APIs](rest-apis.md) des Speech-Diensts sind mit den Bing-Spracheingabe-APIs kompatibel. Wenn Sie derzeit die Bing-Spracheingabe-REST-APIs verwenden, müssen Sie nur den REST-Endpunkt ändern und zu einem Abonnementschlüssel des Speech-Diensts wechseln.
 
-Die WebSockets-Protokolle des Speech-Diensts sind auch mit den Protokollen der Bing-Spracheingabe kompatibel. Wir empfehlen bei neuen Entwicklungen die Verwendung des Speech SDK anstelle von WebSockets. Außerdem empfiehlt es sich, den vorhandenen Code zum SDK zu migrieren. Wie bei den REST-APIs erfordert jedoch bestehender Code, der die Bing-Spracheingabe via WebSockets verwendet, nur eine Änderung des Endpunkts und einen aktualisierten Schlüssel.
-
 Wenn Sie eine Bing-Spracheingabe-Clientbibliothek für eine bestimmte Programmiersprache verwenden, erfordert die Migration zum [Spracherkennungs-SDK](speech-sdk.md) Änderungen an Ihrer Anwendung, weil es sich um eine andere API handelt. Das Spracherkennungs-SDK kann Ihren Code einfacher gestalten und Ihnen auch Zugriff auf neue Features bieten. Das Speech SDK ist in zahlreichen Programmiersprachen verfügbar. APIs sind auf den verschiedenen Plattformen ähnlich, was die Entwicklung für mehrere Plattformen erleichtert.
 
 Der Speech-Dienst bietet keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen. Sie benötigen für jede verwendete Region ein separates Abonnement für den Speech-Dienst.
-
-Wenn Ihre Anwendung langlebige Verbindungen verwendet und kein verfügbares SDK nutzen kann, können Sie eine WebSockets-Verbindung verwenden. Steuern Sie das Zeitlimit von 10 Minuten, indem Sie die Verbindung zum jeweils richtigen Zeitpunkt wiederherstellen.
 
 Erste Schritte mit dem Spracherkennungs-SDK:
 
@@ -88,9 +84,11 @@ Informationen zur Unterstützung von Speech-Dienst, SDK und API finden Sie auf d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free)
-* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [Erste Schritte mit der Spracherkennung](get-started-speech-to-text.md)
+* [Erste Schritte bei der Sprachsynthese](get-started-text-to-speech.md)
 
 ## <a name="see-also"></a>Weitere Informationen
+
 * [Versionshinweise zum Speech-Dienst](releasenotes.md)
 * [Worum handelt es sich beim Spracherkennungsdienst?](overview.md)
 * [Dokumentation zum Speech-Dienst und dem Speech SDK](speech-sdk.md#get-the-speech-sdk)

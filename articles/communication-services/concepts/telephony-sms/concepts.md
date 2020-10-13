@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e5cfc1e27bae10a1c67e4506afe9db825664785f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35398d60008ac52ba16dca0a0201f8c2f2101a0f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944239"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758556"
 ---
 # <a name="sms-concepts"></a>SMS-Konzepte
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure Communication Services ermöglicht das Senden und Empfangen von SMS-Textnachrichten unter Verwendung der SMS-Client Bibliotheken von Communication Services. Diese Clientbibliotheken können zur Unterstützung von Kundendienstszenarien, Terminerinnerungen, zweistufiger Authentifizierung und anderer Echtzeitkommunikationsanforderungen verwendet werden. Das SMS-Feature von Communication Services ermöglicht das zuverlässige Senden von Nachrichten sowie die Nutzung von Informationen zur Zustellbarkeit und zur Antwortrate rund um Ihre Kampagnen.
 
@@ -29,10 +29,11 @@ Zu den wichtigsten Features der SMS-Clientbibliotheken von Azure Communication S
 - **Bidirektionale Konversationen** zur Unterstützung von Szenarien wie Kundensupport, Warnungen und Terminerinnerungen
 - **Zuverlässige Zustellung** mit Zustellberichten in Echtzeit für Nachrichten, die von Ihrer Anwendung gesendet wurden
 - **Analysen** zur Nachverfolgung von Verwendungsmustern und Kundeninteraktion
-- **Unterstützung von Abmeldungen**, um Abmeldungen für gebührenfreie Nummern automatisch zu erkennen und zu berücksichtigen. Communication Services erkennt STOP- und START-Nachrichten und sendet folgende Standardantworten an Endbenutzer: 
-  - STOP: *You have successfully been unsubscribed to messages from this number. Reply START to resubscribe.* (Sie erhalten in Zukunft keine Nachrichten von dieser Nummer mehr. Antworten Sie mit „START“, um das Abonnement wieder zu aktivieren.)
-  - START: *You have successfully been re-subscribed to messages from this number. Reply STOP to unsubscribe.* (Sie erhalten ab sofort wieder Nachrichten von dieser Nummer. Antworten Sie mit „STOP“, um das Abonnement zu kündigen.)
-  - Die STOP- und START-Nachrichten werden an Sie weitergeleitet. Von Azure Communication Services wird die Überwachung und Implementierung dieser Abmeldungen empfohlen, um sicherzustellen, dass keine weiteren Nachrichten an Empfänger gesendet werden, die sich von Ihrer Kommunikation abgemeldet haben.
+- **Unterstützung von Abmeldungen**, um Abmeldungen für gebührenfreie Nummern automatisch zu erkennen und zu berücksichtigen. Abmeldungen für gebührenfreie Nummern in den USA werden von US-Netzbetreibern vorgeschrieben und durchgesetzt.
+  - STOP – Wenn ein SMS-Empfänger sich abmelden möchte, kann er „STOP“ an die gebührenfreie Nummer senden. Der Netzbetreiber sendet die folgende Standardantwort für „STOP“: *„NETZWERKNACHRICHT: You replied with the word „stop“ which blocks all texts sent from this number. Text back „unstop“ to receive messages again.“ (Sie haben mit dem Wort „stop“ geantwortet, das alle von dieser Nummer gesendeten Texte blockiert. Antworten Sie mit „unstop“, um wieder Nachrichten zu erhalten.)*
+  - START/UNSTOP – Wenn der Empfänger Textnachrichten von einer gebührenfreien Nummer erneut abonnieren möchte, kann er „START“ oder „UNSTOP“ an die gebührenfreie Nummer senden. Der Netzbetreiber sendet die folgende Standardantwort für „START/UNSTOP“: *„NETZWERKNACHRICHT: You have replied „unstop“ and will begin receiving messages again from this number.“ (Sie haben mit „unstop“ geantwortet und werden wieder Nachrichten von dieser Nummer erhalten.)*
+  - Azure Communication Services erkennt die STOP-Nachricht und blockiert alle weiteren Nachrichten an den Empfänger. Im Zustellbericht wird eine fehlerhafte Zustellung mit der Statusmeldung „Sender blocked for given recipient“ (Absender für bestimmten Empfänger gesperrt) angezeigt.
+  - Die STOP-, UNSTOP- und START-Nachrichten werden an Sie weitergeleitet. Von Azure Communication Services wird die Überwachung und Implementierung dieser Abmeldungen empfohlen, um sicherzustellen, dass nicht weiter versucht wird, Nachrichten an Empfänger zu senden, die sich von Ihrer Kommunikation abgemeldet haben.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

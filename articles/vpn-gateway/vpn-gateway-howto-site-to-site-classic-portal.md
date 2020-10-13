@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 002aa9da465d86392aaaa5d404f67959b341ecf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445922"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818979"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
 
@@ -104,7 +104,7 @@ Nach Erstellung des virtuellen Netzwerks können Sie für die Namensauflösung d
 
 Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enthält die IP-Adresse des VPN-Geräts, mit dem Sie eine Verbindung herstellen, und die IP-Adressbereiche, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden.
 
-1. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk unter **Einstellungen** auf **Diagramm**.
+1. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk unter **Überwachung** auf **Diagramm**.
 1. Klicken Sie auf der Seite **VPN-Verbindungen** auf **Sie verfügen nicht über vorhandene VPN-Verbindungen. Klicken Sie hier, um zu beginnen**.
 1. Belassen Sie für **Verbindungstyp** die Option **Standort-zu-Standort** ausgewählt.
 4. Klicken Sie auf **Lokaler Standort – Erforderliche Einstellungen konfigurieren**, um die Seite **Lokaler Standort** zu öffnen. Konfigurieren Sie die Einstellungen, und klicken Sie dann auf **OK**, um die Einstellungen zu speichern.

@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534599"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612777"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Unterstützung von Azure IoT Hub Device Provisioning Service (DPS) für virtuelle Netzwerke
 
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt einzurichten:
 
 2. Geben Sie auf der Seite „Grundlagen“ von _Privaten Endpunkt erstellen_ die in der nachstehenden Tabelle genannten Informationen ein.
 
-    ![Konfigurieren der Ressource, der ein neuer privater Endpunkt zugeordnet ist](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![Erstellen des privaten Endpunkts: Grundlagen](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | Feld | Wert |
     | :---- | :-----|
@@ -88,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt einzurichten:
 
 3. Geben Sie auf der Seite „Ressource“ von _Privaten Endpunkt erstellen_ die in der nachstehenden Tabelle genannten Informationen ein.
 
-    ![Konfigurieren der Ressource, der ein neuer privater Endpunkt zugeordnet ist](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![Erstellen des privaten Endpunkts: Ressource](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | Feld | Wert |
     | :---- | :-----|
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt einzurichten:
  
     Klicken Sie unten auf der Seite auf **Weiter: Tags**, und stellen Sie optional Tags für Ihre Ressource bereit.
 
-    ![Konfigurieren der Ressource, der ein neuer privater Endpunkt zugeordnet ist](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![Konfigurieren des privaten Endpunkts](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**, um die Ressource für den privaten Endpunkt zu erstellen.
 
@@ -141,7 +141,7 @@ Sie können einen privaten Endpunkt für eine DPS-Ressource anhand der Ressource
 
 5. Der DPS-Besitzer kann die Anforderung des privaten Endpunkts in der Liste **Verbindungen mit privatem Endpunkt** auf der Registerkarte „Netzwerk“ von DPS einsehen. Auf dieser Seite kann der Besitzer die Anforderung des privaten Endpunkts **Genehmigen** oder **Ablehnen**, wie unten gezeigt.
 
-    ![Registerkarte „Eigenschaften“ von DPS](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![DPS-Genehmigung](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>Preise für private Endpunkte

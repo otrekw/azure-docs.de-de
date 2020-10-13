@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031397"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816793"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -131,7 +131,7 @@ Folgende Optionen sind verfügbar:
 
 > [!NOTE]
 >
-> - Roslyn Analyzers sind in den Compiler integriert und können nur im Rahmen der Kompilierung von „csc.exe“ ausgeführt werden. Daher muss für diesen Task der Compilerbefehl, der zuvor im Build ausgeführt wurde, wiedergegeben oder erneut ausgeführt werden. Bei der Wiedergabe oder Ausführung werden die Protokolle des MSBuild-Buildtasks von Visual Studio Team Services (VSTS) abgefragt.
+> - Roslyn Analyzers sind in den Compiler integriert und können nur im Rahmen der Kompilierung von „csc.exe“ ausgeführt werden. Daher muss für diesen Task der Compilerbefehl, der zuvor im Build ausgeführt wurde, wiedergegeben oder erneut ausgeführt werden. Bei der Wiedergabe oder Ausführung werden die Protokolle des MSBuild-Buildtasks von Azure DevOps (früher Visual Studio Team Services) abgefragt.
 >
 >   Es gibt keine andere Möglichkeit für den Task, die Befehlszeile für die MSBuild-Kompilierung zuverlässig aus der Builddefinition abzurufen. Wir haben überlegt, ein Freiform-Textfeld hinzuzufügen, in dem Benutzer ihre Befehlszeilen eingeben können. Dann wäre es allerdings schwierig, diese Befehlszeilen auf dem neuesten Stand und synchron mit dem Hauptbuild zu halten.
 >

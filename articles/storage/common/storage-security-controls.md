@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: b816e7bd5e00b21700bc994fc0860195d39f2915
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b4d74e7ba869e0438a936817d824e841823d472
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826516"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715708"
 ---
 # <a name="security-controls-for-azure-storage"></a>Sicherheitskontrollen für Azure Storage
 
@@ -55,7 +55,7 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
 | Authentifizierung| Ja | Azure Active Directory, gemeinsam verwendeter Schlüssel, SAS-Token. |
-| Authorization| Ja | Unterstützung für die Autorisierung über rollenbasierte Zugriffssteuerung (RBAC), POSIX-Zugriffssteuerungslisten (ACLs) und SAS-Token |
+| Authorization| Ja | Unterstützung für die Autorisierung über rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), POSIX-Zugriffssteuerungslisten (ACLs) und SAS-Token |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

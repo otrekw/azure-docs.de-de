@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b52c493a700cd258e1458b0127aa19cebc714822
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891604"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803992"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 
@@ -19,29 +19,29 @@ Azure Synapse Link für Azure Cosmos DB sorgt für eine enge Integration zwische
 
 ## <a name="general-faq"></a>Allgemeine häufig gestellte Fragen
 
-### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Wird Synapse Link für alle Azure Cosmos DB-APIs unterstützt?
+### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Wird Azure Synapse Link für alle Azure Cosmos DB-APIs unterstützt?
 
-In der öffentlichen Vorschauversion wird Synapse Link für die Azure Cosmos DB SQL-API (Core-API) und für die Azure Cosmos DB-API für MongoDB unterstützt. Unterstützung für Cassandra-API befindet sich zurzeit unter geschlossener Vorschau. Wenn Sie Zugriff auf die geschlossene Vorschau anfordern möchten, wenden Sie sich an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
+In der öffentlichen Vorschauversion wird Azure Synapse Link für die Azure Cosmos DB SQL-API (Core-API) und für die Azure Cosmos DB-API für MongoDB unterstützt. 
 
-### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Wird Synapse Link für Azure Cosmos-Konten in mehreren Regionen unterstützt?
+### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>Wird Azure Synapse Link für Azure Cosmos DB-Konten in mehreren Regionen unterstützt?
 
-Ja, für Azure Cosmos-Konten in mehreren Regionen werden die im Analysespeicher gespeicherten Daten auch global verteilt. Unabhängig davon, ob eine einzelne Schreibregion (einzelner Master) oder mehrere Schreibregionen (Multimaster) genutzt werden, können analytische Abfragen, die von Azure Synapse Analytics ausgeführt werden, von der nächstgelegenen lokalen Region verarbeitet werden.
+Ja, für Azure Cosmos-Konten in mehreren Regionen werden die im Analysespeicher gespeicherten Daten auch global verteilt. Unabhängig davon, ob eine einzelne Schreibregion oder mehrere Schreibregionen genutzt werden, können analytische Abfragen, die von Azure Synapse Analytics durchgeführt werden, über die nächstgelegene lokale Region bereitgestellt werden.
 
-Wenn Sie die Konfiguration eines Azure Cosmos-Kontos in mehreren Regionen mit Unterstützung für Analysespeicher planen, empfiehlt es sich, beim Erstellen des Kontos alle erforderlichen Regionen hinzuzufügen.
+Wenn Sie die Konfiguration eines Azure Cosmos DB-Kontos in mehreren Regionen mit Unterstützung für Analysespeicher planen, empfiehlt es sich, beim Erstellen des Kontos alle erforderlichen Regionen hinzuzufügen.
 
-### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kann ich auswählen, dass Synapse Link in einem Konto mit mehreren Regionen nur für eine bestimmte Region und nicht für alle Regionen eingerichtet werden soll?
+### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kann ich auswählen, dass Azure Synapse Link in einem Konto mit mehreren Regionen nur für eine bestimmte Region und nicht für alle Regionen eingerichtet werden soll?
 
-Wenn Synapse Link in der Vorschauversion für ein Konto mit mehreren Regionen aktiviert ist, wird der Analysespeicher in allen Regionen erstellt. Die zugrunde liegenden Daten sind für Durchsatz und Transaktionskonsistenz im Transaktionsspeicher optimiert.
+Wenn Azure Synapse Link in der Vorschauversion für ein Konto mit mehreren Regionen aktiviert ist, wird der Analysespeicher in allen Regionen erstellt. Die zugrunde liegenden Daten sind für Durchsatz und Transaktionskonsistenz im Transaktionsspeicher optimiert.
 
-### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Wird die Sicherung und Wiederherstellung für Konten mit aktiviertem Synapse Link unterstützt?
+### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Wird die Sicherung und Wiederherstellung für Konten mit aktiviertem Azure Synapse Link unterstützt?
 
-In der Vorschau werden die Sicherung und Wiederherstellung von Containern für Datenbankkonten mit Synapse Link-Aktivierung nicht unterstützt. Wenn Sie die Funktionen zur Sicherung und Wiederherstellung für Produktionsworkloads benötigen, sollten Sie Synapse Link in diesen Datenbankkonten nicht aktivieren. 
+In der Vorschau werden die Sicherung und Wiederherstellung von Containern für Datenbankkonten mit Azure Synapse Link-Aktivierung nicht unterstützt. Wenn Sie die Funktionen zur Sicherung und Wiederherstellung für Produktionsworkloads benötigen, sollten Sie Synapse Link in diesen Datenbankkonten nicht aktivieren. 
 
-### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Kann ich die Synapse Link-Funktion für mein Azure Cosmos-Konto deaktivieren?
+### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Kann ich die Azure Synapse Link-Funktion für mein Azure Cosmos DB-Konto deaktivieren?
 
-Wenn die Synapse Link-Funktion auf Kontoebene aktiviert ist, ist es derzeit nicht möglich, sie zu deaktivieren.  Wenn Sie die Funktion deaktivieren möchten, müssen Sie Ihr Azure Cosmos-Konto löschen und ein neues erstellen.
+Wenn die Synapse Link-Funktion auf Kontoebene aktiviert ist, ist es derzeit nicht möglich, sie zu deaktivieren. Wenn die Synapse Link-Funktion auf Kontoebene aktiviert ist und Sie nicht über vom Analysespeicher aktivierte Container verfügen, hat dies keine Auswirkungen auf die Abrechnung. 
 
-Wenn die Synapse Link-Funktion auf Kontoebene aktiviert ist, Sie aber über keine vom Analysespeicher aktivierten Container verfügen, hat dies **keine** Auswirkungen auf die Abrechnung.
+Wenn Sie die Funktion deaktivieren müssen, haben Sie zwei Möglichkeiten. Die erste besteht darin, das Konto zu löschen und ein neues Azure Cosmos DB-Konto zu erstellen, wobei die Daten bei Bedarf migriert werden. Die zweite Möglichkeit besteht darin, ein Supportticket zu öffnen, um Hilfe bei der Migration von Daten zu einem anderen Konto zu erhalten.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB-Analysespeicher
 
@@ -49,11 +49,11 @@ Wenn die Synapse Link-Funktion auf Kontoebene aktiviert ist, Sie aber über kein
 
 Derzeit kann der Analysespeicher nur für neue Container (in neuen und vorhandenen Konten) aktiviert werden.
 
-### <a name="can-i-disable-analytical-store-on-my-azure-cosmos-containers-after-enabling-it-during-container-creation"></a>Kann ich den Analysespeicher für meine Azure Cosmos-Container deaktivieren, wenn er während der Containererstellung aktiviert wurde?
+### <a name="can-i-disable-analytical-store-on-my-azure-cosmos-db-containers-after-enabling-it-during-container-creation"></a>Kann ich den Analysespeicher für meine Azure Cosmos DB-Container deaktivieren, wenn er während der Containererstellung aktiviert wurde?
 
-Derzeit kann der Analysespeicher in einem Azure Cosmos-Container nicht deaktiviert werden, wenn er während der Containererstellung aktiviert wurde.
+Derzeit kann der Analysespeicher in einem Azure Cosmos DB-Container nicht deaktiviert werden, wenn er während der Containererstellung aktiviert wurde.
 
-### <a name="is-analytical-store-supported-for-azure-cosmos-containers-with-autoscale-provisioned-throughput"></a>Wird der Analysespeicher für Azure Cosmos-Container mit per Autoskalierung bereitgestelltem Durchsatz unterstützt?
+### <a name="is-analytical-store-supported-for-azure-cosmos-db-containers-with-autoscale-provisioned-throughput"></a>Wird der Analysespeicher für Azure Cosmos DB-Container mit per Autoskalierung bereitgestelltem Durchsatz unterstützt?
 
 Ja, der Analysespeicher kann für Container mit per Autoskalierung bereitgestelltem Durchsatz aktiviert werden.
 
@@ -78,11 +78,11 @@ Derzeit ist es nicht möglich, über Synapse SQL (bereitgestellt) auf den Analys
 
 ### <a name="can-i-write-back-the-query-aggregation-results-from-synapse-back-to-the-analytical-store"></a>Kann ich die Abfrageaggregationsergebnisse aus Synapse zurück in den Analysespeicher schreiben?
 
-Der Analysespeicher ist ein schreibgeschützter Speicher in einem Azure Cosmos-Container. Daher können Sie die Aggregationsergebnisse nicht direkt in den Analysespeicher schreiben, Sie können sie jedoch in den Azure Cosmos DB-Transaktionsspeicher eines anderen Containers schreiben, der später als Bereitstellungsebene genutzt werden kann.
+Der Analysespeicher ist ein schreibgeschützter Speicher in einem Azure Cosmos DB-Container. Daher können Sie die Aggregationsergebnisse nicht direkt in den Analysespeicher schreiben, Sie können sie jedoch in den Azure Cosmos DB-Transaktionsspeicher eines anderen Containers schreiben, der später als Bereitstellungsebene genutzt werden kann.
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>Ist die Replikation mit automatischer Synchronisierung aus dem Transaktionsspeicher in den Analysespeicher asynchron oder synchron, und welche Wartezeiten bestehen?
 
-Die Replikation ist asynchron, und die erwartete Wartezeit liegt derzeit bei ca. zwei Minuten.
+Die Wartezeit für die automatische Synchronisierung liegt normalerweise innerhalb von 2 Minuten. In Fällen, in denen eine Datenbank mit gemeinsam genutztem Durchsatz und einer großen Anzahl von Containern verwendet wird, kann die Wartezeit für die automatische Synchronisierung einzelner Containern länger sein und bis zu 5 Minuten betragen. Wir möchten gerne mehr darüber erfahren, inwieweit diese Wartezeit für Ihre Szenarien geeignet ist. Wenden Sie sich dazu an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
 
 ### <a name="are-there-any-scenarios-where-the-items-from-the-transactional-store-are-not-automatically-propagated-to-the-analytical-store"></a>Gibt es Szenarien, in denen die Elemente aus dem Transaktionsspeicher nicht automatisch an den Analysespeicher weitergegeben werden?
 
@@ -112,7 +112,7 @@ Alle transaktionalen Aktualisierungen und Löschvorgänge werden in den Analyses
 
 ## <a name="billing"></a>Abrechnung
 
-### <a name="what-is-the-billing-model-of-synapse-link-for-azure-cosmos-db"></a>Was ist das Abrechnungsmodell von Synapse Link für Azure Cosmos DB?
+### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Was ist das Abrechnungsmodell von Azure Synapse Link für Azure Cosmos DB?
 
 Der [Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md) ist in der öffentlichen Vorschau bis zum 30. August 2020 ohne zusätzliche Kosten verfügbar. Synapse Spark und Synapse SQL werden über die [Synapse-Dienstnutzung](https://azure.microsoft.com/pricing/details/synapse-analytics/) abgerechnet.
 
@@ -120,19 +120,19 @@ Der [Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md) ist in d
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Welche Möglichkeiten gibt es für die Authentifizierung beim Analysespeicher?
 
-Die Authentifizierung beim Analysespeicher erfolgt genauso wie beim Transaktionsspeicher. Für eine bestimmte Datenbank können Sie sich mit dem Masterschlüssel oder dem schreibgeschützten Schlüssel authentifizieren. Sie können den verknüpften Dienst in Synapse Studio nutzen, um zu verhindern, dass die Azure Cosmos DB-Schlüssel in die Spark-Notebooks eingefügt werden. Der Zugriff auf diesen verknüpften Dienst steht allen Benutzern zur Verfügung, die Zugriff auf den Arbeitsbereich haben.
+Die Authentifizierung beim Analysespeicher erfolgt genauso wie beim Transaktionsspeicher. Für eine bestimmte Datenbank können Sie sich mit dem Primärschlüssel oder dem schreibgeschützten Schlüssel authentifizieren. Sie können den verknüpften Dienst in Azure Synapse Studio nutzen, um zu verhindern, dass die Azure Cosmos DB-Schlüssel in die Spark-Notebooks eingefügt werden. Der Zugriff auf diesen verknüpften Dienst steht allen Benutzern zur Verfügung, die Zugriff auf den Arbeitsbereich haben.
 
 ## <a name="synapse-run-times"></a>Synapse-Laufzeiten
 
 ### <a name="what-are-the-currently-supported-synapse-run-times-to-access-azure-cosmos-db-analytical-store"></a>Welche Synapse-Laufzeiten werden derzeit für den Zugriff auf den Azure Cosmos DB-Analysespeicher unterstützt?
 
-|Synapse-Laufzeit |Aktuelle Unterstützung |
+|Azure Synapse-Laufzeit |Aktuelle Unterstützung |
 |---------|---------|
-|Synapse Spark-Pools | Lesen, Schreiben (über Transaktionsspeicher), Tabelle, temporäre Ansicht |
-|Synapse SQL (serverlos)    | Lesen, Anzeigen |
-|Synapse SQL (bereitgestellt)   |  Nicht verfügbar |
+|Azure Synapse Spark-Pools | Lesen, Schreiben (über Transaktionsspeicher), Tabelle, temporäre Ansicht |
+|Azure Synapse SQL-Pools (serverlos)    | Lesen, Anzeigen |
+|Azure Synapse SQL (bereitgestellt)   |  Nicht verfügbar |
 
-### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Erfolgt die Synchronisierung meiner Synapse Spark-Tabellen mit meinen Tabellen von Synapse SQL (serverlos) genau so wie bei Azure Data Lake?
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Erfolgt die Synchronisierung meiner Azure Synapse Spark-Tabellen mit meinen Tabellen von Azure Synapse SQL (serverlos) genau so wie bei Azure Data Lake?
 
 Diese Funktion ist derzeit nicht verfügbar.
 
@@ -140,9 +140,9 @@ Diese Funktion ist derzeit nicht verfügbar.
 
 Die Unterstützung für strukturiertes Spark-Streaming für Azure Cosmos DB wird derzeit mithilfe der Änderungsfeedfunktion des Transaktionsspeichers implementiert. Im Analysespeicher wird dies noch nicht unterstützt.
 
-## <a name="synapse-studio"></a>Synapse Studio
+## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 
-### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Wie erkenne ich in Synapse Studio, ob eine Verbindung mit einem Azure Cosmos DB-Container besteht, der mit dem Analysespeicher aktiviert ist?
+### <a name="in-the-azure-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Wie erkenne ich in Azure Synapse Studio, ob eine Verbindung mit einem Azure Cosmos DB-Container besteht, der mit dem Analysespeicher aktiviert ist?
 
 Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist das folgende Symbol auf:
 
@@ -150,14 +150,14 @@ Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist 
 
 Ein Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol":::
  
-### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Wie werden Azure Cosmos DB-Anmeldeinformationen von Synapse Studio übermittelt?
+### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Wie werden Azure Cosmos DB-Anmeldeinformationen von Azure Synapse Studio übermittelt?
 
 Derzeit werden Azure Cosmos DB-Anmeldeinformationen beim Erstellen des verknüpften Diensts von dem Benutzer übermittelt, der Zugriff auf die Azure Cosmos DB-Datenbanken hat. Der Zugriff auf diesen Speicher steht anderen Benutzern zur Verfügung, die Zugriff auf den Arbeitsbereich haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die [Vorteile von Synapse Link](synapse-link.md#synapse-link-benefits).
+* Erfahren Sie mehr über die [Vorteile von Azure Synapse Link](synapse-link.md#synapse-link-benefits).
 
-* Erfahren Sie mehr über die [Integration zwischen Synapse Link und Azure Cosmos DB](synapse-link.md#synapse-link-integration).
+* Erfahren Sie mehr über die [Integration zwischen Azure Synapse Link und Azure Cosmos DB](synapse-link.md#synapse-link-integration).

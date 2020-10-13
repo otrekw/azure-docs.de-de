@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98cd28e8b770ebfb7ab395fbe7fff16a078e3529
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112777"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826842"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ In diesem Artikel wird die Beziehung zwischen logischen und physischen Partition
 
 ## <a name="logical-partitions"></a>Logische Partitionen
 
-Eine logische Partition besteht aus einer Gruppe von Elementen mit demselben Partitionsschlüssel. Beispielsweise enthalten alle Elemente in einem Container mit Daten über Nahrungsmittel eine `foodGroup`-Eigenschaft. Sie können `foodGroup` als Partitionsschlüssel für den Container verwenden. Elementgruppen mit bestimmten Werten für `foodGroup` (z. B. `Beef Products`, `Baked Products` und `Sausages and Luncheon Meats`) bilden eindeutige logische Partitionen. Sie müssen sich keine Gedanken über das Löschen einer logischen Partition machen, wenn die zugrunde liegenden Daten gelöscht werden.
+Eine logische Partition besteht aus einer Gruppe von Elementen mit demselben Partitionsschlüssel. Beispielsweise enthalten alle Elemente in einem Container mit Daten über Nahrungsmittel eine `foodGroup`-Eigenschaft. Sie können `foodGroup` als Partitionsschlüssel für den Container verwenden. Elementgruppen mit bestimmten Werten für `foodGroup`, z.B. `Beef Products`, `Baked Products` und `Sausages and Luncheon Meats`, bilden eindeutige logische Partitionen. Sie müssen sich keine Gedanken über das Löschen einer logischen Partition machen, wenn die zugrunde liegenden Daten gelöscht werden.
 
 Eine logische Partition definiert auch den Bereich für Datenbanktransaktionen. Sie können Elemente in einer logischen Partition mithilfe einer [Transaktion mit Momentaufnahmeisolation](database-transactions-optimistic-concurrency.md) aktualisieren. Wenn einem Container neue Elemente hinzugefügt werden, werden neue logische Partitionen transparent vom System erstellt.
 
@@ -36,7 +36,7 @@ Die Anzahl der physischen Partitionen in Ihrem Cosmos-Container hängt von folge
 
 Es besteht keine Beschränkung für die Gesamtanzahl von physischen Partitionen in Ihrem Container. Wenn der bereitgestellte Durchsatz oder die Datengröße zunimmt, erstellt Azure Cosmos DB automatisch neue physische Partitionen, indem die vorhandenen aufgeteilt werden. Die Aufteilung physischer Partitionen hat keine Auswirkungen auf die Verfügbarkeit Ihrer Anwendung. Nach der Aufteilung einer physischen Partition bleiben alle Daten innerhalb einer einzelnen logischen Partition weiterhin auf derselben physischen Partition gespeichert. Bei der Aufteilung physischer Partitionen wird einfach eine neue Zuordnung der logischen Partitionen zu physischen Partitionen erstellt.
 
-Der für einen Container bereitgestellte Durchsatz wird gleichmäßig auf physische Partitionen aufgeteilt. Ein Partitionsschlüsselentwurf, der die Durchsatzanforderungen nicht gleichmäßig verteilt, kann „heiße“ Partitionen verursachen. „Heiße“ Partitionen können zu einer Ratenbegrenzung und einer ineffizienten Nutzung des bereitgestellten Durchsatzes sowie zu höheren Kosten führen.
+Der für einen Container bereitgestellte Durchsatz wird gleichmäßig auf physische Partitionen aufgeteilt. Ein Partitionsschlüsselentwurf, der Anforderungen nicht gleichmäßig verteilt, kann dazu führen, dass zu viele Anforderungen an eine kleine Teilmenge von Partitionen geleitet werden, die dadurch „heiß“ werden. „Heiße“ Partitionen bewirken eine ineffiziente Nutzung des bereitgestellten Durchsatzes, was zu einer Ratenbegrenzung und höheren Kosten führen kann.
 
 Sie können die physischen Partitionen Ihres Containers im Azure-Portal auf dem Blatt **Metriken** im Abschnitt **Speicher** anzeigen:
 
@@ -54,7 +54,7 @@ Die meisten kleinen Cosmos-Container benötigen nur eine einzige physische Parti
 
 Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
 
-:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Abbildung zur Veranschaulichung der Azure Cosmos DB-Partitionierung" border="false":::
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Anzeigen der Anzahl von physischen Partitionen" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

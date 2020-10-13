@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850711"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761412"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -24,7 +24,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihre Funktions-App so sicher wie mögl
 
 ### <a name="security-center"></a>Security Center
 
-Security Center und Ihre Funktions-App lassen sich im Portal integrieren. Es ermöglicht kostenlos eine schnelle Bewertung potenzieller konfigurationsbezogener Sicherheitsrisiken. Funktions-Apps, die in einem dedizierten Plan ausgeführt werden, können gegen Aufpreis auch die Echtzeitsicherheitsfeatures von Security Center nutzen. Weitere Informationen finden Sie unter [Schützen Ihrer Azure App Service-Web-Apps und -APIs](../security-center/security-center-app-services.md). 
+Security Center und Ihre Funktions-App lassen sich im Portal integrieren. Es ermöglicht kostenlos eine schnelle Bewertung potenzieller konfigurationsbezogener Sicherheitsrisiken. Funktions-Apps, die in einem dedizierten Plan ausgeführt werden, können gegen Aufpreis auch die Echtzeitsicherheitsfeatures von Security Center nutzen. Weitere Informationen finden Sie unter [Schützen Ihrer Azure App Service-Web-Apps und -APIs](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction). 
 
 ### <a name="log-and-monitor"></a>Protokollieren und Überwachen
 
@@ -128,6 +128,8 @@ Standardmäßig speichern Sie Verbindungszeichenfolgen und -geheimnisse, die von
 Beispielsweise benötigt jede Funktions-App ein zugehöriges Speicherkonto, das von der Runtime genutzt wird. Standardmäßig wird die Verbindung mit diesem Speicherkonto in der Anwendungseinstellung `AzureWebJobsStorage` festgelegt.
 
 App-Einstellungen und Verbindungszeichenfolgen werden verschlüsselt in Azure gespeichert. Diese Angaben werden erst entschlüsselt, wenn sie beim Start der App in deren Prozessspeicher eingefügt werden. Die Verschlüsselungsschlüssel werden regelmäßig rotiert. Wenn Sie es stattdessen vorziehen, die sichere Speicherung Ihrer Geheimnisse zu verwalten, sollte die Anwendungseinstellung stattdessen aus Verweisen auf Azure Key Vault bestehen. 
+
+Sie können Einstellungen in der Datei „local.settings.json“ auch standardmäßig verschlüsseln, wenn Sie Funktionen auf dem lokalen Computer entwickeln. Wenn Sie mehr erfahren möchten, sehen Sie sich die `IsEncrypted`-Eigenschaft unter [Datei für lokale Einstellungen](functions-run-local.md#local-settings-file) an.  
 
 #### <a name="key-vault-references"></a>Key Vault-Verweise
 

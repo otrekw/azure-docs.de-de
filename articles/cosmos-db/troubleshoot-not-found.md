@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1d778b4330389d23b0fe7179a005abfbd7d66d5c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871104"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802395"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnose und Troubleshooting für die Ausnahme „Nicht gefunden“ in Azure Cosmos DB
 Der HTTP-Statuscode 404 steht dafür, dass die Ressource nicht mehr vorhanden ist.
@@ -37,7 +37,7 @@ Die Kombination aus Partitionsschlüssel und ID ist ungültig.
 Korrigieren Sie die Anwendungslogik, die die falsche Kombination verursacht. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Ungültiges Zeichen in einer Element-ID
-Ein Element mit einem [ungültigen Zeichen](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks) in der Element-ID wird in Azure Cosmos DB eingefügt.
+Ein Element mit einem [ungültigen Zeichen](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) in der Element-ID wird in Azure Cosmos DB eingefügt.
 
 #### <a name="solution"></a>Lösung:
 Ändern Sie die ID in einen anderen Wert, der keine Sonderzeichen enthält. Wenn das Ändern der ID nicht möglich ist, können Sie die ID mit Base64 codieren, um keine Sonderzeichen zu verwenden.
@@ -52,7 +52,7 @@ string containerRid = selfLinkSegments[3];
 Container containerByRid = this.cosmosClient.GetContainer(databaseRid, containerRid);
 
 // Invalid characters are listed here.
-//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks
+//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks
 FeedIterator<JObject> invalidItemsIterator = this.Container.GetItemQueryIterator<JObject>(
     @"select * from t where CONTAINS(t.id, ""/"") or CONTAINS(t.id, ""#"") or CONTAINS(t.id, ""?"") or CONTAINS(t.id, ""\\"") ");
 while (invalidItemsIterator.HasMoreResults)
@@ -96,6 +96,12 @@ Die Datenbank oder der Container, in der bzw. dem sich das Element befindet, wur
 #### <a name="solution"></a>Lösung:
 1. [Stellen Sie die übergeordnete Ressource wieder her](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period), oder erstellen Sie die Ressourcen neu.
 1. Erstellen Sie eine neue Ressource, um die gelöschte Ressource zu ersetzen.
+
+### <a name="7-containercollection-names-are-case-sensitive"></a>7. Bei Container-/Sammlungsnamen wird zwischen Groß- und Kleinschreibung unterschieden
+Bei Container-/Sammlungsnamen wird in Cosmos DB zwischen Groß- und Kleinschreibung unterschieden.
+
+#### <a name="solution"></a>Lösung:
+Stellen Sie sicher, dass Sie beim Herstellen einer Verbindung mit Cosmos DB den exakten Namen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Diagnostizieren und Behandeln](troubleshoot-dot-net-sdk.md) von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB

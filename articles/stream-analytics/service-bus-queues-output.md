@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ba4b8f1d3aaa9b06f3bc24e9e267f6778734152a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317780"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Ausgabe von Service Bus-Warteschlangen von Azure Stream Analytics
 
@@ -51,6 +51,22 @@ Die maximale Nachrichtengröße beträgt 256 KB pro Nachricht im Standard-Tarif
 ## <a name="custom-metadata-properties-for-output"></a>Benutzerdefinierte Metadateneigenschaften für die Ausgabe
 
 Sie können Abfragespalten als Benutzereigenschaften an Ihre ausgehenden Nachrichten anfügen. Diese Spalten gelangen nicht in die Nutzlast. Die Eigenschaften liegen in Form eines Wörterbuchs für die Ausgabemeldung vor. *Schlüssel* ist der Spaltenname und der *Wert* ist der Spaltenwert im Eigenschaftenwörterbuch. Alle Stream Analytics-Datentypen werden mit Ausnahme von „Datensatz“ und „Array“ unterstützt.
+
+Im folgenden Beispiel werden die Felder `DeviceId` und `DeviceStatus` zu den Metadaten hinzugefügt.
+
+1. Verwenden Sie die folgende Abfrage:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Konfigurieren Sie `DeviceId,DeviceStatus` als Eigenschaftenspalten in der Ausgabe.
+
+   :::image type="content" source="media/service-bus-queues-output/property-columns.png" alt-text="Eigenschaftenspalten":::
+
+Die folgende Abbildung zeigt die erwarteten Eigenschaften der Ausgabemeldung, die in EventHub mit dem [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) überprüft wurden.
+
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Eigenschaftenspalten":::
 
 ## <a name="system-properties"></a>Systemeigenschaften
 

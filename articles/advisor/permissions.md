@@ -3,12 +3,12 @@ title: Berechtigungen in Azure Advisor
 description: Advisor-Berechtigungen und wie sie Ihre Möglichkeit zum Konfigurieren von Abonnements oder zum Zurückstellen oder Verwerfen von Empfehlungen blockieren können.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927384"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712919"
 ---
 # <a name="permissions-in-azure-advisor"></a>Berechtigungen in Azure Advisor
 
@@ -47,7 +47,7 @@ Wenn beim Zurückstellen oder Verwerfen einer Empfehlung eine Fehlermeldung ange
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen Überblick darüber erhalten, wie in Advisor mithilfe von RBAC Benutzerberechtigungen gesteuert und häufiger auftretende Probleme behoben werden. Weitere Informationen zum Advisor:
+In diesem Artikel haben Sie einen Überblick darüber erhalten, wie in Advisor mithilfe von Azure RBAC Benutzerberechtigungen gesteuert und allgemeine Probleme behoben werden. Weitere Informationen zum Advisor:
 
 - [Was ist Azure Advisor?](./advisor-overview.md)
 - [Erste Schritte mit Azure Advisor](./advisor-get-started.md)

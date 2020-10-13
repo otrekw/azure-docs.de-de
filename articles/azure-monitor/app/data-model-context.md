@@ -4,12 +4,12 @@ description: 'Application Insights-Datenmodell: Telemetriekontext'
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322668"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767845"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetriekontext: Application Insights-Datenmodell
 
@@ -85,7 +85,7 @@ Max. Länge: 128
 
 ## <a name="authenticated-user-id"></a>Authentifizierte Benutzer-ID
 
-Authentifizierte Benutzer-ID. Als Gegenstück von „Anonyme Benutzer-ID“ stellt dieses Feld den Benutzer mit einem Anzeigenamen dar. Da es sich um personenbezogene Informationen handelt, werden diese von den meisten SDKs standardmäßig nicht erfasst.
+Authentifizierte Benutzer-ID. Als Gegenstück von „Anonyme Benutzer-ID“ stellt dieses Feld den Benutzer mit einem Anzeigenamen dar. Sie wird nur mit [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) des ASP.NET Framework SDK standardmäßig erfasst.  
 
 Max. Länge: 1024
 
@@ -113,7 +113,7 @@ Max. Länge: 256
 
 ## <a name="internal-sdk-version"></a>Intern: SDK-Version
 
-SDK-Version. Informationen hierzu finden Sie in [diesem Artikel](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md).
+SDK-Version. Informationen hierzu finden Sie in [diesem Artikel](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md).
 
 Max. Länge: 64
 
