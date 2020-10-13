@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181441"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296449"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Probleme und ihre Behebung bei der Zertifizierung virtueller Computer 
 
@@ -21,7 +21,7 @@ Beim Veröffentlichen Ihres VM-Images in Azure Marketplace überprüft das Azure
 In diesem Artikel werden Fehlermeldungen, die häufig bei der Veröffentlichung von VM-Images angezeigt werden, sowie die zugehörigen Lösungen erläutert.
 
 > [!NOTE]
-> Wenn Sie Fragen oder Verbesserungsvorschläge haben, wenden Sie sich an den [Partner Center-Support](https://partner.microsoft.com/support/v2/?stage=1).
+> Wenn Sie Fragen oder Verbesserungsvorschläge haben, wenden Sie sich bitte an den [Partner Center-Support](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="approved-base-image"></a>Genehmigtes Basisimage
 
@@ -33,6 +33,9 @@ Rufen Sie zum Beheben des Problems das Image aus Azure Marketplace ab, und nehme
 
 - [Linux-Images](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows-Images](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
+
+> [!Note]
+> Wenn Sie ein Linux-Basisimage verwenden, das nicht aus dem Marketplace stammt, können Sie die erste Partition um 2.048 KB versetzen. So kann der nicht formatierte Speicherplatz zum Hinzufügen neuer Abrechnungsinformationen verwendet werden, und Azure kann mit der Veröffentlichung Ihres virtuellen Computers im Marketplace fortfahren.  
 
 ## <a name="vm-extension-failure"></a>Fehler bei einer VM-Erweiterung
 
@@ -270,9 +273,12 @@ In der folgenden Tabelle finden Sie alle Probleme, die auftreten können, wenn S
 |6|Bedingter HTTP-Header|Die SAS-URL ist ungültig.|Rufen Sie die richtige SAS-URL ab.|
 |7|Ungültiger VHD-Name|Überprüfen Sie, ob Sonderzeichen wie das Prozentzeichen (%) oder Anführungszeichen (") im VHD-Namen enthalten sind.|Benennen Sie die VHD-Datei um, und entfernen Sie die Sonderzeichen.|
 
-## <a name="first-1-mb-partition"></a>Erste 1-MB-Partition
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>Erste MB-Partition (2.048 KB) (nur für Linux)
 
-Stellen Sie beim Senden der VHD sicher, dass die erste 1-MB-Partition der VHD leer ist. Andernfalls schlägt die Anforderung fehl.
+Stellen Sie beim Senden der VHD sicher, dass die ersten 2.048 KB der VHD leer sind. Andernfalls tritt bei der Anforderung ein Fehler auf.
+
+>[!NOTE]
+>\* Für bestimmte besondere Images wie die auf Azure Windows-Basisimages aus Azure Marketplace erstellten wird nach einem Abrechnungstag gesucht, und die MB-Partition wird ignoriert, wenn das Abrechnungstag vorhanden ist und unseren internen verfügbaren Werten entspricht.
 
 ## <a name="default-credentials"></a>Standardanmeldeinformationen
 

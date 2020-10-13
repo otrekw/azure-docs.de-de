@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei Speicherressourcen-Löschfehlern auf Linux-VMs in Azure | Microsoft-Dokumentation
-description: Behebung von Problemen beim Löschen von Speicherressourcen, die angefügte VHDs enthalten.
+description: Erfahren Sie, wie Sie auf Linux-VMs Probleme beim Löschen von Speicherressourcen beheben, die angefügte VHDs enthalten.
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649736"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651632"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Behebung von Problemen mit Speicherressourcen-Löschfehlern
 
@@ -95,7 +95,7 @@ Wenn die VHD ein Datenträger ist, trennen Sie die VHD von der VM, um die Lease 
 7. Wählen Sie oben im Bereich **Datenträger** die Option **Bearbeiten** aus.
 8. Klicken Sie für den zu löschenden Datenträger auf das Symbol **Trennen**.
 
-     ![Screenshot des Portals, in dem der Speicherbereich „Blobmetadaten“ geöffnet ist](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Screenshot des Portals mit geöffnetem Speicherbereich „Blobmetadaten“ und hervorgehobenem Symbol für das Trennen des zu löschenden Datenträgers](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. Wählen Sie **Speichern** aus. Der Datenträger ist jetzt vom virtuellen Computer getrennt, und die VHD wird nicht mehr geleast. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Um sich zu vergewissern, dass das Lease aufgehoben wurde, navigieren Sie zum Blobspeicherort, und prüfen Sie im Bereich **Blobeigenschaften**, ob der **Leasezustand** den Zustand **Entsperrt** oder **Verfügbar** aufweist.
 

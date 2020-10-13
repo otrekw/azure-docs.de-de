@@ -1,32 +1,36 @@
 ---
-title: Azure Cognitive Services-Container
+title: Lokale Verwendung von Azure Cognitive Services-Containern
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Docker-Container Cognitive Services näher an Ihre Daten bringen können.
+description: Hier erfahren Sie, wie Cognitive Services mithilfe von Docker-Containern lokal verwendet werden.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: lokal, Docker, Container, Kubernetes
+ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906995"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665411"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
 > [!WARNING]
 > Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt.
 
-Dank der Containerunterstützung in Azure Cognitive Services können Entwickler die gleichen umfangreichen APIs verwenden wie in Azure und dabei flexibel entscheiden, wo die mit [Docker-Containern](https://www.docker.com/what-container) verbundenen Dienste bereitgestellt und gehostet werden. Die Containerunterstützung ist derzeit für einige Dienste von Azure Cognitive Services verfügbar, einschließlich:
+Azure Cognitive Services bietet mehrere [Docker-Container](https://www.docker.com/what-container), mit denen Sie lokal die gleichen APIs verwenden können, die in Azure verfügbar sind. Die Verwendung dieser Container gibt Ihnen die Flexibilität, Cognitive Services aus Compliance-, Sicherheits- oder anderen betrieblichen Gründen näher an Ihre Daten heranzubringen. 
+
+Die Containerunterstützung ist derzeit für einige Dienste von Azure Cognitive Services verfügbar, einschließlich:
 
 > [!div class="checklist"]
 > * [Anomalieerkennung][ad-containers]
-> * [Maschinelles Sehen][cv-containers]
+> * [Read OCR (Optical Character Recognition; optische Zeichenerkennung)][cv-containers]
+> * [Räumliche Analyse][spa-containers]
 > * [Gesichtserkennung][fa-containers]
 > * [Formularerkennung][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -42,8 +46,8 @@ Cognitive Services-Ressourcen sind in [Microsoft Azure](https://azure.microsoft.
 ## <a name="features-and-benefits"></a>Features und Vorteile
 
 - **Unveränderliche Infrastruktur**: Ermöglichen Sie es den DevOps-Teams, einen konsistenten und zuverlässigen Satz bekannter Systemparameter zu nutzen und sich gleichzeitig an Änderungen anzupassen. Container bieten die Flexibilität, sich innerhalb eines vorhersehbaren Ökosystems zu bewegen und Konfigurationsabweichungen zu vermeiden.
-- **Kontrolle über Daten:** Ermöglichen Sie Kunden, auszuwählen, wo Cognitive Services ihre Daten verarbeitet. Dies ist wichtig für Kunden, die keine Daten in die Cloud senden können, aber auf die Cognitive Services-Technologie zugreifen müssen. Einheitliche Unterstützung in Hybridumgebungen – für Daten, Verwaltung, Identität und Sicherheit.
-- **Kontrolle über Modellaktualisierungen:** Bietet Kunden Flexibilität bei der Versionsverwaltung und Aktualisierung der in ihren Lösungen eingesetzten Modelle.
+- **Kontrolle über Daten:** Wählen Sie aus, wo Ihre Daten von Cognitive Services verarbeitet werden. Dies kann wichtig sein, wenn Sie keine Daten an die Cloud senden können, aber Zugriff auf Cognitive Services-APIs benötigen. Einheitliche Unterstützung in Hybridumgebungen – für Daten, Verwaltung, Identität und Sicherheit.
+- **Kontrolle über Modellaktualisierungen:** Flexibilität bei der Versionsverwaltung und Aktualisierung der in den Lösungen eingesetzten Modelle.
 - **Portable Architektur:** Ermöglicht die Erstellung einer portablen Anwendungsarchitektur, die in Azure, lokal und am Edge eingesetzt werden kann. Container können direkt für [Azure Kubernetes Service](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml) oder einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](/azure-stack/operator) bereitgestellt werden. Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 - **Hoher Durchsatz/niedrige Latenz:** Bietet Kunden die Möglichkeit, für hohe Durchsatzraten und niedrige Latenzanforderungen zu skalieren, indem Cognitive Services physisch in der Nähe ihrer Anwendungslogik und -daten ausgeführt wird. Container erzwingen keine Obergrenzen für die Transaktionen pro Sekunde (TPS) und können für die zentrale und horizontale Skalierung konfiguriert werden, um bei Bedarf die erforderlichen Hardwareressourcen bereitzustellen.
 - **Skalierbarkeit:** Mit der ständig wachsenden Beliebtheit von Software für Containerisierung und Containerorchestrierung wie Kubernetes steht die Skalierbarkeit steht im Vordergrund des technologischen Fortschritts. Aufbauend auf einer skalierbaren Clusterbasis sorgt die Anwendungsentwicklung für eine entsprechende Hochverfügbarkeit.
@@ -55,9 +59,9 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 | Dienst | Unterstützter Tarif | Container | BESCHREIBUNG |
 |--|--|--|--|
 | [Anomalieerkennung][ad-containers] | F0, S0 | **Anomalieerkennung** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen.<br>[Zugriff anfordern][request-access] |
-| [Maschinelles Sehen][cv-containers] | F0, S1 | **Lesen** | Extrahiert gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen, wie z.B. Belege, Poster, und Visitenkarten. Der Container für das Lesen erkennt auch *handgeschriebenen Text* in Bildern und bietet Unterstützung für PDF, TIFF oder mehrere Seiten.<br/><br/>**Wichtig:** Der Container für das Lesen funktioniert derzeit nur für Englisch. |
-| [Gesichtserkennung][fa-containers] | F0, S0 | **Gesichtserkennung** | Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.<br>[Zugriff anfordern][request-access] |
-| [Formularerkennung][fr-containers] | F0, S0 | **Formularerkennung** | Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren.<br>[Zugriff anfordern][request-access] |
+| [Maschinelles Sehen][cv-containers] | F0, S1 | **Read** OCR ([Bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Mit dem Read OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](./computer-vision/concept-recognizing-text.md).<br>[Zugriff anfordern][request-access] |
+| [Gesichtserkennung][fa-containers] | F0, S0 | **Gesichtserkennung** | Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren. |
+| [Formularerkennung][fr-containers] | F0, S0 | **Formularerkennung** | Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren. |
 | [LUIS][lu-containers] | F0, S0 | **LUIS** ([Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern. |
 | [Spracherkennungsdienst-API][sp-containers-stt] | F0, S0 | **Spracherkennung** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Wandelt fortlaufende Sprache in Echtzeit in Text um. |
 | [Spracherkennungsdienst-API][sp-containers-cstt] | F0, S0 | **Benutzerdefinierte Spracherkennung** ([Abbildung](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Wandelt fortlaufende Sprache in Echtzeit in Text um und verwendet dazu ein benutzerdefiniertes Modell. |

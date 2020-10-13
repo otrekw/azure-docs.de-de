@@ -4,14 +4,14 @@ description: Herstellen einer Verbindung von Clients mit einem Azure HPC Cache-D
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 10f8e92138878381b5267742b8211df81e0c49d4
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232677"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651427"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
 
@@ -20,7 +20,7 @@ Nachdem der Cache erstellt wurde, können NFS-Clients mit einem einfachen `mount
 Der mount-Befehl besteht aus den folgenden Elementen:
 
 * Eine der Einbindungsadressen des Cache (aufgelistet auf der Übersichtsseite des Cache).
-* Der Pfad des virtuellen Namespace, den Sie beim Erstellen des Speicherziels festgelegt haben.
+* Ein Pfad des virtuellen Namespace, den Sie für das Speicherziel festlegen (aufgeführt auf der Seite „Cache-Namespace“).
 * Dem lokalen Pfad, der auf dem Client verwendet werden soll.
 * Befehlsparametern zur Erfolgsoptimierung dieser Art von NFS-Einbindung.
 
@@ -79,9 +79,9 @@ Erstellen Sie anhand dieser Vorgehensweise den Einbindungsbefehl.
 
 1. Wählen Sie den **Pfad des virtuellen Namespace** aus, der für den Client verwendet werden soll. Diese Pfade sind mit Exporten auf dem Back-End-Speichersystem verknüpft.
 
-   ![Screenshot des Felds „Namespacepfade“ mit geöffneter Auswahl.](media/mount-select-target.png)
+   ![Der Screenshot zeigt das Feld „Pfad des virtuellen Namespace“ mit geöffnetem Selektor.](media/mount-select-target.png)
 
-   Sie können die virtuellen Namespacepfade auf der Portalseite „Speicherziele“ anzeigen. Informationen zur Vorgehensweise hierfür finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md).
+   Sie können die Pfade des virtuellen Namespace auf der Portalseite **Namespace** anzeigen. Informationen zur Vorgehensweise finden Sie unter [Einrichten des aggregierten Namespace](add-namespace-paths.md).
 
    Weitere Informationen zur aggregierten Namespacefunktion von Azure HPC Cache finden Sie unter [Planen des aggregierten Namespace](hpc-cache-namespace.md).
 
@@ -89,7 +89,7 @@ Erstellen Sie anhand dieser Vorgehensweise den Einbindungsbefehl.
 
    Klicken Sie auf das Kopiersymbol auf der rechten Seite des Felds, um den Befehl automatisch in die Zwischenablage zu kopieren.
 
-   ![Screenshot des Felds „Namespacepfade“ mit geöffneter Auswahl.](media/mount-command-copy.png)
+   ![Der Screenshot zum Prototyp des Felds „Einbindungsbefehl“ zeigt einen daraufhin eingeblendeten Text für die Schaltfläche „In die Zwischenablage kopieren“ an.](media/mount-command-copy.png)
 
 1. Verwenden Sie den kopierten mount-Befehl auf dem Clientcomputer, um eine Verbindung zwischen dem Clientcomputer und dem Azure HPC Cache herzustellen. Sie können den mount-Befehl direkt über die Befehlszeile auf dem Client ausgeben oder ihn in ein Setupskript oder eine -vorlage auf dem Client einfügen.
 
@@ -124,16 +124,16 @@ Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einst
 
 ### <a name="find-mount-command-components"></a>Suchen nach Komponenten für den mount-Befehl
 
-Wenn Sie einen Einbindungsbefehl ohne die Seite **Einbindungsanweisungen** erstellen möchten, finden Sie die dafür erforderlichen Komponenten auf den folgenden Seiten: die Einbindungsadressen auf der Seite **Übersicht** des Caches und die Pfade zum virtuellen Namespace auf der Seite **Speicherziel**.
+Wenn Sie einen Einbindungsbefehl ohne die Seite **Einbindungsanweisungen** erstellen möchten, finden Sie die dafür erforderlichen Komponenten auf den folgenden Seiten: die Einbindungsadressen auf der Seite **Übersicht** des Caches und die Pfade zum virtuellen Namespace auf der Seite **Namespace**.
 
 ![Screenshot der Übersichtsseite einer Azure HPC Cache-Instanz mit einem Hervorhebungskasten um die Einbindungsadressliste rechts unten](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
 > Die Cache-Einbindungsadressen entsprechen Netzwerkschnittstellen innerhalb des Cache-Subnetzes. Diese NICs werden in einer Ressourcengruppe mit Namen angezeigt, die auf `-cluster-nic-` und einer Zahl enden. Sie dürfen diese Schnittstellen nicht ändern oder löschen, sonst ist der Cache nicht mehr verfügbar.
 
-Die virtuellen Namespacepfade werden auf der Seite „Details“ des jeweiligen Speicherziels angezeigt. Klicken Sie auf den Namen eines einzelnen Speicherziels, um dessen Details anzuzeigen, einschließlich zugeordneter aggregierter Namespacepfade.
+Die Pfade des virtuellen Namespace werden auf der Einstellungsseite **Namespace** des Caches angezeigt.
 
-![Screenshot der Seite „Details“ eines Speicherziels (Header „Speicherziel aktualisieren“). Ein Eintrag in der Spalte „Pfad des virtuellen Namespace“ der Tabelle weist einen Hervorhebungsrahmen auf.](media/hpc-cache-view-namespace-paths.png)
+![Der Screenshot der Portalseite „Einstellungen > Namespace“ mit einem Hervorhebungsrahmen, der die erste Spalte der Tabelle umgibt: „Namespacepfad“](media/view-namespace-paths.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
