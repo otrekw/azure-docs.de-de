@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328637"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
@@ -26,15 +26,19 @@ Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein 
 
 [!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
+## <a name="prerequisites-download-the-script"></a>Voraussetzungen: Herunterladen des Skripts
+
+Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [**Azure Digital Twins-Beispiele**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *ZIP herunterladen* klicken.
+
+Dadurch wird das Beispielprojekt als _**Azure_Digital_Twins_samples.zip**_ auf Ihren Computer heruntergeladen. Navigieren Sie zu dem Ordner auf Ihrem Computer, und entpacken Sie ihn, um die Dateien zu extrahieren.
+
+Im entpackten Ordner befindet sich das Bereitstellungsskript unter _Azure_Digital_Twins_samples > scripts > **deploy.ps1**_.
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="run-the-deployment-script"></a>Ausführen des Bereitstellungsskripts
 
 In diesem Artikel wird ein Azure Digital Twins-Codebeispiel verwendet, um eine Azure Digital Twins-Instanz und die erforderliche Authentifizierung halbautomatisch bereitzustellen. Er kann zudem als Startpunkt zum Schreiben Ihrer eigenen Skriptinteraktionen dienen.
-
-Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [Azure Digital Twins-Beispiele](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *ZIP herunterladen* klicken.
-
-Im heruntergeladenen Ordner mit den Beispielen befindet sich das Bereitstellungsskript unter _Azure_Digital_Twins_samples.zip > scripts > **deploy.ps1**_.
 
 Im Folgenden sind die Schritte zum Ausführen des Bereitstellungsskripts in Cloud Shell beschrieben.
 1. Öffnen Sie in Ihrem Browser ein [Azure Cloud Shell](https://shell.azure.com/)-Fenster. Melden Sie sich mithilfe des folgenden Befehls an:
@@ -43,13 +47,23 @@ Im Folgenden sind die Schritte zum Ausführen des Bereitstellungsskripts in Clou
     ```
     Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Azure-Anmeldeseite. Öffnen Sie andernfalls die Browserseite *https://aka.ms/devicelogin* , und geben Sie den in Ihrem Terminal angezeigten Autorisierungscode ein.
  
-2. Nachdem Sie sich angemeldet haben, klicken Sie in der Symbolleiste des Cloud Shell-Fensters auf das Symbol „Dateien hochladen/herunterladen“ und dann auf „Hochladen“.
+2. Stellen Sie in der Cloud Shell-Symbolleiste sicher, dass Ihre Cloud Shell für die Ausführung der PowerShell-Version festgelegt ist.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell-Fenster: Auswahl der Option „Hochladen“":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell-Fenster: Auswahl der PowerShell-Version":::
 
-    Navigieren Sie zur Datei _**deploy.ps1**_ auf Ihrem Computer, und klicken Sie auf „Öffnen“. Dadurch wird die Datei in Cloud Shell hochgeladen, sodass Sie diese im Cloud Shell-Fenster ausführen können.
+1. auf das Symbol „Dateien hochladen/herunterladen“ und dann auf „Hochladen“.
 
-3. Führen Sie das Skript aus, indem Sie im Cloud Shell-Fenster den Befehl `./deploy.ps1` absenden. Während das Skript die automatisierten Einrichtungsschritte durchläuft, werden Sie dazu aufgefordert, die folgenden Werte zu übergeben:
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell-Fenster: Auswahl der PowerShell-Version":::
+
+    Navigieren Sie zur Datei _**deploy.ps1**_ auf Ihrem Computer (in _Azure_Digital_Twins_samples > scripts > **deploy.ps1**_), und klicken Sie auf „Öffnen“. Dadurch wird die Datei in Cloud Shell hochgeladen, sodass Sie diese im Cloud Shell-Fenster ausführen können.
+
+4. Führen Sie das Skript aus, indem Sie im Cloud Shell-Fenster den Befehl `./deploy.ps1` absenden. (Denken Sie daran, dass Sie zum Einfügen in Cloud Shell **STRG+UMSCHALT+V** unter Windows und Linux oder **CMD+UMSCHALT+V** unter macOS verwenden können. Sie können auch das Kontextmenü verwenden.)
+
+    ```azurecli
+    ./deploy.ps1
+    ```
+
+    Während das Skript die automatisierten Einrichtungsschritte durchläuft, werden Sie dazu aufgefordert, die folgenden Werte zu übergeben:
     * Für die Instanz: die *Abonnement-ID* Ihres zu verwendenden Azure-Abonnements.
     * Für die Instanz: einen *Speicherort*, an dem Sie die Instanz bereitstellen möchten. Informationen zu Regionen mit Unterstützung von Azure Digital Twins finden Sie unter [*Verfügbare Produkte nach Region*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * Für die Instanz: einen Namen für die *Ressourcengruppe*. Sie können eine vorhandene Ressourcengruppe verwenden oder einen neuen Namen einer zu erstellenden Ressourcengruppe eingeben.
@@ -68,7 +82,7 @@ Dieses Skript erstellt eine Azure Digital Twins-Instanz, weist Ihrem Azure-Benut
 
 Im Folgenden finden Sie einen Auszug aus dem Ausgabeprotokoll des Skripts:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell-Fenster mit Eingabe- und Ausgabeprotokoll beim Ausführen des Bereitstellungsskripts" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell-Fenster: Auswahl der PowerShell-Version" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Wird das Skript erfolgreich abgeschlossen, zeigt die Ausgabe am Ende `Deployment completed successfully` an. Andernfalls beheben Sie das in der Fehlermeldung erwähnte Problem, und führen Sie das Skript erneut aus. Es überspringt die bereits abgeschlossenen Schritte und führt das Anfordern von Eingaben ab dem Punkt fort, an dem die Ausführung zuvor unterbrochen wurde.
 
@@ -89,7 +103,7 @@ Im [Azure-Portal](https://portal.azure.com) finden Sie Ihre Azure Digital Twins-
 
 Wenn Sie darauf klicken, wird die *Übersichtsseite* der Instanz geöffnet. Notieren Sie sich ihren *Namen*, die *Ressourcengruppe* und den *Hostnamen*. Diese benötigen Sie möglicherweise später zum Identifizieren der Instanz und zum Herstellen einer Verbindung mit dieser.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Hervorheben der wichtigen Werte auf der Übersichtsseite der Instanz":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Cloud Shell-Fenster: Auswahl der PowerShell-Version":::
 
 ### <a name="collect-app-registration-values"></a>Erfassen von Werten der App-Registrierung 
 
@@ -99,7 +113,7 @@ Sie finden diese, indem Sie [diesem Link](https://portal.azure.com/#blade/Micros
 
 Die neu erstellte App-Registrierung sollte in dieser Liste angezeigt werden. Klicken Sie darauf, um die Details anzuzeigen:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Portalansicht der wichtigen Werte für die App-Registrierung":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Cloud Shell-Fenster: Auswahl der PowerShell-Version":::
 
 Notieren Sie sich die *Anwendungs-ID (Client)* und die *Verzeichnis-ID (Mandant)* , die auf **Ihrer** Seite angezeigt werden. Wenn Sie nicht die Person sind, die Code für Clientanwendungen schreiben wird, sollten Sie diese Werte mit der Person teilen, die dafür zuständig sein wird.
 
@@ -107,9 +121,15 @@ Notieren Sie sich die *Anwendungs-ID (Client)* und die *Verzeichnis-ID (Mandant)
 
 Die vom Skript erstellten Ressourcen und eingerichteten Berechtigungen können Sie über das [Azure-Portal](https://portal.azure.com) überprüfen.
 
+Wenn Sie den Erfolg eines beliebigen Schritts nicht überprüfen können, wiederholen Sie den Schritt. Sie können die Schritte einzeln mit dem [Azure-Portal](how-to-set-up-instance-portal.md) oder mit [CLI](how-to-set-up-instance-cli.md)-Anweisungen ausführen.
+
 ### <a name="verify-instance"></a>Überprüfen der Instanz
 
-Über die [Azure Digital Twins-Seite](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) im Azure-Portal können Sie überprüfen, ob Ihre Instanz erstellt wurde. Auf dieser Seite sind alle Ihre Azure Digital Twins-Instanzen aufgelistet. Suchen Sie in der Liste nach dem Namen Ihrer neu erstellten Instanz.
+Über die [Azure Digital Twins-Seite](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) im Azure-Portal können Sie überprüfen, ob Ihre Instanz erstellt wurde. Sie können selbst auf diese Seite gelangen, indem Sie über die Portalsuchleiste nach *Azure Digital Twins* suchen.
+
+Auf dieser Seite sind alle Ihre Azure Digital Twins-Instanzen aufgelistet. Suchen Sie in der Liste nach dem Namen Ihrer neu erstellten Instanz.
+
+Wenn die Überprüfung nicht erfolgreich war, können Sie erneut versuchen, eine Instanz zu erstellen, indem Sie das [Portal](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) oder die [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance) verwenden.
 
 ### <a name="verify-user-role-assignment"></a>Überprüfen der Benutzerrollenzuweisung
 
@@ -117,16 +137,18 @@ Die vom Skript erstellten Ressourcen und eingerichteten Berechtigungen können S
 
 > [!NOTE]
 > Beachten Sie, dass das Skript diese erforderliche Rolle derzeit demselben Benutzer zuweist, der auch das Skript in Cloud Shell ausführt. Falls erforderlich, können Sie diese Rolle nun über das Azure-Portal ([Anweisungen](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) oder die CLI ([Anweisungen](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) einem anderen Benutzer zuweisen, der für die Verwaltung der Instanz zuständig ist.
->
-> Sie können auch das Portal oder die CLI verwenden, um Ihre eigene Rollenzuweisung zu wiederholen, wenn beim Skriptsetup Probleme aufgetreten sind.
+
+Wenn die Überprüfung nicht erfolgreich war, können Sie Ihre eigene Rollenzuweisung auch über das [Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) oder die [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) wiederholen.
 
 ### <a name="verify-app-registration"></a>Überprüfen der App-Registrierung
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinstellungen für die Registrierung ordnungsgemäß festgelegt wurden. Wählen Sie hierzu auf der Menüleiste *Manifest* aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im nachstehenden Screenshot entsprechen:
+Vergewissern Sie sich dann, dass die Berechtigungseinstellungen für Azure Digital Twins für die Registrierung ordnungsgemäß festgelegt wurden. Wählen Sie hierzu auf der Menüleiste *Manifest* aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im nachstehenden Screenshot entsprechen:
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+
+Wenn mindestens einer dieser Überprüfungsschritte nicht erfolgreich ist, versuchen Sie erneut, die App-Registrierung mit dem [Portal](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) oder mit [CLI](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications)-Anweisungen zu erstellen.
 
 ## <a name="other-possible-steps-for-your-organization"></a>Weitere mögliche Schritte für Ihre Organisation
 
@@ -135,7 +157,7 @@ Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinst
 ## <a name="next-steps"></a>Nächste Schritte
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
 
 Unter folgendem Link erfahren Sie außerdem, wie Sie eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie den Authentifizierungscode der Client-App schreiben:
