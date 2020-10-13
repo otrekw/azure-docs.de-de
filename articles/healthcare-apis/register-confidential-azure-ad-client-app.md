@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 756645d2df22f1222c3004a44e5a46c7a3bc1a2f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852547"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826229"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrieren einer vertraulichen Clientanwendung in Azure Active Directory
 
@@ -23,59 +23,59 @@ Die Registrierung einer Clientanwendung ist eine Azure Active Directory-Darstell
 
 Führen Sie die folgenden Schritte aus, um eine neue vertrauliche Anwendung im Portal zu registrieren.
 
-## <a name="app-registrations-in-azure-portal"></a>App-Registrierungen im Azure-Portal
+## <a name="register-a-new-application"></a>Registrieren einer neuen Anwendung
 
-1. Klicken Sie im linken Navigationsbereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**.
+1. Navigieren Sie im **Azure-Portal** zu [Azure Active Directory](https://portal.azure.com).
 
-2. Klicken Sie auf dem Blatt **Azure Active Directory** auf **App-Registrierungen**:
+1. Wählen Sie **App-Registrierungen** aus.
 
     ![Azure-Portal. Neue App-Registrierung.](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. Klicken Sie auf **Neue Registrierung**.
-
-## <a name="register-a-new-application"></a>Registrieren einer neuen Anwendung
+1. Wählen Sie **Neue Registrierung** aus.
 
 1. Weisen Sie der Anwendung einen Anzeigenamen zu.
 
-2. Stellen Sie eine Antwort-URL bereit. Diese Details können später geändert werden, aber wenn Sie die Antwort-URL Ihrer Anwendung kennen, geben Sie sie jetzt ein.
+1. Stellen Sie eine Antwort-URL bereit. Diese Details können später geändert werden, aber wenn Sie die Antwort-URL Ihrer Anwendung kennen, geben Sie sie jetzt ein.
 
     ![Registrierung einer neuen vertraulichen Client-App.](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+1. Wählen Sie **Registrieren**.
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 
-Fügen Sie als Nächstes API-Berechtigungen hinzu:
+Da Sie Ihre Anwendung nun registriert haben, müssen Sie festlegen, welche API-Berechtigungen im Auftrag der Benutzer von dieser Anwendung angefordert werden können:
 
-1. Öffnen Sie **API-Berechtigungen**:
+1. Wählen Sie **API-Berechtigungen anfordern** aus.
 
     ![Vertraulicher Client. API-Berechtigungen](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
 
-2. Klicken Sie auf **Berechtigung hinzufügen**.
+1. Wählen Sie **Berechtigung hinzufügen** aus.
 
-3. Wählen Sie die entsprechende Ressourcen-API aus:
+    Wenn Sie die Azure API for FHIR verwenden, müssen Sie den Azure Healthcare APIs eine Berechtigung hinzufügen, indem Sie unter **Von meiner Organisation verwendete APIs** nach **Azure Healthcare APIs** suchen. Diese APIs werden nur gefunden, wenn Sie die [Azure API for FHIR](fhir-paas-powershell-quickstart.md) bereits bereitgestellt haben.
 
-    Klicken Sie für Azure API for FHIR (verwalteter Dienst) auf **Von meiner Organisation verwendete APIs**, und suchen Sie nach „Azure-APIs für das Gesundheitswesen“. Wählen Sie für den Open Source FHIR-Server für Azure Folgendes aus: [FHIR API-Ressourcenanwendungsregistrierung](register-resource-azure-ad-client-app.md):
+    Wenn Sie auf eine andere Ressourcenanwendung verweisen, wählen Sie unter **Meine APIs** die zuvor erstellte [Ressourcenanwendungsregistrierung für die FHIR-API](register-resource-azure-ad-client-app.md) aus.
 
-    ![Vertraulicher Client. Meine APIs](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-MyApis.png)
 
-4. Wählen Sie Bereiche (Berechtigungen) aus, nach denen die vertrauliche Anwendung im Auftrag eines Benutzers fragen können soll:
+    :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="Vertraulicher Client. Meine Organisations-APIs" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
+    
 
-    ![Vertraulicher Client. Berechtigungen der Stellvertretung](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-DelegatedPermissions.png)
+3. Wählen Sie Bereiche (Berechtigungen) aus, nach denen die vertrauliche Anwendung im Auftrag eines Benutzers fragen können soll:
+
+    :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="Vertraulicher Client. Meine Organisations-APIs":::
 
 ## <a name="application-secret"></a>Anwendungsgeheimnis
 
-1. Erstellen Sie ein Anwendungsgeheimnis (Clientgeheimnis):
+1. Wählen Sie **Zertifikate & Geheimnisse** aus.
+1. Wählen Sie **Neuer geheimer Clientschlüssel**. 
 
     ![Vertraulicher Client. Anwendungsgeheimnis](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
 
-2. Geben Sie eine Beschreibung und die Dauer des Geheimnisses an.
+2. Geben Sie eine Beschreibung und die Dauer des Geheimnisses an (1 Jahr, 2 Jahre oder nie).
 
 3. Nach der Generierung wird es im Portal nur einmal angezeigt. Notieren Sie es sich, und bewahren Sie es sicher auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie eine vertrauliche Clientanwendung in Azure Active Directory registrieren. Sie können jetzt [Azure API for FHIR](fhir-paas-powershell-quickstart.md) bereitstellen.
-
-Anschließend können Sie weitere verfügbare Einstellungen prüfen.
+In diesem Artikel haben Sie erfahren, wie Sie eine vertrauliche Clientanwendung in Azure Active Directory registrieren. Nun können Sie mithilfe von Postman auf Ihren FHIR-Server zugreifen.
  
 >[!div class="nextstepaction"]
->[Bereitstellen von Azure API for FHIR](fhir-paas-powershell-quickstart.md)
+>[Zugreifen auf Azure API for FHIR mit Postman](access-fhir-postman-tutorial.md)

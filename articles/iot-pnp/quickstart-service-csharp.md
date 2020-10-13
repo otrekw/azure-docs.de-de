@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 688541147a9a765ed94d8e6c18ce4ee63615f627
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580811"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759168"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (C#)
 
@@ -66,7 +66,7 @@ In dieser Schnellstartanleitung verwenden Sie ein in C# geschriebenes Beispielth
 In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
 
 * **IOTHUB_CONNECTION_STRING**: die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
-* **DEVICE_ID**: `"my-pnp-device"`.
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
 
 In dieser Schnellstartanleitung verwenden Sie eine IoT-Beispiellösung in C# für die Interaktion mit dem gerade eingerichteten Beispielgerät.
 
@@ -76,7 +76,7 @@ In dieser Schnellstartanleitung verwenden Sie eine IoT-Beispiellösung in C# fü
 
     | Name | Wert |
     | ---- | ----- |
-    | DEVICE_ID | my-pnp-device |
+    | IOTHUB_DEVICE_ID | my-pnp-device |
     | IOTHUB_CONNECTION_STRING | Der Wert, den Sie sich beim Abschließen von [Einrichten Ihrer Umgebung](set-up-environment.md) notiert haben |
 
 1. Jetzt können Sie das Beispiel in Visual Studio erstellen und im Debugmodus ausführen.
@@ -92,7 +92,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> In diesem Beispiel wird der Namespace **Microsoft.Azure.Devices.Client;** aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zum Abrufen der Modell-ID finden Sie im [Entwicklerhandbuch](concepts-developer-guide.md).
+> In diesem Beispiel wird der Namespace **Microsoft.Azure.Devices.Client;** aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zum Abrufen der Modell-ID finden Sie im [Entwicklerhandbuch](concepts-developer-guide-service.md).
 
 Dieser Code generiert die folgende Ausgabe:
 

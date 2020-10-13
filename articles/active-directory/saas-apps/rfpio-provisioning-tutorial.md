@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 963f89c99d71afbebbe122e3c7d8b3227dc4a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278922"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RFPIO für die automatische Benutzerbereitstellung
 
@@ -66,11 +66,11 @@ Bevor Sie RFPIO für die automatische Benutzerbereitstellung mit Azure AD konfi
 
 4.  Stellen Sie sicher, dass **Auto User Provisioning** (Automatische Benutzerbereitstellung) aktiviert ist. Klicken Sie auf **GENERATE SCIM API TOKEN** (SCIM-API-Token generieren).
 
-    ![RFPIO: Erstellen eines Tokens](media/rfpio-provisioning-tutorial/generate.png)
+    ![Screenshot des Abschnitts „SCIM“ mit hervorgehobener Option „GENERATE SCIM API TOKEN“ (SCIM-API-Token generieren).](media/rfpio-provisioning-tutorial/generate.png)
 
 5.  Speichern Sie das **SCIM-API-Token**, da dieses Token aus Sicherheitsgründen nicht erneut angezeigt wird. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer RFPIO-Anwendung in das Feld **Geheimes Token** eingegeben.
 
-    ![RFPIO: Erstellen eines Tokens](media/rfpio-provisioning-tutorial/auth.png)
+    ![Screenshot des Abschnitts „SCIM“ mit dem Dialogfeld „Warnung“, das angezeigt wird, nachdem Sie „SUBMIT“ (Senden) ausgewählt haben.](media/rfpio-provisioning-tutorial/auth.png)
 
 ## <a name="add-rfpio-from-the-gallery"></a>Hinzufügen von RFPIO aus dem Katalog
 
@@ -113,11 +113,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` ein. Ein Beispielwert ist `https://Azure-test1.rfpio.com/rfpserver/scim/v2`. Geben Sie den Wert des **SCIM-API-Tokens** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit RFPIO herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr RFPIO-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 

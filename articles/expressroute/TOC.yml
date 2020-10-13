@@ -4,7 +4,7 @@
   items:
     - name: Was ist ExpressRoute?
       href: expressroute-introduction.md
-- name: Schnellstart
+- name: Schnellstarts
   items:
     - name: 'Erstellen einer ExpressRoute-Verbindung: Portal'
       href: expressroute-howto-circuit-portal-resource-manager.md

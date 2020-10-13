@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317564"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 
@@ -120,7 +120,7 @@ Jeder lokale Active Directory-Connector ist mit einem eigenen Kennworthashsynchr
 
 Wenn das AD DS-Konto, das vom lokalen Active Directory-Connector zum Synchronisieren von Kennworthashes verwendet wird, nicht über die entsprechenden Berechtigungen verfügt, wird folgende Fehlermeldung zurückgegeben:
 
-![Falsche Anmeldeinformationen](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![Screenshot mit dem Fehler, der zurückgegeben wird, wenn das AD DS-Konto einen falschen Benutzernamen oder ein falsches Kennwort aufweist](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Falscher Benutzername oder falsches Kennwort für das AD DS-Konto
 
@@ -338,7 +338,7 @@ Sie können Probleme mit der Kennworthashsynchronisierung einfach beheben, indem
 
     i. Klicken Sie auf **Metaverseobjekteigenschaften**, um eine Liste von Benutzerattributen anzuzeigen.  
 
-    ![Metaverseinformationen](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Screenshot der Liste mit Benutzerattributen für die Metaverseobjekteigenschaften](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     Stellen Sie sicher, dass kein **cloudFiltered**-Attribut vorhanden ist. Stellen Sie sicher, dass die Domänenattribute (domainFQDN und domainNetBios) über die erwarteten Werte verfügen.
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029544"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827764"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen
 
@@ -69,7 +69,7 @@ Wenn Sie nicht auf Ihr Azure Active Directory-Konto (Azure AD) zugreifen können
 
     3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Kennwort unter Verwendung einer Telefonnummer zurücksetzen**. Hierbei erfolgt ein Anruf an die Telefonnummer, die Sie zuvor in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md) weitere Informationen zum Einrichten einer Telefonnummer. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten einer Telefonnummer im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
+- **Kennwort unter Verwendung einer Telefonnummer zurücksetzen**. Startet einen automatisierten Sprachanruf an die Telefonnummer, die Sie in den Sicherheitsinformationen zuvor eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md) weitere Informationen zum Einrichten einer Telefonnummer. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten einer Telefonnummer im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
     1. Wählen Sie **Mein Mobiltelefon anrufen** aus, geben Sie Ihre Telefonnummer ein, und wählen Sie dann **Anruf** aus.
 

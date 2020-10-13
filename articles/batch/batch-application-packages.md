@@ -2,66 +2,63 @@
 title: Bereitstellen von Anwendungspaketen für Computeknoten
 description: Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zur einfachen Verwaltung mehrerer Anwendungen und Versionen für die Installation auf Batch-Serverknoten.
 ms.topic: how-to
-ms.date: 09/16/2020
-ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 0d705ca731c40563deaeb02c29da120211db7ff4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.custom:
+- H1Hack27Feb2017
+- devx-track-csharp
+- contperfq1
+ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985032"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277698"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
-Das Feature „Anwendungspakete“ von Azure Batch unterstützt Sie bei der Verwaltung von Taskanwendungen und bei deren Bereitstellung auf Serverknoten in Ihren Pools. Anwendungspakete können sowohl den Code in Ihrer Batch-Lösung vereinfachen als auch den Verwaltungsaufwand für die Anwendungen verringern, die Ihre Tasks ausführen. Mit Anwendungspaketen können Sie mehrere Versionen der von Ihren Tasks ausgeführten Anwendungen hochladen und verwalten, einschließlich der dazugehörigen Unterstützungsdateien. Die Anwendungen können Sie dann für die Computeknoten in Ihrem Pool bereitstellen.
-
-Mit Anwendungspaketen können Sie Ihre Kunden dabei unterstützen, die passende Anwendungen für ihre Aufträge auszuwählen und dabei genau anzugeben, welche Version beim Verarbeiten von Aufträgen mit Ihrem Batch-fähigen Dienst verwendet werden soll. Sie können Ihren Kunden auch die Möglichkeit bieten, ihre eigenen Anwendungen in Ihren Dienst hochzuladen und dort zu verfolgen.
+Anwendungspakete können sowohl den Code in Ihrer Azure Batch-Lösung vereinfachen als auch die Verwaltung der von Ihren Tasks ausgeführten Anwendungen erleichtern. Mit Anwendungspaketen können Sie mehrere Versionen dieser Anwendungen hochladen und verwalten, einschließlich der zugehörigen Unterstützungsdateien. Die Anwendungen können Sie dann für die Computeknoten in Ihrem Pool bereitstellen.
 
 Die APIs zum Erstellen und Verwalten von Anwendungspaketen sind Teil der Bibliothek [Batch Management .NET](/dotnet/api/overview/azure/batch/management). Die APIs für die Installation von Anwendungspaketen auf einem Computeknoten sind Teil der Bibliothek [Batch .NET](/dotnet/api/overview/azure/batch/client). In den verfügbaren Batch-APIs für andere Sprachen finden Sie vergleichbare Features.
 
-In diesem Artikel wird erläutert, wie Anwendungspakete im Azure-Portal hochgeladen und verwaltet und auf den Serverknoten eines Pools mit der [Batch .NET](/dotnet/api/overview/azure/batch/client)-Bibliothek installiert werden.
+In diesem Artikel wird erläutert, wie Sie Anwendungspakete über das Azure-Portal hochladen und verwalten. Außerdem wird gezeigt, wie Sie diese Pakete mit der Bibliothek [Batch .NET](/dotnet/api/overview/azure/batch/client) auf den Computeknoten eines Pools installieren.
 
 ## <a name="application-package-requirements"></a>Anforderungen für Anwendungspakete
 
 Vor der Verwendung von Anwendungspaketen müssen Sie [ein Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen](#link-a-storage-account).
 
-Es gibt Einschränkungen für die Anzahl der Anwendungen und Anwendungspakete in einem Batch-Konto sowie bezüglich der maximalen Anwendungspaketgröße. Ausführlichere Informationen zu diesen Einschränkungen finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) .
+Es gibt Einschränkungen für die Anzahl der Anwendungen und Anwendungspakete in einem Batch-Konto sowie bezüglich der maximalen Anwendungspaketgröße. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen für den Azure Batch-Dienst](batch-quota-limit.md).
 
 > [!NOTE]
-> Anwendungspakete werden von Batch-Pools, die vor dem 5. Juli 2017 erstellt wurden, nicht unterstützt (es sei denn, sie wurden nach dem 10. März 2016 mit Clouddienstkonfiguration erstellt).
->
-> Das hier beschriebene Feature für Anwendungspakete ersetzt das Feature für Batch-Apps, das in früheren Versionen des Diensts verfügbar war.
+> Anwendungspakete werden von Batch-Pools, die vor dem 5. Juli 2017 erstellt wurden, nicht unterstützt (es sei denn, sie wurden nach dem 10. März 2016 mit Clouddienstkonfiguration erstellt). Das hier beschriebene Feature für Anwendungspakete ersetzt das Feature für Batch-Apps, das in früheren Versionen des Diensts verfügbar war.
 
-## <a name="about-applications-and-application-packages"></a>Informationen zu Anwendungen und Anwendungspaketen
+## <a name="understand-applications-and-application-packages"></a>Grundlegendes zu Anwendungen und Anwendungspaketen
 
-In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangabe, die automatisch auf die Computeknoten in Ihrem Pool heruntergeladen werden können. Bei einem *Anwendungspaket* handelt es sich um einen bestimmten Satz dieser Binärdateien, die eine bestimmte Version der Anwendung darstellen.
+In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangabe, die automatisch auf die Computeknoten in Ihrem Pool heruntergeladen werden können. Eine Anwendung enthält mindestens ein *Anwendungspaket*, das verschiedene Anwendungsversionen darstellt.
+
+Jedes *Anwendungspaket* ist eine ZIP-Datei mit den Anwendungsbinärdateien und allen unterstützenden Dateien. Nur das ZIP-Format wird unterstützt.
 
 :::image type="content" source="media/batch-application-packages/app_pkg_01.png" alt-text="Abbildung: Übersicht über Anwendungen und Anwendungspakete":::
 
-Eine *Anwendung* in Batch enthält mindestens ein Anwendungspaket und gibt Konfigurationsoptionen für die Anwendung an. So kann eine Anwendung etwa die Standardversion des Anwendungspakets festlegen, die auf Computeknoten installiert werden soll, und sie gibt an, ob die dazugehörigen Pakete aktualisiert oder gelöscht werden können.
-
-Ein *Anwendungspaket* ist eine ZIP-Datei mit Binärdateien der Anwendung und unterstützenden Dateien, die für Ihre Aufgaben zur Ausführung der Anwendung erforderlich sind. Jedes Anwendungspaket stellt eine bestimmte Version der Anwendung dar. Nur das ZIP-Format wird unterstützt.
-
-Sie können Anwendungspakete auf Pool- oder Taskebene angeben. Wenn Sie im einen Pool oder einen Task erstellen, können Sie ein oder mehrere Anwendungspakete und (optional) eine Version angeben.
+Sie können Anwendungspakete auf Pool- oder Taskebene angeben.
 
 - **Pool-Anwendungspakete** werden auf jedem Knoten im Pool bereitgestellt. Anwendungen werden bereitgestellt, wenn ein Knoten mit einem Pool verknüpft oder neu gestartet wird oder wenn ein Reimaging durchgeführt wird.
   
-    Pool-Anwendungspakete sind geeignet, wenn alle Knoten in einem Pool die Tasks eines Auftrags durchführen. Sie können ein oder mehrere Anwendungspakete angeben, wenn Sie einen Pool erstellen, und Sie können die Pakete eines vorhandenen Pools hinzufügen oder aktualisieren. Wenn Sie die Anwendungspakete eines vorhandenen Pools aktualisieren, müssen sie dessen Knoten neu starten, um das neue Paket zu installieren.
+    Pool-Anwendungspakete sind geeignet, wenn alle Knoten in einem Pool die Tasks eines Auftrags ausführen werden. Beim Erstellen eines Pools können Sie Anwendungspakete angeben, die bereitgestellt werden sollen. Sie können auch die Pakete eines vorhandenen Pools hinzufügen oder aktualisieren. Zum Installieren eines neuen Pakets in einem vorhandenen Pool müssen Sie dessen Knoten neu starten.
 
 - **Task-Anwendungspakete** werden nur für einen Serverknoten ausgeführt, für den die Ausführung des Tasks geplant ist, bevor die Befehlszeile des Tasks ausgeführt wird. Wenn das angegebene Anwendungspaket und die Version auf dem Knoten bereits vorhanden sind, erfolgt keine erneute Bereitstellung, und das vorhandene Paket wird verwendet.
   
-    Task-Anwendungspakete sind in Umgebungen mit gemeinsam genutzten Pools praktisch, bei denen verschiedene Aufträge in einem Pool ausgeführt werden und der Pool nach Abschluss des Auftrags nicht gelöscht wird. Wenn Ihr Auftrag über weniger Tasks als Knoten im Pool verfügt, können Task-Anwendungspakete die Datenübertragung minimieren, da Ihre Anwendung nur auf den Knoten bereitgestellt wird, die Tasks ausführen.
+    Task-Anwendungspakete sind in Umgebungen mit gemeinsam genutzten Pools praktisch, bei denen verschiedene Aufträge in einem einzigen Pool ausgeführt werden und der Pool nach Abschluss eines Auftrags nicht gelöscht wird. Wenn es bei Ihrem Auftrag weniger Tasks als Knoten im Pool gibt, können Task-Anwendungspakete die Datenübertragung minimieren, da Ihre Anwendung nur auf den Knoten bereitgestellt wird, die Tasks ausführen.
   
-    Andere Szenarien, die von Aufgabenanwendungspaketen profitieren können, sind Aufträge, die eine große Anwendung für nur einige wenige Aufgaben nutzen. Beispielsweise kann die Verwendung von Aufgabenanwendungspaketen bei einer Vorverarbeitungs- oder Zusammenführungsaufgabe von Vorteil sein, bei der die Vorverarbeitungs- oder Zusammenführungsanwendung umfangreich ist.
+    Andere Szenarien, die von Aufgabenanwendungspaketen profitieren können, sind Aufträge, die eine große Anwendung für nur einige wenige Aufgaben nutzen. Aufgabenanwendungen können z. B. für eine komplexe Vorverarbeitungsstufe oder eine Zusammenführungsaufgabe nützlich sein.
 
 Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzelner, auf dem Knoten zu installierender Ressourcendateien angeben. Sie müssen nicht manuell mehrere Versionen der Anwendungsdateien in Azure Storage oder auf Ihren Knoten verwalten. Und Sie müssen sich auch keine Gedanken über das Generieren von [SAS-URLs](../storage/common/storage-sas-overview.md) für den Zugriff auf die Dateien in Ihrem Speicherkonto machen. Batch funktioniert im Hintergrund mit Azure Storage zum speichern von Anwendungspaketen und zum Bereitstellen der Pakete auf Serverknoten.
 
 > [!NOTE]
-> Die Gesamtgröße einer Startaufgabe darf einschließlich Ressourcendateien und Umgebungsvariablen höchstens 32768 Zeichen betragen. Wenn Ihre Startaufgabe diesen Grenzwert überschreitet, stellt die Verwendung von Anwendungspaketen eine weitere Option dar. Sie können auch eine ZIP-Datei mit Ihren Ressourcendateien erstellen, diese als Blob in Azure Storage hochladen und dann über die Befehlszeile Ihres Starttasks entzippen.
+> Die Gesamtgröße einer Startaufgabe darf einschließlich Ressourcendateien und Umgebungsvariablen höchstens 32768 Zeichen betragen. Wenn Ihre Startaufgabe diesen Grenzwert überschreitet, ist die Verwendung von Anwendungspaketen eine weitere Option. Sie können auch eine ZIP-Datei mit Ihren Ressourcendateien erstellen, diese als Blob in Azure Storage hochladen und dann über die Befehlszeile Ihres Starttasks entzippen.
 
 ## <a name="upload-and-manage-applications"></a>Hochladen und Verwalten von Anwendungen
 
-Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal](https://portal.azure.com) oder die Batch Management-APIs verwalten. In den folgenden Abschnitten wird zunächst gezeigt, wie ein Speicherkonto verknüpft wird. Anschließend wird besprochen, wie Sie Anwendungen und Pakete hinzufügen und mit dem Portal verwalten.
+Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal](https://portal.azure.com) oder die Batch Management-APIs verwalten. In den folgenden Abschnitten wird erläutert, wie Sie ein Speicherkonto verknüpfen sowie Anwendungen und Anwendungspakete im Azure-Portal hinzufügen und verwalten.
 
 ### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos
 
@@ -74,7 +71,7 @@ Nachdem Sie die beiden Konten verknüpft haben, kann Batch die im verknüpften S
 > [!IMPORTANT]
 > In einem Azure Storage-Konto, das mit [Firewallregeln](../storage/common/storage-network-security.md) konfiguriert wurde oder für das **Hierarchischer Namespace** auf **Aktiviert** festgelegt wurde, können keine Anwendungspakete verwendet werden.
 
-Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als Blockblobs zu speichern. Blockblobdaten werden [in der üblichen Höhe in Rechnung gestellt](https://azure.microsoft.com/pricing/details/storage/), und die Größe jedes Pakets darf die maximale Blockblobgröße nicht überschreiten. Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../storage/blobs/scalability-targets.md). Beachten Sie zur Minimierung der Kosten unbedingt Größe und Anzahl der Anwendungspakete, und entfernen Sie veraltete Pakete in regelmäßigen Abständen.
+Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als Blockblobs zu speichern. Blockblobdaten werden [in der üblichen Höhe in Rechnung gestellt](https://azure.microsoft.com/pricing/details/storage/), und die Größe jedes Pakets darf die maximale Blockblobgröße nicht überschreiten. Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../storage/blobs/scalability-targets.md). Beachten Sie zur Minimierung der Kosten unbedingt Größe und Anzahl Ihrer Anwendungspakete, und entfernen Sie veraltete Pakete in regelmäßigen Abständen.
 
 ### <a name="view-current-applications"></a>Anzeigen aktueller Anwendungen
 
@@ -88,19 +85,19 @@ Durch Auswählen dieser Menüoption wird das Fenster **Anwendungen** geöffnet. 
 - **Standardversion**: Gegebenenfalls die Anwendungsversion, die installiert wird, wenn bei der Bereitstellung der Anwendung keine Version angegeben wird.
 - **Updates zulassen**: Gibt an, ob Pakete aktualisiert und gelöscht werden dürfen.
 
-Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf Ihrem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** und dann den Pool aus, der die für Sie interessanten Serverknoten enthält. Wählen Sie anschließend den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen**.
+Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf einem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** aus. Wählen Sie danach den Pool aus, der den Serverknoten enthält. Wählen Sie den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen**.
 
 ### <a name="view-application-details"></a>Anzeigen von Anwendungsdetails
 
 Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster**Anwendungen** die entsprechende Anwendung aus. Sie können für Ihre Anwendung die folgenden Einstellungen konfigurieren.
 
-- **Updates zulassen**: Gibt an, ob Anwendungspakete [aktualisiert oder gelöscht](#update-or-delete-an-application-package) werden können. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn diese Option auf **Nein** festgelegt ist, dürfen für die Anwendungen keine Pakete aktualisiert und gelöscht werden. Neue Anwendungspaketversionen dürfen jedoch hinzugefügt werden.
+- **Updates zulassen**: Gibt an, ob Anwendungspakete [aktualisiert oder gelöscht](#update-or-delete-an-application-package) werden können. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn sie auf **Nein** festgelegt wird, können vorhandene Anwendungspakete nicht aktualisiert oder gelöscht, neue Anwendungspaketversionen aber noch hinzugefügt werden.
 - **Standardversion**: Das Standardanwendungspaket, das bei der Bereitstellung der Anwendung verwendet werden soll, wenn keine Anwendung angegeben wurde.
 - **Anzeigename**: Ein Anzeigename, der von Ihrer Batch-Lösung beim Anzeigen von Informationen zur Anwendung verwendet werden kann. Dieser Name kann beispielsweise in der Benutzeroberfläche eines Diensts verwendet werden, den Sie Ihren Kunden über Batch bereitstellen.
 
 ### <a name="add-a-new-application"></a>Hinzufügen einer neuen Anwendung
 
-Fügen Sie zum Erstellen einer neuen Anwendung ein Anwendungspaket mit einer neuen, eindeutigen ID hinzu.
+Zum Erstellen einer neuen Anwendung fügen Sie ein Anwendungspaket hinzu und geben eine eindeutige Anwendungs-ID an.
 
 Wählen Sie in Ihrem Batch-Konto **Anwendungen** und anschließend **Hinzufügen** aus.
 
@@ -143,7 +140,7 @@ Nachdem Sie nun wissen, wie Anwendungspakete im Azure-Portal verwaltet werden, z
 
 ### <a name="install-pool-application-packages"></a>Installieren von Pool-Anwendungspaketen
 
-Geben Sie mindestens einen Verweis auf ein Anwendungspaket für den Pool an, um ein Anwendungspaket auf allen Computeknoten in einem Pool zu installieren. Die Anwendungspakete, die Sie für einen Pool angeben, werden auf jedem Computeknoten installiert, wenn der jeweilige Knoten dem Pool beitritt sowie wenn der Knoten neu erstellt oder ein Re-Imaging durchgeführt wird.
+Geben Sie mindestens einen Verweis auf ein Anwendungspaket für den Pool an, um ein Anwendungspaket auf allen Computeknoten in einem Pool zu installieren. Die Anwendungspakete, die Sie für einen Pool angeben, werden auf jedem mit dem Pool verknüpften Serverknoten und jedem Knoten, der neu gestartet oder auf dem ein Reimaging durchgeführt wird, installiert.
 
 Legen Sie in Batch .NET Verweise vom Typ [CloudPool.ApplicationPackageReferences](/dotnet/api/microsoft.azure.batch.cloudpool.applicationpackagereferences) fest – entweder beim Erstellen des Pools oder für einen bereits vorhandenen Pool. Die [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)-Klasse gibt eine Anwendungs-ID und eine Version für die Installation auf den Computeknoten eines Pools an.
 
@@ -170,7 +167,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Falls bei der Bereitstellung eines Anwendungspakets aus irgendeinem Grund ein Fehler auftritt, markiert der Batch-Dienst den Knoten als [nicht verwendbar](/dotnet/api/microsoft.azure.batch.computenode.state), sodass keine Aufgaben zur Ausführung auf diesem Knoten geplant werden. In diesem Fall empfiehlt es sich, einen Neustart des Knotens durchzuführen, um die Initiierung der Paketbereitstellung zu wiederholen. Durch Neustarten des Knotens können erneut Aufgaben auf dem Knoten geplant werden.
+> Falls bei der Bereitstellung eines Anwendungspakets ein Fehler auftritt, markiert der Batch-Dienst den Knoten als [nicht verwendbar](/dotnet/api/microsoft.azure.batch.computenode.state), und es werden keine Aufgaben zur Ausführung auf diesem Knoten geplant. Starten Sie in diesem Fall den Knoten neu, um die Initiierung der Paketbereitstellung zu wiederholen. Durch Neustarten des Knotens können erneut Aufgaben auf dem Knoten geplant werden.
 
 ### <a name="install-task-application-packages"></a>Installieren von Task-Anwendungspaketen
 
@@ -246,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>Aktualisieren der Anwendungspakete eines Pools
 
-Wenn ein vorhandener Pool bereits mit einem Anwendungspaket konfiguriert wurde, können Sie ein neues Paket für den Pool angeben. Wenn Sie einen neuen Paketverweis für einen Pool angeben, gilt Folgendes:
+Wenn ein vorhandener Pool bereits mit einem Anwendungspaket konfiguriert wurde, können Sie ein neues Paket für den Pool angeben. Dies bedeutet Folgendes:
 
 - Der Batch-Dienst installiert das neue angegebene Paket auf allen neuen Knoten, die dem Pool hinzugefügt werden, sowie jegliche bereits vorhandene Knoten, die neu gestartet werden bzw. für die ein Reimaging durchgeführt wird.
 - Serverknoten, die sich bereits im Pool befinden, wenn Sie die Paketverweise aktualisieren, werden nicht automatisch im neuen Anwendungspaket installiert. Für diese Computeknoten muss ein Neustart oder ein Reimaging durchgeführt werden, um das neue Paket zu erhalten.
