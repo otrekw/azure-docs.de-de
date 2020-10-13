@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280299"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)
 
-Das Feature des vorläufigen Löschens von Containern (Vorschau) schützt Ihre Daten vor versehentlichen oder irrtümlichen Lösch- oder Änderungsvorgängen. Wenn das vorläufige Löschen für Container in einem Speicherkonto aktiviert ist, können Container und deren Inhalte nach dem Löschen innerhalb eines von Ihnen angegebenen Aufbewahrungszeitraums wiederhergestellt werden.
+Das Feature des vorläufigen Löschens von Containern (Vorschau) schützt Ihre Daten vor versehentlichen oder irrtümlichen Lösch- oder Änderungsvorgängen. Wenn das vorläufige Löschen für Container in einem Speicherkonto aktiviert ist, kann ein Container und dessen Inhalt nach dem Löschen innerhalb eines von Ihnen angegebenen Aufbewahrungszeitraums wiederhergestellt werden.
 
 Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, empfiehlt Microsoft, das vorläufige Löschen für Container zu aktivieren. In diesem Artikel wird gezeigt, wie Sie das vorläufige Löschen für Container aktivieren. Weitere Informationen zum Feature des vorläufigen Löschens für Container sowie zur Registrierung für die Vorschau finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
 
@@ -86,7 +86,7 @@ Um vorläufig gelöschte Container im Azure-Portal anzuzeigen, führen Sie die f
 1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und zeigen Sie die Liste Ihrer Container an.
 1. Legen Sie den Schalter „Gelöschte Container anzeigen“ so fest, dass gelöschte Container in der Liste angezeigt werden.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Screenshot: Anzeigen von vorläufig gelöschten Containern im Azure-Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Screenshot: Aktivieren des vorläufigen Löschens von Containern im Azure-Portal":::
 
 ## <a name="restore-a-soft-deleted-container"></a>Wiederherstellen eines vorläufig gelöschten Containers
 
@@ -95,7 +95,7 @@ Sie können einen vorläufig gelöschten Container und dessen Inhalte innerhalb 
 1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und zeigen Sie die Liste Ihrer Container an.
 1. Öffnen Sie das Kontextmenü für den Container, den Sie wiederherstellen möchten, und wählen Sie die Option **Wiederherstellen** aus.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Screenshot: Wiederherstellen eines vorläufig gelöschten Containers im Azure-Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Screenshot: Aktivieren des vorläufigen Löschens von Containern im Azure-Portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

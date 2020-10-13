@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278667"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -29,6 +29,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 | Frage | Antwort |
 | -------- | ------ |
+| Warum treten Probleme bei meiner Apple Watch unter watchOS 7 auf? | Es liegt ein Problem beim Genehmigen von Benachrichtigungen unter watchOS 7 vor, und wir arbeiten mit Apple zusammen, um dies zu beheben. In der Zwischenzeit sollten alle Benachrichtigungen, die die Microsoft Authenticator-App unter watchOS erfordern, stattdessen auf Ihrem Smartphone genehmigt werden.  |
 | Bedeutet die Registrierung eines Geräts die Zustimmung für den Zugriff auf das Gerät durch das Unternehmen oder den Dienst? | Durch das Registrieren eines Geräts erhält Ihr Gerät Zugriff auf die Dienste Ihrer Organisation, ohne dass Sie Ihrer Organisation erlauben, auf Ihr Gerät zuzugreifen. |
 | Was ist die App-Sperre, und wie kann sie meine Sicherheit erhöhen? | Mit der App-Sperre können Sie die Sicherheit Ihrer Einmalpasscodes, App-Informationen und App-Einstellungen erhöhen. Wenn die App-Sperre aktiviert ist, werden Sie bei jedem Öffnen von Authenticator aufgefordert, sich mit Ihrer Geräte-PIN oder Ihren biometrischen Daten zu authentifizieren. Mithilfe der App-Sperre können Sie auch sicherstellen, dass Sie die einzige Person sind, die Benachrichtigungen genehmigen kann, indem Sie bei jeder Genehmigung einer Anmeldebenachrichtigung zur Eingabe Ihrer PIN oder Ihrer biometrischen Daten aufgefordert werden. Sie können die App-Sperre auf der Seite mit den Authenticator-Einstellungen aktivieren oder deaktivieren. Die App-Sperre wird standardmäßig aktiviert, wenn Sie auf Ihrem Gerät eine PIN oder biometrische Daten einrichten.<br><br>Leider bietet auch die App-Sperre keine endgültige Garantie, dass Fremde sich keinen Zugriff auf Authenticator verschaffen können. Dies liegt daran, dass die Geräteregistrierung auch außerhalb von Authenticator erfolgen kann, z. B. in den Android-Kontoeinstellungen oder in der Unternehmensportal-App. |
 | Ich habe ein Windows Mobile-Gerät, und Microsoft Authenticator ist unter Windows Mobile veraltet. Kann ich die App weiterhin für die Authentifizierung benutzen? | Alle Authentifizierungsflows, für die unter Windows Mobile Microsoft Authenticator erforderlich ist, werden nach dem 15. Juli 2020 außer Betrieb genommen. Es wird dringend empfohlen, zu einer alternativen Authentifizierungsmethode zu wechseln, damit Sie nicht den Zugriff auf Ihre Konten verlieren.<br>Alternative Optionen für Unternehmensbenutzer sind beispielsweise:<br><ul><li>Einrichten von Microsoft Authenticator für [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) oder [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>[Einrichten von SMS](multi-factor-authentication-setup-phone-number.md) für den Empfang von Prüfcodes.</li><li>Einrichten einer Telefonnummer für den Empfang von [Anrufen zum Identitätsnachweis](multi-factor-authentication-setup-office-phone.md).</li></ul><br>Alternative Optionen für Benutzer mit privaten Microsoft-Konten sind beispielsweise:<br><ul><li>Einrichten von Microsoft Authenticator für [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) oder [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>Die Einrichtung einer alternativen Anmeldemethode (SMS oder E-Mail), indem Sie Ihre Sicherheitsinformationen auf der [Seite mit den Sicherheitseinstellungen für Ihr Microsoft-Konto](https://account.microsoft.com/security/) aktualisieren</li></ul> |

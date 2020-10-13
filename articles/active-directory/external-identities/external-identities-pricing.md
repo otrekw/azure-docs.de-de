@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 09/21/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12aa400d6ca44043d3d90e78a93ae49d97a927e8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265787"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Abrechnungsmodell für externe Identitäten in Azure AD
 
@@ -43,11 +43,11 @@ Der Tarif für Ihre Gastbenutzer basiert auf dem höchsten Tarif, der Ihrem Azur
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Verknüpfen Ihres Azure AD-Mandanten mit einem Abonnement
 
-Ein Azure AD-Mandant muss mit einem Azure-Abonnement verknüpft werden, um eine ordnungsgemäße Abrechnung zu ermöglichen und Zugriff auf Features zu erhalten.
+Ein Azure AD-Mandant muss mit einem Azure-Abonnement verknüpft werden, um eine ordnungsgemäße Abrechnung zu ermöglichen und Zugriff auf Features zu erhalten. Wenn das Verzeichnis nicht bereits über ein Abonnement verfügt, mit dem Sie eine Verknüpfung herstellen können, haben Sie die Möglichkeit, während dieses Vorgangs eine hinzuzufügen.
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) mit einem Azure-Konto an, dem mindestens die Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) innerhalb des Abonnements oder einer Ressourcengruppe im Abonnement zugewiesen wurde.
 
-2. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält: Wählen Sie auf der Symbolleiste des Azure-Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Abonnement enthält.
+2. Wählen Sie das Verzeichnis aus, zu dem Sie eine Verknüpfung herstellen möchten: Wählen Sie auf der Symbolleiste im Azure-Portal das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus.
 
     ![Auswählen des Symbols „Verzeichnis + Abonnement“](media/external-identities-pricing/portal-mau-pick-directory.png)
 
@@ -62,6 +62,9 @@ Ein Azure AD-Mandant muss mit einem Azure-Abonnement verknüpft werden, um eine
     ![Auswählen des Mandanten und Verknüpfen eines Abonnements](media/external-identities-pricing/linked-subscriptions.png)
 
 7. Wählen Sie im Bereich „Abonnement verknüpfen“ ein **Abonnement** und eine **Ressourcengruppe** aus. Wählen Sie dann **Anwenden** aus.
+
+   > [!NOTE]
+   > Wenn keine Abonnements aufgeführt sind, können Sie [Ihrem Mandanten ein Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Sie können aber auch ein neues Abonnement hinzufügen, indem Sie den Link **Wenn Sie noch kein Abonnement haben, können Sie hier ein Abonnement erstellen** auswählen.
 
     ![Auswählen eines Abonnements und einer Ressourcengruppe](media/external-identities-pricing/link-subscription-resource.png)
 

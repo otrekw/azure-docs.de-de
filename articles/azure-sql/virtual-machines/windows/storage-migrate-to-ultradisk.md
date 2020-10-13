@@ -8,18 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271901"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrieren eines Protokolldatenträgers zu einem Ultra-Datenträger
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ Gehen Sie zum Aktivieren der Kompatibilität wie folgt vor:
 
 ### <a name="attach-disk"></a>Anfügen des Datenträgers
 
-Verwenden Sie das Azure-Portal, um einen Ultra-Datenträger an Ihren virtuellen Computer anzufügen. Ausführliche Informationen finden Sie unter [Anfügen eines Ultra-Datenträgers über das Azure-Portal](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal).
+Verwenden Sie das Azure-Portal, um einen Ultra-Datenträger an Ihren virtuellen Computer anzufügen. Ausführliche Informationen finden Sie unter [Anfügen eines Ultra-Datenträgers](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk).
 
 Starten Sie Ihren virtuellen Computer über das Azure-Portal, nachdem Sie den Datenträger hinzugefügt haben. 
 

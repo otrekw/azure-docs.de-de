@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3e85d2ef9d75bbff6357466e76ffcf60e3716e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273673"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -302,7 +302,7 @@ Verwenden Sie diese Methode, wenn Sie Ihre AD FS-Umgebung ursprünglich mit Azur
 
 5. Geben Sie auf der Seite **Einmaliges Anmelden aktivieren** die Anmeldeinformationen des Domänenadministratorkontos ein, und wählen Sie dann **Weiter**.
 
-   ![Screenshot: Seite „Einmaliges Anmelden aktivieren“](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   ![Screenshot der Seite „Einmaliges Anmelden aktivieren“, auf der Sie die Anmeldeinformationen des Domänenadministratorkontos eingeben können](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > Die Kontoanmeldeinformationen des Domänenadministrators sind erforderlich, um nahtloses einmaliges Anmelden zu aktivieren. Im Rahmen des Prozesses werden die folgenden Aktionen durchgeführt, für die diese erhöhten Rechte benötigt werden. Die Kontoanmeldeinformationen des Domänenadministrators werden weder in Azure AD Connect noch in Azure AD gespeichert. Die Kontoanmeldeinformationen des Domänenadministrators werden nur verwendet, um das Feature zu aktivieren. Die Anmeldeinformationen werden verworfen, nachdem der Prozess erfolgreich abgeschlossen wurde.
@@ -324,7 +324,7 @@ Verwenden Sie diese Methode, wenn Sie Ihre AD FS-Umgebung ursprünglich mit Azur
    * **Nahtloses einmaliges Anmelden** ist auf **Aktiviert** festgelegt.
    * **Kennwortsynchronisierung** ist auf **Aktiviert** festgelegt.<br /> 
 
-   ![Screenshot: Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Screenshot mit den Einstellungen im Abschnitt „Benutzeranmeldung“ im Azure AD-Portal](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Springen Sie zu [Testen und nächste Schritte](#testing-and-next-steps).
 

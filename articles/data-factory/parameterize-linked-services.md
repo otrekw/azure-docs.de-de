@@ -6,18 +6,19 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b3aadab1b4af80f98c57a279b69606a02846e996
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276452"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Sie können jetzt einen verknüpften Dienst parametrisieren und dynamische Werte zur Laufzeit übergeben. Wenn Sie beispielsweise Verbindungen mit verschiedenen Datenbanken auf demselben logischen SQL-Server herstellen möchten, können Sie nun den Datenbanknamen in der verknüpften Dienstdefinition parametrisieren. Dadurch wird vermieden, dass Sie für jede Datenbank auf dem logischen SQL-Server einen verknüpften Dienst erstellen müssen. Sie können auch andere Eigenschaften in der Definition des verknüpften Diensts parametrisieren, z.B. den *Benutzernamen*.
@@ -33,7 +34,8 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 ## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
-Zurzeit wird die Parametrisierung verknüpfter Dienste in der Data Factory-Benutzeroberfläche für die folgenden Datenspeicher unterstützt. Für alle anderen Datenspeicher können Sie den verknüpften Dienst parametrisieren, indem Sie auf der Registerkarte **Verbindungen** das Symbol **Code** auswählen und den JSON-Editor verwenden.
+Sie können jede Art von verknüpftem Dienst parametrisieren.
+Bei der Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data Factory integrierte Parametrisierungserfahrung für die folgenden Arten von Connectors. Im Blatt zur Erstellung/Bearbeitung von verknüpften Diensten finden Sie Optionen für neue Parameter und können dynamische Inhalte hinzufügen.
 
 - Amazon Redshift
 - Azure Cosmos DB (SQL-API)
@@ -45,6 +47,13 @@ Zurzeit wird die Parametrisierung verknüpfter Dienste in der Data Factory-Benut
 - SQL Server
 - Generisches HTTP
 - Generisches REST
+
+Bei anderen Typen können Sie den verknüpften Dienst parametrisieren, indem Sie den JSON-Code auf der Benutzeroberfläche bearbeiten:
+
+- Im Blatt zur Erstellung/Bearbeitung von verknüpften Diensten erweitern Sie die Option „Erweitert“ am unteren Rand. Aktivieren Sie dann das Kontrollkästchen „Dynamische Inhalte im JSON-Format angeben“, und geben Sie die JSON-Nutzlast für den verknüpften Dienst an. 
+- Oder, nachdem Sie einen verknüpften Dienst ohne Parametrisierung erstellt haben, suchen Sie in [Verwaltungshub](author-visually.md#management-hub) -> Verknüpfte Dienste den bestimmten verknüpften Dienst, und klicken Sie auf „Code“ (Schaltfläche „{}“), um den JSON-Code zu bearbeiten. 
+
+Informationen zum Definieren von Parametern und Verweisen auf den Parameter mithilfe von ` @{linkedService().paraName} ` finden Sie im Abschnitt mit dem [JSON-Beispiel](#json) zum Hinzufügen von ` parameters`.
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 

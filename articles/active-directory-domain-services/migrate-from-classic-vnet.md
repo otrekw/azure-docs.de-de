@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 09/24/2020
 ms.author: iainfou
-ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266903"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure Active Directory Domain Services vom klassischen virtuellen Netzwerkmodell zu Resource Manager
 
@@ -139,6 +139,14 @@ Für die virtuellen Netzwerke, zu denen eine verwaltete Domäne migriert werden 
 
 Weitere Informationen zu den Anforderungen virtueller Netzwerke finden Sie unter [Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services][network-considerations].
 
+Sie müssen auch eine Netzwerksicherheitsgruppe erstellen, um den Datenverkehr im virtuellen Netzwerk für die verwaltete Domäne einzuschränken. Während des Migrationsprozesses wird eine Azure Load Balancer Standard-Instanz erstellt, die diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
+
+Weitere Informationen zu den erforderlichen Regeln finden Sie unter [Azure Active Directory Domain Services: Netzwerksicherheitsgruppen und erforderliche Ports](network-considerations.md#network-security-groups-and-required-ports).
+
+### <a name="ldaps-and-tlsssl-certificate-expiration"></a>LDAPS und Ablauf von TLS-/SSL-Zertifikaten
+
+Wenn Ihre verwaltete Domäne für LDAPS konfiguriert ist, vergewissern Sie sich, dass Ihr aktuelles TLS-/SSL-Zertifikat länger als 30 Tage gültig ist. Bei Verwendung eines Zertifikats, das in den nächsten 30 Tagen abläuft, kann der Migrationsprozess nicht erfolgreich ausgeführt werden. Verlängern Sie ggf. das Zertifikat, wenden Sie es auf Ihre verwaltete Domäne an, und beginnen Sie dann mit dem Migrationsprozess.
+
 ## <a name="migration-steps"></a>Schritte bei der Migration
 
 Die Migration zum Resource Manager-Bereitstellungsmodell und virtuellen Netzwerk ist in fünf Hauptschritte unterteilt:
@@ -166,7 +174,9 @@ Führen Sie die folgenden vorbereitenden Prüfungen und Aktualisierungen durch, 
 
     Stellen Sie sicher, dass durch die Netzwerkeinstellungen nicht die Ports blockiert werden, die für Azure AD DS erforderlich sind. Ports müssen im klassischen virtuellen Netzwerk und im virtuellen Resource Manager-Netzwerk geöffnet sein. Hierzu gehören auch Einstellungen für Routingtabellen (obwohl die Nutzung von Routingtabellen nicht zu empfehlen ist) und Netzwerksicherheitsgruppen.
 
-    Informationen zu den erforderlichen Ports finden Sie unter [Netzwerksicherheitsgruppen und erforderliche Ports][network-ports]. Zur Reduzierung von Problemen mit der Netzwerkkommunikation empfehlen wir Ihnen, vorerst zu warten und eine Netzwerksicherheitsgruppe oder Routingtabelle erst auf das virtuelle Resource Manager-Netzwerk anzuwenden, nachdem die Migration erfolgreich abgeschlossen wurde.
+    Für Azure AD DS wird eine Netzwerksicherheitsgruppe benötigt, um die Ports zu schützen, die für die verwaltete Domäne erforderlich sind, und den gesamten anderen Datenverkehr in eingehender Richtung zu blockieren. Diese Netzwerksicherheitsgruppe fungiert als zusätzliche Schutzschicht zum Sperren des Zugriffs auf die verwaltete Domäne. Informationen zu den erforderlichen Ports finden Sie unter [Netzwerksicherheitsgruppen und erforderliche Ports][network-ports].
+
+    Fügen Sie der Netzwerksicherheitsgruppe bei Verwendung von Secure LDAP eine Regel hinzu, um Datenverkehr in eingehender Richtung für *TCP*-Port *636* zuzulassen. Weitere Informationen finden Sie unter [Beschränken des Secure LDAP-Zugriffs über das Internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet).
 
     Notieren Sie sich die Angaben zu dieser Zielressourcengruppe, zum virtuellen Zielnetzwerk und zum zugehörigen Subnetz. Diese Ressourcennamen werden während des Migrationsvorgangs verwendet.
 
@@ -295,13 +305,6 @@ Bei Bedarf können Sie die differenzierte Kennwortrichtlinie aktualisieren, dami
 1. Wenn die VM für den Zugriff über das Internet verfügbar gemacht wird, sollten Sie überprüfen, ob für generische Kontonamen wie *Administrator*, *Benutzer* oder *Gast* eine hohe Anzahl von Anmeldeversuchen zu verzeichnen ist. Aktualisieren Sie diese VMs nach Möglichkeit so, dass weniger Konten mit generischen Namen verwendet werden.
 1. Verwenden Sie auf der VM eine Netzwerkablaufverfolgung, um die Quelle der Angriffe zu ermitteln, und blockieren Sie diese IP-Adressen für Anmeldeversuche.
 1. Falls es nur zu geringfügigen Problemen mit Sperrungen kommt, sollten Sie die differenzierte Kennwortrichtlinie so aktualisieren, dass sie so restriktiv wie nötig ist.
-
-### <a name="creating-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
-
-Für Azure AD DS wird eine Netzwerksicherheitsgruppe benötigt, um die Ports zu schützen, die für die verwaltete Domäne erforderlich sind, und den gesamten anderen Datenverkehr in eingehender Richtung zu blockieren. Diese Netzwerksicherheitsgruppe fungiert als zusätzliche Schutzschicht zum Sperren des Zugriffs auf die verwaltete Domäne und wird nicht automatisch erstellt. Sehen Sie sich die folgenden Schritte an, mit denen die Netzwerksicherheitsgruppe erstellt und die erforderlichen Ports geöffnet werden:
-
-1. Wählen Sie im Azure-Portal Ihre Azure AD DS-Ressource aus. Die Übersichtsseite enthält eine Schaltfläche, mit der Sie eine Netzwerksicherheitsgruppe erstellen können, falls Azure AD Domain Services noch keine zugeordnet ist.
-1. Fügen Sie der Netzwerksicherheitsgruppe bei Verwendung von Secure LDAP eine Regel hinzu, um Datenverkehr in eingehender Richtung für *TCP*-Port *636* zuzulassen. Weitere Informationen finden Sie unter [Konfigurieren von Secure LDAP][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Rollback und Wiederherstellung nach der Migration
 
