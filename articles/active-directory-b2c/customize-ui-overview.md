@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259542"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Wenn Sie [Benutzerflows](user-flow-overview.md) verwenden, können Sie das Ausse
 Sie konfigurieren die Anpassung der Benutzeroberfläche für Benutzerflows im [Azure-Portal](tutorial-customize-ui.md) an.
 
 > [!TIP]
-> Wenn Sie nur das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe Ihrer Benutzerflowseiten ändern möchten, können Sie das Feature [Unternehmensbranding (Vorschauversion)](#company-branding-preview) ausprobieren, das weiter unten in diesem Artikel beschrieben wird.
+> Wenn Sie nur das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe Ihrer Benutzerflowseiten ändern möchten, können Sie das Feature [Unternehmensbranding](#company-branding) ausprobieren, das weiter unten in diesem Artikel beschrieben wird.
 
 ### <a name="custom-policies"></a>Benutzerdefinierte Richtlinien
 
@@ -158,13 +158,11 @@ In der folgenden Tabelle finden Sie die HTML-Fragmente, die Azure AD B2C im `<di
 | Multi-Factor Authentication | Kunden können während der Registrierung oder Anmeldung ihre Telefonnummern verifizieren (per SMS oder Sprachnachricht). |
 | Fehler | Stellt dem Kunden Fehlerinformationen bereit. |
 
-## <a name="company-branding-preview"></a>Unternehmensbranding (Vorschauversion)
+## <a name="company-branding"></a>Unternehmensbranding
 
 In Azure Active Directory können Sie mithilfe des Features [Unternehmensbranding](../active-directory/fundamentals/customize-branding.md) Ihre Benutzerflowseiten mit einem Bannerlogo, einem Hintergrundbild und einer Hintergrundfarbe anpassen.
 
 Zum Anpassen Ihrer Benutzerflowseiten konfigurieren Sie zuerst das Unternehmensbranding in Azure Active Directory, und dann aktivieren Sie es in den Seitenlayouts Ihrer Benutzerflows in Azure AD B2C.
-
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Konfigurieren des Unternehmensbrandings
 

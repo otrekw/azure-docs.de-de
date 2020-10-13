@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: Ereignis zum Abschluss der Größenänderung von Pools
           href: batch-pool-resize-complete-event.md
+        - name: Ereignis zur Autoskalierung von Pools
+          href: batch-pool-autoscale-event.md
         - name: Taskstartereignis
           href: batch-task-start-event.md
         - name: Ereignis zum Abschluss eines Tasks
           href: batch-task-complete-event.md
         - name: Taskfehlerereignis
           href: batch-task-fail-event.md
+        - name: Aufgabenzeitplan-Fehlerereignis
+          href: batch-task-schedule-fail-event.md
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

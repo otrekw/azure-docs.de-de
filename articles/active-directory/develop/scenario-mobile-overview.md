@@ -13,31 +13,24 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257536"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Szenario: Mobile App, die Web-APIs aufruft
 
 Hier erfahren Sie, wie Sie eine mobile App erstellen, die Web-APIs aufruft.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>Erste Schritte
 
-Erstellen Sie Ihre erste mobile Anwendung, und probieren Sie einen Schnellstart aus.
+Erstellen Sie, falls noch nicht geschehen, Ihre erste App, indem Sie einen der folgenden Schnellstarts abschließen:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Android-App aus](./quickstart-v2-android.md)
->
-> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer iOS-App aus](./quickstart-v2-ios.md)
->
-> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Xamarin.iOS- und Xamarin.Android-App aus](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Android-App aus](./quickstart-v2-android.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer iOS-App aus](./quickstart-v2-ios.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Xamarin iOS- und Android-App](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) (GitHub)
 
 ## <a name="overview"></a>Übersicht
 
@@ -59,6 +52,10 @@ Berücksichtigen Sie die folgenden Aspekte, wenn Sie eine mobile App auf Microso
 - Abhängig von der Plattform sind möglicherweise bei der ersten Anmeldung Benutzerinteraktionen erforderlich. Beispielsweise müssen Apps unter iOS eine Benutzeraktion anzeigen, wenn sie zum ersten Mal einmaliges Anmelden (Single Sign-On, SSO) über Microsoft Authenticator (und das Intune-Unternehmensportal unter Android) verwenden.
 - Unter iOS und Android verwendet MSAL möglicherweise einen externen Browser zum Anmelden von Benutzern. Der externe Browser wird möglicherweise über Ihrer App angezeigt.
 - Verwenden Sie niemals einen geheimen Schlüssel in einer mobilen Anwendung. In diesen Anwendungen sind Geheimnisse für alle Benutzer zugänglich.
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

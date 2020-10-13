@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317486"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Problembehandlung bei fehlerhafter Attributsynchronisierung in Azure AD Connect
 
@@ -67,7 +67,7 @@ Vor dem Untersuchen von Attributsynchronisierungsproblemen ist es wichtig, den S
 
 * Doppelklicken Sie auf **Active Directory-Connector**, um die Attribute im **Connectorbereich** anzuzeigen. Klicken Sie auf die Schaltfläche **Vorschau**, und klicken Sie im folgenden Dialogfeld auf die Schaltfläche **Vorschau generieren**.
 
-  ![Attribute im Connectorbereich](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Screenshot des Bildschirms mit den Eigenschaften des Connectorbereichs und hervorgehobener Schaltfläche „Vorschau“](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * Klicken Sie nun auf **Import-Attributfluss**. Dadurch wird der Fluss der Attribute vom **Active Directory-Connectorbereich** zum **Metaverse** angezeigt. Aus der Spalte **Synchronisierungsregel** geht hervor, welche **Synchronisierungsregel** zu diesem Attribut geführt hat. In der Spalte **Datenquelle** werden die Attribute aus dem **Connectorbereich** angezeigt. Die Spalte **Metaverse-Attribut** enthält die Attribute im **Metaverse**. Hier können Sie nach dem Attribut suchen, das nicht synchronisiert wird. Wenn Sie das Attribut hier nicht finden, ist es nicht zugeordnet, und Sie müssen eine neue benutzerdefinierte **Synchronisierungsregel** erstellen, um das Attribut zuzuordnen.
 
@@ -75,7 +75,7 @@ Vor dem Untersuchen von Attributsynchronisierungsproblemen ist es wichtig, den S
 
 * Klicken Sie im linken Bereich auf **Export-Attributfluss**, um mithilfe der **Ausgehenden Synchronisierungsregeln** den Attributfluss vom **Metaverse** zurück zum **Active Directory-Connectorbereich** anzuzeigen.
 
-  ![Attribute im Connectorbereich](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Screenshot: Attributfluss vom Metaverse zurück zum Active Directory-Connectorbereich mithilfe von Synchronisierungsregeln für den ausgehenden Datenverkehr](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * Auf vergleichbare Weise können Sie das Objekt im **Azure Active Directory-Connectorbereich** anzeigen und die **Vorschau** generieren, um den Attributfluss vom **Metaverse** zum **Connectorbereich** und umgekehrt anzuzeigen. Auf diese Weise können Sie untersuchen, warum ein Attribut nicht synchronisiert wird.
 
