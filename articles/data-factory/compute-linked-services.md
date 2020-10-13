@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 3d8e667cd96cc6d7091682a4530633588591d3a4
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5f02a38059ebd27879a3c8d44eee7e473711d0e7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483188"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776509"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -29,8 +29,7 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Bedarfsgesteuerter HDInsight-Cluster](#azure-hdinsight-on-demand-linked-service) oder [Eigener HDInsight-Cluster](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Benutzerdefiniert](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning Studio (klassisch)](#azure-machine-learning-studio-classic-linked-service) | [Aktivitäten von Machine Learning Studio (Classic): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics (ehemals SQL Data Warehouse)](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
@@ -113,7 +112,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 
 #### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft                     | Beschreibung                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
 | clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Ja      |
@@ -161,7 +160,7 @@ Der verknüpfte, bedarfsgesteuerte HDInsight-Dienst erfordert eine Dienstprinzip
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft                | Beschreibung                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
@@ -171,7 +170,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
 
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft               | Beschreibung                              | Erforderlich |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Gibt die wichtigsten Konfigurationsparameter (wie in "core-site.xml") für den HDInsight-Cluster an, der erstellt werden soll. | Nein       |
 | hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein       |
@@ -239,7 +238,7 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 #### <a name="node-sizes"></a>Knotengrößen
 Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden Eigenschaften angeben: 
 
-| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft          | Beschreibung                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Gibt die Größe des Hauptknotens an. Der Standardwert lautet: Standard_D3. Weitere Details finden Sie im Abschnitt **Knotengrößen angeben**. | Nein       |
 | dataNodeSize      | Gibt die Größe des Datenknotens an. Der Standardwert lautet: Standard_D3. | Nein       |
@@ -298,7 +297,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft          | Beschreibung                                                  | Erforderlich |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight**fest.            | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
@@ -358,7 +357,7 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft          | Beschreibung                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | Ja      |
 | .<Name der Region       | Der Name des Azure Batch-Kontos.         | Ja      |
@@ -368,8 +367,8 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | Ja      |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein       |
 
-## <a name="azure-machine-learning-studio-linked-service"></a>Mit Azure Machine Learning Studio verknüpfter Dienst
-Sie können einen mit Azure Machine Learning Studio verknüpften Dienst erstellen, um einen Machine Learning-Batchbewertungsendpunkt für Data Factory zu registrieren.
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Verknüpfter Azure Machine Learning Studio (Classic)-Dienst
+Sie können einen mit Azure Machine Learning Studio (Classic) verknüpften Dienst erstellen, um einen Batchbewertungsendpunkt von Machine Learning Studio (Classic) für Data Factory zu registrieren.
 
 ### <a name="example"></a>Beispiel
 
@@ -394,12 +393,12 @@ Sie können einen mit Azure Machine Learning Studio verknüpften Dienst erstelle
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft               | Beschreibung                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | Ja                                      |
 | mlEndpoint             | Die Batchbewertungs-URL.                   | Ja                                      |
 | apiKey                 | Die veröffentlichte API des Arbeitsbereichsmodells.     | Ja                                      |
-| updateResourceEndpoint | Die Ressourcenupdate-URL für einen Azure Machine Learning-Webdienst-Endpunkt, mit der der Vorhersagewebdienst mit der Datei des trainierten Modells aktualisiert wird. | Nein                                       |
+| updateResourceEndpoint | Die Ressourcenupdate-URL für einen Webdienst-Endpunkt von Azure Machine Learning Studio (Classic), mit der der Vorhersagewebdienst mit der Datei des trainierten Modells aktualisiert wird. | Nein                                       |
 | servicePrincipalId     | Geben Sie die Client-ID der Anwendung an.     | Erforderlich, wenn updateResourceEndpoint angegeben wird |
 | servicePrincipalKey    | Geben Sie den Schlüssel der Anwendung an.           | Erforderlich, wenn updateResourceEndpoint angegeben wird |
 | tenant                 | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Erforderlich, wenn updateResourceEndpoint angegeben wird |
@@ -438,7 +437,7 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft               | Beschreibung                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureMLService**. | Ja                                      |
 | subscriptionId         | Azure-Abonnement-ID              | Ja                                      |
@@ -481,7 +480,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | .<Name der Region          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
@@ -543,7 +542,7 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Name des verknüpften Diensts               | Ja   |
 | type                 | Legen Sie die type-Eigenschaft auf **Azure Databricks**: | Ja                                      |

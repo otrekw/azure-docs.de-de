@@ -1,6 +1,6 @@
 ---
 title: Ändern der statischen Gruppenmitgliedschaft in „Dynamisch“ – Azure AD | Microsoft-Dokumentation
-description: Erfahren Sie, wie Mitgliedschaftsregeln erstellt werden, um Gruppen automatisch aufzufüllen. Sie finden hier außerdem eine Regelreferenz.
+description: Hier wird beschrieben, wie Sie im Azure AD Admin Center oder mithilfe von PowerShell-Cmdlets für vorhandene Gruppen die Mitgliedschaft von „Statisch“ in „Dynamisch“ ändern.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ee5af5d7489835f125319050d291a89ab252a6
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325860"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Ändern der statischen Gruppenmitgliedschaft in „Dynamisch“ in Azure Active Directory
 

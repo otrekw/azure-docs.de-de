@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256755"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Anwendungstypen für Microsoft Identity Platform
 
@@ -117,6 +117,9 @@ Auf Geräten installierte Apps, z. B. mobile Apps und Desktop-Apps, benötigen 
 Bei diesem Fluss empfängt die App bei der Anmeldung des Benutzers vom Microsoft Identity Platform-Endpunkt einen Autorisierungscode. Der Autorisierungscode stellt die Berechtigung der App zum Aufrufen von Back-End-Diensten im Namen des angemeldeten Benutzers dar. Die App kann den Autorisierungscode im Hintergrund gegen ein OAuth 2.0-Zugriffstoken und ein Aktualisierungstoken austauschen. Die App kann mithilfe des Zugriffstokens Web-APIs in HTTP-Anforderungen authentifizieren und mithilfe des Aktualisierungstokens neue Zugriffstoken abrufen, wenn die älteren Zugriffstoken abgelaufen sind.
 
 ![Zeigt den Authentifizierungsflow für native Apps](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> Wenn die Anwendung die standardmäßige Systemwebansicht verwendet, überprüfen Sie die Informationen zur Funktion „Meine Anmeldung bestätigen“ und den Fehlercode AADSTS50199 in [Fehlercodes für die Azure AD-Authentifizierung und Autorisierung](reference-aadsts-error-codes.md).
 
 ## <a name="daemons-and-server-side-apps"></a>Daemons und serverseitige Apps
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290298"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767205"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten
 
@@ -86,7 +86,7 @@ Wenn Sie Nachrichtenanreicherungen ausprobieren möchten, lesen Sie das [Tutoria
 
 * Die Gesamtgröße der Nachricht, einschließlich der Anreicherungen, darf 256 KB nicht überschreiten. Wenn eine Nachricht größer als 256 KB ist, wird sie vom IoT-Hub gelöscht. Sie können Fehler mithilfe von [IoT Hub-Metriken](iot-hub-metrics.md) identifizieren und debuggen, wenn Nachrichten gelöscht werden. So können Sie beispielsweise „d2c.telemetry.egress.invalid“ überwachen.
 
-* Nachrichtenergänzungen gelten nicht für Änderungsereignisse beim digitalen Zwilling (Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)).
+* Nachrichtenanreicherungen gelten nicht für Änderungsereignisse bei digitalen Zwillingen.
 
 ## <a name="pricing"></a>Preise
 

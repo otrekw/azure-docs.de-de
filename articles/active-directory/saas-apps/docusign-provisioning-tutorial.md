@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317428"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung
 
@@ -65,7 +65,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
-    ![Bereitstellung](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Screenshot der Registerkarte „Bereitstellung“ für DocuSign im Azure-Portal. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und „Administratorbenutzername“, „Kennwort“ und „Verbindung testen“ sind hervorgehoben.](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Konfigurationseinstellungen an:
    

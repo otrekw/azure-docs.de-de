@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033012"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708950"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -27,8 +27,8 @@ Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anfo
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). |
-| Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
+| Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md). |
 | Maximale Anzahl RUs pro (logischer) Partition | 10.000 |
 | Maximale Speicherkapazität aller Elemente pro (logischer) Partition | 20 GB |
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
@@ -79,8 +79,8 @@ Sie können mithilfe von Azure-Portal, Azure PowerShell, der Azure-Befehlszeilen
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl von Datenbankkonten pro Abonnement | Standardmäßig 50. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).|
-| Maximale Anzahl von regionalen Failovern | Standardmäßig 1/Stunde. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).|
+| Maximale Anzahl von Datenbankkonten pro Abonnement | Standardmäßig 50. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md).|
+| Maximale Anzahl von regionalen Failovern | Standardmäßig 1/Stunde. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md).|
 
 > [!NOTE]
 > Regionale Failover gelten nur für Konten für Schreibvorgänge in einer einzelnen Region. Konten für Schreibvorgänge in mehreren Regionen erfordern nicht das Ändern der Schreibregion oder haben keine diesbezüglichen Einschränkungen.
@@ -120,7 +120,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Container entwed
 | Maximale Anzahl von Pfaden pro UNIQUE KEY-Einschränkung|16 <sup>*</sup>|
 | Maximaler TTL-Wert |2147483647|
 
-<sup>*</sup> Sie können jeden dieser Grenzwerte pro Container erhöhen, indem Sie sich an den Azure-Support wenden.
+<sup>*</sup> Sie können jeden dieser Grenzwerte pro Container erhöhen, indem Sie eine [Azure-Supportanfrage](create-support-request-quota-increase.md) erstellen.
 
 ## <a name="per-item-limits"></a>Grenzwerte pro Element
 
@@ -137,6 +137,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 | Maximale Länge des Eigenschaftswerts | Praktisch unbegrenzt |
 | Maximale Länge des Zeichenfolgen-Eigenschaftswerts | Praktisch unbegrenzt |
 | Maximale Länge des numerischen Eigenschaftswerts | IEEE754 mit doppelter Genauigkeit 64-Bit |
+| Maximale Schachtelungsebene für eingebettete Objekte/Arrays | 128 |
 | Maximaler TTL-Wert |2147483647|
 
 Mit Ausnahme von Längeneinschränkungen bei Partitionsschlüssel- und ID-Werten sowie der Einschränkung der Gesamtgröße auf 2 MB gibt es bei den Elementnutzlasten keine Einschränkungen (also etwa für die Anzahl von Eigenschaften und die Schachtelungstiefe). Sie müssen möglicherweise eine Indizierungsrichtlinie für Container mit großen oder komplexen Elementstrukturen konfigurieren, um den RU-Verbrauch zu reduzieren. Unter [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](how-to-model-partition-example.md) finden Sie ein praktisches Beispiel und Muster zum Verwalten großer Elemente.
@@ -154,13 +155,13 @@ Azure Cosmos DB unterstützt [CRUD- und Abfragevorgänge](/rest/api/cosmos-db/) 
 
 Sobald das Ausführungstimeout oder der Antwortgrößen-Grenzwert für einen Vorgang wie eine Abfrage erreicht ist, wird an den Client eine Seite mit Ergebnissen und ein Fortsetzungstoken zum Fortsetzen der Ausführung zurückgegeben. Es gibt praktisch keine Begrenzung der Dauer der Ausführung einer einzelnen Abfrage hinsichtlich Seiten/Fortsetzungen.
 
-Cosmos DB verwendet einen HMAC zur Autorisierung. Sie können entweder einen Hauptschlüssel oder ein [Ressourcentoken](secure-access-to-data.md) für differenzierte Steuerung des Zugriffs auf Ressourcen wie Container, Partitionsschlüssel oder Elemente verwenden. Die folgende Tabelle enthält die Grenzwerte für Autorisierungstoken in Cosmos DB.
+Cosmos DB verwendet einen HMAC zur Autorisierung. Sie können entweder einen Primärschlüssel oder ein [Ressourcentoken](secure-access-to-data.md) für differenzierte Steuerung des Zugriffs auf Ressourcen wie Container, Partitionsschlüssel oder Elemente verwenden. Die folgende Tabelle enthält die Grenzwerte für Autorisierungstoken in Cosmos DB.
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Ablaufzeit für Mastertoken | 15 Min.  |
+| Maximale Ablaufzeit für primäre Token | 15 Min.  |
 | Minimale Ablaufzeit für Ressourcentoken | 10 Min.  |
-| Maximale Ablaufzeit für Ressourcentoken | Standardmäßig 24 Stunden. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).|
+| Maximale Ablaufzeit für Ressourcentoken | Standardmäßig 24 Stunden. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md).|
 | Maximale Zeitabweichung für Tokenautorisierung| 15 Min. |
 
 Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. Der Dienst unterstützt maximal einen vorangestellten und einen nachgestellten Trigger pro Schreibvorgang.
@@ -202,7 +203,7 @@ Cosmos DB unterstützt das Abfragen von Elementen mithilfe von [SQL](how-to-sql-
 | Maximale Anzahl von ausgeschlossenen Pfaden pro Container| 500 |
 | Maximale Anzahl von Eigenschaften in einem zusammengesetzten Index| 8 |
 
-<sup>*</sup> Sie können diese Grenzwerte für SQL-Abfragen erhöhen, indem Sie sich an den Azure-Support wenden.
+<sup>*</sup> Sie können jeden dieser Grenzwerte für SQL-Abfragen erhöhen, indem Sie eine [Azure-Supportanfrage](create-support-request-quota-increase.md) erstellen.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB-API-spezifische Grenzwerte
 
@@ -216,7 +217,7 @@ Die folgende Tabelle enthält die spezifischen Grenzwerte für die Unterstützun
 | Maximale Ausführungszeit für MongoDB-Vorgänge| 30 Sek. |
 | Zeitlimit für Leerlaufverbindung für serverseitige Verbindungsschließung* | 30 Minuten |
 
-\* Wir empfehlen, dass Clientanwendungen das Zeitlimit für die Leerlaufverbindung in den Treibereinstellungen auf 2-3 Minuten festlegen, da das [Standardzeitlimit für Azure Load Balancer 4 Minuten beträgt](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Dieses Zeitlimit stellt sicher, dass Leerlaufverbindungen nicht durch einen zwischengeschalteten Lastenausgleich zwischen dem Clientcomputer und Azure Cosmos DB geschlossen werden.
+\* Wir empfehlen, dass Clientanwendungen das Zeitlimit für die Leerlaufverbindung in den Treibereinstellungen auf 2-3 Minuten festlegen, da das [Standardzeitlimit für Azure Load Balancer 4 Minuten beträgt](../load-balancer/load-balancer-tcp-idle-timeout.md).  Dieses Zeitlimit stellt sicher, dass Leerlaufverbindungen nicht durch einen zwischengeschalteten Lastenausgleich zwischen dem Clientcomputer und Azure Cosmos DB geschlossen werden.
 
 ## <a name="try-cosmos-db-free-limits"></a>Grenzwerte für „Azure Cosmos DB kostenlos testen“
 

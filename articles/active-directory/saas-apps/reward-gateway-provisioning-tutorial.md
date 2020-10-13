@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f908e37c7785744c2f26b6a9cd542ccde228eb38
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255731"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Reward Gateway für die automatische Benutzerbereitstellung
 
@@ -53,15 +53,15 @@ Bevor Sie Reward Gateway für die automatische Benutzerbereitstellung mit Azure
 
 1. Melden Sie sich bei Ihrer [Reward Gateway-Verwaltungskonsole](https://rewardgateway.photoshelter.com/login/) an. Klicken Sie auf **Integrations**.
 
-    ![Reward Gateway-Verwaltungskonsole](media/reward-gateway-provisioning-tutorial/image00.png)
+    ![Screenshot der Reward Gateway-Verwaltungskonsole mit hervorgehobener Option „Integrations“ (Integrationen).](media/reward-gateway-provisioning-tutorial/image00.png)
 
 2.  Wählen Sie **My Integrations** (Meine Integrationen) aus.
 
-    ![Reward Gateway-Verwaltungskonsole](media/reward-gateway-provisioning-tutorial/image001.png)
+    ![Screenshot der beiden Integrationsoptionen mit hervorgehobener Option „My Integrations“ (Meine Integrationen).](media/reward-gateway-provisioning-tutorial/image001.png)
 
 3.  Kopieren Sie die Werte für **SCIM URL (v2)** (SCIM-URL (v2)) und **OAuth Bearer Token** (OAuth-Bearertoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Reward Gateway-Anwendung in die Felder „Mandanten-URL“ und „Geheimes Token“ eingegeben.
 
-    ![Reward Gateway-Verwaltungskonsole](media/reward-gateway-provisioning-tutorial/image03.png)
+    ![Screenshot des Bereichs „My Integrations“ (Meine Integrationen) mit hervorgehobenem Textfeld „OAuth Bearer Token“ (OAuth-Bearertoken).](media/reward-gateway-provisioning-tutorial/image03.png)
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>Hinzufügen von Reward Gateway aus dem Katalog
 
@@ -104,11 +104,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor abgerufenen Werte für **SCIM URL (v2)** (SCIM-URL (v2)) und **OAuth Bearer Token** (OAuth-Bearertoken) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Reward Gateway herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Reward Gateway-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
@@ -122,11 +122,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Reward Gateway synchronisieren** aus.
 
-    ![Reward Gateway-Verwaltungskonsole](media/reward-gateway-provisioning-tutorial/user-mappings.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit Reward Gateway synchronisieren“.](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Reward Gateway synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Reward Gateway für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Reward Gateway-Verwaltungskonsole](media/reward-gateway-provisioning-tutorial/user-attributes.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit sechs Zuordnungen.](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
