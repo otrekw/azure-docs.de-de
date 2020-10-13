@@ -4,16 +4,16 @@ description: Konfigurieren eines verwalteten Azure-Datenträgers mit freigegeben
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 82d482cd0a1b3a5b6028b9249030b7b1a093d22d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752054"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570546"
 ---
 # <a name="enable-shared-disk"></a>Aktivieren freigegebener Datenträger
 
@@ -147,7 +147,7 @@ Bevor Sie die folgende Vorlage verwenden, ersetzen Sie `[parameters('dataDiskNam
 Nachdem Sie mit `maxShares>1` einen freigegebenen Datenträger bereitgestellt haben, können Sie den Datenträger auf einem oder mehreren virtuellen Computern einbinden.
 
 > [!NOTE]
-> Wenn Sie einen Ultra-Datenträger bereitstellen, stellen Sie sicher, dass er die erforderlichen Anforderungen erfüllt. Ausführliche Informationen finden Sie im Abschnitt [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) oder [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) des Artikels zu Ultra-Datenträgern.
+> Wenn Sie einen Ultra-Datenträger bereitstellen, stellen Sie sicher, dass er die erforderlichen Anforderungen erfüllt. Weitere Informationen finden Sie unter [Verwenden von Azure Ultra Disks](disks-enable-ultra-ssd.md).
 
 ```azurepowershell-interactive
 

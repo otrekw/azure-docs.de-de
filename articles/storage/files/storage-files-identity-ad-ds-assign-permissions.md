@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535092"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716039"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Teil 2: Zuweisen von Berechtigungen auf Freigabeebene für eine Identität
 
@@ -47,12 +47,12 @@ Um einer Azure AD-Identität eine Azure-Rolle zuzuweisen, führen Sie im [Azure
 1. Navigieren Sie im Azure-Portal zu Ihrer Dateifreigabe, oder [erstellen Sie eine Dateifreigabe](storage-how-to-create-file-share.md).
 1. Wählen Sie **Access Control (IAM)** aus.
 1. Auswählen von **Rollenzuweisung hinzufügen**
-1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Liste **Rolle** die entsprechende integrierte Rolle aus (Speicherdateidaten-SMB-Freigabeleser, Speicherdateidaten-SMB-Freigabemitwirkender). Behalten Sie für **Zugriff zuweisen zu** die Standardeinstellung bei: **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal**. Wählen Sie die Azure AD-Zielidentität anhand des Namens oder der E-Mail-Adresse aus. Bei der ausgewählten Azure AD-Identität muss es sich um eine hybride Identität handeln. Es kann sich um keine nur in der Cloud verfügbare Identität handeln. Das bedeutet, dieselbe Identität ist auch in AD DS vorhanden.
+1. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Liste **Rolle** die entsprechende integrierte Rolle aus (Speicherdateidaten-SMB-Freigabeleser, Speicherdateidaten-SMB-Freigabemitwirkender). Behalten Sie für **Zugriff zuweisen zu** die Standardeinstellung bei: **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal**. Wählen Sie die Azure AD-Zielidentität anhand des Namens oder der E-Mail-Adresse aus. **Bei der ausgewählten Azure AD-Identität muss es sich um eine hybride Identität handeln. Es kann sich um keine nur in der Cloud verfügbare Identität handeln.** Das bedeutet, dieselbe Identität ist auch in AD DS vorhanden.
 1. Wählen Sie abschließend **Speichern** aus, um den Vorgang der Rollenzuweisung abzuschließen.
 
 ### <a name="powershell"></a>PowerShell
 
-Das folgende PowerShell-Beispiel zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mit PowerShell finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Das folgende PowerShell-Beispiel zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mit PowerShell finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe des Azure PowerShell-Moduls](../../role-based-access-control/role-assignments-powershell.md).
 
 Denken Sie vor dem Ausführen des folgenden Beispielskripts daran, Platzhalterwerte durch eigene Werte zu ersetzen (einschließlich der Klammern).
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
   
-Der folgende CLI 2.0-Befehl zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten des Zugriffs mit RBAC und der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md). 
+Der folgende CLI 2.0-Befehl zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mit der Azure CLI finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
 Denken Sie vor dem Ausführen des folgenden Beispielskripts daran, Platzhalterwerte durch eigene Werte zu ersetzen (einschließlich der Klammern).
 

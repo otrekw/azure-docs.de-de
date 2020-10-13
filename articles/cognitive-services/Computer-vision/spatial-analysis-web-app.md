@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 440f901f06e431c371b7445f4a04499c475c9aa1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931765"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628193"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Gewusst wie: Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl
 
@@ -127,14 +127,13 @@ Nachdem das [Bereitstellungsmanifest](https://go.microsoft.com/fwlink/?linkid=21
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'"--subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
 ```
 
 Füllen Sie die erforderlichen Parameter aus:
 
-* Bereitstellungsname: Wählen Sie einen Namen für diese Bereitstellung aus.
 * IoT-Hub-Name: Der Name Ihrer Azure IoT Hub-Instanz
-* Deployment.json: Der Name Ihrer Bereitstellungsdatei
+* DeploymentManifest.json: Der Name Ihrer Bereitstellungsdatei
 * Name des IoT Edge-Geräts: Der Name des IoT Edge-Geräts Ihres Hostcomputers
 * Abonnement: Abonnement-ID oder -name
 

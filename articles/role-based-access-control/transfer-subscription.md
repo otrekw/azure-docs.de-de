@@ -1,5 +1,5 @@
 ---
-title: Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)
+title: Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 description: Erfahren Sie, wie Sie ein Azure-Abonnement und bekannte zugehörige Ressourcen in ein anderes Azure Active Directory-Verzeichnis (Azure AD) übertragen.
 services: active-directory
 author: rolyon
@@ -8,28 +8,23 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/31/2020
+ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400543"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819705"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)
-
-> [!IMPORTANT]
-> Dieses Verfahren zum Übertragen eines Abonnements in ein anderes Azure AD-Verzeichnis befindet sich zurzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
 Organisationen verfügen möglicherweise über mehrere Azure-Abonnements. Jedes Abonnement ist mit einem bestimmten Azure Active Directory-Verzeichnis (Azure AD) verknüpft. Um die Verwaltung zu vereinfachen, können Sie ein Abonnement in ein anderes Azure AD-Verzeichnis übertragen. Wenn Sie ein Abonnement in ein anderes Azure AD-Verzeichnis übertragen, werden einige Ressourcen nicht in das Zielverzeichnis übertragen. Beispielsweise werden alle Rollenzuweisungen und benutzerdefinierten Rollen in der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) **dauerhaft** aus dem Quellverzeichnis gelöscht und nicht in das Zielverzeichnis übertragen.
 
 In diesem Artikel werden die grundlegenden Schritte beschrieben, die Sie befolgen können, um ein Abonnement in ein anderes Azure AD-Verzeichnis zu übertragen und einige der Ressourcen nach der Übertragung erneut zu erstellen.
 
 > [!NOTE]
-> Für Azure CSP-Abonnements (Cloud Service Provider, Cloud-Dienstanbieter) wird das Ändern des Azure AD-Verzeichnisses für das Abonnement nicht unterstützt.
+> Für Azure CSP-Abonnements (Azure Cloud Solution Provider) wird das Ändern des Azure AD-Verzeichnisses für das Abonnement nicht unterstützt.
 
 ## <a name="overview"></a>Übersicht
 
@@ -79,7 +74,7 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure Files | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure-Dateisynchronisierung | Ja | Ja |  |  |
-| Azure Managed Disks | Ja | – |  |  |
+| Azure Managed Disks | Ja | Ja |  |  Wenn Sie Datenträgerverschlüsselungssätze verwenden, um Managed Disks mit vom Kunden verwalteten Schlüsseln zu verschlüsseln, müssen Sie die vom System zugewiesenen Identitäten, die den Datenträgerverschlüsselungssätzen zugeordnet sind, deaktivieren und erneut aktivieren. Außerdem müssen Sie die Rollenzuweisungen neu erstellen: Sie müssen den Datenträgerverschlüsselungssätzen in den Key Vaults die erforderlichen Berechtigungen erneut erteilen. |
 | Azure Container Services für Kubernetes | Ja | Ja |  |  |
 | Azure Active Directory Domain Services | Ja | Nein |  |  |
 | App-Registrierungen | Ja | Ja |  |  |
@@ -91,7 +86,7 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 
 Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
-- [Bash in der Azure Cloud Shell](/azure/cloud-shell/overview) oder [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
+- [Bash in der Azure Cloud Shell](/azure/cloud-shell/overview) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
 - Kontoadministrator des Abonnements, das Sie im Quellverzeichnis übertragen möchten
 - Rolle [Besitzer](built-in-roles.md#owner) im Zielverzeichnis
 
@@ -101,13 +96,13 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 1. Melden Sie sich bei Azure als Administrator an.
 
-1. Rufen Sie eine Liste Ihrer Abonnements mithilfe des Befehls [az account list](/cli/azure/account#az-account-list) ab.
+1. Rufen Sie eine Liste Ihrer Abonnements mithilfe des Befehls [az account list](/cli/azure/account#az_account_list) ab.
 
     ```azurecli
     az account list --output table
     ```
 
-1. Verwenden Sie [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set), um das aktive Abonnement festzulegen, das Sie übertragen möchten.
+1. Verwenden Sie [az account set](/cli/azure/account#az_account_set), um das aktive Abonnement festzulegen, das Sie übertragen möchten.
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 ### <a name="install-the-resource-graph-extension"></a>Installieren der Ressourcengrapherweiterung
 
- Die Resourcengrapherweiterung ermöglicht es Ihnen, mit dem Befehl [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Ressourcen abzufragen, die von Azure Resource Manager verwaltet werden. Sie verwenden diesen Befehl in späteren Schritten.
+ Die Resourcengrapherweiterung ermöglicht es Ihnen, mit dem Befehl [az graph](/cli/azure/ext/resource-graph/graph) Ressourcen abzufragen, die von Azure Resource Manager verwaltet werden. Sie verwenden diesen Befehl in späteren Schritten.
 
-1. Verwenden Sie [az extension list](https://docs.microsoft.com/cli/azure/extension#az-extension-list), um festzustellen, ob die Erweiterung *resource-graph* installiert ist.
+1. Verwenden Sie [az extension list](/cli/azure/extension#az_extension_list), um festzustellen, ob die Erweiterung *resource-graph* installiert ist.
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 ### <a name="save-all-role-assignments"></a>Speichern aller Rollenzuweisungen
 
-1. Verwenden Sie [az role assignment list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list), um alle Rollenzuweisungen (einschließlich geerbter Rollenzuweisungen) aufzulisten.
+1. Verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list), um alle Rollenzuweisungen (einschließlich geerbter Rollenzuweisungen) aufzulisten.
 
     Um die Überprüfung der Liste zu vereinfachen, können Sie die Ausgabe als JSON, TSV oder Tabelle exportieren. Weitere Informationen finden Sie unter [Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und der Azure CLI](role-assignments-list-cli.md).
 
@@ -149,7 +144,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 ### <a name="save-custom-roles"></a>Speichern benutzerdefinierter Rollen
 
-1. Verwenden Sie [az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list), um Ihre benutzerdefinierten Rollen aufzulisten. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle](custom-roles-cli.md).
+1. Verwenden Sie [az role definition list](/cli/azure/role/definition#az_role_definition_list), um Ihre benutzerdefinierten Rollen aufzulisten. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ Verwaltete Identitäten werden nicht aktualisiert, wenn ein Abonnement in ein an
 
 1. Überprüfen Sie die [Liste der Azure-Dienste, die verwaltete Identitäten unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), um zu erfahren, wo Sie möglicherweise verwaltete Identitäten verwenden können.
 
-1. Verwenden Sie [az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list), um systemseitig zugewiesene und benutzerseitig zugewiesene verwaltete Identitäten aufzulisten.
+1. Verwenden Sie [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list), um systemseitig zugewiesene und benutzerseitig zugewiesene verwaltete Identitäten aufzulisten.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ Verwaltete Identitäten werden nicht aktualisiert, wenn ein Abonnement in ein an
     | `alternativeNames`-Eigenschaft enthält nicht `isExplicit` | Systemseitig zugewiesen |
     | `alternativeNames`-Eigenschaft enthält `isExplicit=True` | Benutzerseitig zugewiesen |
 
-    Sie können auch [az identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) verwenden, um nur benutzerseitig zugewiesene verwaltete Identitäten aufzulisten. Weitere Informationen finden Sie unter [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe der Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
+    Sie können auch [az identity list](/cli/azure/identity#az_identity_list) verwenden, um nur benutzerseitig zugewiesene verwaltete Identitäten aufzulisten. Weitere Informationen finden Sie unter [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe der Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
 > [!WARNING]
 > Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich **nicht** im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
 
-- Wenn Sie über einen Schlüsseltresor verfügen, verwenden Sie [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show), um die Zugriffsrichtlinien aufzulisten. Weitere Informationen finden Sie unter [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-cli.md).
+- Wenn Sie über einen Schlüsseltresor verfügen, verwenden Sie [az keyvault show](/cli/azure/keyvault#az_keyvault_show), um die Zugriffsrichtlinien aufzulisten. Weitere Informationen finden Sie unter [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Auflisten von Azure SQL-Datenbanken mit Azure AD-Authentifizierung
 
-- Verwenden Sie [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) und die Erweiterung [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph), um festzustellen, ob Sie Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration verwenden. Weitere Informationen finden Sie unter [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](../azure-sql/database/authentication-aad-configure.md).
+- Verwenden Sie [az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) und die Erweiterung [az graph](/cli/azure/ext/resource-graph/graph), um festzustellen, ob Sie Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration verwenden. Weitere Informationen finden Sie unter [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
 
 ### <a name="list-other-known-resources"></a>Auflisten anderer bekannter Ressourcen
 
-1. Verwenden Sie [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show), um Ihre Abonnement-ID abzurufen.
+1. Verwenden Sie [az account show](/cli/azure/account#az_account_show), um Ihre Abonnement-ID abzurufen.
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. Verwenden Sie die Erweiterung [az graph-](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph), um andere Azure-Ressourcen mit bekannten Abhängigkeiten vom Azure AD-Verzeichnis aufzulisten.
+1. Verwenden Sie die Erweiterung [az graph-](/cli/azure/ext/resource-graph/graph), um andere Azure-Ressourcen mit bekannten Abhängigkeiten vom Azure AD-Verzeichnis aufzulisten.
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
 
     Nur der Benutzer des neuen Kontos, der die Übertragungsanforderung angenommen hat, besitzt Zugriff auf die Verwaltung der Ressourcen.
 
-1. Rufen Sie eine Liste Ihrer Abonnements mithilfe des Befehls [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list) ab.
+1. Rufen Sie eine Liste Ihrer Abonnements mithilfe des Befehls [az account list](/cli/azure/account#az_account_list) ab.
 
     ```azurecli
     az account list --output table
     ```
 
-1. Verwenden Sie [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set), um das aktive Abonnement festzulegen, das Sie verwenden möchten.
+1. Verwenden Sie [az account set](/cli/azure/account#az_account_set), um das aktive Abonnement festzulegen, das Sie verwenden möchten.
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
 
 ### <a name="create-custom-roles"></a>Erstellen von benutzerdefinierten Rollen
         
-- Verwenden Sie [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create), um jede benutzerdefinierte Rolle aus den zuvor erstellten Dateien zu erstellen. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle](custom-roles-cli.md).
+- Verwenden Sie [az role definition create](/cli/azure/role/definition#az_role_definition_create), um jede benutzerdefinierte Rolle aus den zuvor erstellten Dateien zu erstellen. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
 
 ### <a name="create-role-assignments"></a>Erstellen von Rollenzuweisung
 
-- Verwenden Sie [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create), um die Rollenzuweisungen für Benutzer, Gruppen und Dienstprinzipale zu erstellen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure CLI](role-assignments-cli.md).
+- Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um die Rollenzuweisungen für Benutzer, Gruppen und Dienstprinzipale zu erstellen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure CLI](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
     | VM-Skalierungsgruppen | [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit der Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Sonstige Dienste | [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Verwenden Sie [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create), um die Rollenzuweisungen für systemseitig zugewiesene verwaltete Identitäten zu erstellen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um die Rollenzuweisungen für systemseitig zugewiesene verwaltete Identitäten zu erstellen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
     | VM-Skalierungsgruppen | [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit der Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Sonstige Dienste | [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe der Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Verwenden Sie [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create), um die Rollenzuweisungen für benutzerseitig zugewiesene verwaltete Identitäten zu erstellen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um die Rollenzuweisungen für benutzerseitig zugewiesene verwaltete Identitäten zu erstellen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

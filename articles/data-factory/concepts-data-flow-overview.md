@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370911"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
@@ -61,7 +61,7 @@ Die erste Registerkarte im Konfigurationsbereich jeder Transformation enthält d
 
 Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren von Partitionierungsschemas. Weitere Informationen zum Optimieren Ihrer Datenflüsse finden Sie in der [Anleitung zur Leistung des Zuordnungsdatenflusses](concepts-data-flow-performance.md).
 
-![Optimieren](media/data-flow/optimize.png "Optimieren")
+![Screenshot der Registerkarte „Optimieren“ mit der Option „Partition“, dem Partitionstyp und der Anzahl von Partitionen](media/data-flow/optimize.png)
 
 #### <a name="inspect"></a>Überprüfen
 

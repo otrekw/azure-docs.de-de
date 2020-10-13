@@ -1,6 +1,6 @@
 ---
 title: Bereitstellungsprotokolle im Azure Active Directory-Portal (Vorschau) | Microsoft-Dokumentation
-description: Einführung in Bereitstellungsaktivitätsberichte im Azure Active Directory-Portal
+description: Einführung in Bereitstellungsprotokollberichte im Azure Active Directory-Portal
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361278"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812555"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -42,6 +42,7 @@ In diesem Thema erhalten Sie einen Überblick über den Bereitstellungsbericht.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+* Anwendungsbesitzer
 * Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“, „Berichtsleser“, „Anwendungsadministrator“ und „Cloudanwendungsadministrator“
 * Globale Administratoren
 
@@ -210,13 +211,11 @@ Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
-- Gemeldete Bereitstellungsdaten werden bei Verwendung einer Premium Edition 30 Tage und bei einer kostenlosen Edition 7 Tage im Azure-Portal gespeichert.
+- Im Azure-Portal werden gemeldete Bereitstellungsdaten 30 Tage gespeichert, wenn Sie eine Premium Edition haben, und 7 Tage, wenn Sie eine kostenlose Edition haben. Die Bereitstellungsprotokolle können in Log Analytics für die Aufbewahrung über 30 Tage hinaus veröffentlicht werden. 
 
 - Sie können das Attribut „Änderungs-ID“ als eindeutigen Bezeichner verwenden. Dies ist beispielsweise bei der Kommunikation mit dem Produktsupport hilfreich.
 
 - Zurzeit gibt es keine Option zum Herunterladen von Bereitstellungsdaten als CSV-Datei. Sie können die Daten jedoch mit [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) exportieren.
-
-- Die Protokollanalyse wird derzeit nicht unterstützt.
 
 - Möglicherweise werden übersprungene Ereignisse für Benutzer aufgeführt, die nicht dem Gültigkeitsbereich angehören. Dies entspricht dem erwarteten Verhalten, insbesondere dann, wenn der Synchronisierungsbereich auf alle Benutzer und Gruppen festgelegt ist. Der Dienst wertet alle Objekte im Mandanten aus, auch solche, die außerhalb des Gültigkeitsbereichs liegen. 
 
@@ -252,3 +251,4 @@ Anhand der folgenden Tabelle können Sie besser verstehen, wie Sie mögliche Feh
 
 * [Überprüfen des Status der Benutzerbereitstellung](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](../app-provisioning/application-provisioning-config-problem.md)
+* [Graph-API für Bereitstellungsprotokolle](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

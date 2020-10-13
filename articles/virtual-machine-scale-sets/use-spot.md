@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072739"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729014"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs für VM-Skalierungsgruppen 
 
@@ -163,8 +163,7 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 
 **F:**  Funktioniert die automatische Skalierung mit beiden Entfernungsrichtlinien (Zuordnung aufheben und löschen)?
 
-**A:** Es empfiehlt sich, die Entfernungsrichtlinie auf „Löschen“ festzulegen, wenn Sie die automatische Skalierung verwenden. Der Grund hierfür ist, dass Instanzen, deren Zuordnung aufgehoben wurde, auf die Kapazität in Ihrer Skalierungsgruppe angerechnet werden. Bei Verwendung der automatischen Skalierung erreichen Sie aufgrund der entfernten Instanzen, deren Zuordnung aufgehoben wurde, die angestrebte Anzahl von Instanzen wahrscheinlich recht schnell. 
-
+**A:** Ja, es empfiehlt sich jedoch, die Entfernungsrichtlinie auf „Löschen“ festzulegen, wenn Sie die Autoskalierung verwenden. Der Grund hierfür ist, dass Instanzen, deren Zuordnung aufgehoben wurde, auf die Kapazität in Ihrer Skalierungsgruppe angerechnet werden. Bei Verwendung der automatischen Skalierung erreichen Sie aufgrund der entfernten Instanzen, deren Zuordnung aufgehoben wurde, die angestrebte Anzahl von Instanzen wahrscheinlich recht schnell. Außerdem kann die Spot-Entfernung Auswirkungen auf Ihre Skalierungsvorgänge haben. Beispielsweise kann es vorkommen, dass VMSS-Instanzen bei Skalierungsvorgängen aufgrund verschiedener Spot-Entfernungen unter die festgelegte Mindestanzahl fallen. 
 
 **F:** Welche Kanäle unterstützen Spot-VMs?
 
