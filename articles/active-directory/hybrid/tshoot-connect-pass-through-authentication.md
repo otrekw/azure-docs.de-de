@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275922"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741192"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -96,6 +96,7 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 | 80007 | Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen. | Überprüfen Sie, ob Ihr Active Directory über den Authentifizierungs-Agent erreichbar ist.
 | 80010 | Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.) 
 | 80011 | Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.)
+| 80014 | Die Überprüfungsanforderung wurde erst nach Überschreiten der maximal zulässigen Zeit beantwortet. | Für den Authentifizierungs-Agent ist ein Timeout aufgetreten. Öffnen Sie ein Supportticket mit dem Fehlercode, der Korrelations-ID und dem Zeitstempel, um weitere Details zu diesem Fehler zu erhalten.
 
 >[!IMPORTANT]
 >Passthrough-Authentifizierungs-Agents authentifizieren Azure AD-Benutzer, indem sie deren Benutzernamen und Kennwörter für Active Directory durch Aufrufen der [Win32 LogonUser-API](/windows/win32/api/winbase/nf-winbase-logonusera) überprüfen. Wenn Sie in Active Directory die Einstellung „Anmeldung bei“ zum Einschränken des Anmeldezugriffs für Arbeitsstationen festgelegt haben, müssen Sie daher auch der Serverliste „Anmeldung bei“ Server hinzufügen, auf denen Passthrough-Authentifizierungs-Agents gehostet werden. Wenn Sie dies nicht tun, können sich Ihre Benutzer nicht bei Azure AD anmelden.

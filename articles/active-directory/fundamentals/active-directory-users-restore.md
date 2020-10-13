@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321190"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741175"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Wiederherstellen oder Entfernen eines kürzlich gelöschten Benutzers mit Azure Active Directory
 Nachdem Sie einen Benutzer gelöscht haben, verbleibt das Konto 30 Tage lang im angehaltenen Zustand. Während dieses Zeitfensters von 30 Tagen kann das Benutzerkonto mit allen zugehörigen Eigenschaften wiederhergestellt werden. Nachdem die 30 Tage verstrichen sind, wird der Benutzer automatisch und endgültig gelöscht.
@@ -77,7 +77,7 @@ Sie können einen Benutzer endgültig aus Ihrer Organisation löschen, ohne auf 
 
 2. Wählen Sie **Endgültig löschen** aus.
 
-    ![Seite „Benutzer – Gelöschte Benutzer“ mit hervorgehobener Option „Endgültig löschen“](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Seite „Benutzer – Gelöschte Benutzer“ mit hervorgehobener Option „Benutzer löschen“](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Ihre Benutzer wiederhergestellt oder gelöscht haben, können Sie die folgenden grundlegenden Prozesse ausführen:
