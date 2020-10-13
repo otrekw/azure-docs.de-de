@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533437"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613922"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Tableau Online für die automatische Benutzerbereitstellung
 
@@ -133,7 +133,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Tableau Online synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Tableau Online für Updatevorgänge verwendet werden. Um alle Änderungen zu speichern, wählen Sie **Speichern** aus.
 
-    ![Übereinstimmende Benutzerattribute in Tableau Online](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Übereinstimmende Benutzerattribute in Tableau Online](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Tableau** (Azure Active Directory-Gruppen mit Tableau synchronisieren) aus.
 
@@ -163,9 +163,12 @@ Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwache
 
 Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
+## <a name="change-log"></a>Änderungsprotokoll
+* 30.09.2020: Unterstützung für das Attribut „authSetting“ für Benutzer hinzugefügt.
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

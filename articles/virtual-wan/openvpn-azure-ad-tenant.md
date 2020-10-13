@@ -3,17 +3,17 @@ title: 'Azure AD-Mandant für Benutzer-VPN-Verbindungen: Azure AD-Authentifizier
 description: Sie können über das Benutzer-VPN von Azure Virtual WAN (Point-to-Site) mithilfe der Azure AD-Authentifizierung eine Verbindung mit Ihrem VNET herstellen.
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: e88437dc03772348ebbe0d179afc7fd4ddd24bd9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367851"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Vorbereiten eines Azure Active Directory-Mandanten für Benutzer-VPN-Verbindungen über das OpenVPN-Protokoll
 
@@ -76,7 +76,7 @@ Verwenden Sie die Schritte in [diesem Artikel](../active-directory/fundamentals/
 
 4. Wählen Sie **Akzeptieren** aus, wenn Sie dazu aufgefordert werden.
 
-    ![Akzeptieren](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Der Screenshot zeigt ein Dialogfeld mit der Meldung, dass Berechtigungen angefordert wurden. „Akzeptieren“ für Ihre Organisation sowie Informationen zur Anforderung werden außerdem angezeigt.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. In Azure AD sollte unter **Unternehmensanwendungen** jetzt der Eintrag **Azure-VPN** aufgeführt sein.
 

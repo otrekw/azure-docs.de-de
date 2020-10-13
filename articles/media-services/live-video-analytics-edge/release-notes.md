@@ -3,12 +3,12 @@ title: 'Versionshinweise zu Live Video Analytics in IoT Edge: Azure'
 description: Dieses Thema enthält Versionshinweise zu Releases, Verbesserungen, Fehlerbehebungen und bekannten Problemen von Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0bdf11cd99d99067dc53dde7d55fd37b96a382c9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250469"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Versionshinweise zu Live Video Analytics in IoT Edge
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>Modulupdates
 
-* Ein neuer Grapherweiterungsknoten mit dem Namen [MediaGraphCognitiveServicesVisionExtension](custom-vision-tutorial.md) kann in das [Modul für die räumliche Analyse](spatial-analysis-tutorial.md) (Vorschau) aus Cognitive Services integriert werden.
+* Ein neuer Grapherweiterungsknoten mit dem Namen [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) kann in das [Modul für die räumliche Analyse](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) (Vorschau) aus Cognitive Services integriert werden.
 * Unterstützung für Linux ARM64-Geräte hinzugefügt: Verwenden Sie [manuelle Schritte](deploy-iot-edge-device.md) für die Bereitstellung auf solchen Geräten.
 
 ### <a name="documentation-updates"></a>Dokumentationsupdates

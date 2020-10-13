@@ -658,6 +658,8 @@
                       href: app/javascript-react-plugin.md
                     - name: React Native-Plug-In
                       href: app/javascript-react-native-plugin.md
+                    - name: Angular-Plug-in
+                      href: app/javascript-angular-plugin.md
                 - name: Problembehandlung
                   items:
                     - name: SDK-Ladefehler
