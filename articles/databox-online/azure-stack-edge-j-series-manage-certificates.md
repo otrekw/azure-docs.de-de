@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5cec5eda7cf398949865bf6d3d3e8be5b2d5e840
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890754"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767363"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -61,7 +61,7 @@ Diese Zertifikate können Stammzertifikate oder die Zwischenzertifikate sein. Di
 - Die Stammzertifikate sollten Signaturkettenzertifikate sein.
 - Die Stammzertifikate können in folgendem Format auf Ihr Gerät hochgeladen werden: 
     - **DER** – Diese sind als `.cer`-Dateierweiterung verfügbar.
-    - **Base-64-codiert oder PEM** – Diese sind auch als `.cer`-Erweiterung erhältlich.
+    - **Base64-codiert** – Diese sind als `.cer`-Dateierweiterung verfügbar.
     - **P7b** – Dieses Format wird nur für Signaturkettenzertifikate verwendet, die die Stamm- und Zwischenzertifikate enthalten.
 - Signaturkettenzertifikate werden immer hochgeladen, bevor Sie andere Zertifikate hochladen.
 
@@ -275,11 +275,11 @@ Die Zertifikate, die Sie für Ihr Gerät erstellt haben, befinden sich standardm
 
     1. Laden Sie zuerst die Stammzertifikate hoch. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Zertifikate > + Zertifikat hinzufügen**.
 
-        ![Hinzufügen von Signaturkettenzertifikaten](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![Hinzufügen des Signaturkettenzertifikats 1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. Laden Sie als nächstes die Endpunktzertifikate hoch. 
 
-        ![Hinzufügen von Signaturkettenzertifikaten](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![Hinzufügen des Signaturkettenzertifikats 2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         Wählen Sie die Zertifikatsdateien im *PFX*-Format aus, und geben Sie das Kennwort ein, das Sie beim Exportieren des Zertifikats angegeben haben. Das Anwenden des Azure Resource Manager-Zertifikats kann einige Minuten dauern.
 
@@ -383,20 +383,19 @@ Die Sicherungskopie der PFX-Datei wird jetzt an dem von Ihnen gewählten Ort ges
 
 1. Wählen Sie im Zertifikatspeicher „Persönlich“ das Stammzertifikat aus. Klicken Sie mit der rechten Maustaste, und wählen Sie **Alle Aufgaben > Exportieren** aus.
 
-    ![Exportieren des Zertifikats 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![Exportieren des Zertifikats DER 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
 2. Der Zertifikat-Assistent wird geöffnet. Wählen Sie das Format als **DER-codiertes binäres X.509 (.cer)** aus. Wählen Sie **Weiter** aus.
 
-    ![Exportieren des Zertifikats 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![Exportieren des Zertifikats DER 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. Durchsuchen und wählen Sie den Speicherort, an den Sie die Datei im CER-Format exportieren möchten.
 
-    ![Exportieren des Zertifikats 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
-
+    ![Exportieren des Zertifikats DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 4. Wählen Sie **Fertig stellen**aus.
 
-    ![Exportieren des Zertifikats 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![Exportieren des Zertifikats DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>Unterstützte Zertifikatalgorithmen
@@ -410,11 +409,11 @@ Die Sicherungskopie der PFX-Datei wird jetzt an dem von Ihnen gewählten Ort ges
 
 Wenn Sie Ihre eigenen Zertifikate bereitstellen, laufen die Zertifikate in der Regel nach einem Jahr oder sechs Monaten ab. Wenn Sie das Ablaufdatum auf Ihrem Zertifikat anzeigen möchten, wechseln Sie zur Seite **Zertifikate** auf der lokalen Webbenutzeroberfläche Ihres Geräts. Wenn Sie ein bestimmtes Zertifikat auswählen, können Sie das Ablaufdatum auf Ihrem Zertifikat anzeigen.
 
-## <a name="rotate-certificates"></a>Rotieren von Zertifikaten
+<!--## Rotate certificates
 
-Die Rotation von Zertifikaten ist in dieser Version nicht implementiert. Sie werden auch nicht über das anstehende Ablaufdatum auf Ihrem Zertifikat informiert. 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-Zeigen Sie das Ablaufdatum des Zertifikats auf der Seite **Zertifikate** auf der lokalen Webbenutzeroberfläche Ihres Geräts an. Sobald das Ablaufdatum des Zertifikats näher rückt, erstellen und laden Sie neue Zertifikate gemäß den detaillierten Anweisungen in [Erstellen und Hochladen von Zertifikaten](azure-stack-edge-j-series-manage-certificates.md).
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

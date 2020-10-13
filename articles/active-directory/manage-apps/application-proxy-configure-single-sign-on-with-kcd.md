@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299747"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -32,7 +32,7 @@ Sie können für Anwendungen, die die integrierte Windows-Authentifizierung (IWA
 ## <a name="how-single-sign-on-with-kcd-works"></a>So funktioniert das einmalige Anmelden mit KCD
 Dieses Diagramm erläutert die Vorgänge, die beim Zugriff eines Benutzers auf eine lokale Anwendung mit IWA ablaufen.
 
-![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/application-proxy-configure-single-sign-on-with-kcd/authdiagram.png)
 
 1. Der Benutzer gibt die URL ein, um über den Anwendungsproxy auf die lokale Anwendung zuzugreifen.
 2. Der Anwendungsproxy leitet die Anforderung zur Vorauthentifizierung an Azure AD-Authentifizierungsdienste weiter. Zu diesem Zeitpunkt wendet Azure AD alle gültigen Authentifizierungs- und Autorisierungsrichtlinien an, wie z. B. mehrstufige Authentifizierung. Nachdem der Benutzer überprüft wurde, erstellt Azure AD ein Token und sendet es an den Benutzer.
@@ -62,7 +62,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 5. Wählen Sie die Option **Beliebiges Authentifizierungsprotokoll verwenden** aus.
 6. Fügen Sie unter **Dienste, für die dieses Konto delegierte Anmeldeinformationen verwenden kann** den Wert für die Dienstprinzipalnamen-Identität (SPN) des Anwendungsservers hinzu. Auf diese Weise kann der Anwendungsproxy-Connector die Identität von Benutzern in AD für die Anwendungen annehmen, die in der Liste definiert sind.
 
-   ![Screenshot des Connector-SVR-Eigenschaftenfensters](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
+   ![Screenshot des Connector-SVR-Eigenschaftenfensters](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector und Anwendungsserver in unterschiedlichen Domänen
 1. Eine Liste der Voraussetzungen für das domänenübergreifende Arbeiten mit KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung über Domänengrenzen hinweg](https://technet.microsoft.com/library/hh831477.aspx).
@@ -97,7 +97,6 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 
    ![Erweiterte Anwendungskonfiguration](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
-
 ## <a name="sso-for-non-windows-apps"></a>SSO für Nicht-Windows-Apps
 
 Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. 
@@ -106,7 +105,7 @@ In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die B
 
 Es gibt mehrere Mechanismen, die definieren, wie das Kerberos-Ticket in solchen Anforderungen gesendet wird. Die meisten Nicht-Windows-Server erwarten, es in Form eines SPNEGO-Tokens zu erhalten. Dieser Mechanismus wird auf dem Azure AD-Anwendungsproxy unterstützt, ist aber standardmäßig deaktiviert. Ein Connector kann für SPNEGO oder das standardmäßige Kerberos-Token konfiguriert werden, jedoch nicht für beide.
 
-Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die ein standardmäßiges Kerberos-Token erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind.
+Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die ein standardmäßiges Kerberos-Token erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind. Einige Webanwendungen akzeptieren beide Formate, ohne dass eine Änderung der Konfiguration erforderlich ist. 
  
 
 So aktivieren Sie SPNEGO:
@@ -136,6 +135,8 @@ Mit dem Anwendungsproxy können Sie wählen, welche Identität verwendet werden 
 ![Screenshot: Parameter „Delegierte Identität für Anmeldung“](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_upn.png)
 
 Bei Verwendung der Delegierten Identität für Anmeldung ist der Wert unter Umständen nicht für alle Domänen oder Gesamtstrukturen in Ihrer Organisation eindeutig. Sie können dieses Problem umgehen, indem Sie die Anwendung zweimal mit zwei unterschiedlichen Connectorgruppen veröffentlichen. Da jede Anwendung einen anderen Benutzerkreis aufweist, lassen sich die Connectors mit einer unterschiedlichen Domäne verknüpfen.
+
+Wenn der **lokale SAM-Kontoname** als Anmeldeidentität verwendet wird, muss der Computer, auf dem der Connector gehostet wird, der Domäne hinzugefügt werden, in der sich das Benutzerkonto befindet.
 
 ### <a name="configure-sso-for-different-identities"></a>Konfigurieren von SSO für verschiedene Identitäten
 1. Konfigurieren Sie die Azure AD Connect-Einstellungen so, dass die E-Mail-Adresse die Hauptidentität ist. Dies erfolgt als Teil des Anpassungsvorgangs durch Änderung des **Benutzerprinzipalnamens** in den Synchronisierungseinstellungen. Diese Einstellungen bestimmen auch, wie sich Benutzer bei Office 365, Windows 10-Geräten und anderen Anwendungen anmelden, die Azure AD als Identitätsspeicher verwenden.  

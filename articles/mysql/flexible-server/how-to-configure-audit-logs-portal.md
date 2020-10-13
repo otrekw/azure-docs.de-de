@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 9/21/2020
-ms.openlocfilehash: 1d0687e6cdcc8208218183cb873f9620a5525d37
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: cadd384bc7d3222cbc5d1179271f7b4624c9224a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931753"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565849"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurieren von Überwachungsprotokolle für Azure Database for MySQL – Flexible Server und Zugreifen auf diese Protokolle im Azure-Portal
 
@@ -35,19 +35,19 @@ Aktivieren und konfigurieren Sie die Überwachungsprotokollierung.
 1. Wählen Sie Ihre Flexible Server-Instanz aus.
 
 1. Wählen Sie auf der Randleiste im Abschnitt **Einstellungen** den Eintrag **Serverparameter** aus.
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Server parameters":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/server-parameters.png" alt-text="Serverparameter":::
 
 1. Ändern Sie den Parameter **audit_log_enabled** in ON.
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Enable audit logs":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Serverparameter":::
 
 1. Wählen Sie die zu protokollierenden [Ereignistypen](concepts-audit-logs.md#configure-audit-logging) aus, indem Sie den Parameter **audit_log_events** aktualisieren.
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Audit log events":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-events.png" alt-text="Serverparameter":::
 
-1. Fügen Sie alle MySQL-Benutzer hinzu, die von der Protokollierung ausgeschlossen werden sollen, indem Sie den Parameter **audit_log_exclude_users** aktualisieren. Geben Sie Benutzer an, indem Sie ihre MySQL-Benutzernamen bereitstellen.
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Audit log exclude users":::-->
+1. Fügen Sie durch Aktualisieren der Parameter **audit_log_exclude_users** und **audit_log_include_users** alle MySQL-Benutzer hinzu, die in die Protokollierung einbezogen bzw. von ihr ausgeschlossen werden sollen. Geben Sie Benutzer an, indem Sie ihre MySQL-Benutzernamen bereitstellen.
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Serverparameter":::
 
 1. Nachdem Sie die Parameter geändert haben, klicken Sie auf **Speichern**. Sie können Ihre Änderungen auch **verwerfen**.
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Save":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/save-parameters.png" alt-text="Serverparameter":::
 
 ## <a name="set-up-diagnostics"></a>Einrichten der Diagnose
 
@@ -55,17 +55,17 @@ Aktivieren und konfigurieren Sie die Überwachungsprotokollierung.
 
 1. Wählen Sie auf der Randleiste im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus.
 
-1. Klicken Sie auf „+ Diagnoseeinstellung hinzufügen“  <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Add diagnostic setting":::-->
+1. Klicken Sie auf „+ Diagnoseeinstellung hinzufügen“  :::image type="content" source="./media/how-to-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Serverparameter":::.
 
 1. Geben Sie einen Namen für die Diagnoseeinstellung ein.
 
 1. Geben Sie an, an welche Ziele die Überwachungsprotokolle gesendet werden sollen (Speicherkonto, Event Hub und/oder Log Analytics-Arbeitsbereich).
 
 1. Wählen Sie als Protokolltyp **MySqlAuditLogs** aus.
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Configure diagnostic setting"::: -->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Serverparameter":::
 
 1. Nachdem Sie die Datensenken für die Überwachungsprotokolle konfiguriert haben, können Sie auf **Speichern** klicken.
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Save diagnostic setting":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Serverparameter":::
 
 1. Greifen Sie auf die Überwachungsprotokolle zu, indem Sie sie in den von Ihnen konfigurierten Datensenken einsehen. Es kann bis zu 10 Minuten dauern, bis die Protokolle angezeigt werden.
 

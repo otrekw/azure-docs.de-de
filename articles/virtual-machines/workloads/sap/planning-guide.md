@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361924"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -514,11 +514,11 @@ Microsoft Azure Virtual Machines nutzt verschiedene Speichertypen. Bei der Imple
 Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitgestellt wurde. Bei einem Neustart der VM werden alle Inhalte auf diesen Laufwerken gelöscht. Deswegen sollten Datendateien und Protokoll- bzw. Wiederholungsdateien von Datenbanken unter keinen Umständen auf diesen nicht permanenten Laufwerken gespeichert werden. Es gibt möglicherweise Ausnahmen für einige der Datenbanken, in denen diese nicht permanenten Laufwerke für tempdb und temporäre Tabellenbereiche geeignet sind. Verwenden Sie diese Laufwerke jedoch nicht für VMs der A-Serie, da diese nicht permanenten Laufwerke mit diesen VMs nur einen begrenzten Durchsatz ermöglichen. Weitere Informationen finden Sie im Artikel [Understanding the temporary drive on Windows Azure Virtual Machines](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) (Grundlegendes zum temporären Laufwerk auf virtuellen Windows-Computern in Azure).
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Laufwerk „D:\“ auf einer Azure-VM ist ein nicht permanentes Laufwerk, das durch einige lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt auf dem Laufwerk „D:\“ verloren gehen, wenn der virtuelle Computer neu gestartet wird. „Alle Änderungen“ beziehen sich u. a. auf gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Azure-VMs unter Linux stellen ein Laufwerk automatisch unter „/mnt/resource“ bereit. Dies ist ein nicht permanentes Laufwerk, das durch lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt unter „/mnt/resource“ verloren gehen, wenn die VM neu gestartet wird. „Alle Änderungen“ beziehen sich u. a. auf gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
 >
@@ -774,12 +774,12 @@ Eine weitere Option, die in diesem Leitfaden nicht ausführlich erläutert wird,
 Aufgrund der spezifischen Patch-Anforderungen Ihrer Betriebssystem- bzw. DBMS-Version sind die im Azure Marketplace erhältlichen Images möglicherweise nicht für Ihren Bedarf geeignet. Daher muss möglicherweise anhand eines eigenen, benutzerdefinierten OS/DBMS-VM-Images ein virtueller Computer erstellt werden, der anschließend mehrmals bereitgestellt werden kann. Bei der Vorbereitung eines solchen privaten Images für die Duplizierung müssen folgende Punkte berücksichtigt werden:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Ausführlichere Informationen finden Sie hier: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM mit dem folgenden sysprep-Befehl abstrahiert/generalisiert werden.
 >
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Führen Sie die in den folgenden Artikeln beschriebenen Schritte für [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd] bzw. [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle] aus, um eine VHD zum Hochladen in Azure vorzubereiten.
 >
@@ -809,13 +809,13 @@ Für die Vorbereitung Ihres eigenen Azure-VM-Datenträgers gelten folgende Anfor
 * Fügen Sie weitere lokale Konten hinzu, wie sie für die jeweiligen Bereitstellungsszenarien erforderlich sind.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > In diesem Szenario ist für das Hochladen und die Bereitstellung der VM in Azure keine Generalisierung (sysprep) der VM erforderlich.
 > Stellen Sie sicher, dass das Laufwerk D:\ nicht verwendet wird.
 > Legen Sie dann die automatische Bereitstellung für angefügte Datenträger fest, wie in diesem Dokument im Kapitel [Festlegen der automatischen Bereitstellung für angefügte Datenträger][planning-guide-5.5.3] beschrieben.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > In diesem Szenario ist für das Hochladen und die Bereitstellung der VM in Azure keine Generalisierung (waagent -deprovision) der VM erforderlich.
 > Stellen Sie sicher, dass /mnt/resource nicht verwendet wird und alle Datenträger über uuid bereitgestellt wurden. Stellen Sie für den Betriebssystem-Datenträger sicher, dass im Bootloadereintrag auch die Uuid-basierte Bereitstellung enthalten ist.
@@ -836,11 +836,11 @@ Für die Vorbereitung Ihres eigenen Azure-VM-Image gelten folgende Anforderungen
 * Wenn das Image eine Installation von SAP NetWeaver enthält und es wahrscheinlich ist, dass der Hostname bei der Bereitstellung in Azure geändert wird, empfiehlt es sich, die neuesten Versionen der SAP Software Provisioning Manager-DVD in die Vorlage zu kopieren. Sie können dann problemlos auf die von SAP bereitgestellte Umbenennungsfunktion zurückgreifen, um den geänderten Hostnamen anzupassen und/oder die SID des SAP-Systems im bereitgestellten VM-Image zu ändern, sobald eine neue Kopie gestartet wird.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Stellen Sie sicher, dass Laufwerk D:\ nicht verwendet wird. Legen Sie dann die automatische Bereitstellung für angefügte Datenträger fest, wie in diesem Dokument in Kapitel [Festlegen der automatischen Bereitstellung für angefügte Datenträger][planning-guide-5.5.3] beschrieben.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Stellen Sie sicher, dass /mnt/resource nicht verwendet wird und alle Datenträger über uuid bereitgestellt wurden. Stellen Sie für den Betriebssystem-Datenträger sicher, dass im Bootloadereintrag auch die Uuid-basierte Bereitstellung enthalten ist.
 >
@@ -854,13 +854,13 @@ Wenn die VM ausreichend vorbereitet ist, um generisch und letztendlich unabhäng
 
 ##### <a name="generalizing-a-vm"></a>Generalisieren eines virtuellen Computers
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Der letzte Schritt ist die Anmeldung bei einer VM mit einem Administratorkonto. Öffnen Sie als *Administrator* ein Windows-Befehlsfenster. Wechseln Sie zu %windir%\windows\system32\sysprep and execute sysprep.exe.
 > Daraufhin wird ein kleines Fenster geöffnet. Aktivieren Sie das Kontrollkästchen **Verallgemeinern** (das standardmäßig deaktiviert ist), und ändern Sie die Option für das Herunterfahren von der Standardeinstellung „Neu starten“ in „Herunterfahren“. Dieses Verfahren setzt voraus, dass der sysprep-Prozess lokal auf dem Gastbetriebssystem einer VM ausgeführt wird.
 > Wenn Sie diesen Vorgang für einen bereits in Azure ausgeführten virtuellen Computer durchführen möchten, folgen Sie den in [diesem Artikel](../../windows/capture-image-resource.md) beschriebenen Schritten.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > [Erfassen eines virtuellen Linux-Computers zur Verwendung als Resource Manager-Vorlage][capture-image-linux-step-2-create-vm-image]
 >
@@ -1123,13 +1123,13 @@ Im Idealfall sollten die Verfahren in Verbindung mit VM-Strukturen und den zugeh
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Bei vielen Kunden haben wir Konfigurationen gesehen, in denen beispielsweise die SAP- und DBMS-Binärdateien nicht auf Laufwerk C:\ mit dem Betriebssystem installiert waren. Hierfür wurden die verschiedensten Gründe genannt, gingen wir der Sache jedoch auf den Grund, stellte sich meist heraus, dass die Laufwerke vor 10 oder 15 Jahren zu klein wurden und Betriebssystemupdates einfach mehr Speicherplatz erforderten. Diese Bedingungen treffen heute aber kaum mehr zu. Heute kann Laufwerk C:\ Festplatten oder VMs mit großen Kapazitäten zugeordnet werden. Um die Bereitstellungsstruktur möglichst einfach zu halten, empfehlen wir für SAP NetWeaver-Systeme in Azure das folgende Bereitstellungsmuster:
 >
 > Die Auslagerungsdatei für das Betriebssystem Windows sollte auf Laufwerk D: (nicht persistenter Datenträger) eingerichtet werden.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Die Auslagerungsdatei für Linux sollte unter „/mnt/mnt/resource“ eingerichtet werden, wie in [diesem Artikel][virtual-machines-linux-agent-user-guide] beschrieben. Die Auslagerungsdatei kann in der Konfigurationsdatei „/etc/waagent.conf“ des Linux-Agenten konfiguriert werden. Nehmen Sie die folgenden Einstellungen vor:
 >
@@ -1156,11 +1156,11 @@ Aus den letzten zwei Jahren der SAP-Bereitstellung ziehen wir einige Rückschlü
 * Der IOPS-Datenverkehr mit den verschiedenen Datendateien ist nicht immer identisch, da die Datendateien der bestehenden Kundensysteme je nach SAP-Datenbank(en) völlig unterschiedlich dimensioniert sein können. Für die Platzierung der aus den Datendateien gebildeten LUNs hat sich daher eine RAID-Konfiguration gegenüber mehreren Datenträger als wesentlich sinnvoller erwiesen. Es gab Situationen, insbesondere bei Verwendung von Azure Storage Standard, in denen allein die IOPS-Rate das Kontingent einer einzelnen VHD für das DBMS-Transaktionsprotokoll sprengte. In solchen Szenarios empfiehlt sich die Verwendung von Storage Premium oder auch mehrerer Storage Standard-Datenträger mit einem Softwarestripe.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > * [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure][virtual-machines-sql-server-performance-best-practices]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid]
 > * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure][virtual-machines-linux-configure-lvm]
@@ -1189,13 +1189,13 @@ Sie müssen sich als Nächstes entscheiden, ob Sie eine neuen und leeren Datentr
 **WICHTIG:** Verwenden Sie in Kombination mit Azure Storage Standard **KEINE Hostzwischenspeicherung**. Übernehmen Sie daher unverändert den Standardwert NONE der Host-Cache-Einstellung. Bei Azure Storage Premium sollten Sie das Caching für Lesevorgänge aktivieren, wenn Ihre E/As in erster Linie aus Lesezugriffen bestehen, wie es für den E/A-Datenverkehr bei den Datendateien einer Datenbank üblich ist. Im Falle der Transaktionsprotokolldatei einer Datenbank wird von jeder Art des Caching abgeraten.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > [Anfügen eines Datenträgers im Azure-Portal][virtual-machines-linux-attach-disk-portal]
 >
 > Falls der VM bereits Datenträger angefügt sind, müssen Sie sich bei der VM anmelden, um den Windows Disk Manager zu öffnen. Wenn die automatische Bereitstellung für angefügte Datenträger nicht aktiviert ist, wie im Kapitel [Festlegen der automatischen Bereitstellung für angefügte Datenträger][planning-guide-5.5.3] empfohlen, muss das neu angefügte Volume online geschaltet und initialisiert werden.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Falls der VM bereits Datenträger angefügt sind, müssen Sie sich bei der VM anmelden und die Datenträger initialisieren, wie in [diesem Artikel][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux] beschrieben wird.
 >
@@ -1212,7 +1212,7 @@ Die Georeplikation von Azure erfolgt lokal und individuell für jede VHD einer V
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Festlegen der automatischen Bereitstellung für angefügte Datenträger
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Für VMs, die aus eigenen Images oder Datenträgern erstellt werden, sollten Sie den Parameter „automount“ überprüfen und gegebenenfalls aktivieren. Wenn die automatische Bereitstellung mit diesem Parameter aktiviert wurde, kann die VM nach einem Neustart oder einer erneuten Bereitstellung in Azure die angefügten (d.h. bereitgestellten) Laufwerke automatisch wieder bereitstellen.
 > Für die von Microsoft bereitgestellten Images wird der Parameter in Azure Marketplace aktiviert.
@@ -1226,7 +1226,7 @@ Die Georeplikation von Azure erfolgt lokal und individuell für jede VHD einer V
 >
 > Falls der VM bereits Datenträger angefügt sind, müssen Sie sich bei der VM anmelden, um den Windows Disk Manager zu öffnen. Wenn die automatische Bereitstellung für angefügte Datenträger nicht aktiviert ist, wie im Kapitel [Festlegen der automatischen Bereitstellung für angefügte Datenträger][planning-guide-5.5.3] empfohlen, muss das neu angefügte Volume online geschaltet und initialisiert werden.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Neu angefügte leere Datenträger müssen initialisiert werden, wie in [diesem Artikel][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux] beschrieben.
 > Außerdem müssen neue Datenträger „/etc/fstab“ hinzugefügt werden.
@@ -1264,7 +1264,7 @@ In diesem Artikel finden Sie ausführliche Informationen zu diesem Thema:
 Möglicherweise müssen Sie die Firewall Ihrer VMs konfigurieren, um auf Ihrem SAP-System eingehenden Datenverkehr zuzulassen.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Die Windows-Firewall ist auf einer in Azure bereitgestellten VM standardmäßig aktiviert. Sie müssen die Firewall daher so einstellen, dass der SAP-Port geöffnet ist. Andernfalls kann über die SAP-GUI keine Verbindung hergestellt werden.
 > Gehen Sie dazu folgendermaßen vor:
@@ -1281,7 +1281,7 @@ Möglicherweise müssen Sie die Firewall Ihrer VMs konfigurieren, um auf Ihrem S
 >
 > ![Portregeldefinition][planning-guide-figure-1600]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Durch die Linux-Images aus Azure Marketplace wird die iptables-Firewall standardmäßig nicht aktiviert, weshalb die Verbindung mit Ihrem SAP-System funktionieren sollte. Wenn Sie „iptables“ oder eine andere Firewall aktiviert haben, lesen Sie in der Dokumentation zu „iptables“ oder der betreffenden Firewall, wie eingehender TCP-Datenverkehr an Port 32xx zugelassen wird. („xx“ ist hierbei die Systemnummer Ihres SAP-Systems.)
 >
@@ -1588,7 +1588,7 @@ Als weitere Sicherheitsmaßnahme bei der Bereitstellung von virtuellen Computern
 Das Einrichten Ihre lokalen TCP/IP-basierten Netzwerkdrucker auf einem virtuellen Azure-Computer erfolgt generell auf die gleiche Weise wie in Ihrem Unternehmensnetzwerk. Es wird vorausgesetzt, dass Sie über einen Site-to-Site-VPN-Tunnel oder eine ExpressRoute-Verbindung verfügen.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Gehen Sie dazu folgendermaßen vor:
 >
@@ -1599,7 +1599,7 @@ Das Einrichten Ihre lokalen TCP/IP-basierten Netzwerkdrucker auf einem virtuelle
 > * Standard-Druckeranschluss 9100
 > * Installieren Sie bei Bedarf den entsprechenden Druckertreiber manuell.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > * Befolgen Sie wie für Windows einfach das Standardverfahren zum Installieren eines Netzwerkdruckers.
 > * Halten Sie sich beim Hinzufügen eines Druckers an die Anweisungen aus den öffentlich verfügbaren Linux-Handbüchern für [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) oder [Red Hat und Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration).
@@ -1623,13 +1623,13 @@ Die Druckerfreigabe wird durch einen eindeutigen Namen im Netzwerk identifiziert
 Gewusst wie:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Geben Sie Ihre lokalen Drucker frei.
 > Öffnen Sie auf dem virtuellen Azure-Computer Windows Explorer, und geben Sie den Freigabenamen des Druckers ein.
 > Ein Druckerinstallations-Assistent führt Sie durch den Installationsprozess.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Es folgen einige Beispiele der Dokumentation zur Konfiguration von Netzwerkdruckern unter Linux einschließlich eines Kapitels zum Drucken unter Linux. Dies funktioniert auf einem virtuellen Azure Linux-Computer auf gleiche Weise, sofern der virtuelle Computer Teil eines VPN ist:
 >
@@ -1644,7 +1644,7 @@ Gewusst wie:
 In Azure kann Benutzern in einer Remotesitzung mithilfe der Remotedesktopdienste kein Zugriff auf ihre lokalen Druckergeräte gewährt werden.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Weitere Informationen zum Drucken mit Windows finden Sie hier: <https://technet.microsoft.com/library/jj590748.aspx>.
 >
@@ -1890,7 +1890,7 @@ Hier sind zwei Beispiele für eine vollständige SAP NetWeaver HA-Architektur in
 Nur nicht verwaltete Datenträger: Bei den nachfolgend erläuterten Konzepten müssen Sie möglicherweise gewisse Kompromisse eingehen, wenn Sie viele SAP-Systeme bereitstellen und die Anzahl der bereitgestellten virtuellen Computer die maximale Anzahl von Speicherkonten pro Abonnement überschreitet. In diesen Fällen müssen die VHDs virtueller Computer in einem Speicherkonto kombiniert werden. Normalerweise würden Sie zu diesem Zweck VHDs der SAP-Anwendungsebene mit virtuellen Computern verschiedener SAP-Systeme kombinieren.  Wir haben zudem in einem Azure Storage-Konto verschiedene VHDs von unterschiedlichen virtuellen DBMS-Computern der verschiedenen SAP-Systemen kombiniert. Beachten Sie dabei die IOPS-Grenzwerte von Azure-Speicherkonten (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>).
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] Hohe Verfügbarkeit unter Windows
+##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows-Logo][Logo_Windows] Hohe Verfügbarkeit unter Windows
 
 ![Hochverfügbare Anwendungsarchitektur für SAP NetWeaver mit SQL Server in Azure IaaS][planning-guide-figure-3200]
 
@@ -1912,7 +1912,7 @@ Die folgende Abbildung veranschaulicht die gleiche Landschaft mit Managed Disks
 
 ![Hochverfügbare Anwendungsarchitektur für SAP NetWeaver mit SQL Server in Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] Hohe Verfügbarkeit unter Linux
+##### <a name="linux-logologo_linux-ha-on-linux"></a>![Linux-Logo][Logo_Linux] Hohe Verfügbarkeit unter Linux
 
 Die Architektur für SAP HA unter Linux in Azure ist im Grunde mit der oben für Windows beschriebenen Architektur identisch. Eine Liste unterstützter Hochverfügbarkeitslösungen finden Sie im SAP-Hinweis [1928533].
 
@@ -1963,7 +1963,7 @@ Andere virtuelle Computer im SAP-System können mit der Sicherungsfunktion für 
 > [!NOTE]
 > Seit Dezember 2015 wird bei der Sicherung virtueller Computer NICHT mehr die eindeutige VM-ID beibehalten, die für die SAP-Lizenzierung erforderlich ist. Dies bedeutet, dass bei der Wiederherstellung von einer VM-Sicherung ein neuer SAP-Lizenzschlüssel installiert werden muss. Der wiederhergestellte virtuelle Computer gilt als neue VM und nicht als Ersatz der zuvor gespeicherten VM.
 >
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Theoretisch können virtuelle Computer, auf denen Datenbanken ausgeführt werden, konsistent gesichert werden, wenn die DBMS-Systeme den Volumeschattenkopie-Dienst (Volume Shadow Copy Service <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>) von Windows unterstützen, wie es etwa bei SQL Server der Fall ist.
 > Bedenken Sie jedoch, dass auf Basis der Sicherungen virtueller Azure-Computer keine Zeitpunktwiederherstellung von Datenbanken möglich ist. Daher wird empfohlen, die Sicherung von Datenbanken mit DBMS-Funktionen durchzuführen und nicht die Sicherung virtueller Azure-Computer zu verwenden.
@@ -1972,7 +1972,7 @@ Andere virtuelle Computer im SAP-System können mit der Sicherungsfunktion für 
 >
 > Zudem können Sie Datenbanken mit einer Kombination aus Microsoft Data Protection Manager, der auf einem virtuellen Azure-Computer installiert ist, und der Azure-Sicherung sichern/wiederherstellen. Weitere Informationen finden Sie hier: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Es gibt unter Linux keine Entsprechung zu Windows VSS. Daher sind nur dateikonsistente Sicherungen aber keine anwendungskonsistenten Sicherungen möglich. Die SAP-DBMS-Sicherung sollte mit DBMS-Funktionen erfolgen. Das Dateisystem mit den SAP-bezogenen Daten kann beispielsweise mit „tar“ gespeichert werden. Informationen dazu finden Sie hier <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
@@ -1984,7 +1984,7 @@ Seit Mitte 2014 ermöglichen Erweiterungen verschiedener Komponenten zu Hyper-V,
 
 Einen Blog mit Informationen zum Bereitstellen dieser Lösung finden Sie hier: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery>.
 
-## <a name="summary"></a>Zusammenfassung
+## <a name="summary-for-high-availability-for-sap-systems"></a>Zusammenfassung zur Hochverfügbarkeit bei SAP-Systemen
 
 Hier die wichtigsten Punkte der Hochverfügbarkeit für SAP-Systeme in Azure:
 
