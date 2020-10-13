@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306938"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
@@ -66,6 +66,33 @@ Sie können verfügbare Wartungskonfigurationen abfragen, indem Sie [Get-AzMaint
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>Erstellen einer Wartungskonfiguration mit einem geplanten Fenster (in der Vorschau)
+
+
+> [!IMPORTANT]
+> Die Funktion „Geplantes Fenster“ ist zurzeit als öffentliche Vorschauversion verfügbar.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Verwenden Sie New-AzMaintenanceConfiguration, um eine Wartungskonfiguration mit einem geplanten Fenster zu erstellen, in dem Azure die Updates auf Ihre Ressourcen anwendet. In diesem Beispiel wird eine Wartungskonfiguration mit dem Namen myConfig mit einem geplanten Fenster von 5 Stunden am vierten Montag jeden Monats erstellt. Nachdem Sie ein geplantes Fenster erstellt haben, müssen Sie die Updates nicht mehr manuell anwenden.
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> Die **Dauer** der Wartung muss *2 Stunden* oder länger sein. Die Wartung muss mindestens ein Mal in 35 Tagen **wiederholt** werden.
+
+Die **Wiederholung** der Wartung kann mit täglichen, wöchentlichen oder monatlichen Zeitplänen ausgedrückt werden. Beispiele für tägliche Zeitpläne sind recurEvery: Day, recurEvery: 3Days. Beispiele für wöchentliche Zeitpläne sind recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Beispiele für monatliche Zeitpläne sind recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday.
+
 
 ## <a name="assign-the-configuration"></a>Zuweisen der Konfiguration
 

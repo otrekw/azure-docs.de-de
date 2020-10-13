@@ -2,14 +2,14 @@
 title: Sammlung von Azure Application Insights-IP-Adressen | Microsoft-Dokumentation
 description: Grundlegendes zur Handhabung von IP-Adressen und der Geolocation mit Azure Application Insights
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b702494347874a1b4977179ba882490223bdf924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.date: 09/23/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032825"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333306"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geolocation und Verarbeitung von IP-Adressen
 
@@ -62,9 +62,7 @@ Die Eigenschaft `DisableIpMasking` der Application Insights-Komponente muss auf 
 
 Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource ändern müssen, verwenden Sie das Azure-Portal. 
 
-1. Navigieren Sie zu Ihrer Application Insights-Ressource > **Einstellungen** > **Vorlage exportieren**. 
-
-    ![Vorlage exportieren](media/ip-collection/export-template.png)
+1. Navigieren Sie zu Ihrer Application Insights-Ressource > **Automatisierung** > **Vorlage exportieren**. 
 
 2. Klicken Sie auf **Bereitstellen**.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306666"
 ---
 # <a name="application-security-groups"></a>Anwendungssicherheitsgruppen
 
@@ -26,7 +26,7 @@ Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürli
 
 ![Anwendungssicherheitsgruppen](./media/security-groups/application-security-groups.png)
 
-In der Abbildung oben sind *NIC1* und *NIC2* Mitglieder der Anwendungssicherheitsgruppe *AsgWeb*. *NIC3* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgLogic*. *NIC4* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgDb*. Obwohl jede Netzwerkschnittstelle in diesem Beispiel Mitglied von nur einer Anwendungssicherheitsgruppe ist, kann eine Netzwerkschnittstelle Mitglied mehrerer Anwendungssicherheitsgruppen sein. Dabei gelten die [Einschränkungen für Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Keiner der Netzwerkschnittstellen ist eine Netzwerksicherheitsgruppe zugeordnet. *NSG1* ist beiden Subnetzen zugeordnet und enthält die folgenden Regeln:
+In der Abbildung oben sind *NIC1* und *NIC2* Mitglieder der Anwendungssicherheitsgruppe *AsgWeb*. *NIC3* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgLogic*. *NIC4* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgDb*. Obwohl jede Netzwerkschnittstelle in diesem Beispiel Mitglied von nur einer Netzwerksicherheitsgruppe ist, kann eine Netzwerkschnittstelle Mitglied mehrerer Anwendungssicherheitsgruppen sein. Dabei gelten die [Einschränkungen für Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Keiner der Netzwerkschnittstellen ist eine Netzwerksicherheitsgruppe zugeordnet. *NSG1* ist beiden Subnetzen zugeordnet und enthält die folgenden Regeln:
 
 ## <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 

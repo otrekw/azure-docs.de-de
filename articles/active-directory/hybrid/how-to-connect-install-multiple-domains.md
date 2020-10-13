@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 53a0da5b5db21c9a543d39d1b252b0b4c64e2a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662435"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306360"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Microsoft 365- oder Azure AD-Domänen erstellen.
@@ -38,7 +38,7 @@ Bei einem Verbund einer Domäne mit Azure AD werden für die Domäne in Azure me
 
 Sie können das IssuerUri-Element mit dem folgenden PowerShell-Befehl anzeigen: `Get-MsolDomainFederationSettings -DomainName <your domain>`.
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![Screenshot der Ergebnisse, die nach Eingabe des Befehls „Get-MsolDomainFederationSettings“ in PowerShell anzeigt werden](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 Ein Problem tritt auf, wenn Sie mehr als eine Domäne der obersten Ebene hinzufügen.  Nehmen wir beispielsweise an, dass Sie einen Verbund zwischen Azure AD und Ihrer lokalen Umgebung eingerichtet haben.  Für dieses Dokument wird die Domäne „bmcontoso.com“ verwendet.  Nun wurde eine zweite Domäne der obersten Ebene hinzugefügt: „bmfabrikam.com“.
 
@@ -46,7 +46,7 @@ Ein Problem tritt auf, wenn Sie mehr als eine Domäne der obersten Ebene hinzuf�
 
 Wenn Sie versuchen, die Domäne „bmfabrikam.com“ in einen Verbund zu konvertieren, wird ein Fehler angezeigt.  Der Grund hierfür ist, dass für Azure AD eine Einschränkung gilt. Es ist nicht zulässig, dass die IssuerUri-Eigenschaft für mehr als eine Domäne den gleichen Wert aufweist.  
 
-![Partnerverbundfehler](./media/how-to-connect-install-multiple-domains/error.png)
+![Screenshot, der einen Verbundfehler in PowerShell zeigt](./media/how-to-connect-install-multiple-domains/error.png)
 
 ### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain-Parameter
 Um diese Einschränkung zu umgehen, müssen Sie einen anderen IssuerUri hinzufügen. Hierfür kann der Parameter `-SupportMultipleDomain` verwendet werden.  Dieser Parameter wird mit den folgenden Cmdlets verwendet:
@@ -57,11 +57,11 @@ Um diese Einschränkung zu umgehen, müssen Sie einen anderen IssuerUri hinzufü
 
 Mit diesem Parameter wird erreicht, dass Azure AD den IssuerUri so konfiguriert, dass er auf dem Namen der Domäne basiert.  Der IssuerUri ist für Verzeichnisse in Azure AD eindeutig.  Mit dem Parameter kann der PowerShell-Befehl erfolgreich abgeschlossen werden.
 
-![Partnerverbundfehler](./media/how-to-connect-install-multiple-domains/convert.png)
+![Screenshot, der die erfolgreiche Ausführung des PowerShell-Befehls zeigt](./media/how-to-connect-install-multiple-domains/convert.png)
 
 Wenn Sie sich die Einstellungen der Domäne „bmfabrikam.com“ ansehen, erkennen Sie Folgendes:
 
-![Partnerverbundfehler](./media/how-to-connect-install-multiple-domains/settings.png)
+![Screenshot mit den Einstellungen für die Domäne „bmfabrikam.com“](./media/how-to-connect-install-multiple-domains/settings.png)
 
 `-SupportMultipleDomain` führt nicht zu einer Änderung der anderen Endpunkte, die weiterhin so konfiguriert sind, dass sie auf den Verbunddienst unter „adfs.bmcontoso.com“ verweisen.
 
@@ -88,11 +88,11 @@ Wenn Sie die Vertrauensstellung zwischen AD FS und Ihrer Instanz von Azure AD ni
 
 Sie erhalten jetzt also den folgenden Fehler, wenn Sie im Azure AD-Portal erfolgreich eine neue Domäne hinzugefügt und anschließend versucht haben, diese mit `Convert-MsolDomaintoFederated -DomainName <your domain>` zu konvertieren:
 
-![Partnerverbundfehler](./media/how-to-connect-install-multiple-domains/trust1.png)
+![Screenshot: Nach dem Versuch, mit dem Befehl „Convert-MsolDomaintoFederated" eine neue Domäne zu konvertieren, wird in PowerShell ein Verbundfehler angezeigt.](./media/how-to-connect-install-multiple-domains/trust1.png)
 
 Wenn Sie versuchen, den Switch `-SupportMultipleDomain` hinzuzufügen, erhalten Sie den folgenden Fehler:
 
-![Partnerverbundfehler](./media/how-to-connect-install-multiple-domains/trust2.png)
+![Screenshot: Nach dem Hinzufügen des Schalters „SupportMultipleDomain“ wird ein Verbundfehler angezeigt.](./media/how-to-connect-install-multiple-domains/trust2.png)
 
 Der einfache Versuch, `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` in der ursprünglichen Domäne auszuführen, führt ebenfalls zu einem Fehler.
 
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um die neue Domäne der obersten Ebene m
 Führen Sie die folgenden Schritte aus, um die neue Domäne der obersten Ebene mit Azure AD Connect hinzuzufügen.
 
 1. Starten Sie Azure AD Connect über den Desktop oder das Menü „Start“
-2. Wählen Sie „Weitere Azure AD-Domäne hinzufügen“ ![Weitere Azure AD-Domäne hinzufügen](./media/how-to-connect-install-multiple-domains/add1.png)
+2. Wählen Sie „Weitere Azure AD-Domäne hinzufügen“ aus. ![Screenshot der Seite „Zusätzliche Aufgaben“ mit ausgewählter Option „Weitere Azure AD-Domäne hinzufügen“](./media/how-to-connect-install-multiple-domains/add1.png)
 3. Geben Sie Ihre Anmeldeinformationen für Azure AD und Active Directory ein.
 4. Wählen Sie die zweite Domäne aus, die Sie für den Verbund konfigurieren möchten.
    ![Weitere Azure AD-Domäne hinzufügen](./media/how-to-connect-install-multiple-domains/add2.png)
@@ -130,7 +130,7 @@ Führen Sie die folgenden Schritte aus, um die neue Domäne der obersten Ebene m
 ### <a name="verify-the-new-top-level-domain"></a>Überprüfen der neuen Domäne der obersten Ebene
 Mit dem PowerShell-Befehl `Get-MsolDomainFederationSettings -DomainName <your domain>`können Sie den aktualisierten IssuerUri anzeigen.  Im folgenden Screenshot ist dargestellt, dass die Verbundeinstellungen für die ursprüngliche Domäne `http://bmcontoso.com/adfs/services/trust` aktualisiert wurden.
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![Screenshot, der die für die ursprüngliche Domäne aktualisierten Verbundeinstellungen zeigt](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 Außerdem wurde der IssuerUri für die neue Domäne auf `https://bmfabrikam.com/adfs/services/trust` festgelegt.
 
