@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060746"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823408"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
 
-Für den Spark-Cluster verfügt HDInsight mit Anaconda Python 2.7 und Python 3.5 über zwei integrierte Python-Installationen. Kunden müssen möglicherweise die Python-Umgebung anpassen. Dazu zählt das Installieren externer Python-Pakete oder einer anderen Python-Version. Hier zeigen wir die bewährte Methode zur sicheren Verwaltung von Python-Umgebungen für Apache Spark-Cluster in HDInsight.
+Für den Spark-Cluster verfügt HDInsight mit Anaconda Python 2.7 und Python 3.5 über zwei integrierte Python-Installationen. Kunden müssen die Python-Umgebung ggf. anpassen, um z. B. externe Python-Pakete zu installieren. Hier zeigen wir die bewährte Methode zur sicheren Verwaltung von Python-Umgebungen für Apache Spark-Cluster in HDInsight.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

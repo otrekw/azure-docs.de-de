@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531643"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758981"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
 In diesem Tutorial erstellen Sie Code und stellen ihn anschließend in Azure Functions als benutzerdefinierten Docker-Container mit einem Linux-Basisimage bereit. Normalerweise verwenden Sie ein benutzerdefiniertes Image, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder über eine bestimmte Abhängigkeit oder Konfiguration verfügen, die über das integrierte Image nicht bereitgestellt wird.
+
+Die Bereitstellung Ihres Funktionscodes in einem benutzerdefinierten Linux-Container erfordert Hosting im [Premium-Tarif](functions-premium-plan.md#features) oder in einem [Dedizierten Tarif (App Service-Tarif)](functions-scale.md#app-service-plan). Das Abschließen dieses Tutorials verursacht Kosten von einigen USD auf Ihrem Azure-Konto, die Sie durch [Bereinigen der Ressourcen](#clean-up-resources) minimieren können, wenn Sie fertig sind.
 
 Sie können auch einen Azure App Service-Standardcontainer verwenden. Dies ist unter [Schnellstart: Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Befehlszeilentools](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) beschrieben. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
 
@@ -31,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Aktivieren Sie SSH-Verbindungen mit dem Container.
 > * Fügen Sie eine Queue Storage-Ausgabebindung hinzu. 
 
-Sie können dieses Tutorial auf allen Computern durcharbeiten, auf denen Windows, macOS oder Linux ausgeführt wird. Für das Durcharbeiten des Tutorials fallen unter Ihrem Azure-Konto Kosten in Höhe von wenigen US-Dollar an.
+Sie können dieses Tutorial auf allen Computern durcharbeiten, auf denen Windows, macOS oder Linux ausgeführt wird. 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ Sie verwenden Azure CLI-Befehle, um diese Elemente zu erstellen. Für jeden Befe
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Linux-Hosting für benutzerdefinierte Funktionscontainer werden von [dedizierten (App Service-)Plänen](functions-scale.md#app-service-plan) und [Premium-Plänen](functions-premium-plan.md#features) unterstützt. Wir verwenden hier den Premium-Plan, der je nach Bedarf skaliert werden kann. Weitere Informationen zum Hosting finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md). Informationen zum Berechnen der Kosten finden Sie auf der Seite [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
+    Wir verwenden hier den Premium-Plan, der je nach Bedarf skaliert werden kann. Weitere Informationen zum Hosting finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md). Informationen zum Berechnen der Kosten finden Sie auf der Seite [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
 
     Darüber hinaus wird mit dem Befehl auch eine zugeordnete Azure Application Insights-Instanz in derselben Ressourcengruppe bereitgestellt, mit der Sie Ihre Funktions-App überwachen und Protokolle anzeigen können. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md). Für die Instanz fallen erst Kosten an, wenn Sie sie aktivieren.
 

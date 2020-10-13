@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292964"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -302,17 +302,17 @@ Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden 
 Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
 - `download.microsoft.com`
-- Recovery Services-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Für öffentliche Azure-Regionen)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Für Azure China 21Vianet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (für Azure US Government)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (für Azure Deutschland)
+- Recovery Services-URLs („geo-name“ bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Für öffentliche Azure-Regionen)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Für Azure China 21Vianet)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (für Azure US Government)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (für Azure Deutschland)
 - Ausgehende Ports 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
-> - Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. *ContosoVM_wcus_12345678*
-> - Die URL wäre <https://pod01-rec2.wcus.backup.windowsazure.com>
+> Im Namen der Skriptdatei, die Sie in Schritt 5 [weiter oben](#mount-the-volume-and-copy-files) heruntergeladen haben, ist der **geo-name** enthalten. Verwenden Sie diesen **geo-name** zum Ausfüllen der URL. Der Name des heruntergeladenen Skripts beginnt mit: \'VMname\'\_\'geoname\'_\'GUID\'.<br><br>
+> Ein Beispiel: Wenn der Name der Skriptdatei *ContosoVM_wcus_12345678* lautet, ist **wcus** der *geo-name*, und die URL wäre:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
