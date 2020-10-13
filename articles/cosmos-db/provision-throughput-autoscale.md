@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791145"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570733"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 
@@ -77,7 +77,7 @@ Weitere Informationen finden Sie in diesem [Dokument](how-to-choose-offer.md), i
 | **Bereitgestellter Durchsatz (RU/s)** | Manuell bereitgestellt. | Automatische und sofortige Skalierung basierend auf den Workload-Verwendungsmustern. |
 | **Ratenbegrenzung von Anforderungen/Vorgängen (429)**  | Kann passieren, wenn die Nutzung die bereitgestellte Kapazität überschreitet. | Dies geschieht nicht, wenn Sie Durchsatz innerhalb des von Ihnen festgelegten Durchsatzbereichs mit Autoskalierung nutzen.    |
 | **Kapazitätsplanung** |  Sie müssen eine Kapazitätsplanung durchführen und den genauen benötigten Durchsatz bereitstellen. |    Das System übernimmt automatisch die Kapazitätsplanung und -verwaltung. |
-| **Preise** | Sie zahlen für den manuell bereitgestellten Durchsatz pro Stunde nach dem [Tarif für Standard-RU/s (manuell) auf Stundenbasis](https://azure.microsoft.com/pricing/details/cosmos-db/). | Sie zahlen pro Stunde für den höchsten Durchsatz, auf den das System innerhalb der Stunde zentral hochskaliert wurde. <br/><br/> Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem [Tarif für Autoskalierungs-RUs/s pro Stunde](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für die Autoskalierung an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben [Tarif für Multimaster-RU/s pro Stunde](https://azure.microsoft.com/pricing/details/cosmos-db/). |
+| **Preise** | Sie zahlen für den manuell bereitgestellten Durchsatz pro Stunde nach dem [Tarif für Standard-RU/s (manuell) auf Stundenbasis](https://azure.microsoft.com/pricing/details/cosmos-db/). | Sie zahlen pro Stunde für den höchsten Durchsatz, auf den das System innerhalb der Stunde zentral hochskaliert wurde. <br/><br/> Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem [Tarif für Autoskalierungs-RUs/s pro Stunde](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für die Autoskalierung an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben [Tarif für Schreib-RU/s für mehrere Regionen pro Stunde](https://azure.microsoft.com/pricing/details/cosmos-db/). |
 | **Für folgende Workloadtypen am besten geeignet** |  Vorhersehbare und stabile Workloads|   Nicht vorhersehbare und variable Workloads  |
 
 ## <a name="next-steps"></a>Nächste Schritte

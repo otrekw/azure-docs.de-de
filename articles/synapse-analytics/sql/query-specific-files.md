@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.reviewer: jrasnick
+ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288102"
 ---
 # <a name="use-file-metadata-in-queries"></a>Verwenden von Dateimetadaten in Abfragen
 
@@ -22,7 +22,7 @@ SQL On-Demand kann mehrere Dateien und Ordner behandeln, wie im Artikel [Abfrage
 
 Gelegentlich müssen Sie möglicherweise wissen, welche Datei- oder Ordnerquelle mit einer bestimmten Zeile im Resultset korreliert.
 
-Sie können die Funktionen `filepath` und `filename` verwenden, um Dateinamen und/oder den Pfad im Resultset zurückzugeben. Oder Sie können sie verwenden, um Daten anhand des Dateinamens und/oder des Ordnerpfades zu filtern. Diese Funktionen werden in den Syntaxabschnitten zur [Dateinamenfunktion](query-data-storage.md#filename-function) und zur [Dateipfadfunktion](query-data-storage.md#filepath-function) beschrieben. Nachfolgend finden Sie kurze Beschreibungen zusammen mit Beispielen.
+Sie können die Funktionen `filepath` und `filename` verwenden, um Dateinamen und/oder den Pfad im Resultset zurückzugeben. Oder Sie können sie verwenden, um Daten anhand des Dateinamens und/oder des Ordnerpfades zu filtern. Diese Funktionen werden in den Syntaxabschnitten zur [Dateinamenfunktion](query-data-storage.md#filename-function) und zur [Dateipfadfunktion](query-data-storage.md#filepath-function) beschrieben. In den folgenden Abschnitten finden Sie Kurzbeschreibungen und Beispiele.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

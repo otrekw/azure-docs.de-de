@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f323b563d90de315bdbb317f88d7f9449be6c008
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 623ec6999add175e85f117e547fba61734d2b892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546694"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286007"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Smartsheet für die automatische Benutzerbereitstellung
 
@@ -69,15 +69,15 @@ Bevor Sie Smartsheet für die automatische Benutzerbereitstellung mit Azure AD k
 
 5. Generieren Sie das **geheime Token**, das zum Konfigurieren der automatischen Benutzerbereitstellung mit Azure AD erforderlich ist, indem Sie zu **Apps & Integrationen** navigieren.
 
-    ![Smartsheet-Installation](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Screenshot der Smartsheet-Administratorseite mit dem Benutzer „avatar“ und der aufgerufenen Option „Apps & Integrations“](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
 6. Wählen Sie **API-Zugriff** aus. Klicken Sie auf **Neues Zugriffstoken generieren**.
 
-    ![Smartsheet-Installation](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![Screenshot des Dialogfelds „Persönliche Einstellungen“ mit den aufgerufenen Optionen „API-Zugriff“ und „Neues Zugriffstoken generieren“](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
 7. Legen Sie den Namen des API-Zugriffstokens fest. Klicken Sie auf **OK**.
 
-    ![Smartsheet-Installation](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![Screenshot von Schritt 1 von 2: „Generieren eines API-Zugriffstokens“ mit der aufgerufenen Option „OK“](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
 8. Kopieren Sie das API-Zugriffstoken, und speichern Sie es, weil Sie es nur zu diesem Zeitpunkt anzeigen können. Diese Angabe ist in Azure AD im Feld **Geheimes Token** erforderlich.
 
@@ -117,11 +117,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Smartsheet abgerufenen Werte für **SCIM 2.0 base URL and Access Token** („SCIM 2.0-Basis-URL“ und „Zugriffstoken“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Smartsheet herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Smartsheet-Konto über Systemadministratorberechtigungen verfügt, und versuchen Sie es erneut.
 
