@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570909"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743261"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -70,9 +70,9 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie verfügen für die Azure Stack Edge Pro-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf Ressourcengruppenebene.
 
     - Für die Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. 
-    - Vergewissern Sie sich außerdem, dass der Anbieter `Microsoft.DataBoxEdge` registriert ist. Der `Microsoft.Devices`-Anbieter muss registriert werden, um IoT Hub-Ressourcen zu erstellen. 
+    - Außerdem müssen Sie dafür sorgen, dass die Ressourcenanbieter `Microsoft.DataBoxEdge` und `MicrosoftKeyVault` registriert werden. Der `Microsoft.Devices`-Anbieter muss registriert werden, um IoT Hub-Ressourcen zu erstellen. 
         - Zum Registrieren eines Ressourcenanbieters wechseln Sie im Azure-Portal zu **Home > Abonnements > Ihr-Abonnement > Ressourcenanbieter**. 
-        - Suchen Sie nach `Microsoft.DataBoxEdge`, und registrieren Sie den Ressourcenanbieter. 
+        - Suchen Sie nach dem jeweiligen Ressourcenanbieter, z. B. `Microsoft.DataBoxEdge`, und registrieren Sie ihn. 
     - Für die Erstellung von Speicherkontoressourcen sind ebenfalls mindestens Berechtigungen als Mitwirkender auf der Ressourcengruppenebene erforderlich. Azure Storage ist standardmäßig als Ressourcenanbieter registriert.
 - Sie haben Administrator- oder Benutzerzugriff auf die Azure Active Directory Graph-API zum Generieren von Vorgängen für Aktivierungsschlüssel oder Anmeldeinformationen, z. B. die Erstellung einer Freigabe, bei der ein Speicherkonto verwendet wird. Weitere Informationen finden Sie unter [Azure Active Directory Graph-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
@@ -152,11 +152,15 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
 10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
 
-    ![Ressource erstellen 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+    ![Ressource erstellen 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+
+    Sie werden auch darüber informiert, dass während der Ressourcenerstellung eine verwaltete Dienstidentität (Managed Service Identity, MSI) aktiviert wird, mit der Sie sich bei Clouddiensten authentifizieren können. Diese Identität bleibt so lange bestehen, wie die Ressource vorhanden ist.
 
 11. Klicken Sie auf **Erstellen**.
 
-Die Erstellung der Ressource dauert einige Minuten. Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
+Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine MSI erstellt, mit der das Azure Stack Edge-Gerät mit dem Ressourcenanbieter in Azure kommunizieren kann.
+
+Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
 
 ![Navigieren zur Azure Stack Edge Pro-Ressource](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
@@ -174,9 +178,16 @@ Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivier
 
     ![Auswählen von „Geräteeinrichtung“](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. Wählen Sie auf der Kachel **Aktivieren** die Option **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.
+2. Geben Sie auf der Kachel **Aktivieren** einen Namen für Azure Key Vault an, oder übernehmen Sie den Standardnamen. Der Schlüsseltresorname kann aus 3 bis 24 Zeichen bestehen. 
+
+    Für jede mit Ihrem Gerät aktivierte Azure Stack Edge-Ressource wird ein Schlüsseltresor erstellt. Im Schlüsseltresor können Sie Geheimnisse speichern und darauf zugreifen. So wird beispielsweise der Channel Integrity Key (CIK) für den Dienst im Schlüsseltresor gespeichert. 
+
+    Nachdem Sie einen Schlüsseltresornamen angegeben haben, wählen Sie **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. 
 
     ![Abrufen des Aktivierungsschlüssels](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+
+    Warten Sie einige Minuten, während Schlüsseltresor und Aktivierungsschlüssel erstellt werden. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.
+
 
 > [!IMPORTANT]
 > - Der Aktivierungsschlüssel läuft drei Tage nach seiner Generierung ab.
