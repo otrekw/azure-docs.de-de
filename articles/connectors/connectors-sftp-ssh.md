@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286613"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823615"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -253,6 +253,22 @@ Wenn Sie das Verschieden der Datei nicht vermeiden oder verzögern können, kön
 
 1. Wenn Sie diese Dateimetadaten zu einem späteren Zeitpunkt benötigen, können Sie die Aktion **Dateimetadaten abrufen** verwenden.
 
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>Fehler 504: „Ein Verbindungsversuch ist fehlgeschlagen, da die Gegenstelle nach einer bestimmten Zeitspanne nicht ordnungsgemäß reagiert hat, oder die hergestellte Verbindung fehlerhaft war, da der verbundene Host nicht reagiert hat“ oder „Die Anforderung an den SFTP-Server dauerte länger als '00:00:30' Sekunden“.
+
+Dieser Fehler kann auftreten, wenn die Logik-App nicht in der Lage ist, erfolgreich eine Verbindung herzustellen. Es kann eine Reihe verschiedener Ursachen geben, und wir empfehlen, das Problem anhand der folgenden Aspekte zu beheben. 
+
+1. Das Verbindungstimeout beträgt 20 Sekunden. Stellen Sie sicher, dass der SFTP-Server eine gute Leistung aufweist und zwischengeschaltete Geräte wie eine Firewall keinen großen Mehraufwand verursachen. 
+
+2. Wenn eine Firewall beteiligt ist, stellen Sie sicher, dass die **verwalteten Connector-IP**-Adressen der genehmigten Liste hinzugefügt werden. Diese IP-Adressen für Ihre Logik-App-Region finden Sie [**hier**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+
+3. Wenn es sich um ein vorübergehendes Problem handelt, testen Sie die Wiederholungseinstellung, um festzustellen, ob eine höhere Wiederholungsanzahl als die Standardeinstellung 4 möglicherweise hilfreich ist.
+
+4. Überprüfen Sie, ob der SFTP-Server die Anzahl der Verbindungen von jeder IP-Adresse begrenzt. Wenn dies der Fall ist, müssen Sie möglicherweise die Anzahl der parallelen Logik-App-Instanzen begrenzen. 
+
+5. Erhöhen Sie die [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval)-Eigenschaft in der SSH-Konfiguration auf dem SFTP-Server auf etwa eine Stunde, um die Kosten für die Verbindungsherstellung zu verringern.
+
+6. Sie können das SFTP-Serverprotokoll überprüfen, um festzustellen, ob die Anforderung von der Logik-App den SFTP-Server erreicht hat. Sie können auch eine Netzwerkablaufverfolgung für Ihre Firewall und ihren SFTP-Server durchführen, um das Konnektivitätsproblem weiter zu untersuchen.
+
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/sftpwithssh/).
@@ -263,4 +279,3 @@ Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Gre
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
-

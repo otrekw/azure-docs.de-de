@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017701"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395973"
 ---
 # <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
-Eine mehrinstanzenfähige Anwendung ist eine gemeinsam verwendete Ressource, mit der Benutzer in getrennten Mandanten die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis der Anwendung von verschiedenen Mandanten individualisieren möchten, aber davon abgesehen gleiche grundlegende Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Office 365, Outlook.com und visualstudio.com.
+Eine mehrinstanzenfähige Anwendung ist eine gemeinsam verwendete Ressource, mit der Benutzer in getrennten Mandanten die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis der Anwendung von verschiedenen Mandanten individualisieren möchten, aber davon abgesehen gleiche grundlegende Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Microsoft 365, Outlook.com und visualstudio.com.
 
 Aus Sicht des Anbieters der Anwendung liegen die Vorteile vor allem in der Effizienz bei Betrieb und Kosten. Eine Version Ihrer Anwendung kann die Anforderungen vieler Mandanten/Kunden erfüllen. Dies ermöglicht eine Konsolidierung von Systemadministrationsaufgaben wie Überwachung, Leistungssteigerung, Softwarewartung und Datensicherung.
 
