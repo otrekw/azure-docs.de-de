@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405070"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776322"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -257,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Die Ausführung dieses Befehls kann eine Minute in Anspruch nehmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-> [!div class="nextstepaction"]
-> [Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [Schnellstart: Verwenden von Java zum Herstellen einer Verbindung mit Azure Database for MySQL und zum Abfragen von Daten](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Verwenden von Java zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver und zum Abfragen von Daten](../postgresql/connect-java.md)
+
+> [!div class="nextstepaction"]
+> [Richten Sie CI/CD ein.](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [Preisinformationen](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [Aggregieren von Protokollen und Metriken](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [Hochskalieren](manage-scale-up.md)
 
 > [!div class="nextstepaction"]
 > [Ressourcen: Azure für Java-Entwickler](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Java-App](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [CI/CD mit Jenkins](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [Zuordnen einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [Weitere Informationen zu Maven-Plug-Ins für Azure](https://github.com/microsoft/azure-maven-plugins)
