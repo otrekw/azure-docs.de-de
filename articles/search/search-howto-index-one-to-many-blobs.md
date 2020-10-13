@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 6606391d7fd5c2419714531e1220d97fb29aea4d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529589"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533960"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indizieren von Blobs zum Generieren mehrerer Suchdokumente
 Standardmäßig behandelt ein Blobindexer die Inhalte eines Blobs als ein Suchdokument. Einige **parsingMode**-Werte unterstützen Szenarios, in denen sich aus einem einzigen Blob mehrere Suchdokumente ergeben können. Es gibt folgende unterschiedliche Typen von **parsingMode**, die es einem Indexer ermöglichen, mehr als ein Suchdokument aus einem Blob zu extrahieren:
@@ -64,7 +64,7 @@ Wenn Sie einen Indexer erstellen und **parsingMode** auf `jsonLines` festlegen, 
     }
 ```
 
-Mit diesem Setup enthält der Index der kognitiven Azure-Suche folgende Informationen (Base64-codierte ID aus Gründen der Übersichtlichkeit gekürzt).
+Mit diesem Setup enthält der Azure Cognitive Search-Index folgende Informationen (Base64-codierte ID aus Gründen der Übersichtlichkeit gekürzt).
 
 | id | Temperatur | pressure | timestamp |
 |----|-------------|----------|-----------|
@@ -108,6 +108,9 @@ Wenn Sie eine explizite Feldzuordnung einrichten möchten, sollten Sie sicherste
 
 > [!NOTE]
 > Der von `AzureSearch_DocumentKey` verwendete Ansatz zur Sicherstellung der Eindeutigkeit jeder extrahierten Entität kann sich ändern, und Sie sollten sich deshalb für die Anforderungen Ihrer Anwendung nicht darauf verlassen.
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>Helfen Sie uns bei der Verbesserung der kognitiven Azure-Suche
+Wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) dafür ab. Wenn Sie Hilfe bei der Verwendung des vorhandenen Features benötigen, veröffentlichen Sie Ihre Frage in [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

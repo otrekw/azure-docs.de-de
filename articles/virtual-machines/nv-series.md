@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6dd912313176eecce1973849875234149700c5e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 62f27a07c868cc9cc7f37a7b26ab38127946e3c2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284777"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652872"
 ---
 # <a name="nv-series"></a>NV-Serie
 
@@ -20,13 +20,12 @@ Die virtuellen Computer der NV-Serie nutzen NVIDIA-GPUs vom Typ [Tesla M60](http
 
 Alle GPUs in NV-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihnen die erforderliche Flexibilität für die Verwendung einer NV-Instanz als virtuelle Arbeitsstation für einen einzelnen Benutzer. Außerdem besteht für ein Szenario mit einer virtuellen Anwendung die Möglichkeit, dass 25 Benutzer gleichzeitig eine Verbindung mit dem virtuellen Computer herstellen.
 
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Nicht unterstützt
-
-Updates mit Speicherbeibehaltung: Nicht unterstützt
+[Storage Premium:](premium-storage-performance.md) Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |
 |---|---|---|---|---|---|---|---|---|---|

@@ -1,14 +1,14 @@
 ---
 title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokumentation
-description: In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können.
+description: Lernen Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme kennen, die bei der Verwendung von Azure Service Bus auftreten können.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 39d2bf14f88e8efabcddda98268a187009cf029e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261123"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 

@@ -6,20 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330399"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät
 
 In diesem Artikel erfahren Sie, wie Sie eine zustandsbehaftete Einzelinstanzanwendung in Kubernetes mit einem PersistentVolume (PV) und einer Bereitstellung bereitstellen. Die Bereitstellung wendet `kubectl`-Befehle auf einen vorhandenen Kubernetes-Cluster an und stellt die Anwendung MySQL bereit. 
 
 Dieses Verfahren ist für Benutzer vorgesehen, die den Artikel [Kubernetes-Speicher auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-storage.md) gelesen haben und mit den [Kubernetes-Speicherkonzepten](https://kubernetes.io/docs/concepts/storage/) vertraut sind.
+
+Azure Stack Edge Pro unterstützt auch das Ausführen von Azure SQL Edge-Containern, die auf ähnliche Weise bereitgestellt werden, wie hier für MySQL beschrieben. Weitere Informationen finden Sie unter [Azure SQL Edge](../azure-sql-edge/overview.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -47,7 +49,7 @@ Stellen Sie vor der Bereitstellung der zustandsbehafteten Anwendung sicher, dass
     
     - Stellen Sie sicher, dass die `kubectl`-Clientversion um nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge Pro-Gerät ausgeführt wird. 
         - Verwenden Sie `kubectl version`, um die kubectl-Version zu überprüfen, die auf dem Client ausgeführt wird. Notieren Sie sich den gesamten Versionsnamen.
-        - Navigieren Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
+        - Wechseln Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
         - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind. <!-- insert link-->. 
 
 
