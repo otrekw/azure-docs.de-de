@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259372"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Experian mit Azure Active Directory B2C
 
@@ -77,7 +77,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ### <a name="part-1---deploy-the-api"></a>Teil 1: Bereitstellen der API
 
-Stellen Sie den angegebenen API-Code für einen Azure-Dienst bereit. Der Code kann mit [dieser Anleitung](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019) aus Visual Studio veröffentlicht werden.
+Stellen Sie den angegebenen [API-Code](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) für einen Azure-Dienst bereit. Der Code kann mit [dieser Anleitung](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019) aus Visual Studio veröffentlicht werden.
 
 >[!NOTE]
 >Sie benötigen die URL des bereitgestellten Diensts, um Azure AD mit den erforderlichen Einstellungen zu konfigurieren.
@@ -117,7 +117,7 @@ Richten Sie sich nach diesem [Dokument](https://docs.microsoft.com/azure/active-
 
 ### <a name="part-5---replace-the-configuration-values"></a>Teil 5: Ersetzen der Konfigurationswerte
 
-Suchen Sie in den bereitgestellten benutzerdefinierten Richtlinien die folgenden Platzhalter, und ersetzen Sie sie durch die entsprechenden Werte aus Ihrer Instanz.
+Suchen Sie in den bereitgestellten [benutzerdefinierten Richtlinien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy) die folgenden Platzhalter, und ersetzen Sie diese durch die entsprechenden Werte aus Ihrer Instanz.
 
 |                      Platzhalter                       |                                   Ersetzen durch Wert                                 |                   Beispiel                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

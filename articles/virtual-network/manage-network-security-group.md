@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 42efc2bee88f073f2a628b1d2041afcc310cb871
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281258"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822981"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
@@ -176,7 +176,7 @@ Die Anzahl der Regeln pro Netzwerksicherheitsgruppe, die Sie für Azure-Standort
     | **Aktion** | **Zulassen** oder **Verweigern** | Diese Einstellung gibt an, ob diese Regel den Zugriff für die bereitgestellte Quell- und Zielkonfiguration zulässt oder verweigert. |
     | **Priority** | Ein Wert von 100 bis 4.096, der für alle Sicherheitsregeln innerhalb der Netzwerksicherheitsgruppe eindeutig ist | Azure verarbeitet Sicherheitsregeln in der Reihenfolge ihrer Priorität. Je niedriger die Zahl, desto höher die Priorität. Sie sollten beim Erstellen von Regeln eine Lücke zwischen Prioritätswerten lassen, z. B. 100, 200 und 300. Wenn Sie Lücken lassen, ist es einfacher, in Zukunft Regeln so hinzuzufügen, dass Sie ihnen eine höhere oder niedrigere Priorität als bestehenden Regeln geben können. |
     | **Name** | Ein eindeutiger Name für die Regel in der Netzwerksicherheitsgruppe | Der Name kann bis zu 80 Zeichen umfassen. Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Der Name darf nur Buchstaben, Ziffern, Unterstriche, Punkte und Bindestriche enthalten. |
-    | **Beschreibung** | Eine Textbeschreibung | Sie können optional eine Textbeschreibung für die Sicherheitsregel angeben. |
+    | **Beschreibung** | Eine Textbeschreibung | Sie können optional eine Textbeschreibung für die Sicherheitsregel angeben. Die Beschreibung darf nicht mehr als 140 Zeichen enthalten. |
 
 #### <a name="commands"></a>Befehle
 

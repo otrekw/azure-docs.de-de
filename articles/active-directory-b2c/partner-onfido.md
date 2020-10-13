@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259219"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Onfido mit Azure Active Directory B2C
 
@@ -94,7 +94,7 @@ Anwendungseinstellungen können [per App Service in Azure konfiguriert werden](h
 
 1. Richten Sie einen [Blob Storage-Container in Ihrem Speicherkonto](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) ein.
 
-2. Speichern Sie die Dateien für die Benutzeroberfläche aus dem entsprechenden Ordner in Ihrem Blobcontainer.
+2. Speichern Sie die Dateien für die Benutzeroberfläche aus dem [Benutzeroberflächenordner](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) in Ihrem Blobcontainer.
 
 3. Gewähren Sie CORS Zugriff auf den erstellten Speichercontainer, indem Sie diese Anweisungen befolgen:
 
@@ -124,7 +124,7 @@ Anwendungseinstellungen können [per App Service in Azure konfiguriert werden](h
 
 #### <a name="replace-the-configuration-values"></a>Ersetzen der Konfigurationswerte
 
-Suchen Sie in den bereitgestellten benutzerdefinierten Richtlinien die folgenden Platzhalter, und ersetzen Sie sie durch die entsprechenden Werte aus Ihrer Instanz.
+Suchen Sie in den bereitgestellten [benutzerdefinierten Richtlinien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies) die folgenden Platzhalter, und ersetzen Sie diese durch die entsprechenden Werte aus Ihrer Instanz.
 
 | Platzhalter | Ersetzen durch Wert | Beispiel  |
 |:---------------|:----------------|:-------------------|

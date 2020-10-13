@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543757"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443751"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Importieren oder Exportieren einer Azure SQL-Datenbank, ohne Azure-Diensten Zugriff auf den Server zu erlauben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Remotedesktopverbindung zu
 
 1. Navigieren Sie zur VM-Ressource, nachdem die Bereitstellung abgeschlossen wurde.
 
-   ![VM](./media/database-import-export-azure-services-off/vm.png)  
+   ![Der Screenshot zeigt eine Seite „Übersicht über virtuelle Computer“ mit der Schaltfläche „Verbinden“.](./media/database-import-export-azure-services-off/vm.png)  
 
 2. Wählen Sie **Verbinden**.
 

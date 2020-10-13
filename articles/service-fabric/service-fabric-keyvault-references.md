@@ -3,16 +3,22 @@ title: 'Azure Service Fabric: Verwenden der KeyVault-Verweise von Service Fabric
 description: In diesem Artikel wird erläutert, wie Sie die KeyVaultReference-Unterstützung von Service Fabric für Anwendungsgeheimnisse verwenden.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261140"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-Unterstützung für Service Fabric-Anwendungen (Vorschauversion)
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-Unterstützung für Service Fabric-Anwendungen (Vorschauversion)
 
 Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die sichere Speicherung der von Ihrer Anwendung benötigten Geheimnisse. Sie können die Anmeldeinformationen des Containerrepositorys z. B. im Schlüsseltresor speichern und auf sie im Anwendungsmanifest verweisen. „KeyVaultReference“ von Service Fabric verwendet die verwaltete Service Fabric-Identität und gestaltet es einfach, auf Geheimnisse von Schlüsseltresoren zu verweisen. Im weiteren Verlauf dieses Artikels wird beschrieben, wie Sie „KeyVaultReference“ von Service Fabric verwenden können, und es werden einige typische Anwendungen erläutert.
+
+> [!IMPORTANT]
+> Die Verwendung dieses Vorschaufeatures wird in Produktionsumgebungen nicht empfohlen.
+
+> [!NOTE]
+> Die Vorschaufunktion KeyVaultReference unterstützt nur Geheimnisse [mit Versionsangabe](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning). Versionslose Geheimnisse werden nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
