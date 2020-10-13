@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ccc9725ffe5304942b740d460a67129f9c1c5d8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339143"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743844"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Verwalten von Bandbreitenzeitplänen auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal  
 
@@ -46,7 +46,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer hinzuzufügen:
    4. Aktivieren Sie die Option **Unbegrenzt**, wenn Sie Uploads und Downloads nicht drosseln möchten. 
    5. Klicken Sie auf **Hinzufügen**.
 
-      ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Klicken auf „Benutzer 2 hinzufügen“](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Ein Zeitplan mit den angegebenen Parametern wird erstellt. Dieser Zeitplan wird dann im Portal in der Liste mit den Bandbreitenzeitplänen angezeigt.
 
@@ -61,11 +61,11 @@ Führen Sie die folgenden Schritte aus, um einen Bandbreitenzeitplan zu bearbeit
 
 3. Nehmen Sie die gewünschten Änderungen vor, und speichern Sie sie.
 
-    ![Ändern eines Benutzers](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![Ändern von Benutzer 2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. Nach der Änderung des Zeitplans wird die Liste mit den Zeitplänen aktualisiert, um den geänderten Zeitplan widerzuspiegeln.
 
-    ![Ändern eines Benutzers](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![Ändern von Benutzer 3](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>Löschen eines Zeitplans

@@ -3,12 +3,12 @@ title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469778"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533978"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -16,9 +16,9 @@ Ihre Ressourcen, Ressourcengruppen, Abonnements, Verwaltungsgruppen und Mandante
 
 Verwaltungsgruppen enthalten jetzt Hierarchieeinstellungen, über die der Mandantenadministrator diese Verhaltensweisen steuern kann. In diesem Artikel werden die einzelnen verfügbaren Hierarchieeinstellungen und deren Festlegung erläutert.
 
-## <a name="rbac-permissions-for-hierarchy-settings"></a>RBAC-Berechtigungen für Hierarchieeinstellungen
+## <a name="azure-rbac-permissions-for-hierarchy-settings"></a>Azure RBAC-Berechtigungen für Hierarchieeinstellungen
 
-Zum Konfigurieren der Hierarchieeinstellungen sind die folgenden zwei RBAC-Vorgänge in der Stammverwaltungsgruppe erforderlich:
+Zum Konfigurieren der Hierarchieeinstellungen sind die folgenden zwei Ressourcenanbietervorgänge in der Stammverwaltungsgruppe erforderlich:
 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
@@ -27,7 +27,7 @@ Diese Vorgänge ermöglichen einem Benutzer nur, die Hierarchieeinstellungen zu 
 
 ## <a name="setting---default-management-group"></a>Einstellung für Standardverwaltungsgruppe
 
-Standardmäßig wird ein neues Abonnement, das in einem Mandanten hinzugefügt wird, als Mitglied der Stammverwaltungsgruppe hinzugefügt. Wenn der Stammverwaltungsgruppe Richtlinienzuweisungen, die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und andere Governancekonstrukte zugewiesen werden, wirken sie sich sofort auf die neuen Abonnements aus. Aus diesem Grund wenden viele Organisationen diese Konstrukte nicht in der Stammverwaltungsgruppe an, obwohl dies der gewünschte Ort für die Zuweisung ist. In anderen Fällen wird eine restriktivere Gruppe von Steuerungsmöglichkeiten für neue Abonnements gewünscht, soll jedoch nicht allen Abonnements zugewiesen werden. Diese Einstellung unterstützt beide Anwendungsfälle.
+Standardmäßig wird ein neues Abonnement, das in einem Mandanten hinzugefügt wird, als Mitglied der Stammverwaltungsgruppe hinzugefügt. Wenn der Stammverwaltungsgruppe Richtlinienzuweisungen, die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) und andere Governancekonstrukte zugewiesen werden, wirken sie sich sofort auf die neuen Abonnements aus. Aus diesem Grund wenden viele Organisationen diese Konstrukte nicht in der Stammverwaltungsgruppe an, obwohl dies der gewünschte Ort für die Zuweisung ist. In anderen Fällen wird eine restriktivere Gruppe von Steuerungsmöglichkeiten für neue Abonnements gewünscht, soll jedoch nicht allen Abonnements zugewiesen werden. Diese Einstellung unterstützt beide Anwendungsfälle.
 
 Dadurch dass die Standardverwaltungsgruppe für neue Abonnements definiert werden kann, können organisationsweite Governancekonstrukte in der Stammverwaltungsgruppe angewandt werden, und eine separate Verwaltungsgruppe kann mit Richtlinienzuweisungen oder Azure-Rollenzuweisungen definiert werden, die sich für ein neues Abonnement besser eignen.
 

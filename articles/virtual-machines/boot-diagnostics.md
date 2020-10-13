@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287082"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -38,6 +38,7 @@ Die Option der Startdiagnose befindet sich im Azure-Portal auf dem Blatt Ihrer V
 - Die Startdiagnose unterstützt keine Storage Premium-Konten. Wenn ein solches Konto für die Startdiagnose verwendet wird, erhalten Benutzer beim Starten der VM einen `StorageAccountTypeNotSupported`-Fehler. 
 - Verwaltete Speicherkonten werden ab Resource Manager-API-Version 2020-06-01 unterstützt.
 - Die serielle Konsole von Azure ist zurzeit nicht mit einem verwalteten Speicherkonto für die Startdiagnose kompatibel. Weitere Informationen zur [seriellen Azure-Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview).
+- Startdiagnose mit einem verwalteten Speicherkonto kann derzeit nur über das Azure-Portal angewendet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

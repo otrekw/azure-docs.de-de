@@ -1,18 +1,21 @@
 ---
 title: Übersicht über den Connected Machine-Agent für Windows
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 09/02/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908174"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822186"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
 Mit dem Connected Machine-Agent für Azure Arc-fähige Server können Sie Ihre Windows- und Linux-Computer verwalten, die außerhalb von Azure in Ihrem Unternehmensnetzwerk oder bei einem anderen Cloudanbieter gehostet werden. Dieser Artikel enthält eine ausführliche Übersicht über den Agent sowie Informationen zu System- und Netzwerkanforderungen und zu den verschiedenen Bereitstellungsmethoden.
+
+>[!NOTE]
+>Ab dem allgemeinen Release von Azure Arc-fähigen Servern im September 2020 werden alle Vorabversionen des Azure Connected Machine-Agents (Agents mit niedrigeren Versionen als 1.0) am **2. Februar 2021** **als veraltet markiert**.  Dieser Zeitrahmen ermöglicht Ihnen ein Upgrade auf Version 1.0 oder höher, bevor die Agents mit Vorabversionen nicht mehr in der Lage sind, mit dem Azure Arc-fähigen Serverdienst zu kommunizieren.
 
 ## <a name="agent-component-details"></a>Agent-Komponentendetails
 
@@ -44,7 +47,7 @@ Der Azure Connected Machine-Agent für Windows und Linux kann abhängig von Ih
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und Linux-Versionen unterstützt: 
+Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und Linux-Versionen unterstützt:
 
 - Windows Server 2012 R2 und höher (einschließlich Windows Server Core)
 - Ubuntu 16.04 und 18.04 LTS (x64)
@@ -82,6 +85,7 @@ Diensttags:
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureArcInfrastructure
 
 URLs:
 
@@ -130,6 +134,9 @@ Sie können die Ressourcenanbieter auch über das Azure-Portal registrieren, ind
 ## <a name="installation-and-configuration"></a>Installation und Konfiguration
 
 Für Computer in Ihrer Hybridumgebung kann abhängig von Ihren Anforderungen auf verschiedene Weise eine Direktverbindung mit Azure hergestellt werden. Anhand der folgenden Tabelle können Sie ermitteln, welche der Methoden für Ihre Organisation am besten geeignet ist:
+
+> [!IMPORTANT]
+> Der Connected Machine-Agent kann nicht auf einem virtuellen Azure Windows-Computer installiert werden. Wenn Sie dies versuchen, erkennt die Installation diesen Versuch und führt ein Rollback aus.
 
 | Methode | BESCHREIBUNG |
 |--------|-------------|
@@ -228,7 +235,7 @@ Nach der Installation des Connected Machine-Agents für Linux werden die folgend
     |/opt/logs/dsc.log |Dieses Protokoll erfasst Informationen zur DSC-Dienstaktivität,<br> insbesondere die Konnektivität zwischen dem himds-Dienst und Azure Policy.|
     |/opt/logs/dsc.telemetry.txt |Dieses Protokoll erfasst Informationen über die DSC-Diensttelemetrie und die ausführliche Protokollierung.|
     |/var/lib/GuestConfig/ext_mgr_logs |Dieses Protokoll erfasst Informationen zur Erweiterungs-Agent-Komponente.|
-    |/var/log/GuestConfig/extension_logs|Dieses Protokoll erfasst Informationen aus der installierten Erweiterung.|
+    |/var/lib/GuestConfig/extension_logs|Dieses Protokoll erfasst Informationen aus der installierten Erweiterung.|
 
 * Die folgenden Umgebungsvariablen werden während der Installation des Agents erstellt. Die folgenden Variablen werden in `/lib/systemd/system.conf.d/azcmagent.conf` festgelegt.
 
@@ -244,4 +251,6 @@ Nach der Installation des Connected Machine-Agents für Linux werden die folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Artikel [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md) erfahren Sie, wie Sie Azure Arc-fähige Server verwenden können.
+* Im Artikel [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md) erfahren Sie, wie Sie Azure Arc-fähige Server verwenden können.
+
+* Informationen zur Problembehandlung finden Sie im [Leitfaden zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).

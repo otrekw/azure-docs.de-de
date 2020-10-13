@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4279da10de92bc8bf9cd564eaae02db2fef76a64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307805"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit der Azure CLI
 
@@ -33,17 +33,17 @@ Dieser Artikel befasst sich mit der Erstellung von MySQL-Servern mit **öffentli
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte öffnen, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie die Blöcke anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um sie auszuführen.
 
-Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diesen Schnellstart mindestens Version 2.0 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diesen Schnellstart mindestens Version 2.0 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen sich mit dem Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mit dem Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **ID**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **ID**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,7 +53,7 @@ az account set --subscription <subscription id>
 
 Sie können den `az mysql flexible-server --public access`-Befehl zum Erstellen des flexiblen Servers mit *öffentlichem Zugriff (zugelassene IP-Adressen)* verwenden und die Firewallregeln während der Erstellung konfigurieren. Sie können die Option **--public-access** verwenden, um die zulässigen IP-Adressen bereitzustellen, die zum Herstellen einer Verbindung mit dem Server verwendet werden können. Sie können einen einzelnen IP-Adressbereich angeben, der in der Liste zulässiger IP-Adressen enthalten sein soll. Der IP-Adressbereich muss durch Bindestriche getrennt sein und darf keine Leerzeichen enthalten. Wie im folgenden Beispiel gezeigt gibt es verschiedene Optionen zum Erstellen eines flexiblen Servers mithilfe der CLI.
 
-In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollständige Liste der konfigurierbaren CLI-Parameter. In den folgenden Befehlen können Sie beispielsweise optional die Ressourcengruppe festlegen.
+Die vollständige Liste von konfigurierbaren CLI-Parametern finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI. In den folgenden Befehlen können Sie beispielsweise optional die Ressourcengruppe festlegen.
 
 - Erstellen eines flexiblen Servers mit öffentlichem Zugriff und Hinzufügen von Client-IP-Adressen für den Zugriff auf den Server
     ```azurecli-interactive
@@ -95,7 +95,7 @@ Befehle:
 - **show**: Mit diesem Befehl werden Details zu einer Firewallregel für den flexiblen Server angezeigt.
 - **delete**: Mit diesem Befehl wird eine Firewallregel für den flexiblen Server gelöscht.
 
-In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollständige Liste der konfigurierbaren CLI-Parameter. In den folgenden Befehlen können Sie beispielsweise optional die Ressourcengruppe festlegen.
+Die vollständige Liste von konfigurierbaren CLI-Parametern finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI. In den folgenden Befehlen können Sie beispielsweise optional die Ressourcengruppe festlegen.
 
 ### <a name="create-a-firewall-rule"></a>Erstellen einer Firewallregel
 Verwenden Sie den Befehl `az mysql flexible-server firewall-rule create`, um die neue Firewallregel für den Server zu erstellen.

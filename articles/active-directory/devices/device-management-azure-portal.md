@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278855"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
 Azure AD bietet Ihnen einen zentralen Ort zum Verwalten von Geräteidentitäten.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu **Azure Active Directory** > **Geräte**.
-
-[![Ansicht „Alle Geräte“ im Azure-Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 Auf der Seite **Alle Geräte** können Sie folgende Aktivitäten ausführen:
 
@@ -38,6 +33,13 @@ Auf der Seite **Alle Geräte** können Sie folgende Aktivitäten ausführen:
 - Konfigurieren Sie Ihre Geräteidentitätseinstellungen.
 - Aktivieren oder deaktivieren Sie Enterprise State Roaming.
 - Überprüfen gerätebezogener Überwachungsprotokolle
+
+[![Ansicht „Alle Geräte“ im Azure-Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+Sie können mit folgenden Schritten auf das Geräteportal zugreifen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Azure Active Directory** > **Geräte**.
 
 ## <a name="manage-devices"></a>Verwalten von Geräten
 
@@ -146,6 +148,13 @@ Sie haben jetzt die Möglichkeit, mit **Filter hinzufügen** der Ansicht **Alle 
 ## <a name="configure-device-settings"></a>Konfigurieren der Geräteeinstellungen
 
 Damit Geräteidentitäten im Azure AD-Portal verwaltet werden können, müssen diese in Azure AD [registriert oder eingebunden](overview.md) werden. Als Administrator können Sie den Prozess der Registrierung und Einbindung von Geräten steuern, indem Sie die Geräteeinstellungen konfigurieren.
+
+Sie müssen einer der folgenden Rollen zugewiesen sein, um die Geräteeinstellungen im Azure-Portal anzeigen oder verwalten zu können:
+
+- Globaler Administrator
+- Cloudgeräteadministrator
+- Globaler Leser
+- Verzeichnisleseberechtigter
 
 ![Geräteeinstellungen in Verbindung mit Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 

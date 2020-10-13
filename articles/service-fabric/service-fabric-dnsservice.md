@@ -4,12 +4,12 @@ description: Verwenden Sie den DNS-Dienst von Azure Service Fabric zum Ermitteln
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268042"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-Dienst in Azure Service Fabric
 Der DNS-Dienst ist ein optionaler Systemdienst, den Sie in Ihrem Cluster aktivieren können, um andere Dienste mithilfe des DNS-Protokolls zu ermitteln. 
@@ -18,7 +18,7 @@ Viele Dienste, insbesondere Containerdienste, können über eine bereits vorhand
 
 Der DNS-Dienst ordnet DNS-Namen den Dienstnamen zu, die wiederum vom Naming Service aufgelöst werden, um den Dienstendpunkt zurückzugeben. Der DNS-Name für den Dienst wird zum Zeitpunkt der Erstellung bereitgestellt. Das folgende Diagramm zeigt, wie der DNS-Dienst für zustandslose Dienste funktioniert.
 
-![Dienstendpunkte](./media/service-fabric-dnsservice/stateless-dns.png)
+![Abbildung, die zeigt, wie DNS-Namen durch den DNS-Dienst für zustandslose Dienste Dienstnamen zugeordnet werden.](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Ab Service Fabric-Version 6.3 wurde das Service Fabric-DNS-Protokoll erweitert und umfasst ein Schema für die Adressierung partitionierter zustandsbehafteter Dienste. Mit diesen Erweiterungen können Sie die IP-Adressen bestimmter Partitionen mithilfe einer Kombination aus dem DNS-Namen des zustandsbehafteten Diensts und dem Partitionsnamen auflösen. Alle drei Partitionsschemas werden unterstützt:
 
@@ -28,7 +28,7 @@ Ab Service Fabric-Version 6.3 wurde das Service Fabric-DNS-Protokoll erweitert u
 
 Das folgende Diagramm zeigt, wie der DNS-Dienst für partitionierte zustandsbehaftete Dienste funktioniert.
 
-![Endpunkte für zustandsbehafteten Dienst](./media/service-fabric-dnsservice/stateful-dns.png)
+![Abbildung, die zeigt, wie DNS-Namen durch den DNS-Dienst für partitionierte zustandslose Dienste Dienstnamen zugeordnet werden.](./media/service-fabric-dnsservice/stateful-dns.png)
 
 Dynamische Ports werden vom DNS-Dienst nicht unterstützt. Verwenden Sie zum Auflösen der Dienste, die über dynamische Ports verfügbar gemacht werden, den [Reverseproxydienst](./service-fabric-reverseproxy.md).
 

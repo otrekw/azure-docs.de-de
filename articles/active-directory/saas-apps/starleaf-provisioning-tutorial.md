@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 68484d2047e09dc82d44e15e86b13c4c54c49b03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533792"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285964"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von StarLeaf für die automatische Benutzerbereitstellung
 
@@ -52,15 +52,15 @@ Bevor Sie StarLeaf für die automatische Benutzerbereitstellung mit Azure AD kon
 
 1. Melden Sie sich bei Ihrer [StarLeaf-Verwaltungskonsole](https://portal.starleaf.com/#page=login) an. Navigieren Sie zu **Integrations** > **Add integration** (Integrationen > Integration hinzufügen).
 
-    ![StarLeaf: Hinzufügen von SCIM](media/starleaf-provisioning-tutorial/image00.png)
+    ![Screenshot der StarLeaf-Administratorkonsole mit den aufgerufenen Optionen „Integrations“ und „Add integration“](media/starleaf-provisioning-tutorial/image00.png)
 
 2. Wählen Sie für **Type** (Typ) Microsoft Azure Active Directory aus. Geben Sie einen geeigneten Namen in das Feld **Name** ein. Klicken Sie auf **Anwenden**.
 
-    ![StarLeaf: Hinzufügen von SCIM](media/starleaf-provisioning-tutorial/image01.png)
+    ![Screenshot des Dialogfelds „Add integration“ mit den aufgerufenen Textfeldern für Typ und Name](media/starleaf-provisioning-tutorial/image01.png)
 
 3.  Daraufhin werden die Werte für **SCIM base URL** (SCIM-Basis-URL) und **Access token** (Zugriffstoken) angezeigt. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer StarLeaf-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben. 
 
-    ![StarLeaf: Erstellen eines Tokens](media/starleaf-provisioning-tutorial/image02.png)
+    ![Screenshot des Dialogfelds „Edit integration“ mit den aufgerufenen Textfeldern für Typ, Name und SCIM-Basis-URL](media/starleaf-provisioning-tutorial/image02.png)
 
 ## <a name="add-starleaf-from-the-gallery"></a>Hinzufügen von StarLeaf aus dem Katalog
 
@@ -97,11 +97,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **SCIM Base URL** (SCIM-Basis-URL) und **Access Token** (Zugriffstoken) in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit StarLeaf herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr StarLeaf-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
@@ -115,11 +115,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit StarLeaf synchronisieren** aus.
 
-    ![StarLeaf: Erstellen eines Tokens](media/starleaf-provisioning-tutorial/usermapping.png)
+    ![Screenshot des Abschnitts „Zuordnungen“ mit der Option „Azure Active Directory-Benutzer mit StarLeaf synchronisieren“](media/starleaf-provisioning-tutorial/usermapping.png)
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit StarLeaf synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in StarLeaf für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![StarLeaf: Erstellen eines Tokens](media/starleaf-provisioning-tutorial/userattribute.png)
+    ![Screenshot des Abschnitts „Attributzuordnungen“ mit neun Zuordnungen](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

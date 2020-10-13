@@ -3,20 +3,20 @@ title: 'Konzepte: API Management'
 description: Hier erfahren Sie, wie auf virtuellen AVS-Computern (Azure VMware Solution) ausgeführte APIs durch API Management geschützt werden.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 62112bf3c0bf551232e09e5910e3eaae228dc202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85306748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262976"
 ---
-# <a name="api-management-to-publish-and-protect-apis-running-on-avs-based-vms"></a>API Management zum Veröffentlichen und Schützen von APIs, die auf virtuellen AVS-basierten Computern ausgeführt werden
+# <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>API Management zum Veröffentlichen und Schützen von APIs, die auf virtuellen Azure VMware Solution-basierten Computern ausgeführt werden
 
 Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) ermöglicht Entwicklern und DevOps-Teams eine sichere Veröffentlichung für interne oder externe Consumer.
 
-Die Komponente wird zwar in mehreren SKUs angeboten, die Azure Virtual Network-Integration für die Veröffentlichung von APIs, die in AVS-Workloads (Azure VMware Solution) ausgeführt werden, steht jedoch nur in der Developer- und in der Premium-SKU zur Verfügung. Diese beiden SKUs ermöglichen eine sichere Konnektivität zwischen dem API Management-Dienst und dem Back-End. Die Developer-SKU ist für Entwicklungs- und Testzwecke vorgesehen, die Premium-SKU für Produktionsbereitstellungen.
+Die Komponente wird zwar in mehreren SKUs angeboten, die Azure Virtual Network-Integration für die Veröffentlichung von APIs, die in Azure VMware Solution-Workloads ausgeführt werden, steht jedoch nur in der Developer- und in der Premium-SKU zur Verfügung. Diese beiden SKUs ermöglichen eine sichere Konnektivität zwischen dem API Management-Dienst und dem Back-End. Die Developer-SKU ist für Entwicklungs- und Testzwecke vorgesehen, die Premium-SKU für Produktionsbereitstellungen.
 
-Bei Back-End-Diensten, die auf virtuellen AVS-Computern ausgeführt werden, ist die Konfiguration in API Management standardmäßig die gleiche wie bei lokalen Back-End-Diensten. Von API Management wird sowohl bei internen als auch bei externen Bereitstellungen die virtuelle IP-Adresse (VIP) des Lastenausgleichs als Back-End-Endpunkt konfiguriert, wenn der Back-End-Server hinter einem AVS-seitigen NSX-Lastenausgleich platziert wird.
+Bei Back-End-Diensten, die auf virtuellen Azure VMware Solution-Computern ausgeführt werden, ist die Konfiguration in API Management standardmäßig die gleiche wie bei lokalen Back-End-Diensten. Von API Management wird sowohl bei internen als auch bei externen Bereitstellungen die virtuelle IP-Adresse (VIP) des Lastenausgleichs als Back-End-Endpunkt konfiguriert, wenn der Back-End-Server hinter einem Azure VMware Solution-seitigen NSX-Lastenausgleich platziert wird.
 
 ## <a name="external-deployment"></a>Externe Bereitstellung
 
@@ -24,7 +24,7 @@ Bei einer externen Bereitstellung werden APIs veröffentlicht, die von externen 
 
 Das Diagramm für die externe Bereitstellung zeigt den gesamten Prozess und die beteiligten Akteure (ganz oben). Zu den Akteuren zählen:
 
-- **Administrator(en):** Das Administrator- oder DevOps-Team, das AVS über das Azure-Portal sowie über Automatisierungsmechanismen wie PowerShell oder Azure DevOps verwaltet.
+- **Administrator(en):** Das Administrator- oder DevOps-Team, das Azure VMware Solution über das Azure-Portal sowie über Automatisierungsmechanismen wie PowerShell oder Azure DevOps verwaltet.
 
 - **Benutzer:**  Die Consumer der verfügbar gemachten APIs (sowohl Benutzer als auch Dienste).
 
@@ -32,7 +32,7 @@ Die Daten durchlaufen die API Management-Instanz, von der die in das virtuelle 
 
 API Management verfügt über eine öffentliche Azure-API, und es empfiehlt sich, den Dienst „Azure DDoS Protection“ zu aktivieren. 
 
-:::image type="content" source="media/api-management/external-deployment.png" alt-text="Externe Bereitstellung: API Management für AVS":::
+:::image type="content" source="media/api-management/external-deployment.png" alt-text="Externe Bereitstellung: API Management für Azure VMware Solution":::
 
 
 ## <a name="internal-deployment"></a>Interne Bereitstellung
@@ -49,11 +49,11 @@ Bei internen Bereitstellungen kann [Azure Application Gateway](../api-management
 
 Das Bereitstellungsdiagramm weiter unten zeigt Consumer, die intern oder extern sein können, wobei jeder Typ auf die gleichen oder auf unterschiedliche APIs zugreift.
 
-Bei einer internen Bereitstellung werden APIs für die gleiche API Management-Instanz verfügbar gemacht. Application Gateway wird vor API Management mit aktivierter WAF-Funktion (Web Application Firewall) und einer Reihe von HTTP-Listenern und Regeln zum Filtern des Datenverkehrs bereitgestellt, sodass nur eine Teilmenge der in AVS ausgeführten Back-End-Dienste verfügbar gemacht wird.
+Bei einer internen Bereitstellung werden APIs für die gleiche API Management-Instanz verfügbar gemacht. Application Gateway wird vor API Management mit aktivierter WAF-Funktion (Web Application Firewall) und einer Reihe von HTTP-Listenern und Regeln zum Filtern des Datenverkehrs bereitgestellt, sodass nur eine Teilmenge der in Azure VMware Solution ausgeführten Back-End-Dienste verfügbar gemacht wird.
 
 * Interner Datenverkehr wird per ExpressRoute-Gateway an Azure Firewall und anschließend an API Management weitergeleitet (wenn Datenverkehrsregeln eingerichtet wurden) – oder aber direkt an API Management.  
 
 * Externer Datenverkehr wird über Application Gateway unter Verwendung der externen Schutzebene für API Management in Azure eingebracht.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Interne Bereitstellung: API Management für AVS":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Externe Bereitstellung: API Management für Azure VMware Solution":::
