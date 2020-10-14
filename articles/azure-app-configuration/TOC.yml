@@ -17,12 +17,14 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
+        - name: Python
+          href: quickstart-python.md
         - name: ARM-Vorlage
           href: quickstart-resource-manager.md
           displayName: 'ARM, azure resource manager template'
@@ -76,7 +78,7 @@
       href: integrate-kubernetes-deployment-helm.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
 - name: Konzepte
   items:
@@ -122,7 +124,7 @@
   items:
     - name: Konfiguration
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'

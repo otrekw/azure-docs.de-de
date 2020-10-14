@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 07/20/2020
-  ms.openlocfilehash: 0748df5bdc961ff198d91d2584072cd07965995d
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: bdfb4f0a31f655cf71b6117e9c0ef73be18c8e45
+  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90971897"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92018728"
 landingContent:
 - title: Informationen zu Azure Lighthouse
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
     links:
     - text: Onboarding eines Kunden in Azure Lighthouse durchführen
       url: ./how-to/onboard-customer.md
-    - text: Verknüpfen Ihrer ID für vom Partner erworbenes Guthaben
+    - text: Verknüpfen Ihrer Partner-ID
       url: ./how-to/partner-earned-credit.md
   - linkListType: concept
     links:
@@ -95,7 +95,7 @@ landingContent:
     links:
     - text: Azure PowerShell
       url: /powershell/module/az.managedservices/
-    - text: Azure CLI
+    - text: Azure-Befehlszeilenschnittstelle
       url: /cli/azure/managedservices
     - text: REST
       url: /rest/api/managedservices/
