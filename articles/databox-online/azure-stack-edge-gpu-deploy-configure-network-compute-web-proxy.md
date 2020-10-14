@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894007"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952181"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU
 
@@ -78,7 +78,7 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
 
     Sobald das Gerätenetz konfiguriert ist, wird die Seite wie unten dargestellt aktualisiert.
 
-    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
+    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
      >[!NOTE]
@@ -149,7 +149,7 @@ Dies ist eine optionale Konfiguration.
 
     4. Klicken Sie auf **Anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
     
-   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
 2. Nachdem die Einstellungen angewendet wurden, wählen Sie **Weiter: Gerät** ein.
 
