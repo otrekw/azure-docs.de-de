@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0df3c6b1851767616111308ad0bacce227ba1a83
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532226"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948900"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -26,11 +26,11 @@ Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, u
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|----------|-------------|---------------|
-| [Verwaltete Dienstidentität](search-howto-managed-identities-data-sources.md) | Indexer, Sicherheit | Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, und verwenden Sie anschließend RBAC-Berechtigungen, um Zugriff auf Azure-Datenquellen zu gewähren. Bei diesem Ansatz sind keine Anmeldeinformationen in der Verbindungszeichenfolge erforderlich. <br><br>Eine weitere Möglichkeit zur Verwendung einer verwaltete Dienstidentität ist eine [Ausnahme für vertrauenswürdige Dienste](search-indexer-howto-access-trusted-service-exception.md), falls IP-Regeln nicht in Frage kommen. | Allgemein verfügbar. Greifen Sie auf diese Funktion zu, wenn Sie das Portal oder [Erstellen einer Datenquelle (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) mit „api-version=2020-06-30“ verwenden. |
-| [Ausgehende Anforderungen über eine Private Link-Instanz](search-indexer-howto-access-private.md) | Indexer, Sicherheit | Erstellen Sie eine gemeinsam genutzte Private Link-Ressource, die Indexer beim Zugriff auf Azure-Ressourcen verwenden können, die durch Azure Private Link geschützt sind. Weitere Informationen zu allen Möglichkeiten, mit denen Sie Indexerverbindungen schützen können, finden Sie unter [Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures](search-indexer-securing-resources.md). | Allgemein verfügbar. Greifen Sie auf diese Funktion zu, wenn Sie das Portal oder eine [gemeinsam genutzte Private Link-Ressource](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) mit „api-version=2020-08-01“ verwenden. |
-| [Verwaltungs-REST-API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Neue stabile REST-API, um die Erstellung gemeinsam genutzter Private Link-Ressourcen zu unterstützen. | Allgemein verfügbar. |
-| [Verwaltungs-REST-API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Fügt eine gemeinsam genutzte Private Link-Ressource für Azure Functions und Azure SQL für MySQL-Datenbanken hinzu. | Öffentliche Vorschau. |
-| [Management .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-Update für das Management SDK mit der REST-API-Zielversion 2020-08-01. | Allgemein verfügbar. |
+| [Verwaltete Dienstidentität](search-howto-managed-identities-data-sources.md) | Indexer, Sicherheit | Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, und verwenden Sie anschließend RBAC-Berechtigungen, um Zugriff auf Azure-Datenquellen zu gewähren. Bei diesem Ansatz sind keine Anmeldeinformationen in der Verbindungszeichenfolge erforderlich. <br><br>Eine weitere Möglichkeit zur Verwendung einer verwaltete Dienstidentität ist eine [Ausnahme für vertrauenswürdige Dienste](search-indexer-howto-access-trusted-service-exception.md), falls IP-Regeln nicht in Frage kommen. | Allgemein verfügbar. Greifen Sie auf diese Funktion zu, wenn Sie das Portal oder [Erstellen einer Datenquelle (Azure Cognitive Search-REST-API)](/rest/api/searchservice/create-data-source) mit „api-version=2020-06-30“ verwenden. |
+| [Ausgehende Anforderungen über eine Private Link-Instanz](search-indexer-howto-access-private.md) | Indexer, Sicherheit | Erstellen Sie eine gemeinsam genutzte Private Link-Ressource, die Indexer beim Zugriff auf Azure-Ressourcen verwenden können, die durch Azure Private Link geschützt sind. Weitere Informationen zu allen Möglichkeiten, mit denen Sie Indexerverbindungen schützen können, finden Sie unter [Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures](search-indexer-securing-resources.md). | Allgemein verfügbar. Greifen Sie auf diese Funktion zu, wenn Sie das Portal oder eine [gemeinsam genutzte Private Link-Ressource](/rest/api/searchmanagement/sharedprivatelinkresources) mit „api-version=2020-08-01“ verwenden. |
+| [Verwaltungs-REST-API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | Neue stabile REST-API, um die Erstellung gemeinsam genutzter Private Link-Ressourcen zu unterstützen. | Allgemein verfügbar. |
+| [Verwaltungs-REST-API (2020-08-01-Preview)](/rest/api/searchmanagement/management-api-versions) | REST | Fügt eine gemeinsam genutzte Private Link-Ressource für Azure Functions und Azure SQL für MySQL-Datenbanken hinzu. | Öffentliche Vorschau. |
+| [Management .NET SDK 4.0](/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-Update für das Management SDK mit der REST-API-Zielversion 2020-08-01. | Allgemein verfügbar. |
 
 ## <a name="august-2020"></a>August 2020
 

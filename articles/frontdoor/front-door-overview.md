@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773449"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825640"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 
 Azure Front Door ist ein globaler, skalierbarer Einstiegspunkt, der das globale Microsoft-Edge-Netzwerk nutzt, um schnelle, sichere und weit skalierbare Webanwendungen zu erstellen. Mit Front Door können Sie Ihre globalen Consumer- und Unternehmensanwendungen in robuste, hochleistungsfähige personalisierte moderne Anwendungen mit Inhalten transformieren, die über Azure eine globale Zielgruppe erreichen.
 
-:::image type="content" source="media/front-door-overview/front-door-visual-diagram.png#center" alt-text="Front-Door-Architektur":::
+<p align="center">
+  <img src="./media/front-door-overview/front-door-visual-diagram.png" alt="Front Door architecture" width="600" title="Azure Front Door">
+</p>
 
 Front Door arbeitet in Schicht 7 (HTTP/HTTPS-Schicht) unter Verwendung des Anycast-Protokolls mit Split TCP und dem globalen Netzwerk von Microsoft zur Verbesserung der globalen Konnektivität. Basierend auf Ihrer Routingmethode können Sie sicherstellen, dass Front Door Ihre Clientanforderungen an das schnellste und verfügbarste Anwendungs-Back-End weiterleitet. Ein Anwendungs-Back-End ist ein Dienst mit Internetzugriff, der innerhalb oder außerhalb von Azure gehostet wird. Front Door bietet eine Reihe von [Datenverkehrsrouting-Methoden](front-door-routing-methods.md) und [Back-End-Systemüberwachungsoptionen](front-door-health-probes.md), die verschiedene Anwendungsanforderungen und automatische Failoverszenarien erfüllen. Ähnlich wie [Traffic Manager](../traffic-manager/traffic-manager-overview.md) zeichnet sich Front Door durch eine geringe Fehleranfälligkeit aus, selbst wenn es zum Ausfall einer ganzen Azure-Region kommt.
 

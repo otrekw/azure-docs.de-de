@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612896"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893508"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -111,7 +111,7 @@ Diese Dateien werden nun ausführlicher betrachtet, und der MSAL-spezifische Cod
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) ist die Bibliothek zum Anmelden von Benutzern und Anfordern von Token, die für den Zugriff auf eine durch Microsoft Identity Platform geschützte API verwendet wird. Gradle 3.0+ installiert die Bibliothek, wenn **Gradle Scripts** > **build.gradle (Module: app)** unter **Dependencies** folgenden Code hinzufügen:
 
 ```gradle
-implementation 'com.microsoft.identity.client:msal:1.+'
+implementation 'com.microsoft.identity.client:msal:2.+'
 ```
 
 Dies wird im Beispielprojekt in build.gradle (Module: app) veranschaulicht:
@@ -119,7 +119,7 @@ Dies wird im Beispielprojekt in build.gradle (Module: app) veranschaulicht:
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.+'
+    implementation 'com.microsoft.identity.client:msal:2.+'
     ...
 }
 ```

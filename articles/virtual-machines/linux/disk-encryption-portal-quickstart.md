@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 563b9c03141357eeacf9a7d890c386faae52c6df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2a5588940d4efacc08d89b72bde4433d725a4994
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88510696"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978406"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Schnellstart: Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit dem Azure-Portal
 
@@ -38,7 +38,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     :::image type="content" source="../media/disk-encryption/portal-quickstart-linux-vm-creation.png" alt-text="Bildschirm: Erstellung der Linux-VM":::
 
     > [!WARNING]
-    > Auf der Registerkarte „Datenträger“ befindet sich unter **Datenträgeroptionen** das Feld „Verschlüsselungstyp“. Mit diesem Feld werden Verschlüsselungsoptionen für [Verwaltete Datenträger](managed-disks-overview.md) und CMK, aber **nicht** für Azure Disk Encryption angegeben.
+    > Auf der Registerkarte „Datenträger“ befindet sich unter **Datenträgeroptionen** das Feld „Verschlüsselungstyp“. Mit diesem Feld werden Verschlüsselungsoptionen für [Verwaltete Datenträger](../managed-disks-overview.md) und CMK, aber **nicht** für Azure Disk Encryption angegeben.
     >
     > Um Verwirrung zu vermeiden, empfiehlt es sich, die Registerkarte *Datenträger* bei diesem Tutorial vollständig zu überspringen.
 

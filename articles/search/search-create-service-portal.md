@@ -3,17 +3,17 @@ title: Erstellen eines Suchdiensts über das Portal
 titleSuffix: Azure Cognitive Search
 description: In diesem Portal-Schnellstart erfahren Sie, wie Sie eine Azure Cognitive Search-Ressource im Azure-Portal einrichten. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/05/2020
-ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741005"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057721"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -178,7 +178,7 @@ Nach dem Bereitstellen eines Diensts können Sie im Portal mit dem Erstellen des
 > [!div class="nextstepaction"]
 > [Schnellstart: Erstellen eines Azure Search-Indexes im Azure-Portal](search-get-started-portal.md)
 
-Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
+Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
 
 > [!div class="nextstepaction"]
 > [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

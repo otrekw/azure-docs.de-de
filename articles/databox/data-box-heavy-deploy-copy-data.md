@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920975"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951637"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden
 
 1. Zunächst müssen Sie sich authentifizieren und eine Sitzung starten. Navigieren Sie zu **Verbindung herstellen und Daten kopieren**. Klicken Sie auf **Get credentials** (Anmeldeinformationen abrufen), um die Anmeldeinformationen für den Zugriff auf die mit Ihrem Speicherkonto verknüpften Freigaben abzurufen.
 
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Klicken Sie auf **OK**.
     
-    ![Abrufen der Anmeldeinformationen für Freigaben 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![Abrufen der Anmeldeinformationen für Freigaben 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. Öffnen Sie ein Befehlsfenster, um über Ihren Hostcomputer auf die Freigaben zuzugreifen, die mit Ihrem Speicherkonto (*databoxe2etest* im folgenden Beispiel) verknüpft sind. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -122,7 +122,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden
 
 4. Drücken Sie WINDOWS-TASTE+R. Geben Sie im Fenster **Ausführen** die `\\<device IP address>` an. Klicken Sie auf **OK**, um den Datei-Explorer zu öffnen.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     Die Freigaben sollten jetzt als Ordner angezeigt werden.
     

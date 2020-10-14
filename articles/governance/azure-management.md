@@ -3,12 +3,12 @@ title: Übersicht über die Verwaltung in Azure – Azure Governance
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
 ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662137"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949495"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Was sind die Azure-Verwaltungsbereiche?
 
@@ -44,7 +44,7 @@ Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unter
 
 ## <a name="secure"></a>Sicher
 
-Verwalten Sie die Sicherheit Ihrer Ressourcen und Daten. Ein Sicherheitsprogramm umfasst die Bewertung von Bedrohungen, das Erfassen und Analysieren von Daten und die Einhaltung von Vorschriften für Ihre Anwendungen und Ressourcen. Sicherheitsüberwachung und Bedrohungsanalysen werden von [Azure Security Center](../security-center/security-center-intro.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Umfassende Informationen zur Sicherheit in Azure sowie eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen finden Sie unter [Einführung in Azure Security](../security/fundamentals/overview.md).
+Verwalten Sie die Sicherheit Ihrer Ressourcen und Daten. Ein Sicherheitsprogramm umfasst die Bewertung von Bedrohungen, das Erfassen und Analysieren von Daten und die Einhaltung von Vorschriften für Ihre Anwendungen und Ressourcen. Sicherheitsüberwachung und Bedrohungsanalysen werden von [Azure Security Center](../security-center/security-center-introduction.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Umfassende Informationen zur Sicherheit in Azure sowie eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen finden Sie unter [Einführung in Azure Security](../security/fundamentals/overview.md).
 
 ## <a name="protect"></a>Schützen
 

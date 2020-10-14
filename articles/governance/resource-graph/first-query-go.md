@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Ihre erste Go-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren des Resource Graph-Pakets für Go und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84899392"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057449"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe von Go
 

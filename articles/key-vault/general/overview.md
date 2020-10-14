@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a9886b005c5459456e005273dd11e2c3c183176f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744235"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932004"
 ---
 # <a name="about-azure-key-vault"></a>Informationen zu Azure Key Vault
 
@@ -25,7 +25,7 @@ Mit Azure Key Vault lassen sich folgende Probleme lösen:
 - **Schlüsselverwaltung**: Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
 - **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten.
 
-Azure Key Vault verfügt über zwei Dienstebenen: Die Dienstebene „Standard“ verschlüsselt mit einem Softwareschlüssel und die Dienstebene „Premium“ enthält durch HSM geschützte Schlüssel. Einen Vergleich zwischen den Ebenen „Standard“ und „Premium“ finden Sie auf der Seite [Azure Key Vault – Preise](/pricing/details/key-vault).
+Azure Key Vault verfügt über zwei Dienstebenen: Die Dienstebene „Standard“ verschlüsselt mit einem Softwareschlüssel und die Dienstebene „Premium“ enthält durch HSM geschützte Schlüssel. Einen Vergleich zwischen den Ebenen „Standard“ und „Premium“ finden Sie auf der Seite [Azure Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="why-use-azure-key-vault"></a>Gründe für die Verwendung von Azure Key Vault
 

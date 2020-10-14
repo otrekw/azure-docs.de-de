@@ -2,19 +2,19 @@
 title: Hero-Beispiel für Gruppenanrufe
 titleSuffix: An Azure Communication Services sample overview
 description: Enthält eine Übersicht über das Hero-Beispiel für Anrufe mit Azure Communication Services, damit Entwickler sich genauer über die Funktionsweise des Beispiels informieren können.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460593"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963107"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenanrufe
 
@@ -50,9 +50,9 @@ Nachdem Sie Ihren Anzeigenamen und Ihre Geräte konfiguriert haben, können Sie 
 
 Komponenten des Hauptbildschirms für Anrufe:
 
-- **Medienkatalog**: Der Hauptbereich, in dem die Teilnehmer angezeigt werden. Wenn ein Teilnehmer seine Kamera aktiviert hat, wird der Videofeed hier angezeigt. Jeder Teilnehmer verfügt über eine individuelle Kachel, auf der sein Anzeigename und der Videostream (falls vorhanden) angezeigt werden.
-- **Header**: Hier befinden sich die wichtigsten Anrufsteuerelemente zum Umschalten der Seitenleiste für Einstellungen und Teilnehmer, Aktivieren/Deaktivieren von Videos und der Mischung, Freigeben des Bildschirms und Beenden des Anrufs.
-- **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Komponente kann mit dem „X“ oben rechts geschlossen werden. In der Seitenleiste für die Teilnehmer werden eine Liste mit Teilnehmern und ein Link zum Einladen von weiteren Benutzern zum Chatten angezeigt. In der Seitenleiste für die Einstellungen können Sie die Mikrofon- und Kameraeinstellungen konfigurieren.
+1. **Medienkatalog**: Der Hauptbereich, in dem die Teilnehmer angezeigt werden. Wenn ein Teilnehmer seine Kamera aktiviert hat, wird der Videofeed hier angezeigt. Jeder Teilnehmer verfügt über eine individuelle Kachel, auf der sein Anzeigename und der Videostream (falls vorhanden) angezeigt werden.
+2. **Header**: Hier befinden sich die wichtigsten Anrufsteuerelemente zum Umschalten der Seitenleiste für Einstellungen und Teilnehmer, Aktivieren/Deaktivieren von Videos und der Mischung, Freigeben des Bildschirms und Beenden des Anrufs.
+3. **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Komponente kann mit dem „X“ oben rechts geschlossen werden. In der Seitenleiste für die Teilnehmer werden eine Liste mit Teilnehmern und ein Link zum Einladen von weiteren Benutzern zum Chatten angezeigt. In der Seitenleiste für die Einstellungen können Sie die Mikrofon- und Kameraeinstellungen konfigurieren.
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 
@@ -115,6 +115,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Azure Communication GitHub](https://github.com/Azure/communication): Weitere Beispiele und Informationen finden Sie auf der offiziellen GitHub-Seite
 - [Redux](https://redux.js.org/): Clientseitige Zustandsverwaltung
-- [Fluent-UI](https://developer.microsoft.com/fluentui#/): UI-Bibliothek von Microsoft
+- [Fluent-UI](https://aka.ms/fluent-ui): UI-Bibliothek von Microsoft
 - [React](https://reactjs.org/): Bibliothek zum Erstellen von Benutzeroberflächen
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): Framework für die Erstellung von Webanwendungen
