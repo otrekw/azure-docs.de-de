@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88163695"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854722"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für .NET mit Azure DevOps Starter
 
@@ -133,7 +133,7 @@ Sie können die erstellte Azure App Service-Instanz und zugehörige Ressourcen l
 Weitere Informationen zum Ändern der Build- und Releasepipelines zur Erfüllung der Anforderungen Ihres Teams finden Sie in folgendem Tutorial:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassen von CD-Prozessen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>Videos
 

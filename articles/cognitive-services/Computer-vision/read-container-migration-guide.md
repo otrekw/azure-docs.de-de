@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530458"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973120"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migration zu den Read v3.x OCR-Containern
 
@@ -65,10 +65,10 @@ Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, 
 >[!NOTE]
 > MongoDB wird in 3.x-Versionen des Containers nicht mehr unterstützt. Stattdessen unterstützen die Container Azure Storage-und Offlinedateisysteme.
 
-| Implementierung |  Erforderliche Laufzeitargumente |
+| Implementierung |    Erforderliche Laufzeitargumente |
 |---------|---------|
-|Dateiebene (Standard)   | Keine Laufzeitargumente erforderlich. Das `/share`-Verzeichnis wird verwendet. |
-|Azure Blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|Dateiebene (Standard)    | Keine Laufzeitargumente erforderlich. Das `/share`-Verzeichnis wird verwendet. |
+|Azure Blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>Warteschlangenimplementierungen
 
@@ -78,7 +78,7 @@ In v3.x des Containers wird RabbitMQ derzeit nicht unterstützt. Folgende Unters
 |---------|---------|-------|
 | In-Memory (Standard) | Keine Laufzeitargumente erforderlich. | Entwickeln und Testen |
 | Azure-Warteschlangen | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Produktion |
-| RabbitMQ  | Nicht verfügbar | Produktion |
+| RabbitMQ    | Nicht verfügbar | Produktion |
 
 Zum Erreichen zusätzlicher Redundanz verwendet der Read v3.x-Container einen Zeitgeber für die Sichtbarkeit, um sicherzustellen, dass Anforderungen in einem Setup mit mehreren Containern auch im Fall eines Absturzes erfolgreich verarbeitet werden können. 
 
@@ -86,7 +86,7 @@ Legen Sie den Zeitgeber mit `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` f
 
 | Standardwert | Empfohlener Wert |
 |---------|---------|
-| 30.000 |   120000 |
+| 30.000 |    120000 |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

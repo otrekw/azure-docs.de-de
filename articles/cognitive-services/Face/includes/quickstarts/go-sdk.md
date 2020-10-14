@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322959"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859575"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Go. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -24,7 +24,6 @@ Die Gesichtserkennungsdienst-Clientbibliothek für Go kann für Folgendes verwen
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
 * [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
 * [Identifizieren eines Gesichts](#identify-a-face)
-* [Erstellen einer Momentaufnahme für die Datenmigration](#take-a-snapshot-for-data-migration)
 
 [Referenzdokumentation](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK-Download](https://github.com/Azure/azure-sdk-for-go)
 
@@ -109,7 +108,6 @@ In den folgenden Codebeispielen werden einfache Aufgaben mithilfe der Gesichtser
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
 * [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
 * [Identifizieren eines Gesichts](#identify-a-face)
-* [Erstellen einer Momentaufnahme für die Datenmigration](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
@@ -246,53 +244,6 @@ Der folgende Code vergleicht jedes Quellbild mit dem Zielbild und gibt eine Meld
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>Erstellen einer Momentaufnahme für die Datenmigration
-
-Mit dem Momentaufnahmefeature können Sie Ihre gespeicherten Gesichtserkennungsdaten (etwa ein trainiertes **PersonGroup**-Objekt) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie können dieses Feature beispielsweise verwenden, wenn Sie ein Objekt vom Typ **PersonGroup** mit einem kostenlosen Abonnement erstellt haben und dieses nun zu einem kostenpflichtigen Abonnement migrieren möchten. Eine umfassende Übersicht über das Feature für Momentaufnahmen finden Sie unter [Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung](../../Face-API-How-to-Topics/how-to-migrate-face-data.md).
-
-In diesem Beispiel wird das Objekt vom Typ **PersonGroup** migriert, das Sie unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) erstellt haben. Sie können entweder zuerst diesen Abschnitt abschließen oder Ihre eigenen Konstrukte mit Gesichtserkennungsdaten verwenden.
-
-### <a name="set-up-target-subscription"></a>Einrichten des Zielabonnements
-
-Sie benötigen zunächst ein zweites Azure-Abonnement mit einer Gesichtserkennungsressource. Führen Sie dazu erneut die Schritte im Abschnitt [Einrichten](#setting-up) aus. 
-
-Erstellen Sie anschließend im oberen Bereich der Methode **main** die folgenden Variablen. Darüber hinaus müssen Sie neue Umgebungsvariablen für die Abonnement-ID Ihres Azure-Kontos sowie den Schlüssel, den Endpunkt und die Abonnement-ID Ihres neuen Kontos (Zielkonto) erstellen.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-Fügen Sie für die nächsten Schritte den Wert Ihrer Abonnement-ID in ein Array ein.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>Authentifizieren des Zielclients
-
-Speichern Sie weiter unten in Ihrem Skript Ihr ursprüngliches Clientobjekt als Quellclient, und authentifizieren Sie anschließend ein neues Clientobjekt für Ihr Zielabonnement. 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>Erstellen einer Momentaufnahme
-
-Im nächsten Schritt wird mithilfe von **[Take](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** die Momentaufnahme erstellt. Dadurch werden die Gesichtserkennungsdaten Ihres ursprünglichen Abonnements an einem temporären Cloudspeicherort gespeichert. Diese Methode gibt eine ID zurück, mit der Sie den Status des Vorgangs abfragen.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-Fragen Sie als Nächstes die ID ab, bis der Vorgang abgeschlossen ist.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>Anwenden der Momentaufnahme
-
-Schreiben Sie Ihre neu hochgeladenen Gesichtserkennungsdaten mithilfe des Vorgangs **[Apply](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** in Ihr Zielabonnement. Mit dieser Methode wird ebenfalls eine ID zurückgegeben.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-Fragen Sie erneut die ID ab, bis der Vorgang abgeschlossen ist.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-Nachdem Sie diese Schritte ausgeführt haben, können Sie über Ihr neues (Ziel-)Abonnement auf Ihre Konstrukte mit Gesichtserkennungsdaten zugreifen.
-
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Führen Sie Ihre Anwendung zur Gesichtserkennung aus dem Anwendungsverzeichnis mit dem `go run <app-name>`-Befehl aus.
@@ -308,7 +259,7 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Falls Sie in dieser Schnellstartanleitung ein Objekt vom Typ **PersonGroup** erstellt haben und dieses löschen möchten, rufen Sie die Methode **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** auf. Wenn Sie in dieser Schnellstartanleitung Daten mithilfe des Momentaufnahmefeatures migriert haben, müssen Sie auch das im Zielabonnement gespeicherte **PersonGroup**-Objekt löschen.
+Falls Sie in dieser Schnellstartanleitung ein Objekt vom Typ **PersonGroup** erstellt haben und dieses löschen möchten, rufen Sie die Methode **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

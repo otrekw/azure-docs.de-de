@@ -1,54 +1,20 @@
 ---
-ms.openlocfilehash: 93c88f34e32e2057efd3eae25b1f41f58b948575
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f5e180cb85e65cf832ffe0a3746e25790644e1ba
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682209"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829188"
 ---
-1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Im **Terminalfenster** werden einige Meldungen ausgegeben.
-1. Mit dem Code in *operations.json* werden die direkten Methoden `GraphTopologyList` und `GraphInstanceList` aufgerufen. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die EINGABETASTE.
-    
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-  
-  Im **Terminalfenster** werden die nächsten Aufrufe direkter Methoden angezeigt:  
-  
-  * Aufruf von `GraphTopologySet` mit Verwendung von `topologyUrl` 
-  * Aufruf von `GraphInstanceSet` mit Verwendung des folgenden Texts:
-  
-  ```
-  {
-    "@apiVersion": "1.0",
-    "name": "Sample-Graph",
-    "properties": {
-      "topologyName": "EVRToFilesOnMotionDetection",
-      "description": "Sample graph description",
-      "parameters": [
-        {
-          "name": "rtspUrl",
-          "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-        },
-        {
-          "name": "rtspUserName",
-          "value": "testuser"
-        },
-        {
-          "name": "rtspPassword",
-          "value": "testpassword"
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
+1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Erweiterungseinstellungen":::
+1. Suchen Sie nach dem Kontrollkästchen „Show Verbose Message“ (Ausführliche Meldung anzeigen), und aktivieren Sie es.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Erweiterungseinstellungen"
         }
       ]
     }

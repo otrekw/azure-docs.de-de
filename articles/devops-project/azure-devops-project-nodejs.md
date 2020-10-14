@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318618"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856210"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline in Azure Pipelines für Node.js mit Azure DevOps Starter
 
@@ -73,7 +73,7 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
     ![Azure DevOps-Dashboard](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Über Ihr Azure DevOps-Projekt können Sie Teammitglieder zur Zusammenarbeit einladen und ein Kanban-Board einrichten, um mit der Nachverfolgung Ihrer Arbeit zu beginnen. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
+1. Über Ihr Azure DevOps-Projekt können Sie Teammitglieder zur Zusammenarbeit einladen und ein Kanban-Board einrichten, um mit der Nachverfolgung Ihrer Arbeit zu beginnen. Weitere Informationen finden Sie [hier](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
 
 ![Übersicht über Azure DevOps](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -195,5 +195,4 @@ Sie können die erstellte Azure App Service-Instanz und die zugehörigen Ressour
 Beim Konfigurieren des CI/CD-Prozesses werden automatisch Build- und Releasepipelines erstellt. Sie können diese Build- und Releasepipelines ändern, um sie an die Anforderungen Ihres Teams anzupassen. Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
-
+> [Anpassen von CD-Prozessen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

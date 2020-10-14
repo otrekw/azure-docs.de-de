@@ -2,19 +2,19 @@
 title: Hero-Beispiel für Gruppenchats
 titleSuffix: An Azure Communication Services sample overview
 description: Enthält eine Übersicht über das Hero-Beispiel für Chats mit Azure Communication Services, damit Entwickler sich genauer über die Funktionsweise des Beispiels und Änderungsmöglichkeiten informieren können.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460559"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962988"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
 
@@ -78,7 +78,6 @@ Sie können das Beispiel lokal testen, indem Sie mehrere Browsersitzungen mit de
 2. `git clone https://github.com/Azure/Communication.git`
 3. Rufen Sie im Azure-Portal die `Connection String` (Verbindungszeichenfolge) ab. Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../quickstarts/create-communication-resource.md).
 4. Fügen Sie nach dem Abrufen von `Connection String` die Zeichenfolge der Datei **Chat/appsettings.json** hinzu, die im Ordner „Chat“ enthalten ist. Geben Sie Ihre Verbindungszeichenfolge in die Variable ein: `ResourceConnectionString`.
-5. Aktualisieren Sie die ENVIRONMENT_URL in `./Chat/ClientApp/src/constants.tsx` mit dem Speicherort Ihrer Ressource. (z. B https://<RESSOURCENNAME>.communication.azure.com)
 
 ### <a name="local-run"></a>Lokaler Testlauf
 
@@ -115,6 +114,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Azure Communication GitHub](https://github.com/Azure/communication): Weitere Beispiele und Informationen finden Sie auf der offiziellen GitHub-Seite
 - [Redux](https://redux.js.org/): Clientseitige Zustandsverwaltung
-- [Fluent-UI](https://developer.microsoft.com/fluentui#/): UI-Bibliothek von Microsoft
+- [Fluent-UI](https://aka.ms/fluent-ui): UI-Bibliothek von Microsoft
 - [React](https://reactjs.org/): Bibliothek zum Erstellen von Benutzeroberflächen
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): Framework für die Erstellung von Webanwendungen

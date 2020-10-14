@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319541"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966320"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -46,7 +46,7 @@ Azure bietet zwei Haupttypen von Images, generalisierte und spezialisierte Image
 
 ### <a name="generalized-images"></a>Generalisierte Images
 
-Bei einem generalisierten Image handelt es sich um ein Image, für das die Einrichtung beim ersten Start abgeschlossen werden muss. Beispielsweise legen Sie beim ersten Start den Hostnamen, den Administratorbenutzer und andere VM-spezifische Konfigurationen fest. Dies ist nützlich, wenn das Image mehrfach wiederverwendet werden soll und wenn bei der Erstellung Parameter übergeben werden sollen. Wenn das generalisierte Image den Azure-Agent enthält, verarbeitet der Agent die Parameter und signalisiert der Plattform, dass die Erstkonfiguration abgeschlossen wurde. Dieser Vorgang wird als [Bereitstellung](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning) bezeichnet. 
+Bei einem generalisierten Image handelt es sich um ein Image, für das die Einrichtung beim ersten Start abgeschlossen werden muss. Beispielsweise legen Sie beim ersten Start den Hostnamen, den Administratorbenutzer und andere VM-spezifische Konfigurationen fest. Dies ist nützlich, wenn das Image mehrfach wiederverwendet werden soll und wenn bei der Erstellung Parameter übergeben werden sollen. Wenn das generalisierte Image den Azure-Agent enthält, verarbeitet der Agent die Parameter und signalisiert der Plattform, dass die Erstkonfiguration abgeschlossen wurde. Dieser Vorgang wird als [Bereitstellung](./provisioning.md) bezeichnet. 
 
 Für die Bereitstellung ist es erforderlich, dass ein Bereitsteller im Image enthalten ist. Es gibt zwei Bereitsteller:
 - [Azure Linux-Agents](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Im Allgemeinen erstellen Sie einen SIG, der aus folgenden Elementen besteht:
 
 ## <a name="hyper-v-generation"></a>Hyper-V Generation
 
-Azure unterstützt Hyper-V Generation 1 (Gen1) und Generation 2 (Gen2). Gen2 ist die neueste Generation, die zusätzliche Funktionalität gegenüber Gen1 bietet, beispielsweise mehr Arbeitsspeicher, Intel Software Guard Extensions (Intel SGX) und virtualisierten persistenten Speicher (virtualized Persistent Memory, vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt „Features und Funktionen“. Weitere Informationen finden Sie in [diesem Artikel](../windows/generation-2.md). Erstellen Sie Gen2-Images, wenn Sie diese zusätzliche Funktionalität benötigen.
+Azure unterstützt Hyper-V Generation 1 (Gen1) und Generation 2 (Gen2). Gen2 ist die neueste Generation, die zusätzliche Funktionalität gegenüber Gen1 bietet, beispielsweise mehr Arbeitsspeicher, Intel Software Guard Extensions (Intel SGX) und virtualisierten persistenten Speicher (virtualized Persistent Memory, vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt „Features und Funktionen“. Weitere Informationen finden Sie in [diesem Artikel](../generation-2.md). Erstellen Sie Gen2-Images, wenn Sie diese zusätzliche Funktionalität benötigen.
 
 Wenn Sie dennoch ein eigenes Image erstellen müssen, stellen Sie sicher, dass es die [Imagevoraussetzungen](./create-upload-generic.md) erfüllt, und laden Sie das Image in Azure hoch. Verteilungsspezifische Anforderungen:
 

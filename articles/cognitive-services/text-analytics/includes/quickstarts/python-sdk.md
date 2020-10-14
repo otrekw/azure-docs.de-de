@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779499"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977808"
 ---
 <a name="HOLTop"></a>
 
@@ -117,6 +117,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Texta
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Standpunktanalyse](#sentiment-analysis)
+* [Opinion Mining](#opinion-mining)
 * [Sprachenerkennung](#language-detection)
 * [Erkennung benannter Entitäten](#named-entity-recognition-ner) 
 * [Erkennung von personenbezogenen Informationen](#personally-identifiable-information-recognition) 
@@ -389,7 +390,7 @@ Neutral=0.77
 Negative=0.02
 ```
 
-# <a name="version-21"></a>[Version 2.1](#tab/version-2)
+# <a name="version-21"></a>[Version 2.1](#tab/version-2)
 
 Authentifizieren Sie ein Clientobjekt, und rufen Sie die Funktion [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) auf. Durchlaufen Sie die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
 
@@ -460,7 +461,7 @@ language_detection_example(client)
 Language:  French
 ```
 
-# <a name="version-21"></a>[Version 2.1](#tab/version-2)
+# <a name="version-21"></a>[Version 2.1](#tab/version-2)
 
 Rufen Sie mit dem zuvor erstellten Client die Funktion [detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und die erste zurückgegebene Sprache.
 
@@ -757,7 +758,7 @@ Linked Entities:
                 Confidence Score: 0.33
 ```
 
-# <a name="version-21"></a>[Version 2.1](#tab/version-2)
+# <a name="version-21"></a>[Version 2.1](#tab/version-2)
 
 > [!NOTE]
 > In Version 2.1 ist die Entitätsverknüpfung in der NER-Antwort enthalten.
