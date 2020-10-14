@@ -3,12 +3,12 @@ title: 'Schema für Rückschlussmetadaten: Azure'
 description: Dieser Artikel enthält Informationen zum Schema für Rückschlussmetadaten.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88701913"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019493"
 ---
 # <a name="inference-metadata-schema"></a>Schema für Rückschlussmetadaten 
 
@@ -123,5 +123,5 @@ Das folgende Beispiel enthält ein einzelnes Ereignis mit einigen unterstützten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [gRPC-Datenvertrag](grpc-data-contract.md)
-- [HTTP-Datenvertrag](http-data-contract.md)
+- [gRPC-Datenvertrag](./grpc-extension-protocol.md)
+- [HTTP-Datenvertrag](./http-extension-protocol.md)

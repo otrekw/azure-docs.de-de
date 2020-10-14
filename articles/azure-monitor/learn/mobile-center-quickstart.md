@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322141"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993886"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -124,7 +124,7 @@ Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen
    1. Wählen Sie die Abfrage aus, indem Sie im Text-Editor an eine beliebige Stelle in der Abfrage klicken.
    2. Klicken Sie auf **Los**, um die Abfrage auszuführen. 
 
-   Erfahren Sie mehr zu [Application Insights Analytics](../log-query/log-query-overview.md) und zur [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference).
+   Erfahren Sie mehr zu [Application Insights Analytics](../log-query/log-query-overview.md) und zur [Log Analytics-Abfragesprache](/azure/data-explorer/kusto/query/).
 
 
 2. **Segmentieren und filtern Sie die Telemetriedaten zu benutzerdefinierten Ereignissen.** Klicken Sie auf der Seite **Übersicht** in Application Insights im Inhaltsverzeichnis auf **Benutzer**.
@@ -168,4 +168,3 @@ So löschen Sie die Application Insights-Erweiterung:
 
 > [!div class="nextstepaction"]
 > [Erhalten Sie Einblick, wie die App von Kunden verwendet wird.](../app/usage-overview.md)
-

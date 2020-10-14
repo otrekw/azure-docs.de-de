@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88589706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930950"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
 Azure Load Balancer umfasst ein paar Hauptkomponenten. Diese Komponenten können in Ihrem Abonnement auf folgende Weise konfiguriert werden:
 
 * Azure-Portal
-* Azure CLI
+* Azure-Befehlszeilenschnittstelle
 * Azure PowerShell
 * Resource Manager-Vorlagen
 
@@ -125,6 +125,13 @@ Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Addres
 Erfahren Sie mehr zu [ausgehenden Verbindungen und Regeln](load-balancer-outbound-connections.md).
 
 Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstützt.
+
+## <a name="limitations"></a>Einschränkungen
+
+- Load Balancer ermöglicht den Lastenausgleich und die Portweiterleitung für bestimmte TCP- oder UDP-Protokolle. Für Lastenausgleichsregeln und NAT-Regeln für eingehenden Datenverkehr werden TCP und UDP unterstützt, aber keine anderen IP-Protokolle, z. B. ICMP.
+- Für den ausgehenden Datenfluss von einer Back-End-VM zum Front-End einer internen Load Balancer-Instanz tritt ein Fehler auf.
+- Eine Lastenausgleichsregel kann sich nicht über zwei virtuelle Netzwerke erstrecken.  Front-Ends und ihre Back-End-Instanzen müssen sich im gleichen virtuellen Netzwerk befinden.  
+- Das Weiterleiten von IP-Fragmenten wird für Lastenausgleichsregeln nicht unterstützt. Die IP-Fragmentierung von UDP- und TCP-Paketen wird für Lastenausgleichsregeln nicht unterstützt. Hochverfügbarkeitsports für Lastenausgleichsregeln können verwendet werden, um vorhandene IP-Fragmente weiterzuleiten. Weitere Informationen finden Sie unter [Übersicht über Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

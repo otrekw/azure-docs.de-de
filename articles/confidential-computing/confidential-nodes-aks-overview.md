@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998466"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940768"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Confidential Computing-Knoten in Azure Kubernetes Service (Public Preview)
 
@@ -40,7 +40,7 @@ Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confident
 
 #### <a name="sgx-device-plugin"></a>SGX-Geräte-Plug-In <a id="sgx-plugin"></a>
 
-Mit dem SGX-Geräte-Plug-In wird die Plug-In-Schnittstelle des Kubernetes-Geräts für den EPC-Arbeitsspeicher implementiert. Mit diesem Plug-In wird der EPC-Arbeitsspeicher quasi zu einem zusätzlichen Ressourcentyp in Kubernetes. Benutzer können Grenzwerte für diese Ressource genauso wie für andere Ressourcen angeben. Neben der Planungsfunktion ermöglicht das Geräte-Plug-In auch die Zuweisung von SGX-Gerätetreiberberechtigungen für vertrauliche Workloadcontainer. Eine Beispielimplementierung der arbeitsspeicherbasierten EPC-Bereitstellung (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) finden Sie [hier](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml).
+Mit dem SGX-Geräte-Plug-In wird die Plug-In-Schnittstelle des Kubernetes-Geräts für den EPC-Arbeitsspeicher implementiert. Mit diesem Plug-In wird der EPC-Arbeitsspeicher quasi zu einem zusätzlichen Ressourcentyp in Kubernetes. Benutzer können Grenzwerte für diese Ressource genauso wie für andere Ressourcen angeben. Neben der Planungsfunktion ermöglicht das Geräte-Plug-In auch die Zuweisung von SGX-Gerätetreiberberechtigungen für vertrauliche Workloadcontainer. Eine Beispielimplementierung der arbeitsspeicherbasierten EPC-Bereitstellung (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) finden Sie [hier](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml).
 
 #### <a name="sgx-quote-helper-service"></a>SGX-Angebotshilfsdienst <a id="sgx-quote"></a>
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598280"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016824"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische Paketerstellung in Media Services v3
 
@@ -30,7 +30,7 @@ Mit Microsoft Azure Media Services können zahlreiche Medienquelldateiformate co
 In Media Services repräsentiert ein [Streamingendpunkt](streaming-endpoint-concept.md) (Ursprung) einen dynamischen Just-In-Time-Paketerstellungs- und Ursprungsdienst, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann. Der Streamingendpunkt verwendet hierbei eines der im nächsten Abschnitt beschriebenen allgemeinen Streamingmedienprotokolle. Die Funktion für die *dynamische Paketerstellung* ist standardmäßig auf allen Streamingendpunkten vorhanden.
 
 > [!NOTE]
-> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](/rest/api/media/), die [CLI](/cli/azure/ams) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>So bereiten Sie die Quelldateien für die Bereitstellung vor
 
@@ -88,7 +88,7 @@ Die folgenden Schritte zeigen einen allgemeinen Media Services-Streamingworkflo
 1. [Laden Sie eine Eingabedatei hoch](job-input-from-http-how-to.md), etwa eine MP4-, QuickTime- oder MOV-Datei oder ein anderes unterstütztes Dateiformat. Diese Datei wird auch als Mezzanine- oder Quelldatei bezeichnet. Eine Liste der unterstützten Formate finden Sie unter [Media Encoder Standard-Formate und -Codecs](media-encoder-standard-formats.md).
 1. [Codieren](#encode-to-adaptive-bitrate-mp4s) Sie Ihre Mezzaninedatei als H.264/AAC-MP4-Satz mit adaptiver Bitrate.
 
-    Falls Sie bereits codierte Dateien besitzen und die Dateien nur kopieren und streamen möchten, verwenden Sie Folgendes: APIs [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) und [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio). Daraufhin wird eine neue MP4-Datei mit einem Streamingmanifest (ISM-Datei) erstellt.
+    Falls Sie bereits codierte Dateien besitzen und die Dateien nur kopieren und streamen möchten, verwenden Sie Folgendes: APIs [CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) und [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio). Daraufhin wird eine neue MP4-Datei mit einem Streamingmanifest (ISM-Datei) erstellt.
 1. Veröffentlichen Sie das Ausgabemedienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält. Zur Veröffentlichung wird ein [Streaminglocator](streaming-locators-concept.md) erstellt.
 1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der *Streamingendpunkt* sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für alle diese Formate korrekt verarbeitet werden.
     

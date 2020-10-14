@@ -3,12 +3,12 @@ title: HTTP-Erweiterungsprotokoll – Azure
 description: In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: bfc8672185d284abc8f2985b44cea92000bc73db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448061"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016653"
 ---
 # <a name="http-extension-protocol"></a>HTTP-Erweiterungsprotokoll
 
@@ -100,4 +100,4 @@ Wenn Ihr Modul eine Antwort mit dem Inhaltstyp „application/json“ zurückgib
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[gRPC-Datenvertrag](grpc-data-contract.md)
+[gRPC-Datenvertrag](./grpc-extension-protocol.md)

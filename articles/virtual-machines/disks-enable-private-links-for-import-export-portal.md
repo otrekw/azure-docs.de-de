@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815860"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979052"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Verwenden Sie das Azure-Portal zum Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links.
 
@@ -30,12 +30,6 @@ Sie können die NetworkAccessPolicy-Eigenschaft auf `DenyAll` festlegen, um zu v
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Um private Endpunkte zum Exportieren und Importieren verwalteter Datenträger zu verwenden, muss das Feature für Ihr Abonnement aktiviert werden. Senden Sie eine E-Mail mit Ihren Abonnement-IDs an mdprivatelinks@microsoft.com, um das Feature für Ihre Abonnements aktivieren zu lassen.
-
-Sie müssen das virtuelle Netzwerk des virtuellen Computers notieren, an den Ihre Datenträger angefügt sind. Das virtuelle Netzwerk ist für die Konfiguration des privaten Endpunkts erforderlich.
 
 ## <a name="create-a-disk-access-resource"></a>Erstellen einer Datenträgerzugriffsressource
 
@@ -101,4 +95,4 @@ Die Konfiguration privater Links ist nun abgeschlossen, und Sie können sie beim
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Häufig gestellte Fragen zu privaten Links](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

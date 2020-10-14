@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 891b8a5a844691d46c121c254e04b73f2b8c2d62
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6aa0a1bd14072e6ea4ea42004209f332f46a2d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87872734"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856074"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für Python mit Azure DevOps Starter
 
@@ -129,4 +129,4 @@ Sie können die Azure App Service-Instanz und zugehörige Ressourcen löschen, w
 Beim Konfigurieren des CI/CD-Prozesses wurden automatisch Build- und Releasepipelines erstellt. Diese Build- und Releasepipelines können Sie den Anforderungen Ihres Teams anpassen. Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassen von CD-Prozessen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
