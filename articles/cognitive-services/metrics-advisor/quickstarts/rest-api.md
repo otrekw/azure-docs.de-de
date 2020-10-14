@@ -3,19 +3,19 @@ title: 'Schnellstart: Metrics Advisor-REST-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre Anwendungen mit der Metrics Advisor-API von Azure Cognitive Services verbinden.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/23/2020
-ms.author: aahi
-ms.openlocfilehash: 2376ea01190d619a5d1b6368a17e55c09806a406
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: cf6c0ba43bc7bb725d9df4707a1a6f931ad9347e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91253739"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047460"
 ---
 # <a name="quickstart-use-the-rest-apis-to-customize-your-solution"></a>Schnellstart: Anpassen Ihrer Lösung mithilfe der REST-APIs
 
