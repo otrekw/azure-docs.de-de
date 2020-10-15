@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211644"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074735"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrieren in eine CI/CD-Pipeline
 
@@ -35,9 +35,9 @@ Für die Ausführung der Schritte dieses Tutorials können Sie einen beliebigen 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie die App lokal erstellen möchten, laden Sie die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) herunter, und installieren Sie sie (sofern noch nicht geschehen).
+Wenn Sie die App lokal erstellen möchten, laden Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) herunter, und installieren Sie sie (sofern noch nicht geschehen).
 
-Für einen Cloud-Build (etwa mit Azure DevOps) muss die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Buildsystem installiert sein.
+Für einen Cloud-Build (etwa mit Azure DevOps) muss die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Buildsystem installiert sein.
 
 ### <a name="export-an-app-configuration-store"></a>Exportieren eines App Configuration-Speichers
 
@@ -107,4 +107,4 @@ Für einen Cloud-Build (etwa mit Azure DevOps) muss die [Azure-Befehlszeilenschn
 In diesem Tutorial haben Sie in einer Bereitstellungspipeline zu verwendende Azure App Configuration-Daten exportiert. Fahren Sie mit den Azure CLI-Beispielen fort, um mehr über die Verwendung von App Configuration zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure-Befehlszeilenschnittstelle](/cli/azure/appconfig?view=azure-cli-latest)

@@ -3,12 +3,12 @@ title: Optimieren von Azure-Workloads mithilfe der Advisor-Bewertung
 description: Verwenden der Advisor-Bewertung zur optimalen Nutzung von Azure
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335618"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074021"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Optimieren von Azure-Workloads mithilfe der Advisor-Bewertung
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335618"
 Azure Advisor bietet Empfehlungen zu bewährten Methoden für Ihre Workloads. Diese Empfehlungen sind personalisiert und umsetzbar, um Ihnen bei Folgendem zu helfen:
 * Verbessern des Status Ihrer Workloads und Optimieren Ihrer Azure-Bereitstellungen
 * Proaktives Vermeiden der häufigsten Probleme durch Befolgen der bewährten Methoden
-* Bewerten Ihrer Azure-Workloads anhand der fünf Säulen des [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)
+* Bewerten Ihrer Azure-Workloads anhand der fünf Säulen des [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/)
 
 Als ein zentrales Feature von Advisor ist die **Advisor-Bewertung** entwickelt worden, um Ihnen zu helfen, diese Ziele effektiv und effizient zu erreichen. 
 
@@ -56,7 +56,7 @@ Die Berechnung der Advisor-Bewertung lässt sich in vier Schritten zusammenfasse
   * Ressourcen mit langfristigen Empfehlungen werden bei Ihrer Bewertung höher bewertet.
   * Die in Advisor zurückgestellten oder verworfenen Ressourcen werden vollständig aus der Berechnung Ihrer Bewertung entfernt. 
     
-Advisor wendet dieses Modell auf einer Advisor-Kategorieebene an (Security verwendet das [Secure Score](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score)-Modell), wodurch wir für jede Kategorie eine Advisor-Bewertung erhalten, und darüber hinaus ergibt ein einfacher Mittelwert die endgültige Advisor-Bewertung.
+Advisor wendet dieses Modell auf einer Advisor-Kategorieebene an (Security verwendet das [Secure Score](../security-center/secure-score-security-controls.md#introduction-to-secure-score)-Modell), wodurch wir für jede Kategorie eine Advisor-Bewertung erhalten, und darüber hinaus ergibt ein einfacher Mittelwert die endgültige Advisor-Bewertung.
 
 
 ## <a name="advisor-score-faq"></a>Häufig gestellte Fragen zur Advisor-Bewertung

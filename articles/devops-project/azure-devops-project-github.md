@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233209"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854646"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für GitHub-Repositorys mit Azure DevOps Starter
 
@@ -118,9 +118,9 @@ Als Sie den CI/CD-Prozess in diesem Tutorial konfiguriert haben, haben Sie in Az
 Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
 
 Weitere Informationen zur Anwendungsüberwachung finden Sie hier:
   
  > [!div class="nextstepaction"]
- > [Azure Monitor – Übersicht](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Azure Monitor – Übersicht](../azure-monitor/overview.md)

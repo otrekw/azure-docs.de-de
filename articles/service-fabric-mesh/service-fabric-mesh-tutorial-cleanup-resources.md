@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Bereinigen von Azure Service Fabric Mesh-Ressourcen'
 description: Hier erfahren Sie, wie Sie Azure Service Fabric Mesh-Ressourcen entfernen, damit keine Gebühren für nicht mehr verwendete Ressourcen anfallen.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246747"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843327"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Tutorial: Entfernen von Azure-Ressourcen
 

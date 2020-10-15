@@ -3,15 +3,15 @@ title: Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung
 description: Erfahren Sie, wie Sie die Disk Encryption-Konfiguration verwenden, um Knoten mit einem plattformseitig verwalteten Schlüssel zu verschlüsseln.
 author: pkshultz
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267042"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849261"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung
 
@@ -21,7 +21,7 @@ In diesem Artikel wird erläutert, wie ein Batch-Pool mit aktivierter Datenträg
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Gründe für die Verwendung eines Pools mit Disk Encryption-Konfiguration
 
-Wenn Sie über einen Batch-Pool verfügen, können Sie Daten auf den Betriebssystem- und temporären Datenträgern des Computeknotens speichern und dort auf die Daten zugreifen. Diese Daten lassen sich mit geringem Aufwand schützen, indem Sie den serverseitigen Datenträger mit einem plattformseitig verwalteten Schlüssel verschlüsseln.  
+Wenn Sie über einen Batch-Pool verfügen, können Sie Daten auf den Betriebssystem- und temporären Datenträgern des Computeknotens speichern und dort auf die Daten zugreifen. Diese Daten lassen sich mit geringem Aufwand schützen, indem Sie den serverseitigen Datenträger mit einem plattformseitig verwalteten Schlüssel verschlüsseln.
 
 Batch wendet basierend auf der Poolkonfiguration und der regionalen Unterstützung eine dieser Datenträgerverschlüsselungstechnologien auf Computeknoten an.
 
@@ -35,8 +35,8 @@ Batch wendet basierend auf der Poolkonfiguration und der regionalen Unterstützu
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sie können nicht angeben, welche Verschlüsselungsmethode auf die Knoten in Ihrem Pool angewendet wird. Stattdessen geben Sie die Zieldatenträger an, die auf den Knoten verschlüsselt werden sollen. Batch wählt dann die geeignete Verschlüsselungsmethode aus und stellt sicher, dass die angegebenen Datenträger auf dem Computeknoten verschlüsselt werden.
- 
-## <a name="azure-portal"></a>Azure-Portal 
+
+## <a name="azure-portal"></a>Azure-Portal
 
 Wählen Sie beim Erstellen eines Batch-Pools im Azure-Portal unter **Disk Encryption-Konfiguration** entweder **TemporaryDisk** oder **OsAndTemporaryDisk** aus.
 
@@ -44,7 +44,7 @@ Wählen Sie beim Erstellen eines Batch-Pools im Azure-Portal unter **Disk Encryp
 
 Nachdem der Pool erstellt wurde, werden die Disk Encryption-Konfigurationsziele im Abschnitt **Eigenschaften** des Pools angezeigt.
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Screenshot mit den Disk Encryption-Konfigurationszielen im Azure-Portal.":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Screenshot der Disk Encryption-Konfigurationsoption im Azure-Portal.":::
 
 ## <a name="examples"></a>Beispiele
 
@@ -87,7 +87,7 @@ Anforderungstext:
     "resizeTimeout": "PT15M",
     "targetDedicatedNodes": 5,
     "targetLowPriorityNodes": 0,
-    "maxTasksPerNode": 3,
+    "taskSlotsPerNode": 3,
     "enableAutoScale": false,
     "enableInterNodeCommunication": false
 }

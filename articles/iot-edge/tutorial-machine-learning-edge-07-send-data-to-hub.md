@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997879"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857247"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Tutorial: Senden von Daten per transparentem Gateway
 
@@ -238,5 +238,8 @@ In diesem Artikel haben wir unsere Entwicklungs-VM verwendet, um ein Blattgerät
 
 Weitere Informationen finden Sie auf den folgenden Seiten:
 
-* [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md)
-* [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md)
+
+> [!div class="nextstepaction"]
+> [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md)

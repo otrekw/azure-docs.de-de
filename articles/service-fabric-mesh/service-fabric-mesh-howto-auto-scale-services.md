@@ -1,17 +1,17 @@
 ---
 title: Automatisches Skalieren einer in Azure Service Fabric Mesh ausgeführten App
 description: Erfahren Sie, wie Sie Richtlinien für die automatische Skalierung für die Dienste einer Service Fabric Mesh-Anwendung konfigurieren.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f65fcfa76069a3de37fd3a76e38e38fba40e04ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75461979"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843055"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Erstellen von Richtlinien für automatische Skalierung für eine Service Fabric Mesh-Anwendung
 Einer der Hauptvorteile bei der Bereitstellung von Anwendungen in Service Fabric Mesh ist die Möglichkeit, Ihre Dienste ganz einfach horizontal hoch- und herunterzuskalieren. Auf diese Weise können Sie unterschiedlich starke Dienstauslastungen auffangen oder die Verfügbarkeit verbessern. Sie können Ihre Dienste manuell herunter- oder hochskalieren oder Richtlinien für die automatische Skalierung einrichten.
