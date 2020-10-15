@@ -3,12 +3,12 @@ title: Hochverfügbarkeit und Notfallwiederherstellung
 description: Enthält Informationen zum Entwerfen Ihrer Batch-Anwendung für einen regionalen Ausfall.
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: c77e6fa672d26545af47b262a982a7d0d7303eec
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725736"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058011"
 ---
 # <a name="design-your-application-for-high-availability"></a>Entwerfen Ihrer Anwendung für Hochverfügbarkeit
 
@@ -39,5 +39,5 @@ Beim Entwerfen einer Failoverlösung sollten Sie folgende Punkte berücksichtige
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Erstellen von Batch-Konten mit dem [Azure-Portal](batch-account-create-portal.md), der [Azure-Befehlszeilenschnittstelle](cli-samples.md), [PowerShell](batch-powershell-cmdlets-get-started.md) oder der [Batch-Verwaltungs-API](batch-management-dotnet.md).
+- Weitere Informationen zum Erstellen von Batch-Konten mit dem [Azure-Portal](batch-account-create-portal.md), der [Azure-Befehlszeilenschnittstelle](./scripts/batch-cli-sample-create-account.md), [PowerShell](batch-powershell-cmdlets-get-started.md) oder der [Batch-Verwaltungs-API](batch-management-dotnet.md).
 - Standardkontingente werden einem Batch-Konto zugeordnet; in [diesem Artikel](batch-quota-limit.md) werden die Standardkontingentwerte und die Erhöhung von Kontingenten ausführlich beschrieben.

@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Steuerungszuordnung des Blaupausenbeispiels „Payment Card Industry Data Security Standard v3.2.1“ zu Azure Policy und Azure RBAC
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c634e8cc64f6376251e2cd07725c5c5a643b27c7
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541644"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931426"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 

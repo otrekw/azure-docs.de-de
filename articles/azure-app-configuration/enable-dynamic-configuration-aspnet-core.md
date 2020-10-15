@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300288"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076996"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App
 
@@ -161,7 +161,7 @@ Ein *Sentinel-Schlüssel* ist ein spezieller Schlüssel, mit dem signalisiert wi
     ```
     ---
     > [!Tip]
-    > Weitere Informationen zu den Optionsmustern beim Lesen von Konfigurationswerten finden Sie unter  [Optionsmuster in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > Weitere Informationen zu den Optionsmustern beim Lesen von Konfigurationswerten finden Sie unter  [Optionsmuster in ASP.NET Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Aktualisieren Sie die `Configure`-Methode so, dass `UseAzureAppConfiguration`-Middleware hinzugefügt wird, mit der die für die Aktualisierung registrierten Konfigurationseinstellungen aktualisiert werden können, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
 

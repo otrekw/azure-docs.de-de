@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67235322"
 ---
 Nachdem Sie Ihre Endpunkte und Nachrichtenrouten eingerichtet haben, können Sie deren Konfiguration im Portal anzeigen. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Ressourcengruppen**. Wählen Sie Ihre Ressourcengruppe und anschließend Ihren Hub aus. (Der Hubname beginnt in diesem Tutorial mit `ContosoTestHub`.) Der Bereich „IoT Hub“ wird angezeigt.

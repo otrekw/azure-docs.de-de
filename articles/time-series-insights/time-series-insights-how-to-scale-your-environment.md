@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: a552f03c8a8fa05ed7d2c6eb87374d4e7e17838d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dadf523c5d17ffb91f4fefa71b52d1d1855c978
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070081"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570226"
 ---
 # <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights Gen1-Umgebung
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel erfahren Sie, wie Sie die Kapazität Ihrer Azure Time Series Insights-Umgebung über das [Azure-Portal](https://portal.azure.com) ändern. Die Kapazität ist der Multiplikator, der auf die Erfassungsrate, Speicherkapazität und Kosten der gewählten SKU angewendet wird.
 

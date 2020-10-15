@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844239"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076860"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
@@ -253,4 +253,4 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
 + Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management-Richtlinienbeispiele](policy-samples.md)
++ [API Management-Richtlinienbeispiele](./policy-reference.md)

@@ -3,19 +3,17 @@ title: Datenquellen für Azure Monitor-Arbeitsmappen | Microsoft-Dokumentation
 description: Vereinfachen Sie die komplexe Berichterstellung mit vordefinierten und benutzerdefiniert parametrisierten Azure Monitor-Arbeitsmappen, die aus mehreren Datenquellen erstellt werden.
 services: azure-monitor
 documentationcenter: ''
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: mbullwin
-ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 049a7348b803d12b66974bb9a9b50c12059171a2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825745"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931120"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Datenquellen für Azure Monitor-Arbeitsmappen
 

@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
-description: Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
+description: Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 868971b0523e077f0f76c0340a87df550448913a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5aa4ee556c4ec7348566f45592b5e9fbf00eaf20
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540811"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932191"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Steuerungszuordnung des SWIFT CSP-CSCF v2020-Blaupausenbeispiels
 
@@ -63,7 +63,7 @@ Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../..
 
 ## <a name="22-and-27-security-attributes"></a>2.2 und 2.7 Sicherheitsattribute
 
-Die Advanced Data Security-Funktion zur Datenermittlung und -klassifizierung für Azure SQL-Datenbank bietet Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Das Feature kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen. Mit Advanced Data Security kann sichergestellt werden, dass Informationen den entsprechenden Sicherheitsattributen Ihrer Organisation zugeordnet werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung von Advanced Data Security auf SQL-Servern zu überprüfen und zu erzwingen. 
+Die Advanced Data Security-Funktion zur Datenermittlung und -klassifizierung für Azure SQL-Datenbank bietet Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Das Feature kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen. Mit Advanced Data Security kann sichergestellt werden, dass Informationen den entsprechenden Sicherheitsattributen Ihrer Organisation zugeordnet werden. Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung von Advanced Data Security auf SQL-Servern zu überprüfen und zu erzwingen.
 
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
@@ -105,7 +105,8 @@ Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsb
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1.3, 2.2, 2.7, 6.4 und 6.5A Generierung von Überwachungsdatensätzen
 
-Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen. Diese Richtliniendefinitionen überprüfen und erzwingen die Bereitstellung des Log Analytics-Agents auf virtuellen Azure-Computern und die Konfiguration von Überprüfungseinstellungen für andere Azure-Ressourcentypen. Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Darüber hinaus werden Überprüfung und Advanced Data Security auf SQL-Servern konfiguriert.
+Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen.
+Diese Richtliniendefinitionen überprüfen und erzwingen die Bereitstellung des Log Analytics-Agents auf virtuellen Azure-Computern und die Konfiguration von Überprüfungseinstellungen für andere Azure-Ressourcentypen. Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Darüber hinaus werden Überprüfung und Advanced Data Security auf SQL-Servern konfiguriert.
 
 - Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen
@@ -181,7 +182,8 @@ Mit dieser Blaupause können Sie sichere Kennwörter erzwingen, indem [Azure Pol
 
 ## <a name="22-and-27-vulnerability-scanning"></a>2.2. und 2.7 Überprüfung auf Sicherheitsrisiken
 
-Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern in Azure Security Center überwachen. Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten. Diese Blaupause weist außerdem Richtliniendefinitionen zu, die Advanced Data Security auf SQL-Servern überprüfen und erzwingen. Erweiterte Datensicherheit umfasst Sicherheitsrisikobewertung und erweiterte Funktionen zum Schutz vor Bedrohungen, damit Sie Sicherheitsrisiken in Ihren bereitgestellten Ressourcen besser verstehen.
+Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern in Azure Security Center überwachen.
+Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten. Diese Blaupause weist außerdem Richtliniendefinitionen zu, die Advanced Data Security auf SQL-Servern überprüfen und erzwingen. Erweiterte Datensicherheit umfasst Sicherheitsrisikobewertung und erweiterte Funktionen zum Schutz vor Bedrohungen, damit Sie Sicherheitsrisiken in Ihren bereitgestellten Ressourcen besser verstehen.
 
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Die Überwachung in SQL Server muss aktiviert werden.
@@ -197,8 +199,7 @@ Die DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Fe
 
 ## <a name="11-and-61-boundary-protection"></a>1.1 und 6.1 Schutz von Grenzen
 
-Mit dieser Blaupause können Sie die Systemgrenze verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Empfehlungen für die Härtung von Netzwerksicherheitsgruppen in Azure Security Center überprüft. Azure Security Center analysiert Datenverkehrsmuster von virtuellen Computern mit Internetanbindung und gibt Empfehlungen für Netzwerksicherheitsgruppen-Regeln, um die potenzielle Angriffsfläche zu reduzieren.
-Mit dieser Blaupause werden außerdem Richtliniendefinitionen zugewiesen, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
+Mit dieser Blaupause können Sie die Systemgrenze verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Empfehlungen für die Härtung von Netzwerksicherheitsgruppen in Azure Security Center überprüft. Azure Security Center analysiert Datenverkehrsmuster von virtuellen Computern mit Internetanbindung und gibt Empfehlungen für Netzwerksicherheitsgruppen-Regeln, um die potenzielle Angriffsfläche zu reduzieren. Mit dieser Blaupause werden außerdem Richtliniendefinitionen zugewiesen, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
 
 - Auf virtuelle Computer mit Internetzugang müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.
 - Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden

@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083020"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassen eines HTTP-Endpunkts in Azure Functions
@@ -112,7 +112,7 @@ Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](./functions-cr
     | Back-End-URL | https://%HELLO_HOST%/api/hello | Gibt den Endpunkt an, der für die Anforderung als Proxy dienen soll |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Erstellen eines Proxys":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Anpassen einer HTTP-Funktion":::
 
     Beachten Sie, dass Azure Functions-Proxys das Basispfadpräfix `/api` nicht bereitstellen. Es muss in der Routenvorlage enthalten sein. Die `%HELLO_HOST%`-Syntax verweist auf die App-Einstellung, die Sie zuvor erstellt haben. Die aufgelöste URL verweist auf die ursprüngliche Funktion.
 
