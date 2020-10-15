@@ -4,16 +4,16 @@ description: Erfahren Sie, was es Neues im Azure Blockchain Service gibt, wie di
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921885"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948458"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Neues im Azure Blockchain Service
 
-> Lassen Sie sich über Updates auf dieser Seite benachrichtigen, indem Sie die URL `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` kopieren und in Ihren RSS-Feedreader einfügen [![Symbol des RSS-Feedreaders](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us).
+> Lassen Sie sich über Updates auf dieser Seite benachrichtigen, indem Sie die URL `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` kopieren und in Ihren RSS-Feedreader einfügen [![Symbol des RSS-Feedreaders](./media/whats-new/feed-icon-16x16.png)](/api/search/rss?locale=en-us&search=%2522Release%2bnotes%2b-%2bAzure%2bBlockchain%2bService%2522).
 
 Es werden fortlaufend Verbesserungen am Azure Blockchain Service vorgenommen. Damit Sie bezüglich der neuesten Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
 

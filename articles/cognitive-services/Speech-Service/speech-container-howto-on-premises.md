@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: aa1cb6e9fdd504622b2f444d511a8dd0e5fc1ca8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82608376"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Verwenden von Containern für den Speech-Dienst mit Kubernetes und Helm

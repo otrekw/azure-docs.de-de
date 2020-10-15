@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905842"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Verbinden vorhandener Azure App Service-Instanzen mit Azure-Datenbank für MySQL
@@ -29,18 +29,18 @@ Azure-Datenbank für MySQL bietet Zugriffssicherheit über eine Firewall zum Sch
    :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure-Portal – Klicken auf „Verbindungssicherheit“":::
 
 2. Wählen Sie für **Zugriff auf Azure-Dienste erlauben** **ON** (EIN) aus, und klicken Sie dann auf **Speichern**.
-   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure-Portal: Zugriff auf Azure-Dienste erlauben":::
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure-Portal – Klicken auf „Verbindungssicherheit“":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Lösung 2: Erstellen einer Firewallregel zum expliziten Zulassen ausgehender IP-Adressen
 Sie können alle ausgehenden IP-Adressen von Azure App Service explizit hinzufügen.
 
 1. Sehen Sie sich auf dem Blatt „App Service-Eigenschaften“ den Eintrag in **Ausgehende IP-Adressen** an.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure-Portal – ausgehende IP-Adressen anzeigen":::
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure-Portal – Klicken auf „Verbindungssicherheit“":::
 
 2. Fügen Sie auf dem MySQL-Blatt „Verbindungssicherheit“ alle ausgehenden IP-Adressen einzeln hinzu.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure-Portal – IP-Adressen einzeln hinzufügen":::
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure-Portal – Klicken auf „Verbindungssicherheit“":::
 
 3. Vergessen Sie nicht, Ihre Firewallregeln zu **speichern**.
 

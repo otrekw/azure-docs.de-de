@@ -1,14 +1,16 @@
 ---
 title: 'Bewährte Methoden: QnA Maker'
 description: Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu verbessern und bessere Ergebnisse für die Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots zu liefern.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053131"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777019"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 

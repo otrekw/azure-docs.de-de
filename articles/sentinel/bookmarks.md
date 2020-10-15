@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588687"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel
@@ -118,7 +118,7 @@ Anweisungen zur Verwendung des Untersuchungsdiagramms finden Sie unter [Ausführ
 So zeigen Sie das Lesezeichen innerhalb des Incidents an Navigieren Sie zu **Sentinel** > **Bedrohungsverwaltung** > **Incidents**, und wählen Sie den Incident mit Ihrem Lesezeichen aus. Wählen Sie **Alle Informationen anzeigen** und dann die Registerkarte **Lesezeichen** aus.
 
 > [!TIP]
-> Als Alternative zur Option **Incidentaktionen (Vorschau)** in der Befehlsleiste können Sie das Kontextmenü ( **...** ) für mindestens ein Lesezeichen verwenden, um Optionen zu **Neuen Incident erstellen**, **Zu vorhandenem Incident hinzufügen** und **Aus Incident entfernen** auszuwählen. 
+> Als Alternative zur Option **Incidentaktionen (Vorschau)** in der Befehlsleiste können Sie das Kontextmenü (**...**) für mindestens ein Lesezeichen verwenden, um Optionen zu **Neuen Incident erstellen**, **Zu vorhandenem Incident hinzufügen** und **Aus Incident entfernen** auszuwählen. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Anzeigen von mit Lesezeichen markierten Daten in Protokollen
 

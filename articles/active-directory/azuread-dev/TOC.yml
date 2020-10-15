@@ -1,15 +1,18 @@
 - name: Azure Active Directory für Entwickler
   href: index.yml
 - name: Übersicht
-  href: v1-overview.md
-- name: Beispiele
-  href: sample-v1-code.md
-- name: Konzepte
+  expanded: true
   items:
+    - name: Übersicht
+      href: v1-overview.md
     - name: Entwicklung der Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
     - name: Gründe für ein Update auf v2.0
       href: azure-ad-endpoint-comparison.md
+- name: Beispiele
+  href: sample-v1-code.md
+- name: Konzepte
+  items:
     - name: Anwendungstypen
       items:
         - name: Anwendungsarten

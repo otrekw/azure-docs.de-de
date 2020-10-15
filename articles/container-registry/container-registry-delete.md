@@ -4,10 +4,10 @@ description: Erfahren Sie mehr über die effektive Verwaltung der Registrierungs
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403341"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Löschen von Containerimages in Azure Container Registry mithilfe von Azure CLI

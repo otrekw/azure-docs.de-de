@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363153"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071029"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Tutorial: Durchführen der Massenverwaltung für Ihre verbundenen Geräte
 
@@ -59,7 +59,7 @@ Vorbereitungen:
 * Stellen Sie sicher, dass das [Startladeprogramm auf Ihrem IoT DevKit-Gerät Version 1.4.0 oder höher](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) aufweist.
 * Vergewissern Sie sich, dass die Version des IoT DevKit SDK der Version des Startladeprogramms entspricht. Sie können das IoT DevKit SDK mit Azure IoT Workbench in VS Code aktualisieren. Öffnen Sie die Befehlspalette, und geben Sie Folgendes ein **Arduino: Board Manager** ein, und wählen Sie den Eintrag aus. Weitere Informationen finden Sie unter [Vorbereiten der Entwicklungsumgebung](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
-Außerdem müssen Sie für mindestens ein IoT DevKit-Gerät eine Verbindung mit Ihrem Solution Accelerator für die Remoteüberwachung herstellen. Wenn Sie keine Verbindung mit einem IoT DevKit-Gerät hergestellt haben, helfen Ihnen die Informationen unter [Verbinden von MXChip IoT DevKit AZ3166 mit dem Solution Accelerator für die IoT-Remoteüberwachung](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md) weiter.
+Außerdem müssen Sie für mindestens ein IoT DevKit-Gerät eine Verbindung mit Ihrem Solution Accelerator für die Remoteüberwachung herstellen. Wenn Sie keine Verbindung mit einem IoT DevKit-Gerät hergestellt haben, helfen Ihnen die Informationen unter [Verbinden von MXChip IoT DevKit AZ3166 mit dem Solution Accelerator für die IoT-Remoteüberwachung](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md) weiter.
 
 ## <a name="navigate-to-the-dashboard"></a>Navigieren Sie zum Dashboard.
 
@@ -274,4 +274,4 @@ Klicken Sie auf der Seite **Bereitstellungen** auf eine Bereitstellung, um den S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde veranschaulicht, wie Sie die Firmware für eine Gruppe mit Geräten aktualisieren, die mit Ihrer Lösung verbunden sind. Für die Aktualisierung der Geräte nutzt Ihre Lösung die automatische Geräteverwaltung. Weitere Informationen zur automatischen Geräteverwaltung im zugrunde liegenden IoT-Hub Ihrer Lösung finden Sie unter [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit dem Azure-Portal](../iot-hub/iot-hub-auto-device-config.md).
+In diesem Tutorial wurde veranschaulicht, wie Sie die Firmware für eine Gruppe mit Geräten aktualisieren, die mit Ihrer Lösung verbunden sind. Für die Aktualisierung der Geräte nutzt Ihre Lösung die automatische Geräteverwaltung. Weitere Informationen zur automatischen Geräteverwaltung im zugrunde liegenden IoT-Hub Ihrer Lösung finden Sie unter [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit dem Azure-Portal](../iot-hub/iot-hub-automatic-device-management.md).

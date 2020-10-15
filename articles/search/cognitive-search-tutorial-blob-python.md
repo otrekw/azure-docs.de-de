@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531002"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von Python und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
@@ -315,7 +315,7 @@ In diesem Abschnitt definieren Sie das Indexschema, indem Sie die Felder angeben
 
 In dieser Übung werden die folgenden Felder und Feldtypen verwendet:
 
-| Feldnamen: | ID         | Inhalt   | languageCode | keyPhrases         | organizations     |
+| Feldnamen: | id         | Inhalt   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

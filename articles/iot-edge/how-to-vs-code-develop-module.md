@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296908"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043730"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -51,13 +51,13 @@ Ferner müssen Sie einige zusätzliche, sprachspezifische Tools installieren, um
 
 - Node.js: [Node.js](https://nodejs.org). Sie sollten außerdem [Yeoman](https://www.npmjs.com/package/yo) und den [Azure IoT Edge Node.js-Modulgenerator](https://www.npmjs.com/package/generator-azure-iot-edge-module) installieren.
 
-- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) und [Maven](https://maven.apache.org/). Sie müssen [die `JAVA_HOME`-Umgebungsvariable so festlegen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), dass sie auf Ihre JDK-Installation verweist.
+- Java: [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) und [Maven](https://maven.apache.org/). Sie müssen [die `JAVA_HOME`-Umgebungsvariable so festlegen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), dass sie auf Ihre JDK-Installation verweist.
 
 Um Ihr Modulimage zu erstellen und bereitzustellen, müssen Sie Docker das Modulimage erstellen lassen und benötigen eine Containerregistrierung, die das Modulimage aufnimmt:
 
 - [Docker Community Edition](https://docs.docker.com/install/) auf Ihrem Entwicklungscomputer.
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) oder [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](../container-registry/index.yml) oder [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > Sie können anstelle einer Cloudregistrierung auch eine lokale Docker-Registrierung für Prototyp- bzw. Testzwecke verwenden.

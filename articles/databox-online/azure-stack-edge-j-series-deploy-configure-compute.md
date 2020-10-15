@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 3281642134e7a6a2531f43ad4b3f80cff34d03b6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890929"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952164"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro
 
@@ -61,15 +61,15 @@ Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stac
     |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und dieselbe Ressourcengruppe wie die Azure Stack Edge-Ressource.     |
     |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
 
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+    ![Erste Schritte mit Compute 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
 4. Klicken Sie auf **Erstellen**. Die Erstellung der IoT Hub-Ressource dauert einige Minuten. Nachdem die IoT Hub-Ressource erstellt wurde, wird die Kachel **Compute konfigurieren** aktualisiert, um die Computekonfiguration anzuzeigen. 
 
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+    ![Erste Schritte mit Compute 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
 5. Wählen Sie auf der Kachel **Compute konfigurieren** die Option **View Compute** (Compute anzeigen), um sich zu vergewissern, dass die Edgecomputing-Rolle konfiguriert wurde.
     
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+    ![Erste Schritte mit Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
     > Wird das Dialogfeld **Compute konfigurieren** geschlossen, bevor die IoT Hub-Instanz mit dem Azure Stack Edge Pro-Gerät verknüpft wird, wird die IoT Hub-Instanz erstellt, aber nicht in der Computekonfiguration angezeigt. 
