@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020795"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950787"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Verwenden von Microsoft.Azure.Search (v10) in einer .NET-Anwendung
 
@@ -44,7 +44,7 @@ Wenn Sie Feedback für ein zukünftiges Update des SDK geben möchten, besuchen 
 
 Das .NET SDK verwendet die Version `2019-05-06` der [REST-API für Azure Cognitive Search](/rest/api/searchservice/) als Ziel. Diese Version enthält Unterstützung für [komplexe Typen](search-howto-complex-data-types.md), [KI-Anreicherung](cognitive-search-concept-intro.md), [AutoVervollständigen](/rest/api/searchservice/autocomplete) und den [JsonLines-Analysemodus](search-howto-index-json-blobs.md) beim Indizieren von Azure-Blobs. 
 
-Dieses SDK unterstützt keine [Verwaltungsvorgänge](/rest/api/searchmanagement/) wie etwa das Erstellen und Skalieren von Suchdiensten und das Verwalten von API-Schlüsseln. Wenn Sie Ihre Ressourcen für die Suche in einer .NET-Anwendung verwalten möchten, können Sie das [.NET Management SDK für die kognitive Azure-Suche](https://aka.ms/search-mgmt-sdk) verwenden.
+Dieses SDK unterstützt keine [Verwaltungsvorgänge](/rest/api/searchmanagement/) wie etwa das Erstellen und Skalieren von Suchdiensten und das Verwalten von API-Schlüsseln. Wenn Sie Ihre Ressourcen für die Suche in einer .NET-Anwendung verwalten möchten, können Sie das [.NET Management SDK für die kognitive Azure-Suche](/dotnet/api/overview/azure/search) verwenden.
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Aktualisieren auf die neueste Version des SDK
 Wenn Sie bereits eine ältere Version des .NET SDK für die kognitive Azure-Suche nutzen und auf die aktuelle allgemein verfügbare Version aktualisieren möchten, finden Sie [in diesem Artikel](search-dotnet-sdk-migration-version-9.md) eine entsprechende Anleitung.

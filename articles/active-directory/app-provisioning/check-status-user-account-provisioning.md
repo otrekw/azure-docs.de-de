@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235076"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069805"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie der Status von Bereitstellungsaufträgen
 Bereitstellungsconnectors werden über das [Azure-Portal](https://portal.azure.com) gemäß der [bereitgestellten Dokumentation](../saas-apps/tutorial-list.md) für die unterstützte Anwendung eingerichtet und konfiguriert. Sobald sie konfiguriert wurden und ausgeführt werden, können mit einer der beiden folgenden Methoden Berichte für Bereitstellungsaufträge genutzt werden:
 
 * **Azure-Portal:** In diesem Artikel wird hauptsächlich das Abrufen von Berichtsinformationen über das [Azure-Portal](https://portal.azure.com) beschrieben. Dabei werden sowohl ein Zusammenfassungsbericht für die Bereitstellung als auch ausführliche Bereitstellungsüberwachungsprotokolle für eine jeweilige Anwendung bereitgestellt.
-* **Überwachungs-API** – Azure Active Directory stellt auch eine Überwachungs-API bereit, die den programmgesteuerten Abruf von detaillierten Überwachungsprotokollen für die Bereitstellung ermöglicht. Dokumentation speziell für die Verwendung dieser API finden Sie unter [Referenz zur Überwachungs-API von Azure Active Directory](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit). Zwar wird in diesem Artikel nicht speziell die Verwendung der API behandelt, jedoch werden die Arten von Bereitstellungsereignissen, die im Überwachungsprotokoll erfasst werden, erläutert.
+* **Überwachungs-API** – Azure Active Directory stellt auch eine Überwachungs-API bereit, die den programmgesteuerten Abruf von detaillierten Überwachungsprotokollen für die Bereitstellung ermöglicht. Dokumentation speziell für die Verwendung dieser API finden Sie unter [Referenz zur Überwachungs-API von Azure Active Directory](/graph/api/resources/directoryaudit). Zwar wird in diesem Artikel nicht speziell die Verwendung der API behandelt, jedoch werden die Arten von Bereitstellungsereignissen, die im Überwachungsprotokoll erfasst werden, erläutert.
 
 ### <a name="definitions"></a>Definitionen
 

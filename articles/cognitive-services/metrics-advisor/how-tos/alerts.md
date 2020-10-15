@@ -3,19 +3,19 @@ title: Konfigurieren von Metrics Advisor-Warnungen
 titleSuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie Ihre Metrics Advisor-Warnungen konfigurieren, indem Sie Hooks für E-Mail, Web und Azure DevOps verwenden.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.author: mbullwin
+ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977782"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046790"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Gewusst wie: Konfigurieren von Warnungen und Erhalten von Benachrichtigungen per Hook
 
@@ -34,7 +34,7 @@ Für die Erstellung eines E-Mail-Hooks sind die folgenden Parameter verfügbar:
 
 Ein E-Mail-Hook ist der Kanal, über den Anomaliewarnungen an E-Mail-Adressen gesendet werden, die im Abschnitt **Email to** (E-Mail an) angegeben sind. Es werden zwei Arten von Benachrichtigungs-E-Mails gesendet: Warnungen vom Typ *Datenfeed nicht verfügbar* und *Incidentberichte* mit einer oder mehreren Anomalien. 
 
-|Parameter |Beschreibung  |
+|Parameter |BESCHREIBUNG  |
 |---------|---------|
 | name | Name des E-Mail-Hooks |
 | Email to (E-Mail an)| E-Mail-Adressen, an die eine Warnung gesendet wird|
@@ -73,7 +73,7 @@ Metrics Advisor unterstützt auch die automatische Erstellung eines Arbeitseleme
 
 Zum Erstellen eines Azure DevOps-Hooks müssen Sie die unten angegebenen Informationen hinzufügen.
 
-|Parameter |Beschreibung  |
+|Parameter |BESCHREIBUNG  |
 |---------|---------|
 | name | Ein Name für den Hook. |
 | Organisation | Die Organisation, zu der Ihre DevOps-Instanz gehört. |
@@ -88,11 +88,11 @@ Zum Erstellen eines Azure DevOps-Hooks müssen Sie die unten angegebenen Informa
 Navigieren Sie zur Seite mit den Metrikdetails. Sie finden den Abschnitt **Warnungseinstellungen** unten links auf dieser Seite. Es sind alle Warnungseinstellungen aufgeführt, die zur ausgewählten Erkennungskonfiguration gehören. Wenn eine neue Erkennungskonfiguration erstellt wird, sind keine Warnungseinstellungen vorhanden, und es werden keine Warnungen gesendet.  
 Sie können die Symbole **Hinzufügen**, **Bearbeiten** und **Löschen** verwenden, um Warnungseinstellungen zu ändern.
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Menüelement „Warnungseinstellungen“":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Fenster für Webhookerstellung":::
 
 Klicken Sie auf die Schaltfläche **Hinzufügen** oder **Bearbeiten**, um ein Fenster zum Hinzufügen bzw. Bearbeiten Ihrer Warnungseinstellungen anzuzeigen.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Hinzufügen oder Bearbeiten von Warnungseinstellungen":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Fenster für Webhookerstellung":::
 
 **Alert setting name** (Name der Warnungseinstellung): Der Name der jeweiligen Warnungseinstellung. Er wird im Titel der Benachrichtigungs-E-Mail angezeigt.
 
@@ -134,7 +134,7 @@ Die Auswahloption **Operator** stellt die logische Beziehung der einzelnen Absch
 |UND     | Eine Warnung wird nur gesendet, wenn eine Reihe mit jedem Warnungsabschnitt übereinstimmt und es sich bei allen Datenpunkten um Anomalien handelt. Wenn die Metriken unterschiedliche Dimensionsnamen aufweisen, wird nie eine Warnung ausgelöst.         |
 |oder     | Die Warnung wird gesendet, wenn mindestens ein Abschnitt Anomalien enthält.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Operator für Abschnitt mit mehreren Warnungseinstellungen":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Fenster für Webhookerstellung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

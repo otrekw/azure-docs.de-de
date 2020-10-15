@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 5fd297545e7f07844e28a1f56e724a7f61916bee
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536454"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057738"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -84,7 +84,7 @@ In den folgenden Abschnitten wird erläutert, wie Sie unterschiedliche Modellver
 Nachdem Sie Modelle erstellt haben, können Sie sie in die Azure Digital Twins-Instanz hochladen.
 
 > [!TIP]
-> Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen. Sie können die [clientseitige DTDL-Parserbibliothek](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) und das [Beispiel für das DTDL-Validierungssteuerelement](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) verwenden, die im Artikel [ *Analysieren und Überprüfen von Modellen mit der DTDL-Parserbibliothek*](how-to-parse-models.md) beschrieben sind, um Ihre Modelle vor dem Hochladen in den Dienst zu überprüfen.
+> Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen. Sie können die [clientseitige DTDL-Parserbibliothek](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) und das [Beispiel für das DTDL-Validierungssteuerelement](/samples/azure-samples/dtdl-validator/dtdl-validator) verwenden, die im Artikel [ *Analysieren und Überprüfen von Modellen mit der DTDL-Parserbibliothek*](how-to-parse-models.md) beschrieben sind, um Ihre Modelle vor dem Hochladen in den Dienst zu überprüfen.
 
 Wenn Sie zum Hochladen eines Modells bereit sind, können Sie den folgenden Codeausschnitt verwenden:
 

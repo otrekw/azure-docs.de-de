@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850697"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
@@ -171,7 +171,7 @@ Nehmen wir die Benutzerinformationen als Beispiel:
 
 Anhand dieser Informationen können Sie schnell erkennen, welche Informationen wichtig sind und welche nicht. Dadurch können wir sie „leiterhaft“ hierarchisieren:
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagramm eines Leiter-Musters" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagramm zur Veranschaulichung eines relativen relationalen Modells" border="false":::
 
 Die oberste Ebene ist der sogenannte UserChunk, die minimale Information, die einen Benutzer identifiziert und die für die Datenduplizierung verwendet wird. Durch die Reduzierung der doppelt vorhandenen Daten auf ausschließlich jene Informationen, die Sie auch „anzeigen“, minimieren Sie die Gefahr sehr umfangreicher Aktualisierungen.
 
@@ -248,7 +248,7 @@ Cosmos DB führt Ihre Abfragen (einschließlich [Aggregaten](https://azure.micro
 
 Im Laufe der Zeit werden der Datenverkehr und der Ressourcenverbrauch (in [Anforderungseinheiten](request-units.md) (Request Units, RUs) gemessen) zunehmen. Sie werden mehr Lese- und Schreibvorgänge durchführen, wenn Ihre Benutzerbasis an Größe zunimmt. Die Benutzerbasis erstellt und liest mehr Inhalte. Daher ist es von entscheidender Bedeutung, dass Sie den **Durchsatz skalieren** können. Die Erhöhung Ihrer RUs ist einfach. Sie müssen lediglich einige Klicks im Azure-Portal oder [Befehle über die API ausführen](/rest/api/cosmos-db/replace-an-offer).
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Vertikales Skalieren und Definieren eines Partitionsschlüssels":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Diagramm zur Veranschaulichung eines relativen relationalen Modells":::
 
 Was passiert, wenn sich Erfolg einstellt? Angenommen, Benutzer aus einer anderen Region, einem anderen Land oder von einem anderen Kontinent entdecken Ihre Plattform und beginnen, sie zu nutzen. Was für eine schöne Überraschung!
 
@@ -258,13 +258,13 @@ Mithilfe von Cosmos DB können Sie [Ihre Daten global replizieren](../cosmos-db/
 
 Wenn Sie Ihre Daten global replizieren, müssen Sie zugleich sicherstellen, dass dies allen Ihren Kunden zugute kommt. Wenn Sie ein Web-Front-End verwenden oder von mobilen Clients aus auf APIs zugreifen, können Sie [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) bereitstellen und Ihre Azure App Service-Instanz in allen gewünschten Regionen klonen. Verwenden Sie eine Leistungskonfiguration zur Unterstützung Ihrer erweiterten globalen Abdeckung. Wenn Ihre Clients auf Ihr Front-End oder Ihre APIs zugreifen, werden sie zum nächstgelegenen App Service weitergeleitet, der seinerseits eine Verbindung mit dem lokalen Cosmos DB-Replikat herstellt.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Hinzufügen von globaler Abdeckung zu Ihrer sozialen Plattform" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Diagramm zur Veranschaulichung eines relativen relationalen Modells" border="false":::
 
 ## <a name="conclusion"></a>Zusammenfassung
 
 In diesem Artikel wurden die Alternativen vorgestellt, die Ihnen in Bezug auf die Erstellung von sozialen Netzwerken ausschließlich in Azure mit kostengünstigen Diensten zur Verfügung stehen. Die Ergebnisse werden erreicht, indem eine Speicherlösung mit mehreren Ebenen und eine Datenverteilung nach dem „Leiterprinzip“ genutzt werden.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Interaktionsdiagramm zwischen Azure-Diensten für soziale Netzwerke" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagramm zur Veranschaulichung eines relativen relationalen Modells" border="false":::
 
 In Wahrheit gibt es keine Patentlösung für diese Art von Szenarien. Vielmehr sind es die Synergieeffekte aus einer Kombination hervorragender Dienste, die zu einem großartigen Benutzererlebnis verhelfen: die Geschwindigkeit und die Freiheit von Azure Cosmos DB, die eine hervorragende soziale Anwendung ermöglichen, die Intelligenz hinter einer erstklassigen Suchlösung wie Azure Cognitive Search und die Flexibilität von Azure App Services, nicht nur sprachunabhängige Anwendungen zu hosten, sondern sogar leistungsfähige Hintergrundprozesse. Dazu kommen erweiterbarer Azure Storage, Azure SQL-Datenbank zum Speichern riesiger Datenmengen und die analytische Leistungsfähigkeit von Azure Machine Learning zur Gewinnung von Wissen und Intelligenz, die Feedback für Ihre Prozesse liefern und helfen kann, den richtigen Benutzern die richtigen Inhalte zur Verfügung zu stellen.
 

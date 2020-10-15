@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73903705"
 ---
 Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829838"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
@@ -50,7 +50,7 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
 1. Geben Sie auf der Seite **Neue Funktion** `cosmos` in das Suchfeld ein, und wählen Sie dann die Vorlage **Azure Cosmos DB-Trigger** aus.
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Seite „Funktionen“ im Azure-Portal":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB-Code":::
 
 
 1. Konfigurieren Sie den neuen Trigger mit den Einstellungen, die in der folgenden Tabelle angegeben sind:
@@ -64,7 +64,7 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
     | **Sammlungsname für Leases** | Leases | Name der Sammlung zum Speichern der Leases. |
     | **Leasesammlung erstellen, sofern nicht vorhanden** | Ja | Überprüft das Vorhandensein der Leasesammlung und erstellt sie automatisch. |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Erstellen der ausgelösten Azure Cosmos DB-Funktion":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB-Code":::
 
 1. Wählen Sie **Funktion erstellen** aus. 
 
@@ -72,7 +72,7 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
 1. Um den vorlagenbasierten Funktionscode anzuzeigen, wählen Sie **Code + testen** aus.
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Cosmos DB-Funktionsvorlage in C#":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB-Code":::
 
     Diese Funktionsvorlage schreibt die Anzahl von Dokumenten und die erste Dokument-ID in die Protokolle.
 
@@ -111,15 +111,7 @@ Sobald der in der Funktionsbindung angegebene Container vorhanden ist, können S
 
 1. Erweitern Sie in Data Explorer den neuen Container **Items**, und wählen Sie **Elemente** und dann **Neues Element** aus.
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Erstellen eines Elements im Container „Items“":::
-
-1. Ersetzen Sie den Inhalt des neuen Elements durch den folgenden Inhalt, und wählen Sie dann **Speichern** aus.
-
-    ```yaml
-    {
-        "id": "task1",
-        "category": "general",
-        "description": "some task"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB-Code"
     }
     ```
 

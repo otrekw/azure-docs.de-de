@@ -4,10 +4,10 @@ description: Richten Sie Ihre Azure VMware Solution-Umgebung so ein, dass virtu
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 37fd74f9859813061ff5653fd2c2b0b6cad319e3
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579377"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Einrichten von Azure Backup Server für Azure VMware Solution

@@ -8,15 +8,17 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21dce1f9596645b0e4dd541c579e3b64d726c604
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7776f8ec0c97ade936f03805d0a1f9ef4a6360c7
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377017"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91936022"
 ---
 - East US
 - USA (Ost) 2
+- USA, Westen 2
+- Europa, Westen
 - Asien, Südosten
 - UK, Süden
 - Australien (Osten)

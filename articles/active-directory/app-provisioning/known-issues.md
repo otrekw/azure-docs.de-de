@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052381"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069754"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekannte Probleme: Bereitstellung von Anwendungen
 In diesem Artikel werden bekannte Probleme behandelt, die Sie bei der App-Bereitstellung berücksichtigen sollten. Sie können Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice angeben. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können. 
@@ -72,7 +72,7 @@ Wenn Sie eine App-Registrierung erstellen, wird der entsprechende Dienstprinzipa
 
 **Das Bereitstellungsintervall ist festgelegt**
 
-Die [Zeit](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) zwischen den Bereitstellungszyklen ist derzeit nicht konfigurierbar. 
+Die [Zeit](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) zwischen den Bereitstellungszyklen ist derzeit nicht konfigurierbar. 
 
 **Änderungen werden nicht von der Ziel-App zu Azure AD migriert**
 
