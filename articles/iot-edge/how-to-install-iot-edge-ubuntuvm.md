@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296976"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044223"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -50,7 +50,7 @@ Die Schaltfläche [In Azure bereitstellen](../azure-resource-manager/templates/d
 
     **Administratorbenutzername**: Ein Benutzername, der Rootberechtigungen für die Bereitstellung erhält.
 
-    **Geräte-Verbindungszeichenfolge**: Eine [Geräte-Verbindungszeichenfolge](how-to-register-device.md) für ein Gerät, das in Ihrem vorgesehenen [IoT Hub](../iot-hub/about-iot-hub.md) erstellt wurde.
+    **Geräte-Verbindungszeichenfolge**: Eine [Geräte-Verbindungszeichenfolge](./how-to-manual-provision-symmetric-key.md) für ein Gerät, das in Ihrem vorgesehenen [IoT Hub](../iot-hub/about-iot-hub.md) erstellt wurde.
 
     **VM-Größe**: Die [Größe](../cloud-services/cloud-services-sizes-specs.md) des bereitzustellenden virtuellen Computers
 

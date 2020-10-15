@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068016"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968666"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>DevOps-Task des Azure Image Builder-Diensts
 
@@ -31,8 +31,8 @@ In Azure VM Image Builder (AIB) gibt es zwei DevOps-Tasks:
 * Installieren Sie den [stabilen DevOps-Task aus Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * Sie müssen über ein VSTS-DevOps-Konto verfügen und eine Buildpipeline erstellt haben.
 * Registrieren Sie sich, und aktivieren Sie die erforderlichen Image Builder-Features in dem von den Pipelines verwendeten Abonnement:
-    * [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [Azure PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [Azure CLI](../windows/image-builder.md#register-the-features)
     
 * Erstellen Sie ein Azure Storage-Standard-Konto in der Ressourcengruppe des Quellimages. Sie können andere Ressourcengruppen/Speicherkonten verwenden. Das Speicherkonto wird verwendet, um die Buildartefakte von der DevOps-Aufgabe zum Image zu übertragen.
 
@@ -71,14 +71,14 @@ Verwenden Sie die Ressourcengruppe, in der das Artefakt der temporären Imagevor
  
 ### <a name="location"></a>Standort
 
-Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Shared Image Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
+Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](../windows/image-builder-overview.md#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Shared Image Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
 
 ### <a name="managed-identity-required"></a>Verwaltete Identität (erforderlich)
-Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Ausführlichere Informationen finden Sie [hier](https://aka.ms/azvmimagebuilder#permissions).
+Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Ausführlichere Informationen finden Sie [hier](./image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>VNET-Unterstützung
 
-Derzeit wird die Angabe eines vorhandenen Subnetzes von dem DevOps-Task nicht unterstützt. Wenn Sie jedoch ein vorhandenes VNET verwenden möchten, können Sie eine ARM-Vorlage mit einer darin geschachtelten Image Builder-Vorlage verwenden. Weitere Informationen dazu finden Sie in den Windows Image Builder-Vorlagebeispielen, oder verwenden Sie alternativ [Azure AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell).
+Derzeit wird die Angabe eines vorhandenen Subnetzes von dem DevOps-Task nicht unterstützt. Wenn Sie jedoch ein vorhandenes VNET verwenden möchten, können Sie eine ARM-Vorlage mit einer darin geschachtelten Image Builder-Vorlage verwenden. Weitere Informationen dazu finden Sie in den Windows Image Builder-Vorlagebeispielen, oder verwenden Sie alternativ [Azure AIB PowerShell](../windows/image-builder-powershell.md).
 
 ### <a name="source"></a>Quelle
 
@@ -139,7 +139,7 @@ Wählen Sie die Schaltfläche **Buildpfad** aus, um den Buildordner auszuwählen
 
 Das folgende Beispiel veranschaulicht die Funktionsweise:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Eine Verzeichnisstruktur mit einer Hierarchie":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Auswahl zum Hinzufügen eines Artefakts in der Releasepipeline":::
 
 
 * Windows: Die Dateien sind unter `C:\` gespeichert. Es wird ein Verzeichnis mit dem Namen `buildArtifacts` erstellt, das das `webapp`-Verzeichnis enthält.
@@ -194,7 +194,7 @@ Das folgende Beispiel veranschaulicht die Funktionsweise:
     
 #### <a name="total-length-of-image-build"></a>Gesamtdauer der Imageerstellung
 
-Die Gesamtdauer kann in dem DevOps-Pipelinetask noch nicht geändert werden. Diese verwendet den Standardwert von 240 Minuten. Wenn Sie den Parameter [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes) erhöhen möchten, können Sie einen Azure CLI-Task in der Releasepipeline verwenden. Konfigurieren Sie den Task, um eine Vorlage zu kopieren und zu übermitteln. Ein Beispiel finden Sie in dieser [Lösung](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), oder verwenden Sie Azure PowerShell.
+Die Gesamtdauer kann in dem DevOps-Pipelinetask noch nicht geändert werden. Diese verwendet den Standardwert von 240 Minuten. Wenn Sie den Parameter [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes) erhöhen möchten, können Sie einen Azure CLI-Task in der Releasepipeline verwenden. Konfigurieren Sie den Task, um eine Vorlage zu kopieren und zu übermitteln. Ein Beispiel finden Sie in dieser [Lösung](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), oder verwenden Sie Azure PowerShell.
 
 
 #### <a name="storage-account"></a>Speicherkonto
@@ -314,7 +314,7 @@ Bei einem Buildfehler wird die Stagingressourcengruppe nicht von dem DevOps-Task
 
 Im DevOps-Protokoll wird für die VM-Task des Image Builder ein Fehler und der Speicherort der Datei „customization.log“ angezeigt. Beispiel:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Beispiel für die Meldung eines Fehlers des DevOps-Tasks":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Auswahl zum Hinzufügen eines Artefakts in der Releasepipeline":::
 
 Weitere Informationen zur Problembehandlung finden Sie unter [Problembehandlung für den Azure Image Builder-Dienst](image-builder-troubleshoot.md). 
 

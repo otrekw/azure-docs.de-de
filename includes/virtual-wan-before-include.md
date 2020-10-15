@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Includedatei
+description: Includedatei
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5a3b9160f1fb28c68bdbaa540c78b2890dbcab82
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812738"
 ---
 * Sie verfügen über ein virtuelles Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken für die Verbindungsherstellung überschneidet. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie in der [Schnellstartanleitung](../articles/virtual-network/quick-create-portal.md).
