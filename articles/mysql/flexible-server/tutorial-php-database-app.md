@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929620"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Tutorial: Erstellen einer PHP- (Laravel) und flexiblen MySQL – Flexible Server-App (Vorschau) in Azure App Service
@@ -134,7 +134,7 @@ php artisan serve
 
 Navigieren Sie in einem Browser zu `http://localhost:8000`. Fügen Sie auf der Seite einige Aufgaben hinzu.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Erfolgreiche Verbindung zwischen PHP und MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 
@@ -257,7 +257,7 @@ Navigieren Sie zu `http://localhost:8000`. Wenn die Seite ohne Fehler geladen wi
 
 Fügen Sie auf der Seite einige Aufgaben hinzu.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Erfolgreiche Verbindung zwischen PHP und Azure Database for MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Browsen Sie zu `http://<app-name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-Web-App in Azure":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
 
 Glückwunsch! Sie führen eine datengesteuerte PHP-App in Azure App Service aus.
 
@@ -534,7 +534,7 @@ php artisan serve
 
 Navigieren Sie zu `http://localhost:8000`, um die Änderung des Aufgabenstatus anzuzeigen, und aktivieren Sie das Kontrollkästchen.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Hinzugefügtes Kontrollkästchen in der Aufgabe":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-App, und testen Sie die neuen Funktionen.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Auf Azure veröffentlichte Änderungen an Modell und Datenbank":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
 
 Wenn Sie Aufgaben hinzugefügt haben, werden sie in der Datenbank beibehalten. Bei Updates des Datenschemas bleiben vorhandene Daten erhalten.
 
