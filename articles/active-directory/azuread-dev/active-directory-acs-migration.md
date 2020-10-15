@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706250"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055364"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -214,7 +214,7 @@ Im Allgemeinen ist *Azure Active Directory wahrscheinlich die richtige Wahl für
 
 Wenn Sie zu dem Urteil kommen, dass Azure AD den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, sollten Sie die zwei Möglichkeiten für die Integration Ihrer App in Azure AD beachten.
 
-Um WS-Verbund oder WIF für die Integration mit Azure AD zu verwenden, empfehlen wir die in [Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md) beschriebene Vorgehensweise. Der Artikel bezieht sich auf die Konfiguration von Azure AD für SAML-basiertes einmaliges Anmelden, betrifft aber ebenfalls das Konfigurieren des WS-Verbunds. Für diesen Ansatz ist eine Azure AD Premium-Lizenz erforderlich. Dieser Ansatz bietet zwei Vorteile:
+Um WS-Verbund oder WIF für die Integration mit Azure AD zu verwenden, empfehlen wir die in [Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung](../manage-apps/configure-saml-single-sign-on.md) beschriebene Vorgehensweise. Der Artikel bezieht sich auf die Konfiguration von Azure AD für SAML-basiertes einmaliges Anmelden, betrifft aber ebenfalls das Konfigurieren des WS-Verbunds. Für diesen Ansatz ist eine Azure AD Premium-Lizenz erforderlich. Dieser Ansatz bietet zwei Vorteile:
 
 - Sie profitieren von der vollständigen Flexibilität der Azure AD-Tokenanpassung. Sie können die von Azure AD ausgestellten Ansprüche so anpassen, dass sie mit den von Access Control ausgestellten Ansprüchen übereinstimmen. Das betrifft insbesondere den Anspruch für Benutzer-ID oder Namensbezeichner. Um nach der Technologieumstellung weiterhin konsistente Benutzer-ID-Bezeichner für Ihre Benutzer zu empfangen, müssen Sie sicherstellen, dass die von Azure AD ausgestellten IDs mit den von Access Control ausgestellten IDs übereinstimmen.
 - Sie können ein für Ihre Anwendung spezifisches Tokensignaturzertifikat konfigurieren, dessen Gültigkeitsdauer Sie steuern können.
@@ -226,7 +226,7 @@ Eine andere Möglichkeit ist die Umsetzung [dieses Codebeispiels](https://github
 
 Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie mit dem [Rollover von Signaturschlüsseln in Azure AD](../develop/active-directory-signing-key-rollover.md) vertraut sein. Dieser Ansatz verwendet den globalen Azure AD-Signaturschlüssel zum Ausstellen von Token. Standardmäßig aktualisiert WIF Signaturschlüssel nicht automatisch. Wenn Azure AD durch die globalen Signaturschlüssel wechselt, muss Ihre WIF-Implementierung entsprechend vorbereitet sein und die Änderungen akzeptieren. Weitere Informationen finden Sie unter [Wichtige Informationen zum Rollover von Signaturschlüsseln in Azure Active Directory](/previous-versions/azure/dn641920(v=azure.100)).
 
-Wenn die Integration in Azure AD über das OpenID Connect- oder das OAuth-Protokoll möglich ist, wird diese Vorgehensweise empfohlen. Unter [Azure Active Directory für Entwickler](https://aka.ms/aaddev) stehen ausführliche Dokumentationen und Anweisungen für die Integration von Azure AD in Ihre Webanwendung zur Verfügung.
+Wenn die Integration in Azure AD über das OpenID Connect- oder das OAuth-Protokoll möglich ist, wird diese Vorgehensweise empfohlen. Unter [Azure Active Directory für Entwickler](../develop/index.yml) stehen ausführliche Dokumentationen und Anweisungen für die Integration von Azure AD in Ihre Webanwendung zur Verfügung.
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrieren zu Azure Active Directory B2C
 
@@ -332,7 +332,7 @@ Azure AD kann jedoch mithilfe der Azure AD-Implementierung der Erteilung der OAu
 
 Anleitungen zum Implementieren von Server-zu-Server-Szenarien finden Sie in den folgenden Ressourcen:
 
-- Dienst-zu-Dienst-Abschnitt in [Azure Active Directory für Entwickler](https://aka.ms/aaddev)
+- Dienst-zu-Dienst-Abschnitt in [Azure Active Directory für Entwickler](../develop/index.yml)
 - [Daemon code sample by using simple password client credentials](https://github.com/Azure-Samples/active-directory-dotnet-daemon) (Daemon-Codebeispiel mit Clientanmeldeinformationen mit einfachem Kennwort)
 - [Daemon code sample by using certificate client credentials](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Daemon-Codebeispiel mit Clientanmeldeinformationen mit Zertifikat)
 

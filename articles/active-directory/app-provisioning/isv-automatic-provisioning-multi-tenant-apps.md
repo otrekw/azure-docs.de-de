@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706448"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069720"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung
 
@@ -111,7 +111,7 @@ SAML JIT verwendet die Informationen zu Ansprüchen im SAML-Token, um Benutzerin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aktivieren des einmaligen Anmeldens für Ihre Anwendung](../manage-apps/isv-sso-content.md)
+* [Aktivieren des einmaligen Anmeldens für Ihre Anwendung](../develop/v2-howto-app-gallery-listing.md)
 
 * [Übermitteln Sie Ihre Liste der Anwendungen](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx), und erstellen Sie gemeinsam mit Microsoft eine Dokumentation auf der Microsoft-Website.
 

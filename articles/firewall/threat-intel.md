@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
 ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83655064"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall
@@ -27,7 +27,7 @@ Beim Auslösen einer Regel können Sie wahlweise nur eine Warnung protokollieren
 
 Für das Threat Intelligence-gestützte Filtern ist standardmäßig der Warnmodus aktiviert. Bis die Portalschnittstelle in Ihrer Region verfügbar wird, können Sie diese Funktion nicht deaktivieren oder den Modus ändern.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Portalschnittstelle für Threat-Intelligence-gestütztes Filtern":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Threat Intelligence für die Firewall":::
 
 ## <a name="logs"></a>Protokolle
 

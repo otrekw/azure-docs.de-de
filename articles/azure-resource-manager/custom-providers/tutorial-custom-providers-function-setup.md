@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648677"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948951"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter
 
@@ -51,7 +51,7 @@ So richten Sie die Azure-Funktion so ein, dass sie die RESTful-Anforderungsmetho
 > [!NOTE]
 > Fehlt die C#-Projektdatei im Projektverzeichnis, können Sie sie manuell hinzufügen. Sie wird auch angezeigt, nachdem die Erweiterung „Microsoft.Azure.WebJobs.Extensions.Storage“ für die Funktions-App installiert wurde.
 
-Aktualisieren Sie als Nächstes die C#-Projektdatei so, dass Sie nützliche NuGet-Bibliotheken enthält. Diese Bibliotheken vereinfachen das Analysieren eingehender Anforderungen von benutzerdefinierten Anbietern. Führen Sie die Schritte unter [Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen aus dem Portal](../../azure-functions/install-update-binding-extensions-manual.md) aus, und aktualisieren Sie die C#-Projektdatei so, dass sie die folgenden Paketverweise enthält:
+Aktualisieren Sie als Nächstes die C#-Projektdatei so, dass Sie nützliche NuGet-Bibliotheken enthält. Diese Bibliotheken vereinfachen das Analysieren eingehender Anforderungen von benutzerdefinierten Anbietern. Führen Sie die Schritte unter [Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen aus dem Portal](../../azure-functions/functions-bindings-register.md) aus, und aktualisieren Sie die C#-Projektdatei so, dass sie die folgenden Paketverweise enthält:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ Das folgende XML-Element ist ein Beispiel für eine C#-Projektdatei:
 In diesem Tutorial haben Sie eine Azure-Funktions-App zur Verwendung als benutzerdefinierter Anbieterendpunkt eingerichtet.
 
 Informationen zum Erstellen eines benutzerdefinierten RESTful-Anbieterendpunkts finden Sie unter [ Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter](./tutorial-custom-providers-function-authoring.md).
-

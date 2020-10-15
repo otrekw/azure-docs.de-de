@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326595"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077829"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Tutorial: Verwenden von Featureflags in einer Spring Boot-App
 
@@ -185,5 +185,5 @@ public String getOldFeature() {
 
 In diesem Tutorial haben Sie gelernt, wie Sie Featureflags in Ihrer Spring Boot-Anwendung unter Verwendung der Bibliotheken vom Typ `spring-cloud-azure-feature-management-web` implementieren. Die folgenden Ressourcen enthalten weitere Informationen zur Unterstützung der Featureverwaltung in Spring Boot und App Configuration:
 
-* [Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App](./quickstart-feature-flag-spring-boot.md)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

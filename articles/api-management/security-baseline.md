@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713784"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077438"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -100,7 +100,7 @@ Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um d
 
 * [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../virtual-network/manage-ddos-protection.md)
 
-* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/threat-protection.md)
+* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -588,7 +588,7 @@ Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die 
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für den Typ der
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1114,7 +1114,7 @@ Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key 
 
 Aktivieren Sie das vorläufige Löschen in Key Vault, um Schlüssel vor dem versehentlichen oder böswilligen Löschen zu schützen.
 
-* [Aktivieren des vorläufigen Löschens in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Aktivieren des vorläufigen Löschens in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
