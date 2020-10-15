@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie eine vorhandene Vorlagenspezifikation in eine
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369109"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage (Vorschau)

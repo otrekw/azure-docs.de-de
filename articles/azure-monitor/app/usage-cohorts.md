@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671085"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995749"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
@@ -131,7 +131,7 @@ Kohorten und Filter unterscheiden sich. Angenommen, Sie haben eine Kohorte von B
 
 ## <a name="learn-more"></a>Weitere Informationen
 
-* [Analytics-Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytics-Abfragesprache](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 * [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
 * [Benutzerabläufe](usage-flows.md)
 * [Nutzungsübersicht](usage-overview.md)

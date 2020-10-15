@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168366"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074463"
 ---
 # <a name="add-an-email-action"></a>Hinzufügen einer E-Mail-Aktion
 
@@ -166,7 +166,7 @@ In den folgenden Schritte wird gezeigt, wie Sie die HTML-E-Mail-Vorlage bearbeit
 
 ## <a name="throttling"></a>Drosselung
 
-Der Solution Accelerator für die Remoteüberwachung nutzt Outlook zum Senden von E-Mail-Benachrichtigungen. Outlook beschränkt die Anzahl gesendeter E-Mails auf [30 E-Mails pro Minute](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-Mail-Clients, die die E-Mails empfangen, drosseln unter Umständen auch die Anzahl der pro Minute empfangenen E-Mails. Informieren Sie sich über die Einschränkungen Ihres spezifischen E-Mail-Clients. Wenn Sie eine E-Mail-Benachrichtigung für eine Regel einrichten, sollte die Regel keine Sofortwerte verwenden, sondern Durchschnittswerte für einen Zeitraum von mindestens einer Minute berechnen:
+Der Solution Accelerator für die Remoteüberwachung nutzt Outlook zum Senden von E-Mail-Benachrichtigungen. Outlook beschränkt die Anzahl gesendeter E-Mails auf [30 E-Mails pro Minute](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-Mail-Clients, die die E-Mails empfangen, drosseln unter Umständen auch die Anzahl der pro Minute empfangenen E-Mails. Informieren Sie sich über die Einschränkungen Ihres spezifischen E-Mail-Clients. Wenn Sie eine E-Mail-Benachrichtigung für eine Regel einrichten, sollte die Regel keine Sofortwerte verwenden, sondern Durchschnittswerte für einen Zeitraum von mindestens einer Minute berechnen:
 
 ![Durchschnittsberechnung](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

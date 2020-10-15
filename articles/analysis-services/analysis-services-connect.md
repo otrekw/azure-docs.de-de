@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400280"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013694"
 ---
 # <a name="connecting-to-servers"></a>Herstellen einer Verbindung mit Servern
 
@@ -21,7 +21,7 @@ Dieser Artikel beschreibt das Herstellen einer Verbindung mit einem Server mithi
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
-[Abrufen der neuesten Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
+[Abrufen der neuesten Clientbibliotheken](/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 Für alle Verbindungen mit einem Server sind unabhängig vom Typ aktualisierte AMO-, ADOMD.NET- und OLEDB-Clientbibliotheken erforderlich, um eine Verbindung mit einem Analysis Services-Server herzustellen und mit ihm zu kommunizieren. Für SSMS, Visual Studio, Excel 2016 und höhere Versionen sowie Power BI werden die neuesten Clientbibliotheken installiert oder mit monatlichen Releases aktualisiert. In einigen Fällen ist es jedoch möglich, dass eine Anwendung nicht über die neuesten Clientbibliotheken verfügt. Dies kann beispielsweise der Fall sein, wenn Updates durch Richtlinien verzögert werden oder wenn Microsoft 365-Updates über den verzögerten Kanal erfolgen.
 
@@ -79,7 +79,7 @@ Bei Verwendung älterer Versionen von Excel können Benutzer mithilfe einer ODC-
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>Herstellen einer Verbindung als Verbindungsserver in SQL Server
 
-SQL Server kann eine Verbindung zu eine Azure Analysis Services-Ressource als [Verbindungsserver](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) herstellen, indem MSOLAP als Datenquellenanbieter angegeben wird. Bevor eine Verbindungsserververbindung konfiguriert wird, sollten Sie die aktuelle [MSOLAP-Clientbibliothek](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (Anbieter) installieren. 
+SQL Server kann eine Verbindung zu eine Azure Analysis Services-Ressource als [Verbindungsserver](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) herstellen, indem MSOLAP als Datenquellenanbieter angegeben wird. Bevor eine Verbindungsserververbindung konfiguriert wird, sollten Sie die aktuelle [MSOLAP-Clientbibliothek](/analysis-services/client-libraries?view=azure-analysis-services-current) (Anbieter) installieren. 
 
 Für Verbindungsserververbindungen zu Azure Analysis Services muss der MSOLAP-Anbieter außerhalb des SQL Server-Prozesses instanziiert werden. Wenn Verbindungsserveroptionen konfiguriert werden, sollten Sie dafür sorgen, dass die **InProcess zulassen**-Option **nicht ausgewählt** ist.
 
@@ -100,5 +100,4 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)    
 [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)   
-[Manage your server (Verwalten des Servers)](analysis-services-manage.md)   
-
+[Manage your server (Verwalten des Servers)](analysis-services-manage.md)

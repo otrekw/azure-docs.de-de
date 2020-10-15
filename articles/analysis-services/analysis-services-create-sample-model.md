@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230891"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013609"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells über das Portal
 
@@ -30,7 +30,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 - Einen Azure Analysis Services-Server. Weitere Informationen finden Sie unter [Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md).
 - Serveradministratorberechtigungen
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
@@ -74,5 +74,3 @@ In diesem Tutorial haben Sie gelernt, wie Sie Ihrem Server ein einfaches Beispie
 
 > [!div class="nextstepaction"]
 > [Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen](tutorials/analysis-services-tutorial-roles.md)
-
-

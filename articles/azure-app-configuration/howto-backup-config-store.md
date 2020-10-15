@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207132"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074854"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisches Sichern von App Configuration-Speichern
 
@@ -124,7 +124,7 @@ In diesem Artikel arbeiten Sie mit C#-Funktionen, die die folgenden Eigenschafte
 - Azure Functions Runtimeversion 3.x
 - Funktion wird vom Timer alle 10 Minuten ausgelöst
 
-Wir haben [eine Funktion getestet und veröffentlicht](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup), die Sie ohne Änderungen am Code verwenden können, um Ihnen den Einstieg in das Sichern Ihrer Daten zu erleichtern. Laden Sie die Projektdateien herunter, und [veröffentlichen Sie sie in Ihrer eigenen Azure-Funktions-App aus Visual Studio](/azure/azure-functions/functions-develop-vs#publish-to-azure).
+Wir haben [eine Funktion getestet und veröffentlicht](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup), die Sie ohne Änderungen am Code verwenden können, um Ihnen den Einstieg in das Sichern Ihrer Daten zu erleichtern. Laden Sie die Projektdateien herunter, und [veröffentlichen Sie sie in Ihrer eigenen Azure-Funktions-App aus Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 > [!IMPORTANT]
 > Nehmen Sie keine Änderungen an den Umgebungsvariablen im heruntergeladen Code vor. Im nächsten Abschnitt nehmen Sie die erforderlichen App-Einstellungen vor.
@@ -133,13 +133,13 @@ Wir haben [eine Funktion getestet und veröffentlicht](https://github.com/Azure/
 ### <a name="build-your-own-function"></a>Erstellen einer eigenen Funktion
 
 Wenn der oben bereitgestellte Beispielcode nicht Ihren Anforderungen entspricht, können Sie auch eine eigene Funktion erstellen. Die Funktion muss die folgenden Aufgaben ausführen können, um die Sicherung abzuschließen:
-- Lesen Sie regelmäßig die Inhalte Ihrer Warteschlange, um zu überprüfen, ob diese Benachrichtigungen von Event Grid enthält. Implementierungsdetails finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](/azure/storage/queues/storage-quickstart-queues-dotnet).
-- Wenn die Warteschlange [Ereignisbenachrichtigungen von Event Grid](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema) enthält, extrahieren Sie alle eindeutigen `<key, label>`-Informationen aus den Ereignisbenachrichtigungen. Die Kombination aus Schlüssel und Bezeichnung ist der eindeutige Bezeichner für Schlüssel-Wert-Änderungen im primären Speicher.
+- Lesen Sie regelmäßig die Inhalte Ihrer Warteschlange, um zu überprüfen, ob diese Benachrichtigungen von Event Grid enthält. Implementierungsdetails finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](../storage/queues/storage-quickstart-queues-dotnet.md).
+- Wenn die Warteschlange [Ereignisbenachrichtigungen von Event Grid](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema) enthält, extrahieren Sie alle eindeutigen `<key, label>`-Informationen aus den Ereignisbenachrichtigungen. Die Kombination aus Schlüssel und Bezeichnung ist der eindeutige Bezeichner für Schlüssel-Wert-Änderungen im primären Speicher.
 - Lesen Sie alle Einstellungen aus dem primären Speicher. Aktualisieren Sie nur die Einstellungen im sekundären Speicher, für die ein entsprechendes Ereignis in der Warteschlange vorliegt. Löschen Sie alle Einstellungen aus dem sekundären Speicher, die in der Warteschlange, aber nicht im primären Speicher vorhanden waren. Sie können das [App Configuration-SDK](https://github.com/Azure/AppConfiguration#sdks) verwenden, um programmgesteuert auf Ihre Konfigurationsspeicher zuzugreifen.
 - Löschen Sie die Benachrichtigungen aus der Warteschlange, wenn bei der Verarbeitung keine Ausnahmen aufgetreten sind.
 - Implementieren Sie die Fehlerbehandlung Ihren Bedürfnissen entsprechend. Im obigen Codebeispiel finden Sie einige häufig auftretende Ausnahmen, die Sie behandeln sollten.
 
-Weitere Informationen zum Erstellen von Funktionen finden Sie unter: [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](/azure/azure-functions/functions-create-scheduled-function) und [Entwickeln von Azure Functions mithilfe von Visual Studio](/azure/azure-functions/functions-develop-vs).
+Weitere Informationen zum Erstellen von Funktionen finden Sie unter: [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](../azure-functions/functions-create-scheduled-function.md) und [Entwickeln von Azure Functions mithilfe von Visual Studio](../azure-functions/functions-develop-vs.md).
 
 
 > [!IMPORTANT]
@@ -167,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>Gewähren von Zugriff auf die verwaltete Identität der Funktions-App
 
-Fügen Sie mit dem folgenden Befehl oder über das [Azure-Portal](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) eine systemseitig zugewiesene verwaltete Identität für Ihre Funktions-App hinzu.
+Fügen Sie mit dem folgenden Befehl oder über das [Azure-Portal](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) eine systemseitig zugewiesene verwaltete Identität für Ihre Funktions-App hinzu.
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> Ihr Konto muss über die Berechtigung `Owner` für den geeigneten Bereich (Ihr Abonnement oder die Ressourcengruppe) verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Hilfe zu Rollenzuweisungen finden Sie ggf. unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](/azure/role-based-access-control/role-assignments-portal).
+> Ihr Konto muss über die Berechtigung `Owner` für den geeigneten Bereich (Ihr Abonnement oder die Ressourcengruppe) verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Hilfe zu Rollenzuweisungen finden Sie ggf. unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
-Gewähren Sie mit den folgenden Befehlen oder über das [Azure-Portal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) der verwalteten Identität Ihrer Funktions-App Zugriff auf Ihre App Configuration-Speicher. Verwenden Sie hierfür die folgenden Rollen:
+Gewähren Sie mit den folgenden Befehlen oder über das [Azure-Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) der verwalteten Identität Ihrer Funktions-App Zugriff auf Ihre App Configuration-Speicher. Verwenden Sie hierfür die folgenden Rollen:
 - Weisen Sie die `App Configuration Data Reader`-Rolle im primären App Configuration-Speicher zu.
 - Weisen Sie die `App Configuration Data Owner`-Rolle im sekundären App Configuration-Speicher zu.
 
@@ -196,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-Gewähren Sie mit dem folgenden Befehl oder über das [Azure-Portal](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) der verwalteten Identität Ihrer Funktions-App Zugriff auf Ihre Warteschlange. Weisen Sie die `Storage Queue Data Contributor`-Rolle in der Warteschlange zu.
+Gewähren Sie mit dem folgenden Befehl oder über das [Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) der verwalteten Identität Ihrer Funktions-App Zugriff auf Ihre Warteschlange. Weisen Sie die `Storage Queue Data Contributor`-Rolle in der Warteschlange zu.
 
 ```azurecli-interactive
 az role assignment create \
@@ -216,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 Sie haben das Ereignis ausgelöst. In wenigen Augenblicken sendet Event Grid die Ereignisbenachrichtigung an Ihre Warteschlange. Zeigen Sie *nach der nächsten geplanten Ausführung Ihrer Funktion* die Konfigurationseinstellungen im sekundären Speicher an, um zu überprüfen, ob dieser den aktualisierten Schlüsselwert aus dem primären Speicher enthält.
 
 > [!NOTE]
-> Sie können [Ihre Funktion während der Tests und Problembehandlung manuell auslösen](/azure/azure-functions/functions-manually-run-non-http), ohne auf den geplanten Timertrigger zu warten.
+> Sie können [Ihre Funktion während der Tests und Problembehandlung manuell auslösen](../azure-functions/functions-manually-run-non-http.md), ohne auf den geplanten Timertrigger zu warten.
 
 Nachdem Sie sichergestellt haben, dass die Sicherungsfunktion erfolgreich ausgeführt wurde, können Sie sehen, dass der Schlüssel jetzt im sekundären Speicher vorhanden ist.
 
@@ -243,9 +243,9 @@ Wenn die neue Einstellung nicht im sekundären Speicher angezeigt wird:
 
 - Stellen Sie sicher, dass die Sicherungsfunktion ausgelöst wurde, *nachdem* Sie die Einstellung im primären Speicher erstellt haben.
 - Es ist möglich, dass Event Grid die Ereignisbenachrichtigung nicht rechtzeitig an die Warteschlange senden konnte. Überprüfen Sie, ob Ihre Warteschlange noch die Ereignisbenachrichtigung von Ihrem primären Speicher enthält. Wenn dies der Fall ist, lösen Sie die Sicherungsfunktion noch mal aus.
-- Überprüfen Sie die [Azure Functions-Protokolle](/azure/azure-functions/functions-create-scheduled-function#test-the-function) auf Fehler oder Warnungen.
-- Stellen Sie im [Azure-Portal](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) sicher, dass die Azure-Funktions-App korrekte Werte für die Anwendungseinstellungen enthält, die Azure Functions zu lesen versucht.
-- Sie können auch die Überwachung und Warnungen für Azure Functions mit [Azure Application Insights](/azure/azure-functions/functions-monitoring?tabs=cmd) einrichten. 
+- Überprüfen Sie die [Azure Functions-Protokolle](../azure-functions/functions-create-scheduled-function.md#test-the-function) auf Fehler oder Warnungen.
+- Stellen Sie im [Azure-Portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) sicher, dass die Azure-Funktions-App korrekte Werte für die Anwendungseinstellungen enthält, die Azure Functions zu lesen versucht.
+- Sie können auch die Überwachung und Warnungen für Azure Functions mit [Azure Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd) einrichten. 
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

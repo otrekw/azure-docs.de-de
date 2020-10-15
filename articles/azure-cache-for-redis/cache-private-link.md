@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838652"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis mit Azure Private Link (Public Preview)
 In diesem Artikel erfahren Sie, wie Sie im Azure-Portal ein virtuelles Netzwerk und eine Azure Cache for Redis-Instanz mit einem privaten Endpunkt erstellen. Außerdem erfahren Sie, wie Sie einer vorhandenen Azure Cache for Redis-Instanz einen privaten Endpunkt hinzufügen.
@@ -22,9 +22,8 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
 * Azure-Abonnement –  [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> Dieses Feature befindet sich zurzeit in der öffentlichen Vorschau für ausgewählte Regionen. Wenn Sie nicht über die Option zum Erstellen eines privaten Endpunkts verfügen, [wenden Sie sich an uns](mailto:azurecache@microsoft.com). Ihre Azure Cache for Redis-Instanz muss nach dem 28. Juli 2020 erstellt worden sein, damit Sie private Endpunkte verwenden können.
+> Ihre Azure Cache for Redis-Instanz muss nach dem 28. Juli 2020 erstellt worden sein, damit Sie private Endpunkte verwenden können.
 >
-> Aktuelle Regionen mit öffentlicher Vorschau: „USA, Westen-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „Norwegen, Osten“, „Norwegen, Westen“, „Europa; Norden“, „Europa, Westen“, „Asien, Osten“, „Asien, Südosten“, „Japan, Osten“, „Japan, Westen“, „Schweiz, Norden“, „Schweiz, Westen“, „Indien, Mitte“, „Indien, Westen“, „VAE, Mitte“, „Südkorea, Mitte“, „Südkorea, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Südafrika, Norden“, „Frankreich, Süden“, „Frankreich, Mitte“, „Kanada, Osten“, „Kanada, Mitte“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Australien, Mitte“, „Indien, Westen“, „Indien, Süden“, „Australien, Osten“, „Brasilien, Südosten und „Brasilien, Süden“.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Erstellen eines privaten Endpunkts mit einer neuen Azure Cache for Redis-Instanz 

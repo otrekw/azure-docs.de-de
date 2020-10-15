@@ -1,25 +1,18 @@
 ---
 title: Integrieren von Microsoft Azure mit Oracle Cloud Infrastructure | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu Lösungen, die in Microsoft Azure ausgeführte Oracle-Apps mit Datenbanken in Oracle Cloud Infrastructure (OCI) integrieren.
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e09f92e21743d39cbd132637cc63b27e8cfe944
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274502"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996149"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure
 
@@ -68,7 +61,7 @@ Mit ExpressRoute und FastConnect können Kunden mittels Peering ein virtuelles N
 
 Netzwerksicherheit ist ein wichtiger Bestandteil jeder Unternehmensanwendung und ein zentraler Aspekt dieser Multi-Cloud-Lösung. Sämtlicher Datenverkehr über ExpressRoute und FastConnect wird über ein privates Netzwerk abgewickelt. Diese Konfiguration ermöglicht die sichere Kommunikation zwischen einem virtuellen Azure-Netzwerk und einem virtuellen Cloudnetzwerk von Oracle. Sie müssen keine öffentliche IP-Adresse für einen virtuellen Computer in Azure angeben. Und Sie benötigen auch kein Internetgateway in OCI. Die gesamte Kommunikation erfolgt über die private IP-Adresse der Computer.
 
-Darüber hinaus können Sie [Sicherheitslisten](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) für Ihr virtuelles Cloudnetzwerk in OCI sowie Sicherheitsregeln einrichten, die mit [Netzwerksicherheitsgruppen](../../../virtual-network/security-overview.md) in Azure verknüpft sind. Diese Regeln dienen zum Steuern des Datenverkehrsfluss zwischen Computern in den virtuellen Netzwerken. Netzwerksicherheitsregeln können auf Computerebene, auf Subnetzebene sowie auf der Ebene des virtuellen Netzwerks hinzugefügt werden.
+Darüber hinaus können Sie [Sicherheitslisten](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) für Ihr virtuelles Cloudnetzwerk in OCI sowie Sicherheitsregeln einrichten, die mit [Netzwerksicherheitsgruppen](../../../virtual-network/network-security-groups-overview.md) in Azure verknüpft sind. Diese Regeln dienen zum Steuern des Datenverkehrsfluss zwischen Computern in den virtuellen Netzwerken. Netzwerksicherheitsregeln können auf Computerebene, auf Subnetzebene sowie auf der Ebene des virtuellen Netzwerks hinzugefügt werden.
 
 Die [Azure-Anwendungen von WebLogic Server](oracle-weblogic.md) erstellen jeweils eine Netzwerksicherheitsgruppe, die für die Verwendung mit den Portkonfigurationen von WebLogic Server vorkonfiguriert sind.
  

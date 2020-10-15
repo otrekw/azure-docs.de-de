@@ -4,17 +4,17 @@ description: Azure-Sicherheitsvergleichstest V2 für Endpunktsicherheit
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059037"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91402921"
 ---
-# <a name="security-control-endpoint-security"></a>Sicherheitskontrolle: Endpunktsicherheit
+# <a name="security-control-v2-endpoint-security"></a>Sicherheitskontrolle V2: Endpunktsicherheit
 
 Endpunktsicherheit umfasst Steuerelemente im Zusammenhang mit Endpunkterkennung und -antwort. Dies beinhaltet die Verwendung von Endpunkterkennung und -antwort (Endpoint Detection and Response, EDR) und des Antischadsoftwarediensts für Endpunkte in Azure-Umgebungen.
 
@@ -36,7 +36,7 @@ Microsoft Defender Advanced Threat Protection bietet EDR-Funktionen im Rahmen ei
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ Microsoft Antimalware für Azure Cloud Services ist die Standard-Antischadsoftwa
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Befolgen Sie die Empfehlungen in Azure Security Center: „Compute &amp; Apps“
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -98,3 +98,4 @@ Befolgen Sie die Empfehlungen in Azure Security Center: „Compute &amp; Apps“
 
 - [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
+- [Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center](../../security-center/security-center-endpoint-protection.md)

@@ -2,13 +2,13 @@
 title: 'Azure Batch: Poolerstellungsereignis'
 description: Referenz zum Batch-Poolerstellungsereignis, das nach dem Erstellen eines Pools ausgegeben wird. Der Inhalt des Protokolls macht allgemeine Informationen zum Pool verfügbar.
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 10/08/2020
+ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147329"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850947"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
@@ -41,7 +41,7 @@ ms.locfileid: "86147329"
     "resizeTimeout": "300000",
     "targetDedicatedNodes": 2,
     "targetLowPriorityNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoScale": false,
     "enableInterNodeCommunication": false,
@@ -64,7 +64,7 @@ ms.locfileid: "86147329"
 |`enableAutoScale`|Bool|Gibt an, ob die Poolgröße mit der Zeit automatisch angepasst wird.|
 |`enableInterNodeCommunication`|Bool|Gibt an, ob der Pool für eine direkte Kommunikation zwischen Knoten eingerichtet ist.|
 |`isAutoPool`|Bool|Gibt an, ob der Pool über den AutoPool-Mechanismus eines Auftrags erstellt wurde.|
-|`maxTasksPerNode`|Int32|Die maximale Anzahl von Tasks, die gleichzeitig auf einem einzelnen Computeknoten im Pool ausgeführt werden können.|
+|`taskSlotsPerNode`|Int32|Die maximale Anzahl von Tasks, die gleichzeitig auf einem einzelnen Computeknoten im Pool ausgeführt werden können.|
 |`vmFillType`|String|Definiert, wie vom Batch-Dienst Tasks zwischen den Computeknoten im Pool verteilt werden. Gültige Werte sind „Spread“ oder „Pack“.|
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration

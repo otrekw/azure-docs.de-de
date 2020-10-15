@@ -33,7 +33,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: Mehrere Front-Ends
       href: load-balancer-multivip-overview.md
-    - name: Ausgehende Verbindungen
+    - name: Proxy für ausgehenden Datenverkehr
       href: load-balancer-outbound-connections.md
     - name: TCP-Zurücksetzung und TCP-Leerlauftimeout
+    - name: Ausgangsregeln
+      href: outbound-rules.md
+    - name: TCP-Zurücksetzung bei Leerlauftimeout
       href: load-balancer-tcp-reset.md
     - name: Load Balancer Standard und Verfügbarkeitszonen
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +82,7 @@
       href: backend-pool-management.md
     - name: Load Balancer Standard und Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Portaleinstellungen
       href: manage.md
@@ -101,7 +104,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
@@ -116,7 +119,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -148,7 +151,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models
