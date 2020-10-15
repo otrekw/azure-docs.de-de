@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281190"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Umschreiben von HTTP-Headern und einer URL mithilfe von Application Gateway
@@ -211,13 +211,13 @@ Zum Ausführen von Szenarien, in denen Sie den Back-End-Pool basierend auf dem W
 
 * Die dritte Regel verfügt über eine Bedingung, die die Variable *query_string* auf *category=accessories* überprüft, und weist eine Aktion auf, die den URL-Pfad in /*listing3* umschreibt. Erneut ist **Pfadzuordnung neu auswerten** aktiviert.
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Umschreibungsszenario 1-2":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
  
 
 **Schritt 2 (b):** Weisen Sie diesen Umschreibungssatz dem Standardpfad der obigen pfadbasierten Regel zu.
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Umschreibungsszenario 1-3":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
 Wenn der Benutzer nun *contoso.com/listing?category=any* anfordert, erhält er den Standardpfad, da keines der Pfadmuster in der Pfadzuordnung (/listing1, /listing2, /listing3) übereinstimmt. Da Sie diesem Pfad den obigen Umschreibungssatz zugeordnet haben, wird dieser Umschreibungssatz ausgewertet. Da die Abfragezeichenfolge keiner der Bedingungen der drei Umschreibungsregeln in diesem Umschreibungssatz entspricht, wird keine Umschreibungsaktion durchgeführt. Die Anforderung wird also unverändert an das Back-End weitergeleitet, das dem Standardpfad zugeordnet ist (in diesem Fall *GenericList*).
 
@@ -234,11 +234,11 @@ In diesem Fall kann Application Gateway Parameter aus der URL erfassen und der A
 
 **Bedingung:** Servervariable `uri_path` entspricht dem Muster `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-Umschreibungsszenario 2-1":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
 **Aktion:** Festlegen des URL-Pfads auf `buy.aspx` und der Abfragezeichenfolge auf `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-Umschreibungsszenario 2-2":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
 Eine Schrittanleitung für das oben beschriebene Szenario finden Sie unter [Erneutes Generieren einer URL mit Azure Application Gateway: Azure-Portal](rewrite-url-portal.md)
 
@@ -248,7 +248,7 @@ Bei der URL-Umschreibung wird die URL von Application Gateway umgeschrieben, bev
 
 Bei einer URL-Umleitung sendet Application Gateway eine Umleitungsantwort mit der neuen URL an den Client. Dazu muss der Client wiederum seine Anforderung erneut an die neue in der Umleitung bereitgestellte URL senden. Die URL, die der Benutzer im Browser sieht, wird durch die neue URL ersetzt.
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Umschreibung und Umleitung":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL-Umschreibungsszenario 1-1":::
 
 ## <a name="limitations"></a>Einschränkungen
 

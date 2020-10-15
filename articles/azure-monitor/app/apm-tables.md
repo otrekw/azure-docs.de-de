@@ -2,15 +2,13 @@
 title: Schema für arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor
 description: Erfahren Sie mehr über die neue Tabellenstruktur und das neue Tabellenschema für arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931052"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen (Vorschau)
 

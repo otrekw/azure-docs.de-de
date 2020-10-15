@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eebb0a8dc23a6a442a170dcc6e19495f96ce2921
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325537"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930592"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern 
 
@@ -60,6 +60,6 @@ Volumes für virtuelle Windows- oder Linux-Computer lassen sich nach Bedarf einb
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [Häufig gestellte Fragen zu NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
-* [Network File System (Übersicht)](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [Häufig gestellte Fragen zu NFS](./azure-netapp-files-faqs.md#nfs-faqs)
+* [Network File System (Übersicht)](/windows-server/storage/nfs/nfs-overview)
 * [Einbinden eines NFS-Kerberos-Volumes](configure-kerberos-encryption.md#kerberos_mount)

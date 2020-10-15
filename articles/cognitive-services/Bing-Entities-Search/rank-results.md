@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68423917"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Verwenden der Rangfolge zum Anzeigen von Ergebnissen der Entitätssuche  
@@ -24,7 +24,7 @@ Jedes Ergebnis einer Entitätssuche enthält eine [RankingResponse](https://docs
 Innerhalb jeder Gruppe gibt das [Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)-Array die Reihenfolge an, in der die Inhalte angezeigt werden müssen. Jedes Element bietet zwei Möglichkeiten zur Angabe des Ergebnisses in einer Antwort.  
  
 
-|Feld | BESCHREIBUNG  |
+|Feld | Beschreibung  |
 |---------|---------|
 |`answerType` und `resultIndex` | `answerType` bezeichnet die Antwort (entweder eine Entität oder ein Ort) und `resultIndex` bezeichnet ein Ergebnis in dieser Antwort (z.B. eine Entität). Der Index beginnt bei 0.|
 |`value`    | `value` enthält eine ID, die entweder der ID einer Antwort oder eines Ergebnisses in der Antwort entspricht. Die ID ist entweder in der Antwort oder den Ergebnissen enthalten, jedoch nicht in beidem. |

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
 ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588614"
 ---
 # <a name="translator-v20"></a>Translator v2.0
@@ -52,7 +52,7 @@ Wenn Sie keine Obszönitäten in der Übersetzung wünschen, auch wenn diese im 
 |ProfanityAction    |Aktion |Beispielquelltext (Japanisch)  |Beispielübersetzung (Englisch)  |
 |:--|:--|:--|:--|
 |NoAction   |Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönitäten werden von der Quell- in die Zielsprache übertragen.        |彼はジャッカスです。     |Er ist ein Trottel.   |
-|Marked     |Obszöne Wörter werden von den XML-Tags \<profanity> und \</profanity> umschlossen.       |彼はジャッカスです。 |Er ist ein \<profanity>Trottel\</profanity>.  |
+|Marked     |Obszöne Begriffe werden von den XML-Tags \<profanity> und \</profanity> umschlossen.       |彼はジャッカスです。 |Er ist ein \<profanity>Trottel\</profanity>.  |
 |Deleted    |Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.     |彼はジャッカスです。 |He is a. (Er ist ein.)   |
 
     

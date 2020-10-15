@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: mblythe
 ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85852148"
 ---
 # <a name="manage-an-azure-support-request"></a>Verwalten einer Azure-Supportanfrage
@@ -45,17 +45,17 @@ Auf dieser Seite können Sie Supportanfragen durchsuchen, filtern und sortieren.
 
 1. Wählen Sie auf der Seite **Supportanfrage** die Option **Change** (Ändern) aus.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Ändern des Schweregrads der Supportanfrage":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Alle Supportanfragen":::
 
 1. Im Azure-Portal wird einer von zwei Bildschirmen angezeigt, der davon abhängt, ob die Anfrage bereits einem Supporttechniker zugewiesen ist:
 
     - Wurde Ihre Anfrage noch nicht zugewiesen, wird ein Bildschirm wie dieser angezeigt. Wählen Sie einen neuen Schweregrad aus, und wählen Sie dann **Change** (Ändern) aus.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Auswählen eines neuen Schweregrads":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Alle Supportanfragen":::
 
     - Wenn Ihre Anfrage zugewiesen wurde, wird ein Bildschirm wie dieser angezeigt. Wählen Sie **OK** aus, und erstellen Sie dann eine [neue Nachricht](#send-a-message), um eine Änderung des Schweregrads anzufordern.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Neuer Schweregrad kann nicht ausgewählt werden":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Alle Supportanfragen":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Teilen von Diagnoseinformationen mit dem Azure-Support
 
@@ -69,7 +69,7 @@ Beim Erstellen einer Supportanfrage ist standardmäßig die Option **Diagnoseinf
     
     1. Wählen Sie auf der Seite **Supportanfrage** die Option **Berechtigung erteilen** und anschließend **Ja** und **OK** aus.
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Erteilen von Berechtigungen für Diagnoseinformationen":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Alle Supportanfragen":::
 
 ## <a name="upload-files"></a>Hochladen von Dateien
 
@@ -79,7 +79,7 @@ Sie können mithilfe der Dateiupload-Option Diagnosedateien oder andere Dateien 
 
 1. Navigieren Sie auf der Seite **Supportanfrage** zu Ihrer Datei, und wählen Sie dann **Upload** aus. Wiederholen Sie den Vorgang, wenn mehrere Dateien hochgeladen werden sollen.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Hochladen einer Datei":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Alle Supportanfragen":::
 
 ### <a name="file-upload-guidelines"></a>Richtlinien für den Dateiupload
 

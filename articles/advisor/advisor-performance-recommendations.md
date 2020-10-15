@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405155"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077812"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -142,22 +142,22 @@ Cache-Instanzen erzielen die optimale Leistung, wenn Sie nicht mit hoher Arbeits
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Hinzufügen von Regionen mit Datenverkehr zu Ihrem Azure Cosmos DB-Konto
 
-Advisor ermittelt Azure Cosmos DB-Konten mit Datenverkehr aus einer derzeit nicht konfigurierten Region. Es wird empfohlen, diese Region hinzuzufügen. Dies dient der Verbesserung der Latenz für Anforderungen aus der betreffenden Region und stellt die Verfügbarkeit im Falle von Regionsausfällen sicher. [Weitere Informationen zur globalen Datenverteilung mit Azure Cosmos DB](https://aka.ms/cosmos/globaldistribution)
+Advisor ermittelt Azure Cosmos DB-Konten mit Datenverkehr aus einer derzeit nicht konfigurierten Region. Es wird empfohlen, diese Region hinzuzufügen. Dies dient der Verbesserung der Latenz für Anforderungen aus der betreffenden Region und stellt die Verfügbarkeit im Falle von Regionsausfällen sicher. [Weitere Informationen zur globalen Datenverteilung mit Azure Cosmos DB](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Konfigurieren der Azure Cosmos DB-Indizierungsrichtlinie mit benutzerdefinierten eingeschlossenen oder ausgeschlossenen Pfaden
 
-Advisor ermittelt Azure Cosmos DB-Container, die die standardmäßige Indizierungsrichtlinie verwenden, aber von einer benutzerdefinierten Indizierungsrichtlinie profitieren könnten. Diese Einschätzung basiert auf dem Workloadmuster. Die Standardindizierungsrichtlinie indiziert alle Eigenschaften. Mit einer benutzerdefinierten Indizierungsrichtlinie mit expliziten ein- bzw. ausgeschlossenen Pfaden für Abfragefilter lassen sich die Anforderungseinheiten und der Speicherbedarf für die Indizierung verringern. [Weitere Informationen zum Ändern von Indizierungsrichtlinien](https://aka.ms/cosmosdb/modify-index-policy)
+Advisor ermittelt Azure Cosmos DB-Container, die die standardmäßige Indizierungsrichtlinie verwenden, aber von einer benutzerdefinierten Indizierungsrichtlinie profitieren könnten. Diese Einschätzung basiert auf dem Workloadmuster. Die Standardindizierungsrichtlinie indiziert alle Eigenschaften. Mit einer benutzerdefinierten Indizierungsrichtlinie mit expliziten ein- bzw. ausgeschlossenen Pfaden für Abfragefilter lassen sich die Anforderungseinheiten und der Speicherbedarf für die Indizierung verringern. [Weitere Informationen zum Ändern von Indizierungsrichtlinien](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Festlegen der Azure Cosmos DB-Abfrageseitengröße (MaxItemCount) auf „–1“ 
 
-Azure Advisor ermittelt Azure Cosmos DB-Container, die eine Abfrageseitengröße von 100 verwenden. Zum Beschleunigen von Scans wird empfohlen, eine Seitengröße von –1 zu verwenden. [Weitere Informationen über MaxItemCount](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure Advisor ermittelt Azure Cosmos DB-Container, die eine Abfrageseitengröße von 100 verwenden. Zum Beschleunigen von Scans wird empfohlen, eine Seitengröße von –1 zu verwenden. [Weitere Informationen über MaxItemCount](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Verwenden Sie zum Verbessern der Clusterleistung ggf. die Funktion für beschleunigte Schreibvorgänge in Ihrem HBase-Cluster.
 Azure Advisor analysiert die Systemprotokolle aus den letzten 7 Tagen und identifiziert, ob in Ihrem Cluster die folgenden Szenarien aufgetreten sind:
 1. Hohe Latenz bei der WAL-Synchronisierung 
 2. Hohe Anzahl von Schreibanforderungen (mindestens 3 Ein-Stunden-Fenster mit mehr als 1.000 avg_write_requests/s/Knoten)
 
-Diese Umstände sind Hinweise darauf, dass der Cluster eine hohe Schreiblatenz aufweist. Dies kann auf eine hohe Arbeitsauslastung in Ihrem Cluster zurückzuführen sein. Zur Leistungsverbesserung beim Cluster empfiehlt es sich, die von Azure HDInsight HBase bereitgestellte Funktion für beschleunigte Schreibvorgänge zu nutzen. Mit der Funktion für beschleunigte Schreibvorgänge für HDInsight-Apache HBase-Cluster werden jedem RegionServer (Workerknoten) verwaltete SSD Premium-Datenträger hinzugefügt, anstatt auf Cloudspeicher zurückzugreifen. Dies führt zu einer niedrigen Schreiblatenz und höherer Resilienz für Ihre Anwendungen. Weitere Informationen zu dieser Funktion finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight).
+Diese Umstände sind Hinweise darauf, dass der Cluster eine hohe Schreiblatenz aufweist. Dies kann auf eine hohe Arbeitsauslastung in Ihrem Cluster zurückzuführen sein. Zur Leistungsverbesserung beim Cluster empfiehlt es sich, die von Azure HDInsight HBase bereitgestellte Funktion für beschleunigte Schreibvorgänge zu nutzen. Mit der Funktion für beschleunigte Schreibvorgänge für HDInsight-Apache HBase-Cluster werden jedem RegionServer (Workerknoten) verwaltete SSD Premium-Datenträger hinzugefügt, anstatt auf Cloudspeicher zurückzugreifen. Dies führt zu einer niedrigen Schreiblatenz und höherer Resilienz für Ihre Anwendungen. Weitere Informationen zu dieser Funktion finden Sie [hier](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight).
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Überprüfen des Cachezeitraums von Azure Data Explorer-Tabellen (Richtlinie) zur Leistungsverbesserung (Vorschau)
 Bei dieser Empfehlung werden Azure Data Explorer-Tabellen mit einer hohen Zahl von Abfragen ermittelt, die über den konfigurierten Cachezeitraum (Richtlinie) hinausgehen. (Es werden die obersten zehn Tabellen nach Abfrageprozentsatz angezeigt, von denen auf Daten außerhalb des Caches zugegriffen wird.) Die empfohlene Aktion zum Verbessern der Leistung des Clusters lautet: Beschränken Sie die Abfragen für diese Tabelle auf den erforderlichen Mindestzeitbereich (innerhalb der definierten Richtlinie). Falls Daten des gesamten Zeitbereichs erforderlich sind, können Sie als Alternative den Cachezeitraum auch auf den empfohlenen Wert erhöhen.
@@ -169,11 +169,11 @@ Die Advisor-Analyse zeigt, dass es für Ihren MySQL-Server ggf. zu unnötigem E/
 Advisor identifiziert die Servergruppen, in denen die Daten nicht verteilt wurden, aber im Koordinator bleiben. Basierend darauf empfiehlt Advisor, dass für alle Vorteile von Hyperscale (Citus) Daten auf Workerknoten für Ihre Servergruppen verteilt werden sollten. Dies wird die Abfrageleistung durch Nutzung der Ressourcen der einzelnen Knoten in der Servergruppe verbessern. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Verbessern der Benutzerfreundlichkeit und der Konnektivität, indem Sie virtuelle Computer näher am Standort der Windows Virtual Desktop-Bereitstellung bereitstellen
-Wir haben festgestellt, dass sich Ihre virtuellen Computer nicht in der Region befinden, von der aus Ihre Benutzer eine WVD-Verbindung (Windows Virtual Desktop) herstellen, oder dass Ihre virtuellen Computer weit von dieser Region entfernt sind. Dies kann zu längeren Verbindungsreaktionszeiten führen und wirkt sich insgesamt negativ auf die Benutzerfreundlichkeit von WVD aus. Verwenden Sie bei der Erstellung virtueller Computer für Ihre Hostpools nach Möglichkeit eine Region, die sich näher beim Benutzer befindet. Eine geringe Entfernung verbessert die Zufriedenheit mit dem WVD-Dienst sowie die allgemeine Benutzerfreundlichkeit. [Hier](https://docs.microsoft.com/azure/virtual-desktop/connection-latency) erfahren Sie mehr zur Verbindungswartezeit.
+Wir haben festgestellt, dass sich Ihre virtuellen Computer nicht in der Region befinden, von der aus Ihre Benutzer eine WVD-Verbindung (Windows Virtual Desktop) herstellen, oder dass Ihre virtuellen Computer weit von dieser Region entfernt sind. Dies kann zu längeren Verbindungsreaktionszeiten führen und wirkt sich insgesamt negativ auf die Benutzerfreundlichkeit von WVD aus. Verwenden Sie bei der Erstellung virtueller Computer für Ihre Hostpools nach Möglichkeit eine Region, die sich näher beim Benutzer befindet. Eine geringe Entfernung verbessert die Zufriedenheit mit dem WVD-Dienst sowie die allgemeine Benutzerfreundlichkeit. [Hier](../virtual-desktop/connection-latency.md) erfahren Sie mehr zur Verbindungswartezeit.
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgrade auf die neueste Version des SDK des plastischen Readers
 Wir haben unter diesem Abonnement Ressourcen mit veralteten Versionen des SDK des plastischen Readers identifiziert. Die Verwendung der neuesten Version des SDK des plastischen Readers bietet Ihnen aktualisierte Sicherheit, Leistung und einen erweiterten Satz von Features, mit denen Sie Ihre Integrationsmöglichkeiten anpassen und verbessern können.
-Weitere Informationen zum [Immersive Reader SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)
+Weitere Informationen zum [Immersive Reader SDK](../cognitive-services/immersive-reader/index.yml)
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung

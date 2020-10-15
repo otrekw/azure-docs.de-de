@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels für UK OFFICIAL und UK NHS
-description: Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
+description: Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele. Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540386"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931271"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 
@@ -33,8 +33,7 @@ Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview
 
 ## <a name="23-data-at-rest-protection"></a>2.3 Schutz von ruhenden Daten
 
-Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Erzwingen bestimmter kryptografischer Steuerungen und zum Überwachen der Verwendung schwacher kryptografischer Einstellungen hilft Ihnen die Blaupause, Ihre Richtlinien für die Verwendung von kryptografischen Steuerungen durchzusetzen.
-Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Insbesondere setzen die durch diese Blaupause zugewiesenen Richtlinien Folgendes voraus: Verschlüsselung für Speicherkonten von Data Lake, transparente Datenverschlüsselung für SQL-Datenbanken, Überwachung auf fehlende Verschlüsselung für Speicherkonten, SQL-Datenbanken, Festplatten virtueller Computer und Automatisierungskontenvariablen, Überwachung auf unsichere Verbindungen zu Speicherkonten und Redis Cache, Überwachung schwacher Passwortverschlüsselungen für virtuelle Computer sowie Überwachung der unverschlüsselten Kommunikation mit Service Fabric.
+Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Erzwingen bestimmter kryptografischer Steuerungen und zum Überwachen der Verwendung schwacher kryptografischer Einstellungen hilft Ihnen die Blaupause, Ihre Richtlinien für die Verwendung von kryptografischen Steuerungen durchzusetzen. Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Insbesondere setzen die durch diese Blaupause zugewiesenen Richtlinien Folgendes voraus: Verschlüsselung für Speicherkonten von Data Lake, transparente Datenverschlüsselung für SQL-Datenbanken, Überwachung auf fehlende Verschlüsselung für Speicherkonten, SQL-Datenbanken, Festplatten virtueller Computer und Automatisierungskontenvariablen, Überwachung auf unsichere Verbindungen zu Speicherkonten und Redis Cache, Überwachung schwacher Passwortverschlüsselungen für virtuelle Computer sowie Überwachung der unverschlüsselten Kommunikation mit Service Fabric.
 
 - Die Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden.
 - Automation-Kontovariablen sollten verschlüsselt werden.
@@ -76,7 +75,8 @@ Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview
 
 ## <a name="9-secure-user-management"></a>9 Sichere Benutzerverwaltung 
 
-Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Überwachen von externen Konten mit Besitzer- und/oder Lese-/Schreibberechtigungen sowie von Konten mit Besitzer-, Lese- und/oder Schreibberechtigungen, für die keine mehrstufige Authentifizierung (MFA) aktiviert ist, hilft Ihnen die Blaupause, Zugriffsrechte einzuschränken und zu steuern.
+Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Ressourcen in Azure hat.
+Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Überwachen von externen Konten mit Besitzer- und/oder Lese-/Schreibberechtigungen sowie von Konten mit Besitzer-, Lese- und/oder Schreibberechtigungen, für die keine mehrstufige Authentifizierung (MFA) aktiviert ist, hilft Ihnen die Blaupause, Zugriffsrechte einzuschränken und zu steuern.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
@@ -101,7 +101,8 @@ Die Blaupause weist Azure-Richtliniendefinitionen zu, um die Verwendung der Azur
 - Ein Azure Active Directory-Administrator sollte für SQL-Server-Instanzen bereitgestellt werden
 - Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
 
-Die Blaupause weist auch Azure-Richtliniendefinitionen zu Auditkonten zu, die zur Überprüfung priorisiert werden sollten (einschließlich veralteter Konten und externer Konten). Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden. Die Blaupause weist zwei Azure-Richtliniendefinitionen zum Überwachen des veralteten Kontos zu, das bei der Entfernung berücksichtigt werden sollten.
+Die Blaupause weist auch Azure-Richtliniendefinitionen zu Auditkonten zu, die zur Überprüfung priorisiert werden sollten (einschließlich veralteter Konten und externer Konten). Bei Bedarf kann die Anmeldung für Konten blockiert werden (oder Konten können entfernt werden), wodurch die Zugriffsrechte für Azure-Ressourcen sofort entfernt werden.
+Die Blaupause weist zwei Azure-Richtliniendefinitionen zum Überwachen des veralteten Kontos zu, das bei der Entfernung berücksichtigt werden sollten.
 
 - Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
@@ -137,7 +138,8 @@ Durch die Zuweisung von Azure-Richtliniendefinitionen hilft Ihnen die Blaupause 
 
 ## <a name="11-external-interface-protection"></a>11 Schutz von externen Schnittstellen
 
-Sofern Sie nicht mehr als 25 Richtlinien für eine angemessene sichere Benutzerverwaltung verwenden, unterstützt Sie die Blaupause durch die Zuweisung einer [Azure-Richtliniendefinition](../../../policy/overview.md), die Speicherkonten mit nicht eingeschränktem Zugriff überwacht, beim Schutz von Dienstschnittstellen vor unbefugtem Zugriff. Speicherkonten mit nicht eingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf die im Informationssystem enthaltenen Informationen zulassen. Die Blaupause weist auch eine Richtlinie zu, die adaptive Anwendungssteuerungen auf virtuellen Maschinen ermöglicht.
+Sofern Sie nicht mehr als 25 Richtlinien für eine angemessene sichere Benutzerverwaltung verwenden, unterstützt Sie die Blaupause durch die Zuweisung einer [Azure-Richtliniendefinition](../../../policy/overview.md), die Speicherkonten mit nicht eingeschränktem Zugriff überwacht, beim Schutz von Dienstschnittstellen vor unbefugtem Zugriff.
+Speicherkonten mit nicht eingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf die im Informationssystem enthaltenen Informationen zulassen. Die Blaupause weist auch eine Richtlinie zu, die adaptive Anwendungssteuerungen auf virtuellen Maschinen ermöglicht.
 
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
@@ -151,7 +153,8 @@ Sofern Sie nicht mehr als 25 Richtlinien für eine angemessene sichere Benutzerv
 
 ## <a name="13-audit-information-for-users"></a>13 Überwachungsinformationen für Benutzer
 
-Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
+Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen.
+Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
 
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Überwachen der Diagnoseeinstellung
