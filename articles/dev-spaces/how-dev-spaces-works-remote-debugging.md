@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse für das Remotedebuggen in Azure Kubernetes Service mit Azure Dev Spaces
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975041"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>So funktioniert das Remotedebuggen Ihres Codes mit Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces bietet Ihnen mehrere Möglichkeiten, Kubernetes-Anwendungen schnell zu durchlaufen und zu debuggen und mit Ihrem Team in einem Azure Kubernetes Service-Cluster (AKS) zusammenzuarbeiten. Sobald das Projekt in einem Entwicklungsbereich ausgeführt wird, bietet Azure Dev Spaces eine Möglichkeit, eine laufende Anwendung in AKS anzufügen und zu debuggen.
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c57ec2edf43bf0a710f3c15f30836f751c4d52b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975126"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für eine VM über die Azure-Befehlszeilenschnittstelle
 
@@ -89,4 +89,4 @@ Bei hoch verfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter 
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
 * [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/security-overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/network-security-groups-overview.md)
