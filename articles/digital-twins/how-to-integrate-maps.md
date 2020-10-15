@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564359"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045124"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans
 
@@ -64,7 +64,7 @@ Dieses Muster liest direkt aus dem Raumzwilling und nicht vom IoT-Gerät, was Ih
     >[!NOTE]
     >Zurzeit besteht ein **bekanntes Problem** in Cloud Shell, das sich auf diese Befehlsgruppen auswirkt: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Um dieses Problem zu beheben, führen Sie vor der Ausführung des Befehls `az login` in Cloud Shell aus, oder verwenden Sie die [lokale Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) anstelle von Cloud Shell. Weitere Informationen hierzu finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Um dieses Problem zu beheben, führen Sie vor der Ausführung des Befehls `az login` in Cloud Shell aus, oder verwenden Sie die [lokale Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) anstelle von Cloud Shell. Weitere Informationen hierzu finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ Dieses Muster liest direkt aus dem Raumzwilling und nicht vom IoT-Gerät, was Ih
 
 Sie erstellen eine durch Event Grid ausgelöste Funktion innerhalb Ihrer Funktions-App aus dem End-to-End-Tutorial ([*Tutorial: Verbinden einer End-to-End-Lösung*](./tutorial-end-to-end.md)). Diese Funktion entpackt diese Benachrichtigungen und sendet Aktualisierungen an ein Azure Maps-Featurezustandsset, um die Temperatur in einem Raum zu aktualisieren. 
 
-Referenzinformationen finden Sie im folgenden Dokument: [*Azure Event Grid-Trigger für Azure Functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Referenzinformationen finden Sie im folgenden Dokument: [*Azure Event Grid-Trigger für Azure Functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
 Ersetzen Sie den Funktionscode durch folgenden Code. Er wird nur Aktualisierungen für Raumzwillinge herausfiltern, die aktualisierte Temperatur lesen und diese Informationen an Azure Maps senden.
 
@@ -152,7 +152,7 @@ Führen Sie die folgenden Schritte aus, um die Liveupdate-Temperatur anzuzeigen:
 
 Beide Beispiele senden die Temperatur in einem kompatiblen Bereich, sodass die Farbe von Raum 121 etwa alle 30 Sekunden auf der Karte aktualisiert werden sollte.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Ein Büroplan, der Raum 121 in Orange anzeigt":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei die Komponente der Gebäudeplanintegration hervorgehoben wird":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Speichern Ihrer Karteninformationen in Azure Digital Twins
 

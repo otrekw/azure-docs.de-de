@@ -4,10 +4,10 @@ description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: 
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 0f2fa71e56deadba1188ab0fa69898c261861eb5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86521461"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „ISO 27001: Gemeinsame Dienste“
@@ -112,12 +112,12 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Liste der für die Bereitstellung zulässigen VM-SKUs. Der Standardwert lautet _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Ressourcentyp zur Überprüfung von Diagnoseprotokollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |Log Analytics-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvsc-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Log Analytics-Ressourcengruppe|Resource group|Position|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Log Analytics-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Dienstebene|Legt den Tarif des Log Analytics-Arbeitsbereichs fest. Der Standardwert ist _PerNode_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Standort|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
 |Netzwerkressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Netzwerkressourcengruppe|Resource group|Position|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Netzwerkressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Azure Firewall-Vorlage|Resource Manager-Vorlage|Private IP-Adresse von Azure Firewall|Konfiguriert die private IP-Adresse von [Azure Firewall](../../../../firewall/overview.md). Dieser Wert wird ebenso als Standardroutingtabelle für das Subnetz für gemeinsame Dienste verwendet. Er sollte Teil der CIDR-Notation sein, die im **Adresspräfix für Azure Firewall-Subnetz** definiert ist. Der Standardwert ist _10.0.4.4_.|
 |Azure Firewall-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Netzwerksicherheitsgruppen-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|

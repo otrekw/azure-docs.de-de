@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203808"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
@@ -94,7 +94,7 @@ Das folgende Beispiel zeigt eine „IsLengthRange“-Methode mit den Parametern 
 
 Mit der Methode „MatchesRegex“ wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Das „predicate“-Element unterstützt die folgenden Parameter:
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 | ------- | ----------- | ----------- |
 | RegularExpression | Ja | Das Muster eines regulären Ausdrucks, mit dem Übereinstimmungen gefunden werden sollen. |
 
@@ -112,7 +112,7 @@ Das folgende Beispiel zeigt eine `MatchesRegex`-Methode mit dem Parameter `Regul
 
 Mit der Methode „IncludesCharacters“ wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen Zeichensatz enthält. Das „predicate“-Element unterstützt die folgenden Parameter:
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 | ------- | ----------- | ----------- |
 | CharacterSet | Ja | Der Zeichensatz, der eingegeben werden kann. Dies sind beispielsweise Kleinbuchstaben `a-z`, Großbuchstaben `A-Z`, Ziffern `0-9` oder eine Liste von Symbolen wie `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`. |
 
@@ -209,7 +209,7 @@ Das **PredicateGroups**-Element enthält die folgenden Elemente:
 
 Das **PredicateReferences**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Nein | Gibt an, dass der Wert mindestens der Anzahl von Prädikatdefinitionen für die Eingabe entsprechen muss, um angenommen zu werden. Ohne diese Angabe muss der Wert allen Prädikatdefinitionen entsprechen. |
 
@@ -294,7 +294,7 @@ Mit den Elementen **Predicates** und **PredicateValidationsInput** können Sie d
 Nachdem Sie die grundlegenden Überprüfungen definiert haben, können Sie sie kombinieren und eine Reihe von Kennwortrichtlinien erstellen, die Sie in Ihrer Richtlinie verwenden können:
 
 - **SimplePassword** überprüft die Elemente „DisallowedWhitespace“, „AllowedAADCharacters“ und „IsLengthBetween8And64“.
-- **StrongPassword** überprüft die Elemente „DisallowedWhitespace“, „AllowedAADCharacters“ und „IsLengthBetween8And64“. Die letzte `CharacterClasses`-Gruppe führt ein zusätzliche Reihe von „Predicate“-Elementen aus, wobei `MatchAtLeast` auf 3 festgelegt ist. Das Benutzerkennwort muss aus 8 bis 16 Zeichen bestehen, wobei drei der Zeichen den folgenden Elementen entsprechen müssen: „Kleinbuchstaben“, „Großbuchstaben“, „Zahl“ oder „Sonderzeichen“.
+- **StrongPassword** überprüft die Elemente „DisallowedWhitespace“, „AllowedAADCharacters“ und „IsLengthBetween8And64“. Die letzte `CharacterClasses`-Gruppe führt ein zusätzliche Reihe von „Predicate“-Elementen aus, wobei `MatchAtLeast` auf 3 festgelegt ist. Das Benutzerkennwort muss aus 8 bis 16 Zeichen bestehen, wobei drei der Zeichen den folgenden Elementen entsprechen müssen: „Lowercase“, „Uppercase“, „Number“ oder „Symbol“.
 - **CustomPassword** überprüft nur die Elemente „DisallowedWhitespace“ und „AllowedAADCharacters“. Der Benutzer kann somit ein beliebiges Kennwort mit einer beliebigen Länge eingeben, solange die Zeichen gültig sind.
 
 ```xml

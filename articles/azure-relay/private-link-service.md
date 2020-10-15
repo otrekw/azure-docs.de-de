@@ -4,10 +4,10 @@ description: Es wird beschrieben, wie Sie Azure Relay in den Azure Private Link-
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263851"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrieren von Azure Relay in Azure Private Link (Vorschau)
