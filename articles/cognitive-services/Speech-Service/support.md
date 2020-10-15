@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76169527"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
@@ -85,7 +85,7 @@ Eine klare und präzise Beschreibung dessen, was Sie erwartet haben.
 
 Welche Version des SDK Sie verwenden.
 
-**Plattform, Betriebssysteme und Programmiersprache**
+**Plattform, Betriebssystem und Programmiersprache**
 
  - Betriebssystem: [z.B. Windows, Linux, Android, iOS usw.] – seien Sie genau
  - Hardware: x64, x86, ARM usw.
