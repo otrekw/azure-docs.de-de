@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261887"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963294"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Lebenszyklus und Status virtueller Computer
 
@@ -418,13 +418,13 @@ Sobald der Vorgang abgeschlossen ist, wechselt die VM in einen der folgenden Zus
 
 ## <a name="vm-instance-view"></a>VM-Instanzenansicht
 
-Die Instanzenansicht-API bietet Informationen zum Ausführungszustand der VM. Weitere Informationen finden Sie in der API-Dokumentation unter [Virtual Machines – Instance View](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) (VMs – Instanzenansicht).
+Die Instanzenansicht-API bietet Informationen zum Ausführungszustand der VM. Weitere Informationen finden Sie in der API-Dokumentation unter [Virtual Machines – Instance View](/rest/api/compute/virtualmachines/instanceview) (VMs – Instanzenansicht).
 
 Der Azure-Ressourcen-Explorer bietet eine einfache Benutzeroberfläche zum Anzeigen des Ausführungszustands des virtuellen Computers: [Ressourcen-Explorer](https://resources.azure.com/).
 
 Bereitstellungszustände werden in den VM-Eigenschaften und in der Instanzenansicht angezeigt. Betriebszustände sind in der Instanzenansicht der VM verfügbar.
 
-Verwenden Sie die [API zum Auflisten aller virtuellen Computer](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall), und setzen Sie dabei den Parameter **statusOnly** auf *true*, um den Energiezustand aller virtuellen Computer in Ihrem Abonnement abzurufen.
+Verwenden Sie die [API zum Auflisten aller virtuellen Computer](/rest/api/compute/virtualmachines/listall), und setzen Sie dabei den Parameter **statusOnly** auf *true*, um den Energiezustand aller virtuellen Computer in Ihrem Abonnement abzurufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

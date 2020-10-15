@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89082202"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Verschieben von Azure Event Grid-Systemthemen in eine andere Region
@@ -35,22 +35,7 @@ Exportieren Sie als ersten Schritt eine Resource Manager-Vorlage für die Ressou
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="Seite „Ressourcengruppe“":::        
 3. Wählen Sie im Menü auf der linken Seite **Vorlage exportieren** unter **Einstellungen** aus, und wählen Sie dann **Herunterladen** auf der Symbolleiste aus. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Speicherkonto: Seite „Vorlage exportieren“":::        
-5. Suchen Sie die aus dem Portal heruntergeladene **ZIP**-Datei, und entpacken Sie sie in einen Ordner Ihrer Wahl. Diese ZIP-Datei enthält die JSON-Dateien mit Vorlagen und Parametern. 
-1. Öffnen Sie die Datei **template.json** in einem Editor Ihrer Wahl. 
-1. Die URL für den Webhook wird nicht in die Vorlage exportiert. Führen Sie daher die folgenden Schritte aus:
-    1. Suchen Sie in der Vorlagendatei nach **WebHook**. 
-    1. Fügen Sie im Abschnitt **Properties** (Eigenschaften) am Ende der letzten Zeile ein Komma (`,`) hinzu. In diesem Beispiel lautet er `"preferredBatchSizeInKilobytes": 64`. 
-    1. Fügen Sie die `endpointUrl`-Eigenschaft mit dem Wert hinzu, der auf Ihre Webhook-URL festgelegt ist, wie im folgenden Beispiel gezeigt. 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Seite „Ressourcengruppe“"
         }
         ```
 
@@ -91,7 +76,7 @@ Stellen Sie die Vorlage zum Erstellen eines Speicherkontos und eines Systemthema
     1. Geben Sie als **Systemthemanamen** einen Namen für das Systemthema ein, der dem Speicherkonto zugeordnet wird.  
     1. Geben Sie als **Speicherkontonamen** einen Namen für das Speicherkonto ein, das in der Zielregion erstellt werden soll. 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Bereitstellen der Resource Manager-Vorlage":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Seite „Ressourcengruppe“":::
     5. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus. 
     1. Überprüfen Sie die Einstellungen auf der Seite **Überprüfen und erstellen**, und wählen Sie **Erstellen** aus. 
 
@@ -110,7 +95,7 @@ So löschen Sie eine Ressourcengruppe (Quelle oder Ziel) im Azure-Portal:
 1. Geben Sie im Suchfenster oben im Azure-Portal **Ressourcengruppen** ein, und wählen Sie in den Suchergebnissen **Ressourcengruppen** aus. 
 2. Wählen Sie die zu löschende Ressourcengruppe und dann auf der Symbolleiste **Löschen** aus. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Ressourcengruppe löschen":::
+    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Seite „Ressourcengruppe“":::
 3. Geben Sie auf der Bestätigungsseite den Namen der Ressourcengruppe ein, und wählen Sie **Löschen** aus.  
 
 ## <a name="next-steps"></a>Nächste Schritte

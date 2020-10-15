@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145337"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Verschieben von benutzerdefinierten Azure Event Grid-Themen in eine andere Region
@@ -38,22 +38,10 @@ Exportieren Sie zunächst eine Resource Manager-Vorlage für das benutzerdefinie
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Suchen nach und Auswählen von Event Grid-Themen":::
 3. Wählen Sie das **Thema** aus, das Sie in eine Resource Manager-Vorlage exportieren möchten. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Auswählen des benutzerdefinierten Themas":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Suchen nach und Auswählen von Event Grid-Themen":::   
 4. Wählen Sie auf der Seite **Event Grid-Thema** die Option **Vorlage exportieren** unter **Einstellungen** im linken Menü aus, und wählen Sie dann **Herunterladen** auf der Symbolleiste aus. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Vorlage exportieren > Herunterladen":::   
-
-    > [!IMPORTANT]
-    > Nur das Thema wird in die Vorlage exportiert. Abonnements für das Thema werden nicht exportiert. Daher müssen Sie Abonnements für das Thema erstellen, nachdem Sie das Thema in die Zielregion verschoben haben. 
-5. Suchen Sie die aus dem Portal heruntergeladene **ZIP**-Datei, und entpacken Sie sie in einen Ordner Ihrer Wahl. Diese ZIP-Datei enthält die JSON-Dateien mit Vorlagen und Parametern. 
-1. Öffnen Sie die Datei **template.json** in einem Editor Ihrer Wahl. 
-8. Aktualisieren Sie `location` für die **Themaressource** in die Zielregion oder den Zielspeicherort. Informationen zum Abrufen von Standortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/). Der Code für eine Region ist der Name der Region ohne Leerzeichen, z. B. ist `West US` gleich `westus`.
-
-    ```json
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2020-06-01",
-    "name": "[parameters('topics_mytopic0130_name')]",
-    "location": "westus"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Suchen nach und Auswählen von Event Grid-Themen"
     ```
 1. **Speichern** Sie die Vorlage. 
 
@@ -74,14 +62,14 @@ Stellen Sie die Vorlage zum Erstellen eines benutzerdefinierten Themas in der Zi
     1. Geben Sie als **Themennamen** einen neuen Namen für das Thema ein. 
     1. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus. 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Benutzerdefinierte Bereitstellung":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Suchen nach und Auswählen von Event Grid-Themen":::
     1. Überprüfen Sie die Einstellungen auf der Seite **Überprüfen und erstellen**, und wählen Sie **Erstellen** aus. 
 
 ## <a name="verify"></a>Überprüfung
 
 1. Wählen Sie nach der erfolgreichen Bereitstellung **Zu Ressource wechseln** aus. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Zu Ressource wechseln":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Suchen nach und Auswählen von Event Grid-Themen":::
 1. Vergewissern Sie sich, dass die Seite **Event Grid-Thema** für das benutzerdefinierte Thema angezeigt wird.   
 1. Führen Sie die Schritte unter [Weiterleiten von benutzerdefinierten Ereignissen an einen Webendpunkt](custom-event-quickstart-portal.md#send-an-event-to-your-topic) aus, um Ereignisse an das Thema zu senden. Bestätigen Sie, dass der Webhookereignishandler aufgerufen wird. 
 
