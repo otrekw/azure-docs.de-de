@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507281"
 ---
 Dieser Artikel beschreibt, wie Sie IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell migrieren. Der Artikel enthält zudem Informationen dazu, wie Sie Ressourcen aus den beiden Bereitstellungsmodellen, die in Ihrem Abonnement nebeneinander existieren, mithilfe von Standort-zu-Standort-Gateways miteinander verbinden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../articles/azure-resource-manager/management/overview.md). 

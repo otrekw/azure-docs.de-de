@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
 ms.openlocfilehash: 7ce49873b4e59bcf474deaea4420f56a72c9c589
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89081784"
 ---
 Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (CPU, GPU und Arbeitsspeicher), die für den virtuellen Computer zur Verfügung gestellt werden. Virtuelle Computer müssen mit einer Größe erstellt werden, die für die erwartete Workload angemessen ist. Auch wenn alle Computer auf derselben Hardware ausgeführt werden, gibt es bei den Computergrößen unterschiedliche Grenzwerte für den Datenträgerzugriff, was Ihnen helfen kann, den gesamten Datenträgerzugriff über Ihre VMs hinweg zu verwalten. Bei einer Zunahme der Workload kann die Größe eines vorhandenen virtuellen Computers auch geändert werden.

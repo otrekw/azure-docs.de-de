@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89082214"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Verschieben von Azure Event Grid-Domänen in eine andere Region
@@ -37,10 +37,10 @@ Exportieren Sie zunächst eine Resource Manager-Vorlage für die Domäne.
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="Event Grid-Domänen suchen und auswählen":::
 3. Wählen Sie die **Domäne** aus, die Sie in eine Resource Manager-Vorlage exportieren möchten. 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Auswählen der Domäne":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Event Grid-Domänen suchen und auswählen":::   
 4. Wählen Sie auf der Seite **Event Grid-Domäne** die Option **Vorlage exportieren** unter **Einstellungen** im linken Menü aus, und wählen Sie dann **Herunterladen** auf der Symbolleiste aus. 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Vorlage exportieren > Herunterladen" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Event Grid-Domänen suchen und auswählen" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > Domänen und Domänenthemen werden exportiert. Abonnements für Domänenthemen werden nicht exportiert. Daher müssen Sie nach dem Verschieben von Domänenthemen Abonnements für Domänenthemen erstellen. 
@@ -73,7 +73,7 @@ Stellen Sie die Vorlage bereit, und die Domäne und Domänenthemen in der Zielre
     1. Geben Sie als **Domänennamen** einen neuen Namen für die Domäne ein. 
     1. Klicken Sie auf **Überprüfen + erstellen**. 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Bereitstellen der Vorlage":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Event Grid-Domänen suchen und auswählen":::        
     1. Nachdem die Überprüfung der Vorlage erfolgreich war, wählen Sie **Erstellen** unten auf der Seite aus, um die Ressource bereitzustellen. 
     1. Nachdem die Bereitstellung erfolgreich war, wählen Sie **Zu Ressourcengruppe wechseln** aus, um zur Seite „Ressourcengruppe“ zu navigieren. Vergewissern Sie sich, dass eine Domäne in der Ressourcengruppe vorhanden ist. Wählen Sie die Domäne aus. Bestätigen Sie, dass Domänenthemen in der Domäne vorhanden sind. 
 

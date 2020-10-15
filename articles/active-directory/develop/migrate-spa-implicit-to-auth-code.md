@@ -13,10 +13,10 @@ ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027086"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrieren von JavaScript-Single-Page-Webanwendungen vom impliziten Genehmigungsflow zum Autorisierungscodeflow
@@ -48,11 +48,11 @@ Führen Sie für App-Registrierungen, die derzeit mit Umleitungs URIs für die P
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Warnbanner für den impliziten Genehmigungsflow auf der Web-App-Kachel im Azure-Portal":::
 1. Wählen Sie *nur* die Umleitungs-URIs für die Anwendungen aus, die MSAL.js 2.x verwenden sollen, und wählen Sie dann **Konfigurieren** aus.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Auswählen des Bereichs „Umleitungs-URI“ im Bereich „Single-Page-Webanwendung“ im Azure-Portal":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Warnbanner für den impliziten Genehmigungsflow auf der Web-App-Kachel im Azure-Portal":::
 
 Diese Umleitungs-URIs sollten jetzt auf der Kachel für die Plattform **Single-Page-Webanwendung** angezeigt werden. Ebenfalls wird angezeigt, dass CORS-Unterstützung mit dem Autorisierungscodeflow und PKCE für diese URIs aktiviert ist.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Kachel „Single-Page-Webanwendung“ bei der App-Registrierung im Azure-Portal":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Warnbanner für den impliziten Genehmigungsflow auf der Web-App-Kachel im Azure-Portal":::
 
 Sie können auch [eine neue App-Registrierung erstellen](scenario-spa-app-registration.md), anstatt die Umleitungs-URIs in der vorhandenen Registrierung zu aktualisieren.
 

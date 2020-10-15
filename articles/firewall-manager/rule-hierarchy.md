@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893617"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Definieren einer Regelhierarchie mithilfe einer Azure Firewall-Richtlinie
@@ -48,7 +48,7 @@ Erstellen von Richtlinien für jedes Anwendungsteam:
 - Eine Firewallrichtlinie „Database“. Die Firewallrichtlinie „Database“ erbt die Basis-Firewallrichtlinie.
 - Eine Firewallrichtlinie „Engineering“. Die Firewallrichtlinie „Engineering“ erbt ebenfalls die Basis-Firewallrichtlinie.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Richtlinienhierarchie" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Teams und Anforderungen" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Erstellen von benutzerdefinierten Rollen für den Zugriff auf die Regelsammlungsgruppen 
 
@@ -134,9 +134,9 @@ Zum Auflisten aller benutzerdefinierten Rollen können Sie den Befehl Get-AzRole
 
 Sie können die benutzerdefinierten Rollen auch im Azure-Portal anzeigen. Wechseln Sie zu Ihrem Abonnement, und wählen Sie **Zugriffssteuerung (IAM)** , **Rollen** aus.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Teams und Anforderungen":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy-Leseberechtigung":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Teams und Anforderungen":::
 
 Weitere Informationen finden Sie im [Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell](../role-based-access-control/tutorial-custom-role-powershell.md).
 

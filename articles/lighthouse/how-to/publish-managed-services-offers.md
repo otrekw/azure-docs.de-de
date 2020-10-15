@@ -3,16 +3,16 @@ title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketpl
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589723"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974361"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
-In diesem Artikel erfahren Sie, wie Sie ein öffentliches oder privates Angebot für verwaltete Dienste in [Azure Marketplace](https://azuremarketplace.microsoft.com) unter Verwendung des Programms [Kommerzieller Marktplatz](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) in Partner Center veröffentlichen können. Kunden, die das Angebot erwerben, delegieren dann Abonnements oder Ressourcengruppen, die Sie dann über [Azure Lighthouse](../overview.md) verwalten können.
+In diesem Artikel erfahren Sie, wie Sie ein öffentliches oder privates Angebot für verwaltete Dienste in [Azure Marketplace](https://azuremarketplace.microsoft.com) unter Verwendung des Programms [Kommerzieller Marktplatz](../../marketplace/overview.md) in Partner Center veröffentlichen können. Kunden, die das Angebot erwerben, delegieren dann Abonnements oder Ressourcengruppen, die Sie dann über [Azure Lighthouse](../overview.md) verwalten können.
 
 ## <a name="publishing-requirements"></a>Veröffentlichungsbedingungen
 
@@ -40,7 +40,7 @@ Die folgende Tabelle kann bei der Ermittlung helfen, ob das Onboarding der Kunde
 
 Ausführliche Anweisungen zum Erstellen Ihres Angebots, einschließlich aller Informationen und Ressourcen, die Sie bereitstellen müssen, finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](../../marketplace/partner-center-portal/create-new-managed-service-offer.md).
 
-Informationen zum allgemeinen Veröffentlichungsprozess finden Sie im [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../../marketplace/marketplace-publishers-guide.md). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
+Informationen zum allgemeinen Veröffentlichungsprozess finden Sie im [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../../marketplace/overview.md). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
 
 Wenn ein Kunde Ihr Angebot hinzufügt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren, für die dann [das Onboarding in Azure Lighthouse durchgeführt wird](#the-customer-onboarding-process).
 
@@ -64,6 +64,6 @@ Wenn der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [kommerziellen Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
+- Erfahren Sie mehr über den [kommerziellen Marketplace](../../marketplace/overview.md).
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).
 - [Anzeigen und Verwalten von Kunden](view-manage-customers.md), indem sie im Azure-Portal zu **Meine Kunden** navigieren.

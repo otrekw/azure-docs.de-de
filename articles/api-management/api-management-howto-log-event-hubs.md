@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903390"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072406"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -32,7 +32,7 @@ Ausführliche Schritte zum Erstellen eines Event Hubs und zum Abrufen von Verbin
 ## <a name="create-an-api-management-logger"></a>Erstellen eines API Management-Loggers
 Der Event Hub ist nun vorhanden. Der nächste Schritt besteht darin, einen [Logger](/rest/api/apimanagement/2019-12-01/logger) im API Management-Dienst zu konfigurieren, sodass Ereignisse im Event Hub protokolliert werden können.
 
-API Management-Logger werden mit der [API Management-REST-API](https://aka.ms/apimapi)konfiguriert. Ausführliche Anforderungsbeispiele finden Sie unter [Erstellen von Protokollierungen](/rest/api/apimanagement/2019-12-01/logger/createorupdate).
+API Management-Logger werden mit der [API Management-REST-API](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)konfiguriert. Ausführliche Anforderungsbeispiele finden Sie unter [Erstellen von Protokollierungen](/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
 ## <a name="configure-log-to-eventhub-policies"></a>Konfigurieren von log-to-eventhub-Richtlinien
 

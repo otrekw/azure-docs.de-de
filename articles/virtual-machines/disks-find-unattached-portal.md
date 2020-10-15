@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542737"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern – Azure-Portal
@@ -45,17 +45,17 @@ Wenn Sie über nicht verwaltete Datenträger verfügen, die nicht an einen virtu
 
     Daraufhin wird eine Liste aller Ihrer nicht verwalteten Datenträger angezeigt. Jeder Datenträger mit „ **-** “ in der Spalte **Angefügt an** ist ein nicht angefügter Datenträger.
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Screenshot: Blatt für nicht verwaltete Datenträger. Die Datenträger auf diesem Blatt mit „-“ der Spalte „Angefügt an“ sind nicht angefügt.":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Screenshot: Blatt mit einem verwalteten Datenträger. Auf diesem Blatt wird „Nicht angefügt“ als Datenträgerstatus angezeigt, wenn dieser nicht angefügt ist. Sie können diesen Datenträger löschen, wenn die Daten nicht länger aufbewahrt werden müssen.":::
 
 1. Wählen Sie den nicht angefügten Datenträger aus, den Sie löschen möchten. Daraufhin wird das Blatt des Datenträgers angezeigt.
 
 1. Auf dem Blatt des Datenträgers können Sie bestätigen, dass er nicht angefügt ist, da für **Angefügt an** weiterhin **-** angezeigt wird.
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Screenshot: Blatt mit einem nicht verwalteten Datenträger. Wenn er nicht angefügt ist, wird in der Spalte „Angefügt an“ der Wert „-“ angezeigt. Wenn Sie die Daten dieses Datenträgers nicht mehr benötigen, können Sie ihn löschen.":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Screenshot: Blatt mit einem verwalteten Datenträger. Auf diesem Blatt wird „Nicht angefügt“ als Datenträgerstatus angezeigt, wenn dieser nicht angefügt ist. Sie können diesen Datenträger löschen, wenn die Daten nicht länger aufbewahrt werden müssen.":::
 
 1. Klicken Sie auf **Löschen**.
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Screenshot: Blatt mit einem nicht verwalteten Datenträger mit Hervorhebung von Löschen.":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Screenshot: Blatt mit einem verwalteten Datenträger. Auf diesem Blatt wird „Nicht angefügt“ als Datenträgerstatus angezeigt, wenn dieser nicht angefügt ist. Sie können diesen Datenträger löschen, wenn die Daten nicht länger aufbewahrt werden müssen.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

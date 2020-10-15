@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827451"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972882"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -282,7 +282,7 @@ Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Eini
 
 ## <a name="disks-and-images"></a>Datenträger und Images
    
-In Azure können VHD-Dateien für [Datenträger oder Images](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) stehen. Wenn das Betriebssystem in einer VHD-Datei für einen spezifischen virtuellen Computer spezialisiert wurde, wird dies als Datenträger bezeichnet. Wenn das Betriebssystem in einer VHD-Datei allgemein gehalten ist, um für die Erstellung von vielen virtuellen Computern verwendet zu werden, wird es als Image bezeichnet.   
+In Azure können VHD-Dateien für [Datenträger oder Images](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) stehen. Wenn das Betriebssystem in einer VHD-Datei für einen spezifischen virtuellen Computer spezialisiert wurde, wird dies als Datenträger bezeichnet. Wenn das Betriebssystem in einer VHD-Datei allgemein gehalten ist, um für die Erstellung von vielen virtuellen Computern verwendet zu werden, wird es als Image bezeichnet.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Erstellen neuer virtueller Computer und neuer Datenträger aus einem Plattformimage
 

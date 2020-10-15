@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 547834542b605b226ebffd68e05296ee847dc6de
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889104"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974327"
 ---
 # <a name="disk-bursting"></a>Datenträgerbursting
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,7 +29,7 @@ Bursting auf VM-Ebene ist auch in „USA, Westen-Mitte“ für die folgenden unt
 Bursting ist für virtuelle Computer, die diese Technologie unterstützen, standardmäßig aktiviert.
 
 ## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
-Bursting steht auch für unsere [Premium-SSDs](disks-types.md#premium-ssd) für Datenträgergrößen P20 und kleiner in allen Regionen zur Verfügung. Das Datenträgerbursting ist bei neuen Bereitstellungen der unterstützten Datenträgergrößen standardmäßig aktiviert. Bei vorhandenen Datenträgergrößen, die das Datenträgerbursting unterstützen, kann die Funktion durch eine der folgenden Methoden aktiviert werden: 
+Bursting steht auch für unsere [Premium-SSDs](../disks-types.md#premium-ssd) für Datenträgergrößen P20 und kleiner in allen Regionen zur Verfügung. Das Datenträgerbursting ist bei neuen Bereitstellungen der unterstützten Datenträgergrößen standardmäßig aktiviert. Bei vorhandenen Datenträgergrößen, die das Datenträgerbursting unterstützen, kann die Funktion durch eine der folgenden Methoden aktiviert werden: 
 - **Neustarten der VM** 
 - **Trennen und erneutes Anfügen des Datenträgers**
 
