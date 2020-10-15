@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie mit dem Azure-Portal aus einem bereitgestellt
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87277026"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
@@ -33,13 +33,13 @@ Sie können ein benutzerdefiniertes Image aus einem bereitgestellten virtuellen 
     :::image type="content" source="./media/devtest-lab-create-template/create-custom-image.png" alt-text="Menüelement: Benutzerdefiniertes Bild erstellen":::
 1. Geben Sie im Bereich **Benutzerdefiniertes Image** einen Namen und eine Beschreibung für Ihr benutzerdefiniertes Image ein. Diese Informationen werden in der Liste der Basisimages angezeigt, wenn Sie einen virtuellen Computer erstellen. Das benutzerdefinierte Image umfasst den Betriebssystemdatenträger und alle Datenträger, die an den virtuellen Computer angefügt sind.
 
-    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Bereich „Benutzerdefiniertes Image erstellen“":::
+    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Menüelement: Benutzerdefiniertes Bild erstellen":::
 1. Wählen Sie aus, ob „sysprep“ auf dem virtuellen Computer ausgeführt wurde. Wenn „sysprep“ auf dem virtuellen Computer nicht ausgeführt wurde, geben Sie an, ob „sysprep“ auf dem virtuellen Computer ausgeführt werden soll, wenn das benutzerdefinierte Image erstellt wird.
 1. Wählen Sie **OK** , wenn Sie mit der Erstellung des benutzerdefinierten Images fertig sind.
 
     Nach wenigen Minuten wird das benutzerdefinierte Image erstellt und im Speicherkonto des Labs gespeichert. Das Image ist in der Liste mit den Basisimages verfügbar, falls ein Lab-Benutzer einen neuen virtuellen Computer erstellen möchte.
 
-    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="Verfügbares benutzerdefiniertes Image in der Liste mit den Basisimages":::
+    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="Menüelement: Benutzerdefiniertes Bild erstellen":::
 
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
 

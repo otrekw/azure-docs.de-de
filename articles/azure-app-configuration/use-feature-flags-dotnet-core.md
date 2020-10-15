@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317309"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078900"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Featureflags in einer ASP.NET Core-App
 
@@ -27,7 +27,7 @@ Die .NET Core-Featureverwaltungsbibliotheken bieten idiomatische Unterstützung
 
 Die Featureverwaltungsbibliotheken verwalten darüber hinaus Featureflag-Lebenszyklen im Hintergrund. Die Bibliotheken können Flagzustände aktualisieren und zwischenspeichern, garantieren, dass ein Flagzustand während eines Anforderungsaufrufs unveränderlich ist, und Ähnliches. Darüber hinaus bietet die ASP.NET Core-Bibliothek sofort einsetzbare Integrationen – einschließlich MVC-Controlleraktionen, Ansichten, Routen und Middleware.
 
-Unter [Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App](./quickstart-feature-flag-aspnet-core.md) werden mehrere Methoden gezeigt, mit denen Sie Featureflags in einer ASP.NET Core-Anwendung hinzufügen können. Diese Methoden werden im vorliegenden Tutorial näher erläutert. Eine umfassende Referenz finden Sie in der [Featureverwaltungsdokumentation für ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
+Unter [Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App](./quickstart-feature-flag-aspnet-core.md) werden mehrere Methoden gezeigt, mit denen Sie Featureflags in einer ASP.NET Core-Anwendung hinzufügen können. Diese Methoden werden im vorliegenden Tutorial näher erläutert. Eine umfassende Referenz finden Sie in der [Featureverwaltungsdokumentation für ASP.NET Core](/dotnet/api/microsoft.featuremanagement).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -301,6 +301,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 In diesem Tutorial haben Sie gelernt, wie Sie Featureflags in Ihrer ASP.NET Core-Anwendung unter Verwendung der Bibliotheken vom Typ `Microsoft.FeatureManagement` implementieren. Die folgenden Ressourcen enthalten weitere Informationen zur Unterstützung der Featureverwaltung in ASP.NET Core und App Configuration:
 
-* [Beispielcode für ASP.NET Core-Featureflag](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Dokumentation für „Microsoft.FeatureManagement“](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Beispielcode für ASP.NET Core-Featureflag](./quickstart-feature-flag-aspnet-core.md)
+* [Dokumentation für „Microsoft.FeatureManagement“](/dotnet/api/microsoft.featuremanagement)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

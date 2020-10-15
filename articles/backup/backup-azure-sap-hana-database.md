@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken m
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: 3e19701abe152e947e87ef624a003538ab7062a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271799"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern

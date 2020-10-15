@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77469526"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078594"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
 
@@ -70,7 +70,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-Die individuellen Indikatorpfade können zum verwendeten Diagnoseframework Ihres Diensts hinzugefügt werden. Weitere Informationen dazu, wie ein Leistungsindikatorpfad zusammengesetzt wird, finden Sie unter [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85)).
+Die individuellen Indikatorpfade können zum verwendeten Diagnoseframework Ihres Diensts hinzugefügt werden. Weitere Informationen dazu, wie ein Leistungsindikatorpfad zusammengesetzt wird, finden Sie unter [Angeben eines Indikatorpfads](/windows/win32/perfctrs/specifying-a-counter-path).
 
 ## <a name="collect-a-performance-counter"></a>Erfassen eines Leistungsindikators
 
@@ -290,8 +290,5 @@ Wie zuvor erwähnt, werden die zu erfassenden Leistungsindikatoren in der Datei 
 
 - [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Systemleistungsindikatoren in Application Insights](../azure-monitor/app/performance-counters.md)
-- [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
+- [Angeben eines Indikatorpfads](/windows/win32/perfctrs/specifying-a-counter-path)
 - [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-
-
-

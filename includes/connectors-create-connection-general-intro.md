@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 06/06/2020
 ms.openlocfilehash: 1113201941ce0757b58e361c08c9d79d7dd374cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84449075"
 ---
 Wenn Sie einen Trigger oder eine Aktion hinzufügen, der/die zum ersten Mal eine Verbindung mit einem Dienst oder System herstellt, werden Sie vom Logik-App-Designer aufgefordert, eine *Verbindung* herzustellen, indem Sie die erforderlichen Informationen bereitstellen, die je nach Verbindung variieren, z. B.:
