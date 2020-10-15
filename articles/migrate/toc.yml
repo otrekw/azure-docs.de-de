@@ -52,10 +52,12 @@
           items:
             - name: Informationen zu Migrationsoptionen für virtuelle VMware-Computer
               href: server-migrate-overview.md
-            - name: Migrieren von virtuellen VMware-Computern ohne Agents
+            - name: 'Migrieren virtueller VMware-Computer ohne Agent: Azure-Portal'
               href: tutorial-migrate-vmware.md
             - name: Migrieren von virtuellen VMware-Computern mit Agent-basierter Migration
               href: tutorial-migrate-vmware-agent.md
+            - name: 'Migrieren virtueller VMware-Computer ohne Agent: PowerShell'
+              href: tutorial-migrate-vmware-powershell.md
         - name: Migrieren von virtuellen Hyper-V-Computern
           href: tutorial-migrate-hyper-v.md
         - name: Migrieren physischer Server

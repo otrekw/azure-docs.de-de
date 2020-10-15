@@ -1,25 +1,18 @@
 ---
 title: Entwerfen und Implementieren einer Oracle-Datenbank in Azure | Microsoft-Dokumentation
 description: Entwerfen und implementieren Sie eine Oracle-Datenbank in Ihrer Azure-Umgebung.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274706"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996638"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -49,7 +42,7 @@ Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Imp
 | **Netzwerk** |LAN/WAN  |SDN (Software-Defined Networking)|
 | **Sicherheitsgruppe** |Tools für IP/Port-Einschränkungen |[Netzwerksicherheitsgruppe (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **Resilienz** |MTBF (Mean Time Between Failure, mittlere Betriebsdauer zwischen Ausfällen) |MTTR (Mean Time To Recover, mittlere Reparaturzeit)|
-| **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](../../windows/infrastructure-example.md) (Patchen/Upgrades werden von Azure verwaltet) |
+| **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (Patchen/Upgrades werden von Azure verwaltet) |
 | **Ressource** |Dediziert  |Für andere Clients freigegeben|
 | **Regionen** |Rechenzentren |[Regionspaare](../../regions.md#region-pairs)|
 | **Storage** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -230,7 +223,7 @@ Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der
 - [Konfigurieren von Oracle ASM](configure-oracle-asm.md)
 - [Konfigurieren von Oracle Data Guard](configure-oracle-dataguard.md)
 - [Konfigurieren von Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Sichern und Wiederherstellen einer Oracle-Datenbank](oracle-backup-recovery.md)
+- [Sichern und Wiederherstellen einer Oracle-Datenbank](./oracle-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588074"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074616"
 ---
 # <a name="import-or-export-configuration-data"></a>Importieren oder Exportieren von Konfigurationsdaten
 
 Azure App Configuration unterstützt Datenimport- und -exportvorgänge. Verwenden Sie diese Vorgänge, um mit großen Mengen von Konfigurationsdaten zu arbeiten und Daten zwischen Ihrem App-Konfigurationsspeicher und dem Codeprojekt auszutauschen. Beispielsweise können Sie einen App-Konfigurationsspeicher zum Testen und einen anderen für die Produktion einrichten. Sie können Anwendungseinstellungen zwischen diesen Speichern kopieren, damit Sie Daten nicht zweimal eingeben müssen.
 
-Dieser Artikel enthält eine Anleitung zum Importieren und Exportieren von Daten per App Configuration. Wenn Sie eine fortlaufende Synchronisierung mit Ihrem GitHub-Repository einrichten möchten, sehen Sie sich unsere [GitHub-Aktion](https://aka.ms/azconfig-gha1) an.
+Dieser Artikel enthält eine Anleitung zum Importieren und Exportieren von Daten per App Configuration. Wenn Sie eine fortlaufende Synchronisierung mit Ihrem GitHub-Repository einrichten möchten, sehen Sie sich unsere [GitHub-Aktion](./concept-github-action.md) an.
 
 ## <a name="import-data"></a>Daten importieren
 
@@ -65,4 +65,4 @@ Sie können Daten entweder mit dem [Azure-Portal](https://portal.azure.com) oder
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer ASP.NET Core-Web-App](./quickstart-aspnet-core-app.md)  
+> [Erstellen einer ASP.NET Core-Web-App](./quickstart-aspnet-core-app.md)

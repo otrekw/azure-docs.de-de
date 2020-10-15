@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882557"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Hochverfügbarkeit in Azure Database for MySQL
@@ -46,7 +46,7 @@ Hier finden Sie einige Szenarien mit geplanter Wartung:
 Ungeplante Downtime kann aufgrund von unvorhergesehenen Fehlern auftreten, darunter Fehler in der zugrunde liegenden Hardware, Netzwerkprobleme und Softwarefehler. Wenn der Datenbankserver unerwartet ausfällt, wird automatisch innerhalb weniger Sekunden ein neuer Datenbankserver bereitgestellt. Der Remotespeicher wird automatisch an den neuen Datenbankserver angefügt. Die MySQL-Engine führt den Wiederherstellungsvorgang mithilfe von WAL-Dateien und Datenbankdateien durch und öffnet den Datenbankserver, sodass Clients eine Verbindung herstellen können. Transaktionen ohne Commit gehen verloren und müssen von der Anwendung erneut ausgeführt werden. Ungeplante Downtime lässt sich zwar nicht vollständig vermeiden, wird aber von Azure Database for MySQL durch automatisches Ausführen von Wiederherstellungsvorgängen sowohl auf Ebene der Datenbankserver als auch des Speichers minimiert, ohne dass ein Eingreifen durch einen Benutzer erforderlich ist. 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Übersicht über Hochverfügbarkeit in Azure Database for MySQL":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Übersicht über die elastische Skalierung in Azure Database for MySQL":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Ungeplante Downtime: Fehlerszenarien und Dienstwiederherstellung
 Im Folgenden finden Sie einige Fehlerszenarien und die Aktionen von Azure Database for MySQL zur automatischen Wiederherstellung:

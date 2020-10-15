@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825258"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978593"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Einsparen von Kosten mit Azure Dedicated Host-Reservierungen
 
-Wenn Sie sich für eine reservierte Instanz von Azure Dedicated Hosts entscheiden, können Sie Geld sparen. Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten dedizierten Hosts angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie müssen einem dedizierten Host keine Reservierung zuweisen, um die Rabatte zu erhalten. Bei einem Erwerb reservierter Instanzen wird nur der Computebereich ihrer Nutzung abgedeckt, und es werden Softwarelizenzierungskosten berücksichtigt. Weitere Informationen finden Sie unter [Übersicht über Azure Dedicated Hosts für virtuelle Computer](./windows/dedicated-hosts.md).
+Wenn Sie sich für eine reservierte Instanz von Azure Dedicated Hosts entscheiden, können Sie Geld sparen. Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten dedizierten Hosts angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie müssen einem dedizierten Host keine Reservierung zuweisen, um die Rabatte zu erhalten. Bei einem Erwerb reservierter Instanzen wird nur der Computebereich ihrer Nutzung abgedeckt, und es werden Softwarelizenzierungskosten berücksichtigt. Weitere Informationen finden Sie unter [Übersicht über Azure Dedicated Hosts für virtuelle Computer](./dedicated-hosts.md).
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Ermitteln der richtigen SKU für dedizierten Hosts vor dem Kauf
 
@@ -129,7 +129,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 
 - [Was sind Azure-Reservierungen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Verwenden von Azure Dedicated Hosts](./windows/dedicated-hosts.md)
+- [Verwenden von Azure Dedicated Hosts](./dedicated-hosts.md)
 
 - [Preise von Dedicated Hosts](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

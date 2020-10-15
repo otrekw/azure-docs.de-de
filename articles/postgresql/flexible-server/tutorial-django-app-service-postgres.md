@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929530"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Tutorial: Bereitstellen einer Django-App mit App Service und Azure Database for PostgreSQL Flexible Server (Vorschau)
@@ -270,11 +270,11 @@ Navigieren Sie zu *http:\//\<app-name>.azurewebsites.net*, und testen Sie die Ap
 
 Suchen Sie im [Azure-Portal](https://portal.azure.com) nach dem App-Namen, und wählen Sie die App in den Ergebnissen aus.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Navigieren zur Python-Django-App im Azure-Portal":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Beispielausgabe des Django-Entwicklungsservers":::
 
 Standardmäßig wird im Portal die Seite **Übersicht** mit einer allgemeinen Leistungsansicht für Ihre App angezeigt. Hier können Sie auch einfache Verwaltungsaufgaben durchführen, z. B. Durchsuchen, Beenden, Neustarten und Löschen. Die Registerkarten links auf der Seite zeigen die verschiedenen Konfigurationsseiten, die Sie öffnen können.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Verwalten der Python-Django-App auf der Seite „Übersicht“ im Azure-Portal":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Beispielausgabe des Django-Entwicklungsservers":::
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

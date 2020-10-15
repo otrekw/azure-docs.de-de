@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047492"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018881"
 ---
 # <a name="animated-character-detection-preview"></a>Erkennung animierter Figuren (Vorschauversion)
 
@@ -55,7 +55,7 @@ Da die Custom Vision-Integration in den Testkonten von Video Indexer verwaltet w
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Herstellen einer Verbindung mit Ihrem Custom Vision-Konto (nur kostenpflichtige Konten)
 
-Wenn Sie über ein kostenpflichtiges Video Indexer-Konto verfügen, müssen Sie zunächst eine Verbindung mit einem Custom Vision-Konto herstellen. Sollten Sie noch nicht über ein Custom Vision-Konto verfügen, erstellen Sie eins. Weitere Informationen finden Sie unter [Was ist Azure Custom Vision?](../../cognitive-services/custom-vision-service/home.md).
+Wenn Sie über ein kostenpflichtiges Video Indexer-Konto verfügen, müssen Sie zunächst eine Verbindung mit einem Custom Vision-Konto herstellen. Sollten Sie noch nicht über ein Custom Vision-Konto verfügen, erstellen Sie eins. Weitere Informationen finden Sie unter [Was ist Azure Custom Vision?](../../cognitive-services/custom-vision-service/overview.md).
 
 > [!NOTE]
 > Beide Konten müssen sich in derselben Region befinden. Die Custom Vision-Integration wird in der Region „Japan“ derzeit nicht unterstützt.
@@ -160,7 +160,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 1. Stellen Sie eine Verbindung mit einem Custom Vision-Konto her.
 
     Wenn Sie über ein kostenpflichtiges Video Indexer-Konto verfügen, müssen Sie zunächst eine Verbindung mit einem Custom Vision-Konto herstellen. <br/>
-    Sollten Sie noch nicht über ein Custom Vision-Konto verfügen, müssen Sie eins erstellen. Weitere Informationen finden Sie unter [Was ist Azure Custom Vision?](../../cognitive-services/custom-vision-service/home.md).
+    Sollten Sie noch nicht über ein Custom Vision-Konto verfügen, müssen Sie eins erstellen. Weitere Informationen finden Sie unter [Was ist Azure Custom Vision?](../../cognitive-services/custom-vision-service/overview.md).
 
     [Stellen Sie unter Verwendung der API eine Verbindung mit Ihrem Custom Vision-Konto her.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)
 1. Erstellen Sie ein Modell für animierte Figuren.

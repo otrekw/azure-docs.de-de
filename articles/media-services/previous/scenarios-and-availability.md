@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259182"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014408"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -89,10 +89,10 @@ Weitere Informationen zur Verfügbarkeit in Datencentern finden Sie im Abschnitt
 
 ## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Gewinnen nützlicher Erkenntnisse aus Ihren Videos mithilfe von Media Analytics
 
-Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md).
+Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](./legacy-components.md).
 
 1. Laden Sie eine Mediendatei mit hoher Qualität in ein Medienobjekt hoch.
-2. Verarbeiten Sie Ihre Videos mit einem der Media Analytics-Dienste, die im Übersichtsabschnitt des Artikels [Media Analytics auf der Media Services-Plattform](media-services-analytics-overview.md) beschrieben werden.
+2. Verarbeiten Sie Ihre Videos mit einem der Media Analytics-Dienste, die im Übersichtsabschnitt des Artikels [Media Analytics auf der Media Services-Plattform](./legacy-components.md) beschrieben werden.
 3. Media Analytics-Medienprozessoren generieren MP4- oder JSON-Dateien. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus Azure Blob Storage herunterladen.
 
 Weitere Informationen zur Verfügbarkeit in Datencentern finden Sie im Abschnitt [Verfügbarkeit](#availability).
@@ -203,7 +203,7 @@ AMS bietet zwei On-Demand-Encoder: **Media Encoder Standard** und **Media Encode
 
 ### <a name="analytics-media-processors"></a>Analytics-Medienprozessoren
 
-Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md).
+Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](./legacy-components.md).
 
 > [!NOTE]
 > Einige Analytics-Medienprozessoren werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).

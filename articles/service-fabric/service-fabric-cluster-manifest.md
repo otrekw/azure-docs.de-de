@@ -1,16 +1,14 @@
 ---
 title: Konfigurieren Ihres eigenständigen Azure Service Fabric-Clusters
 description: Dieser Artikel beschreibt, wie Sie einen eigenständigen oder lokalen Azure Service Fabric-Cluster konfigurieren.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: dekapur
-ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246570"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843157"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Konfigurationseinstellungen für einen eigenständigen Windows-Cluster
 In diesem Artikel werden die Konfigurationseinstellungen für einen eigenständigen Azure Service Fabric-Cluster beschrieben, die in der *ClusterConfig.json*-Datei festgelegt werden können. Sie verwenden diese Datei, um Informationen zu den Knoten des Clusters, den Sicherheitskonfigurationen sowie zur Netzwerktopologie in Bezug auf Fehler- und Upgradedomänen anzugeben.  Nach dem Ändern oder Hinzufügen von Konfigurationseinstellungen können Sie entweder [einen eigenständigen Cluster erstellen](service-fabric-cluster-creation-for-windows-server.md) oder [die Konfiguration eines eigenständigen Clusters aktualisieren](service-fabric-cluster-config-upgrade-windows-server.md).

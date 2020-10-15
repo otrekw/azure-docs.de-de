@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964684"
 ---
 # <a name="unsupported-language-deployments"></a>Bereitstellungen in nicht unterstützten Sprachen
@@ -47,7 +47,7 @@ Nach der Übermittlung ist das Modell nicht mehr auf der Registerkarte für **ni
 
 ## <a name="whats-next"></a>Wie geht es weiter?
 
-Die von Ihnen für die Bereitstellung ausgewählten Modelle werden gespeichert, sobald der Hub außer Betrieb genommen wird und die Bereitstellung aller Modelle aufgehoben wird.  Sie haben bis zum 24. Mai Zeit, um Anforderungen für die Bereitstellung von nicht unterstützten Modellen zu übermitteln.  Diese Modelle werden am 15. Juni bereitgestellt und stehen dann über Translator V3 zur Verfügung.  Darüber hinaus sind sie noch bis zum 1. Juli über Translator V2 verfügbar.  
+Die von Ihnen für die Bereitstellung ausgewählten Modelle werden gespeichert, sobald der Hub außer Betrieb genommen wird und die Bereitstellung aller Modelle aufgehoben wird.  Sie haben bis zum 24. Mai Zeit, um Anforderungen für die Bereitstellung von nicht unterstützten Modellen zu übermitteln.  Wir werden diese Modelle am 15. Juni bereitstellen. Ab diesem Zeitpunkt werden sie über die Translator V3-API zugänglich sein.  Darüber hinaus werden sie bis zum 1. Juli über die V2-API verfügbar sein.  
 
 Weitere Informationen zu wichtigen Terminen zur Einstellung des Hubs finden Sie [hier](https://www.microsoft.com/translator/business/hub/).
 Nach der Bereitstellung fallen normale Hostinggebühren an.  Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).  
@@ -57,4 +57,4 @@ Im Gegensatz zu den Standardmodellen des benutzerdefinierten Translators werden 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](how-to-train-model.md).
-- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

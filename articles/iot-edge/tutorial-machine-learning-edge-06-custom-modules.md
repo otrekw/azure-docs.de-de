@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997930"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857434"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 
@@ -809,14 +809,6 @@ Durch die Anmeldung bei dem IoT Edge-Gerät (in unserem Fall: der virtuelle Lin
 In diesem Artikel wurde eine IoT Edge-Projektmappe in Visual Studio Code mit drei Modulen (einem Klassifizierer, einem Router und einem Modul zum Schreiben/Hochladen von Dateien) erstellt. Es wurden Routen eingerichtet, damit die Module auf dem Edge-Gerät miteinander kommunizieren können. Außerdem wurde Konfiguration des Edge-Geräts geändert, und die Dockerfiles wurden aktualisiert, um Abhängigkeiten zu installieren und den Containern der Module Bindungen hinzuzufügen. 
 
 Als nächstes haben wir die Konfiguration des IoT-Hubs aktualisiert, um unsere Nachrichten typabhängig weiterzuleiten und Dateiuploads zu verarbeiten. Nach Abschluss der Vorbereitungen haben wir die Module für das IoT Edge-Gerät bereitgestellt und sichergestellt, dass die Module korrekt ausgeführt werden.
-
-Weitere Informationen finden Sie in den folgenden Artikeln:
-
-* [Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](module-composition.md)
-* [Abfragesyntax für das IoT Hub-Nachrichtenrouting](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [Azure IoT Hub-Nachrichtenweiterleitung: jetzt mit Routing nach Nachrichtentext](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [Hochladen von Dateien mit IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)
 
 Fahren Sie mit dem nächsten Artikel fort, um mit dem Senden von Daten zu beginnen und Ihre Projektmappe in Aktion zu sehen.
 

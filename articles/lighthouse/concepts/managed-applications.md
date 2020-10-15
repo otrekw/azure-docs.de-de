@@ -3,12 +3,12 @@ title: Azure Lighthouse und verwaltete Azure-Anwendungen
 description: Hier erfahren Sie, wie Azure Lighthouse und verwaltete Azure-Anwendungen Ihnen helfen können, unterschiedliche Szenarien zu ermöglichen, und wie diese gemeinsam verwendet werden können.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483846"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014986"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse und verwaltete Azure-Anwendungen
 
@@ -23,7 +23,7 @@ Sowohl verwaltete Azure-Anwendungen als auch Azure Lighthouse funktionieren, ind
 
 Mit [Azure Lighthouse](../overview.md) kann ein Dienstanbieter eine Vielzahl verschiedener Verwaltungsaufgaben direkt im Abonnement eines Kunden (oder in einer Ressourcengruppe) ausführen. Dieser Zugriff wird durch eine logische Projektion erreicht, die es dem Dienstanbieter gestattet, sich bei seinem eigenen Mandanten anzumelden und auf Ressourcen zuzugreifen, die zum Mandanten des Kunden gehören. Der Kunde kann bestimmen, welche Abonnements oder Ressourcengruppen an den Dienstanbieter delegiert werden sollen, und der Kunde behält vollständigen Zugriff auf diese Ressourcen. Er kann den Zugriff des Dienstanbieters auch jederzeit entfernen.
 
-Um Azure Lighthouse zu verwenden, wird ein Onboarding der Kunden für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) durchgeführt, entweder durch [Bereitstellen von ARM-Vorlagen](../how-to/onboard-customer.md) oder über ein [Angebot für verwaltete Dienste in Azure Marketplace](managed-services-offers.md). Sie können Ihre Auswirkungen auf Kundenbindungen nachverfolgen und durch den Partner verdiente Guthaben erhalten, indem Sie [Ihre Partner-ID verknüpfen](../how-to/partner-earned-credit.md).
+Um Azure Lighthouse zu verwenden, wird ein Onboarding der Kunden für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) durchgeführt, entweder durch [Bereitstellen von ARM-Vorlagen](../how-to/onboard-customer.md) oder über ein [Angebot für verwaltete Dienste in Azure Marketplace](managed-services-offers.md). Sie können Ihre Auswirkungen auf Kundenbindungen nachverfolgen, indem Sie [Ihre Partner-ID verknüpfen](../how-to/partner-earned-credit.md).
 
 Azure Lighthouse wird in der Regel verwendet, wenn ein Dienstanbieter Verwaltungsaufgaben für einen Kunden kontinuierlich ausführen soll.
 
@@ -35,7 +35,7 @@ Bei einer verwalteten Anwendung werden die von der Anwendung verwendeten Ressour
 
 Verwaltete Anwendungen unterstützen [angepasste Azure-Portal-Erfahrungen](../../azure-resource-manager/managed-applications/concepts-view-definition.md) und die [Integration in benutzerdefinierte Anbieter](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md). Diese Optionen können verwendet werden, um eine stärker angepasste und integrierte Erfahrung bereitzustellen, sodass Kunden einige Verwaltungsaufgaben leichter selbst ausführen können.
 
-Verwaltete Anwendungen können [im Azure Marketplace veröffentlicht werden](../../azure-resource-manager/managed-applications/publish-marketplace-app.md), entweder als privates Angebot für die Verwendung durch einen bestimmten Kunden oder als öffentliches Angebot, das von mehreren Kunden erworben werden kann. Sie können auch Benutzern in Ihrer Organisation bereitgestellt werden, indem [verwaltete Anwendungen in Ihrem Dienstkatalog veröffentlicht werden](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). Sie können sowohl Dienstkatalog- als auch Marketplace-Instanzen mithilfe von ARM-Vorlagen bereitstellen, die den eindeutigen Bezeichner eines kommerziellen Marketplace-Partners zum Nachverfolgen der [Zuordnung der Nutzung durch Kunden](../../marketplace/azure-partner-customer-usage-attribution.md) enthalten können.
+Verwaltete Anwendungen können [im Azure Marketplace veröffentlicht werden](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md), entweder als privates Angebot für die Verwendung durch einen bestimmten Kunden oder als öffentliches Angebot, das von mehreren Kunden erworben werden kann. Sie können auch Benutzern in Ihrer Organisation bereitgestellt werden, indem [verwaltete Anwendungen in Ihrem Dienstkatalog veröffentlicht werden](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). Sie können sowohl Dienstkatalog- als auch Marketplace-Instanzen mithilfe von ARM-Vorlagen bereitstellen, die den eindeutigen Bezeichner eines kommerziellen Marketplace-Partners zum Nachverfolgen der [Zuordnung der Nutzung durch Kunden](../../marketplace/azure-partner-customer-usage-attribution.md) enthalten können.
 
 Verwaltete Azure-Anwendungen werden in der Regel für einen bestimmten Kundenbedarf verwendet, was durch eine sofort einsatzbereite Lösung erzielt werden kann, die vollständig verwaltet vom Dienstanbieter verwaltet wird.
 
