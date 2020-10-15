@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929436"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Generieren und Speichern von SSH-Schlüsseln im Azure-Portal
@@ -48,7 +48,7 @@ Ausführlichere Informationen zur Erstellung und Verwendung von SSH-Schlüsseln 
 
 1. Ein Popupfenster wird angezeigt, in dem Sie die Option **Download private key and create resource** (Privaten Schlüssel herunterladen und Ressource erstellen) auswählen können. Dies führt dazu, dass der SSH-Schlüssel als PEM-Datei heruntergeladen wird.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Herunterladen des privaten Schlüssels als PEM-Datei":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Erstellen einer neuen Ressourcengruppe und Generieren eines SSH-Schlüsselpaars":::
 
 1. Nachdem Sie die PEM-Datei heruntergeladen haben, sollten Sie sie an einen beliebigen Ort auf Ihrem Computer verschieben, auf den von Ihrem SSH-Client aus leicht verwiesen werden kann.
 
@@ -74,7 +74,7 @@ Sie können auch einen öffentlichen SSH-Schlüssel für die Speicherung in Azur
 
 1. Wählen Sie auf der Seite **SSH-Schlüssel** die Option **Erstellen** aus.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Hochladen eines öffentlichen SSH-Schlüssels zur Speicherung in Azure":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Erstellen einer neuen Ressourcengruppe und Generieren eines SSH-Schlüsselpaars":::
 
 1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, um eine neue Ressourcengruppe zum Speichern Ihrer Schlüssel zu erstellen. Geben Sie einen Namen für Ihre Ressourcengruppe ein, und wählen Sie **OK** aus.
 
@@ -98,7 +98,7 @@ Im Portal erstellte SSH-Schlüssel werden als Ressourcen gespeichert, sodass Sie
 1. Wählen Sie in den Filtern **Typ** aus. Heben Sie die Auswahl der Option **Alle auswählen** auf, um die Liste zu leeren.
 1. Geben Sie als Filter **SSH** ein, und wählen Sie **SSH-Schlüssel** aus.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Screenshot des Filterns der Liste, um alle Ihre SSH-Schlüssel anzuzeigen.":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Erstellen einer neuen Ressourcengruppe und Generieren eines SSH-Schlüsselpaars":::
 
 ## <a name="get-the-public-key"></a>Abrufen des öffentlichen Schlüssels
 

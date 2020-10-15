@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773738"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078373"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regionen und Verfügbarkeitszonen in Azure
 
@@ -37,7 +37,7 @@ Für ein besseres Verständnis von Regionen und Verfügbarkeitszonen in Azure is
 
 ## <a name="regions"></a>Regions
 
-Eine Region ist eine Reihe von Rechenzentren, die innerhalb eines durch Wartezeit definierten Umkreises bereitgestellt und über ein dediziertes regionales Netzwerk mit geringer Wartezeit verbunden sind. Dank Azure haben Sie die Flexibilität, Anwendungen dort bereitzustellen, wo es für Sie erforderlich ist, auch in mehreren Regionen, um so eine regionsübergreifende Resilienz bieten zu können. Weitere Informationen finden Sie in der [Übersicht über die Säule „Resilienz“](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview).
+Eine Region ist eine Reihe von Rechenzentren, die innerhalb eines durch Wartezeit definierten Umkreises bereitgestellt und über ein dediziertes regionales Netzwerk mit geringer Wartezeit verbunden sind. Dank Azure haben Sie die Flexibilität, Anwendungen dort bereitzustellen, wo es für Sie erforderlich ist, auch in mehreren Regionen, um so eine regionsübergreifende Resilienz bieten zu können. Weitere Informationen finden Sie in der [Übersicht über die Säule „Resilienz“](/azure/architecture/framework/resiliency/overview).
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
@@ -170,9 +170,9 @@ Es fallen keine zusätzlichen Kosten für virtuelle Computer an, die in einer Ve
 - [Erstellen eines virtuellen Computers](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Erstellen einer zonenredundanten VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Zonenübergreifender Lastenausgleich für virtuelle Computer mithilfe eines Standardlastenausgleichs mit einem zonenredundanten Front-End](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Lastenausgleich für virtuelle Computer innerhalb einer Zone mithilfe eines Standardlastenausgleichs mit einem zonalen Front-End](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Zonenredundanter Speicher](../storage/common/storage-redundancy-zrs.md)
+- [Zonenübergreifender Lastenausgleich für virtuelle Computer mithilfe eines Standardlastenausgleichs mit einem zonenredundanten Front-End](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Lastenausgleich für virtuelle Computer innerhalb einer Zone mithilfe eines Standardlastenausgleichs mit einem zonalen Front-End](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Zonenredundanter Speicher](../storage/common/storage-redundancy.md)
 - [SQL-Datenbank](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Georedundante Notfallwiederherstellung in Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Georedundante Notfallwiederherstellung in Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

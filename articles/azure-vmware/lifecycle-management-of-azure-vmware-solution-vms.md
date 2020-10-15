@@ -3,12 +3,12 @@ title: Lebenszyklusverwaltung von Azure VMware Solution-VMs
 description: Erfahren Sie, wie Sie alle Aspekte des Lebenszyklus Ihrer Azure VMware Solution-VMs mit nativen Tools in Microsoft Azure verwalten.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575474"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950362"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Lebenszyklusverwaltung von Azure VMware Solution-VMs
 
@@ -58,7 +58,7 @@ Die **Azure-Updateverwaltung** in Azure Automation verwaltet Betriebssystemupdat
 
 **Azure Security Center** bietet lokal und in der Cloud erweiterten Bedrohungsschutz für alle Ihre Hybridworkloads. Die Lösung bewertet das Sicherheitsrisiko von Azure VMware Solution-VMs und gibt bei Bedarf Warnungen aus. Diese Sicherheitswarnungen können zur Behebung an Azure Monitor weitergeleitet werden.
 - Azure Security Center muss nicht bereitgestellt werden. Weitere Informationen finden Sie in der Liste der [unterstützten Features für virtuelle Computer](../security-center/security-center-services.md).
-- Informationen zum Hinzufügen von Azure VMware Solution-VMs und von Nicht-Azure-VMs in Azure Security Center finden Sie unter [Einbinden von Windows-Computern in Azure Security Center](../security-center/quick-onboard-windows-computer.md) und [Einbinden von Linux-Computern in Azure Security Center](../security-center/quick-onboard-linux-computer.md).
+- Informationen zum Hinzufügen von Azure VMware Solution-VMs und von Nicht-Azure-VMs in Azure Security Center finden Sie unter [Einbinden von Windows-Computern in Azure Security Center](../security-center/quickstart-onboard-machines.md) und [Einbinden von Linux-Computern in Azure Security Center](../security-center/quickstart-onboard-machines.md).
 - Nach dem Hinzufügen von VMs analysiert Azure Security Center den Sicherheitsstatus der Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. Außerdem werden auf der Registerkarte „Übersicht“ Empfehlungen bereitgestellt. Weitere Informationen finden Sie unter [Sicherheitsempfehlungen in Azure Security Center anzeigen](../security-center/security-center-recommendations.md).
 - Sie können in Azure Security Center Sicherheitsrichtlinien definieren. Informationen zum Konfigurieren Ihrer Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](../security-center/tutorial-security-policy.md).
 

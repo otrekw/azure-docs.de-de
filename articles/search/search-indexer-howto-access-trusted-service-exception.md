@@ -8,16 +8,16 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320471"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950023"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Sicheres Zugreifen auf Daten in Speicherkonten über eine Ausnahme für einen vertrauenswürdigen Dienst
 
-Indexer, die auf Daten in Speicherkonten zugreifen, können für den sicheren Zugriff auf Daten die Funktion [Ausnahme für vertrauenswürdige Dienste](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) nutzen. Dieser Mechanismus bietet Kunden, die [Indexer keinen Zugriff über IP-Firewallregeln](search-indexer-howto-access-ip-restricted.md) gewähren können, eine einfache, sichere und kostenlose Alternative für den Zugriff auf Daten in Speicherkonten.
+Indexer, die auf Daten in Speicherkonten zugreifen, können für den sicheren Zugriff auf Daten die Funktion [Ausnahme für vertrauenswürdige Dienste](../storage/common/storage-network-security.md#exceptions) nutzen. Dieser Mechanismus bietet Kunden, die [Indexer keinen Zugriff über IP-Firewallregeln](search-indexer-howto-access-ip-restricted.md) gewähren können, eine einfache, sichere und kostenlose Alternative für den Zugriff auf Daten in Speicherkonten.
 
 > [!NOTE]
 > Die Unterstützung für den Zugriff auf Daten in Speicherkonten über eine Ausnahme für einen vertrauenswürdigen Dienst ist auf Azure Blob Storage und Azure Data Lake Storage Gen2 beschränkt. Azure Table Storage wird nicht unterstützt.

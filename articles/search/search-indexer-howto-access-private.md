@@ -8,23 +8,23 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9ffd7d2513e87f818001d7ccf96212a4dbef7ac2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534725"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950141"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Zugreifen auf sichere Ressourcen über private Endpunkte
 
 Azure-Ressourcen (z. B. Speicherkonten, die als Datenquellen verwendet werden) können so konfiguriert werden, dass auf sie nur von einer bestimmten Liste virtueller Netzwerke aus zugegriffen werden kann. Sie können auch so konfiguriert werden, dass sie jeglichen Zugriff auf „öffentliche Netzwerke“ verbieten.
-Kunden können Azure Cognitive Search auffordern, eine (ausgehende) [private Endpunktverbindung](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) zu erstellen, um über Indexer sicher auf Daten aus solchen Datenquellen zuzugreifen.
+Kunden können Azure Cognitive Search auffordern, eine (ausgehende) [private Endpunktverbindung](../private-link/private-endpoint-overview.md) zu erstellen, um über Indexer sicher auf Daten aus solchen Datenquellen zuzugreifen.
 
 ## <a name="shared-private-link-resources-management-apis"></a>Freigegebene Verwaltungs-APIs für Private Link-Ressourcen
 
 Private Endpunkte, die von Azure Cognitive Search auf Kundenwunsch erstellt werden, um auf „sichere“ Ressourcen zuzugreifen, werden als *freigegebene Private Link-Ressourcen* bezeichnet. Der Kunde gibt den Zugriff auf eine Ressource (z. B. ein Speicherkonto) frei, für die das Onboarding in den [Azure Private Link-Dienst](https://azure.microsoft.com/services/private-link/) durchgeführt wurde.
 
-Azure Cognitive Search bietet über die Search-Verwaltungs-API die Möglichkeit, [freigegebene Private Link-Ressourcen zu erstellen oder zu aktualisieren](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate). Sie werden diese API zusammen mit anderen Verwaltungs-APIs von *freigegebenen Private Link-Ressourcen* verwenden, um den Zugriff auf eine sichere Ressource von einem Azure Cognitive Search-Indexer zu konfigurieren.
+Azure Cognitive Search bietet über die Search-Verwaltungs-API die Möglichkeit, [freigegebene Private Link-Ressourcen zu erstellen oder zu aktualisieren](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate). Sie werden diese API zusammen mit anderen Verwaltungs-APIs von *freigegebenen Private Link-Ressourcen* verwenden, um den Zugriff auf eine sichere Ressource von einem Azure Cognitive Search-Indexer zu konfigurieren.
 
 Private Endpunktverbindungen mit einigen Ressourcen können nur über die Vorschauversion der Search-Verwaltungs-API (`2020-08-01-Preview`) erstellt werden, die in der nachstehenden Tabelle mit dem Tag „preview“ gekennzeichnet ist. Ressourcen ohne das Tag „preview“ können sowohl über die Vorschau-API als auch über die GA-API erstellt werden (`2020-08-01`).
 
@@ -40,7 +40,7 @@ Im Folgenden finden Sie eine Liste der Azure-Ressourcen, zu denen ausgehende pri
 | Azure-Schlüsseltresor | `vault` |
 | Azure Functions (Vorschau) | `sites` |
 
-Die Liste der Azure-Ressourcen, für die ausgehende private Endpunktverbindungen unterstützt werden, kann auch über die [Liste unterstützter APIs](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported) abgefragt werden.
+Die Liste der Azure-Ressourcen, für die ausgehende private Endpunktverbindungen unterstützt werden, kann auch über die [Liste unterstützter APIs](/rest/api/searchmanagement/privatelinkresources/listsupported) abgefragt werden.
 
 Für die Zwecke dieses Leitfadens wird eine Mischung aus [ARMClient](https://github.com/projectkudu/ARMClient) und [Postman](https://www.postman.com/) verwendet, um die REST-API-Aufrufe zu veranschaulichen.
 
@@ -51,12 +51,12 @@ Im restlichen Leitfaden wird gezeigt, wie der Dienst __contoso-search__ konfigur
 
 ## <a name="securing-your-storage-account"></a>Schützen Ihres Speicherkontos
 
-Konfigurieren Sie das Speicherkonto so, dass der [Zugriff nur von bestimmten Subnetzen aus zulässig ist](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network). Wenn Sie diese Option über das Azure-Portal aktivieren und den Satz leer lassen, bedeutet dies, dass kein Datenverkehr aus einem virtuellen Netzwerk zugelassen wird.
+Konfigurieren Sie das Speicherkonto so, dass der [Zugriff nur von bestimmten Subnetzen aus zulässig ist](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network). Wenn Sie diese Option über das Azure-Portal aktivieren und den Satz leer lassen, bedeutet dies, dass kein Datenverkehr aus einem virtuellen Netzwerk zugelassen wird.
 
    ![Zugriff über virtuelles Netzwerk](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "Zugriff über virtuelles Netzwerk")
 
 > [!NOTE]
-> Der [vertrauenswürdige Microsoft-Dienstansatz](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) kann mithilfe virtueller Netzwerk- oder IP-Einschränkungen eines solchen Speicherkontos umgangen werden und dem Suchdienst den Zugriff auf Daten im Speicherkonto ermöglichen, wie in der [Anleitung](search-indexer-howto-access-trusted-service-exception.md) beschrieben. Bei Verwendung dieses Ansatzes erfolgt die Kommunikation zwischen Azure Cognitive Search und dem Speicherkonto jedoch über die öffentliche IP-Adresse des Speicherkontos, über das sichere Microsoft-Backbone-Netzwerk.
+> Der [vertrauenswürdige Microsoft-Dienstansatz](../storage/common/storage-network-security.md#trusted-microsoft-services) kann mithilfe virtueller Netzwerk- oder IP-Einschränkungen eines solchen Speicherkontos umgangen werden und dem Suchdienst den Zugriff auf Daten im Speicherkonto ermöglichen, wie in der [Anleitung](search-indexer-howto-access-trusted-service-exception.md) beschrieben. Bei Verwendung dieses Ansatzes erfolgt die Kommunikation zwischen Azure Cognitive Search und dem Speicherkonto jedoch über die öffentliche IP-Adresse des Speicherkontos, über das sichere Microsoft-Backbone-Netzwerk.
 
 ## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Schritt 1: Erstellen einer freigegebenen Private Link-Ressource zum Speicherkonto
 
@@ -101,7 +101,7 @@ Dieser URI kann in regelmäßigen Abständen abgerufen werden, um den Status des
 ## <a name="step-2a-approve-the-private-endpoint-connection-for-the-storage-account"></a>Schritt 2a: Genehmigen der privaten Endpunktverbindung für das Speicherkonto
 
 > [!NOTE]
-> In diesem Abschnitt wird mithilfe des Azure-Portals der Genehmigungsflow für einen privaten Endpunkt zur Speicherung durchlaufen. Stattdessen kann auch die [REST-API](https://docs.microsoft.com/rest/api/storagerp/privateendpointconnections) verwendet werden, die über einen Speicherressourcenanbieter verfügbar ist.
+> In diesem Abschnitt wird mithilfe des Azure-Portals der Genehmigungsflow für einen privaten Endpunkt zur Speicherung durchlaufen. Stattdessen kann auch die [REST-API](/rest/api/storagerp/privateendpointconnections) verwendet werden, die über einen Speicherressourcenanbieter verfügbar ist.
 >
 > Andere Anbieter wie CosmosDB, Azure SQL Server usw. bieten ebenfalls ähnliche APIs von Speicherressourcenanbietern zur Verwaltung privater Endpunktverbindungen.
 
@@ -117,7 +117,7 @@ Nachdem die Anforderung für die Verbindung mit dem privaten Endpunkt genehmigt 
 
 ## <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>Schritt 2b: Abfragen des Status der freigegebenen Private Link-Ressource
 
- Um zu bestätigen, dass die freigegebene Private Link-Ressource nach der Genehmigung aktualisiert wurde, rufen Sie ihren Status über die [GET-API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get) ab.
+ Um zu bestätigen, dass die freigegebene Private Link-Ressource nach der Genehmigung aktualisiert wurde, rufen Sie ihren Status über die [GET-API](/rest/api/searchmanagement/sharedprivatelinkresources/get) ab.
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -143,24 +143,24 @@ Wenn der `properties.provisioningState` der Ressource `Succeeded` und `propertie
 > [!NOTE]
 > Dieser Schritt kann sogar vor der Genehmigung der privaten Endpunktverbindung durchgeführt werden. Bis zur Genehmigung der privaten Endpunktverbindung endet jeder Indexer, der versucht, mit einer sicheren Ressource (z. B. dem Speicherkonto) zu kommunizieren, mit einem vorübergehenden Fehlerstatus. Neue Indexer werden nicht erstellt. Sobald die private Endpunktverbindung genehmigt ist, können Indexer auf das private Speicherkonto zugreifen.
 
-1. [Erstellen Sie eine Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source), die auf das Speicherkonto und einen entsprechenden Container innerhalb des Speicherkontos verweist. Die folgende Abbildung zeigt diese Anforderung, die über Postman ausgeführt wurde.
+1. [Erstellen Sie eine Datenquelle](/rest/api/searchservice/create-data-source), die auf das Speicherkonto und einen entsprechenden Container innerhalb des Speicherkontos verweist. Die folgende Abbildung zeigt diese Anforderung, die über Postman ausgeführt wurde.
 ![Erstellen der Datenquelle](media\search-indexer-howto-secure-access\create-ds.png "Datenquellenerstellung")
 
-2. Auf ähnliche Weise [erstellen Sie einen Index](https://docs.microsoft.com/rest/api/searchservice/create-index) und [erstellen optional ein Skillset](https://docs.microsoft.com/rest/api/searchservice/create-skillset) mithilfe der REST-API.
+2. Auf ähnliche Weise [erstellen Sie einen Index](/rest/api/searchservice/create-index) und [erstellen optional ein Skillset](/rest/api/searchservice/create-skillset) mithilfe der REST-API.
 
-3. [Erstellen Sie einen Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer), der auf die Datenquelle, den Index und das oben erstellte Skillset verweist. Erzwingen Sie außerdem, dass der Indexer in der privaten Ausführungsumgebung ausgeführt wird, indem Sie die Indexerkonfigurationseigenschaft `executionEnvironment` auf `"Private"` festlegen.
+3. [Erstellen Sie einen Indexer](/rest/api/searchservice/create-indexer), der auf die Datenquelle, den Index und das oben erstellte Skillset verweist. Erzwingen Sie außerdem, dass der Indexer in der privaten Ausführungsumgebung ausgeführt wird, indem Sie die Indexerkonfigurationseigenschaft `executionEnvironment` auf `"Private"` festlegen.
 ![Create Indexer](media\search-indexer-howto-secure-access\create-idr.png "Indexererstellung")
 
-Der Indexer sollte erfolgreich erstellt werden und entsprechende Fortschritte machen: Inhalte aus dem Speicherkonto über die private Endpunktverbindung indizieren. Der Status des Indexers kann über die [Indexerstatus-API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) überwacht werden.
+Der Indexer sollte erfolgreich erstellt werden und entsprechende Fortschritte machen: Inhalte aus dem Speicherkonto über die private Endpunktverbindung indizieren. Der Status des Indexers kann über die [Indexerstatus-API](/rest/api/searchservice/get-indexer-status) überwacht werden.
 
 > [!NOTE]
-> Wenn Sie bereits über vorhandene Indexer verfügen, können Sie diese einfach über die [PUT-API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) aktualisieren, um die `executionEnvironment` auf `"Private"` festzulegen.
+> Wenn Sie bereits über vorhandene Indexer verfügen, können Sie diese einfach über die [PUT-API](/rest/api/searchservice/create-indexer) aktualisieren, um die `executionEnvironment` auf `"Private"` festzulegen.
 
 ## <a name="troubleshooting-issues"></a>Fragen zur Problembehandlung
 
 - Wenn beim Erstellen eines Indexers die Erstellung mit einer Fehlermeldung wie „Die Anmeldeinformationen für die Datenquelle sind ungültig“ fehlschlägt, bedeutet dies, dass entweder die private Endpunktverbindung nicht *genehmigt* wurde oder nicht funktionsfähig ist.
-Rufen Sie den Status der freigegebenen Private Link-Ressource mithilfe der [GET-API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get) ab. Wenn sie *genehmigt* worden ist, prüfen Sie den `properties.provisioningState` der Ressource. Wenn es `Incomplete` ist, bedeutet dies, dass einige der zugrunde liegenden Abhängigkeiten für die Ressource nicht bereitgestellt wurden. Stellen Sie die `PUT`-Anforderung erneut aus, die freigegebene Private Link-Ressource, die das Problem beheben sollte, „neu zu erstellen“. Möglicherweise ist eine erneute Genehmigung erforderlich. Überprüfen Sie den Status der Ressource erneut, um sich zu vergewissern.
-- Wenn der Indexer erstellt wird, ohne seine `executionEnvironment` festzulegen, könnte die Erstellung des Indexers erfolgreich sein, aber sein Ausführungsverlauf wird zeigen, dass Indexerausführungen nicht erfolgreich sind. Sie sollten [den Indexer](https://docs.microsoft.com/rest/api/searchservice/update-indexer) aktualisieren, um die Ausführungsumgebung anzugeben.
+Rufen Sie den Status der freigegebenen Private Link-Ressource mithilfe der [GET-API](/rest/api/searchmanagement/sharedprivatelinkresources/get) ab. Wenn sie *genehmigt* worden ist, prüfen Sie den `properties.provisioningState` der Ressource. Wenn es `Incomplete` ist, bedeutet dies, dass einige der zugrunde liegenden Abhängigkeiten für die Ressource nicht bereitgestellt wurden. Stellen Sie die `PUT`-Anforderung erneut aus, die freigegebene Private Link-Ressource, die das Problem beheben sollte, „neu zu erstellen“. Möglicherweise ist eine erneute Genehmigung erforderlich. Überprüfen Sie den Status der Ressource erneut, um sich zu vergewissern.
+- Wenn der Indexer erstellt wird, ohne seine `executionEnvironment` festzulegen, könnte die Erstellung des Indexers erfolgreich sein, aber sein Ausführungsverlauf wird zeigen, dass Indexerausführungen nicht erfolgreich sind. Sie sollten [den Indexer](/rest/api/searchservice/update-indexer) aktualisieren, um die Ausführungsumgebung anzugeben.
 - Wenn der Indexer ohne Festlegen der `executionEnvironment` erstellt und erfolgreich ausgeführt wird, bedeutet dies, dass Azure Cognitive Search entschieden hat, dass seine Ausführungsumgebung die suchdienstspezifische „private“ Umgebung ist. Dies kann sich jedoch aufgrund einer Vielzahl von Faktoren (vom Indexer verbrauchte Ressourcen, Belastung des Suchdiensts usw.) ändern und zu einem späteren Zeitpunkt zu einem Fehler führen, sodass wir Ihnen dringend empfehlen, die `executionEnvironment` auf `"Private"` festzulegen, um sicherzustellen, dass in Zukunft kein Fehler auftritt.
 - [Kontingente und Grenzwerte](search-limits-quotas-capacity.md) bestimmen, wie viele freigegebene Private Link-Ressourcen erstellt werden können und hängen von der SKU des Suchdiensts ab.
 
@@ -168,5 +168,5 @@ Rufen Sie den Status der freigegebenen Private Link-Ressource mithilfe der [GET-
 
 Weitere Informationen zu privaten Endpunkten:
 
-- [Was sind private Endpunkte?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
-- [Für private Endpunkte erforderliche DNS-Konfigurationen](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)
+- [Was sind private Endpunkte?](../private-link/private-endpoint-overview.md)
+- [Für private Endpunkte erforderliche DNS-Konfigurationen](../private-link/private-endpoint-dns.md)

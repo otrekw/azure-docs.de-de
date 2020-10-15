@@ -4,10 +4,10 @@ description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wieder
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538669"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Regelmäßiges Sichern und Wiederherstellen in einem Azure Service Fabric-Cluster

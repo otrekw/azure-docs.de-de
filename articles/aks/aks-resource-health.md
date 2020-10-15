@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358252"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070655"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Überprüfung auf Resource Health-Ereignisse, die sich auf Ihren AKS-Cluster auswirken (Vorschau)
 
 
-Wenn Sie Ihre Containerworkloads in AKS ausführen, sollten Sie sicherstellen, dass Sie Probleme ermitteln und behandeln können, sobald diese auftreten. Dadurch lassen sich die Auswirkungen auf die Verfügbarkeit Ihrer Workloads minimieren. Mit [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) erhalten Sie wertvolle Einblicke in verschiedene Integritätsereignisse, aufgrund derer Ihr AKS-Cluster möglicherweise nicht mehr verfügbar ist.
+Wenn Sie Ihre Containerworkloads in AKS ausführen, sollten Sie sicherstellen, dass Sie Probleme ermitteln und behandeln können, sobald diese auftreten. Dadurch lassen sich die Auswirkungen auf die Verfügbarkeit Ihrer Workloads minimieren. Mit [Azure Resource Health](../service-health/resource-health-overview.md) erhalten Sie wertvolle Einblicke in verschiedene Integritätsereignisse, aufgrund derer Ihr AKS-Cluster möglicherweise nicht mehr verfügbar ist.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ Resource Health empfängt Signale für Ihren verwalteten Cluster, die Auskunft �
 
 - **Beeinträchtigt**: Wenn ein Integritätsproblem vorliegt, das Sie behandeln müssen, lautet der Resource Health-Status für Ihren Cluster *Beeinträchtigt*.
 
-Weitere Informationen zu den einzelnen Integritätsstatus finden Sie unter [Übersicht über Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status).
+Weitere Informationen zu den einzelnen Integritätsstatus finden Sie unter [Übersicht über Resource Health](../service-health/resource-health-overview.md#health-status).
 
 ### <a name="view-historical-data"></a>Anzeigen von Verlaufsdaten
 
@@ -57,4 +57,4 @@ Im Abschnitt **Integritätsverlauf** können Sie Resource Health-Verlaufsdaten d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die [AKS-Diagnose](https://docs.microsoft.com/azure/aks/concepts-diagnostics), um weitere Überprüfungen für Ihren Cluster durchzuführen und Clusterprobleme zu behandeln.
+Verwenden Sie die [AKS-Diagnose](./concepts-diagnostics.md), um weitere Überprüfungen für Ihren Cluster durchzuführen und Clusterprobleme zu behandeln.

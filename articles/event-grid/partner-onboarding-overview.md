@@ -4,10 +4,10 @@ description: In diesem Artikel wird das Onboarding als Azure Event Grid-Partnert
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826788"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als Azure Event Grid-Partner

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318397"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070706"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
@@ -155,7 +155,7 @@ Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mi
 
 1. Bereitstellen einer **grundlegenden** Instanz des Solution Accelerators mit der **pcs**-CLI. Notieren Sie den Namen der Bereitstellung und die Anmeldeinformationen, die Sie für die VM angegeben haben. Weitere Informationen finden Sie unter [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung über die Befehlszeilenschnittstelle](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Aktivieren Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den SSH-Zugriff auf den virtuellen Computer, der die Microservices in der Lösung hostet. Beispiel: 
+1. Aktivieren Sie über das Azure-Portal oder mit [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) den SSH-Zugriff auf den virtuellen Computer, der die Microservices in der Lösung hostet. Beispiel: 
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mi
 
     Sie sollten nur während der Test- und Entwicklungsphase SSH-Zugriff aktivieren. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](../security/fundamentals/network-best-practices.md).
 
-1. Suchen Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel: 
+1. Suchen Sie über das Azure-Portal oder mit [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel: 
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table

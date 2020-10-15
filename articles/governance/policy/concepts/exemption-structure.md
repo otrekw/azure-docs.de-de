@@ -3,16 +3,16 @@ title: Details der Struktur von Richtlinienausnahmen
 description: Hier wird die Definition von Richtlinienausnahmen beschrieben, die von Azure Policy verwendet wird, um Ressourcen von der Auswertung von Initiativen oder Definitionen auszuschließen.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968048"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950175"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy-Ausnahmenstruktur
 
-Die Funktion für Azure Policy-Ausnahmen (Vorschau) wird verwendet, um eine Ressourcenhierarchie oder eine einzelne Ressource von der Bewertung von Initiativen oder Definitionen _auszunehmen_. Ressourcen, die _ausgenommen_ sind, werden auf die allgemeine Konformität angerechnet, können aber nicht ausgewertet werden oder einen vorübergehenden Verzicht aufweisen. Weitere Informationen finden Sie in der [Übersicht zu Bereichen in Azure Policy](./scope.md). Azure Policy-Ausnahmen funktionieren nur mit [Resource Manager-Modi](./definition-structure.md#resource-manager-modes), nicht mit **Ressourcenanbieter-Modi**.
+Die Funktion für Azure Policy-Ausnahmen (Vorschau) wird verwendet, um eine Ressourcenhierarchie oder eine einzelne Ressource von der Bewertung von Initiativen oder Definitionen _auszunehmen_. Ressourcen, die _ausgenommen_ sind, werden auf die allgemeine Konformität angerechnet, können aber nicht ausgewertet werden oder einen vorübergehenden Verzicht aufweisen. Weitere Informationen finden Sie in der [Übersicht zu Bereichen in Azure Policy](./scope.md). Azure Policy-Ausnahmen funktionieren nur mit [Resource Manager-Modi](./definition-structure.md#resource-manager-modes), nicht mit [Ressourcenanbieter-Modi](./definition-structure.md#resource-provider-modes).
 
 > [!IMPORTANT]
 > Die Funktion ist während der **Vorschau** kostenfrei. Ausführliche Preisinformationen finden Sie in der [Azure Policy-Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/). Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

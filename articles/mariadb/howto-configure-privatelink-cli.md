@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833197"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über die CLI
@@ -171,7 +171,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 3. Testen Sie die Verbindung über den privaten Link für den MariaDB-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
-4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
+4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -185,7 +185,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 6. (Optional) Durchsuchen von Datenbanken im linken Menü und Erstellen von Informationen in der MariaDB-Datenbank oder Abfragen von Informationen darin
 
-8. Schließen Sie die Remotedesktopverbindung mit myVm.
+8. Schließen Sie die Remotedesktopverbindung mit „myVm“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit „az group delete“ entfernen: 
