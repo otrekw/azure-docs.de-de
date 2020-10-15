@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764042"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077863"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -78,13 +78,13 @@ Um dieses Dashboard für alle künftig verwendeten virtuellen Computer zu veröf
 Es gibt zwei Ansätze für APIs, die Ressourcen in Azure erstellen:
 
 * Imperative APIs erstellen jeweils nur eine Ressource. Weitere Informationen finden Sie unter [Ressourcen](/rest/api/resources/resources).
-* Ein auf Vorlagen basierendes Bereitstellungssystem, mit dem mehrere abhängige Ressourcen mit einem einzigen API-Befehl erstellt werden. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
+* Ein auf Vorlagen basierendes Bereitstellungssystem, mit dem mehrere abhängige Ressourcen mit einem einzigen API-Befehl erstellt werden. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md).
 
 Bei einer vorlagenbasierten Bereitstellung werden Parametrisierung und Vorlagenerstellung unterstützt. Wir verwenden diesen Ansatz in diesem Artikel.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programmgesteuertes Erstellen eines Dashboards über die Vorlage mithilfe einer Vorlagenbereitstellung
 
-Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orchestrieren. Sie erstellen eine Bereitstellungsvorlage, die die Gruppe der bereitzustellenden Ressourcen sowie die Beziehungen zwischen ihnen darstellt.  Das JSON-Format der einzelnen Ressourcen entspricht jeweils dem Format beim Erstellen der Ressourcen nacheinander. Der Unterschied besteht darin, dass mit der Vorlagensprache einige Konzepte wie Variablen, Parameter, allgemeine Funktionen usw. hinzugefügt werden. Diese erweiterte Syntax wird nur im Kontext einer Vorlagenbereitstellung unterstützt. Sie funktioniert nicht, wenn Sie mit den zuvor erwähnten imperativen APIs verwendet wird. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orchestrieren. Sie erstellen eine Bereitstellungsvorlage, die die Gruppe der bereitzustellenden Ressourcen sowie die Beziehungen zwischen ihnen darstellt.  Das JSON-Format der einzelnen Ressourcen entspricht jeweils dem Format beim Erstellen der Ressourcen nacheinander. Der Unterschied besteht darin, dass mit der Vorlagensprache einige Konzepte wie Variablen, Parameter, allgemeine Funktionen usw. hinzugefügt werden. Diese erweiterte Syntax wird nur im Kontext einer Vorlagenbereitstellung unterstützt. Sie funktioniert nicht, wenn Sie mit den zuvor erwähnten imperativen APIs verwendet wird. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 Die Parametrisierung muss über die Parametersyntax der Vorlage erfolgen.  Sie ersetzen alle zuvor gefundenen Instanzen der Ressourcen-ID wie im Folgenden gezeigt.
 
@@ -125,7 +125,7 @@ Deklarieren Sie erforderliche Vorlagenmetadaten und die Parameter oben in der JS
 Nachdem Sie die Vorlage konfiguriert haben, stellen Sie sie mit einer der folgenden Methoden bereit:
 
 * [REST-APIs](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/group/deployment#az-group-deployment-create)
 * [Vorlagenbereitstellungsseite im Azure-Portal](https://portal.azure.com/#create/Microsoft.Template)
 

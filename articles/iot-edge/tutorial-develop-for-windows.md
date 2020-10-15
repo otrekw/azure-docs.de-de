@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449620"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045787"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
@@ -87,13 +87,13 @@ In diesem Tutorial werden die Entwicklungsschritte für Visual Studio 2019 besc
 
 1. Bereiten Sie Visual Studio 2019 auf Ihrem Entwicklungscomputer vor.
 
-   * Wenn Visual Studio auf Ihrem Entwicklungscomputer noch nicht installiert ist, müssen Sie die [Installation von Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) mit den folgenden Workloads durchführen:
+   * Wenn Visual Studio auf Ihrem Entwicklungscomputer noch nicht installiert ist, müssen Sie die [Installation von Visual Studio 2019](/visualstudio/install/install-visual-studio) mit den folgenden Workloads durchführen:
 
       * Azure-Entwicklung
       * Desktopentwicklung mit C++
       * Plattformübergreifende .NET Core-Entwicklung
 
-   * Wenn Sie Visual Studio 2019 bereits auf dem Entwicklungscomputer installiert haben, führen Sie die Schritte in [Modifizieren von Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) aus, um die erforderlichen Workloads hinzuzufügen.
+   * Wenn Sie Visual Studio 2019 bereits auf dem Entwicklungscomputer installiert haben, führen Sie die Schritte in [Modifizieren von Visual Studio](/visualstudio/install/modify-visual-studio) aus, um die erforderlichen Workloads hinzuzufügen.
 
 2. Laden Sie die Erweiterung [Azure IoT Edge-Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) für Visual Studio 2019 herunter, und installieren Sie sie.
 
@@ -181,17 +181,17 @@ Die von Ihnen erstellte Lösungsvorlage enthält Beispielcode für ein IoT Edge-
 
 Für jedes Modul können im Code mehrere Warteschlangen für die *Eingabe* und *Ausgabe* deklariert werden. Der IoT Edge-Hub, der auf dem Gerät ausgeführt wird, leitet Nachrichten aus der Ausgabe eines Moduls an die Eingabe mindestens eines anderen Moduls weiter. Der spezifische Code zum Deklarieren von Ein- und Ausgaben variiert je nach Sprache, aber das Konzept ist modulübergreifend identisch. Weitere Informationen zum Routing zwischen Modulen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes).
 
-Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) aus dem IoT Hub SDK für .NET.
+Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient-Klasse](/dotnet/api/microsoft.azure.devices.client.moduleclient) aus dem IoT Hub SDK für .NET.
 
 1. Suchen Sie in der Datei **program.cs** die **SetInputMessageHandlerAsync**-Methode.
 
-2. Die [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet)-Methode richtet eine Eingabewarteschlange für den Empfang eingehender Nachrichten ein. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Eingabewarteschlange namens **input1** initialisiert.
+2. Die [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync)-Methode richtet eine Eingabewarteschlange für den Empfang eingehender Nachrichten ein. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Eingabewarteschlange namens **input1** initialisiert.
 
    ![Ermitteln des Eingabenamens im Konstruktor „SetInputMessageHandlserAsync“](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
 3. Suchen Sie als Nächstes die **SendEventAsync**-Methode.
 
-4. Die [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet)-Methode verarbeitet empfangene Nachrichten und richtet eine Ausgabewarteschlange ein, um sie zu übergeben. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Ausgabewarteschlange namens **output1** initialisiert.
+4. Die [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync)-Methode verarbeitet empfangene Nachrichten und richtet eine Ausgabewarteschlange ein, um sie zu übergeben. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Ausgabewarteschlange namens **output1** initialisiert.
 
    ![Ermitteln des Ausgabenamens im Konstruktor „SendEventAsync“](./media/tutorial-develop-for-windows/declare-output-queue.png)
 

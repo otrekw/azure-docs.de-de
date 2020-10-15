@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447796"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046008"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte (klassischer Editor)
 
@@ -21,7 +21,7 @@ Sie können DevOps mit den integrierten Azure IoT Edge-Aufgaben in Azure Pipelin
 
 ![Diagramm – CI- und CD-Branches für Entwicklung und Produktion](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der integrierten [Azure IoT Edge-Aufgaben](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) für Azure Pipelines Build- und Releasepipelines für Ihre IoT Edge-Projektmappe erstellen können. Jede Azure IoT Edge-Aufgabe, die Ihrer Pipeline hinzugefügt wird, implementiert eine der folgenden vier Aktionen:
+In diesem Artikel erfahren Sie, wie Sie mithilfe der integrierten [Azure IoT Edge-Aufgaben](/azure/devops/pipelines/tasks/build/azure-iot-edge) für Azure Pipelines Build- und Releasepipelines für Ihre IoT Edge-Projektmappe erstellen können. Jede Azure IoT Edge-Aufgabe, die Ihrer Pipeline hinzugefügt wird, implementiert eine der folgenden vier Aktionen:
 
  | Aktion | BESCHREIBUNG |
  | --- | --- |
@@ -32,22 +32,22 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der integrierten [Azure IoT Edg
 
 Sofern nicht anders angegeben, untersuchen die Prozeduren in diesem Artikel nicht die gesamte Funktionalität, die über Aufgabenparameter zur Verfügung steht. Weitere Informationen finden Sie unter
 
-* [Aufgabenversion](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [Aufgabenversion](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Erweitert** – Falls zutreffend, geben Sie Module an, die nicht erstellt werden sollen.
-* [Steuerungsoptionen](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [Umgebungsvariablen](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [Ausgabevariablen](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [Steuerungsoptionen](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [Umgebungsvariablen](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [Ausgabevariablen](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Repos-Repository. Wenn Sie keines besitzen, können Sie [ein neues Git-Repository in Ihrem Projekt erstellen](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). Für diesen Artikel haben wir ein Repository namens **IoTEdgeRepo** erstellt.
-* Eine per Push an Ihr Repository committete IoT Edge-Lösung. Wenn Sie eine neue Beispiellösung für das Testen in diesem Artikel erstellen möchten, führen Sie die Schritte in [Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge](how-to-vs-code-develop-module.md) oder [Verwenden von Visual Studio 2017 zum Entwickeln und Debuggen von C#-Modulen für Azure IoT Edge (Vorschauversion)](how-to-visual-studio-develop-csharp-module.md) aus. Für diesen Artikel haben wir in unserem Repository die Projektmappe **IoTEdgeSolution** erstellt, die den Code für das Modul **filtermodule** enthält.
+* Ein Azure Repos-Repository. Wenn Sie keines besitzen, können Sie [ein neues Git-Repository in Ihrem Projekt erstellen](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). Für diesen Artikel haben wir ein Repository namens **IoTEdgeRepo** erstellt.
+* Eine per Push an Ihr Repository committete IoT Edge-Lösung. Wenn Sie eine neue Beispiellösung für das Testen in diesem Artikel erstellen möchten, führen Sie die Schritte in [Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge](how-to-vs-code-develop-module.md) oder [Verwenden von Visual Studio 2017 zum Entwickeln und Debuggen von C#-Modulen für Azure IoT Edge (Vorschauversion)](./how-to-visual-studio-develop-module.md) aus. Für diesen Artikel haben wir in unserem Repository die Projektmappe **IoTEdgeSolution** erstellt, die den Code für das Modul **filtermodule** enthält.
 
    In diesem Artikel benötigen Sie lediglich den von den IoT Edge-Vorlagen in Visual Studio Code oder Visual Studio erstellten Projektmappenordner. Sie müssen diesen Code nicht erstellen, pushen, bereitstellen oder debuggen, bevor Sie fortfahren. Sie werden diese Prozesse in Azure Pipelines einrichten.
 
    Wenn Sie eine neue Projektmappe erstellen, klonen Sie zunächst das lokale Repository. Dann können Sie die Projektmappe wahlweise direkt im Repositoryordner erstellen. Sie können die neuen Dateien von dort problemlos committen und pushen.
 
-* Eine Containerregistrierung, in die Sie Modulimages per Push übertragen können. Sie können [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) oder eine Drittanbieterregistrierung verwenden.
+* Eine Containerregistrierung, in die Sie Modulimages per Push übertragen können. Sie können [Azure Container Registry](../container-registry/index.yml) oder eine Drittanbieterregistrierung verwenden.
 * Eine aktive Azure [IoT Hub-Instanz](../iot-hub/iot-hub-create-through-portal.md) mit mindestens zwei IoT Edge-Geräten zum Testen der separaten Test- und Produktionsbereitstellungsstufen. Sie können die Schnellstartartikel zum Erstellen eines IoT Edge-Geräts auf [Linux](quickstart-linux.md) oder [Windows](quickstart.md) befolgen.
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Erstellen einer Buildpipeline für Continuous Integration
@@ -84,7 +84,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Sie konfigurieren die
 
    * Wenn Sie Ihre Module auf der Plattform amd64 für Linux-Container erstellen möchten, wählen Sie **ubuntu-16.04** aus.
 
-   * Wenn Sie Ihre Module auf der Plattform amd64 für Windows 1809-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Windows einrichten](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Wenn Sie Ihre Module auf der Plattform amd64 für Windows 1809-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Windows einrichten](/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
    * Wenn Sie Ihre Module auf der Plattform arm32v7 oder arm64 für Linux-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Linux einrichten](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent).
 
@@ -136,14 +136,14 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Sie konfigurieren die
     | Anzeigename | Den Standardnamen verwenden oder anpassen |
     | Quellordner | Der Ordner mit den Dateien, die kopiert werden sollen. |
     | Inhalte | Fügen Sie zwei Zeilen hinzu: `deployment.template.json` und `**/module.json`. Diese beiden Dateien dienen als Eingaben zum Generieren des IoT Edge-Bereitstellungsmanifests. |
-    | Zielordner | Geben Sie die Variable `$(Build.ArtifactStagingDirectory)` an. Eine Beschreibung finden Sie unter [Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables). |
+    | Zielordner | Geben Sie die Variable `$(Build.ArtifactStagingDirectory)` an. Eine Beschreibung finden Sie unter [Buildvariablen](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables). |
 
 10. Wählen Sie die Aufgabe **Buildartefakte veröffentlichen ** aus, um sie zu bearbeiten. Geben Sie in der Aufgabe einen Pfad für das Artefaktstagingverzeichnis an, sodass dieser für die Releasepipeline veröffentlicht werden kann.
 
     | Parameter | BESCHREIBUNG |
     | --- | --- |
     | Anzeigename | Verwenden Sie den Standardnamen, oder passen Sie ihn an. |
-    | Pfad für Veröffentlichung | Geben Sie die Variable `$(Build.ArtifactStagingDirectory)` an. Weitere Informationen finden Sie unter [Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables). |
+    | Pfad für Veröffentlichung | Geben Sie die Variable `$(Build.ArtifactStagingDirectory)` an. Weitere Informationen finden Sie unter [Buildvariablen](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables). |
     | Artefaktname | Verwenden Sie den Standardnamen: **drop** |
     | Veröffentlichungsort für Artefakte | Verwenden Sie den Standardspeicherort: **Azure Pipelines** |
 
@@ -160,7 +160,7 @@ Diese Pipeline ist jetzt für die automatische Ausführung konfiguriert, wenn Si
 >[!NOTE]
 >Wenn Sie in ihrer Pipeline **mehrstufige Bereitstellungen** verwenden möchten, ist dies leider nicht möglich. Mehrstufige Bereitstellungen werden in Azure IoT Edge-Aufgaben in Azure DevOps nämlich noch nicht unterstützt.
 >
->Sie können jedoch mithilfe einer [Azure CLI-Aufgabe in Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) Ihre Bereitstellung als eine mehrstufige Bereitstellung erstellen. Für den Wert **Inlineskript** können Sie den [Befehl „az iot edge deployment create“](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) verwenden:
+>Sie können jedoch mithilfe einer [Azure CLI-Aufgabe in Azure DevOps](/azure/devops/pipelines/tasks/deploy/azure-cli) Ihre Bereitstellung als eine mehrstufige Bereitstellung erstellen. Für den Wert **Inlineskript** können Sie den [Befehl „az iot edge deployment create“](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) verwenden:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

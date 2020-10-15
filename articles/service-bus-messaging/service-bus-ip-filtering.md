@@ -3,12 +3,12 @@ title: Konfigurieren von IP-Firewallregeln für Azure Service Bus
 description: Hier erfahren Sie, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Service Bus zulassen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2ba6b1902213af8d968b220a387e419e56e8aa67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 561ee90fb6d1e25123d15a09bbf143aef59bcf6f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300954"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058062"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Service Bus-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -126,7 +126,7 @@ Vorlagenparameter:
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "type": "Microsoft.ServiceBus/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
         ],

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81678853"
 ---
 1. Navigieren Sie zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe aus, die Sie beim Erstellen der **Peeringressource** ausgewählt haben. Verwenden Sie das Feld **Filter**, wenn zu viele Ressourcengruppen aufgeführt werden.

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249602"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078492"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
-Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
 
 ##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Transformationsrichtlinien
 
@@ -732,4 +732,4 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management-Richtlinienbeispiele](policy-samples.md)
++ [API Management-Richtlinienbeispiele](./policy-reference.md)

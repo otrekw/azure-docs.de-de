@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81399900"
 ---
 :::row:::

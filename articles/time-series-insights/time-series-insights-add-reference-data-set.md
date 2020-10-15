@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 57e99dfd0cec4ee396cc90173f1f22715c7ba760
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: dc759bb9af852fab5313686ebaffefda9220f45a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614239"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Erstellen eines Referenzdatasets für Ihre Azure Time Series Insights Gen1-Umgebung über das Azure-Portal
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweis-DataSet hinzufügen. Verweisdaten lassen sich praktisch mit Ihren Quelldaten verknüpfen, um die Werte zu erweitern.
 

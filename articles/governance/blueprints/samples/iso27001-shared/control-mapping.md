@@ -1,14 +1,14 @@
 ---
 title: 'Steuerungen des Blaupausenbeispiels für „ISO 27001: Gemeinsame Dienste“'
-description: 'Steuerungszuordnung für das Blaupausenbeispiel für „ISO 27001: Gemeinsame Dienste“ Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.'
+description: 'Steuerungszuordnung für das Blaupausenbeispiel für „ISO 27001: Gemeinsame Dienste“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.'
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: e0e5aa7bbfb8178b2527e65f7e6371d815b0cccd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7b13440db5574da84c296e27380739e58e640a67
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541202"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930117"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Steuerelementzuordnung für das Beispiel „Blaupause für ISO 27001: gemeinsame Dienste“
 
@@ -108,8 +108,7 @@ Mit dieser Blaupause können Sie sichere Kennwörter erzwingen, indem 10 [Azure
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 Richtlinie zur Verwendung von kryptografischen Steuerungen
 
-Mit dieser Blaupause können Sie die Richtlinie zur Verwendung von kryptografischen Steuerungen erzwingen, indem 13 [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die spezifische kryptografische Steuerungen erzwingen und die Verwendung schwacher kryptografischer Einstellungen überwachen.
-Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Für die mit dieser Blaupause zugewiesenen Richtlinien gilt Folgendes: Sie erfordern eine Verschlüsselung für Blob Storage-Konten und Data Lake Storage-Konten, sie erfordern eine transparente Datenverschlüsselung für SQL-Datenbanken, sie überwachen die fehlende Verschlüsselung für Speicherkonten, SQL-Datenbanken, VM-Datenträger und Variablen von Automation-Konten, sie überwachen unsichere Verbindungen mit Speicherkonten, Funktions-Apps, Web-Apps, API-Apps und Redis Cache, sie überwachen die schwache Kennwortverschlüsselung bei virtuellen Computern, und sie überwachen die unverschlüsselte Kommunikation in Service Fabric.
+Mit dieser Blaupause können Sie die Richtlinie zur Verwendung von kryptografischen Steuerungen erzwingen, indem 13 [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die spezifische kryptografische Steuerungen erzwingen und die Verwendung schwacher kryptografischer Einstellungen überwachen. Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Für die mit dieser Blaupause zugewiesenen Richtlinien gilt Folgendes: Sie erfordern eine Verschlüsselung für Blob Storage-Konten und Data Lake Storage-Konten, sie erfordern eine transparente Datenverschlüsselung für SQL-Datenbanken, sie überwachen die fehlende Verschlüsselung für Speicherkonten, SQL-Datenbanken, VM-Datenträger und Variablen von Automation-Konten, sie überwachen unsichere Verbindungen mit Speicherkonten, Funktions-Apps, Web-Apps, API-Apps und Redis Cache, sie überwachen die schwache Kennwortverschlüsselung bei virtuellen Computern, und sie überwachen die unverschlüsselte Kommunikation in Service Fabric.
 
 - Zugriff auf Funktions-App nur über HTTPS gestatten
 - Zugriff auf Webanwendung nur über HTTPS gestatten

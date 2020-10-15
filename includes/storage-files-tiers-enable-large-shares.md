@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81536483"
 ---
 Standardmäßig können Standarddateifreigaben nur bis zu 5 TiB umfassen. Das Freigabelimit kann jedoch auf 100 TiB erhöht werden. Zu diesem Zweck muss das Feature *große Dateifreigabe* auf Speicherkontoebene aktiviert werden. Storage Premium-Konten (*FileStorage*-Speicherkonten) verfügen nicht über das Featureflag „große Dateifreigabe“, da alle Premium-Dateifreigaben bereits für die Bereitstellung bis zur gesamten 100-TiB-Kapazität aktiviert sind.

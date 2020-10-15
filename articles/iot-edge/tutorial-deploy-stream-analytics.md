@@ -7,16 +7,16 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 61779527d4b855f4327ad4b77a1e22207a94b8c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439404"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048371"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
-Viele IoT-Lösungen verwenden Analysedienste, um Erkenntnisse zu Daten zu gewinnen, die von IoT-Geräten an die Cloud übermittelt werden. Mit Azure IoT Edge können Sie die Logik von [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) direkt auf dem Gerät bereitstellen. Die Verarbeitung von Telemetriedatenströmen im Edgebereich verringert die Menge an Uploaddaten sowie die Zeit, die benötigt wird, um auf verwertbare Erkenntnisse zu reagieren.
+Viele IoT-Lösungen verwenden Analysedienste, um Erkenntnisse zu Daten zu gewinnen, die von IoT-Geräten an die Cloud übermittelt werden. Mit Azure IoT Edge können Sie die Logik von [Azure Stream Analytics](../stream-analytics/index.yml) direkt auf dem Gerät bereitstellen. Die Verarbeitung von Telemetriedatenströmen im Edgebereich verringert die Menge an Uploaddaten sowie die Zeit, die benötigt wird, um auf verwertbare Erkenntnisse zu reagieren.
 
 Azure IoT Edge und Azure Stream Analytics sind integriert, um Ihre Workloadentwicklung zu vereinfachen. Sie können im Azure-Portal einen Azure Stream Analytics-Auftrag erstellen und ihn anschließend ohne zusätzlichen Programmieraufwand als IoT Edge-Modul bereitstellen.  
 

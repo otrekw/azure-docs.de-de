@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 69b52be3a3eca2ab48ed09f6401780ea033f223c
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 2cc60af26754eddbe8699019ae8d906a4c1e9e62
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723978"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057687"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analysieren und Validieren von Modellen mit der DTDL-Parserbibliothek
 
@@ -20,11 +20,11 @@ ms.locfileid: "88723978"
 
 Um dies zu unterstützen, wird eine clientseitige .NET DTDL-Bibliothek auf NuGet bereitgestellt: [**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [**DTDL-Validierungssteuerelement (Beispiel)** ](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [**DTDL-Validierungssteuerelement (Beispiel)** ](/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>Verwenden des Beispiels des DTDL-Validierungssteuerelements
 
-[**DTDL Validator**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) ist ein Beispielprojekt für die Überprüfung von Modelldokumenten, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der .NET-Parserbibliothek und ist sprachunabhängig. Sie können es über die Schaltfläche *Download ZIP* (ZIP-Datei herunterladen) im Beispiellink abrufen.
+[**DTDL Validator**](/samples/azure-samples/dtdl-validator/dtdl-validator) ist ein Beispielprojekt für die Überprüfung von Modelldokumenten, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der .NET-Parserbibliothek und ist sprachunabhängig. Sie können es über die Schaltfläche *Download ZIP* (ZIP-Datei herunterladen) im Beispiellink abrufen.
 
 Der Quellcode zeigt Beispiele für die Verwendung der Parserbibliothek. Sie können das Validierungsbeispiel als Befehlszeilenhilfsprogramm zum Überprüfen einer Verzeichnisstruktur mit DTDL-Dateien verwenden. Außerdem stellt es einen interaktiven Modus bereit.
 

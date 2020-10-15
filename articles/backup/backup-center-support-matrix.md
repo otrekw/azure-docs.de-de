@@ -4,10 +4,10 @@ description: Dieser Artikel enthält eine Zusammenfassung der Szenarien, die Bac
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.openlocfilehash: 8effc2514abf1cac55abc28b625b869810536baf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90993224"
 ---
 # <a name="support-matrix-for-backup-center"></a>Supportmatrix für Backup Center

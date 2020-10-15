@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: f0bf7fa56ca511981820f63cd7178493a7d048e3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141073"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077506"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services
 Mit der Azure-Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle, Leistungsindikatoren usw. von einem Clouddienst sammeln. In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnoseerweiterung für einen Clouddienst mithilfe von PowerShell aktivieren.  Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
@@ -131,8 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Anleitungen zur Verwendung von Azure-Diagnose und anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* Das [Diagnosekonfigurationsschema](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
-* Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md)
-
-
-
+* Das [Diagnosekonfigurationsschema](../azure-monitor/platform/diagnostics-extension-schema-windows.md) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
+* Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/extensions/diagnostics-template.md)

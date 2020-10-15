@@ -9,10 +9,10 @@ ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067609"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Leistungstipps für das Azure Cosmos DB Async Java SDK v2
@@ -86,7 +86,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
   * ***Übersicht über den direkten Modus***
 
-  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Darstellung der Architektur im direkten Modus" border="false":::
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Abbildung der Azure Cosmos DB-Verbindungsrichtlinie" border="false":::
   
   Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf der Clientseite bis zu 10 **Kanäle** pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
 

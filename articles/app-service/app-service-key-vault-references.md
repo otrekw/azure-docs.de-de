@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2806216bff462a673eddd8eba994d38b1c5e1fdc
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557914"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930491"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -30,7 +30,7 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
 
 1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
-    > [!NOTE]
+    > [!IMPORTANT]
     > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) auflösen.
 
 ## <a name="reference-syntax"></a>Verweissyntax
