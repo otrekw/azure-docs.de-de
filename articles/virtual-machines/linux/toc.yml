@@ -493,6 +493,8 @@
                   items:
                     - name: Generalisiert
                       href: ../vm-generalized-image-version-cli.md
+                    - name: Spezialisiert
+                      href: ../vm-specialized-image-version-cli.md
                 - name: Aktualisieren von Imageressourcen
                   href: ../update-image-resources-cli.md
                 - name: App-Registrierung für die Freigabe
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: Herunterladen eines vorhandenen Datenträgers
           href: download-vhd.md
+        - name: Verwalteter Datenträger aus Imageversion
+          href: ../managed-disk-from-image-version.md
     - name: Schützen von virtuellen Computern
       items:
         - name: Empfehlungen
@@ -955,7 +959,7 @@
       items:
         - name: Hinzufügen eines Datenträgers
           items:
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
@@ -1142,7 +1146,7 @@
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: PowerShell
       href: /powershell/azure/

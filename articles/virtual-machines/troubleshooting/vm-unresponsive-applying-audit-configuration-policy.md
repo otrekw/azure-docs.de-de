@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299523"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977951"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Der virtuelle Computer reagiert nicht, während die Richtlinie zur Überwachungsrichtlinienkonfiguration angewendet wird
 
@@ -27,7 +27,7 @@ In diesem Artikel sind die Schritte beschrieben, um Probleme zu behandeln, bei d
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zum Anzeigen des VM-Screenshots verwenden, sehen Sie, dass das Betriebssystem beim Start nicht mehr reagiert hat und die Meldung **Richtlinie zur Überwachungsrichtlinienkonfiguration wird angewendet** angezeigt wurde.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) zum Anzeigen des VM-Screenshots verwenden, sehen Sie, dass das Betriebssystem beim Start nicht mehr reagiert hat und die Meldung **Richtlinie zur Überwachungsrichtlinienkonfiguration wird angewendet** angezeigt wurde.
 
   ![Start des Betriebssystems mit folgender Meldung: „Richtlinie zur Überwachungsrichtlinienkonfiguration wird angewendet“](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ Dies ist die problematische Richtlinie: *Computerkonfiguration\Richtlinien\Admin
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="disable-the-policy"></a>Deaktivieren der Richtlinie
@@ -153,7 +153,7 @@ Dies ist die problematische Richtlinie: *Computerkonfiguration\Richtlinien\Admin
    
 ### <a name="rebuild-the-virtual-machine"></a>Neuerstellung des virtuellen Computers
 
-1. Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example), um die VM neu zu erstellen.
+1. Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example), um die VM neu zu erstellen.
 
 1. Testen Sie, ob Ihre VM normal gestartet wird, um herauszufinden, ob das Problem behoben ist.
 
@@ -175,11 +175,11 @@ Um dieses Problem zu behandeln, müssen Sie zunächst die Speicherabbilddatei f�
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Anfügen des Betriebssystemdatenträgers an eine neue Reparatur-VM
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine neue Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine neue Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Suchen nach der Speicherabbilddatei und Senden eines Supporttickets
 
 1. Navigieren Sie auf der Reparatur-VM zum Windows-Ordner auf dem angefügten Betriebssystemdatenträger. Wenn der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe *F* lautet, müssen Sie zu `F:\Windows` navigieren.
 1. Suchen Sie nach der Datei `memory.dmp`, und [senden Sie dann ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mit der Speicherabbilddatei.
-1. Wenn Sie die Datei `memory.dmp` nicht finden können, verwenden Sie stattdessen [NMI-Aufrufe (Nicht maskierbarer Interrupt) in der seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls). Befolgen Sie den Leitfaden zum [Generieren eines Absturzabbilds mithilfe von NMI-Aufrufen](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Wenn Sie die Datei `memory.dmp` nicht finden können, verwenden Sie stattdessen [NMI-Aufrufe (Nicht maskierbarer Interrupt) in der seriellen Konsole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls). Befolgen Sie den Leitfaden zum [Generieren eines Absturzabbilds mithilfe von NMI-Aufrufen](/windows/client-management/generate-kernel-or-complete-crash-dump).

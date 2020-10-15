@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320097"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975551"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
-[Azure SSD Premium](disks-types.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. In diesem Leitfaden erfahren Sie, wie Sie Ihre VM-Datenträger mithilfe von [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) von einem Standardspeicherkonto zu einem Storage Premium-Konto migrieren.
+[Azure SSD Premium](../disks-types.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. In diesem Leitfaden erfahren Sie, wie Sie Ihre VM-Datenträger mithilfe von [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) von einem Standardspeicherkonto zu einem Storage Premium-Konto migrieren.
 
 Site Recovery ist ein Azure-Dienst, der zu Ihrer Strategie für die Geschäftskontinuität und Notfallwiederherstellung beiträgt, indem er die Replikation von lokalen physischen Servern und virtuellen Computern in die Cloud (Azure) oder in ein sekundäres Datencenter orchestriert. Wenn es an Ihrem primären Standort zu Ausfällen kommt, wird ein Failover zum sekundären Standort durchgeführt, um die Verfügbarkeit von Anwendungen und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, führen Sie das Failback zum primären Standort durch. 
 
@@ -167,7 +167,7 @@ Führen Sie die Schritte unter [Einrichten der Replikationseinstellungen](../../
 
    ![Bereich „Replikation aktivieren“ mit ausgewählter Quelle][13]
 
-Für das Entwerfen Ihrer Azure Storage-Umgebung empfehlen wir Ihnen, für jede VM einer Verfügbarkeitsgruppe separate Speicherkonten zu verwenden. Es empfiehlt sich, die bewährte Methode auf der Speicherebene anzuwenden, um [mehrere Speicherkonten für die einzelnen Verfügbarkeitsgruppen zu verwenden](../linux/manage-availability.md). Das Verteilen von VM-Datenträgern auf mehrere Speicherkonten trägt zur Verbesserung der Speicherverfügbarkeit bei, und der E/A-Aufwand wird auf die gesamte Azure-Speicherinfrastruktur verteilt.
+Für das Entwerfen Ihrer Azure Storage-Umgebung empfehlen wir Ihnen, für jede VM einer Verfügbarkeitsgruppe separate Speicherkonten zu verwenden. Es empfiehlt sich, die bewährte Methode auf der Speicherebene anzuwenden, um [mehrere Speicherkonten für die einzelnen Verfügbarkeitsgruppen zu verwenden](../manage-availability.md). Das Verteilen von VM-Datenträgern auf mehrere Speicherkonten trägt zur Verbesserung der Speicherverfügbarkeit bei, und der E/A-Aufwand wird auf die gesamte Azure-Speicherinfrastruktur verteilt.
 
 Falls sich Ihre virtuellen Computer in einer Verfügbarkeitsgruppe befinden, empfehlen wir dringend, mehrere virtuelle Computer mehrfach zu migrieren, anstatt Datenträger aller virtuellen Computer in einem einzelnen Speicherkonto zu replizieren. Dadurch teilen sich die virtuellen Computer in der gleichen Verfügbarkeitsgruppe nicht ein einzelnes Speicherkonto. Richten Sie im Bereich **Replikation aktivieren** nacheinander jeweils ein Zielspeicherkonto für die einzelnen virtuellen Computer ein.
  

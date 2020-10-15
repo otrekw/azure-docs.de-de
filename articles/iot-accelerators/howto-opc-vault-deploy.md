@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282022"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071488"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Erstellen und Bereitstellen des OPC Vault-Zertifikatverwaltungsdiensts
 
@@ -31,7 +31,7 @@ In diesem Artikel wird erläutert, wie Sie den OPC Vault-Zertifikatverwaltungsdi
 
 Der Build- und Bereitstellungsvorgang ist derzeit auf Windows beschränkt.
 Sämtliche Beispiele sind für C# .NET Standard geschrieben, das Sie zum Erstellen des Diensts und von Beispielen für die Bereitstellung benötigen.
-Alle für .NET Standard erforderlichen Tools sind in den .NET Core Tools enthalten. Weitere Informationen finden Sie unter [Erste Schritte mit .NET Core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+Alle für .NET Standard erforderlichen Tools sind in den .NET Core Tools enthalten. Weitere Informationen finden Sie unter [Erste Schritte mit .NET Core](/dotnet/articles/core/getting-started).
 
 1. [Installieren von .NET Core 2.1+][dotnet-install].
 2. [Installieren Sie Docker][docker-url] (optional – nur wenn der lokale Docker-Build erforderlich ist).

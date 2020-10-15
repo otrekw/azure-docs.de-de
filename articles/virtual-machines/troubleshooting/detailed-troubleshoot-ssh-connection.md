@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069157"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975670"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Ausführliche Schritte zum Beheben von SSH-Verbindungsproblemen mit einem virtuellen Azure-Computer unter Linux
 Wenn der SSH-Client nicht in der Lage ist, den SSH-Dienst auf dem virtuellen Computer zu erreichen, können dafür viele verschiedene Gründe vorliegen. Wenn Sie die [allgemeinen Schritte zur Problembehandlung bei SSH](troubleshoot-ssh-connection.md) befolgt haben, müssen Sie die Ursache der Verbindungsprobleme genauer untersuchen. Dieser Artikel führt Sie durch die detaillierten Schritte zur Problembehandlung, mit denen Sie ermitteln können, wo bei der SSH-Verbindung ein Fehler auftritt und wie Sie diesen beheben.
@@ -39,7 +39,7 @@ Mit den folgenden Schritten können Sie die Fehlerquelle isolieren und Lösungen
 
 2. Wählen Sie **Einstellungen** aus, um Endpunkte, IP-Adressen, Netzwerksicherheitsgruppen und andere Einstellungen zu überprüfen.
 
-   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und im Subnetz auf sie verwiesen wird.
+   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/network-security-groups-overview.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und im Subnetz auf sie verwiesen wird.
 
 Analysieren Sie zum Überprüfen der Netzwerkverbindung die konfigurierten Endpunkte, und überprüfen Sie, ob Sie über ein anderes Protokoll (z.B. HTTP oder über einen anderen Dienst) eine Verbindung mit dem virtuellen Computer herstellen können.
 
@@ -114,7 +114,7 @@ Entfernen Sie den aktuellen Endpunkt, und erstellen Sie einen anderen Endpunkt m
 
 ## <a name="source-4-network-security-groups"></a>Quelle 4: Netzwerksicherheitsgruppen
 Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen. Überprüfen Sie die Regeln der Netzwerksicherheitsgruppe, um sicherzustellen, dass sowohl eingehender als auch ausgehender SSH-Datenverkehr über das Internet zulässig ist.
-Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md).
+Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
 
 Sie können die NSG-Konfiguration auch mithilfe der IP-Überprüfung überprüfen. Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](../../network-watcher/network-watcher-monitoring-overview.md). 
 

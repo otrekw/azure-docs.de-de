@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831412"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978321"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale in Azure
 
@@ -86,7 +86,7 @@ Bei dieser Architektur werden die Anwendungs-, Speicher- und Datenebenen auf vir
 
 ### <a name="storage-considerations"></a>Speicheraspekt
 
-Wie Oracle RAC ist auch DB2 pureScale eine Hochleistungsdatenbank mit Block-E/A und horizontaler Skalierung. Es wird empfohlen, die größte [Azure Premium SSD](disks-types.md)-Option zu verwenden, die Ihren Anforderungen entspricht. Kleinere Speicheroptionen eignen sich z.B. für Entwicklungs- und Testumgebungen, während Produktionsumgebungen häufig größere Speicherkapazität erfordern. Die Beispielarchitektur verwendet [P30](https://azure.microsoft.com/pricing/details/managed-disks/) aufgrund des Verhältnisses von IOPS zu Größe und Preis. Verwenden Sie unabhängig von der Größe Storage Premium für eine optimale Leistung.
+Wie Oracle RAC ist auch DB2 pureScale eine Hochleistungsdatenbank mit Block-E/A und horizontaler Skalierung. Es wird empfohlen, die größte [Azure Premium SSD](../disks-types.md)-Option zu verwenden, die Ihren Anforderungen entspricht. Kleinere Speicheroptionen eignen sich z.B. für Entwicklungs- und Testumgebungen, während Produktionsumgebungen häufig größere Speicherkapazität erfordern. Die Beispielarchitektur verwendet [P30](https://azure.microsoft.com/pricing/details/managed-disks/) aufgrund des Verhältnisses von IOPS zu Größe und Preis. Verwenden Sie unabhängig von der Größe Storage Premium für eine optimale Leistung.
 
 DB2 pureScale verwendet eine Architektur mit umfassender Freigabe, bei der von allen Clusterknoten auf alle Daten zugegriffen werden kann. Premium-Speicher muss für mehrere Instanzen freigegeben werden – ganz gleich, ob bedarfsgesteuerte oder dedizierte Instanzen.
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d73fcd64917257b850861142e7f4a67da834c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972304"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Image Builder ein grundlegendes, angepasstes Linux-Image erstellen, das Zugriff auf vorhandene Ressourcen in einem VNET hat. Die von Ihnen erstellte Build-VM wird für ein neues oder vorhandenes VNET bereitgestellt, das Sie in Ihrem Abonnement angeben. Wenn Sie ein vorhandenes Azure-VNET verwenden, ist für den Azure Image Builder-Dienst keine Verbindung mit einem öffentlichen Netzwerk erforderlich.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Image Builder ein grundlegendes, angepasstes Linux-Image erstellen, das Zugriff auf vorhandene Ressourcen in einem VNET hat. Die von Ihnen erstellte Build-VM wird für ein neues oder vorhandenes VNET bereitgestellt, das Sie in Ihrem Abonnement angeben. Wenn Sie ein vorhandenes Azure-VNET verwenden, ist für den Azure VM Image Builder-Dienst keine Verbindung mit einem öffentlichen Netzwerk erforderlich.
 
 > [!IMPORTANT]
 > Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Image Builder ein gru
 
 ## <a name="register-the-features"></a>Registrieren des Features
 
-Sie müssen sich zunächst für den Azure Image Builder-Dienst registrieren. Die Registrierung gewährt Ihnen die Dienstberechtigungen zum Erstellen, Verwalten und Löschen einer Ressourcengruppe für das Staging. Der Dienst verfügt auch über die Berechtigung, der Gruppe Ressourcen hinzuzufügen, die für das Erstellen des Images erforderlich sind.
+Sie müssen sich zunächst für den Azure VM Image Builder-Dienst registrieren. Die Registrierung gewährt Ihnen die Dienstberechtigungen zum Erstellen, Verwalten und Löschen einer Ressourcengruppe für das Staging. Der Dienst verfügt auch über die Berechtigung, der Gruppe Ressourcen hinzuzufügen, die für das Erstellen des Images erforderlich sind.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -77,7 +77,7 @@ az group create -n $imageResourceGroup -l $location
 
 ## <a name="configure-networking"></a>Konfigurieren der Netzwerkeinstellungen
 
-Wenn Sie nicht über ein vorhandenes VNET\Subnet\NSG verfügen, verwenden Sie das folgende Skript zum Erstellen.
+Wenn Sie nicht über ein vorhandenes VNET, Subnetz oder eine Netzwerksicherheitsgruppe verfügen, erstellen Sie diese mithilfe des folgenden Skripts.
 
 ```bash
 
@@ -107,7 +107,7 @@ az network vnet subnet update \
 
 ### <a name="add-network-security-group-rule"></a>Hinzufügen einer Netzwerksicherheitsgruppen-Regel
 
-Diese Regel ermöglicht Konnektivität zwischen dem Lastenausgleich von Azure Image Builder und der Proxy-VM. Port 60001 dient für Linux-Betriebssysteme und Port 60000 für Windows-Betriebssysteme. Die Proxy-VM stellt eine Verbindung mit der Build-VM über Port 22 für Linux-Betriebssysteme oder Port 5986 für Windows-Betriebssysteme her.
+Diese Regel ermöglicht Konnektivität zwischen dem Lastenausgleich des Azure VM Image Builder-Diensts und der Proxy-VM. Port 60001 dient für Linux-Betriebssysteme und Port 60000 für Windows-Betriebssysteme. Die Proxy-VM stellt eine Verbindung mit der Build-VM über Port 22 für Linux-Betriebssysteme oder Port 5986 für Windows-Betriebssysteme her.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -132,7 +132,7 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 
-Weitere Informationen zu Image Builder-Netzwerken finden Sie unter den [Netzwerkoptionen für den Azure Image Builder-Dienst](image-builder-networking.md).
+Weitere Informationen zu Azure VM Image Builder-Netzwerken finden Sie unter den [Netzwerkoptionen für den Azure VM Image Builder-Dienst](image-builder-networking.md).
 
 ## <a name="modify-the-example-template-and-create-role"></a>Ändern der Beispielvorlage und Erstellen einer Rolle
 
@@ -163,7 +163,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>Festlegen von Berechtigungen für die Ressourcengruppe
 
-Image Builder verwendet die angegebene [Benutzeridentität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity), um das Image in die Azure Shared Image Gallery (SIG) einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
+Image Builder verwendet die angegebene [Benutzeridentität](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity), um das Image in die Azure Shared Image Gallery (SIG) einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
 
 ```bash
 # create user assigned identity for image builder

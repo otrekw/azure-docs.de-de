@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311885"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976010"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -29,8 +29,6 @@ Sie können das [Azure-Web-App-Plug-In für Maven](/java/api/overview/azure/mave
 
 In allen anderen Fällen hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp ab:
 
-::: zone pivot="platform-windows"  
-
 ### <a name="java-se"></a>Java SE
 
 Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/zipdeploy/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#rest).
@@ -39,7 +37,6 @@ Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/zipdeploy/`-
 
 Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-war-file).
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP

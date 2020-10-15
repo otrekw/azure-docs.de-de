@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871515"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978491"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -165,10 +165,10 @@ ms.locfileid: "88871515"
 In diesem Artikel werden die Schritte zum Vorbereiten der Azure-Infrastruktur auf die Installation und Konfiguration einer hochverfügbaren SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe eines *freigegebener Clusterdatenträgers* als Option für das Clustering einer SAP ASCS-Instanz beschrieben.
 In der Dokumentation sind zwei Alternativen für *freigegebene Clusterdatenträger* aufgeführt:
 
-- [Freigegebene Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Freigegebene Azure-Datenträger](../../windows/disks-shared.md)
 - Verwenden von [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) zum Erstellen eines gespiegelten Speichers, der freigegebenen Clusterdatenträger simuliert 
 
-Die vorgestellte Konfiguration basiert auf [Azure-Näherungsplatzierungsgruppen (Proximity Placement Group, PPG)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios), um eine optimale Netzwerklatenz für SAP-Workloads zu erzielen. Die Dokumentation behandelt nicht die Datenbankschicht.  
+Die vorgestellte Konfiguration basiert auf [Azure-Näherungsplatzierungsgruppen (Proximity Placement Group, PPG)](./sap-proximity-placement-scenarios.md), um eine optimale Netzwerklatenz für SAP-Workloads zu erzielen. Die Dokumentation behandelt nicht die Datenbankschicht.  
 
 > [!NOTE]
 > Azure-Näherungsplatzierungsgruppen sind eine Voraussetzung für den Einsatz freigegebener Azure-Datenträger.
@@ -199,7 +199,7 @@ Die Hostnamen und die IP-Adressen für das vorgestellte Szenario lauten wie folg
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Erstellen einer internen Azure Load Balancer-Instanz
 
-SAP ASCS, SAP SCS und das neue SAP-ERS2 verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) erforderlich. Es wird dringend empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) zu verwenden. 
+SAP ASCS, SAP SCS und das neue SAP-ERS2 verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erforderlich. Es wird dringend empfohlen, [Load Balancer Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu verwenden. 
 
 
 Die folgende Liste zeigt die Konfiguration des (A)SCS-/ERS-Lastenausgleichs. Die Konfiguration für SAP ASCS und ERS2 erfolgt in derselben Azure Load Balancer-Instanz.  
@@ -263,8 +263,8 @@ Die folgenden Registrierungseinträge müssen auf beiden Clusterknoten geändert
 
 | `Path`| Variablenname | Variablentyp  | value | Dokumentation |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD-Wert (dezimal) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD-Wert (dezimal) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD-Wert (dezimal) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD-Wert (dezimal) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 Starten Sie beide Clusterknoten neu, um die Änderungen zu übernehmen.
@@ -325,7 +325,7 @@ Weitere Informationen finden Sie unter [Neue Features für Windows Server 2019-
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>Konfigurieren des Clustercloudquorums
-Wenn Sie Windows Server 2016 oder 2019 verwenden, empfiehlt es sich, einen [Azure-Cloudzeugen](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) als Clusterquorum zu konfigurieren.
+Wenn Sie Windows Server 2016 oder 2019 verwenden, empfiehlt es sich, einen [Azure-Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness) als Clusterquorum zu konfigurieren.
 
 Führen Sie den Befehl auf einem der Clusterknoten aus:
 

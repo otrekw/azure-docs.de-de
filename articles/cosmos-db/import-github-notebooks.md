@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262887"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Importieren von Notebooks aus einem GitHub-Repository in Azure Cosmos DB
@@ -37,7 +37,7 @@ Sie können eine Verbindung mit Ihren eigenen GitHub-Repositorys oder mit andere
 
 1. Nachdem Sie das erforderliche Repository ausgewählt haben, wird der Repositoryeintrag aus dem Abschnitt **Unpinned repos** (Nicht angeheftete Repositorys) in den Abschnitt **Pinned repos** (Angeheftete Repositorys) verschoben. Bei Bedarf können Sie auch einen bestimmten Branch dieses Repositorys auswählen, aus dem die Notebooks importiert werden sollen.
 
-   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Auswählen eines Repositorys und eines Branchs":::
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Autorisieren des Zugriffs auf Ihre GitHub-Repositorys durch Azure Cosmos DB":::
 
 1. Wählen Sie **OK** aus, um den Importvorgang abzuschließen. Alle Notebooks, die im ausgewählten Branch Ihres Repositorys verfügbar sind, werden in Ihr Azure Cosmos-Konto importiert.
 
@@ -53,7 +53,7 @@ Wählen Sie nach der Bearbeitung eines vorhandenen Notebooks **Speichern** aus. 
 
 Im regulären GitHub-Flow werden die Änderungen nach dem Committen in der Regel in ein Remoterepository gepusht. In diesem Fall dient die Option „Committen“ jedoch dazu, Ihre Aktualisierungen in GitHub bereitzustellen, zu committen und zu pushen.
 
-:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Bearbeiten von Notebooks und Committen von Änderungen in GitHub":::
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Autorisieren des Zugriffs auf Ihre GitHub-Repositorys durch Azure Cosmos DB":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 07/16/2019
 ms.openlocfilehash: 48f82dcc1fa9e1f6843df4e89daca6a01c57ed63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321447"
 ---
 # <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>Verwenden der Azure CLI zum Hinzufügen einer Datenbank zu einer Failovergruppe
@@ -54,7 +54,7 @@ az group delete --name $resource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | Datenbankbefehle |
 | [az sql failover-group](/cli/azure/sql/failover-group) | Befehle für Failovergruppen |

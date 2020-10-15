@@ -4,10 +4,10 @@ description: Bereitstellen von Ressourcen in Azure mithilfe einer Azure Resource
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855653"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token

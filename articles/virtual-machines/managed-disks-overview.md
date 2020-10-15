@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299931"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972032"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Einführung in verwaltete Azure-Datenträger
 
@@ -35,7 +35,7 @@ Mit verwalteten Datenträgern können Sie für ein Abonnement pro Region bis zu 
 
 ### <a name="integration-with-availability-sets"></a>Integration in Verfügbarkeitsgruppen
 
-Verwaltete Datenträger werden in Verfügbarkeitsgruppen integriert, um sicherzustellen, dass die Datenträger von [VMs in einer Verfügbarkeitsgruppe](windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Datenträger werden automatisch in unterschiedliche Speicherskalierungseinheiten („Stamps“) platziert. Wenn ein Stamp aufgrund eines Hardware- oder Softwarefehlers ausfällt, treten nur für die VM-Instanzen mit Datenträgern auf diesen Stamps Fehler auf. Angenommen, Sie führen eine Anwendung auf fünf VMs aus, und die VMs sind in einer Verfügbarkeitsgruppe enthalten. Die Datenträger für diese VMs werden nicht alle auf demselben Stamp gespeichert, damit die anderen Instanzen der Anwendung weiter ausgeführt werden, wenn ein Stamp ausfällt.
+Verwaltete Datenträger werden in Verfügbarkeitsgruppen integriert, um sicherzustellen, dass die Datenträger von [VMs in einer Verfügbarkeitsgruppe](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Datenträger werden automatisch in unterschiedliche Speicherskalierungseinheiten („Stamps“) platziert. Wenn ein Stamp aufgrund eines Hardware- oder Softwarefehlers ausfällt, treten nur für die VM-Instanzen mit Datenträgern auf diesen Stamps Fehler auf. Angenommen, Sie führen eine Anwendung auf fünf VMs aus, und die VMs sind in einer Verfügbarkeitsgruppe enthalten. Die Datenträger für diese VMs werden nicht alle auf demselben Stamp gespeichert, damit die anderen Instanzen der Anwendung weiter ausgeführt werden, wenn ein Stamp ausfällt.
 
 ### <a name="integration-with-availability-zones"></a>Integration in Verfügbarkeitszonen
 
@@ -47,7 +47,7 @@ Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../backup/backup-
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 
-Sie können die [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md) verwenden, um die spezifischen Berechtigungen für einen verwalteten Datenträger einem oder mehreren Benutzern zuzuweisen. Verwaltete Datenträger bieten viele verschiedene Vorgänge, z.B. Lesen, Schreiben (Erstellen/Aktualisieren), Löschen und Abrufen eines [SAS-URI (Shared Access Signature)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Datenträger. Sie haben die Möglichkeit, Personen nur Zugriff auf die Vorgänge zu gewähren, die sie jeweils benötigen, um ihre Aufgaben zu erledigen. Wenn Sie es für eine Person beispielsweise nicht zulassen möchten, dass sie einen verwalteten Datenträger auf ein Speicherkonto kopiert, können Sie festlegen, dass der Zugriff auf die Exportaktion für diesen verwalteten Datenträger nicht gewährt wird. Wenn Sie nicht möchten, dass eine Person einen SAS-URI zum Kopieren eines verwalteten Datenträgers verwendet, können Sie auch festlegen, dass diese Berechtigung für den verwalteten Datenträger nicht gewährt wird.
+Sie können die [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md) verwenden, um die spezifischen Berechtigungen für einen verwalteten Datenträger einem oder mehreren Benutzern zuzuweisen. Verwaltete Datenträger bieten viele verschiedene Vorgänge, z.B. Lesen, Schreiben (Erstellen/Aktualisieren), Löschen und Abrufen eines [SAS-URI (Shared Access Signature)](../storage/common/storage-sas-overview.md) für den Datenträger. Sie haben die Möglichkeit, Personen nur Zugriff auf die Vorgänge zu gewähren, die sie jeweils benötigen, um ihre Aufgaben zu erledigen. Wenn Sie es für eine Person beispielsweise nicht zulassen möchten, dass sie einen verwalteten Datenträger auf ein Speicherkonto kopiert, können Sie festlegen, dass der Zugriff auf die Exportaktion für diesen verwalteten Datenträger nicht gewährt wird. Wenn Sie nicht möchten, dass eine Person einen SAS-URI zum Kopieren eines verwalteten Datenträgers verwendet, können Sie auch festlegen, dass diese Berechtigung für den verwalteten Datenträger nicht gewährt wird.
 
 ### <a name="upload-your-vhd"></a>Hochladen der VHD
 
@@ -96,7 +96,7 @@ Dieser Datenträger weist eine maximale Kapazität von 4.095 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Die meisten VMs enthalten einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten- oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten. Weitere Informationen zu VMs ohne temporäre Datenträger finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](azure-vms-no-temp-disk.md).
+Die meisten VMs enthalten einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten- oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten. Weitere Informationen zu VMs ohne temporäre Datenträger finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](azure-vms-no-temp-disk.md).
 
 Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“, und bei Windows-VMs wird standardmäßig „D:“ verwendet. Der temporäre Datenträger wird nicht durch serverseitige Verschlüsselung verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.
 
@@ -104,7 +104,7 @@ Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb�
 
 Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine absturzkonsistente, schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen neuer verwalteter Datenträger verwendet werden. 
 
-Momentaufnahmen werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt. Sie können die verwendete Größe Ihrer Momentaufnahmen im [Azure-Nutzungsbericht](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) ansehen. Beispiel: Beträgt die verwendete Datengröße einer Momentaufnahme 10 GiB, wird im **täglichen** Nutzungsbericht als verbrauchte Menge Folgendes angezeigt: 10 GiB/(31 Tage) = 0,3226.
+Momentaufnahmen werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt. Sie können die verwendete Größe Ihrer Momentaufnahmen im [Azure-Nutzungsbericht](../cost-management-billing/understand/review-individual-bill.md) ansehen. Beispiel: Beträgt die verwendete Datengröße einer Momentaufnahme 10 GiB, wird im **täglichen** Nutzungsbericht als verbrauchte Menge Folgendes angezeigt: 10 GiB/(31 Tage) = 0,3226.
 
 Weitere Informationen zur Erstellung von Momentaufnahmen für verwaltete Datenträger finden Sie in den folgenden Ressourcen:
 

@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815605"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972525"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Verfügbarkeitsoptionen für virtuelle Computer in Azure
 
@@ -51,7 +51,7 @@ Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich 
 
 **Fehler- und Updatedomänen**
 
-VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./windows/manage-availability.md).
+VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./manage-availability.md).
 
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
@@ -61,7 +61,7 @@ In einer Verfügbarkeitsgruppe werden VMs automatisch auf diese Fehlerdomänen v
 
 Virtuelle Computer mit [Azure Managed Disks](./faq-for-disks.md) werden bei Verwendung einer verwalteten Verfügbarkeitsgruppe auf Fehlerdomänen für verwaltete Datenträger ausgerichtet. Diese Ausrichtung stellt sicher, dass sich alle verwalteten, an einen virtuellen Computer angefügten Datenträger innerhalb der gleichen Fehlerdomäne für verwaltete Datenträger befinden. 
 
-Nur virtuelle Computer mit verwalteten Datenträgern können in einer verwalteten Verfügbarkeitsgruppe erstellt werden. Die Anzahl der Fehlerdomänen für verwaltete Datenträger variiert je nach Region – pro Region sind entweder zwei oder drei Fehlerdomänen für verwaltete Datenträger vorhanden. Sie können sich weiter über diese Fehlerdomänen für verwaltete Datenträger für [Linux-VMs](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) oder [Windows-VMs](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) informieren.
+Nur virtuelle Computer mit verwalteten Datenträgern können in einer verwalteten Verfügbarkeitsgruppe erstellt werden. Die Anzahl der Fehlerdomänen für verwaltete Datenträger variiert je nach Region – pro Region sind entweder zwei oder drei Fehlerdomänen für verwaltete Datenträger vorhanden. Sie können sich weiter über diese Fehlerdomänen für verwaltete Datenträger für [Linux-VMs](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) oder [Windows-VMs](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) informieren.
 
 ![Verwaltete Verfügbarkeitsgruppe](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

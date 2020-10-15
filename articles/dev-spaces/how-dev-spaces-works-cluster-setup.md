@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: In diesem Artikel wird das Einrichten eines Azure Kubernetes Service-Clusters für Azure Dev Spaces beschrieben.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207958"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972678"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Einrichten eines Clusters für Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces bietet Ihnen mehrere Möglichkeiten, Kubernetes-Anwendungen schnell zu durchlaufen und zu debuggen und mit Ihrem Team in einem Azure Kubernetes Service-Cluster (AKS) zusammenzuarbeiten. Eine Möglichkeit besteht darin, Azure Dev Spaces in Ihrem AKS-Cluster zu aktivieren, damit Sie [Dienste direkt im Cluster ausführen][how-it-works-up] und [weitere Netzwerk- und Routingfunktionen][how-it-works-routing] verwenden können. In diesem Artikel wird beschrieben, wie Sie Ihren Cluster vorbereiten und Azure Dev Spaces aktivieren.
 

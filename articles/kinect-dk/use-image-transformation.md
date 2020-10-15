@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: Kinect, Azure, Sensor, SDK, Koordinatensystem, Kalibrierung, Projektion, Umkehrung der Projektion, Transformation, RGB-D, Punktwolke
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85276648"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Verwenden von Bildtransformationen des Azure Kinect Sensor SDK

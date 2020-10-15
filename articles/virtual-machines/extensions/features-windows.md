@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829083"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977373"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -70,7 +70,7 @@ Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository herunterg
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den gerade beschriebenen Szenarien Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich.
 
-Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage oder Azure Active Directory benötigen, können Sie den Zugriff über [Azure-NSG-Diensttags](../../virtual-network/security-overview.md#service-tags) für Storage bzw. AzureActiveDirectory gewähren.
+Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage oder Azure Active Directory benötigen, können Sie den Zugriff über [Azure-NSG-Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) für Storage bzw. AzureActiveDirectory gewähren.
 
 Der Windows-Gast-Agent unterstützt nicht das Umleiten von Datenverkehrsanforderungen des Agents über einen Proxyserver. Das bedeutet, dass der Windows-Gast-Agent Ihren benutzerdefinierten Proxy (sofern vorhanden) für den Zugriff auf Ressourcen im Internet oder auf dem Host über die IP-Adresse 168.63.129.16 verwendet.
 

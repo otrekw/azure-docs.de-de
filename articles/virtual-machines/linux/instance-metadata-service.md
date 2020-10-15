@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ffa9502a42af9e927f82d7a135473ff702b76577
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974155"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970706"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -249,8 +249,8 @@ offer | Angebotsinformationen für das VM-Image, diese sind nur für Images vorh
 osType | Linux oder Windows | 2017-04-02
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
 Tarif | Der [Plan](/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
-platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+platformUpdateDomain |  [Updatedomäne](../manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+platformFaultDomain | [Fehlerdomäne](../manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 Provider | Anbieter des virtuellen Computers | 2018-10-01
 publicKeys | [Sammlung von öffentlichen Schlüsseln](/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 publisher | Herausgeber des VM-Images | 2017-04-02

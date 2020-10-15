@@ -115,3 +115,5 @@
       href: faq.md
     - name: Produktionsbereitschaft und Best Practices
       href: production-readiness.md
+    - name: Transparenz und Prinzipien für verantwortungsbewusste KI
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

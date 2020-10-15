@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, portieren, Körper, Body Tracking, Gelenk, Hierarchie, Knochen, Verbindung
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85276736"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Body Tracking in Azure Kinect: Gelenke

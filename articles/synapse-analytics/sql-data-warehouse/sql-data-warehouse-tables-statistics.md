@@ -11,11 +11,11 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799314"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Tabellenstatistiken in Synapse SQL-Pools
@@ -149,9 +149,6 @@ left join
 on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
-
->[!TIP]
-> Um die Leistung in Synapse SQL zu verbessern, sollten Sie **sys.pdw_permanent_table_mappings** anstelle von **sys.pdw_table_mappings** für dauerhafte Benutzertabellen verwenden. Weitere Informationen finden Sie unter **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 **Abfrage 2:** Ermitteln des Alters Ihrer Statistiken, indem Sie den Zeitpunkt überprüfen, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden. 
 

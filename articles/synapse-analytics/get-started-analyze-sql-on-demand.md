@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9c42d1d988bc280d5e62c24f109225d91cb446ce
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300223"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893491"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>Analysieren von Daten mit SQL On-Demand
 
@@ -57,4 +57,4 @@ Tabellen in Spark-Datenbanken sind automatisch sichtbar und können von SQL On-D
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Analysieren mithilfe von Spark](get-started-analyze-spark.md)
+> [Analysieren von Daten im Speicher](get-started-analyze-storage.md)

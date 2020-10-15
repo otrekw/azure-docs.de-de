@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370198"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975280"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Bereitstellung auf dedizierten Hosts mithilfe der Azure CLI
  
 
-Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
+Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](../dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
 Stellen Sie sicher, dass mindestens Version 2.0.70 der Azure-Befehlszeilenschnittstelle installiert ist und Sie mit `az login` bei einem Azure-Konto angemeldet wurden. 
 
@@ -319,8 +319,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie in der Übersicht zu [dedizierten Hosts](dedicated-hosts.md).
+- Weitere Informationen finden Sie in der Übersicht zu [dedizierten Hosts](../dedicated-hosts.md).
 
-- Sie können dedizierte Hosts auch über das [Azure-Portal](dedicated-hosts-portal.md) erstellen.
+- Sie können dedizierte Hosts auch über das [Azure-Portal](../dedicated-hosts-portal.md) erstellen.
 
 - [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.

@@ -7,23 +7,23 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 9d5add1349650663b226023b9f46868f242ac4f9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265210"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976049"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von PowerShell eine VHD eines generalisierten virtuellen Computers in Azure hochladen, ein Image anhand der VHD erstellen und einen neuen virtuellen Computer anhand dieses Images erstellen. Sie können eine VHD hochladen, die aus einem lokalen Virtualisierungstool oder aus einer anderen Cloud exportiert wurde. Durch Verwenden von [Managed Disks](managed-disks-overview.md) für den neuen virtuellen Computer wird die VM-Verwaltung vereinfacht. Außerdem steigt die Verfügbarkeit, wenn der virtuelle Computer in einer Verfügbarkeitsgruppe platziert wird. 
+In diesem Artikel wird erläutert, wie Sie mithilfe von PowerShell eine VHD eines generalisierten virtuellen Computers in Azure hochladen, ein Image anhand der VHD erstellen und einen neuen virtuellen Computer anhand dieses Images erstellen. Sie können eine VHD hochladen, die aus einem lokalen Virtualisierungstool oder aus einer anderen Cloud exportiert wurde. Durch Verwenden von [Managed Disks](../managed-disks-overview.md) für den neuen virtuellen Computer wird die VM-Verwaltung vereinfacht. Außerdem steigt die Verfügbarkeit, wenn der virtuelle Computer in einer Verfügbarkeitsgruppe platziert wird. 
 
 Ein Beispielskript finden Sie unter [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Bevor Sie eine VHD in Azure hochladen, befolgen Sie die Anweisungen unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](managed-disks-overview.md).
+- Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](../managed-disks-overview.md).
 
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalisieren des virtuellen Quellcomputers mithilfe von Sysprep
@@ -112,4 +112,4 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Melden Sie sich bei Ihrem neuen virtuellen Computer an. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Melden Sie sich bei Ihrem neuen virtuellen Computer an. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

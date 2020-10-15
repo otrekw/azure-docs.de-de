@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652847"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977271"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
@@ -57,7 +57,7 @@ Azure-Speicher steht in Form von [Azure-Datenträgern](../../../managed-disks-ov
 <tr><td>Azure Files
 </td>
 <td>
-Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST-Schnittstelle</a>, mit denen Sie von überall auf gespeicherte Dateien zugreifen können.
+Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="/rest/api/storageservices/file-service-rest-api">REST-Schnittstelle</a>, mit denen Sie von überall auf gespeicherte Dateien zugreifen können.
 </td>
 <td><ul>
 <li>Verschieben einer Anwendung mit der „Lift and Shift“-Methode in die Cloud, wenn die Anwendung bereits die nativen Dateisystem-APIs verwendet, um Daten für andere in Azure ausgeführte Anwendungen freizugeben.</li>
@@ -67,7 +67,7 @@ Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="https://docs
 </tr>
 <tr><td>Azure-Blobs
 </td>
-<td>Bietet Clientbibliotheken und eine <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST-Schnittstelle</a>, der große Mengen an unstrukturierten Daten in Blockblobs gespeichert und abgerufen werden können. Blob Storage unterstützt darüber hinaus <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> für Big Data-Analyselösungen auf Unternehmensniveau.
+<td>Bietet Clientbibliotheken und eine <a href="/rest/api/storageservices/blob-service-rest-api">REST-Schnittstelle</a>, der große Mengen an unstrukturierten Daten in Blockblobs gespeichert und abgerufen werden können. Blob Storage unterstützt darüber hinaus <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> für Big Data-Analyselösungen auf Unternehmensniveau.
 </td>
 <td><ul>
 <li>Unterstützung von Streaming und direktem Zugriff in einer Anwendung.</li>
@@ -77,7 +77,7 @@ Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine <a href="https://docs
 </tr>
 <tr><td>Azure Disks
 </td>
-<td>Bietet Clientbibliotheken und eine <a href="https://docs.microsoft.com/rest/api/compute/disks">REST-Schnittstelle</a>, mit der Sie Daten beständig von einer angefügten virtuellen Festplatte speichern und abrufen können.
+<td>Bietet Clientbibliotheken und eine <a href="/rest/api/compute/disks">REST-Schnittstelle</a>, mit der Sie Daten beständig von einer angefügten virtuellen Festplatte speichern und abrufen können.
 </td>
 <td><ul>
 <li>Verschieben von Anwendungen mit der „Lift and Shift“-Methode, die native Dateisystem-APIs verwenden, um Daten in beständigen Datenträgern zu lesen und dort hinein zu schreiben.</li>
