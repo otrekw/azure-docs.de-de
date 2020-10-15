@@ -3,12 +3,12 @@ title: 'Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer pri
 description: Erfahren Sie, wie Sie ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellen.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9de6cbe177ac8d2ca4957e80c7ca1072a0d7985e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576726"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948305"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
 
@@ -83,7 +83,7 @@ Nachdem Sie einen Autorisierungsschlüssel für die ExpressRoute-Leitung der pri
 Wir haben die [CLI-Befehle](../expressroute/expressroute-howto-set-global-reach-cli.md) mit speziellen Details und Beispielen erweitert, um Sie bei beim Konfigurieren des ExpressRoute Global Reach-Peerings zwischen lokalen Umgebungen und einer privaten Azure VMware Solution-Cloud zu unterstützen.  
 
 > [!TIP]  
-> Zur besseren Übersichtlichkeit der Azure CLI-Befehlsausgabe wird in dieser Anleitung ggf. ein [Argument vom Typ `–query` verwendet, um eine JMESPath-Abfrage auszuführen und nur die erforderlichen Ergebnisse anzuzeigen](https://docs.microsoft.com/cli/azure/query-azure-cli).
+> Zur besseren Übersichtlichkeit der Azure CLI-Befehlsausgabe wird in dieser Anleitung ggf. ein [Argument vom Typ `–query` verwendet, um eine JMESPath-Abfrage auszuführen und nur die erforderlichen Ergebnisse anzuzeigen](/cli/azure/query-azure-cli).
 
 
 1. Melden Sie sich beim Azure-Portal mit dem Abonnement an, das auch für die lokale ExpressRoute-Leitung verwendet wurde, und öffnen Sie eine Cloud Shell-Instanz. Verwenden Sie die standardmäßige Bash-Shell.

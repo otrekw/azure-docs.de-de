@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 60a182764639341fcda159356dd9fe6c65cfabd9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463321"
 ---
 # <a name="move-an-azure-relay-namespace-to-another-region"></a>Verschieben eines Azure Relay-Namespace in eine andere Region
@@ -39,7 +39,7 @@ Exportieren Sie zunächst eine Resource Manager-Vorlage. Diese Vorlage enthält 
 1. Suchen Sie nach `location`, und ersetzen Sie den Wert für die Eigenschaft durch den neuen Namen für die Region. Informationen zum Abrufen von Standortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/). Der Code für eine Region ist der Name der Region ohne Leerzeichen, z. B. ist `West US` gleich `westus`.
 1. Entfernen Sie Definitionen von Ressourcen des Typs **Dynamisches WCF Relay** (Typ `Microsoft.Relay/namespaces/WcfRelays`). Dynamische WCF-Relays sind Relays, für die die **isDynamic**-Eigenschaft auf der Seite **Relays** auf **TRUE** festgelegt ist. Im folgenden Beispiel ist **echoservice** ein dynamisches WCF-Relay. Seine Definition sollte aus der Vorlage entfernt werden. 
 
-    :::image type="content" source="./media/move-across-regions/dynamic-relays.png" alt-text="Dynamische Relays":::
+    :::image type="content" source="./media/move-across-regions/dynamic-relays.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::
 
 ## <a name="move"></a>Move
 Stellen Sie die Vorlage bereit, um in der Zielregion einen Relaynamespace zu erstellen. 
@@ -47,19 +47,19 @@ Stellen Sie die Vorlage bereit, um in der Zielregion einen Relaynamespace zu ers
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 2. Geben Sie in **Marketplace durchsuchen** die Zeichenfolge **Vorlagenbereitstellung** für den Suchtext ein, wählen Sie **Vorlagenbereitstellung (Bereitstellen mit benutzerdefinierten Vorlagen)** aus, und drücken Sie dann die **EINGABETASTE**.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Neue Vorlagenbereitstellung":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::    
 1. Wählen Sie auf der Seite **Vorlagenbereitstellung** die Option **Erstellen** aus.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Neue Vorlagenbereitstellung – Schaltfläche „Erstellen“":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::        
 1. Wählen Sie auf der Seite **Benutzerdefinierte Bereitstellung** die Option **Eigene Vorlage im Editor erstellen** aus.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Eigene Vorlage im Editor erstellen – Link":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::            
 1. Wählen Sie auf der Seite **Vorlage bearbeiten** in der Symbolleiste **Datei laden**, und folgen Sie dann den Anweisungen, um die Datei **vorlage.json** zu laden, die Sie im letzten Abschnitt heruntergeladen haben.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Auswählen einer Vorlage":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::                
 1. Wählen Sie **Speichern** aus, um die Vorlage zu speichern. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Vorlage speichern":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::                    
 1. Gehen Sie auf der Seite **Benutzerdefinierte Bereitstellung** wie folgt vor: 
     1. Wählen Sie ein Azure-**Abonnement** aus. 
     2. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine. 
@@ -67,16 +67,16 @@ Stellen Sie die Vorlage bereit, um in der Zielregion einen Relaynamespace zu ers
     4. Geben Sie einen neuen **Namen für den Namespace** ein.
     1. Klicken Sie auf **Überprüfen + erstellen**. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Bereitstellen der Resource Manager-Vorlage":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::
     1. Wählen Sie unten auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus. 
     
 ## <a name="verify"></a>Überprüfung
 1. Nachdem die Bereitstellung erfolgreich war, wählen Sie **Zu Ressourcengruppe wechseln** aus.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Zu Ressourcengruppe wechseln – Link":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::    
 1. Wählen Sie auf der Seite **Ressourcengruppe** den Azure Relay-Namespace aus. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Auswählen des Azure Relay-Namespace":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::    
 1. Wählen Sie auf der Seite **Azure Relay-Namespace** im linken Menü **Hybridverbindungen** oder **WCF Relays** aus, um zu bestätigen, dass Hybridverbindungen und WCF-Relays erstellt werden. Wenn Sie vergessen haben, Definitionen für dynamische WCF-Relays vor dem Importieren der Vorlage zu löschen, löschen Sie diese auf der Seite **WCF-Relays**. Die dynamischen WCF-Relays werden automatisch erstellt, wenn Clients eine Verbindung mit dem Relaynamespace herstellen. 
 
 ## <a name="discard-or-clean-up"></a>Verwerfen oder Bereinigen

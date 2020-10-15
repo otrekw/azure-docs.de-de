@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122363"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Übersicht über die Azure Functions-Diagnose
@@ -31,11 +31,11 @@ So starten Sie die Azure Functions-Diagnose
 
 Nachdem Sie auf der Startseite eine Kategorie ausgewählt haben, die am ehesten auf das bei der Funktions-App aufgetretene Problem zutrifft, können Sie über die interaktive Benutzeroberfläche namens „Genie“ der Azure Functions-Diagnose durch die Diagnose und Problembehebung Ihrer App geleitet werden. Sie können die in Genie angegebenen Kachelverknüpfungen verwenden, um den vollständigen Diagnosebericht der jeweiligen Problemkategorie anzuzeigen. Über die Kachelverknüpfungen haben Sie direkt die Möglichkeit, auf die Diagnosemetriken zuzugreifen.
 
-:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Genie ist die Benutzeroberfläche der Azure Functions-Diagnose." border="false":::
+:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Suchen nach der Azure Functions-Diagnose." border="false":::
 
 Nachdem Sie eine Kachel ausgewählt haben, wird eine Liste mit Themen angezeigt, die sich auf das in der jeweiligen Kachel beschriebene Problem beziehen. Diese Themen enthalten Auszüge mit relevanten Informationen aus dem vollständigen Bericht. Wählen Sie jedes einzelne dieser Themen aus, um die Probleme weiter zu untersuchen. Zudem können Sie **Vollständigen Bericht anzeigen** auswählen, um alle Themen auf einer Seite zu untersuchen.
 
-:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Vorschau des Diagnoseberichts" border="false":::
+:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Suchen nach der Azure Functions-Diagnose." border="false":::
 
 ## <a name="view-a-diagnostic-report"></a>Anzeigen eines Diagnoseberichts
 
@@ -45,9 +45,9 @@ Nachdem Sie ein Thema ausgewählt haben, wird ein spezifischer Diagnosebericht f
 
 Für skriptbasierte Funktionen können Sie **Function Execution and Errors** (Funktionsausführung und Fehler) unter **Function App Down or Reporting Errors** („Funktions-App ausgefallen oder mit Fehlermeldungen“) verwenden, um die Codezeile einzugrenzen, die Ausnahmen oder Fehler verursacht. Sie können dieses Tool nutzen, um die Grundursache zu ermitteln und Probleme aus einer bestimmten Codezeile zu beheben. Diese Option ist für vorkompilierte C#- und Java-Funktionen nicht verfügbar.
 
-:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Diagnosebericht zu Funktionsausführungsfehlern" border="false":::
+:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Suchen nach der Azure Functions-Diagnose." border="false":::
 
-:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Ansicht der Ausnahmedetails." border="false":::
+:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Suchen nach der Azure Functions-Diagnose." border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

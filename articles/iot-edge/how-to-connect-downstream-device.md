@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281455"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045838"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -77,7 +77,7 @@ Weitere Informationen zu IoT Edge-Zertifikaten und einigen Auswirkungen auf die 
 
 ## <a name="provide-the-root-ca-certificate"></a>Bereitstellen des Stamm-ZS-Zertifikats
 
-Um die Zertifikate des Gatewaygeräts zu überprüfen, muss das nachgeschaltete Gerät über eine eigene Kopie des Stamm-ZS-Zertifikats verfügen. Wenn Sie die im IoT Edge-Git-Repository bereitgestellten Skripts zum Erstellen von Testzertifikaten verwendet haben, hat das Stamm-ZS-Zertifikat den Namen **azure-iot-test-only.root.ca.cert.pem**. Verschieben Sie diese Zertifikatdatei in ein beliebiges Verzeichnis auf dem nachgeschalteten Gerät, wenn dies noch im Rahmen der anderen Vorbereitungsschritte für nachgeschaltete Geräte geschehen ist. Sie können einen Dienst wie [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatdatei verwenden.
+Um die Zertifikate des Gatewaygeräts zu überprüfen, muss das nachgeschaltete Gerät über eine eigene Kopie des Stamm-ZS-Zertifikats verfügen. Wenn Sie die im IoT Edge-Git-Repository bereitgestellten Skripts zum Erstellen von Testzertifikaten verwendet haben, hat das Stamm-ZS-Zertifikat den Namen **azure-iot-test-only.root.ca.cert.pem**. Verschieben Sie diese Zertifikatdatei in ein beliebiges Verzeichnis auf dem nachgeschalteten Gerät, wenn dies noch im Rahmen der anderen Vorbereitungsschritte für nachgeschaltete Geräte geschehen ist. Sie können einen Dienst wie [Azure Key Vault](../key-vault/index.yml) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatdatei verwenden.
 
 ## <a name="install-certificates-in-the-os"></a>Installieren von Zertifikaten im Betriebssystem
 
@@ -98,7 +98,7 @@ Es sollte die Meldung „Updating certificates in /etc/ssl/certs 1 added, 0 remo
 
 Die folgenden Schritte sind ein Beispiel für die Installation eines ZS-Zertifikats auf einem Windows-Host. In diesem Beispiel wird davon ausgegangen, dass Sie das Zertifikat **azure-iot-test-only.root.ca.cert.pem** aus den Artikeln über die Voraussetzungen verwenden und das Zertifikat an einen Speicherort auf dem nachgeschalteten Gerät kopiert haben.
 
-Sie können Zertifikate mit [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) von PowerShell als Administrator installieren:
+Sie können Zertifikate mit [Import-Certificate](/powershell/module/pkiclient/import-certificate?view=win10-ps) von PowerShell als Administrator installieren:
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -113,7 +113,7 @@ Außerdem können Sie Zertifikate mit dem Hilfsprogramm **certlm** installieren:
 
 Sie können Zertifikate auch programmgesteuert über .NET-APIs installieren (siehe .NET-Beispiel weiter unten in diesem Artikel).
 
-I.d.R. verwenden Anwendungen den von Windows bereitgestellten TLS-Stapel namens [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel), um eine sichere Verbindung über TLS herzustellen. Schannel *erfordert*, dass alle Zertifikate im Windows-Zertifikatspeicher installiert werden, bevor eine TLS-Verbindung hergestellt werden kann.
+I.d.R. verwenden Anwendungen den von Windows bereitgestellten TLS-Stapel namens [Schannel](/windows/desktop/com/schannel), um eine sichere Verbindung über TLS herzustellen. Schannel *erfordert*, dass alle Zertifikate im Windows-Zertifikatspeicher installiert werden, bevor eine TLS-Verbindung hergestellt werden kann.
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>Verwenden von Zertifikaten mit Azure IoT SDKs
 

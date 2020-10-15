@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723927"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047674"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
@@ -49,7 +49,7 @@ Im Folgenden wird beschrieben, wie Sie Diagnoseeinstellungen für Ihre Azure Dig
     
 4. Speichern Sie die neuen Einstellungen. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Screenshot der Seite mit den Diagnoseeinstellungen, auf der der Benutzer einen Namen für eine Diagnoseeinstellung eingegeben und einige Kontrollkästchen für Kategorie- und Zieldetails aktiviert hat. Die Schaltfläche „Speichern“ ist hervorgehoben.":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen":::
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die Protokolle im konfigurierten Ziel auf der Seite **Diagnoseeinstellungen** für Ihre Instanz angezeigt. 
 
@@ -73,7 +73,7 @@ Jede Protokollkategorie besteht aus Schreib-, Lese-, Lösch- und Aktionsvorgäng
 | Löschen | Delete |
 | Aktion | POST |
 
-Im Folgenden finden Sie eine umfassende Liste der Vorgänge und entsprechenden [REST-API-Aufrufe für Azure Digital Twins](https://docs.microsoft.com/rest/api/azure-digitaltwins/), die in jeder Kategorie protokolliert werden. 
+Im Folgenden finden Sie eine umfassende Liste der Vorgänge und entsprechenden [REST-API-Aufrufe für Azure Digital Twins](/rest/api/azure-digitaltwins/), die in jeder Kategorie protokolliert werden. 
 
 >[!NOTE]
 > Jede Protokollkategorie enthält mehrere Vorgänge/REST-API-Aufrufe. In der folgenden Tabelle ist jede Protokollkategorie allen darunter aufgeführten Vorgänge/REST-API-Aufrufen zugeordnet, anschließend folgt die nächste Kategorie. 

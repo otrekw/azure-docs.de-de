@@ -1,20 +1,26 @@
 ---
-title: Festlegen der Version für Azure Cache for Redis (Vorschau)
-description: Erfahren Sie mehr über das Konfigurieren der Redis-Version.
+title: Aktivieren der Zonenredundanz für Azure Cache for Redis (Vorschau)
+description: Hier erfahren Sie, wie Sie Zonenredundanz für Ihre Azure Cache for Redis-Instanzen im Premium-Tarif einrichten.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 09/30/2020
-ms.openlocfilehash: ed0f486afe466d31388fa99b4ce5f5754210533f
+ms.date: 08/11/2020
+ms.openlocfilehash: 33c346fa2e4572799ad6341bd5115cdd6e3b9ec9
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571239"
+ms.locfileid: "91569979"
 ---
-# <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Festlegen der Version für Azure Cache for Redis (Vorschau)
-In diesem Artikel erfahren Sie, wie Sie die Version der Redis-Software konfigurieren, die mit Ihrer Cache-Instanz verwendet werden soll. Azure Cache for Redis bietet die neueste Hauptversion von Redis und mindestens eine frühere Version. Diese Versionen werden regelmäßig aktualisiert, sobald neuere Redis-Software veröffentlicht wird. Sie können zwischen den beiden verfügbaren Versionen wählen. Beachten Sie, dass automatisch ein Upgrade Ihres Caches auf die nächste Version erfolgt, wenn die derzeit verwendete Version nicht mehr unterstützt wird.
+# <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis (Vorschau)
+In diesem Artikel erfahren Sie, wie Sie eine zonenredundante Azure Cache-Instanz über das Azure-Portal konfigurieren.
+
+Azure Cache for Redis im Standard- und Premium-Tarif bietet integrierte Redundanz durch das Hosting jedes Caches auf zwei dedizierten virtuellen Computern (VMs). Obwohl sich diese VMs in separaten [Azure-Fehler- und Updatedomänen befinden](/azure/virtual-machines/windows/manage-availability) und hoch verfügbar sind, sind Sie anfällig für Ausfälle auf Rechenzentrumsebene. Azure Cache for Redis unterstützt auch Zonenredundanz im Premium-Tarif. Ein zonenredundanter Cache wird auf VMs ausgeführt, die auf mehrere [Verfügbarkeitszonen](/azure/virtual-machines/windows/manage-availability#use-availability-zones-to-protect-from-datacenter-level-failures) verteilt sind. Dies bietet höhere Resilienz und Verfügbarkeit.
+
+> [!IMPORTANT]
+> Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Azure-Abonnement –  [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
@@ -40,18 +46,28 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
     | **Ressourcengruppe** | Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
     | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net*. | 
     | **Location** | Wählen Sie einen Standort aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihren Cache verwenden. |
-    | **Cachetyp** | Wählen Sie einen [Tarif und eine Größe für den Cache](https://azure.microsoft.com/pricing/details/cache/) aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. Weitere Informationen finden Sie unter [What is Azure Cache for Redis](cache-overview.md) (Was ist Azure Cache for Redis?). |
+    | **Cachetyp** | Wählen Sie einen Cache im [Premium-Tarif](https://azure.microsoft.com/pricing/details/cache/) aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. Weitere Informationen finden Sie unter [What is Azure Cache for Redis](cache-overview.md) (Was ist Azure Cache for Redis?). |
    
-1. Wählen Sie auf der Seite **Erweitert** eine zu verwendende Redis-Version aus.
+1. Wählen Sie auf der Seite **Erweitert** die Option **Replikatanzahl** aus.
    
-    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
+
+1. Wählen Sie **Verfügbarkeitszonen** aus. 
+   
+    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
+
+1. Behalten Sie bei den anderen Optionen die Standardeinstellungen bei. 
+
+    > [!NOTE]
+    > Die Unterstützung der Zonenredundanz funktioniert zurzeit nur mit nicht gruppierten und nicht georeplizierten Caches. Außerdem werden Private Link, Skalierung, Datenpersistenz und Import/Export nicht unterstützt.
+    >
 
 1. Klicken Sie auf **Erstellen**. 
    
     Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit.
-
+   
     > [!NOTE]
-    > Zu diesem Zeitpunkt kann die Redis-Version nicht mehr geändert werden, sobald ein Cache erstellt wurde.
+    > Verfügbarkeitszonen können nicht mehr geändert werden, nachdem ein Cache erstellt wurde.
     >
 
 ## <a name="next-steps"></a>Nächste Schritte

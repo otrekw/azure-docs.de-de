@@ -4,10 +4,10 @@ description: Verwenden des „copy“-Vorgangs in einer Azure Resource Manager-V
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583426"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Ausgabeiteration in ARM-Vorlagen
