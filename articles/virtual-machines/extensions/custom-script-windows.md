@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426264"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973817"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -48,7 +48,7 @@ Sie können die Erweiterung so konfigurieren, dass mit Ihren Azure Blob Storage-
 
 ### <a name="internet-connectivity"></a>Internetverbindung
 
-Wenn Sie ein Skript extern herunterladen möchten, etwa von GitHub oder Azure Storage, müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/security-overview.md#service-tags) gewähren.
+Wenn Sie ein Skript extern herunterladen möchten, etwa von GitHub oder Azure Storage, müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/network-security-groups-overview.md#service-tags) gewähren.
 
 Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch weitere Firewall- und Netzwerksicherheitsgruppen-Ports geöffnet werden.
 

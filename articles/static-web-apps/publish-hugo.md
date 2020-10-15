@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797716"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps (Vorschauversion)
@@ -115,7 +115,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Wählen Sie unter _SKU_ die Option **Free** aus.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Eingegebene Details":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
 
 1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**.
 
@@ -125,7 +125,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Wählen Sie unter _Branch_ die Option **Master** aus.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Eingegebene GitHub-Informationen":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
 
 ### <a name="build"></a>Entwickeln
 
@@ -149,7 +149,7 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 1. Klicken Sie im Azure-Portal im Fenster _Übersicht_ der neu erstellten Azure Static Web Apps-Ressource auf den Link _URL_, um Ihre bereitgestellte Anwendung zu öffnen.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Bereitgestellte Anwendung":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653595"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978236"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -30,7 +30,7 @@ Die folgende Grafik zeigt die grundlegende Architektur von SAP-Hochverfügbarkei
 
 ![Standardkonfiguration für Hochverfügbarkeit](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-Die SAP-Anwendungsschicht wird in einer [Verfügbarkeitsgruppe](../../windows/manage-availability.md) von Azure bereitgestellt. Für die Hochverfügbarkeit von SAP Central Services können Sie zwei virtuelle Computer in einer separaten Verfügbarkeitsgruppe bereitstellen. Verwenden Sie bei einem Infrastruktur- oder Softwareproblem Windows Server-Failoverclustering oder Pacemaker (Linux) als Hochverfügbarkeits-Framework mit automatischem Failover. Weitere Informationen zu diesen Bereitstellungen finden Sie unter den folgenden Links:
+Die SAP-Anwendungsschicht wird in einer [Verfügbarkeitsgruppe](../../manage-availability.md) von Azure bereitgestellt. Für die Hochverfügbarkeit von SAP Central Services können Sie zwei virtuelle Computer in einer separaten Verfügbarkeitsgruppe bereitstellen. Verwenden Sie bei einem Infrastruktur- oder Softwareproblem Windows Server-Failoverclustering oder Pacemaker (Linux) als Hochverfügbarkeits-Framework mit automatischem Failover. Weitere Informationen zu diesen Bereitstellungen finden Sie unter den folgenden Links:
 
 - [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure](./sap-high-availability-guide-wsfc-file-share.md)

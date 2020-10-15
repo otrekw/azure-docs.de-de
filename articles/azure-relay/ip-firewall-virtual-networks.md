@@ -3,12 +3,12 @@ title: Konfigurieren einer IP-Firewall für den Azure Relay-Namespace
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Relay-Namespaces zulassen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976026"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999505"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurieren einer IP-Firewall für einen Azure Relay-Namespace
 Standardmäßig kann über das Internet auf Relaynamespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -76,7 +76,7 @@ Die Vorlage nimmt einen Parameter an: **ipMask**. Dabei handelt es sich um eine 
       }
     },
     "variables": {
-      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]",
+      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]"
     },
     "resources": [
       {
@@ -93,7 +93,7 @@ Die Vorlage nimmt einen Parameter an: **ipMask**. Dabei handelt es sich um eine 
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.Relay/namespaces/networkruleset",
+        "type": "Microsoft.Relay/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.Relay/namespaces/', parameters('relayNamespaceName'))]"
         ],
@@ -109,6 +109,7 @@ Die Vorlage nimmt einen Parameter an: **ipMask**. Dabei handelt es sich um eine 
                 "action":"Allow"
             }
           ],
+          "virtualNetworkRules": [],
           "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }

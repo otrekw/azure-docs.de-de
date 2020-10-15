@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852480"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977747"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure
 
@@ -25,7 +25,7 @@ Die Bedrohungslage für Cloudumgebungen ist dynamisch. Dies erhöht den Druck, e
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Mit [Azure Security Center](../security-center/security-center-intro.md) können Sie Bedrohungen Ihrer VMs verhindern, erkennen und bekämpfen. Security Center bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+Mit [Azure Security Center](../security-center/security-center-introduction.md) können Sie Bedrohungen Ihrer VMs verhindern, erkennen und bekämpfen. Security Center bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 Der Just-In-Time-VM-Zugriff in Security Center kann auf alle VM-Bereitstellungen angewandt werden, um eingehenden Datenverkehr auf Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. Wenn Just-In-Time aktiviert ist und ein Benutzer Zugriff auf eine VM anfordert, überprüft Security Center, welche Berechtigungen der Benutzer für den virtuellen Computer hat. Wenn er über die passenden Berechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden von Security Center automatisch so konfiguriert, dass eingehender Datenverkehr zu den ausgewählten Ports für eine begrenzte Zeit zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her. 
 
@@ -69,9 +69,8 @@ Mit [Azure-Richtlinien](../governance/policy/overview.md) kann das gewünschte V
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC)](../role-based-access-control/overview.md) können Sie Aufgabenbereiche in Ihrem Team trennen und Benutzern nur das Maß an Zugriff auf Ihre VM gewähren, das sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im [Azure-Portal](../role-based-access-control/role-assignments-portal.md), per [Azure CLI](https://docs.microsoft.com/cli/azure/role) oder mit [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) konfigurieren.
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC)](../role-based-access-control/overview.md) können Sie Aufgabenbereiche in Ihrem Team trennen und Benutzern nur das Maß an Zugriff auf Ihre VM gewähren, das sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im [Azure-Portal](../role-based-access-control/role-assignments-portal.md), per [Azure CLI](/cli/azure/role) oder mit [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) konfigurieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Führen Sie die Schritte aus, um die VM-Sicherheit mit dem Azure Security Center für [Linux](../security/fundamentals/overview.md) oder [Windows](windows/tutorial-azure-security.md) zu überwachen.
-

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797614"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977764"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
@@ -408,7 +408,7 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Erstellen eines Images oder einer Momentaufnahme einer verschlüsselten VM und dessen oder deren Verwendung zum Bereitstellen weiterer VMs
 - Kernel-Absturzabbild (kdump).
 - Oracle-ACFS (ASM-Clusterdateisystem).
-- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Die NVMe-Datenträger der VMs der Lsv2-Serie (siehe: [LSv2-Serie](../lsv2-series.md)).
 - Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
 - Eine VM mit einem Datenlaufwerk, das über einem Betriebssystemordner eingebunden ist

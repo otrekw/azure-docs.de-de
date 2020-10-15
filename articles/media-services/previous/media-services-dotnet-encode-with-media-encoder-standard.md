@@ -16,12 +16,12 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262401"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014374"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Codieren eines Medienobjekts mit Media Encoder Standard mit .NET
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262401"
 
 Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Media Encoder verwenden. Sie können auch einen Encoder von Media Services-Partnern verwenden. Encoder von Drittanbietern finden Sie im Azure Marketplace. 
 
-In diesem Artikel wird veranschaulicht, wie Sie .NET verwenden, um Medienobjekte mithilfe von Media Encoder Standard (MES) zu codieren. Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
+In diesem Artikel wird veranschaulicht, wie Sie .NET verwenden, um Medienobjekte mithilfe von Media Encoder Standard (MES) zu codieren. Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](./media-services-mes-presets-overview.md)beschrieben sind.
 
 Es wird empfohlen, Quelldateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren. 
 
@@ -44,7 +44,7 @@ Wenn Ihr Ausgabemedienobjekt speicherverschlüsselt ist, müssen Sie die Übermi
 [Formate und Codecs](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES-Voreinstellungen
-Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
+Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](./media-services-mes-presets-overview.md)beschrieben sind.
 
 ### <a name="input-and-output-metadata"></a>Eingabe- und Ausgabemetadaten
 Wenn Sie Eingabemedienobjekte mithilfe von MES codieren, erhalten Sie bei erfolgreichem Abschluss dieser Codieraufgabe ein Ausgabemedienobjekt. Das Ausgabeasset enthält Video- und Audioinhalte, Miniaturansichten, das Manifest usw. Dies hängt von den verwendeten Codierungsvoreinstellungen ab.
@@ -215,4 +215,3 @@ namespace MediaEncoderStandardSample
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen von Miniaturansichten über Media Encoder Standard mit .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-

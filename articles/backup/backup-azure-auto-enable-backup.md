@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die a
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88826071"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy

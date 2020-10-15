@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286205"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975719"
 ---
 # <a name="updated-ndv2-series"></a>Aktualisierte NDv2-Serie
 
@@ -24,23 +24,22 @@ NDv2-Instanzen bieten dank CUDA GPU-optimierter Computekernel hervorragende Leis
 
 Entscheidend ist, dass die NDv2-Serie sowohl auf rechenintensive Workloads zum zentralen Hochskalieren (mit 8 GPUs pro VM) als auch auf horizontale Skalierung (mit mehreren kombinierten VMs) ausgelegt ist. Die NDv2-Serie unterstützt ab sofort Back-End-Netzwerke mit InfiniBand EDR (100 Gigabit), ähnlich der Datenrate auf HPC-VMs der HB-Serie, und ermöglicht somit Hochleistungsclustering für parallele Szenarien, z. B. für ein verteiltes Training für KI und ML. Dieses Back-End-Netzwerk unterstützt alle wichtigen InfiniBand-Protokolle – einschließlich derer, die in den NCCL2-Bibliotheken von NDVIA verwendet werden. Dadurch ist ein nahtloses Clustering von GPUs möglich.
 
+> [!IMPORTANT]
 > Bei [Aktivierung von InfiniBand](./workloads/hpc/enable-infiniband.md) auf der ND40rs_v2-VM verwenden Sie bitte den Mellanox OFED-Treiber 4.7-1.0.0.1.
 >
-> Aufgrund des größeren GPU-Arbeitsspeichers werden für die neue ND40rs_v2-VM [VMs der 2. Generation](./windows/generation-2.md) und Marketplace-Images benötigt. 
+> Aufgrund des größeren GPU-Arbeitsspeichers werden für die neue ND40rs_v2-VM [VMs der 2. Generation](./generation-2.md) und Marketplace-Images benötigt. 
 >
 > Hinweis: Die ND40s_v2-VM mit 16 GB Arbeitsspeicher pro GPU ist nicht mehr als Vorschauversion verfügbar und wurde durch die aktualisierte ND40rs_v2-VM ersetzt.
 
 <br>
 
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Nicht unterstützt
-
-Updates mit Speicherbeibehaltung: Nicht unterstützt
-
-InfiniBand: Unterstützt
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+InfiniBand: Unterstützt<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Max. Netzwerkbandbreite | Maximale Anzahl NICs |
 |---|---|---|---|---|---|---|---|---|---|
