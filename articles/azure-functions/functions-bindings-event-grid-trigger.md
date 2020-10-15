@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214136"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
@@ -407,7 +407,7 @@ Wählen Sie für Funktionen, die Sie im Azure-Portal mit dem Event Grid-Trigger 
 
 Bei Auswahl dieses Links wird das Portal mit der Seite **Ereignisabonnement erstellen** geöffnet, auf der der aktuelle Triggerendpunkt bereits definiert ist.
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Erstellen eines Ereignisabonnements mit bereits definiertem Funktionsendpunkt" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Verbinden eines neuen Ereignisabonnements mit einem Trigger im Portal" :::
 
 Weitere Informationen zum Erstellen von Abonnements über das Azure-Portal finden Sie unter [Erstellen eines benutzerdefinierten Ereignisses – Azure-Portal](../event-grid/custom-event-quickstart-portal.md) in der Event Grid-Dokumentation.
 

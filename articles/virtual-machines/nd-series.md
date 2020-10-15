@@ -7,24 +7,22 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8c229a72b706333a117645095bd96e44abbdf469
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1dfd4185f077806d6b84376e786cfe5de1a8ffc3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418884"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653437"
 ---
 # <a name="nd-series"></a>ND-Serie
 
 Die virtuellen Computer der ND-Serie sind eine neue Ergänzung der GPU-Familie und für Workloads in den Bereichen KI und Deep Learning konzipiert. Sie bieten eine ausgezeichnete Leistung für Training und Rückschluss. ND-Instanzen werden mit [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf)-GPUs und Intel Xeon E5-2690 v4 (Broadwell)-CPUs betrieben. Diese Instanzen bieten eine ausgezeichnete Leistung für Gleitkommavorgänge mit einfacher Genauigkeit, für KI-Workloads mit Microsoft Cognitive Toolkit sowie für TensorFlow, Caffe und andere Frameworks. Die ND-Serie bietet auch einen wesentlich größeren GPU-Arbeitsspeicher (24 GB) und eignet sich somit für deutlich umfangreichere neurale Netzmodelle. Genau wie die NC-Serie bietet auch die ND-Serie eine Konfiguration mit einem sekundären, RDMA-basierten Netzwerk mit geringer Wartezeit und hohem Durchsatz sowie InfiniBand-Konnektivität, sodass Sie umfangreiche Trainingsaufträge über mehrere GPUs hinweg ausführen können.
 
-Storage Premium Unterstützt
-
-Storage Premium-Zwischenspeicherung: Unterstützt
-
-Livemigration: Nicht unterstützt
-
-Updates mit Speicherbeibehaltung: Nicht unterstützt
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 
 > [!IMPORTANT]
 > Für diese VM-Serie ist das regionsspezifische vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/resource-manager-core-quotas-request.md).

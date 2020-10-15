@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208367"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Überwachen von Azure Functions mit Azure Monitor-Protokollen
@@ -38,7 +38,7 @@ Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Ab
 
 1. Geben Sie einen **Namen für die Diagnoseeinstellungen** ein, und wählen Sie dann **Speichern** aus.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Hinzufügen einer Diagnoseeinstellung":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Auswählen der Diagnoseeinstellungen":::
 
 ## <a name="user-generated-logs"></a>Benutzergenerierte Protokolle
 
@@ -89,7 +89,7 @@ So fragen Sie die generierten Protokolle ab:
 
    Azure Functions schreibt alle Protokolle in die Tabelle **FunctionAppLogs** unter **LogManagement**. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Abfragefenster im Log Analytics-Arbeitsbereich":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Auswählen der Diagnoseeinstellungen":::
 
 Im Folgenden finden Sie einige Beispielabfragen:
 

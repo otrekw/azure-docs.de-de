@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines A
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293066"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors

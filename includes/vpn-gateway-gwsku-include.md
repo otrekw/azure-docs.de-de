@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085242"
 ---
 Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt. Informationen zu virtuellen Netzwerkgateway-SKUs in Azure-Verfügbarkeitszonen finden Sie unter [Gateway SKUs für Azure-Verfügbarkeitszonen](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).

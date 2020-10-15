@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042444"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs
@@ -60,11 +60,11 @@ Erstellen Sie die Zertifikatsignieranforderungsdatei (CSR-Datei), die von Apple 
 
 3. Wählen Sie Ihre **E-Mail-Adresse des Benutzers** aus, und geben Sie den Wert für **Allgemeiner Name** ein. Vergewissern Sie sich, dass **Auf Datenträger gespeichert** aktiviert ist, und wählen Sie dann **Weiter** aus. Lassen Sie das Feld **E-Mail der Zertifizierungsstelle** leer, da dieser Wert nicht erforderlich ist.
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Erforderliche Zertifikatinformationen":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Schlüsselbundverwaltung":::
 
 4. Geben Sie im Feld **Speichern unter** einen Namen für die CSR-Datei ein, und wählen Sie unter  **Ort** den Speicherort und anschließend  **Speichern** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Auswählen eines Dateinamens":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Schlüsselbundverwaltung":::
 
    Dadurch wird die CSR-Datei am ausgewählten Speicherort gespeichert. Der Standardspeicherort lautet **Desktop**. Merken Sie sich den für diese Datei festgelegten Speicherort.
 
@@ -76,26 +76,26 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 
 1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie im Apple Developer Center zum [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456).  Melden Sie sich mit Ihrer Apple-ID beim Portal an, und wählen Sie **Bezeichner** aus. Wählen Sie dann **+**  aus, um eine neue App zu registrieren.
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Seite mit App-IDs":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Schlüsselbundverwaltung":::
 
 2. Aktivieren Sie auf dem Bildschirm **Neuen Bezeichner registrieren** das Optionsfeld **App-IDs**.  Wählen Sie dann **Weiter** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Seite zum Registrieren einer neuen ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Schlüsselbundverwaltung":::
 
 3. Aktualisieren Sie die folgenden drei Werte für Ihre neue App, und wählen Sie dann **Weiter** aus:
 
    - **Beschreibung**: Geben Sie einen aussagekräftigen Namen für Ihre App ein.
    - **Paket-ID**: Geben Sie eine Paket-ID im Format **Organisationskennung.Produktname** ein, wie im [Leitfaden zur App-Verteilung](https://help.apple.com/xcode/mac/current/#/dev91fe7130a) erwähnt. Die unter **Organisationskennung** und **Produktname** eingegebenen Werte müssen der Organisationskennung und dem Produktnamen entsprechen, die Sie beim Erstellen des Xcode-Projekts verwenden. Im folgenden Screenshot wird der Wert **NotificationHubs** als Organisationskennung und **GetStarted** als Produktname verwendet. Stellen Sie sicher, dass der Wert für die **Paket-ID** mit dem Wert in Ihrem Xcode-Projekt übereinstimmt, sodass Xcode das richtige Veröffentlichungsprofil verwendet.
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Registrieren der App-ID":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Schlüsselbundverwaltung":::
 
    - **Pushbenachrichtigungen**: Aktivieren Sie die Option **Pushbenachrichtigungen** im Bereich **Funktionen**. 
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Registrieren einer neuen App-ID":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Schlüsselbundverwaltung":::
 
       Hierdurch wird Ihre App-ID generiert, und Sie werden zur Bestätigung der Daten aufgefordert. Wählen Sie **Weiter** und dann **Registrieren** aus, um die neue App-ID zu bestätigen.
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Bestätigen der neuen App-ID":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Schlüsselbundverwaltung":::
 
       Nachdem Sie **Registrieren** ausgewählt haben, wird die neue App-ID als Position auf der Seite **Zertifikate, Bezeichner und Profile** angezeigt.
 
@@ -118,11 +118,11 @@ Die zweite Option bietet eine Reihe von Vorteilen gegenüber der Verwendung von 
 
 1. Scrollen Sie nach unten zur aktivierten Option **Pushbenachrichtigungen**, und wählen Sie dann **Konfigurieren** aus, um das Zertifikat zu erstellen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="App-ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Schlüsselbundverwaltung":::
 
 2. Das Fenster für die **SSL-Zertifikate von Apple Push Notification Service** wird angezeigt. Wählen Sie im Abschnitt des **SSL-Zertifikats für die Entwicklung** die Schaltfläche **Zertifikat erstellen** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Erstellen eines Zertifikats":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Schlüsselbundverwaltung":::
 
    Der Bildschirm **Neues Zertifikat erstellen** wird angezeigt.
 
@@ -133,11 +133,11 @@ Die zweite Option bietet eine Reihe von Vorteilen gegenüber der Verwendung von 
 
 4. Wählen Sie nach der Erstellung des Zertifikats im Portal die Schaltfläche **Herunterladen** aus. Speichern Sie das Zertifikat, und merken Sie sich den Speicherort.
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Herunterladen des Zertifikats":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Schlüsselbundverwaltung":::
 
    Das Zertifikat wird heruntergeladen und im Ordner **Downloads** gespeichert.
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Suchen der Zertifikatdatei":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Schlüsselbundverwaltung":::
 
    Standardmäßig heißt das heruntergeladene Entwicklungszertifikat **aps_development.cer**.
 
@@ -149,7 +149,7 @@ Die zweite Option bietet eine Reihe von Vorteilen gegenüber der Verwendung von 
 
 6. Klicken Sie in der Schlüsselbundverwaltung in der Kategorie **Zertifikate** mit der rechten Maustaste auf das neu erstellte Pushzertifikat. Wählen Sie **Exportieren** aus, geben Sie der Datei einen Namen, wählen Sie das Format **P12** aus, und wählen Sie dann die Option **Speichern**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Exportieren eines Zertifikats":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Schlüsselbundverwaltung":::
 
    Sie können das Zertifikat mit einem Kennwort schützen, aber dies ist optional. Wenn Sie die Kennworterstellung umgehen möchten, klicken Sie auf **OK**.  Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats, Sie werden zum Aktivieren der Authentifizierung mit APNS verwendet.
 
@@ -201,11 +201,11 @@ Nach Abschluss dieser Schritte verfügen Sie über folgende Informationen, die S
 
 2. Wählen Sie unter **Entwicklung**, die Option **iOS-App-Entwicklung** als Bereitstellungsprofiltyp aus, und wählen Sie anschließend **Weiter** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Bereitstellungsprofilliste":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Schlüsselbundverwaltung":::
 
 3. Wählen Sie anschließend in der Dropdownliste **App-ID** die von Ihnen erstellte App-ID und dann **Weiter** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Auswählen der App-ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Schlüsselbundverwaltung":::
 
 4. Wählen Sie im Fenster **Zertifikate auswählen** das Entwicklungszertifikat aus, das Sie für die Codesignierung verwenden, und wählen Sie dann **Weiter** aus. Dabei handelt es sich nicht um das erstellte Pushzertifikat. Wenn keines vorhanden ist, müssen Sie es erstellen. Wenn ein Zertifikat vorhanden ist, fahren Sie mit dem nächsten Schritt fort. Erstellen eines Entwicklungszertifikat, wenn noch keines vorhanden ist:
 
@@ -224,7 +224,7 @@ Nach Abschluss dieser Schritte verfügen Sie über folgende Informationen, die S
 
 8. Wählen Sie schließlich im Feld **Name des Bereitstellungsprofils** einen Namen für das Profil und dann **Generieren** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Auswählen eines Bereitstellungsprofilnamens":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Schlüsselbundverwaltung":::
 
 9. Nachdem das neue Bereitstellungsprofil erstellt wurde, wählen Sie **Herunterladen** aus. Merken Sie sich den Speicherort des Profils.
 
@@ -238,11 +238,11 @@ In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die A
 
 2. Wählen Sie im Menü auf der linken Seite **Alle Dienste** und dann im Abschnitt **Mobil** die Option **Notification Hubs** aus. Wählen Sie das Sternsymbol neben dem Dienstnamen aus, um den Dienst im linken Menü zum Abschnitt  **FAVORITEN** hinzuzufügen. Nachdem **Notification Hubs** unter **FAVORITEN** hinzugefügt wurde, können Sie diesen Eintrag auswählen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure-Portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Schlüsselbundverwaltung":::
 
 3. Wählen Sie auf der Seite **Notification Hubs** auf der Symbolleiste **Hinzufügen** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Symbolleistenschaltfläche „Hinzufügen“":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Schlüsselbundverwaltung":::
 
 4. Führen Sie auf der Seite **Notification Hubs** die folgenden Schritte aus:
 
@@ -252,18 +252,18 @@ In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die A
    4. Wählen Sie unter  **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
    5. Wählen Sie  **Erstellen** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Festlegen von Eigenschaften":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Schlüsselbundverwaltung":::
 
 5. Wählen Sie **Benachrichtigungen** (Glockensymbol) und dann **Zu Ressource wechseln** aus. Sie können auch die Liste auf der Seite **Notification Hubs** aktualisieren und Ihren Hub auswählen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Portalbenachrichtigungen":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Schlüsselbundverwaltung":::
 
 6. Wählen Sie in der Liste **Zugriffsrichtlinien** aus. Notieren Sie sich die beiden Verbindungszeichenfolgen, die für Sie verfügbar sind. Sie werden später für die Behandlung von Pushbenachrichtigungen benötigt.
 
    > [!IMPORTANT]
    > Verwenden Sie in Ihrer Anwendung nicht die Richtlinie **DefaultFullSharedAccessSignature**. Diese ist nur für die Verwendung in Ihrem Back-End vorgesehen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Verbindungszeichenfolgen":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Schlüsselbundverwaltung":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Konfigurieren Ihres Notification Hubs mit APNs-Informationen
 
@@ -284,7 +284,7 @@ Wählen Sie unter **Benachrichtigungsdienste** die Option  **Apple (APNS)** au
 
 5. Wählen Sie den Modus **Sandbox** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Konfigurieren":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Schlüsselbundverwaltung":::
 
 6. Wählen Sie **Speichern**.
 

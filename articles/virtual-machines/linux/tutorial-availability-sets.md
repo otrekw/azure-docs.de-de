@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499635"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961509"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Bereitstellen hochverfügbarer virtueller Computer mit der Azure CLI
 
@@ -116,5 +116,5 @@ Im nächsten Tutorial erhalten Sie Informationen zu VM-Skalierungsgruppen.
 > [Erstellen einer VM-Skalierungsgruppe](tutorial-create-vmss.md)
 
 * Weitere Informationen zu Verfügbarkeitszonen finden Sie in der [Dokumentation zu Verfügbarkeitszonen](../../availability-zones/az-overview.md).
-* [Hier](./manage-availability.md) finden Sie weitere Dokumentationen zu Verfügbarkeitsgruppen und -zonen.
+* [Hier](../manage-availability.md) finden Sie weitere Dokumentationen zu Verfügbarkeitsgruppen und -zonen.
 * Wenn Sie Verfügbarkeitszonen ausprobieren möchten, sehen Sie sich den Artikel [Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI](./create-cli-availability-zone.md) an.

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708610"
 ---
 # <a name="logical-decoding"></a>Logische Decodierung
@@ -26,13 +26,13 @@ Einen Überblick über die Funktionsweise der logischen Decodierung von Postgres
 
 
 ## <a name="set-up-your-server"></a>Einrichten des Servers 
-Die logische Decodierung und [Lesereplikate](concepts-read-replicas.md) erhalten Informationen jeweils vom Write-Ahead-Protokoll (Write Ahead Log, WAL) von Postgres. Die beiden Features benötigen unterschiedliche Protokolliergrade von Postgres. Die logische Decodierung erfordert einen höheren Grad an Protokollierung als Lesereplikate.
+Die logische Decodierung und [Lesereplikate](concepts-read-replicas.md) erhalten Informationen jeweils vom Write-Ahead-Protokoll (Write Ahead Log, WAL) von Postgres. Die beiden Features benötigen unterschiedliche Protokolliergrade von Postgres. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
 
-Um den richtigen Grad an Protokollierung zu konfigurieren, verwenden Sie den Parameter zur Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
+Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter für die Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
 
-* **Off**: legt die wenigsten Informationen im Write-Ahead-Protokoll ab. Diese Einstellung ist für die meisten Azure Database for PostgreSQL-Server nicht verfügbar.  
-* **Replica**: ausführlichere Informationen als bei Wahl von **Off**. Dies ist der erforderlich Mindestgrad an Protokollierung, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Das ist die Standardeinstellung auf den meisten Servern.
-* **Logical**: noch ausführlichere Informationen als bei Wahl von **Replica**. Dies ist der erforderlich Mindestgrad an Protokollierung, damit die logische Decodierung funktioniert. Lesereplikate funktionieren auch bei dieser Einstellung.
+* **Off**: Speichert am wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist auf den meisten Azure Database for PostgreSQL-Servern nicht verfügbar.  
+* **Replica**: Ausführlichere Informationen als bei **Off**. Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
+* **Logical**: Noch ausführlichere Informationen als bei **Replica**. Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
 
 Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Intern werden durch diesen Parameter die Postgres-Parameter `wal_level`, `max_replication_slots` und `max_wal_senders` festgelegt.
 
