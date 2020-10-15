@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258293"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072253"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -73,12 +73,12 @@ Bei einer Bereitstellung vom Typ „Basic“ werden die folgenden Dienste in Ihr
 | 1     | [Virtueller Linux-Computer](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Hosten von Microservices |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1: Tarif „Standard“ | Geräteverwaltung und Kommunikation |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Speichern von Konfigurationsdaten, Regeln, Warnungen und anderer Cold Storage |  
-| 1     | [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Speicher für VM und Streamingprüfpunkte |
+| 1     | [Azure Storage-Konto](../storage/common/storage-introduction.md#types-of-storage-accounts)  | Standard        | Speicher für VM und Streamingprüfpunkte |
 | 1     | [Web Application](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosten der Front-End-Webanwendung |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Verwalten von Benutzeridentitäten und Sicherheit |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Anzeigen von Ressourcenspeicherorten |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 Einheiten              | Aktivieren von Echtzeitanalysen |
-| 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Umfangreiche Bereitstellung von Geräten |
+| 1     | [Azure Device Provisioning Service](../iot-dps/index.yml)        |       S1          | Umfangreiche Bereitstellung von Geräten |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
 
 ### <a name="standard"></a>Standard
@@ -94,12 +94,12 @@ Bei einer Bereitstellung vom Typ „Standard“ werden die folgenden Dienste in 
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Nutzen Sie einen vollständig verwalteten Orchestrierungsdienst für Kubernetes-Container mit standardmäßig drei Agents.|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2: Tarif „Standard“ | Geräteverwaltung und -steuerung |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |
-| 5     | [Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | Vier für VM-Speicher, eins für die Streamingprüfpunkte |
+| 5     | [Azure-Speicherkonten](../storage/common/storage-introduction.md#types-of-storage-accounts)    | Standard        | Vier für VM-Speicher, eins für die Streamingprüfpunkte |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway über TLS |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Verwalten von Benutzeridentitäten und Sicherheit |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Anzeigen von Ressourcenspeicherorten |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 Einheiten              | Aktivieren von Echtzeitanalysen |
-| 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Umfangreiche Bereitstellung von Geräten |
+| 1     | [Azure Device Provisioning Service](../iot-dps/index.yml)        |       S1          | Umfangreiche Bereitstellung von Geräten |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
 
 > [!NOTE]

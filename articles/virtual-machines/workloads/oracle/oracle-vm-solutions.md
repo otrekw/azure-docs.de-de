@@ -1,24 +1,18 @@
 ---
 title: Oracle-Lösungen auf virtuellen Azure-Computern | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu unterstützten Konfigurationen und Einschränkungen von VM-Images für Oracle in Microsoft Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 32e79e12eae9997df8163401d2abc5f06bc02fc0
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331368"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993497"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-Images und deren Bereitstellung in Microsoft Azure
 
@@ -132,7 +126,7 @@ Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf 
 
 Das Tutorial [Implementieren von Oracle GoldenGate in Azure](configure-oracle-golden-gate.md) führt Sie durch die grundlegenden Schritte der Einrichtung unter Azure.
 
-Zusätzlich dazu, dass Sie eine Lösung für Hochverfügbarkeit und Notfallwiederherstellung in Azure besitzen, sollten Sie über eine Sicherungsstrategie zum Wiederherstellen der Datenbank verfügen. Das Tutorial zum [Sichern und Wiederherstellen einer Oracle-Datenbank](oracle-backup-recovery.md) führt Sie durch das grundlegenden Verfahren der Einrichtung einer konsistenten Sicherung.
+Zusätzlich dazu, dass Sie eine Lösung für Hochverfügbarkeit und Notfallwiederherstellung in Azure besitzen, sollten Sie über eine Sicherungsstrategie zum Wiederherstellen der Datenbank verfügen. Das Tutorial zum [Sichern und Wiederherstellen einer Oracle-Datenbank](./oracle-overview.md) führt Sie durch das grundlegenden Verfahren der Einrichtung einer konsistenten Sicherung.
 
 ## <a name="support-for-jd-edwards"></a>Unterstützung für JD Edwards
 

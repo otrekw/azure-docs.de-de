@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden k√
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180931"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box

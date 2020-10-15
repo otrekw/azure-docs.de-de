@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860427"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Verschieben eines Azure Service Bus-Namespace in eine andere Region
@@ -48,19 +48,19 @@ Stellen Sie die Vorlage bereit, um in der Zielregion einen Service Bus-Namespace
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 2. Geben Sie in **Marketplace durchsuchen** die Zeichenfolge **Vorlagenbereitstellung** für den Suchtext ein, wählen Sie **Vorlagenbereitstellung (Bereitstellen mit benutzerdefinierten Vorlagen)** aus, und drücken Sie dann die **EINGABETASTE**.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Neue Vorlagenbereitstellung":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::    
 1. Wählen Sie auf der Seite **Vorlagenbereitstellung** die Option **Erstellen** aus.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Neue Vorlagenbereitstellung – Schaltfläche „Erstellen“":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::        
 1. Wählen Sie auf der Seite **Benutzerdefinierte Bereitstellung** die Option **Eigene Vorlage im Editor erstellen** aus.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Eigene Vorlage im Editor erstellen – Link":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::            
 1. Wählen Sie auf der Seite **Vorlage bearbeiten** in der Symbolleiste **Datei laden**, und folgen Sie dann den Anweisungen, um die Datei **vorlage.json** zu laden, die Sie im letzten Abschnitt heruntergeladen haben.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Auswählen einer Vorlage":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::                
 1. Wählen Sie **Speichern** aus, um die Vorlage zu speichern. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Vorlage speichern":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::                    
 1. Gehen Sie auf der Seite **Benutzerdefinierte Bereitstellung** wie folgt vor: 
     1. Wählen Sie ein Azure-**Abonnement** aus. 
     2. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine. 
@@ -68,26 +68,26 @@ Stellen Sie die Vorlage bereit, um in der Zielregion einen Service Bus-Namespace
     4. Geben Sie einen neuen **Namen für den Namespace** ein.
     1. Klicken Sie auf **Überprüfen + erstellen**. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Bereitstellen der Resource Manager-Vorlage":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::
     1. Wählen Sie unten auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus. 
     
 ## <a name="verify"></a>Überprüfung
 1. Nachdem die Bereitstellung erfolgreich war, wählen Sie **Zu Ressourcengruppe wechseln** aus.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Zu Ressourcengruppe wechseln – Link":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::    
 1. Wählen Sie auf der Seite **Ressourcengruppe** den Service Bus-Namespace aus. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Service Bus-Namespace auswählen":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::    
 1. Überprüfen Sie auf der Seite **Service Bus-Namespace**, ob die Warteschlangen, Themen und Abonnements aus der Quellregion angezeigt werden. 
     1. **Warteschlangen** im Namespace werden am unteren Rand des rechten Bereichs angezeigt.         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Warteschlangen im Namespace":::
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::
     2. Wechseln Sie zur Registerkarte **Themen**, um Themen im Namespace anzuzeigen.
     
-        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Themen im Namespace":::
+        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::
     3. Wählen Sie das Thema aus, um zu überprüfen, ob Abonnements erstellt wurden. 
 
-        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Themenabonnements":::      
+        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::      
     
     
 

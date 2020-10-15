@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015101"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073528"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -89,7 +89,7 @@ Sehen Sie sich die folgenden Strategien an:
 
 * Lassen Sie das Runbook eine externe Bedingung überprüfen, wenn es eine Webhookanforderung empfängt. Betrachten Sie z. B. ein Runbook, das von GitHub aufgerufen wird, sobald ein neuer Commit für ein GitHub-Repository vorhanden ist. Das Runbook kann eine Verbindung mit GitHub herstellen, um zu überprüfen, ob ein neuer Commit durchgeführt wurde, bevor es mit der Ausführung fortfährt.
 
-* Azure Automation unterstützt Diensttags für virtuelle Azure-Netzwerke (genauer gesagt: [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)). Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen für [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#security-rules) oder [Azure Firewall](../firewall/service-tags.md) zu definieren und Webhooks innerhalb Ihres virtuellen Netzwerks auszulösen. Diensttags können anstelle von spezifischen IP-Adressen verwendet werden, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen **GuestAndHybridManagement** im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den Automation-Dienst zulassen oder verweigern. Dieses Diensttag weist keine Unterstützung für das Zulassen einer präziseren Steuerung durch das Einschränken von IP-Adressbereichen auf eine bestimmte Region auf.
+* Azure Automation unterstützt Diensttags für virtuelle Azure-Netzwerke (genauer gesagt: [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)). Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure Firewall](../firewall/service-tags.md) zu definieren und Webhooks innerhalb Ihres virtuellen Netzwerks auszulösen. Diensttags können anstelle von spezifischen IP-Adressen verwendet werden, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen **GuestAndHybridManagement** im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den Automation-Dienst zulassen oder verweigern. Dieses Diensttag weist keine Unterstützung für das Zulassen einer präziseren Steuerung durch das Einschränken von IP-Adressbereichen auf eine bestimmte Region auf.
 
 ## <a name="create-a-webhook"></a>Erstellen eines Webhooks
 

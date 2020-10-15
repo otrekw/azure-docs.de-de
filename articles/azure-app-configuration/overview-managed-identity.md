@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82981220"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072797"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Verwenden von verwalteten Identitäten für Azure App Configuration
 
@@ -33,7 +33,7 @@ Um eine verwaltete Identität mithilfe der Azure-Befehlszeilenschnittstelle einz
 
 - Verwenden Sie [Azure Cloud Shell](../cloud-shell/overview.md) über das Azure-Portal.
 - Verwenden Sie die eingebettete Azure Cloud Shell über die Schaltfläche „Ausprobieren“ in der rechten oberen Ecke der unten aufgeführten Codeblöcke.
-- [Installieren Sie die aktuelle Version der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.1 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
+- [Installieren Sie die aktuelle Version der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) (2.1 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
 
 In den nachstehenden Schritten werden Sie durch das Erstellen eines App Configuration-Speichers und das Zuweisen einer Identität mithilfe der Befehlszeilenschnittstelle geleitet:
 
@@ -66,7 +66,7 @@ Um eine verwaltete Identität mithilfe der Azure-Befehlszeilenschnittstelle einz
 
 - Verwenden Sie [Azure Cloud Shell](../cloud-shell/overview.md) über das Azure-Portal.
 - Verwenden Sie die eingebettete Azure Cloud Shell über die Schaltfläche „Ausprobieren“ in der rechten oberen Ecke der unten aufgeführten Codeblöcke.
-- [Installieren Sie die neueste Version der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
+- [Installieren Sie die neueste Version der Azure CLI](/cli/azure/install-azure-cli) (2.0.31 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
 
 Die folgenden Schritte führen Sie durch das Erstellen einer vom Benutzer zugewiesenen Identität und eines App Configuration-Speichers und das anschließende Zuweisen der Identität zum Speicher mithilfe der Befehlszeilenschnittstelle:
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258675"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992861"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -89,7 +89,7 @@ Berücksichtigen Sie die Anforderungen Ihrer Organisation, während Sie die Stra
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](https://aka.ms/deploymentplans) und dass die Projektrollen klar sind.
+Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](../fundamentals/active-directory-deployment-plans.md) und dass die Projektrollen klar sind.
 
 ### <a name="plan-communications"></a>Planen der Benachrichtigungen
 

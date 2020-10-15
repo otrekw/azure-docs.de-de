@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371455"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978950"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 Dieser Artikel hilft Ihnen dabei, Probleme zu suchen und zu beheben, die aufgrund von SSH-Fehlern (Secure Shell), SSH-Verbindungsfehlern oder der Ablehnung einer SSH-Verbindung, wenn Sie versuchen, eine Verbindung mit einem virtuellen Linux-Computer herzustellen, auftreten. Sie können das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder die VM-Zugriffserweiterung für Linux verwenden, um Verbindungsproblemen zu ermitteln und zu beheben.
@@ -46,7 +46,7 @@ Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen zur Prob
 Sie können die Anmeldeinformationen oder die SSH-Konfiguration mithilfe einer der folgenden Methoden zurücksetzen:
 
 * [Azure-Portal](#use-the-azure-portal): Ermöglicht das schnelle Zurücksetzen der SSH-Konfiguration oder des SSH-Schlüssels, falls die Azure-Tools nicht installiert sind.
-* [Serielle Konsole für virtuelle Azure-Computer](https://aka.ms/serialconsolelinux): Die serielle Konsole für virtuelle Computer funktioniert unabhängig von der SSH-Konfiguration. Sie erhalten hierbei eine interaktive Konsole für Ihre VM. Die serielle Konsole wurde speziell für Fälle entwickelt, in denen keine SSH-Verbindung hergestellt werden kann. Unten sind weitere Details hierzu angegeben.
+* [Serielle Konsole für virtuelle Azure-Computer](./serial-console-linux.md): Die serielle Konsole für virtuelle Computer funktioniert unabhängig von der SSH-Konfiguration. Sie erhalten hierbei eine interaktive Konsole für Ihre VM. Die serielle Konsole wurde speziell für Fälle entwickelt, in denen keine SSH-Verbindung hergestellt werden kann. Unten sind weitere Details hierzu angegeben.
 * [Azure CLI](#use-the-azure-cli): Wenn Sie bereits eine Befehlszeile geöffnet haben, können Sie die SSH-Konfiguration oder Anmeldeinformationen schnell zurücksetzen. Wenn Sie mit einem klassischen virtuellen Computer arbeiten, können Sie die [klassische Azure-Befehlszeilenschnittstelle](#use-the-azure-classic-cli) verwenden.
 * [VMAccessForLinux-Erweiterung in Azure](#use-the-vmaccess-extension): Erstellen und verwenden Sie JSON-Definitionsdateien wieder, um die SSH-Konfiguration oder Benutzeranmeldeinformationen zurückzusetzen.
 

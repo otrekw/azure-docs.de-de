@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561260"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977064"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Problembehandlung beim Windows Azure-Gast-Agent
 
-Der Windows Azure-Gast-Agent ist ein Agent für virtuelle Computer (Virtual Machines, VMs). Er ermöglicht dem virtuellen Computer die Kommunikation mit dem Fabric Controller (dem zugrunde liegenden physischen Server, auf dem der virtuelle Computer gehostet wird) über die IP-Adresse 168.63.129.16. Dies ist eine virtuelle öffentliche IP-Adresse, die verwendet wird, um die Kommunikation zu vereinfachen. Unter [Was ist die IP-Adresse 168.63.129.16?](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) finden Sie weitere Informationen dazu.
+Der Windows Azure-Gast-Agent ist ein Agent für virtuelle Computer (Virtual Machines, VMs). Er ermöglicht dem virtuellen Computer die Kommunikation mit dem Fabric Controller (dem zugrunde liegenden physischen Server, auf dem der virtuelle Computer gehostet wird) über die IP-Adresse 168.63.129.16. Dies ist eine virtuelle öffentliche IP-Adresse, die verwendet wird, um die Kommunikation zu vereinfachen. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen dazu.
 
- Auf VMs, die aus der lokalen Umgebung zu Azure migriert oder mithilfe benutzerdefinierter Images erstellt werden, ist der Windows Azure-Gast-Agent nicht installiert. In diesen Szenarien müssen Sie den VM-Agent manuell installieren. Weitere Informationen zum Installieren des VM-Agents finden Sie unter [Übersicht über den Agent für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
+ Auf VMs, die aus der lokalen Umgebung zu Azure migriert oder mithilfe benutzerdefinierter Images erstellt werden, ist der Windows Azure-Gast-Agent nicht installiert. In diesen Szenarien müssen Sie den VM-Agent manuell installieren. Weitere Informationen zum Installieren des VM-Agents finden Sie unter [Übersicht über den Agent für virtuelle Azure-Computer](../extensions/agent-windows.md).
 
 Nach der erfolgreichen Installation des Windows Azure-Gast-Agents werden auf der VM in der Datei „services.msc“ die folgenden Dienste aufgeführt:
  
@@ -74,7 +74,7 @@ Navigieren Sie im Azure-Portal zur Seite mit den VM-Eigenschaften, und überprü
 
     Wechseln Sie in der Systemsteuerung zu **Programme und Features**, um zu ermitteln, ob der Windows Azure-Gast-Agent-Dienst installiert ist.
 
-Wenn Sie keine ausgeführten Pakete, Dienste und Prozesse finden und der Windows Azure-Gast-Agent unter „Programme und Features“ nicht angezeigt wird, versuchen Sie, den [Windows Azure-Gast-Agent-Dienst zu installieren](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). Wenn der Gast-Agent nicht ordnungsgemäß installiert wird, können Sie [den VM-Agent offline installieren](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+Wenn Sie keine ausgeführten Pakete, Dienste und Prozesse finden und der Windows Azure-Gast-Agent unter „Programme und Features“ nicht angezeigt wird, versuchen Sie, den [Windows Azure-Gast-Agent-Dienst zu installieren](../extensions/agent-windows.md). Wenn der Gast-Agent nicht ordnungsgemäß installiert wird, können Sie [den VM-Agent offline installieren](./install-vm-agent-offline.md).
 
 Wenn die Dienste angezeigt und ausgeführt werden, starten Sie den Dienst neu, um zu überprüfen, ob das Problem behoben ist. Wenn die Dienste beendet wurden, starten Sie die Dienste, und warten Sie einige Minuten. Überprüfen Sie dann, ob der **Agent-Status** als **Bereit** angezeigt wird. Wenn Sie feststellen, dass diese Dienste abstürzen, verursachen möglicherweise einige Drittanbieterprozesse den Absturz dieser Dienste. Wenden Sie sich zur weiteren Problembehandlung an den [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
@@ -111,7 +111,7 @@ Der Windows Azure-Gast-Agent verfügt über eine Funktion für die automatische 
     ```
     Überprüfen Sie dann, ob die Gast-Agent-Dienste ordnungsgemäß starten.
  
-    In seltenen Fällen, in denen der Gast-Agent nicht ordnungsgemäß installiert wird, können Sie [den VM-Agent offline installieren](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    In seltenen Fällen, in denen der Gast-Agent nicht ordnungsgemäß installiert wird, können Sie [den VM-Agent offline installieren](./install-vm-agent-offline.md).
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>Schritt 3: Überprüfen, ob die VM eine Verbindung mit dem Fabric Controller herstellen kann
@@ -189,7 +189,7 @@ Die VM kann den WireServer-Hostserver nicht erreichen.
 1. Wenn Sie die URL aus Schritt 1 nicht erreichen können, überprüfen Sie die Netzwerkschnittstelle, um zu ermitteln, ob Sie als DHCP-fähig festgelegt ist und über DNS verfügt. Führen Sie zum Überprüfen des DHCP-Status der Netzwerkschnittstelle den Befehl `netsh interface ip show config` aus.
 1. Wenn DHCP deaktiviert ist, führen Sie den folgenden Befehl aus. Stellen Sie dabei sicher, dass Sie den Wert in Gelb in den Namen Ihrer Schnittstelle ändern: `netsh interface ip set address name="Name of the interface" source=dhcp`.
 1. Suchen Sie nach Problemen, die möglicherweise von einer Firewall, einem Proxy oder einer anderen Quelle verursacht werden, die den Zugriff auf die IP-Adresse 168.63.129.16 blockieren könnten.
-1. Überprüfen Sie, ob die Windows-Firewall oder eine Firewall eines Drittanbieters den Zugriff auf die Ports 80, 443 und 32526 blockiert. Unter [Was ist die IP-Adresse 168.63.129.16?](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) finden Sie weitere Informationen dazu, warum diese Adresse nicht blockiert werden sollte.
+1. Überprüfen Sie, ob die Windows-Firewall oder eine Firewall eines Drittanbieters den Zugriff auf die Ports 80, 443 und 32526 blockiert. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen dazu, warum diese Adresse nicht blockiert werden sollte.
 
 ### <a name="guest-agent-is-stuck-stopping"></a>Der Gast-Agent hängt beim Beenden  
 

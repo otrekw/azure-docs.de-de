@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142365"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072423"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und Bereitstellung in Azure.
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > Wenn Sie das Zertifikat mit einer IP-Adresse anstelle einer Domäne verwenden möchten, verwenden Sie die IP-Adresse im Parameter -DnsName.
 
 
-Wenn Sie dieses [Zertifikat mit dem Verwaltungsportal](../azure-api-management-certs.md)verwenden möchten, exportieren Sie es in eine **CER** -Datei:
+Wenn Sie dieses [Zertifikat mit dem Verwaltungsportal](/previous-versions/azure/azure-api-management-certs)verwenden möchten, exportieren Sie es in eine **CER** -Datei:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Im Internet wird auf vielen Seiten erläutert, wie mit IIS Zertifikate erstellt 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hochladen des Dienstzertifikats in das Azure-Portal](cloud-services-configure-ssl-certificate-portal.md).
 
-Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in das Azure-Portal.
-
-
-
-
+Hochladen des [Verwaltungs-API-Zertifikats](/previous-versions/azure/azure-api-management-certs) in das Azure-Portal.

@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005598"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Konfigurieren einer benutzerdefinierten Antwort für Azure Web Application Firewall (WAF)
@@ -27,7 +27,7 @@ Sie können einen benutzerdefinierten Antwortstatuscode und -text unter „Richt
 
 Im obigen Beispiel haben wir den Antwortcode 403 beibehalten und eine kurze Meldung mit dem Inhalt „Bitte kontaktieren Sie uns“ konfiguriert, wie in der nachstehenden Abbildung dargestellt:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Beispiel für eine benutzerdefinierte Antwort":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF-Richtlinieneinstellungen":::
 
 „{{azure-ref}}“ fügt die eindeutige Verweiszeichenfolge in den Antworttext ein. Der Wert stimmt mit dem Feld TrackingReference in den Protokollen `FrontdoorAccessLog` und `FrontdoorWebApplicationFirewallLog` überein.
 

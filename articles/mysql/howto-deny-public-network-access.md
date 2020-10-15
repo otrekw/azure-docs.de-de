@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
 ms.openlocfilehash: eb5c4e4c4dfb73b2f7c9dc9f2629296790790885
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896136"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Verweigern des öffentlichen Netzwerkzugriff in Azure Database for MySQL im Azure-Portal
@@ -39,7 +39,7 @@ Gehen Sie wie folgt vor, um „Zugriff auf öffentliches Netzwerk verweigern“f
 
 1. Eine Benachrichtigung bestätigt, dass die Verbindungssicherheitseinstellung erfolgreich aktiviert wurde.
 
-    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="Azure Database for MySQL: Netzwerkzugriff – Erfolg":::
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="Azure Database for MySQL: Netzwerkzugriff verweigern":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

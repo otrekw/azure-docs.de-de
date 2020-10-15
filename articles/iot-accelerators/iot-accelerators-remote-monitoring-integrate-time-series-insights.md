@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536605"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072644"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -126,7 +126,7 @@ Fügen Sie Ihre Anwendung und die Benutzer unter den Datenzugriffsrichtlinien im
 1. Wählen Sie **Speichern** aus, um die Rollenzuweisung zu erstellen. Nach einigen Augenblicken wird der Sicherheitsprinzipal der Rolle in den Datenzugriffsrichtlinien zugewiesen.
 
 > [!NOTE]
-> Wenn Sie weiteren Benutzern Zugriff auf den Time Series Insights-Explorer gewähren möchten, können Sie folgendermaßen vorgehen, um [Datenzugriff zu erteilen](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
+> Wenn Sie weiteren Benutzern Zugriff auf den Time Series Insights-Explorer gewähren möchten, können Sie folgendermaßen vorgehen, um [Datenzugriff zu erteilen](../time-series-insights/concepts-access-policies.md#grant-data-access).
 
 ## <a name="configure-azure-stream-analytics"></a>Konfigurieren von Azure Stream Analytics 
 
@@ -217,7 +217,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `basic` für die 
 
 1. Rufen Sie die [aktuelle Datei „docker-compose.yml“](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) per Pullvorgang aus dem GitHub-Repository ab, indem Sie das aktuelle Tag verwenden. 
 
-1. Stellen Sie eine SSH-Verbindung mit der VM her, indem Sie die Schritte unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) ausführen.
+1. Stellen Sie eine SSH-Verbindung mit der VM her, indem Sie die Schritte unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../virtual-machines/linux/ssh-from-windows.md) ausführen.
 
 1. Geben Sie `cd /app` ein, nachdem die Verbindung hergestellt wurde.
 
@@ -300,4 +300,4 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `standard` für d
 
 * Verwenden Sie das Tutorial zum [Durchführen einer Analyse der Grundursache](iot-accelerators-remote-monitoring-root-cause-analysis.md), um zu erfahren, wie Sie im Time Series Insights-Explorer Ihre Daten durchsuchen und eine Warnung diagnostizieren können.
 
-* Informationen zum Durchsuchen und Abfragen von Daten im Time Series Insights-Explorer finden Sie in der Dokumentation zum [Azure Time Series Insights-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+* Informationen zum Durchsuchen und Abfragen von Daten im Time Series Insights-Explorer finden Sie in der Dokumentation zum [Azure Time Series Insights-Explorer](../time-series-insights/time-series-insights-explorer.md).

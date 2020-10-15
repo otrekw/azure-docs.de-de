@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266058"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992805"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -103,7 +103,7 @@ Wenn Sie keine CAE-fähigen Clients verwenden, beträgt die Standardgültigkeits
 
 1. Ein CAE-fähiger Client stellt Anmeldeinformationen oder ein Aktualisierungstoken für Azure AD bereit und fordert ein Zugriffstoken für eine Ressource an.
 1. Ein Zugriffstoken wird zusammen mit anderen Artefakten an den Client zurückgegeben.
-1. Ein Administrator [sperrt explizit alle Aktualisierungstoken für den Benutzer](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Von Azure AD wird ein Sperrereignis an den Ressourcenanbieter gesendet.
+1. Ein Administrator [sperrt explizit alle Aktualisierungstoken für den Benutzer](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Von Azure AD wird ein Sperrereignis an den Ressourcenanbieter gesendet.
 1. Dem Ressourcenanbieter wird ein Zugriffstoken präsentiert. Der Ressourcenanbieter wertet die Gültigkeit des Tokens aus und überprüft, ob für den Benutzer ein Sperrereignis vorliegt. Der Ressourcenanbieter verwendet diese Informationen, um den Zugriff auf die Ressource zu gewähren oder zu untersagen.
 1. In diesem Fall verweigert der Ressourcenanbieter den Zugriff und sendet die Anspruchsaufforderung „401+“ an den Client zurück.
 1. Der CAE-fähige Client versteht die Anspruchsaufforderung „401+“. Er umgeht die Caches, geht zurück zu Schritt 1 und sendet das Aktualisierungstoken zusammen mit der Anspruchsaufforderung zurück an Azure AD. Azure AD wertet dann alle Bedingungen erneut aus und fordert in diesem Fall den Benutzer auf, sich erneut zu authentifizieren.
@@ -159,7 +159,7 @@ Wenn dieses Szenario in Ihrer Umgebung besteht, um Endlosschleifen zu vermeiden,
 | Halbjährlicher Enterprise-Kanal | Wenn diese Einstellung auf „aktiviert“ oder „1“ festgelegt ist, wird die fortlaufende Zugriffsevaluierung nicht unterstützt. | Wenn diese Einstellung auf „aktiviert“ oder „1“ festgelegt ist, wird die fortlaufende Zugriffsevaluierung nicht unterstützt. |
 | Aktueller Kanal <br> oder <br> Monatlicher Enterprise-Kanal | Die fortlaufende Zugriffsevaluierung wird unabhängig von der Einstellung unterstützt. | Die fortlaufende Zugriffsevaluierung wird unabhängig von der Einstellung unterstützt. |
 
-Eine Erläuterung der Office-Updatekanäle finden Sie unter [Übersicht über die Updatekanäle von Microsoft 365 Apps](https://docs.microsoft.com/deployoffice/overview-update-channels). Es wird Organisationen empfohlen, Web Account Manager (WAM) nicht zu deaktivieren.
+Eine Erläuterung der Office-Updatekanäle finden Sie unter [Übersicht über die Updatekanäle von Microsoft 365 Apps](/deployoffice/overview-update-channels). Es wird Organisationen empfohlen, Web Account Manager (WAM) nicht zu deaktivieren.
 
 ### <a name="policy-change-timing"></a>Zeitliche Steuerung von Richtlinienänderungen
 

@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: Informationen zum Konfigurieren von Azure Dev Spaces für die Verwendung eines benutzerdefinierten Traefik-Eingangscontrollers und zum Konfigurieren von HTTPS mithilfe dieses Eingangscontrollers
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: cb638658eb6f01b5dc4455ee8f797f03478a995d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331912"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973052"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten Traefik-Eingangscontrollers und Konfigurieren von HTTPS
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Azure Dev Spaces für die Verwendung eines benutzerdefinierten Traefik-Eingangscontrollers konfigurieren. Außerdem wird in diesem Artikel beschrieben, wie Sie den benutzerdefinierten Eingangscontroller für die Verwendung von HTTPS konfigurieren.
 

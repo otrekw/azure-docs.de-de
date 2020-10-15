@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833316"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978202"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Verfügbarkeit von SAP HANA innerhalb einer Azure-Region
 In diesem Artikel werden mehrere Verfügbarkeitsszenarien innerhalb einer Azure-Region beschrieben. Azure bietet viele Regionen auf der ganzen Welt. Die Liste mit Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Für die Bereitstellung von SAP HANA auf VMs in einer Azure-Region bietet Microsoft die Bereitstellung einer einzelnen VM mit einer HANA-Instanz. Zur Erhöhung der Verfügbarkeit können Sie zwei VMs mit zwei HANA-Instanzen innerhalb einer [Azure-Verfügbarkeitsgruppe](../../windows/tutorial-availability-sets.md) bereitstellen, die aus Verfügbarkeitsgründen die HANA-Systemreplikation verwenden. 
@@ -29,7 +29,7 @@ Azure bietet derzeit [Azure-Verfügbarkeitszonen](../../../availability-zones/az
 
 Azure-Regionen, in denen Verfügbarkeitszonen angeboten werden, umfassen mehrere Rechenzentren. Die Rechenzentren sind in Bezug auf Stromversorgung, Kühlung und Netzwerk autark. Es werden unterschiedliche Zonen in einer einzelnen Azure-Region angeboten, um die Bereitstellung von Anwendungen über zwei oder drei angebotene Verfügbarkeitszonen hinweg zu ermöglichen. Wenn sich Probleme bei der Stromversorgung und bei Netzwerken nur auf die Infrastruktur einer Azure-Verfügbarkeitszone auswirken, ist Ihre Anwendungsbereitstellung innerhalb einer Azure-Region durch das Bereitstellen über verschiedene Zonen weiterhin voll funktionsfähig. Es kann zu einer Kapazitätsbeeinträchtigung kommen. VMs in einer Zone könnten zwar beispielsweise ausfallen, doch VMs in den anderen beiden Zonen wären nach wie vor im Betrieb. 
  
-Eine Azure-Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der sichergestellt werden kann, dass die in der Verfügbarkeitsgruppe enthaltenen VM-Ressourcen voneinander fehlerisoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Diese Konfiguration wird in einigen Azure-Dokumentationen alternativ als Platzierungen in verschiedene [Update- und Fehlerdomänen](../../windows/manage-availability.md) bezeichnet. Diese Platzierungen erfolgen normalerweise in einem Azure-Rechenzentrum. Unter der Annahme, dass Probleme an Stromversorgungsquellen und/oder Netzwerken das Rechenzentrum beeinträchtigen, würde Ihre gesamte Kapazität in einer Azure-Region betroffen werden.
+Eine Azure-Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der sichergestellt werden kann, dass die in der Verfügbarkeitsgruppe enthaltenen VM-Ressourcen voneinander fehlerisoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Diese Konfiguration wird in einigen Azure-Dokumentationen alternativ als Platzierungen in verschiedene [Update- und Fehlerdomänen](../../manage-availability.md) bezeichnet. Diese Platzierungen erfolgen normalerweise in einem Azure-Rechenzentrum. Unter der Annahme, dass Probleme an Stromversorgungsquellen und/oder Netzwerken das Rechenzentrum beeinträchtigen, würde Ihre gesamte Kapazität in einer Azure-Region betroffen werden.
 
 Bei der Platzierung von Rechenzentren, die Azure-Verfügbarkeitszonen darstellen, wird ein Mittelweg zwischen akzeptablen Netzwerklatenzen zwischen Diensten, die in unterschiedlichen Zonen bereitgestellt werden, und einer Entfernung zwischen den Rechenzentren verfolgt. Damit soll im Idealfall erreicht werden, dass die Stromversorgung, das Netzwerk und die Infrastruktur für alle Verfügbarkeitszonen in dieser Region vor Naturkatastrophen geschützt bleiben. Doch angesichts des gewaltigen Ausmaßes, das sich bei Naturkatastrophen abgezeichnet hat, können Verfügbarkeitszonen nicht immer die von Ihnen gewünschte Verfügbarkeit innerhalb einer Region bieten. Denken Sie daran, als Hurrikan Maria am 20. September 2017 die Insel Puerto Rico durchzog. Der Hurrikan richtete fast einen kompletten Stromausfall auf der etwa 150 km langen Insel an.
 
@@ -127,4 +127,4 @@ Eine ausführliche Anleitung zum Einrichten dieser Konfigurationen in Azure find
 
 Weitere Informationen zur SAP HANA-Verfügbarkeit in Azure-Regionen finden Sie im folgenden Artikel:
 
-- [SAP HANA-Verfügbarkeit in den Azure-Regionen](./sap-hana-availability-across-regions.md) 
+- [SAP HANA-Verfügbarkeit in den Azure-Regionen](./sap-hana-availability-across-regions.md)

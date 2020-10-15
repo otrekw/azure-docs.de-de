@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851846"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073698"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -114,5 +114,5 @@ Weitere Informationen finden Sie unter folgenden Links:
 * [Azure-Supportticket-REST-API](/rest/api/support)
 * [Senden Ihres Feedbacks und Ihrer Anregungen an uns](https://feedback.azure.com/forums/266794-support-feedback)
 * Kontaktaufnahme mit uns auf [Twitter](https://twitter.com/azuresupport)
-* Hilfe von Kollegen über die [Microsoft Q&A-Frageseite](https://docs.microsoft.com/answers/products/azure)
+* Hilfe von Kollegen über die [Microsoft Q&A-Frageseite](/answers/products/azure)
 * Weitere Informationen in den [Häufig gestellten Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)

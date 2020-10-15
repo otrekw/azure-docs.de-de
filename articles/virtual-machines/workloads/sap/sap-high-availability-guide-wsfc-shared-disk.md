@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c580e44cc827de46c7464ba5f316e6c515de2940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854463"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977985"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure
 
@@ -119,7 +119,7 @@ _SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
 
 Es gibt zwei Optionen für freigegebene Datenträger in einem Windows-Failovercluster in Azure:
 
-- [Freigegebene Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared): Dieses Feature ermöglicht das gleichzeitige Anfügen verwalteter Azure-Datenträger an mehrere VMs. 
+- [Freigegebene Azure-Datenträger](../../windows/disks-shared.md): Dieses Feature ermöglicht das gleichzeitige Anfügen verwalteter Azure-Datenträger an mehrere VMs. 
 - Mithilfe der Drittanbietersoftware [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) können Sie einen gespiegelten Speicher erstellen, der freigegebenen Clusterspeicher simuliert. 
 
 Beachten Sie beim Auswählen der Technologie für freigegebene Datenträger die folgenden Punkte:
@@ -128,7 +128,7 @@ Beachten Sie beim Auswählen der Technologie für freigegebene Datenträger die 
 - Ermöglicht das gleichzeitige Anfügen verwalteter Azure-Datenträger an mehrere VMs, ohne dass zusätzliche Software gewartet und ausgeführt werden muss. 
 - Sie arbeiten mit einem einzelnen freigegebenen Azure-Datenträger in einem Speichercluster. Dies wirkt sich auf die Zuverlässigkeit Ihrer SAP-Lösung aus.
 - Derzeit wird nur die Bereitstellung mit freigegebenem Azure-Premium-Datenträger in der Verfügbarkeitsgruppe unterstützt. Ein freigegebener Azure-Datenträger in einer Zonenbereitstellung wird nicht unterstützt.     
-- Stellen Sie sicher, dass der Azure-Premium-Datenträger mit einer minimalen Datenträgergröße entsprechend den Angaben unter [SSD Premium-Bereiche](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) bereitgestellt wird, um die erforderliche Anzahl von VMs gleichzeitig anfügen zu können (normalerweise zwei für den SAP ASCS-Windows-Failovercluster). 
+- Stellen Sie sicher, dass der Azure-Premium-Datenträger mit einer minimalen Datenträgergröße entsprechend den Angaben unter [SSD Premium-Bereiche](../../windows/disks-shared.md#disk-sizes) bereitgestellt wird, um die erforderliche Anzahl von VMs gleichzeitig anfügen zu können (normalerweise zwei für den SAP ASCS-Windows-Failovercluster). 
 - Freigegebene Azure Ultra-Datenträger werden für SAP-Workloads nicht unterstützt, da sie keine Bereitstellung in einer Verfügbarkeitsgruppe oder Zonenbereitstellung unterstützen.  
  
 **SIOS**
@@ -139,25 +139,25 @@ Beachten Sie beim Auswählen der Technologie für freigegebene Datenträger die 
 
 ### <a name="shared-disk-using-azure-shared-disk"></a>Freigegebene Datenträger mithilfe freigegebener Azure-Datenträger
 
-Microsoft bietet [freigegebene Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) an, mit denen SAP ASCS/SCS-Hochverfügbarkeit mit einem freigegebenen Datenträger implementiert werden kann.
+Microsoft bietet [freigegebene Azure-Datenträger](../../windows/disks-shared.md) an, mit denen SAP ASCS/SCS-Hochverfügbarkeit mit einem freigegebenen Datenträger implementiert werden kann.
 
 #### <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
 
 Derzeit können Sie Azure SSD Premium-Datenträger als freigegebenen Azure-Datenträger für die SAP ASCS/SCS-Instanz verwenden. Derzeit gelten die folgenden Einschränkungen:
 
--  Ein [Azure Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) wird nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt. Derzeit ist es nicht möglich, Azure-VMs mithilfe eines Azure Ultra-Datenträgers in einer Verfügbarkeitsgruppe zu platzieren.
--  Ein [freigegebener Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) mit SSD Premium-Datenträgern wird nur für VMs in einer Verfügbarkeitsgruppe unterstützt. Bei der Bereitstellung in Verfügbarkeitszonen wird dies nicht unterstützt. 
--  Der Wert [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) des freigegebenen Azure-Datenträgers bestimmt, wie viele Clusterknoten den freigegebenen Datenträger verwenden können. In der Regel werden für SAP ASCS/SCS-Instanzen zwei Knoten im Windows-Failovercluster konfiguriert. Daher muss der Wert für `maxShares` auf zwei festgelegt werden.
--  Alle VMs im SAP ASCS/SCS-Cluster müssen in derselben [Azure-Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups) (Proximity Placement Group, PPG) bereitgestellt werden.   
+-  Ein [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) wird nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt. Derzeit ist es nicht möglich, Azure-VMs mithilfe eines Azure Ultra-Datenträgers in einer Verfügbarkeitsgruppe zu platzieren.
+-  Ein [freigegebener Azure-Datenträger](../../windows/disks-shared.md) mit SSD Premium-Datenträgern wird nur für VMs in einer Verfügbarkeitsgruppe unterstützt. Bei der Bereitstellung in Verfügbarkeitszonen wird dies nicht unterstützt. 
+-  Der Wert [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) des freigegebenen Azure-Datenträgers bestimmt, wie viele Clusterknoten den freigegebenen Datenträger verwenden können. In der Regel werden für SAP ASCS/SCS-Instanzen zwei Knoten im Windows-Failovercluster konfiguriert. Daher muss der Wert für `maxShares` auf zwei festgelegt werden.
+-  Alle VMs im SAP ASCS/SCS-Cluster müssen in derselben [Azure-Näherungsplatzierungsgruppe](../../windows/proximity-placement-groups.md) (Proximity Placement Group, PPG) bereitgestellt werden.   
    Zwar können Sie VMs im Windows-Cluster in einer Verfügbarkeitsgruppe mit freigegebenem Azure-Datenträger ohne PPG bereitstellen, doch gewährleistet PPG die physische Nähe von freigegebenen Azure-Datenträgern und Cluster-VMs und erzielt somit eine geringere Latenz zwischen den VMs und der Speicherebene.    
 
-Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) der entsprechenden Dokumentation.
+Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](../../linux/disks-shared.md#limitations) der entsprechenden Dokumentation.
 
 > [!IMPORTANT]
 > Beachten Sie beim Bereitstellen des SAP ASCS/SCS-Windows-Failoverclusters mit freigegebenem Azure-Datenträger, dass die Bereitstellung mit einem einzelnen freigegebenen Datenträger in nur einem Speichercluster erfolgt. Probleme mit dem Speichercluster, in dem der freigegebene Azure-Datenträger bereitgestellt wird, beeinträchtigen Ihre SAP ASCS/SCS-Instanz.    
 
 > [!TIP]
-> Wichtige Überlegungen zur Planung der SAP-Bereitstellung finden Sie im [Azure-Planungshandbuch für SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) und im [Azure Storage-Handbuch für SAP-Workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage).
+> Wichtige Überlegungen zur Planung der SAP-Bereitstellung finden Sie im [Azure-Planungshandbuch für SAP NetWeaver](./planning-guide.md) und im [Azure Storage-Handbuch für SAP-Workloads](./planning-guide-storage.md).
 
 ### <a name="supported-os-versions"></a>Unterstützte Betriebssystemversionen
 
