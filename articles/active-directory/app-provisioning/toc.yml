@@ -6,18 +6,11 @@
     - name: Was ist die Anwendungsbereitstellung?
       href: user-provisioning.md
 - name: Tutorials
+  expanded: true
   items:
-    - name: G Suite
-      href: ../saas-apps/google-apps-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: ServiceNow
-      href: ../saas-apps/servicenow-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Amazon Web Services (AWS) – Rollenbereitstellung
-      href: ../saas-apps/amazon-web-service-tutorial.md?context=azure/active-directory/app-provisioning/context/app-provisioning-context#configure-azure-ad-sso
-    - name: Workday
-      href: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SAP SuccessFactors
-      href: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Alle integrierten Katalog-Apps
+    - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
+      href: use-scim-to-provision-users-and-groups.md
+    - name: App-spezifische Bereitstellungstutorials
       href: /azure/active-directory/saas-apps
 - name: Konzepte
   expanded: true
@@ -28,17 +21,15 @@
       href: plan-auto-user-provisioning.md
     - name: Planen einer HR-Cloudbereitstellung
       href: plan-cloud-hr-provision.md
+    - name: Grundlegendes zur Protokollierung mit Azure Monitor
+      href: application-provisioning-log-analytics.md
 - name: Anleitungen
   expanded: true
   items:
     - name: Konfigurieren der Bereitstellung für eine Katalog-App
       href: configure-automatic-user-provisioning-portal.md
-    - name: Bearbeiten der Attributzuordnungen
-      items:
-        - name: Anpassen von Attributzuordnungen
-          href: customize-application-attributes.md
-        - name: Schreiben von Ausdrücken für Attributzuordnungen
-          href: functions-for-customizing-application-data.md
+    - name: Anpassen von Attributzuordnungen
+      href: customize-application-attributes.md
     - name: Einschließen oder Ausschließen von Benutzern und Gruppen aus dem Bereich
       items:
         - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
@@ -57,6 +48,8 @@
           href: export-import-provisioning-configuration.md
         - name: Bereitstellungsberichte
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: Automatisieren der Konfiguration mit MS Graph
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: Problembehandlung bei der Anwendungsbereitstellung
       items:
         - name: Bekannte Probleme
@@ -65,26 +58,20 @@
           href: application-provisioning-config-problem.md
         - name: Quarantänestatus
           href: application-provisioning-quarantine-status.md
-        - name: Problem mit der Autorisierung (Administratoranmeldeinformationen können nicht gespeichert werden)
-          href: application-provisioning-config-problem-storage-limit.md
         - name: Benutzer werden nicht bereitgestellt.
           href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: Falsche Benutzer werden bereitgestellt.
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Fehlendes Quellattribut
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: Bereitstellungsprotokolle
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
-      href: use-scim-to-provision-users-and-groups.md
-    - name: Automatisieren der Konfiguration mit MS Graph
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: Verweis
   items:
     - name: "Einhaltung des SCIM\_2.0-Protokolls"
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM- und Graphszenarien
       href: scim-graph-scenarios.md
+    - name: Funktionsreferenz zum Schreiben von Ausdrücken für Attributzuordnungen
+      href: functions-for-customizing-application-data.md
     - name: HR-Cloudbereitstellung
       items:
         - name: SuccessFactors-Integration
@@ -93,8 +80,6 @@
           href: sap-successfactors-attribute-reference.md
         - name: Workday-Attributreferenz
           href: workday-attribute-reference.md
-    - name: Azure AD Connect-Bereitstellungs-Agent
-      items:
         - name: Versionsverlauf des Bereitstellungs-Agents
           href: provisioning-agent-release-version-history.md
 - name: Ressourcen
