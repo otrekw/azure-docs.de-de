@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930303"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>Neustarten von Azure Database for PostgreSQL – Flexible Server
@@ -43,7 +43,7 @@ Führen Sie diese Schritte aus, um Ihre Flexible Server-Instanz neu zu starten.
 
 4.  Klicken Sie auf **Ja**, wenn Sie fortfahren möchten.
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Neustart bestätigen":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Option „Neu starten“":::
  
 6.  Es wird eine Benachrichtigung angezeigt, dass der Neustartvorgang eingeleitet wurde.
 

@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Verwenden eines privaten Helm-Repositorys in einem Azure Dev Space.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container, Helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240471"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960336"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Verwenden eines privaten Helm-Repositorys in Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Helm][helm] ist ein Paket-Manager für Kubernetes. Helm verwendet ein [Diagramm][helm-chart]format, um Abhängigkeiten zu packen. Helm-Diagramme werden in einem Repository gespeichert, das öffentlich oder privat sein kann. Azure Dev Spaces ruft Helm-Diagramme nur bei der Ausführung Ihrer Anwendung aus öffentlichen Repositorys ab. In Fällen, in denen das Helm-Repository privat ist oder Azure Dev Spaces nicht darauf zugreifen kann, können Sie ein Diagramm aus diesem Repository direkt zu Ihrer Anwendung hinzufügen. Wenn Sie das Diagramm direkt hinzufügen, kann Azure Dev Spaces Ihre Anwendung ausführen, ohne auf das private Helm-Repository zugreifen zu müssen.
 

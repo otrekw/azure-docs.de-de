@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie Windows Server 2003-Server auf die Migr
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103941"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Vorbereiten von Windows Server 2003-Computer auf die Migration

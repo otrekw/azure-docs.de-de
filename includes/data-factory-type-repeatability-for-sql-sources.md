@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67178558"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91571874"
 ---
 ## <a name="repeatability-during-copy"></a>Wiederholbarkeit beim Kopieren
 Beim Kopieren von Daten in Azure SQL/SQL Server aus anderen Datenspeichern muss die Wiederholbarkeit berücksichtigt werden, um unbeabsichtigte Ergebnisse zu vermeiden. 
@@ -74,7 +74,7 @@ Weitere Schritte müssen nicht erfolgen. Die Kopieraktivität hat das Bereinigun
 
 ### <a name="mechanism-2"></a>Verfahren 2
 > [!IMPORTANT]
-> sliceIdentifierColumnName wird für Azure SQL Data Warehouse derzeit nicht unterstützt. 
+> „sliceIdentifierColumnName“ wird für Azure Synapse Analytics derzeit nicht unterstützt. 
 
 Ein anderes Verfahren zum Erreichen von Wiederholbarkeit sieht eine dedizierte Spalte (**SliceIdentifierColumnName**) in der Zieltabelle vor. Diese Spalte wird von Azure Data Factory verwendet, um sicherzustellen, dass Quell- und Zielserver synchron bleiben. Dieser Ansatz funktioniert, wenn das Schema der SQL-Zieltabelle flexibel geändert oder definiert werden kann. 
 

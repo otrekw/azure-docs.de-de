@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930369"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Verwalten einer Azure Database for MySQL – Flexible Server-Instanz (Vorschau) mithilfe des Azure-Portals
@@ -50,7 +50,7 @@ Sie können das Kennwort für die Administratorrolle über das Azure-Portal änd
 2. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Im Textfeld werden Sie nach den Anforderungen an die Kennwortkomplexität gefragt.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="Zurücksetzen Ihres Kennworts für Flexible Server":::
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="Skalieren des Speichers, Flexible Server":::
 
 3. Wählen Sie **Speichern** aus, um das neue Kennwort zu speichern.
 
@@ -63,7 +63,7 @@ Sie können Ihren Server löschen, wenn Sie ihn nicht mehr benötigen.
 2. Geben Sie den Namen des Servers in das Eingabefeld ein, um zu bestätigen, dass Sie den Server löschen möchten.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="Löschen des flexiblen Servers":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="Skalieren des Speichers, Flexible Server":::
 
    > [!NOTE]
    > Das Löschen eines Servers kann nicht mehr rückgängig gemacht werden.

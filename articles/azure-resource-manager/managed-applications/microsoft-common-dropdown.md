@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474341"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.DropDown“
@@ -26,19 +26,19 @@ Wenn nur ein einzelnes Element für die Auswahl zulässig ist, sieht das Steuere
 
 Wenn Beschreibungen enthalten sind, wird das Steuerelement wie folgt angezeigt:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl mit Beschreibungen":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
 
 Wenn Mehrfachauswahl aktiviert ist, fügt das Steuerelement eine **Alles auswählen**-Option sowie Kontrollkästchen für die Auswahl mehrerer Elemente hinzu:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown mit Mehrfachauswahl":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
 
 Beschreibungen können bei aktivierter Mehrfachauswahl eingeschlossen werden.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft.Common.DropDown mit Mehrfachauswahl mit Beschreibungen":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
 
 Wenn Filtern aktiviert ist, enthält das Steuerelement ein Textfeld zum Hinzufügen des Filterwerts.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown mit Mehrfachauswahl mit Beschreibungen":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
 
 ## <a name="schema"></a>Schema
 

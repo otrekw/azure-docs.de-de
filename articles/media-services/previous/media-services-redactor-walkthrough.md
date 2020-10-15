@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fdec829ceeefce2426a5fd08b4245e66bd0a08c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269691"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016670"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -28,7 +28,7 @@ ms.locfileid: "89269691"
 
 ## <a name="overview"></a>Übersicht
 
-**Azure Media Redactor** ist ein [Azure Media Analytics](media-services-analytics-overview.md)-Medienprozessor (MP), der eine skalierbare Gesichtsbearbeitung in der Cloud ermöglicht. Mit der Gesichtsbearbeitung können Sie Ihr Video ändern, um Gesichter von ausgewählten Personen unscharf anzuzeigen und so unkenntlich zu machen. Es kann beispielsweise sein, dass Sie den Gesichtsbearbeitungsdienst nutzen möchten, wenn es um die öffentliche Sicherheit oder Medienarbeit geht. Die Bearbeitung von Material mit einer Länge von einigen Minuten, das mehrere Gesichter enthält, kann bei manueller Vorgehensweise Stunden dauern. Mit diesem Dienst sind für den Prozess der Gesichtsbearbeitung aber nur einige einfache Schritte erforderlich. Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/azure-media-redactor/) Blog.
+**Azure Media Redactor** ist ein [Azure Media Analytics](./legacy-components.md)-Medienprozessor (MP), der eine skalierbare Gesichtsbearbeitung in der Cloud ermöglicht. Mit der Gesichtsbearbeitung können Sie Ihr Video ändern, um Gesichter von ausgewählten Personen unscharf anzuzeigen und so unkenntlich zu machen. Es kann beispielsweise sein, dass Sie den Gesichtsbearbeitungsdienst nutzen möchten, wenn es um die öffentliche Sicherheit oder Medienarbeit geht. Die Bearbeitung von Material mit einer Länge von einigen Minuten, das mehrere Gesichter enthält, kann bei manueller Vorgehensweise Stunden dauern. Mit diesem Dienst sind für den Prozess der Gesichtsbearbeitung aber nur einige einfache Schritte erforderlich. Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/azure-media-redactor/) Blog.
 
 Weitere Informationen zu **Azure Media Redactor** finden Sie im Thema [Gesichtsbearbeitung mit Azure Media Analytics](media-services-face-redaction.md).
 
@@ -131,7 +131,7 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Verwandte Links
-[Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
+[Azure Media Services Analytics – Übersicht](./legacy-components.md)
 
 [Azure Media Analytics-Demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

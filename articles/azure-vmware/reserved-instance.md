@@ -3,12 +3,12 @@ title: Sparen von Kosten mit einer reservierten Azure VMware Solution-Instanz
 description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91491676"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951416"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Sparen von Kosten mit Azure VMware Solution
 
@@ -22,7 +22,7 @@ Reservierte Instanzen sind mit einigen Ausnahmen verfügbar.
 
 -   **Kontingent reicht nicht aus**: Für eine Reservierung, die einem einzelnen/gemeinsamen Abonnement zugeordnet ist, muss im Abonnement ein Hostkontingent für die neue reservierte Instanz verfügbar sein. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](enable-azure-vmware-solution.md).
 
--   **Angebotsberechtigung**: Sie benötigen ein [Azure Enterprise Agreement (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) von Microsoft.
+-   **Angebotsberechtigung**: Sie benötigen ein [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) von Microsoft.
 
 -   **Kapazitätsbeschränkungen**: In seltenen Fällen beschränkt Azure den Erwerb neuer Reservierungen für Azure VMware Solution-Host-SKUs, weil in einer Region nur eine geringe Kapazität vorhanden ist.
 

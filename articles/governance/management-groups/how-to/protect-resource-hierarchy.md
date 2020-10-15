@@ -3,12 +3,12 @@ title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533978"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951892"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -115,5 +115,5 @@ Wenn Sie die Einstellung wieder deaktivieren möchten, verwenden Sie denselben E
 
 Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
-- [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](../create.md)
+- [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](../create-management-group-portal.md)
 - [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](../manage.md)

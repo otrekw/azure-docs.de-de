@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670201"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Joins in Azure Monitor-Protokollabfragen
@@ -79,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Join-Typen
 Geben Sie den Join-Typ mit dem _kind_-Argument an. Jeder Typ führt einen anderen Abgleich zwischen den Datensätzen der angegebenen Tabellen durch. Dies wird in der folgenden Tabelle beschrieben.
 
-| Join-Typ | BESCHREIBUNG |
+| Join-Typ | Beschreibung |
 |:---|:---|
 | innerunique | Dies ist der Standardjoinmodus. Zuerst werden die Werte der übereinstimmenden Spalten in der linken Tabelle ermittelt, und doppelte Werte werden entfernt.  Dann werden die eindeutigen Werte mit der rechten Tabelle verglichen. |
 | Innerer Join | Nur übereinstimmende Datensätze in beiden Tabellen sind in den Ergebnissen enthalten. |

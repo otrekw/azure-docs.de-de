@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Einrichten von Continuous Integration/Continuous Deployment mithilfe von Azure DevOps mit Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080265"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960387"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Verwenden von CI/CD mit Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In diesem Artikel werden Sie durch die Einrichtung von Continuous Integration/Continuous Deployment (CI/CD) für den Azure Kubernetes Service (AKS) mit aktivierten Dev Spaces geführt. CI/CD für AKS ermöglicht die automatische Bereitstellung von App-Updates, wenn Code in Ihr Quellrepository übertragen wird, für den ein Commit ausgeführt wurde. Die Verwendung von CI/CD in Verbindung mit einem Dev Spaces-fähigen Cluster ist sinnvoll, da dadurch eine Baseline der Anwendung auf dem neuesten Stand gehalten werden kann, mit der das Team arbeiten kann.
 

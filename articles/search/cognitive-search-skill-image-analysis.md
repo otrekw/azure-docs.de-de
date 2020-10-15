@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936043"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948934"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
-Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merkmalen aus dem Bildinhalt. So können Sie beispielsweise anhand eines Bilds eine Beschriftung erstellen, Tags generieren oder Prominente und Sehenswürdigkeiten identifizieren. Diese Qualifikation verwendet die durch [Maschinelles Sehen](../cognitive-services/computer-vision/home.md) in Cognitive Services bereitgestellten Machine Learning-Modelle. 
+Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merkmalen aus dem Bildinhalt. So können Sie beispielsweise anhand eines Bilds eine Beschriftung erstellen, Tags generieren oder Prominente und Sehenswürdigkeiten identifizieren. Diese Qualifikation verwendet die durch [Maschinelles Sehen](../cognitive-services/computer-vision/overview.md) in Cognitive Services bereitgestellten Machine Learning-Modelle. 
 
 > [!NOTE]
 > Kleine Volumen (unter 20 Transaktionen) können in der kognitiven Azure-Suche kostenlos ausgeführt werden, größere Workloads erfordern jedoch das [Anfügen einer abrechnungsfähigen Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.

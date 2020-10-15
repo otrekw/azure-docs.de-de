@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297738"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017742"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -44,8 +44,8 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 *  v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von Azure Resource Manager bereitstellt. Azure Resource Manager-Vorlagen können zum Erstellen und Bereitstellen von Transformationen, Streamingendpunkten, Liveereignissen und mehr verwendet werden.
 * Dokument [OpenAPI-Spezifikation (früher als Swagger bezeichnet)](https://aka.ms/ams-v3-rest-sdk).
     Macht das Schema für alle Dienstkomponenten verfügbar, einschließlich dateibasierter Codierung.
-* SDKs verfügbar für [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref) und Ruby.
-* [Azure CLI](https://aka.ms/ams-v3-cli-ref)-Integration für einfache Skriptunterstützung.
+* SDKs verfügbar für [.NET](/dotnet/api/overview/azure/mediaservices/management), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](/python/api/overview/azure/mediaservices/management), [Java](/java/api/overview/azure/mediaservices/management), [Go](https://aka.ms/ams-v3-go-ref) und Ruby.
+* [Azure CLI](/cli/azure/ams)-Integration für einfache Skriptunterstützung.
 
 ### <a name="new-features"></a>Neue Funktionen
 
@@ -69,7 +69,7 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
     * Anzeigen (nicht verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
     * [Abrufen von Informationen über den Zugriff auf APIs](./access-api-howto.md) 
 
-    Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+    Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/), die [CLI](/cli/azure/ams) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 * Sie müssen in Ihrem Konto reservierte Einheiten für Medien (Media Reserved Units, MRUs) bereitstellen, um die Parallelität und Leistung Ihrer Aufträge zu steuern. Das gilt insbesondere für Aufträge mit Video- oder Audioanalyse. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md). Die MRUs können per [CLI 2.0 für Media Services v3](media-reserved-units-cli-how-to.md), über das [Azure-Portal](../previous/media-services-portal-scale-media-processing.md) oder mithilfe der [v2-APIs](../previous/media-services-dotnet-encoding-units.md) verwaltet werden. MRUs müssen unabhängig davon bereitgestellt werden, ob Sie Media Services v2- oder v3-APIs verwenden.
 * Mit der v3-API erstellte Media Services-Entitäten können von der v2-API nicht verwaltet werden.  
 * Nicht alle Entitäten in der V2-API werden automatisch in der V3-API angezeigt.  Im Folgenden sind Beispiele für Entitäten in den beiden Versionen aufgeführt, die nicht kompatibel sind:  

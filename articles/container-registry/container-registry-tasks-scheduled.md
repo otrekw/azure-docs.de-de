@@ -4,10 +4,10 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Regi
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78402881"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Ausführen eines ACR Tasks nach einem definierten Zeitplan

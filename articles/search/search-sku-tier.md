@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661086"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948084"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -130,7 +130,7 @@ Die folgenden Vorschläge können Ihnen helfen, die Kosten zu senken oder effekt
 
 + Führen Sie die Hochskalierung für ressourcenintensive Vorgänge wie die Indizierung durch, und passen Sie die Skalierung anschließend für reguläre Abfrageworkloads wieder an. Beginnen Sie mit der Mindestkonfiguration für die kognitive Azure-Suche (eine SU bestehend aus einer Partition und einem Replikat), und überwachen Sie dann die Benutzeraktivität, um Verwendungsmuster zu identifizieren, die auf die Notwendigkeit einer höheren Kapazität hindeuten. Wenn ein vorhersagbares Muster vorliegt, können Sie möglicherweise die Skalierung mit der Aktivität synchronisieren (um dies zu automatisieren, müssen Sie Code schreiben).
 
-Integrierte Tools und Features im Zusammenhang mit Ausgaben finden Sie außerdem unter [Abrechnung und Kostenverwaltung](../cost-management-billing/manage/getting-started.md).
+Integrierte Tools und Features im Zusammenhang mit Ausgaben finden Sie außerdem unter [Abrechnung und Kostenverwaltung](../cost-management-billing/cost-management-billing-overview.md).
 
 Das temporäre Herunterfahren eines Suchdiensts ist nicht möglich. Dedizierte Ressourcen werden für eine exklusive Nutzung während der gesamten Lebensdauer des Diensts ständig betrieben. Das Löschen eines Diensts ist endgültig und löscht auch die zugehörigen Daten.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930476"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Verwenden von Power BI und Synapse SQL (serverlos) zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau)
@@ -46,7 +46,7 @@ Wechseln Sie im Synapse-Arbeitsbereich zur Registerkarte **Entwickeln**, wählen
 
 Jeder Arbeitsbereich enthält einen Endpunkt für Synapse SQL (serverlos). Nachdem Sie ein SQL-Skript erstellt haben, stellen Sie über die Symbolleiste oben eine Verbindung mit **SQL On-Demand** her.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Aktivieren des SQL-Skripts zur Verwendung des Endpunkts für Synapse SQL (serverlos) im Arbeitsbereich":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Hinzufügen eines SQL-Skripts zum Synapse Analytics-Arbeitsbereich":::
 
 Erstellen Sie die neue Datenbank **RetailCosmosDB** und eine SQL-Sicht für die Container mit Synapse Link-Aktivierung. Der folgende Befehl zeigt, wie eine Datenbank erstellt wird:
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Wählen Sie **Ausführen** aus, um die folgende Tabelle als Ergebnis zu erhalten:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Abfrageergebnisse nach dem Verknüpfen der Sichten „StoreDemographics“ und „RetailSales“":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Hinzufügen eines SQL-Skripts zum Synapse Analytics-Arbeitsbereich":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Modellsichten für Container mit Power BI
 
@@ -141,7 +141,7 @@ Navigieren Sie jetzt zum Fenster **Bericht**, und erstellen Sie einen Bericht, u
 1. Verschieben Sie den **productCode** mit Drag und Drop aus der Sicht **RetailSales** in die Legende, um eine bestimmte Produktlinie auszuwählen.
 Nachdem Sie diese Optionen ausgewählt haben, sollte ein Diagramm wie der folgende Screenshot angezeigt werden:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Bericht, der die relative Wichtigkeit der Haushaltsgröße mit dem durchschnittlichen Umsatz pro Geschäft vergleicht":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Hinzufügen eines SQL-Skripts zum Synapse Analytics-Arbeitsbereich":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
