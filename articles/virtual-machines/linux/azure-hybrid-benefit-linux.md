@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279772"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962393"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Vorschau: Azure-Hybridvorteil – Anwendung bei virtuelle Linux-Computern
 
@@ -126,7 +126,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
-Über den virtuellen Computer selbst können Sie die bestätigten IMDS-Metadaten abfragen, um den Wert für „licenseType“ für Ihren virtuellen Computer zu ermitteln. Wenn der „licenseType“-Wert „RHEL_BYOS“ oder „SLES_BYOS“ lautet, ist der Vorteil für Ihren virtuellen Computer aktiviert. Weitere Informationen zu bestätigten Metadaten finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#attested-data).
+Über den virtuellen Computer selbst können Sie die bestätigten IMDS-Metadaten abfragen, um den Wert für „licenseType“ für Ihren virtuellen Computer zu ermitteln. Wenn der „licenseType“-Wert „RHEL_BYOS“ oder „SLES_BYOS“ lautet, ist der Vorteil für Ihren virtuellen Computer aktiviert. Weitere Informationen zu bestätigten Metadaten finden Sie [hier](./instance-metadata-service.md#attested-data).
 
 ## <a name="compliance"></a>Compliance
 

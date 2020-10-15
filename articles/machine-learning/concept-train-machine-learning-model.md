@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330110"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079070"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -118,11 +118,6 @@ Mit dem Designer können Sie Modelle über eine Drag & Drop-Oberfläche in Ihr
 
 + [Was ist der Designer?](concept-designer.md)
 + [Tutorial: Prognostizieren von Fahrzeugpreisen](tutorial-designer-automobile-price-train-score.md)
-+ [Regression: Preisprognose](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [Klassifizierung: Einkommensprognose](how-to-designer-sample-classification-predict-income.md)
-+ [Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling](how-to-designer-sample-classification-churn.md)
-+ [Klassifizierung mit benutzerdefiniertem R-Skript: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)
-+ [Textklassifizierung: Wikipedia SP 500-Dataset](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>Many Models Solution Accelerator (Projektmappenbeschleuniger für viele Modelle)
 

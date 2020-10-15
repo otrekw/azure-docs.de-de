@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423336"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Massenwiederherstellung gelöschter Benutzer in Azure Active Directory

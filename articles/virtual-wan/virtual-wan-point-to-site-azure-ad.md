@@ -2,17 +2,17 @@
 title: 'Konfigurieren der Azure AD-Authentifizierung für die Benutzer-VPN-Verbindung: Virtuelles WAN'
 description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für ein Benutzer-VPN konfigurieren.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832517"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079172"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Konfigurieren der Azure Active Directory-Authentifizierung für ein Benutzer-VPN
 
@@ -22,15 +22,14 @@ Für diese Art von Verbindung muss auf dem Clientcomputer ein Client konfigurier
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen einer Virtual WAN-Instanz
-> * Erstellen eines virtuellen Hubs
-> * Erstellen einer Benutzer-VPN-Konfiguration
-> * Herunterladen eines Benutzer-VPN-Profils für eine Virtual WAN-Instanz
-> * Anwenden der Benutzer-VPN-Konfiguration auf einen virtuellen Hub
-> * Verbinden eines VNET mit einem virtuellen Hub
-> * Herunterladen und Anwenden der VPN-Clientkonfiguration für Benutzer
-> * Anzeigen Ihrer Virtual WAN-Instanz
+* Erstellen einer Virtual WAN-Instanz
+* Erstellen eines virtuellen Hubs
+* Erstellen einer Benutzer-VPN-Konfiguration
+* Herunterladen eines Benutzer-VPN-Profils für eine Virtual WAN-Instanz
+* Anwenden der Benutzer-VPN-Konfiguration auf einen virtuellen Hub
+* Verbinden eines VNET mit einem virtuellen Hub
+* Herunterladen und Anwenden der VPN-Clientkonfiguration für Benutzer
+* Anzeigen Ihrer Virtual WAN-Instanz
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-about/virtualwanp2s.png)
 

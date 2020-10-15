@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 6/11/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ce9fc7a7af18a163207f8fc497149d885423607b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493804"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91626444"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Konfigurieren von Serverparametern in Azure Database for MariaDB mit der Azure CLI
 Sie können Konfigurationsparameter für einen Azure Database for MariaDB-Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden.
+
+>[!Note]
+> Serverparameter können global auf Serverebene aktualisiert werden. Verwenden Sie dazu die [Azure CLI](./howto-configure-server-parameters-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md) oder das [Azure-Portal](./howto-server-parameters.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:

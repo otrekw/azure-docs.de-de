@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/3/2020
 ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84484703"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Leistungsempfehlungen in Azure Database for MariaDB
@@ -29,13 +29,13 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 Öffnen Sie im Abschnitt **Intelligente Leistung** in der Menüleiste der Azure-Portalseite für Ihren MariaDB-Server die Option **Leistungsempfehlungen**.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Leistungsempfehlungen-Startseite":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Landing Page für Leistungsempfehlungen":::
 
 Wählen Sie **Analysieren** aus, und wählen Sie eine Datenbank aus, mit der die Analyse beginnt. Je nach Workload kann die Analyse einige Minuten dauern. Wenn die Analyse abgeschlossen ist, wird im Portal eine Benachrichtigung angezeigt. Die Analyse führt eine umfassende Untersuchung der Datenbank aus. Es wird empfohlen, Analysen während der Nebenzeiten durchzuführen.
 
 Im Fenster **Empfehlungen** wird eine Liste mit Empfehlungen angezeigt, falls welche gefunden wurden, sowie die zugehörige Abfrage-ID, mit der diese Empfehlung generiert wurde. Mit der Abfrage-ID können Sie die Ansicht [mysql.query_store](concepts-query-store.md#mysqlquery_store) verwenden, um weitere Informationen zur Abfrage zu erhalten.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Neue Seite „Leistungsempfehlungen“":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Landing Page für Leistungsempfehlungen":::
 
 Empfehlungen werden nicht automatisch angewendet. Kopieren Sie zum Anwenden der Empfehlung den Abfragetext, und führen Sie ihn auf dem gewünschten Client aus. Denken Sie daran, die implementierte Empfehlung zu testen und zu überwachen, um sie auszuwerten.
 
@@ -47,7 +47,7 @@ Empfehlungen des Typs *Index erstellen* schlagen neue Indizes vor, um die am hä
 
 ### <a name="query-recommendations"></a>Abfrageempfehlungen
 
-In Abfrageempfehlungen werden Optimierungen und Umschreibungen für Abfragen in der Workload vorgeschlagen. Die Leistung zeitaufwendiger Abfragen lässt sich verbessern, indem Antimuster bei MariaDB-Abfragen identifiziert werden und die Abfragesyntax korrigiert wird. Für diese Art von Empfehlung muss der Abfragespeicher aktiviert sein. Der Abfragespeicher erfasst Abfrageinformationen und stellt die detaillierten Statistiken zur Laufzeit und Häufigkeit der Abfrage zur Verfügung, die die Analyse verwendet, um die Empfehlung abzugeben.
+In Abfrageempfehlungen werden Optimierungen und Umschreibungen für Abfrage in der Workload vorgeschlagen. Die Leistung zeitaufwendiger Abfragen lässt sich verbessern, indem Antimuster bei MariaDB-Abfragen identifiziert werden und die Abfragesyntax korrigiert wird. Für diese Art von Empfehlung muss der Abfragespeicher aktiviert sein. Der Abfragespeicher erfasst Abfrageinformationen und stellt die detaillierten Statistiken zur Laufzeit und Häufigkeit der Abfrage zur Verfügung, die die Analyse verwendet, um die Empfehlung abzugeben.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [Überwachung und Optimierung](concepts-monitoring.md) in Azure Database for MariaDB.

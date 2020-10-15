@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320255"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurieren von „Angemeldet bleiben?“ Eingabeaufforderung für Azure AD-Konten
@@ -40,20 +40,20 @@ Das folgende Diagramm zeigt den Benutzeranmeldeflow bei einem verwalteten Mandan
    * Wenn Sie **Nein** auswählen, wird die Option **Angemeldet bleiben?** ausgeblendet, nachdem sich der Benutzer erfolgreich angemeldet hat. Der Benutzer muss sich jedes Mal anmelden, wenn der Browser geschlossen und erneut geöffnet wird.
    * Wenn Sie **Ja** auswählen, wird dem Benutzer die Option **Angemeldet bleiben?** angezeigt.
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Screenshot mit der Einstellung „Option ‚Angemeldet bleiben‘ anzeigen“":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Diagramm mit dem Benutzeranmeldeflow bei einem verwalteten Mandanten im Vergleich zu einem Verbundmandanten":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 
 Wenn ein Benutzer nicht auf die Eingabeaufforderung **Angemeldet bleiben?** reagiert (wie im folgenden Diagramm gezeigt), sondern den Anmeldeversuch abbricht, wird über einen Eintrag im Anmeldeprotokoll der Interrupt angezeigt.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Zeigt die Eingabeaufforderung „Angemeldet bleiben?“":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Diagramm mit dem Benutzeranmeldeflow bei einem verwalteten Mandanten im Vergleich zu einem Verbundmandanten":::
 
 Einzelheiten zum Anmeldefehler lauten wie folgt und sind im Beispiel hervorgehoben.
 
 * **Anmeldefehlercode**: 50140
 * **Fehlerursache**: Dieser Fehler ist beim Anmelden des Benutzers aufgrund des Interrupts bei „Angemeldet bleiben?“ aufgetreten.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Beispieleintrag im Anmeldeprotokoll mit dem Interrupt bei „Angemeldet bleiben?“":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Diagramm mit dem Benutzeranmeldeflow bei einem verwalteten Mandanten im Vergleich zu einem Verbundmandanten":::
 
 Sie können verhindern, dass Benutzern der Interrupt angezeigt wird, indem Sie unter „Unternehmensbranding“ in den erweiterten Einstellungen die Einstellung **Option „Angemeldet bleiben“ anzeigen** auf **Nein** festlegen. Dadurch wird die Eingabeaufforderung „Angemeldet bleiben?“ für alle Benutzer im Azure AD-Verzeichnis deaktiviert.
 

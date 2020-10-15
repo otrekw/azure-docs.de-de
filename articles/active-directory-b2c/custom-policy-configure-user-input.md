@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff9093872b2a5e069aef43ae2230b08447eea602
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389359"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069856"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -95,12 +95,12 @@ Um den Anspruch „Ort“ bei der Registrierung zu sammeln, muss er dem technisc
    </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-<ClaimsProvider>
 ```
 
 Zum Sammeln des Anspruchs „Ort“ nach der erstmaligen Anmeldung mit einem Verbundkonto muss er dem technischen Profil `SelfAsserted-Social` als Ausgabeanspruch hinzugefügt werden. Damit Benutzer von lokalen und Verbundkonten Ihre Profildaten später bearbeiten können, fügen Sie den Ausgabeanspruch dem technischen Profil `SelfAsserted-ProfileUpdate` hinzu. Überschreiben Sie diese technischen Profile in der Erweiterungsdatei. Geben Sie die gesamte Liste von Ausgabeansprüchen an, um die Reihenfolge zu steuern, in der die Ansprüche auf dem Bildschirm angezeigt werden. Suchen Sie nach dem Element **ClaimsProviders**. Fügen Sie ein neues Element „ClaimsProvider“ wie folgt hinzu:
 
 ```xml
+<ClaimsProvider>
   <DisplayName>Self Asserted</DisplayName>
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->

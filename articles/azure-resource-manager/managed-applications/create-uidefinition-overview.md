@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319565"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Die Datei „CreateUiDefinition.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen
@@ -129,7 +129,7 @@ Geben Sie für `location` die Eigenschaften für das Standort-Steuerelement an, 
 
 Der **Basics**-Schritt ist der erste Schritt, der generiert wird, wenn das Azure-Portal die Datei analysiert. Standardmäßig kann der Benutzer im Basics-Schritt das Abonnement, die Ressourcengruppe und den Speicherort für die Bereitstellungsvorlage auswählen.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basics-Standard":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Registerkarten-Assistent":::
 
 In diesem Abschnitt können Sie weitere Elemente hinzufügen. Fügen Sie nach Möglichkeit Elemente hinzu, die bereitstellungsweite Parameter abfragen, z. B. den Namen eines Clusters oder Administratoranmeldeinformationen.
 
