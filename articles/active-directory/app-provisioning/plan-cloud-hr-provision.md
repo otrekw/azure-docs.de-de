@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706355"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070383"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -31,7 +31,7 @@ Azure AD nutzt diese Integration, um die folgenden Workflows für HR-Cloudanwend
 - **Rückschreiben in die HR-Cloud-App**: E-Mail-Adressen und Benutzernamenattribute werden aus Azure AD zurück in die HR-Cloud-App geschrieben.
 
 > [!NOTE]
-> Dieser Bereitstellungsplan zeigt Ihnen, wie Sie die Workflows Ihrer HR-Cloud-App mithilfe der Azure AD-Benutzerbereitstellung bereitstellen können. Informationen zum Implementieren der automatischen Benutzerbereitstellung für SaaS-Apps (Software as a Service) finden Sie unter [Planen einer automatischen Benutzerbereitstellung](https://aka.ms/deploymentplans/provisioning).
+> Dieser Bereitstellungsplan zeigt Ihnen, wie Sie die Workflows Ihrer HR-Cloud-App mithilfe der Azure AD-Benutzerbereitstellung bereitstellen können. Informationen zum Implementieren der automatischen Benutzerbereitstellung für SaaS-Apps (Software as a Service) finden Sie unter [Planen einer automatischen Benutzerbereitstellung](./plan-auto-user-provisioning.md).
 
 ## <a name="enabled-hr-scenarios"></a>Unterstützte HR-Szenarien
 
@@ -126,7 +126,7 @@ Berücksichtigen Sie die Anforderungen Ihrer Organisation, während Sie die Stra
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler bei Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen in den Bereichen Auswirkung, Ergebnisse und Zuständigkeiten zurückzuführen. Diese können Sie vermeiden, indem Sie [sicherstellen, dass Sie die richtigen Beteiligten](https://aka.ms/deploymentplans) hinzuziehen. Achten Sie auch darauf, die Rolle der Beteiligten am Projekt präzise zu definieren. Dokumentieren Sie die Beteiligten und deren jeweilige Projektbeiträge und Verantwortlichkeiten.
+Fehler bei Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen in den Bereichen Auswirkung, Ergebnisse und Zuständigkeiten zurückzuführen. Diese können Sie vermeiden, indem Sie [sicherstellen, dass Sie die richtigen Beteiligten](../fundamentals/active-directory-deployment-plans.md) hinzuziehen. Achten Sie auch darauf, die Rolle der Beteiligten am Projekt präzise zu definieren. Dokumentieren Sie die Beteiligten und deren jeweilige Projektbeiträge und Verantwortlichkeiten.
 
 Beziehen Sie einen Mitarbeiter der Personalabteilung ein, der Angaben zu vorhandenen HR-Geschäftsprozessen und zur Mitarbeiteridentität sowie zu Anforderungen an die Auftragsdatenverarbeitung machen kann.
 
@@ -378,7 +378,7 @@ Azure AD kann anhand von Überwachungsprotokollen und Berichten zusätzliche Ein
 
 Nach einem erfolgreichen [Startzyklus](../app-provisioning/how-provisioning-works.md#initial-cycle) führt der Azure AD-Bereitstellungsdienst so lange aufeinanderfolgende inkrementelle Updates in den Intervallen aus, die in den Tutorials für die einzelnen Apps beschrieben sind, bis eines der folgenden Ereignisse eintritt:
 
-- Der Dienst wird manuell beendet. Über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)-Befehls wird ein neuer Startzyklus ausgelöst.
+- Der Dienst wird manuell beendet. Über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](/graph/api/resources/synchronization-overview)-Befehls wird ein neuer Startzyklus ausgelöst.
 - Aufgrund einer Änderung bei den Attributzuordnungen oder Bereichsfiltern wird ein neuer Startzyklus ausgelöst.
 - Aufgrund einer hohen Fehlerquote wird der Bereitstellungsprozess unter Quarantäne gestellt. Er bleibt mehr als vier Wochen in Quarantäne und wird dann automatisch deaktiviert.
 
@@ -416,6 +416,6 @@ In den folgenden Artikeln finden Sie Informationen zum Beheben von Problemen, di
 ### <a name="next-steps"></a>Nächste Schritte
 
 - [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)
-- [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
+- [Azure AD synchronization API overview](/graph/api/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
 - [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md)
 - [Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen](provisioning-agent-release-version-history.md).

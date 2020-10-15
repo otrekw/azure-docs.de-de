@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9cf3f9a1cd933526c5e376d232fa5acbc97fad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325979"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969720"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -189,7 +189,7 @@ Es werden nur Integritätsinformationen angezeigt, wenn eine Verbindung mit eine
 SAC nimmt nicht den gesamten Bereich für serielle Konsolen im Browser ein | Dies ist ein bekanntes Problem mit Windows und der Terminalemulation. Das Problem wird von beiden Teams nachverfolgt, doch vorerst gibt es keine Lösung.
 Bei aktiviertem Kerneldebugging ist an der SAC-Eingabeaufforderung keine Eingabe möglich. | Stellen Sie eine RDP-Verbindung mit dem virtuellen Computer her, und führen Sie `bcdedit /debug {current} off` an einer Eingabeaufforderung mit erhöhten Rechten aus. Falls Sie keine RDP-Verbindung herstellen können, fügen Sie stattdessen den Betriebssystemdatenträger an eine andere Azure-VM an, bearbeiten Sie ihn durch Ausführung von `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, während er als Datenträger angefügt ist, und fügen Sie ihn anschließend wieder an die ursprüngliche VM an.
 Das Einfügen in PowerShell in der SAC führt zu einem dritten Zeichen, wenn der ursprüngliche Inhalt ein sich wiederholendes Zeichen enthielt. | Eine Problemumgehung besteht darin, `Remove-Module PSReadLine` zum Entladen des PSReadLine-Moduls aus der aktuellen Sitzung auszuführen. Durch diese Aktion wird das Modul nicht gelöscht oder deinstalliert.
-Einige Tastatureingaben erzeugen seltsame SAC-Ausgaben (z.B. **[A**, **[3~** ). | [VT100](https://aka.ms/vtsequences)-Escapesequenzen werden von der SAC-Eingabeaufforderung nicht unterstützt.
+Einige Tastatureingaben erzeugen seltsame SAC-Ausgaben (z.B. **[A**, **[3~** ). | [VT100](/windows/console/console-virtual-terminal-sequences)-Escapesequenzen werden von der SAC-Eingabeaufforderung nicht unterstützt.
 Das Einfügen von langen Zeichenfolgen funktioniert nicht. | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen, um die Bandbreite am seriellen Port nicht zu überlasten.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen

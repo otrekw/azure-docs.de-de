@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263259"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
@@ -61,7 +61,7 @@ In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontr
 
 Die folgende Abbildung zeigt den Code, der für diesen Trigger in das Azure-Portal geschrieben wird.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Erstellen einer durch Azure Cosmos DB ausgelösten Funktion":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Integration von Azure Cosmos DB und Azure Functions":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finanzieller Anwendungsfall – Trigger mit Timer und Eingabebindung
 
@@ -75,9 +75,9 @@ Bei finanziellen Implementierungen können Sie beispielsweise eine Funktion aufr
 
 In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario gezeigt.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Datei „index.js“ für einen Trigger mit Timer für ein Finanzszenario":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Integration von Azure Cosmos DB und Azure Functions":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Datei „run.csx“ für einen Trigger mit Timer für ein Finanzszenario":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Integration von Azure Cosmos DB und Azure Functions":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gaming-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB 
 

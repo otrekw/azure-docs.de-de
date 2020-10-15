@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830443"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996484"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -26,7 +26,7 @@ Falls Sie [Azure Security Center](../../security-center/index.yml) verwenden, we
 > [!WARNING]
 > - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden. Weitere Informationen finden Sie unter [Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-overview-aad.md). 
 > - Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann. Sie müssen über ein gültiges aktives Azure-Abonnement verfügen, um in den unterstützten Regionen Ressourcen in Azure zu erstellen.
-> - Derzeit unterstützen VMs der Generation 2 Azure Disk Encryption nicht. Einzelheiten finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../windows/generation-2.md).
+> - Derzeit unterstützen VMs der Generation 2 Azure Disk Encryption nicht. Einzelheiten finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../generation-2.md).
 
 Die Grundlagen von Azure Disk Encryption für Linux können Sie in den Schnellstarts [Erstellen und Verschlüsseln einer Linux-VM mit der Azure CLI](disk-encryption-cli-quickstart.md) und [Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit Azure PowerShell](disk-encryption-powershell-quickstart.md) in wenigen Minuten erlernen.
 
@@ -46,7 +46,7 @@ Sobald die Verschlüsselung des Betriebssystemdatenträgers auf virtuellen Linux
 
 Azure Disk Encryption ist auch für virtuelle Computer mit Storage Premium verfügbar.
 
-Azure Disk Encryption ist für [VMs der Generation 2](generation-2.md#generation-1-vs-generation-2-capabilities) und [VMs der Lsv2-Serie](../lsv2-series.md) nicht verfügbar. Weitere Ausnahmen finden Sie unter [Azure Disk Encryption: Nicht unterstützte Szenarien](disk-encryption-linux.md#unsupported-scenarios).
+Azure Disk Encryption ist für [VMs der Generation 2](../generation-2.md#generation-1-vs-generation-2-capabilities) und [VMs der Lsv2-Serie](../lsv2-series.md) nicht verfügbar. Weitere Ausnahmen finden Sie unter [Azure Disk Encryption: Nicht unterstützte Szenarien](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -108,8 +108,8 @@ Stellen Sie sicher, dass die Einstellungen für „/etc/fstab“ ordnungsgemäß
 Hier finden Sie ein Beispiel für die Befehle, die zum Einbinden der Datenträger und zum Erstellen der erforderlichen „/etc/fstab“-Einträge verwendet werden:
 
 ```bash
-UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
-UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+UUID0="$(blkid -s UUID -o value /dev/sda1)"
+UUID1="$(blkid -s UUID -o value /dev/sda2)"
 mkdir /data0
 mkdir /data1
 echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
@@ -136,7 +136,7 @@ In der folgenden Tabelle werden einige der häufig in der Azure Disk Encryption-
 | Begriff | Definition |
 | --- | --- |
 | Azure-Schlüsseltresor | Key Vault ist ein Dienst zum Verwalten kryptografischer Schlüssel, der auf Hardwaresicherheitsmodulen mit FIPS-Überprüfung (Federal Information Processing Standards) basiert. Diese Standards tragen dazu bei, Ihre kryptografischen Schlüssel und vertraulichen Geheimnisse zu schützen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) und unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert.|
+| Azure-Befehlszeilenschnittstelle | [Azure CLI](/cli/azure/install-azure-cli) ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert.|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) ist das Linux-basierte transparente Subsystem für die Datenträgerverschlüsselung, das zum Aktivieren der Datenträgerverschlüsselung auf virtuellen Linux-Computern verwendet wird. |
 | Schlüsselverschlüsselungsschlüssel (Key encryption key, KEK) | Der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen des Geheimnisses verwendet wird. Sie können einen mit Hardwaresicherheitsmodulen geschützten Schlüssel oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) und unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-Cmdlets | Weitere Informationen finden Sie unter [Azure PowerShell-Cmdlets](/powershell/azure/). |

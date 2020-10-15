@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263346"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbinden von Qlik Sense mit Azure Cosmos DB und Visualisieren Ihrer Daten
@@ -62,15 +62,15 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass die folg
 
 4. Wechseln Sie zu **Benutzer-DSN**, und wählen Sie die zuvor erstellte ODBC-Verbindung aus. Geben Sie einen Namen für die Verbindung an, und wählen Sie **Erstellen**. 
 
-   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Erstellen einer neuen Verbindung":::
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Erstellen einer neuen Qlik Sense-App":::
 
 5. Nachdem Sie die Verbindung erstellt haben, können Sie die Datenbank und die Sammlung mit den Videospieldaten auswählen und eine Vorschau dafür anzeigen.
 
-   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Auswählen der Datenbank und Sammlung"::: 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Erstellen einer neuen Qlik Sense-App"::: 
 
 6. Wählen Sie als Nächstes die Option **Daten hinzufügen**, um die Daten in Qlik Sense zu laden. Nachdem Sie Daten in Qlik Sense geladen haben, können Sie Erkenntnisse generieren und Analysen für die Daten durchführen. Sie können entweder die Erkenntnisse nutzen oder Ihre eigene App erstellen, um die Verkäufe von Videospielen zu erkunden. In der folgenden Abbildung ist die Visualisierung der Daten dargestellt: 
 
-   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Visualisieren von Daten":::
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Erstellen einer neuen Qlik Sense-App":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>Einschränkungen beim Herstellen einer Verbindung mit ODBC 
 

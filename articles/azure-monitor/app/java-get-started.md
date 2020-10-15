@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602464"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996165"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Schnellstart: Erste Schritte mit Application Insights in einem Java-Webprojekt
 
 
 > [!IMPORTANT]
-> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
 
 In dieser Schnellstartanleitung verwenden Sie das Application Insights SDK, um Anforderungen zu instrumentieren, Abhängigkeiten zu verfolgen und Leistungsindikatoren zu sammeln, Leistungsprobleme und Ausnahmen zu diagnostizieren und Code zu schreiben, um die Aktivitäten der Benutzer Ihrer App zu verfolgen.
 
@@ -199,7 +199,7 @@ Jetzt veröffentlichen Sie Ihre App auf dem Server, erlauben deren Benutzung und
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AKS, VM-Konfiguration
 
-Der beste und einfachste Ansatz zur Überwachung Ihrer Anwendungen, die bei einem der Azure-Ressourcenanbieter laufen, ist die Verwendung der automatischen Instrumentierung von Application Insights über den [Java 3.0-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+Der beste und einfachste Ansatz zur Überwachung Ihrer Anwendungen, die bei einem der Azure-Ressourcenanbieter laufen, ist die Verwendung der automatischen Instrumentierung von Application Insights über den [Java 3.0-Agent](./java-in-process-agent.md).
 
 
 ## <a name="exceptions-and-request-failures"></a>Ausnahmen und Anforderungsfehler
@@ -313,4 +313,3 @@ Application Insights kann Ihre Website in regelmäßigen Abständen testen, um z
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

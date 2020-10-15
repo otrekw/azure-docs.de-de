@@ -169,15 +169,15 @@
           href: update-regulatory-compliance-packages.md
     - name: Verwenden von Azure Defender für Server
       items:
-        - name: Überprüfung auf Sicherheitsrisiken für VMs
+        - name: Überprüfung auf Sicherheitsrisiken
           items:
-            - name: Scannen Ihrer VMs mit der integrierten Lösung zur Sicherheitsrisikobewertung
-              displayName: 'qualys, vulnerability'
+            - name: Integrierter Sicherheitsrisikobewertungsscanner für Computer
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: Scannen Ihrer VMs mit einer Lösung zur Sicherheitsrisikobewertung vom Typ BYOL
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: Überprüfen und Beseitigen von Sicherheitsrisiken auf Ihren virtuellen Computern
+            - name: Überprüfen und Beseitigen von Sicherheitsrisiken
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: Deaktivieren bestimmter ermittelter Sicherheitsrisiken

@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Clustern mit Azure Arc-Aktivierung mit Azure
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor die Überwachung für Container auf Kubernetes-Clustern mit Azure Arc-Aktivierung konfigurieren können.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620289"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994462"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung
 
@@ -36,7 +36,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 - Einen Log Analytics-Arbeitsbereich
 
-    Azure Monitor für Container unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../platform/template-workspace-configuration.md), über [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../learn/quick-create-workspace.md) erstellen.
+    Azure Monitor für Container unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../samples/resource-manager-workspace.md), über [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../learn/quick-create-workspace.md) erstellen.
 
 - Sie müssen in Ihrem Azure-Abonnement mindestens über die Azure-Rolle *Mitwirkender* und im Log Analytics-Arbeitsbereich über die mit Azure Monitor für Container konfigurierte Rolle [*Log Analytics-Mitwirkender*](../platform/manage-access.md#manage-access-using-azure-permissions) verfügen, um auf die Funktionen in Azure Monitor für Container zugreifen zu können.
 

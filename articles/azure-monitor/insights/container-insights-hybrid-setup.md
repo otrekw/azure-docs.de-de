@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Contai
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2d2522118fddcebcb2ca922ed455011e394fac45
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398380"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994450"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
@@ -40,7 +40,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 - Einen [Log Analytics-Arbeitsbereich](../platform/design-logs-deployment.md).
 
-    Azure Monitor für Container unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../platform/template-workspace-configuration.md), über [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../learn/quick-create-workspace.md) erstellen.
+    Azure Monitor für Container unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../samples/resource-manager-workspace.md), über [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../learn/quick-create-workspace.md) erstellen.
 
     >[!NOTE]
     >Die Aktivierung der Überwachung mehrerer Cluster mit dem gleichen Clusternamen im gleichen Log Analytics-Arbeitsbereich ist nicht möglich. Clusternamen müssen eindeutig sein.

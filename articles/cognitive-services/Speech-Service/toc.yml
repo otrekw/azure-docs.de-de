@@ -26,10 +26,6 @@
       href: get-started-speech-to-text.md
     - name: Anleitungen
       items:
-        - name: Erkennen von Sprache aus einem Blobspeicher
-          href: quickstarts/from-blob.md
-        - name: Auswählen eines Spracherkennungsmodus
-          href: how-to-choose-recognition-mode.md
         - name: Ändern der Ausgangssprache für die Spracherkennung
           href: how-to-specify-source-language.md
         - name: Verbessern der Genauigkeit mit Custom Speech
@@ -37,8 +33,6 @@
         - name: Verwenden komprimierter Audioeingabeformate
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
-        - name: Verbessern der Genauigkeit mithilfe von Begriffslisten
-          href: how-to-phrase-lists.md
         - name: Auswählen eines bestimmten Mikrofoneingabegeräts
           href: how-to-select-audio-input-devices.md
         - name: Verwenden der automatischen Erkennung der Ausgangssprache
@@ -47,6 +41,8 @@
           href: batch-transcription.md
     - name: Tutorials
       items:
+        - name: Erkennen von Sprache aus einem Blobspeicher
+          href: quickstarts/from-blob.md
         - name: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
           href: tutorial-tenant-model.md
     - name: Anpassung
@@ -148,7 +144,7 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
-    - name: Verweis
+    - name: Referenz
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'

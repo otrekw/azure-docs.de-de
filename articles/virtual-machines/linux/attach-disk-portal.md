@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a37ed39f3c663f9f77daa1ed8f6946403348edd0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 565b781b5015f82cafe4e47be2170f2327660821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072637"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971590"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Tipps:
 
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Details finden Sie in unserer [Einführung in verwaltete Datenträger](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Details finden Sie in unserer [Einführung in verwaltete Datenträger](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
 * Nach dem Anfügen des Datenträgers müssen Sie [eine Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers herstellen](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 

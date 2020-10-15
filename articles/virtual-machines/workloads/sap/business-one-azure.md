@@ -1,26 +1,18 @@
 ---
 title: SAP Business One in Azure Virtual Machines | Microsoft-Dokumentation
 description: SAP Business One in Azure.
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: caabaa6fbf65787f90c0033a06af26996c2388f2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654649"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994099"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in Azure Virtual Machines
 Dieses Dokument enthält Anleitungen zum Bereitstellen von SAP Business One in Azure Virtual Machines. Diese Dokumentation ist kein Ersatz für die Installationsdokumentation für Business One für SAP. Die Dokumentation enthält grundlegende Planungs- und Bereitstellungsrichtlinien für die Azure-Infrastruktur zur Ausführung von Business One-Anwendungen.
@@ -95,7 +87,7 @@ Die Netzwerkinfrastruktur, die Sie in Azure bereitstellen müssen, hängt davon 
 Die vorgestellte vereinfachte Konfiguration führt mehrere Sicherheitsinstanzen ein, mit denen Sie das Routing steuern und einschränken können. Sie beginnt mit 
 
 - Dem Router bzw. der Firewall lokal auf Kundenseite.
-- Die nächste Instanz ist die [Azure-Netzwerksicherheitsgruppe](../../../virtual-network/security-overview.md), mit der Sie Routing und Sicherheitsregeln für das Azure VNet einführen können, in dem Sie Ihre SAP Business One-Konfiguration ausführen.
+- Die nächste Instanz ist die [Azure-Netzwerksicherheitsgruppe](../../../virtual-network/network-security-groups-overview.md), mit der Sie Routing und Sicherheitsregeln für das Azure VNet einführen können, in dem Sie Ihre SAP Business One-Konfiguration ausführen.
 - Um zu vermeiden, dass Benutzer von Business One-Clients auch den Server sehen können, auf dem der Business One-Server läuft, der die Datenbank ausführt, sollten Sie die VM, die den Business One-Client hostet, und den Business One-Server in zwei verschiedene Subnetze innerhalb des VNet trennen.
 - Um den Zugriff auf den Business One Server einzuschränken, verwenden Sie erneut die Azure-Netzwerksicherheitsgruppe, die den zwei verschiedenen Subnetzen zugewiesen ist.
 
@@ -111,7 +103,7 @@ SQL Server und SAP HANA sind als Datenbanktyp verfügbar. Unabhängig vom DBMS s
 
 Obwohl dies bereits in den spezifischen und allgemeinen Datenbankdokumenten hervorgehoben, sollten Sie sich mit folgenden Themen vertraut machen:
 
-- [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../windows/manage-availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../linux/manage-availability.md)
+- [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../manage-availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../manage-availability.md)
 - [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Diese Dokumente sollen Ihnen bei der Auswahl der Speichertypen und der Hochverfügbarkeitskonfiguration unterstützen.
