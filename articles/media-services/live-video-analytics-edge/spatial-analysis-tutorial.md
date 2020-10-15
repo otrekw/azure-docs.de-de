@@ -3,12 +3,12 @@ title: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Ana
 description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature Maschinelles Sehen für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824123"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015684"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -32,7 +32,7 @@ Lesen Sie diese Artikel, bevor Sie beginnen:
 * [Terminologie zu Live Video Analytics in IoT Edge](terminology.md)
 * [Mediengraph: Konzepte](media-graph-concept.md)
 * [Ereignisbasierte Videoaufzeichnung](event-based-video-recording-concept.md)
-* [Tutorial: Entwickeln eines IoT Edge-Moduls](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Tutorial: Entwickeln eines IoT Edge-Moduls](../../iot-edge/tutorial-develop-for-linux.md)
 * [Bereitstellen von Live Video Analytics in Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -55,12 +55,12 @@ In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein
 
 Der Knoten „MediaGraphCognitiveServicesVisionExtension“ fungiert als Proxy. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet er das Bild über **gemeinsam genutzten Speicher** an ein anderes Edge-Modul weiter, das KI-Vorgänge hinter einem gRPC-Endpunkt ausführt. In diesem Beispiel ist das Edge-Modul das Modul „spatial-analysis“. Der Verarbeitungsknoten „MediaGraphCognitiveServicesVisionExtension“ erfüllt zwei Aufgaben:
 
-* Er sammelt die Ergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub). 
+* Er sammelt die Ergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
 * Er erfasst außerdem mit einem [Signalgateprozessor](media-graph-concept.md#signal-gate-processor) einen Videoclip von 30 Sekunden aus der RTSP-Quelle und speichert ihn als Media Services-Medienobjekt.
 
 ## <a name="create-the-computer-vision-resource"></a>Erstellen der Ressource für maschinelles Sehen
 
-Sie müssen im [Azure-Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) oder über die Azure CLI eine Azure-Ressource vom Typ Maschinelles Sehen erstellen. Sie können die Ressource erstellen, nachdem Ihre Anforderung des Zugriffs auf den Container genehmigt und Ihre Azure-Abonnement-ID registriert wurde. Wechseln Sie zu https://aka.ms/csgate, um Ihren Anwendungsfall und Ihre Azure-Abonnement-ID zu übermitteln.  Sie müssen die Azure-Ressource mit dem Azure-Abonnement erstellen, das im Zugriffsanforderungsformular angegeben wurde.
+Sie müssen im [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder über die Azure CLI eine Azure-Ressource vom Typ Maschinelles Sehen erstellen. Sie können die Ressource erstellen, nachdem Ihre Anforderung des Zugriffs auf den Container genehmigt und Ihre Azure-Abonnement-ID registriert wurde. Wechseln Sie zu https://aka.ms/csgate, um Ihren Anwendungsfall und Ihre Azure-Abonnement-ID zu übermitteln.  Sie müssen die Azure-Ressource mit dem Azure-Abonnement erstellen, das im Zugriffsanforderungsformular angegeben wurde.
 
 ### <a name="gathering-required-parameters"></a>Ermitteln erforderlicher Parameter
 
@@ -75,7 +75,7 @@ Ein Schlüssel wird zum Starten des Containers „spatial-analysis“ verwendet.
 
 ## <a name="set-up-azure-stack-edge"></a>Einrichten von Azure Stack Edge
 
-Führen Sie [diese Schritte](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) aus, um Azure Stack Edge einzurichten. Führen Sie dann die folgenden Schritte aus, um das Modul Live Video Analytics und das Modul „spatial analysis“ bereitzustellen.
+Führen Sie [diese Schritte](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) aus, um Azure Stack Edge einzurichten. Führen Sie dann die folgenden Schritte aus, um das Modul Live Video Analytics und das Modul „spatial analysis“ bereitzustellen.
 
 ## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
 
@@ -136,7 +136,7 @@ Bei der Bereitstellungsvorlagendatei sind einige Aspekte zu beachten:
 1. `IpcMode` sollte in den „createOptions“ der Module „lvaEdge“ und „spatial-analysis“ identisch und auf „host“ festgelegt sein.
 1. Damit der RTSP-Simulator ausgeführt wird, müssen Sie Volumebindungen eingerichtet haben. Weitere Informationen finden Sie unter [Einrichten von Docker-Volumebereitstellungen](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share), und kopieren Sie die [Beispielvideodatei „bulldozer“](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) in die lokale Freigabe.
+    1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Beispielvideodatei „bulldozer“](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) in die lokale Freigabe.
     1. Das Modul „rtspsim“ muss folgende Konfiguration aufweisen:
         
         ```json

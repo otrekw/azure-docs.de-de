@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269725"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015820"
 ---
 # <a name="media-services-regulatory-compliance"></a>Einhaltung gesetzlicher Bestimmungen in Media Services
 
@@ -33,11 +33,11 @@ Media Services Government-Dienste sind mit DoD CC SRG IL 2, DoD CC SRG IL 4, D
 
 Eine Überprüfung von Media Services durch 3PAO und JAB ist für 2020 nicht geplant.
 
-Weitere Informationen zur Konformität von Azure-Diensten finden Sie im Artikel [Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope).
+Weitere Informationen zur Konformität von Azure-Diensten finden Sie im Artikel [Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
 ## <a name="azure-compliance-documentation"></a>Dokumentation zur Azure-Compliance
 
-Wenn Ihre Organisation gesetzliche oder behördliche Standards für die Bereiche global, US-Regierung, regional, Finanzdienstleistungen, Gesundheit, Medien und Fertigung einhalten muss, beginnen Sie mit der [Azure-Konformitätsdokumentation](https://docs.microsoft.com/azure/compliance/).
+Wenn Ihre Organisation gesetzliche oder behördliche Standards für die Bereiche global, US-Regierung, regional, Finanzdienstleistungen, Gesundheit, Medien und Fertigung einhalten muss, beginnen Sie mit der [Azure-Konformitätsdokumentation](../../compliance/index.yml).
 
 Dort finden Sie auch weitere Konformitätsressourcen wie z. B. Überwachungsberichte, eine Prüfliste für Datenschutz und die Datenschutz-Grundverordnung (DSGVO), Konformitätsblaupausen, Richtlinien für Länder und Regionen, Implementierungen und Zuordnungen sowie Whitepaper und Analystenberichte.
 

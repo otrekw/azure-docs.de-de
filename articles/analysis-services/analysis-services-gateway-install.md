@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438958"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016177"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
@@ -132,7 +132,7 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Azure 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Verwenden Sie [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource), um die ResourceID für das Gateway abzurufen. Verbinden Sie dann die Gatewayressource mit einem vorhandenen oder neuen Server, indem Sie **-GatewayResourceID** in [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) oder [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) angeben.
+Verwenden Sie [Get-AzResource](/powershell/module/az.resources/get-azresource), um die ResourceID für das Gateway abzurufen. Verbinden Sie dann die Gatewayressource mit einem vorhandenen oder neuen Server, indem Sie **-GatewayResourceID** in [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) oder [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) angeben.
 
 So rufen Sie die ID der Gatewayressource ab:
 

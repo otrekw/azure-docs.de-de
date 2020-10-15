@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077370"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015316"
 ---
 # <a name="automation-with-service-principals"></a>Automatisierung mit Dienstprinzipalen
 
@@ -33,8 +33,8 @@ Dienstprinzipale können im Azure-Portal oder mithilfe von PowerShell erstellt w
 
 Anmeldeinformationen und Zertifikate von Dienstprinzipalen können in Azure Automation für Runbook-Vorgänge sicher gespeichert werden. Weitere Informationen finden Sie unter:
 
-[Anmeldeinformationsobjekte in Azure Automation](../automation/automation-credentials.md)   
-[Zertifikatobjekte in Azure Automation](../automation/automation-certificates.md)
+[Anmeldeinformationsobjekte in Azure Automation](../automation/shared-resources/credentials.md)   
+[Zertifikatobjekte in Azure Automation](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Hinzufügen von Dienstprinzipalen zur Serveradministratorrolle
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO und ADOMD 
 
-Beim Herstellen von Verbindungen mit Clientanwendungen und Web-Apps, unterstützen [AMO- und ADOMD-Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) und installierbare NuGet-Pakete (Version 15.0.2 und höher) Dienstprinzipale in Verbindungszeichenfolgen mit der folgenden Syntax: `app:AppID` und Kennwort oder `cert:thumbprint`. 
+Beim Herstellen von Verbindungen mit Clientanwendungen und Web-Apps, unterstützen [AMO- und ADOMD-Clientbibliotheken](/analysis-services/client-libraries?view=azure-analysis-services-current) und installierbare NuGet-Pakete (Version 15.0.2 und höher) Dienstprinzipale in Verbindungszeichenfolgen mit der folgenden Syntax: `app:AppID` und Kennwort oder `cert:thumbprint`. 
 
 Im folgenden Beispiel werden `appID` und ein `password` verwendet, um einen Aktualisierungsvorgang für eine Modelldatenbank auszuführen:
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Anmelden mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps)   
 [Aktualisieren mit Logic Apps](analysis-services-refresh-logic-app.md)  
 [Aktualisieren mit Azure Automation](analysis-services-refresh-azure-automation.md)  
 [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md)  
-[Automatisieren von Arbeitsbereichs- und Datasetaufgaben in Power BI Premium mithilfe von Dienstprinzipalen](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[Automatisieren von Arbeitsbereichs- und Datasetaufgaben in Power BI Premium mithilfe von Dienstprinzipalen](/power-bi/admin/service-premium-service-principal)

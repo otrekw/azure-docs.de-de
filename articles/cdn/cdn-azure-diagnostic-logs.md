@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191280"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnoseprotokolle: Azure Content Delivery Network
@@ -52,7 +52,7 @@ Befolgen Sie diese Schritte, um die Protokollierung für Ihren Azure CDN-Endpunk
 
 3. Wählen Sie im Abschnitt **Überwachung** die Option **Diagnoseprotokolle** aus:
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Wählen Sie Diagnoseprotokolle aus." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Aktivieren der Protokollierung mit Azure Storage
 
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der P
 
 4. Wählen Sie das Abonnement und Speicherkonto für die Protokolle aus.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Diagnoseprotokolle – Speicher." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
 
 3. Wählen Sie **Speichern** aus.
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um Log Analytics für die Protokolle zu 
 
 3. Wählen Sie das Abonnement und den Log Analytics-Arbeitsbereich für die Protokolle aus.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Diagnoseprotokolle – Log Analytics." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
 
 4. Wählen Sie **Speichern** aus.
 
@@ -103,7 +103,7 @@ Gehen Sie folgendermaßen vor, um einen Event Hub für die Protokolle zu verwend
 
 3. Wählen Sie das Abonnement und den Event Hub-Namespace für die Protokolle aus.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Diagnoseprotokolle – Event Hub." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
 
 4. Wählen Sie **Speichern** aus.
 

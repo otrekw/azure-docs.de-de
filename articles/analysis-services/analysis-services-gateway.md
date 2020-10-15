@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438835"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016092"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
 
@@ -91,11 +91,11 @@ Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und n
 
 Die folgenden Artikel gehören zur allgemeinen Dokumentation für lokale Datengateways und gelten für alle Dienste, die das Gateway unterstützt:
 
-* [Lokales Datengateway: Häufig gestellte Fragen](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [Verwenden der App für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [Verwaltung auf Mandantenebene](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [Konfigurieren von Proxyeinstellungen](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [Anpassen von Kommunikationseinstellungen](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [Konfigurieren von Protokolldateien](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [Problembehandlung](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Überwachen und Optimieren der Gatewayleistung](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Lokales Datengateway: Häufig gestellte Fragen](/data-integration/gateway/service-gateway-onprem-faq)   
+* [Verwenden der App für das lokale Datengateway](/data-integration/gateway/service-gateway-app)   
+* [Verwaltung auf Mandantenebene](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [Konfigurieren von Proxyeinstellungen](/data-integration/gateway/service-gateway-proxy)   
+* [Anpassen von Kommunikationseinstellungen](/data-integration/gateway/service-gateway-communication)   
+* [Konfigurieren von Protokolldateien](/data-integration/gateway/service-gateway-log-files)   
+* [Problembehandlung](/data-integration/gateway/service-gateway-tshoot)
+* [Überwachen und Optimieren der Gatewayleistung](/data-integration/gateway/service-gateway-performance)

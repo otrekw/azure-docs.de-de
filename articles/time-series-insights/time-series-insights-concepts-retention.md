@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535688"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Grundlagen der Datenaufbewahrung in Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel werden zwei primäre Einstellungen beschrieben, die sich auf die Datenaufbewahrung in Ihrer Azure Time Series Insights-Umgebung auswirken.
 
@@ -37,7 +40,8 @@ Darüber hinaus gibt es in Ihrer Azure Time Series Insights-Umgebung die Einstel
 
 > [!NOTE]
 > Bei der Erstellung einer neuen Umgebung wird für die Aufbewahrung standardmäßig **Purge old data** (Alte Daten bereinigen) konfiguriert. Diese Einstellung kann nach der Erstellung im Azure-Portal auf der Seite **Konfigurieren** der Azure Time Series Insights-Umgebung je nach Bedarf geändert werden.
-> * Informationen zum Konfigurieren der Aufbewahrungsrichtlinien finden Sie unter [Konfigurieren der Datenaufbewahrung in Azure Time Series Insights Gen1](time-series-insights-how-to-configure-retention.md).
+>
+> - Informationen zum Konfigurieren der Aufbewahrungsrichtlinien finden Sie unter [Konfigurieren der Datenaufbewahrung in Azure Time Series Insights Gen1](time-series-insights-how-to-configure-retention.md).
 
 Beide Datenaufbewahrungsrichtlinien werden weiter unten ausführlicher beschrieben.
 
@@ -69,8 +73,8 @@ Immer wenn die tägliche Eingangsrate für diese Umgebung über den Wert von 0,1
 - Dadurch werden Sie vor einem Datenverlust geschützt. Es kann aber auch geschehen, dass Ihre aktuellsten Daten verloren gehen, wenn der Dateneingang über den Aufbewahrungszeitraum Ihrer Ereignisquelle hinaus angehalten wird.
 - Nachdem aber die maximale Kapazität einer Umgebung erreicht wurde, wird der Dateneingang von der Umgebung so lange angehalten, bis folgende zusätzliche Aktionen durchgeführt wurden:
 
-   - Sie erhöhen die maximale Kapazität der Umgebung, um entsprechend der Beschreibung unter [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights Gen1-Umgebung](time-series-insights-how-to-scale-your-environment.md) weitere Skalierungseinheiten hinzuzufügen.
-   - Der Zeitraum für die Datenaufbewahrung ist erreicht, und Daten werden bereinigt, wodurch die maximale Kapazität für die Umgebung überschritten wird.
+  - Sie erhöhen die maximale Kapazität der Umgebung, um entsprechend der Beschreibung unter [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights Gen1-Umgebung](time-series-insights-how-to-scale-your-environment.md) weitere Skalierungseinheiten hinzuzufügen.
+  - Der Zeitraum für die Datenaufbewahrung ist erreicht, und Daten werden bereinigt, wodurch die maximale Kapazität für die Umgebung überschritten wird.
 
 ### <a name="example-three"></a>Beispiel drei
 

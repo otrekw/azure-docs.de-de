@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236c24ac63aef6b802edf53f9c414a522c2308e4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550064"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit CylancePROTECT
 
@@ -144,7 +144,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-cylanceprotect-sso"></a>Konfigurieren des einmaligen Anmeldens für CylancePROTECT
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **CylancePROTECT** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [CylancePROTECT-Supportteam](https://www.cylance.com/en-us/resources/support/support-overview.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist. Weitere Informationen finden Sie in der Cylance-Dokumentation: [https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4).
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **CylancePROTECT** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [CylancePROTECT-Supportteam](https://www.cylance.com/en-us/resources/support/support-overview.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist. Weitere Informationen finden Sie in der Cylance-Dokumentation: [https://support.cylance.com/s/](https://support.cylance.com/s/).
 
 ### <a name="create-cylanceprotect-test-user"></a>Erstellen eines CylancePROTECT-Testbenutzers
 

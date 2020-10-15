@@ -1,16 +1,14 @@
 ---
 title: Migrieren einer klassischen Application Insights-Ressource in Azure Monitor zu einer arbeitsbereichsbasierten Ressource | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktualisieren einer klassischen Application Insights-Ressource in Azure Monitor auf das neue arbeitsbereichsbasierte Modell.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333340"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930576"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrieren zu arbeitsbereichsbasierten Application Insights-Ressourcen
 

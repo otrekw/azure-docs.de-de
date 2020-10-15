@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91936225"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -75,7 +75,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Back-End-Ressourcen pro Lastenausgleich <sup>1<sup> | 150                   |
 | Hochverfügbarkeitsports                 | 1 pro internem Front-End       |
 | Ausgangsregeln pro Lastenausgleichsmodul        | 600                           |
-| [TCP-Leerlauftimeout](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 Minuten/30 Minuten          |
+| Lastenausgleichsmodule pro virtuellem Computer                   | 2 (1x öffentlich, 1x intern)   |
 
 <sup>1</sup>Der Grenzwert liegt bei bis zu 150 Ressourcen in beliebiger Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und Platzierungsgruppen für Skalierungsgruppen.
 
@@ -88,7 +88,8 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Regeln pro NIC (für alle IPs einer NIC) | 300                          |
 | Front-End-IP-Konfigurationen              | 200                          |
 | Größe des Back-End-Pools                       | 300 IP-Konfigurationen, einzelne Verfügbarkeitsgruppe |
-| Verfügbarkeitsgruppen pro Lastenausgleichsmodul     | 150                          |
+| Verfügbarkeitsgruppen pro Lastenausgleichsmodul     | 1                            |
+| Lastenausgleichsmodule pro virtuellem Computer                   | 2 (1x öffentlich, 1x intern)  |
 
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das **klassische** Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 

@@ -3,16 +3,16 @@ title: Verwenden von Azure Defender für Containerregistrierungen
 description: Erfahren Sie etwas über die Verwendung von Azure Defender für Containerregistrierungen zum Überprüfen von Images in Ihren Registrierungen.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/22/2020
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18fa1b14bb20bbb2805eee2ec663d1316f787950
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931723"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532600"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
 
@@ -127,7 +127,7 @@ Wenn eine Suche mit den in Ihren Deaktivierungsregeln definierten Kriterien übe
 > [!IMPORTANT]
 > Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.
 >
-> Weitere Informationen finden Sie unter [RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#rbac-permissions-in-azure-policy).
+> Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).
 
 Sie können auch eines der folgenden Kriterien verwenden: 
 
@@ -150,7 +150,7 @@ So erstellen Sie eine Regel:
 1. So können Sie eine Regel anzeigen, überschreiben oder löschen 
     1. Wählen Sie **Regel deaktivieren** aus.
     1. In der Bereichsliste werden Abonnements mit aktiven Regeln als **Rule applied** (Angewandte Regel) angezeigt.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Ändern oder Löschen einer vorhandenen Regel":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Erstellen einer Deaktivierungsregel für VA-Ergebnisse in der Registrierung":::
     1. Um die Regel anzuzeigen oder zu löschen, wählen Sie das Menü mit den Auslassungspunkten („...“) aus.
 
 
