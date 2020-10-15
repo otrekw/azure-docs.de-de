@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531614"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951399"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Wenn Sie C# und eine MVC-Anwendung verwenden, können Sie in der Datei **HomeController.cs** im Verzeichnis des Controllers eine Klasse für vorgeschlagene Ergebnisse erstellen. In .NET basiert eine Vorschlagsfunktion auf der [DocumentsOperationsExtensions.Suggest-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](./search-howto-dotnet-sdk.md).
 
-Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Eigenschaften der Klasse [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) bestimmen, welche Felder durchsucht und in den Ergebnissen zurückgegeben werden sowie die Anzahl der Übereinstimmungen und ob die Fuzzyübereinstimmung verwendet wird. 
+Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Eigenschaften der Klasse [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) bestimmen, welche Felder durchsucht und in den Ergebnissen zurückgegeben werden sowie die Anzahl der Übereinstimmungen und ob die Fuzzyübereinstimmung verwendet wird. 
 
 Für AutoVervollständigen ist die Fuzzyübereinstimmung auf einen Bearbeitungsabstand (ein ausgelassenes oder falsch platziertes Zeichen) beschränkt. Beachten Sie, dass die Fuzzyübereinstimmung bei AutoVervollständigen-Abfragen manchmal unerwartete Ergebnisse liefern kann, abhängig von der Größe des Indexers und der Art und Weise, wie er partitioniert wird. Weitere Informationen finden Sie unter [Partitions- und Shardkonzepte](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 

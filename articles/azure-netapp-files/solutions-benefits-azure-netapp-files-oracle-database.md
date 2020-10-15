@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f431015caf5bb3364fe5628a599f760c6318c47
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117045"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932497"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Vorteile der Verwendung von Azure NetApp Files mit Oracle Database
 
@@ -62,4 +62,4 @@ Sie können die Leistung von Oracle dNFS mithilfe des Azure NetApp Files-Diensts
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Lösungsarchitekturen mit Azure NetApp Files](azure-netapp-files-solution-architectures.md)
-- [Übersicht über Oracle-Anwendungen und -Lösungen in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Übersicht über Oracle-Anwendungen und -Lösungen in Azure](../virtual-machines/workloads/oracle/oracle-overview.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092744"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070009"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -77,7 +77,7 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Warum ist die Zertifikatkette meines Clouddienst-TSL/SSL-Zertifikats unvollständig?
     
-Wir empfehlen, dass Kunden die vollständige Zertifikatskette (untergeordnetes Zertifikat, Zwischenzertifikate und Stammzertifikate) installieren und nicht nur das untergeordnete Zertifikat. Wenn Sie nur das untergeordnete Zertifikat installieren, sind Sie davon abhängig, dass Windows die Zertifikatskette durch durchlaufen der CTL erstellt. Wenn zeitweilige Netzwerk- oder DNS-Probleme in Azure oder Windows Update auftreten, während Windows das Zertifikat überprüft, wird das Zertifikat möglicherweise als ungültig behandelt. Durch Installation der vollständigen Zertifikatskette kann dieses Problem vermieden werden. Der Blogbeitrag [How to install a chained SSL certificate (Installieren eines SSL-Kettenzertifikats)](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) veranschaulicht diese Vorgehensweise.
+Wir empfehlen, dass Kunden die vollständige Zertifikatskette (untergeordnetes Zertifikat, Zwischenzertifikate und Stammzertifikate) installieren und nicht nur das untergeordnete Zertifikat. Wenn Sie nur das untergeordnete Zertifikat installieren, sind Sie davon abhängig, dass Windows die Zertifikatskette durch durchlaufen der CTL erstellt. Wenn zeitweilige Netzwerk- oder DNS-Probleme in Azure oder Windows Update auftreten, während Windows das Zertifikat überprüft, wird das Zertifikat möglicherweise als ungültig behandelt. Durch Installation der vollständigen Zertifikatskette kann dieses Problem vermieden werden. Der Blogbeitrag [How to install a chained SSL certificate (Installieren eines SSL-Kettenzertifikats)](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate) veranschaulicht diese Vorgehensweise.
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Welchen Zweck hat das „Windows Azure Tools Encryption Certificate for Extensions“ (Windows Azure Tools-Verschlüsselungszertifikat für Erweiterungen)?
 
@@ -111,11 +111,11 @@ Sie können diese Aufgabe mithilfe eines Startskripts („batch/cmd/PowerShell�
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Wozu dient das Microsoft Azure-Dienstverwaltungszertifikat für MachineKey?
 
-Dieses Zertifikat dient zum Verschlüsseln von Computerschlüsseln für Azure-Webrollen. Weitere Informationen finden Sie in [dieser Empfehlung](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
+Dieses Zertifikat dient zum Verschlüsseln von Computerschlüsseln für Azure-Webrollen. Weitere Informationen finden Sie in [dieser Empfehlung](/security-updates/securityadvisories/2018/4092731).
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
-- [Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [Allgemeine Starttasks für Clouddienste](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst](./cloud-services-startup-tasks.md)
+- [Allgemeine Starttasks für Clouddienste](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
 
@@ -139,16 +139,16 @@ Sie haben das lokale Speicherkontingent für das Schreiben in das Protokollverze
 * Erhöhen Sie die Kontingentgrenze für lokale Ressourcen.
 
 Weitere Informationen finden Sie in den folgenden Dokumenten:
-* [Speichern und Anzeigen von Diagnosedaten in Azure Storage](/azure/storage/common/storage-introduction)
-* [Im Clouddienst werden keine IIS-Protokolle mehr geschrieben.](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [Speichern und Anzeigen von Diagnosedaten in Azure Storage](../storage/common/storage-introduction.md)
+* [Im Clouddienst werden keine IIS-Protokolle mehr geschrieben.](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Wie aktiviere ich WAD-Protokollierung für Clouddienste?
 Sie können die Protokollierung durch die Windows Azure-Diagnose (WAD) über folgende Optionen aktivieren:
-1. [Aktivieren über Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [Aktivieren über .NET-Code](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [Aktivieren über PowerShell](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [Aktivieren über Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [Aktivieren über .NET-Code](./cloud-services-dotnet-diagnostics.md)
+3. [Aktivieren über PowerShell](./cloud-services-diagnostics-powershell.md)
 
-Um die aktuellen WAD-Einstellungen Ihres Clouddiensts abzurufen, können Sie das PS-Cmd [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) verwenden oder sie über das Portal auf dem Blatt „Clouddienste--> Erweiterungen“ einsehen.
+Um die aktuellen WAD-Einstellungen Ihres Clouddiensts abzurufen, können Sie das PS-Cmd [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) verwenden oder sie über das Portal auf dem Blatt „Clouddienste--> Erweiterungen“ einsehen.
 
 
 ## <a name="network-configuration"></a>Netzwerkkonfiguration
@@ -248,7 +248,7 @@ Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefi
 
 Weitere Informationen zur Integration der Azure-Diagnose in Application Insights für Cloud Services finden Sie unter [Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
-Weitere Informationen dazu, wie Sie Application Insights für Cloud Services aktivieren, finden Sie unter [Application Insights für Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices).
+Weitere Informationen dazu, wie Sie Application Insights für Cloud Services aktivieren, finden Sie unter [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md).
 
 Weitere Informationen dazu, wie Sie die Azure-Diagnoseprotokollierung für Cloud Services aktivieren, finden Sie unter [Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them).
 
@@ -313,7 +313,7 @@ Die SNI-Bindung kann mithilfe des PowerShell-Cmdlets **New-WebBinding** in einem
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-Wie [hier](https://technet.microsoft.com/library/ee790567.aspx) beschrieben, können die $sslFlags einen der folgenden Werte haben:
+Wie [hier](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10)) beschrieben, können die $sslFlags einen der folgenden Werte haben:
 
 |Wert|Bedeutung|
 ------|------
@@ -324,7 +324,7 @@ Wie [hier](https://technet.microsoft.com/library/ee790567.aspx) beschrieben, kö
  
 **Methode 2: Verwenden von Code**
 
-Die SNI-Bindung könnte auch über den Code im Rollenstart konfiguriert werden, wie in diesem [Blogbeitrag](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/) beschrieben:
+Die SNI-Bindung könnte auch über den Code im Rollenstart konfiguriert werden, wie in diesem [Blogbeitrag](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service) beschrieben:
 
 ```csharp
 //<code snip> 
@@ -356,7 +356,6 @@ Bei einem bereits bereitgestellten Clouddienst wird die Compute- und Speichernut
 
 Hier erfahren Sie, wie Sie Ihre Kosten reduzieren können, ohne die IP-Adresse für Ihren Dienst zu verlieren:
 
-1. [Reservieren Sie die IP-Adresse](../virtual-network/virtual-networks-reserved-public-ip.md), bevor Sie die Bereitstellungen löschen.  Es fallen nur Gebühren für diese IP-Adresse an. Weitere Informationen zur Abrechnung von IP-Adressen finden Sie unter [IP-Adressen – Preise](https://azure.microsoft.com/pricing/details/ip-addresses/).
+1. [Reservieren Sie die IP-Adresse](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip), bevor Sie die Bereitstellungen löschen.  Es fallen nur Gebühren für diese IP-Adresse an. Weitere Informationen zur Abrechnung von IP-Adressen finden Sie unter [IP-Adressen – Preise](https://azure.microsoft.com/pricing/details/ip-addresses/).
 2. Löschen Sie die Bereitstellungen. „xxx.cloudapp.net“ darf nicht gelöscht werden, damit Sie sie künftig weiter verwenden können.
 3. Wenn Sie den Clouddienst mit derselben IP-Adresse erneut bereitstellen möchten, die Sie in Ihrem Abonnement reserviert haben, informieren Sie sich im Thema zu [Reservierten IP-Adressen für Cloud Services und Virtual Machines](https://azure.microsoft.com/blog/reserved-ip-addresses/).
-

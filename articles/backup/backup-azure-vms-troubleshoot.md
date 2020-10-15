@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316731"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058113"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -31,8 +31,7 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
 * Das **Ereignisprotokoll** zeigt möglicherweise Sicherungsfehler an, die aus anderen Sicherungsprodukten, z. B. der Windows Server-Sicherung, stammen und nicht auf Azure Backup zurückzuführen sind. Ermitteln Sie anhand der folgenden Schritte, ob das Problem bei Azure Backup liegt:
   * Wenn in der Ereignisquelle oder -meldung ein Fehler bei dem Eintrag **Sicherung** vorliegt, überprüfen Sie, ob die Sicherungen der Azure IaaS-VM-Sicherung erfolgreich waren und ob ein Wiederherstellungspunkt mit dem gewünschten Momentaufnahmetyp erstellt wurde.
   * Wenn Azure Backup funktioniert, liegt das Problem wahrscheinlich bei einer anderen Sicherungslösung.
-  * Im Folgenden finden Sie ein Beispiel für einen Fehler 517 in der Ereignisanzeige, bei dem Azure Backup einwandfrei funktionierte, aber die „Windows Server-Sicherung“ fehlgeschlagen ist:<br>
-    ![Windows Server-Sicherung fehlgeschlagen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * Im Folgenden finden Sie ein Beispiel für einen Fehler 517 in der Ereignisanzeige, bei dem Azure Backup einwandfrei funktionierte, aber die „Windows Server-Sicherung“ fehlgeschlagen ist: ![Windows Server-Sicherung fehlgeschlagen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Wenn Azure Backup fehlschlägt, suchen Sie den entsprechenden Fehlercode im Abschnitt „Häufige Fehler bei der VM-Sicherung“ in diesem Artikel.
 
 ## <a name="common-issues"></a>Häufige Probleme
@@ -106,31 +105,33 @@ Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zus
 Dieser Fehler tritt auf, weil die VSS Writer in einem fehlerhaften Zustand waren. Azure Backup-Erweiterungen interagieren mit VSS Writern, um Momentaufnahmen von den Datenträgern zu erstellen. Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 
 Schritt 1: Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen neu.
-- Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl ```vssadmin list writers``` aus.
-- Die Ausgabe enthält alle VSS Writer-Instanzen und deren Zustand. Starten Sie für jeden VSS Writer mit einem Zustand, der nicht **[1] Stabil** lautet, den entsprechenden VSS Writer-Dienst neu. 
-- Führen Sie die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus, um den Dienst neu zu starten:
+
+* Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl ```vssadmin list writers``` aus.
+* Die Ausgabe enthält alle VSS Writer-Instanzen und deren Zustand. Starten Sie für jeden VSS Writer mit einem Zustand, der nicht **[1] Stabil** lautet, den entsprechenden VSS Writer-Dienst neu.
+* Führen Sie die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus, um den Dienst neu zu starten:
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
 
 > [!NOTE]
 > Wenn Sie einige Dienste neu starten, kann dies Auswirkungen auf Ihre Produktionsumgebung haben. Stellen Sie sicher, dass der Genehmigungsprozess befolgt wird und der Dienst zur geplanten Downtime neu gestartet wird.
- 
-   
+
 Schritt 2: Falls das Problem durch das Neustarten der VSS Writer-Instanzen nicht behoben werden konnte, sollten Sie den folgenden Befehl über eine Eingabeaufforderung mit erhöhten Rechten (als Administrator) ausführen, um zu verhindern, dass die Threads für Blobmomentaufnahmen erstellt werden.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+
 Schritt 3: Falls das Problem mit den Schritten 1 und 2 nicht behoben werden konnte, kann der Grund für den Fehler sein, dass für die VSS Writer-Instanzen aufgrund einer IOPS-Begrenzung ein Timeout auftritt.<br>
 
 Navigieren Sie zur Überprüfung zu ***System and Event Viewer Application logs*** (System- und Ereignisanzeige-Anwendungsprotokolle), und suchen Sie nach der folgenden Fehlermeldung:<br>
 *The shadow copy provider timed out while holding writes to the volume being shadow copied. This is probably due to excessive activity on the volume by an application or a system service. Try again later when activity on the volume is reduced.* (Für den Schattenkopieanbieter ist ein Timeout aufgetreten, während für das Volume für den Schattenkopiervorgang die Schreibvorgänge angehalten wurden. Der Grund ist wahrscheinlich ein übermäßig hoher Aktivitätsgrad auf dem Volume, der von einer Anwendung oder einem Systemdienst verursacht wird. Wiederholen Sie den Vorgang später, wenn der Aktivitätsgrad auf dem Volume nicht mehr so hoch ist.)<br>
 
 Lösung:
-- Suchen Sie nach Möglichkeiten, die Last auf die VM-Datenträger zu verteilen. Hierdurch wird die Auslastung der einzelnen Datenträger reduziert. Sie können die [IOPS-Drosselung überprüfen, indem Sie Diagnosemetriken auf Speicherebene aktivieren](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
-- Ändern Sie die Sicherungsrichtlinie so, dass die Sicherungsvorgänge außerhalb der Spitzenzeiten durchgeführt werden, wenn die Auslastung auf der VM am niedrigsten ist.
-- Führen Sie ein Upgrade für die Azure-Datenträger durch, damit höhere IOPS-Werte unterstützt werden. [Weitere Informationen finden Sie hier](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+
+* Suchen Sie nach Möglichkeiten, die Last auf die VM-Datenträger zu verteilen. Hierdurch wird die Auslastung der einzelnen Datenträger reduziert. Sie können die [IOPS-Drosselung überprüfen, indem Sie Diagnosemetriken auf Speicherebene aktivieren](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
+* Ändern Sie die Sicherungsrichtlinie so, dass die Sicherungsvorgänge außerhalb der Spitzenzeiten durchgeführt werden, wenn die Auslastung auf der VM am niedrigsten ist.
+* Führen Sie ein Upgrade für die Azure-Datenträger durch, damit höhere IOPS-Werte unterstützt werden. [Weitere Informationen finden Sie hier](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState – Fehler bei Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands des Volumeschattenkopie-Diensts
 
@@ -140,31 +141,32 @@ Fehlermeldung: Fehler bei Momentaufnahmevorgang aufgrund eines fehlerhaften Zust
 Dieser Fehler tritt auf, weil der VSS-Dienst in einem fehlerhaften Zustand war. Azure Backup-Erweiterungen interagieren mit dem VSS-Dienst, um Momentaufnahmen von den Datenträgern zu erstellen. Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 
 Starten Sie den Volumeschattenkopie-Dienst neu.
-- Navigieren Sie zu „services.msc“, und starten Sie den Volumeschattenkopie-Dienst neu.<br>
+
+* Navigieren Sie zu „services.msc“, und starten Sie den Volumeschattenkopie-Dienst neu.<br>
 (oder)<br>
-- Führen Sie die folgenden Befehle in einer Eingabeaufforderung mit erhöhten Rechten aus:
+* Führen Sie die folgenden Befehle in einer Eingabeaufforderung mit erhöhten Rechten aus:
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
- 
 Wenn das Problem weiterhin besteht, starten Sie den virtuellen Computer zur geplanten Downtime neu.
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable – Bei der VM-Erstellung ist ein Fehler aufgetreten, da die ausgewählte VM-Größe nicht verfügbar ist.
 
-Fehlercode: UserErrorSkuNotAvailable-Fehlermeldung: Bei der VM-Erstellung ist ein Fehler aufgetreten, da die ausgewählte VM-Größe nicht verfügbar ist. 
- 
+Fehlercode: UserErrorSkuNotAvailable-Fehlermeldung: Bei der VM-Erstellung ist ein Fehler aufgetreten, da die ausgewählte VM-Größe nicht verfügbar ist.
+
 Dieser Fehler tritt auf, weil die während des Wiederherstellungsvorgangs ausgewählte VM-Größe nicht unterstützt wird. <br>
 
 Um dieses Problem zu beheben, verwenden Sie während des Wiederherstellungsvorgangs die Option [Datenträger wiederherstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks). Verwenden Sie diese Datenträger, um einen virtuellen Computer aus der Liste der [verfügbaren unterstützten VM-Größen](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) mit [Powershell-Cmdlets](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) zu erstellen.
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported – Bei der VM-Erstellung ist ein Fehler aufgetreten, weil keine Marketplace-Kaufanforderung vorhanden war
 
-Fehlercode: UserErrorMarketPlaceVMNotSupported-Fehlermeldung: Bei der VM-Erstellung ist ein Fehler aufgetreten, weil keine Marketplace-Kaufanforderung vorhanden war. 
- 
+Fehlercode: UserErrorMarketPlaceVMNotSupported-Fehlermeldung: Bei der VM-Erstellung ist ein Fehler aufgetreten, weil keine Marketplace-Kaufanforderung vorhanden war.
+
 Azure Backup unterstützt die Sicherung und Wiederherstellung von VMs, die im Azure Marketplace verfügbar sind. Dieser Fehler tritt auf, wenn Sie versuchen, eine VM (mit einer bestimmten Plan/Herausgeber-Einstellung) wiederherzustellen, die im Azure Marketplace nicht mehr verfügbar ist. [Weitere Informationen finden Sie hier](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
-- Um dieses Problem zu beheben, verwenden Sie während des Wiederherstellungsvorgangs die Option [Datenträger wiederherstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) und dann die [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)- oder [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk)-Cmdlets, um die VM mit den neuesten Marketplace-Informationen entsprechend der VM zu erstellen.
-- Wenn der Herausgeber keine Marketplace-Informationen angibt, können Sie die Datenträger verwenden, um die Daten abzurufen, und Sie können diese an eine vorhandene VM anfügen.
+
+* Um dieses Problem zu beheben, verwenden Sie während des Wiederherstellungsvorgangs die Option [Datenträger wiederherstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) und dann die [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)- oder [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk)-Cmdlets, um die VM mit den neuesten Marketplace-Informationen entsprechend der VM zu erstellen.
+* Wenn der Herausgeber keine Marketplace-Informationen angibt, können Sie die Datenträger verwenden, um die Daten abzurufen, und Sie können diese an eine vorhandene VM anfügen.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
 
@@ -244,7 +246,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 
 **Schritt 2:** Versuchen Sie, den Sicherungszeitplan auf einen Zeitpunkt zu ändern, zu dem die VM eine geringere Auslastung (wie z. B. weniger CPU oder IOps) aufweist.
 
-**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://azure.microsoft.com/blog/resize-virtual-machines/) und den Vorgang dann erneut durchzuführen.
+**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) und den Vorgang dann erneut durchzuführen.
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: Der Vorgang konnte nicht ausgeführt werden, weil der virtuelle Computer nicht mehr vorhanden ist./400094, BCMV2VMNotFound: Der virtuelle Computer ist nicht vorhanden/Der virtuelle Azure-Computer wurde nicht gefunden.
 
@@ -315,12 +317,12 @@ Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in 
 
 ## <a name="restore"></a>Restore
 
-#### <a name="disks-appear-offline-after-file-restore"></a>Datenträger werden nach der Dateiwiederherstellung offline angezeigt
+### <a name="disks-appear-offline-after-file-restore"></a>Datenträger werden nach der Dateiwiederherstellung offline angezeigt
 
-Gehen Sie wie folgt vor, falls Sie nach der Wiederherstellung feststellen, dass sich die Datenträger im Offlinezustand befinden: 
+Gehen Sie wie folgt vor, falls Sie nach der Wiederherstellung feststellen, dass sich die Datenträger im Offlinezustand befinden:
+
 * Vergewissern Sie sich, dass der Computer, auf dem das Skript ausgeführt wird, die Betriebssystemanforderungen erfüllt. [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Stellen Sie sicher, dass Sie die Wiederherstellung nicht auf derselben Quelle durchführen ([weitere Informationen](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)).
-
 
 | Fehlerdetails | Problemumgehung |
 | --- | --- |

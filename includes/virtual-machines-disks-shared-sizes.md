@@ -9,10 +9,10 @@ ms.date: 04/06/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81008335"
 ---
 Vorerst können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Unterschiedliche Datenträgergrößen haben möglicherweise verschiedene `maxShares`-Limits, die Sie beim Festlegen des `maxShares`-Werts nicht überschreiten können. Bei SSD Premium sind die Datenträgergrößen, die die Freigabe ihrer Datenträger unterstützen, P15 und größer.

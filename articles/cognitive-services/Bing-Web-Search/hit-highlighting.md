@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68854014"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Verwenden von Dekorationsmarkierungen zum Markieren von Text
@@ -53,28 +53,28 @@ Wenn `textDecorations` auf `true` festgelegt ist, können in Bing die unten ange
 
 |Unicode|HTML|BESCHREIBUNG
 |-|-|-
-|U+E000|\<b&gt;|Markiert den Anfang des Abfrageausdrucks (Treffermarkierung)
-|U+E001|\</b&gt;|Markiert das Ende des Abfrageausdrucks
-|U+E002|\<i&gt;|Markiert den Anfang von Text in Kursivdruck 
-|U+E003|\</i&gt;|Markiert das Ende von Text in Kursivdruck
-|U+E004|\<br/&gt;|Markiert einen Zeilenumbruch
+|U+E000|\<b>|Markiert den Anfang des Abfrageausdrucks (Treffermarkierung)
+|U+E001|\</b>|Markiert das Ende des Abfrageausdrucks
+|U+E002|\<i>|Markiert den Anfang von Text in Kursivdruck 
+|U+E003|\</i>|Markiert das Ende von Text in Kursivdruck
+|U+E004|\<br/>|Markiert einen Zeilenumbruch
 |U+E005||Markiert den Anfang einer Telefonnummer
 |U+E006||Markiert das Ende einer Telefonnummer
 |U+E007||Markiert den Anfang einer Adresse
 |U+E008||Markiert das Ende einer Adresse
 |U+E009|\&nbsp;|Markiert ein geschütztes Leerzeichen
-|U+E00C|\<strong&gt;|Markiert den Anfang von Text in Fettdruck
-|U+E00D|\</strong&gt;|Markiert das Ende von Text in Fettdruck
+|U+E00C|\<strong>|Markiert den Anfang von Text in Fettdruck
+|U+E00D|\</strong>|Markiert das Ende von Text in Fettdruck
 |U+E00E||Markiert den Anfang von Text, dessen Hintergrund heller als der umgebende Hintergrund sein soll
 |U+E00F||Markiert das Ende von Text, dessen Hintergrund heller als der umgebende Hintergrund sein soll
 |U+E010||Markiert den Anfang von Text, dessen Hintergrund dunkler als der umgebende Hintergrund sein soll
 |U+E011||Markiert das Ende von Text, dessen Hintergrund dunkler als der umgebende Hintergrund sein soll
-|U+E012|\<del&gt;|Markiert den Anfang von Text, der durchgestrichen sein soll
-|U+E013|\</del&gt;|Markiert das Ende von Text, der durchgestrichen sein soll
-|U+E016|\<sub&gt;|Markiert den Anfang von tiefgestelltem Text
-|U+E017|\</sub&gt;|Markiert das Ende von tiefgestelltem Text
-|U+E018|\<sup&gt;|Markiert den Anfang von hochgestelltem Text
-|U+E019|\</sup&gt;|Markiert das Ende von hochgestelltem Text
+|U+E012|\<del>|Markiert den Anfang von Text, der durchgestrichen sein soll
+|U+E013|\</del>|Markiert das Ende von Text, der durchgestrichen sein soll
+|U+E016|\<sub>|Markiert den Anfang von tiefgestelltem Text
+|U+E017|\</sub>|Markiert das Ende von tiefgestelltem Text
+|U+E018|\<sup>|Markiert den Anfang von hochgestelltem Text
+|U+E019|\</sup>|Markiert das Ende von hochgestelltem Text
 
 ## <a name="next-steps"></a>Nächste Schritte
 

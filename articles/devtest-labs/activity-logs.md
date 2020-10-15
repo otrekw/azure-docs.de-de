@@ -4,10 +4,10 @@ description: Dieser Artikel enthält die Schritte zum Anzeigen von Aktivitätspr
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: 24b5eb25f1c8c9044ad6e77545381a43a11714f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87094377"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>Anzeigen von Aktivitätsprotokollen in Azure DevTest Labs 
@@ -27,19 +27,19 @@ In diesem Artikel wird erläutert, wie Sie Aktivitätsprotokolle für ein Lab in
     :::image type="content" source="./media/activity-logs/configuration-policies-link.png" alt-text="Auswählen von „Konfiguration und Richtlinien“ im linken Menü":::
 1. Wählen Sie auf der Seite **Konfiguration und Richtlinien** im linken Menü unter **Verwalten** die Option **Aktivitätsprotokoll** aus. Hier sollten Sie Einträge zu Vorgängen im Lab sehen. 
 
-    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="Aktivitätsprotokoll":::    
+    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="Auswählen von „Konfiguration und Richtlinien“ im linken Menü":::    
 1. Wählen Sie ein Ereignis aus, um Details dazu anzuzeigen. Auf der Seite **Zusammenfassung** finden Sie Informationen wie z. B. den Namen des Vorgangs, einen Zeitstempel und die ausführende Person. 
     
-    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="Ereignis „VM beenden“ – Zusammenfassung":::        
+    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="Auswählen von „Konfiguration und Richtlinien“ im linken Menü":::        
 1. Wechseln Sie zur Registerkarte **JSON**, um weitere Details anzuzeigen. Im folgenden Beispiel sehen Sie den Namen der VM und den Vorgang, der für die VM ausgeführt wurde (sie wurde beendet).
 
-    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="Ereignis „VM beenden“ – JSON":::           
+    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="Auswählen von „Konfiguration und Richtlinien“ im linken Menü":::           
 1. Wechseln Sie zur Registerkarte **Änderungsverlauf (Vorschau)** , um den Verlauf der Änderungen anzuzeigen. Im folgenden Beispiel sehen Sie, die Änderung, die für die VM vorgenommen wurde. 
 
-    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="Ereignis „VM beenden“ – Änderungsverlauf":::             
+    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="Auswählen von „Konfiguration und Richtlinien“ im linken Menü":::             
 1. Wählen Sie die Änderung in der Liste des Änderungsverlaufs aus, um weitere Details zur Änderung anzuzeigen. 
 
-    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="Ereignis „VM beenden“ – Änderungsdetails":::             
+    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="Auswählen von „Konfiguration und Richtlinien“ im linken Menü":::             
 
 Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md).
 

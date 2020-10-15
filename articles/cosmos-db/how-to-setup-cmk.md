@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
 ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836508"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
@@ -28,11 +28,11 @@ Sie müssen vom Kunden verwaltete Schlüssel in [Azure Key Vault](../key-vault/g
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, navigieren Sie zu Ihrem Azure-Abonnement, und wählen Sie auf der Registerkarte **Einstellungen** die Option **Ressourcenanbieter** aus:
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Eintrag „Ressourcenanbieter“ im linken Menü":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 1. Suchen Sie nach dem Ressourcenanbieter **Microsoft.DocumentDB**. Überprüfen Sie, ob der Ressourcenanbieter bereits als registriert gekennzeichnet ist. Wenn dies nicht der Fall ist, wählen Sie den Ressourcenanbieter aus, und wählen Sie dann **Registrieren** aus:
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="Registrieren des Ressourcenanbieters „Microsoft.DocumentDB“":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Konfigurieren Ihrer Azure Key Vault-Instanz
 
@@ -40,7 +40,7 @@ Wenn Sie kundenseitig verwaltete Schlüssel mit Azure Cosmos DB verwenden, müss
 
 Wenn Sie eine neue Azure Key Vault-Instanz erstellen, aktivieren Sie diese Eigenschaften während der Erstellung:
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="Aktivieren des vorläufigen Löschens und des Löschschutzes für eine neue Azure Key Vault-Instanz":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfen, ob diese Eigenschaften aktiviert sind, indem Sie sich im Azure-Portal den Abschnitt **Eigenschaften** ansehen. Ist eine dieser Eigenschaften nicht aktiviert, finden Sie in den Abschnitten „Aktivieren des vorläufigen Löschens“ und „Aktivieren des Bereinigungsschutzes“ in einem der folgenden Artikel weitere Informationen:
 
@@ -51,17 +51,17 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 1. Navigieren Sie im Azure-Portal zu der Azure Key Vault-Instanz, die Sie zum Hosten Ihrer Verschlüsselungsschlüssel verwenden möchten. Wählen Sie im linken Menü die Option **Zugriffsrichtlinien** aus.
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Zugriffsrichtlinien im linken Menü":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 1. Wählen Sie **+ Zugriffsrichtlinie hinzufügen** aus.
 
 1. Wählen Sie im Dropdownmenü **Schlüsselberechtigungen** die Berechtigungen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen** aus:
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="Auswählen der richtigen Berechtigungen":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 1. Wählen Sie unter **Prinzipal auswählen** die Option **Nichts ausgewählt** aus. Suchen Sie dann nach dem **Azure Cosmos DB**-Prinzipal, und wählen Sie ihn aus (um ihn leichter zu finden, können Sie auch nach der Prinzipal-ID suchen: `a232010e-820c-4083-83bb-3ace5fc29d0b` für alle Azure-Regionen, mit Ausnahme der Azure Government-Regionen, bei denen die Prinzipal-ID `57506a73-e302-42a9-b869-6f12d9ec29e9` lautet). Wählen Sie schließlich im unteren Bereich **Auswählen** aus. Wenn der Prinzipal **Azure Cosmos DB** nicht in der Liste aufgeführt ist, müssen Sie möglicherweise den Ressourcenanbieter **Microsoft.DocumentDB** erneut registrieren (wie im Abschnitt [Registrieren des Ressourcenanbieters](#register-resource-provider) in diesem Artikel beschrieben).
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Auswählen des Azure Cosmos DB-Prinzipals":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 1. Wählen Sie **Hinzufügen** aus, um die neue Zugriffsrichtlinie hinzuzufügen.
 
@@ -71,17 +71,17 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 1. Navigieren Sie im Azure-Portal zu der Azure Key Vault-Instanz, die Sie zum Hosten Ihrer Verschlüsselungsschlüssel verwenden möchten. Wählen Sie dann im linken Menü die Option **Schlüssel** aus:
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Eintrag „Schlüssel“ im linken Menü":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 1. Wählen Sie **Generieren/Importieren** aus, geben Sie einen Namen für den neuen Schlüssel an, und wählen Sie eine RSA-Schlüsselgröße aus. Es wird eine Größe von mindestens 3072 empfohlen, da diese Größe die höchste Sicherheit bietet. Wählen Sie anschließend **Erstellen** aus:
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="Erstellen eines neuen Schlüssels":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 1. Wählen Sie nach der Schlüsselerstellung den neu erstellten Schlüssel und dann seine aktuelle Version aus.
 
 1. Kopieren Sie den **Schlüsselbezeichner** des Schlüssels mit Ausnahme des Teils nach dem letzten Schrägstrich:
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="Kopieren des Schlüsselbezeichners des Schlüssels":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 ## <a name="create-a-new-azure-cosmos-account"></a>Erstellen eines neuen Azure Cosmos-Kontos
 
@@ -89,7 +89,7 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 Wählen Sie beim Erstellen eines neuen Azure Cosmos DB-Kontos im Azure-Portal im Schritt **Verschlüsselung** die Option **Vom Kunden verwalteter Schlüssel** aus. Fügen Sie in das Feld **Schlüssel-URI** den URI/Schlüsselbezeichner des Azure Key Vault-Schlüssels ein, den Sie im vorherigen Schritt kopiert haben:
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="Festlegen der CMK-Parameter im Azure-Portal":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 ### <a name="using-azure-powershell"></a><a id="using-powershell"></a> Verwenden von Azure PowerShell
 
@@ -228,15 +228,15 @@ Die Rotation des kundenseitig verwalteten Schlüssels, der von Ihrem Azure Cosmo
 
 - Erstellen Sie eine neue Version des Schlüssels, der derzeit von Azure Key Vault verwendet wird:
 
-  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Erstellen einer neuen Schlüsselversion":::
+  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 - Tauschen Sie den derzeit verwendeten Schlüssel gegen einen völlig anderen aus, indem Sie den Schlüssel-URI in Ihrem Konto aktualisieren. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos-Konto, und wählen Sie im linken Menü die Option **Datenverschlüsselung** aus:
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Menüeintrag „Datenverschlüsselung“":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
     Ersetzen Sie dann den **Schlüssel-URI** durch den neuen Schlüssel, den Sie verwenden möchten, und wählen Sie **Speichern** aus:
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="Aktualisieren des Schlüssel-URI":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
     Gehen Sie folgendermaßen vor, um das gleiche Ergebnis in PowerShell zu erzielen:
 
@@ -299,7 +299,7 @@ Derzeit nicht. Es werden jedoch Schlüssel auf Containerebene in Erwägung gezog
 
 Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos-Konto, und suchen Sie im linken Menü nach dem Eintrag **Datenverschlüsselung**. Wenn dieser Eintrag vorhanden ist, sind kundenseitig verwaltete Schlüssel für Ihr Konto aktiviert:
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Menüeintrag „Datenverschlüsselung“":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 Sie können die Details Ihres Azure Cosmos-Kontos auch programmgesteuert abrufen und überprüfen, ob die Eigenschaft `keyVaultKeyUri` vorhanden ist. Informationen zur Vorgehensweise [in PowerShell](#using-powershell) und [mithilfe der Azure CLI](#using-azure-cli) finden Sie weiter oben.
 
@@ -311,11 +311,11 @@ Azure Cosmos DB erstellt [regelmäßige und automatische Sicherungen](./online-b
 
 Die Schlüsselsperrung erfolgt durch Deaktivieren der aktuellen Version des Schlüssels:
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="Deaktivieren der Version eines Schlüssels":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 Alternativ können Sie zum Sperren aller Schlüssel in einer Azure Key Vault-Instanz die dem Azure Cosmos DB-Prinzipal erteilte Zugriffsrichtlinie löschen:
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="Löschen der Zugriffsrichtlinie für den Azure Cosmos DB-Prinzipal":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 ### <a name="what-operations-are-available-after-a-customer-managed-key-is-revoked"></a>Welche Vorgänge sind nach dem Sperren/Widerrufen eines vom Kunden verwalteten Schlüssels verfügbar?
 
