@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91025059"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082109"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
 BGP wird mit Ausnahme der SKU „Basic“ für alle Azure-VPN-Gateway-SKUs unterstützt.
@@ -108,3 +108,6 @@ Ja.
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Was muss ich meinem lokalen VPN-Gerät für die BGP-Peeringsitzung hinzufügen?
 Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hinzufügen, die auf den IPsec-S2S-VPN-Tunnel verweist. Lautet die Azure-VPN-Peer-IP-Adresse also etwa 10.12.255.30, müssen Sie eine Hostroute für 10.12.255.30 mit einer Nexthop-Schnittstelle der entsprechenden IPSec-Tunnelschnittstelle auf Ihrem VPN-Gerät hinzufügen.
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>Unterstützt das Gateway für virtuelle Netzwerke Bidirectional Forwarding Detection (BFD) für Site-to-Site-Verbindungen mit BGP?
+Nein. Bidirectional Forwarding Detection (BFD) ist ein Protokoll, das zusammen mit BGP verwendet werden kann, um Nachbar-Downtime schneller zu erkennen als bei Verwendung standardmäßiger BGP-Keepalives. BFD verwendet Zeitgeber im Sekundenbruchteilbereich. Diese sind für den Einsatz in LAN-Umgebungen konzipiert, aber nicht für öffentliche Internetverbindungen oder für WAN-Verbindungen geeignet. Bei Verbindungen über das öffentliche Internet ist es nicht ungewöhnlich, dass bestimmte Pakete verzögert oder sogar verworfen werden. Daher würde die Einführung dieser aggressiven Zeitgeber zu mehr Instabilität führen, was unter Umständen eine Dämpfung von Routen durch BGP zur Folge hätte. Alternativ können Sie Ihr lokales Gerät mit Zeitgebern konfigurieren, die niedriger sind als das standardmäßige Keepalive-Intervall von 60 Sekunden und der Hold-Zeitgeber von 180 Sekunden, um eine schnellere Konvergenz zu erreichen.

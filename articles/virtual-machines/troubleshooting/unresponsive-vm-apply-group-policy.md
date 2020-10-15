@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
 ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526009"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>VM reagiert nicht beim Anwenden der Richtlinie „Gruppenrichtlinie für lokale Benutzer und Gruppen“
@@ -31,7 +31,7 @@ Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um einen Screensh
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Screenshot des Ladevorgangs zum Anwenden der Gruppenrichtlinie für lokale Benutzer und Gruppen (Windows Server 2012 R2)":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Screenshot des Ladevorgangs zum Anwenden der Gruppenrichtlinie für lokale Benutzer und Gruppen (Windows Server 2012)":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Screenshot des Ladevorgangs zum Anwenden der Gruppenrichtlinie für lokale Benutzer und Gruppen (Windows Server 2012 R2)":::
 
 ## <a name="cause"></a>Ursache
 
@@ -66,23 +66,7 @@ Dies ist die problematische Richtlinie:
 1. Öffnen Sie auf der Reparatur-VM den Registrierungs-Editor.
 1. Suchen Sie den Schlüssel **HKEY_LOCAL_MACHINE**, und klicken Sie dann im Menü **Datei** auf **Struktur laden**.
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Screenshot mit hervorgehobenem Schlüssel HKEY_LOCAL_MACHINE und dem Menü, das „Struktur laden“ enthält.":::
-
-    - Über „Struktur laden“ können Sie Registrierungsschlüssel aus einem Offlinesystem laden. In diesem Fall ist das System der mit der Reparatur-VM verknüpfte beschädigte Datenträger.
-    - Systemweite Einstellungen sind unter `HKEY_LOCAL_MACHINE` gespeichert und können als „HKLM“ abgekürzt werden.
-1. Navigieren Sie auf dem angefügten Datenträger zur Datei `\windows\system32\config\SOFTWARE`, und öffnen Sie sie.
-
-    1. Wenn Sie zur Angabe eines Namens aufgefordert werden, geben Sie „BROKENSOFTWARE“ ein.
-    1. Um zu überprüfen, ob BROKENSOFTWARE geladen wurde, erweitern Sie **HKEY_LOCAL_MACHINE**, und suchen Sie nach dem hinzugefügten Schlüssel BROKENSOFTWARE.
-1. Navigieren Sie zu BROKENSOFTWARE, und überprüfen Sie, ob der Schlüssel CleanupProfiles in der geladenen Struktur vorhanden ist.
-
-    1. Wenn dies der Fall ist, ist die CleanupProfiles-Richtlinie festgelegt. Der Wert stellt die in der Aufbewahrungsrichtlinie festgelegte Dauer in Tagen dar. Fahren Sie mit dem Löschen des Schlüssels fort.
-    1. Wenn der Schlüssel nicht vorhanden ist, ist die CleanupProfile-Richtlinie nicht festgelegt. [Senden Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), und schließen Sie die memory.dmp-Datei ein, die sich im Windows-Verzeichnis des angefügten Betriebssystem-Datenträgers befindet.
-
-1. Löschen Sie den CleanupProfiles-Schlüssel mit diesem Befehl:
-
-    ```
-    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Screenshot des Ladevorgangs zum Anwenden der Gruppenrichtlinie für lokale Benutzer und Gruppen (Windows Server 2012 R2)" /v CleanupProfiles /f
     ```
 1.  Entladen Sie die BROKENSOFTWARE-Struktur mit diesem Befehl:
 

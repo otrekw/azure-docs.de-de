@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 8d0860cc5a4ee60cbf60d7b55789c518049dfb90
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528773"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Verwenden der CLI zum Konfigurieren der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank
@@ -53,7 +53,7 @@ az group delete --name $secondaryResource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | Befehle für Pools für elastische Datenbanken |
 | [az sql db replica](/cli/azure/sql/db/replica) | Befehle für die Datenbankreplikation |

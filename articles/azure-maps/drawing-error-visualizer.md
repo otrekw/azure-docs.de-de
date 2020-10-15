@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524742"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler
@@ -82,11 +82,11 @@ Nachdem Sie das Schnellansichtstool für Zeichnungsfehler gestartet haben, wird 
 
 Die Datei _ConversionWarningsAndErrors.json_ wurde am Stamm des heruntergeladenen Verzeichnisses platziert. Zum Laden der Datei _ConversionWarningsAndErrors.json_ können Sie sie entweder per Drag & Drop auf das Feld ziehen oder auf das Feld klicken, im Datei-Explorer-Dialogfeld zu der Datei navigieren und sie anschließend hochladen.
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Schnellansicht-App für Zeichnungsfehler: Drag & Drop-Bereich zum Laden von Daten":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Schnellansicht-App für Zeichnungsfehler: Startseite":::
 
 Nachdem die Datei _ConversionWarningsAndErrors.json_ geladen wurde, wird eine Liste Ihrer Zeichnungspaketfehler und -warnungen angezeigt. Für alle Fehler bzw. Warnungen sind jeweils die Schicht, die Ebene und eine ausführliche Meldung angegeben. Ausführliche Informationen zu einem Fehler oder einer Warnung erhalten Sie durch Klicken auf den Link **Details**. Daraufhin wird unter der Liste ein entsprechender Abschnitt angezeigt. Nun können Sie zu den einzelnen Fehlern navigieren, um weitere Informationen zur Fehlerbehebung zu erhalten.
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Schnellansicht-App für Zeichnungsfehler: Fehler und Warnungen":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Schnellansicht-App für Zeichnungsfehler: Startseite":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068008"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969636"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Netzwerkoptionen des Azure VM Image Builder-Diensts
 
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie in einem der folgenden Beispiele:
 
 ### <a name="what-is-azure-private-link"></a>Was ist Azure Private Link?
 
-Azure Private Link stellt eine private Verbindung zwischen einem virtuellen Netzwerk und Azure-PaaS-Diensten (Platform-as-a-Service), kundeneigenen Diensten oder Diensten von Microsoft-Partnern her. Dadurch wird die Netzwerkarchitektur vereinfacht und die Verbindung zwischen Endpunkten in Azure wird geschützt, indem die Offenlegung von Daten im öffentlichen Internet verhindert wird. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link).
+Azure Private Link stellt eine private Verbindung zwischen einem virtuellen Netzwerk und Azure-PaaS-Diensten (Platform-as-a-Service), kundeneigenen Diensten oder Diensten von Microsoft-Partnern her. Dadurch wird die Netzwerkarchitektur vereinfacht und die Verbindung zwischen Endpunkten in Azure wird geschützt, indem die Offenlegung von Daten im öffentlichen Internet verhindert wird. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../../private-link/index.yml).
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>Erforderliche Berechtigungen für ein vorhandenes VNET
 
@@ -68,7 +68,7 @@ Die zusätzlich zur Build-VM bereitgestellte Proxy-VM-Größe ist „Standard A1
 | subnetName | Diese Einstellung gibt den Namen des Subnetzes im angegebenen virtuellen Netzwerk an. Diese Einstellung muss und darf nur angegeben werden, wenn die Einstellung *Name* angegeben wird. |
 | resourceGroupName | Diese Einstellung gibt den Namen der Ressourcengruppe an, die das angegebene virtuelle Netzwerk enthält. Diese Einstellung muss und darf nur angegeben werden, wenn die Einstellung *Name* angegeben wird. |
 
-Der Private Link-Dienst erfordert eine IP-Adresse für das jeweilige VNET und Subnetz. Azure unterstützt Netzwerkrichtlinien für diese IP-Adressen derzeit nicht. Daher müssen Netzwerkrichtlinien für das Subnetz deaktiviert werden. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link).
+Der Private Link-Dienst erfordert eine IP-Adresse für das jeweilige VNET und Subnetz. Azure unterstützt Netzwerkrichtlinien für diese IP-Adressen derzeit nicht. Daher müssen Netzwerkrichtlinien für das Subnetz deaktiviert werden. Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../../private-link/index.yml).
 
 ### <a name="checklist-for-using-your-vnet"></a>Prüfliste zur Verwendung Ihres VNETs
 

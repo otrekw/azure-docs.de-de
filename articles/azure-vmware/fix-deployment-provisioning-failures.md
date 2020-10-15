@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie die Informationen in Ihrer 
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752240"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution: Anfordern von Hilfe zu Bereitstellungen oder Bereitstellungsfehlern
@@ -37,7 +37,7 @@ Wenn der Fehler in einer der Phasen der Vorabüberprüfung auftritt, bevor die p
 
 Die Fehlerdetails können beim Beheben des Problems ebenfalls sehr hilfreich sein. Klicken Sie auf dem vorherigen Bildschirm auf **Klicken Sie hier, um Details anzuzeigen.** (hervorgehoben), und eine Fehlerzusammenfassung (folgender Screenshot) wird geöffnet.
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Fehlerzusammenfassung":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Fehlgeschlagene Bereitstellung einer privaten Cloud mit Korrelations-ID":::
 
 Kopieren und speichern Sie wieder diese Zusammenfassung, um sie später in der Serviceanfrage zu verwenden.
  
@@ -45,15 +45,15 @@ Kopieren und speichern Sie wieder diese Zusammenfassung, um sie später in der S
 
 Sie können frühere Bereitstellungen (einschließlich fehlerhafter Bereitstellungen) abrufen, indem Sie im Aktivitätsprotokoll für Bereitstellungen danach suchen. Sie öffnen das Protokoll, indem Sie auf das Benachrichtigungssymbol klicken.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Benachrichtigungen öffnen":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Fehlgeschlagene Bereitstellung einer privaten Cloud mit Korrelations-ID":::
 
 Klicken Sie unter „Benachrichtigungen“ auf **Weitere Ereignisse im Aktivitätsprotokoll**.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Link: Weitere Ereignisse im Aktivitätsprotokoll":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Fehlgeschlagene Bereitstellung einer privaten Cloud mit Korrelations-ID":::
 
 Suchen Sie anschließend nach dem Namen der Ressource oder einer anderen eindeutigen Information, die Sie für die Erstellung der Ressource verwendet haben, um die fehlgeschlagene Bereitstellung und die entsprechende Korrelations-ID zu ermitteln. Im folgenden Beispiel werden die Suchergebnisse für eine private Cloudressource (pc03) angezeigt.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Suchen nach früheren fehlerhaften Azure VMware Solution-Bereitstellungen":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Fehlgeschlagene Bereitstellung einer privaten Cloud mit Korrelations-ID":::
  
 Wenn Sie auf den Vorgangsnamen der fehlgeschlagenen Bereitstellung klicken, wird ein Detailfenster geöffnet. Klicken Sie auf die Registerkarte „JSON“, und suchen Sie nach „correlationId“. Kopieren Sie den entsprechenden Wert, und nennen Sie ihn in der Serviceanfrage. 
  
@@ -63,7 +63,7 @@ Möglicherweise verfügen Sie bereits über eine private Cloud, und es tritt ein
 
 Wenn Sie eine private Cloud im Portal anzeigen möchten, klicken Sie auf **Konnektivität > ExpressRoute**, und kopieren Sie die **ExpressRoute-ID** in die Zwischenablage.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Kopieren Sie die ExpressRoute-ID in die Zwischenablage."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Fehlgeschlagene Bereitstellung einer privaten Cloud mit Korrelations-ID"::: 
  
 Fügen Sie die ExpressRoute-ID in das entsprechende Feld in der neuen Supportanfrage ein. Weitere Informationen finden Sie im folgenden Abschnitt [Erstellen einer Supportanfrage](#create-your-support-request).
  
@@ -78,7 +78,7 @@ Dieser Artikel enthält zusätzliche Anleitungen für das Erstellen einer Suppor
 
 1. Klicken Sie auf das **Hilfesymbol** und dann auf **+ New support request** (+ Neue Supportanfrage).
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Erfassen Sie eine ExpressRoute-ID für Ihre Supportanfrage.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Fehlgeschlagene Bereitstellung einer privaten Cloud mit Korrelations-ID":::
 
 2. Füllen Sie alle Pflichtfelder aus, und klicken Sie auf die Registerkarte **Grundlegende Einstellungen**:
 

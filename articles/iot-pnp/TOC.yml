@@ -48,7 +48,7 @@
     - name: Herstellen einer Verbindung mit einem Gerät mithilfe von MQTT
       href: tutorial-use-mqtt.md
     - name: Interagieren mit einem MXChip-Gerät (Beispiel)
-      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
     - name: Migrieren eines Geräts zu einem Modul
       href: tutorial-migrate-device-to-module.md
 - name: Konzepte
@@ -108,34 +108,34 @@
     - name: Bibliotheken und SDKs
       href: libraries-sdks.md
     - name: REST-API für digitale Zwillinge
-      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
+      href: /rest/api/iothub/service/digitaltwin
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT-Dienste
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT Solution Accelerators
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: /azure/iot-pnp
+          href: ./index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT-Geräte-SDKs
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks

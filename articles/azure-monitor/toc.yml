@@ -214,6 +214,8 @@
           href: log-query/scope.md
         - name: Einfache Oberfläche für Protokolle
           href: log-query/simple-logs.md
+        - name: Abfragen mit Azure Data Explorer
+          href: platform/azure-data-explorer-monitor-proxy.md
         - name: Protokollabfragen
           items:
             - name: Standardspalten
@@ -286,7 +288,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -303,6 +305,14 @@
               href: platform/service-providers.md
             - name: Dedicated-Cluster
               href: log-query/logs-dedicated-clusters.md
+        - name: Datenexport
+          items:
+            - name: Exportieren von Arbeitsbereichsdaten
+              href: platform/logs-data-export.md
+            - name: Exportieren mit Logic Apps
+              href: platform/logs-export-logic-app.md
+            - name: Abfragen exportierter Daten mit Data Explorer
+              href: platform/azure-data-explorer-query-storage.md
     - name: Metrik-Explorer
       items:
         - name: Erste Schritte mit Metrik-Explorer

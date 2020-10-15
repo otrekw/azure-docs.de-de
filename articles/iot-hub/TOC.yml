@@ -66,7 +66,7 @@
               href: tutorial-routing.md
             - name: Azure RM-Vorlage
               href: tutorial-routing-config-message-routing-RM-template.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: tutorial-routing-config-message-routing-CLI.md
             - name: PowerShell
               href: tutorial-routing-config-message-routing-PowerShell.md
@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: Entwickeln für die Android Things-Plattform
               href: iot-hub-how-to-android-things.md
+        - name: "Entwickeln ohne Azure\_IoT\_SDK"
+          href: iot-hub-devguide-no-sdk.md
         - name: Abfragen von Avro-Daten aus einer Hubroute
           href: iot-hub-query-avro-data.md
         - name: Sortieren der Geräteverbindungsstatus-Ereignisse von Event Grid
@@ -420,7 +422,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

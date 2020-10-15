@@ -194,7 +194,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:
@@ -240,6 +240,8 @@
           href: /rest/api/resources/policyassignments
         - name: Richtliniendefinitionen
           href: /rest/api/resources/policydefinitions
+        - name: Richtlinienausnahmen
+          href: /rest/api/resources/policyexemptions
         - name: Initiativendefinitionen
           href: /rest/api/resources/policysetdefinitions
         - name: Durch Richtlinie überwachte Ressourcen

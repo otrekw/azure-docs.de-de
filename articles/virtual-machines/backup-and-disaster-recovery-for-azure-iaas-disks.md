@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754972"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969703"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
 
@@ -48,7 +48,7 @@ Aufgrund dieser Architektur konnte Azure für IaaS-Datenträger durchgängig ein
 
 Lokale Hardwareausfälle auf dem Computehost oder auf der Speicherplattform können in einigen Fällen zu einer vorübergehenden Nichtverfügbarkeit der VM führen. Dies ist durch die [Azure-Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/virtual-machines/) für die VM-Verfügbarkeit abgedeckt. Für Azure wird auch eine branchenführende SLA für einzelne VM-Instanzen bereitgestellt, die Azure-Premium-SSD-Datenträger nutzen.
 
-Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](windows/manage-availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten.
+Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](./manage-availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten.
 
 Wegen dieser separaten Fehlerdomänen wirken sich lokale Hardwareausfälle in der Regel nicht gleichzeitig auf mehrere VMs in der Gruppe aus. Separate Fehlerdomänen gewährleisten Hochverfügbarkeit Ihrer Anwendung. Eine bewährte Methode besteht darin, Verfügbarkeitsgruppen zu verwenden, wenn Hochverfügbarkeit erforderlich ist. Im nächsten Abschnitt wird die Notfallwiederherstellung behandelt.
 
@@ -77,7 +77,7 @@ Angenommen, Sie verwenden einen Produktionsdatenbankserver wie SQL Server oder O
 - Die Daten müssen geschützt und wiederherstellbar sein.
 - Der Server muss für die Nutzung verfügbar sein.
 
-Der Notfallwiederherstellungs-Plan erfordert ggf. das Vorhalten eines Replikats der Datenbank in einer anderen Region als Sicherung. Je nach den Anforderungen für die Serververfügbarkeit und Datenwiederherstellung kann die Lösung von einem Aktiv-Aktiv- oder Aktiv-Passiv-Replikatstandort bis zu regelmäßigen Offlinesicherungen der Daten reichen. Relationale Datenbanken, z.B. SQL Server und Oracle, bieten unterschiedliche Optionen für die Replikation. Nutzen Sie für SQL Server [SQL Server AlwaysOn-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx), um Hochverfügbarkeit zu erzielen.
+Der Notfallwiederherstellungs-Plan erfordert ggf. das Vorhalten eines Replikats der Datenbank in einer anderen Region als Sicherung. Je nach den Anforderungen für die Serververfügbarkeit und Datenwiederherstellung kann die Lösung von einem Aktiv-Aktiv- oder Aktiv-Passiv-Replikatstandort bis zu regelmäßigen Offlinesicherungen der Daten reichen. Relationale Datenbanken, z.B. SQL Server und Oracle, bieten unterschiedliche Optionen für die Replikation. Nutzen Sie für SQL Server [SQL Server AlwaysOn-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server), um Hochverfügbarkeit zu erzielen.
 
 NoSQL-Datenbanken, z.B. MongoDB, unterstützen ebenfalls [Replikate](https://docs.mongodb.com/manual/replication/), um Redundanz zu erzielen. Die Replikate für Hochverfügbarkeit werden genutzt.
 
@@ -201,7 +201,7 @@ Eine andere Option zum Erstellen von konsistenten Sicherungen ist das Herunterfa
 
 1. Erstellen Sie eine Momentaufnahme von jedem Blob einer virtuellen Festplatte. Dies dauert nur wenige Sekunden.
 
-    Zum Erstellen einer Momentaufnahme können Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.storage), die [Azure Storage-REST-API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/) oder eine der Azure Storage-Clientbibliotheken, z.B. [die Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/hh488361.aspx), verwenden.
+    Zum Erstellen einer Momentaufnahme können Sie [PowerShell](/powershell/module/az.storage), die [Azure Storage-REST-API](/rest/api/storageservices/Snapshot-Blob), [Azure CLI](/cli/azure/) oder eine der Azure Storage-Clientbibliotheken, z.B. [die Storage-Clientbibliothek für .NET](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob), verwenden.
 
 1. Starten Sie die VM, um die Ausfallzeit zu beenden. Normalerweise wird der gesamte Prozess innerhalb weniger Minuten abgeschlossen.
 
@@ -224,7 +224,7 @@ Informationen zum effizienten Kopieren Ihrer inkrementellen Momentaufnahmen für
 
 ### <a name="recovery-from-snapshots"></a>Wiederherstellung von Daten aus Momentaufnahmen
 
-Kopieren Sie eine Momentaufnahme, um sie abzurufen und ein neues Blob zu erstellen. Wenn Sie die Momentaufnahme aus dem primären Konto kopieren, können Sie sie in das Basisblob der Momentaufnahme kopieren. Dieser Vorgang stellt den Datenträger in der Momentaufnahme wieder her. Dieser Prozess wird als Heraufstufen der Momentaufnahme bezeichnet. Wenn Sie die Momentaufnahmensicherung aus einem sekundären Konto kopieren, müssen Sie sie im Fall eines georedundanten Speicherkontos mit Lesezugriff in ein primäres Konto kopieren. Sie können eine Momentaufnahme [mit PowerShell](https://docs.microsoft.com/powershell/module/az.storage) kopieren oder das Hilfsprogramm AzCopy verwenden. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
+Kopieren Sie eine Momentaufnahme, um sie abzurufen und ein neues Blob zu erstellen. Wenn Sie die Momentaufnahme aus dem primären Konto kopieren, können Sie sie in das Basisblob der Momentaufnahme kopieren. Dieser Vorgang stellt den Datenträger in der Momentaufnahme wieder her. Dieser Prozess wird als Heraufstufen der Momentaufnahme bezeichnet. Wenn Sie die Momentaufnahmensicherung aus einem sekundären Konto kopieren, müssen Sie sie im Fall eines georedundanten Speicherkontos mit Lesezugriff in ein primäres Konto kopieren. Sie können eine Momentaufnahme [mit PowerShell](/powershell/module/az.storage) kopieren oder das Hilfsprogramm AzCopy verwenden. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../storage/common/storage-use-azcopy-v10.md).
 
 Bei VMs mit mehreren Datenträgern müssen Sie alle Momentaufnahmen kopieren, die Teil desselben koordinierten Wiederherstellungspunkts sind. Nachdem Sie die Momentaufnahmen in schreibbare VHD-Blobs kopiert haben, können Sie die Blobs zum erneuten Erstellen Ihrer VM mithilfe der Vorlage für die VM verwenden.
 
@@ -265,4 +265,3 @@ Siehe [Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller M
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-

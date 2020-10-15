@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761718"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Bessere Verwaltung von SOC mit Incidentmetriken
@@ -82,9 +82,9 @@ Zur Ergänzung der Tabelle **SecurityIncidents** haben wir eine sofort einsatzbe
 
 Sie finden diese neue Arbeitsmappenvorlage, indem Sie im Azure Sentinel-Navigationsmenü **Arbeitsmappen** und dort die Registerkarte **Vorlagen** auswählen. Wählen Sie **Effizienz des Sicherheitsbetriebs** aus dem Katalog, und klicken Sie auf eine der Schaltflächen **Gespeicherte Arbeitsmappe anzeigen** oder **Vorlage anzeigen**.
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Katalog mit Arbeitsmappen zu Sicherheitsincidents":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Tabelle mit Sicherheitsincidents":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Vollständige Arbeitsmappe zu Sicherheitsincidents":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Tabelle mit Sicherheitsincidents":::
 
 Sie können die Vorlage verwenden, um eigene, auf Ihre Anforderungen zugeschnittene Arbeitsmappen zu erstellen.
 

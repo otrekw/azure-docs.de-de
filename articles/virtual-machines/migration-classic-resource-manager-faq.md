@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855853"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969839"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell
 
@@ -26,7 +26,7 @@ Das Wort „klassisch“ bei „IaaS-VMs (klassisch)“ bezieht sich auf VMs, di
 
 ## <a name="what-is-azure-resource-manager"></a>Was ist Azure Resource Manager?
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) ist die aktuelle Steuerungsebene von Azure, über die VMs erstellt, verwaltet und gelöscht und weitere Steuerungsebenenvorgänge ausgeführt werden können. 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) ist die aktuelle Steuerungsebene von Azure, über die VMs erstellt, verwaltet und gelöscht und weitere Steuerungsebenenvorgänge ausgeführt werden können. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Wie viel Zeit ist für die Migration erforderlich?
 
@@ -42,7 +42,7 @@ Kunden, die im Februar 2020 über aktive oder beendete, aber zugewiesene IaaS-V
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Warum erhalte ich eine Fehlermeldung mit dem Hinweis „NewClassicVMCreationNotAllowedForSubscription“?
 
-Im Rahmen des Deaktivierungsvorgangs sind IaaS-VMs (klassisch) nicht mehr für neue Kunden verfügbar. Wir haben Sie als neuen Kunden identifiziert, daher wurde Ihr Vorgang nicht autorisiert. Es wird dringend empfohlen, [Azure Virtual Machines mit ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) zu verwenden. Wenn Sie keine Azure-VMs mit ARM verwenden können, wenden Sie sich an den Support, um Ihr Abonnement in die Zulassungsliste aufnehmen zu lassen.
+Im Rahmen des Deaktivierungsvorgangs sind IaaS-VMs (klassisch) nicht mehr für neue Kunden verfügbar. Wir haben Sie als neuen Kunden identifiziert, daher wurde Ihr Vorgang nicht autorisiert. Es wird dringend empfohlen, [Azure Virtual Machines mit ARM](./windows/quick-create-powershell.md) zu verwenden. Wenn Sie keine Azure-VMs mit ARM verwenden können, wenden Sie sich an den Support, um Ihr Abonnement in die Zulassungsliste aufnehmen zu lassen.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Wirkt sich dieser Migrationsplan auf meine vorhandenen Dienste oder Anwendungen aus, die auf virtuellen Azure-Computern ausgeführt werden? 
 
@@ -105,7 +105,7 @@ Wir empfehlen Ihnen, die Migration abzubrechen und anschließend eine Supportanf
 
 ## <a name="how-do-i-report-an-issue"></a>Wie melde ich ein Problem? 
 
-Posten Sie Ihre Probleme und Fragen zur Migration mit dem Schlüsselwort ClassicIaaSMigration auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für VMs](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html). Wir empfehlen, all Ihre Fragen in diesem Forum zu posten. Wenn Sie einen Supportvertrag haben, können Sie auch gerne ein Supportticket erstellen.
+Posten Sie Ihre Probleme und Fragen zur Migration mit dem Schlüsselwort ClassicIaaSMigration auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für VMs](/answers/topics/azure-virtual-machines.html). Wir empfehlen, all Ihre Fragen in diesem Forum zu posten. Wenn Sie einen Supportvertrag haben, können Sie auch gerne ein Supportticket erstellen.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Was passiert, wenn mir die Namen der Ressourcen nicht gefallen, die von der Plattform während der Migration ausgewählt wurden? 
 

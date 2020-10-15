@@ -5,6 +5,7 @@
     - name: Was ist Azure Bastion?
       href: bastion-overview.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Erstellen eines Hosts mithilfe von VM-Einstellungen
       href: quickstart-host-portal.md
@@ -69,7 +70,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Vorschau-SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447619"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969601"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows-Start-Manager-Fehler – Status 0xC0000428: ungültiger Imagehash
 
@@ -28,7 +28,7 @@ In diesem Artikel sind die erforderlichen Schritte beschrieben, um Probleme zu b
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie den Screenshot der VM mit der [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) anzeigen, sehen Sie, dass der Windows-Start-Manager mit folgender Meldung angezeigt wird:
+Wenn Sie den Screenshot der VM mit der [Startdiagnose](./boot-diagnostics.md) anzeigen, sehen Sie, dass der Windows-Start-Manager mit folgender Meldung angezeigt wird:
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ Sie können das Ablaufdatum eines Vorschauversionsimages nicht verlängern. Nach
 
 ## <a name="solution"></a>Lösung
 
-Wenn es sich bei Ihrem Image um ein Vorschauimage handelt, kann der Testzeitraum für dieses Image nicht verlängert werden. Sie müssen [eine neue VM mit einem Image bereitstellen](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal), bei dem es sich nicht um ein Vorschauimage handelt. Über die folgenden Schritte können Sie ermitteln, ob Sie ein Vorschauimage verwendet haben. Außerdem erhalten Sie Unterstützung beim Verschieben von Daten von dieser VM zu einer neuen VM. Wenn Sie herausgefunden haben, dass es sich bei Ihrem Image um ein Vorschauimage handelt, ist das Image abgelaufen und kann nicht wiederhergestellt werden.
+Wenn es sich bei Ihrem Image um ein Vorschauimage handelt, kann der Testzeitraum für dieses Image nicht verlängert werden. Sie müssen [eine neue VM mit einem Image bereitstellen](../windows/quick-create-portal.md), bei dem es sich nicht um ein Vorschauimage handelt. Über die folgenden Schritte können Sie ermitteln, ob Sie ein Vorschauimage verwendet haben. Außerdem erhalten Sie Unterstützung beim Verschieben von Daten von dieser VM zu einer neuen VM. Wenn Sie herausgefunden haben, dass es sich bei Ihrem Image um ein Vorschauimage handelt, ist das Image abgelaufen und kann nicht wiederhergestellt werden.
 
 Um herauszufinden, ob es sich bei Ihrem Image um ein Vorschauimage handelt, können Sie eine Abfrage über Azure PowerShell oder die Azure CLI ausführen. Zum Überprüfen, ob das Image ein Vorschauimage ist, können die folgenden Befehle verwendet werden.
 
@@ -103,7 +103,7 @@ Um herauszufinden, ob es sich bei Ihrem Image um ein Vorschauimage handelt, kön
 
 ### <a name="query-using-the-azure-cli"></a>Abfrage über die Azure CLI
 
-1. [Installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (sofern noch nicht geschehen).
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli) (sofern noch nicht geschehen).
 1. Geben Sie nach dem Herunterladen entweder an einer Eingabeaufforderung oder über PowerShell den Befehl `az login` ein, und melden Sie sich mit Ihren Kontoanmeldeinformationen an.
 1. Geben Sie nach der Anmeldung die folgenden Befehle ein:
 
