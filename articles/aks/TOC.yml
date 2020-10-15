@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Storage
+    - name: Speicher
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -171,7 +171,7 @@
             - name: Verwenden von Systemknotenpools
               href: use-system-pools.md
         - name: Bereitstellen von AKS mit Terraform
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
         - name: Verwenden der Kubernetes-Ressourcenanzeige (Vorschauversion)
           href: kubernetes-portal.md
@@ -358,10 +358,10 @@
     - name: DevOps
       items:
         - name: Erstellen von AKS-Clustern mithilfe von Ansible
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Continuous Deployment mit Jenkins
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps-Projekt
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
@@ -383,7 +383,7 @@
           href: aks-resource-health.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

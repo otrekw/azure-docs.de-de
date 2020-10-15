@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827822"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963362"
 ---
 # <a name="use-spot-vms-in-azure"></a>Verwenden von Spot-VMs in Azure
 
@@ -99,17 +99,17 @@ Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im
 
 **F:** Wie werden Kontingente für Spot-VMs verwaltet?
 
-**A:** Spot-VMs verfügen über einen separaten Kontingentpool. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+**A:** Spot-VMs verfügen über einen separaten Kontingentpool. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
 **F:** Kann ich ein zusätzliches Kontingent für Spot anfordern?
 
-**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) übermitteln.
+**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](../azure-portal/supportability/per-vm-quota-requests.md) übermitteln.
 
 
 **F:** Wo kann ich Fragen stellen?
 
-**A:** Sie können Ihre Frage in [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
+**A:** Sie können Ihre Frage in [Q&A](/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie die [Befehlszeilenschnittstelle](./linux/spot-cli.md), das [Portal](spot-portal.md), [ARM-Vorlagen](./linux/spot-template.md) oder [PowerShell](./windows/spot-powershell.md), um Spot-VMs bereitzustellen.

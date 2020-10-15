@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: eadbc7e7831805c92fdc13982516f64cdf725dd8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974614"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963719"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Linux-Computer
 
@@ -70,7 +70,7 @@ So richten Sie eine Sicherheitsrichtlinie für ein gesamtes Abonnement ein:
 
 ## <a name="view-vm-configuration-health"></a>Anzeigen der Integrität der VM-Konfiguration
 
-Nachdem Sie die Datensammlung aktiviert und eine Sicherheitsrichtlinie festgelegt haben, beginnt Security Center damit, Warnungen und Empfehlungen anzuzeigen. Wenn weitere VMs bereitgestellt werden, wird auf diesen der Datensammlungs-Agent installiert. Security Center sammelt dann auch Daten für die neuen virtuellen Computer. Ausführliche Informationen zur Integrität der VM-Konfiguration finden Sie unter [Schützen von virtuellen Computern in Security Center](../../security-center/security-center-virtual-machine-protection.md). 
+Nachdem Sie die Datensammlung aktiviert und eine Sicherheitsrichtlinie festgelegt haben, beginnt Security Center damit, Warnungen und Empfehlungen anzuzeigen. Wenn weitere VMs bereitgestellt werden, wird auf diesen der Datensammlungs-Agent installiert. Security Center sammelt dann auch Daten für die neuen virtuellen Computer. Ausführliche Informationen zur Integrität der VM-Konfiguration finden Sie unter [Schützen von virtuellen Computern in Security Center](../../security-center/asset-inventory.md). 
 
 Bei der Datensammlung wird die Ressourcenintegrität für jede VM und die zugehörige Azure-Ressource aggregiert. Die Informationen werden in einem übersichtlichen Diagramm dargestellt. 
 

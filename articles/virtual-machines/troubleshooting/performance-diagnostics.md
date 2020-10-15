@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090634"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963243"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Leistungsdiagnose für virtuelle Azure-Computer
 
@@ -61,7 +61,7 @@ Sie können die Leistungsdiagnose direkt über das Azure-Portal ausführen, in d
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Installieren und Ausführen der Leistungsdiagnose auf Ihrer VM
 
-Die Leistungsdiagnose installiert eine VM-Erweiterung, die ein Diagnosetool namens PerfInsights ausführt. PerfInsights ist sowohl für [Windows](https://aka.ms/perfinsights) als auch für [Linux](https://aka.ms/perfinsightslinux) verfügbar. Um die Leistungsdiagnose zu installieren und auszuführen, gehen Sie folgendermaßen vor:
+Die Leistungsdiagnose installiert eine VM-Erweiterung, die ein Diagnosetool namens PerfInsights ausführt. PerfInsights ist sowohl für [Windows](./how-to-use-perfinsights.md) als auch für [Linux](./how-to-use-perfinsights-linux.md) verfügbar. Um die Leistungsdiagnose zu installieren und auszuführen, gehen Sie folgendermaßen vor:
 
 1. Wählen Sie in der linken Spalte **Virtuelle Computer** aus.
 1. Wählen Sie aus der Liste der VM-Namen den virtuellen Computer aus, auf dem Sie die Diagnose ausführen möchten.
@@ -91,16 +91,16 @@ Die Leistungsdiagnose installiert eine VM-Erweiterung, die ein Diagnosetool name
 Im Azure-Portal stehen die folgenden Analyseszenarien zur Verfügung. Wählen Sie je nach auftretendem Leistungsproblem eine geeignete Analyseoption aus. Wählen Sie die Dauer und die Ablaufverfolgungsoptionen für die Analyse aus.
 
 * **Schnelle Leistungsanalyse**  
-    Überprüft die VM auf bekannte Probleme, analysiert bewährte Methoden und sammelt Diagnosedaten. Die Analyse dauert mehrere Minuten. Weitere Informationen zu [Windows](https://aka.ms/perfinsights/quick) oder [Linux](https://aka.ms/perfinsightslinux/quick)
+    Überprüft die VM auf bekannte Probleme, analysiert bewährte Methoden und sammelt Diagnosedaten. Die Analyse dauert mehrere Minuten. Weitere Informationen zu [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Leistungsanalyse**  
-    Umfasst alle Überprüfungen in der schnellen Leistungsanalyse und überwacht einen hohen Ressourcenverbrauch. Verwenden Sie diese Version, um allgemeine Leistungsprobleme zu beheben, beispielsweise hohe Auslastung von CPU, Arbeitsspeicher und Datenträgerspeicher. Die Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. Weitere Informationen zu [Windows](https://aka.ms/perfinsights/vmslow) oder [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    Umfasst alle Überprüfungen in der schnellen Leistungsanalyse und überwacht einen hohen Ressourcenverbrauch. Verwenden Sie diese Version, um allgemeine Leistungsprobleme zu beheben, beispielsweise hohe Auslastung von CPU, Arbeitsspeicher und Datenträgerspeicher. Die Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. Weitere Informationen zu [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Erweiterte Leistungsanalyse** `*`  
-    Enthält alle Überprüfungen der Leistungsanalyse und erfasst mindestens eine der Ablaufverfolgungen, wie in den folgenden Abschnitten beschrieben. Verwenden Sie dieses Szenario, um komplexe Probleme zu beheben, die zusätzliche Ablaufverfolgungen erfordern. Je nach Größe der VM und den ausgewählten Ablaufverfolgungsoptionen erhöht die Ausführung dieses Szenarios über einen längeren Zeitraum die Gesamtgröße der Diagnoseausgabe. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](https://aka.ms/perfinsights/advanced)
+    Enthält alle Überprüfungen der Leistungsanalyse und erfasst mindestens eine der Ablaufverfolgungen, wie in den folgenden Abschnitten beschrieben. Verwenden Sie dieses Szenario, um komplexe Probleme zu beheben, die zusätzliche Ablaufverfolgungen erfordern. Je nach Größe der VM und den ausgewählten Ablaufverfolgungsoptionen erhöht die Ausführung dieses Szenarios über einen längeren Zeitraum die Gesamtgröße der Diagnoseausgabe. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](./how-to-use-perfinsights.md)
 
 * **Azure Files-Analyse** `*`  
-    Enthält alle Überprüfungen der Leistungsanalyse und erfasst eine Netzwerkablaufverfolgung sowie SMB-Indikatoren. Verwenden Sie dieses Szenario, um Probleme mit der Leistung von Azure Files zu beheben. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](https://aka.ms/perfinsights/azurefiles)
+    Enthält alle Überprüfungen der Leistungsanalyse und erfasst eine Netzwerkablaufverfolgung sowie SMB-Indikatoren. Verwenden Sie dieses Szenario, um Probleme mit der Leistung von Azure Files zu beheben. Die Ausführung der Analyse nimmt je nach ausgewählter Dauer 30 Sekunden bis 15 Minuten in Anspruch. [Weitere Informationen](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[`*`] Diese Analyseszenarien werden nur unter Windows unterstützt.

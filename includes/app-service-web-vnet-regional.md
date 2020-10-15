@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255243"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082191"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -36,7 +36,8 @@ Standardmäßig leitet Ihre App nur RFC 1918-Datenverkehr in das VNET weiter. W
 1. Klicken Sie auf **OK**.
 1. Wählen Sie **Speichern** aus.
 
-Wenn Sie den gesamten ausgehenden Datenverkehr in Ihr VNET weiterleiten, unterliegt dieser den NSGs und UDRs, die auf Ihr Integrationssubnetz angewandt werden. Wenn Sie den gesamten ausgehenden Datenverkehr in das VNET weiterleiten, sind Ihre ausgehenden Adressen weiterhin die in Ihren App-Eigenschaften aufgeführten ausgehenden Adressen, es sei denn, Sie stellen Routen bereit, um den Datenverkehr an andere Ziele zu senden.
+> [!NOTE]
+> Wenn Sie den gesamten ausgehenden Datenverkehr in Ihr VNET weiterleiten, unterliegt dieser den NSGs und UDRs, die auf Ihr Integrationssubnetz angewandt werden. Wenn Sie den gesamten ausgehenden Datenverkehr in das VNET weiterleiten, sind Ihre ausgehenden Adressen weiterhin die in Ihren App-Eigenschaften aufgeführten ausgehenden Adressen, es sei denn, Sie stellen Routen bereit, um den Datenverkehr an andere Ziele zu senden.
 
 Es gibt einige Einschränkungen bei der Verwendung der VNET-Integration in VNETs in derselben Region:
 

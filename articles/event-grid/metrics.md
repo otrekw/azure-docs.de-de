@@ -4,10 +4,10 @@ description: In diesem Artikel sind Azure Monitor-Metriken aufgeführt, die vom 
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 06c43b1990efc977cae33ced3f66f02e2de0b9c4
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225171"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Von Azure Event Grid unterstützte Metriken

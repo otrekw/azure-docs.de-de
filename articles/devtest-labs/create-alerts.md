@@ -4,10 +4,10 @@ description: Dieser Artikel enthält die Schritte zum Erstellen von Aktivitätsp
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: d5886ea26ddbeb07efc23d61d3197860620eebf3
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526356"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Erstellen von Aktivitätsprotokollwarnungen für Labs in Azure DevTest Labs
