@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 3d5ca648b149fa85b28f695956a438cdac9e67e8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086622"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047946"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -42,7 +42,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial d
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein [Linux-Gerät (AMD64), auf dem Azure IoT Edge ausgeführt wird](quickstart-linux.md)
   * Auf ARM-Geräten (etwa Raspberry Pi) kann SQL Server nicht ausgeführt werden. Wenn Sie SQL auf einem ARM-Gerät verwenden möchten, können Sie sich zum Testen der Vorschauversion von [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) registrieren.
-* Eine Containerregistrierung wie [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Eine Containerregistrierung wie [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/), der mit den [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) konfiguriert wurde.
 * [Docker CE](https://docs.docker.com/install/), das zur Ausführung von Linux-Containern konfiguriert wurde.
 
@@ -228,7 +228,7 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
 7. Suchen Sie nach dem Abschnitt **modules**. Es sollten drei Module angezeigt werden. Das Modul *SimulatedTemperatureSensor* ist standardmäßig in neuen Projektmappen enthalten und stellt Testdaten für Ihre anderen Module bereit. Das Modul *sqlFunction* ist das Modul, das Sie erstellt und mit neuem Code aktualisiert haben. Das Modul *sql* wurde aus dem Azure Marketplace importiert.
 
    >[!Tip]
-   >Das SQL Server-Modul verfügt über ein Standardkennwort, das in den Umgebungsvariablen des Bereitstellungsmanifests festgelegt ist. Bei jedem Erstellen eines SQL Server-Containers in einer Produktionsumgebung sollten Sie [das Standardkennwort für den Systemadministrator ändern](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
+   >Das SQL Server-Modul verfügt über ein Standardkennwort, das in den Umgebungsvariablen des Bereitstellungsmanifests festgelegt ist. Bei jedem Erstellen eines SQL Server-Containers in einer Produktionsumgebung sollten Sie [das Standardkennwort für den Systemadministrator ändern](/sql/linux/quickstart-install-connect-docker).
 
 8. Schließen Sie die Datei **deployment.template.json**.
 
@@ -331,9 +331,9 @@ Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie ein Azure Functions-Modul erstellt, das Code zum Filtern von Rohdaten enthält, die von Ihrem IoT Edge-Gerät generiert wurden. Wenn Sie eigene Module erstellen möchten, finden Sie entsprechende Informationen unter [Use Visual Studio Code to develop and debug Azure Functions for Azure IoT Edge](./how-to-vs-code-develop-module.md) (Entwickeln und Debuggen von Azure Functions für Azure IoT Edge mithilfe von Visual Studio Code).
 
-In diesem Tutorial haben Sie ein Azure Functions-Modul erstellt, das Code zum Filtern von Rohdaten enthält, die von Ihrem IoT Edge-Gerät generiert wurden. Wenn Sie eigene Module erstellen möchten, finden Sie entsprechende Informationen unter [Use Visual Studio Code to develop and debug Azure Functions for Azure IoT Edge](how-to-develop-csharp-function.md) (Entwickeln und Debuggen von Azure Functions für Azure IoT Edge mithilfe von Visual Studio Code).
+## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie eine andere Speichermethode im Edge-Bereich testen möchten, lesen Sie Informationen zur Verwendung von Azure Blob Storage in IoT Edge.
 

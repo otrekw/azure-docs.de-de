@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328494"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047385"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -49,18 +49,18 @@ Hier sind einige Fragen, die Sie möglicherweise berücksichtigen möchten:
     - Device Provisioning Service (DPS)
 * Welche anderen **persönlichen oder Unternehmens-Apps** besitze ich, die eine Verbindung mit meiner Instanz herstellen?
 
-Sie können diese Informationen über das [Azure-Portal](https://portal.azure.com), mithilfe der [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md), den [Befehlen der Azure Digital Twins-CLI](how-to-use-cli.md) oder das Beispiel [ADT-Explorer (Azure Digital Twins)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) sammeln.
+Sie können diese Informationen über das [Azure-Portal](https://portal.azure.com), mithilfe der [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md), den [Befehlen der Azure Digital Twins-CLI](how-to-use-cli.md) oder das Beispiel [ADT-Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) sammeln.
 
 ## <a name="prepare"></a>Vorbereiten
 
-In diesem Abschnitt bereiten Sie sich darauf vor, Ihre Instanz neu zu erstellen, indem Sie **Ihre ursprünglichen Modelle, Zwillinge und Graphen** von Ihrer ursprünglichen Instanz herunterladen. In diesem Artikel wird dazu das Beispiel [ADT-Explorer (Azure Digital Twins)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) verwendet.
+In diesem Abschnitt bereiten Sie sich darauf vor, Ihre Instanz neu zu erstellen, indem Sie **Ihre ursprünglichen Modelle, Zwillinge und Graphen** von Ihrer ursprünglichen Instanz herunterladen. In diesem Artikel wird dazu das Beispiel [ADT-Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) verwendet.
 
 >[!NOTE]
 >Möglicherweise verfügen Sie bereits über Dateien, die die Modelle und/oder den Graphen in Ihrer Instanz enthalten. Sofern dies der Fall ist, brauchen Sie nicht alles erneut herunterzuladen – nur die fehlenden Teile oder Komponenten, die sich seit dem ursprünglichen Hochladen dieser Dateien geändert haben könnten (z. B. Zwillinge, die möglicherweise mit neuen Daten aktualisiert wurden).
 
 ### <a name="limitations-of-adt-explorer"></a>Einschränkungen des ADT-Explorers
 
-Das Beispiel [ADT-Explorer (Azure Digital Twins)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) ist eine Beispiel-Client-App, die eine visuelle Darstellung Ihres Graphen unterstützt und eine visuelle Interaktion mit Ihrer Instanz ermöglicht. In diesem Artikel wird gezeigt, wie Sie diese App zum Herunterladen und späteren Hochladen Ihrer Modelle, Zwillinge und Graphen verwenden.
+Das Beispiel [ADT-Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) ist eine Beispiel-Client-App, die eine visuelle Darstellung Ihres Graphen unterstützt und eine visuelle Interaktion mit Ihrer Instanz ermöglicht. In diesem Artikel wird gezeigt, wie Sie diese App zum Herunterladen und späteren Hochladen Ihrer Modelle, Zwillinge und Graphen verwenden.
 
 Beachten Sie jedoch, dass es sich um ein **Beispiel** und kein vollständiges Tool handelt. Die App wurde keinen Belastungstests unterzogen und nicht für die Verarbeitung von großen Graphen entworfen. Daher müssen bei Verwendung der Beispiel-App die folgenden Einschränkungen beachtet werden:
 * Die Beispiel-App wurde derzeit lediglich mit Graphen getestet, die maximal 1.000 Knoten und 2.000 Beziehungen umfassen
@@ -76,7 +76,7 @@ Wenn die Beispiel-App nicht für die Größe Ihres Graphen geeignet ist, können
 
 Um mit dem ADT-Explorer fortzufahren, laden Sie zunächst den Code der Beispielanwendung herunter, und richten Sie die Anwendung so ein, dass sie auf Ihrem Computer ausgeführt wird. 
 
-Navigieren Sie hier zu dem Beispiel: [ADT Explorer (Azure Digital Twins)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* des Beispielcodes als _**ADT_Explorer.zip**_ auf Ihren Computer herunterzuladen. Entzippen Sie die Datei.
+Navigieren Sie hier zu dem Beispiel: [ADT Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* des Beispielcodes als _**ADT_Explorer.zip**_ auf Ihren Computer herunterzuladen. Entzippen Sie die Datei.
 
 Richten Sie als nächstes die Berechtigungen für ADT Explorer für die Ausführung auf Ihrem Computer ein. Befolgen Sie dazu die Schritte im Abschnitt [*Festlegen der ADT Explorer-Berechtigungen*](quickstart-adt-explorer.md#set-adt-explorer-permissions) des Azure Digital Twins-Schnellstarts.
 
@@ -219,7 +219,7 @@ Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der 
 Zum Überprüfen, ob Ihre neue Instanz ordnungsgemäß eingerichtet wurde, können Sie die folgenden Tools verwenden:
 * Das [**Azure-Portal**](https://portal.azure.com) (geeignet, um zu überprüfen, ob Ihre neue Instanz existiert und sich in der richtigen Zielregion befindet sowie ebenfalls geeignet, um Endpunkte, Routen und Verbindungen mit anderen Azure-Diensten zu überprüfen)
 * Die [Azure Digital Twins-**CLI-Befehle**](how-to-use-cli.md) (geeignet, um zu überprüfen, ob Ihre neue Instanz existiert und sich in der richtigen Zielregion befindet; kann auch zum Überprüfen von Instanzdaten verwendet werden)
-* [**ADT Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (geeignet, um Instanzdaten wie Modelle, Zwillinge und Graphen zu überprüfen)
+* [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (geeignet, um Instanzdaten wie Modelle, Zwillinge und Graphen zu überprüfen)
 * Die [Azure Digital Twins-APIs und -SDKs](how-to-use-apis-sdks.md) (geeignet, um Instanzdaten wie Modelle, Zwillinge und Graphen zu überprüfen sowie ebenfalls geeignet, um Endpunkte und Routen zu überprüfen)
 
 Sie können auch versuchen, alle benutzerdefinierten Apps oder End-to-End-Flows, die Sie mit Ihrer ursprünglichen Instanz ausgeführt haben, auszuführen, um zu überprüfen, ob sie mit der neuen Instanz ordnungsgemäß funktionieren.

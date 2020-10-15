@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522345"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047691"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Features für Kundendatenanforderungen in Azure Digital Twins
 
@@ -35,7 +35,7 @@ Von Azure Digital Twins wird die [Azure Active Directory](../active-directory/fu
 
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten
 
-Azure Digital Twins-Administratoren können benutzerbezogene Daten über das Azure-Portal löschen. Darüber hinaus können über die Azure Digital Twins-REST-APIs auch Löschvorgänge für einzelne digitale Zwillinge ausgeführt werden. Weitere Informationen zu den verfügbaren APIs finden Sie in der [REST-API-Referenz für Azure Digital Twins](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Azure Digital Twins-Administratoren können benutzerbezogene Daten über das Azure-Portal löschen. Darüber hinaus können über die Azure Digital Twins-REST-APIs auch Löschvorgänge für einzelne digitale Zwillinge ausgeführt werden. Weitere Informationen zu den verfügbaren APIs finden Sie in der [REST-API-Referenz für Azure Digital Twins](/rest/api/azure-digitaltwins/).
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 
@@ -45,4 +45,4 @@ Kundendaten (einschließlich Benutzerrollen und Rollenzuweisungen) können über
 
 ## <a name="links-to-additional-documentation"></a>Links zu zusätzlicher Dokumentation
 
-Eine vollständige Liste der APIs des Azure Digital Twins-Diensts finden Sie in der [REST-API-Referenz für Azure Digital Twins](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Eine vollständige Liste der APIs des Azure Digital Twins-Diensts finden Sie in der [REST-API-Referenz für Azure Digital Twins](/rest/api/azure-digitaltwins/).

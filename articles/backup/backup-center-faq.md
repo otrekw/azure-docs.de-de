@@ -4,10 +4,10 @@ description: In diesem Artikel finden Sie häufig gestellte Fragen zu Backup Cen
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90993452"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Backup Center: häufig gestellte Fragen (FAQ)

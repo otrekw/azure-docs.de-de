@@ -5,10 +5,10 @@ ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073077"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
@@ -33,7 +33,7 @@ Jeder definierte Workflow legt Folgendes fest:
 
 Eine Blockchainanwendung enthält Konfigurationsmetadaten, Workflows und Benutzerrollen, die innerhalb der Anwendung agieren oder teilnehmen können.
 
-| Feld | BESCHREIBUNG | Erforderlich |
+| Feld | Beschreibung | Erforderlich |
 |-------|-------------|:--------:|
 | ApplicationName | Eindeutiger Anwendungsname. Der entsprechende intelligente Vertrag muss den gleichen **Anwendungsnamen** für die jeweilige Vertragsklasse verwenden.  | Ja |
 | DisplayName | Der Anzeigename der Anwendung | Ja |
@@ -47,7 +47,7 @@ Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-
 
 Die Geschäftslogik einer Anwendung kann als Zustandsautomat modelliert werden, bei der eine Aktion bewirkt, dass während des Ablaufs der Geschäftslogik von einem Zustand in einen anderen gewechselt wird. Ein Workflow ist eine Sammlung solcher Zustände und Aktionen. Jeder Workflow besteht aus mindestens einem intelligenten Vertrag, der die Geschäftslogik in Codedateien darstellt. Bei einem ausführbaren Vertrag handelt es sich um eine Instanz eines Workflows.
 
-| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Workflows | Ja | 255 |
@@ -168,7 +168,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 Definiert Eingabeparameter für eine Instanz eines Workflows.
 
-| Feld | BESCHREIBUNG | Erforderlich |
+| Feld | Beschreibung | Erforderlich |
 |-------|-------------|:--------:|
 | Parameter | Sammlung von [Bezeichnern](#identifiers), die zum Initiieren eines intelligenten Vertrags erforderlich sind. | Ja |
 
@@ -201,7 +201,7 @@ Definiert Eingabeparameter für eine Instanz eines Workflows.
 
 Definiert Funktionen, die im Workflow ausgeführt werden können.
 
-| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Funktion | Ja | 255 |
@@ -249,7 +249,7 @@ Definiert Funktionen, die im Workflow ausgeführt werden können.
 
 Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustand erfasst einen Schritt in der Ablaufsteuerung der Geschäftslogik. 
 
-| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Zustands | Ja | 255 |
@@ -318,7 +318,7 @@ Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustan
 
 Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Benutzerrollen können in jedem Zustand eine Aktion ausführen, wobei eine Aktion einen Zustand in einen anderen Zustand im Workflow überführen kann. 
 
-| Feld | BESCHREIBUNG | Erforderlich |
+| Feld | Beschreibung | Erforderlich |
 |-------|-------------|:--------:|
 | AllowedRoles | Liste der Anwendungsrollen, die einen Übergang initiieren dürfen. Alle Benutzer der angegebenen Rolle können die Aktion möglicherweise ausführen. | Nein |
 | AllowedInstanceRoles | Liste der Benutzerrollen, die am intelligenten Vertrag teilnehmen oder darin festgelegt sind, um den Übergang zu initiieren. Instanzrollen werden in den **Eigenschaften** innerhalb von Workflows definiert. AllowedInstanceRoles stellt einen Benutzer dar, der bei einer Instanz eines Smart Contract involviert ist. Über AllowedInstanceRoles können Sie die Durchführung einer Aktion für eine Benutzerrolle in einer Vertragsinstanz beschränken.  Beispielsweise empfiehlt es sich, nur dem Benutzer, der den Vertrag erstellt hat (InstanceOwner), die Kündigung eines Vertrags zu ermöglichen, nicht allen Benutzern mit dem Rollentyp (Owner). Hierfür müssen Sie die Rolle in AllowedRoles angegeben haben. | Nein |
@@ -363,7 +363,7 @@ Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Ben
 
 Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werden können, die innerhalb der Anwendung agieren oder teilnehmen möchten. Anwendungsrollen können verwendet werden, um Aktionen und Teilnahme innerhalb der Blockchainanwendung und entsprechender Workflows einzuschränken. 
 
-| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| Ja | 50 |
 | BESCHREIBUNG | Die Beschreibung der Anwendungsrolle | Nein | 255 |
@@ -386,7 +386,7 @@ Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werd
 
 Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workfloweigenschaften, Konstruktor und Funktionsparametern dar. 
 
-| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+| Feld | Beschreibung | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | Ja | 255 |

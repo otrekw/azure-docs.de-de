@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653688"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929455"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Häufig gestellte Fragen zur Leistung von SMB für Azure NetApp Files
 
@@ -39,7 +39,7 @@ Wenn SMB Multichannel aktiviert ist, stellt ein SMB3-Client mehrere TCP-Verbindu
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>Welche Windows-Versionen unterstützen SMB Multichannel?
 
-Windows unterstützt SMB Multichannel seit Windows 2012, um eine optimale Leistung zu erzielen.  Weitere Informationen finden Sie unter [Bereitstellen von SMB Multichannel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) und [Grundlagen von SMB Multichannel](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/). 
+Windows unterstützt SMB Multichannel seit Windows 2012, um eine optimale Leistung zu erzielen.  Weitere Informationen finden Sie unter [Bereitstellen von SMB Multichannel](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) und [Grundlagen von SMB Multichannel](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0). 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Unterstützt mein virtueller Azure-Computer RSS?
@@ -132,7 +132,7 @@ Wenn auf Ihren Volumes Datenverkehr verarbeitet wird, können Sie in Windows-Sys
 
 ## <a name="is-accelerated-networking-recommended"></a>Wird beschleunigter Netzwerkbetrieb empfohlen?
 
-Um die maximale Leistung zu erzielen, empfiehlt es sich, nach Möglichkeit [Beschleunigter Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) zu konfigurieren. Beachten Sie dabei Folgendes:  
+Um die maximale Leistung zu erzielen, empfiehlt es sich, nach Möglichkeit [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-powershell.md) zu konfigurieren. Beachten Sie dabei Folgendes:  
 
 * Das Azure-Portal aktiviert „Beschleunigter Netzwerkbetrieb“ standardmäßig für virtuelle Computer, die dieses Feature unterstützen.  Bei anderen Bereitstellungsmethoden, wie z. B. Ansible und ähnliche Konfigurationstools, erfolgt dies jedoch möglicherweise nicht.  Wenn „Beschleunigter Netzwerkbetrieb“ nicht aktiviert wird, kann die Leistung eines Computers beeinträchtigt werden.  
 * Wenn „Beschleunigter Netzwerkbetrieb“ für die Netzwerkschnittstelle eines virtuellen Computers nicht aktiviert ist (aufgrund des Instanztyps oder der Größe), bleibt dieses Feature auch bei größeren Instanztypen deaktiviert. In diesen Fällen ist ein manueller Eingriff erforderlich.
