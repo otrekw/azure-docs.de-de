@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287266"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048150"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge
 
-Mit Azure Blob Storage in IoT Edge erhalten Sie eine [Blockblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)- und [Anfügeblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)-Speicherlösung im Edgebereich. Ein Blob Storage-Modul auf Ihrem IoT Edge-Gerät verhält sich wie ein Azure-Blobdienst – mit dem einzigen Unterschied, dass die Blobs auf Ihrem IoT Edge-Gerät lokal gespeichert werden. Sie können mit denselben Azure Storage SDK-Methoden oder Blob-API-Aufrufen auf Ihre Blobs zugreifen, mit denen Sie bereits arbeiten. In diesem Artikel werden die Konzepte zu Azure Blob Storage auf einem IoT Edge-Container erläutert, der einen Blobdienst auf Ihrem IoT Edge-Gerät ausführt.
+Mit Azure Blob Storage in IoT Edge erhalten Sie eine [Blockblob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)- und [Anfügeblob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)-Speicherlösung im Edgebereich. Ein Blob Storage-Modul auf Ihrem IoT Edge-Gerät verhält sich wie ein Azure-Blobdienst – mit dem einzigen Unterschied, dass die Blobs auf Ihrem IoT Edge-Gerät lokal gespeichert werden. Sie können mit denselben Azure Storage SDK-Methoden oder Blob-API-Aufrufen auf Ihre Blobs zugreifen, mit denen Sie bereits arbeiten. In diesem Artikel werden die Konzepte zu Azure Blob Storage auf einem IoT Edge-Container erläutert, der einen Blobdienst auf Ihrem IoT Edge-Gerät ausführt.
 
 Dieses Modul ist in folgenden Fällen hilfreich:
 
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>Konfigurieren von Protokolldateien
 
-Informationen zur Konfiguration von Protokolldateien für Ihr Modul finden Sie unter den [bewährten Methoden für die Produktion](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics).
+Informationen zur Konfiguration von Protokolldateien für Ihr Modul finden Sie unter den [bewährten Methoden für die Produktion](./production-checklist.md#set-up-logs-and-diagnostics).
 
 ## <a name="connect-to-your-blob-storage-module"></a>Herstellen einer Verbindung mit Ihrem Blob Storage-Modul
 

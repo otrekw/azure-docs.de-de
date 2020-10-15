@@ -3,19 +3,19 @@ title: Bereitstellen von Feedback zu Anomalien an den Metrics Advisor-Dienst
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Feedback zu Anomalien, die von Ihrer Metrics Advisor-Instanz gefunden wurden, senden und die Ergebnisse optimieren.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: 11864cb26b76d414aa2efe2643797a2f66fa30e4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930487"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047606"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>Anpassen der Anomalieerkennung anhand von Feedback
 
@@ -37,19 +37,19 @@ Klicken Sie bei aktiviertem Anmerkungsmodus für Feedback auf einen Punkt, um da
 
 Sie können einen Kommentar dazu im Textfeld **Kommentar** angeben. Klicken Sie auf **Speichern**, um Ihr Feedback zu speichern.
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Menü „Feedback“":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Anmerkungsmodus für Feedback":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>Bereitstellen von Feedback zu mehreren fortlaufenden Punkten
 
 Sie können Feedback zu mehreren fortlaufenden Punkten gleichzeitig angeben, indem Sie die linke Maustaste gedrückt halten und den Mauszeiger über die Punkte ziehen, die Sie mit Anmerkungen versehen möchten. Es wird das gleiche Menü „Feedback“ wie oben angezeigt. Wenn Sie auf **Speichern** klicken, wird dasselbe Feedback auf alle ausgewählten Punkte angewandt.
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Auswählen mehrerer Punkte":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Anmerkungsmodus für Feedback":::
 
 ## <a name="how-to-view-my-feedback"></a>Anzeigen des eigenen Feedbacks
 
 Um festzustellen, ob die Anomalieerkennung eines Punkts geändert wurde, zeigen Sie auf den Punkt. Die QuickInfo zeigt **Affected by feedback: true** (Von Feedback betroffen: true) an, wenn die Erkennung geändert wurde. Wenn **false** angezeigt wird, wurde zwar die Feedbackberechnung an dem Punkt ausgeführt, aber das Ergebnis der Anomalieerkennung wurde nicht geändert.
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="Von Feedback betroffener Punkt":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="Anmerkungsmodus für Feedback":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>Wann sollte ich eine Anomalie als „normal“ kennzeichnen?
 

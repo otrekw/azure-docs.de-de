@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 13bbb5e006f725ff0b75a5b86aee414f84a80dcf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936298"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Tutorial: Erstellen einer WPF-App (Windows Presentation Framework) zum Anzeigen von Gesichtserkennungsdaten in einem Bild

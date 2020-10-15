@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7365e4904bb8e1920e7d4c57c165e489f2ff302e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 65e7a425fdf8ee1b253bcb696792b569b7195d4c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540590"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047368"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -44,7 +44,7 @@ Um einen Endpunkt mit Azure Digital Twins zu verknüpfen, muss das für den Endp
 
 ### <a name="create-an-event-grid-endpoint"></a>Erstellen eines Event Grid-Endpunkts
 
-Das folgende Beispiel zeigt, wie ein Endpunkt vom Event Grid-Typ mit der Azure CLI erstellt wird. Sie können [Azure Cloud Shell](https://shell.azure.com) verwenden oder die [CLI lokal installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+Das folgende Beispiel zeigt, wie ein Endpunkt vom Event Grid-Typ mit der Azure CLI erstellt wird. Sie können [Azure Cloud Shell](https://shell.azure.com) verwenden oder die [CLI lokal installieren](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 Erstellen Sie zunächst ein Event Grid-Thema. Sie können den folgenden Befehl verwenden oder die Schritte ausführlicher anzeigen, indem Sie [den Abschnitt *Erstellen eines benutzerdefinierten Themas*](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) des Event Grid-Schnellstarts *Benutzerdefinierte Ereignisse* verwenden.
 

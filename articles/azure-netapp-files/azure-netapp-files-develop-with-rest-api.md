@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 4599f4e3ca291c312c99e938b237d1eb9cd9d407
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513008"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929279"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Entwickeln für Azure NetApp Files mit REST-API 
 
@@ -34,9 +34,9 @@ Die REST-API-Spezifikation für Azure NetApp Files wird über [GitHub](https://g
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Zugriff auf die Azure NetApp Files-REST-API  
 
-1. [Installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
 2. Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory (Azure AD):
-   1. Überprüfen Sie, ob Sie über [ausreichende Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) verfügen.
+   1. Überprüfen Sie, ob Sie über [ausreichende Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) verfügen.
 
    2. Geben Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl ein: 
     
@@ -203,4 +203,4 @@ Das folgende Beispiel zeigt Ihnen, wie eine Momentaufnahme eines Volumes erstell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Mehr finden Sie in der Azure NetApp Files-REST-API-Referenz](https://docs.microsoft.com/rest/api/netapp/)
+[Mehr finden Sie in der Azure NetApp Files-REST-API-Referenz](/rest/api/netapp/)

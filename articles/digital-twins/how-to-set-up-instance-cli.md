@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0dfc86503f1b3aa648cb8c7cefe14fbd123f1459
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320767"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047504"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)
 
@@ -151,7 +151,7 @@ Notieren Sie sich die *Anwendungs-ID (Client)* und die *Verzeichnis-ID (Mandant)
 ## <a name="next-steps"></a>Nächste Schritte
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
 
 Unter folgendem Link erfahren Sie außerdem, wie Sie eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie den Authentifizierungscode der Client-App schreiben:

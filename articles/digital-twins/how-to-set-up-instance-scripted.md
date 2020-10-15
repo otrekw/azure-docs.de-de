@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328637"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047419"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328637"
 
 Dieser Artikel beschreibt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie die Schritte in diesem Artikel durchgeführt haben, verfügen Sie über eine Azure Digital Twins-Instanz, die zum Programmieren bereitsteht.
 
-Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein [Beispiel für ein **automatisiertes Bereitstellungsskript**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) zum Optimieren des Prozesses ausgeführt wird. 
+Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein [Beispiel für ein **automatisiertes Bereitstellungsskript**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) zum Optimieren des Prozesses ausgeführt wird. 
 * Die manuellen CLI-Schritte, die das Skript im Hintergrund durchläuft, finden Sie in der CLI-Version dieses Artikels: [*Verwenden Einrichten einer Instanz und Authentifizierung (CLI)* ](how-to-set-up-instance-cli.md).
 * Eine Beschreibung der manuellen Schritte im Azure-Portal finden Sie in der Portalversion dieses Artikels: [*Verwenden Einrichten einer Instanz und Authentifizierung (Portal)* ](how-to-set-up-instance-portal.md).
 
@@ -28,7 +28,7 @@ Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein 
 
 ## <a name="prerequisites-download-the-script"></a>Voraussetzungen: Herunterladen des Skripts
 
-Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [**Azure Digital Twins-Beispiele**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *ZIP herunterladen* klicken.
+Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [**Azure Digital Twins-Beispiele**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *ZIP herunterladen* klicken.
 
 Dadurch wird das Beispielprojekt als _**Azure_Digital_Twins_samples.zip**_ auf Ihren Computer heruntergeladen. Navigieren Sie zu dem Ordner auf Ihrem Computer, und entpacken Sie ihn, um die Dateien zu extrahieren.
 
@@ -157,7 +157,7 @@ Wenn mindestens einer dieser Überprüfungsschritte nicht erfolgreich ist, versu
 ## <a name="next-steps"></a>Nächste Schritte
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
 
 Unter folgendem Link erfahren Sie außerdem, wie Sie eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie den Authentifizierungscode der Client-App schreiben:

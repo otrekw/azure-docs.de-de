@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836104"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problembehandlung für Azure Virtual Network NAT-Konnektivität
@@ -195,14 +195,6 @@ _**Lösung:**_
 Es ist nicht erforderlich, einen virtuellen Computer neu zu starten, der ein Subnetz für eine NAT Gateway-Ressource konfiguriert.  Wenn allerdings ein virtueller Computer neu gestartet wird, wird der Verbindungsstatus geleert.  Wenn der Verbindungsstatus geleert wurde, beginnen alle Verbindungen mit der Verwendung der IP-Adresse(n) der NAT Gateway-Ressource.  Dies ist jedoch ein Nebeneffekt des Neustarts des virtuellen Computers und kein Hinweis darauf, dass ein Neustart erforderlich ist.
 
 Wenn Sie weiterhin Probleme haben, öffnen Sie eine Supportanfrage zur weiteren Problembehandlung.
-
-### <a name="connection-setup-time"></a>Verbindungseinrichtungsdauer
-
-Da Load Balancer-Ausgangsregeln bestimmten virtuellen Computern Pools mit SNAT-Ports statisch zuweisen, ist die Erstellung neuer ausgehender Datenflüsse schneller als die Verwendung von Virtual Network NAT. Wenn Sie von Load Balancer-Ausgangsregeln wechseln, kommt es beim Erstellen einer neuen ausgehenden Verbindung daher möglicherweise zu einer längeren Wartezeit. Wie bereits erläutert, sollten Sie zum Maximieren der Anwendungsleistung langlebige Datenflüsse verwenden (z. B. wiederverwendete TCP-Verbindungen).
-
-_**Lösung:**_
-
-Wenn Sie in erster Linie an minimaler Wartezeit bei der Verbindungseinrichtung interessiert sind, verwenden Sie Load Balancer-Ausgangsregeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

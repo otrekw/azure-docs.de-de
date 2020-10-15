@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4f40a821a0a639fa117dc0844146f28d887166e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102673"
 ---
 Inkrementelle Momentaufnahmen sind Point-in-Time-Sicherungen für verwaltete Datenträger, die bei der Erfassung nur aus den Änderungen seit der letzten Momentaufnahme bestehen. Beim Wiederherstellen eines Datenträgers aus einer inkrementellen Momentaufnahme rekonstruiert das System den vollständigen Datenträger, der die Point-in-Time-Sicherung des Datenträgers zu dem Zeitpunkt darstellt, zu dem die inkrementelle Momentaufnahme erstellt wurde. Durch diese neue Funktion für Momentaufnahmen verwalteter Datenträger werden diese potenziell kostengünstiger, da Sie nicht mehr mit jeder einzelnen Momentaufnahme den gesamten Datenträger speichern müssen, es sei denn, Sie entscheiden sich dazu. Wie vollständige Momentaufnahmen können auch inkrementelle Momentaufnahmen verwendet werden, um entweder einen vollständigen verwalteten Datenträger oder eine vollständige Momentaufnahme zu erstellen.

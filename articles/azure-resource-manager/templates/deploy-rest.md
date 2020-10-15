@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Resource Manager und Resource Manager-REST-API,
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079478"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Resource Manager-REST-API

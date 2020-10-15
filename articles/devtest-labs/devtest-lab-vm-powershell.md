@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie in Azure DevTest Labs mithilfe von Azure Pow
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85484110"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Erstellen einer VM in DevTest Labs mithilfe von Azure PowerShell

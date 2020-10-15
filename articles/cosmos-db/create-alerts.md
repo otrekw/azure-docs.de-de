@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095091"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Erstellen von Warnungen für Azure Cosmos DB mithilfe von Azure Monitor
@@ -83,7 +83,7 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Warnung erstellen, wenn Sie den H
 
    * Geben Sie einen Namen für die Aktion an, und wählen Sie als **Aktionstyp** die Option **E-Mail/SMS/Push/Sprachanruf** aus. Der folgende Screenshot zeigt die Details des Aktionstyps:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Konfigurieren des Aktionstyps (z. B. E-Mail-Benachrichtigung) zum Empfangen der Warnung":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Konfigurieren der Logik zum Empfangen von Warnungen für Anforderungen mit Ratenbeschränkung/Statuscode 429":::
 
 1. Füllen Sie den Abschnitt **Details zur Warnungsregel** aus:
 

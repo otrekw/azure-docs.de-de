@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080997"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Visualisieren und Analysieren der Azure IoT Central-Daten in einem Power BI-Dashboard
@@ -55,13 +55,13 @@ Lesen und befolgen Sie beim Öffnen der PBIX-Datei die Anweisungen auf der Start
 
 Die PBIX-Datei enthält den Bericht **Devices and Telemetry** (Geräte und Telemetriedaten) mit einer Verlaufsansicht der von Geräten gesendeten Telemetriedaten. Sie bietet eine Aufschlüsselung der verschiedenen Arten von Telemetriedaten und zeigt die neuesten Telemetriedaten, die von Geräten gesendet wurden.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI-Bericht für Geräte und Telemetriedaten":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI-Lösungspipeline":::
 
 ## <a name="pipeline-resources"></a>Pipelineressourcen
 
 Über das Azure-Portal kann auf alle Azure-Ressourcen zugegriffen werden, aus denen sich die Pipeline zusammensetzt. Alle Ressourcen befinden sich in der Ressourcengruppe, die Sie beim Einrichten der Pipeline erstellt haben.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Ressourcengruppenansicht im Azure-Portal":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI-Lösungspipeline":::
 
 In der folgenden Liste werden die Rollen der jeweiligen Ressourcen in der Pipeline beschrieben:
 

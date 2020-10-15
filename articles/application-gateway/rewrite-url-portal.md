@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083156"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Erneutes Generieren einer URL mit Azure Application Gateway: Azure-Portal (Vorschau)
@@ -53,13 +53,13 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
     
     c. Wählen Sie **Weiter** aus.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Einer Regel zuordnen":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
 
 5. Erstellen einer Regel zum erneuten Generieren:
 
     a. Wählen Sie **Neuschreibungsregel hinzufügen** aus.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Hinzufügen einer Regel zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
     
     b. Geben Sie einen Namen für die Regel zum erneuten Generieren in das Feld **Umschreibungsregelname** ein. Geben Sie eine Zahl in das Feld **Regelsequenz** ein.
 
@@ -81,7 +81,7 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
 
     g. Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
 
  
 
@@ -101,13 +101,13 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
     
    f. Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Aktion":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
 
 8. Klicken Sie auf **Erstellen**, um den Satz zum erneuten Generieren zu erstellen.
 
 9. Sicherstellen, dass der neue Satz zum erneuten Generieren in der Liste der Sätze zum erneuten Generieren angezeigt wird
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Hinzufügen einer Regel zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>Überprüfen der erneuten URL-Generierung durch Zugriffsprotokolle
 

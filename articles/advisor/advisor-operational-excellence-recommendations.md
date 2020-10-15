@@ -3,12 +3,12 @@ title: Verbessern des optimalen Betriebs mit Advisor
 description: Verwenden Sie Azure Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258480"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077387"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
@@ -38,7 +38,7 @@ Wenn Ihr Pool eine veraltete interne Komponente verwendet, löschen Sie den Pool
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
-Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](https://aka.ms/aa_logalerts_queryrepair).
+Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](../azure-monitor/platform/alerts-troubleshoot-log.md).
 
 ## <a name="use-azure-policy-recommendations"></a>Verwenden von Azure Policy-Empfehlungen
 
@@ -55,7 +55,7 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 **Aktivieren Sie *Tag von der Ressourcengruppe erben*.** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
 
 ## <a name="no-validation-environment-enabled"></a>Keine Überprüfungsumgebung aktiviert
-Azure Advisor stellt fest, dass in Ihrem aktuellen Abonnement keine Überprüfungsumgebung aktiviert wurde. Beim Erstellen Ihrer Hostpools haben Sie auf der Registerkarte „Eigenschaften“ unter \"Überprüfungsumgebung\" die Option \"Nein\" ausgewählt. Mit der Aktivierung von mindestens einem Hostpool mit einer Überprüfungsumgebung sorgen Sie für Geschäftskontinuität durch Windows Virtual Desktop-Dienstbereitstellungen mit frühzeitiger Erkennung potenzieller Probleme. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure Advisor stellt fest, dass in Ihrem aktuellen Abonnement keine Überprüfungsumgebung aktiviert wurde. Beim Erstellen Ihrer Hostpools haben Sie auf der Registerkarte „Eigenschaften“ unter \"Überprüfungsumgebung\" die Option \"Nein\" ausgewählt. Mit der Aktivierung von mindestens einem Hostpool mit einer Überprüfungsumgebung sorgen Sie für Geschäftskontinuität durch Windows Virtual Desktop-Dienstbereitstellungen mit frühzeitiger Erkennung potenzieller Probleme. [Weitere Informationen](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Sicherstellen, dass die Produktionsumgebung (keine Überprüfungsumgebung) von stabiler Funktionalität profitiert
 Azure Advisor erkennt, dass bei Ihnen für zu viele Hostpools eine Überprüfungsumgebung aktiviert wurde. Damit Überprüfungsumgebungen Ihren Zweck am besten erfüllen können, sollten Sie mindestens eine davon nutzen. Die Anzahl von Überprüfungsumgebungen sollte aber niemals die Hälfte Ihrer Anzahl von Hostpools überschreiten. Indem Sie eine ausgewogene Anzahl von Hostpools mit aktivierter und mit deaktivierter Überprüfungsumgebung nutzen, können Sie von den Vorteilen der mehrstufigen Bereitstellungen am besten profitieren, die Ihnen Windows Virtual Desktop bei bestimmten Updates bietet. Öffnen Sie zum Beheben dieses Problems die Eigenschaften Ihres Hostpools, und wählen Sie neben der Einstellung \"Überprüfungsumgebung\" die Option \"Nein\" aus.

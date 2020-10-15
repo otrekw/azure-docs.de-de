@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314911"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929335"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Auswählen von Verteilungsspalten in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -71,8 +71,6 @@ Der häufigste Fehler beim Modellieren von Zeitreiheninformationen in Hyperscale
 
 -   **Wählen Sie einen Zeitstempel nicht als Verteilungsspalte aus.** Wählen Sie eine andere Verteilungsspalte aus. Verwenden Sie in einer App mit mehreren Mandanten die Mandanten-ID, oder verwenden Sie in einer Echtzeit-App die Entitäts-ID.
 -   **Verwenden Sie stattdessen die PostgreSQL-Tabellenpartitionierung für die Zeit.** Unterteilen Sie eine große Tabelle mit zeitlich strukturierten Daten mithilfe der Tabellenpartitionierung in mehrere geerbte Tabellen mit jeweils verschiedenen Zeiträumen. Durch die Verteilung einer mit Postgres partitionierten Tabelle in Hyperscale (Citus) werden Shards für die geerbten Tabellen erstellt.
-
-Im [Tutorial zur Verwendung von Zeitreihen](https://aka.ms/hyperscale-tutorial-timeseries) finden Sie ein Beispiel für die Erstellung dieser Art von Anwendung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie die [Zusammenstellung](concepts-hyperscale-colocation.md) zwischen verteilten Daten zu einer schnelleren Ausführung von Abfragen führt.
