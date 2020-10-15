@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 23ca4be9387754c84dc256dd72b131bd5b76b458
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876463"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte
 
@@ -177,19 +177,19 @@ Die von Ihnen erstellte Lösungsvorlage enthält Beispielcode für ein IoT Edge-
 
 Für jedes Modul können im Code mehrere Warteschlangen für die *Eingabe* und *Ausgabe* deklariert werden. Der IoT Edge-Hub, der auf dem Gerät ausgeführt wird, leitet Nachrichten aus der Ausgabe eines Moduls an die Eingabe mindestens eines anderen Moduls weiter. Der spezifische Code zum Deklarieren von Ein- und Ausgaben variiert je nach Sprache, aber das Konzept ist modulübergreifend identisch. Weitere Informationen zum Routing zwischen Modulen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes).
 
-Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) aus dem IoT Hub SDK für .NET.
+Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient-Klasse](/dotnet/api/microsoft.azure.devices.client.moduleclient) aus dem IoT Hub SDK für .NET.
 
 1. Öffnen Sie die Datei **Program.cs**, die im Ordner **modules/SampleModule/** enthalten ist.
 
 2. Suchen Sie in der Datei „program.cs“ die **SetInputMessageHandlerAsync**-Methode.
 
-3. Die [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet)-Methode richtet eine Eingabewarteschlange für den Empfang eingehender Nachrichten ein. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Eingabewarteschlange namens **input1** initialisiert.
+3. Die [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync)-Methode richtet eine Eingabewarteschlange für den Empfang eingehender Nachrichten ein. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Eingabewarteschlange namens **input1** initialisiert.
 
    ![Suchen nach dem Eingabenamen im Konstruktor „SetInputMessageCallback“](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
 4. Suchen Sie als Nächstes die **SendEventAsync**-Methode.
 
-5. Die [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet)-Methode verarbeitet empfangene Nachrichten und richtet eine Ausgabewarteschlange ein, um sie zu übergeben. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Ausgabewarteschlange namens **output1** initialisiert.
+5. Die [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync)-Methode verarbeitet empfangene Nachrichten und richtet eine Ausgabewarteschlange ein, um sie zu übergeben. Überprüfen Sie diese Methode, und vergewissern Sie sich, dass sie eine Ausgabewarteschlange namens **output1** initialisiert.
 
    ![Ermitteln des Ausgabenamens in „SendEventToOutputAsync“](./media/tutorial-develop-for-linux/declare-output-queue.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 86927a525fbfcb6a252d8e3d214733a0f1e83ed1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 60bf2034f1e6404f3f09bf25a66c497dbbaf4d05
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550374"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361652"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Insight4GRC für die automatische Benutzerbereitstellung
 
@@ -80,15 +80,15 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+    ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die SCIM-Endpunkt-URL ein. Die Endpunkt-URL sollte das Format `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` aufweisen, wobei **Insight4GRC Domain Name** der in den vorherigen Schritten abgerufene Wert ist. Geben Sie den Wert für Bearertoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Insight4GRC herstellen kann. Vergewissern Sie sich bei einem Verbindungsfehler, dass Ihr Insight4GRC-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
-    ![Bereitstellung](./media/insight4grc-provisioning-tutorial/provisioning.png)
+    ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
 6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 

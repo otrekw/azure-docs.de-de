@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531575"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876038"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -214,6 +214,8 @@ Der Trigger gibt nicht an, ob ein Dokument aktualisiert oder eingefügt wurde, e
 ## <a name="input"></a>Eingabe
 
 Die Azure Cosmos DB-Eingabebindung verwendet die SQL-API, um mindestens ein Azure Cosmos DB-Dokument abzurufen und an den Eingabeparameter der Funktion zu übergeben. Die Dokument-ID oder die Abfrageparameter können basierend auf dem Trigger, der die Funktion aufruft, ermittelt werden.
+
+## <a name="input---example"></a>Eingabe: Beispiel
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1146,6 +1148,8 @@ Aktualisierungen erfolgen beim Beenden der Funktion nicht automatisch. Verwenden
 ## <a name="output"></a>Output
 
 Die Azure Cosmos DB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank mithilfe der SQL-API.
+
+## <a name="output---example"></a>Ausgabe: Beispiel
 
 # <a name="c"></a>[C#](#tab/csharp)
 

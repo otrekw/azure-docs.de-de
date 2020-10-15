@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 30e76ec3085922ec2a1d4693681eb97c9052c026
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322550"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978729"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Erstellen generalisierter Images ohne Bereitstellungs-Agent
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Dieser Dienst systemd führt zur grundlegenden Bereitstellung drei Aufgaben aus:
 
 1. Meldet Azure den Status „Bereit“ (um auf die erfolgreiche Einrichtung hinzuweisen)
-1. Benennt die VM basierend auf dem vom Benutzer angegebenen VM-Namen um, indem diese Daten aus [Azure Instance Metadata Service (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service) abgerufen werden **Hinweis:** IMDS stellt auch andere [Instanzmetadaten](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service) bereit, z. B. öffentliche SSH-Schlüssel, daher können Sie mehr als den Hostnamen festlegen.
+1. Benennt die VM basierend auf dem vom Benutzer angegebenen VM-Namen um, indem diese Daten aus [Azure Instance Metadata Service (IMDS)](./instance-metadata-service.md) abgerufen werden **Hinweis:** IMDS stellt auch andere [Instanzmetadaten](./instance-metadata-service.md#accessing-azure-instance-metadata-service) bereit, z. B. öffentliche SSH-Schlüssel, daher können Sie mehr als den Hostnamen festlegen.
 1. Deaktiviert sich selbst, sodass dieser Dienst nur beim ersten Start und nicht bei nachfolgenden Neustarts ausgeführt wird
 
 Wenn sich die Einheit im Dateisystem befindet, führen Sie folgenden Befehl aus, um sie zu aktivieren:

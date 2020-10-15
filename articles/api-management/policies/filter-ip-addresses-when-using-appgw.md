@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: joscot
 ms.custom: fasttrack-new
-ms.openlocfilehash: 45e16c9aa9e4b04e7225320951e9f839fae75ba3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8249cc543c6334841c8e5152d5d1ceb84d4097dc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75942363"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076112"
 ---
 # <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>Filtern nach der IP-Adresse einer Anforderung bei Verwendung von Application Gateway
 
-Dieser Artikel zeigt ein Beispiel für eine Azure API Management-Richtlinie, das veranschaulicht, wie auf die IP-Adresse einer Anforderung gefiltert wird, wenn über ein Application Gateway oder einen anderen Mittler auf die API Management-Instanz zugegriffen wird. Um den Code einer Richtlinie festzulegen oder zu bearbeiten, führen Sie die Schritte unter [Festlegen oder Bearbeiten von Azure API Management-Richtlinien](../set-edit-policies.md) aus. Weitere Beispiele finden Sie unter [API Management-Richtlinienbeispiele](../policy-samples.md).
+Dieser Artikel zeigt ein Beispiel für eine Azure API Management-Richtlinie, das veranschaulicht, wie auf die IP-Adresse einer Anforderung gefiltert wird, wenn über ein Application Gateway oder einen anderen Mittler auf die API Management-Instanz zugegriffen wird. Um den Code einer Richtlinie festzulegen oder zu bearbeiten, führen Sie die Schritte unter [Festlegen oder Bearbeiten von Azure API Management-Richtlinien](../set-edit-policies.md) aus. Weitere Beispiele finden Sie unter [API Management-Richtlinienbeispiele](../policy-reference.md).
 
 ## <a name="policy"></a>Richtlinie
 
@@ -34,4 +34,4 @@ Fügen Sie den Code in den Block **inbound** ein.
 Weitere Informationen zu APIM-Richtlinien:
 
 + [API Management-Richtlinien für die Zugriffsbeschränkung](../api-management-access-restriction-policies.md)
-+ [API Management-Richtlinienbeispiele](../policy-samples.md)
++ [API Management-Richtlinienbeispiele](../policy-reference.md)

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268484"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019612"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Se
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Welche Einschränkungen bestehen im Azure-Portal im Zusammenhang mit Media Services v3?
 
-Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-Liveereignissen, Anzeigen von v3-Objekten und -Aufträgen, Abrufen von Informationen über das Zugreifen auf APIs sowie Verschlüsseln von Inhalten. <br/>Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für die Verwaltung von Transformationen und Aufträgen oder die Analyse von v3-Inhalten) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-Liveereignissen, Anzeigen von v3-Objekten und -Aufträgen, Abrufen von Informationen über das Zugreifen auf APIs sowie Verschlüsseln von Inhalten. <br/>Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für die Verwaltung von Transformationen und Aufträgen oder die Analyse von v3-Inhalten) die [REST-API](/rest/api/media/accountfilters), die [CLI](/cli/azure/ams) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 Wenn Ihr Video zuvor mithilfe der Media Services v3-API in das Media Services-Konto hochgeladen wurde oder der Inhalt basierend auf einer Liveausgabe generiert wurde, sind die Schaltflächen **Codieren**, **Analysieren** und **Verschlüsseln** im Azure-Portal nicht verfügbar. Verwenden Sie für diese Aufgaben die Media Services v3-APIs.  
 
@@ -163,7 +163,7 @@ Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes
 * Anzeigen (nicht Verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
 * [Abrufen von Informationen zum Zugriff auf APIs](./access-api-howto.md) 
 
-Verwenden Sie für alle anderen Verwaltungsaufgaben (z. B. [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/), die [Azure-Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+Verwenden Sie für alle anderen Verwaltungsaufgaben (z. B. [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/), die [Azure-Befehlszeilenschnittstelle](/cli/azure/ams) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Gibt es in v3 ein AssetFile-Konzept?
 

@@ -4,10 +4,10 @@ description: In diesem Tutorial erfahren Sie, wie Sie Knotentypen eines verwalte
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 860345f5b297edaeea9d099ac392243176dfaca7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410224"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>Tutorial: Hinzufügen und Entfernen von Knotentypen in einem verwalteten Service Fabric-Cluster (Vorschau)

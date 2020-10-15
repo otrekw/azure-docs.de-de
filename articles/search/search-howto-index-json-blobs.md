@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917991"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403635"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von JSON-Blobs mit einem Blobindexer in der kognitiven Azure-Suche
 
@@ -45,7 +45,7 @@ Sie benötigen den Namen des Speicherkontos, den Containernamen und einen Zugrif
 
 Auf der Seite „Übersicht“ Ihres Suchdiensts können Sie über die Befehlsleiste [den Assistenten starten](search-import-data-portal.md).
 
-   ![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd2.png" alt-text="Befehl „Daten importieren“ im Portal" border="false":::
 
 ### <a name="3---set-the-data-source"></a>3\. Einrichten der Datenquelle
 
@@ -63,7 +63,7 @@ Auf der Seite **Datenquelle** muss die Quelle **Azure Blob Storage** lauten und 
    
 + **Speichercontainer** muss Ihr Speicherkonto sowie den Container angeben oder alternativ eine Verbindungszeichenfolge, die im Container aufgelöst wird. Sie können Verbindungszeichenfolgen auf der Seite des Blob-Dienst-Portals abrufen.
 
-   ![Definition der Blobdatenquelle](media/search-howto-index-json/import-wizard-json-data-source.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Befehl „Daten importieren“ im Portal" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>Schritt 4: Überspringen der Seite „Inhalte anreichern“ im Assistenten
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie in den Beschreibungen der [Indexattribute](/res
 
 Nehmen Sie sich einen Moment Zeit, um Ihre Auswahl zu überprüfen. Wenn Sie den Assistenten ausführen, werden physische Datenstrukturen erstellt, und Sie können diese Felder nicht bearbeiten, ohne alle Objekte zu löschen und neu zu erstellen.
 
-   ![Blobindexdefinition](media/search-howto-index-json/import-wizard-json-index.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Befehl „Daten importieren“ im Portal" border="false":::
 
 ### <a name="6---create-indexer"></a>6: Erstellen des Indexers
 
@@ -89,7 +89,7 @@ Wenn alle Angaben gemacht wurden, erstellt der Assistent drei unterschiedliche O
 
 Falls Sie noch nicht mit Indexern vertraut sind: Ein *Indexer* ist eine Ressource in der kognitiven Azure-Suche, die eine externe Datenquelle nach durchsuchbarem Inhalt durchforstet. Die Ausgabe des Assistenten **Daten importieren** ist ein Indexer, der die JSON-Datenquelle durchforstet, durchsuchbaren Inhalt extrahiert und diesen in einen Index in der kognitiven Azure-Suche importiert.
 
-   ![Definition des Blobindexers](media/search-howto-index-json/import-wizard-json-indexer.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Befehl „Daten importieren“ im Portal" border="false":::
 
 Klicken Sie auf **OK**, um den Assistenten auszuführen und alle Objekte zu erstellen. Die Indizierung wird sofort durchgeführt.
 
@@ -280,10 +280,10 @@ Das Erstellen des Indexers in der kognitiven Azure-Suche löst einen Datenimport
 
 Das .NET SDK ist der REST-API vollständig gleichgestellt. Es wird empfohlen, dass Sie den vorherige Abschnitt zur REST-API genau lesen, um die Konzepte, den Workflow und die Anforderungen zu verstehen. Sie können sich anschließend auf die folgende .NET-API-Referenzdokumentation beziehen, um einen JSON-Indexer in verwalteten Code zu implementieren.
 
-+ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index) 
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="parsing-modes"></a>
 
@@ -451,7 +451,9 @@ Sie können auch mit einem nullbasierten Index auf einzelne Arrayelemente verwei
 > [!NOTE]
 > Wenn ein Quellfeldname in einer Feldzuordnung auf eine Eigenschaft verweist, die nicht in JSON vorhanden ist, wird die Zuordnung ohne Fehler übersprungen. Dies geschieht, damit Dokumente mit einem anderen Schema unterstützt werden können (ein häufiger Anwendungsfall). Da keine Überprüfung erfolgt, müssen Sie darauf achten, Tippfehler in Ihrer Feldzuordnungspezifikation zu vermeiden.
 >
->
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>Helfen Sie uns bei der Verbesserung der kognitiven Azure-Suche
+Wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) dafür ab. Wenn Sie Hilfe bei der Verwendung des vorhandenen Features benötigen, veröffentlichen Sie Ihre Frage in [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870).
 
 ## <a name="see-also"></a>Weitere Informationen
 
