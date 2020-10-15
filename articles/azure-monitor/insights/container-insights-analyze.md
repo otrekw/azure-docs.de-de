@@ -3,12 +3,12 @@ title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Doku
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988128"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994762"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -293,7 +293,7 @@ Die Symbole im Statusfeld zeigen die Onlinestatus der Pods an, die in der folgen
 
 ## <a name="workbooks"></a>Arbeitsmappen
 
-Arbeitsmappen kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), [Metriken](../platform/data-platform-metrics.md) und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
+Arbeitsmappen kombinieren Text,  [Protokollabfragen](/azure/data-explorer/kusto/query/), [Metriken](../platform/data-platform-metrics.md) und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
 
 Azure Monitor für Container enthält vier Arbeitsmappen für den Einstieg:
 
@@ -321,8 +321,8 @@ Sie greifen auf diese Arbeitsmappen zu, indem Sie sie jeweils in der Dropdownlis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Erstellen von Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md).
+- Informationen zum Erstellen von Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](./container-insights-log-alerts.md).
 
 - Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
 
-- Informationen zum Anzeigen des Integritätsstatus Ihres Kubernetes-Clusters finden Sie unter [Überwachen der Clusterintegrität](container-insights-health.md).
+- Informationen zum Anzeigen des Integritätsstatus Ihres Kubernetes-Clusters finden Sie unter [Überwachen der Clusterintegrität](./container-insights-overview.md).

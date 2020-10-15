@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119789"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Verwenden von Microsoft Authentication Library für JavaScript für die Zusammenarbeit mit Azure AD B2C
@@ -201,7 +201,7 @@ Wenn ein Benutzer die Option **Kennwort vergessen** auswählt, gibt Ihre Anmeldu
 
     Nachdem der Benutzer sein Kennwort zurückgesetzt hat, wird er zurück zur Anwendung geleitet, um sich erneut anzumelden.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Von Azure AD B2C während des Kennwortzurücksetzungsflows angezeigte Bildschirme" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Von Azure AD B2C angezeigter Anmeldebildschirm" border="false":::
 
     Weitere Informationen zu Fehlercodes und Ausnahmebehandlungen finden Sie unter [MSAL-Fehler- und Ausnahmecodes](msal-handling-exceptions.md).
 

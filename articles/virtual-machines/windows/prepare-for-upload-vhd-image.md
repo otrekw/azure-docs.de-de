@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321734"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976182"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
 Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt VMs der Generationen 1 und 2, die das VHD-Dateiformat und einen Datenträger mit fester Größe aufweisen. Die maximal zulässige Größe für die Betriebssystem-VHD eines virtuellen Computers der Generation 1 beträgt 2 TB.
 
-Sie können eine VHDX-Datei in das VHD-Format und einen dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren, die Generation eines virtuellen Computers kann jedoch nicht geändert werden. Weitere Informationen finden Sie unter [Sollte ich eine VM der Generation 1 oder 2 in Hyper-V erstellen?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) und [Support für VMs der Generation 2 in Azure](generation-2.md).
+Sie können eine VHDX-Datei in das VHD-Format und einen dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren, die Generation eines virtuellen Computers kann jedoch nicht geändert werden. Weitere Informationen finden Sie unter [Sollte ich eine VM der Generation 1 oder 2 in Hyper-V erstellen?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) und [Support für VMs der Generation 2 in Azure](../generation-2.md).
 
 Weitere Informationen zur Supportrichtlinie für Azure-VMs finden Sie unter [Microsoft-Server-Software-Support für virtuelle Maschinen von Microsoft Azure](https://support.microsoft.com/help/2721672/).
 
@@ -71,7 +71,7 @@ Nachdem die SFC-Prüfung abgeschlossen wurde, versuchen Sie, Windows-Updates zu 
    netsh.exe winhttp reset proxy
    ```
 
-    Wenn die VM mit einem bestimmten Proxy zusammenarbeiten muss, fügen Sie der Azure-IP-Adresse eine Proxyausnahme hinzu ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)), damit die VM eine Verbindung mit Azure herstellen kann:
+    Wenn die VM mit einem bestimmten Proxy zusammenarbeiten muss, fügen Sie der Azure-IP-Adresse eine Proxyausnahme hinzu ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)), damit die VM eine Verbindung mit Azure herstellen kann:
 
     ```
     $proxyAddress='<your proxy server>'
@@ -405,7 +405,7 @@ Sie verwenden `sysprep.exe` in der Regel, wenn Sie eine Vorlage erstellen, aus d
 Wenn Sie nur eine VM aus einem Datenträger erstellen möchten, ist die Verwendung von Sysprep nicht erforderlich. Sie können den virtuellen Computer stattdessen aus einem *spezialisierten Image* erstellen. Weitere Informationen zum Erstellen einer VM aus einem spezialisierten Datenträger finden Sie hier:
 
 - [Erstellen eines virtuellen Computers von einem speziellen Datenträger](create-vm-specialized.md)
-- [Create a VM from a specialized VHD disk](/azure/virtual-machines/windows/create-vm-specialized-portal) (Erstellen einer VM aus einem spezialisierten VHD-Datenträger)
+- [Create a VM from a specialized VHD disk](./create-vm-specialized-portal.md) (Erstellen einer VM aus einem spezialisierten VHD-Datenträger)
 
 Wenn Sie ein generalisiertes Image erstellen möchten, müssen Sie Sysprep ausführen. Weitere Informationen finden Sie unter [How to Use Sysprep: An introduction.](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)) (Verwenden von Sysprep: Einführung.)
 
@@ -421,6 +421,7 @@ Sysprep erfordert insbesondere, dass die Laufwerke vor der Ausführung vollstän
 
 1. Melden Sie sich bei der Windows-VM an.
 1. Führen Sie eine PowerShell-Sitzung als Administrator aus.
+1. Löschen Sie das Verzeichnis „Panther“ (c:\Windows\Panther).
 1. Wechseln Sie zum Verzeichnis `%windir%\system32\sysprep`. Führen Sie dann `sysprep.exe` aus.
 1. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
 
@@ -429,10 +430,10 @@ Sysprep erfordert insbesondere, dass die Laufwerke vor der Ausführung vollstän
 1. Klicken Sie auf **OK**.
 1. Fahren Sie die VM herunter, nachdem Sysprep abgeschlossen wurde. Verwenden Sie nicht **Neu starten**, um die VM herunterzufahren.
 
-Jetzt kann die VHD hochgeladen werden. Weitere Informationen zum Erstellen einer VM aus einem generalisierten Datenträger finden Sie unter [Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM](sa-upload-generalized.md).
+Jetzt kann die VHD hochgeladen werden. Weitere Informationen zum Erstellen einer VM aus einem generalisierten Datenträger finden Sie unter [Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Eine benutzerdefinierte Datei *unattend.xml* wird nicht unterstützt. Wir unterstützen aber die **AdditionalUnattendContent**-Eigenschaft, die nur eingeschränkte Unterstützung für das Hinzufügen von [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup)-Optionen in die Datei *unattend.xml* bietet, die der Azure-Bereitstellungs-Agent verwendet. Sie können z. B. [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) verwenden, um FirstLogonCommands und LogonCommands hinzuzufügen. Weitere Informationen finden Sie unter [Beispiel für additionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Eine benutzerdefinierte Datei *unattend.xml* wird nicht unterstützt. Wir unterstützen aber die **AdditionalUnattendContent**-Eigenschaft, die nur eingeschränkte Unterstützung für das Hinzufügen von [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup)-Optionen in die Datei *unattend.xml* bietet, die der Azure-Bereitstellungs-Agent verwendet. Sie können z. B. [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) verwenden, um FirstLogonCommands und LogonCommands hinzuzufügen. Weitere Informationen finden Sie unter [Beispiel für additionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Konvertieren des virtuellen Datenträgers in eine VHD mit fester Größe
 
@@ -467,7 +468,7 @@ Verwenden Sie eine der Methoden in diesem Abschnitt, um Ihren virtuellen Datentr
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Verwenden von PowerShell zum Konvertieren des Datenträgers
 
-Sie können einen virtuellen Datenträger mithilfe des PowerShell-Cmdlets [Convert-VHD](/powershell/module/hyper-v/convert-vhd) konvertieren. Informationen zum Installieren dieses Cmdlets finden Sie bei Bedarf unter [Installieren der Hyper-V-Rolle auf Windows Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+Sie können einen virtuellen Datenträger mithilfe des PowerShell-Cmdlets [Convert-VHD](/powershell/module/hyper-v/convert-vhd) konvertieren. Informationen zum Installieren dieses Cmdlets finden Sie bei Bedarf unter [Installieren der Hyper-V-Rolle auf Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 Im folgenden Beispiel wird der Datenträger aus VHDX in VHD konvertiert. Der Datenträger wird außerdem aus einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertiert.
 
@@ -487,7 +488,7 @@ Ersetzen Sie in diesem Beispiel den Wert für **Path** durch den Pfad zu der vir
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Verwenden von PowerShell zum Ändern der Datenträgergröße
 
-Die Größe eines virtuellen Datenträgers kann mithilfe des PowerShell-Cmdlets [Resize-VHD](/powershell/module/hyper-v/resize-vhd) geändert werden. Informationen zum Installieren dieses Cmdlets finden Sie bei Bedarf unter [Installieren der Hyper-V-Rolle auf Windows Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+Die Größe eines virtuellen Datenträgers kann mithilfe des PowerShell-Cmdlets [Resize-VHD](/powershell/module/hyper-v/resize-vhd) geändert werden. Informationen zum Installieren dieses Cmdlets finden Sie bei Bedarf unter [Installieren der Hyper-V-Rolle auf Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 Im folgenden Beispiel wird die Größe des Datenträgers von 100,5 MiB in 101 MiB geändert, um die Azure-Ausrichtungsanforderung zu erfüllen.
 
@@ -499,7 +500,7 @@ Ersetzen Sie in diesem Beispiel den Wert für **Path** durch den Pfad der virtue
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertieren des VMware-VMDK-Datenträgerformats
 
-Wenn Sie ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) haben, können Sie das VMDK mithilfe von [Azure Migrate](https://docs.microsoft.com/azure/migrate/server-migrate-overview) konvertieren und in Azure hochladen.
+Wenn Sie ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) haben, können Sie das VMDK mithilfe von [Azure Migrate](../../migrate/server-migrate-overview.md) konvertieren und in Azure hochladen.
 
 ## <a name="complete-the-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 
@@ -519,4 +520,4 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](upload-generalized-managed.md)
-- [Beheben von Problemen bei der Aktivierung virtueller Windows-Computer](troubleshoot-activation-problems.md)
+- [Beheben von Problemen bei der Aktivierung virtueller Windows-Computer](../troubleshooting/troubleshoot-activation-problems.md)

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902789"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal
@@ -41,7 +41,7 @@ Die Option „Aufbewahrungszeit für Sicherung“ kann auf einem Server mit den 
 2. Wählen Sie Ihren Server für Azure Database for MySQL aus. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
 3. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Tarif**. Mit dem Schieberegler können Sie die **Aufbewahrungszeit für Sicherung** auf einen Wert zwischen 7 und 35 Tagen festlegen.
 Im folgenden Screenshot wurde der Wert auf 34 Tage erhöht.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Erhöhung der Aufbewahrungszeit für Sicherung":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 4. Klicken Sie auf **OK**, um die Änderung zu bestätigen.
 
@@ -57,11 +57,11 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 
 2. Klicken Sie in der Symbolleiste auf der Seite **Übersicht** des Servers auf **Wiederherstellen**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – Übersicht – Schaltfläche „Wiederherstellen“":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL – Wiederherstellungsinformationen":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
    - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
    - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
    - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
@@ -86,13 +86,13 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+). Wählen Sie **Datenbanken** > **Azure-Datenbank für MySQL** aus.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Navigieren zu Azure Database for MySQL":::
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
  
 2. Geben Sie das Abonnement, die Ressourcengruppe und den Namen des neuen Servers an. 
 
 3. Wählen Sie unter **Datenquelle** die Option **Sicherung** aus. Dadurch wird eine Dropdownliste mit Servern geladen, für die georedundante Sicherungen aktiviert sind.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Auswählen der Datenquelle":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
     
    > [!NOTE]
    > Für einen neu erstellten Server kann möglicherweise nicht sofort eine Geowiederherstellung durchgeführt werden. Es kann einige Stunden dauern, bis die erforderlichen Metadaten aufgefüllt wurden.
@@ -100,21 +100,21 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 4. Wählen Sie die Dropdownliste **Sicherung** aus.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Auswählen der Dropdownliste „Sicherung“":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 5. Wählen Sie den Quellserver für die Wiederherstellung aus.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Auswählen der Sicherung":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 6. Für den Server werden Standardwerte für die **Anzahl virtueller Kerne**, den **Aufbewahrungszeitraum für Sicherungen**, die **Option für Sicherungsredundanz**, die **Engine-Version** und die **Administrator-Anmeldeinformationen** verwendet. Wählen Sie **Weiter**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Fortfahren mit Sicherung":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 7. Geben Sie im Rest des Formulars Ihre bevorzugten Einstellungen an. Sie können einen beliebigen **Standort** auswählen.
 
     Nach der Wahl des Standorts können Sie **Server konfigurieren** auswählen, um die **Computegeneration** (sofern in der ausgewählten Region verfügbar), die Anzahl von **virtuellen Kernen**, den **Aufbewahrungszeitraum für Sicherungen** und die **Option für Sicherungsredundanz** zu aktualisieren. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Ausfüllen des Formulars"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Tarif – Auswählen der Sicherungsredundanz"::: 
 
 8. Wählen Sie **Überprüfen + erstellen** aus, um ihre Auswahl zu überprüfen. 
 

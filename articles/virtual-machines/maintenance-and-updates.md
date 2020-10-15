@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501703"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972066"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Wartung für VMs in Azure
 
@@ -23,7 +23,7 @@ Updates wirken sich kaum auf die gehosteten virtuellen Computer aus. Wenn Update
 - Wenn ein Update ohne Neustart möglich ist, wird die VM angehalten, während der Host aktualisiert wird, oder sie wird in Echtzeit zu einem bereits aktualisierten Host migriert. 
 - Wenn die Wartung einen Neustart erfordert, werden Sie über die geplante Wartung informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt Ihrer Wahl selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel 35 Tage, sofern die Wartung nicht dringend ist. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. Anweisungen zum Verwalten geplanter Wartungen finden Sie in den Artikeln zur Behandlung von Benachrichtigungen der geplanten Wartung über die [Azure-Befehlszeilenschnittstelle](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md) bzw. das [Portal](maintenance-notifications-portal.md).
 
-Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./windows/manage-availability.md) bzw. im entsprechenden Artikel für [Linux](./linux/manage-availability.md).
+Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./manage-availability.md) bzw. im entsprechenden Artikel für [Linux](./manage-availability.md).
 
 In einer VM können Sie [mithilfe von Scheduled Events für Windows](./windows/scheduled-events.md) oder [Linux](./linux/scheduled-events.md) Benachrichtigungen zu bevorstehender Wartung erhalten.
 
@@ -41,7 +41,7 @@ Diese Wartungsvorgänge, die keinen Neustart erfordern, werden jeweils auf eine 
 
 Diese Typen von Updates können sich auf einige Anwendungen auswirken. Wenn der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Versuchen Sie, [Scheduled Events für Windows](./windows/scheduled-events.md) oder [Linux](./linux/scheduled-events.md) für solche Anwendungen zu verwenden, um die VM-Wartung vorzubereiten und Auswirkungen der Azure-Wartung zu reduzieren. 
 
-Um die Kontrolle über alle Wartungsaktivitäten zu erhalten, einschließlich Aktualisierungen ohne Auswirkung und Neustart, können Sie das Feature Wartungssteuerung verwenden. Sie müssen [Azure Dedicated Hosts](./linux/dedicated-hosts.md) oder eine [isolierte VM](../security/fundamentals/isolation-choices.md) verwenden. Über die Wartungssteuerung können Sie alle Plattformupdates überspringen und dann zu einem beliebigen Zeitpunkt innerhalb eines 35-tägigen Zeitfensters anwenden. Weitere Informationen finden Sie unter [Steuern von Updates mit der Wartungssteuerung und der Azure-Befehlszeilenschnittstelle](maintenance-control.md).
+Um die Kontrolle über alle Wartungsaktivitäten zu erhalten, einschließlich Aktualisierungen ohne Auswirkung und Neustart, können Sie das Feature Wartungssteuerung verwenden. Sie müssen [Azure Dedicated Hosts](./dedicated-hosts.md) oder eine [isolierte VM](../security/fundamentals/isolation-choices.md) verwenden. Über die Wartungssteuerung können Sie alle Plattformupdates überspringen und dann zu einem beliebigen Zeitpunkt innerhalb eines 35-tägigen Zeitfensters anwenden. Weitere Informationen finden Sie unter [Steuern von Updates mit der Wartungssteuerung und der Azure-Befehlszeilenschnittstelle](maintenance-control.md).
 
 
 ### <a name="live-migration"></a>Livemigration
@@ -87,7 +87,7 @@ Innerhalb einer Verfügbarkeitsgruppe werden einzelne VMs auf bis zu 20 Updatedo
 
 VM-*Skalierungsgruppen* sind eine Azure-Computeressource, mit der Sie eine Gruppe identischer virtueller Computer als Einzelressource bereitstellen und verwalten können. Die Skalierungsgruppe wird automatisch Updatedomänen übergreifend bereitgestellt – genau wie virtuelle Computer in einer Verfügbarkeitsgruppe. Genau wie bei Verfügbarkeitsgruppen wird auch bei Skalierungsgruppen während einer geplanten Wartung immer nur jeweils eine UD aktualisiert.
 
-Weitere Informationen zur Einrichtung Ihrer VMs für hohe Verfügbarkeit finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./windows/manage-availability.md) bzw. im entsprechenden Artikel für [Linux](./linux/manage-availability.md).
+Weitere Informationen zur Einrichtung Ihrer VMs für hohe Verfügbarkeit finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./manage-availability.md) bzw. im entsprechenden Artikel für [Linux](./manage-availability.md).
 
 #### <a name="availability-zones"></a>Verfügbarkeitszonen
 
@@ -99,4 +99,4 @@ Jedes Infrastrukturupdate wird innerhalb einer einzelnen Region zonenweise ausge
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Sie können geplante Wartungsvorgänge mithilfe der [Azure-Befehlszeilenschnittstelle](maintenance-notifications-cli.md), mit [Azure PowerShell](maintenance-notifications-powershell.md) oder über das [Portal](maintenance-notifications-portal.md) verwalten. 
+Sie können geplante Wartungsvorgänge mithilfe der [Azure-Befehlszeilenschnittstelle](maintenance-notifications-cli.md), mit [Azure PowerShell](maintenance-notifications-powershell.md) oder über das [Portal](maintenance-notifications-portal.md) verwalten.

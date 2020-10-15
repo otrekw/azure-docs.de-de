@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804264"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893457"
 ---
 # <a name="manage-app-consent-policies"></a>Verwalten von Richtlinien zur Einwilligung für die App
 
@@ -117,10 +117,7 @@ Sobald die Richtlinie zur Einwilligung für die App erstellt wurde, können Sie 
 1. Im Folgenden wird gezeigt, wie Sie eine benutzerdefinierte Richtlinie zur Einwilligung für die App löschen können. **Diese Aktion kann nicht rückgängig gemacht werden.**
 
    ```powershell
-   New-AzureADMSPermissionGrantPolicy `
-       -Id "my-custom-policy" `
-       -DisplayName "My first custom consent policy" `
-       -Description "This is a sample custom app consent policy."
+   Remove-AzureADMSPermissionGrantPolicy -Id "my-custom-policy"
    ```
 
 > [!WARNING]

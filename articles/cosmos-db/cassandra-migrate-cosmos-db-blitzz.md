@@ -8,10 +8,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260626"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrieren von Daten aus Cassandra zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Blitzz
@@ -54,7 +54,7 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Download des Blitzz-Replikantentools":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz-Replikantendateien":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Download des Blitzz-Replikantentools":::
 
 1. Richten Sie im CLI-Terminal die Konfiguration der Quelldatenbank ein. Öffnen Sie die Konfigurationsdatei mithilfe des Befehls **`vi conf/conn/cassandra.yml`** , und fügen Sie eine durch Trennzeichen getrennte Liste mit den IP-Adressen der Cassandra-Knoten, die Portnummer, den Benutzernamen, das Kennwort und alle anderen erforderlichen Details hinzu. Im Folgenden finden Sie ein Beispiel für die Inhalte der Konfigurationsdatei:
 
@@ -71,9 +71,9 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Öffnen des Cassandra-Verbindungs-Editors":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Download des Blitzz-Replikantentools":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Cassandra-Verbindungskonfiguration":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Download des Blitzz-Replikantentools":::
 
    Nachdem Sie die Konfigurationsdetails ausgefüllt haben, speichern und schließen Sie die Datei.
 
@@ -92,7 +92,7 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
 
 1. Erhöhen Sie vor dem Migrieren der Daten den Containerdurchsatz auf den Betrag, der für eine schnelle Migration Ihrer Anwendung erforderlich ist. Beispielsweise können Sie den Durchsatz auf 100.000 RUs erhöhen. Das Skalieren des Durchsatzes vor dem Starten der Migration hilft Ihnen, Ihre Daten in kürzerer Zeit zu migrieren.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Skalieren des Azure Cosmos-Containerdurchsatzes":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Download des Blitzz-Replikantentools":::
 
    Verringern Sie nach Abschluss der Migration den Durchsatz wieder. Basierend auf der Menge der gespeicherten Daten und der erforderlichen RUs für jeden Vorgang können Sie den nach der Datenmigration erforderlichen Durchsatz abschätzen. Weitere Informationen zum Abschätzen der erforderlichen RUs finden Sie in den Artikeln [Bereitstellen von Durchsatz für Container und Datenbanken](set-throughput.md) und [Schätzen des Durchsatzes (RU/s) mit dem Azure Cosmos DB Capacity Planner](estimate-ru-with-capacity-planner.md).
 
@@ -128,7 +128,7 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
 
    Die Benutzeroberfläche des Replikanten zeigt den Status der Replikation an. Nachdem die Schemamigration und der Momentaufnahmevorgang abgeschlossen sind, zeigt der Status 100 % an. Nach Abschluss der Migration können Sie die Daten in der Azure Cosmos-Zieldatenbank überprüfen.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Ausgabe der Cassandra-Datenmigration":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Download des Blitzz-Replikantentools":::
 
 
 1. Da Sie den vollständigen Modus für die Migration verwendet haben, können Sie Vorgänge wie Einfügen, Aktualisieren oder Löschen von Daten in der Apache Cassandra-Quelldatenbank ausführen. Später überprüfen Sie, ob sie in Echtzeit in die Azure Cosmos-Zieldatenbank repliziert werden. Stellen Sie nach der Migration sicher, dass Sie den für Ihren Azure Cosmos-Container konfigurierten Durchsatz verringern.

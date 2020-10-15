@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 7d681eba53aa85fe5df05f8404bcddb7c6877477
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007923"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992801"
 ---
 # <a name="conditional-access-programmatic-access"></a>Bedingter Zugriff: Programmgesteuerter Zugriff
 
@@ -78,7 +78,7 @@ Automatisieren Sie mithilfe dieses Beispiels das Sichern und Wiederherstellen vo
 
 ### <a name="emergency-access-accounts"></a>Konten für den Notfallzugriff
 
-Mehrere Administratoren können Richtlinien für bedingten Zugriff erstellen und vergessen dabei möglicherweise, ihre [Konten für den Notfallzugriff](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) diesen Richtlinien als Ausschluss hinzuzufügen. In diesem Beispiel wird sichergestellt, dass alle Richtlinien so aktualisiert werden, dass sie die festgelegten Konten für den Notfallzugriff enthalten.
+Mehrere Administratoren können Richtlinien für bedingten Zugriff erstellen und vergessen dabei möglicherweise, ihre [Konten für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md) diesen Richtlinien als Ausschluss hinzuzufügen. In diesem Beispiel wird sichergestellt, dass alle Richtlinien so aktualisiert werden, dass sie die festgelegten Konten für den Notfallzugriff enthalten.
 
 - [Verwalten der Zuweisung von Konten für den Notfallzugriff zu Richtlinien für bedingten Zugriff mithilfe von Microsoft Graph-API-Aufrufen](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/05-manage/02-emergency-access)
 

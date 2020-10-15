@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450169"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876157"
 ---
 # <a name="monitor-module-twins"></a>Überwachen von Modulzwillingen
 
@@ -168,15 +168,15 @@ Wenn Probleme mit den nachgeschalteten Geräten auftreten, wäre die Untersuchun
 
 Die Informationen zur Konnektivität Ihrer benutzerdefinierten Module werden im IoT Edge-Agent-Modulzwilling verwaltet. Der Modulzwilling für Ihr benutzerdefiniertes Modul wird hauptsächlich zum Verwalten von Daten für Ihre Lösung verwendet. Die gewünschten Eigenschaften, die Sie in der Datei „deployment.json“ definiert haben, spiegeln sich im Modulzwilling wider, und das Modul kann gemeldete Eigenschaftswerte nach Bedarf aktualisieren.
 
-Sie können Ihre bevorzugte Programmiersprache mit den [Azure IoT Hub-Geräte-SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) verwenden, um gemeldete Eigenschaftswerte im Modulzwilling basierend auf dem Anwendungscode Ihres Moduls zu aktualisieren. Im folgenden Verfahren wird das Azure SDK für .NET hierfür verwendet, wobei Code aus dem [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs)-Modul verwendet wird:
+Sie können Ihre bevorzugte Programmiersprache mit den [Azure IoT Hub-Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) verwenden, um gemeldete Eigenschaftswerte im Modulzwilling basierend auf dem Anwendungscode Ihres Moduls zu aktualisieren. Im folgenden Verfahren wird das Azure SDK für .NET hierfür verwendet, wobei Code aus dem [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs)-Modul verwendet wird:
 
-1. Erstellen Sie eine Instanz des [ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) mit der [CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync)-Methode.
+1. Erstellen Sie eine Instanz des [ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) mit der [CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync)-Methode.
 
-1. Rufen Sie eine Sammlung der Eigenschaften des Modulzwillings mit der [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet)-Methode ab.
+1. Rufen Sie eine Sammlung der Eigenschaften des Modulzwillings mit der [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync)-Methode ab.
 
-1. Erstellen Sie einen Listener (Übergabe eines Rückrufs), um Änderungen an den gewünschten Eigenschaften mit der [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet)-Methode abzufangen.
+1. Erstellen Sie einen Listener (Übergabe eines Rückrufs), um Änderungen an den gewünschten Eigenschaften mit der [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync)-Methode abzufangen.
 
-1. Aktualisieren Sie in Ihrer Rückrufmethode die gemeldeten Eigenschaften im Modulzwilling mit der [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient)-Methode, und übergeben Sie dabei eine [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) der Eigenschaftswerte, die Sie festlegen möchten.
+1. Aktualisieren Sie in Ihrer Rückrufmethode die gemeldeten Eigenschaften im Modulzwilling mit der [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient)-Methode, und übergeben Sie dabei eine [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) der Eigenschaftswerte, die Sie festlegen möchten.
 
 ## <a name="access-the-module-twins"></a>Zugreifen auf die Modulzwillinge
 

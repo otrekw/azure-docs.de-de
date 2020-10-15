@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033165"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995209"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Übersicht über Protokollabfragen in Azure Monitor
 Mithilfe von Protokollabfragen können Sie die Daten, die in [Azure Monitor-Protokollen](../platform/data-platform-logs.md) erfasst werden, in vollem Umfang nutzen. Eine leistungsstarke Abfragesprache ermöglicht es Ihnen, Daten aus mehreren Tabellen zusammenzufügen, größere Mengen an Daten zu aggregieren und komplexe Vorgänge mit möglichst wenig Code auszuführen. Beinahe jede Frage kann beantwortet und jede Analyse durchgeführt werden, solange unterstützende Daten erfasst wurden und Sie wissen, wie die richtige Abfrage erstellt werden muss.
@@ -38,7 +38,7 @@ Eine kurze exemplarische Vorgehensweise für die Sprache bei der Verwendung von 
 Informationen zu kleineren Unterschieden bei der KQL-Version, die von Azure Monitor verwendet wird, finden Sie unter [Azure Monitor – Unterschiede in der Protokollabfragesprache](data-explorer-difference.md).
 
 ## <a name="what-data-is-available-to-log-queries"></a>Welchen Daten stehen für Protokollabfragen zur Verfügung?
-Sämtliche Daten, die in Azure Monitor-Protokollen erfasst werden, können bei Protokollabfragen abgerufen und analysiert werden. Verschiedene Datenquellen schreiben ihre Daten auch in unterschiedliche Tabellen. Sie können aber auch mehrere Tabellen in einer einzelnen Abfrage zusammenfassen, um Daten über mehrere Quellen hinweg zu analysieren. Wenn Sie eine Abfrage erstellen, legen Sie zuerst fest, welche Tabellen die gesuchten Daten aufweisen. Eine Erklärung zur Strukturierung der Daten finden Sie unter [Structure of Azure Monitor Logs (Struktur von Azure Monitor-Protokollen)](logs-structure.md).
+Sämtliche Daten, die in Azure Monitor-Protokollen erfasst werden, können bei Protokollabfragen abgerufen und analysiert werden. Verschiedene Datenquellen schreiben ihre Daten auch in unterschiedliche Tabellen. Sie können aber auch mehrere Tabellen in einer einzelnen Abfrage zusammenfassen, um Daten über mehrere Quellen hinweg zu analysieren. Wenn Sie eine Abfrage erstellen, legen Sie zuerst fest, welche Tabellen die gesuchten Daten aufweisen. Eine Erklärung zur Strukturierung der Daten finden Sie unter [Structure of Azure Monitor Logs (Struktur von Azure Monitor-Protokollen)](../platform/data-platform-logs.md).
 
 ## <a name="what-does-a-log-query-look-like"></a>Wie sieht eine Protokollabfrage aus?
 Eine Abfrage kann beispielsweise aus einem einfachen Tabellennamen bestehen, über den alle Einträge einer Tabelle abgerufen werden können:

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263543"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrieren Hunderter Terabytes von Daten zu Azure Cosmos DB 
@@ -145,7 +145,7 @@ Nachdem die Migration abgeschlossen ist, können Sie überprüfen, ob die Anzahl
 ## <a name="contact-the-azure-cosmos-db-team"></a>Kontaktaufnahme mit dem Azure Cosmos DB-Team
 Sie können diesen Leitfaden zwar zum erfolgreichen Migrieren großer Datasets zu Azure Cosmos DB verwenden, aber für Migrationen größeren Umfangs empfehlen wir Ihnen, sich an das Azure Cosmos DB-Produktteam zu wenden. Das Team kann die Datenmodellierung überprüfen und eine allgemeine Prüfung der Architektur durchführen. Basierend auf Ihrem Dataset und Ihrer Workload kann das Produktteam auch andere Leistungs- und Kostenoptimierungen vorschlagen, die für Sie unter Umständen geeignet sind. Wenden Sie sich wie folgt an das Azure Cosmos DB-Team, um Hilfe bei größeren Migrationen zu erhalten: Erstellen Sie wie unten gezeigt unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket.
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Thema „Migrationsunterstützung“":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Einrichten des Migrationstools":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte
