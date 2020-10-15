@@ -3,19 +3,19 @@ title: Durchführen des Metrics Advisor-Onboardings für Ihren Datenfeed
 titleSuffix: Azure Cognitive Services
 description: Enthält eine Beschreibung der ersten Schritte beim Durchführen des Metrics Advisor-Onboardings für Ihre Datenfeeds.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931664"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043200"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Gewusst wie: Durchführen des Metrics Advisor-Onboardings für Ihre Metrikdaten
 
@@ -188,7 +188,7 @@ Geben Sie einen benutzerdefinierten Namen für den Datenfeed an, der in Ihrem Ar
 2. Klicken Sie auf **Status**, und wählen Sie anschließend **Fehlgeschlagen** oder **Fehler** aus.
 3. Zeigen Sie auf eine fehlgeschlagene Erfassung, und sehen Sie sich die angezeigte Meldung mit den Details an.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Überprüfen der fehlgeschlagenen Erfassung":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Statusanzeige für die Erfassung":::
 
 Mit dem Status *Fehlgeschlagen* wird angegeben, dass der Erfassungsvorgang für diese Datenquelle zu einem späteren Zeitpunkt wiederholt wird.
 Beim Status *Fehler* wird von Metrics Advisor für die Datenquelle kein weiterer Versuch durchgeführt. Um die Daten erneut zu laden, müssen Sie manuell einen Abgleich bzw. den erneuten Ladevorgang auslösen.

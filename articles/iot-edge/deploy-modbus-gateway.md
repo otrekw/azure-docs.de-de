@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511143"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043900"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
 
@@ -35,7 +35,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie das ModBus-TCP-Protokoll verw
 
 Wenn Sie die Funktionalität des ModBus-Gateways testen möchten, können Sie ein von Microsoft bereitgestelltes Beispielmodul verwenden. Sie können auf das Modul über den Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) oder mit dem Image-URI, `mcr.microsoft.com/azureiotedge/modbus:1.0`, zugreifen.
 
-Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, können Sie das Open-Source-Projekt [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) (ModBus-Modul für Azure IoT Edge) auf GitHub nutzen. Befolgen Sie die Anweisungen in diesem Projekt, um Ihr eigenes Containerimage zu erstellen. Lesen Sie [Entwickeln von C#-Modulen in Visual Studio](how-to-visual-studio-develop-csharp-module.md) oder [Entwickeln von Modulen in Visual Studio Code](how-to-vs-code-develop-module.md), um ein eigenes Containerimage zu erstellen. Diese Artikel bieten Anweisungen zum Erstellen neuer Module und zum Veröffentlichen von Containerimages in einer Registrierung.
+Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, können Sie das Open-Source-Projekt [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) (ModBus-Modul für Azure IoT Edge) auf GitHub nutzen. Befolgen Sie die Anweisungen in diesem Projekt, um Ihr eigenes Containerimage zu erstellen. Lesen Sie [Entwickeln von C#-Modulen in Visual Studio](./how-to-visual-studio-develop-module.md) oder [Entwickeln von Modulen in Visual Studio Code](how-to-vs-code-develop-module.md), um ein eigenes Containerimage zu erstellen. Diese Artikel bieten Anweisungen zum Erstellen neuer Module und zum Veröffentlichen von Containerimages in einer Registrierung.
 
 ## <a name="try-the-solution"></a>Testen der Lösung
 

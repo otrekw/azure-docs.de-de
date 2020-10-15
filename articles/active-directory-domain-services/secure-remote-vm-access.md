@@ -2,20 +2,20 @@
 title: Sicherer Remote-VM-Zugriff in Azure AD Domain Services | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie den Remotezugriff auf VMs mit Netzwerkrichtlinienserver (NPS) und Azure Multi-Factor Authentication mit einer Remotedesktopdienste-Bereitstellung in einer verwalteten Azure Active Directory Domain Services-Domäne sichern.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 462e0ff8ef8baadf40ba81ed2ae137d8904fbf7a
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 2964ca74a05ccbc61646f8a289fc950b46cdad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722516"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967782"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Sichern des Remotezugriffs auf virtuelle Computer in Azure Active Directory Domain Services
 

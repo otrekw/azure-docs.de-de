@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590114"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivieren des vorläufigen Löschens für Azure-Dateifreigaben
@@ -68,13 +68,13 @@ So stellen Sie eine vorläufig gelöschte Dateifreigabe wieder her:
 
     Dadurch werden alle Freigaben angezeigt, die sich aktuell im Zustand **Gelöscht** befinden.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Ist die Statusspalte (die Spalte neben der Namensspalte) auf „Gelöscht“ festgelegt, befindet sich die Dateifreigabe in einem vorläufig gelöschten Zustand. In diesem Fall wird sie nach Ablauf des angegebenen Aufbewahrungszeitraums endgültig gelöscht.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Screenshot: Speicherkontobereich mit den Einstellungen für vorläufiges Löschen. Hervorgehoben sind der Dateifreigabebereich, die Aktivierungsoption, das Festlegen eines Aufbewahrungszeitraums, und die Speicheroption. Dadurch wird vorläufiges löschen für alle Dateifreigaben in Ihrem Speicherkonto aktiviert.":::
 
 1. Wählen Sie die Freigabe und anschließend **Wiederherstellen** aus, um sie wiederherzustellen.
 
     Wenn die Freigabe den Status **Aktiv** hat, wurde sie wiederhergestellt.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Ist die Statusspalte (die Spalte neben der Namensspalte) auf „Aktiv“ festgelegt, wurde Ihre Dateifreigabe wiederhergestellt.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Screenshot: Speicherkontobereich mit den Einstellungen für vorläufiges Löschen. Hervorgehoben sind der Dateifreigabebereich, die Aktivierungsoption, das Festlegen eines Aufbewahrungszeitraums, und die Speicheroption. Dadurch wird vorläufiges löschen für alle Dateifreigaben in Ihrem Speicherkonto aktiviert.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -95,7 +95,7 @@ Wenn Sie das vorläufige Löschen nicht mehr verwenden oder eine Dateifreigabe e
 1. Wählen Sie unter **Dateifreigaben** für **Vorläufiges Löschen von Dateifreigaben** die Option **Deaktiviert** aus.
 1. Wählen Sie **Speichern** aus, um die Einstellungen für die Datenaufbewahrung zu bestätigen.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Wenn Sie das vorläufige Löschen deaktivieren, können Sie nach Belieben alle Dateifreigaben in Ihrem Speicherkonto sofort und endgültig löschen.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Screenshot: Speicherkontobereich mit den Einstellungen für vorläufiges Löschen. Hervorgehoben sind der Dateifreigabebereich, die Aktivierungsoption, das Festlegen eines Aufbewahrungszeitraums, und die Speicheroption. Dadurch wird vorläufiges löschen für alle Dateifreigaben in Ihrem Speicherkonto aktiviert.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

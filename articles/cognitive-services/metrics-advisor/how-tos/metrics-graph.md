@@ -3,19 +3,19 @@ title: Metrikgraph von Metrics Advisor
 titleSuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie Ihren Metrikgraphen konfigurieren und zugehörige Anomalien in Ihren Daten visualisieren.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: aahi
-ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931775"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043152"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Gewusst wie: Erstellen eines Metrikgraphen zum Analysieren von verwandten Metriken
 
@@ -35,7 +35,7 @@ Als Nächstes müssen Sie einen weiteren Knoten hinzufügen und eine Beziehung z
 
 Klicken Sie auf **Add relation** (Beziehung hinzufügen). Sie können eine weitere Metrik auswählen und den Typ der Beziehung zwischen den beiden Knoten angeben. Sie können auch bestimmte Dimensionsfilter anwenden. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Hinzufügen eines Knotens und einer Beziehung":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Metrik auswählen":::
 
 Nachdem Sie die obigen Schritte wiederholt haben, verfügen Sie über einen Metrikgraphen, mit dem die Beziehungen zwischen allen verwandten Metriken beschrieben werden.
 **Hinweis zu Knotenfarben**
@@ -50,7 +50,7 @@ Beim Erstellen des Metrikgraphen können Sie bei jeder Erkennung einer Anomalie 
 
 Klicken Sie im Graphen in einen Incident, und scrollen Sie nach unten zur Option **Cross Metrics Analysis** (Metrikübergreifende Analyse), die sich unterhalb der Diagnoseinformationen befindet.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Anzeigen verwandter Metriken und Anomalien":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Metrik auswählen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

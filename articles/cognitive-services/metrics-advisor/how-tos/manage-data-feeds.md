@@ -3,19 +3,19 @@ title: Verwalten von Datenfeeds in Metrics Advisor
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Datenfeeds verwalten, die Sie zu Metrics Advisor hinzugefügt haben.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: aahi
-ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930448"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043169"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Gewusst wie: Verwalten Ihrer Datenfeeds
 
@@ -106,7 +106,7 @@ Die Optionen sind:
 
 Aktionslinkvorlagen werden verwendet, um ausführbare HTTP-URLs vorab zu definieren, die aus den Platzhaltern `%datafeed`, `%metric`, `%timestamp`, `%detect_config`und `%tagset` bestehen. Sie können die Vorlage verwenden, um bei einer Anomalie oder einem Incident eine Weiterleitung zu einer bestimmten URL durchzuführen, um einen Drilldown auszuführen.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Aktionslinkvorlage" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Abgleich des Datenfeeds" lightbox="../media/action-link-template.png":::
 
 Nachdem Sie den Aktionslink ausgefüllt haben, klicken Sie auf **Go to action link** (Zu Aktionslink wechseln) in der Aktionsoption des Incidentlinks und im Kontextmenü der Incidentstruktur. Ersetzen Sie die Platzhalter in der Aktionslinkvorlage durch die entsprechenden Werte der Anomalie oder des Incidents.
 

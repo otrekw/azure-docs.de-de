@@ -4,10 +4,10 @@ description: In diesem Tutorial erfahren Sie, wie Sie eine SQL Server-Datenbank
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612451"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Sichern einer SQL Server-Datenbank auf einem virtuellen Azure-Computer

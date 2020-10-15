@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577712"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042914"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Verwenden von IoT Plug & Play-Modellen in einer IoT-Lösung
 
@@ -40,10 +40,10 @@ Eine Lösung kann die Modell-ID des IoT Plug & Play-Geräts mithilfe einer der
 
 ### <a name="get-device-twin-api"></a>API zum Abrufen von Gerätezwillingen
 
-Die Lösung kann die API zum [Abrufen von Gerätezwillingen](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) verwenden, um die Modell-ID des IoT Plug & Play-Geräts abzurufen.
+Die Lösung kann die API zum [Abrufen von Gerätezwillingen](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) verwenden, um die Modell-ID des IoT Plug & Play-Geräts abzurufen.
 
 > [!TIP]
-> Verwenden Sie für Module und IoT Edge-Module [ModuleClient.getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true).
+> Verwenden Sie für Module und IoT Edge-Module [ModuleClient.getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable).
 
 Im folgenden Antwortausschnitt eines Gerätezwillings enthält `modelId` die Modell-ID eines IoT Plug & Play-Geräts:
 
@@ -71,7 +71,7 @@ Im folgenden Antwortausschnitt eines Gerätezwillings enthält `modelId` die Mod
 
 ### <a name="get-digital-twin-api"></a>API zum Abrufen von digitalen Zwillingen
 
-Die Lösung kann die API zum [Abrufen von digitalen Zwillingen](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) verwenden, um die Modell-ID des Modells abzurufen, das vom IoT Plug & Play-Gerät implementiert wurde.
+Die Lösung kann die API zum [Abrufen von digitalen Zwillingen](/rest/api/iothub/service/digitaltwin/getdigitaltwin) verwenden, um die Modell-ID des Modells abzurufen, das vom IoT Plug & Play-Gerät implementiert wurde.
 
 Im folgenden Antwortausschnitt eines digitalen Zwillings enthält `$metadata.$model` die Modell-ID eines IoT Plug & Play-Geräts:
 
@@ -121,7 +121,7 @@ Lösungen können das [Modellrepository](concepts-model-repository.md) zum Abruf
 
 Nachdem Sie die Modell-ID für eine neue Geräteverbindung identifiziert haben, führen Sie die folgenden Schritte aus:
 
-1. Rufen Sie die Modelldefinition mithilfe der Modell-ID aus dem Modellrepository ab. Weitere Informationen finden Sie unter [Abrufen von Modellen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+1. Rufen Sie die Modelldefinition mithilfe der Modell-ID aus dem Modellrepository ab. Weitere Informationen finden Sie unter [Abrufen von Modellen](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
 
 1. Mithilfe der Modelldefinition des verbundenen Geräts können Sie die Funktionen des Geräts auflisten.
 
@@ -144,5 +144,5 @@ Nachdem Sie die Modell-ID für eine neue Geräteverbindung identifiziert haben, 
 Nachdem Sie gelernt haben, wie IoT Plug & Play-Modelle in eine IoT-Lösung integriert werden, finden Sie hier einige der empfohlenen nächsten Schritte:
 
 - [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service-node.md)
-- [IoT-REST-API für digitale Zwillinge](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT-REST-API für digitale Zwillinge](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT-Explorer](howto-use-iot-explorer.md)

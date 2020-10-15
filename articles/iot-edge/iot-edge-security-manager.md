@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548695"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042999"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
@@ -75,7 +75,7 @@ Der IoT Edge-Sicherheits-Daemon nutzt die gesamte verfügbare Technologie der Ha
 
 #### <a name="cloud-interface"></a>Cloudschnittstelle
 
-Die Cloudschnittstelle ermöglicht dem IoT Edge-Sicherheits-Daemon den Zugriff auf Clouddienste, z.B Cloudergänzungen zur Gerätesicherheit wie Sicherheitserneuerungen.  Der IoT Edge-Sicherheits-Daemon verwendet diese Schnittstelle zurzeit z.B. für den Zugriff auf den [Device Provisioning Service (DPS)](https://docs.microsoft.com/azure/iot-dps/) von Azure IoT Hub für das Identity Lifecycle Management des Geräts.  
+Die Cloudschnittstelle ermöglicht dem IoT Edge-Sicherheits-Daemon den Zugriff auf Clouddienste, z.B Cloudergänzungen zur Gerätesicherheit wie Sicherheitserneuerungen.  Der IoT Edge-Sicherheits-Daemon verwendet diese Schnittstelle zurzeit z.B. für den Zugriff auf den [Device Provisioning Service (DPS)](../iot-dps/index.yml) von Azure IoT Hub für das Identity Lifecycle Management des Geräts.  
 
 #### <a name="management-api"></a>Verwaltungs-API
 

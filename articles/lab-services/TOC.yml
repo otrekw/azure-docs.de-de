@@ -64,7 +64,9 @@
               href: how-to-manage-user-lists-within-teams.md
             - name: Verwalten eines VM-Pools
               href: how-to-manage-vm-pool-within-teams.md
-            - name: Erstellen von Zeitplänen
+            - name: Löschen von Labs
+              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+            - name: Zeitpläne und Einstellungen
               href: how-to-create-schedules-within-teams.md
             - name: Zugreifen auf einen virtuellen Computer (Ansicht des Kursteilnehmers)
               href: how-to-access-vm-for-students-within-teams.md
