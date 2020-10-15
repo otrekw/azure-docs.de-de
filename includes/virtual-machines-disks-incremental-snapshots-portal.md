@@ -9,10 +9,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80628420"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "80628420"
 1. Wählen Sie die Ressourcengruppe aus, die Sie verwenden möchten, und geben Sie einen Namen ein.
 1. Wählen Sie **Inkrementell** und dann **Bewerten + erstellen** aus.
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Screenshot. Blatt „Momentaufnahme erstellen“; geben Sie den Namen ein, wählen Sie „Inkrementell“ aus, und erstellen Sie Ihre Momentaufnahme.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Screenshot. Das Blatt Ihres Datenträgers mit hervorgehobener Option **+ Momentaufnahme erstellen**, die Sie auswählen müssen.":::
 
 1. Klicken Sie auf **Erstellen**
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Screenshot. Validierungsseite für Ihre Momentaufnahme, bestätigen Sie Ihre Auswahl, und erstellen Sie die Momentaufnahme.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Screenshot. Das Blatt Ihres Datenträgers mit hervorgehobener Option **+ Momentaufnahme erstellen**, die Sie auswählen müssen.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

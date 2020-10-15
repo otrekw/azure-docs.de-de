@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424958"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91745681"
 ---
-| Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
+| Resource | Kostenlos | Shared | Basic | Standard | Premium (v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [Azure App Service-Plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup>|
 | [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |10 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
@@ -52,7 +52,7 @@ ms.locfileid: "87424958"
 <sup>5</sup>Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im selben App Service-Plan. Die gesamte Inhaltsgröße aller Apps für alle App Service-Pläne in einer einzelnen Ressourcengruppe und Region kann 500 GB nicht überschreiten.  
 <sup>6</sup>Diese Ressourcen werden durch physische Ressourcen auf den dedizierten Instanzen (die Instanzengröße und die Anzahl der Instanzen) beschränkt.  
 <sup>7</sup>Wenn Sie eine App im Basic-Tarif auf zwei Instanzen skalieren, stehen Ihnen 350 gleichzeitige Verbindungen für jede der beiden Instanzen zur Verfügung. Beim Tarif „Standard“ und höheren Tarifen gelten keine theoretischen Grenzwerte für Websockets, die Anzahl von Websockets kann jedoch durch andere Faktoren eingeschränkt sein. Die maximal zulässige Anzahl von gleichzeitigen Anforderungen (definiert durch `maxConcurrentRequestsPerCpu`) lautet wie folgt: 7.500 pro kleiner VM, 15.000 pro mittlerer VM (7.500 × 2 Kerne) und 75.000 pro großer VM (18.750 × 4 Kerne).  
-<sup>8</sup>Die maximalen IP-Verbindungen sind pro Instanz und abhängig von der Instanzgröße: 1.920 pro B1/S1/P1V2-Instanz, 3.968 pro B2/S2/P2V2-Instanz, 8.064 pro B3/S3/P3V2-Instanz.  
+<sup>8</sup>Die maximalen IP-Verbindungen sind pro Instanz und abhängig von der Instanzgröße: 1.920 pro B1/S1/P1V3-Instanz, 3.968 pro B2/S2/P2V3-Instanz, 8.064 pro B3/S3/P3V3-Instanz.  
 <sup>9</sup>Die App Service Certificate-Kontingentgrenze pro Abonnement kann über eine Supportanfrage bis auf eine Obergrenze von 200 erhöht werden.  
 <sup>10</sup>Für SKUs vom Typ „App Service (isoliert)“ kann ein interner Lastausgleich (Internal Load Balancing, ILB) mit Azure Load Balancer vorgenommen werden, sodass keine öffentliche Verbindung mit dem Internet erforderlich ist. Aus diesem Grund müssen einige Features eines isolierten App Service mit internem Lastausgleich auf Computern ausgeführt werden, die über Direktzugriff auf den Endpunkt des ILB-Netzwerks verfügen.  
 <sup>11</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.

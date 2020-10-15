@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441043"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966286"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -61,7 +61,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Wenn **slmgr.vbs /dlv** den RETAIL-Kanal zeigt, führen Sie die folgenden Befehle aus, um den [KMS-Clientsetupschlüssel](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys) für die aktuelle Version von Windows Server festzulegen, und erzwingen Sie die erneute Aktivierung: 
+2. Wenn **slmgr.vbs /dlv** den RETAIL-Kanal zeigt, führen Sie die folgenden Befehle aus, um den [KMS-Clientsetupschlüssel](/windows-server/get-started/kmsclientkeys) für die aktuelle Version von Windows Server festzulegen, und erzwingen Sie die erneute Aktivierung: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
