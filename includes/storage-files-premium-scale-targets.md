@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/10/2020
 ms.author: rogarana
 ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88057787"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Zusätzliche Freigabegrenzwerte für Dateien auf Premiumebene
@@ -26,7 +26,7 @@ ms.locfileid: "88057787"
 |Bereich  |Standarddateien  |Premiumdateien  |
 |---------|---------|---------|
 |Size     |1 TiB         |4 TiB         |
-|Max. IOPS pro Datei      |1\.000         |5\.000         |
+|Max. IOPS pro Datei      |1.000         |5.000         |
 |Gleichzeitige Handles     |2\.000         |2\.000         |
 |Ausgehende Daten     |Siehe: Durchsatzwerte für Standarddateien         |300 MiB/s         |
 |Eingehende Daten     |Siehe: Durchsatzwerte für Standarddateien         |200 MiB/s         |

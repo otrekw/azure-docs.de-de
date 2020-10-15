@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.openlocfilehash: fac719daf05e8b319db7c86d0dbc61c2814b0a0c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120346"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>Konfigurieren von TLS-Einstellungen in Azure Database for MariaDB mit dem Azure-Portal
@@ -45,4 +45,4 @@ Befolgen Sie diese Schritte, um die TLS-Mindestversion des MariaDB-Servers festz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich, wie Sie [Warnungen zu Metriken erstellen](howto-alert-metric.md).
+Erfahren Sie, wie Sie [Warnungen zu Metriken erstellen](howto-alert-metric.md).

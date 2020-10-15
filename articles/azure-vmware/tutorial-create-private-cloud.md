@@ -3,12 +3,12 @@ title: 'Tutorial: Bereitstellen eines vSphere-Clusters in Azure'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure VMware Solution einen vSphere-Cluster in Azure bereitstellen.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578314"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952283"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud in Azure
 
@@ -43,7 +43,7 @@ Sie können eine private Azure VMware Solution-Cloud über das [Azure-Portal](#a
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Zum Erstellen einer privaten Azure VMware Solution-Cloud können Sie anstelle des Azure-Portals auch die Azure CLI über Azure Cloud Shell verwenden.  Eine Liste mit Befehlen, die Sie mit Azure VMware Solution verwenden können, finden Sie [hier](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Zum Erstellen einer privaten Azure VMware Solution-Cloud können Sie anstelle des Azure-Portals auch die Azure CLI über Azure Cloud Shell verwenden.  Eine Liste mit Befehlen, die Sie mit Azure VMware Solution verwenden können, finden Sie [hier](/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Öffnen von Azure Cloud Shell
 
@@ -96,7 +96,7 @@ Nachdem eine private Cloud gelöscht wurde, gibt es keine Möglichkeit, die virt
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-Befehle
 
-Eine Liste mit Befehlen, die Sie mit Azure VMware Solution verwenden können, finden Sie [hier](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Eine Liste mit Befehlen, die Sie mit Azure VMware Solution verwenden können, finden Sie [hier](/cli/azure/ext/vmware/vmware).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

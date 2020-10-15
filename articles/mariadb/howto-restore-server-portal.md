@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115909"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Gewusst wie: Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit dem Azure-Portal
@@ -87,9 +87,9 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
  
 2. Geben Sie das Abonnement, die Ressourcengruppe und den Namen des neuen Servers an. 
 
-3. Wählen Sie **Sicherung** als **Datenquelle**aus. Mit dieser Aktion wird eine Dropdownliste geladen, die eine Liste mit Servern zur Verfügung stellt, für die georedundante Sicherungen aktiviert sind.
+3. Wählen Sie unter **Datenquelle** die Option **Sicherung** aus. Dadurch wird eine Dropdownliste mit Servern geladen, für die georedundante Sicherungen aktiviert sind.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Auswählen der Datenquelle":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Navigieren Sie zu Azure Database for MariaDB.":::
     
    > [!NOTE]
    > Für einen neu erstellten Server kann möglicherweise nicht sofort eine Geowiederherstellung durchgeführt werden. Es kann einige Stunden dauern, bis die erforderlichen Metadaten aufgefüllt wurden.
@@ -97,21 +97,21 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 4. Wählen Sie die Dropdownliste **Sicherung** aus.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Wählen Sie die Sicherung-Dropdownliste aus.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Navigieren Sie zu Azure Database for MariaDB.":::
 
-5. Wählen Sie den Quellserver aus, von dem die Wiederherstellung erfolgen soll.
+5. Wählen Sie den Quellserver für die Wiederherstellung aus.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Wählen Sie die Sicherung aus.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Navigieren Sie zu Azure Database for MariaDB.":::
 
-6. Der Server weist Standardwerte für die Anzahl der **vCores**, den **Aufbewahrungszeitraum für Sicherungen**, die **Option für Sicherungsredundanz**, die **Engine-Version** und die **Administrator-Anmeldeinformationen** auf. Wählen Sie **Weiter**. 
+6. Für den Server werden Standardwerte für die **Anzahl virtueller Kerne**, den **Aufbewahrungszeitraum für Sicherungen**, die **Option für Sicherungsredundanz**, die **Engine-Version** und die **Administrator-Anmeldeinformationen** verwendet. Wählen Sie **Weiter**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Fahren Sie mit der Sicherung fort.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Navigieren Sie zu Azure Database for MariaDB.":::
 
 7. Geben Sie im Rest des Formulars Ihre bevorzugten Einstellungen an. Sie können einen beliebigen **Standort** auswählen.
 
-    Nach dem Auswählen des Standorts können Sie **Server konfigurieren** auswählen, um die **Computegeneration** zu aktualisieren (sofern sie in der ausgewählten Region verfügbar ist), sowie die Anzahl der **vCores**, den **Aufbewahrungszeitraum für Sicherungen** und die **Option zur Sicherungsredundanz**. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
+    Nach der Wahl des Standorts können Sie **Server konfigurieren** auswählen, um die **Computegeneration** (sofern in der ausgewählten Region verfügbar), die Anzahl von **virtuellen Kernen**, den **Aufbewahrungszeitraum für Sicherungen** und die **Option für Sicherungsredundanz** zu aktualisieren. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Füllen Sie das Formular aus."::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Navigieren Sie zu Azure Database for MariaDB."::: 
 
 8. Wählen Sie **Überprüfen + erstellen** aus, um ihre Auswahl zu überprüfen. 
 

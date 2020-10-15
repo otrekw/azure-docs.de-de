@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235699"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070366"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -129,7 +129,7 @@ Berücksichtigen Sie die Anforderungen Ihrer Organisation, um die Strategie für
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Wenn Technologieprojekte nicht gelingen, ist dies in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie [die richtigen Projektbeteiligten einbeziehen](https://aka.ms/deploymentplans) und dass die Rollen der Projektbeteiligten gut verstanden werden, indem Sie die Beteiligten sowie deren Projektbeitrag und Zuständigkeiten dokumentieren.
+Wenn Technologieprojekte nicht gelingen, ist dies in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie [die richtigen Projektbeteiligten einbeziehen](../fundamentals/active-directory-deployment-plans.md) und dass die Rollen der Projektbeteiligten gut verstanden werden, indem Sie die Beteiligten sowie deren Projektbeitrag und Zuständigkeiten dokumentieren.
 
 ### <a name="plan-communications"></a>Planen der Benachrichtigungen
 
@@ -264,7 +264,7 @@ Der Bereitstellungsdienst speichert den Status beider Systeme nach dem ersten Zy
 
 Verwenden Sie das [Azure-Portal](https://portal.azure.com/), um die automatische Benutzerkontobereitstellung und das Aufheben der Bereitstellung für Anwendungen zu verwalten, die dies unterstützen. Führen Sie die unter [Wie richte ich die automatische Bereitstellung für eine Anwendung ein?](../app-provisioning/user-provisioning.md) aufgeführten Schritte aus.
 
-Der Benutzerbereitstellungsdienst von Azure AD kann auch über die [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) konfiguriert und verwaltet werden.
+Der Benutzerbereitstellungsdienst von Azure AD kann auch über die [Microsoft Graph-API](/graph/api/resources/synchronization-overview) konfiguriert und verwaltet werden.
 
 ## <a name="manage-automatic-user-provisioning"></a>Verwalten der automatischen Benutzerbereitstellung
 
@@ -274,7 +274,7 @@ Nach der Bereitstellung müssen Sie die Lösung verwalten.
 
 Nach einem erfolgreichen [ersten Zyklus](../app-provisioning/user-provisioning.md) führt der Azure AD-Bereitstellungsdienst so lange inkrementelle Aktualisierungen in jeweils anwendungspezifischen Intervallen aus, bis eines der folgenden Ereignisse eintritt:
 
-* Der Dienst wird manuell beendet, und es wird über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)-Befehls ein neuer erster Zyklus ausgelöst.
+* Der Dienst wird manuell beendet, und es wird über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](/graph/api/resources/synchronization-overview)-Befehls ein neuer erster Zyklus ausgelöst.
 
 * Ein neuer erster Zyklus wird durch eine Änderung in den Attributzuordnungen oder Bereichsfiltern ausgelöst.
 
@@ -310,7 +310,7 @@ Unter den folgenden Links finden Sie Informationen zum Beheben von Problemen, di
 
 * [Schreiben von Ausdrücken für Attributzuordnungen](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
+* [Azure AD synchronization API overview](/graph/api/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
 
 * [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md)
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976001"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070910"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
 
@@ -94,9 +94,9 @@ Nach der Verbindungsherstellung mit dem Datenstrom können Sie Ihre personalisie
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Veröffentlichen des Dashboards und Aktualisieren der Daten
 
-Erfolgreich erstellte Dashboards sollten [veröffentlicht](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) werden, um sie mit anderen zu teilen.
+Erfolgreich erstellte Dashboards sollten [veröffentlicht](/power-bi/desktop-upload-desktop-files) werden, um sie mit anderen zu teilen.
 
-Darüber hinaus sollten Sie die [Daten für das veröffentlichte Dashboard aktualisieren](https://docs.microsoft.com/power-bi/refresh-data), um sicherzustellen, dass Sie über das neueste Dataset verfügen.
+Darüber hinaus sollten Sie die [Daten für das veröffentlichte Dashboard aktualisieren](/power-bi/refresh-data), um sicherzustellen, dass Sie über das neueste Dataset verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -107,4 +107,3 @@ Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie hie
 * [Anpassen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize.md)
 * [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Handbuch zur Problembehandlung für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-

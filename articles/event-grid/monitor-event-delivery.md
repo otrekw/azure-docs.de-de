@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Metrike
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86114882"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
@@ -43,53 +43,53 @@ Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Me
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid-Themen suchen und auswählen":::
 3. Wählen Sie in der Themenliste das benutzerdefinierte Thema aus. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Benutzerdefiniertes Thema auswählen":::
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Event Grid-Themen suchen und auswählen":::
 4. Zeigen Sie die Metriken für das benutzerdefinierte Ereignisthema auf der Seite **Event Grid-Thema** an. In der folgenden Abbildung ist der Abschnitt **Grundlagen**, in dem die Ressourcengruppe, das Abonnement usw. angezeigt werden, minimiert. 
 
-    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Ereignismetriken anzeigen":::
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Event Grid-Themen suchen und auswählen":::
 
 Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
 
-:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Seite „Themen“ – „Metriken“":::
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Event Grid-Themen suchen und auswählen":::
 
 Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
 
 Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
 
-:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Metrik „Veröffentlichte Ereignisse“":::
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Event Grid-Themen suchen und auswählen":::
 
 
 ## <a name="view-subscription-metrics"></a>Anzeigen von Metriken für Abonnements
 1. Navigieren Sie zur Seite **Event Grid-Thema**, indem Sie die Schritte aus dem vorherigen Abschnitt ausführen. 
 2. Wählen Sie das Abonnement im unteren Bereich aus, wie im folgenden Beispiel gezeigt. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Ereignisabonnement auswählen":::    
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Event Grid-Themen suchen und auswählen":::    
 
     Sie können auch in der Suchleiste des Azure-Portals nach **Event Grid-Abonnements** suchen und **Thementyp**, **Abonnement** und **Speicherort** auswählen, um ein Ereignisabonnement anzuzeigen. 
 
-    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Ereignisabonnement auf der Seite „Event Grid-Abonnements“ auswählen":::        
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Event Grid-Themen suchen und auswählen":::        
 
     Wählen Sie für benutzerdefinierte Themen **Event Grid-Themen** unter **Thementyp** aus. Wählen Sie für Systemthemen den Typ der Azure-Ressource aus, z. B. **Speicherkonten (BLOB, GPv2)** . 
 3. Die Metriken für das Abonnement werden auf der Homepage für das Abonnement in einem Diagramm angezeigt. Sie können die Metriken **Allgemein**, **Fehler**, **Latenz** und **Unzustellbare Nachrichten** für die letzte Stunde, 6 Stunden, 12 Stunden, 1 Tag, 7 Tage und 30 Tage anzeigen. 
 
-    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metriken auf der Homepage des Abonnements":::    
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Event Grid-Themen suchen und auswählen":::    
 
 ## <a name="view-system-topic-metrics"></a>Anzeigen von Systemthemenmetriken
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Geben Sie in der Suchleiste des Themas **Event Grid-Systemthemen** ein, und wählen Sie dann **Event Grid-Systemthemen** aus der Dropdownliste aus. 
 
-    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid-Systemthemen suchen und auswählen":::
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid-Themen suchen und auswählen":::
 3. Wählen Sie in der Themenliste das Systemthema aus. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Systemthema auswählen":::
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Event Grid-Themen suchen und auswählen":::
 4. Zeigen Sie die Metriken für das Systemthema auf der Seite **Event Grid-Thema** an. In der folgenden Abbildung ist der Abschnitt **Grundlagen**, in dem die Ressourcengruppe, das Abonnement usw. angezeigt werden, minimiert. 
 
-    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Metriken für Systemthemen auf der Übersichtsseite anzeigen":::
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Event Grid-Themen suchen und auswählen":::
 
 Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
 
-:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Seite „Systemthema“ – „Metriken“":::
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Event Grid-Themen suchen und auswählen":::
 
 Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
 

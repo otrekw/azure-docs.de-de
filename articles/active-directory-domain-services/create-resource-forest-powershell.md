@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Azure AD Domain Services-Ressourcengesamtstruktur mithilfe von Azure PowerShell | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell eine Azure Active Directory Domain Services-Ressourcengesamtstruktur und eine ausgehende Gesamtstruktur zu einer lokalen Active Directory Domain Services-Umgebung erstellen und konfigurieren.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.author: iainfou
-ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960948"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Erstellen einer Azure Active Directory Domain Services-Ressourcengesamtstruktur und einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne mithilfe von Azure PowerShell
 

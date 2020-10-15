@@ -4,10 +4,10 @@ description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repos
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84509405"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Erstellen eines Token mit repositorybezogenen Berechtigungen
@@ -159,7 +159,7 @@ Das folgende Beispiel erstellt ein Token und erstellt eine Gültigkeitsbereichsz
     1. Geben Sie einen Namen und eine Beschreibung für die Gültigkeitsbereichszuordnung ein. 
     1. Unter **Repositorys** geben Sie `samples/hello-world` ein, und unter **Berechtigungen** wählen Sie `content/read` und `content/write` aus. Wählen Sie dann **+Hinzufügen** aus.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Erstellen einer Gültigkeitsbereichszuordnung im Portal":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Erstellen von Token im Portal":::
 
     1. Nachdem Sie Repositorys und Berechtigungen hinzugefügt haben, wählen Sie **Hinzufügen** aus, um die Gültigkeitsbereichszuordnung hinzuzufügen.
 1. Akzeptieren Sie den **Status** des Standardtokens von **Aktiviert**, und wählen Sie dann **Erstellen** aus.
@@ -176,7 +176,7 @@ Wenn Sie ein im Portal erstelltes Token verwenden möchten, müssen Sie ein Kenn
 1. Legen Sie auf dem Bildschirm für das Kennwort optional ein Ablaufdatum für das Kennwort fest, und wählen Sie **Generieren** aus. Sie sollten ein Ablaufdatum festlegen.
 1. Nachdem Sie ein Kennwort generiert haben, kopieren und speichern Sie es an einem sicheren Ort. Sie können ein generiertes Kennwort nach dem Schließen des Bildschirms nicht mehr abrufen, aber Sie können ein neues Kennwort generieren.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Erstellen eines Tokenkennworts im Portal":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Erstellen von Token im Portal":::
 
 ## <a name="authenticate-with-token"></a>Authentifizieren mit einem Token
 
