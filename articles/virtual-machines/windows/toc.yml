@@ -555,6 +555,8 @@
           href: client-images.md
         - name: Herunterladen eines vorhandenen Datenträgers
           href: download-vhd.md
+        - name: Verwalteter Datenträger aus Imageversion
+          href: ../managed-disk-from-image-version.md
     - name: Schützen von virtuellen Computern
       items:
         - name: Empfehlungen
@@ -1055,7 +1057,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

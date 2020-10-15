@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012329"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075959"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisieren von Telemetriedaten mithilfe von Protocol Buffers
 
@@ -40,7 +40,7 @@ Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
 * .NET Core. Sie können [.NET Core für Mac, Linux und Windows](https://www.microsoft.com/net/download) herunterladen.
 * Postman. Sie können [Postman für Mac, Windows oder Linux](https://www.getpostman.com/apps) herunterladen.
 * Einen [IoT Hub, der für Ihr Azure-Abonnement bereitgestellt wurde](../iot-hub/iot-hub-create-through-portal.md). Sie benötigen die Verbindungszeichenfolge des IoT Hubs zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
-* Eine [in Ihrem Azure-Abonnement bereitgestellte Cosmos DB-Datenbank](../cosmos-db/create-sql-api-dotnet.md#create-account), die die SQL-API verwendet und für [starke Konsistenz](../cosmos-db/manage-account.md) konfiguriert wurde. Sie benötigen die Verbindungszeichenfolge der Cosmos DB-Datenbank zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
+* Eine [in Ihrem Azure-Abonnement bereitgestellte Cosmos DB-Datenbank](../cosmos-db/create-sql-api-dotnet.md#create-account), die die SQL-API verwendet und für [starke Konsistenz](../cosmos-db/how-to-manage-database-account.md) konfiguriert wurde. Sie benötigen die Verbindungszeichenfolge der Cosmos DB-Datenbank zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
 * Ein [in Ihrem Azure-Abonnement bereitgestelltes Azure Storage-Konto](../storage/common/storage-account-create.md). Sie benötigen die Verbindungszeichenfolge des Speicherkontos zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
 
 ## <a name="prepare-your-development-environment"></a>Vorbereiten Ihrer Entwicklungsumgebung

@@ -4,10 +4,10 @@ description: Geben Sie an, dass für eine fehlerhafte Bereitstellung ein Rollbac
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79460142"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Rollback bei Fehler zu erfolgreicher Bereitstellung

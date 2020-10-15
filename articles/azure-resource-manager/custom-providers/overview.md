@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80398472"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Übersicht über benutzerdefinierte Azure-Ressourcenanbieter
@@ -53,7 +53,7 @@ Beispielendpunkt:
 }
 ```
 
-Eigenschaft | Erforderlich | BESCHREIBUNG
+Eigenschaft | Erforderlich | Beschreibung
 ---|---|---
 name | *Ja* | Der Name der Endpunktdefinition. Azure macht diesen Namen über seine API unter „/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}“ verfügbar.
 routingType | *Nein* | Bestimmt den Typ des Vertrags mit **Endpunkt**. Falls nicht angegeben, wird standardmäßig „Proxy“ verwendet.

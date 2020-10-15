@@ -5,6 +5,7 @@
     - name: Was ist VPN Gateway?
       href: vpn-gateway-about-vpngateways.md
 - name: Tutorials
+  expanded: true
   items:
     - name: Erstellen und Verwalten eines VPN-Gateways
       href: vpn-gateway-tutorial-create-gateway-powershell.md
@@ -66,7 +67,7 @@
               href: create-routebased-vpn-gateway-portal.md
             - name: Azure PowerShell
               href: create-routebased-vpn-gateway-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: create-routebased-vpn-gateway-cli.md
         - name: Überprüfen einer VPN-Gatewayverbindung
           href: vpn-gateway-verify-connection-resource-manager.md
@@ -88,7 +89,7 @@
               href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
         - name: Mehrere Site-to-Site-Verbindungen konfigurieren
           href: vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md
@@ -108,7 +109,7 @@
               href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-vnet-vnet-rm-ps.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: vpn-gateway-howto-vnet-vnet-cli.md
         - name: Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
           items:
@@ -190,7 +191,7 @@
               href: bgp-howto.md
             - name: Azure PowerShell
               href: vpn-gateway-bgp-resource-manager-ps.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: bgp-how-to-cli.md
         - name: Konfigurieren der Tunnelerzwingung
           items:
@@ -206,7 +207,7 @@
           href: vpn-gateway-modify-local-network-gateway-portal.md
         - name: Azure PowerShell
           href: vpn-gateway-modify-local-network-gateway.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: vpn-gateway-modify-local-network-gateway-cli.md
     - name: Konfigurieren von VPN-Geräten
       items:
@@ -291,7 +292,7 @@
       href: /rest/api/network/virtualnetworkgateways
     - name: REST (klassisch)
       href: 'https://msdn.microsoft.com/library/jj154113'
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/vnet-gateway
 - name: Ressourcen
   items:
