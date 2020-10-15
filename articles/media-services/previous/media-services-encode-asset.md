@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e841d1922beb3f0276ff94cacbbdf566b23cdf6e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281013"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017283"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Übersicht der Azure On-Demand Media Encoder
 
@@ -53,7 +53,7 @@ Standardmäßig kann jedes Media Services-Konto je eine aktive Codierungsaufgabe
 [Formate und Codecs](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Voreinstellungen
-Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
+Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](./media-services-mes-presets-overview.md)beschrieben sind.
 
 ### <a name="input-and-output-metadata"></a>Eingabe- und Ausgabemetadaten
 Die Eingabemetadaten für den Encoder werden [hier](media-services-input-metadata-schema.md)beschrieben.

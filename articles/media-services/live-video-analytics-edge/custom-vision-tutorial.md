@@ -3,12 +3,12 @@ title: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure 
 description: Erfahren Sie, wie Sie mit Custom Vision ein Containermodell erstellen können, mit dem ein Spielzeug-LKW erkannt wird. Stellen Sie mithilfe der KI-Erweiterbarkeitsfunktion von Live Video Analytics in IoT Edge (LVA) das Modell auf Edge-Ebene bereit, um in einem Livevideostream Spielzeug-LKW zu erkennen.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804145"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016789"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
 
@@ -32,12 +32,12 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 Es empfiehlt sich, die folgenden Artikel zu lesen, bevor Sie beginnen: 
 
 * [Übersicht zu Live Video Analytics in IoT Edge](overview.md)
-* [Übersicht über Azure Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home) (in englischer Sprache)
+* [Übersicht über Azure Custom Vision](../../cognitive-services/custom-vision-service/overview.md) (in englischer Sprache)
 * [Terminologie zu Live Video Analytics in IoT Edge](terminology.md)
 * [Mediengraph: Konzepte](media-graph-concept.md)
 * [Live Video Analytics ohne Videoaufzeichnung](analyze-live-video-concept.md)
 * [Ausführen von Live Video Analytics mit eigenem Modell](use-your-model-quickstart.md)
-* [Tutorial: Entwickeln eines IoT Edge-Moduls](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Tutorial: Entwickeln eines IoT Edge-Moduls](../../iot-edge/tutorial-develop-for-linux.md)
 * [Vorgehensweise beim Bearbeiten von „deployment.*.template.json“](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -56,7 +56,7 @@ Dies sind die Voraussetzungen für dieses Tutorial:
 
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
-In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv/) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert. In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-LKW zu erkennen und entsprechende Rückschlussereignisse in IoT Edge Hub zu veröffentlichen.
+In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert. In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-LKW zu erkennen und entsprechende Rückschlussereignisse in IoT Edge Hub zu veröffentlichen.
 
 ## <a name="overview"></a>Übersicht
 
@@ -64,17 +64,17 @@ In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https:/
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Übersicht über Custom Vision":::
 
 In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor) erreicht.
-Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Knoten des HTTP-Erweiterungsprozessors erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub).
+Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Knoten des HTTP-Erweiterungsprozessors erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Erstellen und Bereitstellen eines Custom Vision-Spielzeugerkennungsmodells 
 
 Wie der Name besagt, können Sie mit Custom Vision eine eigene benutzerdefinierte Objekterkennung oder -klassifizierung in der Cloud erstellen. Es bietet eine einfache, benutzerfreundliche und intuitive Oberfläche zum Erstellen von Custom Vision-Modellen, die über Container in der Cloud oder auf Edge-Ebene bereitgestellt werden können. 
 
-Um eine Spielzeug-LKW-Erkennung zu erstellen, empfiehlt es sich, gemäß der Anleitung in diesem [Schnellstartartikel](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) zum Erstellen einer Objekterkennung mit Custom Vision über ein Webportal vorzugehen.
+Um eine Spielzeug-LKW-Erkennung zu erstellen, empfiehlt es sich, gemäß der Anleitung in diesem [Schnellstartartikel](../../cognitive-services/custom-vision-service/get-started-build-detector.md) zum Erstellen einer Objekterkennung mit Custom Vision über ein Webportal vorzugehen.
 
 Weitere Hinweise:
  
-* Verwenden Sie für dieses Tutorial nicht die Beispielbilder, die im [Abschnitt „Voraussetzungen“](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#prerequisites) des Schnellstartartikels angegeben werden. Wir haben stattdessen zum Erstellen eines Custom Vision-Spielzeugerkennungsmodells eine spezielle Gruppe von Bildern genutzt. Es empfiehlt sich, [diese Bilder](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) zu verwenden, wenn Sie im Schnellstartartikel zum [Auswählen der Trainingsbilder](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#choose-training-images) aufgefordert werden.
+* Verwenden Sie für dieses Tutorial nicht die Beispielbilder, die im [Abschnitt „Voraussetzungen“](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) des Schnellstartartikels angegeben werden. Wir haben stattdessen zum Erstellen eines Custom Vision-Spielzeugerkennungsmodells eine spezielle Gruppe von Bildern genutzt. Es empfiehlt sich, [diese Bilder](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) zu verwenden, wenn Sie im Schnellstartartikel zum [Auswählen der Trainingsbilder](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) aufgefordert werden.
 * Stellen Sie im Schnellstartartikel im Abschnitt zum Kennzeichnen von Bildern sicher, dass Sie den Spielzeug-LKW im Bild mit dem Tag „delivery truck“ versehen.
 
 Wenn Sie mit dem erstellten Modell zufrieden sind, können Sie es mit der Schaltfläche „Exportieren“ auf der Registerkarte „Leistung“ in einen Docker-Container exportieren. Wählen Sie als Typ der Containerplattform Linux aus. Auf dieser Plattform wird der Container ausgeführt. Der Computer, auf dem Sie den Container herunterladen, kann ein Computer mit Windows oder Linux sein. Die folgenden Anweisungen basieren auf der Containerdatei, die auf einen Windows-Computer heruntergeladen wurde.
@@ -196,7 +196,7 @@ Mit den nächsten Aufrufen wird die Ressourcenbereinigung durchgeführt:
     
 ## <a name="interpret-the-results"></a>Interpretieren der Ergebnisse
 
-Wenn Sie den Mediengraph ausführen, werden die Ergebnisse aus dem Knoten des HTTP-Erweiterungsprozessors über den Knoten der IoT Hub-Senke an den IoT-Hub übergeben. Die im Ausgabefenster angezeigten Nachrichten enthalten jeweils den Abschnitt „body“ und den Abschnitt „applicationProperties“. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Wenn Sie den Mediengraph ausführen, werden die Ergebnisse aus dem Knoten des HTTP-Erweiterungsprozessors über den Knoten der IoT Hub-Senke an den IoT-Hub übergeben. Die im Ausgabefenster angezeigten Nachrichten enthalten jeweils den Abschnitt „body“ und den Abschnitt „applicationProperties“. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 In den folgenden Meldungen werden vom Live Video Analytics-Modul die Anwendungseigenschaften und der Inhalt des Texts definiert.
 
@@ -332,7 +332,6 @@ Wenn Sie die anderen Tutorials und Schnellstartanleitungen durcharbeiten möchte
 Zusätzliches für fortgeschrittene Benutzer:
 
 * Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-* Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) befolgen. 
+* Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge-linux.md) befolgen. 
 
-Registrieren Sie das Gerät anschließend beim Azure IoT Hub, indem Sie die Anweisungen in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) ausführen.
-
+Registrieren Sie das Gerät anschließend beim Azure IoT Hub, indem Sie die Anweisungen in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md) ausführen.
