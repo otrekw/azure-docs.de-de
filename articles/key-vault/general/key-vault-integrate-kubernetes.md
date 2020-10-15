@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: ca075414b234b65f15b82847a112104f6fbe3cc1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 0398c035eeac7d02ac38f798cb58c513279fc709
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597896"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91820002"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
@@ -114,13 +114,13 @@ Um Ihr eigenes „SecretProviderClass“-Objekt mit anbieterspezifischen Paramet
 
 Tragen Sie in der YAML-Beispieldatei „SecretProviderClass“ die fehlenden Parameter ein. Die folgenden Parameter sind erforderlich:
 
-* **userAssignedIdentityID**: # [REQUIRED] If you're using a service principal, use the client ID to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client ID. If the value is empty, it defaults to use the system-assigned identity on the VM 
+* **userAssignedIdentityID**: # [ERFORDERLICH] Verwenden Sie bei Nutzung eines Dienstprinzipals die Client-ID, um die benutzerseitig zugewiesene verwaltete Identität anzugeben, die verwendet werden soll. Wenn Sie eine benutzerseitig zugewiesene Identität als verwaltete Identität des virtuellen Computers verwenden, geben Sie die Client-ID der Identität an. Ist der Wert leer, wird standardmäßig die systemseitig zugewiesene Identität auf dem virtuellen Computer verwendet. 
 * **keyvaultName**: Der Name Ihres Schlüsseltresors.
 * **objects**: Der Container für den gesamten Geheimnisinhalt, den Sie einbinden möchten.
     * **objectName**: Der Name des Geheimnisinhalts.
     * **objectType**: Der Objekttyp (Geheimnis, Schlüssel, Zertifikat).
-* **resourceGroup**: The name of the resource group  # [REQUIRED for version < 0.0.4] the resource group of the KeyVault
-* **subscriptionId**: The subscription ID of your key vault # [REQUIRED for version < 0.0.4] the subscription ID of the KeyVault
+* **resourceGroup**: Der Name der Ressourcengruppe # [ERFORDERLICH für Versionen ab 0.0.4] Die Ressourcengruppe des Schlüsseltresors
+* **subscriptionId**: Die Abonnement-ID des Schlüsseltresors # [ERFORDERLICH für Versionen ab 0.0.4] Die Abonnement-ID des Schlüsseltresors
 * **tenantID**: Die Mandanten-ID oder Verzeichnis-ID Ihres Schlüsseltresors.
 
 Eine Dokumentation aller erforderlichen Felder finden Sie hier: [Link](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
@@ -311,8 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-          nodePublishSecretRef:
-              name: secrets-store-creds 
+        nodePublishSecretRef:
+          name: secrets-store-creds 
 ```
 
 Führen Sie den folgenden Befehl aus, um Ihren Pod bereitzustellen:

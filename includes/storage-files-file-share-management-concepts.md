@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8d26b6c92462abc13c42257d2c6e571156eacc0f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563439"
 ---
 Azure-Dateifreigaben werden in *Speicherkonten* bereitgestellt, bei denen es sich um Objekte der obersten Ebene handelt, die einen freigegebenen Speicherpool darstellen. Dieser Speicherpool kann verwendet werden, um mehrere Dateifreigaben sowie andere Speicherressourcen wie Blobcontainer, Warteschlangen oder Tabellen bereitzustellen. Für alle Speicherressourcen, die in einem Speicherkonto bereitgestellt werden, treffen die für dieses Speicherkonto geltenden Grenzwerte zu. Die aktuellen Grenzwerte für ein Speicherkonto finden Sie unter [Azure Files-Skalierbarkeits- und -Leistungsziele](../articles/storage/files/storage-files-scale-targets.md).

@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831140"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976622"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Was passiert, wenn sich die Störung eines Azure-Diensts auf Azure-VMs auswirkt?
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
@@ -25,7 +25,7 @@ Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für d
 In den folgenden Informationen zu virtuellen Azure-Computern erfahren Sie, welche Möglichkeiten Sie haben, wenn die gesamte Region, in der Ihre virtuelle Azure-Computeranwendung bereitgestellt wurde, von einer Dienstunterbrechung betroffen ist.
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Option 1: Initiieren eines Failovers mit Azure Site Recovery
-Sie können Azure Site Recovery für Ihre virtuellen Computer konfigurieren, damit Sie Ihre Anwendung mit einem einfachen Mausklick innerhalb weniger Minuten wiederherstellen können. Sie können in die Azure-Region Ihrer Wahl replizieren und sind nicht auf gekoppelte Regionen beschränkt. Als ersten Schritt können Sie [Ihre virtuellen Computer replizieren](https://aka.ms/a2a-getting-started). Sie können [einen Wiederherstellungsplan erstellen](../site-recovery/site-recovery-create-recovery-plans.md), damit Sie den gesamten Failovervorgang für Ihre Anwendung automatisieren können. Sie können [Ihre Failover vorher testen](../site-recovery/site-recovery-test-failover-to-azure.md), ohne die Produktionsanwendung oder die fortlaufende Replikation zu beeinträchtigen. Im Fall einer Unterbrechung der primären Region [initiieren Sie einfach ein Failover](../site-recovery/site-recovery-failover.md) und verschieben Ihre Anwendung in die Zielregion.
+Sie können Azure Site Recovery für Ihre virtuellen Computer konfigurieren, damit Sie Ihre Anwendung mit einem einfachen Mausklick innerhalb weniger Minuten wiederherstellen können. Sie können in die Azure-Region Ihrer Wahl replizieren und sind nicht auf gekoppelte Regionen beschränkt. Als ersten Schritt können Sie [Ihre virtuellen Computer replizieren](../site-recovery/azure-to-azure-quickstart.md). Sie können [einen Wiederherstellungsplan erstellen](../site-recovery/site-recovery-create-recovery-plans.md), damit Sie den gesamten Failovervorgang für Ihre Anwendung automatisieren können. Sie können [Ihre Failover vorher testen](../site-recovery/site-recovery-test-failover-to-azure.md), ohne die Produktionsanwendung oder die fortlaufende Replikation zu beeinträchtigen. Im Fall einer Unterbrechung der primären Region [initiieren Sie einfach ein Failover](../site-recovery/site-recovery-failover.md) und verschieben Ihre Anwendung in die Zielregion.
 
 
 ## <a name="option-2-wait-for-recovery"></a>Option 2: Warten auf die Wiederherstellung
@@ -41,7 +41,7 @@ Dies ist die beste Option, wenn Sie vor der Unterbrechung nicht Azure Site Recov
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Beginnen Sie damit, mithilfe von Azure Site Recovery [Ihre Anwendungen auf virtuellen Azure-Computern zu schützen](https://aka.ms/a2a-getting-started).
+- Beginnen Sie damit, mithilfe von Azure Site Recovery [Ihre Anwendungen auf virtuellen Azure-Computern zu schützen](../site-recovery/azure-to-azure-quickstart.md).
 
 - Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und Hochverfügbarkeit finden Sie unter [Notfallwiederherstellung und Hochverfügbarkeit für in Microsoft Azure erstellte Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery).
 

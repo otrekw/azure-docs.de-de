@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 691b7c2890d29d390abbe8151fe66dbd99c5bc60
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653544"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978185"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
 
@@ -52,7 +52,7 @@ Auch die folgenden Artikel zu SAP HANA sind zu empfehlen:
 - [SAP HANA Service Auto-Restart](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) (Automatischer Neustart des SAP HANA-Diensts)
 - [Konfigurieren der SAP HANA-Systemreplikation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Bevor Sie mit der Definition Ihrer Verfügbarkeitsarchitektur in Azure fortfahren, wird neben der Bereitstellung von VMs in Azure außerdem empfohlen, den Artikel [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../windows/manage-availability.md) zu lesen.
+Bevor Sie mit der Definition Ihrer Verfügbarkeitsarchitektur in Azure fortfahren, wird neben der Bereitstellung von VMs in Azure außerdem empfohlen, den Artikel [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../manage-availability.md) zu lesen.
 
 ## <a name="service-level-agreements-for-azure-components"></a>Vereinbarungen zum Servicelevel für Azure-Komponenten
 
@@ -85,4 +85,3 @@ Gleichen Sie Ihre Anforderungen an die Verfügbarkeit mit den SLAs ab, die Azure
 
 
 
-  

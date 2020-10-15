@@ -207,6 +207,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Ausführen von Schnelltasks mit einer Resource Manager-Vorlage
           href: container-registry-task-run-template.md
+        - name: Ausführen einer Task für einen dedizierten Agentpool (Vorschau)
+          href: tasks-agent-pools.md
         - name: Erstellen eines Image mit Buildpacks (Vorschauversion)
           href: container-registry-tasks-pack-build.md
         - name: Anzeigen von Taskprotokollen
@@ -214,7 +216,7 @@
 - name: Verweis
   expanded: false
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry

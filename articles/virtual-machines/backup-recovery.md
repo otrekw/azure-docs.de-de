@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554730"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972355"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Sicherungs- und Wiederherstellungsoptionen für virtuelle Linux-Computer in Azure
 
@@ -32,7 +32,7 @@ Mit Azure Site Recovery werden Ihre VMs vor einem Katastrophenszenario geschütz
 
 Sie können Übungen zur Notfallwiederherstellung mit bedarfsgesteuerten Testfailovern durchführen, ohne dass Ihre Produktionsworkloads oder die laufende Replikation beeinträchtigt wird. Erstellen Sie Wiederherstellungspläne, um das Failover und Failback der gesamten Anwendung zu orchestrieren, die auf mehreren VMs ausgeführt wird. Das Wiederherstellungsplan-Feature ist in Azure Automation-Runbooks integriert.
 
-Als ersten Schritt können Sie [Ihre virtuellen Computer replizieren](https://aka.ms/a2a-getting-started). 
+Als ersten Schritt können Sie [Ihre virtuellen Computer replizieren](../site-recovery/azure-to-azure-quickstart.md). 
 
 ## <a name="managed-snapshots"></a>Verwaltete Momentaufnahmen 
 

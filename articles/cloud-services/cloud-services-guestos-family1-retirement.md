@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458823"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073392"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Deaktivierungsinformationen für die Azure-Gastbetriebssystemfamilie 1
 Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 angekündigt.
@@ -23,7 +23,7 @@ Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 a
 
 **3. November 2014** Die erweiterte Unterstützung für die Gastbetriebssystemfamilie 1 wurde beendet, und die Familie wurde vollständig außer Betrieb genommen. Alle noch in Familie 1 enthaltenen Dienste sind davon betroffen. Wir können diese Dienste jederzeit beenden. Es gibt keine Garantie dafür, dass Ihre Dienste weiterhin ausgeführt werden können, sofern Sie diese nicht selbst manuell aktualisieren.
 
-Wenn Sie weitere Fragen haben, besuchen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten) für Cloud Services](https://docs.microsoft.com/answers/topics/azure-cloud-services.html), oder [wenden Sie sich an den Azure-Support](https://azure.microsoft.com/support/options/).
+Wenn Sie weitere Fragen haben, besuchen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten) für Cloud Services](/answers/topics/azure-cloud-services.html), oder [wenden Sie sich an den Azure-Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Sind Sie betroffen?
 Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:
@@ -32,7 +32,7 @@ Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:
 2. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist kein expliziter Wert für "osFamily" angegeben. In diesem Fall verwendet das System aktuell den Standardwert "1".
 3. Im Azure-Portal ist der Wert Ihrer Gastbetriebssystemfamilie als „Windows Server 2008“ angegeben.
 
-Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das folgende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](/powershell/azure/). Weitere Informationen zum Skript finden Sie unter [Azure Guest OS Family 1 End of Life: June 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014) (Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014).
+Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das folgende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](/powershell/azure/). Weitere Informationen zum Skript finden Sie unter [Azure Guest OS Family 1 End of Life: June 2014](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014) (Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
