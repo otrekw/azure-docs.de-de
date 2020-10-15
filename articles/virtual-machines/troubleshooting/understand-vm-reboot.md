@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508864"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965759"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Informationen zum Systemneustart für virtuelle Azure-Computer
 
@@ -30,7 +30,7 @@ Die beste Möglichkeit zum Schützen einer in Azure ausgeführten Anwendung vor 
 
 Um eine solche Redundanzebene für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/) zugesicherte Verfügbarkeit von 99,95 Prozent eingehalten wird.
 
-Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit von VMs](../windows/manage-availability.md).
+Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit von VMs](../manage-availability.md).
 
 ## <a name="resource-health-information"></a>Informationen zu Resource Health
 
@@ -72,7 +72,7 @@ Zu weiteren Szenarien, in denen in der Regel der virtuelle Computer neu gestarte
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center und Windows Update
 
-Azure Security Center überprüft virtuelle Windows- und Linux-Computer täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates. Die Anwendung dieser Systemupdates wird über das Security Center im Azure-Portal gesteuert. Nachdem Sie einige Updates angewendet haben, sind unter Umständen Neustarts der virtuellen Computer erforderlich. Weitere Informationen finden Sie unter [Anwenden von Systemupdates in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md).
+Azure Security Center überprüft virtuelle Windows- und Linux-Computer täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates. Die Anwendung dieser Systemupdates wird über das Security Center im Azure-Portal gesteuert. Nachdem Sie einige Updates angewendet haben, sind unter Umständen Neustarts der virtuellen Computer erforderlich. Weitere Informationen finden Sie unter [Anwenden von Systemupdates in Azure Security Center](../../security-center/asset-inventory.md).
 
 Wie bei lokalen Servern überträgt Azure Updates von Windows Update nicht per Push auf virtuelle Windows-Computer, da diese Computer durch ihre Benutzer verwaltet werden sollen. Es empfiehlt sich jedoch, die Einstellung für automatische Windows-Updates aktiviert zu lassen. Die automatische Installation von Updates über Windows Update kann auch dazu führen, dass Neustarts durchgeführt werden, nachdem die Updates angewendet wurden. Weitere Informationen finden Sie unter [Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090651"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963260"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
-Die Azure-VM-Erweiterung für die Leistungsdiagnose ermöglicht das Sammeln von Daten zur Leistungsdiagnose von Windows-VMs. Mit der Erweiterung wird eine Analyse durchgeführt und ein Bericht mit Ergebnissen und Empfehlungen bereitgestellt, um Leistungsprobleme auf dem virtuellen Computer zu identifizieren und zu beheben. Diese Erweiterung installiert ein Tool zur Problembehandlung mit dem Namen [PerfInsights](https://aka.ms/perfinsights).
+Die Azure-VM-Erweiterung für die Leistungsdiagnose ermöglicht das Sammeln von Daten zur Leistungsdiagnose von Windows-VMs. Mit der Erweiterung wird eine Analyse durchgeführt und ein Bericht mit Ergebnissen und Empfehlungen bereitgestellt, um Leistungsprobleme auf dem virtuellen Computer zu identifizieren und zu beheben. Diese Erweiterung installiert ein Tool zur Problembehandlung mit dem Namen [PerfInsights](./how-to-use-perfinsights.md).
 
 > [!NOTE]
 > Wenn Sie eine Diagnose auf Ihrem virtuellen Computer aus dem Azure-Portal für nicht klassische VMs ausführen möchten, empfiehlt es sich, die neue Erfahrung zu verwenden. Weitere Informationen finden Sie unter [Leistungsdiagnose für virtuelle Azure-Computer](performance-diagnostics.md). 
@@ -237,7 +237,7 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ```
 
 ## <a name="information-on-the-data-captured"></a>Informationen zu den erfassten Daten
-Das Tool PerfInsights erfasst abhängig vom ausgewählten Szenario verschiedene Protokolle, die Konfiguration und Diagnosedaten. Weitere Informationen finden Sie in der [PerfInsights-Dokumentation](https://aka.ms/perfinsights).
+Das Tool PerfInsights erfasst abhängig vom ausgewählten Szenario verschiedene Protokolle, die Konfiguration und Diagnosedaten. Weitere Informationen finden Sie in der [PerfInsights-Dokumentation](./how-to-use-perfinsights.md).
 
 ## <a name="view-and-share-the-results"></a>Anzeigen und Freigeben der Ergebnisse
 

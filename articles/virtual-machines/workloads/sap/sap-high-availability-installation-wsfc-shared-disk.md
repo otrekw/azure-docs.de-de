@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855343"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963634"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure
 
@@ -149,7 +149,7 @@ ms.locfileid: "88855343"
 
 In diesem Artikel wird beschrieben, wie Sie ein SAP-Hochverfügbarkeitssystem in Azure für das Clustering einer SAP ASCS/SCS-Instanz unter Verwendung eines Windows Server-Failoverclusters und eines freigegebenen Datenträgers für den Cluster installieren und konfigurieren. Wie im [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure][sap-high-availability-guide-wsfc-shared-disk] beschrieben, gibt es zwei Alternativen für *freigegebene Clusterdatenträger*:
 
-- [Freigegebene Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Freigegebene Azure-Datenträger](../../windows/disks-shared.md)
 - Verwenden von [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) zum Erstellen eines gespiegelten Speichers, der die freigegebenen Clusterdatenträger simuliert 
 
 ## <a name="prerequisites"></a>Voraussetzungen

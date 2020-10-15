@@ -5,14 +5,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse, auf denen Azure Dev Spaces basiert.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981277"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963702"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Funktionsweise von Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Das Entwickeln einer Kubernetes-Anwendung kann eine Herausforderung sein. Sie benötigen Docker und Kubernetes-Konfigurationsdateien. Sie müssen feststellen, wie Sie Ihre Anwendung lokal testen können und wie sie mit anderen abhängigen Diensten zusammenarbeitet. Möglicherweise müssen Sie das Entwickeln und Testen für mehrere Dienste gleichzeitig und mit einem Team von Entwicklern durchführen.
 
