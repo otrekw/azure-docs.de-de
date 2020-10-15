@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903652"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742025"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Behandeln von Problemen mit Azure Stack Edge Pro
 
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um ein Unterstützungspaket zusammenzustellen:
 
 2. Nachdem das Supportpaket erstellt wurde, wählen Sie **Supportpaket herunterladen** aus. Ein ZIP-Paket wird an den gewünschten Pfad heruntergeladen. Sie können das Paket entpacken und sich die Systemprotokolldateien ansehen.
 
-    ![Klicken auf „Benutzer hinzufügen“](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
+    ![Klicken auf „Benutzer 2 hinzufügen“](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Behandeln von Problemen anhand von Protokollen
 

@@ -4,10 +4,10 @@ description: Dieser Artikel bietet eine Zuordnung der veralteten Azure Service M
 ms.topic: article
 ms.date: 09/25/2020
 ms.openlocfilehash: 84335d534c229f40381b913dfca54f42e2da250b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761174"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Einstellung der Azure Service Manager-Unterstützung für Azure Service Bus, Relay und Event Hubs

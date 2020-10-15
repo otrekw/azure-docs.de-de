@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie einen dedizierten Azure Eve
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380392"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Verschieben eines dedizierten Azure Event Hubs-Clusters in eine andere Region
@@ -50,7 +50,7 @@ Stellen Sie die Vorlage bereit, um einen dedizierten Event Hubs-Cluster in der Z
     4. Führen Sie im Abschnitt **EINSTELLUNGEN** die folgenden Schritte aus:    
         1. Geben Sie den neuen **Clusternamen** ein. 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Bereitstellen der Resource Manager-Vorlage":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::
     5. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus. 
     1. Überprüfen Sie die Einstellungen auf der Seite **Überprüfen und erstellen**, und wählen Sie dann **Erstellen** aus.  
 

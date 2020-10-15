@@ -2,7 +2,7 @@
 title: E-Mail-Benachrichtigungen für Azure AD Domain Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie E-Mail-Benachrichtigungen konfigurieren, durch die Sie über Probleme in einer durch Azure Active Directory Domain Services verwalteten Domäne informiert werden.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: c273b1a6c497ec8dcb8c5bc5f50ccfccc9fce155
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039992"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968016"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurieren von E-Mail-Benachrichtigungen für Probleme in Azure Active Directory Domain Services
 
