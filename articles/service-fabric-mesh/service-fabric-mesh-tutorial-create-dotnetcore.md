@@ -1,17 +1,17 @@
 ---
 title: Erstellen und Bereitstellen einer App mit mehreren Diensten für Service Fabric Mesh
 description: In diesem Tutorial erstellen Sie eine Azure Service Fabric Mesh-Anwendung mit mehreren Diensten, die eine mit einem Back-End-Webdienst kommunizierende ASP.NET Core-Website umfasst. Diese Anwendung debuggen Sie anschließend lokal und veröffentlichen sie in Azure.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842545"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten
 

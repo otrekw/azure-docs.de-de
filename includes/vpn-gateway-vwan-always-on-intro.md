@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e40f421c0fa45d772cd333dac51fe2bdf2779f48
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117074"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91829096"
 ---
 Ein neues Feature des Windows 10-VPN-Clients namens Always On bietet die Möglichkeit, eine VPN-Verbindung aufrechtzuerhalten. Mit Always On kann das aktive VPN-Profil basierend auf Triggern wie Benutzeranmeldung, Änderung des Netzwerkzustands oder aktiver Gerätebildschirm automatisch eine Verbindung herstellen und aufrechterhalten.
 
-Mithilfe von Gateways können Sie unter Windows 10 Always On persistente Benutzertunnel und Gerätetunnel zu Azure einrichten. In diesem Artikel erfahren Sie, wie Sie einen Always On-VPN-Benutzertunnel konfigurieren.
+Mithilfe von Gateways können Sie unter Windows 10 Always On persistente Benutzertunnel und Gerätetunnel zu Azure einrichten.
 
 Always On-VPN-Verbindungen umfassen zwei Typen von Tunneln:
 

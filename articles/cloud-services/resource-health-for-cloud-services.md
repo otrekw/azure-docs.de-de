@@ -7,17 +7,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056052"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072712"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Unterstützung der Ressourcenintegritätsprüfung (RHC) für Azure Cloud Services (Classic)
 In diesem Artikel wird die Unterstützung der Ressourcenintegritätsprüfung (Resource Health Check, RHC) für [Microsoft Azure Cloud Services (Classic)](https://azure.microsoft.com/services/cloud-services) beschrieben.
 
-Mithilfe von [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) für Cloud Services erhalten Sie bei Problemen mit der Bereitstellung, mit Rollen und Rolleninstanzen von Cloud Services Unterstützung und Hilfe bei der Diagnose. Sie werden über die aktuelle und frühere Integrität von Cloud Services auf der Bereitstellungs-, Rollen- und Rolleninstanzebene informiert.
+Mithilfe von [Azure Resource Health](../service-health/resource-health-overview.md) für Cloud Services erhalten Sie bei Problemen mit der Bereitstellung, mit Rollen und Rolleninstanzen von Cloud Services Unterstützung und Hilfe bei der Diagnose. Sie werden über die aktuelle und frühere Integrität von Cloud Services auf der Bereitstellungs-, Rollen- und Rolleninstanzebene informiert.
 
 Im Azure-Status werden Probleme gemeldet, die eine breite Palette von Azure-Kunden betreffen. Resource Health stellt die Integrität Ihrer Ressourcen in einem personalisierten Dashboard dar. Resource Health zeigt alle Zeitpunkte an, zu denen Ihre Ressourcen aufgrund von Azure-Dienstproblemen nicht verfügbar waren. Mit diesen Daten können Sie leicht feststellen, ob gegen eine SLA verstoßen wurde.
 
@@ -30,7 +30,7 @@ Berichte zur Ressourcenintegrität werden auf der Bereitstellungs- oder Rolleneb
 Eine Überprüfung der Ressourcenintegrität kann nur für Bereitstellungen im Produktionsslot ausgeführt werden. Stagingslot-Bereitstellungen werden derzeit noch nicht unterstützt. 
 
 ## <a name="does-resource-health-check-also-check-the-health-of-the-application"></a>Wird bei der Ressourcenintegritätsprüfung auch die Integrität der Anwendung überprüft?
-Nein, die Integritätsprüfung wird nur für Rolleninstanzen durchgeführt. Die Anwendungsintegrität wird nicht überwacht. Beispiel: Ist eine von drei Rolleninstanzen fehlerhaft, kann die Anwendung weiterhin verfügbar sein. RHC verwendet keine [Load Balancer-Tests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) oder Gast-Agent-Tests. Daher sollten Benutzer weiterhin mithilfe von Load Balancer-Tests die Integrität ihrer Anwendung überwachen. 
+Nein, die Integritätsprüfung wird nur für Rolleninstanzen durchgeführt. Die Anwendungsintegrität wird nicht überwacht. Beispiel: Ist eine von drei Rolleninstanzen fehlerhaft, kann die Anwendung weiterhin verfügbar sein. RHC verwendet keine [Load Balancer-Tests](../load-balancer/load-balancer-custom-probe-overview.md) oder Gast-Agent-Tests. Daher sollten Benutzer weiterhin mithilfe von Load Balancer-Tests die Integrität ihrer Anwendung überwachen. 
 
 ## <a name="what-are-the-annotations-for-cloud-services"></a>Worum handelt es sich bei den Anmerkungen für Cloud Services?
 Die Anmerkungen stellen den Integritätsstatus der Bereitstellung oder der Rollen dar. Es sind unterschiedliche Anmerkungen verfügbar, etwa zum Integritätsstatus, den Gründen für eine Statusänderung usw. 

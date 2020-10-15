@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086401"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874593"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 
 Die Wegbeschreibungs- und Routenmatrix-APIs im [Routendienst](https://docs.microsoft.com/rest/api/maps/route) von Azure Maps können verwendet werden, um die geschätzten Ankunftszeiten (Estimated Arrival Times, ETAs) für jede angeforderte Wegstrecke zu berechnen. Die Wegbeschreibungs-APIs berücksichtigen Faktoren wie Echtzeit-Verkehrsinformationen und Verkehrsdaten aus der Vergangenheit, wie etwa die typischen Reisegeschwindigkeiten am angeforderten Wochentag zur angeforderten Tageszeit. Die APIs geben die kürzesten oder schnellsten verfügbaren Routen zu mehreren Zielen zugleich in der Reihenfolge der Eingabe oder in einer für Zeit oder Entfernung optimierten Reihenfolge zurück. Benutzer können darüber hinaus auch spezielle Routen und Details für Wanderer, Radfahrer und Nutzfahrzeuge anfordern, wie etwa LKWs. In diesem Artikel werden die bewährten Methoden zum Aufrufen des Azure Maps-[Routendiensts](https://docs.microsoft.com/rest/api/maps/route) erläutert, und Sie erfahren, wie Sie die folgenden Schritte ausführen:
 
-> [!div class="checklist"]
-> * Wählen zwischen den Wegbeschreibungs-APIs und der Matrix-Routenplanungs-API
-> * Anfordern von zurückliegenden und vorhergesagten Reisezeiten, basierend auf Echtzeitdaten und Verkehrsdaten aus der Vergangenheit
-> * Anfordern von Routendetails, wie Zeit und Entfernung, für die gesamte Route und jede Teilstrecke der Route
-> * Anfordern der Route für ein Nutzfahrzeug, z. B. einen LKW
-> * Anfordern von Verkehrsinformationen für eine Route, wie Staus und Mautinformationen
-> * Anfordern einer Route, die aus einem oder mehreren Stopps (Wegpunkten) besteht
-> * Optimieren einer Route mit einem oder mehreren Stopps, um die beste Reihenfolge für den Besuch der einzelnen Stopps (Wegpunkte) zu erhalten.
-> * Optimieren alternativer Routen mithilfe von Unterstützungspunkten. Beispielsweise können alternative Routen angeboten werden, die eine Ladestation für Elektromobilität passieren.
-> * Verwenden des [Routendiensts](https://docs.microsoft.com/rest/api/maps/route) mit dem Azure Maps-Web-SDK
+ * Wählen zwischen den Wegbeschreibungs-APIs und der Matrix-Routenplanungs-API
+ * Anfordern von zurückliegenden und vorhergesagten Reisezeiten, basierend auf Echtzeitdaten und Verkehrsdaten aus der Vergangenheit
+ * Anfordern von Routendetails, wie Zeit und Entfernung, für die gesamte Route und jede Teilstrecke der Route
+ * Anfordern der Route für ein Nutzfahrzeug, z. B. einen LKW
+ * Anfordern von Verkehrsinformationen für eine Route, wie Staus und Mautinformationen
+ * Anfordern einer Route, die aus einem oder mehreren Stopps (Wegpunkten) besteht
+ * Optimieren einer Route mit einem oder mehreren Stopps, um die beste Reihenfolge für den Besuch der einzelnen Stopps (Wegpunkte) zu erhalten.
+ * Optimieren alternativer Routen mithilfe von Unterstützungspunkten. Beispielsweise können alternative Routen angeboten werden, die eine Ladestation für Elektromobilität passieren.
+ * Verwenden des [Routendiensts](https://docs.microsoft.com/rest/api/maps/route) mit dem Azure Maps-Web-SDK
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

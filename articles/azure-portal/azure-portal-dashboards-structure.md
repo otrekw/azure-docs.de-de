@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561600"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072474"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktur von Azure-Dashboards
 In diesem Dokument wird die Struktur eines Azure-Dashboards beschrieben. Dabei wird das folgende Dashboard als Beispiel verwendet:
 
 ![Beispieldashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Da freigegebene [Azure-Dashboards Ressourcen sind](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), kann dieses Dashboard als JSON-Code dargestellt werden.  Der folgende JSON-Code stellt das oben visualisierte Dashboard dar.
+Da freigegebene [Azure-Dashboards Ressourcen sind](../azure-resource-manager/management/overview.md), kann dieses Dashboard als JSON-Code dargestellt werden.  Der folgende JSON-Code stellt das oben visualisierte Dashboard dar.
 
 ```json
 
@@ -303,7 +303,7 @@ Die name-Eigenschaft ist das Segment der Ressourcen-ID, das keine Informationen 
 Alle Dashboards weisen den Typ __Microsoft.Portal/dashboards__ auf.
 
 ### <a name="the-location-property"></a>Die „location“-Eigenschaft
-Im Gegensatz zu anderen Ressourcen verfügen Dashboards über keine Laufzeitkomponente.  Für Dashboards gibt die „location“-Eigenschaft den primären geografischen Standort an, an dem die JSON-Darstellung des Dashboards gespeichert wird. Der Wert muss einer der Standortcodes sein, die mit der [Standort-API für die Abonnementressource](https://docs.microsoft.com/rest/api/resources/subscriptions) abgerufen werden können.
+Im Gegensatz zu anderen Ressourcen verfügen Dashboards über keine Laufzeitkomponente.  Für Dashboards gibt die „location“-Eigenschaft den primären geografischen Standort an, an dem die JSON-Darstellung des Dashboards gespeichert wird. Der Wert muss einer der Standortcodes sein, die mit der [Standort-API für die Abonnementressource](/rest/api/resources/subscriptions) abgerufen werden können.
 
 ### <a name="the-tags-property"></a>Die „tags“-Eigenschaft
 Tags sind eine gebräuchliche Funktion von Azure-Ressourcen, mit denen Sie die Ressource nach beliebigen Name-Wert-Paaren organisieren können. Für Dashboards ist ein spezielles Tag mit dem Namen __hidden-title__ vorhanden. Wenn diese Eigenschaft in Ihrem Dashboard ausgefüllt ist, wird sie als Anzeigename des Dashboards im Portal verwendet. Azure-Ressourcen-IDs können nicht umbenannt werden, Tags dagegen schon. Dieses Tag ermöglicht einen Anzeigenamen für das Dashboard, der umbenannt werden kann.

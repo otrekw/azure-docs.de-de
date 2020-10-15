@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954240"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444774"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurieren von Always Encrypted mithilfe des Windows-Zertifikatspeichers
 
@@ -127,7 +127,7 @@ Sie können die Spalten jetzt verschlüsseln oder ein PowerShell-Skript für die
 
 Überprüfen Sie, ob alle Einstellungen richtig sind, und klicken Sie auf **Fertig stellen** , um die Einrichtung von Always Encrypted abzuschließen.
 
-![Zusammenfassung](./media/always-encrypted-certificate-store-configure/summary.png)
+![Der Screenshot zeigt die Ergebnisseite mit Aufgaben, die als „erfolgreich“ gekennzeichnet sind.](./media/always-encrypted-certificate-store-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Überprüfen der Aktionen des Assistenten
 
