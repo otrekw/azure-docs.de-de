@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 49cac230363750e481e165712bf4f619e5cba7ae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267971"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017844"
 ---
 # <a name="create-a-media-services-account"></a>Erstellen eines Media Services-Kontos
 
@@ -47,7 +47,7 @@ Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes
 * Anzeigen (nicht verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
 * [Abrufen von Informationen über den Zugriff auf APIs](./access-api-howto.md) 
 
-Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/accountfilters), die [CLI](/cli/azure/ams) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 <!-- Move this section. This section should be moved to conceptual.  It doesn't belong in task based -->
 
 ### <a name="use-the-azure-portal-to-create-a-media-services-account"></a>Erstellen eines Media Services-Kontos über das Azure-Portal

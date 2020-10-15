@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494501"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949826"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen
 
@@ -353,6 +353,6 @@ Fragen zu Azure Managed Applications können bei [Stack Overflow](https://stacko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Veröffentlichen der verwalteten Anwendung im Azure Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](publish-marketplace-app.md).
+Informationen zum Veröffentlichen der verwalteten Anwendung im Azure Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
 
 Informieren Sie sich ausführlicher über [benutzerdefinierte Azure-Anbieter](../custom-providers/overview.md).

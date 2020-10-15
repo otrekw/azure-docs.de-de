@@ -4,10 +4,10 @@ description: Hier lernen Sie die Features des Batch-Diensts und seinen allgemein
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965211"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Workflow und Ressourcen des Batch-Diensts

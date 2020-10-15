@@ -3,12 +3,12 @@ title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887240"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019578"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
 
@@ -20,7 +20,7 @@ In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung vo
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)
+* Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](../../iot-edge/support.md#operating-systems)
 * Ein Azure-Abonnement, für das Sie über [Besitzerrechte](../../role-based-access-control/built-in-roles.md#owner) verfügen
 * [Ein erstellter und eingerichteter IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [Registrierung bei einem IoT Edge-Gerät](../../iot-edge/how-to-register-device.md)

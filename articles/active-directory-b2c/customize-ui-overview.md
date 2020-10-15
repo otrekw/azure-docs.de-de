@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259542"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949291"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -178,7 +178,6 @@ Beachten Sie beim Konfigurieren des Unternehmensbrandings in Azure AD B2C die fo
 
 * Das Unternehmensbranding in Azure AD B2C ist derzeit auf die Anpassung des **Hintergrundbilds**, des **Bannerlogos** und der **Hintergrundfarbe** beschränkt. Die anderen Eigenschaften im Bereich „Unternehmensbranding“ (z. B. die unter **Erweiterte Einstellungen**) werden *nicht unterstützt*.
 * Auf Ihren Benutzerflowseiten wird die Hintergrundfarbe angezeigt, bevor das Hintergrundbild geladen wird. Es wird empfohlen, eine Hintergrundfarbe auszuwählen, die weitestgehend den Farben in Ihrem Hintergrundbild entspricht, um ein reibungsloseres Ladeerlebnis zu ermöglichen.
-* Das Bannerlogo wird in den Überprüfungs-E-Mails angezeigt, die an Ihre Benutzer gesendet werden, wenn sie einen Benutzerflow für die Registrierung initiieren.
 
 ### <a name="enable-branding-in-user-flow-pages"></a>Aktivieren von Branding auf Benutzerflowseiten
 

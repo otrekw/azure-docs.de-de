@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683794"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075670"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problembehandlung für Anwendungen, die TLS 1.2 nicht unterstützen
 In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.0 und 1.1) aktivieren und Legacyverschlüsselungssammlungen anwenden, um die zusätzlichen Protokolle für die Web- und Workerrollen des Windows Server 2019-Clouddiensts zu unterstützen. 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.
 Obwohl TLS 1.0 und TLS 1.1 als veraltet eingestuft werden, müssen Kunden die älteren Protokolle und Verschlüsselungssammlungen möglicherweise unterstützen, bis sie ihre Veraltung selbst planen können.  Das Aktivieren dieser Legacyprotokolle wird zwar nicht empfohlen, es werden aber dennoch Anleitungen für Kunden bereitgestellt. Es wird empfohlen, dass Kunden das Risiko dieser Regression abwägen, bevor sie die in diesem Artikel beschriebenen Änderungen vornehmen. 
 
 > [!NOTE]
-> Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2 durch explizite Deaktivierung von TLS 1.0 und 1.1 und die Definition einer bestimmten Reihe von Verschlüsselungssammlungen. Weitere Informationen über Gastbetriebssystemfamilien finden Sie unter [Neuigkeiten zu den Versionen des Gastbetriebssystems](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases).
+> Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2 durch explizite Deaktivierung von TLS 1.0 und 1.1 und die Definition einer bestimmten Reihe von Verschlüsselungssammlungen. Weitere Informationen über Gastbetriebssystemfamilien finden Sie unter [Neuigkeiten zu den Versionen des Gastbetriebssystems](./cloud-services-guestos-update-matrix.md#family-6-releases).
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Einstellen der Unterstützung für TLS 1.0, TLS 1.1 und ältere Verschlüsselungssammlungen 
@@ -362,4 +362,3 @@ Nachdem die oben genannten Schritte abgeschlossen sind, veröffentlichen Sie nun
 
 Sie können [SSLLabs](https://www.ssllabs.com/) verwenden, um den TLS-Status Ihrer Endpunkte zu überprüfen. 
 
- 

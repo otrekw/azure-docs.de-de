@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081842"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Hinzufügen von Daten zu Überwachungsprotokollen mithilfe benutzerdefinierter HTTP-Header
@@ -24,7 +24,7 @@ Wenn der Benutzer der API beispielsweise von einem externen System authentifizie
 
 Dieser Datenfluss ist im folgenden Diagramm dargestellt:
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Diagramm zu benutzerdefinierten Headern":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Diagramm zu benutzerdefinierten Headern&quot;:::
 
 Mit benutzerdefinierten Headern können Sie verschiedene Arten von Informationen erfassen. Beispiel:
 
@@ -47,9 +47,9 @@ Diese HTTP-Header sind in einer Eigenschaftensammlung enthalten, die dem Protoko
 Diese Informationen werden dann beim Hinzufügen der Eigenschaftenspalte im Protokoll in JSON serialisiert. Beispiel:
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234&quot; }
 ```
  
 Wie bei jedem HTTP-Header kann derselbe Headername mit unterschiedlichen Werten wiederholt werden. Beispiel:
@@ -59,7 +59,7 @@ Wie bei jedem HTTP-Header kann derselbe Headername mit unterschiedlichen Werten 
 
 Beim Hinzufügen zum Protokoll werden die Werte mit einer durch Trennzeichen getrennten Liste kombiniert. Beispiel:
 
-{ "X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "KrankenhausA, Notfall" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;KrankenhausA, Notfall" }
  
 Sie können maximal zehn eindeutige Header hinzufügen (Wiederholungen desselben Headers mit unterschiedlichen Werten werden nur als einer gezählt). Die maximale Gesamtlänge des Werts für einen einzigen Header beträgt 2048 Zeichen.
 

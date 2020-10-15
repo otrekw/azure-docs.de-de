@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c8868cd6f5c50b84f263155518ee553145afcfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602287"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91641678"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -70,20 +70,30 @@ Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, di
 
 Wenn Sie Daten an einen Arbeitsbereich mit einer Volumenrate senden, die mehr als 80 Prozent des im Arbeitsbereich konfigurierten Schwellenwerts beträgt, wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die erfasste Volumenrate höher ist als der Schwellenwert, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die Erfassungsvolumenrate weiterhin den Schwellenwert überschreitet oder Sie ihn wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung anfordern, indem Sie eine Supportanfrage öffnen. 
 
-Möchten Sie eine Benachrichtigung erhalten, wenn Sie sich der Volumenratenbegrenzung in Ihrem Arbeitsbereich nähern oder wenn diese Begrenzung erreicht wird, erstellen Sie eine [Protokollwarnungsregel](../articles/azure-monitor/platform/alerts-log.md). Verwenden Sie dazu die folgende Abfrage mit einer Warnungslogik basierend auf der Anzahl von Ergebnissen größer null, mit einem Evaluierungszeitraum von fünf Minuten und einer Häufigkeit von fünf Minuten.
+Falls Sie eine Benachrichtigung erhalten möchten, wenn Sie sich der Volumenratenbegrenzung in Ihrem Arbeitsbereich nähern oder wenn diese Begrenzung erreicht wird, erstellen Sie eine [Protokollwarnungsregel](../articles/azure-monitor/platform/alerts-log.md). Verwenden Sie dazu die folgende Abfrage mit einer Warnungslogik basierend auf der Anzahl von Ergebnissen größer null, mit einem Evaluierungszeitraum von fünf Minuten und einer Frequenz von fünf Minuten.
 
-Die Rate für das Erfassungsvolumen hat 80 Prozent des Schwellenwerts erreicht:
+Die Rate für das Erfassungsvolumen hat den Schwellenwert überschritten.
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where OperationCategory == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where OperationStatus == "Error"
 ```
 
-Die Rate für das Erfassungsvolumen hat den Schwellenwert erreicht:
+Die Rate für das Erfassungsvolumen hat 80 Prozent des Schwellenwerts überschritten.
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where OperationCategory == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where OperationStatus == "Warning"
+```
+
+Die Rate für das Erfassungsvolumen hat 70 Prozent des Schwellenwerts überschritten.
+```Kusto
+Operation
+| where OperationCategory == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where OperationStatus == "Info"
 ```
 
 >[!NOTE]

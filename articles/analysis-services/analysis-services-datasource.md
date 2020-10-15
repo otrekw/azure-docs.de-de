@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749085"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018813"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -79,7 +79,7 @@ Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten
 **Hinweise:**  
 <a name="tab1400b">6</a>: Nur für tabellarische Modelle ab 1400.  
 <a name="sqlim">7</a>: Geben Sie bei Angabe als *Anbieterdatenquelle* in tabellarischen Modellen ab 1200 den Microsoft OLE DB-Treiber für SQL Server (MSOLEDBSQL; empfohlen), SQL Server Native Client 11.0 oder den .NET Framework-Datenanbieter für SQL Server an.  
-<a name="instgw">8</a>: Bei Angabe von MSOLEDBSQL als Datenanbieter muss ggf. der [Microsoft OLE DB-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) heruntergeladen und auf dem Computer installiert werden, auf dem sich auch das lokale Datengateway befindet.  
+<a name="instgw">8</a>: Bei Angabe von MSOLEDBSQL als Datenanbieter muss ggf. der [Microsoft OLE DB-Treiber für SQL Server](/sql/connect/oledb/oledb-driver-for-sql-server) heruntergeladen und auf dem Computer installiert werden, auf dem sich auch das lokale Datengateway befindet.  
 <a name="oracle">9</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Oracle-Datenanbieter für .NET an. Wenn er als strukturierte Datenquelle angegeben ist, stellen Sie sicher, dass Sie den [von Oracle verwalteten Anbieter aktivieren](#enable-oracle-managed-provider).   
 <a name="teradata">10</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Teradata-Datenanbieter für .NET an.  
 <a name="filesSP">11</a>: Dateien in der lokalen SharePoint-Instanz werden nicht unterstützt.

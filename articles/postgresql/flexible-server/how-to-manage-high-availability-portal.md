@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930315"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>Verwalten zonenredundanter Hochverfügbarkeit in flexiblen Servern
@@ -35,24 +35,24 @@ In diesem Abschnitt finden Sie spezifische Informationen für auf Hochverfügbar
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Anzeigen von Abonnement und der Region":::
 
 2.  Wählen Sie Ihre **Verfügbarkeitszone** aus. Dies ist hilfreich, wenn Sie Ihre Anwendung in derselben Verfügbarkeitszone wie der der Datenbank platzieren möchten, um die Wartezeit zu verringern. Wählen Sie **Keine Präferenz** aus, wenn der flexible Server in einer beliebigen Verfügbarkeitszone bereitgestellt werden soll.
-    ![AZ Selection]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Verfügbarkeitszonenauswahl":::  
+    ![AZ Selection]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Anzeigen von Abonnement und der Region":::  
 
 3.  Aktivieren Sie das Kontrollkästchen für **Zonenredundante Hochverfügbarkeit** in der Option „Verfügbarkeit“.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Kontrollkästchen „Hochverfügbarkeit“":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Anzeigen von Abonnement und der Region":::
 
 4.  Wenn Sie die Standardwerte für „Compute“ und „Speicher“ ändern möchten, klicken Sie auf  **Server konfigurieren**.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Server konfigurieren: Compute und Speicher":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Anzeigen von Abonnement und der Region":::  
 
 5.  Wenn die Option „Hochverfügbarkeit“ aktiviert ist, steht die Ebene „Burstfähig“ nicht zur Auswahl. Sie können die Computeebene **Allgemeiner Zweck** oder **Arbeitsspeicheroptimiert** auswählen. Anschließend können Sie in der Dropdownliste für Ihre Auswahl **Computegröße** auswählen.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Auswahl der Computeebene":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Anzeigen von Abonnement und der Region":::  
 
 
 6.  Wählen Sie die **Speichergröße** in GiB mithilfe der Schiebereglerleiste aus, und wählen Sie den **Aufbewahrungszeitraum für Sicherungen** zwischen 7 Tagen und 35 Tagen aus.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Speichersicherung"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Anzeigen von Abonnement und der Region"::: 
 
 7. Klicken Sie auf **Speichern**. 
 
@@ -64,11 +64,11 @@ Führen Sie diese Schritte aus, um Hochverfügbarkeit für Ihren vorhandenen fle
 
 2.  Klicken Sie auf der Seite „Flexibler Server“ im linken Bereich auf  **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Auswahl des linken Bereichs"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Anzeigen von Abonnement und der Region"::: 
 
 3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu **aktivieren**, und klicken Sie auf  **Speichern** , um die Änderung zu speichern.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Aktivieren der Hochverfügbarkeit"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Anzeigen von Abonnement und der Region"::: 
 
 4.  Es wird ein Bestätigungsdialogfeld angezeigt, das besagt, dass sich durch die Aktivierung der Hochverfügbarkeit Ihre Kosten aufgrund zusätzlicher Server- und Speicherbereitstellungen erhöhen werden.
 
@@ -84,11 +84,11 @@ Führen Sie diese Schritte aus, um die Hochverfügbarkeit für Ihren flexiblen S
 
 2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf  **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Auswahl des linken Bereichs"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Anzeigen von Abonnement und der Region"::: 
 
 3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu **deaktivieren**. Klicken Sie dann auf  **Speichern**, um die Änderung zu speichern.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Deaktivieren der Hochverfügbarkeit"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Anzeigen von Abonnement und der Region"::: 
 
 4.  Ein Bestätigungsdialogfeld wird angezeigt, in dem Sie die Deaktivierung der Hochverfügbarkeit bestätigen können.
 

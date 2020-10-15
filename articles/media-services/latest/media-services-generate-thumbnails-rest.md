@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: af320b94950d5999b6dd181b7a8e0eb198088e98
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ec2782297f2659341c9fa7e87ce15d3dbceb022c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267631"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019561"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit REST
 
@@ -210,7 +210,7 @@ In allen oben genannten Beispielen wurde erläutert, dass Sie eine Codierungsauf
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
-Informationen zum Schema finden Sie in [diesem](/azure/media-services/previous/media-services-mes-schema) Artikel.
+Informationen zum Schema finden Sie in [diesem](../previous/media-services-mes-schema.md) Artikel.
 
 ```json
 {

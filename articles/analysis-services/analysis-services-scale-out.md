@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007688"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019431"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -46,9 +46,9 @@ Wenn Sie einen nachfolgenden horizontalen Skalierungsvorgang ausführen und beis
 
 * Die Synchronisierung ist auch dann zulässig, wenn keine Replikate im Abfragepool vorhanden sind. Wenn Sie mit neuen Daten aus einem Verarbeitungsvorgang auf dem primären Server von Null auf ein oder mehrere Replikate hochskalieren, führen Sie zuerst die Synchronisierung ohne Replikate im Abfragepool durch und nehmen dann die horizontale Skalierung vor. Durch das Synchronisieren vor dem horizontalen Skalieren werden redundante Vorgänge mit den neu hinzugefügten Replikaten vermieden.
 
-* Wenn Sie eine Modelldatenbank auf dem primären Server löschen, wird sie nicht automatisch aus Replikaten im Abfragepool gelöscht. Sie müssen einen Synchronisierungsvorgang mit dem PowerShell-Befehl [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) ausführen, der die Dateien für diese Datenbank aus dem Speicherort des freigegebenen Blobs des Replikats entfernt und dann die Modelldatenbank auf den Replikaten im Abfragepool löscht. Um zu bestimmen, ob eine Modelldatenbank auf Replikaten im Abfragepool vorhanden ist, jedoch nicht auf dem primären Server, stellen Sie sicher, dass die Einstellung **Verarbeitungsserver vom Abfragepool trennen** auf **Ja** gesetzt ist. Verwenden Sie dann SSMS, um mithilfe des `:rw`-Qualifizierers eine Verbindung mit dem primären Server herzustellen und zu ermitteln, ob die Datenbank vorhanden ist. Stellen Sie dann eine Verbindung mit Replikaten im Abfragepool her, indem Sie eine Verbindung ohne den `:rw`-Qualifizierer herstellen, um zu ermitteln, ob die gleiche Datenbank ebenfalls vorhanden ist. Ist die Datenbank auf Replikaten im Abfragepool vorhanden, jedoch nicht auf dem primären Server, führen Sie einen Synchronisierungsvorgang aus.   
+* Wenn Sie eine Modelldatenbank auf dem primären Server löschen, wird sie nicht automatisch aus Replikaten im Abfragepool gelöscht. Sie müssen einen Synchronisierungsvorgang mit dem PowerShell-Befehl [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) ausführen, der die Dateien für diese Datenbank aus dem Speicherort des freigegebenen Blobs des Replikats entfernt und dann die Modelldatenbank auf den Replikaten im Abfragepool löscht. Um zu bestimmen, ob eine Modelldatenbank auf Replikaten im Abfragepool vorhanden ist, jedoch nicht auf dem primären Server, stellen Sie sicher, dass die Einstellung **Verarbeitungsserver vom Abfragepool trennen** auf **Ja** gesetzt ist. Verwenden Sie dann SSMS, um mithilfe des `:rw`-Qualifizierers eine Verbindung mit dem primären Server herzustellen und zu ermitteln, ob die Datenbank vorhanden ist. Stellen Sie dann eine Verbindung mit Replikaten im Abfragepool her, indem Sie eine Verbindung ohne den `:rw`-Qualifizierer herstellen, um zu ermitteln, ob die gleiche Datenbank ebenfalls vorhanden ist. Ist die Datenbank auf Replikaten im Abfragepool vorhanden, jedoch nicht auf dem primären Server, führen Sie einen Synchronisierungsvorgang aus.   
 
-* Wenn Sie eine Datenbank auf dem primären Server umbenennen, ist ein zusätzlicher Schritt erforderlich, um sicherzustellen, dass die Datenbank ordnungsgemäß mit Replikaten synchronisiert wird. Nach dem Umbenennen führen Sie eine Synchronisierung mit dem Befehl [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) durch. Dabei legen Sie den Parameter `-Database` mit dem alten Datenbanknamen fest. Bei dieser Synchronisierung werden die Datenbank und die Dateien mit dem alten Namen aus Replikate entfernt. Führen Sie eine weitere Synchronisierung durch. Dabei legen Sie den Parameter `-Database` mit dem alten Datenbanknamen fest. Bei der zweiten Synchronisierung wird die neu benannte Datenbank in den zweiten Datensatz kopiert und alle Replikate aufgefüllt. Diese Synchronisierungen können nicht mithilfe des Befehls „Modell synchronisieren“ im Portal ausgeführt werden.
+* Wenn Sie eine Datenbank auf dem primären Server umbenennen, ist ein zusätzlicher Schritt erforderlich, um sicherzustellen, dass die Datenbank ordnungsgemäß mit Replikaten synchronisiert wird. Nach dem Umbenennen führen Sie eine Synchronisierung mit dem Befehl [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) durch. Dabei legen Sie den Parameter `-Database` mit dem alten Datenbanknamen fest. Bei dieser Synchronisierung werden die Datenbank und die Dateien mit dem alten Namen aus Replikate entfernt. Führen Sie eine weitere Synchronisierung durch. Dabei legen Sie den Parameter `-Database` mit dem alten Datenbanknamen fest. Bei der zweiten Synchronisierung wird die neu benannte Datenbank in den zweiten Datensatz kopiert und alle Replikate aufgefüllt. Diese Synchronisierungen können nicht mithilfe des Befehls „Modell synchronisieren“ im Portal ausgeführt werden.
 
 ### <a name="synchronization-mode"></a>Synchronisierungsmodus
 
@@ -150,11 +150,11 @@ Rückgabestatuscodes:
 
 Vor der Verwendung von PowerShell müssen Sie [das neueste Azure PowerShell-Modul installieren oder aktualisieren](/powershell/azure/install-az-ps). 
 
-Verwenden Sie [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance), um die Synchronisierung auszuführen.
+Verwenden Sie [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance), um die Synchronisierung auszuführen.
 
-Verwenden Sie [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver), um die Anzahl von Abfragereplikaten festzulegen. Geben Sie den optionalen Parameter `-ReadonlyReplicaCount` an.
+Verwenden Sie [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver), um die Anzahl von Abfragereplikaten festzulegen. Geben Sie den optionalen Parameter `-ReadonlyReplicaCount` an.
 
-Verwenden Sie [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver), um den verarbeitenden Server vom Abfragepool zu trennen. Geben Sie den optionalen Parameter `-DefaultConnectionMode` an, um `Readonly` zu verwenden.
+Verwenden Sie [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver), um den verarbeitenden Server vom Abfragepool zu trennen. Geben Sie den optionalen Parameter `-DefaultConnectionMode` an, um `Readonly` zu verwenden.
 
 Weitere Informationen finden Sie unter [Verwenden eines Dienstprinzipals mit dem Az.AnalysisServices-Modul](analysis-services-service-principal.md#azmodule).
 
@@ -183,4 +183,4 @@ Sie können den Tarif auf einem Server mit mehreren Replikaten ändern. Der glei
 ## <a name="related-information"></a>Verwandte Informationen
 
 [Überwachen von Servermetriken](analysis-services-monitor.md)   
-[Verwalten von Azure Analysis Services](analysis-services-manage.md) 
+[Verwalten von Azure Analysis Services](analysis-services-manage.md)

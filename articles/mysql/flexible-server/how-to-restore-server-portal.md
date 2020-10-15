@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930363"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Zeitpunktwiederherstellung von Azure Database for MySQL – Flexible Server (Vorschau)
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein. 
    
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Übersicht anzeigen":::
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Frühester Wiederherstellungszeitpunkt":::
  
 7.  Klicken Sie auf **OK**.
 

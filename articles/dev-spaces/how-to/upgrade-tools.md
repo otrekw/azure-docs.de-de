@@ -6,14 +6,16 @@ ms.topic: conceptual
 ms.custom: devx-track-azurecli
 description: Erfahren Sie, wie Sie ein Upgrade der Azure Dev Spaces-Befehlszeilentools, der Visual Studio Code-Erweiterung und der Visual Studio-Erweiterung ausführen
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: aebe81d58a1bcd44f5766d368dbafa53c81ed2b8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2c2878f71deedd8df39316290735df734b97b92a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504329"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960285"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Upgrade von Azure Dev Spaces-Tools
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Wenn eine neue Release vorliegt und Sie Azure Dev Spaces bereits verwenden, müssen Sie die Azure Dev Spaces-Clienttools eventuell aktualisieren.
 

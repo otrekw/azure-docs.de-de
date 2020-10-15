@@ -3,19 +3,19 @@ title: Ausgewählter benutzergenerierter Inhalt für die Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Finden Sie ausgewählte Inhalte, ermitteln Sie, wie andere Personen darüber denken, und verwenden Sie die Anomalieerkennungs-API.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.author: aahi
-ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbullwin
+ms.openlocfilehash: df526c23460e7146cd630afcb8b29a380c568250
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74012023"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017435"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Ausgewählter benutzergenerierter Inhalt für die Anomalieerkennungs-API
 
