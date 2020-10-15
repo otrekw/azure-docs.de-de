@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922947"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019432"
 ---
 # <a name="manage-server-administrators"></a>Verwalten von Serveradministratoren
 
@@ -40,13 +40,13 @@ Verwenden Sie beim Hinzufügen einer **Sicherheitsgruppe** `obj:groupid@tenantid
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Verwenden Sie das Cmdlet [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver), um den Administrator-Parameter beim Erstellen eines neuen Servers anzugeben. <br>
-Verwenden Sie das Cmdlet [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver), um den Administrator-Parameter für einen bereits vorhandenen Server zu ändern.
+Verwenden Sie das Cmdlet [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver), um den Administrator-Parameter beim Erstellen eines neuen Servers anzugeben. <br>
+Verwenden Sie das Cmdlet [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver), um den Administrator-Parameter für einen bereits vorhandenen Server zu ändern.
 
 ## <a name="rest-api"></a>REST-API
 
-Verwenden Sie [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create), um die Eigenschaft „asAdministrator“ beim Erstellen eines neuen Servers anzugeben. <br>
-Verwenden Sie [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update), um die Eigenschaft „asAdministrator“ beim Ändern eines bereits vorhandenen Servers anzugeben. <br>
+Verwenden Sie [Create](/rest/api/analysisservices/servers/create), um die Eigenschaft „asAdministrator“ beim Erstellen eines neuen Servers anzugeben. <br>
+Verwenden Sie [Update](/rest/api/analysisservices/servers/update), um die Eigenschaft „asAdministrator“ beim Ändern eines bereits vorhandenen Servers anzugeben. <br>
 
 
 
@@ -54,4 +54,4 @@ Verwenden Sie [Update](https://docs.microsoft.com/rest/api/analysisservices/serv
 
 [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)  
 [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md)  
-[Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../role-based-access-control/overview.md)  
+[Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../role-based-access-control/overview.md)

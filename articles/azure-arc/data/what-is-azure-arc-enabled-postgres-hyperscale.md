@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931280"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Was ist eine Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe?
@@ -43,7 +43,7 @@ Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der als Databa
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL Hyperscale mit Azure Arc-Aktivierung
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="PostgreSQL Hyperscale mit Azure Arc-Aktivierung":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database for PostgreSQL Hyperscale (Citus)":::
 
 Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der mit dem Azure Arc-fähigen Datendienst verfügbar ist. Er wird auch von der Citus-Erweiterung unterstützt, die die Hyperscale-Umgebung ermöglicht. In diesem Formfaktor stellen unsere Kunden die Infrastruktur bereit, die die Systeme hostet, und betreiben sie.
 

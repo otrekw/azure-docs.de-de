@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697595"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018775"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Bereitstellen eines Modells mithilfe von Visual Studio
 
@@ -23,7 +23,7 @@ Nachdem Sie im Azure-Abonnement einen Server erstellt haben, können Sie eine ta
 Zunächst benötigen Sie Folgendes:
 
 * **Analysis-Services-Server** in Azure. Weitere Informationen finden Sie unter [Erstellen eines Azure Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md).
-* **Tabellarisches Modellprojekt** in Visual Studio oder ein vorhandenes tabellarisches Modell mit dem Kompatibilitätsgrad 1200 oder höher. Haben Sie noch nie eines erstellt? Sehen Sie sich das [Tutorial zur Tabellenmodellierung für Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) an.
+* **Tabellarisches Modellprojekt** in Visual Studio oder ein vorhandenes tabellarisches Modell mit dem Kompatibilitätsgrad 1200 oder höher. Haben Sie noch nie eines erstellt? Sehen Sie sich das [Tutorial zur Tabellenmodellierung für Adventure Works Internet Sales](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) an.
 * **Lokales Gateway** – Wenn eine oder mehrere Datenquellen lokal im Netzwerk der Organisation vorhanden sind, müssen Sie ein [lokales Datengateway](analysis-services-gateway.md) installieren. Das Gateway ist erforderlich, damit der Server in der Cloud eine Verbindung mit den lokalen Datenquellen herstellen kann, um Daten im Modell zu verarbeiten und zu aktualisieren.
 
 > [!TIP]
@@ -63,7 +63,4 @@ Wenn die Bereitstellung für eine Tabelle fehlschlägt, konnte wahrscheinlich de
 
 Nachdem Sie jetzt das tabellarische Modell auf dem Server bereitgestellt haben, können Sie eine Verbindung mit diesem herstellen. Sie können [mit SQL Server Management Studio (SSMS) eine Verbindung damit herstellen](analysis-services-manage.md), um es zu verwalten. Und Sie können [mithilfe eines Clienttools eine Verbindung mit diesem herstellen](analysis-services-connect.md) (z. B. mit Power BI, Power BI Desktop oder Excel) und mit dem Erstellen von Berichten beginnen.   
 
-Weitere Informationen zu erweiterten Bereitstellungsmethoden finden Sie unter [Bereitstellung von Tabellenmodelllösungen](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
-
-
-
+Weitere Informationen zu erweiterten Bereitstellungsmethoden finden Sie unter [Bereitstellung von Tabellenmodelllösungen](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).

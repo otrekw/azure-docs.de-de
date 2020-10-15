@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264469"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019476"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
 
@@ -489,7 +489,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Sie haben zwei Möglichkeiten, um über die REST-API Aufträge und die zugehörigen Aufgaben zu erstellen: Aufgaben können inline über die Aufgabennavigationseigenschaft in Auftragsentitäten oder über die OData-Stapelverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Artikel werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
 
-Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Der folgende Abschnitt dieser Dokumentation enthält eine Liste sämtlicher [Aufgabenvoreinstellungen](/azure/media-services/previous/media-services-mes-presets-overview) , die vom Media Encoder-Standardprozessor unterstützt werden.  
+Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Der folgende Abschnitt dieser Dokumentation enthält eine Liste sämtlicher [Aufgabenvoreinstellungen](./media-services-mes-presets-overview.md) , die vom Media Encoder-Standardprozessor unterstützt werden.  
 
 **HTTP-Anforderung**
 

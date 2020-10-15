@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665601"
 ---
 **Azure Data Lake Storage Gen2** ist kein dedizierter Dienst- oder Speicherkontotyp. Es handelt sich dabei um das aktuelle Release von Funktionen für Big Data-Analysen.  Diese Funktionen sind in einem Speicherkonto vom Typ „Allgemein v2“ oder „BlockBlobStorage“ verfügbar, und Sie können sie durch Aktivieren des Features **Hierarchischer Namespace** des Kontos abrufen. Informationen zu Skalierungszielen finden Sie in den folgenden Artikeln: 

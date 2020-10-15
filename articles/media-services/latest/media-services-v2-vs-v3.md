@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651751"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019833"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 und v3
 
@@ -74,7 +74,7 @@ Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführ
 
 Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Schließen der Lücken wird derzeit gearbeitet.
 
-* Der Zugriff auf den [Premium-Encoder](../previous/media-services-premium-workflow-encoder-formats.md) und die älteren [Media Analytics-Prozessoren](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 Preview, Face Redactor usw.) ist über v3 nicht möglich.<br/>Kunden, die eine Migration von der Media Indexer 1- oder 2-Vorschauversion durchführen möchten, können sofort die AudioAnalyzer-Voreinstellung in der v3-API verwenden.  Diese neue Voreinstellung enthält mehr Funktionen als die ältere Media Indexer 1- oder 2-Version. 
+* Der Zugriff auf den [Premium-Encoder](../previous/media-services-encode-asset.md) und die älteren [Media Analytics-Prozessoren](../previous/legacy-components.md) (Azure Media Services Indexer 2 Preview, Face Redactor usw.) ist über v3 nicht möglich.<br/>Kunden, die eine Migration von der Media Indexer 1- oder 2-Vorschauversion durchführen möchten, können sofort die AudioAnalyzer-Voreinstellung in der v3-API verwenden.  Diese neue Voreinstellung enthält mehr Funktionen als die ältere Media Indexer 1- oder 2-Version. 
 * Viele der [erweiterten Features von Media Encoder Standard in v2-APIs](../previous/media-services-advanced-encoding-with-mes.md) sind derzeit in v3 nicht verfügbar, z. B.:
   
     * Zusammenfügen von Medienobjekten

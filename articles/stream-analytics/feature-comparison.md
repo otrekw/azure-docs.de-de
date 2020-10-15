@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885563"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018286"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergleich der Features von Azure Stream Analytics
 
@@ -44,7 +44,7 @@ Mit Azure Stream Analytics können Sie mit [Azure-Portal](stream-analytics-quick
 |Benutzerdefinierte C#-Codefunktion und Deserialisierer|Schreibgeschützter Modus|Ja|Nein |
 |JavaScript-UDF und -UDA     |Ja         |Ja         |Nur Windows         |
 |Machine Learning Service     |Ja        |Ja         |Nein          |
-|Machine Learning Studio     |Ja, aber die Abfrage kann nicht getestet werden        |Ja |Nein          |
+|Azure Machine Learning Studio (klassisch)|Ja, aber die Abfrage kann nicht getestet werden        |Ja |Nein          |
 |Kompatibilitätsgrad     |1.0</br>1.1</br>1.2 (Standard)         |1.0</br>1.1</br>1.2 (Standard)           |1.0</br>1.1</br>1.2 (Standard)           |
 |Integrierte Anomalieerkennungsfunktionen auf ML-Basis     |Ja         |Ja         |Ja         |
 |Integrierte Geofunktionen     |Ja         |Ja         |Ja         |

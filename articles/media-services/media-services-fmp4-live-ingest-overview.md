@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072044"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019510"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services 
 
@@ -39,7 +39,7 @@ In der folgenden schematischen Darstellung ist die allgemeine Architektur des Li
 ![Erfassungsdatenfluss][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstromformat – ISO 14496-12, fragmentiertes MP4
-Das in diesem Dokument beschriebene Übertragungsformat zur Erfassung des Livestreamings basiert auf [ISO-14496-12]. Eine ausführliche Erläuterung des fragmentierten MP4-Formats und der Erweiterungen für Video-on-Demand-Dateien und die Livestreamingerfassung finden Sie unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
+Das in diesem Dokument beschriebene Übertragungsformat zur Erfassung des Livestreamings basiert auf [ISO-14496-12]. Eine ausführliche Erläuterung des fragmentierten MP4-Formats und der Erweiterungen für Video-on-Demand-Dateien und die Livestreamingerfassung finden Sie unter [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).
 
 ### <a name="live-ingest-format-definitions"></a>Definitionen für Liveerfassungsformat
 Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfassung in Azure Media Services gelten:
@@ -70,7 +70,7 @@ Es folgen die detaillierten Anforderungen:
 1. Wenn die HTTP POST-Anforderung endet oder ein Timeout aufgrund eines TCP-Fehlers vor dem Ende des Streams auftritt, MUSS der Encoder eine neue POST-Anforderung mithilfe einer neuen Verbindung ausgeben und die vorausgehenden Anforderungen erfüllen. Der Encoder muss darüber hinaus die vorherigen beiden MP4-Fragmente für jede Spur im Stream neu senden und fortfahren, ohne eine Diskontinuität in der Medienzeitachse auszulösen. Durch das erneute Senden der letzten beiden MP4-Fragmente für jede Spur wird sichergestellt, dass keine Daten verloren gehen. Mit anderen Worten: Wenn ein Stream eine Audio- und eine Videospur enthält und bei der aktuellen POST-Anforderung ein Fehler auftritt, muss der Encoder eine neue Verbindung herstellen und die letzten zwei zuvor erfolgreich gesendeten Fragmente für die Audiospur sowie die letzten zwei zuvor erfolgreich gesendeten Fragmente für die Videospur erneut senden, um sicherzustellen, dass keine Daten verloren gehen. Der Encoder MUSS einen vorausschauenden Puffer der Medienfragmente beibehalten, den er beim Wiederherstellen der Verbindung erneut sendet.
 
 ## <a name="5-timescale"></a>5. Timescale
-Unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) wird die Verwendung der Zeitskala für **SmoothStreamingMedia** (Abschnitt 2.2.2.1), **StreamElement** (Abschnitt 2.2.2.3), **StreamFragmentElement** (Abschnitt 2.2.2.6) und **LiveSMIL** (Abschnitt 2.2.7.3.1) beschrieben. Wenn der Zeitskalawert nicht vorhanden ist, wird der Standardwert 10.000.000 (10 MHz) verwendet. Obwohl die Spezifikation des Smooth Streaming-Formats die Verwendung anderer Zeitskalawerte nicht blockiert, verwenden die meisten Encoderimplementierungen diesen Standardwert (10 MHz), um Smooth Streaming-Erfassungsdaten zu generieren. Wegen der Funktion [Azure Media Services Dynamic Packaging](./previous/media-services-dynamic-packaging-overview.md) wird empfohlen, 90 kHz als Zeitskala für Videostreams sowie 44,1 kHz oder 48,1 kHz für Audiostreams zu verwenden. Wenn für verschiedene Streams unterschiedliche Zeitskalawerte verwendet werden, MUSS die Zeitskala der Streamebene gesendet werden. Weitere Informationen finden Sie unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+Unter [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) wird die Verwendung der Zeitskala für **SmoothStreamingMedia** (Abschnitt 2.2.2.1), **StreamElement** (Abschnitt 2.2.2.3), **StreamFragmentElement** (Abschnitt 2.2.2.6) und **LiveSMIL** (Abschnitt 2.2.7.3.1) beschrieben. Wenn der Zeitskalawert nicht vorhanden ist, wird der Standardwert 10.000.000 (10 MHz) verwendet. Obwohl die Spezifikation des Smooth Streaming-Formats die Verwendung anderer Zeitskalawerte nicht blockiert, verwenden die meisten Encoderimplementierungen diesen Standardwert (10 MHz), um Smooth Streaming-Erfassungsdaten zu generieren. Wegen der Funktion [Azure Media Services Dynamic Packaging](./previous/media-services-dynamic-packaging-overview.md) wird empfohlen, 90 kHz als Zeitskala für Videostreams sowie 44,1 kHz oder 48,1 kHz für Audiostreams zu verwenden. Wenn für verschiedene Streams unterschiedliche Zeitskalawerte verwendet werden, MUSS die Zeitskala der Streamebene gesendet werden. Weitere Informationen finden Sie unter [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).     
 
 ## <a name="6-definition-of-stream"></a>6. Definition von „Stream“
 Ein „Stream ist die Basiseinheit für Vorgänge in der Echtzeiterfassung beim Erstellen von Livepräsentationen sowie beim Verarbeiten von Streamingfailovers und Redundanzszenarios. Ein „Stream“ ist definiert als ein eindeutiger fragmentierter MP4-Bitstrom, der eine oder mehrere Spuren enthalten kann. Eine vollständige Livepräsentation kann je nach Konfiguration der Liveencoder einen oder mehrere Streams enthalten. In den folgenden Beispielen werden verschiedene Optionen zum Erstellen einer vollständigen Livepräsentation unter Verwendung eines oder mehrerer Streams veranschaulicht.

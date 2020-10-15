@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038931"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963124"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Der virtuelle Computer reagiert nicht, während die Standarddomänencontroller-Richtlinie angewendet wird.
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält Schritte zum Beheben von Problemen, bei denen die Standa
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot der VM anzuzeigen, zeigt der Screenshot während des Startens das nicht mehr reagierende Betriebssystem mit der folgenden Meldung an: **Default Domain Controller Policy** (Standarddomänencontroller-Richtlinie).
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot der VM anzuzeigen, zeigt der Screenshot während des Startens das nicht mehr reagierende Betriebssystem mit der folgenden Meldung an: **Default Domain Controller Policy** (Standarddomänencontroller-Richtlinie).
 
   ![In Abbildung 1 wird das nicht mehr reagierende Betriebssystem mit der Meldung „Default Domain Controller Policy“ (Standarddomänencontroller-Richtlinie) angezeigt.](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ Um dieses Problem zu lösen, müssen Sie zunächst die Speicherabbilddatei für 
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Anfügen des Betriebssystemdatenträgers an eine neue Reparatur-VM
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
@@ -56,4 +56,4 @@ Um dieses Problem zu lösen, müssen Sie zunächst die Speicherabbilddatei für 
 
 1. Suchen Sie nach der Datei „memory.dmp“, und [senden Sie dann ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mit der Speicherabbilddatei.
 
-1. Wenn Sie die Datei „memory.dmp“ nicht finden, sollten Sie möglicherweise stattdessen [NMI-Aufrufe (Nicht maskierbarer Interrupt) in der seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) verwenden. Befolgen Sie den Leitfaden zum [Generieren eines Absturzabbilds mithilfe von NMI-Aufrufen](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Wenn Sie die Datei „memory.dmp“ nicht finden, sollten Sie möglicherweise stattdessen [NMI-Aufrufe (Nicht maskierbarer Interrupt) in der seriellen Konsole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) verwenden. Befolgen Sie den Leitfaden zum [Generieren eines Absturzabbilds mithilfe von NMI-Aufrufen](/windows/client-management/generate-kernel-or-complete-crash-dump).

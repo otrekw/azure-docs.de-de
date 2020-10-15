@@ -16,12 +16,12 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256445"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018955"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indizieren von Mediendateien mit Azure Media Indexer
 
@@ -48,7 +48,7 @@ Sie können weitere Details für Ihre Indizierungsaufgaben mithilfe einer Aufgab
 
 Sie können auch mehrere Mediendateien gleichzeitig mithilfe einer Manifestdatei verarbeiten.
 
-Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](./media-services-analytics-overview.md).
+Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](./legacy-components.md).
 
 ## <a name="index-an-asset"></a>Indizieren eines Medienobjekts
 Mit der folgenden Methode werden eine Mediendatei als Medienobjekt hochgeladen und ein Auftrag zum Indizieren des Medienobjekts erstellt.
@@ -161,7 +161,7 @@ Wenn nicht alle Eingabemediendateien erfolgreich indiziert werden, verursacht de
 ## <a name="index-multiple-files"></a>Indizieren mehrerer Dateien
 Mit der folgenden Methode werden mehrere Mediendateien als Medienobjekt hochgeladen und ein Auftrag zum Indizieren all dieser Dateien in einem Batch erstellt.
 
-Eine Manifestdatei mit der Erweiterung LST wird erstellt und in das Medienobjekt hochgeladen. Die Manifestdatei enthält die Liste sämtlicher Medienobjektdateien. Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](./media-services-analytics-overview.md).
+Eine Manifestdatei mit der Erweiterung LST wird erstellt und in das Medienobjekt hochgeladen. Die Manifestdatei enthält die Liste sämtlicher Medienobjektdateien. Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](./legacy-components.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,6 +278,6 @@ Derzeit werden die Sprachen Englisch und Spanisch unterstützt.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Verwandte Links
-[Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
+[Azure Media Services Analytics – Übersicht](./legacy-components.md)
 
-[Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2](media-services-process-content-with-indexer2.md)
+[Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2](./legacy-components.md)

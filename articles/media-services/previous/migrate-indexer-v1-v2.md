@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e6b7c8cbcf6685ca2e781789fc508d005bcb5f88
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255102"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018898"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrieren von Media Indexer und Media Indexer 2 zu Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Die Medienprozessoren [Azure Media Indexer](media-services-index-content.md) und [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) Medienprozessoren werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
+Die Medienprozessoren [Azure Media Indexer](media-services-index-content.md) und [Azure Media Indexer 2 Preview](./legacy-components.md) Medienprozessoren werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
 
 Azure Media Services Video Indexer baut auf Azure Media Analytics, Azure Cognitive Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und benutzerdefinierter Spracherkennungsdienst) auf. Sie ermöglicht Ihnen, mithilfe der Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen. Informationen zu den Szenarien, in denen Video Indexer verwendet werden kann, zu den gebotenen Funktionen und zum Einstieg finden Sie unter [Video- und Audiomodelle von Video Indexer](../video-indexer/video-indexer-overview.md). 
 

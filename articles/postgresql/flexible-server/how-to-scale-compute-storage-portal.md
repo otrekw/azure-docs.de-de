@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931349"
 ---
 # <a name="scale-operations-in-flexible-server"></a>Skalierungsvorgänge in Flexible Server
@@ -43,18 +43,18 @@ Führen Sie die folgenden Schritte aus, um die Computeebene auszuwählen.
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="Compute+Speicher-Ansicht":::
 
 4.  Sie können für die Computeklasse zwischen den Ebenen „Burstfähig“, „Allgemeiner Zweck“ und „Arbeitsspeicheroptimiert“ auswählen.
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="Computeebenen auflisten":::
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="Compute+Speicher-Ansicht":::
 
 
 5.  Wenn Sie mit den standardmäßigen virtuellen Kernen und Speichergrößen gut zurechtkommen, können Sie den nächsten Schritt überspringen.
 
 6.  Wenn Sie die Anzahl der virtuellen Kerne ändern möchten, können Sie auf die Dropdownliste **Computegröße** klicken und dann die gewünschte Anzahl virtueller Kerne bzw. die gewünschte Arbeitsspeichergröße aus der Liste auswählen.
     
-    - Computeebene „Burstfähig“: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="Computeebene „Burstfähig“":::
+    - Computeebene „Burstfähig“: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="Compute+Speicher-Ansicht":::
 
-    - Computeebene „Allgemeiner Zweck“: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="Computeebene „Allgemeiner Zweck“":::
+    - Computeebene „Allgemeiner Zweck“: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="Compute+Speicher-Ansicht":::
 
-    - Computeebene „Arbeitsspeicheroptimiert“: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="Computeebene „Arbeitsspeicheroptimiert“":::
+    - Computeebene „Arbeitsspeicheroptimiert“: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="Compute+Speicher-Ansicht":::
 
 7.  Klicken Sie auf **Speichern**. 
 8.  Es wird eine Bestätigungsmeldung angezeigt. Klicken Sie auf **OK**, wenn Sie fortfahren möchten. 
@@ -70,12 +70,12 @@ Befolgen Sie diese Schritte aus, um Ihre Speichergröße zu erhöhen.
 
 3.  Eine Seite mit aktuellen Einstellungen wird angezeigt.
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="Auf „Compute + Speicher“ klicken":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="Compute+Speicher-Ansicht":::
 4.  Das Feld **Speichergröße in GiB** mit einem Schieberegler wird mit der aktuellen Größe angezeigt.
 
 5.  Schieben Sie den Regler auf die gewünschte Größe. Die entsprechende IOPS-Zahl wird angezeigt. Der IOPS-Wert hängt von der Computeebene und -größe ab. Die Kosteninformationen werden ebenfalls angezeigt. 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="Speicher zentral hochskalieren":::
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="Compute+Speicher-Ansicht":::
 
 6.  Wenn Sie mit der Speichergröße gut zurechtkommen, klicken Sie auf **Speichern**. 
 7.  Es wird eine Bestätigungsmeldung angezeigt. Klicken Sie auf **OK**, wenn Sie fortfahren möchten. 

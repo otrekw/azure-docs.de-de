@@ -3,21 +3,21 @@ title: Installieren und Ausführen von Docker-Containern für die Anomalieerkenn
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Algorithmen der Anomalieerkennungs-API, um mithilfe eines Docker-Containers lokal Anomalien in Ihren Daten zu finden.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, Container, Streaming, Algorithmen
-ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: e20ff5022b9b4a5b601160516f255af991a540c6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459999"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018609"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Installieren und Ausführen von Docker-Containern für die Anomalieerkennungs-API 
 

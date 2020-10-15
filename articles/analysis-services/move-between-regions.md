@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050355"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018193"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Verschieben von Analysis Services in eine andere Region
 
@@ -88,7 +88,7 @@ So exportieren Sie eine Vorlage mithilfe des Azure-Portals
 
 So exportieren Sie eine Vorlage mithilfe von PowerShell
 
-1. Melden Sie sich mit dem Befehl [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
+1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ So ändern Sie die Vorlage:
 
 #### <a name="regions"></a>Regions
 
-Die Azure-Regionen finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/). Um Regionen mithilfe von PowerShell abzurufen, führen Sie den Befehl [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) aus.
+Die Azure-Regionen finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/). Um Regionen mithilfe von PowerShell abzurufen, führen Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) aus.
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -278,7 +278,7 @@ Optional: Verarbeiten Sie nach dem Wiederherstellen der Modelldatenbank das Mode
 
 Optional: Das [ALM-Toolkit](http://alm-toolkit.com/) ist ein *Open Source*-Tool, mit dem Sie Power BI-Datasets *und* tabellarische Analysis Services-Modelldatenbanken vergleichen und verwalten können. Verwenden Sie das Toolkit, um eine Verbindung mit Datenbanken auf dem Quell- und Zielserver herzustellen und sie zu vergleichen. Wenn Ihre Datenbankmigration erfolgreich war, weisen Modellobjekte die gleiche Definition auf. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM-Toolkit":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="Abrufen einer SAS":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> Es wird empfohlen, nach dem Verschieben in eine andere Region für den neuen Zielserver einen Speichercontainer in derselben Region für Sicherungen zu verwenden anstelle des Speichercontainers in der Region des Quellservers. 
+> Es wird empfohlen, nach dem Verschieben in eine andere Region für den neuen Zielserver einen Speichercontainer in derselben Region für Sicherungen zu verwenden anstelle des Speichercontainers in der Region des Quellservers.

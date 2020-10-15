@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 521fd61f18d6673e21c23dbca4cfc12d2ee4bf0b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931501"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Migrieren einer PostgreSQL-Datenbank zu einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
@@ -53,20 +53,20 @@ Betrachten Sie folgendes Setup:
 
 - **Ziel:**  
     Ein Postgres-Server namens postgres01, der in einer Azure Arc-Umgebung ausgeführt wird. Der Server verfügt über Version 12. Er enthält keine Datenbank mit Ausnahme der standardmäßigen Postgres-Datenbank.  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrate-destination":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrate-source":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>Eine lokale Sicherung der Quelldatenbank erstellen
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrate-source-backup":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrate-source":::
 
 Diese konfigurieren:
 1. Einen Dateinamen zuweisen: **MySourceBackup**
 2. Das Format auf **Benutzerdefiniert**
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="Migrate-source-backup-configure"::: festlegen
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="Migrate-source"::: festlegen
 
 Die Sicherung wird erfolgreich abgeschlossen:  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrate-source-backup-completed":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrate-source":::
 
 ### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Eine leere Datenbank auf dem Zielsystem in Ihrer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe erstellen
 
@@ -98,17 +98,17 @@ Wir nennen die Zieldatenbank **RESTORED_MyOnPremPostgresDB**.
 :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrate-destination-db-create"lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
 ### <a name="restore-the-database-in-your-arc-setup"></a>Die Datenbank im Arc-Setup wiederherstellen
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-db-restore":::
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migrate-source":::
 
 Die Wiederherstellung konfigurieren:
 1. Auf die Datei verweisen, die die wiederherzustellende Sicherung enthält: **MySourceBackup**
 2. Das Format bei **Benutzerdefiniert oder tar**
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="Migrate-db-restore-configure"::: belassen
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="Migrate-source"::: belassen
 
 3. Klicken Sie auf **Wiederherstellen**.  
 
    Die Wiederherstellung ist erfolgreich.  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrate-db-restore-completed":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrate-source":::
 
 ### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Überprüfen, ob die Datenbank erfolgreich in Ihrer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe wiederhergestellt wurde
 
@@ -118,20 +118,7 @@ Verwenden Sie eine der folgenden beiden Methoden:
 
 Erweitern Sie die Postgres-Instanz, die im Azure Arc-Setup gehostet wird. Die Tabelle wird in der wiederhergestellten Datenbank angezeigt. Wenn Sie die Daten auswählen, wird dieselbe Zeile wie in der lokalen Instanz angezeigt:
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrate-db-restore-verification":::
-
-**Von `psql` innerhalb Ihres Azure Arc-Setups:**  
-
-In Ihrem Arc-Setup können Sie `psql` verwenden, um eine Verbindung mit der Postgres-Instanz herzustellen, den Datenbankkontext auf `RESTORED_MyOnPremPostgresDB` festzulegen und die Daten abzufragen:
-
-1. Die Endpunkte auflisten, um die `psql`-Verbindungszeichenfolge zu unterstützen:
-
-   ```console
-   azdata arc postgres endpoint list -n postgres01
-   [
-     {
-       "Description": "PostgreSQL Instance",
-       "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrate-source"
      },
      {
        "Description": "Log Search Dashboard",

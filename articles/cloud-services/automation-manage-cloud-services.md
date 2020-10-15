@@ -10,12 +10,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72439073"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075619"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Verwalten von Azure Cloud Services mithilfe von Azure Automation
 Dieser Leitfaden bietet eine Einführung in den Azure Automation-Dienst und zeigt, wie Azure Automation zur einfacheren Verwaltung Ihrer Azure Cloud Services genutzt werden kann.
@@ -39,4 +39,4 @@ Beispiele für die Verwendung von Azure Automation für die Verwaltung von Azure
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendung zum Verwalten von Azure Cloud Services vertraut gemacht haben, können Sie diese Links verwenden, um weitere Informationen zu Azure Automation zu erhalten.
 
 * [Übersicht über Azure Automation](../automation/automation-intro.md)
-* [Mein erstes Runbook](../automation/automation-first-runbook-graphical.md)
+* [Mein erstes Runbook](../automation/learn/automation-tutorial-runbook-graphical.md)

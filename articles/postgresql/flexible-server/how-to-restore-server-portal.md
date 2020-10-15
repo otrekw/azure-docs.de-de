@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931197"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Zeitpunktwiederherstellung einer Flexible Server-Instanz
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 4.  Wählen Sie **Frühester Wiederherstellungspunkt** aus, und geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein. Der früheste Zeitstempel, den Sie wiederherstellen können, wird angezeigt. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Frühester Wiederherstellungszeitpunkt":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Wiederherstellung – Übersicht":::
 
 5.  Klicken Sie auf **OK**.
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 5.  Wählen Sie das Datum und die Uhrzeit aus, und geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein. 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Benutzerdefinierter Wiederherstellungszeitpunkt":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Wiederherstellung – Übersicht":::
  
 6.  Klicken Sie auf **OK**.
 

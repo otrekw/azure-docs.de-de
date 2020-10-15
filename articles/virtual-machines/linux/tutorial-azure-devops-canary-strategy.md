@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510156"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963481"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Canary-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure
 
@@ -25,7 +25,7 @@ ms.locfileid: "86510156"
 
 Azure Pipelines verfügt über einen umfassenden Satz an CI/CD-Automatisierungstools für Bereitstellungen auf virtuellen Computern. Sie können eine Continuous Delivery-Pipeline für einen virtuellen Azure-Computer über das Azure-Portal konfigurieren.
 
-In diesem Artikel erfahren Sie, wie Sie eine CI/CD-Pipeline mit Canary-Strategie für Bereitstellungen auf mehreren Computern einrichten. Vom Azure-Portal werden auch andere Strategien wie etwa die [parallele Strategie](https://aka.ms/AA7jlh8) und die [Blau-Grün-Strategie](https://aka.ms/AA83fwu) unterstützt.
+In diesem Artikel erfahren Sie, wie Sie eine CI/CD-Pipeline mit Canary-Strategie für Bereitstellungen auf mehreren Computern einrichten. Vom Azure-Portal werden auch andere Strategien wie etwa die [parallele Strategie](./tutorial-devops-azure-pipelines-classic.md) und die [Blau-Grün-Strategie](./tutorial-azure-devops-blue-green-strategy.md) unterstützt.
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Konfigurieren von CI/CD auf virtuellen Computern
 
@@ -72,8 +72,8 @@ Mithilfe der Continuous Delivery-Option können Sie Canary-Bereitstellungen fü
    ![Bereich „Artefakte“ mit „deploy.sh“ im Ordner „deployscripts“](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Weitere Bereitstellungsstrategien
-- [Tutorial: Konfigurieren der Strategie für parallele Bereitstellungen für virtuelle Linux-Computer in Azure](https://aka.ms/AA7jlh8)
-- [Tutorial: Konfigurieren der Blau-Grün-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure](https://aka.ms/AA83fwu)
+- [Tutorial: Konfigurieren der Strategie für parallele Bereitstellungen für virtuelle Linux-Computer in Azure](./tutorial-devops-azure-pipelines-classic.md)
+- [Tutorial: Konfigurieren der Blau-Grün-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 
