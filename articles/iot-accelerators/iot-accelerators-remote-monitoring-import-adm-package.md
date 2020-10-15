@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61443333"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073868"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Importieren eines Pakets für die automatische Geräteverwaltung in den Solution Accelerator für die Remoteüberwachung
 
 Eine Konfiguration für die automatische Geräteverwaltung definiert die Konfigurationsänderungen, die für eine Gruppe von Geräten bereitgestellt werden. In diesem Artikel wird vorausgesetzt, dass ein Entwickler in Ihrer Organisation bereits eine Konfiguration für die automatische Geräteverwaltung erstellt hat. Um zu erfahren, wie Entwickler eine solche Konfiguration erstellen, lesen Sie eine der folgenden IoT Hub-Anleitungen:
 
-- [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit dem Azure-Portal](../iot-hub/iot-hub-auto-device-config.md)
-- [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit der Azure CLI](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit dem Azure-Portal](../iot-hub/iot-hub-automatic-device-management.md)
+- [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit der Azure CLI](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 Ein Entwickler erstellt und testet eine Konfiguration für die automatische Geräteverwaltung in einer Entwicklungsumgebung. Wenn Sie bereit sind, können Sie die Konfiguration in den Solution Accelerator für die Remoteüberwachung importieren.
 

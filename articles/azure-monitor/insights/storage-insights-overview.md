@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961974"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997020"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage
 
@@ -31,7 +31,7 @@ In Kombination bietet sie Folgendes:
 
 * **Anpassbar**. Hier können Sie ändern, welche Metriken Sie anzeigen oder abändern oder aber Schwellenwerte dafür festlegen möchten, die Ihren Grenzwerten entsprechen, und sie als Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an das Azure-Dashboard angeheftet werden.  
 
-Bei diesem Feature müssen Sie nichts aktivieren oder konfigurieren, weil die Speichermetriken aus Ihren Speicherkonten standardmäßig erfasst werden. Wenn Sie mit den in Azure Storage verfügbaren Metriken nicht vertraut sind, können Sie unter [Azure Storage-Metriken](../../storage/common/monitor-storage.md) die jeweilige Beschreibung und Definition anzeigen.
+Bei diesem Feature müssen Sie nichts aktivieren oder konfigurieren, weil die Speichermetriken aus Ihren Speicherkonten standardmäßig erfasst werden. Wenn Sie mit den in Azure Storage verfügbaren Metriken nicht vertraut sind, können Sie unter [Azure Storage-Metriken](../../storage/blobs/monitor-blob-storage.md) die jeweilige Beschreibung und Definition anzeigen.
 
 >[!NOTE]
 >Für den Zugriff auf dieses Feature fallen keine Gebühren an. Ihnen werden nur die grundlegenden Features von Azure Monitor in Rechnung gestellt, die Sie entsprechend der Beschreibung auf der Seite [Azure Monitor-Preisdetails](https://azure.microsoft.com/pricing/details/monitor/) konfigurieren oder aktivieren.
@@ -67,7 +67,7 @@ Die Zählerkachel unter den Dropdownlisten führt ein Rollup der Gesamtanzahl de
 Wählen Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks). 
 
 >[!NOTE]
->Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/common/monitor-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
+>Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
 
 Der Standardschwellenwert für **Verfügbarkeit** lautet:
 
@@ -274,4 +274,3 @@ Jede Arbeitsmappe wird in dem Speicherkonto gespeichert, in der Sie diese gespei
 * Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
 
 * Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
-

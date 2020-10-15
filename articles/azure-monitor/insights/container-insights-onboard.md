@@ -3,12 +3,12 @@ title: Aktivieren von Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktivieren und konfigurieren, damit Sie erfahren, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320305"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994076"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Aktivieren von Azure Monitor für Container
 
@@ -43,7 +43,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Anforderungen erfüll
    Sie können einen Arbeitsbereich beim Aktivieren der Überwachung des neuen AKS-Clusters erstellen oder beim Onboarding einen Standardarbeitsbereich in der Standardressourcengruppe des AKS-Clusterabonnements erstellen lassen. 
    
    Wenn Sie sich dafür entscheiden, den Arbeitsbereich selbst zu erstellen, können Sie ihn wie folgt einrichten: 
-   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure-Portal](../learn/quick-create-workspace.md) 
    
@@ -131,4 +131,3 @@ Verwenden Sie eine der Methoden verwenden, die in der folgenden Tabelle beschrie
 ## <a name="next-steps"></a>Nächste Schritte
 
 Da Sie Überwachung nun aktiviert haben, können Sie mit der Analyse der Leistung Ihrer Kubernetes-Cluster beginnen, die in Azure Kubernetes Service (AKS), Azure Stack oder in einer anderen Umgebung gehostet werden. Informationen zur Verwendung von Azure Monitor für Container finden Sie unter [Anzeigen der Leistung von Kubernetes-Clustern](container-insights-analyze.md).
-

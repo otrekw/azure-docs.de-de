@@ -1,17 +1,17 @@
 ---
 title: Einführung in Azure Service Fabric-Netzwerke
 description: Erfahren Sie mehr zu Netzwerken, Gateways und intelligentem Datenverkehrsrouting in Service Fabric Mesh.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75459136"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842698"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Einführung in Netzwerke mit Service Fabric Mesh-Anwendungen
 In diesem Artikel erfahren Sie mehr zu den verschiedenen Typen von Lastenausgleich, wie Gateways das Netzwerk mit Ihren Anwendungen mit anderen Netzwerken verbinden und wie Datenverkehr zwischen den Diensten in Ihren Anwendungen weitergeleitet wird.
