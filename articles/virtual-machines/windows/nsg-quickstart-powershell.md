@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0eca3f2fea3cf72b05b301ae307c1179f9bca0be
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072365"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973936"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mit PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -91,5 +91,5 @@ Bei hoch verfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter 
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
 * [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-* [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/security-overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/network-security-groups-overview.md)
 * [Übersicht über Azure Load Balancer](../../load-balancer/load-balancer-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Includedatei
 description: include file
 services: virtual-machines
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81314121"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989700"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -23,7 +23,7 @@ Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen berei
 
 Erstellen Sie eine Ressourcengruppe mit dem Azure CLI-Befehl [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create), dem Azure PowerShell-Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) oder dem [Azure-Portal](https://portal.azure.com).
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -44,7 +44,7 @@ Erstellen Sie einen Schlüsseltresor mit dem Azure CLI-Befehl [az keyvault creat
 
 Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Fügen Sie beim Erstellen eines Schlüsseltresors mithilfe der Azure-Befehlszeilenschnittstelle das Flag „--enabled-for-disk-encryption“ hinzu.
 
@@ -73,7 +73,7 @@ Die Azure-Plattform benötigt Zugriff auf die Verschlüsselungsschlüssel oder g
 
 Wenn Sie Ihren Schlüsseltresor nicht zum Zeitpunkt der Erstellung für Datenträgerverschlüsselung, Bereitstellung oder Vorlagenbereitstellung aktiviert haben (wie im vorherigen Schritt gezeigt), müssen Sie die erweiterten Zugriffsrichtlinien aktualisieren.  
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um die Datenträgerverschlüsselung für den Schlüsseltresor zu aktivieren. 
 
@@ -143,12 +143,12 @@ Die Angabe von Portnummern als Teil von URLs für Schlüsseltresorgeheimnisse un
   * Zulässige Schlüsseltresor-URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Unzulässige Schlüsseltresor-URL: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Generieren Sie mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) einen neuen KEK, und speichern Sie ihn in Ihrem Schlüsseltresor.
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
 Sie können stattdessen auch einen privaten Schlüssel mithilfe des Befehls [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) in der Azure-Befehlszeilenschnittstelle importieren:

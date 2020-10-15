@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017140"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB
@@ -47,7 +47,7 @@ Wenn Sie die Autoskalierung für eine Datenbank mit gemeinsam genutztem Durchsat
 
 1. Wählen Sie unter **Skalieren** die Option **Autoskalierung** und anschließend **Speichern** aus.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Aktivieren der Autoskalierung für einen vorhandenen Container":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Erstellen eines Containers und Konfigurieren der Durchsatzbereitstellung mit Autoskalierung":::
 
 > [!NOTE]
 > Wenn Sie die Autoskalierung für eine vorhandene Datenbank oder für einen vorhandenen Container aktivieren, wird der Startwert für die maximale Anzahl von RU/s durch das System bestimmt (basierend auf den aktuellen Einstellungen für manuell bereitgestellten Durchsatz sowie auf dem Speicher). Nach Abschluss des Vorgangs kann die maximale Anzahl von RU/s bei Bedarf geändert werden. [Weitere Informationen.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

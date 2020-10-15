@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233328"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855451"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service mit Azure DevOps Starter
 
@@ -24,7 +24,7 @@ DevOps Starter ermöglicht außerdem:
 * Automatisches Erstellen von Azure-Ressourcen wie Azure Kubernetes Service (AKS)
 * Erstellen und Konfigurieren einer Releasepipeline in Azure DevOps, mit der eine Build- und Releasepipeline für CI/CD eingerichtet wird
 * Erstellen einer Azure Application Insights-Ressource für die Überwachung
-* Aktivieren von [Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) zum Überwachen der Leistung für die Containerworkloads im AKS-Cluster
+* Aktivieren von [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) zum Überwachen der Leistung für die Containerworkloads im AKS-Cluster
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -171,4 +171,4 @@ Diese Build- und Releasepipelines können Sie optional an die Anforderungen Ihre
 Weitere Informationen zur Verwendung des Kubernetes-Dashboards finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwenden des Kubernetes-Dashboards](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [Verwenden des Kubernetes-Dashboards](../aks/kubernetes-dashboard.md)

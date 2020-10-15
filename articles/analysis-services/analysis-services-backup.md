@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506994"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014051"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Sichern und Wiederherstellen von Analysis Services-Datenbanken
 
-Das Sichern von Datenbanken für tabellarische Modelle in Azure Analysis Services ähnelt dem Sichern von lokalem Analysis Services. Der Hauptunterschied besteht im Speicherort der Sicherungsdateien. Sicherungsdateien müssen in einem Container in einem [Azure Storage-Konto](../storage/common/storage-create-storage-account.md) gespeichert werden. Sie können ein bereits vorhandenes Speicherkonto und einen vorhandenen Container verwenden, oder beim Konfigurieren der Speichereinstellungen für den Server können ein Speicherkonto und ein Container erstellt werden.
+Das Sichern von Datenbanken für tabellarische Modelle in Azure Analysis Services ähnelt dem Sichern von lokalem Analysis Services. Der Hauptunterschied besteht im Speicherort der Sicherungsdateien. Sicherungsdateien müssen in einem Container in einem [Azure Storage-Konto](../storage/common/storage-account-create.md) gespeichert werden. Sie können ein bereits vorhandenes Speicherkonto und einen vorhandenen Container verwenden, oder beim Konfigurieren der Speichereinstellungen für den Server können ein Speicherkonto und ein Container erstellt werden.
 
 > [!NOTE]
 > Wenn Sie ein Speicherkonto erstellen, wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
@@ -75,10 +75,10 @@ Bevor Sie eine Sicherung durchführen, müssen Sie die Speichereinstellungen fü
 
 
 ### <a name="powershell"></a>PowerShell
-Verwenden Sie das Cmdlet [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase).
+Verwenden Sie das Cmdlet [Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase).
 
 ## <a name="restore"></a>Restore
-Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinden, das Sie für den Server konfiguriert haben. Wenn Sie eine Sicherungsdatei aus einem lokalen Speicherort in Ihr Speicherkonto verschieben müssen, verwenden Sie den [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) oder das Befehlszeilenprogramm [AzCopy](../storage/common/storage-use-azcopy.md). 
+Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinden, das Sie für den Server konfiguriert haben. Wenn Sie eine Sicherungsdatei aus einem lokalen Speicherort in Ihr Speicherkonto verschieben müssen, verwenden Sie den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) oder das Befehlszeilenprogramm [AzCopy](../storage/common/storage-use-azcopy-v10.md). 
 
 
 
@@ -102,11 +102,11 @@ Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinde
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase).
+Verwenden Sie das Cmdlet [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase).
 
 
 ## <a name="related-information"></a>Verwandte Informationen
 
-[Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)  
+[Azure-Speicherkonten](../storage/common/storage-account-create.md)  
 [Hochverfügbarkeit](analysis-services-bcdr.md)      
 [Häufig gestellte Fragen zu Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md)

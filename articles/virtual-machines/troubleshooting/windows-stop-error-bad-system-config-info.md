@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447317"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977030"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows-kritischer Fehler: 0x00000074 Fehlerhafte Systemkonfigurationsinformationen
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält Schritte zum Beheben von Problemen, bei denen Windows ni
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, sehen Sie, dass im Screenshot der Windows-Stillstandcode **#0x00000074** oder **BAD_SYSTEM_CONFIG_INFO** angezeigt wird.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, sehen Sie, dass im Screenshot der Windows-Stillstandcode **#0x00000074** oder **BAD_SYSTEM_CONFIG_INFO** angezeigt wird.
 
 *Auf dem PC ist ein Problem aufgetreten. Er muss neu gestartet werden. Sie können einen Neustart ausführen.* 
 *Weitere Informationen zu diesem Problem und mögliche Lösungen finden Sie unter http://windows.com/stopcode* 
@@ -58,7 +58,7 @@ Der Stillstandcode **BAD_SYSTEM_CONFIG_INFO** tritt auf, wenn die Registrierungs
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 1. Prüfen Sie auf eine Beschädigung der Struktur.
 1. Stellen Sie über die Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 1. Kopieren Sie den Ordner `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`, und speichern Sie ihn entweder in der fehlerfreien Datenträgerpartition oder an einem anderen sicheren Speicherort. Sichern Sie diesen Ordner vorsichtshalber, da Sie kritische Registrierungsdateien bearbeiten werden. 
@@ -133,4 +133,4 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
    
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example), um die VM neu zu erstellen.
+Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example), um die VM neu zu erstellen.

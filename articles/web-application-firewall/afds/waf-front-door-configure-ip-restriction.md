@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005615"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurieren einer IP-Einschränkungsregel mit einer Web Application Firewall für Azure Front Door
@@ -76,7 +76,7 @@ Gehen Sie zum Erstellen eines Azure Front Door-Profils gemäß den Anweisungen u
 1. Nachdem die Bereitstellung der WAF-Richtlinien abgeschlossen ist, navigieren Sie zu Ihrem Front-End-Hostnamen.
 2. Es sollte Ihre benutzerdefinierte Blockierungsmeldung angezeigt werden.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF-Regeltest":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Benutzerdefinierte Regel":::
 
    > [!NOTE]
    > In der benutzerdefinierten Regel wurde absichtlich eine private IP-Adresse verwendet, um die Auslösung der Regel sicherzustellen. Erstellen Sie bei einer tatsächlichen Bereitstellung Regeln für *Zulassen* und *Ablehnen* mit IP-Adressen für Ihre bestimmte Situation.

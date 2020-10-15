@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2b06a7ee41a69e32f44c44cdec0da6a47ec4b284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731865"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013677"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services – Beispiele
 
@@ -28,7 +28,7 @@ Das [Analysis Services](https://github.com/Microsoft/Analysis-Services)-Reposito
 
 ## <a name="sample-database-on-azure"></a>Beispieldatenbank in Azure
 
-Azure Synapse Analytics (SQL Data Warehouse) bietet eine AdventureWorksDW-Beispieldatenbank, die in eine bereitgestellte Ressource einbezogen werden kann. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen eines Azure Synapse Analytics-SQL-Pools](/azure/sql-data-warehouse/create-data-warehouse-portal).
+Azure Synapse Analytics (SQL Data Warehouse) bietet eine AdventureWorksDW-Beispieldatenbank, die in eine bereitgestellte Ressource einbezogen werden kann. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen eines Azure Synapse Analytics-SQL-Pools](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
 ## <a name="sample-databases-on-github"></a>Beispieldatenbanken auf GitHub
 
@@ -46,5 +46,5 @@ Wenn Sie über einen Analysis Services-Server im Azure-Portal verfügen, können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Adventure Works-Tutorial](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
-[Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway](analysis-services-gateway.md)  
+[Adventure Works-Tutorial](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway](analysis-services-gateway.md)

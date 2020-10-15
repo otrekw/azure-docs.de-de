@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88817155"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden des Azure-Portals zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
@@ -63,7 +63,7 @@ Sie müssen eine neue VM bereitstellen, um die Verschlüsselung auf dem Host zu 
 1. Wählen Sie auf dem Blatt **Datenträger** die Option **Ja** für **Verschlüsselung auf dem Host** aus.
 1. Treffen Sie die verbleibende Auswahl nach Wunsch.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Screenshot des Blatts „Datenträger“ zum Erstellen virtueller Computer mit hervorgehobener Option für Verschlüsselung auf dem Host":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Screenshot des Blatts „Grundlagen“ zum Erstellen virtueller Computer mit hervorgehobenen Optionen für Region und VM-Größe":::
 
 1. Beenden Sie den VM-Bereitstellungsprozess, und wählen Sie Optionen passend für Ihre Umgebung aus.
 

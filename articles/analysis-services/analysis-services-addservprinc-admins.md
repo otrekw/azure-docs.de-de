@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015407"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013932"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 
@@ -117,5 +117,5 @@ Mit dieser Client-ID können Sie dann in Verbindung mit der Mandanten-ID der Lis
 
 ## <a name="related-information"></a>Verwandte Informationen
 
-* [Herunterladen des SQL Server PowerShell-Moduls](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [Herunterladen von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [Herunterladen des SQL Server PowerShell-Moduls](/sql/ssms/download-sql-server-ps-module)   
+* [Herunterladen von SSMS](/sql/ssms/download-sql-server-management-studio-ssms)

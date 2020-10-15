@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400380"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978019"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-Sicherheitsbaseline für virtuelle Windows-Computer
 
@@ -32,7 +32,7 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 Wenn Sie einen bestimmten Anwendungsfall für eine zentralisierte Firewall haben, erfüllt auch Azure Firewall diese Anforderungen.
 
-* [Virtuelle Netzwerke und virtuelle Computer in Azure](./network-overview.md)
+* [Virtuelle Netzwerke und virtuelle Computer in Azure](../network-overview.md)
 
 * [Erstellen eines virtuellen Netzwerks](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Ve
 
 * [Bereitstellen von Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../../security-center/threat-protection.md)
+* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../../security-center/azure-defender.md)
 
 * [Grundlegendes zur adaptiven Netzwerkhärtung von Azure Security Center](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Ve
 
 * [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy-Beispiele für Netzwerke](/azure/governance/policy/samples/#network)
+* [Azure Policy-Beispiele für Netzwerke](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Erstellen einer Azure-Blaupause](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ Verwenden Sie Azure Policy, um die Konfiguration für Netzwerkressourcen im Zusa
 
 * [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy-Beispiele für Netzwerke](/azure/governance/policy/samples/#network)
+* [Azure Policy-Beispiele für Netzwerke](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -252,7 +252,7 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 **Leitfaden**: Stellen Sie sicher, dass für die Speicherkonten oder Log Analytics-Arbeitsbereiche zum Speichern der Protokolle virtueller Computer der Protokollaufbewahrungszeitraum gemäß den Konformitätsbestimmungen Ihrer Organisation festgelegt ist.
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](./monitor.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [Konfigurieren des Aufbewahrungszeitraums des Log Analytics-Arbeitsbereichs](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](./monitor.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -508,7 +508,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Erstellen zusätzlicher Azure-Abonnements](../../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Befolgen Sie die Azure Security Center-Empfehlungen zum Durchführen von Sicherheitsrisikobewertungen für Ihre Azure-VMs. Verwenden Sie von Azure Security Center empfohlene Lösungen oder Drittanbieterlösungen, um Sicherheitsrisikobewertungen für Ihre VMs durchzuführen.
 
-* [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -692,7 +692,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 * [Erstellen zusätzlicher Azure-Abonnements](../../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Zusätzlich zur Änderungsnachverfolgung für die Überwachung von Softwareanwen
 
 * [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../../governance/policy/samples/index.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -817,13 +817,13 @@ Zusätzlich zur Änderungsnachverfolgung für die Überwachung von Softwareanwen
 
 **Leitfaden**: Anwendungen mit hohem Risiko, die in Ihrer Azure-Umgebung bereitgestellt werden, können z. B. mithilfe von virtuellen Netzwerken, Subnetzen, Abonnements, Verwaltungsgruppen isoliert und durch eine Azure Firewall-Instanz, eine Web Application Firewall (WAF) oder eine Netzwerksicherheitsgruppe (NSG) ausreichend geschützt werden.
 
-* [Virtuelle Netzwerke und virtuelle Computer in Azure](./network-overview.md)
+* [Virtuelle Netzwerke und virtuelle Computer in Azure](../network-overview.md)
 
 * [Übersicht über Azure Firewall](../../firewall/overview.md)
 
 * [Übersicht über Web Application Firewall](../../web-application-firewall/overview.md)
 
-* [Übersicht über die Netzwerksicherheit](../../virtual-network/security-overview.md)
+* [Übersicht über die Netzwerksicherheit](../../virtual-network/network-security-groups-overview.md)
 
 * [Übersicht über Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)
 

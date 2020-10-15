@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262666"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault 
@@ -70,11 +70,11 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 
 5. Wenn die Anwendung bereitgestellt ist, navigieren Sie im Azure-Portal zur von Ihnen bereitgestellten Webanwendung, und aktivieren Sie die **verwaltete Dienstidentität** dieser Anwendung.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Verwaltete Dienstidentität":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Erstellen eines geheimen Schlüssels":::
 
 Wenn Sie die Anwendung jetzt ausführen, sehen Sie den folgenden Fehler, da Sie für diese Anwendung in Key Vault keinerlei Berechtigungen gewährt haben.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="App ohne Zugriff bereitgestellt":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Erstellen eines geheimen Schlüssels":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>Registrieren der Anwendung und Gewähren von Berechtigungen zum Lesen von Key Vault
 
@@ -84,11 +84,11 @@ In diesem Abschnitt registrieren Sie die Anwendung im Azure Active Directory und
 
 2. Öffnen Sie **Zugriffsrichtlinien**, wählen Sie **+Neue hinzufügen**, suchen Sie die von Ihnen bereitgestellte Webanwendung, wählen Sie die Berechtigungen aus, und wählen Sie **OK**.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Zugriffsrichtlinie hinzufügen":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Erstellen eines geheimen Schlüssels":::
 
 Wenn Sie die Anwendung jetzt ausführen, können Sie das Geheimnis aus Key Vault aus lesen.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="App mit Geheimnis bereitgestellt":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Erstellen eines geheimen Schlüssels":::
  
 Auf ähnliche Weise können Sie einen Benutzer für den Zugriff auf den Key Vault hinzufügen. Sie müssen sich selbst zum Schlüsseltresor hinzufügen, indem Sie **Zugriffsrichtlinien** auswählen und alle Berechtigungen gewähren, die Sie zum Ausführen der Anwendung über Visual Studio benötigen. Wenn diese Anwendung auf dem Desktop ausgeführt wird, nimmt sie Ihre Identität an.
 
