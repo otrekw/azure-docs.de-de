@@ -2,20 +2,20 @@
 title: Funktionsweise von Vertrauensstellungen für Azure AD Domain Services | Microsoft-Dokumentation
 description: Erfahren Sie mehr darüber, wie Gesamtstruktur-Vertrauensstellungen mit Azure AD Domain Services funktionieren.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: joflore
+ms.openlocfilehash: 50b400ffa047d3865a9df77912da187de1ce9cc9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258778"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962614"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services
 

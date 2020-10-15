@@ -2,7 +2,7 @@
 title: Problembehandlung von Warnungen für Netzwerksicherheitsgruppen in Azure AD DS | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Probleme und Warnungen im Zusammenhang mit der Konfiguration von Netzwerksicherheitsgruppen für Azure Active Directory Domain Services behandeln.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040451"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962784"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Netzwerkkonfigurationswarnungen in Azure Active Directory Domain Services
 

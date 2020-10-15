@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182121"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070502"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -322,7 +322,7 @@ Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom T
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` oder `false`                     | Geben Sie an, ob es ein interner Lastenausgleich sein soll. Wenn Sie nichts angeben, wird standardmäßig „Öffentlich“ verwendet.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Name des Subnetzes                    | Geben Sie an, an welches Subnetz der interne Lastenausgleich gebunden werden soll. Wenn Sie nichts angeben, wird standardmäßig das in der Cloudkonfigurationsdatei konfigurierte Subnetz verwendet.
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Name der DNS-Bezeichnung von öffentlichen IP-Adressen   | Geben Sie den Namen der DNS-Bezeichnung für den **öffentlichen** Dienst an. Wenn die Zeichenfolge leer ist, wird der DNS-Eintrag in der öffentlichen IP-Adresse nicht verwendet.
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` oder `false`                     | Geben Sie an, dass der Dienst mit einer Azure-Sicherheitsregel verfügbar gemacht werden sollte, die mit einem anderen Dienst gemeinsam verwendet werden kann. Dies ermöglicht einen Austausch in Bezug auf die Spezifizität von Regeln, um die Anzahl von Diensten zu erhöhen, die verfügbar gemacht werden können. Diese Anmerkung basiert auf dem Azure-Feature [Ergänzte Sicherheitsregeln](../virtual-network/security-overview.md#augmented-security-rules) von Netzwerksicherheitsgruppen. 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` oder `false`                     | Geben Sie an, dass der Dienst mit einer Azure-Sicherheitsregel verfügbar gemacht werden sollte, die mit einem anderen Dienst gemeinsam verwendet werden kann. Dies ermöglicht einen Austausch in Bezug auf die Spezifizität von Regeln, um die Anzahl von Diensten zu erhöhen, die verfügbar gemacht werden können. Diese Anmerkung basiert auf dem Azure-Feature [Ergänzte Sicherheitsregeln](../virtual-network/network-security-groups-overview.md#augmented-security-rules) von Netzwerksicherheitsgruppen. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Name der Ressourcengruppe            | Geben Sie die Ressourcengruppe von öffentlichen IP-Adressen des Lastenausgleichs an, die sich nicht in derselben Ressourcengruppe wie die Clusterinfrastruktur (Knotenressourcengruppe) befinden.
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | Liste mit zulässigen Diensttags          | Geben Sie eine Liste mit den zulässigen [Diensttags][service-tags] an (mit Kommas als Trennzeichen).
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP-Leerlauftimeouts in Minuten          | Geben Sie die Dauer in Minuten für Leerlauftimeouts von TCP-Verbindungen ein, die für den Lastenausgleich auftreten. Der Standard- und Minimalwert ist 4. Der Maximalwert ist 30. Dieser Wert muss eine ganze Zahl sein.
@@ -426,4 +426,4 @@ Informieren Sie sich in der [Dokumentation zum internen AKS-Lastenausgleich](int
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

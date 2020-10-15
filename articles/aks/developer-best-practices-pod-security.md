@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022274"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)
@@ -97,7 +97,7 @@ Die Verwendung des Identitätsprojekts für Pods ermöglicht die Authentifizieru
 
 Wenn Anwendungen Anmeldeinformationen benötigen, kommunizieren sie mit dem digitalen Tresor, rufen die neuesten Geheimnisinhalte ab und stellen dann die Verbindung mit dem gewünschten Dienst her. Azure Key Vault kann dieser digitale Tresor sein. Der vereinfachte Workflow zum Abrufen von Anmeldeinformationen aus Azure Key Vault unter Verwendung von verwalteten Podidentitäten ist im folgenden Diagramm dargestellt:
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Vereinfachter Workflow zum Abrufen von Anmeldeinformationen aus dem Schlüsseltresor unter Verwendung einer verwalteten Podidentität":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Vereinfachter Workflow für verwaltete Podidentität in Azure":::
 
 Mit Key Vault werden Geheimnisse wie Anmeldeinformationen, Speicherkontenschlüssel oder Zertifikate gespeichert und regelmäßig rotiert. Sie können Azure Key Vault mit einem AKS-Cluster unter Verwendung des [Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) integrieren. Mit dem Secrets Store CSI-Treiber kann der AKS-Cluster nativ Geheimnisinhalte aus Azure Key Vault abrufen und diese ausschließlich dem anfordernden Pod sicher zur Verfügung stellen. Arbeiten Sie mit Ihrem Clusteroperator zusammen, um den Secrets Store CSI-Treiber auf AKS-Workerknoten bereitzustellen. Sie können eine vom Pod verwaltete Identität verwenden, um Zugriff auf Key Vault anzufordern und die erforderlichen Geheimnisinhalte über den Secrets Store CSI-Treiber abzurufen.
 

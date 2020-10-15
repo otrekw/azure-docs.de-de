@@ -2,20 +2,20 @@
 title: Vorteile der Migration der klassischen Bereitstellung in Azure AD Domain Services | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Vorteile der Migration von der klassischen Bereitstellung in Azure Active Directory Domain Services zum Resource Manager-Bereitstellungsmodell
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: iainfou
-ms.openlocfilehash: 93dcc1202c08be905cf08513f38e79a8a7674e01
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: joflore
+ms.openlocfilehash: 35224e6c9a28b1555303c1ae11b6700c1bf419bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650127"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962495"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Vorteile der Migration vom klassischen Bereitstellungsmodell in Azure Active Directory Domain Services zum Resource Manager-Bereitstellungsmodell
 

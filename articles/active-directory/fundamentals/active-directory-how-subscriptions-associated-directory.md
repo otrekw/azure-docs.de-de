@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426094"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91666431"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -50,7 +50,7 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
   - Wenn Sie über Schlüsseltresore verfügen, kann darauf nicht mehr zugegriffen werden, und Sie müssen sie nach der Zuweisung korrigieren.
   - Wenn Sie über verwaltete Identitäten für Ressourcen wie Virtual Machines oder Logic Apps verfügen, müssen Sie diese nach der Zuordnung nochmal aktivieren oder erstellen.
   - Wenn Sie eine Azure Stack-Instanz konfiguriert haben, müssen Sie diese nach der Zuweisung erneut registrieren.
-  - Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)](../../role-based-access-control/transfer-subscription.md).
+  - Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
 
 - Melden Sie sich mit einem Konto an, das:
 
@@ -93,7 +93,7 @@ Nachdem Sie ein Abonnement einem anderen Verzeichnis zugeordnet haben, müssen S
 
 - Wenn Sie mit diesem Abonnement eine Azure Stack-Instanz registriert haben, müssen Sie diese nochmal registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Azure](/azure-stack/operator/azure-stack-registration).
 
-- Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)](../../role-based-access-control/transfer-subscription.md).
+- Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

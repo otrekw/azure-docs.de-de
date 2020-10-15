@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136038"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Datenmodellierung in Azure Cosmos DB
@@ -299,7 +299,7 @@ Im Beispiel oben haben wir die unbegrenzte Auflistung im Verlegerdokument gelös
 In einer relationalen Datenbank *m:n* -Beziehungen häufig mit Verknüpfungstabellen modelliert, bei denen einfach Datensätze aus anderen Tabellen miteinander verknüpft werden.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Verknüpfen von Tabellen" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Relationales Datenbankmodell" border="false":::
 
 Möglicherweise sind Sie versucht, dasselbe mit Dokumenten zu replizieren, wobei jedoch ein Datenmodell entsteht, das etwa folgendermaßen aussieht.
 

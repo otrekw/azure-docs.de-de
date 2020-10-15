@@ -4,10 +4,10 @@ description: Ein Tutorial in einzelnen Schritten, in dem erläutert wird, wie Si
 ms.topic: article
 ms.date: 4/23/2020
 ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387522"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk
@@ -105,7 +105,7 @@ Damit haben Sie eine WordPress-Website eingerichtet, die ausschließlich in Ihre
 
 1. Wählen Sie auf der Seite **VNET-Integration** die Option **VNET hinzufügen** aus.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Hinzufügen der VNET-Integration (Vorschau)":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Auswählen von „Netzwerk“ in der Funktions-App":::
 
 1. Verwenden Sie unter **Netzwerkfeaturestatus** die Einstellungen in der Tabelle unterhalb der Abbildung:
 
@@ -129,7 +129,7 @@ Wenn die VNET-Integration aktiviert ist, können Sie einen Proxy in Ihrer Funkti
 
 1. Wählen Sie in Ihrer Funktions-App im Menü auf der linken Seite **Proxys** aus, und wählen Sie dann **Hinzufügen** aus. Verwenden Sie die Proxyeinstellungen aus der Tabelle unterhalb der Abbildung:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definieren der Proxyeinstellungen":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Auswählen von „Netzwerk“ in der Funktions-App":::
 
     | Einstellung  | Vorgeschlagener Wert  | Beschreibung      |
     | -------- | ---------------- | ---------------- |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836121"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961475"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden
 
@@ -67,12 +67,12 @@ Lesen Sie zuerst die folgenden Dokumente:
   * [Übersicht über Azure Firewall](../../../firewall/overview.md): Übersicht über Azure Firewall.
   * [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall](../../../firewall/tutorial-firewall-deploy-portal.md): Anweisungen zur Konfiguration von Azure Firewall über das Azure-Portal.
 * [Virtuelle Netzwerke – Benutzerdefinierte Regeln](../../../virtual-network/virtual-networks-udr-overview.md#user-defined): Konzepte und Regeln für das Azure-Routing.  
-* [Diensttags für Sicherheitsgruppen](../../../virtual-network/security-overview.md#service-tags): Informationen zum Vereinfachen Ihrer Konfiguration für Netzwerksicherheitsgruppen und Firewall mit Diensttags.
+* [Diensttags für Sicherheitsgruppen](../../../virtual-network/network-security-groups-overview.md#service-tags): Informationen zum Vereinfachen Ihrer Konfiguration für Netzwerksicherheitsgruppen und Firewall mit Diensttags.
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Zusätzlicher externer Azure Load Balancer Standard für ausgehende Verbindungen mit dem Internet.
 
 Eine Möglichkeit, ausgehende Verbindungen mit öffentlichen Endpunkten zu erreichen, ohne die eingehende Verbindung zur VM vom öffentlichen Endpunkt aus zu erlauben, besteht darin, einen zweiten Load Balancer mit öffentlicher IP-Adresse zu erstellen, die VMs zum Back-End-Pool des zweiten Load Balancers hinzuzufügen und nur [ausgehende Regeln](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) zu definieren.  
-Verwenden Sie [Netzwerksicherheitsgruppen](../../../virtual-network/security-overview.md), um die öffentlichen Endpunkte zu steuern, die für ausgehende Aufrufe von der VM zugänglich sind.  
+Verwenden Sie [Netzwerksicherheitsgruppen](../../../virtual-network/network-security-groups-overview.md), um die öffentlichen Endpunkte zu steuern, die für ausgehende Aufrufe von der VM zugänglich sind.  
 Weitere Informationen finden Sie unter Szenario 2 im Dokument [Ausgehende Verbindungen](../../../load-balancer/load-balancer-outbound-connections.md#scenarios).  
 Die Konfiguration würde wie folgt aussehen:  
 
@@ -81,11 +81,11 @@ Die Konfiguration würde wie folgt aussehen:
 ### <a name="important-considerations"></a>Wichtige Hinweise
 
 - Sie können einen zusätzlichen öffentlichen Load Balancer für mehrere VMs in demselben Subnetz verwenden, um ausgehende Verbindungen mit öffentlichen Endpunkten zu erreichen und die Kosten zu optimieren.  
-- Verwenden Sie [Netzwerksicherheitsgruppen](../../../virtual-network/security-overview.md), um zu steuern, welche öffentlichen Endpunkte von den VMs aus zugänglich sind. Sie können die Netzwerksicherheitsgruppe entweder dem Subnetz oder den einzelnen virtuellen Computern zuordnen. Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/security-overview.md#service-tags), um die Komplexität der Sicherheitsregeln zu reduzieren.  
+- Verwenden Sie [Netzwerksicherheitsgruppen](../../../virtual-network/network-security-groups-overview.md), um zu steuern, welche öffentlichen Endpunkte von den VMs aus zugänglich sind. Sie können die Netzwerksicherheitsgruppe entweder dem Subnetz oder den einzelnen virtuellen Computern zuordnen. Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/network-security-groups-overview.md#service-tags), um die Komplexität der Sicherheitsregeln zu reduzieren.  
 - Azure Load Balancer Standard mit öffentlicher IP-Adresse und Ausgangsregeln ermöglicht den direkten Zugriff auf den öffentlichen Endpunkt. Wenn unternehmensweite Sicherheitsanforderungen bestehen, dass der gesamte ausgehende Datenverkehr über eine zentrale Unternehmenslösung für Überwachung und Protokollierung abgewickelt wird, können Sie die Anforderung mit diesem Szenario möglicherweise nicht erfüllen.  
 
 >[!TIP]
->Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/security-overview.md#service-tags), um die Komplexität der Netzwerksicherheitsgruppe zu reduzieren. 
+>Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/network-security-groups-overview.md#service-tags), um die Komplexität der Netzwerksicherheitsgruppe zu reduzieren. 
 
 ### <a name="deployment-steps"></a>Bereitstellungsschritte
 
@@ -117,7 +117,7 @@ Die Konfiguration würde wie folgt aussehen:
 
    ![Ausgehende Verbindung mit zweitem Load Balancer mit öffentlicher IP-Adresse](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Weitere Informationen zu Azure-Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](../../../virtual-network/security-overview.md). 
+   Weitere Informationen zu Azure-Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](../../../virtual-network/network-security-groups-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Azure Firewall für ausgehende Verbindungen mit dem Internet
 
@@ -137,7 +137,7 @@ Die Architektur sieht folgendermaßen aus:
 - Wenn die Firewalllösung im Unternehmen nicht Azure Firewall ist und die Sicherheitsanforderungen bestehen, dass sämtlicher ausgehender Datenverkehr über eine zentralisierte Unternehmenslösung geleitet wird, ist diese Lösung möglicherweise nicht praktikabel.  
 
 >[!TIP]
->Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/security-overview.md#service-tags), um die Komplexität der Azure Firewall-Regeln zu reduzieren.  
+>Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/network-security-groups-overview.md#service-tags), um die Komplexität der Azure Firewall-Regeln zu reduzieren.  
 
 ### <a name="deployment-steps"></a>Bereitstellungsschritte
 

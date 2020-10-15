@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: db85774dd1cf1e7dd5a284182faf354004671618
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891768"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91649642"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- und Dsv3-Serie
 
@@ -28,15 +28,13 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 Virtuelle Computer der Dv3-Serie verfügen über Hyper-Threading-Technologie von Intel®.
 
-ACU: 160–190
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU:](acu.md) 160–190<br>
+[Storage Premium:](premium-storage-performance.md) Nicht unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---|---|---|---|---|---|---|
@@ -54,15 +52,13 @@ Die Dsv3-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade La
 
 Virtuelle Computer der Dsv3-Serie verfügen über Hyper-Threading-Technologie von Intel®.
 
-ACU: 160–190
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-Livemigration: Unterstützt
-
-Updates mit Speicherbeibehaltung: Unterstützt
+[ACU:](acu.md) 160–190<br>
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
+[Livemigration:](maintenance-and-updates.md) Unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Zwischengespeicherter maximaler Burst und Durchsatz des temporären Speichers: IOPS/MBit/s<sup>1</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|---|

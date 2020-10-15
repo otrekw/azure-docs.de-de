@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
 ms.openlocfilehash: 45f55e6c18d7cc551a6b96504ad2ce2ec3f84d86
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009649"
 ---
 Nachdem Sie eine Instanz von Azure Digital Twins eingerichtet haben, ist es üblich, mit dieser Instanz über eine Clientanwendung zu interagieren. Zum Erstellen einer funktionierenden Clientanwendung müssen Sie sicherstellen, dass die Client-App in der Lage ist, sich für Azure Digital Twins zu authentifizieren. Dies erfolgt durch Einrichten einer [Azure Active Directory-](../articles/active-directory/fundamentals/active-directory-whatis.md)App-Registrierung **(Azure AD)** , die Ihre Client-App dann verwendet.
