@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585697"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993184"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor – Unterschiede in der Protokollabfragesprache
 
@@ -56,5 +56,5 @@ Die folgenden Operatoren unterstützen für Azure Monitor spezifische Features u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Abrufen von Verweisen auf verschiedene [Ressourcen zum Schreiben von Azure Monitor-Protokollabfragen](query-language.md).
+- Abrufen von Verweisen auf verschiedene [Ressourcen zum Schreiben von Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/).
 - Greifen Sie auf die vollständige [Referenzdokumentation für die Abfragesprache Kusto](/azure/kusto/query/) zu.

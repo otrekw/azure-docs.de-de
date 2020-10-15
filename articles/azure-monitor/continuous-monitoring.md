@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318129"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996402"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -43,7 +43,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 
 [Infrastruktur als Code](/azure/devops/learn/what-is-infrastructure-as-code) ist die Verwaltung der Infrastruktur in einem beschreibenden Modell, wobei dieselbe Versionsverwaltung verwendet wird, die DevOps-Teams für Quellcode verwenden. Es erhöht die Zuverlässigkeit und Skalierbarkeit Ihrer Umgebung und ermöglicht es Ihnen, ähnliche Prozesse wie bei der Verwaltung Ihrer Anwendungen zu nutzen.
 
--  Verwenden Sie [Resource Manager-Vorlagen](platform/template-workspace-configuration.md), um die Überwachung und Konfiguration von Warnungen über eine große Anzahl von Ressourcen zu ermöglichen.
+-  Verwenden Sie [Resource Manager-Vorlagen](./samples/resource-manager-workspace.md), um die Überwachung und Konfiguration von Warnungen über eine große Anzahl von Ressourcen zu ermöglichen.
 - Verwenden Sie [Azure Policy](../governance/policy/overview.md), um unterschiedliche Regeln für Ihre Ressourcen zu erzwingen. Auf diese Weise wird sichergestellt, dass diese Ressourcen mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform sind. 
 
 
@@ -87,4 +87,3 @@ Die Sicherstellung, dass Entwicklung und Betrieb Zugriff auf dieselbe Telemetrie
 
 - Erfahren Sie mehr über die verschiedenen Komponenten von [Azure Monitor](overview.md).
 - [Hinzufügen der kontinuierlichen Überwachung](./app/continuous-monitoring.md) zur Releasepipeline
-

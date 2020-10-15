@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653510"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359612"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -543,11 +543,11 @@ Da für unterschiedliche Versionen eines Betriebssystems oder eines DBMS auch un
 Bei der Erstellung eines privaten Images für Linux müssen andere Schritte ausgeführt werden als bei der Erstellung eines privaten Images für Windows.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > Um ein Windows-Image vorzubereiten, das Sie zum Bereitstellen mehrerer virtueller Computer verwenden können, müssen die Windows-Einstellungen (z.B. Windows-SID und Hostname) auf dem lokalen virtuellen Computer abstrahiert bzw. generalisiert werden. Hierfür können Sie [sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) verwenden.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > Um ein Linux-Image vorzubereiten, das Sie zum Bereitstellen mehrerer virtueller Computer verwenden können, müssen einige Linux-Einstellungen auf dem lokalen virtuellen Computer abstrahiert bzw. generalisiert werden. Hierfür können Sie `waagent -deprovision` verwenden. Weitere Informationen finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird][virtual-machines-linux-capture-image] und im [Benutzerleitfaden zum Azure Linux-Agent][virtual-machines-linux-agent-user-guide-command-line-options].
 >
@@ -683,11 +683,11 @@ In diesem Szenario wird der VM-Agent während der Bereitstellung **nicht** autom
 Weitere Informationen zum Azure-VM-Agent finden Sie in den folgenden Ressourcen.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Logo][Logo_Windows] Windows
 >
 > [Übersicht über den Agent für virtuelle Azure-Computer][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-Logo][Logo_Linux] Linux
 >
 > [Benutzerhandbuch für Azure Linux-Agent][virtual-machines-linux-agent-user-guide]
 >
@@ -1309,7 +1309,7 @@ Wenn einige Infrastrukturdaten gemäß der Beschreibung des Tests unter [Bereits
 > [!NOTE]
 > Es gibt zwei Versionen der VM-Erweiterung. In diesem Kapitel wird die Standard-VM-Erweiterung behandelt. Wenn Sie die neue VM-Erweiterung installiert haben, finden Sie weitere Informationen im Kapitel [Problembehandlung für die neue Azure-Erweiterung für SAP][deployment-guide-5.3-new].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows-Logo][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Mit dem Windows-Dienst „AzureEnhancedMonitoring“ werden in Azure Leistungsmetriken gesammelt. Wenn der Dienst nicht richtig installiert wurde oder wenn er auf der VM nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
@@ -1350,13 +1350,13 @@ Der Windows-Dienst „AzureEnhancedMonitoring“ ist vorhanden und aktiviert, ka
 
 Die Konfiguration ist fehlerhaft. Starten Sie die Azure-Erweiterung für SAP auf der VM neu, wie dies unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben ist.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Einige Azure-Leistungsindikatoren fehlen.
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows-Logo][Logo_Windows] Einige Azure-Leistungsindikatoren fehlen.
 
 Mit dem Windows-Dienst „AzureEnhancedMonitoring“ werden in Azure Leistungsmetriken gesammelt. Mit dem Dienst werden Daten aus mehreren Quellen abgerufen. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus der Azure-Diagnose ausgelesen. Die Speicherindikatoren werden aus Ihrer Protokollierung auf Speicherabonnementebene verwendet.
 
 Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` erneut aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux-Logo][Logo_Linux] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst. Wenn der Daemon nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
@@ -1389,7 +1389,7 @@ Beim Ausführen von „azperfli.exe“ wie oben beschrieben können Sie ein Erge
 Diese Meldungen werden dadurch verursacht, dass verwaltete Standarddatenträger nicht die APIs bereitstellen, die von der Azure-Erweiterung für SAP verwendet werden, um die Statistiken der Azure Storage-Standardkonten zu überprüfen. Dies ist kein Grund zur Besorgnis. Der Grund für die Einführung des Sammelns von Daten für Disk Storage-Standardkonten war die häufig auftretende Drosselung von Ein- und Ausgaben. Verwaltete Datenträger verhindern eine solche Drosselung, indem die Anzahl von Datenträgern in einem Storage-Konto eingeschränkt wird. Daher ist es kein Problem, wenn dieser Typ von Daten nicht verfügbar ist.
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux-Logo][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst, der Daten aus mehreren Quellen abruft. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus der Azure-Diagnose ausgelesen. Speicherindikatoren stammen aus den Protokollen in Ihrem Speicherabonnement.
 
@@ -1402,7 +1402,7 @@ Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` wie unter [Konfiguri
 > [!NOTE]
 > Es gibt zwei Versionen der VM-Erweiterung. In diesem Kapitel wird die neue VM-Erweiterung behandelt. Wenn Sie die Standard-VM-Erweiterung installiert haben, finden Sie im Kapitel [Problembehandlung für die Azure-Erweiterung für SAP][deployment-guide-5.3] weitere Informationen.
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows-Logo][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Mit dem Prozess AzureEnhancedMonitoring werden in Azure Leistungsmetriken gesammelt. Wenn der Prozess in Ihrer VM nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
@@ -1416,13 +1416,13 @@ Das Installationsverzeichnis „C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureE
 
 Die Erweiterung ist nicht installiert. Ermitteln Sie, ob es sich um ein Proxyproblem handelt (wie weiter oben beschrieben). Möglicherweise müssen Sie den Computer neu starten oder die VM-Erweiterung erneut installieren.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Einige Azure-Leistungsindikatoren fehlen.
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows-Logo][Logo_Windows] Einige Azure-Leistungsindikatoren fehlen.
 
 Mit dem Windows-Prozess AzureEnhancedMonitoring werden in Azure Leistungsmetriken gesammelt. Mit dem Prozess werden Daten aus mehreren Quellen abgerufen. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus Azure Monitor ausgelesen.
 
 Falls die Problembehandlung mit SAP-Hinweis [1999351] das Problem nicht löst, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer. Fügen Sie die Protokolldatei „C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Windows\\&lt;Version>\\logapp.txt“ dem Incident an.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux-Logo][Logo_Linux] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst. Wenn der Daemon nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
@@ -1436,7 +1436,7 @@ Das Verzeichnis „\\var\\lib\\waagent\\“ enthält kein Unterverzeichnis für 
 
 Die Erweiterung ist nicht installiert. Ermitteln Sie, ob es sich um ein Proxyproblem handelt (wie weiter oben beschrieben). Möglicherweise müssen Sie den Computer neu starten und/oder die VM-Erweiterung erneut installieren.
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux-Logo][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst, der Daten aus mehreren Quellen abruft. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus Azure Monitor ausgelesen.
 

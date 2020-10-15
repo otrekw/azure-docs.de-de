@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030343"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993719"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -80,7 +80,7 @@ Diagnoseeinstellungen definieren, wohin Ressourcenprotokolle und -metriken für 
 - [Event Hubs](../platform/resource-logs.md#send-to-azure-event-hubs) ermöglichen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. 
 - [Azure Storage-Konten](../platform/resource-logs.md#send-to-azure-storage) sind hilfreich für Überwachung, statische Analyse oder Sicherung.
 
-Befolgen Sie die Vorgehensweise unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../platform/diagnostic-settings.md), um Diagnoseeinstellungen über das Azure-Portal zu erstellen und zu verwalten. Unter [Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage](../platform/diagnostic-settings-template.md) erfahren Sie, wie Sie sie in einer Vorlage definieren und die komplette Überwachung für eine Ressource bei ihrer Erstellung aktivieren.
+Befolgen Sie die Vorgehensweise unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../platform/diagnostic-settings.md), um Diagnoseeinstellungen über das Azure-Portal zu erstellen und zu verwalten. Unter [Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage](../samples/resource-manager-diagnostic-settings.md) erfahren Sie, wie Sie sie in einer Vorlage definieren und die komplette Überwachung für eine Ressource bei ihrer Erstellung aktivieren.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Überwachen im Azure-Portal
@@ -160,5 +160,4 @@ Verwenden Sie **Warnungen** im Menü einer Ressource, um Warnungen anzuzeigen un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).  
-
+* Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).

@@ -1,16 +1,16 @@
 ---
 title: Optionen für die Zustandsspeicherung in Azure Service Fabric Mesh
 description: Weitere Informationen zur zuverlässigen Zustandsspeicherung in Service Fabric Mesh-Anwendungen, die in Azure Service Fabric Mesh ausgeführt werden
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b8440a168d6d268cd27e1208ff54616a3b1e193a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984128"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843208"
 ---
 # <a name="state-management-with-service-fabric"></a>Zustandsverwaltung mit Service Fabric
 

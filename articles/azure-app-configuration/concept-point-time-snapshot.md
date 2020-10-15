@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073069"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-Time-Momentaufnahme
 
@@ -23,7 +23,7 @@ In Azure App Configuration wird ein Datensatz von Änderungen an Schlüssel-Wert
 
 Sie können mithilfe des Azure-Portals oder der CLI frühere Schlüsselwerte abrufen. Verwenden Sie in der Azure CLI `az appconfig revision list`, und fügen Sie die entsprechenden Parameter hinzu, um die erforderlichen Werte abzurufen.  Geben Sie die Azure App Configuration-Instanz über den Speichernamen (`--name <app-config-store-name>`) oder eine Verbindungszeichenfolge (`--connection-string <your-connection-string>`) an. Schränken Sie die Ausgabe ein, indem Sie einen bestimmten Zeitpunkt (`--datetime`) und die maximale Anzahl zurückzugebender Elemente angeben (`--top`).
 
-Wenn Sie die Azure CLI nicht lokal installiert haben, können Sie optional [Azure Cloud Shell](/azure/cloud-shell/overview) verwenden.
+Wenn Sie die Azure CLI nicht lokal installiert haben, können Sie optional [Azure Cloud Shell](../cloud-shell/overview.md) verwenden.
 
 Rufen Sie alle aufgezeichneten Änderungen an Ihren Schlüssel-Wert-Paaren ab.
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer ASP.NET Core-Web-App](./quickstart-aspnet-core-app.md)  
+> [Erstellen einer ASP.NET Core-Web-App](./quickstart-aspnet-core-app.md)

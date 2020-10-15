@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236543"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Verwenden der Azure Firewall zum Überprüfen des Datenverkehrs für einen privaten Endpunkt
@@ -55,7 +55,7 @@ Weitere Informationen zu den Gebühren im Zusammenhang mit Verbindungen mit virt
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Szenario 2: Hub-and-Spoke-Architektur – Freigegebenes virtuelles Netzwerk für private Endpunkte und virtuelle Computer
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Private Endpunkte und virtuelle Computer im selben virtuellen Netzwerk" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Dediziertes virtuelles Netzwerk für private Endpunkte" border="true":::
 
 Dieses Szenario wird in folgenden Situationen implementiert:
 
@@ -78,7 +78,7 @@ Weitere Informationen zu den Gebühren im Zusammenhang mit Verbindungen mit virt
 
 ## <a name="scenario-3-single-virtual-network"></a>Szenario 3: Einzelnes virtuelles Netzwerk
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Einzelnes virtuelles Netzwerk" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Dediziertes virtuelles Netzwerk für private Endpunkte" border="true":::
 
 Es gibt einige Einschränkungen bei der Implementierung: Eine Migration zu einer Hub-and-Spoke-Architektur ist nicht möglich. Es gelten dieselben Überlegungen wie in Szenario 2. In diesem Szenario fallen keine Gebühren für das Peering virtueller Netzwerke an.
 
@@ -87,7 +87,7 @@ Es gibt einige Einschränkungen bei der Implementierung: Eine Migration zu einer
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Szenario 4: Lokaler Datenverkehr zu privaten Endpunkten
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Lokaler Datenverkehr zu privaten Endpunkten" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Dediziertes virtuelles Netzwerk für private Endpunkte" border="true":::
 
 Diese Architektur kann implementiert werden, wenn Sie die Konnektivität mit Ihrem lokalen Netzwerk über eine der beiden folgenden Optionen konfiguriert haben: 
 

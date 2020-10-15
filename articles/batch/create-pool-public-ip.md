@@ -2,13 +2,13 @@
 title: Erstellen eines Pools mit angegebenen öffentlichen IP-Adressen
 description: Erfahren Sie, wie Sie einen Batch-Pool erstellen, der Ihre eigenen öffentlichen IP-Adressen verwendet.
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.date: 10/08/2020
+ms.openlocfilehash: e822311718847e173763847d503335f71457308b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146486"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849327"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Erstellen eines Azure Batch-Pools mit angegebenen öffentlichen IP-Adressen
 
@@ -82,10 +82,10 @@ Anforderungstext
        "resizeTimeout":"PT15M",
       "targetDedicatedNodes":5,
       "targetLowPriorityNodes":0,
-      "maxTasksPerNode":3,
+      "taskSlotsPerNode":3,
       "taskSchedulingPolicy": {
         "nodeFillType":"spread"
-      }, 
+      },
       "enableAutoScale":false,
       "enableInterNodeCommunication":true,
       "metadata": [ {

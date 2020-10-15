@@ -1,25 +1,18 @@
 ---
 title: Übersicht über das Oracle-Notfallwiederherstellungsszenario in der Azure-Umgebung | Microsoft-Dokumentation
 description: Ein Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in Ihrer Azure-Umgebung.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 5a162c0683a953399b48aaf627bbff5bc674e9dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274560"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996179"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 
@@ -100,7 +93,7 @@ Hier ein Überblick über den Aufbau von Azure:
 - [Entwerfen und Implementieren einer Oracle-Datenbank in Azure](oracle-design.md)
 - [Konfigurieren von Oracle Data Guard](configure-oracle-dataguard.md)
 - [Konfigurieren von Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Sichern und Wiederherstellen einer Oracle-Datenbank](oracle-backup-recovery.md)
+- [Sichern und Wiederherstellen einer Oracle-Datenbank](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
