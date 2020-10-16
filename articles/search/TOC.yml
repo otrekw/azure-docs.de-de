@@ -116,7 +116,7 @@
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: Schützen von Indexerressourcen
+        - name: Zugreifen auf geschützte Inhalte
           href: search-indexer-securing-resources.md
         - name: Sicherheitsbaseline
           href: security-baseline.md

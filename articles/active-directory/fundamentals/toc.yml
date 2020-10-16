@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: Integrieren all Ihrer Apps in Azure AD
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Authentifizierungs- und Bereitstellungsprotokolle
+          items:
+            - name: Übersicht
+              href: auth-sync-overview.md
+            - name: Headerbasierte Authentifizierung
+              href: auth-header-based.md
+            - name: LDAP-Authentifizierung
+              href: auth-ldap.md
+            - name: "OAuth\_2.0-Authentifizierung"
+              href: auth-oauth2.md
+            - name: Open ID Connect-Authentifizierung
+              href: auth-oidc.md
+            - name: Kennwortbasierte Authentifizierung
+              href: auth-password-based-sso.md
+            - name: RADIUS-Authentifizierung
+              href: auth-radius.md
+            - name: Remotedesktopgateway-Authentifizierung
+              href: auth-remote-desktop-gateway.md
+            - name: SAML-Authentifizierung
+              href: auth-saml.md
+            - name: 'Windows-Authentifizierung: KCD'
+              href: auth-kcd.md
+            - name: Verzeichnissynchronisierung
+              href: sync-directory.md
+            - name: LDAP-Synchronisierung
+              href: sync-ldap.md
+            - name: SCIM-Synchronisierung
+              href: sync-scim.md
     - name: Bereitstellungshandbuch
       items:
         - name: 'Bereitstellung 30, 90 und höher'

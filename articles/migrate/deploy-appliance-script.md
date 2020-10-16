@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance mit einem Skript
 description: Erfahren Sie, wie Sie eine Azure Migrate-Appliance mit einem Skript einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 5be6f161724b8ab555c406ebf6e75072d7902eda
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514406"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91438927"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Einrichten einer Appliance mit einem Skript
 
@@ -46,12 +46,12 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. Überprüfen Sie die neueste Geräteversion und das Skript für die öffentliche Azure-Cloud:
 
     **Algorithmus** | **Download** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116601) | 72fef66b8efd93106e626ea87354af0fb800893f9cb77edb5490490106c6a193
+    VMware (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
 
 
 
@@ -94,13 +94,13 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. Überprüfen Sie die neueste Geräteversion und das Skript für die öffentliche Azure-Cloud:
 
     **Szenario** | **Download** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116657) |  bea013eab690ae3a476422c55becd87c369c14834e52f8cafe6ad0ed7f416b4f
+    Hyper-V (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 

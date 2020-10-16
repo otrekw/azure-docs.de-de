@@ -230,12 +230,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Problem bei der Anmeldung bei einer Microsoft-App
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: 'Problem bei der einmaligen Verbundanmeldung: Nicht-Katalog-App'
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: 'Problem bei der einmaligen Verbundanmeldung: Katalog-App'
+            - name: Problem beim einmaligen Anmelden
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: Problem mit einer benutzerdefinierten App
-              href: application-sign-in-problem-custom-dev.md
         - name: Problembehandlung für lokale Apps
           items:
             - name: Problembehandlung für Anwendungsproxys

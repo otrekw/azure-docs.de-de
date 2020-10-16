@@ -118,6 +118,10 @@
       items:
         - name: Verlängern einer Reservierung
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Problembehandlung
+      items:
+        - name: Keine berechtigten Abonnements
+          href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Verweis
   items:
     - name: 'Reservierungen: REST-API'

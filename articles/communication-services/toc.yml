@@ -34,6 +34,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Verwenden der Clientbibliothek für Telefonie
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: Tutorials
   expanded: false
   items:
@@ -62,6 +64,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Sprach- und Videokonzepte
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Teams-Interoperabilität
+          href: concepts/voice-video-calling/teams-interop.md
     - name: Client- und Serverarchitektur
       href: concepts/client-and-server-architecture.md
     - name: Anrufflows

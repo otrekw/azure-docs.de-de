@@ -21,7 +21,7 @@
           href: quick-create-template.md
 - name: Konzepte
   items:
-    - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
+    - name: Freigeben von Dashboards mit rollenbasierter Zugriffssteuerung von Azure
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
       href: azure-portal-dashboards-create-programmatically.md
