@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: Bereitstellen von VMware Horizon
           href: azure-vmware-solution-horizon.md
+    - name: VMware-Ökosystem
+      items:
+        - name: Sicherungslösungen für virtuelle Computer
+          href: ecosystem-back-up-vms.md
 - name: Ressourcen
   items:
     - name: Problembehandlung

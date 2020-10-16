@@ -42,7 +42,7 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=batch'
         - name: Repository für Batch-Beispiele
           href: 'https://github.com/Azure/azure-batch-samples'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       items:
         - name: Erstellen eines Batch-Kontos im Modus „Batch-Dienst“
           href: ./scripts/batch-cli-sample-create-account.md
@@ -168,6 +168,7 @@
         - name: Vorbereitung und Abschluss von Aufträgen
           href: batch-job-prep-release.md
         - name: Gleichzeitige Knotenaufgaben
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Abhängigkeiten von Aufgaben
           href: batch-task-dependencies.md
@@ -236,7 +237,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

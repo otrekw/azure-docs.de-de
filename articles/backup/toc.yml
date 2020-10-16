@@ -386,7 +386,7 @@
       items:
         - name: Übersicht
           href: security-overview.md
-        - name: Rollenbasierte Access Control
+        - name: Rollenbasierte Zugriffssteuerung in Azure
           href: backup-rbac-rs-vault.md
         - name: Vorläufiges Löschen
           items:
@@ -456,7 +456,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

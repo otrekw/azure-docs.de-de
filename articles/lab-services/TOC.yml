@@ -65,7 +65,7 @@
             - name: Verwalten eines VM-Pools
               href: how-to-manage-vm-pool-within-teams.md
             - name: Löschen von Labs
-              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+              href: how-to-delete-lab-within-teams.md
             - name: Zeitpläne und Einstellungen
               href: how-to-create-schedules-within-teams.md
             - name: Zugreifen auf einen virtuellen Computer (Ansicht des Kursteilnehmers)
