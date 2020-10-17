@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: Benachrichtigungen
       href: concepts/notifications.md
+    - name: Protokollierung und Diagnose
+      href: concepts/logging-and-diagnostics.md
+    - name: Metriken
+      href: concepts/metrics.md
 - name: Proben
   items:
     - name: Hero-Beispiel für Gruppenanrufe

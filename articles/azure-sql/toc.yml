@@ -625,7 +625,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -864,6 +864,24 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: Tipps für die Verwendung von R-Paketen
                           href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Verwaltung
+                  items:
+                    - name: Überwachen
+                      items:
+                        - name: Überwachen mithilfe von SSMS-Berichten
+                          href: 'https://docs.microsoft.com/sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-custom-reports-management-studio?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: Überwachung mit DMVs
+                          href: 'https://docs.microsoft.com/sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-dynamic-management-views?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: Erweiterte Ereignisse
+                          items:
+                            - name: Überwachung mithilfe erweiterter Ereignisse
+                              href: 'https://docs.microsoft.com/sql/machine-learning/administration/extended-events?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                            - name: Überwachung von PREDICT SQL
+                              href: 'https://docs.microsoft.com/sql/machine-learning/administration/extended-events-predict-tsql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Sicherheit
+                  items:
+                    - name: Erteilen von Berechtigungen für Benutzer
+                      href: 'https://docs.microsoft.com/sql/machine-learning/security/user-permission?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
         - name: Features
           items:
             - name: Verbindungsserver
@@ -920,7 +938,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1084,7 +1102,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
               href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
@@ -1149,7 +1167,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

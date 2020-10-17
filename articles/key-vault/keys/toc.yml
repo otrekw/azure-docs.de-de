@@ -15,6 +15,8 @@
       href: quick-create-portal.md
     - name: Python
       href: quick-create-python.md
+    - name: ARM-Vorlage
+      href: quick-create-template.md
 - name: Tutorials
   items:
     - name: Importieren von durch HSM geschützten Schlüsseln (Übersicht)
