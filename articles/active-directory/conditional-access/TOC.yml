@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
       href: howto-conditional-access-session-lifetime.md
-    - name: Bewährte Methoden
-      href: best-practices.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen bei der Anmeldung
