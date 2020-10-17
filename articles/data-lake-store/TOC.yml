@@ -22,6 +22,13 @@
       href: data-lake-store-get-started-powershell.md
     - name: Verwenden der Azure-Befehlszeilenschnittstelle
       href: data-lake-store-get-started-cli-2.0.md
+- name: Konzepte
+  items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Anleitung
   items:
     - name: Laden und Verschieben von Daten

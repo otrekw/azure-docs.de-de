@@ -39,7 +39,7 @@
       href: use-prediction-api.md
     - name: Verwenden des intelligenten Beschriftungserstellers
       href: suggested-tags.md
-    - name: Rollenbasierte Zugriffssteuerung
+    - name: Rollenbasierte Zugriffssteuerung in Azure
       href: role-based-access-control.md
     - name: Exportieren von Modellen
       items:

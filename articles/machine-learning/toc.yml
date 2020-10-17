@@ -152,13 +152,31 @@
       href: concept-onnx.md
     - name: ML-Pipelines
       href: concept-ml-pipelines.md
-    - name: Unternehmensbereitschaft und -sicherheit
+    - name: Sicherheit
       items:
         - name: Übersicht über Unternehmenssicherheit
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
+    - name: Verantwortungsvolles maschinelles Lernen
+      items:
+        - name: Übersicht über verantwortungsvolles maschinelles Lernen
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Interpretierbarkeit von Modellen
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Fairness bei Machine Learning
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Differential Privacy
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: Anleitungen
+  items:
+    - name: Sicherheit
+      items:
         - name: Identitäts- und Zugriffsverwaltung
           items:
             - name: Einrichten der Authentifizierung
@@ -212,22 +230,6 @@
         - name: Überwachen und Verwalten der Compliance
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: Verantwortungsvolles maschinelles Lernen
-      items:
-        - name: Übersicht über verantwortungsvolles maschinelles Lernen
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: Interpretierbarkeit von Modellen
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: Fairness bei Machine Learning
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: Differential Privacy
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: Anleitungen
-  items:
     - name: Erstellen und Verwalten von Arbeitsbereichen
       items:
         - name: Verwenden des Azure-Portals
