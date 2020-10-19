@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747242"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537032"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Einrichten von SMS-Nachrichten als Überprüfungsmethode
 
@@ -52,7 +52,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie SMS-Nachrichten als ein
 
 4. Geben Sie auf der Seite **Telefon** die Telefonnummer für Ihr Mobilgerät ein, wählen Sie **Code per SMS an mich senden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Telefonnummer hinzufügen und SMS auswählen](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![Der Screenshot zeigt die Seite „Telefon“ mit ausgewähltem „Code per SMS an mich senden“.](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. Geben Sie den Code ein, der Ihnen per SMS an Ihr Mobilgerät gesendet wurde, und klicken Sie dann auf **Weiter**.
 

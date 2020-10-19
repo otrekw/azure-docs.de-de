@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974372"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541287"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -129,7 +129,7 @@ In diesem Schritt erstellen Sie eine uneingeschränkte oder eingeschränkte Sich
 1. Geben Sie „Sicherheitsgruppe erstellen“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe erstellen**.
 
    > [!div class="mx-imgBorder"]
-   > ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_03.png "Sicherheitsgruppe erstellen")
+   > ![Der Screenshot zeigt „Sicherheitsgruppe erstellen“, eingegeben im Suchfeld, und die in den Suchergebnissen angezeigte Aufgabe „Sicherheitsgruppe erstellen“.](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. Führen Sie die Aufgabe **Sicherheitsgruppe erstellen** aus. 
 
    * In Workday gibt es zwei Typen von Sicherheitsgruppen:
@@ -154,7 +154,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
 
 1. Geben Sie **Domain Security Configuration** (Domänensicherheitskonfiguration) in das Suchfeld ein, und klicken Sie dann auf den Link **Domain Security Configuration Report** (Bericht zur Domänensicherheitskonfiguration).  
    >[!div class="mx-imgBorder"]
-   >![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_06.png "Domänensicherheitsrichtlinien")  
+   >![Der Screenshot zeigt „Domain Security Configuration“ im Suchfeld, mit „Domain Security Configuration Report“, das in den Suchergebnissen angezeigt wird.](./media/workday-inbound-tutorial/wd_isu_06.png "Domänensicherheitsrichtlinien")  
 2. Suchen Sie im Textfeld **Domäne** nach den folgenden Domänen, und fügen Sie sie einzeln dem Filter hinzu.  
    * *External Account Provisioning* (Externe Kontobereitstellung)
    * *Worker Data: Worker*
@@ -166,10 +166,10 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    * *Workday-Konten*
    
      >[!div class="mx-imgBorder"]
-     >![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_07.png "Domänensicherheitsrichtlinien")  
+     >![Der Screenshot zeigt den Bericht „Domain Security Configuration“ mit „External Account“ (Externes Konto) im Textfeld „Domain“.](./media/workday-inbound-tutorial/wd_isu_07.png "Domänensicherheitsrichtlinien")  
 
      >[!div class="mx-imgBorder"]
-     >![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
+     >![Der Screenshot zeigt den Bericht „Domain Security Configuration“ mit einer Liste von ausgewählten Domänen.](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
 
      Klicken Sie auf **OK**.
 
@@ -179,7 +179,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
 
 4. Scrollen Sie auf der Seite **Edit Domain Security Policy Permissions** (Berechtigungen für Domänensicherheitsrichtlinie bearbeiten) nach unten zum Abschnitt **Integration Permissions** (Integrationsberechtigungen). Klicken Sie auf das Zeichen „+“, um die Integrationssystemgruppe der Liste der Sicherheitsgruppen mit den Integrationsberechtigungen **Get** und **Put** hinzuzufügen.
    >[!div class="mx-imgBorder"]
-   >![Berechtigung bearbeiten](./media/workday-inbound-tutorial/wd_isu_10.png "Berechtigung bearbeiten")  
+   >![Der Screenshot zeigt den hervorgehobenen Abschnitt „Integration Permissions“.](./media/workday-inbound-tutorial/wd_isu_10.png "Berechtigung bearbeiten")  
 
 5. Klicken Sie auf das Zeichen „+“, um die Integrationssystemgruppe der Liste der Sicherheitsgruppen mit den Integrationsberechtigungen **Get** und **Put** hinzuzufügen.
 
@@ -210,12 +210,12 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherh
 1. Geben Sie **Business Process Policy** (Geschäftsprozessrichtlinie) in das Suchfeld ein, und klicken Sie dann auf den Link für die Aufgabe **Edit Business Process Security Policy** (Sicherheitsrichtlinie für Geschäftsprozesse bearbeiten).  
 
    >[!div class="mx-imgBorder"]
-   >![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_12.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+   >![Der Screenshot zeigt „Business Process Policy“ im Suchfeld und die ausgewählte Aufgabe „Edit Business Process Security Policy“.](./media/workday-inbound-tutorial/wd_isu_12.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
 
 2. Suchen Sie im Textfeld **Geschäftsprozesstyp** nach *Kontaktinformationen*, wählen Sie den Geschäftsprozess **Mitarbeiterkontaktinformationen ändern** aus, und klicken Sie auf **OK**.
 
    >[!div class="mx-imgBorder"]
-   >![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_13.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+   >![Der Screenshot zeigt die Seite „Edit Business Process Security Policy“ und „Mitarbeiterkontaktinformationen ändern“, ausgewählt im Menü „Geschäftsprozesstyp“.](./media/workday-inbound-tutorial/wd_isu_13.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
 
 3. Scrollen Sie auf der Seite **Sicherheitsrichtlinien für Geschäftsprozesse bearbeiten** zum Abschnitt **Kontaktinformationen von Mitarbeitern ändern (Webdienst)** .
     
@@ -415,7 +415,7 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday un
    * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Überprüfen Sie bei einem Fehler, ob die Workday-Anmeldeinformationen und die AD-Anmeldeinformationen, die beim Einrichten des Agents angegeben wurden, gültig sind.
 
      >[!div class="mx-imgBorder"]
-     >![Azure portal](./media/workday-inbound-tutorial/wd_1.png)
+     >![Der Screenshot zeigt die Seite „Bereitstellung“ mit eingegebenen Anmeldeinformationen.](./media/workday-inbound-tutorial/wd_1.png)
 
    * Sobald die Anmeldeinformationen erfolgreich gespeichert wurden, wird im Abschnitt **Zuordnungen** die Standardzuordnung **Workday-Worker mit lokalem Active Directory synchronisieren** angezeigt.
 
@@ -480,7 +480,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
    >[!div class="mx-imgBorder"]
-   >![Azure portal](./media/workday-inbound-tutorial/wd_2.png)
+   >![Der Screenshot zeigt die Seite „Attributzuordnung“ mit ausgewählter Aktion „Speichern“.](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Nachstehend finden Sie einige Beispiele für Attributzuordnungen zwischen Workday und Active Directory sowie einige häufig verwendete Ausdrücke.
 
@@ -942,11 +942,11 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
 
   Suchen Sie nach einem HTTP POST-Datensatz, der dem Zeitstempel des Exportvorgangs mit *Event ID = 2* entspricht. Dieser Datensatz enthält die Attributwerte, die der Bereitstellungsdienst an den Bereitstellungs-Agent gesendet hat.
 
-  [![SCIM hinzufügen](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="Der Screenshot zeigt den Datensatz „HTTP POST“ im Protokoll „Bereitstellungs-Agent“." lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   Unmittelbar nach dem obigen Ereignis sollte es ein weiteres Ereignis geben, das die Antwort des AD-Kontoerstellungsvorgangs erfasst. Dieses Ereignis gibt die neue „objectGuid“ zurück, die in AD erstellt wurde, und es wird als TargetAnchor-Attribut im Bereitstellungsdienst festgelegt.
 
-  [![SCIM hinzufügen](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="Der Screenshot zeigt den Datensatz „HTTP POST“ im Protokoll „Bereitstellungs-Agent“." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Grundlegendes zu Protokollen für Aktualisierungsvorgänge für Manager
 
@@ -1040,14 +1040,14 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 5. Wählen Sie **External** und dann die WSDL-Datei „Human_Resources“ aus, die Sie in Schritt 2 heruntergeladen haben.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![Der Screenshot zeigt die in Workday Studio geöffnete Datei „Human_Resources“.](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. Legen Sie das Feld **Location** auf `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` fest, ersetzen Sie jedoch „IMPL-CC“ durch den tatsächlichen Typ Ihrer Instanz und „TENANT“ durch den echten Namen Ihres Mandanten.
 
 7. Legen Sie **Operation** auf **Get_Workers** fest.
 
 8.    Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
-   ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+   ![Der Screenshot zeigt die Registerkarte „Sicherheit“ mit Eingaben in „Benutzername“ und „Kennwort“ sowie ausgewählter Option „WS-Security Username Token“.](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Klicken Sie auf **OK**.
 
@@ -1086,7 +1086,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 13. Wählen Sie in der Befehlsleiste von Workday Studio **File > Open File...** (Datei > Datei öffnen...) aus, und öffnen Sie die gespeicherte XML-Datei. Durch diese Aktion wird die Datei im XML-Editor von Workday Studio geöffnet.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    ![Screenshot einer im XML-Editor von Workday Studio geöffneten XML-Datei.](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. Navigieren Sie in der Dateistruktur durch **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker**, um die Daten zu Ihrem Benutzer zu finden.
 
@@ -1112,7 +1112,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 5. Wählen Sie **Attributliste für Workday bearbeiten** aus.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![Der Screenshot zeigt die Seite „Workday to Azure AD-Benutzerbereitstellung – Bereitstellung“ mit hervorgehobener Aktion „Attributliste für Workday bearbeiten“.](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. Scrollen Sie zu den Eingabefeldern am Ende der Attributliste.
 

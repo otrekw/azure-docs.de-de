@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b433ab29ab5a2520f503e002e630068126ddb328
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327598"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838686"
 ---
 # <a name="get-started-with-device-twins-java"></a>Erste Schritte mit Gerätezwillingen (Java)
 
@@ -380,7 +380,7 @@ Sie können nun die Konsolen-Apps ausführen.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub-Dienst-App zum Aktualisieren von Tagwerten und Ausführen von Geräteabfragen](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Der Screenshot zeigt die Ausgabe aus dem Befehl zur Ausführung der Dienst-App „add-tags-query“.](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     Sie sehen die Tags **plant** und **region**, die dem Gerätezwilling hinzugefügt wurden. Die erste Abfrage gibt das Gerät zurück, die zweite jedoch nicht.
 
@@ -390,7 +390,7 @@ Sie können nun die Konsolen-Apps ausführen.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Der Geräteclient fügt die gemeldete **connectivityType**-Eigenschaft hinzu](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Der Geräteclient fügt die gemeldete Eigenschaft „connectivityType“ hinzu.](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. Führen Sie an der Eingabeaufforderung im Ordner **add-tags-query** den folgenden Befehl aus, um die Dienst-App **add-tags-query** ein zweites Mal auszuführen:
 

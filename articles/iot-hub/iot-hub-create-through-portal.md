@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326731"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91404957"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Erstellen eines IoT Hubs über das Portal
 
@@ -78,7 +78,7 @@ Klicken Sie unter **Messaging** auf **Nachrichtenrouting**, um den Bereich „Na
 
 ![Screenshot: Hinzufügen einer neuen Route](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Benennen Sie Ihren Hub. Der Name muss in der Liste der Routen für diesen Hub eindeutig sein. 
+Benennen Sie Ihre Route. Der Routenname muss in der Liste der Routen für diesen Hub eindeutig sein. 
 
 Als **Endpunkt** können Sie einen Eintrag aus der Dropdownliste auswählen oder einen neuen hinzufügen. In diesem Beispiel sind ein Speicherkonto und ein Container bereits verfügbar. Um sie als Endpunkt hinzuzufügen, klicken Sie neben der Dropdownliste „Endpunkt“ auf +**Hinzufügen**, und wählen Sie **Blob Storage** aus. Der folgende Bildschirm zeigt, wo das Speicherkonto und der Container angegeben werden.
 

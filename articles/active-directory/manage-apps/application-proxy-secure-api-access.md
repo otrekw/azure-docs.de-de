@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206443"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371217"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Sicherer Zugriff auf lokale APIs mit dem Azure AD-Anwendungsproxy
 
@@ -185,7 +185,7 @@ Um die native App so zu konfigurieren, dass sie eine Verbindung mit Azure Active
 
 Nachdem Sie die Parameter konfiguriert haben, erstellen Sie die native App, und führen Sie sie aus. Wenn Sie die Schaltfläche **Anmelden** auswählen, können Sie sich anmelden. Die App zeigt dann einen Erfolgsbildschirm an, um zu bestätigen, dass Sie erfolgreich eine Verbindung mit SecretAPI hergestellt haben.
 
-![Erfolg](./media/application-proxy-secure-api-access/success.png)
+![Der Screenshot zeigt die Meldung „SecretAPI erfolgreich“ und die Schaltfläche „OK“.](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

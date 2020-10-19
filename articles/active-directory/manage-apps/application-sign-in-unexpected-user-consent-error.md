@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321945"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874542"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
@@ -79,10 +79,12 @@ Diese Art von Fehler tritt auf, wenn die Anwendung, die ein Benutzer versucht zu
     -   Hinzufügen der Anwendung aus dem Azure AD-Anwendungskatalog
 
 ## <a name="risky-app-error-and-warning"></a>Fehler und Warnungen bei riskanter App
+* **AADSTS900941:** Administratoreinwilligung ist erforderlich. Die App wird als riskant eingestuft. (AdminConsentRequiredDueToRiskyApp)
 * Diese App ist möglicherweise riskant. Wenn Sie dieser App vertrauen, bitten Sie Ihren Administrator, Ihnen Zugriff zu erteilen.
+* **AADSTS900981:** Eine Anforderung zur Administratoreinwilligung wurde für eine riskante App empfangen. (AdminConsentRequestRiskyAppWarning)
 * Diese App ist möglicherweise riskant. Fahren Sie nur fort, wenn Sie dieser App vertrauen.
 
-Diese beiden Meldungen werden angezeigt, wenn Microsoft festgestellt hat, dass die Einwilligungsanforderung riskant sein kann. Neben einer Reihe anderer Faktoren kann dies vorkommen, wenn der App-Registrierung kein [verifizierter Herausgeber](../develop/publisher-verification-overview.md) hinzugefügt wurde. Die erste Meldung wird dem Endbenutzer angezeigt, wenn der [Workflow für die Administratorzustimmung](configure-admin-consent-workflow.md) deaktiviert ist. Die zweite Meldung wird dem Endbenutzer angezeigt, wenn der Workflow für die Administratorzustimmung aktiviert ist und eine Weiterleitung an die Administratoren erfolgt. 
+Diese beiden Meldungen werden angezeigt, wenn Microsoft festgestellt hat, dass die Einwilligungsanforderung riskant sein kann. Neben einer Reihe anderer Faktoren kann dies vorkommen, wenn der App-Registrierung kein [verifizierter Herausgeber](../develop/publisher-verification-overview.md) hinzugefügt wurde. Wenn der [Workflow für Administratoreinwilligung](configure-admin-consent-workflow.md) deaktiviert ist, wird Endbenutzern der erste Fehlercode mit zugehöriger Meldung angezeigt. Der zweite Fehlercode mit zugehöriger Meldung wird ihnen angezeigt, wenn der Workflow für Administratoreinwilligung aktiviert ist und eine Weiterleitung an die Administratoren erfolgt. 
 
 Der Endbenutzer kann für Apps, die als riskant erkannt wurden, keine Einwilligung erteilen. Administratoren können dies zwar tun, sollten die App aber sehr sorgfältig evaluieren und Vorsicht walten lassen. Wenn die App bei weiterer Überprüfung immer noch verdächtig scheint, kann sie über den Zustimmungsbildschirm an Microsoft gemeldet werden. 
 

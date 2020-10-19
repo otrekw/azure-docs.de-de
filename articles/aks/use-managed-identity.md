@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 8c5c4a6e5d8b2997d80c7263ba17a705d3846ed8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987391"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397044"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
@@ -30,6 +30,8 @@ Die folgenden Ressourcen müssen installiert sein:
 * Vorhandene AKS-Cluster können nicht zu verwalteten Identitäten migriert werden.
 * Während eines **Upgradevorgangs** des Clusters ist die verwaltete Identität vorübergehend nicht verfügbar.
 * Das Verschieben/Migrieren von Clustern mit aktivierter verwalteter Identität wird für Mandanten nicht unterstützt.
+* Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+  Installieren zur Konfiguration einer Ausnahme die [YAML-Datei „mic-exception“](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="summary-of-managed-identities"></a>Zusammenfassung der verwalteten Identitäten
 
@@ -38,7 +40,7 @@ AKS verwendet mehrere verwaltete Identitäten für integrierte Dienste und Add-O
 | Identity                       | Name    | Anwendungsfall | Standardberechtigungen | Verwendung eigener Identitäten
 |----------------------------|-----------|----------|
 | Steuerungsebene | Nicht sichtbar | Wird von AKS für verwaltete Netzwerkressourcen verwendet (einschließlich Eingangslastenausgleichsmodule und von AKS verwaltete öffentliche IP-Adressen) | Rolle „Mitwirkender“ für Knotenressourcengruppe | Vorschau
-| Kubelet | Name des AKS-Clusters: agentpool | Authentifizierung bei Azure Container Registry (ACR) | Rolle „Leser“ für Knotenressourcengruppe | Derzeit nicht unterstützt
+| Kubelet | Name des AKS-Clusters: agentpool | Authentifizierung bei Azure Container Registry (ACR) | N/V (für Kubernetes v1.15+) | Derzeit nicht unterstützt
 | Add-On | AzureNPM | Keine Identität erforderlich | Nicht verfügbar | Nein
 | Add-On | Azure CNI-Netzwerküberwachung | Keine Identität erforderlich | Nicht verfügbar | Nein
 | Add-On | azurepolicy (Gatekeeper) | Keine Identität erforderlich | Nicht verfügbar | Nein
@@ -49,7 +51,7 @@ AKS verwendet mehrere verwaltete Identitäten für integrierte Dienste und Add-O
 | Add-On | Anwendungsgateway für eingehenden Datenverkehr | Verwaltung erforderlicher Netzwerkressourcen| Rolle „Mitwirkender“ für Knotenressourcengruppe | Nein
 | Add-On | omsagent | Senden von AKS-Metriken an Azure Monitor | Rolle „Herausgeber von Überwachungsmetriken“ | Nein
 | Add-On | Virtual-Node (ACI-Connector) | Verwaltung erforderlicher Netzwerkressourcen für Azure Container Instances (ACI) | Rolle „Mitwirkender“ für Knotenressourcengruppe | Nein
-
+| Open-Source-Software-Projekt (OSS) | aad-pod-identity | Ermöglicht Anwendungen den sicheren Zugriff auf Cloudressourcen mit Azure Active Directory (AAD). | Nicht verfügbar | Schritte zum Gewähren von Berechtigungen unter https://github.com/Azure/aad-pod-identity#role-assignment.
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Erstellen eines AKS-Clusters mit verwalteten Identitäten
 
@@ -132,13 +134,13 @@ az extension list
 az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -208,5 +210,5 @@ Eine erfolgreiche Clustererstellung mit Ihren eigenen verwalteten Identitäten u
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create&preserve-view=true
+[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list&preserve-view=true

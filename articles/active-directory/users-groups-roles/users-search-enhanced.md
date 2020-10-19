@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493279"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708735"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Erweiterungen bei der Benutzerverwaltung (Vorschau) – Azure Active Directory
 
-In diesem Artikel wird die Verwendung der Vorschauversion der erweiterten Benutzerverwaltung im Azure AD-Portal (Azure Active Directory) beschrieben. Die Seiten **Alle Benutzer** und **Gelöschte Benutzer** wurden aktualisiert und enthalten nun zusätzliche Informationen sowie eine vereinfachte Benutzersuche. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+In diesem Artikel wird beschrieben, wie Sie die Vorschau von Erweiterungen bei der Benutzerverwaltung im Azure AD-Portal (Azure Active Directory) verwenden können. Die Seiten **Alle Benutzer** und **Gelöschte Benutzer** wurden aktualisiert und enthalten nun zusätzliche Informationen sowie eine vereinfachte Benutzersuche. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Zu den Änderungen in dieser Vorschau gehören:
 
 - Mehr sichtbare Benutzereigenschaften wie Objekt-ID, Status der Verzeichnissynchronisierung, Erstellungstyp und Identitätsaussteller
 - Suche erlaubt Kombination aus Namen, E-Mail-Adressen und Objekt-IDs
-- Verbesserte Filterung nach Benutzertyp (Mitglied und Gast), Status der Verzeichnissynchronisierung und Erstellungstyp
+- Verbessertes Filtern nach Benutzertyp („Mitglied“, „Gast“, „kein“), Status der Verzeichnissynchronisierung, Erstellungstyp, Name des Unternehmens und Domänenname
+- Neue Sortierfunktionen für Eigenschaften wie Name und Benutzerprinzipalname
+- Eine neue Gesamtanzahl von Benutzern, die bei Suchvorgängen oder Filtern aktualisiert wird
 
 > [!NOTE]
 > Diese Vorschauversion ist derzeit für Azure AD B2C-Mandanten nicht verfügbar.
@@ -66,7 +68,7 @@ Die folgenden Benutzereigenschaften werden auf der Seite **Alle Benutzer** angez
 - Einladungsstatus: Der Status der Einladung für einen Gastbenutzer.
 - E-Mail-Adresse: Die E-Mail-Adresse des Benutzers.
 
-   ![Neue Benutzereigenschaften auf den Seiten „Alle Benutzer“ und „Gelöschte Benutzer“](./media/users-search-enhanced/user-properties.png)
+![Neue Benutzereigenschaften auf den Seiten „Alle Benutzer“ und „Gelöschte Benutzer“](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>Seite „Gelöschte Benutzer“
 
@@ -96,22 +98,36 @@ Die erweiterten Filterfunktionen bieten zusätzliche Filteroptionen für die Sei
 
 Nach den folgenden Eigenschaften kann auf der Seite **Alle Benutzer** gefiltert werden:
 
-- Benutzertyp: Mitglied oder Gast
-- Status der Verzeichnissynchronisierung: Ja
-- Erstellungstyp: Einladung, verifizierte E-Mail-Adresse, lokales Konto
+- Benutzertyp: „Mitglied“, „Gast“, „kein“
+- Status der Verzeichnissynchronisierung: „Ja“, „Nein“
+- Erstellungstyp: „Einladung“, „Verifizierte E-Mail-Adresse“, „Lokales Konto“
 - Einladungsstatus: Ausstehend, akzeptiert
+- Domänenname: Geben Sie einen Domänennamen ein.
+- Name des Unternehmens: Geben Sie einen Unternehmensnamen ein.
 - Verwaltungseinheit: Wählen Sie diese Option aus, wenn Sie den Bereich der angezeigten Benutzer auf eine einzelne Verwaltungseinheit einschränken möchten. Weitere Informationen finden Sie unter [Verwalten von Verwaltungseinheiten (Vorschau)](directory-administrative-units.md).
 
-## <a name="filtering-deleted-users-list"></a>Filtern der Liste „Gelöschte Benutzer“
+### <a name="filtering-deleted-users-list"></a>Filtern der Liste „Gelöschte Benutzer“
 
 Auf der Seite **Gelöschte Benutzer** werden Filter bereitgestellt, die auf der Seite **Alle Benutzer** nicht verfügbar sind. Nach den folgenden Eigenschaften kann auf der Seite **Gelöschte Benutzer** gefiltert werden:
 
-- Benutzertyp: Mitglied oder Gast
-- Status der Verzeichnissynchronisierung: Ja
-- Erstellungstyp: Einladung, verifizierte E-Mail-Adresse, lokales Konto
-- Einladungsstatus: Ausstehend, akzeptiert
+- Benutzertyp: „Mitglied“, „Gast“, „kein“
+- Status der Verzeichnissynchronisierung: „Ja“, „Nein“
+- Erstellungstyp: „Einladung“, „Verifizierte E-Mail-Adresse“, „Lokales Konto“
+- Einladungsstatus: „Akzeptanz steht aus“, „Akzeptiert“
 - Datum der Löschung: Letzte 7, 14 oder 30 Tage
+- Domänenname: Geben Sie einen Domänennamen ein.
+- Name des Unternehmens: Geben Sie einen Unternehmensnamen ein.
 - Datum der endgültigen Löschung: Letzte 7, 14 oder 30 Tage
+
+## <a name="user-list-sorting"></a>Sortierung der Benutzerliste
+
+Sie können jetzt auf den Seiten **Alle Benutzer** und **Gelöschte Benutzer** nach Name und Benutzerprinzipalname sortieren. Außerdem können Sie in der Liste **Gelöschte Benutzer** nach dem Datum der Löschung sortieren.
+
+## <a name="user-list-counts"></a>Anzahl der Benutzerlisten
+
+Sie können die Gesamtzahl der Benutzer auf den Seiten **Alle Benutzer** und **Gelöschte Benutzer** anzeigen. Während Sie die Listen durchsuchen oder filtern, wird die Anzahl aktualisiert, sodass sie die Gesamtzahl der gefundenen Benutzer widerspiegelt.
+
+![Abbildung der Anzahl der Benutzerlisten auf der Seite „Alle Benutzer“](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen
 
@@ -121,8 +137,6 @@ Sind die Funktionen für Massenvorgänge für Benutzer und Gäste noch verfügba
 Was ist mit der Spalte „Quelle“ passiert? | Die Spalte **Quelle** wurde durch andere Spalten mit ähnlichen Informationen ersetzt. Sie können nun unabhängig voneinander nach diesen Werte filtern. Diese sind z. B. **Erstellungstyp**, **Verzeichnissynchronisierung** und **Identitätsaussteller**.
 Was ist mit der Spalte „Benutzername“ passiert? | Die Spalte **Benutzername** wurde in **Benutzerprinzipalname** umbenannt. Dieser Name beschreibt den Inhalt der Spalte besser. Zudem wird nun für B2B-Gäste der vollständige Benutzerprinzipalname angezeigt. Dies entspricht auch der Anzeige in MS Graph.  
 Warum kann ich nur eine Suche im Modus „beginnt mit“ ausführen und nicht im Modus „enthält“? | Aufgrund einiger Einschränkungen ist es derzeit nicht möglich, eine Suche im Modus „enthält“ auszuführen. Wir haben Ihr Feedback erhalten. Achten Sie auf weitere Updates.
-Warum kann ich Spalten nicht sortieren? | Aufgrund einiger Einschränkungen ist es derzeit nicht möglich, Spalten zu sortieren. Wir haben Ihr Feedback erhalten. Achten Sie auf weitere Updates.
-Warum kann ich die Spalte **Verzeichnissynchronisierung** nur mit der Option „Ja“ filtern? | Aufgrund einiger Einschränkungen ist es derzeit nicht möglich, diese Eigenschaft mit dem Wert „Nein“ zu filtern. Wir haben Ihr Feedback erhalten. Achten Sie auf weitere Updates.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

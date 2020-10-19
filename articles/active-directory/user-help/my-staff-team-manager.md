@@ -13,12 +13,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d692302df1f5c03a7dce60858b31e0ca66de4c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744532"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537089"
 ---
 # <a name="delegate-user-management-with-my-staff-preview"></a>Delegieren der Benutzerverwaltung mit „Meine Mitarbeiter“ (Vorschau)
 
@@ -104,7 +104,7 @@ Wenn die Anmeldung mit einer Telefonnummer als Benutzername (SMS-Anmeldung) in I
 
 1. Wählen Sie **OK** aus, wenn der Vorgang abgeschlossen ist.
 
-    ![Entfernen der Telefonnummer eines Mitarbeiters in „Meine Mitarbeiter“](media/my-staff-team-manager/enableforms2.png)
+    ![Der Screenshot zeigt das Fenster „Telefonnummer für Anmeldung aktivieren?“ mit ausgewählter Schaltfläche „OK“.](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>Entfernen einer Telefonnummer
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735989"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530254"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Einrichten eines mobilen Geräts als Methode für die zweistufige Überprüfung
 
@@ -30,7 +30,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
 
 2. Wählen Sie im Bereich **Methode** die Option **Code per SMS an mich senden** und anschließend **Weiter** aus.
 
-    ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Authentifizierungstelefon und SMS](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![Der Screenshot zeigt die Seite „Zusätzliche Sicherheitsüberprüfung“ mit ausgewähltem „Telefon für Authentifizierung“ und „Code per SMS an mich senden“.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. Geben Sie den Prüfcode aus der SMS von Microsoft im Bereich **Schritt 2: Wir haben eine SMS an folgende Nummer geschickt** ein, und wählen Sie dann **Bestätigen** aus.
 

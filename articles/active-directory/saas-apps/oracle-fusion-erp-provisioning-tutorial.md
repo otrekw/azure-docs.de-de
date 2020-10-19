@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850037"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Oracle Fusion ERP für die automatische Benutzerbereitstellung
 
@@ -56,11 +56,11 @@ Bevor Sie Oracle Fusion ERP für die automatische Benutzerbereitstellung mit Azu
 
 2. Klicken Sie in der oberen linken Ecke auf den Navigator. Wählen Sie unter **Tools** die Option **Sicherheitskonsole** aus.
 
-    ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Screenshot der Seite „Navigator“ in der Oracle Fusion ERP-Verwaltungskonsole. „Tools“ und „Sicherheitskonsole“ sind hervorgehoben." border="false":::
 
 3. Navigieren Sie zu **Benutzer**.
     
-    ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Screenshot der Seite „Navigator“ in der Oracle Fusion ERP-Verwaltungskonsole. „Tools“ und „Sicherheitskonsole“ sind hervorgehoben." border="false":::
 
 4. Speichern Sie den Benutzernamen und das Kennwort für das Administratorbenutzerkonto, das Sie für die Anmeldung bei der Oracle Fusion ERP-Verwaltungskonsole verwenden. Diese Werte müssen im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Fusion ERP-Anwendung in die Felder **Administratorbenutzername** und **Administratorkennwort** eingegeben werden.
 
@@ -116,7 +116,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` ein. Geben Sie den Administratorbenutzernamen und das Kennwort, den/das Sie zuvor abgerufen haben, in die Felder **Administratorbenutzername** und **Administratorkennwort** ein. Klicken Sie auf **Verbindung testen**, um die Verbindung zwischen Azure AD und Oracle Fusion ERP zu testen. 
 
-    ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Screenshot der Seite „Navigator“ in der Oracle Fusion ERP-Verwaltungskonsole. „Tools“ und „Sicherheitskonsole“ sind hervorgehoben." border="false":::
 
 6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -126,11 +126,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Oracle Fusion ERP synchronisieren** aus.
 
-    ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Screenshot der Seite „Navigator“ in der Oracle Fusion ERP-Verwaltungskonsole. „Tools“ und „Sicherheitskonsole“ sind hervorgehoben." border="false":::
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Screenshot der Seite „Navigator“ in der Oracle Fusion ERP-Verwaltungskonsole. „Tools“ und „Sicherheitskonsole“ sind hervorgehoben." border="false":::
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Oracle Fusion ERP synchronisieren** aus.
 

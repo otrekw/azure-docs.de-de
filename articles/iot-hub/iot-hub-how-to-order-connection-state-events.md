@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488127"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356195"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -227,11 +227,11 @@ In Ihrem Logik-App-Workflow helfen Bedingungen bei der Ausführung bestimmter Ak
 
 5. Wählen Sie **Neuen Parameter hinzufügen** aus. Aktivieren Sie in der daraufhin angezeigten Dropdownliste die Kontrollkästchen neben **Partitionsschlüssel** und **Parameter für die gespeicherte Prozedur**, und klicken Sie dann an eine andere Stelle auf dem Bildschirm. Es wird ein Feld für den Partitionsschlüsselwert und ein Feld für Parameter für die gespeicherte Prozedur hinzugefügt.
 
-   ![Ausfüllen einer Logik-App-Aktion](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![Der Screenshot zeigt ein Element „Gespeicherte Prozedur ausführen“ mit ausgewähltem „Neuen Parameter hinzufügen“.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. Geben Sie jetzt den Partitionsschlüsselwert und die Parameter wie unten dargestellt ein. Vergewissern Sie sich, dass Sie die Klammern und doppelten Anführungszeichen wie abgebildet einfügen. Möglicherweise müssen Sie auf **Dynamischen Inhalt hinzufügen** klicken, um die gültigen Werte zu erhalten, die Sie hier verwenden können.
 
-   ![Ausfüllen einer Logik-App-Aktion](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![Der Screenshot zeigt ein Element „Gespeicherte Prozedur ausführen“ mit eingegebenen Parametern.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
 7. Stellen Sie am oberen Rand des Fensters, wo **For Each** steht, unter **Ausgabe von vorherigen Schritten auswählen** sicher, dass **Text** ausgewählt ist.
 

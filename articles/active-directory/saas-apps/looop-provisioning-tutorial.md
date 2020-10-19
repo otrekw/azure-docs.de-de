@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333561"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850692"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Looop für die automatische Benutzerbereitstellung
 
@@ -55,11 +55,11 @@ Bevor Sie Looop für die automatische Benutzerbereitstellung mit Azure AD konfig
 
 1. Melden Sie sich bei der [Looop-Verwaltungskonsole](https://app.looop.co/#/login) an, und wählen Sie **Konto** aus. Wählen Sie unter **Kontoeinstellungen** die Option **Authentifizierung** aus.
 
-    ![Looop: Hinzufügen von SCIM](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Screenshot der Looop-Verwaltungskonsole. Die Registerkarte „Konto“ ist hervorgehoben und geöffnet. Unter „Kontoeinstellungen“ ist „Authentifizierung“ hervorgehoben." border="false":::
 
 2. Generieren Sie ein neues Token, indem Sie unter **SCIM-Integration**auf **Token zurücksetzen** klicken.
 
-    ![Looop: Hinzufügen von SCIM](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Screenshot der Looop-Verwaltungskonsole. Die Registerkarte „Konto“ ist hervorgehoben und geöffnet. Unter „Kontoeinstellungen“ ist „Authentifizierung“ hervorgehoben." border="false":::
 
 3. Kopieren Sie die Werte für **SCIM Endpoint** (SCIM-Endpunkt) und **Access Token** (Zugriffstoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Looop-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben. 
 

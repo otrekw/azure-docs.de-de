@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5da00916a3f7a6a3685b1de1c56dd032355e28fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931149"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91628416"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Platzieren einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -217,19 +217,19 @@ Sehen wir uns mit den gleichen Befehlen wie an, was auf den einzelnen physischen
 
 |Namen anderer Pods\* |Verwendung|Physischer Kubernetes-Knoten, auf dem die Pods gehostet werden
 |----|----|----
-|bootstrapper-jh48b||aks-agentpool-42715708-vmss000003
+|bootstrapper-jh48b|Dies ist ein Dienst, der eingehende Anforderungen zum Erstellen, Bearbeiten und Löschen benutzerdefinierter Ressourcen wie verwaltete SQL-Instanzen, PostgreSQL Hyperscale-Servergruppen und Datencontroller verarbeitet.|aks-agentpool-42715708-vmss000003
 |control-gwmbs||aks-agentpool-42715708-vmss000002
-|controldb-0||aks-agentpool-42715708-vmss000001
-|controlwd-zzjp7||aks-agentpool-42715708-vmss000000
-|logsdb-0|Elasticsearch, empfängt Daten aus dem `Fluentbit`-Container der einzelnen Pods|aks-agentpool-42715708-vmss000003
-|logsui-5fzv5||aks-agentpool-42715708-vmss000003
-|metricsdb-0|InfluxDB, empfängt Daten aus dem `Telegraf`-Container der einzelnen Pods|aks-agentpool-42715708-vmss000000
-|metricsdc-47d47||aks-agentpool-42715708-vmss000002
-|metricsdc-864kj||aks-agentpool-42715708-vmss000001
-|metricsdc-l8jkf||aks-agentpool-42715708-vmss000003
-|metricsdc-nxm4l||aks-agentpool-42715708-vmss000000
-|metricsui-4fb7l||aks-agentpool-42715708-vmss000003
-|mgmtproxy-4qppp||aks-agentpool-42715708-vmss000002
+|controldb-0|Dies ist der Controllerdatenspeicher, der zum Speichern der Konfiguration und des Zustands für den Datencontroller verwendet wird.|aks-agentpool-42715708-vmss000001
+|controlwd-zzjp7|Dies ist der „Watch Dog“-Dienst des Controllers, der die Verfügbarkeit des Datencontrollers überwacht.|aks-agentpool-42715708-vmss000000
+|logsdb-0|Dies ist eine Instanz der elastischen Suche, mit der alle Protokolle gespeichert werden, die von allen Arc-Datendienstpods gesammelt werden. Elasticsearch, empfängt Daten aus dem `Fluentbit`-Container der einzelnen Pods|aks-agentpool-42715708-vmss000003
+|logsui-5fzv5|Dies ist eine Kibana-Instanz, die auf die elastische Suchdatenbank aufgesetzt ist, um eine grafische Log Analytics-Benutzeroberfläche zu präsentieren.|aks-agentpool-42715708-vmss000003
+|metricsdb-0|Dies ist eine InfluxDB-Instanz, die verwendet wird, um alle Metriken zu speichern, die von allen Arc-Datendienstpods gesammelt werden. InfluxDB, empfängt Daten aus dem `Telegraf`-Container der einzelnen Pods|aks-agentpool-42715708-vmss000000
+|metricsdc-47d47|Dies ist ein Daemonset, das auf allen Kubernetes-Knoten im Cluster bereitgestellt wird, um Metriken auf Knotenebene von den Knoten zu erfassen.|aks-agentpool-42715708-vmss000002
+|metricsdc-864kj|Dies ist ein Daemonset, das auf allen Kubernetes-Knoten im Cluster bereitgestellt wird, um Metriken auf Knotenebene von den Knoten zu erfassen.|aks-agentpool-42715708-vmss000001
+|metricsdc-l8jkf|Dies ist ein Daemonset, das auf allen Kubernetes-Knoten im Cluster bereitgestellt wird, um Metriken auf Knotenebene von den Knoten zu erfassen.|aks-agentpool-42715708-vmss000003
+|metricsdc-nxm4l|Dies ist ein Daemonset, das auf allen Kubernetes-Knoten im Cluster bereitgestellt wird, um Metriken auf Knotenebene von den Knoten zu erfassen.|aks-agentpool-42715708-vmss000000
+|metricsui-4fb7l|Dies ist eine Grafana-Instanz, die auf die InfluxDB-Datenbank aufgesetzt ist, um eine grafische Überwachungsdashboard-Benutzeroberfläche zu präsentieren.|aks-agentpool-42715708-vmss000003
+|mgmtproxy-4qppp|Dies ist eine Webanwendungsproxy-Ebene, die sich vor den Grafana- und Kibana-Instanzen befindet.|aks-agentpool-42715708-vmss000002
 
 > \* Das Suffix der Podnamen weicht in anderen Bereitstellungen ab. Außerdem werden hier nur die Pods aufgelistet, die im Kubernetes-Namespace des Azure Arc-Datencontrollers gehostet werden.
 

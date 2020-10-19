@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613899"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -38,7 +38,7 @@ In diesem Artikel wird beschrieben, wie Sie diese Ziele erreichen, indem Sie [Az
 
 Ein privater Endpunkt ist eine private IP-Adresse, die in einem kundeneigenen VNET zugeordnet ist, über das eine Azure-Ressource erreichbar ist. Mit Azure Private Link können Sie einen privaten Endpunkt für Ihren IoT-Hub einrichten und damit den Diensten in Ihrem VNET erlauben, IoT Hub zu erreichen, ohne dass Datenverkehr an den öffentlichen IoT Hub-Endpunkt gesendet werden muss. Ebenso können Ihre lokalen Geräte ein [virtuelles privates Netzwerk (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Peering verwenden, um eine Verbindung mit Ihrem VNET und Ihrer IoT Hub-Instanz (über den privaten Endpunkt) herzustellen. So können Sie die Konnektivität mit den öffentlichen Endpunkten Ihres IoT-Hubs einschränken oder komplett blockieren, indem Sie [IoT Hub-IP-Filter](./iot-hub-ip-filtering.md) verwenden und [das Routing so konfigurieren, dass keine Daten an den integrierten Endpunkt gesendet werden](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Auf diese Weise erfolgen Verbindungen mit Ihrem Hub ausschließlich über den privaten Endpunkt für Geräte. Der Schwerpunkt dieses Setups liegt auf Geräten, die sich in einem lokalen Netzwerk befinden. Dieses Setup wird nicht für Geräte empfohlen, die in einem WAN bereitgestellt werden.
 
-![Öffentlicher IoT Hub-Endpunkt](./media/virtual-network-support/virtual-network-ingress.png)
+![IoT Hub des virtuellen Netzwerks – Eingang](./media/virtual-network-support/virtual-network-ingress.png)
 
 Vergewissern Sie sich, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie fortfahren:
 
@@ -92,7 +92,7 @@ Damit andere Dienste Ihre IoT Hub-Instanz als vertrauenswürdigen Microsoft-Dien
 
 1. Klicken Sie unter **Status** auf **Ein** und dann auf **Speichern**.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Screenshot, der zeigt, wie eine verwaltete Identität für IoT Hub aktiviert wird":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Screenshot, der zeigt, wo ein privater Endpunkt für IoT Hub hinzugefügt wird":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Zuweisen einer verwalteten Identität zu Ihrem IoT-Hub zum Zeitpunkt der Erstellung mithilfe einer ARM-Vorlage
 
@@ -236,7 +236,7 @@ Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von 
 
 4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Dateiupload**.
 
-5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen**, **SAS TTL**, **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
+5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen**, **SAS TTL**, **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** . Wenn bei diesem Schritt eine Fehlermeldung angezeigt wird, legen Sie Ihr Speicherkonto vorübergehend so fest, dass der Zugriff aus **Allen Netzwerken** ermöglicht wird, und wiederholen Sie dann den Vorgang. Sie können die Firewall für das Speicherkonto konfigurieren, sobald die Konfiguration des Dateiuploads beendet ist.
 
 Nun ist Ihr Speicherendpunkt für den Dateiupload für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Speicherressource zuzugreifen.
 

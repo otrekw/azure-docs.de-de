@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950118"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776135"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
 
@@ -104,6 +104,8 @@ Senden Sie diesen Header als Anforderung an die folgende API-URL: `https://graph
 Wenn die Anforderung erfolgreich ausgeführt wurde, wird als Antwort eine Sammlung der Identitätsrisikoerkennungen und zugehöriger Daten im OData-JSON-Format zurückgegeben. Die Antwort kann nach Bedarf analysiert und verarbeitet werden.
 
 ### <a name="sample"></a>Beispiel
+
+Dieses Beispiel zeigt die Verwendung eines gemeinsamen geheimen Schlüssels zur Authentifizierung. In einer Produktionsumgebung wird das Speichern von geheimen Schlüsseln in Code allgemein missbilligt. Organisationen können diese Anmeldeinformationen mithilfe von verwalteten Identitäten für Azure-Ressourcen sichern. Weitere Informationen zu verwalteten Identitäten finden Sie im Artikel [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md).
 
 Hier sehen Sie Beispielcode für das Authentifizieren und Aufrufen der API mit PowerShell.  
 Fügen Sie einfach Ihre Client-ID, den geheimen Schlüssel und die Mandantendomäne hinzu.

@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422996"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536884"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>Verwenden Ihrer Telefonnummer als Benutzername (Vorschau)
 
@@ -52,7 +52,7 @@ Wenn Sie bereits eine Telefonnummer in einer Organisation verwenden und die Mög
 
 1. Wenn die SMS-Anmeldung verfügbar ist, wird ein Banner mit der Frage angezeigt, ob Sie die Telefonnummer für die SMS-Anmeldung aktivieren möchten:
 
-    [![Banner zum Aktivieren der SMS-Anmeldung für eine Telefonnummer](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    :::image type="content" source="media/sms-sign-in-explainer/sms-sign-in-banner.png" alt-text="Der Screenshot zeigt das Banner zum Aktivieren der SMS-Anmeldung für eine Telefonnummer, mit ausgewählter Aktion „Aktivieren“." lightbox="media/sms-sign-in-explainer/sms-sign-in-banner.png":::
 
 1. Außerdem wird die Schaltfläche **Aktivieren** angezeigt, wenn Sie das Caretzeichen auf der Kachel für die Telefonmethode auswählen:
 

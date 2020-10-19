@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653331"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Verwalten von IoT Central über das Azure-Portal
 
@@ -56,11 +56,11 @@ Wählen Sie im Portal zunächst **Alle Ressourcen** aus. Wählen Sie **Ausgeblen
 
 Wählen Sie die **URL der IoT Central-Anwendung** aus, um zur Anwendung zu navigieren:
 
-![Verwaltungsportal: Ressourcenverwaltung](media/howto-manage-iot-central-from-portal/image3.png)
+![Der Screenshot zeigt die Seite „Übersicht“ mit hervorgehobenem „URL der IoT Central-Anwendung“.](media/howto-manage-iot-central-from-portal/image3.png)
 
 Um die Anwendung in eine andere Ressourcengruppe zu verschieben, wählen Sie neben der Ressourcengruppe **Ändern** aus. Wählen Sie auf der Seite **Ressourcen verschieben** die Ressourcengruppe aus, in die Sie diese Anwendung verschieben möchten:
 
-![Verwaltungsportal: Ressourcenverwaltung](media/howto-manage-iot-central-from-portal/image4a.png)
+![Der Screenshot zeigt die Seite „Übersicht“ mit hervorgehobenem „Ressourcengruppe (ändern)“.](media/howto-manage-iot-central-from-portal/image4a.png)
 
 Wenn Sie die Anwendung in ein anderes Abonnement verschieben möchten, wählen Sie neben dem Abonnement **Ändern** aus. Wählen Sie auf der Seite **Ressourcen verschieben** das Abonnement aus, in das Sie diese Anwendung verschieben möchten:
 

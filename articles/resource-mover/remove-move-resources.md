@@ -7,28 +7,35 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 241ccbda67f7a2518d0c44a0d362673922ad4284
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652642"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945942"
 ---
-# <a name="remove-resources-from-a-move-collection"></a>Entfernen von Ressourcen aus einer Sammlung für die Verschiebung
+# <a name="manage-move-collections-and-resource-groups"></a>Verwalten von Verschiebungssammlungen und Ressourcengruppen
 
-In diesem Artikel wird beschrieben, wie Ressourcen aus einer Sammlung für die Verschiebung in [Azure Resource Mover](overview.md) entfernt werden. Sammlungen für die Verschiebung werden beim Verschieben von Azure-Ressourcen zwischen Azure-Regionen verwendet.
+In diesem Artikel wird beschrieben, wie in [Azure Resource Mover](overview.md) Ressourcen aus einer Verschiebungssammlung entfernt werden, oder wie eine Verschiebungssammlung/Ressourcengruppe entfernt wird. Sammlungen für die Verschiebung werden beim Verschieben von Azure-Ressourcen zwischen Azure-Regionen verwendet.
 
 ## <a name="remove-a-resource-portal"></a>Entfernen einer Ressource (Portal)
 
-Gehen Sie wie folgt vor, um im Resource Mover-Portal eine Ressource zu entfernen:
+Sie können Ressourcen in einer Verschiebungssammlung im Resource Mover-Portal wie folgt entfernen:
 
-1. Wählen Sie unter **Regionsübergreifend** die Ressourcen aus, die Sie in der Sammlung > **entfernen** möchten.
+1. Wählen Sie unter **Regionsübergreifend** alle Ressourcen aus, die Sie aus der Sammlung entfernen möchten, und wählen Sie **Entfernen** aus. 
 
     ![Schaltfläche, die Sie zum Entfernen auswählen](./media/remove-move-resources/portal-select-resources.png)
 
-1. Klicken Sie unter **Ressourcen entfernen** auf **Entfernen**.
+2. Klicken Sie unter **Ressourcen entfernen** auf **Entfernen**.
 
     ![Schaltfläche, die Sie auswählen, um Ressourcen in einer Sammlung für die Verschiebung zu entfernen](./media/remove-move-resources/remove-portal.png)
+
+## <a name="remove-a-move-collectionresource-group-portal"></a>Entfernen einer Verschiebungssammlung/Ressourcengruppe (Portal)
+
+Sie können eine Verschiebungssammlung/Ressourcengruppe im Portal entfernen.
+
+1. Befolgen Sie die Anweisungen in der obigen Prozedur, um Ressourcen aus der Sammlung zu entfernen. Wenn Sie eine Ressourcengruppe entfernen, stellen Sie sicher, dass sie keine Ressourcen enthält.
+2. Löschen Sie die Verschiebungssammlung oder Ressourcengruppe.  
 
 ## <a name="remove-a-resource-powershell"></a>Entfernen einer Ressource (PowerShell)
 
@@ -41,16 +48,20 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **Erwartete Ausgabe**
 ![Ausgabetext nach dem Entfernen einer Ressource in einer Sammlung für die Verschiebung](./media/remove-move-resources/remove-resource.png)
 
+
+
 ## <a name="remove-a-collection-powershell"></a>Entfernen einer Sammlung (PowerShell)
 
 Gehen Sie wie folgt vor, um eine ganze Sammlung für die Verschiebung mithilfe von PowerShell zu entfernen:
 
-```azurepowershell-interactive
-# Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
-```
-**Erwartete Ausgabe**
-![Ausgabetext nach dem Entfernen einer Sammlung für die Verschiebung](./media/remove-move-resources/remove-collection.png)
+1. Befolgen Sie die voranstehenden Anweisungen, um Ressourcen in der Sammlung mithilfe der PowerShell zu entfernen.
+2. Führen Sie Folgendes aus:
+
+    ```azurepowershell-interactive
+    # Remove a resource using the resource ID
+    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    ```
+    **Erwartete Ausgabe** ![Ausgabetext nach dem Entfernen einer Sammlung für die Verschiebung](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>Zustand einer VM-Ressource nach dem Entfernen
 

@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742265"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530118"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in Privileged Identity Management
 
@@ -32,7 +32,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
-    [![Azure AD-Rollen der neuen Version](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Auswählen der Registerkarte für Ihre Version")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Der Screenshot zeigt die Seite „Azure AD-Rollen – Verlauf der Verzeichnisrollenüberwachung“.](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Auswählen der Registerkarte für Ihre Version")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Neue Version](#tab/new)
 
@@ -123,11 +123,11 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
     - Zeigen Sie Gründe für ein Überwachungsereignis in der Spalte **Statusursache** an.
     - Zeigen Sie die genehmigenden Person in der Spalte **Initiiert von (Akteur)** für das Ereignis „Anforderung zum Hinzufügen von Mitglied zur Rolle genehmigt“ an.
 
-    [![Azure AD-Rollen der neuen Version](media/pim-how-to-use-audit-log/filter-audit-logs.png "Filtern des Überwachungsprotokolls für den PIM-Dienst")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [![Der Screenshot zeigt die Seite „Überwachungsprotokolle“ mit geöffnetem Menü „Initiiert von (Akteur)“ und ausgewähltem „PIM“.](media/pim-how-to-use-audit-log/filter-audit-logs.png "Filtern des Überwachungsprotokolls für den PIM-Dienst")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
 1. Wählen Sie ein Überwachungsprotokollereignis aus, um die Ticketnummer auf der Registerkarte **Aktivität** im **Detailbereich** anzuzeigen.
   
-    [![Azure AD-Rollen der neuen Version](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Überprüfen der Ticketnummer für das Überwachungsereignis")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [![Der Screenshot zeigt die Seite „Überwachungsprotokolle“. Im „Detailbereich“ ist die Ticketnummer hervorgehoben.](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Überprüfen der Ticketnummer für das Überwachungsereignis")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
 1. Sie können den Anforderer (Person, die die Rolle aktiviert) auf der Registerkarte **Ziele** im **Detailbereich** für ein Überwachungsereignis anzeigen. Für Azure AD-Rollen gibt es zwei Zieltypen:
 

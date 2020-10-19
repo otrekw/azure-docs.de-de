@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017471"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072032"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen aus Azure AD für Workday
 In diesem Tutorial werden die Schritte beschrieben, die Sie ausführen müssen, um Attribute aus Azure AD für Workday zurückzuschreiben. Die Bereitstellungs-App für das Workday-Rückschreiben unterstützt das Zuweisen von Werten zu den folgenden Workday-Attributen:
@@ -144,16 +144,31 @@ Nachdem die Konfiguration der Workday-Bereitstellungs-App abgeschlossen ist, kö
 
 1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
+1. Wählen Sie in der Dropdownliste **Bereich** die Option **Alle Benutzer und Gruppen synchronisieren** aus. Mit dieser Option schreibt die Rückschreibe-App zugeordnete Attribute aller Benutzer aus Azure AD in Workday zurück. Dies unterliegt den Bereichsregeln, die unter **Zuordnungen** -> **Quellobjektbereich** definiert wurden. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Rückschreibe-Bereich auswählen](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Die Bereitstellungs-App für Workday-Rückschreiben unterstützt nicht die Option **Nur zugewiesene Benutzer und Gruppen synchronisieren**.
+ 
+
 2. Klicken Sie auf **Speichern**.
 
 3. Dieser Vorgang startet die erste Synchronisierung, die abhängig von der Anzahl der Benutzer im Quellverzeichnis eine variable Anzahl von Stunden dauern kann. Sie können die Statusanzeige überprüfen, um den Fortschritt des Synchronisierungszyklus zu verfolgen. 
 
-4. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. In den Überwachungsprotokollen werden alle einzelnen vom Bereitstellungsdienst ausgeführten Synchronisierungsereignisse aufgelistet, z. B. welche Benutzer aus der Quelle importiert und in die Zielanwendung exportiert werden.  
+4. Im Azure-Portal können Sie sich auf der Registerkarte **Bereitstellungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. In den Überwachungsprotokollen werden alle einzelnen vom Bereitstellungsdienst ausgeführten Synchronisierungsereignisse aufgelistet, z. B. welche Benutzer aus der Quelle importiert und in die Zielanwendung exportiert werden.  
 
 5. Nach Abschluss der ersten Synchronisierung wird auf der Registerkarte **Bereitstellung** ein Zusammenfassungsbericht ausgegeben.
 
      > [!div class="mx-imgBorder"]
      > ![Statusanzeige für die Bereitstellung](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
+
+* Die Rückschreibe-App verwendet einen vordefinierten Wert für die Parameter **Communication_Usage_Type_ID** und **Phone_Device_Type_ID**. Wenn Ihr Workday-Mandant einen anderen Wert für diese Attribute verwendet, kann der Rückschreibvorgang nicht ausgeführt werden. Eine vorgeschlagene Problemumgehung ist die Aktualisierung der „Type_IDs“ in Workday. 
+* Wenn die Rückschreibe-App so konfiguriert wurde, dass sekundäre Telefonnummern aktualisiert werden, wird die vorhandene sekundäre Telefonnummer in Workday nicht ersetzt. Stattdessen wird dem Worker-Datensatz eine weitere sekundäre Telefonnummer hinzugefügt. Für dieses Verhalten gibt es keine Problemumgehung. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

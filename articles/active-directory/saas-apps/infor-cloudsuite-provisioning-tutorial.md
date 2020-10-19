@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 4b318057254688ba3060c825a7926b1c40de437c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305013"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850874"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Infor CloudSuite für die automatische Benutzerbereitstellung
 
@@ -68,11 +68,11 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
     
     ![Infor CloudSuite-Kennwort](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite-Bezeichner](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Der Screenshot zeigt die Infor CloudSuite-Administratorkonsole mit einer hervorgehobenen Tabellenzeile. Die Zeile enthält eine Benutzer-ID, Kennwörter und einen Zeitstempel." border="false":::
 
 5. Um das Bearertoken zu generieren, kopieren Sie die **Benutzer-ID** und das **SCIM-Kennwort**. Fügen Sie sie durch einen Doppelpunkt getrennt in den Editor (Notepad++) ein. Codieren Sie den Zeichenfolgenwert, indem Sie zu **Plug-Ins > MIME-Tools > Basic64-Codierung** navigieren. 
 
-    ![Infor CloudSuite-Bezeichner](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Der Screenshot zeigt die Infor CloudSuite-Administratorkonsole mit einer hervorgehobenen Tabellenzeile. Die Zeile enthält eine Benutzer-ID, Kennwörter und einen Zeitstempel." border="false":::
 
 3.  Kopieren Sie das Bearertoken. Dieser Wert wird auf der Registerkarte „Bereitstellung“ für Ihre Infor CloudSuite-Anwendung im Azure-Portal in das Feld „Geheimes Token“ eingegeben.
 

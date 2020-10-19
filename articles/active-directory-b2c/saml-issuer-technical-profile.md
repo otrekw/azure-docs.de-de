@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521211"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961237"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -37,6 +37,7 @@ Das folgende Beispiel zeigt ein technisches Profil für `Saml2AssertionIssuer`:
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
+    <Item Key="TokenNotBeforeSkewInSeconds">600</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -58,6 +59,7 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 | --------- | -------- | ----------- |
 | IssuerUri | Nein | Der Ausstellername, der in der SAML-Antwort angezeigt wird. Der Wert sollte mit dem Namen übereinstimmen, der in der Anwendung der vertrauenden Seite konfiguriert ist. |
 | XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Assertion verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Antwort finden Sie unter [SAML-Metadaten der vertrauenden Seite](relyingparty.md#metadata)|
+|TokenNotBeforeSkewInSeconds| Nein| Gibt die Neigung, als ganze Zahl, für den Zeitstempel an, der den Anfang des Gültigkeitszeitraums kennzeichnet. Je höher diese Zahl ist, desto später beginnt der Gültigkeitszeitraum im Hinblick auf die Uhrzeit, zu der die Ansprüche für die vertrauende Seite ausgegeben werden. Wenn beispielsweise der Wert für „TokenNotBeforeSkewInSeconds“ auf 60 Sekunden festgelegt wurde und das Token um 13:05:10 Uhr UTC ausgegeben wird, ist es ab 13:04:10 Uhr UTC gültig. Der Standardwert ist 0. Der Höchstwert ist 3.600 (eine Stunde). |
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 

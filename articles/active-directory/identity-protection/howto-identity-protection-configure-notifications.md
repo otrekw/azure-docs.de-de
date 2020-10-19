@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950390"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839346"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 
@@ -44,8 +44,8 @@ Um eine übermäßig große Anzahl von E-Mails zu vermeiden, erhalten Sie innerh
 Als Administrator können Sie Folgendes festlegen:
 
 - **Die Benutzerrisikostufe, bei der die Erstellung dieser E-Mail ausgelöst wird**: Standardmäßig ist die Risikostufe auf „Hoch“ festgelegt.
-- **Die Empfänger dieser E-Mail**: Standardmäßig umfassen die Empfänger alle globalen Administratoren. Globale Administratoren können außerdem weitere globale Administratoren, Sicherheitsadministratoren und Sicherheitsleseberechtigte hinzufügen.
-   - Optional können Sie **zusätzliche E-Mails für den Empfang von Warnungsbenachrichtigungen hinzufügen**. Dieses Feature ist eine Vorschau, und die definierten Benutzer müssen über die entsprechenden Berechtigungen zum Anzeigen der verknüpften Berichte im Azure-Portal verfügen.
+- **Die Empfänger dieser E-Mail** – Benutzer in den Rollen „Globaler Administrator“, „Sicherheitsadministrator“ oder „Sicherheitsleseberechtigter“ werden dieser Liste automatisch hinzugefügt. Wir versuchen, E-Mails an die ersten 20 Mitglieder jeder Rolle zu senden. Falls ein Benutzer in PIM registriert ist, damit er bei Bedarf für eine dieser Rollen erhöhte Rechte erhält, **wird er nur dann E-Mails erhalten, wenn er zu dem Zeitpunkt, zu dem die E-Mail gesendet wird, über diese Rechte verfügt**.
+   - Optional können Sie eine **benutzerdefinierte E-Mail-Adresse hier** einfügen. Definierte Benutzer müssen die entsprechenden Berechtigungen zum Anzeigen der verknüpften Berichte im Azure-Portal haben.
 
 Konfigurieren Sie die E-Mail-Adresse der gefährdeten Benutzers im **Azure-Portal** unter **Azure Active Directory** > **Sicherheit** > **Identitätsschutz** > **Warnungen zu erkannten gefährdeten Benutzern**.
 
@@ -60,7 +60,7 @@ Sie hat folgenden Inhalt:
 
 ![Wöchentliche E-Mail mit Übersicht](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-Standardmäßig umfassen die Empfänger alle globalen Administratoren. Globale Administratoren können außerdem weitere globale Administratoren, Sicherheitsadministratoren und Sicherheitsleseberechtigte hinzufügen.
+Benutzer in den Rollen „Globaler Administrator“, „Sicherheitsadministrator“ oder „Sicherheitsleseberechtigter“ werden dieser Liste automatisch hinzugefügt. Wir versuchen, E-Mails an die ersten 20 Mitglieder jeder Rolle zu senden. Falls ein Benutzer in PIM registriert ist, damit er bei Bedarf für eine dieser Rollen erhöhte Rechte erhält, **wird er nur dann E-Mails erhalten, wenn er zu dem Zeitpunkt, zu dem die E-Mail gesendet wird, über diese Rechte verfügt**.
 
 ### <a name="configure-weekly-digest-email"></a>Konfigurieren von wöchentlichen Zusammenfassung per E-Mail
 

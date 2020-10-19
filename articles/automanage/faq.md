@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931677"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714968"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 
@@ -33,10 +33,13 @@ Die folgenden Voraussetzungen müssen für die Aktivierung der automatischen Azu
 - Benutzer muss über die richtigen Berechtigungen verfügen
 - Nur VMs, die keiner Skalierungsgruppe angehören
 - VMs dürfen nicht mit einem Log Analytics-Arbeitsbereich in einem anderen Abonnement verknüpft werden
+- Automatische Verwaltung unterstützt zurzeit keine Sandboxabonnements.
 
-**Welche RBAC-Berechtigung ist erforderlich, um die automatische Azure-Verwaltung zu aktivieren?**
+**Welche Azure RBAC-Berechtigung ist erforderlich, um die automatische Azure-Verwaltung zu aktivieren?**
 
-Benutzer müssen über die Rolle „Besitzer“ verfügen. Alternativ können Benutzer die Rolle „Mitwirkender“ zusammen mit der Rolle „Benutzerzugriffsadministrator“ aufweisen, um die automatische Verwaltung anzuwenden.
+Wenn Sie Automanage auf einem virtuellen Computer mit einem vorhandenen Automanage-Konto aktivieren, benötigen Sie die Rolle „Mitwirkender“ für die Ressourcengruppe, in der sich der virtuelle Computer befindet.
+
+Wenn Sie beim Aktivieren ein neues Automanage-Konto verwenden, müssen Sie entweder über die Rolle „Besitzer“ oder über die Rollen „Mitwirkender“ und „Benutzerzugriffsadministrator“ für das Abonnement verfügen.
 
 
 **Welche Regionen werden unterstützt?**
@@ -48,6 +51,9 @@ Es werden VMs in den folgenden Regionen unterstützt: Europa (Westen), USA (Oste
 
 Die automatische Azure-Verwaltung registriert, konfiguriert und überwacht während des gesamten Lebenszyklus der VM die [hier](virtual-machines-best-practices.md) aufgeführten Dienste.
 
+**Funktioniert Azure Automanage mit Azure Arc-fähigen VMs?**
+
+Automanage unterstützt zurzeit keine Arc-fähigen VMs.
 
 **Kann ich Konfigurationen für die automatische Azure-Verwaltung anpassen?**
 
@@ -82,6 +88,11 @@ Ja, wir haben eine integrierte Richtlinie erstellt, die die automatische Verwalt
 **Was ist ein Konto für die automatische Verwaltung?**
 
 Das Konto für die automatische Verwaltung ist eine verwaltete Dienstidentität (Managed Service Identity, MSI), die den Sicherheitskontext oder die Identität bereitstellt, unter der die automatisierten Vorgänge erfolgen.
+
+
+**Wirkt sich die Aktivierung von Automanage auf zusätzliche VMs außer den von mir ausgewählten VMs aus?**
+
+Wenn Ihre VM mit einem vorhandenen Log Analytics-Arbeitsbereich verknüpft ist, verwenden wir diesen Arbeitsbereich, um diese Lösungen anzuwenden: Änderungsnachverfolgung, Bestand und Updateverwaltung. Auf allen mit diesem Arbeitsbereich verbundenen VMs werden diese Lösungen aktiviert.
 
 
 **Kann ich das Konfigurationsprofil meiner VM ändern?**

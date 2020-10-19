@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019902"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91308111"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche
 

@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869643"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534419"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Zuweisen der Berechtigung für eine Gruppe mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -48,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um einen Benutzer als berechtigt für di
 
 1. Wählen Sie die Mitglieder oder Besitzer aus, die Sie als berechtigt für die Gruppe mit privilegiertem Zugriff einrichten möchten.
 
-    ![Bereich „Mitglied oder Gruppe auswählen“](./media/groups-assign-member-owner/add-assignments.png)
+    ![Der Screenshot zeigt die Seite „Zuweisungen hinzufügen“ mit geöffnetem Bereich „Mitglied oder Gruppe auswählen“ und hervorgehobener Schaltfläche „Auswählen“.](./media/groups-assign-member-owner/add-assignments.png)
 
 1. Wählen Sie **Weiter** aus, um die Dauer von Mitgliedschaft oder Besitz festzulegen.
 
