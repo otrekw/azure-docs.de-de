@@ -3,12 +3,12 @@ title: Empfohlene Sicherheitsmaßnahmen
 description: Beim Verwenden von Azure Lighthouse müssen Sicherheit und Zugriffssteuerung berücksichtigt werden.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163270"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399379"
 ---
 # <a name="recommended-security-practices"></a>Empfohlene Sicherheitsmaßnahmen
 
@@ -28,7 +28,7 @@ Wir schlagen vor, dass Sie Ihre Kunden auffordern, Azure Multi-Factor Authentica
 Um die Verwaltung zu vereinfachen, verwenden Sie Azure AD-Gruppen (Azure Active Directory) für jede Rolle, die zum Verwalten der Ressourcen Ihrer Kunden erforderlich ist. Auf diese Weise können Sie der Gruppe einzelne Benutzer nach Bedarf hinzufügen oder diese daraus entfernen, anstatt jedem Benutzer Berechtigungen direkt zuzuweisen.
 
 > [!IMPORTANT]
-> Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** **Sicherheit** und nicht **Office 365** lauten. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** auf **Sicherheit** festgelegt werden. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Beachten Sie beim Erstellen Ihrer Berechtigungsstruktur, dass Sie das Prinzip der geringsten Rechte befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen Ihrer Aufgaben erforderlich sind, um die Wahrscheinlichkeit von unbeabsichtigten Fehlern zu verringern.
 

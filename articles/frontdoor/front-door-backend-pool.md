@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399921"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449296"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-Ends und Back-End-Pools in Azure Front Door
-In diesem Artikel werden die Konzepte für die Zuordnung Ihrer App-Bereitstellung mit Azure Front Door beschrieben. Darüber hinaus werden die verschiedenen Begriffe erläutert, die bei der Front Door-Konfiguration rund um App-Back-Ends verwendet werden.
+In diesem Artikel werden die Konzepte für die Zuordnung Ihrer Webanwendungsbereitstellung mit Azure Front Door beschrieben. Außerdem wird die unterschiedliche Terminologie erläutert, die in der Front-End-Konfiguration um die Anwendungs-Back-Ends verwendet wird.
 
 ## <a name="backends"></a>Back-Ends
-Ein Back-End entspricht einer App-Bereitstellungsinstanz in einer Region. Front Door unterstützt sowohl Azure- als auch Nicht-Azure-Back-Ends. Daher ist die Region nicht auf Azure-Regionen beschränkt. Die Instanz kann auch Ihr lokales Rechenzentrum oder eine App-Instanz in einer anderen Cloud sein.
+Ein Back-End bezieht sich auf eine Webanwendungsbereitstellung in einer Region. Front Door unterstützt sowohl Azure- als auch Nicht-Azure-Ressourcen im Back-End-Pool. Die Anwendung kann sich entweder in Ihrem lokalen Rechenzentrum oder bei einem anderen Cloudanbieter befinden.
 
-Front Door-Back-Ends verweisen auf den Hostnamen oder die öffentliche IP-Adresse Ihrer App, die Clientanforderungen verarbeiten kann. Back-Ends sollten nicht mit einer Datenbankebene, Speicherebene usw. verwechselt werden. Back-Ends sind als öffentlicher Endpunkt Ihres App-Back-Ends zu betrachten. Wenn Sie dem Front Door-Back-End-Pool ein Back-End hinzufügen, müssen Sie auch Folgendes hinzufügen:
+Front Door-Back-Ends verweisen auf den Hostnamen oder die öffentliche IP-Adresse Ihrer Anwendung, die Clientanforderungen verarbeitet. Back-Ends sollten nicht mit einer Datenbankebene, Speicherebene usw. verwechselt werden. Back-Ends sollten als öffentlicher Endpunkt für Ihr Anwendungs-Back-End betrachtet werden. Wenn Sie dem Front Door-Back-End-Pool ein Back-End hinzufügen, müssen Sie auch Folgendes hinzufügen:
 
 - **Back-End-Hosttyp**: Der Typ der Ressource, die hinzugefügt werden soll. Front Door unterstützt die automatische Erkennung Ihrer App-Back-Ends aus dem App-Dienst, Clouddienst oder Speicher. Wenn Sie eine andere Ressource in Azure oder sogar ein Nicht-Azure-Back-End hinzufügen möchten, wählen Sie **Benutzerdefinierter Host** aus.
 
@@ -41,7 +41,7 @@ Front Door-Back-Ends verweisen auf den Hostnamen oder die öffentliche IP-Adress
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>Back-End-Hostheader
 
-Von Front Door an ein Back-End weitergeleitete Anforderungen enthalten ein Hostheaderfeld, mit dem das Back-End die Zielressource abruft. Der Wert für dieses Feld stammt in der Regel aus dem Back-End-URI und gibt Host und Port an.
+Von Front Door an ein Back-End weitergeleitete Anforderungen enthalten ein Hostheaderfeld, mit dem das Back-End die Zielressource abruft. Der Wert für dieses Feld stammt in der Regel aus dem Back-End-URI, der den Hostheader und Port angibt.
 
 Eine für `www.contoso.com` gesendete Anforderung weist beispielsweise den Hostheader www.contoso.com auf. Wenn Sie Ihr Back-End im Azure-Portal konfigurieren, wird standardmäßig der Hostname des Back-Ends als Wert für dieses Feld verwendet. Wenn Ihr Back-End den Namen „contoso-westus.azurewebsites.net“ hat, wird im Azure-Portal automatisch der Wert „contoso-westus.azurewebsites.net“ als Hostheader des Back-Ends eingetragen. Wenn Sie jedoch Azure Resource Manager-Vorlagen oder eine andere Methode verwenden und dieses Feld nicht explizit festlegen, sendet Front Door den Eingangshostnamen als Wert für den Hostheader. Wenn die Anforderung beispielsweise für „www\.contoso.com“ erfolgt und das Back-End „contoso-westus.azurewebsites.net“ ist (mit leerem Headerfeld), legt Front Door den Hostheader als „www\.contoso.com“ fest.
 

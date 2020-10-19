@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258602"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445896"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -296,9 +296,9 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
    In POA ab Version 1.4.0 können Sie den Status des Updates ermitteln, indem Sie die Integritätsereignisse für NodeAgentService mit der Eigenschaft „WUOperationStatus-\<NodeName>“ anzeigen. Die hervorgehobenen Abschnitte in den folgenden Abbildungen zeigen den Status von Windows-Updates für die Knoten *poanode_0* und *poanode_2*:
 
-   [![Abbildung des Status des Windows Update-Vorgangs](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![Screenshot: Konsolenfenster des Windows Update-Vorgangsstatus mit hervorgehobenem Element poanode_0.](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Abbildung des Status des Windows Update-Vorgangs](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![Screenshot: Konsolenfenster des Windows Update-Vorgangsstatus mit hervorgehobenem Element poanode_1.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    Sie können die Details auch mithilfe von PowerShell ermitteln. Stellen Sie dazu eine Verbindung mit dem Cluster her, und rufen Sie den Status des Reparaturtasks mithilfe von [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) ab. 
    
@@ -328,7 +328,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
 1. In POA ab Version 1.4.0 wird nach Abschluss eines Updateversuchs auf einem Knoten ein Ereignis mit der Eigenschaft „WUOperationStatus-[Knotenname]“ für NodeAgentService veröffentlicht, um anzugeben, wann der nächste Versuch gestartet wird, die Windows-Updates herunterzuladen und zu installieren. Dies ist in der folgenden Abbildung dargestellt:
 
-     [![Abbildung des Status des Windows Update-Vorgangs](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![Screenshot: Konsolenfenster des Windows Update-Vorgangsstatus mit NodeAgentService.](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Diagnoseprotokolle
 

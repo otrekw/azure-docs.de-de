@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564048"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91664872"
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
-Azure Standard Load Balancer unterstützt Sie beim gleichzeitigen Lastenausgleich von TCP- und UDP-Datenflüssen an allen Ports, wenn Sie einen internen Load Balancer verwenden. 
+Azure Load Balancer Standard unterstützt Sie beim gleichzeitigen Lastenausgleich **aller** Protokolldatenflüsse an **allen** Ports, wenn Sie einen internen Load Balancer über Hochverfügbarkeitsports verwenden.
 
-Eine Lastenausgleichsregel für Hochverfügbarkeitsports ist eine Variante einer Lastenausgleichsregel, die für eine interne Load Balancer Standard-Instanz konfiguriert wurde. Sie können die Verwendung eines Load Balancers vereinfachen, indem Sie eine einzelne Lastenausgleichsregel für den Lastenausgleich aller TCP- und UDP-Datenflüsse bereitstellen, die an allen Ports eines internen Standard Load Balancers eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Aktion basiert auf der folgenden Verbindung, die sich aus einem fünfteiligen Tupel zusammensetzt: Quell-IP-Adresse, Quellport, Ziel-IP-Adresse, Zielport und Protokoll.
+Hochverfügbarkeitsports (High Availability, HA) ist eine Art von Lastenausgleichsregel, die eine einfache Möglichkeit für den Lastenausgleich **aller** Datenflüsse bietet, die an **allen** Ports einer internen Load Balancer Standard-Instanz eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Aktion basiert auf der folgenden Verbindung, die sich aus einem fünfteiligen Tupel zusammensetzt: Quell-IP-Adresse, Quellport, Ziel-IP-Adresse, Zielport und Protokoll.
 
 Die Lastenausgleichsregeln für Hochverfügbarkeitsports unterstützen Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Das Feature kann auch hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss. 
 

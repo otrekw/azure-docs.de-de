@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286001"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91404781"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Einrichten eines Labs mit virtuellen GPU-Computern
 
@@ -30,7 +30,7 @@ Wie in der folgenden Tabelle beschrieben, ist die *Compute*-GPU-Größe für rec
 
 | Size | Kerne | RAM | BESCHREIBUNG | 
 | ---- | ----- | --- | ----------- | 
-| Kleine GPU (Compute) | -&nbsp;6&nbsp;Kerne<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Diese Größe eignet sich am besten für rechenintensive Anwendungen wie künstliche Intelligenz (KI) und Deep Learning. |
+| Kleine GPU (Compute) | -&nbsp;6&nbsp;Kerne<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Diese Größe eignet sich am besten für computeintensive Anwendungen wie künstliche Intelligenz (KI) und Deep Learning. |
 
 Die *Visualisierungs*-GPU-Größen sind für grafikintensive Anwendungen vorgesehen.  Beispielsweise zeigt der [Kurstyp „SOLIDWORKS Engineering“](./class-type-solidworks.md) die Verwendung der **Kleinen GPU-Größe (Visualisierung)** .  Die Visualisierungs-GPU eignet sich für diese Art von Kurs, da die Kursteilnehmer mit der SOLIDWORKS 3D-CAD-Umgebung (Computer-Aided Design) zum Modellieren und Visualisieren solider Objekte interagieren.
 
@@ -38,6 +38,9 @@ Die *Visualisierungs*-GPU-Größen sind für grafikintensive Anwendungen vorgese
 | ---- | ----- | --- | ----------- | 
 | Kleine GPU (Visualisierung) | -&nbsp;6&nbsp;Kerne<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
 | Mittlere GPU (Visualisierung) | -&nbsp;12&nbsp;Kerne<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
+
+> [!NOTE]
+> Beim Erstellen eines Classroom-Labs werden möglicherweise einige dieser VM-Größen nicht in der Liste angezeigt. Die Liste wird basierend auf der aktuellen Kapazität des Standorts des Labs aufgefüllt. Wenn der Ersteller des Lab-Kontos [Lab-Erstellern das Auswählen eines Standorts für das Lab gestattet](allow-lab-creator-pick-lab-location.md), können Sie versuchen, einen anderen Ort für das Lab auszuwählen, und dann nachsehen, ob die VM-Größe verfügbar ist. Informationen zur Verfügbarkeit von VMs finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/?products=virtual-machines).
 
 ## <a name="ensure-that-the-appropriate-gpu-drivers-are-installed"></a>Sicherstellen, dass die entsprechenden GPU-Treiber installiert sind
 Wenn Sie die GPU-Funktionen Ihrer virtuellen Lab-Computer nutzen möchten, stellen Sie sicher, dass die entsprechenden GPU-Treiber installiert sind.  Wenn Sie im Assistenten für die Lab-Erstellung eine GPU-VM-Größe auswählen, können Sie die Option **GPU-Treiber installieren** auswählen.  

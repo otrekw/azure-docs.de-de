@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357130"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -39,7 +39,7 @@ Service Fabric bietet einen umfassenden Satz von sofort einsatzfähigen Ereignis
 
 * EventStore: EventStore ist eine Funktion der Plattform, die Ereignisse der Service Fabric-Plattform bereitstellt, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![Screenshot: Registerkarte „EREIGNISSE“ des Bereichs „Knoten“ mit mehreren Ereignissen, einschließlich eines NodeDown-Ereignisses.](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Die Diagnosen stehen bereits standardmäßig als umfassender Satz von Ereignissen zur Verfügung. Diese [Service Fabric-Ereignisse](service-fabric-diagnostics-events.md) stellen Aktionen dar, die von der Plattform für unterschiedliche Entitäten wie Knoten, Anwendungen, Dienste, Partitionen usw. ausgeführt wurden. Wenn im letzten der obigen Szenarien ein Knoten ausfällt, gibt die Plattform ein Ereignis vom Typ `NodeDown` aus, und Sie werden umgehend von Ihrem bevorzugten Überwachungstool informiert. Andere gängige Beispiele wären etwa `ApplicationUpgradeRollbackStarted` oder `PartitionReconfigured` während eines Failovers. **In Windows- und Linux-Clustern stehen jeweils die gleichen Ereignisse zur Verfügung.**
 

@@ -10,23 +10,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399649"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449266"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geofilterung in einer Domäne für Azure Front Door
 
-Standardmäßig reagiert Azure Front Door auf alle Benutzeranforderungen unabhängig davon, wo sich der Benutzer befindet, von dem die Anforderung stammt. Manchmal ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren. 
+Standardmäßig reagiert Azure Front Door auf alle Benutzeranforderungen unabhängig davon, woher die Anforderung stammt. In einigen Szenarien ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren. 
 
-Eine WAF-Richtlinie enthält üblicherweise einige benutzerdefinierte Regeln. Eine Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In der Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert.  Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariable „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Länder-/Regionscode als Wert zusammen. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
+Eine WAF-Richtlinie enthält einige benutzerdefinierte Regeln. Die Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In einer Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert. Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariable „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Länder-/Regionscode als Wert zusammen. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
 
-Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front-door-tutorial-geo-filtering.md) oder mithilfe unserer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering) konfiguriert werden.
+Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front-door-tutorial-geo-filtering.md) oder mithilfe einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering) konfiguriert werden.
 
 ## <a name="countryregion-code-reference"></a>Referenz zu Länder-/Regionscodes
 
@@ -212,5 +212,5 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Sicherheit für die Anwendungsschicht mit Front Door](front-door-application-security.md).
 - Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
+- Informationen zum [Einrichten einer WAF-Richtlinie für Geofilterung](front-door-tutorial-geo-filtering.md).

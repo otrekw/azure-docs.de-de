@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014641"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371506"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -105,6 +105,13 @@ Diese gängigen Szenarien können die gesamte Sicherungsdauer beeinflussen:
 - **Fragmentierte Datenträger:** Sicherungsvorgänge sind schneller, wenn Datenträgeränderungen zusammenhängend sind. Wenn die Änderungen über einen Datenträger verteilt und fragmentiert werden, verläuft die Sicherung langsamer.
 - **Datenträgeränderungen:** Wenn geschützte Datenträger, für die eine inkrementelle Sicherung durchgeführt wird, täglich eine Änderungsrate von mehr als 200GB aufweisen, kann der Sicherungsvorgang eine lange Zeit (mehr als acht Stunden) in Anspruch nehmen.
 - **Backup-Versionen:** In der neuesten Version von Backup (namens „Instant Restore“) wird ein besser optimierter Prozess als der Prüfsummenvergleich zum Identifizieren der Änderungen verwendet. Aber wenn Sie Instant Restore verwenden und eine Sicherungsmomentaufnahme gelöscht haben, geht die Sicherung wieder zum Prüfsummenvergleich über. In diesem Fall wird der Sicherungsvorgang 24 Stunden überschreiten (oder mit einem Fehler abgebrochen).
+
+### <a name="restore-performance"></a>Wiederherstellungsleistung
+
+Diese gängigen Szenarien können die Gesamtdauer der Wiederherstellung beeinflussen:
+
+- Die gesamte Wiederherstellungszeit hängt von den Eingabe-/Ausgabevorgängen pro Sekunde (IOPS) und dem Durchsatz des Speicherkontos ab.
+- Wenn das Zielspeicherkonto mit anderen anwendungsbezogenen Lese- und Schreibvorgängen beschäftigt ist, kann sich dies auf die gesamte Wiederherstellungszeit auswirken. Wählen Sie zum Verbessern des Wiederherstellungsvorgangs ein Speicherkonto ohne andere Anwendungsdaten aus.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

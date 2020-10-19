@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282305"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078475"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -43,6 +43,96 @@ Mithilfe der `Select TOP`-Klausel können Sie die verschiedenen obersten Element
 SELECT TOP (5)
 FROM DIGITALTWINS
 WHERE ...
+```
+
+### <a name="count-items"></a>Zählen von Elementen
+
+Sie können die Anzahl von Elementen in einem Resultset mit der `Select COUNT`-Klausel zählen:
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS
+``` 
+
+Fügen Sie eine `WHERE`-Klausel hinzu, um die Anzahl von Elementen zu zählen, die ein bestimmtes Kriterium erfüllen. Im Folgenden finden Sie einige Beispiele für das Zählen mit einem angewendeten Filter basierend auf dem Typ des Zwillingsmodells (weitere Informationen zu dieser Syntax finden Sie unter [*Abfragen nach Modell*](#query-by-model) weiter unten):
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') 
+SELECT COUNT() 
+FROM DIGITALTWINS c 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
+```
+
+Sie können auch `COUNT` zusammen mit der `JOIN`-Klausel verwenden. Im Folgenden finden Sie eine Abfrage, mit der alle Glühbirnen gezählt werden, die in der Beleuchtung der Räume 1 und 2 enthalten sind:
+
+```sql
+SELECT COUNT()  
+FROM DIGITALTWINS Room  
+JOIN LightPanel RELATED Room.contains  
+JOIN LightBulb RELATED LightPanel.contains  
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
+AND Room.$dtId IN ['room1', 'room2'] 
+```
+
+### <a name="specify-return-set-with-projections"></a>Angeben eines Rückgabesatzes mit Projektionen
+
+Mithilfe von Projektionen können Sie auswählen, welche Spalten von einer Abfrage zurückgegeben werden. 
+
+>[!NOTE]
+>Zurzeit werden komplexe Eigenschaften nicht unterstützt. Um sicherzustellen, dass die Projektionseigenschaften gültig sind, kombinieren Sie die Projektionen mit einer `IS_PRIMITIVE`-Überprüfung. 
+
+Im Folgenden finden Sie ein Beispiel für eine Abfrage, die eine Projektion verwendet, um Zwillinge und Beziehungen zurückzugeben. Die folgende Abfrage projiziert die Angaben *Consumer*, *Factory* und *Edge* aus einem Szenario, in dem eine *Factory* mit einer ID von *ABC* mit dem *Consumer* durch eine Beziehung von *Factory.customer* verbunden ist und diese Beziehung als *Edge* dargestellt wird.
+
+```sql
+SELECT Consumer, Factory, Edge 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+```
+
+Sie können Projektion auch verwenden, um eine Eigenschaft eines Zwillings zurückzugeben. Die folgende Abfrage projiziert die Eigenschaft *Name* der *Consumers*, die mit der *Factory* mit einer ID von *ABC* durch eine Beziehung von *Factory.customer* verbunden sind. 
+
+```sql
+SELECT Consumer.name 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Consumer.name)
+```
+
+Sie können Projektion auch verwenden, um eine Eigenschaft einer Beziehung zurückzugeben. Wie im vorhergehenden Beispiel projiziert die folgende Abfrage die Eigenschaft *Name* der *Consumers*, die mit der *Factory* mit einer ID von *ABC* über eine Beziehung von *Factory.customer* verbunden sind. Jetzt gibt sie aber auch zwei Eigenschaften dieser Beziehung zurück: *prop1* und *prop2*. Dies geschieht durch Benennen der Beziehung *Edge* und Erfassen der zugehörigen Eigenschaften.  
+
+```sql
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
+```
+
+Sie können auch Aliase verwenden, um Abfragen mit Projektion zu vereinfachen.
+
+Mit der folgenden Abfrage werden die gleichen Vorgänge wie im vorherigen Beispiel durchführt, aber für die Eigenschaftsnamen werden die Aliase `consumerName`, `first`, `second` und `factoryArea`verwendet. 
+ 
+```sql
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
+```
+
+Dies ist eine ähnliche Abfrage, die die gleiche Menge wie oben festgelegt abfragt, aber nur die Eigenschaft *Consumer.name* als `consumerName` und die vollständige *Factory* als Zwilling projiziert. 
+
+```sql
+SELECT Consumer.name AS consumerName, Factory 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) 
 ```
 
 ### <a name="query-by-property"></a>Abfrage nach Eigenschaft
@@ -178,10 +268,10 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfragetypen **kombinieren**, um mehr Details in eine einzelne Abfrage einzubeziehen. Hier folgen einige zusätzliche Beispiele für zusammengesetzte Abfragen, die mehr als einen Typ von Zwillingsdeskriptor gleichzeitig abfragen.
 
-| BESCHREIBUNG | Abfrage |
+| Beschreibung | Abfrage |
 | --- | --- |
 | Von den Geräten, über die *Room 123* verfügt, geben Sie die MxChip-Geräte zurück, die die Rolle des Operators übernehmen | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| Rufen Sie Zwillinge ab, die eine Beziehung namens *Enthält* mit einem anderen Zwilling aufweisen, der die ID *id1* besitzt | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| Rufen Sie Zwillinge ab, die eine Beziehung namens *Enthält* mit einem anderen Zwilling aufweisen, der die ID *id1* besitzt | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | Rufen Sie alle Räume dieses Raummodells ab, die in *floor11* enthalten sind | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="reference-expressions-and-conditions"></a>Referenz: Ausdrücke und Bedingungen

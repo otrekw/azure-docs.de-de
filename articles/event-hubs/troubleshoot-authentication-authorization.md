@@ -3,12 +3,12 @@ title: 'Behandeln von Authentifizierungs- und Autorisierungsproblemen: Azure Eve
 description: Dieser Artikel bietet Informationen zum Beheben von Authentifizierungs- und Autorisierungsproblemen mit Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533885"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566226"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Behandeln von Authentifizierungs- und Autorisierungsproblemen: Azure Event Hubs
 Dieser Artikel bietet Tipps zum [Beheben von Konnektivitätsproblemen](troubleshooting-guide.md) mit Azure Event Hubs. Dieser Artikel bietet Tipps und Empfehlungen zum Beheben von Authentifizierungs- und Autorisierungsproblemen mit Azure Event Hubs. 
@@ -20,6 +20,8 @@ Wenn Sie Azure Active Directory (Azure AD) für die Authentifizierung und Autori
 - [Azure Event Hubs-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) für den vollständigen Zugriff auf Event Hubs-Ressourcen.
 - [Azure Event Hubs-Datenabsender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) für den Sendezugriff.
 - [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) für den Empfangszugriff.
+
+Informationen zu den integrierten Rollen für die Schemaregistrierung finden Sie unter [Schemaregistrierungsrollen](schema-registry-overview.md#role-based-access-control).
 
 ### <a name="resource-scopes"></a>Ressourcenbereiche
 - **Consumergruppe**: Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer Azure-Rolle zu einem Sicherheitsprinzipal auf dieser Ebene. 

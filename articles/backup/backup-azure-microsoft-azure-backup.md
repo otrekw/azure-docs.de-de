@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975518"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056700"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -200,6 +200,9 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
     ![Angeben eines Speicherorts für die Installation von Dateien](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass das Scratchverzeichnis eine Größe von mindestens 5 % der Daten aufweist, die in der Cloud gesichert werden. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Vorbereiten der Datenspeicherung](/system-center/dpm/plan-long-and-short-term-data-storage).
+
+    Die Kapazitätsanforderungen für Datenträgerspeicher variieren und hängen hauptsächlich von der Größe der geschützten Daten, der Größe des täglichen Wiederherstellungspunktes, der erwarteten Zuwachsrate der Volumedaten und der anvisierten Beibehaltungsdauer ab. Es wird empfohlen, den Datenträgerspeicher doppelt so groß wie die geschützten Daten auszulegen. Dabei wird für den täglichen Wiederherstellungspunkt eine Größe angenommen, die 10 % der Größe der geschützten Daten entspricht. Zudem wird von einer Beibehaltungsdauer von 10 Tagen ausgegangen. Ziehen Sie den [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301) zu Rate, um eine gute Schätzung der Größe zu erhalten. 
+
 5. Geben Sie ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und wählen Sie **Weiter** aus.
 
     ![Angeben eines sicheres Kennworts](./media/backup-azure-microsoft-azure-backup/security-screen.png)

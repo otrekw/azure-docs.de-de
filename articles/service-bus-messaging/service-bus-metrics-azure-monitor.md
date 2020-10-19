@@ -2,13 +2,13 @@
 title: Azure Service Bus-Metriken in Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Sie mit Azure Monitor Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) überwachen können.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065011"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598134"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus-Metriken in Azure Monitor
 
@@ -93,7 +93,7 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|Die aktiven Verbindungen.|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Die aktiven Verbindungen.|Die Anzahl der aktiven Verbindungen für einen Namespace sowie für eine Entität im Namespace. Der Wert für diese Metrik ist ein Zeitpunktwert. Verbindungen, die unmittelbar nach diesem Zeitpunkt aktiv waren, werden in der Metrik möglicherweise nicht berücksichtigt.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 |Geöffnete Verbindungen |Die Anzahl der geöffneten Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 |Geschlossene Verbindungen |Die Anzahl der geschlossenen Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 
@@ -147,7 +147,7 @@ Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monit
     2. Geben Sie eine **Beschreibung** für die Warnung ein.
     3. Wählen Sie den **Schweregrad** für diese Warnung aus. 
 
-        ![Warnungsdetails](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![Screenshot: Seite „Regel erstellen“. Das Definieren von Warnungsdetails ist erweitert, und die Felder für Name, Beschreibung und Schweregrad der Warnungsregel sind hervorgehoben.](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. Erweitern Sie auf der Seite **Regel erstellen** die Option **Aktionsgruppe definieren**, wählen Sie **Neue Aktionsgruppe** aus, und führen Sie auf der Gruppenseite **Aktion hinzufügen** die folgenden Aktionen aus. 
     1. Geben Sie einen Namen für die Aktionsgruppe ein.
     2. Geben Sie einen kurzen Namen für die Aktionsgruppe ein. 
@@ -161,7 +161,7 @@ Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monit
         2. Geben Sie die **E-Mail-Adresse** ein. 
         3. Klicken Sie auf **OK**.
 
-            ![Warnungsdetails](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![Screenshot: Seite „Aktionsgruppe hinzufügen“. Eine Aktion namens „Send email“ (E-Mail senden) mit dem Aktionstyp „Email/SMS/Push/Voice“ wird der Gruppe hinzugefügt.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. Wählen Sie im Bereich **Aktionsgruppe hinzufügen** die Option **OK** aus. 
 1. Wählen Sie auf der Seite **Regel erstellen** die Option **Warnungsregel erstellen** aus. 
 

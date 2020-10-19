@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91652614"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -73,11 +73,21 @@ Alle Trigger und Bindungen enthalten eine `direction`-Eigenschaft in der Datei [
 
 Wenn Sie zum Konfigurieren von Triggern und Bindungen [Attribute in einer Klassenbibliothek](functions-dotnet-class-library.md) verwenden, wird die Richtung in einem Attributkonstruktor angegeben oder aus dem Parametertyp abgeleitet.
 
+## <a name="add-bindings-to-a-function"></a>Hinzufügen von Bindungen zu einer Funktion
+
+Sie können Ihre Funktion mit anderen Diensten verbinden, indem Sie Eingabe- oder Ausgabebindungen verwenden. Fügen Sie eine Bindung hinzu, indem Sie Ihrer Funktion ihre spezifischen Definitionen hinzufügen. Informationen zur Vorgehensweise finden Sie unter [Hinzufügen von Bindungen zu einer vorhandenen Funktion in Azure Functions](add-bindings-existing-function.md).  
+
 ## <a name="supported-bindings"></a>Unterstützte Bindungen
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 Informationen darüber, welche Bindungen sich in der Vorschauversion befinden oder für die Produktion zugelassen sind, finden Sie unter [Unterstützte Sprachen](supported-languages.md).
+
+## <a name="bindings-code-examples"></a>Codebeispiele für Bindungen
+
+Verwenden Sie die folgende Tabelle, um Beispiele für bestimmte Bindungstypen zu finden, die Ihnen zeigen, wie Sie mit Bindungen in Ihren Funktionen arbeiten. Wählen Sie zunächst die Registerkarte „Sprache“ aus, die Ihrem Projekt entspricht. 
+
+[!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
 
 ## <a name="resources"></a>Ressourcen
 - [Bindungsausdrücke und Muster](./functions-bindings-expressions-patterns.md)

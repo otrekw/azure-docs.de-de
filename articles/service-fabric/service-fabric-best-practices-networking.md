@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948962"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91630701"
 ---
 # <a name="networking"></a>Netzwerk
 
@@ -59,7 +59,7 @@ Die Erweiterung der Infrastruktur ist erforderlich, um beschleunigten Netzwerkbe
 
 ## <a name="network-security-rules"></a>Netzwerksicherheitsregeln
 
-Die hier angegebenen grundlegenden Regeln stellen die Mindestanforderungen für eine Sicherheitssperrung eines verwalteten Azure Service Fabric-Clusters dar. Wenn die folgenden Ports nicht geöffnet sind oder die IP-Adresse/URL nicht auf eine Whitelists gesetzt wurde, kann der Cluster nicht ordnungsgemäß betrieben und unterstützt werden. Bei diesem Regelsatz ist es zwingend erforderlich, [automatische Upgrades von Betriebssystemimages](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) zu verwenden. Andernfalls müssen zusätzliche Ports geöffnet werden.
+Die hier angegebenen grundlegenden Regeln stellen die Mindestanforderungen für eine Sicherheitssperrung eines verwalteten Azure Service Fabric-Clusters dar. Wenn die folgenden Ports nicht geöffnet sind oder die IP-Adresse/URL nicht genehmigt wurde, kann der Cluster nicht ordnungsgemäß betrieben werden und wird möglicherweise nicht unterstützt. Bei diesem Regelsatz ist es zwingend erforderlich, [automatische Upgrades von Betriebssystemimages](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) zu verwenden. Andernfalls müssen zusätzliche Ports geöffnet werden.
 
 ### <a name="inbound"></a>Eingehende Verbindungen 
 |Priority   |Name               |Port        |Protocol  |`Source`             |Destination       |Aktion   

@@ -5,107 +5,79 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 5/21/2019
+ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: fe2159f0eeb9d01081e6a25e7a88ceff4f1e361c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91626641"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
-Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](front-door-overview.md) mit einem Zertifikat für die TLS-Terminierung zu erstellen. Eine Routingregel wird verwendet, um HTTP-Datenverkehr an HTTPS umzuleiten.
-
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
-
-> [!div class="checklist"]
-> * Erstellen einer Front Door-Ressource mit einer vorhandenen Web-App-Ressource
-> * Hinzufügen einer benutzerdefinierten Domäne mit einem TLS/SSL-Zertifikat 
-> * Einrichten von HTTPS-Umleitung für die benutzerdefinierte Domäne
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](quickstart-create-front-door.md) mit einem Zertifikat für TLS-Terminierung zu erstellen. Eine Routingregel wird verwendet, um HTTP-Datenverkehr an HTTPS umzuleiten.
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Erstellen einer Front Door-Ressource mit einer vorhandenen Web-App-Ressource
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Ressource erstellen**.
-3. Suchen Sie mithilfe der Suchleiste nach **Front Door.**  Klicken Sie auf **Erstellen**, wenn Sie den Ressourcentyp gefunden haben.
-4. Wählen Sie ein Abonnement aus, und verwenden Sie dann eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Beachten Sie, dass sich der Speicherort, der in der Benutzeroberfläche abgefragt wird, nur auf die Ressourcengruppe bezieht. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door) bereitgestellt.
 
-    ![Konfigurieren der Grundlagen für eine neue Front Door-Ressource](./media/front-door-url-redirect/front-door-create-basics.png)
+1. Wählen Sie in der linken oberen Ecke des Azure-Portals **Ressource erstellen** aus.
 
-5. Klicken Sie auf **Weiter**, um auf die Registerkarte „Konfiguration“ zu gelangen. Die Konfiguration für Front Door erfolgt in drei Schritten: Hinzufügen eines Front-End-Standardhosts, Hinzufügen von Back-Ends in einem Back-End-Pool und anschließendes Erstellen von Routingregeln, um das Routingverhalten für den Front-End-Host zuzuordnen. 
+1. Suchen Sie mithilfe der Suchleiste nach **Front Door**. Wählen Sie **Erstellen** aus, wenn Sie den Ressourcentyp gefunden haben.
 
-     ![Front Door-Konfigurations-Designer](./media/front-door-url-redirect/front-door-designer.png)
+1. Wählen Sie ein *Abonnement* aus, und verwenden Sie dann eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Wählen Sie **Weiter** aus, um auf die Registerkarte „Konfiguration“ zu gelangen.
 
-6. Klicken Sie auf das Symbol „ **+** “ für die _Front-End-Hosts_, um einen Front-End-Host zu erstellen, und geben Sie einen global eindeutigen Namen für Ihren Front-End-Standardhost für Front Door (`\<**name**\>.azurefd.net`) ein. Klicken Sie auf **Hinzufügen**, um mit dem nächsten Schritt fortzufahren.
+    > [!NOTE]
+    > Der Speicherort, der in der Benutzeroberfläche abgefragt wird, bezieht sich nur auf die Ressourcengruppe. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door) bereitgestellt.
 
-     ![Hinzufügen eines Front-End-Hosts](./media/front-door-url-redirect/front-door-create-fehost.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-7. Klicken Sie auf das Symbol „ **+** “ für die _Back-End-Pools_, um einen Back-End-Pool zu erstellen. Geben Sie einen Namen für den Back-End-Pool an, und klicken Sie dann auf **Back-End hinzufügen**.
-8. Wählen Sie den Back-End-Hosttyp als _App Service_ aus. Wählen Sie das Abonnement aus, in dem Ihre Web-App gehostet wird, und wählen Sie dann die entsprechende Web-App aus der Dropdownliste für **Name des Back-End-Hosts** aus.
-9. Klicken Sie auf **Hinzufügen**, um das Back-End zu speichern, und klicken Sie dann nochmals auf **Hinzufügen**, um die Konfiguration des Back-End-Pools zu speichern.   ![Hinzufügen eines Back-Ends in einem Back-End-Pool](./media/front-door-url-redirect/front-door-create-backendpool.png)
+1. Die Konfiguration für Front Door erfolgt in drei Schritten: Hinzufügen eines Front-End-Standardhosts, Hinzufügen von Back-Ends in einem Back-End-Pool und anschließendes Erstellen von Routingregeln, um das Routingverhalten für den Front-End-Host zuzuordnen. Wählen Sie auf den _Front-End-Hosts_ das Symbol **+** aus, um einen Front-End-Host zu erstellen.
 
-10. Klicken Sie auf das Symbol „ **+** “ für die _Routingregeln_, um eine Route zu erstellen. Geben Sie einen Namen für die Route an (z.B. „HttpToHttpsRedirect“), und legen Sie dann das Feld _Akzeptierten Protokolle_ auf **Nur HTTP** fest. Stellen Sie sicher, dass der entsprechende _Front-End-Host_ ausgewählt ist.  
-11. Legen Sie im Abschnitt _Routendetails_ den _Routentyp_ auf **Umleiten** fest, und stellen Sie sicher, dass der _Umleitungstyp_ auf **Gefunden (302)** und das _Umleitungsprotokoll_ auf **Nur HTTPS** festgelegt ist. 
-12. Klicken Sie auf „Hinzufügen“, um die Routingregel für die Umleitung von HTTP zu HTTPS zu speichern.
-     ![Hinzufügen einer Umleitungsroute von HTTP zu HTTPS](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. Fügen Sie eine weitere Routingregel für die Verarbeitung des HTTPS-Datenverkehrs hinzu. Klicken Sie auf das Symbol „ **+** “ für die _Routingregeln_, und geben Sie einen Namen für die Route an (z.B. „DefaultForwardingRoute“), und legen Sie dann das Feld _Akzeptierte Protokolle_ auf **Nur HTTPS** fest. Stellen Sie sicher, dass der entsprechende _Front-End-Host_ ausgewählt ist.
-14. Legen Sie im Abschnitt „Routendetails“ den _Routentyp_ auf **Weiterleiten** fest, und stellen Sie sicher, dass der richtige Back-End-Pool ausgewählt ist und das _Weiterleitungsprotokoll_ auf **Nur HTTPS** festgelegt ist. 
-15. Klicken Sie auf „Hinzufügen“, um die Routingregel für die Anforderungsweiterleitung zu speichern.
-     ![Hinzufügen einer Weiterleitungsroute für HTTPS-Datenverkehr](./media/front-door-url-redirect/front-door-forward-route-example.png)
-16. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**, um Ihr Front Door-Profil zu erstellen. Navigieren Sie zu der Ressource, nachdem diese erstellt wurde.
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>Hinzufügen einer benutzerdefinierten Domäne für die Front Door-Ressource und Aktivieren von HTTPS für diese
-Die folgenden Schritte zeigen, wie Sie einer vorhandenen Front Door-Ressource eine benutzerdefinierte Domäne hinzufügen und dann eine Umleitung von HTTP zu HTTPS für diese aktivieren können. 
+1. Geben Sie einen global eindeutigen Namen für Ihren Front-End-Standardhost für Front Door an. Wählen Sie **Hinzufügen** aus, um mit dem nächsten Schritt fortzufahren.
 
-### <a name="add-a-custom-domain"></a>Hinzufügen einer benutzerdefinierten Domäne
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-In diesem Beispiel fügen Sie einen CNAME-Eintrag für die Unterdomäne `www` (z.B. `www.contosonews.com`) hinzu.
+### <a name="create-backend-pool"></a>Erstellen eines Back-End-Pools
 
-#### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
+1. Wählen Sie das Symbol **+** für die _Back-End-Pools_ aus, um einen Back-End-Pool zu erstellen. Geben Sie einen Namen für den Back-End-Pool an, und wählen Sie dann **Back-End hinzufügen** aus.
 
-Fügen Sie dem Front-End-Standardhost Ihrer Front Door-Ressource einen CNAME-Eintrag zum Zuordnen einer Unterdomäne hinzu (`<name>.azurefd.net`, wobei `<name>` der Name Ihres Front Door-Profils ist).
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-Fügen Sie für die Domäne `www.contoso.com` (als Beispiel) einen CNAME-Eintrag hinzu, mit dem der Name `www` dem Element `<name>.azurefd.net` zugeordnet wird.
+1. Wählen Sie den Back-End-Hosttyp als _App Service_ aus. Wählen Sie das Abonnement aus, in dem Ihre Web-App gehostet wird, und wählen Sie dann die entsprechende Web-App aus der Dropdownliste für **Name des Back-End-Hosts** aus.
 
-Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-![CNAME-Eintrag für benutzerdefinierte Domäne für Front Door](./media/front-door-url-redirect/front-door-dns-cname.png)
+1. Wählen Sie **Hinzufügen** aus, um das Back-End zu speichern, und wählen Sie dann nochmals **Hinzufügen** aus, um die Konfiguration des Back-End-Pools zu speichern. 
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>Integrieren der benutzerdefinierten Domäne in Ihre Front Door-Instanz
+## <a name="create-http-to-https-redirect-rule"></a>Erstellen einer Umleitungsregel von HTTP zu HTTPS
 
-1. Klicken Sie in Front Door auf der Registerkarte „Designer“ im Abschnitt „Front-End-Hosts“ auf das Symbol „+“, um eine neue benutzerdefinierte Domäne hinzuzufügen. 
-2. Geben Sie den vollqualifizierten benutzerdefinierten DNS-Namen in das Feld für den benutzerdefinierten Hostnamen ein, z.B. `www.contosonews.com`. 
-3. Nachdem die CNAME-Zuordnung von der Domäne zu Ihrer Front Door-Instanz überprüft wurde, klicken Sie auf **Hinzufügen**, um die benutzerdefinierte Domäne hinzuzufügen.
-4. Klicken Sie auf **Speichern**, um die Änderungen zu übermitteln.
+1. Wählen Sie das Symbol **+** für die *Routingregeln* aus, um eine Route zu erstellen. Geben Sie einen Namen für die Route an (z.B. „HttpToHttpsRedirect“), und legen Sie dann das Feld *Akzeptiertes Protokoll* auf **Nur HTTP** fest. Stellen Sie sicher, dass das entsprechende *Front-End bzw. die richtigen Domänen* ausgewählt ist/sind.  
 
-![Menü „Benutzerdefinierte Domänen“](./media/front-door-url-redirect/front-door-add-custom-domain.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-### <a name="enable-https-on-your-custom-domain"></a>Aktivieren von HTTPS für eine benutzerdefinierte Domäne
+1. Legen Sie im Abschnitt *Routendetails* den *Routentyp* auf **Umleiten** fest. Stellen Sie sicher, dass der *Umleitungstyp* auf **Found (302)** und das *Umleitungsprotokoll* auf **Nur HTTPS** festgelegt ist. 
 
-1. Klicken Sie auf die benutzerdefinierte Domäne, die hinzugefügt wurde, und ändern Sie den Status unter dem Abschnitt **HTTPS für benutzerdefinierte Domänen** in **Aktiviert**.
-2. Sie können den **Zertifikatverwaltungstyp** für das kostenlose Zertifikat, das von Front Door gewartet, verwaltet und automatisch bewertet wird, auf _Durch Front Door verwaltet_ festgelegt lassen. Sie können auch Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat verwenden, das in Azure Key Vault gespeichert ist. In diesem Tutorial wird davon ausgegangen, dass ein durch Front Door verwaltetes Zertifikat verwendet wird.
-![Aktivieren von HTTPS für die benutzerdefinierte Domäne](./media/front-door-url-redirect/front-door-custom-domain-https.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
 
-3. Klicken Sie auf **Aktualisieren**, um die Auswahl zu speichern, und klicken Sie dann auf **Speichern**.
-4. Klicken Sie nach einigen Minuten auf **Aktualisieren**, und klicken Sie dann noch mal auf die benutzerdefinierte Domäne, um den Status der Zertifikatbereitstellung anzuzeigen. 
+1. Wählen Sie **Hinzufügen** aus, um die Routingregel für die Umleitung von HTTP zu HTTPS zu speichern.
 
-> [!WARNING]
-> Die Aktivierung von HTTPS für eine benutzerdefinierte Domäne kann einige Minuten dauern und hängt auch von der Überprüfung des Besitzes ab, wenn der CNAME-Eintrag nicht direkt Ihrem Front Door-Host `<name>.azurefd.net` zugeordnet ist. Weitere Informationen zum [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](./front-door-custom-domain-https.md).
+## <a name="create-forwarding-rule"></a>Erstellen einer Weiterleitungsregel
 
-## <a name="configure-the-routing-rules-for-the-custom-domain"></a>Konfigurieren der Routingregeln für die benutzerdefinierte Domäne
+1. Fügen Sie eine weitere Routingregel für die Verarbeitung des HTTPS-Datenverkehrs hinzu. Wählen Sie das Zeichen **+** für die *Routingregeln* aus, und geben Sie einen Namen für die Route an, z. B. “DefaultForwardingRoute“. Legen Sie dann das Feld *Akzeptierte Protokolle* auf **Nur HTTPS** fest. Stellen Sie sicher, dass das entsprechende *Front-End bzw. die richtigen Domänen* ausgewählt ist/sind.
 
-1. Klicken Sie auf die Umleitungsroutingregel, die Sie zuvor erstellt haben.
-2. Klicken Sie auf die Dropdownliste für Front-End-Hosts, und wählen Sie Ihre benutzerdefinierte Domäne aus, um diese Route auch auf Ihre Domäne anzuwenden.
-3. Klicken Sie auf **Aktualisieren**.
-4. Führen Sie den gleichen Vorgang auch für die andere Routingregel aus, also für die Weiterleitungsroute, um die benutzerdefinierte Domäne hinzuzufügen.
-5. Klicken Sie auf **Speichern**, um die Änderungen zu übermitteln.
+1. Legen Sie im Abschnitt „Routendetails“ den *Routentyp* auf **Umleiten** fest. Stellen Sie sicher, dass der richtige Back-End-Pool ausgewählt wird und das *Weiterleitungsprotokoll* auf **Nur HTTPS** festgelegt ist. 
+
+    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource" border="false":::
+
+1. Wählen Sie **Hinzufügen** aus, um die Routingregel für die Anforderungsweiterleitung zu speichern.
+
+1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus, um Ihr Front Door-Profil zu erstellen. Navigieren Sie zu der Ressource, nachdem diese erstellt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
 - Weitere Informationen zur [URL-Umleitung für Front Door](front-door-url-redirect.md).

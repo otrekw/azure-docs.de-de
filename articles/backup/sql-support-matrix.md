@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926449"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946347"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -22,7 +22,7 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 **Unterstützte Bereitstellungen** | SQL-Marketplace-Azure-VMs und Nicht-Marketplace-VMs (manuelle SQL Server-Installation) werden unterstützt.
 **Unterstützte Regionen** | „Australien, Südosten (ASE)“, „Australien, Osten (AE)“, „Australien, Mitte (AC)“, „Australien, Mitte 2 (AC)“ <br> Brasilien, Süden (BRS)<br> „Kanada, Mitte (CNC)“, „Kanada, Osten (CE)“<br> „Asien, Südosten (SEA)“, „Asien, Osten (EA)“ <br> „USA, Osten (EUS)“, „USA, Osten 2 (EUS2)“, „USA, Westen-Mitte (WCUS)“, „USA, Westen (WUS)“, „USA, Westen 2 (WUS 2)“, „USA, Norden-Mitte (NCUS)“, „USA, Mitte (CUS)“, „USA, Süden-Mitte (SCUS)“ <br> „Indien, Mitte (INC)“, „Indien, Süden (INS)“, „Indien, Westen“ <br> „Japan, Osten (JPE)“, „Japan, Westen (JPW)“ <br> „Südkorea, Mitte (KRC)“, „Südkorea, Süden (KRS)“ <br> „Europa, Norden (NE)“, „Europa, Westen“ <br> „Vereinigtes Königreich, Süden (UKS)“, „Vereinigtes Königreich, Westen (UKW)“ <br> „US Gov Arizona“, „US Gov Virginia“, „US Gov Texas“, „US DoD, Mitte“, „US DoD, Osten“ <br> „Deutschland, Norden“, „Deutschland, Westen-Mitte“ <br> „Schweiz, Norden“, „Schweiz, Westen“ <br> Frankreich, Mitte <br> „China, Osten“, „China, Osten 2“, „China, Norden“, „China, Norden 2“
 **Unterstützte Betriebssysteme** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wird derzeit nicht unterstützt.
-**Unterstützte SQL Server-Versionen** | SQL Server 2019, SQL Server 2017 wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) beschrieben, SQL Server 2016 und SPs wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) beschrieben, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express
+**Unterstützte SQL Server-Versionen** | SQL Server 2019, SQL Server 2017 wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) beschrieben, SQL Server 2016 und SPs wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) beschrieben, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express<br><br>Lokale Express-Datenbankversionen werden nicht unterstützt.
 **Unterstützte .NET-Versionen** | .NET Framework 4.5.2 oder höher auf dem virtuellen Computer installiert
 
 ## <a name="feature-considerations-and-limitations"></a>Überlegungen und Einschränkungen in Bezug auf Features

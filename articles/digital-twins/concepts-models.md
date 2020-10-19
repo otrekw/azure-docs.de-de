@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042631"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019017"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -28,8 +28,10 @@ Modelle für Azure Digital Twins werden mithilfe von DTDL (Digital Twins Definit
 
 Azure Digital Twins arbeitet mit **DTDL _Version 2_**. Weitere Informationen zu dieser Version von DTDL finden Sie in der Dokumentation zur Spezifikation auf GitHub: [*Digital Twins Definition Language (DTDL): Version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Die Verwendung von DTDL _Version 1_ mit Azure Digital Twins ist nun veraltet.
 
-> [!TIP] 
-> Nicht alle Dienste, die DTDL verwenden, implementieren genau die gleichen Features von DTDL. Beispielsweise verwendet IoT Plug & Play keine DTDL-Features, die für Graphen gedacht sind, während Azure Digital Twins derzeit keine DTDL-Befehle implementiert. Weitere Informationen zu den DTDL-Features, die für Azure Digital Twins spezifisch sind, finden Sie in diesem Artikel im Abschnitt [ Besonderheiten der DTDL-Implementierung für Azure Digital Twins](#azure-digital-twins-dtdl-implementation-specifics).
+> [!NOTE] 
+> Nicht alle Dienste, die DTDL verwenden, implementieren genau die gleichen Features von DTDL. Beispielsweise verwendet IoT Plug & Play keine DTDL-Features, die für Graphen gedacht sind, während Azure Digital Twins derzeit keine DTDL-Befehle implementiert.
+>
+> Weitere Informationen zu den DTDL-Features, die für Azure Digital Twins spezifisch sind, finden Sie in diesem Artikel im Abschnitt [ Besonderheiten der DTDL-Implementierung für Azure Digital Twins](#azure-digital-twins-dtdl-implementation-specifics).
 
 ## <a name="elements-of-a-model"></a>Elemente eines Modells
 
@@ -55,7 +57,7 @@ Hier finden Sie einige zusätzliche Anleitungen zum Unterscheiden zwischen den D
 
 Zwischen Eigenschaften und Telemetrie für Azure Digital Twins-Modelle gibt es folgenden Unterschied:
 * Bei **Eigenschaften** muss es Sicherungsspeicher geben. Dies bedeutet, dass Sie eine Eigenschaft jederzeit lesen und deren Wert abrufen können. Wenn die Eigenschaft schreibbar ist, können Sie darin auch einen Wert speichern.  
-* **Telemetrie** ähnelt eher einem Datenstrom von Ereignissen. Es handelt sich dabei um eine Reihe von Datennachrichten mit nur kurzer Lebensdauer. Wenn Sie kein Lauschen für das Ereignis und keine Maßnahmen einrichten, die in diesem Fall zu ergreifen sind, gibt es zu einem späteren Zeitpunkt keine Ablaufverfolgung für das Ereignis. Sie können dann nicht mehr dorthin zurückkehren und es lesen. 
+* **Telemetrie** ähnelt eher einem Datenstrom von Ereignissen. Es handelt sich dabei um eine Reihe von Datennachrichten mit nur kurzer Lebensdauer. Wenn Sie kein Lauschen für das Ereignis und keine Maßnahmen einrichten, die in diesem Fall zu ergreifen sind, gibt es zu einem späteren Zeitpunkt keine Ablaufverfolgung für das Ereignis. Sie können dann nicht mehr zur Ablaufverfolgung zurückkehren und diese lesen. 
   - In C#-Begriffen ist Telemetrie wie ein C#-Ereignis. 
   - In IoT-Begriffen ist Telemetrie normalerweise eine einzelne Messung, die von einem Gerät gesendet wird.
 
@@ -75,6 +77,8 @@ Damit ein DTDL-Modell mit Azure Digital Twins kompatibel ist, muss es diese Anfo
 * DTDL für Azure Digital Twins darf keine *Befehle* definieren.
 * Azure Digital Twins ermöglicht für Komponenten nur eine einzelne Schachtelungsebene. Das bedeutet, dass eine Schnittstelle, die als Komponente verwendet wird, selbst keine Komponenten haben darf. 
 * Schnittstellen können nicht inline innerhalb anderer DTDL-Schnittstellen definiert werden, sondern müssen als separate Entitäten auf oberster Ebene mit eigenen IDs definiert werden. Wenn dann eine andere Schnittstelle diese Schnittstelle als Komponente oder durch Vererbung einbinden möchte, kann sie auf ihre ID verweisen.
+
+Azure Digital Twins beobachtet auch nicht das `writable`-Attribut für Eigenschaften oder Beziehungen. Obwohl dies gemäß DTDL-Spezifikationen festgelegt werden kann, wird der Wert von Azure Digital Twins nicht verwendet. Stattdessen werden diese von externen Clients, die über allgemeine Schreibberechtigungen für den Azure Digital Twins-Dienst verfügen, immer als beschreibbar behandelt.
 
 ## <a name="example-model-code"></a>Beispielmodellcode
 
@@ -134,7 +138,7 @@ Beachten Sie, dass die-Planeten auch mit **Monden** interagieren können, die ih
 
 Die Felder des Modells sind wie folgt:
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | --- | --- |
 | `@id` | Ein Bezeichner für das Modell. Muss das Format `dtmi:<domain>:<unique model identifier>;<model version number>` haben. |
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |

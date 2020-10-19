@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401570"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449209"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Abgleich von Anforderungen mit Routingregeln durch Front Door
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>Abgleichen von Anforderungen mit einer Routingregel
 
-Wenn eine Anforderung nach dem Herstellen einer Verbindung und dem Ausführen eines TLS-Handshakes in einer Front Door-Umgebung eingeht, besteht eine der ersten Aktionen von Front Door darin, anhand aller Konfigurationen zu bestimmen, mit welcher Routingregel die Anforderung abgeglichen werden soll. Danach wird die definierte Aktion ausgeführt. Der folgende Artikel erläutert, wie Front Door bestimmt, welche Routenkonfiguration beim Verarbeiten einer HTTP-Anforderung verwendet werden soll.
+Wenn eine Anforderung nach dem Herstellen einer Verbindung und dem Ausführen eines TLS-Handshakes in einer Front Door-Umgebung eingeht, besteht eine der ersten Aktionen von Front Door in der Ermittlung, mit welcher Routingregel die Anforderung abgeglichen werden soll. Danach wird die definierte Aktion in der Konfiguration ausgeführt. Der folgende Artikel erläutert, wie Front Door bestimmt, welche Routenkonfiguration beim Verarbeiten einer HTTP-Anforderung verwendet werden soll.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Struktur einer Front Door-Routenkonfiguration
 Die Konfiguration einer Front Door-Routingregel besteht aus zwei Hauptteilen: einer „linken Seite“ und einer „rechten Seite“. Die eingehende Anforderung wird mit der linken Seite der Route abgeglichen, während die rechte Seite definiert, wie die Anforderung verarbeitet wird.
@@ -41,7 +41,7 @@ Die Entscheidung darüber, wie die Anforderung verarbeitet werden soll, richtet 
 In diesem Abschnitt wird erläutert, wie der Abgleich mit einer bestimmten Front Door-Routingregel funktioniert. Das grundlegende Konzept besteht darin, immer den **ersten genauesten Treffer** zu verwenden, wobei nur die „linke Seite“ in Betracht gezogen wird.  Der Abgleich erfolgt zunächst basierend auf dem HTTP-Protokoll, dann basierend auf dem Front-End-Host, dann basierend auf dem Pfad.
 
 ### <a name="frontend-host-matching"></a>Abgleich mit Front-End-Hosts
-Beim Abgleich mit Front-End-Hosts wird folgende Logik verwendet:
+Beim Abgleich mit Front-End-Hosts wird die unten definierte Logik verwendet:
 
 1. Es wird nach allen Routingregeln mit einem exakten Treffer für den Host gesucht.
 2. Wenn kein exakter Treffer für einen Front-End-Host gefunden wird, wird die Anforderung abgelehnt und der Fehler „400 – Ungültige Anforderung“ gesendet.

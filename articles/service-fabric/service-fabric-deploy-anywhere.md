@@ -1,17 +1,15 @@
 ---
 title: Übersicht über Azure-Cluster und eigenständige Service Fabric-Cluster
 description: Sie können Service Fabric-Cluster auf virtuellen oder physischen Computern erstellen, auf denen Windows Server oder Linux ausgeführt wird. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75751142"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842596"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Azure-Cluster und eigenständige Service Fabric-Cluster unter Windows Server und Linux
 
@@ -28,7 +26,7 @@ Unter Azure profitieren Sie von der Integration anderer Azure-Features und -Dien
 * **Service Fabric-Cluster als Azure-Ressource** Ein Service Fabric-Cluster ist eine Azure-Ressource, sodass Sie ihn genau wie andere Azure-Ressourcen in Azure modellieren können.
 * **Integration in Azure-Infrastruktur** Service Fabric wird mit der zugrunde liegenden Azure-Infrastruktur für Betriebssystem, Netzwerk und andere Upgrades koordiniert, um die Verfügbarkeit und Zuverlässigkeit Ihrer Anwendungen zu verbessern.  
 * **Diagnose:** In Azure wird Integration von Azure-Diagnose und Azure Monitor-Protokollen bereitgestellt.
-* **Automatische Skalierung**: Integrierte automatische Skalierungsfunktion für in Azure gehostete Cluster aufgrund von Virtual Machines-Skalierungsgruppen. In lokalen und anderen Cloudumgebungen müssen Sie eine eigene automatische Skalierungsfunktion entwickeln oder eine manuelle Skalierung mithilfe der APIs vornehmen, die Service Fabric für die Skalierung von Clustern verfügbar macht.
+* **Automatische Skalierung:** Integrierte automatische Skalierungsfunktion für in Azure gehostete Cluster über Virtual Machines-Skalierungsgruppen. In lokalen und anderen Cloudumgebungen müssen Sie eine eigene automatische Skalierungsfunktion entwickeln oder eine manuelle Skalierung mithilfe der APIs vornehmen, die Service Fabric für die Skalierung von Clustern verfügbar macht.
 
 ## <a name="benefits-of-standalone-clusters"></a>Vorteile von eigenständigen Clustern
 

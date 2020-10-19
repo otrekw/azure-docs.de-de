@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tre
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567824"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 
@@ -30,13 +30,13 @@ Das vorläufige Löschen ist für neu erstellte Recovery Services-Tresore stand
 Verwenden Sie den folgenden *GET*-Vorgang, um den aktuellen Zustand des vorläufigen Löschens für einen Tresor abzurufen:
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 Der GET-URI verfügt über die Parameter `{subscriptionId}`, `{vaultName}` und `{vaultresourceGroupName}`. In diesem Beispiel ist `{vaultName}` auf „testVault“ und `{vaultresourceGroupName}` auf „testVaultRG“ festgelegt. Da alle erforderlichen Parameter im URI angegeben sind, besteht keine Notwendigkeit eines separaten Anforderungstexts.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>Antworten
@@ -65,16 +65,16 @@ Nach Übermittlung der GET-Anforderung wird eine Antwort vom Typ „200“ (erfo
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Aktualisieren des Zustands des vorläufigen Löschens mithilfe der REST-API
 
-Verwenden Sie den folgenden *PATCH*-Vorgang, um den Zustand des vorläufigen Löschens des Recovery Services-Tresors mithilfe der REST-API zu aktualisieren.
+Verwenden Sie den folgenden *PUT*-Vorgang, um den Zustand des vorläufigen Löschens des Recovery Services-Tresors mithilfe der REST-API zu aktualisieren.
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-Der PATCH-URI verfügt über die Parameter `{subscriptionId}`, `{vaultName}` und `{vaultresourceGroupName}`. In diesem Beispiel ist `{vaultName}` auf „testVault“ und `{vaultresourceGroupName}` auf „testVaultRG“ festgelegt. Wenn wir den URI mit den obigen Werten versehen, sieht er wie folgt aus:
+Der PUT-URI verfügt über die Parameter `{subscriptionId}`, `{vaultName}` und `{vaultresourceGroupName}`. In diesem Beispiel ist `{vaultName}` auf „testVault“ und `{vaultresourceGroupName}` auf „testVaultRG“ festgelegt. Wenn wir den URI mit den obigen Werten versehen, sieht er wie folgt aus:
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>Erstellen des Anforderungstexts

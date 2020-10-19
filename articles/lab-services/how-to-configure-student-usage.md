@@ -3,12 +3,12 @@ title: Konfigurieren von Nutzungseinstellungen in Classroom-Labs von Azure Lab S
 description: Erfahren Sie, wie Sie die Anzahl der Kursteilnehmer für ein Lab konfigurieren, sie beim Lab registrieren, die Anzahl der Stunden steuern, in denen sie den virtuellen Computer verwenden können, und vieles mehr.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445949"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399668"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 
@@ -166,7 +166,7 @@ Gehen Sie folgendermaßen vor, um zusätzliche Kontingente festzulegen:
 
 Zum Hinzufügen von Kursteilnehmern zu einem Classroom-Lab verwenden Sie deren E-Mail-Konten. Kursteilnehmer können die folgenden Arten von E-Mail-Konten verwenden:
 
-- Ein E-Mail-Konto für Kursteilnehmer, das von der Azure Active Directory-Instanz Ihrer Universität für Office 365 bereitgestellt wird. 
+- Ein E-Mail-Konto für Kursteilnehmer, das von der Azure Active Directory-Instanz Ihrer Universität bereitgestellt wird.
 - Ein Microsoft-Domänen-E-Mail-Konto, z. B. *outlook.com*, *hotmail.com*, *msn.com* oder *live.com*.
 - Ein Microsoft-fremdes E-Mail-Konto, z. B. ein von Yahoo! oder Google bereitgestelltes Konto. Diese Kontotypen müssen jedoch mit einem Microsoft-Konto verknüpft werden.
 - Ein GitHub-Konto. Dieses Konto muss mit einem Microsoft-Konto verknüpft werden.

@@ -1,19 +1,20 @@
 ---
 title: Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster
 description: Enthält Informationen zum Hinzufügen oder Entfernen von Knoten für einen Azure Service Fabric-Cluster auf einem physischen oder virtuellen Computer mit Windows Server, der lokal oder in einer Cloud angeordnet sein kann.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258725"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842919"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server
-Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Computern erstellt haben](service-fabric-cluster-creation-for-windows-server.md), können sich Ihre geschäftlichen Anforderungen ändern, und Sie müssen Knoten zu Ihrem Cluster hinzufügen oder daraus entfernen. Dieser Artikel enthält die ausführlichen Schritte, die hierfür erforderlich sind. Bitte beachten Sie, dass die Funktion für das Hinzufügen/Entfernen von Knoten in lokalen Entwicklungsclustern nicht unterstützt wird.
+Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Computern erstellt haben](service-fabric-cluster-creation-for-windows-server.md), können sich Ihre geschäftlichen Anforderungen ändern, und Sie müssen Ihrem Cluster wie in diesem Artikel beschrieben Knoten hinzufügen oder daraus entfernen.
+
+> [!NOTE]
+> Die Funktion zum Hinzufügen bzw. Entfernen von Knoten wird in lokalen Entwicklungsclustern nicht unterstützt.
 
 ## <a name="add-nodes-to-your-cluster"></a>Hinzufügen von Knoten zum Cluster
 
@@ -132,7 +133,7 @@ Fügen Sie im Abschnitt „FabricSettings“ den Parameter „NodesToBeRemoved�
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Entfernen von Knotentypen aus dem Cluster
-Überprüfen Sie vor dem Entfernen eines Knotentyps gründlich, ob andere Knoten auf den Knotentyp verweisen. Entfernen Sie diese Knoten, bevor Sie den entsprechenden Knotentyp entfernen. Nachdem alle zugehörigen Knoten entfernt wurden, können Sie den NodeType aus der Clusterkonfiguration entfernen und über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) ein Konfigurationsupgrade starten.
+Überprüfen Sie vor dem Entfernen eines Knotentyps, ob andere Knoten auf den Knotentyp verweisen. Entfernen Sie diese Knoten, bevor Sie den entsprechenden Knotentyp entfernen. Nachdem alle zugehörigen Knoten entfernt wurden, können Sie den NodeType aus der Clusterkonfiguration entfernen und über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) ein Konfigurationsupgrade starten.
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Ersetzen primärer Knoten im Cluster
