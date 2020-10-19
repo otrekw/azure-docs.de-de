@@ -3,18 +3,18 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: fcbca4a1e3152dfa36d71031c2f69e8a40125380
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971017"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950243"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden.
 
-Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/). Dort können Sie Ihre Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) schätzen. Sie können auch zur Seite mit Preisen für einen bestimmten Dienst wie z.B. [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) wechseln. Tipps zum Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../cost-management-billing/manage/getting-started.md).
+Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/). Dort können Sie Ihre Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) schätzen. Sie können auch zur Seite mit Preisen für einen bestimmten Dienst wie z.B. [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) wechseln. Tipps zum Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../cost-management-billing/cost-management-billing-overview.md).
 
 ## <a name="managing-limits"></a>Verwalten von Grenzwerten
 
@@ -212,7 +212,7 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 
 [!INCLUDE [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)]
 
-## <a name="data-lake-store-limits"></a>Grenzwerte für Data Lake Store
+## <a name="data-lake-storage-limits"></a>Grenzwerte für Data Lake Storage
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
 
@@ -328,7 +328,7 @@ Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts ande
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
 
-## <a name="role-based-access-control-limits"></a>Grenzwerte für rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+## <a name="azure-role-based-access-control-limits"></a>Grenzwerte für rollenbasierte Zugriffssteuerung von Azure (RBAC)
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 

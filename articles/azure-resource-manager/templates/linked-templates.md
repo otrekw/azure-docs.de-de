@@ -3,12 +3,12 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535557"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369313"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -369,7 +369,7 @@ Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterd
 
 ## <a name="template-specs"></a>Vorlagenspezifikationen
 
-Anstatt die verknüpften Vorlagen an einem zugänglichen Endpunkt zu verwalten, können Sie eine [Vorlagenspezifikation](template-specs.md) erstellen, die die Hauptvorlage und die verknüpften Vorlagen in eine einzelne Entität verpackt, die Sie bereitstellen können. Bei der Vorlagenspezifikation handelt es sich um eine Ressource im Azure-Abonnement. Sie vereinfacht die sichere Freigabe der Vorlage für Benutzer in Ihrer Organisation. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie Zugriff auf die Vorlagenspezifikation gewähren. Diese Funktion steht derzeit als Vorschau zur Verfügung.
+Anstatt die verknüpften Vorlagen an einem zugänglichen Endpunkt zu verwalten, können Sie eine [Vorlagenspezifikation](template-specs.md) erstellen, die die Hauptvorlage und die verknüpften Vorlagen in eine einzelne Entität verpackt, die Sie bereitstellen können. Bei der Vorlagenspezifikation handelt es sich um eine Ressource im Azure-Abonnement. Sie vereinfacht die sichere Freigabe der Vorlage für Benutzer in Ihrer Organisation. Mit der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC) können Sie Zugriff auf die Vorlagenspezifikation gewähren. Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
 Weitere Informationen finden Sie unter
 
@@ -731,7 +731,7 @@ Für die Parameterdatei kann auch die Einschränkung gelten, dass der Zugriff nu
 Derzeit ist es nicht möglich, eine Verknüpfung mit einer Vorlage in einem Speicherkonto zu erstellen, das sich hinter einer [Azure Storage-Firewall](../../storage/common/storage-network-security.md) befindet.
 
 > [!IMPORTANT]
-> Anstatt die verknüpfte Vorlage mit einem SAS-Token zu sichern, können Sie eine [Vorlagenspezifikationen](template-specs.md) erstellen. In der Vorlagenspezifikation werden die Hauptvorlage und die verknüpften Vorlagen auf sichere Weise als Ressource im Azure-Abonnement gespeichert. Mit RBAC können Sie Benutzern Zugriff gewähren, die die Vorlage bereitstellen müssen.
+> Anstatt die verknüpfte Vorlage mit einem SAS-Token zu sichern, können Sie eine [Vorlagenspezifikationen](template-specs.md) erstellen. In der Vorlagenspezifikation werden die Hauptvorlage und die verknüpften Vorlagen auf sichere Weise als Ressource im Azure-Abonnement gespeichert. Mit Azure RBAC können Sie Benutzern Zugriff gewähren, die die Vorlage bereitstellen müssen.
 
 Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen mit einer Vorlage übergeben wird:
 

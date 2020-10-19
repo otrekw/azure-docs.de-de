@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495737"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015565"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analysieren von Daten mit Azure Machine Learning
 
@@ -90,7 +90,7 @@ Führen Sie als Nächstes die folgenden Schritte für die Designerkonfiguration 
 
 1. Ziehen Sie das zuvor erstellte Dataset in den Zeichenbereich.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Screenshot des Datasetmoduls im Zeichenbereich.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
 
 ## <a name="clean-the-data"></a>Bereinigen der Daten
 
@@ -100,13 +100,13 @@ Löschen Sie Spalten, die für das Modell nicht relevant sind, um die Daten zu b
 
 1. Ziehen Sie unter **Datentransformation > Manipulation** das Modul **Select Columns in Dataset** in den Zeichenbereich. Verbinden Sie dieses Modul mit dem Modul **Dataset**.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Screenshot des Spaltenauswahlmoduls im Zeichenbereich." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
 
 1. Klicken Sie auf das Modul, um den Eigenschaftenbereich zu öffnen. Klicken Sie auf „Spalte bearbeiten“, um anzugeben, welche Spalten gelöscht werden sollen.
 
 1. Schließen Sie zwei Spalten aus: „CustomerAlternateKey“ und „GeographyKey“. Klicken Sie unten auf der Seite auf **Speichern**.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Screenshot der gelöschten Spalten.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
 
 ## <a name="build-the-model"></a>Erstellen des Modells
 
@@ -116,7 +116,7 @@ Die Daten werden „80–20“ aufgeteilt: 80 % zum Trainieren eines Machine Lea
 
 1. Geben Sie im Eigenschaftenbereich für **Fraction of rows in the first output dataset** (Anteil der Zeilen im ersten Ausgabedataset) den Wert „0,8“ ein.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Screenshot mit dem Aufteilungsverhältnis „0,8“.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
 
 1. Ziehen Sie das Modul **Two-Class Boosted Decision Tree** in den Zeichenbereich.
 
@@ -124,9 +124,9 @@ Die Daten werden „80–20“ aufgeteilt: 80 % zum Trainieren eines Machine Lea
 
 1. Wählen Sie beim Modul „Train Model“ im Bereich „Eigenschaften“ die Option **Label column** (Spalte beschriften) und dann „Spalte bearbeiten“ aus. Wählen Sie die Spalte **BikeBuyer** (Fahrradkäufer) als die vorherzusagende Spalte und dann **Speichern** aus.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Screenshot von „Label column“, „BikeBuyer“ ausgewählt.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Screenshot des Moduls „Train Model“, das mit den Modulen „Two-Class Boosted Decision Tree“ und „Split Data“ verbunden ist.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
 
 ## <a name="score-the-model"></a>Bewertung des Modells
 
@@ -142,11 +142,11 @@ Testen Sie jetzt die Leistung des Modells bei Testdaten. Es werden zwei verschie
 
 1. Klicken Sie auf **Übermitteln**, um die Pipelineausführung einzurichten.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Screenshot aller verbleibenden Module im Zeichenbereich." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
 1. Sobald die Ausführung abgeschlossen ist, klicken Sie mit der rechten Maustaste auf das Modul **Evaluate Model**, und klicken Sie auf **Visualize Evaluation results** (Auswertungsergebnisse visualisieren).
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Screenshot der Ergebnisse.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Screenshot des linken Bereichs der Azure Machine Learning-Schnittstelle":::
 
 Folgende Metriken stehen zur Verfügung: ROC-Kurve, Genauigkeit-Trefferquote-Diagramm und Prognosegütekurve. Beim Blick auf diese Metriken sehen Sie, dass mit dem ersten Modell eine bessere Leistung als mit dem zweiten erzielt wurde. Wenn Sie sich anschauen möchten, was das erste Modell vorhergesagt hat, klicken Sie mit der rechten Maustaste auf das Modul „Score Model“, und klicken Sie auf das Dataset „Visualize Scored“, um die vorhergesagten Ergebnisse anzuzeigen.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826567"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843072"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Tutorial: Visualisieren und Überwachen Ihrer Daten
 
@@ -62,7 +62,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
 ## <a name="create-new-workbook"></a>Neue Arbeitsmappe erstellen
 
 1. Klicken Sie auf **Workbooks** (Arbeitsmappen), und wählen Sie dann **Add workbook** (Arbeitsmappe hinzufügen), um eine komplett neue Arbeitsmappe zu erstellen.
-  ![Go to workbooks](./media/tutorial-monitor-data/create-workbook.png) (Zu Arbeitsmappen wechseln)
+  ![Screenshot, der den Bildschirm „Neue Arbeitsmappe“ zeigt.](./media/tutorial-monitor-data/create-workbook.png)
 
 1. Um die Arbeitsmappe zu bearbeiten, wählen Sie **Edit** (Bearbeiten) aus, und fügen Sie dann nach Bedarf Text, Abfragen und Parameter hinzu. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md). 
 
@@ -72,7 +72,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
 
 1. Wenn Sie möchten, dass andere Personen in Ihrer Organisation die Arbeitsmappe verwenden, wählen Sie unter **Save to** (Speichern in) die Option **Shared reports** (Freigegebene Berichte) aus. Wenn Sie möchten, dass diese Arbeitsmappe nur für Sie verfügbar ist, wählen Sie **My reports** (Meine Berichte) aus.
 
-1. Um zwischen Arbeitsmappen in Ihrem Arbeitsbereich zu wechseln, können Sie **Öffnen** ![Arbeitsmappen wechseln](./media/tutorial-monitor-data/switch.png) im oberen Bereich jeder Arbeitsmappe auswählen. Wechseln Sie im Fenster, das rechts geöffnet wird, zwischen Arbeitsmappen.
+1. Um zwischen Arbeitsmappen in Ihrem Arbeitsbereich zu wechseln, können Sie **Öffnen** ![Symbol für das Öffnen einer Arbeitsmappen](./media/tutorial-monitor-data/switch.png) im oberen Bereich jeder Arbeitsmappe auswählen. Wechseln Sie im Fenster, das rechts geöffnet wird, zwischen Arbeitsmappen.
 
    ![Arbeitsmappen wechseln](./media/tutorial-monitor-data/switch-workbooks.png)
 

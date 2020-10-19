@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566334"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843106"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
@@ -119,11 +119,11 @@ Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn d
 - Falsch positiv – falsche Daten
 - Unbestimmt
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Screenshot, der die in der Liste „Klassifizierung auswählen“ verfügbaren Klassifizierungen hervorhebt.":::
 
 Nachdem Sie eine geeignete Klassifizierung ausgewählt haben, fügen Sie in das Feld **Kommentar** einen beschreibenden Text hinzu. Dies ist nützlich, falls Sie sich noch einmal auf diesen Incident beziehen müssen. Wenn Sie fertig sind, klicken Sie auf **Anwenden**. Der Incident wird geschlossen.
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="Screenshot, der die in der Liste „Klassifizierung auswählen“ verfügbaren Klassifizierungen hervorhebt.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie eine Einführung erhalten, wie Vorfälle mithilfe von Azure Sentinel untersucht werden. Fahren Sie mit dem [Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in der Vorschauversion von Azure Sentinel](tutorial-respond-threats-playbook.md) fort.

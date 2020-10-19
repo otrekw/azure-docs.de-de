@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605225"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372424"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erstellen von Ressourcen auf der Verwaltungsgruppenebene
 
@@ -32,7 +32,7 @@ Verwenden Sie für Azure-Richtlinien:
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-Verwenden Sie für rollenbasierte Zugriffssteuerung:
+Verwenden Sie für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC):
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -45,7 +45,7 @@ Verwenden Sie für die Verwaltung Ihrer Ressourcen:
 
 * [Tags](/azure/templates/microsoft.resources/tags)
 
-### <a name="schema"></a>Schema
+## <a name="schema"></a>Schema
 
 Das Schema, das Sie für Bereitstellungen auf Verwaltungsgruppenebene verwenden, unterscheidet sich von dem Schema für Ressourcengruppenbereitstellungen.
 
@@ -60,6 +60,30 @@ Das Schema für eine Parameterdatei ist für alle Bereitstellungsbereiche identi
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Bereitstellungsbereiche
+
+Wenn Sie in einer Verwaltungsgruppe bereitstellen, können Sie auf die im Bereitstellungsbefehl angegebene Verwaltungsgruppe oder auf andere Verwaltungsgruppen im Mandanten abzielen.
+
+Ressourcen, die im Ressourcenabschnitt der Vorlage definiert sind, werden vom Bereitstellungsbefehl auf die Verwaltungsgruppe angewendet.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+Um eine andere Verwaltungsgruppe als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu, und geben Sie die `scope`-Eigenschaft an. Legen Sie die Eigenschaft `scope` auf einen Wert im Format `Microsoft.Management/managementGroups/<mg-name>` fest.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+Sie können auch auf Abonnements oder Ressourcengruppen innerhalb einer Verwaltungsgruppe abzielen. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
+
+Um ein Abonnement innerhalb der Verwaltungsgruppe als Ziel zu verwenden, verwenden Sie eine geschachtelte Bereitstellung und die `subscriptionId`-Eigenschaft.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+Um eine Ressourcengruppe innerhalb dieses Abonnements als Ziel zu verwenden, fügen Sie eine weitere geschachtelte Bereitstellung hinzu sowie die `resourceGroup`-Eigenschaft.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+Informationen zur Verwendung einer Verwaltungsgruppenbereitstellung zum Erstellen einer Ressourcengruppe in einem Abonnement und zum Bereitstellen eines Speicherkontos für diese Ressourcengruppe finden Sie unter [Bereitstellen in Abonnements und Ressourcengruppen](#deploy-to-subscription-and-resource-group).
 
 ## <a name="deployment-commands"></a>Bereitstellungsbefehle
 
@@ -94,97 +118,6 @@ Für Bereitstellungen auf Verwaltungsgruppenebene müssen Sie einen Speicherort 
 Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
 
 Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
-
-## <a name="deployment-scopes"></a>Bereitstellungsbereiche
-
-Wenn Sie in einer Verwaltungsgruppe bereitstellen, können Sie auf die im Bereitstellungsbefehl angegebene Verwaltungsgruppe oder auf andere Verwaltungsgruppen im Mandanten abzielen. Sie können auch auf Abonnements oder Ressourcengruppen innerhalb einer Verwaltungsgruppe abzielen. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
-
-Ressourcen, die im Ressourcenabschnitt der Vorlage definiert sind, werden vom Bereitstellungsbefehl auf die Verwaltungsgruppe angewendet.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        management-group-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Um eine andere Verwaltungsgruppe als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu, und geben Sie die `scope`-Eigenschaft an.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "nestedDeployment",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-different-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-Um ein Abonnement innerhalb der Verwaltungsgruppe als Ziel zu verwenden, verwenden Sie eine geschachtelte Bereitstellung und die `subscriptionId`-Eigenschaft. Um eine Ressourcengruppe innerhalb dieses Abonnements als Ziel zu verwenden, fügen Sie eine weitere geschachtelte Bereitstellung hinzu sowie die `resourceGroup`-Eigenschaft.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "westus2",
-      "subscriptionId": "00000000-0000-0000-0000-000000000000",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedRG",
-              "resourceGroup": "rg2",
-              "properties": {
-                "mode": "Incremental",
-                "template": {
-                  nested-template-with-resources-in-resource-group
-                }
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-Informationen zur Verwendung einer Verwaltungsgruppenbereitstellung zum Erstellen einer Ressourcengruppe in einem Abonnement und zum Bereitstellen eines Speicherkontos für diese Ressourcengruppe finden Sie unter [Bereitstellen in Abonnements und Ressourcengruppen](#deploy-to-subscription-and-resource-group).
 
 ## <a name="use-template-functions"></a>Verwenden von Vorlagenfunktionen
 

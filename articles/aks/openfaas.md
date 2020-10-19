@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440897"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91368888"
 ---
 # <a name="using-openfaas-on-aks"></a>Verwenden von OpenFaaS mit AKS
 
@@ -134,7 +134,7 @@ Nachdem OpenFaaS einsatzbereit ist, erstellen Sie eine Funktion über das OpenFa
 
 Klicken Sie auf **Neue Funktion bereitstellen**, und suchen Sie nach **Figlet**. Wählen Sie die Figlet-Funktion aus, und klicken Sie auf **Bereitstellen**.
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Screenshot, der das Dialogfeld „Neue Funktion bereitstellen“ mit in der Suchzeile eingegebenem Text „figlet“ zeigt.](media/container-service-serverless/figlet.png)
 
 Verwenden Sie zum Aufrufen der Funktion cURL. Ersetzen Sie die IP-Adresse im folgenden Beispiel durch die Ihres OpenFaaS-Gateways.
 

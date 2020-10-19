@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 481bd4f50eb527bcad2ba79b5ba4b9df4b872bfc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312832"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91739906"
 ---
 * Mehrinstanzenfähige Systeme, die den gesamten Bereich der Tarife unterstützen, mit Ausnahme von „Isoliert“.
 * Die App Service-Umgebung, die in Ihrem VNET bereitgestellt wird und Apps im Tarif „App Service (isoliert)“ unterstützt.
@@ -23,7 +23,7 @@ Die VNET-Integration ermöglicht Ihrer App den Zugriff auf Ressourcen in Ihrem V
 
 Für die Funktionen für die VNET-Integration gilt Folgendes:
 
-* Sie erfordern einen Tarifplan des Typs Standard, Premium, PremiumV2 oder Elastisch Premium.
+* Sie erfordern einen Tarifplan des Typs Standard, Premium, PremiumV2, PremiumV3 oder Elastic Premium.
 * Sie unterstützen TCP und UDP.
 * Sie funktionieren mit Azure App Service-Apps und Funktions-Apps.
 

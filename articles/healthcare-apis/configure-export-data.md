@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91529982"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>Konfigurieren von Exporteinstellungen und Einrichten des Speicherkontos
 
@@ -40,11 +40,11 @@ Der nächste Schritt beim Exportieren besteht darin, dem Azure API for FHIR-Dien
 
 Nachdem Sie ein Speicherkonto erstellt haben, navigieren Sie im Speicherkonto zum Blatt „Zugriffssteuerung (IAM)“, und wählen Sie „Rollenzuweisungen hinzufügen“ aus.
 
-![Aktivieren der verwalteten Identität](media/export-data/fhir-export-role-assignment.png)
+![Exportieren der Rollenzuweisung](media/export-data/fhir-export-role-assignment.png)
 
 Hier fügen Sie dann dem Dienstnamen die Rolle „Mitwirkender an Storage-Blobdaten“ hinzu.
 
-![Aktivieren der verwalteten Identität](media/export-data/fhir-export-role-add.png)
+![Add Role](media/export-data/fhir-export-role-add.png)
 
 Nun kann der nächste Schritt ausgeführt werden, in dem Sie das Speicherkonto in Azure API for FHIR als Standardspeicherkonto für „$export“ auswählen können.
 
@@ -52,7 +52,7 @@ Nun kann der nächste Schritt ausgeführt werden, in dem Sie das Speicherkonto i
 
 Im letzten Schritt vor dem Aufrufen des Befehls „$export“ wird das Azure-Speicherkonto zugewiesen, in das die Daten von Azure API for FHIR exportiert werden. Navigieren Sie hierzu im Azure-Portal im Azure API for FHIR-Dienst zum Blatt „Integration", und wählen Sie das Speicherkonto aus.
 
-![Aktivieren der verwalteten Identität](media/export-data/fhir-export-storage.png)
+![FHIR-Exportspeicher](media/export-data/fhir-export-storage.png)
 
 Anschließend können Sie die Daten mit dem Befehl „$export“ exportieren.
 

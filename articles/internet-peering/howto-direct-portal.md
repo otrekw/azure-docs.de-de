@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537207"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-Portal
 
@@ -37,7 +37,7 @@ Als Internetdienstanbieter oder Internet Exchange-Anbieter können Sie durch [Er
 1. Füllen Sie auf der Seite **Peering erstellen** auf der Registerkarte **Grundlagen** die Felder wie folgt aus:
 
 
-    ![Registrieren von Peering Service](./media/setup-basics-tab.png)
+    ![Screenshot, der die Registerkarte „Grundlagen“ der Seite „Peering erstellen“ mit aufgerufenem Link „Neu erstellen“ zeigt.](./media/setup-basics-tab.png)
 
 2. Wählen Sie Ihr Azure-Abonnement aus.
 
@@ -59,7 +59,7 @@ Als Internetdienstanbieter oder Internet Exchange-Anbieter können Sie durch [Er
 
 
 
-    ![Registrieren von Peering Service](./media/setup-direct-basics-filled-tab.png)
+    ![Screenshot, der die Registerkarte „Grundlagen“ der Seite „Peering erstellen“ mit allen eingegebenen Werten zeigt.](./media/setup-direct-basics-filled-tab.png)
 
 
 #### <a name="configure-connections-and-submit"></a>Konfigurieren von Verbindungen und Übermitteln

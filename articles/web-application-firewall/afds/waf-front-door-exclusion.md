@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921793"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018643"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web Application Firewall (WAF) mit Ausschlusslisten des Front Door-Diensts 
 
@@ -45,6 +45,17 @@ Sie können eine exakte Übereinstimmung für Anforderungsheader, Test, Cookies 
 Bei Header- und Cookienamen wird Groß-/Kleinschreibung nicht berücksichtigt.
 
 Sie können eine Ausschlussliste auf alle Regeln innerhalb des verwalteten Regelsatzes, auf Regeln für eine bestimmte Regelgruppe oder auf eine einzelne Regel anwenden, wie im vorherigen Beispiel gezeigt. 
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Definieren von Ausschlüssen auf Basis von Web Application Firewall-Protokollen
+ [Überwachung und Protokollierung von Azure Web Application Firewall](waf-front-door-monitor.md) zeigt übereinstimmende Details einer blockierten Anforderung. Wenn ein Headerwert, ein Cookiewert, ein post-Argumentwert oder ein Abfrageargumentwert für manche Regeln falsch positive Ergebnisse erzeugt, können Sie diesen Teil der Anforderung von der Berücksichtigung in der Regel ausschließen. Die folgende Tabelle zeigt Beispielwerte aus WAF-Protokollen und die entsprechenden Ausschlussbedingungen.
+
+|matchVariableName aus WAF-Protokollen    |Regelausschluss im Portal|
+|--------|------|
+|CookieValue:SOME_NAME  |Name des Anforderungscookies entspricht SOME_NAME|
+|HeaderValue:SOME_NAME  |Name des Anforderungsheaders entspricht SOME_NAME|
+|PostParamValue:SOME_NAME|  Name des Anforderungstext-post-Arguments entspricht SOME_NAME|
+|QueryParamValue:SOME_NAME| Argumentname der Abfragezeichenfolge entspricht SOME_NAME|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445881"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400722"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Verwalten von Excel Online-Daten mit Azure Logic Apps
 
@@ -33,7 +33,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 * ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Ein [Office 365-Konto](https://www.office.com/) für Ihr Geschäftskonto oder Ihr persönliches Microsoft-Konto.
+* Ein [Geschäfts-, Schul- oder Unikonto](https://www.office.com/) für Ihr Geschäftskonto oder Ihr persönliches Microsoft-Konto.
 
   Ihre Excel-Daten können sich in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner befinden, beispielsweise in OneDrive. 
   Sie können diese CSV-Datei auch mit dem [Flatfileconnector](../logic-apps/logic-apps-enterprise-integration-flatfile.md)verwenden.
@@ -53,7 +53,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
    > [!NOTE]
    > Der Logik-App-Designer kann keine Tabellen laden, die über 100 oder mehr Spalten verfügen. Verringern Sie nach Möglichkeit die Anzahl der Spalten in der ausgewählten Tabelle, damit der Designer die Tabelle laden kann.
 
-1. Melden Sie sich nach Aufforderung bei Ihrem Office 365-Konto an.
+1. Melden Sie sich bei Aufforderung dazu bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
    Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Excel Online sowie zum Zugriff auf Ihre Daten.
 

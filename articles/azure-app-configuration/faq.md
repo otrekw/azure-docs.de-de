@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587343"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074956"
 ---
 # <a name="azure-app-configuration-faq"></a>Häufig gestellte Fragen zu Azure App Configuration
 
@@ -43,9 +43,13 @@ Sie können App Configuration-Werte erstellen, die auf in Key Vault gespeicherte
 
 Ja. App Configuration verschlüsselt alle Schlüsselwerte, die der Dienst enthält, sowie die Netzwerkkommunikation. Schlüsselnamen und Bezeichnungen werden als Indizes zum Abrufen von Konfigurationsdaten verwendet und nicht verschlüsselt.
 
+## <a name="where-does-data-stored-in-app-configuration-reside"></a>Wo befinden sich in App Configuration gespeicherte Daten? 
+
+In App Configuration gespeicherte Kundendaten befinden sich in der Region, in der der App Configuration-Speicher des Kunden erstellt wurde. App Configuration kann zum Zwecke der Datenresilienz Daten in [Regionspaare](../best-practices-availability-paired-regions.md) replizieren, aber es werden keine Kundendaten außerhalb ihres geografischen Raums repliziert oder verschoben, wie durch die [Data Residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/) definiert. Kunden und Endbenutzer können ihre Kundendaten von jedem Standort weltweit verschieben, kopieren oder darauf zugreifen.
+
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Wie unterscheidet sich App Configuration von Azure App Service-Einstellungen?
 
-Azure App Service gestattet es Ihnen, App-Einstellungen für jede App Service-Instanz zu definieren. Diese Einstellungen werden als Umgebungsvariablen an den Anwendungscode übergeben. Wenn gewünscht, können Sie einem bestimmten Bereitstellungsslot eine Einstellung zuordnen. Weitere Informationen finden Sie unter [Konfigurieren von App-Einstellungen](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service gestattet es Ihnen, App-Einstellungen für jede App Service-Instanz zu definieren. Diese Einstellungen werden als Umgebungsvariablen an den Anwendungscode übergeben. Wenn gewünscht, können Sie einem bestimmten Bereitstellungsslot eine Einstellung zuordnen. Weitere Informationen finden Sie unter [Konfigurieren von App-Einstellungen](../app-service/configure-common.md#configure-app-settings).
 
 Im Gegensatz dazu gestattet Ihnen Azure App Configuration das Definieren von Einstellungen, die von mehreren Apps gemeinsam genutzt werden können. Dies gilt auch für Apps, die sowohl in App Service als auch auf anderen Plattformen ausgeführt werden. Ihr Anwendungscode greift über die Konfigurationsanbieter für .NET und Java, über das Azure SDK oder direkt über REST-APIs auf diese Einstellungen zu.
 
@@ -90,7 +94,7 @@ Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Auswahl ein
     Für Speicher im Standard-Tarif sind die ersten 200.000 Anforderungen täglich in der täglichen Gebühr enthalten. Zusätzliche Anforderungen werden als Überschreitung abgerechnet.
 
 - **Vereinbarung zum Servicelevel**: Die SLA des Standard-Tarifs sichert eine Verfügbarkeit von 99,9 % zu. Für den Free-Tarif gibt es keine SLA.
-- **Sicherheitsfeatures**: Beide Tarife beinhalten grundlegende Sicherheitsfunktionen einschließlich Verschlüsselung mit von Microsoft verwalteten Schlüsseln, Authentifizierung über HMAC oder Azure Active Directory, RBAC-Unterstützung und verwaltete Identität. Der Standard-Tarif bietet fortgeschrittenere Sicherheitsfunktionen einschließlich Private Link-Unterstützung und Verschlüsselung mit vom Kunden verwalteten Schlüsseln.
+- **Sicherheitsfeatures**: Beide Tarife beinhalten grundlegende Sicherheitsfunktionen einschließlich Verschlüsselung mit von Microsoft verwalteten Schlüsseln, Authentifizierung über HMAC oder Azure Active Directory, Azure RBAC-Unterstützung und verwaltete Identität. Der Standard-Tarif bietet fortgeschrittenere Sicherheitsfunktionen einschließlich Private Link-Unterstützung und Verschlüsselung mit vom Kunden verwalteten Schlüsseln.
 - **Kosten**: Für Speicher im Standard-Tarif fällt eine tägliche Nutzungsgebühr an. Es gibt auch eine Überschreitungsgebühr für Anforderungen, die über die tägliche Zuordnung hinausgehen. Es fallen keine Kosten für die Nutzung eines Speichers im Free-Tarif an.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Kann ich einen Speicher vom Free-Tarif in den Standard-Tarif upgraden? Kann ich einen Speicher vom Standard-Tarif in den Free-Tarif herabstufen?

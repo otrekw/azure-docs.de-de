@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010187"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362179"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Behandeln von Konnektivitätsproblemen im Synapse SQL-Pool
 
@@ -34,13 +34,14 @@ Der Status Ihres SQL-Pools wird hier angezeigt. Wenn der Dienst nicht als **Verf
 
 Wenn die Ressourcenintegrität angibt, dass Ihre Instanz des SQL-Pools angehalten wurde oder skaliert wird, führen Sie die Anleitungen zum Fortsetzen der Instanz aus.
 
-![Dienst angehalten](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Hier finden Sie weitere Informationen zur Ressourcenintegrität.
+![Screenshot, der eine Instanz von SQL Data Warehouse zeigt, die angehalten ist oder gerade skaliert.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Hier finden Sie weitere Informationen zu Resource Health.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Überprüfen auf angehaltene Vorgänge oder Skalierungen
 
 Sehen Sie im Portal nach, ob Ihre Instanz des SQL-Pools angehalten wurde oder skaliert wird.
 
-![Dienst angehalten](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![Screenshot, der zeigt, wie Sie überprüfen können, ob ein Data Warehouse angehalten wurde.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 Wenn Sie feststellen, dass der Dienst pausiert wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* zu Ihrem SQL-Pools im Portal sehen Sie den ausgewählten Wartungszeitplan.
 

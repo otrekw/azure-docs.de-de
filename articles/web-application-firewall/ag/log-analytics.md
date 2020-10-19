@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: 22273cf23e48de62d99a8c149ae3e2b1c05db3af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 733a9af589718e9abe8736491023003744428cd6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005428"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361061"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Verwenden der Protokollanalyse zur Untersuchung von Protokollen der Web Application Firewall (WAF) für Application Gateway
 
@@ -79,7 +79,7 @@ AzureDiagnostics
 
 Nachdem Sie eine Abfrage erstellt haben, können Sie sie zu Ihrem Dashboard hinzufügen.  Wählen Sie **An Dashboard anheften** in der oberen rechten Ecke des Log Analytics-Arbeitsbereichs aus. Wenn die vorherigen vier Abfragen an ein Beispieldashboard angeheftet sind, sind dies die Daten, die Sie auf einen Blick sehen können:
 
-![Dashboard](../media/log-analytics/dashboard.png)
+![Screenshot, der ein Azure-Dashboard zeigt, in dem Sie Ihre Abfrage hinzufügen können.](../media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

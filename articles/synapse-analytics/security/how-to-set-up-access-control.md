@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501915"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91260154"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau)
 
@@ -97,8 +97,8 @@ Der Synapse-Arbeitsbereich benötigt Zugriff auf STG1 und CNT1, damit er Pipelin
 
 - Öffnen Sie das Azure-Portal.
 - Navigieren Sie zu WS1.
-- Klicken Sie unter **Einstellungen** auf **SQL Active Directory-Administrator**.
-- Klicken Sie auf **Administrator festlegen**, und wählen Sie „WS1\_SQLAdmins“ aus.
+- Wählen Sie unter **Einstellungen** die Option **SQL Active Directory-Administrator** aus.
+- Wählen Sie **Administrator festlegen** und dann „WS1\_SQLAdmins“ aus.
 
 ## <a name="step-6-maintain-access-control"></a>SCHRITT 6: Verwalten der Zugriffssteuerung
 
@@ -123,8 +123,9 @@ Benutzer in den einzelnen Rollen müssen die folgenden Schritte durchführen:
 
 > [!NOTE]
 > [1] Um SQL- oder Spark-Pools zu erstellen, muss der Benutzer mindestens über die Rolle „Mitwirkender“ für den Synapse-Arbeitsbereich verfügen.
-> [!TIP]
 >
+ 
+>[!TIP]
 > - Einige Schritte sind in Abhängigkeit von der Rolle absichtlich nicht zulässig.
 > - Beachten Sie, dass einige Aufgaben möglicherweise fehlschlagen, wenn die Sicherheit nicht vollständig konfiguriert wurde. Diese Aufgaben sind in der Tabelle vermerkt.
 

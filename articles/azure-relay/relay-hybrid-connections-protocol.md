@@ -3,12 +3,12 @@ title: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll | Microsoft-Dokument
 description: In diesem Artikel werden die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen beschrieben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272008"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531444"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 
@@ -55,7 +55,7 @@ Die codierten Informationen sind nur für kurze Zeit gültig. Dies ist im Grunde
 
 Zusätzlich zu WebSocket-Verbindungen kann der Listener auch HTTP-Anforderungsframes von einem Absender empfangen, wenn diese Funktion für die Hybridverbindung explizit aktiviert wird.
 
-Listener, die an Hybridverbindungen mit HTTP-Unterstützung angefügt sind, MÜSSEN die `request`-Geste verarbeiten. Ein Listener, der `request` nicht verarbeitet und so wiederholt Zeitüberschreitungsfehler verursacht, während die Verbindung besteht, KANN vom Dienst im weiteren Verlauf auf eine Sperrliste gesetzt werden.
+Listener, die an Hybridverbindungen mit HTTP-Unterstützung angefügt sind, MÜSSEN die `request`-Geste verarbeiten. Ein Listener, der `request` nicht verarbeitet und so wiederholt Zeitüberschreitungsfehler verursacht, während die Verbindung besteht, KANN vom Dienst im weiteren Verlauf blockiert werden.
 
 Die Metadaten von HTTP-Frame-Headern werden in das JSON-Format übersetzt, damit sie vom Listener-Framework einfacher verarbeitet werden können. Ein Grund hierfür ist, dass HTTP-Header-Analysebibliotheken seltener als JSON-Parser sind. HTTP-Metadaten, die nur für die Beziehung zwischen dem Absender und dem Relay-HTTP-Gateway relevant sind, z.B. Autorisierungsinformationen, werden nicht weitergeleitet. HTTP-Anforderungstexte werden auf transparente Weise als binäre WebSocket-Frames übertragen.
 
@@ -326,7 +326,7 @@ Der JSON-Inhalt für `request` lautet wie folgt:
 
 ##### <a name="responding-to-requests"></a>Antworten auf Anforderungen
 
-Der Empfänger MUSS antworten. Wenn eine Antwort auf Anforderungen wiederholt ausbleibt, während die Verbindung besteht, kann dies dazu führen, dass der Listener auf eine Sperrliste gesetzt wird.
+Der Empfänger MUSS antworten. Wenn eine Antwort auf Anforderungen wiederholt ausbleibt, während die Verbindung besteht, kann dies dazu führen, dass der Listener blockiert wird.
 
 Antworten können in einer beliebigen Reihenfolge gesendet werden, aber auf jede Anforderung muss innerhalb von 60 Sekunden eine Antwort erfolgen, da die Zustellung ansonsten als nicht erfolgreich gemeldet wird. Der Zeitraum von 60 Sekunden läuft, bis der `response`-Frame vom Dienst empfangen wurde. Eine aktive Antwort mit mehreren binären Frames darf sich nicht länger als 60 Sekunden im Leerlauf befinden, da sie sonst beendet wird.
 

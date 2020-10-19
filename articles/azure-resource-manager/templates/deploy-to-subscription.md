@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 10/05/2020
+ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91729116"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
@@ -37,7 +37,7 @@ Verwenden Sie für Azure-Richtlinien:
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-Verwenden Sie für rollenbasierte Zugriffssteuerung:
+Verwenden Sie für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC):
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -52,7 +52,9 @@ Verwenden Sie zum Erstellen neuer Ressourcengruppen:
 
 Verwenden Sie zum Verwalten Ihres Abonnements:
 
+* [Advisor-Konfigurationen](/azure/templates/microsoft.advisor/configurations)
 * [budgets](/azure/templates/microsoft.consumption/budgets)
+* [Anwendungsänderungsanalyseprofil](/azure/templates/microsoft.changeanalysis/profile)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [Tags](/azure/templates/microsoft.resources/tags)
 
@@ -62,7 +64,7 @@ Andere unterstützte Typen sind unter anderem:
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>Schema
+## <a name="schema"></a>Schema
 
 Das Schema, das Sie für Bereitstellungen auf Abonnementebene verwenden, unterscheidet sich von dem Schema für Ressourcengruppenbereitstellungen.
 
@@ -77,6 +79,20 @@ Das Schema für eine Parameterdatei ist für alle Bereitstellungsbereiche identi
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Bereitstellungsbereiche
+
+Wenn Sie die Bereitstellung in einem Abonnement ausführen, können Sie ein Abonnement und jede beliebige Ressourcengruppen im Abonnement als Ziel verwenden. Sie können keine Bereitstellung in einem Abonnement ausführen, das sich vom Zielabonnement unterscheidet. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
+
+Innerhalb des Ressourcenabschnitts der Vorlage definierte Ressourcen werden auf das Abonnement angewendet.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+Um eine Ressourcengruppe innerhalb des Abonnements als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu und schließen Sie die `resourceGroup`-Eigenschaft ein. In dem folgenden Beispiel verwendet die geschachtelte Bereitstellung eine Ressourcengruppe namens `rg2` als Ziel.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+In diesem Artikel finden Sie Vorlagen, die zeigen, wie Ressourcen in verschiedenen Bereichen bereitgestellt werden. Eine Vorlage, die eine Ressourcengruppe erstellt und ein Speicherkonto für diese bereitstellt, finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen](#create-resource-group-and-resources). Eine Vorlage, die eine Ressourcengruppe erstellt, eine Sperre darauf anwendet und eine Rolle für die Ressourcengruppe zuweist, finden Sie unter [Zugriffssteuerung](#access-control).
 
 ## <a name="deployment-commands"></a>Bereitstellungsbefehle
 
@@ -112,49 +128,6 @@ Für Bereitstellungen auf Abonnementebene müssen Sie einen Speicherort für die
 Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
 
 Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
-
-## <a name="deployment-scopes"></a>Bereitstellungsbereiche
-
-Wenn Sie die Bereitstellung in einem Abonnement ausführen, können Sie ein Abonnement und jede beliebige Ressourcengruppen im Abonnement als Ziel verwenden. Sie können keine Bereitstellung in einem Abonnement ausführen, das sich vom Zielabonnement unterscheidet. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
-
-Innerhalb des Ressourcenabschnitts der Vorlage definierte Ressourcen werden auf das Abonnement angewendet.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Um eine Ressourcengruppe innerhalb des Abonnements als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu und schließen Sie die `resourceGroup`-Eigenschaft ein. In dem folgenden Beispiel verwendet die geschachtelte Bereitstellung eine Ressourcengruppe namens `rg2` als Ziel.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-In diesem Artikel finden Sie Vorlagen, die zeigen, wie Ressourcen in verschiedenen Bereichen bereitgestellt werden. Eine Vorlage, die eine Ressourcengruppe erstellt und ein Speicherkonto für diese bereitstellt, finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen](#create-resource-group-and-resources). Eine Vorlage, die eine Ressourcengruppe erstellt, eine Sperre darauf anwendet und eine Rolle für die Ressourcengruppe zuweist, finden Sie unter [Zugriffssteuerung](#access-control).
 
 ## <a name="use-template-functions"></a>Verwenden von Vorlagenfunktionen
 

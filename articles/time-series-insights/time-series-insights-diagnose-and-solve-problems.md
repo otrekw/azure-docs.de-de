@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046450"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530135"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Diagnostizieren und Beheben von Problemen in der Azure Time Series Insights Gen1-Umgebung
+
+> [!CAUTION]
+> Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
 In diesem Artikel werden Probleme beschrieben, die in Ihrer Azure Time Series Insights-Umgebung auftreten können. Der Artikel stellt mögliche Ursachen und Lösungen dar.
 
@@ -66,8 +69,8 @@ Wenn Sie beispielsweise in einer Ereignisquelle über 5 Millionen Ereignisse ve
 
 Falls Ihre Ereignisquelle ältere Ereignisse enthält, können Sie Drosselung mit zwei Ansätzen begegnen:
 
-- Ändern Sie die Aufbewahrungslimits Ihrer Ereignisquelle, damit ältere Ereignisse, die nicht in Azure Time Series Insights angezeigt werden sollen, entfernt werden.
-- Stellen Sie eine größere Umgebung bereit (Anzahl von Einheiten), um den Durchsatz für ältere Ereignisse zu erhöhen. Wenn Sie im vorangehenden Beispiel dieselbe S1-Umgebung für einen Tag auf fünf Einheiten erhöhen, sollte der Rückstand für die Umgebung innerhalb eines Tages abgebaut werden. Falls bei Ihnen im stabilen Zustand pro Tag maximal 1 Million Ereignisse generiert werden, können Sie die Ereigniskapazität nach Abbau des Rückstands durch Azure Time Series Insights auf eine Einheit verringern.
+* Ändern Sie die Aufbewahrungslimits Ihrer Ereignisquelle, damit ältere Ereignisse, die nicht in Azure Time Series Insights angezeigt werden sollen, entfernt werden.
+* Stellen Sie eine größere Umgebung bereit (Anzahl von Einheiten), um den Durchsatz für ältere Ereignisse zu erhöhen. Wenn Sie im vorangehenden Beispiel dieselbe S1-Umgebung für einen Tag auf fünf Einheiten erhöhen, sollte der Rückstand für die Umgebung innerhalb eines Tages abgebaut werden. Falls bei Ihnen im stabilen Zustand pro Tag maximal 1 Million Ereignisse generiert werden, können Sie die Ereigniskapazität nach Abbau des Rückstands durch Azure Time Series Insights auf eine Einheit verringern.
 
 Der erzwungene Drosselungsgrenzwert basiert auf dem Typ und der Kapazität der Umgebungs-SKU. Alle Ereignisquellen in der Umgebung nutzen diese Kapazität gemeinsam. Wenn Ihre Event Hub-/IoT Hub-Ereignisquelle Daten per Push über die erzwungenen Grenzwerte hinaus überträgt, treten die Drosselung und eine Verzögerung ein.
 
@@ -128,12 +131,12 @@ Die erste Spaltenüberschrift sollte der Name Ihrer Timestamp-Eigenschaft sein. 
 
 Folgende Werte werden nicht angezeigt:
 
-- *(abc)* : Zeigt an, dass Azure Time Series Insights die Datenwerte als Zeichenfolgen liest.
-- *Kalendersymbol*: Zeigt an, dass Azure Time Series Insights die Datenwerte als datetime-Werte (Datum/Uhrzeit) liest.
-- *#* : Zeigt an, dass Azure Time Series Insights die Datenwerte als integer-Werter liest.
+* *(abc)* : Zeigt an, dass Azure Time Series Insights die Datenwerte als Zeichenfolgen liest.
+* *Kalendersymbol*: Zeigt an, dass Azure Time Series Insights die Datenwerte als datetime-Werte (Datum/Uhrzeit) liest.
+* *#* : Zeigt an, dass Azure Time Series Insights die Datenwerte als integer-Werter liest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Mildern von Wartezeiten in Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
+* Informationen zum [Mildern von Wartezeiten in Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.
+* Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.

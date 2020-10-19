@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059977"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91260409"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -30,11 +30,11 @@ Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlosse
 
 1. Öffnen Sie [Azure Synapse Analytics](https://web.azuresynapse.net/).
 
-2. Klicken Sie auf **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus.
+2. Wählen Sie zuerst **Überwachen** und dann **Apache Spark-Anwendungen** aus.
 
-    ![Klicken Sie auf „Überwachen“, und wählen Sie dann „Spark-Anwendung aus.](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![Wählen Sie „Überwachen“ aus, und wählen Sie dann „Spark-Anwendung“ aus.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Wählen Sie eine Anwendung aus, und öffnen Sie dann **Protokollabfrage**, indem Sie darauf klicken.
+3. Wählen Sie eine Anwendung aus, und öffnen Sie dann **Protokollabfrage**, indem Sie dies auswählen.
 
     ![Öffnen Sie das Protokollabfragefenster.](./media/apache-spark-history-server/open-application-window.png)
 
@@ -46,11 +46,11 @@ Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlosse
 
 1. Wählen Sie in Ihrem Azure Synapse Studio-Notebook **Spark-Verlaufsserver** in der Ausgabezelle der Auftragsausführung oder im Statusbereich am unteren Rand des Notebook-Dokuments aus. Wählen Sie **Sitzungsdetails** aus.
 
-   ![Starten des Spark-Verlaufsservers](./media/apache-spark-history-server/launch-history-server2.png "Starten des Spark-Verlaufsservers")
+   ![Starten des Spark-Verlaufsservers 1](./media/apache-spark-history-server/launch-history-server2.png "Starten des Spark-Verlaufsservers")
 
 2. Wählen Sie im einblendbaren Bereich **Spark-Verlaufsserver** aus.
 
-   ![Starten des Spark-Verlaufsservers](./media/apache-spark-history-server/launch-history-server.png "Starten des Spark-Verlaufsservers")
+   ![Starten des Spark-Verlaufsservers 2](./media/apache-spark-history-server/launch-history-server.png "Starten des Spark-Verlaufsservers")
 
 ## <a name="explore-the-data-tab-in-spark-history-server"></a>Erkunden der Registerkarte „Daten“ im Spark-Verlaufsserver
 
@@ -200,7 +200,7 @@ Um auf die Registerkarte Diagnose zuzugreifen, wählen Sie eine Auftrags-ID aus.
 
 Wenn Sie die Registerkarte **Datenschiefe** auswählen, werden die entsprechenden Aufgaben mit Abweichungen basierend auf den angegebenen Parametern angezeigt.
 
-* **Parameter festlegen:** Im ersten Abschnitt werden die Parameter angezeigt, die zum Erkennen von Datenschiefe verwendet werden. Die Standardregel lautet wie folgt: Task-Datenlesevorgänge > 3 durchschnittliche Task-Datenlesevorgänge und Task-Datenlesevorgänge > 10 MB. Wenn Sie eine eigene Regel für Aufträge mit Datenschiefe definieren möchten, können Sie Ihre Parameter und die **Skewed Stage** (Phase mit Datenschiefe) auswählen. Dann wird der Abschnitt **Skew Chart** (Diagramm zur Datenschiefe) entsprechend aktualisiert.
+* **Parameter festlegen:** Im ersten Abschnitt werden die Parameter angezeigt, die zum Erkennen von Datenschiefe verwendet werden. Die Standardregel lautet wie folgt: Task-Datenlesevorgänge > 3 durchschnittliche Task-Datenlesevorgänge und Task-Datenlesevorgänge > 10 MB. Wenn Sie Ihre eigene Regel für Aufgaben mit Abweichungen definieren möchten, können Sie die Parameter selbst festlegen. Die Abschnitte **Schiefe Phase** und **Skew Chart** (Diagramm zur Datenschiefe) werden entsprechend aktualisiert.
 
 * **Schiefe Phase:** Im zweiten Abschnitt werden die Phasen angezeigt, die Aufgaben mit Abweichungen entsprechend den oben angegebenen Kriterien enthalten. Wenn in einer Stufe mehr als ein schiefer Auftrag vorhanden ist, werden in der Tabelle mit den schiefen Aufträgen nur die schiefsten Aufträge angezeigt (z. B. der größte Datensatz für die Datenschiefe).
 

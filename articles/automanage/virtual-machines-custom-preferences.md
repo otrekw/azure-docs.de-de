@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930420"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715046"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Erstellen einer benutzerdefinierten Voreinstellung in der automatischen Azure-Verwaltung für VMs
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 > Mit kostenlosen Testkonten ist kein Zugriff auf die virtuellen Computer möglich, die in diesem Tutorial verwendet werden. Führen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durch.
 
 > [!IMPORTANT]
-> Zum Aktivieren der automatischen Verwaltung ist die folgende RBAC-Berechtigung erforderlich: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+> Zum Aktivieren der automatischen Verwaltung ist die folgende Azure RBAC-Berechtigung erforderlich: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**.
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
@@ -57,11 +57,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 4. Klicken Sie unter **Configuration Profile** (Konfigurationsprofil) auf **Browse and change profiles and preferences** (Profile und Einstellungen durchsuchen und ändern).
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Browse and change profiles and preferences (Profile und Einstellungen durchsuchen und ändern)":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
 5. Wählen Sie auf dem Blatt **Konfigurationsprofil und -einstellungen auswählen** ein Profil auf der linken Seite aus: *Dev/Test* für Tests, *Prod* für die Produktion.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Navigieren zum Produktionskonfigurationsprofil":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
 6. Auf dem gewählten Profil gibt es unter **Konfigurationseinstellungen** eine Dropdownliste, in der Sie bestimmte Dienste anpassen können.
     1. Klicken Sie auf die Option zum **Erstellen neuer Voreinstellungen**.
@@ -71,7 +71,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
         1. Name der Voreinstellung
         1. Region
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Füllen Sie die Konfigurationseinstellungen aus.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
 7. Wechseln Sie zur Registerkarte „Voreinstellungen“, und passen Sie die von Ihnen gewünschten Konfigurationseinstellungen an.
         
@@ -88,7 +88,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Sie können die Verwendung der automatischen Azure-Verwaltung für virtuelle Computer schnell beenden, indem Sie die automatische Verwaltung deaktivieren.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Deaktivieren der automatischen Verwaltung auf einem virtuellen Computer":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
 1. Navigieren Sie zur Seite **Automatische Verwaltung – Best Practices für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind.
 1. Aktivieren Sie das Kontrollkästchen neben dem virtuellen Computer, den Sie deaktivieren möchten.

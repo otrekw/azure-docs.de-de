@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826059"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532152"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrieren von Azure Scheduler-Aufträgen zu Azure Logic Apps
 
@@ -96,7 +96,7 @@ Sie können mehrere einmalige Aufträge ausführen, indem Sie eine einzelne Logi
 
    Beispielsweise können Sie eine HTTP-Aktion, die eine Anforderung an eine URL sendet, oder Aktionen einschließen, die mit Storage-Warteschlangen, Service Bus-Warteschlangen oder Service Bus-Themen arbeiten:
 
-   ![HTTP-Aktion](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![Screenshot, der eine Verzögerung bis zur Aktion, gefolgt von einer H T T P-Aktion mit einer POST-Methode zeigt.](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App.
 
@@ -155,7 +155,7 @@ Jeder einmalige Auftrag in Logic Apps wird als einzelne Logik-App-Instanz ausgef
 
    Beispielsweise können Sie eine HTTP-Aktion, die eine Anforderung an eine URL sendet, oder Aktionen einschließen, die mit Storage-Warteschlangen, Service Bus-Warteschlangen oder Service Bus-Themen arbeiten:
 
-   ![HTTP-Aktion](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![Screenshot, der eine H T T P-Aktion mit einer POST-Methode zeigt.](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App.
 

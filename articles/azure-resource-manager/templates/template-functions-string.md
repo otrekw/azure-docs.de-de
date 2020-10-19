@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – Zeichenfolge
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zeichenfolgen verwendet werden können.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a0733ffc790854c60dca46da3f763738b7820215
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962066"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874712"
 ---
 # <a name="string-functions-for-arm-templates"></a>Zeichenfolgenfunktionen für ARM-Vorlagen
 
@@ -27,6 +27,7 @@ Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Zeichenfo
 * [format](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
+* [json](#json)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length)
@@ -340,7 +341,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -894,6 +895,12 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | firstString | Int | 2 |
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
+
+## <a name="json"></a>json
+
+`json(arg1)`
+
+Konvertiert eine gültige JSON-Zeichenfolge in einen JSON-Datentyp. Weitere Informationen finden Sie unter [json-Funktion](template-functions-object.md#json).
 
 ## <a name="last"></a>last
 

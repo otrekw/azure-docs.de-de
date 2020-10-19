@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91650764"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Durchsatzlimits für Datenstromerfassung
 
@@ -28,7 +28,7 @@ Im Folgenden werden Einschränkungen bei eingehenden Datenströmen in Azure Time
 
 Im Allgemeinen werden Eingangsraten als Faktor der Anzahl von Geräten in Ihrer Organisation, der Häufigkeit der Ereignisausgabe und der Größe der einzelnen Ereignisse angesehen.
 
-*  **Anzahl der Geräte** × **Häufigkeit der Ereignisausgabe** × **Größe jedes Ereignisses**.
+* **Anzahl der Geräte** × **Häufigkeit der Ereignisausgabe** × **Größe jedes Ereignisses**.
 
 Standardmäßig kann Azure Time Series Insights Gen2 eingehende Daten mit einer Rate von **bis zu 1 MB pro Sekunde (MBit/s) pro Azure Time Series Insights Gen2-Umgebung** erfassen. Es gelten zusätzliche Einschränkungen [pro Hubpartition](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits).
 
@@ -36,12 +36,12 @@ Standardmäßig kann Azure Time Series Insights Gen2 eingehende Daten mit einer 
 >
 > * Die Umgebungsunterstützung für Erfassungsgeschwindigkeiten von bis zu 8 MBit/s kann auf Anfrage bereitgestellt werden.
 > * Falls Sie einen höheren Durchsatz benötigen, können Sie sich an uns wenden, indem Sie über das Azure-Portal ein Supportticket senden.
- 
+
 * **Beispiel 1:**
 
     Contoso Shipping verfügt über 100.000 Geräte, die dreimal pro Minute ein Ereignis ausgeben. Die Größe eines Ereignisses beträgt 200 Byte. Als Azure Time Series Insights Gen2-Ereignisquelle wird eine IoT Hub-Instanz mit vier Partitionen genutzt.
 
-    * Die Erfassungsrate für die Azure Time Series Insights Gen2-Umgebung lautet wie folgt: **100.000 Geräte · 200 Byte/Ereignis · (3/60 Ereignis/s) = 1 MBit/s**.
+  * Die Erfassungsrate für die Azure Time Series Insights Gen2-Umgebung lautet wie folgt: **100.000 Geräte · 200 Byte/Ereignis · (3/60 Ereignis/s) = 1 MBit/s**.
     * Unter der Annahme ausgeglichener Partitionen wäre die Erfassungsrate pro Partition 0,25 MBit/s.
     * Die Erfassungsrate von Contoso Shipping läge damit innerhalb der Skalierungseinschränkungen.
 
@@ -49,13 +49,13 @@ Standardmäßig kann Azure Time Series Insights Gen2 eingehende Daten mit einer 
 
     Contoso Fleet Analytics verfügt über 40.000 Geräte, die jede Sekunde ein Ereignis ausgeben. Als Azure Time Series Insights Gen2-Ereignisquelle wird eine Event Hub-Instanz mit zwei Partitionen genutzt. Die Größe eines Ereignisses beträgt 200 Byte.
 
-    * Die Erfassungsrate der Umgebung wäre wie folgt: **40.000 Geräte × 200 Byte/Ereignis × 1 Ereignis/s = 8 MBit/s**.
+  * Die Erfassungsrate der Umgebung wäre wie folgt: **40.000 Geräte × 200 Byte/Ereignis × 1 Ereignis/s = 8 MBit/s**.
     * Unter der Annahme ausgeglichener Partitionen wäre die Rate pro Partition 4 MBit/s.
     * Die Erfassungsrate von Contoso Fleet Analytics liegt über den Umgebungs- und Partitionsgrenzwerten. Eine Anforderung an Azure Time Series Insights Gen2 kann über das Azure-Portal übermittelt werden, um die Erfassungsrate für die Umgebung zu erhöhen. Außerdem kann ein Event Hub mit einer größeren Anzahl von Partitionen erstellt werden, um die Grenzwerte einzuhalten.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Hub-Partitionen und Limits pro Partition
 
-Bei der Planung Ihrer Azure Time Series Insights Gen2-Umgebung ist es wichtig, die Konfiguration der Ereignisquellen zu berücksichtigen, die Sie mit Azure Time Series Insights Gen2 verbinden möchten. Sowohl Azure IoT Hub als auch Event Hubs verwenden Partitionen, um die horizontale Skalierung für die Ereignisverarbeitung zu ermöglichen. 
+Bei der Planung Ihrer Azure Time Series Insights Gen2-Umgebung ist es wichtig, die Konfiguration der Ereignisquellen zu berücksichtigen, die Sie mit Azure Time Series Insights Gen2 verbinden möchten. Sowohl Azure IoT Hub als auch Event Hubs verwenden Partitionen, um die horizontale Skalierung für die Ereignisverarbeitung zu ermöglichen.
 
 Eine *Partition* ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Die Partitionsanzahl wird beim Erstellen des Hubs festgelegt und kann nicht geändert werden.
 
@@ -64,7 +64,7 @@ Informationen zu den bewährten Methoden für die Event Hubs-Partitionierung fin
 > [!NOTE]
 > Für die meisten IoT Hubs, die mit Azure Time Series Insights Gen2 genutzt werden, sind nur vier Partitionen erforderlich.
 
-Unabhängig davon, ob Sie einen neuen Hub für Ihre Azure Time Series Insights Gen2-Umgebung erstellen oder einen vorhandenen Hub verwenden, müssen Sie die Erfassungsrate pro Partition berechnen, um festzustellen, ob diese innerhalb der Grenzwerte liegt. 
+Unabhängig davon, ob Sie einen neuen Hub für Ihre Azure Time Series Insights Gen2-Umgebung erstellen oder einen vorhandenen Hub verwenden, müssen Sie die Erfassungsrate pro Partition berechnen, um festzustellen, ob diese innerhalb der Grenzwerte liegt.
 
 Für Azure Time Series Insights Gen2 gilt derzeit ein allgemeiner **Grenzwert von 0,5 MBit/s pro Partition**.
 

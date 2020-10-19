@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602284"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945912"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Unterstützung für das Verschieben von virtuellen Azure-Computern zwischen Azure-Regionen
 
@@ -155,7 +155,7 @@ Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |20 MB/s | 
 NIC | Unterstützt | Geben Sie eine vorhandene Ressource in der Zielregion an, oder erstellen Sie während der Vorbereitungsprozesses eine neue Ressource. 
 Interner Lastenausgleich | Unterstützt | Geben Sie eine vorhandene Ressource in der Zielregion an, oder erstellen Sie während der Vorbereitungsprozesses eine neue Ressource.  
 Öffentlicher Load Balancer | Derzeit nicht unterstützt | Geben Sie eine vorhandene Ressource in der Zielregion an, oder erstellen Sie während der Vorbereitungsprozesses eine neue Ressource.  
-Öffentliche IP-Adresse | Unterstützt | Geben Sie eine vorhandene Ressource in der Zielregion an, oder erstellen Sie während der Vorbereitungsprozesses eine neue Ressource.  
+Öffentliche IP-Adresse | Unterstützt | Geben Sie eine vorhandene Ressource in der Zielregion an, oder erstellen Sie während der Vorbereitungsprozesses eine neue Ressource.<br/><br/> Die öffentliche IP-Adresse ist regionsspezifisch und bleibt nach dem Verschieben nicht in der Zielregion erhalten. Beachten Sie dies, wenn Sie die Netzwerkeinstellungen (einschließlich Regeln für den Lastenausgleich) am Zielstandort ändern.
 Netzwerksicherheitsgruppe | Unterstützt | Geben Sie eine vorhandene Ressource in der Zielregion an, oder erstellen Sie während der Vorbereitungsprozesses eine neue Ressource.  
 Reservierte (statische) IP-Adresse | Unterstützt | Diese Option kann derzeit nicht konfiguriert werden. Der Wert ist standardmäßig auf den Quellwert festgelegt. <br/><br/> Wenn die Netzwerkkarte auf dem virtuellen Quellcomputer über eine statische IP-Adresse verfügt und für das Zielsubnetz die gleiche IP-Adresse verfügbar ist, wird sie dem virtuellen Zielcomputer zugewiesen.<br/><br/> Wenn diese IP-Adresse beim Zielsubnetz nicht verfügbar ist, tritt beim Einleiten der Verschiebung für den virtuellen Computer ein Fehler auf.
 Dynamische IP-Adresse | Unterstützt | Diese Option kann derzeit nicht konfiguriert werden. Der Wert ist standardmäßig auf den Quellwert festgelegt.<br/><br/> Wenn die Netzwerkkarte auf der Quelle über eine dynamische IP-Adressierung verfügt, ist die Netzwerkkarte auf dem virtuellen Zielcomputer standardmäßig ebenfalls dynamisch.

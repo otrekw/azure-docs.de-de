@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934819"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360156"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Erstellen von benutzerdefinierten Application Gateway-Fehlerseiten
 
@@ -48,7 +48,7 @@ Nachdem Sie eine Fehlerseite angeben, lädt Application Gateway sie vom Speicher
 
 1. Navigieren Sie im Portal zu Application Gateway, und wählen Sie eine Application Gateway-Instanz aus.
 
-    ![ag-overview](media/custom-error/ag-overview.png)
+    ![Screenshot, der die Seite „Übersicht“ für ein Anwendungsgateway zeigt.](media/custom-error/ag-overview.png)
 2. Klicken Sie auf **Listener**, und navigieren Sie zu einem Listener, für den Sie eine Fehlerseite anzeigen möchten.
 
     ![Application Gateway-Listener](media/custom-error/ag-listener.png)

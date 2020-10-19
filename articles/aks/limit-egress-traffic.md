@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594258"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570379"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -49,11 +49,11 @@ Folgende Netzwerkregeln und IP-Adressabhängigkeiten werden benötigt:
 
 | Zielendpunkt                                                             | Protokoll | Port    | Zweck  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1\.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
-| **`*:9000`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Oder* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
+| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1\.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene Dies ist für [private Cluster](private-clusters.md) nicht erforderlich.|
+| **`*:9000`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Oder* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene Dies ist für [private Cluster](private-clusters.md) nicht erforderlich. |
 | **`*:123`** oder **`ntp.ubuntu.com:123`** (bei Verwendung von Azure Firewall-Netzwerkregeln)  | UDP      | 123     | Erforderlich für die NTP-Zeitsynchronisierung (Network Time Protocol) auf Linux-Knoten                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Bei Verwendung benutzerdefinierter DNS-Server müssen die Clusterknoten auf diese Server zugreifen können. |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Erforderlich bei Verwendung von Pods/Bereitstellungen, die auf den API-Server zugreifen. Von diesen Pods/Bereitstellungen wird die API-IP-Adresse verwendet.  |
+| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Erforderlich bei Verwendung von Pods/Bereitstellungen, die auf den API-Server zugreifen. Von diesen Pods/Bereitstellungen wird die API-IP-Adresse verwendet. Dies ist für [private Cluster](private-clusters.md) nicht erforderlich.  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Für Azure Global benötigte FQDNs/Anwendungsregeln 
 
@@ -76,7 +76,7 @@ Folgende Netzwerkregeln und IP-Adressabhängigkeiten werden benötigt:
 
 | Zielendpunkt                                                             | Protokoll | Port    | Zweck  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.Region:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1\.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
+| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.Region:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
 | **`*:9000`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Oder* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
 | **`*:22`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:22`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:22`** <br/> *Oder* <br/> **`APIServerIP:22`** `(only known after cluster creation)`  | TCP           | 22      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
 | **`*:123`** oder **`ntp.ubuntu.com:123`** (bei Verwendung von Azure Firewall-Netzwerkregeln)  | UDP      | 123     | Erforderlich für die NTP-Zeitsynchronisierung (Network Time Protocol) auf Linux-Knoten                 |
@@ -105,7 +105,7 @@ Folgende Netzwerkregeln und IP-Adressabhängigkeiten werden benötigt:
 
 | Zielendpunkt                                                             | Protokoll | Port    | Zweck  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1\.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
+| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
 | **`*:9000`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Oder* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene |
 | **`*:123`** oder **`ntp.ubuntu.com:123`** (bei Verwendung von Azure Firewall-Netzwerkregeln)  | UDP      | 123     | Erforderlich für die NTP-Zeitsynchronisierung (Network Time Protocol) auf Linux-Knoten                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Bei Verwendung benutzerdefinierter DNS-Server müssen die Clusterknoten auf diese Server zugreifen können. |
@@ -205,10 +205,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 | `storage.googleapis.com` | **`HTTPS:443`** | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
 
 
-### <a name="azure-policy-preview"></a>Azure Policy (Vorschauversion)
-
-> [!CAUTION]
-> Einige der unten aufgeführten Features befinden sich in der Vorschauphase.  Die Vorschläge in diesem Artikel unterliegen Änderungen, während das Feature die öffentliche Vorschau und zukünftige Releasestufen durchläuft.
+### <a name="azure-policy"></a>Azure Policy
 
 #### <a name="required-fqdn--application-rules"></a>Benötigte FQDNs/Anwendungsregeln 
 
@@ -219,7 +216,6 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Diese Adresse wird für den ordnungsgemäßen Betrieb von Azure Policy verwendet. (Derzeit als Vorschauversion in AKS) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Diese Adresse wird verwendet, um die integrierten Richtlinien aus GitHub abzurufen und so den ordnungsgemäßen Betrieb von Azure Policy sicherzustellen. (Derzeit als Vorschauversion in AKS) |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Das Azure Policy-Add-On, das Telemetriedaten an den Application Insights-Endpunkt sendet. |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Einschränken von ausgehendem Datenverkehr mithilfe von Azure Firewall
 
@@ -766,7 +762,7 @@ Navigieren Sie in einem Browser zur IP-Adresse des Azure Firewall-Front-Ends, um
 Die AKS-Abstimmungs-App sollte angezeigt werden. In diesem Beispiel lautete die öffentliche IP-Adresse der Firewall `52.253.228.132`.
 
 
-![aks-vote](media/limit-egress-traffic/aks-vote.png)
+![Screenshot, der die A K S-Abstimmungs-App mit Schaltflächen für Katzen, Hunde und das Zurücksetzen sowie Summen zeigt.](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983288"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398509"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Grundlegende Konzepte von Azure Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault ist ein Clouddienst zum sicheren Speichern und Zugreifen auf Geh
 
 Hier sind weitere wichtige Begriffe:
 
-- **Tenant:** Ein Mandant ist die Organisation, die eine bestimmte Instanz von Microsoft-Clouddiensten besitzt und verwaltet. Der am häufigsten verwendete Begriff, um auf die Azure- und Office 365-Dienste für eine Organisation zu verweisen.
+- **Tenant:** Ein Mandant ist die Organisation, die eine bestimmte Instanz von Microsoft-Clouddiensten besitzt und verwaltet. Der am häufigsten verwendete Begriff, um auf die Azure- und Microsoft 365-Dienste für eine Organisation zu verweisen.
 
 - **Tresorbesitzer:** Ein Tresorbesitzer kann einen Schlüsseltresor erstellen und über Vollzugriff sowie über uneingeschränkte Kontrolle verfügen. Außerdem kann der Tresorbesitzer auch eine Überprüfung einrichten, um zu protokollieren, wer auf Geheimnisse und Schlüssel zugreift. Administratoren können den Lebenszyklus des Schlüssels steuern. Sie können zu einer neuen Version des Schlüssels wechseln, den Schlüssel sichern und ähnliche Aufgaben ausführen.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078724"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91269742"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Ressourcen zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
 
 1. Stellen Sie Informationen zu der Logik-App bereit, die Sie erstellen möchten, z. B.:
 
-   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![Screenshot, der das „Logik-App“-Fenster „Erstellen“ mit eingegebenen Beispielinformationen zeigt.](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
@@ -121,7 +121,7 @@ Wenn Sie benutzerdefinierte Connectors in ihrer ISE verwenden möchten, erstelle
 
 1. Wählen Sie in der Liste **Speicherort** im Abschnitt **Integrationsdienstumgebungen** dieselbe ISE aus, die von Ihren Logik-Apps verwendet wird, und wählen Sie **Erstellen** aus. Beispiel:
 
-   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
+   ![Screenshot, der das Fenster „Benutzerdefinierten Logic Apps-Connector erstellen“ mit eingegebenen Beispielinformationen zeigt.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. Wählen Sie den neuen benutzerdefinierten Connector und anschließend **Bearbeiten** aus. Beispiel:
 

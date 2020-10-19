@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442980"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371523"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Tutorial: Laden des Datasets „New York Taxis“
 
@@ -91,7 +91,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
 
 11. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** aus, um den Bereitstellungsprozess zu überwachen.
   
-     ![Benachrichtigung](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![Screenshot, der das Azure-Portal mit geöffnetem Bereich „Benachrichtigungen“ und „Bereitstellung wird durchgeführt“ zeigt.](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 

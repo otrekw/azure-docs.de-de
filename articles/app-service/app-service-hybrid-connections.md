@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742603"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen
 
@@ -42,7 +42,7 @@ Die Funktion für Hybridverbindungen bietet eine Reihe von Vorteilen wie etwa Fo
 - Sie erfordert normalerweise keine Firewalllücken. Die Verbindungen sind alle ausgehend über Standardwebports.
 - Da die Funktion auf Netzwerkebene ausgeführt wird, ist sie nicht von der Sprache, die von Ihrer App verwendet wird, und von der Technologie, die vom Endpunkt verwendet wird, abhängig.
 - Sie kann verwendet werden, um über eine einzige App Zugriff in mehreren Netzwerken bereitzustellen. 
-- Sie wird in der allgemeinen Verfügbarkeit für Windows-Apps unterstützt und ist für Linux-Apps als Vorschauversion verfügbar.
+- Sie wird in der allgemeinen Verfügbarkeit für native Windows-Apps unterstützt und ist für Linux-Apps als Vorschauversion verfügbar. Sie wird für Windows-Container-Apps nicht unterstützt.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Einschränkungen bei Hybridverbindungen ###
 

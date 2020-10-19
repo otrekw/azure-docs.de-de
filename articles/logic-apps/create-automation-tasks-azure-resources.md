@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992843"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91269725"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Verwalten von Azure-Ressourcen und Überwachen von Kosten durch Erstellen von Automatisierungsaufgaben (Vorschau)
 
@@ -30,6 +30,7 @@ Im Folgenden sehen Sie die aktuell verfügbaren Aufgabenvorlagen in dieser Vorsc
 | Alle Azure-Ressourcen | **Monatliche Kosten für Ressource senden** |
 | Virtuelle Azure-Computer | Darüber hinaus gilt: <p>- **Virtuellen Computer ausschalten** <br>- **Virtuellen Computer starten** |
 | Azure Storage-Konten | Darüber hinaus gilt: <p>- **Alte Blobs löschen** |
+| Azure Cosmos DB | Darüber hinaus gilt: <p>- **Abfrageergebnis per E-Mail senden** |
 |||
 
 In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
@@ -40,11 +41,13 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 * [Bearbeiten der Aufgabe](#edit-task), sodass Sie die Aufgabe aktualisieren oder den der Aufgabe zugrunde liegenden Workflow im Logik-App-Designer anpassen können.
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Wie unterscheiden sich Automatisierungsaufgaben von Azure Automation?
 
-Derzeit können Sie eine Automatisierungsaufgabe nur auf Ressourcenebene erstellen, den Ausführungsverlauf der Aufgabe anzeigen und den der Aufgabe zugrunde liegenden Logik-App-Workflow bearbeiten, was vom [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst unterstützt wird.
+Derzeit können Sie eine Automatisierungsaufgabe nur auf Ressourcenebene erstellen, den Ausführungsverlauf der Aufgabe anzeigen und den der Aufgabe zugrunde liegenden Logik-App-Workflow bearbeiten, was vom [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst unterstützt wird. Automatisierungsaufgaben sind grundlegender und schlanker als [Azure Automation](../automation/automation-intro.md).
 
-[Azure Automation](../automation/automation-intro.md) ist ein cloudbasierter Automatisierungs- und Konfigurationsdienst, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Der Dienst umfasst [Prozessautomatisierung für Orchestrierungszwecke](../automation/automation-intro.md#process-automation) durch Verwendung von [Runbooks](../automation/automation-runbook-execution.md), Konfigurationsverwaltung mit [Änderungsnachverfolgung und Bestand](../automation/change-tracking.md), Updateverwaltung, gemeinsam genutzte Funktionen und Features für heterogene Umgebungen. Mit Azure Automation haben Sie die volle Kontrolle über Bereitstellung, Ausführung und Außerbetriebnahme von Workloads und Ressourcen.
+Im Vergleich dazu ist Azure Automation ein cloudbasierter Automatisierungs- und Konfigurationsdienst, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Der Dienst umfasst [Prozessautomatisierung für Orchestrierungszwecke](../automation/automation-intro.md#process-automation) durch Verwendung von [Runbooks](../automation/automation-runbook-execution.md), Konfigurationsverwaltung mit [Änderungsnachverfolgung und Bestand](../automation/change-tracking.md), Updateverwaltung, gemeinsam genutzte Funktionen und Features für heterogene Umgebungen. Mit Azure Automation haben Sie die volle Kontrolle über Bereitstellung, Ausführung und Außerbetriebnahme von Workloads und Ressourcen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

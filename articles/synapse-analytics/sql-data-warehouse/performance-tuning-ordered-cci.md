@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795608"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841593"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
@@ -48,9 +48,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
-
->[!TIP]
-> Um die Leistung in Synapse SQL zu verbessern, sollten Sie **sys.pdw_permanent_table_mappings** anstelle von **sys.pdw_table_mappings** für dauerhafte Benutzertabellen verwenden. Weitere Informationen finden Sie unter **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 > [!NOTE] 
 > In einer sortierten CCI-Tabelle werden die neuen Daten aus dem gleichen Batch von DML- oder Datenladevorgängen innerhalb dieses Batches sortiert, es findet jedoch keine globale Sortierung aller Daten in der Tabelle statt.  Benutzer können die geordnete CCI-Tabelle neu erstellen (REBUILD), um alle Daten in der Tabelle zu sortieren.  In Synapse SQL ist die Neuerstellung des Columnstore-Indexes ein Offlinevorgang.  Bei einer partitionierten Tabelle erfolgt die Neuerstellung (REBUILD) der Partitionen nacheinander.  Die Daten in der Partition, die neu erstellt wird, sind „offline“ und nicht verfügbar, bis die Neuerstellung (REBUILD) für diese Partition beendet ist. 
@@ -98,7 +95,7 @@ Die Leistung beim Laden von Daten in eine sortierte CCI-Tabelle ähnelt dem Lade
 
 Im Folgenden finden Sie ein Beispiel für einen Leistungsvergleich beim Laden von Daten in Tabellen mit unterschiedlichen Schemas.
 
-![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![Balkendiagramm, das den Leistungsvergleich beim Laden von Daten in Tabellen mit unterschiedlichen Schemas zeigt.](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
 Im Folgenden finden Sie ein Beispiel für einen Abfrageleistungsvergleich zwischen einer CCI-Tabelle und einer geordneten CCI-Tabelle.

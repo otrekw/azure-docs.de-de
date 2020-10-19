@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187199"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400416"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Beheben von Hybrid Runbook Worker-Problemen
 
@@ -234,11 +234,11 @@ Protokolle werden lokal auf jedem Hybridworker unter "C:\ProgramData\Microsoft\S
 
 Hybrid Worker senden [Runbookausgabe und -meldungen](../automation-runbook-output-and-messages.md) an Azure Automation auf dieselbe Art, auf die in der Cloud ausgeführte Runbookaufträge Ausgabe und Meldungen versenden. Wie bei Runbooks können Sie den ausführlichen Datenstrom und den Fortschrittsdatenstrom aktivieren.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Szenario: „Orchestrator.Sandbox.exe“ kann keine Verbindung mit Office 365 über den Proxy herstellen.
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>Szenario: „Orchestrator.Sandbox.exe“ kann keine Verbindung mit Microsoft 365 über den Proxy herstellen.
 
 #### <a name="issue"></a>Problem
 
-Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Office 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0). 
+Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Microsoft 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0). 
 
 Wenn Sie **Orchestrator.Sandbox.exe.config** anpassen und den Proxy und die Umgehungsliste festlegen, wird weiterhin keine ordnungsgemäße Verbindung mit der Sandbox hergestellt. Eine Datei **Powershell_ise.exe.config** mit denselben Einstellungen für Proxy und Umgehungsliste scheint erwartungsgemäß zu funktionieren. SMA- (Service Management Automation) und PowerShell-Protokolle bieten keine Informationen zum Proxy.
 

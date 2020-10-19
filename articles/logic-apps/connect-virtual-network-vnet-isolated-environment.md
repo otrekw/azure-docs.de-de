@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/25/2020
+ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647543"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369007"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -168,6 +168,8 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
 * [Eingehende und ausgehende Logic Apps-Adressen für die ISE-Region](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
 
+* [Azure-IP-Adressen für Connectors in der ISE-Region, die sich in dieser Downloaddatei befinden](https://www.microsoft.com/download/details.aspx?id=56519)
+
 * Sie müssen Dienstendpunkte für Azure SQL, Storage, Service Bus und Event Hub aktivieren, da Sie keinen Datenverkehr durch eine Firewall an diese Dienste senden können.
 
 <a name="create-environment"></a>
@@ -282,6 +284,21 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    > [!IMPORTANT]
    > Verwaltete ISE-Connectors, die nach dem Erstellen der ISE verfügbar sind, werden nicht automatisch in der Connectorauswahl im Logik-App-Designer aufgeführt. Bevor Sie diese ISE-Connectors verwenden können, müssen Sie sie [manuell Ihrer ISE hinzufügen und bereitstellen](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment), damit sie im Logik-App-Designer angezeigt werden.
+
+   > [!IMPORTANT]
+   > Verwaltete ISE-Connectors unterstützen zurzeit keine [Tags](../azure-resource-manager/management/tag-support.md). Wenn Sie eine Richtlinie einrichten, die das Tagging erzwingt, kann das Hinzufügen von ISE-Connectors  
+   > mit einem diesem Beispiel ähnlichen Fehler fehlschlagen: 
+   > 
+   > ```json
+   > {
+   >    "error": { 
+   >       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+   >       "message": "The tags are not supported in the managed API 'azureblob'."
+   >    }
+   > }
+   > ```
+   > Zum Hinzufügen von ISE-Connectors müssen Sie Ihre Richtlinie entweder deaktivieren oder entfernen.
+   > 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,16 +3,16 @@ title: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 description: In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation mit verknüpften Vorlagen erstellen.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: f1808be73981c3ab4d53fd2a651822b93b5fb790
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228000"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91728538"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie eine [Vorlagenspezifikation](template-specs.md) mit einer [verknüpften Vorlage](linked-templates.md#linked-template) erstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation erstellen, um mithilfe der neuen Eigenschaft `relativePath` der [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) ein Paket mit einer Hauptvorlage und ihren verknüpften Vorlagen zu erstellen.
+In diesem Artikel erfahren Sie, wie Sie eine [Vorlagenspezifikation](template-specs.md) mit einer [verknüpften Vorlage](linked-templates.md#linked-template) erstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation erstellen, um mithilfe der Eigenschaft `relativePath` der [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) ein Paket mit einer Hauptvorlage und ihren verknüpften Vorlagen zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -176,7 +176,7 @@ New-AzTemplateSpec `
   -Version "1.0.0.0" `
   -ResourceGroupName templateSpecRG `
   -Location westus2 `
-  -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
@@ -223,7 +223,7 @@ New-AzResourceGroup `
   -Name webRG `
   -Location westus2
 
-$id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name webSpec -Version "1.0.0.0").Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name webSpec -Version "1.0.0.0").Versions.Id
 
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `

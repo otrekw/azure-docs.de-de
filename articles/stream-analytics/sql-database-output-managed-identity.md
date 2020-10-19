@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870186"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460640"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Zugreifen auf Azure SQL-Datenbank mit verwalteten Identitäten aus einem Azure Stream Analytics-Auftrag (Vorschau)
 
@@ -60,15 +60,15 @@ Nachdem Sie eine verwaltete Identität erstellt haben, wählen Sie einen Active 
 
    ![Hinzufügen eines Active Directory-Administrators](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Abgeblendete Benutzer oder Gruppen können nicht ausgewählt werden, da sie nicht als Azure AD-Administratoren unterstützt werden. Siehe die Liste von unterstützten Administratoren im Abschnitt  **Funktionen und Einschränkungen von Azure AD** von  [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben. Der ausgewählte Benutzer bzw. die ausgewählte Gruppe ist außerdem der Benutzer, der den **Benutzer der eigenständigen Datenbank** im nächsten Abschnitt erstellen kann.
+   Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Abgeblendete Benutzer oder Gruppen können nicht ausgewählt werden, da sie nicht als Azure Active Directory-Administratoren unterstützt werden. Siehe die Liste von unterstützten Administratoren im Abschnitt  **Funktionen und Einschränkungen von Azure Active Directory** von  [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben. Der ausgewählte Benutzer bzw. die ausgewählte Gruppe ist außerdem der Benutzer, der den **Benutzer der eigenständigen Datenbank** im nächsten Abschnitt erstellen kann.
 
 1. Wählen Sie auf der Seite **Active Directory-Administrator** die Option **Speichern** aus. Der Prozess zum Ändern des Administrators dauert einige Minuten.
 
-   Beim Einrichten des Azure AD-Administrators darf der Name des neuen Administrators (Benutzer oder Gruppe) in der virtuellen Masterdatenbank nicht als SQL Server-Authentifizierungsbenutzer vorhanden sein. Wenn er vorhanden ist, schlägt die Einrichtung des Azure AD-Administrators fehl. Die Erstellung wird rückgängig gemacht, und es wird angegeben, dass bereits ein Administrator (Name) vorhanden ist. Da der SQL Server-Authentifizierungsbenutzer nicht Teil von Azure AD ist, sind alle Versuche erfolglos, unter der Azure AD-Authentifizierung als dieser Benutzer eine Verbindung mit dem Server herzustellen. 
+   Beim Einrichten des Azure Active Directory-Administrators darf der Name des neuen Administrators (Benutzer oder Gruppe) in der virtuellen primären Datenbank nicht als SQL Server-Authentifizierungsbenutzer vorhanden sein. Wenn er vorhanden ist, schlägt die Einrichtung des Azure Active Directory-Administrators fehl. Die Erstellung wird rückgängig gemacht, und es wird angegeben, dass bereits ein Administrator (Name) vorhanden ist. Da der SQL Server-Authentifizierungsbenutzer nicht Teil von Azure Active Directory ist, sind alle Versuche erfolglos, unter der Azure Active Directory-Authentifizierung als dieser Benutzer eine Verbindung mit dem Server herzustellen. 
 
 ## <a name="create-a-contained-database-user"></a>Erstellen eines Benutzers einer eigenständigen Datenbank
 
-Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ihrer SQL-Datenbank, der der Azure Active Directory-Identität zugeordnet ist. Der Benutzer einer eigenständigen Datenbank verfügt über keine Anmeldung für die Masterdatenbank, ist aber einer Identität im Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist. Bei der Azure Active Directory-Identität kann es sich um ein einzelnes Benutzerkonto oder eine Gruppe handeln. In diesem Fall möchten Sie einen Benutzer einer eigenständigen Datenbank für den Stream Analytics-Auftrag erstellen. 
+Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ihrer SQL-Datenbank, der der Azure Active Directory-Identität zugeordnet ist. Der Benutzer einer eigenständigen Datenbank verfügt über keine Anmeldung für die primäre Datenbank, ist aber einer Identität im Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist. Bei der Azure Active Directory-Identität kann es sich um ein einzelnes Benutzerkonto oder eine Gruppe handeln. In diesem Fall möchten Sie einen Benutzer einer eigenständigen Datenbank für den Stream Analytics-Auftrag erstellen. 
 
 1. Stellen Sie mithilfe von SQL Server Management Studio eine Verbindung mit SQL-Datenbank her. Der **Benutzername** ist ein Azure Active Directory-Benutzer mit der Berechtigung **ALTER ANY USER**. Der Administrator, den Sie auf dem SQL Server festlegen, ist ein Beispiel dafür. Verwenden Sie die Authentifizierung **Azure Active Directory: universell mit MFA**. 
 
