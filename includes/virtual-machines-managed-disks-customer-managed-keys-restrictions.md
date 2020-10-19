@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 08/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8833639b6efacc664596ecb2aa6f9da41ad23b81
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b660d3a0d49de80ed85cfbdcdf8e28b9828cbf26
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814133"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91545247"
 ---
 - Es werden ausschließlich [Software- und HSM RSA-Schlüssel](../articles/key-vault/keys/about-keys.md) der Größen 2.048 Bit, 3.072 Bit und 4.096 Bit unterstützt.
     - Für [HSM](../articles/key-vault/keys/hsm-protected-keys.md)-Schlüssel ist der **Premium**-Tarif von Azure Key Vault erforderlich.
 - Datenträger, die aus benutzerdefinierten Images erstellt werden, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, müssen mit denselben vom Kunden verwalteten Schlüsseln verschlüsselt werden und sich im selben Abonnement befinden.
 - Momentaufnahmen, die von Datenträgern erstellt werden, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, müssen mit denselben vom Kunden verwalteten Schlüsseln verschlüsselt werden.
 - Alle Ressourcen, die sich auf Ihre vom Kunden verwalteten Schlüssel (Azure Key Vaults, Datenträgerverschlüsselungssätze, VMs, Datenträger und Momentaufnahmen) beziehen, müssen sich im selben Abonnement und in derselben Region befinden.
-- Mit vom Kunden verwalteten Schlüsseln verschlüsselte Datenträger, Momentaufnahmen und Images können nicht in ein anderes Abonnement verschoben werden.
+- Mit vom Kunden verwalteten Schlüsseln verschlüsselte Datenträger, Momentaufnahmen und Images können nicht in andere Ressourcengruppen und Abonnements verschoben werden.
 - Verwaltete Datenträger, die bisher oder aktuell mit Azure Disk Encryption verschlüsselt wurden, können nicht mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
 - Pro Region und Abonnement können nur bis zu 50 Datenträgerverschlüsselungssätze erstellt werden.
 - Informationen über die Verwendung von kundenseitig verwalteter Schlüssel mit Shared Image Gallerys finden Sie unter [Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images](../articles/virtual-machines/image-version-encryption.md).

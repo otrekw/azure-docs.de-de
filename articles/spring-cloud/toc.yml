@@ -92,6 +92,8 @@
     - name: Selbstdiagnose und Problembehandlung
       href: spring-cloud-howto-self-diagnose-solve.md
     - name: Überwachen
+    - name: Erstellen von Rollen und Berechtigungen
+      href: spring-cloud-howto-permissions.md
       items:
         - name: Verteilte Ablaufverfolgung und App Insights
           href: spring-cloud-tutorial-distributed-tracing.md

@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 9f64d6da399285b82d1222a768b344dfdf6a317b
-  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+  ms.openlocfilehash: 546cde760946c2cd63bef539180395160acf3608
+  ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92047041"
+  ms.lasthandoff: 10/16/2020
+  ms.locfileid: "92131665"
 landingContent:
 - title: Über Azure Digital Twins
   linkLists:
@@ -71,7 +71,7 @@ landingContent:
     links:
     - text: Schreiben von App-Authentifizierungscode
       url: how-to-authenticate-client.md
-- title: API-Referenz
+- title: Anzeigen der API-Referenz
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -85,3 +85,29 @@ landingContent:
     links:
     - text: REST-APIs
       url: /rest/api/azure-digitaltwins/
+- title: Untersuchen von Codebeispielen
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: End-to-End-Beispiele
+      url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Azure Digital Twins-Explorer (Beispiel)
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explore
+  - linkListType: sample
+    links:
+    - text: DTDL-Validierungssteuerelement (Beispiel)
+      url: /samples/azure-samples/dtdl-validator/dtdl-validator/
+  - linkListType: sample
+    links:
+    - text: Beispiel für die DPS- und IoT Hub-Integration
+      url: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
+  - linkListType: sample
+    links:
+    - text: SignalR-Integrationsbeispiel
+      url: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Benutzerdefinierte Swagger für Logic Apps-Connector
+      url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/

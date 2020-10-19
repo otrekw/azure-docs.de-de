@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 85804e0f9293ec2e63aa319854e9559da11c8be1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286273"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371319"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Verwenden des FreeBSD-Paketfilters zum Erstellen einer sicheren Firewall in Azure
 In diesem Artikel wird erläutert, wie Sie eine NAT-Firewall mithilfe eines FreeBSD-Paketfilters über die Azure Resource Manager-Vorlage für allgemeine Webserverszenarien bereitstellen.
@@ -25,7 +25,7 @@ PF (Paketfilter) ist ein von BSD lizenzierter zustandsbehafteter Paketfilter, ei
 Wenn Sie eine sichere Firewall in der Cloud für Ihre Webserver einrichten möchten, können Sie jetzt loslegen. Sie können auch die in dieser Azure Resource Manager-Vorlage verwendeten Skripts zum Einrichten Ihrer Netzwerktopologie anwenden.
 Mit der Azure Resource Manager-Vorlage werden ein virtueller FreeBSD-Computer, der eine NAT/Umleitung mit dem PF durchführt, sowie zwei virtuelle FreeBSD-Computer mit installiertem und konfiguriertem Nginx-Webserver eingerichtet. Zusätzlich zum Durchführen der NAT für die zwei Webserver mit ausgehendem Datenverkehr fängt der virtuelle Computer für die NAT/Umleitung HTTP-Anfragen ab und leitet sie zu den zwei Round-Robin-Webservern weiter. Das VNet verwendet den privaten, nicht weiterleitbaren IP-Adressraum 10.0.0.2/24. Außerdem können Sie die Parameter der Vorlage ändern. Die Azure Resource Manager-Vorlage definiert zudem eine Routingtabelle für das gesamte VNet, eine Auflistung der einzelnen Routen, die zum Außerkraftsetzen der Azure-Standardrouten auf Grundlage der Ziel-IP-Adresse verwendet werden. 
 
-![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
+![Das Diagramm zeigt eine öffentliche IP-Adresse einer NAT-Instanz, die über die Round-Robin-Methode zu zwei virtuellen Back-End-Computern umgeleitet wird, die Nginx-Webserver hosten.](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Bereitstellen über die Azure CLI
 Die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein. Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` am Standort `West US` erstellt.

@@ -6,10 +6,8 @@
       href: introduction.md
 - name: Schnellstart
   items:
-    - name: Prozess für die Vorbereitung der Bereitstellung
+    - name: 0. Planen der Bereitstellung
       href: production-ready-deployment-steps.md
-    - name: Checkliste für die Vorbereitung der Bereitstellung
-      href: pre-deployment-checklist.md
     - name: 1. Bereitstellen von Azure VMware Solution
       href: deploy-azure-vmware-solution.md
     - name: 2. Herstellen einer Verbindung mit lokalen Ressourcen
@@ -104,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: Häufig gestellte Fragen
       href: faq.md
+- name: Verweis
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware

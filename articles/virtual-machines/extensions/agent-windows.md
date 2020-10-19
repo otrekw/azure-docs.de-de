@@ -2,23 +2,17 @@
 title: Übersicht über den Agent für virtuelle Azure-Computer
 description: Übersicht über den Agent für virtuelle Azure-Computer
 services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.author: mimckitt
+ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612833"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974905"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -70,11 +64,11 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Für die Ausführung des Windows-VM-Agent sind mindestens Windows Server 2008 SP2 (64 Bit) und .NET Framework 4.0 erforderlich. Siehe [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) (Unterstützte Mindestversion für VM-Agents in Azure).
+- Für die Ausführung des Windows-VM-Agent sind mindestens Windows Server 2008 SP2 (64 Bit) und .NET Framework 4.0 erforderlich. Siehe [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) (Unterstützte Mindestversion für VM-Agents in Azure).
 
-- Stellen Sie sicher, dass Ihr virtueller Computer Zugriff auf die IP-Adresse 168.63.129.16 hat. Weitere Informationen finden Sie unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+- Stellen Sie sicher, dass Ihr virtueller Computer Zugriff auf die IP-Adresse 168.63.129.16 hat. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen dazu.
 
-- Stellen Sie sicher, dass DHCP auf der Gast-VM aktiviert ist. Dies ist erforderlich, damit die Host- oder Fabricadresse des Dynamic Host Configuration-Protokolls (DHCP) für den IaaS-VM-Agent und die Erweiterungen funktioniert. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im Azure-Portal oder mithilfe von PowerShell konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier erfahren Sie mehr](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) über das Einrichten einer statischen IP-Adresse mit PowerShell.
+- Stellen Sie sicher, dass DHCP auf der Gast-VM aktiviert ist. Dies ist erforderlich, damit die Host- oder Fabricadresse des Dynamic Host Configuration-Protokolls (DHCP) für den IaaS-VM-Agent und die Erweiterungen funktioniert. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im Azure-Portal oder mithilfe von PowerShell konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier erfahren Sie mehr](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) über das Einrichten einer statischen IP-Adresse mit PowerShell.
 
 
 ## <a name="detect-the-vm-agent"></a>Erkennen des VM-Agents
@@ -87,7 +81,7 @@ Mithilfe des Azure Resource Manager-PowerShell-Moduls können Sie Informationen 
 Get-AzVM
 ```
 
-In der folgenden verkürzten Beispielausgabe ist die in *OSProfile* geschachtelte Eigenschaft *ProvisionVMAgent* dargestellt. Diese Eigenschaft gibt Aufschluss darüber, ob der VM-Agent für den virtuellen Computer bereitgestellt wurde:
+In der folgenden verkürzten Beispielausgabe ist die in `OSProfile` geschachtelte Eigenschaft *ProvisionVMAgent* dargestellt. Diese Eigenschaft gibt Aufschluss darüber, ob der VM-Agent für den virtuellen Computer bereitgestellt wurde:
 
 ```powershell
 OSProfile                  :
@@ -119,6 +113,15 @@ Der Azure VM-Agent für Windows wird automatisch in Images aktualisiert, die aus
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Automatische Protokollerfassung für Windows-Gast-Agent
 Der Windows-Gast-Agent verfügt über eine Funktion zum automatischen Erfassen einiger Protokolle. Diese Funktion wird durch den Prozess CollectGuestLogs.exe gesteuert. Sie ist sowohl für PaaS Cloud Services als auch für IaaS-VMs vorhanden und darauf ausgelegt, schnell und automatisch einige Diagnoseprotokolle von einer VM zu erfassen, sodass sie für die Offlineanalyse verwendet werden können. Erfasst werden Ereignisprotokolle, Betriebssystemprotokolle, Azure-Protokolle sowie einige Registrierungsschlüssel. Es wird eine ZIP-Datei erstellt, die an den Host der VM übertragen wird. Diese ZIP-Datei kann dann von Technikerteams und Supportmitarbeitern verwendet werden, um Probleme auf Anforderung des Besitzers der VM zu untersuchen.
+
+## <a name="guest-agent-and-osprofile-certificates"></a>Gast-Agent- und OSProfile-Zertifikate
+Der Azure-VM-Agent ist für die Installation der Zertifikate zuständig, auf die im `OSProfile` eines virtuellen Computers oder einer VM-Skalierungsgruppe verwiesen wird. Wenn Sie diese Zertifikate manuell in der MMC-Konsole für Zertifikate auf der Gast-VM entfernen, wird erwartet, dass sie vom Gast-Agent wieder hinzugefügt werden.
+Um ein Zertifikat dauerhaft zu entfernen, müssen Sie es aus `OSProfile` entfernen und dann im Gastbetriebssystems entfernen.
+
+Verwenden Sie für einen virtuellen Computer [Remove-AzVMSecret](), um Zertifikate aus `OSProfile` zu entfernen.
+
+Weitere Informationen zu VMSS-Zertifikaten finden Sie unter [Virtual Machine Scale Sets – How do I remove deprecated certificates?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates) (Skalierungsgruppen für virtuelle Computer – Wie entferne ich veraltete Zertifikate?).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu VM-Erweiterungen finden Sie unter [Azure virtual machine extensions and features overview (Übersicht über Azure-VM-Erweiterungen und Features)](overview.md).

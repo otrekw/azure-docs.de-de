@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/26/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944450"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566946"
 ---
 Die Aktivierung freigegebener Datenträger ist nur für eine Teilmenge von Datenträgertypen verfügbar. Derzeit können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Jeder verwaltete Datenträger, für den freigegebene Datenträger aktiviert sind, unterliegt den folgenden Einschränkungen, die nach Datenträgertyp geordnet sind:
 
@@ -30,7 +30,6 @@ Freigegebene Disk Ultra-Datenträger sind in allen Regionen verfügbar, die dies
 
 ### <a name="premium-ssds"></a>SSD Premium
 
-- Derzeit nur in [einer Teilmenge der Regionen](#regional-availability) unterstützt.
 - Derzeit beschränkt auf Azure Resource Manager oder die SDK-Unterstützung. 
 - Die Aktivierung kann nicht auf Betriebssystem-Datenträgern, sondern nur auf sonstigen Datenträgern erfolgen.
 - Die **schreibgeschützte** Hostzwischenspeicherung ist für SSD-Premium-Datenträger mit `maxShares>1` nicht verfügbar.
@@ -42,24 +41,4 @@ Freigegebene Disk Ultra-Datenträger sind in allen Regionen verfügbar, die dies
 
 #### <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Freigegebene Premium-SSDs werden nur in den folgenden Regionen unterstützt:
-
-- East US
-- USA (Ost) 2
-- USA (Westen)
-- USA, Westen 2
-- USA, Westen-Mitte
-- USA Süd Mitte
-- USA Nord Mitte
-- USA (Mitte)
-- Europa, Westen
-- Nordeuropa
-- Korea, Mitte
-- Kanada, Mitte
-- Kanada, Osten
-- Japan, Osten
-- Japan, Westen
-- US Government, Virginia
-- US Gov Arizona
-
-Wenn Sie daran interessiert sind, freigegebene SSD Premium-Datenträger auszuprobieren, [registrieren Sie sich für den Zugriff](https://aka.ms/AzureSharedDiskGASignUp).
+Freigegebene SSD Premium-Datenträger sind in allen Regionen verfügbar, in denen verwaltete Datenträger verfügbar sind.

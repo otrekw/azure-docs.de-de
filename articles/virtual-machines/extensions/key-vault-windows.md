@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ab89e0da3d4512cef9741ec97e9d772c852beb4b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 2595c79c024ea7583f6c6a263dcf4f6034ba6df9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804094"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072287"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -31,6 +31,11 @@ Die Key Vault-VM-Erweiterung unterstützt folgende Windows-Versionen:
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>Voraussetzungen
+  - Key Vault-Instanz mit Zertifikat. Siehe [Erstellen eines Schlüsseltresors](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal).
+  - Der VM/VMSS muss eine [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zugewiesen sein.
+  - Die Key Vault-Zugriffsrichtlinie muss mit geheimen Schlüsseln `get` und `list` Berechtigung für die verwaltete VM/VMSS-Identität festgelegt werden, um den Teil des Zertifikats für den geheimen Schlüssel abzurufen. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](/azure/key-vault/general/authentication) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy-cli).
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -102,6 +107,10 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 
 Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment der Vorlage geschachtelt sein – genauer gesagt im Objekt `"resources": []` für die VM-Vorlage und im Falle einer VM-Skalierungsgruppe unter dem Objekt `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`.
 
+ > [!NOTE]
+> Die VM-Erweiterung erfordert, dass eine system- oder benutzerverwaltete Identität für die Authentifizierung beim Schlüsseltresor zugewiesen wird.  Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault und Zuweisen einer Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm).
+> 
+
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -131,7 +140,7 @@ Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment de
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell-Bereitstellung
 > [!WARNING]
-> PowerShell-Clients fügen `"` häufig `\` in der Datei „settings.json“ hinzu, wodurch bei „akvvm_service“ folgender Fehler auftritt: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
+> PowerShell-Clients fügen `"` häufig `\` in der Datei „settings.json“ hinzu. Dies verursacht bei akvvm_service folgenden Fehler: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf einem vorhandenen virtuellen Computer oder in einer VM-Skalierungsgruppe bereitzustellen. 
 
@@ -196,9 +205,9 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
 
    ```azurecli
         # Start the deployment
-        az vmss extension set -n "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -g "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
@@ -206,8 +215,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
 Beachten Sie hierbei die folgenden Einschränkungen bzw. Anforderungen:
 - Key Vault-Einschränkungen:
   - Muss zum Zeitpunkt der Bereitstellung vorhanden sein. 
-  - Die Key Vault-Zugriffsrichtlinie muss für die VM/VMSS-Identität mithilfe einer verwalteten Identität festgelegt werden. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](/azure/key-vault/general/authentication) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy-cli).
-
+  - Die Key Vault-Zugriffsrichtlinie muss für die VM/VMSS-Identität mithilfe einer verwalteten Identität festgelegt werden. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-cli.md).
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

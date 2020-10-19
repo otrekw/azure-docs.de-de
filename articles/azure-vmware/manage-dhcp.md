@@ -3,12 +3,12 @@ title: Erstellen und Verwalten von DHCP
 description: In diesem Artikel wird beschrieben, wie Sie DHCP in Azure VMware Solution verwalten.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069559"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332830"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Erstellen und Verwalten von DHCP in Azure VMware Solution
 
@@ -24,7 +24,7 @@ Navigieren Sie im NSX-Manager zur Registerkarte **Networking** (Netzwerk), und w
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>Verbinden Sie den DHCP-Server mit dem Gateway der Ebene 1.
 
-1. Wählen Sie **Tier-1-Gateways** (Gateways der Ebene 1), anschließend das Gateway und schließlich **Edit** (Bearbeiten) aus.
+1. Wählen Sie **Tier-1-Gateways** (Gateways der Ebene 1), das Gateway und dann **Edit** (Bearbeiten) aus.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="DHCP-Server hinzufügen" border="true":::
 
@@ -56,7 +56,7 @@ Nachdem Sie den DHCP-Server erstellt haben, müssen Sie ihm Netzwerksegmente hin
 
 ## <a name="create-dhcp-relay-service"></a>Erstellen eines DHCP-Relaydiensts
 
-1. Navigieren Sie im Fenster „NSX-T“ zur Registerkarte **Networking** (Netzwerk), und wählen Sie unter **IP Management** (IP-Verwaltung) **DHCP** aus. Wählen Sie **ADD SERVER** (Server hinzufügen) aus. Wählen Sie „DHCP Relay“ als **Servertyp**, und geben Sie den Namen und die IP-Adresse des Relayservers ein. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
+1. Navigieren Sie im Fenster „NXT-T“ zur Registerkarte **Networking** (Netzwerk), und wählen Sie unter **IP Management** (IP-Verwaltung) **DHCP** aus. Wählen Sie **ADD SERVER** (Server hinzufügen) aus. Wählen Sie „DHCP Relay“ als **Servertyp**, und geben Sie den Namen und die IP-Adresse des Relayservers ein. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-Server hinzufügen" border="true":::
 

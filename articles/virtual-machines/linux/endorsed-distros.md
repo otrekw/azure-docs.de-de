@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978933"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Von Azure unterstützte Linux-Distributionen
 
@@ -37,9 +37,9 @@ Der Azure Linux-Agent ist bereits in den Azure Marketplace-Images vorinstalliert
 | CentOS von Rogue Wave Software |CentOS 6.x, 7.x, 8.x |CentOS 6.3: [LIS-Download](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: Im Kernel |Paket: Im [Repository](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS erreicht sein [End of life](https://coreos.com/os/eol/) am 26. Mai 2020. |Nicht mehr verfügbar | | |
 | Debian von Credativ |8.x, 9.x |Im Kernel |Paket: Im Repository unter „waagent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar Container Linux von Kinvolk| Stabil, Betaversion| Im Kernel | wa-linux-agent ist bereits in /usr/share/oem/bin/waagent installiert. |
+|Flatcar Container Linux von Kinvolk| Pro, Stable, Beta| Im Kernel | wa-linux-agent ist bereits in /usr/share/oem/bin/waagent installiert. |
 | Oracle Linux von Oracle |6.x, 7.x, 8.x |Im Kernel |Paket: Im Repository unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat Enterprise Linux von Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |Im Kernel |Paket: Im Repository unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Enterprise Linux von Red Hat](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |Im Kernel |Paket: Im Repository unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise von SUSE |SLES/SLES für SAP 11.x, 12.x, 15.x <br/> [Lebenszyklus von öffentlichen SUSE-Cloudimages](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |Im Kernel |Paket:<p> Für 11 im [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools)-Repository<br>Für 12 im Modul „Public Cloud“ unter „python-azure-agent“ enthalten<br/>Quellcode: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE von SUSE |openSUSE Leap 15.x |Im Kernel |Paket: Im Repository [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) unter „python-azure-agent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu von Canonical |Ubuntu Server und Pro. 16.x, 18.x, 20.x<p>Informationen zur erweiterten Unterstützung für Ubuntu 12.04 und 14.04 finden Sie hier: [Ubuntu Extended Security Maintenance](https://www.ubuntu.com/esm) (Erweiterte Ubuntu-Sicherheitswartung). |Im Kernel |Paket: Im Repository unter „walinuxagent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -58,6 +58,7 @@ In den meisten Fällen sind diese Kernel in den Standardimages in Azure Marketpl
 - [Debian-Cloudkernel – verfügbar mit den „Backports“-Images für Debian 10 und Debian 9 in Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
 - [Optimierter SLES-Kernel für Azure](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
 - [Optimierter Ubuntu-Kernel für Azure](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Flatcar Container Linux Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>Partner
 

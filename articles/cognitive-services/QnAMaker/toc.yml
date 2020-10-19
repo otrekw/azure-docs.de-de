@@ -24,26 +24,14 @@
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Erstellen eines FAQ-Bots mit Azure Bot Service
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: Mit Batchdatei testen
-      href: Quickstarts/batch-testing.md
 - name: Konzepte
   items:
     - name: Planen Ihrer Wissensdatenbank
       href: Concepts/plan.md
     - name: Planen von QnA Maker-Ressourcen
       href: Concepts/azure-resources.md
-    - name: Entwerfen einer Wissensdatenbank
-      items:
-        - name: Für Sprachen
-          href: Concepts/design-language-culture.md
-        - name: Für Clientanwendungen
-          href: Concepts/integration-with-other-applications.md
     - name: Datenquellen und Inhalte
-      items:
-        - name: Importieren aus Datenquellen
-          href: Concepts/knowledge-base.md
-        - name: Importierte Inhaltstypen
-          href: Concepts/content-types.md
+      href: Concepts/data-sources-and-content.md
     - name: Einstufungsprozess
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -58,22 +46,14 @@
 - name: Anleitungen
   items:
     - name: Verwalten von Azure-Ressourcen
-      items:
-        - name: Ressourcen verwalten
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Zusammenarbeiten
-          href: How-To/collaborate-knowledge-base.md
-        - name: Aktivieren des Features für aktives Lernen
-          href: How-To/use-active-learning.md
-        - name: Ändern der Standardantwort
-          href: How-To/change-default-answer.md
+      href: How-To/set-up-qnamaker-service-azure.md
+      displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Verwalten der QnA Maker-App
+      href: How-To/manage-qna-maker-app.md
     - name: Verwalten einer Wissensdatenbank
       items:
         - name: Erstellen einer Wissensdatenbank
           href: How-To/manage-knowledge-bases.md
-        - name: Sprachauswahl
-          href: How-To/language-knowledge-base.md
         - name: Hinzufügen von Smalltalk
           href: How-to/chit-chat-knowledge-base.md
         - name: Migrieren zu einer neuen Wissensdatenbank
@@ -102,7 +82,7 @@
       href: Overview/language-support.md
     - name: Einschränkungen
       href: limits.md
-    - name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'
+    - name: "Rollenbasierte Zugriffssteuerung von Azure (Azure\_RBAC)"
       href: Concepts/role-based-access-control.md
     - name: Aktives Lernen
       href: Concepts/active-learning-suggestions.md
@@ -115,6 +95,8 @@
     - name: Hinzufügen von gesicherten SharePoint-Dateien
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: Ändern der Standardantwort
+      href: How-To/change-default-answer.md
     - name: Dienstkonfiguration
       href: reference-app-service.md
     - name: Inhalts- und Datenformate
