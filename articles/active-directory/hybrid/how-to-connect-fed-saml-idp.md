@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660967"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295037"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -306,7 +306,7 @@ Microsoft hat ein Tool bereitgestellt, das Sie verwenden können, um Ihre auf SA
 2.  Klicken Sie auf „Jetzt installieren“, um mit dem Download und der Installation des Tools zu beginnen.
 3.  Wählen Sie „I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory“ (Ich kann keinen Verbund mit Office 365, Azure oder anderen Diensten einrichten, die Azure Active Directory verwenden) aus.
 4.  Nachdem das Tool heruntergeladen wurde und ausgeführt wird, sehen Sie das Fenster „Verbindungsdiagnose“. Das Tool führt Sie ausführlich durch das Testen Ihrer Verbundverbindung.
-5.  Die Verbindungsuntersuchung öffnet Ihren SAML 2.0-Identitätsanbieter für Ihre Anmeldung. Geben Sie die Anmeldeinformationen für den zu überprüfenden Benutzerprinzipal ein: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Die Verbindungsuntersuchung öffnet Ihren SAML 2.0-Identitätsanbieter für Ihre Anmeldung. Geben Sie die Anmeldeinformationen für den zu überprüfenden Benutzerprinzipal ein: ![Screenshot des Anmeldefensters für den SAML 2.0-IDP.](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Geben Sie im Fenster der Anmeldung für den Verbundtest einen Kontonamen und ein zugehöriges Kennwort für den Azure AD-Mandanten ein, für den mit Ihrem SAML 2.0-Identitätsanbieter ein Verbund erstellt werden soll. Das Tool versucht, sich mithilfe dieser Anmeldeinformationen anzumelden. Als Ausgabe werden ausführliche Ergebnisse von Tests, die während des Anmeldeversuchs durchgeführt wurden, bereitgestellt.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Dieses Fenster zeigt ein Fehlerergebnis des Tests an. Durch Klicken auf „Überprüfen“ werden ausführliche Informationen über die Ergebnisse der Tests, die ausgeführt wurden, angezeigt. Sie können auch die Ergebnisse auf einem Datenträger speichern, um sie freizugeben.

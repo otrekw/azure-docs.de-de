@@ -166,7 +166,7 @@
     - name: Bewährte Methoden
       items:
         - name: Bewährte Methoden für Netzwerksicherheit und Clouddienste
-          href: ../best-practices-network-security.md
+          href: /azure/cloud-adoption-framework/reference/networking-vdc
         - name: Optimieren des Routings
           href: expressroute-optimize-routing.md
         - name: Asymmetrisches Routing
@@ -192,9 +192,9 @@
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt586720'
+      href: /rest/api/expressroute/
     - name: REST (klassisch)
-      href: 'https://msdn.microsoft.com/library/azure/dn606310'
+      href: /previous-versions/azure/reference/dn606310(v=azure.100)
     - name: Resource Manager-Vorlage
       displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits

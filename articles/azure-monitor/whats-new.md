@@ -6,16 +6,83 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325656"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842664"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
+
+## <a name="september-2020"></a>September 2020
+
+### <a name="general"></a>Allgemein
+- [Häufig gestellte Fragen zu Azure Monitor](faq.md): Abschnitt unter OpenTelemetry hinzugefügt.
+
+### <a name="agents"></a>Agents
+- [Übersicht über den Azure Monitor-Agent](platform/azure-monitor-agent-overview.md): Entscheidungsfaktoren für den Wechsel zu einem neuen Agent hinzugefügt.
+- [Übersicht über die Azure-Überwachungs-Agents](platform/agents-overview.md): Unterstützung für Windows 10 hinzugefügt.
+
+### <a name="alerts"></a>Alerts
+- [Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage](platform/alerts-log-create-templates.md): Neuer Artikel.
+- [Behandeln von Problemen mit Azure-Metrikwarnungen](platform/alerts-troubleshoot-metric.md): Abschnitt zum Export einer ARM-Vorlage für eine Metrikwarnungsregel hinzugefügt.
+
+### <a name="application-insights"></a>Application Insights
+- [Erstellen einer neuen arbeitsbereichsbasierten Application Insights-Ressource in Azure Monitor](app/create-workspace-resource.md): Bezeichnung als Vorschauversion entfernt.
+- [Datenaufbewahrung und -speicherung in Azure Application Insights](app/data-retention-privacy.md): Details zur neuen Unterstützung des Schutzes vor Datenverlust bei Mac und Linux hinzugefügt.
+- [EventCounters in Application Insights](app/eventcounters.md): Hinweis zu standardmäßig erfassten Leistungsindikatoren hinzugefügt.
+- [Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights](app/pre-aggregated-metrics-log-metrics.md): Bezeichnung als Vorschauversion entfernt.
+- [Migrieren einer klassischen Application Insights-Ressource in Azure Monitor zu einer arbeitsbereichsbasierten Ressource](app/convert-classic-resource.md): Neuer Artikel.
+- [Überwachen von Java-Anwendungen in beliebiger Umgebung – Azure Monitor Application Insights](app/java-in-process-agent.md): Für neue Vorschauversion des Agents aktualisiert.
+- [Einrichten der Web-App-Analyse für ASP.NET mit Azure Application Insights](app/asp-net.md): Artikel umgeschrieben.
+- [Telemetriekanäle in Azure Application Insights](app/telemetry-channels.md): Details zur neuen Unterstützung des Schutzes vor Datenverlust bei Mac und Linux hinzugefügt.
+- [Problembehandlung für den Azure Application Insights-Momentaufnahmedebugger](app/snapshot-debugger-troubleshoot.md): SSL-Abschnitt für Problembehandlung des Momentaufnahmedebuggers hinzugefügt.
+- [Verwenden der Anwendungsänderungsanalyse in Azure Monitor für die Suche nach Web-App-Problemen](app/change-analysis.md): VM- und Aktivitätsprotokoll hinzugefügt.
+
+
+### <a name="containers"></a>Container
+- [Konfigurieren von Kubernetes-Clustern mit Azure Arc-Aktivierung mit Azure Monitor für Container](insights/container-insights-enable-arc-enabled-clusters.md): Anleitung zum Aktivieren der Überwachung per Dienstprinzipal hinzugefügt.
+- [Bereitstellung und HPA-Metriken mit Azure Monitor für Container](insights/container-insights-deployment-hpa-metrics.md) – Neuer Artikel.
+
+### <a name="insights-and-solutions"></a>Erkenntnisse und Lösungen
+- [Azure Monitor für Azure Cache for Redis](insights/redis-cache-insights-overview.md): Bezeichnung als Vorschauversion entfernt.
+- [Azure Monitor für Netzwerke (Vorschau)](insights/network-insights-overview.md): Abschnitte zur Konnektivität und zu Datenverkehr hinzugefügt.
+- [ITSM-Connector – Secure Export in Azure Monitor](platform/it-service-management-connector-secure-webhook-connections.md): Neuer Artikel.
+- [IT Service Management Connector in Azure Monitor](platform/itsmc-connections.md): Hinweis zu ITSM-Integrationen von Cherwell und Provance.
+- [Überwachen von Key Vault mit Azure Monitor für Key Vault](insights/key-vault-insights-overview.md): Bezeichnung als Vorschauversion entfernt.
+
+### <a name="logs"></a>Protokolle
+- [Überwachen von Abfragen in Azure Monitor-Protokollabfragen](log-query/query-audit.md): Neuer Artikel.
+- [Kundenseitig verwaltete Schlüssel in Azure Monitor](platform/customer-managed-keys.md): Kunden-Lockbox hinzugefügt.
+- [Azure Monitor-Protokolle: Dedizierte Cluster](log-query/logs-dedicated-clusters.md): Neuer Artikel.
+- [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](platform/design-logs-deployment.md): Aktualisierung des Abschnitts zur Begrenzung der Skalierung und Erfassungsvolumenrate.
+- [Protokollabfragebereich in Azure Monitor Log Analytics](log-query/scope.md): Aktualisierungen zur Einbindung von arbeitsbereichsbasierten Anwendungen.
+- [Protokolle in Azure Monitor](platform/data-platform-logs.md): Aktualisierungen zur Einbindung von arbeitsbereichsbasierten Anwendungen.
+- [Standardspalten in Azure Monitor-Protokolldatensätzen](platform/log-standard-columns.md): Aktualisierungen zur Einbindung von arbeitsbereichsbasierten Anwendungen.
+- [Azure Monitor-Diensteinschränkungen](service-limits.md): Grenzwerte für Drosselung von Benutzerabfragen aktualisiert.
+- [Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics](platform/private-storage.md): Artikel umgeschrieben.
+- [Anzeigen und Analysieren von Daten in Azure Log Analytics](log-query/logs-structure.md): Aktualisierungen zur Einbindung von arbeitsbereichsbasierten Anwendungen.
+
+
+### <a name="platform-logs"></a>Plattformprotokolle
+- [Ereignisschema des Azure-Aktivitätsprotokolls: Azure Monitor](platform/activity-log-schema.md): Schweregrade hinzugefügt.
+- [Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen](samples/resource-manager-diagnostic-settings.md): Beispiel für Azure-Speicherkonto hinzugefügt.
+
+### <a name="visualizations"></a>Visualisierungen
+- [Diagrammvisualisierungen für Azure Monitor-Arbeitsmappen](platform/workbooks-chart-visualizations.md): Neuer Artikel.
+- [Renderer für zusammengesetzte Balken in der Azure Monitor-Arbeitsmappe](platform/workbooks-composite-bar.md): Neuer Artikel.
+- [Graphvisualisierungen für Azure Monitor-Arbeitsmappen](platform/workbooks-graph-visualizations.md): Neuer Artikel.
+- [Rastervisualisierungen für Azure Monitor-Arbeitsmappen](platform/workbooks-grid-visualizations.md): Neuer Artikel.
+- [Wabenförmige Visualisierungen](platform/workbooks-honey-comb.md): Neuer Artikel.
+- [Textvisualisierungen für Azure Monitor-Arbeitsmappen](platform/workbooks-text-visualizations.md): Neuer Artikel.
+- [Kachelvisualisierungen für Azure Monitor-Arbeitsmappen](platform/workbooks-tile-visualizations.md): Neuer Artikel.
+- [Strukturvisualisierungen für Azure Monitor-Arbeitsmappen](platform/workbooks-tree-visualizations.md): Neuer Artikel.
+
+
+
 
 ## <a name="august-2020"></a>August 2020
 

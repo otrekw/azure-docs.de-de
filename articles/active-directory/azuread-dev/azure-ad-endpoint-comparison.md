@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116392"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055289"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
 Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede zwischen Endpunkten der Microsoft Identity Platform (v2.0) und von Azure Active Directory (v1.0) kennen. In diesem Artikel werden die wichtigsten Unterschiede zwischen den Endpunkten und einige bestehende Einschränkungen für die Microsoft Identity Platform beschrieben.
-
-> [!NOTE]
-> Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure AD. Informieren Sie sich über die [Einschränkungen der Microsoft Identity Platform](#limitations), um zu ermitteln, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
 ## <a name="who-can-sign-in"></a>Wer kann sich anmelden?
 
@@ -35,7 +32,7 @@ Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede 
 * Beim Microsoft Identity Platform-Endpunkt ist die Anmeldung mit Geschäfts-, Schul- und Unikonten über Azure AD und mit persönlichen Microsoft-Konten (MSA) (z. B. hotmail.com, outlook.com und msn.com) möglich.
 * Für beide Endpunkte werden außerdem Anmeldungen von *[Gastbenutzern](../external-identities/what-is-b2b.md)* eines Azure AD-Verzeichnisses für Anwendungen akzeptiert, die für *[einen Mandanten](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* konfiguriert sind, oder für Anwendungen mit *mehreren Mandanten*, für die ein Verweis auf den mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) konfiguriert ist.
 
-Mit dem Microsoft Identity Platform-Endpunkt können Sie Anwendungen schreiben, die Anmeldungen von persönlichen Microsoft-Konten sowie Geschäfts-, Schul- und Unikonten akzeptieren. Dies gibt Ihnen die Möglichkeit, Ihre Anwendung vollständig kontounabhängig zu schreiben. Wenn Ihre Anwendung beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](/graph/api/user-list-messages?view=graph-rest-1.0), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
+Mit dem Microsoft Identity Platform-Endpunkt können Sie Anwendungen schreiben, die Anmeldungen von persönlichen Microsoft-Konten sowie Geschäfts-, Schul- und Unikonten akzeptieren. Dies gibt Ihnen die Möglichkeit, Ihre Anwendung vollständig kontounabhängig zu schreiben. Wenn Ihre Anwendung beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](/graph/api/user-list-messages), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
 
 Für den Microsoft Identity Platform-Endpunkt können Sie die Microsoft Authentication Library (MSAL) nutzen, um Zugriff auf die Bereiche für Konsumenten, Weiterbildung und Unternehmen zu erhalten. Der Azure AD v1.0-Endpunkt akzeptiert nur Anmeldungen von Geschäfts-, Schul- und Unikonten.
 
@@ -114,7 +111,7 @@ Diese Bereiche können Sie für Ihre Anwendung den Weg der minimalen Offenlegung
 Der Microsoft Identity Platform-Endpunkt gibt standardmäßig einen kleineren Satz mit Ansprüchen in seinen Token aus, um die Nutzlasten klein zu halten. Wenn Sie Anwendungen und Dienste haben, die von einem bestimmten Anspruch in einem v1.0-Token abhängig sind, der über ein Microsoft Identity Platform-Token nicht mehr standardmäßig bereitgestellt wird, sollten Sie die Funktion [optionale Ansprüche](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) verwenden, um diesen Anspruch einzuschließen.
 
 > [!IMPORTANT]
-> v1.0- und v2.0-Token können über die v1.0- und v2.0-Endpunkte ausgestellt werden. ID-Token entsprechen *immer* dem Endpunkt, über den sie angefordert werden. Zugriffstoken entsprechen *immer* dem Format, das in der Web-API erwartet wird, die der Client mit diesem Token aufruft.  Wenn also die App den v2.0-Endpunkt verwendet, um ein Token zum Aufrufen von Microsoft Graph abzurufen, und dieser Zugriffstoken im v1.0-Format erwartet, erhält die App ein Token im v1.0-Format.  
+> v1.0- und v2.0-Token können über die v1.0- und v2.0-Endpunkte ausgestellt werden. ID-Token entsprechen *immer* dem Endpunkt, über den sie angefordert werden. Zugriffstoken entsprechen *immer* dem Format, das in der Web-API erwartet wird, die der Client mit diesem Token aufruft.  Wenn also die App den v2.0-Endpunkt verwendet, um ein Token zum Aufrufen von Microsoft Graph abzurufen, und dieser Zugriffstoken im v1.0-Format erwartet, erhält die App ein Token im v1.0-Format.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -153,18 +150,22 @@ Derzeit ist die Bibliotheksunterstützung für den Microsoft Identity Platform-E
 * Wenn Sie eine Anwendung für Desktop- oder Mobilgeräte entwickeln, können Sie eine der Microsoft Authentication Libraries (MSAL) verwenden. Diese Bibliotheken sind allgemein verfügbar, oder es gibt sie in einer für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In der [Referenz zu Authentifizierungsbibliotheken](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
 * Für Plattformen, die nicht von den Microsoft-Bibliotheken abgedeckt sind, können Sie die Integration mit dem Microsoft Identity Platform-Endpunkt auch erreichen, indem Sie Protokollnachrichten direkt in Ihrem Anwendungscode senden und empfangen. Die Protokolle OpenID Connect und OAuth [wurden explizit dokumentiert](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json), um Sie bei einer Integration dieser Art zu unterstützen.
 * Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den Microsoft Identity Platform-Endpunkt verwenden. Der Microsoft Identity Platform-Endpunkt sollte ohne Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit dieser Bibliotheksarten variiert je nach Sprache und Plattform. Die [Open ID Connect](https://openid.net/connect/)- und die [OAuth 2.0](https://oauth.net/2/)-Websites enthalten eine Liste gängiger Implementierungen. Weitere Informationen finden Sie im Artikel zur [Microsoft Identity Platform und den Authentifizierungsbibliotheken](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). Er enthält auch die Liste mit den Open Source-Clientbibliotheken und den Beispielen, die für den Microsoft Identity Platform-Endpunkt getestet wurden.
-* Hilfreiche Information: Der `.well-known`-Endpunkt für den allgemeinen Microsoft Identity Platform-Endpunkt ist `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Ersetzen Sie `common` durch Ihre Mandanten-ID, um mandantenspezifische Daten abzurufen.  
+* Hilfreiche Information: Der `.well-known`-Endpunkt für den allgemeinen Microsoft Identity Platform-Endpunkt ist `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Ersetzen Sie `common` durch Ihre Mandanten-ID, um mandantenspezifische Daten abzurufen.
 
 ### <a name="protocol-changes"></a>Protokolländerungen
 
-Der Microsoft Identity Platform-Endpunkt unterstützt keinen SAML- oder WS-Verbund, sondern nur Open ID Connect und OAuth 2.0.  Die wesentlichen Änderungen an den OAuth 2.0-Protokollen gegenüber dem v1.0-Endpunkt sind: 
+Der Microsoft Identity Platform-Endpunkt unterstützt keinen SAML- oder WS-Verbund, sondern nur Open ID Connect und OAuth 2.0.  Die wesentlichen Änderungen an den OAuth 2.0-Protokollen gegenüber dem v1.0-Endpunkt sind:
 
-* Der Anspruch `email` wird zurückgegeben, wenn ein optionaler Anspruch konfiguriert **oder** „scope=email“ in der Anforderung angegeben wurde. 
-* Der `scope`-Parameter wird jetzt anstelle des `resource`-Parameters unterstützt.  
-* Viele Antworten wurden geändert, um die Kompatibilität mit der OAuth 2.0-Spezifikation zu erhöhen, z.B. die korrekte Rückgabe von `expires_in` als int-Wert anstelle einer Zeichenfolge.  
+* Der Anspruch `email` wird zurückgegeben, wenn ein optionaler Anspruch konfiguriert **oder** „scope=email“ in der Anforderung angegeben wurde.
+* Der `scope`-Parameter wird jetzt anstelle des `resource`-Parameters unterstützt.
+* Viele Antworten wurden geändert, um die Kompatibilität mit der OAuth 2.0-Spezifikation zu erhöhen, z.B. die korrekte Rückgabe von `expires_in` als int-Wert anstelle einer Zeichenfolge.
 
 Informationen zum Umfang der vom Microsoft Identity Platform-Endpunkt unterstützten Protokollfunktionen finden Sie in der Referenz [OpenID Connect- und OAuth 2.0-Protokolle](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-#### <a name="saml-restrictions"></a>SAML-Einschränkungen
+#### <a name="saml-usage"></a>Verwendung von SAML
 
-Wenn Sie die Active Directory-Authentifizierungsbibliothek (ADAL) in Windows-Anwendungen verwendet haben, haben Sie möglicherweise die integrierte Windows-Authentifizierung genutzt, die mit der SAML-Assertionsgewährung (Security Assertion Markup Language) arbeitet. Diese Gewährung erlaubt Benutzern von Azure AD-Partnermandanten, sich im Hintergrund bei ihrer lokalen Active Directory-Instanz zu authentifizieren, ohne ihre Anmeldeinformationen eingeben zu müssen. Die SAML-Assertionsgewährung wird auf dem Microsoft Identity Platform-Endpunkt nicht unterstützt.
+Wenn Sie die Active Directory-Authentifizierungsbibliothek (ADAL) in Windows-Anwendungen verwendet haben, haben Sie möglicherweise die integrierte Windows-Authentifizierung genutzt, die mit der SAML-Assertionsgewährung (Security Assertion Markup Language) arbeitet. Diese Gewährung erlaubt Benutzern von Azure AD-Partnermandanten, sich im Hintergrund bei ihrer lokalen Active Directory-Instanz zu authentifizieren, ohne ihre Anmeldeinformationen eingeben zu müssen. Während [SAML weiterhin ein unterstütztes Protokoll](../develop/active-directory-saml-protocol-reference.md) für die Verwendung mit Unternehmensbenutzern darstellt, ist der v2.0-Endpunkt nur für die Verwendung mit OAuth 2.0-Anwendungen vorgesehen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Lesen Sie die [Dokumentation zu Microsoft Identity Platform](../develop/index.yml), um mehr zu erfahren.

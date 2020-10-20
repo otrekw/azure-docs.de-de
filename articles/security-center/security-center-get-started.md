@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447161"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946014"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Schnellstart: Einrichten von Azure Security Center
 
@@ -33,7 +33,7 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 Wenn Sie Azure Defender für ein Abonnement aktivieren möchten, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender des Abonnements“ oder „Sicherheitsadministrator“ zugewiesen sein.
 
 
-## <a name="open-security-center-for-the-first-time"></a>Erstmaliges Öffnen von Security Center
+## <a name="enable-security-center-on-your-azure-subscription"></a>Aktivieren von Security Center für Ihr Azure-Abonnement
 
 1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
 
@@ -54,6 +54,8 @@ Innerhalb weniger Minuten nach dem ersten Start von Security Center wird Ihnen F
 
 Aktivieren Sie Azure Defender, und installieren Sie den Log Analytics-Agent, um optimal von Security Center zu profitieren:
 
+> [!TIP]
+> Informationen zur Aktivierung von Security Center in allen Abonnements einer Verwaltungsgruppe finden Sie unter [Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe](onboard-management-group.md).
 
 ## <a name="enable-azure-defender"></a>Aktivieren von Azure Defender
 
@@ -90,7 +92,7 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 Nachdem der Agent auf Ihren Computern bereitgestellt wurde, kann Security Center zusätzliche Empfehlungen im Zusammenhang mit dem Status von Systemupdates, mit Sicherheitskonfigurationen für Betriebssysteme und mit dem Endgeräteschutz geben sowie zusätzliche Sicherheitswarnungen generieren.
 
 >[!NOTE]
-> Wenn Sie die automatische Bereitstellung auf **Aus** festlegen, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen er bereits bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
+> Wenn Sie die automatische Bereitstellung auf **Aus** festlegen, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen er bereits bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
 
 
 

@@ -8,24 +8,16 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 6c29141a2e255588ffa581b84ffeb4ddd7fdb703
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87324708"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019629"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Schnellstart: Azure Key Vault-Clientbibliothek für Java
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Java
 
-Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Clientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
-
-Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die Key Vault-Clientbibliothek für Java ermöglicht Folgendes:
-
-- Verbessern der Sicherheit und der Kontrolle über Schlüssel und Kennwörter
-- Erstellen und Importieren von Verschlüsselungsschlüsseln in wenigen Minuten
-- Verringern der Wartezeit durch Cloudskalierung und globale Redundanz
-- Vereinfachen und Automatisieren von Aufgaben für TLS-/SSL-Zertifikate
-- Verwenden FIPS 140-2 Level 2-zertifizierter HSMs
+Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Geheimnisclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
 
 Zusätzliche Ressourcen:
 
@@ -37,13 +29,29 @@ Zusätzliche Ressourcen:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable), Version 8 oder höher
+- [Java Development Kit (JDK)](/java/azure/jdk/), Version 8 oder höher
 - [Apache Maven](https://maven.apache.org)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 
-In diesem Schnellstart wird davon ausgegangen, dass Sie die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) und [Apache Maven](https://maven.apache.org) in einem Linux-Terminalfenster ausführen.
+In diesem Schnellstart wird davon ausgegangen, dass Sie die [Azure CLI](/cli/azure/install-azure-cli) und [Apache Maven](https://maven.apache.org) in einem Linux-Terminalfenster ausführen.
 
 ## <a name="setting-up"></a>Einrichten
+
+In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+
+### <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
+1. Führen Sie den Befehl `login` aus.
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
+
+    Öffnen Sie andernfalls die Browserseite [https://aka.ms/devicelogin](https://aka.ms/devicelogin), und geben Sie den in Ihrem Terminal angezeigten Autorisierungscode ein.
+
+2. Melden Sie sich im Browser mit Ihren Anmeldeinformationen an.
 
 ### <a name="create-new-java-console-app"></a>Erstellen einer neuen Java-Konsolen-App
 
@@ -109,21 +117,35 @@ cd akv-java
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
+#### <a name="grant-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+Erstellen Sie für Ihren Schlüsseltresor eine Zugriffsrichtlinie, die Ihrem Benutzerkonto Geheimnisberechtigung erteilt.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor für den Dienstprinzipal
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+```
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+#### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
-#### <a name="set-environmental-variables"></a>Festlegen von Umgebungsvariablen
+Diese Anwendung verwendet den Namen des Schlüsseltresors als Umgebungsvariable namens `KEY_VAULT_NAME`.
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
+```
+
+macOS oder Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Objektmodell
 
-Mit der Azure Key Vault-Clientbibliothek für Java können Sie Schlüssel und zugehörige Objekte wie etwa Zertifikate und Geheimnisse verwalten. In den folgenden Codebeispielen wird gezeigt, wie Sie einen Client erstellen und ein Geheimnis festlegen, abrufen und löschen.
+Mit der Azure Key Vault-Geheimnisclientbibliothek für Java können Sie Geheimnisse verwalten. Im Abschnitt [Codebeispiele](#code-examples) wird gezeigt, wie ein Client erstellt und ein Geheimnis festgelegt, abgerufen und gelöscht wird.
 
 Die vollständige Konsolen-App finden Sie [weiter unten](#sample-code).
 
@@ -143,7 +165,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlüsseltresorclients hängen von den Umgebungsvariablen im Schritt [Festlegen von Umgebungsvariablen](#set-environmental-variables) oben ab. Der Name Ihres Schlüsseltresors wird in den Schlüsseltresor-URI im Format `https://<your-key-vault-name>.vault.azure.net` erweitert.
+In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) verwendet, mit der derselbe Code in verschiedenen Umgebungen mit verschiedenen Optionen zum Bereitstellen von Identitäten verwendet werden kann. Weitere Informationen finden Sie unter der [DefaultAzureCredential-Authentifizierung](https://docs.microsoft.com/java/api/overview/azure/identity-readme). 
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -163,7 +187,7 @@ Nachdem Ihre Anwendung authentifiziert wurde, können Sie Ihrem Schlüsseltresor
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis festgelegt wurde:
+Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis festgelegt wurde:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -187,7 +211,7 @@ Abschließend löschen wir das Geheimnis mithilfe der `secretClient.beginDeleteS
 secretClient.beginDeleteSecret(secretName);
 ```
 
-Sie können sich mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) vergewissern, dass das Geheimnis entfernt wurde:
+Sie können sich mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) vergewissern, dass das Geheimnis entfernt wurde:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -272,4 +296,5 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, ein G
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
 - [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)

@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91266291"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Unterstützte Topologien und Szenarien für die Azure AD Connect-Cloudbereitstellung
 In diesem Artikel werden verschiedene lokale Topologien und Topologien mit Azure Active Directory (Azure AD) beschrieben, in denen die Azure AD Connect-Cloudbereitstellung verwendet wird. In diesem Artikel werden nur unterstützte Konfigurationen und Szenarien erörtert.
@@ -34,7 +34,7 @@ Im Folgenden finden Sie eine Liste der Informationen, die beim Auswählen einer 
 - Sie können das für den Quellanker verwendete Attribut nicht ändern.
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Einzelne Gesamtstruktur, einzelner Azure AD-Mandant
-![Topologie für einzelne Gesamtstruktur und einzelnen Mandanten](media/plan-cloud-provisioning-topologies/single-forest.png)
+![Diagramm der Topologie für eine einzelne Gesamtstruktur und einen einzelnen Mandanten.](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 Die einfachste Topologie ist eine einzelne lokale Gesamtstruktur mit einer oder mehreren Domänen und einem einzelnen Azure AD-Mandanten.  Ein Beispiel für dieses Szenario finden Sie unter [Tutorial: Eine einzelnen Gesamtstruktur mit einem einzelnen Azure AD-Mandanten](tutorial-single-forest.md).
 
@@ -45,7 +45,7 @@ Die einfachste Topologie ist eine einzelne lokale Gesamtstruktur mit einer oder 
 Eine häufig verwendete Topologie umfasst mehrere AD-Gesamtstrukturen mit einer oder mehreren Domänen und einem einzelnen Azure AD-Mandanten.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Vorhandene Gesamtstruktur mit Azure AD Connect, neue Gesamtstruktur mit Cloudbereitstellung
-![Topologie für einzelne Gesamtstruktur und einzelnen Mandanten](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![Diagramm der Topologie für eine vorhandene Gesamtstruktur und eine neue Gesamtstruktur.](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 Dieses Topologieszenario ist mit dem Szenario mit mehreren Gesamtstrukturen vergleichbar. Hier geht es jedoch um eine vorhandene Azure AD Connect-Umgebung und das Hinzufügen einer neuen Gesamtstruktur mithilfe der Azure AD Connect-Cloudbereitstellung.  Ein Beispiel für dieses Szenario finden Sie unter [Tutorial: Eine vorhandene Gesamtstruktur mit einem einzelnen Azure AD-Mandanten](tutorial-existing-forest.md).
 

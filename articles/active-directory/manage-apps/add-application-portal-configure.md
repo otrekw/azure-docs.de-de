@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448224"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044461"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)
 
@@ -41,10 +41,7 @@ So bearbeiten Sie die Anwendungseigenschaften:
 
 1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
 2. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
-
-    ![Screenshot des Bildschirms „Eigenschaften“ mit den App-Eigenschaften, die bearbeitet werden können](media/add-application-portal/edit-properties.png)
-
-3. Nehmen Sie sich einen Moment Zeit, um sich mit den zur Verfügung stehenden konfigurierbaren Optionen vertraut zu machen:
+3. Nehmen Sie sich einen Moment Zeit, um sich mit den zur Verfügung stehenden Optionen vertraut zu machen. Welche Optionen verfügbar sind, hängt davon ab, wie die App in Azure AD integriert ist. Eine App, für die SAML-basiertes einmaliges Anmelden verwendet wird, verfügt beispielsweise über Felder wie *URL für den Benutzerzugriff*. Bei einer App, für die OIDC-basiertes einmaliges Anmelden verwendet wird, ist dies dagegen nicht der Fall. Beachten Sie auch, dass es sich bei Apps, die über **Azure Active Directory > App-Registrierungen** hinzugefügt werden, standardmäßig um OIDC-basierte Apps handelt. Bei Apps, die über **Azure Active Directory > Unternehmensanwendungen** hinzugefügt werden, kann dagegen eine beliebige Anzahl von Standards für einmaliges Anmelden genutzt werden. Alle Apps verfügen über Felder zum Konfigurieren, wann eine App angezeigt wird und verwendet werden kann. Die Felder lauten:
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
     - Mit **Für Benutzer sichtbar?** wird festgelegt, ob den einer App zugewiesenen Benutzern die Anwendung unter [Meine Apps](https://myapps.microsoft.com) und im Microsoft 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Microsoft 365-Website.)

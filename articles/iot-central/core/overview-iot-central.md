@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987365"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812436"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -50,14 +50,21 @@ Sie können eine neue IoT Central-Anwendung schnell bereitstellen und anschließ
 
 Als Lösungsentwickler können Sie mithilfe der webbasierten Tools eine _Gerätevorlage_ für die Geräte erstellen, die eine Verbindung mit Ihrer Anwendung herstellen. Eine Gerätevorlage ist die Blaupause zum Definieren der Merkmale und des Verhaltens eines Gerätetyps. Hierzu zählt beispielsweise Folgendes:
 
-- Telemetriedaten, die das Gerät sendet
-- Geschäftliche Eigenschaften, die ein Bediener ändern kann
-- Geräteeigenschaften, die von einem Gerät festgelegt werden und in der Anwendung schreibgeschützt sind
-- Vom Bediener festgelegte Eigenschaften, die das Verhalten des Geräts bestimmen
+- Telemetriedaten, die das Gerät sendet Beispiele hierfür sind die Temperatur und die Luftfeuchtigkeit. Bei Telemetriedaten handelt es sich um Streamingdaten.
+- Geschäftliche Eigenschaften, die ein Bediener ändern kann Beispiele hierfür sind eine Kundenadresse und das Datum der letzten Wartung.
+- Geräteeigenschaften, die von einem Gerät festgelegt werden und in der Anwendung schreibgeschützt sind Beispielsweise der Zustand eines Ventils (geöffnet oder geschlossen).
+- Vom Bediener festgelegte Eigenschaften, die das Verhalten des Geräts bestimmen Beispielsweise eine Zieltemperatur für das Gerät.
+- Befehle, die von einem Operator aufgerufen werden können und auf einem Gerät ausgeführt werden. Ein Beispiel hierfür ist ein Befehl für einen Remoteneustart eines Geräts.
 
 Diese [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
 
-- Ein _Gerätefunktionsmodell_, das die Funktionen beschreibt, die ein Gerät implementieren soll, z. B. die gesendeten Telemetriedaten und die gemeldeten Eigenschaften.
+- Ein _Gerätefunktionsmodell_, mit dem die Funktionen beschrieben werden, die von einem Gerät implementiert werden sollten. Die Gerätefunktionen umfassen Folgendes:
+
+  - Die Telemetriedaten, die an IoT Central gestreamt werden.
+  - Die schreibgeschützten Eigenschaften, die zum Melden des Status an IoT Central verwendet werden.
+  - Die schreibbaren Eigenschaften, die von IoT Central zum Festlegen des Gerätestatus empfangen werden.
+  - Die Befehle, die aus IoT Central aufgerufen werden.
+
 - Cloudeigenschaften, die nicht auf dem Gerät gespeichert werden
 - Anpassungen, Dashboards und Formulare, die Teil der IoT Central-Anwendung sind
 
@@ -144,7 +151,6 @@ Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT
 - Array-Schematypen werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
 - IoT Central ist derzeit in den Regionen USA, Europa, Asien-Pazifik, Australien, Vereinigtes Königreich und Japan verfügbar.
-- Sie können die Anwendungsvorlage **Benutzerdefinierte Anwendung (veraltet)** nicht in den Regionen Vereinigtes Königreich und Japan nutzen.
 - Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

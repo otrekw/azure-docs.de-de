@@ -1,6 +1,6 @@
 ---
 title: Geräteentwicklung für Azure IoT Central | Microsoft-Dokumentation
-description: Azure IoT Central ist eine IoT-Anwendungsplattform, die die Erstellung von IoT-Lösungen vereinfacht. Dieser Artikel enthält eine Übersicht über die Entwicklung von Geräten zum Herstellen einer Verbindung mit Ihrer IoT Central-Anwendung.
+description: Azure IoT Central ist eine IoT-Anwendungsplattform, die die Erstellung von IoT-Lösungen vereinfacht. Dieser Artikel enthält eine Übersicht über die Entwicklung von Geräten zum Herstellen einer Verbindung mit Ihrer IoT Central-Anwendung. Von Geräten werden Telemetriedaten zum Senden von Streamingdaten und Eigenschaften verwendet, um den Gerätestatus zu melden. Mit IoT Central kann der Gerätestatus festgelegt werden, indem schreibbare Eigenschaften und Aufrufbefehle auf einem Gerät verwendet werden.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017522"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812351"
 ---
 # <a name="iot-central-device-development-overview"></a>Übersicht über die Geräteentwicklung für IoT Central
 
@@ -26,7 +26,7 @@ Mit einer IoT Central-Anwendung können Sie Millionen von Geräten während ihre
 Geräte interagieren mit einer IoT Central-Anwendung mithilfe der folgenden Primitiven (Grundtypen):
 
 - _Telemetrie_ sind Daten, die ein Gerät an IoT Central sendet. Beispiel: ein Datenstrom von Temperaturwerten aus einem integrierten Sensor.
-- _Eigenschaften_ sind Statuswerte, die ein Gerät an IoT Central meldet. Beispiel: die aktuelle Firmwareversion des Geräts. Es kann auch schreibbare Eigenschaften geben, die IoT Central auf dem Gerät aktualisieren kann.
+- _Eigenschaften_ sind Statuswerte, die ein Gerät an IoT Central meldet. Beispiel: die aktuelle Firmwareversion des Geräts. Sie können auch schreibbare Eigenschaften verwenden, die IoT Central auf dem Gerät aktualisieren kann, z. B. die Zieltemperatur.
 - _Befehle_ werden aus IoT Central aufgerufen, um das Verhalten eines Geräts zu steuern. So könnte Ihre IoT Central-Anwendung beispielsweise einen Befehl zum Neustarten eines Geräts aufrufen.
 
 Ein Lösungsentwickler ist zuständig für die Konfiguration von Dashboards und Ansichten in der IoT Central-Webbenutzeroberfläche zum Visualisieren von Telemetriedaten, Verwalten von Eigenschaften und Aufrufen von Befehlen.

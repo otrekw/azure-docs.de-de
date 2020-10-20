@@ -8,40 +8,130 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b756d7df03bd3c06b703617dbf84a194d716f1e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026372"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396194"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Eine Web-API, die Web-APIs aufruft: Aufrufen einer API
 
-Sobald Sie über ein Token verfügen, können Sie eine geschützte Web-API aufrufen. Dafür verwenden Sie den Controller Ihrer Web-API.
+Sobald Sie über ein Token verfügen, können Sie eine geschützte Web-API aufrufen. In der Regel rufen Sie die Downstream-APIs über den Controller oder die Seiten Ihrer Web-API auf.
 
 ## <a name="controller-code"></a>Controllercode
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Der folgende Code setzt den Beispielcode fort, den Sie hier finden: [Eine Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md). Der Code wird in den Aktionen der API-Controller aufgerufen. Er ruft eine nachgelagerte API namens *todolist* auf.
+Wenn Sie *Microsoft.Identity.Web* verwenden, gibt es drei Verwendungsszenarien:
 
-Nachdem Sie das Token abgerufen haben, können Sie es als Bearertoken zum Aufrufen der nachgelagerten API verwenden.
+- [Option 1: Aufrufen von Microsoft Graph mit dem Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
+- [Option 2: Aufrufen einer Downstream-Web-API mit der Hilfsklasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Option 3: Aufrufen einer Downstream-Web-API ohne die Hilfsklasse](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Option 1: Aufrufen von Microsoft Graph mit dem SDK
+
+In diesem Szenario haben Sie `.AddMicrosoftGraph()` in der Datei *Startup.cs* (wie unter [Codekonfiguration](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph) angegeben) hinzugefügt, und Sie können den `GraphServiceClient` direkt in den Controller oder Seitenkonstruktor zur Verwendung in den Aktionen einfügen. Auf der folgenden Razor-Beispielseite wird das Foto des angemeldeten Benutzers angezeigt.
+
+```CSharp
+ [Authorize]
+ [AuthorizeForScopes(Scopes = new[] { "user.read" })]
+ public class IndexModel : PageModel
+ {
+     private readonly GraphServiceClient _graphServiceClient;
+
+     public IndexModel(GraphServiceClient graphServiceClient)
+     {
+         _graphServiceClient = graphServiceClient;
+     }
+
+     public async Task OnGet()
+     {
+         var user = await _graphServiceClient.Me.Request().GetAsync();
+         try
+         {
+             using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+             {
+                 byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+                 ViewData["photo"] = Convert.ToBase64String(photoByte);
+             }
+             ViewData["name"] = user.DisplayName;
+         }
+         catch (Exception)
+         {
+             ViewData["photo"] = null;
+         }
+     }
+ }
+```
+
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Option 2: Aufrufen einer Downstream-Web-API mit der Hilfsklasse
+
+In diesem Szenario haben Sie `.AddDownstreamWebApi()` in der Datei *Startup.cs* (wie unter [Codekonfiguration](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph) angegeben) hinzugefügt, und Sie können einen `IDownstreamWebApi`-Dienst direkt in den Controller oder Seitenkonstruktor einfügen und in den Aktionen verwenden:
+
+```CSharp
+ [Authorize]
+ [AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+ public class TodoListController : Controller
+ {
+     private IDownstreamWebApi _downstreamWebApi;
+     private const string ServiceName = "TodoList";
+
+     public TodoListController(IDownstreamWebApi downstreamWebApi)
+     {
+         _downstreamWebApi = downstreamWebApi;
+     }
+
+     public async Task<ActionResult> Details(int id)
+     {
+         var value = await _downstreamWebApi.CallWebApiForUserAsync(
+             ServiceName,
+             options =>
+             {
+                 options.RelativePath = $"me";
+             });
+         return View(value);
+     }
+```
+
+Die `CallWebApiForUserAsync`-Methode verfügt auch über stark typisierte generische Überschreibungen, mit denen Sie ein Objekt direkt empfangen können. Beispielsweise wurde mit der folgenden Methode eine `Todo`-Instanz empfangen, die eine stark typisierte Darstellung der von der Web-API zurückgegebenen JSON ist.
+
+```CSharp
+ // GET: TodoList/Details/5
+ public async Task<ActionResult> Details(int id)
+ {
+     var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+         ServiceName,
+         null,
+         options =>
+         {
+             options.HttpMethod = HttpMethod.Get;
+             options.RelativePath = $"api/todolist/{id}";
+         });
+     return View(value);
+ }
+```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Option 3: Aufrufen einer Downstream-Web-API ohne die Hilfsklasse
+
+Wenn Sie sich entschieden haben, ein Token mit dem `ITokenAcquisition`-Dienst manuell abzurufen, müssen Sie das Token jetzt verwenden. In diesem Fall setzt der folgende Code den Beispielcode fort, den Sie hier finden: [Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md). Der Code wird in den Aktionen der API-Controller aufgerufen. Er ruft eine nachgelagerte API namens *todolist* auf.
+
+ Nachdem Sie das Token abgerufen haben, können Sie es als Bearertoken zum Aufrufen der nachgelagerten API verwenden.
 
 ```csharp
-private async Task CallTodoListService(string accessToken)
-{
+ private async Task CallTodoListService(string accessToken)
+ {
+  // After the token has been returned by Microsoft.Identity.Web, add it to the HTTP authorization header before making the call to access the todolist service.
+ _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
-// After the token has been returned by Microsoft Identity Web, add it to the HTTP authorization header before making the call to access the To Do list service.
-_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call the To Do list service.
-HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
-...
-}
-```
+ // Call the todolist service.
+ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
+ // ...
+ }
+ ```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -68,11 +158,11 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-Ein Beispiel zur Veranschaulichung dieses Flows mit MSAL Python ist noch nicht verfügbar.
+Es ist noch kein Beispiel verfügbar, das diesen Flow mit MSAL Python veranschaulicht.
 
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Eine Web-API, die Web-APIs aufruft: Übergang in die Produktion](scenario-web-api-call-api-production.md)
+> [Web-API, die Web-APIs aufruft: Überführen in die Produktion](scenario-web-api-call-api-production.md)

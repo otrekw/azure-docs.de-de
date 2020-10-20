@@ -11,18 +11,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83652283"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962444"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
 Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert. Dadurch können Schlüssel, Kennwörter, Zertifikate und andere Geheimnisse sicher gespeichert werden. Azure Key Vault-Instanzen können über das Azure-Portal erstellt und verwaltet werden. In dieser Schnellstartanleitung erstellen Sie einen Schlüsseltresor und verwenden diesen dann, um ein Geheimnis zu speichern. Weitere Informationen zu Key Vault finden Sie in der [Übersicht](../general/overview.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Weitere Informationen zu Geheimnissen finden Sie unter (about-secrets.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -46,6 +50,9 @@ Beachten Sie die beiden folgenden Eigenschaften:
 
 * **Tresorname**: In diesem Beispiel wird **Contoso-Vault2** verwendet. Dieser Name wird noch für andere Schritte benötigt.
 * **Tresor-URI**: In diesem Beispiel https://contoso-vault2.vault.azure.net/. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+
+Sie können eine Key Vault-Instanz auch mit der Azure CLI und mit PowerShell erstellen: [Erstellen einer Key Vault-Instanz mit PowerShell](../general/quick-create-powershell.md)
+[Erstellen einer Key Vault-Instanz mit der Azure CLI](../general/quick-create-cli.md)
 
 An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
 
@@ -90,5 +97,8 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
+- Lesen Sie [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md).
+- Weitere Informationen finden Sie unter [Verwenden von Key Vault mit App Service-Web-App](../general/tutorial-net-create-vault-azure-web-app.md).
+- Weitere Informationen finden Sie unter [Verwenden von Key Vault mit einer auf einer VM bereitgestellten Anwendung](../general/tutorial-net-virtual-machine.md).
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
 - [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)

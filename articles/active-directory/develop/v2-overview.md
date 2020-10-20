@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e63d2cac97a16674c4e2e880f94373b0af1510de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627124"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056411"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Was ist die Microsoft Identity Platform?
 
@@ -74,8 +74,7 @@ In den folgenden empfohlenen Artikeln erfahren Sie, wie die Kernauthentifizierun
 
 [Azure AD B2B](../external-identities/what-is-b2b.md): Laden Sie externe Benutzer als „Gastbenutzer“ in Ihren Azure AD-Mandanten ein, und weisen Sie ihnen Berechtigungen für die Autorisierung zu, während sie für die Authentifizierung ihre vorhandenen Anmeldeinformationen verwenden können.
 
-> [!TIP]
-> Suchen Sie nach der Dokumentation zu *Azure Active Directory-Entwicklerplattform (v1.0)* ? Weitere Informationen finden Sie unter [Azure Active Directory für Entwickler (v1.0) – Übersicht](../azuread-dev/v1-overview.md).
+[Azure Active Directory für Entwickler (v1.0)](../azuread-dev/v1-overview.md): Ist hier für Entwickler mit vorhandenen Apps aufgeführt, für die der ältere v1.0-Endpunkt genutzt wird. Verwenden Sie v1.0 **nicht** für neue Projekte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

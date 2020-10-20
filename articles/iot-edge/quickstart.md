@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328587"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047011"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Windows-Gerät
 
@@ -22,12 +22,10 @@ In dieser Schnellstartanleitung können Sie Azure IoT Edge ausprobieren, indem S
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
-> [!div class="checklist"]
->
-> * Erstellen Sie einen IoT Hub.
-> * Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
-> * Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
-> * Durchführen der Remotebereitstellung eines Moduls für ein IoT Edge-Gerät und Senden von Telemetriedaten an den IoT Hub
+* Erstellen Sie einen IoT Hub.
+* Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
+* Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
+* Durchführen der Remotebereitstellung eines Moduls für ein IoT Edge-Gerät und Senden von Telemetriedaten an den IoT Hub
 
 ![Diagramm: Schnellstart-Architektur für Geräte und Cloud](./media/quickstart/install-edge-full.png)
 
@@ -76,11 +74,11 @@ IoT Edge-Gerät:
   Öffnen Sie diese Datei mit der Remotedesktopverbindung, um eine Verbindung mit Ihrem virtuellen Windows-Computer unter Verwendung des Administratornamens und Kennworts herzustellen, die Sie mit dem Befehl `az vm create` angegeben haben.
 
 > [!NOTE]
-> Ihr virtueller Windows-Computer startet mit der Windows-Version 1809 (Build 17763). Dabei handelt es sich um den aktuellen [Windows-Build mit langfristigem Support](https://docs.microsoft.com/windows/release-information/). Windows sucht standardmäßig alle 22 Stunden automatisch nach Updates. Nach einer Überprüfung Ihres virtuellen Computers überträgt Windows ein Versionsupdate, das nicht mit IoT Edge für Windows kompatibel ist. Dadurch wird die weitere Verwendung der Features von IoT Edge für Windows verhindert. Es wird empfohlen, die Verwendung des virtuellen Computers auf eine Dauer von maximal 22 Stunden zu beschränken oder [Windows-Updates vorübergehend anzuhalten](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+> Ihr virtueller Windows-Computer startet mit der Windows-Version 1809 (Build 17763). Dabei handelt es sich um den aktuellen [Windows-Build mit langfristigem Support](/windows/release-information/). Windows sucht standardmäßig alle 22 Stunden automatisch nach Updates. Nach einer Überprüfung Ihres virtuellen Computers überträgt Windows ein Versionsupdate, das nicht mit IoT Edge für Windows kompatibel ist. Dadurch wird die weitere Verwendung der Features von IoT Edge für Windows verhindert. Es wird empfohlen, die Verwendung des virtuellen Computers auf eine Dauer von maximal 22 Stunden zu beschränken oder [Windows-Updates vorübergehend anzuhalten](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
 >
 > In dieser Schnellstartanleitung wird aus Gründen der Einfachheit ein virtueller Windows-Desktopcomputer verwendet. Weitere Informationen darüber, welche Windows-Betriebssysteme für Produktionsszenarien allgemein verfügbar sind, finden Sie unter [Von Azure IoT Edge unterstützte Systeme](support.md).
 >
-> Wenn Sie bereit sind, Ihr eigenes Windows-Gerät für IoT Edge zu konfigurieren (einschließlich Geräte mit IoT Core), führen Sie die Schritte unter [Installieren der Azure IoT Edge-Runtime unter Windows](how-to-install-iot-edge-windows.md) aus.
+> Wenn Sie Ihr eigenes Windows-Gerät für IoT Edge konfigurieren möchten, müssen Sie die Schritte unter [Installieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md) ausführen.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
@@ -144,9 +142,7 @@ Die Schritte in diesem Abschnitt erfolgen alle auf Ihrem IoT Edge-Gerät, weshal
 
 Verwenden Sie PowerShell zum Herunterladen und Installieren der IoT Edge-Runtime. Verwenden Sie die aus IoT Hub abgerufene Geräte-Verbindungszeichenfolge zum Konfigurieren Ihres Geräts.
 
-1. Falls noch nicht geschehen, führen Sie die unter [Registrieren eines neuen Azure IoT Edge-Geräts](how-to-register-device.md) aufgeführten Schritte aus, um Ihr Gerät zu registrieren und die Geräteverbindungszeichenfolge abzurufen.
-
-2. Führen Sie PowerShell auf dem virtuellen Computer als Administrator aus.
+1. Führen Sie PowerShell auf dem virtuellen Computer als Administrator aus.
 
    >[!NOTE]
    >Verwenden Sie eine AMD64-PowerShell-Sitzung, um IoT Edge zu installieren, nicht PowerShell (x86). Wenn Sie nicht sicher sind, welchen Sitzungstyp Sie verwenden, führen Sie den folgenden Befehl aus:
@@ -155,25 +151,25 @@ Verwenden Sie PowerShell zum Herunterladen und Installieren der IoT Edge-Runtime
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Durch den Befehl **Deploy-IoTEdge** wird überprüft, ob Ihr Windows-Computer über eine unterstützte Version verfügt. Außerdem aktiviert der Befehl das Containerfeature und lädt die Moby-Runtime und danach die IoT Edge-Runtime herunter.
+2. Durch den Befehl **Deploy-IoTEdge** wird überprüft, ob Ihr Windows-Computer über eine unterstützte Version verfügt. Außerdem aktiviert der Befehl das Containerfeature und lädt die Moby-Runtime und danach die IoT Edge-Runtime herunter.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Ihr Computer wird möglicherweise automatisch neu gestartet. Sobald Sie vom Befehl „Deploy-IoTEdge“ zum Neustart aufgefordert werden, führen Sie diesen Schritt aus.
+3. Ihr Computer wird möglicherweise automatisch neu gestartet. Sobald Sie vom Befehl „Deploy-IoTEdge“ zum Neustart aufgefordert werden, führen Sie diesen Schritt aus.
 
-5. Führen Sie PowerShell erneut als Administrator aus.
+4. Führen Sie PowerShell erneut als Administrator aus.
 
-6. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Standardmäßig wird für den Befehl die manuelle Bereitstellung mit Windows-Containern verwendet.
+5. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Standardmäßig wird für den Befehl die manuelle Bereitstellung mit Windows-Containern verwendet.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. Wenn Sie zur Eingabe von **DeviceConnectionString** aufgefordert werden, geben Sie die Zeichenfolge ein, die Sie im vorherigen Abschnitt kopiert haben. Nehmen Sie die Anführungszeichen um die Verbindungszeichenfolge nicht mit auf.
+6. Wenn Sie zur Eingabe von **DeviceConnectionString** aufgefordert werden, geben Sie die Zeichenfolge ein, die Sie im vorherigen Abschnitt kopiert haben. Nehmen Sie die Anführungszeichen um die Verbindungszeichenfolge nicht mit auf.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Anzeigen des Status der IoT Edge-Runtime
 

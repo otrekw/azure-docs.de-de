@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit der Azure CLI'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure CLI und zum Erstellen einer freigegebenen Abfrage aus.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667519"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057194"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Schnellstart: Erstellen einer freigegebenen Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -84,7 +84,7 @@ Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, 
    ```
 
 1. Führen Sie die freigegebene Abfrage in Azure CLI mit der `{{shared-query-uri}}`-Syntax in einem [az graph query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query)-Befehl aus.
-   Kopieren Sie zunächst das Feld `id` aus dem Ergebnis des obigen `show`-Befehls. Ersetzen Sie den `shared-query-uri`-Text im Beispiel durch den Wert aus dem Feld `id`, aber behalten Sie die umgebenden Zeichen `{{` und `}}` bei.
+   Kopieren Sie zunächst das Feld `id` aus dem Ergebnis des vorherigen `show`-Befehls. Ersetzen Sie den `shared-query-uri`-Text im Beispiel durch den Wert aus dem Feld `id`, aber behalten Sie die umgebenden Zeichen `{{` und `}}` bei.
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query

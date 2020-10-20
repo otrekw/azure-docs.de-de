@@ -2,14 +2,14 @@
 title: 'Azure Arc-fähige Server: Übersicht'
 description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung wie eine Azure-Ressource verwalten.
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 9fcac35f943eefb15a200e9b148b22ce67cc3941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90887530"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818744"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
 
@@ -21,7 +21,7 @@ Um diese Möglichkeit für Ihre außerhalb von Azure gehosteten Hybridcomputer n
 
 Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, können Sie die folgenden Aufgaben für die Konfigurationsverwaltung und Überwachungsaufgaben ausführen:
 
-- Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer
+- Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer Derzeit werden von den meisten Gastkonfigurationsrichtlinien keine Konfigurationen angewendet, sondern sie dienen lediglich zur Überwachung der Einstellungen des Computers. Informationen zu den Kosten der Nutzung von Azure Policy-Gastkonfigurationsrichtlinien mit Arc-fähigen Servern finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/).
 
 - Melden Sie Konfigurationsänderungen zu installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien und Linux-Daemons auf überwachten Servern mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md) von Azure Automation.
 

@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649600"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827012"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Schnellstart: Erstellen einer georeplizierten Containerregistrierung mithilfe einer ARM-Vorlage
 
@@ -48,19 +48,22 @@ Weitere Beispiele für Azure Container Registry-Vorlagen finden Sie im [Schnells
 
     [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
+ 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
     * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und wählen Sie dann **OK** aus.
-    * **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus. Beispiel: **USA, Mitte**
+    * **Region**: Wählen Sie einen Standort für die Ressourcengruppe aus. Beispiel: **USA, Mitte**
     * **ACR-Name**: Übernehmen Sie den generierten Namen für die Registrierung, oder geben Sie einen Namen ein. Der Wert muss global eindeutig sein.
+    * **ACR-Administratorbenutzer aktiviert**: Übernehmen Sie den Standardwert.
     * **Standort**: Akzeptieren Sie den generierten Standort für das Stammreplikat der Registrierung, oder geben Sie einen Standort ein, z. B. **USA, Mitte**. 
+    * **ACR-SKU**: Übernehmen Sie den Standardwert.
     * **ACR-Replikatstandort**: Geben Sie einen Standort für das Registrierungsreplikat an, indem Sie den Kurznamen der Region verwenden. Er muss von dem des Standorts der Stammregistrierung abweichen. Beispiel: **Europa, Westen (westeurope)** .
-    * **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Vorlageneigenschaften":::
 
- 3. Wenn Sie die Bedingungen akzeptieren, wählen Sie **Kaufen** aus. Nach der erfolgreichen Erstellung der Registrierung erhalten Sie eine Benachrichtigung:
+1. Wählen Sie **Überprüfen und erstellen** aus, und lesen Sie sich die Geschäftsbedingungen durch. Wählen Sie **Erstellen** aus, wenn Sie die Bedingungen akzeptieren.
+
+1. Nach der erfolgreichen Erstellung der Registrierung erhalten Sie eine Benachrichtigung:
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Vorlageneigenschaften":::
 
@@ -83,6 +86,8 @@ Verwenden Sie das Azure-Portal oder ein Tool wie die Azure CLI, um die Eigenscha
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können die Ressourcengruppe, die Registrierung und das Registrierungsreplikat löschen, wenn Sie sie nicht mehr benötigen. Wechseln Sie hierzu zum Azure-Portal, wählen Sie die Ressourcengruppe aus, die die Registrierung enthält, und wählen Sie anschließend **Ressourcengruppe löschen** aus.
+
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Vorlageneigenschaften":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

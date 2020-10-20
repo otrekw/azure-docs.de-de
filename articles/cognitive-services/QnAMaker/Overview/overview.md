@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, Chatbots mit wenig Code, Konversationen mit Mehrfachdurchläufen
-ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776781"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874423"
 ---
 # <a name="what-is-qna-maker"></a>Was ist QnA Maker?
 
@@ -83,9 +83,9 @@ QnA Maker bietet Erstellungs-, Trainings- und Veröffentlichungsfunktionen sowi
 
 Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen bereit. Diese enthalten Informationen zu grundlegenden Entwurfsmustern und sind jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. Die folgende Liste enthält Schnellstartanleitungen zu jedem Feature:
 
-* [Erste Schritte mit der LUIS-Clientbibliothek](../quickstarts/quickstart-sdk.md)
-* [Erste Schritte mit dem LUIS-Portal](../quickstarts/create-publish-knowledge-base.md)
-* [Erste Schritte mit den LUIS-REST-APIs](../quickstarts/quickstart-rest-curl.md)
+* [Erste Schritte mit der QnA Maker-Clientbibliothek](../quickstarts/quickstart-sdk.md)
+* [Erste Schritte mit dem QnA Maker-Portal](../quickstarts/create-publish-knowledge-base.md)
+* [Erste Schritte mit QnA Maker-REST-APIs](../quickstarts/quickstart-rest-curl.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372611"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048507"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Schnellstart: Untersuchen eines Azure Digital Twins-Beispielszenarios mit ADT Explorer
 
 Mit Azure Digital Twins können Sie Livemodelle Ihrer realen Umgebungen erstellen und mit ihnen interagieren. Hierzu werden einzelne Elemente als **digitale Zwillinge** modelliert und in einem **Graphen** miteinander verknüpft, der auf Liveereignisse reagieren kann und aus dem Informationen abgefragt werden können.
 
-In dieser Schnellstartanleitung erkunden Sie einen vorgefertigten Azure Digital Twins-Graphen unter Verwendung einer Beispielanwendung namens [**ADT Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (Azure Digital Twins). Mit ADT Explorer können Sie ein Szenario hochladen, visuelle Darstellungen Ihrer Zwillinge und Ihres Graphen anzeigen und andere Verwaltungsaktivitäten in einer browserbasierten, visuellen Umgebung durchführen.
+In dieser Schnellstartanleitung erkunden Sie einen vorgefertigten Azure Digital Twins-Graphen unter Verwendung einer Beispielanwendung namens [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (Azure Digital Twins). Mit ADT-Explorer können Sie eine digitale Darstellung einer Umgebung hochladen, visuelle Bilder der Zwillinge und Graphen anzeigen, die zum Darstellen der Umgebung in Azure Digital Twins erstellt werden, und andere Verwaltungsaktivitäten auf einer browserbasierten grafischen Oberfläche durchführen.
 
 Diese Schnellstartanleitung umfasst folgende Hauptschritte:
 
@@ -38,8 +38,8 @@ Für diese Schnellstartanleitung ist ein Azure-Abonnement erforderlich. Bei Beda
 Außerdem benötigen Sie **Node.js** auf Ihrem Computer. Die aktuelle Version können Sie unter diesem Link herunterladen: [Node.js](https://nodejs.org/).
 
 Schließlich müssen Sie zwei Beispiele herunterladen, um diesen Schnellstart verwenden zu können:
-* Die Beispielanwendung **ADT Explorer**. Dieses Beispiel enthält die Haupt-App, die im Rahmen der Schnellstartanleitung verwendet wird, um ein Azure Digital Twins-Szenario zu laden und zu erkunden. Die App finden Sie hier: [ADT Explorer (Azure Digital Twins)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* des Beispielcodes als _**Azure_Digital_Twins__ADT__explorer.zip**_ auf Ihren Computer herunterzuladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
-* Das **Azure Digital Twins-Beispielszenario**. Es enthält einen vorgefertigten Azure Digital Twins-Graphen, der zur Verwendung in ADT Explorer geladen wird. Das Szenario finden Sie hier: [Azure Digital Twins (Beispiele)](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* des Beispielcodes als **Azure_Digital_Twins_samples.zip** auf Ihren Computer herunterzuladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
+* Die Beispielanwendung **ADT Explorer**. Dieses Beispiel enthält die Haupt-App, die im Rahmen der Schnellstartanleitung verwendet wird, um ein Azure Digital Twins-Szenario zu laden und zu erkunden. Die App finden Sie hier: [ADT Explorer (Azure Digital Twins)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* mit dem Beispielcode auf Ihren Computer herunterzuladen. Ein ZIP-Ordner mit dem Namen _**Azure_Digital_Twins__ADT__explorer.zip**_ wird auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
+* Das **Azure Digital Twins-Beispielszenario**. Es enthält einen vorgefertigten Azure Digital Twins-Graphen, der zur Verwendung in ADT Explorer geladen wird. Das Szenario finden Sie hier: [Azure Digital Twins (Beispiele)](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Klicken Sie auf die Schaltfläche *Download ZIP* (ZIP herunterladen), um eine *ZIP-Datei* mit dem Beispielcode auf Ihren Computer herunterzuladen. Ein ZIP-Ordner mit dem Namen _**Azure_Digital_Twins_samples.zip**_ wird auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner, und extrahieren Sie die Dateien.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Einrichten von Azure Digital Twins und ADT Explorer
 
@@ -205,7 +205,7 @@ Von ADT Explorer werden nun unter Verwendung der hochgeladenen Datei die angefo
     :::column-end:::
 :::row-end:::
 
-Der Graph ist nun in ADT Explorer hochgeladen. Klicken Sie im oberen Bereich des Fensters von ADT Explorer im Feld *GRAPH EXPLORER* (GRAPH-EXPLORER) auf die Schaltfläche *Run Query* (Abfrage ausführen), um den Graphen anzuzeigen. 
+Der Graph ist nun in ADT Explorer hochgeladen. Klicken Sie im oberen Bereich des Fensters von ADT-Explorer im Feld *GRAPH EXPLORER* (GRAPH-EXPLORER) auf die Schaltfläche *Run Query* (Abfrage ausführen), um den Graphen anzuzeigen. 
 
 :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
@@ -307,7 +307,7 @@ In dieser Schnellstartanleitung haben Sie eine Azure Digital Twins-Instanz ers
 Anschließend haben Sie folgende Aktionen für den Graphen ausgeführt:
 1. Sie haben eine Abfrage zur Beantwortung einer szenariobezogenen Frage ausgeführt.
 2. Sie haben eine Eigenschaft eines digitalen Zwillings bearbeitet.
-    * Sie haben die Abfrage erneut ausgeführt, um zu sehen, wie sich die Antwort nach Ihrer Aktualisierung geändert hat.
+3. Sie haben die Abfrage erneut ausgeführt, um zu sehen, wie sich die Antwort nach Ihrer Aktualisierung geändert hat.
 
 Diese Übung veranschaulicht, wie Sie den Azure Digital Twins-Graphen verwenden können, um Fragen zu einer Umgebung zu beantworten, auch wenn sich diese verändert. 
 

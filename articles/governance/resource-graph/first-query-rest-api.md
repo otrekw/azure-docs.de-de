@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Ihre erste REST-API-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aufrufen des Resource Graph-Endpunkts für die REST-API und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85802613"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057211"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage per REST-API
 
@@ -49,7 +49,8 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-Ersetzen Sie `{subscriptionId}` in der Variable **$restUri** oben, um Informationen zu Ihrem Abonnement abzurufen. Die Variable „$response“ enthält das Ergebnis des Cmdlets `Invoke-RestMethod`, das mit Cmdlets wie z.B. [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) analysiert werden kann. Wenn im REST-API-Dienstendpunkt ein **Anforderungstext** erwartet wird, geben Sie eine JSON-formatierte Variable für den Parameter `-Body` von `Invoke-RestMethod` an.
+Ersetzen Sie `{subscriptionId}` in der Variablen `$restUri`, um Informationen zu Ihrem Abonnement zu erhalten.
+Die Variable `$response` enthält das Ergebnis des Cmdlets `Invoke-RestMethod`, das mit Cmdlets wie [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) analysiert werden kann. Wenn im REST-API-Dienstendpunkt ein **Anforderungstext** erwartet wird, geben Sie eine JSON-formatierte Variable für den Parameter `-Body` von `Invoke-RestMethod` an.
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 

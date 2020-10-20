@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67e90667df2b62ec2c37d865fe431a2be6f81b9e
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87761024"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876565"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Schnellstart: Einrichten von Pushbenachrichtigungen in einem Notification Hub
 
@@ -67,14 +67,11 @@ Wenn Sie diese Schritte abgeschlossen haben, wird angezeigt, dass der Notificati
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-### <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+- Für Notification Hubs ist mindestens die Version 2.0.67 der Azure-Befehlszeilenschnittstelle erforderlich. Führen Sie [az version](/cli/azure/reference-index?#az_version) aus, um die installierte Version und die abhängigen Bibliotheken zu ermitteln. Führen Sie [az upgrade](/cli/azure/reference-index?#az_upgrade) aus, um das Upgrade auf die aktuelle Version durchzuführen.
 
-* [Azure CLI](/cli/azure/install-azure-cli), Version 2.0.67 oder höher.
-
-* Die Azure CLI-[Erweiterung für Notification Hubs](/cli/azure/ext/notification-hub/notification-hub).
-* Den **API-Schlüssel** für ein Google Firebase Cloud Messaging-Projekt (FCM).
+- Sie benötigen den **API-Schlüssel** für Ihr Google Firebase Cloud Messaging-Projekt (FCM).
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Einrichten von Pushbenachrichtigungen für Google FCM
 

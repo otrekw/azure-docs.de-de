@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854897"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893814"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle
 
@@ -69,6 +69,51 @@ In diesem Befehl geben Sie sowohl die Quellsprache (Sprache, **aus** der überse
 
 > [!NOTE]
 > Eine Liste aller unterstützten Sprachen mit ihren entsprechenden Gebietsschemacodes finden Sie im [Artikel zu Sprachen und Gebietsschemas](language-support.md).
+
+### <a name="configuration-files-in-the-datastore"></a>Konfigurationsdateien im Datenspeicher
+
+Mit der Speech-Befehlszeilenschnittstelle (Speech CLI) können mehrere Einstellungen in Konfigurationsdateien gelesen und geschrieben werden, die im lokalen Datenspeicher der Speech CLI gespeichert sind. In Speech CLI-Aufrufen wird hierbei für die Benennung das Symbol „@“ verwendet. Von der Speech CLI wird versucht, eine neue Einstellung im neuen Unterverzeichnis `./spx/data` zu speichern, das im aktuellen Arbeitsverzeichnis erstellt wird.
+Beim Suchen nach einem Konfigurationswert sucht die Speech CLI in Ihrem aktuellen Arbeitsverzeichnis und anschließend unter dem Pfad `./spx/data`.
+Bisher haben Sie den Datenspeicher zum Speichern Ihrer Werte `@key` und `@region` verwendet und mussten sie daher nicht in jedem Befehlszeilenaufruf angeben.
+Sie können Konfigurationsdateien auch verwenden, um Ihre eigenen Konfigurationseinstellungen zu speichern, oder sie sogar nutzen, um URLs oder andere dynamische Inhalte zu übergeben, die zur Laufzeit generiert werden.
+
+In diesem Abschnitt wird die Verwendung einer Konfigurationsdatei im lokalen Datenspeicher zum Speichern und Abrufen von Befehlseinstellungen mit `spx config` und die Speicherung der Ausgabe der Speech CLI mit der Option `--output` veranschaulicht.
+
+Im folgenden Beispiel wird die Konfigurationsdatei `@my.defaults` geleert, es werden Schlüssel-Wert-Paare für **key** und **region** in der Datei hinzugefügt, und die Konfiguration wird in einem Aufruf von `spx recognize` verwendet.
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+Sie können auch dynamischen Inhalt in eine Konfigurationsdatei schreiben. Mit dem folgenden Befehl wird ein benutzerdefiniertes Sprachmodell erstellt und die URL des neuen Modells in einer Konfigurationsdatei gespeichert. Der nächste Befehl wartet, bis das Modell unter dieser URL für die Verwendung bereit ist, bevor die Rückgabe erfolgt.
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+Im folgenden Beispiel werden zwei URLs in die Konfigurationsdatei `@my.datasets.txt` geschrieben.
+In diesem Szenario kann `--output` das optionale Schlüsselwort **add** zum Erstellen einer Konfigurationsdatei bzw. zum Anfügen an die vorhandene Datei enthalten.
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+Geben Sie den folgenden Befehl ein, um weitere Informationen zu Datenspeicherdateien anzuzeigen, z. B. zur Verwendung von Standardkonfigurationsdateien (`@spx.default`, `@default.config` und `@*.default.config` für befehlsspezifische Standardeinstellungen):
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>Batchvorgänge
 

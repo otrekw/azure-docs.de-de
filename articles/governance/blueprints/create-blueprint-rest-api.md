@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer Blaupause mit REST-API'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa25a65b20b295045b52a49c8c47fb8849c3cba3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85971197"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056973"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -329,7 +329,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
 - Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
 - Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
-1. Geben Sie für den Azure Blueprint-Dienstprinzipal die Rolle **Besitzer** für das Zielabonnement an. Die AppId ist statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), aber die Dienstprinzipal-IDs variieren je nach Mandant. Details für Ihren Mandanten können mit der folgenden REST-API angefordert werden. Sie verwendet die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md), die eine andere Autorisierung aufweist.
+1. Geben Sie für den Azure Blueprint-Dienstprinzipal die Rolle **Besitzer** für das Zielabonnement an. Die AppId ist statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), aber die Dienstprinzipal-IDs variieren je nach Mandant. Details für Ihren Mandanten können mit der folgenden REST-API angefordert werden. Hierbei wird die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md) verwendet, die eine andere Autorisierung aufweist.
 
    - REST-API-URI
 

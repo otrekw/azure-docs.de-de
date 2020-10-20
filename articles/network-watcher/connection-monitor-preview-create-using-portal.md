@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Verbindungsmonitors (Vorschau) – Azure-Portal
 titleSuffix: Azure Network Watcher
-description: Erfahren Sie, wie Sie mit dem Azure-Portal einen Verbindungsmonitor (Vorschau) erstellen.
+description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal einen Monitor in Verbindungsmonitor (Vorschau) erstellen.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,71 +12,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 4e7067e537ce8fb6faf82198f7863957f79ffb22
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 97d20f2b6b7b355ea5c810ad46b084f42b9bd6d1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567814"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948560"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-azure-portal"></a>Erstellen eines Verbindungsmonitors (Vorschau) mithilfe des Azure-Portals
+# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Erstellen eines Monitors in Verbindungsmonitor (Vorschau) mithilfe des Azure-Portals
 
-Erfahren Sie, wie Sie einen Verbindungsmonitor (Vorschau) erstellen, um die Kommunikation zwischen Ihren Ressourcen mithilfe des Azure-Portals zu überwachen. Er unterstützt Hybrid- und Azure-Cloudbereitstellungen.
+Hier erfahren Sie, wie Sie Verbindungsmonitor (Vorschau) verwenden, um die Kommunikation zwischen Ihren Ressourcen zu überwachen. In diesem Artikel wird das Erstellen eines Monitors über das Azure-Portal beschrieben. Verbindungsmonitor unterstützt Hybrid- und Azure-Cloudbereitstellungen.
 
-## <a name="before-you-begin"></a>Voraussetzungen 
+## <a name="before-you-begin"></a>Vorbereitung 
 
-In Verbindungsmonitoren, die Sie im Verbindungsmonitor (Vorschau) erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
+In Verbindungsmonitoren, die Sie mithilfe von Verbindungsmonitor (Vorschau) erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder unter einer beliebigen anderen URL oder IP-Adresse befinden.
 
-Der Verbindungsmonitor (Vorschau) umfasst die folgenden Entitäten:
+Hier finden Sie einige Definitionen für den Einstieg:
+
+* **Verbindungsmonitorressource**. Eine regionsspezifische Azure-Ressource. Alle folgenden Entitäten sind Eigenschaften einer Verbindungsmonitorressource.
+* **Endpoint** (Endpunkt): Eine Quelle oder ein Ziel, die bzw. das an Konnektivitätsprüfungen beteiligt ist. Beispiele für Endpunkte sind:
+    * Azure-VMs.
+    * Virtuelle Azure-Netzwerke
+    * Azure-Subnetze
+    * Lokale Agents
+    * Lokale Subnetze
+    * Lokale benutzerdefinierte Netzwerke, die mehrere Subnetze enthalten
+    * URLs und IPs
+* **Testkonfiguration**. Eine protokollspezifische Konfiguration für einen Test. Je nach ausgewähltem Protokoll können Sie den Port, Schwellenwerte, die Testhäufigkeit und weitere Parameter definieren.
+* **Testgruppe**. Die Gruppe, die Quellendpunkte, Zielendpunkte und Testkonfigurationen enthält. Ein Verbindungsmonitor kann mehrere Testgruppen enthalten.
+* **Test:** Die Kombination aus einem Quellendpunkt, einem Zielendpunkt und einer Testkonfiguration. Ein Test ist die differenzierteste Ebene, auf der Überwachungsdaten verfügbar sind. Die Überwachungsdaten umfassen den Prozentsatz von Überprüfungen mit Fehlern und die Roundtripzeit.
+
+:::image type="content" source="./media/connection-monitor-2-preview/cm-tg-2.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
 
-* **Verbindungsmonitorressource**: Dies ist eine regionsspezifische Azure-Ressource. Alle folgenden Entitäten sind Eigenschaften einer Verbindungsmonitorressource.
-* **Endpunkt**: Eine Quelle oder ein Ziel, die bzw. das an Konnektivitätsprüfungen beteiligt ist. Beispiele für Endpunkte umfassen Azure-VMs, lokale Agents, URLs und IP-Adressen.
-* **Testkonfiguration**: Eine protokollspezifische Konfiguration für einen Test. Je nach ausgewähltem Protokoll können Sie den Port, Schwellenwerte, die Testhäufigkeit und weitere Parameter definieren.
-* **Testgruppe**: Die Gruppe, die Quellendpunkte, Zielendpunkte und Testkonfigurationen enthält. Ein Verbindungsmonitor kann mehrere Testgruppen enthalten.
-* **Test**: Die Kombination aus einem Quellendpunkt, einem Zielendpunkt und einer Testkonfiguration. Ein Test ist die differenzierteste Ebene, auf der Überwachungsdaten verfügbar sind. Die Überwachungsdaten umfassen den Prozentsatz von Überprüfungen mit Fehlern und die Roundtripzeit.
+## <a name="create-a-connection-monitor"></a>Erstellen eines Verbindungsmonitors
 
-    ![Diagramm eines Verbindungsmonitors mit Definition der Beziehung zwischen Testgruppen und Tests](./media/connection-monitor-2-preview/cm-tg-2.png)
-
-## <a name="steps-to-create"></a>Schritte zur Erstellung
-
-Um einen Verbindungsmonitor (Vorschau) mithilfe des Azure-Portals zu erstellen, führen Sie die folgenden Schritte aus:
+So erstellen Sie einen Monitor in Verbindungsmonitor (Vorschau) mithilfe des Azure-Portals
 
 1. Navigieren Sie auf der Startseite des Azure-Portals zu **Network Watcher**.
-1. Wählen Sie links im Abschnitt **Überwachung** die Option **Verbindungsmonitor (Vorschau)** aus.
-1. Es werden alle Verbindungsmonitore angezeigt, die im Verbindungsmonitor (Vorschau) erstellt wurden. Zum Anzeigen der Verbindungsmonitore, die auf der klassischen Benutzeroberfläche des Verbindungsmonitors erstellt wurden, wechseln Sie zur Registerkarte **Verbindungsmonitor**.
+1. Wählen Sie im linken Bereich im Abschnitt **Überwachung** die Option **Verbindungsmonitor (Vorschau)** aus.
 
-    ![Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden](./media/connection-monitor-2-preview/cm-resource-view.png)   
+   Es werden alle Verbindungsmonitore angezeigt, die im Verbindungsmonitor (Vorschau) erstellt wurden. Zum Anzeigen der Verbindungsmonitore, die im klassischen Verbindungsmonitor erstellt wurden, wechseln Sie zur Registerkarte **Verbindungsmonitor**.
+
+   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
+   
     
-1. Wählen Sie im Dashboard **Verbindungsmonitor (Vorschau)** oben links die Option **Erstellen** aus.
-1. Geben Sie auf der Registerkarte **Grundlagen** die Informationen zu Ihrem Verbindungsmonitor ein:
-   * **Name des Verbindungsmonitors**: Fügen Sie den Namen Ihres Verbindungsmonitors hinzu. Verwenden Sie die Standardbenennungsregeln für Azure-Ressourcen.
+1. Wählen Sie im Dashboard **Verbindungsmonitor (Vorschau)** oben links **Erstellen** aus.
+
+   
+
+1. Geben Sie auf der Registerkarte **Grundlagen** die Informationen zu Ihrem Verbindungsmonitor ein: 
+   * **Name des Verbindungsmonitors**: Geben Sie einen Namen für Ihren Verbindungsmonitor ein. Verwenden Sie die Standardbenennungsregeln für Azure-Ressourcen.
    * **Abonnement**: Wählen Sie ein Abonnement für Ihren Verbindungsmonitor aus.
    * **Region**: Wählen Sie eine Region für Ihren Verbindungsmonitor aus. Dabei kommen nur die Quell-VMs infrage, die in dieser Region erstellt wurden.
-   * **Arbeitsbereichskonfiguration**: Der Arbeitsbereich enthält Ihre Überwachungsdaten. Sie können einen benutzerdefinierten Arbeitsbereich oder den Standardarbeitsbereich verwenden. 
+   * **Arbeitsbereichskonfiguration**: Wählen Sie einen benutzerdefinierten Arbeitsbereich oder den Standardarbeitsbereich aus. Ihr Arbeitsbereich enthält Ihre Überwachungsdaten.
        * Aktivieren Sie das Kontrollkästchen, um den Standardarbeitsbereich zu verwenden. 
        * Wenn Sie einen benutzerdefinierten Arbeitsbereich auswählen möchten, deaktivieren Sie das Kontrollkästchen. Wählen Sie dann das Abonnement und die Region für Ihren benutzerdefinierten Arbeitsbereich aus. 
+
+   :::image type="content" source="./media/connection-monitor-2-preview/create-cm-basics.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
+   
 1. Wählen Sie unten auf der Registerkarte die Option **Weiter: Testgruppen** aus.
 
-   ![Screenshot: Registerkarte „Grundlagen“ im Verbindungsmonitor](./media/connection-monitor-2-preview/create-cm-basics.png)
+1. Fügen Sie Quellen, Ziele und Testkonfigurationen in Ihren Testgruppen hinzu. Informationen zum Einrichten Ihrer Testgruppen finden Sie unter [Erstellen von Testgruppen im Verbindungsmonitor](#create-test-groups-in-a-connection-monitor). 
 
-1. Wählen Sie auf der Registerkarte **Testgruppen** die Option **+ Testgruppe** aus. Informationen zum Einrichten der Testgruppen finden Sie unter [Erstellen von Testgruppen im Verbindungsmonitor](#create-test-groups-in-a-connection-monitor). 
-1. Wählen Sie unten auf der Registerkarte die Option **Weiter: Überprüfen + erstellen** aus, um Ihren Verbindungsmonitor zu überprüfen.
+   :::image type="content" source="./media/connection-monitor-2-preview/create-tg.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
-   ![Screenshot: Registerkarte „Testgruppen“ und Bereich zum Hinzufügen von Testgruppendetails](./media/connection-monitor-2-preview/create-tg.png)
+1. Wählen Sie unten auf der Registerkarte die Option **Weiter: Warnungen erstellen**. Informationen zum Erstellen von Warnungen finden Sie unter [Erstellen von Warnungen im Verbindungsmonitor](#create-alerts-in-connection-monitor).
 
-1. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die grundlegenden Informationen und Testgruppen, bevor Sie den Verbindungsmonitor erstellen. Wenn Sie den Verbindungsmonitor bearbeiten müssen, gehen Sie folgendermaßen vor:
-   * Zum Bearbeiten grundlegender Informationen wählen Sie das Stiftsymbol aus.
-   * Zum Bearbeiten einer Testgruppe wählen Sie diese aus.
+   :::image type="content" source="./media/connection-monitor-2-preview/create-alert.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
+1. Wählen Sie unten auf der Registerkarte die Option **Weiter: Überprüfen + erstellen**.
+
+1. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die grundlegenden Informationen und Testgruppen, bevor Sie den Verbindungsmonitor erstellen. Wenn Sie den Verbindungsmonitor bearbeiten müssen, können Sie hierzu zu den entsprechenden Registerkarten zurückkehren. 
+   :::image type="content" source="./media/connection-monitor-2-preview/review-create-cm.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
    > [!NOTE] 
-   > Auf der Registerkarte **Überprüfen + erstellen** werden die Kosten pro Monat während der Vorschauphase des Verbindungsmonitors angezeigt. Derzeit werden in der Spalte **AKTUELLE KOSTEN** keine Kosten angezeigt. Sobald der Verbindungsmonitor allgemein verfügbar ist, wird in dieser Spalte eine monatliche Gebühr angegeben. 
+   > Auf der Registerkarte **Überprüfen und erstellen** werden die Kosten pro Monat während der Vorschauphase des Verbindungsmonitors angezeigt. Derzeit werden in der Spalte **Aktuelle Kosten/Monat** keine Kosten angezeigt. Sobald der Verbindungsmonitor allgemein verfügbar ist, wird in dieser Spalte eine monatliche Gebühr angegeben. 
    > 
-   > Auch in der Vorschauphase des Verbindungsmonitors fallen Gebühren für die Log Analytics-Erfassung an.
+   > Auch während der Vorschauphase des Verbindungsmonitors fallen Gebühren für die Log Analytics-Erfassung an.
 
 1. Wenn Sie den Verbindungsmonitor erstellen möchten, wählen Sie unten auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
-
-   ![Screenshot: Verbindungsmonitor mit der Registerkarte „Überprüfen + erstellen“](./media/connection-monitor-2-preview/review-create-cm.png)
 
 Der Verbindungsmonitor (Vorschau) erstellt die Verbindungsmonitorressource im Hintergrund.
 
@@ -84,71 +98,101 @@ Der Verbindungsmonitor (Vorschau) erstellt die Verbindungsmonitorressource im Hi
 
 Jede Testgruppe in einem Verbindungsmonitor enthält Quellen und Ziele, die auf Netzwerkparameter getestet werden. Sie werden mithilfe von Testkonfigurationen auf den Prozentsatz von Überprüfungen mit Fehlern und die Roundtripzeit getestet.
 
-Wenn Sie eine Testgruppe in einem Verbindungsmonitor über das Azure-Portal erstellen möchten, geben Sie Werte für die folgenden Felder an:
+Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben Sie im Azure-Portal Werte für die folgenden Felder an:
 
-* **Testgruppe deaktivieren**: Sie können dieses Feld auswählen, um die Überwachung für alle in der Testgruppe angegebenen Quellen und Ziele zu deaktivieren. Diese Auswahl ist standardmäßig deaktiviert.
-* **Name**: Geben Sie der Testgruppe einen Namen.
+* **Testgruppe deaktivieren**: Sie können dieses Kontrollkästchen aktivieren, um die Überwachung für alle in der Testgruppe angegebenen Quellen und Ziele zu deaktivieren. Diese Auswahl ist standardmäßig deaktiviert.
+* **Name**: Geben Sie Ihrer Testgruppe einen Namen.
 * **Quellen**: Sie können sowohl Azure-VMs als auch lokale Computer als Quellen angeben, wenn Agents darauf installiert sind. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
-   * Wechseln Sie zum Auswählen von Azure-Agents zur Registerkarte **Azure-Agents**. Hier werden nur VMs angezeigt, die an die Region gebunden sind, die Sie beim Erstellen des Verbindungsmonitors angegeben haben. Standardmäßig sind VMs in den Abonnements gruppiert, denen Sie angehören. Diese Gruppen sind reduziert. 
+   * Wählen Sie zum Auswählen von Azure-Agents die Registerkarte **Azure-Endpunkte** aus. Hier werden nur VMs angezeigt, die an die Region gebunden sind, die Sie beim Erstellen des Verbindungsmonitors angegeben haben. Standardmäßig sind VMs in den Abonnements gruppiert, denen Sie angehören. Diese Gruppen sind reduziert. 
    
-       Sie können von der Abonnementebene einen Drilldown auf andere Hierarchieebenen ausführen:
+       Sie können von der **Abonnement**ebene einen Drilldown auf andere Hierarchieebenen ausführen:
 
-      **Abonnement** > **Ressourcengruppen** > **VNETs** > **Subnetze** > **VMs mit Agents**
+      **Abonnement** > **Ressourcengruppe** > **VNETs** > **Subnetz** > **VMs mit Agents**
 
-      Außerdem lässt sich der Wert des Felds **Gruppieren nach** ändern, sodass der Baum mit einer beliebigen anderen Ebene beginnt. Wenn Sie z. B. nach virtuellem Netzwerk gruppieren, werden die VMs mit Agents in der Hierarchie **VNETs** > **Subnetze** > **VMs mit Agents** angezeigt.
+      Außerdem lässt sich der Selektor **Gruppieren nach** ändern, sodass die Struktur mit einer beliebigen anderen Ebene beginnt. Wenn Sie z. B. nach virtuellem Netzwerk gruppieren, werden die VMs mit Agents in der Hierarchie **VNET** > **Subnetz** > **VMs mit Agents** angezeigt.
 
-      ![Screenshot: Verbindungsmonitor mit dem Bereich „Quellen hinzufügen“ und der Registerkarte „Azure-Agents“](./media/connection-monitor-2-preview/add-azure-sources.png)
+       Wenn Sie ein VNET, ein Subnetz oder eine einzelne VM auswählen, wird die entsprechende Ressourcen-ID als Endpunkt festgelegt. Standardmäßig sind alle virtuellen Computer im ausgewählten VNET oder Subnetz, die über die Azure Network Watcher-Erweiterung verfügen, an der Überwachung beteiligt. Um den Bereich zu verkleinern, wählen Sie entweder bestimmte Subnetze oder Agents aus, oder Sie ändern den Wert der Eigenschaft „Bereich“. 
 
-   * Zum Auswählen lokaler Agents wählen Sie die Registerkarte **Nicht-Azure-Agents** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist die Netzwerkleistungsmonitor-Lösung konfiguriert. 
+      :::image type="content" source="./media/connection-monitor-2-preview/add-azure-sources.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
+
+   * Zum Auswählen lokaler Agents wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
    
        Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
    
-       In der Ansicht **Verbindungsmonitor erstellen** ist auf der Registerkarte **Grundlagen** die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie haben auch die Möglichkeit, den Wert im Feld **Gruppieren nach** zu ändern, sodass nach Subnetzen sortiert wird.
+       Unter **Verbindungsmonitor erstellen** ist auf der Registerkarte **Grundlagen** die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt. Sie können den Selektor **Gruppieren nach** ändern, um nach Agents zu gruppieren.
 
-      ![Screenshot: Verbindungsmonitor mit dem Bereich „Quellen hinzufügen“ und der Registerkarte „Nicht-Azure-Agents“](./media/connection-monitor-2-preview/add-non-azure-sources.png)
+      :::image type="content" source="./media/connection-monitor-2-preview/add-non-azure-sources.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
+   * Um zuletzt verwendete Endpunkte auszuwählen, können Sie die Registerkarte **Zuletzt verwendeter Endpunkt** verwenden. 
+   
+   * Wenn Sie die Einrichtung von Quellen abgeschlossen haben, wählen Sie am unteren Rand der Registerkarte **Fertig** aus. Sie können weiterhin grundlegende Eigenschaften wie den Endpunktnamen bearbeiten, indem Sie den Endpunkt in der Ansicht **Testgruppe erstellen** auswählen. 
 
-   * Zum Überprüfen der ausgewählten Azure- und Nicht-Azure-Agents wechseln Sie zur Registerkarte **Überprüfen**.
+* **Ziele:** Sie können die Konnektivität mit einer Azure-VM, einem lokalen Computer oder anderen Endpunkten (öffentliche IP-Adresse, URL oder FQDN) überwachen, indem Sie diese als Ziele festlegen. In einer einzelnen Testgruppe können Sie Azure-VMs, lokale Computer, Office 365-URLs, Dynamics 365-URLs und benutzerdefinierte Endpunkte hinzufügen.
 
-      ![Screenshot: Verbindungsmonitor mit dem Bereich „Quellen hinzufügen“ und der Registerkarte „Überprüfen“](./media/connection-monitor-2-preview/review-sources.png)
+    * Wenn Sie Azure-VMs als Ziele auswählen möchten, wechseln Sie zur Registerkarte **Azure-Endpunkte**. Die Azure-VMs sind standardmäßig in einer Abonnementhierarchie gruppiert, die sich in der Region befindet, die Sie unter **Verbindungsmonitor erstellen** auf der Registerkarte **Grundlagen** ausgewählt haben. Sie können die Region ändern und Azure-VMs aus der neuen Region auswählen. Anschließend können Sie von der **Abonnement**ebene einen Drilldown auf andere Hierarchieebenen ausführen, wie Sie es auch beim Festlegen der Azure-Endpunkte der Quelle können.
 
-   * Wenn Sie die Einrichtung von Quellen abgeschlossen haben, wählen Sie unten im Bereich **Quellen hinzufügen** die Option **Fertig** aus.
+      Sie können VNETs, Subnetze oder einzelne VMs auswählen, wie Sie es auch beim Festlegen der Azure-Endpunkte der Quelle können. Wenn Sie ein VNET, ein Subnetz oder eine einzelne VM auswählen, wird die entsprechende Ressourcen-ID als Endpunkt festgelegt. Standardmäßig sind alle virtuellen Computer im ausgewählten VNET oder Subnetz, die über die Network Watcher-Erweiterung verfügen, an der Überwachung beteiligt. Um den Bereich zu verkleinern, wählen Sie entweder bestimmte Subnetze oder Agents aus, oder Sie ändern den Wert der Eigenschaft „Bereich“. 
 
-* **Ziele**: Sie können die Konnektivität mit Azure-VMs oder anderen Endpunkten (öffentliche IP-Adresse, URL oder FQDN) überwachen, indem Sie diese als Ziele festlegen. In einer einzelnen Testgruppe können Sie Azure-VMs, Office 365-URLs, Dynamics 365-URLs und benutzerdefinierte Endpunkte hinzufügen.
+      :::image type="content" source="./media/connection-monitor-2-preview/add-azure-dests1.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
-    * Wenn Sie Azure-VMs als Ziele auswählen möchten, wechseln Sie zur Registerkarte **Azure-VMs**. Die Azure-VMs sind standardmäßig in einer Abonnementhierarchie gruppiert, die sich in der gleichen Region befindet, die Sie in der Ansicht **Verbindungsmonitor erstellen** auf der Registerkarte **Grundlagen** ausgewählt haben. Sie können die Region ändern und die Azure-VMs aus der neuen Region auswählen. Anschließend können Sie von der Abonnementebene einen Drilldown auf andere Hierarchieebenen wie z. B. die Ebene der Azure-Agents ausführen.
-
-       ![Screenshot: Bereich „Ziele hinzufügen“ mit der Registerkarte „Azure-VMs“](./media/connection-monitor-2-preview/add-azure-dests1.png)
-
-       ![Screenshot: Bereich „Ziele hinzufügen“ mit der Abonnementebene](./media/connection-monitor-2-preview/add-azure-dests2.png)
-
-    * Wenn Sie Endpunkte als Ziele auswählen möchten, wechseln Sie zur Registerkarte **Endpunkte**. Die Liste der Endpunkte umfasst die Office 365- und Dynamics 365-Test-URLs, die nach Namen gruppiert sind. Zusätzlich zu diesen Endpunkten können Sie auch einen Endpunkt auswählen, der in einer anderen Testgruppe im selben Verbindungsmonitor erstellt wurde. 
+      :::image type="content" source="./media/connection-monitor-2-preview/add-azure-dests2.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
+       
     
-        Zum Hinzufügen eines neuen Endpunkts wählen Sie oben rechts die Option **+ Endpunkte** aus. Geben Sie dann einen Endpunktnamen und eine URL, eine IP-Adresse oder einen FQDN an.
+    * Um Nicht-Azure-Agents als Ziele auszuwählen, wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
+    
+      Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem Azure Marketplace ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
 
-       ![Screenshot: Hinzufügen von Endpunkten als Ziele im Verbindungsmonitor](./media/connection-monitor-2-preview/add-endpoints.png)
+      Unter  **Verbindungsmonitor erstellen** ist auf der Registerkarte  **Grundlagen**  die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt.  
 
-    * Zum Überprüfen der von Ihnen ausgewählten Azure-VMs und-Endpunkte wählen Sie die Registerkarte **Überprüfen** aus.
-    * Wenn Sie die Auswahl von Zielen abgeschlossen haben, wählen Sie **Fertig** aus.
+      :::image type="content" source="./media/connection-monitor-2-preview/add-non-azure-dest.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
+    
+    * Um öffentliche Endpunkte als Ziele auszuwählen, wählen Sie die Registerkarte **Externe Adressen** aus. Die Liste der Endpunkte umfasst die Office 365- und Dynamics 365-Test-URLs, die nach Namen gruppiert sind. Sie können auch Endpunkte auswählen, die in anderen Testgruppen im selben Verbindungsmonitor erstellt wurden. 
+    
+        Zum Hinzufügen eines Endpunkts wählen Sie oben rechts die Option **Endpunkt hinzufügen** aus. Geben Sie dann einen Endpunktnamen und eine URL, eine IP-Adresse oder einen FQDN an.
 
-* **Testkonfigurationen**: Sie können Testkonfigurationen in einer Testgruppe zuordnen. Im Azure-Portal ist nur eine Testkonfiguration pro Testgruppe zulässig. Sie können aber mit ARMClient weitere Testkonfigurationen hinzufügen.
+       :::image type="content" source="./media/connection-monitor-2-preview/add-endpoints.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
-    * **Name**: Geben Sie der Testkonfiguration einen Namen.
-    * **Protokoll**: Wählen Sie TCP, ICMP oder HTTP aus. Wenn Sie HTTP in HTTPS ändern möchten, wählen Sie **HTTP** als Protokoll und **443** als Port aus.
-        * **Netzwerktestkonfiguration erstellen**: Dieses Kontrollkästchen wird nur angezeigt, wenn Sie im Feld **Protokoll** die Option **HTTP** ausgewählt haben. Aktivieren Sie dieses Kontrollkästchen, um eine weitere Testkonfiguration zu erstellen, die dieselben Quellen und Ziele verwendet, die Sie an anderer Stelle in der Konfiguration angegeben haben. Die neu erstellte Testkonfiguration erhält den Namen `<the name of your test configuration>_networkTestConfig`.
-        * **Traceroute deaktivieren** Dieses Feld gilt für Testgruppen mit TCP- oder ICMP-Protokoll. Aktivieren Sie dieses Kontrollkästchen, damit Quellen weder die Topologie noch Hop-by-Hop-Roundtripzeit ermitteln.
-    * **Zielport**: Sie können dieses Feld mit einem Zielport Ihrer Wahl anpassen.
-    * **Testhäufigkeit**: Mit diesem Feld können Sie auswählen, wie oft die Quellen die Ziele über das angegebene Protokoll und den angegebenen Port pingen. Sie können Intervalle von 30 Sekunden, 1 Minute, 5 Minuten, 15 Minuten oder 30 Minuten auswählen. Die Quellen testen die Konnektivität mit den Zielen auf Grundlage des von Ihnen ausgewählten Werts.  Wenn Sie z. B. 30 Sekunden auswählen, überprüfen die Quellen die Konnektivität mit dem Ziel mindestens einmal alle 30 Sekunden.
-    * **Schwellenwert für erfolgreiche Tests**: Sie können Schwellenwerte für die folgenden Netzwerkparameter festlegen:
-       * **Überprüfungen mit Fehlern**: Legen Sie den Prozentsatz der Überprüfungen fest, die Fehler aufweisen können, wenn Quellen die Konnektivität mit Zielen anhand der von Ihnen angegebenen Kriterien überprüfen. Beim TCP- oder ICMP-Protokoll kann der Prozentsatz der Überprüfungen mit Fehlern dem Prozentsatz der Paketverluste gleichgesetzt werden. Beim HTTP-Protokoll stellt dieses Feld den Prozentsatz von HTTP-Anforderungen dar, die keine Antwort erhielen.
+    * Um zuletzt verwendete Endpunkte auszuwählen, wechseln Sie zur Registerkarte  **Zuletzt verwendeter Endpunkt** .
+    * Wenn Sie die Auswahl von Zielen abgeschlossen haben, wählen Sie **Fertig** aus. Sie können weiterhin grundlegende Eigenschaften wie den Endpunktnamen bearbeiten, indem Sie den Endpunkt in der Ansicht **Testgruppe erstellen** auswählen. 
+
+* **Testkonfigurationen**: Sie können einer Testgruppe eine oder mehrere Testkonfigurationen hinzufügen. Sie erstellen eine neue Testkonfiguration, indem Sie die Registerkarte **Neue Konfiguration** verwenden. Oder Sie fügen eine Testkonfiguration aus einer anderen Testgruppe im selben Verbindungsmonitor von der Registerkarte **Vorhandene auswählen** hinzu.
+
+    * **Name der Testkonfiguration**: Geben Sie der Testkonfiguration einen Namen.
+    * **Protokoll:** Wählen Sie **TCP**, **ICMP** oder **HTTP** aus. Wenn Sie HTTP in HTTPS ändern möchten, wählen Sie **HTTP** als Protokoll und dann **443** als Port aus.
+        * **TCP-Testkonfiguration erstellen**: Dieses Kontrollkästchen wird nur angezeigt, wenn Sie in der Liste **Protokoll** die Option **HTTP** ausgewählt haben. Aktivieren Sie dieses Kontrollkästchen, um eine weitere Testkonfiguration zu erstellen, die dieselben Quellen und Ziele verwendet, die Sie an anderer Stelle in der Konfiguration angegeben haben. Die neue Testkonfiguration erhält den Namen **\<name of test configuration>_networkTestConfig**.
+        * **Traceroute deaktivieren**: Dieses Kontrollkästchen ist gültig, wenn das Protokoll TCP oder ICMP ist. Aktivieren Sie dieses Kontrollkästchen, damit Quellen weder die Topologie noch Hop-by-Hop-Roundtripzeit ermitteln.
+    * **Zielport**: Sie können einen Zielport Ihrer Wahl angeben.
+        * **Am Port lauschen**: Dieses Kontrollkästchen gilt, wenn das Protokoll TCP ist. Aktivieren Sie dieses Kontrollkästchen, um den ausgewählten TCP-Port zu öffnen, wenn er nicht bereits geöffnet ist. 
+    * **Testhäufigkeit**: In dieser Liste geben Sie an, wie oft die Quellen die Ziele über das angegebene Protokoll und den angegebenen Port pingen. Sie können Intervalle von 30 Sekunden, 1 Minute, 5 Minuten, 15 Minuten oder 30 Minuten auswählen. Wählen Sie **Benutzerdefiniert** aus, um eine andere Häufigkeit einzugeben, die zwischen 30 Sekunden und 30 Minuten liegt. Die Quellen testen die Konnektivität mit den Zielen auf Grundlage des von Ihnen ausgewählten Werts. Wenn Sie z. B. 30 Sekunden auswählen, überprüfen die Quellen die Konnektivität mit dem Ziel mindestens einmal alle 30 Sekunden.
+    * **Schwellenwert für erfolgreichen Vorgang**: Sie können Schwellenwerte für die folgenden Netzwerkparameter festlegen:
+       * **Überprüfungen mit Fehlern**: Legen Sie den Prozentsatz der Überprüfungen fest, die Fehler aufweisen können, wenn Quellen die Konnektivität mit Zielen anhand der von Ihnen angegebenen Kriterien überprüfen. Beim TCP- oder ICMP-Protokoll kann der Prozentsatz der Überprüfungen mit Fehlern dem Prozentsatz der Paketverluste gleichgesetzt werden. Beim HTTP-Protokoll stellt dieser Wert den Prozentsatz von HTTP-Anforderungen dar, die keine Antwort erhielten.
        * **Roundtripzeit**: Legen Sie die Roundtripzeit in Millisekunden fest, die von Quellen zum Herstellen einer Verbindung mit dem Ziel über die Testkonfiguration benötigt werden darf.
-    
-       ![Screenshot: Einrichten einer Testkonfiguration im Verbindungsmonitor](./media/connection-monitor-2-preview/add-test-config.png)
+       
+   :::image type="content" source="./media/connection-monitor-2-preview/add-test-config.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
+       
+## <a name="create-alerts-in-connection-monitor"></a>Erstellen von Warnungen im Verbindungsmonitor
 
+Sie können Warnungen für fehlgeschlagene Tests einrichten, die auf den in Testkonfigurationen festgelegten Schwellenwerten basieren.
+
+Wenn Sie Warnungen für einen Verbindungsmonitor erstellen möchten, geben Sie im Azure-Portal Werte für diese Felder an: 
+
+- **Warnung erstellen**: Sie können dieses Kontrollkästchen aktivieren, um eine Metrikwarnung in Azure Monitor zu erstellen. Wenn Sie dieses Kontrollkästchen aktivieren, werden die anderen Felder für die Bearbeitung aktiviert. Zusätzliche Gebühren für die Warnung fallen an, basierend auf den [Preisen für Warnungen](https://azure.microsoft.com/pricing/details/monitor/). 
+
+- **Bereich** > **Ressource** > **Hierarchie**: Diese Werte werden basierend auf den Werten, die auf der Registerkarte **Grundlagen** angegeben sind, automatisch ausgefüllt.
+
+- **Bedingungsname**: Die Warnung wir für die `Test Result(preview)`-Metrik erstellt. Wenn das Ergebnis des Verbindungsmonitortests fehlerhaft ist, wird die Warnungsregel ausgelöst. 
+
+- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+
+- **Name der Warnungsregel**: Der Name des Verbindungsmonitors.
+
+- **Regel beim Erstellen aktivieren**: Aktivieren Sie dieses Kontrollkästchen, um die Warnungsregel auf Grundlage der Bedingung zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, wenn Sie die Regel erstellen möchten, ohne Sie zu aktivieren. 
+
+:::image type="content" source="./media/connection-monitor-2-preview/create-alert-filled.png" alt-text="Diagramm, das einen Verbindungsmonitor zeigt und die Beziehung zwischen Testgruppen und Tests definiert.":::
 
 ## <a name="scale-limits"></a>Skalierungslimits
 
-Für Verbindungsmonitore gelten die folgenden Skalierungslimits:
+Für Verbindungsmonitore gelten diese Skalierungslimits:
 
 * Maximale Anzahl von Verbindungsmonitoren pro Abonnement und Region: 100
 * Maximale Anzahl von Testgruppen pro Verbindungsmonitor: 20

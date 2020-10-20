@@ -3,17 +3,17 @@ title: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-
 description: Mithilfe von Node.js können Sie eine Verbindung mit einem IoT Plug & Play-Gerät herstellen, das mit ihrer Azure IoT-Lösung verbunden ist, und mit ihm interagieren.
 author: elhorton
 ms.author: elhorton
-ms.date: 08/11/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574992"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946126"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 Weitere Informationen zur Beispielkonfiguration finden Sie in der [Beispiel-Infodatei](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
-In diesem Schnellstart können Sie ein Beispielthermostat verwenden, das in Node.js als IoT Plug & Play-Gerät geschrieben wird. So führen Sie das Beispielgerät aus:
+In diesem Schnellstart verwenden Sie ein Beispielthermostat, das in Node.js als IoT Plug & Play-Gerät geschrieben wird. So führen Sie das Beispielgerät aus:
 
 1. Öffnen Sie ein Terminalfenster, und navigieren Sie zu dem lokalen Ordner mit dem Microsoft Azure IoT SDK for Node.js, das Sie auf GitHub geklont haben.
 
@@ -94,48 +94,103 @@ In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js für d
 1. Wechseln Sie zum **Dienstterminal**, und führen Sie den folgenden Befehl aus, um das Beispiel für das Lesen von Geräteinformationen auszuführen:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. Beachten Sie in der Ausgabe des **Dienstterminals** die Antwort des digitalen Zwillings. Die Modell-ID des Geräts und die zugehörigen Eigenschaften werden angezeigt:
+1. Beachten Sie in der Ausgabe des **Dienstterminals** die Antwort des Gerätezwillings. Die Modell-ID des Geräts und die zugehörigen Eigenschaften werden angezeigt:
 
     ```json
-    "$dtId": "mySimpleThermostat",
-    "serialNumber": "123abc",
-    "maxTempSinceLastReboot": 51.96167432818655,
-    "$metadata": {
-      "$model": "dtmi:com:example:Thermostat;1",
-      "serialNumber": { "lastUpdateTime": "2020-07-09T14:04:00.6845182Z" },
-      "maxTempSinceLastReboot": { "lastUpdateTime": "2020-07-09T14:04:00.6845182" }
+    Model Id: dtmi:com:example:Thermostat;1
+    {
+      "deviceId": "my-pnp-device",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "Njc3MDMxNDcy",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00Z",
+      "connectionState": "Connected",
+      "lastActivityTime": "0001-01-01T00:00:00Z",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "modelId": "dtmi:com:example:Thermostat;1",
+      "version": 4,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:19.4574755Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "maxTempSinceLastReboot": 31.343640523762232,
+          "serialNumber": "123abc",
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:23.7339042Z",
+            "maxTempSinceLastReboot": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            },
+            "serialNumber": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            }
+          },
+          "$version": 3
+        }
+      },
+      "capabilities": {
+        "iotEdge": false
+      },
+      "tags": {}
     }
     ```
 
-1. Der folgende Codeausschnitt zeigt den Code in *get_digital_twin.js*, mit dem die Modell-ID des Gerätezwillings abgerufen wird:
+1. Der folgende Codeausschnitt zeigt den Code in *twin.js*, mit dem die Modell-ID des Gerätezwillings abgerufen wird:
 
     ```javascript
-    console.log("Model Id: " + inspect(digitalTwin.$metadata.$model))
+    var registry = Registry.fromConnectionString(connectionString);
+    registry.getTwin(deviceId, function(err, twin) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log('Model Id: ' + twin.modelId);
+        //...
+      }
+      //...
+    }
     ```
 
 In diesem Szenario wird `Model Id: dtmi:com:example:Thermostat;1` ausgegeben.
 
+> [!NOTE]
+> In diesen Dienstbeispielen wird die **Registry**-Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](concepts-developer-guide-service.md).
+
 ### <a name="update-a-writable-property"></a>Aktualisieren einer schreibbaren Eigenschaft
 
-1. Öffnen Sie die Datei *update_digital_twin.js* in einem Code-Editor.
+1. Öffnen Sie die Datei *twin.js* in einem Code-Editor.
 
-1. Überprüfen Sie den Beispielcode. Sie können sehen, wie ein JSON-Patch zum Aktualisieren des digitalen Zwillings Ihres Geräts erstellt wird. In diesem Beispiel ersetzt der Code die Temperatur des Thermostats durch den Wert „42“:
+1. Sehen Sie sich den Beispielcode an. Darin werden zwei Vorgehensweisen zum Aktualisieren des Gerätezwillings veranschaulicht. Ändern Sie bei der ersten Vorgehensweise die Variable `twinPatch` wie folgt:
 
     ```javascript
-    const patch = [{
-        op: 'add',
-        path: '/targetTemperature',
-        value: '42'
-      }]
+    var twinPatch = {
+      tags: {
+        city: "Redmond"
+      },
+      properties: {
+        desired: {
+          targetTemperature: 42
+        }
+      }
+    };
     ```
+
+    Die Eigenschaft `targetTemperature` ist im Thermostat-Gerätemodell als schreibbare Eigenschaft definiert.
 
 1. Verwenden Sie im **Dienstterminal** den folgenden Befehl zur Ausführung des Beispiels zum Aktualisieren der Eigenschaft:
 
     ```cmd/sh
-    node update_digital_twin.js
+    node twin.js
     ```
 
 1. In Ihrem **Geräteterminal** sehen Sie, dass das Gerät die Aktualisierung erhalten hat:
@@ -151,44 +206,54 @@ In diesem Szenario wird `Model Id: dtmi:com:example:Thermostat;1` ausgegeben.
       }
     }
     updated the property
-    Properties have been reported for component
     ```
 
 1. Führen Sie in Ihrem **Dienstterminal** den folgenden Befehl zur Bestätigung aus, dass die-Eigenschaft aktualisiert wurde:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. In der Ausgabe des **Dienstterminals** wird in der Antwort des digitalen Zwillings unter der Komponente `thermostat1` die aktualisierte Zieltemperatur angezeigt. Es kann eine Weile dauern, bis das Gerät die Aktualisierung abgeschlossen hat. Wiederholen Sie diesen Schritt so oft, bis das Gerät die Eigenschaftsaktualisierung verarbeitet hat:
+1. In der Ausgabe des **Dienstterminals** wird im Abschnitt mit den gemeldeten Eigenschaften die gemeldete aktualisierte Zieltemperatur angezeigt. Es kann eine Weile dauern, bis das Gerät die Aktualisierung abgeschlossen hat. Wiederholen Sie diesen Schritt so oft, bis das Gerät die Eigenschaftsaktualisierung verarbeitet hat:
 
     ```json
-    targetTemperature: 42,
+    "reported": {
+      //...
+      "targetTemperature": {
+        "value": 42,
+        "ac": 200,
+        "ad": "Successfully executed patch for targetTemperature",
+        "av": 4
+      },
+      //...
+    }
     ```
 
 ### <a name="invoke-a-command"></a>Aufrufen eines Befehls
 
-1. Öffnen Sie die Datei *invoke_command.js*, und überprüfen Sie den Code.
+1. Öffnen Sie die Datei *device_method.js*, und sehen Sie sich den Code an.
 
 1. Wechseln Sie zum **Dienstterminal**. Verwenden Sie den folgenden Befehl, um das Beispiel für das Aufrufen des Befehls auszuführen:
 
     ```cmd/sh
-    set IOTHUB_COMMAND_NAME=getMaxMinReport
-    set IOTHUB_COMMAND_PAYLOAD=commandpayload
-    node invoke_command.js
+    set IOTHUB_METHOD_NAME=getMaxMinReport
+    set IOTHUB_METHOD_PAYLOAD=commandpayload
+    node device_method.js
     ```
 
 1. Die Ausgabe im **Dienstterminal** zeigt die folgende Bestätigung:
 
     ```cmd/sh
+    getMaxMinReport on my-pnp-device:
     {
-        xMsCommandStatuscode: 200,  
-        xMsRequestId: 'ee9dd3d7-4405-4983-8cee-48b4801fdce2',  
-        connection: 'close',  'content-length': '18',  
-        'content-type': 'application/json; charset=utf-8',  
-        date: 'Thu, 09 Jul 2020 15:05:14 GMT',  
-        server: 'Microsoft-HTTPAPI/2.0',  vary: 'Origin',  
-        body: 'min/max response'
+      "status": 200,
+      "payload": {
+        "maxTemp": 23.460596940801928,
+        "minTemp": 23.460596940801928,
+        "avgTemp": 23.460596940801928,
+        "endTime": "2020-10-05T12:48:08.562Z",
+        "startTime": "2020-10-05T12:47:54.450Z"
+      }
     }
     ```
 
