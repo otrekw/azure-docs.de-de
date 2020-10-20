@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907943"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372594"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -56,7 +56,7 @@ Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neu
 
 1. Wählen Sie **Datenquelle** und dann den Datenquellentyp aus. Dabei kann es sich um „HTTP“ oder „Datenspeicher“ handeln.
 
-    Wenn Sie „Datenspeicher“ auswählen, können Sie vorhandene Datenspeicher auswählen, die bereits in Ihrem Azure Machine Learning-Arbeitsbereich registriert sind, oder einen neuen Datenspeicher erstellen. Anschließend definieren Sie den Pfad der zu importierenden Daten im Datenspeicher. Sie können den Pfad ganz einfach durchsuchen, indem Sie auf **Pfad durchsuchen** ![import-data-path](media/module/import-data-path.png) klicken.
+    Wenn Sie „Datenspeicher“ auswählen, können Sie vorhandene Datenspeicher auswählen, die bereits in Ihrem Azure Machine Learning-Arbeitsbereich registriert sind, oder einen neuen Datenspeicher erstellen. Anschließend definieren Sie den Pfad der zu importierenden Daten im Datenspeicher. Sie können den Pfad leicht durchsuchen, indem Sie auf **Pfad durchsuchen** klicken. ![Der Screenshot zeigt den Link „Pfad durchsuchen“, der das Dialogfeld für die Pfadauswahl öffnet.](media/module/import-data-path.png)
 
 1. Wählen Sie das Vorschauschema aus, um die Spalten zu filtern, die Sie einschließen möchten. Sie können auch erweiterte Einstellungen wie Trennzeichen in den Analyseoptionen definieren.
 

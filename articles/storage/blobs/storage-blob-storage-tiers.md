@@ -3,17 +3,17 @@ title: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobs – Az
 description: In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobspeicher in Azure. Außerdem erhalten Sie Informationen zu Speicherkonten, die Ebenen unterstützen. Zudem vergleichen Sie Blockblobspeicheroptionen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226181"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460729"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -248,6 +248,10 @@ Nein. Nur die Zugriffsebenen „Heiß“ und „Kalt“ können als Standard-Kon
 **In welchen Regionen sind die Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ verfügbar?**
 
 Die Zugriffsebenen „Heiß“ und „Kalt“ sind zusammen mit dem Blobebenentiering in allen Regionen verfügbar. Die Speicherebene „Archiv“ ist anfänglich nur in ausgewählten Regionen verfügbar. Eine vollständige Liste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+
+**Welche Redundanzoptionen werden für die heiße, kalte und Archivzugriffsebenen unterstützt?**
+
+Die heißen und kalten Ebenen unterstützen alle Redundanzoptionen. Die Archivebene unterstützt nur LRS, GRS und RA-GRS. ZRS, GZRS und RA-GZRS werden für die Archivebene nicht unterstützt.
 
 **Verhalten sich die Blobs der Zugriffsebene „Kalt“ anders als die Blobs der Zugriffsebene „Heiß“?**
 

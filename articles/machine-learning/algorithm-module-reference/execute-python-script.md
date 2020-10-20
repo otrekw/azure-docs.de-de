@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450124"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -57,8 +57,11 @@ if spec is None:
 > [!NOTE]
 > Wenn Ihre Pipeline über mehrere Module vom Typ „Execute Python Script“ (Python-Skript ausführen) verfügt, für die Pakete benötigt werden, die nicht in der Liste mit den vorinstallierten Elementen enthalten sind, müssen Sie die Pakete in den einzelnen Modulen installieren.
 
+> [!WARNING]
+> Das Modul vom Typ „Excute Python Script“ unterstützt nicht die Installation von Paketen, die von zusätzlichen nativen Bibliotheken mit Befehlen wie „apt-get“ abhängen, z. B. Java, PyODBC usw. Dies liegt daran, dass dieses Modul in einer einfachen Umgebung ausgeführt wird, in der Python nur vorinstalliert ist und keine Administratorrechte besitzt.  
+
 ## <a name="upload-files"></a>Hochladen von Dateien
-„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-).
+„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-).
 
 Das folgende Beispiel zeigt, wie eine Bilddatei im Modul „Execute Python Script“ (Python-Skript ausführen) hochgeladen wird:
 
@@ -140,7 +143,10 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
 
     Es können zwei Datasets den Designer zurückgegeben werden, bei denen es sich um eine Sequenz vom Typ `pandas.DataFrame` handeln muss. Sie können weitere Ausgaben in Ihrem Python-Code erstellen und sie direkt in den Azure-Speicher schreiben.
 
-6. Übermitteln Sie die Pipeline, oder wählen Sie das Modul und dann **Auswahl ausführen** aus, um nur das Python-Skript auszuführen.
+    > [!WARNING]
+    > Es wird **nicht** empfohlen, im Modul **Execute Python Script** eine Verbindung mit einer Datenbank oder anderen externen Speichern herzustellen. Sie können die Module vom Typ [Import Data](./import-data.md) und [Export Data](./export-data.md) verwenden.     
+
+6. Übermitteln Sie die Pipeline.
 
     Alle Daten und der gesamte Code werden in einen virtuellen Computer geladen und unter Verwendung der angegebenen Python-Umgebung ausgeführt.
 

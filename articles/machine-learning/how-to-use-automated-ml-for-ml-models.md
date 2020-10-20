@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985571"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362247"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 
@@ -143,7 +143,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 1. (Optional) Anzeigen von Featurisierungseinstellungen: Wenn Sie im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) die Option **Automatische Featurisierung** aktivieren, werden standardmäßige Featurisierungstechniken angewendet. Diese Standardeinstellungen können unter **Featurisierungseinstellungen anzeigen** geändert und entsprechend angepasst werden. Informationen zum Anpassen von Featurisierungen finden Sie [hier](#customize-featurization). 
 
-    ![Azure Machine Learning Studio: Formular für den Aufgabentyp](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
+    ![Der Screenshot zeigt das Dialogfeld zum Auswählen von Aufgabentypen, in dem die Einstellungen für die Anzeige der Featurisierung beschrieben sind.](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 ## <a name="customize-featurization"></a>Anpassen der Featurisierung
 

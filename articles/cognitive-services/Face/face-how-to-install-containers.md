@@ -1,29 +1,30 @@
 ---
-title: Installieren und Ausführen von Containern – Gesichtserkennung
+title: Installieren und Ausführen von Docker-Containern für die Gesichtserkennungs-API
 titleSuffix: Azure Cognitive Services
-description: Dieser Artikel zeigt Ihnen in einem Schritt-für-Schritt-Tutorial, wie Sie Container für die Gesichtserkennung herunterladen, installieren und ausführen.
+description: Verwenden Sie den Docker-Container für die Gesichtserkennungs-API, um menschliche Gesichter in Bildern zu erkennen und zu identifizieren.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: Lokal, Docker, Container, Identifizieren
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548462"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461511"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (Vorschauversion)
 
 > [!IMPORTANT]
 > Der Grenzwert für Benutzer von Gesichtserkennungscontainern wurde erreicht. Wir akzeptieren derzeit keine neuen Anträge für den Gesichtserkennungscontainer.
 
-Die Azure Cognitive Services-Gesichtserkennung bietet einen standardisierten Linux-Container für Docker, der menschliche Gesichter in Bildern erkennt. Sie identifiziert auch zugehörige Attribute wie Gesichtsmerkmale (z. B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung anhand einer Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter auf demselben Bild oder auf verschiedenen Bildern identisch sind. Die Gesichtserkennung kann auch Gesichter anhand einer Datenbank vergleichen, um zu prüfen, ob bereits ein ähnliches oder identisches Gesicht vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
+Die Gesichtserkennungs-API von Azure Cognitive Services bietet einen Linux-Docker-Container, der menschliche Gesichter in Bildern erkennt und analysiert. Sie identifiziert auch zugehörige Attribute wie Gesichtsmerkmale (z. B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung anhand einer Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter auf demselben Bild oder auf verschiedenen Bildern identisch sind. Die Gesichtserkennung kann auch Gesichter anhand einer Datenbank vergleichen, um zu prüfen, ob bereits ein ähnliches oder identisches Gesicht vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 

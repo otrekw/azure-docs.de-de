@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0cb51cd224145e7fe359e2b14a87ed2b87b18c26
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563023"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91408834"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor (Vorschau)
 
@@ -30,11 +30,11 @@ Nachfolgend sind einige Anwendungsfälle für den Verbindungsmonitor (Vorschau) 
 
 - Ihre Front-End-Webserver-VM kommuniziert in einer Anwendung mit mehreren Ebenen mit einer Datenbankserver-VM, und Sie möchten die Netzwerkkonnektivität zwischen beiden VMs überprüfen.
 - Sie möchten, dass VMs in der Region „USA, Osten“ VMs in der Region „USA, Mitte“ pingen, und Sie möchten die regionsübergreifenden Netzwerklatenzen vergleichen.
-- Sie verfügen über mehrere lokale Unternehmensstandorte in Seattle, Washington, und in Ashburn, Virginia. Ihre Unternehmensstandorte sind mit Office 365-URLs verbunden. Sie möchten für die Benutzer der Office 365-URLs die Latenzen in Seattle und Ashburn vergleichen.
+- Sie verfügen über mehrere lokale Unternehmensstandorte in Seattle, Washington, und in Ashburn, Virginia. Ihre Unternehmensstandorte sind mit Microsoft 365-URLs verbunden. Sie möchten für die Benutzer der Microsoft 365-URLs die Latenzen in Seattle und Ashburn vergleichen.
 - Ihre Hybridanwendung benötigt eine Verbindung mit einem Azure Storage-Endpunkt. Der lokale Standort und die Azure-Anwendung sind mit dem gleichen Azure Storage-Endpunkt verbunden. Sie möchten die Latenzen des lokalen Standorts mit den Latenzen der Azure-Anwendung vergleichen.
 - Sie möchten die Konnektivität zwischen den lokalen Setups und den Azure-VMs überprüfen, auf denen die Cloudanwendung gehostet wird.
 
-In der Vorschauphase bietet der Verbindungsmonitor eine Kombination aus dem Besten von zwei Features: dem Feature [Verbindungsmonitor](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) von Network Watcher und dem Feature [Dienstkonnektivitätsmonitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) des Netzwerkleistungsmonitors (NPM).
+In der Vorschauphase bietet der Verbindungsmonitor eine Kombination aus dem Besten von zwei Features: dem Feature [Verbindungsmonitor](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) von Network Watcher und dem Feature [Dienstkonnektivitätsmonitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) des Netzwerkleistungsmonitors (NPM), [ExpressRoute-Überwachung](https://docs.microsoft.com/azure/expressroute/how-to-npm) und [Leistungsüberwachung](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor).
 
 Nachfolgend sind einige Vorteile des Verbindungsmonitors (Vorschau) aufgeführt:
 
@@ -87,16 +87,15 @@ Weitere Informationen finden Sie unter [Aktivieren von Network Watcher](https://
 
 Der Verbindungsmonitor überwacht die Kommunikation in regelmäßigen Abständen. Er informiert Sie über Änderungen der Erreichbarkeit und Latenz. Sie können auch die aktuelle und die frühere Netzwerktopologie zwischen Quell-Agents und Zielendpunkten überprüfen.
 
-Ziele können Azure-VMs oder lokale Computer sein, auf denen ein Überwachungs-Agent installiert ist. Zielendpunkte können Office 365-URLs, Dynamics 365-URLs, benutzerdefinierte URLs, Azure-VM-Ressourcen-IDs, IPv4/IPv6-Adressen, FQDNs oder beliebige Domänennamen sein.
+Ziele können Azure-VMs oder lokale Computer sein, auf denen ein Überwachungs-Agent installiert ist. Zielendpunkte können Microsoft 365-URLs, Dynamics 365-URLs, benutzerdefinierte URLs, Azure-VM-Ressourcen-IDs, IPv4/IPv6-Adressen, FQDNs oder beliebige Domänennamen sein.
 
 ### <a name="access-connection-monitor-preview"></a>Zugreifen auf den Verbindungsmonitor (Vorschau)
 
 1. Navigieren Sie auf der Startseite des Azure-Portals zu **Network Watcher**.
 1. Wählen Sie links im Abschnitt **Überwachung** die Option **Verbindungsmonitor (Vorschau)** aus.
 1. Es werden alle Verbindungsmonitore angezeigt, die im Verbindungsmonitor (Vorschau) erstellt wurden. Zum Anzeigen der Verbindungsmonitore, die auf der klassischen Benutzeroberfläche des Verbindungsmonitors erstellt wurden, wechseln Sie zur Registerkarte **Verbindungsmonitor**.
-
-    ![Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden](./media/connection-monitor-2-preview/cm-resource-view.png)
-
+    
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Erstellen eines Verbindungsmonitors
 
@@ -156,7 +155,7 @@ Nachdem Sie einen Verbindungsmonitor erstellt haben, überprüfen die Quellen di
 
 Basierend auf dem von Ihnen in der Testkonfiguration ausgewählten Protokoll führt der Verbindungsmonitor (Vorschau) eine Reihe von Überprüfungen für das Quelle-Ziel-Paar aus. Die Überprüfungen werden gemäß der ausgewählten Testhäufigkeit durchgeführt.
 
-Wenn Sie HTTP verwenden, berechnet der Dienst die Anzahl von HTTP-Antworten, die einen Antwortcode zurückgegeben haben. Das Ergebnis bestimmt den Prozentsatz der Überprüfungen mit Fehlern. Zum Berechnen der Roundtripzeit misst der Dienst die Zeit zwischen einem HTTP-Aufruf und der Antwort.
+Wenn Sie HTTP verwenden, berechnet der Dienst die Anzahl von HTTP-Antworten, die einen gültigen Antwortcode zurückgegeben haben. Gültige Antwortcodes können mithilfe von PowerShell und der CLI festgelegt werden. Das Ergebnis bestimmt den Prozentsatz der Überprüfungen mit Fehlern. Zum Berechnen der Roundtripzeit misst der Dienst die Zeit zwischen einem HTTP-Aufruf und der Antwort.
 
 Wenn Sie TCP oder ICMP verwenden, berechnet der Dienst den Prozentsatz an Paketverlusten, um den Prozentsatz der Überprüfungen mit Fehlern zu ermitteln. Zum Berechnen der Roundtripzeit misst der Dienst die Zeit, die zum Empfangen der Bestätigung (ACK) für die gesendeten Pakete benötigt wird. Wenn Sie Traceroutedaten für Ihre Netzwerktests aktiviert haben, können Sie sich Hop-by-Hop-Verlust und -Latenz für Ihr lokales Netzwerk anzeigen lassen.
 
@@ -166,7 +165,11 @@ Basierend auf den Daten, die bei den Überprüfungen zurückgegeben werden, kön
 
 * **Erfolgreich**: Die tatsächlichen Werte für den Prozentsatz der Überprüfungen mit Fehlern und die Roundtripzeit liegen innerhalb der angegebenen Schwellenwerte.
 * **Fehler**: Die tatsächlichen Werte für den Prozentsatz der Überprüfungen mit Fehlern oder die Roundtripzeit lagen oberhalb der angegebenen Schwellenwerte. Wenn kein Schwellenwert angegeben ist, weist ein Test den Fehlerstatus auf, sobald der Prozentsatz der Überprüfungen mit Fehlern bei 100 liegt.
-* **Warnung**: Für den Prozentsatz der Überprüfungen mit Fehlern wurden keine Kriterien angegeben. Wenn keine Kriterien angegeben sind, weist der Verbindungsmonitor (Vorschau) automatisch einen Schwellenwert zu. Wird dieser Schwellenwert überschritten, ändert sich der Teststatus in „Warnung“.
+* **Warnung**: 
+     * Wenn ein Schwellenwert angegeben ist und der Verbindungsmonitor (Vorschau) bei fehlerhaften Überprüfungen einen Prozentsatz von mehr als 80 % des Schwellenwerts beobachtet, wird der Test als Warnung gekennzeichnet.
+     * Wenn keine Schwellenwerte angegeben sind, weist der Verbindungsmonitor (Vorschau) automatisch einen Schwellenwert zu. Wird dieser Schwellenwert überschritten, ändert sich der Teststatus in „Warnung“. Für die Roundtripzeit (RTT) in TCP- oder ICMP-Tests beträgt der Schwellenwert 750 ms. Für den Prozentsatz der fehlerhaften Überprüfungen liegt der Schwellenwert bei 10 %. 
+* **Unbestimmt** : Keine Daten im Log Analytics-Arbeitsbereich.  Überprüfen Sie die Metriken. 
+* **Nicht ausgeführt** : Deaktiviert durch Deaktivierung der Testgruppe.  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Datensammlung, Datenanalyse und Datenwarnungen
 
@@ -192,77 +195,71 @@ Sie können auf dem Dashboard die einzelnen Verbindungsmonitore erweitern, um de
 
 Für eine Liste sind folgende Filter verfügbar:
 
-* **Filter der obersten Ebene**: Wählen Sie Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen aus. Siehe Kasten 2 in der folgenden Abbildung.
-* **Zustandsbasierte Filter**: Filtern Sie nach dem Zustand des Verbindungsmonitors, der Testgruppe oder des Tests. Siehe Pfeil 3 in der folgenden Abbildung.
-* **Benutzerdefinierte Filter**: Wählen Sie **Alle auswählen** aus, um eine allgemeine Suche durchzuführen. Treffen Sie eine Auswahl aus der Dropdownliste, um nach einer bestimmten Entität zu suchen. Siehe Pfeil 4 in der folgenden Abbildung.
+* **Filter der obersten Ebene**: Durchsuchen Sie die Liste nach Text, Entitätstyp (Verbindungsmonitor, Testgruppe oder Test), Zeitstempel und Umfang. Der Umfang umfasst Abonnements, Regionen, Quellen und Zieltypen. Siehe Kasten 1 in der folgenden Abbildung.
+* **Zustandsbasierte Filter**: Filtern Sie nach dem Zustand des Verbindungsmonitors, der Testgruppe oder des Tests. Siehe Kasten 2 in der folgenden Abbildung.
+* **Warnungsbasierte Filter**: Filtern Sie nach Warnungen, die bei der Verbindungsmonitorressource ausgelöst werden. Siehe Kasten 3 in der folgenden Abbildung.
 
-![Screenshot: Filtern von Ansichten der Verbindungsmonitore, Testgruppen und Tests im Verbindungsmonitor (Vorschau)](./media/connection-monitor-2-preview/cm-view.png)
-
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+    
 Wenn Sie beispielsweise alle Tests im Verbindungsmonitor (Vorschau) anzeigen möchten, bei denen die Quell-IP 10.192.64.56 lautet, gehen Sie folgendermaßen vor:
 1. Ändern Sie die Ansicht in **Test**.
 1. Geben Sie *10.192.64.56* in das Suchfeld ein.
-1. Wählen Sie in der Dropdownliste die Option **Quellen** aus.
+1. Wählen Sie unter **Umfang** im Filter der obersten Ebene **Quellen** aus.
 
 Wenn Sie nur Tests mit Fehlern im Verbindungsmonitor (Vorschau) anzeigen möchten, bei denen die Quell-IP 10.192.64.56 lautet, gehen Sie folgendermaßen vor:
 1. Ändern Sie die Ansicht in **Test**.
 1. Wählen Sie aus den zustandsbasierten Filtern die Option **Fehler** aus.
 1. Geben Sie *10.192.64.56* in das Suchfeld ein.
-1. Wählen Sie in der Dropdownliste die Option **Quellen** aus.
+1. Wählen Sie unter **Umfang** im Filter der obersten Ebene **Quellen** aus.
 
 Wenn Sie nur Tests mit Fehlern im Verbindungsmonitor (Vorschau) anzeigen möchten, bei denen das Ziel „outlook.office365.com“ lautet, gehen Sie folgendermaßen vor:
 1. Ändern Sie die Ansicht in **Test**.
 1. Wählen Sie aus den zustandsbasierten Filtern die Option **Fehler** aus.
 1. Geben Sie *outlook.office365.com* in das Suchfeld ein.
-1. Wählen in der Dropdownliste die Option **Ziele** aus.
+1. Wählen Sie unter **Umfang** im Filter der obersten Ebene **Ziele** aus.
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
-   ![Screenshot: Gefilterte Ansicht zur ausschließlichen Anzeige von Tests mit Fehlern für das Ziel „outlook.office365.com“](./media/connection-monitor-2-preview/tests-view.png)
-
+Um den Grund für einen fehlerhaften Verbindungsmonitor oder eine fehlerhafte Testgruppe oder einen fehlerhaften Test zu erfahren, klicken Sie auf die Spalte mit dem Grund.  Dadurch erfahren Sie, welcher Schwellenwert (Prozentsatz der fehlerhaften Überprüfungen oder RTT) überschritten wurde, sowie die entsprechenden Diagnosemeldungen.
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+    
 Wenn Sie die Trends bei der Roundtripzeit und dem Prozentsatz der Überprüfungen mit Fehlern für einen Verbindungsmonitor anzeigen möchten, gehen Sie folgendermaßen vor:
-1. Wählen Sie den Verbindungsmonitor aus, den Sie untersuchen möchten. Standardmäßig sind die Überwachungsdaten nach Testgruppe organisiert.
+1. Wählen Sie den Verbindungsmonitor aus, den Sie untersuchen möchten.
 
-   ![Screenshot: Metriken für einen Verbindungsmonitor, nach Testgruppe angezeigt](./media/connection-monitor-2-preview/cm-drill-landing.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
-1. Wählen Sie die Testgruppe aus, die Sie untersuchen möchten.
+1. Die folgenden Abschnitte werden angezeigt:  
+    1. Essentials: Ressourcenspezifische Eigenschaften des ausgewählten Verbindungsmonitors 
+    1. Zusammenfassung: 
+        1. Aggregierte Trendlinien für RTT und den Prozentsatz der fehlerhaften Überprüfungen für alle Tests im Verbindungsmonitor. Sie können eine bestimmte Zeit zum Anzeigen der Details festlegen.
+        1. Die Top 5 der Testgruppen, Quellen und Ziele, basierend auf dem RTT oder dem Prozentsatz der fehlerhaften Überprüfungen. 
+    1. Registerkarten für Testgruppen , Quellen, Ziele und Testkonfigurationen – Listet Testgruppen, Quellen oder Ziele im Verbindungsmonitor auf. Fehlerhafte Testüberprüfungen, aggregierte RTT und Werte für Prozentsatz der fehlerhaften Überprüfungen.  Sie können auch in die Vergangenheit wechseln, um Daten anzuzeigen. 
+    1. Probleme: Probleme der Hopebene für jeden Test im Verbindungsmonitor. 
 
-   ![Screenshot: Auswahl einer Testgruppe](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
-    Es werden die Top 5 der Tests mit Fehlern in der Testgruppe basierend auf der Roundtripzeit oder dem Prozentsatz der Überprüfungen mit Fehlern angezeigt. Für jeden Test werden die Roundtripzeit und Trendlinien für den Prozentsatz der Überprüfungen mit Fehlern angezeigt.
-1. Wählen Sie einen Test aus der Liste aus, oder wählen Sie einen anderen Test aus, den Sie untersuchen möchten. Für das Zeitintervall und den Prozentsatz der Überprüfungen mit Fehlern werden die Schwellenwerte und die tatsächlichen Werte angezeigt. Für die Roundtripzeit werden Schwellenwert, Mittelwert, Mindest- und Höchstwert angezeigt.
+1. Sie haben folgende Möglichkeiten:
+    * Klicken Sie auf „Alle Tests anzeigen“, um alle Tests im Verbindungsmonitor anzuzeigen.
+    * Klicken Sie auf „Alle Testgruppen, Testkonfigurationen, Quellen und Ziele anzeigen“, um bestimmte Details anzuzeigen. 
+    * Wählen Sie eine Testgruppe, Testkonfiguration, Quelle oder ein Ziel aus, um alle Tests in der Entität anzuzeigen.
 
-   ![Screenshot: Testergebnisse für Roundtripzeit und Prozentsatz der Überprüfungen mit Fehlern](./media/connection-monitor-2-preview/cm-drill-charts.png)
-
-1. Ändern Sie das Zeitintervall, damit mehr Daten angezeigt werden.
-1. Ändern Sie die Ansicht, um Quellen, Ziele oder Testkonfigurationen anzuzeigen. 
-1. Wählen Sie eine Quelle basierend auf Tests mit Fehlern aus, und untersuchen Sie die Top 5 der Tests mit Fehlern. Wählen Sie z. B. **Anzeigen nach** > **Quellen** und **Anzeigen nach** > **Ziele** aus, um die relevanten Tests im Verbindungsmonitor zu untersuchen.
-
-   ![Screenshot: Leistungsmetriken für die Top 5 der Tests mit Fehlern](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+1. Über die Ansicht „Alle Tests anzeigen“ haben Sie folgende Möglichkeiten:
+    * Wählen Sie Tests aus, und klicken Sie auf „Vergleichen“.
+    
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    
+    * Verwenden Sie Cluster, um zusammengesetzte Ressourcen wie VNET, Subnets um deren untergeordneten Ressourcen zu erweitern.
+    * Zeigen Sie die Topologie für beliebige Tests an, indem Sie auf „Topologie“ klicken.
 
 Wenn Sie die Trends bei der Roundtripzeit und dem Prozentsatz der Überprüfungen mit Fehlern für eine Testgruppe anzeigen möchten, gehen Sie folgendermaßen vor:
-
 1. Wählen Sie die Testgruppe aus, die Sie untersuchen möchten. 
-
-    Die Überwachungsdaten sind standardmäßig nach Quellen, Zielen und Testkonfigurationen (Tests) angeordnet. Sie können die Ansicht später von Testgruppen in Quellen, Ziele oder Testkonfigurationen ändern. Wählen Sie dann eine Entität aus, für die Sie die Top 5 der Tests mit Fehlern untersuchen möchten. Ändern Sie die Ansicht beispielsweise in Quellen und Ziele, um die relevanten Tests im ausgewählten Verbindungsmonitor zu untersuchen.
-1. Wählen Sie den Test aus, den Sie untersuchen möchten.
-
-   ![Screenshot: Auswahl eines Tests](./media/connection-monitor-2-preview/tg-drill.png)
-
-    Für das Zeitintervall und den Prozentsatz der Überprüfungen mit Fehlern werden die Schwellenwerte und die tatsächlichen Werte angezeigt. Für die Roundtripzeit werden Schwellenwert, Mittelwert, Mindest- und Höchstwert angezeigt. Außerdem werden ausgelöste Warnungen für den von Ihnen ausgewählten Test angezeigt.
-1. Ändern Sie das Zeitintervall, damit mehr Daten angezeigt werden.
+1. Sie werden ähnlich wie beim Verbindungsmonitor angezeigt: Essentials, Zusammenfassung, Tabelle für Testgruppen, Quellen, Ziele und Testkonfigurationen. Navigieren Sie sie wie bei einem Verbindungsmonitor.
 
 Wenn Sie die Trends bei der Roundtripzeit und dem Prozentsatz der Überprüfungen mit Fehlern für einen Test anzeigen möchten, gehen Sie folgendermaßen vor:
-1. Wählen Sie die Quelle, das Ziel und die Testkonfiguration aus, die Sie untersuchen möchten.
+1. Wählen Sie den Test aus, den Sie untersuchen möchten. Sie sehen die Netzwerktopologie und die End-to-End-Trenddiagramme für den Prozentsatz fehlerhafter Überprüfungen sowie die Roundtripzeit. Wählen Sie in der Topologie einen beliebigen Hop im Pfad aus, um die erkannten Probleme anzuzeigen. (Diese Hops sind Azure-Ressourcen.) Für lokale Netzwerke steht diese Funktion derzeit nicht zur Verfügung.
 
-    Für das Zeitintervall und den Prozentsatz der Überprüfungen mit Fehlern werden die Schwellenwerte und die tatsächlichen Werte angezeigt. Für die Roundtripzeit werden Schwellenwert, Mittelwert, Mindest- und Höchstwert angezeigt. Außerdem werden ausgelöste Warnungen für den von Ihnen ausgewählten Test angezeigt.
-
-   ![Screenshot: Metriken für einen Test](./media/connection-monitor-2-preview/test-drill.png)
-
-1. Wählen Sie **Topologie** aus, um die Netzwerktopologie anzuzeigen.
-
-   ![Screenshot: Registerkarte „Topologie“](./media/connection-monitor-2-preview/test-topo.png)
-
-1. Wählen Sie in der Topologie einen beliebigen Hop im Pfad aus, um die erkannten Probleme anzuzeigen. (Diese Hops sind Azure-Ressourcen.) Für lokale Netzwerke steht diese Funktion derzeit nicht zur Verfügung.
-
-   ![Screenshot: Ausgewählter Hop-Link auf der Registerkarte „Topologie“](./media/connection-monitor-2-preview/test-topo-hop.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Protokollabfragen in Log Analytics
 
@@ -272,7 +269,7 @@ Mit Log Analytics lassen sich benutzerdefinierte Ansichten Ihrer Überwachungsda
 
 In Verbindungsmonitoren, die vor dem Verbindungsmonitor (Vorschau) erstellt wurden, sind alle vier Metriken verfügbar: ProbesFailedPercent, AverageRoundtripMs, ChecksFailedPercent (Preview) und RoundTripTimeMs (Preview). In Verbindungsmonitoren, die im Verbindungsmonitor (Vorschau) erstellt wurden, sind Daten nur für die mit *(Preview)* (Vorschau) gekennzeichneten Metriken verfügbar.
 
-![Screenshot: Metriken im Verbindungsmonitor (Vorschau)](./media/connection-monitor-2-preview/monitor-metrics.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Legen Sie bei Verwendung von Metriken den Ressourcentyp auf „Microsoft.Network/networkWatchers/connectionMonitors“ fest.
 
@@ -283,24 +280,27 @@ Legen Sie bei Verwendung von Metriken den Ressourcentyp auf „Microsoft.Network
 | ChecksFailedPercent (Preview) | % der Überprüfungen mit Fehlern (Vorschau) | Prozentwert | Average | Prozentsatz der Überprüfungen mit Fehlern für einen Test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 | RoundTripTimeMs (Vorschau) | Roundtripzeit (ms) (Vorschau) | Millisekunden | Average | Roundtripzeit für Überprüfungen, die zwischen Quelle und Ziel gesendet wurden. Es wird kein Durchschnittswert gebildet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Metrikwarnungen in Azure Monitor
+#### <a name="metric-based-alerts-for-connection-monitor"></a>Auf Metriken basierende Warnungen für den Verbindungsmonitor
 
-Zum Erstellen einer Warnung in Azure Monitor gehen Sie folgendermaßen vor:
+Sie können Metrikwarnungen für Verbindungsmonitore mithilfe der folgenden Methoden erstellen. 
 
-1. Wählen Sie die Verbindungsmonitorressource aus, die Sie im Verbindungsmonitor (Vorschau) erstellt haben.
-1. Stellen Sie sicher, dass **Metrik** als Signaltyp für den Verbindungsmonitor angezeigt wird.
-1. Wählen Sie unter **Bedingung hinzufügen** für **Signalname** die Option **ChecksFailedPercent(Preview)** oder **RoundTripTimeMs(Preview)** aus.
-1. Wählen Sie für **Signaltyp** die Option **Metriken** aus. Wählen Sie z. B. **ChecksFailedPercent(Preview)** aus.
-1. Alle Dimensionen für die Metrik werden aufgelistet. Wählen Sie den Dimensionsnamen und -wert aus. Wählen Sie z. B. **Quelladresse** aus, und geben Sie dann die IP-Adresse einer beliebigen Quelle in Ihrem Verbindungsmonitor ein.
-1. Geben Sie unter **Warnungslogik** die folgenden Details ein:
-   * **Bedingungstyp**: **Statisch**
-   * **Bedingung** und **Schwellenwert**
-   * **Aggregationsgranularität und Häufigkeit der Auswertung**: Der Verbindungsmonitor (Vorschau) aktualisiert die Daten jede Minute.
-1. Wählen Sie unter **Aktionen** Ihre Aktionsgruppe aus.
-1. Legen Sie die Warnungsdetails fest.
-1. Erstellen Sie die Warnungsregel.
+1. Vom Verbindungsmonitor (Vorschau) aus, während der Erstellung des Verbindungsmonitors [unter Verwendung des Azure-Portals](connection-monitor-preview-create-using-portal.md#) 
+1. Vom Verbindungsmonitor (Vorschau) aus, unter Verwendung von „Warnungen konfigurieren“ im Dashboard 
+1. Von Azure Monitor aus, um eine Warnung in Azure Monitor zu erstellen: 
+    1. Wählen Sie die Verbindungsmonitorressource aus, die Sie im Verbindungsmonitor (Vorschau) erstellt haben.
+    1. Stellen Sie sicher, dass **Metrik** als Signaltyp für den Verbindungsmonitor angezeigt wird.
+    1. Wählen Sie unter **Bedingung hinzufügen** für **Signalname** die Option **ChecksFailedPercent(Preview)** oder **RoundTripTimeMs(Preview)** aus.
+    1. Wählen Sie für **Signaltyp** die Option **Metriken** aus. Wählen Sie z. B. **ChecksFailedPercent(Preview)** aus.
+    1. Alle Dimensionen für die Metrik werden aufgelistet. Wählen Sie den Dimensionsnamen und -wert aus. Wählen Sie z. B. **Quelladresse** aus, und geben Sie dann die IP-Adresse einer beliebigen Quelle in Ihrem Verbindungsmonitor ein.
+    1. Geben Sie unter **Warnungslogik** die folgenden Details ein:
+        * **Bedingungstyp**: **Statisch**
+        * **Bedingung** und **Schwellenwert**
+        * **Aggregationsgranularität und Häufigkeit der Auswertung**: Der Verbindungsmonitor (Vorschau) aktualisiert die Daten jede Minute.
+    1. Wählen Sie unter **Aktionen** Ihre Aktionsgruppe aus.
+    1. Legen Sie die Warnungsdetails fest.
+    1. Erstellen Sie die Warnungsregel.
 
-   ![Screenshot: Bereich „Regel erstellen“ in Azure Monitor mit hervorgehobenen Feldern für „Quelladresse“ und „Quellendpunktname“](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>Diagnostizieren von Problemen in Ihrem Netzwerk
 
@@ -347,3 +347,8 @@ Bei Netzwerken, deren Quellen sich auf Azure-VMs befinden, können die folgenden
 * Der Datenverkehr wurde aufgrund von Systemrouten oder UDR unterbrochen.
 * BGP ist für die Gatewayverbindung nicht aktiviert.
 * Der DIP-Test ist beim Lastenausgleich nicht verfügbar.
+
+## <a name="next-steps"></a>Nächste Schritte
+    
+   * Informationen zum [Erstellen eines Verbindungsmonitors (Vorschau) mithilfe des Azure-Portals](connection-monitor-preview-create-using-portal.md)  
+   * Informationen zum [Erstellen eines Verbindungsmonitors (Vorschau) mithilfe von ARMClient](connection-monitor-preview-create-using-arm-client.md)  

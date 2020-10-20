@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228629"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460797"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Vorläufiges Löschen für Container (Vorschau)
 
@@ -42,11 +42,7 @@ Das Deaktivieren des vorläufigen Löschens von Containern führt nicht zur endg
 
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 
-Das vorläufige Löschen von Containern ist in den folgenden Regionen in der Vorschau verfügbar:
-
-- Frankreich, Mitte
-- Kanada, Osten
-- Kanada, Mitte
+Das vorläufige Löschen von Containern ist in allen öffentlichen Azure-Regionen in der Vorschauversion verfügbar.
 
 > [!IMPORTANT]
 > Die Vorschauversion des vorläufigen Löschens für Container ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.

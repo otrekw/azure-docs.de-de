@@ -1,14 +1,16 @@
 ---
 title: Konversationen mit mehreren Turns – QnA Maker
 description: Verwalten Sie für Ihren Bot von einer Frage zur nächsten die verschiedenen Durchläufe (Multi-Turn) mit Eingabeaufforderungen und Kontext. Mehrfachdurchläufe sind die Fähigkeit, eine wechselseitige Konversation zu führen, wobei der Kontext der vorherigen Frage die nächste Frage und die nächste Antwort beeinflusst.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229345"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777809"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -52,7 +54,7 @@ Wenn Sie diese Option auswählen, extrahiert QnA Maker die in der Dokumentstrukt
 
 Die Mehrfachdurchlauf-Struktur kann nur aus URLs, PDF-Dateien oder DOCX-Dateien abgeleitet werden. Ein Beispiel für eine Struktur zeigt eine Abbildung aus einer [PDF-Datei eines Microsoft Surface-Benutzerhandbuchs](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
 
-![![Beispiel für eine Struktur in einem Benutzerhandbuch]\(../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+:::image type="content" source="../media/conversational-context/import-file-with-conversational-structure.png" alt-text="Screenshot: Ein Beispiel für die Struktur in einem Benutzerhandbuch." lightbox="../media/conversational-context/import-file-with-conversational-structure.png":::
 
 ### <a name="building-your-own-multi-turn-document"></a>Erstellen eines eigenen Mehrfachdurchlauf-Dokuments
 
@@ -92,7 +94,7 @@ Wählen Sie **View options** (Optionen anzeigen) und dann **Show context** (Kont
 
 Der Mehrfachdurchlauf-Kontext wird in der ersten Spalte angezeigt.
 
-![![Die Spalte "Context (PREVIEW)"]\(../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Screenshot: Ein Beispiel für die Struktur in einem Benutzerhandbuch." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 In der vorstehenden Abbildung zeigt **#1** fett formatierten Text in der Spalte und damit die aktuelle Frage an. Die übergeordnete Frage wird als oberstes Element in der Zeile angezeigt. Alle Fragen darunter sind die verknüpften Frage- und Antwortpaare. Diese Elemente können ausgewählt werden, damit Sie sofort zu den anderen Kontextelementen gelangen.
 
@@ -168,7 +170,7 @@ Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, soll
 
     Die übergeordnete Frage zeigt eine neue Frage als eine der Auswahlmöglichkeiten an.
 
-    ![![In der Spalte „Context“ wird für beide Fragen eine Folgeaufforderungsbeziehung angegeben]\(../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Screenshot: Ein Beispiel für die Struktur in einem Benutzerhandbuch." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Nachdem Sie die Folgeaufforderung hinzugefügt haben, wählen Sie in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) aus.
 

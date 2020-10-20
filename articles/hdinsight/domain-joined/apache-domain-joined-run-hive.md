@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202586"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397826"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -22,7 +22,7 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurie
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein HDInsight-Cluster mit dem Enterprise-Sicherheitspaket. Weitere Informationen finden Sie unter [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md).
-* Arbeitsstation mit Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 (eigenständige Version) oder Office 2010 Professional Plus.
+* Eine Arbeitsstation mit Microsoft 365 Apps for Enterprise, Office 2016, Office 2013 Professional Plus, Excel 2013 Standalone oder Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Herstellen einer Verbindung mit der Apache Ranger-Administratoroberfläche
 **So stellen Sie eine Verbindung mit der Ranger-Administratoroberfläche her**

@@ -1,5 +1,5 @@
 ---
-title: Erstellen von benutzerdefinierten Schlüsselwörtern – Speech-Dienst
+title: 'Schnellstart: Erstellen von Schlüsselwörtern – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Ihr Gerät lauscht immer auf ein Schlüsselwort (oder einen Ausdruck). Wenn der Benutzer das Schlüsselwort nennt, sendet das Gerät sämtliche nachfolgende Audioaufnahmen an die Cloud, bis der Benutzer aufhört zu sprechen. Durch das Anpassen Ihres Schlüsselworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken.
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919011"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667692"
 ---
-# <a name="custom-keyword-basics"></a>Grundlagen zu benutzerdefinierten Schlüsselwörtern
+# <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 
-In diesem Artikel erfahren Sie mehr über die Grundlagen der Arbeit mit benutzerdefinierten Schlüsselwörtern mithilfe von Speech Studio und dem Speech SDK. Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem Ihr Produkt per Sprache aktiviert werden kann. Sie erstellen Schlüsselwortmodelle in Speech Studio und exportieren dann eine Modelldatei, die Sie mit dem Speech SDK in Ihren Anwendungen verwenden.
+In diesem Schnellstart erfahren Sie mehr über die Grundlagen der Arbeit mit benutzerdefinierten Schlüsselwörtern mithilfe von Speech Studio und dem Speech SDK. Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem Ihr Produkt per Sprache aktiviert werden kann. Sie erstellen Schlüsselwortmodelle in Speech Studio und exportieren dann eine Modelldatei, die Sie mit dem Speech SDK in Ihren Anwendungen verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Schritte in diesem Artikel erfordern ein Speech-Abonnement und das Speech SDK. Wenn Sie nicht bereits ein Abonnement besitzen, [können Sie den Speech-Dienst kostenlos testen](get-started.md). Informationen zum Erhalt des SDK finden Sie im [Installationshandbuch](quickstarts/setup-platform.md) für Ihre Plattform.
+Die Schritte in diesem Artikel erfordern ein Speech-Abonnement und das Speech SDK. Wenn Sie nicht bereits ein Abonnement besitzen, [können Sie den Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free). Informationen zum Erhalt des SDK finden Sie im [Installationshandbuch](quickstarts/setup-platform.md) für Ihre Plattform.
 
 ## <a name="create-a-keyword-in-speech-studio"></a>Erstellen eines Schlüsselworts in Speech Studio
 

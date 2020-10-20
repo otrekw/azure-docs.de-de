@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514932"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743606"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Verwenden von Azure Automation, um einen Auftrag auszulösen
 
@@ -41,7 +41,7 @@ Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 2. Um ein neues Automation-Konto hinzuzufügen, klicken Sie auf **+ Hinzufügen**.
 
-    ![Erstellen eines ausführenden Automation-Kontos](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Erstellen eines ausführenden Automation-Kontos 2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. Im Dialogfeld **Automation-Konto hinzufügen**:
 
@@ -52,7 +52,7 @@ Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
    5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
    6. Um einen Link für den schnellen Zugriff auf das Dashboard abzurufen, aktivieren Sie **An Dashboard anheften**. Klicken Sie auf **Erstellen**.
 
-      ![Erstellen eines ausführenden Automation-Kontos](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Erstellen eines ausführenden Automation-Kontos 3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       Sie werden benachrichtigt, nachdem das Automation-Konto erfolgreich erstellt wurde.
     

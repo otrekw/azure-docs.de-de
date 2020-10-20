@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083819"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397962"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
@@ -197,11 +197,11 @@ Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wen
 
 #### <a name="possible-cause"></a>Mögliche Ursache
 
-Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von Office 365 kann nicht hergestellt werden.
+Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von Microsoft 365 kann nicht hergestellt werden.
 
 #### <a name="fix-the-problem"></a>Beheben des Problems
 
-Azure Site Recovery benötigt zur Authentifizierung Zugriff auf IP-Adressbereiche von Office 365.
+Azure Site Recovery benötigt zur Authentifizierung Zugriff auf IP-Adressbereiche von Microsoft 365.
 Wenn Sie Regeln für Azure-Netzwerksicherheitsgruppen (NSG-Regeln) oder einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität für die VM verwenden, muss sichergestellt werden, dass Sie zum Zulassen des Zugriffs auf AAD eine NSG-Regel verwenden, die auf dem [AAD-Diensttag (Azure Active Directory)](../virtual-network/security-overview.md#service-tags) basiert. Auf IP-Adressen basierende NSG-Regeln werden nicht mehr unterstützt.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Fehler bei der Site Recovery-Konfiguration (151197)
@@ -281,14 +281,14 @@ Damit der Replikationsstatus des virtuellen Computers wieder fehlerfrei ist, kö
 1. Wechseln Sie zu **Replizierte Elemente** > _Name des virtuellen Computers_ > **Datenträger**.
 1. Wählen Sie den ungeschützten Datenträger und dann **Replikation aktivieren** aus:
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Aktivieren der Replikation auf VM-Datenträgern.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-error.":::
 
 #### <a name="to-dismiss-the-warning"></a>So ignorieren Sie die Warnung
 
 1. Wechseln Sie zu **Replizierte Elemente** > _Name des virtuellen Computers_.
 1. Wählen Sie die Warnung im Abschnitt **Übersicht** aus, und klicken Sie dann auf **OK**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Ignorieren der Warnung zu neuem Datenträger.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-error.":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>Aus dem Tresor entfernte VM wurde mit Informationen abgeschlossen (Fehlercode 150225)
 
@@ -309,7 +309,7 @@ Sie können diese Warnung ignorieren, wenn Sie diesen virtuellen Computer nicht 
 
 1. Entfernen Sie die Sperre von der VM oder VM-Ressourcengruppe. In der folgenden Abbildung muss beispielsweise die Ressourcensperre für die VM mit dem Namen `MoveDemo` gelöscht werden:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Entfernen der Sperre von der VM.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error.":::
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
 1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID**, **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
@@ -334,7 +334,7 @@ Eine veraltete Konfiguration kann auf einem virtuellen Azure-Computer vorhanden 
 
 1. Entfernen Sie die Sperre von der VM oder VM-Ressourcengruppe. In der folgenden Abbildung muss beispielsweise die Ressourcensperre für die VM mit dem Namen `MoveDemo` gelöscht werden:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Entfernen der Sperre von der VM.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error.":::
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
 1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID**, **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
@@ -367,7 +367,7 @@ Möglicherweise wird der virtuelle Computer, für den Sie die Replikation aktivi
 
 1. Entfernen Sie ggf. die Sperre von der VM oder VM-Ressourcengruppe. In der folgenden Abbildung muss beispielsweise die Ressourcensperre für die VM mit dem Namen `MoveDemo` gelöscht werden:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Entfernen der Sperre von der VM.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error.":::
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
 1. Führen Sie das Skript _Cleanup-stale-asr-config-Azure-VM.ps1_ aus. Geben Sie **Abonnement-ID**, **VM-Ressourcengruppe** und **Name der VM** als Parameter an.
@@ -404,17 +404,17 @@ Um die Replikation auf dem virtuellen Computer zu aktivieren, muss dessen Bereit
 
 Wenn die Quell-VM während der Konfiguration für die Notfallwiederherstellung Teil eines virtuellen Netzwerks ist und eine andere VM aus demselben virtuellen Netzwerk bereits einem Netzwerk in der Zielressourcengruppe zugeordnet wurde, steht das Dropdown-Listenfeld für die Netzwerkauswahl standardmäßig nicht zur Verfügung (wird abgeblendet angezeigt).
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Netzwerkauswahlliste nicht verfügbar.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-error.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Problem 2: Sie haben die VM zuvor geschützt und dann die Replikation deaktiviert.
 
 Durch das Deaktivieren der Replikation eines virtuellen Computers wird die Netzwerkzuordnung nicht gelöscht. Die Zuordnung muss in dem Recovery Services-Tresor gelöscht werden, in dem der virtuelle Computer geschützt wurde. Wählen Sie den **Recovery Services-Tresor** aus, und wechseln Sie zu **Verwalten** > **Site Recovery-Infrastruktur** > **Für virtuelle Azure-Computer** > **Netzwerkzuordnung**.
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Löschen der Netzwerkzuordnung.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-error.":::
 
 Das während der Notfallwiederherstellungseinrichtung konfigurierte Zielnetzwerk kann nach dem erstmaligen Einrichten und dem Schützen der VM geändert werden. Wählen Sie zum **Ändern der Netzwerkzuordnung** den Netzwerknamen aus:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Ändern der Netzwerkzuordnung.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-error.":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ oder VSS (Fehlercode 151025)
@@ -437,7 +437,7 @@ Legen Sie für die COM+-Systemanwendung und den Volumeschattenkopie-Dienst den a
 1. Öffnen Sie die Konsole „Dienste“ unter Windows.
 1. Vergewissern Sie sich, dass für die COM+-Systemanwendung und den Volumeschattenkopie-Dienst die Option **Starttyp** nicht auf **Deaktiviert** festgelegt ist.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="Überprüfen des Starttyps der COM+-Systemanwendung und des Volumeschattenkopie-Diensts.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-error.":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nicht unterstützte Größe verwalteter Datenträger (Fehlercode 150172)
 

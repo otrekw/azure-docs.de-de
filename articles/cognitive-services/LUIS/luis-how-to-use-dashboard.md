@@ -3,20 +3,18 @@ title: 'Dashboard: Language Understanding – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Korrigieren Sie Absichten und Entitäten über das Dashboard Ihrer trainierten App. Auf dem Dashboard werden allgemeine App-Informationen angezeigt und die wichtigsten Absichten aufgeführt, die verbessert werden sollten.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345239"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541406"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Verwenden des Dashboards zum Verbessern Ihrer App
 
@@ -130,11 +128,11 @@ Im folgenden Diagramm ist eine ausgeglichene App zu sehen, für die fast keine z
 
 Im folgenden Diagramm ist eine unzureichend ausgeglichene App zu sehen, für die viele zu behebende Probleme vorliegen.
 
-![Im folgenden Diagramm ist eine ausgeglichene App zu sehen, für die fast keine zu behebenden Probleme vorliegen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![Der Screenshot zeigt Vorhersagen pro Absicht mit mehreren unklaren oder falsch vorhergesagten Ergebnissen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 Zeigen Sie auf eine Säule, um sich Informationen zur zugehörigen Absicht anzusehen.
 
-![Im folgenden Diagramm ist eine ausgeglichene App zu sehen, für die fast keine zu behebenden Probleme vorliegen.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![Der Screenshot zeigt Vorhersagen pro Absicht mit Details von unklaren oder falsch vorhergesagten Ergebnissen.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 Verwenden Sie das Feature **Sortieren nach**, um die Absichten nach Problemtyp anzuordnen. So können Sie sich auf die relevantesten Absichten mit genau diesem Problem konzentrieren.
 

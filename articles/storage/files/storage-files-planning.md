@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563440"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91649948"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -117,7 +117,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von Advanced Threat Protec
 
 Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen Diensten für Premium-Dateifreigaben und Standarddateifreigaben (einschließlich heißer, kalter und für Transaktionen optimierter Dateifreigaben) identisch. Es gibt jedoch einige wichtige Unterschiede:
 - **Abrechnungsmodell**
-    - Premium-Dateifreigaben werden über ein bereitgestelltes Abrechnungsmodell abgerechnet. Dies bedeutet, dass Sie für den Speicherplatz bezahlen, den Sie bereitstellen, und nicht für den Speicherplatz, den Sie tatsächlich anfordern. 
+    - Premium-Dateifreigaben werden über ein bereitgestelltes Abrechnungsmodell abgerechnet. Dies bedeutet, dass Sie für den Speicherplatz einen festen Preis bezahlen, den Sie bereitstellen, und nicht für den tatsächlich verwendeten Speicherplatz. Es fallen keine zusätzlichen Kosten für Transaktionen und ruhende Metadaten an.
     - Standard-Dateifreigaben werden mit einem Modell mit nutzungsbasierter Bezahlung abgerechnet, das die Grundkosten für den Speicherplatz für den tatsächlich genutzten Speicher und dann zusätzliche Transaktionskosten basierend auf der Nutzung der Freigabe umfasst. Mit Standard-Dateifreigaben erhöht sich Ihre Rechnung, wenn Sie die Azure-Dateifreigabe umfangreicher nutzen (Lesen/Schreiben/Einbinden).
 - **Redundanzoptionen**
     - Premium-Dateifreigaben sind nur für lokal redundanten (LRS) und zonenredundanten Speicher (ZRS) verfügbar.
@@ -126,7 +126,7 @@ Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen 
     - Premium-Dateifreigaben können ohne zusätzlichen Aufwand für bis zu 100 TiB bereitgestellt werden.
     - Standardmäßig können Standard-Dateifreigaben nur bis zu 5 TiB umfassen. Das Freigabelimit kann jedoch auf 100 TiB erhöht werden, indem das Featureflag *large file share* (große Dateifreigabe) des Speicherkontos verwendet wird. Standard-Dateifreigaben dürfen nur bis zu 100 TiB für lokal redundante oder zonenredundante Speicherkonten umfassen. Weitere Informationen zum Vergrößern von Dateifreigaben finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share).
 - **Regionale Verfügbarkeit**
-    - Premium-Dateifreigaben sind nicht in allen Regionen verfügbar, und zonenredundante Unterstützung ist in einer kleineren Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu den Regionen, in denen ZRS unterstützt wird, finden Sie unter [Unterstützung von Azure-Verfügbarkeitszonen nach Region](../../availability-zones/az-region.md). Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
+    - Premium-Dateifreigaben sind mit Ausnahme einiger weniger Regionen in den meisten Azure-Regionen verfügbar. Zonenredundante Unterstützung ist in einer Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen darüber, welche Regionen ZRS unterstützen, finden Sie unter [Zonenredundante Speicherung](../common/storage-redundancy.md#zone-redundant-storage). Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
     - Standard-Dateifreigaben sind in allen Azure-Regionen verfügbar.
 - Azure Kubernetes Service (AKS) unterstützt Premium-Dateifreigaben ab Version 1.13.
 

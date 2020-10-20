@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Ressourcenänderungen
 description: Erfahren Sie, wie Sie feststellen können, wann eine Ressource geändert wurde, und wie Sie eine Liste der geänderten Eigenschaften abrufen und die Unterschiede auswerten.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056566"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057568"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -279,7 +279,7 @@ Die Antwort ähnelt der im folgenden Beispiel:
 }
 ```
 
-**beforeSnapshot** und **afterSnapshot** geben jeweils den Zeitpunkt, an dem die Momentaufnahme erstellt wurde, und die Eigenschaften zu diesem Zeitpunkt an. Die Änderung wurde zu einem Zeitpunkt zwischen diesen Momentaufnahmen vorgenommen. Im Beispiel oben können Sie sehen, dass es sich bei der geänderten Eigenschaft um **supportsHttpsTrafficOnly** handelt.
+**beforeSnapshot** und **afterSnapshot** geben jeweils den Zeitpunkt, an dem die Momentaufnahme erstellt wurde, und die Eigenschaften zu diesem Zeitpunkt an. Die Änderung wurde zu einem Zeitpunkt zwischen diesen Momentaufnahmen vorgenommen. Im vorherigen Beispiel können Sie sehen, dass es sich bei der geänderten Eigenschaft um **supportsHttpsTrafficOnly** handelt.
 
 Verwenden Sie zum Vergleichen der Ergebnisse die **changes**-Eigenschaft in **resourceChanges**, oder untersuchen Sie den **content**-Abschnitt in jeder Momentaufnahme in **resourceChangeDetails**, um den Unterschied zu ermitteln. Wenn Sie die Momentaufnahmen vergleichen, wird **timestamp** entgegen der Erwartung immer als Unterschied angezeigt.
 

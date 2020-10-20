@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725085"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399685"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Network Watcher und Grafana
 
@@ -199,7 +199,7 @@ Nachdem Sie Grafana nun erfolgreich so konfiguriert haben, dass Daten aus dem El
 
 Der folgende Screenshot zeigt einen Graphen und ein Diagramm der wichtigsten Datenflüsse und ihrer Häufigkeit. Datenflüsse werden auch nach NSG-Regel und nach Entscheidung angezeigt. Grafana ist überaus anpassbar, weshalb es ratsam ist, Dashboards entsprechend Ihren Überwachungsanforderungen zu erstellen. Das folgende Beispiel zeigt ein typisches Dashboard:
 
-![Dashboardgraph](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Der Screenshot zeigt die Beispielkonfiguration eines Graphen mit nach NSG-Regel segmentierten Datenflüssen.](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Zusammenfassung
 

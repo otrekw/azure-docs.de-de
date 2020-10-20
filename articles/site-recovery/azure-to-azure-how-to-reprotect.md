@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c3e4b1c97c5fcc86a863313c2d6f54d93f26390e
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055040"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360870"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -31,7 +31,7 @@ Wenn Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) ein [Fail
 
 1. Klicken Sie unter **Tresor** > **Replizierte Elemente** mit der rechten Maustaste auf den virtuellen Computer, für den ein Failover ausgeführt wurde, und wählen Sie **Erneut schützen** aus. Die Richtung des erneuten Schützens sollte als von sekundär zu primär angezeigt werden.
 
-   ![Erneutes Schützen](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Screenshot: Virtueller Computer mit einem Kontextmenü, in dem die Option „Erneut schützen“ ausgewählt ist.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. Überprüfen Sie Ressourcengruppe, Netzwerk, Speicher und Verfügbarkeitsgruppen. Klicken Sie dann auf **OK**. Wenn als neu markierte Ressourcen vorhanden sind, werden sie im Rahmen des Vorgangs zum erneuten Schützen erstellt.
 1. Diese Auftrag zum erneuten Schützen liefert die neuesten Daten an den Zielstandort. Nachdem dieser Vorgang abgeschlossen ist, erfolgt die Deltareplikation. Anschließend können Sie ein Failback zum primären Standort durchführen. Mit der Option zum Anpassen können Sie das Speicherkonto oder Netzwerk auswählen, das Sie während des Vorgangs zum erneuten Schützen verwenden möchten.

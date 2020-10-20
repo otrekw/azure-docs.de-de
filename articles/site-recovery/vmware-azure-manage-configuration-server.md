@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134818"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361482"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
 
@@ -71,7 +71,7 @@ Gehen Sie wie folgt vor, falls Sie im Rahmen der OVF-Bereitstellung des Konfigur
 
 1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **VM-Anmeldeinformationen verwalten**.
 2. Klicken Sie auf **VM-Anmeldeinformationen hinzufügen**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Screenshot: Der Bereich „VM-Anmeldeinformationen verwalten“ mit dem Link „VM-Anmeldeinformationen hinzufügen“.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie auf **Hinzufügen**.
 
 Anmeldeinformationen können auch über „CSPSConfigtool.exe“ hinzugefügt werden.

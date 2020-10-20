@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563606"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399430"
 ---
 # <a name="what-are-security-partner-providers"></a>Was sind Sicherheitspartneranbieter?
 
@@ -44,7 +44,7 @@ Die folgenden Szenarien werden unterstützt:
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Best Practices für das Filtern von Internetdatenverkehr in geschützten virtuellen Hubs
 
-Der Internetdatenverkehr umfasst in der Regel Webdatenverkehr. Er beinhaltet aber auch Datenverkehr, der an SaaS-Anwendungen wie Office 365 (O365) und öffentliche Azure-PaaS-Dienste wie Azure Storage, Azure SQL usw. gerichtet ist. Im Folgenden finden Sie empfohlene Best Practices zur Behandlung des Datenverkehrs für diese Dienste:
+Der Internetdatenverkehr umfasst in der Regel Webdatenverkehr. Er beinhaltet aber auch Datenverkehr, der an SaaS-Anwendungen wie Microsoft 365 und öffentliche Azure-PaaS-Dienste wie Azure Storage, Azure SQL usw. gerichtet ist. Im Folgenden finden Sie empfohlene Best Practices zur Behandlung des Datenverkehrs für diese Dienste:
 
 ### <a name="handling-azure-paas-traffic"></a>Behandeln von Azure-PaaS-Datenverkehr
  
@@ -54,15 +54,15 @@ Der Internetdatenverkehr umfasst in der Regel Webdatenverkehr. Er beinhaltet abe
 
 ![Alle Szenarien für Azure Firewall Manager](media/trusted-security-partners/all-scenarios.png)
 
-## <a name="handling-office-365-o365-traffic"></a>Behandlung von Office 365 (O365)-Datenverkehr
+## <a name="handling-microsoft-365-traffic"></a>Behandeln des Datenverkehrs von Microsoft 365
 
-In global verteilten Filialszenarien sollten Sie Office 365-Datenverkehr direkt am Filialstandort umleiten, bevor Sie den verbleibenden Internetdatenverkehr an den geschützten Azure-Hub senden.
+In global verteilten Filialszenarien sollten Sie Microsoft 365-Datenverkehr direkt am Filialstandort umleiten, bevor Sie den verbleibenden Internetdatenverkehr an den geschützten Azure-Hub senden.
 
-Bei Office 365 sind Netzwerklatenz und -leistung für eine positive Benutzererfahrung von entscheidender Bedeutung. Um diese optimale Leistung und Benutzerfreundlichkeit zu erzielen, müssen Kunden Office 365 direkt und lokal implementieren, bevor sie es in Betracht ziehen, den übrigen Internetdatenverkehr über Azure weiterzuleiten.
+Bei Microsoft 365 sind Netzwerklatenz und -leistung für eine positive Benutzererfahrung von entscheidender Bedeutung. Um diese optimale Leistung und Benutzerfreundlichkeit zu erzielen, müssen Kunden Microsoft 365 direkt und lokal implementieren, bevor sie es in Betracht ziehen, den übrigen Internetdatenverkehr über Azure weiterzuleiten.
 
-Gemäß den [Office 365-Prinzipien für Netzwerkkonnektivität](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) müssen wichtige Office 365-Verbindungen lokal vom Filialstandort oder Mobilgerät des Benutzers direkt über das Internet an den nächstgelegenen Netzwerk-POP (Point-of-Presence) von Microsoft weitergeleitet werden.
+Gemäß den [Microsoft 365-Prinzipien für Netzwerkkonnektivität](/microsoft-365/enterprise/microsoft-365-network-connectivity-principles) müssen wichtige Microsoft 365-Verbindungen lokal vom Filialstandort oder Mobilgerät des Benutzers direkt über das Internet an den nächstgelegenen Netzwerk-POP (Point-of-Presence) von Microsoft weitergeleitet werden.
 
-Darüber hinaus werden Office 365-Verbindungen aus Gründen des Datenschutzes verschlüsselt und nutzen aus Leistungsgründen effiziente, proprietäre Protokolle. Daher ist es weder praktisch noch wirkungsvoll, diese Verbindungen mit herkömmlichen Sicherheitslösungen auf Netzwerkebene zu schützen. Aus diesen Gründen wird dringend empfohlen, dass Kunden Office 365-Datenverkehr direkt von Filialstandorten senden, bevor der übrige Datenverkehr über Azure übertragen wird. Microsoft verfügt über Partnerschaften mit mehreren Anbietern von SD-WAN-Lösungen, die in Azure und Office 365 integriert sind und es Kunden einfach machen, das direkte und lokale Internetbreakout in Office 365 zu aktivieren. Ausführliche Informationen finden Sie unter [Wie richte ich meine Office 365-Richtlinien über Virtual WAN ein?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview).
+Darüber hinaus werden Microsoft 365-Verbindungen aus Gründen des Datenschutzes verschlüsselt und nutzen aus Leistungsgründen effiziente, proprietäre Protokolle. Daher ist es weder praktisch noch wirkungsvoll, diese Verbindungen mit herkömmlichen Sicherheitslösungen auf Netzwerkebene zu schützen. Aus diesen Gründen wird dringend empfohlen, dass Kunden Microsoft 365-Datenverkehr direkt von Filialstandorten senden, bevor der übrige Datenverkehr über Azure übertragen wird. Microsoft verfügt über Partnerschaften mit mehreren Anbietern von SD-WAN-Lösungen, die in Azure und Microsoft 365 integriert sind und es Kunden einfach machen, das direkte und lokale Internetbreakout in Microsoft 365 zu aktivieren. Weitere Informationen finden Sie unter [Was ist Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

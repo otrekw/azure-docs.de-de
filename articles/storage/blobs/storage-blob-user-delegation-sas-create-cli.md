@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 453eaa816ad48626b476fa392999f44e3c1a10cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534072"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91714563"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI
 
@@ -36,7 +36,7 @@ Um eine SAS für die Benutzerdelegierung mit der Azure CLI zu erstellen, vergewi
 
 Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei der Azure CLI an. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
 
-## <a name="assign-permissions-with-rbac"></a>Zuweisen von Berechtigungen mit RBAC
+## <a name="assign-permissions-with-azure-rbac"></a>Zuweisen von Berechtigungen mit Azure RBAC
 
 Um eine SAS für die Benutzerdelegierung aus Azure PowerShell zu erstellen, muss dem Azure AD-Konto, mit dem die Anmeldung bei der Azure CLI erfolgt, eine Rolle zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Diese Berechtigung ermöglicht es diesem Azure AD Konto, den *Benutzerdelegierungsschlüssel* anzufordern. Der Benutzerdelegierungsschlüssel wird zum Signieren der SAS für die Benutzerdelegierung verwendet. Die Rolle, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** bereitstellt, muss auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements zugewiesen werden.
 

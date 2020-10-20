@@ -1,27 +1,29 @@
 ---
-title: Docker-Container – LUIS
+title: Installieren und Ausführen von Docker-Containern für LUIS
 titleSuffix: Azure Cognitive Services
-description: Der LUIS-Container lädt Ihre trainierte oder veröffentlichte App in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers.
+description: Verwenden Sie den LUIS-Container, um Ihre trainierte oder veröffentlichte App zu laden, und erhalten Sie lokalen Zugriff auf ihre Vorhersagen.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: Lokal, Docker, Container
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889523"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460984"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
+# <a name="install-and-run-docker-containers-for-luis"></a>Installieren und Ausführen von Docker-Containern für LUIS
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+Mithilfe von Containern können Sie LUIS in Ihrer eigenen Umgebung verwenden. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen LUIS-Container herunterladen, installieren und ausführen.
 
 Der LUIS-Container (Language Understanding) lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell. Als [LUIS-App](https://www.luis.ai) ermöglicht der Docker-Container den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in die Language Understanding-App hochladen, um die Vorhersagegenauigkeit der App zu verbessern.
 

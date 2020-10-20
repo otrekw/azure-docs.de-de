@@ -1,6 +1,6 @@
 ---
-title: Verfügbare Azure Files-Protokolle
-description: Informieren Sie sich über die verfügbaren Protokolle, bevor Sie eine Azure-Dateifreigabe erstellen.
+title: Verfügbare Azure Files-Protokolle – NFS und SMB
+description: Erfahren Sie mehr über die verfügbaren Protokolle, bevor Sie eine Azure-Dateifreigabe erstellen, einschließlich Server Message Block (SMB) und Network File System (NFS).
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708137"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568470"
 ---
 # <a name="azure-file-share-protocols"></a>Azure-Dateifreigabeprotokolle
 
@@ -25,8 +25,8 @@ Azure Files bietet zwei Protokolle zum Verbinden und Einbinden Ihrer Azure-Datei
 |---------|---------|---------|
 |Zugriffsprotokolle     |NFS 4.1         |SMB 2.1, SMB 3.0         |
 |Unterstütztes Betriebssystem     |Linux-Kernelversion 4.3 und höher         |Windows 2008 R2 und höher, Linux-Kernel Version 4.11 und höher         |
-|Verfügbare Tarife     |Storage Premium         |Storage Premium, Storage Standard, heiße Speicherebene, kalte Speicherebene         |
-|Replikation     |LRS         |LRS, ZRS, GRS         |
+|[Verfügbare Tarife](storage-files-planning.md#storage-tiers)     |Storage Premium         |Storage Premium, transaktionsoptimiert, heiß, kalt         |
+|[Redundanz](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
 |Authentifizierung     |Nur Host-basierte Authentifizierung        |Identitätsbasierte Authentifizierung, benutzerbasierte Authentifizierung         |
 |Berechtigungen     |Berechtigungen im UNIX-Format         |Berechtigungen im NTFS-Format         |
 |Dateisystemsemantik     |POSIX-kompatibel         |Nicht POSIX-kompatibel         |

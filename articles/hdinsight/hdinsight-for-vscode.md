@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876783"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530152"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
@@ -199,11 +199,11 @@ Gehen Sie wie folgt vor, um die Abfragen mithilfe des interaktiven PySpark-Befeh
 
 4. Die Aufforderung, den PySpark-Kernel zu installieren, wird unten rechts im Fenster angezeigt. Sie können auf **Installieren** klicken, um mit der PySpark-Installation fortzufahren, auf **Überspringen**, um diesen Schritt auszulassen.
 
-   ![PySpark-Kernel installieren](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![Der Screenshot zeigt eine Option zum Überspringen der PySpark-Installation.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. Wenn Sie den Kernel später installieren müssen, können Sie zu **Datei** > **Einstellung** > **Einstellungen** navigieren und **HDInsight: Enable Skip PySpark Installation** (HDInsight: Überspringen der PySpark-Installation aktivieren) in den Einstellungen deaktivieren. 
     
-    ![PySpark-Kernel installieren](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![Der Screenshot zeigt die Option „Überspringen der PySpark-Installation aktivieren“.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. Wenn die Installation in Schritt 4 erfolgreich war, wird das Nachrichtenfeld „PySpark installed successfully“ (PySpark erfolgreich installiert) in der unteren rechten Ecke des Fensters angezeigt. Klicken Sie auf **Erneut laden**, um das Fenster neu zu laden.
     ![PySpark erfolgreich installiert](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)

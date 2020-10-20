@@ -2,20 +2,18 @@
 title: 'Hinzufügen von Entitäten: LUIS'
 description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren. Extrahierte Entitätsdaten werden von der Clientanwendung verwendet, um Kundenanforderungen zu erfüllen.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344474"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540964"
 ---
 # <a name="add-entities-to-extract-data"></a>Hinzufügen von Entitäten zum Extrahieren von Daten
 
@@ -179,14 +177,14 @@ Fügen Sie in diesem Verfahren `origin`- und `destination`-Rollen zu einer vorde
 1. Wählen Sie zum Bezeichnen mit der Rolle die Entitätsbezeichnung (durchgezogene Linie unter Text) in der Beispieläußerung und dann **View in entity pane** (Im Entitätsbereich anzeigen) aus der Dropdownliste aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot zum Auswählen von „In Entitätspalette anzeigen“](media/add-entities/view-in-entity-pane.png)
+    > ![Screenshot: Das ausgewählte Menüelement „View in entity pane“ (Im Entitätsbereich anzeigen).](media/add-entities/view-in-entity-pane.png)
 
     Die Entitätspalette wird auf der rechten Seite geöffnet.
 
 1. Wählen Sie die Entität aus, und wechseln Sie dann zum Ende der Palette, um die Rolle auszuwählen.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot zum Auswählen von „In Entitätspalette anzeigen“](media/add-entities/select-role-in-entity-palette.png)
+    > ![Der Screenshot zeigt, wo die Rolle auszuwählen ist.](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
 <a name="add-a-patternany-entity"></a>

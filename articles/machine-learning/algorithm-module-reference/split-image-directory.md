@@ -1,20 +1,20 @@
 ---
 title: Teilen des Bildverzeichnisses
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel wird erläutert, wie Sie das Modul „Score Image Model“ (Bildmodell bewerten) in Azure Machine Learning zum Generieren von Vorhersagen mit einem trainierten Bildmodells verwenden.
+description: Erfahren Sie, wie Sie das Modul „Split Image Directory“ (Teilen des Bildverzeichnisses) im Azure Machine Learning-Designer (Vorschauversion) verwenden, um die Bilder eines Bildverzeichnisses in zwei unterschiedliche Gruppen aufzuteilen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890255"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448690"
 ---
 # <a name="split-image-directory"></a>Teilen des Bildverzeichnisses
 
@@ -28,7 +28,7 @@ Dieses Modul ist besonders hilfreich, wenn Sie Bilddaten in Trainings- und Tests
 
 2. Stellen Sie eine Verbindung mit dem Modul her, dessen Ausgabe das Bildverzeichnis ist.
 
-3. Geben Sie **Fraction of images in the first output** (Anteil der Bilder in der ersten Ausgabe) ein, um den Prozentsatz der Daten anzugeben, die in den linken Teil eingefügt werden sollen (standardmäßig 0,9).
+3. Geben Sie **Fraction of images in the first output** (Anteil der Bilder in der ersten Ausgabe) ein, um den Prozentsatz der Daten anzugeben, die in den linken Teil eingefügt werden sollen (standardmäßig 0,9). Wenn das Bruchergebnis nicht ganzzahlig ist, verwendet das Modul die kleinere nächste Ganzzahl.
 
 
 ## <a name="technical-notes"></a>Technische Hinweise

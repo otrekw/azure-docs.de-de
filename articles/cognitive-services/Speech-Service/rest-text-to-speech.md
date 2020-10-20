@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056804"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534980"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -32,6 +32,9 @@ Die Text-to-Speech-REST-API unterstützt neuronale und Standardstimmen für die 
 Bevor Sie diese API verwenden, müssen Sie Folgendes wissen:
 
 * Die Text-to-Speech-REST-API erfordert einen Autorisierungsheader. Das bedeutet, dass Sie einen Tokenaustausch ausführen müssen, um auf den Dienst zuzugreifen. Weitere Informationen finden Sie unter [Authentifizierung](#authentication).
+
+> [!TIP]
+> Informationen zu Endpunkten zur Government-Cloud (FairFax) finden Sie in der Azure Government-[Dokumentation](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 

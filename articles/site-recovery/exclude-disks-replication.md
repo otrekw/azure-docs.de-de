@@ -3,12 +3,12 @@ title: Ausschließen von Datenträgern von der Replikation mit Azure Site Recove
 description: Es wird beschrieben, wie Sie Datenträger mit Azure Site Recovery von der Replikation in Azure ausschließen.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245397"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333663"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Ausschließen von Datenträgern von der Notfallwiederherstellung
 
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
 Unsere Einstellungen für die Auslagerungsdatei auf der Quell-VM lauten wie folgt:
 
-![Einstellungen der Auslagerungsdatei auf dem virtuellen Quellcomputer](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![Der Screenshot des Dialogfelds „Virtueller Speicher“ mit hervorgehobener Zeile „Laufwerk D: [Auslagerungsdateivolume]“, das eine Auslagerungsdatei mit einer Größe (MB) von 3000 bis 7000 zeigt.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. Wir aktivieren die Replikation für die VM.
 2. Wir schließen DB-Disk1 von der Replikation aus.
@@ -260,7 +260,7 @@ DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
 Unsere Einstellungen für die Auslagerungsdatei auf der Azure-VM lauten wie folgt:
 
-![Einstellungen der Auslagerungsdatei auf dem virtuellen Azure-Computer](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+![Der Screenshot des Dialogfelds „Virtueller Speicher“ mit der hervorgehobenen Zeile „Laufwerk C:“ zeigt eine Einstellung der Größe der Auslagerungsdatei vom Typ „Systemverwaltet“.](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

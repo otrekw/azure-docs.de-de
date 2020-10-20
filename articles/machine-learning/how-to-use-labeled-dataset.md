@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 1293534849c98cee51349bbefd3073cc8b94f876
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647217"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91757774"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen
 
@@ -52,7 +52,7 @@ Laden Sie Ihre bezeichneten Datasets in einen Pandas-Datenrahmen oder in ein Tor
 
 ### <a name="pandas-dataframe"></a>Pandas-Datenrahmen
 
-Mit der Methode [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) der Klasse `azureml-contrib-dataset` können Sie bezeichnete Datasets in einen Pandas-Datenrahmen laden. Installieren Sie die Klasse mit dem folgenden Shellbefehl: 
+Mit der Methode [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) der Klasse `azureml-contrib-dataset` können Sie bezeichnete Datasets in einen Pandas-Datenrahmen laden. Installieren Sie die Klasse mit dem folgenden Shellbefehl: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -61,13 +61,20 @@ pip install azureml-contrib-dataset
 >[!NOTE]
 >Der Namespace „azureml.contrib“ ändert sich häufig, während wir an der Verbesserung des Diensts arbeiten. Daher sollte alles in diesem Namespace als Vorschau und als von Microsoft nicht vollständig unterstützt betrachtet werden.
 
-Wir bieten die folgenden Optionen zur Handhabung von Dateien für Dateidatenströme bei der Konvertierung in einen Pandas-Datenrahmen.
+Azure Machine Learning bietet die folgenden Optionen zur Handhabung von Dateien für Dateidatenströme bei der Konvertierung in einen Pandas-Datenrahmen.
 * Herunterladen: Laden Sie Ihre Datendateien in einen lokalen Pfad herunter.
 * Einbinden: Binden Sie Ihre Datendateien an einem Bereitstellungspunkt ein. Das Einbinden funktioniert nur für Linux-basiertes Computing, einschließlich Azure Machine Learning-Notebook (virtueller Computer) und Azure Machine Learning Compute.
 
+Im folgenden Code ist das `animal_labels`-Dataset die Ausgabe eines zuvor im Arbeitsbereich gespeicherten Bezeichnungsprojekts.
+
 ```Python
+import azureml.core
 import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
 from azureml.contrib.dataset import FileHandlingOption
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 animal_pd = animal_labels.to_pandas_dataframe(file_handling_option=FileHandlingOption.DOWNLOAD, target_path='./download/', overwrite_download=True)
 
 import matplotlib.pyplot as plt
@@ -80,10 +87,20 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision-Datasets
 
-Sie können bezeichnete Datasets mit der Methode [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#&preserve-view=trueto-torchvision--) auch von der Klasse `azureml-contrib-dataset` in ein Torchvision-Dataset laden. Um diese Methode zu verwenden, muss [PyTorch](https://pytorch.org/) installiert sein. 
+Sie können bezeichnete Datasets mit der Methode [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) auch von der Klasse `azureml-contrib-dataset` in ein Torchvision-Dataset laden. Um diese Methode zu verwenden, muss [PyTorch](https://pytorch.org/) installiert sein. 
+
+Im folgenden Code ist das `animal_labels`-Dataset die Ausgabe eines zuvor im Arbeitsbereich gespeicherten Bezeichnungsprojekts.
 
 ```python
+import azureml.core
+import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
+from azureml.contrib.dataset import FileHandlingOption
+
 from torchvision.transforms import functional as F
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 
 # load animal_labels dataset into torchvision dataset
 pytorch_dataset = animal_labels.to_torchvision()

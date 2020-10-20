@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898892"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536765"
 ---
 # <a name="apply-math-operation"></a>Anwenden einer mathematischen Operation
 
@@ -22,11 +22,11 @@ In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie die das Modul zum Anwenden einer mathematischen Operation zum Erstellen von Berechnungen, die auf numerische Spalten im Eingabedataset angewendet werden. 
 
-Unterstützte mathematische Operationen umfassen gängige arithmetische Funktionen wie Multiplikation und Division, trigonometrische Funktionen, eine Vielzahl von Rundungsfunktionen und Sonderfunktionen für die Data Science, wie Gamma- und Fehlerfunktionen.  
+Zu den mathematischen Operationen zählen arithmetische Funktionen, trigonometrische Funktionen, Rundungsfunktionen und spezielle Data Science-Funktionen wie Gamma- und Fehlerfunktionen.  
 
 Nachdem Sie eine Operation definiert und die Pipeline gestartet haben, werden die Werte zu Ihrem Dataset hinzugefügt. Je nachdem, wie Sie das Modul konfigurieren, können Sie folgende Aktionen ausführen:
 
-+ Sie können die Ergebnisse an Ihr Dataset anfügen. Dies ist besonders nützlich, wenn Sie das Ergebnis der Operation überprüfen.
++ Fügen Sie die Ergebnisse an Ihr Dataset an (hilfreich beim Überprüfen des Ergebnisses der Operation).
 + Sie können Spaltenwerte durch die neuen berechneten Werte ersetzen.
 + Sie können eine neue Spalte für Ergebnisse generieren und nicht die Originaldaten anzeigen. 
 
@@ -42,7 +42,7 @@ Suchen Sie in den folgenden Kategorien nach der benötigten Operation:
   
 -   [Vorgänge](#arithmetic-operations)  
   
-     Die Kategorie **Operationen** umfasst die grundlegenden mathematischen Funktionen: Addition, Subtraktion, Multiplikation und Division. Sie können entweder mit Spalten oder Konstanten arbeiten. Sie können beispielsweise den Wert in Spalte A mit dem Wert in Spalte B addieren. Oder Sie können von jedem Wert in Spalte A eine Konstante, wie beispielsweise einen zuvor berechneten Mittelwert, subtrahieren.  
+     Die Kategorie **Operationen** umfasst grundlegende mathematische Funktionen: Addition, Subtraktion, Multiplikation und Division. Sie können entweder mit Spalten oder Konstanten arbeiten. Sie können beispielsweise den Wert in Spalte A mit dem Wert in Spalte B addieren. Oder Sie können von jedem Wert in Spalte A eine Konstante, wie beispielsweise einen zuvor berechneten Mittelwert, subtrahieren.  
   
 -   [Runden](#rounding-operations)  
   
@@ -55,7 +55,7 @@ Suchen Sie in den folgenden Kategorien nach der benötigten Operation:
 -   [Trigonometrische Funktionen](#trigonometric-functions)  
   
      Die Kategorie **Trigonometrische Funktionen** enthält alle trigonometrischen Standardfunktionen. So können Sie beispielsweise das Bogenmaß in Grad konvertieren oder Funktionen wie Tangens entweder als Bogenmaß oder in Grad berechnen.
-     Diese Funktionen sind unär, d. h. sie verwenden eine einzige Wertspalte als Eingabe, wenden die trigonometrische Funktion an und geben als Ergebnis eine Wertspalte zurück.  Daher müssen Sie sicherstellen, dass der Eingabespalte der richtige Typ zugewiesen ist und sie die richtigen Werte für die angegebene Operation enthält.   
+     Diese Funktionen sind unär, d. h. sie verwenden eine einzige Wertspalte als Eingabe, wenden die trigonometrische Funktion an und geben als Ergebnis eine Wertspalte zurück. Stellen Sie sicher, dass die Eingabespalte den richtigen Typ aufweist und den richtigen Typ von Werten für die angegebene Operation enthält.   
 
 ## <a name="how-to-configure-apply-math-operation"></a>So konfigurieren Sie das Modul zum Anwenden einer mathematischen Operation  
 
@@ -74,7 +74,7 @@ Jede Instanz dieses Moduls kann jeweils nur einen Operationstyp ausführen. Zum 
     - Jede ausgewählte Spalte muss ein numerischer Datentyp sein. 
     - Der Datenbereich muss für die ausgewählte mathematische Operation gültig sein. Andernfalls wird ein Fehler oder ein NaN-Ergebnis (Not a Number, Keine Zahl) angezeigt. Beispielsweise ist Ln(-1.0) eine ungültige Operation und führt zum Wert `NaN`.
   
-1.  Klicken Sie auf **Kategorie**, um den **Typ** der auszuführenden mathematischen Operation auszuwählen.
+1.  Wählen Sie **Kategorie** aus, um den **Typ** der auszuführenden mathematischen Operation auszuwählen.
     
 1. Wählen Sie eine bestimmte Operation aus der Liste in dieser Kategorie aus.
   
@@ -92,10 +92,10 @@ Jede Instanz dieses Moduls kann jeweils nur einen Operationstyp ausführen. Zum 
 
 Wenn Sie die Ergebnisse mit den Optionen **Append** oder **ResultOnly** generieren, werden in den Spaltenüberschriften des zurückgegebenen Datasets die Operation und die verwendeten Spalten angegeben. Wenn Sie z. B. zwei Spalten mit dem Operator **Equals** vergleichen, sehen die Ergebnisse wie folgt aus:  
   
--   **Equals(Col2_Col1)** , gibt an, dass Sie Col2 mit Col1 überprüft haben.  
--   **Equals(Col2_$10)** , gibt an, dass Sie Spalte 2 mit der Konstanten 10 verglichen haben.  
+-   **Equals(Col2_Col1)**, gibt an, dass Sie Col2 mit Col1 überprüft haben.  
+-   **Equals(Col2_$10)**, gibt an, dass Sie Spalte 2 mit der Konstanten 10 verglichen haben.  
 
-Auch wenn Sie die Option **Inplace** verwenden, werden die Quelldaten weder gelöscht noch geändert. Die Spalte im ursprünglichen Dataset ist weiterhin im Designer verfügbar. Um die ursprünglichen Daten anzuzeigen, können Sie das Modul [Spalten hinzufügen](add-columns.md) anschließen und es mit der Ausgabe des Moduls zum **Anwenden einer mathematischen Operation** verbinden.  
+Auch wenn Sie die Option **In place** verwenden, werden die Quelldaten weder gelöscht noch geändert. Die Spalte im ursprünglichen Dataset ist weiterhin im Designer verfügbar. Um die ursprünglichen Daten anzuzeigen, können Sie das Modul [Spalten hinzufügen](add-columns.md) anschließen und es mit der Ausgabe des Moduls zum **Anwenden einer mathematischen Operation** verbinden.  
     
 ## <a name="basic-math-operations"></a>Grundlegende mathematische Operationen 
 
@@ -124,7 +124,7 @@ Gibt die Konjugation für die Werte in der ausgewählten Spalte zurück.
 Gibt die Kubikwurzel für die Werte in der ausgewählten Spalte zurück.  
 
 ### <a name="doublefactorial"></a>DoubleFactorial  
- Gibt die Doppelfakultät für die Werte in der ausgewählten Spalte zurück. Die Doppelfakultät ist eine Erweiterung der normalen Fakultätsfunktion und wird mit „x!!“ angegeben.  
+ Gibt die Doppelfakultät für die Werte in der ausgewählten Spalte zurück. Die Doppelfakultät ist eine Erweiterung der normalen Fakultätsfunktion, und sie wird als `x!!` bezeichnet.  
 
 ### <a name="eps"></a>Eps
 
@@ -132,7 +132,7 @@ Gibt die Größe des Abstands zwischen dem aktuellen Wert und der nächsthöhere
   
 ### <a name="exp"></a>Exp
 
-Potenziert die Basis e mit dem Wert in der ausgewählten Spalte. Dies entspricht der EXP-Funktion in Excel.  
+Potenziert die Basis e mit dem Wert in der ausgewählten Spalte. Diese Funktion entspricht der EXP-Funktion in Excel.  
 
 ### <a name="exp2"></a>Exp2
 
@@ -235,11 +235,11 @@ Gibt „True“ zurück, wenn die Werte in **Spaltensatz** kleiner oder gleich d
 
 ### <a name="notequalto"></a>NotEqualTo
 
-Gibt „True“ zurück, wenn die Werte in **Spaltensatz** nicht gleich der Konstanten oder der Vergleichsspalte sind, oder gibt „False“ zurück, wenn diese Werte gleich sind.  
+Gibt "True" zurück, wenn die Werte in **Column set** ungleich zu der Konstante oder der Vergleichsspalte sind, andernfalls wird "False" zurückgegeben.  
 
 ### <a name="pairmax"></a>PairMax
 
-Gibt den größeren Wert zurück – den Wert in **Spaltensatz** oder den Wert der Konstanten oder in der Vergleichsspalte.  
+Gibt den jeweils größeren Wert zurück – den Wert in **Column set** oder den Wert in der Konstante oder der Vergleichsspalte.  
 
 ### <a name="pairmin"></a>PairMin
 
@@ -258,7 +258,7 @@ Vorgang|Num1|Num2|Ergebnisspalte|Ergebniswert|
 |Subtraktion|1|5|Subtract(Num2_Num1)|4|
 |Subtraktion|0|1|Subtract(Num2_Num1)|0|
 |Division|1|5|Divide(Num2_Num1)|5|
-|Division|0|1|Divide(Num2_Num1)|Infinity|
+|Division|0|1|Divide(Num2_Num1)|Unendlich|
 
 ### <a name="add"></a>Hinzufügen
 
@@ -272,7 +272,7 @@ Dividiert die Werte in **Spaltensatz** durch eine Konstante oder durch die in **
 
 ### <a name="multiply"></a>Multiplizieren
 
-Multipliziert die Werte in **Spaltensatz** mit der angegebenen Konstanten oder den Spaltenwerten.  
+Dividiert die Werte in **Column set** durch die angegebene Konstante bzw. die angegebenen Spaltenwerte.  
 
 ### <a name="subtract"></a>Subtrahieren
 
@@ -284,55 +284,55 @@ Azure Machine Learning-Designer unterstützt eine Vielzahl von Rundungsoperation
 
 - Wenn Sie eine Konstante verwenden, legen Sie den **Genauigkeitstyp** auf **Konstante** fest, und geben Sie dann die Anzahl der Stellen als Ganzzahl in das Textfeld **Konstante Genauigkeit** ein. Wenn Sie keine Ganzzahl eingeben, gibt das Modul zwar keinen Fehler aus, aber es können unerwartete Ergebnisse angezeigt werden.  
 
-- Um für jede Zeile im Dataset einen anderen Genauigkeitswert zu verwenden, legen Sie für **Genauigkeitstyp** **ColumnSet** fest, und wählen Sie dann die Spalte aus, die die entsprechenden Genauigkeitswerte enthält.  
+- Um für jede Zeile im Dataset einen anderen Genauigkeitswert zu verwenden, legen Sie für **Genauigkeitstyp****ColumnSet** fest, und wählen Sie dann die Spalte aus, die die entsprechenden Genauigkeitswerte enthält.  
 
 ### <a name="ceiling"></a>Ceiling
 
-Gibt die Aufrundungsfunktion für die Werte in **Spaltensatz** zurück.  
+Gibt die Obergrenze für die Werte in **Column set** zurück.  
 
 ### <a name="ceilingpower2"></a>CeilingPower2
 
-Gibt die Aufrundungsfunktion in Quadrat für die Werte in **Spaltensatz** zurück.  
+Gibt die quadrierte Obergrenze für die Werte in **Column set** zurück.  
 
 ### <a name="floor"></a>Etage
 
-Gibt die Abrundungsfunktion der Werte in **Spaltensatz** entsprechend der angegebenen Genauigkeit zurück.  
+Gibt die Untergrenze für die Werte in **Column set** mit der angegebenen Genauigkeit zurück.  
 
 ### <a name="mod"></a>Mod
 
-Gibt die Nachkommastellen der Werte in **Spaltensatz** entsprechend der angegebenen Genauigkeit zurück.  
+Gibt den Bruchteil der Werte in **Column set** mit der angegebenen Genauigkeit zurück.  
 
 ### <a name="quotient"></a>Quotient
 
-Gibt die Nachkommastellen der Werte in **Spaltensatz** entsprechend der angegebenen Genauigkeit zurück.  
+Gibt den Bruchteil der Werte in **Column set** mit der angegebenen Genauigkeit zurück.  
 
-### <a name="remainder"></a>Remainder
+### <a name="remainder"></a>Rest
 
-Gibt den Restwert für die Werte in **Spaltensatz** zurück.  
+Gibt den Rest für die Werte in **Column set** zurück.  
 
 ### <a name="rounddigits"></a>RoundDigits
 
-Gibt die Werte in **Spaltensatz** zurück, die nach der 4/5-Regel auf die angegebene Anzahl von Stellen gerundet wurden.  
+Gibt die Werte in **Column set** nach der 4/5-Regel auf die angegebene Anzahl von Stellen gerundet zurück.  
 
 ### <a name="rounddown"></a>RoundDown
 
-Gibt die Werte in **Spaltensatz** zurück, die auf die angegebene Anzahl von Stellen abgerundet wurden.  
+Gibt die Werte in **Column set** auf die angegebene Anzahl von Stellen abgerundet zurück.  
 
 ### <a name="roundup"></a>RoundUp
 
-Gibt die Werte in **Spaltensatz** zurück, die auf die angegebene Anzahl von Stellen aufgerundet wurden.  
+Gibt die Werte in **Column set** auf die angegebene Anzahl von Stellen aufgerundet zurück.  
 
 ### <a name="toeven"></a>ToEven
 
-Gibt die Werte in **Spaltensatz** zurück, die auf die nächste ganze, gerade Zahl gerundet wurden.  
+Gibt die Werte in **Column set** auf die nächste ganze gerade Zahl gerundet zurück.  
 
 ### <a name="toodd"></a>ToOdd
 
-Gibt die Werte in **Spaltensatz** zurück, die auf die nächste ganze, ungerade Zahl gerundet wurden.  
+Gibt die Werte in **Column set** auf die nächste ganze ungerade Zahl gerundet zurück.  
 
 ### <a name="truncate"></a>Truncate
 
-Kürzt die Werte in **Spaltensatz**, indem alle Stellen entfernt werden, die aufgrund der angegebenen Genauigkeit unzulässig sind.  
+Schneidet die Werte in **Column set** ab, indem alle Ziffern entfernt werden, die für die angegebene Genauigkeit unzulässig sind.  
   
 ## <a name="special-math-functions"></a>Mathematische Sonderfunktionen
 
@@ -360,7 +360,7 @@ Die Fehlerfunktion (auch Gaußsche Fehlerfunktion genannt) ist eine Sonderfunkti
 
 Gibt den Wert der komplementären Fehlerfunktion zurück.  
 
-Erfc ist als „1 – erf(x)“ definiert.  
+`Erfc` ist als „1 – erf(x)“ definiert.  
 
 ### <a name="erfscaled"></a>ErfScaled
 
@@ -370,7 +370,7 @@ Die skalierte Version der Fehlerfunktion kann zur Vermeidung eines arithmetische
 
 ### <a name="erfinverse"></a>Erfinverse
 
-Gibt den Wert der umgekehrten Erf-Funktion zurück.  
+Gibt den Wert der umgekehrten `erf`-Funktion zurück.  
 
 ### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 
@@ -580,7 +580,7 @@ Nehmen wir an, Ihr Dataset besteht aus mehreren Spalten und Sie addieren das Dat
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Wenn Sie komplexere Berechnungen durchführen müssen, können Sie mehrere Instanzen von des Moduls zum **Anwenden einer mathematischen Operation** miteinander verketten. Beispielsweise können Sie mit einer Instanz des Moduls zum **Anwenden einer mathematischen Operation** zwei Spalten hinzufügen und anschließend eine weitere Instanz des Moduls zum **Anwenden einer mathematischen Operation** verwenden, um die Summe durch eine Konstante zu teilen, und so den Mittelwert erhalten.  
+Wenn Sie komplexere Berechnungen durchführen müssen, können Sie mehrere Instanzen von des Moduls zum **Anwenden einer mathematischen Operation** miteinander verketten. Sie können z. B. zwei Spalten mit einer Instanz von **Apply Math Operation** hinzufügen und dann eine andere Instanz von **Apply Math Operation** verwenden, um die Summe durch eine Konstante zu dividieren und so den Mittelwert zu erhalten.  
   
 Alternativ können Sie auch eines der folgenden Module verwenden, um alle Berechnungen gleichzeitig mit SQL-, R- oder Python-Skripts durchzuführen:
  

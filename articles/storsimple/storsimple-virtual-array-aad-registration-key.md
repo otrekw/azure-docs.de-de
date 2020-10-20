@@ -1,17 +1,17 @@
 ---
 title: Neue Authentifizierung für StorSimple Virtual Arrays
-description: Hier erfahren Sie, wie Sie die AAD-basierte Authentifizierung für Ihren Dienst verwenden, einen neuen Registrierungsschlüssel generieren und eine manuelle Registrierung der Geräte durchführen.
+description: Erfahren Sie mehr über die Details der AAD-Authentifizierung, den zugeordneten neuen Dienstregistrierungsschlüssel und Änderungen an den Firewallregeln im Zusammenhang mit den StorSimple-Geräten.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d750b3a85741bb4761b640848f01e5917760b5aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76273810"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91261089"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Verwenden der neuen Authentifizierung für StorSimple
 

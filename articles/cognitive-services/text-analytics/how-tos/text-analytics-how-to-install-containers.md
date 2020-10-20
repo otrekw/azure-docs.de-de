@@ -1,29 +1,30 @@
 ---
-title: Installieren und Ausführen von Containern – Textanalyse
+title: Installieren und Ausführen von Docker-Containern für die Textanalyse-API
 titleSuffix: Azure Cognitive Services
-description: Informationen zum Herunterladen, Installieren und Ausführen von Containern für die Textanalyse in diesem Schritt-für-Schritt-Tutorial.
+description: Verwenden Sie die Docker-Container für die Textanalyse-API, um die Verarbeitung natürlicher Sprache, z. B. Stimmungsanalysen, lokal durchzuführen.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: Lokal, Docker, Container, Stimmungsanalyse, Verarbeitung natürlicher Sprache
+ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906020"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461494"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
 > [!NOTE]
 > * Der Container für Standpunktanalyse v3 ist nun allgemein verfügbar. Die Container für Schlüsselbegriffserkennung und Sprachenerkennung sind als nicht geschlossene öffentliche Vorschau verfügbar.
 > * Entitätsverknüpfung und NER stehen derzeit nicht als Container zur Verfügung.
-> * Für den Zugriff auf die Textanalyse für Integritätscontainer ist ein [Anfrageformular](https://aka.ms/cognitivegate) erforderlich. Derzeit wird Ihnen die Nutzung nicht in Rechnung gestellt.
+> * Für den Zugriff auf die Textanalyse für Integritätscontainer ist ein [Anfrageformular](https://aka.ms/csgate) erforderlich. Derzeit wird Ihnen die Nutzung nicht in Rechnung gestellt.
 > * Die Speicherorte für Containerimages haben sich möglicherweise vor Kurzem geändert. Lesen Sie diesen Artikel, um mehr zum aktualisierten Speicherort für diesen Container zu erfahren.
 
 Container ermöglichen es Ihnen, die Textanalyse-APIs in ihrer eigenen Umgebung auszuführen und eignen sich hervorragend für Ihre spezifischen Anforderungen bezüglich Sicherheit und Datengovernance. Container für die Textanalyse ermöglichen eine erweiterte Verarbeitung von natürlicher Sprache anhand von unformatiertem Text und bieten drei Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung. 
