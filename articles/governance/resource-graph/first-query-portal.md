@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Ihre erste Portalabfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers aus.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056379"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057381"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 
@@ -51,7 +51,7 @@ Der Schemabrowser ist eine hervorragende Möglichkeit zum Entdecken von Eigensch
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Erstellen eines Diagramms aus der Resource Graph-Abfrage
 
-Wenn Sie nach dem Ausführen der letzten Abfrage oben die Registerkarte **Diagramme** auswählen, erhalten Sie eine Meldung mit dem Hinweis, dass der Ergebnissatz nicht mit einer Kreisdiagrammvisualisierung kompatibel ist. Abfragen, die Ergebnisse auflisten, können nicht in einem Diagramm dargestellt werden, Abfragen, die die Anzahl von Ressourcen angeben, hingegen schon. Erstellen Sie mit der [Beispielabfrage zum Zählen von virtuellen Computern nach Betriebssystemtyp](./samples/starter.md#count-os) eine Visualisierung aus der Resource Graph-Abfrage.
+Wenn Sie nach dem Ausführen der vorherigen Abfrage die Registerkarte **Diagramme** auswählen, erhalten Sie eine Meldung mit dem Hinweis, dass der Ergebnissatz nicht mit einer Kreisdiagrammvisualisierung kompatibel ist. Abfragen, die Ergebnisse auflisten, können nicht in einem Diagramm dargestellt werden, Abfragen, die die Anzahl von Ressourcen angeben, hingegen schon. Erstellen Sie mit der [Beispielabfrage zum Zählen von virtuellen Computern nach Betriebssystemtyp](./samples/starter.md#count-os) eine Visualisierung aus der Resource Graph-Abfrage.
 
 1. Geben Sie im Fenster unter **Query 1** (Abfrage 1) die folgende Abfrage ein, und wählen Sie **Abfrage ausführen** aus.
 
@@ -67,7 +67,7 @@ Wenn Sie nach dem Ausführen der letzten Abfrage oben die Registerkarte **Diagra
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>Anheften der Abfragevisualisierung an ein Dashboard
 
-Bei Ergebnissen aus einer Abfrage, die visualisiert werden können, kann diese Datenvisualisierung an eines Ihrer Dashboards angeheftet werden. Führen Sie nach dem Ausführen der obigen Abfrage die folgenden Schritte aus:
+Bei Ergebnissen aus einer Abfrage, die visualisiert werden können, kann diese Datenvisualisierung an eines Ihrer Dashboards angeheftet werden. Führen Sie diese Schritte aus, nachdem Sie die vorherige Abfrage ausgeführt haben:
 
 1. Wählen Sie **Speichern** aus, und geben Sie den Namen „VMS nach Betriebssystemtyp“ an. Wählen Sie anschließend unten im rechten Bereich **Speichern** aus.
 

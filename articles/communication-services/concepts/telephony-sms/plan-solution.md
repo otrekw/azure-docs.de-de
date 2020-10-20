@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767134"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048218"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Planen Ihrer Telefonie- und SMS-Lösung
 
@@ -74,7 +74,9 @@ In der folgenden Tabelle wird gezeigt, wo Sie verschiedene Telefonnummerntypen s
 
 ## <a name="azure-subscriptions-eligibility"></a>Berechtigung für Azure-Abonnements
 
-Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können nicht über Testkonten abgerufen werden. 
+Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden. 
+
+Derzeit ist die Verfügbarkeit von Telefonnummern auf Azure-Abonnements beschränkt, die über eine Rechnungsadresse in den USA verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

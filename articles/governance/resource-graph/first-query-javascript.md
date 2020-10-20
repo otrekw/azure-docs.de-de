@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Ihre erste JavaScript-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Bibliothek für JavaScript und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 06/23/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91251965"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057415"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage per JavaScript
 
@@ -23,11 +23,11 @@ Am Ende dieses Prozesses haben Sie Ihrer JavaScript-Installation die Bibliotheke
 
 - **Node.js**: [Node.js](https://nodejs.org/) Version 12 oder höher ist erforderlich.
 
-## <a name="application-setup"></a>Anwendungseinrichtung
+## <a name="application-initialization"></a>Anwendungsinitialisierung
 
-Um JavaScript zum Abfragen von Azure Resource Graph zu aktivieren, muss die Umgebung eingerichtet werden. Dieses Setup funktioniert überall dort, wo JavaScript verwendet werden kann, einschließlich [Bash unter Windows 10](/windows/wsl/install-win10).
+Um JavaScript zum Abfragen von Azure Resource Graph zu aktivieren, muss die Umgebung konfiguriert werden. Dieses Setup funktioniert überall dort, wo JavaScript verwendet werden kann, einschließlich [Bash unter Windows 10](/windows/wsl/install-win10).
 
-1. Richten Sie ein Node.js-Projekt ein, indem Sie den folgenden Befehl ausführen.
+1. Initialisieren Sie ein Node.js-Projekt, indem Sie den folgenden Befehl ausführen.
 
    ```bash
    npm init -y

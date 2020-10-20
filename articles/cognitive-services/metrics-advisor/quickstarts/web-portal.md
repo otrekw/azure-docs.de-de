@@ -3,19 +3,19 @@ title: 'Schnellstart: Metrics Advisor-Webportal'
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zu den ersten Schritten mit dem Metrics Advisor-Webportal.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631364"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048235"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Schnellstart: Überwachen Ihrer ersten Metrik mithilfe des Webportals
 
@@ -41,7 +41,7 @@ In diesem Dokument wird eine SQL-Datenbank-Instanz als Beispiel für die Erstell
 
 ## <a name="sign-in-to-your-workspace"></a>Anmelden in Ihrem Arbeitsbereich
 
-Nachdem Ihre Ressource erstellt und bereitgestellt wurde, melden Sie sich beim [Metrics Advisor-Portal](https://go.microsoft.com/fwlink/?linkid=2143774) an. Wählen Sie Ihren Arbeitsbereich aus, um mit der Überwachung Ihrer Metriken zu beginnen. 
+Melden Sie sich nach der Erstellung der Ressource beim [Metrics Advisor-Portal](https://go.microsoft.com/fwlink/?linkid=2143774) an. Wählen Sie Ihren Arbeitsbereich aus, um mit der Überwachung Ihrer Metriken zu beginnen. 
  
 Derzeit können Sie in jeder verfügbaren Region eine Metrics Advisor-Ressource erstellen. Sie können die Arbeitsbereiche im Metrics Advisor-Portal jederzeit wechseln.
 

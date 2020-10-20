@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020387"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057500"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Schnellstart: Sammeln von Daten von einem Linux-Computer in einer Hybridumgebung mit Azure Monitor
 
@@ -62,13 +62,11 @@ Vor der Installation des Log Analytics-Agents für Linux benötigen Sie die Arbe
 
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den zuvor erstellten Arbeitsbereich aus. (Möglicherweise haben Sie ihm den Namen **DefaultLAWorkspace** gegeben.)
 
-3. Wählen Sie **Erweiterte Einstellungen** aus:
-
-    ![Menü „Erweiterte Einstellungen“ für Log Analytics im Azure-Portal](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. Wählen Sie **Agent-Verwaltung** aus:
  
-4. Wählen Sie **Verbundene Quellen** und dann **Linux Server** aus.
+4. Wählen Sie anschließend **Linux-Server** aus.
 
-5. Der Wert rechts von **Arbeitsbereichs-ID** und **Primärschlüssel**. Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
+5. Die Werte rechts von **Arbeitsbereichs-ID** und **Primärschlüssel**: Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
 
 ## <a name="install-the-agent-for-linux"></a>Installieren des Agents für Linux
 

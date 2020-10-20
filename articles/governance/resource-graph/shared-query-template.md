@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit Vorlagen'
 description: In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um eine freigegebene Resource Graph-Abfrage zu erstellen, mit der virtuelle Computer nach Betriebssystem gezählt werden.
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88685526"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057007"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage unter Verwendung einer Resource Manager-Vorlage
 
@@ -53,9 +53,9 @@ In der Vorlage ist die folgende Ressource definiert:
    | Subscription | Wählen Sie Ihr Azure-Abonnement. |
    | Resource group | Wählen Sie **Neu erstellen**, geben Sie einen Namen an, und wählen Sie dann **OK**. |
    | Standort | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
-   | Abfragename | Übernehmen Sie den Standardwert **VMs nach Betriebssystem zählen**. |
-   | Abfragecode | Behalten Sie den Standardwert `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` bei. |
-   | Abfragebeschreibung | Übernehmen Sie den Standardwert **Diese freigegebene Abfrage zählt alle VM-Ressourcen und fasst sie nach Betriebssystemtyp zusammen.** . |
+   | Abfragename | Behalten Sie den Standardwert bei: **VMs nach Betriebssystem zählen**. |
+   | Abfragecode | Behalten Sie den Standardwert bei: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)`. |
+   | Abfragebeschreibung | Behalten Sie den Standardwert bei: **Diese freigegebene Abfrage zählt alle VM-Ressourcen und fasst sie nach Betriebssystemtyp zusammen.** |
    | Ich stimme den oben genannten Geschäftsbedingungen zu | (Auswählen) |
 
 1. Wählen Sie die Option **Kaufen**.
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um die neue freigegebene Abfrage auszuf�
 
 1. Wählen Sie die freigegebene Abfrage mit dem Namen **VMs nach Betriebssystem zählen** und dann auf der Seite **Übersicht** die Registerkarte **Ergebnisse** aus.
 
-Alternativ können Sie die freigegebene Abfrage über den Resource Graph-Explorer öffnen:
+Sie können die freigegebene Abfrage auch über den Resource Graph-Explorer öffnen:
 
 1. Suchen Sie über die Suchleiste des Portals nach **Resource Graph-Explorer**, und wählen Sie die Option aus.
 
@@ -83,7 +83,7 @@ Alternativ können Sie die freigegebene Abfrage über den Resource Graph-Explor
 
 1. Ändern Sie **Typ** in _Freigegebene Abfragen_. Wird die Abfrage **VMs nach Betriebssystem zählen** in der Liste nicht angezeigt, verwenden Sie das Filterfeld zum Eingrenzen der Ergebnisse. Wenn die freigegebene Abfrage **VMs nach Betriebssystem zählen** angezeigt wird, wählen Sie den Namen aus.
 
-1. Wählen Sie nach dem Laden der Abfrage die Schaltfläche **Abfrage ausführen** aus. Die Ergebnisse werden auf der Registerkarte **Ergebnisse** unten angezeigt.
+1. Wählen Sie nach dem Laden der Abfrage die Schaltfläche **Abfrage ausführen** aus. Die Ergebnisse werden auf der Registerkarte **Ergebnisse** angezeigt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

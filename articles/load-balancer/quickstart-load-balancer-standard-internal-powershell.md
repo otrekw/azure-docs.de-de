@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 15609435c7bc099d0ffe40759ea0f323b58a4545
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee7c1c57c271a6173f4ee978a10ff37526c04c33
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89087546"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047844"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für den Lastenausgleich virtueller Computer mithilfe von Azure PowerShell
 
@@ -1066,8 +1066,8 @@ In dieser Schnellstartanleitung wurde Folgendes vermittelt:
 * Konfigurieren der Datenverkehrsregel für den Lastenausgleich sowie des Integritätstests
 * Testen des Lastenausgleichs
 
-Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md) sowie unter [Häufig gestellte Fragen zu Load Balancer](load-balancer-faqs.md).
-
-* Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).
+Fahren Sie mit dem folgenden Artikel fort, um sich weiter über Azure Load Balancer zu informieren:
+> [!div class="nextstepaction"]
+> [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md)
 
 
