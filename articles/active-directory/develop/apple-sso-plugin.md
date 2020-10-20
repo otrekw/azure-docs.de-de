@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561345"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530696"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
@@ -93,7 +93,7 @@ Sie brauchen dieser Liste keine Anwendungen hinzuzufügen, die MSAL oder ASWebAu
 
 Standardmäßig stellt das Microsoft Enterprise SSO-Plug-In einmaliges Anmelden (SSO) für autorisierte Apps nur dann bereit, wenn das SSO-Plug-In bereits über freigegebene Anmeldeinformationen verfügt. Das Microsoft Enterprise SSO-Plug-In kann freigegebene Anmeldeinformationen abrufen, wenn es beim Tokenerwerb von einer anderen auf ADAL oder MSAL basierenden Anwendung aufgerufen wird. Die meisten Microsoft-Apps verwenden Microsoft Authenticator oder das SSO-Plug-In. Dies bedeutet, dass einmaliges Anmelden (SSO) außerhalb des nativen Anwendungsflows standardmäßig die größte Mühe macht.  
 
-Durch Aktivieren des `browser_sso_interaction_enabled`-Flags können Apps ohne MSAL und der Safari-Browser das anfängliche Bootstrapping ausführen und freigegebene Anmeldeinformationen abrufen. Wenn das Microsoft Enterprise SSO-Plug-In noch nicht über freigegebene Anmeldeinformationen verfügt, versucht es jedes Mal, wenn von einer Azure AD-URL im Safari-Browser, von ASWebAuthenticationSession, von SafariViewController oder von einer anderen nativen Anwendung in der Whitelist eine Anmeldung angefordert wird, Anmeldeinformationen abzurufen.  
+Durch Aktivieren des `browser_sso_interaction_enabled`-Flags können Apps ohne MSAL und der Safari-Browser das anfängliche Bootstrapping ausführen und freigegebene Anmeldeinformationen abrufen. Wenn das Microsoft Enterprise SSO-Plug-In noch nicht über freigegebene Anmeldeinformationen verfügt, versucht es jedes Mal Anmeldeinformationen abzurufen, wenn von einer Azure AD-URL im Safari-Browser, von ASWebAuthenticationSession, von SafariViewController oder von einer anderen zugelassenen nativen Anwendung eine Anmeldung angefordert wird.  
 
 - **Schlüssel**: `browser_sso_interaction_enabled`
 - **Typ:** `Integer`

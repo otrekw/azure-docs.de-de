@@ -1,5 +1,6 @@
 ---
-title: Integration in Microsoft Identity Platform
+title: Integration in Microsoft Identity Platform | Azure
+titleSuffix: Microsoft identity platform
 description: Lernen Sie die Vorteile der Integration Ihrer Anwendung in Microsoft Identity Platform kennen, und erhalten Sie Featureressourcen wie vereinfachte Anmeldung, Identitätsverwaltung, Multifactor-Factor Authentication und Zugriffssteuerung.
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706165"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631408"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integration in Microsoft Identity Platform
 
@@ -45,9 +46,9 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Microsoft Identity Platform zu
 
 **Verwenden von Microsoft Identity Platform für die rollenbasierte Zugriffssteuerung**.  Administratoren und Besitzer von Anwendungen können Benutzer und Gruppen zu Rollen zuweisen, die Sie beim Registrieren Ihrer Anwendung in Microsoft Identity Platform definieren. Rolleninformationen werden in Anmeldetoken an die Anwendung gesendet und können auch über die Microsoft Graph-API gelesen werden. Erfahren Sie mehr über die [Authentifizierung mit der Microsoft Identity Platform](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Anfordern des Zugriffs auf das Profil, den Kalender, E-Mails, Kontakte, Dateien und andere Informationen des Benutzers
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Anfordern des Zugriffs auf das Profil, den Kalender, E-Mails, Kontakte, Dateien und andere Informationen von Benutzern
 
-**Microsoft Identity Platform ist der Autorisierungsserver für Microsoft 365 und andere Microsoft-Unternehmensdienste.**  Wenn Sie Microsoft Identity Platform für die Anmeldung bei Ihrer Anwendung oder das Verknüpfen Ihrer aktuellen Benutzerkonten über OAuth 2.0 mit Azure AD-Benutzerkonten unterstützen, können Sie Lese- und Schreibzugriff auf das Profil, den Kalender, Kontakte, E-Mails, Dateien und andere Informationen des Benutzers anfordern. Sie können problemlos Ereignisse in den Kalender der Benutzer schreiben und Dateien auf ihrem OneDrive lesen oder schreiben. Erfahren Sie mehr über [den Zugriff auf die Microsoft 365-APIs](/previous-versions/office/office-365-api/).
+**Microsoft Identity Platform ist der Autorisierungsserver für Microsoft 365 und andere Microsoft-Unternehmensdienste.**  Wenn Sie Microsoft Identity Platform für die Anmeldung bei Ihrer Anwendung oder das Verknüpfen Ihrer aktuellen Benutzerkonten über OAuth 2.0 mit Azure AD-Benutzerkonten unterstützen, können Sie Lese- und Schreibzugriff auf das Profil, den Kalender, Kontakte, E-Mails, Dateien und andere Informationen des Benutzers anfordern. Sie können problemlos Ereignisse in den Kalender der Benutzer schreiben und Dateien auf ihrem OneDrive lesen oder schreiben. Erfahren Sie mehr über die [Microsoft 365-APIs](/graph/overview).
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Werben für Ihre Anwendung im Azure Marketplace und Microsoft 365 Marketplace
 

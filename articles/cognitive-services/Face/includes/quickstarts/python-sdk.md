@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Clientbibliothek zur Gesichtserkennung für Python'
-description: Verwenden Sie die Gesichtserkennungs-Clientbibliothek für Python, um Gesichter zu erkennen, ähnliche Gesichter zu finden (Gesichtssuche anhand von Bildern), Gesichter zu identifizieren (Gesichtserkennungssuche) und ihre Gesichtserkennungsdaten zu migrieren.
+description: Verwenden Sie die Gesichtserkennungs-Clientbibliothek für Python, um Gesichter zu erkennen, ähnliche Gesichter zu finden (Gesichtssuche anhand von Bildern) und Gesichter zu identifizieren (Gesichtserkennungssuche).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/07/2020
 ms.author: pafarley
-ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322957"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859724"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -25,7 +25,6 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für Python für Folgen
 * Erstellen und Trainieren einer Personengruppe
 * Identifizieren eines Gesichts
 * Überprüfen von Gesichtern
-* Erstellen einer Momentaufnahme für die Datenmigration
 
 [Referenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [Beispiele](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
@@ -85,7 +84,6 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 * [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
 * [Identifizieren eines Gesichts](#identify-a-face)
 * [Überprüfen von Gesichtern](#verify-faces)
-* [Erstellen einer Momentaufnahme für die Datenmigration](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
@@ -207,52 +205,6 @@ Der folgende Code vergleicht jedes Quellbild mit dem Zielbild und gibt eine Meld
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Erstellen einer Momentaufnahme für die Datenmigration
-
-Mit dem Momentaufnahmefeature können Sie Ihre gespeicherten Gesichtserkennungsdaten (etwa ein trainiertes **PersonGroup**-Objekt) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie können dieses Feature beispielsweise verwenden, wenn Sie ein **PersonGroup**-Objekt mit einem kostenlosen Abonnement erstellt haben und dieses nun zu Ihrem kostenpflichtigen Abonnement migrieren möchten. Eine umfassende Übersicht über das Feature für Momentaufnahmen finden Sie unter [Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung](../../Face-API-How-to-Topics/how-to-migrate-face-data.md).
-
-In diesem Beispiel migrieren Sie das **PersonGroup**-Objekt, das Sie unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) erstellt haben. Sie können entweder zuerst diesen Abschnitt abschließen oder Ihre eigenen Konstrukte mit Gesichtserkennungsdaten verwenden.
-
-### <a name="set-up-target-subscription"></a>Einrichten des Zielabonnements
-
-Sie benötigen zunächst ein zweites Azure-Abonnement mit einer Gesichtserkennungsressource. Führen Sie dazu die Schritte im Abschnitt [Einrichten](#setting-up) aus. 
-
-Erstellen Sie dann die folgenden Variablen am Anfang des Skripts. Darüber hinaus müssen Sie neue Umgebungsvariablen für die Abonnement-ID Ihres Azure-Kontos sowie den Schlüssel, den Endpunkt und die Abonnement-ID Ihres neuen Kontos (Zielkonto) erstellen. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
-
-### <a name="authenticate-target-client"></a>Authentifizieren des Zielclients
-
-Speichern Sie weiter unten in Ihrem Skript das aktuelle Clientobjekt als Quellclient, und authentifizieren Sie anschließend ein neues Clientobjekt für Ihr Zielabonnement. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_auth)]
-
-### <a name="use-a-snapshot"></a>Verwenden einer Momentaufnahme
-
-Die übrigen Momentaufnahmevorgänge werden in einer asynchronen Funktion ausgeführt. 
-
-1. Der erste Schritt besteht darin, die Momentaufnahme zu **erstellen**. Dadurch werden die Gesichtserkennungsdaten Ihres ursprünglichen Abonnements an einem temporären Cloudspeicherort gespeichert. Diese Methode gibt eine ID zurück, mit der Sie den Status des Vorgangs abfragen.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
-
-1. Fragen Sie als Nächstes die ID ab, bis der Vorgang abgeschlossen ist.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
-
-    In diesem Code wird die Funktion `wait_for_operation` verwendet, die Sie separat definieren sollten:
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
-
-1. Gehen Sie zurück zu ihrer asynchronen Funktion. Schreiben Sie mithilfe des Vorgangs **apply** die Gesichtserkennungsdaten in Ihr Zielabonnement. Mit dieser Methode wird ebenfalls eine ID zurückgegeben.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
-
-1. Fragen Sie als nächstes mit der Funktion `wait_for_operation` die ID ab, bis der Vorgang abgeschlossen ist.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
-
-Wenn Sie diese Schritte ausgeführt haben, können Sie über Ihr neues (Ziel-)Abonnement auf Ihre Konstrukte mit Gesichtserkennungsdaten zugreifen.
-
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Führen Sie Ihre Anwendung zur Gesichtserkennung aus dem Anwendungsverzeichnis mit dem `python`-Befehl aus.
@@ -271,10 +223,6 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 Falls Sie in dieser Schnellstartanleitung ein **PersonGroup**-Objekt erstellt haben und dieses löschen möchten, führen Sie in Ihrem Skript den folgenden Code aus:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
-
-Wenn Sie in dieser Schnellstartanleitung Daten mithilfe des Momentaufnahmefeatures migriert haben, müssen Sie auch das im Zielabonnement gespeicherte **PersonGroup**-Objekt löschen.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

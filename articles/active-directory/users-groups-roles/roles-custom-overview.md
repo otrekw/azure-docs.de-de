@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 09/12/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8a57f340710144d9c92063d7a181181c3bd7237e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90975553"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971233"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Benutzerdefinierte Administratorrollen in Azure Active Directory (Vorschau)
 
-In diesem Artikel werden die Grundlagen der benutzerdefinierten Azure AD-Rollen in Azure Active Directory (Azure AD) mit rollenbasierter Zugriffssteuerung und Ressourcenbereichen beschrieben. Durch benutzerdefinierte Azure AD-Rollen werden die zugrunde liegenden Berechtigungen der [integrierten Rollen](directory-assign-admin-roles.md) angezeigt, sodass Sie eigene benutzerdefinierte Rollen erstellen und organisieren können. Dadurch können Sie den Zugriff bei Bedarf differenzierter gewähren als mit integrierten Rollen. Dieses erste Release der benutzerdefinierten Azure AD-Rollen umfasst die Funktion, eine Rolle zum Zuweisen von Berechtigungen zum Verwalten von App-Registrierungen zu erstellen. Im Laufe der Zeit werden weitere Berechtigungen für Organisationsressourcen wie Unternehmensanwendungen, Benutzer und Geräte hinzugefügt.  
+In diesem Artikel werden die Grundlagen der benutzerdefinierten Azure AD-Rollen in Azure Active Directory (Azure AD) mit rollenbasierter Zugriffssteuerung und Ressourcenbereichen beschrieben. Durch benutzerdefinierte Azure AD-Rollen werden die zugrunde liegenden Berechtigungen der [integrierten Rollen](directory-assign-admin-roles.md) angezeigt, sodass Sie eigene benutzerdefinierte Rollen erstellen und organisieren können. Dadurch können Sie den Zugriff bei Bedarf differenzierter gewähren als mit integrierten Rollen. Dieses erste Release von benutzerdefinierten Azure AD-Rollen enthält Berechtigungen für die Verwaltung von App-Registrierungen und Unternehmens-Apps. Im Laufe der Zeit werden dann weitere Berechtigungen für andere Organisationsressourcen hinzugefügt.  
 
 Darüber hinaus unterstützen benutzerdefinierte Azure AD-Rollen zusätzlich zu den eher herkömmlichen organisationsweiten Zuweisungen auch Zuweisungen auf Ressourcenbasis. Dieser Ansatz bietet Ihnen die Möglichkeit, Zugriff zum Verwalten einiger Ressourcen (z. B. einer App-Registrierung) zu erteilen, ohne Zugriff auf alle Ressourcen (alle App-Registrierungen) zu gewähren.
 
@@ -34,7 +34,7 @@ Das Erteilen von Berechtigungen mithilfe benutzerdefinierter Azure AD-Rollen is
 
 Nachdem Sie Ihre Rollendefinition erstellt haben, können Sie diese durch Erstellen einer Rollenzuweisung einem Benutzer zuweisen. Eine Rollenzuweisung erteilt einem Benutzer die Berechtigungen in einer Rollendefinition für einen bestimmten Bereich. Durch diesen zweistufigen Prozess können Sie eine einzelne Rollendefinition erstellen und dann für verschiedene Bereiche mehrmals zuweisen. Ein Bereich definiert die Gruppe von Azure AD-Ressourcen, auf die das Rollenmitglied Zugriff hat. Der gängigste Bereich ist der organisationsweite Bereich. Eine benutzerdefinierte Rolle kann für den organisationsweiten Bereich zugewiesen werden. Dies bedeutet, dass das Rollenmitglied über die Rollenberechtigungen für alle Ressourcen in der Organisation verfügt. Eine benutzerdefinierte Rolle kann auch für einen Objektbereich zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendung. Die gleiche Rolle kann einem Benutzer für alle Anwendungen in der Organisation und dann einem anderen Benutzer nur für die App der Contoso-Spesenabrechnungen zugewiesen werden.  
 
-Die integrierten und benutzerdefinierten Rollen in Azure AD funktionieren auf ähnliche Weise wie die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md). Der [Unterschied zwischen diesen beiden rollenbasierten Zugriffssteuerungssystemen](../../role-based-access-control/rbac-and-directory-admin-roles.md) besteht darin, dass die Azure-RBAC den Zugriff auf Azure-Ressourcen wie virtuelle Computer oder Speicher mithilfe der Azure-Ressourcenverwaltung steuert und benutzerdefinierte Azure AD-Rollen den Zugriff auf Azure AD-Ressourcen mithilfe der Graph-API steuern. Beide Systeme nutzen das Konzept von Rollendefinitionen und Rollenzuweisungen.
+Die integrierten und benutzerdefinierten Rollen in Azure AD funktionieren auf ähnliche Weise wie die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md). Der [Unterschied zwischen diesen beiden rollenbasierten Zugriffssteuerungssystemen](../../role-based-access-control/rbac-and-directory-admin-roles.md) besteht darin, dass die Azure-RBAC den Zugriff auf Azure-Ressourcen wie virtuelle Computer oder Speicher mithilfe der Azure-Ressourcenverwaltung steuert und benutzerdefinierte Azure AD-Rollen den Zugriff auf Azure AD-Ressourcen mithilfe der Graph-API steuern. Beide Systeme nutzen das Konzept von Rollendefinitionen und Rollenzuweisungen. Azure AD-RBAC-Berechtigungen können nicht in Azure-RBAC-Rollen eingefügt werden (und umgekehrt).
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>So ermittelt Azure AD, ob ein Benutzer Zugriff auf eine Ressource hat
 

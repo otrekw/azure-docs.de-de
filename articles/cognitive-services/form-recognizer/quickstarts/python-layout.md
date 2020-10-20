@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 9f136248b93283b02824ead7f34886a056ae0a33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 72420019ead1ae47054ae62197d8cc310063a6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762058"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969771"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Text und Layoutinformationen mit der Formularerkennungs-REST-API und Python
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
-- Ein Formulardokument. Sie können für diesen Schnellstart Bilddateien aus dem [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) herunterladen.
+- Ein Formulardokument. Sie können ein Bild aus dem [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) für diese Schnellstartanleitung herunterladen (*sample_data.zip* herunterladen und extrahieren).
 
 > [!NOTE]
 > In dieser Schnellstartanleitung wird ein lokal gespeichertes Dokument verwendet. Informationen zum Verwenden von Remotedateien, auf die über URLs zugegriffen wird, finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync).

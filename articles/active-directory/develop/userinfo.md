@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653229"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform: UserInfo-Endpunkt
 
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-Die hier aufgeführten Ansprüche, einschließlich `sub`, sind dieselben Ansprüche, die in den [ID-Token](id-tokens.md) an die App ausgegeben würden.  
+Bei den hier aufgeführten Ansprüchen handelt es sich um alle Ansprüche, die vom UserInfo-Endpunkt zurückgegeben werden können.  Dies sind dieselben Werte, die in den [ID-Token](id-tokens.md) an die App ausgegeben würden.  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>Hinweise und Einschränkungen zum UserInfo-Endpunkt
 
