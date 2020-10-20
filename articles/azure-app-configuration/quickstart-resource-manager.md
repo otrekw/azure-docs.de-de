@@ -1,134 +1,105 @@
 ---
-title: 'Schnellstart: Automatisierte VM-Bereitstellung mit Azure App Configuration'
-description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das Azure PowerShell-Modul und Azure Resource Manager-Vorlagen verwenden, um einen Azure App Configuration-Speicher bereitzustellen. Verwenden Sie die Werte im Speicher, um eine VM bereitzustellen.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 08/11/2020
+title: Erstellen eines Azure App Configuration-Speichers per ARM-Vorlage (Azure Resource Manager)
+titleSuffix: Azure App Configuration
+description: Es wird beschrieben, wie Sie einen Azure App Configuration-Speicher per ARM-Vorlage (Azure Resource Manager) erstellen.
+author: ZhijunZhao
+ms.author: zhijzhao
+ms.date: 09/21/2020
+ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.service: azure-app-configuration
-ms.custom:
-- mvc
-- subject-armqs
-ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88661468"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824179"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Schnellstart: Automatisierte VM-Bereitstellung mit App Configuration und einer Resource Manager-Vorlage (ARM-Vorlage)
+# <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure App Configuration-Speichers per ARM-Vorlage
 
-Hier erfahren Sie, wie Sie mit Azure Resource Manager-Vorlagen und Azure PowerShell einen Azure App Configuration-Speicher bereitstellen, dem Speicher Schlüsselwerte hinzufügen und mithilfe der Schlüsselwerte im Speicher eine Azure-Ressource bereitstellen (in diesem Beispiel eine Azure-VM).
+In dieser Schnellstartanleitung wird Folgendes beschrieben:
+
+- Bereitstellen eines App Configuration-Speichers per ARM-Vorlage
+- Erstellen von Schlüsselwerten in einem App Configuration-Speicher per ARM-Vorlage
+- Lesen von Schlüsselwerten in einem App Configuration-Speicher per ARM-Vorlage
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="review-the-templates"></a>Überprüfen der Vorlagen
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in diesem Schnellstart verwendeten Vorlagen stammen aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/). Die [erste Vorlage](https://azure.microsoft.com/resources/templates/101-app-configuration-store/) erstellt einen App Configuration-Speicher:
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/). Hiermit wird ein neuer App Configuration-Speicher erstellt, der zwei Schlüsselwerte enthält. Anschließend wird die Funktion `reference` verwendet, um die Werte der beiden Schlüsselwertressourcen auszugeben. Wenn der Wert des Schlüssels auf diese Weise gelesen wird, kann er auch an anderen Stellen der Vorlage verwendet werden.
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
+In der Schnellstartanleitung wird das Element `copy` verwendet, um mehrere Instanzen der Schlüsselwertressource zu erstellen. Weitere Informationen zum Element `copy` finden Sie unter [Ressourceniteration in ARM-Vorlagen](../azure-resource-manager/templates/copy-resources.md).
 
-In der Vorlage ist eine einzelne Azure-Ressource definiert:
+> [!IMPORTANT]
+> Für diese Vorlage ist ein App Configuration-Ressourcenanbieter mit Version `2020-07-01-preview` oder höher erforderlich. In dieser Version wird die Funktion `reference` zum Lesen von Schlüsselwerten verwendet. Die Funktion `listKeyValue`, die in der vorherigen Version zum Lesen von Schlüsselwerten verwendet wurde, ist ab Version `2020-07-01-preview` nicht mehr verfügbar.
 
-- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): Erstellen eines App Configuration-Speichers
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
 
-Die [zweite Vorlage](https://azure.microsoft.com/resources/templates/101-app-configuration/) erstellt anhand der Schlüsselwerte im Speicher eine VM. Vor diesem Schritt müssen Sie über das Portal oder mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) Schlüsselwerte hinzufügen.
+Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): Erstellen eines App Configuration-Speichers
+- Microsoft.AppConfiguration/configurationStores/keyValues: Erstellen eines Schlüsselwerts im App Configuration-Speicher
 
-## <a name="deploy-the-templates"></a>Bereitstellen der Vorlagen
+> [!NOTE]
+> Der Name der Ressource `keyValues` ist eine Kombination aus Schlüssel und Bezeichnung. Der Schlüssel und die Bezeichnung werden mit dem Trennzeichen `$` verknüpft. Die Bezeichnung ist optional. Im obigen Beispiel wird von der Ressource `keyValues` mit dem Namen `myKey` ein Schlüsselwert ohne Bezeichnung erstellt.
+>
+> Bei der Prozentcodierung, die auch als URL-Codierung bezeichnet wird, können Schlüssel oder Bezeichnungen Zeichen enthalten, die in Ressourcennamen von ARM-Vorlagen nicht zulässig sind. Da auch `%` kein zulässiges Zeichen ist, wird stattdessen `~` verwendet. Führen Sie die folgenden Schritte aus, um einen Namen richtig zu codieren:
+>
+> 1. Anwenden der URL-Codierung
+> 2. Ersetzen Sie `~` durch `~7E`.
+> 3. Ersetzen Sie `%` durch `~`.
+>
+> Um beispielsweise ein Schlüssel-Wert-Paar mit dem Schlüsselnamen `AppName:DbEndpoint` und der Bezeichnung `Test` zu erstellen, sollte der Ressourcenname `AppName~3ADbEndpoint$Test` lauten.
 
-### <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen App Configuration-Speicher.
+Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Mit der Vorlage wird ein App Configuration-Speicher erstellt, der zwei Schlüsselwerte enthält.
 
-    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
-1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
+Sie können die Vorlage auch mit dem folgenden PowerShell-Cmdlet bereitstellen. Die Schlüsselwerte sind in der Ausgabe der PowerShell-Konsole enthalten.
 
-    - **Abonnement**: Wählen Sie ein Azure-Abonnement zum Erstellen des App Configuration-Speichers aus.
-    - **Ressourcengruppe**: Klicken Sie auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe.
-    - **Region**: Wählen Sie einen Standort für die Ressourcengruppe aus.  Beispiel: **USA, Osten**
-    - **Config Store Name** (Name des App Configuration-Speichers): Geben Sie einen neuen Namen für den App Configuration-Speicher ein.
-    - **Speicherort**: Geben Sie den Speicherort des App Configuration-Speichers an.  Verwenden Sie den Standardwert.
-    - **SKU-Name**: Geben Sie den SKU-Namen des App Configuration-Speichers an. Verwenden Sie den Standardwert.
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-configuration-store-kv/azuredeploy.json"
 
-1. Klicken Sie auf **Überprüfen + erstellen**.
-1. Vergewissern Sie sich, dass **Überprüfung erfolgreich** auf der Seite angezeigt wird, und wählen Sie dann **Erstellen** aus.
+$resourceGroupName = "${projectName}rg"
 
-Notieren Sie sich den Namen der Ressourcengruppe und den Namen des App Configuration-Speichers.  Sie benötigen diese Werte beim Bereitstellen der VM.
-### <a name="add-vm-configuration-key-values"></a>Hinzufügen von Schlüsselwerten für die VM-Konfiguration
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 
-Nachdem Sie einen App Configuration-Speicher erstellt haben, können Sie ihm über das Azure-Portal oder mithilfe der Azure CLI Schlüsselwerte hinzufügen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie dann zum neu erstellten App Configuration-Speicher.
-1. Wählen Sie im Menü auf der linken Seite die Option **Konfigurations-Explorer** aus.
-1. Wählen Sie **Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
-
-   |Schlüssel|Wert|Bezeichnung|
-   |-|-|-|
-   |windowsOsVersion|2019-Datacenter|Vorlage|
-   |diskSizeGB|1023|Vorlage|
-
-   Lassen Sie das Feld **Inhaltstyp** leer.
-
-Informationen zur Verwendung der Azure CLI finden Sie unter [Verwenden von Schlüssel-Wert-Paaren in einem Azure App Configuration-Speicher](./scripts/cli-work-with-keys.md).
-
-### <a name="deploy-vm-using-stored-key-values"></a>Bereitstellen eines virtuellen Computers mit gespeicherten Schlüsselwerten
-
-Nachdem Sie dem Speicher Schlüsselwerte hinzugefügt haben, können Sie mit einer Azure Resource Manager-Vorlage einen virtuellen Computer bereitstellen. In der Vorlage wird auf die von Ihnen erstellten Schlüssel **windowsOsVersion** und **diskSizeGB** verwiesen.
-
-> [!WARNING]
-> ARM-Vorlagen können nicht auf Schlüssel in einem App Configuration-Speicher verweisen, für den Private Link aktiviert ist.
-
-1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt anhand gespeicherter Schlüsselwerte im App Configuration-Speicher eine VM.
-
-    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
-
-1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
-
-    - **Abonnement**: Wählen Sie das Azure-Abonnement zum Erstellen der VM aus.
-    - **Ressourcengruppe**: Geben Sie entweder die gleiche Ressourcengruppe wie für den App Configuration-Speicher an, oder wählen Sie **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.
-    - **Region**: Wählen Sie einen Standort für die Ressourcengruppe aus.  Beispiel: **USA, Osten**
-    - **Standort**: Geben Sie den Standort der VM an. Verwenden Sie den Standardwert.
-    - **Administratorbenutzername**: Geben Sie einen Administratorbenutzernamen für die VM an.
-    - **Administratorkennwort**: Geben Sie ein Administratorkennwort für die VM an.
-    - **Domänennamenbezeichnung**: Geben Sie einen eindeutigen Domänennamen an.
-    - **Name des Speicherkontos**: Geben Sie einen eindeutigen Namen für ein Speicherkonto an, das der VM zugeordnet ist.
-    - **App Config Store Resource Group** (Ressourcengruppe des App Configuration-Speichers): Geben Sie die Ressourcengruppe an, in der Ihr App Configuration-Speicher enthalten ist.
-    - **App Config Store Name** (Name des App Configuration-Speichers): Geben Sie den Namen Ihres Azure App Configuration-Speichers an.
-    - **VM Sku Key** (Schlüssel für die VM-SKU): Geben Sie **windowsOsVersion** an.  Dies ist der Schlüsselwertname, den Sie dem Speicher hinzugefügt haben.
-    - **Disk Size Key** (Schlüssel für die Datenträgergröße): Geben Sie **diskSizeGB** an. Dies ist der Schlüsselwertname, den Sie dem Speicher hinzugefügt haben.
-
-1. Klicken Sie auf **Überprüfen + erstellen**.
-1. Vergewissern Sie sich, dass **Überprüfung erfolgreich** auf der Seite angezeigt wird, und wählen Sie dann **Erstellen** aus.
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie dann zur neu erstellten VM.
-1. Wählen Sie im Menü auf der linken Seite **Übersicht** aus, und überprüfen Sie, ob **2019-Datacenter** als **SKU** angezeigt wird.
-1. Wählen Sie im Menü auf der linken Seite **Datenträger** aus, und überprüfen Sie, ob die Größe des Datenträgers **2013** ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Geben Sie im Azure-Portal im Suchfeld den Suchbegriff **App Configuration** ein. Wählen Sie in der Liste den Eintrag **App Configuration** aus.
+1. Wählen Sie die neu erstellte App Configuration-Ressource aus.
+1. Klicken Sie unter **Vorgänge** auf **Konfigurations-Explorer**.
+1. Vergewissern Sie sich, dass zwei Schlüsselwerte vorhanden sind.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den App Configuration-Speicher, den virtuellen Computer und alle zugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Falls Sie planen, den App Configuration-Speicher oder den virtuellen Computer weiter zu nutzen, können Sie das Löschen überspringen. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle in diesem Schnellstart erstellten Ressourcen, indem Sie das folgende Cmdlet ausführen:
+Löschen Sie die Ressourcengruppe, den App Configuration-Speicher und alle zugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Falls Sie planen, den App Configuration-Speicher weiter zu nutzen, können Sie das Löschen überspringen. Wenn Sie diesen Speicher nicht weiter verwenden möchten, löschen Sie alle in diesem Schnellstart erstellten Ressourcen, indem Sie das folgende Cmdlet ausführen:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup `
-  -Name $resourceGroup
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In dieser Schnellstartanleitung haben Sie einen virtuellen Computer bereitgestellt, indem Sie eine Azure Resource Manager-Vorlage und Schlüsselwerte aus Azure App Configuration verwendet haben.
 
 Fahren Sie mit dem folgenden Artikel fort, um sich über die Erstellung anderer Anwendungen mit Azure App Configuration zu informieren:
 

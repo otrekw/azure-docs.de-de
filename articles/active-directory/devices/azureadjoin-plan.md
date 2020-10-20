@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91653212"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -184,9 +184,10 @@ In Azure AD eingebundene Geräte unterstützen keine lokalen Anwendungen, die Co
 
 Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](/windows/client-management/connect-to-remote-aadj-pc).
 
-Ab dem Windows 10-Update 2004 können Benutzer auch Remotedesktopfunktionen auf einem in Azure AD registrierten Windows 10-Gerät für ein in Azure AD verknüpftes Gerät verwenden. 
+Ab dem Windows 10-Update 2004 können Benutzer auch eine Remotedesktopverbindung auf einem bei Azure AD registrierten Windows 10-Gerät mit einem in Azure AD eingebundenen Gerät verwenden. 
 
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
+**Hinweis**: In Azure AD eingebundene Geräte können nicht mit einem Tool für die Systemvorbereitung (Sysprep) oder mit ähnlichen Abbilderstellungstools bereitgestellt werden.
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
 

@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung über das Portal'
 description: In dieser Schnellstartanleitung erstellen Sie über das Azure-Portal eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
-ms.openlocfilehash: 956ec05b5a7fac862eeea86cf96a2db37f1c0536
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51ca2f9e5d3f3df9304804ba3da2c5c5ceb0c19b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89651963"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875307"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 
@@ -58,7 +58,7 @@ In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung und weis
 1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. In diesem Fall wird _Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden_ übernommen. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.
    Über **Zugewiesen von** werden die Daten abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
 
-1. Lassen Sie **Verwaltete Identität erstellen** deaktiviert. Dieses Feld _muss_ aktiviert werden, wenn die Richtlinie oder Initiative eine Richtlinie mit dem Effekt [deployIfNotExists](./concepts/effects.md#deployifnotexists) enthält. Da dies bei der für diesen Schnellstart verwendeten Richtlinie nicht der Fall ist, lassen Sie es deaktiviert. Weitere Informationen finden Sie unter [Verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) und [Funktionsweise der Wiederherstellungssicherheit](./how-to/remediate-resources.md#how-remediation-security-works).
+1. Lassen Sie **Verwaltete Identität erstellen** deaktiviert. Dieses Kontrollkästchen _muss_ aktiviert werden, wenn die Richtlinie oder Initiative eine Richtlinie mit der Auswirkung [deployIfNotExists](./concepts/effects.md#deployifnotexists) oder [modify](./concepts/effects.md#modify) enthält. Da dies bei der für diesen Schnellstart verwendeten Richtlinie nicht der Fall ist, lassen Sie es deaktiviert. Weitere Informationen finden Sie unter [Verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) und [Funktionsweise der Wiederherstellungssicherheit](./how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Wählen Sie **Zuweisen** aus.
 
@@ -74,15 +74,15 @@ Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform si
 
 Wenn eine Bedingung für einige Ihrer vorhandenen Ressourcen als erfüllt ausgewertet wird, werden diese Ressourcen als nicht mit der Richtlinie konform markiert. Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienauswirkungen, der Bedingungsauswertung und dem resultierenden Konformitätszustand. Die Auswertungslogik wird zwar im Azure-Portal nicht angezeigt, Sie sehen aber die Ergebnisse für den Konformitätszustand. Das Ergebnis für den Konformitätszustand ist entweder „konform“ oder „nicht konform“.
 
-| **Ressourcenzustand** | **Auswirkung** | **Richtlinienauswertung** | **Konformitätszustand** |
+| Ressourcenzustand | Wirkung | Richtlinienauswertung | Konformitätszustand |
 | --- | --- | --- | --- |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nicht konform |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Konform |
-| Neu | Audit, AuditIfNotExist\* | True | Nicht konform |
-| Neu | Audit, AuditIfNotExist\* | False | Konform |
+| Neu oder aktualisiert | Audit, Modify, AuditIfNotExist | True | Nicht konform |
+| Neu oder aktualisiert | Audit, Modify, AuditIfNotExist | False | Konform |
+| Exists | Deny, Audit, Append, Modify, DeployIfNotExist, AuditIfNotExist | True | Nicht konform |
+| Exists | Deny, Audit, Append, Modify, DeployIfNotExist, AuditIfNotExist | False | Konform |
 
-\* Für die Auswirkungen „Append“, „DeployIfNotExist“ und „AuditIfNotExist“ muss die IF-Anweisung auf TRUE festgelegt sein.
-Für die Auswirkungen muss die Existenzbedingung außerdem auf FALSE festgelegt sein, damit sie nicht konform sind. Bei TRUE löst die IF-Bedingung die Auswertung der Existenzbedingung für die zugehörigen Ressourcen aus.
+> [!NOTE]
+> Für die Auswirkungen „DeployIfNotExist“ und „AuditIfNotExist“ muss die IF-Anweisung TRUE und die Existenzbedingung FALSE sein, um nicht konform zu sein. Bei TRUE löst die IF-Bedingung die Auswertung der Existenzbedingung für die zugehörigen Ressourcen aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

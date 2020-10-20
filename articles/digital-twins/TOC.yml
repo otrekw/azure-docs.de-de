@@ -55,6 +55,8 @@
               href: how-to-set-up-instance-portal.md
         - name: Schreiben von App-Authentifizierungscode
           href: how-to-authenticate-client.md
+        - name: Erstellen einer App-Registrierung
+          href: how-to-create-app-registration.md
         - name: Verschieben einer Instanz in eine andere Region
           href: how-to-move-regions.md
     - name: Entwerfen von Modellen

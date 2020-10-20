@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: b0532007ff03cd9dcf253824a1158fd0b8661120
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 82b44c00b0ee4160a4baf6ad6cca7a97350d6239
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760460"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970944"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie Folgendes:
 - [cURL](https://curl.haxx.se/windows/) muss installiert sein.
-- Einen Satz mit mindestens sechs Formularen desselben Typs. Sie verwenden fünf dieser Methoden, um das Modell zu trainieren, und testen es dann mit dem sechsten Formular. Die Dateitypen Ihrer Formulare können unterschiedlich sein, sie müssen jedoch den gleichen Dokumenttyp aufweisen. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto mit der Leistungsstufe „Standard“ hoch. Sie können die Testdateien in einem separaten Ordner speichern.
+- Einen Satz mit mindestens sechs Formularen desselben Typs. Sie verwenden fünf dieser Methoden, um das Modell zu trainieren, und testen es dann mit dem sechsten Formular. Die Dateitypen Ihrer Formulare können unterschiedlich sein, sie müssen jedoch den gleichen Dokumenttyp aufweisen. Sie können ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) für diese Schnellstartanleitung verwenden (*sample_data.zip* herunterladen und extrahieren). Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto mit der Leistungsstufe „Standard“ hoch. Sie können die Testdateien in einem separaten Ordner speichern.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 

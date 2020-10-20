@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601672"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91265934"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -89,6 +89,8 @@ Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premi
 
 > [!WARNING]
 > Wenn Sie die derzeit in der Public Preview verfügbare Funktion für die [konfigurierbare Tokengültigkeitsdauer](../develop/active-directory-configurable-token-lifetimes.md) verwenden, sollten Sie beachten, dass die Erstellung von zwei verschiedenen Richtlinien für dieselbe Benutzer- oder App-Kombination nicht unterstützt wird: eine mit dieser Funktion und eine andere mit der konfigurierbaren Tokengültigkeitsdauer. Microsoft beabsichtigt, die Funktion für die konfigurierbare Tokengültigkeitsdauer am 1. Mai 2020 außer Betrieb zu nehmen und durch die Funktion für die Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff zu ersetzen.  
+>
+> Stellen Sie vor dem Aktivieren der Anmeldehäufigkeit sicher, dass andere Einstellungen für die erneute Authentifizierung in Ihrem Mandanten deaktiviert sind. Wenn „MFA auf vertrauenswürdigen Geräten speichern“ aktiviert ist, deaktivieren Sie diese Option vor dem Verwenden der Anmeldehäufigkeit, da die Verwendung dieser beiden Einstellungen dazu führen kann, dass Benutzer unerwartet aufgefordert werden. Weitere Informationen zu Eingabeaufforderungen für die erneute Authentifizierung und zur Sitzungslebensdauer finden Sie im Artikel [Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Richtlinie 1: Steuerung der Anmeldehäufigkeit
 

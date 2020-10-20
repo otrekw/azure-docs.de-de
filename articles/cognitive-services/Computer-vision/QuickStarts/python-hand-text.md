@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart:  Maschinelles Sehen 2.1 und 3.0: Extrahieren von gedrucktem und handschriftlichem Text – REST, Python'
+title: 'Schnellstart:  Maschinelles Sehen 2.1 und 3.1: Extrahieren von gedrucktem und handschriftlichem Text – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie gedruckten und handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und Python.
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: b1b510ebfcf3622aab79762e447802020781aad3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 82e0f31e28839fb3a87e0b2a539290b194b3ad77
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88236249"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960421"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text mit der Maschinelles Sehen-REST-API und Python
 
-In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um gedruckten oder handschriftlichen Text aus einem Bild zu extrahieren. Mit den Methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) und [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) können Sie Text in einem Bild erkennen und erkannte Zeichen in einen computerlesbaren Zeichenstream extrahieren. 
+In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um gedruckten oder handschriftlichen Text aus einem Bild zu extrahieren. Mit den Methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) und [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) können Sie Text in einem Bild erkennen und erkannte Zeichen in einen computerlesbaren Zeichenstream extrahieren. 
 
 > [!IMPORTANT]
-> Die [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)-Methode wird asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Batch Read-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Location` zurück. Anschließend können Sie diesen URI aufrufen, der die API [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) darstellt, um den Status zu überprüfen und die Ergebnisse des Read-Methodenaufrufs zurückzugeben.
+> Die [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)-Methode wird asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Batch Read-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Location` zurück. Anschließend können Sie diesen URI aufrufen, der die API [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) darstellt, um den Status zu überprüfen und die Ergebnisse des Read-Methodenaufrufs zurückzugeben.
 
 ---
 
@@ -83,7 +83,7 @@ if missing_env:
     print("**Restart your shell or IDE for changes to take effect.**")
     sys.exit()
 
-text_recognition_url = endpoint + "/vision/v3.0/read/analyze"
+text_recognition_url = endpoint + "/vision/v3.1/read/analyze"
 
 # Set image_url to the URL of an image that you want to recognize.
 image_url = "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg"
@@ -146,7 +146,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebsei
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,

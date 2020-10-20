@@ -1,14 +1,14 @@
 ---
 title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538955"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873913"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -72,16 +72,16 @@ Azure Policy verfügt über verschiedene Berechtigungen (als Vorgänge bezeichne
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl **Mitwirkender** als auch **Leser** haben Zugriff auf alle Azure Policy-_Lesevorgänge_. **Mitwirkende** können eine Ressourcenwartung auslösen, aber keine Definitionen oder Zuweisungen _erstellen_.
+Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl **Mitwirkender** als auch **Leser** haben Zugriff auf alle Azure Policy-_Lesevorgänge_. **Mitwirkende** können eine Ressourcenwartung auslösen, aber keine Definitionen oder Zuweisungen _erstellen_. Die Berechtigung **Benutzerzugriffsadministrator** ist erforderlich, um der verwalteten Identität unter den Zuweisungen **deployIfNotExists** oder **modify** die benötigten Berechtigungen zu gewähren.
 
 Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verfügt, erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Die verwaltete Identität einer **deployIfNotExists**-Richtlinienzuweisung benötigt ausreichende Berechtigungen zum Erstellen oder Aktualisieren von Ressourcen, die in der Vorlage enthalten sind. Weitere Informationen finden Sie unter [Konfigurieren von Richtliniendefinitionen für die Wartung](./how-to/remediate-resources.md#configure-policy-definition).
+> Die verwaltete Identität einer Richtlinienzuweisung vom Typ **deployIfNotExists** oder **modify** benötigt ausreichende Berechtigungen zum Erstellen oder Aktualisieren von Zielressourcen. Weitere Informationen finden Sie unter [Konfigurieren von Richtliniendefinitionen für die Wartung](./how-to/remediate-resources.md#configure-policy-definition).
 
 ### <a name="resources-covered-by-azure-policy"></a>Von Azure Policy abgedeckte Ressourcen
 
-Azure Policy wertet alle Ressourcen in Azure aus. Für bestimmte Ressourcenanbieter wie [Gastkonfiguration](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) und [Azure Key Vault](../../key-vault/general/overview.md) gibt es eine tiefergreifendere Integration für die Verwaltung von Einstellungen und Objekten. Weitere Informationen finden Sie unter [Ressourcenanbietermodi](./concepts/definition-structure.md).
+Mit Azure Policy werden alle Ressourcen in Azure und alle Arc-fähigen Ressourcen ausgewertet. Für bestimmte Ressourcenanbieter wie [Gastkonfiguration](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) und [Azure Key Vault](../../key-vault/general/overview.md) gibt es eine tiefergreifendere Integration für die Verwaltung von Einstellungen und Objekten. Weitere Informationen finden Sie unter [Ressourcenanbietermodi](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Empfehlungen für die Verwaltung von Richtlinien
 
@@ -94,7 +94,7 @@ Hier sind einige Hinweise und Tipps aufgeführt, die Sie beachten sollten:
 - Wir empfehlen Ihnen, auch für nur eine einzelne Richtliniendefinition Initiativdefinitionen zu erstellen und zuzuweisen.
   Es kann beispielsweise sein, dass Sie über die Richtliniendefinition _policyDefA_ verfügen und sie unter der Initiativdefinition _initiativeDefC_ erstellen. Wenn Sie später eine andere Richtliniendefinition für _policyDefB_ erstellen, deren Ziele denen von _policyDefA_ ähneln, können Sie sie unter _initiativeDefC_ hinzufügen und beide zusammen nachverfolgen.
 
-- Nachdem Sie eine Initiativzuweisung erstellt haben, werden der Initiative hinzugefügte Richtliniendefinitionen ebenfalls Teil dieser Initiativzuweisungen.
+- Nachdem Sie eine Initiativzuweisung erstellt haben, werden Richtliniendefinitionen, die der Initiative hinzugefügt werden, ebenfalls Teil der Zuweisungen dieser Initiative.
 
 - Wenn eine Initiativzuweisung ausgewertet wird, werden auch alle Richtlinien innerhalb der Initiative ausgewertet.
   Falls Sie eine Richtlinie einzeln auswerten möchten, empfiehlt es sich, sie nicht in eine Initiative aufzunehmen.
@@ -112,7 +112,6 @@ In Azure Policy bieten wir mehrere integrierte Richtlinien an, die standardmäß
 - **Zulässige Standorte** (ablehnen): Schränkt die verfügbaren Standorte für neue Ressourcen ein. Der dazugehörige Effekt dient zur Erzwingung Ihrer Geokonformitätsanforderungen.
 - **Zulässige SKUs für virtuelle Computer** (ablehnen): Gibt eine Gruppe von SKUs für virtuelle Computer an, die Sie bereitstellen können.
 - **Tag zu Ressourcen hinzufügen** (ändern): Wendet ein erforderliches Tag und dessen Standardwert an, falls dies nicht mit der Bereitstellungsanforderung angegeben wird.
-- **Tag und zugehörigen Standardwert anfügen** (anfügen): Erzwingt ein erforderliches Tag und den zugehörigen Wert für eine Ressource.
 - **Nicht zulässige Ressourcentypen** (ablehnen): Verhindert, dass die in der Liste enthaltenen Ressourcentypen bereitgestellt werden.
 
 Um diese Richtliniendefinitionen implementieren zu können (integrierte und benutzerdefinierte Definitionen), müssen Sie sie zuweisen. Sie können diese Richtlinien über das Azure-Portal, PowerShell oder die Azure CLI zuweisen.

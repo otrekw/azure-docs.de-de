@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 7c647ba9a89fedf0d43bd8b10460fed101d166b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1ce0368bb86134bd52473b80eabbfaf87e36148d
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801394"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939646"
 ---
 # <a name="what-is-azure-private-link"></a>Was ist Azure Private Link? 
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen.
@@ -62,7 +62,7 @@ Azure Private Link bietet folgende Vorteile:
 |Azure Service Bus | Alle öffentlichen Regionen<br/>Alle Government-Regionen  | Wird für den Premium-Tarif von Azure Service Bus unterstützt [Für Tarife auswählen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Service Bus erstellen.](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Relay | Alle öffentlichen Regionen      |  | Vorschau <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Relay erstellen.](https://docs.microsoft.com/azure/azure-relay/private-link-service)  |
 |Azure Event Grid| Alle öffentlichen Regionen<br/> Alle Government-Regionen       |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Event Grid erstellen.](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure-Web-Apps | Alle öffentlichen Regionen      | Unterstützt mit PremiumV2 Windows und Linux und elastischen Premium-Funktionen  | Vorschau   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure-Web-Apps erstellen.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
+|Azure-Web-Apps | Alle öffentlichen Regionen      | Unterstützt mit PremiumV2-, PremiumV3- oder Functions-Premium-Plan  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure-Web-Apps erstellen.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
 |Azure Machine Learning | Alle öffentlichen Regionen    |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Machine Learning erstellen.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure-Automatisierung  | Alle öffentlichen Regionen |  | Vorschau </br> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Automation erstellen.](https://docs.microsoft.com/azure/automation/how-to/private-link-security)| |
 | Azure IoT Hub | Alle öffentlichen Regionen    |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure IoT Hub erstellen.](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |

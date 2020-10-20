@@ -1,5 +1,6 @@
 ---
-title: Aufrufen einer Web-API aus einer Web-App – Microsoft Identity Platform | Azure
+title: Aufrufen einer Web-API über eine Web-App | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Aufrufen einer geschützten Web-API).
 services: active-directory
 author: jmprieur
@@ -8,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e448f52f4e8c24dd8552cae873edac841e57fc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058439"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396126"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web-App, die Web-APIs aufruft: Aufrufen einer Web-API
 
-Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufrufen.
+Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufrufen. In der Regel rufen Sie eine Downstream-API über den Controller oder die Seiten Ihrer Web-App auf.
 
 ## <a name="call-a-protected-web-api"></a>Aufrufen einer geschützten Web-API
 
@@ -28,20 +29,103 @@ Das Aufrufen einer geschützten Web-API hängt von der verwendeten Programmiersp
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Im Anschluss finden Sie einen vereinfachten Code für die Aktion von `HomeController`. Mit diesem wird ein Token für den Aufruf von Microsoft Graph abgerufen. Es wurde Code hinzugefügt, um das Aufrufen von Microsoft Graph als REST-API zu zeigen. Die URL für die Microsoft Graph-API wird in der Datei „appsettings.json“ bereitgestellt und in einer Variablen namens `webOptions` gelesen:
+Bei Verwendung von *Microsoft.Identity.Web* stehen Ihnen drei Optionen zum Aufrufen einer API zur Verfügung:
 
-```json
+- [Option 1: Aufrufen von Microsoft Graph mit dem Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
+- [Option 2: Aufrufen einer Downstream-Web-API mit der Hilfsklasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Option 3: Aufrufen einer Downstream-Web-API ohne die Hilfsklasse](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Option 1: Aufrufen von Microsoft Graph mit dem SDK
+
+Sie möchten Microsoft Graph aufrufen. In diesem Szenario haben Sie `AddMicrosoftGraph` in der Datei *Startup.cs* (wie unter [Codekonfiguration](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph) angegeben) hinzugefügt, und Sie können den `GraphServiceClient` direkt in den Controller oder Seitenkonstruktor zur Verwendung in den Aktionen einfügen. Auf der folgenden Razor-Beispielseite wird das Foto des angemeldeten Benutzers angezeigt.
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
+public class IndexModel : PageModel
 {
-  "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    ...
-  },
-  ...
-  "GraphApiUrl": "https://graph.microsoft.com"
+ private readonly GraphServiceClient _graphServiceClient;
+
+ public IndexModel(GraphServiceClient graphServiceClient)
+ {
+    _graphServiceClient = graphServiceClient;
+ }
+
+ public async Task OnGet()
+ {
+  var user = await _graphServiceClient.Me.Request().GetAsync();
+  try
+  {
+   using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+   {
+    byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+    ViewData["photo"] = Convert.ToBase64String(photoByte);
+   }
+   ViewData["name"] = user.DisplayName;
+  }
+  catch (Exception)
+  {
+   ViewData["photo"] = null;
+  }
+ }
 }
 ```
 
-```csharp
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Option 2: Aufrufen einer Downstream-Web-API mit der Hilfsklasse
+
+Sie möchten eine andere Web-API als Microsoft Graph aufrufen. In diesem Fall haben Sie `AddDownstreamWebApi` in der Datei *Startup.cs* (wie unter [Codekonfiguration](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph) angegeben) hinzugefügt, und Sie können einen `IDownstreamWebApi`-Dienst direkt in den Controller oder Seitenkonstruktor einfügen und in den Aktionen verwenden:
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+public class TodoListController : Controller
+{
+  private IDownstreamWebApi _downstreamWebApi;
+  private const string ServiceName = "TodoList";
+
+  public TodoListController(IDownstreamWebApi downstreamWebApi)
+  {
+    _downstreamWebApi = downstreamWebApi;
+  }
+
+  public async Task<ActionResult> Details(int id)
+  {
+    var value = await _downstreamWebApi.CallWebApiForUserAsync(
+      ServiceName,
+      options =>
+      {
+        options.RelativePath = $"me";
+      });
+      return View(value);
+  }
+}
+```
+
+`CallWebApiForUserAsync` verfügt auch über stark typisierte generische Überschreibungen, mit denen Sie ein Objekt direkt empfangen können. Beispielsweise wird mit der folgenden Methode eine `Todo`-Instanz empfangen, die eine stark typisierte Darstellung der von der Web-API zurückgegebenen JSON ist.
+
+```CSharp
+    // GET: TodoList/Details/5
+    public async Task<ActionResult> Details(int id)
+    {
+        var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+            ServiceName,
+            null,
+            options =>
+            {
+                options.HttpMethod = HttpMethod.Get;
+                options.RelativePath = $"api/todolist/{id}";
+            });
+        return View(value);
+    }
+   ```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Option 3: Aufrufen einer Downstream-Web-API ohne die Hilfsklasse
+
+Sie haben sich entschieden, ein Token mit dem `ITokenAcquisition`-Dienst manuell abzurufen, und jetzt müssen Sie das Token verwenden. In diesem Fall setzt der folgende Code den Beispielcode fort, den Sie hier finden: [Web-App, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-app-call-api-acquire-token.md). Der Code wird in den Aktionen der Web-App-Controller aufgerufen.
+
+Nachdem Sie das Token abgerufen haben, können Sie es als Bearertoken zum Aufrufen der Downstream-API (in diesem Fall Microsoft Graph) verwenden.
+
+ ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,11 +149,10 @@ public async Task<IActionResult> Profile()
   return View();
 }
 ```
-
 > [!NOTE]
 > Sie können dasselbe Prinzip für den Aufruf jeder anderen Web-API verwenden.
 >
-> Die meisten Azure-Web-APIs bieten ein SDK zur Vereinfachung des API-Aufrufs. Das ist auch bei Microsoft Graph der Fall. Im nächsten Artikel erfahren Sie, wo Sie ein Tutorial zur Veranschaulichung der API-Verwendung finden.
+> Die meisten Azure-Web-APIs bieten ein SDK zur Vereinfachung des API-Aufrufs, wie es auch bei Microsoft Graph der Fall ist. Ein Beispiel für eine Web-App, die Microsoft.Identity.Web und das Azure Storage SDK verwendet, finden Sie unter [Erstellen einer Webanwendung, die Zugriff auf Blob Storage über Azure AD gewährt](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet).
 
 # <a name="java"></a>[Java](#tab/java)
 

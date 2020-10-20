@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756749"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976928"
 ---
 # <a name="quickstart-handle-sms-events"></a>Schnellstart: Behandeln von SMS-Ereignissen
 
@@ -86,13 +86,13 @@ Wählen Sie anschließend **Auswahl bestätigen** aus.
 Zum Anzeigen von Ereignisauslösern müssen wir zuerst Ereignisse generieren.
 
 - `SMS Received`-Ereignisse (SMS empfangen) werden generiert, wenn die Communication Services-Telefonnummer eine Textnachricht empfängt. Um ein Ereignis auszulösen, senden Sie einfach eine Nachricht von Ihrem Telefon an die Telefonnummer, die an die Communication Services-Ressource angefügt ist.
-- `SMS Delivery Report Received`-Ereignisse (SMS-Zustellberichte empfangen) werden generiert, wenn Sie mit einer Communication Services-Nummer eine SMS an einen Benutzer senden. Um das Ereignis auszulösen, müssen Sie `Delivery Report` (Zustellbericht) in den Optionen der [gesendeten SMS](../telephony-sms/send.md) aktivieren. Senden Sie eine Nachricht an Ihr Mobiltelefon mit einem Zustellbericht (`Delivery Report`). Für diese Aktion fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
+- `SMS Delivery Report Received`-Ereignisse (SMS-Zustellberichte empfangen) werden generiert, wenn Sie mit einer Communication Services-Nummer eine SMS an einen Benutzer senden. Zum Auslösen eines Ereignisses müssen Sie in den Optionen der [gesendeten SMS](../telephony-sms/send.md) die Option `Delivery Report` (Zustellbericht) aktivieren. Senden Sie eine Nachricht an Ihr Mobiltelefon mit einem Zustellbericht (`Delivery Report`). Für diese Aktion fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
 Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](../../concepts/event-handling.md) an.
 
 ### <a name="receiving-sms-events"></a>Empfangen von SMS-Ereignissen
 
-Nachdem Sie die obigen Aktionen ausgeführt haben, werden Sie feststellen, dass `SMS Received`- (SMS empfangen) und `SMS Delivery Report Received`-Ereignisse (SMS-Zustellberichte empfangen) an Ihren Endpunkt gesendet werden. Diese Ereignisse werden im [Azure Event Grid Viewer-Beispiel](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) angezeigt, das wir am Anfang eingerichtet haben. Wählen Sie das Augensymbol neben dem Ereignis aus, um die gesamte Payload anzuzeigen. Die Ereignisse sehen wie folgt aus:
+Nachdem Sie die obigen Aktionen durchgeführt haben, stellen Sie fest, dass die Ereignisse `SMS Received` (SMS empfangen) und `SMS Delivery Report Received` (SMS-Zustellbericht empfangen) an Ihren Endpunkt gesendet werden. Diese Ereignisse werden im [Azure Event Grid Viewer-Beispiel](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) angezeigt, das wir am Anfang eingerichtet haben. Wählen Sie das Augensymbol neben dem Ereignis aus, um die gesamte Payload anzuzeigen. Ereignisse sehen wie folgt aus:
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Screenshot, der die Auswahl der Schaltfläche „Ereignisabonnement“ auf der Ereignisseite einer Ressource zeigt":::
 

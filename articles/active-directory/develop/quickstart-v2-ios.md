@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b171688fa4dbff8d05b3ba03e4e4bd29028983be
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613457"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016143"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -180,7 +180,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | `clientId` | Die Anwendungs-ID der in *portal.azure.com* registrierten Anwendung. |
-> | `authority` | Der Microsoft Identity Platform-Endpunkt. In den meisten Fällen ist dies *https<span/>://login.microsoftonline.com/common*. |
+> | `authority` | Der Microsoft Identity Platform-Endpunkt. In den meisten Fällen ist dies `https://login.microsoftonline.com/common`. |
 > | `redirectUri` | Der Umleitungs-URI der Anwendung. Sie können „nil“ übergeben, um den Standardwert zu verwenden, oder Ihren benutzerdefinierten Umleitungs-URI angeben. |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Nur iOS: zusätzliche App-Anforderungen
@@ -274,3 +274,4 @@ Fahren Sie mit dem Schritt-für-Schritt-Tutorial fort, in dem Sie eine iOS- oder
 
 > [!div class="nextstepaction"]
 > [Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App](tutorial-v2-ios.md)
+

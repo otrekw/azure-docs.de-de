@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166313"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612811"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
 
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Von Azure AD werden folgende Ansprüche erwartet:
+[Von Azure AD werden die folgenden Ansprüche erwartet](active-directory-certificate-credentials.md):
 
 Anspruchstyp | value | BESCHREIBUNG
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). [RFC 7519, Abschnitt 4.1.3]
-exp | Thu Jun 27 2019 15:04:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519 Abschnitt 4.1.4]
-iss | {ClientID} | Der Anspruch „iss“ (Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat. Die Verarbeitung dieses Anspruchs ist anwendungsspezifisch. Der Wert von „iss“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung, die einen StringOrURI-Wert enthält. [RFC 7519, Abschnitt 4.1.1]
-jti | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Anspruch „jti“ kann verwendet werden, um die erneute Wiedergabe des JWT zu verhindern. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7]
-nbf | Thu Jun 27 2019 14:54:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519, Abschnitt 4.1.5]
-sub | {ClientID} | Der Anspruch „sub“ (Antragsteller) identifiziert den Antragsteller des JWT. Die Ansprüche in einem JWT sind normalerweise Angaben zum Antragsteller. Der Antragstellerwert MUSS entweder im Kontext des Ausstellers lokal eindeutig sein oder global eindeutig sein. [RFC 7519, Abschnitt 4.1.2]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (audience, Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In diesem Fall ist dieser Empfänger der Anmeldeserver (login.microsoftonline.com).
+exp | 1601519414 | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  So kann die Assertion bis zu diesem Zeitpunkt verwendet werden. Daher sollte der Zeitraum kurz ausfallen, d. h. höchstens 5–10 Minuten nach `nbf` liegen.  In Azure AD gelten derzeit keine Einschränkungen für den `exp`-Zeitpunkt. 
+iss | {ClientID} | Der Anspruch „iss“ (issuer, Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat, in diesem Fall Ihre Clientanwendung.  Verwenden Sie die GUID der Anwendungs-ID.
+jti | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+nbf | 1601519114 | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Die Verwendung der aktuellen Uhrzeit ist angemessen. 
+sub | {ClientID} | Der Anspruch „sub“ (subject, Antragsteller) identifiziert den Antragsteller des JWT, in diesem Fall ist das auch Ihre Anwendung. Verwenden Sie denselben Wert wie für `iss`. 
 
 Im folgenden Beispiel wird das Erstellen dieser Ansprüche veranschaulicht:
 

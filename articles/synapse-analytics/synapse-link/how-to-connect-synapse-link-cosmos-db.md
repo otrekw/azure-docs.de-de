@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50717c7e8a7b0f748df98c1896e1b7eb64cd7be3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287891"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819349"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Herstellen einer Verbindung mit Azure Synapse Link (Vorschau) für Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Es empfiehlt sich, Synapse Link für Azure Cosmos DB zu aktivieren, wenn Sie umf
 
 ## <a name="navigate-to-synapse-studio"></a>Navigieren zu Synapse Studio
 
-Wählen Sie in Ihrem Synapse-Arbeitsbereich die Option **Synapse Studio starten** aus. Wählen Sie auf der Synapse Studio-Startseite „Daten“ aus. Dadurch gelangen Sie zum **Datenobjekt-Explorer**.
+Wählen Sie in Ihrem Synapse-Arbeitsbereich die Option **Synapse Studio starten** aus. Wählen Sie auf der Synapse Studio-Startseite die Option **Daten** aus, um zum **Datenobjekt-Explorer** zu gelangen.
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Herstellen einer Verbindung zwischen einer Azure Cosmos DB-Datenbank und einem Synapse-Arbeitsbereich
 

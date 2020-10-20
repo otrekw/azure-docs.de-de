@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Formularverarbeitung, automatisierte Datenverarbeitung
-ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b024b3fac76e51264e89100e63a3cdc477443157
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318901"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963046"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Schnellstart: Verwenden der Clientbibliothek für die Formularerkennung
 
-Hier erfahren Sie mehr zu den ersten Schritten mit der Formularerkennungs-Clientbibliothek in der Sprache Ihrer Wahl. Die Azure-Formularerkennung ist ein kognitiver Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten: Der Dienst gibt strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Führen Sie die nachfolgenden Schritte zum Installieren des SDK-Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
+Hier erfahren Sie mehr zu den ersten Schritten mit der Formularerkennungs-Clientbibliothek in der Sprache Ihrer Wahl. Die Azure-Formularerkennung ist ein kognitiver Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten: Der Dienst gibt strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Führen Sie die nachfolgenden Schritte zum Installieren des SDK-Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Die Clientbibliothek für die Formularerkennung ist derzeit auf v2.0 des Formularerkennungsdiensts ausgerichtet.
 
 Verwenden Sie die Clientbibliothek für die Formularerkennung für Folgendes:
 

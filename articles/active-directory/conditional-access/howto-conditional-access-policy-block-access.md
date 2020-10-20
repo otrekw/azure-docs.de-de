@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601587"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91265985"
 ---
 # <a name="conditional-access-block-access"></a>Bedingter Zugriff: Zugriff blockieren
 
@@ -38,7 +38,7 @@ Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfoh
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-insights-reporting.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren**.
+Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-insights-reporting.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren**.
 
 Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Microsoft 365-Anwendungen, wenn sie sich nicht an einem vertrauenswürdigen Standort befinden.
 
@@ -52,7 +52,7 @@ Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Micros
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Cloud-Apps oder -Aktionen** die folgenden Optionen aus:
    1. Wählen Sie unter **Einschließen** die Option **Alle Cloud-Apps** aus.
-   1. Wählen Sie unter **Ausschließen** die Option **Office 365 (Vorschau)** aus, und wählen Sie **Auswählen** und dann **Fertig** aus.
+   1. Wählen Sie unter **Ausschließen** die Option **Office 365** aus, wählen Sie **Auswählen** aus, und wählen Sie dann **Fertig** aus.
 1. Unter **Bedingungen**:
    1. Unter **Bedingungen** > **Standort**.
       1. Legen Sie **Konfigurieren** auf **Ja** fest.
@@ -72,7 +72,7 @@ Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Microsof
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig**aus.
-1. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus. Wählen Sie dann **Office 365 (Vorschau)** und anschließend **Auswählen** sowie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus, und wählen Sie **Office 365** aus. Wählen Sie dann **Auswählen** und anschließend **Fertig** aus.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff gewähren** aus.
    1. Wählen Sie **Mehrstufige Authentifizierung erforderlich** und **Markieren des Geräts als kompatibel erforderlich** und dann **Auswählen** aus.
    1. Stellen Sie sicher, dass **Alle ausgewählten Steuerungen anfordern** ausgewählt ist.

@@ -94,25 +94,24 @@
     - name: Überwachen
     - name: Erstellen von Rollen und Berechtigungen
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: Verteilte Ablaufverfolgung und App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: Analysieren von Protokollen und Metriken
-          href: diagnostic-services.md
-        - name: Streamen von Protokollen in Echtzeit
-          href: spring-cloud-howto-log-streaming.md
-    - name: DevOps-Bereitstellung
-      items:
-        - name: CI/CD mit Azure DevOps
-          href: spring-cloud-howto-cicd.md
-        - name: CI/CD mit GitHub Actions
-          href: spring-cloud-howto-github-actions.md
-        - name: Authentifizierung mit Key Vault in GitHub-Aktionen
-          href: spring-cloud-github-actions-key-vault.md
-    - name: Problembehandlung
-      items:
-        - name: Handbuch zur Problembehandlung
-          href: spring-cloud-troubleshoot.md
+    - name: Verteilte Ablaufverfolgung und App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Analysieren von Protokollen und Metriken
+      href: diagnostic-services.md
+    - name: Streamen von Protokollen in Echtzeit
+      href: spring-cloud-howto-log-streaming.md
+- name: DevOps-Bereitstellung
+  items:
+    - name: CI/CD mit Azure DevOps
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD mit GitHub Actions
+      href: spring-cloud-howto-github-actions.md
+    - name: Authentifizierung mit Key Vault in GitHub-Aktionen
+      href: spring-cloud-github-actions-key-vault.md
+- name: Problembehandlung
+  items:
+    - name: Handbuch zur Problembehandlung
+      href: spring-cloud-troubleshoot.md
 - name: Verweis
   items:
     - name: Azure CLI-Plug-In

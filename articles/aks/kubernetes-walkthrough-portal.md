@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie über das Azure-Portal schnell einen Kubernetes-Cluster erstellen, eine Anwendung bereitstellen und die Leistung in Azure Kubernetes Service (AKS) überwachen können.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2331f2a9dc4ca0e94b251a03e7917547f360af4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459794"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850437"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal
 
@@ -37,15 +37,15 @@ Führen Sie zum Erstellen eines AKS-Clusters die folgenden Schritte aus:
 
 3. Konfigurieren Sie auf der Seite **Grundlagen** die folgenden Optionen:
     - **Projektdetails**: Wählen Sie unter **Abonnement** ein Azure-Abonnement aus, und wählen Sie anschließend unter **Ressourcengruppe** eine Azure-Ressourcengruppe aus, oder erstellen Sie eine Azure-Ressourcengruppe (beispielsweise *myResourceGroup*).
-    - **Clusterdetails**: Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*. Wählen Sie eine **Region**, eine **Kubernetes-Version** und ein **DNS-Namenspräfix** für den AKS-Cluster aus.
-    - **Primärer Knotenpool**: Wählen Sie unter **Knotengröße** eine VM-Knotengröße für die AKS-Knoten aus. Die VM-Größe kann nach der Bereitstellung eines AKS-Clusters *nicht mehr geändert* werden. 
+    - **Clusterdetails**: Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*. Wählen Sie eine **Region** und eine **Kubernetes-Version** für den AKS-Cluster aus.
+    - **Primärer Knotenpool**: Wählen Sie unter **Knotengröße** eine VM-Knotengröße für die AKS-Knoten aus. Die VM-Größe kann nach der Bereitstellung eines AKS-Clusters *nicht mehr geändert* werden.
             - Wählen Sie die Anzahl von Knoten aus, die im Cluster bereitgestellt werden sollen. Legen Sie für diese Schnellstartanleitung für **Anzahl von Knoten** die Option *1* fest. Die Knotenanzahl *kann* nach der Clusterbereitstellung angepasst werden.
     
     ![Erstellen eines AKS-Clusters – Angeben grundlegender Informationen](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Klicken Sie auf **Weiter: Skalieren**, wenn der Vorgang abgeschlossen ist.
+    Klicken Sie auf **Weiter: Knotenpools**, wenn Sie fertig sind.
 
-4. Behalten Sie auf der Seite **Skalieren** die Standardoptionen bei. Klicken Sie im unteren Bildschirmbereich auf **Weiter: Authentifizierung**.
+4. Übernehmen Sie auf der Seite **Knotenpools** die Standardoptionen. Klicken Sie im unteren Bildschirmbereich auf **Weiter: Authentifizierung**.
     > [!CAUTION]
     > Die Verteilung und Bereitstellung neuer AAD-Dienstprinzipale kann mehrere Minuten dauern. Dadurch können im Azure-Portal Fehler vom Typ „Dienstprinzipal nicht gefunden“ sowie Validierungsfehler auftreten. [Hier](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) finden Sie Lösungen für dieses Problem.
 

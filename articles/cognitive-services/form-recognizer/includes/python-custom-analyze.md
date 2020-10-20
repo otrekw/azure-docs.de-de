@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88723491"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961787"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analysieren von Formularen für Schlüssel-Wert-Paare und Tabellen
 
 Als Nächstes verwenden Sie Ihr gerade trainiertes Modell, um ein Dokument zu analysieren und Schlüssel-Werte-Paare und Tabellen daraus zu extrahieren. Rufen Sie die **[Analyze Form](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** -API auf, indem Sie den folgenden Code in einem neuen Python-Skript ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
 
-1. Ersetzen Sie `<file path>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“). Hierbei kann es sich auch um die URL einer Remotedatei handeln. In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
+1. Ersetzen Sie `<file path>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“). Hierbei kann es sich auch um die URL einer Remotedatei handeln. In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden (*sample_data.zip* herunterladen und extrahieren).
 1. Ersetzen Sie `<model_id>` durch die Modell-ID, die Sie im vorherigen Abschnitt erhalten haben.
 1. Ersetzen Sie `<endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
 1. Ersetzen Sie `<file type>` durch den Dateityp. Unterstützte Typen: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.

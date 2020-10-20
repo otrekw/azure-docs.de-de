@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: c44be63e4d69f6603df76147329981bd82e6e50d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1b2ddb4d5f9c6e0e927c5249ada8dc061141a00
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833843"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858284"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Ruby
 
@@ -33,35 +33,7 @@ In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-
 
 Erstellen Sie eine neue Datei namens _faceDetection.rb_, und fügen Sie ihr den folgenden Code hinzu. Mit diesem Code wird die Gesichtserkennungs-API für eine bestimmte Bild-URL aufgerufen.
 
-```ruby
-require 'net/http'
-
-# replace <My Endpoint String> in the URL below with the string from your endpoint.
-uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
-uri.query = URI.encode_www_form({
-    # Request parameters
-    'returnFaceId' => 'true',
-    'returnFaceLandmarks' => 'false',
-    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,' +
-        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
-})
-
-request = Net::HTTP::Post.new(uri.request_uri)
-
-# Request headers
-# Replace <Subscription Key> with your valid subscription key.
-request['Ocp-Apim-Subscription-Key'] = '<Subscription Key>'
-request['Content-Type'] = 'application/json'
-
-imageUri = "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg"
-request.body = "{\"url\": \"" + imageUri + "\"}"
-
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request(request)
-end
-
-puts response.body
-```
+:::code language="ruby" source="~/cognitive-services-quickstart-code/ruby/face/rest/detect.rb":::
 
 Sie müssen den Wert `request['Ocp-Apim-Subscription-Key']` mit Ihrem Abonnementschlüssel aktualisieren und die Zeichenfolge `uri` ändern, sodass sie den korrekten Endpunkt enthält.
 
@@ -78,6 +50,35 @@ ruby faceDetection.rb
 ```
 
 Daraufhin sollte in der Konsole eine JSON-Zeichenfolge mit erkannten Gesichtsdaten ausgegeben werden. Der folgende Text ist ein Beispiel für eine erfolgreiche JSON-Antwort.
+
+```json
+[
+  {
+    "faceId": "e93e0db1-036e-4819-b5b6-4f39e0f73509",
+    "faceRectangle": {
+      "top": 621,
+      "left": 616,
+      "width": 195,
+      "height": 195
+    }
+  }
+]
+```
+
+## <a name="extract-face-attributes"></a>Extrahieren von Gesichtsattributen
+ 
+Verwenden Sie zum Extrahieren von Gesichtsattributen das Erkennungsmodell 1, und fügen Sie den Abfrageparameter `returnFaceAttributes` hinzu.
+
+```ruby
+uri.query = URI.encode_www_form({
+    # Request parameters
+    'detectionModel' => 'detection_01',
+    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+    'returnFaceId' => 'true'
+})
+```
+
+Die Antwort enthält jetzt Gesichtsattribute. Beispiel:
 
 ```json
 [

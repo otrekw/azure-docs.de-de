@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461033"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91306564"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461033"
 
 * Automatisieren der Überprüfungsergebnisse, z. B. Entfernen des Benutzerzugriffs auf Ressourcen
 
-  ![Planen von Zugriffsüberprüfungen](./media/deploy-access-review/1-planning-review.png)
+  ![Diagramm des Flows für Zugriffsüberprüfungen.](./media/deploy-access-review/1-planning-review.png)
 
 Zugriffsüberprüfungen sind eine Funktion der [Azure AD Identity Governance](identity-governance-overview.md). Die weiteren Funktionen sind [Berechtigungsverwaltung](entitlement-management-overview.md), [Privileged Identity Management](../privileged-identity-management/pim-configure.md) und [Nutzungsbedingungen](../conditional-access/terms-of-use.md). Sie alle helfen Organisationen dabei, die folgenden vier Fragen zu beantworten:
 
@@ -300,7 +300,7 @@ Beim [Erstellen eines Zugriffspakets](entitlement-management-access-package-crea
 
 Öffnen Sie die Registerkarte „Lebenszyklus“, und scrollen Sie nach unten zu „Zugriffsüberprüfungen“.
 
- ![Richtlinie bearbeiten](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![Screenshot der Option „Richtlinie bearbeiten“ auf der Registerkarte „Lebenszyklus“.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>Planen von Zugriffsüberprüfungen für Gruppen
 
@@ -446,7 +446,7 @@ Die Notwendigkeit des Zugriffs von Mitarbeitern und Gästen auf Gruppen und Anwe
 
 Sie sollten den Zugriff von privilegierten Azure AD-Rollen in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern.
 
-![Überprüfen von Azure AD-Rollen](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Screenshot der Liste „Mitgliedschaft überprüfen“ der Azure AD-Rollen.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 Folgen Sie den Anweisungen unter den nachstehenden Links:
 

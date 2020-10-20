@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658755"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295021"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -125,7 +125,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 1. Öffnen Sie das Tool Gruppenrichtlinienverwaltungs-Editor.
 2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
 3. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** . Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![Screenshot der Sicherheitsseite, auf der „Liste der Site zu Zonenzuweisungen“ ausgewählt ist.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte in das Dialogfeld ein:
    - **Wertname:** Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
    - **Wert** (Daten): **1** gibt die Intranetzone an.
@@ -142,15 +142,15 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
 5. Klicken Sie auf **OK** und anschließend erneut auf **OK**.
 
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![Screenshot des Fensters „Inhalt anzeigen“ mit einer ausgewählten Zonenzuweisung.](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**  > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
 
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![Screenshot der Seite „Intranetzone“, auf der „Aktualisierungen der Statusleiste per Skript zulassen“ ausgewählt ist.](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. Aktivieren Sie die Richtlinieneinstellung, und klicken Sie dann auf **OK**.
 
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![Screenshot des Fensters „Aktualisierungen der Statusleiste per Skript zulassen“ mit aktivierter Richtlinieneinstellung.](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>Option „Gruppenrichtlinieneinstellung“ – detaillierte Schritte
 
@@ -158,7 +158,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
 3. Navigieren Sie zu **Benutzerkonfiguration** > **Voreinstellungen** > **Windows-Einstellungen** > **Registrierung** > **Neu** > **Registrierungselement**.
 
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![Screenshot, in dem die Optionen „Registrierung“ und „Registrierungselement“ ausgewählt sind.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Geben Sie die folgenden Werte in die entsprechenden Felder ein, und klicken Sie anschließend auf **OK**.
    - **Schlüsselpfad:** ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
@@ -166,7 +166,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
    - **Werttyp:** ***REG_DWORD***
    - **Wertdaten:** ***00000001***
  
-     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Screenshot des Fensters „Neue Registrierungseigenschaften“.](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso17.png)
 

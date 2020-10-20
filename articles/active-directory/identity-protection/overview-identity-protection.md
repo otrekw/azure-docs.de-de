@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265271"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996525"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -113,6 +113,8 @@ Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei d
 | Benachrichtigungen | Warnungen zu erkannten gefährdeten Benutzern  | Nein | Nein |Ja |
 | Benachrichtigungen | Wöchentliche Übersicht| Nein | Nein | Ja | 
 | | Richtlinie für MFA-Registrierung | Nein | Nein | Ja |
+
+Weitere Informationen zu diesen umfassenden Berichten finden Sie im Artikel zu den [ Risiken](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665190"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977866"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
 
@@ -34,7 +34,8 @@ Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken 
 |                   | Tätigen eines Gruppenanrufs zwischen mehr als zwei Benutzern (bis zu 350 Benutzer)                                                       | ✔️   | ✔️            | ✔️ 
 |                   | Höherstufen eines 1:1-Anrufs mit zwei Benutzern zu einem Gruppenanruf mit mehr als zwei Benutzern                                 | ✔️   | ✔️            | ✔️ 
 |                   | Beitreten zu einem bereits gestarteten Gruppenanruf                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Einladen eines weiteren VoIP-Teilnehmers zu einem laufenden Gruppenanruf                                                       | ✔️   | ✔️            | ✔️ 
+|                   | Einladen eines weiteren VoIP-Teilnehmers zu einem laufenden Gruppenanruf                                                       | ✔️   | ✔️            | ✔️
+|                   | Aktivieren/Deaktivieren Ihres Videos                                                         | ✔️   | ✔️            | ✔️ 
 |                   | Stummschalten des Mikrofons/Aufheben der Stummschaltung                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | Wechseln zwischen Kameras                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | Lokales Halten/Aufheben des Haltens                                                                                                  | ✔️   | ✔️            | ✔️           

@@ -1,5 +1,6 @@
 ---
-title: Abrufen eines Tokens in einer Web-App, die Web-APIs aufruft – Microsoft Identity Platform | Azure
+title: Abrufen eines Tokens in einer Web-App, die Web-APIs aufruft | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie in einer Web-App, die Web-APIs aufruft, ein Token abrufen
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518180"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396177"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web-App, die Web-APIs aufruft: Abrufen eines Tokens für die App
 
@@ -27,7 +28,11 @@ Sie haben das Clientanwendungsobjekt erstellt. Jetzt rufen Sie damit ein Token a
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Die Controllermethoden sind durch ein `[Authorize]`-Attribut geschützt, mit dem erzwungen wird, dass Benutzer für die Verwendung der Web-App authentifiziert werden müssen. Mit dem folgenden Code wird Microsoft Graph aufgerufen:
+Von *Microsoft.Identity.Web* werden Erweiterungsmethoden hinzugefügt, die praktische Dienste zum Aufrufen von Microsoft Graph oder einer Downstream-Web-API bereitstellen. Eine ausführliche Beschreibung dieser Methoden finden Sie unter [Web-App, die Web-APIs aufruft: Aufrufen einer Web-API](scenario-web-app-call-api-call-api.md). Mit diesen Hilfsmethoden ist kein manueller Tokenabruf erforderlich.
+
+Wenn Sie jedoch ein Token manuell abrufen möchten, sehen Sie sich den folgenden Code an, der ein Beispiel dafür bietet, wie Sie dies mithilfe von *Microsoft.Identity.Web* in einem Home-Controller tun können. Microsoft Graph wird mit der REST-API (anstelle des Microsoft Graph SDK) aufgerufen. Um ein Token zum Aufrufen der Downstream-API abzurufen, fügen Sie den `ITokenAcquisition`-Dienst per Abhängigkeitsinjektion in den Konstruktor Ihres Controllers (oder bei Verwendung von Blazor in den Seitenkonstruktor) ein, und Sie verwenden ihn in den Controlleraktionen. Sie erhalten ein Token für den Benutzer (`GetAccessTokenForUserAsync`) oder in einem Daemonszenario für die Anwendung selbst (`GetAccessTokenForAppAsync`).
+
+Die Controllermethoden sind durch ein `[Authorize]`-Attribut geschützt, das sicherstellt, dass nur authentifizierte Benutzer die Web-App verwenden dürfen.
 
 ```csharp
 [Authorize]
