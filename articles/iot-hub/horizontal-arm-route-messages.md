@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89462665"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148916"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Schnellstart: Bereitstellen einer Azure IoT Hub-Instanz und eines Speicherkontos mithilfe einer ARM-Vorlage
 
@@ -46,7 +46,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Vorlage bereitstellen, ein virtuel
 
     [![In Azure bereitstellen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Laden Sie die [IoT-Beispiele für C#](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/) herunter, und entpacken Sie sie.
+1. Laden Sie die [IoT-Beispiele für C#](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/) herunter, und entpacken Sie sie.
 
 1. Öffnen Sie ein Befehlsfenster, und navigieren Sie zu dem Ordner, in dem Sie die IoT-Beispiele für C# entzippt haben. Suchen Sie nach dem Ordner, der die Datei „arm-read-write.csproj“ enthält. Dieses Befehlsfenster wird zum Erstellen der Umgebungsvariablen verwendet. Melden Sie sich beim [Azure-Portal](https://portal.azure.com ] an, um die Schlüssel zu erhalten. Wählen Sie **Ressourcengruppen** und anschließend die für diese Schnellstartanleitung verwendete Ressourcengruppe aus.
 
@@ -134,4 +134,4 @@ Melden Sie sich zum Entfernen der in dieser Schnellstartanleitung hinzugefügten
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

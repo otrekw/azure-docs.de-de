@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: 6aa960837a3bfc7f8a04ca1f554fb10d635c2ea2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348258"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275627"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Schnellstart: Erstellen einer hochverfügbaren globalen Front Door-Webanwendung mit der Azure CLI
 
@@ -46,7 +46,7 @@ In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können 
 
 Für diesen Schnellstart benötigen Sie zwei Ressourcengruppen. Eine Ressourcengruppe in *USA, Mitte* und eine zweite in *USA, Süden-Mitte*.
 
-Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) eine Ressourcengruppe:
+Erstellen Sie mit [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) eine Ressourcengruppe:
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Wenn Sie noch nicht über eine Web-App verfügen, verwenden Sie das folgende Skr
 
 Bevor Sie die Web-Apps erstellen können, benötigen Sie zwei App Service-Pläne: einen in *USA, Mitte* und einen zweiten in *USA, Süden-Mitte*.
 
-Erstellen Sie App Service-Pläne mithilfe von [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true):
+Erstellen Sie App Service-Pläne mithilfe von [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true):
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Wenn Sie die folgenden Befehle ausführen, wird in jedem App Service-Plan im vorherigen Schritt eine Web-App erstellt. Web-App-Namen müssen global eindeutig sein.
 
-Erstellen Sie eine Web-App mit [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
+Erstellen Sie eine Web-App mit [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Notieren Sie sich den Standardhostnamen jeder Web-App, damit Sie die Back-End-Ad
 
 Erstellen Sie eine einfache Front Door-Instanz mit Standardeinstellungen für den Lastenausgleich, einem Integritätstest und Routingregeln, indem Sie Folgendes ausführen:
 
-Erstellen Sie eine Front Door-Instanz mit [az network front-door create](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true):
+Erstellen Sie eine Front Door-Instanz mit [az network front-door create](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Nachdem die Bereitstellung erfolgreich abgeschlossen wurde, notieren Sie sich de
 
 Wenn Sie die mit Front Door erstellten Ressourcen nicht mehr benötigen, löschen Sie beide Ressourcengruppen. Wenn Sie die Ressourcengruppe löschen, werden auch die Front Door-Instanz und alle zugehörigen Ressourcen gelöscht. 
 
-Führen Sie [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) aus, um die Ressourcengruppe zu löschen:
+Führen Sie [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) aus, um die Ressourcengruppe zu löschen:
 
 ```azurecli-interactive
 az group delete \

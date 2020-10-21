@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 51b2f4964c01efbfc82008134d47f09648a772ff
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6b32df7264066daa0bc7298a04453dad4fc9937
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681973"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147252"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierte Kapazität für Azure Database for PostgreSQL-Einzel
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Kapazität für Azure Database for PostgreSQL-Einzelserver angewendet wird – abhängig davon, wie viele Kerne Sie erworben haben und wann sie ausgeführt werden.
 
-* **Beispiel 1:** Sie erwerben reservierte Kapazität für einen Azure Database for PostgreSQL-Einzelserver mit acht V-Kernen. Wenn Sie einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres PostgreSQL-Einzelservers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des PostgreSQL-Einzelservers.</br>
+**Beispiel 1:** Sie erwerben reservierte Kapazität für einen Azure Database for PostgreSQL-Einzelserver mit acht V-Kernen. Wenn Sie einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres PostgreSQL-Einzelservers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des PostgreSQL-Einzelservers.</br>
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Kapazität für Azure Database for PostgreSQL-Einzelserver, die Sie erwerben, für einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen gilt und die restlichen Reservierungsattribute den ausgeführten PostgreSQL-Einzelservern entsprechen.
 
@@ -40,7 +40,7 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Kapazit
 
 * **Beispiel 4:** Sie führen einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen von 13 Uhr bis 13:45 Uhr aus. Sie führen einen weiteren Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen von 13:30 Uhr bis 14 Uhr aus. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
 
-Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

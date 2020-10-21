@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: ''
-ms.openlocfilehash: 7f4585d7199b44c82df9a03ea3244885da72d2fa
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e5f49fb48cfc9be9cfb6970641ad7b4b3c06fb5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685169"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131053"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Was ist „Azure Cost Management + Abrechnung“?
 
@@ -112,7 +112,7 @@ Sehen Sie sich das [Video zu Azure Cost Management und Cloudyn](https://www.yout
 Azure bietet weitere Tools, die in der Featuregruppe „Azure Cost Management + Abrechnung“ nicht enthalten sind. Sie spielen dennoch eine wichtige Rolle im Kostenverwaltungsprozess. Weitere Informationen zu diesen Tools finden Sie unter den folgenden Links.
 
 - [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/): Mit diesem Tool können Sie Ihre im Voraus anfallenden Cloudkosten schätzen.
-- [Azure Migrate](../migrate/migrate-overview.md): Bewerten Sie die aktuelle Arbeitsauslastung Ihrer Rechenzentren, und stellen Sie fest, welche Anforderungen eine Azure-Austauschlösung erfüllen muss.
+- [Azure Migrate](/azure/cost-management-billing/migrate-services-overview): Bewerten Sie die aktuelle Arbeitsauslastung Ihrer Rechenzentren, und stellen Sie fest, welche Anforderungen eine Azure-Austauschlösung erfüllen muss.
 - [Azure Advisor](../advisor/advisor-overview.md): Identifizieren Sie nicht genutzte virtuelle Computer, und erhalten Sie Empfehlungen zum Kauf von reservierten Azure-VM-Instanzen.
 - [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/): Nutzen Sie Ihre aktuellen Lizenzen für lokale Windows Server oder SQL Server für VMs in Azure, um Kosten zu sparen.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684982"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131087"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Erstellen und Verwalten von Azure-Kostenzuteilungsregeln (Vorschauversion)
 
@@ -58,16 +58,16 @@ Wenn Sie Kosten nach Compute-, Speicher- oder Netzwerkkosten verteilen, wird der
 
 Wenn Sie Kosten proportional zu den Gesamtkosten verteilen, wird der proportionale Prozentsatz nach der Kostensumme bzw. den Gesamtkosten der ausgewählten Ziele für den aktuellen Abrechnungsmonat zugewiesen.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Beispiel für den Zuteilungsprozentsatz" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Beispiel für das Erstellen eines Regelnamens" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Die definierten vorab ausgefüllten Prozentsätze sind feststehende Werte. Sie werden für alle laufenden Zuteilungen verwendet. Die Prozentsätze ändern sich nur, wenn die Regel manuell aktualisiert wird.
 
 1. Wählen Sie eine der folgenden Optionen in der Liste **Prozentsatz vorab festlegen auf** aus.
     - **Gleichmäßig verteilen**: Weist jedem Ziel einen geraden prozentualen Anteil der Gesamtkosten zu.
     - **Gesamtkosten**: Erstellt basierend auf den Gesamtkosten ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
-    - **Computekosten**: Erstellt basierend auf den Azure-Computekosten (Ressourcentypen im [Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-Namespace) ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
-    - **Speicherkosten**: Erstellt basierend auf den Azure-Speicherkosten (Ressourcentypen im [Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions)-Namespace) ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
-    - **Netzwerkkosten**: Erstellt basierend auf den Azure-Netzwerkkosten (Ressourcentypen im [Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions)-Namespace) ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
+    - **Computekosten**: Erstellt basierend auf den Azure-Computekosten (Ressourcentypen im [Microsoft.Compute](/azure/templates/microsoft.compute/allversions)-Namespace) ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
+    - **Speicherkosten**: Erstellt basierend auf den Azure-Speicherkosten (Ressourcentypen im [Microsoft.Storage](/azure/templates/microsoft.storage/allversions)-Namespace) ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
+    - **Netzwerkkosten**: Erstellt basierend auf den Azure-Netzwerkkosten (Ressourcentypen im [Microsoft.Network](/azure/templates/microsoft.network/allversions)-Namespace) ein proportionales Verhältnis der Ziele. Das Verhältnis wird verwendet, um die Kosten der ausgewählten Quellen zu verteilen.
     - **Benutzerdefiniert**: Ermöglicht die manuelle Angabe eines ganzzahligen Prozentsatzes. Die angegebenen Werte müssen insgesamt 100 % ergeben.
 1. Nachdem Sie die Regel konfiguriert haben, wählen Sie **Erstellen** aus.
 
@@ -84,7 +84,7 @@ Wenn die Kostenzuteilungsregel aktiv ist, werden die Kosten der ausgewählten Qu
 
 Die Auswirkungen der Zuteilungsregel sehen Sie in der Kostenanalyse. Navigieren Sie im Azure-Portal zu [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Wählen Sie in der Liste ein Abonnement aus, das als Ziel einer aktiven Kostenzuteilungsregel festgelegt ist. Wählen Sie dann im Menü die Option **Kostenanalyse** aus. Wählen Sie unter „Kostenanalyse“ die Option **Gruppieren nach** und dann **Kostenzuteilung** aus. Die resultierende Ansicht zeigt eine kurze vom Abonnement generierte Kostenaufschlüsselung. Die dem Abonnement zugeteilten Kosten werden wie in der folgenden Abbildung dargestellt ebenfalls angezeigt.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Beispiel für eine Kostenaufschlüsselung" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Beispiel für das Erstellen eines Regelnamens" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Anzeigen der Kostenzuteilung für eine Ressourcengruppe
 
@@ -94,7 +94,7 @@ Zum Anzeigen der Auswirkungen einer Kostenzuteilungsregel für eine Ressourcengr
 
 Navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**. Wählen Sie unter „Kostenanalyse“ die Option **Filter hinzufügen** aus. Wählen Sie **Tag** und dann den Tagschlüssel aus, und markieren Sie Werte, denen Kosten zugeteilt sind.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Beispiel für die Anzeige der Kosten für markierte Elemente" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Beispiel für das Erstellen eines Regelnamens" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Bearbeiten einer vorhandenen Kostenzuteilungsregel
 
@@ -112,10 +112,10 @@ Derzeit wird die Kostenzuteilung in den Kostenanalyse-, Budget- und Prognoseansi
 Folgendes wird in der Public Preview der Kostenzuteilung derzeit nicht unterstützt:
 
 - Geplante [Exporte](tutorial-export-acm-data.md)
-- Von der [Nutzungsdetails](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)-API verfügbar gemachte Daten
+- Von der [Nutzungsdetails](/rest/api/consumption/usagedetails/list)-API verfügbar gemachte Daten
 - Bereich für Abrechnungsabonnements
 - [Cost Management-Power BI-App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop-Connector](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop-Connector](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Werden Kosten in Budget- und Prognoseansichten berücksichtigt?
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ Regeln mit überlappenden Quellen oder Zielen werden nicht empfohlen. Kostenzute
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen oder Aktualisieren von Zuteilungsregeln mithilfe der [Kostenzuteilungs-REST-API](https://go.microsoft.com/fwlink/?linkid=2135004)
+- Erstellen oder Aktualisieren von Zuteilungsregeln mithilfe der [Kostenzuteilungs-REST-API](/rest/api/cost-management/costallocationrules)
 - Weitere Informationen zum [Optimieren der Cloudinvestitionen mit Azure Cost Management](cost-mgt-best-practices.md)

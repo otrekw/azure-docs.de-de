@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875025"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312868"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Schnellstart: Erstellen einer Azure Notification Hubs-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Azure Notification Hubs muss genau wie alle anderen Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden.  Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.  Lesen Sie [Was ist Azure Resource Manager?](/azure/azure-resource-manager/management/overview), um mehr über Ressourcengruppen zu erfahren.
+Azure Notification Hubs muss genau wie alle anderen Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden.  Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.  Lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md), um mehr über Ressourcengruppen zu erfahren.
 
 Erstellen Sie für diese Schnellstartanleitung mithilfe des folgenden Befehls vom Typ [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe namens **spnhubrg** am Standort **eastus**.
 

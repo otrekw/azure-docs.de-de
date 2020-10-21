@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684421"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150121"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -21,7 +21,7 @@ Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel
 Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und Cloud Solution Provider (CSP), werden unterstützt.
 
 > [!NOTE]
-> - **Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umtauschen oder zurückerstatten zu können**. Sie können [Benutzer, die eine Reservierung verwalten können, hinzufügen oder ändern](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - **Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umtauschen oder zurückerstatten zu können**. Sie können [Benutzer, die eine Reservierung verwalten können, hinzufügen oder ändern](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 > - Microsoft berechnet derzeit bei Reservierungserstattungen keine Gebühren für die vorzeitige Kündigung. Unter Umständen werden zukünftig Gebühren bei Rückerstattungen fällig. Derzeit ist noch kein Startdatum für die Berechnung der Gebühren festgelegt.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Umtauschen oder Zurückerstatten einer vorhandenen Reservierung

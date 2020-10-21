@@ -7,18 +7,18 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4387a1aa5b22c9808f36364b71f89a71736958b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aba6ea467788c51d179ef9377243efb6035b6f98
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689472"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148358"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Rückbuchen von Azure-Reservierungskosten
 
 Abrechnungsleser für Enterprise Agreement und Microsoft-Kundenvereinbarung können amortisierte Kostendaten für Reservierungen anzeigen. Sie können die Kostendaten verwenden, um den Geldwert für ein Abonnement, eine Ressourcengruppe, eine Ressource oder ein Tag an ihre Partner zurückzubuchen. Bei amortisierten Daten entspricht der effektive Preis den anteiligen Reservierungskosten pro Stunde. Die Kosten sind die Gesamtkosten der Reservierungsnutzung durch die Ressource an diesem Tag.
 
-Benutzer mit einem einzelnen Abonnement können die amortisierten Kostendaten aus ihrer Nutzungsdatei abrufen. Wenn eine Ressource einen Reservierungsrabatt erhält, enthält der Abschnitt *AdditionalInfo* in der Nutzungsdatei die Reservierungsdetails. Weitere Informationen finden Sie unter [Herunterladen der Nutzung aus dem Azure-Portal](https://docs.microsoft.com/azure/cost-management-billing/understand/download-azure-daily-usage#download-usage-from-the-azure-portal-csv).
+Benutzer mit einem einzelnen Abonnement können die amortisierten Kostendaten aus ihrer Nutzungsdatei abrufen. Wenn eine Ressource einen Reservierungsrabatt erhält, enthält der Abschnitt *AdditionalInfo* in der Nutzungsdatei die Reservierungsdetails. Weitere Informationen finden Sie unter [Herunterladen der Nutzung aus dem Azure-Portal](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv).
 
 ## <a name="get-reservation-charge-back-data-for-chargeback"></a>Abrufen von Daten zur Rückbuchung von Reservierungen
 

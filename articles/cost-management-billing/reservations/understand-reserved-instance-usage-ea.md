@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e51363ff2f3782b77288f9dc1fcb8e59e9ffe0c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682007"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151790"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
 
@@ -55,7 +55,7 @@ Weitere in den Azure-Nutzungsdaten verfügbare Informationen haben sich geänder
 - Term (Laufzeit): 12 Monate oder 36 Monate.
 - RINormalizationRatio: Verfügbar unter AdditionalInfo. Dies ist das Verhältnis, in dem die Reservierung auf den Verwendungseintrag angewendet wird. Wenn Flexibilität der Instanzgröße für Ihre Reservierung aktiviert ist, kann dies auch auf andere Größen gelten. Der Wert zeigt das Verhältnis an, in dem die Reservierung auf den Verwendungseintrag angewendet wurde.
 
-[Felddefinition anzeigen](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[Felddefinition anzeigen](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Abrufen von Azure-Verbrauchs- und Reservierungsnutzungsdaten mittels API
 
@@ -71,7 +71,7 @@ Hier sehen Sie einen Beispielaufruf der Nutzungsdetails-API:
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-Weitere Informationen zu {enrollmentId} und {billingPeriodId} finden Sie im API-Artikel [Nutzungsdetails – Liste](https://docs.microsoft.com/rest/api/consumption/usagedetails/list).
+Weitere Informationen zu {enrollmentId} und {billingPeriodId} finden Sie im API-Artikel [Nutzungsdetails – Liste](/rest/api/consumption/usagedetails/list).
 
 Die Informationen in der folgenden Tabelle zu Metrik und Filter können bei der Behebung häufiger Reservierungsprobleme helfen.
 

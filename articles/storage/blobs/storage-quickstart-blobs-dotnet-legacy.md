@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001415"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091422"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v11 für .NET
 
@@ -33,7 +33,7 @@ Mit der Azure Blob Storage-Clientbibliothek für .NET ist Folgendes möglich:
 
 Zusätzliche Ressourcen:
 
-* [API-Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API-Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Quellcode der Bibliothek](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -205,7 +205,7 @@ Mit den Beispielcodeausschnitten wird veranschaulicht, wie folgende Vorgänge mi
 
 ### <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Mit dem folgenden Code wird überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) zu erstellen, das auf das Speicherkonto verweist. Verwenden Sie die [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet)-Methode, um zu überprüfen, ob die Verbindungszeichenfolge gültig ist. Wenn `TryParse` erfolgreich ist, wird die Variable `storageAccount` initialisiert, und `true` wird zurückgegeben.
+Mit dem folgenden Code wird überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) zu erstellen, das auf das Speicherkonto verweist. Verwenden Sie die [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse)-Methode, um zu überprüfen, ob die Verbindungszeichenfolge gültig ist. Wenn `TryParse` erfolgreich ist, wird die Variable `storageAccount` initialisiert, und `true` wird zurückgegeben.
 
 Fügen Sie diesen Code in der `ProcessAsync`-Methode hinzu:
 

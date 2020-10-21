@@ -7,15 +7,15 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e9bd97dc4afe0937ebd0553117640e008a72722e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4e9ea34317951ecd9d3b6649ce42ffcf2f476d03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961746"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149228"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
- 
+ 
 ## <a name="overview"></a>Übersicht ##
 
 Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
@@ -91,7 +91,7 @@ ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jede zu
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md

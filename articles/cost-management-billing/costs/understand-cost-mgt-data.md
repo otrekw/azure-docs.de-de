@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683180"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132311"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -110,7 +110,7 @@ Azure Cost Management empfängt Tags mit jedem Nutzungsdatensatz, der von den ei
 
 - Tags werden nicht implizit von der übergeordneten Ressourcengruppe geerbt und müssen direkt auf Ressourcen angewendet werden.
 - Ressourcentags werden nur für in Ressourcengruppen bereitgestellte Ressourcen unterstützt.
-- Einige bereitgestellte Ressourcen unterstützen unter Umständen keine Tags oder enthalten keine Tags in Nutzungsdaten. Weitere Informationen finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
+- Einige bereitgestellte Ressourcen unterstützen unter Umständen keine Tags oder enthalten keine Tags in Nutzungsdaten. Weitere Informationen finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/management/tag-support.md).
 - Ressourcentags werden nur in Nutzungsdaten eingeschlossen, während das Tag angewendet ist. Tags werden nicht auf historische Daten angewendet.
 - Ressourcentags stehen in Cost Management erst zur Verfügung, nachdem die Daten aktualisiert wurden. Weitere Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](#cost-and-usage-data-updates-and-retention).
 - Ressourcentags sind nur in Cost Management verfügbar, wenn die Ressource aktiv ist/ausgeführt wird und Nutzungsdatensätze generiert (also beispielsweise nicht, wenn die Zuordnung eines virtuellen Computers aufgehoben wurde).
@@ -121,7 +121,7 @@ Sollte in Cost Management ein bestimmtes Tag nicht angezeigt werden, überprüfe
 
 - Wurde das Tag direkt auf die Ressource angewendet?
 - Wurde das Tag vor mehr als 24 Stunden angewendet? Siehe [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](#cost-and-usage-data-updates-and-retention).
-- Unterstützt der Ressourcentyp Tags? Von den folgenden Ressourcentypen werden keine Tags in Nutzungsdaten unterstützt (Stand: 1. Dezember 2019). Die vollständige Liste der unterstützten Tags finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
+- Unterstützt der Ressourcentyp Tags? Von den folgenden Ressourcentypen werden keine Tags in Nutzungsdaten unterstützt (Stand: 1. Dezember 2019). Die vollständige Liste der unterstützten Tags finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/management/tag-support.md).
     - Azure Active Directory B2C-Verzeichnisse
     - Azure Bastion
     - Azure Firewalls
@@ -185,4 +185,4 @@ Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimm
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- Falls Sie den ersten Schnellstart für Cost Management noch nicht abgeschlossen haben, lesen Sie ihn unter [Erste Schritte in der Analyse von Kosten](../../cost-management/quick-acm-cost-analysis.md).
+- Falls Sie den ersten Schnellstart für Cost Management noch nicht abgeschlossen haben, lesen Sie ihn unter [Erste Schritte in der Analyse von Kosten](./quick-acm-cost-analysis.md).

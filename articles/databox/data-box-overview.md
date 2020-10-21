@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206226"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123561"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -144,7 +144,7 @@ Data Box kann Daten basierend auf der Region, in der der Dienst bereitgestellt w
 
 - **Dienstverfügbarkeit**: Wenn Sie Data Box für Import- oder Exportaufträge verwenden, finden Sie Informationen zur regionalen Verfügbarkeit unter [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Die Exportfunktion von Data Box befindet sich derzeit in der Vorschauphase. 
 
-    Für Importaufträge kann Data Box auch in der Azure Government-Cloud bereitgestellt werden. Weitere Informationen finden Sie unter [What is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) (Was ist Azure Government?). 
+    Für Importaufträge kann Data Box auch in der Azure Government-Cloud bereitgestellt werden. Weitere Informationen finden Sie unter [What is Azure Government?](../azure-government/documentation-government-welcome.md) (Was ist Azure Government?). 
 
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar, in denen der Dienst verfügbar ist.
 
@@ -154,7 +154,3 @@ Data Box kann Daten basierend auf der Region, in der der Dienst bereitgestellt w
 - Sehen Sie sich die [Data Box-Systemanforderungen](data-box-system-requirements.md) an.
 - Machen Sie sich mit den [Data Box-Einschränkungen](data-box-limits.md) vertraut.
 - Erfahren Sie mehr zur schnellen Bereitstellung von [Azure Data Box](data-box-quickstart-portal.md) im Azure-Portal.
-
-
-
-

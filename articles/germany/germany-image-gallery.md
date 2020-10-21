@@ -1,34 +1,22 @@
 ---
 title: Azure Deutschland-Images | Microsoft-Dokumentation
 description: Dieser Artikel verschafft Ihnen einen Überblick über die Images, die der Azure Deutschland-Marketplace bietet.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/12/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 188b2e813d006d711ab618a2c49ce49401662668
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 90258a20c0f763ec427a80bff7075974af1e95f4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436665"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127515"
 ---
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="overview"></a>Übersicht
 Kunden können beim Bereitstellen neuer virtueller Server in Azure Deutschland wahlweise vorgefertigte Images von Microsoft verwenden oder ihre eigenen VHDs hochladen. So erhalten Sie die Flexibilität, bei Bedarf Ihre eigenen standardisierten Images verwenden zu können.
@@ -133,7 +121,7 @@ Nachfolgend finden Sie eine Liste verfügbarer Images. Beachten Sie bitte, dass 
 
 
 ## <a name="images-for-deployments-with-azure-service-manager-classic"></a>Images für Bereitstellungen mit Azure Service Manager („klassisch“)
-| Herausgeber | Imagename | OS |
+| Herausgeber | Imagename | Betriebssystem |
 |  ---  |  ---  |  ---  |
 |  Credativ  |  Debian 7 „Wheezy“  |  Linux  |
 |  Credativ  |  Debian 8 „Jessie“  |  Linux  |

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371741"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149387"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -104,8 +104,8 @@ Falls Sie APIs für die Kostenverwaltung und Abrechnung nutzen, um Ihre Abrechnu
 
 |API | Änderungen  |
 |---------|---------|
-|[Billing Accounts – List](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In der API für die Auflistung von Abrechnungskonten (Billing Accounts – List) verfügt Ihr altes Abrechnungskonto für „agreementType“ über den Wert **MicrosoftOnlineServiceProgram**. In Ihrem neuen Abrechnungskonto wird **MicrosoftCustomerAgreement** als „agreementType“ verwendet. Falls Sie eine Abhängigkeit von „agreementType“ nutzen, sollten Sie sie aktualisieren. |
-|[Invoices – List By Billing Subscription](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Diese API gibt nur Rechnungen zurück, die vor der Aktualisierung Ihres Kontos generiert wurden. Sie müssen die API vom Typ [Invoices – List By Billing Account](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) verwenden, um Rechnungen abzurufen, die unter Ihrem neuen Abrechnungskonto generiert werden. |
+|[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In der API für die Auflistung von Abrechnungskonten (Billing Accounts – List) verfügt Ihr altes Abrechnungskonto für „agreementType“ über den Wert **MicrosoftOnlineServiceProgram**. In Ihrem neuen Abrechnungskonto wird **MicrosoftCustomerAgreement** als „agreementType“ verwendet. Falls Sie eine Abhängigkeit von „agreementType“ nutzen, sollten Sie sie aktualisieren. |
+|[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Diese API gibt nur Rechnungen zurück, die vor der Aktualisierung Ihres Kontos generiert wurden. Sie müssen die API vom Typ [Invoices – List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) verwenden, um Rechnungen abzurufen, die unter Ihrem neuen Abrechnungskonto generiert werden. |
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 

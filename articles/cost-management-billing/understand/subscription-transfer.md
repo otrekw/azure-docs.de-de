@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336894"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149371"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Informationen zum Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement
 
@@ -63,7 +63,7 @@ Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführte
 
 ## <a name="resources-transferred-with-subscriptions"></a>Mit Abonnements übertragene Ressourcen
 
-Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden zum neuen Konto übertragen. Wenn Sie aber ein Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen, werden [Administratorrollen](../manage/add-change-subscription-administrator.md) und [Azure-Rollenzuweisungen](../../role-based-access-control/role-assignments-portal.md) für das Abonnement nicht übertragen. Auch [App-Registrierungen](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) und andere mandantenspezifische Dienste werden nicht mit dem Abonnement übertragen.
+Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden zum neuen Konto übertragen. Wenn Sie aber ein Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen, werden [Administratorrollen](../manage/add-change-subscription-administrator.md) und [Azure-Rollenzuweisungen](../../role-based-access-control/role-assignments-portal.md) für das Abonnement nicht übertragen. Auch [App-Registrierungen](../../active-directory/develop/quickstart-register-app.md) und andere mandantenspezifische Dienste werden nicht mit dem Abonnement übertragen.
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>Übertragen des Kontobesitzes in ein anderes Land bzw. in eine andere Region
 
@@ -99,7 +99,7 @@ Sie können im Azure-Portal die Benutzer anzeigen, die über Azure-Rollenzuweisu
 Auch wenn die [Azure-Rollenzuweisungen](../../role-based-access-control/role-assignments-portal.md) während der Übertragung entfernt werden, haben Benutzer im ursprünglichen Besitzerkonto unter Umständen über andere Sicherheitsverfahren weiterhin Zugriff auf das Abonnement. Hierzu zählen:
 
 * Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../../cloud-services/cloud-services-certs-create.md).
-* Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
+* Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-create.md).
 * Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines.
 
 Der neue Besitzer sollte das Aktualisieren der dem Dienst zugeordneten Geheimnisse in Erwägung ziehen, wenn er den Zugriff auf Ressourcen einschränken muss. Die meisten Ressourcen können aktualisiert werden. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann im Menü „Hub“ **Alle Ressourcen** aus. Wählen Sie dann die Ressource aus. Wählen Sie anschließend auf der Ressourcenseite die Option **Einstellungen** aus. Hier können Sie die vorhandenen Schlüssel anzeigen und aktualisieren.

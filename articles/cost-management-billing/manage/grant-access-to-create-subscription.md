@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 02919cf2e35fdd4d981f3fde53085c2174f11bd1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371880"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132566"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau)
 
@@ -84,7 +84,7 @@ Benutzer müssen in einem Registrierungskonto über die [Azure RBAC-Rolle „Bes
 
     # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-    Verwenden Sie den Befehl [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können. Wählen Sie **Jetzt ausprobieren** aus, um [Azure Cloud Shell](https://shell.azure.com/) zu öffnen. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie dann **Einfügen** aus.
+    Verwenden Sie den Befehl [az billing enrollment-account list](/cli/azure/billing) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können. Wählen Sie **Jetzt ausprobieren** aus, um [Azure Cloud Shell](https://shell.azure.com/) zu öffnen. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie dann **Einfügen** aus.
 
     ```azurecli-interactive
     az billing enrollment-account list

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272513"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165234"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -140,7 +140,7 @@ Für gemeinsame Speichernutzungs- und Datenreplikationslösungen von Microsoft-P
 
 ## <a name="connectivity"></a>Konnektivität
 
-Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines verwenden einen [verteilten Netzwerknamen (Distributed Network Name, DNN)](hadr-distributed-network-name-dnn-configure.md) oder einen [virtuellen Netzwerknamen (VNN) mit Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md), um Datenverkehr an die SQL Server-Instanz unabhängig davon weiterzuleiten, welcher Knoten derzeit Besitzer der Clusterressourcen ist. Es gibt weitere Überlegungen, wenn bestimmte Features und der DNN mit einer SQL Server-FCI verwendet werden. Weitere Informationen finden Sie unter [DNN-Interoperabilität mit der SQL Server-FCI](failover-cluster-instance-dnn-interoperability.md). 
+Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines verwenden einen [verteilten Netzwerknamen (Distributed Network Name, DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [virtuellen Netzwerknamen (VNN) mit Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md), um Datenverkehr an die SQL Server-Instanz unabhängig davon weiterzuleiten, welcher Knoten derzeit Besitzer der Clusterressourcen ist. Es gibt weitere Überlegungen, wenn bestimmte Features und der DNN mit einer SQL Server-FCI verwendet werden. Weitere Informationen finden Sie unter [DNN-Interoperabilität mit der SQL Server-FCI](failover-cluster-instance-dnn-interoperability.md). 
 
 Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
 

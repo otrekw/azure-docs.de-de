@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f701e41c62336bcd7638360a27a0fb4c3ce3ec7d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686665"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132634"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Problembehandlung für das Anzeigen Ihres Abrechnungskontos im Azure-Portal
 
@@ -59,7 +59,7 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 Lesen Sie die folgenden Artikel zur Abrechnung und zu Abonnements als Hilfe bei der Problembehandlung.
 
-- [Karte abgelehnt](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Keine Abonnements gefunden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Enterprise-Kostenansicht deaktiviert](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Karte abgelehnt](./troubleshoot-declined-card.md)
+- [Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement](./troubleshoot-sign-in-issue.md)
+- [Keine Abonnements gefunden](./no-subscriptions-found.md)
+- [Enterprise-Kostenansicht deaktiviert](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
