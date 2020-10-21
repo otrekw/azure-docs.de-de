@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531337"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131903"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Verwenden von Kostenwarnungen zum Überwachen von Verbrauch und Ausgaben
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält grundlegende Informationen zur Verwendung von Cost Manag
 
 ## <a name="budget-alerts"></a>Budgetwarnungen
 
-Mit Budgetwarnungen werden Sie benachrichtigt, wenn Ausgaben basierend auf Verbrauch oder Kosten den in der [Warnungsbedingung für das Budget](tutorial-acm-create-budgets.md) definierten Betrag erreichen oder überschreiten. Cost Management-Budgets werden über das Azure-Portal oder die [Azure Consumption](https://docs.microsoft.com/rest/api/consumption)-API erstellt.
+Mit Budgetwarnungen werden Sie benachrichtigt, wenn Ausgaben basierend auf Verbrauch oder Kosten den in der [Warnungsbedingung für das Budget](tutorial-acm-create-budgets.md) definierten Betrag erreichen oder überschreiten. Cost Management-Budgets werden über das Azure-Portal oder die [Azure Consumption](/rest/api/consumption)-API erstellt.
 
 Im Azure-Portal werden Budgets nach Kosten definiert. Bei Verwendung der Azure Consumption-API werden Budgets nach Kosten oder nach Verbrauch definiert. Budgetwarnungen unterstützen kostenbasierte sowie nutzungsbasierte Budgets. Budgetwarnungen werden immer automatisch generiert, wenn die Warnungsbedingungen für das Budget erfüllt sind. Sie können alle Kostenwarnungen im Azure-Portal anzeigen. Immer wenn eine Warnung generiert wird, wird sie in den Kostenwarnungen angezeigt. Außerdem wird eine Warnung per E-Mail an alle Personen in der Liste der Warnungsempfänger für das Budget gesendet.
 

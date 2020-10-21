@@ -3,17 +3,17 @@ title: 'Schnellstart: Azure Blob Storage-Bibliothek v12: Xamarin'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Version 12 der Azure Blob Storage-Clientbibliothek mit Xamarin verwenden, um einen Container und ein Blob in Blobspeicher (Objektspeicher) zu erstellen. Danach erfahren Sie, wie Sie das Blob auf Ihr mobiles Gerät herunterladen und alle Blobs in einem Container auflisten.
 author: codemillmatt
 ms.author: masoucou
-ms.date: 05/08/2020
+ms.date: 10/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fa7ebc71f2bbe6abe6956ad36daaf983e011a94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001326"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109016"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 mit Xamarin
 
@@ -157,7 +157,7 @@ protected async override void OnAppearing()
 Der folgende Codeausschnitt führt folgende Aktionen durch:
 
 1. Erstellen eines Speicherstreams (`MemoryStream`) mit Text
-1. Hochladen des Texts in ein Blob durch Aufrufen der Funktion [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) der Klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient), wobei sowohl der Dateiname als auch der Speicherstream (`MemoryStream`) mit dem Text übergeben werden. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
+1. Hochladen des Texts in ein Blob durch Aufrufen der Funktion [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) der Klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient), wobei sowohl der Dateiname als auch der Speicherstream (`MemoryStream`) mit dem Text übergeben werden. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
 
 Fügen Sie der Datei *MainPage.xaml.cs* den folgenden Code hinzu:
 

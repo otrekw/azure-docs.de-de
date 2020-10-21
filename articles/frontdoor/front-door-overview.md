@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825640"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282262"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 
@@ -32,11 +32,11 @@ Front Door arbeitet in Schicht 7 (HTTP/HTTPS-Schicht) unter Verwendung des Anyc
 >[!NOTE]
 > Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. 
 > * Wenn Sie DNS-basiertes globales Routing durchführen möchten und **keine** Anforderungen zur Beendigung der TLS-Protokollierung (Transport Layer Security, „SSL Offloading“) oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung vorliegen, lesen Sie den Artikel zu [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Wenn Sie Lastenausgleich zwischen den Servern in einer Region auf Anwendungsebene durchführen möchten, lesen Sie den Artikel zu [Application Gateway](../application-gateway/application-gateway-introduction.md)
+> * Wenn Sie Lastenausgleich zwischen den Servern in einer Region auf Anwendungsebene durchführen möchten, lesen Sie den Artikel zu [Application Gateway](../application-gateway/overview.md)
 > * Um Lastenausgleich auf Netzwerkebene auszuführen, lesen Sie den Artikel zu [Load Balancer](../load-balancer/load-balancer-overview.md). 
 > 
 > Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen nach Bedarf zu kombinieren.
-> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-azure-front-door"></a>Gründe für die Verwendung von Azure-Front-Door
 

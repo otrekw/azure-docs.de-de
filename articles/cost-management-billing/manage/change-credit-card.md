@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758539"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131138"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Hinzufügen oder Aktualisieren einer Kreditkarte für Azure
 
@@ -32,7 +32,7 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, sind Ihre Zahlungsme
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Verwalten von Kreditkarten für ein Azure-Abonnement
 
-Die folgenden Abschnitte gelten für Kunden, die über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Wenn es sich bei Ihrem Abrechnungskonto um ein Konto vom Typ „Microsoft Online Services-Programm“ handelt, sind Zahlungsmethoden mit einzelnen Azure-Abonnements verknüpft. Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](/azure/cost-management-billing/manage/troubleshoot-declined-card).
+Die folgenden Abschnitte gelten für Kunden, die über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Wenn es sich bei Ihrem Abrechnungskonto um ein Konto vom Typ „Microsoft Online Services-Programm“ handelt, sind Zahlungsmethoden mit einzelnen Azure-Abonnements verknüpft. Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](./troubleshoot-declined-card.md).
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Ändern der Kreditkarte für ein Abonnement durch Hinzufügen einer neuen Kreditkarte
 

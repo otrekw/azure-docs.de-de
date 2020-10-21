@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963107"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126325"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenanrufe
 
@@ -30,7 +30,7 @@ Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services verans
 In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funktioniert, bevor wir es auf Ihrem lokalen Computer ausführen. Anschließend stellen wir das Beispiel in Azure bereit, indem wir Ihre eigenen Azure Communication Services-Ressourcen verwenden.
 
 > [!IMPORTANT]
-> [Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling).
+> [Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure-Samples/communication-services-web-calling-hero).
 
 ## <a name="overview"></a>Übersicht
 
@@ -103,7 +103,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 ## <a name="next-steps"></a>Nächste Schritte
 
 >[!div class="nextstepaction"] 
->[Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling).
+>[Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure-Samples/communication-services-web-calling-hero).
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 

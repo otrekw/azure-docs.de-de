@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962155"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145239"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -84,13 +84,6 @@ Viele Organisationen haben [allgemeine Bedenken in Bezug auf den Zugriff, bei de
 - Blockieren oder Gewähren von Zugriff von bestimmten Standorten aus
 - Blockieren riskanter Anmeldeverhalten
 - Erzwingen von durch die Organisation verwaltete Geräte für bestimmte Anwendungen
-
-## <a name="customer-case-studies"></a>Fallstudien
-
-Erfahren Sie, wie andere Organisationen mit dem bedingten Azure AD-Zugriff automatisierte Zugriffssteuerungsentscheidungen definieren und implementieren. Die folgenden Berichte zeigen, wie diese Kundenanforderungen erfüllt werden können.
-
-* [Wipro steigert die mobile Produktivität mit Microsoft Cloud-Sicherheitstools zur Verbesserung der Kundenbindung.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Die Richtlinien für bedingten Zugriff in Azure AD haben es dem Unternehmen ermöglicht, Dokumente, Ressourcen und Anwendungen für vertrauenswürdige externe Entitäten freizugeben – die ihre eigenen Anmeldeinformationen verwenden können – und gleichzeitig die Kontrolle über die Unternehmensdaten zu behalten.
-* [Aramex delivery limited – Globales Logistik- und Transportunternehmen erstellt Büro mit Cloudkonnektivität mit einer Lösung zur Identitäts- und Zugriffsverwaltung.](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en) Die Gewährleistung eines sicheren Zugriffs war bei den Remotemitarbeitern von Aramex besonders schwierig. Das Unternehmen nutzt jetzt den bedingten Zugriff, damit Remotemitarbeiter von außerhalb des Netzwerks auf die SaaS-Anwendungen zugreifen können. Über die Regel für bedingten Zugriff wird festgelegt, ob die mehrstufige Authentifizierung erzwungen wird, sodass nur autorisierten Personen der entsprechende Zugriff gewährt wird.
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 

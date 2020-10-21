@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683401"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131869"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>Gruppierungs- und Filteroptionen in der Kostenanalyse
 
@@ -49,10 +49,10 @@ In der folgenden Tabelle sind einige der häufigsten in der Kostenanalyse verfü
 | **Dienstname** oder **Kategorie der Verbrauchseinheit** | Die Kosten werden nach Azure-Dienst unterteilt. | Für Käufe und die Marketplace-Nutzung wird **Nicht zutreffend** oder **Nicht zugewiesen** angezeigt. |
 | **Dienstebene** oder **Unterkategorie der Verbrauchseinheit** | Die Kosten werden nach der Unterklassifizierung der Verbrauchseinheit für die Azure-Nutzung unterteilt. | Für Käufe und die Marketplace-Nutzung wird **Nicht zutreffend** oder **Nicht zugewiesen** angezeigt. |
 | **Abonnement** | Die Kosten werden nach Azure-Abonnement und verknüpftem AWS-Konto unterteilt. | Für Käufe und Mandantenressourcen wird ggf. **Nicht zutreffend** angezeigt. |
-| **Tag** | Die Kosten werden nach Tagwerten für einen bestimmten Tagschlüssel unterteilt. | Tags sind für folgende Elemente nicht verfügbar: Käufe, Mandantenressourcen ohne Zuordnung zu Abonnements, Abonnementressourcen ohne Bereitstellung in einer Ressourcengruppe oder klassische Ressourcen. Einige Dienste enthalten keine Tags in Nutzungsdaten. Erfahren Sie mehr zur [Tagunterstützung für Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
+| **Tag** | Die Kosten werden nach Tagwerten für einen bestimmten Tagschlüssel unterteilt. | Tags sind für folgende Elemente nicht verfügbar: Käufe, Mandantenressourcen ohne Zuordnung zu Abonnements, Abonnementressourcen ohne Bereitstellung in einer Ressourcengruppe oder klassische Ressourcen. Einige Dienste enthalten keine Tags in Nutzungsdaten. Erfahren Sie mehr zur [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/management/tag-support.md). |
 
 Informationen zu den Bedingungen finden Sie unter [Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren](../understand/understand-usage.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Kostenanalyse beginnen](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).
+- [Kostenanalyse beginnen](./quick-acm-cost-analysis.md).

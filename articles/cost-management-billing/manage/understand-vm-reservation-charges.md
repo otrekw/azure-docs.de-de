@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686444"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132141"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer
 
@@ -57,7 +57,7 @@ Wenn Sie Windows-VM-Instanzen ausführen, wird die Reservierung angewendet, um d
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Rabatt kann für verschiedene Größen gelten.
 
-Wenn Sie reservierte VM-Instanzen erwerben und Sie unter **Optimiert für: Flexibilität bei der Instanzgröße** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Sie kann auch auf andere VM-Größen angewendet werden, die sich in der gleichen Gruppe für Instanzgrößenflexibilität der Serie befinden. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Wenn Sie reservierte VM-Instanzen erwerben und Sie unter **Optimiert für: Flexibilität bei der Instanzgröße** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Sie kann auch auf andere VM-Größen angewendet werden, die sich in der gleichen Gruppe für Instanzgrößenflexibilität der Serie befinden. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Virtuelle Storage Premium-Computer erhalten keine Nicht-Premium-Rabatte.
 

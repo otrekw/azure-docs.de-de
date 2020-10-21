@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686495"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132328"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 
 Dieser Leitfaden enthält hilfreiche Informationen zur Behebung von Problemen, die das Anmelden beim Azure-Portal oder Azure-Kontocenter verhindern.
 
 > [!NOTE]
-> Wenn Sie Probleme bei der Registrierung für ein neues Azure-Konto haben, helfen Ihnen die Informationen unter [Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up) weiter.
+> Wenn Sie Probleme bei der Registrierung für ein neues Azure-Konto haben, helfen Ihnen die Informationen unter [Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter](./troubleshoot-azure-sign-up.md) weiter.
 
 ## <a name="page-hangs-in-the-loading-status"></a>Seite hängt im Ladestatus
 
@@ -66,7 +66,7 @@ Dieses Problem tritt auf, wenn Sie das falsche Verzeichnis ausgewählt haben ode
 So beheben Sie dieses Problem:
 
 - Vergewissern Sie sich, dass das richtige Azure-Verzeichnis ausgewählt ist, indem Sie oben rechts Ihr Konto auswählen.
-- Wenn das richtige Azure-Verzeichnis ausgewählt ist und die Fehlermeldung trotzdem noch ausgegeben wird, [sollten Sie Ihr Konto als Besitzer hinzufügen lassen](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator).
+- Wenn das richtige Azure-Verzeichnis ausgewählt ist und die Fehlermeldung trotzdem noch ausgegeben wird, [sollten Sie Ihr Konto als Besitzer hinzufügen lassen](./add-change-subscription-administrator.md).
 
 **Szenario 2:** Sie erhalten die Fehlermeldung bei der Anmeldung beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)
 
@@ -80,11 +80,11 @@ So beheben Sie dieses Problem:
 
 Weitere Artikel für die Problembehandlung bei Azure-Abrechnung und -Abonnements
 
-- [Karte abgelehnt](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Probleme bei der Registrierung für ein Abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [Keine Abonnements gefunden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Enterprise-Kostenansicht deaktiviert](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Dokumentation zur Azure-Abrechnung](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Karte abgelehnt](./troubleshoot-declined-card.md)
+- [Probleme bei der Registrierung für ein Abonnement](./troubleshoot-azure-sign-up.md)
+- [Keine Abonnements gefunden](./no-subscriptions-found.md)
+- [Enterprise-Kostenansicht deaktiviert](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Dokumentation zur Azure-Abrechnung](../index.yml)
 
 ## <a name="contact-us-for-help"></a>Setzen Sie sich mit uns in Verbindung, um Hilfe zu erhalten.
 

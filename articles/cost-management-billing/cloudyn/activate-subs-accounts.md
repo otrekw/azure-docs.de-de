@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: acfbdb203cfa6b1b54145c5d325493b90525bf43
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690152"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131427"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivieren von Azure-Abonnements und -Konten mit Cloudyn
 
@@ -96,7 +96,7 @@ Mit den obigen Fehlermeldungen wird angegeben, dass Sie über einen Handelspartn
 Sie können die Probleme wie folgt beheben:
 
 1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
+2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](./quick-register-ea.md).
 
 Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure EA-API-Schlüssel für die Einrichtung von Cloudyn generieren können. Befolgen Sie hierfür diese Anleitungen:
 

@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9f42359cc843a934cf1258576d13eec8af2279cc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9afe34097d005daeedf46fbaf30b37e53a8e3658
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687653"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132039"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
 
@@ -205,5 +205,5 @@ Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Verwenden der Cloudyn-Berichte](../../cost-management/use-reports.md), um mehr über die in Cloudyn enthaltenen Berichte zu erfahren.
-- Erfahren Sie, wie Sie Berichte zum Erstellen von [Dashboards](../../cost-management/dashboards.md) verwenden.
+- Lesen Sie [Verwenden der Cloudyn-Berichte](./use-reports.md), um mehr über die in Cloudyn enthaltenen Berichte zu erfahren.
+- Erfahren Sie, wie Sie Berichte zum Erstellen von [Dashboards](./dashboards.md) verwenden.

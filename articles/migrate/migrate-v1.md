@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001636"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317206"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 und alle SPs | Azure bietet vollständige Unterstützung.
 Windows Server 2012 und alle SPs | Azure bietet vollständige Unterstützung. | Bereit für Azure
 Windows Server 2008 R2 und alle SPs | Azure bietet vollständige Unterstützung.| Bereit für Azure
 Windows Server 2008 (32-Bit und 64-Bit) | Azure bietet vollständige Unterstützung. | Bereit für Azure
-Windows Server 2003, 2003 R2 | Nicht mehr unterstützt und benötigen eine [benutzerdefinierte Supportvereinbarung (CSA)](https://aka.ms/WSosstatement) für die Unterstützung in Azure. | Bedingt bereit für Azure, erwägen Sie ein Upgrade des Betriebssystems vor der Migration zu Azure.
+Windows Server 2003, 2003 R2 | Nicht mehr unterstützt und benötigen eine [benutzerdefinierte Supportvereinbarung (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) für die Unterstützung in Azure. | Bedingt bereit für Azure, erwägen Sie ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Nicht mehr unterstützt. Der Computer kann ggf. in Azure gestartet werden, von Azure wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Windows Client 7, 8 und 10 | Azure bietet [nur mit Visual Studio-Abonnement](../virtual-machines/windows/client-images.md) Unterstützung. | Bedingt bereit für Azure
 Windows 10 Pro Desktop | Azure bietet Unterstützung mit [mehrinstanzenfähigen Hostingrechten](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md). | Bedingt bereit für Azure

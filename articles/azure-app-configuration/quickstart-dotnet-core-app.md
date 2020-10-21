@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767733"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075789"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Schnellstart: Erstellen einer .NET Core-App mit App Configuration
 
@@ -40,7 +40,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine .NET 
 
 ## <a name="create-a-net-core-console-app"></a>Erstellen einer .NET Core-Konsolen-App
 
-Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/dotnet/core/tools/), um ein neues Projekt für eine .NET Core-Konsolen-App zu erstellen. Der Vorteil bei Verwendung der .NET Core-CLI gegenüber Visual Studio ist, dass sie für alle Windows-, macOS- und Linux-Plattformen verfügbar ist.  Verwenden Sie alternativ die vorinstallierten Tools, die in [Azure Cloud Shell](https://shell.azure.com) verfügbar sind.
+Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](/dotnet/core/tools/), um ein neues Projekt für eine .NET Core-Konsolen-App zu erstellen. Der Vorteil bei Verwendung der .NET Core-CLI gegenüber Visual Studio ist, dass sie für alle Windows-, macOS- und Linux-Plattformen verfügbar ist.  Verwenden Sie alternativ die vorinstallierten Tools, die in [Azure Cloud Shell](https://shell.azure.com) verfügbar sind.
 
 1. Erstellen Sie einen neuen Ordner für Ihr Projekt.
 
@@ -124,7 +124,7 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.mic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie über den [Anbieter App Configuration](https://go.microsoft.com/fwlink/?linkid=2074664) einen neuen App Configuration-Speicher erstellt und mit einer .NET Core-Konsolen-App verwendet. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre .NET Core-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
+In diesem Schnellstart haben Sie über den [Anbieter App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) einen neuen App Configuration-Speicher erstellt und mit einer .NET Core-Konsolen-App verwendet. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre .NET Core-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App](./enable-dynamic-configuration-dotnet-core.md)

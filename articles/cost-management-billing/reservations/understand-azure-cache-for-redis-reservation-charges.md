@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4b5f77742d3b2611fd7baf5880b9f8fed047aa86
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213264"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147326"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Anwendung des Reservierungsrabatts auf Azure Cache for Redis
 
-Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Cache-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihrer Azure Cache for Redis-Instanz ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. Reservierte Kapazität steht nur für Caches im [Premium-Tarif](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis) zur Verfügung.
+Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Cache-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihrer Azure Cache for Redis-Instanz ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. Reservierte Kapazität steht nur für Caches im [Premium-Tarif](//azure/azure-cache-for-redis/quickstart-create-redis) zur Verfügung.
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierter Azure Cache for Redis-Kapazität wird auf Stunde
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Cache for Redis-Kapazität angewendet wird – abhängig davon, wie viele Cache-Instanzen Sie erworben haben und wann sie ausgeführt werden.
 
-* **Beispiel 1:** Sie erwerben reservierte Azure Cache for Redis-Kapazität für einen 6-GB-Cache. Wenn Sie einen 13-GB-Cache verwenden, der den restlichen Attributen der Reservierung entspricht, werden 7 GB Ihrer Azure Cache for Redis-Nutzung zum Preis für die nutzungsbasierte Bezahlung abgerechnet, und Sie erhalten den Reservierungsrabatt für eine Computenutzungsstunde des 6-GB-Caches.
+**Beispiel 1:** Sie erwerben reservierte Azure Cache for Redis-Kapazität für einen 6-GB-Cache. Wenn Sie einen 13-GB-Cache verwenden, der den restlichen Attributen der Reservierung entspricht, werden 7 GB Ihrer Azure Cache for Redis-Nutzung zum Preis für die nutzungsbasierte Bezahlung abgerechnet, und Sie erhalten den Reservierungsrabatt für eine Computenutzungsstunde des 6-GB-Caches.
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die von Ihnen erworbene reservierte Azure Cache for Redis-Kapazität für einen 26-GB-Cache gilt und die restlichen Reservierungsattribute dem aktiven Cache entsprechen.
 
@@ -40,7 +40,7 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die von Ihnen erworbene
 
 * **Beispiel 4:** Sie nutzen eine 26-GB-Cache-Instanz von 13 Uhr bis 13:45 Uhr und eine weitere 26-GB-Cache-Instanz von 13:30 Uhr bis 14 Uhr. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
 
-Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](/azure/billing/billing-understand-reserved-instance-usage-ea).
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

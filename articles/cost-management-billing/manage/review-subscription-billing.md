@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684710"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132379"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Überprüfen der Abonnementabrechnung mit REST-APIs
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 Der Parameter `{subscriptionID}` ist erforderlich und identifiziert das Zielabonnement.
 
-Der Parameter `{billingPeriod}` ist erforderlich und gibt einen aktuellen [Abrechnungszeitraum](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) an.
+Der Parameter `{billingPeriod}` ist erforderlich und gibt einen aktuellen [Abrechnungszeitraum](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) an.
 
 Die Parameter `${startDate}` und `${endDate}` sind für dieses Beispiel erforderlich, aber für den Endpunkt optional. Sie geben den Datumsbereich als Zeichenfolgen im Format JJJJ-MM-TT an (Beispiele: `'20180501'` und `'20180615'`).
 
@@ -41,7 +41,7 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|
 |--------------------|-----------------|
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 ## <a name="response"></a>Antwort
 
@@ -85,7 +85,7 @@ Jedes Element in **value** stellt Details in Bezug auf die Verwendung eines Dien
 |**meterDetails** | Detaillierte Informationen zur Verwendung. |
 |**nextLink**| Gibt bei entsprechender Festlegung eine URL für die nächste „Seite“ mit Details an. Leer, wenn es sich um die letzte Seite handelt. |
 
-Dieses Beispiel ist abgekürzt. Eine vollständige Beschreibung der einzelnen Antwortfelder finden Sie unter [Auflisten von Nutzungsdetails](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
+Dieses Beispiel ist abgekürzt. Eine vollständige Beschreibung der einzelnen Antwortfelder finden Sie unter [Auflisten von Nutzungsdetails](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
 
 Andere Statuscodes geben Fehlerbedingungen an. In diesen Fällen erläutert das Antwortobjekt, warum ein Fehler bei der Anforderung aufgetreten ist.
 
@@ -101,6 +101,6 @@ Andere Statuscodes geben Fehlerbedingungen an. In diesen Fällen erläutert das 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Sehen Sie sich die [Übersicht über Unternehmensberichte](https://docs.microsoft.com/azure/billing/billing-enterprise-api) an.
-- Erkunden Sie die [Enterprise-Abrechnungs-REST-API](https://docs.microsoft.com/rest/api/billing/).
-- [Erste Schritte mit der Azure-REST-API](https://docs.microsoft.com/rest/api/azure/)
+- Sehen Sie sich die [Übersicht über Unternehmensberichte](./enterprise-api.md) an.
+- Erkunden Sie die [Enterprise-Abrechnungs-REST-API](/rest/api/billing/).
+- [Erste Schritte mit der Azure-REST-API](/rest/api/azure/)

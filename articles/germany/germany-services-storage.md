@@ -1,34 +1,22 @@
 ---
 title: Speicherdienste von Azure Deutschland | Microsoft-Dokumentation
 description: Dieses Thema enthält einen Vergleich der Speicherdienste für Azure Deutschland. Außerdem finden Sie hier weitere relevante Informationen.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/12/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 33f5235941f5e274c9c17929e527534054f76e23
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 8bb5a9a73a75c6f04be4ff2858e58b5754fcea90
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436645"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124334"
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="storage"></a>Storage
 Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.yml).
@@ -50,10 +38,10 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | --- | --- | --- |
 | [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | Allgemein verfügbar | Allgemein verfügbar |
-| [Tabellenspeicherung](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
-| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
+| [Table Storage](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
+| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
 | [Hot/Cold Blob Storage](../storage/blobs/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
-| [Storage Service Encryption](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Speicherdienstverschlüsselung](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
 | Importieren/Exportieren |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |
 
@@ -65,7 +53,7 @@ Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen i
 | Blob Storage | *.blob.core.windows.net | *.blob.core.cloudapi.de |
 | Azure Files | *.file.core.windows.net | *.file.core.cloudapi.de | 
 | Queue Storage | *.queue.core.windows.net | *.queue.core.cloudapi.de |
-| Table Storage | *.table.core.windows.net | *.table.core.cloudapi.de |
+| Tabellenspeicher | *.table.core.windows.net | *.table.core.cloudapi.de |
 
 > [!NOTE]
 > Ihre gesamten Skripts und Ihr Code müssen die passenden Endpunkte berücksichtigen. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage/common/storage-configure-connection-string.md). 

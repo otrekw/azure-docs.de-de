@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5ee544a307be26c737a05e2147298a31a9ef7d1a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689982"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132600"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatisierungsszenarien zur Abrechnungs- und Kostenverwaltung
 
@@ -60,43 +60,43 @@ Sie können die APIs für Abrechnung und Kostenverwaltung in mehreren Szenarios 
 ### <a name="consumption"></a>Nutzung
 Web Direct- und Enterprise-Kunden können alle folgenden APIs verwenden, sofern nicht anders angegeben:
 
--   [API für Budgets](https://docs.microsoft.com/rest/api/consumption/budgets) (*Nur Enterprise-Kunden*): Erstellen Sie entweder Kosten- oder Nutzungsbudgets für Ressourcen, Ressourcengruppen oder Abrechnungszähler. Wenn Sie Budgets erstellt haben, können Sie Warnungen konfigurieren, um benachrichtigt zu werden, wenn Sie definierte Budgetschwellenwerte überschritten haben. Sie können auch Aktionen konfigurieren, die auftreten, wenn Sie Budgetsummen erreicht haben.
+-   [API für Budgets](/rest/api/consumption/budgets) (*Nur Enterprise-Kunden*): Erstellen Sie entweder Kosten- oder Nutzungsbudgets für Ressourcen, Ressourcengruppen oder Abrechnungszähler. Wenn Sie Budgets erstellt haben, können Sie Warnungen konfigurieren, um benachrichtigt zu werden, wenn Sie definierte Budgetschwellenwerte überschritten haben. Sie können auch Aktionen konfigurieren, die auftreten, wenn Sie Budgetsummen erreicht haben.
 
--   [API für Marketplace-Gebühren](https://docs.microsoft.com/rest/api/consumption/marketplaces): Rufen Sie Kosten- und Nutzungsdaten für alle Azure Marketplace-Ressourcen (Azure-Partnerangebote) ab. Sie können mit diesen Daten Kosten für alle Marketplace-Ressourcen addieren oder die Kosten/Nutzung für bestimmte Ressourcen untersuchen.
+-   [API für Marketplace-Gebühren](/rest/api/consumption/marketplaces): Rufen Sie Kosten- und Nutzungsdaten für alle Azure Marketplace-Ressourcen (Azure-Partnerangebote) ab. Sie können mit diesen Daten Kosten für alle Marketplace-Ressourcen addieren oder die Kosten/Nutzung für bestimmte Ressourcen untersuchen.
 
--   [Preisblatt-API](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Nur Enterprise-Kunden*): Sie erhalten benutzerdefinierte Preise für alle Verbrauchseinheiten. Unternehmen können diese Daten in Kombination mit Nutzungsdetails und Marketplace-Nutzungsinformationen verwenden, um Kosten anhand von Nutzungs- und Marketplace-Daten zu berechnen.
+-   [Preisblatt-API](/rest/api/consumption/pricesheet) (*Nur Enterprise-Kunden*): Sie erhalten benutzerdefinierte Preise für alle Verbrauchseinheiten. Unternehmen können diese Daten in Kombination mit Nutzungsdetails und Marketplace-Nutzungsinformationen verwenden, um Kosten anhand von Nutzungs- und Marketplace-Daten zu berechnen.
 
--   [API für Reservierungsempfehlungen](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): Sie erhalten Empfehlungen für den Kauf reservierter VM-Instanzen. Mit Empfehlungen können Sie erwartete Kosteneinsparungen und Kaufbeträge analysieren. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
+-   [API für Reservierungsempfehlungen](/rest/api/consumption/reservationrecommendations): Sie erhalten Empfehlungen für den Kauf reservierter VM-Instanzen. Mit Empfehlungen können Sie erwartete Kosteneinsparungen und Kaufbeträge analysieren. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
 
--   [API für Reservierungsdetails](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): Informationen zu bereits erworbenen VM-Reservierungen werden angezeigt, z.B. reservierte Nutzung im Vergleich zu in Anspruch genommener Nutzung. Sie können die Daten auf VM-Ebene im Detail anzeigen. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
+-   [API für Reservierungsdetails](/rest/api/consumption/reservationsdetails): Informationen zu bereits erworbenen VM-Reservierungen werden angezeigt, z.B. reservierte Nutzung im Vergleich zu in Anspruch genommener Nutzung. Sie können die Daten auf VM-Ebene im Detail anzeigen. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
 
--   [API für Reservierungszusammenfassungen](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): Aggregierte Informationen zu VM-Reservierungen, die Ihre Organisation erworben hat, werden angezeigt, z.B. reservierte Nutzung im Vergleich zu im Aggregat in Anspruch genommener Nutzung. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
+-   [API für Reservierungszusammenfassungen](/rest/api/consumption/reservationssummaries): Aggregierte Informationen zu VM-Reservierungen, die Ihre Organisation erworben hat, werden angezeigt, z.B. reservierte Nutzung im Vergleich zu im Aggregat in Anspruch genommener Nutzung. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
 
--   [Nutzungsdetails-API](https://docs.microsoft.com/rest/api/consumption/usagedetails): Rufen Sie Kosten- und Nutzungsdaten für alle Azure-Ressourcen von Microsoft ab. Die Informationen liegen in Form von Nutzungsdetail-Datensätzen vor, die zurzeit einmal pro Verbrauchszähler und Tag ausgegeben werden. Mit diesen Informationen können Sie die Kosten für alle Ressourcen addieren oder die Kosten/Nutzung für bestimmte Ressourcen untersuchen.
+-   [Nutzungsdetails-API](/rest/api/consumption/usagedetails): Rufen Sie Kosten- und Nutzungsdaten für alle Azure-Ressourcen von Microsoft ab. Die Informationen liegen in Form von Nutzungsdetail-Datensätzen vor, die zurzeit einmal pro Verbrauchszähler und Tag ausgegeben werden. Mit diesen Informationen können Sie die Kosten für alle Ressourcen addieren oder die Kosten/Nutzung für bestimmte Ressourcen untersuchen.
 
 -   [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)): Rufen Sie Gebühren für Verbrauchseinheiten ab, wenn Sie Web Direct-Kunde sind. Sie können dann die zurückgegebenen Informationen mit ihren Ressourcenverbrauchsinformationen verwenden, um die zu erwartende Rechnung manuell zu berechnen.
 
 -   [API für nicht bewertete Nutzung](/previous-versions/azure/reference/mt219003(v=azure.100)): Rufen Sie Rohnutzungsdaten ab, bevor Azure Messungen/Gebührenberechnungen durchführt.
 
 ### <a name="billing"></a>Abrechnung
--   [API für Abrechnungszeiträume](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Bestimmen Sie einen zu analysierenden Abrechnungszeitraum zusammen mit den Rechnungs-IDs für diesen Zeitraum. Sie können die Rechnung-IDs mit der Rechnungen-API verwenden.
+-   [API für Abrechnungszeiträume](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Bestimmen Sie einen zu analysierenden Abrechnungszeitraum zusammen mit den Rechnungs-IDs für diesen Zeitraum. Sie können die Rechnung-IDs mit der Rechnungen-API verwenden.
 
 -   [Rechnungen-API](/rest/api/billing/2019-10-01-preview/invoices): Rufen Sie die Download-URL für eine Rechnung für einen bestimmten Abrechnungszeitraum im PDF-Format ab.
 
 ### <a name="enterprise-consumption"></a>Enterprise-Verbrauch
 Die folgenden APIs sind nur für Unternehmen bestimmt:
 
--   [Saldozusammenfassungs-API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Rufen Sie eine monatliche Übersicht über Informationen zu Salden, neuen Käufen, Gebühren für den Azure Marketplace-Dienst, Korrekturen und Überschreitungsgebühren ab. Sie können diese Informationen für den aktuellen Abrechnungszeitraum oder einen beliebigen Zeitraum in der Vergangenheit abrufen. Unternehmen können diese Daten mit manuell berechneten Summengebühren vergleichen. Diese API stellt keine ressourcenspezifische Informationen und keine Aggregatansicht der Kosten bereit.
+-   [Saldozusammenfassungs-API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Rufen Sie eine monatliche Übersicht über Informationen zu Salden, neuen Käufen, Gebühren für den Azure Marketplace-Dienst, Korrekturen und Überschreitungsgebühren ab. Sie können diese Informationen für den aktuellen Abrechnungszeitraum oder einen beliebigen Zeitraum in der Vergangenheit abrufen. Unternehmen können diese Daten mit manuell berechneten Summengebühren vergleichen. Diese API stellt keine ressourcenspezifische Informationen und keine Aggregatansicht der Kosten bereit.
 
--   [Nutzungsdetails-API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Rufen Sie Informationen über die Azure-Nutzung (von Microsoft-Angeboten) für den aktuellen Monat, einen bestimmten Abrechnungszeitraum oder einen benutzerdefinierten Datumszeitraum ab. Unternehmen können mit diesen Daten Rechnungen basierend auf Rate und Verbrauch manuell berechnen. Unternehmen können auch mit den Abteilungs-/Organisationsinformationen Kosten Organisationen übergreifend zuordnen. Die Daten stellen eine ressourcenspezifische Ansicht von Nutzung/Kosten bereit.
+-   [Nutzungsdetails-API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Rufen Sie Informationen über die Azure-Nutzung (von Microsoft-Angeboten) für den aktuellen Monat, einen bestimmten Abrechnungszeitraum oder einen benutzerdefinierten Datumszeitraum ab. Unternehmen können mit diesen Daten Rechnungen basierend auf Rate und Verbrauch manuell berechnen. Unternehmen können auch mit den Abteilungs-/Organisationsinformationen Kosten Organisationen übergreifend zuordnen. Die Daten stellen eine ressourcenspezifische Ansicht von Nutzung/Kosten bereit.
 
--   [API für Marketplace Store-Gebühren](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Rufen Sie Informationen über die Azure-Nutzung (von Partnerangeboten) für den aktuellen Monat, einen bestimmten Abrechnungszeitraum oder einen benutzerdefinierten Datumszeitraum ab. Unternehmen können mit diesen Daten Rechnungen basierend auf Rate und Verbrauch manuell berechnen. Unternehmen können auch mit den Abteilungs-/Organisationsinformationen Kosten Organisationen übergreifend zuordnen. Diese API stellt eine ressourcenspezifische Ansicht von Nutzung/Kosten bereit.
+-   [API für Marketplace Store-Gebühren](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Rufen Sie Informationen über die Azure-Nutzung (von Partnerangeboten) für den aktuellen Monat, einen bestimmten Abrechnungszeitraum oder einen benutzerdefinierten Datumszeitraum ab. Unternehmen können mit diesen Daten Rechnungen basierend auf Rate und Verbrauch manuell berechnen. Unternehmen können auch mit den Abteilungs-/Organisationsinformationen Kosten Organisationen übergreifend zuordnen. Diese API stellt eine ressourcenspezifische Ansicht von Nutzung/Kosten bereit.
 
--   [Preisblatt-API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): Rufen Sie den zutreffenden Tarif für jede Verbrauchseinheit für den angegebenen Registrierungs- und Abrechnungszeitraum ab. Mit diesen Tarifinformationen können Sie in Kombination mit Nutzungsdetails und Marketplace-Nutzungsinformationen die zu erwartende Rechnung manuell berechnen.
+-   [Preisblatt-API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): Rufen Sie den zutreffenden Tarif für jede Verbrauchseinheit für den angegebenen Registrierungs- und Abrechnungszeitraum ab. Mit diesen Tarifinformationen können Sie in Kombination mit Nutzungsdetails und Marketplace-Nutzungsinformationen die zu erwartende Rechnung manuell berechnen.
 
--   [API für Abrechnungszeiträume](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Rufen Sie eine Liste von Abrechnungszeiträumen ab. Die API bietet Ihnen außerdem eine Eigenschaft, die auf die API-Route für die vier Sätze von Enterprise-API-Daten verweist, die sich auf den Abrechnungszeitraum beziehen: BalanceSummary, UsageDetails, Marketplace Charges und PriceSheet.
+-   [API für Abrechnungszeiträume](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Rufen Sie eine Liste von Abrechnungszeiträumen ab. Die API bietet Ihnen außerdem eine Eigenschaft, die auf die API-Route für die vier Sätze von Enterprise-API-Daten verweist, die sich auf den Abrechnungszeitraum beziehen: BalanceSummary, UsageDetails, Marketplace Charges und PriceSheet.
 
--   [API für Empfehlungen für reservierte Instanzen](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): Betrachten Sie 7 Tage, 30 Tage oder 60 Tage VM-Nutzung, und Sie erhalten Empfehlungen für Einzel- und gemeinsame Käufe. Mit dieser API können Sie zu erwartende Kosteneinsparungen und empfohlene Kaufbeträge analysieren. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
+-   [API für Empfehlungen für reservierte Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): Betrachten Sie 7 Tage, 30 Tage oder 60 Tage VM-Nutzung, und Sie erhalten Empfehlungen für Einzel- und gemeinsame Käufe. Mit dieser API können Sie zu erwartende Kosteneinsparungen und empfohlene Kaufbeträge analysieren. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -105,12 +105,12 @@ Diese APIs weisen ähnliche Funktionen auf und können die gleiche Bandbreite an
 
 - Enterprise-Berichterstellungs-APIs stehen für Kunden zur Verfügung, die ein Enterprise Agreement mit Microsoft geschlossen haben, das ihnen Zugang zu ausgehandelten finanziellen Verpflichtungen und benutzerdefinierten Preisen gewährt. Für die APIs ist ein Schlüssel erforderlich, den Sie aus dem [Enterprise Portal](https://ea.azure.com) abrufen können. Eine Beschreibung dieser APIs finden Sie unter [Überblick über Berichterstellungs-APIs für Enterprise-Kunden](enterprise-api.md).
 
-- Nutzungs-APIs sind mit einigen Ausnahmen für alle Kunden verfügbar. Weitere Informationen finden Sie unter [Azure-Nutzungs-API: Übersicht](consumption-api-overview.md) und [Azure-Verbrauch](https://docs.microsoft.com/rest/api/consumption/). Die bereitgestellten APIs werden als Lösung für die aktuellen Entwicklungsszenarien empfohlen.
+- Nutzungs-APIs sind mit einigen Ausnahmen für alle Kunden verfügbar. Weitere Informationen finden Sie unter [Azure-Nutzungs-API: Übersicht](consumption-api-overview.md) und [Azure-Verbrauch](/rest/api/consumption/). Die bereitgestellten APIs werden als Lösung für die aktuellen Entwicklungsszenarien empfohlen.
 
 ### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Worin besteht der Unterschied zwischen der Nutzungsdetails-API und der Nutzungs-API?
 Diese APIs stellen im Grundsatz verschiedene Daten bereit:
 
-- Die [Nutzungsdetails-API](https://docs.microsoft.com/rest/api/consumption/usagedetails) bietet Informationen zur Nutzung und den Kosten von Azure auf Basis von Verbrauchseinheiten. Die bereitgestellten Daten haben bereits das System zur Zählung von Kostenverbrauchseinheiten in Azure durchlaufen. Kosten sowie andere mögliche Änderungen wurden auf diese angewendet:
+- Die [Nutzungsdetails-API](/rest/api/consumption/usagedetails) bietet Informationen zur Nutzung und den Kosten von Azure auf Basis von Verbrauchseinheiten. Die bereitgestellten Daten haben bereits das System zur Zählung von Kostenverbrauchseinheiten in Azure durchlaufen. Kosten sowie andere mögliche Änderungen wurden auf diese angewendet:
 
    - Änderungen am Konto für die Verwendung der im Voraus bezahlten finanziellen Verpflichtungen
    - Änderungen am Konto für die Verwendung der von Azure ermittelten Abweichungen
@@ -122,12 +122,12 @@ Diese APIs bieten unterschiedliche Ansichten derselben Daten:
 
 - Die [Rechnungs-API](/rest/api/billing/2019-10-01-preview/invoices) ist nur für Web-Direct-Kunden bestimmt. Sie bietet ein monatliches Rollup Ihrer Rechnung basierend auf den aggregierten Gebühren für jeden Verbrauchseinheitentyp.
 
-- Die [Nutzungsdetails-API](https://docs.microsoft.com/rest/api/consumption/usagedetails) bietet eine präzise Ansicht der Nutzung/Kosten-Datensätze für jeden Tag. Sowohl Enterprise- als auch Web Direct-Kunden können sie nutzen.
+- Die [Nutzungsdetails-API](/rest/api/consumption/usagedetails) bietet eine präzise Ansicht der Nutzung/Kosten-Datensätze für jeden Tag. Sowohl Enterprise- als auch Web Direct-Kunden können sie nutzen.
 
 ### <a name="whats-the-difference-between-the-price-sheet-api-and-the-ratecard-api"></a>Worin besteht der Unterschied zwischen der Preisblatt-API und der RateCard-API?
 Diese APIs stellen ähnliche Datasets bereit, sind jedoch auf unterschiedliche Zielgruppen ausgerichtet:
 
-- Die [Preisblatt-API](https://docs.microsoft.com/rest/api/consumption/pricesheet) stellt die benutzerdefinierten Preise bereit, die für einen Enterprise-Kunden ausgehandelt wurden.
+- Die [Preisblatt-API](/rest/api/consumption/pricesheet) stellt die benutzerdefinierten Preise bereit, die für einen Enterprise-Kunden ausgehandelt wurden.
 
 - Die [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) stellt die öffentlichen Preise für Web Direct-Kunden bereit.
 
