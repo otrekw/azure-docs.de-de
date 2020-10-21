@@ -263,6 +263,8 @@
           items:
             - name: IP-Firewallregeln auf Serverebene
               href: database/firewall-create-server-level-portal-quickstart.md
+        - name: GitHub-Aktionen
+          href: database/connect-github-actions-sql-db.md
     - name: Tutorials
       items:
         - name: Erstellen einer Datenbank

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553911"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Tutorial: Azure Active Directory-Integration mit Periscope Data
 
@@ -123,7 +123,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Periscop
 
 2. Öffnen Sie das Zahnradmenü unten links und dann das Menü **Abrechnung** > **Sicherheit**, und führen Sie die folgenden Schritte aus. Nur Administratoren haben Zugriff auf diese Einstellungen.
 
-    ![Informationen zur Konfiguration von Periscope Data](./media/periscope-data-tutorial/configure01.png)
+    ![Screenshot: Dialogfeld „Sicherheit“ mit ausgewählten Einstellungen](./media/periscope-data-tutorial/configure01.png)
 
     a. Kopieren Sie die **App-Verbundmetadaten-URL** aus „Schritt 5 **SAML-Signaturzertifikat**“, und öffnen Sie sie in einem Browser. Ein XML-Dokument wird geöffnet.
 
@@ -143,7 +143,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Periscop
 
     i. Klicken Sie abschließend auf **Speichern**, und **bestätigen** Sie die Änderung der SSO-Einstellungen, indem Sie **Logout** (Abmelden) eingeben.
 
-    ![Informationen zur Konfiguration von Periscope Data](./media/periscope-data-tutorial/configure02.png)
+    ![Screenshot: Dialogfeld „Update SSO Configuration“ (SSO-Konfiguration aktualisieren) mit Eingabe von „Logout“ (Abmelden) im Textfeld und Auswahl der Schaltfläche „Confirm“ (Bestätigen)](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -206,7 +206,7 @@ Um für Azure AD-Benutzer das Anmelden an Periscope Data zu ermöglichen, müsse
 
 2. Klicken Sie unten links im Menü auf **Einstellungen**, und navigieren Sie zu **Berechtigungen**.
 
-    ![Informationen zur Konfiguration von Periscope Data](./media/periscope-data-tutorial/configure03.png)
+    ![Screenshot: Menü „Einstellungen“ mit Auswahl von „Berechtigungen“](./media/periscope-data-tutorial/configure03.png)
 
 3. Klicken Sie auf **BENUTZER HINZUFÜGEN**, und führen Sie die folgenden Schritte aus:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5d4900713cd8d96180bf74b300a738a8b676421e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bd47a528b6c9aef354df8e52da63409002f6fb32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547153"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Tutorial: Azure Active Directory-Integration mit Jitbit Helpdesk
 
@@ -137,7 +137,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Jitbit 
 
 1. Klicken Sie auf **Allgemeine Einstellungen**.
 
-    ![Benutzer, Unternehmen und Berechtigungen](./media/jitbit-helpdesk-tutorial/ic777680.png "Benutzer, Unternehmen und Berechtigungen")
+    ![Screenshot: Link „General Settings“ (Allgemeine Einstellungen)](./media/jitbit-helpdesk-tutorial/ic777680.png "Benutzer, Unternehmen und Berechtigungen")
 
 1. Führen Sie im Konfigurationsabschnitt **Authentifizierungseinstellungen** die folgenden Schritte aus:
 

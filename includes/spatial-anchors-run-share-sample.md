@@ -4,17 +4,22 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50e4799f09322eab05b4f8ddf7004c2e0078fdab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358764"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971382"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Das Java-Android-Beispiel unterstützt die geräteübergreifende Freigabe.
-Öffnen Sie die Datei `SharedActivity.java` aus dem Ordner mit den Beispielen in Android Studio. Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei `SharedActivity.java` als Wert für `SharingAnchorsServiceUrl` ein. Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+Öffnen Sie in Android Studio die Datei *SharedActivity.java* aus dem Ordner mit den Beispielen. 
+
+Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) kopiert haben, in der Datei *SharedActivity.java* als Wert für `SharingAnchorsServiceUrl` ein. 
+
+Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 [!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
@@ -23,16 +28,28 @@ Das Java-Android-Beispiel unterstützt die geräteübergreifende Freigabe.
 ## <a name="ios"></a>[iOS](#tab/iOS)
 
 Das Objective-C-iOS-Beispiel unterstützt die geräteübergreifende Freigabe.
-Öffnen Sie die Datei `SharedDemoViewController.m` im Ordner mit den Beispielen. Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei `SharedDemoViewController.m` als Wert für `SharingAnchorsServiceUrl` ein. Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
 
-Stellen Sie die App auf Ihrem Gerät bereit. Nachdem die App gestartet wurde, wählen Sie die Option **Tippen, um die freigegebene Demo zu starten** aus. Befolgen Sie die Anweisungen in der App. Sie können **Tippen, um den Anker anhand seiner Ankernummer zu finden** oder **Tippen, um den Anker zu erstellen und im Dienst zu speichern** auswählen.
+Öffnen Sie die Datei *SharedDemoViewController.m* im Ordner mit den Beispielen. 
+
+Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei *SharedDemoViewController.m* als Wert für `SharingAnchorsServiceUrl` ein. 
+
+Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+Stellen Sie die App auf Ihrem Gerät bereit. 
+
+Wählen Sie nach dem Starten der App die Option **Tippen, um die freigegebene Demo zu starten** aus, und befolgen Sie dann die Anweisungen in der App. Sie können **Tippen, um den Anker anhand seiner Ankernummer zu finden** oder **Tippen, um den Anker zu erstellen und im Dienst zu speichern** auswählen.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Die Android- und iOS-Beispiele für Xamarin unterstützen die geräteübergreifende Freigabe.
-Öffnen Sie die Datei `AccountDetails.cs` im Ordner mit den Beispielen. Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei `AccountDetails.cs` als Wert für `AnchorSharingServiceUrl` ein. Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+Öffnen Sie die Datei *AccountDetails.cs* im Ordner mit den Beispielen. 
+
+Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei *AccountDetails.cs* als Wert für `AnchorSharingServiceUrl` ein. 
+
+Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 [!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
@@ -52,21 +69,23 @@ Die Android- und iOS-Beispiele für Xamarin unterstützen die geräteübergreife
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-Navigieren Sie im Bereich **Projekt** zu `Assets\AzureSpatialAnchors.Examples\Resources`. Wählen Sie `SpatialAnchorSamplesConfig`aus. Geben Sie ebenfalls im Bereich **Inspector** den Wert für `Sharing Anchors Service url` (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) als Wert für `Base Sharing Url` ein, und ersetzen Sie `index.html` durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+Navigieren Sie im Bereich **Projekt** zu `Assets\AzureSpatialAnchors.Examples\Resources`. 
+
+Wählen Sie **SpatialAnchorSamplesConfig** aus. Geben Sie ebenfalls im Bereich **Inspector** die URL für `Sharing Anchors Service` (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) als Wert für `Base Sharing Url` ein. Ersetzen Sie `index.html` durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 Speichern Sie die Szene, indem Sie **Datei** > **Speichern** wählen.
 
 ## <a name="deploy-to-your-device"></a>Bereitstellen auf Ihrem Gerät
 
-### <a name="deploy-to-android-device"></a>Bereitstellen auf einem Android-Gerät
+### <a name="deploy-to-an-android-device"></a>Bereitstellen auf einem Android-Gerät
 
 Melden Sie sich auf Ihrem Android-Gerät an, und verbinden Sie es mit einem USB-Kabel mit Ihrem Computer.
 
 Wählen Sie **Datei** > **Buildeinstellungen** aus, um **Buildeinstellungen** zu öffnen.
 
-Stellen Sie unter **Scenes In Build** (Szenen im Build) sicher, dass sich neben allen Szenen ein Häkchen befindet.
+Stellen Sie unter **Scenes In Build** (Szenen im Build) sicher, dass sich neben jeder Szene ein Häkchen befindet.
 
-Stellen Sie sicher, dass für **Projekt exportieren** kein Häkchen gesetzt ist. Wählen Sie **Erstellen und ausführen** aus. Sie werden aufgefordert, die Datei vom Typ `.apk` zu speichern. Sie können einen beliebigen Namen auswählen.
+Stellen Sie sicher, dass für **Projekt exportieren** kein Häkchen gesetzt ist. Wählen Sie **Erstellen und ausführen** aus. Sie werden aufgefordert, die Datei vom Typ *.apk* zu speichern. Sie können einen beliebigen Namen auswählen.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -74,7 +93,7 @@ Stellen Sie sicher, dass für **Projekt exportieren** kein Häkchen gesetzt ist.
 
 Wählen Sie **Datei** > **Buildeinstellungen** aus, um **Buildeinstellungen** zu öffnen.
 
-Stellen Sie unter **Scenes In Build** (Szenen im Build) sicher, dass sich neben allen Szenen ein Häkchen befindet.
+Stellen Sie unter **Scenes In Build** (Szenen im Build) sicher, dass sich neben jeder Szene ein Häkchen befindet.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 

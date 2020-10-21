@@ -67,6 +67,8 @@
       items:
         - name: Codieren und Streamen einer Remotedatei (REST)
           href: stream-files-tutorial-with-rest.md
+        - name: Benutzerseitig verwaltete Schlüssel mit Media Services
+          href: tutorial-byok.md
     - name: Befehlszeilenschnittstelle (CLI)
       items:
         - name: Codieren und Streamen einer Remotedatei (CLI)
@@ -175,6 +177,8 @@
         - name: Dynamische Verschlüsselung und Schlüsselübermittlung
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
+        - name: Vom Kunden verwaltete Schlüssel
+          href: concept-use-customer-managed-keys-byok.md
         - name: Entwerfen eines Multi-DRM-Systems
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
@@ -373,7 +377,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ams
     - name: SDKs
       items:
@@ -410,7 +414,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

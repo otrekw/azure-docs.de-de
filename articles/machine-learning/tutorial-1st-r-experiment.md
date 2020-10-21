@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906732"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019374"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells (Vorschau)
 
@@ -68,11 +68,11 @@ Verwenden Sie RStudio in einer Azure ML-Compute-Instanz für dieses Tutorial.
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>Klonen der Beispielvignetten 
 
-Klonen Sie das https://github.com/azure/azureml-sdk-for-r -GitHub-Repository, um eine Kopie der Vignettendateien zu erhalten, die Sie in diesem Tutorial ausführen werden.
+Klonen Sie das https://github.com/Azure/azureml-sdk-for-r -GitHub-Repository, um eine Kopie der Vignettendateien zu erhalten, die Sie in diesem Tutorial ausführen werden.
 
 1. Navigieren Sie in RStudio zur Registerkarte „Terminal“ und dann zu dem Verzeichnis, in dem Sie das Repository klonen möchten.
 
-1. Führen Sie „git clone https://github.com/Azure/azureml-sdk-for-r “ im Terminal aus, um das Repository zu klonen.
+1. Führen Sie `git clone https://github.com/Azure/azureml-sdk-for-r` im Terminal aus, um das Repository zu klonen.
 
 1. Navigieren Sie in RStudio zum Ordner *Vignettes* (Vignetten) des geklonten *azureml-sdk-for-r*-Ordners.  Wählen Sie unter *vignettes* (Vignetten) die Datei *train-and-deploy-first-model.Rmd* aus, um die in diesem Tutorial verwendete Vignette zu suchen. Die zusätzlichen Dateien, die für die Vignette verwendet werden, befinden sich im Unterordner *train-and-deploy-first-model*. Nachdem Sie die Vignette geöffnet haben, legen Sie den Speicherort des Arbeitsverzeichnisses auf **Session > Set Working Directory > To Source File Location** (Sitzung > Arbeitsverzeichnis festlegen > Auf Quelldatei-Speicherort). 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554514"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940785"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit NetSuite
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
     * Den Wert **<`Instance ID`>** erhalten Sie im NetSuite-Konfigurationsabschnitt, wie weiter unten im Tutorial in Schritt 8 unter „NetSuite-Konfiguration“ erläutert. Dort finden Sie die exakte Domäne (in diesem Fall also beispielsweise „system.na0.netsuite.com“).
 
-        ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/domain-value.png)
+        ![Screenshot: Seite „SAML-Setup“, auf der Sie die Domäne abrufen können](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > Bei den Werten in den vorangehenden URLs handelt es sich um Beispielwerte. Ersetzen Sie sie durch die tatsächliche Antwort-URL. Den Wert erhalten Sie vom [Supportteam für den NetSuite-Client](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -164,31 +164,31 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Wählen Sie auf der oberen Navigationsleiste **Setup** und anschließend **Company** > **Enable Features** (Unternehmen > Features aktivieren) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![Screenshot: Auswahl von „Enable Features“ (Features aktivieren) unter „Company“ (Unternehmen)](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. Wählen Sie auf der Symbolleiste in der Mitte der Seite **SuiteCloud** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![Screenshot: Auswahl von „SuiteCloud“](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. Aktivieren Sie unter **Manage Authentication** (Authentifizierung verwalten) das Kontrollkästchen **SAML Single Sign-on** (Einmaliges Anmelden für SAML), um die Option für SAML-SSO in NetSuite zu aktivieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![Screenshot: Option „Manage Authentication“ (Authentifizierung verwalten) mit Auswahl von „SAML Single Sign-on“ (Einmaliges Anmelden für SAML)](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. Wählen Sie auf der oberen Navigationsleiste die Option **Setup** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-setup.png)
+    ![Screenshot: Auswahl von „Setup“ in der NETSUITE-Navigationsleiste](./media/NetSuite-tutorial/ns-setup.png)
 
 6. Wählen Sie in der Liste **Setup Tasks** (Setupaufgaben) die Option **Integration** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-integration.png)
+    ![Screenshot: Auswahl von „Integration“ unter „Setup Tasks“ (Setupaufgaben)](./media/NetSuite-tutorial/ns-integration.png)
 
 7. Wählen Sie unter **Manage Authentication** (Authentifizierung verwalten) die Option **SAML Single Sign-on** (Einmaliges Anmelden für SAML) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-saml.png)
+    ![Screenshot: Auswahl von „SAML Single Sign-on“ (Einmaliges Anmelden für SAML) unter der Option „Integration“ von „Setup Tasks“ (Setupaufgaben)](./media/NetSuite-tutorial/ns-saml.png)
 
 8. Führen Sie im Bereich **SAML Setup** (SAML-Setup) unter **NetSuite-Konfiguration** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![Screenshot: Bereich „SAML Setup“ (SAML-Setup), in dem Sie die beschriebenen Werte eingeben können](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. Aktivieren Sie das Kontrollkästchen **Primary Authentication Method** (Primäre Authentifizierungsmethode).
 
@@ -198,9 +198,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 9. Wählen Sie auf der oberen NetSuite-Navigationsleiste **Setup** und anschließend **Company** > **Company Information** (Unternehmensinformationen) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-com.png)
+    ![Screenshot: Auswahl von „Company Information“ (Unternehmensinformationen) unter „Company“ (Unternehmen)](./media/NetSuite-tutorial/ns-com.png)
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-account-id.png)
+    ![Screenshot: Bereich, in dem Sie die beschriebenen Werte eingeben können](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. Kopieren Sie im Bereich **Company Information** (Unternehmensinformationen) in der rechten Spalte den Wert für **Account ID** (Konto-ID).
 
@@ -210,23 +210,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     a. Wählen Sie auf der oberen Navigationsleiste die Option **Setup** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-setup.png)
+    ![Screenshot: Auswahl von „Setup“ in der NETSUITE-Navigationsleiste](./media/NetSuite-tutorial/ns-setup.png)
 
     b. Wählen Sie im linken Bereich **Users/Roles** (Benutzer/Rollen) und dann **Manage Roles** (Rollen verwalten) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![Screenshot: Bereich „Manage Roles“ (Rollen verwalten), in dem Sie „New Role“ (Neue Rolle) auswählen können](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. Wählen Sie **New Role** (Neue Rolle) aus.
 
     d. Geben Sie unter **Name** einen Namen für die neue Rolle ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-new-role.png)
+    ![Screenshot: Setup-Manager, in dem Sie einen Namen für die Rolle eingeben können](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. Wählen Sie **Speichern** aus.
 
     f. Wählen Sie auf der oberen Navigationsleiste die Option **Permissions** (Berechtigungen) aus. Wählen Sie anschließend **Setup** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-sso.png)
+    ![Screenshot: Registerkarte „Setup“, auf der Sie die beschriebenen Werte eingeben können](./media/NetSuite-tutorial/ns-sso.png)
 
     g. Wählen Sie **SAML Single Sign-on** (Einmaliges Anmelden für SAML) und dann **Add** (Hinzufügen) aus.
 
@@ -234,19 +234,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     i. Wählen Sie auf der oberen Navigationsleiste **Setup** und anschließend **Setup Manager** (Setup-Manager) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-setup.png)
+    ![Screenshot: Auswahl von „Setup“ in der NETSUITE-Navigationsleiste](./media/NetSuite-tutorial/ns-setup.png)
 
     j. Wählen Sie im linken Bereich **Users/Roles** (Benutzer/Rollen) und dann **Manage Users** (Benutzer verwalten) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![Screenshot: Bereich „Manage Users“ (Benutzer verwalten), in dem Sie das Suite Demo Team auswählen können](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. Wählen Sie einen Testbenutzer aus. Wählen Sie dann **Edit** (Bearbeiten) und die Registerkarte **Access** (Zugriff) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![Screenshot: Bereich „Manage Users“ (Benutzer verwalten), in dem Sie „Edit“ (Bearbeiten) auswählen können](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. Weisen Sie im Bereich **Roles** (Rollen) die entsprechende Rolle zu, die Sie erstellt haben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/ns-add-role.png)
+    ![Screenshot: Auswahl von „Administrator“ unter „Employee“ (Mitarbeiter)](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. Wählen Sie **Speichern** aus.
 

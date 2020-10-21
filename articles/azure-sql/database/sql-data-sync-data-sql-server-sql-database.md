@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332963"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057891"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -126,7 +126,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 > - Daten zwischen Hub und Mitglied können verloren gehen, auch wenn bei der Synchronisierung kein Problem gemeldet wird.
 > - Bei der Synchronisierung kann ein Fehler auftreten, weil die Nachverfolgungstabelle aufgrund der Primärschlüsseländerung über eine nicht vorhandene Zeile aus der Quelle verfügt.
 
-- Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Momentaufnahmeisolation muss sowohl für die Synchronisierungsmitglieder als auch den Hub aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen
 
@@ -136,7 +136,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Gehen Sie mit Bedacht vor, wenn Sie die folgenden Datentypen als Primärschlüssel verwenden, da nur die Genauigkeit bis auf die Sekunde unterstützt wird: time, datetime, datetime2, datetimeoffset.
 - Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
 - Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
-- Tabellen mit demselben Namen, aber unterschiedlichem Schema (z. B. „dbo.customers“ und „sales.customers“) werden nicht unterstützt.
+- Gibt es Tabellen, die denselben Namen, aber unterschiedlichen Schemas haben (z. B. dbo.customers und sales.customers), kann nur eine der Tabellen in der Synchronisierung hinzugefügt werden.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 - Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
 

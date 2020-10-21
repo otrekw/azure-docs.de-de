@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319761"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356365"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -170,7 +170,7 @@ Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website v
 
 3. Fügen Sie die Namen für **Sammlung** und **Datenbank** ein. (Diese sollten **changefeedlabcollection** und **changefeedlabdatabase** lauten, sofern Sie sie nicht anders benennen möchten.)
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Aktualisieren von Verbindungszeichenfolgen":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Projektdarstellung":::
  
 4. Speichern Sie die Änderungen auf alle bearbeiteten Dateien.  
 
@@ -180,7 +180,7 @@ Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website v
 
 7. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), dann zum Cosmos DB-Konto innerhalb Ihrer Ressourcengruppe und anschließend zum **Daten-Explorer**. Dort werden die randomisierten Daten angezeigt, die in Ihre **changefeedlabcollection** importiert wurden.
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Im Portal generierte Daten":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Projektdarstellung":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Einrichten eines Stream Analytics-Auftrags
 
@@ -190,7 +190,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
 
 2. Wählen Sie **Eingaben**, wie unten dargestellt.  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Erstellen einer Eingabe":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Projektdarstellung":::
 
 3. Wählen Sie **+ Datenstromeingabe hinzufügen**. Wählen Sie dann im Dropdownmenü die Option **Event Hub** aus.  
 
@@ -222,7 +222,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
 
 8. Rufen Sie anschließend wieder **streamjob1** auf, und wählen Sie **Abfrage bearbeiten** aus.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Abfrage bearbeiten":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Projektdarstellung":::
  
 9. Fügen Sie die folgende Abfrage im Abfragefenster ein. Die Abfrage **AVERAGE PRICE** berechnet den Durchschnittspreis aller Artikel, die von Benutzern angesehen, zu den Einkaufswagen der Benutzer hinzugefügt und von Benutzern gekauft werden. Anhand dieser Metriken können E-Commerce-Unternehmen entscheiden, zu welchen Preisen sie Artikel verkaufen und in welchen Bestand sie investieren wollen. Wenn beispielsweise der Durchschnittspreis der angesehenen Artikel viel höher ist als der Durchschnittspreis der gekauften Artikel, kann ein Unternehmen beschließen, weniger teure Artikel zu seinem Bestand hinzuzufügen.
 
@@ -315,7 +315,7 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
 
    So sieht ein Beispieldashboard mit diesen Diagrammen aus:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Visualisierungen":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Projektdarstellung":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optional: Visualisieren mit einer E-Commerce-Website
 
@@ -329,13 +329,13 @@ Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sic
 
 2. Wählen Sie die Sammlung **topItems** aus, und legen Sie unter **Skalierung und Einstellungen** die **Gültigkeitsdauer** auf **30 Sekunden** fest, sodass „topItems“ alle 30 Sekunden aktualisiert wird.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Gültigkeitsdauer":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Projektdarstellung":::
 
 3. Um in die Sammlung **topItems** die am häufigsten gekauften Artikel einzutragen, navigieren Sie zurück zu **streamjob1** und fügen Sie eine neue **Ausgabe** hinzu. Wählen Sie **Cosmos DB**.
 
 4. Füllen Sie die erforderlichen Felder aus, wie unten dargestellt.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos-Ausgabe":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Projektdarstellung":::
  
 5. Wenn Sie die optionale TOP 5-Abfrage im vorherigen Teil der Übungseinheit hinzugefügt haben, fahren Sie mit Teil 5a fort. Wenn nicht, fahren Sie mit Teil 5b fort.
 

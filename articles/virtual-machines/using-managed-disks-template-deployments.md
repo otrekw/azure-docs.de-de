@@ -1,6 +1,6 @@
 ---
-title: 'Verwaltete Datenträger: Azure Resource Manager-Vorlagen'
-description: In diesem Artikel wird die Verwendung von verwalteten Datenträgern in Azure Resource Manager-Vorlagen für Azure-VMs erläutert.
+title: Bereitstellen von Datenträgern mithilfe von Azure Resource Manager-Vorlagen
+description: In diesem Artikel wird die Verwendung von verwalteten und nicht verwalteten Datenträgern in Azure Resource Manager-Vorlagen für Azure-VMs erläutert.
 documentationcenter: ''
 author: jboeshart
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854331"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976662"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen
+# <a name="using-disks-in-azure-resource-manager-templates"></a>Verwenden von Datenträgern in Azure Resource Manager-Vorlagen
 
 In diesem Dokument erhalten Sie Informationen über die Unterschiede zwischen verwalteten und nicht verwalteten Datenträgern bei der Verwendung von Azure Resource Manager-Vorlagen zur Bereitstellung virtueller Computer. In diesem Beispiel werden Sie bei der Aktualisierung vorhandener Vorlagen auf verwaltete Datenträger unterstützt, die vorher nicht verwaltete Datenträger verwendet haben. Zu Referenzzwecken verwenden wir die Vorlage [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als Leitfaden. Sie können die Vorlage mit [verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) und einer vorherigen Version mit [nicht verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) anzeigen lassen, wenn Sie sie direkt miteinander vergleichen möchten.
 
@@ -266,5 +266,4 @@ Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Daten
 * Im Dokument [Azure Managed Disks – Übersicht](managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines).
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks).
-* Informationen zum Verwenden von verwalteten Datenträgern in Azure-VM-Skalierungsgruppen finden Sie im Dokument [Verwenden von Datenträgern mit Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks).
-
+* Informationen zum Verwenden von verwalteten Datenträgern in Azure-VM-Skalierungsgruppen finden Sie im Dokument [Verwenden von Datenträgern mit Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md).

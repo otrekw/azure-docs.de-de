@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549040"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit NetDocuments
 
@@ -136,7 +136,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 3. Wählen Sie **Security Center**aus.
    
-    ![Repository](./media/netdocuments-tutorial/security-center.png "Security Center")
+    ![Screenshot: Option „Security Center“ unter „Legal Documents“ (Rechtliche Dokumente) ausgewählt](./media/netdocuments-tutorial/security-center.png "Security Center")
 
 4. Wählen Sie **Advanced Authentication** (Erweiterte Authentifizierung) aus.
     
@@ -166,7 +166,7 @@ Damit sich Azure AD-Benutzer bei NetDocuments anmelden können, müssen sie in N
 
 3. Wählen Sie **Benutzer und Gruppen**.
    
-    ![Repository](./media/netdocuments-tutorial/users-groups.png "Repository")
+    ![Screenshot: Option „Users & Groups“ (Benutzer und Gruppen) unter „Legal Documents“ (Rechtliche Dokumente) ausgewählt](./media/netdocuments-tutorial/users-groups.png "Repository")
 
 4. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten, und klicken Sie auf **Benutzer hinzufügen**.
    

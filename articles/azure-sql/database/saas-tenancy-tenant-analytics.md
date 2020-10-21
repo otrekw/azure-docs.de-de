@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437393"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619541"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Abfragen der Analysedatenbank
 > - Verwenden von Power BI für die Datenvisualisierung, um Trends in den Mandantendaten hervorzuheben und Empfehlungen für Verbesserungen abzugeben
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![Diagramm: Übersicht über die für diesen Artikel verwendete Architektur.](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Analysemuster für Offlinemandanten
 
@@ -138,7 +138,7 @@ Jeder Auftrag extrahiert die entsprechenden Daten und sendet sie an den Analyses
 4. Drücken Sie F5 zum Ausführen des Skripts, das den Auftrag zum Extrahieren der Ticket- und Kundendaten aus den einzelnen Mandantendatenbanken erstellt und ausführt. Der Auftrag speichert die Daten im Analysespeicher.
 5. Fragen Sie die Tabelle „TicketsRawData“ in der Datenbank „tenantanalytics“ ab, um sicherzustellen, dass die Tabelle mit Ticketinformationen von allen Mandanten aufgefüllt wurde.
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![Screenshot: ExtractTickets-Datenbank mit im Objekt-Explorer ausgewähltem Datenbankobjekt „TicketsRawData“.](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 Wiederholen Sie die vorherigen Schritte, ersetzen Sie dabei jedoch in Schritt 2 **\ExtractTickets.sql** durch **\ExtractVenuesEvents.sql**.
 
@@ -177,7 +177,7 @@ Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI he
 
 5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P\@ssword1* ein. Klicken Sie auf **Verbinden**.  
 
-    ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![Screenshot: Dialogfeld „SQL Server-Datenbank“, in dem Sie einen Benutzernamen und ein Kennwort eingeben können.](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. Wählen Sie im Bereich **Navigator** unter der Analysedatenbank die folgenden Tabellen im Sternschema aus: „fact_Tickets“, „dim_Events“, „dim_Venues“, „dim_Customers“ und „dim_Dates“. Wählen Sie dann **Laden** aus. 
 
@@ -185,13 +185,13 @@ Glückwunsch! Sie haben die Daten erfolgreich in Power BI geladen. Jetzt können
 
 Sie beginnen mit der Analyse der Ticketverkaufsdaten, um Abweichungen bei der Verwendung bei einzelnen Veranstaltungsorten aufzudecken. Wählen Sie in Power BI die folgenden Optionen aus, um ein Balkendiagramm mit der Gesamtanzahl der pro Veranstaltungsort verkauften Tickets zu zeichnen. Aufgrund der zufälligen Verteilung im Ticket-Generator können Ihre Ergebnisse von der Darstellung abweichen.
  
-![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![Screenshot: Power BI-Visualisierung und Steuerelemente für die Datenvisualisierung auf der rechten Seite.](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Die Darstellung oben bestätigt, dass die Anzahl der verkauften Tickets für die einzelnen Veranstaltungsorte variiert. Veranstaltungsorte, die mehr Tickets verkaufen, nutzen Ihren Dienst stärker als solche, die weniger Tickets verkaufen. Dies bietet eventuell eine Möglichkeit, die Ressourcenzuordnung gemäß den unterschiedlichen Mandantenanforderungen anzupassen.
 
 Sie können die Daten noch weiter analysieren, um festzustellen, wie die Ticketverkäufe sich über die Zeit ändern. Wählen Sie in Power BI die folgenden Optionen aus, um die Gesamtanzahl der pro Tag verkauften Tickets für einen Zeitraum von 60 Tagen zu zeichnen.
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![Screenshot. Power BI-Visualisierung namens „Ticket Sale Distribution versus Sale Day“.](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 Im vorherige Diagramm zeigen sich bei einigen Veranstaltungsorten Spitzen in den Ticketverkäufen. Diese Spitzen untermauern die Vermutung, dass einige Veranstaltungsorte unverhältnismäßig mehr Systemressourcen verbrauchen als andere. Es gibt bisher aber noch kein offensichtliches Muster für die Spitzen.
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 Wählen Sie die folgenden Visualisierungsoptionen aus, um den Prozentsatz verkaufter Tickets pro Veranstaltungsort zu zeichnen und den relativen Erfolg dazustellen.
 
-![AvgTicketsByVenues](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![Screenshot: Power BI-Visualisierung namens „Average Tickets Sold By Each Venue“.](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 Die Darstellung oben zeigt, dass zwar die meisten Veranstaltungsorte mehr als 80 % ihrer Tickets verkaufen, andere jedoch Probleme haben, mehr als die Hälfte der Sitzplätze zu füllen. Experimentieren Sie mit „Values Well“, um die höchsten und niedrigsten Prozentsätze der pro Veranstaltungsort verkauften Tickets auszuwählen.
 

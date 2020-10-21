@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1742c80fd6914a1c9420f37217df02791e80da9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886104"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710055"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 
@@ -79,4 +79,4 @@ Wenn Sie keinen Datenspeicher benötigen, schreiben Sie Dateien in die Ordner `.
 
 * Erfahren Sie mehr über das [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
-* Erfahren Sie mehr über die Erstellung von Computezielen mit dem [Python SDK](how-to-create-attach-compute-sdk.md) oder mit [Studio](how-to-create-attach-compute-studio.md).
+* Erfahren Sie mehr über das [Erstellen von Computezielen für Modelltraining und -bereitstellung](how-to-create-attach-compute-studio.md)

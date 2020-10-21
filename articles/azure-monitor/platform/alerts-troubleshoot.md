@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045242"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403414"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Behandeln von Problemen bei Azure Monitor-Warnungen
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
     Überprüfen Sie außerdem:
 
    - die Spameinstellungen Ihres E-Mail-Clients (z. B. Outlook, Gmail).
-      - die Absenderbeschränkungen/Spameinstellungen/Quarantäneeinstellungen Ihres E-Mail-Servers (z. B. Exchange, Office 365, G-Suite).
+      - die Absenderbeschränkungen/Spameinstellungen/Quarantäneeinstellungen Ihres E-Mail-Servers (z. B. Exchange, Microsoft 365, G-Suite).
       - die Einstellungen Ihres E-Mail-Sicherheitsgeräts, sofern eines vorliegt (z. B. Barracuda, Cisco).
 
 1. **Haben Sie sich versehentlich von der Aktionsgruppe abgemeldet?**

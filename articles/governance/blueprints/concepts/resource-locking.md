@@ -1,14 +1,14 @@
 ---
 title: Grundlagen von Ressourcensperren
 description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651936"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91744014"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -33,7 +33,7 @@ Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden
 
 ## <a name="overriding-locking-states"></a>Außerkraftsetzen von Zuständen
 
-In der Regel kann es Benutzern mit entsprechender [rollenbasierter Zugriffssteuerung](../../../role-based-access-control/overview.md) für das Abonnement (also beispielsweise mit der Rolle „Besitzer“) gestattet werden, Änderungs- oder Löschvorgänge für beliebige Ressourcen auszuführen. Dies ist jedoch nicht der Fall, wenn Azure Blueprints im Rahmen einer Zuweisungsbereitstellung eine Sperre anwendet. Wenn die Zuweisung mit der Option **Schreibgeschützt** oder **Nicht löschen** festgelegt wurde, ist selbst der Besitzer des Abonnements nicht in der Lage, die blockierte Aktion für die geschützte Ressource auszuführen.
+In der Regel kann es Benutzern mit entsprechender [rollenbasierter Zugriffssteuerung in Azure](../../../role-based-access-control/overview.md) (Azure RBAC) für das Abonnement (z. B. mit der Rolle „Besitzer“) gestattet werden, Änderungs- oder Löschvorgänge für beliebige Ressourcen auszuführen. Dies ist jedoch nicht der Fall, wenn Azure Blueprints im Rahmen einer Zuweisungsbereitstellung eine Sperre anwendet. Wenn die Zuweisung mit der Option **Schreibgeschützt** oder **Nicht löschen** festgelegt wurde, ist selbst der Besitzer des Abonnements nicht in der Lage, die blockierte Aktion für die geschützte Ressource auszuführen.
 
 Diese Sicherheitsmaßnahme schützt die Konsistenz der definierten Blaupause und die Umgebung, die damit erstellt werden soll, vor versehentlichen oder programmgesteuerten Lösch- oder Änderungsvorgängen.
 
@@ -101,7 +101,7 @@ Wenn die Zuweisung entfernt wird, werden auch die von Azure Blueprints erstellte
 
 ## <a name="how-blueprint-locks-work"></a>Funktionsweise von Blaupausensperren
 
-Eine Ablehnungsaktion im Rahmen von RBAC-[Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md) wird während der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Schreibgeschützt** oder **Nicht löschen** ausgewählt wurde. Die Ablehnungsaktion wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Azure Blueprints.
+Eine Ablehnungsaktion im Rahmen von Azure RBAC-[Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md) wird während der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Schreibgeschützt** oder **Nicht löschen** ausgewählt wurde. Die Ablehnungsaktion wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Azure Blueprints.
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Screenshot der Seite „Zugriffssteuerung“ und der Registerkarte „Ablehnungszuweisungen“ für eine Ressourcengruppe." border="false":::
 
@@ -109,8 +109,8 @@ Die [Eigenschaften von Ablehnungszuweisungen](../../../role-based-access-control
 
 |Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Nur Leseberechtigung |**\*** |**\*/read** |SystemDefined (Alle) |Blaupausenzuweisung und benutzerdefiniert in **excludedPrincipals** |Ressourcengruppe – _true_; Ressource – _false_ |
-|Nicht löschen |**\*/delete** | |SystemDefined (Alle) |Blaupausenzuweisung und benutzerdefiniert in **excludedPrincipals** |Ressourcengruppe – _true_; Ressource – _false_ |
+|Nur Leseberechtigung |**\*** |**\*/read**<br />**Microsoft.Authorization/locks/delete**<br />**Microsoft.Network/virtualNetwork/subnets/join/action** |SystemDefined (Alle) |Blaupausenzuweisung und benutzerdefiniert in **excludedPrincipals** |Ressourcengruppe – _true_; Ressource – _false_ |
+|Nicht löschen |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**Microsoft.Network/virtualNetwork/subnets/join/action** |SystemDefined (Alle) |Blaupausenzuweisung und benutzerdefiniert in **excludedPrincipals** |Ressourcengruppe – _true_; Ressource – _false_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager speichert Details zu Rollenzuweisungen bis zu 30 Minuten lang zwischen. Daher sind Ablehnungsaktionen von Ablehnungszuweisungen für Blaupausenressourcen möglicherweise nicht sofort in vollem Umfang wirksam. Während dieser Zeit ist es ggf. möglich, eine Ressource zu löschen, die eigentlich durch Blaupausensperren geschützt werden sollte.
@@ -161,7 +161,7 @@ In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen 
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>Ausschließen einer Aktion von einer Ablehnungszuweisung
 
-Ähnlich wie beim [Ausschließen eines Prinzipals](#exclude-a-principal-from-a-deny-assignment) von einer [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) in einer Blaupausenzuweisung können Sie auch bestimmte [RBAC-Vorgänge](../../../role-based-access-control/resource-provider-operations.md) ausschließen. Innerhalb des Blocks **properties.locks** kann an derselben Stelle, an der auch **excludedPrincipals** steht, ein **excludedActions**-Element hinzugefügt werden:
+Ähnlich wie beim [Ausschließen eines Prinzipals](#exclude-a-principal-from-a-deny-assignment) von einer [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) in einer Blaupausenzuweisung können Sie auch bestimmte [Vorgänge für Azure-Ressourcenanbieter](../../../role-based-access-control/resource-provider-operations.md) ausschließen. Innerhalb des Blocks **properties.locks** kann an derselben Stelle, an der auch **excludedPrincipals** steht, ein **excludedActions**-Element hinzugefügt werden:
 
 ```json
 "locks": {
@@ -177,7 +177,7 @@ In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen 
 },
 ```
 
-Während **excludedPrincipals** explizit sein muss, können **excludedActions**-Einträge `*` als Platzhalter für Vergleiche von RBAC-Vorgängen verwenden.
+Während **excludedPrincipals** explizit sein muss, können **excludedActions**-Einträge `*` als Platzhalter für Vergleiche von Ressourcenanbietervorgängen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

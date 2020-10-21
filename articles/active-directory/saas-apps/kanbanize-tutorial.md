@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546830"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850709"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Kanbanize
 
@@ -153,7 +153,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 5. Klicken Sie auf der Seite „Verwaltungsbereich“ auf der linken Seite des Menüs auf **Integrationen**, und aktivieren Sie dann **Einmaliges Anmelden**.
 
-    ![Kanbanize-Integrationen](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![Screenshot: Verwaltungsbereich mit der ausgewählten Option „Integrations“ (Integrationen)](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
 6. Klicken Sie im Abschnitt „Integrationen“ auf **KONFIGURIEREN**, um die **Konfigurationsseite für einmaliges Anmelden** zu öffnen.
 
@@ -161,7 +161,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 7. Führen Sie auf der **Konfigurationsseite für einmaliges Anmelden** unter **Konfigurationen** die folgenden Schritte aus:
 
-    ![Kanbanize-Integrationen](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![Screenshot: Seite „Single Sign-On Integration“ (Integration des einmaligen Anmeldens), auf der Sie in diesem Schritt die Werte eingeben](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. Fügen Sie in das Textfeld **IdP Entity Id** (IdP-Entitäts-ID) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 

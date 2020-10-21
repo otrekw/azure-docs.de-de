@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 954215f04525e850151fdad93af6e7272b41b3df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 58460dffad3d44090644a544f4082b7727ece3f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498462"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840335"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure CLI-Beispiele für Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Diese Beispiele gelten für alle Azure Cosmos DB-APIs.
 |---|---|
 | [Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB für die Core-API (SQL) |
 | [Konto, Datenbank und Container mit Autoskalierung in Azure Cosmos erstellen](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers mit Autoskalierung in Azure Cosmos DB für die Core-API (SQL) |
-| [Ändern des Durchsatzes](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Datenbank und einen Container|
+| [Durchsatzvorgänge](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz in einer Datenbank und einem Container|
 | [Sperren von Ressourcen für die Löschung](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren|
 |||
 
@@ -50,7 +50,7 @@ Diese Beispiele gelten für alle Azure Cosmos DB-APIs.
 |---|---|
 | [Erstellen eines Kontos, einer Datenbank und einer Sammlung in Azure Cosmos](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und einer Sammlung in Azure Cosmos DB für die MongoDB-API |
 | [Konto, Datenbank mit Autoskalierung und zwei Sammlungen mit gemeinsam genutztem Durchsatz in Azure Cosmos erstellen](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank mit Autoskalierung und von zwei Sammlungen mit gemeinsam genutztem Durchsatz in Azure Cosmos DB für die MongoDB-API |
-| [Ändern des Durchsatzes](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Datenbank und Sammlung|
+| [Durchsatzvorgänge](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz in einer Datenbank und einer Sammlung|
 | [Sperren von Ressourcen für die Löschung](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren|
 |||
 
@@ -60,7 +60,7 @@ Diese Beispiele gelten für alle Azure Cosmos DB-APIs.
 |---|---|
 | [Erstellen eines Kontos, eines Keyspace und einer Tabelle in Azure Cosmos](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, eines Keyspace und einer Tabelle in Azure Cosmos DB für die Cassandra-API |
 | [Konto, Keyspace und Tabelle mit Autoskalierung in Azure Cosmos erstellen](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, eines Keyspace und einer Tabelle mit Autoskalierung in Azure Cosmos DB für die Cassandra-API |
-| [Ändern des Durchsatzes](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für einen Keyspace und eine Tabelle|
+| [Durchsatzvorgänge](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz in einem Keyspace und einer Tabelle|
 | [Sperren von Ressourcen für die Löschung](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren|
 |||
 
@@ -70,7 +70,7 @@ Diese Beispiele gelten für alle Azure Cosmos DB-APIs.
 |---|---|
 | [Erstellen eines Kontos, einer Datenbank und eines Graphen in Azure Cosmos](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen Sie ein Azure Cosmos DB-Konto, eine Datenbank und einen Graphen für die Gremlin-API. |
 | [Konto, Datenbank und Graph mit Autoskalierung in Azure Cosmos erstellen](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Graphen mit Autoskalierung in Azure Cosmos DB für die Gremlin-API |
-| [Ändern des Durchsatzes](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren Sie die Anforderungseinheiten pro Sekunde (RU/s) für eine Datenbank und einen Graphen.|
+| [Durchsatzvorgänge](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz in einer Datenbank und einem Graphen|
 | [Sperren von Ressourcen für die Löschung](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren|
 |||
 
@@ -80,6 +80,6 @@ Diese Beispiele gelten für alle Azure Cosmos DB-APIs.
 |---|---|
 | [Erstellen eines Kontos und einer Tabelle in Azure Cosmos](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos und einer Tabelle in Azure Cosmos DB für die Tabellen-API |
 | [Konto und Tabelle mit Autoskalierung in Azure Cosmos erstellen](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos und einer Tabelle mit Autoskalierung in Azure Cosmos DB für die Tabellen-API |
-| [Ändern des Durchsatzes](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Tabelle|
+| [Durchsatzvorgänge](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz in einer Tabelle|
 | [Sperren von Ressourcen für die Löschung](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren.|
 |||

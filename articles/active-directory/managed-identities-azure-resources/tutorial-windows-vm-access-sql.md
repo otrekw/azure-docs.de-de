@@ -1,5 +1,5 @@
 ---
-title: Tutorial:`:` Verwenden einer verwalteten Identität für den Zugriff auf Azure SQL-Datenbank – Windows – Azure AD
+title: 'Tutorial: Verwenden einer verwalteten Identität für den Zugriff auf Azure SQL-Datenbank – Windows – Azure AD'
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure SQL-Datenbank zuzugreifen.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255748"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856511"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
