@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924511"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122788"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Erste Schritte mit Azure Data Box zum Importieren von Daten in Azure
 
@@ -40,7 +40,7 @@ Vorbereitungen
 
 - Sie verwenden ein Abonnement der folgenden Typen für den Data Box-Dienst:
     - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+    - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich).
@@ -131,7 +131,7 @@ Dieser Schritt dauert ungefähr 5 bis 7 Minuten.
 
 Die Dauer dieses Vorgangs hängt von der Datenmenge und der Netzwerkgeschwindigkeit ab.
  
-1. Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie Robocopy. Verwenden Sie bei einem NFS-Host den Befehl `cp` oder `rsync` zum Kopieren der Daten. Verbinden Sie das Tool mit Ihrem Gerät, und fangen Sie an, Daten auf die Freigaben zu kopieren. Weitere Informationen zur Verwendung von Robocopy zum Kopieren von Daten finden Sie unter [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+1. Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie Robocopy. Verwenden Sie bei einem NFS-Host den Befehl `cp` oder `rsync` zum Kopieren der Daten. Verbinden Sie das Tool mit Ihrem Gerät, und fangen Sie an, Daten auf die Freigaben zu kopieren. Weitere Informationen zur Verwendung von Robocopy zum Kopieren von Daten finden Sie unter [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
 2. Stellen Sie eine Verbindung mit den Freigaben über diesen Pfad her: `\\<IP address of your device>\ShareName`. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, wechseln Sie auf der lokalen Webbenutzeroberfläche der Data Box zur Seite **Verbindung herstellen und Daten kopieren**.
 3. Stellen Sie sicher, dass die Namen der Freigaben und Ordner sowie die Daten den Vorgaben entsprechen, die unter [Für Azure Storage und den Data Box-Dienst geltende Einschränkungen](data-box-limits.md) beschrieben sind.
 
@@ -170,5 +170,3 @@ In dieser Schnellstartanleitung haben Sie eine Azure Data Box bereitgestellt, ü
 > [Verwalten von Data Box im Azure-Portal](data-box-portal-admin.md)
 
 ::: zone-end
-
-

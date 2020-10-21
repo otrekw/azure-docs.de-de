@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972290"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126565"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für Behörden mit Azure IoT Central
 
@@ -78,4 +78,4 @@ Das Tutorial für die Anwendung für eine vernetzte Abfallwirtschaft finden Sie 
 * Machen Sie sich mit [Konzepten im Zusammenhang mit der Überwachung der Wasserqualität](./concepts-waterqualitymonitoring-architecture.md) vertraut.
 * Machen Sie sich mit [Konzepten im Zusammenhang mit der Überwachung des Wasserverbrauchs](./concepts-waterconsumptionmonitoring-architecture.md) vertraut.
 * Machen Sie sich mit [Konzepten im Zusammenhang mit der vernetzten Abfallwirtschaft](./concepts-connectedwastemanagement-architecture.md) vertraut.  
-* Sehen Sie sich die [Übersicht über IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) an. 
+* Sehen Sie sich die [Übersicht über IoT Central](../core/overview-iot-central.md) an.

@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925044"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131954"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Erstellen eines zusätzlichen Azure-Abonnements
 
@@ -30,7 +30,7 @@ Zum Erstellen von Abonnements benötigen Sie die folgenden Berechtigungen:
 |---------|---------|
 |Enterprise Agreement (EA) |  Rolle „Kontobesitzer“ für die Enterprise Agreement-Registrierung. Weitere Informationen finden Sie unter [Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure](understand-ea-roles.md).    |
 |Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) |  Rolle „Besitzer“ oder „Mitwirkender“ im Rechnungsabschnitt, Abrechnungsprofil oder Abrechnungskonto. Oder die Rolle „Azure-Abonnementersteller“ im Rechnungsabschnitt.  Weitere Informationen finden Sie unter [Rollen und Aufgaben für die Abonnementabrechnung](understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Microsoft-Partnervereinbarung (MPA) |   Rolle „Globaler Administrator“ und „Administrator-Agent“ in der CSP-Partnerorganisation. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](https://docs.microsoft.com/partner-center/permissions-overview).  Der Benutzer muss sich beim Partnermandanten anmelden, um Azure-Abonnements zu erstellen.   |
+|Microsoft-Partnervereinbarung (MPA) |   Rolle „Globaler Administrator“ und „Administrator-Agent“ in der CSP-Partnerorganisation. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).  Der Benutzer muss sich beim Partnermandanten anmelden, um Azure-Abonnements zu erstellen.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Erstellen eines Abonnements im Azure-Portal
 
@@ -79,7 +79,7 @@ Sie können zusätzliche Abonnements auch programmgesteuert erstellen. Weitere I
 
 - [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](add-change-subscription-administrator.md)
 - [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../../governance/management-groups/create.md)
+- [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../../governance/management-groups/create-management-group-portal.md)
 - [Kündigen Ihres Abonnements für Azure](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.

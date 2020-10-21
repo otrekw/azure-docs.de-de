@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972221"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122150"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Architektur für die ständige Überwachung von Patienten
 
@@ -33,11 +33,11 @@ Bei vielen medizinischen Wearables, die in IoT-Lösungen im Gesundheitswesen zum
 
 ### <a name="mobile-phone-gateway"></a>Mobiltelefongateway
 
-Die Hauptfunktion der Mobiltelefonanwendung besteht darin, BLE-Daten von medizinischen Geräten zu erfassen und an IoT Central weiterzugeben. Die App führt Patienten außerdem durch die Geräteeinrichtung und ermöglicht es ihnen, ihre persönlichen Gesundheitsdaten anzuzeigen. Bei anderen Lösungen kann ein Tabletgateway oder ein statisches Gateway in einem Krankenzimmer verwendet werden. Für Android und iOS steht eine Open-Source-Beispielanwendung für Mobilgeräte zur Verfügung, die als Ausgangspunkt für die Anwendungsentwicklung verwendet werden kann. Weitere Informationen zur mobilen IoT Central-App für die kontinuierliche Patientenüberwachung finden Sie [hier](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+Die Hauptfunktion der Mobiltelefonanwendung besteht darin, BLE-Daten von medizinischen Geräten zu erfassen und an IoT Central weiterzugeben. Die App führt Patienten außerdem durch die Geräteeinrichtung und ermöglicht es ihnen, ihre persönlichen Gesundheitsdaten anzuzeigen. Bei anderen Lösungen kann ein Tabletgateway oder ein statisches Gateway in einem Krankenzimmer verwendet werden. Für Android und iOS steht eine Open-Source-Beispielanwendung für Mobilgeräte zur Verfügung, die als Ausgangspunkt für die Anwendungsentwicklung verwendet werden kann. Weitere Informationen zur mobilen IoT Central-App für die kontinuierliche Patientenüberwachung finden Sie [hier](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>Exportieren nach Azure API for FHIR&reg;
 
-Azure IoT Central ist HIPAA-konform und für HITRUST&reg; zertifiziert. Per [Azure API for FHIR](../../healthcare-apis/overview.md) können Patientengesundheitsdaten auch an andere Dienste gesendet werden. Azure API for FHIR ist eine standardbasierte API für klinische Gesundheitsdaten. Mit dem [Azure IoT-Konnektor für FHIR](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart) können Sie Azure API for FHIR als Ziel für den kontinuierlichen Datenexport über IoT Central verwenden.
+Azure IoT Central ist HIPAA-konform und für HITRUST&reg; zertifiziert. Per [Azure API for FHIR](../../healthcare-apis/overview.md) können Patientengesundheitsdaten auch an andere Dienste gesendet werden. Azure API for FHIR ist eine standardbasierte API für klinische Gesundheitsdaten. Mit dem [Azure IoT-Konnektor für FHIR](../../healthcare-apis/iot-fhir-portal-quickstart.md) können Sie Azure API for FHIR als Ziel für den kontinuierlichen Datenexport über IoT Central verwenden.
 
 ### <a name="machine-learning"></a>Machine Learning
 

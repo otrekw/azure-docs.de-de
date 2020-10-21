@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 94f3fd9f9c66082beace47d675539e9f73c21e83
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824206"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075534"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -23,7 +23,7 @@ Die Spring Boot-Bibliotheken für die Featureverwaltung erweitern das Framework 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Ein unterstütztes [Java Development Kit-SDK](https://docs.microsoft.com/java/azure/jdk) mit Version 8.
+* Ein unterstütztes [Java Development Kit-SDK](/java/azure/jdk) mit Version 8.
 * [Apache Maven](https://maven.apache.org/download.cgi) Version 3.0 oder höher
 
 ## <a name="create-an-app-configuration-instance"></a>Erstellen einer App Configuration-Instanz
@@ -304,7 +304,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen neuen App Configuration-Speicher erstellt und diesen zur Verwaltung von Features in einer Spring Boot-Web-App über die [Feature-Manager-Bibliotheken](https://go.microsoft.com/fwlink/?linkid=2074664) verwendet.
+In dieser Schnellstartanleitung haben Sie einen neuen App Configuration-Speicher erstellt und diesen zur Verwaltung von Features in einer Spring Boot-Web-App über die [Feature-Manager-Bibliotheken](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) verwendet.
 
 * Weitere Informationen über die [Featureverwaltung](./concept-feature-management.md)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

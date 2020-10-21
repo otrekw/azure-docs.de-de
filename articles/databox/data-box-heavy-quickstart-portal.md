@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920788"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122822"
 ---
 ::: zone target = "docs"
 
@@ -124,7 +124,7 @@ Die Dauer dieses Vorgangs hängt von der Datenmenge und der Geschwindigkeit des 
  
 1. Kopieren Sie die Daten auf beide Geräteknoten, indem Sie beide 40-Gbit/s-Datenschnittstellen parallel verwenden.
 
-    - Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Wenn Sie mit einem Windows-Host arbeiten, verwenden Sie ein SMB-kompatibles Dateikopierprogramm wie [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
     - Verwenden Sie bei einem NFS-Host den Befehl `cp` oder `rsync` zum Kopieren der Daten.
 2. Stellen Sie eine Verbindung mit den Freigaben auf dem Gerät über diesen Pfad her: `\\<IP address of your device>\ShareName`. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, wechseln Sie auf der lokalen Webbenutzeroberfläche der Data Box Heavy zur Seite **Verbindung herstellen und Daten kopieren**.
 3. Stellen Sie sicher, dass die Namen der Freigaben und Ordner sowie die Daten den Vorgaben entsprechen, die unter [Azure Storage and Data Box Heavy service limits](data-box-heavy-limits.md) (Für Azure Storage und den Data Box Heavy-Dienst geltende Einschränkungen, in englischer Sprache) beschrieben sind.

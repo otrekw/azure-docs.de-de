@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664952"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072117"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Ereignisbehandlung in Azure Communication Services
 
@@ -36,9 +36,9 @@ Von Azure Communication Services werden folgende Ereignistypen ausgegeben:
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | Wird veröffentlicht, wenn eine SMS von einer Telefonnummer eingeht, die dem Kommunikationsdienst zugeordnet ist. |
 | Microsoft.Communication.SMSDeliveryReportReceived           | Wird veröffentlicht, wenn ein Zustellbericht für eine von der Communication Services-Instanz gesendete SMS empfangen wird.     |
-| Microsoft.Communication.ChatMessageReceived*                | Wird veröffentlicht, wenn in einem Chatthread, dem der Benutzer angehört, eine Nachricht für den Benutzer empfangen wird.        |
-| Microsoft.Communication.ChatMessageEdited*                   | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread bearbeitet wird, dem der Benutzer angehört.                |
-| Microsoft.Communication.ChatMessageDeleted*                  | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread gelöscht wird, dem der Benutzer angehört.               |
+| Microsoft.Communication.ChatMessageReceived                | Wird veröffentlicht, wenn in einem Chatthread, dem der Benutzer angehört, eine Nachricht für den Benutzer empfangen wird.        |
+| Microsoft.Communication.ChatMessageEdited                   | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread bearbeitet wird, dem der Benutzer angehört.                |
+| Microsoft.Communication.ChatMessageDeleted                  | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread gelöscht wird, dem der Benutzer angehört.               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | Wird veröffentlicht, wenn der Benutzer bei der Erstellung eines Chatthreads als Mitglied hinzugefügt wird.           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | Wird veröffentlicht, wenn ein Chatthread gelöscht wird, dem der Benutzer angehört.                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | Wird veröffentlicht, wenn die Eigenschaften eines Chatthreads aktualisiert werden, dem der Benutzer angehört.              |
@@ -47,7 +47,6 @@ Von Azure Communication Services werden folgende Ereignistypen ausgegeben:
 
 Sie können das Azure-Portal oder die Azure CLI verwenden, um Ereignisse zu abonnieren, die von Ihrer Communication Services-Ressource ausgegeben werden. Informationen zu den ersten Schritten für die Behandlung von Ereignissen finden Sie unter [Behandeln von SMS-Ereignissen in Communication Services](../quickstarts/telephony-sms/handle-sms-events.md).
 
-*Achten Sie darauf, den „sender name“ (Absendernamen) in Ihren „send message“-API-Aufrufen (Nachricht senden) anzugeben, damit diese Ereignisse ausgelöst werden.
 
 ## <a name="event-subjects"></a>Ereignisbetreff
 

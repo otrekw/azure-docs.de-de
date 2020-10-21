@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372356"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132294"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -180,7 +180,7 @@ Die folgenden Bereiche werden für CSPs mit Kunden in einer Microsoft-Kundenvere
 
 Nur die Benutzer mit den Rollen *Globaler Administrator* und *Administrator-Agent* können Kosten für Abrechnungskonten, Abrechnungsprofile und Kunden direkt im Azure-Mandanten des Partners verwalten und anzeigen. Weitere Informationen zu Partner Center-Rollen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
-CSP-Partnerkunden werden von Azure Cost Management nur unterstützt, wenn die Kunden über eine Microsoft-Kundenvereinbarung verfügen. Informationen zu von CSP unterstützten Kunden ohne Microsoft-Kundenvereinbarung finden Sie unter [Übersicht über Partner Center](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+CSP-Partnerkunden werden von Azure Cost Management nur unterstützt, wenn die Kunden über eine Microsoft-Kundenvereinbarung verfügen. Informationen zu von CSP unterstützten Kunden ohne Microsoft-Kundenvereinbarung finden Sie unter [Übersicht über Partner Center](/azure/cloud-solution-provider/overview/partner-center-overview).
 
 Verwaltungsgruppen in CSP-Bereichen werden von Cost Management nicht unterstützt. Wenn Sie über ein CSP-Abonnement verfügen und den Bereich für eine Verwaltungsgruppe in der Kostenanalyse festlegen, wird eine Fehlermeldung ähnlich der folgenden angezeigt:
 

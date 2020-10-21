@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie eine Ausgabebindung hinzufügen, um Ihre
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0711516143839dbcdbafec56ab1d9643b4b8cdc7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84235369"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167120"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 
@@ -106,7 +106,7 @@ Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten
 Als Nächstes sollten Sie die Application Insights-Überwachung für Ihre Funktions-App aktivieren:
 
 > [!div class="nextstepaction"]
-> [Aktivieren der Application Insights-Integration](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Aktivieren der Application Insights-Integration](configure-monitoring.md#add-to-an-existing-function-app)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 [Vorheriger Schnellstartartikel]: functions-create-your-first-function-visual-studio.md
