@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
-ms.openlocfilehash: a5d10d776de483919a64ccc46ca4cbb2b633f250
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6b8ea30e9d6c9b4557643d461d39b6375e987784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>Tutorial: Azure Active Directory-Integration mit Meta4 Global HR
 
@@ -103,13 +103,13 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Meta4 Global HR](common/both-replyurl.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben der Antwort-URL und Auswählen von „Speichern“](common/both-replyurl.png)
 
     Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.meta4globalhr.com/saml.sso/SAML2/POST`.
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Meta4 Global HR](common/both-signonurl.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/both-signonurl.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.meta4globalhr.com`
 

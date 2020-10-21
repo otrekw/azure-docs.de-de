@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890595"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743674"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Verwalten von Computeressourcen auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -109,7 +109,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um die vorhandene Edgecomputingkonfigur
 
 2. Wenn Sie die Computekonfiguration entfernen, müssen Sie Ihr Gerät neu konfigurieren, um Compute wieder verwenden zu können. Wählen Sie **Ja** aus, wenn Sie zur Bestätigung aufgefordert werden.
 
-    ![Auswählen von „Compute entfernen“](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
+    ![Auswählen von „Compute entfernen“ 2](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>Synchronisieren der Zugriffsschlüssel von IoT-Gerät und IoT Edge-Gerät
 

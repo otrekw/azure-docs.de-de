@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825360"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448469"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -169,7 +169,7 @@ Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsse
 
 Verbindungsfehler werden in Service Map-Zuordnungen für Prozesse und Computer angezeigt. Eine gestrichelte rote Linie zeigt an, dass ein Clientsystem einen Prozess oder Port nicht erreichen kann. Verbindungsfehler werden von jedem System mit einem bereitgestellten Service Map-Agent berichtet, wenn dieses System dasjenige ist, das versucht, die fehlerhafte Verbindung herzustellen. Service Map misst diesen Prozess durch Überwachen der TCP-Sockets, die keine Verbindung herstellen können. Der Fehler kann durch eine Firewall, eine fehlerhafte Konfiguration auf einem Client oder Server oder dadurch verursacht werden, dass ein Remotedienst nicht verfügbar ist.
 
-![Verbindungsfehler](media/service-map/failed-connections.png)
+![Screenshot eines Teils einer Service Map-Zuordnung mit Hervorhebung einer gestrichelten roten Linie, die auf einen Verbindungsfehler zwischen dem „backup.pl“-Prozess und Port 4475 hinweist](media/service-map/failed-connections.png)
 
 Kenntnisse zu Verbindungsfehlern können Ihnen bei der Problembehandlung, der Überprüfung einer Migration, der Sicherheitsanalyse und dem allgemeinen Verständnis der Architektur helfen. Manchmal sind Verbindungsfehler harmlos, häufig weisen sie aber auch direkt auf ein Problem hin, z.B. wenn eine Failoverumgebung plötzlich nicht mehr erreichbar ist oder zwei Anwendungsebenen nach einer Cloudmigration nicht mehr kommunizieren können.
 
@@ -193,7 +193,7 @@ Serverportgruppen sind Felder, die Serverports auf Servern darstellen, die über
 
 Wenn Sie rechts oberhalb eines Servers auf die Auslassungszeichen (...) klicken, wird das Kontextmenü für diesen Server angezeigt.
 
-![Verbindungsfehler](media/service-map/context-menu.png)
+![Screenshot des geöffneten Kontextmenüs für einen Server in Service Map. Das Menü enthält die Optionen „Serverzuordnung laden“ und „Seiteninterne Links anzeigen“.](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Laden einer Serverzuordnung
 
@@ -258,7 +258,7 @@ Die Integration von Service Map in die Änderungsnachverfolgung erfolgt automati
 
 Der Bereich für die **Nachverfolgung von Änderungen auf einem Computer** zeigt eine Liste aller Änderungen an, wobei die jüngste Änderung zuerst angezeigt wird. Der Bereich bietet auch einen Link, mit dem Sie die Protokollsuche aufrufen und weitere Details anzeigen können.
 
-![Bereich für die Änderungsnachverfolgung auf einem Computer](media/service-map/change-tracking.png)
+![Screenshot des Bereichs für die Nachverfolgung von Änderungen auf einem Computer in Service Map](media/service-map/change-tracking.png)
 
 Die folgende Abbildung ist eine Detailansicht eines ConfigurationChange-Ereignisses, dass Ihnen möglicherweise angezeigt wird, wenn Sie auf **In Log Analytics anzeigen** klicken.
 
@@ -300,7 +300,7 @@ Die Integration der Dienstzuordnung in die Updateverwaltung erfolgt automatisch,
 
 Im Bereich für **Computerupdates** werden Daten aus der Updateverwaltungslösung für den ausgewählten Server angezeigt. Im Bereich wird ggf. für den ausgewählten Zeitraum eine Zusammenfassung fehlender Updates für den Server angezeigt.
 
-![Bereich für die Änderungsnachverfolgung auf einem Computer](media/service-map/machine-updates.png)
+![Screenshot des Bereichs für Computerupdates in Service Map](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 

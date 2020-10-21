@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192149"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576216"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage Blob in Azure Data Lake Storage Gen1 mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake Storage Gen1 (Ausgabe) geschrieben werden.
@@ -42,11 +42,11 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
 1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie im linken Bereich auf die Registerkarte **Eingaben**, und klicken Sie dann auf **Hinzufügen**.
 
-    ![Hinzufügen einer Eingabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.input.1.png "Hinzufügen einer Eingabe zu Ihrem Auftrag")
+    ![Screenshot des Blatts „Stream Analytics Auftrag“ mit hervorgehobenen Optionen „Eingaben“ und „Datenstromeingabe hinzufügen“](./media/data-lake-store-stream-analytics/create.input.1.png "Hinzufügen einer Eingabe zu Ihrem Auftrag")
 
 2. Geben Sie auf dem Blatt **Neue Eingabe** die folgenden Werte ein.
 
-    ![Hinzufügen einer Eingabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.input.2.png "Hinzufügen einer Eingabe zu Ihrem Auftrag")
+    ![Screenshot des Blatts „Blobspeicher – Neue Eingabe“](./media/data-lake-store-stream-analytics/create.input.2.png "Hinzufügen einer Eingabe zu Ihrem Auftrag")
 
    * Geben Sie unter **Eingabealias** einen eindeutigen Namen für diese Auftragseingabe ein.
    * Wählen Sie als **Quelltyp** die Option **Datenstrom** aus.
@@ -65,18 +65,18 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
 1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie auf die Registerkarte **Ausgaben**, klicken Sie auf **Hinzufügen**, und wählen Sie **Data Lake Storage Gen1** aus.
 
-    ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.1.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
+    ![Screenshot des Blatts „Stream Analytics Auftrag“ mit hervorgehobenen Optionen „Ausgaben“, „Hinzufügen“ und „Data Lake Storage Gen1“](./media/data-lake-store-stream-analytics/create.output.1.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
 2. Geben Sie auf dem Blatt **Neue Ausgabe** die folgenden Werte ein.
 
-    ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.2.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
+    ![Screenshot des Blatts „Data Lake Storage Gen 1 – Neue Ausgabe“ mit hervorgehobener Option „Autorisieren“](./media/data-lake-store-stream-analytics/create.output.2.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
     * Geben Sie unter **Ausgabealias** einen eindeutigen Namen für die Auftragsausgabe ein. Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an dieses Data Lake Storage Gen1-Konto weiterzuleiten.
     * Sie werden aufgefordert, den Zugriff auf das Data Lake Storage Gen1-Konto zu autorisieren. Klicken Sie auf **Autorisieren**.
 
 3. Geben Sie auf dem Blatt **Neue Ausgabe** die folgenden Werte ein.
 
-    ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.3.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
+    ![Screenshot des Blatts „Data Lake Storage Gen 1 – Neue Ausgabe“](./media/data-lake-store-stream-analytics/create.output.3.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
    * Wählen Sie unter **Kontoname** das bereits erstellte Data Lake Storage Gen1-Konto aus, an das die Auftragsausgabe gesendet werden soll.
    * Geben Sie unter **Pfadpräfixmuster** den Dateipfad ein, in den Ihre Dateien im angegebenen Data Lake Storage Gen1-Konto geschrieben werden.

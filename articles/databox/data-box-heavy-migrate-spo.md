@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a6cb3392aa83b2c02df621449a73f7cb68691ec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608603"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396857"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 
@@ -82,7 +82,7 @@ Für optimale Leistung und Konnektivität empfehlen wir, einen virtuellen Azure-
 1. Melden Sie sich beim Azure-Portal an, und [erstellen Sie einen virtuellen Computer](../virtual-machines/windows/quick-create-portal.md).
 2. [Stellen Sie die Azure-Dateifreigabe auf dem virtuellen Computer bereit](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
 3. [Laden Sie das SharePoint-Migrationstool herunter](https://spmtreleasescus.blob.core.windows.net/install/default.htm), und installieren Sie es auf dem virtuellen Azure-Computer.
-4. Starten Sie die SharePoint-Migrationstool. Klicken Sie auf **Anmelden**, und geben Sie Ihren Benutzernamen und Ihr Kennwort für Office 365 ein.
+4. Starten Sie die SharePoint-Migrationstool. Klicken Sie auf **Anmelden**, und geben Sie den Benutzernamen und das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto ein.
 5. Wenn **Wo sind Ihre Daten?** angezeigt wird, wählen Sie **Dateifreigabe** aus. Geben Sie den Pfad zu der Azure-Dateifreigabe ein, die Ihre Daten enthält.
 6. Befolgen Sie die restlichen Eingabeaufforderungen, einschließlich der Angabe des Zielspeicherorts. Weitere Informationen finden Sie unter [Verwenden des SharePoint-Migrationstools](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 

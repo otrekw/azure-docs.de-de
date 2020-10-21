@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544297"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Tutorial: Azure Active Directory-Integration mit GTNexus SSO System
 
@@ -101,11 +101,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens über Azure AD bei GTNexu
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
-    ![image](common/upload-metadata.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ mit Auswahl der Aktion „Metadatendatei hochladen“](common/upload-metadata.png)
 
     b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Screenshot: Feld „Datei auswählen“ mit Ordnerlogo und Auswahl der Schaltfläche „Hochladen“](common/browse-upload-metadata.png)
 
     c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte **Bezeichner** und **Antwort-URL** im Abschnitt für GTNexus SSO System automatisch aufgefüllt:
 

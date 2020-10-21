@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703166"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448625"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
 
@@ -60,13 +60,13 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 9. Nachdem der virtuelle Computer bereitgestellt wurde, geben Sie in das Suchfeld am oberen Rand des Portals *myPublicIpAddress* ein. Wenn **myPublicIpAddress** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 10. Die zugewiesene öffentliche IP-Adresse und die Adresse, die dem virtuellen Computer **myVM** zugewiesen ist, werden angezeigt, wie in der folgenden Abbildung gezeigt wird:
 
-    ![Anzeigen einer öffentlichen IP-Adresse](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![Screenshot mit Darstellung des Bereichs „Öffentliche IP-Adresse“ mit hervorgehobener IP-Adresse und hervorgehobenem Namen. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure hat eine öffentliche IP-Adresse über Adressen in zugewiesen, die in der Region, in der der virtuelle Computer erstellt wurde, verwendet werden. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen.
 
 11. Wählen Sie **Konfiguration** aus, um zu bestätigen, dass die Zuweisung **Statisch** erfolgen soll.
 
-    ![Anzeigen einer öffentlichen IP-Adresse](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![Screenshot mit dem Bereich „Öffentliche IP-Adresse“ mit ausgewähltem Konfigurationselement.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > Ändern Sie die IP-Adresseinstellungen nicht innerhalb des Betriebssystems des virtuellen Computers. Öffentliche Azure-IP-Adressen sind dem Betriebssystem nicht bekannt. Auch wenn Sie dem Betriebssystem Einstellungen für private IP-Adressen hinzufügen können, wird empfohlen, dies erst nach Lesen des Artikels [Hinzufügen einer privaten IP-Adresse zu einem Betriebssystem](virtual-network-network-interface-addresses.md#private) und bei absoluter Notwendigkeit zu tun.

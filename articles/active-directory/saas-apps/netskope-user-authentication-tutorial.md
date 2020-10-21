@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62d6d5527cd917304e4c8bc0c4740f4edb772218
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544025"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939170"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Netskope User Authentication
 
@@ -136,15 +136,15 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Klicken Sie auf die Registerkarte **Active Platform** (Aktive Plattform).
 
-    ![Netskope User Authentication: Konfiguration](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Screenshot, auf dem „Active Platform“ (Aktive Plattform) in den Einstellungen ausgewählt ist](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Scrollen Sie nach unten zu **FORWARD PROXY** (WEITERLEITUNGSPROXY), und wählen Sie **SAML** aus.
 
-    ![Netskope User Authentication: Konfiguration](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![Screenshot, auf dem unter „Active Platform“ (Aktive Plattform) die Option „SAML“ ausgewählt ist](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. Führen Sie auf der Seite **SAML Settings** die folgenden Schritte aus:
 
-    ![Netskope User Authentication: Konfiguration](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![Screenshot: „SAML Settings“ (SAML-Einstellungen), wo Sie die beschriebenen Werte eingeben können](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. Kopieren Sie die **SAML-Entitäts-ID**, und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein.
 
@@ -152,11 +152,11 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Klicken Sie auf **ADD ACCOUNT** (KONTO HINZUFÜGEN).
 
-    ![Netskope User Authentication: Konfiguration](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![Screenshot, auf dem „ADD ACCOUNT“ (KONTO HINZUFÜGEN) im Bereich „SAML“ ausgewählt ist](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. Führen Sie auf der Seite **Add SAML Account** (SAML-Konto hinzufügen) die folgenden Schritte aus:
 
-    ![Netskope User Authentication: Konfiguration](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![Screenshot: Abschnitt „Add SAML Account“ (SAML-Konto hinzufügen), in dem Sie die beschriebenen Werte eingeben können](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. Geben Sie im Textfeld **NAME** den Namen an (beispielsweise „Azure AD“).
 
@@ -174,23 +174,23 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Klicken Sie im linken Navigationsbereich auf **Settings** (Einstellungen).
 
-    ![Netskope User Authentication: Benutzererstellung](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![Screenshot, auf dem „Settings“ (Einstellungen) ausgewählt ist](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. Klicken Sie auf die Registerkarte **Active Platform** (Aktive Plattform).
 
-    ![Netskope User Authentication: Benutzererstellung](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Screenshot, auf dem „Active Platform“ (Aktive Plattform) in den Einstellungen ausgewählt ist](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Klicken Sie auf die Registerkarte **Benutzer**.
 
-    ![Netskope User Authentication: Benutzererstellung](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![Screenshot, auf dem unter „Active Platform“ (Aktive Plattform) die Option „Users“ (Benutzer) ausgewählt ist](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. Klicken Sie auf **ADD USERS** (BENUTZER HINZUFÜGEN).
 
-    ![Netskope User Authentication: Benutzererstellung](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![Screenshot: Dialogfeld „Users“ (Benutzer), in dem Sie die Option „ADD USERS“ (BENUTZER HINZUFÜGEN) auswählen können](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie hinzufügen möchten, und klicken Sie anschließend auf **ADD** (HINZUFÜGEN).
 
-    ![Netskope User Authentication: Benutzererstellung](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![Screenshot: Abschnitt „Add Users“ (Benutzer hinzufügen), in dem Sie eine Liste von Benutzern eingeben können](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

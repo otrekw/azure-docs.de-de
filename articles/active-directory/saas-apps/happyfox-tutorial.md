@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550716"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Tutorial: Azure Active Directory-Integration mit HappyFox
 
@@ -132,19 +132,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HappyFox
 
 2. Navigieren Sie zu **Manage** (Verwalten), und klicken Sie auf die Registerkarte **Integrations** (Integrationen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/header.png) 
+    ![Screenshot: Seite „Manage“ (Verwalten) mit Auswahl der Registerkarte „Integrations“ (Integrationen)](./media/happyfox-tutorial/header.png) 
 
 3. Klicken Sie auf der Registerkarte „Integrations“ (Integrationen) unter **SAML Integration** (SAML-Integration) auf **Configure** (Konfigurieren), um die Einstellungen für einmaliges Anmelden zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/configure.png)
+    ![Screenshot: Einstellung „SAML Integration“ (SAML-Integration) mit Auswahl der Aktion „Configure“ (Konfigurieren)](./media/happyfox-tutorial/configure.png)
 
 4. Fügen Sie im Abschnitt für die SAML-Konfiguration den Wert der **Anmelde-URL**, die Sie im Azure-Portal kopiert haben, in das Textfeld **SSO Target URL** (SSO-Ziel-URL) ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/targeturl.png)
+    ![Screenshot: Abschnitt „SAML Configuration“ (SAML-Konfiguration) mit Hervorhebung des Textfelds „SSO Target URL“ (SSO-Ziel-URL)](./media/happyfox-tutorial/targeturl.png)
 
 5. Öffnen Sie das Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, und fügen Sie den Inhalt im Abschnitt **IdP Signature** ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/cert.png)
+    ![Screenshot: Hervorhebung des Abschnitts „IdP Signature“ (IdP-Signatur)](./media/happyfox-tutorial/cert.png)
 
 6. Klicken Sie auf die Schaltfläche **Save settings** (Einstellungen speichern).
 

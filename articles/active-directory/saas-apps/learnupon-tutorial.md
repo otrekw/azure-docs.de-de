@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535134"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Tutorial: Azure Active Directory-Integration mit LearnUpon
 
@@ -130,15 +130,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LearnUpo
 
 1. Klicken Sie auf die Registerkarte **Einstellungen** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Screenshot: Registerkarte „Einstellungen“](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. Klicken Sie auf **Einmaliges Anmelden – SAML** und anschließend auf **Allgemeine Einstellungen**, um SAML-Einstellungen zu konfigurieren.
    
-    ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Screenshot: Option „Einmaliges Anmelden – SAML“ mit Auswahl von „Allgemeine Einstellungen“](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. Führen Sie im Abschnitt **Allgemeine Einstellungen** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Screenshot: Abschnitt „Allgemeine Einstellungen“, in dem Sie die beschriebenen Werte eingeben können](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. Wählen Sie **Aktiviert**.
 
@@ -158,7 +158,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LearnUpo
 
 1. Klicken Sie auf **Benutzereinstellungen**, und führen Sie die folgenden Schritte aus:
 
-     ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Screenshot: Abschnitt „Benutzereinstellungen“, in dem Sie die beschriebenen Werte eingeben können](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. Geben Sie im Textfeld **First Name Identifier Format** (Format der Vornamen-ID) den Wert ein, der angibt, an welcher Stelle in der SAML-Assertion sich der Vorname des Benutzers befindet, etwa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   

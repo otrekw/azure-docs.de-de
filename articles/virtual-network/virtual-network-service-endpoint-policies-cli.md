@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708211"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91666771"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Verwalten der Datenexfiltration in Azure Storage-Konten mit VNET-Dienstendpunkt-Richtlinien mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -252,7 +252,7 @@ az storage account network-rule add \
 
 Azure-Dienstendpunkt-Richtlinien sind nur für Azure Storage verfügbar. Wir aktivieren daher für dieses Beispielsetup den Dienstendpunkt für *Microsoft.Storage* in diesem Subnetz.
 
-Dienstendpunkt-Richtlinien werden auf Dienstendpunkte angewandt. Wir beginnen mit dem Erstellen einer Dienstendpunkt-Richtlinie. Anschließend erstellen wir die Richtliniendefinitionen unter dieser Richtlinie für Azure Storage-Konten, die in die Whitelist für dieses Subnetz aufgenommen werden sollen.
+Dienstendpunkt-Richtlinien werden auf Dienstendpunkte angewandt. Wir beginnen mit dem Erstellen einer Dienstendpunkt-Richtlinie. Anschließend erstellen wir die Richtliniendefinitionen unter dieser Richtlinie für Azure Storage-Konten, die für dieses Subnetz genehmigt werden sollen.
 
 Erstellen einer Dienstendpunktrichtlinie
 

@@ -3,15 +3,15 @@ title: Behandeln von Problemen mit Azure-Metrikwarnungen
 description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrikwarnungen und mögliche Lösungen behandelt.
 author: harelbr
 ms.author: harelbr
-ms.topic: reference
-ms.date: 09/14/2020
+ms.topic: troubleshooting
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068761"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715319"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -76,10 +76,15 @@ Weitere Informationen zum Erfassen von Daten aus dem Gastbetriebssystem eines vi
 > [!NOTE] 
 > Wenn Sie für Gastmetriken das Senden zu einem Log Analytics-Arbeitsbereich konfiguriert haben, werden die Metriken unter der Log Analytics-Arbeitsbereichsressource angezeigt. Die Daten werden dann **erst** angezeigt, nachdem eine Warnungsregel für deren Überwachung erstellt wurde. Führen Sie hierzu die Schritte zum [Konfigurieren der Metrikwarnung für Protokolle](./alerts-metric-logs.md#configuring-metric-alert-for-logs) aus.
 
+> [!NOTE] 
+> Das Überwachen einer Gastmetrik für mehrere virtuelle Computer mit einer einzigen Warnungsregel wird derzeit von Metrikwarnungen nicht unterstützt. Sie können dies mit einer [Protokollwarnungsregel](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) erreichen. Stellen Sie dazu sicher, dass die Gastmetriken in einem Log Analytics-Arbeitsbereich gesammelt werden, und erstellen Sie eine Protokollwarnungsregel für den Arbeitsbereich.
+
 ## <a name="cant-find-the-metric-to-alert-on"></a>Metrik für Warnung kann nicht gefunden werden
 
-Wenn Sie eine Warnung für eine bestimmte Metrik anzeigen möchten, jedoch keine Metriken für die Ressource angezeigt werden, [überprüfen Sie, ob der Ressourcentyp für Metrikwarnungen](./alerts-metric-near-real-time.md) unterstützt wird.
-Wenn einige Metriken für die Ressource angezeigt werden, eine bestimmte Metrik jedoch nicht gefunden werden kann, [überprüfen Sie, ob diese Metrik verfügbar ist](./metrics-supported.md). Wenn dies der Fall ist, sehen Sie in der Metrikbeschreibung nach, ob diese nur in bestimmten Versionen oder Editionen der Ressource verfügbar ist.
+Wenn Sie für eine bestimmte Metrik eine Warnung anzeigen möchten, diese aber beim Erstellen einer Warnungsregel nicht angezeigt wird, überprüfen Sie Folgendes:
+- Wenn keine Metriken für die Ressource angezeigt werden, [überprüfen Sie, ob der Ressourcentyp für Metrikwarnungen unterstützt wird](./alerts-metric-near-real-time.md).
+- Wenn einige Metriken für die Ressource angezeigt werden, eine bestimmte Metrik jedoch nicht gefunden werden kann, [überprüfen Sie, ob diese Metrik verfügbar ist](./metrics-supported.md). Wenn dies der Fall ist, sehen Sie in der Metrikbeschreibung nach, ob diese nur in bestimmten Versionen oder Editionen der Ressource verfügbar ist.
+- Wenn die Metrik für die Ressource nicht verfügbar ist, ist Sie möglicherweise in den Ressourcenprotokollen verfügbar und kann mithilfe von Protokollwarnungen überwacht werden. Hier finden Sie weitere Informationen zum [Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Metrikdimension für Warnung kann nicht gefunden werden
 
@@ -108,9 +113,9 @@ Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden k
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Definieren einer Warnungsregel für eine benutzerdefinierte Metrik, die noch nicht ausgegeben wurde
 
-Beim Erstellen einer Metrikwarnungsregel wird der Metrikname anhand der [Metrikdefinitions-API](/rest/api/monitor/metricdefinitions/list) überprüft, um sicherzustellen, dass er vorhanden ist. In einigen Fällen möchten Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, noch bevor diese ausgegeben wird. Ein Beispiel wäre, wenn Sie eine Application Insights-Ressource erstellen (mit einer Resource Manager-Vorlage), die eine benutzerdefinierte Metrik ausgibt, sowie eine Warnungsregel, die diese Metrik überwacht.
+Beim Erstellen einer Metrikwarnungsregel wird der Metrikname anhand der [Metrikdefinitions-API](/rest/api/monitor/metricdefinitions/list) überprüft, um sicherzustellen, dass er vorhanden ist. In einigen Fällen möchten Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, noch bevor diese ausgegeben wird. Ein Beispiel wäre, wenn Sie eine Application Insights-Ressource erstellen (mit einer Resource Manager-Vorlage), die eine benutzerdefinierte Metrik ausgibt, sowie eine Warnungsregel, die diese Metrik überwacht.
 
-Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuchen, die Definitionen der benutzerdefinierten Metrik zu überprüfen, können Sie den Parameter *skipMetricValidation* im Kriterienabschnitt der Warnungsregel verwenden, durch den die Metrikvalidierung übersprungen wird. Im folgenden Beispiel finden Sie Informationen zur Verwendung dieses Parameters in einer Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage](./alerts-metric-create-templates.md).
+Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuchen, die Definitionen der benutzerdefinierten Metrik zu überprüfen, können Sie den Parameter *skipMetricValidation* im Kriterienabschnitt der Warnungsregel verwenden, durch den die Metrikvalidierung übersprungen wird. Im folgenden Beispiel finden Sie Informationen zur Verwendung dieses Parameters in einer Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage](./alerts-metric-create-templates.md).
 
 ```json
 "criteria": {
@@ -252,6 +257,12 @@ Beispiel:
     - Ich möchte die erste Bedingung aktualisieren und nur Transaktionen überwachen, bei denen die Dimension **ApiName** *"GetBlob"* entspricht.
     - Da die Metriken **Transactions** und **SuccessE2ELatency** beide eine Dimension **ApiName** unterstützen, muss ich beide Bedingungen aktualisieren und dafür sorgen, dass beide die Dimension **ApiName** mit dem Wert *"GetBlob"* angeben.
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>Festlegen von Zeitraum und Häufigkeit der Warnungsregel
+
+Es wird empfohlen, eine *Aggregationsgranularität (Zeitraum)* auszuwählen, die größer ist als die *Häufigkeit der Auswertung*, um die Wahrscheinlichkeit zu verringern, dass die erste Auswertung einer hinzugefügten Zeitreihe in den folgenden Fällen ausgelassen wird:
+-   Metrikwarnungsregel, die mehrere Dimensionen überwacht: wenn eine neue Kombination aus Dimensionswerten hinzugefügt wird
+-   Metrikwarnungsregel, die mehrere Ressourcen überwacht: wenn dem Bereich eine neue Ressource hinzugefügt wird
+-   Metrikwarnungsregel, die eine nicht kontinuierlich ausgegebene Metrik überwacht (seltene Metrik): wenn die Metrik erst nach einem längeren Zeitraum als 24 Stunden wieder ausgegeben wird
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -89,6 +89,8 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
     - name: Beispiele
       items:
         - name: Beispiele für die Gesichtserkennung

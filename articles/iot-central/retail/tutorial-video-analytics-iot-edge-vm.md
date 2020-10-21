@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526390"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873277"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Tutorial: Erstellen einer IoT Edge-Instanz für die Videoanalyse (Linux-VM)
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, sollten Sie das vorgeschaltete Tutorial zum [Erstellen einer Videoanalyseanwendung in Azure IoT Central](./tutorial-video-analytics-create-app.md) durcharbeiten.
+Bevor Sie beginnen, sollten Sie das vorgeschaltete Tutorial [Erstellen einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“ in Azure IoT Central (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) bzw. [Erstellen einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“ in Azure IoT Central (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) durcharbeiten.
 
 Darüber hinaus benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) kostenlos eines erstellen.
 

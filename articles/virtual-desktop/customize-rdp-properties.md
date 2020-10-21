@@ -3,15 +3,15 @@ title: Anpassen von RDP-Eigenschaften mit PowerShell (Azure)
 description: Vorgehensweise zum Anpassen von RDP-Eigenschaften für Windows Virtual Desktop mit PowerShell-Cmdlets
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462223"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930695"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) für einen Hostpool
 
@@ -28,8 +28,8 @@ RDP-Dateien haben standardmäßig die folgenden Eigenschaften:
 
 |RDP-Eigenschaft|Auf Desktop|Als RemoteApp|
 |---|---|---|
-|Mehrfachmonitor-Modus|Aktiviert|–|
-|Aktivierte Laufwerksumleitungen|Laufwerke, Zwischenablage, Drucker, COM-Anschlüsse, USB-Geräte und Smartcards|Laufwerke, Zwischenablage und Drucker|
+|Mehrfachmonitor-Modus|Disabled|Aktiviert|
+|Aktivierte Laufwerksumleitungen|Laufwerke, Clipboard, Drucker, COM-Ports und Smartcards|Laufwerke, Zwischenablage und Drucker|
 |Remoteaudio-Modus|Lokale Wiedergabe|Lokale Wiedergabe|
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -45,8 +45,9 @@ So konfigurieren Sie RDP-Eigenschaften im Azure-Portal:
 3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus.
 4. Wählen Sie auf der Seite „Windows Virtual Desktop“ im Menü auf der linken Seite **Hostpools** aus.
 5. Wählen Sie **den Namen des Hostpools** aus, den Sie aktualisieren möchten.
-6. Wählen Sie im Menü auf der linken Bildschirmseite **Eigenschaften** aus.
-7. Wählen Sie auf der Registerkarte **Eigenschaften** die Option **RDP-Einstellungen** aus, um die RDP-Eigenschaften zu bearbeiten. Eigenschaften sollten ein durch Semikolon getrenntes Format aufweisen, wie z. B. die PowerShell-Beispiele.
+6. Wählen Sie im Menü auf der linken Seite des Bildschirms **RDP-Eigenschaften** aus.
+7. Legen Sie die gewünschte Eigenschaft fest.
+   - Alternativ dazu können Sie die Registerkarte **Erweitert** öffnen und die RDP-Eigenschaften in einem durch Semikolon getrennten Format hinzufügen, wie in den PowerShell-Beispielen in den folgenden Abschnitten zu sehen.
 8. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um Ihre Änderungen zu speichern.
 
 In den nächsten Abschnitten erfahren Sie, wie Sie benutzerdefinierte RDP-Eigenschaften manuell in PowerShell bearbeiten.

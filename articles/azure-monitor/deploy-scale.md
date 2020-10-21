@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: a69a58da85cf1ee03046626bb076c5cd44196279
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828709"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993257"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy
 Während einige Features von Azure Monitor einmalig oder nur für eine begrenzte Zahl von Malen konfiguriert werden, muss dies bei anderen für jede Ressource wiederholt werden, die Sie überwachen möchten. In diesem Artikel werden Methoden beschrieben, wie Sie Azure Monitor mit Azure Policy bedarfsorientiert implementieren, um sicherzustellen, dass die Überwachung für alle Ihre Azure-Ressourcen konsistent und genau konfiguriert ist.
@@ -33,7 +33,7 @@ Azure Policy umfasst die Objekte in der folgenden Tabelle: Eine ausführlichere 
 | Zuweisung | Eine Richtliniendefinition oder -initiative tritt erst in Kraft, wenn sie einem Bereich zugewiesen wird. Weisen Sie z. B. einer Ressourcengruppe eine Richtlinie zu, um sie auf alle Ressourcen anzuwenden, die in dieser Ressource erstellt werden, oder wenden Sie sie auf ein Abonnement an, um sie auf alle Ressourcen in diesem Abonnement anzuwenden.  Weitere Informationen finden Sie unter [Azure Policy-Zuweisungsstruktur](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Integrierte Richtliniendefinitionen für Azure Monitor
-Azure Policy enthält mehrere vordefinierte Definitionen im Zusammenhang mit Azure Monitor. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine umfassende Liste der integrierten Richtlinien in der Kategorie **Überwachung** finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Monitor](samples/policy-samples.md).
+Azure Policy enthält mehrere vordefinierte Definitionen im Zusammenhang mit Azure Monitor. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine umfassende Liste der integrierten Richtlinien in der Kategorie **Überwachung** finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Monitor](./samples/policy-reference.md).
 
 Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung integrierten Richtliniendefinitionen anzuzeigen:
 
@@ -41,7 +41,7 @@ Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung int
 2. Wählen Sie **Definitionen** aus.
 3. Wählen Sie für **Typ** die Option *Integriert* und für **Kategorie** die Option *Überwachung* aus.
 
-  ![Integrierte Richtliniendefinitionen](media/deploy-scale/builtin-policies.png)
+  ![Screenshot der Seite „Definitionen“ von Azure Policy im Azure-Portal mit einer Liste von Richtliniendefinitionen für die Kategorie „Überwachung“ und den Typ „Integriert“](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
@@ -54,7 +54,7 @@ Es gibt zwei integrierte Richtliniendefinitionen für jeden Ressourcentyp, eine 
 
 Die folgende Abbildung zeigt z. B. die integrierten Richtliniendefinitionen für die Diagnoseeinstellung für Data Lake Analytics.
 
-  ![Integrierte Richtliniendefinitionen](media/deploy-scale/builtin-diagnostic-settings.png)
+  ![Teilscreenshot der Seite „Definitionen“ von Azure Policy mit zwei integrierten Richtliniendefinitionen für die Diagnoseeinstellung für Data Lake Analytics](media/deploy-scale/builtin-diagnostic-settings.png)
 
 ### <a name="custom-policy-definitions"></a>Benutzerdefinierte Richtliniendefinitionen
 Für Ressourcentypen, die über keine integrierte Richtlinie verfügen, müssen Sie eine benutzerdefinierte Richtliniendefinition erstellen. Sie können hierzu manuell im Azure-Portal eine vorhandene integrierte Richtlinie kopieren und dann für Ihren Ressourcentyp ändern. Es ist jedoch effizienter, die Richtlinie programmgesteuert mithilfe eines Skripts im PowerShell-Katalog zu erstellen.
@@ -109,7 +109,7 @@ Ausführliche Informationen zum Erstellen einer Initiative finden Sie unter [Ers
 ### <a name="assignment"></a>Zuweisung 
 Weisen Sie die Initiative abhängig vom Umfang ihrer zu überwachenden Ressourcen einer Azure-Verwaltungsgruppe, einem Abonnement oder einer Ressourcengruppe zu. Eine [Verwaltungsgruppe](../governance/management-groups/overview.md) ist besonders nützlich für bereichsbezogene Richtlinien, insbesondere wenn Ihre Organisation über mehrere Abonnements verfügt.
 
-![Initiativzuweisung](media/deploy-scale/initiative-assignment.png)
+![Screenshot der Einstellungen auf der Registerkarte „Grundlagen“ im Abschnitt „Initiative zuweisen“ der Diagnoseeinstellungen für den Log Analytics-Arbeitsbereich im Azure-Portal](media/deploy-scale/initiative-assignment.png)
 
 Mithilfe von Initiativparametern können Sie den Arbeitsbereich oder andere Details einmal für alle Richtliniendefinitionen in der Initiative angeben. 
 
@@ -146,7 +146,7 @@ Weitere Informationen hierzu finden Sie unter [Aktivieren von Azure Monitor für
 ### <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
 Wenn Sie Azure Policy zum Aktivieren der Überwachung von VM-Skalierungsgruppen verwenden möchten, weisen Sie die Initiative **Azure Monitor für Virtual Machine Scale Sets aktivieren** einer Azure-Verwaltungsgruppe, einem Abonnement oder einer Ressource zu (abhängig vom Umfang der Ressourcen, die überwacht werden sollen). Eine [Verwaltungsgruppe](../governance/management-groups/overview.md) ist besonders nützlich für bereichsbezogene Richtlinien, insbesondere wenn Ihre Organisation über mehrere Abonnements verfügt.
 
-![Initiativzuweisung](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+![Screenshot der Seite „Initiative zuweisen“ im Azure-Portal. Die Initiativdefinition ist auf „Aktivieren von Azure Monitor für VM-Skalierungsgruppen“ festgelegt.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
 Wählen Sie den Arbeitsbereich aus, an den die Daten gesendet werden. In diesem Arbeitsbereich muss die *VMInsights*-Lösung installiert sein, wie unter []() beschrieben.
 

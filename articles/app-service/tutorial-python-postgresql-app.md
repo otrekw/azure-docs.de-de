@@ -3,7 +3,7 @@ title: 'Tutorial: Bereitstellen einer Python-Django-App mit Postgres'
 description: Hier erfahren Sie, wie Sie eine Python-Web-App mit einer PostgreSQL-Datenbank erstellen und in Azure bereitstellen. In diesem Tutorial wird das Django-Framework verwendet, und die App wird in Azure App Service für Linux gehostet.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369619"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019408"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -114,7 +114,7 @@ Das Beispiel wird außerdem für die Ausführung in einer Produktionsumgebung wi
 - Die Produktionseinstellungen befinden sich in der Datei *azuresite/production.py*. Die Entwicklungsdetails befinden sich in *azuresite/settings.py*.
 - Von der App werden Produktionseinstellungen verwendet, wenn die Umgebungsvariable `DJANGO_ENV` auf „production“ festgelegt ist. Diese Umgebungsvariable wird später in diesem Tutorial zusammen mit anderen Umgebungsvariablen für die PostgreSQL-Datenbankkonfiguration erstellt.
 
-Diese Änderungen gelten nicht speziell für App Service, sondern ermöglichen die Ausführung von Django in einer beliebigen Produktionsumgebung. Weitere Informationen finden Sie in der [Bereitstellungsprüfliste für Django](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/).
+Diese Änderungen gelten nicht speziell für App Service, sondern ermöglichen die Ausführung von Django in einer beliebigen Produktionsumgebung. Weitere Informationen finden Sie in der [Bereitstellungsprüfliste für Django](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ausführliche Informationen zu einigen Änderungen finden Sie unter [Produktionseinstellungen für Django in Azure](configure-language-python.md#production-settings-for-django-apps).
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -134,7 +134,7 @@ Wird der Befehl `az` nicht erkannt, vergewissern Sie sich, dass die Azure CLI w
 Erstellen Sie anschließend mithilfe des Befehls [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) die Postgres-Datenbank in Azure:
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
 - Ersetzen Sie *\<postgres-server-name>* durch einen innerhalb von Azure eindeutigen Namen. (Der Serverendpunkt ist `https://<postgres-server-name>.postgres.database.azure.com`.) Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einem anderen eindeutigen Wert.
@@ -144,9 +144,9 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
 - Erstellen einer [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology) namens `DjangoPostgres-tutorial-rg` (sofern noch nicht vorhanden)
-- Erstellen eines Postgres-Servers
-- Erstellen eines Standardadministratorkontos mit eindeutigem Benutzernamen und Kennwort. (Wenn Sie Ihre eigenen Anmeldeinformationen angeben möchten, verwenden Sie die Argumente `--admin-user` und `--admin-password` mit dem Befehl `az postgres up`.)
-- Erstellen einer Datenbank namens `pollsdb`
+- Erstellen eines nach dem Argument `--server-name` benannten Postgres-Servers
+- Erstellen eines Administratorkontos mithilfe der Argumente `--admin-user` und `--admin-password`. Sie können diese Argumente weglassen, damit der Befehl eindeutige Anmeldeinformationen für Sie generiert.
+- Erstellen einer nach dem Argument `--database-name` benannten `pollsdb`-Datenbank
 - Ermöglichen des Zugriffs über Ihre lokale IP-Adresse
 - Ermöglichen des Zugriffs über Azure-Dienste
 - Erstellen eines neuen Datenbankbenutzers mit Zugriff auf die Datenbank `pollsdb`
@@ -203,17 +203,19 @@ Nach erfolgreicher Bereitstellung wird eine JSON-Ausgabe wie im folgenden Beispi
 
 Nachdem der Code nun in App Service bereitgestellt ist, muss als Nächstes eine Verbindung zwischen der App und der Postgres-Datenbank in Azure hergestellt werden.
 
-Vom App-Code werden Datenbankinformationen in einer Reihe von Umgebungsvariablen erwartet. Mithilfe des Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen.
+Vom App-Code werden Datenbankinformationen in vier Umgebungsvariablen namens `DBHOST`, `DBNAME`, `DBUSER` und `DBPASS` erwartet. Damit die Produktionseinstellungen verwendet werden können, muss außerdem die Umgebungsvariable `DJANGO_ENV` auf `production` festgelegt werden.
+
+Mithilfe des folgenden Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen:
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- Ersetzen Sie *\<postgres-server-name>* durch den Namen, den Sie zuvor mit dem Befehl `az postgres up` verwendet haben.
-- Ersetzen Sie *\<username>* und *\<password>* durch die Anmeldeinformationen, die durch den Befehl generiert wurden. Das Argument `DBUSER` muss die Form `<username>@<postgres-server-name>` haben.
-- Die Ressourcengruppe und der Name der App werden aus den zwischengespeicherten Werten in der Datei *.azure/config* abgerufen.
-- Durch den Befehl werden die vom App-Code erwarteten Einstellungen `DJANGO_ENV`, `DBHOST`, `DBNAME`, `DBUSER` und `DBPASS` erstellt.
-- In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('DJANGO_ENV')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](configure-language-python.md#access-environment-variables).
+- Ersetzen Sie *\<postgres-server-name>* durch den Namen, den Sie zuvor mit dem Befehl `az postgres up` verwendet haben. Der Code in *azuresite/production.py* hängt automatisch `.postgres.database.azure.com` an, um die vollständige Postgres-Server-URL zu erstellen.
+- Ersetzen Sie *\<username>* und *\<password>* durch die Administratoranmeldeinformationen, die Sie mit dem Befehl `az postgres up` weiter oben verwendet haben, oder durch die Anmeldeinformationen, die von `az postgres up` für Sie generiert wurden. Der Code in *azuresite/production.py* erstellt automatisch den vollständigen Postgres-Benutzernamen aus `DBUSER` und `DBHOST`.
+- Die Namen für Ressourcengruppe und App werden aus den zwischengespeicherten Werten in der Datei *.azure/config* abgerufen.
+
+In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('DJANGO_ENV')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](configure-language-python.md#access-environment-variables).
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -230,6 +232,8 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
     Ersetzen Sie `<app-name>` durch den Namen, den Sie zuvor in dem Befehl `az webapp up` verwendet haben.
 
     Unter macOS und Linux können Sie alternativ mit dem Befehl [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) eine Verbindung mit einer SSH-Sitzung herstellen.
+
+    Können Sie keine Verbindung mit der SSH-Sitzung herstellen, konnte die App selbst nicht gestartet werden. Ausführliche Informationen finden Sie in den [Diagnoseprotokollen](#stream-diagnostic-logs). Wenn Sie beispielsweise nicht die erforderlichen App-Einstellungen im vorherigen Abschnitt erstellt haben, ist in den Protokollen `KeyError: 'DBNAME'`angegeben.
 
 1. Führen Sie in der SSH-Sitzung die folgenden Befehle aus. (Befehle können mithilfe von **STRG**+**UMSCHALT**+**V** eingefügt werden.)
 
@@ -249,7 +253,7 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
-    
+
 1. Durch den Befehl `createsuperuser` werden Sie zur Eingabe von Superuser-Anmeldeinformationen aufgefordert. Verwenden Sie für dieses Tutorial den Standardbenutzernamen `root`, drücken Sie für die E-Mail-Adresse die **EINGABETASTE**, um sie leer zu lassen, und geben Sie `Pollsdb1` als Kennwort ein.
 
 1. Wenn eine Fehlermeldung angezeigt wird, dass die Datenbank gesperrt ist, stellen Sie sicher, dass Sie den Befehl `az webapp settings` im vorherigen Abschnitt ausgeführt haben. Ohne diese Einstellungen kann der Migrationsbefehl (migrate) nicht mit der Datenbank kommunizieren, was zu einem Fehler führt.
@@ -259,6 +263,10 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
 ### <a name="create-a-poll-question-in-the-app"></a>Erstellen einer Frage für die Umfrage in der App
 
 1. Öffnen Sie in einen Browser die URL `http://<app-name>.azurewebsites.net`. In der App sollte „No polls are available“ (Keine Umfragen verfügbar) angezeigt werden, da die Datenbank noch keine spezifischen Umfragen enthält.
+
+    Wird „Anwendungsfehler“ angezeigt, haben Sie wahrscheinlich entweder die erforderlichen Einstellungen im vorherigen Schritt ([Konfigurieren der Umgebungsvariablen für die Datenbankverbindung](#configure-environment-variables-to-connect-the-database)) nicht erstellt, oder diese Werte enthalten Fehler. Führen Sie den Befehl `az webapp config appsettings list` aus, um die Einstellungen zu überprüfen. Sie können auch die [Diagnoseprotokolle überprüfen](#stream-diagnostic-logs), um bestimmte Fehler beim App-Start anzuzeigen. Wenn Sie beispielsweise die Einstellungen nicht erstellt haben, wird in den Protokollen der Fehler `KeyError: 'DBNAME'` angezeigt.
+
+    Nachdem Sie die Einstellungen zum Beheben von Fehlern aktualisiert haben, räumen Sie eine Minute für den Neustart der App ein, und aktualisieren Sie dann den Browser.
 
 1. Navigieren Sie zu `http://<app-name>.azurewebsites.net/admin`. Melden Sie sich unter Verwendung der Superuser-Anmeldeinformationen aus dem vorherigen Abschnitt an (`root` und `Pollsdb1`). Wählen Sie unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
 
@@ -446,7 +454,7 @@ Standardmäßig wird im Portal die Seite **Übersicht** mit einer allgemeinen Le
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die App behalten oder mit dem nächsten Tutorial fortfahren möchten, springen Sie direkt zu [Nächste Schritte](#next-steps). Andernfalls können Sie die für dieses Tutorial erstellte Ressourcengruppe löschen, um laufende Gebühren zu vermeiden:
+Wenn Sie die App behalten oder mit den zusätzlichen Tutorials fortfahren möchten, gehen Sie direkt zu [Nächste Schritte](#next-steps). Andernfalls können Sie die für dieses Tutorial erstellte Ressourcengruppe löschen, um laufende Gebühren zu vermeiden:
 
 ```azurecli
 az group delete --no-wait

@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651711"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743521"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -117,9 +117,11 @@ Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Au
 
 Wenn Sie auf mehrere Instanzen aufskalieren, kann App Service Integritätsprüfungen für Ihre Instanzen durchführen, damit Datenverkehr nur an die fehlerfreien Instanzen weitergeleitet wird. Öffnen Sie hierzu im Portal Ihre App Service-Instanz, und wählen Sie dann **Integrität überprüfen** unter **Überwachung** aus. Wählen Sie **Aktivieren** aus, und geben Sie einen gültigen URL-Pfad für die Anwendung an, z. B. `/health` oder `/api/health`. Klicken Sie auf **Speichern**.
 
+Um die Funktion mit ARM-Vorlagen zu aktivieren, legen Sie die Eigenschaft `healthcheckpath` der `Microsoft.Web/sites`-Ressource auf den Pfad der Integritätsüberprüfung für Ihren Standort fest, z. B. `"/api/health/"`. Zum Deaktivieren der Funktion legen Sie die Eigenschaft wieder auf eine leere Zeichenfolge (`""`) fest.
+
 ### <a name="health-check-path"></a>Pfad der Integritätsüberprüfung
 
-Der Pfad muss innerhalb von zwei Minuten mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Wenn der Pfad nicht innerhalb von zwei Minuten antwortet oder einen Statuscode außerhalb des Bereichs zurückgibt, gilt die Instanz als fehlerhaft. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für die Website HTTP**S** aktiviert ist, trifft die Integritätsüberprüfung zuerst auf den HTTP-Endpunkt und folgt dann der HTTP-Umleitung 307 an den HTTPS-Endpunkt.
+Der Pfad muss innerhalb von zwei Minuten mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Wenn der Pfad nicht innerhalb von zwei Minuten antwortet oder einen Statuscode außerhalb des Bereichs zurückgibt, gilt die Instanz als fehlerhaft. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP**S**“ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP**S** gesendet.
 
 Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anwendung überprüfen. Wenn Ihre Anwendung z. B. von einer Datenbank und einem Messagingsystem abhängig ist, sollte der Endpunkt der Integritätsüberprüfung eine Verbindung mit diesen Komponenten herstellen. Wenn die Anwendung keine Verbindung mit einer kritischen Komponente herstellen kann, sollte der Pfad einen Antwortcode auf 500-Ebene zurückgeben, um damit anzugeben, dass die App fehlerhaft ist.
 

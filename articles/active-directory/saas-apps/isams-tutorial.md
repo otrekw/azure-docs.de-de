@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552720"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850034"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit iSAMS
 
@@ -132,16 +132,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Navigieren Sie zur Systemsteuerung, und öffnen Sie das Modul **Authentication** (Authentifizierung).
 1. Wählen Sie im Menü auf der rechten Seite die Option **Identity Providers** (Identitätsanbieter) aus.
 
-    ![Konfiguration](./media/isams-tutorial/click-identity-provider.png)
+    ![Screenshot: Active Directory-Konfiguration mit Auswahl von Identitätsanbietern](./media/isams-tutorial/click-identity-provider.png)
 
 1. Wählen Sie **Add Provider** (Anbieter hinzufügen) aus.
 
-    ![Konfiguration](./media/isams-tutorial/add-identity-provider.png)
+    ![Screenshot: Identitätsanbieter mit Auswahl von „Add Provider“ (Anbieter hinzufügen)](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Konfiguration](./media/isams-tutorial/configure-isams.png)
+    ![Screenshot: Assistent für Identitätsanbieter, in dem Sie die beschriebenen Schritte ausführen können](./media/isams-tutorial/configure-isams.png)
 
     a. Geben Sie im Textfeld **Name** einen gültigen Namen an, etwa `Saml2 Azure`. Dies ist der Name, der auf der Anmeldeseite angezeigt wird.
 
@@ -159,12 +159,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2.  Navigieren Sie zu **Control Panel Home** -> **Security & Permissions** -> **User Accounts** -> **User Options & Tasks** -> **Modify User Properties** (Startseite der Systemsteuerung > Sicherheit und Berechtigungen > Benutzerkonten > Benutzeroptionen und Aufgaben > Benutzereigenschaften ändern).
 
-    ![Testbenutzer](./media/isams-tutorial/modify-user-properties.png)
+    ![Screenshot: Seite „User Accounts“ (Benutzerkonten) mit Auswahl von „Modify User Properties“ (Benutzereigenschaften ändern)](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. Wählen Sie im angezeigten Popupfenster die Registerkarte **Account Details** (Kontodetails) aus, und ändern Sie den Wert für **Authorization** (Autorisierung) in den Wert des neu erstellten Identitätsanbieters.
 
-    ![Testbenutzer](./media/isams-tutorial/account-details.png)
+    ![Screenshot: Option „Account Details“ (Kontodetails) mit einem Wert für „Authorization“ (Autorisierung)](./media/isams-tutorial/account-details.png)
 
 4. Klicken Sie auf **Save & Close** (Speichern und schließen).
 

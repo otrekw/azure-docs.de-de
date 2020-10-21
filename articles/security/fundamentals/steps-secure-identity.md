@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386145"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91399804"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -82,7 +82,7 @@ Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortabl
 Wenn Ihre Organisation eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbundauthentifizierung verwendet, sollten Sie aus den beiden folgenden Gründen die Kennworthashsynchronisierung aktivieren:
 
 * Der Bericht zu [Benutzern mit kompromittierten Anmeldeinformationen](../../active-directory/reports-monitoring/concept-risk-events.md) in der Azure AD-Verwaltung warnt Sie vor Kombinationen aus Benutzername und Kennwort, die im „Dark Web“ verbreitet wurden. Eine schier unglaubliche Menge an Kennwörtern wird über drei Wege kompromittiert: Phishing, Schadsoftware und die Wiederverwendung von Kennwörtern auf Drittanbieterwebsites, die später gehackt werden. Microsoft findet eine Vielzahl dieser kompromittierten Anmeldeinformationen und teilt Ihnen in diesem Bericht mit, wenn sie Anmeldeinformationen in Ihrer Organisation entsprechen – aber nur, wenn Sie die [Kennworthashsynchronisierung aktivieren](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)!
-* Wenn ein lokales System ausfällt (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](choose-ad-authn.md) wechseln. Diese Backupmethode für die Authentifizierung ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, beispielsweise Office 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
+* Wenn ein lokales System ausfällt (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](choose-ad-authn.md) wechseln. Diese sekundäre Authentifizierungsmethode ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, einschließlich Microsoft 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
 
 Informieren Sie sich, wie die [Kennworthashsynchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) funktioniert.
 
@@ -193,7 +193,7 @@ Die [Self-Service-Kennwortzurücksetzung](../../active-directory/authentication/
 
 ### <a name="implement-self-service-group-and-application-access"></a>Implementieren von Self-Service-Gruppen und Anwendungszugriff
 
-In Azure AD haben Benutzer ohne Administratorrechte die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen, Office 365-Gruppen, Anwendungsrollen und Zugriffspaketkatalogen zu verwalten.  Über die [Self-Service-Gruppenverwaltung](../../active-directory/users-groups-roles/groups-self-service-management.md) können Gruppenbesitzer ihre eigenen Gruppen verwalten, ohne dass ihnen eine Administratorrolle zugewiesen sein muss. Benutzer können auch Office 365-Gruppen erstellen und verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen. Nicht verwendete Gruppen laufen automatisch ab.  Ferner ermöglicht die [Azure AD-Berechtigungsverwaltung](../../active-directory/governance/entitlement-management-overview.md) die Delegierung und Sichtbarkeit durch umfassende Workflows für Zugriffsanforderungen und durch automatischen Ablauf.  Sie können an Benutzer ohne Administratorrechte die Möglichkeit delegieren, ihre eigenen Zugriffspakete für Gruppen, Teams, Anwendungen und SharePoint Online-Websites in ihrem Besitz zu konfigurieren. Dazu verwenden Sie benutzerdefinierte Richtlinien für Benutzer, die den Zugriff genehmigen müssen, darunter die Konfiguration von Managern von Mitarbeitern und Sponsoren von Geschäftspartnern als genehmigende Personen.
+In Azure AD haben Benutzer ohne Administratorrechte die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen, Microsoft 365-Gruppen, Anwendungsrollen und Zugriffspaketkatalogen zu verwalten.  Über die [Self-Service-Gruppenverwaltung](../../active-directory/users-groups-roles/groups-self-service-management.md) können Gruppenbesitzer ihre eigenen Gruppen verwalten, ohne dass ihnen eine Administratorrolle zugewiesen sein muss. Benutzer können auch Microsoft 365-Gruppen erstellen und verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen. Nicht verwendete Gruppen laufen automatisch ab.  Ferner ermöglicht die [Azure AD-Berechtigungsverwaltung](../../active-directory/governance/entitlement-management-overview.md) die Delegierung und Sichtbarkeit durch umfassende Workflows für Zugriffsanforderungen und durch automatischen Ablauf.  Sie können an Benutzer ohne Administratorrechte die Möglichkeit delegieren, ihre eigenen Zugriffspakete für Gruppen, Teams, Anwendungen und SharePoint Online-Websites in ihrem Besitz zu konfigurieren. Dazu verwenden Sie benutzerdefinierte Richtlinien für Benutzer, die den Zugriff genehmigen müssen, darunter die Konfiguration von Managern von Mitarbeitern und Sponsoren von Geschäftspartnern als genehmigende Personen.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Implementieren von Azure AD-Zugriffsüberprüfungen
 

@@ -4,17 +4,17 @@ description: Auf dieser Seite wird beschrieben, wie Sie eine Supportanfrage zum 
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.topic: conceptual
+ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987284"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448856"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, wählen Sie die
 
 1. Geben Sie das **Kaufmodell** und die Details für **Erwartete Nutzung** ein.
 
-   ![Anfordern des Zugriffs auf eine Region](./media/quota-increase-request/quota-details-whitelisting.png)
+   ![Anfordern des Zugriffs auf eine Region](./media/quota-increase-request/quota-request.png)
 
 ### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Aktivieren des Zugriffs auf eine Region für die M-Serie
 
@@ -118,7 +118,7 @@ Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müss
 1. Wählen Sie in der Liste **Standort auswählen** die zu verwendende Azure-Region aus. Das Kontingent gilt pro Abonnement in jeder Region.
 
 
-   ![Anfordern des Zugriffs auf eine Region](./media/quota-increase-request/quota-m-series.png)
+   ![Anfordern von Regionszugriff für die M-Serie](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Kontingenttyp für SQL Managed Instance
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441594"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073103"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurieren der Paketerfassung für VPN Gateways
 
@@ -318,7 +318,7 @@ Die folgenden JSON-Beispiele und ein JSON-Schema bieten Erläuterungen zu den ei
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>Einrichten der Paketerfassung mithilfe von PowerShell
 
-Die folgenden Beispiele zeigen PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu den Parameteroptionen finden Sie in [diesem PowerShell-Dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Die folgenden Beispiele zeigen PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu Parameteroptionen finden Sie unter [Start-AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Starten der Paketerfassung für ein VPN-Gateway
 
@@ -354,6 +354,9 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - Die empfohlene Mindestdauer für die Paketerfassung beträgt 600 Sekunden. Aufgrund von Synchronisierungsproblemen zwischen mehreren Komponenten im Pfad stellen kürzere Paketerfassungen möglicherweise keine vollständigen Daten bereit.
 - Bei der Paketerfassung werden Datendateien im PCAP-Format generiert. Verwenden Sie Wireshark oder andere allgemein verfügbare Anwendungen, um PCAP-Dateien zu öffnen.
 - Paketerfassungen werden bei richtlinienbasierten Gateways nicht unterstützt.
+- Wenn der `SASurl`-Parameter nicht ordnungsgemäß konfiguriert ist, treten bei der Ablaufverfolgung möglicherweise Speicherfehler auf. Beispiele zum ordnungsgemäßen Generieren von `SASurl`-Parametern finden Sie unter [Stop-AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

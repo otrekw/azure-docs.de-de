@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c9c4cef07bf1de64bcb14bc4487e0f56d2a40dfc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bdeec23b6b0a0ef2884fa35bd0a576ef57bb7853
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518611"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Tutorial: Azure Active Directory-Integration mit Mozy Enterprise
 
@@ -126,11 +126,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Mozy En
 
 2. Klicken Sie im Abschnitt **Konfiguration** auf **Authentication Policy** (Authentifizierungsrichtlinie).
    
-    ![Authentication policy (Authentifizierungsrichtlinie)](./media/mozy-enterprise-tutorial/ic777314.png "Authentifizierungsrichtlinie")
+    ![Screenshot: Auswahl von „Authentication Policy“ (Authentifizierungsrichtlinie) unter „Configuration“ (Konfiguration)](./media/mozy-enterprise-tutorial/ic777314.png "Authentifizierungsrichtlinie")
 
 3. Führen Sie im Abschnitt **Authentifizierungsrichtlinie** die folgenden Schritte aus:
    
-    ![Authentication policy (Authentifizierungsrichtlinie)](./media/mozy-enterprise-tutorial/ic777315.png "Authentifizierungsrichtlinie")
+    ![Screenshot: Abschnitt „Authentication Policy“ (Authentifizierungsrichtlinie), in dem Sie die beschriebenen Werte eingeben können](./media/mozy-enterprise-tutorial/ic777315.png "Authentifizierungsrichtlinie")
    
     a. Wählen Sie für **Directory Service** (Verzeichnisdienst) die Option **Anbieter** aus.
    

@@ -4,17 +4,17 @@ description: 'Azure-Sicherheitsvergleichstest V2: Protokollierung und Bedrohungs
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059066"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295463"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>Sicherheitskontrolle: Protokollierung und Bedrohungserkennung
+# <a name="security-control-v2-logging-and-threat-detection"></a>Sicherheitskontrolle V2: Protokollierung und Bedrohungserkennung
 
 Die Protokollierung und Bedrohungserkennung umfasst alle Steuerelemente zum Erkennen von Bedrohungen in Azure und zum Aktivieren, Sammeln und Speichern von Überwachungsprotokollen für Azure-Dienste. Dazu gehört das Aktivieren von Erkennungs-, Untersuchungs- und Wiederherstellungsprozessen mit Steuerelementen, um mithilfe von nativer Bedrohungserkennung hochwertige Warnungen in Azure-Diensten zu generieren. Zudem werden mit Azure Monitor Protokolle gesammelt, die Sicherheitsanalyse wird mit Azure Sentinel zentralisiert, die Zeit wird synchronisiert sowie Protokolle aufbewahrt. 
 
@@ -40,11 +40,11 @@ Zusätzlich können Sie mithilfe von Azure Sentinel Analyseregeln erstellen, anh
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie 
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 |--|--|--|--|
 | LT-4 | 6.2, 6.3, 8.8 | AU-3, AU-12 |
 
-Aktivieren Sie die Protokollierung für Azure-Ressourcen, um die Anforderungen hinsichtlich Compliance, Bedrohungserkennung und -untersuchung sowie Bedrohungssuche zu erfüllen. 
+Aktivieren Sie die Protokollierung für Azure-Ressourcen, um die Anforderungen hinsichtlich Compliance, Bedrohungserkennung und -suche sowie Untersuchung von Incidents zu erfüllen. 
 
 Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotokolle und die Erfassung von Protokolldaten für Azure-Ressourcen aktivieren, um Zugriff auf Überwachungs-, Sicherheits- und Ressourcenprotokolle zu erhalten. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente. 
 
@@ -141,13 +141,13 @@ Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotok
 
 **Verantwortlichkeit**: Shared
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Infrastruktur- und Endpunktsicherheit 
 
-- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Threat Intelligence](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -171,7 +171,7 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
-Konfigurieren Sie die Aufbewahrungsdauer der Protokolle entsprechend Ihrer Compliance, Vorschriften und anderer Anforderungen. 
+Konfigurieren Sie die Aufbewahrungsdauer der Protokolle entsprechend Ihrer Compliance, Vorschriften und geschäftlichen Anforderungen. 
 
 In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen. Verwenden Sie für langfristige Speicherungen und Archivierungen Konten von Azure Storage, Data Lake oder des Log Analytics-Arbeitsbereichs.
 
 - [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle: https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Exportieren von Azure Security Center-Warnungen und -Empfehlungen](../../security-center/continuous-export.md)
 
 **Verantwortlichkeit**: Kunde
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [SecOps](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Alle Protokolle, die in Azure von Ressourcen generiert werden, enthalten Zeitste
 
 **Verantwortlichkeit**: Shared
 
-**An Kundensicherheit Beteiligte**:
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Richtlinien und Standards](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

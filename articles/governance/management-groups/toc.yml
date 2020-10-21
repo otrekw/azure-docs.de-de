@@ -28,6 +28,11 @@
     - name: 'Erstellen einer Verwaltungsgruppe: REST'
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: Tutorials
+  items:
+    - name: 'Inhalt: Erstellen einer Abonnementgovernancestrategie'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Anleitungen
   expanded: true
   items:

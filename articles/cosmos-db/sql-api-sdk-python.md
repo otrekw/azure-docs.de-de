@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585983"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569808"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585983"
 | |  |
 |---|---|
 |**SDK herunterladen**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-Dokumentation**|[Python-API-Referenzdokumentation](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API-Dokumentation**|[Python-API-Referenzdokumentation](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**SDK-Installationsanweisungen**|[Python-SDK-Installationsanweisungen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Erste Schritte**|[Erste Schritte mit dem Python-SDK](create-sql-api-python.md)|
 |**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) und [Python 3.5.3+](https://www.python.org/downloads/)|
@@ -126,7 +126,7 @@ ms.locfileid: "88585983"
 
 * Der Konstruktor von `CosmosClient` wurde aktualisiert:
 
-  * Der `auth`-Parameter wurde in `credential` umbenannt und akzeptiert nun direkt einen Authentifizierungstyp. Dies bedeutet, dass der Hauptschlüsselwert, ein Wörterbuch mit Ressourcentoken oder eine Liste von Berechtigungen übergeben werden kann. Das alte Wörterbuchformat wird jedoch weiterhin unterstützt.
+  * Der `auth`-Parameter wurde in `credential` umbenannt und akzeptiert nun direkt einen Authentifizierungstyp. Dies bedeutet, dass der Primärschlüsselwert, ein Wörterbuch mit Ressourcentoken oder eine Liste von Berechtigungen übergeben werden kann. Das alte Wörterbuchformat wird jedoch weiterhin unterstützt.
 
   * Der `connection_policy`-Parameter wurde in einen Schlüsselwortparameter geändert. Er wird zwar weiterhin unterstützt, jedoch kann jetzt jedes der einzelnen Attribute der Richtlinie als explizites Schlüsselwortargument übergeben werden:
 

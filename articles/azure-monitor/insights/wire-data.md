@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325150"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445780"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0-Lösung (Vorschauversion) in Azure Monitor
 
@@ -364,15 +364,15 @@ Klicken Sie im Azure-Portal auf der Seite **Übersicht** für Ihren Log Analytic
 
 Mit dem Blatt **Agents, die Netzwerkdatenverkehr erfassen** können Sie bestimmen, wie viel Netzwerkbandbreite von Computern in Anspruch genommen wird. Mit diesem Blatt können Sie leicht den _„geschwätzigsten“_ Computer in Ihrer Umgebung ermitteln. Solche Computer könnten überlastet sein, nicht normal arbeiten oder mehr Netzwerkressourcen als normal verwenden.
 
-![Beispiel: Protokollsuche](./media/wire-data/log-search-example01.png)
+![Screenshot des Blatts „Agents, die Netzwerkdatenverkehr erfassen“ im Wire Data 2.0-Dashboard mit der von jedem Computer genutzten Netzwerkbandbreite](./media/wire-data/log-search-example01.png)
 
 Auf ähnliche Weise können Sie das Blatt **Lokale Subnetze** verwenden, um zu bestimmen, wie viel Netzwerkdatenverkehr über die Subnetze verschoben wird. Benutzer definieren Subnetze oft um kritische Bereiche für ihre Anwendungen herum. Dieses Blatt bietet einen Einblick in die Bereiche.
 
-![Beispiel: Protokollsuche](./media/wire-data/log-search-example02.png)
+![Screenshot des Blatts „Lokale Subnetze“ im Wire Data 2.0-Dashboard mit der von jedem lokalen Subnetz genutzten Netzwerkbandbreite](./media/wire-data/log-search-example02.png)
 
 Das Blatt **Protokolle auf Anwendungsebene** ist nützlich, da es hilfreich ist, zu wissen, welche Protokolle verwendet werden. Sie könnten z.B. erwarten, dass SSH nicht in Ihrer Netzwerkumgebung verwendet wird. Die im Blatt angezeigten Informationen können Ihre Erwartungen schnell bestätigen oder widerlegen.
 
-![Beispiel: Protokollsuche](./media/wire-data/log-search-example03.png)
+![Screenshot des Blatts „Protokolle auf Anwendungsebene“ im Wire Data 2.0-Dashboard mit der von jedem Protokoll genutzten Netzwerkbandbreite](./media/wire-data/log-search-example03.png)
 
 Es ist auch hilfreich zu wissen, ob der Protokolldatenverkehr mit der Zeit steigt oder sinkt. Wenn z.B. die Menge der von einer Anwendung übertragenen Daten steigt, dann könnte dies ein Aspekt sein, über den Sie informiert sein müssen, oder den Sie erwähnenswert finden.
 

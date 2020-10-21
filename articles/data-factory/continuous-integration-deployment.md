@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531218"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616894"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -30,10 +30,6 @@ In Azure Data Factory bedeuten Continuous Integration und Continuous Delivery (C
 
 -    Automatisierte Bereitstellung über Integration von Data Factory in [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)
 -    Manuelles Hochladen einer Resource Manager-Vorlage über Integration der Data Factory-Benutzeroberfläche in Azure Resource Manager.
-
-Sehen Sie sich dieses Video mit einer neunminütigen Einführung zu diesem Feature und einer Demonstration an:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -212,13 +208,17 @@ Wenn Ihre Entwicklungsfactory ein zugeordnetes Git-Repository hat, können Sie d
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
 
-Wenn Sie die standardmäßige Parametrisierungsvorlage außer Kraft setzen möchten, erstellen Sie im Stammordner Ihres Git-Branches eine Datei mit dem Namen **arm-template-parameters-definition.json**. Sie müssen exakt diesen Dateinamen verwenden.
+Wenn Sie die standardmäßige Parametrisierungsvorlage überschreiben möchten, navigieren Sie zum Verwaltungshub, und wählen Sie **Parametrisierungsvorlage** im Abschnitt für die Quellcodeverwaltung aus. Wählen Sie **Vorlage bearbeiten** aus, um den Code-Editor für die Parametrisierungsvorlage zu öffnen. 
 
-   ![Benutzerdefinierte Parameterdatei](media/continuous-integration-deployment/custom-parameters.png)
+![Verwalten von benutzerdefinierten Parametern](media/author-management-hub/management-hub-custom-parameters.png)
+
+Beim Erstellen einer benutzerdefinierten Parametrisierungsvorlage wird im Stammordner Ihres Git-Branches eine Datei mit dem Namen **arm-template-parameters-definition.json** erstellt. Sie müssen exakt diesen Dateinamen verwenden.
+
+![Benutzerdefinierte Parameterdatei](media/continuous-integration-deployment/custom-parameters.png)
 
 Beim Veröffentlichen aus dem Kollaborationsbranch liest Data Factory diese Datei und verwendet deren Konfiguration zum Generieren der Eigenschaften, die parametrisiert werden sollen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
 
-Beim Exportieren einer Resource Manager-Vorlage liest Data Factory diese Datei aus dem Branch, an dem Sie gerade arbeiten, und nicht nur aus dem Kollaborationsbranch. Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen.
+Beim Exportieren einer Resource Manager-Vorlage liest Data Factory diese Datei aus dem Branch, an dem Sie gerade arbeiten, und nicht aus dem Kollaborationsbranch. Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen.
 
 > [!NOTE]
 > Durch eine benutzerdefinierte Parametrisierungsvorlage wird das ARM-Vorlagenparameterlimit von 256 nicht geändert. Sie können in ihr die parametrisierten Eigenschaften auswählen und ihre Anzahl verringern.
@@ -461,7 +461,13 @@ Nachfolgend ist die aktuelle Standardvorlage für die Parametrisierung dargestel
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Beispiel: Parametrisieren der ID eines vorhandenen interaktiven Azure Databricks-Clusters
@@ -553,7 +559,7 @@ Im folgenden Beispiel wird das Hinzufügen eines einzelnen Werts zur Standardvor
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
 -   **Skript für vor und nach der Bereitstellung**. Bevor Sie den Schritt für die Resource Manager-Bereitstellung für CI/CD ausführen, müssen Sie bestimmte Aufgaben erledigen, z. B. das Beenden und erneute Starten von Triggern und das Durchführen einer Bereinigung. Wir empfehlen Ihnen, vor und nach der Bereitstellungsaufgabe PowerShell-Skripts zu verwenden. Weitere Informationen finden Sie unter [Aktualisieren von aktiven Triggern](#updating-active-triggers). Das Data Factory Team hat am Ende dieser Seite [ein Skript](#script) hinzugefügt, das Sie nutzen können.
 
 -   **Integration Runtimes und Freigaben**. Integration Runtimes werden nicht sehr häufig geändert und sind in allen Stufen von CI/CD ähnlich. Daher erwartet Data Factory, dass diese in allen Stufen von CI/CD den gleichen Integration Runtime-Namen bzw. -Typ aufweisen. Wenn Sie Integration Runtimes über alle Stufen hinweg freigeben möchten, können Sie eine ternäre Factory verwenden, die nur die freigegebenen Integration Runtimes enthält. Diese freigegebene Factory können Sie in allen Umgebungen als verknüpften Integration Runtime-Typ verwenden.
+
+-   **Bereitstellung eines verwalteten privaten Endpunkts**. Wenn bereits ein privater Endpunkt in einer Factory vorhanden ist und Sie versuchen, eine ARM-Vorlage bereitzustellen, die einen privaten Endpunkt mit demselben Namen, jedoch mit geänderten Eigenschaften enthält, tritt bei der Bereitstellung ein Fehler auf. Das bedeutet, dass Sie einen privaten Endpunkt erfolgreich bereitstellen können, sofern dieser dieselben Eigenschaften wie der Endpunkt aufweist, der bereits in der Factory vorhanden ist. Wenn eine Eigenschaft in den Umgebungen unterschiedlich ist, können Sie diese überschreiben, indem Sie die Eigenschaft parametrisieren und den entsprechenden Wert während der Bereitstellung angeben.
 
 -   **Key Vault**. Wenn Sie verknüpfte Dienste verwenden, deren Verbindungsinformationen in Azure Key Vault gespeichert sind, wird empfohlen, separate Schlüsseltresore für verschiedene Umgebungen beizubehalten. Sie können auch separate Berechtigungsstufen für jeden Schlüsseltresor konfigurieren. Es kann beispielsweise sein, dass Teammitglieder nicht über Berechtigungen für Produktionsgeheimnisse verfügen sollen. Bei diesem Ansatz empfehlen wir Ihnen, in allen Stufen die gleichen Geheimnisnamen beizubehalten. Wenn Sie die gleichen Geheimnisnamen beibehalten, müssen Sie nicht jede einzelne Verbindungszeichenfolge für alle CI/CD-Umgebungen parametrisieren, weil sich lediglich der Name des Schlüsseltresors ändert, und der ist ein separater Parameter.
 

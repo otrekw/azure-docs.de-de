@@ -3,15 +3,15 @@ title: 'Erstellen eines Windows Virtual Desktop-Hostpools – PowerShell: Azure'
 description: Informationen zum Erstellen eines Hostpools in Windows Virtual Desktop mit PowerShell-Cmdlets.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121152"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667162"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Erstellen eines Windows Virtual Desktop-Hostpools mit PowerShell
 
@@ -99,6 +99,9 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, damit der 
 
     >[!NOTE]
     > Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) ist.
+
+>[!IMPORTANT]
+>Es empfiehlt sich, keine Richtlinien oder Konfigurationen zu aktivieren, die eine Deaktivierung des Windows Installers bewirken. Wenn Sie den Windows Installer deaktivieren, kann der Dienst keine Agent-Updates auf Ihren Sitzungshosts installieren, und Ihre Sitzungshosts funktionieren nicht einwandfrei.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool
 

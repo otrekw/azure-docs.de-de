@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft Docs
-description: Dieser Artikel enthält eine Übersicht über das Azure Media Services-Ausgabemetadaten-Schema.
+description: Dieser Artikel enthält eine Übersicht über das Metadatenschema der Azure Media Services v3-Ausgabe.
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289369"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336410"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 

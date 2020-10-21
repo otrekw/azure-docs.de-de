@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574580"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842562"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Tutorial: Erstellen zeitplanbasierter und periodischer Automatisierungsworkflows mit Azure Logic Apps
 
@@ -360,18 +360,18 @@ Ihre Logik-App wird weiter ausgeführt, bis Sie die App deaktivieren oder lösch
 
 1. Geben Sie im Azure-Portal den Namen der von Ihnen erstellten Ressourcengruppe in das Suchfeld ein. Wählen Sie in den Ergebnissen unter **Ressourcengruppen** die Ressourcengruppe aus.
 
-   In diesem Beispiel wurde die Ressourcengruppe `LA-TravelTime-RG` erstellt. 
+   In diesem Beispiel wurde die Ressourcengruppe `LA-TravelTime-RG` erstellt.
 
    ![Screenshot: Azure-Suchfeld mit der Eingabe „la-travel-time-rg“ und der ausgewählten Ressourcengruppe **LA-TravelTime-RG**](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > Falls die Ressourcengruppe auf der Azure-Startseite unter **Kürzlich verwendete Ressourcen** angezeigt wird, können Sie sie auf der Startseite auswählen.
 
-1. Vergewissern Sie sich im Ressourcengruppenmenü, dass **Übersicht** ausgewählt ist. Wählen Sie auf der Symbolleiste des Bereichs **Übersicht** die Option **Ressourcengruppe löschen** aus. 
+1. Vergewissern Sie sich im Ressourcengruppenmenü, dass **Übersicht** ausgewählt ist. Wählen Sie auf der Symbolleiste des Bereichs **Übersicht** die Option **Ressourcengruppe löschen** aus.
 
    ![Screenshot: Bereich „Übersicht“ der Ressourcengruppe und ausgewählte Option „Ressourcengruppe löschen“ auf der Symbolleiste des Bereichs](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. Geben Sie im Bestätigungsbereich den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
+1. Geben Sie im angezeigten Bestätigungsbereich den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

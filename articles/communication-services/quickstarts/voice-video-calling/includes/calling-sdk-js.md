@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931648"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779562"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,19 +72,19 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>1:n-Anruf mit Benutzern und Festnetznummern
-> [!WARNING]
-> Anrufe über das Telefonfestnetz sind derzeit in der Phase „Private Vorschau“. [Bewerben Sie sich für den Zugriff auf das Early Adopter-Programm](https://aka.ms/ACS-EarlyAdopter).
+
 Um einen 1:n-Anruf an einen Benutzer und eine Nummer im Telefonfestnetz zu tätigen, müssen Sie für beide Angerufenen eine CommunicationUser-Instanz und eine Telefonnummer angeben.
+
 Die Communication Services-Ressource muss so konfiguriert werden, dass Anrufe über das Telefonfestnetz möglich sind.
 ```js
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Tätigen eines 1:1-Anrufs mit Videokamera
+### <a name="place-a-11-call-with-video-camera"></a>Tätigen eines 1:1-Anrufs mit Videokamera
 > [!WARNING]
 > Derzeit ist nicht mehr als ein ausgehender lokaler Videostream möglich.
 Um einen Videoanruf zu tätigen, müssen Sie die lokalen Kameras mit der deviceManager-API `getCameraList` auflisten.
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ Um einen neuen Gruppenanruf zu starten oder an einem laufenden Gruppenanruf teil
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 Sie können auf Anrufeigenschaften zugreifen und während eines Anrufs verschiedene Vorgänge ausführen, um Einstellungen für Video und Audio zu verwalten.
 
 ### <a name="call-properties"></a>Anrufeigenschaften
-* Ruft die eindeutige ID für diesen Anruf ab.
+* Rufen Sie die eindeutige ID (Zeichenfolge) für diesen Anruf ab.
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* Um mehr über andere Anrufteilnehmer zu erfahren, sehen Sie sich die `remoteParticipant`-Sammlung für die `call`-Instanz an:
+* Um mehr über andere Anrufteilnehmer zu erfahren, sehen Sie sich die `remoteParticipant`-Sammlung für die `call`-Instanz an: Das Array enthält `RemoteParticipant`-Listenobjekte
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* Die Identität des Anrufers bei einem eingehenden Anruf.
+* Die Identität des Anrufers bei einem eingehenden Anruf. „Identity“ ist einer der `Identifier`-Typen
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * Ruft den Zustand des Anrufs ab.
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 Gibt eine Zeichenfolge zurück, die den aktuellen Zustand eines Anrufs darstellt:
@@ -153,35 +153,34 @@ Gibt eine Zeichenfolge zurück, die den aktuellen Zustand eines Anrufs darstellt
 * Um zu ermitteln, warum ein bestimmter Anruf beendet wurde, überprüfen Sie die `callEndReason`-Eigenschaft.
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Um festzustellen, ob es sich bei dem aktuellen Anruf um einen eingehenden Anruf handelt, prüfen Sie die `isIncoming`-Eigenschaft; sie gibt `Boolean` zurück.
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  Um festzustellen, ob das aktuelle Mikrofon stummgeschaltet ist, prüfen Sie die `muted`-Eigenschaft; sie gibt `Boolean` zurück.
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* Um festzustellen, ob der aktuelle Anruf eingehend ist, prüfen Sie die `isIncoming`-Eigenschaft.
+* Um zu bestimmen, ob der Bildschirmübertragungs-Stream von einem bestimmten Endpunkt aus gesendet wird, überprüfen Sie die `isScreenSharingOn`-Eigenschaft; sie gibt `Boolean` zurück.
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  Um festzustellen, ob das aktuelle Mikrofon stummgeschaltet ist, prüfen Sie die `muted`-Eigenschaft:
+* Um aktive Videostreams zu untersuchen, überprüfen Sie die `localVideoStreams`-Sammlung; sie enthält `LocalVideoStream`-Objekte.
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* Um zu bestimmen, ob der Bildschirmübertragungs-Stream von einem bestimmten Endpunkt aus gesendet wird, überprüfen Sie die `isScreenSharingOn`-Eigenschaft:
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* Um aktive Videostreams zu prüfen, sehen Sie sich die `localVideoStreams`-Sammlung an:
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ Zum Stummschalten oder Aufheben der Stummschaltung des lokalen Endpunkts können
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ Um ein Video zu starten, müssen Sie Kameras mit der `getCameraList`-Methode fü
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,15 +253,16 @@ Einem Remoteteilnehmer sind eine Reihe von Eigenschaften und Sammlungen zugeordn
 * Ruft den Bezeichner dieses Remoteteilnehmers ab.
 „Identity“ ist einer der „Identifier“-Typen:
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * Ruft den Zustand dieses Remoteteilnehmers ab.
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 Folgende Werte sind hierfür möglich:
 * Idle: Anfangszustand
@@ -275,28 +275,27 @@ Folgende Werte sind hierfür möglich:
 Um zu erfahren, warum ein Teilnehmer den Anruf verlassen hat, prüfen Sie die `callEndReason`-Eigenschaft:
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Um zu prüfen, ob dieser Remoteteilnehmer stummgeschaltet ist oder nicht, prüfen Sie die `isMuted`-Eigenschaft; sie gibt `Boolean` zurück.
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* Um zu prüfen, ob dieser Remoteteilnehmer spricht oder nicht, prüfen Sie die `isSpeaking`-Eigenschaft; sie gibt `Boolean` zurück.
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* Um zu prüfen, ob dieser Remoteteilnehmer stummgeschaltet ist oder nicht, prüfen Sie die `isMuted`-Eigenschaft:
+* Um alle Videostreams zu prüfen, die ein bestimmter Teilnehmer im Rahmen dieses Anrufs sendet, sehen Sie sich die `videoStreams`-Sammlung an; sie enthält `RemoteVideoStream`-Objekte.
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* Um zu prüfen, ob dieser Remoteteilnehmer spricht oder nicht, prüfen Sie die `isSpeaking`-Eigenschaft:
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* Um alle Videostreams zu prüfen, die ein bestimmter Teilnehmer im Rahmen dieses Anrufs sendet, sehen Sie sich die `videoStreams`-Sammlung an:
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,7 +311,6 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Entfernen eines Teilnehmers aus einem Anruf
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 Um die Video- und Bildschirmübertragungs-Streams der Remoteteilnehmer aufzulisten, sehen Sie sich die `videoStreams`-Sammlungen an:
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```

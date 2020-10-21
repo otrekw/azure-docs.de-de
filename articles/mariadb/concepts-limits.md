@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 51aff856aa5bdeb042493d47f100be0ca32dfbbb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/2/2020
+ms.openlocfilehash: c3bef7a368c6c0f2a08acdfd8da9236899a51a27
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032678"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91650985"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Einschränkungen in Azure Database for MariaDB
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
@@ -25,6 +25,8 @@ Azure Database for MariaDB unterstützt das Anpassen einiger Serverparameter. Di
 
 Bei der ersten Bereitstellung enthält ein Server für Azure for MariaDB Systemtabellen für Zeitzoneninformationen, die jedoch nicht aufgefüllt sind. Die Zeitzonentabellen können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden. Informationen zum Aufrufen der gespeicherten Prozedur und zum Festlegen der globalen Zeitzonen oder Zeitzonen auf Sitzungsebene finden Sie in den Artikeln für das [Azure-Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) und die [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
 
+Kennwort-Plug-Ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
+
 ## <a name="storage-engine-support"></a>Speicher-Engine-Unterstützung
 
 ### <a name="supported"></a>Unterstützt
@@ -36,21 +38,25 @@ Bei der ersten Bereitstellung enthält ein Server für Azure for MariaDB Systemt
 - [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ARCHIVE](https://mariadb.com/kb/en/library/archive/)
 
+## <a name="privileges--data-manipulation-support"></a>Berechtigungen und Unterstützung der Datenbearbeitung
+
+Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des MariaDB-Servers verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, macht dieser Dienst nicht mehrere Rollen verfügbar. 
+
+Der MariaDB-Dienst gestattet keinen direkten Zugriff auf das zugrunde liegende Dateisystem. Einige Befehle zur Datenbearbeitung werden nicht unterstützt. 
+
 ## <a name="privilege-support"></a>Berechtigungsunterstützung
 
 ### <a name="unsupported"></a>Nicht unterstützt
-- DBA-Rolle: Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des DBMS verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, stellt dieser Dienst die DBA-Rolle nicht zur Verfügung. Das Standardbenutzerkonto, das zusammen mit einer neuen Datenbankinstanz erstellt wird, gestattet dem Benutzer die Ausführung der meisten DDL- und DML-Anweisungen in der verwalteten Datenbankinstanz.
+
+Folgendes wird nicht unterstützt:
+- DBA-Rolle: Eingeschränkt. Alternativ können Sie den Administratorbenutzer verwenden (der bei Erstellung eines neuen Servers erstellt wird), der Ihnen die Ausführung der meisten DDL- und DML-Anweisungen ermöglicht. 
 - SUPER-Berechtigung: Auf ähnliche Weise ist die [SUPER-Berechtigung](https://mariadb.com/kb/en/library/grant/#global-privileges) ebenfalls eingeschränkt.
 - DEFINER: Erfordert erhöhte Berechtigungen zum Erstellen und ist beschränkt. Entfernen Sie beim Importieren von Daten mithilfe einer Sicherung die `CREATE DEFINER`-Befehle manuell oder mithilfe des Befehls `--skip-definer`, wenn Sie einen mysqldump ausführen.
-- Systemdatenbanken: In Azure Database for MariaDB ist die [Systemdatenbank „mysql“](https://mariadb.com/kb/en/the-mysql-database-tables/) schreibgeschützt, da sie zur Unterstützung von unterschiedlichen PaaS-Dienstfunktionen verwendet wird. Beachten Sie hierbei, dass Sie in der Systemdatenbank `mysql` nichts ändern können.
-
-## <a name="data-manipulation-statement-support"></a>Unterstützung von Datenmanipulationsanweisungen
+- Systemdatenbanken: Die [Systemdatenbank mysql](https://mariadb.com/kb/en/the-mysql-database-tables/) ist schreibgeschützt und wird zur Unterstützung verschiedener PaaS-Funktionen eingesetzt. Die `mysql`-Systemdatenbank kann nicht geändert werden.
+- `SELECT ... INTO OUTFILE`: Wird im Dienst nicht unterstützt.
 
 ### <a name="supported"></a>Unterstützt
 - `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden.
-
-### <a name="unsupported"></a>Nicht unterstützt
-- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 

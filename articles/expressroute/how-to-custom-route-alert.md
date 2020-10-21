@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986583"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766677"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
 
@@ -52,7 +52,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Erstellen und Konfigurieren von Konten
 
-Wenn Sie im Azure-Portal ein Automation-Konto erstellen, wird automatisch ein [ausführendes Konto](../automation/manage-runas-account.md#types-of-run-as-accounts) erstellt. Mit diesem Konto sind folgende Aktionen möglich:
+Wenn Sie im Azure-Portal ein Automation-Konto erstellen, wird automatisch ein [ausführendes Konto](../automation/automation-security-overview.md#run-as-accounts) erstellt. Mit diesem Konto sind folgende Aktionen möglich:
 
 * Erstellen einer Azure AD-Anwendung (Azure Active Directory) mit einem selbstsignierten Zertifikat. Das ausführende Konto selbst verfügt über ein Zertifikat, das standardmäßig jedes Jahr erneuert werden muss.
 

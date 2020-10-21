@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401145"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91442156"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
 
@@ -70,7 +70,7 @@ Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünsch
 
 * [VNETs im gleichen Abonnement:](#samesub) Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet4.
 
-  ![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![Diagramm mit der Darstellung der VNet-zu-VNet-Schritte für VNets, die sich im gleichen Abonnement befinden.](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [VNETs in unterschiedlichen Abonnements:](#difsub) In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet5 verwendet.
 

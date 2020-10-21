@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d889b7dabc5d97a36f8b12bcff90cf3ad2069fb7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931641"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082203"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,23 +31,23 @@ Erstellen Sie in Xcode ein neues iOS-Projekt, und wählen Sie die Vorlage **Sing
 Fügen Sie Ihrem Clientprojekt die Azure Communication Services-Clientbibliothek „Calling“ und ihre Abhängigkeiten (AzureCore.framework und AzureCommunication.framework) hinzu.
 
 > [!NOTE]
-> Mit der Veröffentlichung des AzureCommunicationCalling SDK steht Ihnen das Bash-Skript `BuildAzurePackages.sh` zur Verfügung. Das Skript zur Ausführung von `sh ./BuildAzurePackages.sh` gibt Ihnen den Pfad zu den generierten Frameworkpaketen an, die im nächsten Schritt in die Beispiel-App importiert werden müssen. Beachten Sie, dass Sie Xcode-Befehlszeilentools einrichten müssen, falls noch nicht vor der Ausführung des Skripts geschehen: Starten Sie Xcode, und wählen Sie „Preferences-> Locations“ aus. Wählen Sie Ihre Xcode-Version für die Befehlszeilentools aus.
+> Mit der Veröffentlichung des AzureCommunicationCalling SDK steht Ihnen das Bash-Skript `BuildAzurePackages.sh` zur Verfügung. Das Skript zur Ausführung von `sh ./BuildAzurePackages.sh` gibt Ihnen den Pfad zu den generierten Frameworkpaketen an, die im nächsten Schritt in die Beispiel-App importiert werden müssen. Beachten Sie, dass Sie Xcode-Befehlszeilentools einrichten müssen, falls noch nicht vor der Ausführung des Skripts geschehen: Starten Sie Xcode, und wählen Sie „Preferences-> Locations“ aus. Wählen Sie Ihre Xcode-Version für die Befehlszeilentools aus. **Beachten Sie, dass das BuildAzurePackages.sh-Skript nur mit Xcode 11.5 und höher funktioniert.**
 
-1. Laden Sie die Azure Communication Services-Clientbibliothek „Calling“ für iOS herunter.
+1. Laden Sie die Clientbibliothek für Telefonie von Azure Communication Services für iOS herunter.
 2. Klicken Sie in Xcode auf Ihre Projektdatei, und wählen Sie das Buildziel aus, um den Editor für Projekteinstellungen zu öffnen.
-3. Scrollen Sie unter der Registerkarte **General** zum Abschnitt **Frameworks, Libraries, and Embedded Content**, und klicken Sie auf das **+** -Symbol.
-4. Wählen Sie links unten im Dialogfeld **Add Files** aus. Navigieren Sie zum Verzeichnis **AzureCommunicationCalling.framework** des dekomprimierten Clientbibliothekspakets.
+3. Scrollen Sie unter der Registerkarte **General** (Allgemein) zum Abschnitt **Frameworks, Libraries, and Embedded Content** (Frameworks, Bibliotheken und eingebetteten Inhalte), und klicken Sie auf das Symbol **+** .
+4. Wählen Sie links unten im Dialogfeld **Add Files** (Dateien hinzufügen) aus. Navigieren Sie anschließend zum Verzeichnis **AzureCommunicationCalling.framework** des entpackten Clientbibliothekspakets.
     1. Wiederholen Sie den letzten Schritt zum Hinzufügen von **AzureCore.framework** und **AzureCommunication.framework**.
-5. Öffnen Sie im Editor für Projekteinstellungen die Registerkarte **Build Settings**, und scrollen Sie zum Abschnitt **Search Paths**. Fügen Sie dem Verzeichnis mit **AzureCommunicationCalling.framework** den neuen Eintrag **Framework Search Paths** hinzu.
-    1. Fügen Sie einen weiteren Eintrag des Typs „Framework Search Paths“ hinzu, der auf den Ordner mit den Abhängigkeiten zeigt.
+5. Öffnen Sie im Editor für Projekteinstellungen die Registerkarte **Build Settings** (Buildeinstellungen), und scrollen Sie zum Abschnitt **Search Paths** (Suchpfade). Fügen Sie dem Verzeichnis mit **AzureCommunicationCalling.framework** den neuen Eintrag **Framework Search Paths** (Frameworksuchpfade) hinzu.
+    1. Fügen Sie einen weiteren Frameworksuchpfade-Eintrag hinzu, der auf den Ordner mit den Abhängigkeiten zeigt.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Screenshot der Aktualisierung der Frameworksuchpfade in Xcode":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Screenshot des Fensters „Create new project“ in Xcode":::
 
 ### <a name="request-access-to-the-microphone"></a>Anfordern des Zugriffs auf das Mikrofon
 
-Um auf das Mikrofon des Geräts zugreifen zu können, müssen Sie die Liste der Informationseigenschaften Ihrer App mit `NSMicrophoneUsageDescription` aktualisieren. Sie legen den zugehörigen Wert auf einen `string` fest, der in den Dialogfeld aufgenommen wird, das das System verwendet, um vom Benutzer den Zugriff anzufordern.
+Damit Sie auf das Mikrofon des Geräts zugreifen zu können, müssen Sie die Liste der Informationseigenschaften Ihrer App mit `NSMicrophoneUsageDescription` aktualisieren. Legen Sie den zugehörigen Wert auf eine Zeichenfolge (`string`) fest. Dies wird in den Dialog aufgenommen wird, den das System verwendet, um den Zugriff beim Benutzer anzufordern.
 
-Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektstruktur, und wählen Sie anschließend **Open As** > **Source Code** aus. Fügen Sie die folgenden Zeilen im Abschnitt `<dict>` der obersten Ebene hinzu, und speichern dann Sie die Datei.
+Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektstruktur, und wählen Sie anschließend **Open As** (Öffnen als)  > **Source Code** (Quellcode) aus. Fügen Sie die folgenden Zeilen im Abschnitt `<dict>` der obersten Ebene hinzu, und speichern anschließend Sie die Datei.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -113,7 +113,7 @@ public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ Eine mobile Pushbenachrichtigung ist die Popupbenachrichtigung, die Sie auf dem 
 - Schritt 2: Xcode -> Signing & Capabilities -> Add Capability -> Background Modes
 - Schritt 3: Background Modes -> „Voice over IP“ und „Remote notifications“ auswählen
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Screenshot, der das Hinzufügen von Funktionen in Xcode zeigt" lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Screenshot des Fensters „Create new project“ in Xcode" lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>Registrieren für Pushbenachrichtigungen
 
@@ -424,6 +424,8 @@ targetRemoteParticipantView.update(ACSScalingMode.fit)
 ```swift
 // [Bool] isRendering - indicating if stream is being rendered
 remoteVideoRenderer.isRendering()
+// [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
+remoteVideoRenderer.dispose()
 ```
 
 ## <a name="device-management"></a>Geräteverwaltung

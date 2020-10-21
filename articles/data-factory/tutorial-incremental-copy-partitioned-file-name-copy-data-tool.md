@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 6/10/2020
-ms.openlocfilehash: 075c8b2670121e7d493d0d99397961155fd0de4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a46c2024269affc06d18806aa186fb8b0feaafe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736565"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533756"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 
@@ -122,13 +122,13 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     a. Suchen Sie nach dem Container **source**, wählen Sie ihn aus, und klicken Sie anschließend auf **Choose** (Wählen).
 
-    ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
+    ![Screenshot des Dialogfelds zum Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
     b. Wählen Sie unter **File loading behavior** (Dateiladeverhalten) die Option **Incremental load: time-partitioned folder/file names** (Inkrementell laden: zeitpartionierter Ordner/Dateinamen).
 
     c. Schreiben Sie den dynamischen Ordnerpfad im Format **source/{Jahr}/{Monat}/{Tag}/{Stunde}/** , und ändern Sie das Format wie im folgenden Screenshot. Aktivieren Sie das Kontrollkästchen **Binary copy** (Binärkopie), und klicken Sie auf **Next** (Weiter).
 
-    ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
+    ![Screenshot des Dialogfelds zum Auswählen der Eingabedatei bzw. des Eingabeordners mit ausgewähltem Ordner](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
 
 5. Wählen Sie auf der Seite **Destination data store** (Zieldatenspeicher) **AzureBlobStorage** aus, also das gleiche Speicherkonto wie beim Datenquellenspeicher, und klicken Sie anschließend auf **Next** (Weiter).
 
@@ -139,11 +139,11 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     b. Schreiben Sie den dynamischen Ordnerpfad als **destination/{Jahr}/{Monat}/{Tag}/{Stunde}/** , und ändern Sie das Format wie folgt:
 
-    ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
+    ![Screenshot des Dialogfelds zum Auswählen der Ausgabedatei bzw. des Ausgabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
     c. Klicken Sie auf **Weiter**.
 
-    ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
+    ![Screenshot des Dialogfelds zum Auswählen der Ausgabedatei bzw. des Ausgabeordners mit ausgewählter Option „Weiter“](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**.
 
 8. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie anschließend auf **Weiter**.
@@ -155,14 +155,14 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 10. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist.  Sie müssen auf die Ausführung der Pipeline warten, wenn sie (etwa nach einer Stunde) automatisch ausgelöst wird. Klicken Sie während der Ausführung auf den Link auf dem Pipelinenamen **DeltaCopyFromBlobPipeline**, um Details zur Aktivitätsausführung aufzurufen oder die Pipeline erneut auszuführen. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
+    ![Screenshot des Bereichs „Pipelineausführungen“](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
 11. Da die Pipeline nur eine Aktivität (Copy-Aktivität) enthält, wird nur ein Eintrag angezeigt. Passen Sie die Breite der Spalten **Quelle** und **Ziel** bei Bedarf an, um weitere Details aufzurufen. Ihnen wird angezeigt, dass die Quelldatei (file1.txt) mit demselben Dateinamen von *source/2020/03/17/03/* nach *destination/2020/03/17/03/* kopiert wurde. 
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
+    ![Screenshot der Details zur Pipelineausführung](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
 
     Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) ) verwenden, um die Dateien zu überprüfen.
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
+    ![Screenshot der Details zur Pipelineausführung für das Ziel](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 
 12. Erstellen Sie eine weitere leere Textdatei, und nennen Sie sie **file2.txt**. Laden Sie die Datei „file2.txt“ in den Ordnerpfad **source/2020/03/17/04** in Ihrem Speicherkonto hoch. Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
 
@@ -171,7 +171,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 13. Wählen Sie **All Pipelines runs** (Alle Pipelineausführungen) aus, und warten Sie, bis die gleiche Pipeline nach einer Stunde wiederholt automatisch ausgelöst wird, um zur Ansicht **Pipeline Runs** (Pipelineausführungen) zurückzukehren.  
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
+    ![Screenshot des Links „Alle Pipelineausführungen“ für die Rückkehr zu dieser Seite](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
 14. Klicken Sie für die zweite Pipelineausführung auf den neuen Link **DeltaCopyFromBlobPipeline**, wenn es soweit ist, und tun Sie dasselbe, um Details anzuzeigen. Ihnen wird angezeigt, dass die Quelldatei (file2.txt) mit demselben Dateinamen von **source/2020/03/17/04/** nach **destination/2020/03/17/04/** kopiert wurde. Sie können dies auch überprüfen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) ) verwenden, um die Dateien im Container **destination** zu überprüfen.
 

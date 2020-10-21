@@ -105,30 +105,38 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Erstellen eines Azure-Containerangebots
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Azure-VM-Angebote
+    - name: Angebot für virtuelle Azure-Computer
       items:
-        - name: Planen eines VM-Angebots
+        - name: Planen eines Angebots für virtuelle Computer
           href: marketplace-virtual-machines.md
-        - name: Erstellen und Veröffentlichen eines VM-Angebots
+        - name: Erstellen und veröffentlichen eines Angebots für virtuelle Computer
           items:
-            - name: Erstellen eines Angebots für virtuelle Azure-Computer
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: Erstellen technischer Ressourcen für virtuelle Azure-Computer
+            - name: Erstellen technischer VM-Ressourcen
               items:
-                - name: Probleme bei der Zertifizierung virtueller Computer
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: Erstellen einer technischen Azure-VM-Ressource
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Häufig gestellte Fragen zu technischen Ressourcen für virtuelle Azure-Computer
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Testen des über eine VHD bereitgestellten virtuellen Computers
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: SAS-URI
-                  items:
-                    - name: Abrufen des SAS-URI
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: Häufig gestellte Fragen zum SAS-URI
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: Erstellen eines virtuellen Computers aus einer genehmigten Basis
+                  href: azure-vm-create-using-approved-base.md
+                - name: Erstellen eines virtuellen Computers mithilfe eines eigenen Images
+                  href: azure-vm-create-using-own-image.md
+                - name: Testen eines VM-Images
+                  href: azure-vm-image-test.md
+                - name: Abrufen des SAS-URI
+                  href: azure-vm-get-sas-uri.md
+                - name: SAS-Fehlermeldungen
+                  href: azure-vm-sas-failure-messages.md
+                - name: Häufig gestellte Fragen zur VM-Erstellung
+                  href: azure-vm-create-faq.md
+                - name: Behandeln von Problemen bei der VM-Zertifizierung
+                  href: azure-vm-create-certification-faq.md
+            - name: Erstellen eines Angebots für virtuelle Computer
+              href: azure-vm-create.md
+            - name: Konfigurieren von VM-Angebotseigenschaften
+              href: azure-vm-create-properties.md
+            - name: Konfigurieren eines VM-Angebotslistings
+              href: azure-vm-create-listing.md
+            - name: Erstellen von VM-Plänen
+              href: azure-vm-create-plans.md
+            - name: Hinzufügen einer Vorschauzielgruppe
+              href: azure-vm-create-preview.md
     - name: Beratungsdienste
       items:
         - name: Planen eines Beratungsdienstangebots
@@ -329,7 +337,7 @@
     - name: Technik und Veröffentlichung – Geschäftszeiten
       href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: Partner Center-Supportoptionen
-      href: partner-center-portal/support.md
+      href: support.md
     - name: Partner Center-Ankündigungen
       href: /partner-center/announcements
     - name: Microsoft-Partner-Community

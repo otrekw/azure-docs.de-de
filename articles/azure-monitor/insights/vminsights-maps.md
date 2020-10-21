@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320509"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445538"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures in Azure Monitor für VMs zum Analysieren von Anwendungskomponenten
 In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 
@@ -95,7 +95,7 @@ Mithilfe der Zuordnung werden die Abhängigkeiten der VM visualisiert. Dazu werd
 
 Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange** oben links, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.  
 
-![Übersicht zur direkten VM-Zuordnung](./media/vminsights-maps/map-direct-vm-01.png)
+![Screenshot der Registerkarte „Zuordnung“ im Abschnitt „Überwachung – Insights“ des Azure-Portals mit einem Diagramm der Abhängigkeiten zwischen virtuellen Computern](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Anzeigen einer Zuordnung über eine VM-Skalierungsgruppe
 
@@ -111,7 +111,7 @@ Wenn Sie eine Zuordnung für eine bestimmte Instanz auswählen möchten, wählen
 
 Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange**, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.
 
-![Übersicht zur direkten VM-Zuordnung](./media/vminsights-maps/map-direct-vmss-01.png)
+![Screenshot der Registerkarte „Zuordnung“ im Abschnitt „Überwachung – Insights“ des Azure-Portals mit einem Diagramm der Abhängigkeiten zwischen VM-Skalierungsgruppen](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
 >Sie können auch die Zuordnung einer bestimmten Instanz über die Ansicht **Instanzen** für Ihre VM-Skalierungsgruppe aufrufen. Wechseln Sie im Abschnitt **Einstellungen** zu **Instanzen** > **Insights**.

@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ea73825d6ffe2282a8d5564bfb6bb965a8190e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649158"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960642"
 ---
 # <a name="linux-support"></a>Linux-Unterstützung
 
-Mit den folgenden unterstützten Clients, die von unseren Linux Thin Client-Partnern bereitgestellt werden, können Sie von Ihren Linux-Geräten aus auf Windows Virtual Desktop-Ressourcen zugreifen. Wir arbeiten mit einer Reihe von Partnern zusammen, um unterstützte Windows Virtual Desktop-Clients auf mehr Linux-basierten Betriebssystemen und Geräten zu ermöglichen. Wenn Sie Windows Virtual Desktop-Unterstützung auf einer Linux-Plattform benötigen, die hier nicht aufgeführt wird, teilen Sie uns dies auf unserer [UserVoice-Seite](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux) mit.
+Mit dem [Webclient](connect-web.md) oder den folgenden unterstützten Clients, die von unseren Linux Thin Client-Partnern bereitgestellt werden, können Sie von Ihren Linux-Geräten aus auf Windows Virtual Desktop-Ressourcen zugreifen. Wir arbeiten mit einer Reihe von Partnern zusammen, um unterstützte Windows Virtual Desktop-Clients auf mehr Linux-basierten Betriebssystemen und Geräten zu ermöglichen. Wenn Sie Windows Virtual Desktop-Unterstützung auf einer Linux-Plattform benötigen, die hier nicht aufgeführt wird, teilen Sie uns dies auf unserer [UserVoice-Seite](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux) mit.
 
 ## <a name="connect-with-your-linux-device"></a>Herstellen einer Verbindung mit Ihrem Linux-Gerät
 
@@ -24,6 +24,7 @@ Die folgenden Partner haben Windows Virtual Desktop-Clients für Linux-Geräte g
 |Partner|Partnerdokumentation|Partnersupport|
 |:------|:--------------------|:--------------|
 |![IGEL-Logo](./media/partners/igel.png)|[IGEL-Clientdokumentation](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-Support](https://www.igel.com/support/)|
+|![NComputing-Logo](./media/partners/ncomputing.png)|[NComputing-Clientdokumentation](https://www.ncomputing.com/microsoft)|[NComputing-Support](https://www.ncomputing.com/support/support-options)|
 |![Stratodesk-Logo](./media/partners/stratodesk.png)|[Stratodesk-Clientdokumentation](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-Support](https://www.stratodesk.com/support-3/)|
 
 ## <a name="next-steps"></a>Nächste Schritte

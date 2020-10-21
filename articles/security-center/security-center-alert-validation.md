@@ -1,6 +1,6 @@
 ---
-title: Warnungsüberprüfung (EICAR-Testdatei) in Azure Security Center | Microsoft-Dokumentation
-description: In diesem Dokument erfahren Sie, wie Sie die Sicherheitswarnungen in Azure Security Center überprüfen.
+title: Warnungsüberprüfung in Azure Security Center | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie überprüfen können, ob Ihre Sicherheitswarnungen in Azure Security Center ordnungsgemäß konfiguriert sind.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91438797"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971607"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -26,12 +26,6 @@ In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgem
 ## <a name="what-are-security-alerts"></a>Was sind Sicherheitswarnungen?
 Warnungen sind die Benachrichtigungen, die Security Center generiert, wenn Bedrohungen für Ihre Ressourcen erkannt werden. Security Center priorisiert die Warnungen und listet sie zusammen mit den Informationen auf, die erforderlich sind, um das Problem schnell zu untersuchen. Security Center stellt außerdem Empfehlungen zur Reaktion auf einen Angriff bereit.
 Weitere Informationen finden Sie unter [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md) und [Verwalten von und Reagieren auf Sicherheitswarnungen](security-center-managing-and-responding-alerts.md).
-
-## <a name="alert-validation"></a>Warnungsüberprüfung
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>Überprüfen von Warnungen auf virtuellen Windows-Computern <a name="validate-windows"></a>
 

@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567933"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567077"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -70,7 +70,7 @@ Live Video Analytics in IoT Edge unterstützt die folgenden Knotentypen innerhal
 
 #### <a name="rtsp-source"></a>RTSP-Quelle 
 
-Ein RTSP-Quellknoten ermöglicht Ihnen das Erfassen von Medien von einem [RTSP](https://tools.ietf.org/html/rfc2326 -Server. Überwachungs- und IP-basierte Kameras übertragen ihre Daten in einem Protokoll namens RTSP (Real-Time-Streaming-Protocol), das sich von anderen Geräten wie Smartphones und Videokameras unterscheidet. Dieses Protokoll wird für das Einrichten und Steuern der Mediensitzungen zwischen einem Server (der Kamera) und einem Client verwendet. Der RTSP-Quellknoten in einem Mediengraph fungiert als Client und kann eine Sitzung mit einem RTSP-Server einrichten. Viele Geräte, etwa die meisten [IP-Kameras](https://en.wikipedia.org/wiki/IP_camera), verfügen über einen integrierten RTSP-Server. [ONVIF](https://www.onvif.org/) schreibt in ihrer Definition von Geräten, die mit den [Profilen G, S und T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibel sind, RTSP-Unterstützung zwingend vor. Für den RTSP-Quellknoten muss eine RTSP-URL zusammen mit Anmeldeinformationen angegeben werden, um eine authentifizierte Verbindung herzustellen.
+Ein RTSP-Quellknoten ermöglicht Ihnen das Erfassen von Medien von einem [RTSP](https://tools.ietf.org/html/rfc2326 server). Überwachungs- und IP-basierte Kameras übertragen ihre Daten in einem Protokoll namens RTSP (Real-Time-Streaming-Protocol), das sich von anderen Geräten wie Smartphones und Videokameras unterscheidet. Dieses Protokoll wird für das Einrichten und Steuern der Mediensitzungen zwischen einem Server (der Kamera) und einem Client verwendet. Der RTSP-Quellknoten in einem Mediengraph fungiert als Client und kann eine Sitzung mit einem RTSP-Server einrichten. Viele Geräte, etwa die meisten [IP-Kameras](https://en.wikipedia.org/wiki/IP_camera), verfügen über einen integrierten RTSP-Server. [ONVIF](https://www.onvif.org/) schreibt in ihrer Definition von Geräten, die mit den [Profilen G, S und T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibel sind, RTSP-Unterstützung zwingend vor. Für den RTSP-Quellknoten muss eine RTSP-URL zusammen mit Anmeldeinformationen angegeben werden, um eine authentifizierte Verbindung herzustellen.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub-Nachrichtenquelle 
 

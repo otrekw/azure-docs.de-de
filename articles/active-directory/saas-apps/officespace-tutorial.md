@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554160"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory-Integration mit OfficeSpace Software
 
@@ -150,11 +150,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Einstellungen**, und klicken Sie auf **Connectors**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Screenshot: Dropdownmenü „Einstellungen“ mit Auswahl von „Connectors“](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. Klicken Sie auf **SAML-Authentifizierung**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Screenshot: Abschnitt „Authentifizierung“ mit Auswahl der Aktion „SAML-Authentifizierung“](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. Führen Sie im Abschnitt für die **SAML-Authentifizierung** die folgenden Schritte aus:
 

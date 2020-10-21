@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535839"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850573"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Tutorial: Integrieren von Sage Intacct in Azure Active Directory
 
@@ -189,7 +189,7 @@ Um Azure AD-Benutzer so einzurichten, dass sie sich bei Sage Intacct anmelden k�
 
 1. Führen Sie im Abschnitt **Benutzerinformationen** die folgenden Schritte aus:
 
-    ![Benutzerinformationen](./media/intacct-tutorial/ic790043.png "Benutzerinformationen")
+    ![Screenshot: Abschnitt „Benutzerinformationen“, in dem Sie die Informationen für diesen Schritt eingeben können](./media/intacct-tutorial/ic790043.png "Benutzerinformationen")
 
     a. Geben Sie im Abschnitt **Benutzerinformationen** die **Benutzer-ID**, den **Nachnamen**, den **Vornamen**, die **E-Mail-Adresse**, den **Titel** und die **Telefonnummer** eines Azure AD-Kontos ein, das Sie bereitstellen möchten.
 
@@ -204,7 +204,7 @@ Um Azure AD-Benutzer so einzurichten, dass sie sich bei Sage Intacct anmelden k�
 
 1. Klicken Sie auf die Registerkarte **Einmaliges Anmelden**, und stellen Sie sicher, dass die **Verbund-SSO-Benutzer-ID** im folgenden Screenshot dem Wert von **Quellattribut** entspricht, der im Azure-Portal im Abschnitt **Benutzerattribute** dem `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` zugeordnet ist.
 
-    ![Benutzerinformationen](./media/intacct-tutorial/ic790044.png "Benutzerinformationen")
+    ![Screenshot: Abschnitt „Benutzerinformationen“, in dem Sie die Verbund-SSO-Benutzer-ID eingeben können](./media/intacct-tutorial/ic790044.png "Benutzerinformationen")
 
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Sage Intacct-Benutzerkonten oder mithilfe der von Sage Intacct bereitgestellten APIs bereitstellen.

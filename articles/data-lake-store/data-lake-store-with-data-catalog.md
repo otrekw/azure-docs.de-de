@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515137"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578511"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Ihre Daten mittels Integration in Data Catalog innerhalb einer Organisation auffindbar zu machen. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
@@ -52,12 +52,12 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
     c. Im Feld **Zu registrierende Objekte** werden die Dateien und Ordner aufgeführt, die Sie in Azure Data Catalog registrieren möchten.
 
-    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
+    ![Screenshot des Dialogfelds für das Speicherkonto in Microsoft Azure Data Catalog](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
 1. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche![Verschieben von Objekten](./media/data-lake-store-with-data-catalog/move-objects.png "Verschieben von Objekten"), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
 
     Da die Daten in einem organisationsweiten Datenkatalog registriert werden, empfiehlt es sich, einige Metadaten hinzuzufügen, die Sie später verwenden können, um die Daten schnell zu finden. Sie können z.B. eine E-Mail-Adresse für den Besitzer der Daten (z.B. der, der die Daten hochlädt) oder ein Tag zum Identifizieren der Daten hinzufügen. Der folgende Screenshot zeigt ein Tag, das Sie den Daten hinzufügen.
 
-    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Anzeigen der Datenstruktur")
+    ![Screenshot des Dialogfelds für das Speicherkonto in Microsoft Azure Data Catalog mit dem Tag, das den hervorgehobenen Daten hinzugefügt wurde](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Anzeigen der Datenstruktur")
 
     Klicken Sie auf **Registrieren**.
 1. Die folgende Screenshot gibt an, dass die Daten erfolgreich in Data Catalog registriert wurden.

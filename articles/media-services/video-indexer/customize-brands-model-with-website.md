@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047265"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361233"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Anpassen eines Markenmodells mit der Video Indexer-Website
 
@@ -42,7 +42,7 @@ Sie haben die Möglichkeit festzulegen, ob Marken aus der Bing-Markendatenbank e
 
 3. Um Marken zu bearbeiten, wählen Sie die Registerkarte **Marken** aus.
 
-    ![Anpassen eines Markenmodells in Video Indexer](./media/customize-brand-model/customize-brand-model.png)
+    ![Der Screenshot zeigt die Registerkarte „Marken“ des Dialogfelds „Anpassung des Inhaltsmodells“.](./media/customize-brand-model/customize-brand-model.png)
 
 4. Aktivieren Sie die Option **Von Bing vorgeschlagene Marken anzeigen**, wenn Sie möchten, dass Video Indexer von Bing vorgeschlagenen Marken erkennt – lassen Sie die Option andernfalls deaktiviert.
 
@@ -54,7 +54,7 @@ Der Abschnitt **Marken einschließen** stellt benutzerdefinierte Marken dar, die
 
 1. Wählen Sie **+ Marke hinzufügen** aus.
 
-    ![Anpassen eines Markenmodells in Video Indexer](./media/customize-brand-model/add-brand.png)
+    ![Der Screenshot zeigt das Dialogfeld zum Einschließen von Marken, in dem Sie Marken hinzufügen können.](./media/customize-brand-model/add-brand.png)
 
     Geben Sie einen Namen (erforderlich), eine Kategorie (optional), eine Beschreibung (optional) und eine Verweis-URL (optional) an.
     Das Feld „Kategorie“ soll Sie beim Kennzeichnen Ihrer Marken unterstützen. Dieses Feld wird als *Tags* der Marke angezeigt, wenn die Video Indexer-APIs verwendet werden. Beispielsweise kann die Marke „Azure“ als „Cloud“ gekennzeichnet oder eingestuft werden.

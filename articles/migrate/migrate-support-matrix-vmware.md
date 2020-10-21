@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660276"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667791"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -85,14 +85,13 @@ Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Si
 --- | --- 
 **Vor der Bereitstellung** | Sie sollten über ein Azure Migrate-Projekt verfügen, dem das Serverbewertungstool hinzugefügt wurde.<br/><br/>  Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen VMware-Computer bereit.<br/><br/> [Erfahren Sie](create-manage-projects.md), wie Sie erstmalig ein Projekt erstellen.<br/> [Erfahren Sie](how-to-assess.md), wie Sie einem vorhandenen Projekt ein Bewertungstool hinzufügen.<br/> [Erfahren Sie](how-to-set-up-appliance-vmware.md), wie Sie die Azure Migrate-Appliance für die Bewertung von VMware-VMs einrichten.
 **Unterstützte Computer** | Zurzeit nur unterstützt für VMware-VMs.
-**Virtuelle Windows-Computer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)
+**Virtuelle Windows-Computer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)<br/>Microsoft Windows Server 2008 R2 (32-Bit). Vergewissern Sie sich, dass PowerShell installiert ist.
 **vCenter Server-Anmeldeinformationen** | Für die Abhängigkeitsvisualisierung sind ein vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierte Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“ erforderlich.
 **Windows-VM-Berechtigungen** |  Die Azure Migrate-Appliance erfordert für die Abhängigkeitsanalyse ein Domänenadministratorkonto oder ein lokales Administratorkonto für den Zugriff auf Windows-VMs.
-**Virtuelle Linux-Computer** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Linux-Konto** | Auf Linux-Computern erfordert die Azure Migrate-Appliance für die Abhängigkeitsanalyse ein Benutzerkonto mit Stammberechtigungen.<br/><br/> Alternativ benötigt das Benutzerkonto diese Berechtigungen für „/bin/netstat“- und „/bin/ls“-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE. Legen Sie diese Funktionen mithilfe der folgenden Befehle fest: <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
+**Virtuelle Linux-Computer** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 und höher
+**Linux-Konto** | Auf Linux-Computern erfordert die Azure Migrate-Appliance für die Abhängigkeitsanalyse ein Root-Benutzerkonto.<br/><br/> Alternativ benötigt das Benutzerkonto diese Berechtigungen für „/bin/netstat“- und „/bin/ls“-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE. Legen Sie diese Funktionen mithilfe der folgenden Befehle fest: <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
 **Erforderliche Agents** | Auf Computern, die Sie analysieren möchten, ist kein Agent erforderlich.
 **VMware Tools** | Auf jeder VM, die Sie analysieren möchten, muss VMware Tools (höhere Version als 10.2) installiert sein und ausgeführt werden.
-
 **PowerShell** | Auf den Windows-VMs muss PowerShell, Version 2.0 oder höher, installiert sein.
 **Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, die Sie analysieren möchten, muss die Azure Migrate Appliance eine Verbindung mit dem TCP-Port 443 herstellen können.
 

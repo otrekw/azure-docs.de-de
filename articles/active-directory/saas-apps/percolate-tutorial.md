@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553982"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Tutorial: Azure Active Directory-Integration mit Percolate
 
@@ -103,7 +103,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Percolat
 
 5. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie die Option **Zusätzliche URLs festlegen** aus, und geben Sie im Feld **Anmelde-URL** die Zeichenfolge **https://percolate.com/app/login** ein:
 
-   ![SSO-Informationen zur Domäne und zu den URLs für Percolate](common/metadata-upload-additional-signon.png)
+   ![Screenshot, auf dem „Zusätzliche URLs festlegen“ ausgewählt und das Textfeld „Anmelde-URL“ hervorgehoben ist](common/metadata-upload-additional-signon.png)
 6. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** das **Kopiersymbol** aus, um die **App-Verbundmetadaten-URL** zu kopieren. Speichern Sie diese URL.
 
     ![Kopieren der App-Verbundmetadaten-URL](common/copy-metadataurl.png)
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 3. Wählen Sie im linken Bereich die Option **Benutzer und Gruppen** aus:
 
-    ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
+    ![Screenshot, auf dem im linken Bereich „Benutzer und Gruppen“ ausgewählt ist](common/users-groups-blade.png)
 
 4. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 

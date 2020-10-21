@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554711"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Tutorial: Azure Active Directory-Integration mit Mixpanel
 
@@ -130,15 +130,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Mixpane
 
 3. Klicken Sie auf die Registerkarte **Access security** (Zugriffssicherheit) und dann auf **Change settings** (Einstellungen ändern).
    
-    ![Mixpanel-Einstellungen](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![Screenshot: Registerkarte „Access security“ (Zugriffssicherheit), auf der Sie Einstellungen ändern können](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. Klicken Sie auf der Dialogfeldseite **Change your certificate** (Zertifikat ändern) auf **Choose file** (Datei auswählen), um das heruntergeladene Zertifikat hochzuladen, und klicken Sie dann auf **NEXT** (WEITER).
    
-    ![Mixpanel-Einstellungen](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![Screenshot: Dialogfeld „Change your certificate“ (Zertifikat ändern), in dem Sie eine Zertifikatdatei auswählen können](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  Fügen Sie auf der Dialogfeldseite **Change your authentication URL** (Authentifizierungs-URL ändern) im Textfeld für die Authentifizierungs-URL den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben, und klicken Sie anschließend auf **NEXT** (WEITER).
    
-    ![Mixpanel-Einstellungen](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![Screenshot: Bereich „Change your authentication URL“ (Authentifizierungs-URL ändern), in dem Sie Ihre Anmelde-URL kopieren können](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. Klicken Sie auf **Fertig**.
 
@@ -205,7 +205,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 4. Geben Sie im Textfeld für **Team Member** die in Azure hinterlegte E-Mail-Adresse von Britta Simon ein.
    
-    ![Mixpanel-Einstellungen](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![Screenshot: Registerkarte „Team“, auf der Sie eine Adresse für eine Einladung hinzufügen können](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. Klicken Sie auf **Einladen**. 
 

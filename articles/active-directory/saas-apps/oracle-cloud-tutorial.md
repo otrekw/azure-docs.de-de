@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543838"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996550"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Tutorial: Integrieren von Oracle Cloud Infrastructure Console in Azure Active Directory
 
@@ -101,7 +101,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Ihre Oracle Cloud Infrastructure Console-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
-   ![image](common/edit-attribute.png)
+   ![Screenshot: Dialogfeld „Benutzerattribute“, in dem die Schaltfläche „Bearbeiten“ oben rechts ausgewählt ist](common/edit-attribute.png)
 
 1. Darüber hinaus wird von der Oracle Cloud Infrastructure Console-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
@@ -111,9 +111,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
  
    1. Klicken Sie auf **Speichern**.
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![Screenshot: Abschnitt „Benutzerattribute und Ansprüche“, in dem das Symbol „Bearbeiten“ für „Wert für Namensbezeichner“ und „Im Anspruch zurückgegebene Gruppen“ hervorgehoben ist](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![Screenshot: Dialogfeld „Benutzeransprüche verwalten“, in dem „Beständig“ und die Schaltfläche „Speichern“ ausgewählt sind](./media/oracle-cloud-tutorial/config11.png)
 
    1. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen**.
 
@@ -173,15 +173,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie links auf das Menü. Klicken Sie anschließend auf **Identity** (Identität), und navigieren Sie zu **Federation** (Verbund).
 
-   ![Konfiguration](./media/oracle-cloud-tutorial/config01.png)
+   ![Screenshot: Oracle Cloud Infrastructure Console mit den ausgewählten Optionen „Identity“ (Identität) und „Federation“ (Verbund) im Menü oben links](./media/oracle-cloud-tutorial/config01.png)
 
 1. Speichern Sie die **Dienstanbieter-Metadatendatei**, indem Sie auf den Link **Download this document** (Dieses Dokument herunterladen) klicken, und laden Sie sie in den Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals hoch. Klicken Sie anschließend auf **Add Identity Provider** (Identitätsanbieter hinzufügen).
 
-   ![Konfiguration](./media/oracle-cloud-tutorial/config02.png)
+   ![Screenshot: Option „Federation“ (Verbund) im Menü auf der linken Seite ausgewählt und Schaltfläche „Add Identity Provider“ (Identitätsanbieter hinzufügen) und Aktion „Download this document“ (Dieses Dokument herunterladen) ausgewählt](./media/oracle-cloud-tutorial/config02.png)
 
 1. Gehen Sie im Popupfenster **Add Identity Provider** (Identitätsanbieter hinzufügen) wie folgt vor:
 
-   ![Konfiguration](./media/oracle-cloud-tutorial/config03.png)
+   ![Screenshot: Popupelement „Add Identity Provider“ (Identitätsanbieter hinzufügen)](./media/oracle-cloud-tutorial/config03.png)
 
    1. Geben Sie im Textfeld **NAME** Ihren Namen ein.
 
@@ -193,7 +193,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
    1. Klicken Sie auf **Continue** (Weiter), und gehen Sie im Abschnitt **Edit Identity Provider** (Identitätsanbieter bearbeiten) wie folgt vor:
 
-      ![Konfiguration](./media/oracle-cloud-tutorial/config09.png)
+      ![Screenshot: Abschnitt „Edit Identity Provider“ (Identitätsanbieter bearbeiten) mit den hervorgehobenen Optionen „Identity Provider Group“ (Identitätsanbietergruppe), „OCI Group“ (OCI-Gruppe), „Add Mapping“ (Zuordnung hinzufügen) und hervorgehobener Schaltfläche „Submit“ (Übermitteln)](./media/oracle-cloud-tutorial/config09.png)
 
    1. Für **IDENTITY PROVIDER GROUP** (IDENTITÄTSANBIETERGRUPPE) sollte die Option „Benutzerdefinierte Gruppe“ ausgewählt werden. Geben Sie als GRUPPEN-ID die GUID der Gruppe aus Azure Active Directory an. Die Gruppe muss der entsprechenden Gruppe im Feld **OCI GROUP** (OCI-GRUPPE) zugeordnet werden.
 

@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802207"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055085"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -104,7 +104,7 @@ Zum Zugreifen auf Ihre private Azure VMware Solution-Cloud muss die ExpressRoute
 Für die ExpressRoute-Leitung von Azure VMware Solution wird eine Verbindung mit einem ExpressRoute-Gateway im Azure Virtual Network hergestellt, das Sie in diesem Schritt definieren.  
 
 >[!IMPORTANT]
->Wenn Sie ein vorhandenes virtuelles Netzwerk auswählen, darf es nicht über ein bereits vorhandenes Gatewaysubnetz verfügen.  
+>Sie können ein vorhandenes ExpressRoute-Gateway verwenden, um eine Verbindung mit Azure VMware Solution herzustellen, sofern es nicht den Grenzwert von vier ExpressRoute-Leitungen pro virtuellem Netzwerk überschreitet.  Für den Zugriff auf Azure VMware Solution von einer lokalen Umgebung über ExpressRoute benötigen Sie ExpressRoute Global Reach, da das ExpressRoute-Gateway kein transitives Routing zwischen den verbundenen Leitungen bereitstellt.  
 
 Falls Sie für die ExpressRoute-Leitung eine Verbindung von Azure VMware Solution mit einem vorhandenen ExpressRoute-Gateway herstellen möchten, können Sie dies nach der Bereitstellung durchführen.  
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
-ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3079cb18f7bc88d691081a7970f5833e8b8d6887
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121553"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078186"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
@@ -21,7 +21,7 @@ Microsoft bietet einen Standardvertrag für den kommerziellen Microsoft-Marketpl
 Die Geschäftsbedingungen für ein Angebot werden bei dessen Erstellung im Partner Center definiert. Sie können auswählen, ob Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace verwenden möchten, anstatt Ihre eigenen benutzerdefinierten Geschäftsbedingungen bereitzustellen.
 
 >[!Note]
->Nachdem Sie ein Angebot über den Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie Ihre eigenen benutzerdefinierten Geschäftsbedingungen nicht mehr nutzen. Es handelt sich um ein „oder“-Szenario. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags *oder* Ihrer eigenen Geschäftsbedingungen an. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
+>Nachdem Sie ein Angebot über den Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie Ihre eigenen benutzerdefinierten Geschäftsbedingungen nicht mehr nutzen. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags *oder* Ihrer eigenen Geschäftsbedingungen an. Benutzerdefinierte Geschäftsbedingungen werden auf Angebotsebene definiert und gelten für alle Pläne. Schreiben Sie Ihre benutzerdefinierten Geschäftsbedingungen auf der Seite **Eigenschaften** Ihres Angebots im Partner Center. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
 
 ## <a name="standard-contract-amendments"></a>Zusatzvereinbarungen für den Standardvertrag
 
@@ -34,7 +34,7 @@ Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbaru
 * Benutzerdefinierte Zusatzvereinbarungen: Diese Zusatzvereinbarungen sind spezielle Zusatzvereinbarungen für den Standardvertrag, die über Azure-Mandanten-IDs nur bestimmte Kunden betreffen. Herausgeber können den gewünschten Mandanten auswählen. Nur den Kunden des Mandanten werden die Bedingungen der Zusatzvereinbarungen im Rahmen der Kaufabwicklung für das Angebot präsentiert.  Kunden müssen die Bedingungen des Standardvertrags und die Zusatzvereinbarung(en) akzeptieren, bevor sie Ihr Angebot nutzen können.
 
 >[!Note]
->Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag.
+>Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag. Zusatzvereinbarungen sind auf 4000 Zeichen (einschließlich Leerzeichen) beschränkt.
 
 Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen:  Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), virtuelle Computer und SaaS.
 

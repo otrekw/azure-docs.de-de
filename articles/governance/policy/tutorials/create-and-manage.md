@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Erstellen von Richtlinien zur Konformitätserzwingung'
 description: In diesem Tutorial verwenden Sie Richtlinien zum Erzwingen von Standards, Steuern der Kosten, Gewährleisten der Sicherheit und Erzwingen von unternehmensweiten Entwurfsprinzipien.
-ms.date: 06/15/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: d8dc65d50182b5336a683c2da8e2a5d8ebb9e849
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650080"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876374"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -36,11 +36,11 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Screenshot: Auswählen des Knotens „Zuweisungen“ auf der Übersichtsseite für Richtlinien" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Screenshot: Auswählen der Schaltfläche „Richtlinie zuweisen“ auf der Seite „Zuweisungen“" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 1. Wählen Sie auf der Seite **Richtlinie zuweisen** auf der Registerkarte **Grundlagen** unter **Bereich** den Bereich aus, indem Sie die Auslassungspunkte und entweder eine Verwaltungsgruppe oder ein Abonnement auswählen. Wählen Sie optional eine Ressourcengruppe aus. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird.
    Wählen Sie anschließend unten auf der Seite **Bereich** die Option **Auswählen** aus.
@@ -54,7 +54,7 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 1. Wählen Sie **Tag von der Ressourcengruppe erben, falls nicht vorhanden** aus. Sollten Sie die Option nicht direkt finden, geben Sie **Tag erben** in das Suchfeld ein, und drücken Sie dann die EINGABETASTE, oder wählen Sie die entsprechende Option im Suchfeld aus.
    Wählen Sie unten auf der Seite **Verfügbare Definitionen** die Option **Auswählen** aus, nachdem Sie die Richtliniendefinition gefunden und ausgewählt haben.
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Screenshot: Suchfilter beim Auswählen einer Richtliniendefinition":::
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste":::
 
 1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. Übernehmen Sie in diesem Fall _Tag von der Ressourcengruppe erben, falls nicht vorhanden_. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.
 
@@ -82,7 +82,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **Erstellung** die Option **Definitionen**.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Screenshot: Seite „Definitionen“ unter der Gruppe „Erstellung“" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 1. Wählen Sie oben auf der Seite **+ Richtliniendefinition** aus. Über diese Schaltfläche gelangen Sie zur Seite **Richtliniendefinition**.
 
@@ -342,13 +342,13 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **Erstellung** die Option **Definitionen**.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Screenshot: Seite „Definitionen“ unter der Gruppe „Erstellung“" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste":::
 
-1. Klicken Sie im oberen Bereich der Seite auf **+ Initiativdefinition**, um zur Seite **Initiativdefinition** zu gelangen.
+1. Klicken Sie im oberen Bereich der Seite auf **+ Initiativendefinition**, um zum Assistenten **Initiativendefinition** zu gelangen.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Screenshot: Seite „Initiativendefinition“ und festzulegende Eigenschaften" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste":::
 
-1. Wählen Sie über die Auslassungspunkte unter **Speicherort der Definition** eine Verwaltungsgruppe oder ein Abonnement zum Speichern der Definition aus. Wenn die vorherige Seite auf eine einzelne Verwaltungsgruppe oder ein einzelnes Abonnement begrenzt war, wird **Speicherort der Definition** automatisch aufgefüllt. Nach dem Auswählen der entsprechenden Option wird **Verfügbare Definitionen** aufgefüllt.
+1. Verwenden Sie die Auslassungspunkte für **Standort der Initiative**, um eine Verwaltungsgruppe oder ein Abonnement zum Speichern der Definition auszuwählen. Wenn die vorherige Seite auf eine einzelne Verwaltungsgruppe oder ein einzelnes Abonnement ausgerichtet war, wird **Standort der Initiative** automatisch aufgefüllt.
 
 1. Geben Sie **Name** und **Beschreibung** der Initiative ein.
 
@@ -356,28 +356,53 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 1. Wählen Sie für **Kategorie** eine der vorhandenen Optionen, oder erstellen Sie eine neue Kategorie.
 
-1. Durchsuchen Sie die Liste mit den verfügbaren **Definitionen** (rechte Hälfte der Seite **Initiativdefinition**), und wählen Sie die Richtliniendefinitionen aus, die Sie dieser Initiative hinzufügen möchten. Fügen Sie für die Initiative **Get Secure** die folgenden integrierten Richtliniendefinitionen hinzu, indem Sie **+** neben den Informationen zur Richtliniendefinition oder eine Zeile mit den Richtliniendefinitionen und dann auf der Detailseite die Option **+ Hinzufügen** auswählen:
+1. Legen Sie unter **Version** eine Version für die Initiative fest (beispielsweise _1.0_).
+
+   > [!NOTE]
+   > Bei dem Versionswert handelt es sich lediglich um eine Metadatenangabe. Er wird vom Azure Policy-Dienst nicht für Updates oder für Prozesse verwendet.
+
+1. Wählen Sie unten auf der Seite die Option **Weiter** oder im oberen Bereich des Assistenten die Registerkarte **Richtlinien** aus.
+
+1. Wählen Sie die Schaltfläche **Richtliniendefinition(en) hinzufügen** aus, und blättern Sie durch die Liste. Wählen Sie die Richtliniendefinitionen aus, die Sie dieser Initiative hinzufügen möchten. Fügen Sie für die Initiative **Get Secure** (Sicherheit verbessern) die folgenden integrierten Richtliniendefinitionen hinzu, indem Sie jeweils das Kontrollkästchen neben der Richtliniendefinition aktivieren:
 
    - Allowed locations (Zulässige Speicherorte)
    - Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen
-   - NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
+   - Virtuelle Computer ohne Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.
    - Azure Backup muss für Virtual Machines aktiviert sein.
    - Die Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden.
+   - „Tag für Ressourcen hinzufügen oder ersetzen“ (Fügen Sie diese Richtliniendefinition zweimal hinzu.)
 
-   Nachdem Sie die jeweilige Richtliniendefinition in der Liste ausgewählt haben, wird sie unter **Kategorie** hinzugefügt.
+   Nachdem Sie die einzelnen Richtliniendefinitionen in der Liste ausgewählt haben, können Sie am unteren Rand der Liste **Hinzufügen** auswählen.
+   Da die Richtliniendefinition _Tag für Ressourcen hinzufügen oder ersetzen_ zweimal hinzugefügt wird, erhalten die einzelnen Instanzen jeweils eine andere _Referenz-ID_.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Screenshot: Parameter und Wertdefinitionen auf der Seite „Initiativendefinition“" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste":::
 
-1. Wenn eine zur Initiative hinzugefügte Richtliniendefinition Parameter enthält, werden sie unterhalb des Richtliniennamens im Bereich **Kategorie** angezeigt. Der _Wert_ kann entweder auf „Wert festlegen“ (hartcodiert für alle Zuweisungen dieser Initiative) oder auf „Initiativenparameter verwenden“ (Festlegung während der einzelnen Initiativenzuweisungen) festgelegt werden. Wird „Wert festlegen“ ausgewählt, können die Werte in der Dropdownliste rechts neben _Wert(e)_ eingegeben oder ausgewählt werden. Wird „Initiativenparameter verwenden“ ausgewählt, wird ein neuer Abschnitt **Initiativenparameter** angezeigt, in dem Sie den Parameter definieren können, der während der Initiativenzuweisung festgelegt wird. Mit den zulässigen Werten für diesen Initiativenparameter können Sie weiter einschränken, welche Werte während der Initiativenzuweisung festgelegt werden können.
+   > [!NOTE]
+   > Die ausgewählten Richtliniendefinitionen können Gruppen hinzugefügt werden. Wählen Sie hierzu mindestens eine hinzugefügte Definition und anschließend **Ausgewählte Richtlinien einer Gruppe hinzufügen** aus. Die Gruppe muss bereits vorhanden sein und kann über die Registerkarte **Gruppen** des Assistenten erstellt werden.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Screenshot: Optionen für zulässige Werte für einen Effect-Parameter auf der Seite „Initiativendefinition“" border="false":::
+1. Wählen Sie unten auf der Seite die Option **Weiter** oder im oberen Bereich des Assistenten die Registerkarte **Gruppen** aus. Über diese Registerkarte können neue Gruppen hinzugefügt werden. In diesem Tutorial werden keine Gruppen hinzugefügt.
+
+1. Wählen Sie unten auf der Seite die Option **Weiter** oder im oberen Bereich des Assistenten die Registerkarte **Initiativenparameter** aus. Wenn in der Initiative ein Parameter vorhanden sein soll, der an einzelne oder mehrere Richtliniendefinitionen übergeben werden kann, wird der Parameter hier definiert und anschließend auf der Registerkarte **Richtlinienparameter** verwendet. In diesem Tutorial werden keine Initiativenparameter hinzugefügt.
+
+   > [!NOTE]
+   > Nach dem Speichern in einer Initiativendefinition können Initiativenparameter nicht mehr aus der Initiative gelöscht werden. Sollte ein Initiativenparameter nicht mehr benötigt werden, entfernen Sie ihn, sodass er von keinem Richtliniendefinitionsparameter mehr verwendet wird.
+
+1. Wählen Sie unten auf der Seite die Option **Weiter** oder im oberen Bereich des Assistenten die Registerkarte **Richtlinienparameter** aus.
+
+1. Die der Initiative hinzugefügten Richtliniendefinitionen mit Parametern werden in einem Raster angezeigt. Mögliche Optionen für _Werttyp_ sind „Standardwert“, „Wert festlegen“ und „Initiativenparameter verwenden“. Bei Verwendung von „Wert festlegen“ wird der zugehörige Wert unter _Wert(e)_ eingegeben. Wenn der Parameter für die Richtliniendefinition über eine Liste zulässiger Werte verfügt, ist das Eingabefeld eine Dropdownauswahl. Bei Verwendung von „Initiativenparameter verwenden“ wird eine Dropdownauswahl mit den Namen der Initiativenparameter bereitgestellt, die auf der Registerkarte **Initiativenparameter** erstellt wurden.
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste":::
 
    > [!NOTE]
    > Werden einige `strongType`-Parameter verwendet, kann die Liste der Werte nicht automatisch ermittelt werden. In diesem Fall wird rechts neben der Parameterzeile eine Ellipse angezeigt. Wenn Sie sie auswählen, wird die Seite „Parameterbereich (&lt;Parametername&gt;)“ geöffnet. Wählen Sie auf dieser Seite das Abonnement aus, mit dem die Wertoptionen bereitgestellt werden sollen. Dieser Parameterbereich wird nur während der Erstellung der Initiativendefinition verwendet und wirkt sich bei der Zuweisung nicht auf die Richtlinienauswertung oder den Bereich der Initiative aus.
 
-   Legen Sie den Parameter „Zulässige Standorte“ auf „USA, Osten 2“ fest, und behalten Sie für die anderen die Standardeinstellung „AuditifNotExists“ bei.
+   Legen Sie den _Werttyp_ für „Zulässige Standorte“ auf „Wert festlegen“ fest, und wählen Sie in der Dropdownliste den Wert „USA, Osten 2“ aus. Legen Sie für die beiden Instanzen der Richtliniendefinition _Tag für Ressourcen hinzufügen oder ersetzen_ die Parameter **Tagname** auf „Env“ bzw. „CostCenter“ und die Parameter **Tagwert** auf „Test“ bzw. „Lab“ fest, wie im Anschluss gezeigt. Behalten Sie bei den anderen die Option „Standardwert“ bei. Da in der Initiative die gleiche Definition zweimal verwendet wird, aber jeweils unterschiedliche Parameter angegeben wurden, werden ein Tag vom Typ „Env“ mit dem Wert „Test“ und ein Tag vom Typ „CostCenter“ mit dem Wert „Lab“ für Ressourcen hinzugefügt oder ersetzt, die sich im Gültigkeitsbereich der Zuweisung befinden.
 
-1. Wählen Sie **Speichern** aus.
+   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste":::
+
+1. Wählen Sie unten auf der Seite oder im oberen Bereich des Assistenten die Option **Überprüfen und erstellen** aus.
+
+1. Überprüfen Sie die Einstellungen, und wählen Sie **Erstellen** aus.
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Erstellen einer Richtlinien-Initiativendefinition mit der Azure-Befehlszeilenschnittstelle
 
@@ -426,11 +451,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Suchen Sie die Initiativdefinition **Get Secure**, die Sie zuvor erstellt haben, und wählen Sie sie aus. Wählen Sie oben auf der Seite **Zuweisen** aus, um die Seite **Get Secure: Initiative zuweisen** zu öffnen.
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Screenshot: Schaltfläche „Zuweisen“ auf der Seite „Initiativendefinition“" border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
    Sie können auch mit der rechten Maustaste auf die ausgewählte Zeile klicken oder die Auslassungspunkte am Ende der Zeile für ein Kontextmenü auswählen. Wählen Sie dann **Zuweisen** aus.
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Screenshot: Kontextmenü für eine Initiative zum Auswählen der Funktion „Zuweisen“" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 1. Füllen Sie die Seite **Get Secure: Initiative zuweisen** aus, indem Sie die folgenden Beispielinformationen eingeben. Sie können Ihre eigenen Daten verwenden.
 
@@ -455,27 +480,30 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Konformität**.
 
 1. Suchen Sie nach der Initiative **Get Secure**. Wahrscheinlich lautet der _Konformitätszustand_ immer noch **Nicht gestartet**.
-   Wählen Sie die Initiative aus, um ausführliche Informationen zum Status der Zuweisung zu erhalten.
+   Wählen Sie die Initiative aus, um ausführliche Informationen zur Zuweisung zu erhalten.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Screenshot: Seite „Initiativenkonformität“ mit Zuweisungsbewertungen im Status „Nicht gestartet“" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 1. Wenn die Initiativenzuweisung abgeschlossen wurde, wird die Konformitätsseite aktualisiert und für _Konformitätszustand_ der Zustand **Konform** angezeigt.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Screenshot: Seite „Initiativenkonformität“ mit abgeschlossenen Zuweisungsbewertungen im Status „Konform“" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 1. Wenn Sie auf der Seite mit der Initiativenkonformität eine Richtlinie auswählen, wird die Seite mit den Konformitätsdetails für die entsprechende Richtlinie angezeigt. Diese Seite enthält Konformitätsdetails auf Ressourcenebene.
 
-## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Ausnehmen einer nicht konformen oder abgelehnten Ressource mithilfe eines Ausschlusses
+## <a name="remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion"></a>Entfernen einer nicht konformen oder abgelehnten Ressource aus dem Bereich mithilfe eines Ausschlusses
 
 Nachdem eine Richtlinieninitiative zugewiesen wurde, um einen bestimmten Standort vorzuschreiben, werden an einem anderen Standort erstellte Ressourcen abgelehnt. In diesem Abschnitt erfahren Sie, wie Sie das Problem einer verweigerten Anforderung zum Erstellen einer Ressource durch Erstellen eines Ausschlusses für eine einzelne Ressourcengruppe lösen. Der Ausschluss verhindert die Erzwingung der Richtlinie (oder Initiative) für diese Ressourcengruppe. Im folgenden Beispiel ist in der ausgeschlossenen Ressourcengruppe jeder Standort erlaubt. Ein Ausschluss kann für ein Abonnement, für eine Ressourcengruppe oder für einzelne Ressourcen gelten.
 
+> [!NOTE]
+> Mithilfe einer [Richtlinienausnahme](../concepts/exemption-structure.md) kann auch die Auswertung einer Ressource übersprungen werden. Weitere Informationen finden Sie unter [Erläuterungen zum Bereich in Azure Policy](../concepts/scope.md).
+
 Durch eine zugewiesene Richtlinie oder Initiative verhinderte Bereitstellungen können in der Ressourcengruppe angezeigt werden, die als Ziel der Bereitstellung fungiert: Wählen Sie links auf der Seite die Option **Bereitstellungen** und dann den **Bereitstellungsnamen** der fehlerhaften Bereitstellung aus. Die abgelehnte Ressource wird mit dem Status _Unzulässig_ angezeigt. Um die Richtlinie oder Initiative und die Zuweisung zu bestimmen, die die Ressource abgelehnt hat, wählen Sie auf der Übersichtsseite zur Bereitstellung **Fehler. Klicken Sie hier, um Details anzuzeigen. ->** . Rechts auf der Seite wird ein Fenster mit den Fehlerinformationen geöffnet. Unter **Fehlerdetails** werden die GUIDs der zugehörigen Richtlinienobjekte angezeigt.
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Screenshot: Nicht erfolgreiche Bereitstellung, die von einer Richtlinienzuweisung abgelehnt wurde" border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 Auf der Seite „Azure Policy“: Wählen Sie links auf der Seite die Option **Konformität** und anschließend die Richtlinieninitiative **Get Secure** aus. Auf dieser Seite sehen Sie eine Zunahme des Werts **Ablehnen** für blockierte Ressourcen. Auf der Registerkarte **Ereignisse** erfahren Sie, wer versucht hat, die durch die Richtliniendefinition abgelehnte Ressource zu erstellen oder bereitzustellen.
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Screenshot: Registerkarte „Ereignisse“ und Richtlinienereignisdetails auf der Seite „Initiativenkonformität“" border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
 In diesem Beispiel hat Trent Baker, einer der leitenden Virtualisierungsspezialisten von Contoso, erforderliche Arbeiten durchgeführt. Wir müssen Trent einen Ort für eine Ausnahme zur Verfügung stellen. Hierzu erstellen wir eine neue Ressourcengruppe namens **LocationsExcluded** und gewähren ihr eine Ausnahme für diese Richtlinienzuweisung.
 
@@ -487,7 +515,7 @@ In diesem Beispiel hat Trent Baker, einer der leitenden Virtualisierungsspeziali
 
 1. Legen Sie den **Ausschluss** fest, indem Sie die Auslassungspunkte und die auszuschließende Ressourcengruppe auswählen (in diesem Beispiel: _LocationsExcluded_). Wählen Sie **Zu ausgewähltem Bereich hinzufügen** und anschließend **Speichern** aus.
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Screenshot: Option „Ausschlüsse“ auf der Seite „Initiativenzuweisung“ zum Hinzufügen einer ausgeschlossenen Ressourcengruppe zur Richtlinienzuweisung" border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Screenshot: Suchen nach „Policy“ über die Suchleiste" border="false":::
 
    > [!NOTE]
    > Je nach Richtliniendefinition und deren Auswirkung kann der Ausschluss auch für bestimmte Ressourcen innerhalb einer Ressourcengruppe im Bereich der Zuweisung gewährt werden. Da in diesem Tutorial die Auswirkung **Deny** verwendet wurde, wäre es nicht sinnvoll, den Ausschluss auf eine bestimmte Ressource festzulegen, die bereits vorhanden ist.
