@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894814"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441479"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -166,7 +166,7 @@ Sie können die automatische Bereitstellung für Ihre Abonnements in der Sicherh
 
 1. Wenn für Ihr Abonnement Azure Defender aktiviert ist, öffnen Sie die Sicherheitsrichtlinie für dieses Abonnement, und wählen Sie **Azure Defender aus** aus.
 
-   ![Tarif][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Aktivieren oder Deaktivieren von Azure Defender":::
 
 1. Deaktivieren Sie als Nächstes die automatische Bereitstellung, indem Sie auf der Seite **Sicherheitsrichtlinie – Datensammlung** auf **Aus** klicken.
    ![Datensammlung][2]
@@ -200,7 +200,7 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
 
 Sie können eine Verbindung des Agent zu jedem vorhandenen benutzerdefinierten Arbeitsbereich oder in Security Center erstellten Arbeitsbereich herstellen. Wenn in einem benutzerdefinierten Arbeitsbereich die Lösungen „Security“ oder „SecurityCenterFree“ nicht aktiviert sind, müssen Sie eine Lösung anwenden. Wählen Sie zum Anwenden den benutzerdefinierten Arbeitsbereich oder das Abonnement aus, und wenden Sie einen Tarif über die Seite **Sicherheitsrichtlinie – Tarif** an.
 
-   ![Tarif][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Aktivieren oder Deaktivieren von Azure Defender":::
 
 Security Center aktiviert basierend auf dem ausgewählten Tarif die richtige Lösung im Arbeitsbereich.
 
@@ -271,7 +271,6 @@ Der Agent beansprucht eine äußerst geringe Menge von Systemressourcen und soll
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png

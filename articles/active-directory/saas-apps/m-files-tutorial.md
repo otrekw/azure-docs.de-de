@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8cf4df682a5c141e39a3860547a5b6130e2a3002
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554825"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856914"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Tutorial: Azure Active Directory-Integration mit M-Files
 
@@ -133,11 +133,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit M-Files 
 
 1. Öffnen Sie das Fenster **M-Files Desktop Settings** (M-Files-Desktopeinstellungen). Klicken Sie anschließend auf **Hinzufügen**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Screenshot: Abschnitt „M-Files Desktop Settings“ (M-Files-Desktopeinstellungen), in dem Sie „Add“ (Hinzufügen) auswählen können](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. Führen Sie im Fenster **Document Vault Connection Properties** (Eigenschaften von Dokumenttresorverbindung) die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Screenshot: Abschnitt „Document Vault Connection Properties“ (Eigenschaften von Dokumenttresorverbindung), in dem Sie die beschriebenen Werte eingeben können](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     Geben Sie im Abschnitt „Server“ die Werte wie folgt ein:  
 

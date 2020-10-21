@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6742253ad815ab8058a9c05d82200e77d9d18a43
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546916"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945959"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Tutorial: Azure Active Directory-Integration mit Kantega SSO for FishEye/Crucible
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Kantega SSO for FishEye/Crucible](common/idp-intiated.png)
+    ![Screenshot: Abschnitt „Grundlegende SAML-Konfiguration“ mit den hervorgehobenen Textfeldern „Bezeichner“ und „Antwort-URL“ und der ausgewählten Schaltfläche „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,43 +134,43 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
+    ![Screenshot: Zahnradsymbol und Auswahl der Option „Add-Ons“](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
 1. Klicken Sie im Abschnitt „Systemeinstellungen“ auf **Find new add-ons** (Nach neuen Add-Ons suchen). 
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
+    ![Screenshot: Abschnitt „Systemeinstellungen“ mit Auswahl von „Find New Add-ons“ (Nach neuen Add-Ons suchen)](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
 1. Suchen Sie nach **Kantega SSO for Crucible**, und klicken Sie auf die Schaltfläche **Installieren**, um das neue SAML-Plug-In zu installieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
+    ![Screenshot: Seite „Attlasian Marketplace for FishEye“ mit Eingabe von „Kantega SSO for Crucible“ im Suchfeld und Auswahl der Schaltfläche „Installieren“](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
 1. Die Installation des Plug-Ins wird gestartet. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
+    ![Screenshot: Dialogfeld „Installing“ (Wird installiert...) des Plug-Ins](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
 1. Gehen Sie nach Abschluss der Installation wie folgt vor: Klicken Sie auf **Schließen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
+    ![Screenshot: Dialogfeld „Installed and ready to go“ (Installiert und einsatzbereit) mit Auswahl der Schaltfläche „Schließen“](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
 1.  Klicken Sie auf **Manage**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
+    ![Screenshot: App-Seite „Kantega SSO for Crucible (SAML & Kerberos)“ mit Auswahl der Schaltfläche „Verwalten“](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
 1. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
+    ![Screenshot: Seite „User-installed add-ons“ (Vom Benutzer installierte Add-Ons) mit Auswahl der Schaltfläche „Konfigurieren“](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
 1. Im Abschnitt **SAML**: Wählen Sie in der Dropdownliste **Identitätsanbieter hinzufügen** die Option **Azure Active Directory (Azure AD)** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
+    ![Screenshot: Seite „Add-Ons – Kantega Single Sign-On“ mit der Dropdownliste „Identitätsanbieter hinzufügen“ und Auswahl von „Azure Active Directory (Azure AD)“ ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
 1. Wählen Sie als Abonnementebene die Option **Basic**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
+    ![Screenshot: Abschnitt „Preparing Azure AD“ (Azure AD wird vorbereitet...) mit Auswahl der Option „Basic“](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
 1. Führen Sie im Abschnitt **App-Eigenschaften** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
+    ![Screenshot: Abschnitt „App-Eigenschaften“ mit Textfeld „App-ID-URI“ und Auswahl der Schaltfläche „Kopieren“](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
     a. Kopieren Sie den Wert für den **App-ID-URI**, und verwenden Sie ihn als **Bezeichner, Antwort-URL und Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals.
 
@@ -178,7 +178,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 1. Führen Sie im Abschnitt **Metadata import** (Metadatenimport) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
+    ![Screenshot: Abschnitt „Metadata import“ (Metadatenimport) mit Auswahl der Option „Metadata file on my computer“ (Metadatendatei auf meinem Computer)](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
     a. Wählen Sie **Metadata file on my computer** (Metadatendatei auf meinem Computer), und laden Sie die Metadatendatei hoch, die Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -186,7 +186,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 1. Führen Sie im Abschnitt **Name and SSO location** (Name und SSO-Standort) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
+    ![Screenshot: „Name and SSO location“ (Name und SSO-Standort) mit hervorgehobenem Textfeld „Identity provider name“ (Name des Identitätsanbieters) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
     a. Fügen Sie im Textfeld **Name des Identitätsanbieters** den Namen des Identitätsanbieters hinzu (z.B. Azure AD).
 
@@ -194,11 +194,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 1. Überprüfen Sie das Signaturzertifikat, und klicken Sie auf **Weiter**.   
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
+    ![Screenshot: Abschnitt „Signature verification“ (Signaturüberprüfung) mit Informationen und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
 1. Führen Sie im Abschnitt **FishEye user accounts** (FishEye-Benutzerkonten) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
+    ![Screenshot: „FishEye user accounts“ (FishEye-Benutzerkonten) mit hervorgehobener Option „Create users in FishEye's Internal Directory if needed“ (Benutzer im internen FishEye-Verzeichnis erstellen, falls erforderlich) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
     a. Wählen Sie **Create users in FishEye's internal Directory if needed** (Benutzer im internen FishEye-Verzeichnis erstellen, falls erforderlich), und geben Sie den entsprechenden Namen der Gruppe für Benutzer ein (können mehrere durch Kommas getrennte Gruppen sein).
 
@@ -206,11 +206,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 1. Klicken Sie auf **Fertig stellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
+    ![Screenshot: Abschnitt „Summary“ (Zusammenfassung) mit Auswahl der Schaltfläche „Finish“ (Fertig stellen)](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
 1. Führen Sie im Abschnitt **Known domains for Azure AD** (Bekannte Domänen für Azure AD) die folgenden Schritte aus:  
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
+    ![Screenshot: Abschnitt „Known domains for Azure AD“ (Bekannte Domänen für Azure AD) mit Auswahl der Schaltfläche „Speichern“](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
     a. Wählen Sie im linken Bereich der Seite die Option **Known domains** (Bekannte Domänen).
 
@@ -278,11 +278,11 @@ Damit sich Azure AD-Benutzer bei FishEye/Crucible anmelden können, müssen sie 
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf **Benutzer**.
 
-    ![Mitarbeiter hinzufügen](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
+    ![Screenshot: Auswahl des Zahnradsymbols und der Option „Benutzer“ im Dropdownmenü](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
 1. Klicken Sie im Abschnitt **Benutzer** der Registerkarte auf **Benutzer hinzufügen**.
 
-    ![Mitarbeiter hinzufügen](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
+    ![Screenshot: Abschnitt „Benutzer“ mit Auswahl der Schaltfläche „Benutzer hinzufügen“](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
 1. Führen Sie auf der Dialogfeldseite **Neuen Benutzer hinzufügen** die folgenden Schritte aus:
 

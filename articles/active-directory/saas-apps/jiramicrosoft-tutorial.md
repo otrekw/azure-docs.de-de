@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891605"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850518"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit JIRA SAML SSO by Microsoft
 
@@ -156,11 +156,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon1.png)
+    ![Screenshot: Auswahl von „Add-Ons“ im Menü „Settings“ (Einstellungen)](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56506) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon12.png)
+    ![Screenshot: Abschnitt „Manage add-ons“ (Add-Ons verwalten), in dem der Link „Upload add-on“ (Add-On hochladen) hervorgehoben ist](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. Führen Sie die folgenden Schritte aus, um das JIRA-Reverseproxy- oder Lastenausgleichsszenario auszuführen:
 
@@ -171,19 +171,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![Screenshot: Datei „server.xml“ in einem Editor mit hinzugefügter neuer Zeile](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. Ändern Sie **Basis-URL** in **Systemeinstellungen** gemäß Proxy/Lastenausgleich.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![Screenshot: Systemeinstellungen, in denen Sie die Basis-URL ändern können](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon14.png)
+    ![Screenshot: Abschnitt „Azure AD SAML Single Sign-on for Jira“ (Azure AD-SAML-SSO für Jira) mit Auswahl von „Configure“ (Konfigurieren)](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon54.png)
+    ![Screenshot: Microsoft Azure Active Directory-Seite für die Konfiguration des einmaligen Anmeldens für Jira](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -230,19 +230,19 @@ Um es Azure AD-Benutzern zu ermöglichen, sich auf dem lokalen JIRA-Server anzum
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf **Benutzerverwaltung**.
 
-    ![Mitarbeiter hinzufügen](./media/jiramicrosoft-tutorial/user1.png)
+    ![Screenshot: Auswahl von „Benutzerverwaltung“ im Menü „Einstellungen“](./media/jiramicrosoft-tutorial/user1.png)
 
 3. Sie werden zur Seite „Administratorzugriff“ umgeleitet, um Ihr **Kennwort** einzugeben. Klicken Sie anschließend auf die Schaltfläche **Bestätigen**.
 
-    ![Mitarbeiter hinzufügen](./media/jiramicrosoft-tutorial/user2.png)
+    ![Screenshot: Seite „Administratorzugriff“, auf der Sie Ihre Anmeldeinformationen eingeben](./media/jiramicrosoft-tutorial/user2.png)
 
 4. Klicken Sie im Registerkartenabschnitt **Benutzerverwaltung** auf **Benutzer erstellen**.
 
-    ![Mitarbeiter hinzufügen](./media/jiramicrosoft-tutorial/user3.png) 
+    ![Screenshot: Registerkarte „Benutzerverwaltung“, auf der Sie Benutzer erstellen können](./media/jiramicrosoft-tutorial/user3.png) 
 
 5. Führen Sie auf der Dialogfeldseite **Neuen Benutzer erstellen** die folgenden Schritte durch:
 
-    ![Mitarbeiter hinzufügen](./media/jiramicrosoft-tutorial/user4.png) 
+    ![Screenshot: Dialogfeld „Neuen Benutzer erstellen“, in dem Sie die Informationen für diesen Schritt eingeben können](./media/jiramicrosoft-tutorial/user4.png) 
 
     a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers, z.B. B.simon@contoso.com, ein.
 

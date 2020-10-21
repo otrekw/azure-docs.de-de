@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547102"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850746"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Jive
 
@@ -140,7 +140,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im Menü am oberen Rand auf **SAML**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Screenshot: Registerkarte „SAML“, auf der „Enabled“ (Aktiviert) ausgewählt ist](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. Wählen auf der Registerkarte **Allgemein** die Option **Aktiviert** aus.
 
@@ -148,7 +148,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Navigieren Sie zur Registerkarte **IDP METADATA** (IDP-METADATEN).
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Screenshot: Registerkarte „SAML“, auf der „IDP METADATA“ (IDP-METADATEN) ausgewählt ist](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. Kopieren Sie den Inhalt der heruntergeladenen XML-Metadatendatei, und fügen Sie ihn in das Textfeld **Identity Provider (IDP) Metadata** (IDP-Metadaten) ein.
 
@@ -156,7 +156,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Navigieren Sie zur Registerkarte **USER ATTRIBUTE MAPPING**(BENUTZERATTRIBUTZUORDNUNG).
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Screenshot: Registerkarte „SAML“, auf der „USER ATTRIBUTE MAPPING“ (BENUTZERATTRIBUTZUORDNUNG) ausgewählt ist](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. Fügen Sie im Textfeld **E-Mail** den zuvor kopierten Attributnamen des Werts **mail** ein.
 

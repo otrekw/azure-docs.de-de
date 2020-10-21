@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090175"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450397"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -133,16 +133,16 @@ Sie können weitere Details anzeigen, indem Sie auf einen ESXi-Host oder einen E
 
 Wenn Sie auf einen ESXi-Hostnamen klicken, sehen Sie Informationen von diesem ESXi-Host. Wenn Sie die Ergebnisse mit dem Ereignistyp eingrenzen möchten, fügen Sie Ihrer Suchabfrage `“ProcessName_s=EVENT TYPE”` hinzu. Sie können **ProcessName** im Suchfilter auswählen. So werden die Informationen für Sie eingegrenzt.
 
-![Details](./media/vmware/eventhostdrilldown.png)
+![Screenshot der Blätter „Anzahl von ESXi-Hosts nach Ereignis“ und „Aufschlüsselung nach Ereignistyp“ in der Dashboardansicht der VMware-Überwachung](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Suchen nach umfangreichen VM-Aktivitäten
 Ein virtueller Computer kann auf einem ESXi-Host erstellt und gelöscht werden. Es ist hilfreich für den Administrator zu bestimmen, wie viele virtuelle Computer ein ESXi-Host erstellt. Dies hilft wiederum dabei, die Leistungs- und Kapazitätsplanung zu verstehen. Die Nachverfolgung von VM-Aktivitätsereignissen ist entscheidend, wenn Sie Ihre Umgebung verwalten.
 
-![Details](./media/vmware/vmactivities1.png)
+![Screenshot des Blatts „Aktivitäten virtueller Computer“ im Dashboard der VMware-Überwachung mit einem Diagramm zur VM-Erstellung und -Löschung durch den ESXi-Host](./media/vmware/vmactivities1.png)
 
 Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möchten, klicken Sie auf einen ESXi-Hostnamen.
 
-![Details](./media/vmware/createvm.png)
+![Screenshot eines Bereichs vom Dashboard der VMware-Überwachung mit einer Tabelle, die eine Datenzeile für jeden von einem ESXi-Host erstellten virtuellen Computer enthält](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Allgemeine Protokollabfragen
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.

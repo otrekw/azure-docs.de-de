@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372254"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827583"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -151,9 +151,11 @@ Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste 
 
 Kostenanalyse, Budgets und Warnungen sind für die Azure RBAC-Bereiche „Abonnement“ und „Ressourcengruppe“ für nutzungsbasierte Kosten verfügbar.
 
-In amortisierten Ansichten und für tatsächliche Kosten für reservierte Instanzen in den Azure RBAC-Bereichen werden keine Gebühren angezeigt. Kosten für reservierte Instanzen werden nur in Abrechnungsbereichen angezeigt, in denen die Einkäufe getätigt wurden.
+In amortisierten Ansichten und für tatsächliche Kosten für reservierte Instanzen in den Azure RBAC-Bereichen werden keine Gebühren angezeigt. Die Anschaffungskosten für Berechtigungen wie reservierte Instanzen und Marketplace-Gebühren werden nur in Abrechnungsbereichen im Mandanten des Kunden angezeigt, in dem die Einkäufe erfolgt sind.
 
 Die Einzelhandelspreise, die zum Berechnen der in der Ansicht enthaltenen Kosten verwendet werden, entsprechen den Preisen, die im Azure-Preisrechner für alle Kunden angezeigt werden. Die angezeigten Kosten enthalten keine Rabatte oder Guthaben, über die der Partner ggf. verfügt, z. B. vom Partner erworbene Guthaben, tarifspezifische Rabatte und Rabatte für globale Dienste.
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analysieren von Kosten mithilfe der Kostenanalyse
 

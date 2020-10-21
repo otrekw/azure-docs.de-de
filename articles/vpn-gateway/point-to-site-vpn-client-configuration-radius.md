@@ -1,22 +1,22 @@
 ---
 title: 'Azure-VPN Gateway: Erstellen und Installieren von VPN-Clientkonfigurationsdateien – P2S-RADIUS-Verbindungen'
-description: Erstellen Sie Windows-, Mac OS X- und Linux-VPN-Client-Konfigurationsdateien für Verbindungen, die RADIUS-Authentifizierung verwenden.
+description: Erstellen Sie Windows-, OS X- und Linux-VPN-Client-Konfigurationsdateien für Verbindungen, die RADIUS-Authentifizierung verwenden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419910"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91440067"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung
 
-Zum Herstellen einer P2S-Verbindung (Point-to-Site) mit einem virtuellen Netzwerk müssen Sie das Clientgerät konfigurieren, über das die Verbindung hergestellt werden soll. Sie können P2S-VPN-Verbindungen über Windows-, Mac OS X- und Linux-Clientgeräte erstellen. 
+Zum Herstellen einer P2S-Verbindung (Point-to-Site) mit einem virtuellen Netzwerk müssen Sie das Clientgerät konfigurieren, über das die Verbindung hergestellt werden soll. Sie können P2S-VPN-Verbindungen über Windows-, OS X- und Linux-Clientgeräte erstellen. 
 
 Wenn Sie die RADIUS-Authentifizierung verwenden, stehen mehrere Authentifizierungsoptionen zur Verfügung: Authentifizierung per Benutzername/Kennwort, zertifikatbasierte Authentifizierung sowie weitere Authentifizierungstypen. Die VPN-Clientkonfiguration ist je nach Authentifizierungstyp unterschiedlich. Um den VPN-Client zu konfigurieren, verwenden Sie Clientkonfigurationsdateien, die die erforderlichen Einstellungen enthalten. Dieser Artikel hilft Ihnen beim Erstellen und Installieren der VPN-Clientkonfiguration für den gewünschten RADIUS-Authentifizierungstyp.
 
@@ -36,7 +36,7 @@ Der Konfigurationsworkflow für die P2S-RADIUS-Authentifizierung lautet wie folg
 >
 >
 
-Entscheiden Sie zunächst, welchen Authentifizierungstyp Sie verwenden möchten: Benutzername/Kennwort, Zertifikat oder andere Authentifizierungstypen. Jeder Abschnitt enthält Schritte für Windows, Mac OS X und Linux (derzeit sind Schritte nur eingeschränkt verfügbar).
+Entscheiden Sie zunächst, welchen Authentifizierungstyp Sie verwenden möchten: Benutzername/Kennwort, Zertifikat oder andere Authentifizierungstypen. Jeder Abschnitt enthält Schritte für Windows, OS X und Linux (derzeit sind Schritte nur eingeschränkt verfügbar).
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>Authentifizierung mit Benutzername und Kennwort
@@ -144,7 +144,7 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
     ![Details für die VPN-Verbindung](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. Wählen Sie **Authentifizierungseinstellungen**. Wählen Sie in der Liste **Benutzername**, und geben Sie Ihre Anmeldeinformationen ein. Wenn Sie die Anmeldeinformationen zuvor eingegeben haben, wird **Benutzername** in der Liste automatisch ausgewählt, und Benutzername und Kennwort werden vorab aufgefüllt. Wählen Sie **OK**, um die Einstellungen zu speichern.
 
-    ![Authentifizierungseinstellungen](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![Screenshot der Dropdownliste „Authentifizierungseinstellungen“ mit ausgewählter Option „Benutzername“.](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. Zurück im Dialogfeld **Netzwerk** wählen Sie **Anwenden** um die Änderungen zu speichern. Wählen Sie **Verbinden** aus, um die Verbindung zu initiieren.
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>Einrichtung des Linux-VPN-Clients über strongSwan

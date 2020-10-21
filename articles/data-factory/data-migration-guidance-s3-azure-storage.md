@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616923"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von Amazon S3 zu Azure Storage 
 
@@ -74,7 +74,7 @@ Migrieren von Daten über einen privaten Link:
 
 - Bei dieser Architektur wird die Datenmigration über einen privaten Peeringlink zwischen AWS Direct Connect und Azure ExpressRoute durchgeführt, damit Daten niemals über das öffentliche Internet übertragen werden.  Hierfür ist die Verwendung von AWS VPC und eines virtuellen Azure-Netzwerks erforderlich. 
 - Sie müssen die selbstgehostete Integration Runtime von ADF auf einer Windows-VM in Ihrem virtuellen Azure-Netzwerk installieren, um diese Architektur zu erhalten.  Sie können Ihre VMs mit selbstgehosteter IR manuell hochskalieren oder auf mehrere VMs aufskalieren (bis zu vier Knoten), um IOPS und Bandbreite für Netzwerk und Speicher vollständig zu nutzen. 
-- Wenn die Übertragung von Daten per HTTPS akzeptabel ist, Sie den Netzwerkzugriff auf die S3-Quelle aber auf einen bestimmten IP-Bereich begrenzen möchten, können Sie eine Variante dieser Architektur einrichten, indem Sie AWS VPC entfernen und den privaten Link durch HTTPS ersetzen.  Es ist ratsam, das virtuelle Azure-Netzwerk und die selbstgehostete IR auf der Azure-VM beizubehalten, damit Sie eine IP-Adresse für Whitelistzwecke verwenden können, die öffentlich geroutet werden kann. 
+- Wenn die Übertragung von Daten per HTTPS akzeptabel ist, Sie den Netzwerkzugriff auf die S3-Quelle aber auf einen bestimmten IP-Bereich begrenzen möchten, können Sie eine Variante dieser Architektur einrichten, indem Sie AWS VPC entfernen und den privaten Link durch HTTPS ersetzen.  Es ist ratsam, das virtuelle Azure-Netzwerk und die selbstgehostete IR auf der Azure-VM beizubehalten, damit Sie eine IP-Adresse für Filterzwecke verwenden können, die öffentlich geroutet werden kann. 
 - Mit dieser Architektur ist sowohl die Migration der Daten einer Anfangsmomentaufnahme als auch der Deltadaten möglich. 
 
 ## <a name="implementation-best-practices"></a>Bewährte Methoden für die Implementierung 

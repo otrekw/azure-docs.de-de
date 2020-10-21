@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930712"
 ---
 # <a name="tutorial-mock-api-responses"></a>Tutorial: Simulieren von API-Antworten
 
@@ -107,7 +107,7 @@ Auch wenn es für dieses Beispiel nicht erforderlich ist, können Sie weitere Ei
 1. Wählen Sie **Speichern** aus.
 
     > [!TIP]
-    > Ein gelber Balken mit dem Text **Die Antwortsimulation ist aktiviert** für die API gibt an, dass die von API Management zurückgegebenen Antworten einer Simulationsrichtlinie folgen und keine tatsächliche Back-End-Antwort darstellen.
+    > Ein gelber Balken mit dem Text **Die Antwortsimulation ist aktiviert** für die API gibt an, dass die von API Management zurückgegebenen Antworten von der [Simulationsrichtlinie](api-management-advanced-policies.md#mock-response) simuliert und nicht vom Back-End generiert werden.
 
 ## <a name="test-the-mocked-api"></a>Testen der simulierten API
 

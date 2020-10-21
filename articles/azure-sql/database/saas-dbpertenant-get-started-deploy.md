@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91618938"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet
 
@@ -225,7 +225,7 @@ Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last ges
 1. Navigieren Sie im  [Azure-Portal](https://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server **catalog-dpt-&lt;Benutzer&gt;** .
     - Der Katalogserver enthält die beiden Datenbanken **tenantcatalog** und **basetenantdb** (eine Vorlagendatenbank, die kopiert wird, um neue Mandanten zu erstellen).
 
-   ![Datenbanken](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![Screenshot: Übersichtsseite des Katalogservers mit den beiden Datenbanken.](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Wechseln Sie zurück zur Liste der SQL-Server.
 

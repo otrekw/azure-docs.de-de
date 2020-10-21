@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629064"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91398322"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopieren neuer und geänderter Dateien nach „LastModifiedDate“ mit Azure Data Factory
 
@@ -75,7 +75,7 @@ Die Vorlage definiert sechs Parameter:
     
 7. Nun können Sie einen Auslöser für rollierende Fenster hinzufügen, um diese Pipeline zu automatisieren. Dadurch kann die Pipeline neue und geänderte Dateien nur anhand von „LastModifiedDate“ regelmäßig kopieren.  Klicken Sie auf **Trigger hinzufügen**, und wählen Sie **Neu/Bearbeiten** aus.
 
-    ![Überprüfen des Ergebnisses](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![Screenshot mit hervorgehobener Menüoption „Neu/Bearbeiten“, die bei Auswahl von „Trigger hinzufügen“ angezeigt wird](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
 8. Wählen Sie im Fenster **Add Triggers** (Trigger hinzufügen) die Option **+ Neu** aus.
 
@@ -103,7 +103,7 @@ Die Vorlage definiert sechs Parameter:
 
 14. Überprüfen Sie das Ergebnis. Sie werden sehen, dass Ihre Pipeline automatisch alle 15 Minuten ausgelöst wird und dass bei jeder Ausführung der Pipeline nur die neuen oder geänderten Dateien aus dem Quellspeicher in den Zielspeicher kopiert werden.
 
-    ![Überprüfen des Ergebnisses](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![Screenshot der Ergebnisse, die bei Auslösen der Pipeline zurückgegeben werden](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>Nächste Schritte
 

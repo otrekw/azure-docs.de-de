@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612111"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627949"
 ---
 # <a name="azure-migrate-support-matrix"></a>Unterstützungsmatrix für Azure Migrate
 
@@ -92,9 +92,12 @@ Frankreich | Frankreich, Mitte
 Indien | „Indien, Mitte“ oder „Indien, Süden“
 Japan |  „Japan, Osten“ oder „Japan, Westen“
 Korea | „Südkorea, Mitte“ oder „Südkorea, Süden“
+Schweiz | Schweiz, Norden
 United Kingdom | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
 USA | „USA, Mitte“ oder „USA, Westen 2“
 
+> [!NOTE]
+> In der Geografie für die Schweiz ist „Schweiz, Westen“ nur für REST-API-Benutzer verfügbar und erfordert ein genehmigtes Abonnement.
 
 ## <a name="supported-geographies-azure-government"></a>Unterstützte geografische Regionen (Azure Government)
 

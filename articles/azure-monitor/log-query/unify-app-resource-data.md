@@ -7,12 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322107"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91330892"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
 In diesem Artikel wird beschrieben, wie Sie all Ihre Application Insights-Protokolldaten an einem zentralen Ort abfragen und anzeigen, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.
@@ -57,7 +57,7 @@ Die Abfrage verwendet das Application Insights-Schema, obwohl sie im Arbeitsbere
 ![Beispiel für abfrageübergreifende Ergebnisse](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->Eine [ressourcenübergreifende Abfrage](./cross-workspace-query.md) in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](../platform/api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für [ressourcenübergreifende Abfragen](./cross-workspace-query.md) erstellen, ohne den Umstieg vorzunehmen, indem Sie die [ARM-Vorlage für die scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
+>[Ressourcenübergreifende Abfragen](./cross-workspace-query.md) in Protokollwarnungen werden nur in der aktuellen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) unterstützt. Wenn Sie die Legacy-API für Log Analytics-Warnungen verwenden, müssen Sie [zur aktuellen API wechseln](../platform/alerts-log-api-switch.md). [Siehe Beispielvorlagen](../platform/alerts-log-create-templates.md).
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Schemaunterschiede zwischen Application Insights und Log Analytics-Arbeitsbereichen
 Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und Application Insights.  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bef0b2d0387b82140e9874f837d9464408d78090
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05fd1fc23afc72174f5454c805dd59a6eb2e9714
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546966"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Tutorial: Azure Active Directory-Integration mit Kantega SSO for Confluence
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit Azure AD b
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Kantega SSO for Confluence](common/idp-intiated.png)
+    ![Screenshot: Abschnitt „Grundlegende SAML-Konfiguration“ mit den hervorgehobenen Feldern „Bezeichner“ und „Antwort-URL“ und der ausgewählten Schaltfläche „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,47 +134,47 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit Azure AD b
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon1.png)
+    ![Screenshot: Zahnradsymbol und Auswahl der Menüoption „Add-Ons“](./media/kantegassoforconfluence-tutorial/addon1.png)
 
 1. Klicken Sie auf der Registerkarte **ATLASSIAN MARKETPLACE** auf **Nach neuen Add-Ons suchen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon.png)
+    ![Screenshot: Registerkarte „ATTLASSIAN MARKETPLACE“ mit Auswahl der Option „Nach neuen Add-Ons suchen“](./media/kantegassoforconfluence-tutorial/addon.png)
 
 1. Suchen Sie nach **Kantega SSO for Confluence SAML Kerberos**, und klicken Sie auf die Schaltfläche **Installieren**, um das neue SAML-Plug-In zu installieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon2.png)
+    ![Screenshot: Seite „Find new add-ons“ (Nach neuen Add-Ons suchen) mit der Eingabe „Kantega SSO for Confluence SAML Kerberos“ im Suchfeld und Auswahl der Schaltfläche „Install“ (Installieren)](./media/kantegassoforconfluence-tutorial/addon2.png)
 
 1. Die Installation des Plug-Ins wird gestartet.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon3.png)
+    ![Screenshot: Bildschirm „Installing“ (Wird installiert...) des Plug-Ins](./media/kantegassoforconfluence-tutorial/addon3.png)
 
 1. Gehen Sie nach Abschluss der Installation wie folgt vor: Klicken Sie auf **Schließen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon33.png)
+    ![Screenshot: Bildschirm „Installed and ready to go“ (Installiert und einsatzbereit) mit Auswahl der Aktion „Schließen“](./media/kantegassoforconfluence-tutorial/addon33.png)
 
 1. Klicken Sie auf **Manage**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon34.png)
+    ![Screenshot: Plug-In „Kantega Single Sign-on with Kerberos and SAML“ (Kantega Single Sign-On mit Kerberos und SAML) mit Auswahl der Schaltfläche „Manage“ (Verwalten)](./media/kantegassoforconfluence-tutorial/addon34.png)
 
 1. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon35.png)
+    ![Screenshot: Seite „Kantega Single Sign-on with Kerberos and SAML“ (Kantega Single Sign-On mit Kerberos und SAML) mit Auswahl der Schaltfläche „Configure“ (Konfigurieren)](./media/kantegassoforconfluence-tutorial/addon35.png)
 
 1. Dieses neue Plug-In wird auch auf der Registerkarte **BENUTZER & SICHERHEIT** angezeigt.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon36.png)
+    ![Screenshot: Registerkarte „BENUTZER & SICHERHEIT“ mit Auswahl der Aktion „Kantega Single Sign-On“](./media/kantegassoforconfluence-tutorial/addon36.png)
 
 1. Im Abschnitt **SAML**: Wählen Sie in der Dropdownliste **Identitätsanbieter hinzufügen** die Option **Azure Active Directory (Azure AD)** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon4.png)
+    ![Screenshot: Abschnitt „SAML“ mit Auswahl von „Identitätsanbieter hinzufügen“ und „Azure Active Directory (Azure AD)“](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. Wählen Sie als Abonnementebene die Option **Basic**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon5.png)
+    ![Screenshot: Seite „Preparing Azure AD“ (Azure AD wird vorbereitet...) mit Auswahl der Option „Basic“](./media/kantegassoforconfluence-tutorial/addon5.png)
 
 1. Führen Sie im Abschnitt **App-Eigenschaften** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon6.png)
+    ![Screenshot: Abschnitt „App properties“ (App-Eigenschaften) mit Hervorhebung des Felds „App ID URL“ (App-ID-URL) und der Schaltfläche „Copy“ (Kopieren) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforconfluence-tutorial/addon6.png)
 
     a. Kopieren Sie den Wert für den **App-ID-URI**, und verwenden Sie ihn als **Bezeichner, Antwort-URL und Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals.
 
@@ -182,7 +182,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit Azure AD b
 
 1. Führen Sie im Abschnitt **Metadata import** (Metadatenimport) die folgenden Schritte aus: 
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon7.png)
+    ![Screenshot: Abschnitt „Metadata import“ (Metadatenimport) mit Auswahl der Option „Metadata file on my computer“ (Metadatendatei auf meinem Computer)](./media/kantegassoforconfluence-tutorial/addon7.png)
 
     a. Wählen Sie **Metadata file on my computer** (Metadatendatei auf meinem Computer), und laden Sie die Metadatendatei hoch, die Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -190,7 +190,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit Azure AD b
 
 1. Führen Sie im Abschnitt **Name and SSO location** (Name und SSO-Standort) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon8.png)
+    ![Screenshot: „Name and SSO location“ (Name und SSO-Standort) mit hervorgehobenem Textfeld „Identity provider name“ (Name des Identitätsanbieters) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforconfluence-tutorial/addon8.png)
 
     a. Fügen Sie im Textfeld **Name des Identitätsanbieters** den Namen des Identitätsanbieters hinzu (z.B. Azure AD).
 
@@ -198,11 +198,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit Azure AD b
 
 1. Überprüfen Sie das Signaturzertifikat, und klicken Sie auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon9.png)
+    ![Screenshot: Abschnitt „Signature verification“ (Signaturüberprüfung) mit Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforconfluence-tutorial/addon9.png)
 
 1. Führen Sie im Abschnitt **Confluence user accounts** (Confluence-Benutzerkonten) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon10.png)
+    ![Screenshot: „Confluence user accounts“ (Confluence-Benutzerkonten) mit hervorgehobener Option „Create users in Confluence's Internal Directory if needed“ (Benutzer im internen Confluence-Verzeichnis erstellen, falls erforderlich) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. Wählen Sie **Create users in Confluence's internal Directory if needed** (Benutzer im internen Confluence-Verzeichnis erstellen, falls erforderlich), und geben Sie den entsprechenden Namen der Gruppe für Benutzer ein (können mehrere durch Kommas getrennte Gruppen sein).
 
@@ -210,11 +210,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit Azure AD b
 
 1. Klicken Sie auf **Fertig stellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon11.png)
+    ![Screenshot: Seite „Summary“ (Zusammenfassung) mit Auswahl der Schaltfläche „Fertig stellen“](./media/kantegassoforconfluence-tutorial/addon11.png)
 
 1. Führen Sie im Abschnitt **Known domains for Azure AD** (Bekannte Domänen für Azure AD) die folgenden Schritte aus: 
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforconfluence-tutorial/addon12.png)
+    ![Screenshot: Seite „Known domains for Azure AD“ mit Hervorhebung des Textfelds „Known domains“ (Bekannte Domänen) und Auswahl der Schaltfläche „Save“ (Speichern)](./media/kantegassoforconfluence-tutorial/addon12.png)
 
     a. Wählen Sie im linken Bereich der Seite die Option **Known domains** (Bekannte Domänen).
 
@@ -283,7 +283,7 @@ Damit sich Azure AD-Benutzer bei Confluence anmelden können, müssen sie in Con
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf **Benutzerverwaltung**.
 
-    ![Mitarbeiter hinzufügen](./media/kantegassoforconfluence-tutorial/user1.png)
+    ![Screenshot: Zahnradsymbol und Auswahl von „Benutzerverwaltung“](./media/kantegassoforconfluence-tutorial/user1.png)
 
 1. Klicken Sie im Abschnitt „Benutzer“ auf die Registerkarte **Benutzer hinzufügen**. Führen Sie auf der Dialogfeldseite **Benutzer hinzufügen** die folgenden Schritte aus:
 

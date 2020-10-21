@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Azure PowerShell-Beispiele zum Ausführ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/30/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 678e9490fe52a329365174e1a2283a475f3312e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0c2d13ef49676917bc48dd5a2e682471558567f3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505014"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842970"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure PowerShell-Beispiele für Azure Cosmos DB
 
@@ -37,8 +37,7 @@ Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShe
 |[Container mit einem großen Partitionsschlüssel erstellen](scripts/powershell/sql/create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Containers mit einem großen Partitionsschlüssel |
 |[Container ohne Indexrichtlinie erstellen](scripts/powershell/sql/create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellen eines Azure Cosmos DB-Containers mit deaktivierter Indexrichtlinie.|
 |[Datenbanken oder Container auflisten oder abrufen](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Datenbanken oder Containern |
-|[Durchsatzberechnung](scripts/powershell/sql/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen des Durchsatzes für eine Datenbank oder einen Container |
-|[Durchsatz aktualisieren](scripts/powershell/sql/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren des Durchsatzes für eine Datenbank oder einen Container |
+|[Durchsatzvorgänge](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für eine Datenbank oder einen Container, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
 |[Sperren von Ressourcen für die Löschung](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||
 
@@ -49,8 +48,7 @@ Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShe
 |[Konto, Keyspace und Tabelle erstellen](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, eines Keyspace und einer Tabelle in Azure Cosmos |
 |[Konto, Keyspace und Tabelle mit Autoskalierung erstellen](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, Keyspace und einer Tabelle mit Autoskalierung in Azure Cosmos |
 |[Keyspaces oder Tabellen auflisten oder abrufen](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Keyspaces oder Tabellen |
-|[Durchsatzberechnung](scripts/powershell/cassandra/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen des Durchsatzes für einen Keyspace oder eine Tabelle |
-|[Durchsatz aktualisieren](scripts/powershell/cassandra/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren des Durchsatzes für einen Keyspace oder eine Tabelle |
+|[Durchsatzvorgänge](scripts/powershell/cassandra/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für einen Keyspace oder eine Tabelle, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
 |[Sperren von Ressourcen für die Löschung](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||
 
@@ -61,8 +59,7 @@ Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShe
 |[Konto, Datenbank und Sammlung erstellen](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und einer Sammlung in Azure Cosmos |
 |[Konto, Datenbank und Sammlung mit Autoskalierung erstellen](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und einer Sammlung mit Autoskalierung in Azure Cosmos |
 |[Datenbanken oder Sammlungen auflisten oder abrufen](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Datenbanken oder Sammlungen |
-|[Durchsatzberechnung](scripts/powershell/mongodb/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen des Durchsatzes für eine Datenbank oder eine Sammlung |
-|[Durchsatz aktualisieren](scripts/powershell/mongodb/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren des Durchsatzes für eine Datenbank oder eine Sammlung |
+|[Durchsatzvorgänge](scripts/powershell/mongodb/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für eine Datenbank oder eine Sammlung, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
 |[Sperren von Ressourcen für die Löschung](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||
 
@@ -73,8 +70,7 @@ Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShe
 |[Konto, Datenbank und Graph erstellen](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Graphs in Azure Cosmos |
 |[Konto, Datenbank und Graph mit Autoskalierung erstellen](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Graphen mit Autoskalierung in Azure Cosmos |
 |[Datenbanken oder Graphen auflisten oder abrufen](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen einer Datenbank oder eines Graphs |
-|[Durchsatzberechnung](scripts/powershell/gremlin/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen des Durchsatzes für eine Datenbank oder einen Graphen |
-|[Durchsatz aktualisieren](scripts/powershell/gremlin/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren des Durchsatzes für eine Datenbank oder einen Graphen |
+|[Durchsatzvorgänge](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für eine Datenbank oder einen Graphen, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
 |[Sperren von Ressourcen für die Löschung](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||
 
@@ -85,7 +81,6 @@ Die unten stehende Tabelle enthält Links zu häufig verwendeten Azure PowerShe
 |[Konto und Tabelle erstellen](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos und einer Tabelle in Azure Cosmos |
 |[Konto und Tabelle mit Autoskalierung erstellen](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos und einer Tabelle mit Autoskalierung in Azure Cosmos |
 |[Auflisten oder Abrufen von Tabellen](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Tabellen |
-|[Durchsatzberechnung](scripts/powershell/table/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen des Durchsatzes für eine Tabelle |
-|[Durchsatz aktualisieren](scripts/powershell/table/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren des Durchsatzes für eine Tabelle |
+|[Durchsatzvorgänge](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Durchsatzvorgänge für eine Tabelle, z. B. Abrufen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz. |
 |[Sperren von Ressourcen für die Löschung](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren. |
 |||

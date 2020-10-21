@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809471"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448801"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ Wenn Sie die [langfristige Aufbewahrung von Sicherungen](long-term-retention-ove
 
 > [!IMPORTANT]
 > Sie können eine vorhandene Datenbank während der Wiederherstellung nicht überschreiben.
-
-Sicherungen von Azure SQL-Datenbank und Azure SQL Managed Instance werden standardmäßig im georeplizierten Blobspeicher (RA-GRS-Speichertyp) gespeichert. Darüber hinaus unterstützt SQL Managed Instance auch lokal redundanten (LRS) und zonenredundanten Sicherungsspeicher (ZRS). Redundanz stellt sicher, dass Ihre Daten vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. Zonenredundanter Speicher (ZRS) steht nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung.
-
-> [!IMPORTANT]
-> Das Konfigurieren der Speicherredundanz für Sicherungen ist nur für verwaltete Instanzen verfügbar und während des Erstellungsprozesses erlaubt. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern.
 
 Wenn Sie die Dienstebene „Standard“ oder „Premium“ verwenden, fallen bei der Wiederherstellung Ihrer Datenbanken möglicherweise zusätzliche Speicherkosten an. Die zusätzlichen Kosten entstehen, wenn die maximale Größe der wiederhergestellten Datenbank die mit der Dienstebene und Leistungsstufe der Zieldatenbank verbundene Menge des Speicherplatzes überschreitet. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten durch Festlegen der maximalen Datenbankgröße auf die enthaltene Menge vermeiden.
 
@@ -91,13 +86,13 @@ Sie können die Wiederherstellung einer einzelnen Instanzdatenbank zu einem best
 
 Um über das Azure-Portal den Zustand einer Datenbank zu einem bestimmten Zeitpunkt wiederherzustellen, öffnen Sie die Datenbank-Übersichtsseite, und wählen Sie auf der Symbolleiste die Option **Wiederherstellen** aus. Wählen Sie die Sicherungsquelle aus, und wählen Sie den Sicherungspunkt-Zeitpunkt aus, von dem aus eine neue Datenbank erstellt wird.
 
-  ![Screenshot der Optionen für die Datenbankwiederherstellung](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![Screenshot der Datenbankwiederherstellungsoptionen für SQL-Datenbank](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>Verwaltete SQL-Instanz
 
 Um eine Datenbank der verwalteten Instanz mithilfe von Azure-Portal auf den Zustand zu einem bestimmten Zeitpunkt wiederherzustellen, öffnen Sie die Datenbank-Übersichtsseite, und wählen Sie auf der Symbolleiste die Option **Wiederherstellen** aus. Wählen Sie den Sicherungspunkt-Zeitpunkt aus, von dem aus eine neue Datenbank erstellt wird.
 
-  ![Screenshot der Optionen für die Datenbankwiederherstellung](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![Screenshot der Datenbankwiederherstellungsoptionen für eine verwaltete SQL-Instanz](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
 > Informationen zum programmgesteuerten Wiederherstellen einer Datenbank aus einer Sicherung finden Sie unter [Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen](recovery-using-backups.md).
@@ -143,7 +138,7 @@ Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschte Instanzdatenbank w
 ## <a name="geo-restore"></a>Geowiederherstellung
 
 > [!IMPORTANT]
-> Geowiederherstellung ist nur bei verwalteten Instanzen verfügbar, die mit einem georedundanten Sicherungsspeichertyp (georedundanter Speicher mit Lesezugriff, RA-GRS) konfiguriert wurden. Verwaltete Instanzen, die mit lokal redundanten oder zonenredundanten Sicherungsspeichertypen konfiguriert wurden, unterstützen keine Geowiederherstellung.
+> Geowiederherstellung ist nur für SQL-Datenbanken oder verwaltete Instanzen verfügbar, die mit einem georedundanten [Sicherungsspeicher](automated-backups-overview.md#backup-storage-redundancy) konfiguriert wurden.
 
 Sie können eine Datenbank auf einem SQL-Datenbank-Server oder eine Instanzdatenbank einer beliebigen verwalteten Instanz in einer beliebigen Azure-Region aus den aktuellsten georeplizierten Sicherungen wiederherstellen. Geowiederherstellung verwendet eine georeplizierte Sicherung als Quelle. Sie können die Geowiederherstellung auch dann anfordern, wenn aufgrund eines Ausfalls kein Zugriff auf Datenbank oder Rechenzentrum möglich ist.
 
@@ -196,7 +191,7 @@ Ein PowerShell-Skript, das zeigt, wie die Geowiederherstellung für eine Datenba
 Sie können keine Point-in-Time-Wiederherstellung für eine sekundäre Geodatenbank durchführen. Dies ist nur für eine primäre Datenbank möglich. Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](../../key-vault/general/disaster-recovery-guidance.md).
 
 > [!IMPORTANT]
-> Die Geowiederherstellung ist die einfachste in SQL-Datenbank und SQL Managed Instance verfügbare Lösung für die Notfallwiederherstellung. Sie beruht auf automatisch erstellten georeplizierten Sicherungen mit einem RPO (Recovery Point Objective) von 1 Stunde und einer geschätzten Wiederherstellungszeit von bis zu 12 Stunden. Sie garantiert nicht, dass die Zielregion über die Kapazität zum Wiederherstellen Ihrer Datenbanken nach einem regionalen Ausfall verfügt, da der Bedarf voraussichtlich stark ansteigen wird. Für nicht unternehmenskritische Anwendungen, die relativ kleine Datenbanken verwenden, ist die Geowiederherstellung eine geeignete Lösung für die Notfallwiederherstellung. 
+> Die Geowiederherstellung ist die einfachste in SQL-Datenbank und SQL Managed Instance verfügbare Lösung für die Notfallwiederherstellung. Sie beruht auf automatisch erstellten georeplizierten Sicherungen mit einem RPO (Recovery Point Objective) von bis zu 1 Stunde und einer geschätzten Wiederherstellungszeit von bis zu 12 Stunden. Sie garantiert nicht, dass die Zielregion über die Kapazität zum Wiederherstellen Ihrer Datenbanken nach einem regionalen Ausfall verfügt, da der Bedarf voraussichtlich stark ansteigen wird. Für nicht unternehmenskritische Anwendungen, die relativ kleine Datenbanken verwenden, ist die Geowiederherstellung eine geeignete Lösung für die Notfallwiederherstellung. 
 >
 > Verwenden Sie für unternehmenskritische Anwendungen, die große Datenbanken erfordern und die Geschäftskontinuität sicherstellen müssen, [Autofailover-Gruppen](auto-failover-group-overview.md). Die Lösung bietet erhebliche niedrigere RPO (Recovery Point Objective) und RTO (Recovery Time Objective), und die Kapazität ist immer garantiert. 
 >

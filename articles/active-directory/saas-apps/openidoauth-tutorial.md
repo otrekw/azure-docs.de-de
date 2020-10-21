@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705621"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996612"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
@@ -99,19 +99,19 @@ Die folgenden Schritte beschreiben den Einwilligungsprozess für Anwendungsentwi
 
     a. Klicken Sie im linken Bereich des Menüs auf **App-Registrierungen**, und öffnen Sie Ihre Anwendung, indem Sie den Anwendungsnamen in das Suchfeld eingeben.
 
-    ![Graph-API](./media/openidoauth-tutorial/application.png)
+    ![Screenshot, auf dem „App-Registrierungen“ im linken Menü ausgewählt und das Suchfeld „Anwendungs-ID“ hervorgehoben ist](./media/openidoauth-tutorial/application.png)
 
     b. Klicken Sie auf **API-Berechtigungen anzeigen**.
 
-    ![Graph-API](./media/openidoauth-tutorial/api-permission.png)
+    ![Screenshot: Seite „API aufrufen“ mit hervorgehobener Schaltfläche „API-Berechtigungen anzeigen“](./media/openidoauth-tutorial/api-permission.png)
 
     c. Klicken Sie auf **Berechtigung hinzufügen**.
 
-    ![Graph-API](./media/openidoauth-tutorial/add-permission.png)
+    ![Screenshot: Abschnitt „API-Berechtigungen“ mit hervorgehobener Schaltfläche „Berechtigung hinzufügen“](./media/openidoauth-tutorial/add-permission.png)
 
     d. Klicken Sie auf **Microsoft Graph**.
 
-    ![Graph-API](./media/openidoauth-tutorial/microsoft-graph.png)
+    ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der die Registerkarte „Microsoft-API“ und die Kachel „Microsoft Graph“ ausgewählt sind](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. Wählen Sie unter **Delegierte Berechtigungen** und **Anwendungsberechtigungen** die erforderlichen Optionen aus.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550355"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Tutorial: Azure Active Directory-Integration mit InstaVR Viewer
 
@@ -132,11 +132,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei InstaVR 
 
 2. Klicken Sie auf das **Benutzersymbol**, und wählen Sie **Account** (Konto) aus.
 
-    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![Screenshot: InstaVR Viewer-Website mit Auswahl eines Benutzers](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Scrollen Sie nach unten bis zu **SAML Auth** (SAML-Authentifizierung), und führen Sie die folgenden Schritte aus:
 
-    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![Screenshot: Seite „SAML Auth“ (SAML-Authentifizierung), auf der Sie die in diesem Schritt beschriebenen Werte eingeben können](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. Fügen Sie im Textfeld **SSO URL** (SSO-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -211,15 +211,15 @@ In diesem Abschnitt wird in InstaVR Viewer ein Benutzer namens Britta Simon erst
 
 2. Wählen Sie im linken Navigationsbereich **Package** (Paket) und dann **Make package for Web** (Paket für das Web erstellen) aus.
 
-    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![Screenshot: InstaVR Viewer-Unternehmenswebsite mit Auswahl von „Package“ (Paket) und „Make package for Web“ (Paket für das Web erstellen)](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Wählen Sie **Herunterladen** aus.
 
-    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![Screenshot: Auswahl des Downloadsymbols](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Wählen Sie **Open Hosted Page** (Gehostete Seite öffnen). Anschließend werden Sie zur Anmeldung an Azure AD weitergeleitet.
 
-    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![Screenshot: Auswahl von „Open Hosted Page“ (Gehostete Seite öffnen)](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Geben Sie Ihre Azure AD-Anmeldeinformationen ein, um sich per SSO bei Azure AD anzumelden.
 

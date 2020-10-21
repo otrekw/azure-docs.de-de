@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418676"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569876"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
@@ -80,10 +80,10 @@ In diesem Schritt erstellen Sie eine Pipeline, die eine Datenflussaktivität ent
     ![Datenflussaktivität](media/tutorial-data-flow/dataflow1.png)
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.
 
-    ![Datenflussaktivität](media/tutorial-data-flow/activity1.png)
+    ![Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann](media/tutorial-data-flow/activity1.png)
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** aus, und geben Sie dem Datenfluss den Namen **TransformMovies**. Klicken Sie anschließend auf „Fertig stellen“.
 
-    ![Datenflussaktivität](media/tutorial-data-flow/activity2.png)
+    ![Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird](media/tutorial-data-flow/activity2.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 
@@ -91,19 +91,19 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
 1. Fügen Sie auf der Datenflusscanvas eine Quelle hinzu, indem Sie auf das Feld **Quelle hinzufügen** klicken.
 
-    ![Datenflusscanvas](media/tutorial-data-flow/dataflow2.png)
+    ![Screenshot des Felds „Quelle hinzufügen“](media/tutorial-data-flow/dataflow2.png)
 1. Geben Sie der Quelle den Namen **MoviesDB**. Klicken Sie auf **Neu**, um ein neues Quelldataset zu erstellen.
 
-    ![Datenflusscanvas](media/tutorial-data-flow/dataflow3.png)
+    ![Screenshot des Fensters, in dem nach dem Benennen der Quelle die Option „Neu“ ausgewählt wird](media/tutorial-data-flow/dataflow3.png)
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset1.png)
+    ![Screenshot der Kachel „Azure Data Lake Storage Gen2“](media/tutorial-data-flow/dataset1.png)
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset2.png)
+    ![Screenshot der Kachel „DelimitedText“](media/tutorial-data-flow/dataset2.png)
 1. Geben Sie dem Dataset den Namen **MoviesDB**. Wählen Sie in der Dropdownliste für den verknüpften Dienst die Option **Neu** aus.
 
-    ![Dataset](media/tutorial-data-flow/dataset3.png)
+    ![Screenshot der Dropdownliste „Verknüpfter Dienst“](media/tutorial-data-flow/dataset3.png)
 1. Geben Sie im Erstellungsbildschirm für einen verknüpften Dienst dem verknüpften ADLS Gen2-Dienst den Namen **ADLSGen2**, und geben Sie die Authentifizierungsmethode an. Dann geben Sie Ihre Verbindungsanmeldeinformationen ein. In diesem Tutorial wird der Kontoschlüssel zum Herstellen einer Verbindung mit dem Speicherkonto verwendet. Sie können auf **Verbindung testen** klicken, um zu überprüfen, ob Ihre Anmeldeinformationen korrekt eingegeben wurden. Wenn Sie fertig sind, klicken Sie auf „Erstellen“.
 
     ![Verknüpfter Dienst](media/tutorial-data-flow/ls1.png)
@@ -112,13 +112,13 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
     ![Datasets](media/tutorial-data-flow/dataset4.png)
 1. Wenn Ihr Debugcluster gestartet wurde, wechseln Sie zur Registerkarte **Datenvorschau** der Quelltransformation, und klicken Sie auf **Aktualisieren**, um eine Momentaufnahme der Daten zu erhalten. Mithilfe der Datenvorschau können Sie überprüfen, ob die Transformation ordnungsgemäß konfiguriert ist.
 
-    ![Datenflusscanvas](media/tutorial-data-flow/dataflow4.png)
+    ![Screenshot des Fensters, in dem eine Vorschau der Daten angezeigt werden kann, um sicherzustellen, dass die Transformation ordnungsgemäß konfiguriert ist](media/tutorial-data-flow/dataflow4.png)
 1. Klicken Sie auf der Datenflusscanvas neben dem Quellknoten auf das Pluszeichen, um eine neue Transformation hinzuzufügen. Als erste Transformation fügen Sie einen **Filter** hinzu.
 
     ![Datenflusscanvas](media/tutorial-data-flow/dataflow5.png)
 1. Geben Sie der Filtertransformation den Namen **FilterYears**. Klicken Sie auf das Ausdrucksfeld neben **Filtern nach**, um den Ausdrucks-Generator zu öffnen. Hier geben Sie dann die Filterbedingung an.
 
-    ![Filtern](media/tutorial-data-flow/filter1.png)
+    ![Screenshot des Ausdrucksfeld für „Filtern nach“](media/tutorial-data-flow/filter1.png)
 1. Mit dem Datenfluss-Ausdrucks-Generator können Sie Ausdrücke interaktiv erstellen, die dann in verschiedenen Transformationen verwendet werden können. Ausdrücke können integrierte Funktionen, Spalten aus dem Eingabeschema und benutzerdefinierte Parameter enthalten. Weitere Informationen zum Erstellen von Ausdrücken finden Sie unter [Mapping Data Flow: Ausdrucks-Generator](concepts-data-flow-expression-builder.md).
 
     In diesem Tutorial möchten Sie Filme des Genres „Komödie“ filtern, die zwischen den Jahren 1910 und 2000 entstanden sind. Da die Jahresangabe derzeit eine Zeichenfolge ist, müssen Sie sie mithilfe der Funktion ```toInteger()``` in eine ganze Zahl konvertieren. Verwenden Sie die Operatoren für größer als oder gleich (>=) und kleiner als oder gleich (<=) für einen Vergleich mit den Literalwerten für die Jahre 1910 und 2000. Verbinden Sie diese Ausdrücke mit dem Und-Operator (&&). Der Ausdruck sieht wie folgt aus:
@@ -137,35 +137,35 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
 1. Rufen Sie eine **Datenvorschau** ab, um zu überprüfen, ob der Filter ordnungsgemäß funktioniert.
 
-    ![Filtern](media/tutorial-data-flow/filter3.png)
+    ![Screenshot der abgerufenen Datenvorschau](media/tutorial-data-flow/filter3.png)
 1. Als nächste Transformation fügen Sie eine **Aggregat**-Transformation unter **Schemamodifizierer** hinzu.
 
-    ![Aggregat](media/tutorial-data-flow/agg1.png)
+    ![Screenshot des Schemamodifizierers „Aggregat“](media/tutorial-data-flow/agg1.png)
 1. Geben Sie der Aggregattransformation den Namen **AggregateComedyRatings**. Wählen Sie auf der Registerkarte **Gruppieren nach** in der Dropdownliste die Option **year** aus, um die Aggregationen nach dem Jahr zu gruppieren, in dem der Film entstanden ist.
 
-    ![Aggregat](media/tutorial-data-flow/agg2.png)
+    ![Screenshot der Option „year“ auf der Registerkarte „Gruppieren nach“ unter „Aggregateinstellungen“](media/tutorial-data-flow/agg2.png)
 1. Wechseln Sie zur Registerkarte **Aggregate**. Geben Sie im linken Textfeld der Aggregatspalte den Namen **AverageComedyRating**. Klicken Sie auf das rechte Ausdrucksfeld, um den Aggregatausdruck über den Ausdrucks-Generator einzugeben.
 
-    ![Aggregat](media/tutorial-data-flow/agg3.png)
+    ![Screenshot der Option „year“ auf der Registerkarte „Aggregate“ unter „Aggregateinstellungen“](media/tutorial-data-flow/agg3.png)
 1. Verwenden Sie die Aggregatfunktion ```avg()```, um den Durchschnitt der Spalte **Rating** zu erhalten. Da **Rating** eine Zeichenfolge ist und ```avg()``` eine numerische Eingabe benötigt, muss der Wert über die Funktion ```toInteger()``` in eine Zahl konvertiert werden. Dieser Ausdruck sieht wie folgt aus:
 
     ```avg(toInteger(Rating))```
 
     Klicken Sie anschließend auf **Speichern und beenden**.
 
-    ![Aggregat](media/tutorial-data-flow/agg4.png)
+    ![Screenshot des gespeicherten Ausdrucks](media/tutorial-data-flow/agg4.png)
 1. Wechseln Sie zur Registerkarte **Datenvorschau**, um die Transformationsausgabe anzuzeigen. Es sind nur zwei Spalten vorhanden: **year** und **AverageComedyRating**.
 
     ![Aggregat](media/tutorial-data-flow/agg3.png)
 1. Als Nächstes fügen Sie eine Transformation vom Typ **Senke** unter **Ziel** hinzu.
 
-    ![Senke](media/tutorial-data-flow/sink1.png)
+    ![Screenshot des Fensters, in dem eine Senkentransformation unter „Ziel“ hinzugefügt wird](media/tutorial-data-flow/sink1.png)
 1. Geben Sie der Senke den Namen **Sink**. Klicken Sie auf **Neu**, um das Senkendataset zu erstellen.
 
-    ![Senke](media/tutorial-data-flow/sink2.png)
+    ![Screenshot des Fensters, in dem der Senke ein Name gegeben und ein neues Senkendataset erstellt werden kann](media/tutorial-data-flow/sink2.png)
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset1.png)
+    ![Screenshot der auswählbaren Kachel „Azure Data Lake Storage Gen2“](media/tutorial-data-flow/dataset1.png)
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
     ![Dataset](media/tutorial-data-flow/dataset2.png)
@@ -181,13 +181,13 @@ Sie können eine Pipeline vor der Veröffentlichung debuggen. In diesem Schritt 
 
 1. Wechseln Sie zur Pipelinecanvas. Klicken Sie auf **Debuggen**, um eine Debugausführung auszulösen.
 
-    ![Pipeline](media/tutorial-data-flow/pipeline1.png)
+    ![Screenshot der Pipelinecanvas mit hervorgehobener Option „Debuggen“](media/tutorial-data-flow/pipeline1.png)
 1. Für das Debuggen der Pipeline von Datenflussaktivitäten wird der aktive Debugcluster verwendet, doch dauert die Initialisierung dennoch mindestens eine Minute. Sie können den Fortschritt über die Registerkarte **Ausgabe** verfolgen. Wenn die Ausführung erfolgreich ist, klicken Sie auf das Brillensymbol, um den Überwachungsbereich zu öffnen.
 
     ![Pipeline](media/tutorial-data-flow/pipeline2.png)
 1. Im Überwachungsbereich werden die Anzahl der Zeilen und die Zeit für die einzelnen Transformationsschritte angezeigt.
 
-    ![Überwachung](media/tutorial-data-flow/pipeline3.png)
+    ![Screenshot des Überwachungsbereichs, in dem die Anzahl der Zeilen und die Zeit für die einzelnen Transformationsschritte angezeigt wird](media/tutorial-data-flow/pipeline3.png)
 1. Klicken Sie auf eine Transformation, um ausführliche Informationen über die Spalten und die Partitionierung der Daten zu erhalten.
 
     ![Überwachung](media/tutorial-data-flow/pipeline4.png)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300731"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359153"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure-Dienst für dedizierte HSMs – Netzwerke
 
@@ -83,7 +83,7 @@ Für global verteilte Anwendungen oder regionale Failoverszenarien mit hoher Ver
 > [!NOTE]
 > Globales VNET-Peering ist in regionsübergreifenden Konnektivitätsszenarien mit dedizierten HSMs zu diesem Zeitpunkt nicht verfügbar, und VPN Gateway sollte stattdessen verwendet werden. 
 
-![global-vnet](media/networking/global-vnet.png)
+![Das Diagramm zeigt zwei Regionen, die durch zwei VPN-Gateways verbunden sind. Jede Region enthält virtuelle Netzwerke mit Peering.](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der Transaktionsreplikation zwischen verwalteten Azure SQL-Instanzen und SQL Server
-description: In diesem Tutorial wird die Replikation zwischen einer verwalteten Verlegerinstanz, einer verwalteten Verteilerinstanz und einem SQL Server-Abonnenten auf einer Azure-VM konfiguriert. Darüber hinaus werden erforderliche Netzwerkkomponenten konfiguriert, z. B. die private DNS-Zone und das VPN-Peering.
+description: In diesem Tutorial wird die Replikation zwischen einer verwalteten Verlegerinstanz, einer verwalteten Verteilerinstanz und einem SQL Server-Abonnenten auf einer Azure-VM konfiguriert. Darüber hinaus werden erforderliche Netzwerkkomponenten konfiguriert, z. B. die private DNS-Zone und das VNET-Peering.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283189"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058555"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Tutorial: Konfigurieren der Transaktionsreplikation zwischen verwalteten Azure SQL-Instanzen und SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Dieses Tutorial ist für erfahrene Benutzer bestimmt. Es wird vorausgesetzt, das
 
 
 > [!NOTE]
-> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit [Failovergruppen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group). Dieses verwaltete Azure SQL Managed Instance-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen. Beim Konfigurieren der [Transaktionsreplikation mit Failovergruppen](replication-transactional-overview.md#with-failover-groups) sind weitere Aspekte zu berücksichtigen.
+> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit [Failovergruppen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group). Dieses verwaltete Azure SQL Managed Instance-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen. Beim Konfigurieren der [Transaktionsreplikation mit Failovergruppen](replication-transactional-overview.md#with-failover-groups) sind weitere Aspekte zu berücksichtigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,10 +48,10 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 - Erfahrung mit der Bereitstellung von zwei verwalteten Instanzen in demselben virtuellen Netzwerk.
 - Ein SQL Server-Abonnent, entweder lokal oder auf einer Azure-VM. In diesem Tutorial wird eine Azure-VM verwendet.  
 - [SQL Server Management Studio (SSMS) 18.0 oder höher](/sql/ssms/download-sql-server-management-studio-ssms).
-- Die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)
+- Die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps)
 - Für Ports 445 und 1433 ist SQL-Datenverkehr für die Azure Firewall und die Windows-Firewall zulässig.
 
-## <a name="1---create-the-resource-group"></a>1\. Erstellen der Ressourcengruppe
+## <a name="create-the-resource-group"></a>Erstellen der Ressourcengruppe
 
 Verwenden Sie den folgenden PowerShell-Codeausschnitt, um eine neue Ressourcengruppe zu erstellen:
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2\. Erstellen von zwei verwalteten Instanzen
+## <a name="create-two-managed-instances"></a>Erstellen von zwei verwalteten Instanzen
 
 Erstellen Sie in dieser neuen Ressourcengruppe mit dem [Azure-Portal](https://portal.azure.com) zwei neue verwaltete Instanzen.
 
@@ -76,9 +76,9 @@ Erstellen Sie in dieser neuen Ressourcengruppe mit dem [Azure-Portal](https://po
 Weitere Informationen zur Erstellung einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](instance-create-quickstart.md).
 
   > [!NOTE]
-  > Der Einfachheit halber und aus dem Grund, dass es die am häufigsten verwendete Konfiguration ist, wird in diesem Tutorial empfohlen, die verwaltete Verteilerinstanz in demselben virtuellen Netzwerk anzuordnen, in dem sich auch der Verleger befindet. Es ist aber auch möglich, den Verteiler in einem separaten virtuellen Netzwerk zu erstellen. Hierfür müssen Sie das VPN-Peering zwischen den virtuellen Netzwerken des Verlegers und Verteilers und anschließend zwischen den virtuellen Netzwerken des Verteilers und des Abonnenten konfigurieren.
+  > Der Einfachheit halber und aus dem Grund, dass es die am häufigsten verwendete Konfiguration ist, wird in diesem Tutorial empfohlen, die verwaltete Verteilerinstanz in demselben virtuellen Netzwerk anzuordnen, in dem sich auch der Verleger befindet. Es ist aber auch möglich, den Verteiler in einem separaten virtuellen Netzwerk zu erstellen. Hierfür müssen Sie das VNET-Peering zwischen den virtuellen Netzwerken des Verlegers und Verteilers und anschließend zwischen den virtuellen Netzwerken des Verteilers und des Abonnenten konfigurieren.
 
-## <a name="3---create-a-sql-server-vm"></a>3\. Erstellen einer SQL Server-VM
+## <a name="create-a-sql-server-vm"></a>Erstellen einer SQL Server-VM
 
 Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen virtuellen SQL Server-Computer (SQL Server-VM). Die SQL Server-VM sollte über die folgenden Merkmale verfügen:
 
@@ -89,9 +89,9 @@ Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen virtuellen SQL S
 
 Weitere Informationen zum Bereitstellen einer SQL Server-VM in Azure finden Sie unter [Schnellstart: Erstellen einer SQL Server-VM](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
-## <a name="4---configure-vpn-peering"></a>4\. Konfigurieren des VPN-Peerings
+## <a name="configure-vnet-peering"></a>Konfigurieren von VNET-Peering
 
-Konfigurieren Sie das VPN-Peering, um die Kommunikation zwischen dem virtuellen Netzwerk der zwei verwalteten Instanzen und dem virtuellen Netzwerk von SQL Server zu ermöglichen. Verwenden Sie hierzu den folgenden PowerShell-Codeausschnitt:
+Konfigurieren Sie das VNET-Peering, um die Kommunikation zwischen dem virtuellen Netzwerk der zwei verwalteten Instanzen und dem virtuellen Netzwerk von SQL Server zu ermöglichen. Verwenden Sie hierzu den folgenden PowerShell-Codeausschnitt:
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,11 +136,11 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-Nachdem das VPN-Peering eingerichtet wurde, sollten Sie die Konnektivität testen, indem Sie SQL Server Management Studio (SSMS) auf SQL Server starten und mit beiden verwalteten Instanzen jeweils eine Verbindung herstellen. Weitere Informationen zum Herstellen einer Verbindung mit einer verwalteten Instanz per SSMS finden Sie unter [Herstellen einer Verbindung mit der verwalteten SQL-Instanz per SSMS](point-to-site-p2s-configure.md#connect-with-ssms).
+Nachdem das VNET-Peering eingerichtet wurde, sollten Sie die Konnektivität testen, indem Sie SQL Server Management Studio (SSMS) in SQL Server starten und mit beiden verwalteten Instanzen eine Verbindung herstellen. Weitere Informationen zum Herstellen einer Verbindung mit einer verwalteten Instanz per SSMS finden Sie unter [Herstellen einer Verbindung mit der verwalteten SQL-Instanz per SSMS](point-to-site-p2s-configure.md#connect-with-ssms).
 
 ![Testen der Konnektivität mit den verwalteten Instanzen](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5\. Erstellen einer privaten DNS-Zone
+## <a name="create-a-private-dns-zone"></a>Erstellen einer privaten DNS-Zone
 
 Eine private DNS-Zone ermöglicht das DNS-Routing zwischen den verwalteten Instanzen und SQL Server.
 
@@ -180,7 +180,7 @@ Eine private DNS-Zone ermöglicht das DNS-Routing zwischen den verwalteten Insta
 1. Wählen Sie **OK** aus, um eine Verknüpfung mit Ihrem virtuellen Netzwerk einzurichten.
 1. Wiederholen Sie diese Schritte, um einen Link für das virtuelle Abonnentennetzwerk mit einem Namen wie `Sub-link` hinzuzufügen.
 
-## <a name="6---create-an-azure-storage-account"></a>6\. Erstellen eines Azure-Speicherkontos
+## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
 [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis und anschließend im Speicherkonto eine [Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md).
 
@@ -194,7 +194,7 @@ Beispiel: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT
 
 Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
-## <a name="7---create-a-database"></a>7\. Erstellen einer Datenbank
+## <a name="create-a-database"></a>Erstellen einer Datenbank
 
 Erstellen Sie eine neue Datenbank auf der verwalteten Verlegerinstanz. Gehen Sie dazu folgendermaßen vor:
 
@@ -242,7 +242,7 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8\. Konfigurieren der Verteilung
+## <a name="configure-distribution"></a>Konfigurieren der Verteilung
 
 Nachdem die Verbindung hergestellt wurde und Sie über eine Beispieldatenbank verfügen, können Sie die Verteilung auf Ihrer verwalteten Instanz `sql-mi-distributor` konfigurieren. Gehen Sie dazu folgendermaßen vor:
 
@@ -277,7 +277,7 @@ Nachdem die Verbindung hergestellt wurde und Sie über eine Beispieldatenbank ve
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9\. Erstellen der Veröffentlichung
+## <a name="create-the-publication"></a>Erstellen der Veröffentlichung
 
 Nachdem die Verteilung konfiguriert wurde, können Sie nun die Veröffentlichung erstellen. Gehen Sie dazu folgendermaßen vor:
 
@@ -298,7 +298,7 @@ Nachdem die Verteilung konfiguriert wurde, können Sie nun die Veröffentlichung
 1. Geben Sie Ihrer Veröffentlichung auf der Seite **Assistenten abschließen** den Namen `ReplTest`, und wählen Sie **Weiter** aus, um Ihre Veröffentlichung zu erstellen.
 1. Aktualisieren Sie nach der Erstellung der Veröffentlichung im **Objekt-Explorer** den Knoten **Replikation**, und erweitern Sie **Lokale Veröffentlichungen**, um Ihre neue Veröffentlichung anzuzeigen.
 
-## <a name="10---create-the-subscription"></a>10. Erstellen des Abonnements
+## <a name="create-the-subscription"></a>Erstellen des Abonnements
 
 Nachdem die Veröffentlichung erstellt wurde, können Sie das Abonnement erstellen. Gehen Sie dazu folgendermaßen vor:
 
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11. Testen der Replikation
+## <a name="test-replication"></a>Testen der Replikation
 
 Nachdem die Replikation konfiguriert wurde, können Sie sie testen, indem Sie neue Elemente auf dem Verleger einfügen und beobachten, wie die Änderungen an den Abonnenten weitergegeben werden.
 
@@ -393,7 +393,7 @@ Lösungsvorschläge:
 - Vergewissern Sie sich, dass der DNS-Name beim Erstellen des Abonnenten verwendet wurde.
 - Vergewissern Sie sich, dass Ihre virtuellen Netzwerke in der privaten DNS-Zone richtig verknüpft sind.
 - Vergewissern Sie sich, dass Ihr A-Eintrag richtig konfiguriert ist.
-- Vergewissern Sie sich, dass Ihr VPN-Peering richtig konfiguriert ist.
+- Vergewissern Sie sich, dass Ihr VNET-Peering richtig konfiguriert ist.
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Keine Veröffentlichungen vorhanden, die Sie abonnieren können
 

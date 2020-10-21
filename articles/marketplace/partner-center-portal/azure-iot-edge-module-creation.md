@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708338"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -78,9 +78,9 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
-- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
+- [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Häufige Fragen zur Leadverwaltung](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problembehandlung bei Leadkonfigurationsfehlern](../lead-management-faq.md#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)-PDF-Datei (vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
@@ -194,7 +194,7 @@ Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bew�
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
@@ -242,7 +242,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Azure Marketplace-Suchergebnissen angezeigt werden:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot in Azure Marketplace-Suchergebnissen angezeigt wird.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -252,7 +252,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure-Portal angezeigt werden:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure-Portal angezeigt wird.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -263,7 +263,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in den Suchergebnissen im Azure-Portal angezeigt werden:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot in den Suchergebnissen im Azure-Portal angezeigt wird.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -362,7 +362,7 @@ Klicken Sie auf **Entwurf speichern**, nachdem Sie die Angaben in diesen Feldern
 
 Hier sehen Sie ein Beispiel für Plandetails im Azure Marketplace (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Darstellung von Plandetails im Azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -372,7 +372,7 @@ Hier sehen Sie ein Beispiel für Plandetails im Azure Marketplace (die aufgelist
 
 <br>Hier sehen Sie ein Beispiel für die Plandetails im Azure-Portal (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Darstellung der Plandetails im Azure-Portal.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -413,7 +413,7 @@ Auf der Registerkarte **Image repository details** (Details des Imagerepositorys
 
 **Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](../../container-registry/container-registry-authentication.md#admin-account) ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-description"></a>Beschreibungen zu den Nummern
 
@@ -421,7 +421,7 @@ Auf der Registerkarte **Image repository details** (Details des Imagerepositorys
 
 <br>**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) verwenden.
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Darstellung des Zugriffsschlüssel-Bildschirms im Azure-Portal.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 

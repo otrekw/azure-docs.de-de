@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962246"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000350"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure mit Azure SQL-Datenbank
 
@@ -65,20 +65,18 @@ Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Proj
 
 ![Veröffentlichen über den Projektmappen-Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Vergewissern Sie sich, dass **Microsoft Azure App Service** ausgewählt ist, und klicken Sie auf **Veröffentlichen**.
+Wählen Sie als Ziel **Azure** aus, klicken Sie auf „Weiter“, und vergewissern Sie sich, dass **Azure App Service (Windows)** ausgewählt ist. Klicken Sie anschließend erneut auf „Weiter“.
 
 ![Veröffentlichen über die Projektübersichtsseite](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-Beim Veröffentlichen wird das Dialogfeld **App Service erstellen** geöffnet, das Sie beim Erstellen sämtlicher Azure-Ressourcen unterstützt, die zum Ausführen Ihrer ASP.NET-App in Azure erforderlich sind.
-
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Klicken Sie im Dialogfeld **App Service erstellen** auf **Konto hinzufügen**, und melden Sie sich bei Ihrem Azure-Abonnement an. Falls Sie bereits bei einem Microsoft-Konto angemeldet sind, vergewissern Sie sich, dass dieses Konto Ihr Azure-Abonnement enthält. Wenn das Microsoft-Konto, bei dem Sie angemeldet sind, nicht Ihr Azure-Abonnement enthält, klicken Sie darauf, um das korrekte Konto hinzuzufügen.
+Klicken Sie im Dialogfeld **Veröffentlichen** im Dropdownmenü des Konto-Managers auf **Konto hinzufügen**, und melden Sie sich dann bei Ihrem Azure-Abonnement an. Falls Sie bereits bei einem Microsoft-Konto angemeldet sind, vergewissern Sie sich, dass dieses Konto Ihr Azure-Abonnement enthält. Wenn das Microsoft-Konto, bei dem Sie angemeldet sind, nicht Ihr Azure-Abonnement enthält, klicken Sie darauf, um das korrekte Konto hinzuzufügen.
+
+![Anmelden bei Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > Wenn Sie bereits angemeldet sind, wählen Sie noch nicht **Erstellen** aus.
-
-![Anmelden bei Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Konfigurieren des Web-App-Namens
 
@@ -112,15 +110,20 @@ Sie können den generierten Web-App-Namen beibehalten oder in einen anderen eind
    |**Location**| Europa, Westen | [Azure-Regionen](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Größe**| Kostenlos | [Tarife](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
+3. Im Dialogfeld **Veröffentlichen** werden die von Ihnen konfigurierten Ressourcen angezeigt. Klicken Sie auf **Fertig stellen**.
+
+   ![Erstellte Ressourcen](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+
+
 ### <a name="create-a-server"></a>Erstellen eines Servers
 
 Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](../azure-sql/database/logical-servers.md). Ein logischer Server ist ein logisches Konstrukt, das eine Gruppe von Datenbanken enthält, die als Gruppe verwaltet werden.
 
-1. Klicken Sie auf **SQL-Datenbank erstellen**.
+1. Klicken Sie unter **Verbundene Dienste** neben „SQL Server-Datenbank“ auf **Konfigurieren**.
 
    ![Erstellen einer SQL-Datenbank](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-2. Klicken Sie im Dialogfeld **SQL-Datenbank konfigurieren** auf **Neu** neben **SQL Server**.
+2. Klicken Sie im Dialogfeld **Azure SQL-Datenbank** neben **Datenbankserver** auf **Neu**.
 
    Ein eindeutiger Servername wird generiert. Dieser Name wird als Teil der Standard-URL für Ihren Server `<server_name>.database.windows.net` verwendet. Er muss in Azure SQL über alle Server hinweg eindeutig sein. Sie können den Servernamen ändern, aber behalten Sie den generierten Wert für dieses Tutorial bei.
 
@@ -128,28 +131,31 @@ Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](
 
    Merken Sie sich diesen Benutzernamen und das Kennwort. Sie benötigen diese Angaben später zum Verwalten des Servers.
 
+   ![Server erstellen](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+
    > [!IMPORTANT]
    > Ihr Kennwort ist in den Verbindungszeichenfolgen zwar maskiert (sowohl in Visual Studio als auch in App Service), aber allein die Tatsache, dass es irgendwo gespeichert ist, macht die App bereits anfälliger für Angriffe. App Service kann dieses Risiko durch die Verwendung [verwalteter Dienstidentitäten](overview-managed-identity.md) beseitigen, da Geheimnisse dann nicht mehr im Code oder in der App-Konfiguration gespeichert werden müssen. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
-
-   ![Server erstellen](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 4. Klicken Sie auf **OK**. Schließen Sie das Dialogfeld **SQL-Datenbank konfigurieren** noch nicht.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Erstellen einer Datenbank in Azure SQL-Datenbank
 
-1. Gehen Sie im Dialogfeld **SQL-Datenbank konfigurieren** wie folgt vor:
+1. Gehen Sie im Dialogfeld **Azure SQL-Datenbank** wie folgt vor:
 
    * Behalten Sie den standardmäßig generierten **Datenbanknamen** bei.
-   * Geben Sie unter **Name der Verbindungszeichenfolge** den Namen *MyDbConnection* ein. Dieser Name muss mit der Verbindungszeichenfolge übereinstimmen, auf die in *Models/MyDatabaseContext.cs* verwiesen wird.
-   * Klicken Sie auf **OK**.
+   * Klicken Sie auf **Erstellen**.
 
     ![Konfigurieren der Datenbank](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. Im Dialogfeld **App Service erstellen** werden die von Ihnen konfigurierten Ressourcen angezeigt. Klicken Sie auf **Erstellen**.
+2. Geben Sie unter **Name der Datenbankverbindungszeichenfolge** die Zeichenfolge _MyDbConnection_ ein. Dieser Name muss mit der Verbindungszeichenfolge übereinstimmen, auf die in _Models/MyDatabaseContext.cs_ verwiesen wird.
 
-   ![Erstellte Ressourcen](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+3. Geben Sie den Benutzernamen und das Kennwort des Administrators, die Sie in Schritt 3 [Erstellen eines Servers](#create-a-server) verwendet haben, als Datenbankbenutzernamen und Datenbankkennwort ein.
 
-Nachdem der Assistent die Erstellung der Azure-Ressourcen abgeschlossen hat, wird Ihre ASP.NET-App in Azure veröffentlicht. Ihr Standardbrowser wird mit der URL für die bereitgestellte App gestartet.
+    ![Konfigurieren der Datenbankverbindungszeichenfolge](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
+
+4. Wählen Sie **Fertig stellen** aus.
+
+Nachdem der Assistent die Erstellung der Azure-Ressourcen abgeschlossen hat, klicken Sie auf **Veröffentlichen**, um Ihre ASP.NET-App in Azure bereitzustellen. Ihr Standardbrowser wird mit der URL für die bereitgestellte App gestartet.
 
 Fügen Sie einige Aufgaben hinzu.
 
@@ -416,7 +422,7 @@ Weitere Ressourcen:
 > [!div class="nextstepaction"]
 > [Konfigurieren einer ASP.NET-App](configure-language-dotnet-framework.md)
 
-Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
+Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
 
 > [!div class="nextstepaction"]
 > [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

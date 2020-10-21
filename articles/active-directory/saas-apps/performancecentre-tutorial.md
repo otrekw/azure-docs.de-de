@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553967"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Tutorial: Azure Active Directory-Integration mit PerformanceCentre
 
@@ -128,19 +128,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Perform
 
 2. Klicken Sie auf der Registerkarte links auf **Configure**.
    
-    ![Azure AD – einmaliges Anmelden][10]
+    ![Screenshot: Menü „PerformanceCentre“ mit Auswahl von „Configure“ (Konfigurieren)][10]
 
 3. Klicken Sie auf der Registerkarte links auf **Verschiedenes** und anschließend auf **Einmaliges Anmelden**.
    
-    ![Azure AD – einmaliges Anmelden][11]
+    ![Screenshot: Registerkarte „Configure“ (Konfigurieren) mit Auswahl von „Single Sign-On“ (Einmaliges Anmelden) im Menü „Miscellaneous“ (Verschiedenes)][11]
 
 4. Wählen Sie unter **Protokoll** die Option **SAML** aus.
    
-    ![Azure AD – einmaliges Anmelden][12]
+    ![Screenshot: Abschnitt für die SSO-Konfiguration mit Auswahl von „SAML“ im Menü „Protocol“ (Protokoll)][12]
 
 5. Öffnen Sie die heruntergeladene Metadatendatei, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Identity Provider Metadata** (Metadaten des Identitätsanbieters) ein. Klicken Sie anschließend auf **Speichern**.
    
-    ![Azure AD – einmaliges Anmelden][13]
+    ![Screenshot: Textfeld „Identity Provider Metadata“ (Metadaten des Identitätsanbieters)][13]
 
 6. Vergewissern Sie sich, dass die Werte für **Entity Base URL** (Entitätsbasis-URL) und **Entity ID URL** (Entitäts-ID-URL) korrekt sind.
     
@@ -207,7 +207,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie im Menü auf der linken Seite auf **Interrelate** (Verknüpfen) und anschließend auf **Create Participant** (Teilnehmer erstellen).
    
-    ![Benutzer erstellen][400]
+    ![Screenshot: Seite zum Verknüpfen von Teilnehmern auf der Unternehmenswebsite von PerformanceCentre mit Auswahl der Schaltfläche „Create Participant“ (Teilnehmer erstellen)][400]
 
 3. Führen Sie auf der Dialogfeldseite **Interrelate - Create Participant** die folgenden Schritte aus:
    

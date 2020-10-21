@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3106b52ede95fe63a8df691a82acdd4937c8cce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544479"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91672245"
 ---
 **Anforderungen an den Konfigurations- und Prozessserver**
 
@@ -58,7 +58,7 @@ https:\//login.microsoftonline.com | Für Vorgänge und Koordinierung der Replik
 time.nist.gov | Wird zum Überprüfen der Zeitsynchronisierung zwischen der Systemzeit und der globalen Zeit verwendet
 time.windows.com | Wird zum Überprüfen der Zeitsynchronisierung zwischen der Systemzeit und der globalen Zeit verwendet
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> *.services.visualstudio.com (optional) </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Bei der OVF-Einrichtung ist Zugriff auf diese zusätzlichen URLs erforderlich. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | So schließen Sie den MySQL-Download ab </br> In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie ggf. sicher, dass die CDN-URL auch in der Whitelist enthalten ist.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | So schließen Sie den MySQL-Download ab </br> In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie ggf. sicher, dass der CDN-URL ebenfalls genehmigt ist.
 |
 
 > [!NOTE]
@@ -83,4 +83,3 @@ Die folgende Tabelle enthält die Kapazitätsanforderungen für den Konfiguratio
 12 vCPUs<br/><br/> 2 Sockets * 6 Kerne \@ 2,5GHz | 18 GB | 600 GB | 500 GB bis 1 TB | 100 bis 150 Computer
 16 vCPUs<br/><br/> 2 Sockets * 8 Kerne \@ 2,5GHz | 32 GB | 1 TB | 1–2 TB | 150–200 Computer
 |
-

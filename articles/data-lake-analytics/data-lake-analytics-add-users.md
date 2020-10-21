@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502935"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450211"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Hinzufügen eines Benutzers im Azure-Portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "87502935"
 2. Klicken Sie auf **Assistent für das Hinzufügen von Benutzern**.
 3. Suchen Sie im Schritt **Benutzer auswählen** nach dem Benutzer, den Sie hinzufügen möchten. Klicken Sie auf **Auswählen**.
 4. Wählen Sie im Schritt **Rolle auswählen** die Option **Data Lake Analytics-Entwickler** aus. Diese Rolle verfügt über die mindestens erforderlichen Berechtigungen zum Übermitteln/Überwachen/Verwalten von U-SQL-Aufträgen. Führen Sie eine Zuweisung zu dieser Rolle durch, wenn die Gruppe nicht zum Verwalten von Azure-Diensten vorgesehen ist.
-5. Wählen Sie im Schritt **Katalogberechtigungen auswählen** alle zusätzlichen Datenbanken aus, auf die der Benutzer Zugriff benötigt. Für das Übermitteln von Aufträgen ist Lese- und Schreibzugriff auf die Masterdatenbank erforderlich. Abschließend klicken Sie auf **OK**.
+5. Wählen Sie im Schritt **Katalogberechtigungen auswählen** alle zusätzlichen Datenbanken aus, auf die der Benutzer Zugriff benötigt. Für das Übermitteln von Aufträgen ist Lese- und Schreibzugriff auf die statische Standarddatenbank namens „Master“ erforderlich. Abschließend klicken Sie auf **OK**.
 6. Überprüfen Sie im letzten Schritt **Ausgewählte Berechtigungen zuweisen** die Änderungen, die der Assistent vornehmen wird. Klicken Sie auf **OK**.
 
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c85af0f4078010fa5b6a1d116b3bfda942c0490c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816931"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540998"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe von PowerShell
 
@@ -38,12 +38,12 @@ Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cm
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
+> Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
 > [!IMPORTANT]
-> Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
+> Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 
@@ -68,14 +68,14 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md).
 
-Standardmäßig werden Lesereplikate mit der gleichen Serverkonfiguration wie der Master erstellt, es sei denn, der Parameter **Sku** wird angegeben.
+Standardmäßig werden Lesereplikate mit derselben Serverkonfiguration wie der Quellserver erstellt, es sei denn, der Parameter **Sku** wird angegeben.
 
 > [!NOTE]
-> Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Masterserver, damit das Replikat über genügend Kapazität verfügt.
+> Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Quellserver, damit das Replikat über genügend Kapazität verfügt.
 
-### <a name="list-replicas-for-a-master-server"></a>Auflisten von Replikaten für einen Masterserver
+### <a name="list-replicas-for-a-source-server"></a>Auflisten von Replikaten für einen Quellserver
 
-Führen Sie den folgenden Befehl aus, um alle Replikate für einen bestimmten Masterserver anzuzeigen:
+Führen Sie den folgenden Befehl aus, um alle Replikate für einen bestimmten Quellserver anzuzeigen:
 
 ```azurepowershell-interactive
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -86,7 +86,7 @@ Für den Befehl `Get-AzMySqlReplica` sind folgende Parameter erforderlich:
 | Einstellung | Beispielwert | BESCHREIBUNG  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Die Ressourcengruppe, in der der Replikatserver erstellt wird.  |
-| ServerName | mydemoserver | Der Name oder die ID des Masterservers. |
+| ServerName | mydemoserver | Der Name oder die ID des Quellservers. |
 
 ### <a name="delete-a-replica-server"></a>Löschen eines Replikatservers
 
@@ -96,12 +96,12 @@ Zum Löschen eines Lesereplikatservers können Sie das Cmdlet `Remove-AzMySqlSer
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Löschen eines Masterservers
+### <a name="delete-a-source-server"></a>Löschen eines Quellservers
 
 > [!IMPORTANT]
-> Wenn Sie einen Masterserver löschen, wird die Replikation auf allen Replikatservern beendet und der Masterserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
+> Wenn Sie einen Quellserver löschen, wird die Replikation auf allen Replikatservern beendet und der Quellserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 
-Zum Löschen eines Masterservers können Sie das Cmdlet `Remove-AzMySqlServer` ausführen.
+Zum Löschen eines Quellservers können Sie das Cmdlet `Remove-AzMySqlServer` ausführen.
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

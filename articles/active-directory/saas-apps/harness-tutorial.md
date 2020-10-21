@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e49fc29f03269096bfc7d6bb6e905187bb8788ff
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551386"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Harness
 
@@ -138,15 +138,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Authentication Settings** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Authentifizierungseinstellungen).
 
-    ![Konfiguration von Harness](./media/harness-tutorial/configure01.png)
+    ![Screenshot: Menü „Continuous Security“ (Kontinuierliche Sicherheit) mit Auswahl von „Access Management“ (Zugriffsverwaltung) und „Authentication Settings“ (Authentifizierungseinstellungen)](./media/harness-tutorial/configure01.png)
 
 5. Klicken Sie im Abschnitt **SSO Providers** (SSO-Anbieter) auf **+ Add SSO Providers** > **SAML** (+ SSO-Anbieter hinzufügen > SAML).
 
-    ![Konfiguration von Harness](./media/harness-tutorial/configure03.png)
+    ![Screenshot: „SSO Providers“ (SSO-Anbieter) mit Auswahl von „+ Add SSO Providers“ (+ SSO-Anbieter hinzufügen) und „SAML“](./media/harness-tutorial/configure03.png)
 
 6. Führen Sie im Popupfenster **SAML Provider** (SAML-Anbieter) die folgenden Schritte aus:
 
-    ![Konfiguration von Harness](./media/harness-tutorial/configure02.png)
+    ![Screenshot: Popupfenster „SAML Provider“ (SAML-Anbieter) mit Hervorhebung der Felder „URL“ und „Display Name“ (Anzeigename) und Auswahl der Schaltflächen „Choose File“ (Datei auswählen) und „Submit“ (Senden)](./media/harness-tutorial/configure02.png)
 
     a. Kopieren Sie die Instanz **In your SSO Provider, please enable SAML-based login, then enter the following URL** (Aktivieren Sie in Ihrem SSO-Anbieter die SAML-basierte Anmeldung, und geben Sie dann die folgende URL ein:), und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld „Antwort-URL“ ein.
 
@@ -166,11 +166,11 @@ Damit sich Azure AD-Benutzer bei Harness anmelden können, müssen sie in Harne
 
 1. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Users** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Benutzer).
 
-    ![Konfiguration von Harness](./media/harness-tutorial/configure04.png)
+    ![Screenshot: Menü „Continuous Security“ (Kontinuierliche Sicherheit) mit Auswahl von „Access Management“ (Zugriffsverwaltung) und „Users“ (Benutzer)](./media/harness-tutorial/configure04.png)
 
 1. Klicken Sie rechts oben auf der Seite auf **+ Add User** (+ Benutzer hinzufügen).
 
-    ![Konfiguration von Harness](./media/harness-tutorial/configure05.png)
+    ![Screenshot: Seite „Users“ (Benutzer) mit ausgewählter Aktion „+ Add User“ (+ Benutzer hinzufügen)](./media/harness-tutorial/configure05.png)
 
 1. Führen Sie im Popupelement **Add User** (Benutzer hinzufügen) die folgenden Schritte aus:
 

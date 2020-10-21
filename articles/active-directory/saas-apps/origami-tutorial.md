@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543787"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Tutorial: Azure Active Directory-Integration mit Origami
 
@@ -126,11 +126,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Origami 
 
 2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Screenshot: Origami-Homepage mit Auswahl von „Administrator“](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Führen Sie auf der Dialogfeldseite „Single Sign On Setup“ die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Screenshot: Seite „Single Sign On Setup“ (Setup für einmaliges Anmelden) mit Auswahl von „Enable Single Sign On“ (Einmaliges Anmelden aktivieren) und hervorgehobenen Textfeldern](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. Wählen Sie **Enable Single Sign On**aus.
 
@@ -201,19 +201,19 @@ In diesem Abschnitt erstellen Sie in Origami einen Benutzer mit dem Namen Britta
 
 2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Screenshot: Startseite des Origami-Kontos mit Auswahl von „Administrator“](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Klicken Sie im Dialogfeld **Users and Security** (Benutzer und Sicherheit) auf **Users** (Benutzer).
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Screenshot: Dialogfeld „Users and Security“ (Benutzer und Sicherheit) mit Auswahl von „Users“ (Benutzer)](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. Klicken Sie auf **Add New User**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Screenshot: Auswahl der Schaltfläche „Add New User“ (Neuen Benutzer hinzufügen)](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. Führen Sie im Dialogfeld „Add New User“ folgende Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Screenshot: Dialogfeld „Add New User“ (Neuen Benutzer hinzufügen) mit hervorgehobenen Textfeldern „User Name“ (Benutzername), „First Name“ (Vorname) und „Last Name“ (Nachname)](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. Geben Sie im Textfeld **Username** (Benutzername) die E-Mail-Adresse des Benutzers ein, z. B. **BrittaSimon\@contoso.com**.
 
@@ -227,7 +227,7 @@ In diesem Abschnitt erstellen Sie in Origami einen Benutzer mit dem Namen Britta
 
     f. Klicken Sie auf **Speichern**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Screenshot: Auswahl der Schaltfläche „Speichern“](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. Weisen Sie dem Benutzer unter **User Roles** (Benutzerrollen) entsprechende Benutzerrollen und unter **Client Access** (Clientzugriff) einen Benutzerzugriff zu. 
    

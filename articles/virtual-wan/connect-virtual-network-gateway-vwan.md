@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983761"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441040"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Herstellen einer Verbindung zwischen einem VPN Gateway (VNet-Gateway) und Virtual WAN
 
@@ -83,7 +83,7 @@ In diesem Abschnitt laden Sie die VPN-Konfigurationsdatei für die beiden Stando
 
 1. Wählen Sie im oberen Bereich der Virtual WAN-Seite **VPN-Standorte** den **Standort** und dann **Site-to-Site-VPN-Konfiguration herunterladen** aus. Azure erstellt eine Konfigurationsdatei mit den entsprechenden Einstellungen.
 
-   ![Konfigurationsdatei herunterladen](./media/connect-virtual-network-gateway-vwan/download.png "Download verfügbar ist")
+   ![Screenshot der Seite „VPN-Standorte“ mit ausgewählter Aktion „Site-to-Site-VPN-Konfiguration herunterladen“.](./media/connect-virtual-network-gateway-vwan/download.png "Download verfügbar ist")
 2. Laden Sie die Konfigurationsdatei herunter und öffnen Sie die Datei.
 3. Wiederholen Sie diese Schritte für den zweiten Standort. Sobald beide Konfigurationsdateien geöffnet sind, können Sie mit dem nächsten Abschnitt fortfahren.
 
@@ -98,7 +98,7 @@ In diesem Abschnitt erstellen Sie zwei lokale Azure VPN Gateway Netzwerkgateways
    * **Abonnement, Ressourcengruppe und Standort** stimmen mit den Werten für den Virtual WAN-Hub überein.
 2. Überprüfen und erstellen Sie das lokalen Netzwerkgateway. Das lokale Netzwerkgateway sollte ungefähr wie in diesem Beispiel aussehen.
 
-   ![Konfigurationsdatei herunterladen](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![Screenshot der Seite „Konfiguration“ mit einer hervorgehobenen IP-Adresse und ausgewählter Option „BGP-Einstellungen konfigurieren“.](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. Wiederholen Sie diese Schritte, um ein weiteres lokales Netzwerkgateway zu erstellen. Verwenden Sie jedoch dieses Mal die Werte für Instance1 anstelle der Werte für Instance0 aus der Konfigurationsdatei.
 
    ![Konfigurationsdatei herunterladen](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")

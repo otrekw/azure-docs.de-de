@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543906"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit OpsGenie
 
@@ -133,15 +133,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 3. Um SSO (Single Sign-On, einmaliges Anmelden) zu aktivieren, wählen Sie **Enabled**aus.
    
-    ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![Screenshot: Aktiviertes Kontrollkästchen „Enabled“ (Aktiviert)](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. Klicken Sie im Abschnitt **Anbieter** auf die Registerkarte **Azure Active Directory**.
    
-    ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![Screenshot: Abschnitt „Anbieter“ mit Auswahl der Registerkarte „Azure Active Directory“](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. Führen Sie auf der Dialogfeldseite "Azure Active Directory" die folgenden Schritte aus:
    
-    ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![Screenshot: Abschnitt „Einmaliges Anmelden“ mit Umschalter für die Aktivierung des einmaligen Anmeldens und den Optionen „SAML 2.0-Endpunkt“ und „Metadaten-URL“](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. Kopieren Sie den Wert im Feld **App ID URI** (App-ID-URI), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
 
@@ -169,7 +169,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens B. Simon in
 
 4. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
    
-    ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![Screenshot: Dialogfeld „Benutzer hinzufügen“ mit Hervorhebung der Textfelder „E-Mail“ und „Vollständiger Name“ und Auswahl der Schaltfläche „Speichern“](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse von B. Simon aus Azure Active Directory ein.
    

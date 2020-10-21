@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904594"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951620"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro
 
 In diesem Tutorial wird beschrieben, wie Sie eine Computerolle auf Ihrem Azure Stack Edge Pro-Gerät konfigurieren. Nach dem Konfigurieren der Computerolle kann Azure Stack Edge Pro Daten vor dem Senden an Azure transformieren.
 
@@ -55,11 +55,11 @@ Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stac
     |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und dieselbe Ressourcengruppe wie die Azure Stack Edge-Ressource.     |
     |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
 
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+    ![Erste Schritte mit Compute 2](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
 4. Klicken Sie auf **Erstellen**. Die Erstellung der IoT Hub-Ressource dauert einige Minuten. Nachdem die IoT Hub-Ressource erstellt wurde, wird die Kachel **Compute konfigurieren** aktualisiert, um die Computekonfiguration anzuzeigen. Wählen Sie auf der Kachel **Compute konfigurieren** die Option **View Compute** (Compute anzeigen), um sich zu vergewissern, dass die Edgecomputing-Rolle konfiguriert wurde.
     
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
+    ![Erste Schritte mit Compute 3](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
     > Wird das Dialogfeld **Compute konfigurieren** geschlossen, bevor die IoT Hub-Instanz mit dem Azure Stack Edge Pro-Gerät verknüpft wird, wird die IoT Hub-Instanz erstellt, aber nicht in der Computekonfiguration angezeigt. 
@@ -138,19 +138,19 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob das Modul ausgef�
  
 1. Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
+    ![Überprüfen der Datentransformation 2](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
 1. Fügen Sie der lokalen Freigabe Daten hinzu.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
+    ![Überprüfen der Datentransformation 3](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
     Die Daten werden auf die Cloudfreigabe verschoben.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
+    ![Überprüfen der Datentransformation 4](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
 
     Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Wechseln Sie zum Speicher-Explorer, um die Daten anzuzeigen.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
+    ![Überprüfen der Datentransformation 5](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
  
 Sie haben den Überprüfungsvorgang abgeschlossen.
 

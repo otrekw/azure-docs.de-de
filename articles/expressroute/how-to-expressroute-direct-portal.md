@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dac9df23209fa93b8060ad80d58fd66f7a356ecd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986378"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91651478"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
 
@@ -26,7 +26,7 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 1. Greifen Sie wie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md) beschrieben auf die Abonnementeinstellungen zu.
 1. Überprüfen Sie, ob in Ihrem Abonnement unter **Ressourcenanbieter** der Anbieter **Microsoft.Network** den Status **Registriert** aufweist. Wenn der Ressourcenanbieter Microsoft.Network nicht in der Liste der registrierten Anbieter aufgeführt ist, fügen Sie ihn hinzu.
 
-## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. Erstellenvon ExpressRoute Direct
+## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>Erstellen von ExpressRoute Direct
 
 1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) oder auf der **Homepage** die Option **Ressource erstellen** aus.
 
@@ -65,7 +65,11 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 
 1. Klicken Sie auf **Erstellen**. Daraufhin wird eine Meldung mit dem Hinweis angezeigt, dass Ihre Bereitstellung ausgeführt wird. Der Status der Ressourcenerstellung wird auf dieser Seite angezeigt. 
 
-## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. Ändern des Verwaltungsstatus von Verknüpfungen
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Generieren des Genehmigungsschreibens (Letter of Authorization, LOA)
+
+Die Generierung des Genehmigungsschreibens steht aktuell im Portal nicht zur Verfügung. Verwenden Sie **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** oder die **[Azure-Befehlszeilenschnittstelle](expressroute-howto-expressroute-direct-cli.md#authorization)** , um das Genehmigungsschreiben abzurufen.
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
 
 Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, der sicherstellt, dass jede Kreuzverbindung ordnungsgemäß in jeden Router für primäre und sekundäre Verbindungen eingebunden ist.
 
@@ -83,7 +87,7 @@ Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, de
 
 1. Wiederholen Sie den gleichen Vorgang für **link2**.
 
-## <a name="3-create-a-circuit"></a><a name="circuit"></a>3. Erstellen einer Leitung
+## <a name="create-a-circuit"></a><a name="circuit"></a>Erstellen einer Leitung
 
 Sie können standardmäßig 10 Leitungen im Abonnement erstellen, in dem sich die ExpressRoute Direct-Ressource befindet. Dieser Wert kann vom Support erhöht werden. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreiten aller Verbindungen der ExpressRoute Direct-Ressource. Die genutzte Bandbreite steht für die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
 
