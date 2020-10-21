@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763923"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072389"
 ---
 # <a name="azure-portal-overview"></a>Azure-Portal – Übersicht
 
@@ -54,7 +54,7 @@ Dashboards bieten einen fokussierten Überblick über die Ressourcen in Ihrem Ab
 
 ## <a name="getting-around-the-portal"></a>Navigation im Portal
 
-Es ist hilfreich, das grundlegende Layout des Portals zu kennen und die Interaktion mit ihm zu verstehen. An dieser Stelle stellen wir Ihnen die Komponenten der Benutzeroberfläche und einige der Begriffe in unseren Anweisungen vor. Eine ausführlichere Tour durch das Portal finden Sie in der Lerneinheit [Navigation im Portal](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal) des Kurses.
+Es ist hilfreich, das grundlegende Layout des Portals zu kennen und die Interaktion mit ihm zu verstehen. An dieser Stelle stellen wir Ihnen die Komponenten der Benutzeroberfläche und einige der Begriffe in unseren Anweisungen vor. Eine ausführlichere Tour durch das Portal finden Sie in der Lerneinheit [Navigation im Portal](/learn/modules/tour-azure-portal/3-navigate-the-portal) des Kurses.
 
 Das Azure-Portalmenü und die Kopfzeile sind stets vorhandene globale Elemente. Diese unveränderlichen Elemente sind die „Shell“ für die Benutzeroberfläche, die mit allen Diensten und Funktionen verknüpft ist, und die Kopfzeile bietet Zugriff auf globale Steuerelemente. Die Konfigurationsseite (auch „Blatt“ genannt) für eine Ressource kann auch ein Ressourcenmenü aufweisen, das Ihnen hilft, zwischen Features zu wechseln.
 

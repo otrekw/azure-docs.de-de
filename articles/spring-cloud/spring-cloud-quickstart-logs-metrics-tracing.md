@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326251"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093054"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung
 
 ::: zone pivot="programming-language-csharp"
-Mit der integrierten Überwachungsfunktion in Azure Spring Cloud können Sie komplexe Probleme debuggen und überwachen. Azure Spring Cloud integriert die [verteilte Ablaufverfolgung](https://steeltoe.io/docs/3/tracing/distributed-tracing) von Steeltoe in [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Diese Integration bietet leistungsstarke Protokolle, Metriken und Funktionen für die Ablaufverfolgung aus dem Azure-Portal.
+Mit der integrierten Überwachungsfunktion in Azure Spring Cloud können Sie komplexe Probleme debuggen und überwachen. Azure Spring Cloud integriert die [verteilte Ablaufverfolgung](https://steeltoe.io/docs/3/tracing/distributed-tracing) von Steeltoe in [Azure Application Insights](../azure-monitor/app/app-insights-overview.md). Diese Integration bietet leistungsstarke Protokolle, Metriken und Funktionen für die Ablaufverfolgung aus dem Azure-Portal.
 
 In den folgenden Verfahren wird erläutert, wie Sie Protokollstreaming, die Protokollanalyse, Metriken und die verteilte Ablaufverfolgung mit der Beispiel-App verwenden, die Sie in den vorherigen Schnellstartanleitungen bereitgestellt haben.
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Bearbeiten Sie die Abfrage, um die Where-Klauseln zu entfernen, die die Anzeige auf Warnungs- und Fehlerprotokolle beschränken.
 
-1. Wählen Sie anschließend `Run` aus, und Protokolle werden angezeigt. Weitere Informationen zum Schreiben von Abfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries).
+1. Wählen Sie anschließend `Run` aus, und Protokolle werden angezeigt. Weitere Informationen zum Schreiben von Abfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md).
 
    [ ![Protokollanalyseabfrage: Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Mit der integrierten Überwachungsfunktion in Azure Spring Cloud können Sie komplexe Probleme debuggen und überwachen. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Diese Integration bietet leistungsstarke Protokolle, Metriken und Funktionen für die Ablaufverfolgung aus dem Azure-Portal. In den folgenden Verfahren wird erläutert, wie Sie Protokollstreaming, die Protokollanalyse, Metriken und die verteilte Ablaufverfolgung mit bereitgestellten Piggy Metrics-Apps verwenden.
+Mit der integrierten Überwachungsfunktion in Azure Spring Cloud können Sie komplexe Probleme debuggen und überwachen. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in [Azure Application Insights](../azure-monitor/app/app-insights-overview.md). Diese Integration bietet leistungsstarke Protokolle, Metriken und Funktionen für die Ablaufverfolgung aus dem Azure-Portal. In den folgenden Verfahren wird erläutert, wie Sie Protokollstreaming, die Protokollanalyse, Metriken und die verteilte Ablaufverfolgung mit bereitgestellten Piggy Metrics-Apps verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -165,7 +165,7 @@ So rufen Sie die Protokolle mit dem Azure-Toolkit für IntelliJ ab:
 
    [ ![Protokollanalyseeintrag](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Anschließend werden gefilterte Protokolle angezeigt. Weitere Informationen zum Schreiben von Abfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries).
+1. Anschließend werden gefilterte Protokolle angezeigt. Weitere Informationen zum Schreiben von Abfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md).
 
    [ ![Protokollanalyseabfrage](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

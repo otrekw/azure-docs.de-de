@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743062"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206950"
 ---
 # <a name="what-is-azure-expressroute"></a>Was ist Azure ExpressRoute?
 Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Cloud von Microsoft ausdehnen. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure und Microsoft 365.
@@ -36,10 +36,10 @@ Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.
 ## <a name="features"></a>Features
 
 ### <a name="layer-3-connectivity"></a>Layer 3-Konnektivität
-Microsoft verwendet BGP, ein Branchenstandardprotokoll für das dynamische Routing. Zum Austauschen von Routen zwischen Ihrem lokalen Netzwerk, Ihren Instanzen in Azure und öffentlichen Microsoft-Adressen. Wir richten für Ihr Netzwerk mehrere BGP-Sitzungen für unterschiedliche Datenverkehrsprofile ein. Weitere Informationen finden Sie im Artikel [ExpressRoute-Verbindung und Routingdomänen](expressroute-circuit-peerings.md) .
+Microsoft verwendet BGP, ein Branchenstandardprotokoll für dynamisches Routing, um Routen zwischen Ihrem lokalen Netzwerk, Ihren Instanzen in Azure und öffentlichen Microsoft-Adressen auszutauschen. Wir richten für Ihr Netzwerk mehrere BGP-Sitzungen für unterschiedliche Datenverkehrsprofile ein. Weitere Informationen finden Sie im Artikel [ExpressRoute-Verbindung und Routingdomänen](expressroute-circuit-peerings.md) .
 
 ### <a name="redundancy"></a>Redundanz
-Jede ExpressRoute-Verbindung besteht aus zwei Verbindungen mit zwei Microsoft Enterprise-Edgeroutern (MSEEs) an einem [ExpressRoute-Standort](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) vom Konnektivitätsanbieter/Ihrem Netzwerk-Edge. Microsoft erfordert eine BGP-Dualverbindung vom Konnektivitätsanbieter/von Ihrem Netzwerk-Edge (jeweils eine pro MSEE). Sie können sich auch dafür entscheiden, auf Ihrer Seite keine redundanten Geräte/Ethernet-Verbindungen bereitzustellen. Allerdings verwenden Konnektivitätsanbieter redundante Geräte, um sicherzustellen, dass Ihre Verbindungen auf redundante Weise an Microsoft übergeben werden. Eine redundante Layer 3-Konnektivitätskonfiguration ist eine Anforderung, die erfüllt sein muss, damit unsere [SLA](https://azure.microsoft.com/support/legal/sla/) gültig ist.
+Jede ExpressRoute-Verbindung besteht aus zwei Verbindungen mit zwei Microsoft Enterprise-Edgeroutern (MSEEs) an einem [ExpressRoute-Standort](./expressroute-locations.md#expressroute-locations) vom Konnektivitätsanbieter/Ihrem Netzwerk-Edge. Microsoft erfordert eine BGP-Dualverbindung vom Konnektivitätsanbieter/von Ihrem Netzwerk-Edge (jeweils eine pro MSEE). Sie können sich auch dafür entscheiden, auf Ihrer Seite keine redundanten Geräte/Ethernet-Verbindungen bereitzustellen. Allerdings verwenden Konnektivitätsanbieter redundante Geräte, um sicherzustellen, dass Ihre Verbindungen auf redundante Weise an Microsoft übergeben werden. Eine redundante Layer 3-Konnektivitätskonfiguration ist eine Anforderung, die erfüllt sein muss, damit unsere [SLA](https://azure.microsoft.com/support/legal/sla/) gültig ist.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Verbindung mit Microsoft-Clouddiensten
 ExpressRoute-Verbindungen ermöglichen den Zugriff auf die folgenden Dienste:
@@ -82,7 +82,7 @@ ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 * Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, beispielsweise das Bankwesen, Behörden und der Einzelhandel.
 * Präzise Steuerung der Leitungsverteilung basierend auf Unternehmensbereichen
 
-Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).
+Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](./expressroute-erdirect-about.md).
 
 ### <a name="bandwidth-options"></a>Bandbreitenoptionen
 Sie können ExpressRoute-Verbindungen für einen großen Bandbreitenbereich erwerben. Die unterstützten Bandbreiten sind nachfolgend aufgeführt. Fragen Sie Ihren Konnektivitätsanbieter nach den Bandbreiten, die er unterstützt.
