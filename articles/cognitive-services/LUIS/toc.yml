@@ -402,6 +402,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: Codebeispiele
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Regionale Verfügbarkeit
@@ -425,10 +427,6 @@
     - name: Konfigurieren virtueller Netzwerke
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: 'Suchen,'
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog

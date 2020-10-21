@@ -44,10 +44,6 @@
         - name: Freigeben über Azure Data Explorer
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: Überwachen
-      href: how-to-monitor.md
-    - name: Problembehandlung
-      href: data-share-troubleshoot.md
     - name: Hinzufügen von Datasets
       href: how-to-add-datasets.md
     - name: Konfigurieren von Dataset-Mappings
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: Aufheben einer Abonnementfreigabe
       href: how-to-revoke-share-subscription.md
+    - name: Überwachen
+      href: how-to-monitor.md
     - name: Sicherheit
       href: security.md
     - name: Notfallwiederherstellung
       href: disaster-recovery.md
+    - name: Problembehandlung
+      href: data-share-troubleshoot.md
 - name: Verweis
   items:
     - name: .NET
