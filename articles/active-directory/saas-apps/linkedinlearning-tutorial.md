@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d598017c8b41dffc486bfef4b9af63c6942cef58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fde0bcdb70384e791d7337d212d7353b6ea168bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549790"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856399"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory-Integration mit LinkedIn Learning
 
@@ -141,19 +141,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie im **Kontocenter** unter **Einstellungen** auf **Globale Einstellungen**. Wählen Sie außerdem aus der Dropdownliste die Option **Learning - Default** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![Screenshot der globalen Einstellungen, in denen Sie die Option „Default“ (Standard) auswählen können](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
 3. Klicken Sie auf **ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, kopieren Sie die **Entitäts-ID** und die **Assertion Consumer Service (ACS)-URL**, und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![Screenshot: „Single Sign-On“ (Einmaliges Anmelden), wo Sie die beschriebenen Werte eingeben können](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
 4. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Laden Sie die XML-Datei hoch, die Sie gerade aus dem Azure-Portal heruntergeladen haben, indem Sie auf die Option **XML-Datei hochladen** klicken.
 
-    ![Einmaliges Anmelden konfigurieren](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Screenshot: Abschnitt „Configure the LinkedIn service provider SSO settings“ (SSO-Einstellungen des LinkedIn-Dienstanbieters konfigurieren), in dem Sie eine XML-Datei hochladen können](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
 5. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![Screenshot: „Single Sign-On“ (Einmaliges Anmelden), wo Sie die Option „Authenticate users with SSO“ (Benutzer mit SSO authentifizieren) auswählen können](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-learning-test-user"></a>Erstellen eines LinkedIn Learning-Testbenutzers
 

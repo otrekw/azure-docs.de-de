@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903685"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951790"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro für den erweiterten Bereitstellungsablauf
 
@@ -58,7 +58,7 @@ Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stac
 
 2. Wählen Sie auf der Kachel **Edgecomputing konfigurieren** die Option **Compute konfigurieren**.
 
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
+    ![Erste Schritte mit Compute 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
 3. Geben Sie auf dem Blatt **Edgecomputing konfigurieren** Folgendes ein:
 
@@ -68,11 +68,11 @@ Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stac
     |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und dieselbe Ressourcengruppe wie die Azure Stack Edge-Ressource.     |
     |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
 
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
+    ![Erste Schritte mit Compute 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
 4. Klicken Sie auf **Erstellen**. Die Erstellung der IoT Hub-Ressource dauert einige Minuten. Nachdem die IoT Hub-Ressource erstellt wurde, wird die Kachel **Edgecomputing konfigurieren** aktualisiert, um die Computekonfiguration anzuzeigen. Wählen Sie auf der Kachel **Compute konfigurieren** die Option **Konfiguration anzeigen** aus, um sich zu vergewissern, dass die Edge-Computerolle konfiguriert wurde.
     
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
+    ![Erste Schritte mit Compute 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
     Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt.
 
@@ -136,17 +136,17 @@ Für die erweiterte Bereitstellung in diesem Tutorial benötigen Sie zwei Freiga
     |Triggertyp     | Wählen Sie den Trigger **Datei** aus. Es wird jeweils ein Dateitrigger ausgelöst, wenn ein Dateiereignis eintritt, z. B. das Schreiben einer Datei auf die Eingabefreigabe. Andererseits wird ein geplanter Trigger anhand eines von Ihnen festgelegten Zeitplans ausgelöst. In diesem Beispiel wird ein Dateitrigger benötigt.    |
     |Eingabefreigabe     | Wählen Sie eine Eingabefreigabe aus. Die lokale Edgefreigabe ist in diesem Fall die Eingabefreigabe. Mit dem hier verwendeten Modul werden Dateien von der lokalen Edgefreigabe auf eine Edgefreigabe verschoben, von der sie in die Cloud hochgeladen werden.        |
 
-    ![Hinzufügen des Triggers](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
+    ![Hinzufügen eines Triggers 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
 3. Nachdem der Trigger erstellt wurde, werden Sie entsprechend benachrichtigt. Die Liste der Trigger wird aktualisiert, um den neu erstellten Trigger anzuzeigen. Wählen Sie den gerade erstellten Trigger aus.
 
-    ![Hinzufügen des Triggers](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
+    ![Hinzufügen eines Triggers 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
 4. Kopieren und speichern Sie die Beispielroute. Sie werden diese Beispielroute ändern und zu einem späteren Zeitpunkt im IoT Hub verwenden.
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
-    ![Hinzufügen des Triggers](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
+    ![Hinzufügen eines Triggers 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
 ## <a name="add-a-module"></a>Hinzufügen eines Moduls
 
@@ -213,7 +213,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
  
     4. Konfigurieren Sie die erweiterten Einstellungen für die Edge-Laufzeit, falls erforderlich, und klicken Sie dann auf **Weiter**.
 
-        ![Hinzufügen eines benutzerdefinierten Moduls](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
+        ![Hinzufügen eines benutzerdefinierten Moduls 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
 5. Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest.  
    
@@ -229,11 +229,11 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
 
 6. Sehen Sie sich unter **Bereitstellung prüfen** alle Einstellungen an, und wählen Sie dann **Übermitteln**, um das Modul für die Bereitstellung zu übermitteln.
 
-   ![Seite „Module festlegen“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![Seite „Module festlegen“ 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     Diese Aktion startet die Bereitstellung des Moduls. Nach Abschluss der Bereitstellung lautet der **Laufzeitstatus** des Moduls **Wird ausgeführt**.
 
-    ![Hinzufügen eines benutzerdefinierten Moduls](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
+    ![Hinzufügen eines benutzerdefinierten Moduls 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 
 ## <a name="verify-data-transform-transfer"></a>Überprüfen der Datentransformation und -übertragung
 
@@ -247,15 +247,15 @@ Führen Sie die folgenden Schritte aus, um die Datentransformation und -übertra
  
 1. Fügen Sie der lokalen Freigabe Daten hinzu.
 
-   ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Überprüfen der Datentransformation 2](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     Die Daten werden auf die Cloudfreigabe verschoben.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
+    ![Überprüfen der Datentransformation 3](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
     Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Um die Daten anzuzeigen, wechseln Sie zu Ihrem Speicherkonto, und wählen Sie **Speicher-Explorer** aus. Sie können die hochgeladenen Daten in Ihrem Speicherkonto anzeigen.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
+    ![Überprüfen der Datentransformation 4](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
 Sie haben den Überprüfungsvorgang abgeschlossen.
 

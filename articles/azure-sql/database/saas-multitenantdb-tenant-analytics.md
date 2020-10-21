@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2742a08d97d537e8a5e0670c40f0ab69b34a4d9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442904"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619592"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Abfragen der Analysedatenbank
 > - Verwenden von Power BI für die Datenvisualisierung, um Trends in den Mandantendaten hervorzuheben und Empfehlungen für Verbesserungen abzugeben
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![Diagramm: Übersicht über die für diesen Artikel verwendete Architektur.](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Analysemuster für Offlinemandanten
 
@@ -53,7 +53,7 @@ Als Nächstes werden die aggregierten Daten in mehrere Tabellen im [Sternschema]
 
 Zusammen ermöglichen die zentrale Tabelle und die Dimensionstabellen eine effiziente Analyseverarbeitung. Das in diesem Tutorial verwendete Sternschema wird in der folgenden Abbildung gezeigt:
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![Datenbankdiagramm: Vier Datenbankobjekte, die mit einem zentralen Datenbankobjekt verbunden sind.](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 Schließlich werden die Tabellen im Sternschema abgefragt. Die Abfrageergebnisse werden angezeigt, um die Erkenntnisse über das Verhalten der Mandanten und ihre Verwendung der Anwendung hervorzuheben. Mit diesem Sternschema können Sie Abfragen ausführen, um u.a. Folgendes zu ermitteln:
 
@@ -111,7 +111,7 @@ Zeigen Sie durch Erweitern des Knotens für den Analysespeicher die folgenden Da
 - Die Tabellen im Sternschema heißen **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** und **dim_Dates**.
 - Mithilfe der gespeicherten Prozedur **sp_ShredRawExtractedData** werden die Tabellen im Sternschema aus den Tabellen mit den unformatierten Daten aufgefüllt.
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![Screenshot: SSMS-Objekt-Explorer für den Analysespeicherknoten, einschließlich Tabellen, Ansichten und Knoten.](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Extrahieren von Daten 
 
@@ -139,7 +139,7 @@ Jeder Auftrag extrahiert die entsprechenden Daten und sendet sie an den Analyses
 4. Drücken Sie **F5** zum Ausführen des Skripts, das den Auftrag zum Extrahieren der Ticket- und Kundendaten aus den einzelnen Mandantendatenbanken erstellt und ausführt. Der Auftrag speichert die Daten im Analysespeicher.
 5. Fragen Sie die Tabelle „TicketsRawData“ in der Datenbank „tenantanalytics“ ab, um sicherzustellen, dass die Tabelle mit Ticketinformationen von allen Mandanten aufgefüllt wurde.
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![Screenshot: ExtractTickets-Datenbank mit im Objekt-Explorer ausgewähltem Datenbankobjekt „TicketsRawData“.](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 Wiederholen Sie die vorherigen Schritte, ersetzen Sie dabei jedoch in Schritt 2 **\ExtractTickets.sql** durch **\ExtractVenuesEvents.sql**.
 
@@ -159,7 +159,7 @@ In diesem Abschnitt des Tutorials definieren Sie einen Auftrag, der die extrahie
 4. Warten Sie lange genug, damit der Auftrag erfolgreich ausgeführt werden kann.
     - Überprüfen Sie in der Spalte **Lifecycle** der Tabelle „jobs.jobs_execution“ den Status des Auftrags. Stellen Sie vor dem Fortfahren sicher, dass der Auftrag **erfolgreich** abgeschlossen wurde. Bei einer erfolgreichen Ausführung werden die Daten ähnlich wie im folgenden Diagramm dargestellt:
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![Screenshot: Erfolgreiches Ergebnis der Ausführung der Prozedur „sp_ShredRawExtractedData“.](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>Durchsuchen von Daten
 
@@ -174,11 +174,11 @@ Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI he
 3. Wählen Sie im Fenster **Daten abrufen** die Option „Azure SQL-Datenbank“ aus.
 4. Geben Sie im Datenbank-Anmeldefenster den Servernamen (catalog-mt-\<User\>.database.windows.net) ein. Wählen Sie **Importieren** für **Datenkonnektivitätsmodus** aus, und klicken Sie dann auf „OK“. 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![Screenshot: Dialogfeld „SQL Server-Datenbank“, in dem Sie den Server und die Datenbank eingeben können.](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P\@ssword1* ein. Klicken Sie auf **Verbinden**.  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![Screenshot: Dialogfeld „SQL Server-Datenbank“, in dem Sie einen Benutzernamen und ein Kennwort eingeben können.](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. Wählen Sie im Bereich **Navigator** unter der Analysedatenbank die folgenden Tabellen im Sternschema aus: „fact_Tickets“, „dim_Events“, „dim_Venues“, „dim_Customers“ und „dim_Dates“. Wählen Sie dann **Laden** aus. 
 
@@ -186,13 +186,13 @@ Glückwunsch! Sie haben die Daten erfolgreich in Power BI geladen. Jetzt können
 
 Sie beginnen mit der Analyse der Ticketverkaufsdaten, um Abweichungen bei der Verwendung bei einzelnen Veranstaltungsorten aufzudecken. Wählen Sie in Power BI die folgenden Optionen aus, um ein Balkendiagramm mit der Gesamtanzahl der pro Veranstaltungsort verkauften Tickets zu zeichnen. Aufgrund der zufälligen Verteilung im Ticket-Generator können Ihre Ergebnisse von der Darstellung abweichen.
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![Screenshot: Power BI-Visualisierung und Steuerelemente für die Datenvisualisierung auf der rechten Seite.](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Die Darstellung oben bestätigt, dass die Anzahl der verkauften Tickets für die einzelnen Veranstaltungsorte variiert. Veranstaltungsorte, die mehr Tickets verkaufen, nutzen Ihren Dienst stärker als solche, die weniger Tickets verkaufen. Dies bietet eventuell eine Möglichkeit, die Ressourcenzuordnung gemäß den unterschiedlichen Mandantenanforderungen anzupassen.
 
 Sie können die Daten noch weiter analysieren, um festzustellen, wie die Ticketverkäufe sich über die Zeit ändern. Wählen Sie in Power BI die folgenden Optionen aus, um die Gesamtanzahl der pro Tag verkauften Tickets für einen Zeitraum von 60 Tagen zu zeichnen.
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![Screenshot. Power BI-Visualisierung namens „Ticket Sale Distribution versus Sale Day“.](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 Im vorherige Diagramm zeigen sich bei einigen Veranstaltungsorten Spitzen in den Ticketverkäufen. Diese Spitzen untermauern die Vermutung, dass einige Veranstaltungsorte unverhältnismäßig mehr Systemressourcen verbrauchen als andere. Es gibt bisher aber noch kein offensichtliches Muster für die Spitzen.
 

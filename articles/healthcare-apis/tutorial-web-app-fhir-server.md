@@ -10,12 +10,12 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b1dc7d7eee263b781d39c4beccf9388efbaa3d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb183b5c8aff018d4dc73819b938b24ad0daa934
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334136"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975789"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>Bereitstellen einer JavaScript-App zum Lesen von Daten aus dem FHIR-Dienst
 In diesem Tutorial stellen Sie eine kleine JavaScript-App bereit, die Daten aus einem FHIR-Dienst liest. Die folgenden Schritte werden in diesem Tutorial beschrieben:
@@ -36,7 +36,7 @@ Bevor Sie mit dieser Tutorialreihe beginnen, benötigen Sie Folgendes:
 ## <a name="deploy-azure-api-for-fhir"></a>Bereitstellen von Azure API for FHIR
 Der erste Schritt im Tutorial ist das ordnungsgemäße Einrichten von Azure API for FHIR.
 
-1. Stellen Sie [Azure API for FHIR](fhir-paas-portal-quickstart.md) bereit.
+1. Stellen Sie [Azure API for FHIR](fhir-paas-portal-quickstart.md) bereit, sofern noch nicht geschehen.
 1. Sobald Sie Azure API for FHIR bereitgestellt haben, konfigurieren Sie die [CORS](configure-cross-origin-resource-sharing.md)-Einstellungen. Dazu rufen Sie Azure API for FHIR aus und wählen CORS aus. 
     1. Legen Sie **Ursprünge** auf * fest.
     1. Legen Sie **Header** auf * fest.

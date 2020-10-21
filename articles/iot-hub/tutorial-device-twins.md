@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251880"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842766"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -191,11 +191,11 @@ node ServiceClient.js "{your service connection string}"
 
 Im folgenden Screenshot ist die Ausgabe der Anwendung zur Simulation eines Geräts dargestellt, und die Verarbeitung einer Aktualisierung der gewünschten Eigenschaft **maxTemperature** ist hervorgehoben. Sie sehen, wie der Handler der obersten Ebene und die Komponente „climate“ ausgeführt werden:
 
-![Simuliertes Gerät](./media/tutorial-device-twins/SimulatedDevice1.png)
+![Screenshot, der zeigt, wie der Handler der obersten Ebene und die Handler der Komponente „climate“ ausgeführt werden](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung dargestellt, und das Senden einer Aktualisierung der gewünschten Eigenschaft **maxTemperature** ist hervorgehoben:
 
-![Back-End-Anwendung](./media/tutorial-device-twins/BackEnd1.png)
+![Screenshot, der die Ausgabe der Back-End-Anwendung zeigt und auf dem das Senden einer Aktualisierung hervorgehoben ist](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>Empfangen von Statusinformationen
 

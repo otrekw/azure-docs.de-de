@@ -1,17 +1,17 @@
 ---
 title: Übersicht über Netzwerkkonzepte – Azure Database for PostgreSQL – Flexible Server
 description: In diesem Artikel erfahren Sie mehr über die Konnektivitäts- und Netzwerkoptionen in der Bereitstellungsoption „Flexible Server“ für Azure Database for PostgreSQL.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 38dd103189446e287f3d62d93344ed89a364d238
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930311"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708780"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Übersicht über Netzwerkkonzepte – Azure Database for PostgreSQL – Flexible Server
 
@@ -62,7 +62,7 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 
    Ihre PostgreSQL Flexible Server-Instanz muss sich in einem Subnetz befinden, das eigens für PostgreSQL Flexible Server-Instanzen eingeteilt (**delegiert**) wurde. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for PostgreSQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden. Sie können ein Subnetz delegieren, indem Sie „Microsoft.DBforPostgreSQL/flexibleServers“ als Delegierungseigenschaft festlegen.
 
-Unter den folgenden Links erfahren Sie, wie Sie einen flexiblen Server mit privatem Zugriff (VNET-Integration) im [Azure-Portal](how-to-manage-virtual-network-portal.md) oder über die [Azure CLI](how-to-manage-virtual-network-cli.md) erstellen.
+* **Netzwerksicherheitsgruppen (NSG):** Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nicht unterstützte virtuelle Netzwerkszenarios
@@ -71,6 +71,7 @@ Unter den folgenden Links erfahren Sie, wie Sie einen flexiblen Server mit priva
 * Die Subnetzgröße (Adressräume) kann nicht erhöht werden, sobald Ressourcen im Subnetz vorhanden sind.
 * VNET-Peering wird nicht unterstützt.
 
+Unter den folgenden Links erfahren Sie, wie Sie einen flexiblen Server mit privatem Zugriff (VNET-Integration) im [Azure-Portal](how-to-manage-virtual-network-portal.md) oder über die [Azure CLI](how-to-manage-virtual-network-cli.md) erstellen.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Öffentlicher Zugriff (zugelassene IP-Adressen)
 Die öffentliche Zugriffsmethode weist u. a. folgende Eigenschaften auf:
@@ -107,12 +108,9 @@ Wenn der Zugriff auf den Microsoft Azure-Datenbank für PostgreSQL-Serverdienst 
 ## <a name="hostname"></a>Hostname
 Unabhängig von Ihrer gewählten Netzwerkoption empfiehlt es sich, beim Herstellen einer Verbindung mit Ihrem flexiblen Server immer einen FQDN als Hostnamen zu verwenden. Es ist nicht gewährleistet, dass die IP-Adresse des Servers statisch bleibt. Mithilfe des FQDN können Sie verhindern, dass Änderungen an der Verbindungszeichenfolge vorgenommen werden. 
 
-Die IP-Adresse ändert sich beispielsweise in Szenarios, in denen zonenredundante Hochverfügbarkeit verwendet und ein Failover zwischen einem primären und einem sekundären Replikat durchgeführt wird. Wenn Sie den FQDN verwenden, können Sie Verbindungsversuche mit derselben Verbindungszeichenfolge nahtlos wiederholen.
-
 Beispiel
 * Empfohlen: `hostname = servername.postgres.database.azure.com`
-* Vermeiden Sie `hostname = 10.0.0.4` (private Adresse) oder `hostname = 40.2.45.67` (öffentliche Adresse)
-
+* Vermeiden Sie nach Möglichkeit die Verwendung von `hostname = 10.0.0.4` (eine private Adresse) oder `hostname = 40.2.45.67` (eine öffentliche Adresse).
 
 
 ## <a name="tls-and-ssl"></a>TLS und SSL

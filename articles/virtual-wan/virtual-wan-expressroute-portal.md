@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821884"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054813"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung mithilfe von Azure Virtual WAN
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Ändern einer Gatewaygröße
 > * Ankündigen einer Standardroute
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
@@ -153,6 +153,17 @@ Wenn Sie möchten, dass der virtuelle Azure-Hub die Standardroute 0.0.0.0.0.0/0 
 
    ![Standardroute weitergeben](./media/virtual-wan-expressroute-portal/defaultroute2.png "Standardroute weitergeben")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Bereinigen von Ressourcen
+
+Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+Weitere Informationen zu Virtual WAN finden Sie im folgenden Artikel:
+
+> [!div class="nextstepaction"]
+> * [Virtual WAN – Häufig gestellte Fragen](virtual-wan-faq.md)

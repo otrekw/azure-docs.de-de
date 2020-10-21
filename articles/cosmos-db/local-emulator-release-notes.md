@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566687"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777172"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-Emulator: Versionshinweise und Informationen zum Download
 
@@ -25,6 +25,10 @@ Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Li
 |**Erste Schritte**|[Lokale Entwicklung mit dem Azure Cosmos-Emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="2116-6-october-2020"></a>2.11.6 (6. Oktober 2020)
+
+ - In diesem Release wird ein Problem in Zusammenhang mit der Parallelität behoben, das auftreten kann, wenn mehrere Container gleichzeitig erstellt werden. In solchen Fällen verbleiben die Daten des Emulators in einem beschädigten Zustand, und bei anschließenden API-Anforderungen an den Endpunkt des Emulators können Fehler mit der Meldung „Dienst nicht verfügbar“ auftreten. Dann ist ein Neustart erforderlich, und die lokalen Daten des Emulators müssen zurückgesetzt werden.
 
 ### <a name="2115-23-august-2020"></a>2.11.5 (23. August 2020)
 

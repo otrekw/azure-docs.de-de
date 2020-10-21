@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 09/21/2020
-  ms.openlocfilehash: 197cf8ca3f819a83d13869a43c3685bba916ce4f
-  ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+  ms.date: 10/19/2020
+  ms.openlocfilehash: 31b3ad9c33ffd07b62067de3aa46333608522f97
+  ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/12/2020
-  ms.locfileid: "91949104"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92172131"
 landingContent:
 - title: Informationen zu Azure VMware Solution
   linkLists:
@@ -36,14 +36,12 @@ landingContent:
       url: concepts-role-based-access-control.md
     - text: Upgrades für private Clouds
       url: concepts-upgrades.md
-- title: Bereitstellen von Azure VMware Solution
+- title: Erste Schritte
   linkLists:
-  - linkListType: get-started
+  - linkListType: deploy
     links:
-    - text: Prozess für die Vorbereitung der Bereitstellung
+    - text: Planen der Bereitstellung
       url: production-ready-deployment-steps.md
-    - text: Checkliste für die Vorbereitung der Bereitstellung
-      url: pre-deployment-checklist.md
     - text: 1. Bereitstellen von Azure VMware Solution
       url: deploy-azure-vmware-solution.md
     - text: 2. Herstellen einer Verbindung mit lokalen Ressourcen
@@ -64,14 +62,16 @@ landingContent:
       url: tutorial-nsx-t-network-segment.md
     - text: Peering zwischen lokaler Umgebung und privater Cloud
       url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: Bereitstellen und Konfigurieren von VMware HCX
-      url: tutorial-deploy-vmware-hcx.md
     - text: Skalieren einer privaten Cloud
       url: tutorial-scale-private-cloud.md
 - title: Erweitern von Azure VMware Solution
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Aktivieren von Azure VMware Solution
+      url: enable-azure-vmware-solution.md
+    - text: Einsparen von Kosten mit einer reservierten Instanz
+      url: reserved-instance.md
     - text: Migrationsbewertung
       url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: Verwalten von DHCP
@@ -80,5 +80,49 @@ landingContent:
       url: disaster-recovery-for-virtual-machines.md
     - text: Bereitstellen einer VM über die Inhaltsbibliothek
       url: ./deploy-vm-content-library.md
-    - text: Verwenden der Funktion für öffentliche IP-Adressen
+    - text: Einrichten des GitHub Enterprise-Servers
+      url: github-enterprise-server.md
+    - text: Nutzung öffentlicher IP-Adressen
       url: public-ip-usage.md
+    - text: Erstellen eines IPsec-Tunnels
+      url: create-ipsec-tunnel.md
+- title: Native Azure-Integration
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: API Management
+      url: concepts-api-management.md
+    - text: Hub-and-Spoke-Modell
+      url: concepts-hub-and-spoke.md
+    - text: Azure Backup Server
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: Lebenszyklusverwaltung auf virtuellen Computern
+      url: lifecycle-management-of-azure-vmware-solution-vms.md
+    - text: Application Gateway
+      url: protect-azure-vmware-solution-with-application-gateway.md
+    - text: Traffic Manager
+      url: deploy-traffic-manager-balance-workloads.md
+- title: VMware Solutions
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten von vRealize-Vorgängen
+      url: vrealize-operations-for-azure-vmware-solution.md
+    - text: Bereitstellen von VMware Horizon
+      url: azure-vmware-solution-horizon.md
+- title: VMware-Ökosystem
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sicherungslösungen für virtuelle Computer
+      url: ecosystem-back-up-vms.md
+- title: Ressourcen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.vmware
+    - text: Hilfe bei Bereitstellungsfehlern
+      url: fix-deployment-provisioning-failures.md
+    - text: Häufig gestellte Fragen
+      url: faq.md

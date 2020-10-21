@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554374"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Tutorial: Azure Active Directory-Integration mit Nimblex
 
@@ -132,19 +132,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Nimblex
 
 2. Klicken Sie rechts oben auf der Seite auf das Logo **Einstellungen**.
 
-    ![Nimblex-Einstellungen](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![Screenshot: Einstellungssymbol](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. Klicken Sie auf der Seite **Control Panel** unter **Security** auf **Single Sign-on**.
 
-    ![Nimblex-Einstellungen](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![Screenshot, auf dem die Option „Single Sign-On“ (Einmaliges Anmelden) im Menü „Security“ (Sicherheit) ausgewählt ist](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. Wählen Sie auf der Seite **Manage Single Sign-On** den Namen Ihrer Instanz aus, und klicken Sie auf **Edit**.
 
-    ![Nimblex-SAML](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![Screenshot: Abschnitt „Manage Single Sign-On“ (Einmaliges Anmelden verwalten), in dem Sie „Edit“ (Bearbeiten) auswählen können](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. Führen Sie auf der Seite **Edit SAML SettingsSSO Provider** die folgenden Schritte aus:
 
-    ![Nimblex-SAML](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![Screenshot: Abschnitt „Edit SSO Provider“ (SSO-Anbieter bearbeiten), in dem Sie die beschriebenen Werte eingeben können](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. Geben Sie im Textfeld **Description** den Namen Ihrer Instanz ein.
 

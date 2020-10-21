@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850378"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -29,8 +29,9 @@ Um alle Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
 1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
 1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
-1. Geben Sie unter **Grundlagen** die erforderlichen Felder ein, und wählen Sie einen Arbeitsbereichsnamen aus. In diesem Tutorial wird **myworkspace** verwendet.
-1. Zum Erstellen eines Arbeitsbereichs benötigen Sie ein ADLSGEN2-Konto. Am einfachsten ist es, ein solches Konto neu zu erstellen. Wenn Sie ein vorhandenes Konto verwenden möchten, müssen Sie einige zusätzliche Konfigurationsschritte ausführen. 
+1. Geben Sie unter **Grundlagen** die bevorzugten Werte für **Abonnement**, **Ressourcengruppe** und **Region** ein, und wählen Sie dann einen Arbeitsbereichsnamen aus. In diesem Tutorial wird **myworkspace** verwendet.
+1. Zum Erstellen eines Arbeitsbereichs benötigen Sie ein ADLSGEN2-Konto sowie einen Container in diesem Konto. Am einfachsten ist es, ein solches Konto neu zu erstellen. Wenn Sie ein vorhandenes Konto verwenden möchten, müssen Sie einige zusätzliche Konfigurationsschritte ausführen. 
+    1. Der Synapse-Arbeitsbereich verwendet diesen Container als Standardspeicherort zum Speichern von Spark-Protokollen und -Daten für Spark-Tabellen.
 1. OPTION 1: Erstellen eines neuen ADLSGEN2-Kontos 
     1. Navigieren Sie zu **Data Lake Storage Gen 2 auswählen**. 
     1. Klicken Sie auf **Neu erstellen**, und geben Sie den Namen **contosolake** ein.

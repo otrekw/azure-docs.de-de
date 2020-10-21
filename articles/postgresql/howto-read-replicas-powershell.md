@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Lesereplikaten – Azure PowerShell – Azure Database for PostgreSQL
 description: Erfahren Sie, wie Sie mit PowerShell Lesereplikate in Azure Database for PostgreSQL einrichten und verwalten.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26c6f70f92e4c372c0ff6afbcbb3c0bb284e2f6c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502534"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704785"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL mithilfe von PowerShell
 
@@ -38,7 +38,7 @@ Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cm
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Das Feature für Lesereplikate ist nur für Azure Database for PostgreSQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
+> Das Feature für Lesereplikate ist nur für Azure Database for PostgreSQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den primären Server einer der folgenden Tarife festgelegt ist.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
@@ -65,14 +65,14 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md).
 
-Standardmäßig werden Lesereplikate mit der gleichen Serverkonfiguration wie der Master erstellt, es sei denn, der Parameter **Sku** wird angegeben.
+Standardmäßig werden Lesereplikate mit derselben Serverkonfiguration wie der primäre Server erstellt, es sei denn, der Parameter **Sku** wird angegeben.
 
 > [!NOTE]
-> Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Masterserver, damit das Replikat über genügend Kapazität verfügt.
+> Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den primären Server, damit das Replikat über genügend Kapazität verfügt.
 
-### <a name="list-replicas-for-a-master-server"></a>Auflisten von Replikaten für einen Masterserver
+### <a name="list-replicas-for-a-primary-server"></a>Auflisten von Replikaten für einen primären Server
 
-Führen Sie den folgenden Befehl aus, um alle Replikate für einen bestimmten Masterserver anzuzeigen:
+Führen Sie den folgenden Befehl aus, um alle Replikate für einen bestimmten primären Server anzuzeigen:
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -83,7 +83,7 @@ Für den Befehl `Get-AzMariaDReplica` sind folgende Parameter erforderlich:
 | Einstellung | Beispielwert | BESCHREIBUNG  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Die Ressourcengruppe, in der der Replikatserver erstellt wird.  |
-| ServerName | mydemoserver | Der Name oder die ID des Masterservers. |
+| ServerName | mydemoserver | Der Name oder die ID des primären Servers. |
 
 ### <a name="delete-a-replica-server"></a>Löschen eines Replikatservers
 
@@ -93,12 +93,12 @@ Zum Löschen eines Lesereplikatservers können Sie das Cmdlet `Remove-AzPostgreS
 Remove-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Löschen eines Masterservers
+### <a name="delete-a-primary-server"></a>Löschen eines primären Servers
 
 > [!IMPORTANT]
-> Wenn Sie einen Masterserver löschen, wird die Replikation auf allen Replikatservern beendet und der Masterserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
+> Wenn Sie einen primären Server löschen, wird die Replikation auf allen Replikatservern beendet, und der primäre Server selbst wird gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 
-Zum Löschen eines Masterservers können Sie das Cmdlet `Remove-AzPostgreSqlServer` ausführen.
+Zum Löschen eines primären Servers können Sie das Cmdlet `Remove-AzPostgreSqlServer` ausführen.
 
 ```azurepowershell-interactive
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

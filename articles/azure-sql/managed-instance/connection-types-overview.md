@@ -11,12 +11,12 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356298"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Managed Instance: Verbindungstypen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Azure SQL Managed Instance unterstützt die zwei folgenden Verbindungstypen:
 
 Im Umleitungsverbindungstyp ruft die Clientsitzung nach dem Einrichten der TCP-Sitzung mit der SQL-Engine die virtuelle IP-Zieladresse des virtuellen Clusterknotens vom Lastenausgleich ab. Nachfolgende Pakete gelangen unter Umgehung des Gateways direkt zum virtuellen Clusterknoten. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![Im Diagramm ist ein lokales Netzwerk zu sehen, in dem „redirect-find-db“ mit einem Gateway in einem virtuellen Azure-Netzwerk und eine „redirect-query“ mit einem primären Datenbankknoten im virtuellen Netzwerk verbunden ist.](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > Der Umleitungsverbindungstyp funktioniert zurzeit nur für einen privaten Endpunkt. Unabhängig von der Verbindungstypeinstellung erfolgen Verbindungen über den öffentlichen Endpunkt über einen Proxy.
@@ -43,7 +43,7 @@ Im Umleitungsverbindungstyp ruft die Clientsitzung nach dem Einrichten der TCP-S
 
 Im Proxyverbindungstyp wird die TCP-Sitzung über das Gateway eingerichtet und alle nachfolgenden Pakete durchlaufen es. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![Im Diagramm ist ein lokales Netzwerk mit einem Proxy zu sehen, der mit einem Gateway in einem virtuellen Azure-Netzwerk verbunden ist, wobei das Gateway mit einem primären Datenbankknoten im virtuellen Netzwerk verbunden ist.](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>Ändern des Verbindungstyps
 

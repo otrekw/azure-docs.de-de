@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483744"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566991"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Häufig gestellte Fragen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Wie kann ich SQL Server auf Azure-VMs generalisieren und für die Bereitstellung neuer VMs verwenden?**
 
-   Sie können eine Windows Server-VM (ohne SQL Server-Installation) bereitstellen und [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) verwenden, um SQL Server auf Azure-VMs (Windows) mit dem SQL Server-Installationsmedium zu generalisieren. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus dem Azure Marketplace mit der gewünschten Edition verwenden.
+   Sie können eine Windows Server-VM (ohne SQL Server-Installation) bereitstellen und [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) verwenden, um SQL Server auf Azure-VMs (Windows) mit dem SQL Server-Installationsmedium zu generalisieren. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus dem Azure Marketplace mit der gewünschten Edition verwenden.
 
    Alternativ können Sie die SQL Server-Images aus dem Azure Marketplace verwenden, um SQL Server auf Azure-VMs zu generalisieren. Beachten Sie, dass der folgende Registrierungsschlüssel im Quellimage gelöscht werden muss, bevor Sie ein eigenes Image erstellen. Anderenfalls kann es zu einer Überfrachtung des SQL Server-Setupbootstrap-Ordners und/oder zu einem Fehler bei der SQL-IaaS-Erweiterung kommen.
 
@@ -179,13 +179,21 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
    
    Ja, wenn die benannte Instanz die einzige SQL Server-Instanz ist und die ursprüngliche Standardinstanz [ordnungsgemäß deinstalliert](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance) wurde. Wenn es keine Standardinstanz gibt und zugleich mehrere benannte Instanzen auf einer einzelnen SQL Server-VM vorhanden sind, kann die SQL Server-IaaS-Agent-Erweiterung nicht installiert werden. 
 
-1. **Kann ich SQL Server vollständig von einer SQL Server-VM entfernen?**
+1. **Kann ich SQL Server und die zugehörige Lizenzabrechnung aus einer SQL Server-VM entfernen?**
 
-   Ja, die Abrechnung basiert jedoch weiterhin auf Ihrer SQL Server-VM, wie in den [Preisinformationen für virtuelle Azure-Computer mit SQL Server](pricing-guidance.md) beschrieben. Wenn Sie SQL Server nicht mehr benötigen, können Sie einen neuen virtuellen Computer bereitstellen und die Daten und Anwendungen zu diesem neuen virtuellen Computer migrieren. Anschließend können Sie den virtuellen SQL Server-Computer entfernen.
+   Ja, aber Sie müssen zusätzliche Schritte ausführen, um zu vermeiden, dass Ihre SQL Server-Instanz in Rechnung gestellt wird, wie dies unter [Preisinformationen für Azure-VMs mit SQL Server](pricing-guidance.md) beschrieben ist. Wenn Sie die SQL Server-Instanz vollständig entfernen möchten, können Sie zu einer anderen Azure-VM migrieren, auf der SQL Server nicht vorinstalliert ist, und dann die aktuelle SQL Server-VM löschen. Führen Sie die folgenden Schritte aus, wenn Sie die VM behalten, aber die SQL Server-Abrechnung beenden möchten: 
+
+   1. Sichern Sie ggf. alle Daten einschließlich der Systemdatenbanken. 
+   1. Deinstallieren Sie SQL Server vollständig, einschließlich der SQL-IaaS-Erweiterung (sofern vorhanden).
+   1. Installieren Sie die kostenlose [SQL Express-Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
+   1. Registrieren Sie sich beim SQL-VM-Ressourcenanbieter im [Modus „Lightweight“](sql-vm-resource-provider-register.md).
+   1. (Optional) Deaktivieren Sie den Express SQL Server-Dienst, indem Sie den Dienststart deaktivieren. 
 
 1. **Kann ich über das Azure-Portal mehrere Instanzen auf derselben VM verwalten?**
+
    Nein. Die Portalverwaltung wird vom SQL Server-VM-Ressourcenanbieter bereitgestellt und basiert auf der SQL Server-IaaS-Agent-Erweiterung. Daher gelten für den Ressourcenanbieter die gleichen Einschränkungen wie für die Erweiterung. Das Portal kann nur eine Standardinstanz oder eine benannte Instanz verwalten, sofern diese ordnungsgemäß konfiguriert ist. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md). 
-   
+
+
 ## <a name="updating-and-patching"></a>Aktualisieren und Patchen
 
 1. **Wie wechsle ich auf einem virtuellen Azure-Computer zu einer anderen Version/Edition von SQL Server?**

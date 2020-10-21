@@ -8,17 +8,17 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293044"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360785"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Sicherung und Wiederherstellung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -129,23 +129,23 @@ In der folgenden Tabelle sind die Funktionen jeder Sicherungs- und Wiederherstel
 
 | Option | Automatisierte Sicherung | Azure Backup für SQL | Manuelle Sicherung |
 |---|---|---|---|
-| Erfordert zusätzlichen Azure-Dienst |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Konfigurieren einer Sicherungsrichtlinie im Azure-Portal | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |
-| Wiederherstellen von Datenbanken im Azure-Portal |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Verwalten mehrerer Server in einem Dashboard |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Wiederherstellung bis zu einem bestimmten Zeitpunkt | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
-| Recovery Point Objective (RPO) von 15 Minuten | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
-| Richtlinie für kurzfristige Sicherungsaufbewahrung (Tage) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |
-| Richtlinie für langfristige Sicherungsaufbewahrung (Monate, Jahre) |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Integrierte Unterstützung für SQL Server Always On |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Sicherung in Azure Storage-Konten | ![Ja](./media/backup-restore/yes.png)(automatisch) | ![Ja](./media/backup-restore/yes.png)(automatisch) | ![Ja](./media/backup-restore/yes.png)(vom Kunden verwaltet) |
-| Verwaltung von Speicher- und Sicherungsdateien | | ![Ja](./media/backup-restore/yes.png) |  |
-| Sicherung auf angefügten Datenträgern auf der VM |   |   | ![Ja](./media/backup-restore/yes.png) |
-| Zentrale, anpassbare Sicherungsberichte |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Konsolidierte E-Mail-Benachrichtigungen bei Fehlern |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Anpassen der Überwachung auf der Grundlage von Azure Monitor-Protokollen |   | ![Ja](./media/backup-restore/yes.png) |   |
-| Überwachen von Sicherungsaufträgen mit SSMS oder Transact-SQL-Skripts | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
-| Wiederherstellen von Datenbanken mit SSMS oder Transact-SQL-Skripts | ![Ja](./media/backup-restore/yes.png) |   | ![Ja](./media/backup-restore/yes.png) |
+| Erfordert zusätzlichen Azure-Dienst |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Konfigurieren einer Sicherungsrichtlinie im Azure-Portal | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Wiederherstellen von Datenbanken im Azure-Portal |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Verwalten mehrerer Server in einem Dashboard |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Wiederherstellung bis zu einem bestimmten Zeitpunkt | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) |
+| Recovery Point Objective (RPO) von 15 Minuten | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) |
+| Richtlinie für kurzfristige Sicherungsaufbewahrung (Tage) | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Richtlinie für langfristige Sicherungsaufbewahrung (Monate, Jahre) |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Integrierte Unterstützung für SQL Server Always On |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Sicherung in Azure Storage-Konten | ![Grünes Häkchen](./media/backup-restore/yes.png)(automatisch) | ![Grünes Häkchen](./media/backup-restore/yes.png)(automatisch) | ![Grünes Häkchen](./media/backup-restore/yes.png)(vom Kunden verwaltet) |
+| Verwaltung von Speicher- und Sicherungsdateien | | ![Grünes Häkchen](./media/backup-restore/yes.png) |  |
+| Sicherung auf angefügten Datenträgern auf der VM |   |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |
+| Zentrale, anpassbare Sicherungsberichte |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Konsolidierte E-Mail-Benachrichtigungen bei Fehlern |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Anpassen der Überwachung auf der Grundlage von Azure Monitor-Protokollen |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |   |
+| Überwachen von Sicherungsaufträgen mit SSMS oder Transact-SQL-Skripts | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) | ![Grünes Häkchen](./media/backup-restore/yes.png) |
+| Wiederherstellen von Datenbanken mit SSMS oder Transact-SQL-Skripts | ![Grünes Häkchen](./media/backup-restore/yes.png) |   | ![Grünes Häkchen](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555930"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Datadog
 
@@ -141,6 +141,22 @@ In diesem Abschnitt erstellen Sie in Datadog einen Benutzer namens B. Simon. Ar
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Datadog“ klicken, sollten Sie automatisch bei der Datadog-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>Ermöglichen der Authentifizierung mit der App für alle Benutzer in Ihrem Mandanten
+
+In diesem Abschnitt ermöglichen Sie allen Benutzern in Ihrem Mandanten den Zugriff auf Datadog, wenn ein Benutzer über ein Konto aufseiten von Datadog verfügt.
+
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Datadog** aus.
+1. Wählen Sie auf der Seite „Übersicht“ der App unter **Verwalten** die Option **Eigenschaften** aus.
+
+    ![Link „Eigenschaften“](common/properties.png)
+
+1. Wählen Sie für **Benutzerzuweisung erforderlich?** die Option **Nein** aus.
+
+    ![Benutzerzuweisung nicht erforderlich](common/user-assignment-not-required.png)
+
+1. Wählen Sie **Speichern**.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

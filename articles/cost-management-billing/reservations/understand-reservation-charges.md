@@ -6,18 +6,18 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 06/11/2020
+ms.date: 10/13/2020
 ms.author: banders
-ms.openlocfilehash: 1df60eedfb776164be7e78f2994027b8d111828b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 054641d8136d121e611182c8d8b104aefcbc6481
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681956"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057874"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Anwendung eines Rabatts für Reservierungen auf Azure SQL-Datenbank
 
-Nachdem Sie eine reservierte Azure SQL-Datenbank-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf SQL-Datenbank-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt die Computekosten Ihrer SQL-Datenbank-Instanz ab. Ihnen werden die regulären Gebühren für Software, Speicher und Netzwerke berechnet. Die Lizenzkosten für SQL-Datenbank-Instanzen können Sie mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) abdecken.
+Nachdem Sie eine reservierte Azure SQL-Datenbank-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf SQL-Datenbank-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung wird auf die Computekosten von SQL-Datenbank angewendet, einschließlich des primären Replikats und aller abrechenbarer sekundären Replikate. Ihnen werden die regulären Gebühren für Software, Speicher und Netzwerke berechnet. Die Lizenzkosten für SQL-Datenbank-Instanzen können Sie mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) abdecken.
 
 Beachten Sie, dass Reservierungsrabatte nicht für „Azure SQL-Datenbank – serverlos“ gelten.
 
@@ -31,7 +31,7 @@ Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf ei
 
 ## <a name="discount-applied-to-running-sql-databases"></a>Anwendung des Rabatts auf ausgeführte von SQL-Datenbank-Instanzen
 
- Der Rabatt für reservierte SQL-Datenbank-Kapazitäten wird auf ausgeführte SQL-Datenbank-Instanzen, die auf Stundenbasis abgerechnet werden, angewendet. Die Reservierung, die Sie kaufen, wird der Computenutzung zugeordnet, die von den ausgeführten SQL-Datenbank-Instanzen ausgegeben wird. Bei SQL-Datenbank-Instanzen, die nicht über die gesamte Stunde hinweg ausgeführt werden, wird die Reservierung automatisch auf andere SQL-Datenbank-Instanzen angewendet, die den Reservierungsattributen entsprechen. Der Rabatt kann auf SQL-Datenbank-Instanzen angewendet werden, die gleichzeitig ausgeführt werden. Wenn die den Reservierungsattributen entsprechenden SQL-Datenbank-Instanzen nicht über die gesamte Stunde hinweg ausgeführt werden, profitieren Sie nicht im vollen Umfang vom Reservierungsrabatt für diese Stunde.
+Der Rabatt für reservierte SQL-Datenbank-Kapazitäten wird auf ausgeführte SQL-Datenbank-Instanzen, die auf Stundenbasis abgerechnet werden, angewendet. Die Reservierung, die Sie kaufen, wird der Computenutzung zugeordnet, die von den ausgeführten SQL-Datenbank-Instanzen ausgegeben wird. Bei SQL-Datenbank-Instanzen, die nicht über die gesamte Stunde hinweg ausgeführt werden, wird die Reservierung automatisch auf andere SQL-Datenbank-Instanzen angewendet, die den Reservierungsattributen entsprechen. Der Rabatt kann auf SQL-Datenbank-Instanzen angewendet werden, die gleichzeitig ausgeführt werden. Wenn die den Reservierungsattributen entsprechenden SQL-Datenbank-Instanzen nicht über die gesamte Stunde hinweg ausgeführt werden, profitieren Sie nicht im vollen Umfang vom Reservierungsrabatt für diese Stunde.
 
 Die folgenden Beispiele zeigen, wie der Rabatt für reservierte SQL-Datenbank-Kapazitäten in Abhängigkeit von der Anzahl der Kerne, die Sie erworben haben, und der Dauer ihrer Ausführung angewendet wird.
 
@@ -42,6 +42,7 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte SQL-Dat
 - Szenario 2: Sie führen zwei SQL-Datenbank-Instanzen mit 8 Kernen jeweils eine Stunde lang aus. Der Reservierungsrabatt für 16 Kerne wird auf die Computenutzung für beide SQL-Datenbank-Instanzen mit 8 Kernen angewendet.
 - Szenario 3: Sie führen von 13 bis 13:30 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Beide Instanzen sind durch den Reservierungsrabatt abgedeckt.
 - Szenario 4: Sie führen von 13 bis 13:45 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
+- Szenario 5: Sie führen eine SQL Hyperscale-Datenbank mit vier Kernen und drei sekundären Replikaten aus, die jeweils vier Kerne besitzen. Die Reservierung wird auf die Computenutzung für das primäre Replikat und für alle sekundären Replikate angewendet.
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](understand-reserved-instance-usage-ea.md).
 

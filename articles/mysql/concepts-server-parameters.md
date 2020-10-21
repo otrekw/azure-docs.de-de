@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258552"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627345"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Serverparameter in Azure Database for MySQL
 
@@ -54,6 +54,12 @@ Um Leistungsprobleme bei kurzen Abfragen im Threadpool zu verbessern, können Si
 
 > [!IMPORTANT]
 > Testen Sie den Threadpool, bevor Sie ihn in der Produktionsumgebung aktivieren. 
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+In Azure Database for MySQL sind binäre Protokolle immer aktiviert (d. h., `log_bin` ist auf ON festgelegt). Wenn Sie versuchen, Trigger zu verwenden, erhalten Sie einen Fehler wie *Sie verfügen nicht über die SUPER-Berechtigung, und die binäre Protokollierung ist aktiviert (es kann ratsam sein, die weniger sichere Variable `log_bin_trust_function_creators` zu verwenden)* . 
+
+Das Format für binäre Protokollierung ist immer **ROW** (Zeile), und für alle Verbindungen mit dem Server wird **IMMER** zeilenbasierte binäre Protokollierung verwendet. Bei zeilenbasierter binäre Protokollierung gibt es keine Sicherheitsprobleme, und die binäre Protokollierung kann nicht unterbrochen werden, sodass Sie [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) sicher auf **TRUE** festlegen können.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -134,7 +140,7 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 |Universell|4|625|10|1250|
 |Universell|8|1250|10|2500|
 |Universell|16|2500|10|5.000|
-|Universell|32|5\.000|10|10000|
+|Universell|32|5.000|10|10000|
 |Universell|64|10000|10|20000|
 |Arbeitsspeicheroptimiert|2|625|10|1250|
 |Arbeitsspeicheroptimiert|4|1250|10|2500|
@@ -214,7 +220,7 @@ Wenn ein Fehler wie „Zeile zu groß (> 8126)“ angezeigt wird, sollten Sie de
 Dieser Parameter kann mithilfe von `init_connect` auf Sitzungsebene festgelegt werden. Informationen zum Festlegen von **innodb_strict_mode** auf Sitzungsebene finden Sie [Nicht aufgeführte Einstellungsparameter](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
 
 > [!NOTE]
-> Wenn Sie über einen Lesereplikatserver verfügen, wird die Replikation unterbrochen, wenn Sie **innodb_strict_mode** auf einem Masterserver auf Sitzungsebene auf OFF festlegen. Wir empfehlen, den Parameter auf OFF zu belassen, wenn Sie über Lesereplikate verfügen.
+> Wenn Sie über einen Lesereplikatserver verfügen, wird die Replikation unterbrochen, wenn Sie **innodb_strict_mode** auf einem Quellserver auf Sitzungsebene auf OFF festlegen. Wir empfehlen, den Parameter auf OFF zu belassen, wenn Sie über Lesereplikate verfügen.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

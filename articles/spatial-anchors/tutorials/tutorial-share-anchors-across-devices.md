@@ -8,33 +8,35 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 440d8af17bccaf8d3fcb92f65e5d91ed969aec31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358766"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971320"
 ---
-# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors
+# <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Raumankern
 
-In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) verwenden, um im Rahmen einer Sitzung Anker zu erstellen und diese anschließend auf dem gleichen oder auf einem anderen Gerät zu finden. Die gleichen Anker können auch von mehreren Geräten am gleichen Ort und zur selben Zeit gefunden werden.
+Azure Spatial Anchors ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. 
 
-![Animation, die mit einem mobilen Gerät erstellte Azure Spatial Anchors zeigt, die im Laufe der Tage mit einem anderen Gerät verwendet werden.](./media/persistence.gif)
+In diesem Tutorial verwenden Sie [Azure Spatial Anchors](../overview.md), um im Rahmen einer Sitzung Anker zu erstellen und diese anschließend auf dem gleichen oder auf einem anderen Gerät zu finden. Die gleichen Anker können auch von mehreren Geräten am gleichen Ort und zur gleichen Zeit gefunden werden.
 
-Azure Spatial Anchors ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. Nach Abschluss des Vorgangs verfügen Sie über eine App, die auf zwei oder mehr Geräten bereitgestellt werden kann. Von einer Instanz erstellte Azure Spatial Anchors-Bezeichner können für die anderen Instanzen freigegeben werden.
+![Animation, die mit einem mobilen Gerät erstellte Raumanker zeigt, die im Laufe der Tage mit einem anderen Gerät verwendet werden.](./media/persistence.gif)
 
-Sie lernen Folgendes:
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Bereitstellen einer ASP.NET Core-Web-App in Azure, die zum Freigeben von Ankern verwendet werden kann (Speicherung im Arbeitsspeicher für einen bestimmten Zeitraum)
-> * Konfigurieren der AzureSpatialAnchorsLocalSharedDemo-Szene im Unity-Beispiel aus den Schnellstartanleitungen, um die Sharing Anchors-Web-App zu nutzen
-> * Bereitstellen und Ausführen auf einem oder mehreren Geräten
+> * Bereitstellen einer ASP.NET Core-Web-App in Azure, mit der Sie Anker freigeben können, und Speichern der Anker im Speicher für einen bestimmten Zeitraum
+> * Konfigurieren der AzureSpatialAnchorsLocalSharedDemo-Szene im Unity-Beispiel aus den Schnellstartanleitungen, um die Web-App für die Freigabe von Ankern (Sharing Anchors-Web-App) zu nutzen
+> * Bereitstellen und Ausführen der Anker auf einem oder mehreren Geräten
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP.NET Core-Web-App, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Azure Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen.
+> [!NOTE]
+> Sie verwenden in diesem Tutorial zwar Unity und eine ASP.NET Core-Web-App, aber dieser Ansatz dient nur als Beispiel für die geräteübergreifende Freigabe von Azure Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -42,21 +44,21 @@ Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-## <a name="deploy-your-sharing-anchors-service"></a>Bereitstellen Ihres Diensts für die Freigabe von Ankern (Sharing Anchors)
+## <a name="deploy-the-sharing-anchors-service"></a>Bereitstellen des Diensts für die Freigabe von Ankern (Sharing Anchors)
 
 ## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
-Öffnen Sie Visual Studio und dann das Projekt im Ordner `Sharing\SharingServiceSample`.
+Öffnen Sie Visual Studio und dann das Projekt im Ordner *Sharing\SharingServiceSample*.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
 ## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
-Sie müssen eine Ressourcengruppe und einen App Service-Plan erstellen, bevor Sie den Dienst in VS Code bereitstellen.
+Sie müssen eine Ressourcengruppe und einen App Service-Plan erstellen, bevor Sie den Dienst in Visual Studio Code bereitstellen.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Navigieren Sie zum <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a>, und melden Sie sich bei Ihrem Azure-Abonnement an.
+Navigieren Sie zum <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a>, und melden Sie sich dann bei Ihrem Azure-Abonnement an.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -64,7 +66,7 @@ Navigieren Sie zum <a href="https://portal.azure.com/" target="_blank">Azure-Por
 
 Wählen Sie neben **Ressourcengruppe** die Option **Neu** aus.
 
-Nennen Sie die Ressourcengruppe **myResourceGroup**, und wählen Sie **OK** aus.
+Nennen Sie die Ressourcengruppe **myResourceGroup**, und wählen Sie anschließend **OK** aus.
 
 ### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
@@ -72,17 +74,19 @@ Nennen Sie die Ressourcengruppe **myResourceGroup**, und wählen Sie **OK** aus.
 
 Wählen Sie neben **Hostingplan** die Option **Neu** aus.
 
-Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die folgenden Einstellungen:
+Verwenden Sie im Bereich **Hostingplan konfigurieren** die folgenden Einstellungen:
 
 | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
 |-|-|-|
-|App Service-Plan| MySharingServicePlan | Name des App Service-Plans. |
-| Standort | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
-| Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), der die Hostingfunktionen festlegt. |
+|App Service-Plan| MySharingServicePlan | Name des App Service-Plans |
+| Standort | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird |
+| Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), der die Hostingfunktionen festlegt |
 
 Klicken Sie auf **OK**.
 
-Öffnen Sie Visual Studio Code und dann das Projekt im Ordner `Sharing\SharingServiceSample`. Führen Sie die Schritte in <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">diesem Tutorial</a> aus, um den Freigabedienst über Visual Studio Code bereitzustellen. Sie können die Schritte ab dem Abschnitt „Öffnen mit Visual Studio Code“ ausführen. Erstellen Sie kein weiteres ASP.NET-Projekt wie in den obigen Schritten beschrieben, da Sie bereits über das Projekt für die Bereitstellung und Veröffentlichung verfügen: SharingServiceSample.
+Öffnen Sie Visual Studio Code und dann das Projekt im Ordner *Sharing\SharingServiceSample*. 
+
+Wenn Sie den Freigabedienst über Visual Studio Code bereitstellen möchten, befolgen Sie die Anweisungen unter <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Veröffentlichen einer ASP.NET Core-App in Azure mit Visual Studio Code</a>. Beginnen Sie mit dem Abschnitt „Öffnen mit Visual Studio Code“. Erstellen Sie kein weiteres ASP.NET-Projekt wie in den obigen Schritten beschrieben, da Sie bereits über das Projekt für die Bereitstellung und Veröffentlichung verfügen: SharingServiceSample.
 
 ---
 
@@ -94,10 +98,10 @@ Klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine ASP.NET Core-Web-App in Azure bereitgestellt und anschließend eine Unity-App konfiguriert und bereitgestellt. Sie haben Spatial Anchors-Bezeichner mit der App erstellt und mithilfe der ASP.NET Core-Web-App für andere Geräte freigegeben.
+In diesem Tutorial haben Sie eine ASP.NET Core-Web-App in Azure bereitgestellt sowie eine Unity-App konfiguriert und bereitgestellt. Sie haben Raumanker mit der App erstellt und mithilfe der ASP.NET Core-Web-App für andere Geräte freigegeben.
 
-Sie können Ihre ASP.NET Core-Web-App so optimieren, dass sie Azure Cosmos DB zur Speicherung der freigegebenen Spatial Anchors-Bezeichner nutzt. Durch Hinzufügen der Azure Cosmos DB-Unterstützung kann Ihre ASP.NET Core-Web-App anhand des in Ihrer Web-App gespeicherten Ankerbezeichners einen Anker wiederfinden, den sie vor mehreren Tagen erstellt hat.
+Sie können Ihre ASP.NET Core-Web-App so optimieren, dass sie Azure Cosmos DB zur Speicherung der freigegebenen Raumankerbezeichner nutzt. Indem Sie Unterstützung für Azure Cosmos DB hinzufügen, können Sie noch heute Ihre ASP.NET Core-Web-App einen Anker erstellen lassen. Anschließend können Sie mithilfe des Ankerbezeichners, der in Ihrer Web-App gespeichert ist, festlegen, dass die App einige Tage später den Anker erneut sucht.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors mit einem Azure Cosmos DB-Back-End](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [Verwenden von Azure Cosmos DB zum Speichern von Ankern](./tutorial-use-cosmos-db-to-store-anchors.md)
 

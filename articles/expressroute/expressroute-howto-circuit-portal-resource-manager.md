@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: e25ebd181d0017885a24310e3dac3ff30a59a21e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c2e0f7736aa5d6779e4ed7cb3824f6606c121565
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973358"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073137"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Schnellstart: Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -172,7 +172,7 @@ Wenn der Bereitstellungsstatus des ExpressRoute-Verbindungsdienstanbieters **Ber
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie hierzu das Symbol **Löschen**. 
+Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie hierzu das Symbol **Löschen**. Sorgen Sie dafür, dass der Bereitstellungsstatus *Nicht bereitgestellt* lautet, bevor Sie fortfahren.
 
 :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Erstellen Sie eine ExpressRoute-Verbindung.":::
 

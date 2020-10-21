@@ -1,17 +1,17 @@
 ---
 title: Übersicht über Netzwerkkonzepte – Azure Database for MySQL Flexible Server
 description: In diesem Artikel erfahren Sie mehr über die Konnektivitäts- und Netzwerkoptionen in der Bereitstellungsoption „Flexible Server“ für Azure Database for MySQL.
-author: rachel-msft
-ms.author: raagyema
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 48265856e5e745e05f6625766f9cd0c9b15c90a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930334"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708661"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Konnektivitäts- und Netzwerkkonzepte für Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -62,6 +62,8 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 
    Ihre MySQL Flexible Server-Instanz muss sich in einem Subnetz befinden, das eigens für MySQL Flexible Server-Instanzen eingeteilt (**delegiert**) wurde. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for MySQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden. Sie können ein Subnetz delegieren, indem Sie „Microsoft.DBforMySQL/flexibleServers“ als Delegierungseigenschaft festlegen.
 
+* **Netzwerksicherheitsgruppen (NSG):** Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nicht unterstützte virtuelle Netzwerkszenarios
 * Öffentlicher Endpunkt (oder öffentliche IP-Adresse oder DNS): Ein flexibler Server, der in einem virtuellen Netzwerk bereitgestellt wird, kann keinen öffentlichen Endpunkt haben.
@@ -108,11 +110,9 @@ Wenn der Zugriff auf den Serverdienst „Microsoft Azure Database for MySQL“ n
 ## <a name="hostname"></a>Hostname
 Unabhängig von Ihrer gewählten Netzwerkoption empfiehlt es sich, beim Herstellen einer Verbindung mit Ihrem flexiblen Server immer einen FQDN als Hostnamen zu verwenden. Es ist nicht gewährleistet, dass die IP-Adresse des Servers statisch bleibt. Mithilfe des FQDN können Sie verhindern, dass Änderungen an der Verbindungszeichenfolge vorgenommen werden. 
 
-Die IP-Adresse ändert sich beispielsweise in Szenarios, in denen zonenredundante Hochverfügbarkeit verwendet und ein Failover zwischen einem primären und einem sekundären Replikat durchgeführt wird. Wenn Sie den FQDN verwenden, können Sie Verbindungsversuche mit derselben Verbindungszeichenfolge nahtlos wiederholen.
-
 Beispiel
 * Empfohlen: `hostname = servername.mysql.database.azure.com`
-* Vermeiden Sie `hostname = 10.0.0.4` (private Adresse) oder `hostname = 40.2.45.67` (öffentliche IP-Adresse)
+* Vermeiden Sie nach Möglichkeit die Verwendung von `hostname = 10.0.0.4` (eine private Adresse) oder `hostname = 40.2.45.67` (eine öffentliche IP-Adresse).
 
 
 

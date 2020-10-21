@@ -3,12 +3,12 @@ title: 'Tutorial: Checkliste für die Netzwerkplanung'
 description: Hier erfahren Sie mehr über die Netzwerkanforderungen und Details zu Netzwerkkonnektivität und -ports für Azure VMware Solution.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576676"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948203"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Checkliste für die Netzwerkplanung für Azure VMware Solution 
 
@@ -36,6 +36,9 @@ Das logische Netzwerk der privaten Cloud wird mit vorab bereitgestelltem NSX-T b
 Die private AVS-Cloud wird über eine Azure ExpressRoute-Verbindung mit Ihrem virtuellen Azure-Netzwerk verbunden. Über diese Verbindung mit hoher Bandbreite und geringer Wartezeit können Sie von Ihrer privaten Cloudumgebung aus auf Dienste zugreifen, die in Ihrem Azure-Abonnement ausgeführt werden. Das Routing ist BGP-basiert (Border Gateway Protocol), das automatisch erfolgt und standardmäßig für jede Bereitstellung einer privaten Cloud aktiviert wird. 
 
 Private AVS-Clouds benötigen mindestens einen `/22`-CIDR-Netzwerk-Adressblock für Subnetze, wie unten gezeigt. Dieses Netzwerk ergänzt Ihre lokalen Netzwerke. Der Adressblock darf sich nicht mit Adressblöcken überlappen, die in anderen virtuellen Netzwerken in Ihrem Abonnement und Ihren lokalen Netzwerken verwendet werden. Innerhalb dieses Adressblocks werden Verwaltungs-, Bereitstellungs- und vMotion-Netzwerke automatisch bereitgestellt.
+
+>[!NOTE]
+>Zulässige Bereiche für Ihren Adressblock sind die privaten RFC 1918-Adressräume (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) mit Ausnahme von 172.17.0.0/16.
 
 Beispiel für einen CIDR-Netzwerkadressblock vom Typ `/22`: `10.10.0.0/22`
 

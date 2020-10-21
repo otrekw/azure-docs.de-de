@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: 916d5ee49838c1e8564b24432b9d5876ed619ab5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8948bdeb2f8b82fbabacdbbb73c7b43741c75df
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291400"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938439"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von RDS MySQL zu Azure Database for MySQL mithilfe von DMS
 
@@ -72,6 +72,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
     * binlog_checksum = NONE
 3. Speichern Sie die neue Parametergruppe.
 4. Ordnen Sie die neue Parametergruppe der RDS MySQL-Instanz zu. Möglicherweise ist ein Neustart erforderlich.
+5. Sobald die Parametergruppe implementiert wurde, stellen Sie eine Verbindung zur MySQL-Instanz her, und [legen Sie die binlog-Aufbewahrungsdauer](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql_rds_set_configuration.html#mysql_rds_set_configuration-usage-notes.binlog-retention-hours) auf mindestens fünf Tage fest.
+```
+call mysql.rds_set_configuration('binlog retention hours', 120);
+```
 
 ## <a name="migrate-the-schema"></a>Migrieren des Schemas
 

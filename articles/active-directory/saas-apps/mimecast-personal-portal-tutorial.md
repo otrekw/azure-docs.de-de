@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549091"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Mimecast Personal Portal
 
@@ -155,23 +155,23 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Navigieren Sie zu **Verwaltung** > **Dienste** > **Anwendungen**.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/services.png)
+    ![Screenshot: Fenster „Mimecast“, in dem die Option „Applications“ (Anwendungen) ausgewählt ist](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. Klicken Sie auf die Registerkarte **Authentifizierungsprofile**.
     
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![Screenshot: Registerkarte „Applications“ (Anwendungen), auf der „Authentication Profiles“ (Authentifizierungsprofile) ausgewählt ist](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. Klicken Sie auf die Registerkarte **Neues Authentifizierungsprofil**.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![Screenshot, auf dem „New Authentication Profile“ (Neues Authentifizierungsprofil) ausgewählt ist](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. Geben Sie im Textfeld **Beschreibung** eine gültige Beschreibung ein, und wählen Sie **SAML-Authentifizierung für Mimecast Personal erzwingen** aus.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![Screenshot, auf dem „New Authentication Profile“ (Neues Authentifizierungsprofil) ausgewählt ist](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. Führen Sie auf der Seite **SAML-Konfiguration für Mimecast Personal** die folgenden Schritte aus:
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![Screenshot, auf dem gezeigt wird, wo „Enforce SAML Authentication for Administration Console“ (SAML-Authentifizierung für Verwaltungskonsole erzwingen) ausgewählt wird](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. Wählen Sie als **Anbieter** in der Dropdownliste **Azure Active Directory** aus.
 
@@ -189,19 +189,19 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Navigieren Sie zu **Verwaltung** > **Verzeichnisse** > **Interne Verzeichnisse**.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![Screenshot: SAML-Konfiguration für Mimecast Personal Portal, wo Sie die beschriebenen Werte eingeben können](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. Wählen Sie Ihre Domäne aus, wenn sie unten angegeben ist, und erstellen Sie andernfalls eine neue Domäne, indem Sie auf **Neue Domäne** klicken.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![Screenshot: Fenster „Mimecast“, in dem die Option „Internal Directories“ (Interne Verzeichnisse) ausgewählt ist](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. Klicken Sie auf die Registerkarte **Neue Adresse**.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![Screenshot: Ausgewählte Domäne](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. Geben Sie auf der folgenden Seite die erforderlichen Benutzerinformationen an:
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![Screenshot: Seite, auf der Sie die beschriebenen Werte eingeben können](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z. B. `B.Simon@yourdomainname.com`.
 
@@ -215,7 +215,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     f. Um dem Benutzer Rollen zuzuweisen, klicken Sie auf **Rollenbearbeitung**, und weisen Sie dem Benutzer die erforderliche Rolle gemäß den Anforderungen Ihrer Organisation zu.
 
-    ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![Screenshot: Adresseinstellungen, in denen Sie auf „Role Edit“ (Rollenbearbeitung) klicken können](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 

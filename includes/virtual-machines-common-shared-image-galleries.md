@@ -4,15 +4,15 @@ description: include file
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494282"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071777"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -56,19 +56,36 @@ Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet w
 
 Alle drei verfügen über eindeutige Sätze von Werten. Das Format ist ähnlich der Weise, in der Sie aktuell Herausgeber, Angebot und SKU für [Azure Marketplace-Images](../articles/virtual-machines/windows/cli-ps-findimage.md) in Azure PowerShell angeben können, um die neueste Version eines Marketplace-Images abzurufen. Für jede Imagedefinition ist ein eindeutiger Satz dieser Werte erforderlich.
 
+Imagedefinitionen müssen die folgenden Parameter definieren, die bestimmen, welche Typen von Imageversionen sie enthalten können:
+-   Betriebssystemstatus: Sie können den Betriebssystemstatus auf [„Generalisiert“ oder „Spezialisiert“](#generalized-and-specialized-images) festlegen.
+- Betriebssystem: Kann entweder Windows oder Linux sein.
+
+
+
 Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition festgelegt werden können, damit Sie Ihre Ressourcen einfacher verfolgen können:
 
-* Betriebssystemstatus: Sie können den Betriebssystemstatus auf [„Generalisiert“ oder „Spezialisiert“](#generalized-and-specialized-images) festlegen.
-* Betriebssystem: Kann entweder Windows oder Linux sein.
-* Beschreibung: Verwenden Sie eine Beschreibung, um ausführlichere Informationen darüber anzugeben, warum die Imagedefinition vorhanden ist. Sie könnten z. B. eine Imagedefinition für Ihren Front-End-Server haben, in dem die Anwendung vorinstalliert ist.
-* EULA (Lizenzbedingungen): Kann verwendet werden, um auf einen Endbenutzer-Lizenzvertrag zu verweisen, der speziell für die Imagedefinition gilt.
-* Datenschutzbestimmungen und Versionshinweise: Speichern Sie Versionshinweise und Datenschutzbestimmungen, und stellen Sie einen URI für den Zugriff auf sie als Teil der Imagedefinition bereit.
-* Ablaufdatum (Datum für Lebensende): Weisen Sie Ihrer Imagedefinition ein Ablaufdatum zu, damit Automatisierung für das Löschen alter Imagedefinitionen verwendet werden kann.
-* Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
-* Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
-* Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
-* Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der Generation 2 erstellt wurde.
-* Erwerbsplaninformationen für Marketplace-Images: `-PurchasePlanPublisher `, `-PurchasePlanName` und `-PurchasePlanProduct`. Weitere Informationen zu den Erwerbsplaninformationen finden Sie unter [Suchen nach Images in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) und [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../articles/virtual-machines/marketplace-images.md).
+- Beschreibung: Verwenden Sie eine Beschreibung, um ausführlichere Informationen darüber anzugeben, warum die Imagedefinition vorhanden ist. Sie könnten z. B. eine Imagedefinition für Ihren Front-End-Server haben, in dem die Anwendung vorinstalliert ist.
+- EULA (Lizenzbedingungen): Kann verwendet werden, um auf einen Endbenutzer-Lizenzvertrag zu verweisen, der speziell für die Imagedefinition gilt.
+- Datenschutzbestimmungen und Versionshinweise: Speichern Sie Versionshinweise und Datenschutzbestimmungen, und stellen Sie einen URI für den Zugriff auf sie als Teil der Imagedefinition bereit.
+- Ablaufdatum (Datum für Lebensende): Weisen Sie Ihrer Imagedefinition ein Ablaufdatum zu, damit Automatisierung für das Löschen alter Imagedefinitionen verwendet werden kann.
+- Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
+- Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
+- Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
+-   Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der [Generation 2](../articles/virtual-machines/generation-2.md) erstellt wurde. Der Standardwert ist Generation 1.
+- Erwerbsplaninformationen für Marketplace-Images: `-PurchasePlanPublisher`, `-PurchasePlanName` und `-PurchasePlanProduct`. Weitere Informationen zu den Erwerbsplaninformationen finden Sie unter [Suchen nach Images in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) und [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../articles/virtual-machines/marketplace-images.md).
+
+
+## <a name="image-versions"></a>Imageversionen
+
+Eine **Imageversion** ist, was Sie verwenden, um eine VM zu erstellen. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für die VM zu erstellen. Imageversionen können mehrmals verwendet werden.
+
+Die Eigenschaften einer Imageversion sind die folgenden:
+
+- Versionsnummer: Dies wird als Name der Imageversion verwendet. Es wird immer das folgende Format verwendet: Hauptversion.Nebenversion.Patch. Wenn Sie beim Erstellen einer VM angeben, dass **Neueste** verwendet werden soll, wird basierend auf den höchsten Werten für Hauptversion, dann für Nebenversion und dann für Patch das neueste Image ausgewählt. 
+- Source. Die Quelle kann eine VM, ein verwalteter Datenträger, eine Momentaufnahme, ein verwaltetes Image oder eine andere Imageversion sein. 
+- Aus aktueller Version ausschließen. Sie können eine Version ausschließen, die nicht als neuste Imageversion verwendet werden soll. 
+- Ende der Lebensdauer. Hierbei handelt es sich um ein Datum, nach dem VMs nicht mehr auf Grundlage dieses Images erstellt werden können.
+
 
 ## <a name="generalized-and-specialized-images"></a>Generalisierte und spezialisierte Images
 

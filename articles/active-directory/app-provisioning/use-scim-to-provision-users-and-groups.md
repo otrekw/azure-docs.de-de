@@ -1,24 +1,24 @@
 ---
-title: Entwickeln eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps von Azure AD
-description: Das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, SCIM) standardisiert die automatische Benutzerbereitstellung. Erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API in Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
+title: 'Tutorial: Entwickeln eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps von Azure AD'
+description: Das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, SCIM) standardisiert die automatische Benutzerbereitstellung. In diesem Tutorial erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563804"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070196"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
+# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Tutorial: Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
 Als Anwendungsentwickler können Sie die SCIM-Benutzerverwaltungs-API (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) verwenden, um die automatische Bereitstellung von Benutzern und Gruppen zwischen Ihrer Anwendung und Azure AD zu aktivieren. In diesem Artikel wird beschrieben, wie ein SCIM-Endpunkt erstellt und in den Azure AD-Bereitstellungsdienst integriert wird. Die SCIM-Spezifikation bietet ein allgemeines Benutzerschema für die Bereitstellung. Bei der Verwendung mit Verbundstandards wie SAML oder OpenID Connect bietet SCIM Administratoren eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
 
@@ -747,7 +747,7 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-Bereiche
-Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für AzureActiveDirectory betrieben, die [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) aufgelistet sind. Sie können die unter dem Tag AzureActiveDirectory aufgeführten IP-Adressbereiche hinzufügen, um den Datenverkehr vom Azure AD-Bereitstellungsdienst in Ihre Anwendung zuzulassen. 
+Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für AzureActiveDirectory betrieben, die [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) aufgelistet sind. Sie können die unter dem Tag AzureActiveDirectory aufgeführten IP-Adressbereiche hinzufügen, um den Datenverkehr vom Azure AD-Bereitstellungsdienst in Ihre Anwendung zuzulassen. Beachten Sie, dass Sie die IP-Adressbereichsliste sorgfältig auf berechnete Adressen überprüfen müssen. Eine Adresse wie 40.126.25.32 könnte in der IP-Adressbereichsliste als 40.126.0.0/18 dargestellt werden. Sie können die IP-Adressbereichsliste mithilfe der folgenden [API](/rest/api/virtualnetwork/servicetags/list) auch programmgesteuert abrufen.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Schritt 3: Erstellen eines SCIM-Endpunkts
 
@@ -1193,7 +1193,7 @@ Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authenti
 |--|--|--|--|
 |Benutzername und Kennwort (von Azure AD nicht empfohlen oder unterstützt)|Einfache Implementierung|Unsicher – [Ihr KeNNwort ist unwichtig](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Unterstützt von Fall zu Fall für Katalog-Apps. Nicht unterstützt für Nicht-Katalog-Apps.|
 |Langlebiges Bearertoken|Bei langlebigen Token muss kein Benutzer anwesend sein. Admins können sie beim Einrichten der Bereitstellung leicht verwenden.|Langlebige Token können nur schwer mit einem Administrator geteilt werden, ohne unsichere Methoden wie E-Mail zu verwenden. |Unterstützt für Katalog- und Nicht-Katalog-Apps. |
-|OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Wird nur für Katalog-Apps unterstützt. An der Unterstützung für andere Apps wird noch gearbeitet.|
+|OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Wird nur für Katalog-Apps unterstützt. Sie können über die Benutzeroberfläche jedoch ein Zugriffstoken als geheimes Token für kurzfristige Testzwecke bereitstellen. An der Unterstützung für Autorisierung über OAuth-Code für nicht im Katalog enthaltenen Anwendungen wird noch gearbeitet.|
 |Genehmigung von OAuth-Clientanmeldeinformationen|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben. Sowohl die Autorisierungscodegenehmigung als auch die Genehmigung von Clientanmeldeinformationen gehören zum gleichen Typ Zugriffstoken. Ein Wechsel zwischen diesen beiden Methoden ist daher für die API transparent.  Die Bereitstellung kann vollständig automatisiert werden. Neue Token können ohne Benutzerinteraktion und im Hintergrund angefordert werden. ||Nicht unterstützt für Katalog- und Nicht-Katalog-Apps. Diese Unterstützung befindet sich in unserem Backlog.|
 
 > [!NOTE]
@@ -1210,6 +1210,17 @@ Beachten Sie, dass OAuth v1 aufgrund der Gefährdung des geheimen Clientschlüs
 Bewährte Methoden (empfohlen, aber nicht erforderlich):
 * Unterstützen Sie mehrere Umleitungs-URLs. Administratoren können die Bereitstellung sowohl über „portal.azure.com“ als auch über „aad.portal.azure.com“ konfigurieren. Die Unterstützung mehrerer Umleitungs-URLs stellt sicher, dass Benutzer den Zugriff von beiden Portalen aus autorisieren können.
 * Unterstützen Sie mehrere Geheimnisse, um eine reibungslose Erneuerung der Geheimnisse ohne Ausfallzeiten sicherzustellen. 
+
+OAuth-Autorisierungscodeflow:
+1. Ein Benutzer meldet sich im Azure-Portal an und klickt auf „Unternehmensanwendungen“ > „Anwendung“ > „Bereitstellung“ > „Autorisieren“.
+2. Der Benutzer wird im Azure-Portal zur Autorisierungs-URL (Anmeldeseite für die Drittanbieter-App) weitergeleitet.
+3. Der Administrator stellt Anmeldeinformationen für die Drittanbieteranwendung bereit. 
+4. Die Drittanbieter-App leitet den Benutzer zurück zum Azure-Portal und stellt den Autorisierungscode bereit. 
+5. Der Azure AD-Bereitstellungsdienst ruft die Token-URL auf und stellt den Autorisierungscode bereit. Die Drittanbieteranwendung reagiert mit dem Zugriffstoken, dem Aktualisierungstoken und einem Ablaufdatum.
+6. Wenn der Bereitstellungszyklus beginnt, überprüft der Dienst, ob das aktuelle Zugriffstoken gültig ist und tauscht es bei Bedarf gegen ein neues aus. Das Zugriffstoken wird in jeder für die App veröffentlichten Anforderung bereitgestellt, und die Gültigkeit der Anforderung wird bei jeder Anforderung überprüft.
+
+> [!NOTE]
+> Aktuell ist es zwar nicht möglich, OAuth für eine Anwendung einzurichten, die nicht aus dem Katalog stammt, Sie können jedoch manuell ein Zugriffstoken auf Ihrem Autorisierungsserver generieren und in das Feld für ein geheimes Token der Anwendung einfügen, die nicht aus dem Katalog stammt. Dies ermöglicht es Ihnen, die Kompatibilität Ihres SCIM-Servers mit dem SCIM-Client in Azure AD zu überprüfen, bevor Sie ein Onboarding im App-Katalog ausführen, für den die Autorisierung über OAuth-Code unterstützt wird.  
 
 **Langlebige OAuth-Bearertoken:** Wenn Ihre Anwendung den Ablauf der OAuth-Autorisierungscodegenehmigung nicht unterstützt, können Sie auch ein langlebiges OAuth-Bearertoken generieren, mit dem ein Administrator die Integration der Bereitstellung einrichten kann. Das Token sollte unbefristet sein, andernfalls wird der Bereitstellungsauftrag nach Ablauf des Token [unter Quarantäne gestellt](application-provisioning-quarantine-status.md). Dieses Token muss eine Größe von weniger als 1 KB aufweisen.  
 

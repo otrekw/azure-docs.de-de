@@ -80,6 +80,8 @@
       href: self-hosted-gateway-overview.md
     - name: Einblick
       href: observability.md
+    - name: CI/CD unter Verwendung von ARM-Vorlagen
+      href: devops-api-development-templates.md
 - name: Anleitungen
   items:
     - name: Definieren von APIs
@@ -158,6 +160,8 @@
       items:
         - name: Grundlegendes zum Entwicklerportal
           href: api-management-howto-developer-portal.md
+        - name: Migrieren vom veralteten zum neuen Entwicklerportal
+          href: developer-portal-deprecated-migration.md
         - name: Authentifizierung über Azure AD
           href: api-management-howto-aad.md
         - name: Authentifizierung über Azure AD B2C
@@ -168,13 +172,13 @@
           href: api-management-howto-configure-notifications.md
         - name: Aktivieren der OAuth-Konsolenunterstützung
           href: api-management-howto-oauth2.md
-        - name: 'Legacyportal: Anpassen des Portals'
+        - name: 'Veraltetes Portal: Anpassen des Portals'
           href: api-management-customize-styles.md
-        - name: 'Legacyportal: Ändern von Seiten und Layouts'
+        - name: 'Veraltetes Portal: Ändern von Seiten und Layouts'
           href: api-management-modify-content-layout.md
-        - name: 'Legacyportal: Anpassen mit Vorlagen'
+        - name: 'Veraltetes Portal: Anpassen mit Vorlagen'
           href: api-management-developer-portal-templates.md
-    - name: 'Legacyportal: Vorlagen'
+    - name: 'Veraltetes Portal: Vorlagen'
       items:
         - name: Datenmodellreferenz
           href: api-management-template-data-model-reference.md

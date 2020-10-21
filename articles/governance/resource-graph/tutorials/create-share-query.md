@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Verwalten von Abfragen im Azure-Portal'
 description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Graph-Abfrage und geben die neue Abfrage für andere Benutzer frei.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005175"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057925"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
-Mit dem Azure Resource Graph-Explorer können Sie Ihre Resource Graph-Abfragen direkt im Azure-Portal speichern. Es gibt zwei Arten von Abfragen: _Privat_ und _Freigegeben_. Eine private Abfrage wird in den Einstellungen Ihres Azure-Portals gespeichert. Eine freigegebene Abfrage ist dagegen eine Azure Resource Manager-Ressource, die mit der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) verwaltet und mit Ressourcensperren geschützt werden kann. Beide Abfragetypen werden im Ruhezustand verschlüsselt.
+Mit dem Azure Resource Graph-Explorer können Sie Ihre Resource Graph-Abfragen direkt im Azure-Portal speichern. Es gibt zwei Arten von Abfragen: _Privat_ und _Freigegeben_. Eine private Abfrage wird in den Einstellungen Ihres Azure-Portals gespeichert. Eine freigegebene Abfrage ist dagegen eine Azure Resource Manager-Ressource, die mit der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) verwaltet und mit Ressourcensperren geschützt werden kann. Beide Abfragetypen werden im Ruhezustand verschlüsselt.
 
 Durch Speichern von Abfragen im Azure-Portal sparen Sie Zeit für die Suche nach Ihren bevorzugten oder häufig verwendeten Abfragen. Wenn Sie Abfragen freigeben, unterstützen Sie Ihr Team dabei, durch Wiederholung Ziele in Bezug auf Konsistenz und Effizienz zu erreichen.
 
@@ -60,8 +60,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 
 ## <a name="create-a-shared-query"></a>Erstellen einer freigegebenen Abfrage
 
-Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resource Manager-Ressource. Das bedeutet, dass die Abfrage in einer Ressourcengruppe gespeichert wird, mit Azure RBAC verwaltet und gesteuert und sogar mit Ressourcensperren geschützt werden kann. Da es sich um eine Ressource handelt, kann jeder Benutzer, der über die entsprechenden Berechtigungen verfügt, die Abfrage anzeigen und verwenden.
-Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu erstellen:
+Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resource Manager-Ressource. Das bedeutet, dass die Abfrage in einer Ressourcengruppe gespeichert wird, mit Azure RBAC verwaltet und gesteuert und sogar mit Ressourcensperren geschützt werden kann. Da es sich um eine Ressource handelt, kann jeder Benutzer, der über die entsprechenden Berechtigungen verfügt, die Abfrage anzeigen und verwenden. Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu erstellen:
 
 1. Wählen Sie im Portalmenü die Option **Alle Dienste** aus, oder verwenden Sie das Azure-Suchfeld, das sich auf allen Seiten am oberen Rand befindet, um **Resource Graph-Explorer** zu suchen und auszuwählen.
 
@@ -89,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu ers
 
 1. Klicken Sie unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**. Wenn die Ressourcengruppe **resource-graph-queries** zum ersten Mal verwendet wird, dauert der Speichervorgang länger als erwartet, weil die Ressourcengruppe zuerst erstellt werden muss.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Speichern der neuen Abfrage als freigegebene Abfrage" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Speichern der neuen Abfrage mit der Schaltfläche „Speichern“" border="false":::
 
    > [!NOTE] 
    > Sie können das Kontrollkästchen **In Ressourcengruppe „resource-graph-queries“ veröffentlichen** deaktivieren, wenn Sie den Namen einer vorhandenen Ressourcengruppe angeben möchten, in der die Abfrage gespeichert werden soll. Die Verwendung des Standardnamens für Ressourcengruppen für Abfragen vereinfacht die Entdeckung von freigegebenen Abfragen. Dadurch wird auch der Zweck dieser Ressourcengruppe offensichtlicher. Sie können jedoch aus Sicherheitsgründen eine vorhandene Ressourcengruppe basierend auf vorhandenen Berechtigungen auswählen.
@@ -98,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu ers
 
 1. Wählen Sie **Abfrage öffnen** aus. Vergewissern Sie sich beim Speichern von Abfragen, dass der Typ auf **Freigegebene Abfrage** festgelegt ist und die Kombination aus **Abonnement** und **Ressourcengruppe** stimmt. Das gespeicherte Element **VMs nach Betriebssystem zählen** wird jetzt in der Liste **Abfragename** angezeigt. Wählen Sie den Titellink der gespeicherten Abfrage aus, um diese in einer neuen Registerkarte mit dem Namen dieser Abfrage zu laden. Auf der Registerkarte wird ein Symbol neben dem Titel angezeigt, das darauf hinweist, dass es sich um eine freigegebene Abfrage handelt.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Anzeige der freigegebenen Abfrage mit Symbol" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Speichern der neuen Abfrage mit der Schaltfläche „Speichern“" border="false":::
 
    > [!NOTE] 
    > Wenn eine gespeicherte Abfrage offen ist und die Registerkarte ihren Namen angezeigt, wird die Abfrage beim Klicken auf die Schaltfläche **Speichern** mit allen vorgenommenen Änderungen gespeichert. Um eine neue gespeicherte Abfrage zu erstellen, wählen Sie **Speichern unter** aus, und fahren Sie so fort, als würden Sie eine ganz neue Abfrage speichern.
@@ -107,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu ers
 
 Da eine freigegebene Abfrage eine Resource Manager-Ressource ist, gibt es verschiedene Möglichkeiten, eine solche Abfrage zu finden:
 
-- Im Resource Graph-Explorer: Klicken Sie auf **Abfrage öffnen**, und legen Sie den Typ auf **Freigegebene Abfrage** fest.
+- Im Resource Graph-Explorer. Klicken Sie auf **Abfrage öffnen**, und legen Sie den Typ auf **Freigegebene Abfrage** fest.
 - Auf der Portalseite mit Resource Graph-Abfragen.
 - In der Ressourcengruppe, in der die freigegebene Abfrage gespeichert wurde.
 - Über eine Abfrage an Resource Graph.

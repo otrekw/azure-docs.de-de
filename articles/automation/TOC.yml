@@ -193,29 +193,33 @@
         - name: Änderungsnachverfolgung und Bestand
           items:
             - name: Übersicht
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: "Unterstützte Regionen für einen verknüpften Log\_Analytics-Arbeitsbereich"
               href: how-to/region-mappings.md
             - name: Aktivieren
               items:
-                - name: Aktivieren von Änderungsnachverfolgung und Bestand im Azure-Portal
-                  href: automation-enable-changes-from-browse.md
-                - name: Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer
-                  href: automation-enable-changes-from-vm.md
-                - name: Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook
-                  href: automation-enable-changes-from-runbook.md
+                - name: Aktivieren im Azure-Portal
+                  href: change-tracking/enable-from-portal.md
+                - name: Aktivieren über einen virtuellen Azure-Computer
+                  href: change-tracking/enable-from-vm.md
+                - name: Aktivieren über ein Automation-Konto
+                  href: change-tracking/enable-from-automation-account.md
+                - name: Aktivieren über ein Runbook
+                  href: change-tracking/enable-from-runbook.md
             - name: Verwalten der Änderungsnachverfolgung und des Bestands
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: Verwalten der Bestandserfassung von virtuellen Computern
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: Arbeiten mit Bereichskonfigurationen
-              href: automation-scope-configurations-change-tracking.md
-            - name: Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto
-              href: automation-unlink-workspace-change-tracking.md
-            - name: Entfernen virtueller Computer aus Änderungsnachverfolgung und Bestand
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: Konfigurieren von Warnungen
+              href: change-tracking/configure-alerts.md
+            - name: Deaktivieren
+              items:
+                - name: Entfernen von „Änderungsnachverfolgung und Bestand“
+                  href: change-tracking/remove-feature.md
+                - name: Entfernen virtueller Computer aus Änderungsnachverfolgung und Bestand
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: Problembehandlung
               items:
                 - name: Beheben von Problemen bei der Featurebereitstellung
@@ -239,49 +243,49 @@
     - name: Updateverwaltung
       items:
         - name: Übersicht
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: "Unterstützte Regionen für einen verknüpften Log\_Analytics-Arbeitsbereich"
           href: how-to/region-mappings.md
         - name: Aktivieren
           items:
-            - name: Aktivieren der Updateverwaltung mithilfe einer Azure Resource Manager-Vorlage
-              href: update-management/update-mgmt-enable-template.md
-            - name: Aktivieren der Updateverwaltung über das Azure-Portal
-              href: update-management/update-mgmt-enable-portal.md
-            - name: Aktivieren der Updateverwaltung über einen virtuellen Azure-Computer
-              href: update-management/update-mgmt-enable-vm.md
-            - name: Aktivieren der Updateverwaltung über ein Automation-Konto
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: Aktivieren der Updateverwaltung über ein Runbook
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: Aktivieren mithilfe der Azure Resource Manager-Vorlag
+              href: update-management/enable-from-template.md
+            - name: Aktivieren im Azure-Portal
+              href: update-management/enable-from-portal.md
+            - name: Aktivieren über einen virtuellen Azure-Computer
+              href: update-management/enable-from-vm.md
+            - name: Aktivieren über ein Automation-Konto
+              href: update-management/enable-from-automation-account.md
+            - name: Aktivieren über ein Runbook
+              href: update-management/enable-from-runbook.md
         - name: Verwalten von Updates für virtuelle Computer
           items:
             - name: Erste Schritte
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: Bewerten der Konformität
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: Bereitstellen von Updates und Überprüfen des Status
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: Verwenden von Pre- und Post-Skripts
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: Konfigurieren von Warnungen
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: Integrieren in Configuration Manager
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: "Konfigurieren des Windows\_Update-Clients"
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: Verwenden von dynamischen Gruppen
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: Abfragen von Protokollen der Updateverwaltung
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: Arbeiten mit Bereichskonfigurationen
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: Disable
           items:
             - name: Entfernen der Updateverwaltung
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: Entfernen virtueller Computer aus der Updateverwaltung
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: Problembehandlung
           items:
             - name: Beheben von Problemen bei der Featurebereitstellung

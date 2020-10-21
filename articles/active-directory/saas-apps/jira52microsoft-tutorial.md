@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547527"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Tutorial: Azure Active Directory-Integration in JIRA SAML SSO by Microsoft (V5.2)
 
@@ -146,23 +146,23 @@ Führen Sie z um Konfigurieren des einmaligen Anmeldens von Azure AD mit JIRA SA
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon1.png)
+    ![Screenshot, auf dem „Add-ons“ (Add-Ons) im Menü „Settings“ (Einstellungen) ausgewählt ist](./media/jira52microsoft-tutorial/addon1.png)
 
 3. Klicken Sie im Registerkartenabschnitt „Add-Ons“ auf **Add-Ons verwalten**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon7.png)
+    ![Screenshot, auf dem „Manage add-ons“ (Add-Ons verwalten) auf der Registerkarte „Add-ons“ (Add-Ons) ausgewählt ist](./media/jira52microsoft-tutorial/addon7.png)
 
 4. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56521) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon12.png)
+    ![Screenshot: Abschnitt „Manage add-ons“ (Add-Ons verwalten), in dem der Link „Upload add-on“ (Add-On hochladen) hervorgehoben ist](./media/jira52microsoft-tutorial/addon12.png)
 
 5. Sobald das Plug-In installiert ist, wird es im Abschnitt **User-installed add-ons** (Vom Benutzer installierte Add-Ons) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon13.png)
+    ![Screenshot: Abschnitt „Azure AD SAML Single Sign-on for Jira“ (Azure AD-SAML-SSO für Jira), in dem „Configure“ (Konfigurieren) ausgewählt ist](./media/jira52microsoft-tutorial/addon13.png)
 
 6. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon52.png)
+    ![Screenshot: Konfigurationsseite für den Microsoft-Jira-SSO-Connector](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -251,19 +251,19 @@ Damit sich Azure AD-Benutzer bei einem lokalen JIRA-Server anmelden können, mü
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf **Benutzerverwaltung**.
 
-    ![Mitarbeiter hinzufügen](./media/jira52microsoft-tutorial/user1.png)
+    ![Screenshot, auf dem „User management“ (Benutzerverwaltung) im Menü „Settings“ (Einstellungen) ausgewählt ist](./media/jira52microsoft-tutorial/user1.png)
 
 3. Sie werden zur Seite „Administratorzugriff“ umgeleitet, um Ihr **Kennwort** einzugeben. Klicken Sie anschließend auf die Schaltfläche **Bestätigen**.
 
-    ![Mitarbeiter hinzufügen](./media/jira52microsoft-tutorial/user2.png)
+    ![Screenshot: Seite „Administrator Access“ (Administratorzugriff), auf der Sie Ihre Anmeldeinformationen eingeben](./media/jira52microsoft-tutorial/user2.png)
 
 4. Klicken Sie im Registerkartenabschnitt **Benutzerverwaltung** auf **Benutzer erstellen**.
 
-    ![Mitarbeiter hinzufügen](./media/jira52microsoft-tutorial/user3.png) 
+    ![Screenshot: Registerkarte „User management“ (Benutzerverwaltung), auf der Sie Benutzer erstellen können](./media/jira52microsoft-tutorial/user3.png) 
 
 5. Führen Sie auf der Dialogfeldseite **Neuen Benutzer erstellen** die folgenden Schritte durch:
 
-    ![Mitarbeiter hinzufügen](./media/jira52microsoft-tutorial/user4.png)
+    ![Screenshot: Dialogfeld „Create new user“ (Neuen Benutzer erstellen), in dem Sie die Informationen aus diesem Schritt eingeben können](./media/jira52microsoft-tutorial/user4.png)
 
     a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers, z.B. Brittasimon@contoso.com, ein.
 

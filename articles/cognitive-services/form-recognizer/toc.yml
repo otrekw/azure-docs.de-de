@@ -90,6 +90,8 @@
           href: 'https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme'
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/form-recognizer/'
     - name: UserVoice
@@ -102,7 +104,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: form-recognizer-encryption-of-data-at-rest.md

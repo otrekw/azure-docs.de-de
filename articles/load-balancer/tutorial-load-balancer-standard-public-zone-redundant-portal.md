@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446090"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048354"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -40,6 +40,10 @@ Informationen zur Verwendung von Verfügbarkeitszonen mit Load Balancer Standard
 Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load-balancer-standard-public-zone-redundant-cli.md) durcharbeiten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Abonnement
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -231,8 +235,10 @@ Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe aus, die den Lastenausgleich enthält, und klicken Sie auf **Löschen**.
+Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie dazu die Ressourcengruppe aus, die den Lastenausgleich enthält, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
+Informieren Sie sich über den Lastenausgleich für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone:
+> [!div class="nextstepaction"]
+> [Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal](tutorial-load-balancer-standard-public-zonal-portal.md)

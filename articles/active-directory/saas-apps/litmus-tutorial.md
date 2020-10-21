@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823031"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854544"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Litmus
 
@@ -129,11 +129,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im linken Navigationsbereich auf **Security** (Sicherheit).
 
-    ![Litmus-Konfiguration](./media/litmus-tutorial/security-img.png)
+    ![Screenshot, auf dem das Element „Security“ (Sicherheit) ausgewählt ist](./media/litmus-tutorial/security-img.png)
 
 1. Führen Sie im Abschnitt **Configure SAML Authentication** (SAML-Authentifizierung konfigurieren) die folgenden Schritte aus:
 
-    ![Litmus-Konfiguration](./media/litmus-tutorial/configure1.png)
+    ![Screenshot: Abschnitt „Configure SAML Authentication“ (SAML-Authentifizierung konfigurieren), in dem Sie die beschriebenen Werte eingeben können](./media/litmus-tutorial/configure1.png)
 
     a. Wechseln Sie zur Umschaltfläche **Enable SAML** (SAML aktivieren).
 
@@ -143,7 +143,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Führen Sie die folgenden Schritte aus:
 
-    ![Litmus-Konfiguration](./media/litmus-tutorial/configure3.png)
+    ![Screenshot des Abschnitts, in dem Sie die beschriebenen Werte eingeben können](./media/litmus-tutorial/configure3.png)
 
     a. Fügen Sie im Textfeld **SAML 2.0 Endpoint(HTTP)** (SAML 2.0-Endpunkt [HTTP]) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -157,15 +157,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im linken Navigationsbereich auf **Accounts** (Konten).
 
-    ![Litmus-Konfiguration](./media/litmus-tutorial/accounts-img.png)
+    ![Screenshot, auf dem das Element „Accounts“ (Konten) ausgewählt ist](./media/litmus-tutorial/accounts-img.png)
 
 1. Klicken Sie auf die Registerkarte **Add New User** (Neuen Benutzer hinzufügen).
 
-    ![Litmus-Konfiguration](./media/litmus-tutorial/add-new-user.png)
+    ![Screenshot, auf dem das Element „Add New User“ (Neuen Benutzer hinzufügen) ausgewählt ist](./media/litmus-tutorial/add-new-user.png)
 
 1. Führen Sie im Abschnitt **Add User** (Benutzer hinzufügen) die folgenden Schritte aus:
 
-    ![Litmus-Konfiguration](./media/litmus-tutorial/user-profile.png)
+    ![Screenshot: Abschnitt „Add User“ (Benutzer hinzufügen), in dem Sie die beschriebenen Werte eingeben können](./media/litmus-tutorial/user-profile.png)
 
     a. Geben Sie in das Textfeld **Email** die E-Mail-Adresse des Benutzers ein, z. B. **B.Simon\@contoso.com**.
 

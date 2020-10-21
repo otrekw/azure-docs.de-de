@@ -9,21 +9,17 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Bereitstellen der Azure-API für FHIR: Portal'
-      href: fhir-paas-portal-quickstart.md
-    - name: 'Bereitstellen der Azure-API für FHIR: PowerShell'
-      href: fhir-paas-powershell-quickstart.md
-    - name: 'Bereitstellen der Azure-API für FHIR: CLI'
-      href: fhir-paas-cli-quickstart.md
-    - name: 'Bereitstellen von Azure API for FHIR: ARM-Vorlage'
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: 'Bereitstellen des FHIR-Servers für Azure: Portal'
-      href: fhir-oss-portal-quickstart.md
-    - name: 'Bereitstellen des FHIR-Servers für Azure: PowerShell'
-      href: fhir-oss-powershell-quickstart.md
-    - name: 'Bereitstellen des FHIR-Servers für Azure: CLI'
-      href: fhir-oss-cli-quickstart.md
+    - name: Bereitstellen von Azure API for FHIR
+      expanded: false
+      items:
+        - name: Verwenden des Portals
+          href: fhir-paas-portal-quickstart.md
+        - name: Verwenden von PowerShell
+          href: fhir-paas-powershell-quickstart.md
+        - name: Verwenden von CLI
+          href: fhir-paas-cli-quickstart.md
+        - name: Per ARM-Vorlage
+          href: fhir-paas-arm-template-quickstart.md
     - name: "Bereitstellen von Azure\_IoT-Konnektor für FHIR (Vorschauversion): Portal"
       href: iot-fhir-portal-quickstart.md
 - name: Tutorials
@@ -85,7 +81,7 @@
     - name: Exportieren von Daten
       expanded: false
       items:
-        - name: Daten exportieren
+        - name: Exportieren von Daten
           href: export-data.md
         - name: Anonymisierter Export
           href: de-identified-export.md
@@ -93,6 +89,8 @@
       href: find-identity-object-ids.md
     - name: Aktivieren der Diagnoseprotokollierung in Azure API for FHIR®
       href: enable-diagnostic-logging.md
+    - name: "Exportieren der Metriken von Azure\_IoT-Konnektor für FHIR (Vorschau) über die Diagnoseeinstellungen"
+      href: iot-metrics-diagnostics-export.md
     - name: 'Abrufen eines Tokens für die Azure-API für FHIR: CLI'
       href: get-healthcare-apis-access-token-cli.md
     - name: Beheben von Fehlern in Azure IoT-Konnektor für FHIR (Vorschauversion)

@@ -40,6 +40,8 @@
       href: quickstart-create-workspace.md
     - name: Erstellen eines Synapse-Arbeitsbereichs über die Azure CLI
       href: quickstart-create-workspace-cli.md
+    - name: Erstellen eines Synapse-Arbeitsbereichs mithilfe von Azure PowerShell
+      href: quickstart-create-workspace-powershell.md
     - name: Bereitstellen mit einer Vorlage
       href: quickstart-deployment-template-workspaces.md
     - name: Verwenden von Synapse Studio
@@ -388,7 +390,7 @@
           items:
             - name: Modellbewertungs-Assistent für SQL-Pools
               href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: Ausführen eines Regressionsexperiments mithilfe von Azure AutoML (Bewertung in DW)
+            - name: Ausführen eines Regressionsexperiments mithilfe von Azure AutoML
               href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Toolintegration (KI, ETL, BI)'
       items:
@@ -483,9 +485,9 @@
             - name: Herstellen einer Verbindung mit Azure Synapse Link für Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Verwenden von Power BI und einem serverlosen SQL-Pool zum Analysieren von Azure Cosmos DB
-              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Abfragen von Azure Cosmos DB-Daten mit serverlosem SQL-Pool
-              href: ./sql/query-cosmos-db-analytical-store.md
+              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: "Abfragen des Azure\_Cosmos\_DB-Analysespeichers mit Apache Spark"
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: "Kopieren von Daten von Synapse\_Link in einen SQL-Pool mithilfe von Apache Spark"
@@ -925,7 +927,7 @@
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST-APIs
       href: /rest/api/synapse/

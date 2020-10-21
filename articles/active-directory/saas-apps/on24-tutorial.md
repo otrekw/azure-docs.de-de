@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554270"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Tutorial: Azure Active Directory-Integration mit ON24 Virtual Environment SAML Connection
 
@@ -147,7 +147,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ON24 Vir
 
 5.  Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
 
-    ![ON24 Virtual Environment SAML Connection-Domäne und URLs für das einmalige Anmelden](common/both-signonurl.png)
+    ![Screenshot: Abschnitt „Zusätzliche URLs festlegen“, in dem das Textfeld „Anmelde-URL“ hervorgehoben ist](common/both-signonurl.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://vshow.on24.com/vshow/<INSTANCENAME>`
 

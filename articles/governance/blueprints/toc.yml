@@ -31,6 +31,9 @@
     - name: Schützen neuer Ressourcen mit Blaupausen-Ressourcensperren
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 'Inhalt: Steuern mehrerer Abonnements mithilfe von Azure Blueprints'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: Beispiele
   items:
     - name: Index

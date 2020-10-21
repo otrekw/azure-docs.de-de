@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649820"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876293"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -66,12 +66,15 @@ Mit der [VS Code-Erweiterung](../how-to/extension-for-vscode.md#search-for-and-v
 
 ### <a name="arm-templates"></a>ARM-Vorlagen
 
-Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
+Es gibt mehrere Möglichkeiten, sich eine [ARM-Vorlage](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
 
 #### <a name="existing-resource-in-the-portal"></a>Vorhandene Ressource im Portal
 
 Am einfachsten finden Sie Eigenschaften, indem Sie sich eine vorhandene Ressource desselben Typs ansehen. Ressourcen, die bereits mit der zu erzwingenden Einstellung konfiguriert sind, enthalten auch den Wert für den Vergleich.
 Sehen Sie sich im Azure-Portal die Seite **Exportvorlage** (unter **Einstellungen**) für die jeweilige Ressource an.
+
+> [!WARNING]
+> Die vom Azure-Portal exportierte ARM-Vorlage kann nicht direkt in die Eigenschaft `deployment` für eine ARM-Vorlage in einer Richtliniendefinition vom Typ [deployIfNotExists](../concepts/effects.md#deployifnotexists) integriert werden.
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Screenshot: Seite „Exportvorlage“ für eine vorhandene Ressource im Azure-Portal" border="false":::
 

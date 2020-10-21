@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797699"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000225"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Jekyll-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -118,7 +118,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Wählen Sie unter _Branch_ die Option **Master** aus.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Eingegebene GitHub-Informationen":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Eingegebene Details":::
 
 ### <a name="build"></a>Entwickeln
 
@@ -146,12 +146,9 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 1. Öffnen Sie die Jekyll-App in einem Text-Editor, und öffnen Sie anschließend die Datei _.github/workflows/azure-pages-<WORKFLOWNAME>.yml_.
 
-1. Fügen Sie dem folgenden Konfigurationsblock nach dem Block `- uses: actions/checkout@v2` Zeilen hinzu:
+1. Fügen Sie nach der Zeile `- uses: actions/checkout@v2` den folgenden Konfigurationsblock hinzu:
 
     ```yml
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
@@ -174,7 +171,7 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 1. Klicken Sie im Azure-Portal im Fenster _Übersicht_ auf den Link _URL_, um Ihre bereitgestellte Anwendung zu öffnen.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Bereitgestellte Anwendung":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Eingegebene Details":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

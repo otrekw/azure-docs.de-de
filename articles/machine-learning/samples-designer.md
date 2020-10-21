@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889743"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074599"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Beispiele für Pipelines und Datasets für Azure Machine Learning Designer
 
@@ -67,8 +67,8 @@ Durchsuchen Sie diese integrierten Regressionsbeispiele.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| [Regression - Automobile Price Prediction (Basic)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) (Regression: Automobilpreisvorhersage (Standard)) | Dient zum Vorhersagen von Automobilpreisen mittels linearer Regression. |
-| [Regression - Automobile Price Prediction (Advanced)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) (Regression: Automobilpreisvorhersage (Erweitert)) | Dient zum Vorhersagen von Automobilpreisen mittels Entscheidungsstruktur und Boosted Decision Tree-Regressoren. Vergleichen Sie die Modelle, um den besten Algorithmus zu ermitteln.
+| [Regression - Automobile Price Prediction (Basic)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) (Regression: Automobilpreisvorhersage (Standard)) | Dient zum Vorhersagen von Automobilpreisen mittels linearer Regression. |
+| [Regression - Automobile Price Prediction (Advanced)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) (Regression: Automobilpreisvorhersage (Erweitert)) | Dient zum Vorhersagen von Automobilpreisen mittels Entscheidungsstruktur und Boosted Decision Tree-Regressoren. Vergleichen Sie die Modelle, um den besten Algorithmus zu ermitteln.
 
 ## <a name="classification"></a>Klassifizierung
 
@@ -76,19 +76,17 @@ Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Anstelle der Dokum
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| [Binary Classification with Feature Selection - Income Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) (Binäre Klassifizierung mit Featureauswahl: Vorhersage des Einkommens) | Dient zum Vorhersagen des Einkommens (hoch oder gering) mittels Two-Class Boosted Decision Tree. Für die Featureauswahl wird die Pearson-Korrelation verwendet.
-| [Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) (Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird das Modul „Python-Skript ausführen“ verwendet.
-| [Binary Classification - Customer Relationship Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) (Binäre Klassifizierung: Vorhersage von Kundenbeziehungen) | Dient zum Vorhersagen der Kundenabwanderung mittels Two-Class Boosted Decision Tree. Für das Sampling verzerrter Daten wird SMOTE verwendet.
-| [Text Classification - Wikipedia SP 500 Dataset](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) (Textklassifizierung: Wikipedia SP 500-Dataset) | Dient zum Klassifizieren von Unternehmenstypen aus Wikipedia-Artikeln mittels logistischer Regression mit mehreren Klassen. |
+| [Binary Classification with Feature Selection - Income Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) (Binäre Klassifizierung mit Featureauswahl: Vorhersage des Einkommens) | Dient zum Vorhersagen des Einkommens (hoch oder gering) mittels Two-Class Boosted Decision Tree. Für die Featureauswahl wird die Pearson-Korrelation verwendet.
+| [Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) (Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird das Modul „Python-Skript ausführen“ verwendet.
+| [Binary Classification - Customer Relationship Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) (Binäre Klassifizierung: Vorhersage von Kundenbeziehungen) | Dient zum Vorhersagen der Kundenabwanderung mittels Two-Class Boosted Decision Tree. Für das Sampling verzerrter Daten wird SMOTE verwendet.
+| [Text Classification - Wikipedia SP 500 Dataset](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) (Textklassifizierung: Wikipedia SP 500-Dataset) | Dient zum Klassifizieren von Unternehmenstypen aus Wikipedia-Artikeln mittels logistischer Regression mit mehreren Klassen. |
 | Klassifizierung mit mehreren Klassen: Buchstabenerkennung | Dient zum Erstellen eines Ensembles von binären Klassifizierern für die Klassifizierung geschriebener Buchstaben. |
 
 ## <a name="computer-vision"></a>Maschinelles Sehen
 
 Durchsuchen Sie diese integrierten Beispiele für maschinelles Sehen. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
 
-| Beispieltitel | BESCHREIBUNG | 
-| --- | --- |
-| Wide & Deep based Recommendation - Restaurant Rating Prediction (Auf Wide & Deep basierende Empfehlung: Vorhersage einer Restaurantbewertung) | Erstellen Sie eine Engine für Restaurantempfehlungen aus Features und Bewertungen von Restaurants und Benutzern.|
+| Bildklassifizierung mithilfe von DenseNet | Verwenden Sie Module für maschinelles Sehen zum Erstellen eines Bildklassifizierungsmodells, das auf PyTorch DenseNet basiert.| 
 
 ## <a name="recommender"></a>Empfehlung (Recommender)
 
@@ -96,7 +94,8 @@ Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Anstelle der Dokumentat
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| Bildklassifizierung mithilfe von DenseNet | Verwenden Sie Module für maschinelles Sehen zum Erstellen eines Bildklassifizierungsmodells, das auf PyTorch DenseNet basiert.| 
+| Wide & Deep based Recommendation - Restaurant Rating Prediction (Auf Wide & Deep basierende Empfehlung: Vorhersage einer Restaurantbewertung) | Erstellen Sie eine Engine für Restaurantempfehlungen aus Features und Bewertungen von Restaurants und Benutzern.|
+| Empfehlung: Filmbewertungstweets | Dient zum Erstellen einer Filmempfehlungsengine auf der Grundlage von Merkmalen und Bewertungen von Filmen und Benutzern.|
 
 ## <a name="utility"></a>Hilfsprogramm
 
@@ -105,7 +104,7 @@ Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogr
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
 | Binary Classification using Vowpal Wabbit Model - Adult Income Prediction (Binäre Klassifizierung mithilfe des Vowpal Wabbit-Modells: Vorhersage des Einkommens von Erwachsenen) | Vowpal Wabbit ist ein Machine Learning-System, das die Grenzen von maschinellem Lernen weiter hinausschiebt und dazu verschiedene Verfahren einsetzt, wie z. B. Online, Hashing, Allreduce, Reductions, Learning2Search, Active und Interactive Learning. Dieses Beispiel zeigt, wie das Vowpal Wabbit-Modell verwendet wird, um ein binäres Klassifizierungsmodell zu erstellen. 
-| [Use custom R script - Flight Delay Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) (Verwenden eines benutzerdefinierten R-Skripts: Vorhersage von Flugverspätungen) | Verwenden Sie das angepasste R-Skript, um vorherzusagen, ob ein geplanter Passagierflug mehr als 15 Minuten verspätet sein wird.
+| [Use custom R script - Flight Delay Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) (Verwenden eines benutzerdefinierten R-Skripts: Vorhersage von Flugverspätungen) | Verwenden Sie das angepasste R-Skript, um vorherzusagen, ob ein geplanter Passagierflug mehr als 15 Minuten verspätet sein wird.
 | Kreuzvalidierung für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Erstellen eines binären Klassifizierers für das Einkommen von Erwachsenen mittels Kreuzvalidierung.
 | Permutation Feature Importance (PFI) | Dient zum Berechnen von Wichtigkeitsbewertungen für das Testdataset mittels Permutation Feature Importance. 
 | Optimierungsparameter für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Ermitteln optimaler Hyperparameter für die Erstellung eines binären Klassifizierers unter Verwendung von „Tune Model Hyperparameters“. |
@@ -119,7 +118,7 @@ Die Beispieldatasets sind unter der Kategorie **Datasets**-**Beispiele** verfüg
 | DataSetName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Datasetbeschreibung |
 |-------------|:--------------------|
 | Dataset "Adult Census Income Binary Classification" | Eine Teilmenge der Volkszählungsdatenbank von 1994, die arbeitende Erwachsene (älter als 16 Jahre) mit einem bereinigten Einkommensindex über 100 verwendet.<br/>**Verwendung**: Klassifizierung von Personen mithilfe von demografischen Daten für die Vorhersage, ob eine Person mehr als 50.000 pro Jahr verdient.<br/> **Zugrunde liegende Untersuchungen:** Kohavi, R., Becker, B., (1996). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
-|Automobile price data (Raw)|Informationen zu Automobilen nach Marke und Modell, einschließlich Preis und Merkmalen wie Zylinderanzahl und Verbrauch sowie einer Risikoeinstufung der Versicherung.<br/> Der Risikobewertung ist anfänglich mit dem Fahrzeugpreis verknüpft. Sie wird dann in einem Prozess, den Versicherungsfachleute als „Symbolisierung“ bezeichnen, an das tatsächliche Risiko angepasst. Der Wert +3 weist auf ein Fahrzeug mit hohem Risiko hin, während der Wert -3 auf ein voraussichtlich sicheres Fahrzeug hinweist.<br/>**Verwendung:** </b> Vorhersage der Risikoeinstufung nach Merkmalen unter Verwendung der Regression oder multivariaten Klassifizierung.<br/>**Zugrunde liegende Untersuchungen:** </b> Schlimmer, J.C. (1987). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science |
+|Automobile price data (Raw)|Informationen zu Automobilen nach Marke und Modell, einschließlich Preis und Merkmalen wie Zylinderanzahl und Verbrauch sowie einer Risikoeinstufung der Versicherung.<br/> Der Risikobewertung ist anfänglich mit dem Fahrzeugpreis verknüpft. Sie wird dann in einem Prozess, den Versicherungsfachleute als „Symbolisierung“ bezeichnen, an das tatsächliche Risiko angepasst. Der Wert +3 weist auf ein Fahrzeug mit hohem Risiko hin, während der Wert -3 auf ein voraussichtlich sicheres Fahrzeug hinweist.<br/>**Verwendung**: Vorhersage der Risikoeinstufung nach Merkmalen unter Verwendung der Regression oder multivariaten Klassifizierung.<br/>**Zugrunde liegende Untersuchungen:** Schlimmer, J.C. (1987). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science |
 | CRM Appetency Bezeichnungen freigegeben |Beschriftungen vom KDD Cup 2009 (Kundenbeziehungsprognose, [orange_small_train_appetency.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)).|
 |CRM Codeänderung Bezeichnungen freigegeben|Beschriftungen vom KDD Cup 2009 (Kundenbeziehungsprognose, [orange_small_train_churn.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)).|
 |CRM-Dataset gemeinsam genutzt | Diese Daten stammen vom KDD Cup 2009, Kundenbeziehungsprognose ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)). <br/>Das DataSet enthält 50.000 Kunden des französischen Telekommunikationsunternehmens Orange. Jeder Kunde verfügt über 230 anonymisierte Merkmale, von denen 190 numerisch und 40 kategorisch sortiert sind. Die Merkmale sind sehr karg. |
@@ -130,7 +129,9 @@ Die Beispieldatasets sind unter der Kategorie **Datasets**-**Beispiele** verfüg
 |Filmbewertungen|Das Dataset ist eine erweiterte Version des Films Tweetings Datasets. Das Dataset enthält 170K Bewertungen für Filme, extrahiert aus gut strukturierten Tweets auf Twitter. Jede Instanz stellt einen Tweet dar und ist ein Tupel: Benutzer-ID, IMDB Film-ID, Bewertung, Timestamp, Anzahl von Favoriten für diesen Tweet und Anzahl der Retweets dieses Tweets. Das Dataset wurde von A. Said, S. Dooms, B. Loni und D. Tikk für Recommender Systems Challenge 2014 zur Verfügung gestellt.|
 |Wetter-Dataset|Stündliche flächenbasierte Wetterbeobachtungen aus NOAA ([zusammengeführte Daten von 201304 bis 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen im Designer wie folgt verarbeitet:    <br/> -    Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.    <br/> -    Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert    <br/> -    Die Datumsspalte wurde in separate Jahres-, Monats- und Tagesspalten aufgeteilt.    <br/> - Folgende Spalten wurden ausgewählt: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
 |Wikipedia SP 500 Dataset|Die Daten stammen aus Wikipedia (https://www.wikipedia.org/) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.    <br/>Das Dataset wurde vor dem Hochladen im Designer wie folgt verarbeitet:    <br/> - Extrahieren der Textinhalte für die einzelnen Unternehmen    <br/> -    Entfernen der Wiki-Formatierung    <br/> -    Entfernen aller nicht alphanumerischen Zeichen    <br/> -    Konvertieren sämtlicher Texte in Kleinbuchstaben    <br/> -    Bekannte Firmenkategorien wurden hinzugefügt.    <br/>Beachten Sie, dass für einige Unternehmen keine Artikel gefunden werden konnten, daher ist die Anzahl der Datensätze kleiner als 500.|
-
+|Daten zu Restaurantmerkmalen| Eine Sammlung von Metadaten zu Restaurants und ihren Merkmalen wie Speisetyp, Stil und Lage. <br/>**Verwendung**: Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen.<br/> **Zugrunde liegende Untersuchungen:** Bache, K. und Lichman, M. (2013). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
+|Restaurantbewertungen| Enthält von Benutzern abgegebene Bewertungen für Restaurants auf einer Skala von 0 bis 2.<br/>**Verwendung**: Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <br/>**Zugrunde liegende Untersuchungen:** Bache, K. und Lichman, M. (2013). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
+|Daten zu Restaurantkunden| Eine Sammlung von Metadaten zu Kunden, einschließlich Demografie und Präferenzen. <br/>**Verwendung**: Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <br/> **Zugrunde liegende Untersuchungen:** Bache, K. und Lichman, M. (2013). [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml) Irvine, CA: University of California, School of Information and Computer Science|
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

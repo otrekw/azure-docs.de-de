@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611470"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873182"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Tutorial: Erstellen einer Blazor Server-App, die Microsoft Identity Platform für die Authentifizierung verwendet
 
@@ -84,7 +84,7 @@ Navigieren Sie in Ihrem Browser zu `https://localhost:5001`, und melden Sie sich
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Abrufen von Daten aus Microsoft Graph
 
-[Microsoft Graph](/graph/overview) bietet eine Reihe von APIs, die den Zugriff auf die Microsoft 365-Daten Ihrer Benutzer ermöglichen. Wenn Sie Microsoft Identity Platform als Identitätsanbieter für Ihre App verwenden, können Sie einfacher auf diese Informationen zugreifen, weil Microsoft Graph die von Microsoft Identity Platform ausgestellten Token direkt unterstützt. In diesem Abschnitt fügen Sie Code hinzu, mit dem die E-Mails des angemeldeten Benutzers auf der Seite „Daten abrufen“ der Anwendung angezeigt werden können.
+[Microsoft Graph](/graph/overview) bietet eine Reihe von APIs, die den Zugriff auf die Microsoft 365-Daten Ihrer Benutzer ermöglichen. Wenn Sie Microsoft Identity Platform als Identitätsanbieter für Ihre App verwenden, können Sie einfacher auf diese Informationen zugreifen, weil Microsoft Graph die von Microsoft Identity Platform ausgestellten Token direkt unterstützt. In diesem Abschnitt fügen Sie Code hinzu, um die E-Mails des angemeldeten Benutzers auf der Seite „Daten abrufen“ der Anwendung anzuzeigen.
 
 Bevor Sie beginnen, müssen Sie sich bei Ihrer App abmelden, weil Sie Änderungen an den erforderlichen Berechtigungen vornehmen und Ihr aktuelles Token nicht funktioniert. Wenn Sie dies noch nicht getan haben, führen Sie Ihre App erneut aus, und wählen Sie **Abmelden** aus, bevor Sie den folgenden Code aktualisieren.
 

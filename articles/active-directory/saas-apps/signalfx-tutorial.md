@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521551"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856822"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SignalFx
 
@@ -159,7 +159,7 @@ Machen Sie sich mit der folgenden Anleitung zum Testen des einmaligen Anmeldens 
         * Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * Auf die SignalFx-Anwendung kann über den Zugriffsbereich oder über eine benutzerdefinierte, der Organisation zugewiesene Anmeldeseite zugegriffen werden. Der Testbenutzer sollte die Integration von einem dieser Orte aus testen.
-    * Dabei kann der Testbenutzer die Anmeldeinformationen verwenden, die zuvor in diesem Prozess für **b.simon@contoso.com** erstellt wurden.
+    * Dabei kann der Testbenutzer die Anmeldeinformationen verwenden, die zuvor in diesem Prozess für **b.simon\@contoso.com** erstellt wurden.
 
 ### <a name="first-time-logins"></a>Erstmalige Anmeldungen
 

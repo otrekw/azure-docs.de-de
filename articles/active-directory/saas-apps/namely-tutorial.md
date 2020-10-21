@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552470"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Tutorial: Azure Active Directory-Integration mit Namely
 
@@ -128,19 +128,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Namely 
 
 2. Klicken Sie oben auf der Symbolleiste auf **Company**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Screenshot, auf dem der Wert „Company“ (Unternehmen) ausgewählt ist](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. Klicken Sie auf die Registerkarte **Settings** .
    
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Screenshot, auf dem die Registerkarte „Company Settings“ (Unternehmenseinstellungen) ausgewählt ist](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. Klicken Sie auf **SAML**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Screenshot: Ausgewählte Option „SAML“](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. Führen Sie auf der Seite **SAML Settings** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Screenshot: „SAML Settings“ (SAML-Einstellungen), wo Sie die beschriebenen Werte eingeben können](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Aktivieren Sie **Enable SAML**. 
 
@@ -211,15 +211,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie oben auf der Symbolleiste auf **People**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Screenshot, auf dem der Wert „People“ (Personen) ausgewählt ist](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. Klicken Sie auf die Registerkarte **Directory** .
    
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Screenshot, auf dem die Registerkarte „People Directory“ (Personenverzeichnis) ausgewählt ist](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. Klicken Sie auf **Neue Person hinzufügen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Screenshot: Option „Add New Person“ (Neue Person hinzufügen)](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. Führen Sie im Dialogfeld **Neue Person hinzufügen** die folgenden Schritte aus:
 

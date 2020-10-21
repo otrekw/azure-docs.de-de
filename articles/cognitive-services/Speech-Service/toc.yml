@@ -229,6 +229,8 @@
   items:
     - name: Dokumentation zur Absichtserkennung
       href: index-intent-recognition.yml
+    - name: Übersicht über die Absichtserkennung
+      href: intent-recognition.md
     - name: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten mit Language Understanding (LUIS)'
       href: quickstarts/intent-recognition.md
     - name: Anleitungen
@@ -578,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: Ressourcen
   items:
-    - name: Support
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger-Dokumentation
       href: swagger-documentation.md
     - name: Sovereign Clouds

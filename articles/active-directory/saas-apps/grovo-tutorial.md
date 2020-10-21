@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551405"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Grovo
 
@@ -137,11 +137,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Administrator** > **Integrationen**.
  
-    ![Grovo-Konfiguration](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    ![Screenshot: Menü „Admin“ (Verwaltung), in dem „Integrations“ (Integrationen) ausgewählt ist](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. Klicken Sie im Abschnitt **SP Initiated SAML 2.0** (SP-initiiertes SAML 2.0) auf **EINRICHTEN**.
 
-    ![Grovo-Konfiguration](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    ![Screenshot: Abschnitt „SP initiated SAML 2.0“ (SP-initiiertes SAML 2.0), in dem die Schaltfläche „Set up“ (Einrichten) ausgewählt ist](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. Führen Sie im Popupfenster **SP Initiated SAML 2.0** (SP-initiiertes SAML 2.0) die folgenden Schritte aus:
 

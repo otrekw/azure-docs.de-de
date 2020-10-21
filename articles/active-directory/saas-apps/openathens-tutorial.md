@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543940"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit OpenAthens
 
@@ -134,15 +134,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie in der Liste auf der Registerkarte **Management** (Verwaltung) die Option **Connections** (Verbindungen) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![Screenshot: Seite der Unternehmenswebsite von „OpenAthens“, auf der auf der Registerkarte „Management“ (Verwaltung) die Option „Connections“ (Verbindungen) ausgewählt ist](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. Wählen Sie **SAML 1.1/2.0** aus, und klicken Sie anschließend auf die Schaltfläche **Configure** (Konfigurieren).
 
-    ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Screenshot: Dialogfeld „Select local authentication system type.“ (Typ des lokalen Authentifizierungssystems auswählen), in dem „SAML 1.1/2.0“ und die Schaltfläche „Configure“ (Konfigurieren) ausgewählt sind](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
 1. Klicken Sie zum Hinzufügen der Konfiguration auf die Schaltfläche **Browse** (Durchsuchen), um die Metadaten-XML-Datei hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Add** (Hinzufügen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Screenshot: Dialogfeld „Add SAML authentication system.“ (SAML-Authentifizierungssystem hinzufügen), in dem die Aktion „Browse“ (Durchsuchen) und die Schaltfläche „Add“ (Hinzufügen) ausgewählt sind](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
 1. Führen Sie auf der Registerkarte **Details** die folgenden Schritte aus.
 
@@ -164,7 +164,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     h. Kopieren Sie auf der Registerkarte **</> Vertrauende Seite** die **Metadaten-URL**, und öffnen Sie die Seite im Browser, um die Datei mit der **SP-Metadaten-XML** herunterzuladen. Laden Sie diese SP-Metadatendatei im Abschnitt **Grundlegende SAML-Konfiguration** in Azure AD hoch.
 
-    ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Screenshot: Ausgewählte Registerkarte „Relying party“ (Vertrauende Seite) und hervorgehobene Option „Metadata URL“ (Metadaten-URL)](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>Erstellen eines OpenAthens-Testbenutzers
 

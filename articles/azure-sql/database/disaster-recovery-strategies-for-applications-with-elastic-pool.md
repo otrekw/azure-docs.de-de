@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357782"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren E
 
 Trennen Sie zur Unterstützung dieses Szenarios die Testmandanten von den zahlenden Mandanten, indem Sie sie in separaten Pools für elastische Datenbanken anordnen. Für die Testkunden gilt dann eine niedrigere Anzahl von eDTUs oder virtuellen Kernen pro Mandant und ein SLA mit einer längeren Wiederherstellungszeit. Die zahlenden Kunden sind in einem Pool mit einer höheren Anzahl von eDTUs oder virtuellen Kernen pro Mandant und einem höheren SLA angeordnet. Um die kürzeste Wiederherstellungsdauer zu gewährleisten, werden die Mandantendatenbanken der zahlenden Kunden georepliziert. Diese Konfiguration ist im nächsten Diagramm dargestellt.
 
-![Abbildung 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![Im Diagramm sind eine primäre Region und eine DR-Region (Region zur Notfallwiederherstellung) gezeigt, für die Georeplikation zwischen der Verwaltungsdatenbank und dem kostenpflichtigen Kundenpool und sekundären Pool ohne Replikation für den Testkundenpool genutzt wird.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 Wie beim ersten Szenario auch sind die Verwaltungsdatenbanken ziemlich aktiv, sodass Sie dafür eine einzelne georeplizierte Datenbank verwenden (1). So wird die vorhersagbare Leistung für neue Kundenabonnements, Profilupdates und andere Verwaltungsvorgänge sichergestellt. Die Region, in der sich die primären Replikate der Verwaltungsdatenbanken befinden, ist die primäre Region, und die Region, in der sich die sekundären Replikate der Verwaltungsdatenbanken befinden, ist die Region für die Notfallwiederherstellung.
 
@@ -86,7 +86,7 @@ Die Mandantendatenbanken der zahlenden Kunden verfügen über aktive Datenbanken
 
 Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschritte ausführen, die im nächsten Diagramm angegeben sind, um die Anwendung wieder in den Onlinezustand zu versetzen:
 
-![Abbildung 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![Im Diagramm ist ein Ausfall der primären Region dargestellt, mit einem Failover zur Verwaltungsdatenbank, mit kostenpflichtigem sekundärem Kundenpool und Erstellen und Wiederherstellen für Testkunden.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken in die Region für die Notfallwiederherstellung durch (3).
 * Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
@@ -99,7 +99,7 @@ An diesem Punkt ist Ihre Anwendung in der Region für die Notfallwiederherstellu
 
 Wenn die primäre Region von Azure wiederhergestellt wurde, *nachdem* Sie die Anwendung in der Region für die Notfallwiederherstellung wiederhergestellt haben, können Sie die Ausführung der Anwendung in dieser Region fortsetzen, oder Sie können ein Failback zurück zur primären Region durchführen. Falls die primäre Region wiederhergestellt wird, *bevor* der Failoverprozess abgeschlossen ist, sollten Sie erwägen, sofort ein Failback durchzuführen. Beim Failback werden die Schritte ausgeführt, die im nächsten Diagramm dargestellt sind:
 
-![Abbildung 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![Im Diagramm sind Failbackschritte dargestellt, die nach der Wiederherstellung der primären Region implementiert werden müssen.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.
 * Führen Sie das Failover für die Verwaltungsdatenbank durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.  
@@ -128,7 +128,7 @@ Verwenden Sie für dieses Szenario drei separate Pools für elastische Datenbank
 
 Um bei Ausfällen die kürzeste Wiederherstellungsdauer garantieren zu können, werden die Mandantendatenbanken der zahlenden Kunden mit 50 Prozent der primären Datenbanken in beiden Regionen georepliziert. Außerdem verfügt jede Region über 50 Prozent der sekundären Datenbanken. Wenn eine Region offline ist, sind hierbei also nur 50 Prozent der Datenbanken zahlender Kunden betroffen und müssen einem Failover unterzogen werden. Die restlichen Datenbanken bleiben intakt. Diese Konfiguration ist im folgenden Diagramm dargestellt:
 
-![Abbildung 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![Im Diagramm sind eine primäre Region namens „Region A“ und eine sekundäre Region namens „Region B“ gezeigt, für die Georeplikation zwischen der Verwaltungsdatenbank und dem kostenpflichtigen Kundenpool und sekundären Pool ohne Replikation für den Testkundenpool genutzt wird.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 Wie in den vorherigen Szenarien auch sind die Verwaltungsdatenbanken sehr aktiv, sodass Sie sie als einzelne georeplizierte Datenbanken konfigurieren sollten (1). So wird die vorhersagbare Leistung der neuen Kundenabonnements, Profilupdates und anderen Verwaltungsvorgänge sichergestellt. Region A ist die primäre Region für die Verwaltungsdatenbanken, und Region B wird für die Wiederherstellung der Verwaltungsdatenbanken verwendet.
 
@@ -136,7 +136,7 @@ Die Mandantendatenbanken der zahlenden Kunden werden auch georepliziert, aber di
 
 Im nächsten Diagramm sind die Wiederherstellungsschritte dargestellt, die ausgeführt werden müssen, wenn es in Region A zu einem Ausfall kommt.
 
-![Abbildung 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![Im Diagramm ist ein Ausfall der primären Region dargestellt, mit einem Failover zur Verwaltungsdatenbank, mit kostenpflichtigem sekundärem Kundenpool und Erstellen und Wiederherstellen für Testkunden in Region B.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * Führen Sie für die Verwaltungsdatenbanken sofort ein Failover in Region B durch (3).
 * Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Verwaltungsdatenbanken in Region B verweist. Ändern Sie die Verwaltungsdatenbanken, um sicherzustellen, dass die neuen Konten und Mandantendatenbanken in Region B erstellt werden und die vorhandenen Mandantendatenbanken ebenfalls dort angeordnet sind. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
@@ -152,7 +152,7 @@ An diesem Punkt ist die Anwendung in Region B wieder online. Alle zahlenden Kund
 
 Nach dem Wiederherstellen von Region A müssen Sie entscheiden, ob Sie Region B für Testkunden verwenden oder ein Failback zur Verwendung des Testkundenpools in Region A durchführen möchten. Ein Kriterium kann der Prozentsatz der Testmandanten-Datenbanken sein, die seit der Wiederherstellung geändert wurden. Unabhängig von dieser Entscheidung müssen Sie die kostenpflichtigen Mandanten zwischen zwei Pools neu verteilen. Das nächste Diagramm veranschaulicht den Prozess, bei dem für die Mandantendatenbanken für Testkunden ein Failback auf Region A ausgeführt wird.  
 
-![Abbildung 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![Im Diagramm sind Failbackschritte dargestellt, die nach der Wiederherstellung der Region A implementiert werden müssen.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * Brechen Sie alle ausstehenden Anforderungen der Geowiederherstellung an den Notfallwiederherstellungspool für Testkunden ab.
 * Führen Sie das Failover für die Verwaltungsdatenbank durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.  

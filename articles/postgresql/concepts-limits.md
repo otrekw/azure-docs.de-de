@@ -1,18 +1,18 @@
 ---
 title: Beschränkungen – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel werden die Beschränkungen in Azure Database for PostgreSQL für Einzelserver beschrieben, z. B. die Anzahl der Verbindungen und Optionen für die Speicher-Engine.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76836455"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707522"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
@@ -30,11 +30,11 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |Universell| 8| 480| 475|
 |Universell| 16| 950| 945|
 |Universell| 32| 1500| 1495|
-|Universell| 64| 1\.900| 1895|
+|Universell| 64| 1.900| 1895|
 |Arbeitsspeicheroptimiert| 2| 300| 295|
 |Arbeitsspeicheroptimiert| 4| 500| 495|
 |Arbeitsspeicheroptimiert| 8| 960| 955|
-|Arbeitsspeicheroptimiert| 16| 1\.900| 1895|
+|Arbeitsspeicheroptimiert| 16| 1.900| 1895|
 |Arbeitsspeicheroptimiert| 32| 1987| 1982|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
@@ -66,6 +66,11 @@ Eine PostgreSQL-Verbindung, selbst im Leerlauf, kann ungefähr 10 MB Arbeitsspe
 
 ### <a name="utf-8-characters-on-windows"></a>UTF-8-Zeichen in Windows
 - In einigen Szenarien werden UTF-8-Zeichen nicht vollständig in Open Source PostgreSQL unter Windows unterstützt, was Azure Database for PostgreSQL beeinträchtigt. Weitere Informationen finden Sie in dem Thread zu [Fehler #15476 im PostgreSQL-Archiv](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html).
+
+### <a name="gss-error"></a>GSS-Fehler
+Falls ein Fehler zu **GSS** angezeigt wird, verwenden Sie wahrscheinlich eine neuere Client-/Treiberversion, die von Azure Postgres Single Server noch nicht vollständig unterstützt wird. Dieser Fehler wirkt sich auf die [JDBC-Treiberversionen 42.2.15 und 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) aus.
+   - Es ist geplant, das Update bis Ende November fertigzustellen. In der Zwischenzeit ist es ratsam, eine funktionierende Treiberversion zu verwenden.
+   - Alternativ kann die GSS-Anforderung deaktiviert werden.  Verwenden Sie einen Verbindungsparameter wie `gssEncMode=disable`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zu den [verfügbaren Funktionen in jedem Tarif](concepts-pricing-tiers.md)

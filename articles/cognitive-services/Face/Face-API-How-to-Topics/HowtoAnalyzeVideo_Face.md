@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9d9fa461291b2fe72e9d69928163bb54e9e1be0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 730946a0c581be4697c0f45c8bdeb1d38f0ca23d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303810"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856387"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Beispiel: Analysieren von Videos in Echtzeit
 
@@ -79,13 +79,13 @@ Beim letzten System, dem Producer-Consumer-System, verwenden wir einen Producer-
 ```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread. 
 while (true)
 {
     // Grab a frame. 
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame. 
     if (ShouldAnalyze(f))
     {
@@ -119,10 +119,10 @@ while (true)
 {
     // Get the oldest task. 
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed. 
     var output = await analysisTask;
-     
+     
     // Consume the exception or result. 
     if (output.Exception != null)
     {
@@ -145,52 +145,7 @@ Die Bibliothek enthält die FrameGrabber-Klasse, mit der das oben beschriebene P
 
 Zur Veranschaulichung einiger Möglichkeiten sind zwei Beispiel-Apps vorhanden, die die Bibliothek nutzen. Die erste App ist eine einfache Konsolen-App. Eine vereinfachte Version dieser App ist unten dargestellt. Hiermit werden Frames von der Standardwebcam erfasst und zur Gesichtserkennung an den Gesichtserkennungsdienst übermittelt.
 
-```csharp
-using System;
-using VideoFrameAnalyzer;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
-     
-namespace VideoFrameConsoleApplication
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Create grabber, with analysis type Face[]. 
-            FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
-            
-            // Create Face Client. Insert your Face API key here.
-            private readonly IFaceClient faceClient = new FaceClient(
-            new ApiKeyServiceClientCredentials("<subscription key>"),
-            new System.Net.Http.DelegatingHandler[] { });
-
-            // Set up our Face API call.
-            grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
-
-            // Set up a listener for when we receive a new result from an API call. 
-            grabber.NewResultAvailable += (s, e) =>
-            {
-                if (e.Analysis != null)
-                    Console.WriteLine("New result received for frame acquired at {0}. {1} faces detected", e.Frame.Metadata.Timestamp, e.Analysis.Length);
-            };
-            
-            // Tell grabber to call the Face API every 3 seconds.
-            grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
-
-            // Start running.
-            grabber.StartProcessingCameraAsync().Wait();
-
-            // Wait for keypress to stop
-            Console.WriteLine("Press any key to stop...");
-            Console.ReadKey();
-            
-            // Stop, blocking until done.
-            grabber.StopProcessingAsync().Wait();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/analyze.cs":::
 
 Die zweite Beispiel-App ist etwas interessanter, und Sie können wählen, welche API für das Aufrufen der Videoframes verwendet werden soll. Auf der linken Seite wird in der App eine Vorschau der Livevideodaten angezeigt, und auf der rechten Seite wird das letzte API-Ergebnis auf dem entsprechenden Frame eingeblendet.
 
@@ -208,7 +163,7 @@ Führen Sie diese Schritte aus, um mit diesem Beispiel zu beginnen:
    - [Gesichtserkennung](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Klicken Sie nach dem Bereitstellen der Ressourcen auf **Zu Ressource wechseln**, um für jede Ressource Ihren Schlüssel und Endpunkt zu erfassen. 
 3. Klonen Sie das GitHub-Repository [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 4. Öffnen Sie das Beispiel in Visual Studio, erstellen Sie die Beispielanwendungen, und führen Sie sie aus:
-    - Für BasicConsoleSample ist der Schlüssel für die Gesichtserkennung direkt in  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) hartcodiert.
+    - Für BasicConsoleSample ist der Schlüssel für die Gesichtserkennung direkt in [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) hartcodiert.
     - Für LiveCameraSample sollten die Schlüssel im Bereich „Einstellungen“ der App eingegeben werden. Sie werden sitzungsübergreifend als Benutzerdaten beibehalten.
         
 
@@ -218,7 +173,7 @@ Wenn Sie zum Integrieren bereit sind, können Sie **in Ihren eigenen Projekten a
 
 In diesem Leitfaden wurde beschrieben, wie Sie nahezu in Echtzeit eine Analyse für Live-Videodatenströme durchführen, indem Sie die APIs für Gesichtserkennung, Maschinelles Sehen und Emotionen verwenden, und wie Sie erste Schritte mit unserem Beispielcode ausführen.
 
-Wir freuen uns über Feedback und Vorschläge im [GitHub-Repository](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) und über allgemeineres Feedback zu den APIs über unsere  [UserVoice-Website](https://cognitive.uservoice.com/).
+Wir freuen uns über Feedback und Vorschläge im [GitHub-Repository](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) und über allgemeineres Feedback zu den APIs über unsere [UserVoice-Website](https://cognitive.uservoice.com/).
 
 ## <a name="related-topics"></a>Verwandte Themen
 - [How to Detect Faces in Image](HowtoDetectFacesinImage.md) (Gesichtserkennung in Bildern)

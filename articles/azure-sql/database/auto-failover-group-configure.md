@@ -7,24 +7,24 @@ ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987129"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91577508"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In diesem Thema erfahren Sie, wie Sie eine [Autofailover-Gruppe](auto-failover-group-overview.md) für Azure SQL-Datenbank und eine verwaltete Azure SQL-Instanz konfigurieren.
 
-## <a name="single-database-in-azure-sql-database"></a>Einzeldatenbank in einer Azure SQL-Datenbank
+## <a name="single-database"></a>Einzeldatenbank
 
 Erstellen Sie die Failovergruppe, und fügen Sie ihr eine einzelne Datenbank im Azure-Portal oder mit PowerShell hinzu.
 
@@ -192,7 +192,7 @@ Stellen Sie die Failovergruppe auf dem primären Server wieder her:
 > [!IMPORTANT]
 > Wenn Sie die sekundäre Datenbank löschen müssen, entfernen Sie sie vor dem Löschen aus der Failovergruppe. Wenn eine sekundäre Datenbank vor dem Entfernen aus der Failovergruppe gelöscht wird, kann dies zu unvorhersehbarem Verhalten führen.
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Pools für elastische Datenbanken in Azure SQL-Datenbank
+## <a name="elastic-pool"></a>Pool für elastische Datenbanken
 
 Erstellen Sie die Failovergruppe, und fügen Sie ihr einen Pool für elastische Datenbanken mithilfe des Azure-Portals oder PowerShell hinzu.  
 
@@ -346,7 +346,9 @@ Failover auf den sekundären Server:
 
 Erstellen Sie eine Failovergruppe zwischen zwei verwalteten Instanzen in Azure SQL Managed Instance mithilfe des Azure-Portals oder PowerShell.
 
-Sie müssen entweder [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) konfigurieren oder ein Gateway für das virtuelle Netzwerk jeder verwalteten Azure SQL-Instanz erstellen, eine Verbindung der beiden Gateways herstellen und dann die Failovergruppe erstellen.
+Sie müssen entweder [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) konfigurieren oder ein Gateway für das virtuelle Netzwerk jeder verwalteten Azure SQL-Instanz erstellen, eine Verbindung der beiden Gateways herstellen und dann die Failovergruppe erstellen. 
+
+Stellen Sie beide verwalteten Instanzen aus Leistungsgründen in [gekoppelten Regionen](../../best-practices-availability-paired-regions.md) (Regionspaar) bereit. Verwaltete Instanzen, die sich in geografisch gekoppelten Regionen befinden, weisen eine deutlich bessere Leistung auf als in nicht gekoppelte Regionen. 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -360,6 +362,9 @@ Beachten Sie die folgenden erforderlichen Voraussetzungen:
 ### <a name="create-primary-virtual-network-gateway"></a>Erstellen eines Gateways für das primäre virtuelle Netzwerk
 
 Wenn Sie [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) nicht konfiguriert haben, können Sie das Gateway für das primäre virtuelle Netzwerk über das Azure-Portal oder mit PowerShell erstellen.
+
+> [!NOTE]
+> Die SKU des Gateways wirkt sich auf die Durchsatzleistung aus. In diesem Artikel wird ein Gateway mit der einfachsten SKU (`HwGw1`) bereitgestellt. Stellen Sie eine höhere SKU (beispielsweise `VpnGw3`) bereit, um einen höheren Durchsatz zu erzielen. Informationen zu allen verfügbaren Optionen finden Sie unter [Gateway-SKUs](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark). 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

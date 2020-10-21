@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070852"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91617739"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer SQL Managed Instance zu einer Failovergruppe
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
 
 In diesem Schritt erstellen Sie die Ressourcengruppe und die primäre verwaltete Instanz für Ihre Failovergruppe mithilfe des Azure-Portals oder mit PowerShell. 
+
+Stellen Sie beide verwalteten Instanzen aus Leistungsgründen in [gekoppelten Regionen](../../best-practices-availability-paired-regions.md) bereit. Verwaltete Instanzen in geografisch gekoppelten Regionen weisen eine deutlich bessere Leistung auf als Instanzen in nicht gekoppelten Regionen. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
@@ -740,6 +742,8 @@ Damit zwei verwaltete Instanzen an einer Failovergruppe teilnehmen können, muss
 
 In diesem Artikel wird beschrieben, wie Sie die beiden VPN-Gateways erstellen und verbinden. Sie können aber mit dem Erstellen der Failovergruppe fortfahren, wenn Sie stattdessen ExpressRoute konfiguriert haben. 
 
+> [!NOTE]
+> Die SKU des Gateways wirkt sich auf die Durchsatzleistung aus. In diesem Tutorial wird ein Gateway mit der einfachsten SKU (`HwGw1`) bereitgestellt. Stellen Sie eine höhere SKU (beispielsweise `VpnGw3`) bereit, um einen höheren Durchsatz zu erzielen. Informationen zu allen verfügbaren Optionen finden Sie unter [Gateway-SKUs](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544195"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Tutorial: Azure Active Directory-Integration mit HackerOne
 
@@ -126,11 +126,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HackerO
 
 2. Klicken Sie im oberen Menü auf **Settings**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![Screenshot, auf dem im Menü „Settings“ (Einstellungen) ausgewählt ist](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. Navigieren Sie zu **Authentication** (Authentifizierung), und klicken Sie auf **Add SAML settings** (SAML-Einstellungen hinzufügen).
 
-    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![Screenshot: Seite „Authentication Settings“ (Authentifizierungseinstellungen) mit der ausgewählten Schaltfläche „Add SAML settings“ (SAML-Einstellungen hinzufügen)](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. Führen Sie im Dialogfeld **SAML Settings** (SAML-Einstellungen) die folgenden Schritte aus:
 
@@ -146,7 +146,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HackerO
 
 5. Führen Sie im Dialogfeld „Authentication Settings“ die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![Screenshot: Dialogfeld „Authentication Settings“ (Authentifizierungseinstellungen) mit der ausgewählten Schaltfläche „Run test“ (Test ausführen)](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. Klicken Sie auf **Run test**.
 

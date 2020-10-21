@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539192"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619616"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank-Instanz mit Sharding
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -169,7 +169,7 @@ Um nachzuvollziehen, wie die Wingtip-App die Bereitstellung neuer Mandanten in e
 
 4. Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11**, um den Code schrittweise auszuführen.
 
-   ![debug](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Screenshot: Windows PowerShell-ISE mit geöffnetem Menü „Debuggen“ und ausgewählter Option „Schrittweise ausführen“.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Verfolgen Sie die Ausführung des Skripts mit den Optionen (**F10** und **F11**) im Menü **Debug** nach, um aufgerufene Funktionen zu überspringen oder einzeln auszuführen.
 

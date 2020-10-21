@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282459"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938422"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Tutorial: Migrieren von Azure DB for PostgreSQL – Einzelserver zu Azure DB for PostgreSQL – Einzelserver oder Hyperscale (Citus) online mithilfe von DMS über das Azure-Portal
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Tutorial: Onlinemigration von einer Azure DB for PostgreSQL – Einzelserver-Instanz zu einer anderen Azure DD for PostgreSQL – Einzelserver-Instanz mithilfe von DMS über das Azure-Portal
 
-Mit Azure Database Migration Service können Sie Datenbanken mit minimaler Ausfallzeit von einer [Azure Database for PostgreSQL – Einzelserver](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)-Instanz zu einer [Hyperscale (Citus) auf Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus)-Instanz migrieren. In diesem Tutorial migrieren Sie die Beispieldatenbank **DVD Rental** von Azure Database for PostgreSQL v10 zu Hyperscale (Citus) auf Azure Database for PostgreSQL. Zu diesem Zweck verwenden Sie die Onlinemigrationsaktivität in Azure Database Migration Service.
+Sie können Azure Database Migration Service nutzen, um die Datenbanken mit minimaler Downtime aus einer [Azure Database for PostgreSQL – Einzelserver](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)-Instanz in dieselbe oder eine andere Version einer Azure Database for PostgreSQL – Einzelserver-Instanz oder Azure Database for PostgreSQL – Flexible Server-Instanz zu migrieren. In diesem Tutorial migrieren Sie die Beispieldatenbank **DVD Rental** von Azure Database for PostgreSQL v10 zu Azure Database for PostgreSQL – Single Server. Zu diesem Zweck verwenden Sie die Onlinemigrationsaktivität in Azure Database Migration Service.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -57,9 +57,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Stellen Sie sicher, dass die Regeln für Netzwerksicherheitsgruppen für Ihr virtuelles Netzwerk nicht die folgenden Ports für die eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem virtuellen Netzwerk finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * Erstellen Sie für die Azure Database for PostgreSQL-Quelle eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Quelldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten virtuellen Netzwerks an.
 * Erstellen Sie für das Azure Database for PostgreSQL-Ziel eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten virtuellen Netzwerks an.
+* [Aktivieren Sie die logische Replikation](https://docs.microsoft.com/azure/postgresql/concepts-logical) in der Azure DB for PostgreSQL-Quelle. 
 * Legen Sie die folgenden Serverparameter in der Azure Database for PostgreSQL-Instanz fest, die als Quelle verwendet wird:
 
-  * max_replication_slots = [Anzahl von Slots], empfohlene Einstellung: **5 Slots**
+  * max_replication_slots = [Anzahl der Slots], empfohlene Einstellung: **zehn Slots**
   * max_wal_senders = [Anzahl gleichzeitiger Aufgaben] – Der max_wal_senders-Parameter legt die Anzahl von Aufgaben fest, die gleichzeitig ausgeführt werden können; empfohlene Einstellung: **10 Aufgaben**
 
 > [!NOTE]
@@ -284,7 +285,10 @@ Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbank
 
     ![Bildschirm „Umstellung abschließen“](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Wenn der Status der Datenbankmigration als **Abgeschlossen** angezeigt wird, stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen Azure Database for PostgreSQL-Zielinstanz her.
+3. Wenn der Status der Datenbankmigration als **Abgeschlossen** angezeigt wird, [erstellen Sie Sequenzen neu](https://wiki.postgresql.org/wiki/Fixing_Sequences) (sofern erforderlich), und stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen Azure Database for PostgreSQL-Zielinstanz her.
+ 
+> [!NOTE]
+> Azure Database Migration Service kann verwendet werden, um Upgrades der Hauptversion mit verringerter Downtime in Azure Database for PostgreSQL – Einzelserver-Instanzen durchzuführen. Zuerst konfigurieren Sie eine Zieldatenbank mit der gewünschten höheren PostgreSQL-Version sowie entsprechenden Netzwerkeinstellungen und Parametern. Dann initiieren Sie die Migration in die Zieldatenbanken mithilfe der oben erläuterten Prozedur. Nachdem Sie die Umstellung auf den Zieldatenbankserver durchgeführt haben, können Sie Ihre Anwendungsverbindungszeichenfolge so aktualisieren, das sie auf den Zieldatenbankserver verweist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
