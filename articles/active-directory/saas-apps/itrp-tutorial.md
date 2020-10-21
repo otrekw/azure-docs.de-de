@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552797"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850369"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Tutorial: Azure Active Directory-Integration mit ITRP
 
@@ -94,7 +94,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 3. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Symbol **Bearbeiten** aus, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen:
 
-    ![Symbol „Bearbeiten“](common/edit-urls.png)
+    ![Screenshot: Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ mit Auswahl des Symbols „Bearbeiten“](common/edit-urls.png)
 
 4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
@@ -113,7 +113,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 5. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** das Symbol **Bearbeiten** aus, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen:
 
-    ![Symbol „Bearbeiten“](common/edit-certificate.png)
+    ![Screenshot: Seite „SAML Signing Certificate“ (SAML-Signaturzertifikat) mit Auswahl des Symbols „Bearbeiten“](common/edit-certificate.png)
 
 6. Kopieren Sie im Dialogfeld **SAML-Signaturzertifikat** den Wert **Fingerabdruck**, und speichern Sie ihn:.
 
@@ -143,9 +143,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 1. Führen Sie im Konfigurationsabschnitt **Single Sign-On** (Einmaliges Anmelden) die folgenden Schritte aus:
 
-    ![Abschnitt „Einmaliges Anmelden“](./media/itrp-tutorial/ic775572.png "Abschnitt „Einmaliges Anmelden“")
+    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden) mit Auswahl von „Enabled“ (Aktiviert)](./media/itrp-tutorial/ic775572.png "Abschnitt „Einmaliges Anmelden“")
 
-    ![Abschnitt „Einmaliges Anmelden“](./media/itrp-tutorial/ic775573.png "Abschnitt „Einmaliges Anmelden“")
+    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden), in dem Sie die in diesem Schritt beschriebenen Informationen hinzufügen können](./media/itrp-tutorial/ic775573.png "Abschnitt „Einmaliges Anmelden“")
 
     1. Wählen Sie **Aktiviert**.
 

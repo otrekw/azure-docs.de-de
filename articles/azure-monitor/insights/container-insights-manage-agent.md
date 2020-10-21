@@ -3,12 +3,12 @@ title: Verwalten des Agent für Azure Monitor für Container | Microsoft-Dokumen
 description: In diesem Artikel wird die Verwaltung der häufigsten Wartungsaufgaben mit dem containerbasierten Log Analytics-Agent beschrieben, der von Azure Monitor für Container verwendet wird.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041268"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91618436"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Verwalten des Agent für Azure Monitor für Container
 
@@ -75,23 +75,25 @@ Führen Sie die folgenden Schritte aus, um ein Upgrade des Agents in einem Kuber
 >
 
 ```console
-$ helm upgrade --name myrelease-1 \
---set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
+
+Ausführliche Informationen zur Verwendung eines Dienstprinzipals mit diesem Befehl finden Sie unter **Verwenden eines Dienstprinzipals** im Artikel [Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script).
 
 ### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Upgrade des Agents in Kubernetes mit Azure Arc-Aktivierung
 
-Führen Sie den folgenden Befehl aus, um den Agent in einem Kubernetes-Cluster mit Azure Arc-Aktivierung ohne Proxyendpunkt zu aktualisieren.
+Führen Sie den folgenden Befehl aus, um den Agent in einem Kubernetes-Cluster mit Azure Arc-Aktivierung zu aktualisieren.
 
 ```console
-$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
 ```
 
-Führen Sie den folgenden Befehl aus, um den Agent zu aktualisieren, wenn ein Proxyendpunkt angegeben ist. Weitere Informationen zum Proxyendpunkt finden Sie unter [Konfigurieren eines Proxyendpunkts](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint).
+Ausführliche Informationen zur Verwendung eines Dienstprinzipals mit diesem Befehl finden Sie unter **Verwenden eines Dienstprinzipals** im Artikel [Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script).
 
-```console
-$ helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
-```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Deaktivieren der Sammlung von Umgebungsvariablen für einen Container
 

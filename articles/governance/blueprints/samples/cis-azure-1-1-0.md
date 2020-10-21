@@ -1,14 +1,14 @@
 ---
 title: Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“
 description: Hier finden Sie eine Übersicht über das Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6cc985fe127eae795d9a8e37624c403dd6e6f96a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739384"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054609"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“
 
@@ -46,7 +46,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 1. Wählen Sie oben auf der Seite die Registerkarte _Artefakte_ oder unten auf der Seite die Option **Weiter: Artefakte** aus.
 
-1. Überprüfen Sie die Liste der Artefakte, aus denen das Blaupausenbeispiel besteht. Viele der Artefakte enthalten Parameter, die Sie später definieren. Wählen Sie **Entwurf speichern** aus, nachdem Sie das Blaupausenbeispiel überprüft haben.
+1. Überprüfen Sie die Liste der Artefakte, die im Blaupausenbeispiel enthalten sind. Viele der Artefakte enthalten Parameter, die Sie später definieren. Wählen Sie **Entwurf speichern** aus, nachdem Sie das Blaupausenbeispiel überprüft haben.
 
 ### <a name="publish-the-sample-copy"></a>Veröffentlichen der Kopie des Beispiels
 

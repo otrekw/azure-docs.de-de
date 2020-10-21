@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7581dd52cb9affa3295bfbc00c14535ee72de5be
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553948"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Tutorial: Azure Active Directory-Integration mit Perception United States (Non-UltiPro)
 
@@ -133,7 +133,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Percepti
 
 2. Klicken Sie auf der Hauptsymbolleiste auf **Account Settings**.
 
-    ![Perception United States (Non-UltiPro)-Benutzer](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Screenshot, auf dem „Account Settings“ (Kontoeinstellungen) auf der Hauptsymbolleiste ausgewählt ist](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. Führen Sie auf der Seite **Account Settings** die folgenden Schritte aus:
 

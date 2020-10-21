@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: 2b36da366c41b43a125a25c682aa15b7594f0d1d
-  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+  ms.date: 10/20/2020
+  ms.openlocfilehash: c3a70e38b870d11d7a12e438d3a0390c23df20bd
+  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92057942"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92317734"
 highlightedContent:
   items:
   - title: Übersicht über Governance
@@ -28,9 +28,9 @@ highlightedContent:
   - title: Governance im Framework für die Cloudeinführung
     itemType: architecture
     url: /azure/architecture/cloud-adoption/governance
-  - title: Anwenden und Überwachen von Infrastrukturstandards mit Azure Policy
+  - title: Erstellen einer Strategie für Cloudgovernance in Azure
     itemType: learn
-    url: /learn/modules/intro-to-governance/
+    url: /learn/modules/build-cloud-governance-strategy-azure/
 productDirectory:
   title: Komponenten und Dienste
   items:
@@ -107,7 +107,7 @@ additionalContent:
     items:
     - title: Verwaltungsgruppen
       links:
-      - text: Azure-Befehlszeilenschnittstelle
+      - text: Azure CLI
         url: /cli/azure/account/management-group
       - text: Azure PowerShell
         url: /powershell/module/az.resources/#resources
@@ -121,7 +121,7 @@ additionalContent:
         url: /azure/templates/microsoft.management/managementgroups
     - title: Azure Policy
       links:
-      - text: Azure-Befehlszeilenschnittstelle
+      - text: Azure CLI
         url: /cli/azure/policy
       - text: Azure PowerShell
         url: /powershell/module/az.resources/#policies
@@ -185,7 +185,7 @@ additionalContent:
         url: /rest/api/blueprints/
     - title: Azure Resource Graph
       links:
-      - text: Azure-Befehlszeilenschnittstelle
+      - text: Azure CLI
         url: /cli/azure/ext/resource-graph/graph
       - text: Azure PowerShell
         url: /powershell/module/az.resourcegraph/

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535576"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850546"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit IntelligenceBank
 
@@ -137,11 +137,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf **Authenticator** und dann auf **Neu hinzufügen**.
 
-    ![Konfiguration von IntelligenceBank](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![Screenshot: Auswahl der Registerkarte „Administrator“ und Symbol „Neu hinzufügen“](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. Führen Sie die folgenden Schritte aus:
 
-    ![Konfiguration von IntelligenceBank](./media/intelligencebank-tutorial/urls.PNG)
+    ![Screenshot: Felder, in die Sie die Informationen dieses Schritts eingeben](./media/intelligencebank-tutorial/urls.PNG)
 
     a. Geben Sie im Textfeld **Name** den Namen ein, etwa `azureadsso`.
 
@@ -165,11 +165,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wechseln Sie zu **Administrator** -> **Benutzer** und wählen Sie das Symbol **Neuen Benutzer hinzufügen** aus, um den **Benutzer** hinzuzufügen.
 
-    ![Konfiguration von IntelligenceBank](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![Screenshot: Auswahl des Symbols „Benutzer“ auf der Registerkarte „Benutzer“](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. Füllen Sie die erforderlichen Felder gemäß den Anforderungen Ihrer Organisation aus, und klicken Sie auf **Speichern**.
 
-    ![Konfiguration von IntelligenceBank](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![Screenshot: Seite „Neuen Benutzer hinzufügen“, auf der Sie die Benutzerinformationen eingeben](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

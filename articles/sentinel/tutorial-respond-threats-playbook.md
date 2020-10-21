@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053489"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840199"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel
 
@@ -72,7 +72,7 @@ Gehen Sie wie folgt vor, um in Azure Sentinel ein neues Sicherheitsplaybook zu e
 
 5. Wählen Sie im [**Logik-App-Designer**](../logic-apps/logic-apps-overview.md) die gewünschte Vorlage aus. Wenn Sie sich für eine Vorlage entscheiden, die Anmeldeinformationen erfordert, müssen Sie diese angeben. Alternativ können Sie auch ein neues leeres Playbook erstellen. Wählen Sie **Leere Logik-App** aus. 
 
-   ![Logik-App-Designer](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![Screenshot: Bereich „Leere Logik-App“](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. Im daraufhin angezeigten Logik-App-Designer können Sie entweder eine neue Logik-App erstellen oder die Vorlage bearbeiten. Weitere Informationen zum Erstellen eines Playbooks mit Logic Apps finden Sie [hier](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 

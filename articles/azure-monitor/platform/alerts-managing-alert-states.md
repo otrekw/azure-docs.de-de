@@ -5,12 +5,12 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a22d7b7b962b36f93ee804c64b3bc6b08ecceb0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667515"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91358962"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Verwalten von Warnungen und Status intelligenter Gruppen
 
@@ -20,30 +20,30 @@ Warnungen in Azure Monitor verfügen jetzt über einen [Warnungsstatus und eine 
 
 1. Sie können den Status einer Warnung auf verschiedene Weise ändern: 
     * Aktivieren Sie auf der Seite „Alle Warnungen“ das Kontrollkästchen neben den Warnungen, deren Status Sie ändern möchten, und klicken Sie auf „Status ändern“.   
-    ![Überwachung](./media/alerts-managing-alert-states/state-all-alerts.jpg)
+    ![Screenshot der Seite „Alle Warnungen“ mit ausgewählter Option „Status ändern“](./media/alerts-managing-alert-states/state-all-alerts.jpg)
     * Auf der Seite „Warnungsdetails“ für eine bestimmte Warnungsinstanz können Sie auf „Status ändern“ klicken.   
-    ![Überwachung](./media/alerts-managing-alert-states/state-alert-details.jpg)
+    ![Screenshot der Seite „Warnungsdetails“ mit ausgewählter Option „Warnungsstatus ändern“](./media/alerts-managing-alert-states/state-alert-details.jpg)
     * Auf der Seite „Warnungsdetails“ für eine bestimmte Warnungsinstanz können Sie im Bereich „Intelligente Gruppe“ das Kontrollkästchen neben den gewünschten Warnungen aktivieren.    
-    ![Überwachung](./media/alerts-managing-alert-states/state-alert-details-sg.jpg)
+    ![Screenshot der Seite „Warnungsdetails“ für die Heartbeat-Warnung, bei der einige Instanzen mit Häkchen versehen sind](./media/alerts-managing-alert-states/state-alert-details-sg.jpg)
 
     * Auf der Seite zu den Details der intelligenten Gruppe können Sie in der Liste der Mitgliedswarnungen das Kontrollkästchen neben den Warnungen aktivieren, deren Status Sie ändern möchten, und auf „Status ändern“ klicken, um den Status zu ändern.   
-    ![Überwachung](./media/alerts-managing-alert-states/state-sg-details-alerts.jpg)
+    ![Screenshot der Seite zu den Details der intelligenten Gruppe, auf der Warnungen zum Ändern des Status ausgewählt werden können](./media/alerts-managing-alert-states/state-sg-details-alerts.jpg)
 1. Wenn Sie auf „Status ändern“ klicken, wird ein Popup geöffnet, in dem Sie den Status auswählen (Neu/Bestätigt/Geschlossen) und bei Bedarf einen Kommentar eingeben können.   
-![Überwachung](./media/alerts-managing-alert-states/state-alert-change.jpg)
+![Screenshot des Dialogfelds zum Ändern des Warnungsstatus unter den Details](./media/alerts-managing-alert-states/state-alert-change.jpg)
 1. Nach diesem Vorgang wird die Statusänderung im Verlauf der jeweiligen Warnung aufgezeichnet. Dies kann angezeigt werden, indem die entsprechende Detailseite geöffnet und der Verlaufsbereich überprüft wird.    
-![Überwachung](./media/alerts-managing-alert-states/state-alert-history.jpg)
+![Screenshot des Verlaufs von Statusänderungen](./media/alerts-managing-alert-states/state-alert-history.jpg)
 
 ## <a name="change-the-state-of-a-smart-group"></a>Ändern des Status einer intelligenten Gruppe
 1. Sie können den Status einer intelligenten Gruppe auf verschiedene Weise ändern:
     1. Aktivieren Sie auf der Listenseite „Intelligente Gruppe“ das Kontrollkästchen neben den intelligenten Gruppen, deren Status Sie ändern möchten, und klicken Sie auf „Status ändern“.  
-    ![Überwachung](./media/alerts-managing-alert-states/state-sg-list.jpg)
+    ![Screenshot der Seite „Status ändern“ für intelligente Gruppen](./media/alerts-managing-alert-states/state-sg-list.jpg)
     1. Auf der Seite mit den Details zur intelligenten Gruppe können Sie auf „Status ändern“ klicken.        
-    ![Überwachung](./media/alerts-managing-alert-states/state-sg-details.jpg)
+    ![Screenshot der Seite mit den Details zur intelligenten Gruppe mit ausgewählter Option „Status der intelligenten Gruppe ändern“](./media/alerts-managing-alert-states/state-sg-details.jpg)
 1. Wenn Sie auf „Status ändern“ klicken, wird ein Popup geöffnet, in dem Sie den Status auswählen (Neu/Bestätigt/Geschlossen) und bei Bedarf einen Kommentar eingeben können. 
-![Überwachung](./media/alerts-managing-alert-states/state-sg-change.jpg)
+![Screenshot des Dialogfelds „Status ändern“ für die intelligente Gruppe](./media/alerts-managing-alert-states/state-sg-change.jpg)
    > [!NOTE]
    >  Durch das Ändern des Zustands einer intelligenten Gruppe wird nicht der Zustand der einzelnen Mitgliedswarnungen geändert.
 
 1. Nach diesem Vorgang wird die Statusänderung im Verlauf der jeweiligen intelligenten Gruppe aufgezeichnet. Dies kann angezeigt werden, indem die entsprechende Detailseite geöffnet und der Verlaufsbereich überprüft wird.     
-![Überwachung](./media/alerts-managing-alert-states/state-sg-history.jpg)
+![Screenshot des Änderungsverlaufs für die intelligente Gruppe](./media/alerts-managing-alert-states/state-sg-history.jpg)
 

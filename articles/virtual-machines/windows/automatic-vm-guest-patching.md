@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669061"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842868"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Vorschau: Automatische VM-Gastpatches für Windows-VMs in Azure
 
@@ -251,8 +251,10 @@ Die Ergebnisse der Patchinstallation für Ihre VM können im Abschnitt `lastPatc
 ## <a name="on-demand-patch-assessment"></a>Bedarfsgesteuerte Patchbewertung
 Wenn automatische VM-Gastpatches bereits für Ihre VM aktiviert sind, wird eine regelmäßige Patchbewertung für die VM außerhalb der Spitzenzeiten der VM durchgeführt. Dieser Prozess erfolgt automatisch, und die Ergebnisse der aktuellen Bewertung können wie zuvor in diesem Dokument beschrieben über die Instanzansicht der VM überprüft werden. Sie können auch jederzeit eine bedarfsgesteuerte Patchbewertung für Ihren virtuellen Computer auslösen. Die Patchbewertung kann einige Minuten dauern, und der Status der aktuellen Bewertung wird in der Instanzansicht der VM aktualisiert.
 
+Zum Aktivieren der Vorschaufunktion ist eine einmalige Aktivierung des Features *InGuestPatchVMPreview* pro Abonnement erforderlich. Die Funktionsvorschau für die Patchbewertung auf Anforderung kann durch Befolgen des [Prozesses zum Aktivieren der Vorschau](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) aktiviert werden, der weiter oben für automatische VM-Gastpatches beschrieben wurde.
+
 > [!NOTE]
->Bei der bedarfsgesteuerten Patchbewertung wird der installierte Patch nicht automatisch auslöst. Bewertete und anwendbare Patches für die VM werden nur außerhalb der Spitzenzeiten der VM installiert. Dies erfolgt nach dem zuvor in diesem Dokument beschriebenen Vorgang zur Patchverfügbarkeit.
+>Bei der bedarfsgesteuerten Patchbewertung wird die Patchinstallation nicht automatisch auslöst. Bewertete und anwendbare Patches für die VM werden nur außerhalb der Spitzenzeiten der VM installiert. Dies erfolgt nach dem zuvor in diesem Dokument beschriebenen Vorgang zur Patchverfügbarkeit.
 
 ### <a name="rest-api"></a>REST-API
 ```

@@ -4,14 +4,14 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826703"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91611282"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -19,65 +19,21 @@ ms.locfileid: "87826703"
 
 Es können bis zu zehn verschiedene Speicherziele für einen Cache definiert werden. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
 
+Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben. Im Allgemeinen kann ein NFS-Speicherziel über bis zu zehn Namespacepfade verfügen, oder bei manchen umfangreichen Konfigurationen über mehr. Details finden Sie unter [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths).
+
 Beachten Sie, dass der Zugriff auf die Speicherexporte vom virtuellen Netzwerk Ihres Caches aus möglich sein muss. Für einen lokalen Hardwarespeicher müssen Sie möglicherweise einen DNS-Server einrichten, der Hostnamen für den NFS-Speicherzugriff auflösen kann. Weitere Informationen finden Sie unter [DNS-Zugriff](hpc-cache-prerequisites.md#dns-access).
 
-Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu. Das Verfahren unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
+Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu. Folgen Sie diesem Prozess:
+
+1. [Erstellen des Caches](hpc-cache-create.md)
+1. Definieren eines Speicherziels (Informationen in diesem Artikel)
+1. [Erstellen Sie die clientseitigen Pfade](add-namespace-paths.md) (für den [aggregierten Namespace](hpc-cache-namespace.md)).
+
+Das Verfahren zum Hinzufügen eines Speicherziels unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
 
 Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) der Cacheerstellung und des Hinzufügens eines Speicherziels im Azure-Portal anzusehen.
 
 [![Videominiaturansicht: Azure HPC Cache: Setup (klicken Sie, um die Videoseite aufzurufen)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
-
-## <a name="view-storage-targets"></a>Anzeigen von Speicherzielen
-
-### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste auf **Speicherziele**. Auf der Seite „Speicherziele“ werden alle vorhandenen Ziele und ein Link zum Hinzufügen eines neuen Ziels aufgelistet.
-
-![Screenshot des Links „Speicherziele“ in der Randleiste unter der Überschrift „Konfigurieren“, die sich zwischen den Kategorieüberschriften „Einstellungen“ und „Überwachung“ befindet](media/hpc-cache-storage-targets-sidebar.png)
-
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
-Verwenden Sie die Option [az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list), um die vorhandenen Speicherziele für einen Cache anzuzeigen. Geben Sie den Cachenamen und die Ressourcengruppe an (sofern Sie dies nicht global festgelegt haben).
-
-```azurecli
-az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
-```
-
-Verwenden Sie [az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list), um Details zu einem bestimmten Speicherziel anzuzeigen. (Geben Sie das Speicherziel anhand des Namens an.)
-
-Beispiel:
-
-```azurecli
-$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
-
-{
-  "clfs": null,
-  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
-  "junctions": [
-    {
-      "namespacePath": "/nfs1/data1",
-      "nfsExport": "/datadisk1",
-      "targetPath": ""
-    }
-  ],
-  "location": "eastus",
-  "name": "nfsd1",
-  "nfs3": {
-    "target": "10.0.0.4",
-    "usageModel": "WRITE_WORKLOAD_15"
-  },
-  "provisioningState": "Succeeded",
-  "resourceGroup": "scgroup",
-  "targetType": "nfs3",
-  "type": "Microsoft.StorageCache/caches/storageTargets",
-  "unknown": null
-}
-$
-```
-
----
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Hinzufügen eines neuen Azure Blobspeicherziels
 
@@ -86,6 +42,14 @@ Für ein neues Blobspeicherziel ist ein leerer Blobcontainer oder ein Container 
 Im Azure-Portal finden Sie auf der Seite **Speicherziel hinzufügen** die Option, mit der Sie einen neuen Blobcontainer direkt vor dem Hinzufügen erstellen können.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste auf **Speicherziele**.
+
+![Screenshot der Seite „Einstellungen > Speicherziel“ mit zwei vorhandenen Speicherzielen in einer Tabelle und einer Hervorhebung um die Schaltfläche „+ Speicherziel hinzufügen“ oberhalb der Tabelle.](media/add-storage-target-button.png)
+
+Auf der Seite **Speicherziele** werden alle vorhandenen Ziele und ein Link zum Hinzufügen eines neuen Ziels aufgelistet.
+
+Klicken Sie auf die Schaltfläche **Speicherziel hinzufügen**.
 
 ![Screenshot der Seite „Speicherziel hinzufügen“, aufgefüllt mit Informationen für ein neues Azure-Blobspeicherziel](media/hpc-cache-add-blob.png)
 
@@ -102,8 +66,6 @@ Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 * **Speichercontainer**: Wählen Sie den Blobcontainer für dieses Ziel aus, oder klicken Sie auf **Neu erstellen**.
 
   ![Screenshot des Dialogfelds zum Angeben von Name und Zugriffsebene (privat) für neuen Container](media/add-blob-new-container.png)
-
-* **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
 
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
@@ -163,6 +125,9 @@ Ausführliche Anweisungen finden Sie unter [Hinzufügen oder Entfernen von Azure
 
 Verwenden Sie den Schnittstellenbefehl [az hpc-cache blob-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add), um ein Azure-Blobspeicherziel zu definieren.
 
+> [!NOTE]
+> Für die Azure CLI-Befehle ist es derzeit erforderlich, dass Sie beim Hinzufügen eines Speicherziels einen Namespacepfad hinzufügen. Dies unterscheidet sich von dem Prozess, der mit der Azure-Portalschnittstelle verwendet wird.
+
 Zusätzlich zu den Standardparametern für die Ressourcengruppe und den Cachenamen müssen Sie die folgenden Optionen für das Speicherziel angeben:
 
 * ``--name``: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
@@ -188,7 +153,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>Hinzufügen eines neuen NFS-Speicherziels
 
-Ein NFS-Speicherziel verfügt über mehr Felder als das Blobspeicherziel. Diese Felder geben an, wie auf den Speicherexport zugegriffen werden soll und wie seine Daten effizient zwischengespeichert werden sollen. Außerdem können Sie mit einem NFS-Speicherziel mehrere Namespacepfade erstellen, wenn der NFS-Host über mehrere Exporte verfügt.
+Ein NFS-Speicherziel besitzt andere Einstellungen als ein Blob-Speicherziel. Mithilfe der Einstellung „Verwendungsmodell“ kann der Cache Daten aus diesem Speichersystem effizient zwischenspeichern.
 
 ![Screenshot der Seite zum Hinzufügen von Speicherzielen mit definiertem NFS-Ziel](media/add-nfs-target.png)
 
@@ -228,6 +193,14 @@ In dieser Tabelle werden die Unterschiede im Nutzungsmodell zusammengefasst:
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
+Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste auf **Speicherziele**.
+
+![Screenshot der Seite „Einstellungen > Speicherziel“ mit zwei vorhandenen Speicherzielen in einer Tabelle und einer Hervorhebung um die Schaltfläche „+ Speicherziel hinzufügen“ oberhalb der Tabelle.](media/add-storage-target-button.png)
+
+Auf der Seite **Speicherziele** werden alle vorhandenen Ziele und ein Link zum Hinzufügen eines neuen Ziels aufgelistet.
+
+Klicken Sie auf die Schaltfläche **Speicherziel hinzufügen**.
+
 ![Screenshot der Seite zum Hinzufügen von Speicherzielen mit definiertem NFS-Ziel](media/add-nfs-target.png)
 
 Geben Sie diese Informationen für ein NFS-gestütztes Speicherziel an:
@@ -240,29 +213,18 @@ Geben Sie diese Informationen für ein NFS-gestütztes Speicherziel an:
 
 * **Nutzungsmodell**: Wählen Sie auf der Grundlage Ihres Workflows eines der oben im Abschnitt [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschriebenen Datencacheprofile aus.
 
-### <a name="nfs-namespace-paths"></a>NFS-Namespacepfade
-
-Ein NFS-Speicherziel kann mehrere virtuelle Pfade aufweisen, solange jeder Pfad ein anderes Export- oder Unterverzeichnis in demselben Speichersystem darstellt.
-
-Erstellen Sie alle Pfade von einem Speicherziel aus.
-
-Sie können [Namespacepfade](hpc-cache-edit-storage.md) für ein Speicherziel jederzeit hinzufügen und bearbeiten.
-
-Geben Sie diese Werte für die einzelnen Namespacepfade ein:
-
-* **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
-
-* **NFS-Exportpfad**: Geben Sie den Pfad zum NFS-Export ein.
-
-* **Unterverzeichnispfad**: Wenn Sie ein bestimmtes Unterverzeichnis des Exports einbinden möchten, geben Sie es hier ein. Lassen Sie dieses Feld andernfalls leer.
-
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
-Verwenden Sie den Azure CLI-Befehl [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add), um das Speicherziel zu erstellen. Geben Sie zusätzlich zum Cachenamen und zur Cacheressourcengruppe die folgenden Werte an:
+Verwenden Sie den Azure CLI-Befehl [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add), um das Speicherziel zu erstellen.
+
+> [!NOTE]
+> Für die Azure CLI-Befehle ist es derzeit erforderlich, dass Sie beim Hinzufügen eines Speicherziels einen Namespacepfad hinzufügen. Dies unterscheidet sich von dem Prozess, der mit der Azure-Portalschnittstelle verwendet wird.
+
+Geben Sie zusätzlich zum Cachenamen und zur Cacheressourcengruppe die folgenden Werte an:
 
 * ``--name``: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
 * ``--nfs3-target``: Die IP-Adresse Ihres NFS-Speichersystems. (Sie können hier einen vollqualifizierten Domänennamen verwenden, wenn Ihr Cache Zugriff auf einen DNS-Server hat, der den Namen auflösen kann.)
@@ -274,7 +236,7 @@ Verwenden Sie den Azure CLI-Befehl [az hpc-cache nfs-storage-target add](/cli/a
 
   Ein NFS-Speicherziel kann mehrere virtuelle Pfade aufweisen, solange jeder Pfad ein anderes Export- oder Unterverzeichnis in demselben Speichersystem darstellt. Erstellen Sie alle Pfade für ein Speicherziel auf einem Speichersystem.
 
-  Sie können [Namespacepfade](hpc-cache-edit-storage.md) für ein Speicherziel jederzeit hinzufügen und bearbeiten.
+  Sie können [Namespacepfade](add-namespace-paths.md) für ein Speicherziel jederzeit hinzufügen und bearbeiten.
 
   Der Parameter ``--junction`` verwendet diese Werte:
 
@@ -325,10 +287,67 @@ Ausgabe:
 
 ---
 
+## <a name="view-storage-targets"></a>Anzeigen von Speicherzielen
+
+Sie können das Azure-Portal oder die Azure CLI verwenden, um die bereits für Ihren Cache definierten Speicherziele anzuzeigen.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste unter der Überschrift „Einstellungen“ auf **Speicherziele**. Auf der Seite „Speicherziele“ werden alle vorhandenen Ziele sowie Steuerelemente zum Hinzufügen oder Löschen von Zielen aufgelistet.
+
+Klicken Sie auf den Namen eines Speicherziels, um seine zugehörige Detailseite zu öffnen.
+
+Weitere Informationen finden Sie unter [Bearbeiten von Speicherzielen](hpc-cache-edit-storage.md).
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Verwenden Sie die Option [az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list), um die vorhandenen Speicherziele für einen Cache anzuzeigen. Geben Sie den Cachenamen und die Ressourcengruppe an (sofern Sie dies nicht global festgelegt haben).
+
+```azurecli
+az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
+```
+
+Verwenden Sie [az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list), um Details zu einem bestimmten Speicherziel anzuzeigen. (Geben Sie das Speicherziel anhand des Namens an.)
+
+Beispiel:
+
+```azurecli
+$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
+
+{
+  "clfs": null,
+  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
+  "junctions": [
+    {
+      "namespacePath": "/nfs1/data1",
+      "nfsExport": "/datadisk1",
+      "targetPath": ""
+    }
+  ],
+  "location": "eastus",
+  "name": "nfsd1",
+  "nfs3": {
+    "target": "10.0.0.4",
+    "usageModel": "WRITE_WORKLOAD_15"
+  },
+  "provisioningState": "Succeeded",
+  "resourceGroup": "scgroup",
+  "targetType": "nfs3",
+  "type": "Microsoft.StorageCache/caches/storageTargets",
+  "unknown": null
+}
+$
+```
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ziehen Sie nach dem Erstellen von Speicherzielen eine dieser Aufgaben in Erwägung:
+Nachdem Sie Speicherziele erstellt haben, fahren Sie mit diesen Aufgaben fort, um Ihren Cache einsatzbereit zu machen:
 
+* [Einrichten des aggregierten Namespace](add-namespace-paths.md)
 * [Einbinden der Azure HPC Cache-Instanz](hpc-cache-mount.md)
 * [Daten in Azure-Blobspeicher verschieben](hpc-cache-ingest.md)
 

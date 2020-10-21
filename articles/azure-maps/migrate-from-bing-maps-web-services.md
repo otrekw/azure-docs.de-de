@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Migrieren von Webdiensten aus Bing Karten | Microsoft Azure Maps'
-description: Hier wird erläutert, wie Sie Webdienste aus Bing Karten zu Microsoft Azure Maps migrieren.
+description: Tutorial zum Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 462befd505333902bd4560f8f1dafeecceffd27f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741668"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873777"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>Migrieren von Webdiensten aus Bing Karten
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
 Sowohl Azure als auch Bing Karten ermöglichen den Zugriff auf räumliche APIs über REST-Webdienste. Die API-Schnittstellen für diese Plattformen bieten ähnliche Funktionen, verwenden jedoch unterschiedliche Namenskonventionen und Antwortobjekte.
 

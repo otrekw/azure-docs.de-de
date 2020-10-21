@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b963e0b4797af8269b87f704edca231f000c9372
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543974"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Tutorial: Azure Active Directory-Integration mit Optimizely
 
@@ -110,7 +110,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Optimize
 
 5. Die Optimizely-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Dialogfeld „Benutzerattribute“, in dem die Schaltfläche „Bearbeiten“ oben rechts ausgewählt ist](common/edit-attribute.png)
 
 6. Darüber hinaus wird von der Optimizely-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
@@ -120,7 +120,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Optimize
     
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![image](common/new-save-attribute.png)
+    ![Screenshot: Dialogfeld „Benutzeransprüche“ mit den hervorgehobenen Aktionen „Neuen Anspruch hinzufügen“ und „Speichern“](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -164,7 +164,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Optimize
 
 4. Klicken Sie in der rechten oberen Ecke auf den Namen Ihres Kontos und dann auf **Account Settings**.
 
-    ![Azure AD – einmaliges Anmelden](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Screenshot: Auswahl des Kontonamens oben rechts und von „Account Settings“ (Kontoeinstellungen) im Menü](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. Aktivieren Sie auf der Registerkarte „Account“ das Kontrollkästchen **Enable SSO** (SSO aktivieren), das Sie im Abschnitt **Overview (Übersicht)** unter „Single Sign On“ finden.
   
@@ -231,7 +231,7 @@ In diesem Abschnitt erstellen Sie in Optimizely einen Benutzer mit dem Namen Bri
 
 2. Klicken Sie auf **New Collaborator**, um einen neuen Projektmitarbeiter zum Projekt hinzuzufügen.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![Screenshot: Startseite von Optimizely mit Auswahl der Registerkarte „Collaborators“ (Projektmitarbeiter) und der Schaltfläche „New Collaborator“ (Neuer Projektmitarbeiter)](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. Geben Sie die E-Mail-Adresse ein, und weisen Sie ihr eine Rolle zu. Klicken Sie auf **Einladen**.
 

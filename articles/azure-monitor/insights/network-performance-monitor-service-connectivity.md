@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326102"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761038"
 ---
 # <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
@@ -19,8 +19,8 @@ Mit dem Dienstkonnektivitätsmonitor von [Netzwerkleistungsmonitor](network-perf
 
 Der Dienstkonnektivitätsmonitor ermöglicht Folgendes: 
 
-- Überwachen der Netzwerkkonnektivität Ihrer Anwendungen und Netzwerkdienste von mehreren Zweigstellen oder Standorten. Zu den Anwendungen und Netzwerkdiensten gehören Office 365, Dynamics CRM, interne Line-of-Business-Anwendungen und SQL-Datenbanken.
-- Ausführen integrierter Tests zur Überwachung der Netzwerkkonnektivität mit Office 365- und Dynamics 365-Endpunkten 
+- Überwachen der Netzwerkkonnektivität Ihrer Anwendungen und Netzwerkdienste von mehreren Zweigstellen oder Standorten. Zu den Anwendungen und Netzwerkdiensten gehören Microsoft 365, Dynamics CRM, interne Line-of-Business-Anwendungen und SQL-Datenbanken.
+- Ausführen integrierter Tests zur Überwachung der Netzwerkkonnektivität mit Microsoft 365- und Dynamics 365-Endpunkten 
 - Ermitteln von Antwortzeiten, Netzwerkwartezeiten und Paketverlusten beim Herstellen der Verbindung mit dem Endpunkt
 - Ermitteln, ob eine mangelhafte Anwendungsleistung auf das Netzwerk oder auf ein Problem beim Anwendungsanbieter zurückzuführen ist
 - Erkennen von Hotspots im Netzwerk, die möglicherweise die Leistung der Anwendung beeinträchtigen, durch Betrachtung der Hop-spezifischen Wartezeiten auf einer Topologiekarte
@@ -99,7 +99,7 @@ Ermitteln Sie, ob die mangelhafte Anwendungsleistung auf das Netzwerk oder auf e
 
 Nachdem Sie festgestellt haben, dass das Problem auf das Netzwerk zurückzuführen ist, wählen Sie den Ansichtslink **Topologie** aus, um den problematischen Hop auf der Topologiekarte zu ermitteln. In der folgenden Abbildung ist ein Beispiel angegeben. Von der Gesamtwartezeit von 105 ms zwischen Knoten und Anwendungsendpunkt entfallen 96 ms auf den rot markierten Hop. Nachdem Sie den problematischen Hop identifiziert haben, können Sie Korrekturmaßnahmen ergreifen. 
 
-![Dienstkonnektivitätsmonitor-Tests](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![Endpunkttopologie des Dienstkonnektivitätsmonitors](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnose 
 

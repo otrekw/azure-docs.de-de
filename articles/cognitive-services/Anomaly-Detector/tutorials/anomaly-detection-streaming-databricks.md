@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Anomalieerkennungs-API und Azure Databricks verwenden, um Ihre Daten auf Anomalien zu überwachen.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245603"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017657"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Tutorial: Anomalieerkennung für Streamingdaten mit Azure Databricks
 
@@ -63,7 +63,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Analysen** > **Azure Databricks**.
 
-    ![Databricks im Azure-Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks im Azure-Portal")
+    ![Azure Databricks im Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks im Azure-Portal")
 
 3. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Arbeitsbereich zu erstellen:
 
@@ -115,7 +115,7 @@ Für den Empfang eines Datenstroms mit Tweets müssen Sie eine Anwendung in Twit
 
 3. Klicken Sie auf der Anwendungsseite auf die Registerkarte **Keys and Access Tokens** (Schlüssel und Zugriffstoken), und kopieren Sie die Werte für **Consumer Key** (Consumerschlüssel) und **Consumer Secret** (Consumergeheimnis). Klicken Sie außerdem auf **Create my access token** (Mein Zugriffstoken erstellen), um die Zugriffstoken zu generieren. Kopieren Sie die Werte für **Access Token** (Zugriffstoken) und **Access Token Secret** (Zugriffstokengeheimnis).
 
-    ![Twitter-Anwendungsdetails](../media/tutorials/twitter-app-key-secret.png "Twitter-Anwendungsdetails")
+    ![Twitter-Anwendungsdetails 2](../media/tutorials/twitter-app-key-secret.png "Twitter-Anwendungsdetails")
 
 Speichern Sie die Werte, die Sie für die Twitter-Anwendung abgerufen haben. Diese werden im weiteren Verlauf des Tutorials benötigt.
 
@@ -193,7 +193,7 @@ In diesem Abschnitt erstellen Sie zwei Notebooks mit den folgenden Namen im Data
 
 2. Geben Sie im Dialogfeld **Notizbuch erstellen** als Namen **SendTweetsToEventHub** ein, wählen Sie **Scala** als Sprache aus, und wählen Sie den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notebooks in Databricks](../media/tutorials/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
+    ![Notebook-Details](../media/tutorials/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 

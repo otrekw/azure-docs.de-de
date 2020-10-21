@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296620"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707709"
 ---
 # <a name="monitor-media-services-metrics"></a>Überwachen von Media Services-Metriken
 
@@ -48,7 +48,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
     Wählen Sie die Ressource aus, und klicken Sie auf **Anwenden**. Weitere Informationen zu unterstützten Ressourcen und Metriken finden Sie unter [Überwachen von Media Services-Metriken](media-services-metrics-diagnostic-logs.md).
 
-    ![Metriken](media/media-services-metrics/metrics02.png)
+    ![Screenshot, der die ausgewählte Ressource und die hervorgehobene Schaltfläche „Übernehmen“ zeigt.](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
     > Um zwischen den Ressourcen zu wechseln, deren Metriken überwacht werden sollen, klicken Sie erneut auf das Feld **RESSOURCE**, und wiederholen Sie diesen Schritt.

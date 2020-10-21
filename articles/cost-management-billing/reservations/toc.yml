@@ -122,6 +122,8 @@
       items:
         - name: Keine berechtigten Abonnements
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Beheben von Problemen mit der Reservierungsnutzung
+          href: troubleshoot-reservation-utilization.md??toc=/azure/cost-management-billing/reservations/toc.json
 - name: Verweis
   items:
     - name: 'Reservierungen: REST-API'

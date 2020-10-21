@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617059"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058215"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Tutorial: Konfigurieren der Replikation zwischen zwei verwalteten Instanzen
 
@@ -48,7 +48,7 @@ Dieses Tutorial ist für erfahrene Benutzer bestimmt. Es wird vorausgesetzt, das
 
 Zum Konfigurieren einer SQL Managed Instance, die als Verleger und/oder Verteiler fungieren soll, ist Folgendes erforderlich:
 
-- Die verwaltete Verlegerinstanz befindet sich in demselben virtuellen Netzwerk wie der Verteiler und der Abonnent, oder zwischen den virtuellen Netzwerken aller drei Entitäten wurde [Peering virtueller Netzwerke](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) konfiguriert. 
+- Die verwaltete Verlegerinstanz befindet sich im selben virtuellen Netzwerk wie der Verteiler und der Abonnent, oder [VPN-Gateways](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) wurden zwischen den virtuellen Netzwerken aller drei Entitäten konfiguriert. 
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet.
 - Ein Azure-Speicherkonto für das Arbeitsverzeichnis für die Replikation.
 - Port 445 (TCP ausgehend) ist in den Sicherheitsregeln von NSG (Netzwerksicherheitsgruppe) für die verwalteten Instanzen geöffnet, um auf die Azure-Dateifreigabe zugreifen zu können.  Wenn Sie den Fehler `failed to connect to azure storage \<storage account name> with os error 53` erhalten, müssen Sie der NSG des Subnetzes der entsprechenden SQL Managed Instance eine Ausgangsregel hinzufügen.

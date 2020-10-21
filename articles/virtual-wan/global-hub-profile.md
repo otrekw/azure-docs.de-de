@@ -1,18 +1,18 @@
 ---
 title: Herunterladen von globalen oder hubbasierten VPN-Profilen in Azure Virtual WAN | Microsoft-Dokumentation
-description: Sie erhalten Informationen darüber, wie Sie die per Virtual WAN automatisierte skalierbare Konnektivität zwischen Branches einrichten, über verfügbare Regionen und Partner.
+description: Erfahren Sie mehr über die zwei Arten von Konnektivität, die Azure Virtual WAN für Remotebenutzer bietet, und das Herunterladen eines Profils.
 services: virtual-wan
 author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 4/20/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: d0fc2f608617ca00fea8b9ed5c4b874c65940263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d5c4ba0f1f55119d1ec38296e67ae3e90c52650
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064798"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313721"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Herunterladen eines globalen oder hubbasierten Profils für Benutzer-VPN-Clients
 

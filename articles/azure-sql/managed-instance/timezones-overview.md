@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617917"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978355"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Zeitzonen in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz e
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Die Zeitzone der vorhandenen verwalteten Instanz kann nicht geändert werden.
+- Die Zeitzone der vorhandenen verwalteten Instanz kann nicht geändert werden. Zur Problemumgehung können Sie eine neue verwaltete Instanz mit der richtigen Zeitzone erstellen und dann entweder eine Sicherung und Wiederherstellung oder eine [instanzübergreifende Point-in-Time-Wiederherstellung](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database) durchführen (von uns empfohlen).
 - Für externe Prozesse, die über die SQL Server-Agentaufträge gestartet werden, wird die Zeitzone der Instanz nicht beachtet.
 
 ## <a name="list-of-supported-time-zones"></a>Liste mit den unterstützten Zeitzonen

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540581"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944222"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Citrix NetScaler (headerbasierte Authentifizierung)
 
@@ -392,7 +392,7 @@ So binden Sie eine Richtlinie zum erneuten Generieren unter Verwendung der grafi
 
 1. Wählen Sie im Bereich **Load Balancing Virtual Server** (Virtueller Lastenausgleichsserver) unter **Advanced Settings** (Erweiterte Einstellungen) die Option **Policies** (Richtlinien) aus. Die Liste enthält alle für Ihre NetScaler-Instanz konfigurierten Richtlinien.
  
-    ![Citrix NetScaler-Konfiguration: Bereich „Load Balancing Virtual Server“ (Virtueller Lastenausgleichsserver)](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![Screenshot: Registerkarte „Configuration“ (Konfiguration), auf der die Felder „Name“, „Action“ (Aktion) und „Expression“ (Ausdruck) hervorgehoben sind und die Schaltfläche „Create“ (Erstellen) ausgewählt ist](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Citrix NetScaler-Konfiguration: Bereich „Load Balancing Virtual Server“ (Virtueller Lastenausgleichsserver)](./media/header-citrix-netscaler-tutorial/header06.png)
 

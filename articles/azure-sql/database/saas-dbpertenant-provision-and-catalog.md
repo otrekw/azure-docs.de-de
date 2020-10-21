@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027921"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619694"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer 
 
 2. Zum Hinzufügen eines Haltepunkts bewegen Sie den Cursor an eine beliebige Stelle in der Zeile mit *New-Tenant `* . Drücken Sie dann F9.
 
-   ![Haltepunkt](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![Screenshot: Skript mit hervorgehobener Zeile „New-Tenant“ zum Hinzufügen eines Breakpoints.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. Drücken Sie F5, um das Skript auszuführen.
 

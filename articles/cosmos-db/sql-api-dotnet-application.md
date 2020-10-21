@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051292"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058164"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Tutorial: Entwickeln einer ASP.NET Core MVC-Webanwendung mit Azure Cosmos DB unter Verwendung des .NET SDK
 
@@ -71,7 +71,7 @@ Im nächsten Abschnitt erstellen Sie eine neue ASP.NET Core MVC-Anwendung.
 
 1. Suchen Sie unter **Neues Projekt erstellen** nach der Option **ASP.NET Core-Webanwendung**  für C#, und wählen Sie sie aus. Klicken Sie auf **Weiter**, um fortzufahren.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Erstellen eines neuen ASP.NET Core-Webanwendungsprojekts":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
 1. Geben Sie dem Projekt unter **Neues Projekt konfigurieren** den Namen *todo*, und wählen Sie **Erstellen** aus.
 
@@ -89,7 +89,7 @@ Nachdem Sie nun über den Großteil des ASP.NET Core MVC-Frameworkcodes verfüge
 
 1. Suchen Sie im **NuGet-Paket-Manager** nach der Option **Microsoft.Azure.Cosmos**, und wählen Sie sie aus. Wählen Sie **Installieren** aus.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Installieren des NuGet-Pakets":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
    Visual Studio führt den Download und die Installation des Azure Cosmos DB-Pakets und der zugehörigen Abhängigkeiten durch.
 
@@ -139,7 +139,7 @@ Als Nächstes fügen wir die folgenden Ansichten hinzu.
    * Wählen Sie **Use a layout page** (Layoutseite verwenden) aus, und geben Sie *~/Views/Shared/_Layout.cshtml* ein.
    * Wählen Sie **Hinzufügen**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Screenshot: Dialogfeld „MVC-Ansicht hinzufügen“":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
 1. Wählen Sie als Nächstes **Hinzufügen** aus. Daraufhin erstellt Visual Studio eine neue Vorlagenansicht. Ersetzen Sie den Code in der Datei durch die folgenden Inhalte:
 
@@ -214,19 +214,19 @@ Schließen Sie nach dem Ausführen dieser Schritte alle *CSHTML*-Dokumente in Vi
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Dienste deklarieren und initialisieren
 
-Zunächst fügen wir eine Klasse hinzu, die die Logik zur Verbindungsherstellung mit bzw. zur Verwendung von Azure Cosmos DB enthält. In diesem Tutorial wird die entsprechende Logik in einer Klasse namens `CosmosDBService` gekapselt und eine Schnittstelle namens `ICosmosDBService` aufgerufen. Dieser Dienst führt die CRUD-Vorgänge durch. Darüber hinaus führt er Lesefeedvorgänge aus, z. B. das Auflisten unvollständiger Elemente sowie das Erstellen, Bearbeiten und Löschen der Elemente.
+Zunächst fügen wir eine Klasse hinzu, die die Logik zur Verbindungsherstellung mit bzw. zur Verwendung von Azure Cosmos DB enthält. In diesem Tutorial wird die entsprechende Logik in einer Klasse namens `CosmosDbService` gekapselt und eine Schnittstelle namens `ICosmosDbService` aufgerufen. Dieser Dienst führt die CRUD-Vorgänge durch. Darüber hinaus führt er Lesefeedvorgänge aus, z. B. das Auflisten unvollständiger Elemente sowie das Erstellen, Bearbeiten und Löschen der Elemente.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Hinzufügen** > **Neuer Ordner** aus. Geben Sie dem Ordner den Namen *Dienste*.
 
-1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *CosmosDBService*, und wählen Sie **Hinzufügen** aus.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *CosmosDbService*, und wählen Sie **Hinzufügen** aus.
 
-1. Ersetzen Sie den Inhalt von *CosmosDBService.cs* durch den folgenden Code:
+1. Ersetzen Sie den Inhalt von *CosmosDbService.cs* durch den folgenden Code:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *ICosmosDBService*, und klicken Sie auf **Hinzufügen**.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *ICosmosDbService*, und wählen Sie **Hinzufügen** aus.
 
-1. Fügen Sie der *ICosmosDBService*-Klasse den folgenden Code hinzu:
+1. Fügen Sie der *ICosmosDbService*-Klasse den folgenden Code hinzu:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -262,7 +262,7 @@ Zunächst fügen wir eine Klasse hinzu, die die Logik zur Verbindungsherstellung
 
 1. Wählen Sie unter **Gerüst hinzufügen** die Option **MVC-Controller – leer** und dann **Hinzufügen** aus.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Auswahl von „MVC-Controller – leer“ unter „Gerüst hinzufügen“":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
 1. Geben Sie dem neuen Controller den Namen *ItemController*.
 
@@ -280,7 +280,7 @@ Gehen Sie wie folgt vor, um die Anwendung auf Ihrem lokalen Computer zu testen:
 
 1. Drücken Sie in Visual Studio F5, um die Anwendung im Debugmodus zu erstellen. Die Anwendung sollte erstellt, und ein Browser mit der zuvor angezeigten leeren Rasterseite sollte geöffnet werden:
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Screenshot der in diesem Tutorial erstellten Aufgabenlisten-Webanwendung":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
    
    Wenn sich stattdessen die Startseite der Anwendung öffnet, fügen Sie `/Item` an die URL an.
 
@@ -288,11 +288,11 @@ Gehen Sie wie folgt vor, um die Anwendung auf Ihrem lokalen Computer zu testen:
 
 1. Klicken Sie auf **Erstellen**. Sie erhalten von der App die Ansicht **Index**, und Ihr Element wird in der Liste angezeigt. Sie können Ihrer **Aufgabenliste** noch einige weitere Elemente hinzufügen.
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Screenshot der Ansicht „Index“":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
   
 1. Wählen Sie neben einem **Element** in der Liste die Option **Bearbeiten** aus. Die App öffnet die Ansicht **Bearbeiten**, in der Sie alle Eigenschaften Ihres Objekts aktualisieren können, einschließlich des Flags **Abgeschlossen**. Wenn Sie **Abgeschlossen** und dann **Speichern** auswählen, zeigt die App das **Element** in der Liste als „Abgeschlossen“ an.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Screenshot der Ansicht „Index“ mit aktiviertem Feld „Abgeschlossen“":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
 1. Überprüfen Sie den Zustand der Daten im Azure Cosmos DB-Dienst mit dem [Cosmos-Explorer](https://cosmos.azure.com) oder dem Daten-Explorer des Azure Cosmos DB-Emulators.
 
@@ -312,7 +312,7 @@ Nachdem die vollständige Anwendung korrekt mit Azure Cosmos DB zusammenarbeitet
 
 1. Suchen Sie nach Ihrem Profil, und wählen Sie anschließend **OK** aus. Suchen Sie dann nach der erforderlichen Azure App Service-Instanz, und wählen Sie **OK** aus.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Dialogfeld „App Service“ in Visual Studio":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
 Eine weitere Möglichkeit ist das Erstellen eines neuen Profils:
 
@@ -324,7 +324,7 @@ Eine weitere Möglichkeit ist das Erstellen eines neuen Profils:
 
 1. Geben Sie unter **App Service** den Namen Ihrer Web-App und das entsprechende Abonnement, die Ressourcengruppe und den Hostingplan ein, und wählen Sie anschließend **Erstellen** aus.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Dialogfeld „App Service erstellen“ in Visual Studio":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Aufgabenlisten: Schrittanleitung im ASP.NET Core MVC-Tutorial":::
 
 Nach wenigen Sekunden veröffentlicht Visual Studio Ihre Webanwendung und startet einen Browser mit Ihrem in Azure ausgeführten Projekt.
 

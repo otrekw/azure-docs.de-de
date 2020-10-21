@@ -1,25 +1,28 @@
 ---
-title: Verwalten von Azure Cosmos DB-Ressourcen mit der Azure CLI
-description: Verwenden Sie die Azure CLI zum Verwalten Ihrer Konten, Datenbanken und Containern für Azure Cosmos DB.
+title: Verwalten von Ressourcen für die Core (SQL)-API von Azure Cosmos DB mit der Azure CLI
+description: Verwalten Sie Ressourcen für die Core (SQL)-API von Azure Cosmos DB mit der Azure CLI.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432826"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840590"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Verwalten von Azure Cosmos-Ressourcen mit der Azure CLI
+# <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Verwalten von Ressourcen für die Core (SQL)-API von Azure Cosmos mit der Azure CLI
 
 Der folgende Leitfaden erläutert die gängigen Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Konten und -Container mithilfe von Azure CLI. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb) verfügbar. Weitere Beispiele finden Sie auch in [Azur CLI-Beispiele für Azure Cosmos DB](cli-samples.md), einschließlich der Erstellung und Verwaltung von Cosmos DB-Konten, Datenbanken und Containern für MongoDB, Gremlin, Cassandra und die Tabellen-API.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, mindestens Version 2.9.1 auszuführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI lokal installieren und verwenden möchten, ist für dieses Thema mindestens Version 2.12.1 erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+> [!IMPORTANT]
+> Azure Cosmos DB-Ressourcen können nicht umbenannt werden, da dies gegen die Arbeitsweise von Azure Resource Manager mit Ressourcen-URIs verstößt.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos DB-Konten
 
@@ -87,10 +90,10 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
 
 ### <a name="enable-multiple-write-regions"></a>Aktivieren mehrerer Schreibregionen
 
-Aktivieren von Multimaster für ein Cosmos-Konto
+Aktivieren von Schreibvorgängen in mehreren Regionen für ein Cosmos-Konto
 
 ```azurecli-interactive
-# Update an Azure Cosmos account from single to multi-master
+# Update an Azure Cosmos account from single write region to multiple write regions
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -211,8 +214,9 @@ In den folgenden Abschnitten erfahren Sie, wie Sie Azure Cosmos DB-Datenbanken v
 
 * [Erstellen einer Datenbank](#create-a-database)
 * [Erstellen einer Datenbank mit gemeinsam genutztem Durchsatz](#create-a-database-with-shared-throughput)
+* [Migrieren einer Datenbank zum automatisch skalierten Durchsatz](#migrate-a-database-to-autoscale-throughput)
 * [Ändern des Durchsatzes einer Datenbank](#change-database-throughput)
-* [Verwalten von Sperren in einer Datenbank](#manage-lock-on-a-database)
+* [Verhindern des Löschens einer Datenbank](#prevent-a-database-from-being-deleted)
 
 ### <a name="create-a-database"></a>Erstellen einer Datenbank
 
@@ -246,6 +250,29 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
+### <a name="migrate-a-database-to-autoscale-throughput"></a>Migrieren einer Datenbank zum automatisch skalierten Durchsatz
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql database throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql database throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -n $databaseName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
 ### <a name="change-database-throughput"></a>Ändern des Durchsatzes einer Datenbank
 
 Erhöhen Sie den Durchsatz einer Cosmos-Datenbank um 1.000 RU/s.
@@ -272,14 +299,14 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>Verwalten von Sperren in einer Datenbank
+### <a name="prevent-a-database-from-being-deleted"></a>Verhindern des Löschens einer Datenbank
 
-Legen Sie eine Löschsperre für eine Datenbank fest. Weitere Informationen zum Aktivieren dieses Features finden Sie unter [Verhindern von Änderungen von SDKs](role-based-access-control.md#prevent-sdk-changes).
+Legen Sie eine Sperre für das Löschen von Azure-Ressourcen für eine Datenbank fest, um ein Löschen der Datenbank zu verhindern. Diese Funktion erfordert, dass das Cosmos-Konto für Änderungen durch Datenebenen-SDKs gesperrt wird. Weitere Informationen finden Sie unter [Verhindern von Änderungen aus SDKs](role-based-access-control.md#prevent-sdk-changes). Mit Azure-Ressourcensperren kann auch verhindert werden, dass eine Ressource geändert wird. Legen Sie dazu den Sperrentyp `ReadOnly` fest. Für eine Cosmos-Datenbank kann damit eine Änderung des Durchsatzes verhindert werden.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
+accountName='mycosmosaccount'
+databaseName='database1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -312,7 +339,8 @@ In den folgenden Abschnitten erfahren Sie, wie Sie Azure Cosmos DB-Container ver
 * [Erstellen eines Container mit aktivierter Gültigkeitsdauer](#create-a-container-with-ttl)
 * [Erstellen eines Containers mit benutzerdefinierter Indexrichtlinie](#create-a-container-with-a-custom-index-policy)
 * [Ändern des Containerdurchsatzes](#change-container-throughput)
-* [Verwalten von Sperren in einem Container](#manage-lock-on-a-container)
+* [Migrieren eines Containers zum automatisch skalierten Durchsatz](#migrate-a-container-to-autoscale-throughput)
+* [Verhindern des Löschens eines Containers](#prevent-a-container-from-being-deleted)
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
@@ -451,15 +479,41 @@ az cosmosdb sql container throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-container"></a>Verwalten von Sperren in einem Container
+### <a name="migrate-a-container-to-autoscale-throughput"></a>Migrieren eines Containers zum automatisch skalierten Durchsatz
 
-Legen Sie eine Löschsperre für einen Container fest. Weitere Informationen zum Aktivieren dieses Features finden Sie unter [Verhindern von Änderungen von SDKs](role-based-access-control.md#prevent-sdk-changes).
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql container throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql container throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
+### <a name="prevent-a-container-from-being-deleted"></a>Verhindern des Löschens eines Containers
+
+Legen Sie eine Sperre für das Löschen von Azure-Ressourcen für einen Container fest, um ein Löschen des Containers zu verhindern. Diese Funktion erfordert, dass das Cosmos-Konto für Änderungen durch Datenebenen-SDKs gesperrt wird. Weitere Informationen finden Sie unter [Verhindern von Änderungen aus SDKs](role-based-access-control.md#prevent-sdk-changes). Mit Azure-Ressourcensperren kann auch verhindert werden, dass eine Ressource geändert wird. Legen Sie dazu den Sperrentyp `ReadOnly` fest. Für einen Cosmos-Container kann damit eine Änderung des Durchsatzes oder einer anderen Eigenschaft verhindert werden.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
-containerName='myContainer'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -488,6 +542,6 @@ az lock delete --ids $lockid
 
 Weitere Informationen zur Azure CLI finden Sie in:
 
-- [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
-- [Azure-CLI-Referenz](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Zusätzliche Azure CLI-Beispiele für Azure Cosmos DB](cli-samples.md)
+* [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
+* [Azure-CLI-Referenz](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Zusätzliche Azure CLI-Beispiele für Azure Cosmos DB](cli-samples.md)
