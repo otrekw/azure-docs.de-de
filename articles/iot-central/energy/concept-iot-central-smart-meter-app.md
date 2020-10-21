@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: aac5e35f3d0c42e97069ecb38fedaadcdc7794dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9f5e1ba52390191409d8da4bc4c41faaa859a4a8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001841"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125610"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – Architektur der Intelligenter Stromzähler-Anwendung
 
@@ -28,7 +28,7 @@ Diese Architektur umfasst die folgenden Komponenten. Für einige Lösungen sind 
 
 ## <a name="smart-meters-and-connectivity"></a>Intelligente Stromzähler und Konnektivität 
 
-Ein intelligenter Stromzähler zählt unter den Energieressourcen zu den wichtigsten Geräten. Er zeichnet Daten zum Energieverbrauch auf und kommuniziert sie an Hilfsprogramme zur Überwachung und für andere Anwendungen, wie etwa Abrechnung und Reaktion auf die Nachfrage. Der Stromzähler kann je nach Typ entweder über Gateways oder über andere zwischengeschaltete Geräte oder Systeme (z. B. Edgegeräte und Head-End-Systeme) eine Verbindung mit IoT Central herstellen. Erstellen Sie eine IoT Central-Geräte-Bridge, um Geräte zu verbinden, die nicht direkt verbunden werden können. Bei der IoT Central-Gerätebridge handelt es sich um eine Open-Source-Lösung. Die Details finden Sie [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge). 
+Ein intelligenter Stromzähler zählt unter den Energieressourcen zu den wichtigsten Geräten. Er zeichnet Daten zum Energieverbrauch auf und kommuniziert sie an Hilfsprogramme zur Überwachung und für andere Anwendungen, wie etwa Abrechnung und Reaktion auf die Nachfrage. Der Stromzähler kann je nach Typ entweder über Gateways oder über andere zwischengeschaltete Geräte oder Systeme (z. B. Edgegeräte und Head-End-Systeme) eine Verbindung mit IoT Central herstellen. Erstellen Sie eine IoT Central-Geräte-Bridge, um Geräte zu verbinden, die nicht direkt verbunden werden können. Bei der IoT Central-Gerätebridge handelt es sich um eine Open-Source-Lösung. Die Details finden Sie [hier](../core/howto-build-iotc-device-bridge.md). 
 
 
 ## <a name="iot-central-platform"></a>IoT Central-Plattform
@@ -42,4 +42,4 @@ Die IoT Central-Plattform bietet zwei Erweiterbarkeitsoptionen: Kontinuierlichen
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Nachdem Sie sich nun mit der Architektur vertraut gemacht haben, [erstellen Sie die Intelligenter Stromzähler-App kostenlos](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring).
-* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](https://docs.microsoft.com/azure/iot-central/).
+* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](../index.yml).

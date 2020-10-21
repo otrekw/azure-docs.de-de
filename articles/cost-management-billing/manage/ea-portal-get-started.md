@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 617351d5d1bdf9b6528803552e2d34766e9ab217
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371948"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132651"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Erste Schritte mit dem Azure Enterprise Portal
 
@@ -561,7 +561,7 @@ Sie können unter Ihrer Azure EA-Registrierung beliebig viele Abteilungen erste
 
 Nachdem Sie Abteilungen und Abonnements erstellt haben, werden im Nutzungsbericht Daten angezeigt. Diese Informationen können Ihnen dabei helfen, die Nutzung zu verfolgen und Kosten und Ausgaben auf Abteilungsebene zu verwalten.
 
-Sie können auch über die Berichterstellungs-API auf Nutzungsdaten zugreifen. Ausführliche Informationen und Beispielcode finden Sie unter [Azure Enterprise-REST-APIs](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Sie können auch über die Berichterstellungs-API auf Nutzungsdaten zugreifen. Ausführliche Informationen und Beispielcode finden Sie unter [Azure Enterprise-REST-APIs](./ea-portal-rest-apis.md).
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Kann ich ein Ausgabenkontingent festlegen und Warnungen erhalten, wenn ich mich dem Grenzwert nähere?
 
@@ -573,7 +573,7 @@ Wählen Sie zum Definieren des Ausgabenkontingents eine Abteilung aus, und klick
 
 Wenn Sie _Ressourcengruppen_ und _Tags_ verwenden, werden diese Informationen auf Dienstebene nachverfolgt, und Sie können in der CSV-Downloaddatei mit ausführlichen Nutzungsdaten darauf zugreifen. Weitere Informationen finden Sie im Azure Enterprise Portal unter [Nutzungsbericht herunterladen](https://ea.azure.com/report/downloadusage).
 
-Sie können auch über API auf die Nutzung zugreifen. Ausführliche Informationen und Beispielcode finden Sie unter [Azure Enterprise-REST-APIs](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Sie können auch über API auf die Nutzung zugreifen. Ausführliche Informationen und Beispielcode finden Sie unter [Azure Enterprise-REST-APIs](./ea-portal-rest-apis.md).
 
 > [!NOTE]
 > Sie können Tags nur auf Ressourcen anwenden, die Azure Resource Manager-Vorgänge unterstützen. Wenn Sie virtuelle Computer, virtuelle Netzwerke oder Speicher über das klassische Bereitstellungsmodell erstellt haben (etwa über das klassische Azure-Portal), kann auf diese Ressourcen kein Tag angewendet werden. Diese Ressourcen müssen per Resource Manager neu bereitgestellt werden, um die Verwendung von Tags zu unterstützen. Alle anderen Ressourcen unterstützen die Markierung durch Tags.

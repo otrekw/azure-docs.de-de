@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854943"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097404"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -128,4 +128,4 @@ Wenn Sie einen Anker erstellen, erfasst das Client-SDK die Umgebungsinformatione
 
 **F: Welche Ports und Protokolle verwendet Azure Spatial Anchors?**
 
-**A:** Azure Spatial Anchors kommuniziert über den TCP-Port 443 mithilfe eines verschlüsselten Protokolls. Für die Authentifizierung wird [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) verwendet, das über HTTPS und Port 443 kommuniziert.
+**A:** Azure Spatial Anchors kommuniziert über den TCP-Port 443 mithilfe eines verschlüsselten Protokolls. Für die Authentifizierung wird [Azure Active Directory](../active-directory/index.yml) verwendet, das über HTTPS und Port 443 kommuniziert.

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be2dd4235883601b0b13c5783e4c7c7c106c20e9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0691ec320b62ed212235a63dacedcf3ec38a23ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682024"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151475"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>Anwendung eines Reservierungsrabatts auf Azure Database for MariaDB
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierte Azure Database for MariaDB-Kapazität wird auf Stund
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Database for MariaDB-Kapazität angewendet wird – abhängig davon, wie viele Kerne Sie erworben haben und wann sie ausgeführt werden.
 
-* **Beispiel 1:** Sie erwerben reservierte Azure Database for MariaDB-Kapazität für acht V-Kerne. Wenn Sie einen Azure Database for MariaDB-Server mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres MariaDB-Servers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des MariaDB-Servers.
+**Beispiel 1:** Sie erwerben reservierte Azure Database for MariaDB-Kapazität für acht V-Kerne. Wenn Sie einen Azure Database for MariaDB-Server mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres MariaDB-Servers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des MariaDB-Servers.
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Azure Database for MariaDB-Kapazität, die Sie erwerben, für eine Azure Database for MariaDB-Instanz mit 16 V-Kernen gilt und die restlichen Reservierungsattribute den ausgeführten MariaDB-Servern entsprechen.
 
@@ -40,7 +40,7 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Azure D
 
 * **Beispiel 4:** Sie führen einen Azure Database for MariaDB-Server mit 16 V-Kernen von 13 Uhr bis 13:45 Uhr aus. Sie führen einen weiteren Azure Database for MariaDB-Server mit 16 V-Kernen von 13:30 Uhr bis 14 Uhr aus. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
 
-Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

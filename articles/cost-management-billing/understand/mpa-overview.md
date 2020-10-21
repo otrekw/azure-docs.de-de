@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447931"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150090"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung
 
@@ -29,7 +29,7 @@ Das folgende Diagramm zeigt die Beziehung zwischen einem Abrechnungskonto, Abrec
 
 ![Diagramm: Abrechnungshierarchie für eine Microsoft-Partnervereinbarung](./media/mpa-overview/mpa-hierarchy.svg)
 
-Benutzer mit der Rolle **Globaler Administrator** oder **Administrator-Agent** in Ihrer Organisation können Abrechnungskonten, Abrechnungsprofile und Kunden verwalten. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](https://docs.microsoft.com/partner-center/permissions-overview).
+Benutzer mit der Rolle **Globaler Administrator** oder **Administrator-Agent** in Ihrer Organisation können Abrechnungskonten, Abrechnungsprofile und Kunden verwalten. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
 ## <a name="billing-profiles"></a>Abrechnungsprofile
 
@@ -47,7 +47,7 @@ Kunden, die eine Microsoft-Kundenvereinbarung akzeptiert haben und über einen A
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Aktivieren einer Richtlinie für Kostentransparenz
 
-Wenden Sie eine Richtlinie an, um zu steuern, ob Benutzer in Kundenorganisationen Kosten für ihre Azure-Nutzung zu Sätzen für die nutzungsbasierte Bezahlung anzeigen und analysieren können. Standardmäßig ist die Richtlinie deaktiviert, und Benutzer können die Kosten nicht anzeigen. Nach Aktivierung der Richtlinie können Benutzer mit entsprechendem [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)-Abonnementzugriff die Kosten für das Abonnement anzeigen und analysieren.
+Wenden Sie eine Richtlinie an, um zu steuern, ob Benutzer in Kundenorganisationen Kosten für ihre Azure-Nutzung zu Sätzen für die nutzungsbasierte Bezahlung anzeigen und analysieren können. Standardmäßig ist die Richtlinie deaktiviert, und Benutzer können die Kosten nicht anzeigen. Nach Aktivierung der Richtlinie können Benutzer mit entsprechendem [Azure RBAC](../../role-based-access-control/overview.md)-Abonnementzugriff die Kosten für das Abonnement anzeigen und analysieren.
 
 So aktivieren Sie die Richtlinie:
 
@@ -69,7 +69,7 @@ So aktivieren Sie die Richtlinie:
 
 ## <a name="resellers"></a>Handelspartner
 
-Indirekte Anbieter im [CSP-Modell mit zwei Ebenen](https://docs.microsoft.com/partner-center) können beim Erstellen von Kunden im Azure-Portal einen Handelspartner auswählen. Nach der Erstellung können sie die Abonnementliste anzeigen, nach einem Handelspartner filtern und die Kosten für einen Kunden nach Handelspartnern in der Azure-Kostenanalyse analysieren.
+Indirekte Anbieter im [CSP-Modell mit zwei Ebenen](/partner-center) können beim Erstellen von Kunden im Azure-Portal einen Handelspartner auswählen. Nach der Erstellung können sie die Abonnementliste anzeigen, nach einem Handelspartner filtern und die Kosten für einen Kunden nach Handelspartnern in der Azure-Kostenanalyse analysieren.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Partnervereinbarung
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ Indirekte Anbieter im [CSP-Modell mit zwei Ebenen](https://docs.microsoft.com/pa
 Lesen Sie die folgenden Artikel, um Informationen zu einem Abrechnungskonto zu erhalten:
 
 - [Erstellen eines zusätzlichen Azure-Abonnements im Azure-Portal](../manage/create-subscription.md)
-- Integrieren von Abrechnungsdaten in Ihr eigenes Berichterstellungssystem mithilfe der [Azure-Abrechnungs-APIs](https://docs.microsoft.com/rest/api/billing/)
-- [Erste Schritte mit Azure Cost Management für Partner](https://go.microsoft.com/fwlink/?linkid=2106482)
+- Integrieren von Abrechnungsdaten in Ihr eigenes Berichterstellungssystem mithilfe der [Azure-Abrechnungs-APIs](/rest/api/billing/)
+- [Erste Schritte mit Azure Cost Management für Partner](../costs/get-started-partners.md)

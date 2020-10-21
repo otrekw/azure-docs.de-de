@@ -1,34 +1,22 @@
 ---
 title: Netzwerkdienste von Azure Deutschland | Microsoft-Dokumentation
 description: Vergleich der Features sowie Anleitungen für private Anbindung mit Azure Deutschland
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/12/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 36333f10e8db45128a1fa0cd5b247656d4ca20e6
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: a2fecdfc6e9ef17c21d9aaad4c337e23c24cac0e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398964"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124353"
 ---
 # <a name="azure-germany-networking-services"></a>Netzwerkdienste von Azure Deutschland
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="expressroute-private-connectivity"></a>ExpressRoute (private Verbindung)
 Azure ExpressRoute ist in Azure Deutschland allgemein verfügbar. Weitere Informationen (u.a. zu Partnern und Peeringstandorten) finden Sie in der [globalen Dokumentation zu ExpressRoute](../expressroute/index.yml).

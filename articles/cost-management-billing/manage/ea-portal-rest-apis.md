@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442495"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132583"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise-REST-APIs
 
@@ -25,15 +25,15 @@ Microsoft Enterprise Azure-Kunden erhalten über REST-APIs Verwendungs- und Abre
 
 ### <a name="available-apis"></a>Verfügbare APIs
 
-**Saldo und Zusammenfassung**: Die [API für Saldo und Zusammenfassung](../../billing/billing-enterprise-api-balance-summary.md) bietet eine monatliche Übersicht über Informationen zu Salden, neuen Käufen, Azure Marketplace-Gebühren, Korrekturen und Überschreitungsgebühren. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Saldo und Zusammenfassung](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
+**Saldo und Zusammenfassung**: Die [API für Saldo und Zusammenfassung](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) bietet eine monatliche Übersicht über Informationen zu Salden, neuen Käufen, Azure Marketplace-Gebühren, Korrekturen und Überschreitungsgebühren. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Saldo und Zusammenfassung](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
 
-**Verwendungsdetails**: Die [API für Verwendungsdetails](../../billing/billing-enterprise-api-usage-detail.md) bietet eine tägliche Aufschlüsselung der verbrauchten Mengen und durch eine Registrierung anfallenden geschätzten Kosten. Das Ergebnis umfasst auch Informationen zu Instanzen, Verbrauchseinheiten und Abteilungen. Sie können die API nach Abrechnungszeitraum oder nach einem angegebenen Start- und Enddatum abfragen. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+**Verwendungsdetails**: Die [API für Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) bietet eine tägliche Aufschlüsselung der verbrauchten Mengen und durch eine Registrierung anfallenden geschätzten Kosten. Das Ergebnis umfasst auch Informationen zu Instanzen, Verbrauchseinheiten und Abteilungen. Sie können die API nach Abrechnungszeitraum oder nach einem angegebenen Start- und Enddatum abfragen. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-**Marketplace-Gebühren**: Die [API für Marketplace-Gebühren](../../billing/billing-enterprise-api-marketplace-storecharge.md) gibt eine Aufschlüsselung der nutzungsbasierten Marketplace-Gebühren pro Tag für den angegebenen Abrechnungszeitraum oder für festgelegte Start- und Enddaten zurück. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Marketplace-Gebühren](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
+**Marketplace-Gebühren**: Die [API für Marketplace-Gebühren](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) gibt eine Aufschlüsselung der nutzungsbasierten Marketplace-Gebühren pro Tag für den angegebenen Abrechnungszeitraum oder für festgelegte Start- und Enddaten zurück. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Marketplace-Gebühren](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
 **Preisblatt**: Die [Preisblatt-API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) stellt den zutreffenden Tarif pro Verbrauchseinheit für einen Registrierungs- und Abrechnungszeitraum bereit. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Preisblatt](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
-**Abrechnungszeiträume**: Die [API für Abrechnungszeiträume](../../billing/billing-enterprise-api-billing-periods.md) gibt eine Liste von Abrechnungszeiträumen zurück, die Verbrauchsdaten für eine Registrierung in umgekehrter chronologischer Reihenfolge enthalten. Jeder Zeitraum enthält eine Eigenschaft, die auf die API-Route für die vier Sätze von Daten verweist: BalanceSummary, UsageDetails, Marketplace Charges und PriceSheet. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Abrechnungszeiträume](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
+**Abrechnungszeiträume**: Die [API für Abrechnungszeiträume](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) gibt eine Liste von Abrechnungszeiträumen zurück, die Verbrauchsdaten für eine Registrierung in umgekehrter chronologischer Reihenfolge enthalten. Jeder Zeitraum enthält eine Eigenschaft, die auf die API-Route für die vier Sätze von Daten verweist: BalanceSummary, UsageDetails, Marketplace Charges und PriceSheet. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Abrechnungszeiträume](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
 ### <a name="enable-api-data-access"></a>Aktivieren des API-Datenzugriffs
 

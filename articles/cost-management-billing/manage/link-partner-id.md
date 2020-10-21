@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017011"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132549"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -25,13 +25,13 @@ Mithilfe des PALs kann Microsoft Partner ermitteln und würdigen, die zum Erfolg
 
 Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf ihre Azure-Ressourcen erteilen:
 
-- **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige Azure-Rolle zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige Azure-Rolle zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](../../active-directory/external-identities/what-is-b2b.md).
 
 - **Verzeichniskonto**: Ihr Kunde kann ein Benutzerkonto für Sie in seinem eigenen Verzeichnis erstellen und dem Konto eine beliebige Azure-Rolle zuweisen.
 
 - **Dienstprinzipal**: Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in seinem Verzeichnis hinzufügen und dieser oder diesem eine beliebige Azure-Rolle zuweisen. Die Identität der App oder des Skripts wird als Dienstprinzipal bezeichnet.
 
-- **Azure Lighthouse**: Ihr Kunde kann ein Abonnement (oder eine Ressourcengruppe) delegieren, sodass Ihre Benutzer innerhalb Ihres Mandanten daran arbeiten können. Weitere Informationen finden Sie unter [Delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+- **Azure Lighthouse**: Ihr Kunde kann ein Abonnement (oder eine Ressourcengruppe) delegieren, sodass Ihre Benutzer innerhalb Ihres Mandanten daran arbeiten können. Weitere Informationen finden Sie unter [Delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 ## <a name="link-to-a-partner-id"></a>Verknüpfen einer Partner-ID
 
@@ -55,7 +55,7 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 
 1. Installieren Sie das PowerShell-Modul [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
-2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -152,9 +152,9 @@ Berichte zur Cloudproduktleistung stehen für Partner im Partner Center unter [D
 
 Der Kunde wird aus folgenden Gründen in den Berichten nicht angezeigt:
 
-1. Das verknüpfte Benutzerkonto verfügt nicht über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) für ein Azure-Kundenabonnement oder eine entsprechende Ressource.
+1. Das verknüpfte Benutzerkonto verfügt nicht über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) für ein Azure-Kundenabonnement oder eine entsprechende Ressource.
 
-2. Das Azure-Abonnement, für das der Benutzer über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) verfügt, wird nicht verwendet.
+2. Das Azure-Abonnement, für das der Benutzer über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) verfügt, wird nicht verwendet.
 
 **Funktioniert das Verknüpfen der Partner-ID mit Azure Stack?**
 

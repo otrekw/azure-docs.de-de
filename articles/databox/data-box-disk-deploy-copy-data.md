@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766835"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125336"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Nachdem der Datenkopiervorgang abgeschlossen ist, können Sie mit der Überprüf
 
 Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet haben, müssen Sie Ihre Daten überprüfen. Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
-1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus. Dies ist nur für Windows-Umgebungen verfügbar. Linux-Benutzer müssen überprüfen, ob die Quelldaten, die auf den Datenträger kopiert werden, die [Voraussetzungen](https://docs.microsoft.com/azure/databox/data-box-disk-limits) erfüllen.
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus. Dies ist nur für Windows-Umgebungen verfügbar. Linux-Benutzer müssen überprüfen, ob die Quelldaten, die auf den Datenträger kopiert werden, die [Voraussetzungen](./data-box-disk-limits.md) erfüllen.
     
     ![Ausgabe des Data Box Disk-Überprüfungstools](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ Gehen Sie zum Überprüfen Ihrer Daten wie folgt vor:
 1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
 2. Verwenden Sie Option 2, um Ihre Dateien zu überprüfen und Prüfsummen zu generieren. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Falls bei der Überprüfung und Generierung der Prüfsumme Fehler auftreten, werden Sie benachrichtigt und erhalten einen Link zu den Fehlerprotokollen.
 
-    Weitere Informationen zur Datenüberprüfung finden Sie unter [Überprüfen der Daten](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Sollten bei der Überprüfung Fehler auftreten, lesen Sie [Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk](data-box-disk-troubleshoot.md).
+    Weitere Informationen zur Datenüberprüfung finden Sie unter [Überprüfen der Daten](#validate-data). Sollten bei der Überprüfung Fehler auftreten, lesen Sie [Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk](data-box-disk-troubleshoot.md).
 
 ::: zone-end

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651903"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151221"
 ---
 # <a name="analyze-unexpected-charges"></a>Analysieren unerwarteter Gebühren
 
@@ -76,7 +76,7 @@ Das für eine bestimmte Ressource zuständige Team weiß häufig über Änderung
 
 ### <a name="analyze-the-audit-logs-for-the-resource"></a>Analysieren der Überwachungsprotokolle für die Ressource
 
-Wenn Sie über Berechtigungen zum Anzeigen einer Ressource verfügen, sollten Sie auf die zugehörigen Überwachungsprotokolle zugreifen können. Ermitteln Sie anhand der Protokolle den Benutzer, der für die neuesten Änderungen an einer Ressource verantwortlich ist. Weitere Informationen finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/platform/activity-log-view.md).
+Wenn Sie über Berechtigungen zum Anzeigen einer Ressource verfügen, sollten Sie auf die zugehörigen Überwachungsprotokolle zugreifen können. Ermitteln Sie anhand der Protokolle den Benutzer, der für die neuesten Änderungen an einer Ressource verantwortlich ist. Weitere Informationen finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/platform/activity-log.md#view-the-activity-log).
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Analysieren von Benutzerberechtigungen für den übergeordneten Bereich der Ressource
 

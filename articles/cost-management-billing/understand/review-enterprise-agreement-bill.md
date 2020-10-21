@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684659"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150068"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -436,7 +436,7 @@ Melden Sie bei Problemen mit Power BI ein Ticket beim [Power BI-Supportteam](htt
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Warum werden meine Ressourcentags nicht in meinen Berichten angezeigt?
 
-Ressourcentags werden im Azure-Portal verwaltet. Sie können sich im [Azure-Portal](https://portal.azure.com) an das Azure-Abonnementteam wenden. Befolgen Sie die Schritte im Artikel [Gewusst wie: Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Ressourcentags werden im Azure-Portal verwaltet. Sie können sich im [Azure-Portal](https://portal.azure.com) an das Azure-Abonnementteam wenden. Befolgen Sie die Schritte im Artikel [Gewusst wie: Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>Warum ändert sich mein Ressourcensatz jeden Tag?
 

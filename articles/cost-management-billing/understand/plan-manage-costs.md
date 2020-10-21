@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336897"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150117"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Planen der Verwaltung von Azure-Kosten
 
@@ -24,7 +24,7 @@ Dieser Artikel hilft Ihnen beim Einstieg in die Planung der Verwaltung Ihrer Azu
 - Informieren Sie sich vor dem Hinzufügen von Diensten über die voraussichtlichen Kosten – entweder mithilfe des [Preisrechners](https://azure.microsoft.com/pricing/calculator/), anhand des Azure-Preisblatts oder beim Hinzufügen von Diensten im Azure-Portal.
 - Überwachen Sie Kosten mithilfe von [Budgets](../costs/tutorial-acm-create-budgets.md), [Warnungen](../costs/cost-mgt-alerts-monitor-usage-spending.md) und [Kostenanalyse](../costs/quick-acm-cost-analysis.md).
 - Überprüfen Sie die Gebühren auf Ihrer Rechnung, indem Sie sie mit [detaillierten Nutzungsdateien](../manage/download-azure-invoice-daily-usage-date.md) vergleichen.
-- Integrieren Sie Abrechnungs- und Kostendaten mithilfe von APIs für die [Abrechnung](https://docs.microsoft.com/rest/api/billing/) und [Nutzung](https://docs.microsoft.com/rest/api/consumption/) in Ihr eigenes Berichterstellungssystem.
+- Integrieren Sie Abrechnungs- und Kostendaten mithilfe von APIs für die [Abrechnung](/rest/api/billing/) und [Nutzung](/rest/api/consumption/) in Ihr eigenes Berichterstellungssystem.
 - Verwenden Sie zusätzliche Ressourcen und Tools für EA-Kunden (Enterprise Agreement, Konzernvertrag), CSP-Kunden (Cloud Solution Provider, Cloudlösungsanbieter) und Azure Sponsorship-Kunden.
 - Nutzen Sie [einige der beliebtesten Azure-Dienste 12 Monate lang kostenlos](../manage/create-free-services.md) (verfügbar mit dem [kostenlosen Azure-Konto](https://azure.microsoft.com/free/)). Weitere Informationen finden Sie zusammen mit den unten aufgelisteten Empfehlungen unter [Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden](../manage/avoid-charges-free-account.md).
 
@@ -125,7 +125,7 @@ Unter [Optimieren von Kosten mithilfe von Empfehlungen](../costs/tutorial-acm-op
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrieren von Abrechnungs- und Nutzungs-APIs
 
-Mithilfe der Azure-APIs für die [Abrechnung](https://docs.microsoft.com/rest/api/billing/) und [Nutzung](https://docs.microsoft.com/rest/api/consumption/) können Sie Abrechnungs- und Kostendaten programmgesteuert abrufen. Verwenden Sie die RateCard-API und die Usage-API, um Ihre abgerechnete Nutzung abzurufen. Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../manage/usage-rate-card-overview.md).
+Mithilfe der Azure-APIs für die [Abrechnung](/rest/api/billing/) und [Nutzung](/rest/api/consumption/) können Sie Abrechnungs- und Kostendaten programmgesteuert abrufen. Verwenden Sie die RateCard-API und die Usage-API, um Ihre abgerechnete Nutzung abzurufen. Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../manage/usage-rate-card-overview.md).
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Zusätzliche Ressourcen und Sonderfälle
 

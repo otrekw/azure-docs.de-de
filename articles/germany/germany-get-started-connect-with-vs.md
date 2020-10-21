@@ -1,35 +1,22 @@
 ---
 title: Herstellen einer Verbindung mit Azure Deutschland über Visual Studio | Microsoft-Dokumentation
 description: Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über Visual Studio
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.custom: has-adal-ref
-ms.openlocfilehash: bcf810ccb2a530e6625f0dd6ce01617d9f004b12
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: 25e2dc2fbf02ae890f680eee9c5e23e2a49949c5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611016"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122213"
 ---
 # <a name="connect-to-azure-germany-by-using-visual-studio"></a>Herstellen einer Verbindung mit Azure Deutschland über Visual Studio
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten.
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Entwickler verwenden Visual Studio beim Erstellen von Lösungen zur einfachen Verwaltung ihrer Azure-Abonnements. Auf der Visual Studio-Benutzeroberfläche kann derzeit keine Verbindung mit Azure Deutschland konfiguriert werden.
 

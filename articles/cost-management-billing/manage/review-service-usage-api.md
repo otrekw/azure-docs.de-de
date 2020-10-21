@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: reference
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a7b06ff41e537513558e7f4dc8e1732966299b01
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 018e61fbc74091fa25211b8a25ce067862a0cc7d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684727"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132396"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Überprüfen der Azure-Ressourcennutzung mithilfe der REST-API
 
@@ -153,4 +153,4 @@ Legen Sie die `timeframe`-Definition auf `Custom` fest, um einen Zeitrahmen auß
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erste Schritte mit der Azure-REST-API](https://docs.microsoft.com/rest/api/azure/)   
+- [Erste Schritte mit der Azure-REST-API](/rest/api/azure/)

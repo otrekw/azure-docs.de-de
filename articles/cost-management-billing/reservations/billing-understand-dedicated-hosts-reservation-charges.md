@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689455"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148376"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Anwendung des Azure-Reservierungsrabatts auf Azure Dedicated Host-Instanzen
 
@@ -36,17 +36,16 @@ Sollten Sie weitere Fragen haben oder Hilfe benötigen,  [erstellen Sie eine Su
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
-- [Was sind Azure-Reservierungen?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Was sind Azure-Reservierungen?](./save-compute-costs-reservations.md)
 
-- [Dedizierte Azure-Hosts](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Dedizierte Azure-Hosts](../../virtual-machines/dedicated-hosts.md)
 
 - [Azure Dedicated Host – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Verwalten von Azure-Reservierungen](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Verwalten von Azure-Reservierungen](./manage-reserved-vm-instance.md)
 
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](./understand-reserved-instance-usage.md)
 
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](./understand-reserved-instance-usage-ea.md)
 
-- [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)
-
+- [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](/partner-center/azure-reservations)

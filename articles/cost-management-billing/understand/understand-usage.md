@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681735"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149366"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -90,8 +90,8 @@ PublisherType | All | Typ des Herausgebers (Werte: **Azure**, **AWS**, **Marketp
 Menge | All | Die Anzahl der erworbenen oder genutzten Einheiten.
 ReservationId | EA, MCA | Der eindeutige Bezeichner für die erworbene Reservierungsinstanz.
 ReservationName | EA, MCA | Der Name der erworbenen Reservierungsinstanz.
-ResourceGroup | All | Name der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet. Nicht alle Gebühren werden durch Ressourcen verursacht, die in Ressourcengruppen bereitgestellt werden. Gebühren, die keiner Ressourcengruppe zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
-ResourceId<sup>1</sup> | All | Der eindeutige Bezeichner der [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-Ressource.
+ResourceGroup | All | Name der [Ressourcengruppe](../../azure-resource-manager/management/overview.md), in der sich die Ressource befindet. Nicht alle Gebühren werden durch Ressourcen verursacht, die in Ressourcengruppen bereitgestellt werden. Gebühren, die keiner Ressourcengruppe zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
+ResourceId<sup>1</sup> | All | Der eindeutige Bezeichner der [Azure Resource Manager](/rest/api/resources/resources)-Ressource.
 ResourceLocation | All | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird. Siehe „Location“.
 Ressourcenname | EA, PAYG | Der Name der Ressource. Nicht alle Gebühren werden durch bereitgestellte Ressourcen verursacht. Gebühren, die keinem Ressourcentyp zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
 ResourceType | MCA | Der Ressourceninstanztyp. Nicht alle Gebühren werden durch bereitgestellte Ressourcen verursacht. Gebühren, die keinem Ressourcentyp zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
