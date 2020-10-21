@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten aus MongoDB mithilfe von Legacy
-description: Erfahren Sie, wie Daten aus MongoDB mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+description: Erfahren Sie, wie Daten aus MongoDB mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline (Legacy) in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331980"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory (Legacy)
 

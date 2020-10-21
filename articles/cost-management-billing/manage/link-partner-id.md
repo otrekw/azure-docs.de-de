@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772718"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017011"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -134,7 +134,7 @@ Ja. Eine verknüpfte Partner-ID kann geändert, hinzugefügt oder entfernt werde
 
 Die Verknüpfung zwischen der Partner-ID und dem Konto erfolgt für jeden Kundenmandanten. Verknüpfen Sie die Partner-ID für jeden Kundenmandanten.
 
-Wenn Sie jedoch Kundenressourcen über Azure Lighthouse verwalten, sollten Sie den Link im Mandanten Ihres Dienstanbieters erstellen und dabei ein Konto verwenden, das Zugriff auf die Kundenressourcen hat. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um Partner Earned Credit (PEC) für delegierte Ressourcen zu aktivieren](../../lighthouse/how-to/partner-earned-credit.md).
+Wenn Sie jedoch Kundenressourcen über Azure Lighthouse verwalten, sollten Sie den Link im Mandanten Ihres Dienstanbieters erstellen und dabei ein Konto verwenden, das Zugriff auf die Kundenressourcen hat. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um die Auswirkungen auf delegierte Ressourcen nachzuverfolgen](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Können andere Partner oder Kunden die Verknüpfung mit der Partner-ID bearbeiten oder entfernen?**
 
@@ -164,7 +164,7 @@ Ja, Sie können Ihre Partner-ID mit Azure Stack verknüpfen.
 
 Wenn Sie Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, indem Sie [ein Angebot für verwaltete Dienste im Azure Marketplace veröffentlichen](../../lighthouse/how-to/publish-managed-services-offers.md), wird Ihre MPN-ID automatisch zugeordnet.
 
-Wenn Sie das [Kundenonboarding durch die Bereitstellung von Azure Resource Manager-Vorlagen durchführen](../../lighthouse/how-to/onboard-customer.md), müssen Sie Ihre MPN-ID mindestens einem Benutzerkonto zuordnen, das Zugriff auf die einzelnen Abonnements im Rahmen des Onboardings hat. Dieser Schritt muss im Mandanten Ihres Dienstanbieters und nicht in jedem einzelnen Kundenmandanten ausgeführt werden. Der Einfachheit halber empfehlen wir, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, es mit Ihrer MPN-ID zu verknüpfen und dem Konto dann Zugriff auf jeden Kunden zu gewähren, für den Sie mit einer [integrierten Azure-Rolle, die für PEC (Partner Earned Credit) berechtigt ist](/partner-center/azure-roles-perms-pec), ein Onboarding durchführen. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um Partner Earned Credit (PEC) für delegierte Ressourcen zu aktivieren](../../lighthouse/how-to/partner-earned-credit.md).
+Wenn Sie das [Kundenonboarding durch die Bereitstellung von Azure Resource Manager-Vorlagen durchführen](../../lighthouse/how-to/onboard-customer.md), müssen Sie Ihre MPN-ID mindestens einem Benutzerkonto zuordnen, das Zugriff auf die einzelnen Abonnements im Rahmen des Onboardings hat. Dieser Schritt muss im Mandanten Ihres Dienstanbieters und nicht in jedem einzelnen Kundenmandanten ausgeführt werden. Der Einfachheit halber empfehlen wir, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, es mit Ihrer MPN-ID zu verknüpfen und dem Konto dann Zugriff auf jeden Kunden zu gewähren, für den Sie mit einer [integrierten Azure-Rolle, die für PEC (Partner Earned Credit) berechtigt ist](/partner-center/azure-roles-perms-pec), ein Onboarding durchführen. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um die Auswirkungen auf delegierte Ressourcen nachzuverfolgen](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Wie kann ich meinem Kunden Partner Admin Link (PAL) erklären?**
 

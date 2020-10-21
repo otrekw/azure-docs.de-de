@@ -11,18 +11,22 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another resource group.
-ms.openlocfilehash: fe8051d551077666c06ac033f22303fd643ac602
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ea152e1d78ab1ea610eee5420394c89524673993
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585732"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042381"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>Verschieben einer Azure Key Vault-Instanz zwischen Ressourcengruppen
 
 ## <a name="overview"></a>Übersicht
 
 Das Verschieben eines Schlüsseltresors zwischen Ressourcengruppen ist eine unterstützte Funktion von Key Vault. Das Verschieben eines Schlüsseltresors zwischen Ressourcengruppen wirkt sich nicht auf die Konfigurationen von Key Vault-Firewall oder Zugriffsrichtlinien aus. Verbundene Anwendungen und Dienstprinzipale sollten weiterhin wie vorgesehen funktionieren.
+
+> [!IMPORTANT]
+> **Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht verschoben werden.**
+> Wenn Sie Key Vault mit Datenträgerverschlüsselung für einen virtuellen Computer verwenden, kann der Schlüsseltresor nicht in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden, solange die Datenträgerverschlüsselung aktiviert ist. Sie müssen die Datenträgerverschlüsselung deaktivieren, bevor Sie den Schlüsseltresor in eine neue Ressourcengruppe oder ein neues Abonnement verschieben. 
 
 ## <a name="design-considerations"></a>Entwurfsaspekte
 

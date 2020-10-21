@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090515"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938338"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -39,8 +39,10 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 |-|-|
 | [Azure Maps Animation-Modul](https://github.com/Azure-Samples/azure-maps-animations) | Eine umfangreiche Bibliothek mit Animationen für die Verwendung mit dem Azure Maps Web SDK. |
 | [Modul „Azure Maps Geolocation Control“](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Ein Azure Maps Web SDK-Modul, das ein Steuerelement bereitstellt, mit dem der Benutzer über die Geolocation-API des Browsers auf der Karte lokalisiert werden kann. |
+| [Azure Maps Gridded Data Source-Modul](https://github.com/Azure-Samples/azure-maps-gridded-data-source) (Azure Maps-Modul für Datenquellen von Rasterdaten) | Ein Modul für das Azure Maps Web SDK, das eine Datenquelle bereitstellt, die Datenpunkte in Zellen eines Rasterbereichs gruppiert. Dieser Vorgang wird auch mit vielen anderen Namen, wie Mosaik, Datenquantisierung oder hexadezimale Behälter bezeichnet.  |
 | [Modul „Azure Maps Fullscreen Control“](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Ein Azure Maps Web SDK-Modul, das ein Steuerelement zur Anzeige der Karte im Vollbildmodus bietet. |
 | [Modul „Azure Maps Selection Control“](https://github.com/Azure-Samples/azure-maps-selection-control) | Ein Azure Maps Web SDK-Modul, das Steuerelemente zum Auswählen von Daten in einer Datenquelle mithilfe von Zeichentools oder durch Anforderung eines Routenbereichspolygons bereitstellt. |
+| [Azure Maps Swipe Map-Modul](https://github.com/Azure-Samples/azure-maps-swipe-map) | Ein Modul für das Azure Maps Web SDK, das den Wechsel zwischen zwei sich überschneidenden Karten durch Streichbewegungen ermöglicht, was sich ideal für den Vergleich zweier sich überschneidender Datasets eignet. |
 | [Modul „Azure Maps Sync Map“](https://github.com/Azure-Samples/azure-maps-sync-maps) | Ein Azure Maps Web SDK-Modul, das die Kameras von zwei oder mehr Karten synchronisiert. |
 | [Benutzeroberflächenmodul für Azure Maps-Dienste](https://github.com/Azure-Samples/azure-maps-services-ui) | Verschiedene Steuerelemente für die Webbenutzeroberfläche für REST-Dienste von Azure Maps. |
 

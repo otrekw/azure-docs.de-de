@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325622"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072151"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files
 
@@ -26,11 +26,11 @@ NFSv4 führt das Konzept einer Authentifizierungsdomäne ein. Azure NetApp Files
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>Standardverhalten der Benutzer-/Gruppenzuordnung
 
-Die Stammzuordnung erfolgt standardmäßig mit dem Benutzer `nobody`, da die NFSv4-Domäne auf `localdomain` festgelegt ist. Wenn Sie ein Azure NetApp Files NFSv4.1-Volume als root einbinden, werden die Dateiberechtigungen wie folgt angezeigt:  
+Die Stammzuordnung erfolgt standardmäßig mit dem Benutzer `nobody`, da die NFSv4-Domäne standardmäßig auf `localdomain` festgelegt ist. Wenn Sie ein Azure NetApp Files NFSv4.1-Volume als root einbinden, werden die Dateiberechtigungen wie folgt angezeigt:  
 
 ![Standardverhalten der Benutzer-/Gruppenzuordnung für NFSv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Wie das obige Beispiel zeigt, muss der Benutzer für `file1``root` sein, doch er wird standardmäßig `nobody` zugeordnet.  Dieser Artikel beschreibt, wie Sie den Benutzer `file1` auf `root` festlegen.  
+Wie das obige Beispiel zeigt, muss der Benutzer für `file1``root` sein, doch er wird standardmäßig `nobody` zugeordnet.  Dieser Artikel beschreibt, wie Sie den Benutzer `file1` auf `root` festlegen, indem Sie die Einstellung `idmap Domain` auf `defaultv4iddomain.com` festlegen.  
 
 ## <a name="steps"></a>Schritte 
 

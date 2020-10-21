@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897464"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708253"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
 
@@ -42,10 +42,9 @@ Weitere Informationen zu den unterstützten Interpretierbarkeitstechniken und de
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Generieren des Werts für die Featurerelevanz auf Ihrem persönlichen Computer 
 Das folgende Beispiel zeigt, wie Sie das Interpretierbarkeitspaket auf Ihrem persönlichen Computer verwenden, ohne auf Azure-Dienste zurückzugreifen.
 
-1. Installieren Sie die Pakete `azureml-interpret` und `azureml-contrib-interpret`.
+1. Installieren Sie das `azureml-interpret`-Paket.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. Trainieren Sie ein Beispielmodell in einem lokalen Jupyter-Notebook.
@@ -239,15 +238,14 @@ Das folgende Beispiel zeigt die Verwendung der `ExplanationClient`-Klasse zum Ak
 * verwenden `ExplanationClient` in der Remoteausführung, um den Interpretbarkeitskontext hochzuladen.
 * laden den Kontext später in einer lokalen Umgebung herunter.
 
-1. Installieren Sie die Pakete `azureml-interpret` und `azureml-contrib-interpret`.
+1. Installieren Sie das `azureml-interpret`-Paket.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. Erstellen Sie ein Trainingsskript in einem lokalen Jupyter-Notebook. Beispiel: `train_explain.py`.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -275,12 +273,12 @@ Das folgende Beispiel zeigt die Verwendung der `ExplanationClient`-Klasse zum Ak
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. Legen Sie ein Azure Machine Learning Compute-Ziel fest, und übermitteln Sie dann eine Trainingsausführung. Anweisungen dazu finden Sie unter [Erstellen von Computezielen mit dem Python SDK](how-to-create-attach-compute-sdk.md#amlcompute). Die [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) könnten Sie auch interessieren.
+1. Legen Sie ein Azure Machine Learning Compute-Ziel fest, und übermitteln Sie dann eine Trainingsausführung. Anweisungen finden Sie unter [Erstellen und Verwalten von Azure Machine Learning-Computeclustern](how-to-create-attach-compute-cluster.md). Die [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) könnten Sie auch interessieren.
 
 1. Laden Sie die Erklärung in Ihr lokales Jupyter-Notebook herunter.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -332,29 +330,12 @@ Sie können den Plot der individuellen Featurerelevanz für jeden Datenpunkt lad
 
 [![Visualisierungsdashboard: ICE-Plots](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> Aktivieren Sie vor dem Start des Jupyter-Kernels unbedingt die Widgeterweiterungen für das Visualisierungsdashboard.
-
-* Jupyter Notebooks
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 Verwenden Sie den folgenden Code, um das Visualisierungsdashboard zu laden.
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisierung in Azure Machine Learning-Studio
@@ -370,7 +351,7 @@ Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Mach
   1. Wählen Sie ein bestimmtes Experiment aus, um alle Ausführungen in diesem Experiment anzuzeigen.
   1. Wählen Sie eine Ausführung aus, und klicken Sie dann auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
-   [![Visualisierungsdashboard: Wichtigkeit lokaler Features](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Lokale Featurerelevanz für das Visualisierungsdashboard in AzureML Studio in Experimenten](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Bereich **Modelle**
   1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.

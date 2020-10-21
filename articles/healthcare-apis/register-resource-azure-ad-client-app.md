@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 3c5486e31dd3227cfcc8bd3b433602ce58cfa4fb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852989"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975857"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Registrieren einer Ressourcenanwendung in Azure Active Directory
 
@@ -107,7 +107,7 @@ Azure API for FHIR und der OSS FHIR-Server für Azure verwenden [Azure Active Di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie eine Ressourcenanwendung in Azure Active Directory registrieren. Stellen Sie nun Azure API for FHIR bereit.
+In diesem Artikel haben Sie erfahren, wie Sie eine Ressourcenanwendung in Azure Active Directory registrieren. Als Nächstes registrieren Sie Ihre vertrauliche Clientanwendung.
  
 >[!div class="nextstepaction"]
->[Bereitstellen von Azure API for FHIR](fhir-paas-powershell-quickstart.md)
+>[Registrieren einer vertraulichen Clientanwendung](register-confidential-azure-ad-client-app.md)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 80746d7cef4bb0a70c6bb9eb6ff2e053ea6c7a0a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824698"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017521"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -86,6 +86,9 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
 
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriken für die Volumereplikation
+
+> [!NOTE] 
+> Die Netzwerkübertragungsgröße (z. B. die *Gesamtübertragung der Volumereplikation*-Metriken) kann sich von den Quell- oder Zielvolumes einer regionsübergreifenden Replikation unterscheiden. Dieses Verhalten ist darauf zurückzuführen, dass eine effiziente Replikations-Engine verwendet wird, um die Netzwerkübertragungskosten zu reduzieren.
 
 - *Ist Volumereplikationsstatus „Fehlerfrei“*    
     Der Zustand der Replikationsbeziehung. Ein fehlerfreier Status wird durch `1` angegeben. Ein fehlerhafter Status wird durch `0` angegeben.

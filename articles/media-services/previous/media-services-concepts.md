@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333782"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte
 
@@ -103,12 +103,11 @@ Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Date
 
 Um die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md) nutzen zu können, müssen Sie Ihre Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate codieren. Außerdem muss mindestens ein Standard- oder Premium-Streamingendpunkt im gestarteten Zustand vorhanden sein.
 
-Media Services unterstützt die folgenden On-Demand-Encoder, die in diesem Artikel beschrieben werden:
+Media Services unterstützt den folgenden On-Demand-Encoder, der in diesem Artikel beschrieben wird:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium Workflow](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Informationen zu unterstützten Encodern finden Sie unter [Encoder](media-services-encode-asset.md).
+Weitere Informationen zu diesem unterstützten Encoder finden Sie unter [Encoder](media-services-encode-asset.md).
 
 ## <a name="live-streaming"></a>Livestreaming
 In Azure Media Services repräsentiert ein Kanal eine Pipeline zum Verarbeiten von Livestreaminginhalten. Es gibt zwei Arten, auf die Live-Eingabedatenströme von Kanälen empfangen werden können:

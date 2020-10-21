@@ -2,13 +2,13 @@
 title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654037"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075908"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe des Azure Advisors
 
@@ -20,7 +20,7 @@ Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewir
 
 Es wird empfohlenen, die Ressource, die gerade ausgewertet wird, entweder herunterzufahren oder ihre Größe zu ändern.
 
-Gemäß dem erweiterten Auswertungsmodell im Advisor werden virtuelle Computer (Virtual Machines, VMs) heruntergefahren, wenn die folgenden beiden Aussagen wahr sind: 
+Gemäß dem erweiterten Auswertungsmodell im Advisor werden virtuelle Computer (Virtual Machines, VMs) heruntergefahren, wenn alle folgenden Aussagen wahr sind: 
 - Das 95. Perzentil des Maximums des maximalen Werts für die CPU-Auslastung ist kleiner als 3 %. 
 - Die Netzwerkauslastung beträgt innerhalb eines siebentägigen Zeitraums weniger als 2 %.
 - Der Druck auf den Arbeitsspeicher liegt unter den Schwellenwerten.
@@ -59,8 +59,8 @@ Der Advisor analysiert die Nutzungsmuster der vergangenen 30 Tage für die folg
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Reservierte Kapazität für Azure Cosmos DB
 Der Advisor analysiert Ihre Azure Cosmos DB-Nutzungsmuster der vergangenen 30 Tage und empfiehlt den Erwerb von reservierter Kapazität, um die Kosten zu optimieren. Mithilfe von reservierter Kapazität können Sie die Nutzungsstunden für Azure Cosmos DB vorab erwerben und sparen so gegenüber der nutzungsbasierten Bezahlung. Die reservierte Kapazität ist ein Abrechnungsvorteil und gilt automatisch für neue und vorhandene Bereitstellungen. Der Advisor berechnet die geschätzten Einsparungen für einzelne Abonnements anhand des Preises einer dreijährigen Reservierung und anhand der extrapolierten Nutzungsmuster, die in den letzten 30 Tage beobachtet wurden. Es sind auch Empfehlungen für den Kauf von reservierten Kapazitäten verfügbar, die für mehrere Abonnements gelten. Diese können dazu beitragen, noch mehr Kosten zu sparen.
 
-### <a name="sql-paas-reserved-capacity"></a>Reservierte Kapazität für SQL-PaaS
-Advisor analysiert die Nutzungsmuster von Pools für elastische SQL-PaaS-Datenbanken und SQL Managed Instance, die in den letzten 30 Tagen beobachtet wurden. Anschließend empfiehlt er den Erwerb von reservierten Kapazitäten, die die Kosten optimieren. Mit reservierten Kapazitäten können Sie die Nutzungsstunden von SQL-Datenbanken vorab erwerben und so SQL-Computekosten sparen. Ihre SQL-Lizenz wird separat abgerechnet und durch die Reservierung nicht vergünstigt. Die reservierte Kapazität ist ein Abrechnungsvorteil und gilt automatisch für neue und vorhandene Bereitstellungen. Der Advisor berechnet die geschätzten Einsparungen für einzelne Abonnements anhand des Preises einer dreijährigen Reservierung und anhand der extrapolierten Nutzungsmuster, die in den letzten 30 Tage beobachtet wurden. Es sind auch Empfehlungen für den Kauf von reservierten Kapazitäten verfügbar, die für mehrere Abonnements gelten. Diese können dazu beitragen, noch mehr Kosten zu sparen.
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>Reservierte Kapazität für SQL-Datenbank und SQL Managed Instance
+Advisor analysiert die Nutzungsmuster von SQL-Datenbank und SQL Managed Instance, die in den letzten 30 Tagen beobachtet wurden. Anschließend empfiehlt er den Erwerb von reservierten Kapazitäten, die die Kosten optimieren. Mit reservierten Kapazitäten können Sie die Nutzungsstunden von SQL-Datenbanken vorab erwerben und so SQL-Computekosten sparen. Ihre SQL-Lizenz wird separat abgerechnet und durch die Reservierung nicht vergünstigt. Die reservierte Kapazität ist ein Abrechnungsvorteil und gilt automatisch für neue und vorhandene Bereitstellungen. Der Advisor berechnet die geschätzten Einsparungen für einzelne Abonnements anhand des Preises einer dreijährigen Reservierung und anhand der extrapolierten Nutzungsmuster, die in den letzten 30 Tage beobachtet wurden. Es sind auch Empfehlungen für den Kauf von reservierten Kapazitäten verfügbar, die für mehrere Abonnements gelten. Diese können dazu beitragen, noch mehr Kosten zu sparen. Details finden Sie unter [Reservierte Kapazität für SQL-Datenbank und SQL Managed Instance](../azure-sql/database/reserved-capacity-overview.md).
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>Reservierte Kapazität für die App Service-Stempelgebühr
 Der Advisor analysiert die Stempelgebühr-Nutzungsmuster für Ihre isolierte Azure App Service-Umgebung für die vergangenen 30 Tage und empfiehlt den Erwerb von reservierter Kapazität, um die Kosten zu optimieren. Mit reservierter Kapazität können Sie die Nutzungsstunden von Stempelgebühren für eine isolierte Umgebung vorab erwerben und sparen so gegenüber der nutzungsbasierten Bezahlung. Beachten Sie, dass die reservierte Kapazität nur für die Stempelgebühr und nicht für App Service-Instanzen gilt. Die reservierte Kapazität ist ein Abrechnungsvorteil und gilt automatisch für neue und vorhandene Bereitstellungen. Der Advisor berechnet die geschätzten Einsparungen für einzelne Abonnements anhand des Preises einer dreijährigen Reservierung und der Nutzungsmuster der letzten 30 Tage.
@@ -111,6 +111,7 @@ Advisor identifiziert Ressourcen, bei denen durch die Reduzierung der Tabellenca
 
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Einführung in Advisor](advisor-overview.md)
+* [Advisor-Bewertung](azure-advisor-score.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
 * [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
 * [Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor](advisor-high-availability-recommendations.md)

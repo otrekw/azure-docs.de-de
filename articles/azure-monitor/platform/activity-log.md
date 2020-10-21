@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983217"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91772803"
 ---
 # <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 Das Aktivitätsprotokoll ist ein [Plattformprotokoll](platform-logs-overview.md) in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. Um zusätzliche Funktionen zu erhalten, sollten Sie eine Diagnoseeinstellung erstellen, mit der das Aktivitätsprotokoll an [Azure Monitor-Protokolle](data-platform-logs.md) gesendet wird, an Azure Event Hubs außerhalb von Azure weitergeleitet oder für die Archivierung an Azure Storage gesendet wird. In diesem Artikel wird ausführlich beschrieben, wie das Aktivitätsprotokoll angezeigt und an verschiedene Ziele gesendet wird.
@@ -226,7 +226,7 @@ Es folgt ein PowerShell-Beispielskript zum Erstellen eines Protokollprofils, mit
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId  $storageAccountId -ServiceBusRuleId $serviceBusRuleId
    ```
 
 
@@ -399,4 +399,5 @@ In Kürze können Sie die Lösung für die Aktivitätsprotokollanalyse Ihrem Abo
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Lesen einer Übersicht über Plattformprotokolle](platform-logs-overview.md)
+* [Überprüfen des Ereignisschemas des Aktivitätsprotokolls](activity-log-schema.md)
 * [Erstellen einer Diagnoseeinstellung zum Senden von Aktivitätsprotokollen an andere Ziele](diagnostic-settings.md)

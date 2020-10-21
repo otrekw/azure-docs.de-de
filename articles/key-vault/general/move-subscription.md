@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394736"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042404"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement
 
@@ -36,6 +36,9 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
 * Fügen Sie neue Zugriffsrichtlinieneinträge hinzu, die Mandant B zugeordnet sind.
 
 ## <a name="limitations"></a>Einschränkungen
+
+> [!IMPORTANT]
+> **Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht verschoben werden** Wenn Sie Key Vault mit Datenträgerverschlüsselung für einen virtuellen Computer verwenden, kann der Schlüsseltresor nicht in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden, solange die Datenträgerverschlüsselung aktiviert ist. Sie müssen die Datenträgerverschlüsselung deaktivieren, bevor Sie den Schlüsseltresor in eine neue Ressourcengruppe oder ein neues Abonnement verschieben. 
 
 Einige Dienstprinzipale (Benutzer und Anwendungen) sind an einen bestimmten Mandanten gebunden. Wenn Sie Ihren Schlüsseltresor in ein Abonnement in einem anderen Mandanten verschieben, besteht die Möglichkeit, dass Sie den Zugriff auf einen bestimmten Dienstprinzipal nicht wiederherstellen können. Stellen Sie sicher, dass alle wichtigen Dienstprinzipale in dem Mandanten vorhanden sind, in den Sie Ihren Schlüsseltresor verschieben.
 

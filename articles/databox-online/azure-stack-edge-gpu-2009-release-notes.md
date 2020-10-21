@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 6f1199b29e3bdaa2200aeb7fe4f76c4c9d0d8e19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7ddc83874526a99383f94491771a81da2cde86d8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931245"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047300"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Versionshinweise zu Azure Stack Edge Pro mit GPU (GA, allgemeine Verfügbarkeit)
 
@@ -21,13 +21,11 @@ In den folgenden Versionshinweisen werden die schwerwiegenden offenen und die be
 
 Die Versionshinweise werden fortlaufend aktualisiert, und wenn schwerwiegende Probleme festgestellt werden, die eine Problemumgehung erfordern, werden sie hinzugefügt. Lesen Sie vor der Bereitstellung Ihres Azure Stack Edge Pro-Geräts die Informationen in den Versionshinweisen sorgfältig durch.
 
-Dieser Artikel bezieht sich auf das Softwarerelease von **Azure Stack Edge Pro 2009**. 
-
-<!--- This software release corresponds to software version number **2.1.1328.1904**-->
+Dieser Artikel bezieht sich auf das Release von **Azure Stack Edge Pro 2010**, das der Softwareversionsnummer **2.1.1377.2170** zugeordnet ist.
 
 ## <a name="whats-new"></a>Neues
 
-Die folgenden neuen Features sind im Azure Stack Edge 2009-Release verfügbar. 
+Die folgenden neuen Features sind im Azure Stack Edge 2010-Release verfügbar. 
 
 - **Speicherklassen:** In diesem Release stehen Speicherklassen zur Verfügung, mit denen Sie Speicher dynamisch bereitstellen können. Weitere Informationen finden Sie unter [Kubernetes-Speicherverwaltung auf dem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning). 
 - **Kubernetes-Dashboard mit Metrics Server:** In diesem Release wird ein Kubernetes-Dashboard mit dem Metrics Server-Add-On hinzugefügt. Sie können das Dashboard verwenden, um eine Übersicht über die auf dem Azure Stack Edge Pro-Gerät ausgeführten Anwendungen, den Status von Kubernetes-Clusterressourcen und eventuelle auf dem Gerät aufgetretene Fehler anzuzeigen. Mit dem Metrics Server-Add-On wird die CPU- und Speicherauslastung der Kubernetes-Ressourcen auf dem Gerät aggregiert. Weitere Informationen finden Sie unter [Überwachen des Azure Stack Edge Pro-GPU-Geräts über das Kubernetes-Dashboard](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).

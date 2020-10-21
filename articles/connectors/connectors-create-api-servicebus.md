@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526526"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996344"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -79,7 +79,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
    Einige Trigger, z. B. der Trigger**Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)** , können eine oder mehrere Nachrichten zurückgeben. Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
 
     > [!NOTE]
-    > Mit dem Trigger für die automatische Vervollständigung wird eine Nachricht automatisch abgeschlossen, der Abschluss erfolgt jedoch erst bei der nächsten Ausführung des Auslösers. Dieses Verhalten kann sich auf den Entwurf Ihrer Logik-App auswirken. Vermeiden Sie z. B. das Ändern der Parallelität für den auto-complete-Trigger (automatisch vervollständigen), da diese Änderung doppelte Nachrichten verursachen kann, wenn Ihre Logik-App in einen gedrosselten Zustand wechselt. Durch Ändern der Parallelitätssteuerung werden folgende Zustände erzeugt: gedrosselte Trigger werden mit dem `WorkflowRunInProgress`-Code übersprungen, der Abschlussvorgang wird nicht ausgeführt, und die nächste Triggerausführung erfolgt nach dem Abrufintervall. Sie müssen die Sperrdauer des Service Bus auf einen längeren Wert als das Abrufintervall festlegen. Trotz dieser Einstellung wird die Nachricht möglicherweise jedoch immer noch nicht abgeschlossen, wenn Ihre Logik-App beim nächsten Abrufintervall weiterhin in einem gedrosselten Zustand verbleibt.
+    > Mit dem Trigger für automatisches Abschließen wird eine Nachricht automatisch abgeschlossen, doch der Abschluss erfolgt erst beim nächsten Aufruf des Service Bus. Dieses Verhalten kann sich auf den Entwurf Ihrer Logik-App auswirken. Vermeiden Sie z. B. das Ändern der Parallelität für den auto-complete-Trigger (automatisch vervollständigen), da diese Änderung doppelte Nachrichten verursachen kann, wenn Ihre Logik-App in einen gedrosselten Zustand wechselt. Durch Ändern der Parallelitätssteuerung werden folgende Zustände erzeugt: gedrosselte Trigger werden mit dem `WorkflowRunInProgress`-Code übersprungen, der Abschlussvorgang wird nicht ausgeführt, und die nächste Triggerausführung erfolgt nach dem Abrufintervall. Sie müssen die Sperrdauer des Service Bus auf einen längeren Wert als das Abrufintervall festlegen. Trotz dieser Einstellung wird die Nachricht möglicherweise jedoch immer noch nicht abgeschlossen, wenn Ihre Logik-App beim nächsten Abrufintervall weiterhin in einem gedrosselten Zustand verbleibt.
 
 1. Wenn Ihr Trigger zum ersten Mal eine Verbindung mit Ihrem Service Bus-Namespace herstellt, führen Sie diese Schritte aus, wenn Sie der Logik-App-Designer auffordert, Ihre Verbindungsinformationen anzugeben.
 
@@ -162,6 +162,10 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 Wenn Sie zusammengehörige Nachrichten in einer bestimmten Reihenfolge senden müssen, können Sie das [Muster für einen *sequenziellen Konvoi*](/azure/architecture/patterns/sequential-convoy) verwenden, indem Sie den [Azure Service Bus-Connector](../connectors/connectors-create-api-servicebus.md) nutzen. Korrelierte Nachrichten verfügen über eine Eigenschaft zum Definieren der Beziehung zwischen diesen Nachrichten, z. B. die ID für die [Sitzung](../service-bus-messaging/message-sessions.md) in Service Bus.
 
 Beim Erstellen einer Logik-App können Sie die Vorlage für eine **korrelierte geordnete Bereitstellung mit Service Bus-Sitzungen** auswählen, mit der das Muster für einen sequenziellen Konvoi implementiert wird. Weitere Informationen finden Sie im Artikel zum [Senden zusammengehöriger Nachrichten in der richtigen Reihenfolge](../logic-apps/send-related-messages-sequential-convoy.md).
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Verzögerungen bei Updates Ihrer Logik-App haben Auswirkungen
+
+Wenn das Abrufintervall eines Service Bus-Triggers niedrig ist (z. B. 10 Sekunden), dauert es möglicherweise bis zu 10 Minuten, bis Updates für Ihre Logik-App wirksam werden. Um dieses Problem zu umgehen, können Sie das Abrufintervall vorübergehend auf einen größeren Wert erhöhen (z. B. 30 Sekunden oder 1 Minute), bevor Sie Ihre Logik-App aktualisieren. Nachdem Sie das Update vorgenommen haben, können Sie das Abrufintervall auf den ursprünglichen Wert zurücksetzen. 
 
 <a name="connector-reference"></a>
 

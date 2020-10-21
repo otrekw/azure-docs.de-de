@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606554"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856716"
 ---
 1. Wählen Sie **VPN-Standorte verbinden** aus, um die Seite **Standorte verbinden** zu öffnen.
 
@@ -22,7 +22,7 @@ ms.locfileid: "90606554"
    Füllen Sie die folgenden Felder aus:
 
    * Geben Sie einen vorinstallierten Schlüssel ein. Wenn Sie keinen Schlüssel eingeben, wird von Azure automatisch ein Schlüssel generiert.
-   * Wählen Sie das Protokoll und die IPsec-Einstellungen aus. Weitere Informationen finden Sie in den Details zu IPsec-Standardrichtlinien und benutzerdefinierten IPsec-Richtlinien (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec).
+   * Wählen Sie das Protokoll und die IPsec-Einstellungen aus. Weitere Informationen finden Sie unter [Virtual WAN-Standardrichtlinien für IPSec-Konnektivität](../articles/virtual-wan/virtual-wan-ipsec.md).
    * Wählen Sie die entsprechende Option für **Standardroute weitergeben** aus. Mit der Option **Aktivieren** kann der virtuelle Hub eine bekannte Standardroute für diese Verbindung weitergeben. Dieses Flag ermöglicht die Weitergabe der Standardroute an eine Verbindung, wenn diese dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist. Der Ursprung der Standardroute liegt nicht im Virtual WAN-Hub.
 
 2. Wählen Sie **Verbinden**.

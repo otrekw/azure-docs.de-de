@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325486"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072780"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -65,7 +65,7 @@ Der Dienst passt das maxfiles-Limit für ein Volume basierend auf seiner bereitg
 |    > 3 TiB, aber <= 4 TiB    |    80 Mio.     |
 |    > 4 TiB                 |    100 Mio.    |
 
-Wenn Sie für ein Volume bereits ein Kontingent von mindestens 4 TiB zugeordnet haben, können Sie eine [Supportanfrage](#limit_increase) initiieren, um das maxfiles-Limit auf über 100 Millionen zu erhöhen.
+Wenn Sie für ein Volume bereits ein Kontingent von mindestens 4 TiB zugeordnet haben, können Sie eine [Supportanfrage](#limit_increase) initiieren, um das maxfiles-Limit auf über 100 Millionen zu erhöhen. Für jede Erhöhung um 100 Millionen Dateien (oder einen Bruchteil davon) müssen Sie das entsprechende Volumekontingent um 4 TiB erhöhen.  Wenn Sie z. B. den Grenzwert „maxfiles“ von 100 Millionen Dateien auf 200 Millionen Dateien (oder eine beliebige Zahl dazwischen) erhöhen, müssen Sie das Volumenkontingent von 4 TiB auf 8 TiB erhöhen.
 
 ## <a name="request-limit-increase"></a>Anfordern einer Limiterhöhung <a name="limit_increase"></a> 
 

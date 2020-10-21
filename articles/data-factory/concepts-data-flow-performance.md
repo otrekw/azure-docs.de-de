@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370877"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874831"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -260,6 +260,10 @@ Wenn Sie Literalwerte in Ihren Verknüpfungsbedingungen verwenden oder auf beide
 #### <a name="sorting-before-joins"></a>Sortieren vor Joinvorgängen
 
 Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist die Join-Transformation kein obligatorischer Vorgang vom Typ „Merge Join“. Für die Joinschlüssel ist vor der Transformation kein Sortiervorgang erforderlich. Das Azure Data Factory-Team rät von der Verwendung von Transformationen für die Sortierung in Zuordnungsdatenflüssen ab.
+
+### <a name="window-transformation-performance"></a>Leistung der Fenstertransformation
+
+Die [Fenstertransformation](data-flow-window.md) partitioniert die Daten nach Wert in Spalten, die Sie als Teil der ```over()```-Klausel in den Transformationseinstellungen auswählen. Es gibt eine Reihe sehr gängiger Aggregat- und Analysefunktionen, die in der Fenstertransformation bereitgestellt werden. Wenn Ihr Anwendungsfall aber darin besteht, ein Fenster für das gesamte Dataset für die Rangfolge ```rank()``` oder die Zeilennummer ```rowNumber()``` zu generieren, empfiehlt es sich, stattdessen die [Rangtransformation](data-flow-rank.md) und die [Transformation für Ersatzschlüssel](data-flow-surrogate-key.md) zu verwenden. Die Transformation bietet bei Verwendung dieser Funktionen eine bessere Leistung bei Vorgängen für das gesamte Dataset.
 
 ### <a name="repartitioning-skewed-data"></a>Erneutes Partitionieren bei Datenschiefe
 

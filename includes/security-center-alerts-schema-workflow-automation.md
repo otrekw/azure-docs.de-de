@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
-ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80272813"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91401111"
 ---
 ```json
 {
@@ -70,7 +70,7 @@ ms.locfileid: "80272813"
 |**Intent**|Enum|Die mit der Kill Chain im Zusammenhang stehende Absicht hinter der Warnung. Eine Liste der unterstützten Werte und Erläuterungen der vom Azure Security Center unterstützten Kill Chain-Absichten finden Sie unter [Absichten](../articles/security-center/alerts-reference.md#intentions).<br/>Dieses Feld kann mehrere Werte enthalten (durch Kommas getrennt).|
 |**IsIncident**|Bool|Dieses Feld bestimmt, ob es sich bei der Warnung um einen Incident (eine zusammengesetzte Gruppierung mehrerer Warnungen) oder eine einzelne Warnung handelt. Der Standardwert für das Feld lautet „false“ (das bedeutet, dass es sich um eine einzelne Warnung handelt).|
 |**ProcessingEndTime**|Datetime|Der Zeitpunkt, zu dem die Warnung für den Endbenutzer im ursprünglichen Produkt mit der Warnung zugänglich war.|
-|**ProductName**|String|Der Name des Produkts, das diese Warnung veröffentlicht hat (Azure Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS usw.).|
+|**ProductName**|String|Der Name des Produkts, das diese Warnung veröffentlicht hat (Azure Security Center, Azure ATP, Microsoft Defender ATP, MCAS usw.).|
 |**RemediationSteps**|List<String>|Manuelle Aktionselemente zum Beheben der Warnung.|
 |**ResourceIdentifiers**|List (Resource Identifiers)|Die Ressourcenbezeichner für diese Warnung, mit deren Hilfe die Warnung an die richtige Produktverfügbarkeitsgruppe (Mandant, Arbeitsbereich, Abonnement usw.) weitergeleitet werden kann. Es können mehrere Bezeichner unterschiedlichen Typs pro Warnung vorhanden sein.|
 |**Severity**|Enum|Der vom Anbieter gemeldete Schweregrad der Warnung. Mögliche Werte: Information, Niedrig, Mittel und Hoch.|

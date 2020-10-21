@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 390dba92091a9e419bcd7a8f0e8e83f65597305e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803091"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045328"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -247,6 +247,7 @@ Generation 2 (UEFI-Start) | Unterstützt
 NVMe-Datenträger | Nicht unterstützt
 Freigegebene Azure-Datenträger | Nicht unterstützt
 Option für die sichere Übertragung | Unterstützt
+Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt
 
 >[!IMPORTANT]
 > Um Leistungsprobleme zu vermeiden, stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für VM-Datenträger für virtuelle [Linux](../virtual-machines/linux/disk-scalability-targets.md)- oder [Windows](../virtual-machines/windows/disk-scalability-targets.md)-Computer beachten. Wenn Sie die Standardeinstellungen verwenden, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, halten Sie die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer ein.
@@ -273,7 +274,7 @@ Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |20 MB/s | 
 **Einstellung** | **Unterstützung** | **Details**
 --- | --- | ---
 NIC | Unterstützte maximale Anzahl für eine bestimmte Azure-VM-Größe | Netzwerkkarten werden erstellt, wenn die VM während des Failovers erstellt wird.<br/><br/> Die Anzahl von Netzwerkkarten auf dem virtuellen Failovercomputer ist abhängig von der Anzahl von Netzwerkkarten, die auf dem virtuellen Quellcomputer vorhanden waren, als die Replikation aktiviert wurde. Falls Sie eine Netzwerkkarte nach dem Aktivieren der Replikation hinzufügen oder entfernen, wirkt sich dies nicht auf die Anzahl von Netzwerkkarten auf der replizierten VM nach dem Failover aus. <br/><br/> Nach einem Failover entspricht die Reihenfolge der Netzwerkadapter unter Umständen nicht mehr der ursprünglichen Reihenfolge. <br/><br/> Sie können die Netzwerkadapter in der Zielregion gemäß den Benennungskonventionen Ihrer Organisation umbenennen. Die Umbenennung von Netzwerkadaptern wird mit PowerShell unterstützt.
-Internetlastenausgleich | Nicht unterstützt | Der öffentliche/Internetlastenausgleich wird von Azure Site Recovery nicht unterstützt.
+Internetlastenausgleich | Nicht unterstützt | Sie können einen öffentlichen/Internet-Lastenausgleich in der primären Region einrichten. Öffentliche/Internet-Lastenausgleiche werden jedoch von Azure Site Recovery in der DR-Region nicht unterstützt.
 Interner Lastenausgleich | Unterstützt | Ordnen Sie den vorkonfigurierten Lastenausgleich mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan zu.
 Öffentliche IP-Adresse | Unterstützt | Ordnen Sie der Netzwerkkarte eine vorhandene öffentliche IP-Adresse zu. Oder erstellen Sie eine öffentliche IP-Adresse, und ordnen Sie diese der Netzwerkkarte zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
 NSG auf Netzwerkkarte | Unterstützt | Ordnen Sie die NSG der Netzwerkkarte zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.

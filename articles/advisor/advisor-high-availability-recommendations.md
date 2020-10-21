@@ -2,13 +2,13 @@
 title: Verbessern der Zuverlässigkeit Ihrer Anwendung mit Advisor
 description: Verwenden Sie Azure Advisor, um die Zuverlässigkeit Ihrer geschäftskritischen Azure-Bereitstellungen sicherzustellen und zu verbessern.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 09/27/2020
+ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258499"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078033"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbessern der Zuverlässigkeit Ihrer Anwendung mit Azure Advisor
 
@@ -44,7 +44,7 @@ Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Speichern und Wiederherstellen von Daten nach versehentlichem Überschreiben oder Löschen durch vorläufiges Löschen in Ihrem Azure Storage-Konto
 
-Aktivieren Sie [vorläufiges Löschen](../storage/blobs/soft-delete-overview.md) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Durch vorläufiges Löschen können Sie Daten wiederherstellen, wenn diese versehentlich gelöscht oder überschrieben wurden. Advisor identifiziert Azure-Speicherkonten, bei denen das vorläufige Löschen nicht aktiviert ist, und schlägt vor, es zu aktivieren.
+Aktivieren Sie [vorläufiges Löschen](../storage/blobs/soft-delete-blob-overview.md) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Durch vorläufiges Löschen können Sie Daten wiederherstellen, wenn diese versehentlich gelöscht oder überschrieben wurden. Advisor identifiziert Azure-Speicherkonten, bei denen das vorläufige Löschen nicht aktiviert ist, und schlägt vor, es zu aktivieren.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurieren des VPN-Gateway zu aktiv-aktiv für Verbindungsresilienz
 
@@ -76,27 +76,27 @@ Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern be
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
-Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse einer Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](https://aka.ms/aa_logalerts_queryrepair).
+Azure Advisor erkennt Protokollwarnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Azure Monitor-Protokollwarnungsregeln führen Abfragen mit der angegebenen Häufigkeit aus und lösen auf Grundlage der Ergebnisse Warnungen aus. Es kann vorkommen, dass Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Advisor empfiehlt Korrekturen für Warnungsabfragen, um eine automatische Deaktivierung der Regeln zu verhindern und die Überwachungsabdeckung zu gewährleisten. Weitere Informationen finden Sie unter [Problembehandlung von Warnungsregeln](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid).
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konfigurieren eines konsistenten Indizierungsmodus für Ihre Azure Cosmos DB-Sammlung
 
-Die Konfiguration von Azure Cosmos DB-Containern mit dem Indizierungsmodus „Verzögert“ könnte die Aktualität der Abfrageergebnisse beeinträchtigen. Advisor erkennt Container mit dieser Konfiguration und empfiehlt, den Modus in „Konsistent“ zu ändern. [Weitere Informationen zu Indizierungsrichtlinien in Azure Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy).
+Die Konfiguration von Azure Cosmos DB-Containern mit dem Indizierungsmodus „Verzögert“ könnte die Aktualität der Abfrageergebnisse beeinträchtigen. Advisor erkennt Container mit dieser Konfiguration und empfiehlt, den Modus in „Konsistent“ zu ändern. [Weitere Informationen zu Indizierungsrichtlinien in Azure Cosmos DB](../cosmos-db/how-to-manage-indexing-policy.md).
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurieren Ihres Azure Cosmos DB-Containers mit einem Partitionsschlüssel
 
-Azure Advisor erkennt nicht partitionierte Azure Cosmos DB-Sammlungen, deren bereitgestelltes Speicherkontingent nahezu erschöpft ist. Daraufhin wird empfohlen, dass Sie diese Sammlungen zu neuen Sammlungen mit einer Partitionsschlüsseldefinition migrieren, um das automatische Aufskalieren durch den Dienst zu ermöglichen. [Weitere Informationen zur Wahl eines Partitionsschlüssels](https://aka.ms/cosmosdb/choose-partitionkey).
+Azure Advisor erkennt nicht partitionierte Azure Cosmos DB-Sammlungen, deren bereitgestelltes Speicherkontingent nahezu erschöpft ist. Daraufhin wird empfohlen, dass Sie diese Sammlungen zu neuen Sammlungen mit einer Partitionsschlüsseldefinition migrieren, um das automatische Aufskalieren durch den Dienst zu ermöglichen. [Weitere Informationen zur Wahl eines Partitionsschlüssels](../cosmos-db/partitioning-overview.md).
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgraden Ihres Azure Cosmos DB .NET SDK auf die aktuelle Version über NuGet
 
-Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des .NET SDK verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von NuGet durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet).
+Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des .NET SDK verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von NuGet durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB .NET SDK](../cosmos-db/sql-api-sdk-dotnet-standard.md).
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB Java SDK auf die aktuelle Version über Maven
 
-Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des Java-SDK verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von Maven durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB Java-SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java).
+Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des Java-SDK verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von Maven durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB Java-SDK](../cosmos-db/sql-api-sdk-java-v4.md).
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB-Spark-Connectors auf die aktuelle Version über Maven
 
-Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des Azure Cosmos DB-Spark-Connectors verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von Maven durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB-Spark-Connector.](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des Azure Cosmos DB-Spark-Connectors verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von Maven durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB-Spark-Connector.](../cosmos-db/spark-connector.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>Erwägen Sie einen Wechsel zu Kafka 2.1 unter HDInsight 4.0
 
@@ -109,6 +109,12 @@ Ab dem 1. Juli 2020 können Sie keine neuen Spark-Cluster mehr erstellen, wenn S
 ## <a name="enable-virtual-machine-replication"></a>Aktivieren der Replikation der virtuellen Computer
 Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft bei Ausfällen einer Azure-Region reduziert. Advisor erkennt virtuelle Computer, auf denen die Replikation nicht aktiviert ist, und empfiehlt deren Aktivierung. Wenn Sie die Replikation aktivieren, können Sie Ihre virtuellen Computer im Falle eines Ausfalls schnell in einer Azure-Remoteregion hochfahren. [Weitere Informationen zur Replikation virtueller Computer.](../site-recovery/azure-to-azure-quickstart.md)
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Upgrade auf die aktuelle Version des Azure Connected Machine-Agents
+Der [Azure Connected Machine-Agent](../azure-arc/servers/manage-agent.md) wird in Bezug auf Fehlerbehebungen, Stabilitätsverbesserungen und neue Funktionen regelmäßig aktualisiert. Wir haben Ressourcen identifiziert, die nicht mit der neuesten Version des Computer-Agents arbeiten, und diese Advisor-Empfehlung empfiehlt Ihnen, ein Upgrade Ihres Agents auf die neueste Version vorzunehmen, um die beste Azure Arc-Erfahrung zu erzielen.
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Keine Außerkraftsetzung des Hostnamens, um die Integrität der Website sicherzustellen
+Advisor empfiehlt, dass Sie versuchen, bei der Application Gateway-Konfiguration die Außerkraftsetzung des Hostnamens zu vermeiden. Die Verwendung einer anderen Domäne auf dem Application Gateway-Front-End als die, die für den Zugriff auf das Back-End genutzt wird, kann ggf. zur Beschädigung von Cookies oder Umleitungs-URLs führen. Beachten Sie hierbei Folgendes: Dies gilt unter Umständen nicht in allen Fällen, und bestimmte Kategorien von Back-Ends (z. B. REST-APIs) sind hierfür normalerweise weniger anfällig. Vergewissern Sie sich, dass das Back-End dies verarbeiten kann, oder aktualisieren Sie die Application Gateway-Konfiguration, damit der Hostname für das Back-End nicht überschrieben werden muss. Fügen Sie bei Verwendung von App Service einen benutzerdefinierten Domänennamen an die Web-App an, und vermeiden Sie die Nutzung des Hostnamens „ *.azurewebsites.net“ für das Back-End.* [Erfahren Sie mehr über benutzerdefinierte Domänen](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
@@ -120,7 +126,8 @@ Virtuelle Computer, für die die Replikation in eine andere Region nicht aktivie
 Weitere Informationen zu Advisor-Empfehlungen finden Sie unter:
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Kostenempfehlungen von Advisor](advisor-cost-recommendations.md)
-* [Leistungsempfehlungen von Advisor](advisor-performance-recommendations.md)
+* [Advisor-Bewertung](azure-advisor-score.md)
+* [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
+* [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
 * [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
-* [Empfehlungen von Advisor zum optimalen Betrieb](advisor-operational-excellence-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)

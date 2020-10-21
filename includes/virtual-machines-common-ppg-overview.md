@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570159"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91377143"
 ---
 Wenn Sie VMs in einer einzelnen Region anordnen, verringert sich der physische Abstand zwischen den Instanzen. Wenn Sie sie in einer einzelnen Verfügbarkeitszone anordnen, verringert sich ebenfalls ihr physischer Abstand. Wenn jedoch Ihre Ressourcen in Azure zunehmen, kann eine einzige Verfügbarkeitszone auch mehrere physische Rechenzentren umspannen. Dies kann zu Netzwerklatenzen führen, die sich auf die Anwendung auswirken. 
 
@@ -47,6 +47,39 @@ Näherungsplatzierungsgruppen bieten eine Zusammenstellung in demselben Rechenze
 -   Im Fall von flexiblen Workloads, bei denen Sie VM-Instanzen hinzufügen und entfernen, kann das Vorhandensein einer Einschränkung für Näherungsplatzierungsgruppen für Ihre Bereitstellung dazu führen, dass die Anforderung nicht erfüllt wird, was zu einem **AllocationFailure**-Fehler führt. 
 - Das bedarfsgesteuerte Beenden (Freigeben) und Starten Ihrer virtuellen Computer ist eine weitere Möglichkeit, Flexibilität zu erreichen. Da die Kapazität nicht erhalten bleibt, wenn Sie einen virtuellen Computer beenden (freigeben), kann ein erneuter Start zu einem **AllocationFailure**-Fehler führen.
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>Geplante Wartung und Näherungsplatzierungsgruppen
+
+Geplante Wartungsereignisse, wie z. B. die Außerbetriebnahme von Hardware in einem Azure-Rechenzentrum, können potenziell Auswirkungen auf die Ausrichtung von Ressourcen in Näherungsplatzierungsgruppen haben. Ressourcen werden möglicherweise in ein anderes Rechenzentrum verschoben, wodurch die Erwartungen an Zusammenstellung und Latenz, die mit Näherungsplatzierungsgruppen einhergehen, hinfällig werden.
+
+### <a name="check-the-alignment-status"></a>Überprüfen des Ausrichtungsstatus
+
+Sie können wie folgt vorgehen, um den Ausrichtungsstatus Ihrer Näherungsplatzierungsgruppen zu überprüfen.
+
+
+- Der Zusammenstellungsstatus von Näherungsplatzierungsgruppen kann über das Portal, die Befehlszeilenschnittstelle und PowerShell angezeigt werden.
+
+    -   Mit PowerShell kann der Zusammenstellungsstatus durch Ausführen des Cmdlets „Get-AzProximityPlacementGroup“ mit dem optionalen Parameter „-ColocationStatus“ abgerufen werden.
+
+    -   An der Befehlszeilenschnittstelle kann der Zusammenstellungsstatus durch Verwenden von `az ppg show` und Einschließen des optionalen Parameters „--include-colocation-status“ abgerufen werden.
+
+- Für jede Näherungsplatzierungsgruppe stellt eine Eigenschaft **colocation status** (Zusammenstellungsstatus) die Zusammenfassung des aktuellen Ausrichtungsstatus der gruppierten Ressourcen zur Verfügung. 
+
+    - **Ausgerichtet**: Die Ressource befindet sich innerhalb der Latenzhüllkurve der Näherungsplatzierungsgruppe.
+
+    - **Unbekannt**: Mindestens eine der VM-Ressourcen ist nicht zugeordnet. Nach deren erfolgreichem Neustart sollte der Status wieder zu **Ausgerichtet** zurückkehren.
+
+    - **Nicht ausgerichtet**: Mindestens eine VM-Ressource ist nicht an der Näherungsplatzierungsgruppe ausgerichtet. Die spezifischen Ressourcen, die nicht ausgerichtet sind, werden darüber hinaus separat im Mitgliedschaftsabschnitt hervorgehoben.
+
+- Für Verfügbarkeitsgruppen finden Sie Informationen zur Ausrichtung einzelner VMs auf der Seite „Übersicht über Verfügbarkeitsgruppen“.
+
+- Für Skalierungsgruppen werden Informationen über die Ausrichtung einzelner Instanzen auf der Registerkarte **Instanzen** der Seite **Übersicht** für die Skalierungsgruppe angezeigt. 
+
+
+### <a name="re-align-resources"></a>Erneutes Ausrichten von Ressourcen 
+
+Wenn eine Näherungsplatzierungsgruppe `Not Aligned` ist, können Sie die betroffenen Ressourcen beenden bzw. ihre Zuordnung aufheben und sie dann neu starten. Wenn sich die VM in einer Verfügbarkeitsgruppe oder Skalierungsgruppe befindet, müssen vor dem Neustart zuerst alle VMs in der Verfügbarkeitsgruppe oder Skalierungsgruppe beendet werden bzw. muss ihre Zuordnung aufgehoben werden.
+
+Wenn es aufgrund von Einschränkungen der Bereitstellung zu Zuordnungsfehlern kommt, müssen Sie möglicherweise alle Ressourcen (einschließlich der ausgerichteten Ressourcen) in der betroffenen Näherungsplatzierungsgruppe beenden bzw. ihre Zuordnung aufheben und sie dann erneut starten, um die Ausrichtung wiederherzustellen.
 
 ## <a name="best-practices"></a>Bewährte Methoden 
 - Verwenden Sie für die niedrigste Latenz Näherungsplatzierungsgruppen zusammen mit beschleunigtem Netzwerkbetrieb. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

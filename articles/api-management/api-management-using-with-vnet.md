@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fbff4cc067ce831e9d9f69a457f348a94257e86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489621"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076911"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Übersicht über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 
 <a name="required-ports"> </a> Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der folgenden Tabelle angegebenen Ports verwendet.
 
-| Quell-/Zielport(s) | Direction          | Transportprotokoll |   [Diensttags](../virtual-network/security-overview.md#service-tags) <br> Quelle/Ziel   | Zweck (\*)                                                 | Typ des virtuellen Netzwerks |
+| Quell-/Zielport(s) | Direction          | Transportprotokoll |   [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags) <br> Quelle/Ziel   | Zweck (\*)                                                 | Typ des virtuellen Netzwerks |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | Eingehend            | TCP                | INTERNET/VIRTUAL_NETWORK            | Kommunikation zwischen Clients und API Management                      | Extern             |
 | */3443                     | Eingehend            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Verwaltungsendpunkt für Azure-Portal und PowerShell         | Extern & Intern  |
@@ -153,7 +153,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 
 + **Azure Load Balancer**: Das Zulassen einer eingehenden Anforderung vom Diensttag `AZURE_LOAD_BALANCER` ist keine Voraussetzung für die SKU `Developer`, da wir nur eine Computeeinheit dahinter bereitstellen. Eingehend von [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) wird jedoch kritisch, wenn die Skalierung auf eine höhere SKU wie `Premium` (als Fehler beim Integritätstest von Load Balancer) zu einem Fehler bei der Bereitstellung führt.
 
-+ **Application Insights**: Wenn die [Azure Application Insights](api-management-howto-app-insights.md)-Überwachung für API Management aktiviert ist, müssen wir die ausgehende Konnektivität mit dem [Telemetrieendpunkt](/azure/azure-monitor/app/ip-addresses#outgoing-ports) aus dem virtuellen Netzwerk zulassen. 
++ **Application Insights**: Wenn die [Azure Application Insights](api-management-howto-app-insights.md)-Überwachung für API Management aktiviert ist, müssen wir die ausgehende Konnektivität mit dem [Telemetrieendpunkt](../azure-monitor/app/ip-addresses.md#outgoing-ports) aus dem virtuellen Netzwerk zulassen. 
 
 + **Tunnelerzwingung für Datenverkehr zur lokalen Firewall per Express Route oder virtuellem Netzwerkgerät**: Eine häufige Kundenkonfiguration ist das Definieren einer eigenen Standardroute (0.0.0.0/0). Der gesamte Datenverkehr aus dem per API Management delegierten Subnetz fließt dann über eine lokale Firewall oder an ein virtuelles Netzwerkgerät. Bei diesem Datenverkehr funktioniert die Verbindung mit Azure API Management nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren. Für die Lösung ist es erforderlich, dass Sie einige Schritte ausführen:
 
@@ -203,7 +203,7 @@ Jede zusätzliche Skalierungseinheit von API Management erfordert zwei weitere I
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> IP-Adressen der Steuerungsebene
 
-Die IP-Adressen werden auf die **Azure-Umgebung** aufgeteilt. Wenn IP-Adressen eingehender Anforderungen zugelassen werden, die mit **Global** gekennzeichnet sind, müssen diese zusammen mit der spezifischen IP-Adresse der **Region** in die Whitelist aufgenommen werden.
+Die IP-Adressen werden auf die **Azure-Umgebung** aufgeteilt. Wenn IP-Adressen eingehender Anforderungen zugelassen werden, die mit **Global** gekennzeichnet sind, müssen diese zusammen mit der spezifischen IP-Adresse der **Region** zugelassen werden.
 
 | **Azure-Umgebung**|   **Region**|  **IP-Adresse**|
 |-----------------|-------------------------|---------------|
@@ -223,6 +223,7 @@ Die IP-Adressen werden auf die **Azure-Umgebung** aufgeteilt. Wenn IP-Adressen e
 | Azure – Öffentlich| Kanada, Osten| 52.139.80.117|
 | Azure – Öffentlich| Vereinigte Arabische Emirate, Norden| 20.46.144.85|
 | Azure – Öffentlich| Brasilien Süd| 191.233.24.179|
+| Azure – Öffentlich| Brasilien, Südosten| 191.232.18.181|
 | Azure – Öffentlich| Asien, Südosten| 40.90.185.46|
 | Azure – Öffentlich| Südafrika, Norden| 102.133.130.197|
 | Azure – Öffentlich| Kanada, Mitte| 52.139.20.34|
@@ -271,7 +272,7 @@ Die IP-Adressen werden auf die **Azure-Umgebung** aufgeteilt. Wenn IP-Adressen e
 * [Herstellen einer Verbindung mit einem virtuellen Netzwerk in verschiedenen Bereitstellungsmodellen](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management](api-management-howto-api-inspector.md)
 * [Häufig gestellte Fragen zu Virtual Network](../virtual-network/virtual-networks-faq.md)
-* [Diensttags](../virtual-network/security-overview.md#service-tags)
+* [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -284,6 +285,6 @@ Die IP-Adressen werden auf die **Azure-Umgebung** aufgeteilt. Wenn IP-Adressen e
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

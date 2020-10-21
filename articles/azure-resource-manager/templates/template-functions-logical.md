@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – logisch
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677388"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978508"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logikfunktionen für ARM-Vorlagen
 
@@ -16,11 +16,13 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in I
 
 * [and](#and)
 * [bool](#bool)
+* [false](#false)
 * [if](#if)
 * [not](#not)
 * [or](#or)
+* [true](#true)
 
-## <a name="and"></a>and
+## <a name="and"></a>und
 
 `and(arg1, arg2, ...)`
 
@@ -32,7 +34,7 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in I
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
-| zusätzliche Argumente |Nein  |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
+| zusätzliche Argumente |Nein |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -85,7 +87,12 @@ Konvertiert den Parameter in einen booleschen Wert.
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
+
 Ein boolescher Wert des konvertierten Werts.
+
+### <a name="remarks"></a>Bemerkungen
+
+Sie können auch [true()](#true) und [false()](#false) verwenden, um boolesche Werte zu erhalten.
 
 ### <a name="examples"></a>Beispiele
 
@@ -125,6 +132,44 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | falseString | Bool | False |
 | trueInt | Bool | True |
 | falseInt | Bool | False |
+
+## <a name="false"></a>false
+
+`false()`
+
+Gibt false zurück.
+
+### <a name="parameters"></a>Parameter
+
+Die Funktion „false“ akzeptiert keine Parameter.
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein boolescher Wert, der immer „false“ lautet.
+
+### <a name="example"></a>Beispiel
+
+Im folgenden Beispiel wird ein Ausgabewert „false“ zurückgegeben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
+
+| Name | type | Wert |
+| ---- | ---- | ----- |
+| falseOutput | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -180,7 +225,7 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | Name | type | Wert |
 | ---- | ---- | ----- |
 | yesOutput | String | ja |
-| noOutput | String | nein |
+| noOutput | Zeichenfolge | nein |
 | objectOutput | Object | { "test": "value1" } |
 
 In der folgenden [Beispielvorlage](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) wird gezeigt, wie Sie diese Funktion mit Ausdrücken verwenden, die nur bedingt gültig sind.
@@ -316,7 +361,7 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
-| zusätzliche Argumente |Nein  |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
+| zusätzliche Argumente |Nein |boolean |Weitere Argumente, für die überprüft wird, ob sie zutreffen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -355,6 +400,44 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
+
+## <a name="true"></a>true
+
+`true()`
+
+Gibt true zurück.
+
+### <a name="parameters"></a>Parameter
+
+Die Funktion „true“ akzeptiert keine Parameter.
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein boolescher Wert, der immer „true“ lautet.
+
+### <a name="example"></a>Beispiel
+
+Im folgenden Beispiel wird ein Ausgabewert „true“ zurückgegeben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
+
+| Name | type | Wert |
+| ---- | ---- | ----- |
+| trueOutput | Bool | True |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

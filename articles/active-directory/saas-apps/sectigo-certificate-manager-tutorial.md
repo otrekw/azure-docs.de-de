@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 905ca5fd92a09b209bf099bfac0862132ec679a4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543277"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Tutorial: Azure Active Directory-Integration in Sectigo Certificate Manager
 
-In diesem Tutorial erfahren Sie, wie Sie Sectigo Certificate Manager in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Sectigo Certificate Manager (auch als SCM bezeichnet) in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Sectigo Certificate Manager in Azure AD bietet Ihnen die folgenden Vorteile:
 
@@ -35,7 +35,10 @@ Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in A
 Um die Azure AD-Integration mit Sectigo Certificate Manager konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie kein Azure AD-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* Sectigo Certificate Manager-Abonnement, für das einmaliges Anmelden aktiviert ist.
+* Sectigo Certificate Manager-Konto
+
+> [!NOTE]
+> Sectigo führt mehrere Instanzen von Sectigo Certificate Manager aus. Die Hauptinstanz von Sectigo Certificate Manager ist **https:\//cert-manager.com**. Diese URL wird in diesem Tutorial verwendet.  Wenn sich Ihr Konto in einer anderen Instanz befindet, müssen Sie die URLs entsprechend anpassen.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -99,47 +102,45 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Se
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Zum Konfigurieren des *IDP-initiierten Modus* führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    1. Geben Sie im Feld **Bezeichner** eine der folgenden URLs ein:
-       * https:\//cert-manager.com/shibboleth
-       * https:\//hard.cert-manager.com/shibboleth
+    1. Geben Sie im Feld **Bezeichner (Entitäts-ID)** für die Hauptinstanz von Sectigo Certificate Manager **https:\//cert-manager.com/shibboleth** ein.
 
-    1. Geben Sie im Feld **Antwort-URL** eine der folgenden URLs ein:
-        * https:\//cert-manager.com/Shibboleth.sso/SAML2/POST
-        * https:\//hard.cert-manager.com/Shibboleth.sso/SAML2/POST
+    1. Geben Sie im Feld **Antwort-URL** für die Hauptinstanz von Sectigo Certificate Manager **https:\//cert-manager.com/Shibboleth.sso/SAML2/POST** ein.
+        
+    > [!NOTE]
+    > Im Allgemeinen ist die **Anmelde-URL** für den *SP-initiierten Modus* zwar erforderlich, sie wird jedoch nicht für die Anmeldung über Sectigo Certificate Manager benötigt.        
+
+1. Führen Sie im Abschnitt *Grundlegende SAML-Konfiguration* zum Konfigurieren des **IDP-initiierten Modus** und zum Ermöglichen von **Tests** die folgenden Schritte aus:
 
     1. Wählen Sie **Zusätzliche URLs festlegen** aus.
 
-    1. Geben Sie im Feld **Relayzustand** eine der folgenden URLs ein:
-       * https:\//cert-manager.com/customer/SSLSupport/idp
-       * https:\//hard.cert-manager.com/customer/SSLSupport/idp
+    1. Geben Sie in das Feld **Relayzustand** die kundenspezifische URL für Sectigo Certificate Manager ein. Geben Sie für die Hauptinstanz von Sectigo Certificate Manager **https:\//cert-manager.com/customer/\<customerURI\>/idp** ein.
 
     ![SSO-Informationen zur Domäne und zu den URLs für Sectigo Certificate Manager](common/idp-relay.png)
 
-1.  Zum Konfigurieren der Anwendung im *SP-initiierten Modus* führen Sie die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
-    * Geben Sie im Feld **Anmelde-URL** eine der folgenden URLs ein:
-      * https:\//cert-manager.com/Shibboleth.sso/Login
-      * https:\//hard.cert-manager.com/Shibboleth.sso/Login
+    1. Löschen Sie alle unter **Zusätzliche Ansprüche** angegebenen Ansprüche.
+    
+    1. Wählen Sie **Neuen Anspruch hinzufügen** aus, und fügen Sie die folgenden vier Ansprüche hinzu:
+    
+        | Name | Namespace | `Source` | Quellattribut | BESCHREIBUNG |
+        | --- | --- | --- | --- | --- |
+        | eduPersonPrincipalName | empty | attribute | user.userprincipalname | Muss dem Feld **IdP Person ID** (IdP-Personen-ID) in Sectigo Certificate Manager für Administratoren entsprechen. |
+        | mail | empty | attribute | user.mail | Erforderlich |
+        | givenName | empty | attribute | user.givenname | Optional |
+        | sn | empty | attribute | user.surname | Optional |
 
-      ![SSO-Informationen zur Domäne und zu den URLs für Sectigo Certificate Manager](common/both-signonurl.png)
+       ![Sectigo Certificate Manager: Hinzufügen von vier neuen Ansprüchen](media/sectigo-certificate-manager-tutorial/additional-claims.png)
 
-1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** neben **Zertifikat (Base64)** aus. Wählen Sie eine Option zum Herunterladen entsprechend Ihren Anforderungen aus. Speichern Sie das Zertifikat auf Ihrem Computer.
+1. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** neben **Verbundmetadaten-XML** die Option **Herunterladen** aus. Speichern Sie die heruntergeladene XML-Datei auf Ihrem Computer.
 
-    ![Option zum Herunterladen des Zertifikats (Base64)](common/certificatebase64.png)
-
-1. Kopieren Sie im Abschnitt **Sectigo Certificate Manager einrichten** die folgenden URLs entsprechend Ihren Anforderungen:
-
-    * Anmelde-URL
-    * Azure AD-Bezeichner
-    * Abmelde-URL
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Downloadoption für Verbundmetadaten-XML](common/metadataxml.png)
 
 ### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Sectigo Certificate Manager
 
-Zum Konfigurieren des einmaligen Anmeldens auf Sectigo Certificate Manager-Seite senden Sie das heruntergeladene Zertifikat (Base64) und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Sectigo Certificate Manager](https://sectigo.com/support). Anhand der von Ihnen gesendeten Informationen stellt das Supportteam von Sectigo Certificate Manager sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von Sectigo Certificate Manager senden Sie die heruntergeladene Verbundmetadaten-XML-Datei an das [Supportteam von Sectigo Certificate Manager](https://sectigo.com/support). Anhand der von Ihnen gesendeten Informationen stellt das Supportteam von Sectigo Certificate Manager sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -197,9 +198,19 @@ In diesem Abschnitt erstellen Sie in Sectigo Certificate Manager einen Benutzer 
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für das einmalige Anmelden.
 
-Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von **Sectigo Certificate Manager** im Portal „Meine Apps“ automatisch bei Sectigo Certificate Manager angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="test-from-sectigo-certificate-manager-sp-initiated-single-sign-on"></a>Testen über Sectigo Certificate Manager (SP-initiiertes einmaliges Anmelden)
+
+Navigieren Sie zur kundenspezifischen URL (für die Hauptinstanz von Sectigo Certificate Manager: https:\//cert-manager.com/customer/\<customerURI\>/), und wählen Sie die Schaltfläche unter **Or Sign In With** (Oder anmelden mit) aus.  Bei ordnungsgemäßer Konfiguration werden Sie automatisch bei Sectigo Certificate Manager angemeldet.
+
+#### <a name="test-from-azure-single-sign-on-configuration-idp-initiated-single-sign-on"></a>Testen über die Konfiguration des einmaligen Anmeldens von Azure (IDP-initiiertes einmaliges Anmelden)
+
+Wählen Sie im Anwendungsintegrationsbereich für **Sectigo Certificate Manager** die Option **Einmaliges Anmelden** und dann **Testen** aus.  Bei ordnungsgemäßer Konfiguration werden Sie automatisch bei Sectigo Certificate Manager angemeldet.
+
+#### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>Testen über das Portal „Meine Apps“ (IDP-initiiertes einmaliges Anmelden)
+
+Wählen Sie im Portal „Meine Apps“ die Option **Sectigo Certificate Manager** aus.  Bei ordnungsgemäßer Konfiguration werden Sie automatisch bei Sectigo Certificate Manager angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

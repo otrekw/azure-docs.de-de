@@ -1,52 +1,71 @@
 ---
 title: Übersicht über Speicher – Azure Time Series Insights Gen2 | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über Datenspeicherung in Azure Time Series Insights Gen2.
-author: esung22
-ms.author: elsung
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483268"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91460827"
 ---
 # <a name="data-storage"></a>Datenspeicherung
 
-Beim Erstellen einer Azure Time Series Insights Gen2-Umgebung erstellen Sie zwei Azure-Ressourcen:
+In diesem Artikel wird Datenspeicherung in Azure Time Series Insights Gen2 beschrieben. Er behandelt Speicher der warmen und kalten Ebene, Datenverfügbarkeit und bewährte Methoden.
 
-* Eine Azure Time Series Insights Gen2-Umgebung, die für die Speicherung von warmen Daten (Warm Storage) konfiguriert werden kann.
-* Ein Azure Storage-Konto für die Speicherung von kalten Daten (Cold Storage).
+## <a name="provisioning"></a>Bereitstellung
 
-Daten in Ihrem warmen Speicher stehen nur über [Zeitreihenabfrage-APIs](./time-series-insights-update-tsq.md) und den [Azure Time Series Insights-Explorer](./time-series-insights-update-explorer.md) zur Verfügung. Der warme Speicher enthält aktuelle Daten innerhalb des [Aufbewahrungszeitraums](./time-series-insights-update-plan.md#the-preview-environment), den Sie beim Erstellen der Azure Time Series Insights Gen2-Umgebung ausgewählt haben.
+Beim Erstellen einer Azure Time Series Insights Gen2-Umgebung haben Sie folgende Möglichkeiten:
 
-Azure Time Series Insights Gen2 speichert Ihre kalten Speicherdaten im [Parquet-Dateiformat](#parquet-file-format-and-folder-structure) im Azure-Blobspeicher. Azure Time Series Insights Gen2 verwaltet diese kalten Speicherdaten exklusiv. Sie können die Daten jedoch direkt als standardmäßige Parquet-Dateien lesen.
+* Kalter Datenspeicher:
+  * Erstellen Sie eine neue Azure Storage-Ressource in dem Abonnement und der Region, das/die Sie für Ihre Umgebung ausgewählt haben.
+  * Fügen Sie ein bereits vorhandenes Azure-Speicherkonto an. Diese Option ist nur verfügbar, wenn Sie über eine Azure Resource Manager-[Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions) bereitstellen, und sie wird nicht im Azure-Portal angezeigt.
+* Warmer Datenspeicher:
+  * Ein warmer Speicher ist optional und kann während oder nach der Bereitstellung aktiviert oder deaktiviert werden. Wenn Sie sich dazu entschließen, warmen Speicher zu einem späteren Zeitpunkt zu aktivieren, und Ihr kalter Speicher bereits Daten enthält, lesen Sie [diesen](concepts-storage.md#warm-store-behavior) Abschnitt weiter unten, um das erwartete Verhalten zu verstehen. Die Datenaufbewahrungsdauer für warmen Speicher kann auf 7 bis 31 Tage konfiguriert werden, was sich auch nach Bedarf anpassen lässt.
+
+Wenn ein Ereignis erfasst wird, wird es sowohl im warmen Speicher (sofern aktiviert) als auch im kalten Speicher indiziert.
+
+[![Speicherübersicht](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
 
 > [!WARNING]
 > Als Besitzer des Azure-Blobspeicherkontos, in dem sich die kalten Daten befinden, haben Sie Vollzugriff auf alle Daten im Konto. Dieser Zugriff umfasst Berechtigungen zum Schreiben und Löschen. Bearbeiten oder löschen Sie keine von Azure Time Series Insights Gen2 geschriebenen Daten, weil dies zu Datenverlusten führen kann.
 
 ## <a name="data-availability"></a>Datenverfügbarkeit
 
-Azure Time Series Insights Gen2 partitioniert und indiziert Daten, um eine optimale Abfrageleistung zu erzielen. Die Daten können nach der Indizierung sowohl aus dem warmen (sofern aktiviert) als auch aus dem kalten Speicher abgefragt werden. Die Menge an erfassten Daten kann sich auf diese Verfügbarkeit auswirken.
+Azure Time Series Insights Gen2 partitioniert und indiziert Daten, um eine optimale Abfrageleistung zu erzielen. Die Daten können nach der Indizierung sowohl aus dem warmen (sofern aktiviert) als auch aus dem kalten Speicher abgefragt werden. Die Menge an erfassten Daten und die Durchsatzrate pro Partition können sich auf diese Verfügbarkeit auswirken. Machen Sie sich mit den [Durchsatzeinschränkungen](./concepts-streaming-ingress-throughput-limits.md) und [bewährten Methoden](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) für die Ereignisquelle vertraut, um die bestmögliche Leistung zu erzielen. Sie können auch eine [Verzögerungswarnung](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) konfigurieren, damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten.
 
 > [!IMPORTANT]
 > Es kann bis zu 60 Sekunden dauern, bis Daten verfügbar werden. Wenn Sie eine erhebliche Latenz von weit über 60 Sekunden feststellen, übermitteln Sie ein Supportticket über das Azure-Portal.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="warm-store"></a>Warmer Speicher
+
+Daten in Ihrem warmen Speicher stehen nur über die [Zeitreihenabfrage-APIs](./time-series-insights-update-tsq.md), den [Azure Time Series Insights TSI-Explorer](./time-series-insights-update-explorer.md) oder den [Power BI-Connector](./how-to-connect-power-bi.md) zur Verfügung. Abfragen des warmen Speichers sind kostenlos, und es gibt kein Kontingent dafür, aber es gibt ein [Limit von 30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) gleichzeitigen Anforderungen.
+
+### <a name="warm-store-behavior"></a>Verhalten von warmem Speicher
+
+* Wenn diese Option aktiviert ist, werden alle Daten, die in Ihre Umgebung gestreamt werden, unabhängig vom Ereigniszeitstempel an Ihren warmen Speicher weitergeleitet. Beachten Sie, dass die Streamingerfassungs-Pipeline für Quasi-Echtzeitstreaming und konstruiert ist. Die Erfassung von Verlaufsereignissen wird [nicht unterstützt](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
+* Der Aufbewahrungszeitraum wird auf Grundlage des Indizierungszeitpunkts des Ereignisses im warmem Speicher berechnet, nicht anhand des Ereigniszeitstempels. Dies bedeutet, dass Daten nach Ablauf des Aufbewahrungszeitraums nicht mehr im warmen Speicher verfügbar sind, auch wenn der Ereigniszeitstempel in der Zukunft liegt.
+  * Beispiel: Ein Ereignis mit 10-tägigen Wettervorhersagen wird erfasst und in einem warmen Speichercontainer indiziert, der mit einer Aufbewahrungsdauer von 7 Tagen konfiguriert ist. Nach 7 Tagen ist die Vorhersage im warmen Speicher nicht mehr verfügbar, kann aber im kalten Speicher abgefragt werden.
+* Wenn Sie den warmen Speicher für eine vorhandene Umgebung aktivieren, die bereits über aktuelle Daten verfügt, die im kalten Speicher indiziert wurden, beachten Sie, dass der warme Speicher mit diesen Daten nicht mehr rückwirkend aufgefüllt wird.
+* Wenn Sie den warmen Speicher gerade aktiviert haben und Probleme beim Anzeigen der aktuellen Daten im Explorer auftreten, können Sie Abfragen an den warmen Speicher vorübergehend deaktivieren:
+
+   [![Deaktivieren von Abfragen des warmen Speichers](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+
+## <a name="cold-store"></a>Kalter Speicher
 
 In diesem Abschnitt werden die Azure Storage-Details beschrieben, die für Azure Time Series Insights Gen2 relevant sind.
 
 Eine ausführliche Beschreibung des Azure Blobspeichers finden Sie in der [Einführung in Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
-### <a name="your-storage-account"></a>Ihr Speicherkonto
-
-Wenn Sie eine Azure Time Series Insights Gen2-Umgebung erstellen, wird ein Azure Storage-Konto als Ihr langfristiger kalter Speicher erstellt.  
+### <a name="your-cold-storage-account"></a>Ihr Konto für kalten Speicher
 
 Azure Time Series Insights Gen2 behält bis zu zwei Kopien jedes Ereignisses in Ihrem Azure Storage-Konto bei. Eine Kopie speichert Ereignisse nach Erfassungszeit, wobei der Zugriff auf Ereignisse in einer zeitlich geordneten Sequenz immer zulässig ist. Im Laufe der Zeit wird in Azure Time Series Insights Gen2 auch eine neu partitionierte Kopie der Daten erstellt, um sie für leistungsfähige Abfragen zu optimieren.
 

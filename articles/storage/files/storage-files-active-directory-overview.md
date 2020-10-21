@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91716079"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,7 +46,7 @@ Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Serv
 
 -   **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)**
 
-    Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Zugriff auf Ressourcen verwalten, indem Sie Benutzern die Mindestberechtigungen zum Ausführen ihrer Aufgaben erteilen. Weitere Informationen zu rollenbasierter Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) in Azure?](../../role-based-access-control/overview.md).
+    Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit Azure RBAC können Sie den Zugriff auf Ressourcen verwalten, indem Sie Benutzern die Mindestberechtigungen zum Ausführen ihrer Aufgaben erteilen. Weitere Informationen zu Azure RBAC finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Gängige Anwendungsfälle
 
@@ -114,7 +114,7 @@ Das folgende Diagramm stellt den Workflow für Azure AD DS-Authentifizierung fü
 
 - Zunächst müssen Sie die Identität nicht in Azure AD DS erstellen, um das Speicherkonto darzustellen. Dies wird vom Aktivierungsprozess im Hintergrund vorgenommen.
 
-- Zweitens können alle in Azure AD vorhandenen Benutzer authentifiziert und autorisiert werden Dies können ausschließlich Cloud- oder Hybridbenutzer sein. Die Synchronisierung von Azure AD mit Azure AD DS wird von der Plattform verwaltet, ohne dass eine Benutzerkonfiguration erforderlich ist. Der Client muss zwar mit Azure AD DS in die Domäne eingebunden werden, kann jedoch nicht Azure AD verknüpft oder registriert werden. 
+- Zweitens können alle in Azure AD vorhandenen Benutzer authentifiziert und autorisiert werden. Dies können ausschließlich Cloud- oder Hybridbenutzer sein. Die Synchronisierung von Azure AD mit Azure AD DS wird von der Plattform verwaltet, ohne dass eine Benutzerkonfiguration erforderlich ist. Der Client muss zwar mit Azure AD DS in die Domäne eingebunden werden, kann jedoch nicht Azure AD verknüpft oder registriert werden. 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagramm":::
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507844"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91529829"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -179,7 +179,7 @@ Diese Mountpunkte werden in „/etc/fstab“ konfiguriert, wie in den folgenden 
 
 Die Ausgabe des Befehls „df -h“ in einer HANA-Einheit S72m (große Instanzen) sieht wie folgt aus:
 
-![fstab von bereitgestellten Volumes in Einheit von HANA (große Instanzen)](./media/hana-installation/image2_df_output.PNG)
+![Der Screenshot zeigt die Ausgabe des Befehls für eine Einheit von HANA (große Instanzen).](./media/hana-installation/image2_df_output.PNG)
 
 
 Der Speichercontroller und die Knoten in den „Große Instanz“-Stapeln werden mit NTP-Servern synchronisiert. Beim Synchronisieren der SAP HANA-Einheiten in Azure (große Instanzen) und Azure-VMs mit einem NTP-Server darf es zwischen der Infrastruktur und den Compute-Einheiten in Azure bzw. Stempeln für große Instanzen keine signifikante Zeitabweichung geben.

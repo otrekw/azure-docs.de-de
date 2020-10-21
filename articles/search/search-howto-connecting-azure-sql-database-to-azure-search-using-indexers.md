@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923023"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530560"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinden und Indizieren von Azure SQL-Inhalten mithilfe eines Azure Cognitive Search-Indexers
 
@@ -39,7 +39,7 @@ Ein einzelner Indexer kann nur eine Tabelle oder Sicht verwenden, aber Sie könn
 Sie können einen Azure SQL-Indexer wie folgt einrichten und konfigurieren:
 
 * Mit dem Datenimport-Assistenten im [Azure-Portal](https://portal.azure.com)
-* [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) für die kognitive Azure-Suche
+* [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer) für die kognitive Azure-Suche
 * [REST-API](/rest/api/searchservice/indexer-operations) für die kognitive Azure-Suche
 
 In diesem Artikel wird die REST-API verwendet, um **Indexer** und **Datenquellen** zu erstellen.
@@ -74,7 +74,9 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
     }
    ```
 
-   Sie können die Verbindungszeichenfolge mit der Option `ADO.NET connection string` aus dem [Azure-Portal](https://portal.azure.com) abrufen.
+   Die Verbindungszeichenfolge kann einem der folgenden Formate vorliegen:
+    1. Sie können die Verbindungszeichenfolge mit der Option `ADO.NET connection string` aus dem [Azure-Portal](https://portal.azure.com) abrufen.
+    1. Eine Verbindungszeichenfolge für eine verwaltete Identität, die keinen Kontoschlüssel enthält, im folgenden Format: `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;`. Um diese Verbindungszeichenfolge zu verwenden, befolgen Sie die Anweisungen unter [Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität](search-howto-managed-identities-sql.md).
 
 2. Erstellen Sie den Zielindex der kognitiven Azure-Suche, wenn Sie bislang noch über keinen verfügen. Sie können einen Index über das [Portal](https://portal.azure.com) oder mit der [API zur Indexerstellung](/rest/api/searchservice/Create-Index) erstellen. Stellen Sie sicher, dass das Schema des Zielindex mit dem Schema der Quelltabelle kompatibel ist. Informationen dazu finden Sie unter [Zuordnung zwischen SQL-Datentypen und Datentypen der kognitiven Azure-Suche](#TypeMapping).
 

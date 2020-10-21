@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532187"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91620085"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Autoskalierung von Azure HDInsight-Clustern
 
@@ -68,11 +68,11 @@ Beim zentralen Herunterskalieren gibt die Autoskalierung eine Anforderung aus, e
 > [!Important]
 > Die Azure HDInsight-Funktion für die automatische Skalierung wurde mit allgemeiner Verfügbarkeit am 7. November 2019 für Spark- und Hadoop-Cluster veröffentlicht und enthält Verbesserungen, die in der Vorschauversion des Features nicht verfügbar sind. Wenn Sie vor dem 7. November 2019 einen Spark-Cluster erstellt haben und die automatische Skalierung in Ihrem Cluster verwenden möchten, wird empfohlen, einen neuen Cluster zu erstellen und die automatische Skalierung für den neuen Cluster zu aktivieren.
 >
-> Autoskalierung für Interactive Query (LLAP) wurde am 27. August 2020 für die allgemeine Verfügbarkeit veröffentlicht. HBase-Cluster befinden sich weiterhin in der Vorschau. Die automatische Skalierung ist nur für Spark-, Hadoop-, Interactive Query- und HBase-Cluster verfügbar.
+> Autoskalierung für Interactive Query (LLAP) wurde am 27. August 2020 für die allgemeine Verfügbarkeit für HDI 4.0 veröffentlicht. HBase-Cluster befinden sich weiterhin in der Vorschau. Die automatische Skalierung ist nur für Spark-, Hadoop-, Interactive Query- und HBase-Cluster verfügbar.
 
 Die folgende Tabelle beschreibt die Clustertypen und Versionen, die mit dem Feature „Autoskalierung“ kompatibel sind.
 
-| Version | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
+| Version | Spark | Hive | Interactive Query | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3.6 ohne ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
 | HDInsight 4.0 ohne ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
@@ -251,7 +251,7 @@ Es kann 10 bis 20 Minuten dauern, bis ein Skalierungsvorgang abgeschlossen ist
 
 ### <a name="prepare-for-scaling-down"></a>Vorbereiten für das zentrale Herunterskalieren
 
-Beim zentralen Herunterskalieren des Clusters werden die Knoten von Autoskalierung außer Betrieb genommen, um die Zielgröße zu erreichen. Falls auf diesen Knoten Aufgaben ausgeführt werden, wartet Autoskalierung, bis diese abgeschlossen sind. Da jeder Workerknoten auch eine Rolle im HDFS innehat, werden die temporären Daten auf die restlichen Knoten verschoben. Stellen Sie sicher, dass auf den verbleibenden Knoten genügend Speicherplatz vorhanden ist, um alle temporären Daten zu hosten.
+Beim zentralen Herunterskalieren des Clusters werden die Knoten von Autoskalierung außer Betrieb genommen, um die Zielgröße zu erreichen. Falls auf diesen Knoten Aufgaben ausgeführt werden, wartet Autoskalierung, bis diese für Spark- und Hadoop-Cluster abgeschlossen sind. Da jeder Workerknoten auch eine Rolle im HDFS innehat, werden die temporären Daten auf die restlichen Knoten verschoben. Stellen Sie sicher, dass auf den verbleibenden Knoten genügend Speicherplatz vorhanden ist, um alle temporären Daten zu hosten.
 
 Die ausgeführten Aufträge werden weiterhin ausgeführt. Für die ausstehenden Aufträge wird auf eine Planung mit weniger verfügbaren Workerknoten gewartet.
 
@@ -265,7 +265,7 @@ Autoskalierung für Hadoop-Cluster überwacht auch die HDFS-Nutzung. Ist das HDF
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>Festlegen der Hive-Konfiguration „Maximum Total Concurrent Queries“ für das Szenario für Spitzenlast
 
-Die Hive-Konfiguration *Maximum Total Concurrent Queries* (Maximale Anzahl gleichzeitiger Abfragen) in Ambari wird durch Autoskalierungsereignisse nicht geändert. Dies bedeutet, dass der Hive Server 2 Interactive-Dienst immer nur die angegebene Anzahl gleichzeitiger Abfragen verarbeiten kann, auch wenn die Anzahl der LLAP-Daemons last- oder zeitplanbasiert zentral hoch- und herunterskaliert wird. Die allgemeine Empfehlung besteht darin, diese Konfiguration entsprechend dem Spitzenlastszenario festzulegen, damit kein manueller Eingriff erforderlich wird.
+Die Hive-Konfiguration *Maximum Total Concurrent Queries* (Maximale Anzahl gleichzeitiger Abfragen) in Ambari wird durch Autoskalierungsereignisse nicht geändert. Dies bedeutet, dass der Hive Server 2 Interactive-Dienst immer nur die angegebene Anzahl gleichzeitiger Abfragen verarbeiten kann, auch wenn die Anzahl der Interactive Query-Daemons last- oder zeitplanbasiert zentral hoch- und herunterskaliert wird. Die allgemeine Empfehlung besteht darin, diese Konfiguration entsprechend dem Spitzenlastszenario festzulegen, damit kein manueller Eingriff erforderlich wird.
 
 Es können jedoch Hive Server 2-Neustartfehler auftreten, wenn nur wenige Workerknoten vorhanden sind und der Wert für die maximale Anzahl gleichzeitiger Abfragen zu hoch konfiguriert ist. Sie benötigen eine Mindestanzahl von Workerknoten, die die angegebene Anzahl von Tez-AMS abdecken können (entspricht der „Maximum Total Concurrent Queries“-Konfiguration). 
 
@@ -275,11 +275,11 @@ Es können jedoch Hive Server 2-Neustartfehler auftreten, wenn nur wenige Worker
 
 HDInsight Autoskalierung verwendet eine Knotenbezeichnungsdatei, um zu bestimmen, ob ein Knoten in der Lage ist, Aufgaben auszuführen. Die Knotenbezeichnungsdatei ist auf HDFS mit drei Replikaten gespeichert. Wird die Clustergröße erheblich herunterskaliert, und liegt eine große Menge temporärer Daten vor, gibt es ein kleines Risiko, dass alle drei Replikate gelöscht werden. Wenn dies passiert, wird der Cluster in einen Fehlerzustand versetzt.
 
-### <a name="llap-daemons-count"></a>Anzahl der LLAP-Daemons
+### <a name="interactive-query-daemons-count"></a>Anzahl der Interactive Query-Daemons
 
-Für LLAP-Cluster mit aktivierter Autoskalierung wird bei einem Autoskalierungsereignis (zentrales Hochskalieren/Herunterskalieren) auch die Anzahl der LLAP-Daemons entsprechend der Anzahl aktiver Workerknoten zentral hochskaliert/herunterskaliert. Die Änderung der Anzahl der Daemons wird nicht in der `num_llap_nodes`-Konfiguration in Ambari gespeichert. Wenn Hive-Dienste manuell neu gestartet werden, wird die Anzahl der LLAP-Daemons entsprechend der Konfiguration in Ambari zurückgesetzt.
+Für Interactive Query-Cluster mit aktivierter Autoskalierung wird bei der Autoskalierung (zentrales Hochskalieren/Herunterskalieren) auch die Anzahl der Interactive Query-Daemons entsprechend der Anzahl aktiver Workerknoten zentral hochskaliert/herunterskaliert. Die Änderung der Anzahl der Daemons wird nicht in der `num_llap_nodes`-Konfiguration in Ambari gespeichert. Wenn Hive-Dienste manuell neu gestartet werden, wird die Anzahl der Interactive Query-Daemons entsprechend der Konfiguration in Ambari zurückgesetzt.
 
-Wird der LLAP-Dienst manuell neu gestartet, müssen Sie die `num_llap_node`-Konfiguration (die Anzahl der Knoten, die zum Ausführen des Hive-LLAP-Daemons benötigt werden) unter *Advanced hive-interactive-env* entsprechend der aktuellen Anzahl aktiver Workerknoten ändern.
+Wird der Interactive Query-Dienst manuell neu gestartet, müssen Sie die `num_llap_node`-Konfiguration (die Anzahl der Knoten, die zum Ausführen des Hive-Interactive Query-Daemons benötigt werden) unter *Advanced hive-interactive-env* entsprechend der aktuellen Anzahl aktiver Workerknoten ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 769aa6c0d546b7a9bcbe355136bad811fb4f47b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753309"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91447353"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Upgrade eines Virtual WAN von Basic auf Standard
 
@@ -26,13 +26,13 @@ Die folgende Tabelle zeigt die verfügbaren Konfigurationen für die beiden WAN-
 
 1. Wählen Sie auf der Seite für das Virtual WAN **Konfiguration** aus, um die Konfigurationsseite zu öffnen.
 
-   ![Virtual WAN-Diagramm](./media/upgrade-virtual-wan/1.png)
+   ![Screenshot der Seite „Konfiguration“ mit einem hervorgehobenen Textfeld mit Informationen zu einem Upgrade auf ein virtuelles WAN vom Typ Standard am unteren Rand.](./media/upgrade-virtual-wan/1.png)
 2. Wählen Sie in der Dropdown-Liste **Standard** als Virtual WAN-Typ aus.
 
-   ![Virtual WAN-Diagramm](./media/upgrade-virtual-wan/2.png)
+   ![Screenshot des Dropdownmenüs „Virtual WAN-Typ“.](./media/upgrade-virtual-wan/2.png)
 3. Wenn Sie ein Upgrade auf ein Standard-Virtual WAN durchführen, können Sie nicht mehr zu einem Basic-Virtual WAN zurückkehren. Wählen Sie **Bestätigen** aus, wenn Sie ein Upgrade durchführen möchten.
 
-   ![Virtual WAN-Diagramm](./media/upgrade-virtual-wan/4.png)
+   ![Screenshot des Dialogfelds „Upgradebestätigung“.](./media/upgrade-virtual-wan/4.png)
 4. Nachdem die Änderung gespeichert wurde, sieht die Virtual WAN-Seite in etwa wie in diesem Beispiel aus.
 
    ![Virtual WAN-Diagramm](./media/upgrade-virtual-wan/5.png)

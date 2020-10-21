@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887389"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627617"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Dies ist eine aktuelle Einschränkung der zugrunde liegenden Komponente, bei der
 
 **Wie kann ich meine verwaltete Instanz skalieren?**
 
-Sie können Ihre verwaltete Instanz per [Azure-Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) oder mit [ARM-Vorlagen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates) skalieren.
+Sie können Ihre verwaltete Instanz per [Azure-Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) oder mit [ARM-Vorlagen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates) skalieren.
 
 **Kann ich meine verwaltete Instanz aus einer Region in eine andere verschieben?**
 
@@ -102,7 +102,7 @@ Ja, das ist möglich. Eine Anleitung finden Sie unter [Verschieben von Ressource
 
 **Wie kann ich meine verwaltete Instanz löschen?**
 
-Sie können verwaltete Instanzen per Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) oder mit [Resource Manager-REST-APIs](https://docs.microsoft.com/rest/api/sql/managedinstances/delete) löschen.
+Sie können verwaltete Instanzen per Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) oder mit [Resource Manager-REST-APIs](https://docs.microsoft.com/rest/api/sql/managedinstances/delete) löschen.
 
 **Wie lange dauert es, eine Instanz zu erstellen oder zu aktualisieren oder eine Datenbank wiederherzustellen?**
 
@@ -135,9 +135,9 @@ Die verwaltete Instanz bietet die gleichen Leistungsstufen pro Compute- und Spei
 
 Eine Option ist das [Exportieren einer Datenbank in eine BACPAC-Datei](../database/database-export.md) und das anschließende [Importieren der BACPAC-Datei](../database/database-import.md). Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist.
 
-[Transaktionsreplikation](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) kann verwendet werden, wenn alle Tabellen in der Datenbank *Primärschlüssel* aufweisen und in der Datenbank keine In-Memory-OLTP-Objekte vorhanden sind.
+[Transaktionsreplikation](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kann verwendet werden, wenn alle Tabellen in der Datenbank *Primärschlüssel* aufweisen und in der Datenbank keine In-Memory-OLTP-Objekte vorhanden sind.
 
-Native COPY_ONLY-Sicherungen einer verwalteten Instanz können nicht in SQL Server wiederhergestellt werden, da eine verwaltete Instanz eine höhere Datenbankversion als SQL Server aufweist. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15).
+Native COPY_ONLY-Sicherungen einer verwalteten Instanz können nicht in SQL Server wiederhergestellt werden, da eine verwaltete Instanz eine höhere Datenbankversion als SQL Server aufweist. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true).
 
 **Wie kann ich meine SQL Server-Instanz zu SQL Managed Instance migrieren?**
 
@@ -184,11 +184,11 @@ Alle möglichen Optionen zur Überwachung und Warnung bei der Nutzung und Leistu
 
 **Kann ich SQL Profiler für die Leistungsüberwachung verwenden?**
 
-Ja, jeweils SQL Profiler oder SQL Managed Instance werden unterstützt. Weitere Informationen finden Sie unter [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15).
+Ja, jeweils SQL Profiler oder SQL Managed Instance werden unterstützt. Weitere Informationen finden Sie unter [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true).
 
 **Werden Database Advisor und Query Performance Insight für verwaltete Instanzdatenbanken unterstützt?**
 
-Nein, sie werden nicht unterstützt. Sie können [DMVs](../database/monitoring-with-dmvs.md) und den [Abfragedatenspeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) zusammen mit [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) und [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) verwenden, um Ihre Datenbanken zu überwachen.
+Nein, sie werden nicht unterstützt. Sie können [DMVs](../database/monitoring-with-dmvs.md) und den [Abfragedatenspeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) zusammen mit [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) und [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) verwenden, um Ihre Datenbanken zu überwachen.
 
 **Kann ich Metrikwarnungen für SQL Managed Instance erstellen?**
 
@@ -228,7 +228,7 @@ Informationen zum Nachverfolgen, wann automatisierte Sicherungen auf einer SQL M
 
 **Wird eine bedarfsgesteuerte Sicherung unterstützt?**
 
-Ja, Sie können im Azure Blob Storage eine vollständige Kopiesicherung erstellen. Diese kann jedoch nur in Managed Instance wieder hergestellt werden. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Allerdings ist die Kopiesicherung nicht möglich, wenn die Datenbank von einer dienstverwalteten TDE-Technologie verschlüsselt wird, da das für die Verschlüsselung verwendete Zertifikat nicht zugänglich ist. Verwenden Sie in diesem Fall die Point-in-Time-Wiederherstellung, um diese Datenbank auf eine andere Instanz von SQL Managed Instance zu verschieben, oder wechseln Sie zu einem kundenseitig verwalteten Schlüssel.
+Ja, Sie können im Azure Blob Storage eine vollständige Kopiesicherung erstellen. Diese kann jedoch nur in Managed Instance wieder hergestellt werden. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true). Allerdings ist die Kopiesicherung nicht möglich, wenn die Datenbank von einer dienstverwalteten TDE-Technologie verschlüsselt wird, da das für die Verschlüsselung verwendete Zertifikat nicht zugänglich ist. Verwenden Sie in diesem Fall die Point-in-Time-Wiederherstellung, um diese Datenbank auf eine andere Instanz von SQL Managed Instance zu verschieben, oder wechseln Sie zu einem kundenseitig verwalteten Schlüssel.
 
 **Wird die native Wiederherstellung (von BAK-Dateien) in Managed Instance unterstützt?**
 
@@ -334,9 +334,12 @@ Nein, diese Option ist nicht verfügbar.  Für den privaten Datenendpunkt verwen
 
 **Was ist die empfohlene Vorgehensweise Verbinden von verwalteten Instanzen in unterschiedlichen Regionen?**
 
-Das Express Route-Leitungspeering ist die bevorzugte Methode. Dieses darf nicht mit dem regionsübergreifenden Peering virtueller Netzwerke kombiniert werden, das aufgrund von [Einschränkungen](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) bezüglich des internen Lastenausgleichs nicht unterstützt wird.
+Das Express Route-Leitungspeering ist die bevorzugte Methode. Globales Peering virtueller Netzwerke wird unterstützt. Die einzige Einschränkung ist im folgenden Hinweis beschrieben.  
 
-Wenn das Express Route-Leitungspeering nicht möglich ist, besteht die einzige Option darin, eine Site-to-Site-VPN-Verbindung zu erstellen ([Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
+> [!IMPORTANT]
+> [Am 22.09.2020 haben wir globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instance-Bereitstellungen, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instance-Bereitstellungen ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
+
+Wenn Express Route-Leitungspeering und globales Peering virtueller Netzwerke nicht möglich sind, besteht die einzige Option darin, eine Site-to-Site-VPN-Verbindung zu erstellen ([Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Mindern von Risiken bei der Datenexfiltration  
 
@@ -390,7 +393,7 @@ Ja. Transparent Data Encryption wird für SQL Managed Instance unterstützt. Wei
 
 **Kann ich das Modell „Bring Your Own Key“ für TDE nutzen?**
 
-Ja. Das Szenario „Azure Key Vault für BYOK“ ist für Azure SQL Managed Instance verfügbar. Weitere Informationen finden Sie unter [Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
+Ja. Das Szenario „Azure Key Vault für BYOK“ ist für Azure SQL Managed Instance verfügbar. Weitere Informationen finden Sie unter [Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true).
 
 **Kann ich eine verschlüsselte SQL Server-Datenbank migrieren?**
 
@@ -509,6 +512,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>Dienstupdates
+
+**Wie sieht die Änderung der Stammzertifizierungsstelle für Azure SQL-Datenbank und SQL Managed Instance aus?**
+
+Weitere Informationen finden Sie unter [Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure SQL-Datenbank und SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
 
 **Was ist ein geplantes Wartungsereignis für SQL Managed Instance?**
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: d110630ad3291473aee395259d1aaa623a935f5f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825474"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019884"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -42,7 +42,7 @@ Weitere Informationen zur Authentifizierung bei Key Vault finden Sie unter [Auth
 
 ## <a name="key-vault-authentication-options"></a>Key Vault-Authentifizierungsoptionen
 
-Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser automatisch mit dem Azure AD-Mandanten des Abonnements verknüpft. Alle Aufrufer in beiden Ebenen müssen bei diesem Mandanten registriert sein und sich authentifizieren, um auf den Schlüsseltresor zugreifen zu können. In beiden Fällen können Anwendungen auf zwei Arten auf den Schlüsseltresor zugreifen:
+Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser automatisch mit dem Azure AD-Mandanten des Abonnements verknüpft. Alle Aufrufer in beiden Ebenen müssen bei diesem Mandanten registriert sein und sich authentifizieren, um auf den Schlüsseltresor zugreifen zu können. In beiden Fällen können Anwendungen auf drei Arten auf den Schlüsseltresor zugreifen:
 
 - **Nur Anwendungszugriff**: Die Anwendung stellt einen Dienstprinzipal oder eine verwaltete Identität dar. Diese Identität ist das häufigste Szenario für Anwendungen, die in regelmäßigen Abständen auf Zertifikate, Schlüssel oder Geheimnisse aus dem Schlüsseltresor zugreifen müssen. Damit dieses Szenario funktioniert, muss die `objectId` der Anwendung in der Zugriffsrichtlinie angegeben werden, und die `applicationId` darf _nicht_ angegeben werden oder muss `null` sein.
 - **Nur Benutzerzugriff**: Der Benutzer greift auf den Schlüsseltresor aus allen Anwendungen zu, die im Mandanten registriert sind. Beispiele für diese Art von Zugriff wären etwa Azure PowerShell und das Azure-Portal. Damit dieses Szenario funktioniert, muss die `objectId` des Benutzers in der Zugriffsrichtlinie angegeben werden, und die `applicationId` darf _nicht_ angegeben werden oder muss `null` sein.
@@ -71,7 +71,7 @@ Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 
 Auf Verwaltungsebene autorisieren Sie mit [Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure)](https://docs.microsoft.com/azure/role-based-access-control/overview) die Vorgänge, die ein Aufrufer ausführen darf. Im Azure RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure AD. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden.
 
-Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende Azure-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
+Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende Azure-Rollen zuordnen. Wenn Sie also einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle [Key Vault-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
 
 - **Abonnement**: Eine auf Abonnementebene zugewiesene Azure-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
 - **Ressourcengruppe**: Eine auf Ressourcengruppenebene zugewiesene Azure-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
@@ -79,7 +79,7 @@ Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und 
 
 Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht Ihren Anforderungen entspricht, können Sie Ihre eigene Rolle definieren. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). 
 
-Sie benötigen `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner).
+Sie benötigen `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner).
 
 > [!IMPORTANT]
 > Falls ein Benutzer für eine Schlüsseltresor-Verwaltungsebene über die Berechtigung `Contributor` verfügt, kann er sich durch Festlegen einer Zugriffsrichtlinie für den Schlüsseltresor selbst Zugriff auf die Datenebene gewähren. Deshalb sollten sie stets kontrollieren, wer als `Contributor` auf Ihre Schlüsseltresore zugreifen kann. Stellen Sie sicher, dass nur autorisierte Personen auf Ihre Schlüsseltresore, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
@@ -184,11 +184,11 @@ Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die
 
 | Role | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene: Tresorzugriffsrichtlinien | Berechtigungen auf Datenebene: Azure RBAC (Vorschau)  |
 | --- | --- | --- | --- |
-| Sicherheitsteam | Key Vault-Mitwirkender | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | Key Vault-Administrator (Vorschau) |
+| Sicherheitsteam | [Key Vault-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | [Key Vault-Administrator (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
 | Entwickler und&nbsp;Operatoren | Berechtigung zum Bereitstellen von Schlüsseltresoren<br><br> **Hinweis**: Mit dieser Berechtigung können die bereitgestellten VMs Geheimnisse aus einem Schlüsseltresor abrufen. | Keine | Keine |
-| Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | Key Vault Reader (Vorschau) |
-| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | Key Vault Crypto Service Encryption |
-| Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | Key Vault Reader (Vorschau), Key Vault Secret User (Vorschau) |
+| Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | [Key Vault Reader (Vorschau)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
+| Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | [Key Vault Reader (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview), [Key Vault Secret User (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
 
 Die drei Teamrollen benötigen neben Schlüsseltresor-Berechtigungen auch Zugriff auf andere Ressourcen. Damit Entwickler oder Operatoren VMs (oder das Web-Apps-Feature von Azure App Service) bereitstellen können, müssen diese den Zugriff bereitstellen. Prüfer benötigen Lesezugriff auf das Speicherkonto mit den gespeicherten Schlüsseltresorprotokollen.
 
@@ -199,7 +199,11 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. Echte Szenarien k
 
 ## <a name="resources"></a>Ressourcen
 
-* [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
+[Informationen zu Azure Key Vault](overview.md)
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+[Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
+[Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+[Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

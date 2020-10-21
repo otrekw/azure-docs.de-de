@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258604"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841151"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services
 
@@ -421,11 +421,11 @@ Die folgenden Screenshots zeigen verschiedene Anmeldeseiten, die von verschieden
 
 **Benutzerdefiniertes Azure AD-Mandantendomänenkonto**: Die angepasste Anmeldeseite der benutzerdefinierten Azure AD-Mandantendomäne.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Screenshot, der die angepasste Anmeldeseite der benutzerdefinierten Azure AD-Mandantendomäne zeigt.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Microsoft-Domänenkonto mit Smartcard**: Die von der IT-Abteilung von Microsoft angepasste Anmeldeseite mit zweistufiger Authentifizierung.
 
-![Benutzerdefiniertes Azure AD-Mandantendomänenkonto](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Screenshot, der die von der IT-Abteilung von Microsoft angepasste Anmeldeseite mit zweistufiger Authentifizierung zeigt.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft-Konto**: Die Anmeldeseite des Microsoft-Kontos für Endbenutzer.
 

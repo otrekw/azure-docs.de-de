@@ -1,6 +1,6 @@
 ---
 title: Beschränken des Zugriffs mit Shared Access Signatures – Azure HDInsight
-description: Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Speicherblobs einschränken.
+description: Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Blobspeicher einschränken.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006312"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856563"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Shared Access Signatures von Azure-Blobspeicher zum Einschränken des Zugriffs auf Daten in HDInsight
 
-HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Cluster verbunden sind. Sie können Shared Access Signatures für den Blobcontainer verwenden, um den Zugriff auf die Daten einzuschränken. Shared Access Signatures (SAS) sind ein Feature von Azure Storage-Konten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten.
+HDInsight hat vollen Zugriff auf Daten in Azure-Blobspeicherkonten, die mit dem Cluster verbunden sind. Sie können Shared Access Signatures für den Blobcontainer verwenden, um den Zugriff auf die Daten einzuschränken. Shared Access Signatures (SAS) sind ein Feature von Azure-Blobspeicherkonten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten.
 
 > [!IMPORTANT]  
 > Erwägen Sie für eine Lösung mit Apache Ranger die Verwendung von in die Domäne eingebundenem HDInsight. Weitere Informationen finden Sie im Dokument [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](./domain-joined/apache-domain-joined-configure.md).
@@ -39,7 +39,7 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 * Bei Verwendung von C# muss die Version von Visual Studio 2013 oder höher sein.
 
-* Das URI-Schema für Ihr Speicherkonto. Dieses Schema ist für Azure Storage `wasb://`, für Azure Data Lake Storage Gen2 `abfs://` und für Azure Data Lake Storage Gen1 `adl://`. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`.
+* Das URI-Schema für Ihr Speicherkonto. Dieses Schema ist `wasb://` für Azure-Blobspeicher, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure-Blobspeicher aktiviert ist, lautet der URI `wasbs://`.
 
 * Ein vorhandener HDInsight-Cluster, dem eine Shared Access Signature hinzugefügt werden kann. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
 

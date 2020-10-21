@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 7bb4974620323de45fd621ae2ed73d3655244d8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606587"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856715"
 ---
 1. Klicken Sie auf der Portalseite für Ihr virtuelles WAN im Abschnitt **Konnektivität** auf **VPN-Standorte**, um die Seite mit VPN-Standorten zu öffnen.
 2. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Standort erstellen).
@@ -26,6 +26,10 @@ ms.locfileid: "90606587"
     * **Gerätehersteller**: Der Name des VPN-Geräteherstellers (z. B. Citrix, Cisco, Barracuda). Diese Vorgehensweise kann dem Azure-Team helfen, Ihre Umgebung besser zu verstehen, um in Zukunft weitere Optimierungsmöglichkeiten hinzuzufügen oder Sie bei der Problembehandlung zu unterstützen.
     * **Border Gateway Protocol**: Durch eine Aktivierung werden alle Verbindungen vom Standort für BGP aktiviert. Sie richten die BGP-Informationen für jede Verbindung vom VPN-Standort im Abschnitt für Verbindungen ein. Die Vorgehensweise zum Konfigurieren von BGP für eine Virtual WAN-Instanz ist dieselbe wie beim Konfigurieren von BGP für ein VPN mit einem Azure-Gateway für virtuelle Netzwerke. Ihre lokale BGP-Peeradresse darf nicht der öffentlichen IP-Adresse Ihres VPN-Geräts oder dem VNET-Adressraum des VPN-Standorts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Geben Sie diese Adresse für den VPN-Standort an, der dem Standort entspricht Informationen zu den Voraussetzungen für BGP finden Sie unter [Übersicht über BGP mit Azure VPN Gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md). Sie können eine VPN-Verbindung jederzeit bearbeiten, um die zugehörigen BGP-Parameter zu aktualisieren (Peering-IP-Adresse für die Verbindung und Adressraumnummer), nachdem die BGP-Einstellung für den VPN-Standort aktiviert wurde.
     * **Privater Adressraum**: Dies ist der IP-Adressraum Ihres lokalen Standorts. Der Datenverkehr, der für diesen Adressraum bestimmt ist, wird an Ihre lokale Site geleitet. Dies ist erforderlich, wenn BGP nicht für den Standort aktiviert ist.
+    
+      >[!NOTE]
+      >Wenn Sie den Adressraum nach dem Erstellen des Standorts bearbeiten (indem Sie z. B. einen weiteren Adressraum hinzufügen), kann es 8-10 Minuten dauern, bis die tatsächlichen Routen aktualisiert sind, während die Komponenten neu erstellt werden.
+      >
     * **Hubs**: Der Hub, mit dem Sie Ihren Standort verbinden möchten. Ein Standort kann nur mit Hubs verbunden werden, die über ein VPN-Gateway verfügen. Wenn ein Hub nicht angezeigt wird, erstellen Sie zunächst ein VPN-Gateway in diesem Hub.
 4. Wählen Sie **Links** aus, um Informationen über die physischen Verbindungen an der Zweigstelle hinzuzufügen. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen, können Sie sich beim Partner erkundigen, ob diese Informationen im Rahmen des im Partnersystem eingerichteten Uploads von Zweigstelleninformationen an Azure übermittelt werden.
 
