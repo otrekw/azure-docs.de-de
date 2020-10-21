@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 95b41723d3cb398caad3a0cf388b7810deda78dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, deploy, studio
+ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930585"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999011"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Verwenden von Studio zum Bereitstellen von Modellen, die im Designer trainiert wurden
 
@@ -26,6 +26,7 @@ Die Bereitstellung in Studio umfasst die folgenden Schritte:
 
 1. Registrieren des trainierten Modells
 1. Herunterladen des Eingabeskripts und der Conda-Abhängigkeitendatei für das Modell
+1. (Optional) Konfigurieren Sie das Eingabeskript.
 1. Bereitstellen des Modells auf einem Computeziel
 
 Sie können Modelle auch direkt im Designer bereitstellen, um die Schritte zur Modellregistrierung und zum Herunterladen der Dateien zu überspringen. Dies kann für eine schnelle Bereitstellung nützlich sein. Weitere Informationen finden Sie unter [Bereitstellen eines Modells mit dem Designer](tutorial-designer-automobile-price-deploy.md).
@@ -36,7 +37,14 @@ Im Designer trainierte Modelle können auch über das SDK oder über die Befehls
 
 * [Ein Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md)
 
-* Eine abgeschlossene Trainingspipeline mit einem [Modul „Train Model“](./algorithm-module-reference/train-model.md)
+* Eine abgeschlossene Trainingspipeline mit einem der folgenden Module:
+    - [Train Model-Modul](./algorithm-module-reference/train-model.md)
+    - [Modul „Trainieren eines Anomalieerkennungsmodells“](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [Modul „Train Clustering Model“ (Trainieren eines Clusteringmodells)](./algorithm-module-reference/train-clustering-model.md)
+    - [Modul „Train Pytorch Model“ (PyTorch-Modell trainieren)](./algorithm-module-reference/train-pytorch-model.md)
+    - [Modul „Train SVD Recommender“ (SVD-Empfehlung trainieren)](./algorithm-module-reference/train-svd-recommender.md)
+    - [Modul „Train Vowpal Wabbit Model“ (Vowpal Wabbit-Modell trainieren)](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [Modul „Train Wide & Deep Model“ (Wide & Deep-Modell trainieren)](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>Registrieren des Modells
 
@@ -136,9 +144,67 @@ score_result = service.run(json.dumps(sample_data))
 print(f'Inference result = {score_result}')
 ```
 
+### <a name="consume-computer-vision-related-real-time-endpoints"></a>Verwenden von auf maschinelles Sehen bezogenen Echtzeitendpunkten
+
+Wenn Sie auf maschinelles Sehen bezogene Echtzeitendpunkte verwenden, müssen Sie Bilder in Bytes konvertieren, da der Webdienst nur Zeichenfolgen als Eingabe akzeptiert. Es folgt der Beispielcode:
+
+```python
+import base64
+import json
+from copy import deepcopy
+from pathlib import Path
+from azureml.studio.core.io.image_directory import (IMG_EXTS, image_from_file, image_to_bytes)
+from azureml.studio.core.io.transformation_directory import ImageTransformationDirectory
+
+# image path
+image_path = Path('YOUR_IMAGE_FILE_PATH')
+
+# provide the same parameter setting as in the training pipeline. Just an example here.
+image_transform = [
+    # format: (op, args). {} means using default parameter values of torchvision.transforms.
+    # See https://pytorch.org/docs/stable/torchvision/transforms.html
+    ('Resize', 256),
+    ('CenterCrop', 224),
+    # ('Pad', 0),
+    # ('ColorJitter', {}),
+    # ('Grayscale', {}),
+    # ('RandomResizedCrop', 256),
+    # ('RandomCrop', 224),
+    # ('RandomHorizontalFlip', {}),
+    # ('RandomVerticalFlip', {}),
+    # ('RandomRotation', 0),
+    # ('RandomAffine', 0),
+    # ('RandomGrayscale', {}),
+    # ('RandomPerspective', {}),
+]
+transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
+
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+sample_file_path = '_samples.json'
+with open(sample_file_path, 'r') as f:
+    sample_data = json.load(f)
+
+# use first sample item as the default value
+default_data = sample_data[0]
+data_list = []
+for p in image_path.iterdir():
+    if p.suffix.lower() in IMG_EXTS:
+        data = deepcopy(default_data)
+        # convert image to bytes
+        data['image'] = base64.b64encode(image_to_bytes(transform(image_from_file(p)))).decode()
+        data_list.append(data)
+
+# use data.json as input of consuming the endpoint
+data_file_path = 'data.json'
+with open(data_file_path, 'w') as f:
+    json.dump(data_list, f)
+```
+
 ## <a name="configure-the-entry-script"></a>Konfigurieren des Eingabeskripts
 
-Einige Module im Designer wie [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md), [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md) und [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) weisen Parameter für unterschiedliche Bewertungsmodi auf. In diesem Abschnitt erfahren Sie, wie Sie diese Parameter auch in der Eingabeskriptdatei aktualisieren.
+Einige Module im Designer wie [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md), [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md) und [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) weisen Parameter für unterschiedliche Bewertungsmodi auf. 
+
+In diesem Abschnitt erfahren Sie, wie Sie diese Parameter auch in der Eingabeskriptdatei aktualisieren.
 
 Im folgenden Beispiel wird das Standardverhalten für ein trainiertes **Wide & Deep recommender**-Modell aktualisiert. Standardmäßig weist die Datei `score.py` den Webdienst an, Bewertungen zwischen Benutzern und Elementen vorherzusagen. 
 

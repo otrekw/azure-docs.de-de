@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/17/2020
-ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 2ec1726056c7ab223f7d3de70a715a8254e95db4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907774"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940208"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
@@ -77,9 +77,9 @@ In diesem Abschnitt wird beschrieben, wie eine einfache Parameterbereinigung aus
 
 Nach Abschluss des Trainings:
 
-+ Um die Bereinigungsergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus.
++ Um die Bereinigungsergebnisse anzuzeigen, könnten Sie entweder mit der rechten Maustaste auf das Modul klicken und dann **Visualisieren** auswählen oder mit der rechten Maustaste auf den linken Ausgangsport des Moduls klicken, um ihn zu visualisieren.
 
-    Die Ausgabe enthält die gesamte Parameterbereingung und alle Genauigkeitsmetriken, die für den Modelltyp zutreffen. Aber anhand der Metrik, die Sie für die Einstufung ausgewählt haben, wird bestimmt, welches Modell als das „beste“ angesehen wird.
+    Die **Bereinigungsergebnisse** enthält die gesamte Parameterbereingung und alle Genauigkeitsmetriken, die für den Modelltyp zutreffen. Und anhand der Metrik, die Sie für die Einstufung ausgewählt haben, wird bestimmt, welches Modell als das „beste“ angesehen wird.
 
 + Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben und Protokolle** im rechten Bereich des Moduls **Train model** (Modell trainieren) aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 

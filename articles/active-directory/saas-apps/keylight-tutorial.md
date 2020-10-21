@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0832fe9ba65ac0df5dbff60b01b7a5eb91a2c3a2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535817"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Tutorial: Azure Active Directory-Integration in LockPath Keylight
 
@@ -133,15 +133,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LockPath
 
     b. Klicken Sie im Menü oben auf **Person**, und wählen Sie **Keylight Setup** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/401.png)
+    ![Screenshot: Auswahl des Symbols „Person“ und der Option „Keylight Setup“ im Dropdownmenü](./media/keylight-tutorial/401.png)
 
     c. Klicken Sie in der Strukturansicht links auf **SAML**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/402.png)
+    ![Screenshot: Auswahl von „SAML“ in der Strukturansicht](./media/keylight-tutorial/402.png)
 
     d. Klicken Sie im Dialogfeld **SAML-Einstellungen** auf **Bearbeiten**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/404.png)
+    ![Screenshot: Fenster „SAML-Einstellungen“ mit Auswahl der Schaltfläche „Bearbeiten“](./media/keylight-tutorial/404.png)
 
 1. Führen Sie auf der Dialogfeldseite **Edit SAML Settings** die folgenden Schritte aus:
 

@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen, Zuweisen und Entfernen von Blaupausen beheben, wie z.B. Richtlinienverletzungen und Blaupausenparameterfunktionen.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651326"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058283"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
@@ -59,7 +59,7 @@ Die Übergabe eines Blaupausenparameters, der eine Funktion verwendet, wie z.B. 
 
 #### <a name="resolution"></a>Lösung
 
-Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfolge mit `[` als Escapezeichen, sodass der Blaupausenparameter aussieht wie `[[resourceGroup().tags.myTag]`. Das Escapezeichen bewirkt, dass Blueprints den Wert bei der Verarbeitung der Blaupause als Zeichenfolge behandelt. Dann platziert Blueprints die Funktion auf dem Artefakt, sodass sie so dynamisch wie erwartet sein kann. Weitere Informationen finden Sie unter [Syntax und Ausdrücke in Azure Resource Manager-Vorlagen](../../../azure-resource-manager/templates/template-expressions.md).
+Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfolge mit `[` als Escapezeichen, sodass der Blaupausenparameter aussieht wie `[[resourceGroup().tags.myTag]`. Das Escapezeichen bewirkt, dass Blueprints den Wert bei der Verarbeitung der Blaupause als Zeichenfolge behandelt. Dann platziert der Blueprints-Dienst die Funktion auf dem Artefakt, sodass sie so dynamisch wie erwartet sein kann. Weitere Informationen finden Sie unter [Syntax und Ausdrücke in Azure Resource Manager-Vorlagen](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Löschen von Fehlern
 
@@ -75,7 +75,7 @@ Wenn eine Blaupausenzuweisung gelöscht wird, kann es vorkommen, dass sie in ein
 
 #### <a name="resolution"></a>Lösung
 
-Blaupausenzuweisungen in einem Nicht-Endzustand werden nach einem Timeout von _6 Stunden-_ automatisch als **Fehlerhaft** markiert. Nachdem der Timeout den Zustand der Blaupausenzuweisung angepasst hat, kann der Löschvorgang wiederholt werden.
+Blaupausenzuweisungen in einem Nicht-Endzustand werden nach einem Timeout von _sechs Stunden_ automatisch als **Fehlerhaft** markiert. Nachdem der Timeout den Zustand der Blaupausenzuweisung angepasst hat, kann der Löschvorgang wiederholt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

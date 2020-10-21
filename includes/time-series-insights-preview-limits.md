@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7259e1981f873c8385a02fe4f353dcdda495f823
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289910"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91287411"
 ---
 ### <a name="property-limits"></a>Eigenschaftsgrenzwerte
 
@@ -26,14 +26,13 @@ Azure Time Series Insights-Eigenschaftsgrenzwerte wurden von einer maximalen Obe
 | Gen1 (S1) | 600 Eigenschaften (Spalten) |
 | Gen1 (S2) | 800 Eigenschaften (Spalten) |
 
-### <a name="event-sources"></a>Ereignisquellen
+### <a name="streaming-ingestion"></a>Streamingerfassung
 
-Maximal zwei Ereignisquellen werden pro Instanz unterstützt.
+* Es gibt maximal zwei [Ereignisquellen](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md) pro Umgebung.
 
-* Informieren Sie sich über das [Hinzufügen einer Event Hub-Quelle](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
-* Konfigurieren [einer IoT-Hub-Quelle](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+* Die bewährten Methoden und den allgemeinen Leitfaden für Ereignisquellen finden Sie [hier](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices).
 
-Standardmäßig [unterstützen Gen2-Umgebungen Eingangsraten](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) von bis zu **1 Megabyte pro Sekunde (MB/s) pro Umgebung**. Kunden können ihre Umgebungen bei Bedarf auf bis zu **16 MB/s** Durchsatz skalieren. Darüber hinaus besteht pro Partition ein Grenzwert von **0,5 MB/s**.
+* Standardmäßig kann Azure Time Series Insights Gen2 eingehende Daten mit einer Rate von **bis zu 1 MB pro Sekunde (MBit/s) pro Azure Time Series Insights Gen2-Umgebung** erfassen. Es gelten zusätzliche Einschränkungen [pro Hubpartition](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits). Raten von bis zu 8 MBit/s können durch Übermitteln eines Supporttickets über das Azure-Portal bereitgestellt werden. Weitere Informationen finden Sie unter [Durchsatzlimits für Datenstromerfassung](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md).
 
 ### <a name="api-limits"></a>API-Grenzwerte
 

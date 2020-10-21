@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/12/2020
 ms.author: victorh
-ms.openlocfilehash: 56e0d40bcbfb97f57b63dc82da1a6604f83dffad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c840bf9e82b8dcdb1fbf9b380ea847b3d1b08dd9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563632"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948067"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>Was ist ein geschützter virtueller Hub?
 
@@ -20,9 +20,9 @@ Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk, das Ve
 
 Ein *geschützter* virtueller Hub ist ein [Azure Virtual WAN-Hub](../virtual-wan/virtual-wan-about.md#resources) mit zugehörigen Sicherheits- und Routingrichtlinien, die durch Azure Firewall Manager konfiguriert wurden. Verwenden Sie geschützte virtuelle Hubs, um auf einfache Weise Hub-and-Spoke- und transitive Architekturen mit nativen Sicherheitsdiensten für die Kontrolle und den Schutz des Datenverkehrs zu erstellen. 
 
-Sie können einen geschützten virtuellen Hub als verwaltetes zentrales VNET ohne lokale Konnektivität verwenden. Dieses ersetzt das zentrale VNET, das zuvor für eine Azure Firewall-Bereitstellung erforderlich war. Da der geschützte virtuelle Hub das automatisierte Routing ermöglicht, müssen Sie keine eigenen benutzerdefinierten Routen (UDRs) konfigurieren, um Datenverkehr durch die Firewall zu leiten.
+Sie können einen geschützten virtuellen Hub verwenden, um den Datenverkehr zwischen virtuellen Netzwerken (V2V), virtuellen Netzwerken und Zweigstellen (B2V) und den Datenverkehr zum Internet (B2I/V2I) zu filtern. Ein geschützter virtueller Hub bietet automatisiertes Routing. Es ist nicht erforderlich, Ihre eigenen UDRs (benutzerdefinierte Routen) zu konfigurieren, um Datenverkehr durch Ihre Firewall zu leiten.
 
-Es ist auch möglich, geschützte virtuelle Hubs als Teil einer vollständigen Virtual WAN-Architektur zu verwenden. Diese Architektur unterstützt geschützte, optimierte und automatisierte Branchverbindungen mit und über Azure. Sie können die Dienste zum Schutz und zur Kontrolle des Netzwerkdatenverkehrs auswählen, einschließlich der Azure Firewall und anderer SECaaS (Security-as-a-Service)-Drittanbieter.
+Sie können die erforderlichen Sicherheitsanbieter auswählen, um Ihren Datenverkehr im Netzwerk zu schützen und zu regulieren, einschließlich der Azure Firewall, anderer SECaaS-Drittanbieter (Security-as-a-Service) bzw. beide Optionen. Derzeit unterstützt ein gesicherter Hub keine Filterung von Zweigstelle zu Zweigstelle (B2B) und keine mehrere Hubs umfassende Filterung. Weitere Informationen finden Sie unter [Was ist Azure Firewall Manager?](overview.md#known-issues). 
 
 ## <a name="create-a-secured-virtual-hub"></a>Erstellen eines geschützten virtuellen Hubs
 

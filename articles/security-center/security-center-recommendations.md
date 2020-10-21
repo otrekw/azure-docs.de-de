@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314435"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945555"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
 
-> [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
->
 
 ## <a name="what-are-security-recommendations"></a>Was sind Sicherheitsempfehlungen?
 
@@ -35,39 +32,36 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 Jede Empfehlung beinhaltet Folgendes:
 
-- Eine kurze Beschreibung des Problems
+- Eine kurze Problembeschreibung
 - Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen
 - Die betroffenen Ressourcen
 
 ## <a name="monitor-recommendations"></a>Überwachen von Empfehlungen<a name="monitor-recommendations"></a>
 
-Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. Auf der Kachel **Empfehlungen** unter **Übersicht** wird die Gesamtzahl der von Security Center identifizierten Empfehlungen angezeigt.
+Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. 
 
-![Übersicht über Security Center](./media/security-center-recommendations/asc-overview.png)
-
-1. Wählen Sie die Kachel **Empfehlungen** unter **Übersicht** aus. Die Liste **Empfehlungen** wird geöffnet.
-
-1. Die Empfehlungen sind nach Sicherheitssteuerungen gruppiert.
+1. Öffnen Sie im Menü von Security Center die Seite **Empfehlungen**, um die für Ihre Umgebung geltenden Empfehlungen anzuzeigen. Die Empfehlungen sind nach Sicherheitssteuerungen gruppiert.
 
       ![Nach Sicherheitssteuerung gruppierte Empfehlungen](./media/security-center-recommendations/view-recommendations.png)
 
-1. Erweitern Sie eine Steuerung, und wählen Sie eine bestimmte Empfehlung aus, um die Empfehlungsseite anzuzeigen.
+1. Erweitern Sie eine Steuerung, und wählen Sie eine bestimmte Empfehlung aus, um die Seite mit den Empfehlungsdetails anzuzeigen.
 
     :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Seite mit den Empfehlungsdetails" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
     Inhalt der Seite:
 
-    - Die Schaltflächen **Erzwingen** und **Ablehnen** für unterstützte Empfehlungen (siehe [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md))
-    - **Angabe des Schweregrads**
-    - **Aktualisierungsintervall** (sofern relevant) 
-    - **Beschreibung**: Eine kurze Beschreibung des Problems
-    - **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
-    - **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
+    1. Die Schaltflächen **Erzwingen** und **Ablehnen** für unterstützte Empfehlungen (siehe [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md))
+    1. **Angabe des Schweregrads**
+    1. **Aktualisierungsintervall** (sofern relevant) 
+    1. **Beschreibung**: Eine kurze Beschreibung des Problems
+    1. **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
+    1. **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
         - **Fehlerfreie Ressourcen**: Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.
         - **Fehlerhafte Ressourcen**: Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.
         - **Nicht anwendbare Ressourcen**: Ressourcen, für die die Empfehlung keine definitive Antwort geben kann. Auf dieser Registerkarte werden auch Gründe für die jeweilige Ressource angegeben. 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Seite mit den Empfehlungsdetails":::
+    1. Aktionsschaltflächen zum Beheben über die Empfehlung oder Auslösen einer Logik-App
 
 ## <a name="preview-recommendations"></a>Vorschau der Empfehlungen
 

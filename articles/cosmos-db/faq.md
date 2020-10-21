@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213090"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570367"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -85,7 +85,7 @@ Testabonnements für Azure Cosmos DB werden im Azure-Portal neben den anderen Ab
 
 Die folgenden Bedingungen gelten für Azure Cosmos DB-Testabonnements:
 
-* Kontozugriff kann persönlichen Microsoft-Konten (MSA) gewährt werden. Vermeiden Sie die Verwendung von Active Directory (AAD)-Konten oder Konten, die zu den AAD-Mandanten des Unternehmens gehören, weil es bei ihnen möglicherweise Einschränkungen gibt, die die Gewährung des Zugriffs blockieren könnten.
+* Kontozugriff kann persönlichen Microsoft-Konten (MSA) gewährt werden. Vermeiden Sie die Verwendung von Azure Active Directory (Azure AD)-Konten oder Konten, die zu den Azure AD-Mandanten des Unternehmens gehören, weil es bei ihnen möglicherweise Einschränkungen gibt, die ein Gewähren des Zugriffs blockieren könnten.
 * Ein [Container mit bereitgestelltem Durchsatz](./set-throughput.md#set-throughput-on-a-container) pro Abonnement für SQL-, Gremlin-API- und Tabellenkonten.
 * Bis zu drei [Sammlungen mit bereitgestelltem Durchsatz](./set-throughput.md#set-throughput-on-a-container) pro Abonnement für MongoDB-Konten.
 * Eine [Datenbank mit bereitgestelltem Durchsatz](./set-throughput.md#set-throughput-on-a-database) pro Abonnement. Datenbanken mit bereitgestelltem Durchsatz können eine beliebige Anzahl von Containern enthalten.
@@ -102,9 +102,9 @@ Die folgenden Bedingungen gelten für Azure Cosmos DB-Testabonnements:
 
 Azure Cosmos DB steht im Azure-Portal zur Verfügung. Registrieren Sie sich zuerst für ein Azure-Abonnement. Nachdem Sie sich registriert haben, können Sie Ihrem Azure-Abonnement ein Azure Cosmos DB-Konto hinzufügen.
 
-### <a name="what-is-a-master-key"></a>Was ist ein Hauptschlüssel?
+### <a name="what-is-a-primary-key"></a>Was ist ein Primärschlüssel?
 
-Ein Hauptschlüssel ist ein Sicherheitstoken für den Zugriff auf alle Ressourcen eines Kontos. Personen, die über diesen Schlüssel verfügen, haben Lese- und Schreibzugriff auf alle Ressourcen im Datenbankkonto. Gehen Sie beim Verteilen von Hauptschlüsseln mit Bedacht vor. Der primäre und sekundäre Hauptschlüssel stehen auf dem Blatt **Schlüssel** des [Azure-Portals][azure-portal] zur Verfügung. Weitere Informationen zu Schlüsseln finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln](manage-with-cli.md#list-account-keys).
+Ein Primärschlüssel ist ein Sicherheitstoken für den Zugriff auf alle Ressourcen eines Kontos. Personen, die über diesen Schlüssel verfügen, haben Lese- und Schreibzugriff auf alle Ressourcen im Datenbankkonto. Gehen Sie beim Verteilen von Primärschlüsseln mit Bedacht vor. Der primäre und sekundäre Primärschlüssel stehen auf dem Blatt **Schlüssel** des [Azure-Portals][azure-portal] zur Verfügung. Weitere Informationen zu Schlüsseln finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln](manage-with-cli.md#list-account-keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Auf welche Regionen kann PreferredLocations festgelegt werden?
 

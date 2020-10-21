@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715635"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055969"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurieren der Objektreplikation für Blockblobs
 
@@ -345,6 +345,49 @@ az storage account or-policy create \
     -resource-group <resource-group> \
     --source-account <source-account-name> \
     --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>Überprüfen des Replikationsstatus eines Blobs
+
+Sie können den Replikationsstatus für ein Blob im Quellkonto über das Azure-Portal, PowerShell oder die Azure CLI überprüfen. Objektreplikationseigenschaften werden erst gefüllt, wenn die Replikation entweder abgeschlossen oder fehlgeschlagen ist.
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Führen Sie die folgenden Schritte aus, um den Replikationsstatus für ein Blob im Quellkonto im Azure-Portal zu überprüfen:
+
+1. Navigieren Sie im Azure-Portal zum Quellkonto.
+1. Suchen Sie den Container, der das Quellblob enthält.
+1. Wählen Sie das Blob aus, um seine Eigenschaften anzuzeigen. Wenn das Blob erfolgreich repliziert wurde, sehen Sie im Abschnitt **Objektreplikation**, dass der Status auf *Vollständig* festgelegt ist. Die ID der Replikationsrichtlinie und die ID der Regel, die die Objektreplikation für diesen Container regelt, sind ebenfalls aufgeführt.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Screenshot von Replikationsregeln im Azure-Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Um den Replikationsstatus für ein Blob im Quellkonto mit PowerShell zu prüfen, rufen Sie den Wert der **ReplicationStatus**-Eigenschaft der Objektreplikation ab, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um den Replikationsstatus für ein Blob im Quellkonto mit der Azure CLI zu prüfen, rufen Sie den Wert der **status**-Eigenschaft der Objektreplikation ab, wie im folgenden Beispiel gezeigt:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
 ```
 
 ---

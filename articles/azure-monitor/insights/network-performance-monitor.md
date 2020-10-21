@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798906"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403720"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -28,7 +28,7 @@ Der Netzwerkleistungsmonitor bietet drei allgemeine Funktionen:
 
 * [Dienstkonnektivitätsmonitor](network-performance-monitor-service-connectivity.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
 
-    Mit dieser Funktion können Sie Tests auf Basis von HTTP, HTTPS, TCP und ICMP ausführen, um die Verfügbarkeit und Antwortzeit Ihres Diensts in nahezu Echtzeit oder historisch zu überwachen. Sie können auch den Beitrag des Netzwerks bei Paketverlusten und Latenz überwachen. Mit einer Netzwerktopologiekarte können Sie Geschwindigkeitsverluste des Netzwerks eingrenzen. Sie können Problemstellen, die entlang des Netzwerkpfads vom Knoten zum Dienst auftreten, mit Latenzdaten für jeden Hop identifizieren. Mithilfe integrierter Tests können Sie ganz ohne Vorkonfiguration die Konnektivität mit Office 365 und Dynamics CRM überwachen. Mit dieser Funktion können Sie die Netzwerkkonnektivität mit einem beliebigen TCP-fähigen Endpunkt überwachen (z.B. Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken).
+    Mit dieser Funktion können Sie Tests auf Basis von HTTP, HTTPS, TCP und ICMP ausführen, um die Verfügbarkeit und Antwortzeit Ihres Diensts in nahezu Echtzeit oder historisch zu überwachen. Sie können auch den Beitrag des Netzwerks bei Paketverlusten und Latenz überwachen. Mit einer Netzwerktopologiekarte können Sie Geschwindigkeitsverluste des Netzwerks eingrenzen. Sie können Problemstellen, die entlang des Netzwerkpfads vom Knoten zum Dienst auftreten, mit Latenzdaten für jeden Hop identifizieren. Mithilfe integrierter Tests können Sie ganz ohne Vorkonfiguration die Konnektivität mit Microsoft 365 und Dynamics CRM überwachen. Mit dieser Funktion können Sie die Netzwerkkonnektivität mit einem beliebigen TCP-fähigen Endpunkt überwachen (z.B. Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken).
 
 * [ExpressRoute-Monitor](network-performance-monitor-expressroute.md): Überwachen Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über Azure ExpressRoute.  
 
@@ -82,7 +82,7 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
     Zur Überwachung einer Netzwerkverbindung installieren Sie an beiden Endpunkten der Verbindung Agents. Sollten Sie sich hinsichtlich der Topologie Ihres Netzwerks nicht sicher sein, installieren Sie die Agents auf Servern mit kritischen Workloads, zwischen denen Sie die Netzwerkleistung überwachen möchten. Wenn Sie also beispielsweise die Netzwerkverbindung zwischen einem Webserver und einem Server mit SQL überwachen möchten, installieren Sie auf beiden Servern einen Agent. Agents überwachen nicht die eigentlichen Hosts, sondern die Netzwerkkonnektivität (Verbindungen) zwischen Hosts. 
 
-* **Dienstkonnektivitätsmonitor**: Installieren Sie einen Log Analytics-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Office 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Log Analytics-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
+* **Dienstkonnektivitätsmonitor**: Installieren Sie einen Log Analytics-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Microsoft 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Log Analytics-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
 
 * **ExpressRoute-Monitor**: Installieren Sie mindestens einen Log Analytics-Agent in Ihrem virtuellen Azure-Netzwerk. Installieren Sie außerdem mindestens einen Agent in Ihrem lokalen-Subnetzwerk, das über privates ExpressRoute-Peering verbunden ist.  
 
@@ -128,7 +128,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
 
    ![Ansicht „Systemmonitor“](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Dienstkonnektivitätsmonitor**: Diese Funktion bietet integrierte, vorkonfigurierte Tests zur Überwachung der Netzwerkkonnektivität mit Office 365 und Dynamics 365 über Ihre Agents. Wählen Sie die Office 365- und Dynamics 365-Dienste aus, die Sie überwachen möchten, indem Sie die Kontrollkästchen neben ihnen aktivieren. Wählen Sie **Agents hinzufügen** aus, um die gewünschten Agents für die Überwachung auszuwählen. Wenn Sie diese Funktion nicht verwenden oder später einrichten möchten, nehmen Sie keine Auswahl vor, und wählen Sie dann **Speichern und fortfahren** aus.
+   **Dienstkonnektivitätsmonitor**: Diese Funktion bietet integrierte, vorkonfigurierte Tests zur Überwachung der Netzwerkkonnektivität mit Microsoft 365 und Dynamics 365 über Ihre Agents. Wählen Sie die Microsoft 365- und Dynamics 365-Dienste aus, die Sie überwachen möchten, indem Sie die Kontrollkästchen neben ihnen aktivieren. Wählen Sie **Agents hinzufügen** aus, um die gewünschten Agents für die Überwachung auszuwählen. Wenn Sie diese Funktion nicht verwenden oder später einrichten möchten, nehmen Sie keine Auswahl vor, und wählen Sie dann **Speichern und fortfahren** aus.
 
    ![Ansicht „Dienstkonnektivitätsmonitor“](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 

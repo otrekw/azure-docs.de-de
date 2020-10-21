@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90a4e86360916ba4b3dace0861fd1c6f7cd9b459
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118932"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567110"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 
@@ -46,7 +46,7 @@ Sie können Empfehlungen nach den folgenden Attributen filtern:
 
 - **Laufzeit** (1 Jahr oder 3 Jahre)
 - **Fakturierungsintervall** (monatlich oder Vorauszahlung)
-- **Durchsatztyp** (RUs oder Multimaster-RUs)
+- **Durchsatztyp** (RU/s oder Schreib-RU/s für mehrere Regionen)
 
 Darüber hinaus können Sie Empfehlungen für den Gültigkeitsbereich einer einzelnen Ressourcengruppe, eines einzelnen Abonnements oder ihrer gesamten Azure-Registrierung festlegen. 
 
@@ -66,7 +66,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
 4. Füllen Sie die Pflichtfelder aus, wie in der folgenden Tabelle beschrieben:
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Formular für die reservierte Kapazität ausfüllen":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Empfehlungen für reservierte Kapazität":::
 
    |Feld  |BESCHREIBUNG  |
    |---------|---------|
@@ -74,7 +74,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
    |Subscription  |   Das Abonnement, das für die Bezahlung der reservierten Azure Cosmos DB-Kapazitäten verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |
    | Ressourcengruppe | Ressourcengruppe, auf die der Rabatt für reservierte Kapazitäten angewendet wird. |
    |Begriff  |   Ein Jahr oder drei Jahre   |
-   |Durchsatztyp   |  Der Durchsatz wird in Form von Anforderungseinheiten bereitgestellt. Sie können eine Reservierung für den bereitgestellten Durchsatz für beide Setups erwerben – Schreibanforderungen für eine Region sowie Schreibanforderungen für mehre Regionen. Beim Durchsatztyp können Sie zwischen zwei Werten wählen: 100 RU/s pro Stunde und 100 Multimaster-RU/s pro Stunde.|
+   |Durchsatztyp   |  Der Durchsatz wird in Form von Anforderungseinheiten bereitgestellt. Sie können eine Reservierung für den bereitgestellten Durchsatz für beide Setups erwerben – Schreibanforderungen für eine Region sowie Schreibanforderungen für mehre Regionen. Beim Durchsatztyp können Sie zwischen zwei Werten wählen: 100 RU/s pro Stunde und 100 Schreib-RU/s für mehrere Regionen pro Stunde.|
    | Reservierte Kapazitätseinheiten| Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos-Datenbank verknüpfen. Beispiel: Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus. |
 
 
@@ -82,7 +82,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
 6. Prüfen Sie im Bereich **Reservierungen erwerben** den Rabatt und den Preis der Reservierung. Dieser Reservierungspreis gilt für Azure Cosmos DB-Ressourcen mit Durchsatz, die in allen Regionen bereitgestellt werden.  
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Zusammenfassung der reservierten Kapazität":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Empfehlungen für reservierte Kapazität":::
 
 7. Wählen Sie **Review + buy** (Überprüfen und kaufen) und dann **Jetzt kaufen**. Nach einem erfolgreichen Kauf wird die folgende Seite angezeigt:
 

@@ -3,15 +3,15 @@ title: 'Verwalten von App-Gruppen per Windows Virtual Desktop-Portal: Azure'
 description: Es wird beschrieben, wie Sie Windows Virtual Desktop-App-Gruppen mit dem Azure-Portal verwalten.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320216"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930270"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Tutorial: Verwalten von App-Gruppen mit dem Azure-Portal
 
@@ -124,7 +124,7 @@ Beim Bereitstellungsprozess wird Folgendes für Sie durchgeführt:
 - Erstellen eines Links zu einer Azure Resource Manager-Vorlage basierend auf Ihrer Konfiguration, die Sie herunterladen und zur späteren Verwendung speichern können
 
 >[!IMPORTANT]
->Für jeden Azure Active Directory-Mandanten können nur 50 Anwendungsgruppen erstellt werden. Dieser Grenzwert wurde aufgrund von Diensteinschränkungen beim Abrufen von Feeds für unsere Benutzer hinzugefügt. Er gilt nicht für App-Gruppen, die in Windows Virtual Desktop (klassisch) erstellt wurden.
+>Für jeden Azure Active Directory-Mandanten können nur 200 Anwendungsgruppen erstellt werden. Dieser Grenzwert wurde aufgrund von Diensteinschränkungen beim Abrufen von Feeds für unsere Benutzer hinzugefügt. Er gilt nicht für App-Gruppen, die in Windows Virtual Desktop (klassisch) erstellt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

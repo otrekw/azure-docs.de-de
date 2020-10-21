@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fee5427981cbd2c04a5ee88500a1aee77e2e5ffd
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923737"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876123"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -41,7 +41,7 @@ Blob-APIs und Data Lake Storage Gen2-APIs können mit denselben Daten arbeiten.
 
 In diesem Abschnitt werden Probleme und Einschränkungen bei der Verwendung von Blob-APIs und Data Lake Storage Gen2-APIs für dieselben Daten beschrieben.
 
-* Es ist nicht möglich, sowohl Blob-APIs als auch Data Lake Storage-APIs zu verwenden, um in dieselbe Instanz einer Datei zu schreiben. Wenn Sie in eine Datei schreiben, indem Sie Data Lake Storage Gen2-APIs verwenden, sind die Blöcke dieser Datei für Aufrufe der [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list)-Blob-API nicht sichtbar. Sie können eine Datei überschreiben, indem Sie entweder Data Lake Storage Gen2-APIs oder Blob-APIs verwenden. Dies wirkt sich nicht auf die Dateieigenschaften aus.
+* Es ist nicht möglich, sowohl API als auch Data Lake Storage-APIs zu verwenden, um in dieselbe Instanz einer Datei zu schreiben. Wenn Sie in eine Datei schreiben, indem Sie Data Lake Storage Gen2-APIs verwenden, sind die Blöcke dieser Datei für Aufrufe der [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list)-Blob-API nicht sichtbar. Die einzige Ausnahme ist, wenn Sie bei der Verwendung überschreiben. Sie können eine Datei/ein Blob mithilfe einer der beiden APIs überschreiben.
 
 * Wenn Sie den Vorgang [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) verwenden, ohne ein Trennzeichen anzugeben, enthalten die Ergebnisse sowohl Verzeichnisse als auch Blobs. Wenn Sie sich für Trennzeichen entscheiden, sollten Sie nur einen Schrägstrich (`/`) verwenden. Dies ist das einzige Trennzeichen, das unterstützt wird.
 
@@ -113,11 +113,9 @@ Die Einstellung für die Aufbewahrungsdauer wird noch nicht unterstützt. Sie k�
 
 ### <a name="lifecycle-management-policies"></a>Richtlinien für die Lebenszyklusverwaltung
 
-- Richtlinien für die Lebenszyklusverwaltung werden in BlockBlobStorage-Speicherkonten mit Premium-Leistung noch nicht unterstützt. 
+- Richtlinien für die Lebenszyklusverwaltung werden nur für universelle v2-Konten unterstützt. Sie werden in BlockBlobStorage-Speicherkonten mit Premium-Leistung noch nicht unterstützt.
+- Daten können nicht aus dem Tarif „Premium“ in niedrigere Tarife verschoben werden.
 
-- Daten können nicht aus dem Tarif „Premium“ in niedrigere Tarife verschoben werden. 
-
-- Die Aktion **Blob löschen** wird aktuell nicht unterstützt. 
 
 ### <a name="hdinsight-support"></a>HDInsight-Support
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 941218f9a35a0a242612ae1d6230c642129c8259
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Tutorial: Azure Active Directory-Integration mit Meta Networks Connector
 
@@ -101,7 +101,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Meta Networks Connector](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
@@ -109,7 +109,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Meta Networks Connector](common/both-advanced-urls.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/both-advanced-urls.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
@@ -120,7 +120,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
 
 6. Die Meta Networks Connector-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot: Benutzerattribute mit ausgewähltem Bearbeitungssymbol](common/edit-attribute.png)
     
 7. Darüber hinaus wird von der Meta Networks Connector-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
     
@@ -134,9 +134,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![image](common/new-save-attribute.png)
+    ![Screenshot: Benutzeransprüche mit Option zum Hinzufügen eines neuen Anspruchs](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Screenshot: Dialogfeld „Benutzeransprüche verwalten“ zum Eingeben der hier beschriebenen Werte](common/new-attribute-details.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -173,19 +173,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 2. Klicken Sie auf **Verwaltung** und dann auf **Einstellungen**.
     
-    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure3.png)
+    ![Screenshot, auf dem die Option „Settings“ (Einstellungen) im Menü „Administration“ (Verwaltung) ausgewählt ist](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. Stellen Sie sicher, dass **Log Internet Traffic** (Internetdatenverkehr protokollieren) und **Force VPN MFA** (VPN-MFA erzwingen) deaktiviert sind.
     
-    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure1.png)
+    ![Screenshot: Deaktivieren dieser Einstellungen](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. Klicken Sie auf **Verwaltung** und dann auf **SAML**.
     
-    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure4.png)
+    ![Screenshot, auf dem „SAML“ im Menü „Administration“ (Verwaltung) ausgewählt ist](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. Führen Sie auf der Registerkarte **DETAILS** die folgenden Schritte aus:
     
-    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure2.png)
+    ![Screenshot: Seite „DETAILS“, auf der Sie die beschriebenen Werte eingeben können](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. Kopieren Sie den Wert für **SSO-URL**, und fügen Sie ihn im Abschnitt **Domäne und URLs für Meta Networks Connector** ins Textfeld **Anmelde-URL** ein.
     
@@ -197,7 +197,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 6. Führen Sie auf der Registerkarte **ALLGEMEIN** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure5.png)
+    ![Screenshot: Seite „GENERAL“ (ALLGEMEIN), auf der Sie die beschriebenen Werte eingeben können](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in **URL für einmaliges Anmelden des Identitätsanbieters** ein.
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893626"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945589"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform
 
@@ -46,8 +46,14 @@ In diesem Szenario wird davon ausgegangen, dass Sie die Featureauswahl verwenden
 
    *Stellen Sie keine Verbindung mit dem Eingabedataset her.* Fügen Sie stattdessen das Modul [Apply Transformation](apply-transformation.md) hinzu, und verbinden Sie mit der Ausgabe der Featureauswahltransformation.
 
+   Die Pipelinestruktur sollte wie folgt aussehen:
+
+   > [!div class="mx-imgBorder"]
+   > ![Beispiel-Pipeline](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > Wenn Sie [Filter Based Feature Selection](filter-based-feature-selection.md) auf das Bewertungsdataset anwenden, können Sie nicht erwarten, dass dieselben Ergebnisse erzielt werden. Da die Featureauswahl auf Werten basiert, wird dabei unter Umständen ein anderer Satz von Spalten ausgewählt, was dazu führt, dass der Bewertungsvorgang fehlschlägt.
+    
 7. Übermitteln Sie die Pipeline.
 
 Durch diese Vorgehensweise mit Speichern und anschließendem Anwenden einer Spaltenauswahl wird sichergestellt, dass für das Training und die Bewertung dasselbe Datenschema verfügbar ist.

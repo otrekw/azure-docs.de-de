@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650857"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91630932"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurieren eines virtuellen Netzwerkgeräts in Azure HDInsight
 
@@ -23,7 +23,7 @@ Azure Firewall wird automatisch dazu konfiguriert, den Datenverkehr für viele d
 
 * Dienstendpunktfähige Dienste können mit Dienstendpunkten konfiguriert werden, was zu einer Umgehung des virtuellen Netzwerkgeräts führt (in der Regel aus Kosten- oder Leistungsüberlegungen).
 * IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
-* FQDN-HTTP-/HTTPS-Endpunkte können in Ihrem virtuellen Netzwerkgerät in eine Whitelist aufgenommen werden.
+* FQDN HTTP/HTTPS-Endpunkte können auf Ihrem NVA-Gerät genehmigt werden.
 * Weisen Sie die Routingtabelle zu, die Sie für Ihr HDInsight-Subnetz erstellen.
 
 ## <a name="service-endpoint-capable-dependencies"></a>Dienstendpunktfähige Abhängigkeiten

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907033"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998485"
 ---
 # <a name="group-data-into-bins-module"></a>Modul „Gruppieren von Daten in Containern“
 
@@ -44,7 +44,8 @@ Das *Quantisieren* oder *Gruppieren* von Daten ist ein wichtiges Tool für die V
 
 Das folgende Diagramm zeigt die Verteilung der numerischen Werte vor und nach der Quantisierung mit der *Quantilmethode*. Beachten Sie, dass im Vergleich zu den Rohdaten auf der linken Seite die Daten in Container aufgeteilt und in eine normale Größe transformiert wurden.  
 
-Sie finden ein [Beispiel im Ergebnis dieser Pipelineausführung](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net).
+> [!div class="mx-imgBorder"]
+> ![Ergebnisvisualisierung](media/module/group-data-into-bins-result-example.png)
 
 Da es so viele Möglichkeiten zur Gruppierung von Daten gibt, die alle anpassbar sind, empfehlen wir Ihnen, mit verschiedenen Methoden und Werten zu experimentieren. 
 
@@ -65,6 +66,9 @@ Da es so viele Möglichkeiten zur Gruppierung von Daten gibt, die alle anpassbar
     - **Custom Edges** (Benutzerdefinierte Grenzen): Sie können die Werte angeben, mit denen jeder Container beginnt. Der Grenzwert ist immer die untere Grenze des Containers. 
     
       Nehmen Sie z. B. an, Sie möchten Werte in zwei Container gruppieren. Einer wird Werte größer als 0 enthalten, und einer wird Werte kleiner oder gleich 0 aufweisen. In diesem Fall geben Sie für Diskretisierungsrandwerte **0** in **Comma-separated list of bin edges** (durch Komma getrennte Liste von Diskretisierungsrandwerten) ein. Die Ausgabe des Moduls wird 1 und 2 sein, was den Containerindex für jeden Zeilenwert angibt. Beachten Sie, dass die durch Komma getrennte Werteliste in aufsteigender Reihenfolge sein muss, z. B. 1, 3, 5, 7.
+    
+    > [!Note]
+    > Der Modus *Entropie MDL* ist in Studio (Classic) definiert, und es gibt noch kein entsprechendes Open Source-Paket, das zur Unterstützung im Designer genutzt werden kann.        
 
 4. Wenn Sie die Quantisierungsmodi **Quantiles** und **Equal Width** verwenden, geben Sie mit der Option **Number of bins** (Anzahl der Container) an, wie viele Container oder *Quantilen* Sie erstellen möchten.
 

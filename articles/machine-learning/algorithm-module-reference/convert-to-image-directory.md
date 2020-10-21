@@ -8,51 +8,63 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/09/2020
+ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898693"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940355"
 ---
 # <a name="convert-to-image-directory"></a>Konvertieren in ein Bildverzeichnis
 
-In diesem Artikel erfahren Sie, wie Sie das Modul „Convert to Image Directory“ (In Bildverzeichnis konvertieren) verwenden, um ein Bilddataset in den Datentyp „Bildverzeichnis“ zu konvertieren. Hierbei handelt es sich um ein standardisiertes Datenformat für bildbezogene Aufgaben wie etwa die Bildklassifizierung im Azure Machine Learning-Designer.
+In diesem Artikel erfahren Sie, wie Sie das Modul „Convert to Image Directory“ (In Bildverzeichnis konvertieren) verwenden, um ein Bilddataset in den Datentyp *Bildverzeichnis* zu konvertieren. Hierbei handelt es sich um ein standardisiertes Datenformat für bildbezogene Aufgaben wie etwa die Bildklassifizierung im Azure Machine Learning-Designer.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Verwenden von „Convert to Image Directory“ (In Bildverzeichnis konvertieren)  
 
-1.  Fügen Sie Ihrem Experiment das Modul **Convert to Image Directory** (In Bildverzeichnis konvertieren) hinzu. Dieses Modul befindet sich in der Modulliste in der Kategorie „Maschinelles Sehen/Transformation von Bilddaten“. 
+1. Bereiten Sie zunächst Ihren Bilddataset vor. 
 
-2.  [Registrieren Sie ein Bilddataset](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets), und verbinden Sie es mit dem Moduleingabeport. Achten Sie darauf, dass das Eingabedataset Bilder enthält. 
-    Folgende Datasetformate werden unterstützt:
+    Für beaufsichtigtes Lernen müssen Sie die Bezeichnung des Trainingsdatasets angeben. Die Bilddatasetdatei sollte die folgende Struktur aufweisen:
+    
+    ```
+    Your_image_folder_name/Category_1/xxx.png
+    Your_image_folder_name/Category_1/xxy.jpg
+    Your_image_folder_name/Category_1/xxz.jpeg
+    
+    Your_image_folder_name/Category_2/123.png
+    Your_image_folder_name/Category_2/nsdf3.png
+    Your_image_folder_name/Category_2/asd932_.png
+    ```
+    
+    Im Bilddatasetordner gibt es mehrere Unterordner. Jeder Unterordner enthält Bilder jeweils einer Kategorie. Die Namen von Unterordnern werden als Bezeichnungen für Aufgaben wie die Bildklassifizierung betrachtet. Weitere Informationen finden Sie unter [Torchvision-Datasets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder).
 
-    - Komprimierte Datei mit folgenden Erweiterungen: „.zip“, „.tar“, „.gz“, „.bz2“.
-    - Ordner mit Bildern. **Es empfiehlt sich, einen solchen Ordner zu komprimieren und dann die komprimierte Datei als Dataset zu verwenden.**
+    > [!WARNING]
+    > Derzeit werden von der Datenbeschriftung exportierte Datasets im Designer nicht unterstützt.
+
+    Bilder mit diesen Erweiterungen (in Kleinbuchstaben) werden unterstützt: „.jpg“, „.jpeg“, „.png“, „.ppm“, „.bmp“, „.pgm“, „.tif“, „.tiff“, „.webp“. Sie können auch mehrere Arten von Bildern in einem Ordner speichern. Es ist nicht notwendig, in jedem Kategorieordner die gleiche Anzahl von Bildern zu enthalten.
+
+    Sie können entweder den Ordner oder eine komprimierte Datei mit den Erweiterungen „.zip“, „.tar“, „.gz“ und „.bz2“ verwenden. **Komprimierte Dateien werden für eine bessere Leistung empfohlen.** 
+    
+    ![Bildbeispieldataset](./media/module/image-sample-dataset.png)
+
+    Für die Bewertung darf der Bilddatasetordner nur nicht klassifizierte Bilder enthalten.
+
+1. [Registrieren Sie das Bilddataset als Dateidataset](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) in Ihrem Arbeitsbereich, da die Eingabe des Moduls „Convert to Image Directory“ (In Bildverzeichnis konvertieren) ein **Dateidataset** sein muss.
+
+1. Fügen Sie das registrierte Bilddataset zur Canvas hinzu. Sie finden Ihr registriertes Dataset in der Kategorie **Datasets** in der Modulliste im linken Teil der Canvas. Derzeit unterstützt der Designer die Visualisierung von Bilddatasets nicht.
 
     > [!WARNING]
     > Bilddatasets können **nicht** mithilfe des Moduls **Daten importieren** importiert werden, da das Modul **Daten importieren** Daten als DataFrame-Verzeichnis ausgibt und die Daten dann nur die Dateipfadzeichenfolge enthalten.
+
+1. Fügen Sie der Canvas das Modul **Convert to Image Directory** (In Bildverzeichnis konvertieren) hinzu. Dieses Modul befindet sich in der Modulliste in der Kategorie „Maschinelles Sehen/Transformation von Bilddaten“. Verbinden Sie es mit dem Bilddataset.
     
-
-    > [!NOTE]
-    > Wenn das Bilddataset im Rahmen von beaufsichtigtem Lernen verwendet wird, ist eine Bezeichnung erforderlich.
-    > Für die Bildklassifizierungsaufgabe kann die Bezeichnung in der Modulausgabe als Bildkategorie generiert werden, wenn dieses Bilddataset als ImageFolder-Format von Torchvision strukturiert ist. Andernfalls werden nur Bilder ohne Bezeichnung gespeichert. Das folgende Beispiel zeigt, wie Sie das Bilddataset strukturieren können, um die Bezeichnung zu erhalten und die Bildkategorie als Unterordnername verwenden. Weitere Informationen finden Sie unter [Torchvision-Datasets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder).
-    >
-    > ```
-    > root/dog/xxx.png
-    > root/dog/xxy.png
-    > root/dog/xxz.png
-    >
-    > root/cat/123.png
-    > root/cat/nsdf3.png
-    > root/cat/asd932_.png
-    > ```
-
-3.  Übermitteln Sie die Pipeline.
+3.  Übermitteln Sie die Pipeline. Dieses Modul kann sowohl auf einer GPU als auch auf einer CPU ausgeführt werden.
 
 ## <a name="results"></a>Ergebnisse
 
-Das Modul **Convert to Image Directory** (In Bildverzeichnis konvertieren) gibt Daten im Bildverzeichnisformat aus, und die Daten können mit anderen bildbezogenen Modulen verbunden werden, die ebenfalls das Bildverzeichnisformat als Eingabeportformat haben.
+Das Modul **Convert to Image Directory** (In Bildverzeichnis konvertieren) gibt Daten im **Bildverzeichnisformat** aus, und die Daten können mit anderen bildbezogenen Modulen verbunden werden, die ebenfalls das Bildverzeichnisformat als Eingabeportformat haben.
+
+![Konvertieren in Bildverzeichnisausgabe](./media/module/convert-to-image-directory-output.png)
 
 ## <a name="technical-notes"></a>Technische Hinweise 
 
@@ -66,7 +78,7 @@ Das Modul **Convert to Image Directory** (In Bildverzeichnis konvertieren) gibt 
 
 | Name                   | type           | Beschreibung            |
 | ---------------------- | -------------- | ---------------------- |
-| Ausgabebildverzeichnis | ImageDirectory | Ausgabebildverzeichnis |
+| Ausgabe-Bildverzeichnis | ImageDirectory | Ausgabe-Bildverzeichnis |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

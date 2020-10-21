@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Problembehandlung bei SAML-basiertem einmaligem Anmelden
           href: troubleshoot-saml-based-sso.md
+        - name: Debuggen des SAML-basierten einmaligen Anmeldens
+          href: debug-saml-sso-issues.md
         - name: Problembehandlung für Benutzeranmeldung
           items:
             - name: Unerwartete Zustimmungsaufforderung

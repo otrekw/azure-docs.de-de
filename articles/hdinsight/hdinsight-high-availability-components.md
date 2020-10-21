@@ -6,24 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609164"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842579"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Von Azure HDInsight unterstützte Hochverfügbarkeitsdienste
 
- HDInsight wurde mit einer einzigartigen Architektur entwickelt, um Hochverfügbarkeit (HA) wichtiger Dienste sicherzustellen und Ihnen ein optimales Maß an Verfügbarkeit für Ihre Analysekomponenten bereitzustellen. Einige Komponenten dieser Architektur wurden von Microsoft zur Bereitstellung eines automatischen Failovers entwickelt. Andere Komponenten sind standardmäßige Apache-Komponenten, die zur Unterstützung bestimmter Dienste bereitgestellt werden. In diesem Artikel wird die Architektur des Hochverfügbarkeitsdienst-Modells in HDInsight erläutert und erklärt, wie HDInsight Failover für Hochverfügbarkeitsdienste unterstützt. Außerdem werden bewährte Methoden für die Wiederherstellung nach anderen Dienstunterbrechungen vorgestellt.
+HDInsight wurde mit einer einzigartigen Architektur entwickelt, um Hochverfügbarkeit (HA) wichtiger Dienste sicherzustellen und Ihnen ein optimales Maß an Verfügbarkeit für Ihre Analysekomponenten bereitzustellen. Einige Komponenten dieser Architektur wurden von Microsoft zur Bereitstellung eines automatischen Failovers entwickelt. Andere Komponenten sind standardmäßige Apache-Komponenten, die zur Unterstützung bestimmter Dienste bereitgestellt werden. In diesem Artikel wird die Architektur des Hochverfügbarkeitsdienst-Modells in HDInsight erläutert und erklärt, wie HDInsight Failover für Hochverfügbarkeitsdienste unterstützt. Außerdem werden bewährte Methoden für die Wiederherstellung nach anderen Dienstunterbrechungen vorgestellt.
  
 > [!NOTE]
 > Vorurteilsfreie Kommunikation
 >
 > Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ verwendet. Laut dem [Microsoft-Styleguide für vorurteilsfreie Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen gebraucht, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
 >
-
 
 ## <a name="high-availability-infrastructure"></a>Hochverfügbarkeitsinfrastruktur
 
@@ -43,7 +42,7 @@ Diese Infrastruktur besteht aus einer Reihe von Diensten und Softwarekomponenten
 
 ![Hochverfügbarkeitsinfrastruktur](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-Es gibt noch weitere Hochverfügbarkeitsdienste, die von Zuverlässigkeitskomponenten für Open Source Apache unterstützt werden. Diese Komponenten sind auch in HDInsight-Clustern enthalten:
+Es gibt noch weitere Hochverfügbarkeitsdienste, die von Zuverlässigkeitskomponenten für Open-Source-Apache unterstützt werden. Diese Komponenten sind auch in HDInsight-Clustern enthalten:
 
 - Hadoop Distributed File System (HDFS) NameNode
 - YARN ResourceManager

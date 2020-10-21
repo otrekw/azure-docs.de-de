@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554640"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Tutorial: Azure Active Directory-Integration in MobileIron
 
@@ -99,7 +99,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in MobileIro
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für MobileIron](common/idp-intiated.png)
+    ![Screenshot der grundlegenden S A M L-Konfiguration, in der Sie I D und Antwort-U R L eingeben und „Speichern“ auswählen](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in MobileIro
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für MobileIron](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in MobileIro
 
 2. Navigieren Sie zu **Admin** > **Identity** (Identität), und wählen Sie im Feld **Info on Cloud IDP Setup** (Info zum Cloud-IDP-Setup) die Option **AAD**.
 
-    ![Einmaliges Anmelden konfigurieren – Administratorschaltfläche](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![Screenshot: Registerkarte „Admin“ auf der MobileIron-Website mit Auswahl von „Identity“ (Identität)](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. Kopieren Sie die Werte von **Key** (Schlüssel) und **Host**, und fügen Sie sie zum Ausfüllen der URLs im Azure-Portal in den Abschnitt **Grundlegende SAML-Konfiguration** ein.
 
-    ![Einmaliges Anmelden konfigurieren – Administratorschaltfläche](./media/mobileiron-tutorial/key.png)
+    ![Screenshot: Option zum Einrichten von SAML mit einem Schlüssel- und einem Hostwert](./media/mobileiron-tutorial/key.png)
 
 4. Klicken Sie in **Metadatendatei aus AAD exportieren und in MobileIron-Cloudfeld importieren** auf **Datei auswählen**, um die heruntergeladenen Metadaten vom Azure-Portal hochzuladen. Klicken Sie nach dem Hochladen auf **Fertig**.
 

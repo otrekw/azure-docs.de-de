@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449242"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359510"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>Upgrade einer Azure-VM mit SLES 12 auf SLES 15 SP1
 
@@ -66,11 +66,11 @@ Sie benötigen mindestens SLES 12 SP4 oder 12 SP5, bevor Sie ein Upgrade auf SL
 
 6. Öffnen Sie das [Azure-Portal](https://portal.azure.com), wählen Sie die VM aus, und wählen Sie dann die Option **Serielle Konsole** aus. Sie werden feststellen, dass das System bei „reboot: Restarting system“ anhält. Dieser Prozess sollte etwa 15 bis 45 Minuten dauern. Bei VMs der Generation V2 hält der Prozess möglicherweise bei der Anzeige „reboot: Restarting system“ an. Warten Sie in diesem Fall 45 Minuten. Wenn der Prozess weiterhin nicht fortgesetzt wird, rufen Sie die Seite **Übersicht** der VM im Azure-Portal auf, beenden Sie die VM, und starten Sie diese dann neu.
 
-     ![Screenshot zu den Meldungen in der seriellen Konsole](./media/linux-upgrade-suse-15sp1/reboot-message.png)
+     ![Screenshot zu den Meldungen in der seriellen Konsole.](./media/linux-upgrade-suse-15sp1/reboot-message.png)
 
 8. Sobald das System mit dem neuen Kernel neu gestartet wurde, wird Ihnen die folgende Meldung angezeigt.
 
-     ![Screenshot zu den Meldungen in der seriellen Konsole](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![Screenshot zu den Meldungen in der seriellen Konsole, nachdem das System mit dem neuen Kernel neu gestartet wurde.](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. Überprüfen Sie die Kernel- und Betriebssystemversion, um in Erfahrung zu bringen, ob das Systemupgrade erfolgreich durchgeführt wurde.
 
     ```

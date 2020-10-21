@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6a9599c20905168b425675d0b028545143c7d19f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528470"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941074"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Mimecast Admin Console
 
@@ -155,23 +155,23 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Navigieren Sie zu **Verwaltung** > **Dienste** > **Anwendungen**.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/services.png)
+    ![Screenshot: Mimecast-Fenster mit Auswahl der Option „Anwendungen“](./media/mimecast-admin-console-tutorial/services.png)
 
 1. Klicken Sie auf die Registerkarte **Authentifizierungsprofile**.
     
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
+    ![Screenshot: Registerkarte „Applications“ (Anwendungen) mit Auswahl der Option „Authentication Profiles“ (Authentifizierungsprofile)](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
 1. Klicken Sie auf die Registerkarte **Neues Authentifizierungsprofil**.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+    ![Screenshot: Auswahl der Option „New Authentication Profile“ (Neues Authentifizierungsprofil)](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
 
 1. Geben Sie im Textfeld **Beschreibung** eine gültige Beschreibung ein, und wählen Sie **SAML-Authentifizierung für Admin Console erzwingen** aus.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+    ![Screenshot: Ort für die Auswahl von „Enforce SAML Authentication for Administration Console“ (SAML-Authentifizierung für Verwaltungskonsole erzwingen)](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
 
 1. Führen Sie auf der Seite **SAML-Konfiguration für Admin Console** die folgenden Schritte aus:
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/sso-settings.png)
+    ![Screenshot: Seite „SAML-Konfiguration für Admin Console“, auf der Sie die beschriebenen Werte eingeben können](./media/mimecast-admin-console-tutorial/sso-settings.png)
 
     a. Wählen Sie als **Anbieter** in der Dropdownliste **Azure Active Directory** aus.
 
@@ -189,19 +189,19 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Navigieren Sie zu **Verwaltung** > **Verzeichnisse** > **Interne Verzeichnisse**.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/internal-directories.png)
+    ![Screenshot: Mimecast-Fenster mit Auswahl der Option „Internal Directories“ (Interne Verzeichnisse)](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
 1. Wählen Sie Ihre Domäne aus, wenn sie unten angegeben ist, und erstellen Sie andernfalls eine neue Domäne, indem Sie auf **Neue Domäne** klicken.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/domain-name.png)
+    ![Screenshot: Anzeige der ausgewählten Domäne](./media/mimecast-admin-console-tutorial/domain-name.png)
 
 1. Klicken Sie auf die Registerkarte **Neue Adresse**.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/new-address.png)
+    ![Screenshot: Auswahl von „Neue Adresse“](./media/mimecast-admin-console-tutorial/new-address.png)
 
 1. Geben Sie auf der folgenden Seite die erforderlichen Benutzerinformationen an:
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/user-information.png)
+    ![Screenshot: Seite, auf der Sie die beschriebenen Werte eingeben können](./media/mimecast-admin-console-tutorial/user-information.png)
 
     a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z. B. `B.Simon@yourdomainname.com`.
 
@@ -215,7 +215,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     f. Um dem Benutzer Rollen zuzuweisen, klicken Sie auf **Rollenbearbeitung**, und weisen Sie dem Benutzer die erforderliche Rolle gemäß den Anforderungen Ihrer Organisation zu.
 
-    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/assign-role.png)
+    ![Screenshot: Adresseinstellungen, in denen Sie auf „Role Edit“ (Rollenbearbeitung) klicken können](./media/mimecast-admin-console-tutorial/assign-role.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

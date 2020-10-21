@@ -1,5 +1,5 @@
 ---
-title: Serverparameter – Hyperscale (Hyperscale (Citus)) – Azure Database for PostgreSQL
+title: Serverparameter – Hyperscale (Citus) – Azure Database for PostgreSQL
 description: Parameter in der SQL-API für Hyperscale (Citus)
 author: jonels-msft
 ms.author: jonels
@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 2b4d3d44cb4e78f52ab03f31e58df5e66118ae25
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441509"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336240"
 ---
 # <a name="server-parameters"></a>Serverparameter
 
 Es gibt verschiedene Serverparameter, die sich auf das Verhalten von Hyperscale (Citus) auswirken, und zwar sowohl Parameter aus Standard-PostgreSQL als auch für Hyperscale (Citus) spezifische Parameter.
 Diese Parameter können Sie im Azure-Portal für eine Hyperscale (Citus)-Servergruppe festlegen. Wählen Sie hierzu unter der Kategorie **Einstellungen** die Option **Workerknotenparameter** oder die Option **Koordinatorknotenparameter** aus. Auf diesen Seiten können Sie Parameter für alle Workerknoten oder nur für den Koordinatorknoten festlegen.
 
-## <a name="hyperscale-parameters"></a>Hyperscale-Parameter
+## <a name="hyperscale-citus-parameters"></a>Hyperscale (Citus)-Parameter
 
 > [!NOTE]
 >
-> Hyperscale-Servergruppen, auf denen ältere Versionen der Citus-Engine ausgeführt werden, bieten möglicherweise nicht alle unten aufgeführten Parameter.
+> Hyperscale (Citus)-Servergruppen, auf denen ältere Versionen der Citus-Engine ausgeführt werden, bieten möglicherweise nicht alle unten aufgeführten Parameter.
 
 ### <a name="general-configuration"></a>Allgemeine Konfiguration
 

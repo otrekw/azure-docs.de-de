@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1f7ff20dbdd0dac5b56d0f746733b14dfe44803e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554651"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Tutorial: Azure Active Directory-Integration in moconavi
 
@@ -191,15 +191,15 @@ In diesem Abschnitt erstellen Sie in moconavi eine Benutzerin namens Britta Simo
 
 3. Klicken Sie auf die Schaltfläche **Connect setting** (Einstellung verbinden).
 
-    ![Testen der einmaligen Anmeldung](./media/moconavi-tutorial/testing1.png)
+    ![Screenshot: moconavi mit Schaltfläche für Verbindungseinstellung](./media/moconavi-tutorial/testing1.png)
 
 4. Geben Sie im Textfeld **Connect to URL** (Mit URL verbinden) den Wert `https://mcs-admin.moconavi.biz/gateway` ein, und klicken Sie dann auf die Schaltfläche **Done** (Fertig).
 
-    ![Testen der einmaligen Anmeldung](./media/moconavi-tutorial/testing2.png)
+    ![Screenshot: Feld „Connect to URL“ (Mit URL verbinden) und Schaltfläche „Done“ (Fertig)](./media/moconavi-tutorial/testing2.png)
 
 5. Führen Sie im folgenden Bildschirm diese Schritte aus:
 
-    ![Testen der einmaligen Anmeldung](./media/moconavi-tutorial/testing3.png)
+    ![Screenshot: moconavi-Seite, auf der Sie die beschriebenen Werte eingeben können](./media/moconavi-tutorial/testing3.png)
 
     a. Geben Sie im Textfeld **Input Authentication Key** (Authentifizierungsschlüssel eingeben) den **Authentifizierungsschlüssel**`azureAD` ein.
 
@@ -209,11 +209,11 @@ In diesem Abschnitt erstellen Sie in moconavi eine Benutzerin namens Britta Simo
 
 6. Geben Sie im Textfeld **Password** (Kennwort) Ihr Azure AD-Kennwort ein, und klicken Sie auf die Schaltfläche **Login** (Anmelden).
 
-    ![Testen der einmaligen Anmeldung](./media/moconavi-tutorial/testing4.png)
+    ![Screenshot: Ort für die Eingabe Ihres Azure AD-Kennworts](./media/moconavi-tutorial/testing4.png)
 
 7. Die Azure AD-Authentifizierung war erfolgreich, wenn das Menü angezeigt wird.
 
-    ![Testen der einmaligen Anmeldung](./media/moconavi-tutorial/testing5.png)
+    ![Screenshot: Telefonsymbol in moconavi](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

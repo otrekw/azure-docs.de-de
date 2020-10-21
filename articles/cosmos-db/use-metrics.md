@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019231"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568011"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Die folgenden Metriken sind im Bereich **Metriken** verfügbar:
 
 * **Konsistenzmetrik**: Diese Metrik informiert über die Konsistenz für das ausgewählte Konsistenzmodell. Diese Metrik zeigt für Konten in mehreren Regionen auch die Wartezeit für die Replikation zwischen den ausgewählten Regionen an.
 
-* **Systemmetrik**: Diese Metrik zeigt an, wie viele Metadatenanforderungen von der Masterpartition bereitgestellt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
+* **Systemmetrik**: Diese Metrik zeigt an, wie viele Metadatenanforderungen von der primären Partition bereitgestellt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
 
 In den folgenden Abschnitten werden allgemeine Szenarios erläutert, in denen Sie Azure Cosmos DB-Metriken verwenden können. 
 
@@ -51,13 +51,13 @@ Rufen Sie zunächst das [Azure-Portal](https://portal.azure.com) auf, und navigi
 
 Der häufigste Fehlerstatuscode ist 429 (Ratenbegrenzung/Drosselung). Dieser Fehler besagt, dass Anforderungen an Azure Cosmos DB den bereitgestellten Durchsatz überschreiten. Die gängigste Lösung für dieses Problem ist das [Hochskalieren der Anforderungseinheiten](./set-throughput.md) (Request Units, RUs) für die angegebene Sammlung.
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Anzahl von Anforderungen pro Minute":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>Ermitteln der partitionsübergreifenden Durchsatzverteilung
 
 Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt **Metriken**. Auf der Registerkarte **Durchsatz** wird im Diagramm **Maximal genutzte RU/Sekunde je physische Partition** die Speicheraufschlüsselung angezeigt. Die folgende Abbildung zeigt ein Beispiel für eine schlechte Verteilung der Daten, die sich an der extremen Partition am linken Rand erkennen lässt.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Einzelne Partition mit starker Auslastung":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal":::
 
 Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursachen, die zu gedrosselten Anforderungen führen können und möglicherweise eine Neupartitionierung erfordern. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partition-data.md).
 
@@ -65,11 +65,11 @@ Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursac
 
 Für jede skalierbare Anwendung ist eine gute Kardinalität der Partition von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Speicherverteilung jedes partitionierten Containers zu bestimmen, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Blatt „Metriken“. Auf der Registerkarte „Speicher“ wird die Speicheraufschlüsselung im Diagramm „Von wichtigen Partitionsschlüsseln genutzter Daten- und Indexspeicher“ angezeigt. Die folgende Abbildung zeigt eine schlechte Verteilung des Datenspeichers, wie die verzerrte Partition ganz links verdeutlicht.
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Beispiel für eine schlechte Datenverteilung":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal":::
 
 Sie können bestimmen, welcher Partitionsschlüssel die Verteilung verzerrt, indem Sie auf die Partition im Diagramm klicken.
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Partitionsschlüssel verzerrt die Verteilung":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal":::
 
 Nachdem Sie den Partitionsschlüssel identifiziert haben, der die verzerrte Verteilung verursacht, müssen Sie möglicherweise den Container mit einem Partitionsschlüssel für eine gleichmäßigere Verteilung neu partitionieren. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partition-data.md).
 

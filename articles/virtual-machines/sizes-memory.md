@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ea58eeac5a77f2e1eaf2a7756de6d36a3fc0626b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825496"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019714"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Arbeitsspeicheroptimierte Größen virtueller Computer
 
@@ -36,7 +36,7 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 
 - [Die Ev4- und die Esv4-Serie](ev4-esv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) in einer Hyperthreadkonfiguration ausgeführt, eignen sich optimal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und unterstützen zu bis zu 504 GiB RAM. Sie verfügen über [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Die Ev4- und die Esv4-Serie enthalten keinen lokalen temporären Datenträger. Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.md).
 
-- Die [Edv4- und die Edsv4-Serie](edv4-edsv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) ausgeführt und eignen sich optimal für besonders große Datenbanken oder andere Anwendungen, die von einer hohen vCPU-Anzahl und umfangreichem Speicher profitieren. Darüber hinaus umfassen diese VM-Größen einen schnellen, größeren lokalen SSD-Speicher für Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology und ](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)Intel[ Advanced Vector Extensions 512 (&reg;Intel AVX-512).](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)
+- Die [Edv4- und die Edsv4-Serie](edv4-edsv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) ausgeführt und eignen sich optimal für besonders große Datenbanken oder andere Anwendungen, die von einer hohen vCPU-Anzahl und umfangreichem Speicher profitieren. Darüber hinaus umfassen diese VM-Größen einen schnellen, größeren lokalen SSD-Speicher für Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren. Sie verfügen über eine Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
 
 - Die [M-Serie](m-series.md) verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge an Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
 

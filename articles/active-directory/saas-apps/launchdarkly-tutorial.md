@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78f9217ea7288bac56b008911f7b39c73bba7771
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Tutorial: Azure Active Directory-Integration mit LaunchDarkly
 
@@ -100,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![Informationen zur Domäne und zu den URLs für LaunchDarkly für das einmalige Anmelden](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `app.launchdarkly.com`
 
@@ -113,7 +113,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.launchdarkly.com`
 
-    ![Informationen zur Domäne und zu den URLs für LaunchDarkly für das einmalige Anmelden](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -135,19 +135,19 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 2. Wählen Sie **Account Settings** (Kontoeinstellungen) im linken Navigationsbereich aus.
 
-    ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure1.png)
+    ![Screenshot: Auswahl der Option „Account Settings“ (Kontoeinstellungen) unter „Produktion“](./media/launchdarkly-tutorial/configure1.png)
 
 3. Klicken Sie auf die Registerkarte **Security** (Sicherheit).
 
-    ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure2.png)
+    ![Screenshot: Registerkarte „Sicherheit“ in den Kontoeinstellungen](./media/launchdarkly-tutorial/configure2.png)
 
 4. Klicken Sie auf **ENABLE SSO** (SSO aktivieren) und dann auf **EDIT SAML CONFIGURATION** (SAML-Konfiguration bearbeiten).
 
-    ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure3.png)
+    ![Screenshot: Seite „Einmaliges Anmelden“, auf der Sie „SSO aktivieren“ und „SAML-Konfiguration bearbeiten“ auswählen können](./media/launchdarkly-tutorial/configure3.png)
 
 5. Führen Sie im Abschnitt **Edit your SAML Configuration** (SAML-Konfiguration bearbeiten) die folgenden Schritte aus:
 
-    ![LaunchDarkly-Konfiguration](./media/launchdarkly-tutorial/configure4.png)
+    ![Screenshot: Abschnitt „Edit your SAML configuration“ (SAML-Konfiguration bearbeiten), in dem Sie die hier beschriebenen Änderungen vornehmen können](./media/launchdarkly-tutorial/configure4.png)
 
     a. Kopieren Sie die **SAML consumer service URL** (SAML-Verbraucherdienst-URL) für Ihre Instanz, und fügen Sie diese im Azure-Portal im Abschnitt **Domäne und URLs für LaunchDarkly** im Textfeld „Antwort-URL“ ein.
 

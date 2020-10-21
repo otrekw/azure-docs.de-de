@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554463"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940955"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit New Relic by Account
 
@@ -134,7 +134,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie im oberen Menü auf **Kontoeinstellungen**.
    
-    ![Account Settings (Kontoeinstellungen)](./media/new-relic-tutorial/ic797036.png "Kontoeinstellungen")
+    ![Screenshot: Homepage mit Auswahl von „Account settings“ (Kontoeinstellungen)](./media/new-relic-tutorial/ic797036.png "Kontoeinstellungen")
 
 3. Klicken Sie auf die Registerkarte **Sicherheit und Authentifizierung** und anschließend auf die Registerkarte **Einmaliges Anmelden**.
    
@@ -158,11 +158,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie im oberen Menü auf **Kontoeinstellungen**.
    
-    ![Account Settings (Kontoeinstellungen)](./media/new-relic-tutorial/ic797040.png "Kontoeinstellungen")
+    ![Screenshot: Auswahl von „Account settings“ (Kontoeinstellungen) auf Homepage](./media/new-relic-tutorial/ic797040.png "Kontoeinstellungen")
 
 3. Klicken Sie links im Bereich **Konto** auf **Zusammenfassung** und anschließend auf **Benutzer hinzufügen**.
    
-    ![Account Settings (Kontoeinstellungen)](./media/new-relic-tutorial/ic797041.png "Kontoeinstellungen")
+    ![Screenshot: Bereich „Zusammenfassung“, in dem Sie „Benutzer hinzufügen“ auswählen können](./media/new-relic-tutorial/ic797041.png "Kontoeinstellungen")
 
 4. Führen Sie im Dialogfeld **Aktive Benutzer** die folgenden Schritte aus:
    

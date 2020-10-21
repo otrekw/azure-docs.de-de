@@ -1,18 +1,18 @@
 ---
 title: Auswerten der Auswirkung einer neuen Azure Policy-Definition
 description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtliniendefinition in Ihre Azure-Umgebung zu befolgen ist.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544701"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873866"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Auswerten der Auswirkung einer neuen Azure Policy-Definition
 
-Azure Policy ist ein leistungsstarkes Tool zur Verwaltung Ihrer Azure-Ressourcen nach geschäftsspezifischen Standards und zur Erfüllung von Complianceanforderungen. Wenn Personen, Prozesse oder Pipelines Ressourcen erstellen oder aktualisieren, überprüft Azure Policy die Anforderung. Wenn die Auswirkung der Richtliniendefinition [Append](./effects.md#deny) oder [DeployIfNotExists](./effects.md#deployifnotexists) lautet, ändert Azure Policy die Anforderung oder ergänzt sie. Wenn die Auswirkung der Richtliniendefinition [Audit](./effects.md#audit) oder [AuditIfNotExists](./effects.md#auditifnotexists) lautet, veranlasst Azure Policy die Erstellung eines Aktivitätsprotokolleintrags. Und wenn die Auswirkung der Richtliniendefinition [Deny](./effects.md#deny) lautet, stoppt Azure Policy die Erstellung oder Änderung der Anforderung.
+Azure Policy ist ein leistungsstarkes Tool zur Verwaltung Ihrer Azure-Ressourcen nach geschäftsspezifischen Standards und zur Erfüllung von Complianceanforderungen. Wenn Personen, Prozesse oder Pipelines Ressourcen erstellen oder aktualisieren, überprüft Azure Policy die Anforderung. Wenn die Auswirkung der Richtliniendefinition [Modify](./effects.md#modify), [Append](./effects.md#deny) oder [DeployIfNotExists](./effects.md#deployifnotexists) lautet, ändert Azure Policy die Anforderung oder ergänzt sie. Wenn die Auswirkung der Richtliniendefinition [Audit](./effects.md#audit) oder [AuditIfNotExists](./effects.md#auditifnotexists) lautet, veranlasst Azure Policy die Erstellung eines Aktivitätsprotokolleintrags für neue und aktualisierte Ressourcen. Und wenn die Auswirkung der Richtliniendefinition [Deny](./effects.md#deny) lautet, stoppt Azure Policy die Erstellung oder Änderung der Anforderung.
 
 Wenn Sie wissen, dass die Richtlinie ordnungsgemäß definiert ist, entsprechen diese Ergebnisse genau den Erwartungen. Es ist jedoch wichtig zu überprüfen, dass eine neue Richtlinie ordnungsgemäß funktioniert, bevor ihr gestattet wird, die Arbeit zu ändern oder zu blockieren. Die Überprüfung muss sicherstellen, dass nur die vorgesehenen Ressourcen als nicht konform eingestuft und keine konformen Ressourcen fälschlicherweise in die Ergebnisse einbezogen werden (bekannt als _False Positive_).
 

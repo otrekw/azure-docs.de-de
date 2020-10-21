@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607510"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91369908"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -28,7 +28,7 @@ Sie können im Partner Center weiterarbeiten:
 | Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](partner-center-portal/update-existing-offer.md). |
 | Verfügbarkeit Ihrer Angebote auf dem kommerziellen Marketplace | Keine Änderungen. Wenn Ihr Angebot im kommerziellen Marketplace live geschaltet ist, bleibt dieser Livezustand unverändert. |
 | Neue Käufe und Bereitstellungen | Keine Änderungen. Ihre Kunden können Ihre Angebote ohne Unterbrechung weiter erwerben und bereitstellen. |
-| Auszahlungen | Alle Auszahlungen für Käufe und Bereitstellungen werden wie bisher für Sie durchgeführt. Erfahren Sie mehr zum [Zahlungserhalt im kommerziellen Marketplace](partner-center-portal/get-paid.md). |
+| Auszahlungen | Alle Auszahlungen für Käufe und Bereitstellungen werden wie bisher für Sie durchgeführt. Erfahren Sie mehr zum [Zahlungserhalt im kommerziellen Marketplace](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context). |
 | API-Integrationen mit vorhandenen [Cloud-Partnerportal-APIs](cloud-partner-portal-api-overview.md) | Vorhandene Cloud-Partnerportal-APIs werden weiterhin unterstützt, und Ihre vorhandenen Integrationen funktionieren. Weitere Informationen hierzu finden Sie unter [Werden die Cloud-Partnerportal-REST-APIs nach der Migration unterstützt?](#are-the-cloud-partner-portal-rest-apis-still-supported). |
 | Analytics | Sie können mit dem Überwachen der Verkäufe, Auswerten der Leistung und Optimieren Ihrer Angebote auf dem kommerziellen Marketplace fortfahren, indem Sie die Analysedaten in Partner Center anzeigen. Analyseberichte werden im Cloud-Partnerportal (CPP) und in Partner Center auf unterschiedliche Weise angezeigt. Beispielsweise verfügt **Verkäufer-Insights** in CPP über die Registerkarte **Bestellungen und Nutzung**, auf der Daten für nutzungsbasierte und nicht nutzungsbasierte Angebote angezeigt werden. Im Partner Center enthält die Seite **Bestellungen** hingegen eine separate Registerkarte für SaaS-Angebote. Weitere Informationen finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md). |
 |||
@@ -162,7 +162,9 @@ Die Informationen, die Sie für SKUs bisher auf einer einzelnen Seite im Cloud-P
 - Seite „Plansetup“
 - Seite „Planlisting“
 - Seite für die Planverfügbarkeit
-- Seite für die technische Konfiguration für den Plan: ![![Screenshot: Seite für die technische Konfiguration für den Plan in Partner Center](media/cpp-pc-faq/technical-configuration.png "Partner Center-Seite für technische Konfiguration")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- Seite für die technische Konfiguration für den Plan:
+
+![![Screenshot: Seite für die technische Konfiguration für den Plan in Partner Center](media/cpp-pc-faq/technical-configuration.png "Partner Center-Seite für technische Konfiguration")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Ihre Angebots-ID wird nun in der linken Navigationsleiste des Angebots angezeigt:
 

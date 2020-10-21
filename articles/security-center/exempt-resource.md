@@ -3,16 +3,16 @@ title: Ausschließen einer Ressource aus Azure Security Center-Sicherheitsempfeh
 description: Es wird beschrieben, wie Sie eine Ressource aus den Sicherheitsempfehlungen und der Sicherheitsbewertung ausschließen.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931708"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532549"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Ausschließen einer Ressource aus Empfehlungen und der Sicherheitsbewertung
 
@@ -32,7 +32,7 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
 |----|:----|
 |Status des Release:|Vorschau|
 |Preise:|Dies ist eine Premium-Richtlinienfunktion von Azure, die für Azure Defender-Kunden kostenlos zur Verfügung steht. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.|
-|Erforderliche Rollen und Berechtigungen:|**Abonnementbesitzer** oder **Mitwirkender an Richtlinien** für die Erstellung einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#rbac-permissions-in-azure-policy).|
+|Erforderliche Rollen und Berechtigungen:|**Abonnementbesitzer** oder **Mitwirkender an Richtlinien** für die Erstellung einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
@@ -45,7 +45,7 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
 
     Der Bereich „Ausnahme erstellen“ wird geöffnet.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Bereich „Ausnahme erstellen“":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Option „Ausnahme erstellen“ im Kontextmenü":::
 
 1. Geben Sie Ihre Kriterien ein, und wählen Sie ein Kriterium als Grund aus, warum die Ressource ausgeschlossen werden soll:
     - **Entschärft**: Dieses Problem ist für die Ressource nicht relevant, weil es mit einem anderen als dem vorgeschlagenen Tool oder Prozess verarbeitet wurde.
@@ -56,13 +56,13 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
     - Die Ressource ist auf der Seite mit den Empfehlungsdetails auf der Registerkarte **Nicht anwendbar** aufgeführt.
     - In der Informationsleiste am oberen Rand der Seite mit den Empfehlungsdetails ist die Anzahl von ausgeschlossenen Ressourcen angegeben:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Anzahl von ausgeschlossenen Ressourcen":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Option „Ausnahme erstellen“ im Kontextmenü":::
 
 1. Öffnen Sie die Registerkarte **Nicht anwendbar**, um Ihre ausgeschlossenen Ressourcen anzuzeigen.
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Ändern einer Ausnahme":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Option „Ausnahme erstellen“ im Kontextmenü":::
 
-    Der Grund für die einzelnen Ausnahmen ist jeweils in der Tabelle angegeben. 
+    Der Grund für die einzelnen Ausnahmen ist jeweils in der Tabelle angegeben (1).
 
     Wählen Sie über die Auslassungszeichen („...“) das Menü aus (wie unter Punkt 2 dargestellt), um eine Ausnahme zu ändern oder zu löschen.
 
@@ -73,7 +73,7 @@ Für Ausnahmeregeln wird Azure Policy verwendet, um in der Richtlinienzuweisung 
 
 Mit Azure Policy können Sie Ihre gesamten Ausnahmen über die Seite **Ausnahme** nachverfolgen:
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy-Seite „Ausnahme“":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Option „Ausnahme erstellen“ im Kontextmenü":::
 
 
 
