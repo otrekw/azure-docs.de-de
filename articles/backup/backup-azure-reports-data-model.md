@@ -3,12 +3,12 @@ title: Datenmodell für Azure Backup-Diagnoseereignisse
 description: Dieses Datenmodell bezieht sich auf den ressourcenspezifischen Modus zum Senden von Diagnoseereignissen an Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017582"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569590"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datenmodell für Azure Backup-Diagnoseereignisse
 
@@ -217,6 +217,29 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 | VaultUniqueId                  | Text          | eindeutige ID zum Identifizieren des Tresors, der mit der Speicherentität verbunden ist |
 | VolumeFriendlyName             | Text          | Anzeigename des Speichervolumes                          |
 | SourceSystem                   | Text          | Quellsystem der aktuellen Daten: Azure                    |
+
+## <a name="valid-operation-names-for-each-table"></a>Gültige Vorgangsnamen für jede Tabelle
+
+Jedem Datensatz in den obigen Tabellen ist ein **Vorgangsname** zugeordnet. Ein Vorgangsname beschreibt den Typ des Datensatzes (und gibt außerdem an, welche Felder in der Tabelle für diesen Datensatz aufgefüllt werden). Jede Tabelle (Kategorie) unterstützt einen oder mehrere unterschiedliche Vorgangsnamen. Im Folgenden finden Sie eine Zusammenfassung der unterstützten Vorgangsnamen für jede der obigen Tabellen.
+
+| **Tabellenname/Kategorie**                   | **Unterstützte Vorgangsnamen** | **Beschreibung**              |
+| ------------------------------------------- | ------------------------------|----------------------------- |
+| CoreAzureBackup | BackupItem | Hiermit wird ein Datensatz dargestellt, der alle Details eines bestimmten Sicherungselements enthält (z. B. ID, Name, Typ usw.). |
+| CoreAzureBackup | BackupItemAssociation | Hiermit wird eine Zuordnung zwischen einem Sicherungselement und dem zugeordneten geschützten Container dargestellt (falls zutreffend). |
+| CoreAzureBackup | BackupItemFrontEndSizeConsumption | Hiermit wird eine Zuordnung zwischen einem Sicherungselement und der Front-End-Größe dargestellt. |
+| CoreAzureBackup | ProtectedContainer | Hiermit wird ein Datensatz dargestellt, der alle Details eines bestimmten geschützten Containers enthält (z. B. ID, Name, Typ usw.). |
+| CoreAzureBackup | ProtectedContainerAssociation | Hiermit wird eine Zuordnung zwischen einem geschützten Container und dem für die Sicherung verwendeten Tresor dargestellt. |
+| CoreAzureBackup | Tresor | Hiermit wird ein Datensatz dargestellt, der alle Details eines bestimmten Tresors enthält (z. B. ID, Name, Tags, Speicherort usw.). |
+| CoreAzureBackup | RecoveryPoint | Hiermit wird ein Datensatz dargestellt, der den ältesten und den neuesten Wiederherstellungspunkt für ein bestimmtes Sicherungselement enthält. |
+| AddonAzureBackupJobs | Auftrag |  Hiermit wird ein Datensatz dargestellt, der alle Details eines bestimmten Auftrags enthält (z. B. Auftragsvorgang, Startzeit, Status usw.). |
+| AddonAzureBackupAlerts | Warnung | Hiermit wird ein Datensatz dargestellt, der alle Details einer bestimmten Warnung enthält (z. B. Erstellungszeit der Warnung, Schweregrad, Status usw.).  |
+| AddonAzureBackupStorage | Speicher | Hiermit wird ein Datensatz dargestellt, der alle Details einer bestimmten Speicherentität enthält (z. B. Speichername, Typ usw.) |
+| AddonAzureBackupStorage | StorageAssociation | Hiermit wird eine Zuordnung zwischen einem Sicherungselement und dem gesamten vom Sicherungselement verbrauchten Cloudspeicher dargestellt. |
+| AddonAzureBackupProtectedInstance | ProtectedInstance | Hiermit wird ein Datensatz dargestellt, der die Anzahl der geschützten Instanzen für jeden Container oder jedes Sicherungselement enthält. Bei der Sicherung virtueller Azure-Computer ist die Anzahl geschützter Instanzen auf Sicherungselementebene verfügbar, für andere Workloads auf Ebene des geschützten Containers. |
+| AddonAzureBackupPolicy | Policy |  Hiermit wird ein Datensatz dargestellt, der alle Details einer Sicherung und Aufbewahrungsrichtlinie enthält (z. B. ID, Name, Aufbewahrungseinstellungen usw.). |
+| AddonAzureBackupPolicy | PolicyAssociation | Hiermit wird eine Zuordnung zwischen einem Sicherungselement und der darauf angewendeten Sicherungsrichtlinie dargestellt. |   
+
+Häufig müssen Sie Joins zwischen verschiedenen Tabellen sowie unterschiedlichen Datensatzgruppen ausführen, die Teil derselben Tabelle sind (unterscheiden sich durch Vorgangsnamen), um alle für die Analyse erforderlichen Felder zu erhalten. Informationen zu den ersten Schritten finden Sie in den [Beispielabfragen](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

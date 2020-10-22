@@ -7,27 +7,30 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612216"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993613"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Verbinden Ihrer Nicht-Azure-Computer mit Security Center
 
-Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen die entsprechenden Ressourcen jedoch zunächst integriert werden. 
+Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen diese jedoch mit Azure verbunden werden. 
 
-Sie können Azure-fremde Computer auf eine der folgenden Arten hinzufügen:
+Sie können Azure-fremde Computer auf eine der folgenden Arten verbinden:
 
 - Unter Verwendung von Azure Arc (**empfohlen**)
 - Auf den Security Center-Seiten im Azure-Portal (**Erste Schritte** und **Bestand**)
 
-Beide Methoden werden im Folgenden beschrieben.
+Beide Methoden werden auf dieser Seite beschrieben.
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Hinzufügen eines Azure-fremden Computers mit Azure Arc
 
-Die Verwendung von Azure Arc ist die bevorzugte Methode zum Hinzufügen Ihrer Azure-fremden Computer zu Azure Security Center.
+Azure Arc ist die bevorzugte Methode zum Hinzufügen Ihrer Azure-fremden Computer zu Azure Security Center.
 
 Ein Computer, auf dem Azure Arc aktiviert ist, wird zu einer Azure-Ressource und wird in Security Center wie Ihre anderen Azure-Ressourcen mit Empfehlungen angezeigt. 
 
@@ -43,7 +46,11 @@ Weitere Informationen zu [Azure Arc](../azure-arc/servers/overview.md).
 > [!TIP]
 > Wenn Sie AWS-Computer integrieren, verarbeitet der Security Center-Connector für AWS die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Azure Security Center](quickstart-onboard-aws.md).
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Hinzufügen von Azure-fremden Computern über die Security Center-Portalseiten
+::: zone-end
+
+::: zone pivot="azure-portal"
+
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Hinzufügen Azure-fremder Computer über das Azure-Portal
 
 1. Öffnen Sie über das Menü von Security Center die Seite **Erste Schritte**.
 1. Wählen Sie die Registerkarte **Erste Schritte** aus.
@@ -114,6 +121,7 @@ Nach Abschluss wird der **Log Analytics-Agent** in der **Systemsteuerung** angez
 
 Weitere Informationen zum Installieren und Konfigurieren des Agents finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
+::: zone-end
 
 ## <a name="verifying"></a>Überprüfen
 Herzlichen Glückwunsch! Nun können Sie Ihre Azure- und Nicht-Azure-Computer an einem Ort anzeigen. Öffnen Sie die [Seite für den Ressourcenbestand](asset-inventory.md), und filtern Sie nach den entsprechenden Ressourcentypen. Die Typen werden durch diese Symbole unterschieden:

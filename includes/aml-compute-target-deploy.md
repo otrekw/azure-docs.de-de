@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
-ms.openlocfilehash: bd3ac8d512c1b9d151c0dc549ffeee6a05c7f94b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 944b96e7726f2b2becd5960a17a89c00d00c878a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841947"
 ---
 Das Computeziel, das Sie zum Hosten Ihres Modells verwenden, wirkt sich auf die Kosten und Verfügbarkeit des bereitgestellten Endpunkts aus. Verwenden Sie die folgende Tabelle, um ein geeignetes Computeziel auszuwählen:
 
@@ -26,14 +26,14 @@ Das Computeziel, das Sie zum Hosten Ihres Modells verwenden, wirkt sich auf die 
 | [Azure Container Instances](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | Testen oder Entwicklung | &nbsp;  | &nbsp; | Für CPU-lastige Workloads im kleinen Maßstab verwenden, die weniger als 48 GB Arbeitsspeicher erfordern. |
 | [Azure Machine Learning-Computecluster](../articles/machine-learning/how-to-use-parallel-run-step.md) | Batchrückschluss&nbsp; | [Ja](../articles/machine-learning/how-to-use-parallel-run-step.md) (Machine Learning-Pipeline) | &nbsp;  | Ausführen von Batchbewertungen auf serverlosen Computezielen. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
 | [Azure-Funktionen](../articles/machine-learning/how-to-deploy-functions.md) | (Vorschau) Echtzeitrückschluss | &nbsp; | &nbsp; | &nbsp; |
-| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (Vorschau) IoT-&nbsp;Modul |  &nbsp; | &nbsp; | Bereitstellen und Verarbeiten von ML-Modellen auf IoT-Geräten. |
-| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Über IoT Edge |  &nbsp; | Ja | Bereitstellen und Verarbeiten von ML-Modellen auf IoT-Geräten. |
+| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (Vorschau) IoT-&nbsp;Modul |  &nbsp; | &nbsp; | Bereitstellen und Verarbeiten von Machine Learning-Modellen auf IoT-Geräten |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Über IoT Edge |  &nbsp; | Ja | Bereitstellen und Verarbeiten von Machine Learning-Modellen auf IoT-Geräten |
 
 > [!NOTE]
-> Zwar unterstützen Computeziele wie lokal, Azure Machine Learning-Computeinstanz und Azure Machine Learning-Computecluster die GPU für Training und Experimente, jedoch wird die Verwendung von GPUs für Rückschlüsse nur __bei Bereitstellung als Webdienst__ in Azure Kubernetes Service unterstützt.
+> Zwar unterstützen Computeziele wie „Lokal“, „Azure Machine Learning Compute“ und „Azure Machine Learning-Computecluster“ die GPU für Training und Experimente, jedoch wird die Verwendung von GPUs für Rückschlüsse nur _bei Bereitstellung als Webdienst_ in AKS unterstützt.
 >
-> Das Verwenden einer GPU für Rückschlüsse __bei der Bewertung mit einer Machine Learning-Pipeline__ wird nur in Azure Machine Learning Compute unterstützt.
+> Das Verwenden einer GPU für Rückschlüsse _bei der Bewertung mit einer Machine Learning-Pipeline_ wird nur in Azure Machine Learning Compute unterstützt.
 
 > [!NOTE]
-> * Azure Container Instances (ACI) eignet sich nur für kleine Modelle mit einer Größe von unter 1 GB. 
-> * Es wird empfohlen, AKS-Cluster (Azure Kubernetes Service) mit einem Knoten für Dev-Tests größerer Modelle zu verwenden.
+> * Containerinstanzen eignen sich nur für kleine Modelle mit einer Größe von unter 1 GB.
+> * Verwenden Sie AKS-Cluster mit einem Knoten für Dev/Test von größeren Modellen.

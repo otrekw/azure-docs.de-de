@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602165"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998662"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,7 +64,7 @@ Das **OrchestrationStep**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Order` | Ja | Die Reihenfolge der Orchestrierungsschritte. |
-| `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**GetClaims:** Gibt an, dass der Orchestrierungsschritt Anspruchsdaten verarbeiten soll, die von der vertrauenden Seite über ihre `InputClaims`-Konfiguration an Azure AD B2C gesendet werden.</li><li>**InvokeSubJourney**: Gibt an, dass der Orchestrierungsschritt Ansprüche mit einer untergeordneten Journey (in der öffentlichen Vorschau) austauscht.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> |
+| `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**GetClaims:** Gibt an, dass der Orchestrierungsschritt Anspruchsdaten verarbeiten soll, die von der vertrauenden Seite über ihre `InputClaims`-Konfiguration an Azure AD B2C gesendet werden.</li><li>**InvokeSubJourney**: Gibt an, dass der Orchestrierungsschritt Ansprüche mit einer [untergeordneten Journey](subjourneys.md) (in der öffentlichen Vorschau) austauscht.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> |
 | ContentDefinitionReferenceId | Nein | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem Orchestrierungsschritt zugeordnet ist. In der Regel wird der Bezeichner für den Verweis auf die Inhaltsdefinition im selbstbestätigten technischen Profil definiert. Jedoch gibt es einige Fälle, in denen Azure AD B2C etwas ohne technisches Profil anzeigen muss. Hier sind zwei Beispiele: Wenn der Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignInAndSignUp` ist, muss Azure AD B2C die Auswahl des Identitätsanbieters auch ohne technisches Profil anzeigen. |
 | CpimIssuerTechnicalProfileReferenceId | Nein | Der Typ des Orchestrierungsschritts ist `SendClaims`. Diese Eigenschaft definiert den Bezeichner für das technische Profil des Anspruchsanbieters, der das Token für die vertrauende Seite ausstellt.  Wenn sie nicht vorhanden ist, wird kein Token für die vertrauende Seite erstellt. |
 
@@ -247,4 +247,4 @@ Das **Candidate**-Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
-| SubJourneyReferenceId | Ja | Der Bezeichner der untergeordneten Journey, die ausgeführt werden soll. |
+| SubJourneyReferenceId | Ja | Der Bezeichner der [untergeordneten Journey](subjourneys.md), die ausgeführt werden soll. |

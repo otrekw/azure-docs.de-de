@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606901"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567858"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -102,11 +102,11 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 * Wenn in einem Monat mit 720 Stunden Ihr bereitgestellter Durchsatz 300 Stunden lang 120.000 RUs/Sek. und während der restlichen 420 Stunden 155.000 RUs/Sek. betrug, weist Ihre Monatsrechnung Folgendes aus: (300 x 9,60 US-Dollar/Stunde) + (420 x 12,40 US-Dollar/Stunde) = 2.880 + 5.208 = 8.088 US-Dollar pro Monat. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Abrechnungsbeispiel für gemeinsam genutzten Durchsatz":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Abrechnungsbeispiel für dedizierten Durchsatz":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Abrechnungsbeispiele mit Georeplikation und Multimasterkonfiguration  
+## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Abrechnungsbeispiele mit Georeplikation und Schreibvorgängen für mehrere Regionen  
 
-Sie können jederzeit Azure-Regionen auf der ganzen Welt zu Ihrem Azure Cosmos-Datenbankkonto hinzufügen oder aus diesem entfernen. Der Durchsatz, den Sie für die verschiedenen Azure Cosmos-Datenbanken und -Container konfiguriert haben, wird in jeder Azure-Region reserviert, die mit Ihrem Azure Cosmos-Datenbankkonto verknüpft ist. Wenn der bereitgestellte Gesamtdurchsatz (RUs/Sek.), der für alle Datenbanken und Container in Ihrem Azure Cosmos-Datenbankkonto (pro Stunde) konfiguriert ist, die Summe „X“ ergibt und die Anzahl der mit Ihrem Datenbankkonto verknüpften Azure-Regionen „Y“ lautet, berechnet sich der bereitgestellte Durchsatz für Ihr Azure Cosmos-Datenbankkonto pro Stunde wie folgt: (a) bei Schreibanforderungen für eine Region = X mal Y RUs/Sek. bzw. (b) bei Schreibanforderungen für alle Regionen = X mal (Y+1) RUs/Sek. Der bereitgestellte Durchsatz (Schreibanforderung für eine Region) kostet 0,008 US-Dollar/Stunde pro 100 RUs/Sek., und der bereitgestellte Durchsatz bei Schreibanforderungen für mehrere Regionen (Multimasterkonfiguration) kostet 0,016 US-Dollar/Stunde pro 100 RUs/Sek. (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Azure Cosmos DB erlaubt in jedem Fall das Lesen von Daten in den Regionen, und zwar unabhängig davon, ob die Schreibanforderung für eine oder mehrere Regionen ausgewählt wurde.
+Sie können jederzeit Azure-Regionen auf der ganzen Welt zu Ihrem Azure Cosmos-Datenbankkonto hinzufügen oder aus diesem entfernen. Der Durchsatz, den Sie für die verschiedenen Azure Cosmos-Datenbanken und -Container konfiguriert haben, wird in jeder Azure-Region reserviert, die mit Ihrem Azure Cosmos-Datenbankkonto verknüpft ist. Wenn der bereitgestellte Gesamtdurchsatz (RUs/Sek.), der für alle Datenbanken und Container in Ihrem Azure Cosmos-Datenbankkonto (pro Stunde) konfiguriert ist, die Summe „X“ ergibt und die Anzahl der mit Ihrem Datenbankkonto verknüpften Azure-Regionen „Y“ lautet, berechnet sich der bereitgestellte Durchsatz für Ihr Azure Cosmos-Datenbankkonto pro Stunde wie folgt: (a) bei Schreibanforderungen für eine Region = X mal Y RUs/Sek. bzw. (b) bei Schreibanforderungen für alle Regionen = X mal (Y+1) RUs/Sek. Der bereitgestellte Durchsatz (Schreibanforderung für eine Region) kostet 0,008 US-Dollar/Stunde pro 100 RUs/Sek., und der bereitgestellte Durchsatz bei Schreibanforderungen für mehrere Regionen (Konfiguration für Schreibvorgänge für mehrere Regionen) kostet 0,016 US-Dollar/Stunde pro 100 RUs/Sek. (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Azure Cosmos DB erlaubt in jedem Fall das Lesen von Daten in den Regionen, und zwar unabhängig davon, ob die Schreibanforderung für eine oder mehrere Regionen ausgewählt wurde.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Abrechnungsbeispiel: Azure Cosmos DB-Konto mit mehreren Regionen und Schreibanforderung für eine Region
 
@@ -136,9 +136,9 @@ Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Wes
 
 *Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, in die Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“, um sie dort zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*
 
-### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Abrechnungsbeispiel: Azure Cosmos-Konto mit Multimasterkonfiguration, Durchsatz auf Datenbankebene einschließlich dediziertem Durchsatz für einige Container
+### <a name="billing-example-azure-cosmos-account-with-multi-region-writes-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Abrechnungsbeispiel: Azure Cosmos-Konto mit Schreibvorgängen für mehrere Regionen, Durchsatz auf Datenbankebene einschließlich dediziertem Durchsatz für einige Container
 
-Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit mehreren Regionen, bei dem in allen Regionen Schreibvorgänge ausgeführt werden können (Multimasterkonfiguration). Der Einfachheit halber wird davon ausgegangen, dass die Speichergröße konstant bleibt und sich nicht ändert. Daher wird sie hier nicht aufgeführt, um das Beispiel einfacher zu halten. Der bereitgestellte Durchsatz schwankt während des Monats wie folgt (30 Tage bzw. 720 Stunden vorausgesetzt): 
+Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit mehreren Regionen, bei dem in allen Regionen Schreibvorgänge ausgeführt werden können (Konfiguration für Schreibvorgänge für mehrere Regionen). Der Einfachheit halber wird davon ausgegangen, dass die Speichergröße konstant bleibt und sich nicht ändert. Daher wird sie hier nicht aufgeführt, um das Beispiel einfacher zu halten. Der bereitgestellte Durchsatz schwankt während des Monats wie folgt (30 Tage bzw. 720 Stunden vorausgesetzt): 
 
 [0-100 Stunden]\:  
 
@@ -192,7 +192,7 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit mehreren Re
 
 Visuell werden die Änderungen im insgesamt bereitgestellten Durchsatz während der 720 Stunden im Monat in der folgenden Abbildung dargestellt: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Praxisbeispiel":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Abrechnungsbeispiel für dedizierten Durchsatz":::
 
 Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgesetzt) wie folgt berechnet:
 
@@ -215,7 +215,7 @@ Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgeset
 || |**Monatliche Gesamtkosten**  | |**38.688 US-Dollar**   |
 
 ## <a name="billing-examples-with-free-tier-accounts"></a>Abrechnungsbeispiele mit Free-Tarif-Konten
-Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 400 RUs/Sek. und 5 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 400 RUs/Sek. bzw. 5 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Die 400 RUs/Sek. gelten für jeden beliebigen Typ von RUs/Sek. – bereitgestellten Durchsatz, Autoskalierung und Multimasterkonfiguration.  
+Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 400 RUs/Sek. und 5 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 400 RUs/Sek. bzw. 5 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Die 400 RUs/Sek. gelten für jeden beliebigen Typ von RUs/Sek. – bereitgestellten Durchsatz, Autoskalierung und Schreibvorgänge für mehrere Regionen.  
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Abrechnungsbeispiel: Container oder Datenbank mit bereitgestelltem Durchsatz
 - Angenommen, Sie erstellen eine Datenbank oder einen Container in einem Free-Tarif-Konto mit 400 RUs/Sek. und 5 GB Speicher.
@@ -231,16 +231,16 @@ Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5
 - Jeder Speicher, der über die ersten 5 GB hinausgeht, wird zu normalen Speicherraten abgerechnet. 
 
 ### <a name="billing-example---multi-region-single-write-region-account"></a>Abrechnungsbeispiel: Konto mit mehreren Regionen und Schreibanforderung für eine Region
-- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in 3 Regionen und haben ein Konto mit Schreibanforderung für eine Region (Singlemasterkonto).
+- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in drei Regionen und haben ein Konto mit Schreibanforderung für eine Region.
 - Insgesamt (ohne den Free-Tarif) würden für 3 x 1.200 RUs/Sek. = 3.600 RUs/Sek. und 3 x 10 GB = 30 GB Speicher in Rechnung gestellt.
 - Beim Free-Tarif-Rabatt wird nach dem Entfernen von 400 RUs/Sek. und 5 GB Speicher ein effektiver bereitgestellter Durchsatz von 3.200 RUs/Sek. (32 Einheiten) zum Satz der Schreibanforderung für eine Region und für 25 GB Speicher in Rechnung gestellt.
 - Dann würden die monatlichen Kosten für RUs/Sek. betragen: 32 Einheiten × 0,008 US-Dollar x 24 Stunden × 31 Tage = 190,46 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 25 GB x 0,25/GB = 6,25 US-Dollar. Die Gesamtkosten würden betragen: 190,46 US-Dollar + 6,25 US-Dollar = 196,71 US-Dollar.
 - Hinweis: Wenn sich der Einzelpreis für RUs/Sek. oder Speicher in den Regionen unterscheidet, entsprechen die 400 RUs/Sek. und 5 GB Speicher den Tarifen der Region, in der das Konto erstellt wurde.
 
-### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>Abrechnungsbeispiel: Konto mit mehreren Regionen und Schreibanforderung für mehrere Regionen (Multimasterkonto)
+### <a name="billing-example---multi-region-account-with-multiple-write-regions"></a>Abrechnungsbeispiel: Konto mit mehreren Regionen und Konto mit Schreibanforderung für mehrere Regionen
 
-In diesem Beispiel werden [Multimasterpreise](https://azure.microsoft.com/pricing/details/cosmos-db/) für Konten verwendet, die nach dem 1. Dezember 2019 erstellt wurden. 
-- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1.200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in 3 Regionen und haben ein Multimasterkonto (Schreibanforderung für mehrere Regionen). 
+In diesem Beispiel werden [Preise für Schreibvorgänge für mehrere Regionen](https://azure.microsoft.com/pricing/details/cosmos-db/) für Konten verwendet, die nach dem 1. Dezember 2019 erstellt wurden. 
+- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit 1.200 RUs/Sek. und 10 GB Speicher. Sie replizieren das Konto in drei Regionen und haben ein Konto mit Schreibanforderung für mehrere Regionen. 
 - Insgesamt (ohne den Free-Tarif) würden Ihnen für 3 x 1.200 RUs/Sek. = 3.600 RUs/Sek. und 3 x 10 GB = 30 GB Speicher in Rechnung gestellt.
 - Beim Free-Tarif-Rabatt wird nach dem Entfernen von 400 RUs/Sek. und 5 GB Speicher ein effektiver bereitgestellter Durchsatz von 3.200 RUs/Sek. (32 Einheiten) zum Satz der Schreibanforderung für mehrere Regionen und für 25 GB Speicher in Rechnung gestellt.
 - Dann würden die monatlichen Kosten für RUs/Sek. betragen: 32 Einheiten × 0,016 US-Dollar × 24 Stunden × 31 Tage = 380,93 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 25 GB x 0,25/GB = 6,25 US-Dollar. Die Gesamtkosten würden betragen: 380,93 US-Dollar + 6,25 US-Dollar = 387,18 US-Dollar.

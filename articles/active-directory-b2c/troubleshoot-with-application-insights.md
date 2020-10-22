@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 10/12/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116085"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993143"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Sammeln von Azure Active Directory B2C-Protokollen mit Application Insights
 
@@ -89,7 +89,7 @@ Erstellen Sie eine Instanz von Application Insights in Ihrem Abonnement, falls S
 Es gibt eine kurze Verzögerung (in der Regel weniger als fünf Minuten), bevor Sie neue Protokolle in Application Insights anzeigen können.
 
 1. Öffnen Sie die zuvor erstellte Application Insights-Ressource im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie im Menü **Übersicht** die Option **Analyse** aus.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Protokolle** aus.
 1. Öffnen Sie eine neue Registerkarte in Application Insights.
 
 Es folgt eine Liste der Abfragen, die Sie zum Anzeigen der Protokolle verwenden können:

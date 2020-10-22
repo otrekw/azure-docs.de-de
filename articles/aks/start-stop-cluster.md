@@ -3,18 +3,18 @@ title: Starten und Beenden einer AKS-Instanz (Azure Kubernetes Service)
 description: Hier erfahren Sie, wie Sie eine AKS-Instanz (Azure Kubernetes Service) starten und beenden.
 services: container-service
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: a743a6c30d5ce8bcaf275bf1a658f8343de4d4fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930459"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968782"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Beenden und Starten eines AKS-Clusters (Azure Kubernetes Service) (Vorschau)
 
-Ihre AKS-Workloads müssen möglicherweise nicht kontinuierlich ausgeführt werden – beispielsweise bei einem Entwicklungscluster, der nur während der Geschäftszeiten verwendet wird. In diesem Fall können Zeiten auftreten, in denen sich Ihr AKS-Cluster (Azure Kubernetes Service) im Leerlauf befindet und nur die Systemkomponenten ausgeführt werden. Dann können Sie den Speicherbedarf des Clusters reduzieren, indem Sie [alle `User`-Knotenpools auf 0 skalieren](scale-cluster.md#scale-user-node-pools-to-0). Der [`System`-Pool](use-system-pools.md) wird jedoch weiterhin für die Ausführung der Systemkomponenten benötigt, solange der Cluster ausgeführt wird. Um Ihre Kosten während dieser Zeiträume weiter zu optimieren, können Sie Ihren Cluster vollständig ausschalten (beenden). Dadurch werden Ihre Steuerungsebene und Agentknoten vollständig angehalten, sodass Sie bei allen Computekosten sparen können. Gleichzeitig werden alle Objekte und der Clusterstatus gespeichert und so lange beibehalten, bis Sie sie wieder starten. So können Sie nach einem Wochenende genau dort weitermachen, wo Sie aufgehört haben. Oder Sie haben die Möglichkeit, Ihren Cluster immer nur dann auszuführen, wenn Sie Ihre Batchaufträge ausführen.
+Ihre AKS-Workloads müssen möglicherweise nicht kontinuierlich ausgeführt werden – beispielsweise bei einem Entwicklungscluster, der nur während der Geschäftszeiten verwendet wird. In diesem Fall können Zeiten auftreten, in denen sich Ihr AKS-Cluster (Azure Kubernetes Service) im Leerlauf befindet und nur die Systemkomponenten ausgeführt werden. Dann können Sie den Speicherbedarf des Clusters reduzieren, indem Sie [alle `User`-Knotenpools auf 0 skalieren](scale-cluster.md#scale-user-node-pools-to-0). Der [`System`-Pool](use-system-pools.md) wird jedoch weiterhin für die Ausführung der Systemkomponenten benötigt, solange der Cluster ausgeführt wird. Um Ihre Kosten während dieser Zeiträume weiter zu optimieren, können Sie Ihren Cluster vollständig ausschalten (beenden). Dadurch werden Ihre Steuerungsebene und Agentknoten vollständig angehalten, sodass Sie bei allen Computekosten sparen können. Gleichzeitig werden alle Objekte und der Clusterstatus gespeichert und so lange beibehalten, bis Sie sie wieder starten. So können Sie nach einem Wochenende genau dort weitermachen, wo Sie aufgehört haben. Sie haben auch die Möglichkeit, Ihren Cluster immer nur dann auszuführen, wenn Sie Ihre Batchaufträge ausführen.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -22,9 +22,20 @@ Ihre AKS-Workloads müssen möglicherweise nicht kontinuierlich ausgeführt werd
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
+
+### <a name="limitations"></a>Einschränkungen
+
+Wenn Sie das Feature zum Starten/Beenden von Clustern verwenden, gelten die folgenden Einschränkungen:
+
+- Diese Funktion wird nur für Back-End-Cluster für Virtual Machine Scale Sets unterstützt.
+- In der Vorschauversion wird dieses Feature für private Cluster nicht unterstützt.
+- Der Clusterstatus eines beendeten AKS-Clusters wird bis zu 12 Monate beibehalten. Wenn Ihr Cluster länger als 12 Monate angehalten wird, kann der Clusterstatus danach nicht mehr wiederhergestellt werden. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md).
+- In der Vorschauversion müssen Sie die automatische Clusterskalierung beenden, bevor Sie den Cluster anhalten.
+- Nun ein angehaltener AKS-Cluster kann gestartet oder gelöscht werden. Wenn Sie einen Vorgang wie eine Skalierung oder ein Upgrade ausführen möchten, müssen Sie zuerst den Cluster starten.
+
 ### <a name="install-the-aks-preview-azure-cli"></a>Installieren der Azure-Befehlszeilenschnittstelle `aks-preview` 
 
-Sie benötigen außerdem die Version 0.4.64 oder höher der Erweiterung für die Azure-Befehlszeilenschnittstelle *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Oder installieren Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update].
+Sie benötigen außerdem die Version 0.4.64 oder höher der Erweiterung für die Azure-Befehlszeilenschnittstelle *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Alternativ können Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update] installieren.
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -33,11 +44,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ``` 
-
-> [!WARNING]
-> Der Clusterstatus eines beendeten AKS-Clusters wird bis zu 12 Monate beibehalten. Wenn Ihr Cluster länger als 12 Monate angehalten wird, kann der Clusterstatus danach nicht mehr wiederhergestellt werden. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md).
-> Nun ein angehaltener AKS-Cluster kann gestartet oder gelöscht werden. Wenn Sie einen Vorgang wie eine Skalierung oder ein Upgrade ausführen möchten, müssen Sie zuerst den Cluster starten.
-
 
 ### <a name="register-the-startstoppreview-preview-feature"></a>Registrieren der Previewfunktion `StartStopPreview`
 
@@ -69,7 +75,7 @@ Mit dem Befehl `az aks stop` können Sie die Knoten und die Steuerungsebene eine
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-Mit dem Befehl [az aks show][az-aks-show] Sie können überprüfen, wann Ihr Cluster beendet wurde, und sicherstellen, dass für `powerState` wie in der folgenden Ausgabe `Stopped` angezeigt wird:
+Mit dem Befehl [az aks show][az-aks-show] können Sie überprüfen, wann Ihr Cluster beendet wurde, und sicherstellen, dass für `powerState` wie in der folgenden Ausgabe `Stopped` angezeigt wird:
 
 ```json
 {
@@ -100,7 +106,7 @@ Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* gestartet.
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-Mit dem Befehl [az aks show][az-aks-show] Sie können überprüfen, wann Ihr Cluster gestartet wurde, und sicherstellen, dass für `powerState` wie in der folgenden Ausgabe `Running` angezeigt wird:
+Mit dem Befehl [az aks show][az-aks-show] können Sie überprüfen, wann Ihr Cluster gestartet wurde, und sicherstellen, dass für `powerState` wie in der folgenden Ausgabe `Running` angezeigt wird:
 
 ```json
 {
@@ -136,3 +142,4 @@ Wenn für `provisioningState` `Starting` angezeigt wird, bedeutet das, dass Ihr 
 [az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az_aks_show

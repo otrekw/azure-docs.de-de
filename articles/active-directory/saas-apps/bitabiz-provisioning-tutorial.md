@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329192"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849319"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BitaBIZ für die automatische Benutzerbereitstellung
 
@@ -54,11 +54,11 @@ Bevor Sie BitaBIZ für die automatische Benutzerbereitstellung mit Azure AD konf
 
 1. Melden Sie sich bei Ihrer [BitaBIZ-Verwaltungskonsole](https://www.bitabiz.com/login?lang=en) an. Klicken Sie auf **SETUP ADMIN** (ADMINISTRATOR EINRICHTEN).
 
-    ![BitaBIZ-Verwaltungskonsole](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Screenshot der BitaBIZ-Verwaltungskonsole mit hervorgehobener Option „Setup admin“ (Administrator festlegen)" border="false":::
 
 2.  Navigieren Sie zu **INTEGRATION**.
 
-    ![BitaBIZ-Verwaltungskonsole](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Screenshot der BitaBIZ-Verwaltungskonsole mit hervorgehobener Option „Setup admin“ (Administrator festlegen)" border="false":::
 
 2.  Navigieren Sie zu **Microsoft Azure AD-Bereitstellung**.  Wählen Sie für die automatische Benutzerbereitstellung die Option **Aktiviert** aus. Kopieren Sie die Werte von **URL des SCIM-Bereitstellungsendpunkts** und **Bearertoken**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer BitaBIZ-Anwendung in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ eingegeben.
 

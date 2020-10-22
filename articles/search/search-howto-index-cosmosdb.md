@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9402b1d38457c979f00d05f56b8ed45d2d37dfca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9b3353d3ba1af572b118001691e38af497f6f1fd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971688"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91290040"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
@@ -72,9 +72,11 @@ Auf der Seite **Datenquelle** muss die Quelle **Cosmos DB** lauten und folgende 
 
 + Der **Name** ist der Name des Datenquellenobjekts. Nachdem Sie es erstellt haben, können Sie es für andere Workloads verwenden.
 
-+ Das **Cosmos DB-Konto** muss die primäre oder sekundäre Verbindungszeichenfolge aus Cosmos DB sein und folgendes Format aufweisen: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;`.
-    + Verwenden Sie für **MongoDB-Sammlungen** in den Versionen 3.2 und 3.6 das folgende Format für das Cosmos DB-Konto im Azure-Portal: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`.
-    + Registrieren Sie sich bei Verwendung von **Gremlin-Graphen und Cassandra-Tabellen** für die [geschlossene Indexervorschau](https://aka.ms/azure-cognitive-search/indexer-preview), um Zugriff auf die Vorschauversion sowie Informationen zur Formatierung der Anmeldeinformationen zu erhalten.
++ Das **Cosmos DB-Konto** muss eines der folgenden Formate aufweisen:
+    1. Die primäre oder sekundäre Verbindungszeichenfolge aus Cosmos DB und folgendes Format: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;`.
+        + Verwenden Sie für **MongoDB-Sammlungen** in den Versionen 3.2 und 3.6 das folgende Format für das Cosmos DB-Konto im Azure-Portal: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`.
+        + Registrieren Sie sich bei Verwendung von **Gremlin-Graphen und Cassandra-Tabellen** für die [geschlossene Indexervorschau](https://aka.ms/azure-cognitive-search/indexer-preview), um Zugriff auf die Vorschauversion sowie Informationen zur Formatierung der Anmeldeinformationen zu erhalten.
+    1.  Eine Verbindungszeichenfolge für eine verwaltete Identität, die keinen Kontoschlüssel enthält, im folgenden Format: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)`. Um dieses Verbindungszeichenfolgenformat zu verwenden, befolgen Sie die Anweisungen unter [Einrichten einer Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität](search-howto-managed-identities-cosmos-db.md).
 
 + Die **Datenbank** ist eine im Konto vorhandene Datenbank. 
 
@@ -179,11 +181,11 @@ Formulieren Sie zum Erstellen einer Datenquelle eine POST-Anforderung:
 
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
-| Feld   | BESCHREIBUNG |
+| Feld   | Beschreibung |
 |---------|-------------|
 | **name** | Erforderlich. Wählen Sie für Ihr Datenquellenobjekt einen beliebigen Namen aus. |
 |**type**| Erforderlich. Muss `cosmosdb`lauten. |
-|**credentials** | Erforderlich. Muss eine Cosmos DB-Verbindungszeichenfolge sein.<br/><br/>Bei **SQL-Sammlungen** weisen Verbindungszeichenfolgen folgendes Format auf: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`.<br/><br/>Verwenden Sie für **MongoDB-Sammlungen** in den Versionen 3.2 und 3.6 das folgende Format für die Verbindungszeichenfolge: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`.<br/><br/>Registrieren Sie sich bei Verwendung von **Gremlin-Graphen und Cassandra-Tabellen** für die [geschlossene Indexervorschau](https://aka.ms/azure-cognitive-search/indexer-preview), um Zugriff auf die Vorschauversion sowie Informationen zur Formatierung der Anmeldeinformationen zu erhalten.<br/><br/>Vermeiden Sie Portnummern in der Endpunkt-URL. Wenn Sie die Portnummer einfügen, kann die Azure Cosmos DB-Datenbank in der kognitiven Azure-Suche nicht indiziert werden.|
+|**credentials** | Erforderlich. Dieses Feld muss entweder dem Cosmos DB-Verbindungszeichenfolgenformat oder dem Format einer Verbindungszeichenfolge für eine verwaltete Identität folgen.<br/><br/>Für **SQL-Sammlungen** kann die Verbindungszeichenfolge in einem der folgenden Formate vorliegen: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Eine Verbindungszeichenfolge für eine verwaltete Identität, die keinen Kontoschlüssel enthält, im folgenden Format: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;`. Um dieses Verbindungszeichenfolgenformat zu verwenden, befolgen Sie die Anweisungen unter [Einrichten einer Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität](search-howto-managed-identities-cosmos-db.md).<br/><br/>Verwenden Sie für **MongoDB-Sammlungen** in den Versionen 3.2 und 3.6 eines der folgenden Formate für die Verbindungszeichenfolge: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Eine Verbindungszeichenfolge für eine verwaltete Identität, die keinen Kontoschlüssel enthält, im folgenden Format: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;`. Um dieses Verbindungszeichenfolgenformat zu verwenden, befolgen Sie die Anweisungen unter [Einrichten einer Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität](search-howto-managed-identities-cosmos-db.md).<br/><br/>Registrieren Sie sich bei Verwendung von **Gremlin-Graphen und Cassandra-Tabellen** für die [geschlossene Indexervorschau](https://aka.ms/azure-cognitive-search/indexer-preview), um Zugriff auf die Vorschauversion sowie Informationen zur Formatierung der Anmeldeinformationen zu erhalten.<br/><br/>Vermeiden Sie Portnummern in der Endpunkt-URL. Wenn Sie die Portnummer einfügen, kann die Azure Cosmos DB-Datenbank in der kognitiven Azure-Suche nicht indiziert werden.|
 | **container** | Enthält die folgenden Elemente: <br/>**name:** Erforderlich. Geben Sie die ID der zu indizierenden Datenbanksammlung an.<br/>**Abfrage**: Optional. Sie können eine Abfrage angeben, um ein beliebiges JSON-Dokument in einem Flatfile-Schema zu vereinfachen, das in der kognitiven Azure-Suche indiziert werden kann.<br/>Für die MongoDB-API, die Gremlin-API und die Cassandra-API werden keine Abfragen unterstützt. |
 | **dataChangeDetectionPolicy** | Empfohlen. Weitere Informationen finden Sie im Abschnitt [Indizieren von geänderten Dokumenten](#DataChangeDetectionPolicy).|
 |**dataDeletionDetectionPolicy** | Optional. Weitere Informationen finden Sie im Abschnitt [Indizieren von gelöschten Dokumenten](#DataDeletionDetectionPolicy).|

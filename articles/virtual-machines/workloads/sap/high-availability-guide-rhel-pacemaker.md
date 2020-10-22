@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800261"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598299"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure
 
@@ -66,6 +66,7 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * Azure-spezifische RHEL-Dokumentation:
   * [Unterstützungsrichtlinien für RHEL-Hochverfügbarkeitscluster – Virtuelle Microsoft Azure-Computer als Clustermitglieder](https://access.redhat.com/articles/3131341)
   * [Installieren und Konfigurieren eines Red Hat Enterprise Linux 7.4-Hochverfügbarkeitclusters (und höher) in Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Überlegungen zur Einführung von RHEL 8 – Hochverfügbarkeit und Cluster](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [Configure SAP S/4HANA ASCS/ERS with Standalone Enqueue Server 2 (ENSA2) in Pacemaker on RHEL 7.6](https://access.redhat.com/articles/3974941) (Konfigurieren von SAP S/4HANA ASCS/ERS mit eigenständigem Enqueue-Server 2 (ENSA2) in Pacemaker unter RHEL 7.6)
 
 ## <a name="cluster-installation"></a>Clusterinstallation
@@ -78,7 +79,7 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 
 Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** – gilt für alle Knoten, **[1]** – gilt nur für Knoten 1, oder **[2]** – gilt nur für Knoten 2.
 
-1. **[A]** Registrieren
+1. **[A]** Registrieren Sie sich. Dieser Schritt ist nicht erforderlich, wenn Sie Images verwenden, die für die RHEL 8.x-Hochverfügbarkeit aktiviert sind.  
 
    Registrieren Sie Ihre virtuellen Computer, und ordnen Sie sie einem Pool zu, der Repositorys für RHEL 7 enthält.
 
@@ -88,9 +89,9 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Beachten Sie, dass Sie durch das Anfügen eines Pools an ein Azure Marketplace PAYG RHEL-Image effektiv eine doppelte Abrechnung für Ihre RHEL-Nutzung erhalten: einmal für das PAYG-Image und einmal für die RHEL-Berechtigung in dem Pool, den Sie anfügen. Azure bietet jetzt BYOS RHEL-Images an, um dies zu vermeiden. Weitere Informationen sind [hier](../redhat/byos.md) verfügbar.
+   Sie erhalten durch das Anfügen eines Pools an ein Azure Marketplace PAYG RHEL-Image effektiv eine doppelte Abrechnung für Ihre RHEL-Nutzung: einmal für das PAYG-Image und einmal für die RHEL-Berechtigung in dem Pool, den Sie anfügen. Azure bietet jetzt BYOS RHEL-Images an, um dies zu vermeiden. Weitere Informationen sind [hier](../redhat/byos.md) verfügbar.
 
-1. **[A]** Aktivieren von RHEL für SAP-Repositorys
+1. **[A]** Aktivieren Sie RHEL für SAP-Repositorys. Dieser Schritt ist nicht erforderlich, wenn Sie Images verwenden, die für die RHEL 8.x-Hochverfügbarkeit aktiviert sind.  
 
    Aktivieren Sie die folgenden Repositorys, um die erforderlichen Pakete zu installieren.
 
@@ -108,6 +109,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    > [!IMPORTANT]
    > Wir empfehlen die folgenden Versionen des Azure Fence-Agent (oder höher), damit Kunden von einer schnelleren Failoverzeit profitieren können, wenn bei einem Ressourcenstopp ein Fehler auftritt oder die Clusterknoten nicht mehr miteinander kommunizieren können:  
+   > RHEL 7.7 oder höher verwenden die neueste verfügbare Version des Fence-Agents-Pakets.  
    > RHEL 7.6: fence-agents-4.2.1-11.el7_6.8  
    > RHEL 7.5: fence-agents-4.0.11-86.el7_5.8  
    > RHEL 7.4: fence-agents-4.0.11-66.el7_4.12  
@@ -165,15 +167,23 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Erstellen des Pacemaker-Clusters
 
-   Führen Sie die folgenden Befehle aus, um die Knoten zu authentifizieren und den Cluster zu erstellen. Legen Sie das Token auf „30.000“ fest, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Informationen finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance].
-
+   Führen Sie die folgenden Befehle aus, um die Knoten zu authentifizieren und den Cluster zu erstellen. Legen Sie das Token auf „30.000“ fest, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Informationen finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance].  
+   
+   Wenn Sie einen Cluster auf **RHEL 7.x** aufbauen, verwenden Sie die folgenden Befehle:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   Wenn Sie einen Cluster auf **RHEL 8.X** aufbauen, verwenden Sie die folgenden Befehle:  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   Überprüfen Sie den Clusterstatus, indem Sie den folgenden Befehl ausführen:  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +198,22 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** Festlegen der erwarteten Stimmen
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** Legen Sie die erwarteten Stimmen fest. 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > Wenn Sie einen Cluster mit mehreren Knoten einrichten, also einen Cluster mit mehr als zwei Knoten, legen Sie die Stimmen nicht auf 2 fest.    
 
 1. **[1]** Zulassen von gleichzeitigen Fencingaktionen
 
@@ -219,7 +234,7 @@ Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microso
    Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
 1. Wählen Sie „Zertifikate und Geheimnisse“ aus, und klicken Sie auf „Neuer geheimer Clientschlüssel“.
 1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“ aus, und klicken Sie auf „Hinzufügen“.
-1. Notieren Sie sich den Wert. Er dient als **Kennwort** für den Dienstprinzipal.
+1. Legen Sie einen Knoten als Wert ab. Er dient als **Kennwort** für den Dienstprinzipal.
 1. Wählen Sie „Übersicht“ aus. Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (**Anmelde-ID** in den folgenden Schritten) des Dienstprinzipals verwendet.
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Erstellen einer benutzerdefinierten Rolle für den Fence Agent.
@@ -276,12 +291,17 @@ Nachdem Sie die Berechtigungen für die virtuellen Computer bearbeitet haben, k�
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-Verwenden Sie den folgenden Befehl, um das Umgrenzungsgerät zu konfigurieren.
-
 > [!NOTE]
 > Die Option „pcmk_host_map“ wird im Befehl nur benötigt, wenn die RHEL-Hostnamen und die Azure-Knotennamen NICHT identisch sind. Beachten Sie den fett formatierten Bereich des Befehls.
 
+Verwenden Sie für RHEL **7.X** den folgenden Befehl, um das Fencinggerät zu konfigurieren:    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+Verwenden Sie für RHEL **8.X**den folgenden Befehl, um das Fencinggerät zu konfigurieren.  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

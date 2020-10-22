@@ -5,32 +5,18 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c498a3d69b24fd104d24a3627a8e9d88b495c053
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253508"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873964"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Bedingte Ausdrücke der Regel-Engine für Azure CDN Premium von Verizon
 
-Dieser Artikel enthält ausführliche Beschreibungen der bedingten Ausdrücke für die [Regel-Engine](cdn-verizon-premium-rules-engine.md) von Azure Content Delivery Network (CDN).
-
-Der erste Teil einer Regel ist der bedingte Ausdruck.
-
-Bedingter Ausdruck | BESCHREIBUNG
------------------------|-------------
-IF | Ein IF-Ausdruck ist immer Teil der ersten Anweisung einer Regel. Wie alle anderen bedingten Ausdrücke auch, muss diese IF-Anweisung einer Übereinstimmung zugeordnet sein. Wenn keine zusätzlichen bedingten Ausdrücke definiert sind, wird mit dieser Übereinstimmung das Kriterium ermittelt, das erfüllt sein muss, bevor bestimmte Features auf eine Anforderung angewendet werden können.
-AND IF | Ein AND IF-Ausdruck kann nur nach den folgenden Arten von bedingten Ausdrücken hinzugefügt werden: IF, AND IF. Hiermit wird angegeben, dass eine weitere Bedingung vorhanden ist, die für die erste IF-Anweisung erfüllt sein muss.
-ELSE IF| Mit einem ELSE IF-Ausdruck wird eine alternative Bedingung angegeben, die erfüllt sein muss, bevor ein spezifischer Funktionssatz für diese ELSE IF-Anweisung ausgeführt werden kann. Durch das Vorhandensein einer ELSE IF-Anweisung wird das Ende der vorherigen Anweisung angegeben. Der einzige bedingte Ausdruck, der nach einer ELSE IF-Anweisung stehen kann, ist eine weitere ELSE IF-Anweisung. Dies bedeutet, dass eine ELSE IF-Anweisung nur verwendet werden kann, um eine einzelne zusätzliche Bedingung anzugeben, die erfüllt sein muss.
-
-**Beispiel**: ![CDN-Übereinstimmungsbedingung](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
-
- > [!TIP]
-   > Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
-   > Beispiel: Mit einer Regel vom Typ „catch-all“ werden alle Anforderungen per tokenbasierter Authentifizierung geschützt. Eine weitere Regel kann direkt darunter erstellt werden, um eine Ausnahme für bestimmte Arten von Anforderungen festzulegen.
+Weitere Informationen zu den Ausdrücken der Verizon Premium-Regel-Engine finden Sie unter [Unabhängige bedingte Ausdrücke](https://docs.vdms.com/cdn/index.html#Whats_New/Whats-New-RE.htm#RuleSetup).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

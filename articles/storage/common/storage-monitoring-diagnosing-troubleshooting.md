@@ -4,17 +4,17 @@ description: Verwenden Sie Features wie Speicheranalyse, clientseitige Protokoll
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031482"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854556"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,8 +23,6 @@ ms.locfileid: "90031482"
 Diagnose und Problembehandlung können in einer verteilten Anwendung, die in einer Cloudumgebung gehostet wird, komplexer sein als in herkömmlichen Umgebungen. Anwendungen können in einer PaaS- oder IaaS-Infrastruktur, lokal, auf einem mobilen Gerät oder in einer Kombination dieser Umgebungen bereitgestellt werden. In der Regel kann der Netzwerkverkehr der Anwendung öffentliche und private Netzwerke durchlaufen, und Ihre Anwendung kann mehrere Speichertechnologien wie Microsoft Azure Storage-Tabellen, Blobs, Warteschlangen oder Dateien neben anderen Datenspeichern wie relationalen und Dokumentendatenbanken verwenden.
 
 Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwachen und verstehen, wie die Diagnose und Problembehandlung aller Anwendungsaspekte und ihrer abhängigen Technologien durchzuführen sind. Als Nutzer des Azure-Speicherdiensts sollten Sie ständig die von Ihrer Anwendung verwendeten Speicherdienste überwachen, um unerwartete Verhaltensveränderungen zu erkennen (beispielsweise langsamere Antwortzeiten als üblich), und Protokollierung verwenden, um detailliertere Daten zu sammeln und ein Problem in der Tiefe zu analysieren. Die Diagnoseinformationen, die Sie sowohl aus der Überwachung als auch der Protokollierung erhalten, werden Ihnen helfen, die Ursache des Problems, das bei Ihrer Anwendung auftritt, zu bestimmen. Dann können Sie das Problem behandeln und die entsprechenden Schritte, die Sie für seine Beseitigung ergreifen können, festlegen. Azure-Speicher ist ein Kerndienst von Azure und ein wichtiger Bestandteil der meisten Lösungen, die Kunden auf der Azure-Infrastruktur bereitstellen. Azure-Speicher beinhaltet Funktionen zur vereinfachten Überwachung, Diagnose und Problembehandlung von Speicherproblemen in Ihren cloudbasierten Anwendungen.
-
-Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](../storage-e2e-troubleshooting.md).
 
 * [Einführung]
   * [Wie diese Anleitung aufgebaut ist]
@@ -68,7 +66,6 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
 * [Anhänge]
   * [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr]
   * [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]
-  * [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]
   * [Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten]
   * [Anhang 5: Überwachung mit Application Insights für Azure DevOps]
 
@@ -92,7 +89,7 @@ Der Abschnitt "[Durchgängige Verfolgung]" beschreibt, wie Sie die in Protokolli
 
 Der Abschnitt "[Anleitungen zur Problembehandlung]" stellt Anleitungen für die Behandlung einiger der allgemeinen speicherbezogenen Probleme bereit, auf die Sie stoßen könnten.
 
-Die "[Anhänge]" enthalten Informationen zur Verwendung anderer Tools wie Wireshark und Netmon für die Analyse von Netzwerkpaketdaten, Fiddler für die Analyse von HTTP-/HTTPS-Nachrichten und Microsoft Message Analyzer für die Korrelation von Protokollierungsdaten.
+Die [Anhänge] enthalten Informationen zur Verwendung anderer Tools wie Wireshark und Netmon für die Analyse von Netzwerkpaketdaten und Fiddler für die Analyse von HTTP-/HTTPS-Nachrichten.
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Überwachung Ihres Speicherdiensts
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen oder Prozentsatz der erfolgreichen Dienstanfragen. Eine vollständige Liste der verfügbaren Kennzahlen finden Sie im Thema zu den [Kennzahlen zur Speicheranalyse – Tabellenschema](https://msdn.microsoft.com/library/azure/hh343264.aspx). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](https://go.microsoft.com/fwlink/?LinkId=510865).
@@ -221,10 +218,9 @@ Sie können den Verkehr zwischen Client und Server erfassen, um detaillierte Inf
 
 * [Fiddler](https://www.telerik.com/fiddler) ist ein kostenloser Web Debugging Proxy, mit dem Sie die Header und Nutzlastdaten von HTTP- und HTTPS-Anfrage- und Antwortnachrichten untersuchen können. Weitere Informationen finden Sie in [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr](#appendix-1).
 * [Microsoft Network Monitor (Netmon)](https://cnet-downloads.com/network-monitor) und [Wireshark](https://www.wireshark.org/) sind kostenlose Tools zur Netzwerkprotokollanalyse, mit denen Sie detaillierte Paketinformationen für eine Vielzahl von Netzwerkprotokollen anzeigen können. Weitere Informationen zu Wireshark finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr](#appendix-2).
-* Microsoft Message Analyzer ist ein Tool von Microsoft, das Netmon ersetzt und Sie zusätzlich zur Erfassung von Netzwerkpaketdaten bei der Anzeige und Analyse von Protokollierungsdaten unterstützt, die von anderen Tools erfasst werden. Weitere Informationen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr](#appendix-3).
 * Wenn Sie einen Basis-Konnektivitätstest durchführen möchten, um zu überprüfen, ob sich der Client-Computer über das Netzwerk mit dem Azure-Speicherdienst verbinden kann, können Sie dazu nicht das standardmäßige **Ping** -Tool auf dem Client verwenden. Dennoch können Sie das Tool [**tcping**](https://www.elifulkerson.com/projects/tcping.php) zur Überprüfung der Konnektivität verwenden.
 
-In vielen Fällen reichen die Protokollierungsdaten aus der Speicherprotokollierung und der Speicher-Clientbibliothek aus, um ein Problem zu diagnostizieren, aber in einigen Szenarien können detailliertere Informationen benötigt werden, als diese Netzwerkprotokollierungstools bereitstellen können. Beispielsweise können Sie Fiddler zur Anzeige von HTTP- und HTTPS-Nachrichten verwenden. Anhand der Header- und Nutzlastdaten, die an die und von den Speicherdiensten gesendet werden, können Sie untersuchen, wie eine Clientanwendung Speicheroperationen wiederholt. Protokollierungsanalysatoren wie Wireshark operieren auf Paketebene und erlauben Ihnen dadurch die Anzeige von TCP-Daten, mit denen Sie Probleme bezüglich verlorener Pakete und Konnektivität beheben können. Message Analyzer kann sowohl auf HTTP- und TCP-Schichten ausgeführt werden.
+In vielen Fällen reichen die Protokollierungsdaten aus der Speicherprotokollierung und der Speicher-Clientbibliothek aus, um ein Problem zu diagnostizieren, aber in einigen Szenarien können detailliertere Informationen benötigt werden, als diese Netzwerkprotokollierungstools bereitstellen können. Beispielsweise können Sie Fiddler zur Anzeige von HTTP- und HTTPS-Nachrichten verwenden. Anhand der Header- und Nutzlastdaten, die an die und von den Speicherdiensten gesendet werden, können Sie untersuchen, wie eine Clientanwendung Speicheroperationen wiederholt. Protokollierungsanalysatoren wie Wireshark operieren auf Paketebene und erlauben Ihnen dadurch die Anzeige von TCP-Daten, mit denen Sie Probleme bezüglich verlorener Pakete und Konnektivität beheben können. 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>End-to-End-Ablaufverfolgung
 Durchgängige Verfolgung unter Verwendung einer Vielzahl von Protokollierungsdateien ist eine nützliche Technik für die Untersuchung möglicher Probleme. Sie können die Datums-/Zeitinformationen aus Ihren Metrikdaten als Hinweis darauf verwenden, wo Sie in den Protokollierungsdateien nach den detaillierteren Informationen suchen müssen, die Ihnen bei der Fehlerbehebung helfen.
@@ -255,6 +251,14 @@ Der Speicherdienst generiert automatisch Serveranfrage-IDs.
 > Der Speicherdienst teilt jeder empfangenen Anforderung immer eine eindeutige Serveranforderungs-ID zu, sodass jeder Wiederholungsversuch vom Client und jeder in einem Batch enthaltene Vorgang eine eindeutige Serveranforderungs-ID hat.
 >
 >
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Im folgenden Codebeispiel wird die Verwendung einer benutzerdefinierten Clientanforderungs-ID veranschaulicht. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Wenn die Speicherclientbibliothek im Client eine Speicherausnahme (**StorageException**) ausgibt, enthält die Eigenschaft **RequestInformation** ein Objekt vom Typ **RequestResult** mit einer Eigenschaft vom Typ **ServiceRequestID**. Auf ein Objekt vom Typ **RequestResult** kann auch über eine **OperationContext**-Instanz zugegriffen werden.
 
@@ -291,6 +295,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>Zeitstempel
 Sie können auch Zeitstempel verwenden, um verbundene Protokolleinträge zu finden, aber achten Sie auf eventuellen Zeitversatz zwischen Client und Server. Suchen Sie etwa 15 Minuten nach passenden serverseitigen Einträgen, die auf dem Zeitstempel auf dem Client basieren. Denken Sie daran, dass die Blobmetadaten für die Metriken enthaltenden Blobs den Zeitbereich für die im Blob gespeicherten Metriken anzeigen. Dieser Zeitbereich ist nützlich, wenn Sie viele Metrikblobs für die gleiche Minute oder Stunde haben.
@@ -358,22 +364,26 @@ Mögliche Gründe für eine langsame Clientreaktion sind z. B. eine begrenzte A
 
 Für den Tabellen- und Warteschlangendienst kann der Nagle-Algorithmus auch höhere **AverageE2ELatency**-Werte verglichen mit **AverageServerLatency** verursachen: Weitere Informationen finden Sie im Beitrag [Nagle's Algorithm is Not Friendly towards Small Requests](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests) (Nagle-Algorithmus geht nicht freundlich mit kleinen Anfragen um). Sie können den Nagle-Algorithmus im Code deaktivieren, indem Sie die Klasse **ServicePointManager** im **System.Net**-Namespace verwenden. Sie sollten dies tun, bevor Sie Aufrufe an die Tabellen- oder Warteschlangendienste in Ihrer Anwendung senden, da dies keinen Einfluss auf die bereits offenen Verbindungen hat. Das folgende Beispiel stammt aus der Methode **Application_Start** in einer Workerrolle.
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
 
+---
+
 Sie sollten die clientseitigen Protokollierungen überprüfen, um zu sehen, wie viele Anfragen Ihre Clientanwendung übermittelt, und allgemeine .NET- bezogene Leistungsengpässe in Ihrem Client wie CPU, .NET Garbage Collection, Netzwerkauslastung oder Speicher überprüfen. Als Ausgangspunkt für die Fehlerbehandlung bei .NET-Clientanwendungen siehe [Debuggen, Ablaufverfolgung und Profilerstellung](https://msdn.microsoft.com/library/7fe0dd2y).
 
 #### <a name="investigating-network-latency-issues"></a>Untersuchung von Netzwerklatenzproblemen
-In der Regel wird eine hohe durchgängige Latenz durch die Übermittlungsbedingungen im Netzwerk verursacht. Sie können sowohl vorübergehende als auch permanente Netzwerkprobleme wie gedroppte Pakete mithilfe von Tools wie Wireshark oder Microsoft Message Analyzer untersuchen.
+In der Regel wird eine hohe durchgängige Latenz durch die Übermittlungsbedingungen im Netzwerk verursacht. Sie können sowohl vorübergehende als auch dauerhafte Netzwerkprobleme wie verlorene Pakete mithilfe von Tools wie Wireshark untersuchen.
 
 Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
-
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Metriken zeigen niedrige AverageE2ELatency und niedrige AverageServerLatency an, aber der Client erfährt hohe Latenz
 In diesem Szenario ist ein verzögertes Erreichen des Speicherdiensts durch die Speicheranfragen die wahrscheinlichste Ursache. Sie sollten untersuchen, warum Clientanfragen den Blob-Dienst nicht erreichen.
@@ -386,11 +396,9 @@ Prüfen Sie auch, ob der Client mehrere Wiederholungen ausführt, und untersuche
 * Überprüfen Sie die Clientprotokolle. Bei einer ausführlichen Protokollierung wird auch angezeigt, dass ein erneuter Versuch erfolgt ist.
 * Debuggen Sie den Code, und überprüfen Sie die Eigenschaften des **OperationContext** -Objekts, das mit der Anfrage verknüpft ist. Wenn der Vorgang wiederholt wurde, enthält die **RequestResults** -Eigenschaft mehrere eindeutige Serveranforderungs-IDs. Sie können auch die Start- und Endzeiten der einzelnen Anforderungen überprüfen. Weitere Information finden Sie im Codebeispiel im Abschnitt [Serveranfrage-ID].
 
-Wenn das Problem nicht beim Client liegt, sollten Sie potenzielle Netzwerkprobleme wie Paketverlust untersuchen. Sie können Tools wie Wireshark oder Microsoft Message Analyzer verwenden, um Netzwerkprobleme zu untersuchen.
+Wenn das Problem nicht beim Client liegt, sollten Sie potenzielle Netzwerkprobleme wie Paketverlust untersuchen. Sie können Tools wie Wireshark verwenden, um Netzwerkprobleme zu untersuchen.
 
 Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
-
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>Metriken zeigen hohe AverageServerLatency an
 Im Fall von hoher **AverageServerLatency** bei Blob-Download-Anfragen sollten Sie die Speicherprotokollierungen verwenden, um herauszufinden, ob wiederholte Anfragen für den gleichen Blob (oder die gleiche Blob-Gruppe) vorliegen. In Bezug auf Blobuploadanfragen sollten Sie untersuchen, welche Blockgröße der Client verwendet (zum Beispiel können Blöcke mit weniger als 64 K zu Overheads führen, wenn Lesevorgänge auch in Blöcken von weniger als 64 K erfolgen) und ob mehrere Clients parallel Blöcke in den gleichen Blob hochladen. Sie sollten auch die Pro-Minute-Metriken für Anfrageanzahlspitzen überprüfen, die zu einer Überschreitung der Pro-Sekunde-Skalierbarkeitsziele führen "[Metriken zeigen Anstieg bei PercentTimeoutError an]".
@@ -460,7 +468,7 @@ Server-Timeouts zeigen ein Problem mit dem Speicherdienst an, das weitere Unters
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metriken zeigen Anstieg bei PercentNetworkError an
 Ihre Metriken zeigen einen Anstieg bei **PercentNetworkError** für einen Ihrer Speicherdienste an. Die Metrik **PercentNetworkError** ist eine Aggregation der folgenden Metriken: **NetworkError**, **AnonymousNetworkError** und **SASNetworkError**. Diese treten auf, wenn der Speicherdienst bei einer Speicheranfrage des Client einen Netzwerkfehler entdeckt.
 
-Die häufigste Ursache für diesen Fehler ist eine Trennung der Client-Verbindung vor Ablauf eines Timeouts im Speicherdienst. Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht. Sie können auch Wireshark, Microsoft Message Analyzer oder TCPing verwenden, um Netzwerkverbindungsprobleme des Client zu untersuchen. Die Beschreibung dieser Tools finden Sie in den [Anhänge].
+Die häufigste Ursache für diesen Fehler ist eine Trennung der Client-Verbindung vor Ablauf eines Timeouts im Speicherdienst. Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht. Sie können auch Wireshark oder TCPing verwenden, um Netzwerkverbindungsprobleme über den Client zu untersuchen. Die Beschreibung dieser Tools finden Sie in den [Anhänge].
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>Der Client empfängt HTTP 403 (Verboten)-Meldungen
 Wenn Ihre Clientanwendung einen HTTP 403 (Verboten)-Fehler ausgibt, ist eine wahrscheinliche Ursache, dass der Client eine abgelaufene Shared Access Signature (SAS) verwendet, wenn er eine Speicheranfrage versendet. (Weitere mögliche Ursachen sind Zeitverzögerung, ungültige Schlüssel und leere Header). Wenn ein abgelaufener Schlüssel die Ursache ist, werden Sie keine Einträge in den serverseitigen Speicherprotokollierungsdaten finden. Die folgende Tabelle zeigt ein Beispiel für eine von der Speicher-Clientbibliothek generierte Clientprotokollierung, die folgende Problemstellung veranschaulicht:
@@ -594,6 +602,12 @@ Um eine Übergangslösung für das JavaScript-Problem zu finden, können Sie Cro
 
 Das folgende Codebeispiel zeigt, wie Sie Ihren Blob-Dienst so konfigurieren, dass JavaScript in der Contoso-Domäne ausgeführt wird, um auf ein Blob in Ihrem Blob-Speicherdienst zuzugreifen:
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +623,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>Netzwerkfehler
 In einigen Fällen können verlorene Netzwerkpakete dazu führen, dass der Speicherdienst HTTP 404-Nachrichten an den Client zurückliefert. Wenn Ihre Clientanwendung beispielsweise eine Entität aus dem Tabellendienst löscht, liefert der Client eine Speicherausnahme mit einer "HTTP 404 (Nicht gefunden)"-Statusmeldung vom Tabellendienst zurück. Wenn Sie die Tabelle im Tabellenspeicherdienst untersuchen, sehen Sie, dass der Dienst die Entität wie gefordert gelöscht hat.
@@ -695,13 +711,11 @@ Wenn die vorherigen Abschnitte nicht Ihr Problem mit dem Speicherdienst enthalte
 
 * Überprüfen Sie Ihre Metriken, um zu sehen, ob es eine Abweichung von erwarteten Baseline-Verhalten gibt. Anhand der Metriken können Sie feststellen, ob das Problem vorübergehend oder dauerhaft ist und welche Speicheroperationen das Problem beeinträchtigt.
 * Die Metrikinformationen unterstützen Sie bei der Suche nach serverseitigen Protokollierungsdaten, um weitere detaillierte Informationen über alle auftretenden Fehler zu erhalten. Diese Informationen können Ihnen dabei helfen, das Problem zu finden und zu beheben.
-* Wenn die Informationen in den serverseitigen Protokollen nicht ausreichen, um das Problem erfolgreich zu beheben, können Sie die Clientprotokolle der Speicher-Clientbibliothek zur Untersuchung des Verhaltens Ihrer Clientanwendung und Tools wie Fiddler, Wireshark und Microsoft Message Analyzer zur Untersuchung Ihres Netzwerks verwenden.
+* Wenn die Informationen in den serverseitigen Protokollen nicht ausreichen, um das Problem erfolgreich zu beheben, können Sie die clientseitigen Protokolle der Storage-Clientbibliothek zur Untersuchung des Verhaltens Ihrer Clientanwendung und Tools wie Fiddler und Wireshark zur Untersuchung Ihres Netzwerks verwenden.
 
 Weitere Informationen zur Verwendung von Fiddler finden Sie in [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr].
 
 Weitere Informationen zur Verwendung von Wireshark finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
-
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ## <a name="appendices"></a><a name="appendices"></a>Anhänge
 Die Anhänge beschreiben verschiedene Tools, die bei der Diagnose und Fehlerbehandlung von Problemen mit Azure-Speicher (und anderen Diensten) nützlich sein könnten. Diese Werkzeuge sind nicht Teil von Azure-Speicher, und einige sind Produkte von Drittanbietern. Als solche sind die in diesen Anhängen diskutierten Tools nicht durch Support-Vereinbarungen abgedeckt, die Sie ggf. mit Microsoft Azure oder Azure-Speicher getroffenen haben. Als Bestandteil Ihrer Evaluierung sollten Sie daher die Lizenz- und Supportoptionen prüfen, die die Anbieter dieser Tools zur Verfügung stellen.
@@ -752,40 +766,6 @@ Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vor
 > Weitere Informationen zu Wireshark finden Sie im [Wireshark-Benutzerhandbuch](https://www.wireshark.org/docs/wsug_html_chunked).
 >
 >
-
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr.
-Sie können Microsoft Message Analyzer verwenden, um HTTP- und HTTPS-Datenverkehr ähnlich wie Fiddler und Netzwerkverkehr ähnlich wie Wireshark zu erfassen.
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Konfigurieren einer Web-Rückverfolgungssession mit Microsoft Message Analyzer
-Um mit Microsoft Message Analyzer eine Web-Ablaufverfolgungssitzung für HTTP- und HTTPS-Datenverkehr zu konfigurieren, führen Sie Microsoft Message Analyzer aus, und klicken Sie anschließend im Menü **Datei** auf **Erfassung/Rückverfolgung**. Wählen Sie in der Liste der verfügbaren Rückverfolgungsszenarien **Web-Proxy**aus. Geben Sie anschließend im Bereich **Trace Scenario Configuration** im Textfeld **HostnameFilter** die Namen Ihrer Speicherendpunkte ein. (Sie können diese Namen im [Azure-Portal](https://portal.azure.com) einsehen.) Wenn der Name Ihres Azure-Speicherkontos also beispielsweise **contosodata** lautet, fügen Sie im Textfeld **HostnameFilter** Folgendes ein:
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> Die Hostnamen werden durch ein Leerzeichen getrennt.
->
->
-
-Wenn Sie bereit sind, mit dem Sammeln von Rückverfolgungsdaten zu beginnen, klicken Sie auf die Schaltfläche **Starten mit** .
-
-Weitere Informationen zur **Web-Proxy** -Rückverfolgung mit Microsoft Message Analyzer finden Sie unter [Microsoft-PEF-WebProxy Provider](https://technet.microsoft.com/library/jj674814.aspx).
-
-Die integrierte **Web-Proxy** -Rückverfolgung in Microsoft Message Analyzer basiert auf Fiddler; sie kann clientseitigen HTTPS-Verkehr erfassen und unverschlüsselte HTTPS-Nachrichten anzeigen. Die **Web-Proxy** -Rückverfolgung funktioniert durch Konfiguration eines lokalen Proxy für den gesamten HTTP- und HTTPS-Verkehr, der Zugriff auf unverschlüsselte Nachrichten verschafft.
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Diagnose von Netzwerkproblemen mithilfe von Microsoft Message Analyzer
-Neben der Erfassung des HTTP-/HTTPS-Datenverkehrs zwischen der Anwendung und dem Speicherdienst mithilfe der **Webproxy**-Ablaufverfolgung können Sie mit Microsoft Message Analyzer über die integrierte **Local-Link-Layer**-Ablaufverfolgung auch Netzwerkpaketinformationen erfassen. Dadurch können Sie wie mit Wireshark Daten erfassen und Netzwerkprobleme wie verworfene Pakete diagnostizieren.
-
-Der folgende Screenshot zeigt ein Beispiel für die **Local-Link-Layer**-Ablaufverfolgung mit einigen **Informationsmeldungen** in der Spalte **DiagnosisTypes**. Mit einem Klick auf die Spalte **DiagnosisTypes** werden die Nachrichtendetails angezeigt. In diesem Beispiel hat der Server Nachricht "#305" neu übertragen, weil sie keine Bestätigung vom Client erhalten hat:
-
-![Screenshot, der ein Beispiel für die Local-Link-Layer-Ablaufverfolgung mit einigen Informationsmeldungen in der Spalte „DiagnosisTypes“ zeigt.][9]
-
-Wenn Sie die Rückverfolgungssession in Microsoft Message Analyzer erstellen, können Sie Filter festlegen, um die Störungsmenge bei der Rückverfolgung zu reduzieren. Klicken Sie auf der Seite **Erfassung/Rückverfolgung**, auf der Sie die Ablaufverfolgung definieren, neben **Microsoft-Windows-NDIS-PacketCapture** auf den Link **Konfigurieren**. Der folgende Screenshot zeigt eine Konfiguration, die TCP-Datenverkehr für die IP-Adressen der drei Speicherdienste filtert:
-
-![Screenshot, der eine Konfiguration zeigt, die TCP-Datenverkehr für die IP-Adressen der drei Speicherdienste filtert.][10]
-
-Weitere Informationen zur Local-Link-Layer-Rückverfolgung von Microsoft Message Analyzer finden Sie unter [Microsoft-PEF-NDIS-PacketCapture Provider](https://technet.microsoft.com/library/jj659264.aspx).
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten
 Viele Tools ermöglichen das Herunterladen von Speichermetrikdaten aus dem Azure-Tabellenspeicher in einem abgegrenzten Format, wodurch die Daten einfach in Excel für die Anzeige und Analyse geladen werden können. Speicherprotokollierungsdaten von Azure Blob Storage verfügen bereits über ein durch Trennzeichen getrenntes Format, das Sie in Excel laden können. Allerdings müssen Sie basierend auf den Informationen in [Protokollformat der Speicheranalyse](https://msdn.microsoft.com/library/azure/hh343259.aspx) und [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/azure/hh343264.aspx) entsprechende Spaltenüberschriften hinzufügen.
@@ -873,7 +853,6 @@ Weitere Informationen zu Analysen in Azure Storage finden Sie unter den folgende
 [Anhänge]: #appendices
 [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr]: #appendix-1
 [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]: #appendix-2
-[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]: #appendix-3
 [Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten]: #appendix-4
 [Anhang 5: Überwachung mit Application Insights für Azure DevOps]: #appendix-5
 

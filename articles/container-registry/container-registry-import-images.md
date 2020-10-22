@@ -2,13 +2,13 @@
 title: Importieren von Containerimages
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/18/2020
+ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660494"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541576"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 
@@ -18,7 +18,7 @@ Azure Container Registry ermöglicht einige allgemeine Szenarien zum Kopieren vo
 
 * Importieren aus einer öffentlichen Registrierung
 
-* Importieren aus einer anderen Azure-Containerregistrierung im gleichen oder in einem anderen Azure-Abonnement
+* Importieren von Images aus einer anderen Azure-Containerregistrierung im selben oder in einem anderen Azure-Abonnement oder -Mandanten
 
 * Importieren aus einer Azure-fremden privaten Containerregistrierung
 
@@ -28,7 +28,7 @@ Der Imageimport in eine Azure-Containerregistrierung bietet gegenüber der Verwe
 
 * Wenn Sie Images mit mehreren Architekturen (etwa offizielle Docker-Images) importieren, werden Images für alle Architekturen und Plattformen kopiert, die in der Manifestliste angegeben sind.
 
-* Der Zugriff auf die Quell- und die Zielregistrierung muss nicht über die öffentlichen Endpunkte der Registrierung erfolgen.
+* Der Zugriff auf die Zielregistrierung muss nicht über den öffentlichen Endpunkt der Registrierung erfolgen.
 
 Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
@@ -83,9 +83,9 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>Importieren aus einer anderen Azure-Containerregistrierung
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>Importieren von Images aus einer Azure-Containerregistrierung im selben AD-Mandanten
 
-Mithilfe integrierter Azure Active Directory-Berechtigungen können Sie ein Image aus einer anderen Azure-Containerregistrierung importieren.
+Mithilfe von integrierten Azure Active Directory-Berechtigungen können Sie ein Image aus einer Azure-Containerregistrierung im selben AD-Mandanten importieren.
 
 * Ihre Identität muss über Azure Active Directory-Berechtigungen zum Lesen aus der Quellregistrierung (Rolle „Leser“) und zum Importieren in die Zielregistrierung (Rolle „Mitwirkender“ bzw. [benutzerdefinierte Rolle](container-registry-roles.md#custom-roles), die die importImage-Aktion zulässt) verfügen.
 
@@ -136,7 +136,20 @@ az acr import \
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importieren aus einer Registrierung mit Dienstprinzipal-Anmeldeinformationen
 
-Sie können für den Import aus einer Registrierung, auf die Sie nicht mit Active Directory-Berechtigungen zugreifen können, Anmeldeinformationen für einen Dienstprinzipal verwenden (sofern verfügbar). Geben Sie die App-ID und das Kennwort eines Active Directory-[Dienstprinzipals](container-registry-auth-service-principal.md) an, der über ACRPull-Zugriff auf die Quellregistrierung verfügt. Die Verwendung eines Dienstprinzipals empfiehlt sich für Buildsysteme und andere unbeaufsichtigte Systeme, die Images in Ihre Registrierung importieren müssen.
+Sie können für den Import aus einer Registrierung, auf die Sie nicht mit integrierten Active Directory-Berechtigungen zugreifen können, Anmeldeinformationen für einen Dienstprinzipal für die Quellregistrierung verwenden (sofern verfügbar). Geben Sie die App-ID und das Kennwort eines Active Directory-[Dienstprinzipals](container-registry-auth-service-principal.md) an, der über ACRPull-Zugriff auf die Quellregistrierung verfügt. Die Verwendung eines Dienstprinzipals empfiehlt sich für Buildsysteme und andere unbeaufsichtigte Systeme, die Images in Ihre Registrierung importieren müssen.
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
+```
+
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Importieren von Images aus einer Azure-Containerregistrierung in einem anderen AD-Mandanten
+
+Wenn Sie Images aus einer Azure-Containerregistrierung in einem anderen Azure Active Directory-Mandanten importieren möchten, geben Sie die Quellregistrierung über den Anmeldeservernamen an sowie den Benutzernamen und das Kennwort für Pullzugriff auf die Registrierung. Verwenden Sie z. B. ein [Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) und ein Kennwort oder die App-ID und das Kennwort für einen Active Directory-[Dienstprinzipal](container-registry-auth-service-principal.md), der über ACRPull-Zugriff auf die Quellregistrierung verfügt. 
 
 ```azurecli
 az acr import \
@@ -149,7 +162,7 @@ az acr import \
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Importieren aus einer Azure-fremden privaten Containerregistrierung
 
-Importieren Sie ein Image aus einer privaten Registrierung, indem Sie Anmeldeinformationen angeben, die den Pullzugriff auf die Registrierung ermöglichen. Rufen Sie beispielsweise ein Image per Pull aus einer privaten Docker-Registrierung ab: 
+Importieren Sie ein Image aus einer privaten Registrierung außerhalb von Azure, indem Sie Anmeldeinformationen angeben, die den Pullzugriff auf die Registrierung ermöglichen. Rufen Sie beispielsweise ein Image per Pull aus einer privaten Docker-Registrierung ab: 
 
 ```azurecli
 az acr import \

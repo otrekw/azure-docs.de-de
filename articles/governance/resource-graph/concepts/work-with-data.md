@@ -1,15 +1,15 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph Datensätze in großen Datasets abrufen, formatieren, paginieren und überspringen.
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005937"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578494"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -48,7 +48,7 @@ Das jeweils _restriktivste_ Steuerelement hat Vorrang. Wenn in einer Abfrage bei
 Als weitere Option für das Arbeiten mit großen Datasets kann das Steuerelement **Skip** verwendet werden. Über dieses Steuerelement kann bei der Abfrage die definierte Anzahl von Datensätzen vor dem Zurückgeben der Ergebnisse übersprungen werden. **Skip** eignet sich für Abfragen, die Ergebnisse auf sinnvolle Weise sortieren, um so Datensätze abzurufen, die sich in der Mitte des Resultsets befinden. Wenn sich die erforderlichen Ergebnisse am Ende des zurückgegebenen Datasets befinden, ist es effizienter, eine andere Sortierungskonfiguration zu verwenden und stattdessen die Ergebnisse vom Anfang des Datasets abzurufen.
 
 > [!NOTE]
-> Bei Verwendung von **Skip** sollten die Ergebnisse nach mindestens einer Spalte mit `asc` oder `desc` sortiert werden. Ohne Sortierung sind die zurückgegebenen Ergebnisse zufällig und nicht wiederholbar.
+> Bei Verwendung von **Skip** sollten die Ergebnisse nach mindestens einer Spalte mit `asc` oder `desc` sortiert werden. Ohne Sortierung sind die zurückgegebenen Ergebnisse zufällig und nicht wiederholbar. Wenn `limit` oder `take` in der Abfrage verwendet wird, wird **Skip** ignoriert.
 
 Die folgenden Beispiele zeigen, wie die ersten _10_ Datensätze übersprungen werden, die sich bei einer Abfrage ergeben, anstatt das zurückgegebene Resultset mit dem 11. Datensatz zu beginnen:
 

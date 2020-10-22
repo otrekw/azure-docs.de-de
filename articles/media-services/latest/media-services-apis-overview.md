@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5d57a6705973fbd5ee39042404015347d75b49b3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298962"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019782"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -35,13 +35,13 @@ Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Serv
 * **Dienstprinzipalauthentifizierung**: Wird zur Authentifizierung eines Dienstes verwendet (z. B. Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices). Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispielsweise sollte es für Web-Apps immer einen Dienst der mittleren Ebene geben, der sich mit einem Dienstprinzipal mit Media Services verbindet.
 * **Benutzerauthentifizierung**: Dient zum Authentifizieren einer Person, die die App für die Interaktion mit Media Services-Ressourcen verwendet. Die interaktive App sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird.
 
-Die Media Services-API erfordert, dass der Benutzer oder die App, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List**-Operationen verfügbar. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md).
+Die Media Services-API erfordert, dass der Benutzer oder die App, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List**-Operationen verfügbar.  Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md).
 
 Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen in Betracht ziehen, um über den Azure Resource Manager auf die Media Services-API zuzugreifen. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="azure-ad-service-principal"></a>Azure AD-Dienstprinzipal
 
-Wenn Sie eine Azure AD-App und ein Dienstprinzipal erstellen, muss sich die App in ihrem eigenen Mandanten befinden. Nachdem Sie die App erstellt haben, können Sie für die App den Zugriff auf das Media Services-Konto über die Rolle **Mitwirkender** oder **Besitzer** gewähren.
+Die Azure AD-App und der Dienstprinzipal sollten sich im selben Mandanten befinden. Nachdem Sie die App erstellt haben, können Sie für die App den Zugriff auf das Media Services-Konto über die Rolle **Mitwirkender** oder **Besitzer** gewähren.
 
 Wenn Sie sich nicht sicher sind, ob Sie über Berechtigungen zum Erstellen einer Azure AD-App verfügen, lesen Sie [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
@@ -122,9 +122,9 @@ Für jedes Liveereignis bzw. für jede zugehörige Liveausgabe wird jeweils nur 
 
 |SDK|Verweis|
 |---|---|
-|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-Referenz](https://aka.ms/ams-v3-dotnet-ref)|
-|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-Referenz](https://aka.ms/ams-v3-java-ref)|
-|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-Referenz](https://aka.ms/ams-v3-python-ref)|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-Referenz](/dotnet/api/overview/azure/mediaservices/management)|
+|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-Referenz](/java/api/overview/azure/mediaservices/management)|
+|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-Referenz](/python/api/overview/azure/mediaservices/management)|
 |[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-Referenz](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-Referenz](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||

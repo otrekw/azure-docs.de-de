@@ -6,34 +6,39 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e5c9540bed34de3cad5c74c7041c8d7e06aef9ca
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447247"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946058"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
 
-Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, den Status des Endpunktschutzes sowie Integritäts- und Bedrohungsschutz bereitzustellen. 
+Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, den Status des Endpunktschutzes sowie Integritäts- und Bedrohungsschutz bereitzustellen. Die Datensammlung ist nur für Computeressourcen (virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
 
-In diesem Artikel wird die Installation eines Log Analytics-Agents und das Festlegen eines Log Analytics-Arbeitsbereichs beschrieben, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. 
+In diesem Artikel wird die Installation eines Log Analytics-Agents und das Festlegen eines Log Analytics-Arbeitsbereichs beschrieben, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
-> [!NOTE]
-> - Die Datensammlung ist nur für Computeressourcen (virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
-> - Die Liste der unterstützten Plattformen finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
-> - Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
+> [!TIP]
+> Die Liste der unterstützten Plattformen finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
 
 ## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>Aktivieren der automatischen Bereitstellung des Log Analytics-Agents <a name="auto-provision-mma"></a>
+
+> [!NOTE]
+> Benutzer von Azure Sentinel: Beachten Sie, dass das Erfassen von sicherheitsrelevanten Ereignissen für einen einzelnen Arbeitsbereich entweder in Azure Security Center oder in Azure Sentinel konfiguriert werden kann, aber nicht in beiden Diensten. Wenn Sie Azure Sentinel zu einem Arbeitsbereich hinzufügen möchten, der bereits Azure Defender-Benachrichtigungen aus Azure Security Center empfängt und für das Erfassen sicherheitsrelevanter Ereignisse konfiguriert ist, haben Sie zwei Möglichkeiten:
+> - Behalten Sie das Erfassen von sicherheitsrelevanten Ereignissen im Azure Security Center bei. Sie können diese Ereignisse sowohl in Azure Sentinel als auch in Azure Defender abfragen und analysieren. Allerdings können Sie in Azure Sentinel weder den Verbindungsstatus des Connectors überwachen noch dessen Konfiguration ändern. Wenn dies wichtig für Sie ist, ziehen Sie die zweite Möglichkeit in Betracht.
+>
+> - [Deaktivieren Sie das Erfassen von sicherheitsrelevanten Ereignissen](#data-collection-tier) im Azure Security Center, und fügen Sie dann erst den Connector für sicherheitsrelevante Ereignisse in Azure Sentinel hinzu. Wie bei der ersten Möglichkeit können Sie Ereignisse sowohl in Azure Sentinel als auch in Azure Defender/ASC abfragen und analysieren. Nun können Sie allerdings in Azure Sentinel – und nur dort – den Verbindungsstatus des Connectors überwachen und dessen Konfiguration ändern.
+
 
 Zum Erfassen der Daten von den Computern muss der Log Analytics-Agent installiert sein. Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen. Die automatische Bereitstellung ist standardmäßig deaktiviert.
 
 Bei aktivierter automatischer Bereitstellung wird der Log Analytics-Agent von Security Center auf allen unterstützten und neu erstellten virtuellen Azure-Computern bereitgestellt. Die automatische Bereitstellung wird empfohlen, Sie können den Agent bei Bedarf jedoch auch manuell installieren (siehe [Manuelle Installation des Log Analytics-Agents](#manual-agent)).
 
-
+Nachdem der Agent auf Ihren Computern bereitgestellt wurde, kann Security Center zusätzliche Empfehlungen im Zusammenhang mit dem Status von Systemupdates, mit Sicherheitskonfigurationen für Betriebssysteme und mit dem Endgeräteschutz geben sowie zusätzliche Sicherheitswarnungen generieren.
 
 So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
@@ -44,20 +49,9 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents":::
 
->[!TIP]
-> Wenn ein Arbeitsbereich bereitgestellt werden muss, kann die Installation des Agents bis zu 25 Minuten dauern.
+    >[!TIP]
+    > Wenn ein Arbeitsbereich bereitgestellt werden muss, kann die Installation des Agents bis zu 25 Minuten dauern.
 
-Nachdem der Agent auf Ihren Computern bereitgestellt wurde, kann Security Center zusätzliche Empfehlungen im Zusammenhang mit dem Status von Systemupdates, mit Sicherheitskonfigurationen für Betriebssysteme und mit dem Endgeräteschutz geben sowie zusätzliche Sicherheitswarnungen generieren.
-
->[!NOTE]
-> Wenn Sie die automatische Bereitstellung auf **Aus** festlegen, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen er bereits bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
-
->[!NOTE]
-> - Anweisungen zum Bereitstellen einer bereits vorhandenen Installation finden Sie unter [Automatische Bereitstellung bei einer bereits vorhandenen Agent-Installation](#preexisting).
-> - Anweisungen zur manuellen Bereitstellung finden Sie unter [Manuelle Installation der Log Analytics-Agent-Erweiterung](#manual-agent).
-> - Anweisungen zum Deaktivieren der automatischen Bereitstellung, finden Sie unter [Deaktivieren der automatischen Bereitstellung](#offprovisioning).
-> - Anweisungen für das Onboarding von Security Center mit PowerShell finden Sie unter [Automatisieren des Onboardings von Azure Security Center mit PowerShell](security-center-powershell-onboarding.md).
->
 
 ## <a name="workspace-configuration"></a>Arbeitsbereichskonfiguration
 Von Security Center gesammelte Daten werden in Log Analytics-Arbeitsbereichen gespeichert. Ihre Daten können von virtuellen Azure-Computern gesammelt werden, die in von Security Center erstellten Arbeitsbereichen oder in einem vorhandenen Arbeitsbereich gespeichert sind, den Sie selbst erstellt haben. 
@@ -147,20 +141,16 @@ Wenn Sie einen Arbeitsbereich zum Speichern Ihrer Daten auswählen, sind alle Ar
 Das Auswählen einer Datensammlungsebene in Azure Security Center hat nur Auswirkung auf die Speicherung von Sicherheitsereignissen in Ihrem Log Analytics-Arbeitsbereich. Der Log Analytics-Agent sammelt und analysiert weiterhin die Sicherheitsereignisse, die für den Bedrohungsschutz von Azure Security Center erforderlich sind, unabhängig davon, auf welcher Ebene Sicherheitsereignisse ggf. in Ihrem Log Analytics-Arbeitsbereich gespeichert werden sollen. Wenn Sie Sicherheitsereignisse in Ihrem Arbeitsbereich speichern, können Sie diese Ereignisse in Ihrem Arbeitsbereich untersuchen, durchsuchen und überprüfen. 
 > [!NOTE]
 > Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
-> 
-> Sie können die passende Filterrichtlinie für Ihre Abonnements und Arbeitsbereiche auswählen. Dabei haben Sie die Wahl zwischen vier Gruppen von Ereignissen, die in Ihrem Arbeitsbereich gespeichert werden sollen: 
 
+Sie können die passende Filterrichtlinie für Ihre Abonnements und Arbeitsbereiche auswählen. Dabei haben Sie die Wahl zwischen vier Gruppen von Ereignissen, die in Ihrem Arbeitsbereich gespeichert werden sollen: 
 - **Keine:** deaktiviert die Speicherung von Sicherheitsereignissen. Dies ist die Standardeinstellung.
 - **Minimal:** Eine kleinere Gruppe von Ereignissen für Kunden, die das Ereignisvolumen minimieren möchten.
 - **Allgemein:** eine Gruppe von Ereignissen, die die Anforderungen der meisten Kunden erfüllt und einen vollständigen Überwachungspfad bietet.
 - **Alle Ereignisse:** für Kunden, die alle Ereignisse speichern möchten.
 
+Diese sicherheitsrelevanten Ereignisse sind nur mit Azure Defender verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
 
-> [!NOTE]
-> Diese sicherheitsrelevanten Ereignisse sind nur mit Azure Defender verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
 Diese Gruppen wurden für typische Szenarien konzipiert. Überlegen Sie sich vor der Implementierung, welche Ihre Anforderungen erfüllt.
->
->
 
 Bei der Bestimmung der Ereignisse für die Gruppen **Allgemein** und **Minimal** haben wir uns mit Kunden und Branchenstandards beschäftigt, um uns über die ungefilterte Häufigkeit der einzelnen Ereignisse und deren Verwendung zu informieren. Dabei haben wir uns an den folgenden Richtlinien orientiert:
 
@@ -264,9 +254,8 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
 
 1. Wenn Sie die Agents auf neuen virtuellen Computern mithilfe der Resource Manager-Vorlage bereitstellen möchten, installieren Sie den Log Analytics-Agent:
 
-   a.  [Installieren des Log Analytics-Agents für Windows](../virtual-machines/extensions/oms-windows.md)
-    
-   b.  [Installieren des Log Analytics-Agents für Linux](../virtual-machines/extensions/oms-linux.md)
+   - [Installieren des Log Analytics-Agents für Windows](../virtual-machines/extensions/oms-windows.md)
+   - [Installieren des Log Analytics-Agents für Linux](../virtual-machines/extensions/oms-linux.md)
 
 1. Folgen Sie den Anweisungen in [Sammeln von Daten über virtuelle Azure-Computer](../azure-monitor/learn/quick-collect-azurevm.md), um die Erweiterungen auf vorhandenen virtuellen Computern bereitzustellen.
 
@@ -277,7 +266,6 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
 1. Wenn Sie PowerShell zum Bereitstellen der Erweiterung verwenden möchten, befolgen Sie die Anweisungen in der Dokumentation zu virtuellen Computern:
 
     - [Für Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
-
     - [Für Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
 
 
@@ -302,8 +290,8 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde die Funktionsweise der Datensammlung und der automatischen Bereitstellung in Security Center erläutert. Weitere Informationen zu Security Center finden Sie auf den folgenden Seiten:
 
-* [Azure Security Center – Häufig gestellte Fragen](faq-general.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Azure Security Center – Häufig gestellte Fragen](faq-general.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 
 
 

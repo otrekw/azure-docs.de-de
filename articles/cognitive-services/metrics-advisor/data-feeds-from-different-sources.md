@@ -3,19 +3,19 @@ title: Hinzufügen von Datenfeeds aus unterschiedlichen Quellen zu Metrics Advis
 titleSuffix: Azure Cognitive Services
 description: Hinzufügen unterschiedlicher Datenfeeds zu Metrics Advisor
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324466"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046909"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Hinzufügen von Datenfeeds aus unterschiedlichen Datenquellen zu Metrics Advisor
 
@@ -133,7 +133,7 @@ Pro JSON-Datei ist nur ein Zeitstempel zulässig.
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
-* **Verbindungszeichenfolge**: Informationen zum Abrufen der Verbindungszeichenfolge aus Azure Data Explorer (Kusto) finden Sie unter [Anzeigen und Kopieren einer Verbindungszeichenfolge](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto).
+* **Verbindungszeichenfolge**: Metrics Advisor unterstützt den Zugriff auf Azure Data Explorer (Kusto) über die Azure AD-Anwendungsauthentifizierung. Sie müssen eine Azure AD-Anwendung erstellen und registrieren und diese anschließend für den Zugriff auf eine Azure Data Explorer-Datenbank autorisieren. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie in der Dokumentation zu [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app).
 
 * **Query** (Abfrage): Unter [Kusto-Abfragesprache](https://docs.microsoft.com/azure/data-explorer/kusto/query) finden Sie Informationen zum Abrufen und Formulieren von Daten in mehrdimensionalen Zeitreihendaten. Verwenden Sie die Variablen `@StartTime` und `@EndTime` in der Abfrage. Sie müssen wie folgt formatiert werden: `yyyy-MM-dd HH:mm:ss`.
 

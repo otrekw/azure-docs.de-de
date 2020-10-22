@@ -3,20 +3,18 @@ title: Überprüfen von Benutzeräußerungen – LUIS
 titleSuffix: Azure Cognitive Services
 description: Überprüfen Sie die beim aktiven Lernen erfassten Äußerungen, um die Absicht auszuwählen und Entitäten für reale Äußerungen zu markieren. Akzeptieren Sie die Änderungen, und führen Sie das Training und die Veröffentlichung durch.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
-ms.author: diberry
-ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055612"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541457"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Verbessern der LUIS-App durch Überprüfen der Endpunktäußerungen
 
@@ -34,7 +32,7 @@ Verwenden Sie das LUIS-Portal, um die richtige Endpunktabfrage zu erstellen.
 1. Wählen Sie für die zugewiesene Vorhersageressource **Abfrageparameter ändern** aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Verwenden Sie das LUIS-Portal, um Protokolle zu speichern, die für aktives Lernen benötigt werden.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+    > ![Screenshot: Link „Abfrageparameter ändern“](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
 1. Schalten Sie **Protokolle speichern** um, und speichern Sie dann, indem Sie **Fertig** auswählen.
 

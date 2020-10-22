@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/13/2020
-ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 10/02/2020
+ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667264"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -210,6 +210,9 @@ Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübe
 
     Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll.
 
+### <a name="mount-dataset"></a>Einbinden eines Datasets
+* **Dataset initialization failed:  Waiting for mount point to be ready has timed out** (Fehler bei der Initialisierung des Datasets: Timeout beim Warten auf Verfügbarkeit des Bereitstellungpunkts): In `azureml-sdk >=1.12.0` wurde eine Wiederholungslogik hinzugefügt, um dieses Problem zu behandeln. Wenn Sie frühere Versionen des azureml-sdk verwenden, führen Sie ein Upgrade auf die aktuelle Version durch. Wenn Sie bereits `azureml-sdk>=1.12.0` verwenden, erstellen Sie Ihre Umgebung neu, damit Sie über den neuesten Patch mit dem Fix verfügen.
+
 ### <a name="data-labeling-projects"></a>Datenbezeichnungsprojekte
 
 |Problem  |Lösung  |
@@ -291,12 +294,12 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **ModuleErrors (Kein Modul benannt)** :  Wenn Sie beim Übermitteln von Experimenten in Azure ML auf „ModuleErrors“ treffen, bedeutet dies, dass das Trainingsskript die Installation eines Pakets erwartet, es aber nicht hinzugefügt wird. Nachdem Sie den Paketnamen angegeben haben, installiert Azure ML das Paket in der für Ihr Training verwendeten Umgebung. 
 
-    Wenn Sie [Estimators](concept-azure-machine-learning-architecture.md#estimators) verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten. Wenn Sie Ihr eigenes Azure ML-Umgebungsobjekt besitzen, das das vom Estimator verwendete Standardimage außer Kraft setzen soll, können Sie diese Umgebung über den `environment`-Parameter des Estimatorkonstruktors angeben.
+    Wenn Sie Estimators verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten. Wenn Sie Ihr eigenes Azure ML-Umgebungsobjekt besitzen, das das vom Estimator verwendete Standardimage außer Kraft setzen soll, können Sie diese Umgebung über den `environment`-Parameter des Estimatorkonstruktors angeben.
 
     Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und SKLearn. Die Verwendung dieser Estimators stellt sicher, dass die hauptsächlichen Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
  
     Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
-    Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks).
+    Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks).
 
     > [!Note]
     > Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
@@ -305,7 +308,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod wurde heruntergefahren**: In den meisten Fällen, wenn „AbortedError: Horovod wurde heruntergefahren“ auftritt, bedeutet dies, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfachere Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von Horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
 
-* **Löschen von Ausführungen oder Experimenten**:  Experimente können mit der Methode [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
+* **Löschen von Ausführungen oder Experimenten**:  Experimente können mit der Methode [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
 
     Das endgültige Löschen einzelner Experimente oder Ausführungen wird derzeit nicht unterstützt. Weitere Informationen zum Löschen von Arbeitsbereichsressourcen finden Sie unter [Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst](how-to-export-delete-data.md).
 
@@ -320,7 +323,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
-* **Das letzte Upgrade der AutoML-Abhängigkeiten auf neuere Versionen führt zu Inkompatibilität:**  Ab Version 1.13.0 des SDK werden Modelle in älteren SDKs nicht mehr geladen, da die in den früheren Paketen angehefteten Versionen mit den neueren, jetzt angehefteten Versionen nicht kompatibel sind. Es wird ein Fehler wie der folgende angezeigt:
+* **Das letzte Upgrade der AutoML-Abhängigkeiten auf neuere Versionen führt zu Inkompatibilität**:  Ab Version 1.13.0 des SDK werden Modelle in älteren SDKs nicht mehr geladen, da die in den früheren Paketen angehefteten Versionen mit den neueren, jetzt angehefteten Versionen nicht kompatibel sind. Es wird ein Fehler wie der folgende angezeigt:
   * Das Modul wurde nicht gefunden: Beispiel: `No module named 'sklearn.decomposition._truncated_svd`,
   * Importfehler: Beispiel: `ImportError: cannot import name 'RollingOriginValidator'`,
   * Attributfehler: Ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -340,7 +343,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **Der Prognose-R2-Score ist immer 0 (null)** : Dieses Problem tritt auf, wenn die bereitgestellten Trainingsdaten Zeitreihen enthalten, die für die letzten `n_cv_splits` + `forecasting_horizon` Datenpunkte den gleichen Wert aufweisen. Wenn dieses Muster in der Zeitreihe erwartet wird, können Sie die primäre Metrik in die normalisierte mittlere quadratische Gesamtabweichung ändern.
+* **Der Prognose-R2-Score ist immer 0 (null)** : Dieses Problem tritt auf, wenn die bereitgestellten Trainingsdaten Zeitreihen enthalten, die für die letzten `n_cv_splits` + `forecasting_horizon` Datenpunkte den gleichen Wert aufweisen. Wenn dieses Muster in Ihrer Zeitreihe erwartet wird, können Sie die primäre Metrik in die normalisierte mittlere quadratische Gesamtabweichung ändern.
  
 * **TensorFlow**: Ab der SDK-Version 1.5.0 installiert das automatisierte maschinelle Lernen TensorFlow-Modelle nicht mehr standardmäßig. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über CondaDependecies. 
  
@@ -366,7 +369,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     * Stellen Sie sicher, dass die 64-Bit-Version von Conda installiert ist, nicht die32-Bit-Version, indem Sie den Befehl `conda info` ausführen. `platform` sollte für Windows `win-64` und für Mac `osx-64` lauten.
     * Stellen Sie sicher, dass Conda 4.4.10 oder höher installiert ist. Sie können die Version mit dem Befehl `conda -V` überprüfen. Wenn eine frühere Version installiert ist, können Sie diese mit dem folgenden Befehl aktualisieren: `conda update conda`.
     * Linux: `gcc: error trying to exec 'cc1plus'`
-      *  Wenn der Fehler `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` auftritt, installieren Sie das build-essentials-Paket mit diesem Befehl: `sudo apt-get install build-essential`.
+      *  Wenn der Fehler `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` auftritt, installieren Sie das „build-essential“-Paket über den Befehl `sudo apt-get install build-essential`.
       * Übergeben Sie einen neuen Namen als ersten Parameter an „automl_setup“, um eine neue Conda-Umgebung zu erstellen. Vorhandene Conda-Umgebungen können Sie mit `conda env list` anzeigen und mit `conda env remove -n <environmentname>` entfernen.
       
 * **Fehler bei „automl_setup_linux.sh“** : Gehen Sie folgendermaßen vor, wenn bei „automl_setup_linus.sh“ unter Ubuntu Linux folgender Fehler auftritt: `unable to execute 'gcc': No such file or directory`-
@@ -376,7 +379,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   4. Führen Sie `automl_setup_linux.sh` erneut aus.
 
 * **Fehler bei „configuration.ipynb“** :
-  * Stellen Sie bei einer lokalen Conda-Installation zunächst sicher, dass „automl_setup“ erfolgreich ausgeführt wurde.
+  * Stellen Sie bei einer lokalen Conda-Instanz zunächst sicher, dass „automl_setup“ erfolgreich ausgeführt wurde.
   * Stellen Sie sicher, dass die „subscription_id“ richtig ist. Suchen Sie die „subscription_id“ im Azure-Portal, indem Sie „Alle Dienste“ und dann „Abonnements“ auswählen. Die Zeichen „<“ und „>“ dürfen im subscription_id-Wert nicht enthalten sein. Dies ist ein Beispiel für ein gültiges Format: `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"`.
   * Stellen Sie sicher, dass Sie Zugriff als Besitzer oder Mitwirkender auf das Abonnement haben.
   * Überprüfen Sie, ob die verwendete Region unterstützt wird: `eastus2`, `eastus`, `westcentralus`, `southeastasia`, `westeurope`, `australiaeast`, `westus2`, `southcentralus`.
@@ -398,7 +401,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Fehler beim NumPy-Import in Windows**: In einigen Windows-Umgebungen tritt beim Laden von NumPy mit der neuesten Python-Version 3.6.8 ein Fehler auf. Versuchen Sie in diesem Fall die Python-Version 3.6.7.
 
-* **Fehler beim NumPy-Import**: Überprüfen Sie die Tensorflow-Version in der Conda-Umgebung für automatisiertes maschinelles Lernen. Es werden Versionen unter 1.13 unterstützt. Wenn die vorhandene Version 1.13 oder höher ist, deinstallieren Sie TensorFlow. Sie können die Tensorflow-Version folgendermaßen prüfen und deinstallieren:
+* **Fehler beim NumPy-Import**: Überprüfen Sie die TensorFlow-Version in der Conda-Umgebung für automatisiertes ML. Es werden Versionen unter 1.13 unterstützt. Wenn die vorhandene Version 1.13 oder höher ist, deinstallieren Sie TensorFlow in der Umgebung. Sie können die TensorFlow-Version folgendermaßen überprüfen und deinstallieren:
   1. Starten Sie eine Befehlsshell, und aktivieren Sie die Conda-Umgebung, in der die Pakete für das automatisierte maschinelle Lernen installiert sind.
   2. Geben Sie `pip freeze` ein, und suchen Sie nach `tensorflow`. Die aufgelistete Version sollte kleiner als 1.13 sein.
   3. Wenn die aufgelistete Version keine unterstützte Version ist, geben Sie in der Befehlsshell `pip uninstall tensorflow` ein, und bestätigen Sie den Befehl mit „y“.
@@ -446,6 +449,10 @@ kubectl get secret/azuremlfessl -o yaml
 
 >[!Note]
 >Kubernetes speichert die Geheimnisse im Base64-codierten Format. Sie müssen die `cert.pem`- und die `key.pem`-Komponente jedes Geheimnisses aus dem Base64-Format decodieren, bevor Sie diese Komponenten für `attach_config.enable_ssl` bereitstellen. 
+
+### <a name="detaching-azure-kubernetes-service"></a>Trennen von Azure Kubernetes Service
+
+Wenn Sie einen AKS-Cluster mit dem Azure Machine Learning Studio, dem SDK oder der Azure CLI-Erweiterung für maschinelles Lernen trennen, wird der AKS-Cluster nicht gelöscht. Informationen zum Löschen des Clusters finden Sie unter [Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
 
 ### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webdienstefehler in Azure Kubernetes Service
 

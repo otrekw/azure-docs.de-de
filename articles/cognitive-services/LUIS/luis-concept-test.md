@@ -2,7 +2,6 @@
 title: Testen Ihrer LUIS-App
 titleSuffix: Azure Cognitive Services
 description: Beim Testen stellen Sie LUIS Beispieläußerungen bereit und erhalten eine Antwort von Absichten und Entitäten, die LUIS erkannt hat.
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.custom: seodec18
@@ -10,13 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73486679"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535847"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testen von Beispieläußerungen in LUIS
 

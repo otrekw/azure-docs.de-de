@@ -1,14 +1,16 @@
 ---
 title: 'Bearbeiten einer Wissensdatenbank: QnA Maker'
 description: Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054020"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91776543"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bearbeiten von Frage-Antwort-Paaren in Ihrer Wissensdatenbank
 
@@ -72,7 +74,7 @@ Mit der Rich-Text-Bearbeitung Ihres Antworttexts können Sie die Markdownformati
 
 
     > [!div class="mx-imgBorder"]
-    > ![Verwenden des Rich-Text-Editors zum Hinzufügen eines öffentlich zugänglichen Bilds und dessen Alternativtexts](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![Screenshot: Direkter Editor mit der öffentlich zugänglichen Bild-URL und dem alternativen Text für das eingegebene Bild](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. Fügen Sie einen Link zu einer URL hinzu, indem Sie entweder den Text in der Antwort auswählen und dann auf das Linksymbol in der Symbolleiste klicken oder indem Sie in der Symbolleiste auf das Linksymbol klicken und dann den neuen Text und die URL eingeben.
 

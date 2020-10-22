@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812555"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319721"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -42,7 +42,7 @@ In diesem Thema erhalten Sie einen Überblick über den Bereitstellungsbericht.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
-* Anwendungsbesitzer
+* Anwendungsbesitzer können Protokolle für Anwendungen in ihrem Besitz anzeigen.
 * Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“, „Berichtsleser“, „Anwendungsadministrator“ und „Cloudanwendungsadministrator“
 * Globale Administratoren
 
@@ -56,7 +56,7 @@ Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Ge
 Die Bereitstellungsprotokolle bieten Antworten auf die folgenden Fragen:
 
 * Welche Gruppen wurden erfolgreich in ServiceNow erstellt?
-* Wie wurden Rollen aus Amazon Web Services importiert?
+* Welche Rollen wurden aus Amazon Web Services importiert?
 * Welche Benutzer konnten in Dropbox nicht erstellt werden?
 
 Sie können auf die Bereitstellungsprotokolle zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Überwachung** die Option **Bereitstellungsprotokolle** auswählen. Bei einigen Bereitstellungsdatensätzen kann es bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
@@ -211,11 +211,11 @@ Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
-- Im Azure-Portal werden gemeldete Bereitstellungsdaten 30 Tage gespeichert, wenn Sie eine Premium Edition haben, und 7 Tage, wenn Sie eine kostenlose Edition haben. Die Bereitstellungsprotokolle können in Log Analytics für die Aufbewahrung über 30 Tage hinaus veröffentlicht werden. 
+- Im Azure-Portal werden gemeldete Bereitstellungsdaten 30 Tage gespeichert, wenn Sie eine Premium-Edition haben, und 7 Tage, wenn Sie eine kostenlose Edition haben. Die Bereitstellungsprotokolle können in [Log Analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) für die Aufbewahrung über 30 Tage hinaus veröffentlicht werden. 
 
 - Sie können das Attribut „Änderungs-ID“ als eindeutigen Bezeichner verwenden. Dies ist beispielsweise bei der Kommunikation mit dem Produktsupport hilfreich.
 
-- Zurzeit gibt es keine Option zum Herunterladen von Bereitstellungsdaten als CSV-Datei. Sie können die Daten jedoch mit [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) exportieren.
+- Zurzeit gibt es keine Option zum Herunterladen von Bereitstellungsdaten als CSV-Datei. Sie können die Daten jedoch mit [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) exportieren.
 
 - Möglicherweise werden übersprungene Ereignisse für Benutzer aufgeführt, die nicht dem Gültigkeitsbereich angehören. Dies entspricht dem erwarteten Verhalten, insbesondere dann, wenn der Synchronisierungsbereich auf alle Benutzer und Gruppen festgelegt ist. Der Dienst wertet alle Objekte im Mandanten aus, auch solche, die außerhalb des Gültigkeitsbereichs liegen. 
 
@@ -245,10 +245,10 @@ Anhand der folgenden Tabelle können Sie besser verstehen, wie Sie mögliche Feh
 |DuplicateSourceEntries | Der Vorgang konnte nicht abgeschlossen werden, da mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](../app-provisioning/customize-application-attributes.md) beschrieben.|
 |ImportSkipped | Nachdem jeder Benutzer ausgewertet wurde, wird versucht, die Benutzer aus dem Quellsystem zu importieren. Dieser Fehler tritt häufig auf, wenn für den zu importierenden Benutzer die in den Attributzuordnungen definierte Übereinstimmungseigenschaft fehlt. Wenn für das Benutzerobjekt zum entsprechenden Attribut kein Wert vorhanden ist, können keine Bereichs-, Vergleichs- oder Exportänderungen ausgewertet werden. Beachten Sie, dass dieser Fehler nicht darauf hinweist, dass sich der Benutzer im Gültigkeitsbereich befindet, da der Bereich für den Benutzer noch nicht ausgewertet wurde.|
 |EntrySynchronizationSkipped | Der Bereitstellungsdienst hat das Quellsystem erfolgreich abgefragt und den Benutzer identifiziert. Es wurden keine weiteren Aktionen für den Benutzer durchgeführt, und er wurde übersprungen. Dieses Überspringen kann darauf zurückzuführen sein, dass sich der Benutzer außerhalb des Gültigkeitsbereichs befand oder dass er bereits im Zielsystem vorhanden ist und keine Änderungen erforderlich sind.|
-|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Bei einer GET-Anforderung zum Abrufen eines Benutzers oder einer Gruppe haben wir in der Antwort mehrere Benutzer oder Gruppen empfangen. In der Antwort erwarteten wir nur den Empfang eines Benutzers oder einer Gruppe. Wenn wir [beispielsweise](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) eine GET-Anforderung ausführen, um eine Gruppe abzurufen und einen Filter zum Ausschließen von Mitgliedern bereitzustellen, und Ihr SCIM-Endpunkt die Mitglieder zurückgibt, lösen wir diesen Fehler aus.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Bei einer GET-Anforderung zum Abrufen eines Benutzers oder einer Gruppe haben wir in der Antwort mehrere Benutzer oder Gruppen empfangen. In der Antwort erwarteten wir nur den Empfang eines Benutzers oder einer Gruppe. Wenn wir [beispielsweise](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group) eine GET-Anforderung ausführen, um eine Gruppe abzurufen und einen Filter zum Ausschließen von Mitgliedern bereitzustellen, und Ihr SCIM-Endpunkt die Mitglieder zurückgibt, lösen wir diesen Fehler aus.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Überprüfen des Status der Benutzerbereitstellung](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](../app-provisioning/application-provisioning-config-problem.md)
-* [Graph-API für Bereitstellungsprotokolle](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Graph-API für Bereitstellungsprotokolle](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

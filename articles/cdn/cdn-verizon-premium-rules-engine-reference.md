@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872502"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362579"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Referenz zur Regel-Engine für Azure CDN Premium von Verizon
 
@@ -41,7 +41,7 @@ Sie besteht aus:
 - Einer Reihe von Features, die definieren, wie das CDN die oben genannten Anforderungen behandelt.
 Diese Elemente sind in der folgenden Abbildung gekennzeichnet.
 
-![Workflow der Richtlinienbereitstellung](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![Screenshot mit Bezeichnungen: Der bedingte Ausdruck, die Übereinstimmung und die Funktionen einer Regel](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>Richtlinie
 Eine Richtlinie, die aus einem Satz schreibgeschützter Regeln besteht, ermöglicht Folgendes:

@@ -6,20 +6,20 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9aba1e5b469e04c6c6d047f78cd202a073e5a769
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539128"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
-Dieser Artikel erläutert den Unterschied zwischen „traditionellen“ Application Insights-Metriken, die auf Protokollen basieren, und vorab aggregierten Metriken, die sich derzeit in der öffentlichen Vorschau befinden. Beide Arten von Metriken stehen den Benutzern von Application Insights zur Verfügung und bringen jeweils einen einzigartigen Wert bei Überwachung von Anwendungsintegrität, Diagnose und Analyse. Entwickler, die Anwendungen instrumentieren, können entscheiden, welche Art von Metrik für ein bestimmtes Szenario am besten geeignet ist, abhängig von der Größe der Anwendung, dem erwarteten Telemetriedatenvolumen und den Geschäftsanforderungen an Genauigkeit der Metriken und Warnungen.
+Dieser Artikel erläutert den Unterschied zwischen „traditionellen“ Application Insights-Metriken, die auf Protokollen basieren, und vorab aggregierten Metriken. Beide Arten von Metriken stehen den Benutzern von Application Insights zur Verfügung und bringen jeweils einen einzigartigen Wert bei Überwachung von Anwendungsintegrität, Diagnose und Analyse. Entwickler, die Anwendungen instrumentieren, können entscheiden, welche Art von Metrik für ein bestimmtes Szenario am besten geeignet ist, abhängig von der Größe der Anwendung, dem erwarteten Telemetriedatenvolumen und den Geschäftsanforderungen an Genauigkeit der Metriken und Warnungen.
 
 ## <a name="log-based-metrics"></a>Protokollbasierte Metriken
 
-Bis vor kurzem basierte das anwendungsüberwachende Telemetriedatenmodell in Application Insights ausschließlich auf einer kleinen Anzahl von vordefinierten Ereignistypen, wie z. B. Anforderungen, Ausnahmen, Abhängigkeitsaufrufen, Seitenaufrufen, etc. Entwickler können das SDK verwenden, um diese Ereignisse entweder manuell auszusenden (indem sie Code schreiben, der das SDK explizit aufruft), oder sie können sich auf die automatische Sammlung von Ereignissen aus der automatischen Instrumentierung verlassen. In beiden Fällen speichert das Application Insights-Backend alle gesammelten Ereignisse als Protokolle, und die Application Insights-Blätter im Azure-Portal dienen als Analyse- und Diagnosewerkzeug zur Visualisierung ereignisbasierter Daten aus Protokollen.
+In der Vergangenheit basierte das Telemetriedatenmodell für die Anwendungsüberwachung in Application Insights ausschließlich auf einer kleinen Anzahl von vordefinierten Ereignistypen, z. B. Anforderungen, Ausnahmen, Abhängigkeitsaufrufen, Seitenaufrufen, etc. Entwickler können das SDK verwenden, um diese Ereignisse entweder manuell auszusenden (indem sie Code schreiben, der das SDK explizit aufruft), oder sie können sich auf die automatische Sammlung von Ereignissen aus der automatischen Instrumentierung verlassen. In beiden Fällen speichert das Application Insights-Backend alle gesammelten Ereignisse als Protokolle, und die Application Insights-Blätter im Azure-Portal dienen als Analyse- und Diagnosewerkzeug zur Visualisierung ereignisbasierter Daten aus Protokollen.
 
 Die Verwendung von Protokollen zur Erhaltung eines vollständigen Satzes von Ereignissen kann einen großen analytischen und diagnostischen Wert darstellen. So können Sie beispielsweise eine genaue Anzahl von Anforderungen an eine bestimmte URL mit der Anzahl der verschiedenen Benutzer abrufen, die diese Aufrufe getätigt haben. Oder Sie können detaillierte Diagnoseablaufverfolgungsdaten, einschließlich Ausnahmen und Aufrufe von Abhängigkeiten für jede Benutzersitzung abrufen. Diese Art von Informationen kann die Transparenz über Integrität und Nutzung der Anwendung erheblich verbessern, wodurch die Zeit für die Diagnose von Problemen mit einer Anwendung verkürzt wird.
 
@@ -35,7 +35,7 @@ Zusätzlich zu protokollbasierten Metriken lieferte das Application Insights-Tea
 > [!IMPORTANT]
 > Protokollbasierte und vorab aggregierte Metriken können in Azure Application Insights parallel verwendet werden. Zur Unterscheidung werden auf der Application Insights-Benutzeroberfläche die vorab aggregierten Metriken jetzt als „Standardmetriken (Vorschau)“ bezeichnet, während die traditionellen Metriken aus den Ereignissen in „protokollbasierte Metriken“ umbenannt wurden.
 
-Die neueren SDKs ([Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK oder höher für .NET) aggregieren Metriken während der Erfassung, bevor die Techniken zur Telemetrievolumenreduzierung beginnen. Das bedeutet, dass die Genauigkeit der neuen Metriken bei Verwendung der neuesten Application Insights SDKs nicht durch Stichprobenerstellung und Filterung beeinträchtigt wird.
+Die neueren SDKs (SDK [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) oder höher für .NET) aggregieren die Metriken während der Auflistung vorab. Dies gilt für [Standardmetriken, die standardmäßig gesendet werden](../platform/metrics-supported.md#microsoftinsightscomponents), sodass die Genauigkeit nicht durch die Stichprobenentnahme oder das Filtern beeinträchtigt wird. Dies gilt auch für benutzerdefinierte Metriken, die mit [GetMetric](./api-custom-events-metrics.md#getmetric) gesendet werden, was zu einer geringeren Datenerfassung und geringeren Kosten führt.
 
 Bei SDKs, die keine Vorabaggregation implementieren (d. h. ältere Versionen von Application Insights SDKs oder SDKs zur Browserinstrumentierung), füllt das Application Insights-Back-End weiterhin die neuen Metriken auf, indem es die Ereignisse aggregiert, die vom Application Insights-Endpunkt zur Ereignissammlung empfangen werden. So können Sie zwar nicht von dem reduzierten Datenvolumen profitieren, das über die Leitung übertragen wird, können die vorab aggregierten Metriken aber dennoch bei SDKs nutzen, die Metriken während der Erfassung nicht vorab aggregieren. Auf diese Weise erhalten Sie eine bessere Leistung und Unterstützung für Dimensionswarnungen nahezu in Echtzeit.
 

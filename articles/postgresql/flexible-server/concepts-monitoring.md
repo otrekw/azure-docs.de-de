@@ -1,19 +1,19 @@
 ---
 title: Überwachung und Metriken in Azure Database for PostgreSQL Flexible Server
 description: In diesem Artikel werden die Überwachungs- und Metrikfeatures in Azure Database for PostgreSQL Flexible Server beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930355"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707845"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>Überwachen von Metriken in Azure Database for PostgreSQL Flexible Server
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Überwachen von Metriken in Azure Database for PostgreSQL Flexible Server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
@@ -29,6 +29,7 @@ Für PostgreSQL Flexible Server sind folgende Metriken verfügbar:
 
 |Metrik|Metrikanzeigename|Einheit|BESCHREIBUNG|
 |---|---|---|---|
+| active_connections | Die aktiven Verbindungen. | Anzahl | Die Anzahl der Verbindungen mit dem Server | 
 | backup_storage_used | Verwendeter Sicherungsspeicher | Byte | Die Menge des verwendeten Sicherungsspeichers. Diese Metrik stellt den gesamten Speicherplatz dar, der von allen vollständigen Datenbanksicherungen, differenziellen Sicherungen und Protokollsicherungen beansprucht wurde, die auf der Grundlage der für den Server festgelegten Beibehaltungsdauer für Sicherungen aufbewahrt wurden. Die Häufigkeit der Sicherungen wird durch den Dienst verwaltet. Bei georedundantem Speicher wird doppelt so viel Sicherungsspeicher genutzt wie bei lokal redundantem Speicher. |
 | connections_failed | Verbindungsfehler | Anzahl | Verbindungsfehler. |
 | connections_succeeded | Erfolgreiche Verbindungen | Anzahl | Erfolgreiche Verbindungen. |

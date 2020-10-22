@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894430"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613542"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-Geräts über Windows PowerShell
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro FPGA-Geräts über Windows PowerShell
 
 Azure Stack Edge Pro ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
@@ -43,16 +43,16 @@ Dieser Artikel enthält die folgenden Verfahren:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Sie können auch IoT Edge-Zertifikate hochladen, um eine sichere Verbindung zwischen Ihrem IoT Edge-Gerät und den nachgeschalteten Geräten zu ermöglichen, die möglicherweise damit verbunden sind. Es gibt drei IoT Edge-Zertifikate ( *.PEM*-Format), die Sie installieren müssen:
+Sie können auch IoT Edge-Zertifikate hochladen, um eine sichere Verbindung zwischen Ihrem IoT Edge-Gerät und den nachgeschalteten Geräten zu ermöglichen, die möglicherweise damit verbunden sind. Es müssen drei Dateien (*PEM*-Format) installiert werden:
 
 - Zertifikat der Stammzertifizierungsstelle oder der Zertifizierungsstelle des Besitzers
 - Zertifikat der Gerätezertifizierungsstelle
-- Zertifikat des Geräteschlüssels
+- Privater Schlüssel des Geräts 
 
 Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets zum Installieren von IoT Edge-Zertifikaten:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 Wenn Sie dieses Cmdlet ausführen, werden Sie aufgefordert, das Kennwort für die Netzwerkfreigabe anzugeben.
 

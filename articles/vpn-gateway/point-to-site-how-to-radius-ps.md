@@ -1,18 +1,18 @@
 ---
 title: 'Herstellen einer Point-to-Site-Verbindung zwischen einem Computer und einem virtuellen Netzwerk unter Verwendung der RADIUS-Authentifizierung: PowerShell | Azure'
-description: Stellen Sie mithilfe von P2S- und RADIUS-Authentifizierung eine sichere Verbindung zwischen Windows- und Mac OS X-Clients und einem virtuellen Netzwerk her.
+description: Herstellen einer sicheren Verbindung von Windows und OS X-Clients mit einem virtuellen Netzwerk unter Verwendung von P2S und der RADIUS-Authentifizierung
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e45afed3332d26006cf0b4296986edb6f6588962
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421729"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91442403"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
 
@@ -24,23 +24,24 @@ Eine P2S-VPN-Verbindung wird von Windows- und Mac-Geräten gestartet. Clients, d
 
 * RADIUS-Server
 * Native VPN-Gateway-Zertifikatauthentifizierung
+* Native Azure Active Directory-Authentifizierung (nur Windows 10)
 
-Dieser Artikel unterstützt Sie beim Konfigurieren einer P2S-Konfiguration mit Authentifizierung über einen RADIUS-Server. Wenn Sie stattdessen zum Authentifizieren erstellte Zertifikate und die native VPN-Gateway-Zertifikatauthentifizierung verwenden möchten, lesen Sie die Informationen unter [Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der Zertifikatauthentifizierung: PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md).
+Dieser Artikel unterstützt Sie beim Konfigurieren einer P2S-Konfiguration mit Authentifizierung über einen RADIUS-Server. Wenn Sie stattdessen zum Authentifizieren erstellte Zertifikate und die native VPN-Gateway-Zertifikatauthentifizierung verwenden möchten, lesen Sie die Informationen unter [Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNet unter Verwendung der nativen Azure-Zertifikatauthentifizierung: PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md) oder [Erstellen eines Azure Active Directory-Mandanten für Verbindungen mit dem P2S OpenVPN-Protokoll](openvpn-azure-ad-tenant.md) für die Azure Active Directory-Authentifizierung.
 
-![Verbindungsdiagramm – RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![Darstellung der P2S-Konfiguration mit einer Authentifizierung unter Verwendung eines RADIUS-Servers](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche IP-Adresse. P2S erstellt die VPN-Verbindung entweder über SSTP (Secure Socket Tunneling Protocol), OpenVPN oder IKEv2.
 
 * SSTP ist ein TLS-basierter VPN-Tunnel, der nur auf Windows-Clientplattformen unterstützt wird. Er kann Firewalls durchdringen und ist daher optimal für die ortsunabhängige Verbindungsherstellung mit Azure geeignet. Auf Serverseite werden die SSTP-Versionen 1.0, 1.1 und 1.2 unterstützt. Der Client entscheidet, welche Version verwendet wird. Unter Windows 8.1 und höher wird standardmäßig SSTP 1.2 verwendet.
 
-* OpenVPN®-Protokoll, ein auf SSL/TLS basierendes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
+* OpenVPN®-Protokoll, ein auf SSL/TLS basierendes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
 
 * IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
 P2S-Verbindungen erfordern Folgendes:
 
 * Ein RouteBased-VPN-Gateway. 
-* Einen RADIUS-Server für die Benutzerauthentifizierung. Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestelltwerden.
+* Einen RADIUS-Server für die Benutzerauthentifizierung. Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestelltwerden. Für eine Hochverfügbarkeit können Sie auch zwei RADIUS-Server konfigurieren.
 * Ein VPN-Clientkonfigurationspaket für die Windows-Geräte, die eine Verbindung mit dem VNET herstellen. Ein VPN-Clientkonfigurationspaket enthält die Einstellungen, die ein VPN-Client zum Herstellen einer P2S-Verbindung benötigt.
 
 ## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Informationen zur Active Directory-Domänenauthentifizierung (AD) für P2S-VPNs
@@ -64,7 +65,7 @@ Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>Beispielwerte
 
@@ -79,10 +80,10 @@ Sie können die Beispielwerte zum Erstellen einer Testumgebung oder zum besseren
 * **Subnetzname: GatewaySubnet**<br>Der Subnetzname *GatewaySubnet* ist erforderlich, damit das VPN-Gateway funktioniert.
   * **Adressbereich des Gatewaysubnetzes: 192.168.200.0/24** 
 * **VPN-Clientadresspool: 172.16.201.0/24**<br>VPN-Clients, die sich über diese Punkt-zu-Standort-Verbindung mit dem VNet verbinden, erhalten eine IP-Adresse aus dem VPN-Clientadresspool.
-* **Abonnement:** Falls Sie über mehrere Abonnements verfügen, vergewissern Sie sich, dass Sie das richtige Abonnement verwenden.
+* **Abonnement:** Falls Sie über mehrere Abonnements verfügen, sollten Sie sich vergewissern, dass Sie das richtige Abonnement verwenden.
 * **Ressourcengruppe: TestRG**
 * **Standort: USA, Osten**
-* **DNS-Server: IP-Adresse** des DNS-Servers, der für die Namensauflösung des VNET verwendet werden soll. (Optional)
+* **DNS-Server:** IP-Adresse des DNS-Servers, der für die Namensauflösung des VNET verwendet werden soll. (Optional)
 * **GW-Name: Vnet1GW**
 * **Name der öffentlichen IP: VNet1GWPIP**
 * **VpnType: RouteBased**
@@ -170,7 +171,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
  
 * Für „-RadiusServer“ kann ein Name oder eine IP-Adresse angegeben werden. Wenn Sie den Namen angeben und sich der Server in der lokalen Umgebung befindet, kann das VPN-Gateway den Namen unter Umständen nicht auflösen. In diesem Fall ist es besser, die IP-Adresse des Servers anzugeben. 
 * „-RadiusSecret“ muss dem für den RADIUS-Server konfigurierten Wert entsprechen.
-* Bei „-VpnClientAddressPool“ handelt es sich um den Bereich, aus dem die VPN-Clients, die eine Verbindung herstellen, eine IP-Adresse erhalten. Verwenden Sie einen privaten IP-Adressbereich, der sich nicht mit dem lokalen Standort überschneidet, aus dem Sie Verbindungen herstellen möchten. Der Bereich darf sich auch nicht mit dem VNET überschneiden, mit dem Sie Verbindungen herstellen möchten. Stellen Sie sicher, dass der konfigurierte Adresspool groß genug ist.  
+* Bei „-VpnClientAddressPool“ handelt es sich um den Bereich, aus dem die VPN-Clients, die eine Verbindung herstellen, eine IP-Adresse erhalten.Verwenden Sie einen privaten IP-Adressbereich, der sich nicht mit dem lokalen Standort überschneidet, aus dem Sie Verbindungen herstellen möchten. Der Bereich darf sich auch nicht mit dem VNET überschneiden, mit dem Sie Verbindungen herstellen möchten. Stellen Sie sicher, dass der konfigurierte Adresspool groß genug ist.  
 
 1. Erstellen Sie eine sichere Zeichenfolge für das RADIUS-Geheimnis.
 
@@ -223,9 +224,20 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
+   Verwenden Sie die folgende Syntax, um **zwei** RADIUS-Server **(Vorschau)** anzugeben. Ändern Sie den Wert **-VpnClientProtocol** nach Bedarf.
+
+    ```azurepowershell-interactive
+    $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.15 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+    $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.16 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+
+    $radiusServers = @( $radiusServer1, $radiusServer2 )
+
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
+    ```
+
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a>Herunterladen des VPN-Clientkonfigurationspakets und Einrichten des VPN-Clients
 
-Die VPN-Clientkonfiguration ermöglicht Geräten das Herstellen einer P2S-Verbindung mit einem VNET. Informationen zum Erstellen eines VPN-Clientkonfigurationspakets und zum Einrichten des VPN-Clients finden Sie unter [Create and install VPN client configuration files for P2S RADIUS authentication (Preview)](point-to-site-vpn-client-configuration-radius.md) (Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung (Vorschauversion)).
+Die VPN-Clientkonfiguration ermöglicht Geräten das Herstellen einer P2S-Verbindung mit einem VNET.Informationen zum Erstellen eines VPN-Clientkonfigurationspakets und zum Einrichten des VPN-Clients finden Sie unter [Create and install VPN client configuration files for P2S RADIUS authentication (Preview)](point-to-site-vpn-client-configuration-radius.md) (Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung (Vorschauversion)).
 
 ## <a name="7-connect-to-azure"></a><a name="connect"></a>7. Herstellen einer Verbindung mit Azure
 

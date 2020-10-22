@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749854"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854986"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
@@ -27,7 +27,7 @@ Es gibt zwei Arten von verwalteten Identitäten: benutzerseitig und systemseitig
 
 In Azure HDInsight können verwaltete Identitäten nur vom HDInsight-Dienst für interne Komponenten verwendet werden. Es wird derzeit keine Methode unterstützt, mit der Sie Zugriffstoken anhand der auf HDInsight-Clusterknoten installierten verwalteten Identitäten zum Zugreifen auf externe Dienste generieren können. Für einige Azure-Dienste wie Compute-VMs werden verwaltete Identitäten mit einem Endpunkt implementiert, den Sie zum Beziehen von Zugriffstoken verwenden können. Dieser Endpunkt ist zurzeit nicht in HDInsight-Knoten verfügbar.
 
-Wenn Sie für Ihre Anwendungen ein Bootstrap durchführen müssen, um zu vermeiden, dass Geheimnisse/Kennwörter in Analyseaufträgen (z. B. SCALA-Aufträgen) platziert werden, können Sie Ihre eigenen Zertifikate mithilfe von Skriptaktionen auf die Clusterknoten verteilen und dann mithilfe dieser Zertifikate ein Zugriffstoken abrufen (etwa zum Zugreifen auf Azure Key Vault).
+Wenn Sie für Ihre Anwendungen einen Bootstrap durchführen müssen, um zu vermeiden, dass Geheimnisse/Kennwörter in Analyseaufträgen (z. B. SCALA-Aufträgen) platziert werden, können Sie Ihre eigenen Zertifikate mithilfe von Skriptaktionen auf die Clusterknoten verteilen und dann mithilfe dieser Zertifikate ein Zugriffstoken abrufen (etwa zum Zugreifen auf Azure Key Vault).
 
 ## <a name="create-a-managed-identity"></a>Erstellen einer verwalteten Identität
 
@@ -44,9 +44,18 @@ Die verbleibenden Schritte zum Konfigurieren der verwalteten Identität hängen 
 
 Verwaltete Identitäten werden in Azure HDInsight in verschiedenen Szenarien verwendet. In den verwandten Dokumenten finden Sie ausführliche Anweisungen zur Einrichtung und Konfiguration:
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#create-a-user-assigned-managed-identity)
 * [Enterprise-Sicherheitspaket](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md)
+
+HDInsight erneuert automatisch die Zertifikate für die verwalteten Identitäten, die Sie in diesen Szenarien verwenden. Es gibt jedoch eine Einschränkung: Wenn mehrere verwaltete Identitäten für zeitintensive Cluster verwendet werden, funktioniert die Zertifikaterneuerung möglicherweise nicht für alle verwalteten Identitäten wie erwartet. Wenn Sie planen, zeitintensive Cluster (die z. B. länger als 60 Tage ausgeführt werden) zu verwenden, empfiehlt es sich aufgrund dieser Einschränkung, für alle genannten Szenarien dieselbe verwaltete Identität zu verwenden. 
+
+Wenn Sie bereits einen zeitintensiven Cluster mit mehreren unterschiedlichen verwalteten Identitäten erstellt haben, können eventuell die folgenden Probleme auftreten:
+ * In ESP-Clustern tritt beim Start des Clusterdiensts ein Fehler auf, oder dieser wird hochskaliert, und beim Starten anderer Vorgänge treten Authentifizierungsfehler auf.
+ * In ESP-Clustern wird das LDAPS-Zertifikat beim Ändern des LDAPS-Zertifikats von AAD DS nicht automatisch aktualisiert, sodass die LDAP-Synchronisierung und Hochskalierungen nicht mehr gestartet werden.
+ * Beim MSI-Zugriff auf ADLS Gen2 treten Fehler auf.
+ * Verschlüsselungsschlüssel können im CMK-Szenario nicht rotiert werden.
+In diesen Fällen sollten Sie allen im Cluster verwendeten verwalteten Identitäten die erforderlichen Rollen und Berechtigungen für die obigen Szenarien zuweisen. Wenn Sie z. B. unterschiedliche verwaltete Identitäten für ADLS Gen2 und ESP-Cluster verwenden, sollten beide über die Rollen „Besitzer von Speicherblobdaten“ und „Mitwirkender für die HDInsight-Domänendienste“ verfügen, um diese Probleme zu vermeiden.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742178"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen aus einer Sicherung des StorSimple Virtual Array
 
@@ -44,7 +44,7 @@ In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie das Klonen aus 
    
    c.    Klicken Sie auf **OK**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![Klonen einer Sicherung 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. Klicken Sie auf dem Blatt **Klonen** auf **Zieleinstellungen**, und führen Sie folgendes durch:
    
    a.    Geben Sie einen Freigabenamen an. Der Freigabename kann 3-127 Zeichen lang sein.
@@ -59,13 +59,13 @@ In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie das Klonen aus 
    
    f.    Klicken Sie auf **OK**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Klonen einer Sicherung 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. Klicken Sie auf **Klonen**, um einen Klonauftrag zu starten. Nachdem der Auftrag abgeschlossen ist beginnt der Klonvorgang, und Sie erhalten eine Benachrichtigung. Gehen Sie zum Überwachen des Fortschritts des Klonvorgangs zum Blatt **Aufträge**, und klicken Sie auf den Auftrag, um die Auftragsdetails anzuzeigen.
 5. Nachdem der Klon erfolgreich erstellt wurde, navigieren Sie auf Ihrem Gerät zurück zum Blatt **Freigaben**.
 6. Sie können nun die neue geklonte Freigabe in der Liste mit den Freigaben auf Ihrem Gerät anzeigen. Eine mehrstufige Freigabe wird auch als mehrstufig geklont, und eine lokale Freigabe als lokale Freigabe.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Klonen einer Sicherung 4](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Klonen von Volumes aus einem Sicherungssatz
 
@@ -84,7 +84,7 @@ Um aus einer Sicherung im Azure-Portal zu klonen, müssen Sie ähnliche Schritte
    
    c.    Klicken Sie auf **OK**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![Klonen eines Volumes 2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. Klicken Sie auf dem Blatt **Klonen** auf **Zielvolumeinstellungen**, und führen Sie folgendes durch:
    
    a. Der Gerätename wird automatisch aufgefüllt.
@@ -95,16 +95,16 @@ Um aus einer Sicherung im Azure-Portal zu klonen, müssen Sie ähnliche Schritte
    
    d. Klicken Sie für **Verbundene Hosts** auf **Auswahl**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume4.png)
+   ![Klonen eines Volumes 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. Wählen Sie auf dem Blatt **Verbundene Hosts** aus einem vorhandenen ACR aus oder fügen Sie einen neuen ACR hinzu. Sie müssen einen ACR-Namen und einen Host-IQN angeben, um einen neuen ACR hinzuzufügen. Klicken Sie auf **Auswählen**.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![Klonen eines Volumes 4](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Klicken Sie auf **Klonen**, um einen Klonauftrag zu starten.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![Klonen eines Volumes 5](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. Nachdem der Klonauftrag erstellt wurde, wird das Klonen gestartet. Sobald der Klon erstellt wurde, wird er auf dem Blatt „Volumes“ auf Ihrem Gerät angezeigt. Beachten Sie, dass ein mehrstufiges Volume als mehrstufiges Volume geklont wird, und ein lokales Volume als lokales Volume.
    
-   ![Klonen einer Sicherung](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![Klonen eines Volumes 6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Sobald das Volume in der Liste der Volumes online angezeigt wird, ist das Volume für die Verwendung verfügbar. Aktualisieren Sie auf dem iSCSI-Initiatorhost die Liste der Ziele im Fenster mit den iSCSI-Initiatoreigenschaften. Ein neues Ziel, das den Namen des geklonten Volumes enthält, sollte in der Statusspalte als „inaktiv“ angezeigt werden.
 8. Wählen Sie das Ziel aus, und klicken Sie auf **Verbinden**. Wenn der Initiator mit dem Ziel verbunden ist, sollte sich der Status in **Verbunden**ändern.
 9. Im Fenster **Datenträgerverwaltung** werden die bereitgestellten Volumes wie in der folgenden Abbildung dargestellt angezeigt. Klicken Sie mit der rechten Maustaste auf das ermittelte Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Online**.

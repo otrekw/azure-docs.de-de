@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447687"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952113"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Security Center-Übersichtsseite
 
@@ -38,7 +38,7 @@ Die **obere Menüleiste** enthält Folgendes:
 
 In der Mitte der Seite befinden sich **vier zentrale Kacheln**, die jeweils mit einem dedizierten Dashboard mit weiteren Details verlinkt sind:
 - **Sicherheitsbewertung**: Security Center führt eine ständige Bewertung Ihrer Ressourcen, Abonnements und Organisation in Bezug auf Sicherheitsprobleme durch. Anschließend werden alle Ergebnisse in einer einzigen Bewertung zusammengefasst, sodass Sie auf einen Blick Ihre aktuelle Sicherheitssituation erkennen können: je höher die Bewertung, desto geringer das ermittelte Risiko. [Weitere Informationen](secure-score-security-controls.md)
-- **Compliance**: Security Center stellt basierend auf fortlaufenden Bewertungen Ihrer Azure-Umgebung Informationen zu Ihrem Konformitätsstatus (Compliance) bereit. Mit Security Center werden Risikofaktoren in Ihrer Hybrid Cloud-Umgebung anhand der bewährten Methoden für die Sicherheit analysiert. Diese Bewertungen sind Konformitätskontrollen zugeordnet, die aus dem unterstützten Standardsatz stammen. [Erfahren Sie mehr](security-center-compliance-dashboard.md).
+- **Compliance**: Security Center stellt basierend auf fortlaufenden Bewertungen Ihrer Azure-Umgebung Informationen zu Ihrem Konformitätsstatus (Compliance) bereit. Mit Security Center werden Risikofaktoren in Ihrer Hybrid Cloud-Umgebung anhand der bewährten Methoden für die Sicherheit analysiert. Diese Bewertungen sind Konformitätskontrollen zugeordnet, die aus dem unterstützten Standardsatz stammen. [Weitere Informationen](security-center-compliance-dashboard.md).
 - **Azure Defender**: Dies ist die in Security Center integrierte Cloud Workload Protection Platform (CWPP), die einen erweiterten, intelligenten Schutz Ihrer Azure- und Hybridworkloads ermöglicht. Auf der Kachel wird die Abdeckung für Ihre verbundenen Ressourcen (für die derzeit ausgewählten Abonnements) und die letzten Warnungen angezeigt, die je nach Schweregrad mit einer bestimmten Farbe gekennzeichnet sind. [Weitere Informationen](azure-defender.md)
 - **Bestand**: Auf der Kachel werden die Anzahl von nicht überwachten VMs und ein einfaches Barometer für Ihre Ressourcen angezeigt, die mit Security Center überwacht werden. [Weitere Informationen](asset-inventory.md)
 

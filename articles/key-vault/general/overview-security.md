@@ -3,19 +3,18 @@ title: Azure Key Vault – Sicherheit
 description: Verwalten Sie Zugriffsberechtigungen für den Azure Key Vault, Schlüssel und Geheimnisse. In diesem Artikel wird das Authentifizierungs- und Autorisierungsmodell für Key Vault und das Schützen eines Schlüsseltresors behandelt.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377572"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91739689"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -76,21 +75,16 @@ Wenn Firewallregeln in Kraft sind, können Benutzer nur Daten aus Key Vault lese
 
 Weitere Informationen zu Azure Key Vault-Netzwerkadressen finden Sie unter [VNET-Dienstendpunkte für Azure Key Vault](overview-vnet-service-endpoints.md).
 
-## <a name="monitoring"></a>Überwachung
+## <a name="tls-and-https"></a>TLS und HTTPS
 
-Bei der Key Vault-Protokollierung werden Informationen zu den Aktivitäten gespeichert, die für Ihren Tresor ausgeführt werden. Key Vault-Protokolle:
+*   Beim Key Vault-Front-End (Datenebene) handelt es sich um einen mehrinstanzenfähigen Server. Dies bedeutet, dass die Schlüsseltresore verschiedener Kunden dieselbe öffentliche IP-Adresse gemeinsam nutzen können. Für die Gewährleistung von Isolation wird jede HTTP-Anforderung unabhängig von anderen Anforderungen authentifiziert und autorisiert.
+*   Sie können ältere TLS-Versionen zwar ermitteln, um Sicherheitsrisiken zu melden, da die öffentliche IP-Adresse jedoch von mehreren Kunden gemeinsam genutzt wird, ist es dem Key Vault-Team nicht möglich, ältere TLS-Versionen für einzelne Schlüsseltresore auf Transportebene zu deaktivieren.
+*   Das HTTPS-Protokoll ermöglicht es dem Client, an der TLS-Aushandlung teilzunehmen. **Clients können die neueste TLS-Version erzwingen.** Wenn dies der Fall ist, wird für die gesamte Verbindung der entsprechende Ebenenschutz verwendet. Dass Key Vault weiterhin ältere TLS-Versionen unterstützt, stellt keine Beeinträchtigung für die Sicherheit von Verbindungen dar, die neuere TLS-Versionen verwenden.
+*   Trotz bekannter Sicherheitsrisiken im TLS-Protokoll gibt es keinen bekannten Angriff, bei dem ein böswilliger Agent Informationen aus Ihrem Schlüsseltresor extrahieren kann, wenn ein Angreifer eine Verbindung mit einer TLS-Version initiiert, die Sicherheitsrisiken aufweist. Der Angreifer muss sich trotzdem authentifizieren und autorisiert werden, und solange berechtigte Clients Verbindungen immer mit den aktuellen TLS-Versionen herstellen, ist es nicht möglich, dass Anmeldeinformationen aufgrund von Sicherheitsrisiken in älteren TLS-Versionen kompromittiert werden.
 
-- Alle authentifizierten REST-API-Anforderungen, einschließlich der fehlerhaften Anforderungen
-  - Vorgänge im Schlüsseltresor selbst. Zu diesen Vorgängen gehören z. B. die Erstellung, Löschung und Festlegung von Zugriffsrichtlinien und die Aktualisierung von Schlüsseltresorattributen wie Tags.
-  - Vorgänge mit Schlüsseln und Geheimnissen im Schlüsseltresor, einschließlich:
-    - Erstellen, Ändern oder Löschen dieser Schlüssel oder Geheimnisse.
-    - Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
-- Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.
+## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-Sie können auf Ihre Protokollinformationen zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe.
-
-- Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
-- Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
+Bei der Key Vault-Protokollierung werden Informationen zu den Aktivitäten gespeichert, die für Ihren Tresor ausgeführt werden. Ausführliche Informationen finden Sie unter [Key Vault-Protokollierung](logging.md).
 
 Empfehlungen zur sicheren Verwaltung von Speicherkonten finden Sie im [Azure Storage-Sicherheitsleitfaden](../../storage/blobs/security-recommendations.md).
 
@@ -98,4 +92,3 @@ Empfehlungen zur sicheren Verwaltung von Speicherkonten finden Sie im [Azure Sto
 
 - [VNET-Dienstendpunkte für Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
-

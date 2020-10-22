@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: abb692f71a3ed69c6779b6141c9098dc94c75c4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567748"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542426"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Azure Database for MariaDB-Servers mithilfe des Azure-Portals in eine andere Region
 
@@ -38,11 +38,11 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals einen regi
 1. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 1. Wählen Sie **Replikat hinzufügen**.
 1. Geben Sie einen Namen für den Replikatserver ein.
-1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Masterservers identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
+1. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Quellserver identisch. Vergewissern Sie sich, dass Sie den Zielspeicherort ausgewählt haben, an dem das Replikat bereitgestellt werden soll.
 1. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen. Während der Replikaterstellung werden die Daten vom Quellserver auf das Replikat kopiert. Die Erstellung kann mehrere Minuten oder sogar länger dauern, dies hängt von der Größe des Quellservers ab.
 
 >[!NOTE]
-> Wenn Sie ein Replikat erstellen, erbt dieses nicht die VNet-Dienstendpunkte des Masterservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
+> Wenn Sie ein Replikat erstellen, erbt es nicht die VNet-Dienstendpunkte des Quellservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
 
 ## <a name="move"></a>Move
 

@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f5f920f14a556d63f433b36658d7b265d51a28d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905475"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340375"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Sicherheitswarnungen in Azure Security Center
 
@@ -85,10 +85,17 @@ Azure Security Center profitiert von Sicherheitsforschungs- und Data Science-Tea
 
 Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebnissen, von denen Sie sofort profitieren können. Sie müssen dabei nichts unternehmen.
 
+## <a name="export-alerts"></a>Exportieren von Warnungen
+
+Sie haben mehrere Optionen zum Anzeigen der Warnungen außerhalb von Security Center:
+
+- Der **Download des CSV-Berichts** auf dem Dashboard „Warnungen“ bietet einen einmaligen Export in CSV.
+- Mit dem **fortlaufenden Export** von der Seite „Preise und Einstellungen“ können Sie Streams von Sicherheitswarnungen und -empfehlungen im Log Analytics-Arbeitsbereich und in Event Hubs konfigurieren. [Weitere Informationen zum fortlaufenden Export](continuous-export.md)
+- Der **Azure Sentinel-Connector** streamt Azure Defender-Warnungen von Azure Security Center in Azure Sentinel. [Weitere Informationen zum Verbinden von Azure Security Center mit Sentinel](../sentinel/connect-azure-security-center.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in Security Center beschrieben. Weitere Informationen finden Sie unter
 
-- **Sicherheitswarnungen im Azure-Aktivitätsprotokoll:** Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) als Ereignisse überwacht. Weitere Informationen zum Ereignisschema finden Sie unter [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113).
-
+- **Sicherheitswarnungen im Azure-Aktivitätsprotokoll:** Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md#view-the-activity-log) als Ereignisse überwacht. Weitere Informationen zum Ereignisschema finden Sie unter [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742416"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
@@ -125,7 +125,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
 11. Navigieren Sie zum Blatt **Geräte** Ihres Diensts. Wenn Sie über zahlreiche Ressourcen verfügen, klicken Sie auf **All resources** (Alle Ressourcen), klicken Sie auf den Namen Ihres Diensts (suchen Sie ihn bei Bedarf) und anschließend auf **Geräte**.
 12. Vergewissern Sie sich auf dem Blatt **Geräte**, dass das Gerät erfolgreich mit dem Dienst verbunden wurde, indem Sie seinen Status überprüfen. Der Gerätestatus sollte **Zur Einrichtung bereit** lauten.
     
-    ![Gerät registrieren](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Gerät bereitstellen](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>Schritt 2: Konfigurieren des Geräts als ISCSI-Server
 
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
     ![Konfigurieren des Geräts als ISCSI-Server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. Klicken Sie auf das Gerät. Ein Banner zeigt, dass das Gerät für die Einrichtung bereit ist.
    
-    ![Konfigurieren des Geräts als ISCSI-Server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![Konfigurieren des Geräts als iSCSI-Server 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. Klicken Sie in der Gerätebefehlsleiste auf **Konfigurieren**. Daraufhin öffnet sich das Blatt **Konfigurieren**. Gehen Sie auf dem Blatt **Konfigurieren** wie folgt vor:
    
    * Der iSCSI-Servername wird automatisch gefüllt.
@@ -146,13 +146,13 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
    * Geben Sie einen Verschlüsselungsschlüssel mit 32 Zeichen an, und hinterlegen Sie ihn in einer App zur Schlüsselverwaltung für zukünftige Verwendungen.
    * Wählen Sie ein Speicherkonto, das Sie mit Ihrem Gerät verwenden möchten. In diesem Abonnement können Sie ein vorhandenes Speicherkonto auswählen, oder Sie klicken auf **Hinzufügen**, um ein Konto eines anderen Abonnements zu wählen.
      
-     ![Konfigurieren des Geräts als ISCSI-Server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![Konfigurieren des Geräts als iSCSI-Server 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. Klicken Sie auf **Konfigurieren**, um das Setup des iSCSI-Servers abzuschließen.
    
-    ![Konfigurieren des Geräts als ISCSI-Server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![Konfigurieren des Geräts als iSCSI-Server 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. Sie werden benachrichtigt, dass die Erstellung des iSCSI-Servers ausgeführt wird. Nachdem der iSCSI-Server erfolgreich erstellt wurde, wird das Blatt **Geräte** aktualisiert, und der entsprechende Gerätestatus lautet **Online**.
    
-    ![Konfigurieren des Geräts als ISCSI-Server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![Konfigurieren des Geräts als iSCSI-Server 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>Schritt 3: Hinzufügen eines Volumes
 
@@ -169,17 +169,17 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
      
      Ein mehrstufiges Volume dagegen wird mit schlanker Speicherzuweisung bereitgestellt. Wenn Sie ein mehrstufiges Volume erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen (da die 10 % nicht verfügbar sind).
      
-     ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![Hinzufügen eines Volumes 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Klicken Sie auf **Verbundene Hosts**, wählen Sie einen Access Control-Datensatz (ACR) aus, der dem iSCSI-Initiator entspricht, den Sie mit diesem Volume verbinden möchten, und klicken Sie anschließend auf **Auswählen**. <br><br> 
 3. Klicken Sie zum Hinzufügen eines neuen verbundenen Hosts auf **Neu hinzufügen**, geben Sie einen Namen für den Host und seinen IQN-Namen (qualifizierter iSCSI-Name) ein, und klicken Sie anschließend auf **Hinzufügen**. Wenn Sie den IQN nicht haben, gehen Sie zu [Anhang A: Abrufen des IQN eines Windows Server-Hosts](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
-      ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![Hinzufügen eines Volumes 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Klicken Sie nach Abschluss der Konfiguration Ihres Volume auf **OK**. Ein Volume wird mit den angegebenen Einstellungen erstellt, und Sie erhalten eine Benachrichtigung. Standardmäßig werden für das Volume die Überwachung und die Sicherung aktiviert.
    
-     ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![Hinzufügen eines Volumes 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. Wechseln Sie zum Blatt **Volumes**, um sicherzustellen, dass das Volume erfolgreich erstellt wurde. Das Volume sollte hier aufgeführt werden.
    
-   ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![Hinzufügen eines Volumes 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>Schritt 4: Einlegen, Initialisieren und Formatieren eines Volumes
 

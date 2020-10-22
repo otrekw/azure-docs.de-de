@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206134"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449738"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
-In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben beschrieben, die für Data Box- und Data Box Heavy-Geräte ausgeführt werden können. Sie können Data Box- und Data Box Heavy-Geräte über die Azure-Portaloberfläche oder die lokale Webbenutzeroberfläche für das Gerät verwalten. Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die auf der lokalen Webbenutzeroberfläche ausgeführt werden können.
+In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben beschrieben, die auf Data Box- und Data Box Heavy-Geräten ausgeführt werden. Sie können Data Box- und Data Box Heavy-Geräte über die Azure-Portaloberfläche oder die lokale Webbenutzeroberfläche für das Gerät verwalten. Dieser Artikel konzentriert sich auf Aufgaben, die über die lokale Webbenutzeroberfläche ausgeführt werden.
 
 Die lokale Webbenutzeroberfläche für Data Box und Data Box Heavy dient zur Erstkonfiguration des Geräts. Sie können die lokale Webbenutzeroberfläche auch verwenden, um das Gerät herunterzufahren oder neu zu starten, Diagnosetests durchzuführen, Software zu aktualisieren, Kopierprotokolle anzuzeigen und ein Protokollpaket für den Microsoft-Support zu generieren. Bei einem Data Box Heavy-Gerät mit zwei unabhängigen Knoten können Sie für jeden Knoten des Geräts auf eine separate lokale Webbenutzeroberfläche zugreifen.
 
@@ -93,7 +93,7 @@ Führen Sie zunächst zum Herunterladen der BOM- oder Manifestdateien für Ihren
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. Sie sehen im Datei-Explorer, dass eine separate Dateiliste generiert wird. Ausschlaggebend hierfür sind das Protokoll, das für die Verbindungsherstellung mit dem Gerät verwendet wird, und der verwendete Azure Storage-Typ.
+3. Sie sehen im Datei-Explorer, dass separate Dateilisten generiert werden. Ausschlaggebend hierfür sind das Protokoll, das für die Verbindungsherstellung mit dem Gerät verwendet wird, und der verwendete Azure Storage-Typ.
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![Dateien für Speichertyp und Verbindungsprotokoll](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -202,6 +202,49 @@ So aktivieren Sie SMB-Signaturen auf Ihrem Azure-Gerät
 4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
 5. Wählen Sie **Neu starten** aus.
 
+## <a name="enable-backup-operator-privileges"></a>Aktivieren der Berechtigungen des Typs „Sicherungsoperator“
+
+Die Benutzer der Webbenutzeroberfläche verfügen standardmäßig über Berechtigungen des Typs „Sicherungsoperator“ für SMB-Freigaben. Wenn Sie dies nicht möchten, aktivieren oder deaktivieren Sie die Berechtigungen unter **Enable Back Operator privileges** (Berechtigungen des Typs „Sicherungsoperator“ aktivieren).
+
+Weitere Informationen finden Sie unter „Sicherungsoperatoren“ im Artikel [Active Directory-Sicherheitsgruppen](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators).
+
+So aktivieren Sie die Berechtigungen des Typs „Sicherungsoperator“ auf Ihrem Azure-Gerät:
+
+1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
+
+   ![Öffnen der Data Box-Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Aktivieren** Sie die Berechtigungen des Typs „Sicherungsoperator“.
+
+   ![Aktivieren der Berechtigungen des Typs „Sicherungsoperator“](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
+
+3. Klicken Sie auf **Anwenden**.
+4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
+5. Wählen Sie **Neu starten** aus.
+
+## <a name="enable-acls-for-azure-files"></a>Aktivieren von Zugriffssteuerungslisten für Azure Files
+
+Metadaten für Dateien werden standardmäßig übertragen, wenn Benutzer über das SMB-Protokoll Daten in Ihre Data Box hochladen. Die Metadaten enthalten Zugriffssteuerungslisten (Access Control Lists, ACLs), Dateiattribute und Zeitstempel. Wenn Sie dies nicht möchten, aktivieren oder deaktivieren Sie dieses Feature über **ACLs für Azure-Dateien**.
+
+<!--For more information about metadata that is transferred, see [Preserving the ACLs and metadata with Azure Data Box](./data-box-local-web-ui-admin.md#enable-backup-operator-privileges) - IN DEVELOPMENT-->
+
+> [!Note]
+> Zum Übertragen von Metadaten mit Dateien müssen Sie ein Sicherungsoperator sein. Wenn Sie dieses Feature verwenden, sollten Sie sicherstellen, dass es sich bei den lokalen Benutzern der Webbenutzeroberfläche um Sicherungsoperatoren handelt. Weitere Informationen finden Sie unter [Aktivieren von Berechtigungen des Typs „Sicherungsoperator“](#enable-backup-operator-privileges).
+
+So aktivieren Sie die Übertragung von ACLs für Azure-Dateien:
+
+1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
+
+    ![Öffnen der Data Box-Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Aktivieren** Sie ACLs für Azure-Dateien.
+
+     ![Aktivieren von ACLs für Azure-Dateien](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
+  
+3. Wählen Sie **Übernehmen**.
+4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
+5. Wählen Sie **Neu starten** aus.
+
 ## <a name="enable-tls-11"></a>Aktivieren von TLS 1.1
 
 Azure Data Box nutzt standardmäßig Transport Layer Security (TLS) 1.2 für die Verschlüsselung, da diese eine höhere Sicherheit als TSL 1.1 bietet. Wenn Sie oder Ihre Kunden für den Datenzugriff jedoch einen Browser verwenden, der TLS 1.2 nicht unterstützt, können Sie TLS 1.1 aktivieren.
@@ -212,7 +255,7 @@ Führen Sie zum Aktivieren von TLS 1.1 auf Ihrem Azure-Gerät die folgenden Sch
 
 1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
 
-    ![Öffnen der Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Öffnen der Data Box-Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Aktivieren** Sie TLS 1.1.
 

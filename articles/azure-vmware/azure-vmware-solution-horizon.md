@@ -3,12 +3,12 @@ title: Bereitstellen von Horizon in Azure VMware Solution
 description: Es wird beschrieben, wie Sie VMware Horizon in Azure VMware Solution bereitstellen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729048"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078883"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Bereitstellen von Horizon in Azure VMware Solution 
 
@@ -110,17 +110,17 @@ In diesem einfachen Beispiel können Sie Ihren AD-Domänencontroller im Azure Vi
 
 Eine mögliche Variante des hier beschriebenen einfachen Beispiels ist die Unterstützung der Konnektivität für lokale Ressourcen. Hierbei kann es sich um Benutzer handeln, die auf Desktops zugreifen und Datenverkehr für Virtual Desktop-Anwendungen generieren oder per CPA eine Verbindung mit einem lokalen Horizon-Pod herstellen.
 
-Die Vorgehensweise ist im folgenden Diagramm dargestellt. Sie benötigen eine ExpressRoute-Leitung, um Ihr Unternehmensnetzwerk mit dem Azure Virtual Network zu verbinden. Darüber hinaus müssen Sie Ihr Unternehmensnetzwerk auch per Global Reach mit den einzelnen privaten Clouds bzw. SDDCs verbinden. Dies ermöglicht die Konnektivität des SDDC mit den ExpressRoute- und lokalen Ressourcen.
+Die Vorgehensweise ist im folgenden Diagramm dargestellt.  Sie benötigen eine ExpressRoute-Leitung, um Ihr Unternehmensnetzwerk mit dem Azure Virtual Network zu verbinden.  Darüber hinaus müssen Sie Ihr Unternehmensnetzwerk auch per Global Reach mit den einzelnen privaten Clouds bzw. SDDCs verbinden. Dies ermöglicht die Konnektivität des SDDC mit den ExpressRoute- und lokalen Ressourcen.
 
 :::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Unterschiede zwischen Horizon unter Azure VMware Solution und Horizon Cloud unter Azure" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Mehrere Horizon-Pods unter Azure VMware Solution in mehreren Regionen
 
-In einem anderen Beispiel für Horizon-Pods wird veranschaulicht, wie für Horizon die Skalierung auf mehrere Pods durchgeführt wird. In diesem Beispiel stellen Sie zwei Horizon-Pods in zwei unterschiedlichen Regionen bereit und fassen sie per CPA in einem Verbund zusammen. Die Netzwerkkonfiguration ähnelt dem vorherigen Beispiel, aber sie enthält noch einige zusätzliche regionsübergreifende Links. 
+In einem anderen Beispiel für Horizon-Pods wird veranschaulicht, wie für Horizon die Skalierung auf mehrere Pods durchgeführt wird.  In diesem Beispiel stellen Sie zwei Horizon-Pods in zwei unterschiedlichen Regionen bereit und fassen sie per CPA in einem Verbund zusammen.  Die Netzwerkkonfiguration ähnelt dem vorherigen Beispiel, aber sie enthält noch einige zusätzliche regionsübergreifende Links. 
 
-Sie müssen das Azure Virtual Network in jeder Region mit den privaten Clouds/SDDCs in der anderen Region verbinden, damit Horizon-Verbindungsserver, die Teil des CPA-Verbunds sind, eine Verbindung mit allen verwalteten Desktops herstellen können. Wenn Sie dieser Konfiguration zusätzliche private Clouds/SDDCs hinzufügen, können Sie insgesamt auf 24.000 Sitzungen skalieren. 
+Sie müssen das Azure Virtual Network in jeder Region mit den privaten Clouds/SDDCs in der anderen Region verbinden, damit Horizon-Verbindungsserver, die Teil des CPA-Verbunds sind, eine Verbindung mit allen verwalteten Desktops herstellen können.  Wenn Sie dieser Konfiguration zusätzliche private Clouds/SDDCs hinzufügen, können Sie insgesamt auf 24.000 Sitzungen skalieren. 
 
-In diesem Beispiel werden mehrere Regionen verwendet, aber dasselbe Prinzip gilt auch, wenn Sie zwei Horizon-Pods in derselben Region bereitstellen möchten. Beachten Sie hierbei Folgendes: Sie müssen sicherstellen, dass der zweite Horizon-Pod in einem *separaten Azure Virtual Network* bereitgestellt wird. Zudem können Sie – genauso wie im vorherigen Beispiel mit nur einem Pod – für Ihr Unternehmensnetzwerk und den lokalen Pod eine Verbindung mit mehreren Pods bzw. Regionen herstellen, indem Sie die ExpressRoute- und Global Reach-Komponenten von Kunden verwenden.
+In diesem Beispiel werden mehrere Regionen verwendet, aber dasselbe Prinzip gilt auch, wenn Sie zwei Horizon-Pods in derselben Region bereitstellen möchten. Beachten Sie hierbei Folgendes: Sie müssen sicherstellen, dass der zweite Horizon-Pod in einem *separaten Azure Virtual Network* bereitgestellt wird.  Zudem können Sie – genauso wie im vorherigen Beispiel mit nur einem Pod – für Ihr Unternehmensnetzwerk und den lokalen Pod eine Verbindung mit mehreren Pods bzw. Regionen herstellen, indem Sie die ExpressRoute- und Global Reach-Komponenten von Kunden verwenden.
 
 :::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Unterschiede zwischen Horizon unter Azure VMware Solution und Horizon Cloud unter Azure" border="false":::
 
@@ -173,7 +173,7 @@ In diesem Beispiel ergibt sich für die Gesamtzahl der Hosts der Wert 18 und so
 
 ## <a name="horizon-on-azure-vmware-solution-licensing"></a>Lizenzierung für Horizon unter Azure VMware Solution 
 
-Die Gesamtkosten für die Ausführung von Horizon unter Azure VMware Solution setzen sich aus vier Komponenten zusammen. 
+Die Gesamtkosten für die Ausführung von Horizon unter Azure VMware Solution setzen sich aus vier Komponenten zusammen. 
 
 ### <a name="azure-vmware-solution-capacity-cost"></a>Kosten für Azure VMware Solution-Kapazität
 
@@ -197,11 +197,14 @@ Arbeiten Sie mit Ihrem VMware EUC-Vertriebsteam zusammen, um die Kosten für die
 
 Basierend auf der Standardbereitstellungsarchitektur bestehen VMs der Horizon-Infrastruktur aus Verbindungsservern, Unified Access Gateways (UAGs) und App Volume Managers und werden im Azure Virtual Network des Kunden bereitgestellt. Weitere native Azure-Instanzen sind erforderlich, um Dienste für Hochverfügbarkeit (HA), Microsoft SQL oder Microsoft Active Directory (AD) in Azure zu unterstützen. Hier ist eine Liste mit Azure-Instanzen angegeben, die auf dem Beispiel mit der Bereitstellung von 2.000 Desktops basiert. 
 
+>[!NOTE]
+>Stellen Sie noch einen weiteren Server bereit, als für die Anzahl der Verbindungen erforderlich ist (n+1), um den Fehler zu beheben. Die empfohlene Mindestanzahl von Instanzen des Verbindungsservers, des UAG-Servers und des App-Volume-Managers beträgt 2, und die Anzahl der erforderlichen Werte steigt basierend auf der Menge der Benutzer, die von der Umgebung unterstützt werden.  Ein einzelner Verbindungsserver unterstützt maximal 4.000 Sitzungen, obwohl 2.000 als Best Practices empfohlen wird. Pro Pod werden bis zu sieben Verbindungsserver mit einer Empfehlung von insgesamt 12.000 aktiven Sitzungen pro Pod unterstützt. Die aktuellsten Zahlen finden Sie im [VMware Knowledge Base-Artikel „VMware Horizon 7 Sizing Limits and Recommendations“ (Größenbegrenzungen und Empfehlungen zu VMware Horizon 7)](https://kb.vmware.com/s/article/2150348).
+
 | Komponente der Horizon-Infrastruktur | Azure-Instanz | Anzahl von benötigten Instanzen (für 2.000 Desktops)    | Anmerkungen  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| Verbindungsserver                | D4sv3          | 2       | *Enthält eine Instanz für HA*             |    
-| UAG                              | F2sv2          | 2       | *Enthält eine Instanz für HA*             |
-| App Volume Manager              | D4sv3          | 2       | *Enthält eine Instanz für HA*             |
+| Verbindungsserver                | D4sv3          | 2       | *Siehe Hinweis oben*                         |    
+| UAG                              | F2sv2          | 2       | *Siehe Hinweis oben*                         |
+| App Volume Manager              | D4sv3          | 2       | *Siehe Hinweis oben*                         |
 | Cloud Connector                  | D4sv3          | 1       |                                          |
 | AD-Controller                    | D4sv3          | 2       | *Option zur Verwendung des MSFT-AD-Diensts in Azure* |
 | MS SQL-Datenbank                  | D4sv3          | 2       | *Option zum Verwenden des SQL-Diensts in Azure*     |

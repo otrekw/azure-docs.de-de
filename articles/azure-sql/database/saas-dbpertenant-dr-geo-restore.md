@@ -6,24 +6,24 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
-ms.reviewer: sstein
+ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028371"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619004"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In diesem Tutorial wird ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung beschrieben, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Sie verwenden die [Geowiederherstellung](recovery-using-backups.md), um den Katalog und die Mandantendatenbanken aus automatisch verwalteten georedundanten Sicherungen in einer anderen Wiederherstellungsregion wiederherzustellen. Nach Behebung des Ausfalls verwenden Sie die [Georeplikation](active-geo-replication-overview.md), um geänderte Datenbanken in ihre ursprüngliche Region zurückzuführen.
 
-![Architektur der Geowiederherstellung](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Das Diagramm zeigt eine ursprüngliche Region und eine Wiederherstellungsregion. Beide verfügen über eine App, einen Katalog, Originalserver und -pools bzw. Spiegelabbilder von Servern und Pools und automatische Sicherungen im Speicher. Die Wiederherstellungsregion akzeptiert dabei die Georeplikation der Sicherung sowie Server und Pool als neue Mandanten.](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 Die Geowiederherstellung ist die kostengünstigste Notfallwiederherstellungslösung für Azure SQL-Datenbank. Die Wiederherstellung aus georedundanten Sicherungen kann jedoch zu einem Datenverlust von bis zu einer Stunde führen. Der Vorgang kann je nach Größe der einzelnen Datenbanken einige Zeit in Anspruch nehmen. 
 

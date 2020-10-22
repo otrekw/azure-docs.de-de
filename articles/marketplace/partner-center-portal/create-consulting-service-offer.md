@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646838"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91709069"
 ---
 # <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
@@ -25,7 +25,7 @@ Bevor Sie Ihr Angebot erstellen, sollten Sie sich unter [Voraussetzungen für Be
 Vorteile der Veröffentlichung im kommerziellen Marketplace:
 
 - Bewerben Sie Ihr Unternehmen, indem Sie die Marke Microsoft nutzen.
-- In AppSource können Sie mehr als 100 Millionen Office 365- und Dynamics 365-Benutzer erreichen und im Azure Marketplace über 200.000 Organisationen.
+- In AppSource können Sie mehr als 100 Millionen Microsoft 365- und Dynamics 365-Benutzer erreichen und im Azure Marketplace über 200.000 Organisationen.
 - Erhalten Sie hochwertige Leads in diesen Marketplaces.
 - Lassen Sie Ihre Dienste durch die Außendienst- und Telefonmarketingteams von Microsoft bewerben.
 
@@ -76,10 +76,10 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
-- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
+- [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Häufige Fragen zur Leadverwaltung](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problembehandlung bei Leadkonfigurationsfehlern](../lead-management-faq.md#publishing-config-errors)
+- [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)-PDF-Datei (vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -146,7 +146,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Microsoft AppSource angezeigt werden (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Veranschaulicht, wie dieses Angebot in Microsoft AppSource angezeigt wird.":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -202,7 +202,7 @@ Fügen Sie bis zu drei unterstützende PDF-Dokumente für Ihr Angebot hinzu (min
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.

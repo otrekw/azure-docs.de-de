@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090381"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542375"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Empfangen und Bestätigen von B2B-AS2-Nachrichten mit Azure Logic Apps und Enterprise Integration Pack
 
@@ -111,7 +111,7 @@ Zum Benachrichtigen der Parteien, dass die Nachricht empfangen wurde, können Si
 
    Jetzt wird die Bedingungsform angezeigt, einschließlich der Pfade mit der Information, ob die Bedingung erfüllt ist.
 
-   ![Bedingungsform mit Entscheidungspfaden](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+   ![Screenshot: Form „Bedingung“ mit leeren Pfaden](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
 
 1. Geben Sie nun die auszuwertende Bedingung an. Geben Sie im Feld **Wert auswählen** diesen Ausdruck ein:
 
@@ -119,7 +119,7 @@ Zum Benachrichtigen der Parteien, dass die Nachricht empfangen wurde, können Si
 
    Stellen Sie im mittleren Feld sicher, dass der Vergleichsvorgang auf `is equal to` festgelegt ist. Geben Sie im Feld auf der rechten Seite den Wert `Expected` ein. Wechseln Sie zwischen dem Designer und der Codeansicht, damit der Ausdruck als das entsprechende Token aufgelöst wird.
 
-   ![Bedingungsform mit Entscheidungspfaden](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+   ![Screenshot: Form „Bedingung“ mit hinzugefügter Bedingung](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Geben Sie nun die Antworten an, die zurückgegeben werden sollen, wenn die Aktion **AS2-Decodierung** erfolgreich bzw. nicht erfolgreich ist.
 

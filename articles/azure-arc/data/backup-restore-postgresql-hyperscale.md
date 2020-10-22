@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931549"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071437"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Sichern und Wiederherstellen von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen
 
@@ -52,7 +52,7 @@ Sehen Sie sich den Speicherabschnitt der Ausgabe an:
     }
 ...
 ```
-Wenn Ihren der Abschnitt „Sicherungen“ angezeigt wird, bedeutet dies, dass Ihre Servergruppe zur Verwendung einer Sicherungsspeicherklasse konfiguriert wurde und bereit dafür ist, dass Sie Sicherungen erstellen und Wiederherstellungen durchführen. Wenn Ihnen der Abschnitt „Sicherungen“ nicht angezeigt wird, müssen Sie Ihre Servergruppe löschen und neu erstellen, um die Sicherungsspeicherklasse zu konfigurieren. Es ist derzeit nicht möglich, eine Sicherungsspeicherklasse zu konfigurieren, nachdem die Servergruppe erstellt wurde.
+Wenn der Name einer Speicherklasse im Abschnitt „backups“ der Ausgabe des Befehls angegeben ist, bedeutet dies, dass Ihre Servergruppe zur Verwendung einer Sicherungsspeicherklasse konfiguriert wurde und Sie Sicherungen erstellen und Wiederherstellungen durchführen können. Wenn Ihnen der Abschnitt „Sicherungen“ nicht angezeigt wird, müssen Sie Ihre Servergruppe löschen und neu erstellen, um die Sicherungsspeicherklasse zu konfigurieren. Es ist derzeit nicht möglich, eine Sicherungsspeicherklasse zu konfigurieren, nachdem die Servergruppe erstellt wurde.
 
 >[!IMPORTANT]
 >Wenn Ihre Servergruppe bereits zur Verwendung einer Sicherungsspeicherklasse konfiguriert ist, überspringen Sie den nächsten Schritt, und fahren Sie direkt mit dem Schritt „Manuelles Erstellen einer vollständigen Sicherung“ fort.
@@ -82,19 +82,22 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>Manuelles Erstellen einer vollständigen Sicherung
 
+
 Als nächstes erstellen Sie eine vollständige Sicherung manuell.
+
+> [!CAUTION]
+> **Nur für Benutzer von Azure Kubernetes Service (AKS):** Uns ist ein Problem bei der Erstellung von Sicherungen einer Servergruppe bekannt, die in Azure Kubernetes Service (AKS) gehostet wird. Wir arbeiten bereits an der Lösung dieses Problems. Bis in einem zukünftigen Release oder Update eine Aktualisierung bereitgestellt wird, müssen Sie vor dem Erstellen einer Sicherung die Pods Ihrer Servergruppen löschen. Löschen Sie die einzelnen Pods der Servergruppe (die Pods können Sie durch Ausführen von **kubectl get pods -n \<namespace name>** auflisten), indem Sie **kubectl delete pod \<server group pod name>-n \<namespace name>** ausführen. Löschen Sie keine Pods, die nicht Teil der Servergruppe sind. Das Löschen von Pods stellt keine Gefahr für Ihre Daten dar. Warten Sie, bis alle Pods wieder online sind und den Status „Wird ausgeführt“ aufweisen, bevor Sie eine Sicherung durchführen. Der Status des Pods wird in der Ausgabe des obigen Befehls „kubectl get pods“ angegeben.
+
 
 Führen Sie den folgenden Befehl aus, um eine vollständige Sicherung der gesamten Daten und Protokollordner Ihrer Servergruppe zu erstellen:
 
 ```console
-azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
+azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
 ```
 Hierbei gilt:
 - __name__ gibt den Namen einer Sicherung an.
 - __server-name__ gibt eine Servergruppe an.
 - __no-wait__ gibt an, dass die Befehlszeile nicht auf den Abschluss der Sicherung wartet, sodass Sie mit der Verwendung des Befehlszeilenfensters fortfahren können.
-
->**Hinweis**: Der Befehl zum Auflisten der zur Wiederherstellung verfügbaren Sicherungen zeigt noch nicht an, zu welchem Datum und welcher Uhrzeit die Sicherung erstellt wurde. Daher empfiehlt es sich, der Sicherung einen Namen zu geben (mithilfe des Parameters „--name“), der Informationen zum Datum und zur Uhrzeit enthält.
 
 Dieser Befehl koordiniert eine verteilte vollständige Sicherung für alle Knoten, aus denen Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden gesichert.
 
@@ -134,10 +137,12 @@ azdata arc postgres backup list --server-name postgres01
 
 Dabei wird eine Ausgabe wie die folgende zurückgegeben:
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+„Timestamp“ gibt den Zeitpunkt (in UTC) an, zu dem die Sicherung erstellt wurde.
 
 ## <a name="restore-a-backup"></a>Wiederherstellen einer Sicherung
 
@@ -216,5 +221,5 @@ azdata arc postgres backup delete --help
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über das [Aufskalieren](scale-out-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
-- Erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) der Servergruppe (Vergrößern/Verkleinern von Arbeitsspeicher/virtuellen Kernen).
+- Hier erfahren Sie mehr über das [horizontale Skalieren (Hinzufügen von Workerknoten)](scale-out-postgresql-hyperscale-server-group.md) Ihrer Servergruppe.
+- Hier erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren (Erhöhen oder Verringern von Arbeitsspeicher/virtuellen Kernen)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) Ihrer Servergruppe.

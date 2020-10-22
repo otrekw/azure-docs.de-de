@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362515"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 
@@ -62,7 +62,7 @@ Diese Ereignisse werden über Azure Event Grid veröffentlicht. Über das Azure-
 
 Beim Einrichten von Ereignissen können Sie Filter anwenden, damit nur bei bestimmten Ereignisdaten eine Auslösung erfolgt. Im nachstehenden Beispiel können Sie Ereignisse bei geändertem Ausführungsstatus nach Ausführungstypen filtern. Das Ereignis wird nur ausgelöst, wenn die Kriterien erfüllt sind. Weitere Informationen zu Ereignisdaten, nach denen Sie filtern können, finden Sie im [Event Grid-Schema für Azure Machine Learning](/azure/event-grid/event-schema-machine-learning). 
 
-Abonnements für Azure Machine Learning-Ereignisse werden durch rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) geschützt. Nur ein [Mitwirkender oder Besitzer](how-to-assign-roles.md#default-roles) eines Arbeitsbereichs kann Ereignisabonnements erstellen, aktualisieren und löschen.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) des Ereignisabonnements oder zu einem späteren Zeitpunkt Filter angewendet werden. 
+Abonnements für Azure Machine Learning-Ereignisse werden durch rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) geschützt. Nur ein [Mitwirkender oder Besitzer](how-to-assign-roles.md#default-roles) eines Arbeitsbereichs kann Ereignisabonnements erstellen, aktualisieren und löschen.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) des Ereignisabonnements oder zu einem späteren Zeitpunkt Filter angewendet werden. 
 
 
 1. Wechseln Sie zum Azure-Portal, und wählen Sie ein neues oder ein vorhandenes Abonnement aus. 
@@ -126,14 +126,14 @@ Mit Azure Event Grid können Kunden entkoppelte Meldungshandler erstellen, die d
 
 1. Wählen Sie den Endpunkt aus, für den das Ereignis veröffentlicht werden soll. Im folgenden Screenshot ist __Event Hub__ der ausgewählte Endpunkt:
 
-    ![select-event-handler](./media/how-to-use-event-grid/select-event-handler.png)
+    ![Screenshot: Bereich „Ereignisabonnement erstellen“ mit geöffnetem Fenster „Event Hub-Instanz auswählen“](./media/how-to-use-event-grid/select-event-handler.png)
 
 Nachdem Sie Ihre Auswahl bestätigt haben, klicken Sie auf __Erstellen__. Nach der Konfiguration werden diese Ereignisse per Pushvorgang an ihren Endpunkt übermittelt.
 
 
 ### <a name="set-up-with-the-cli"></a>Einrichtung mit der CLI
 
-Sie können entweder die neueste [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installieren oder die Azure Cloud Shell verwenden, die als Bestandteil Ihres Azure-Abonnements bereitgestellt wird.
+Sie können entweder die neueste [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) installieren oder die Azure Cloud Shell verwenden, die als Bestandteil Ihres Azure-Abonnements bereitgestellt wird.
 
 Um die Event Grid-Erweiterung zu installieren, verwenden Sie den folgenden Befehl in der CLI (Command-Line Interface, Befehlszeilenschnittstelle):
 
@@ -164,15 +164,15 @@ Verwenden Sie [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/), 
 
 1. Wechseln Sie im Azure-Portal zu Ihrem Azure Machine Learning-Arbeitsbereich, und wählen Sie in der linken Leiste die Registerkarte „Ereignisse“ aus. Wählen Sie dort die Option __Logik-Apps__ aus. 
 
-    ![select-logic-ap](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![Screenshot: Seite „Ereignisse“ für Machine Learning-Arbeitsbereich mit Option „Logik-Apps“](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. Melden Sie sich bei der Benutzeroberfläche für Logik-Apps an, und wählen Sie „MachineLearningServices“ als Thementyp aus. 
 
-    ![select-topic-type](./media/how-to-use-event-grid/select-topic-type.png)
+    ![Screenshot: Dialogfeld „When a resource event occurs“ (Bei Auftreten eines Ressourcenereignisses), bei dem Machine Learning als Ressourcentyp ausgewählt ist](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. Wählen Sie die Ereignisse aus, für die eine Benachrichtigung erfolgen soll. Im folgenden Screenshot ist beispielsweise __RunCompleted__ ausgewählt.
 
-    ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![Screenshot: Dialogfeld „When a resource event occurs“ (Bei Auftreten eines Ressourcenereignisses) mit ausgewähltem Ereignistyp](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. Sie können die Filtermethode im Abschnitt oben verwenden oder Filter hinzufügen, um die Logik-App nur für eine Teilmenge von Ereignistypen auszulösen. Im folgenden Screenshot wird ein __Präfixfilter__ von __/datadriftID/runs/__ verwendet.
 
@@ -180,15 +180,15 @@ Verwenden Sie [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/), 
 
 1. Fügen Sie nun einen Schritt hinzu, um dieses Ereignis zu nutzen und nach E-Mails zu suchen. Es gibt mehrere unterschiedliche E-Mail-Konten, die Sie zum Empfangen von Ereignissen verwenden können. Außerdem können Sie Bedingungen dazu festlegen, wann eine E-Mail-Benachrichtigung gesendet werden soll.
 
-    ![select-email-action](./media/how-to-use-event-grid/select-email-action.png)
+    ![Screenshot: Dialogfeld „Aktion auswählen“ mit „E-Mail“ im Suchfeld](./media/how-to-use-event-grid/select-email-action.png)
 
 1. Wählen Sie __E-Mail senden__ aus, und geben Sie Werte für die Parameter ein. In den Betreff können Sie den __Ereignistyp__ und das __Thema__ einfügen, um das Filtern von Ereignissen zu vereinfachen. Sie können auch in den Nachrichtentext einen Link zur Arbeitsbereichsseite für Ausführungen einfügen. 
 
-    ![configure-email-body](./media/how-to-use-event-grid/configure-email-body.png)
+    ![Screenshot: Dialogfeld „E-Mail senden“, bei dem „Thema“ und „Ereignistyp“ aus der Liste rechts in der Betreffzeile hinzugefügt wurden](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. Um diese Aktion zu speichern, wählen Sie **Speichern unter** in der linken Ecke der Seite aus. Bestätigen Sie in der rechten Leiste, die angezeigt wird, die Erstellung dieser Aktion.
 
-    ![confirm-logic-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![Screenshot: Schaltflächen „Speichern unter“ und „Erstellen“ im Designer für Logik-Apps](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>Beispiel: Erneutes Trainieren von Datendriftauslösern
@@ -204,7 +204,7 @@ Führen Sie zur Vorbereitung zunächst die folgenden Aktionen aus:
 
 In diesem Beispiel wird eine einfache Data Factory-Pipeline verwendet, um Dateien in einen Blobspeicher zu kopieren und eine veröffentlichte Machine Learning-Pipeline auszuführen. Weitere Informationen zu diesem Szenario finden Sie unter [Ausführen von Azure Machine Learning Service-Pipelines in Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service).
 
-![adf-mlpipeline-stage](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![Screenshot: Pipeline „Training Pipeline“ in „Factory Resources“ (Factory-Ressourcen), bei der „Copy data1“ Daten an „ML Execute Pipeline1“ sendet](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. Beginnen Sie mit dem Erstellen der Logik-App. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), suchen Sie nach „Logik-Apps“, und wählen Sie „Erstellen“ aus.
 
@@ -212,31 +212,31 @@ In diesem Beispiel wird eine einfache Data Factory-Pipeline verwendet, um Dateie
 
 1. Geben Sie die erforderlichen Informationen ein. Um die Umgebung zu vereinfachen, verwenden Sie dasselbe Abonnement und dieselbe Ressourcengruppe wie Ihre Azure Data Factory-Pipeline und Ihr Azure Machine Learning-Arbeitsbereich.
 
-    ![set-up-logic-app-for-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![Screenshot: Bereich „Erstellen“ für Logik-Apps](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. Nachdem Sie die Logik-App erstellt haben, wählen Sie __Bei Auftreten eines Event Grid-Ressourcenereignisses__ aus. 
 
-    ![select-event-grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Screenshot: Designer für Logik-Apps mit Optionen für „Starten Sie mit einem gängigen Trigger“ einschließlich „Bei Auftreten eines Event Grid-Ressourcenereignisses“](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. Melden Sie sich an, und geben Sie die Details für das Ereignis ein. Legen Sie __Ressourcenname__ auf den Namen des Arbeitsbereichs fest. Legen Sie __Ereignistyp__ auf __DatasetDriftDetected__ fest.
 
-    ![login-and-add-event](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![Screenshot: Dialogfeld „When a resource event occurs“ (Bei Auftreten eines Ressourcenereignisses) mit ausgewähltem Ereignistypelement](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. Fügen Sie einen neuen Schritt hinzu, und suchen Sie nach __Azure Data Factory__. Wählen Sie __Pipelineausführung erstellen__ aus. 
 
-    ![create-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![Screenshot: Bereich „Aktion auswählen“ mit ausgewählter Option „Create a pipeline run“ (Pipelineausführung erstellen)](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. Melden Sie sich an, und geben die veröffentlichte Azure Data Factory-Pipeline an, die ausgeführt werden soll.
 
-    ![specify-adf-pipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![Screenshot: Bereich „Create a pipeline run“ (Pipelineausführung erstellen) mit verschiedenen Werten](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. Speichern und erstellen Sie die Logik-App über die **Speichern**-Schaltfläche oben links auf der Seite. Um Ihre App anzuzeigen, wechseln Sie in Ihrem Arbeitsbereich in das [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Ereignisse**.
 
-    ![show-logic-app-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![Screenshot: Ereignisse mit hervorgehobener Logik-App](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 Ab jetzt wird die Data Factory-Pipeline ausgelöst, wenn eine Datendrift auftritt. Die Details zu Ihrer Datendriftausführung und Machine Learning-Pipeline werden im [neuen Arbeitsbereichsportal](https://ml.azure.com) angezeigt. 
 
-![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
+![Screenshot: Pipelineendpunkte](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>Beispiel: Bereitstellen eines Modells auf der Grundlage von Tags
 

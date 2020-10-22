@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740376"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998105"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -437,6 +437,24 @@ Die folgenden SAML-Szenarien der vertrauenden Seite (Relying Party, RP) werden �
 
 Die folgenden SAML-Szenarien der vertrauenden Seite (RP) werden zurzeit nicht unterstützt:
 * Die vom Identitätsanbieter initiierte Anmeldung, bei der der Identitätsanbieter ein externer Anbieter ist, z. B. ADFS.
+
+## <a name="saml-token"></a>SAML-Token
+
+Ein SAML-Token ist ein Sicherheitstoken, das nach einer erfolgreichen Anmeldung von Azure AD B2C ausgestellt wird. Es enthält Informationen über den Benutzer, den Dienstanbieter, für den das Token bestimmt ist, die Signatur und die Gültigkeitsdauer. In der folgenden Tabelle sind die Ansprüche und Eigenschaften aufgeführt, die Sie in einem von Azure AD B2C ausgestellten SAML-Token erwarten können.
+
+|Element  |Eigenschaft  |Notizen  |
+|---------|---------|---------|
+|`<Response>`| `ID` | Ein automatisch generierter eindeutiger Bezeichner der Antwort. | 
+|`<Response>`| `InResponseTo` | Die ID der SAML-Anforderung, auf die diese Nachricht als Antwort gesendet wird. | 
+|`<Response>` | `IssueInstant` | Der Zeitpunkt der Ausgabe der Antwort. Der Zeitwert wird in UTC codiert.    Um die Einstellungen für die Tokengültigkeitsdauer zu ändern, legen Sie die `TokenNotBeforeSkewInSeconds`-[Metadaten](saml-issuer-technical-profile.md#metadata) des technischen Profils des SAML-Tokenausstellers fest. | 
+|`<Response>` | `Destination`| Ein URI-Verweis, der die Adresse angibt, an die diese Antwort gesendet wurde. Der Wert entspricht der `AssertionConsumerServiceURL` der SAML-Anforderung. | 
+|`<Response>` `<Issuer>` | |Identifiziert den Tokenaussteller. Dies ist ein beliebiger URI, der durch die `IssuerUri`-[Metadaten](saml-issuer-technical-profile.md#metadata) des SAML-Tokenausstellers definiert wird.         |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`         |         |Der Prinzipal, für den das Token Informationen zusichert, z. B. die Benutzerobjekt-ID. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt.|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`         | `Format` | Ein URI-Verweis, der die Klassifizierung von zeichenfolgenbasierten Bezeichnerinformationen darstellt. Diese Eigenschaft wird standardmäßig weggelassen. Sie können das [SubjectNamingInfo](relyingparty.md#subjectnaminginfo)-Element der vertrauenden Seite festlegen, um das `NameID`-Format (z. B. `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`) anzugeben. |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Der Zeitpunkt, zu dem das Token gültig wird. Der Zeitwert wird in UTC codiert. Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. Um die Einstellungen für die Tokengültigkeitsdauer zu ändern, legen Sie die `TokenNotBeforeSkewInSeconds`-[Metadaten](saml-issuer-technical-profile.md#metadata) des technischen Profils des SAML-Tokenausstellers fest. |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Die Uhrzeit, zu der das Token ungültig wird. Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. Der Wert liegt 15 Minuten nach dem `NotBefore` und kann nicht geändert werden.|
+|`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Ein URI-Verweis, der die beabsichtigte Zielgruppe identifiziert. Er identifiziert den vorgesehenen Empfänger des Tokens. Der Wert entspricht der `AssertionConsumerServiceURL` der SAML-Anforderung.|
+|`<Response>` `<Assertion>` `<AttributeStatement>`, Sammlung von `<Attribute>` | | Assertionssammlung (Ansprüche), wie in den Ausgabeansprüchen des [technischen Profils der vertrauende Seite](relyingparty.md#technicalprofile) definiert. Sie können den Namen der Assertion konfigurieren, indem Sie das `PartnerClaimType`-Element des Ausgabeanspruchs festlegen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

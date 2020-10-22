@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: has-adal-ref, sqldbrb=3
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1fb90c106c334073cea18cf014edce491029edec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442648"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91596181"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurieren der mehrstufigen Authentifizierung für SQL Server Management Studio und Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -38,24 +38,26 @@ In diesem Artikel wird beschrieben, wie Sie die mehrstufige Authentifizierung (M
 
 Die folgenden Schritte veranschaulichen, wie Sie eine Verbindung mit der aktuellen SSMS-Version herstellen.
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 1. Um eine Verbindung mithilfe der universellen Authentifizierung herzustellen, wählen Sie in SQL Server Management Studio (SSMS) im Dialogfeld **Verbindung mit dem Server herstellen** die Option **Active Directory: universell mit MFA-Unterstützung** aus. (Wenn **Universelle Active Directory-Authentifizierung** angezeigt wird, verwenden Sie nicht die aktuelle Version von SSMS.)
 
-   ![1mfa-universal-connect](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![Screenshot der Registerkarte „Verbindungseigenschaften“ im Dialogfeld „Mit Server verbinden“ in SSMS. Im Dropdownmenü „Mit Datenbank verbinden“ ist „MyDatabase“ ausgewählt.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. Geben Sie im Feld **Benutzername** die Azure Active Directory-Anmeldeinformationen im Format `user_name@domain.com` ein.
 
-   ![1mfa-universal-connect-user](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
+   ![Screenshot des Dialogfelds „Mit Server verbinden“ mit den Einstellungen für Servertyp, Servername, Authentifizierung und Benutzername](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
 3. Wenn Sie als Gastbenutzer eine Verbindung herstellen, müssen Sie das Feld „AD-Domänenname“ oder „Mandanten-ID“ für Gastbenutzer nicht mehr ausfüllen, da es von SSMS 18. x oder höher automatisch erkannt wird. Weitere Informationen finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank, SQL Managed Instance und Azure Synapse (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md).
 
-   ![mfa-no-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
+   ![Screenshot der Registerkarte „Verbindungseigenschaften“ im Dialogfeld „Mit Server verbinden“ in SSMS. Im Dropdownmenü „Mit Datenbank verbinden“ ist „MyDatabase“ ausgewählt.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
    Wenn Sie jedoch eine Verbindung als Gastbenutzer mit SSMS 17.x oder früher herstellen, müssen Sie auf **Optionen** klicken und dann im Dialogfeld **Verbindungseigenschaften** das Feld **AD-Domänenname oder Mandanten-ID** ausfüllen.
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
+   ![Screenshot der Registerkarte „Verbindungseigenschaften“ im Dialogfeld „Mit Server verbinden“ in SSMS. Die Option „AD-Domänenname oder Mandanten-ID“ ist ausgefüllt.](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
 4. Wählen Sie **Optionen** aus, und geben Sie im Dialogfeld **Optionen** die Datenbank an. (Wenn der verbundene Benutzer ein Gastbenutzer ist (d. h. joe@outlook.com), müssen Sie das Kontrollkästchen aktivieren und den aktuellen AD-Domänennamen oder die Mandanten-ID als Teil der Optionen hinzufügen. Weitere Informationen finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank und Azure Synapse Analytics (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md). Klicken Sie auf **Verbinden**.  
 5. Wenn das Dialogfeld **Bei Ihrem Konto anmelden** angezeigt wird, geben Sie den Kontonamen und das Kennwort Ihrer Azure Active Directory-Identität ein. Es ist kein Kennwort erforderlich, wenn ein Benutzer Mitglied einer Domäne im Verbund mit Azure AD ist.
 
-   ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
+   ![Screenshot des Dialogfelds „Bei Ihrem Konto anmelden“ für Azure SQL-Datenbank und Data Warehouse. Das Konto und das Kennwort sind ausgefüllt.](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > Bei der universellen Authentifizierung mit einem Konto, das keine MFA erfordert, stellen Sie an diesem Punkt die Verbindung her. Fahren Sie für Benutzer, für die MFA erforderlich ist, mit den folgenden Schritten fort:
@@ -63,14 +65,14 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Verbindung mit der aktuell
 
 6. Es werden möglicherweise zwei Dialogfelder für die Einrichtung von MFA angezeigt. Dieser einmalige Vorgang richtet sich nach der Administratoreinstellung für MFA und ist daher möglicherweise optional. In einer Domäne mit aktivierter MFA ist dieser Schritt manchmal vordefiniert (beispielsweise muss ein Benutzer sich in der Domäne möglicherweise mit einer Smartcard und einer PIN authentifizieren).
 
-   ![3mfa-setup](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+   ![Screenshot des Dialogfelds „Bei Ihrem Konto anmelden“ für Azure SQL-Datenbank und Data Warehouse mit der Aufforderung, eine zusätzliche Sicherheitsüberprüfung einzurichten](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
   
 7. Das zweite möglicherweise einmalig angezeigte Dialogfeld ermöglicht es Ihnen, die Details Ihrer Authentifizierungsmethode auszuwählen. Die möglichen Optionen werden von Ihrem Administrator konfiguriert.
 
-   ![4mfa-verify-1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
+   ![Screenshot des Dialogfelds „Zusätzliche Sicherheitsüberprüfung“ mit Optionen zum Auswählen und Konfigurieren einer Authentifizierungsmethode](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. Das Azure Active Directory-Verzeichnis sendet die Bestätigungsinformationen an Sie. Wenn Sie den Prüfcode erhalten haben, geben Sie ihn in das Feld **Prüfcode eingeben** ein, und klicken Sie auf **Anmelden**.
 
-   ![5mfa-verify-2](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
+   ![Screenshot des Dialogfelds „Bei Ihrem Konto anmelden“ für Azure SQL-Datenbank und Data Warehouse mit der Aufforderung zur Eingabe des Prüfcodes](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 Wenn die Überprüfung abgeschlossen ist, stellt SSMS normalerweise eine Verbindung her, vorausgesetzt, die Anmeldeinformationen sind gültig und der Firewallzugriff ist möglich.
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
-ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.reviewer: hirsin, jesakowi, jmprieur, marsma
+ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
+ms.openlocfilehash: 79475414f6785474596beae208fefae81a673dea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842681"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -48,15 +48,15 @@ In OAuth 2.0 werden diese Berechtigungstypen *Bereiche* genannt. Oft werden sie 
 * Schreiben in den Kalender eines Benutzers mit `Calendars.ReadWrite`
 * Senden von E-Mails als Benutzer mit `Mail.Send`
 
-Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforderungen an den Microsoft Identity Platform-Autorisierungsendpunkt an. Bestimmte erhöhte Berechtigungen können jedoch nur mit der Einwilligung des Administrators gewährt werden und werden mit dem [Endpunkt für die Administratoreinwilligung](v2-permissions-and-consent.md#admin-restricted-permissions) angefordert/gewährt. Weitere Informationen finden Sie im Folgenden.
+Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforderungen an den Microsoft Identity Platform-Autorisierungsendpunkt an. Bestimmte erhöhte Berechtigungen können jedoch nur mit der Einwilligung des Administrators gewährt werden und werden mit dem [Endpunkt für die Administratoreinwilligung](#admin-restricted-permissions) angefordert/gewährt. Weitere Informationen finden Sie im Folgenden.
 
 ## <a name="permission-types"></a>Berechtigungstypen
 
 Die Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen: **delegierte Berechtigungen** und **Anwendungsberechtigungen**.
 
-* **Delegierte Berechtigungen** werden von Apps verwendet, bei denen ein angemeldeter Benutzer vorhanden ist. Für diese Apps willigt entweder der Benutzer oder ein Administrator in die Erteilung der von der App angeforderten Berechtigungen ein, und an die App wird die Berechtigung delegiert, bei Aufrufen der Zielressource als der angemeldete Benutzer zu agieren. Bei manchen delegierten Berechtigungen können Benutzer ohne Administratorrechte die Einwilligung erteilen, einige erhöhte Berechtigungen erfordern jedoch eine [Administratoreinwilligung](v2-permissions-and-consent.md#admin-restricted-permissions). Um zu erfahren, welche Administratorrollen delegierten Berechtigungen zustimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* **Delegierte Berechtigungen** werden von Apps verwendet, bei denen ein angemeldeter Benutzer vorhanden ist. Für diese Apps willigt entweder der Benutzer oder ein Administrator in die Erteilung der von der App angeforderten Berechtigungen ein, und an die App wird die Berechtigung delegiert, bei Aufrufen der Zielressource als der angemeldete Benutzer zu agieren. Bei manchen delegierten Berechtigungen können Benutzer ohne Administratorrechte die Einwilligung erteilen, einige erhöhte Berechtigungen erfordern jedoch eine [Administratoreinwilligung](#admin-restricted-permissions). Um zu erfahren, welche Administratorrollen delegierten Berechtigungen zustimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
-* **Anwendungsberechtigungen** werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps sein, die als Hintergrunddienste oder Daemons ausgeführt werden.  Für Anwendungsberechtigungen ist immer die [Einwilligung eines Administrators](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) erforderlich.
+* **Anwendungsberechtigungen** werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps sein, die als Hintergrunddienste oder Daemons ausgeführt werden.  Für Anwendungsberechtigungen ist immer die [Einwilligung eines Administrators](#requesting-consent-for-an-entire-tenant) erforderlich.
 
 _Effektive Berechtigungen_ sind die Berechtigungen, über die Ihre App verfügt, wenn sie Anforderungen an die Zielressource sendet. Es ist wichtig, den Unterschied zwischen den delegierten Berechtigungen und Anwendungsberechtigungen, die Ihrer App gewährt werden, und ihren effektiven Berechtigungen beim Durchführen von Aufrufen an die Zielressource zu verstehen.
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 Dies erzeugt einen Einwilligungsbildschirm für alle registrierten Berechtigungen (falls zutreffend basierend auf den obigen Beschreibungen der Einwilligung und `/.default`), und gibt dann ein id_token statt ein Zugriffstoken zurück.  Dieses Verhalten gilt für bestimmte Legacy-Clients, die von ADAL auf MSAL umgestellt werden, und sollte **nicht** von neuen Clients verwendet werden, die auf den Microsoft Identity Platform-Endpunkt ausgerichtet sind.
 
+### <a name="client-credentials-grant-flow-and-default"></a>Flow zum Gewähren von Clientanmeldeinformationen und Verwenden von „/.default“
+
+Ebenso kann `./default` verwendet werden, um Anwendungsberechtigungen (oder *Rollen*) in einer nicht interaktiven Anwendung wie der Daemon-App anzufordern, die den Flow zum Gewähren von [Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) verwendet, um eine Web-API aufzurufen.
+
+Informationen zum Erstellen von Anwendungsberechtigungen (Rollen) für eine Web-API finden Sie unter [Vorgehensweise: Hinzufügen von App-Rollen in Ihrer Anwendung](howto-add-app-roles-in-azure-ad-apps.md).
+
+Anforderungen von Clientanmeldeinformationen in Ihrer Client-App **müssen** `scope={resource}/.default` umfassen, wobei `{resource}` die Web-API ist, die Ihre App aufrufen möchte. Das Erstellen einer Anforderung von Clientanmeldeinformationen mit individuellen Anwendungsberechtigungen (Rollen) wird **nicht** unterstützt. Alle Anwendungsberechtigungen (Rollen), die für diese Web-API gewährt wurden, werden zum zurückgegebenen Zugriffstoken hinzugefügt.
+
+Informationen zum Gewähren von Zugriff auf die von Ihnen definierten Anwendungsberechtigungen, einschließlich der Administratoreinwilligung für die Anwendung, finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API](quickstart-configure-app-access-web-apis.md).
+
 ### <a name="trailing-slash-and-default"></a>Nachgestellter Schrägstrich und „/.default“
 
 Einige Ressourcen-URIs enthalten einen nachgestellten Schrägstrich (`https://contoso.com/` anstelle von `https://contoso.com`), der Probleme bei der Tokenüberprüfung verursachen kann.  Dies kann vor allem dann auftreten, wenn ein Token für die Azure-Ressourcenverwaltung (`https://management.azure.com/`) angefordert wird, das im Ressourcen-URI einen nachgestellten Schrägstrich aufweist und bei der Anforderung des Tokens vorhanden sein muss.  Wenn Sie ein Token für `https://management.azure.com/` anfordern und dabei `/.default` verwenden, müssen Sie daher `https://management.azure.com//.default` anfordern – beachten Sie den doppelten Schrägstrich!
@@ -311,3 +321,8 @@ Im Allgemeinen gilt: Wenn Sie bestätigt haben, dass das Token ausgestellt wird,
 ## <a name="troubleshooting-permissions-and-consent"></a>Problembehandlung für Berechtigungen und Einwilligungen
 
 Falls Sie oder die Benutzer Ihrer Anwendung während des Einwilligungsprozesses unerwartete Fehler feststellen, finden Sie diesem Artikel Anleitungen zur Problembehandlung: [Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [ID-Token | Microsoft Identity Platform](id-tokens.md)
+* [Zugriffstoken | Microsoft Identity Platform](access-tokens.md)

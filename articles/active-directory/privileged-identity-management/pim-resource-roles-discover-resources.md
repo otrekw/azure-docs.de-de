@@ -11,21 +11,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743710"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91568079"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Ermitteln von Azure-Ressourcen zur Verwaltung in PIM
 
-Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie den Schutz Ihrer Azure-Ressourcen verbessern. Dies ist hilfreich für Organisationen, die Privileged Identity Management bereits zum Schutz von Azure AD-Rollen verwenden, sowie für Verwaltungsgruppen- und Abonnementbesitzer, die Produktionsressourcen schützen möchten.
+Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie den Schutz Ihrer Azure-Ressourcen verbessern. Dies ist hilfreich für:
 
-Beim erstmaligen Einrichten von Privileged Identity Management für Azure-Ressourcen müssen Sie die Ressourcen ermitteln und auswählen, die mit Privileged Identity Management geschützt werden sollen. Die Anzahl der Ressourcen, die Sie mit Privileged Identity Management verwalten können, ist nicht beschränkt. Es empfiehlt sich aber, mit Ihren wichtigsten Ressourcen (für die Produktion) zu beginnen.
+- Organisationen, die bereits Privileged Identity Management zum Schutz der Azure AD-Rollen verwenden
+- Verwaltungsgruppen und Abonnementbesitzer, die Produktionsressourcen sichern möchten
+
+Beim erstmaligen Einrichten von Privileged Identity Management für Azure-Ressourcen müssen Sie die Ressourcen ermitteln und auswählen, die mit Privileged Identity Management geschützt werden sollen. Die Anzahl der Ressourcen, die Sie mit Privileged Identity Management verwalten können, ist nicht beschränkt. Es empfiehlt sich aber, mit Ihren wichtigsten Produktionsressourcen zu beginnen.
 
 ## <a name="discover-resources"></a>Ermitteln von Ressourcen
 
@@ -47,11 +50,14 @@ Beim erstmaligen Einrichten von Privileged Identity Management für Azure-Ressou
 
     ![Bereich „Ermittlung“ mit einer Auflistung von verwaltbaren Ressourcen wie Abonnements und Verwaltungsgruppen](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. Verwenden Sie auf der Seite **Ermittlung** **Ressourcenzustandsfilter** und **Ressourcentyp auswählen**, um die Verwaltungsgruppen oder Abonnements zu filtern, für die Sie Schreibberechtigungen besitzen. An einfachsten ist es wohl, mit **Alle** zu starten.
+1. Verwenden Sie auf der Seite **Ermittlung****Ressourcenzustandsfilter** und **Ressourcentyp auswählen**, um die Verwaltungsgruppen oder Abonnements zu filtern, für die Sie Schreibberechtigungen besitzen. An einfachsten ist es wohl, mit **Alle** zu starten.
 
-    Sie können nur Verwaltungsgruppen oder Abonnementressourcen suchen und auswählen, um sie mithilfe von Privileged Identity Management zu verwalten. Wenn Sie eine Verwaltungsgruppe oder ein Abonnement in Privileged Identity Management verwalten, können Sie auch deren untergeordnete Ressourcen verwalten.
+   Sie können Verwaltungsgruppen oder Abonnementressourcen suchen und auswählen, um sie mithilfe von Privileged Identity Management zu verwalten. Wenn Sie eine Verwaltungsgruppe oder ein Abonnement in Privileged Identity Management verwalten, können Sie auch deren untergeordnete Ressourcen verwalten.
 
-1. Aktivieren Sie das Kontrollkästchen neben nicht verwalteten Ressourcen, die Sie verwalten möchten.
+   > [!Note]
+   > Wenn Sie einer von PIM verwalteten Verwaltungsgruppe eine neue untergeordnete Azure-Ressource hinzufügen, können Sie die untergeordnete Ressource verwalten, indem Sie sie in PIM suchen.
+
+1. Wählen Sie alle nicht verwalteten Ressourcen aus, die Sie verwalten möchten.
 
 1. Wählen Sie **Ressource verwalten** aus, um mit dem Verwalten der ausgewählten Ressourcen zu beginnen.
 

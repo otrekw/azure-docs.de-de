@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/24/2020
+ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468554"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372390"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erstellen von Ressourcen auf der Mandantenebene
 
@@ -24,7 +24,7 @@ Verwenden Sie für Azure-Richtlinien:
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-Verwenden Sie für rollenbasierte Zugriffssteuerung:
+Verwenden Sie für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) Folgendes:
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -42,7 +42,7 @@ Verwenden Sie zum Verwalten von Kosten:
 * [instructions](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
-### <a name="schema"></a>Schema
+## <a name="schema"></a>Schema
 
 Das Schema, das Sie für Bereitstellungen auf der Mandantenebene verwenden, unterscheidet sich von dem Schema für Ressourcengruppenbereitstellungen.
 
@@ -78,11 +78,23 @@ Der globale Administrator für die Azure Active Directory-Instanz ist nicht au
 
 Der Prinzipal verfügt nun über die erforderlichen Berechtigungen, um die Vorlage bereitzustellen.
 
+## <a name="deployment-scopes"></a>Bereitstellungsbereiche
+
+Bei der Bereitstellung auf einem Mandanten können Sie als Ziel die Mandanten- oder Verwaltungsgruppen, Abonnements oder Ressourcengruppen im Mandanten verwenden. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
+
+Ressourcen, die im Ressourcenabschnitt der Vorlage definiert sind, werden auf den Mandanten angewendet.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+Um eine Verwaltungsgruppe innerhalb des Mandanten als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu, und geben Sie die `scope`-Eigenschaft an.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
 ## <a name="deployment-commands"></a>Bereitstellungsbefehle
 
 Die Befehle für Mandantenbereitstellungen unterscheiden sich von den Befehlen für Ressourcengruppenbereitstellungen.
 
-Verwenden Sie bei der Azure CLI [az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
+Verwenden Sie bei der Azure CLI [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create):
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -109,56 +121,6 @@ Für Bereitstellungen auf der Mandantenebene müssen Sie einen Speicherort für 
 Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
 
 Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
-
-## <a name="deployment-scopes"></a>Bereitstellungsbereiche
-
-Wenn Sie auf einem Mandanten bereitstellen, können Sie als Ziel die Mandanten- oder Verwaltungsgruppen, Abonnements oder Ressourcengruppen im Mandanten verwenden. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
-
-Ressourcen, die im Ressourcenabschnitt der Vorlage definiert sind, werden auf den Mandanten angewendet.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        tenant-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Um eine Verwaltungsgruppe innerhalb des Mandanten als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu, und geben Sie die `scope`-Eigenschaft an.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
 
 ## <a name="use-template-functions"></a>Verwenden von Vorlagenfunktionen
 

@@ -3,12 +3,12 @@ title: Erstellen und Bereitstellen von Ressourcengruppenprojekten in Visual Stud
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985256"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372645"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
@@ -370,7 +370,7 @@ Sie sind nicht auf die Ressourcen beschränkt, die über die Visual Studio-Benut
 
    ![Benutzerdefiniertes Dashboard](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-Sie können den Zugriff auf das Dashboard verwalten, indem Sie RBAC-Gruppen verwenden. Außerdem können Sie die Darstellung des Dashboards anpassen, nachdem es bereitgestellt wurde. Wenn Sie die Ressourcengruppe jedoch erneut bereitstellen, wird das Dashboard auf den Standardzustand in der Vorlage zurückgesetzt. Weitere Informationen über das Erstellen von Dashboards finden Sie unter [Programmgesteuertes Erstellen von Azure-Dashboards](../../azure-portal/azure-portal-dashboards-create-programmatically.md).
+Sie können den Zugriff auf das Dashboard mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) verwalten. Außerdem können Sie die Darstellung des Dashboards anpassen, nachdem es bereitgestellt wurde. Wenn Sie die Ressourcengruppe jedoch erneut bereitstellen, wird das Dashboard auf den Standardzustand in der Vorlage zurückgesetzt. Weitere Informationen über das Erstellen von Dashboards finden Sie unter [Programmgesteuertes Erstellen von Azure-Dashboards](../../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/01/2020
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459828"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042624"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für den bedingten Zugriff in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -521,3 +521,7 @@ Im folgenden Beispiel wird eine Datei der vertrauenden Seite gezeigt, die auf di
   </RelyingParty>
 </TrustFrameworkPolicy>
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Ein Beispiel für eine Richtlinie für bedingten Zugriff finden Sie auf [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access).

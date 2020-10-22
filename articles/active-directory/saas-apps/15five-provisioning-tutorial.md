@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaf54b7f7336619d03ce0fb6ea7fa032d0fcdff7
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331215"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319170"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 15Five für die automatische Benutzerbereitstellung
 
@@ -32,21 +32,21 @@ In diesem Tutorial werden die Schritte erläutert, die in 15Five und Azure Activ
 > * Entfernen von Benutzern aus 15Five, wenn diese keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und 15Five
 > * Bereitstellen von Gruppen und Gruppenmitgliedschaften in 15Five
-> * [Einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/saas-apps/15five-tutorial) bei 15Five (empfohlen)
+> * [Einmaliges Anmelden](./15five-tutorial.md) bei 15Five (empfohlen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-* [Ein Azure AD-Mandant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* [Ein Azure AD-Mandant](../develop/quickstart-create-new-tenant.md)
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Einen [15Five-Mandanten](https://www.15five.com/pricing/)
 * Ein Benutzerkonto in 15Five mit Administratorberechtigungen
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
-1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bestimmen Sie, wer [in den Bereitstellungsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) einbezogen werden soll.
-3. Legen Sie fest, welche Daten [zwischen Azure AD und 15Five zugeordnet werden sollen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
+2. Bestimmen Sie, wer [in den Bereitstellungsbereich](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) einbezogen werden soll.
+3. Legen Sie fest, welche Daten [zwischen Azure AD und 15Five zugeordnet werden sollen](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-15five-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von 15Five für die Unterstützung der Bereitstellung mit Azure AD
 
@@ -54,31 +54,31 @@ Bevor Sie 15Five für die automatische Benutzerbereitstellung mit Azure AD konf
 
 1. Melden Sie sich bei Ihrer [15Five-Verwaltungskonsole](https://my.15five.com/) an. Navigieren Sie zu **Features > Integrations** (Features > Integrationen).
 
-    ![15Five-Verwaltungskonsole](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
 
 2.  Klicken Sie auf **SCIM 2.0**.
 
-    ![15Five-Verwaltungskonsole](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
 
 3.  Navigieren Sie zu **SCIM integration > Generate OAuth token** (SCIM-Integration > OAuth-Token generieren).
 
-    ![15Five: Hinzufügen von SCIM](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
 
 4.  Kopieren Sie die Werte für **SCIM 2.0 base URL** (SCIM 2.0-Basis-URL) und **Access Token** (Zugriffstoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer 15Five-Anwendung in die Felder **Mandanten-URL** und **Geheimes Token** eingegeben.
     
-    ![15Five: Hinzufügen von SCIM](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von 15Five aus dem Azure AD-Anwendungskatalog
 
-Fügen Sie 15Five aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in 15Five zu beginnen. Wenn Sie 15Five zuvor für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
+Fügen Sie 15Five aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in 15Five zu beginnen. Wenn Sie 15Five zuvor für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 
-Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) beschriebenen Bereichsfilter verwenden. 
+Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) beschriebenen Bereichsfilter verwenden. 
 
-* Beim Zuweisen von Benutzern und Gruppen zu 15Five müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) und weitere Rollen hinzufügen. 
+* Beim Zuweisen von Benutzern und Gruppen zu 15Five müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](../develop/howto-add-app-roles-in-azure-ad-apps.md) und weitere Rollen hinzufügen. 
 
-* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) angeben.
+* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) angeben.
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-15five"></a>Schritt 5: Konfigurieren der automatischen Benutzerbereitstellung in 15Five 
 
@@ -160,9 +160,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 ## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
 
-1. Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
-2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
-3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
     
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 

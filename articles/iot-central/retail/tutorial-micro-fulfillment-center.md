@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440201"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840437"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für Micro-Fulfillment-Center
 
@@ -96,4 +96,4 @@ Weitere Informationen
 > [!div class="nextstepaction"]
 > [Micro-Fulfillment-Center-Lösungsarchitektur](./architecture-micro-fulfillment-center.md)
 * Machen Sie sich mit den [Azure IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail.md) vertraut.
-* Sehen Sie sich die [Übersicht über Azure IoT Central](../preview/overview-iot-central.md) an.
+* Weitere Informationen zu [Azure IoT Central](../preview/overview-iot-central.md)

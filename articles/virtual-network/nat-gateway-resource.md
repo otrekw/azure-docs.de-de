@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612903"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441764"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
-NAT-Gatewayressourcen sind Teil von [Virtual Network NAT](nat-overview.md) und stellen die Internetverbindung in ausgehender Richtung für ein oder mehrere Subnetze eines virtuellen Netzwerks bereit. Im Subnetz des virtuellen Netzwerks wird angegeben, welches NAT-Gateway verwendet wird. NAT ermöglicht die „Übersetzung der Quellnetzwerkadresse“ (Source Network Address Translation, SNAT) für ein Subnetz.  Mit NAT-Gatewayressourcen wird angegeben, welche statischen IP-Adressen von virtuellen Computern beim Erstellen ausgehender Datenflüsse verwendet werden. Statische IP-Adressen stammen von Ressourcen für öffentliche IP-Adressen, Präfixressourcen für öffentliche IP-Adressen oder aus beiden Quellen. Wird eine Präfixressource für öffentliche IP-Adressen verwendet, werden alle IP-Adressen der gesamten Präfixressource für öffentliche IP-Adressen von einer NAT-Gatewayressource genutzt. Für eine NAT-Gatewayressource können für die beiden Quellen jeweils insgesamt bis zu 16 statische IP-Adressen verwendet werden.
-
+NAT-Gatewayressourcen sind Teil von [Virtual Network NAT](nat-overview.md) und stellen die Internetverbindung in ausgehender Richtung für ein oder mehrere Subnetze eines virtuellen Netzwerks bereit. Im Subnetz des virtuellen Netzwerks wird angegeben, welches NAT-Gateway verwendet wird. NAT ermöglicht die „Übersetzung der Quellnetzwerkadresse“ (Source Network Address Translation, SNAT) für ein Subnetz.  Mit NAT-Gatewayressourcen wird angegeben, welche statischen IP-Adressen von virtuellen Computern beim Erstellen ausgehender Datenflüsse verwendet werden. Statische IP-Adressen stammen aus Ressourcen für öffentliche IP-Adressen (PIP), Ressourcen für öffentliche IP-Adresspräfixe oder aus beiden Quellen. Wird eine Präfixressource für öffentliche IP-Adressen verwendet, werden alle IP-Adressen der gesamten Präfixressource für öffentliche IP-Adressen von einer NAT-Gatewayressource genutzt. Für eine NAT-Gatewayressource können für die beiden Quellen jeweils insgesamt bis zu 16 statische IP-Adressen verwendet werden.
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">
@@ -231,7 +230,7 @@ Auch wenn das Szenario scheinbar funktioniert, sind das Integritätsmodell und d
 
 Jede NAT-Gatewayressource kann einen Durchsatz von bis zu 50 GBit/s bereitstellen. Zum Aufskalieren können Sie Ihre Bereitstellungen in mehrere Subnetze unterteilen und jedem Subnetz oder jeder Gruppe von Subnetzen ein NAT-Gateway zuweisen.
 
-Jedes NAT-Gateway kann 64.000 Verbindungen pro zugewiesener ausgehender IP-Adresse unterstützen.  Ausführlichere Informationen finden Sie im folgenden Abschnitt zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT). Spezifische Informationen zur Problembehandlung finden Sie im Artikel [Problembehandlung für Azure Virtual Network NAT-Konnektivität](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat).
+Jedes NAT-Gateway kann 64.000 TCP- bzw. UDP-Datenflüsse pro zugewiesener ausgehender IP-Adresse unterstützen.  Ausführlichere Informationen finden Sie im folgenden Abschnitt zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT). Spezifische Informationen zur Problembehandlung finden Sie im Artikel [Problembehandlung für Azure Virtual Network NAT-Konnektivität](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat).
 
 ## <a name="source-network-address-translation"></a>Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT)
 
@@ -239,27 +238,39 @@ Bei der Übersetzung der Quellnetzwerkadresse (Source Network Address Translatio
 
 ### <a name="fundamentals"></a>Grundlagen
 
-Wir sehen uns ein Beispiel mit vier Datenflüssen an, um das grundlegende Konzept zu beschreiben.  Für das NAT-Gateway wird die öffentliche IP-Adressressource 65.52.0.2 verwendet.
+Wir sehen uns ein Beispiel mit vier Datenflüssen an, um das grundlegende Konzept zu beschreiben.  Das NAT-Gateway verwendet die Ressource für öffentliche IP-Adressen 65.52.1.1, und die VM stellt Verbindungen mit 65.52.0.1 her.
 
 | Flow | Quelltupel | Zieltupel |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
 Diese Datenflüsse sehen nach dem PAT-Vorgang ggf. wie folgt aus:
 
 | Flow | Quelltupel | Quelltupel nach SNAT | Zieltupel | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
-| 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
-| 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
+| 1 | 192.168.0.16:4283 | **65.52.1.1:1234** | 65.52.0.1:80 |
+| 2 | 192.168.0.16:4284 | **65.52.1.1:1235** | 65.52.0.1:80 |
+| 3 | 192.168.0.17.5768 | **65.52.1.1:1236** | 65.52.0.1:80 |
 
-Dem Ziel wird die Quelle des Datenflusses als 65.52.0.2 (SNAT-Quelltupel) mit dem zugewiesenen Port angezeigt.  Der PAT-Vorgang wie in der obigen Tabelle wird auch als „SNAT mit Portmaskierung“ bezeichnet.  Mehrere private Quellen werden hinter der IP-Adresse und dem Port maskiert.
+Dem Ziel wird die Quelle des Datenflusses als 65.52.0.1 (SNAT-Quelltupel) mit dem zugewiesenen Port angezeigt.  Der PAT-Vorgang wie in der obigen Tabelle wird auch als „SNAT mit Portmaskierung“ bezeichnet.  Mehrere private Quellen werden hinter der IP-Adresse und dem Port maskiert.  
 
-Richten Sie keine Abhängigkeit von der spezifischen Zuweisung von Quellports ein.  Die obige Abbildung enthält nur eine Darstellung des grundlegenden Konzepts.
+#### <a name="source-snat-port-reuse"></a>Wiederverwendung von (SNAT-)Quellports
+
+NAT-Gateways verwenden (SNAT-)Quellports opportunistisch wieder.  Im Folgenden wird dieses Konzept als zusätzlicher Datenfluss neben den obigen Datenflüssen veranschaulicht.  Die VM im Beispiel verfügt über einen Datenfluss zu 65.52.0.2.
+
+| Flow | Quelltupel | Zieltupel |
+|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
+
+Ein NAT-Gateway übersetzt Datenfluss 4 wahrscheinlich in einen Port, der auch für andere Ziele verwendet werden kann.  Weitere Informationen zur richtigen Dimensionierung bei der IP-Adressbereitstellung finden Sie unter [Skalierung](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling).
+
+| Flow | Quelltupel | Quelltupel nach SNAT | Zieltupel | 
+|:---:|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.1.1:**1234** | 65.52.0.2:80 |
+
+Die Umsetzung der Zuweisung von Quellports im obigen Beispiel ist nicht verbindlich.  Die obige Abbildung enthält nur eine Darstellung des grundlegenden Konzepts.
 
 Die Bereitstellung von SNAT über NAT unterscheidet sich in mehreren Punkten von [Load Balancer](../load-balancer/load-balancer-outbound-connections.md).
 
@@ -292,7 +303,12 @@ Die Skalierung von NAT ist hauptsächlich eine Funktion, bei der es um die Verwa
 
 Bei SNAT werden private Adressen mindestens einer öffentlichen IP-Adresse zugeordnet. Hierbei werden die Quelladresse und der Quellport neu erstellt. Für eine NAT-Gatewayressource werden für diesen Übersetzungsvorgang 64.000 Ports (SNAT-Ports) pro konfigurierter öffentlicher IP-Adresse verwendet. NAT-Gatewayressourcen können auf bis zu 16 IP-Adressen und 1 Million SNAT-Ports hochskaliert werden. Wenn eine öffentliche IP-Präfixressource bereitgestellt wird, wird für jede IP-Adresse des Präfixbereichs ein Bestand an SNAT-Ports angelegt. Wenn Sie weitere öffentliche IP-Adressen hinzufügen, wird die Anzahl von verfügbaren SNAT-Ports des Bestands erhöht. Für TCP und UDP werden separate SNAT-Portbestände verwendet, die nicht miteinander in Beziehung stehen.
 
-Von NAT-Gatewayressourcen werden Quellports auf opportunistische Weise wiederverwendet. Zu Skalierungszwecken sollten Sie davon ausgehen, dass für jeden Datenfluss ein neuer SNAT-Port benötigt wird, und die Gesamtzahl der verfügbaren IP-Adressen für ausgehenden Datenverkehr entsprechend skalieren.
+NAT-Gatewayressourcen verwenden (SNAT-)Quellports opportunistisch wieder. Als Orientierung beim Entwurf sollten Sie für Skalierungszwecke davon ausgehen, dass für jeden Datenfluss ein neuer SNAT-Port benötigt wird, und die Gesamtanzahl von verfügbaren IP-Adressen für ausgehenden Datenverkehr entsprechend skalieren.  Sie sollten die geplante Größe sorgfältig berücksichtigen und eine entsprechende Anzahl von IP-Adressen bereitstellen.
+
+SNAT-Ports für verschiedene Ziele werden höchstwahrscheinlich nach Möglichkeit wiederverwendet, und wenn die SNAT-Ports fast ausgelastet sind, tritt für die Datenflüsse möglicherweise ein Fehler auf.  
+
+Weitere Informationen finden Sie z. B. im Abschnitt über [SNAT-Grundlagen](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation).
+
 
 ### <a name="protocols"></a>Protokolle
 
@@ -344,11 +360,9 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Fehlt eine Funktion?
   - [Vorlage](./quickstart-create-nat-gateway-template.md)
 * Informieren Sie sich über die NAT-Gatewayressourcen-API:
   - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network/nat/gateway)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * Informieren Sie sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md).
 * Informieren Sie sich über [Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
 * Informieren Sie sich über [Verfügbarkeitszonen und Load Balancer Standard](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
-
-

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204457"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961679"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -155,11 +155,11 @@ Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, d
    3. Erhöhen Sie die **Bereitgestellte Kapazität**. Die **Bereitgestellte Kapazität** kann nur erhöht werden. Ein Volume kann nach seiner Erstellung nicht mehr verkleinert werden.
    4. Unter **Verbundene Hosts** können Sie den Access Control-Datensatz ändern. Um einen Access Control-Datensatz ändern zu können, muss das Volume offline sein.
 
-       ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes 2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Das Azure-Portal zeigt eine Meldung zur Aktualisierung des Volumes an. Eine Erfolgsmeldung wird angezeigt, wenn das Volume aktualisiert wurde.
 
-    ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes 3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. Wenn Sie ein Volume erweitern, führen Sie folgende Schritte auf dem Windows-Hostcomputer aus:
    
@@ -215,7 +215,7 @@ Möglicherweise empfiehlt es sich, ein lokales Volume in ein mehrstufiges Volume
 
 1. Navigieren Sie zum StorSimple-Geräte-Manager-Dienst, und klicken Sie dann auf **Geräte**. Wählen Sie in der Tabelle mit den Geräten das Gerät mit dem Volume aus, das Sie ändern möchten. Klicken Sie auf **Einstellungen > Volumes**.
 
-    ![Wechseln Sie zum Blatt „Volumes“](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Wechseln zum Blatt „Volumes“ 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. Wählen Sie in der Tabelle mit den Volumes das Volume aus, und klicken Sie mit der rechten Maustaste, um das Kontextmenü aufzurufen. Wählen Sie **Ändern** aus.
 
@@ -249,7 +249,7 @@ Möglicherweise müssen Sie ein Volume offline schalten, wenn Sie es ändern ode
    
     1. Navigieren Sie zum StorSimple-Geräte-Manager-Dienst, und klicken Sie dann auf **Geräte**. Wählen Sie in der Tabelle mit den Geräten das Gerät mit dem Volume aus, das Sie ändern möchten. Klicken Sie auf **Einstellungen > Volumes**.
 
-        ![Wechseln Sie zum Blatt „Volumes“](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Wechseln zum Blatt „Volumes“ 3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. Wählen Sie in der Tabelle mit den Volumes das Volume aus, und klicken Sie mit der rechten Maustaste, um das Kontextmenü aufzurufen. Wählen Sie **Offline schalten** aus, um das Volume offline zu schalten, das Sie ändern möchten.
 
@@ -257,7 +257,7 @@ Möglicherweise müssen Sie ein Volume offline schalten, wenn Sie es ändern ode
 
 3. Überprüfen Sie auf dem Blatt **Offline schalten** die Auswirkungen des Offlineschalten des Volumes, und aktivieren Sie das entsprechende Kontrollkästchen. Klicken Sie auf **Offline schalten**. 
 
-    ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes 4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       Sie werden benachrichtigt, sobald das Volume offline ist. Der Status des Volumes wird in „Offline“ geändert.
       
@@ -277,7 +277,7 @@ Führen Sie die folgenden Schritte durch, um ein Volume zu löschen.
 
 1. Navigieren Sie zum StorSimple-Geräte-Manager-Dienst, und klicken Sie dann auf **Geräte**. Wählen Sie in der Tabelle mit den Geräten das Gerät mit dem Volume aus, das Sie ändern möchten. Klicken Sie auf **Einstellungen > Volumes**.
 
-    ![Wechseln Sie zum Blatt „Volumes“](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Wechseln zum Blatt „Volumes“ 4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. Überprüfen Sie den Status des zu löschenden Volumes. Wenn das Volume, das Sie löschen möchten, nicht offline ist, schalten Sie sie zunächst offline. Führen Sie die unter [Offlineschalten von Volumes](#take-a-volume-offline)genannten Schritte aus.
 4. Sobald das Volume offline ist, klicken Sie mit der rechten Maustaste darauf, um das Kontextmenü aufzurufen, und wählen Sie dann **Löschen** aus.

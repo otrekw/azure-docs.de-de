@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 6e17e2a6e5c9151080facc3a2dd8c1a18c0580fe
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.reviewer: jrasnick, sstein
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982157"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91596976"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Überwachung und Leistungsoptimierung in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,11 +27,14 @@ Azure SQL-Datenbank bietet eine Reihe von Database Advisors, mit denen Sie Empfe
 
 Azure SQL-Datenbank und Azure SQL Managed Instance bieten verbesserte Überwachungs- und Optimierungsfunktionen, die von künstlicher Intelligenz unterstützt werden, um Ihnen bei der Problembehandlung und Maximierung der Leistung Ihrer Datenbanken und Lösungen zu helfen. Sie können den [Streamingexport](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) dieser [Intelligent Insights](intelligent-insights-overview.md) und andere Ressourcenprotokolle und Metriken der Datenbank in eines von mehreren Zielen für die Nutzung und Analyse konfigurieren, insbesondere mithilfe von [SQL-Analyse](../../azure-monitor/insights/azure-sql.md). Azure SQL-Analyse ist eine erweiterte Cloudüberwachungslösung zum abonnementübergreifenden Überwachen der Leistung Ihrer gesamten Datenbankinstanzen im großen Stil in einer zentralen Ansicht. Eine Liste der Protokolle und Metriken, die Sie exportieren können, finden Sie unter [Diagnosetelemetriedaten für den Export](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export).
 
-Außerdem verfügt SQL Server mit dem [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) und [dynamischen Verwaltungssichten](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) (Dynamic Management, Views, DMVs) über eigene Überwachungs- und Diagnosefunktionen, die von der SQL-Datenbank und SQL Managed Instance genutzt werden. Weitere Informationen dazu, wie Skripts eine Vielzahl von Leistungsproblemen überwachen können, finden Sie unter [Überwachen mit dynamischen Verwaltungssichten](monitoring-with-dmvs.md).
+SQL Server verfügt mit dem [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) und [dynamischen Verwaltungssichten](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) (Dynamic Management Views, DMVs) über eigene Überwachungs- und Diagnosefunktionen, die von SQL-Datenbank und SQL Managed Instance genutzt werden. Weitere Informationen dazu, wie Skripts eine Vielzahl von Leistungsproblemen überwachen können, finden Sie unter [Überwachen mit dynamischen Verwaltungssichten](monitoring-with-dmvs.md).
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Überwachungs- und Optimierungsfunktionen im Azure-Portal
 
-Im Azure-Portal ermöglichen Azure SQL-Datenbank und Azure SQL Managed Instance die Überwachung von Ressourcenmetriken. Azure SQL-Datenbank stellt außerdem Database Advisors zur Verfügung, und Query Performance Insight bietet Empfehlungen zur Abfrageoptimierung und eine Leistungsanalyse für Abfragen. Schließlich können Sie im Azure-Portal eine Automatik für [logische SQL-Server](logical-servers.md) und deren Einzel- und Pooldatenbanken aktivieren.
+Im Azure-Portal ermöglichen Azure SQL-Datenbank und Azure SQL Managed Instance die Überwachung von Ressourcenmetriken. Azure SQL-Datenbank stellt Database Advisors zur Verfügung, und Query Performance Insight bietet Empfehlungen zur Abfrageoptimierung und eine Leistungsanalyse für Abfragen. Sie können im Azure-Portal eine automatische Optimierung für [logische SQL-Server](logical-servers.md) und deren Einzel- und Pooldatenbanken aktivieren.
+
+> [!NOTE]
+> Datenbanken mit extrem geringer Auslastung werden im Portal möglicherweise mit einem geringeren Verbrauch als dem tatsächlichen angezeigt. Aufgrund der Art, wie Telemetriedaten ausgegeben werden, wenn ein Double-Wert in den nächsten Integer-Wert konvertiert wird, werden bestimmte Verbrauchswerte unter 0,5 auf 0 gerundet. Dies kann bei den ausgegebenen Telemetriedaten zu einer verminderten Genauigkeit führen. Weitere Einzelheiten finden Sie unter [Niedrige Metriken für Datenbanken und Pools für elastische Datenbanken werden auf 0 (null) gerundet](#low-database-and-elastic-pool-metrics-rounding-to-zero).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Ressourcenüberwachung für Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -46,6 +49,33 @@ Azure SQL-Datenbank umfasst [Database Advisors](database-advisor-implement-perfo
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Query Performance Insight in Azure SQL-Datenbank
 
 [Query Performance Insight](query-performance-insight-use.md) zeigt im Azure-Portal die Leistung der Abfragen für Singletons und Pooldatenbanken mit dem höchsten Verbrauch und der längsten Ausführungsdauer an.
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>Niedrige Metriken für Datenbanken und Pools für elastische Datenbanken werden auf 0 (null) gerundet
+
+Ab September 2020 werden Datenbanken mit extrem geringer Auslastung im Portal möglicherweise mit einem geringeren Verbrauch als dem tatsächlichen angezeigt. Aufgrund der Art, wie Telemetriedaten ausgegeben werden, wenn ein Double-Wert in den nächsten Integer-Wert konvertiert wird, werden bestimmte Verbrauchswerte unter 0,5 auf 0 gerundet. Dies kann bei den ausgegebenen Telemetriedaten zu einer verminderten Genauigkeit führen.
+
+Beispiel: Gehen Sie von einem 1-minütigen Fenster mit den folgenden vier Datenpunkten aus: 0,1, 0,1, 0,1 und 0,1. Diese niedrigen Werte werden auf 0, 0, 0 und 0 abgerundet und ergeben damit den Durchschnittswert 0. Wenn einer der Datenpunkte größer als 0,5 ist, z. B. 0,1, 0,1, 0,9 und 0,1, werden die Werte auf 0, 0, 1 und 0 gerundet, sodass als Durchschnitt 0,25 berechnet wird.
+
+Betroffene Metriken bei Datenbanken:
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+Betroffene Metriken bei Pools für elastische Datenbanken:
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>Generieren intelligenter Bewertungen von Leistungsproblemen
 

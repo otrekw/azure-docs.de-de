@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 09/24/2020
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 25322ad9a5d57094f44ccbad312091214ae8dcac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970659"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965283"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Datenresidenz und Kundendaten für Azure Multi-Factor Authentication
 
@@ -28,7 +28,7 @@ Für den Dienst „Azure Multi-Factor Authentication“ stehen Rechenzentren in 
 
 * Die mehrstufige Authentifizierung mit Telefonanrufen erfolgt in der Regel in Rechenzentren in den USA und wird von globalen Anbietern weitergeleitet.
 * Universelle Benutzerauthentifizierungsanforderungen aus anderen Regionen wie Europa oder Australien werden aktuell abhängig vom Standort des Benutzers verarbeitet.
-* Von der Microsoft Authenticator-App gesendete Pushbenachrichtigungen stammen aus regionalen Rechenzentren (basierend auf dem Standort des Benutzers).
+* Von der Microsoft Authenticator-App gesendete Pushbenachrichtigungen werden derzeit in den regionalen Rechenzentren (basierend auf dem Standort des Benutzers) verarbeitet.
     * Geräte- und anbieterspezifische Dienste (beispielsweise Apple-Pushbenachrichtigungen) können sich abseits des Benutzerstandorts befinden.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Von Azure Multi-Factor Authentication gespeicherte personenbezogene Daten

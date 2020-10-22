@@ -1,34 +1,22 @@
 ---
 title: Azure Deutschland-Entwicklerhandbuch | Microsoft-Dokumentation
 description: Dieser Artikel enthält einen Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland.
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/12/2019
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: a24e33b77f1f83b61d0990d1e6b71925ec0f9c61
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: ff258e4d13b3e39f5a22d4142a73922d77fa3147
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80293494"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123502"
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
 
-> [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
->
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
->
-> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
 
@@ -77,7 +65,7 @@ In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Azure- 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Deutschland finden Sie in den folgenden Ressourcen:
 
-* [Registrieren für eine Testversion](https://azure.microsoft.com/free/germany/)
+* [Registrieren Sie sich für eine Testversion](https://azure.microsoft.com/free/germany/)
 * [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)
 * Wenn Sie schon ein Azure Deutschland-Konto haben, können Sie diese [Anmeldeseite](https://portal.microsoftazure.de/) nutzen.
 * [Welcome to Azure Germany](./germany-welcome.md) (Willkommen bei Azure Deutschland)

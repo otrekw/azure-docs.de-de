@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527019"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992835"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -61,6 +61,8 @@ Sie können auch das Smartphone von Mitarbeitern als kennwortlose Authentifizier
 ![Anmelden bei Microsoft Edge mit der Microsoft Authenticator-App](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 Die Authenticator-App wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten (Touch oder Gesicht) oder ihre PIN zur Bestätigung verwenden. Weitere Informationen zur Installation finden Sie unter [Herunterladen und Installieren der Microsoft Authenticator-App](../user-help/user-help-auth-app-download-install.md).
+
+Die kennwortlose Anmeldung mit der Microsoft Authenticator-App bei Azure AD befindet sich derzeit in der Vorschauphase. Die Verwendung der Microsoft Authenticator-App für die sekundäre Authentifizierung für Azure Multi-Factor Authentication, Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) oder OATH-Softwaretoken ist allgemein verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Das Grundprinzip der kennwortlosen Authentifizierung mit der Authenticator-App ist dasselbe wie bei Windows Hello for Business. Sie ist etwas komplizierter, da der Benutzer identifiziert werden muss, damit Azure AD die verwendete Version der Microsoft Authenticator-App herausfinden kann:
 
@@ -123,10 +125,10 @@ Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus 
 
 Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formfaktoren an, die bekanntermaßen mit der kennwortlosen Benutzererfahrung kompatibel sind. Wir empfehlen Ihnen, die Sicherheitseigenschaften dieser Schlüssel zu bewerten, indem sie sich an den Hersteller und die FIDO Alliance wenden.
 
-| Anbieter | Contact |
+| Anbieter | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| Feitian | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
+| Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | TrustKey-Lösungen | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |

@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707967"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91729150"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD
 
-„Meine Apps“ ist ein webbasiertes Portal, über das Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. 
+„Meine Apps“ ist ein webbasiertes Portal, über das Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Der Zugriff auf „Meine Apps“ erfolgt mithilfe eines Webbrowsers unter [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 Weitere Informationen dazu, wie Sie Azure AD als Identitätsanbieter für eine App verwenden können, finden Sie unter [Was ist die Anwendungsverwaltung in Azure AD?](what-is-application-management.md). Wenn Sie schnell beginnen möchten, sehen Sie sich die [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md) an.
 

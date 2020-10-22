@@ -1,7 +1,7 @@
 ---
 title: Erstellen und Verwalten von Gruppenrichtlinien in Azure AD Domain Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die integrierten Gruppenrichtlinienobjekte (GPOs) bearbeiten und Ihre eigenen benutzerdefinierten Richtlinien in einer von Azure Active Directory Domain Services verwalteten Domäne erstellen.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: deefcb66e05199896e8997d707a06e45f397adec
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963736"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer von Azure Active Directory Domain Services verwalteten Domäne
 
@@ -90,7 +90,7 @@ Es gibt zwei integrierte Gruppenrichtlinienobjekte (GPOs) in einer verwalteten D
 
 1. Das Tool „Gruppenrichtlinienverwaltungs-Editor“ wird geöffnet, mit dem Sie das Gruppenrichtlinienobjekt anpassen können, z. B. *Kontorichtlinien*:
 
-    ![Anpassen des Gruppenrichtlinienobjekts zum bedarfsgesteuerten Konfigurieren der Einstellungen](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Screenshot des Gruppenrichtlinienverwaltungs-Editors.](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
     Wenn Sie fertig sind, wählen Sie **Datei > Speichern**, um die Richtlinie zu speichern. Computer aktualisieren die Gruppenrichtlinie standardmäßig alle 90 Minuten und übernehmen die von Ihnen vorgenommenen Änderungen.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511312"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578545"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Endbenutzerauthentifizierung mit Azure Data Lake Storage Gen1 mit Azure Active Directory
 > [!div class="op_single_selector"]
@@ -97,15 +97,15 @@ Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 
 2. Klicken Sie auf dem Blatt **Einstellungen** der Anwendung auf **Erforderliche Berechtigungen**, und klicken Sie auf **Hinzufügen**.
 
-    ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Screenshot des Blatts „Einstellungen“ mit der hervorgehobenen Umleitungs-URI-Option und dem Blatt „Umleitungs-URI“ mit der tatsächlichen URI](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Hiermit wählen Sie eine API aus**, klicken Sie auf **Azure Data Lake** und anschließend auf **Auswählen**.
 
-    ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![Screenshot des Blatts „API-Zugriff hinzufügen“ mit der hervorgehobenen Option „API auswählen“ und dem Blatt „API auswählen“ mit der Azure Data Lake-Option und der hervorgehobenen Option „Auswählen“](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Berechtigungen auswählen**, aktivieren Sie das Kontrollkästchen, um **Data Lake Store vollen Zugriff zu gewähren**, und klicken Sie auf **Auswählen**.
 
-    ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![Screenshot des Blatts „API-Zugriff hinzufügen“ mit der hervorgehobenen Option „Berechtigungen auswählen“ mit der Option „Vollzugriff auf den Azure Data Lake-Service“ und der hervorgehobenen Option „Auswählen“](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     Klicken Sie auf **Fertig**.
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513503"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441873"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -119,7 +119,7 @@ Wenn im Dashboard angegeben wird, dass der Auftrag abgeschlossen wurde, werden d
 1. Wenn Sie die Laufwerke mit exportierten Daten erhalten haben, benötigen Sie die BitLocker-Schlüssel, um die Laufwerke zu entsperren. Wechseln Sie im Azure-Portal zum Exportauftrag. Klicken auf die Registerkarte **Import/Export**.
 2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **Verschlüsselung**, und kopieren Sie die Schlüssel.
 
-   ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
 3. Verwenden Sie die BitLocker-Schlüssel zum Entsperren der Datenträger.
 
@@ -127,15 +127,13 @@ Der Export ist abgeschlossen.
 
 ## <a name="step-5-unlock-the-disks"></a>Schritt 5: Entsperren der Datenträger
 
-Wenn Sie Version 1.4.0.300 des WAImportExport-Tools verwenden, entsperren Sie das Laufwerk mit dem folgenden Befehl:
+Geben Sie den folgenden Befehl ein, um das Laufwerk zu entsperren:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 Hier sehen Sie eine Beispieleingabe.
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-Wenn Sie frühere Versionen des Tools verwenden, entsperren Sie das Laufwerk über das BitLocker-Dialogfeld.
 
 Zu diesem Zeitpunkt können Sie den Auftrag löschen oder belassen. Aufträge werden nach 90 Tagen automatisch gelöscht.
 

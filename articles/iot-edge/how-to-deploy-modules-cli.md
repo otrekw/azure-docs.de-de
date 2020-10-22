@@ -4,18 +4,17 @@ description: Über die Azure CLI mit der IoT-Erweiterung können Sie – entspre
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/16/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 24630295eaea04044273c412760d25bcddf41335
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 86cccbc9a72459ad038defca32e232381368ef45
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046688"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Bereitstellen von Azure IoT Edge-Modulen mit der Azure CLI
 
@@ -28,7 +27,10 @@ In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstell
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement.
-* Ein [IoT Edge-Gerät](how-to-register-device.md#register-with-the-azure-cli) mit installierter IoT Edge-Runtime.
+* Ein IoT Edge Gerät
+
+  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einem der Schnellstartartikel zu [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
+
 * Die [Azure CLI](/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.70 lauten. Verwenden Sie `az --version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt.
 * Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist vorhanden.
 
@@ -40,13 +42,16 @@ Wenn Sie Module mithilfe der Azure CLI bereitstellen möchten, speichern Sie das
 
 Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit einem Modul:
 
+>[!NOTE]
+>In diesem Beispielbereitstellungsmanifest wird die Schemaversion 1.1 für den IoT Edge-Agent und den Hub verwendet. Die Schemaversion 1.1 wurde zusammen mit der IoT Edge Version 1.0.10 veröffentlicht und ermöglicht Features wie Startreihenfolge für Module und Priorisierung von Routen.
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -89,7 +94,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
       },
       "$edgeHub": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "routes": {
             "upstream": "FROM /messages/* INTO $upstream"
           },

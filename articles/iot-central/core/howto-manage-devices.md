@@ -1,28 +1,32 @@
 ---
 title: Verwalten der Geräte in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwalten.
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 12/06/2019
+description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwalten. Erfahren Sie, wie Sie einzelne Geräte verwalten und Massenimporte und -exporte der Geräte in Ihrer Anwendung ausführen.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: contperfq2
+ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017097"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850097"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
 In diesem Artikel wird beschrieben, wie Sie als Operator Geräte in Ihrer Azure IoT Central-Anwendung verwalten. Als Operator können Sie folgende Aktionen ausführen:
 
 - Mit der **Geräte**-Seite Geräte anzeigen, hinzufügen und löschen, die mit Ihrer Azure IoT Central-Anwendung verbunden sind.
+- Führen Sie Massenimporte und -exporte von Geräten aus.
 - Verwalten Sie ein aktuelles Inventar Ihrer Geräte.
 - Halten Sie Ihre Gerätemetadaten durch Ändern der in den Geräteeigenschaften gespeicherten Werte in Ihren Ansichten auf dem neuesten Stand.
 - Steuern Sie das Verhalten Ihrer Geräte, indem Sie eine Einstellung auf einem bestimmten Gerät in Ihren Ansichten aktualisieren.
+
+Informationen zum Verwalten von benutzerdefinierten Gruppen von Geräten finden Sie im [Tutorial: Verwenden von Gerätegruppen zum Analysieren von Gerätetelemetriedaten](tutorial-use-device-groups.md).
 
 ## <a name="view-your-devices"></a>Anzeigen von Geräten
 
@@ -35,7 +39,6 @@ So zeigen Sie ein einzelnes Gerät an:
 1. Im rechten Bereich der Seite **Geräte** sehen Sie eine Liste von Geräten, die anhand dieser Gerätevorlage erstellt wurden. Wählen Sie ein einzelnes Gerät aus, um die Seite „Gerätedetails“ für dieses Gerät anzuzeigen:
 
     ![Seite „Gerätedetails“](./media/howto-manage-devices/devicelist.png)
-
 
 ## <a name="add-a-device"></a>Hinzufügen eines Geräts
 
@@ -82,10 +85,9 @@ So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
     ![Import erfolgreich](./media/howto-manage-devices/bulkimport3a.png)
 
-
 Wenn beim Geräteimport ein Fehler auftritt, wird im Vorgangspanel des Geräts eine Fehlermeldung angezeigt. Eine Protokolldatei zur Erfassung aller Fehler wird generiert, die Sie herunterladen können.
 
-**Migrieren von Geräten zu einer Vorlage**
+## <a name="migrate-devices-to-a-template"></a>Migrieren von Geräten zu einer Vorlage
 
 Wenn Sie Geräte registrieren, indem Sie den Import unter **Alle Geräte** starten, dann werden die Geräte ohne Gerätevorlagenzuordnung erstellt. Geräte müssen mit einer Vorlage verknüpft sein, damit ein Zugriff auf Daten und andere Details zum Gerät möglich ist. Führen Sie die folgenden Schritte aus, um Geräte mit einer Vorlage zu verknüpfen:
 
@@ -95,8 +97,7 @@ Wenn Sie Geräte registrieren, indem Sie den Import unter **Alle Geräte** start
 
     ![Nicht zugeordnete Geräte](./media/howto-manage-devices/unassociateddevices1a.png)
 
-
-1. Verwenden Sie den Filter im Raster, um festzustellen, ob der Wert in der Spalte **Gerätevorlage** für eines Ihrer Geräte „Nicht zugeordnet“ lautet.
+1. Verwenden Sie den Filter im Raster, um festzustellen, ob der Wert in der Spalte **Gerätevorlage** für eines Ihrer Geräte **Nicht zugeordnet** lautet.
 
 1. Wählen Sie die Geräte aus, die Sie mit einer Vorlage verknüpfen möchten:
 
@@ -104,11 +105,9 @@ Wenn Sie Geräte registrieren, indem Sie den Import unter **Alle Geräte** start
 
     ![Zuordnen von Geräten](./media/howto-manage-devices/unassociateddevices2a.png)
 
-
 1. Wählen Sie eine verfügbare Vorlage in der Liste aus, und wählen Sie **Migrieren** aus.
 
 1. Die ausgewählten Geräte werden mit der ausgewählten Gerätevorlage verknüpft.
-
 
 ## <a name="export-devices"></a>Exportieren von Geräten
 
@@ -124,7 +123,6 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 
     ![Exportieren](./media/howto-manage-devices/export1a.png)
 
-
 1. Der Exportvorgang wird gestartet. Sie können den Status des Status im Vorgangspanel des Geräts verfolgen.
 
 1. Wenn der Exportvorgang abgeschlossen ist, wird eine Erfolgsmeldung zusammen mit einem Link zum Download der generierten Datei angezeigt.
@@ -132,7 +130,6 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 1. Wählen Sie den Link **Datei herunterladen** aus, um die Datei in einen lokalen Ordner auf dem Datenträger herunterzuladen.
 
     ![Export erfolgreich](./media/howto-manage-devices/export2a.png)
-
 
 1. Die exportierte CSV-Datei enthält die folgenden Spalten: Geräte-ID, Name des Geräts, Geräteschlüssel und X509-Zertifikatfingerabdrücke:
 
@@ -159,7 +156,7 @@ So löschen Sie entweder ein reales oder simuliertes Gerät aus Ihrer Azure IoT 
 
 ## <a name="change-a-property"></a>Ändern einer Eigenschaft
 
-Cloudeigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. der Ort und die Seriennummer. Schreibbare Einstellungen steuern das Verhalten eines Geräts. D.h., damit können Sie Eingaben für Ihr Gerät bereitstellen.  Geräteeigenschaften werden vom Gerät festgelegt und sind in Azure IoT Central schreibgeschützt. Sie können Eigenschaften in der Ansicht **Gerätedetails** anzeigen und aktualisieren.
+Cloudeigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. der Ort und die Seriennummer. Cloudeigenschaften sind nur in der IoT Central-Anwendung vorhanden und werden nicht mit Ihren Geräten synchronisiert. Beschreibbare Eigenschaften steuern das Verhalten eines Geräts und ermöglichen Ihnen, den Zustand eines Geräts remote festzulegen, indem Sie z. B. die Zieltemperatur eines Thermostats angeben.  Geräteeigenschaften werden vom Gerät festgelegt und sind in Azure IoT Central schreibgeschützt. Sie können Eigenschaften in der Ansicht **Gerätedetails** anzeigen und aktualisieren.
 
 1. Wählen Sie im linken Bereich **Geräte** aus.
 
@@ -171,12 +168,6 @@ Cloudeigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. der O
 
 1. Wählen Sie **Speichern** aus. Wenn Sie schreibbare Eigenschaften gespeichert haben, werden die Werte an Ihr Gerät gesendet. Wenn das Gerät die Änderung für die beschreibbare Eigenschaft bestätigt, wird der Status wieder auf **synchronisiert** gesetzt. Wenn Sie eine Cloudeigenschaft gespeichert haben, wird der Wert aktualisiert.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie erfahren haben, wie Geräte in Ihrer Azure IoT Central-Anwendung verwaltet werden, sollte dies der nächste Schritt sein:
-
-> [!div class="nextstepaction"]
-> [Verwenden von Gerätegruppen](tutorial-use-device-groups.md)
-
-<!-- Next how-tos in the sequence -->
+Nachdem Sie nun erfahren haben, wie Sie Geräte in Ihrer Azure IoT Central-Anwendung verwalten, wird als nächster Schritt das [Konfigurieren von Regeln](howto-configure-rules.md) für Ihre Geräte empfohlen.

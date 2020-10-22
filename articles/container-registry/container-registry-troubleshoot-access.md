@@ -2,13 +2,13 @@
 title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 10/01/2020
+ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226933"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148461"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -22,6 +22,7 @@ Beispiele für Symptome sind:
 * Images können nicht gepusht oder gepullt werden, und Sie erhalten den Azure CLI-Fehler `Could not connect to the registry login server`.
 * Images können nicht aus der Registrierung in Azure Kubernetes Service oder einen anderen Azure-Dienst gepullt werden.
 * Auf eine Registrierung hinter einem HTTPS-Proxy kann nicht zugegriffen werden, und Sie erhalten den Fehler `Error response from daemon: login attempt failed with status: 403 Forbidden`.
+* Die Einstellungen für das virtuelle Netzwerk können nicht konfiguriert werden, und die Fehlermeldung `Failed to save firewall and virtual network settings for container registry` wird angezeigt.
 * Das Zugreifen auf oder das Anzeigen von Registrierungseinstellungen im Azure-Portal oder das Verwalten der Registrierung mithilfe der Azure CLI ist nicht möglich.
 * Einstellungen für das virtuelle Netzwerk oder Regeln für den öffentlichen Zugriff können nicht hinzugefügt oder geändert werden.
 * Mit ACR Tasks können keine Images gepusht oder gepullt werden.
@@ -32,7 +33,7 @@ Beispiele für Symptome sind:
 * Eine Clientfirewall oder ein Proxy verhindert den Zugriff ([Lösung](#configure-client-firewall-access)).
 * Regeln für den Zugriff auf das öffentliche Netzwerk in der Registrierung verhindern den Zugriff ([Lösung](#configure-public-access-to-registry)).
 * Die Konfiguration des virtuellen Netzwerks verhindert den Zugriff ([Lösung](#configure-vnet-access)).
-* Sie versuchen, Azure Security Center in eine Registrierung zu integrieren, die über einen privaten Endpunkt oder Dienstendpunkt verfügt ([Lösung](#configure-image-scanning-solution)).
+* Sie versuchen, Azure Security Center oder bestimmte andere Azure-Dienste in eine Registrierung zu integrieren, die über einen privaten Endpunkt, Dienstendpunkt oder Zugriffsregeln für öffentliche IP-Adressen verfügt ([Lösung](#configure-service-access)).
 
 ## <a name="further-diagnosis"></a>Weitere Diagnose 
 
@@ -47,7 +48,7 @@ Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure-Cont
 
 ### <a name="configure-client-firewall-access"></a>Konfigurieren des Zugriffs über die Clientfirewall
 
-Um den Zugriff auf eine Registrierung von einem Ort hinter einer Clientfirewall oder einem Proxyserver zu ermöglichen, müssen Sie die Firewallregeln für den Zugriff auf die REST- und Datenendpunkte der Registrierung konfigurieren. Wenn [dedizierte Datenendpunkte](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) aktiviert sind, benötigen Sie Regeln für den Zugriff auf die folgenden Komponenten:
+Sie müssen die Firewallregeln für den Zugriff auf die öffentlichen REST- und Datenendpunkte der Registrierung konfigurieren, um den Zugriff auf eine Registrierung von einem Ort hinter einer Clientfirewall oder einem Proxyserver zu ermöglichen. Wenn [dedizierte Datenendpunkte](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) aktiviert sind, benötigen Sie Regeln für den Zugriff auf die folgenden Komponenten:
 
 * REST-Endpunkt: `<registryname>.azurecr.io`
 * Datenendpunkt(e): `<registry-name>.<region>.data.azurecr.io`
@@ -86,7 +87,11 @@ Vergewissern Sie sich, dass für das virtuelle Netzwerk entweder ein privater En
 
 Wenn ein Dienstendpunkt für die Registrierung konfiguriert ist, sollten Sie sich vergewissern, dass der Registrierung eine Netzwerkregel hinzugefügt wird, die den Zugriff über dieses Netzwerksubnetz zulässt. Der Dienstendpunkt unterstützt nur den Zugriff über virtuelle Computer und AKS-Cluster im Netzwerk.
 
+Wenn Sie den Registrierungszugriff mithilfe eines virtuellen Netzwerks in einem anderen Azure-Abonnement einschränken möchten, stellen Sie sicher, dass Sie den Ressourcenanbieter `Microsoft.ContainerRegistry` in diesem Abonnement registrieren. [Registrieren Sie den Ressourcenanbieter](../azure-resource-manager/management/resource-providers-and-types.md) für Azure Container Registry über das Azure-Portal, die Azure CLI oder andere Azure-Tools.
+
 Wenn im Netzwerk Azure Firewall oder eine ähnliche Lösung konfiguriert ist, sollten Sie überprüfen, ob der ausgehende Datenverkehr von anderen Ressourcen, z. B. einem AKS-Cluster, möglich ist, damit die Registrierungsendpunkte erreicht werden können.
+
+Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst. Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`.
 
 Verwandte Links:
 
@@ -96,17 +101,22 @@ Verwandte Links:
 * [Kubernetes: Debuggen der DNS-Auflösung](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [Diensttags für virtuelle Netzwerke](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>Konfigurieren einer Lösung für die Imageüberprüfung
+### <a name="configure-service-access"></a>Konfigurieren des Dienstzugriffs
 
-Wenn für Ihre Registrierung ein privater Endpunkt oder Dienstendpunkt konfiguriert ist, ist die Integration in Azure Security Center zur Imageüberprüfung derzeit nicht möglich. Optional können Sie andere Lösungen für die Imageüberprüfung konfigurieren, die unter Azure Marketplace verfügbar sind, z. B.:
+Azure Security Center kann derzeit keine [Überprüfung von Images auf Sicherheitsrisiken](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) in einer Registrierung durchführen, die den Zugriff auf private Endpunkte, ausgewählte Subnetze oder IP-Adressen beschränkt. Außerdem können Ressourcen der folgenden Dienste nicht auf Containerregistrierungen mit Netzwerkbeschränkungen zugreifen:
 
-* [Aqua Cloud Native Security Platform](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Twistlock Enterprise Edition](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure DevOps Services 
+* Azure Container Instances
+* Azure Container Registry Tasks
+
+Wenn Zugriff oder eine Integration dieser Azure-Dienste mit Ihrer Containerregistrierung erforderlich ist, entfernen Sie die Netzwerkbeschränkung. Entfernen Sie z. B. die privaten Endpunkte der Registrierung, oder entfernen oder ändern Sie die Regeln der Registrierung für öffentlichen Zugriff.
 
 Verwandte Links:
 
-* [Azure Container Registry-Imageprüfung durch Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry-Imageprüfung durch Security Center](../security-center/defender-for-container-registries-introduction.md)
 * [Feedback](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
+* [Konfigurieren von Netzwerkregeln für öffentliche IP-Adressen](container-registry-access-selected-networks.md)
+* [Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link](container-registry-private-link.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Erweiterte Problembehandlung
@@ -128,7 +138,5 @@ Sehen Sie sich die folgenden Optionen an, falls Sie Ihr Problem hier nicht löse
   * [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md) 
   * [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 * [Optionen für Support durch die Community](https://azure.microsoft.com/support/community/)
-* [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A (Fragen und Antworten)](/answers/products/)
 * [Öffnen eines Supporttickets](https://azure.microsoft.com/support/create-ticket/)
-
-

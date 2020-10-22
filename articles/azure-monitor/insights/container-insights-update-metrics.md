@@ -2,18 +2,18 @@
 title: 'Gewusst wie: Aktualisieren von Azure Monitor für Container für Metriken | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktualisieren, um die Funktion für benutzerdefinierte Metriken zu aktivieren, für die das Untersuchen und Senden von Warnungen zu aggregierten Metriken unterstützt wird.
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499958"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91618144"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
 
-Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metriken aus AKS-Clusterknoten und -Pods (Azure Kubernetes Service) und das Schreiben in den Azure Monitor-Metrikspeicher eingeführt. Diese Änderung soll zu einer verbesserten Zeitgenauigkeit führen, wenn Aggregatberechnungen (Avg, Count, Max, Min, Sum) in Leistungsdiagrammen dargestellt werden, und das Anheften von Leistungsdiagrammen in Dashboards des Azure-Portals und Metrikwarnungen unterstützen.
+Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metriken aus Clusterknoten für Azure Kubernetes Service (AKS) und Kubernetes-Clusterknoten und -Pods mit Azure Arc-Aktivierung und für das Schreiben in den Azure Monitor-Metrikspeicher eingeführt. Diese Änderung soll zu einer verbesserten Zeitgenauigkeit führen, wenn Aggregatberechnungen (Avg, Count, Max, Min, Sum) in Leistungsdiagrammen dargestellt werden, und das Anheften von Leistungsdiagrammen in Dashboards des Azure-Portals und Metrikwarnungen unterstützen.
 
 >[!NOTE]
 >Diese Funktion unterstützt derzeit keine Azure Red Hat OpenShift-Cluster.
@@ -27,9 +27,12 @@ Im Rahmen dieses Features werden die folgenden Metriken aktiviert:
 | Insights.container/pods | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Als *Pod-Metriken* enthalten sie Folgendes als Dimension: ControllerName, Kubernetes-Namespace, Name, Phase. |
 | Insights.container/containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Um diese neuen Funktionen zu unterstützen, ist ein neuer containerisierter Agent, Version **microsoft/oms:ciprod02212019** im Release enthalten. Neue Bereitstellungen von AKS enthalten diese Konfigurationsänderung und die Funktionen automatisch. Die Aktualisierung Ihres Clusters zur Unterstützung dieser Funktion kann über das Azure-Portal, Azure PowerShell oder mit der Azure CLI durchgeführt werden. Mit Azure PowerShell und der CLI können Sie dies pro Cluster oder für alle Cluster in Ihrem Abonnement aktivieren.
+Ein Agent in Containern ist im Release der Version **microsoft/oms:ciprod05262020** für AKS und der Version **microsoft/oms:ciprod09252020** für Kubernetes-Cluster mit Azure Arc-Aktivierung enthalten, um diese neuen Funktionen zu unterstützen. Neue Bereitstellungen von AKS enthalten diese Konfigurationsänderung und die Funktionen automatisch. Die Aktualisierung Ihres Clusters zur Unterstützung dieser Funktion kann über das Azure-Portal, Azure PowerShell oder mit der Azure CLI durchgeführt werden. Mit Azure PowerShell und der CLI können Sie dies pro Cluster oder für alle Cluster in Ihrem Abonnement aktivieren.
 
-Bei beiden Prozessen wird die Rolle **Überwachungsmetriken veröffentlichen** dem Dienstprinzipal des Clusters oder der benutzerseitig zugewiesenen MSI für das Überwachungs-Add-On zugewiesen, sodass die vom Agent erfassten Daten für Ihre Clusterressource veröffentlicht werden können. Die Rolle „Überwachungsmetriken veröffentlichen“ verfügt nur über die Berechtigung zum Übertragen von Metriken per Pushvorgang an die Ressource. Das Ändern eines Zustands, Aktualisieren der Ressource oder Lesen von Daten ist nicht möglich. Weitere Informationen zur Rolle finden Sie unter [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+Bei beiden Prozessen wird die Rolle **Überwachungsmetriken veröffentlichen** dem Dienstprinzipal des Clusters oder der benutzerseitig zugewiesenen MSI für das Überwachungs-Add-On zugewiesen, sodass die vom Agent erfassten Daten für Ihre Clusterressource veröffentlicht werden können. Die Rolle „Überwachungsmetriken veröffentlichen“ verfügt nur über die Berechtigung zum Übertragen von Metriken per Pushvorgang an die Ressource. Das Ändern eines Zustands, Aktualisieren der Ressource oder Lesen von Daten ist nicht möglich. Weitere Informationen zur Rolle finden Sie unter [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher). Die Anforderung der Rolle „Herausgeber von Überwachungsmetriken“ gilt nicht für Kubernetes-Cluster mit Azure Arc-Aktivierung.
+
+> [!IMPORTANT]
+> Das Upgrade ist für Kubernetes-Cluster mit Azure Arc-Aktivierung nicht erforderlich, da sie bereits über die mindestens erforderliche Agent-Version verfügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +40,7 @@ Stellen Sie vor dem Aktualisieren Ihres Clusters Folgendes sicher:
 
 * Benutzerdefinierte Metriken sind nur in einigen Azure-Regionen verfügbar. Eine Liste der unterstützten Regionen finden Sie [hier](../platform/metrics-custom-overview.md#supported-regions).
 
-* Sie sind Mitglied der Rolle **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)** in der AKS-Clusterressource, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen.
+* Sie sind Mitglied der Rolle **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)** in der AKS-Clusterressource, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen. Diese Anforderung gilt nicht für Kubernetes-Cluster mit Azure Arc-Aktivierung.
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 

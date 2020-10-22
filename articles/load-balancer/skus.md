@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654479"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631442"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
@@ -54,7 +54,9 @@ Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://docs.m
 
 - SKUs sind nicht veränderlich. Sie können die SKU einer vorhandenen Ressource nicht ändern.
 - Eine Ressource eines eigenständigen virtuellen Computers, eine Verfügbarkeitsgruppenressource oder eine Ressource einer VM-Skalierungsgruppe kann auf eine SKU verweisen, nie auf beide.
-- [Vorgänge zum Verschieben von Abonnements](../azure-resource-manager/management/move-resource-group-and-subscription.md) werden für Load Balancer Standard und für Ressourcen öffentlicher IP-Standardadressen nicht unterstützt.
+- [Verschiebevorgänge:](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+  - Vorgänge zum Verschieben von Ressourcengruppen (innerhalb desselben Abonnements) werden für Load Balancer Standard und für öffentliche IP-Standardadressen **unterstützt**. 
+  - [Vorgänge zum Verschieben von Abonnementgruppen](../azure-resource-manager/management/move-support-resources.md) werden für Load Balancer Standard und für öffentliche IP-Standardadressen **nicht** unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

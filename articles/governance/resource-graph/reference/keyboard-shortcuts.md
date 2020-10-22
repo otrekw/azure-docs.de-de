@@ -1,15 +1,15 @@
 ---
 title: Tastenkombinationen im Azure-Portal für den Azure Resource Graph-Explorer
 description: Der Azure Resource Graph-Explorer im Azure-Portal unterstützt Tastenkombinationen für das Ausführen von Aktionen und das Navigieren.
-ms.date: 08/25/2020
+ms.date: 10/21/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146435"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340120"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Tastenkombinationen für den Azure Resource Graph-Explorer
 
@@ -24,7 +24,7 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die auf der Seite de
 |Einzug vergrößern |<kbd>STRG</kbd>+<kbd>]</kbd> |<kbd>Cmd</kbd>+<kbd>]</kbd> |
 |Zeile nach unten verschieben |<kbd>ALT</kbd>+<kbd>↓</kbd> |<kbd>Option</kbd>+<kbd>↓</kbd> |
 |Zeile nach oben verschieben |<kbd>ALT</kbd>+<kbd>↑</kbd> |<kbd>Option</kbd>+<kbd>↑</kbd> |
-|Replace |<kbd>STRG</kbd>+<kbd>F</kbd> |<kbd>Cmd</kbd>+<kbd>ALT</kbd>+<kbd>F</kbd> |
+|Replace |<kbd>STRG</kbd>+<kbd>H</kbd> |<kbd>Cmd</kbd>+<kbd>H</kbd> |
 |Alle auswählen |<kbd>STRG</kbd>+<kbd>A</kbd> |<kbd>Cmd</kbd>+<kbd>A</kbd> |
 |Nach unten auswählen |<kbd>UMSCHALT</kbd>+<kbd>↓</kbd> |<kbd>UMSCHALT</kbd>+<kbd>↓</kbd> |
 |Nach rechts auswählen |<kbd>UMSCHALT</kbd>+<kbd>→</kbd> |<kbd>UMSCHALT</kbd>+<kbd>→</kbd> |

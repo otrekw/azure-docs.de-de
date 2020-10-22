@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891201"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952198"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Entwickeln eines C#-IoT Edge Pro-Moduls zum Verschieben von Dateien in Azure Stack Edge
 
@@ -259,7 +259,7 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und Code i
  
 3. Nach der Angabe der Anmeldeinformationen können Sie Ihr Modulimage an die Azure-Containerregistrierung pushen. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **module.json**, und wählen Sie **Build and Push IoT Edge solution** (IoT Edge-Projektmappe erstellen und pushen) aus.
 
-    ![Erstellen und Pushen der IoT Edge-Projektmappe](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Erstellen und Übertragen der IoT Edge-Lösung per Push 2](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Wenn Sie in Visual Studio Code festlegen, dass die Projektmappe erstellt werden soll, werden zwei Befehle im integrierten Terminal ausgeführt: „docker build“ und „docker push“. Diese beiden Befehle erstellen Ihren Code, packen „CSharpModule.dll“ in Container und pushen den Code anschließend an die Containerregistrierung, die Sie beim Initialisieren der Projektmappe angegeben haben.
 

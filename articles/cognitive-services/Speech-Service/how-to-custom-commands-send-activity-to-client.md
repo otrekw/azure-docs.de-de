@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839213"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Senden der Aktivität „Benutzerdefinierte Befehle“ an Clientanwendung
 
@@ -154,7 +154,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Sagen Sie: `turn on the tv`.
 1. Der visuelle Zustand des Fernsehers sollte zu „Ein“ (On) wechseln.
    > [!div class="mx-imgBorder"]
-   > ![Nutzlast zum Senden von Aktivitäten](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![Screenshot: Der visuelle Zustand des Fernsehers ist jetzt eingeschaltet.](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908008"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542287"
 ---
 # <a name="execute-r-script-module"></a>Execute R Script-Module
 
 In diesem Artikel wird beschrieben, wie Sie das Modul Execute R Script verwenden, um R-Code in Ihrer Azure Machine Learning-Designer-Pipeline auszuführen.
 
-Mit R können Sie Aufgaben durchführen, die von vorhandenen Modulen derzeit nicht unterstützt werden. Beispiel: 
+Mit R können Sie Aufgaben ausführen, die von vorhandenen Modulen nicht unterstützt werden, beispielsweise: 
 - Erstellen benutzerdefinierter Datentransformationen
 - Verwenden eigener Metriken zum Auswerten von Vorhersagen
 - Entwickeln von Modellen mit Algorithmen, die nicht als eigenständige Module im Designer implementiert sind
@@ -137,7 +137,7 @@ Verwenden Sie den folgenden Beispielcode, um [auf die in Ihrem Arbeitsbereich re
 
 ## <a name="how-to-configure-execute-r-script"></a>Konfigurieren von Execute R Script
 
-Das Modul „Execute R Script“ enthält R-Beispielcode, den Sie als Ausgangspunkt verwenden können. Stellen Sie zum Konfigurieren des Moduls „Execute R Script“ die erforderlichen Eingaben und den auszuführenden Code bereit.
+Das Modul „Execute R Script“ enthält R-Beispielcode als Ausgangspunkt.
 
 ![Diagramm zu den Eingaben für ein R-Modul](media/module/execute-r-script.png)
 
@@ -194,9 +194,12 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
     > [!NOTE]
     > Vorhandener R-Code kann kleinere Änderungen erfordern, damit er in einer Designer-Pipeline ausgeführt werden kann. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den im Designer verwendeten Daten- und Spaltentypen.
 
-    Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle**-Port, um Fehler wie *CommandLine überschreitet das Limit von 16597 Zeichen* zu vermeiden. 
+    Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle**-Port, um Fehler wie *CommandLine überschreitet das Limit von 16.597 Zeichen* zu vermeiden. 
     
-    Bündeln Sie das Skript und andere benutzerdefinierte Ressourcen in einer ZIP-Datei, und laden Sie die ZIP-Datei als **Dateidataset** in Studio hoch. Anschließend können Sie das Datasetmodul aus der Liste *Meine Datasets* im linken Modulbereich auf die Erstellungsseite des Designers ziehen. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute R Script**-Moduls.
+    1. Bündeln Sie das Skript und andere benutzerdefinierte Ressourcen in einer ZIP-Datei.
+    1. Laden Sie die ZIP-Datei als **Dateidataset** in Studio hoch. 
+    1. Ziehen Sie das Datasetmodul aus der Liste *My Datasets* (Meine Datasets) im linken Modulbereich auf die Erstellungsseite des Designers. 
+    1. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute R Script**-Moduls.
     
     Im Folgenden finden Sie den Beispielcode zum Verwenden des Skripts im Script Bundle:
 
@@ -219,7 +222,7 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
 
 ## <a name="results"></a>Ergebnisse
 
-Die „Execute R Script“-Module können mehrere Ausgaben zurückgeben, müssen aber als R-Datenrahmen bereitgestellt werden. Datenrahmen werden aus Gründen der Kompatibilität mit anderen Modulen automatisch in Datasets im Designer konvertiert.
+Die „Execute R Script“-Module können mehrere Ausgaben zurückgeben, müssen aber als R-Datenrahmen bereitgestellt werden. Der Designer konvertiert aus Kompatibilitätsgründen mit anderen Modulen Datenrahmen automatisch in Datasets.
 
 Standardmeldungen und -fehler aus R werden im Protokoll des Moduls zurückgegeben.
 
@@ -236,7 +239,7 @@ Das Modul „Execute R Script“ unterstützt beliebige R-Skriptdateien als Eing
 
 1. Wechseln Sie zur Ressourcenseite **Datasets**, um eine ZIP-Datei, die R-Code enthält, in Ihren Arbeitsbereich hochzuladen. Wählen Sie **Dataset erstellen** aus. Anschließend wählen Sie **Aus lokaler Datei** und die Option **Datei** für den Datasettyp aus.  
 
-1. Überprüfen Sie, ob die ZIP-Datei in der Liste **My Datasets** unter der Kategorie **Datasets** in der linken Modulstruktur verfügbar ist.
+1. Überprüfen Sie, ob die ZIP-Datei in der Liste **My Datasets** (Meine Datasets) unter der Kategorie **Datasets** in der linken Modulstruktur angezeigt wird.
 
 1.  Verbinden Sie das Dataset mit dem Eingabeport **Script Bundle**.
 

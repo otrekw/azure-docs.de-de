@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192865"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91574193"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analysieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Power BI
 In diesem Artikel erfahren Sie, wie Sie in Azure Data Lake Storage Gen1 gespeicherte Daten mithilfe von Power BI Desktop analysieren und visualisieren.
@@ -27,7 +27,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 1. Starten Sie Power BI Desktop auf Ihrem Computer.
 2. Klicken Sie auf dem Menüband **Start** auf **Daten abrufen** und dann auf „Mehr“. Klicken Sie im Dialogfeld **Daten abrufen** auf **Azure**. Klicken Sie auf **Azure Data Lake Store** und dann auf **Verbinden**.
    
-    ![Herstellen der Verbindung mit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Herstellen der Verbindung mit Data Lake Storage Gen1")
+    ![Screenshot des Dialogfelds „Daten abrufen“ mit den hervorgehobenen Optionen „Azure Data Lake Store“ und „Verbinden“](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Herstellen der Verbindung mit Data Lake Storage Gen1")
 3. Wenn ein Dialogfeld anzeigt, dass der Connector sich in der Entwicklungsphase befindet, klicken Sie auf die Option zum Fortfahren.
 4. Geben Sie im Dialogfeld **Azure Data Lake Store** die URL für Ihr Data Lake Storage Gen1-Konto an, und klicken Sie dann auf **OK**.
    
@@ -37,7 +37,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     ![Anmelden bei Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Anmelden bei Data Lake Storage Gen1")
 6. Wenn Sie sich erfolgreich angemeldet haben, klicken Sie auf **Verbinden**.
    
-    ![Herstellen der Verbindung mit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Herstellen der Verbindung mit Data Lake Storage Gen1")
+    ![Screenshot des Dialogfelds „Azure Data Lake Store“ mit der hervorgehobenen Option „Verbinden“](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Herstellen der Verbindung mit Data Lake Storage Gen1")
 7. Das nächste Dialogfeld zeigt die Datei an, die Sie in Ihr Data Lake Storage Gen1-Konto hochgeladen haben. Überprüfen Sie die Informationen, und klicken Sie dann auf **Laden**.
    
     ![Herunterladen von Daten aus Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Herunterladen von Daten aus Data Lake Storage Gen1")
@@ -52,19 +52,19 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     In den nächsten Schritten aktualisieren wir die Abfrage, sodass die importierten Daten in das gewünschte Format konvertiert werden.
 9. Klicken Sie auf dem Menüband **Start** auf **Abfragen bearbeiten**.
    
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/edit-queries.png "Abfragen bearbeiten")
+    ![Screenshot des Menübands „Startseite“ mit der hervorgehobenen Option „Abfragen bearbeiten“](./media/data-lake-store-power-bi/edit-queries.png "Abfragen bearbeiten")
 10. Klicken Sie im Abfrage-Editor unter der Spalte **Inhalt** auf **Binär**.
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query1.png "Abfragen bearbeiten")
+    ![Screenshot des Abfrage-Editors mit der hervorgehobenen Spalte „Inhalt“](./media/data-lake-store-power-bi/convert-query1.png "Abfragen bearbeiten")
 11. Es wird ein Dateisymbol angezeigt, das die von Ihnen hochgeladene Datei **Drivers.txt** darstellt. Klicken Sie mit der rechten Maustaste auf die Datei, und klicken Sie auf **CSV**.    
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query2.png "Abfragen bearbeiten")
+    ![Screenshot des Abfrage-Editors mit der hervorgehobenen Option „CSV“](./media/data-lake-store-power-bi/convert-query2.png "Abfragen bearbeiten")
 12. Es sollte eine Ausgabe wie unten angezeigt werden. Ihre Daten stehen jetzt in einem Format zur Verfügung, das Sie zum Erstellen von Visualisierungen verwenden können.
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query3.png "Abfragen bearbeiten")
+    ![Screenshot des Abfrage-Editors, bei dem die Ausgabe erwartungsgemäß angezeigt wird](./media/data-lake-store-power-bi/convert-query3.png "Abfragen bearbeiten")
 13. Klicken Sie auf dem Menüband **Start** auf **Schließen und übernehmen** und dann auf **Schließen & übernehmen**.
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/load-edited-query.png "Abfragen bearbeiten")
+    ![Screenshot des Menübands „Startseite“ mit der hervorgehobenen Option „Schließen und übernehmen“](./media/data-lake-store-power-bi/load-edited-query.png "Abfragen bearbeiten")
 14. Sobald die Abfrage aktualisiert wurde, zeigt die Registerkarte **Felder** die neuen Felder, die zur Visualisierung verfügbar sind.
     
     ![Aktualisierte Felder](./media/data-lake-store-power-bi/updated-query-fields.png "Aktualisierte Felder")

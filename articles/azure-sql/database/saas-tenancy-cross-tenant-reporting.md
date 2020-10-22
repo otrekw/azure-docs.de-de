@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03e8719b256fc758874bd7375deed0637da9447e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026931"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91620306"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Mandantenübergreifende Berichte mithilfe verteilter Abfragen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -93,7 +93,7 @@ So können Sie die Definition der Ansicht *Venues* untersuchen:
 
 1. Erweitern Sie im **Objekt-Explorer** die Option **contosoconcerthall** > **Sichten**:
 
-   ![views](./media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Screenshot: Inhalt des Knotens „Sichten“, einschließlich vier Einträge für „Venue“ vom Typ „dbo“](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Klicken Sie mit der rechten Maustaste auf **dbo.Venues**.
 3. Wählen Sie **Skript für Sicht als** > **CREATE in** > **Neues Abfrage-Editor-Fenster**.

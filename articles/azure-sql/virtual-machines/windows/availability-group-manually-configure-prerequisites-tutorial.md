@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263231"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075704"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -420,6 +420,10 @@ Sie können die virtuellen Computer jetzt in **corp.contoso.com** einbinden. Fü
 7. Wenn die Meldung „Willkommen in der Domäne ‚corp.contoso.com‘“ angezeigt wird, wählen Sie **OK** aus.
 8. Wählen Sie **Schließen** und dann im Popupdialogfeld **Jetzt neu starten** aus.
 
+## <a name="add-accounts"></a>Hinzufügen von Konten
+
+Fügen Sie das Installationskonto als Administrator auf allen virtuellen Computern hinzu, erteilen Sie innerhalb von SQL Server die Berechtigung für das Installationskonto und die lokalen Konten, und aktualisieren Sie das SQL Server-Dienstkonto. 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Hinzufügen des Benutzers „Corp\Install“ als Administrator auf jedem virtuellen Clustercomputer
 
 Fügen Sie nach dem Neustart aller virtuellen Computer als Mitglied der Domäne **CORP\Install** als Mitglied der lokalen Administratorengruppe hinzu.
@@ -438,16 +442,6 @@ Fügen Sie nach dem Neustart aller virtuellen Computer als Mitglied der Domäne 
 7. Wählen Sie **OK** aus, um das Dialogfeld **Administratoreigenschaften** zu schließen.
 8. Wiederholen Sie die oben genannten Schritte für **sqlserver-1** und **cluster-fsw**.
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
-
-Legen Sie das SQL Server-Dienstkonto auf jedem virtuellen SQL Server-Computer fest. Verwenden Sie die Konten, die Sie beim Konfigurieren der Domänenkonten erstellt haben.
-
-1. Öffnen Sie den **SQL Server-Konfigurations-Manager**.
-2. Klicken Sie mit der rechten Maustaste auf den SQL Server-Dienst, und wählen Sie **Eigenschaften** aus.
-3. Legen Sie Konto und Kennwort fest.
-4. Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.  
-
-Bei SQL Server-Verfügbarkeitsgruppen muss jeder virtuelle SQL Server-Computer als Domänenkonto ausgeführt werden.
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Erstellen einer Anmeldung für das Installationskonto auf jedem virtuellen SQL Server-Computer
 
@@ -467,13 +461,54 @@ Verwenden Sie das Installationskonto (CORP\install), um die Verfügbarkeitsgrupp
 
 1. Geben Sie die Netzwerkanmeldeinformationen des Domänenadministrators ein.
 
-1. Verwenden Sie das Installationskonto.
+1. Verwenden Sie das Installationskonto (CORP\install).
 
 1. Legen Sie die Anmeldung als Mitglied der festen Serverrolle **sysadmin** fest.
 
 1. Klicken Sie auf **OK**.
 
 Wiederholen Sie die vorhergehenden Schritte für den anderen virtuellen SQL Server-Computer.
+
+### <a name="configure-system-account-permissions"></a>Konfigurieren von Systemkontoberechtigungen
+
+Um ein Kontos für das Systemkonto zu erstellen und entsprechende Berechtigungen zu gewähren, führen Sie die folgenden Schritte für jede SQL Server-Instanz durch:
+
+1. Erstellen Sie für jede SQL Server-Instanz ein Konto für `[NT AUTHORITY\SYSTEM]`. Das folgende Skript erstellt dieses Konto:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. Erteilen Sie `[NT AUTHORITY\SYSTEM]` die folgenden Berechtigungen für jede SQL Server-Instanz:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Das folgende Skript gewährt die folgenden Berechtigungen:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
+
+Legen Sie das SQL Server-Dienstkonto auf jedem virtuellen SQL Server-Computer fest. Verwenden Sie die Konten, die Sie beim Konfigurieren der Domänenkonten erstellt haben.
+
+1. Öffnen Sie den **SQL Server-Konfigurations-Manager**.
+2. Klicken Sie mit der rechten Maustaste auf den SQL Server-Dienst, und wählen Sie **Eigenschaften** aus.
+3. Legen Sie Konto und Kennwort fest.
+4. Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.  
+
+Bei SQL Server-Verfügbarkeitsgruppen muss jeder virtuelle SQL Server-Computer als Domänenkonto ausgeführt werden.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Hinzufügen von Failovercluster-Features zu beiden virtuellen SQL Server-Computern
 
@@ -524,35 +559,6 @@ Die Methode zum Öffnen der Ports richtet sich nach der Firewalllösung, die Sie
 
 Wiederholen Sie diese Schritte auf dem zweiten virtuellen SQL Server-Computer.
 
-## <a name="configure-system-account-permissions"></a>Konfigurieren von Systemkontoberechtigungen
-
-Um ein Kontos für das Systemkonto zu erstellen und entsprechende Berechtigungen zu gewähren, führen Sie die folgenden Schritte für jede SQL Server-Instanz durch:
-
-1. Erstellen Sie für jede SQL Server-Instanz ein Konto für `[NT AUTHORITY\SYSTEM]`. Das folgende Skript erstellt dieses Konto:
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. Erteilen Sie `[NT AUTHORITY\SYSTEM]` die folgenden Berechtigungen für jede SQL Server-Instanz:
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   Das folgende Skript gewährt die folgenden Berechtigungen:
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

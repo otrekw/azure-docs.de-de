@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/20/2020
+ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595579"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108812"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -37,7 +37,9 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Automation/automationAccounts | Ja| Nein | [Automation-Konten](./metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | Nein | Nein | |
 |Microsoft.Batch/batchAccounts | Ja | Nein | [Batch-Konten](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft.Cache/Redis | Ja | Nein | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/Redis | Ja | Ja | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.ClassicCompute/domainNames/slots/roles | Nein | Nein | [Cloud Services (klassisch)](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
+|Microsoft.ClassicCompute/virtualMachines | Nein | Nein | [Virtuelle Computer (klassisch)](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | Ja | Nein | [Speicherkonten (klassisch)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
 |Microsoft.ClassicStorage/storageAccounts/blobServices | Ja | Nein | |
 |Microsoft.ClassicStorage/storageAccounts/fileServices | Ja | Nein | |
@@ -117,7 +119,7 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 ## <a name="payload-schema"></a>Nutzlast und Schema
 
 > [!NOTE]
-> Für Ihre Webhook-Integrationen können Sie auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet. [Hier finden Sie Informationen zu den Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDefinitions).
+> Für Ihre Webhook-Integrationen können Sie auch das [allgemeine Warnungsschema](./alerts-common-schema.md) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet. [Hier finden Sie Informationen zu den Definitionen des allgemeinen Warnungsschemas](./alerts-common-schema-definitions.md).
 
 
 Bei Verwendung einer ordnungsgemäß konfigurierten [Aktionsgruppe](./action-groups.md) enthält der POST-Vorgang für alle neueren Metrikwarnungen die folgende JSON-Nutzlast und das folgende Schema:
@@ -178,4 +180,3 @@ Bei Verwendung einer ordnungsgemäß konfigurierten [Aktionsgruppe](./action-gro
 * Erfahren Sie mehr über die [neue Oberfläche „Warnungen“](./alerts-overview.md).
 * Erfahren Sie mehr über [Protokollwarnungen in Azure](./alerts-unified-log.md).
 * Erfahren Sie mehr über [Warnungen in Azure](./alerts-overview.md).
-

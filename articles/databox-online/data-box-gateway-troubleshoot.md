@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927180"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91741804"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Behandeln von Problemen mit Azure Data Box Gateway
 
@@ -36,7 +36,7 @@ Zum Diagnostizieren und Behandeln von Gerätefehlern können Sie die Diagnosetes
  
 2. Nach Abschluss der Tests werden die Ergebnisse angezeigt. Sollte ein Test nicht erfolgreich sein, wird eine URL für die empfohlene Maßnahme angezeigt. Sie können auf die URL klicken, um die empfohlene Maßnahme anzuzeigen. 
  
-    ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Klicken auf „Benutzer 2 hinzufügen“](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Zusammenstellen des Unterstützungspaket
@@ -47,11 +47,11 @@ Gehen Sie wie folgt vor, um ein Unterstützungspaket zusammenzustellen:
 
 1. Navigieren Sie auf der lokalen Webbenutzeroberfläche zu **Problembehandlung > Support**. Klicken Sie auf **Unterstützungspaket erstellen**. Daraufhin wird das Unterstützungspaket zusammengestellt. Dieser Vorgang kann mehrere Minuten dauern.
 
-    ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Klicken auf „Benutzer 3 hinzufügen“](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. Klicken Sie nach Abschluss der Erstellung des Unterstützungspakets auf **Unterstützungspaket herunterladen**. Ein ZIP-Paket wird an den gewünschten Pfad heruntergeladen. Sie können das Paket entzippen.
 
-    ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Klicken auf „Benutzer 4 hinzufügen“](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Behandeln von Problemen anhand von Protokollen
 
@@ -59,7 +59,7 @@ Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten si
 
 1. Navigieren Sie zum Anzeigen der Fehlerdateien zu Ihrer Freigabe, und klicken Sie auf die Freigabe, um den Inhalt anzuzeigen. 
 
-      ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Klicken auf „Benutzer 5 hinzufügen“](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. Klicken Sie auf den Ordner _Microsoft Data Box Gateway_. Dieser Ordner enthält zwei Unterordner:
 

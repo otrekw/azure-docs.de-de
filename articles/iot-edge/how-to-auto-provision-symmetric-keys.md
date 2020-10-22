@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44ad91b4fb8581a67ea67e09faca4a9d96df91
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 10ed546e8f05f4a93e4523c7870f79d41aa1f622
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447762"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045991"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie mit den folgenden Schritten auf einem Io
 * Erstellen Sie eine individuelle Registrierung für das Gerät.
 * Installieren Sie die IoT Edge-Runtime, und verbinden Sie das Gerät mit dem IoT Hub.
 
-Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts mit einer Device Provisioning Service-Instanz. Diese Nachweismethode stellt eine „Hallo Welt“-Umgebung für Entwickler bereit, die noch nicht mit der Gerätebereitstellung vertraut sind oder keine strengen Sicherheitsanforderungen haben. Die Gerätebestätigung bzw. der Nachweis mithilfe eines [TPM](../iot-dps/concepts-tpm-attestation.md) (Trusted Platform Module) oder von [X.509-Zertifikaten](../iot-dps/concepts-security.md#x509-certificates) ist sicherer und sollte verwendet werden, wenn striktere Sicherheitsanforderungen gelten.
+Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts mit einer Device Provisioning Service-Instanz. Diese Nachweismethode stellt eine „Hallo Welt“-Umgebung für Entwickler bereit, die noch nicht mit der Gerätebereitstellung vertraut sind oder keine strengen Sicherheitsanforderungen haben. Die Gerätebestätigung bzw. der Nachweis mithilfe eines [TPM](../iot-dps/concepts-tpm-attestation.md) (Trusted Platform Module) oder von [X.509-Zertifikaten](../iot-dps/concepts-x509-attestation.md) ist sicherer und sollte verwendet werden, wenn striktere Sicherheitsanforderungen gelten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -156,7 +156,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Die Komponenten werden in Containern ausgeführt, und Sie können weitere Container auf dem Gerät bereitstellen, um Code im Edge-Bereich auszuführen.
 
-Sie benötigen die folgenden Informationen, wenn Sie Ihr Gerät bereitstellen:
+Führen Sie die Schritte in [Installieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md) aus, und kehren Sie dann zu diesem Artikel zurück, um das Gerät bereitzustellen.
+
+## <a name="configure-the-device-with-provisioning-information"></a>Konfigurieren des Geräts mit Bereitstellungsinformationen
+
+Sobald die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit den Informationen, die es zum Herstellen einer Verbindung zwischen Device Provisioning Service und IoT Hub verwendet.
+
+Halten Sie die folgenden Informationen bereit:
 
 * Den Wert für den DPS-**ID-Bereich**
 * Die von Ihnen erstellte **Registrierungs-ID** für das Gerät
@@ -167,50 +173,49 @@ Sie benötigen die folgenden Informationen, wenn Sie Ihr Gerät bereitstellen:
 
 ### <a name="linux-device"></a>Linux-Gerät
 
-Befolgen Sie die Anweisungen für die Architektur Ihres Geräts. Stellen Sie sicher, dass Sie die IoT Edge-Runtime für die automatische und nicht für die manuelle Bereitstellung konfigurieren.
+1. Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
 
-[Installieren der Azure IoT Edge-Runtime unter Linux](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-Der Abschnitt in der Konfigurationsdatei für die Bereitstellung von symmetrischen Schlüsseln sieht wie folgt aus:
+1. Suchen Sie den Abschnitt zu Bereitstellungskonfigurationen für die Datei. Heben Sie die Auskommentierung der Zeilen für die Bereitstellung des symmetrischen DPS-Schlüssels auf, und vergewissern Sie sich, dass alle anderen Bereitstellungszeilen auskommentiert sind.
 
-```yaml
-# DPS symmetric key provisioning configuration
-provisioning:
-   source: "dps"
-   global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "<SCOPE_ID>"
-   attestation:
-      method: "symmetric_key"
-      registration_id: "<REGISTRATION_ID>"
-      symmetric_key: "<SYMMETRIC_KEY>"
-```
+   Der Zeile `provisioning:` sollte kein Leerzeichen vorangestellt und geschachtelte Elemente sollten um zwei Leerzeichen eingerückt sein.
 
-Ersetzen Sie die Platzhalterwerte für `<SCOPE_ID>`, `<REGISTRATION_ID>` und `<SYMMETRIC_KEY>` durch die Daten, die Sie zuvor gesammelt haben. Stellen Sie sicher, dass der Zeile **provisioning:** kein Leerzeichen vorangestellt ist und dass geschachtelte Elemente jeweils um zwei Leerzeichen eingerückt sind.
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "symmetric_key"
+       registration_id: "<REGISTRATION_ID>"
+       symmetric_key: "<SYMMETRIC_KEY>"
+   ```
+
+1. Aktualisieren Sie die Werte `scope_id`, `registration_id`und `symmetric_key` mit Ihren DPS- und Geräteinformationen.
+
+1. Starten Sie die IoT Edge-Runtime neu, damit alle am Gerät vorgenommenen Konfigurationsänderungen erfasst werden.
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows-Gerät
 
-Installieren Sie die IoT Edge-Runtime auf dem Gerät, für das Sie einen abgeleiteten Geräteschlüssel generiert haben. Sie werden die IoT Edge-Runtime für die automatische (nicht die manuelle) Bereitstellung konfigurieren.
-
-Ausführlichere Informationen zum Installieren von IoT Edge unter Windows, einschließlich Voraussetzungen und Anweisungen für Aufgaben wie das Verwalten von Containern und das Aktualisieren von IoT Edge, finden Sie unter [Installieren der Azure IoT Edge-Runtime unter Windows](how-to-install-iot-edge-windows.md).
-
 1. Öffnen Sie ein PowerShell-Fenster im Administratormodus. Bei der Installation von IoT Edge müssen Sie eine AMD64-Sitzung von PowerShell – nicht PowerShell (x86) – verwenden.
 
-1. Durch den Befehl **Deploy-IoTEdge** wird überprüft, ob Ihr Windows-Computer über eine unterstützte Version verfügt. Außerdem aktiviert der Befehl das Containerfeature und lädt dann die Moby-Runtime und die IoT Edge-Runtime herunter. Der Befehl verwendet standardmäßig Windows-Container.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. An diesem Punkt könnten IoT Core-Geräte möglicherweise automatisch neu starten. Andere Windows 10- oder Windows Server-Geräte könnten Sie zum Neustart auffordern. Wenn ja, starten Sie Ihr Gerät jetzt neu. Sobald Ihr Gerät bereit ist, führen Sie PowerShell erneut als Administrator aus.
-
-1. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Der Befehl verwendet standardmäßig die manuelle Bereitstellung mit Windows-Containern – außer wenn Sie das Flag `-Dps` für die automatische Bereitstellung verwenden.
+1. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Der Befehl verwendet standardmäßig die manuelle Bereitstellung mit Windows-Containern. Verwenden Sie deshalb das Flag `-DpsSymmetricKey` für die automatische Bereitstellung per Authentifizierung mit symmetrischem Schlüssel.
 
    Ersetzen Sie die Platzhalterwerte für `{scope_id}`, `{registration_id}` und `{symmetric_key}` durch die Daten, die Sie zuvor gesammelt haben.
 
+   Wenn Sie Linux-Container unter Windows verwenden, fügen Sie den Parameter `-ContainerOs Linux` hinzu.
+
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation

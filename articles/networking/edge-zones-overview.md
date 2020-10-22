@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260069"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329570"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Informationen zur Vorschau von Azure Edge Zone
 
@@ -74,7 +74,7 @@ Typische Anwendungsfälle sind:
 
 Edge Zones werden in Partnerschaft mit den folgenden Betreibern angeboten:
 
-- AT&T (Atlanta, Dallas und Los Angeles) 
+- AT&T (Atlanta, Dallas und Los Angeles)
 
 ISVs, die an optimierten und skalierbaren Anwendungen in 5G-Netzwerken arbeiten, können beim Erstellen und Testen von Plattformen mit extrem geringer Latenz sowie in mobilen und vernetzten Szenarien jetzt den neuen Azure Edge Zone-Vorschaustandort Los Angeles mit AT&T verwenden. Registrieren Sie sich für das Early Adopter-Programm, um von sicherer Konnektivität mit hoher Bandbreite zu profitieren.
 
@@ -86,9 +86,9 @@ Weitere Informationen erhalten Sie beim [Supportteam für Azure Edge Zone-Zonen]
 
 Private Azure Edge Zone-Zonen sind kleine Ausläufer des Azure-Netzwerks, die lokal platziert werden. Private Azure Edge Zone-Zonen werden auf der Plattform [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) betrieben. Sie ermöglichen eine geringe Latenz beim Zugriff auf Computing- und Speicherdienste, die lokal bereitgestellt wurden. Mit privaten Azure Edge Zone-Zonen können Sie außerdem Anwendungen von ISVs und virtualisierte Netzwerkfunktionen (Virtualized Network Functions, VNFs) als [von Azure verwaltete Anwendungen](https://azure.microsoft.com/services/managed-applications/) neben virtuellen Computern und Containern lokal bereitstellen. Zu diesen VNFs können mobile Paketkerne, Router, Firewalls und SD-WAN-Geräte zählen. Private Azure Edge Zone-Zonen beinhalten eine cloudnative Orchestrierungslösung, mit der Sie den Lebenszyklus von VNFs und Anwendungen im Azure-Portal verwalten können.
 
-Mit privaten Azure Edge Zone-Zonen können Sie Anwendungen lokal mithilfe derselben vertrauten Tools entwickeln und bereitstellen, die Sie auch für die Entwicklung und Bereitstellung von Anwendungen in Azure verwenden. 
+Mit privaten Azure Edge Zone-Zonen können Sie Anwendungen lokal mithilfe derselben vertrauten Tools entwickeln und bereitstellen, die Sie auch für die Entwicklung und Bereitstellung von Anwendungen in Azure verwenden.
 
-Außerdem bieten private Azure Edge Zone-Zonen Ihnen folgende Möglichkeiten: 
+Außerdem bieten private Azure Edge Zone-Zonen Ihnen folgende Möglichkeiten:
 
 - Ausführen von privaten mobilen Netzwerken (Private LTE, privates 5G).
 - Implementieren von Sicherheitsfunktionen wie Firewalls
@@ -113,6 +113,7 @@ Wir verfügen über ein umfassendes Ökosystem von VNF-Anbietern, ISVs und MSP-P
 ##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Virtualized Evolved Packet Core (vEPC) für Mobilfunknetze
 
 - [Bestätigte Netzwerke](https://www.affirmednetworks.com/)
+- [Celona](https://www.celona.io/azure-edge)
 - [Druid Software](https://www.druidsoftware.com/)
 - [Expeto](https://www.expeto.io/)
 - [Mavenir](https://mavenir.com/)
@@ -121,12 +122,15 @@ Wir verfügen über ein umfassendes Ökosystem von VNF-Anbietern, ISVs und MSP-P
 
 ##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Partner für Digitalradio
 
+- [Celona](https://www.celona.io/azure-edge)
 - [Commscope Ruckus](https://support.ruckuswireless.com/)
 
 ##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN-Anbieter
 
+- [128 Technology](https://www.128technology.com/)
 - [NetFoundry](https://netfoundry.io/)
 - [Nuage Networks von Nokia](https://www.nuagenetworks.net/)
+- [Versa Networks](https://www.versa-networks.com/)
 - [VMware SD-WAN von Velocloud](https://www.velocloud.com/)
 
 ##### <a name="router-vendors"></a><a name="router-vendors"></a>Routeranbieter
@@ -158,10 +162,10 @@ Weitere Informationen dazu, wie Sie Partner werden können, erhalten Sie beim [S
 
 ![Private Mobilfunknetze in privaten Azure Edge Zone-Zonen](./media/edge-zones-overview/mobile-networks.png "Private Mobilfunknetze in privaten Azure Edge Zone-Zonen")
 
-Sie können jetzt ein privates Mobilfunknetz in einer privaten Azure Edge Zone-Zone bereitstellen. Private Mobilfunknetze ermöglichen eine extrem niedrige Latenz, hohe Kapazitäten und ein zuverlässiges und sicheres Drahtlosnetzwerk, das für unternehmenskritische Anwendungen erforderlich ist. 
+Sie können jetzt ein privates Mobilfunknetz in einer privaten Azure Edge Zone-Zone bereitstellen. Private Mobilfunknetze ermöglichen eine extrem niedrige Latenz, hohe Kapazitäten und ein zuverlässiges und sicheres Drahtlosnetzwerk, das für unternehmenskritische Anwendungen erforderlich ist.
 
-Private Mobilfunknetze können Szenarios wie die folgenden ermöglichen: 
-- Steuerung von fahrerlosen Transportfahrzeugen (Automated Guided Vehicles, AGVs) in Lagerhäusern 
+Private Mobilfunknetze können Szenarios wie die folgenden ermöglichen:
+- Steuerung von fahrerlosen Transportfahrzeugen (Automated Guided Vehicles, AGVs) in Lagerhäusern
 - Echtzeitkommunikation zwischen Robotern in intelligenten Fabriken
 - Augmented Reality und Virtual Reality in Edgeanwendungen
 
@@ -174,7 +178,7 @@ Microsoft bietet ein Partnerökosystem, in dem Sie für jeden Schritt des Prozes
 #### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN in Private Edge Zones
 
 ![SD-WAN in Private Edge Zones](./media/edge-zones-overview/sd-wan.png "SD-WAN in Private Edge Zones")
- 
+
 Mit SD-WAN können Sie Fernnetze (Wide Area Networks, WANs) für Unternehmen erstellen. Dies hat folgende Vorteile:
 
 - Höhere Bandbreite
@@ -183,7 +187,7 @@ Mit SD-WAN können Sie Fernnetze (Wide Area Networks, WANs) für Unternehmen ers
 - Zuverlässigkeit
 - Richtlinienverwaltung
 - Umfassende Netzwerksichtbarkeit
-    
+
 SD-WAN bietet eine nahtlose Konnektivität zwischen Zweigstellenbüros, die zu geringeren Betriebskosten von redundanten zentralen Controllern orchestriert wird.
 Mit SD-WAN in privaten Azure Edge Zone-Zonen können Sie von einem auf die Investitionskosten fokussierten Modell zu einem Software-as-a-Service-Modell (SaaS) übergehen, um IT-Budgets zu reduzieren. Sie können außerdem einen SD-WAN-Partner Ihrer Wahl als Orchestrator oder Controller einsetzen, um neue Dienste zu implementieren und diese sofort im gesamten Netzwerk verfügbar zu machen.
 

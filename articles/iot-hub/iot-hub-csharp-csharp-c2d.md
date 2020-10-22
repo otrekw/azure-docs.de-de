@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ff6153abb3e930e3268ed7768e4ab44c9b5824cc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008334"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449567"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub (.NET)
 
@@ -91,13 +91,20 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie in [Senden von Telemetr
 
 Die `ReceiveAsync`-Methode gibt die empfangene Nachricht asynchron zurück, sobald sie vom Gerät empfangen wird. Sie gibt nach einem spezifizierbaren Zeitlimit *NULL* zurück. In diesem Beispiel wird der Standardwert von einer Minute verwendet. Wenn die App *NULL* empfängt, sollte sie weiter auf neue Nachrichten warten. Diese Anforderung ist der Grund für die `if (receivedMessage == null) continue`-Zeile.
 
-Der Aufruf von `CompleteAsync()` teilt IoT Hub mit, dass die Nachricht erfolgreich verarbeitet wurde. Die Nachricht kann sicher aus der Gerätewarteschlange entfernt werden. Wenn ein Fehler aufgetreten ist, der den Abschluss der Verarbeitung der Nachricht durch die Geräte-App verhindert hat, übermittelt IoT Hub sie erneut. Die Nachrichtenverarbeitungslogik in der Geräte-App muss *idempotent* sein, sodass der mehrmalige Empfang derselben Nachricht dasselbe Ergebnis erzeugt.
+Durch den Aufruf von `CompleteAsync()` wird IoT Hub darüber informiert, dass die Nachricht erfolgreich verarbeitet wurde und sicher aus der Gerätewarteschlange entfernt werden kann. Das Gerät sollte diese Methode unabhängig vom verwendeten Protokoll aufrufen, wenn seine Verarbeitung erfolgreich abgeschlossen wurde.
 
-Eine Anwendung kann eine Nachricht auch vorübergehend verwerfen, sodass IoT Hub die Nachricht für die zukünftige Verwendung in der Warteschlange beibehält. Oder die Anwendung kann eine Nachricht ablehnen, wodurch die Nachricht dauerhaft aus der Warteschlange entfernt wird. Weitere Informationen zum Lebenszyklus von C2D-Nachrichten finden Sie unter [D2C- und C2D-Messaging mit IoT Hub](iot-hub-devguide-messaging.md).
+Mit AMQP und HTTPS, aber nicht MQTT, kann das Gerät auch folgende Aktionen ausführen:
 
-   > [!NOTE]
-   > Wird HTTPS anstelle von MQTT oder AMQP als Transport verwendet, erfolgt von der `ReceiveAsync`-Methode sofort eine Rückgabe. Das unterstützte Muster für C2D-Nachrichten mit HTTPS entspricht Geräten, die nicht permanent verbunden sind und weniger häufig Nachrichten abrufen (d.h. seltener als alle 25 Minuten). Die Ausgabe von mehr HTTPS-Empfangsvorgängen führt dazu, dass die Anforderungen von IoT Hub gedrosselt werden. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTPS-Unterstützung sowie zur IoT Hub-Drosselung finden Sie unter [D2C- und C2D-Messaging mit IoT Hub](iot-hub-devguide-messaging.md).
-   >
+* Eine Nachricht vorübergehend verwerfen, sodass IoT Hub sie für zukünftige Nutzung in der Gerätewarteschlange beibehält.
+* Eine Nachricht ablehnen, wodurch sie aus der Warteschlange dauerhaft entfernt wird.
+
+Wenn etwas passiert, wodurch verhindert wird, dass das Gerät die Nachricht abschließt, vorübergehend verwirft oder ablehnt, stellt IoT Hub sie nach einem festgelegten Zeitlimit zur erneuten Übermittlung in die Warteschlange. Aus diesem Grund muss die Nachrichtenverarbeitungslogik in der Geräte-App *idempotent* sein, sodass der mehrmalige Empfang derselben Nachricht dasselbe Ergebnis erzeugt.
+
+Ausführlichere Informationen dazu, wie IoT Hub C2D-Nachrichten verarbeitet, einschließlich Details zum Lebenszyklus von C2D-Nachrichten, finden Sie unter [Senden von C2D-Nachrichten von einem IoT-Hub](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Wird HTTPS anstelle von MQTT oder AMQP als Transport verwendet, erfolgt von der `ReceiveAsync`-Methode sofort eine Rückgabe. Das unterstützte Muster für Cloud-zu-Gerät-Nachrichten mit HTTPS ist zeitweilig mit Geräten verbunden, die selten Nachrichten abrufen (mindestens alle 25 Minuten). Die Ausgabe von mehr HTTPS-Empfangsvorgängen führt dazu, dass die Anforderungen von IoT Hub gedrosselt werden. Weitere Informationen zu den Unterschieden zwischen der Unterstützung für MQTT, AMQP und HTTPS finden Sie unter [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md) und [Auswählen eines Kommunikationsprotokolls](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
@@ -164,7 +171,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die Cloud-zu-Gerät-Na
 
 1. Drücken Sie **F5**. Beide Anwendungen sollten gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die von der Geräte-App empfangene Meldung sollte angezeigt werden.
 
-   ![Nachrichtenempfangs-App](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
+   ![Geräte-App, die eine Nachricht empfängt](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
 ## <a name="receive-delivery-feedback"></a>Empfangen von Übermittlungsfeedback
 
@@ -211,7 +218,7 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
 
 1. Drücken Sie **F5**, um die Apps auszuführen. Beide Anwendungen sollten nun gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die Nachricht sollte von der Geräte-App empfangen werden, und nach einigen Sekunden sollte die Feedbacknachricht von der **SendCloudToDevice**-Anwendung empfangen werden.
 
-   ![Nachrichtenempfangs-App](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
+   ![Geräte-App, die eine Nachricht empfängt, und Dienst-App, die Feedback erhält](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
 > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren, z.B. exponentielles Backoff, wie es in [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570764"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von EDIFACT-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -247,7 +247,7 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
 2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus, und wählen Sie dann die Kachel **Vereinbarungen** aus. 
 
-    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Screenshot: Kachel „Vereinbarungen“](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee94a36ea27a15067cbcbab22b10629bc4b37634
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095076"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91596236"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung
 
@@ -42,7 +42,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
     [![Öffnen Ihres Event Hub-Namespace](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. Wählen Sie in der Event Hub-Instanz **Entitäten > Consumergruppen** aus. Wählen Sie dann **+ Consumergruppe** aus, um eine neue Consumergruppe hinzuzufügen. 
+1. Wählen Sie in der Event Hub-Instanz **Entitäten > Consumergruppen** aus. Wählen Sie dann **+ Consumergruppe** aus, um eine neue Consumergruppe hinzuzufügen.
 
    [![Event hub - Add a consumer group](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox) (Event Hub – Consumergruppe hinzufügen)
 
@@ -68,11 +68,11 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
 1. Wählen Sie die geeigneten Werte für **Importoption** aus:
 
-   * Wenn Sie in einem Ihrer Abonnements bereits über einen Event Hub verfügen, wählen Sie **Verwenden Sie einen Event Hub aus verfügbaren Abonnements** aus. Diese Option stellt den einfachsten Ansatz dar.
+   - Wenn Sie in einem Ihrer Abonnements bereits über einen Event Hub verfügen, wählen Sie **Verwenden Sie einen Event Hub aus verfügbaren Abonnements** aus. Diese Option stellt den einfachsten Ansatz dar.
 
      [![Auswählen einer Importoption für Ereignisquellen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
-    *  In der folgenden Tabelle werden die Eigenschaften beschrieben, die für die Option **Event Hub aus verfügbaren Abonnements verwenden** erforderlich sind:
+   - In der folgenden Tabelle werden die Eigenschaften beschrieben, die für die Option **Event Hub aus verfügbaren Abonnements verwenden** erforderlich sind:
 
        [![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
@@ -84,10 +84,10 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
        | Event Hub-Richtlinienwert | Wählen Sie die gewünschte SAS-Richtlinie aus. Sie können die Richtlinie für den gemeinsamen Zugriff auf der Event Hub-Registerkarte **Konfigurieren** erstellen. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Die SAS-Richtlinie für die Ereignisquelle *muss* über die Berechtigung **Lesen** verfügen. |
        | Event Hub-Richtlinienschlüssel | Voraufgefüllt aus dem ausgewählten Event Hub-Richtlinienwert. |
 
-    * Wenn sich der Event Hub außerhalb Ihrer Abonnements befindet oder Sie erweiterte Optionen auswählen möchten, wählen Sie **Event Hub-Einstellungen manuell angeben** aus.
+   - Wenn sich der Event Hub außerhalb Ihrer Abonnements befindet oder Sie erweiterte Optionen auswählen möchten, wählen Sie **Event Hub-Einstellungen manuell angeben** aus.
 
        In der folgenden Tabelle werden die für die Option **Event Hub-Einstellungen manuell angeben** erforderlichen Eigenschaften beschrieben:
- 
+
        | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
        | Abonnement-ID | Das Abonnement, zu dem die gewünschte Event Hub-Instanz und der Namespace gehören. |
@@ -97,7 +97,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
        | Event Hub-Richtlinienwert | Wählen Sie die gewünschte SAS-Richtlinie aus. Sie können die Richtlinie für den gemeinsamen Zugriff auf der Event Hub-Registerkarte **Konfigurieren** erstellen. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Die SAS-Richtlinie für die Ereignisquelle *muss* über die Berechtigung **Lesen** verfügen. |
        | Event Hub-Richtlinienschlüssel | Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Service Bus-Namespace verwendet wird. Geben Sie hier den primären oder sekundären Schlüssel ein. |
 
-    * Beide Optionen teilen die folgenden Konfigurationsoptionen:
+   - Beide Optionen teilen die folgenden Konfigurationsoptionen:
 
        | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
@@ -113,8 +113,8 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Definieren von Datenzugriffsrichtlinien](time-series-insights-data-access.md) zum Schützen der Daten
+- [Definieren von Datenzugriffsrichtlinien](time-series-insights-data-access.md) zum Schützen der Daten
 
-* [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
+- [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
 
-* Zugreifen auf Ihre Umgebung im [Azure Time Series Insights-Explorer](https://insights.timeseries.azure.com).
+- Zugreifen auf Ihre Umgebung im [Azure Time Series Insights-Explorer](https://insights.timeseries.azure.com).

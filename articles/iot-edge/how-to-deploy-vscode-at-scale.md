@@ -9,16 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134038"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043815"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Bedarfsabhängiges Bereitstellen von IoT Edge-Modulen mithilfe Visual Studio Code
 
-Sie können eine **automatische IoT Edge-Bereitstellung** mithilfe von Visual Studio Code erstellen, um laufende Bereitstellungen für viele Geräte gleichzeitig zu verwalten. Automatische Bereitstellungen für IoT Edge sind Teil des Features [Automatische Geräteverwaltung](/azure/iot-hub/iot-hub-automatic-device-management) von IoT Hub. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module auf mehreren Geräten bereitstellen können. Sie können auch den Status und die Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen.
+Sie können eine **automatische IoT Edge-Bereitstellung** mithilfe von Visual Studio Code erstellen, um laufende Bereitstellungen für viele Geräte gleichzeitig zu verwalten. Automatische Bereitstellungen für IoT Edge sind Teil des Features [Automatische Geräteverwaltung](../iot-hub/iot-hub-automatic-device-management.md) von IoT Hub. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module auf mehreren Geräten bereitstellen können. Sie können auch den Status und die Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen.
 
 Weitere Informationen finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
@@ -27,7 +27,10 @@ In diesem Artikel richten Sie Visual Studio Code und die IoT-Erweiterung ein. An
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
-* Ein [IoT Edge-Gerät](how-to-register-device.md#register-with-visual-studio-code) mit installierter IoT Edge-Runtime.
+* Mindestens ein IoT Edge-Gerät.
+
+  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einem der Schnellstartartikel zu [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
+
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) für Visual Studio Code.
 
@@ -57,13 +60,16 @@ Wenn Sie Module mithilfe von Visual Studio Code bereitstellen möchten, speicher
 
 Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit einem Modul:
 
+>[!NOTE]
+>In diesem Beispielbereitstellungsmanifest wird die Schemaversion 1.1 für den IoT Edge-Agent und den Hub verwendet. Die Schemaversion 1.1 wurde zusammen mit der IoT Edge Version 1.0.10 veröffentlicht und ermöglicht Features wie Startreihenfolge für Module und Priorisierung von Routen.
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -92,7 +98,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
           },
           "modules": {
             "SimulatedTemperatureSensor": {
-              "version": "1.0",
+              "version": "1.1",
               "type": "docker",
               "status": "running",
               "restartPolicy": "always",
@@ -220,11 +226,11 @@ Nachdem Sie das Bereitstellungsmanifest und Tags im Gerätezwilling konfiguriert
 
    Geben Sie Werte für die folgenden Parameter an:
 
-  | Parameter | BESCHREIBUNG |
+  | Parameter | Beschreibung |
   | --- | --- |
   | Bereitstellungs-ID | Der Name der Bereitstellung, die im IoT Hub erstellt werden soll. Geben Sie Ihrer Bereitstellung einen eindeutigen Namen, der bis zu 128 Kleinbuchstaben umfasst. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`. |
-  | Zielbedingung | Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
-  | Priority |  Eine positive ganze Zahl Wenn dasselbe Gerät das Ziel für mindestens zwei Bereitstellungen ist, wird die Bereitstellung mit dem höchsten numerischen Wert als Priorität („Priority“) angewendet. |
+  | Zielbedingung | Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll.  Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test' and properties.reported.devicemodel='4000x'`.  |
+  | Priorität |  Eine positive ganze Zahl. Wenn dasselbe Gerät das Ziel für mindestens zwei Bereitstellungen ist, wird die Bereitstellung mit dem höchsten numerischen Wert als Priorität („Priority“) angewendet. |
 
   Nach Angabe der Priorität sollte die Ausgabe im Terminal ähnlich wie in der nachstehenden Abbildung aussehen:
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120074"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91742841"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
    
    Wählen Sie anschließend **Fertig** aus.
 
-   ![Metrik auswählen](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Metrik 2 auswählen](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
@@ -70,7 +70,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
 11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
 
-    ![Aktionsgruppe](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Aktionsgruppe 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 

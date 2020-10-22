@@ -1,20 +1,20 @@
 ---
 title: Verwenden von Azure Monitor-Arbeitsmappen mit Azure AD Domain Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure Monitor-Arbeitsmappen Sicherheitsüberwachungen überprüfen und Probleme in einer verwalteten Azure Active Directory Domain Services-Domäne ermitteln.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722737"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967068"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Überprüfen von Sicherheitsüberwachungsereignissen in Azure Active Directory Domain Services mithilfe von Azure Monitor-Arbeitsmappen
 
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie im Menü auf der linken Seite **Überwachung > Arbeitsmappen** aus.
 
-    ![Auswählen der Menüoption „Arbeitsmappen“ im Azure-Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![Screenshot, aus dem hervorgeht, wo der Sicherheitsübersichtsbericht und der Bericht zur Kontoaktivität ausgewählt werden.](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Wählen Sie **Security Overview Report** (Sicherheitsübersichtsbericht) aus.
 1. Wählen Sie in den Dropdownmenüs oben in der Arbeitsmappe Ihr Azure-Abonnement und dann einen Azure Monitor-Arbeitsbereich aus.

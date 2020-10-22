@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 10/09/2020
+ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949030"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929641"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Ausführen eines Upgrades auf die aktuelle Version der REST-API in Azure Cognitive Search
 
@@ -40,13 +40,19 @@ Wenn Sie von einer dieser Situationen betroffen sind, müssen Sie Ihren Code mö
 
 ## <a name="upgrade-to-2020-06-30"></a>Upgrade auf 2020-06-30
 
-Version 2020-06-30 ist das neueste allgemein verfügbare Release der REST-API. Sie enthält keine Breaking Changes, es gibt aber einige Unterschiede im Verhalten. 
+Version 2020-06-30 ist das neueste allgemein verfügbare Release der REST-API. Es gibt einen Breaking Change und mehrere Abweichungen beim Verhalten. 
 
 Zu den Features, die in dieser API-Version jetzt allgemein verfügbar sind, gehören:
 
 * [Wissensspeicher](knowledge-store-concept-intro.md), dauerhafte Speicherung von angereicherten Inhalten, die durch Skillsets für die Downstreamanalyse und die Verarbeitung durch andere Anwendungen erstellt wurden. Mithilfe dieser Funktion kann eine indexergesteuerte KI-Anreicherungspipeline einen Wissensspeicher zusätzlich zu einem Suchindex auffüllen. Falls Sie die Vorschauversion dieses Features verwendet haben: sie ist zur allgemein verfügbaren Version gleichwertig. Die einzige erforderliche Codeänderung besteht im Ändern der API-Version.
 
-Zu den Verhaltensänderungen gehören die folgenden:
+### <a name="breaking-change"></a>Unterbrechende Änderung
+
+Vorhandener Code, der für frühere API-Versionen geschrieben wurde, wird ab API-Version 2020-06-30 unterbrochen, wenn der Code folgende Funktionen enthält:
+
+* Alle Edm.Date-Literale (ein Datum bestehend aus Jahr-Monat-Tag, z. B. `2020-12-12`) in Filterausdrücken muss dem Format von Edm.DateTimeOffset folgen: `2020-12-12T00:00:00Z`. Diese Änderung war erforderlich, um fehlerhafte oder unerwartete Abfrageergebnisse aufgrund von Zeitzonenunterschieden zu behandeln.
+
+### <a name="behavior-changes"></a>Verhaltensänderungen
 
 * Der [BM25-Ähnlichkeitsalgorithmus für die Rangfolge](index-ranking-similarity.md) ersetzt den bisherigen Rangfolgealgorithmus durch neuere Technologie. Neue Dienste verwenden diesen Algorithmus automatisch. Für vorhandene Dienste müssen Sie Parameter festlegen, um den neuen Algorithmus zu verwenden.
 

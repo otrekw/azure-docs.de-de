@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514667"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962886"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern der StorSimple-Gerätekonfiguration
 
@@ -61,7 +61,7 @@ Eine Gerätebeschreibung erleichtert es üblicherweise, den Besitzer und den phy
 
 Ihr Gerät muss die Zeit synchronisieren, damit es sich beim Cloudspeicher-Dienstanbieter authentifizieren kann. Auf dem Blatt **Allgemeine Einstellungen** auf Ihrem Gerät können Sie die Zeiteinstellungen des Geräts ändern.
 
-![Gerätebeschreibung in „Allgemeine Einstellungen“](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Gerätebeschreibung in „Allgemeine Einstellungen“ 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  Wählen Sie in der Dropdownliste Ihre Zeitzone aus. Sie können bis zu zwei NTP-Server (Network Time Protocol, Netzwerkzeitprotokoll) angeben:
 

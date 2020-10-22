@@ -3,14 +3,14 @@ title: Rollout der Integritätsintegration – Azure-Bereitstellungs-Manager
 description: Beschreibt die zahlreiche Regionen umfassende Bereitstellung eines Diensts mit dem Azure-Bereitstellungs-Manager. Zeigt sichere Bereitstellungsmethoden, mit denen Sie die Stabilität Ihrer Bereitstellung vor dem Rollout in alle Regionen überprüfen können.
 author: mumian
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702549"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372373"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Rollout der Integritätsintegration in Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
@@ -20,9 +20,9 @@ Mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) könne
 
 Um die Integritätsintegration so einfach wie möglich zu gestalten, hat Microsoft mit einigen der führenden Unternehmen für Dienstintegritätsüberwachung zusammengearbeitet, um Ihnen eine einfache Copy&Paste-Lösung zu bieten, mit der Sie Integritätsprüfungen in Ihre Bereitstellungen integrieren können. Wenn Sie noch keinen Integritätsmonitor verwenden, eignen sich die folgenden Lösungen optimal für den Einstieg:
 
-| ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
-|-----|------|------|
-|Datadog ist die führende Überwachungs- und Analyseplattform für moderne Cloudumgebungen. Weitere Informationen finden Sie unter [Integration von Datadog in Azure-Bereitstellungs-Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7 ist eine umfassende Überwachungslösung für private und öffentliche Clouddienste. Weitere Informationen finden Sie unter [Integration von Site24x7 in Azure-Bereitstellungs-Manager](https://www.site24x7.com/azure/adm.html).| Wavefront ist eine Überwachungs- und Analyseplattform für Multi-Cloud-Anwendungsumgebungen. Weitere Informationen finden Sie unter [Integration von Wavefront in Azure-Bereitstellungs-Manager](https://go.wavefront.com/wavefront-adm/).|
+| ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Azure Monitor](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-azure-monitor.svg)| ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure-Bereitstellungs-Manager, Systemüberwachungsanbieter Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
+|-----|-----|------|------|
+|Azure Monitor, die Full-Stack-Überwachungsplattform von Microsoft für die cloudnative und hybride Überwachung und Analyse |Datadog ist die führende Überwachungs- und Analyseplattform für moderne Cloudumgebungen. Weitere Informationen finden Sie unter [Integration von Datadog in Azure-Bereitstellungs-Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7 ist eine umfassende Überwachungslösung für private und öffentliche Clouddienste. Weitere Informationen finden Sie unter [Integration von Site24x7 in Azure-Bereitstellungs-Manager](https://www.site24x7.com/azure/adm.html).| Wavefront ist eine Überwachungs- und Analyseplattform für Multi-Cloud-Anwendungsumgebungen. Weitere Informationen finden Sie unter [Integration von Wavefront in Azure-Bereitstellungs-Manager](https://go.wavefront.com/wavefront-adm/).|
 
 ## <a name="how-service-health-is-determined"></a>Ermittlung der Dienstintegrität
 
@@ -38,10 +38,55 @@ Der Flow zum Einrichten von Integritätsprüfungen im Azure-Bereitstellungs-Mana
 1. Erstellen Sie einen oder mehrere healthCheck-Schritte im Rahmen Ihres Azure-Bereitstellungs-Manager-Rollouts. Geben Sie in den healthCheck-Schritten die folgenden Informationen an:
 
     1. Den URI für die REST-API für Ihre Integritätsmonitore (wie von Ihrem Systemüberwachungsanbieter angegeben).
-    1. Authentifizierungsinformationen. Derzeit wird nur der Authentifizierungstyp „API-Schlüssel“ unterstützt.
+    1. Authentifizierungsinformationen. Derzeit wird nur der Authentifizierungstyp „API-Schlüssel“ unterstützt. Bei Azure Monitor sollte der Authentifizierungstyp als „RolloutIdentity“ festgelegt werden, da die benutzerseitig zugewiesene verwaltete Identität, die für den Azure-Bereitstellungs-Manager-Rollout verwendet wird, auch für Azure Monitor genutzt wird.
     1. [HTTP-Statuscodes](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) oder reguläre Ausdrücke, die eine fehlerfreie Antwort definieren. Beachten Sie, dass Sie reguläre Ausdrücke angeben können, die ALLE übereinstimmen müssen, damit die Antwort als fehlerfrei angesehen wird. Oder Sie können Ausdrücke angeben, von denen EIN Ausdruck übereinstimmen muss, damit die Antwort als fehlerfrei angesehen wird. Beide Methoden werden unterstützt.
 
-    Nachfolgend finden Sie ein JSON-Beispiel:
+    Das folgende JSON-Beispiel zeigt die Integration von Azure Monitor mit dem Azure-Bereitstellungs-Manager. Dabei wird RolloutIdentity verwendet und eine Integritätsprüfung durchgeführt, wobei ein Rollout ausgeführt wird, wenn es keine Warnungen gibt. Die einzige unterstützte Azure Monitor-API ist [Warnungen: Alle abrufen](/rest/api/monitor/alertsmanagement/alerts/getall).
+
+    ```json
+    {
+      "type": "Microsoft.DeploymentManager/steps",
+      "apiVersion": "2018-09-01-preview",
+      "name": "healthCheckStep",
+      "location": "[parameters('azureResourceLocation')]",
+      "properties": {
+        "stepType": "healthCheck",
+        "attributes": {
+          "waitDuration": "PT1M",
+          "maxElasticDuration": "PT1M",
+          "healthyStateDuration": "PT1M",
+          "type": "REST",
+          "properties": {
+            "healthChecks": [
+              {
+                "name": "appHealth",
+                "request": {
+                  "method": "GET",
+                  "uri": "[parameters('healthCheckUrl')]",
+                  "authentication": {
+                    "type": "RolloutIdentity"
+                  }
+                },
+                "response": {
+                  "successStatusCodes": [
+                    "200"
+                  ],
+                  "regex": {
+                    "matches": [
+                      "\"value\":\\[\\]"
+                    ],
+                    "matchQuantifier": "All"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
+
+    Das folgende JSON-Beispiel zeigt alle anderen Systemüberwachungsanbieter:
 
     ```json
     {
@@ -132,23 +177,23 @@ Eine exemplarische Vorgehensweise anhand eines Beispiels finden Sie unter [Tutor
 
 ## <a name="phases-of-a-health-check"></a>Phasen einer Integritätsprüfung
 
-Zu diesem Zeitpunkt weiß der Azure-Bereitstellungs-Manager, wie die Integrität Ihres Diensts abgefragt wird und in welchen Phasen des Rollouts dies erfolgen muss. Der Azure-Bereitstellungs-Manager lässt jedoch auch eine umfassende Konfiguration der zeitlichen Abfolge dieser Überprüfungen zu. Ein healthCheck-Schritt wird in 3 aufeinander folgenden Phasen ausgeführt, deren Dauer jeweils konfiguriert werden kann: 
+Zu diesem Zeitpunkt weiß der Azure-Bereitstellungs-Manager, wie die Integrität Ihres Diensts abgefragt wird und in welchen Phasen des Rollouts dies erfolgen muss. Der Azure-Bereitstellungs-Manager lässt jedoch auch eine umfassende Konfiguration der zeitlichen Abfolge dieser Überprüfungen zu. Ein healthCheck-Schritt wird in 3 aufeinander folgenden Phasen ausgeführt, deren Dauer jeweils konfiguriert werden kann:
 
 1. Warten
 
-    1. Nach dem Abschluss eines Bereitstellungsvorgangs können VMs neu gestartet, basierend auf neuen Daten neu konfiguriert oder sogar zum ersten Mal gestartet werden. Es dauert auch einige Zeit, bis die Dienste mit dem Ausgeben von Integritätssignalen beginnen, die vom Systemüberwachungsanbieter in nützlichen Informationen zusammengefasst werden. Während dieses turbulenten Vorgangs ist es möglicherweise nicht sinnvoll, die Dienstintegrität zu überprüfen, weil das Update noch keinen stabilen Zustand erreicht hat. Tatsächlich kann der Dienst zwischen fehlerfreien und fehlerhaften Zuständen oszillieren, während sich die Ressourcen stabilisieren. 
-    1. Während der Wartephase wird die Dienstintegrität nicht überwacht. In dieser Phase wird den bereitgestellten Ressourcen Zeit für die Integration eingeräumt, bevor die Integritätsprüfung beginnt. 
+    1. Nach dem Abschluss eines Bereitstellungsvorgangs können VMs neu gestartet, basierend auf neuen Daten neu konfiguriert oder sogar zum ersten Mal gestartet werden. Es dauert auch einige Zeit, bis die Dienste mit dem Ausgeben von Integritätssignalen beginnen, die vom Systemüberwachungsanbieter in nützlichen Informationen zusammengefasst werden. Während dieses turbulenten Vorgangs ist es möglicherweise nicht sinnvoll, die Dienstintegrität zu überprüfen, weil das Update noch keinen stabilen Zustand erreicht hat. Tatsächlich kann der Dienst zwischen fehlerfreien und fehlerhaften Zuständen oszillieren, während sich die Ressourcen stabilisieren.
+    1. Während der Wartephase wird die Dienstintegrität nicht überwacht. In dieser Phase wird den bereitgestellten Ressourcen Zeit für die Integration eingeräumt, bevor die Integritätsprüfung beginnt.
 1. Elastic
 
     1. Da man unmöglich in allen Fällen wissen kann, wie lange die Integration der Ressourcen dauert, bis sie stabil sind, ermöglicht die Phase „Elastic“ einen flexiblen Zeitraum zwischen dem Zeitpunkt, an dem die Ressourcen potenziell instabil sind, und dem Zeitpunkt, an dem sie einen fehlerfreien, stabilen Zustand aufrechterhalten müssen.
-    1. Mit Beginn der Phase „Elastic“ beginnt der Azure-Bereitstellungs-Manager damit, den bereitgestellten REST-Endpunkt regelmäßig nach der Dienstintegrität abzufragen. Das Abrufintervall ist konfigurierbar. 
-    1. Wenn der Integritätsmonitor mit Signalen antwortet, die einen fehlerhaften Dienststatus angeben, werden diese Signale ignoriert, die Phase „Elastic“ wird fortgesetzt, und das Abrufen wird fortgesetzt. 
-    1. Sobald der Integritätsmonitor mit Signalen antwortet, die angeben, dass der Dienst fehlerfrei ist, endet die Phase „Elastic“, und die Phase „HealthyState“ beginnt. 
-    1. Daher ist die für die Phase „Elastic“ angegebene Dauer die maximale Zeit, die zum Abrufen der Dienstintegrität aufgewendet werden kann, bevor eine fehlerfreie Antwort als obligatorisch angesehen wird. 
+    1. Mit Beginn der Phase „Elastic“ beginnt der Azure-Bereitstellungs-Manager damit, den bereitgestellten REST-Endpunkt regelmäßig nach der Dienstintegrität abzufragen. Das Abrufintervall ist konfigurierbar.
+    1. Wenn der Integritätsmonitor mit Signalen antwortet, die einen fehlerhaften Dienststatus angeben, werden diese Signale ignoriert, die Phase „Elastic“ wird fortgesetzt, und das Abrufen wird fortgesetzt.
+    1. Sobald der Integritätsmonitor mit Signalen antwortet, die angeben, dass der Dienst fehlerfrei ist, endet die Phase „Elastic“, und die Phase „HealthyState“ beginnt.
+    1. Daher ist die für die Phase „Elastic“ angegebene Dauer die maximale Zeit, die zum Abrufen der Dienstintegrität aufgewendet werden kann, bevor eine fehlerfreie Antwort als obligatorisch angesehen wird.
 1. HealthyState
 
-    1. Während der Phase „HealthyState“ wird die Dienstintegrität im gleichen Intervall wie in der Phase „Elastic“ kontinuierlich abgerufen. 
-    1. Für die gesamte angegebene Dauer wird erwartet, dass der Dienst Signale für den fehlerfreien Status vom Systemüberwachungsanbieter beibehält. 
+    1. Während der Phase „HealthyState“ wird die Dienstintegrität im gleichen Intervall wie in der Phase „Elastic“ kontinuierlich abgerufen.
+    1. Für die gesamte angegebene Dauer wird erwartet, dass der Dienst Signale für den fehlerfreien Status vom Systemüberwachungsanbieter beibehält.
     1. Wenn zu irgendeinem Zeitpunkt eine fehlerhafte Antwort erkannt wird, beendet der Azure-Bereitstellungs-Manager den gesamten Rollout und gibt die REST-Antwort mit den Signalen für einen fehlerhaften Dienst zurück.
     1. Nach Abschluss der Phase „HealthyState“ ist die Integritätsprüfung (der healthCheck-Schritt) abgeschlossen, und die Bereitstellung wird mit dem nächsten Schritt fortgesetzt.
 

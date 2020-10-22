@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300271"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91715411"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
@@ -100,7 +100,7 @@ Um zu bestätigen, dass die Anmeldeinformationen für das Veröffentlichungsprof
 
 ### <a name="disable-access-to-the-api"></a>Deaktivieren des Zugriffs auf die API
 
-Die API im vorherigen Abschnitt basiert auf rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure. Das bedeutet, dass Sie eine [benutzerdefinierte Rolle erstellen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) und der Rolle Benutzer mit niedrigeren Berechtigungen zuweisen können, sodass diese keine Standardauthentifizierung für beliebige Websites aktivieren können. Um die benutzerdefinierte Rolle zu konfigurieren, [befolgen Sie diese Anweisungen](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Die API im vorherigen Abschnitt basiert auf rollenbasierter Zugriffssteuerung von Azure (Azure RBAC). Das bedeutet, dass Sie eine [benutzerdefinierte Rolle erstellen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) und der Rolle Benutzer mit niedrigeren Berechtigungen zuweisen können, sodass diese keine Standardauthentifizierung für beliebige Websites aktivieren können. Um die benutzerdefinierte Rolle zu konfigurieren, [befolgen Sie diese Anweisungen](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 Sie können auch [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) verwenden, um alle erfolgreichen Authentifizierungsanforderungen zu überwachen, sowie [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy), um diese Konfiguration für alle Standorte in Ihrem Abonnement zu erzwingen.
 

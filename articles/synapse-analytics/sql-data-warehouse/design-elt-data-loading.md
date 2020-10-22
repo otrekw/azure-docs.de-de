@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201157"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075024"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Datenladestrategien für Synapse SQL-Pools
 
@@ -24,14 +24,10 @@ In herkömmlichen SMP-SQL-Pools wird zum Laden von Daten ein ETL-Prozess (Extrah
 
 Ein ELT-Prozess (Extrahieren, Laden und Transformieren) nutzt die Vorteile von MPP und verringert die Ressourcen, die vor dem Laden zum Transformieren der Daten erforderlich sind.
 
-SQL-Pools unterstützen zwar viele Lademethoden (unter anderem beliebte SQL Server-Optionen wie [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) und die [SqlBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)), doch die schnellste und am besten skalierbare Möglichkeit zum Laden von Daten stellen externe PolyBase-Tabellen und die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Vorschauversion) dar.
+SQL-Pools unterstützen zwar viele Lademethoden (unter anderem beliebte SQL Server-Optionen wie [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) und die [SqlBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)), doch die schnellste und am besten skalierbare Möglichkeit zum Laden von Daten stellen externe PolyBase-Tabellen und die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dar.
 
 Mit PolyBase und der COPY-Anweisung können Sie über die T-SQL-Sprache auf externe Daten zugreifen, die in Azure Blob Storage oder in Azure Data Lake Storage gespeichert sind. Wir empfehlen die Verwendung der COPY-Anweisung, um beim Laden von Daten so flexibel wie möglich zu sein.
 
-> [!NOTE]  
-> Die COPY-Anweisung befindet sich zurzeit in der Public Preview. Wenn Sie Feedback abgeben möchten, senden Sie eine E-Mail an die folgende Verteilerliste: sqldwcopypreview@service.microsoft.com.
-
-> [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>Was ist ELT?
 

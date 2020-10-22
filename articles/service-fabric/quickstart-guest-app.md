@@ -3,13 +3,13 @@ title: Schnelles Bereitstellen einer vorhandenen App in einem Cluster
 description: Verwenden Sie einen Azure Service Fabric-Cluster, um mit Visual Studio eine vorhandene Node.js-Anwendung zu hosten.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430725"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614103"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hosten einer Node.js.-Anwendung in Azure Service Fabric
 
@@ -31,7 +31,7 @@ Erstellen Sie mit `CTRL`+`SHIFT`+`N` ein Projekt.
 
 Wählen Sie im Dialogfeld **Neues Projekt** die Option **Cloud > Service Fabric-Anwendung** aus.
 
-Geben Sie der Anwendung den Namen **MyGuestApp**, und klicken Sie auf **OK**.
+Geben Sie der Anwendung den Namen **MyGuestApp**, und klicken Sie auf **Erstellen**.
 
 >[!IMPORTANT]
 >Bei Node.js kann es leicht passieren, dass für Pfade die maximale Zeichenzahl von 260 überschritten wird, die für Windows gilt. Verwenden Sie für das eigentliche Projekt einen kurzen Pfad, z.B. **c:\code\svc1**. Optional können Sie **[diese Anweisungen](https://stackoverflow.com/a/41687101/1664231)** befolgen, um lange Dateipfade unter Windows 10 zuzulassen.

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662259"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535660"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Ähnlichkeit und Bewertung in Azure Cognitive Search
 
@@ -107,6 +107,4 @@ Sie können diese Datenpunkte in [benutzerdefinierten Bewertungslösungen](https
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [Hinzufügen von Bewertungsprofilen zu einem Index für Azure Cognitive Search](index-add-scoring-profiles.md) [Azure Cognitive Search-Dienst REST](/rest/api/searchservice/)   
- [Dokumente durchsuchen (Azure Cognitive Search-REST-API)](/rest/api/searchservice/search-documents)   
- [.NET SDK für die kognitive Azure-Suche](/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [Bewertungsprofile](index-add-scoring-profiles.md) [REST-API-Referenz](/rest/api/searchservice/) [API zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents) [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search)

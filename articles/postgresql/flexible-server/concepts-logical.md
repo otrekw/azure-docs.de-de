@@ -1,24 +1,24 @@
 ---
 title: Logische Replikation und logische Decodierung – Azure Database for PostgreSQL – Flexible Server
 description: Weitere Informationen zur logischen Replikation und Decodierung in Azure Database for PostgreSQL – Flexible Server
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931791"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707862"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Logische Replikation und Decodierung in Azure Database for PostgreSQL – Flexible Server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
 
-Die PostgreSQL-Features zur logischen Replikation und logischen Decodierung werden in Azure Database for PostgreSQL – Flexible Server unterstützt.
+Die PostgreSQL-Features zur logischen Replikation und logischen Decodierung werden in Azure Database for PostgreSQL – Flexible Server für Version 11 von Postgres unterstützt.
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Vergleich der logischen Replikation mit der logischen Decodierung
 Die logische Replikation und die logische Decodierung weisen Ähnlichkeiten auf. Folgendes gilt für beide Konzepte:
@@ -43,7 +43,11 @@ Logische Decodierung
 1. Legen Sie den Serverparameter `wal_level` auf `logical` fest.
 2. Starten Sie den Server neu, um die Änderung an `wal_level` zu übernehmen.
 3. Vergewissern Sie sich, dass Ihre PostgreSQL-Instanz Netzwerkdatenverkehr von Ihrer Verbindungsressource zulässt.
-4. Verwenden Sie den Administratorbenutzer für das Ausführen von Replikationsbefehlen.
+4. Erteilen Sie dem Administratorbenutzer Replikationsberechtigungen.
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>Verwenden der logischen Replikation und der logischen Decodierung
 
@@ -54,7 +58,7 @@ Bei der logischen Replikation wird üblicherweise vom „Verleger“ und vom „
 
 Nachstehend finden Sie einen Beispielcode, mit dem Sie die logische Replikation ausprobieren können.
 
-1. Stellen Sie eine Verbindung mit dem Verleger her. Erstellen Sie eine Tabelle, und fügen Sie Daten hinzu.
+1. Stellen Sie eine Verbindung mit der Verlegerdatenbank her. Erstellen Sie eine Tabelle, und fügen Sie Daten hinzu.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ Nachstehend finden Sie einen Beispielcode, mit dem Sie die logische Replikation 
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. Stellen Sie eine Verbindung mit dem Abonnenten her. Erstellen Sie eine Tabelle mit demselben Schema wie für den Verleger.
+3. Stellen Sie eine Verbindung mit der Abonnentendatenbank her. Erstellen Sie eine Tabelle mit demselben Schema wie für den Verleger.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. Erstellen Sie ein Abonnement, das eine Verbindung mit der zuvor erstellten Veröffentlichung herstellt.
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. Sie können die Tabelle nun auf dem Abonnenten abfragen. Sie werden sehen, dass dieser Daten vom Verleger empfangen hat.
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 [Legen Sie Benachrichtigungen](howto-alert-on-metrics.md) für die Servermetriken **Maximum Used Transaction IDs** (Maximal verwendete Transaktions-IDs) and **Verwendeter Speicher** fest, damit Sie informiert werden, wenn die normalen Schwellenwerte überschritten werden. 
 
-## <a name="read-replicas"></a>Lesereplikate
-Azure Database for PostgreSQL-Lesereplikate werden für flexible Server derzeit nicht unterstützt.
+## <a name="limitations"></a>Einschränkungen
+* **Lesereplikate:** Lesereplikate von Azure Database for PostgreSQL werden für flexible Server derzeit nicht unterstützt.
+* **Slots und Hochverfügbarkeitsfailover:** Logische Replikationsslots auf dem primären Server sind auf dem Standbyserver in der sekundären Verfügbarkeitszone nicht verfügbar. Dies gilt für Sie, wenn der Server die Option für die zonenredundante Hochverfügbarkeit verwendet. Im Fall eines Failovers auf den Standbyserver sind logische Replikationsslots im Standbymodus nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu [Netzwerkoptionen](concepts-networking.md)

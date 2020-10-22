@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Azure Cosmos DB-Daten mit SQL Serverless in Azure Synapse Link (Vorschau)
+title: Abfragen von Azure Cosmos DB-Daten mithilfe von SQL Serverless in Azure Synapse Link (Vorschau)
 description: In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB mit SQL Serverless in Azure Synapse Link abfragen (Vorschau).
 services: synapse analytics
 author: jovanpop-msft
@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c64a42c66a3b1c1810c17347e18979d599b36b6f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930561"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057806"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mit SQL Serverless in Azure Synapse Link (Vorschau)
+# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe von SQL Serverless in Azure Synapse Link (Vorschau)
 
-Mit SQL Serverless (ehemals SQL On-Demand) können Sie Daten in Ihren Azure Cosmos DB-Containern mit [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-Aktivierung in Quasi-Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsworkloads auswirkt. SQL Serverless bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
+Mit Synapse SQL Serverless (ehemals SQL On-Demand) können Sie Daten in Ihren Azure Cosmos DB-Containern mit [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-Aktivierung nahezu in Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsworkloads auswirkt. SQL Serverless bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
 
 > [!NOTE]
-> Die Unterstützung für das Abfragen des Azure Cosmos DB-Analysespeichers mit SQL Serverless befindet sich derzeit in der geschlossenen Vorschau. 
+> Die Unterstützung für das Abfragen des Azure Cosmos DB-Analysespeichers mit Synapse SQL Serverless befindet sich derzeit in der geschlossenen Vorschau. Die Public Preview wird auf der Seite für [Azure-Dienstupdates](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) angekündigt.
 
-Zum Abfragen von Azure Cosmos DB wird die vollständige [SELECT](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand) können Sie die Ergebnisse der Abfrage, bei der Daten aus Azure Cosmos DB gelesen werden, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern von SQL Serverless-Abfrageergebnissen in Azure Cosmos DB mit [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand) ist derzeit nicht möglich.
+Zum Abfragen von Azure Cosmos DB wird die vollständige [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand) können Sie die Ergebnisse der Abfrage, bei der Daten aus Azure Cosmos DB gelesen werden, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern von SQL Serverless-Abfrageergebnissen in Azure Cosmos DB mit [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand) ist derzeit nicht möglich.
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL Serverless erstellen, die Daten aus Azure Cosmos DB-Containern mit Synapse Link-Aktivierung abfragt. Anschließend erfahren Sie in [diesem](./tutorial-data-analyst.md) Tutorial mehr über das Erstellen von SQL Serverless-Ansichten über Azure Cosmos DB-Container und das Verbinden dieser Ansichten mit Power BI-Modellen. 
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL Serverless erstellen, die Daten aus Azure Cosmos DB-Containern mit Synapse Link-Aktivierung abfragt. Anschließend erfahren Sie in [diesem Tutorial](./tutorial-data-analyst.md) mehr über das Erstellen von SQL Serverless-Ansichten über Azure Cosmos DB-Container und das Verbinden dieser Ansichten mit Power BI-Modellen. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -36,10 +36,15 @@ OPENROWSET(
        'CosmosDB',
        '<Azure Cosmos DB connection string>',
        <Container name>
-    )  [ < with clause > ]
+    )  [ < with clause > ] AS alias
 ```
 
-Die Azure Cosmos DB-Verbindungszeichenfolge übergibt den Namen des Azure Cosmos DB-Kontos, den Datenbanknamen, den Hauptschlüssel des Datenbankkontos sowie optional einen Regionsnamen an die `OPENROWSET`-Funktion. Die Verbindungszeichenfolge weist das folgende Format auf:
+Die Azure Cosmos DB-Verbindungszeichenfolge übergibt den Namen des Azure Cosmos DB-Kontos, den Datenbanknamen, den Hauptschlüssel des Datenbankkontos sowie optional einen Regionsnamen an die `OPENROWSET`-Funktion. 
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie einen Alias nach `OPENROWSET` verwenden. Es gibt ein [bekanntes Problem](#known-issues), das Verbindungsprobleme mit dem Synapse SQL Serverless-Endpunkt verursacht, wenn Sie den Alias nach der `OPENROWSET`-Funktion nicht angeben.
+
+Die Verbindungszeichenfolge weist das folgende Format auf:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
@@ -85,7 +90,7 @@ FROM OPENROWSET(
 
 ## <a name="explicitly-specify-schema"></a>Explizites Angeben des Schemas
 
-Der automatische Schemarückschluss in `OPENROWSET` ermöglicht zwar eine einfache und leicht zu verwendende Abfrage, in Ihren Geschäftsszenarios müssen Sie jedoch möglicherweise das Schema explizit angeben, um nur relevante Eigenschaften aus den Azure Cosmos DB-Daten zu lesen.
+Der automatische Schemarückschluss in `OPENROWSET` ermöglicht zwar eine einfache und leicht zu verwendende Abfrage, in Ihren Geschäftsszenarios müssen Sie jedoch möglicherweise das Schema für schreibgeschützte relevante Eigenschaften aus den Azure Cosmos DB-Daten explizit angeben.
 
 In `OPENROWSET` können Sie die Eigenschaften, die Sie aus den Daten im Container lesen möchten, sowie deren Datentypen explizit angeben. Angenommen, Sie haben einige Daten aus dem [ECDC-COVID-Dataset](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) mit der folgenden Struktur in Azure Cosmos DB importiert:
 
@@ -179,7 +184,7 @@ Hier erfahren Sie mehr über das Analysieren von [komplexen Datentypen in Synaps
 
 ## <a name="flattening-nested-arrays"></a>Vereinfachen von geschachtelten Arrays
 
-Azure Cosmos DB-Daten verfügen möglicherweise über geschachtelte untergeordnete Arrays wie das Array „authors“ im [CORD-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)-Dataset:
+Azure Cosmos DB-Daten verfügen möglicherweise über geschachtelte untergeordnete Arrays wie das Array des Autors im [CORD-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)-Dataset:
 
 ```json
 {
@@ -247,11 +252,18 @@ Azure Cosmos DB-Konten für die SQL (Core)-API unterstützen als JSON-Eigenschaf
 | Decimal | float |
 | String | varchar (UTF8-Datenbanksortierung) |
 | Date Time (ISO-formatierte Zeichenfolge) | varchar(30) |
-| Date Time (UNIX-Zeitstempel) | BIGINT |
+| Datum und Uhrzeit (UNIX-Zeitstempel) | BIGINT |
 | Null | `any SQL type` 
 | Geschachteltes Objekt oder Array | varchar(max) (UTF8-Datenbanksortierung), als JSON-Text serialisiert |
 
 Wenn Sie Azure Cosmos DB-Konten über die Mongo DB-API abfragen möchten, finden Sie [hier](../../cosmos-db/analytical-store-introduction.md#analytical-schema) weitere Informationen zur Schemadarstellung mit vollständiger Genauigkeit im Analysespeicher und den dabei zu verwendenden Namen für erweiterte Eigenschaften.
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+- Der Alias **MUSS** nach der `OPENROWSET`-Funktion angegeben werden (z. B. `OPENROWSET (...) AS function_alias`). Das Weglassen des Alias kann zu Verbindungsproblemen führen, und der Synapse SQL Serverless-Endpunkt ist möglicherweise vorübergehend nicht verfügbar. Dieses Problem wird im November 2020 gelöst.
+- Die [Azure Cosmos DB-Schemadarstellung mit vollständiger Genauigkeit](../../cosmos-db/analytical-store-introduction.md#schema-representation) wird derzeit nicht von Synapse SQL Serverless unterstützt. Verwenden Sie Synapse SQL Serverless nur für den Zugriff auf das genau definierte Cosmos DB-Schema.
+
+Auf der [Azure Synapse-Feedbackseite](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862) können Sie Vorschläge übermitteln und Probleme melden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

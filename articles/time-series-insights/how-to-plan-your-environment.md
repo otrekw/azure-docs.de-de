@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289909"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598109"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Planen Ihrer Azure Time Series Insights Gen2-Umgebung
 
@@ -25,7 +25,7 @@ Dieser Artikel beschreibt bewährte Methoden zum Planen und schnellen Starten mi
 
 Bewährte Methoden zur Planung und Vorbereitung Ihrer Umgebung werden in den folgenden Artikeln ausführlicher beschrieben:
 
-* [Die Gen2-Umgebung](#the-gen2-environment)
+* Was Sie erhalten, wenn Sie [eine Azure Time Series Insights Gen2-Umgebung bereitstellen](#the-gen2-environment).
 * Wie die [Time Series-IDs und Zeitstempeleigenschaften lauten](#configure-time-series-ids-and-timestamp-properties).
 * Was das neue [Time Series-Modell ist](#understand-the-time-series-model) und wie Sie ein eigenes erstellen.
 * Wie Sie [Ereignisse effizient an JSON senden](#shape-your-events).
@@ -36,7 +36,6 @@ Für Azure Time Series Insights wird ein Geschäftsmodell mit nutzungsbasierte B
 ## <a name="the-gen2-environment"></a>Die Gen2-Umgebung
 
 Beim Bereitstellen einer Azure Time Series Insights Gen2-Umgebung erstellen Sie zwei Azure-Ressourcen:
-
 
 * Eine Azure Time Series Insights Gen2-Umgebung
 * Ein Azure-Speicherkonto
@@ -69,10 +68,7 @@ Sie können bis zu drei Schlüssel auswählen, um Ihre Ressourcen eindeutig zu u
 
 Die **Timestamp**-Eigenschaft ist ebenfalls wichtig. Sie können diese Eigenschaft festlegen, wenn Sie Ereignisquellen hinzufügen. Jede Ereignisquelle besitzt eine optionale Timestamp-Eigenschaft, die zum Nachverfolgen von Ereignisquellen im Laufe der Zeit verwendet wird. Zeitstempelwerte beachten die Groß- und Kleinschreibung und müssen gemäß der individuellen Spezifikation jeder Ereignisquelle formatiert sein.
 
-> [!TIP]
-> Überprüfen Sie die Formatierungs- und Analyseanforderungen für Ihre Ereignisquellen.
-
-Wenn der Zeitstempel eines Ereignisses leer bleibt, wird der Zeitpunkt der Einreihung des Ereignisses in die Warteschlange einer Ereignisquelle verwendet. Wenn Sie historische Daten oder Ereignisse im Batch senden, ist es hilfreicher, die Timestamp-Eigenschaft anzupassen, statt den Zeitpunkt der Einreihung des Ereignisses in die Warteschlange zu verwenden. Weitere Informationen finden Sie unter der Vorgehensweise zum [Hinzufügen von Ereignisquellen in Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Wenn dieser Wert leer gelassen wird, wird als Ereigniszeitstempel der Zeitpunkt verwendet, zu dem das Ereignis in die IoT Hub- oder Event Hub-Warteschlange eingereiht wurde. Im Allgemeinen sollten sich Benutzer dafür entscheiden, die Zeitstempeleigenschaft anzupassen und den Zeitpunkt zu verwenden, zu dem der Sensor oder das Tag den Lesevorgang generiert hat, anstatt den Zeitpunkt der Einreihung in die Hubwarteschlange zu verwenden. Weitere Informationen zu Zeitzonenoffsets finden Sie unter [Zeitstempel der Ereignisquelle](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp).
 
 ## <a name="understand-the-time-series-model"></a>Grundlagen des Zeitreihenmodells
 
@@ -91,14 +87,14 @@ Eine gute Faustregel ist:
 * Speichern Sie Metadaten in Ihrem Zeitreihenmodell.
 * Stellen Sie sicher, dass Time Series-Modus, Instanzfelder und Ereignisse nur erforderliche Informationen enthalten, z. B. eine Time Series-ID oder eine Timestamp-Eigenschaft.
 
-Weitere Informationen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#supported-json-shapes).
+Lesen Sie die [JSON-Vereinfachungs- und -Escaperegeln](./concepts-json-flattening-escaping-rules.md), um zu verstehen, wie Ereignisse vereinfacht und gespeichert werden.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Planen Sie mithilfe des Artikels [Einführung in Azure Advisor](../advisor/advisor-overview.md) Ihre Konfigurationseinstellungen für die Geschäftswiederherstellung.
-- Planen Sie mithilfe des Artikels [Einführung in Azure Advisor](../advisor/advisor-overview.md) Ihre Konfigurationseinstellungen für die Geschäftswiederherstellung.
-- Informieren Sie sich ausführlicher über die [Datenerfassung](./concepts-ingestion-overview.md) in Azure Time Series Insights Gen2.
-- Lesen Sie den Artikel zur [Datenspeicherung](./concepts-storage.md) in Azure Time Series Insights Gen2.
-- Erfahren Sie mehr über die [Datenmodellierung](./concepts-model-overview.md) in Azure Time Series Insights Gen2.
+* Planen Sie mithilfe des Artikels [Einführung in Azure Advisor](../advisor/advisor-overview.md) Ihre Konfigurationseinstellungen für die Geschäftswiederherstellung.
+* Planen Sie mithilfe des Artikels [Einführung in Azure Advisor](../advisor/advisor-overview.md) Ihre Konfigurationseinstellungen für die Geschäftswiederherstellung.
+* Informieren Sie sich ausführlicher über die [Datenerfassung](./concepts-ingestion-overview.md) in Azure Time Series Insights Gen2.
+* Lesen Sie den Artikel zur [Datenspeicherung](./concepts-storage.md) in Azure Time Series Insights Gen2.
+* Erfahren Sie mehr über die [Datenmodellierung](./concepts-model-overview.md) in Azure Time Series Insights Gen2.

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6214174cbec0b784ec0167c59f952478b2a14625
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425658"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542093"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partner für die Azure Synapse Analytics-Datenverwaltung
 
@@ -25,6 +25,7 @@ In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools u
 ## <a name="data-management-partners"></a>Partner für die Datenverwaltung
 | Partner | BESCHREIBUNG | Website/Produktlink |
 | ------- | ----------- | -------------------- |
+| ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity ist ein Entwicklungstool für die Analyse, mit dem Analysten und Techniker die Kontrolle über die volle Leistungsfähigkeit der Synapse-Plattform von Microsoft haben. Die umfangreiche und intuitive SQL-Entwicklungsumgebung ermöglicht Teammitgliedern das Herstellen einer Verbindung mit über ein Dutzend branchenführender Analyseplattformen, das Erfassen von Daten in verschiedenen Formaten und das schnelle Erstellen komplexer Geschäftsberechnungen, um die Ergebnisse in Anwendungsfällen der Business Intelligence und von Machine Learning zu verarbeiten. Die gesamte Anwendung wird in einem zentralen Katalog erstellt, der die Zusammenarbeit über das Analyseteam ermöglicht, und die anspruchsvollen Verwaltungsfunktionen sowie die präzise Steuerung der Sicherheit machen die Governance einfach. |[Produktseite](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Der Datenkatalog von Alation ermöglicht es Analysten, ihre Produktivität erheblich zu verbessern, die Genauigkeit zu steigern und sichere datengestützte Entscheidungen zu treffen. Mit dem Datenkatalog von Alation kann jede Person in Ihrer Organisation Daten finden, verstehen und bearbeiten. |[Produktseite](https://www.alation.com/product/data-catalog/)<br> |
 | ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing bietet das Tool Nexus Chameleon, das 10 Jahre Entwicklung in Abfragesystemen aufweisen kann. Nexus ist als Abfragetool für einen SQL-Pool von Azure Synapse verfügbar. Mithilfe von Nexus können Sie Abfragen auf internen und Cloudcomputern durchführen und Daten aus verschiedenen Plattformen zusammenführen. Point-Click-Report! |[Produktseite](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |[Produktseite](http://microerd.com/)<br> |

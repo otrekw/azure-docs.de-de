@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447841"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046722"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -59,7 +59,7 @@ Geben Sie beim Erstellen der neuen Geräteidentität die folgenden Informationen
 
 * Wählen Sie als Authentifizierungstyp **Symmetrischer Schlüssel** aus.
 
-* Wählen Sie optional **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden wird. Dieser Schritt ist für die Authentifizierung mit symmetrischen Schlüsseln optional. Er wird aber empfohlen, da die Festlegung eines übergeordneten Geräts [Offlinefunktionen](offline-capabilities.md) für das nachgeschaltete Gerät aktiviert. Sie können das Gerät jederzeit aktualisieren, um das übergeordnete Gerät später hinzuzufügen oder zu ändern.
+* Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden werden soll. Durch diesen Schritt werden [Offlinefunktionen](offline-capabilities.md) für Ihr nachgeschaltetes Gerät aktiviert. Sie können das übergeordnete Gerät später jederzeit ändern.
 
    ![Erstellen der Geräte-ID bei der Authentifizierung mit symmetrischem Schlüssel im Portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -110,7 +110,7 @@ Für die selbstsignierte X.509-Authentifizierung (manchmal auch als „Authentif
 
 4. Kopieren Sie sowohl die primären als auch die sekundären Gerätezertifikate und deren Schlüssel an einen beliebigen Speicherort auf dem nachgeschalteten Gerät. Verschieben Sie außerdem eine Kopie des freigegebenen Stammzertifizierungsstellenzertifikats, mit dem sowohl das Gatewaygerätezertikat als auch die Zertifikate für das nachgeschaltete Gerät generiert wurden.
 
-   Sie werden auf diese Zertifikatdateien in allen Anwendungen auf dem nachgeschalteten Gerät verweisen, die eine Verbindung mit IoT Hub herstellen. Sie können einen Dienst wie [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatsdateien verwenden.
+   Sie werden auf diese Zertifikatdateien in allen Anwendungen auf dem nachgeschalteten Gerät verweisen, die eine Verbindung mit IoT Hub herstellen. Sie können einen Dienst wie [Azure Key Vault](../key-vault/index.yml) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatsdateien verwenden.
 
 5. Sehen Sie sich je nach Ihrer bevorzugten Sprache Beispiele dafür an, wie in IoT-Anwendungen auf X.509-Zertifikate verwiesen werden kann:
 
@@ -156,7 +156,7 @@ Dieser Abschnitt baut auf den Anweisungen im IoT Hub-Artikel [Einrichten der X.5
 
 5. Kopieren Sie das Gerätezertifikat und die Schlüssel an einen beliebigen Speicherort auf dem nachgeschalteten Gerät. Verschieben Sie außerdem eine Kopie des freigegebenen Stammzertifizierungsstellenzertifikats, mit dem sowohl das Gatewaygerätezertikat als auch die Zertifikate für das nachgeschaltete Gerät generiert wurden.
 
-   Sie werden auf diese Dateien in allen Anwendungen auf dem nachgeschalteten Gerät verweisen, die eine Verbindung mit IoT Hub herstellen. Sie können einen Dienst wie [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatsdateien verwenden.
+   Sie werden auf diese Dateien in allen Anwendungen auf dem nachgeschalteten Gerät verweisen, die eine Verbindung mit IoT Hub herstellen. Sie können einen Dienst wie [Azure Key Vault](../key-vault/index.yml) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatsdateien verwenden.
 
 6. Sehen Sie sich je nach Ihrer bevorzugten Sprache Beispiele dafür an, wie in IoT-Anwendungen auf X.509-Zertifikate verwiesen werden kann:
 
@@ -201,7 +201,7 @@ Oder:
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Wenn Sie für dieses nachgeschalteten Gerät eine Beziehung mit über- und untergeordnetem Gerät eingerichtet haben, können Sie die Verbindungszeichenfolge vereinfachen, indem Sie das Gateway direkt als Host für die Verbindung aufrufen. Über-/untergeordnete Beziehungen sind für die X.509-Authentifizierung erforderlich, für die Authentifizierung mit symmetrischen Schlüsseln aber optional. Beispiel:
+Dank der Beziehung zwischen über- und untergeordneten Geräten können Sie die Verbindungszeichenfolge vereinfachen, indem Sie das Gateway direkt als Verbindungshost aufrufen. Beispiel:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

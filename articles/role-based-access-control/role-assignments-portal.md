@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362233"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91597629"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal
 
@@ -35,19 +35,15 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
 ![Die Seite „Zugriffssteuerung (IAM)“ für ein Abonnement](./media/role-assignments-portal/access-control-subscription.png)
 
-Für eine möglichst effektive Nutzung der Seite „Zugriffssteuerung (IAM)“ sollten Sie beim Zuweisen einer Rolle die folgenden drei Fragen beantworten:
+Um die Seite „Zugriffssteuerung (IAM)“ möglichst effizient zu nutzen, befolgen Sie beim Zuweisen einer Rolle die folgenden Schritte.
 
-1. **Wer benötigt Zugriff?**
+1. Ermitteln Sie, wer Zugriff benötigt. Sie können eine Rolle einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zuweisen.
 
-    „Wer“ bezieht sich auf einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Dies wird auch als *Sicherheitsprinzipal* bezeichnet.
+1. Suchen Sie die gewünschte Rolle. Berechtigungen sind in Rollen zusammengefasst. Sie können aus einer Liste von verschiedenen [in Azure integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden.
 
-1. **Welche Rolle benötigen die Personen?**
+1. Ermitteln Sie den erforderlichen Bereich. Azure bietet vier Bereichsebenen: [Verwaltungsgruppe](../governance/management-groups/overview.md), Abonnement, [Ressourcengruppe](../azure-resource-manager/management/overview.md#resource-groups) und Ressource. Weitere Informationen zum Begriff „Bereich“ finden Sie unter [Grundlegendes zum Begriff „Bereich“](scope-overview.md).
 
-    Berechtigungen sind in Rollen zusammengefasst. Sie können aus einer Liste von verschiedenen [integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden.
-
-1. **Wo wird der Zugriff benötigt?**
-
-    „Wo“ bezieht sich auf einen Ressourcensatz, für den der Zugriff gilt. „Wo“ kann eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource, z.B. ein Speicherkonto, sein. Dies wird als der *Bereich* bezeichnet.
+1. Führen Sie die Schritte in einem der folgenden Abschnitte aus, um eine Rolle zuzuweisen.
 
 ## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
@@ -101,11 +97,11 @@ Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Si
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-   ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+   ![Menü „Rollenzuweisung hinzufügen“ für ein Abonnement](./media/shared/add-role-assignment-menu.png)
 
     Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
 
-   ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-portal/add-role-assignment.png)
+   ![Bereich „Rollenzuweisung hinzufügen“ für ein Abonnement](./media/role-assignments-portal/add-role-assignment.png)
 
 1. Wählen Sie in der Dropdownliste **Rolle** die Option **Besitzer** aus.
 
@@ -150,7 +146,7 @@ Führen Sie die folgenden Schritte aus, um einer systemseitig zugewiesenen verwa
 
 1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
-   ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![Bereich „Rollenzuweisung hinzufügen“ für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
 
@@ -166,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um einer benutzerseitig zugewiesenen ver
 
     Wurden der ausgewählten benutzerseitig zugewiesenen verwalteten Identität bereits Rollen zugewiesen, wird die Liste der Rollenzuweisungen angezeigt. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
 
-    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/shared/role-assignments-user-assigned.png)
+    ![Rollenzuweisungen für eine benutzerseitig zugewiesene verwaltete Identität](./media/shared/role-assignments-user-assigned.png)
 
 1. Klicken Sie auf die Liste **Abonnement**, um das Abonnement zu ändern.
 
@@ -178,7 +174,7 @@ Führen Sie die folgenden Schritte aus, um einer benutzerseitig zugewiesenen ver
 
 1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
-   ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![Bereich „Rollenzuweisung hinzufügen“ für eine benutzerseitig zugewiesene verwaltete Identität](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
 
@@ -194,7 +190,7 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
 1. Aktivieren Sie in der Liste der Rollenzuweisungen den Sicherheitsprinzipal mit der zu entfernenden Rollenzuweisung.
 
-   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment-select.png)
+   ![Zum Entfernen ausgewählte Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment-select.png)
 
 1. Klicken Sie auf **Entfernen**.
 
@@ -204,7 +200,7 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
     Wenn eine Meldung angezeigt wird, dass geerbte Rollenzuweisungen nicht entfernt werden können, versuchen Sie, eine Rollenzuweisung in einem untergeordneten Bereich zu entfernen. Öffnen Sie die Zugriffssteuerung (IAM) in dem Bereich, in dem die Rolle zugewiesen wurde, und versuchen Sie es noch mal. Eine Möglichkeit zum schnellen Öffnen der Zugriffssteuerung (IAM) im richtigen Bereich besteht darin, in der Spalte **Bereich** auf den Link neben **(Geerbt)** zu klicken.
 
-   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment-inherited.png)
+   ![Nachricht zum Entfernen der Rollenzuweisung für geerbte Rollenzuweisungen](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

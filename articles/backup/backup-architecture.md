@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986485"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91614001"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 

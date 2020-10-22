@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331158"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850420"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung
 
@@ -55,7 +55,7 @@ Bevor Sie Foodee für die automatische Benutzerbereitstellung mithilfe von Azure
 
 1. Melden Sie sich bei [Foodee](https://www.food.ee/login/) an, und wählen Sie dann Ihre Mandanten-ID aus.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Screenshot des Hauptmenüs des Foodee-Unternehmensportals. Im Menü wird ein Platzhalter für eine Mandanten-ID angezeigt." border="false":::
 
 1. Wählen Sie unter **Enterprise Portal** (Unternehmensportal) die Option **Single Sign On** (Einmaliges Anmelden) aus.
 
@@ -63,7 +63,7 @@ Bevor Sie Foodee für die automatische Benutzerbereitstellung mithilfe von Azure
 
 1. Kopieren Sie den Wert im Feld **API-Token** zur späteren Verwendung. Sie werden ihn im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer Foodee-Anwendung im Feld **Geheimes Token** eingeben.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Screenshot des Hauptmenüs des Foodee-Unternehmensportals. Im Menü wird ein Platzhalter für eine Mandanten-ID angezeigt." border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>Hinzufügen von Foodee aus dem Katalog
 
@@ -130,20 +130,20 @@ Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure A
 
 1. Wählen Sie unter **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Foodee synchronisieren** aus.
 
-    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Screenshot des Hauptmenüs des Foodee-Unternehmensportals. Im Menü wird ein Platzhalter für eine Mandanten-ID angezeigt." border="false":::
 
 1. Überprüfen Sie unter **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Foodee synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Aktualisierungsvorgängen für den Abgleich der *Benutzerkonten* in Foodee verwendet. 
 
-    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Screenshot des Hauptmenüs des Foodee-Unternehmensportals. Im Menü wird ein Platzhalter für eine Mandanten-ID angezeigt." border="false":::
 
 1. Wenn Sie Ihre Änderungen committen möchten, wählen Sie **Speichern** aus.
 1. Wählen Sie unter **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Foodee synchronisieren** aus.
 
-    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/groupmapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Screenshot des Hauptmenüs des Foodee-Unternehmensportals. Im Menü wird ein Platzhalter für eine Mandanten-ID angezeigt." border="false":::
 
 1. Überprüfen Sie unter **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Foodee synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Aktualisierungsvorgängen für den Abgleich der *Gruppenkonten* in Foodee verwendet.
 
-    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/groupattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Screenshot des Hauptmenüs des Foodee-Unternehmensportals. Im Menü wird ein Platzhalter für eine Mandanten-ID angezeigt." border="false":::
 
 1. Wenn Sie Ihre Änderungen committen möchten, wählen Sie **Speichern** aus.
 1. Konfigurieren Sie die Bereichsfilter. Informationen zur Vorgehensweise finden Sie in den Anleitungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

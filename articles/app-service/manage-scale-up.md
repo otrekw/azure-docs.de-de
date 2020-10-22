@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743912"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Hochskalieren einer App in Azure App Service
 
@@ -36,7 +36,7 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen App Servic
 ## <a name="scale-up-your-pricing-tier"></a>Hochskalieren Ihres Tarifs
 
 > [!NOTE]
-> Informationen zum Hochskalieren auf den Tarif **PremiumV2** finden Sie unter [Konfigurieren der PremiumV2-Ebene für App Service](app-service-configure-premium-tier.md).
+> Informationen zum Hochskalieren auf den Tarif **PremiumV3** finden Sie unter [Konfigurieren des PremiumV3-Tarifs für App Service](app-service-configure-premium-tier.md).
 >
 
 1. Öffnen Sie das [Azure-Portal][portal] in Ihrem Browser.
@@ -78,7 +78,7 @@ Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie u
 ## <a name="more-resources"></a>Weitere Ressourcen
 
 [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md)  
-[Konfigurieren des PremiumV2-Tarifs für App Service](app-service-configure-premium-tier.md)
+[Konfigurieren des PremiumV3-Tarifs für App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

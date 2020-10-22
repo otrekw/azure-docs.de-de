@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183716"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743572"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Ändern eines Blobpfads von der Standardeinstellung
 
@@ -69,7 +69,7 @@ Führen Sie folgenden Schritte aus, um eine Azure-Funktion zu erstellen:
      
 10. Führen Sie im Fenster der Funktion die _CSX_-Datei aus.
 
-    ![Erstellen Sie eine neue C#-Funktion.](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Erstellen einer neuen C#-Funktion 2](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Führen Sie die folgenden Schritte aus:
 
@@ -191,7 +191,7 @@ Führen Sie folgenden Schritte aus, um eine Azure-Funktion zu erstellen:
 
     2. Klicken Sie auf **+ Hinzufügen**.
         
-        ![Link „Dateien anzeigen“](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![Hinzufügen einer neuen Funktion/einer Datei](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
     3. Geben Sie **project.json** ein, und drücken Sie dann die **EINGABETASTE**. Fügen Sie folgenden Code in die Datei **project.json** ein:
 
@@ -211,7 +211,7 @@ Führen Sie folgenden Schritte aus, um eine Azure-Funktion zu erstellen:
     
     4. Klicken Sie auf **Speichern**.
 
-        ![Link „Dateien anzeigen“](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![Neues Funktionsprojekt (JSON)](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 Sie haben eine Azure-Funktion erstellt. Diese Funktion wird jedes Mal ausgelöst, wenn vom Datentransformationsauftrag ein neues Blob generiert wird.
 

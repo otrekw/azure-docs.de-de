@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 27c1a896d25a0db00ff5f263d949f6657a658e3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851701"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91567200"
 ---
-# <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
+# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Was sind Konsistenzebenen in Azure Cosmos DB?
 
 Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: *starke* Konsistenz und *letztliche* Konsistenz. Die Linearisierbarkeit oder das Modell für starke Konsistenz ist der Goldstandard bei der Datenprogrammierbarkeit. Es wird jedoch teuer durch hohe Schreiblatenz (im stabilen Zustand) bzw. durch geringere Verfügbarkeit (im Fall eines Ausfalls) erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert jedoch die Programmierung von Anwendungen erheblich.
 
@@ -43,7 +43,7 @@ Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
   In der folgenden Grafik wird die starke Konsistenz anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Westen 2“ geschrieben wurden, erhalten Sie beim Lesen der Daten aus anderen Regionen den neuesten Wert:
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Video":::
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Konsistenz als Spektrum":::
 
 - **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück, je nachdem, was zuerst erreicht wird. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden:
 
@@ -54,27 +54,27 @@ Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außerhalb des
 
 Im Veraltungsfenster bietet die begrenzte Veraltung die folgenden Konsistenzgarantien:
 
-- Konsistenz für Clients in derselben Region für ein Einzelmasterkonto = Sicher
-- Konsistenz für Clients in unterschiedlichen Regionen für ein Einzelmasterkonto = Präfixkonsistenz
-- Konsistenz für Clients, die in einer einzelnen Region für ein Multimasterkonto schreiben = Präfixkonsistenz
-- Konsistenz für Clients, die in verschiedene Regionen für ein Multimasterkonto schreiben = Letztlich
+- Konsistenz für Clients in derselben Region für ein Konto mit einer einzelnen Schreibregion = Stark
+- Konsistenz für Clients in unterschiedlichen Regionen für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
+- Konsistenz für Clients, die in nur einer Region schreiben, für ein Konto mit mehreren Schreibregionen = Präfixkonsistenz
+- Konsistenz für Clients, die in unterschiedlichen Region schreiben, für ein Konto mit mehreren Schreibregionen = Letztlich
 
   Die begrenzte Veraltung wird häufig von global verteilten Anwendungen genutzt, die niedrige Schreibwartezeiten erwarten, aber eine garantierte vollständige globale Reihenfolge benötigen. Begrenzte Veraltung eignet sich hervorragend für Anwendungen mit Gruppenzusammenarbeit und -freigabe, Börsenticker, Veröffentlichen-Abonnieren-Muster/Queueing und Ähnlichem. In der folgenden Grafik wird die begrenzte Veraltung anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Westen 2“ geschrieben wurden, wird der geschriebene Wert in den Regionen „USA, Osten 2“ und „Australien, Osten“ basierend auf der konfigurierten maximalen Verzögerung oder den maximalen Vorgängen gelesen:
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Video":::
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Konsistenz als Spektrum":::
 
 - **Sitzung (Session)** :  Innerhalb einer einzelnen Clientsitzung berücksichtigen Lesevorgänge immer die folgenden Garantien: Präfixkonsistenz, monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Dabei wird davon ausgegangen, dass eine einzelne Schreibsitzung oder das Sitzungstoken für mehrere Writer gemeinsam genutzt wird.
 
 Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten folgende Garantien:
 
-- Konsistenz für Clients in derselben Region für ein Einzelmasterkonto = Präfixkonsistenz
-- Konsistenz für Clients in unterschiedlichen Regionen für ein Einzelmasterkonto = Präfixkonsistenz
-- Konsistenz für Clients, die in einer einzelnen Region für ein Multimasterkonto schreiben = Präfixkonsistenz
-- Konsistenz für Clients, die in mehrere Regionen für ein Multimasterkonto schreiben = Letztlich
+- Konsistenz für Clients in derselben Region für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
+- Konsistenz für Clients in unterschiedlichen Regionen für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
+- Konsistenz für Clients, die in nur einer Region schreiben, für ein Konto mit mehreren Schreibregionen = Präfixkonsistenz
+- Konsistenz für Clients, die in mehreren Region schreiben, für ein Konto mit mehreren Schreibregionen = Letztlich
 
   Die Sitzungskonsistenz ist die gängigste Konsistenzebene für Anwendungen in einer einzelnen Region sowie für weltweit verteilte Anwendungen. Sie bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie die Konsistenzgarantien für Anwendungen bereit, die für den Betrieb im Benutzerkontext geschrieben wurden. In der folgenden Grafik wird die Sitzungskonsistenz anhand von Noten veranschaulicht. Für „USA, Westen 2“ (Schreiben) und „USA, Westen 2“ (Lesen) wird dieselbe Sitzung (Sitzung A) verwendet, sodass beide dieselben Daten zur gleichen Zeit lesen. Die Region „Australien, Osten“ dagegen verwendet „Sitzung B“ und empfängt Daten somit später, aber weiterhin in der Reihenfolge der Schreibvorgänge.
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Video":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Konsistenz als Spektrum":::
 
 - **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
 
@@ -82,19 +82,19 @@ Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client e
 
 Im Folgenden finden Sie die Konsistenzgarantien für Präfixkonsistenz:
 
-- Konsistenz für Clients in derselben Region für ein Einzelmasterkonto = Präfixkonsistenz
-- Konsistenz für Clients in unterschiedlichen Regionen für ein Einzelmasterkonto = Präfixkonsistenz
-- Konsistenz für Clients, die in einer einzelnen Region für ein Multimasterkonto schreiben = Präfixkonsistenz
-- Konsistenz für Clients, die in mehrere Regionen für ein Multimasterkonto schreiben = Letztlich
+- Konsistenz für Clients in derselben Region für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
+- Konsistenz für Clients in unterschiedlichen Regionen für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
+- Konsistenz für Clients, die in nur einer Region schreiben, für ein Konto mit mehreren Schreibregionen = Präfixkonsistenz
+- Konsistenz für Clients, die in mehreren Region schreiben, für ein Konto mit mehreren Schreibregionen = Letztlich
 
 In der folgenden Grafik wird die Präfixkonsistenz anhand von Noten veranschaulicht. In allen Regionen werden bei Lesevorgängen niemals Schreibvorgänge in der falschen Reihenfolge angezeigt:
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Video":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konsistenz als Spektrum":::
 
 - **Letztlich (Eventual)** : Es gibt keine Reihenfolgengarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.  
 Die letztliche Konsistenz stellt die schwächste Form der Konsistenz dar, da ein Client unter Umständen Werte liest, die älter als die zuvor gelesenen Werte sind. Letztliche Konsistenz ist ideal, wenn die Anwendung keinerlei Reihenfolgengarantien erfordert. Ein Beispiel wäre etwa das Zählen von Retweets, „Gefällt mir“-Markierungen oder Kommentaren ohne Thread. In der folgenden Grafik wird die letztliche Konsistenz anhand von Noten veranschaulicht:
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Video":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konsistenz als Spektrum":::
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre
 

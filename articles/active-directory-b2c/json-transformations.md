@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204366"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998435"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
@@ -33,6 +33,8 @@ Verwenden Sie entweder Anspruchswerte oder Konstanten, um eine JSON-Zeichenfolge
 | InputClaim | Beliebige Zeichenfolge in Punktnotation | Zeichenfolge | Der JsonPath der JSON-Zeichenfolge, in den der Anspruchswert eingefügt wird. |
 | InputParameter | Beliebige Zeichenfolge in Punktnotation | Zeichenfolge | Der JsonPath der JSON-Zeichenfolge, in den der Zeichenfolgenwert der Konstante eingefügt wird. |
 | OutputClaim | outputClaim | Zeichenfolge | Die generierte JSON-Zeichenfolge. |
+
+### <a name="example-1"></a>Beispiel 1
 
 Im folgenden Beispiel werden eine JSON-Zeichenfolge basierend auf dem Anspruchswert „email“ und „otp“ sowie Konstantenzeichenfolgen generiert.
 
@@ -52,8 +54,6 @@ Im folgenden Beispiel werden eine JSON-Zeichenfolge basierend auf dem Anspruchsw
   </OutputClaims>
 </ClaimsTransformation>
 ```
-
-### <a name="example"></a>Beispiel
 
 Die folgende Anspruchstransformation gibt einen JSON-Zeichenfolgenanspruch aus, der als Text der an SendGrid (E-Mail-Drittanbieter) gesendeten Anforderung verwendet wird. Die Struktur des JSON-Objekts wird durch die IDs in der Punktnotation der InputParameters und der TransformationClaimTypes der InputClaims definiert. Zahlen in Punktnotation implizieren Arrays. Die Werte stammen aus den Werten der InputClaims und den Value-Eigenschaften der InputParameters.
 
@@ -87,6 +87,56 @@ Die folgende Anspruchstransformation gibt einen JSON-Zeichenfolgenanspruch aus, 
   "from": {
     "email": "service@contoso.com"
   }
+}
+```
+
+### <a name="example-2"></a>Beispiel 2
+
+Im folgenden Beispiel werden eine JSON-Zeichenfolge basierend auf den Anspruchswerten sowie Konstantenzeichenfolgen generiert.
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+Die folgende Anspruchstransformation gibt einen JSON-Zeichenfolgenanspruch aus, der als Text der an eine REST-API gesendeten Anforderung verwendet wird. Die Struktur des JSON-Objekts wird durch die IDs in der Punktnotation der InputParameters und der TransformationClaimTypes der InputClaims definiert. Die Werte stammen aus den Werten der InputClaims und den Value-Eigenschaften der InputParameters.
+
+- Eingabeansprüche:
+  - **email**, Transformationsanspruchstyp **customerEntity.email**: „john.s@contoso.com“
+  - **objectId**, Transformationsanspruchstyp **customerEntity.userObjectId**: „01234567-89ab-cdef-0123-456789abcdef“
+  - **objectId**, Transformationsanspruchstyp **customerEntity.firstName**: „John“
+  - **objectId**, Transformationsanspruchstyp **customerEntity.lastName**: „Smith“
+- Eingabeparameter:
+  - **customerEntity.role.name**: "Administrator"
+  - **customerEntity.role.id** 1
+- Ausgabeanspruch:
+  - **requestBody**: JSON-Wert
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
 }
 ```
 

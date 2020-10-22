@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889344"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076248"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden
 
@@ -113,7 +113,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. Ve
 1. Klicken Sie auf **Erstellen**.
 
 > [!NOTE]
-> Sie können [weiteren Benutzern Zugriff gewähren](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) auf den Time Series Insights-Explorer.
+> Sie können [weiteren Benutzern Zugriff gewähren](../time-series-insights/concepts-access-policies.md#grant-data-access) auf den Time Series Insights-Explorer.
 
 ## <a name="start-a-simulation"></a>Starten einer Simulation
 
@@ -137,7 +137,7 @@ Der Time Series Insights-Explorer ist eine Web-App, mit der Sie Ihre Telemetried
 
 1. Wählen Sie im Bedingungspanel auf der linken Seite **Temperatur** als **Measure** und **iothub-connection-device-id** als **Teilen nach**-Wert aus:
 
-    ![Abfrage im Time Series Insights-Explorer](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![Der Screenshot zeigt das Time Series Insights-Panel „Bedingung“, in dem die Werte „Measure“ und „Teilen nach“ hervorgehoben sind.](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
 1. Klicken Sie mit der rechten Maustaste auf das Diagramm, und wählen Sie **Ereignisse untersuchen** aus:
 

@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399632"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449237"
 ---
 # <a name="health-probes"></a>Integritätstests
 
-Um die Integrität und Entfernung der einzelnen Back-Ends von einer bestimmten Front Door-Umgebung zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen. 
+Um die Integrität und Entfernung der einzelnen Back-Ends für eine bestimmte Front Door-Umgebung zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesem Test die „besten“ Back-End-Ressourcen für die Weiterleitung Ihrer Clientanforderungen. 
 
 > [!WARNING]
-> Da Front Door weltweit viele Edge-Umgebungen hat, kann das Volumen der Integritätstestanforderungen an Ihre Back-Ends recht hoch sein. Es variiert zwischen 25 Anforderungen pro Minute und bis zu 1.200 Anforderungen pro Minute abhängig von der konfigurierten Häufigkeit von Integritätstests. Bei der standardmäßigen Testfrequenz von 30 Sekunden sollte das Testvolumen in Ihrem Back-End etwa 200 Anforderungen pro Minute betragen.
+> Da Front Door weltweit viele Edge-Umgebungen hat, kann das Volumen der Integritätstests für Ihre Back-Ends recht hoch sein. Es variiert zwischen 25 Anforderungen pro Minute und bis zu 1200 Anforderungen pro Minute abhängig von der konfigurierten Häufigkeit von Integritätstests. Bei der standardmäßigen Testfrequenz von 30 Sekunden sollte das Testvolumen in Ihrem Back-End etwa 200 Anforderungen pro Minute betragen.
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle
 
@@ -59,7 +59,7 @@ Azure Front Door verwendet in allen Algorithmen denselben aus drei Schritten bes
 
     * _x_ wird durch Ändern der SuccessfulSamplesRequired-Eigenschaft in den Einstellungen für den Lastenausgleich konfiguriert.
 
-3. Aus der Menge der fehlerfreien Back-Ends im Back-End-Pool misst und verwaltet Front Door zusätzlich die Latenz (Roundtripzeit) für jedes Back-End.
+3. Front Door misst und verwaltet zusätzlich die Latenz (Roundtripzeit) für jedes Back-End für die Menge der fehlerfreien Back-Ends im Back-End-Pool.
 
 
 ## <a name="complete-health-probe-failure"></a>Vollständiger Integritätstestfehler

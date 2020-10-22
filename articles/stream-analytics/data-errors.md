@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053149"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071998"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Datenfehler in Azure Stream Analytics
 
@@ -211,6 +211,10 @@ Weitere Informationen zum Schema für Ressourcenprotokolle finden Sie unter [Pro
 ```
 
 ## <a name="output-data-errors"></a>Fehler bei der Ausgabe von Daten
+
+Azure Stream Analytics kann abhängig von der Konfiguration Ausgabedatenfehler mit oder ohne E/A-Anforderung an die Ausgabesenke identifizieren. So kann z. B. bei Verwendung der Azure-Tabellenausgabe eine fehlende erforderliche Spalte wie `PartitionKey` ohne eine E/A-Anforderung identifiziert werden. Bei Einschränkungsverletzungen in der SQL-Ausgabe ist jedoch eine E/A-Anforderung nötig.
+
+Es gibt mehrere Datenfehler, die nur nach Aufrufen der Ausgabesenke erkannt werden können, wodurch die Verarbeitung verlangsamt werden kann. Ändern Sie daher die Konfiguration des Auftrags oder die Abfrage, die den Datenfehler hervorruft.
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 

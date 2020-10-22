@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513456"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949903"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Verwalten von Zugriffssteuerungsdatensätzen mithilfe des StorSimple Manager-Diensts
 
@@ -63,11 +63,11 @@ Führen Sie die folgenden Schritte aus, um einen ACR hinzuzufügen:
 
     3. Klicken Sie auf **Hinzufügen**, um den ACR hinzuzufügen.
 
-        ![Klicken Sie auf „ACR hinzufügen“](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![Klicken auf „ACR 2 hinzufügen“](./media/storsimple-8000-manage-acrs/createacr2.png)
 
 4.  Der neu hinzugefügte ACR wird in der Tabelle mit den ACRs angezeigt.
 
-    ![Klicken Sie auf „ACR hinzufügen“](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![Klicken auf „ACR 3 hinzufügen“](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>Bearbeiten von Zugriffssteuerungsdatensätzen
@@ -89,11 +89,11 @@ Führen Sie die folgenden Schritte aus, um einen ACR zu bearbeiten:
 
 3. Geben Sie auf dem Blatt **Access Control-Datensatz bearbeiten** einen anderen IQN an, der einem anderen Host entspricht.
 
-    ![Bearbeiten von Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Bearbeiten von Access Control-Datensätzen 2](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. Klicken Sie auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. 
 
-    ![Bearbeiten von Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Bearbeiten von Access Control-Datensätzen 3](./media/storsimple-8000-manage-acrs/editacr3.png)
 
 5. Sie werden benachrichtigt, sobald der ACR aktualisiert ist. Die Tabelle wird ebenfalls den Änderungen entsprechend aktualisiert.
 
@@ -109,23 +109,23 @@ Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu 
 #### <a name="to-delete-an-access-control-record"></a>So löschen Sie einen Zugriffssteuerungsdatensatz
 1.  Öffnen Sie Ihren StorSimple-Geräte-Manager-Dienst, und doppelklicken Sie auf den Dienstnamen. Klicken Sie anschließend im Abschnitt **Konfiguration** auf **Access Control-Datensätze**.
 
-    ![Wechseln zu den Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Wechseln zu den Access Control-Datensätzen 1b](./media/storsimple-8000-manage-acrs/createacr1.png)
 
 2. Wählen Sie in der Tabelle mit den Access Control-Datensätzen den zu löschenden ACR aus.
 
-    ![Wechseln zu den Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Wechseln zu den Access Control-Datensätzen 2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
 3. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Löschen** aus.
 
-    ![Wechseln zu den Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Wechseln zu den Access Control-Datensätzen 3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
 4. Wenn Sie zur Bestätigung aufgefordert werden, überprüfen Sie die Informationen, und klicken Sie dann auf **Löschen**.
 
-    ![Wechseln zu den Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Wechseln zu den Access Control-Datensätzen 4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
 5. Sie werden benachrichtigt, sobald der Löschvorgang abgeschlossen ist. Die tabellarische Auflistung wird nach dem Löschen entsprechend aktualisiert.
 
-    ![Wechseln zu den Access Control-Datensätzen](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Wechseln zu den Access Control-Datensätzen 5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Verwalten von StorSimple-Volumes](storsimple-8000-manage-volumes-u2.md).

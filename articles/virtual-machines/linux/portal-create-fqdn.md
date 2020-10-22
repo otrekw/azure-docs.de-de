@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines FQDN für VMs im Azure-Portal
-description: Enthält Informationen zum Erstellen eines vollqualifizierten Domänennamens (FQDN) für einen Resource Manager-basierten virtuellen Computer im Azure-Portal.
+description: Erfahren Sie, wie Sie einen vollqualifizierten Domänennamen (FQDN) für einen virtuellen Linux-Computer im Azure-Portal erstellen.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: networking
@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ac44c8d157102a39df9c580938589862dafd0a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: deae22ad0c763e48df053d19beefba6054ed2767
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371888"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331470"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Linux-VM
 

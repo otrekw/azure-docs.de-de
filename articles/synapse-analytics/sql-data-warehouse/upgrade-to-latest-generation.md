@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210693"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91627073"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Optimieren der Leistung durch ein Upgrade des Azure Synapse Analytics-SQL-Pools
 
@@ -114,7 +114,7 @@ In [unterstützten Regionen](gen2-migration-schedule.md#automated-schedule-and-r
 
    > [!NOTE]
    > Wenn die Karte **Upgrade auf Gen2** unter der Registerkarte „Aufgaben“ nicht angezeigt wird, ist Ihr Abonnementtyp in der aktuellen Region beschränkt.
-   > [Übermitteln Sie ein Support-Ticket](sql-data-warehouse-get-started-create-support-ticket.md), um Ihr Abonnement in die Whitelist aufnehmen zu lassen.
+   > [Senden Sie ein Supportticket](sql-data-warehouse-get-started-create-support-ticket.md), um Ihr Abonnement genehmigen zu lassen.
 
 3. Stellen Sie sicher, dass die Ausführung Ihrer Workload abgeschlossen ist und die Workload stillgelegt wurde, bevor Sie das Upgrade durchführen. Bevor Ihr SQL-Pool der Stufe „Optimiert für Compute Gen2“ wieder online geschaltet wird, kommt es zu einer Downtime von einigen Minuten. Wählen Sie das **Upgrade** aus:
 

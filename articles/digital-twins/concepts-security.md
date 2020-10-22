@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331878"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015003"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -80,6 +80,14 @@ Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 
 Azure Digital Twins bietet Verschlüsselung von ruhenden Daten und bei der Übertragung, während sie in unseren Rechenzentren geschrieben werden, und entschlüsselt die Daten, wenn Sie auf sie zugreifen. Diese Verschlüsselung erfolgt mithilfe eines von Microsoft verwalteten Verschlüsselungsschlüssels.
+
+## <a name="cross-origin-resource-sharing-cors"></a>Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)
+
+**CORS (Cross-Origin Resource Sharing)** wird in Azure Digital Twins derzeit nicht unterstützt. Wenn Sie eine REST-API über eine Browser-App, eine [API Management (APIM)](../api-management/api-management-key-concepts.md)-Schnittstelle oder einen [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview)-Connector aufrufen, wird daher möglicherweise ein Richtlinienfehler angezeigt.
+
+Zum Beheben dieses Fehlers können Sie eine der folgenden Maßnahmen ergreifen:
+* Entfernen Sie den CORS-Header `Access-Control-Allow-Origin` aus der Nachricht. Dieser Header gibt an, ob die Antwort freigegeben werden kann. 
+* Alternativ können Sie einen CORS-Proxy erstellen und über diesen die REST-API-Anforderung von Azure Digital Twins stellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

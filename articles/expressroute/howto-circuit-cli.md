@@ -1,44 +1,37 @@
 ---
-title: 'Erstellen und Ändern einer ExpressRoute-Verbindung: Azure-Befehlszeilenschnittstelle'
-description: Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung mithilfe der CLI.
+title: 'Schnellstart: Erstellen und Ändern einer ExpressRoute-Verbindung: Azure CLI'
+description: In dieser Schnellstartanleitung wird das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Leitung mithilfe der Azure CLI beschrieben.
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 11/13/2019
+ms.topic: quickstart
+ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566142"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969074"
 ---
-# <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit der CLI
+# <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Schnellstart: Erstellen und Ändern einer ExpressRoute-Leitung mithilfe der Azure CLI
 
+Diese Schnellstartanleitung beschreibt, wie eine Azure ExpressRoute-Leitung mit der Befehlszeilenschnittstelle (Command-Line Interface, CLI) erstellt wird. Außerdem wird veranschaulicht, wie Sie den Status überprüfen, Updates durchführen oder eine Verbindung löschen bzw. deren Bereitstellung aufheben.
 
-Dieser Artikel beschreibt, wie eine Azure ExpressRoute-Verbindung mit der Befehlszeilenschnittstelle (CLI) erstellt wird. Außerdem wird veranschaulicht, wie Sie den Status überprüfen, Updates durchführen oder eine Verbindung löschen bzw. deren Bereitstellung aufheben. Wenn Sie eine andere Methode für die Arbeit mit ExpressRoute-Verbindungen verwenden möchten, können Sie einen Artikel aus der folgenden Liste auswählen:
+## <a name="prerequisites"></a>Voraussetzungen
 
-> [!div class="op_single_selector"]
-> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-circuit-arm.md)
-> * [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
-> * [Azure Resource Manager-Vorlage](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
->
-
-## <a name="before-you-begin"></a>Voraussetzungen
-
-* Installieren Sie als Vorbereitung die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Installieren Sie die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
 
-Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an. Wenn Sie das Cloud Shell-Testmodul verwenden, werden Sie automatisch angemeldet. Verwenden Sie die folgenden Beispiele, um eine Verbindung herzustellen:
+Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an. Wenn Sie die Cloud Shell-Option zum Ausprobieren verwenden, werden Sie automatisch angemeldet. Verwenden Sie die folgenden Beispiele, um eine Verbindung herzustellen:
 
 ```azurecli-interactive
 az login
@@ -56,7 +49,7 @@ Wählen Sie das Abonnement aus, für das eine ExpressRoute-Verbindung erstellt w
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Rufen Sie die Liste der unterstützten Anbieter, Standorte und Bandbreiten ab.
+### <a name="get-the-list-of-supported-providers-locations-and-bandwidths"></a>Rufen Sie die Liste der unterstützten Anbieter, Standorte und Bandbreiten ab.
 
 Vor dem Erstellen einer ExpressRoute-Verbindung benötigen Sie die Liste der unterstützten Konnektivitätsanbieter, Standorte und Bandbreitenoptionen. Der CLI-Befehl `az network express-route list-service-providers` gibt diese Informationen zurück, die Sie in späteren Schritten verwenden werden:
 
@@ -117,7 +110,7 @@ Die Antwort ähnelt dem folgenden Beispiel:
   },
 ```
 
-Überprüfen Sie die Antwort dahingehend, ob Ihr Konnektivitätsanbieter aufgeführt ist. Notieren Sie sich die folgenden Informationen, da Sie diese beim Erstellen einer Verbindung benötigen:
+Überprüfen Sie die Antwort dahingehend, ob Ihr Konnektivitätsanbieter aufgeführt ist. Notieren Sie sich die folgenden Informationen, da Sie diese beim Erstellen einer Leitung benötigen:
 
 * Name
 * PeeringLocations
@@ -125,7 +118,7 @@ Die Antwort ähnelt dem folgenden Beispiel:
 
 Sie können nun eine ExpressRoute-Verbindung erstellen.
 
-### <a name="3-create-an-expressroute-circuit"></a>3. Erstellen Sie eine ExpressRoute-Verbindung.
+### <a name="create-an-expressroute-circuit"></a>Erstellen Sie eine ExpressRoute-Verbindung.
 
 > [!IMPORTANT]
 > Ihre ExpressRoute-Verbindung wird von dem Moment an berechnet, in dem ein Dienstschlüssel ausgegeben wird. Führen Sie diesen Vorgang durch, wenn der Konnektivitätsanbieter bereit ist, die Verbindung bereitzustellen.
@@ -142,8 +135,8 @@ Das folgende Beispiel zeigt, wie Sie eine ExpressRoute-Verbindung mit 200 MBit/
 
 Stellen Sie sicher, dass Sie die richtige SKU-Ebene und die richtige SKU-Familie angeben.
 
-* Der SKU-Tarif bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard* oder *Premium* angeben. Es ist nicht möglich, die SKU von *Standard/Premium* in *Local* zu ändern.
-* Die SKU-Familie bestimmt den Abrechnungstyp. Sie können *Metereddata* für einen Volumentarif und *Unlimiteddata* für einen Plan mit Datenflatrate auswählen. Sie können den Abrechnungstyp von *Metereddata* in *Unlimiteddata* ändern, nicht jedoch umgekehrt (*Unlimiteddata* in *Metereddata*). Eine *lokale* Verbindung kann nur vom Typ *Unlimiteddata* sein.
+* Der SKU-Tarif bestimmt, ob eine ExpressRoute-Leitung vom Typ [Local](expressroute-faqs.md#expressroute-local), Standard oder [Premium](expressroute-faqs.md#expressroute-premium) ist. Sie können *Lokal*, *Standard oder *Premium* angeben. Es ist nicht möglich, die SKU von *Standard/Premium* in *Local* zu ändern.
+* Die SKU-Familie bestimmt den Abrechnungstyp. Sie können *MeteredData* für einen Volumentarif und *UnlimitedData* für eine Datenflatrate auswählen. Sie können den Abrechnungstyp von *MeteredData* in *UnlimitedData* ändern, nicht jedoch umgekehrt (*UnlimitedData* in *MeteredData*). Eine Leitung vom Typ *Local* ist immer vom Typ *UnlimitedData*.
 
 
 Ihre ExpressRoute-Verbindung wird von dem Moment an berechnet, in dem ein Dienstschlüssel ausgegeben wird. Nachfolgend sehen Sie eine Beispielanforderung für einen neuen Dienstschlüssel:
@@ -154,7 +147,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 Die Antwort enthält den Dienstschlüssel.
 
-### <a name="4-list-all-expressroute-circuits"></a>4. Listen Sie alle ExpressRoute-Verbindungen auf.
+### <a name="list-all-expressroute-circuits"></a>Listen Sie alle ExpressRoute-Verbindungen auf.
 
 Um eine Liste mit allen von Ihnen erstellten ExpressRoute-Verbindungen abzurufen, führen Sie den Befehl `az network express-route list` aus. Sie können diese Informationen jederzeit mithilfe dieses Befehls abrufen. Um alle Verbindungen aufzulisten, führen Sie den Aufruf ohne Parameter durch.
 
@@ -199,7 +192,7 @@ Ausführliche Beschreibungen aller Parameter erhalten Sie, wenn Sie den Befehl m
 az network express-route list -h
 ```
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
+### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
 
 „ServiceProviderProvisioningState“ stellt Informationen zum aktuellen Zustand der Bereitstellung auf Dienstanbieterseite bereit. Der Status gibt den Zustand auf der Microsoft-Seite an. Weitere Informationen finden Sie im Artikel [Workflow](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
@@ -210,7 +203,7 @@ Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folge
 "circuitProvisioningState": "Enabled"
 ```
 
-Die Verbindung wechselt in den folgenden Zustand, wenn sie vom Konnektivitätsanbieter für Sie aktiviert wird:
+Die Verbindung wechselt in den folgenden Zustand, wenn sie vom Konnektivitätsanbieter aktuell für Sie aktiviert wird:
 
 ```output
 "serviceProviderProvisioningState": "Provisioning"
@@ -224,9 +217,9 @@ Damit Sie eine ExpressRoute-Verbindung verwenden können, muss sie sich im folge
 "circuitProvisioningState": "Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
+### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
 
-Durch das Überprüfen des Status und des Zustands des Verbindungsschlüssels werden Sie informiert, wann Ihr Anbieter Ihre Verbindung aktiviert hat. Sobald die Verbindung konfiguriert wurde, zeigt „ServiceProviderProvisioningState“ wie im folgenden Beispiel den Status „Provisioned“ an:
+Durch das Überprüfen des Status und des Zustands des Dienstschlüssels erfahren Sie, wann Ihr Anbieter Ihre Leitung bereitgestellt hat. Sobald die Verbindung konfiguriert wurde, zeigt *ServiceProviderProvisioningState* wie im folgenden Beispiel den Status *Bereitgestellt* an:
 
 ```azurecli-interactive
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
@@ -263,7 +256,7 @@ Die Antwort ähnelt dem folgenden Beispiel:
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7. Erstellen Sie die Routingkonfiguration.
+### <a name="create-your-routing-configuration"></a>Erstellen Sie die Routingkonfiguration.
 
 Eine detaillierte Anleitung zum Erstellen und Ändern von Verbindungspeerings finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung](howto-routing-cli.md) .
 
@@ -272,7 +265,7 @@ Eine detaillierte Anleitung zum Erstellen und Ändern von Verbindungspeerings fi
 >
 >
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
+### <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 
 Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Verbindung. Lesen Sie den Artikel [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](howto-linkvnet-cli.md).
 
@@ -281,8 +274,8 @@ Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Ver
 Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Sie können ohne Ausfallzeiten folgende Änderungen vornehmen:
 
 * Sie können ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung aktivieren oder deaktivieren. Die Änderung der SKU von *Standard/Premium* in *Local* wird nicht unterstützt.
-* Sie können die Bandbreite der ExpressRoute-Verbindung erhöhen, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Verbindung wird allerdings nicht unterstützt.
-* Sie können den Abrechnungstarif von „Volumentarif“ in „Unbegrenzte Daten“ ändern. Eine Änderung des Abrechnungstarifs von „Unbegrenzte Daten“ in „Volumentarif“ wird jedoch nicht unterstützt.
+* Sie können die Bandbreite der ExpressRoute-Leitung erhöhen, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Leitung wird allerdings nicht unterstützt.
+* Sie können den Abrechnungstarif von „Volumentarif“ in „Unbegrenzte Daten“ ändern. Eine Änderung des Abrechnungstarifs von „Datenflatrate“ in „Volumentarif“ wird jedoch nicht unterstützt.
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
 
 Weitere Informationen zu Grenzwerten und Beschränkungen finden Sie unter [ExpressRoute – FAQs](expressroute-faqs.md).
@@ -306,9 +299,9 @@ Für die Verbindung sind nun die Features des ExpressRoute Premium-Add-Ons aktiv
 
 Vor der Deaktivierung des ExpressRoute Premium-Add-Ons sollten Sie folgende Kriterien beachten:
 
-* Bevor Sie ein Downgrade von Premium auf Standard durchführen, müssen Sie sicherstellen, dass die Anzahl von virtuellen Netzwerken, die mit der Verbindung verknüpft sind, kleiner als zehn ist. Andernfalls verursacht Ihre Updateanforderung einen Fehler, und Microsoft berechnet Ihnen Premium-Gebühren.
-* Sie müssen die Verknüpfung für alle virtuellen Netzwerke in anderen geopolitischen Regionen aufheben. Andernfalls verursacht Ihre Updateanforderung einen Fehler, und Microsoft berechnet Ihnen Premium-Gebühren.
-* Ihre Routentabelle muss für das private Peering weniger als 4.000 Routen aufweisen. Wenn die Routentabelle mehr als 4.000 Routen enthält, wird die BGP-Sitzung gelöscht. Die Sitzung wird erst wieder aktiviert, wenn die Anzahl der angekündigte Präfixe unter 4.000 liegt.
+* Bevor Sie ein Downgrade von Premium auf Standard durchführen, müssen Sie sicherstellen, dass weniger als zehn virtuelle Netzwerke mit der Verbindung verknüpft sind. Andernfalls verursacht Ihre Updateanforderung einen Fehler, und Microsoft berechnet Ihnen Premium-Gebühren.
+* Die Verknüpfung für alle virtuellen Netzwerke in anderen geopolitischen Regionen muss zuerst aufgehoben werden. Andernfalls verursacht Ihre Updateanforderung einen Fehler, und Microsoft berechnet Ihnen Premium-Gebühren.
+* Ihre Routentabelle muss für das private Peering weniger als 4.000 Routen aufweisen. Wenn die Routentabelle mehr als 4.000 Routen enthält, wird die BGP-Sitzung beendet. Die BGP-Sitzung wird erst wieder aktiviert, wenn die Anzahl der angekündigten Präfixe unter 4.000 liegt.
 
 Für Ihre bereits vorhandene Verbindung können Sie das ExpressRoute Premium-Add-On anhand des folgenden Beispiels deaktivieren:
 
@@ -332,7 +325,7 @@ Sobald Sie sich für die benötigte Größe entschieden haben, verwenden Sie den
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
-Die Größe Ihrer Verbindung wird auf der Microsoft-Seite angepasst. Anschließend müssen Sie sich an Ihren Konnektivitätsanbieter wenden, um das entsprechende Update der Konfigurationen auf Anbieterseite vornehmen zu lassen. Nachdem Sie diese Benachrichtigung gesendet haben, beginnt Microsoft, die Gebühren für die aktualisierte Bandbreitenoption abzurechnen.
+Ihre Leitung wird auf Microsoft-Seite aktualisiert. Anschließend müssen Sie sich an Ihren Konnektivitätsanbieter wenden, um das entsprechende Update der Konfigurationen auf Anbieterseite vornehmen zu lassen. Nachdem Sie diese Benachrichtigung gesendet haben, beginnt Microsoft, die Gebühren für die aktualisierte Bandbreitenoption abzurechnen.
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>Ändern der SKU von einem Volumentarif zu einer Datenflatrate
 
@@ -346,13 +339,15 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 Lesen Sie die Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-howto-move-arm.md).
 
-## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
+## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>Aufheben der Bereitstellung einer ExpressRoute-Verbindung
 
 Um die Bereitstellung einer ExpressRoute-Verbindung aufzuheben und diese zu löschen, stellen Sie sicher, dass Sie folgende Kriterien berücksichtigt haben:
 
-* Sie müssen die Verknüpfung aller virtuellen Netzwerke mit der ExpressRoute-Verbindung aufheben. Falls dieser Vorgang nicht erfolgreich ist, überprüfen Sie, ob noch virtuelle Netzwerke mit der Verbindung verknüpft sind.
-* Wenn der Bereitstellungszustand des ExpressRoute-Verbindungsdienstanbieters **Provisioning** oder **Provisioned** lautet, arbeiten Sie mit Ihrem Dienstanbieter zusammen, um die Verbindungsbereitstellung auf Anbieterseite aufzuheben. Microsoft reserviert weiterhin Ressourcen für Sie und stellt Ihnen dies in Rechnung, bis der Dienstanbieter die Aufhebung der Verbindungsbereitstellung abgeschlossen hat und uns benachrichtigt.
-* Wenn der Dienstanbieter die Bereitstellung der Verbindung aufgehoben hat, können Sie die Verbindung löschen. Nachdem die Bereitstellung einer Verbindung aufgehoben wurde, ist der Bereitstellungszustand des Dienstanbieters auf **Not provisioned** festgelegt. Damit wird die Abrechnung für die Verbindung beendet.
+* Die Verknüpfung aller virtuellen Netzwerke mit der ExpressRoute-Leitung muss aufgehoben werden. Falls dieser Vorgang nicht erfolgreich ist, überprüfen Sie, ob noch virtuelle Netzwerke mit der Verbindung verknüpft sind.
+* Wenn der Bereitstellungsstatus des ExpressRoute-Verbindungsdienstanbieters **Bereitstellung** oder **Bereitgestellt** lautet, arbeiten Sie mit Ihrem Dienstanbieter zusammen, um die Verbindungsbereitstellung auf Anbieterseite aufzuheben. Microsoft reserviert weiterhin Ressourcen für Sie und stellt Ihnen dies in Rechnung, bis der Dienstanbieter die Aufhebung der Verbindungsbereitstellung abgeschlossen hat und uns benachrichtigt.
+* Wenn der Dienstanbieter die Bereitstellung der Leitung aufgehoben hat (d. h. der Bereitstellungsstatus des Dienstanbieters lautet **Not Provisioned** (Nicht bereitgestellt)), können Sie die Leitung löschen. Die Berechnung von Gebühren für die Leitung wird dann beendet.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können die ExpressRoute-Verbindung löschen, indem Sie den folgenden Befehl ausführen:
 
@@ -362,7 +357,7 @@ az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Führen Sie nach dem Erstellen Ihrer Verbindung folgende Aufgaben durch:
+Nachdem Sie die Leitung erstellt und mit Ihrem Anbieter bereitgestellt haben, fahren Sie mit dem nächsten Schritt fort, um das Peering zu konfigurieren:
 
-* [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](howto-routing-cli.md)
-* [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](howto-linkvnet-cli.md)
+> [!div class="nextstepaction"]
+> [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](howto-routing-cli.md)

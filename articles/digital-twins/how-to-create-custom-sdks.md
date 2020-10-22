@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324228"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970128"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
 Zurzeit sind die einzigen veröffentlichten Datenebenen-SDKs für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#), JavaScript und Java bestimmt. Informationen zum diesen SDKs und die APIs im Allgemeinen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes Datenebenen-SDK in der Sprache Ihrer Wahl generieren.
 
 >[!NOTE]
-> Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der [Steuerungsebenen-Swagger-Datei (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) anstelle des Datenebenen-SDK aus.
+> Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der neuesten **Swagger-Datei für die Steuerungsebene** (OpenAPI) im [Swagger-Ordner auf Steuerungsebene]](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) anstelle der für die Datenebene aus.
 
 ## <a name="set-up-your-machine"></a>Einrichten Ihres Computers
 
 Zum Generieren eines SDK benötigen Sie Folgendes:
 * [AutoRest](https://github.com/Azure/autorest), Version 2.0.4413 (Version 3 wird derzeit nicht unterstützt)
 * [Node.js](https://nodejs.org) als erforderliche Komponente für AutoRest
-* Die [Azure Digital Twins-Datenebenen-Swagger-Datei (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) mit Namen *digitaltwins.json* und den zugehörigen Ordner mit Beispielen. Laden Sie die Swagger-Datei und deren Ordner mit Beispielen auf Ihren lokalen Computer herunter.
+* Die neueste **Azure Digital Twins-Swagger-Datei für die Datenebene** (OpenAPI) im [Swagger-Ordner auf Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins) und die zugehörigen Ordner mit Beispielen.  Laden Sie die Swagger-Datei *digitaltwins.json* und den zugehörigen Ordner mit Beispielen auf Ihren lokalen Computer herunter.
 
 Sobald der Computer alle Voraussetzungen gemäß der obigen Liste erfüllt, können Sie mit AutoRest das SDK erstellen.
 

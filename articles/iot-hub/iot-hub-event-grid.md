@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056165"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072304"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -73,6 +73,8 @@ Das folgende Beispiel zeigt das Schema eines Ereignisses „Gerät verbunden“:
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>Schema der Gerätetelemetrie
 
@@ -163,6 +165,10 @@ Das folgende Beispiel zeigt das Schema eines von einem Gerät erstellten Ereigni
   "metadataVersion": "1"
 }]
 ```
+
+
+> [!WARNING]
+> Die einem Geräteerstellungsereignis zugeordneten *Zwillingsdaten* sind eine Standardkonfiguration und *sollten nicht* für den tatsächlichen `authenticationType` und andere Geräteeigenschaften in einem neu erstellten Gerät verwendet werden. Verwenden Sie für `authenticationType` und andere Geräteeigenschaften in einem neu erstellten Gerät die in Azure IoT SDKs bereitgestellte Registrierungs-Manager-API.
 
 Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema für IoT Hub](../event-grid/event-schema-iot-hub.md).
 

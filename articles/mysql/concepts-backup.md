@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418584"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057534"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Sicherung und Wiederherstellung in Azure Database for MySQL
 
@@ -19,18 +19,29 @@ Für Azure Database for MySQL werden Sicherungen automatisch erstellt und in ein
 
 ## <a name="backups"></a>Backups
 
-Azure Database for MySQL nimmt Sicherungen der Datendateien und der Transaktionsprotokolle vor. Abhängig von der unterstützten maximalen Speichergröße werden entweder vollständige oder differenzielle Sicherungen (Server mit maximal 4 TB Speicher) oder Sicherungsmomentaufnahmen (Server mit bis zu 16 TB Speicher) angelegt. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Mit einer [optionalen Konfiguration](howto-restore-server-portal.md#set-backup-configuration) können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+Azure Database for MySQL nimmt Sicherungen der Datendateien und der Transaktionsprotokolle vor. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Mit einer [optionalen Konfiguration](howto-restore-server-portal.md#set-backup-configuration) können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
 
 Diese Sicherungsdateien sind nicht für den Benutzer verfügbar und können nicht exportiert werden. Sie können nur für Wiederherstellungsvorgänge in Azure Database for MySQL verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](concepts-migrate-dump-restore.md) verwenden.
 
-### <a name="backup-frequency"></a>Sicherungshäufigkeit
+Sicherungstyp und Sicherungshäufigkeit sind vom Back-End-Speicher für die Server abhängig.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Server mit bis zu 4 TB Speicher
+### <a name="backup-type-and-frequency"></a>Sicherungstyp und Sicherungshäufigkeit
 
-Bei Servern, die bis zu 4 TB Speicher unterstützen, erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
+#### <a name="basic-storage-servers"></a>Basic-Speicherserver
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Server mit bis zu 16 TB Speicher
-In einigen [Azure-Regionen](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) unterstützen alle neu bereitgestellten Server bis zu 16 TB Speicher. Die Sicherungen auf diesen großen Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. 
+Der Basic-Speicherserver ist der Back-End-Speicher, der die [Server im Tarif „Basic“](concepts-pricing-tiers.md) unterstützt. Die Sicherungen auf Basic-Speicherservern basieren auf Momentaufnahmen. Pro Tag wird eine vollständige Datenbankmomentaufnahme erstellt. Für Basic-Speicherserver werden keine differenziellen Sicherungen durchgeführt und Momentaufnahmesicherungen sind ausschließlich vollständige Datenbanksicherungen. 
+
+Transaktionsprotokollsicherungen finden alle fünf Minuten statt. 
+
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Universelle Speicherserver mit bis zu 4 TB Speicher
+
+Der universelle Speicher ist der Back-End-Speicher, der die [Server im Tarif „Universell“](concepts-pricing-tiers.md) und [„Arbeitsspeicheroptimiert“](concepts-pricing-tiers.md) unterstützt. Bei Servern mit einem universellen Speicher bis zu 4 TB erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen werden alle fünf Minuten durchgeführt. Die Sicherungen auf universellen Speichern mit bis zu 4 TB basieren nicht auf Momentaufnahmen und belegen zum Zeitpunkt der Sicherung E/A-Bandbreite. Für umfangreichere Datenbanken (> 1 TB) in einem 4-TB-Speicher wird Folgendes empfohlen: 
+
+- Bereitstellung von mehr IOPs zum Sichern von IOs ODER
+- Alternativ können Sie zu einem universellen Speicher migrieren, der bis zu 16 TB unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in Ihren bevorzugten [Azure-Regionen](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) verfügbar ist. Für einen universellen Speicher, der bis zu 16 TB unterstützt, fallen keine zusätzlichen Kosten an. Unterstützung bei der Migration auf einen 16-TB-Speicher erhalten Sie, indem Sie über das Azure-Portal ein Supportticket öffnen. 
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Universelle Speicherserver mit bis zu 16 TB Speicher
+In einigen [Azure-Regionen](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. 
 
 Differentielle Momentaufnahmesicherungen werden mindestens einmal täglich erstellt. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. Differenzielle Momentaufnahmesicherungen werden alle 24 Stunden ausgeführt, es sei denn, das Transaktionsprotokoll (binlog in MySQL) überschreitet 50 GB seit der letzten differenziellen Sicherung. An einem Tag sind maximal sechs differenzielle Momentaufnahmen zulässig. 
 
@@ -71,7 +82,7 @@ Es gibt zwei Arten der Wiederherstellung:
 Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
 
 > [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) nutzen.
+> Gelöschte Server können nur innerhalb von **fünf Tagen** nach dem Löschen wiederhergestellt werden. Danach werden die Sicherungen gelöscht. Auf die Datenbanksicherung kann nur über das Azure-Abonnement zugegriffen werden, unter dem der Server gehostet wird. Und nur über dieses Abonnement kann die Datenbanksicherung auch wiederhergestellt werden. Informationen zum Wiederherstellen eines gelöschten Servers finden Sie in den [dokumentierten Schritten](howto-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) nutzen.
 
 ### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 

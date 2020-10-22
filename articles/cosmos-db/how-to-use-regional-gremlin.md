@@ -1,22 +1,22 @@
 ---
 title: Regionale Endpunkte für Azure Cosmos DB-Graphdatenbank
 description: Erfahren Sie, wie Sie eine Verbindung mit dem nächstgelegenen Graphdatenbank-Endpunkt für Ihre Anwendung herstellen können.
-author: luisbosquez
-ms.author: lbosq
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f9d46c2f5cce397c2aa6ebbcd38d7fbb5786412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997250"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570608"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale Endpunkte für Azure Cosmos DB-Graphkonto
-Die Azure Cosmos DB-Graphdatenbank ist [global verteilt](distribute-data-globally.md), sodass Anwendungen mehrere Leseendpunkte verwenden können. Für Anwendungen, die Schreibzugriff an mehreren Speicherorten benötigen muss die [Multimaster](how-to-multi-master.md)-Funktion aktiviert sein.
+Die Azure Cosmos DB-Graphdatenbank ist [global verteilt](distribute-data-globally.md), sodass Anwendungen mehrere Leseendpunkte verwenden können. Für Anwendungen, die Schreibzugriff an mehreren Speicherorten benötigen, muss die Funktion [Schreibvorgänge in mehreren Regionen](how-to-multi-master.md) aktiviert sein.
 
 Gründe für die Auswahl mehrerer Regionen:
 1. **Horizontale Leseskalierbarkeit**: Wenn die Anwendungslast zunimmt, kann es ratsam sein, Lesedatenverkehr an verschiedene Azure-Regionen weiterzuleiten.

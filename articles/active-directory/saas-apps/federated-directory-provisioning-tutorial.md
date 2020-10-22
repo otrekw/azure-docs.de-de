@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319944"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851270"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Federated Directory für die automatische Benutzerbereitstellung
 
@@ -53,24 +53,24 @@ Bevor Sie Federated Directory für die automatische Benutzerbereitstellung mit A
 
 1. Melden Sie sich bei Ihrer [-Verwaltungskonsole](https://federated.directory/of) an.
 
-    ![Federated Directory-Tutorial](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
 
 2. Navigieren Sie zu **Verzeichnisse > Benutzerverzeichnisse**, und wählen Sie Ihren Mandanten aus. 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
 
 3.  Um ein dauerhaftes Bearertoken zu generieren, navigieren Sie zu **Verzeichnisschlüssel > Neuen Schlüssel erstellen**. 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
 
 4. Erstellen Sie einen Verzeichnisschlüssel. 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
     
 
 5. Kopieren Sie den Wert von **Zugriffstoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Federated Directory-Anwendung in das Feld **Geheimes Token** eingegeben. 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>Hinzufügen von Federated Directory aus dem Katalog
 
@@ -96,15 +96,15 @@ Bevor Sie Federated Directory für die automatische Benutzerbereitstellung mit A
 
 5. Navigieren Sie in einem separaten Browserfenster zu der unten hervorgehobenen **URL**. 
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
 
 6. Klicken Sie auf **ANMELDEN**.
 
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
 
 7.  Da Federated Directory eine OpenIDConnect-App ist, können Sie sich mit Ihrem Microsoft-Geschäftskonto bei Federated Directory anmelden.
     
-    ![Federated Directory](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
  
 8. Akzeptieren Sie nach der erfolgreichen Authentifizierung auf der Zustimmungsseite die Zustimmungsaufforderung. Die Anwendung wird dann automatisch Ihrem Mandanten hinzugefügt, und Sie werden zu Ihrem Federated Directory-Konto umgeleitet.
 
@@ -146,12 +146,12 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Federated Directory synchronisieren** aus.
 
-    ![Federated Directory-Tutorial](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
     
     
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Federated Directory synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Federated Directory für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Federated Directory-Tutorial](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
     
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

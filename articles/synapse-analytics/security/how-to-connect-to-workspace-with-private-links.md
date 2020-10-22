@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea791e4fc1031c0a5c041119c409f8623ce7aee9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005972"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91260375"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Herstellen einer Verbindung mit Ihrem Azure Synapse-Arbeitsbereich mit privaten Links (Vorschau)
 
@@ -34,7 +34,7 @@ Wählen Sie **Private Endpunktverbindungen** unter **Sicherheit** aus und dann *
 Wählen Sie auf der Registerkarte **Grundlagen** im Fenster **Privaten Endpunkt erstellen** Ihr **Abonnement** und Ihre **Ressourcengruppe** aus. Geben Sie dem privaten Endpunkt, den Sie erstellen möchten, einen **Namen**. Wählen Sie die **Region** aus, in der der private Endpunkt erstellt werden soll.
 
 Private Endpunkte werden in einem Subnetz erstellt. Durch die Auswahl des Abonnements, der Ressourcengruppe und der Region werden die privaten Endpunktsubnetze gefiltert. Klicken Sie auf **Weiter: Ressource >** , wenn Sie fertig sind.
-![Auswählen von Abonnement und Regionsdetails](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
+![Auswählen von Abonnement und Regionsdetails 1](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
 
 ## <a name="step-4-select-your-azure-synapse-workspace-details"></a>Schritt 4: Auswählen der Details Ihres Azure Synapse-Arbeitsbereichs
 
@@ -43,17 +43,17 @@ Wählen Sie auf der Registerkarte **Ressource** die Option **Mit einer Azure-Res
 Wählen Sie Ihren Azure Synapse-Arbeitsbereich als die **Ressource** aus Jeder Azure Synapse-Arbeitsbereich verfügt über drei **untergeordnete Zielressourcen**, für die Sie einen privaten Endpunkt erstellen können: „Sql“, „SqlOnDemand“ und „Dev“.
 
 Klicken Sie auf **Weiter: Konfiguration>** , um mit dem nächsten Teil der Einrichtung fortzufahren.
-![Auswählen von Abonnement und Regionsdetails](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)
+![Auswählen von Abonnement und Regionsdetails 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)
 
 Wählen Sie auf der Registerkarte **Konfiguration** das **Virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie den privaten Endpunkt erstellen möchten. Außerdem müssen Sie einen DNS-Eintrag erstellen, der dem privaten Endpunkt zugeordnet ist.
 
 Wählen Sie für **In private DNS-Zone integrieren** den Wert **Ja** aus, um Ihren privaten Endpunkt in eine private DNS-Zone zu integrieren. Wenn Sie Ihrer Microsoft Azure Virtual Network-Instanz keine private DNS-Zone zugeordnet haben, wird eine neue private DNS-Zone erstellt. Wählen Sie **Überprüfen + erstellen** aus, wenn Sie fertig sind.
 
-![Auswählen von Abonnement und Regionsdetails](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
+![Auswählen von Abonnement und Regionsdetails 3](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
 Öffnen Sie nach Abschluss der Bereitstellung Ihren Azure Synapse-Arbeitsbereich im Azure-Portal, und wählen Sie **Private Endpunktverbindungen** aus. Der neue private Endpunkt und der Name der diesem zugeordneten privaten Endpunktverbindung werden angezeigt.
 
-![Auswählen von Abonnement und Regionsdetails](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
+![Auswählen von Abonnement und Regionsdetails 4](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

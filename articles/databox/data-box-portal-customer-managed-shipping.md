@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142535"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951909"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal
 
@@ -41,7 +41,7 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
 2. Wählen Sie bei der Wahl des Versandtyps die Option **Selbst verwalteter Versand** aus. Diese Option ist nur verfügbar, wenn Sie sich in einer unterstützten Region befinden (siehe die vorstehenden „Voraussetzungen“).
 
 3. Nachdem Sie Ihre Lieferadresse angegeben haben, müssen Sie sie überprüfen und dann Ihre Bestellung abschließen.
-   ![Selbst verwalteter Versand](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Selbst verwalteter Versand 2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Sobald das Gerät vorbereitet ist und Sie eine E-Mail-Benachrichtigung dafür erhalten, können Sie eine Abholung planen.
 
@@ -78,7 +78,7 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
 
 9. Wenn Sie einen Termin für die Abgabe erhalten haben, sollte der Status der Bestellung im Azure-Portal **Bereit für den Empfang im Azure-Rechenzentrum** lauten. Befolgen Sie die Anweisungen unter **Abgabe planen**, um das Gerät zurückzusenden.
 
-   ![Anzeigen Ihres Autorisierungscodes](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![Anzeigen Ihres Autorisierungscodes 2](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. Nachdem Ihre ID und Ihr Autorisierungscode überprüft wurden und Sie das Gerät im Rechenzentrum abgegeben haben, sollte der Auftragsstatus **Empfangen** lauten.
 

@@ -2,20 +2,20 @@
 title: Netzwerkplanung und Verbindungen für Azure AD Domain Services | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu einigen der Überlegungen zum Entwurf virtueller Netzwerke und zu den für die Konnektivität verwendeten Ressourcen, wenn Sie Azure Active Directory Domain Services ausführen.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.author: joflore
+ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749614"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968088"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services
 
@@ -115,6 +115,8 @@ Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
 
 Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert. Löschen Sie diese Netzwerksicherheitsgruppe nicht. Der Lastenausgleich funktioniert ohne sie nicht ordnungsgemäß.
+
+Falls erforderlich, können Sie [die erforderliche Netzwerksicherheitsgruppe und Regeln mithilfe Azure PowerShell erstellen](powershell-create-instance.md#create-a-network-security-group).
 
 > [!WARNING]
 > Bearbeiten Sie diese Netzwerkressourcen und Konfigurationen nicht manuell. Wenn Sie eine falsch konfigurierte Netzwerksicherheitsgruppe oder eine benutzerdefinierte Routingtabelle mit dem Subnetz verknüpfen, in dem die verwaltete Domäne bereitgestellt wird, werden die Möglichkeiten von Microsoft zur Wartung und Verwaltung der Domäne möglicherweise beeinträchtigt. Die Synchronisierung zwischen Ihrem Azure AD-Mandanten und Ihrer verwalteten Domäne wird ebenfalls beeinträchtigt.

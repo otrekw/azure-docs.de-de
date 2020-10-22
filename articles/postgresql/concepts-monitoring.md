@@ -1,17 +1,17 @@
 ---
 title: Überwachung und Optimierung – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel werden die Überwachungs- und Optimierungsfunktionen in Azure Database for PostgreSQL (Einzelserver) beschrieben.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708712"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
@@ -38,7 +38,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |network_bytes_egress|Netzwerk ausgehend|Byte|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen.|
 |network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
 |backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers. Diese Metrik stellt den gesamten Speicherplatz dar, der von allen vollständigen Datenbanksicherungen, differenziellen Sicherungen und Protokollsicherungen beansprucht wurde, die auf der Grundlage der für den Server festgelegten Beibehaltungsdauer für Sicherungen aufbewahrt wurden. Die Häufigkeit der Sicherungen wird durch den Dienst verwaltet und im Artikel zu [Konzepten](concepts-backup.md) erläutert. Bei georedundantem Speicher wird doppelt so viel Sicherungsspeicher genutzt wie bei lokal redundantem Speicher.|
-|pg_replica_log_delay_in_bytes|Maximale Verzögerung zwischen Replikaten|Byte|Die Verzögerung in Bytes zwischen dem Masterserver und dem Replikat mit der größten Verzögerung. Diese Metrik steht nur auf dem Masterserver zur Verfügung.|
+|pg_replica_log_delay_in_bytes|Maximale Verzögerung zwischen Replikaten|Byte|Die Verzögerung in Bytes zwischen dem primären Server und dem Replikat mit der größten Verzögerung. Diese Metrik steht nur auf dem primären Server zur Verfügung.|
 |pg_replica_log_delay_in_seconds|Replikatverzögerung|Sekunden|Die Zeit seit der letzten wiedergegebenen Transaktion. Diese Metrik steht nur für Replikatserver zur Verfügung.|
 
 ## <a name="server-logs"></a>Serverprotokolle

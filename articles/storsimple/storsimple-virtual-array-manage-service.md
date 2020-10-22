@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698936"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91744133"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für StorSimple Virtual Array
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 #### <a name="to-regenerate-the-service-registration-key"></a>So generieren Sie den Dienstregistrierungsschlüssel neu
 1. Wechseln Sie auf dem Blatt **StorSimple-Geräte-Manager** zu **Management &gt;** **Schlüssel**.
    
-   ![Blatt „Schlüssel“](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![Blatt „Schlüssel“ (erneut)](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. Klicken Sie auf dem Blatt **Schlüssel** auf **Neu generieren**.
    
    ![Klicken Sie auf „Neu generieren“.](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,7 +118,7 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
    ![Erneutes Generierens des Schlüssels bestätigen](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Ein neuer Dienstregistrierungsschlüssel wird angezeigt.
    
-    ![Erneutes Generierens des Schlüssels bestätigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Erneutes Generieren eines zusätzlichen Schlüssels bestätigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    Kopieren Sie diesen Schlüssel, und speichern Sie ihn für die Registrierung neuer Geräte bei diesem Dienst.
 

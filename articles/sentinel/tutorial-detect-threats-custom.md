@@ -1,6 +1,6 @@
 ---
 title: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen mit Azure Sentinel | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie benutzerdefinierte Analyseregeln erstellen, um mit Azure Sentinel Sicherheitsbedrohungen zu erkennen.
+description: In diesem Tutorial erfahren Sie, wie Sie benutzerdefinierte Analyseregeln erstellen, um mit Azure Sentinel Sicherheitsbedrohungen zu erkennen. Nutzen Sie die Ereignis- und Warnungsgruppierung, und informieren Sie sich über „AUTO DISABLED“.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605902"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91617178"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen
 
@@ -53,13 +53,15 @@ Für die Suche nach verdächtigen Typen von Bedrohungen und Anomalien in Ihrer U
 
       Mit der folgenden Beispielabfrage werden Sie gewarnt, wenn in Azure Activity eine ungewöhnliche Anzahl von Ressourcen erstellt wird.
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > Die Abfrage sollte zwischen 1 und 10.000 Zeichen lang sein und darf weder „search \*“ noch „union \*“ enthalten.
+        > [!NOTE]
+        > Die Abfrage sollte zwischen 1 und 10.000 Zeichen lang sein und darf weder „search \*“ noch „union \*“ enthalten.
 
     1. Im Abschnitt **Entitäten zuordnen** können Sie Parameter aus den Abfrageergebnissen mit von Azure Sentinel erkannten Entitäten verknüpfen. Diese Entitäten bilden die Grundlage für weitere Analysen und auch für das Gruppieren von Warnungen in Incidents auf der Registerkarte **Incidenteinstellungen**.
   
@@ -69,8 +71,12 @@ Für die Suche nach verdächtigen Typen von Bedrohungen und Anomalien in Ihrer U
 
        1. Legen Sie unter **Datensuche für letzte** den Zeitraum der von der Abfrage abgedeckten Daten fest: z. B. Daten der letzten 10 Minuten oder der letzten 6 Stunden.
 
-       > [!NOTE]
-       > Diese beiden Einstellungen sind bis zu einem Punkt voneinander unabhängig. Sie können in einem kurzen Intervall eine Abfrage für einen Zeitraum ausführen, der länger ist als das Intervall (was zu sich überschneidenden Abfragen führt). Sie können jedoch für eine Abfrage kein Intervall festlegen, das den Abdeckungszeitraum überschreitet, da dies zu Lücken in der Gesamtabdeckung der Abfrage führen würde.
+          > [!NOTE]
+          > **Abfrageintervalle und Rückblickperiode**
+          > - Diese beiden Einstellungen sind bis zu einem Punkt voneinander unabhängig. Sie können in einem kurzen Intervall eine Abfrage für einen Zeitraum ausführen, der länger ist als das Intervall (was zu sich überschneidenden Abfragen führt). Sie können jedoch für eine Abfrage kein Intervall festlegen, das den Abdeckungszeitraum überschreitet, da dies zu Lücken in der Gesamtabdeckung der Abfrage führen würde.
+          >
+          > **Erfassungsverzögerung**
+          > - Azure Sentinel führt geplante Analyseregeln mit einer **fünfminütigen Verzögerung** nach der geplanten Zeit aus, um die **Wartezeit** zu berücksichtigen, die zwischen der Erstellung eines Ereignisses in der Quelle und dessen Erfassung in Azure Sentinel auftreten kann, und um eine vollständige Abdeckung ohne Datenduplizierung zu gewährleisten.
 
     1. Definieren Sie im Abschnitt **Warnungsschwellenwert** eine Baseline. Legen Sie beispielsweise **Warnung generieren, wenn für die Anzahl der Abfrageergebnisse Folgendes gilt:** auf **Ist größer als** fest, und geben Sie die Zahl 1000 ein, wenn die Regel nur dann eine Warnung generieren soll, wenn die Abfrage bei jeder Ausführung mehr als 1000 Ergebnisse zurückgibt. Da dies ein Pflichtfeld ist, müssen Sie, wenn Sie keine Baseline festlegen möchten (d. h., wenn bei jedem Ereignis eine Warnung registriert werden soll), im Zahlenfeld den Wert „0“ eingeben.
     
@@ -134,6 +140,43 @@ Für die Suche nach verdächtigen Typen von Bedrohungen und Anomalien in Ihrer U
 
 > [!NOTE]
 > In Azure Sentinel generierte Warnungen sind über die  [Sicherheits-API von Microsoft Graph](https://aka.ms/securitygraphdocs) verfügbar. Weitere Informationen finden Sie in der Dokumentation zur  [Sicherheits-API von Microsoft Graph](https://aka.ms/graphsecurityreferencebetadocs).
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Fehler bei der Ausführung einer geplanten Regel oder beim Hinzufügen von „AUTO DISABLED“ zum Namen
+
+Ein Fehler bei der Ausführung einer geplanten Abfrage ist zwar selten, aber nicht ausgeschlossen. Azure Sentinel klassifiziert Fehler auf der Grundlage des spezifischen Fehlertyps und der Umstände, die dazu geführt haben, als vorübergehende oder dauerhafte Fehler.
+
+#### <a name="transient-failure"></a>Vorübergehender Fehler
+
+Ein vorübergehender Fehler tritt aufgrund einer temporären Situation auf, die sich bald wieder normalisiert. Zu diesem Zeitpunkt wird die Regelausführung erfolgreich angewendet. Dies sind einige Beispiele für Fehler, die von Azure Sentinel als vorübergehend klassifiziert werden:
+
+- Die Ausführung einer Regelabfrage dauert zu lang und führt zu einem Timeout.
+- Es bestehen Konnektivitätsprobleme zwischen Datenquellen und Log Analytics bzw. zwischen Log Analytics und Azure Sentinel.
+- Alle anderen neuen und unbekannten Fehler werden als vorübergehende Fehler eingestuft.
+
+Wenn ein vorübergehender Fehler auftritt, versucht Azure Sentinel weiterhin, die Regel gemäß den vordefinierten und immer kürzeren Intervallen bis zu einem bestimmten Punkt noch mal auszuführen. Danach wird die Regel nur zum nächsten geplanten Zeitpunkt wieder ausgeführt. Eine Regel wird aufgrund eines vorübergehenden Fehlers nie automatisch deaktiviert.
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>Dauerhafter Fehler: Regel automatisch deaktiviert
+
+Ein dauerhafter Fehler tritt aufgrund einer Änderung der Bedingungen auf, die normalerweise die Ausführung der Regel ermöglichen und ohne menschliches Eingreifen nicht wiederhergestellt werden können. Im Folgenden finden Sie einige Beispiele für Fehler, die als permanente Fehler klassifiziert werden:
+
+- Der Zielarbeitsbereich (für den die Regelabfrage ausgeführt wurde) wurde gelöscht.
+- Die Zieltabelle (für die die Regelabfrage ausgeführt wurde) wurde gelöscht.
+- Azure Sentinel wurde aus dem Zielarbeitsbereich entfernt.
+- Eine von der Regelabfrage verwendete Funktion ist nicht mehr gültig. Sie wurde entweder geändert oder entfernt.
+- Die Berechtigungen für eine der Datenquellen der Regelabfrage wurden geändert.
+- Eine der Datenquellen der Regelabfrage wurde gelöscht oder getrennt.
+
+**Im Fall einer vordefinierten Anzahl aufeinanderfolgender dauerhafter Fehler mit demselben Typ und derselben Regel** versucht Azure Sentinel nicht mehr, die Regel auszuführen und führt stattdessen die folgenden Schritte aus:
+
+- Die Regel wird deaktiviert.
+- Die Wörter **AUTO DISABLED** werden am Anfang des Regelnamens hinzugefügt.
+- Der Grund für den Fehler (und die Deaktivierung) wird der Regelbeschreibung hinzugefügt.
+
+Sie können mühelos erkennen, ob automatisch deaktivierte Regeln vorhanden sind, indem Sie die Regelliste nach Namen sortieren. Die automatisch deaktivierten Regeln werden am Anfang der Liste angezeigt.
+
+SOC-Manager sollten sicherstellen, dass die Regelliste regelmäßig auf automatisch deaktivierte Regeln überprüft wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

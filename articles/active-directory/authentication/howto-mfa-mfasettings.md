@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 17fbba605f6f20fa384d59a8c89ee536a9b121bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964434"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -57,7 +57,7 @@ Nehmen Sie die Einstellungen vor, um die Kontosperreinstellungen zu konfiguriere
 
 ## <a name="block-and-unblock-users"></a>Benutzer sperren/zulassen
 
-Wenn das Gerät eines Benutzers verloren geht oder gestohlen wird, können Sie Authentifizierungsversuche für das zugeordnete Konto blockieren. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
+Wenn das Gerät eines Benutzers verloren geht oder gestohlen wird, können Sie Azure MFA-Versuche für das zugehörige Konto blockieren. Sämtliche Azure MFA-Versuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
@@ -85,7 +85,7 @@ Mithilfe des Features für Betrugswarnungen können Benutzer betrügerische Vers
 
 Die folgenden Konfigurationsoptionen stehen für Warnungen zur Verfügung:
 
-* **Benutzer, die Betrugsversuche melden, automatisch blockieren:** Wenn ein Benutzer einen Betrug meldet, wird sein Konto 90 Tage lang oder so lange gesperrt, bis ein Administrator die Sperre für das Konto aufhebt. Ein Administrator kann anhand des Anmeldeberichts Anmeldungen überprüfen und entsprechende Maßnahmen ergreifen, um weiterem Betrug vorzubeugen. Ein Administrator kann dann die Sperre für das Konto des Benutzers [aufheben](#unblock-a-user).
+* **Benutzer, die Betrugsversuche melden, automatisch blockieren:** Wenn ein Benutzer einen Betrug meldet, werden Azure MFA-Versuche für das Benutzerkonto 90 Tage lang oder so lange blockiert, bis ein Administrator die Sperre für das Konto aufhebt. Ein Administrator kann anhand des Anmeldeberichts Anmeldungen überprüfen und entsprechende Maßnahmen ergreifen, um weiterem Betrug vorzubeugen. Ein Administrator kann dann die Sperre für das Konto des Benutzers [aufheben](#unblock-a-user).
 * **Code zum Melden von Betrugsversuchen während der Begrüßung**: Wenn Benutzer einen Telefonanruf zur Ausführung der mehrstufigen Authentifizierung empfangen, drücken sie normalerweise die **#** -Taste, um ihre Anmeldung zu bestätigen. Wenn sie einen Betrug melden möchten, geben sie vor dem Drücken der **#** -Taste einen Code ein. Dieser Code ist standardmäßig **0**, Sie können ihn jedoch anpassen.
 
    > [!NOTE]

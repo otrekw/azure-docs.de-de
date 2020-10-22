@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Problembehandlung bei häufigen Problemen mit Arc-fähigen Kubernetes-Clustern
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723672"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540607"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Problembehandlung bei Azure Arc-fähigem Kubernetes (Vorschauversion)
 
@@ -100,6 +100,34 @@ Command group 'connectedk8s' is in preview. It may be changed/removed in a futur
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
+
+### <a name="helm-issue"></a>Problem mit Helm
+
+Die Helm-Version `v3.3.0-rc.1` hat ein [Problem](https://github.com/helm/helm/pull/8527). Nach der Helm-Installation bzw. dem Helm-Upgrade (unter der Haube durch die CLI-Erweiterung „connectedk8s“ verwendet) wird durch das Ausführen von allen Hooks der folgende Fehler erzeugt:
+
+```console
+$ az connectedk8s connect -n shasbakstest -g shasbakstest
+Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
+Ensure that you have the latest helm version installed before proceeding.
+This operation might take a while...
+
+Please check if the azure-arc namespace was deployed and run 'kubectl get pods -n azure-arc' to check if all the pods are in running state. A possible cause for pods stuck in pending state could be insufficientresources on the kubernetes cluster to onboard to arc.
+ValidationError: Unable to install helm release: Error: customresourcedefinitions.apiextensions.k8s.io "connectedclusters.arc.azure.com" not found
+```
+
+Befolgen Sie diese Schritte, um das Problem zu beheben:
+
+1. Löschen Sie die betroffene Kubernetes-Ressource mit Azure Arc-Aktivierung im Azure-Portal.
+2. Führen Sie die folgenden Befehle auf dem Computer aus:
+    
+    ```console
+    kubectl delete ns azure-arc
+    kubectl delete clusterrolebinding azure-arc-operator
+    kubectl delete secret sh.helm.release.v1.azure-arc.v1
+    ```
+
+3. [Installieren Sie eine stabile Version](https://helm.sh/docs/intro/install/) von Helm 3 auf Ihrem Computer anstelle der Release Candidate-Version.
+4. Führen Sie den Befehl `az connectedk8s connect` mit den entsprechenden Werten aus, um den Cluster mit Azure Arc zu verbinden.
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

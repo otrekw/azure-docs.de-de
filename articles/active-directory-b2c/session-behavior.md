@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2d6d00ea06bb362d82b5fbdff658b729eed17cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091704fabb7b50a0c83625c6ae46d9a807f01ffc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258983"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961033"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
@@ -46,6 +46,24 @@ Sie können die folgenden Eigenschaften zum Verwalten von Webanwendungssitzungen
     ![Eigenschafteneinstellungen für das Sitzungsverhalten im Azure-Portal](./media/session-behavior/session-behavior.png)
 
 8. Klicken Sie auf **Speichern**.
+
+## <a name="configure-sign-out-behavior"></a>Konfigurieren des Abmeldeverhaltens
+
+### <a name="secure-your-logout-redirect"></a>Sichern der Umleitung beim Abmelden
+
+Nach der Abmeldung wird der Benutzer an den im `post_logout_redirect_uri`-Parameter angegebenen URI umgeleitet, ungeachtet der Antwort-URLs, die für die Anwendung angegeben wurden. Wenn jedoch ein gültiger `id_token_hint`-Wert übergeben wird und die Option **ID-Token in Abmeldeanforderungen erforderlich** aktiviert ist, überprüft Azure AD B2C, ob der Wert von `post_logout_redirect_uri` einem der für die Anwendung konfigurierten Umleitungs-URIs entspricht, bevor die Umleitung ausgeführt wird. Wenn keine entsprechende Antwort-URL für die Anwendung konfiguriert ist, wird eine Fehlermeldung angezeigt, und der Benutzer wird nicht umgeleitet. Gehen Sie wie folgt vor, um festzulegen, dass ein ID-Token in Abmeldeanforderungen erforderlich ist:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **Benutzerflows** aus.
+1. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
+1. Wählen Sie **Eigenschaften** aus.
+1. Aktivieren Sie die Option **ID-Token in Abmeldeanforderungen erforderlich**.
+1. Wechseln Sie zurück zu **Azure AD B2C**.
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann Ihre Anwendung aus.
+1. Siehe **Authentifizierung**.
+1. Geben Sie im Textfeld **Abmelde-URL** den Umleitungs-URI nach der Abmeldung ein, und wählen Sie dann **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

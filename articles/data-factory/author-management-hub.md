@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851984"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570637"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Verwaltungshub in Azure Data Factory
 
@@ -56,7 +56,7 @@ Sie können eine Datei mit benutzerdefinierten Parametern generieren oder bearbe
 
 Trigger legen fest, wann mit dem Ausführen einer Pipeline begonnen werden soll. Derzeit können Trigger zu einer bestimmten Uhrzeit ausgelöst werden, in regelmäßigen Abständen oder abhängig von einem Ereignis. Weitere Informationen finden Sie unter [Triggerausführung](concepts-pipeline-execution-triggers.md#trigger-execution). Im Verwaltungshub können Sie Trigger erstellen, bearbeiten, löschen oder deren aktuellen Status anzeigen.
 
-![Verwalten von benutzerdefinierten Parametern](media/author-management-hub/management-hub-triggers.png)
+![Screenshot: Hier können Sie den aktuellen Status eines Trigger erstellen, bearbeiten, löschen und anzeigen.](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>Globale Parameter
 

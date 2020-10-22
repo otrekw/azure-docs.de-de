@@ -1,21 +1,21 @@
 ---
 title: Verwalten von Berechtigungen und Sicherheit für Rollen in Azure Automation
-description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (RBAC) verwenden, um eine präzise Zugriffsverwaltung für Azure-Ressourcen zu erzielen.
+description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) verwenden, um eine präzise Zugriffsverwaltung für Azure-Ressourcen zu erzielen.
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528667"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91716162"
 ---
 # <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
 
-Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung](../role-based-access-control/overview.md) können Sie Aufgaben innerhalb Ihres Teams verteilen sowie Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Sie können Benutzern über das Azure-Portal, über Azure-Befehlszeilentools oder über Azure-Verwaltungs-APIs rollenbasierten Zugriff gewähren.
+Die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](../role-based-access-control/overview.md) können Sie Aufgaben innerhalb Ihres Teams verteilen sowie Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Sie können Benutzern über das Azure-Portal, über Azure-Befehlszeilentools oder über Azure-Verwaltungs-APIs rollenbasierten Zugriff gewähren.
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-Konten
 
@@ -270,11 +270,11 @@ Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst berei
 |Lösung     |Log Analytics-Mitwirkender         | Lösung|
 |Virtual Machine     | Mitwirkender von virtuellen Computern        | Virtual Machine        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten
+## <a name="configure-azure-rbac-for-your-automation-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung von Azure für Automation-Konten
 
-Der folgende Abschnitt veranschaulicht das Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten über das [Azure-Portal](#configure-rbac-using-the-azure-portal) und [PowerShell](#configure-rbac-using-powershell).
+Der folgende Abschnitt veranschaulicht das Konfigurieren der rollenbasierten Zugriffssteuerung von Azure für Automation-Konten über das [Azure-Portal](#configure-azure-rbac-using-the-azure-portal) und [PowerShell](#configure-azure-rbac-using-powershell).
 
-### <a name="configure-rbac-using-the-azure-portal"></a>Konfigurieren der rollenbasierten Zugriffssteuerung über das Azure-Portal
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>Konfigurieren der rollenbasierten Zugriffssteuerung von Azure über das Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf der Seite „Automation-Konten“ Ihr Automation-Konto.
 2. Klicken Sie auf **Zugriffssteuerung (IAM)** , um die Seite „Zugriffssteuerung (IAM)“ zu öffnen. Auf dieser Seite können Sie neue Benutzer, Gruppen und Anwendungen der Verwaltung Ihres Automation-Kontos hinzufügen und vorhandene Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
@@ -315,7 +315,7 @@ Sie können die Zugriffsberechtigung eines Benutzers, der selbst nicht das Autom
 
    ![Benutzer entfernen](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>Konfigurieren der rollenbasierten Zugriffssteuerung über PowerShell
+### <a name="configure-azure-rbac-using-powershell"></a>Konfigurieren der rollenbasierten Zugriffssteuerung von Azure über PowerShell
 
 Sie können den rollenbasierten Zugriff für ein Automation-Konto auch mit den folgenden [Azure PowerShell-Cmdlets](../role-based-access-control/role-assignments-powershell.md) konfigurieren:
 
@@ -398,9 +398,9 @@ Wenn ein Benutzer, dem im Automation-Kontobereich die Rolle „Operator für Aut
 
 ![Kein Zugriff auf Ressourcen](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>Konfigurieren der rollenbasierten Zugriffssteuerung für Runbooks
+## <a name="configure-azure-rbac-for-runbooks"></a>Konfigurieren der rollenbasierten Zugriffssteuerung von Azure für Runbooks
 
-Mit Azure Automation können Sie bestimmten Runbooks die rollenbasierte Zugriffssteuerung zuweisen. Führen Sie das folgende Skript aus, um einen Benutzer einem bestimmten Runbook hinzuzufügen. Das Skript kann von einem Automation-Kontoadministrator oder einem Mandantenadministrator ausgeführt werden.
+Mit Azure Automation können Sie bestimmten Runbooks Azure-Rollen zuweisen. Führen Sie das folgende Skript aus, um einen Benutzer einem bestimmten Runbook hinzuzufügen. Das Skript kann von einem Automation-Kontoadministrator oder einem Mandantenadministrator ausgeführt werden.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 Nach Ausführung des Skripts muss der Benutzer sich im Azure-Portal anmelden und **Alle Ressourcen** auswählen. In der Liste kann der Benutzer das Runbook sehen, für das er als Automation-Runbookoperator hinzugefügt wurde.
 
-![Rollenbasierte Zugriffssteuerung für Runbooks über das Portal](./media/automation-role-based-access-control/runbook-rbac.png)
+![Rollenbasierte Zugriffssteuerung von Azure für Runbooks über das Portal](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Berechtigungen der Rolle „Operator für Automation“ – Runbook
 
@@ -433,6 +433,6 @@ Wenn ein Benutzer, dem im Runbookbereich die Rolle „Operator für Automation�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu RBAC in PowerShell finden Sie unter [Verwalten von RBAC mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+* Weitere Informationen zu Azure RBAC mithilfe von PowerShell finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 * Ausführliche Informationen zu Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 * Informationen zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](start-runbooks.md).

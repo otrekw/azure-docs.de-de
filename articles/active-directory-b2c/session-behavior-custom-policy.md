@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31257d795dbd06da65e3d07e18a16d9bdf7e782a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385262"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961101"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -26,9 +26,9 @@ Mithilfe der [Sitzungsverwaltung für einmaliges Anmelden](session-overview.md) 
 Sie können die folgenden Eigenschaften zum Verwalten von Webanwendungssitzungen verwenden:
 
 - **Lebensdauer der Web-App-Sitzung (Minuten)** : Die Gültigkeitsdauer von Azure AD B2C-Sitzungscookies, die nach erfolgreicher Authentifizierung des Benutzers im Browser gespeichert werden
-    - Standardwert = 86400 Sekunden (1440 Minuten).
-    - Mindestwert (inkl.) = 900 Sekunden (15 Minuten).
-    - Höchstwert (inkl.) = 86400 Sekunden (1440 Minuten).
+  - Standardwert = 86400 Sekunden (1440 Minuten).
+  - Mindestwert (inkl.) = 900 Sekunden (15 Minuten).
+  - Höchstwert (inkl.) = 86400 Sekunden (1440 Minuten).
 - **Timeout für Web-App-Sitzung**: [Sitzungsablauftyp](session-overview.md#session-expiry-type), *Parallel* oder *Absolut*. 
 - **SSO-Konfiguration**: [Sitzungsbereich](session-overview.md#session-scope) des SSO-Verhaltens über verschiedene Apps und Benutzerflows in Ihrem Azure AD B2C-Mandanten hinweg. 
 
@@ -44,18 +44,42 @@ Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforder
 </UserJourneyBehaviors>
 ```
 
-## <a name="single-sign-out"></a>Einmaliges Abmelden
+## <a name="configure-sign-out-behavior"></a>Konfigurieren des Abmeldeverhaltens
 
-### <a name="configure-the-applications"></a>Konfigurieren der Anwendungen
+### <a name="secure-your-logout-redirect"></a>Sichern der Umleitung beim Abmelden
+
+Nach der Abmeldung wird der Benutzer an den im `post_logout_redirect_uri`-Parameter angegebenen URI umgeleitet, ungeachtet der Antwort-URLs, die für die Anwendung angegeben wurden. Wenn jedoch ein gültiger `id_token_hint`-Wert übergeben wird und die Option **ID-Token in Abmeldeanforderungen erforderlich** aktiviert ist, überprüft Azure AD B2C, ob der Wert von `post_logout_redirect_uri` einem der für die Anwendung konfigurierten Umleitungs-URIs entspricht, bevor die Umleitung ausgeführt wird. Wenn keine entsprechende Antwort-URL für die Anwendung konfiguriert ist, wird eine Fehlermeldung angezeigt, und der Benutzer wird nicht umgeleitet. 
+
+Um festzulegen, dass ein ID-Token in Abmeldeanforderungen erforderlich ist, fügen Sie innerhalb des [RelyingParty](relyingparty.md)-Elements ein **UserJourneyBehaviors**-Element hinzu. Legen Sie dann den **EnforceIdTokenHintOnLogout**-Wert des **SingleSignOn**-Elements auf `true` fest. Das **UserJourneyBehaviors**-Element sollte wie im folgenden Beispiel aussehen:
+
+```xml
+<UserJourneyBehaviors>
+  <SingleSignOn Scope="Tenant" EnforceIdTokenHintOnLogout="true"/>
+</UserJourneyBehaviors>
+```
+
+Gehen Sie wie folgt vor, um die Abmelde-URL Ihrer Anwendung zu konfigurieren:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann Ihre Anwendung aus.
+1. Siehe **Authentifizierung**.
+1. Geben Sie im Textfeld **Abmelde-URL** den Umleitungs-URI nach der Abmeldung ein, und wählen Sie dann **Speichern** aus.
+
+### <a name="single-sign-out"></a>Einmaliges Abmelden
+
+#### <a name="configure-the-applications"></a>Konfigurieren der Anwendungen
 
 Wenn Sie den Benutzer zum Azure AD B2C-Abmeldeendpunkt (für OAuth2- und SAML-Protokolle) umleiten, löscht Azure AD B2C die Sitzung des Benutzers im Browser.  Um das [einmalige Abmelden](session-overview.md#single-sign-out) zuzulassen, legen Sie im Azure-Portal die `LogoutUrl` für die Anwendung fest:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie Ihre Azure AD B2C-Instanz aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken.
 1. Wählen Sie im Menü auf der linken Seite **Azure AD B2C** > **App-Registrierungen** und dann Ihre Anwendung aus.
-1. Wählen Sie **Einstellungen** > **Eigenschaften** aus, und suchen Sie das Textfeld **Abmelde-URL**. 
+1. Siehe **Authentifizierung**.
+1. Geben Sie im Textfeld **Abmelde-URL** den Umleitungs-URI nach der Abmeldung ein, und wählen Sie dann **Speichern** aus.
 
-### <a name="configure-the-token-issuer"></a>Konfigurieren des Tokenausstellers 
+#### <a name="configure-the-token-issuer"></a>Konfigurieren des Tokenausstellers 
 
 Um das einmalige Abmelden zu unterstützen, müssen die technischen Profile des Tokenausstellers für JWT und SAML Folgendes angeben:
 

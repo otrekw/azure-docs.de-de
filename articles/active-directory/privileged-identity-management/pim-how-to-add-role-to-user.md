@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985185"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533841"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
@@ -51,7 +51,7 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
 1. Wählen Sie **Rollen** aus, um die Liste der Rollen für Azure AD-Berechtigungen anzuzeigen.
 
-    ![Azure AD-Rollen](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![Screenshot: Seite „Rollen“ mit ausgewählter Aktion „Zuweisungen hinzufügen“](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. Wählen Sie **Zuweisungen hinzufügen** aus, um die Seite **Zuweisungen hinzufügen** zu öffnen.
 

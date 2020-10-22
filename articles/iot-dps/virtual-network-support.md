@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612777"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998594"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Unterstützung von Azure IoT Hub Device Provisioning Service (DPS) für virtuelle Netzwerke
 

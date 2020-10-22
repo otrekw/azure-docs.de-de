@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072583"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565104"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Austauschen von RosettaNet-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -197,7 +197,7 @@ Sie können Vorlagen für Logik-Apps zum Decodieren und Codieren von RosettaNet-
 
 1. Geben Sie die Informationen für die Eigenschaften der Aktion ein:
 
-   ![Aktionsdetails angeben](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Screenshot: Hier können Sie die Informationen für die Eigenschaften der Aktion eingeben.](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|

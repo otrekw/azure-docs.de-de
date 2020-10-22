@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048481"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576896"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -194,12 +194,24 @@ Die Kombination der Bedingung, der Beispielrichtlinienregel und des Arrays der o
 |`{<field>,"Equals":"127.0.0.1"}` |Nichts |Alle stimmen überein |Ein Arrayelement wird als „true“ ausgewertet (127.0.0.1 == 127.0.0.1) und ein Element als „false“ (127.0.0.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
 |`{<field>,"Equals":"10.0.4.1"}` |Nichts |Alle stimmen überein |Beide Arrayelemente werden als „false“ ausgewertet (10.0.4.1 == 127.0.0.1 und 10.0.4.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
 
-## <a name="the-append-effect-and-arrays"></a>Auswirkung „append“ und Arrays
+## <a name="modifying-arrays"></a>Ändern von Arrays
 
-Das Verhalten der [Auswirkung „append“](../concepts/effects.md#append) hängt davon ab, ob das **details.field** ein **\[\*\]** -Alias ist.
+[append](../concepts/effects.md#append) und [modify](../concepts/effects.md#modify) ändern Eigenschaften von Ressourcen bei deren Erstellung oder einem Update. Beim Arbeiten mit Arrayeigenschaften hängt das Verhalten bei diesen Auswirkungen davon ab, ob der Vorgang versucht, den **\[\*\]** -Alias zu ändern:
 
-- Wenn es kein **\[\*\]** -Alias ist, wird durch „append“ das gesamte Array durch die **value**-Eigenschaft ersetzt.
-- Wenn es ein **\[\*\]** -Alias ist, wird durch „append“ die **value**-Eigenschaft dem vorhandenen Array hinzugefügt oder das neue Array erstellt.
+> [!NOTE]
+> Die Verwendung des `modify`-Effekts mit Aliasen befindet sich derzeit in der **Vorschau**.
+
+|Alias |Wirkung | Ergebnis |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Azure Policy fügt das gesamte in den Auswirkungsdetails angegebene Array an, wenn nicht vorhanden. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` mit `add`-Vorgang | Azure Policy fügt das gesamte in den Auswirkungsdetails angegebene Array an, wenn nicht vorhanden. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` mit `addOrReplace`-Vorgang | Azure Policy fügt das gesamte in den Auswirkungsdetails angegebene Array an, wenn nicht vorhanden, oder ersetzt das vorhandene Array. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Policy fügt den in den Auswirkungsdetails angegebenen Arraymember an, wenn nicht vorhanden. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` mit `add`-Vorgang | Azure Policy fügt den in den Auswirkungsdetails angegebenen Arraymember an, wenn nicht vorhanden. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` mit `addOrReplace`-Vorgang | Azure Policy entfernt alle vorhandenen Arraymember und fügt den in den Auswirkungsdetails angegebenen Arraymember an. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Policy fügt einen Wert an die `action`-Eigenschaft der einzelnen Arraymember an. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` mit `add`-Vorgang | Azure Policy fügt einen Wert an die `action`-Eigenschaft der einzelnen Arraymember an. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` mit `addOrReplace`-Vorgang | Azure Policy fügt bei den einzelnen Arraymembern die `action`-Eigenschaft an oder ersetzt sie, wenn vorhanden. |
 
 Weitere Informationen finden Sie unter [Beispiele für „append“](../concepts/effects.md#append-examples).
 

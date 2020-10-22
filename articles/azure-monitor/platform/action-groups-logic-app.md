@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321886"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403125"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -108,7 +108,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
     ![Microsoft Teams-Aktionen](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-Aktionen")
 
-12. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logik-Apps-Designer** fordert Sie zur Authentifizierung mit Ihrem Office 365-Konto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
+12. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logic Apps Designer** fordert Sie zur Authentifizierung mit Ihrem Geschäfts-, Schul- oder Unikonto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
 
 13. Konfigurieren Sie die Nachricht mithilfe einer Kombination aus statischem Text und Verweisen auf die \<fields\> im dynamischen Inhalt. Kopieren Sie den folgenden Text, und fügen Sie ihn in das Feld **Nachricht** ein:
 

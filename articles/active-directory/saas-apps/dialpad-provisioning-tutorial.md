@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328053"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848958"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dialpad für die automatische Benutzerbereitstellung
 
@@ -54,13 +54,13 @@ Bevor Sie Dialpad für die automatische Benutzerbereitstellung mit Azure AD konf
 
 1. Melden Sie sich bei der [Dialpad-Verwaltungskonsole](https://dialpadbeta.com/login) an, und klicken Sie auf **Administratoreinstellungen**. Stellen Sie sicher, dass **My Company** (Mein Unternehmen) in der Dropdownliste ausgewählt ist. Navigieren Sie zu **Authentifizierung > API-Schlüssel**.
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
 2. Generieren Sie einen neuen Schlüssel, indem Sie auf **Add a key** (Schlüssel hinzufügen) klicken und die Eigenschaften des geheimen Tokens konfigurieren.
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
 3. Klicken Sie für den soeben erstellten API-Schlüssel auf die Schaltfläche **Click to show value** (Klicken, um Wert anzuzeigen), und kopieren Sie den angezeigten Wert. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Dialpad-Anwendung in das Feld **Geheimes Token** eingegeben. 
 
@@ -89,19 +89,19 @@ Sie müssen Dialpad aus dem Azure AD-Anwendungskatalog Ihrer Liste mit den verwa
 
 5. Navigieren Sie in einem separaten Browserfenster zu der unten hervorgehobenen **URL**. 
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
 6. Klicken Sie in der oberen rechten Ecke auf **Anmelden > Use Dialpad online** (Dialpad online verwenden).
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
 7. Da Dialpad eine OpenIDConnect-App ist, können Sie sich mit Ihrem Microsoft-Geschäftskonto bei Dialpad anmelden.
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
 8. Akzeptieren Sie nach der erfolgreichen Authentifizierung auf der Zustimmungsseite die Zustimmungsaufforderung. Die Anwendung wird dann automatisch Ihrem Mandanten hinzugefügt, und Sie werden zu Ihrem Dialpad-Konto umgeleitet.
 
-    ![SCIM in Dialpad hinzufügen](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurieren der automatischen Benutzerbereitstellung in Dialpad
 

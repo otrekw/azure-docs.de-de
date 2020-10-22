@@ -2,15 +2,15 @@
 title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
-ms.date: 06/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003353"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217217"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -45,7 +45,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Rufen Sie den Abschnitt [Netzwerkkonfiguration](../automation-hybrid-runbook-worker.md#network-planning) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.  
 
-* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/update-mgmt-scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace).
+* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Entfernen Sie die Workerkonfiguration, indem Sie die Schritte unter [Entfernen des Hybrid Runbook Workers von einem lokalen Windows-Computer](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) oder [Bereitstellen eines Linux-Hybrid Runbook Workers](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker) ausführen.
 
@@ -57,27 +57,25 @@ Alte Updates werden im Automation-Konto als fehlend angezeigt, selbst wenn sie b
 
 ### <a name="cause"></a>Ursache
 
-Ersetzte Updates werden nicht ordnungsgemäß als abgelehnt angegeben, damit sie als nicht zutreffend erkannt werden können.
+Ersetzte Updates werden in Windows Server Update Services (WSUS) nicht abgelehnt, sodass sie als nicht anwendbar angesehen werden können.
 
 ### <a name="resolution"></a>Lösung
 
-Wenn ein ersetztes Update zu 100 Prozent nicht mehr anwendbar ist, sollten Sie den Genehmigungsstatus dieses Updates in `Declined` ändern. So ändern Sie den Genehmigungsstatus für alle Ihre Updates:
+Wenn ein ersetztes Update zu 100 Prozent nicht mehr anwendbar ist, sollten Sie den Genehmigungsstatus dieses Updates in WSUS in `Declined` ändern. So ändern Sie den Genehmigungsstatus für alle Ihre Updates:
 
-1. Wählen Sie im Automation-Konto **Updateverwaltung** aus, um den Computerstatus anzuzeigen. Siehe [Anzeigen von Updatebewertungen](../update-management/update-mgmt-view-update-assessments.md).
+1. Wählen Sie im Automation-Konto **Updateverwaltung** aus, um den Computerstatus anzuzeigen. Siehe [Anzeigen von Updatebewertungen](../update-management/view-update-assessments.md).
 
-2. Überprüfen Sie das ersetzte Update, um sicherzustellen, dass es zu 100 Prozent nicht anwendbar ist. 
+2. Überprüfen Sie das ersetzte Update, um sicherzustellen, dass es zu 100 Prozent nicht anwendbar ist.
 
-3. Markieren Sie das Update als abgelehnt, außer wenn Sie eine Frage zu dem Update haben. 
+3. [Lehnen Sie das Update auf dem WSUS-Server ab](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates), an den die Übermittlung der Computer erfolgt.
 
-4. Wählen Sie **Computer** aus, und erzwingen Sie in der Spalte **Konformität** eine erneute Überprüfung auf Konformität. Weitere Informationen finden Sie unter [Verwalten von Updates für VMs](../update-management/update-mgmt-manage-updates-for-vm.md).
+4. Wählen Sie **Computer** aus, und erzwingen Sie in der Spalte **Konformität** eine erneute Überprüfung auf Konformität. Weitere Informationen finden Sie unter [Verwalten von Updates für VMs](../update-management/manage-updates-for-vm.md).
 
 5. Wiederholen Sie die obigen Schritte für weitere ersetzte Updates.
 
-6. Führen Sie den Bereinigungs-Assistenten aus, um Dateien aus den abgelehnten Updates zu löschen. 
+6. Bereinigen Sie für Windows Server Update Services (WSUS) mithilfe des WSUS-[Assistenten für die Serverbereinigung](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard) alle ersetzten Updates, um die Infrastruktur zu aktualisieren.
 
-7. Bereinigen Sie für Windows Server Update Services (WSUS) alle ersetzten Updates manuell, um die Infrastruktur zu aktualisieren.
-
-8. Wiederholen Sie dieses Verfahren regelmäßig, um das Anzeigeproblem zu korrigieren und den für die Updateverwaltung verwendeten Datenträgerspeicherplatz zu minimieren.
+7. Wiederholen Sie dieses Verfahren regelmäßig, um das Anzeigeproblem zu korrigieren und den für die Updateverwaltung verwendeten Datenträgerspeicherplatz zu minimieren.
 
 ## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Szenario: Im Portal werden unter „Updateverwaltung“ keine Computer angezeigt
 
@@ -112,11 +110,11 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
    | summarize by Computer, Solutions
    ```
 
-4. Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
+4. Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/update-mgmt-scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. 
+5. Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden.
 
-6. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Informationen hierzu finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace).
+6. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Informationen hierzu finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
 7. Führen Sie in Ihrem Arbeitsbereich diese Abfrage aus.
 
@@ -180,7 +178,7 @@ Wenn Ihr Abonnement nicht für den Automation-Ressourcenanbieter konfiguriert is
 
 1. Rufen Sie im [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) die Azure-Liste der Dienste.
 
-2. Wählen Sie **Alle Dienste** und anschließend in der Gruppe „Allgemeiner Dienst“ die Option **Abonnements** aus. 
+2. Wählen Sie **Alle Dienste** und anschließend in der Gruppe „Allgemeiner Dienst“ die Option **Abonnements** aus.
 
 3. Suchen Sie das Abonnement, das im Bereich für Ihre Bereitstellung definiert ist.
 
@@ -192,11 +190,11 @@ Wenn Ihr Abonnement nicht für den Automation-Ressourcenanbieter konfiguriert is
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Computer sind bei Ausführung des Zeitplans nicht verfügbar oder nicht ordnungsgemäß markiert
 
-Führen Sie das folgende Verfahren aus, wenn Ihr Abonnement für den Automation-Ressourcenanbieter konfiguriert ist, beim Ausführen des Updatetezeitplans mit den angegebenen [dynamischen Gruppen](../update-management/update-mgmt-groups.md) jedoch einige Computer ausgelassen wurden.
+Führen Sie das folgende Verfahren aus, wenn Ihr Abonnement für den Automation-Ressourcenanbieter konfiguriert ist, beim Ausführen des Updatetezeitplans mit den angegebenen [dynamischen Gruppen](../update-management/configure-groups.md) jedoch einige Computer ausgelassen wurden.
 
 1. Öffnen Sie im Azure-Portal das Automation-Konto, und wählen Sie **Updateverwaltung** aus.
 
-2. Bestimmen Sie anhand des Verlaufs der [Updateverwaltung](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) den genauen Zeitpunkt, zu dem die Updatebereitstellung ausgeführt wurde.
+2. Bestimmen Sie anhand des Verlaufs der [Updateverwaltung](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) den genauen Zeitpunkt, zu dem die Updatebereitstellung ausgeführt wurde.
 
 3. Verwenden Sie für Computer, die mutmaßlich von der Updateverwaltung ausgelassen wurden, Azure Resource Graph (ARG), um [Computeränderungen zu bestimmen](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details).
 
@@ -226,13 +224,13 @@ Mögliche Ursachen für dieses Problem:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Inkorrekter Zugriff auf ausgewählte Bereiche
 
-Im Azure-Portal werden nur Computer angezeigt, für die Sie in einem bestimmten Bereich über Schreibzugriff verfügen. Wenn Sie nicht über den entsprechenden Zugriff für einen Bereich verfügen, informieren Sie sich unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md).
+Im Azure-Portal werden nur Computer angezeigt, für die Sie in einem bestimmten Bereich über Schreibzugriff verfügen. Wenn Sie nicht über den entsprechenden Zugriff für einen Bereich verfügen, informieren Sie sich unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer über das Azure-Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>Die ARG-Abfrage gibt nicht die erwarteten Computer zurück.
 
 Führen Sie die Schritte unten aus, um festzustellen, ob Ihre Abfragen ordnungsgemäß funktionieren.
 
-1. Führen Sie im Azure-Portal auf dem Blatt „Resource Graph-Explorer“ eine ARG-Abfrage aus, die wie unten veranschaulicht formatiert ist. Diese Abfrage imitiert die Filter, die Sie beim Erstellen der dynamischen Gruppe in der Updateverwaltung ausgewählt haben. Siehe [Verwenden dynamischer Gruppen mit der Updateverwaltung](../update-management/update-mgmt-groups.md).
+1. Führen Sie im Azure-Portal auf dem Blatt „Resource Graph-Explorer“ eine ARG-Abfrage aus, die wie unten veranschaulicht formatiert ist. Diese Abfrage imitiert die Filter, die Sie beim Erstellen der dynamischen Gruppe in der Updateverwaltung ausgewählt haben. Siehe [Verwenden dynamischer Gruppen mit der Updateverwaltung](../update-management/configure-groups.md).
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -251,7 +249,7 @@ Führen Sie die Schritte unten aus, um festzustellen, ob Ihre Abfragen ordnungsg
     | project id, location, name, tags
     ```
 
-2. Überprüfen Sie, ob die gesuchten Computer in den Abfrageergebnissen aufgeführt sind. 
+2. Überprüfen Sie, ob die gesuchten Computer in den Abfrageergebnissen aufgeführt sind.
 
 3. Wenn die Computer nicht aufgeführt sind, liegt wahrscheinlich ein Problem mit dem in der dynamischen Gruppe ausgewählten Filter vor. Passen Sie die Gruppenkonfiguration entsprechend den jeweiligen Anforderungen an.
 
@@ -305,7 +303,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>Kommunikation mit dem Automation-Konto blockiert
 
-Rufen Sie den Abschnitt [Netzwerkplanung](../update-management/update-mgmt-overview.md#ports) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
+Rufen Sie den Abschnitt [Netzwerkplanung](../update-management/overview.md#ports) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
 
 #### <a name="duplicate-computer-name"></a>Doppelter Computername
 
@@ -325,7 +323,7 @@ Wenn Sie ein geklontes Image verwenden, weisen verschiedene Computernamen die gl
 
 3. Führen Sie `Restart-Service HealthService` aus, um den Integritätsdienst neu zu starten. Mit diesem Vorgang wird der Schlüssel neu erstellt und eine neue UUID generiert.
 
-4. Wenn dieser Ansatz nicht funktioniert, führen Sie zuerst Sysprep auf dem Image aus, und installieren Sie dann den MMA.
+4. Wenn dieser Ansatz nicht funktioniert, führen Sie zuerst Sysprep auf dem Image aus, und installieren Sie dann den Log Analytics-Agent für Windows.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Szenario: Sie erhalten einen Fehler aufgrund eines verknüpften Abonnements, wenn Sie eine Updatebereitstellung für Computer in einem anderen Azure-Mandanten erstellen.
 
@@ -343,7 +341,7 @@ Dieser Fehler tritt bei der Erstellung einer Updatebereitstellung auf, bei der A
 
 ### <a name="resolution"></a>Lösung
 
-Verwenden Sie die folgende Problemumgehung, um die Planung durchzuführen. Sie können das Cmdlet [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) mit dem `ForUpdateConfiguration`-Parameter verwenden, um einen Zeitplan zu erstellen. Verwenden Sie dann das Cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0), und übergeben Sie die Computer im anderen Mandanten an den Parameter `NonAzureComputer`. Dies wird anhand des folgenden Beispiels veranschaulicht:
+Verwenden Sie die folgende Problemumgehung, um die Planung durchzuführen. Sie können das Cmdlet [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) mit dem `ForUpdateConfiguration`-Parameter verwenden, um einen Zeitplan zu erstellen. Verwenden Sie dann das Cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration), und übergeben Sie die Computer im anderen Mandanten an den Parameter `NonAzureComputer`. Dies wird anhand des folgenden Beispiels veranschaulicht:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -386,24 +384,15 @@ Dieser Fehler kann aus einem der folgenden Gründe auftreten:
 * Der Computer ist nicht mehr vorhanden.
 * Der Computer ist ausgeschaltet und nicht erreichbar.
 * Für den Computer besteht ein Netzwerkverbindungsproblem. Daher ist der Hybrid Worker auf dem Computer nicht erreichbar.
-* Ein Update des MMA hat zu einer Änderung der Quellcomputer-ID geführt.
+* Ein Update des Log Analytics-Agents hat zu einer Änderung der Quellcomputer-ID geführt.
 * Die Ausführung des Updates wurde gedrosselt, wenn das Limit von 200 gleichzeitigen Aufträgen in einem Automation-Konto erreicht wurde. Jede Bereitstellung kann als Auftrag betrachtet werden, und jeder Computer in einer Updatebereitstellung zählt als Auftrag. Jeder andere Automatisierungsauftrag oder jede Updatebereitstellung, der bzw. die in Ihrem Automation-Konto ausgeführt wird, wird auf das Limit für gleichzeitige Aufträge angerechnet.
 
 ### <a name="resolution"></a>Lösung
 
-Verwenden Sie [dynamische Gruppen](../update-management/update-mgmt-groups.md) (falls vorhanden) für Ihre Updatebereitstellungen. Außerdem können Sie die folgenden Schritte ausführen.
+Verwenden Sie [dynamische Gruppen](../update-management/configure-groups.md) (falls vorhanden) für Ihre Updatebereitstellungen. Außerdem können Sie die folgenden Schritte ausführen.
 
-1. Stellen Sie sicher, dass der Computer noch vorhanden und erreichbar ist. 
-2. Wenn der Computer nicht mehr vorhanden ist, bearbeiten Sie Ihre Bereitstellung, und entfernen Sie den Computer.
-3. Im Abschnitt [Netzwerkplanung](../update-management/update-mgmt-overview.md#ports) finden Sie eine Liste der Ports und Adressen, die für die Updateverwaltung erforderlich sind. Stellen Sie sicher, dass Ihr Computer diese Anforderungen erfüllt.
-4. Überprüfen Sie die Konnektivität mit dem Hybrid Runbook Worker mithilfe der Problembehandlung für den Hybrid Runbook Worker-Agent. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md).
-5. Führen Sie die folgende Abfrage in Log Analytics aus, um nach Computern in Ihrer Umgebung zu suchen, bei denen sich die Quellcomputer-ID geändert hat. Suchen Sie nach Computern, die denselben `Computer`-Wert, aber einen anderen `SourceComputerId`-Wert aufweisen.
-
-   ```kusto
-   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
-   ```
-
-6. Nachdem Sie die betroffenen Computer gefunden haben, bearbeiten Sie die Updatebereitstellungen für diese Computer. Anschließend müssen Sie die Computer entfernen und dann erneut hinzufügen, damit die `SourceComputerId` den richtigen Wert aufweist.
+1. Vergewissern Sie sich, dass der Computer oder Server die [Anforderungen](../update-management/overview.md#client-requirements) erfüllt.
+2. Überprüfen Sie die Konnektivität mit dem Hybrid Runbook Worker mithilfe der Problembehandlung für den Hybrid Runbook Worker-Agent. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Szenario: Updates werden ohne Bereitstellung installiert.
 
@@ -466,7 +455,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Ursache
 
-Möglicherweise wird die Netzwerkkommunikation durch einen Proxy, ein Gateway oder eine Firewall blockiert. 
+Möglicherweise wird die Netzwerkkommunikation durch einen Proxy, ein Gateway oder eine Firewall blockiert.
 
 ### <a name="resolution"></a>Lösung
 
@@ -498,9 +487,11 @@ Das Standardwartungsfenster für Updates beträgt 120 Minuten. Sie können das W
 
 ### <a name="resolution"></a>Lösung
 
+Um zu ermitteln, warum dieses Problem während der Ausführung eines Updates nach dem erfolgreichen Start auftritt, [überprüfen Sie die Auftragsausgabe](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) des von der Ausführung betroffenen Computers. Möglicherweise finden Sie spezifische Fehlermeldungen von Ihren Computern, die Sie untersuchen können, um dann Maßnahmen zu ergreifen.  
+
 Bearbeiten Sie alle fehlgeschlagenen, geplanten Updatebereitstellungen, und vergrößern Sie das Wartungsfenster.
 
-Weitere Informationen zu Wartungsfenstern finden Sie unter [Installieren von Updates](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment).
+Weitere Informationen zu Wartungsfenstern finden Sie unter [Installieren von Updates](../update-management/deploy-updates.md#schedule-an-update-deployment).
 
 ## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>Szenario: Computer wird als „Nicht bewertet“ mit einer HRESULT-Ausnahme angezeigt.
 
@@ -531,7 +522,7 @@ Wird ein HRESULT angezeigt, doppelklicken Sie auf die rot angezeigte Ausnahme, u
 |Ausnahme  |Lösung oder Aktion  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | Suchen Sie den entsprechenden Fehlercode in der [Windows Update-Fehlercodeliste](https://support.microsoft.com/help/938205/windows-update-error-code-list), um weitere Details zur Ursache der Ausnahme zu erfahren.        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über Netzwerkkonnektivität zur Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../update-management/update-mgmt-overview.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über Netzwerkkonnektivität zur Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../update-management/overview.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
 |`0x8024001E`| Der Updatevorgang konnte nicht abgeschlossen werden, weil der Dienst oder das System heruntergefahren wurden.|
 |`0x8024002E`| Der Windows Update-Dienst ist deaktiviert.|
 |`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server angeben.        |
@@ -565,9 +556,9 @@ Mögliche Ursachen:
 
 ### <a name="resolution"></a>Lösung
 
-Wenn während der Ausführung eines Updates nach dem erfolgreichen Start Fehler auftreten, [überprüfen Sie die Auftragsausgabe](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) des von der Ausführung betroffenen Computers. Möglicherweise finden Sie spezifische Fehlermeldungen von Ihren Computern, die Sie untersuchen können, um dann Maßnahmen zu ergreifen. Updateverwaltung setzt voraus, dass der Paket-Manager für eine erfolgreiche Bereitstellung von Updates fehlerfrei ist.
+Wenn während der Ausführung eines Updates nach dem erfolgreichen Start Fehler auftreten, [überprüfen Sie die Auftragsausgabe](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) des von der Ausführung betroffenen Computers. Möglicherweise finden Sie spezifische Fehlermeldungen von Ihren Computern, die Sie untersuchen können, um dann Maßnahmen zu ergreifen. Updateverwaltung setzt voraus, dass der Paket-Manager für eine erfolgreiche Bereitstellung von Updates fehlerfrei ist.
 
-Wenn bestimmte Patches, Pakete oder Updates unmittelbar vor dem Fehlschlagen des Auftrags angezeigt werden, können Sie versuchen, diese Elemente aus der nächsten Updatebereitstellung [auszuschließen](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment). Informationen zum Sammeln von Protokollinformationen aus Windows Update finden Sie unter [Windows Update-Protokolldateien](/windows/deployment/update/windows-update-logs).
+Wenn bestimmte Patches, Pakete oder Updates unmittelbar vor dem Fehlschlagen des Auftrags angezeigt werden, können Sie versuchen, diese Elemente aus der nächsten Updatebereitstellung [auszuschließen](../update-management/deploy-updates.md#schedule-an-update-deployment). Informationen zum Sammeln von Protokollinformationen aus Windows Update finden Sie unter [Windows Update-Protokolldateien](/windows/deployment/update/windows-update-logs).
 
 Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der Datei **/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log**, und bewahren Sie sie für Problembehandlungszwecke auf, bevor die nächste Bereitstellung von Updates beginnt.
 
@@ -577,7 +568,7 @@ Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der Da
 
 Versuchen Sie, Updates direkt auf dem Computer auszuführen. Wenn der Computer die Updates nicht anwenden kann, sehen Sie sich die [Liste mit potenziellen Fehlern im Handbuch zur Problembehandlung](#hresult) an.
 
-Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen einer VM für die Updateverwaltung](../update-management/update-mgmt-remove-vms.md) ausführen.
+Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen einer VM für die Updateverwaltung](../update-management/remove-vms.md) ausführen.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ich weiß, dass Updates verfügbar sind, diese werden auf meinen Computern aber nicht als verfügbar angezeigt.
 
@@ -597,7 +588,7 @@ Updates werden oft durch andere Updates ersetzt. Weitere Informationen finden Si
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Installieren von Updates durch Klassifizierung unter Linux
 
-Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese Einschränkungen sind auf der [Übersichtsseite für die Updateverwaltung](../update-management/update-mgmt-overview.md#linux) dokumentiert.
+Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese Einschränkungen sind auf der [Übersichtsseite für die Updateverwaltung](../update-management/overview.md#linux) dokumentiert.
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 fehlt dauerhaft.
 

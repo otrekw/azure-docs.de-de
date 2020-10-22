@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 07916b7f7e5d0f1e755ae9759a16541eede45a41
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274774"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950481"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Serverseitige Verschlüsselung von Azure Disk Storage für PowerShell
 
@@ -76,7 +76,7 @@ Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein e
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+Die doppelte Verschlüsselung ist in allen Regionen verfügbar, in denen verwalteter Datenträger verfügbar sind.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Vergleich: Serverseitige Verschlüsselung und Azure-Datenträgerverschlüsselung
 

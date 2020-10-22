@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321355"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848856"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 |**Betriebszeit-SLA**|99,99 %|99,99 %|99,99 %|
 |**Maximale Sicherungsaufbewahrung**|7 Tage|35 Tage|35 Tage|
 |**CPU**|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
-|**E/A-Durchsatz (ungefähr)** |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
+|**IOPS (ungefähr)** \* |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
 |**E/A-Wartezeit (ungefähr)**|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|
 |**Columnstore-Indizierung** |–|S3 und höher|Unterstützt|
 |**In-Memory-OLTP**|–|–|Unterstützt|
 
+\* Alle Lese- und Schreib-IOPS mit Datendateien, einschließlich Hintergrund-E/A (Prüfpunkt und verzögertes Schreiben)
+
 > [!IMPORTANT]
-> Die Dienstebenen „Basic“, „Standard S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
+> Die Dienstziele „Basic“, „S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird ein Dienstziel von S3 oder höher empfohlen. 
 >
->Im Hinblick auf die Datenspeicherung werden die Dienstebenen „Basic“, „Standard S0“ und „S1“ in Standard-Seitenblobs platziert. Standard-Seitenblobs arbeiten mit HDD-basierten Speichermedien und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
+> Bei den Dienstzielen „Basic“, „S0“ und „S1“ werden Datenbankdateien in Azure Storage Standard gespeichert. Dabei kommen Speichermedien mit Festplattenlaufwerken (HDD) zum Einsatz. Diese Dienstziele eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
 >
+
+> [!TIP]
+> Für die tatsächlichen Grenzwerte für die [Ressourcengovernance](resource-limits-logical-server.md#resource-governance) einer Datenbank oder eines Pools für elastische Datenbanken fragen Sie die Sicht [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ab.
 
 > [!NOTE]
 > Sie können eine kostenlose Datenbank in Azure SQL-Datenbank mit dem Diensttarif „Basic“ in Verbindung mit einem kostenlosen Azure-Konto erhalten, um Azure kennenzulernen. Weitere Informationen finden Sie unter [Mit dem kostenlosen Azure-Konto eine verwaltete Clouddatenbank erstellen](https://azure.microsoft.com/free/services/sql-database/).

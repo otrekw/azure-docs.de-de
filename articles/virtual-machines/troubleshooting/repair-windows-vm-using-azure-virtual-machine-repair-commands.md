@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 7addc87f3096a75a55d0ea3b5804fd0006d5cb8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82bebcbda3110d51ae72df1fb4b18fedaa6c2f4e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526485"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91597701"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Windows-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um das VM-Problem zu beheben:
 1. Starten von Azure Cloud Shell
 2. Führen Sie „az extension add/update“ aus.
 3. Führen Sie „az vm repair create“ aus.
-4. Führen Sie „az vm repair run“ aus.
+4. Führen Sie „az vm repair run“ oder die Schritte zur Entschärfung aus.
 5. Führen Sie „az vm repair restore“ aus.
 
 Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](/cli/azure/ext/vm-repair/vm/repair).
@@ -60,7 +60,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](/cli/azure
 
    Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie ``az --version`` aus, um die Version zu ermitteln. Informationen zum Installieren oder Aktualisieren Ihrer Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
    
-   Wenn Sie sich bei Cloud Shell mit einem Konto anmelden müssen, das nicht das Konto ist, mit dem Sie zurzeit beim Azure-Portal angemeldet sind, können Sie ``az login`` ([az login-Referenz](/cli/azure/reference-index?view=azure-cli-latest#az-login)) verwenden.  Um zwischen den Abonnements zu wechseln, die Ihrem Konto zugeordnet sind, können Sie ``az account set --subscription`` ([az account set-Referenz](/cli/azure/account?view=azure-cli-latest#az-account-set)) verwenden.
+   Wenn Sie sich bei Cloud Shell mit einem Konto anmelden müssen, das nicht das Konto ist, mit dem Sie zurzeit beim Azure-Portal angemeldet sind, können Sie ``az login`` ([az login-Referenz](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true)) verwenden.  Um zwischen den Abonnements zu wechseln, die Ihrem Konto zugeordnet sind, können Sie ``az account set --subscription`` ([az account set-Referenz](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true)) verwenden.
 
 2. Wenn Sie die `az vm repair`-Befehle zum ersten Mal verwenden, fügen Sie die CLI-Erweiterung „vm-repair“ hinzu.
 
@@ -77,14 +77,16 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](/cli/azure
 3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM. Die Ressourcengruppe und der VM-Name, die in allen Schritten verwendet werden, gelten für die nicht funktionale VM. Wenn Ihre VM Azure Disk Encryption verwendet, versucht der Befehl, den verschlüsselten Datenträger zu entsperren, sodass beim Anfügen an die Reparatur-VM darauf zugegriffen werden kann.
 
    ```azurecli-interactive
-   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
+   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
-4. Führen Sie `az vm repair run` aus. Mit diesem Befehl wird das angegebene Reparaturskript auf dem zugeordneten Datenträger über die Reparatur-VM ausgeführt. Wenn in dem von Ihnen verwendeten Leitfaden zur Problembehandlung eine Ausführungs-ID (run-id) angegeben ist, verwenden Sie sie hier. Andernfalls können Sie mit `az vm repair list-scripts` verfügbare Reparaturskripts anzeigen. Die Ressourcengruppe und der VM-Name, die hier verwendet werden, gelten für die nicht funktionale VM, die in Schritt 3 verwendet wird.
+4. Führen Sie `az vm repair run` aus. Mit diesem Befehl wird das angegebene Reparaturskript auf dem zugeordneten Datenträger über die Reparatur-VM ausgeführt. Wenn in dem von Ihnen verwendeten Leitfaden zur Problembehandlung eine Ausführungs-ID (run-id) angegeben ist, verwenden Sie sie hier. Andernfalls können Sie mit `az vm repair list-scripts` verfügbare Reparaturskripts anzeigen. Die Ressourcengruppe und der VM-Name, die hier verwendet werden, gelten für die nicht funktionale VM, die in Schritt 3 verwendet wird. Weitere Informationen zu den Reparaturskripts finden Sie in der [Bibliothek mit Reparaturskripts](https://github.com/Azure/repair-script-library).
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
+   
+   Optional können Sie alle erforderlichen manuellen Schritte zur Entschärfung auch mithilfe der Reparatur-VM ausführen und dann mit Schritt 5 fortfahren.
 
 5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht. Die Ressourcengruppe und der VM-Name, die hier verwendet werden, gelten für die nicht funktionale VM, die in Schritt 3 verwendet wird.
 

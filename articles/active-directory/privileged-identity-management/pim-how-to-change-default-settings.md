@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4ab3ae459d5719e965be668c529eacf0ab86d19b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055485"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541134"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
@@ -196,7 +196,7 @@ Wenn Sie die angeforderte Genehmigung zum Aktivieren einer Rolle delegieren möc
 
 1. Legen Sie den Schalter **Genehmigung anfordern** auf **Aktiviert** fest. Der Bereich wird erweitert und zeigt Optionen zum Auswählen von genehmigenden Personen an.
 
-    ![Azure AD-Rollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Screenshot: Schalter „Genehmigung erforderlich“ mit ausgewählter Option „Aktivieren“](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     Wenn Sie keine genehmigenden Personen angeben, wird der Administrator für privilegierte Rollen zum Standardgenehmiger und muss dann alle Aktivierungsanforderungen für diese Rolle genehmigen.
 

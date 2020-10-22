@@ -1,14 +1,16 @@
 ---
 title: Markdown-Format – QnA Maker
 description: Im Folgenden finden Sie eine Liste der Markdown-Formate, die Sie im Antworttext von QnA Maker verwenden können.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652749"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777359"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Im Antworttext von QnA Maker unterstütztes Markdown-Format
 
@@ -35,10 +37,10 @@ Eine neue Zeile zwischen zwei Sätzen.|`\n\n`|`How can I create a bot with \n\n 
 |URL für einen Link|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![Für URL (Hyperlink) formatieren](./media/qnamaker-concepts-datasources/format-url.png)|
 |*URL für öffentliches Bild|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![Für öffentliche Bild-URL formatieren ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |Durchgestrichen|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![Durchgestrichen formatieren](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|Fett und kursiv|`***text***`|`How can I create a ***QnA Maker*** bot?`|![Fett und kursiv formatieren](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|Fette URL für einen Link|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![Fett formatierte URL](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Fett und kursiv|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![Fett und kursiv formatieren](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Fette URL für einen Link|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![Fett formatierte URL](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Kursive URL für Link|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![Kursive URL formatieren](./media/qnamaker-concepts-datasources/format-url-italics.png)|
-|Markdown-Escapesymbole|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Kursive URL formatieren](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Markdown-Escapesymbole|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Format für Markdown-Escapesymbole](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Sortierte Liste|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Im vorangehenden Beispiel wird die in Markdown integrierte automatische Nummerierung verwendet.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Im vorangehenden Beispiel wird die explizite Nummerierung verwendet.|![Geordnete Liste formatieren](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Unsortierte Liste|`\n * item1 \n * item2`<br>oder<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![Unsortierte Liste](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |Geschachtelte Listen|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Sie können sortierte und unsortierte Listen schachteln. Der Tabstopp `\t` gibt die Einzugsebene des untergeordneten Elements an.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![Unsortierte geschachtelte Liste formatieren](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![Sortierte geschachtelte Liste formatieren](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|

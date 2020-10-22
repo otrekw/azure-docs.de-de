@@ -1,25 +1,25 @@
 ---
-title: Verwenden des aggregierten Azure HPC Cache-Namespace
+title: Erläuterungen zum aggregierten Azure HPC Cache-Namespace
 description: Planen des virtuellen Namespace für Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497028"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612947"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Planen des aggregierten Namespace
 
 Azure HPC Cache ermöglicht Clients den Zugriff auf eine Vielzahl von Speichersystemen über einen virtuellen Namespace, der die Details des Back-End-Speichersystems verbirgt.
 
-Beim Hinzufügen eines Speicherziels legen Sie den clientseitigen Dateipfad fest. Clientcomputer binden diesen Dateipfad ein und können Dateileseanforderungen an den Cache stellen, anstatt das Speichersystem direkt einzubinden.
+Nach dem Hinzufügen eines Speicherziels richten Sie mindestens einen clientseitigen Namespacepfad für das Speicherziel ein. Clientcomputer binden diesen Dateipfad ein und können Dateileseanforderungen an den Cache stellen, anstatt das Speichersystem direkt einzubinden.
 
-Da Azure HPC Cache dieses virtuelle Dateisystem verwaltet, können Sie das Speicherziel ändern, ohne den clientseitigen Pfad zu ändern. Beispielsweise können Sie ein Hardware-Speichersystem durch Cloudspeicher ersetzen, ohne die clientseitigen Prozeduren erneut generieren zu müssen.
+Da Azure HPC Cache dieses virtuelle Dateisystem verwaltet, können Sie das Speicherziel ändern, ohne den clientseitigen Pfad zu ändern. Beispielsweise können Sie ein Hardwarespeichersystem durch Cloudspeicher ersetzen, ohne die clientseitigen Prozeduren erneut erstellen zu müssen.
 
 ## <a name="aggregated-namespace-example"></a>Beispiel zum aggregierten Namespace
 
@@ -48,7 +48,7 @@ Um den komfortablen Zugriff über den Cache zu ermöglichen, sollten Sie das Ers
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | sourcecollection                        | /source/               |
 
-Ein NFS-Speicherziel kann mehrere virtuelle Namespacepfade aufweisen, sofern jeder von ihnen auf einen eindeutigen Exportpfad verweist.
+Ein NFS-Speicherziel kann mehrere virtuelle Namespacepfade aufweisen, sofern jeder von ihnen auf einen eindeutigen Exportpfad verweist. (Lesen Sie [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths), um die empfohlene maximale Anzahl von Namespacepfaden pro NFS-Speicherziel zu erfahren.)
 
 Da es sich bei den NFS-Quellpfaden um Unterverzeichnisse des gleichen Exports handelt, müssen Sie für das gleiche Speicherziel mehrere Namespacepfade definieren.
 
@@ -59,6 +59,13 @@ Da es sich bei den NFS-Quellpfaden um Unterverzeichnisse des gleichen Exports ha
 
 Eine Clientanwendung kann den Cache einbinden und komfortabel auf die Dateipfade ``/source``, ``/templates/sku798`` und ``/templates/sku980`` des aggregierten Namespace zugreifen.
 
+Alternativ könnten Sie einen virtuellen Pfad wie `/templates` erstellen, der mit dem übergeordneten Verzeichnis `acme2017` verknüpft ist, und die Clients nach dem Einbinden des Caches zu den einzelnen `sku798`- und `sku980`-Verzeichnissen navigieren lassen. Es ist jedoch nicht möglich, einen Namespacepfad zu erstellen, bei dem es sich um ein Unterverzeichnis eines anderen Namespacepfads handelt. Wenn Sie einen Pfad zum Verzeichnis `acme2017` erstellen, können Sie also nicht zusätzlich Namespacepfade für den direkten Zugriff auf dessen Unterverzeichnisse erstellen.
+
+Auf der Einstellungsseite **Namespace** für Azure HPC Cache wird das clientseitige Dateisystem angezeigt, und Sie können Pfade hinzufügen oder bearbeiten. Weitere Informationen finden Sie unter [Einrichten des aggregierten Namespace](add-namespace-paths.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich dafür entschieden haben, wie Sie Ihr virtuelles Dateisystem einrichten möchten, [erstellen Sie Speicherziele](hpc-cache-add-storage.md), um Ihren Back-End-Speicher Ihren clientseitigen virtuellen Dateipfaden zuzuordnen.
+Wenn Sie entschieden haben, wie Sie das virtuelle Dateisystem einrichten möchten, führen Sie die folgenden Schritte aus, um es zu erstellen:
+
+* [Erstellen Sie Speicherziele](hpc-cache-add-storage.md) zum Hinzufügen Ihrer Back-End-Speichersysteme zu Ihrer Azure HPC Cache-Instanz.
+* [Fügen Sie Namespacepfade](add-namespace-paths.md) hinzu, um den aggregierten Namespace zu erstellen, den Clientcomputer für den Zugriff auf Dateien verwenden.

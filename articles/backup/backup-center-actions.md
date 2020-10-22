@@ -3,12 +3,12 @@ title: Ausführen von Aktionen mit Backup Center
 description: In diesem Artikel erfahren Sie, wie Sie Aktionen mithilfe von Backup Center ausführen.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993463"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854425"
 ---
 # <a name="perform-actions-using-backup-center"></a>Ausführen von Aktionen mit Backup Center
 
@@ -70,7 +70,7 @@ Führen Sie die entsprechenden Schritte für die Art der wiederherzustellenden D
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>Wiederherstellen eines Azure Database for PostgreSQL-Servers
 
 1. Navigieren Sie zu Backup Center, und wählen Sie oben auf der Registerkarte **Übersicht** die Option **Wiederherstellen** aus.
-2. Wählen Sie die Art der wiederherzustellenden Datenquelle aus (in diesem Fall „Azure Database for PostgreSQL-Server“).
+2. Wählen Sie den Typ der wiederherzustellenden Datenquelle aus (in diesem Fall „Azure Database for PostgreSQL-Server“).
 
     ![Auswählen der Datenquelle für die Wiederherstellung eines Azure Database for PostgreSQL-Servers](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 

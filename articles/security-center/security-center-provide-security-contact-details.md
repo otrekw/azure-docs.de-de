@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center | Microsoft Docs
-description: In diesem Dokument wird erläutert, wie Sie Sicherheitskontaktinformationen in Azure Security Center bereitstellen.
+title: Konfigurieren von E-Mail-Benachrichtigungen für Azure Security Center-Warnungen
+description: Hier erfahren Sie, wie Sie die von Azure Security Center gesendeten E-Mail-Typen für Sicherheitswarnungen optimieren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: aa35d1325e339af515c8bfc052d1af524b464e09
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac50b17826f9f3d06d01d3cce9704094fddf1b1d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91446015"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945616"
 ---
-# <a name="set-up-email-notifications-for-security-alerts"></a>Einrichten von E-Mail-Benachrichtigungen für Sicherheitswarnungen 
+# <a name="configure-email-notifications-for-security-alerts"></a>Konfigurieren von E-Mail-Benachrichtigungen für Sicherheitswarnungen 
 
-Um sicherzustellen, dass die richtigen Personen in Ihrer Organisation über Sicherheitswarnungen in Ihrer Umgebung informiert werden, müssen Sie deren E-Mail-Adressen auf der Seite mit den Einstellungen für **E-Mail-Benachrichtigungen** eingeben.
+Sicherheitswarnungen müssen die richtigen Personen in Ihrer Organisation erreichen. Standardmäßig sendet Security Center E-Mails an Abonnementbesitzer, wenn für ein Abonnement eine Warnung mit hohem Schweregrad ausgelöst wird. Auf dieser Seite wird erläutert, wie diese Benachrichtigungen angepasst werden.
 
-Beim Einrichten Ihrer Benachrichtigungen können Sie konfigurieren, dass die E-Mails an bestimmte Einzelpersonen oder an alle Personen mit einer bestimmten Azure-Rolle für ein Abonnement gesendet werden. 
+Wenn Sie eigene Einstellungen für Benachrichtigungs-E-Mails definieren möchten, können Sie auf der Seite mit Einstellungen für **E-Mail-Benachrichtigungen** von Azure Security Center Folgendes auswählen:
+
+- ***Wer* soll benachrichtigt werden:** E-Mails können an ausgewählte Einzelpersonen oder an Personen mit einer bestimmten Azure-Rolle für ein Abonnement gesendet werden. 
+- ***Worüber* soll eine Person benachrichtigt werden:** Ändern Sie die Schweregrade, für die Security Center Benachrichtigungen senden soll.
 
 Zur Vermeidung von Warnungsmüdigkeit wird die Menge der ausgehenden E-Mails von Security Center begrenzt. Für jedes Abonnement wird von Security Center Folgendes gesendet:
 
@@ -32,9 +35,8 @@ Zur Vermeidung von Warnungsmüdigkeit wird die Menge der ausgehenden E-Mails von
 - Maximal **zwei** E-Mails pro Tag für Warnungen mit **mittlerem Schweregrad**
 - Maximal **eine** E-Mail pro Tag für Warnungen mit **niedrigem Schweregrad**
 
-
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Konfigurieren der Details des Kontakts, der E-Mails zu Sicherheitswarnungen erhalten soll." :::
-
+ 
 ## <a name="availability"></a>Verfügbarkeit
 
 |Aspekt|Details|
@@ -42,27 +44,27 @@ Zur Vermeidung von Warnungsmüdigkeit wird die Menge der ausgehenden E-Mails von
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator**<br>**Besitzer des Abonnements** |
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov (teilweise)<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
 
-## <a name="set-up-email-notifications-for-alerts"></a>Einrichten von E-Mail-Benachrichtigungen für Warnungen <a name="email"></a>
+## <a name="customize-the-security-alerts-email-notifications"></a>Anpassen der E-Mail-Benachrichtigungen für Sicherheitswarnungen<a name="email"></a>
 
 Sie können E-Mail-Benachrichtigungen an Einzelpersonen oder an alle Benutzer mit bestimmten Azure-Rollen senden.
 
 1. Wählen Sie in Security Center im Bereich **Preise und Einstellungen** das entsprechende Abonnement und dann die Option **E-Mail-Benachrichtigungen** aus.
 
-1. Definieren Sie die Empfänger für Ihre Benachrichtigungen:
+1. Definieren Sie die Empfänger für Ihre Benachrichtigungen mit einer der folgenden oder beiden Optionen:
 
     - Wählen Sie in der Dropdownliste eine der verfügbaren Rollen aus.
-    - Sie können auch bestimmte E-Mail-Adressen durch Kommas getrennt eingeben. Sie können beliebig viele E-Mail-Adressen eingeben.
+    - Geben Sie bestimmte E-Mail-Adressen durch Kommas getrennt ein. Sie können beliebig viele E-Mail-Adressen eingeben.
 
 1. Wählen Sie **Speichern** aus, um die Sicherheitskontaktinformationen für Ihr Abonnement zu übernehmen.
 
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu Sicherheitswarnungen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Sicherheitswarnungen finden Sie auf den folgenden Seiten:
 
-* [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md): Enthält Informationen zu den Sicherheitswarnungen, die im Threat Protection-Modul von Azure Security Center ggf. angezeigt werden.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Es wird beschrieben, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Workflowautomatisierung](workflow-automation.md) – Automatisieren von Reaktionen auf Warnungen mit benutzerdefinierter Benachrichtigungslogik
+- [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md): Enthält Informationen zu den Sicherheitswarnungen, die im Threat Protection-Modul von Azure Security Center ggf. angezeigt werden.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier wird beschrieben, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+- [Workflowautomatisierung](workflow-automation.md): Automatisieren von Reaktionen auf Warnungen mit benutzerdefinierter Benachrichtigungslogik

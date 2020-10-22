@@ -1,18 +1,18 @@
 ---
-title: Metrikwarnungen aus Azure Monitor für Container | Microsoft-Dokumentation
+title: Metrikwarnungen von Azure Monitor für Container
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen erläutert, die in Azure Monitor für Container in der öffentlichen Vorschauversion verfügbar sind.
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.date: 09/24/2020
+ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019885"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91619949"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Empfohlene Metrikwarnungen (Vorschau) aus Azure Monitor für Container
 
-Um Warnungen zu Problemen mit Systemressourcen zu erhalten, sobald Bedarfsspitzen auftreten und die Kapazität nahezu erreicht ist, erstellen Sie mit Azure Monitor für Container eine Protokollwarnung basierend auf Leistungsdaten, die in Azure Monitor-Protokollen gespeichert werden. Azure Monitor für Container enthält jetzt vorkonfigurierte Metrikwarnungsregeln für Ihren AKS-Cluster, der sich in der öffentlichen Vorschau befindet.
+Um Warnungen zu Problemen mit Systemressourcen zu erhalten, sobald Bedarfsspitzen auftreten und die Kapazität nahezu erreicht ist, erstellen Sie mit Azure Monitor für Container eine Protokollwarnung basierend auf Leistungsdaten, die in Azure Monitor-Protokollen gespeichert werden. Azure Monitor für Container enthält jetzt vorkonfigurierte Regeln für Metrikwarnungen für Ihren Kubernetes-Cluster mit AKS- und Azure Arc-Unterstützung (Public Preview).
 
 In diesem Artikel werden die Funktionen beschrieben. Außerdem sind Anleitungen zum Konfigurieren und Verwalten dieser Warnungsregeln enthalten.
 
@@ -22,24 +22,24 @@ Wenn Sie mit Azure Monitor-Warnungen nicht vertraut sind, lesen Sie zunächst de
 
 Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie beginnen:
 
-* Benutzerdefinierte Metriken sind nur in einigen Azure-Regionen verfügbar. Eine Liste der unterstützten Regionen finden Sie [hier](../platform/metrics-custom-overview.md#supported-regions).
+* Benutzerdefinierte Metriken sind nur in einigen Azure-Regionen verfügbar. Eine Liste der unterstützten Regionen finden Sie im Abschnitt [Unterstützte Regionen](../platform/metrics-custom-overview.md#supported-regions).
 
-* Zur Unterstützung von Metrikwarnungen und der Einführung zusätzlicher Metriken ist mindestens die Agent-Version **microsoft/oms:ciprod05262020** erforderlich.
+* Zur Unterstützung von Metrikwarnungen und für die Einführung zusätzlicher Metriken ist für Kubernetes-Cluster, die AKS unterstützen, mindestens die Agent-Version **microsoft/oms:ciprod05262020** erforderlich. Für Kubernetes-Cluster, die Azure Arc unterstützen, ist hingegen mindestens die Version **microsoft/oms:ciprod09252020** erforderlich.
 
     Sie haben folgende Möglichkeiten, um zu überprüfen, ob in Ihrem Cluster die neuere Version des Agents ausgeführt wird:
 
     * Führen Sie den Befehl `kubectl describe <omsagent-pod-name> --namespace=kube-system` aus. Achten Sie im zurückgegebenen Status auf den Wert für „omsagent“ unter **Image** im Abschnitt *Container* der Ausgabe. 
     * Wählen Sie auf der Registerkarte **Knoten** den Clusterknoten aus, und sehen Sie sich rechts im Bereich **Eigenschaften** den Wert unter **Agent-Imagetag** an.
 
-    Bei dem angezeigten Wert sollte es sich um eine neuere Version als **ciprod05262020** handeln. Wenn in Ihrem Cluster eine ältere Version vorhanden ist, führen Sie die Schritte für ein [Upgrade des Agents im AKS-Cluster](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) durch, um die neueste Version zu erhalten.
-    
+    Der für AKS angezeigte Wert sollte Version **ciprod05262020** oder höher entsprechen. Der Wert für Kubernetes-Cluster, die Azure Arc unterstützen, sollte Version **ciprod09252020** oder höher entsprechen. Wenn Ihr Cluster eine ältere Version aufweist, finden Sie unter [Durchführen eines Upgrades für den Agent für Azure Monitor für Container](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) Informationen dazu, wie Sie ein Upgrade auf die neueste Version durchführen können.
+
     Weitere Informationen zur Agent-Version finden Sie im [Agent-Versionsverlauf](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Um festzustellen, ob Metriken gesammelt werden, können Sie im Azure Monitor-Metrik-Explorer überprüfen, ob unter **Metriknamespace** der Eintrag **insights** aufgeführt ist. Wenn das der Fall ist, können Sie mit dem Einrichten der Warnungen beginnen. Wenn keine Metriken erfasst werden, fehlen dem Clusterdienstprinzipal oder der MSI die erforderlichen Berechtigungen. Um zu überprüfen, ob der SPN oder die MSI Mitglied der Rolle **Herausgeber von Überwachungsmetriken** ist, führen Sie die im Abschnitt [Aktualisieren pro Cluster mit der Azure-Befehlszeilenschnittstelle](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) beschriebenen Schritte aus, mit denen Sie die Rollenzuweisung bestätigen und festlegen können.
 
 ## <a name="alert-rules-overview"></a>Übersicht über Warnungsregeln
 
-Um Warnungen zu wichtigen Aspekten zu erhalten, enthält Azure Monitor für Container die folgenden Metrikwarnungen für Ihre AKS-Cluster:
+Damit wichtige Warnungen gesendet werden können, enthält Azure Monitor für Container die folgenden Metrikwarnungen für Ihre Kubernetes-Cluster, die AKS und Azure Arc unterstützen:
 
-|Name| BESCHREIBUNG |Standardschwellenwert |
+|name| BESCHREIBUNG |Standardschwellenwert |
 |----|-------------|------------------|
 |Durchschnittliche CPU-Nutzung für Container in % |Berechnet die durchschnittliche CPU-Nutzung pro Container.|Wenn die durchschnittliche CPU-Nutzung pro Container größer als 95 % ist.| 
 |Durchschnittliche Speichernutzung für Arbeitssatz für Container in % |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz pro Container.|Wenn die durchschnittliche Speichernutzung für den Arbeitssatz pro Container größer als 95 % ist. |

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392725"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91626393"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Serverparameter in Azure Database for MariaDB
 
@@ -28,6 +28,12 @@ Azure Database for MariaDB bietet die Möglichkeit, den Wert verschiedener Maria
 Die Liste der unterstützten Serverparameter wächst ständig. Sie können die vollständige Liste im Azure-Portal auf der Registerkarte „Serverparameter“ anzeigen und die Werte der Serverparameter dort konfigurieren.
 
 In den folgenden Abschnitten erfahren Sie mehr über die Grenzen der verschiedenen häufig aktualisierten Serverparameter. Die Grenzwerte werden durch den Tarif und die Anzahl der virtuellen Kerne des Servers bestimmt.
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+In Azure Database for MariaDB sind binäre Protokolle immer aktiviert (d. h., `log_bin` ist auf ON festgelegt). Wenn Sie versuchen, Trigger zu verwenden, erhalten Sie einen Fehler wie *Sie verfügen nicht über die SUPER-Berechtigung, und die binäre Protokollierung ist aktiviert (es kann ratsam sein, die weniger sichere Variable `log_bin_trust_function_creators` zu verwenden)* .
+
+Das Format für binäre Protokollierung ist immer **ROW** (Zeile), und für alle Verbindungen mit dem Server wird **IMMER** die zeilenbasierte binäre Protokollierung verwendet. Bei der zeilenbasierten binären Protokollierung gibt es keine Sicherheitsprobleme, und die binäre Protokollierung kann nicht unterbrochen werden, sodass Sie [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) sicher auf **TRUE** festlegen können.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -107,13 +113,13 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MariaDB-Dokumentati
 |Universell|2|300|10|600|
 |Universell|4|625|10|1250|
 |Universell|8|1250|10|2500|
-|Universell|16|2500|10|5\.000|
-|Universell|32|5\.000|10|10000|
+|Universell|16|2500|10|5.000|
+|Universell|32|5.000|10|10000|
 |Universell|64|10000|10|20000|
 |Arbeitsspeicheroptimiert|2|625|10|1250|
 |Arbeitsspeicheroptimiert|4|1250|10|2500|
-|Arbeitsspeicheroptimiert|8|2500|10|5\.000|
-|Arbeitsspeicheroptimiert|16|5\.000|10|10000|
+|Arbeitsspeicheroptimiert|8|2500|10|5.000|
+|Arbeitsspeicheroptimiert|16|5.000|10|10000|
 |Arbeitsspeicheroptimiert|32|10000|10|20000|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
