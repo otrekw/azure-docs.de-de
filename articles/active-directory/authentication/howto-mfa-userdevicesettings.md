@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2006422d3516aa67076233b0b4b9d3e7c58a7232
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968632"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166510"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Verwalten der Benutzereinstellungen für Azure Multi-Factor Authentication
 
@@ -36,8 +36,8 @@ Wenn Ihnen die Rolle *Authentifizierungsadministrator* zugewiesen wurde, können
       > Die derzeit registrierten Authentifizierungsmethoden des Benutzers werden nicht gelöscht, wenn ein Administrator eine erneute Registrierung für MFA benötigt. Nachdem sich ein Benutzer erneut für die MFA registriert hat, empfiehlt es sich, seine Sicherheitsinformationen zu überprüfen und alle zuvor registrierten Authentifizierungsmethoden zu löschen, die nicht mehr verwendet werden können.
    
    - **MFA-Sitzungen widerrufen**: Löscht die gespeicherten MFA-Sitzungen des Benutzers. Wenn auf dem Gerät gemäß Richtlinie das nächste Mal eine MFA erforderlich ist, muss der Benutzer diese durchführen.
-
-   ![Verwalten von Authentifizierungsmethoden im Azure-Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+   
+    :::image type="content" source="media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png" alt-text="Verwalten von Authentifizierungsmethoden im Azure-Portal":::
 
 ## <a name="delete-users-existing-app-passwords"></a>Löschen vorhandener App-Kennwörter eines Benutzers
 

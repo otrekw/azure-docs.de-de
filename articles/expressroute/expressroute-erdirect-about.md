@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566397"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202151"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
@@ -73,7 +73,7 @@ ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmeng
     * Muss das äußere VLAN-Tag (STAG), basierend auf der von Microsoft angegebenen VLAN-ID, hinzufügen – *gilt nur für QinQ*.
     * Muss mehrere BGP-Sitzungen (VLANs) pro Port und Gerät unterstützen.
     * IPv4- und IPv6-Konnektivität. *Für IPv6 wird keine zusätzliche Unterschnittstelle erstellt. Eine IPv6-Adresse wird der vorhandenen Unterschnittstelle hinzugefügt*. 
-    * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
+    * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](./expressroute-bfd.md), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

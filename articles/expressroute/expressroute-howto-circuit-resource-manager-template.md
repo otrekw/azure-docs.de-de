@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566176"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202054"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Erstellen einer ExpressRoute-Verbindung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -25,7 +25,7 @@ ms.locfileid: "89566176"
 > * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
 >
 
-Erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, indem Sie eine Azure Resource Manager-Vorlage mit Azure PowerShell bereitstellen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.network/expressroutecircuits).
+Erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, indem Sie eine Azure Resource Manager-Vorlage mit Azure PowerShell bereitstellen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](../azure-resource-manager/index.yml) und der [Vorlagenreferenz](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

@@ -4,16 +4,16 @@ description: Verwalten von Warnungsinstanzen in Azure
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77667617"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102869"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Verwalten von Warnungsinstanzen mit der einheitlichen Oberfläche für Warnungen
 
-Mit der [einheitlichen Oberfläche für Warnungen](https://aka.ms/azure-alerts-overview) in Azure Monitor können Sie alle Ihre verschiedenen Warnungstypen in Azure anzeigen. Dies umfasst die Anzeige mehrerer Abonnements in einem einzelnen Bereich. In diesem Artikel wird gezeigt, wie Sie Ihre Warnungsinstanzen anzeigen und nach bestimmten Warnungsinstanzen zur Fehlerbehebung suchen können.
+Mit der [einheitlichen Oberfläche für Warnungen](./alerts-overview.md) in Azure Monitor können Sie alle Ihre verschiedenen Warnungstypen in Azure anzeigen. Dies umfasst die Anzeige mehrerer Abonnements in einem einzelnen Bereich. In diesem Artikel wird gezeigt, wie Sie Ihre Warnungsinstanzen anzeigen und nach bestimmten Warnungsinstanzen zur Fehlerbehebung suchen können.
 
 > [!NOTE]
 > Sie können nur auf Warnungen zugreifen, die in den letzten 30 Tagen generiert wurden.
@@ -54,5 +54,4 @@ Neben den auf der vorherigen Seite verfügbaren Filtern können Sie auch auf Bas
 
 Wenn Sie eine beliebige Warnungsinstanz auswählen, wird die Seite **Warnungsdetails** geöffnet, auf der Sie weitere Informationen zu dieser bestimmten Warnungsinstanz finden.   
 
-![Screenshot der Seite „Warnungsdetails“](media/alerts-managing-alert-instances/alert-details.jpg)  
-
+![Screenshot der Seite „Warnungsdetails“](media/alerts-managing-alert-instances/alert-details.jpg)

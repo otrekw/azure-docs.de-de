@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981492"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171633"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -35,7 +35,7 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
    - Wir empfehlen, dass Sie, wenn Sie Azure als primären Endpunkt für den Sicherungsspeicher verwenden, weiterhin die Standardeinstellung **Georedundant** verwenden.
    - Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher.
    - Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md#geo-redundant-storage) and [lokale Redundanz](../storage/common/storage-redundancy.md#locally-redundant-storage).
-   - Wenn Sie in einer Region Datenverfügbarkeit ohne Ausfallzeiten benötigen und Data Residency gewährleistet sein muss, wählen Sie [zonenredundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) aus.
+   - Wenn Sie in einer Region Datenverfügbarkeit ohne Ausfallzeiten benötigen und Data Residency gewährleistet sein muss, wählen Sie [zonenredundanten Speicher](../storage/common/storage-redundancy.md#zone-redundant-storage) aus.
 
 >[!NOTE]
 >Die Speicherreplikationseinstellungen für den Tresor sind für das Sichern von Azure-Dateifreigaben nicht relevant, da die aktuelle Lösung auf Momentaufnahmen basiert und keine Daten in den Tresor übertragen werden. Momentaufnahmen werden im gleichen Speicherkonto gespeichert wie die gesicherte Dateifreigabe.

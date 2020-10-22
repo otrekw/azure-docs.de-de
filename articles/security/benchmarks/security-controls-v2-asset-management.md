@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 087147038286bd7363fcc0eb3812abccc6ef9206
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318023"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201833"
 ---
 # <a name="security-control-v2-asset-management"></a>Sicherheitskontrolle V2: Ressourcenverwaltung
 
@@ -150,7 +150,7 @@ Sie können auch eine Drittanbieterlösung verwenden, um nicht genehmigte Softwa
 
 - [Verwenden der adaptiven Anwendungssteuerungen in Azure Security Center](../../security-center/security-center-adaptive-application.md)
 
-- [Grundlegendes zu Azure Automation-Änderungsnachverfolgung und -Bestand](../../automation/change-tracking.md)
+- [Grundlegendes zu Azure Automation-Änderungsnachverfolgung und -Bestand](../../automation/change-tracking/overview.md)
 
 - [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 

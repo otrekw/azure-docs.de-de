@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1472da4c87dc4579a30290460fb7811cf228be47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 102b8f4099c93637779743b9c08347266c1d044f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892482"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094023"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Sicherheitskontrollen für den Azure Spring Cloud-Dienst
 
@@ -26,15 +26,15 @@ Eine Sicherheitskontrolle stellt eine Qualitätseigenschaft oder ein Feature ein
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Vom Benutzer hochgeladene Quellen und Artefakte, Konfigurationsservereinstellungen, Anwendungseinstellungen und Daten im beständigen Speicher werden in Azure Storage gespeichert, in dem ruhende Inhalte automatisch verschlüsselt werden.<br><br>Konfigurationsservercache, Runtimebinärdateien, die aus der hochgeladenen Quelle erstellt wurden, und Anwendungsprotokolle während der Anwendungslebensdauer werden auf verwalteten Azure-Datenträgern gespeichert, durch die ruhende Inhalte automatisch verschlüsselt werden.<br><br>Vom Benutzer aus der hochgeladenen Quelle erstellte Containerimages werden in der Azure Container Registry gespeichert, durch die ruhende Imageinhalte automatisch verschlüsselt werden. | [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)<br><br>[Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption)<br><br>[Speichern von Containerimages in der Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-storage) |
+| Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Vom Benutzer hochgeladene Quellen und Artefakte, Konfigurationsservereinstellungen, Anwendungseinstellungen und Daten im beständigen Speicher werden in Azure Storage gespeichert, in dem ruhende Inhalte automatisch verschlüsselt werden.<br><br>Konfigurationsservercache, Runtimebinärdateien, die aus der hochgeladenen Quelle erstellt wurden, und Anwendungsprotokolle während der Anwendungslebensdauer werden auf verwalteten Azure-Datenträgern gespeichert, durch die ruhende Inhalte automatisch verschlüsselt werden.<br><br>Vom Benutzer aus der hochgeladenen Quelle erstellte Containerimages werden in der Azure Container Registry gespeichert, durch die ruhende Imageinhalte automatisch verschlüsselt werden. | [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](../storage/common/storage-service-encryption.md)<br><br>[Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../virtual-machines/linux/disk-encryption.md)<br><br>[Speichern von Containerimages in der Azure Container Registry](../container-registry/container-registry-storage.md) |
 | Vorübergehende Verschlüsselung | Ja | Öffentliche Endpunkte der Benutzer-App verwenden standardmäßig HTTPS für eingehenden Datenverkehr. |  |
-| Verschlüsselte API-Aufrufe | Ja | Verwaltungsaufrufe zum Konfigurieren des Azure Spring Cloud-Diensts werden mit Azure Resource Manager-Aufrufen über HTTPS gesendet. | [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) |
+| Verschlüsselte API-Aufrufe | Ja | Verwaltungsaufrufe zum Konfigurieren des Azure Spring Cloud-Diensts werden mit Azure Resource Manager-Aufrufen über HTTPS gesendet. | [Azure Resource Manager](../azure-resource-manager/index.yml) |
 
 **Sicherheitssteuerungen für den Netzwerkzugriff**
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Diensttag | Ja | Verwenden Sie das **AzureSpringCloud**-Diensttag, um Zugriffssteuerungen für ausgehenden Netzwerkzugriff für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) oder [Azure-Firewall](https://docs.microsoft.com/azure/firewall/service-tags) zu definieren, um Datenverkehr zu Azure Spring Cloud-Anwendungen zu ermöglichen.<br><br>*Hinweis:* Derzeit unterstützt nur die neue Azure Spring Cloud-Dienstinstanz, die nach dem 14.7.2020 erstellt wurde, das **AzureSpringCloud**-Diensttag. | [Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |
+| Diensttag | Ja | Verwenden Sie das **AzureSpringCloud**-Diensttag, um Zugriffssteuerungen für ausgehenden Netzwerkzugriff für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure-Firewall](../firewall/service-tags.md) zu definieren, um Datenverkehr zu Azure Spring Cloud-Anwendungen zu ermöglichen.<br><br>*Hinweis:* Derzeit unterstützt nur die neue Azure Spring Cloud-Dienstinstanz, die nach dem 14.7.2020 erstellt wurde, das **AzureSpringCloud**-Diensttag. | [Diensttags](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

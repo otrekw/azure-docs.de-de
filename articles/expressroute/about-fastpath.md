@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c44e6c6a7a9af4edc2c711b17ec50aa2bf62c98
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398051"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202446"
 ---
 # <a name="about-expressroute-fastpath"></a>Informationen zu ExpressRoute FastPath
 
@@ -41,7 +41,7 @@ FastPath unterstützt zwar die meisten Konfigurationen, aber nicht die folgenden
 
 * VNET-Peering: Wenn andere virtuelle Netzwerke per Peering mit dem Netzwerk verbunden sind, das mit ExpressRoute verbunden ist, wird der Netzwerkdatenverkehr von Ihrem lokalen Netzwerk zu den anderen virtuellen Netzwerken (d. h. den sogenannten virtuellen Spoke-Netzwerken) weiterhin an das Gateway für virtuelle Netzwerke gesendet. Die Problemumgehung besteht darin, alle virtuellen Netzwerke direkt mit der ExpressRoute-Verbindung zu verbinden.
 
-* Load Balancer im Tarif „Basic“: Wenn Sie einen internen Lastenausgleich im Tarif „Basic“ in Ihrem virtuellen Netzwerk bereitstellen oder der Azure-PaaS-Dienst, den Sie in Ihrem virtuellen Netzwerk bereitstellen, einen internen Lastenausgleich im Tarif „Basic“ verwendet, wird der Netzwerkdatenverkehr von Ihrem lokalen Netzwerk zu den virtuellen IP-Adressen, die auf dem Lastenausgleich im Tarif „Basic“ gehostet werden, an das Gateway für virtuelle Netzwerke gesendet. Die Lösung besteht darin, den Basic-Load Balancer auf einen [Standard-Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) zu aktualisieren.
+* Load Balancer im Tarif „Basic“: Wenn Sie einen internen Lastenausgleich im Tarif „Basic“ in Ihrem virtuellen Netzwerk bereitstellen oder der Azure-PaaS-Dienst, den Sie in Ihrem virtuellen Netzwerk bereitstellen, einen internen Lastenausgleich im Tarif „Basic“ verwendet, wird der Netzwerkdatenverkehr von Ihrem lokalen Netzwerk zu den virtuellen IP-Adressen, die auf dem Lastenausgleich im Tarif „Basic“ gehostet werden, an das Gateway für virtuelle Netzwerke gesendet. Die Lösung besteht darin, den Basic-Load Balancer auf einen [Standard-Load Balancer](../load-balancer/load-balancer-overview.md) zu aktualisieren.
 
 * Private Link: Wenn Sie von Ihrem lokalen Netzwerk eine Verbindung mit einem [privaten Endpunkt](../private-link/private-link-overview.md) in Ihrem virtuellen Netzwerk herstellen, erfolgt die Verbindung über das Gateway für virtuelle Netzwerke.
  

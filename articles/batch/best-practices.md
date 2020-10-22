@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849488"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102777"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -63,7 +63,7 @@ Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Comput
 
 ### <a name="third-party-images"></a>Images von Drittanbietern
 
-Pools können mithilfe von auf Azure Marketplace veröffentlichten Images von Drittanbietern erstellt werden. Bei Batch-Konten im Benutzerabonnementmodus kann beim Erstellen eines Pools mit bestimmten Images von Drittanbietern der Fehler „Fehler bei der Zuweisung aufgrund der Prüfung der Berechtigung zum Kauf über den Marketplace“ auftreten. Akzeptieren Sie die vom Herausgeber des Images festgelegten Bedingungen, um diesen Fehler zu beheben. Sie können dazu [Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms) verwenden.
+Pools können mithilfe von auf Azure Marketplace veröffentlichten Images von Drittanbietern erstellt werden. Bei Batch-Konten im Benutzerabonnementmodus kann beim Erstellen eines Pools mit bestimmten Images von Drittanbietern der Fehler „Fehler bei der Zuweisung aufgrund der Prüfung der Berechtigung zum Kauf über den Marketplace“ auftreten. Akzeptieren Sie die vom Herausgeber des Images festgelegten Bedingungen, um diesen Fehler zu beheben. Sie können dazu [Azure Powershell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) oder die [Azure CLI](/cli/azure/vm/image/terms) verwenden.
 
 ### <a name="azure-region-dependency"></a>Abhängigkeit von Azure-Regionen
 

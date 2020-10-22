@@ -3,12 +3,12 @@ title: Übersicht über Backup Center
 description: Dieser Artikel enthält eine Übersicht zu Backup Center für Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614280"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173736"
 ---
 # <a name="overview-of-backup-center"></a>Übersicht über Backup Center
 
@@ -16,9 +16,9 @@ Backup Center bietet eine **zentralisierte einheitliche Verwaltungsumgebung** in
 
 Zu den wichtigsten Vorteilen von Backup Center gehören:
 
-* **Zentralisierte Benutzeroberfläche zum Verwalten von Sicherungen** – Backup Center ist für die Verwendung in einer großen und verteilten Azure-Umgebung ausgelegt. Mit Backup Center können Sie Sicherungen, die mehrere Workloadtypen, Tresore, Abonnements, Regionen und [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)-Mandanten umfassen, effizient verwalten.
+* **Zentralisierte Benutzeroberfläche zum Verwalten von Sicherungen** – Backup Center ist für die Verwendung in einer großen und verteilten Azure-Umgebung ausgelegt. Mit Backup Center können Sie Sicherungen, die mehrere Workloadtypen, Tresore, Abonnements, Regionen und [Azure Lighthouse](../lighthouse/overview.md)-Mandanten umfassen, effizient verwalten.
 * **Datenquellenzentrierte Verwaltung** – Backup Center bietet Ansichten und Filter, die auf die zu sichernden Datenquellen (z. B. virtuelle Computer und Datenbanken) zentriert sind. Dies ermöglicht es Ressourcenbesitzern oder Sicherungsadministratoren, Sicherungen von Elementen zu überwachen und betreiben, ohne sich damit befassen zu müssen, in welchem Tresor ein Element gesichert wird. Ein wesentliches Merkmal dieses Designs ist die Möglichkeit, Ansichten nach datenquellenspezifischen Eigenschaften zu filtern, wie z. B. nach Datenquellenabonnement, Datenquellen-Ressourcengruppe oder Datenquellentags. Wenn Ihre Organisation beispielsweise üblicherweise virtuellen Computern, die verschiedenen Abteilungen angehören, unterschiedliche Tags zuweist, können Sie Backup Center verwenden, um Sicherungsinformationen auf der Grundlage der Tags der zugrunde liegenden virtuellen Computer, die gesichert werden, zu filtern, ohne sich auf das Tag des Tresors konzentrieren müssen.
-* **Verbundene Erfahrungen** – Backup Center bietet native Integrationen in bestehende Azure-Dienste, die eine Verwaltung in großem Maßstab ermöglichen. Beispielsweise nutzt Backup Center die [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)-Umgebung, um Ihnen bei der Steuerung Ihrer Sicherungen zu helfen. Es nutzt auch [Azure-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) und [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs), um Ihnen zu helfen, detaillierte Berichte über Sicherungen anzuzeigen. Sie müssen also keine neuen Prinzipien erlernen, um die vielfältigen Features, die Backup Center bietet, nutzen zu können.
+* **Verbundene Erfahrungen** – Backup Center bietet native Integrationen in bestehende Azure-Dienste, die eine Verwaltung in großem Maßstab ermöglichen. Beispielsweise nutzt Backup Center die [Azure Policy](../governance/policy/overview.md)-Umgebung, um Ihnen bei der Steuerung Ihrer Sicherungen zu helfen. Es nutzt auch [Azure-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) und [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md), um Ihnen zu helfen, detaillierte Berichte über Sicherungen anzuzeigen. Sie müssen also keine neuen Prinzipien erlernen, um die vielfältigen Features, die Backup Center bietet, nutzen zu können.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 

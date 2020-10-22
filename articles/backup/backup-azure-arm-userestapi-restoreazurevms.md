@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Wiederherstellungsvorgänge
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506677"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174027"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -122,7 +122,7 @@ Nachdem Sie den [relevanten Wiederherstellungspunkt](#select-recovery-point) aus
 ***Alle Wiederherstellungsvorgänge für das Sicherungselement werden mit derselben *POST*-API ausgeführt. Nur der Anforderungstext mit den Wiederherstellungsszenarien wird geändert.***
 
 > [!IMPORTANT]
-> Alle Details zu den verschiedenen Wiederherstellungsoptionen und deren Abhängigkeiten können Sie [hier](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options) finden. Sehen Sie dort nach, bevor Sie diese Vorgänge auslösen.
+> Alle Details zu den verschiedenen Wiederherstellungsoptionen und deren Abhängigkeiten können Sie [hier](./backup-azure-arm-restore-vms.md#restore-options) finden. Sehen Sie dort nach, bevor Sie diese Vorgänge auslösen.
 
 Das Auslösen von Wiederherstellungsvorgängen ist eine *POST*-Anforderung. Weitere Informationen zur API finden Sie in der [REST-API für „Wiederherstellung auslösen“](/rest/api/backup/restores/trigger).
 
@@ -246,7 +246,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer D
 
 ### <a name="restore-disks-selectively"></a>Selektives Wiederherstellen von Datenträgern
 
-Wenn Sie [Datenträger selektiv sichern](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), wird die aktuelle Liste der gesicherten Datenträger in der [Wiederherstellungspunktübersicht](#select-recovery-point) und der [ausführlichen Antwort](https://docs.microsoft.com/rest/api/backup/recoverypoints/get) bereitgestellt. Sie können Datenträger auch selektiv wiederherstellen. Weitere Informationen hierzu finden Sie [hier](selective-disk-backup-restore.md#selective-disk-restore). Wenn Sie einen Datenträger aus der Liste der gesicherten Datenträger selektiv wiederherstellen möchten, suchen Sie die LUN des Datenträgers in der Antwort des Wiederherstellungspunkts, und fügen Sie die **restoreDiskLunList**-Eigenschaft dem [Anforderungstext oben](#example-request) hinzu, wie unten gezeigt.
+Wenn Sie [Datenträger selektiv sichern](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), wird die aktuelle Liste der gesicherten Datenträger in der [Wiederherstellungspunktübersicht](#select-recovery-point) und der [ausführlichen Antwort](/rest/api/backup/recoverypoints/get) bereitgestellt. Sie können Datenträger auch selektiv wiederherstellen. Weitere Informationen hierzu finden Sie [hier](selective-disk-backup-restore.md#selective-disk-restore). Wenn Sie einen Datenträger aus der Liste der gesicherten Datenträger selektiv wiederherstellen möchten, suchen Sie die LUN des Datenträgers in der Antwort des Wiederherstellungspunkts, und fügen Sie die **restoreDiskLunList**-Eigenschaft dem [Anforderungstext oben](#example-request) hinzu, wie unten gezeigt.
 
 ```json
 {

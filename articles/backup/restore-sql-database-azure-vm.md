@@ -3,12 +3,12 @@ title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Co
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985428"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172164"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -30,7 +30,7 @@ Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
 - Sie können die Datenbank auf einer SQL Server-Instanz in derselben Azure-Region wiederherstellen.
 - Der Zielserver muss bei demselben Tresor wie die Quelle registriert werden.
 - Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)-fähige Datenbanken sollten mithilfe der Option [Als Dateien wiederherstellen](#restore-as-files) wiederhergestellt werden.
+- [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)-fähige Datenbanken sollten mithilfe der Option [Als Dateien wiederherstellen](#restore-as-files) wiederhergestellt werden.
 - Starten Sie vor der Wiederherstellung der Masterdatenbank die SQL Server-Instanz mit der Startoption **-m AzureWorkloadBackup** im Einzelbenutzermodus.
   - Der Wert für **-m** ist der Name des Clients.
   - Die Verbindung kann nur vom angegebenen Clientnamen geöffnet werden.

@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761412"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102305"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -24,7 +24,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihre Funktions-App so sicher wie mögl
 
 ### <a name="security-center"></a>Security Center
 
-Security Center und Ihre Funktions-App lassen sich im Portal integrieren. Es ermöglicht kostenlos eine schnelle Bewertung potenzieller konfigurationsbezogener Sicherheitsrisiken. Funktions-Apps, die in einem dedizierten Plan ausgeführt werden, können gegen Aufpreis auch die Echtzeitsicherheitsfeatures von Security Center nutzen. Weitere Informationen finden Sie unter [Schützen Ihrer Azure App Service-Web-Apps und -APIs](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction). 
+Security Center und Ihre Funktions-App lassen sich im Portal integrieren. Es ermöglicht kostenlos eine schnelle Bewertung potenzieller konfigurationsbezogener Sicherheitsrisiken. Funktions-Apps, die in einem dedizierten Plan ausgeführt werden, können gegen Aufpreis auch die Echtzeitsicherheitsfeatures von Security Center nutzen. Weitere Informationen finden Sie unter [Schützen Ihrer Azure App Service-Web-Apps und -APIs](../security-center/defender-for-app-service-introduction.md). 
 
 ### <a name="log-and-monitor"></a>Protokollieren und Überwachen
 

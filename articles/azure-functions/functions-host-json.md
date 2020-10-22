@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321848"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167649"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -138,7 +138,7 @@ In den folgenden Abschnitten dieses Artikels werden die einzelnen allgemeinen Ei
 
 Diese Einstellung ist ein untergeordnetes Element von [logging](#logging).
 
-Sie steuert Optionen für Application Insights, einschließlich [Stichprobenoptionen](./functions-monitoring.md#configure-sampling).
+Sie steuert Optionen für Application Insights, einschließlich [Stichprobenoptionen](./configure-monitoring.md#configure-sampling).
 
 Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.json“](#sample-hostjson-file).
 
@@ -310,7 +310,7 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definiert, welche Stufe der Dateiprotokollierung aktiviert ist.  Optionen sind `never`, `always`, `debugOnly`. |
-|logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Version 2.x oder höher entspricht bei der Filterung der Protokollkategorie dem Layout von ASP.NET Core. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Protokollfilterung](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in der Dokumentation zu ASP.NET Core. |
+|logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Version 2.x oder höher entspricht bei der Filterung der Protokollkategorie dem Layout von ASP.NET Core. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Protokollfilterung](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) in der Dokumentation zu ASP.NET Core. |
 |console|–| Die [Konsolen](#console)protokollierungseinstellung. |
 |applicationInsights|–| Die [applicationInsights](#applicationinsights)-Einstellung. |
 

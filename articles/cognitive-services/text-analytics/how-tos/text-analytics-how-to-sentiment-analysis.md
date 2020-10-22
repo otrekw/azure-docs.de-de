@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930287"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166929"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Gewusst wie: Standpunktermittlung mithilfe der Textanalyse-API
 
@@ -36,7 +36,7 @@ Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befind
 | Linux-basierte [Docker-Container](text-analytics-how-to-install-containers.md) | X  |  |
 | Opinion Mining                            |                       | X                                 |
 
-### <a name="sentiment-scoring-and-labeling"></a>Zuverlässigkeitsbewertung und Bezeichnung
+## <a name="sentiment-scoring-and-labeling"></a>Zuverlässigkeitsbewertung und Bezeichnung
 
 In Version 3 wendet die Standpunktanalyse Stimmungsbezeichnungen auf Texte an, die auf Satz- und Dokumentebene zurückgegeben werden, jeweils begleitet von einer Zuverlässigkeitsbewertung. 
 
@@ -51,7 +51,7 @@ Die Bezeichnungen sind *positiv*, *negativ* und *neutral*. Auf Dokumentebene kan
 
 Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Für jedes Dokument oder jeden Satz werden die vorhergesagten Bewertungen, die den Bezeichnungen zugeordnet sind (positiv, negativ und neutral), bis zu 1 hinzugefügt.
 
-### <a name="opinion-mining"></a>Opinion Mining
+## <a name="opinion-mining"></a>Opinion Mining
 
 Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1-preview.1. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
 

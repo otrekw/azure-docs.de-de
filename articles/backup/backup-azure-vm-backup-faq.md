@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056717"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172837"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -24,7 +24,7 @@ Wenn Sie eine VM erstellen, können Sie die Sicherung für VMs aktivieren, die [
 ### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Warum dauert die erste Sicherung so lange?
 
 Die erste Sicherung ist immer eine vollständige Sicherung, und die Dauer hängt von der Größe der Daten sowie vom Zeitpunkt der Sicherungsverarbeitung ab. <br>
-Informationen zur Verbesserung der Sicherungsleistung finden Sie unter [Bewährte Methoden](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices), [Überlegungen zu Sicherung und Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) und [Backupleistung](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance).<br>
+Informationen zur Verbesserung der Sicherungsleistung finden Sie unter [Bewährte Methoden](./backup-azure-vms-introduction.md#best-practices), [Überlegungen zu Sicherung und Wiederherstellung](./backup-azure-vms-introduction.md#backup-and-restore-considerations) und [Backupleistung](./backup-azure-vms-introduction.md#backup-performance).<br>
 Die Gesamtdauer der Sicherung von weniger als 24 Stunden gilt für inkrementelle Sicherungen, aber möglicherweise nicht für die erste Sicherung.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Sind die Sicherungskosten in den VM-Kosten enthalten?
@@ -109,7 +109,7 @@ Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederh
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Bleiben verwaltete Identitäten erhalten, wenn während der Sicherung eine Mandantenänderung auftritt?
 
-Wenn [Mandantenänderungen](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) auftreten, müssen Sie [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) deaktivieren und erneut aktivieren, damit Sicherungen wieder funktionieren.
+Wenn [Mandantenänderungen](/azure/devops/organizations/accounts/change-azure-ad-connection) auftreten, müssen Sie [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) deaktivieren und erneut aktivieren, damit Sicherungen wieder funktionieren.
 
 ## <a name="restore"></a>Restore
 
@@ -199,7 +199,7 @@ Nachdem Sie die VM in eine neue Ressourcengruppe verschoben haben, können Sie d
 
 Die Wiederherstellungspunkte der alten VM können bei Bedarf wiederhergestellt werden. Wenn Sie diese Sicherungsdaten nicht benötigen, können Sie den Schutz der alten VM durch „Daten löschen“ beenden.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Gibt es einen Grenzwert bei der Anzahl von VMs, die derselben Sicherungsrichtlinie zugeordnet werden können?
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>Gibt es einen Grenzwert bei der Anzahl von VMs, die derselben Sicherungsrichtlinie zugeordnet werden können?
 
 Ja. Im Portal können maximal 100 VMs derselben Sicherungsrichtlinie zugeordnet werden. Wir empfehlen, dass Sie bei mehr als 100 VMs mehrere Sicherungsrichtlinien mit demselben Zeitplan oder einem anderen Zeitplan erstellen.
 
@@ -207,6 +207,6 @@ Ja. Im Portal können maximal 100 VMs derselben Sicherungsrichtlinie zugeordnet
 
 Derzeit können Sie die Aufbewahrungseinstellungen auf der Ebene eines Sicherungselements (VM) auf der Grundlage der Sicherungsrichtlinie anzeigen, die der VM zugewiesenen ist.
 
-Eine Möglichkeit, die Aufbewahrungseinstellungen für Ihre Sicherungen anzuzeigen, besteht darin, zum [Dashboard](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) des Sicherungselements für Ihre VM im Azure-Portal zu navigieren. Wenn Sie den Link zu ihrer Sicherungsrichtlinie auswählen, können Sie die Aufbewahrungsdauer aller täglichen, wöchentlichen, monatlichen und jährlichen Aufbewahrungspunkte anzeigen, die mit der VM verbunden sind.
+Eine Möglichkeit, die Aufbewahrungseinstellungen für Ihre Sicherungen anzuzeigen, besteht darin, zum [Dashboard](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) des Sicherungselements für Ihre VM im Azure-Portal zu navigieren. Wenn Sie den Link zu ihrer Sicherungsrichtlinie auswählen, können Sie die Aufbewahrungsdauer aller täglichen, wöchentlichen, monatlichen und jährlichen Aufbewahrungspunkte anzeigen, die mit der VM verbunden sind.
 
-Sie können auch den [Sicherungs-Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.
+Sie können auch den [Sicherungs-Explorer](./monitor-azure-backup-with-backup-explorer.md) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.

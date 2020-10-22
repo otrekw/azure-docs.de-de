@@ -4,12 +4,12 @@ description: In diesem Artikel lernen Sie die selektive Datenträgersicherung un
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271374"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174111"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -240,6 +240,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Im Azure-Portal können Sie die ein- und ausgeschlossenen Datenträger im Detailbereich der VM-Sicherung und im Detailbereich des Sicherungsauftrags anzeigen.  Wenn Sie während der Wiederherstellung den Wiederherstellungspunkt für die Wiederherstellung auswählen, können Sie die gesicherten Datenträger in diesem Wiederherstellungspunkt anzeigen.
 

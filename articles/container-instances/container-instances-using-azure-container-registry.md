@@ -5,12 +5,12 @@ services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89656998"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173652"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
@@ -22,19 +22,18 @@ ms.locfileid: "89656998"
 
 **Azure CLI**: Die Befehlszeilenbeispiele in diesem Artikel verwenden die [Azure CLI](/cli/azure/) und sind für die Bash-Shell formatiert. Sie können die [Azure CLI lokal installieren](/cli/azure/install-azure-cli) oder die [Azure Cloud Shell][cloud-shell-bash] nutzen.
 
+## <a name="limitations"></a>Einschränkungen
+
+* Sie können sich nicht bei Azure Container Registry authentifizieren, um während der Containergruppenbereitstellung Images mithilfe einer [verwalteten Identität](container-instances-managed-identity.md) zu pullen, die in derselben Containergruppe konfiguriert ist.
+* Sie können Images nicht aus [Azure Container Registry](../container-registry/container-registry-vnet.md) abrufen, die zu diesem Zeitpunkt in einem Azure Virtual Network bereitgestellt ist.
+
 ## <a name="configure-registry-authentication"></a>Konfigurieren der Authentifizierung der Registrierung
 
 In einem Produktionsszenario, in dem Sie den Zugriff auf „monitorlose“ Dienste und Anwendungen bereitstellen, wird empfohlen, den Registrierungszugriff mithilfe eines [Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md) zu konfigurieren. Ein Dienstprinzipal ermöglicht es Ihnen, [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../container-registry/container-registry-roles.md) für Ihre Containerimages bereitzustellen. Beispielsweise können Sie einen Dienstprinzipal mit ausschließlichem Pullzugriff auf eine Registrierung konfigurieren.
 
 Azure Container Registry stellt zusätzliche [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) bereit.
 
-> [!NOTE]
-> Sie können sich nicht bei Azure Container Registry authentifizieren, um während der Containergruppenbereitstellung Images mithilfe einer [verwalteten Identität](container-instances-managed-identity.md) zu pullen, die in derselben Containergruppe konfiguriert ist.
-
-> [!NOTE]
-> Sie können Images nicht aus [Azure Container Registry](../container-registry/container-registry-vnet.md) abrufen, die zu diesem Zeitpunkt in einem Azure Virtual Network bereitgestellt ist.
-
-Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor. 
+Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor.
 
 ### <a name="create-key-vault"></a>Erstellen eines Schlüsseltresors
 
