@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320084"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280530"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomalieerkennungsdienst für getaktete Abrechnung
 
@@ -74,7 +74,7 @@ So senden Sie ein Ticket
     - **Commercial Marketplace** > **Getaktete Abrechnung** > **Falsche Nutzung für SaaS-Angebot gesendet**
 3. Wählen Sie unter **Nächster Schritt** die Schaltfläche **Lösungen anzeigen** aus, um sich bei Partner Center anzumelden und ein Supportticket zu übermitteln.
 
-Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).
+Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](../support.md).
 
 ## <a name="next-step"></a>Nächster Schritt
 

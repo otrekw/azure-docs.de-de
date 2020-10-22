@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440726"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342381"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)
 
@@ -35,7 +35,7 @@ Auf dieser Seite erfahren Sie, wie Sie JIT in Ihr Sicherheitsprogramm einbinden.
 |----|:----|
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
-|Unterstützte VMs:|![Ja](./media/icons/yes-icon.png) Durch Azure Resource Manager bereitgestellte VMs.<br>![Nein](./media/icons/no-icon.png) Mit klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).<br>![Nein](./media/icons/no-icon.png) Durch Azure Firewall-Instanzen geschützte VMs, die von [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) gesteuert werden.|
+|Unterstützte VMs:|![Ja](./media/icons/yes-icon.png) Durch Azure Resource Manager bereitgestellte VMs.<br>![Nein](./media/icons/no-icon.png) Mit klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).<br>![Nein](./media/icons/no-icon.png) Durch Azure Firewall-Instanzen geschützte VMs, die von [Azure Firewall Manager](../firewall-manager/overview.md) gesteuert werden.|
 |Erforderliche Rollen und Berechtigungen:|Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.<br>Informationen zur Erstellung benutzerdefinierter Rollen, die mit JIT arbeiten können, finden Sie unter [Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
@@ -215,7 +215,7 @@ Die folgenden PowerShell-Befehle erstellen diese JIT-Konfiguration:
 
 Das Feature Just-In-Time-VM-Zugriff kann über die Azure Security Center-API verwendet werden. Verwenden Sie diese API, um Informationen über konfigurierte virtuelle Computer zu erhalten, neue virtuelle Computer hinzufügen, Zugriff auf einen virtuellen Computer anzufordern usw. 
 
-Weitere Informationen finden Sie unter [Richtlinien für den JIT-Netzwerkzugriff](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Weitere Informationen finden Sie unter [Richtlinien für den JIT-Netzwerkzugriff](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 
 --- 
@@ -319,7 +319,7 @@ Führen Sie die folgenden Schritte in PowerShell aus:
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
     ```
 
-Weitere Informationen finden Sie in der [PowerShell-Cmdlet-Dokumentation](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
+Weitere Informationen finden Sie in der [PowerShell-Cmdlet-Dokumentation](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
 
@@ -329,7 +329,7 @@ Weitere Informationen finden Sie in der [PowerShell-Cmdlet-Dokumentation](https:
 
 Das Feature Just-In-Time-VM-Zugriff kann über die Azure Security Center-API verwendet werden. Verwenden Sie diese API, um Informationen über konfigurierte virtuelle Computer zu erhalten, neue virtuelle Computer hinzufügen, Zugriff auf einen virtuellen Computer anzufordern usw. 
 
-Weitere Informationen finden Sie unter [Richtlinien für den JIT-Netzwerkzugriff](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Weitere Informationen finden Sie unter [Richtlinien für den JIT-Netzwerkzugriff](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 ---
 

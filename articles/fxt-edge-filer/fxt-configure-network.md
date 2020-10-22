@@ -6,29 +6,30 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80754688"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220770"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Tutorial: Konfigurieren der Netzwerkeinstellungen des Clusters
 
-Vor der Verwendung eines neu erstellten Azure FXT Edge Filer-Clusters müssen mehrere Netzwerkeinstellungen überprüft und für Ihren Workflow angepasst werden. 
+Vor der Verwendung eines neu erstellten Azure FXT Edge Filer-Clusters müssen mehrere Netzwerkeinstellungen überprüft und für Ihren Workflow angepasst werden.
 
-In diesem Tutorial erfahren Sie, welche Netzwerkeinstellungen für einen neuen Cluster ggf. angepasst werden müssen. 
+In diesem Tutorial erfahren Sie, welche Netzwerkeinstellungen für einen neuen Cluster ggf. angepasst werden müssen.
 
-Sie erhalten Informationen zu folgenden Themen: 
+Sie erhalten Informationen zu folgenden Themen:
 
 > [!div class="checklist"]
+>
 > * Welche Netzwerkeinstellungen nach der Clustererstellung ggf. aktualisiert werden müssen
-> * Für welche Azure FXT Edge Filer-Anwendungsfälle ein AD- oder DNS-Server benötigt wird 
+> * Für welche Azure FXT Edge Filer-Anwendungsfälle ein AD- oder DNS-Server benötigt wird
 > * Wie Sie Roundrobin-DNS (RRDNS) konfigurieren, um einen automatischen Lastenausgleich für an den FXT-Cluster gerichtete Clientanforderungen vorzunehmen
 
 Der Zeitaufwand für diese Schritte hängt vom Umfang der erforderlichen Konfigurationsänderungen für Ihr System ab:
 
-* Wenn Sie sich lediglich das Tutorial durchlesen und einige wenige Einstellungen überprüfen müssen, sind Sie voraussichtlich in zehn bis 15 Minuten fertig. 
+* Wenn Sie sich lediglich das Tutorial durchlesen und einige wenige Einstellungen überprüfen müssen, sind Sie voraussichtlich in zehn bis 15 Minuten fertig.
 * Wenn Sie Roundrobin-DNS konfigurieren müssen, sollten Sie mindestens eine Stunde einplanen.
 
 ## <a name="adjust-network-settings"></a>Anpassen der Netzwerkeinstellungen
@@ -78,20 +79,20 @@ Zertifikate können bei Bedarf über die Einstellungsseite **Cluster** > **Certi
 
 Wenn Sie die Verwaltungskommunikation des Clusters verschlüsseln möchten, wählen Sie auf der Einstellungsseite **Cluster** > **General Setup** (Cluster > Allgemeine Einrichtung) aus, welches Zertifikat für die Verwaltung über TLS verwendet werden soll.
 
-> [!Note] 
-> Clouddienst-Zugriffsschlüssel werden mithilfe der Konfigurationsseite **Cloud Credentials** (Cloudanmeldeinformationen) gespeichert. Ein Beispiel finden Sie weiter oben im Abschnitt [Hinzufügen einer Kernspeichereinheit](fxt-add-storage.md#add-a-core-filer). Ausführliche Informationen finden Sie in der Anleitung zur Clusterkonfiguration im Abschnitt [Cloud Credentials](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) (Cloudanmeldeinformationen). 
+> [!Note]
+> Clouddienst-Zugriffsschlüssel werden mithilfe der Konfigurationsseite **Cloud Credentials** (Cloudanmeldeinformationen) gespeichert. Ein Beispiel finden Sie weiter oben im Abschnitt [Hinzufügen einer Kernspeichereinheit](fxt-add-storage.md#add-a-core-filer). Ausführliche Informationen finden Sie in der Anleitung zur Clusterkonfiguration im Abschnitt [Cloud Credentials](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) (Cloudanmeldeinformationen).
 
 ## <a name="configure-dns-for-load-balancing"></a>Konfigurieren von DNS für den Lastenausgleich
 
-In diesem Abschnitt werden die Grundlagen zum Konfigurieren eines RRDNS-Systems (Roundrobin-DNS) erläutert, das die Clientlast auf alle clientseitigen IP-Adressen in Ihrem FXT Edge Filer-Cluster verteilt. 
+In diesem Abschnitt werden die Grundlagen zum Konfigurieren eines RRDNS-Systems (Roundrobin-DNS) erläutert, das die Clientlast auf alle clientseitigen IP-Adressen in Ihrem FXT Edge Filer-Cluster verteilt.
 
 ### <a name="decide-whether-or-not-to-use-dns"></a>Entscheiden, ob DNS verwendet werden soll
 
-Die Verwendung eines Lastenausgleichs empfiehlt sich in jedem Fall. DNS muss aber nicht immer verwendet werden. So ist es beispielsweise bei bestimmten Arten von Clientworkflows unter Umständen sinnvoller, Cluster-IP-Adressen per Skript gleichmäßig auf Clients zu verteilen, wenn diese den Cluster einbinden. Unter [Tutorial: Einbinden des Clusters](fxt-mount-clients.md) werden einige Methoden beschrieben. 
+Die Verwendung eines Lastenausgleichs empfiehlt sich in jedem Fall. DNS muss aber nicht immer verwendet werden. So ist es beispielsweise bei bestimmten Arten von Clientworkflows unter Umständen sinnvoller, Cluster-IP-Adressen per Skript gleichmäßig auf Clients zu verteilen, wenn diese den Cluster einbinden. Unter [Tutorial: Einbinden des Clusters](fxt-mount-clients.md) werden einige Methoden beschrieben.
 
-Beachten Sie diese Faktoren bei der Entscheidung, ob Sie einen DNS-Server verwenden: 
+Beachten Sie diese Faktoren bei der Entscheidung, ob Sie einen DNS-Server verwenden:
 
-* Wenn auf Ihr System ausschließlich über NFS-Clients zugegriffen wird, ist DNS nicht erforderlich. Sie können alle Netzwerkadressen unter Verwendung numerischer IP-Adressen angeben. 
+* Wenn auf Ihr System ausschließlich über NFS-Clients zugegriffen wird, ist DNS nicht erforderlich. Sie können alle Netzwerkadressen unter Verwendung numerischer IP-Adressen angeben.
 
 * Wenn Ihr System den SMB-Zugriff (CIFS) unterstützt, ist DNS erforderlich, da Sie eine DNS-Domäne für den Active Directory-Server angeben müssen.
 
@@ -110,7 +111,7 @@ Auf der linken Seite wird ein virtueller Clusterserver und in der Mitte und auf 
 
 Jede clientseitige IP-Adresse muss einen eindeutigen Namen für die interne Verwendung durch den Cluster aufweisen. (In diesem Diagramm werden die Client-IPs aus Gründen der Übersichtlichkeit mit „vs1-client-IP-*“ bezeichnet, aber in der Produktionsumgebung sollten Sie eine prägnantere Bezeichnung verwenden, z. B. „client*“.)
 
-Clients binden den Cluster über den VServer-Namen als Serverargument ein. 
+Clients binden den Cluster über den VServer-Namen als Serverargument ein.
 
 Ändern Sie die Datei ``named.conf`` Ihres DNS-Servers, um die Reihenfolge für Abfragen an Ihren VServer festzulegen. Diese Option stellt sicher, dass alle verfügbaren Werte durchlaufen werden. Fügen Sie eine Anweisung wie die folgende hinzu:
 
@@ -136,7 +137,7 @@ update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
 update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 ```
 
-### <a name="enable-dns-in-the-cluster"></a>Aktivieren von DNS im Cluster 
+### <a name="enable-dns-in-the-cluster"></a>Aktivieren von DNS im Cluster
 
 Geben Sie auf der Einstellungsseite **Cluster** (Cluster) > **Administrative Network** (Verwaltungsnetzwerk) den DNS-Server an, den der Cluster verwendet. Zu den Einstellungen auf dieser Seite zählen die folgenden:
 
@@ -148,8 +149,8 @@ Ausführlichere Informationen finden Sie in der Anleitung zur Clusterkonfigurati
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dies ist der letzte Standardkonfigurationsschritt für den Azure FXT Edge Filer-Cluster. 
+Dies ist der letzte Standardkonfigurationsschritt für den Azure FXT Edge Filer-Cluster.
 
 * Informationen zu den LEDs und anderen Indikatoren des Systems finden Sie unter [Monitor Azure FXT Edge Filer hardware status](fxt-monitor.md) (Überwachen des Hardwarestatus von Azure FXT Edge Filer).
-* Weitere Informationen zur Einbindung des FXT Edge Filer-Clusters durch Clients finden Sie unter [Tutorial: Einbinden des Clusters](fxt-mount-clients.md). 
-* Weitere Informationen zum Betreiben und Verwalten eines FXT Edge Filer-Cluster finden Sie in der [Anleitung zur Clusterkonfiguration](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html). 
+* Weitere Informationen zur Einbindung des FXT Edge Filer-Clusters durch Clients finden Sie unter [Tutorial: Einbinden des Clusters](fxt-mount-clients.md).
+* Weitere Informationen zum Betreiben und Verwalten eines FXT Edge Filer-Cluster finden Sie in der [Anleitung zur Clusterkonfiguration](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html).

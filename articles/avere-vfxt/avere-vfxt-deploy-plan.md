@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272789"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342398"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
@@ -109,7 +109,7 @@ Die einzelnen vFXT-Knoten sind identisch. Das bedeutet, dass Sie beim Erstellen 
 
 Der Datenträgercache pro Knoten ist konfigurierbar und kann zwischen 1000 GB und 8000 GB liegen. 4 TB pro Knoten ist die empfohlene Cachegröße für Standard_E32s_v3-Knoten.
 
-Weitere Informationen zu diesen virtuellen Computern finden Sie in der Microsoft Azure-Dokumentation: [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Weitere Informationen zu diesen virtuellen Computern finden Sie in der Microsoft Azure-Dokumentation: [Arbeitsspeicheroptimierte Größen virtueller Computer](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>Kontokontingent
 

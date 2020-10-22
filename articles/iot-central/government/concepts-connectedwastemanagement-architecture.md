@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 763fb82e0725e5a98112af3a79856c3703a5c2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b061a6d3d7d2a6598d8ed7c48428d756db6e97d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77016084"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126274"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Überwachung für vernetzte Abfallwirtschaft: Referenzarchitektur 
 
@@ -33,7 +33,7 @@ Konzepte:
 Wir werfen nun einen Blick auf Schlüsselkomponenten, die bei einer Lösung zur Überwachung des Wasserverbrauchs in der Regel eine Rolle spielen.
 
 ## <a name="devices-and-connectivity"></a>Geräte und Konnektivität 
-Geräte im öffentlichen Raum (z. B. Mülltonnen) können per LPWAN (Low-Power Wide Area Network) über einen externen Netzbetreiber vernetzt werden. Für diese Gerätetypen können Sie die [Azure IoT Central-Geräte-Bridge](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) nutzen, um Daten vom Gerät an Ihre IoT-Anwendung in Azure IoT Central zu senden. Alternativ bieten sich Gerätegateways an, die IP-fähig sind und direkt mit IoT Central verbunden werden können.
+Geräte im öffentlichen Raum (z. B. Mülltonnen) können per LPWAN (Low-Power Wide Area Network) über einen externen Netzbetreiber vernetzt werden. Für diese Gerätetypen können Sie die [Azure IoT Central-Geräte-Bridge](../core/howto-build-iotc-device-bridge.md) nutzen, um Daten vom Gerät an Ihre IoT-Anwendung in Azure IoT Central zu senden. Alternativ bieten sich Gerätegateways an, die IP-fähig sind und direkt mit IoT Central verbunden werden können.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central ist eine IoT-App-Plattform, mit der Sie Ihre IoT-Lösung schnell in Betrieb nehmen können. Sie können Ihre Lösung mit Branding versehen, anpassen und in Dienste von Drittanbietern integrieren.
@@ -51,5 +51,4 @@ Die IoT-Daten können verwendet werden, um eine Vielzahl von Geschäftsanwendung
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie eine Azure IoT Central-Anwendung für [vernetzte Abfallwirtschaft](./tutorial-connected-waste-management.md) erstellen.
 * Informieren Sie sich über [IoT Central-Vorlagen für Behörden](./overview-iot-central-government.md).
-* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central).
-
+* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](../core/overview-iot-central.md).

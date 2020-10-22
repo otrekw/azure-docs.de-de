@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: bcd06ce879282ab9897d7e22006bac19a5c22b8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565087"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367957"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -88,7 +88,7 @@ In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 Sie können Datenträger beim Erstellen einer Skalierungsgruppe oder für eine vorhandene Skalierungsgruppe erstellen und anfügen.
 
-Ab API-Version `2019-07-01` können Sie die Größe des Betriebssystemdatenträgers in einer VM-Skalierungsgruppe mit der Eigenschaft [storageProfile.osDisk.diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) festlegen. Nach der Bereitstellung müssen Sie den Datenträger möglicherweise erweitern oder neu partitionieren, damit der gesamte Speicherplatz genutzt werden kann. Weitere Informationen zum [Erweitern des Datenträgers finden Sie hier](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os).
+Ab API-Version `2019-07-01` können Sie die Größe des Betriebssystemdatenträgers in einer VM-Skalierungsgruppe mit der Eigenschaft [storageProfile.osDisk.diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) festlegen. Nach der Bereitstellung müssen Sie den Datenträger möglicherweise erweitern oder neu partitionieren, damit der gesamte Speicherplatz genutzt werden kann. Weitere Informationen zum [Erweitern des Datenträgers finden Sie hier](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Anfügen von Datenträgern bei der Erstellung einer Skalierungsgruppe
 Erstellen Sie mit [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort für die VM-Instanzen an. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985.

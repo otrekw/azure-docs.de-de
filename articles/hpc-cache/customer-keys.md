@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092523"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340528"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln für Azure HPC Cache
 
@@ -58,7 +58,7 @@ Schlüsseltresor-Zugriffsberechtigungen:
 
 * Der Benutzer, der den Azure HPC Cache erstellt, muss über Berechtigungen verfügen, die der Rolle [Key Vault-Mitwirkender](../role-based-access-control/built-in-roles.md#key-vault-contributor) entsprechen. Dieselben Berechtigungen sind zum Einrichten und Verwalten von Azure Key Vault erforderlich.
 
-  Weitere Informationen finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md).
+  Weitere Informationen finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/secure-your-key-vault.md).
 
 ## <a name="1-set-up-azure-key-vault"></a>1. Einrichten von Azure Key Vault
 
@@ -66,7 +66,7 @@ Sie können einen Schlüsseltresor und Schlüssel einrichten, bevor Sie den Cach
 
 Zum Zeitpunkt der Cacheerstellung müssen Sie einen Tresor, Schlüssel und eine Schlüsselversion angeben, die für die Verschlüsselung des Caches verwendet werden sollen.
 
-Details finden Sie in der [Azure Key Vault-Dokumentation](../key-vault/key-vault-overview.md).
+Details finden Sie in der [Azure Key Vault-Dokumentation](../key-vault/general/overview.md).
 
 > [!NOTE]
 > Azure Key Vault muss dasselbe Abonnement verwenden und sich in derselben Region wie Azure HPC Cache befinden. Stellen Sie sicher, dass die von Ihnen gewählte Region die [Funktion „Kundenseitig verwaltete Schlüssel“ unterstützt](hpc-cache-overview.md#region-availability).
@@ -92,7 +92,7 @@ Der Benutzer, der den Cache erstellt, muss über Berechtigungen verfügen, die d
 
 1. Wählen Sie nach der Auswahl eines Tresors den einzelnen Schlüssel aus den verfügbaren Optionen aus, oder erstellen Sie einen neuen Schlüssel. Bei dem Schlüssel muss es sich um einen 2.048-Bit-RSA-Schlüssel handeln.
 
-1. Geben Sie die Version für den ausgewählten Schlüssel an. Weitere Informationen zur Versionsverwaltung finden Sie in der [Azure Key Vault-Dokumentation](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
+1. Geben Sie die Version für den ausgewählten Schlüssel an. Weitere Informationen zur Versionsverwaltung finden Sie in der [Azure Key Vault-Dokumentation](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning).
 
 Fahren Sie mit den restlichen Spezifikationen fort, und erstellen Sie den Cache, wie unter [Erstellen eines Azure HPC Cache](hpc-cache-create.md) beschrieben.
 

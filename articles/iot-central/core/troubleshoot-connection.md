@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322448"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127368"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Behandeln von Problemen, warum Daten von Ihren Geräten nicht in Azure IoT Central angezeigt werden
 
@@ -34,9 +34,9 @@ Dieser Abschnitt hilft Ihnen festzustellen, ob Ihre Daten IoT Central erreichen.
 
 Sofern dies noch nicht erledigt ist, installieren Sie das Tool `az cli` und die Erweiterung `azure-iot`.
 
-Informationen zur Installation von `az cli` finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Informationen zur Installation von `az cli` finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Führen Sie zum [Installieren](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) der Erweiterung `azure-iot` den folgenden Befehl aus:
+Führen Sie zum [Installieren](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) der Erweiterung `azure-iot` den folgenden Befehl aus:
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -155,7 +155,7 @@ Wenn Sie Probleme in Bezug auf Ihren Authentifizierungsfluss feststellen:
 | 401 | Das Autorisierungstoken kann nicht überprüft werden. Es ist z. B. abgelaufen oder gilt nicht für die URI der Anforderung. Dieser Fehlercode wird auch im Rahmen des TPM-Nachweisvorgangs an Geräte zurückgegeben. | Stellen Sie sicher, dass Ihr Gerät über die richtigen Anmeldeinformationen verfügt. |
 | 404 | Die Device Provisioning Service-Instanz oder eine Ressource (z. B. eine Registrierung) ist nicht vorhanden. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 412 | Gemäß RFC7232 entspricht das `ETag` in der Anforderung nicht dem `ETag` der vorhandenen Ressource. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | Verringern Sie die Nachrichtenhäufigkeit, teilen Sie die Verantwortlichkeiten auf mehrere Geräte auf. |
+| 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Verringern Sie die Nachrichtenhäufigkeit, teilen Sie die Verantwortlichkeiten auf mehrere Geräte auf. |
 | 500 | Interner Fehler. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um zu sehen, ob dieser Ihnen weiterhelfen kann. |
 
 ## <a name="payload-shape-issues"></a>Probleme mit der Form der Nutzdaten

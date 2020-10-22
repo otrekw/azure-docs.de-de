@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bcea36b99ae51da256d6b4fc49a4e3965a8c82c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378598"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279182"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace
 
@@ -153,7 +153,7 @@ Sollte eines der folgenden Probleme bei Ihnen auftreten, können Sie ein Support
 - Ein Problem, das aufgrund eines Fehlers auf Ihrer Seite eskaliert werden muss (beispielsweise ein falsches Nutzungsereignis)
 - Ein anderes Problem im Zusammenhang mit der getakteten Abrechnung
 
-Um die Supportoptionen für Herausgeber zu verstehen und ein Supportticket für Microsoft zu öffnen, befolgen Sie die Anweisungen unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](./support.md).
+Um die Supportoptionen für Herausgeber zu verstehen und ein Supportticket für Microsoft zu öffnen, befolgen Sie die Anweisungen unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](../support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

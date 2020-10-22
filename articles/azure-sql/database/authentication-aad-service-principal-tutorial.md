@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444182"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367719"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen
 
@@ -65,7 +65,7 @@ In diesem Tutorial lernen Sie Folgendes:
     Weitere Informationen finden Sie unter dem [AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)-Befehl.
 
     > [!IMPORTANT]
-    > Wenn eine Azure AD-Identität für den logischen Azure SQL-Server eingerichtet wird, muss der Identität die Berechtigung [**Verzeichnisleser**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) erteilt werden. Dieser Schritt wird im folgenden Abschnitt ausführlich erläutert. **Überspringen Sie diesen Schritt nicht**, weil die Azure AD-Authentifizierung nicht mehr funktioniert.
+    > Wenn eine Azure AD-Identität für den logischen Azure SQL-Server eingerichtet wird, muss der Identität die Berechtigung [**Verzeichnisleser**](../../active-directory/roles/permissions-reference.md#directory-readers) erteilt werden. Dieser Schritt wird im folgenden Abschnitt ausführlich erläutert. **Überspringen Sie diesen Schritt nicht**, weil die Azure AD-Authentifizierung nicht mehr funktioniert.
 
     - Wenn Sie in der Vergangenheit den Befehl [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) mit dem Parameter `AssignIdentity` für das Erstellen eines neuen SQL-Servers verwendet haben, müssen Sie anschließend den Befehl [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) als separaten Befehl ausführen, um diese Eigenschaft im Azure-Fabric zu aktivieren.
 
