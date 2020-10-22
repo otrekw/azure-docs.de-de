@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231351"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340511"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Tutorial: Einbinden des Clusters
 
@@ -20,6 +20,7 @@ In diesem Tutorial erfahren Sie, wie Sie NFS-Clients in den Azure FXT Edge Fi
 In diesem Tutorial wird Folgendes vermittelt:
 
 > [!div class="checklist"]
+>
 > * Strategien für den Lastenausgleich von Clients im gesamten Spektrum clientseitiger IP-Adressen
 > * Vorgehensweise zum Erstellen eines Einbindungspfads auf der Grundlage einer clientseitigen IP-Adresse und einer Namespaceverbindung
 > * Argumente für den mount-Befehl
@@ -108,6 +109,6 @@ Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einst
 
 Nachdem Sie Clients eingebunden haben, können Sie Ihren Workflow testen und erste Schritte mit Ihrem Cluster ausführen.
 
-Wenn Sie Daten in eine neue Cloud-Kernspeichereinheit verschieben müssen, verwenden Sie die parallele Datenerfassung, um die Cachestruktur zu nutzen. Einige Strategien werden in [Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest) beschrieben. (Avere vFXT for Azure ist ein cloudbasiertes Produkt mit einer sehr ähnlichen Cachetechnologie wie Azure FXT Edge Filer.)
+Wenn Sie Daten in eine neue Cloud-Kernspeichereinheit verschieben müssen, verwenden Sie die parallele Datenerfassung, um die Cachestruktur zu nutzen. Einige Strategien werden in [Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung](../avere-vfxt/avere-vfxt-data-ingest.md) beschrieben. (Avere vFXT for Azure ist ein cloudbasiertes Produkt mit einer sehr ähnlichen Cachetechnologie wie Azure FXT Edge Filer.)
 
 Informationen zum Behandeln von Hardwareproblemen finden Sie bei Bedarf unter [Überwachen des Hardwarestatus von Azure FXT Edge Filer](fxt-monitor.md).

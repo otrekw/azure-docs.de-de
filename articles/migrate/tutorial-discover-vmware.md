@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie lokale virtuelle VMware-Computer mit dem
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: f39ad3cbc357575f735b963346c8a8b0cc95e7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e8f61c898b08cc0638597e77fd3260cb4593b2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442232"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311299"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Tutorial: Ermitteln virtueller VMware-Computer mit der Serverbewertung
 
@@ -238,7 +238,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
    
    Die Anmeldung mit einer PIN wird nicht unterstützt.
 3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück. 
-4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](tutorial-prepare-vmware.md#prepare-azure) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
+4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen Berechtigungen für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
 
 
@@ -248,7 +248,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um die Konfigurations- und Leistungsdaten der VMs zu ermitteln.
 
 1. Wählen Sie in **Schritt 1: Geben Sie die vCenter Server-Anmeldeinformationen** ein, klicken Sie auf **Anmeldeinformationen hinzufügen**, um einen Anzeigenamen für die Anmeldeinformationen anzugeben, fügen Sie **Benutzername** und **Kennwort** für das vCenter Server-Konto hinzu, das die Appliance verwendet, um VMs auf der vCenter Server-Instanz zu ermitteln.
-    - Sie sollten im [vorherigen Tutorial](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
+    - Sie sollten im vorherigen Tutorial ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
     - Wenn Sie die Ermittlung auf bestimmte VMware-Objekte (vCenter Server-Rechenzentren, Cluster, einen Ordner mit Clustern, Hosts, einen Ordner mit Hosts oder einzelne VMs) begrenzen möchten, hilft Ihnen die Anleitung in [diesem Artikel](set-discovery-scope.md) beim Einschränken des von Azure Migrate genutzten Kontos weiter.
 1. Geben Sie in **Step 2: Geben Sie vCenter Server-Details** ein, klicken Sie auf **Ermittlungsquelle hinzufügen**, um den Anzeigenamen für die Anmeldeinformationen aus der Dropdownliste auszuwählen, geben Sie den **IP-Adresse/FQDN**-Wert der vCenter Server-Instanz an. Sie können für **Port** den Standardwert (443) beibehalten oder einen benutzerdefinierten Port angeben, den vCenter Server überwacht, und dann auf **Speichern** klicken.
 1. Wenn Sie auf „Speichern“ klicken, versucht die Appliance, die Verbindung zum vCenter Server mit den angegebenen Anmeldeinformationen zu überprüfen, und zeigt den **Überprüfungszustand** in der Tabelle für die vCenter Server-IP-Adresse/FQDN an.
@@ -268,5 +268,5 @@ Die Ermittlung funktioniert wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bewerten Sie virtuelle VMware-Computer](tutorial-assess-vmware.md) für die Migration zu virtuellen Azure-Computern.
+- [Bewerten Sie virtuelle VMware-Computer](./tutorial-assess-vmware-azure-vm.md) für die Migration zu virtuellen Azure-Computern.
 - [Informieren Sie sich über die Daten](migrate-appliance.md#collected-data---vmware), die von der Appliance im Zuge der Ermittlung gesammelt werden.

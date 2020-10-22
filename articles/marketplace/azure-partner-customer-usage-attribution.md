@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261378"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282352"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -268,7 +268,7 @@ Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation 
 
 ## <a name="get-support"></a>Support
 
-Informationen zu den Supportoptionen im kommerziellen Marketplace finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ in Partner Center](./partner-center-portal/support.md).
+Informationen zu den Supportoptionen im kommerziellen Marketplace finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ in Partner Center](support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>So fragen Sie technische Beratung an
 

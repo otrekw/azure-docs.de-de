@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 49ecf753b1dd547eab251222a6c2709d96e9c89b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767626"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146528"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
 # <a name="understand-iot-hub-metrics"></a>Grundlegendes zu IoT Hub-Metriken
@@ -58,8 +58,8 @@ IoT Hub bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität
 |devices.totalDevices|Geräte gesamt (veraltet)|Anzahl|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|Keine|
 |devices.connectedDevices.<br>allProtocol|Verbundene Geräte (veraltet) |Anzahl|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|Keine|
 |d2c.telemetry.egress.<br>success|Routing: Übermittelte Telemetrienachrichten|Anzahl|Gesamt|Die Anzahl der erfolgreichen Nachrichtenübermittlungen an alle Endpunkte über das IoT Hub-Routing Wenn eine Nachricht an mehrere Endpunkte weitergeleitet wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins Wenn eine Nachricht mehrmals an denselben Endpunkt übermittelt wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins|Keine|
-|d2c.telemetry.egress.<br>dropped|Routing: Verworfene Telemetrienachrichten |Anzahl|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine|
-|d2c.telemetry.egress.<br>orphaned|Routing: Verwaiste Telemetrienachrichten |Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing zu verwaisten Nachrichten führte, weil sie keiner Routingabfrage entsprachen (wenn die Fallbackroute deaktiviert wurde).|Keine|
+|d2c.telemetry.egress.<br>dropped|Routing: Verworfene Telemetrienachrichten |Anzahl|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine|
+|d2c.telemetry.egress.<br>orphaned|Routing: Verwaiste Telemetrienachrichten |Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing zu verwaisten Nachrichten führte, weil sie keiner Routingabfrage entsprachen (wenn die Fallbackroute deaktiviert wurde).|Keine|
 |d2c.telemetry.egress.<br>ungültig|Routing: Nicht kompatible Telemetrienachrichten|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten aufgrund einer Inkompatibilität mit dem Endpunkt nicht übermitteln konnte. Eine Nachricht ist mit einem Endpunkt inkompatibel, wenn IoT Hub versucht, die Nachricht an den Endpunkt zu übermitteln und ein nicht vorübergehender Fehler auftritt. Es wird nicht versucht, ungültige Nachrichten erneut zuzustellen. Dieser Wert umfasst keine Wiederholungen.|Keine|
 |d2c.telemetry.egress.<br>fallback|Routing: An den Fallback übermittelte Nachrichten|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten an den mit der Fallbackroute verbundenen Endpunkt übermittelt hat.|Keine|
 |d2c.endpoints.egress.<br>eventHubs|Routing: An Event Hub übermittelte Nachrichten|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an benutzerdefinierte Endpunkt vom Typ „Event Hub“ übermittelt hat. Diese Metrik enthält keine an integrierte Endpunkte übermittelten Nachrichten (Ereignisse).|Keine|
@@ -139,4 +139,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
 
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/quickstart-linux.md)

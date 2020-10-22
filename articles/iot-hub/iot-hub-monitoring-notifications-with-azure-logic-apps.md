@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81680722"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146645"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach
 
@@ -22,7 +22,7 @@ ms.locfileid: "81680722"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) unterstützt Sie bei der übergreifenden Orchestrierung von Workflows für lokale und cloudbasierte Dienste, für einzelne oder mehrere Unternehmen sowie für verschiedene Protokolle. Eine Logik-App beginnt mit einem Trigger, gefolgt von mindestens einer Aktion. Mehrere Aktionen können mithilfe integrierter Steuerungen sequenziert werden. Hierzu zählen etwa Bedingungen und Iteratoren. Diese Flexibilität macht Logic Apps zu einer idealen IoT-Lösung für die IoT-Überwachung. Beispielsweise kann das Eintreffen von Telemetriedaten eines Geräts bei einem IoT Hub-Endpunkt Logik-App-Workflows auslösen, um die Daten in einem Azure Storage-Blob zu speichern, E-Mail-Benachrichtigungen mit einer Warnung vor Datenanomalien zu senden, den Einsatz eines Technikers zu planen, wenn ein Gerät einen Fehler meldet, und vieles mehr.
+[Azure Logic Apps](../logic-apps/index.yml) unterstützt Sie bei der übergreifenden Orchestrierung von Workflows für lokale und cloudbasierte Dienste, für einzelne oder mehrere Unternehmen sowie für verschiedene Protokolle. Eine Logik-App beginnt mit einem Trigger, gefolgt von mindestens einer Aktion. Mehrere Aktionen können mithilfe integrierter Steuerungen sequenziert werden. Hierzu zählen etwa Bedingungen und Iteratoren. Diese Flexibilität macht Logic Apps zu einer idealen IoT-Lösung für die IoT-Überwachung. Beispielsweise kann das Eintreffen von Telemetriedaten eines Geräts bei einem IoT Hub-Endpunkt Logik-App-Workflows auslösen, um die Daten in einem Azure Storage-Blob zu speichern, E-Mail-Benachrichtigungen mit einer Warnung vor Datenanomalien zu senden, den Einsatz eines Technikers zu planen, wenn ein Gerät einen Fehler meldet, und vieles mehr.
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
@@ -104,7 +104,7 @@ Erstellen Sie einen Service Bus-Namespace und eine Service Bus-Warteschlange. Im
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Hinzufügen eines benutzerdefinierten Endpunkts und einer Routingregel zu Ihrem IoT-Hub
 
-Fügen Sie Ihrem IoT-Hub einen benutzerdefinierten Endpunkt für die Service Bus-Warteschlange hinzu, und erstellen Sie eine Nachrichtenroutingregel, sodass Nachrichten, die eine Temperaturwarnung enthalten, an diesen Endpunkt weitergeleitet werden, wo sie von Ihrer Logik-App verwertet werden. Die Routingregel verwendet eine Routingabfrage (`temperatureAlert = "true"`), um Nachrichten auf der Grundlage des Werts der Anwendungseigenschaft `temperatureAlert` weiterzuleiten, die vom auf dem Gerät ausgeführten Clientcode festgelegt wurde. Weitere Informationen finden Sie unter [Abfrage des Nachrichtenroutings basierend auf Nachrichteneigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+Fügen Sie Ihrem IoT-Hub einen benutzerdefinierten Endpunkt für die Service Bus-Warteschlange hinzu, und erstellen Sie eine Nachrichtenroutingregel, sodass Nachrichten, die eine Temperaturwarnung enthalten, an diesen Endpunkt weitergeleitet werden, wo sie von Ihrer Logik-App verwertet werden. Die Routingregel verwendet eine Routingabfrage (`temperatureAlert = "true"`), um Nachrichten auf der Grundlage des Werts der Anwendungseigenschaft `temperatureAlert` weiterzuleiten, die vom auf dem Gerät ausgeführten Clientcode festgelegt wurde. Weitere Informationen finden Sie unter [Abfrage des Nachrichtenroutings basierend auf Nachrichteneigenschaften](./iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-properties).
 
 ### <a name="add-a-custom-endpoint"></a>Hinzufügen eines benutzerdefinierten Endpunkts
 

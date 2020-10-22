@@ -6,16 +6,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
-ms.openlocfilehash: 567574e65fcc1db3ef9e8aea73c6a59be0594f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66a82a6d2a5bb1f534ed211091793b2ab4d2a28
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132295"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221093"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>Grundlegendes zu Apache Spark für U-SQL-Entwickler
 
-Microsoft unterstützt verschiedene Analysedienste wie [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) und [Azure HDInsight](../hdinsight/hdinsight-overview.md) sowie Azure Data Lake Analytics. Wir hören von Entwicklern, dass sie beim Erstellen von Analysepipelines ganz eindeutig Open Source-Lösungen bevorzugen. Wir haben diesen Leitfaden erstellt, um U-SQL-Entwicklern Apache Spark zu veranschaulichen und zu erläutern, wie U-SQL-Skripts in Apache Spark transformiert werden können.
+Microsoft unterstützt verschiedene Analysedienste wie [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) und [Azure HDInsight](../hdinsight/hdinsight-overview.md) sowie Azure Data Lake Analytics. Wir hören von Entwicklern, dass sie beim Erstellen von Analysepipelines ganz eindeutig Open Source-Lösungen bevorzugen. Wir haben diesen Leitfaden erstellt, um U-SQL-Entwicklern Apache Spark zu veranschaulichen und zu erläutern, wie U-SQL-Skripts in Apache Spark transformiert werden können.
 
 Der Leitfaden enthält eine Reihe von Schritten, die ausgeführt werden können, sowie verschiedene Alternativen.
 
@@ -32,17 +32,17 @@ Der Leitfaden enthält eine Reihe von Schritten, die ausgeführt werden können,
    Vor dem Transformieren Ihrer U-SQL-Skripts müssen Sie einen Analysedienst auswählen. Nachfolgend sind einige der verfügbaren Computedienste aufgelistet:
       - [Azure Data Factory-Datenfluss](../data-factory/concepts-data-flow-overview.md): Zuordnungsdatenflüsse sind visuell gestaltete Datentransformationen, mit denen Datentechniker eine grafische Datentransformationslogik entwickeln können, ohne Code schreiben zu müssen. Obwohl nicht zum Ausführen von komplexem Benutzercode geeignet, können sie auf einfache Weise herkömmliche SQL-ähnliche Datenflusstransformationen darstellen.
       - [Azure HDInsight Hive](../hdinsight/hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md): Apache Hive in HDInsight eignet sich für ETL-Vorgänge (Extrahieren, Transformieren und Laden). Das bedeutet, dass Sie Ihre U-SQL-Skripts in Apache Hive übersetzen.
-      - Apache Spark-Engines wie [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) oder [Azure Databricks](../azure-databricks/what-is-azure-databricks.md): Das bedeutet, dass Sie Ihre U-SQL-Skripts in Spark übersetzen. Weitere Informationen finden Sie unter [Grundlegendes zu Spark-Datenformaten](understand-spark-data-formats.md).
+      - Apache Spark-Engines wie [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) oder [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks): Das bedeutet, dass Sie Ihre U-SQL-Skripts in Spark übersetzen. Weitere Informationen finden Sie unter [Grundlegendes zu Spark-Datenformaten](understand-spark-data-formats.md).
 
 > [!CAUTION]
-> [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) und [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) sind Clusterdienste und keine serverlosen Aufträge wie Azure Data Lake Analytics. Sie müssen berücksichtigen, wie die Cluster bereitgestellt werden, um das entsprechende Preis-Leistungs-Verhältnis zu erzielen, und wie deren Lebensdauer zu verwalten ist, um Kosten zu minimieren. Diese Dienste weisen verschiedene Leistungsmerkmale mit Benutzercode in .NET auf, sodass Sie entweder Wrapper schreiben oder Ihren Code in einer unterstützten Sprache umschreiben müssen. Weitere Informationen finden Sie unter [Grundlegendes zu Spark-Datenformaten](understand-spark-data-formats.md), [Grundlegendes zu Apache Spark-Codekonzepten für U-SQL-Entwickler](understand-spark-code-concepts.md) und [.Net für Apache Spark](https://dotnet.microsoft.com/apps/data/spark).
+> [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) und [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) sind Clusterdienste und keine serverlosen Aufträge wie Azure Data Lake Analytics. Sie müssen berücksichtigen, wie die Cluster bereitgestellt werden, um das entsprechende Preis-Leistungs-Verhältnis zu erzielen, und wie deren Lebensdauer zu verwalten ist, um Kosten zu minimieren. Diese Dienste weisen verschiedene Leistungsmerkmale mit Benutzercode in .NET auf, sodass Sie entweder Wrapper schreiben oder Ihren Code in einer unterstützten Sprache umschreiben müssen. Weitere Informationen finden Sie unter [Grundlegendes zu Spark-Datenformaten](understand-spark-data-formats.md), [Grundlegendes zu Apache Spark-Codekonzepten für U-SQL-Entwickler](understand-spark-code-concepts.md) und [.Net für Apache Spark](https://dotnet.microsoft.com/apps/data/spark).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Grundlegendes zu Spark-Datenformaten für U-SQL-Entwickler](understand-spark-data-formats.md)
 - [Grundlegendes zu Spark-Codekonzepten für U-SQL-Entwickler](understand-spark-code-concepts.md)
-- [Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
-- [.NET für Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
+- [.NET für Apache Spark](/dotnet/spark/what-is-apache-spark-dotnet)
 - [Transformieren von Daten mit der Hadoop Hive-Aktivität in Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
 - [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Was ist Apache Spark in Azure HDInsight?](../hdinsight/spark/apache-spark-overview.md)

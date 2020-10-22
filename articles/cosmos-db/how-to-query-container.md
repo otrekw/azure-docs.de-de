@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261255"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276108"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
 
@@ -19,7 +19,7 @@ In diesem Artikel erfahren Sie, wie Sie einen Container (Sammlung, Diagramm oder
 
 ## <a name="in-partition-query"></a>Abfrage innerhalb einer Partition
 
-Beim Abfragen von Daten aus Containern wird die Abfrage von Azure Cosmos DB automatisch verarbeitet, wenn für die Abfrage ein Partitionsschlüsselfilter angegeben ist. Die Abfrage wird an die [physischen Partitionen](partition-data.md#physical-partitions) weitergeleitet, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen.
+Beim Abfragen von Daten aus Containern wird die Abfrage von Azure Cosmos DB automatisch verarbeitet, wenn für die Abfrage ein Partitionsschlüsselfilter angegeben ist. Die Abfrage wird an die [physischen Partitionen](partitioning-overview.md#physical-partitions) weitergeleitet, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen.
 
 Stellen Sie sich z. B. die folgende Abfrage mit einem Gleichheitsfilter für `DeviceId` vor. Wenn diese Abfrage für einen Container ausgeführt wird, der auf `DeviceId` partitioniert ist, filtert diese Abfrage eine einzelne physische Partition.
 
@@ -61,7 +61,7 @@ Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folg
 
 - **MaxBufferedItemCount**: Steuert das Verhältnis zwischen Abfragewartezeit und clientseitiger Arbeitsspeichernutzung. Wird diese Option weggelassen oder auf „-1“ festgelegt, verwaltet das SDK die Anzahl von Elementen, die während der Ausführung paralleler Abfragen gepuffert werden.
 
-Aufgrund der Fähigkeit von Azure Cosmos DB, partitionsübergreifende Abfragen zu parallelisieren, wird die Abfragelatenz im Allgemeinen gut skaliert, da das System [physische Partitionen](partition-data.md#physical-partitions) hinzufügt. Die RU-Rechnungstellung steigt jedoch erheblich, wenn die Gesamtzahl der physischen Partitionen zunimmt.
+Aufgrund der Fähigkeit von Azure Cosmos DB, partitionsübergreifende Abfragen zu parallelisieren, wird die Abfragelatenz im Allgemeinen gut skaliert, da das System [physische Partitionen](partitioning-overview.md#physical-partitions) hinzufügt. Die RU-Rechnungstellung steigt jedoch erheblich, wenn die Gesamtzahl der physischen Partitionen zunimmt.
 
 Bei einer partitionsübergreifenden Abfrage führen Sie im Wesentlichen eine separate Abfrage pro einzelner physischer Partition durch. Zwar wird bei partitionsübergreifenden Abfragen der Index verwendet, sofern verfügbar, sie sind aber immer noch nicht so effizient wie Abfragen innerhalb von Partitionen.
 

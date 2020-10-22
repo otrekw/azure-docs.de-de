@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576590"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314738"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -26,11 +26,11 @@ Beheben Sie Probleme mit der Bewertungsbereitschaft wie folgt:
 **Problem** | **Behebung**
 --- | ---
 Nicht unterstützter Starttyp | Azure unterstützt keine virtuellen Computer mit dem Starttyp „EFI“. Wir empfehlen, dass Sie vor einer Migration den Starttyp in „BIOS“ ändern. <br/><br/>Sie können die Azure Migrate-Servermigration verwenden, um die Migration solcher virtuellen Computer zu verarbeiten. Sie ändert den Starttyp des virtuellen Computers im Rahmen der Migration in „BIOS“.
-Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](https://aka.ms/WSosstatement) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Ziehen Sie vor der Migration zu Azure ein Upgrade in Erwägung.
-Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [ausgewählte Windows-Betriebssystemversionen](https://aka.ms/WSosstatement). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
-Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [ausgewählte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung. Weitere Informationen finden Sie auch [hier](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment).
+Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](/troubleshoot/azure/virtual-machines/server-software-support) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Ziehen Sie vor der Migration zu Azure ein Upgrade in Erwägung.
+Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [ausgewählte Windows-Betriebssystemversionen](/troubleshoot/azure/virtual-machines/server-software-support). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
+Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [ausgewählte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung. Weitere Informationen finden Sie auch [hier](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment).
 Nicht unterstütztes Linux-Betriebssystem | Der Computer startet möglicherweise in Azure, aber Azure stellt keine Betriebssystemunterstützung bereit. Ziehen Sie vor der Migration zu Azure ein Upgrade auf eine [unterstützte Linux-Version](../virtual-machines/linux/endorsed-distros.md) in Erwägung.
-Unbekanntes Betriebssystem | Das Betriebssystem der VM wurde in vCenter Server als „Sonstige“ angegeben. Dieses Verhalten hindert Azure Migrate daran, die Azure-Bereitschaft der VM zu überprüfen. Stellen Sie sicher, dass das Betriebssystem von Azure [unterstützt](https://aka.ms/azureoslist) wird, bevor Sie den Computer migrieren.
+Unbekanntes Betriebssystem | Das Betriebssystem der VM wurde in vCenter Server als „Sonstige“ angegeben. Dieses Verhalten hindert Azure Migrate daran, die Azure-Bereitschaft der VM zu überprüfen. Stellen Sie sicher, dass das Betriebssystem von Azure [unterstützt](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements) wird, bevor Sie den Computer migrieren.
 Nicht unterstützte Bitversion | Virtuelle Computer mit einem 32-Bit-Betriebssystem starten zwar unter Umständen in Azure, es empfiehlt sich jedoch, vor der Migration zu Azure ein Upgrade auf 64-Bit durchzuführen.
 Erfordert ein Microsoft Visual Studio-Abonnement. | Auf dem Computer wird ein Windows-Clientbetriebssystem ausgeführt, das nur mit einem Visual Studio-Abonnement unterstützt wird.
 Kein virtueller Computer für erforderliche Speicherleistung gefunden. | Die erforderliche Speicherleistung (Eingabe/Ausgabe-Vorgänge pro Sekunde (IOPS) und Durchsatz) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie vor der Migration die Speicheranforderungen für den Computer.
@@ -48,7 +48,7 @@ Eignung des virtuellen Computers konnte aufgrund eines internen Fehlers nicht er
 Eignung konnte für mindestens einen Datenträger aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Netzwerkadapter aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Es wurde keine VM-Größe für die Angebot/Währung/reservierte Instanz gefunden. | Der Computer ist als „Nicht geeignet“ gekennzeichnet, weil die VM-Größe für die ausgewählte Kombination aus RI, Angebot und Währung nicht gefunden wurde. Bearbeiten Sie die Bewertungseigenschaften, um die gültigen Kombinationen auszuwählen und die Bewertung neu zu berechnen. 
-Internetprotokoll mit bedingter Bereitschaft | Nur verfügbar für Bewertungen vom Typ „VMware-Lösung in Azure (AVS)“. Der Faktor der IPv6-Internetadressierung wird von AVS nicht unterstützt. Wenden Sie sich an das AVS-Team, um eine Anleitung zur Abhilfe zu erhalten, falls Ihr Computer mit IPv6 erkannt wird.
+Internetprotokoll mit bedingter Bereitschaft | Nur verfügbar für Bewertungen vom Typ „VMware-Lösung in Azure (AVS)“. Der Faktor der IPv6-Internetadressierung wird von AVS nicht unterstützt.  Wenden Sie sich an das AVS-Team, um eine Anleitung zur Abhilfe zu erhalten, falls Ihr Computer mit IPv6 erkannt wird.
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Vorgeschlagenes Migrationstool in der importbasierten AVS-Bewertung als unbekannt markiert
 
@@ -61,7 +61,7 @@ Bei VMware- und Hyper-V-VMs werden virtuelle Linux-Computer aufgrund einer bekan
 - Die Lücke verhindert die Erkennung der Nebenversion des Linux-Betriebssystems, das auf den lokalen virtuellen Computern installiert ist.
 - Beispielsweise erkennt die Serverbewertung bei RHEL 6.10 derzeit nur RHEL 6 als Betriebssystemversion. Dies liegt daran, dass die vCenter Server-Instanz und der Hyper-V-Host die Kernel-Version für Linux-VM-Betriebssysteme nicht bereitstellen.
 -  Da Azure nur bestimmte Versionen von Linux unterstützt, werden die virtuellen Linux-Computer in der Serverbewertung derzeit als „bedingt bereit“ markiert.
-- Sie können ermitteln, ob das Linux-Betriebssystem des lokalen virtuellen Computers für Azure geeignet ist. Informationen hierzu finden Sie unter [Linux-Unterstützung von Azure](https://aka.ms/migrate/selfhost/azureendorseddistros).
+- Sie können ermitteln, ob das Linux-Betriebssystem des lokalen virtuellen Computers für Azure geeignet ist. Informationen hierzu finden Sie unter [Linux-Unterstützung von Azure](../virtual-machines/linux/endorsed-distros.md).
 -  Nachdem Sie die unterstützte Distribution überprüft haben, können Sie diese Warnung ignorieren.
 
 Diese Lücke kann behoben werden, indem Sie [Anwendungsermittlung-](./how-to-discover-applications.md) auf den VMware-VMs aktivieren. Bei der Serverbewertung wird das von der VM erkannte Betriebssystem mit den bereitgestellten Gastanmeldeinformationen verwendet. Mit diesen Betriebssystemdaten werden die richtigen Betriebssysteminformationen im Fall von virtuellen Windows- und Linux-Computern identifiziert.
@@ -107,7 +107,7 @@ Hinweis: Falls einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Se
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Weshalb weist meine Bewertung eine niedrige Zuverlässigkeitsstufe auf?
 
-Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ anhand des Prozentsatzes von [verfügbaren Datenpunkten](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) berechnet, die zum Berechnen der Bewertung benötigt werden. Im Folgenden werden mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
+Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ anhand des Prozentsatzes von [verfügbaren Datenpunkten](./concepts-assessment-calculation.md#ratings) berechnet, die zum Berechnen der Bewertung benötigt werden. Im Folgenden werden mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
 
 - Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie beispielsweise eine Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie nach dem Start der Ermittlung mindestens eine Woche warten, damit alle Datenpunkte erfasst werden können. Falls Sie nicht so lange warten können, sollten Sie die Leistungsdauer in einen kürzeren Zeitraum ändern und die Bewertung neu berechnen (Option „Neu berechnen“).
  
@@ -115,7 +115,7 @@ Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ 
 
 - Nach dem Start der Ermittlung in der Serverbewertung wurden wenige VMs erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
 
-[Weitere Informationen](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) zur Zuverlässigkeitsstufe.
+[Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based) zur Zuverlässigkeitsstufe.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Ist die Betriebssystemlizenz in einer Azure-VM-Bewertung inbegriffen?
 
@@ -126,7 +126,7 @@ Die Azure Migrate-Serverbewertung berücksichtigt zurzeit die Kosten einer Betri
 Die Serverbewertung sammelt fortlaufend Leistungsdaten von lokalen Computern und nutzt diese Daten, um die VM-SKU und die Datenträger-SKU in Azure zu empfehlen. [Erfahren Sie](concepts-assessment-calculation.md#calculate-sizing-performance-based), wie leistungsbasierten Daten gesammelt werden.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Warum zeigt meine Bewertung eine Warnung an, dass sie mit einer ungültigen Kombination von reservierten Instanzen, VM-Betriebszeit und Rabatt (%) erstellt wurde?
-Wenn Sie „Reservierte Instanzen“ auswählen, sind die „Rabatt (%)“- und „VM-Betriebszeit“-Eigenschaften nicht anwendbar. Da Ihre Bewertung mit einer ungültigen Kombination dieser Eigenschaften erstellt wurde, sind die Schaltflächen „Bearbeiten“ und „Neu berechnen“ deaktiviert. Erstellen Sie eine neue Bewertung. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2131554)
+Wenn Sie „Reservierte Instanzen“ auswählen, sind die „Rabatt (%)“- und „VM-Betriebszeit“-Eigenschaften nicht anwendbar. Da Ihre Bewertung mit einer ungültigen Kombination dieser Eigenschaften erstellt wurde, sind die Schaltflächen „Bearbeiten“ und „Neu berechnen“ deaktiviert. Erstellen Sie eine neue Bewertung. [Weitere Informationen](./concepts-assessment-calculation.md#whats-an-assessment)
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Ich sehe keine Leistungsdaten für einige Netzwerkadapter auf meinen physischen Servern.
 
@@ -161,7 +161,7 @@ Für virtuelle Windows-Computer:
 
     ![MMA-Status](./media/troubleshoot-assessment/mma-properties.png)
 
-Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden. Weitere Informationen zur Problembehandlung finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues).
+Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden. Weitere Informationen zur Problembehandlung finden Sie [hier](../azure-monitor/insights/service-map.md#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 

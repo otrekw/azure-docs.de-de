@@ -3,12 +3,12 @@ title: Ermitteln von Apps, Rollen und Funktionen auf lokalen Servern mit Azure M
 description: Erfahren Sie, wie Sie Apps, Rollen und Funktionen auf lokalen Servern mithilfe der Azure Migrate-Serverbewertung ermitteln.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118646"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315211"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Ermitteln von Apps, Rollen und Features eines Computers
 
@@ -46,7 +46,7 @@ Nachdem die Appliance bereitgestellt wurde und Sie die Anmeldeinformationen ange
 
 ## <a name="verify-permissions"></a>Überprüfen von Berechtigungen
 
-Sie [haben ein schreibgeschütztes vCenter Server-Konto](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) zur Ermittlung und Bewertung erstellt. Das schreibgeschützte Konto benötigt für **Virtuelle Computer** > **Gastvorgänge** aktivierte Berechtigungen, um mit der VM für die App-Ermittlung interagieren zu können.
+Sie [haben ein schreibgeschütztes vCenter Server-Konto](./tutorial-discover-vmware.md#prepare-vmware) zur Ermittlung und Bewertung erstellt. Das schreibgeschützte Konto benötigt für **Virtuelle Computer** > **Gastvorgänge** aktivierte Berechtigungen, um mit der VM für die App-Ermittlung interagieren zu können.
 
 ### <a name="add-the-user-account-to-the-appliance"></a>Hinzufügen des Benutzerkontos zur Appliance
 

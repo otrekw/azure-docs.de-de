@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: bdcfeeede8b16bf9a92a885364e4c8fef7ea5cbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986550"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127130"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Tutorial: Erstellen und Durchlaufen der App-Vorlage für die intelligente Zählerüberwachung 
 
@@ -108,6 +108,6 @@ Wenn Sie diese Anwendung nicht mehr verwenden möchten, können Sie sie mit den 
 
 Informationen zur App-Architektur für intelligente Zähler finden Sie im folgenden Artikel: 
 > [!div class="nextstepaction"]
-> [Azure IoT Central – Architektur der Intelligenter Stromzähler-Anwendung](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+> [Azure IoT Central – Architektur der Intelligenter Stromzähler-Anwendung](./concept-iot-central-smart-meter-app.md)
 * Erstellen Sie Anwendungsvorlagen für intelligente Zähler kostenlos: [App für intelligente Zähler](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](https://docs.microsoft.com/azure/iot-central/).
+* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](../index.yml).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601305"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312609"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Allgemeiner Betriebsleitfaden für Azure Active Directory – Referenz
 
@@ -91,7 +91,7 @@ Einige Identitäts- und Zugriffsverwaltungsdienste erfordern lokale Agents, um H
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Empfohlene Artikel für lokale Agent-Protokolle
 
 - [Problembehandlung von Anwendungsproxys](../manage-apps/application-proxy-troubleshoot.md)
-- [Problembehandlung bei der Self-Service-Kennwortzurücksetzung – Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [Problembehandlung bei der Self-Service-Kennwortzurücksetzung – Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect: Behandeln von Passthrough-Authentifizierungsproblemen](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
 - [Fehlercodes zur Problembehandlung für die Azure MFA NPS-Erweiterung](../authentication/howto-mfa-nps-extension-errors.md)

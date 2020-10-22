@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366720"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282477"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrieren von Couchbase zu Azure Cosmos DB-SQL-API
 
@@ -33,7 +33,7 @@ Im Folgenden sind die wichtigsten Features aufgeführt, die bei einem Vergleich 
 
 * Bei Azure Cosmos DB enthält das Dokument ein Feld „ID“, während „ID“ bei Couchbase ein Teil des Buckets ist. Das Feld „ID“ ist innerhalb der Partition eindeutig.
 
-* Azure Cosmos DB wird mithilfe eines der Verfahren Partitionierung oder Sharding skaliert. Dies bedeutet, dass die Daten in mehrere Shards/Partitionen aufgeteilt werden. Diese Partitionen/Shards werden basierend auf der von Ihnen angegebenen Partitionsschlüsseleigenschaft erstellt. Sie können den Partitionsschlüssel auswählen, um Lese- und Schreibvorgänge oder auch optimiertes Lesen/Schreiben zu optimieren. Weitere Informationen finden Sie im Artikel [Partitionierung](./partition-data.md).
+* Azure Cosmos DB wird mithilfe eines der Verfahren Partitionierung oder Sharding skaliert. Dies bedeutet, dass die Daten in mehrere Shards/Partitionen aufgeteilt werden. Diese Partitionen/Shards werden basierend auf der von Ihnen angegebenen Partitionsschlüsseleigenschaft erstellt. Sie können den Partitionsschlüssel auswählen, um Lese- und Schreibvorgänge oder auch optimiertes Lesen/Schreiben zu optimieren. Weitere Informationen finden Sie im Artikel [Partitionierung](./partitioning-overview.md).
 
 * In Azure Cosmos DB muss die Sammlung für die Hierarchie der obersten Ebene nicht angegeben werden, weil der Sammlungsname bereits vorhanden ist. Dieses Feature vereinfacht die JSON-Struktur erheblich. Das folgende Beispiel zeigt Unterschiede im Datenmodell zwischen Couchbase und Azure Cosmos DB:
 

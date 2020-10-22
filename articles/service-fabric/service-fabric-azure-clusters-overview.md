@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843310"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320506"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Übersicht über Service Fabric-Cluster in Azure
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
@@ -78,7 +78,7 @@ Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-B
 ### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen 
 Netzwerksicherheitsgruppen (NSGs) steuern ein- und ausgehenden Datenverkehr eines Subnetzes, virtuellen Computers oder einer bestimmten NIC.  Wenn sich mehrere virtuelle Computer im selben virtuellen Netzwerk befinden, können sie standardmäßig über einen beliebigen Port miteinander kommunizieren.  Wenn Sie die Kommunikation zwischen den Computern einschränken möchten, können Sie NSGs zum Segmentieren des Netzwerks oder zum Isolieren der virtuellen Computer voneinander definieren.  Wenn Sie mehrere Knotentypen in einem Cluster haben, können Sie NSGs auf Subnetze anwenden, um zu verhindern, dass Computer, die verschiedenen Knotentypen angehören, miteinander kommunizieren.  
 
-Weitere Informationen finden Sie unter [Sicherheitsgruppen](../virtual-network/security-overview.md).
+Weitere Informationen finden Sie unter [Sicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="scaling"></a>Skalierung
 

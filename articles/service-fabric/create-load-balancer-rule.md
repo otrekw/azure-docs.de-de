@@ -3,12 +3,12 @@ title: Erstellen einer Azure Load Balancer-Regel für einen Cluster
 description: Konfigurieren Sie eine Azure Load Balancer-Instanz zum Öffnen von Ports für Ihren Azure Service Fabric-Cluster.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259051"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319902"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Öffnen von Port für einen Service Fabric-Cluster
 
@@ -60,7 +60,7 @@ Der Azure CLI-Befehl verfügt über einige Parameter, die in der folgenden Tabel
 
 
 >[!NOTE]
->Weitere Informationen zum Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
+>Weitere Informationen zum Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle](../load-balancer/quickstart-load-balancer-standard-internal-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 Im `New-AzLoadBalancerRuleConfig`-Befehl gibt `-FrontendPort` den Port an, den der Lastenausgleich für externe Verbindungen verfügbar macht, und `-BackendPort` gibt den Port an, an dem die Service Fabric-App lauscht.
 
 >[!NOTE]
->Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
+>Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

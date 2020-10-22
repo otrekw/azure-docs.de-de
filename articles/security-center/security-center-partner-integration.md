@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 039fabbbb04f352042973f559e34a3c3a77e7500
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323654"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340426"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -85,7 +85,7 @@ Wählen Sie **ANZEIGEN** aus, um zusätzliche Informationen und Optionen anzuzei
 
 ### <a name="discovered-solutions"></a>Ermittelte Lösungen
 
-Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgeführt werden, aber nicht mit Security Center verbunden sind, und zeigt die Lösungen im Abschnitt **Ermittelte Lösungen** an. Zu diesen Lösungen gehören Azure-Lösungen wie [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) und Partnerlösungen.
+Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgeführt werden, aber nicht mit Security Center verbunden sind, und zeigt die Lösungen im Abschnitt **Ermittelte Lösungen** an. Zu diesen Lösungen gehören Azure-Lösungen wie [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) und Partnerlösungen.
 
 > [!NOTE]
 > Aktivieren Sie **Azure Defender-** auf Abonnementebene für das Feature „Ermittelte Lösungen“. Weitere Informationen zu den Tarifen finden Sie unter [Preise](security-center-pricing.md).

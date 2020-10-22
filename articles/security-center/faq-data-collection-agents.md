@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441479"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341837"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -43,7 +43,7 @@ Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](h
 
 ## <a name="what-is-the-log-analytics-agent"></a>Was ist der Log Analytics-Agent?
 
-Zur Überwachung auf Sicherheitsrisiken und Bedrohungen ist Azure Security Center vom [Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) abhängig. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. 
+Zur Überwachung auf Sicherheitsrisiken und Bedrohungen ist Azure Security Center vom [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) abhängig. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. 
 
 Der Agent wird manchmal als Microsoft Monitoring Agent (oder „MMA“ bezeichnet) bezeichnet. 
 
@@ -66,7 +66,7 @@ Windows- oder Linux-IaaS-VMs kommen unter folgenden Voraussetzungen infrage:
 
 - Die Log Analytics-Agent-Erweiterung ist derzeit nicht auf der VM installiert.
 - Die VM wird ausgeführt.
-- Der [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) für Windows oder Linux ist installiert.
+- Der [Azure-VM-Agent](../virtual-machines/extensions/agent-windows.md) für Windows oder Linux ist installiert.
 - Die VM wird nicht als Appliance wie z.B. Webanwendungsfirewall oder Firewall der nächsten Generation verwendet.
 
 
@@ -88,7 +88,7 @@ Der Speicherort des standardmäßigen Arbeitsbereichs hängt von Ihrer Azure-Reg
 
 ## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Welche Daten erfasst der Log Analytics-Agent?
 
-Eine vollständige Liste der vom Agent überwachten Anwendungen und Dienste finden Sie unter [Was wird von Azure Monitor überwacht?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services).
+Eine vollständige Liste der vom Agent überwachten Anwendungen und Dienste finden Sie unter [Was wird von Azure Monitor überwacht?](../azure-monitor/monitor-reference.md#azure-services).
 
 > [!IMPORTANT]
 > Wenn Sie die Protokollierung aktiviert und eine sehr aktive Ressource zum Protokollieren ausgewählt haben (z. B. das Protokoll auf *ausführlich* festgelegt haben), könnte dies bei einigen Diensten wie Azure-Firewall erhebliche Auswirkungen auf die Speicheranforderungen Ihres Log Analytics-Arbeitsbereichs haben. 
