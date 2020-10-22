@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fd7431b19ed21ee9cf76b6c2fe190b3f31cacf6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020880"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281047"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
@@ -82,7 +82,7 @@ Angenommen, Sie verfügen über zehn S1-Sammlungen mit jeweils 1 GB Speicher in 
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 20 GB Speicher benötige?
 
-Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 20 GB Speicher verfügbar sind: Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](sql-api-partition-data.md). 
+Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 20 GB Speicher verfügbar sind: Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partitioning-overview.md). 
 
 <a name="change-before"></a>
 
@@ -132,6 +132,6 @@ EA-Kunden genießen bis zum Ablauf ihres aktuellen Vertrags Preissicherheit.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure Cosmos DB finden Sie in folgenden Ressourcen:
 
-1.  [Partitionierung von Daten in Cosmos DB](sql-api-partition-data.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
+1.  [Partitionierung von Daten in Cosmos DB](partitioning-overview.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
 2.  [Cosmos DB-Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
 3.  [Anforderungseinheiten](request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.

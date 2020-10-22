@@ -3,12 +3,12 @@ title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Erfahren Sie, wie Sie Ressourcenprotokolle und Ereignisdaten aus Containergruppen in Azure Container Instances an Azure Monitor-Protokolle senden können.
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b110ba46bdcf2741e5f16845f28fe8305bcee1a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566669"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148649"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen
 
@@ -169,7 +169,7 @@ Informationen zur Überwachung der CPU- und Arbeitsspeicherressourcen von Contai
 
 <!-- LINKS - External -->
 [fluentd]: https://hub.docker.com/r/fluent/fluentd/
-[query_lang]: https://aka.ms/LogAnalyticsLanguage
+[query_lang]: /azure/data-explorer/
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

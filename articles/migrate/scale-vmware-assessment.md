@@ -3,12 +3,12 @@ title: Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure 
 description: Erfahren Sie, wie Sie eine große Anzahl von VMware-VMs mithilfe des Azure Migrate-Diensts für die Migration zu Azure bewerten.
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171916"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314114"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure
 
@@ -26,7 +26,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 
 > [!NOTE]
-> Wenn Sie einen Proof of Concept ausprobieren möchten, um einige virtuelle Computer zu bewerten, bevor Sie eine Bewertung im gewünschtem Umfang durchführen, lesen Sie unsere [Tutorialreihe](tutorial-prepare-vmware.md).
+> Wenn Sie einen Proof of Concept ausprobieren möchten, um einige virtuelle Computer zu bewerten, bevor Sie eine Bewertung im gewünschtem Umfang durchführen, lesen Sie unsere [Tutorialreihe](./tutorial-discover-vmware.md).
 
 ## <a name="plan-for-assessment"></a>Planen für die Bewertung
 
@@ -78,7 +78,7 @@ Bereiten Sie Azure und VMware für die Serverbewertung vor.
 2. Richten Sie Berechtigungen für Ihr Azure-Konto zur Interaktion mit Azure Migrate ein.
 3. Bereiten Sie VMware für die Bewertung vor.
 
-Befolgen Sie die Anweisungen in [diesem Tutorial](tutorial-prepare-vmware.md), um diese Einstellungen zu konfigurieren.
+Befolgen Sie die Anweisungen in [diesem Tutorial](./tutorial-discover-vmware.md), um diese Einstellungen zu konfigurieren.
 
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
@@ -96,7 +96,7 @@ Führen Sie in Übereinstimmung mit Ihren Planungsanforderungen folgende Schritt
 1. Überprüfen Sie die Bewertungen in Vorbereitung auf die Migrationsplanung.
 
 
-Befolgen Sie die Anweisungen in [diesem Tutorial](tutorial-assess-vmware.md), um diese Einstellungen zu konfigurieren.
+Befolgen Sie die Anweisungen in [diesem Tutorial](./tutorial-assess-vmware-azure-vm.md), um diese Einstellungen zu konfigurieren.
     
 
 ## <a name="next-steps"></a>Nächste Schritte

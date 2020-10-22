@@ -5,19 +5,19 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 467018e57a0783839cb9495fcc6df89aad9daa8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bfca7def313fc701798ff96d0ed4b18ca13ef60
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280606"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313873"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Leitfäden zur Problembehandlung</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Problemverfolgung</a> 
-- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Supportoptionen</a> 
-- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Unterstützte Versionen</a> 
+- <a href="/azure/service-fabric/service-fabric-support" target="blank">Supportoptionen</a> 
+- <a href="/azure/service-fabric/service-fabric-versions" target="blank">Unterstützte Versionen</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Codebeispiele</a>
 
 Dieser Artikel enthält weitere Informationen zu den neuesten Versionen und Updates für die Service Fabric-Runtime und -SDKs.
@@ -86,11 +86,11 @@ Wir aktualisieren auch unsere geplanten Veröffentlichungstermine, um anzugeben,
 Dies ist die neueste Version von Service Fabric mit wichtigen Features und umfangreichen Verbesserungen.
 
 ### <a name="key-announcements"></a>Wichtige Ankündigungen
- - [**KeyVaultReference-Unterstützung für Anwendungsgeheimnisse (Vorschau)** ](./service-fabric-keyvault-references.md): Service Fabric-Anwendungen, für die [verwaltete Identitäten](./concepts-managed-identity.md) aktiviert sind, können nun direkt auf eine Key Vault-Geheimnis-URL als Umgebungsvariable, Anwendungsparameter oder Containerrepository-Anmeldeinformationen verweisen. Service Fabric löst das Geheimnis mithilfe der verwalteten Identität der Anwendung automatisch auf. 
+ - [**KeyVaultReference-Unterstützung für Anwendungsgeheimnisse (Vorschau)** ](./service-fabric-keyvault-references.md): Service Fabric-Anwendungen, für die [verwaltete Identitäten](./concepts-managed-identity.md) aktiviert sind, können nun direkt auf eine Key Vault-Geheimnis-URL als Umgebungsvariable, Anwendungsparameter oder Containerrepository-Anmeldeinformationen verweisen. Service Fabric löst das Geheimnis mithilfe der verwalteten Identität der Anwendung automatisch auf. 
      
 - **Verbesserte Upgradesicherheit für zustandslose Dienste**: Um die Verfügbarkeit während eines Anwendungsupgrades zu gewährleisten, haben wir neue Konfigurationen eingeführt, um die [Mindestanzahl von Instanzen für zustandslose Dienste](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) zu definieren, die als verfügbar erachtet werden. Zuvor war dieser Wert für alle Dienste 1 und konnte nicht geändert werden. Mit dieser neuen Sicherheitsüberprüfung pro Dienst können Sie sicherstellen, dass Ihre Dienste bei Anwendungsupgrades, Clusterupgrades und anderen Wartungsarbeiten, die von den Integritäts- und Sicherheitsüberprüfungen von Service Fabric abhängig sind, eine Mindestanzahl von aktiven Instanzen beibehalten.
   
-- [**Resourceneinschränkungen für Benutzerdienste**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): Benutzer können Ressourceneinschränkungen für die Benutzerdienste auf einem Knoten einrichten, um Szenarien wie die Erschöpfung von Ressourcen der Systemdienste von Service Fabric zu verhindern. 
+- [**Resourceneinschränkungen für Benutzerdienste**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): Benutzer können Ressourceneinschränkungen für die Benutzerdienste auf einem Knoten einrichten, um Szenarien wie die Erschöpfung von Ressourcen der Systemdienste von Service Fabric zu verhindern. 
   
 - [**Sehr hohe Dienstverschiebungskosten**](./service-fabric-cluster-resource-manager-movement-cost.md) für einen Replikattyp. Replikate mit sehr hohen Verschiebungskosten werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann. Weitere Informationen dazu, wann die Nutzung von „sehr hohen“ Verschiebungskosten angemessen ist, sowie weitere Überlegungen finden Sie im verknüpften Dokument.
   

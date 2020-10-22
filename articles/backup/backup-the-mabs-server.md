@@ -3,12 +3,12 @@ title: Sichern des MABS-Servers
 description: Erfahren Sie, wie Sie Microsoft Azure Backup Server (MABS) sichern.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946553"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172122"
 ---
 # <a name="back-up-the-mabs-server"></a>Sichern des MABS-Servers
 
@@ -184,9 +184,9 @@ Wenn der MABS-Server noch funktionstüchtig und der Speicherpool intakt ist (z.�
 
 Sie können die MABS-Datenbank auf einem lokalen Datenträger mit nativer SQL Server-Sicherung unabhängig von MABS sichern.
 
-- Verschaffen Sie sich einen [Überblick](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) über die SQL Server-Sicherung.
+- Verschaffen Sie sich einen [Überblick](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) über die SQL Server-Sicherung.
 
-- [Erfahren Sie mehr](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) zum Sichern von SQL Server in die Cloud.
+- [Erfahren Sie mehr](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) zum Sichern von SQL Server in die Cloud.
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>Sichern in einer durch MABS geschützte Freigabe
 
@@ -238,9 +238,9 @@ Diese Sicherungsoption verwendet natives SQL zum Sichern der MABS-Datenbank in e
 
 Sie können die MABS-Datenbank wie jede andere SQL Server-Datenbank sichern, indem Sie die native SQL Server-Sicherung verwenden.
 
-- Verschaffen Sie sich einen [Überblick](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) über die SQL Server-Sicherung.
+- Verschaffen Sie sich einen [Überblick](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) über die SQL Server-Sicherung.
 
-- [Erfahren Sie mehr](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) zum Sichern von SQL Server in die Cloud.
+- [Erfahren Sie mehr](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) zum Sichern von SQL Server in die Cloud.
 
 ### <a name="recover-the-mabs-database"></a>Wiederherstellen der MABS-Datenbank
 

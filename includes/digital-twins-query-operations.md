@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 6dfddd9179569075abdbd94b6c1afa719db9ba1e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 333a7ec4ae0e5c8cbc94a603e2ccf81ee92e7d48
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905589"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078458"
 ---
 ## <a name="query-language-features"></a>Funktionen der Abfragesprache
 
@@ -32,6 +32,8 @@ Sie können Ihre Abfragen mit den folgenden Vorgängen weiter verbessern:
 * Sie können Zwillinge über mehrere Beziehungstypen (`JOIN`-Abfragen) abrufen. 
   - Während der Vorschauphase sind bis zu fünf Ebenen von `JOIN` zulässig.
 * Wählen Sie nur die obersten Abfrageergebnisse aus (Operator `Select TOP`).
+* Zählen Sie die Anzahl von Elementen in einem Resultset mithilfe von `Select COUNT`.
+* Verwenden Sie Projektionen, um auszuwählen, welche Spalten von einer Abfrage zurückgegeben werden.
 * Verwenden Sie Skalarfunktionen: `IS_BOOL`, `IS_DEFINED`, `IS_NULL`, `IS_NUMBER`, `IS_OBJECT`, `IS_PRIMITIVE`, `IS_STRING`, `STARTSWITH`, `ENDSWITH`.
 * Verwenden Sie Vergleichsoperatoren für Abfragen: `IN`/`NIN`, `=`, `!=`, `<`, `>`, `<=`, `>=`.
 * Verwenden Sie eine beliebige Kombination (Operator `AND`, `OR`, `NOT`) von `IS_OF_MODEL`, Skalarfunktionen und Vergleichsoperatoren.

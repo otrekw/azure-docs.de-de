@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 646b95e7e106b8657f8aeec2426b88cd6da20357
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f54139bc22ef85b016aabd2512bdf030efee91c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885654"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088583"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure Spring Cloud-App herzustellen
 
@@ -25,7 +25,7 @@ Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Z
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Registrierung für ein Azure-Abonnement](https://azure.microsoft.com/free/)
-* [Installation der Azure CLI, Version 2.0.67 oder höher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+* [Installation der Azure CLI, Version 2.0.67 oder höher](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * [Installation von Maven 3.0 oder höher](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -167,7 +167,7 @@ Diese App besitzt Zugriff, um Geheimnisse aus Azure Key Vault abzurufen. Verwend
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Erstellen einer Spring Boot-Beispiel-App mit dem Java SDK
 
-In diesem Beispiel können Geheimnisse in Azure Key Vault festgelegt und aus Azure Key Vault abgerufen werden. Die [Azure Key Vault Secret-Clientbibliothek für Java](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme?view=azure-java-stablelibrary&preserve-view=true) stellt Azure Active Directory-Tokenauthentifizierungsunterstützung über das Azure SDK bereit. Sie bietet eine Reihe von **TokenCredential**-Implementierungen, die zum Erstellen von Azure SDK-Clients zur Unterstützung von AAD-Tokenauthentifizierung verwendet werden können.
+In diesem Beispiel können Geheimnisse in Azure Key Vault festgelegt und aus Azure Key Vault abgerufen werden. Die [Azure Key Vault Secret-Clientbibliothek für Java](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary) stellt Azure Active Directory-Tokenauthentifizierungsunterstützung über das Azure SDK bereit. Sie bietet eine Reihe von **TokenCredential**-Implementierungen, die zum Erstellen von Azure SDK-Clients zur Unterstützung von AAD-Tokenauthentifizierung verwendet werden können.
 
 Mit der Azure Key Vault Secret-Clientbibliothek können Sie den Zugriff auf Token, Kennwörter, API-Schlüssel und andere Geheimnisse sicher speichern und steuern. Die Bibliothek bietet Vorgänge zum Erstellen, Abrufen, Aktualisieren, Löschen, Bereinigen, Sichern, Wiederherstellen und Auflisten der Geheimnisse und ihrer Versionen an.
 
@@ -191,7 +191,7 @@ Mit der Azure Key Vault Secret-Clientbibliothek können Sie den Zugriff auf Toke
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Binden Sie [ManagedIdentityCredentialBuilder](https://docs.microsoft.com/java/api/com.azure.identity.managedidentitycredentialbuilder?view=azure-java-stable&preserve-view=true) ein, um Token aus Azure Active Directory abzurufen, und [SecretClientBuilder](https://docs.microsoft.com/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?view=azure-java-stable&preserve-view=true), um Geheimnisse aus Key Vault in Ihrem Code festzulegen oder abzurufen.
+3. Binden Sie [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable) ein, um Token aus Azure Active Directory abzurufen, und [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable), um Geheimnisse aus Key Vault in Ihrem Code festzulegen oder abzurufen.
 
     Rufen Sie das Beispiel aus [MainController.java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) des geklonten Beispielprojekts ab.
 
@@ -230,7 +230,6 @@ Mit der Azure Key Vault Secret-Clientbibliothek können Sie den Zugriff auf Toke
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Zugreifen auf das Speicherblob mit der verwalteten Identität in Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Authentifizieren von Azure Spring Cloud mit Key Vault in GitHub Actions](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-github-actions-key-vault)
-
+* [Authentifizieren von Azure Spring Cloud mit Key Vault in GitHub Actions](./spring-cloud-github-actions-key-vault.md)

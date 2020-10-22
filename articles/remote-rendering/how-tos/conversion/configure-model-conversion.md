@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575179"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205318"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -258,7 +258,7 @@ Wie im Abschnitt [Bewährte Methoden für Änderungen des Komponentenformats](co
 ### <a name="texture-sizes"></a>Texturgrößen
 
 Die Texturdatenmenge kann abhängig von der Art des Szenarios den für Meshdaten genutzten Arbeitsspeicher übersteigen. Dies kann beispielsweise bei Fotogrammetriemodellen der Fall sein.
-In der Konvertierungskonfiguration gibt es keine Möglichkeit zum automatischen Herunterskalieren von Texturen. Bei Bedarf muss die Texturskalierung als clientseitiger Vorverarbeitungsschritt durchgeführt werden. Im Konvertierungsschritt wird jedoch ein geeignetes [Texturkomprimierungsformat](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11) ausgewählt:
+In der Konvertierungskonfiguration gibt es keine Möglichkeit zum automatischen Herunterskalieren von Texturen. Bei Bedarf muss die Texturskalierung als clientseitiger Vorverarbeitungsschritt durchgeführt werden. Im Konvertierungsschritt wird jedoch ein geeignetes [Texturkomprimierungsformat](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11) ausgewählt:
 
 * `BC1` für nicht transparente Farbtexturen
 * `BC7` für Quellfarbtexturen mit Alphakanal

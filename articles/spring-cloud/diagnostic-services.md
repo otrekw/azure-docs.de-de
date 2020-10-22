@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892578"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093037"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -27,7 +27,7 @@ Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle un
 Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwachen möchten.
 
 > [!TIP]
-> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs) an.
+> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs) an.
 
 ## <a name="logs"></a>Protokolle
 
@@ -38,7 +38,7 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 
 ## <a name="metrics"></a>Metriken
 
-Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
+Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](./spring-cloud-concept-metrics.md#user-metrics-options).
 
 Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu können. Weitere Informationen zum Konfigurieren von Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
 
@@ -110,7 +110,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Protokollen und Metriken, wie in 
 > [!NOTE]
 > Für `==` wird Groß-/Kleinschreibung beachtet, für `=~` jedoch nicht.
 
-Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](../azure-monitor/log-query/query-language.md).
+Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/).
 
 ### <a name="use-your-storage-account"></a>Verwenden Ihres Speicherkontos
 
@@ -131,7 +131,7 @@ Weitere Informationen zum Senden von Diagnoseinformationen an ein Speicherkonto 
 1. Um Anwendungsprotokolle zu überprüfen, suchen Sie nach einem Event Hub mit dem Namen **insights-logs-applicationconsole**.
 1. Um Anwendungsmetriken zu überprüfen, suchen Sie nach einem Event Hub mit dem Namen **insights-metrics-pt1m**.
 
-Weitere Informationen zum Senden von Diagnoseinformationen an einen Event Hub finden Sie unter [Streamen von Azure-Diagnosedaten im langsamsten Pfad mithilfe von Event Hubs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
+Weitere Informationen zum Senden von Diagnoseinformationen an einen Event Hub finden Sie unter [Streamen von Azure-Diagnosedaten im langsamsten Pfad mithilfe von Event Hubs](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>Analysieren der Protokolle
 

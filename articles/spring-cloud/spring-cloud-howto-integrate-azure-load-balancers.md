@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906936"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090827"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Integrieren von Azure Spring Cloud in Azure-Lastenausgleichslösungen
 
@@ -28,10 +28,10 @@ Azure bietet bereits verschiedene Lösungen für den Lastenausgleich. Es gibt dr
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Spring Cloud: [Erstellen eines Azure Spring Cloud-Diensts](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
-* Azure Traffic Manager: [Erstellen einer Traffic Manager-Instanz](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure App Gateway: [Erstellen einer Application Gateway-Instanz](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Azure Front Door: [Erstellen einer Front Door-Instanz](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure Spring Cloud: [Erstellen eines Azure Spring Cloud-Diensts](./spring-cloud-quickstart.md)
+* Azure Traffic Manager: [Erstellen einer Traffic Manager-Instanz](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure App Gateway: [Erstellen einer Application Gateway-Instanz](../application-gateway/quick-create-portal.md)
+* Azure Front Door: [Erstellen einer Front Door-Instanz](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>Integrieren von Azure Spring Cloud mit Azure Traffic Manager
 
@@ -92,6 +92,6 @@ So führen Sie die Integration mit dem Azure Spring Cloud-Dienst aus und konfigu
     ![Front Door 2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen einer Traffic Manager-Instanz](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [Erstellen einer Application Gateway-Instanz](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [Erstellen einer Front Door-Instanz](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [Erstellen einer Traffic Manager-Instanz](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [Erstellen einer Application Gateway-Instanz](../application-gateway/quick-create-portal.md)
+* [Erstellen einer Front Door-Instanz](../frontdoor/quickstart-create-front-door.md)

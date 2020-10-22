@@ -3,12 +3,12 @@ title: Netzwerksicherheit für Azure Service Bus
 description: In diesem Artikel werden Netzwerksicherheitsfeatures wie Diensttags, IP-Firewallregeln, Dienstendpunkte und private Endpunkte beschrieben.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766392"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310463"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netzwerksicherheit für Azure Service Bus 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Service Bus verwenden: 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen 
 ## <a name="service-tags"></a>Diensttags
 Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert. Weitere Informationen zu Diensttags finden Sie unter [Diensttags: Übersicht](../virtual-network/service-tags-overview.md).
 
-Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#security-rules) oder in der [Azure Firewall](../firewall/service-tags.md) zu definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (beispielsweise **ServiceBus**) im entsprechenden *Quell*- oder *Zielfeld* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
+Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder in der [Azure Firewall](../firewall/service-tags.md) zu definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (beispielsweise **ServiceBus**) im entsprechenden *Quell*- oder *Zielfeld* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
 
 | Diensttag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090398"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309909"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Anzeigen und Erstellen von Abfragen zur Überwachung und Nachverfolgung in Azure Monitor-Protokolle für Azure Logic Apps
 
-Sie können die zugrunde liegenden Abfragen anzeigen, die die Ergebnisse aus [Azure Monitor Protokollen](../azure-monitor/log-query/log-query-overview.md) erzeugen, und Abfragen erstellen, die die Ergebnisse auf Grundlage Ihrer spezifischen Kriterien filtern. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen. Abfragen verwenden die [Kusto-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference), die Sie bearbeiten können, wenn Sie andere Ergebnisse anzeigen möchten. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle für Abfragen](../azure-monitor/log-query/query-language.md).
+Sie können die zugrunde liegenden Abfragen anzeigen, die die Ergebnisse aus [Azure Monitor Protokollen](../azure-monitor/log-query/log-query-overview.md) erzeugen, und Abfragen erstellen, die die Ergebnisse auf Grundlage Ihrer spezifischen Kriterien filtern. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen. Abfragen verwenden die [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/), die Sie bearbeiten können, wenn Sie andere Ergebnisse anzeigen möchten. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle für Abfragen](/azure/data-explorer/kusto/query/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +59,7 @@ Um Ergebnisse auf Grundlage bestimmter Eigenschaften oder Werte zu suchen oder z
 
      ![Mit vordefinierten Abfragen der Lösung „B2B-Logik-App-Verwaltung“ beginnen](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * Um mit einer leeren Abfrage zu beginnen, geben Sie im Abfrage-Editor die [Kusto-Abfragesprache](../azure-monitor/log-query/query-language.md) für Ihre Abfrage ein.
+   * Um mit einer leeren Abfrage zu beginnen, geben Sie im Abfrage-Editor die [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/) für Ihre Abfrage ein.
 
      ![Beginnen mit einer leeren Abfrage](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 

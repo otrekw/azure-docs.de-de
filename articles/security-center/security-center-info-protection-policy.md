@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: aa73fed0af0d6cd7154118d8987f42e55814e25a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6991c222590b52ca4dadb2b9f5a9661bf731c4c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448929"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340834"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
@@ -78,8 +78,8 @@ Nachdem Ihre Information Protection-Richtlinie vollständig definiert und gespei
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>Verwalten von SQL Information Protection mit Azure PowerShell
 
-- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): Ruft die effektive SQL Information Protection-Richtlinie für den Mandanten ab.
-- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): Legt die effektive SQL Information Protection-Richtlinie für den Mandanten fest.
+- [Get-AzSqlInformationProtectionPolicy](/powershell/module/az.security/get-azsqlinformationprotectionpolicy): Ruft die effektive SQL Information Protection-Richtlinie für den Mandanten ab.
+- [Set-AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy): Legt die effektive SQL Information Protection-Richtlinie für den Mandanten fest.
  
 ## <a name="next-steps"></a>Nächste Schritte
  

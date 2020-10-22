@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21d8f513ea0f749f0318b9bc5926a746f840505b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024964"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147829"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über die Azure CLI
 
@@ -36,7 +36,7 @@ Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konf
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement. 
 
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.70 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
+* Die [Azure CLI](/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.70 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
 
 * Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-cli) ist vorhanden.
 
@@ -136,7 +136,7 @@ Verwenden Sie den folgenden Befehl, um eine Konfiguration zu erstellen:
 
 * --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration erstellt werden soll. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
-* --**target-condition**: Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte oder Module diese Konfiguration angewendet werden soll. Für die automatische Gerätekonfiguration basiert die Bedingung auf den Gerätezwillingstags oder auf den gewünschten Eigenschaften des Gerätezwillings und muss dem Ausdrucksformat entsprechen. Zum Beispiel: `tags.environment='test'` oder `properties.desired.devicemodel='4000x'`. Bei der automatischen Modulkonfiguration basiert die Bedingung auf Modulzwillingstags oder auf den gewünschten Eigenschaften des Modulzwillings. Zum Beispiel: `from devices.modules where tags.environment='test'` oder `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
+* --**target-condition**: Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte oder Module diese Konfiguration angewendet werden soll.  Für die automatische Gerätekonfiguration basiert die Bedingung auf den Gerätezwillingstags oder auf den gewünschten Eigenschaften des Gerätezwillings und muss dem Ausdrucksformat entsprechen.  Zum Beispiel: `tags.environment='test'` oder `properties.desired.devicemodel='4000x'`.  Bei der automatischen Modulkonfiguration basiert die Bedingung auf Modulzwillingstags oder auf den gewünschten Eigenschaften des Modulzwillings. Zum Beispiel: `from devices.modules where tags.environment='test'` oder `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
 * --**priority**: Eine positive ganze Zahl. Wenn mindestens zwei Konfigurationen auf dasselbe Gerät oder Modul ausgerichtet sind, wird die Konfiguration mit dem höchsten numerischen Wert für die Priorität angewendet.
 
@@ -155,7 +155,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
-Überprüfen Sie die Konfiguration im Befehlsfenster. Die Eigenschaft **metrics** enthält eine Anzahl für jede Metrik, die von den einzelnen Hubs ausgewertet wird:
+Überprüfen Sie die Konfiguration im Befehlsfenster.  Die Eigenschaft **metrics** enthält eine Anzahl für jede Metrik, die von den einzelnen Hubs ausgewertet wird:
 
 * **targetedCount**: Eine Systemmetrik, die die Anzahl der Geräte- oder Modulzwillinge in IoT Hub angibt, die die Zielbedingung erfüllen
 
@@ -235,8 +235,8 @@ In diesem Artikel haben Sie erfahren, wie IoT-Geräte bedarfsgerecht konfigurier
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/quickstart-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 
 
-* [Azure IoT Hub Device Provisioning-Dienst](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning-Dienst](../iot-dps/index.yml)

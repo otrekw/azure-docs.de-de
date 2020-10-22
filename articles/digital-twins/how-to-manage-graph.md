@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326540"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048439"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
@@ -74,7 +74,7 @@ Auf Wunsch können sogar mehrere Instanzen der gleichen Art von Beziehung zwisch
 
 ## <a name="list-relationships"></a>Auflisten von Beziehungen
 
-Sie können Folgendes verwenden, um auf die Liste der Beziehungen für einen bestimmten Zwilling im Graphen zugreifen:
+Sie können Folgendes verwenden, um auf die Liste der **ausgehenden** Beziehungen zuzugreifen, die von einem bestimmten Zwilling im Graphen stammen:
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -102,7 +102,7 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
+        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
         return null;
     }
 }
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 Sie können die abgerufenen Beziehungen verwenden, um zu anderen Zwillingen in Ihrem Graphen zu navigieren. Lesen Sie dazu das Feld `target` aus der zurückgegebenen Beziehung, und verwenden Sie es als ID für Ihren nächsten Aufruf von `GetDigitalTwin`. 
 
-### <a name="find-relationships-to-a-digital-twin"></a>Suchen von Beziehungen zu einem digitalen Zwilling
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>Suchen von eingehenden Beziehungen zu einem digitalen Zwilling
 
-Azure Digital Twins verfügt auch über eine API, um alle eingehenden Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
+Azure Digital Twins verfügt auch über eine API, um alle **eingehenden** Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
 
-Das vorherige Codebeispiel konzentrierte sich auf die Suche nach ausgehenden Beziehungen. Das folgende Beispiel ist ähnlich, findet aber stattdessen eingehende Beziehungen. Es löscht diese auch, sobald sie gefunden werden.
+Das Codebeispiel oben hat sich auf die Suche nach ausgehenden Beziehungen von einem Zwilling konzentriert. Das folgende Beispiel ist ähnlich strukturiert, findet aber stattdessen *eingehende* Beziehungen vom Zwilling.
 
 Beachten Sie, dass die `IncomingRelationship`-Aufrufe nicht den vollständigen Text der Beziehung zurückgeben.
 
@@ -200,7 +200,7 @@ static async Task<bool> CreateRoom(string id, double temperature, double humidit
     }
     catch (ErrorResponseException e)
     {
-        Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
+        Console.WriteLine($"**_ Error creating twin {id}: {e.Response.StatusCode}"); 
         return false;
     }
 }
@@ -225,7 +225,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
     }
     catch (ErrorResponseException e)
     {
-        Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
+        Console.WriteLine($"_*_ Error creating twin {id}: {e.Response.StatusCode}"); 
         return false;
     }
 }
@@ -247,7 +247,7 @@ Betrachten Sie die folgende Datentabelle, in der eine Reihe von digitalen Zwilli
 | room    | Room21 | Floor02 | contains | … |
 | room    | Room22 | Floor02 | contains | … |
 
-Der folgende Code verwendet die [Microsoft Graph-API](https://docs.microsoft.com/graph/overview), um ein Arbeitsblatt zu lesen und aus den Ergebnissen einen Azure Digital Twins-Zwillingsgraphen zu konstruieren.
+Der folgende Code verwendet die [Microsoft Graph-API](/graph/overview), um ein Arbeitsblatt zu lesen und aus den Ergebnissen einen Azure Digital Twins-Zwillingsgraphen zu konstruieren.
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;

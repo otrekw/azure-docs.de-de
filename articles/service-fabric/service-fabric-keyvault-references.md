@@ -3,12 +3,12 @@ title: 'Azure Service Fabric: Verwenden der KeyVault-Verweise von Service Fabric
 description: In diesem Artikel wird erläutert, wie Sie die KeyVaultReference-Unterstützung von Service Fabric für Anwendungsgeheimnisse verwenden.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261140"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313797"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-Unterstützung für Service Fabric-Anwendungen (Vorschauversion)
 
@@ -18,7 +18,7 @@ Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die si
 > Die Verwendung dieses Vorschaufeatures wird in Produktionsumgebungen nicht empfohlen.
 
 > [!NOTE]
-> Die Vorschaufunktion KeyVaultReference unterstützt nur Geheimnisse [mit Versionsangabe](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning). Versionslose Geheimnisse werden nicht unterstützt.
+> Die Vorschaufunktion KeyVaultReference unterstützt nur Geheimnisse [mit Versionsangabe](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). Versionslose Geheimnisse werden nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

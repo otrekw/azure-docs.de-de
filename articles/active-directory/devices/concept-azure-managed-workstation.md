@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601383"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093309"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Informationen zu sicheren, von Azure verwalteten Arbeitsstationen
 
@@ -64,7 +64,7 @@ Alle Benutzer und Operatoren profitieren von der Verwendung einer sicheren Arbei
 * Hochsensible Arbeitsstationen, z.B. SWIFT-Bezahlterminals
 * Arbeitsstationen, auf denen Geschäftsgeheimnisse verarbeitet werden
 
-Zur Risikominimierung sollten Sie erhöhte Sicherheitskontrollen für privilegierte Arbeitsstationen implementieren, die diese Konten verwenden. Weitere Informationen finden Sie im [Leitfaden zur Bereitstellung von Azure Active Directory-Funktionen](../fundamentals/active-directory-deployment-checklist-p2.md) sowie unter [Microsoft 365-Roadmap](https://aka.ms/o365secroadmap) und [Sichern des privilegierten Zugriffs (Roadmap)](https://aka.ms/sparoadmap).
+Zur Risikominimierung sollten Sie erhöhte Sicherheitskontrollen für privilegierte Arbeitsstationen implementieren, die diese Konten verwenden. Weitere Informationen finden Sie im [Leitfaden zur Bereitstellung von Azure Active Directory-Funktionen](../fundamentals/active-directory-deployment-checklist-p2.md) sowie unter [Microsoft 365-Roadmap](/microsoft-365/security/office-365-security/security-roadmap) und [Sichern des privilegierten Zugriffs (Roadmap)](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 ## <a name="why-use-dedicated-workstations"></a>Warum sollen dedizierte Arbeitsstationen verwendet werden?
 

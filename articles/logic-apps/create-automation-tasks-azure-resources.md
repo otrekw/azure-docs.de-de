@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269725"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201119"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Verwalten von Azure-Ressourcen und Überwachen von Kosten durch Erstellen von Automatisierungsaufgaben (Vorschau)
 
@@ -47,7 +47,7 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 Derzeit können Sie eine Automatisierungsaufgabe nur auf Ressourcenebene erstellen, den Ausführungsverlauf der Aufgabe anzeigen und den der Aufgabe zugrunde liegenden Logik-App-Workflow bearbeiten, was vom [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst unterstützt wird. Automatisierungsaufgaben sind grundlegender und schlanker als [Azure Automation](../automation/automation-intro.md).
 
-Im Vergleich dazu ist Azure Automation ein cloudbasierter Automatisierungs- und Konfigurationsdienst, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Der Dienst umfasst [Prozessautomatisierung für Orchestrierungszwecke](../automation/automation-intro.md#process-automation) durch Verwendung von [Runbooks](../automation/automation-runbook-execution.md), Konfigurationsverwaltung mit [Änderungsnachverfolgung und Bestand](../automation/change-tracking.md), Updateverwaltung, gemeinsam genutzte Funktionen und Features für heterogene Umgebungen. Mit Azure Automation haben Sie die volle Kontrolle über Bereitstellung, Ausführung und Außerbetriebnahme von Workloads und Ressourcen.
+Im Vergleich dazu ist Azure Automation ein cloudbasierter Automatisierungs- und Konfigurationsdienst, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Der Dienst umfasst [Prozessautomatisierung für Orchestrierungszwecke](../automation/automation-intro.md#process-automation) durch Verwendung von [Runbooks](../automation/automation-runbook-execution.md), Konfigurationsverwaltung mit [Änderungsnachverfolgung und Bestand](../automation/change-tracking/overview.md), Updateverwaltung, gemeinsam genutzte Funktionen und Features für heterogene Umgebungen. Mit Azure Automation haben Sie die volle Kontrolle über Bereitstellung, Ausführung und Außerbetriebnahme von Workloads und Ressourcen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

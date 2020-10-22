@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563895"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093088"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planen Ihrer Azure Active Directory-Gerätebereitstellung
 
@@ -62,7 +62,7 @@ Berücksichtigen Sie die Anforderungen Ihrer Organisation, während Sie die Stra
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](https://aka.ms/deploymentplans) und dass die Rollen der Beteiligten im Projekt gut verstanden werden. 
+Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](../fundamentals/active-directory-deployment-plans.md) und dass die Rollen der Beteiligten im Projekt gut verstanden werden. 
 
 Fügen Sie für diesen Plan die folgenden Projektbeteiligten zu Ihrer Liste hinzu:
 

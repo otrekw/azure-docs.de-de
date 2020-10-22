@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97142e0c512f4f95235ad08c94c852906d3efd8
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660851"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095855"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect und Verbund
 Mit Azure Active Directory (Azure AD) Connect können Sie einen Verbund mit lokalen Active Directory-Verbunddiensten (AD FS) und Azure AD konfigurieren. Mit der Verbundanmeldung können sich Benutzer mit ihren lokalen Kennwörtern bei Azure AD-basierten Diensten anmelden, während sie in ihrem Unternehmensnetzwerk angemeldet sind - und das, ohne ihre Kennwörter erneut eingeben zu müssen. Mithilfe der Verbundoption mit AD FS können Sie eine neue Installation von AD FS bereitstellen oder eine vorhandene Installation in einer Windows Server 2012 R2-Farm angeben.
@@ -34,7 +34,7 @@ Dieses Thema ist das zentrale Thema zu verbundbezogenen Funktionen für Azure AD
 | **Azure AD Connect-Optionen für die Benutzeranmeldung** | |
 | [Grundlegendes zu Benutzeranmeldeoptionen](plan-connect-user-signin.md) |Beschreibung der verschiedenen Benutzeranmeldeoptionen und ihres Einflusses auf die Benutzerfreundlichkeit der Azure-Anmeldung |
 | **Installieren von AD FS mit Azure AD Connect** | |
-| [Voraussetzungen](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Erforderliche Komponenten für eine erfolgreiche Installation von AD FS über Azure AD Connect |
+| [Voraussetzungen](how-to-connect-install-custom.md#ad-fs-configuration-prerequisites) |Erforderliche Komponenten für eine erfolgreiche Installation von AD FS über Azure AD Connect |
 | [Konfigurieren einer AD FS-Farm](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Installieren einer neuen AD FS-Farm mit Azure AD Connect |
 | [Erstellen eines Verbunds mit Azure AD mithilfe einer alternativen Anmelde-ID](how-to-connect-fed-management.md#alternateid) | Konfigurieren eines Verbunds mithilfe einer alternativen Anmelde-ID  |
 | **Ändern der AD FS-Konfiguration** | |

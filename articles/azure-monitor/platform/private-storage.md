@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526424"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143981"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics verwendet Azure Storage für eine Vielzahl von Szenarios. Dies wir
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Erfassen von Azure-Diagnose-Erweiterungsprotokollen (WAD/LAD)
 Die Erweiterungs-Agents für die Azure-Diagnose (auch WAD für Windows-Agents und LAD für Linux-Agents) erfassen verschiedene Betriebssystemprotokolle und speichern sie in einem kundenseitig verwalteten Speicherkonto. Anschließend können Sie diese Protokolle in Log Analytics importieren, um sie zu überprüfen und zu analysieren.
-So erfassen Sie Azure-Diagnose-Erweiterungsprotokolle in Ihrem Speicherkonto: Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](https://docs.microsoft.com/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
+So erfassen Sie Azure-Diagnose-Erweiterungsprotokolle in Ihrem Speicherkonto: Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
 
 Unterstützte Datentypen:
 * syslog
@@ -40,7 +40,7 @@ Kundenseitig verwaltete Speicherkonten sind bei einigen Anwendungsfällen erford
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Verwenden eines kundenseitig verwalteten Speicherkontos über eine Private Link-Instanz
 ##### <a name="workspace-requirements"></a>Arbeitsbereichsanforderungen
-Beim Herstellen einer Verbindung mit Azure Monitor über eine private Verbindung können Log Analytics-Agents nur Protokolle an Arbeitsbereiche senden, die über eine private Verbindung mit Ihrem Netzwerk verknüpft sind. Diese Regel erfordert, dass Sie ein Azure Monitor Private Link-Bereichsobjekt (Azure Monitor Private Link Scope, AMPLS) ordnungsgemäß konfigurieren, es mit Ihren Arbeitsbereichen verbinden und dann den Azure Monitor Private Link-Bereich über eine private Verbindung mit Ihrem Netzwerk verbinden. Weitere Informationen zur AMPLS-Konfiguration finden Sie unter [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security). 
+Beim Herstellen einer Verbindung mit Azure Monitor über eine private Verbindung können Log Analytics-Agents nur Protokolle an Arbeitsbereiche senden, die über eine private Verbindung mit Ihrem Netzwerk verknüpft sind. Diese Regel erfordert, dass Sie ein Azure Monitor Private Link-Bereichsobjekt (Azure Monitor Private Link Scope, AMPLS) ordnungsgemäß konfigurieren, es mit Ihren Arbeitsbereichen verbinden und dann den Azure Monitor Private Link-Bereich über eine private Verbindung mit Ihrem Netzwerk verbinden. Weitere Informationen zur AMPLS-Konfiguration finden Sie unter [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor](./private-link-security.md). 
 ##### <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
 Damit das Speicherkonto erfolgreich eine Verbindung mit Ihrer Private Link-Instanz herstellen kann, muss Folgendes der Fall sein:
 * Das Speicherkonto muss sich in Ihrem VNet oder einem über Peering damit verbundenen Netzwerk befinden und über eine private Verbindung mit Ihrem VNet verbunden sein. Dies ermöglicht es Agents in Ihrem VNet, Protokolle an das Speicherkonto senden.
@@ -49,7 +49,7 @@ Damit das Speicherkonto erfolgreich eine Verbindung mit Ihrer Private Link-Insta
 * Wenn Ihr Arbeitsbereich auch Datenverkehr aus anderen Netzwerken verarbeitet, sollten Sie das Speicherkonto so konfigurieren, dass eingehender Datenverkehr aus diesen Netzwerken/dem Internet zugelassen wird.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Verknüpfen des Speicherkontos mit einem Log Analytics-Arbeitsbereich
-Sie können Ihr Speicherkonto über die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) oder die [REST-API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts) mit dem Arbeitsbereich verknüpfen. Verwendbare Werte für dataSourceType:
+Sie können Ihr Speicherkonto über die [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) oder die [REST-API](/rest/api/loganalytics/linkedstorageaccounts) mit dem Arbeitsbereich verknüpfen. Verwendbare Werte für dataSourceType:
 * „CustomLogs“, um den Speicher für die Erfassung von benutzerdefinierten Protokollen und IIS-Protokollen zu verwenden
 * „AzureWatson“, um den Speicher für Watson-Speicherabbilddateien zu verwenden, die von der ASC-Lösung (Azure Security Center) hochgeladen wurden Weitere Informationen zum Verwalten der Datenaufbewahrung, zum Ersetzen eines verknüpften Speicherkontos und zum Überwachen der Speicherkontoaktivität finden Sie unter [Verwalten von verknüpften Speicherkonten](#managing-linked-storage-accounts). 
 
@@ -61,14 +61,14 @@ Azure Storage verschlüsselt alle ruhenden Daten in einem Speicherkonto. Standar
 
 ### <a name="how-to-apply-cmk-to-customer-managed-storage-accounts"></a>Anwenden von CMKs auf kundenseitig verwaltete Speicherkonten
 ##### <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
-Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. Weitere Informationen zur Azure Storage-Verschlüsselung und -Schlüsselverwaltung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. Weitere Informationen zur Azure Storage-Verschlüsselung und -Schlüsselverwaltung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md).
 
 ##### <a name="apply-cmk-to-your-storage-accounts"></a>Anwenden von CMKs auf Ihre Speicherkonten
-Verwenden Sie das [Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal?toc=/azure/storage/blobs/toc.json), [PowerShell](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-powershell?toc=/azure/storage/blobs/toc.json) oder die [CLI](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-cli?toc=/azure/storage/blobs/toc.json), um Ihr Azure Storage-Konto für die Verwendung von kundenseitig verwalteten Schlüsseln mit Azure Key Vault zu konfigurieren. 
+Verwenden Sie das [Azure-Portal](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json), [PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) oder die [CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json), um Ihr Azure Storage-Konto für die Verwendung von kundenseitig verwalteten Schlüsseln mit Azure Key Vault zu konfigurieren. 
 
 ## <a name="managing-linked-storage-accounts"></a>Verwalten von verknüpften Speicherkonten
 
-Verwenden Sie zum Verknüpfen oder Aufheben der Verknüpfung von Speicherkonten mit Ihrem Arbeitsbereich die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) oder die [REST-API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts).
+Verwenden Sie zum Verknüpfen oder Aufheben der Verknüpfung von Speicherkonten mit Ihrem Arbeitsbereich die [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) oder die [REST-API](/rest/api/loganalytics/linkedstorageaccounts).
 
 ##### <a name="create-or-modify-a-link"></a>Erstellen oder Ändern einer Verknüpfung
 Wenn Sie ein Speicherkonto mit einem Arbeitsbereich verknüpfen, verwendet Log Analytics ab dann dieses Speicherkonto anstelle des Speicherkontos des Diensts. Sie haben folgende Möglichkeiten: 
@@ -88,7 +88,7 @@ So ersetzen Sie ein für die Erfassung verwendetes Speicherkonto:
 Wenn Sie Ihr eigenes Speicherkonto verwenden, sind Sie für die Aufbewahrung verantwortlich. Anders ausgedrückt: Log Analytics löscht keine Protokolle, die in Ihrem privaten Speicher gespeichert sind. Stattdessen sollten Sie eine Richtlinie einrichten, um die Last wie gewünscht zu verarbeiten.
 
 ##### <a name="consider-load"></a>Berücksichtigung der Last
-Speicherkonten können eine bestimmte Last durch Lese- und Schreibanforderungen verarbeiten, bevor sie mit der Drosselung von Anforderungen beginnen. (Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account).) Diese Drosselung wirkt sich auf die für die Erfassung von Protokollen benötigte Zeit aus. Wenn Ihr Speicherkonto überlastet ist, registrieren Sie ein zusätzliches Speicherkonto, um die Last auf die beiden Konten zu verteilen. Sehen Sie sich zur Überwachung der Kapazität und Leistung Ihres Speicherkontos die entsprechenden [Erkenntnisse im Azure-Portal]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview) an.
+Speicherkonten können eine bestimmte Last durch Lese- und Schreibanforderungen verarbeiten, bevor sie mit der Drosselung von Anforderungen beginnen. (Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md).) Diese Drosselung wirkt sich auf die für die Erfassung von Protokollen benötigte Zeit aus. Wenn Ihr Speicherkonto überlastet ist, registrieren Sie ein zusätzliches Speicherkonto, um die Last auf die beiden Konten zu verteilen. Sehen Sie sich zur Überwachung der Kapazität und Leistung Ihres Speicherkontos die entsprechenden [Erkenntnisse im Azure-Portal]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview) an.
 
 ### <a name="related-charges"></a>Anfallende Gebühren
 Die Gebühren für Speicherkonten werden anhand der Menge der gespeicherten Daten, des Speichertyps und des Redundanztyps berechnet. Details dazu finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs) und [Azure Table Storage – Preise](https://azure.microsoft.com/pricing/details/storage/tables).

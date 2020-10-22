@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931412"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090844"
 ---
 # <a name="tutorial-configure-security-agents"></a>Tutorial: Konfigurieren von Sicherheits-Agents
 
@@ -118,7 +118,7 @@ Die folgende Tabelle enthält die steuerbaren Eigenschaften von Defender für Io
 Standardwerte sind im entsprechenden Schema auf [GitHub](https\://aka.ms/iot-security-module-default) verfügbar.
 
 | Name| Status | Gültige Werte| Standardwerte| BESCHREIBUNG |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Erforderlich: „false“ |Gültige Werte: Dauer im ISO 8601-Format |Standardwert: PT7M |Maximales Zeitintervall, bevor Nachrichten mit hoher Priorität gesendet werden|
 |lowPriorityMessageFrequency |Erforderlich: „false“|Gültige Werte: Dauer im ISO 8601-Format |Standardwert: PT5H |Maximale Zeit, bevor Nachrichten mit niedriger Priorität gesendet werden|
 |snapshotFrequency |Erforderlich: „false“|Gültige Werte: Dauer im ISO 8601-Format |Standardwert PT13H |Zeitintervall für die Erstellung von Momentaufnahmen des Gerätstatus.|
@@ -129,7 +129,7 @@ Standardwerte sind im entsprechenden Schema auf [GitHub](https\://aka.ms/iot-sec
 ### <a name="supported-security-events"></a>Unterstützte Sicherheitsereignisse
 
 |Ereignisname| PropertyName | Standardwert| Momentaufnahmenereignis| Detailstatus  |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|-|---------|----|----|
 |Diagnoseereignis|eventPriorityDiagnostic| Aus| False| Diagnoseereignisse im Zusammenhang mit dem Agent. Verwenden Sie dieses Ereignis für die ausführliche Protokollierung.|
 |Konfigurationsfehler |eventPriorityConfigurationError |Niedrig |False |Der Agent konnte die Konfiguration nicht analysieren. Überprüfen Sie die Übereinstimmung der Konfiguration mit dem Schema.|
 |Statistik der gelöschten Ereignisse |eventPriorityDroppedEventsStatistics |Niedrig |True|Statistiken zu Ereignissen im Zusammenhang mit dem Agent. |

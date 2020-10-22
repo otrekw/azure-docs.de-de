@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000378"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173914"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -60,6 +60,8 @@ Die inkrementellen Momentaufnahmen werden im Speicherkonto des virtuellen Comput
 ## <a name="configure-snapshot-retention"></a>Konfigurieren der Aufbewahrung einer Momentaufnahme
 
 ### <a name="using-azure-portal"></a>Verwenden des Azure-Portals
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Im Azure-Portal wird ein zusätzliches Feld im Bereich **VM-Sicherungsrichtlinie** unter dem Abschnitt **Sofortige Wiederherstellung** angezeigt. Sie können die Aufbewahrungsdauer für Momentaufnahmen im Bereich **VM-Sicherungsrichtlinie** für alle virtuellen Computer ändern, die der jeweiligen Sicherungsrichtlinie zugeordnet sind.
 

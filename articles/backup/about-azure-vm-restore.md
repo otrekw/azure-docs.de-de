@@ -3,12 +3,12 @@ title: Informationen zur Wiederherstellung virtueller Azure-Computer
 description: Erfahren Sie, wie virtuelle Azure-Computer mit dem Dienst „Azure Backup“ wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985331"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171755"
 ---
 # <a name="about-azure-vm-restore"></a>Informationen zur Wiederherstellung von Azure-VMs
 
@@ -32,7 +32,7 @@ In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer (VMs) mit dem D
 - **Verfügbarkeit (Replikationsarten)** : Azure Backup bietet zwei Replikationsarten, um die Hochverfügbarkeit Ihres Speichers bzw. Ihrer Daten sicherzustellen:
   - [Lokal redundanter Speicher (Locally Redundant Storage, LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
   - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Dauerhaftigkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
-  - [Zonenredundanter Speicher (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliziert Ihre Daten in [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region. Bei ZRS gibt es keine Downtime. Daher können Ihre kritischen Workloads, die [Data Residency](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) erfordern und bei denen keine Downtime auftreten darf, in ZRS gesichert werden.
+  - [Zonenredundanter Speicher (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliziert Ihre Daten in [Verfügbarkeitszonen](../availability-zones/az-overview.md#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region. Bei ZRS gibt es keine Downtime. Daher können Ihre kritischen Workloads, die [Data Residency](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) erfordern und bei denen keine Downtime auftreten darf, in ZRS gesichert werden.
 
 - **Regionsübergreifende Wiederherstellung**: Als eine der [Wiederherstellungsoptionen](./backup-azure-arm-restore-vms.md#restore-options) ermöglicht die regionsübergreifende Wiederherstellung die Wiederherstellung von Azure-VMs in einer sekundären Region, bei der es sich um eine [gekoppelte Azure-Region](../best-practices-availability-paired-regions.md#what-are-paired-regions) handelt.
 

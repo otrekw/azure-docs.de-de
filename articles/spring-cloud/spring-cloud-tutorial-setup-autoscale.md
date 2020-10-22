@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905388"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091065"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Tutorial: Einrichten der Autoskalierung für Microserviceanwendungen
 
@@ -25,7 +25,7 @@ Die in Azure Spring Cloud integrierte Autoskalierung trägt dazu bei, dass Micro
 Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-* Eine bereitgestellte Azure Spring Cloud-Dienstinstanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli).
+* Eine bereitgestellte Azure Spring Cloud-Dienstinstanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](./spring-cloud-quickstart.md).
 * Mindestens eine bereits in Ihrer Dienstinstanz erstellte Anwendung.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Navigieren zur Seite „Autoskalierung“ im Azure-Portal
@@ -70,5 +70,5 @@ Wenn Sie sich im Tarif „Basic“ befinden und durch diese Grenzwerte eingeschr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übersicht über die Autoskalierung in Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Überwachen der Autoskalierung mithilfe der Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
+* [Übersicht über die Autoskalierung in Microsoft Azure](../azure-monitor/platform/autoscale-overview.md)
+* [Überwachen der Autoskalierung mithilfe der Azure CLI](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803822"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203669"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -88,7 +88,7 @@ Die Videoqualität kann durch die Netzwerkqualität oder einen fehlenden H.265-V
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Mit MRC aufgezeichnetes Video spiegelt nicht die Qualität des Liveerlebnisses wider
 
-Ein Video kann mit HoloLens mithilfe von [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) aufgezeichnet werden. Das resultierende Video weist jedoch aus zwei Gründen eine schlechtere Qualität als das Liveerlebnis auf:
+Ein Video kann mit HoloLens mithilfe von [Mixed Reality Capture (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers) aufgezeichnet werden. Das resultierende Video weist jedoch aus zwei Gründen eine schlechtere Qualität als das Liveerlebnis auf:
 * Die Videobildfrequenz ist auf 30 Hz begrenzt, im Gegensatz zu 60 Hz beim Liveerlebnis.
 * Die Videobilder durchlaufen nicht den Verarbeitungsschritt [Late Stage Reprojection](../overview/features/late-stage-reprojection.md), daher wirkt das Video weniger flüssig.
 

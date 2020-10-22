@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84302142"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152335"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Verwenden privater Endpunkte für Azure SignalR Service
 
@@ -82,8 +82,8 @@ Der empfohlene DNS-Zonenname für private Endpunkte für Azure SignalR Service l
 
 Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
 
-- [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS-Konfiguration für private Endpunkte](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [DNS-Konfiguration für private Endpunkte](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
@@ -198,7 +198,7 @@ Diese Einschränkung ist die Folge der DNS-Änderungen, die vorgenommen werden, 
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Netzwerksicherheitsgruppen-Regeln für Subnetze mit privaten Endpunkten
 
-Derzeit können keine [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppen-Regeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden auf den privaten Endpunkt angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
+Derzeit können keine [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppen-Regeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden auf den privaten Endpunkt angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

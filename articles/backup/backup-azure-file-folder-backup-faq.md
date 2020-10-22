@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-Agent (MARS) – häufig gestellte Frag
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fb9e3993d6f56833e43a4d451c0865b7fd732d3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182512"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172506"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -32,7 +32,7 @@ Tresoranmeldeinformationen laufen nach 10 Tagen ab. Wenn die Datei mit den Anme
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>Welche Zeichen sind für die Passphrase zulässig?
 
-Die Passphrase muss Zeichen aus dem ASCII-Zeichensatz mit [ASCII-Werten kleiner als oder gleich 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127) enthalten.
+Die Passphrase muss Zeichen aus dem ASCII-Zeichensatz mit [ASCII-Werten kleiner als oder gleich 127](/office/vba/language/reference/user-interface-help/character-set-0127) enthalten.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Von welchen Laufwerken kann ich Dateien und Ordner sichern?
 

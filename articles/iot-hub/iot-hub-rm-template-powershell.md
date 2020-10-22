@@ -8,18 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75976620"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144393"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, um eine IoT Hub-Instanz und eine Consumergruppe zu erstellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](https://docs.microsoft.com/azure/azure-resource-manager/).
+Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, um eine IoT Hub-Instanz und eine Consumergruppe zu erstellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../azure-resource-manager/index.yml).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -29,7 +29,7 @@ Die in dieser Schnellstartanleitung verwendete Resource Manager-Vorlage stammt v
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-Mit der Vorlage wird eine Azure IoT Hub-Instanz mit drei Endpunkten („eventhub“, „cloud-to-device“ und „messaging“) sowie eine Consumergruppe erstellt. Weitere Beispiele für Vorlagen finden Sie unter [Azure Schnellstart-Vorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Das IoT Hub-Vorlagenschema finden Sie [hier](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
+Mit der Vorlage wird eine Azure IoT Hub-Instanz mit drei Endpunkten („eventhub“, „cloud-to-device“ und „messaging“) sowie eine Consumergruppe erstellt. Weitere Beispiele für Vorlagen finden Sie unter [Azure Schnellstart-Vorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Das IoT Hub-Vorlagenschema finden Sie [hier](/azure/templates/microsoft.devices/iothub-allversions).
 
 Es gibt mehrere Methoden zum Bereitstellen einer Vorlage.  In diesem Tutorial verwenden Sie Azure PowerShell.
 
@@ -71,11 +71,11 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
+[lnk-rest-api]: /rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/management/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-iotedge]: ../iot-edge/quickstart-linux.md

@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1711652434be3d9937c8199bc1999273ef58e4d0
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182036"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170298"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -103,7 +103,6 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](../virtual-machines/states-lifecycle.md#provisioning-states).
 
-- Wenn die VMSnapshot-Erweiterung den Status „Fehler“ aufweist, klicken Sie mit der rechten Maustaste auf die fehlerhafte Erweiterung, und entfernen Sie sie. Auslösen einer bedarfsgesteuerten Sicherung Durch diese Aktion werden die Erweiterungen neu installiert, und der Sicherungsauftrag wird ausgeführt.  <br>
 - Wenn eine andere Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass diese Erweiterungsprobleme gelöst sind, und wiederholen Sie den Sicherungsvorgang.
 - Wenn der Status der VM-Bereitstellung „Wird aktualisiert“ lautet, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass sie fehlerfrei ist, und wiederholen Sie den Sicherungsvorgang.
 
