@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436004"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342211"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>FAQ: Fragen zu virtuellen Computern
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Welche Typen von virtuellen Maschinen werden unterstützt?
 
-Die Überwachung und entsprechende Empfehlungen sind für virtuelle Computer (VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md)erstellt wurden.
+Die Überwachung und entsprechende Empfehlungen sind für virtuelle Computer (VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](/azure/security-center/./azure-resource-manager/management/deployment-models)erstellt wurden.
 
 Eine Liste mit unterstützten Plattformen finden Sie unter [Supported platforms in Azure Security Center (Unterstützte Plattformen in Azure Security Center)](security-center-os-coverage.md).
 
@@ -51,7 +51,7 @@ Unten sehen Sie Wartezeiten für Security Center-Scans auf Sicherheitsrisiken, U
 Das Security Center scannt in der Regel jede Stunde nach neuen Daten und aktualisiert die Empfehlungen entsprechend. 
 
 > [!NOTE]
-> Security Center verwendet den Log Analytics-Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md).
+> Security Center verwendet den Log Analytics-Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](./security-center-enable-data-collection.md).
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Warum erhalte ich die Meldung „VM-Agent fehlt“?

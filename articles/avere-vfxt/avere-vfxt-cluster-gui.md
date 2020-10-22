@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505612"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342432"
 ---
 # <a name="access-the-vfxt-cluster"></a>Zugreifen auf den vFXT-Cluster
 
@@ -27,7 +27,7 @@ Es gibt zwei grundlegende Schritte:
 > [!NOTE]
 > In diesem Artikel wird davon ausgegangen, dass Sie eine öffentliche IP-Adresse auf dem Clustercontroller oder auf einem anderen virtuellen Computer innerhalb des virtuellen Netzwerks Ihres Clusters festgelegt haben. Dieser Artikel beschreibt, wie Sie diesen virtuellen Computer als Host für den Zugriff auf den Cluster verwenden. Wenn Sie ein VPN oder ExpressRoute für den Zugriff auf das virtuelle Netzwerk verwenden, wechseln Sie zu [Herstellen einer Verbindung mit der Avere-Systemsteuerung](#connect-to-the-avere-control-panel-in-a-browser).
 
-Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaar „public/private“, das Sie beim Erstellen des Clustercontrollers verwendet haben, auf Ihrem lokalen Computer installiert ist. Lesen Sie die Dokumentation zu SSH-Schlüsseln für [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) oder für [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), wenn Sie Hilfe benötigen. Wenn Sie ein Kennwort anstelle eines öffentlichen Schlüssels verwendet haben, werden Sie beim Verbinden aufgefordert, dieses einzugeben.
+Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaar „public/private“, das Sie beim Erstellen des Clustercontrollers verwendet haben, auf Ihrem lokalen Computer installiert ist. Lesen Sie die Dokumentation zu SSH-Schlüsseln für [Windows](../virtual-machines/linux/ssh-from-windows.md) oder für [Linux](../virtual-machines/linux/mac-create-ssh-keys.md), wenn Sie Hilfe benötigen. Wenn Sie ein Kennwort anstelle eines öffentlichen Schlüssels verwendet haben, werden Sie beim Verbinden aufgefordert, dieses einzugeben.
 
 ## <a name="create-an-ssh-tunnel"></a>Erstellen eines SSH-Tunnels
 

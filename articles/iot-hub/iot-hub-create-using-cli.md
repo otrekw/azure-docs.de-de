@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6daed4f5f1871d76da707edec00010cd27dfa8db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087846"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142319"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
@@ -30,7 +30,7 @@ Für diese Anleitung wird ein Azure-Abonnement benötigt. Wenn Sie kein Azure-Ab
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle lokal ausführen anstatt Cloud Shell zu verwenden, müssen Sie sich bei Ihrem Azure-Konto anmelden.
 
-Führen Sie an der Eingabeaufforderung den [Anmeldebefehl](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) aus:
+Führen Sie an der Eingabeaufforderung den [Anmeldebefehl](/cli/azure/get-started-with-azure-cli) aus:
 
    ```azurecli
    az login
@@ -42,7 +42,7 @@ Befolgen Sie die Anweisungen zur Authentifizierung mit dem Code, und melden Sie 
 
 Verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe, und fügen Sie dann einen IoT Hub hinzu.
 
-1. Wenn Sie einen IoT Hub erstellen, müssen Sie ihn in einer Ressourcengruppe erstellen. Verwenden Sie entweder eine vorhandene Ressourcengruppe, oder führen Sie den folgenden [Befehl zum Erstellen einer Ressourcengruppe](https://docs.microsoft.com/cli/azure/resource) aus:
+1. Wenn Sie einen IoT Hub erstellen, müssen Sie ihn in einer Ressourcengruppe erstellen. Verwenden Sie entweder eine vorhandene Ressourcengruppe, oder führen Sie den folgenden [Befehl zum Erstellen einer Ressourcengruppe](/cli/azure/resource) aus:
     
    ```azurecli-interactive
    az group create --name {your resource group name} --location westus
@@ -56,7 +56,7 @@ Verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe, und fügen Sie
    > ```
    >
 
-2. Führen Sie den folgenden [Befehl zum Erstellen einer IoT Hub-Instanz](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) in Ihrer Ressourcengruppe aus, und verwenden Sie dabei einen global eindeutigen Namen für Ihre IoT Hub-Instanz:
+2. Führen Sie den folgenden [Befehl zum Erstellen einer IoT Hub-Instanz](/cli/azure/iot/hub#az-iot-hub-create) in Ihrer Ressourcengruppe aus, und verwenden Sie dabei einen global eindeutigen Namen für Ihre IoT Hub-Instanz:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -70,16 +70,16 @@ Mit dem vorherigen Befehl wird ein kostenpflichtiger IoT Hub im S1-Tarif erstell
 
 ## <a name="remove-an-iot-hub"></a>Entfernen eines IoT Hubs
 
-Über die Azure-Befehlszeilenschnittstelle können Sie [eine einzelne Ressource](https://docs.microsoft.com/cli/azure/resource) (beispielsweise eine IoT Hub-Instanz) oder eine Ressourcengruppe mit allen dazugehörigen Ressourcen (einschließlich IoT Hub-Instanzen) löschen.
+Über die Azure-Befehlszeilenschnittstelle können Sie [eine einzelne Ressource](/cli/azure/resource) (beispielsweise eine IoT Hub-Instanz) oder eine Ressourcengruppe mit allen dazugehörigen Ressourcen (einschließlich IoT Hub-Instanzen) löschen.
 
-Führen Sie zum [Löschen einer IoT Hub-Instanz](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete) den folgenden Befehl aus:
+Führen Sie zum [Löschen einer IoT Hub-Instanz](/cli/azure/iot/hub#az-iot-hub-delete) den folgenden Befehl aus:
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-Führen Sie zum [Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen](https://docs.microsoft.com/cli/azure/group#az-group-delete) den folgenden Befehl aus:
+Führen Sie zum [Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen](/cli/azure/group#az-group-delete) den folgenden Befehl aus:
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

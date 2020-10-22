@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585975"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342228"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Verwalten von Benutzerdaten in Azure Security Center
 Dieser Artikel enthält Informationen zur Verwaltung der Benutzerdaten in Azure Security Center. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, auf Daten zuzugreifen, Daten zu löschen oder zu exportieren.
@@ -87,7 +87,7 @@ Ein Kontoadministrator kann die Warnungsdetails wie folgt exportieren:
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Weitere Informationen finden Sie unter [Abrufen von Sicherheitswarnungen (GET-Auflistung)](https://msdn.microsoft.com/library/mt704050.aspx).
+Weitere Informationen finden Sie unter [Abrufen von Sicherheitswarnungen (GET-Auflistung)](/previous-versions/azure/reference/mt704050(v=azure.100)).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Einschränken der Verwendung der personenbezogenen Daten für die Profilerstellung oder das Marketing ohne Zustimmung
 Ein Security Center-Benutzer kann das Abonnement kündigen, indem er seine [Sicherheitskontaktdaten](security-center-provide-security-contact-details.md) löscht.

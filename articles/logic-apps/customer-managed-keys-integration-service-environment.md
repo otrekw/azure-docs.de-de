@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400142"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318448"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -39,7 +39,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 * Ein Azure-Schlüsseltresor mit aktivierten Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen)
 
-  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/secrets/quick-create-portal.md#create-a-vault).
+  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/secrets/quick-create-portal.md#create-a-vault).
 
 * Ein Schlüssel in Ihrem Schlüsseltresor, der mit diesen Eigenschaftswerten erstellt wurde:
 
@@ -52,7 +52,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
   ![Erstellen des vom Kunden verwalteten Verschlüsselungsschlüssels](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) und unter dem Azure PowerShell-Befehl [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
+  Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md) und unter dem Azure PowerShell-Befehl [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * Ein Tool, mit dem Sie Ihre ISE durch Aufrufen der Logic Apps-REST-API mit einer HTTPS PUT-Anforderung erstellen können. Beispielsweise können Sie [Postman](https://www.getpostman.com/downloads/) verwenden oder eine Logik-App erstellen, die diese Aufgabe ausführt.
 
@@ -225,7 +225,7 @@ Für diese Aufgabe können Sie entweder den Azure PowerShell-Befehl [Set-AzKeyVa
 
    1. Wenn Sie im Bereich **Zugriffsrichtlinien** fertig sind, wählen Sie **Speichern** aus.
 
-Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](/azure/key-vault/general/authentication) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy-portal).
+Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](../key-vault/general/authentication.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

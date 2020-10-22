@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400501"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279738"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Verwenden eines partitionierten Graphen in Azure Cosmos DB
 
 Eines der Hauptmerkmale der Gremlin-API in Azure Cosmos DB ist die Funktion, große Graphen mittels horizontaler Skalierung zu verarbeiten. Die Container können in Bezug auf Speicher und Durchsatz unabhängig skaliert werden. Sie können Container in Azure Cosmos DB erstellen, die automatisch so skaliert werden können, dass die Daten eines Graphen gespeichert werden. Die Daten werden basierend auf dem angegebenen **Partitionsschlüssel** automatisch abgeglichen.
 
-Die **Partitionierung ist erforderlich**, wenn im Container voraussichtlich Daten mit einer Größe von über 20 GB gespeichert oder mehr als 10.000 Anforderungseinheiten (Request Units, RUs) pro Sekunde zugeordnet werden sollen. Es gelten die gleichen allgemeinen Prinzipien wie für den [Azure Cosmos DB-Partitionierungsmechanismus](partition-data.md) – abgesehen von einigen graphspezifischen Optimierungen, die weiter unten beschrieben sind.
+Die **Partitionierung ist erforderlich**, wenn im Container voraussichtlich Daten mit einer Größe von über 20 GB gespeichert oder mehr als 10.000 Anforderungseinheiten (Request Units, RUs) pro Sekunde zugeordnet werden sollen. Es gelten die gleichen allgemeinen Prinzipien wie für den [Azure Cosmos DB-Partitionierungsmechanismus](partitioning-overview.md) – abgesehen von einigen graphspezifischen Optimierungen, die weiter unten beschrieben sind.
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Graphpartitionierung." border="false":::
 
@@ -78,7 +78,7 @@ Befolgen Sie folgende Richtlinien, um die Leistung und Skalierbarkeit bei der Ve
 
 - **Verwenden Sie beim Abfragen von Kanten nach Möglichkeit die Ausgangsrichtung**. Wie bereits erwähnt, werden Kanten mit ihren Quellknoten in Ausgangsrichtung gespeichert. So wird die Wahrscheinlichkeit eines Rückgriffs auf partitionsübergreifende Abfragen minimiert, wenn die Daten und Abfragen unter Berücksichtigung dieses Musters entworfen werden. Im Gegensatz dazu ist die `in()`-Abfrage immer eine teure Auffächerungsabfrage.
 
-- **Wählen Sie einen Partitionsschlüssel, der die Daten gleichmäßig auf die Partitionen verteilt**. Diese Entscheidung hängt stark vom Datenmodell der Lösung ab. Weitere Informationen zum Erstellen eines geeigneten Partitionsschlüssels finden Sie unter [Partitionierung und Skalierung in Azure Cosmos DB](partition-data.md).
+- **Wählen Sie einen Partitionsschlüssel, der die Daten gleichmäßig auf die Partitionen verteilt**. Diese Entscheidung hängt stark vom Datenmodell der Lösung ab. Weitere Informationen zum Erstellen eines geeigneten Partitionsschlüssels finden Sie unter [Partitionierung und Skalierung in Azure Cosmos DB](partitioning-overview.md).
 
 - **Optimieren Sie Abfragen, um Daten innerhalb der Grenzen einer Partition abzurufen**. Eine optimale Partitionierungsstrategie ist auf die Abfragemuster abgestimmt. Abfragen, die Daten aus einer einzelnen Partition abrufen, bieten die bestmögliche Leistung.
 
@@ -86,6 +86,6 @@ Befolgen Sie folgende Richtlinien, um die Leistung und Skalierbarkeit bei der Ve
 
 Sie können nun mit den folgenden Artikeln fortfahren:
 
-* Erfahren Sie mehr über das [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md).
+* Erfahren Sie mehr über das [Partitionieren und Skalieren in Azure Cosmos DB](partitioning-overview.md).
 * Erfahren Sie mehr über die [Gremlin-Unterstützung in der Gremlin-API](gremlin-support.md).
 * Erfahren Sie mehr in der [Einführung in die Gremlin-API](graph-introduction.md).

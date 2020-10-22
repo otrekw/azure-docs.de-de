@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278021"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370116"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Tutorial: Zuweisen der Rolle „Verzeichnisleseberechtigte“ zu einer Azure AD-Gruppe und Verwalten von Rollenzuweisungen
 
@@ -23,9 +23,9 @@ ms.locfileid: "91278021"
 > [!NOTE]
 > Die in diesem Artikel verwendete Zuweisung der Rolle **Verzeichnisleseberechtigte** zu einer Gruppe befindet sich in der **Public Preview**-Phase. 
 
-In diesem Artikel erfahren Sie, wie Sie eine Gruppe in Azure Active Directory (Azure AD) erstellen und dieser Gruppe die Rolle [**Verzeichnisleseberechtigte**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zuweisen. Mit den Berechtigungen vom Typ „Verzeichnisleseberechtigte“ können die Gruppenbesitzer weitere Mitglieder zur Gruppe hinzufügen – beispielsweise eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) von [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Das bedeutet, die Rolle „Verzeichnisleseberechtigte“ muss nicht mehr von einem Benutzer vom Typ [Globaler Administrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) direkt für jede Identität des logischen Azure SQL-Servers im Mandanten zugewiesen werden.
+In diesem Artikel erfahren Sie, wie Sie eine Gruppe in Azure Active Directory (Azure AD) erstellen und dieser Gruppe die Rolle [**Verzeichnisleseberechtigte**](../../active-directory/roles/permissions-reference.md#directory-readers) zuweisen. Mit den Berechtigungen vom Typ „Verzeichnisleseberechtigte“ können die Gruppenbesitzer weitere Mitglieder zur Gruppe hinzufügen – beispielsweise eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) von [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Das bedeutet, die Rolle „Verzeichnisleseberechtigte“ muss nicht mehr von einem Benutzer vom Typ [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) direkt für jede Identität des logischen Azure SQL-Servers im Mandanten zugewiesen werden.
 
-In diesem Tutorial wird das unter [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](../../active-directory/users-groups-roles/roles-groups-concept.md) vorgestellte Feature verwendet. 
+In diesem Tutorial wird das unter [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](../../active-directory/roles/groups-concept.md) vorgestellte Feature verwendet. 
 
 Weitere Informationen zu den Vorteilen, die das Zuweisen der Rolle „Verzeichnisleseberechtigte“ zu einer Azure AD-Gruppe für Azure SQL mit sich bringt, finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
 
@@ -38,7 +38,7 @@ Weitere Informationen zu den Vorteilen, die das Zuweisen der Rolle „Verzeichni
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>Erstellen einer neuen Gruppe und Zuweisen von Besitzern und Rolle
 
-1. Für diesen ersten Einrichtungsschritt ist ein Benutzer mit Berechtigungen vom Typ [Globaler Administrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) erforderlich.
+1. Für diesen ersten Einrichtungsschritt ist ein Benutzer mit Berechtigungen vom Typ [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) erforderlich.
 1. Bitten Sie den privilegierten Benutzer, sich beim [Azure-Portal](https://portal.azure.com) anzumelden.
 1. Navigieren Sie zur Ressource **Azure Active Directory**. Navigieren Sie unter **Verwalten** zu **Gruppen**. Wählen Sie **Neue Gruppe** aus, um eine neue Gruppe zu erstellen.
 1. Wählen Sie als Gruppentyp die Option **Sicherheit** aus, und füllen Sie die restlichen Felder aus. Achten Sie darauf, dass die Einstellung **Azure AD-Rollen können der Gruppe zugewiesen werden (Vorschau)** auf **Ja** festgelegt ist. Weisen Sie der Gruppe als Nächstes die Azure AD-Rolle **Verzeichnisleseberechtigte** zu.
@@ -94,7 +94,7 @@ Bei SQL-Datenbank und Azure Synapse ist die Zuweisung der Rolle **Verzeichnisles
 ## <a name="directory-readers-role-assignment-using-powershell"></a>Zuweisen der Rolle „Verzeichnisleseberechtigte“ mithilfe von PowerShell
 
 > [!IMPORTANT]
-> Diese ersten Schritte müssen von einem Benutzer vom Typ [Globaler Administrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ausgeführt werden. Neben PowerShell bietet Azure AD die Microsoft Graph-API zum [Erstellen einer Gruppe, der Rollen zugewiesen werden können, in Azure AD](../../active-directory/users-groups-roles/roles-groups-create-eligible.md#using-microsoft-graph-api).
+> Diese ersten Schritte müssen von einem Benutzer vom Typ [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) ausgeführt werden. Neben PowerShell bietet Azure AD die Microsoft Graph-API zum [Erstellen einer Gruppe, der Rollen zugewiesen werden können, in Azure AD](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api).
 
 1. Laden Sie das Azure AD PowerShell-Vorschaumodul mithilfe der folgenden Befehle herunter. PowerShell muss ggf. mit Administratorrechten ausgeführt werden.
 

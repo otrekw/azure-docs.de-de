@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c83e46932e8d2a28d8503fe3fb6514988c364d97
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950940"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125268"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Tutorial: Bestellen von Azure Data Box Disk
 
@@ -49,7 +49,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 Melden Sie sich beim
 
 * Azure-Portal unter dieser URL an, (https://portal.azure.com ), um die Azure Data Box Disk zu bestellen.
-* Oder beim Azure Government-Portal unter dieser URL: https://portal.azure.us. Ausführlichere Informationen finden Sie unter [Quickstart: Connect to Azure Government using portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal) (Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal).
+* Oder beim Azure Government-Portal unter dieser URL: https://portal.azure.us. Ausführlichere Informationen finden Sie unter [Quickstart: Connect to Azure Government using portal](../azure-government/documentation-government-get-started-connect-with-portal.md) (Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal).
 
 Bestellen Sie die Data Box Disk anhand der folgenden Schritte.
 
@@ -83,7 +83,7 @@ Bestellen Sie die Data Box Disk anhand der folgenden Schritte.
     |Azure-Zielregion| Wählen Sie eine Region für Ihr Speicherkonto aus.<br> Zurzeit werden Speicherkonten in allen Regionen in den USA sowie in West- und Nordeuropa, Kanada und Australien unterstützt. |
     |Geschätzte Datengröße in TB| Geben Sie einen geschätzten Wert in TB ein. <br>Basierend auf der Größe der Daten sendet Microsoft Ihnen eine geeignete Anzahl von SSDs mit jeweils 8 TB (7 TB nutzbare Kapazität) zu. <br>Die maximal nutzbare Kapazität von 5 Datenträgern beträgt bis zu 35 TB. |
     |Hauptschlüssel für Datenträger| Geben Sie den Hauptschlüssel für Datenträger an, wenn Sie **Benutzerdefinierten Schlüssel anstelle eines von Azure generierten Hauptschlüssels verwenden** aktivieren. <br> Geben Sie einen alphanumerischen Schlüssel mit 12 bis 32 Zeichen ein, der mindestens ein numerisches Zeichen und ein Sonderzeichen enthält. Zulässige Sonderzeichen: `@?_+`. <br> Sie können diese Option überspringen und den von Azure generierten Hauptschlüssel verwenden, um Ihre Datenträger zu entsperren.|
-    |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region ein Speicherkonto aus der gefilterten Liste aus. Data Box Disk kann mit nur einem Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br>Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
+    |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region ein Speicherkonto aus der gefilterten Liste aus. Data Box Disk kann mit nur einem Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br>Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](../storage/common/storage-network-security.md#exceptions).|
 
     Wenn Sie als Speicherziel ein Speicherkonto verwenden, wird Folgendes angezeigt:
 

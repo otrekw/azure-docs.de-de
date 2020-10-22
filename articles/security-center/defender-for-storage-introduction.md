@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577814"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341973"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Einführung in Azure Defender für Storage
 
@@ -27,7 +27,7 @@ Dank dieser Schutzebene können Sie auch *ohne* fundierte Sicherheitskenntnisse 
 |----|:----|
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|**Azure Defender für Storage** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
-|Geschützte Speichertypen:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
+|Geschützte Speichertypen:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
 |||
 
@@ -66,6 +66,6 @@ In diesem Artikel haben Sie mehr über Azure Defender für Storage erfahren.
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 - Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
-- [Aktivieren von Azure Defender für Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Aktivieren von Azure Defender für Storage](../storage/common/azure-defender-storage-configure.md)
 - [Liste der Warnungen von Azure Defender für Storage](alerts-reference.md#alerts-azurestorage)
 - [Microsoft Threat Intelligence-Funktionen](https://go.microsoft.com/fwlink/?linkid=2128684)

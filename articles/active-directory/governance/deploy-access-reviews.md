@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b218f4c94e33d4a91b3981c66d3ac052c6caf7e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306564"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318128"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -87,7 +87,7 @@ Berücksichtigen Sie die Anforderungen Ihrer Organisation, um die Strategie für
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](https://aka.ms/deploymentplans) und dass die Projektrollen klar sind.
+Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](../fundamentals/active-directory-deployment-plans.md) und dass die Projektrollen klar sind.
 
 An Zugriffsüberprüfungen können Mitglieder der folgenden Teams aus Ihrer Organisation beteiligt sein:
 
@@ -182,7 +182,7 @@ Typische Ziele für die Überprüfung:
 
 * [Mitgliedschaft](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) in Gruppen (mit Azure AD synchronisiert oder in Azure AD oder Microsoft 365 erstellt, einschließlich Microsoft Teams).
 
-* [Zugriffspaket](/azure/active-directory/governance/entitlement-management-overview) zum Gruppieren von Ressourcen (Gruppen, Apps und Websites) in einem Paket für die Zugriffsverwaltung.
+* [Zugriffspaket](./entitlement-management-overview.md) zum Gruppieren von Ressourcen (Gruppen, Apps und Websites) in einem Paket für die Zugriffsverwaltung.
 
 * [Azure AD- und Azure-Ressourcenrollen](../privileged-identity-management/pim-resource-roles-assign-roles.md) gemäß ihrer Definition in Privileged Identity Management.
 
@@ -518,4 +518,3 @@ Informieren Sie sich über die im folgenden aufgeführten verwandten Technologie
 * [Was ist die Azure AD-Berechtigungsverwaltung?](entitlement-management-overview.md)
 
 * [Was ist Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
-

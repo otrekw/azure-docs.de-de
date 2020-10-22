@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180642"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107724"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -516,7 +516,7 @@ Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` ent
 }
 ```
 
-Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-create-function-linux-custom-image.md), müssen Sie es mit `linuxFxVersion` angeben und eine Konfiguration einbeziehen, die das Pullen Ihres Images ermöglicht, wie in [App Service unter Linux – Dokumentation](../app-service/containers/index.yml). Setzen Sie außerdem `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf `false`, da Ihr App-Inhalt im Container selbst bereitgestellt wird:
+Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-create-function-linux-custom-image.md), müssen Sie es mit `linuxFxVersion` angeben und eine Konfiguration einbeziehen, die das Pullen Ihres Images ermöglicht, wie in [App Service unter Linux – Dokumentation](../app-service/index.yml). Setzen Sie außerdem `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf `false`, da Ihr App-Inhalt im Container selbst bereitgestellt wird:
 
 ```json
 {
