@@ -3,12 +3,12 @@ title: Netzwerkisolation in Azure DevTest Labs
 description: Hier erfahren Sie mehr über die Netzwerkisolation in Azure DevTest Labs.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875509"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149154"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Netzwerkisolation in DevTest Labs
 
@@ -57,7 +57,7 @@ Lesen Sie auch die folgenden Artikel:
  
    > [!div class="mx-imgBorder"]
    > ![Contoso-Test](./media/network-isolation/contoso-test.png)
-1. Navigieren Sie im Speicherkonto zu „Firewalls und virtuelle Netzwerke“, und vergewissern Sie sich, dass das Kontrollkästchen „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ aktiviert ist. Da [DevTest Labs ein vertrauenswürdiger Microsoft-Dienst](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) ist, ermöglicht diese Option die normale Nutzung des Labs im netzwerkisolierten Modus. 
+1. Navigieren Sie im Speicherkonto zu „Firewalls und virtuelle Netzwerke“, und vergewissern Sie sich, dass das Kontrollkästchen „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ aktiviert ist. Da [DevTest Labs ein vertrauenswürdiger Microsoft-Dienst](../storage/common/storage-network-security.md#trusted-microsoft-services) ist, ermöglicht diese Option die normale Nutzung des Labs im netzwerkisolierten Modus. 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso-Labfirewalls](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ Dadurch lässt Azure Storage eingehende Verbindungen aus dem hinzugefügten virt
 
 Sie können diese Schritte auch automatisieren, um diese Einstellung für mehrere Labs zu konfigurieren. 
 
-[Weitere Informationen zum Verwalten standardmäßiger Netzwerkzugriffsregeln für Azure Storage mithilfe von PowerShell und der CLI](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[Weitere Informationen zum Verwalten standardmäßiger Netzwerkzugriffsregeln für Azure Storage mithilfe von PowerShell und der CLI](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Wichtige Aspekte bei der Verwendung eines Labs im netzwerkisolierten Modus
 
@@ -82,7 +82,7 @@ Sie können diese Schritte auch automatisieren, um diese Einstellung für mehrer
 
 In einem netzwerkisolierten Lab müssen Labbesitzer explizit den Zugriff auf das Speicherkonto über einen zulässigen Endpunkt ermöglichen, damit Aktionen wie das Hochladen einer VHD in das Lab-Speicherkonto zum Erstellen benutzerdefinierter Images ausgeführt werden können. Hierfür können Sie einen virtuellen Computer erstellen und über diesen sicher auf das Lab-Speicherkonto zugreifen. 
 
-[Weitere Informationen zum privaten Zugriff auf ein Speicherkonto über einen virtuellen Computer](../private-link/create-private-endpoint-storage-portal.md)
+[Weitere Informationen zum privaten Zugriff auf ein Speicherkonto über einen virtuellen Computer](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>Exportieren von Nutzungsdaten aus dem Lab 
 

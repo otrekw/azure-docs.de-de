@@ -354,8 +354,6 @@
           href: ../security-controls-policy.md
         - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
           href: security-baseline.md
-        - name: Integrierte Sicherheitskontrollen
-          href: virtual-machines-linux-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Zustände und Lebenszyklus
@@ -959,7 +957,7 @@
       items:
         - name: Hinzufügen eines Datenträgers
           items:
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
@@ -1146,7 +1144,7 @@
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: PowerShell
       href: /powershell/azure/

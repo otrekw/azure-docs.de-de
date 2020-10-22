@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435404"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206032"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -176,7 +176,7 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 
 | Produkt/Dienst | BESCHREIBUNG |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking.md) und [Updateverwaltung](../automation/update-management/update-mgmt-overview.md). |
+| [Azure Automation](../automation/index.yml) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking/overview.md) und [Updateverwaltung](../automation/update-management/update-mgmt-overview.md). |
 | [Azure Information Protection](/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | Sammeln und Analysieren von Sicherheitsereignissen und Durchführen einer Bedrohungsanalyse. Informationen finden Sie unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md). |
 | [Azure Sentinel](../sentinel/index.yml) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](../sentinel/connect-data-sources.md). |

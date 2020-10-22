@@ -105,12 +105,22 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Erstellen eines Azure-Containerangebots
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Angebot für virtuelle Azure-Computer
+    - name: Azure-VM-Angebote
       items:
         - name: Planen eines Angebots für virtuelle Computer
           href: marketplace-virtual-machines.md
         - name: Erstellen und veröffentlichen eines Angebots für virtuelle Computer
           items:
+            - name: Erstellen eines Angebots für virtuelle Computer
+              href: azure-vm-create.md
+            - name: Konfigurieren von VM-Angebotseigenschaften
+              href: azure-vm-create-properties.md
+            - name: Konfigurieren eines VM-Angebotslistings
+              href: azure-vm-create-listing.md
+            - name: Erstellen von VM-Plänen
+              href: azure-vm-create-plans.md
+            - name: Hinzufügen einer Vorschauzielgruppe
+              href: azure-vm-create-preview.md
             - name: Erstellen technischer VM-Ressourcen
               items:
                 - name: Erstellen eines virtuellen Computers aus einer genehmigten Basis
@@ -127,16 +137,6 @@
                   href: azure-vm-create-faq.md
                 - name: Behandeln von Problemen bei der VM-Zertifizierung
                   href: azure-vm-create-certification-faq.md
-            - name: Erstellen eines Angebots für virtuelle Computer
-              href: azure-vm-create.md
-            - name: Konfigurieren von VM-Angebotseigenschaften
-              href: azure-vm-create-properties.md
-            - name: Konfigurieren eines VM-Angebotslistings
-              href: azure-vm-create-listing.md
-            - name: Erstellen von VM-Plänen
-              href: azure-vm-create-plans.md
-            - name: Hinzufügen einer Vorschauzielgruppe
-              href: azure-vm-create-preview.md
     - name: Beratungsdienste
       items:
         - name: Planen eines Beratungsdienstangebots

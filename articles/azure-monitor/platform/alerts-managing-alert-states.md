@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358962"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104800"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Verwalten von Warnungen und Status intelligenter Gruppen
 
-Warnungen in Azure Monitor verfügen jetzt über einen [Warnungsstatus und eine Überwachungsbedingung](https://aka.ms/azure-alerts-overview), und ähnlich verfügen intelligente Gruppen über einen [Status für intelligente Gruppen](https://aka.ms/smart-groups). Statusänderungen werden jetzt im Verlauf erfasst, der der jeweiligen Warnung oder intelligenten Gruppe zugeordnet ist. Dieser Artikel führt Sie durch den Prozess der Statusänderung, sowohl für Warnungen als auch für intelligente Gruppen.
+Warnungen in Azure Monitor verfügen jetzt über einen [Warnungsstatus und eine Überwachungsbedingung](./alerts-overview.md), und ähnlich verfügen intelligente Gruppen über einen [Status für intelligente Gruppen](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json). Statusänderungen werden jetzt im Verlauf erfasst, der der jeweiligen Warnung oder intelligenten Gruppe zugeordnet ist. Dieser Artikel führt Sie durch den Prozess der Statusänderung, sowohl für Warnungen als auch für intelligente Gruppen.
 
 ## <a name="change-the-state-of-an-alert"></a>Ändern des Status einer Warnung
 
@@ -46,4 +46,3 @@ Warnungen in Azure Monitor verfügen jetzt über einen [Warnungsstatus und eine 
 
 1. Nach diesem Vorgang wird die Statusänderung im Verlauf der jeweiligen intelligenten Gruppe aufgezeichnet. Dies kann angezeigt werden, indem die entsprechende Detailseite geöffnet und der Verlaufsbereich überprüft wird.     
 ![Screenshot des Änderungsverlaufs für die intelligente Gruppe](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

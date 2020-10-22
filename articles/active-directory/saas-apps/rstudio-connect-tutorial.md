@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f67d1bb1e4502d918cd7af6d98ce5ed5f76c969
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273754"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Tutorial: Azure Active Directory-Integration mit RStudio Connect
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten, und ersetzen Sie dabei `<example.com>` durch die Serveradresse und den Port von RStudio Connect:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für RStudio Connect](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<example.com>/__login__/saml`
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für RStudio Connect](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<example.com>/`
 

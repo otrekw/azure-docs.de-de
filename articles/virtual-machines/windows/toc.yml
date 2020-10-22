@@ -348,8 +348,6 @@
           href: ../security-controls-policy.md
         - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
           href: security-baseline.md
-        - name: Integrierte Sicherheitskontrollen
-          href: virtual-machines-windows-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Zustände und Lebenszyklus
@@ -1057,7 +1055,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

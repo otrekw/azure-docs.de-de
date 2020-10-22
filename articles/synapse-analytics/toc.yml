@@ -44,8 +44,6 @@
       href: quickstart-create-workspace-powershell.md
     - name: Bereitstellen mit einer Vorlage
       href: quickstart-deployment-template-workspaces.md
-    - name: Verwenden von Synapse Studio
-      href: quickstart-synapse-studio.md
     - name: "Verknüpfen eines Power\_BI-Arbeitsbereichs"
       href: quickstart-power-bi.md
     - name: Erstellen von Pools

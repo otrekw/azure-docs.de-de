@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568096"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282309"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -57,6 +57,7 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |Filipino|  `fil`   |
 |Finnisch|   `fi`    |
 |Französisch|    `fr`    |
+|Französisch (Kanada)|   `fr-ca` |
 |Deutsch|    `de`    |
 |Griechisch| `el`    |
 |Gujarati|  `gu`    |
@@ -364,6 +365,7 @@ Wandeln Sie Sprache in Text um, damit dieser in eine beliebige Textsprache über
 |Englisch|
 |Finnisch|
 |Französisch|
+|Französisch (Kanada)|
 |Deutsch|
 |Gujarati|
 |Hindi|
@@ -401,6 +403,7 @@ Konvertieren von Text in Sprache. Text-zu-Sprache wird in Verbindung mit der Spr
 |Englisch|
 |Finnisch|
 |Französisch|
+|Französisch (Kanada)|
 |Deutsch|
 |Griechisch|
 |Hebräisch|

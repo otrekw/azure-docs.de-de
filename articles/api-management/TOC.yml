@@ -62,8 +62,6 @@
       items:
         - name: Sicherheitsbaseline
           href: security-baseline.md
-        - name: Integrierte Sicherheitskontrollen
-          href: api-management-security-controls.md
     - name: Abonnements
       href: api-management-subscriptions.md
     - name: Versionen
