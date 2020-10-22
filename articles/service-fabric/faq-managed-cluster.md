@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728997"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319825"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
 
@@ -41,7 +41,7 @@ Die SLA ändert sich gegenüber dem aktuellen Service Fabric-Ressourcenmodell ni
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Worin besteht der Unterschied zwischen einem Cluster mit der SKU „Basic“ und der SKU „Standard“?
 
-Ein Cluster mit der SKU „Basic“ bedeutet, dass die meisten Konfigurationen vom Service Fabric-Ressourcenanbieter bereitgestellt werden. Cluster mit der SKU „Basic“ sind für die Verwendung mit Test- und Präproduktionsumgebungen vorgesehen. Ein Cluster mit der SKU „Standard“ kann von einem Benutzer so konfiguriert werden, dass seine spezifischen Anforderungen erfüllt werden. Weitere Informationen finden Sie unter [SKUs für verwaltete Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus).
+Ein Cluster mit der SKU „Basic“ bedeutet, dass die meisten Konfigurationen vom Service Fabric-Ressourcenanbieter bereitgestellt werden. Cluster mit der SKU „Basic“ sind für die Verwendung mit Test- und Präproduktionsumgebungen vorgesehen. Ein Cluster mit der SKU „Standard“ kann von einem Benutzer so konfiguriert werden, dass seine spezifischen Anforderungen erfüllt werden. Weitere Informationen finden Sie unter [SKUs für verwaltete Service Fabric-Cluster](./overview-managed-cluster.md#service-fabric-managed-cluster-skus).
 
 ## <a name="cluster-deployment-and-management"></a>Clusterbereitstellung und -verwaltung
 
@@ -66,7 +66,7 @@ In der Vorschauversion werden alle Runtimeupgrades automatisch durchgeführt.
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Ist eine lokale Entwicklungsumgebung für verwaltete Service Fabric-Cluster vorhanden?
 
-Die lokale Entwicklungsumgebung bleibt gegenüber den vorhandenen Service Fabric-Clustern unverändert. Weitere Informationen zur lokalen Entwicklungsumgebung finden Sie unter [Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-dotnet).
+Die lokale Entwicklungsumgebung bleibt gegenüber den vorhandenen Service Fabric-Clustern unverändert. Weitere Informationen zur lokalen Entwicklungsumgebung finden Sie unter [Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric](./service-fabric-quickstart-dotnet.md).
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>Kann ich meine Anwendungen als Azure Resource Manager-Ressource bereitstellen?
 

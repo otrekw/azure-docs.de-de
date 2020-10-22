@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399804"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107809"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
-Wenn Sie dieses Dokument lesen, ist Ihnen bereits bewusst, welchen Stellenwert das Thema Sicherheit innehat. Sie sind wahrscheinlich bereits für die Sicherheit Ihrer Organisation verantwortlich. Wenn Sie andere Personen davon überzeugen müssen, wie wichtig Sicherheit ist, geben Sie ihnen die letzte Ausgabe des [Microsoft Intelligence Security-Berichts](https://go.microsoft.com/fwlink/p/?linkid=2073747) zu lesen.
+Wenn Sie dieses Dokument lesen, ist Ihnen bereits bewusst, welchen Stellenwert das Thema Sicherheit innehat. Sie sind wahrscheinlich bereits für die Sicherheit Ihrer Organisation verantwortlich. Wenn Sie andere Personen davon überzeugen müssen, wie wichtig Sicherheit ist, geben Sie ihnen die letzte Ausgabe des [Microsoft Intelligence Security-Berichts](https://www.microsoft.com/security/business/security-intelligence-report) zu lesen.
 
 Dieses Dokument unterstützt Sie dabei, mithilfe der Funktionen von Azure Active Directory die Sicherheit in Ihrer Organisation zu verbessern. Es enthält eine Checkliste mit fünf Schritten, mit denen Sie Ihre Organisation gegen Cyberangriffe impfen können.
 

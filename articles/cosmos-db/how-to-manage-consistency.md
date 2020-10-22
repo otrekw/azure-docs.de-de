@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330586"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279593"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -288,8 +288,9 @@ Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Ver
 Informieren Sie sich über das Verwalten von Datenkonflikten, oder fahren Sie mit dem nächsten wichtigen Konzept von Azure Cosmos DB fort. Weitere Informationen finden Sie in folgenden Artikeln:
 
 * [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
-* [Behandeln von Konflikten zwischen Regionen](how-to-manage-conflicts.md)
 * [Partitionierung und Datenverteilung](partition-data.md)
+* [Behandeln von Konflikten zwischen Regionen](how-to-manage-conflicts.md)
+* [Partitionierung und Datenverteilung](partitioning-overview.md)
 * [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Hochverfügbarkeit](high-availability.md)
 * [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

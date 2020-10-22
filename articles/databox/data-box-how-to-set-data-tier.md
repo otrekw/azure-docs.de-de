@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84608705"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125063"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box oder Azure Data Box Heavy
 
@@ -29,11 +29,11 @@ Azure Storage ermöglicht das Speichern von Daten auf möglichst kostengünstige
 
 Die kalte Speicherebene ist für selten verwendete Daten vorgesehen, die mindestens 30 Tage lang gespeichert werden müssen. Die Speicherkosten für die kalte Ebene sind geringer als für die heiße Speicherebene, die Datenzugriffsgebühren sind verglichen mit der heißen Ebene jedoch höher.
 
-Die Azure-Archivebene ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Diese Ebene ist für Daten vorgesehen, die mindestens 180 Tage im Archivspeicher bleiben. Details zu den einzelnen Ebenen und zum Preismodell finden Sie unter [Vergleich der Speicherebenen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Die Azure-Archivebene ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Diese Ebene ist für Daten vorgesehen, die mindestens 180 Tage im Archivspeicher bleiben. Details zu den einzelnen Ebenen und zum Preismodell finden Sie unter [Vergleich der Speicherebenen](../storage/blobs/storage-blob-storage-tiers.md).
 
 Die Daten aus Data Box oder Data Box Heavy werden in eine Speicherebene hochgeladen, die dem Speicherkonto zugeordnet ist. Beim Erstellen eines Speicherkontos können Sie die heiße oder die kalte Zugriffsebene festlegen. Je nach dem Zugriffsmuster Ihrer Workload und den Kosten können Sie diese Daten aus der Standardebene in eine andere Speicherebene verschieben.
 
-Sie können das Tiering für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Zur Auswahl der richtigen Speicherebene für Ihre Daten überprüfen Sie die ausführlichen Überlegungen in [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Sie können das Tiering für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Zur Auswahl der richtigen Speicherebene für Ihre Daten überprüfen Sie die ausführlichen Überlegungen in [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../storage/blobs/storage-blob-storage-tiers.md).
 
 ## <a name="set-a-default-blob-tier"></a>Festlegen einer Standardblobebene
 
@@ -41,13 +41,13 @@ Die Standardblobebene wird angegeben, wenn das Speicherkonto im Azure-Portal ers
 
 Die Ebenen können nicht festgelegt werden, wenn Sie beim Bestellen eines Data Box- oder Data Box Heavy-Geräts versuchen, ein neues Konto zu erstellen. Nachdem das Konto erstellt wurde, können Sie das Konto im Portal ändern, um die standardmäßige Zugriffsebene festzulegen.
 
-Alternativ erstellen Sie zuerst ein Speicherkonto mit dem festgelegten Zugriffsebenenattribut. Wählen Sie beim Aufgeben der Data Box- bzw. Data Box Heavy-Bestellung das vorhandene Speicherkonto aus. Weitere Informationen zum Festlegen der Standardblobebene während der Erstellung des Speicherkontos finden Sie unter [Erstellen eines Speicherkontos: Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
+Alternativ erstellen Sie zuerst ein Speicherkonto mit dem festgelegten Zugriffsebenenattribut. Wählen Sie beim Aufgeben der Data Box- bzw. Data Box Heavy-Bestellung das vorhandene Speicherkonto aus. Weitere Informationen zum Festlegen der Standardblobebene während der Erstellung des Speicherkontos finden Sie unter [Erstellen eines Speicherkontos: Azure Storage](../storage/common/storage-account-create.md?tabs=portal).
 
 ## <a name="move-data-to-a-non-default-tier"></a>Verschieben von Daten in eine Nicht-Standardebene
 
 Sobald die Daten vom Data Box-Gerät in die Standardebene hochgeladen wurden, können Sie sie in eine Nicht-Standardebene verschieben. Zum Verschieben dieser Daten in eine Nicht-Standardebene gibt es zwei Möglichkeiten.
 
-- **Azure Blob Storage-Lebenszyklusverwaltung**: Sie können einen richtlinienbasierten Ansatz verwenden, um Daten automatisch in die entsprechenden Zugriffsebenen zu übertragen oder am Ende ihres Lebenszyklus ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
+- **Azure Blob Storage-Lebenszyklusverwaltung**: Sie können einen richtlinienbasierten Ansatz verwenden, um Daten automatisch in die entsprechenden Zugriffsebenen zu übertragen oder am Ende ihres Lebenszyklus ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/storage-lifecycle-management-concepts.md).
 - **Skripterstellung**: Sie können einen skriptbasierten Ansatz über Azure PowerShell verwenden, um Blobebenentiering zu aktivieren. Dazu rufen Sie den `SetBlobTier`-Vorgang auf, um die Ebene für das Blob festzulegen.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Festlegen der Blobebene mithilfe von Azure PowerShell
@@ -116,5 +116,4 @@ Nachfolgend wird beschrieben, wie Sie die Blobebene mithilfe eines Azure PowerSh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--  Erfahren Sie mehr zur Behandlung der [gängigen Datentiering-Szenarien mithilfe von Regeln zur Lebenszyklusverwaltung](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples).
-
+-  Erfahren Sie mehr zur Behandlung der [gängigen Datentiering-Szenarien mithilfe von Regeln zur Lebenszyklusverwaltung](../storage/blobs/storage-lifecycle-management-concepts.md#examples).

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 106f446c56377c1211d04e388608cd31e2aeef23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3834b1890cb20b717462c4cb8ed1f779570c675
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804213"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275221"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -353,7 +353,7 @@ Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schnelle
 * Unterstützung des TTL-Features (Time To Live) für Dokumente hinzugefügt.
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* [Partitionierte Sammlungen](partition-data.md) und [benutzerdefinierte Leistungsstufen](performance-levels.md) implementiert.
+* [Partitionierte Sammlungen](partitioning-overview.md) und [benutzerdefinierte Leistungsstufen](performance-levels.md) implementiert.
 
 ### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * Fehler in „RangePartitionResolver.resolveForRead“ behoben, durch den aufgrund einer ungültigen Verkettung der Ergebnisse keine Links zurückgegeben wurden.

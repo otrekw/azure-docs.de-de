@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019979"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279633"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Erstellen mehrerer Azure Functions-Trigger für Cosmos DB
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie Sie mehrere Azure Functions-Trigger für Cosmos 
 
 Beim Erstellen serverloser Architekturen mit [Azure Functions](../azure-functions/functions-overview.md) gilt die [Empfehlung](../azure-functions/functions-best-practices.md#avoid-long-running-functions), kleine zusammenarbeitende Funktionsgruppen anstelle umfangreicher, zeitintensiver Funktionen zu erstellen.
 
-Wenn Sie ereignisbasierte serverlose Flows mithilfe des [Azure Functions-Triggers für Cosmos DB](./change-feed-functions.md) erstellen, entsteht ein Szenario, in dem Sie immer dann mehrere Aktionen ausführen möchten, wenn in einem bestimmten [Azure Cosmos-Container](./databases-containers-items.md#azure-cosmos-containers) ein neues Ereignis auftritt. Wenn auszulösende Aktionen voneinander unabhängig sind, wäre die ideale Lösung, **pro auszuführende Aktion einen Azure Functions-Trigger für Cosmos DB zu erstellen**, wobei alle Trigger in demselben Azure Cosmos-Container auf Änderungen lauschen.
+Wenn Sie ereignisbasierte serverlose Flows mithilfe des [Azure Functions-Triggers für Cosmos DB](./change-feed-functions.md) erstellen, entsteht ein Szenario, in dem Sie immer dann mehrere Aktionen ausführen möchten, wenn in einem bestimmten [Azure Cosmos-Container](./account-databases-containers-items.md#azure-cosmos-containers) ein neues Ereignis auftritt. Wenn auszulösende Aktionen voneinander unabhängig sind, wäre die ideale Lösung, **pro auszuführende Aktion einen Azure Functions-Trigger für Cosmos DB zu erstellen**, wobei alle Trigger in demselben Azure Cosmos-Container auf Änderungen lauschen.
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Optimieren von Containern für mehrere Trigger
 

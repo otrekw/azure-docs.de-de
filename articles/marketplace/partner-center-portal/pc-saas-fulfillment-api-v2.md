@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6c890e9fbda316bfa7f5f3a42572f35ca73811ea
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931800"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275542"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -953,11 +953,11 @@ Der Herausgeber muss einen Webhook im SaaS-Dienst implementieren, um den Status 
 
 Zu Beginn des Entwicklungsprozesses wird empfohlen, API-Pseudoantworten auf Herausgeberseite zu erstellen.  Diese Antworten können auf Beispielantworten in diesem Dokument basieren.
 
-Wenn der Herausgeber für End-to-End-Tests bereit ist, sollten folgende Schritte ausgeführt werden: 
+Wenn der Herausgeber für End-to-End-Tests bereit ist, sollten folgende Schritte ausgeführt werden:
 
 * Veröffentlichen Sie ein SaaS-Angebot für eine begrenzte Vorschauzielgruppe, und belassen Sie es in der Vorschauphase.
-* Dieses Angebot sollte einen Plan mit einem Preis von 0 (null) aufweisen, damit keine tatsächlichen Abrechnungskosten beim Testen entstehen.  Eine andere Möglichkeit besteht darin, einen anderen Preis als 0 (null) festzulegen und alle Testkäufe innerhalb von 24 Stunden zu stornieren. 
-* Stellen Sie sicher, dass alle Abläufe von Anfang bis Ende aufgerufen werden, wie es beim Kaufen des Angebots durch einen Kunden der Fall wäre. 
+* Dieses Angebot sollte einen Plan mit einem Preis von 0 (null) aufweisen, damit keine tatsächlichen Abrechnungskosten beim Testen entstehen.  Eine andere Möglichkeit besteht darin, einen anderen Preis als 0 (null) festzulegen und alle Testkäufe innerhalb von 24 Stunden zu stornieren.
+* Stellen Sie sicher, dass alle Abläufe von Anfang bis Ende aufgerufen werden, wie es beim Kaufen des Angebots durch einen Kunden der Fall wäre.
 * Wenn der Partner den vollständigen Kauf- und Abrechnungsablauf testen möchte, verwenden Sie hierfür ein Angebot mit einem höheren Preis als 0 (null).  Der Kauf wird abgerechnet, und eine Rechnung wird generiert.
 
 Je nachdem, wo das Angebot veröffentlicht wird, kann ein Kaufablauf über das Azure-Portal oder Microsoft AppSource ausgelöst werden.
@@ -966,8 +966,7 @@ Die Aktionen *Plan ändern*, *Menge ändern* und *Kündigen* werden auf Herausge
 
 ## <a name="get-support"></a>Support
 
-Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).
-
+Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](../support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

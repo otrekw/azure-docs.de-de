@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320050"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280447"
 ---
 # <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
 
@@ -117,7 +117,7 @@ Sollte eines der folgenden Probleme bei Ihnen auftreten, können Sie ein Support
 * Ein Problem, das aufgrund eines Fehlers auf Ihrer Seite eskaliert werden muss (beispielsweise ein falsches Nutzungsereignis)
 * Ein anderes Problem im Zusammenhang mit der getakteten Abrechnung
 
-Befolgen Sie die Anleitung unter [Support für das Programm „Kommerzieller Marketplace“ in Partner Center](./support.md), um sich mit den Supportoptionen für Herausgeber vertraut zu machen und ein Supportticket bei Microsoft zu erstellen.
+Befolgen Sie die Anleitung unter [Support für das Programm „Kommerzieller Marketplace“ in Partner Center](../support.md), um sich mit den Supportoptionen für Herausgeber vertraut zu machen und ein Supportticket bei Microsoft zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

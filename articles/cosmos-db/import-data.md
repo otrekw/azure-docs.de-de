@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 66eee67ae191d764228a85aaf1e63eae43208cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537734"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278157"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 
@@ -339,7 +339,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 ## <a name="import-to-the-sql-api-bulk-import"></a><a id="SQLBulkTarget"></a>Importieren in die SQL-API (Massenimport)
 
-Mit dem Azure Cosmos DB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte Azure Cosmos DB-Prozedur verwenden. Das Tool unterstützt den Import in einen Azure Cosmos-Container mit einer einzelnen Partition. Das Tool unterstützt auch den Shardimport, bei dem Daten über mehrere Azure Cosmos-Container mit einer einzelnen Partition hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partition-data.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und anschließend aus den Zielsammlungen gelöscht.  
+Mit dem Azure Cosmos DB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte Azure Cosmos DB-Prozedur verwenden. Das Tool unterstützt den Import in einen Azure Cosmos-Container mit einer einzelnen Partition. Das Tool unterstützt auch den Shardimport, bei dem Daten über mehrere Azure Cosmos-Container mit einer einzelnen Partition hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partitioning-overview.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und anschließend aus den Zielsammlungen gelöscht.  
 
 :::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 
@@ -398,7 +398,7 @@ Das Azure Cosmos DB-Massenimportprogramm weist die folgenden erweiterten Optione
 
 ## <a name="import-to-the-sql-api-sequential-record-import"></a><a id="SQLSeqTarget"></a>Importieren in die SQL-API (sequenzieller Datensatzimport)
 
-Mit dem Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen können Sie Datensätze einzeln aus einer verfügbaren Quelloption importieren. Sie können diese Option auswählen, wenn Sie Datensätze in eine vorhandene Sammlung importieren, die das Kontingent an gespeicherten Prozeduren erreicht hat. Das Tool unterstützt den Import in einen einzelnen Azure Cosmos-Container (mit einer Partition und mit mehreren Partitionen). Das Tool unterstützt auch den Shardimport, bei dem Daten über mehrere Azure Cosmos-Container mit einer einzelnen Partition oder mehreren Partitionen hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partition-data.md).
+Mit dem Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen können Sie Datensätze einzeln aus einer verfügbaren Quelloption importieren. Sie können diese Option auswählen, wenn Sie Datensätze in eine vorhandene Sammlung importieren, die das Kontingent an gespeicherten Prozeduren erreicht hat. Das Tool unterstützt den Import in einen einzelnen Azure Cosmos-Container (mit einer Partition und mit mehreren Partitionen). Das Tool unterstützt auch den Shardimport, bei dem Daten über mehrere Azure Cosmos-Container mit einer einzelnen Partition oder mehreren Partitionen hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partitioning-overview.md).
 
 :::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools":::
 

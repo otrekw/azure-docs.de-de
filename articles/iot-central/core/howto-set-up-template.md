@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c8fb60a4b549a7203057dd60298d2ae0540450d6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803788"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122652"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -45,7 +45,7 @@ In einer IoT Central-Anwendung verwendet eine Gerätevorlage ein Gerätefunktion
 - Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätefunktionsmodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
 - Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie das echte Gerät mithilfe einer Geräte bevorzugenden Verbindung mit Ihrer IoT Central-Anwendung. IoT Central ermittelt und importiert das Gerätefunktionsmodell automatisch aus dem öffentlichen Repository. Sie können dann alle Cloudeigenschaften, Anpassungen und Dashboards, die Ihre IoT Central-Anwendung benötigt, der Gerätevorlage hinzufügen.
 
-Sie können einer IoT Central-Anwendung Gerätevorlagen auch mithilfe der [REST-API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) oder der [CLI](howto-manage-iot-central-from-cli.md) hinzufügen.
+Sie können einer IoT Central-Anwendung Gerätevorlagen auch mithilfe der [REST-API](/learn/modules/manage-iot-central-apps-with-rest-api/) oder der [CLI](howto-manage-iot-central-from-cli.md) hinzufügen.
 
 Einige [Anwendungsvorlagen](concepts-app-templates.md) enthalten bereits Gerätevorlagen, die in dem von der Anwendungsvorlage unterstützten Szenario hilfreich sind. Informationen hierzu finden Sie beispielsweise unter [Architektur der In-Store-Analyse](../retail/store-analytics-architecture.md).
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f45a1481661aa350815560d795ab7411f99545
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979498"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317841"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Typische Szenarien für die Azure AD-Berechtigungsverwaltung
 
@@ -154,7 +154,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 
 ## <a name="programmatic-administration"></a>Programmgesteuerte Verwaltung
 
-Mithilfe von Microsoft Graph können Sie auch Zugriffspakete, Kataloge, Richtlinien, Anforderungen und Zuweisungen verwalten.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die [Berechtigungsverwaltungs-API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta ) aufrufen.
+Mithilfe von Microsoft Graph können Sie auch Zugriffspakete, Kataloge, Richtlinien, Anforderungen und Zuweisungen verwalten.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die [Berechtigungsverwaltungs-API](/graph/tutorial-access-package-api?view=graph-rest-beta) aufrufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

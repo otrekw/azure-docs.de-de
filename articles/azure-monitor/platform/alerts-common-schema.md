@@ -4,12 +4,12 @@ description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema,
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539481"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108829"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -39,7 +39,7 @@ Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungs
 
 Mit dem neuen Schema wird in naher Zukunft auch eine umfassendere Oberfläche für die Nutzung von Warnungen bereitgestellt – sowohl im Azure-Portal als auch in der mobilen Azure-App. 
 
-[Erfahren Sie mehr zu den Schemadefinitionen für Webhooks/Logik-Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
+[Erfahren Sie mehr zu den Schemadefinitionen für Webhooks/Logik-Apps/Azure Functions/Automation-Runbooks.](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > Für die folgenden Aktionen wird das allgemeine Warnungsschema nicht unterstützt: ITSM-Connector.
@@ -120,5 +120,5 @@ Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks](https://aka.ms/commonAlertSchemaDefinitions)
-- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](./alerts-common-schema-integrations.md) 
+- [Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks](./alerts-common-schema-definitions.md)
+- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](./alerts-common-schema-integrations.md)

@@ -1,18 +1,17 @@
 ---
 title: Lokales Ausführen von U-SQL-Aufträgen – Azure Data Lake U-SQL SDK
 description: In diesem Artikel erfahren Sie, wie Sie U-SQL-Aufträge unter Verwendung der Befehlszeile und der Programmierschnittstellen auf Ihrer lokalen Arbeitsstation lokal ausführen und testen.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132414"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215534"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
