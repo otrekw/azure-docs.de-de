@@ -4,12 +4,12 @@ description: In diesem Tutorial stellen Sie einen verwalteten Service Fabric-Clu
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410216"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316165"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Tutorial: Bereitstellen eines verwalteten Service Fabric-Clusters (Vorschau)
 
@@ -37,7 +37,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Installieren Sie das [Service Fabric SDK und das PowerShell-Modul](service-fabric-get-started.md).
 
-* Installieren Sie [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (oder höher).
+* Installieren Sie [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (oder höher).
 
 ## <a name="connect-to-your-azure-account"></a>Herstellen einer Verbindung mit Ihrem Azure-Konto
 
@@ -73,7 +73,7 @@ Geben Sie für diesen Schritt Ihre eigenen Werte für die folgenden Parameter an
 
 * **Clustername**: Geben Sie einen eindeutigen Namen für Ihren Cluster ein, z. B. *mysfcluster*.
 * **Administratorkennwort**: Geben Sie ein Kennwort für den Administrator ein, das für RDP für die zugrunde liegenden VMs im Cluster verwendet werden soll.
-* **Clientzertifikat-Fingerabdruck**: Geben Sie den Fingerabdruck des Clientzertifikats an, das Sie für den Zugriff auf Ihren Cluster verwenden möchten. Wenn Sie über kein Zertifikat verfügen, befolgen Sie die Anleitungen unter [Festlegen und Abrufen eines Zertifikats](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal), um ein selbstsigniertes Zertifikat zu erstellen.
+* **Clientzertifikat-Fingerabdruck**: Geben Sie den Fingerabdruck des Clientzertifikats an, das Sie für den Zugriff auf Ihren Cluster verwenden möchten. Wenn Sie über kein Zertifikat verfügen, befolgen Sie die Anleitungen unter [Festlegen und Abrufen eines Zertifikats](../key-vault/certificates/quick-create-portal.md), um ein selbstsigniertes Zertifikat zu erstellen.
 * **Cluster-SKU**: Geben Sie den [Typ des bereitzustellenden verwalteten Service Fabric-Clusters](overview-managed-cluster.md#service-fabric-managed-cluster-skus) an. Cluster der SKU *Basic* sind nur für Testbereitstellungen vorgesehen und lassen das Hinzufügen oder Entfernen von Knotentypen nicht zu.
 
 ```powershell

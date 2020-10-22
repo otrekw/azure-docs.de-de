@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327683"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152158"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -103,7 +103,7 @@ Die Ausgabe ist ein JSON-Objekt aller Endpunkte, mit denen das Gerät und der Di
 ```
 
 > [!NOTE]
-> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) herunterladen.
+> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](/cli/azure/install-azure-cli?view=azure-cli-latest) herunterladen.
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Erlauben ausgehender Konnektivität zu den Gerätestreamingendpunkten
@@ -119,7 +119,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) herunterladen.
+> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version über die Seite [Azure CLI installieren](/cli/azure/install-azure-cli?view=azure-cli-latest) herunterladen.
 >
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problembehandlung über Aktivitätsprotokolle für Gerätestreams
@@ -156,7 +156,7 @@ Zwei Seiten jedes Streams (auf der Geräte- und der Dienstseite) verwenden das I
 
 ## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätstreams
 
-Die IoT Hub-Seite enthält zwei [Schnellstartbeispiele](/azure/iot-hub). Diese Beispiele veranschaulichen die Verwendung von Gerätestreams durch Anwendungen.
+Die IoT Hub-Seite enthält zwei [Schnellstartbeispiele](./index.yml). Diese Beispiele veranschaulichen die Verwendung von Gerätestreams durch Anwendungen.
 
 * Das Beispiel *Echo* verdeutlicht die programmgesteuerte Verwendung von Gerätestreams (durch direktes Aufrufen der SDK-APIs).
 

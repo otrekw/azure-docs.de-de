@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667791"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315794"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -117,4 +117,4 @@ Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Si
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bewährte Methoden für die Erstellung von Bewertungen](best-practices-assessment.md)
-- [Vorbereiten der Bewertung von virtuellen VMware-Computern](tutorial-prepare-vmware.md)
+- [Vorbereiten der Bewertung von virtuellen VMware-Computern](./tutorial-discover-vmware.md)

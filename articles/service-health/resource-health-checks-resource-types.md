@@ -3,12 +3,12 @@ title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dok
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bbc7b03a508c9b156de039b4f8706f5063fd23b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447045"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316120"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -51,7 +51,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Ist die Produktionsslotbereitstellung in allen Rolleninstanzen fehlerfrei?</li><li>Ist die Rolle in allen VM-Instanzen fehlerfrei?</li><li>Wie ist der Integritätsstatus der einzelnen virtuellen Computer innerhalb einer Rolle eines Clouddiensts?</li><li>Hat sich der VM-Status aufgrund eines von der Plattform oder vom Kunden initiierten Vorgangs geändert?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li><li>[Weitere Informationen zu ausgeführten Überprüfungen](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services)</li></ul>|
+|<ul><li>Ist die Produktionsslotbereitstellung in allen Rolleninstanzen fehlerfrei?</li><li>Ist die Rolle in allen VM-Instanzen fehlerfrei?</li><li>Wie ist der Integritätsstatus der einzelnen virtuellen Computer innerhalb einer Rolle eines Clouddiensts?</li><li>Hat sich der VM-Status aufgrund eines von der Plattform oder vom Kunden initiierten Vorgangs geändert?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li><li>[Weitere Informationen zu ausgeführten Überprüfungen](../cloud-services/resource-health-for-cloud-services.md)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Ausgeführte Überprüfungen|
@@ -257,4 +257,4 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="next-steps"></a>Nächste Schritte
 -  Weitere Informationen finden Sie unter [Dienstintegrität](service-health-overview.md) und [Übersicht über Azure Resource Health](resource-health-overview.md). 
 -  [Azure Resource Health – FAQ](resource-health-faq.md)
-- Richten Sie Warnungen ein, damit Sie über Integritätsprobleme benachrichtigt werden. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md). 
+- Richten Sie Warnungen ein, damit Sie über Integritätsprobleme benachrichtigt werden. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md).

@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zur Azure Migrate-Servermigration
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Azure Migrate-Servermigration für das Migrieren von Computern.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275539"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315234"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
@@ -34,8 +34,8 @@ Von der Azure Das Servermigrationstool migriert UEFI-basierte Computer als virtu
 | SUSE Linux Enterprise Server 15 SP1                     | J                                                                                                                                         | J                              | J                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | J                                                                                                                                         | J                              | J                                                          |
 | Ubuntu Server 16.04, 18.04, 19.04, 19.10                | J                                                                                                                                         | J                              | J                                                          |
-| RHEL 8.1, 8.0, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x        | J<br>                 _RHEL 8.x erfordert [manuelle Vorbereitung](https://go.microsoft.com/fwlink/?linkid=2143939)_   | J                              | J                                                          |
-| Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 6.x               | J<br>_Cent OS 8.x erfordert [manuelle Vorbereitung](https://go.microsoft.com/fwlink/?linkid=2143939)_ | J                              | J                                                          |
+| RHEL 8.1, 8.0, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x        | J<br>                 _RHEL 8.x erfordert [manuelle Vorbereitung](./prepare-for-migration.md#linux-machines)_   | J                              | J                                                          |
+| Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 6.x               | J<br>_Cent OS 8.x erfordert [manuelle Vorbereitung](./prepare-for-migration.md#linux-machines)_ | J                              | J                                                          |
 | Oracle Linux 7.7, 7.7-CI                                |  J                                                                                                                                        | J                              | J                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Kann ich den Recovery Services-Tresor verwenden, der von Azure Migrate für Notfallwiederherstellungsszenarien erstellt wurde?
@@ -43,11 +43,11 @@ Die Verwendung des Recovery Services-Tresors, der von Azure Migrate für Notfall
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Wo sollte ich die Replikationsappliance für Agent-basierte Migrationen installieren?
 
-Die Replikationsappliance sollte auf einem dedizierten Computer installiert werden. Die Replikationsappliance sollte nicht auf einem zu replizierenden Quellcomputer oder auf der Ermittlungs- und Bewertungsappliance von Azure Migrate installiert werden, die Sie unter Umständen bereits installiert haben. Weitere Einzelheiten finden Sie im [Tutorial](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines).
+Die Replikationsappliance sollte auf einem dedizierten Computer installiert werden. Die Replikationsappliance sollte nicht auf einem zu replizierenden Quellcomputer oder auf der Ermittlungs- und Bewertungsappliance von Azure Migrate installiert werden, die Sie unter Umständen bereits installiert haben. Weitere Einzelheiten finden Sie im [Tutorial](./tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>Wie kann ich meine AWS EC2-Instanzen zu Azure migrieren?
 
-Lesen Sie diesen [Artikel](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines), um Ihre AWS EC2-Instanzen zu ermitteln, zu bewerten und zu Azure zu migrieren.
+Lesen Sie diesen [Artikel](./tutorial-migrate-aws-virtual-machines.md), um Ihre AWS EC2-Instanzen zu ermitteln, zu bewerten und zu Azure zu migrieren.
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>Kann ich AWS-VMs migrieren, die das Betriebssystem Amazon Linux ausführen?
 
@@ -79,18 +79,18 @@ Unabhängig von der gewählten Migrationsoption ist der erste Schritt zur Migrat
 Im Folgenden finden Sie einige Überlegungen, die Sie berücksichtigen sollten, wenn Sie sich für eine Migrationsoption entscheiden.
 
 **Bei der Migration ohne Agent** müssen auf den zu migrierenden Quell-VMS/-Servern keine Software (Agents) bereitgestellt werden. Die Option ohne Agent orchestriert die Replikation durch Integration in die vom Virtualisierungsanbieter bereitgestellte Funktionalität.
-Die Replikationsoptionen ohne Agent sind für [VMware-VMs](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) und [Hyper-V-VMs](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) verfügbar.
+Die Replikationsoptionen ohne Agent sind für [VMware-VMs](./tutorial-migrate-vmware.md) und [Hyper-V-VMs](./tutorial-migrate-hyper-v.md) verfügbar.
 
 **Bei Agent-basierten Migrationen** muss Azure Migrate-Software (Agents) auf den zu migrierenden Quell-VMs/-computern installiert werden. Die Agent-basierte Option ist für die Replikationsfunktionalität nicht von der Virtualisierungsplattform abhängig und kann daher mit jedem Server mit x86-/x64-Architektur und einer Version eines Betriebssystems verwendet werden, das von der Agent-basierten Replikationsmethode unterstützt wird.
 
-Die Agent-basierte Migrationsoption kann für [VMware-VMs](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [Hyper-V-VMs](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [physische Server](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [VMs, die unter AWS](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines), VMs, die unter GCP oder VMs, die unter einem anderen Virtualisierungsanbieter ausgeführt werden, verwendet werden. Bei der Agent-basierten Migration werden Ihre Computer zum Zweck der Migration als physische Server behandelt.
+Die Agent-basierte Migrationsoption kann für [VMware-VMs](./tutorial-migrate-vmware-agent.md), [Hyper-V-VMs](./tutorial-migrate-physical-virtual-machines.md), [physische Server](./tutorial-migrate-physical-virtual-machines.md), [VMs, die unter AWS](./tutorial-migrate-aws-virtual-machines.md), VMs, die unter GCP oder VMs, die unter einem anderen Virtualisierungsanbieter ausgeführt werden, verwendet werden. Bei der Agent-basierten Migration werden Ihre Computer zum Zweck der Migration als physische Server behandelt.
 
 Während die Migration ohne Agents zusätzliche Bequemlichkeit und Einfachheit gegenüber den Agent-basierten Replikationsoptionen für die unterstützten Szenarien (VMWare und Hyper-V) bietet, sollten Sie die Verwendung des Agent-basierten Szenarios für die folgenden Anwendungsfälle in Betracht ziehen:
 
 - Eingeschränkte IOPS-Umgebung: Die Replikation ohne Agent verwendet Momentaufnahmen und beansprucht Speicher-IOPS/Bandbreite. Wir empfehlen die Agent-basierte Migrationsmethode, wenn es in Ihrer Umgebung Einschränkungen bezüglich Speicher/IOPS gibt.
 - Wenn Sie über keinen vCenter-Server verfügen, können Sie Ihre VMware-VMs wie physische Server behandeln und den Agent-basierten Migrationsworkflow verwenden.
 
-Weitere Informationen finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/migrate/server-migrate-overview), in dem Migrationsoptionen für VMware-Migrationen verglichen werden.
+Weitere Informationen finden Sie in diesem [Artikel](./server-migrate-overview.md), in dem Migrationsoptionen für VMware-Migrationen verglichen werden.
 
 ## <a name="how-does-agentless-migration-work"></a>Wie funktioniert eine Migration ohne Agent?
 
@@ -101,13 +101,13 @@ Die Replikationsoption ohne Agent funktioniert mithilfe von Mechanismen, die vom
 Wenn Replikation für einen virtuellen Computer konfiguriert ist, wird zuerst eine anfängliche Replikationsphase durchlaufen. Während der ersten Replikation wird eine VM-Momentaufnahme erstellt, und eine vollständige Kopie der Daten von den Momentaufnahmedatenträgern wird auf verwaltete Datenträger in Ihrem Abonnement repliziert. Nach Abschluss der ersten Replikation für die VM geht der Replikationsprozess in eine inkrementelle Replikationsphase (Deltareplikation) über. In der inkrementellen Replikationsphase werden Datenänderungen, die seit dem letzten abgeschlossenen Replikationszyklus eingetreten sind, periodisch repliziert und auf die verwalteten Datenträger des Replikats angewendet, wodurch die Replikation mit den Änderungen auf der VM synchron gehalten wird. Im Fall von virtuellen VMware-Computern werden Änderungen zwischen Replikationszyklen mithilfe der VMware-Nachverfolgungstechnologie für geänderte Blöcke nachverfolgt. Zu Beginn des Replikationszyklus wird eine VM-Momentaufnahme erstellt, und die Nachverfolgung geänderter Blöcke wird verwendet, um die Änderungen zwischen der aktuellen Momentaufnahme und der zuletzt erfolgreich replizierten Momentaufnahme abzurufen. Auf diese Weise müssen nur Daten repliziert werden, die seit dem letzten abgeschlossenen Replikationszyklen geändert wurden, um die Replikation für die VM synchron zu halten. Am Ende jedes Replikationszyklus wird die Momentaufnahme freigegeben und eine Momentaufnahmekonsolidierung für den virtuellen Computer ausgeführt. Analog dazu wird im Fall von virtuellen Hyper-V-Computern die Hyper-V-Replikatänderungsnachverfolgungs-Engine verwendet, um Änderungen zwischen aufeinanderfolgenden Replikationszyklen nachzuverfolgen.
 Wenn Sie den Migrationsvorgang auf einem replizierenden virtuellen Computer durchführen, können Sie den lokalen virtuellen Computer herunterfahren und eine abschließende inkrementelle Replikation ausführen, um zu gewährleisten, dass kein Datenverlust auftritt. Beim Ausführen der Migrationsoption werden die dem virtuellen Computer entsprechenden verwalteten Datenträger des Replikats verwendet, um den virtuellen Computer in Azure zu erstellen.
 
-Informationen zu den ersten Schritten finden Sie in den Tutorials [VMware-Migration ohne Agent](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) und [Hyper-V-Migration ohne Agent](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v).
+Informationen zu den ersten Schritten finden Sie in den Tutorials [VMware-Migration ohne Agent](./tutorial-migrate-vmware.md) und [Hyper-V-Migration ohne Agent](./tutorial-migrate-hyper-v.md).
 
 ## <a name="how-does-agent-based-migration-work"></a>Wie funktioniert eine Agent-basierte Migration?
 
 Zusätzlich zu den Agent-losen Migrationsoptionen für virtuelle VMware-Computer und virtuelle Hyper-V-Computer bietet das Servermigrationstool eine Agent-basierte Migrationsoption für die Migration von Windows- und Linux-Servern, die auf physischen Servern oder als virtuelle x86-/x64-Computer unter VMware, Hyper-V, AWS, Google Cloud Platform usw. ausgeführt werden.
 
-Bei der Agent-basierten Migrationsmethode wird auf dem zu migrierenden Server installierte Agent-Software verwendet, um Serverdaten in Azure zu replizieren. Der Replikationsprozess verwendet eine Auslagerungsarchitektur, bei der der Agent Replikationsdaten an einen dedizierten Replikationsserver weiterleitet, der als Replikationsappliance oder Konfigurationsserver bezeichnet wird (oder an einen Prozessserver für horizontale Skalierung). [Erfahren Sie mehr darüber](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture), wie die Agent-basierte Migrationsoption funktioniert. 
+Bei der Agent-basierten Migrationsmethode wird auf dem zu migrierenden Server installierte Agent-Software verwendet, um Serverdaten in Azure zu replizieren. Der Replikationsprozess verwendet eine Auslagerungsarchitektur, bei der der Agent Replikationsdaten an einen dedizierten Replikationsserver weiterleitet, der als Replikationsappliance oder Konfigurationsserver bezeichnet wird (oder an einen Prozessserver für horizontale Skalierung). [Erfahren Sie mehr darüber](./agent-based-migration-architecture.md), wie die Agent-basierte Migrationsoption funktioniert. 
 
 Hinweis: Die Replikationsappliance unterscheidet sich von der Azure Migrate-Erkennungsappliance und muss auf einem separaten/dedizierten Computer installiert werden.
 
@@ -127,7 +127,7 @@ Zeit bis zum Abschluss der anfänglichen Replikation = {Größe der Datenträger
 
 ### <a name="agent-based-vmware-vm-migration"></a>Agent-basierte Migration von VMware-VMs
 
-Bei einer Agent-basierten Replikationsmethode kann der Bereitstellungsplaner die Ermittlung der Umgebung für die Datenänderung unterstützen und die erforderliche Bandbreitenanforderung vorhersagen. Weitere Informationen finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment). 
+Bei einer Agent-basierten Replikationsmethode kann der Bereitstellungsplaner die Ermittlung der Umgebung für die Datenänderung unterstützen und die erforderliche Bandbreitenanforderung vorhersagen. Weitere Informationen finden Sie in diesem [Artikel](./agent-based-migration-architecture.md#plan-vmware-deployment). 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Wie kann ich die Replikation mithilfe der Azure Migrate-Appliance für die VMware-Replikation ohne Agent drosseln?  
 
@@ -153,10 +153,10 @@ Beispiel: Wenn ein Deltazyklus für eine VM vier Stunden dauert, wird der nächs
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>Wie migriere ich Windows Server 2003 unter VMware/Hyper-V zu Azure?
 
-[Der erweiterte Support für Windows Server 2003](https://go.microsoft.com/fwlink/?linkid=2140400) wurde am 14. Juli 2015 beendet.  Das Azure-Supportteam hilft weiterhin bei der Behebung von Problemen, die sich auf die Ausführung von Windows Server 2003 in Azure beziehen. Diese Unterstützung ist jedoch auf Probleme beschränkt, die keine Problembehandlung oder Patches auf Betriebssystemebene erfordern.
+[Der erweiterte Support für Windows Server 2003](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) wurde am 14. Juli 2015 beendet.  Das Azure-Supportteam hilft weiterhin bei der Behebung von Problemen, die sich auf die Ausführung von Windows Server 2003 in Azure beziehen. Diese Unterstützung ist jedoch auf Probleme beschränkt, die keine Problembehandlung oder Patches auf Betriebssystemebene erfordern.
 Die Migration Ihrer Anwendungen zu Azure-Instanzen, die eine neuere Version von Windows Server ausführen, ist die empfohlene Vorgehensweise, um sicherzustellen, dass Sie die Flexibilität und Zuverlässigkeit der Azure-Cloud effektiv nutzen.
 
-Wenn Sie sich dennoch für die Migration von Windows Server 2003 zu Azure entscheiden, können Sie das Azure Migrate: Servermigrationstool verwenden, wenn es sich bei Ihrem Windows-Server um eine VM unter VMware oder Hyper-V handelt. Lesen Sie diesen Artikel, um die [Windows Server 2003-Computer auf die Migration vorzubereiten](https://go.microsoft.com/fwlink/?linkid=2140302).
+Wenn Sie sich dennoch für die Migration von Windows Server 2003 zu Azure entscheiden, können Sie das Azure Migrate: Servermigrationstool verwenden, wenn es sich bei Ihrem Windows-Server um eine VM unter VMware oder Hyper-V handelt. Lesen Sie diesen Artikel, um die [Windows Server 2003-Computer auf die Migration vorzubereiten](./prepare-windows-server-2003-migration.md).
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>Worin besteht der Unterschied zwischen der Testmigration und den Migrationsvorgängen?
 

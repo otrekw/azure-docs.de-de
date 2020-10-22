@@ -3,12 +3,12 @@ title: Hinzufügen und Entfernen von Knotentypen eines verwalteten Service Fabri
 description: In diesem Tutorial erfahren Sie, wie Sie Knotentypen eines verwalteten Service Fabric-Clusters hinzufügen und entfernen.
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 860345f5b297edaeea9d099ac392243176dfaca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51cc83b4accae5f2791ce378e30f6fa692446b1c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410224"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316208"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>Tutorial: Hinzufügen und Entfernen von Knotentypen in einem verwalteten Service Fabric-Cluster (Vorschau)
 
@@ -29,7 +29,7 @@ In diesem Teil der Reihe wird Folgendes behandelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein verwalteter Service Fabric-Cluster (siehe [*Bereitstellen eines verwalteten Clusters*](tutorial-managed-cluster-deploy.md)).
-* [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) oder höher (siehe [*Installieren von Azure PowerShell*](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.7.0&preserve-view=true)).
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) oder höher (siehe [*Installieren von Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)).
 
 ## <a name="add-a-node-type-to-a-service-fabric-managed-cluster"></a>Hinzufügen eines Knotentyps zu einem verwalteten Service Fabric-Cluster
 

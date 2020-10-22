@@ -3,12 +3,12 @@ title: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datentr�
 description: Im diesem Artikel wird erläutert, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwaltete Azure-Datenträger verwendet.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717522"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316161"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger
 
@@ -25,7 +25,7 @@ Die allgemeine Vorgehensweise beim Upgraden eines Service Fabric-Clusterknotens 
 In diesem Artikel wird beschrieben, mit welchen Schritten Sie den primären Knotentyp eines Beispielclusters upgraden, sodass dieser verwaltete Datenträger verwendet, und dabei jegliche Clusterdowntime vermeiden (siehe Hinweis unten). Der anfängliche Zustand des Beispieltestclusters besteht aus einem Knotentyp der [Dauerhaftigkeitsstufe „Silber“](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), der eine einzelne Skalierungsgruppe mit fünf Knoten enthält.
 
 > [!NOTE]
-> Durch die Einschränkungen eines Lastenausgleichs der SKU „Basic“ wird verhindert, dass eine weitere Skalierungsgruppe hinzugefügt wird. Es wird empfohlen, stattdessen den Lastenausgleich der SKU „Standard“ zu verwenden. Weitere Informationen finden Sie im [Vergleich der beiden SKUs](/azure/load-balancer/skus).
+> Durch die Einschränkungen eines Lastenausgleichs der SKU „Basic“ wird verhindert, dass eine weitere Skalierungsgruppe hinzugefügt wird. Es wird empfohlen, stattdessen den Lastenausgleich der SKU „Standard“ zu verwenden. Weitere Informationen finden Sie im [Vergleich der beiden SKUs](../load-balancer/skus.md).
 
 > [!CAUTION]
 > Bei diesem Verfahren treten nur dann Ausfälle auf, wenn im Cluster-DNS Abhängigkeiten bestehen (z. B. beim Zugriff auf [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). Zu den [bewährten Architekturmethoden für Front-End-Dienste](/azure/architecture/microservices/design/gateway) zählt das Implementieren eines [Lastenausgleichs](/azure/architecture/guide/technology-choices/load-balancing-overview), der Ihren Knotentypen vorgeschaltet ist und den Knotenaustausch ohne Dienstausfälle ermöglicht.

@@ -3,16 +3,17 @@ title: 'In Synapse SQL unterstützte Systemansichten: Vorschau für Arbeitsberei
 description: Links zur Dokumentation für die in Synapse SQL unterstützten Systemsichten
 author: filippopovic
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e77c85b734784c37b8e0d599c02f8807123038dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7079bbcf3bd7cb7f6073b132cd558386744f6884
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88796730"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092765"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>In Synapse SQL unterstützte Systemsichten
 Links zur Dokumentation für die in Synapse SQL unterstützten T-SQL-Anweisungen

@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995675"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164481"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
@@ -37,30 +38,42 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie die Informationen in den folgen
 >[!NOTE]
 >Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](service-map.md).  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
 
 Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den folgenden Regionen:
 
-- USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- USA Süd Mitte
-- East US
-- USA (Ost 2)
-- USA (Mitte)
-- USA Nord Mitte
-- US Gov Az
-- US Gov Va
-- Kanada, Mitte
-- UK, Süden
-- Nordeuropa
-- Europa, Westen
-- Asien, Osten
-- Asien, Südosten
-- Indien, Mitte
-- Japan, Osten
-- Australien (Osten)
-- Australien, Südosten
+- Afrika
+  - Südafrika, Norden
+- Asien-Pazifik
+  - Asien, Osten
+  - Asien, Südosten
+- Australien
+  - Australien (Osten)
+  - Australien, Südosten
+- Azure Government
+  - US Gov Az
+  - US Gov Va
+- Canada
+  - Kanada, Mitte
+- Europa
+  - Nordeuropa
+  - Europa, Westen
+- Indien
+  - Indien, Mitte
+- Japan
+  - Japan, Osten
+- United Kingdom
+  - UK, Süden
+- USA
+  - USA (Mitte)
+  - East US
+  - USA (Ost 2)
+  - USA Nord Mitte
+  - USA Süd Mitte
+  - USA, Westen-Mitte
+  - USA (Westen)
+  - USA, Westen 2
+
 
 >[!NOTE]
 >Sie können Azure-VMs in jeder Region überwachen. Die VMs selbst sind nicht auf die vom Log Analytics-Arbeitsbereich unterstützten Bereiche beschränkt.

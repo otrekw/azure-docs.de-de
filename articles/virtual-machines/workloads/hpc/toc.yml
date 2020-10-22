@@ -22,6 +22,12 @@
               href: hb-series-overview.md
             - name: Leistung
               href: hb-series-performance.md
+        - name: HBv2-Serie
+          items:
+            - name: Übersicht
+              href: hbv2-series-overview.md
+            - name: Leistung
+              href: hbv2-performance.md
         - name: HC-Serie
           items:
             - name: Übersicht
