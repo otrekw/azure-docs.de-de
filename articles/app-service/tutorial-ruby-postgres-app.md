@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2baccec75c7b525c0837cebd9d828dff3a79543
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979488"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150177"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-App in Azure App Service für Linux
 
@@ -108,7 +108,7 @@ Um den Rails-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
 
 ## <a name="create-postgres-in-azure"></a>Erstellen einer Postgres-Instanz in Azure
 
-In diesem Schritt erstellen Sie eine Postgres-Datenbank in [Azure Database for PostgreSQL](/azure/postgresql/). Später konfigurieren Sie die Ruby on Rails-Anwendung für eine Verbindung mit dieser Datenbank.
+In diesem Schritt erstellen Sie eine Postgres-Datenbank in [Azure Database for PostgreSQL](../postgresql/index.yml). Später konfigurieren Sie die Ruby on Rails-Anwendung für eine Verbindung mit dieser Datenbank.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -117,7 +117,7 @@ In diesem Schritt erstellen Sie eine Postgres-Datenbank in [Azure Database for P
 ## <a name="create-postgres-database-in-azure"></a>Erstellen einer Postgres-Datenbankinstanz in Azure
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 In diesem Abschnitt erstellen Sie eine Azure Database for PostgreSQL-Serverinstanz und eine Datenbank in Azure. Installieren Sie zu Beginn die `db-up`-Erweiterung mit folgendem Befehl:
 

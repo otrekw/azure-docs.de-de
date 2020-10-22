@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272496"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164243"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Vorbereiten virtueller Computer für eine FCI (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -101,14 +101,14 @@ Nachdem Sie die Registrierung beim Ressourcenanbieter aufgehoben haben, können 
 
 Öffnen Sie auf jedem virtuellen Computer den von SQL Server verwendeten TCP-Port in der Windows-Firewall. Standardmäßig ist dies Port 1433. Sie können jedoch den SQL Server-Port in einer Azure-VM-Bereitstellung ändern. Öffnen Sie dazu den Port von SQL Server in Ihrer Umgebung. Dieser Port ist bei SQL Server-Images, die über Azure Marketplace bereitgestellt werden, automatisch geöffnet. 
 
-Wenn Sie einen [Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) verwenden, müssen Sie auch den Port für den Integritätstest öffnen. Standardmäßig ist dies Port 59999. Es kann sich jedoch um einen beliebigen TCP-Port handeln, den Sie beim Einrichten des Lastenausgleichs angeben. 
+Wenn Sie einen [Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) verwenden, müssen Sie auch den Port für den Integritätstest öffnen. Standardmäßig ist dies Port 59999. Es kann sich jedoch um einen beliebigen TCP-Port handeln, den Sie beim Einrichten des Lastenausgleichs angeben. 
 
 In dieser Tabelle sind die Ports aufgeführt, die Sie je nach Ihrer FCI-Konfiguration möglicherweise öffnen müssen: 
 
    | Zweck | Port | Notizen
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Dies ist der normale Port für Standardinstanzen von SQL Server. Falls Sie ein Image aus dem Katalog verwendet haben, ist dieser Port automatisch geöffnet. </br> </br> **Verwendet von**: Allen FCI-Konfigurationen. |
-   | Integritätstest | TCP 59999 | Beliebiger geöffneter TCP-Port. Konfigurieren Sie diesen Port für den [Integritätstest](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) des Lastenausgleichs und den Cluster. </br> </br> **Verwendet von**: FCI mit Lastenausgleich. |
+   | Integritätstest | TCP 59999 | Beliebiger geöffneter TCP-Port. Konfigurieren Sie diesen Port für den [Integritätstest](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) des Lastenausgleichs und den Cluster. </br> </br> **Verwendet von**: FCI mit Lastenausgleich. |
    | Dateifreigabe | UDP 445 | Der vom Dateifreigabedienst verwendete Port. </br> </br> **Verwendet von**: FCI mit Premium-Dateifreigabe. |
 
 ## <a name="join-the-domain"></a>Beitreten zur Domäne

@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: 'Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?'
       href: what-is-single-sign-on.md
+    - name: Neues in der Dokumentation
+      href: whats-new-docs.md
 - name: Schnellstarts
   expanded: true
   items:

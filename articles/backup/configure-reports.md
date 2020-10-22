@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567433"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172463"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -30,6 +30,8 @@ Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor
 - Wenn Sie ein [Azure Lighthouse](../lighthouse/index.yml)-Benutzer mit delegiertem Zugriff auf die Abonnements Ihrer Kunden sind, können Sie diese Berichte mit Azure Lighthouse verwenden, um Berichte zu allen Ihren Mandanten anzuzeigen.
 - Zurzeit können Daten in Sicherungsberichten für maximal 100 Log Analytics-Arbeitsbereiche (mandantenübergreifend) angezeigt werden.
 - Daten für Protokollsicherungsaufträge werden in den Berichten zurzeit nicht angezeigt.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="get-started"></a>Erste Schritte
 

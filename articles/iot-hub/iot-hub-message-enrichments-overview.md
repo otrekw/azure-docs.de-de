@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767205"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146585"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten
 
@@ -63,8 +63,8 @@ Anreicherungen können mit den folgenden Methoden konfiguriert werden:
 | **Methode** | **Befehl** |
 | ----- | -----| 
 | Portal | [Azure portal](https://portal.azure.com) | Entsprechende Informationen finden Sie im [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md). | 
-| Azure-Befehlszeilenschnittstelle   | [az iot hub message-enrichment](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
+| Azure-Befehlszeilenschnittstelle   | [az iot hub message-enrichment](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 Das Hinzufügen von Nachrichtenanreicherungen führt zu keiner Latenz beim Nachrichtenrouting.
 
