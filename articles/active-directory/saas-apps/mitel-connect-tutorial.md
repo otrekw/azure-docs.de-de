@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940685"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Tutorial: Azure Active Directory-Integration mit Mitel MiCloud Connect oder CloudLink Platform
 
@@ -204,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt erstellen Sie in Ihrem MiCloud Connect-Konto eine Benutzerin mit Namen Britta Simon. Benutzer müssen erstellt und aktiviert werden, um einmaliges Anmelden verwenden zu können.
 
-Informationen zum Hinzufügen von Benutzern im Mitel-Kontoportal finden Sie im Artikel zum [Hinzufügen eines Benutzers](https://oneview.mitel.com/s/article/Adding-a-User-092815) in der Mitel-Knowledge Base.
+Informationen zum Hinzufügen von Benutzern im Mitel-Kontoportal finden Sie im Artikel zum [Hinzufügen eines Benutzers](https://shoretelcommunity.force.com/s/article/Adding-Users-092815) in der Mitel-Knowledge Base.
 
 Erstellen Sie in Ihrem MiCloud Connect-Konto einen Benutzer mit den folgenden Details:
 

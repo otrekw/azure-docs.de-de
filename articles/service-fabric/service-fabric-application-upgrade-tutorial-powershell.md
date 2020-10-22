@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine exemplarische Vorgehensweise für das Be
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075187"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309075"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric-Anwendungsupgrade mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Ein überwachtes Anwendungsupgrade kann mithilfe der verwalteten oder nativen AP
 Mit den von Service Fabric überwachten parallelen Upgrades kann der Anwendungsadministrator die Integritätsevaluierungsrichtlinie konfigurieren, mit der Service Fabric ermittelt, ob die Anwendung fehlerfrei ist. Darüber hinaus kann der Administrator auch die Aktion (z. B. einen automatischen Rollback) konfigurieren, die ausgeführt wird, wenn bei der Integritätsevaluierung ein Fehler auftritt. In diesem Abschnitt wird ein überwachtes Upgrade für eines der SDK-Beispiele mit PowerShell Schritt für Schritt erläutert. 
 
 > [!NOTE]
-> Anwendungsparameter ([ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)) bleiben bei einem Anwendungsupgrade nicht erhalten. Um die aktuellen Anwendungsparameter beizubehalten, sollte der Benutzer zuerst die Parameter abrufen und diese dann wie unten beschrieben an den Upgrade-API-Aufruf übergeben:
+> Anwendungsparameter ([ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)) bleiben bei einem Anwendungsupgrade nicht erhalten. Um die aktuellen Anwendungsparameter beizubehalten, sollte der Benutzer zuerst die Parameter abrufen und diese dann wie unten beschrieben an den Upgrade-API-Aufruf übergeben:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -149,4 +149,3 @@ Machen Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade
 Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
-

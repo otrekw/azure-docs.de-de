@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448394"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341888"
 ---
 # <a name="using-custom-security-policies"></a>Verwenden benutzerdefinierter Sicherheitsrichtlinien
 
@@ -21,7 +21,7 @@ Um Ihre Systeme und Ihre Umgebung zu sichern, generiert Azure Security Center Si
 
 Mit diesem Feature können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, wie im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
 
-Wie in der [Azure Policy-Dokumentation](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
+Wie in der [Azure Policy-Dokumentation](../governance/policy/concepts/definition-structure.md#definition-location) erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>So fügen Sie eine benutzerdefinierte Initiative zu Ihrem Abonnement hinzu 
 
@@ -136,7 +136,7 @@ Im Folgenden finden Sie ein Beispiel für eine benutzerdefinierte Richtlinie mit
 }
   ```
 
-Ein weiteres Beispiel für die Verwendung der securityCenter-Eigenschaft finden Sie in [diesem Abschnitt der REST-API-Dokumentation](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
+Ein weiteres Beispiel für die Verwendung der securityCenter-Eigenschaft finden Sie in [diesem Abschnitt der REST-API-Dokumentation](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -146,4 +146,4 @@ In diesem Artikel haben Sie erfahren, wie benutzerdefinierte Sicherheitsrichtlin
 Weitere verwandte Informationen finden Sie in den folgenden Artikeln: 
 
 - [Übersicht über Sicherheitsrichtlinien](tutorial-security-policy.md)
-- [Liste der integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md)
+- [Liste der integrierten Sicherheitsrichtlinien](./policy-reference.md)

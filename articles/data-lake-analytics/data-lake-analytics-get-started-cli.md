@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be7f9d66a10f3f0f4a1ae0f9e28e226f268a7f7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9123ca6a1bfa90737bb1ce83ee365d1ecf514e1f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497442"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220991"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -104,11 +104,11 @@ az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Sour
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-Data Lake Analytics hat auch Zugriff auf Azure Blob Storage.  Informationen zum Hochladen von Daten nach Azure Blob Storage finden Sie unter [Verwenden der Azure-CLI mit Azure Storage](../storage/common/storage-azure-cli.md).
+Data Lake Analytics hat auch Zugriff auf Azure Blob Storage.  Informationen zum Hochladen von Daten nach Azure Blob Storage finden Sie unter [Verwenden der Azure-CLI mit Azure Storage](../storage/blobs/storage-quickstart-blobs-cli.md).
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Übermitteln von Data Lake Analytics-Aufträgen
 
-Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](https://docs.microsoft.com/u-sql/) (in englischer Sprache).
+Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](/u-sql/) (in englischer Sprache).
 
 ### <a name="to-create-a-data-lake-analytics-job-script"></a>So erstellen Sie ein Skript für Data Lake Analytics-Aufträge
 

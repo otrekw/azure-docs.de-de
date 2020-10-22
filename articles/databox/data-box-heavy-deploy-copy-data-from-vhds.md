@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951433"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127198"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box Heavy, um Daten als verwaltete Datenträger in Azure zu importieren
 
@@ -38,7 +38,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 4. Sie haben sich mit Folgendem vertraut gemacht:
 
     - Unterstützte Größen für verwaltete Datenträger und [Größenbeschränkungen für das Azure-Objekt](data-box-heavy-limits.md#azure-object-size-limits)
-    - [Einführung in verwaltete Azure-Datenträger](/azure/virtual-machines/windows/managed-disks-overview) 
+    - [Einführung in verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) 
 
 ## <a name="connect-to-data-box-heavy"></a>Herstellen einer Verbindung mit Data Box Heavy
 
@@ -182,4 +182,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie Data Box Heavy an Microsoft zurücks
 
 > [!div class="nextstepaction"]
 > [Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure (Vorschauversion)](./data-box-heavy-deploy-picked-up.md)
-

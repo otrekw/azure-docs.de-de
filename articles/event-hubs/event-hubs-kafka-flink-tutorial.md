@@ -3,12 +3,12 @@ title: Verwenden von Apache Flink für Apache Kafka – Azure Event Hubs | Micro
 description: Dieser Artikel enthält Informationen dazu, wie Sie Apache Flink mit einem Azure Event Hub verbinden können.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f2e6eeb74c5a334d1692357edec0fd363349c7c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40efd15e56d0b74459aefb4d88972df293b48c26
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061647"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308439"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Verwenden von Apache Flink mit Azure Event Hubs für Apache Kafka
 Dieses Tutorial veranschaulicht, wie Sie Apache Flink mit einem Event Hub verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Weitere Informationen zur Event Hubs-Unterstützung für das Apache Kafka-Consumerprotokoll finden Sie unter [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md).
@@ -30,7 +30,7 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 
 * Lesen Sie den Artikel [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
 * Führen Sie den [Download](https://maven.apache.org/download.cgi) und die [Installation](https://maven.apache.org/install.html) eines binären Maven-Archivs durch.

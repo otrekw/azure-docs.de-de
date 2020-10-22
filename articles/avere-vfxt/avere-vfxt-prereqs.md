@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272415"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342109"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -42,7 +42,7 @@ Es gibt einige Umgehungsmöglichkeiten, über die ein Nichtbesitzer einen Avere 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kontingent für den vFXT-Cluster
 
-Stellen Sie sicher, dass Sie über ein ausreichendes Kontingent für die folgenden Azure-Komponenten verfügen. Fordern Sie bei Bedarf eine [Kontingenterhöhung](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) an.
+Stellen Sie sicher, dass Sie über ein ausreichendes Kontingent für die folgenden Azure-Komponenten verfügen. Fordern Sie bei Bedarf eine [Kontingenterhöhung](../azure-portal/supportability/resource-manager-core-quotas-request.md) an.
 
 > [!NOTE]
 > Die hier aufgeführten virtuellen Computer und SSD-Komponenten gelten für den vFXT-Cluster selbst. Beachten Sie, dass Sie auch ein Kontingent für die VMs und SSDs in Ihrer Computefarm benötigen.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92dd191c8bfe590f6dab392ff679e5d7712ae6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921090"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143853"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -35,7 +35,7 @@ Bei dieser Architektur wird ein Arbeitsbereich in dem Mandanten des Kunden berei
 
 Es gibt zwei Möglichkeiten, wie Administratoren des Dienstanbieters Zugriff auf einen Log Analytics-Arbeitsbereich in einem Kundenmandanten erhalten:
 
-- Ein Kunde kann einzelne Benutzer des Dienstanbieters als [Azure Active Directory-Gastbenutzer (B2B)](../../active-directory/b2b/what-is-b2b.md) hinzufügen. Die Administratoren des Dienstanbieters müssen sich im Azure-Portal im Verzeichnis jedes Kunden anmelden, um Zugriff auf diese Arbeitsbereiche zu erhalten. Dies macht es auch erforderlich, dass die Kunden den Zugriff für jeden Administrator des Dienstanbieters verwalten.
+- Ein Kunde kann einzelne Benutzer des Dienstanbieters als [Azure Active Directory-Gastbenutzer (B2B)](../../active-directory/external-identities/what-is-b2b.md) hinzufügen. Die Administratoren des Dienstanbieters müssen sich im Azure-Portal im Verzeichnis jedes Kunden anmelden, um Zugriff auf diese Arbeitsbereiche zu erhalten. Dies macht es auch erforderlich, dass die Kunden den Zugriff für jeden Administrator des Dienstanbieters verwalten.
 - Für eine größere Skalierbarkeit und Flexibilität können Dienstanbieter die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) von [Azure Lighthouse](../../lighthouse/overview.md) verwenden, um auf den Mandanten des Kunden zuzugreifen. Bei dieser Methode sind die Administratoren des Dienstanbieters in einer Azure AD-Benutzergruppe im Mandanten des Dienstanbieters enthalten. Diese Gruppe erhält während des Onboardingprozesses für jeden Kunden Zugriff. Die Administratoren können dann über ihren Mandanten des Dienstanbieters auf die Arbeitsbereiche jedes Kunden zugreifen, statt sich jeweils beim Mandanten der einzelnen Kunden anmelden zu müssen. Wenn Sie auf diese Weise auf die Ressourcen der Log Analytics-Arbeitsbereiche Ihrer Kunden zugreifen, verringert sich der Arbeitsaufwand auf Kundenseite, und die Daten mehrerer Kunden, die über den gleichen Dienstanbieter verwaltet werden, lassen sich über Tools wie z. B. [Azure Monitor-Arbeitsmappen](./workbooks-overview.md) einfacher erfassen und analysieren. Weitere Informationen finden Sie unter [Überwachen von Kundenressourcen in großem Umfang](../../lighthouse/how-to/monitor-at-scale.md).
 
 Die verteilte Architektur bietet folgende Vorteile:
@@ -81,7 +81,7 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Automatisieren Sie mithilfe von [Resource Manager-Vorlagen](template-workspace-configuration.md) die Erstellung und Konfiguration von Arbeitsbereichen.
+* Automatisieren Sie mithilfe von [Resource Manager-Vorlagen](../samples/resource-manager-workspace.md) die Erstellung und Konfiguration von Arbeitsbereichen.
 
 * Automatisieren Sie mit [PowerShell](./powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen.
 

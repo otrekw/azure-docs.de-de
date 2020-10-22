@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398577"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123319"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mithilfe von Workflows
 
@@ -32,7 +32,7 @@ Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benöti
 Zum Einrichten der Lösung ist eine IoT Central-Anwendung der Version 3 erforderlich. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md). Informationen zum Erstellen einer IoT Central--Anwendung finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md).
 
 > [!NOTE]
-> Wenn Sie eine IoT Central-Anwendung der Version 2 verwenden, lesen Sie [Erstellen von Workflows mit dem IoT Central-Connector in Azure Logic Apps](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) auf der Dokumentationswebsite der vorherigen Version, und verwenden Sie den Azure IoT Central V2-Connector
+> Wenn Sie eine IoT Central-Anwendung der Version 2 verwenden, lesen Sie [Erstellen von Workflows mit dem IoT Central-Connector in Azure Logic Apps](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) auf der Dokumentationswebsite der vorherigen Version, und verwenden Sie den Azure IoT Central V2-Connector
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Auslösen eines Workflows über eine Regel
 

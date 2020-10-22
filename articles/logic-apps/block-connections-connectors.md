@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269759"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310034"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Blockieren der von Connectors in Azure Logic Apps erstellten Verbindungen
 
@@ -224,7 +224,7 @@ Weitere Informationen zu Azure-Richtliniendefinitionen finden Sie in den folgend
 
 * [Struktur von Azure Policy-Definitionen](../governance/policy/concepts/definition-structure.md)
 * [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
-* [Integrierte Azure Policy-Richtliniendefinitionen für Azure Logic Apps](../logic-apps/policy-samples.md)
+* [Integrierte Azure Policy-Richtliniendefinitionen für Azure Logic Apps](./policy-reference.md)
 
 <a name="create-policy-connector-usage"></a>
 
@@ -311,7 +311,7 @@ Weitere Informationen zu Azure-Richtliniendefinitionen finden Sie in den folgend
 
 * [Struktur von Azure Policy-Definitionen](../governance/policy/concepts/definition-structure.md)
 * [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
-* [Integrierte Azure Policy-Richtliniendefinitionen für Azure Logic Apps](../logic-apps/policy-samples.md)
+* [Integrierte Azure Policy-Richtliniendefinitionen für Azure Logic Apps](./policy-reference.md)
 
 <a name="create-policy-assignment"></a>
 

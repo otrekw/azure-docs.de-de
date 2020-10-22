@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9305ff5904588241ff8319f28eab2ce20ad77876
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826139"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125114"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
@@ -66,7 +66,7 @@ Wenn Sie beispielsweise Daten von Ihrem Standort in Kanada in ein Speicherkonto 
 
 ### <a name="option-1"></a>Option 1: 
 
-Senden Sie einen [unterstützten Datenträger](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) mit Daten über den [Azure Import/Export-Dienst](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) vom Quellstandort in Kanada an das Azure-Rechenzentrum in „USA, Westen“.
+Senden Sie einen [unterstützten Datenträger](../storage/common/storage-import-export-requirements.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#supported-disks) mit Daten über den [Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md) vom Quellstandort in Kanada an das Azure-Rechenzentrum in „USA, Westen“.
 
 ### <a name="option-2"></a>Option 2:
 
@@ -77,7 +77,7 @@ Senden Sie einen [unterstützten Datenträger](https://docs.microsoft.com/azure/
 3. Anschließend können Sie mithilfe eines Tools wie AzCopy die Daten in ein Speicherkonto in „USA, Westen“ kopieren. Bei diesem Schritt fallen Kosten für [Standardspeicher](https://azure.microsoft.com/pricing/details/storage/) und [Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/) an, die in der Data Box Disk-Abrechnung nicht enthalten sind.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
-A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
+A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](./data-box-disk-contact-microsoft-support.md).
 
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
  
@@ -147,7 +147,7 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 - Nutzen Sie mehrere Datenströme zum Kopieren von Daten. Verwenden Sie bei Robocopy beispielsweise die Option für Multithreading. Weitere Informationen zu den genauen Befehlen, die jeweils verwendet werden, finden Sie unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Verwenden Sie mehrere Sitzungen.
 - Stellen Sie sicher, dass sich die Daten lokal auf dem Computer befinden, an den die Datenträger angeschlossen sind, anstatt den Kopiervorgang über die Netzwerkfreigabe durchzuführen (um Beeinträchtigungen aufgrund der Netzwerkgeschwindigkeit zu vermeiden).
-- Achten Sie darauf, dass Sie während des gesamten Kopiervorgangs USB 3.0 oder höher verwenden. Laden Sie das Tool [USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) herunter, und verwenden Sie es, um die USB-Controller und USB-Geräte zu identifizieren, die an den Computer angeschlossen sind.
+- Achten Sie darauf, dass Sie während des gesamten Kopiervorgangs USB 3.0 oder höher verwenden. Laden Sie das Tool [USBView](/windows-hardware/drivers/debugger/usbview) herunter, und verwenden Sie es, um die USB-Controller und USB-Geräte zu identifizieren, die an den Computer angeschlossen sind.
 - Erstellen Sie Benchmarkwerte zur Leistung des Computers, der zum Kopieren der Daten verwendet wird. Laden Sie das [Bluestop-Tool FIO](https://ci.appveyor.com/project/axboe/fio) herunter, um Benchmarkwerte zur Leistung der Serverhardware zu erhalten. Wählen Sie den aktuellen x86- oder x64-Build und dann die Registerkarte **Artefakte** aus, und laden Sie die MSI herunter.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>Q. Wie kann ich für die Daten eine Beschleunigung erreichen, wenn die Quelldaten kleine Dateien (KB oder nur wenige MB) enthalten?

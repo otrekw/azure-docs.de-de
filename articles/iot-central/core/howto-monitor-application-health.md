@@ -7,12 +7,12 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66f0846ab8fcfc316c4b40ad9e51b402a37e874d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001908"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122908"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Überwachen der Gesamtintegrität der mit einer IoT Central-Anwendung verbundenen Geräte
 
@@ -46,7 +46,7 @@ Der Zugriff auf Metriken im Azure-Portal wird von der [rollenbasierten Zugriffss
 
 ## <a name="iot-central-metrics"></a>IoT Central-Metriken
 
-Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps).
+Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriken und Rechnungen
 

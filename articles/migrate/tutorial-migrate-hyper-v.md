@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: fbf436f501ef2d21dcd3394e61a40d354376efb9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979086"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308533"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrieren von virtuellen Hyper-V-Computern zu Azure 
 
@@ -151,7 +151,7 @@ Ist dies der erste virtuelle Computer, den Sie im Azure Migrate-Projekt replizi
 - **Service Bus**: Von der Azure Migrate-Servermigration wird Service Bus verwendet, um Nachrichten zur Replikationsorchestrierung an die Appliance zu senden.
 - **Gatewayspeicherkonto**: Von der Azure Bei der Servermigration wird das Gatewayspeicherkonto verwendet, um Statusinformationen zu den replizierten VMs zu speichern.
 - **Protokollspeicherkonto**: Die Azure Migrate-Appliance lädt Replikationsprotokolle für VMs in ein Protokollspeicherkonto hoch. Azure Migrate wendet die Replikationsinformationen auf die verwalteten Replikatdatenträger an.
-- **Schlüsseltresor**: Von der Azure Migrate-Appliance wird der Schlüsseltresor verwendet, um Verbindungszeichenfolgen für den Service Bus zu verwalten, und Zugriffsschlüssel werden für die Speicherkonten genutzt, die bei der Replikation eingesetzt werden. Sie sollten die Berechtigungen, die vom Schlüsseltresor für den Zugriff auf das Speicherkonto benötigt werden, während der [Vorbereitung von Azure](tutorial-prepare-hyper-v.md#prepare-azure) für die Bewertung und Migration von virtuellen Hyper-V-Computern eingerichtet haben. 
+- **Schlüsseltresor**: Von der Azure Migrate-Appliance wird der Schlüsseltresor verwendet, um Verbindungszeichenfolgen für den Service Bus zu verwalten, und Zugriffsschlüssel werden für die Speicherkonten genutzt, die bei der Replikation eingesetzt werden. Sie sollten die Berechtigungen, die vom Schlüsseltresor für den Zugriff auf das Speicherkonto benötigt werden, während der [Vorbereitung von Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) für die Bewertung und Migration von virtuellen Hyper-V-Computern eingerichtet haben. 
 
 
 ## <a name="track-and-monitor"></a>Nachverfolgen und Überwachen
@@ -232,7 +232,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
     - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von Site Recovery in eine sekundäre Region replizieren. [Weitere Informationen](../site-recovery/azure-to-azure-tutorial-enable-replication.md)
 - Beachten Sie zur Steigerung der Sicherheit Folgendes:
     - Sperren und beschränken Sie den Zugriff von eingehendem Datenverkehr mit der [Just-in-Time-Verwaltung im Azure Security Center](../security-center/security-center-just-in-time.md).
-    - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) auf Verwaltungsendpunkte.
+    - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) auf Verwaltungsendpunkte.
     - Stellen Sie [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) bereit, um Datenträger und Daten vor Diebstahl und unbefugtem Zugriff zu schützen.
     - Erfahren Sie mehr über das [Sichern von IaaS-Ressourcen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), und besuchen Sie die Website [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Beachten Sie zur Überwachung und Verwaltung Folgendes:

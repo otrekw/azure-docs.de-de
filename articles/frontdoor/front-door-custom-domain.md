@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: a161bc14e8f7628e04673700ca6d90ebc3e8f648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729167"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277611"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
 In diesem Tutorial erfahren Sie, wie Sie Ihrer Azure Front Door Service-Konfiguration eine benutzerdefinierte Domäne hinzufügen. Wenn Sie Azure Front Door für die Anwendungsbereitstellung verwenden, ist eine benutzerdefinierte Domäne erforderlich, sofern Ihr eigener Domänenname in der Endbenutzeranforderung sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
@@ -39,9 +39,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst eine Azure Front Door Service-Konfiguration erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen einer „Front Door“](quickstart-create-front-door.md).
 
-* Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+* Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](../app-service/manage-custom-dns-buy-domain.md).
 
-* Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/azure/dns/dns-overview) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
+* Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](../dns/dns-overview.md) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../dns/dns-delegate-domain-azure-dns.md). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
 
 
 ## <a name="create-a-cname-dns-record"></a>Erstellen eines CNAME-DNS-Eintrags

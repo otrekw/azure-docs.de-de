@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2411d9257b1083cb2bcbfcad289813a6c062dff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081388"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143585"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Verwenden von JSONPath zum Transformieren von JSON-Daten in Arbeitsmappen
 
@@ -22,7 +22,7 @@ Mit Arbeitsmappen können Daten aus vielen Quellen abgefragt werden. Einige Endp
 
 JSONPath ist eine Abfragesprache für JSON, die XPath für XML ähnelt. Wie XPath ermöglicht auch JSONPath das Extrahieren und Filtern von Daten aus der JSON-Struktur.
 
-Mithilfe der JSONPath-Transformation können Arbeitsmappenautoren JSON in eine Tabellenstruktur konvertieren. Die Tabelle kann anschließend für [Visualisierungen von Arbeitsmappen](workbooks-visualizations.md) verwendet werden.
+Mithilfe der JSONPath-Transformation können Arbeitsmappenautoren JSON in eine Tabellenstruktur konvertieren. Die Tabelle kann anschließend für [Visualisierungen von Arbeitsmappen](./workbooks-overview.md#visualizations) verwendet werden.
 
 ## <a name="using-jsonpath"></a>Verwenden von JSONPath
 

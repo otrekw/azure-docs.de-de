@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610641"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132005"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>DNS-Einstellungen für Azure Firewall (Vorschau)
 
@@ -57,11 +57,12 @@ Zum Konfigurieren des DNS-Proxys müssen Sie die DNS-Servereinstellung des virtu
 3. Klicken Sie unter **DNS-Server** auf die Option **Benutzerdefiniert**.
 4. Geben Sie die private IP-Adresse der Firewall ein.
 5. Wählen Sie **Speichern** aus.
+6. Starten Sie die mit dem virtuellen Netzwerk verbundenen VMs, damit ihnen die neuen DNS-Servereinstellungen zugewiesen werden. VMs nutzen ihre aktuellen DNS-Einstellungen weiter, bis sie neu gestartet werden.
 
-#### <a name="enable-dns-proxy-preview"></a>Aktivieren des DNS-Proxys (Vorschauversion)
+#### <a name="enable-dns-proxy-preview"></a>Aktivieren des DNS-Proxys (Vorschau)
 
 1. Wählen Sie Ihre Azure Firewall-Instanz aus.
-2. Klicken Sie unter **Einstellungen** auf die Option **DNS-Einstellungen**.
+2. Wählen Sie unter **Einstellungen** die Option **DNS-Einstellungen** aus.
 3. Der **DNS-Proxy** ist standardmäßig deaktiviert. Wenn die Firewall aktiviert ist, lauscht sie an Port 53 und leitet DNS-Anforderungen an die konfigurierten DNS-Server weiter.
 4. Überprüfen Sie die Konfiguration der **DNS-Server**, um sicherzustellen, dass die Einstellungen zu Ihrer Umgebung passen.
 5. Wählen Sie **Speichern** aus.

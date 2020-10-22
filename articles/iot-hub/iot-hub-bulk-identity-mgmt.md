@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003863"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142818"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
@@ -27,7 +27,7 @@ Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das 
 
 Die **RegistryManager**-Klasse enthält die Methoden **ExportDevicesAsync** und **ImportDevicesAsync**, die das **Job**-Framework verwenden. Diese Methoden ermöglichen das Exportieren, Importieren und Synchronisieren der gesamten IoT Hub-Identitätsregistrierung.
 
-In diesem Thema wird die Verwendung der Klasse **RegistryManager** und des **Job**-Systems zum Ausführen von Massenimport- und -exportvorgängen von Geräten in die bzw. aus der Identitätsregistrierung eines IoT-Hubs erörtert. Ferner können Sie den Azure IoT Hub Device Provisioning-Dienst auch dazu verwenden, eine Just-in-Time-Bereitstellung auf einem oder mehreren IoT-Hubs zu ermöglichen, die keinen menschlichen Eingriff erfordert. Weitere Informationen finden Sie in der [Dokumentation zum Bereitstellungsdienst](/azure/iot-dps).
+In diesem Thema wird die Verwendung der Klasse **RegistryManager** und des **Job**-Systems zum Ausführen von Massenimport- und -exportvorgängen von Geräten in die bzw. aus der Identitätsregistrierung eines IoT-Hubs erörtert. Ferner können Sie den Azure IoT Hub Device Provisioning-Dienst auch dazu verwenden, eine Just-in-Time-Bereitstellung auf einem oder mehreren IoT-Hubs zu ermöglichen, die keinen menschlichen Eingriff erfordert. Weitere Informationen finden Sie in der [Dokumentation zum Bereitstellungsdienst](../iot-dps/index.yml).
 
 ## <a name="what-are-jobs"></a>Was sind Aufträge?
 
@@ -399,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>Abrufen des SAS-URI des Containers
 
-Das folgende Codebeispiel veranschaulicht das Erstellen eines [SAS-URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md) mit Lese-, Schreib- und Löschberechtigungen für einen Blobcontainer:
+Das folgende Codebeispiel veranschaulicht das Erstellen eines [SAS-URI](../storage/common/storage-sas-overview.md) mit Lese-, Schreib- und Löschberechtigungen für einen Blobcontainer:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -438,8 +438,8 @@ Weitere Informationen zum Verwalten von Azure IoT Hub finden Sie in den folgende
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/quickstart-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 
 
-* [Azure IoT Hub Device Provisioning-Dienst](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning-Dienst](../iot-dps/index.yml)
