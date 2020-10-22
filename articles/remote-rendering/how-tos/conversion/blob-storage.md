@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80679340"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206542"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Verwenden von Azure Blob Storage für die Modellkonvertierung
 
@@ -28,7 +28,7 @@ Für den Dienst für die [Modellkonvertierung](model-conversion.md) ist der Zugr
 Für die Erstellung des Speicherkontos und der Blobcontainer kann eines der folgenden Tools verwendet werden:
 
 - [Azure-Portal](https://portal.azure.com)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDKs (C#, Python...)
 
@@ -46,13 +46,13 @@ Führen Sie die Schritte im Abschnitt [Erstellen eines Kontos](../create-an-acco
 
 Shared Access Signatures (SAS) werden verwendet, um Lesezugriff für die Eingabe und Schreibzugriff für die Ausgabe zu gewähren. Wir empfehlen Ihnen, bei jeder Konvertierung eines Modells neue URIs zu generieren. Da URIs nach einiger Zeit ablaufen, besteht beim Speichern über einen längeren Zeitraum das Risiko, dass es für Ihre Anwendung zu einer unerwarteten Beschädigung kommt.
 
-Ausführliche Informationen zu SAS finden Sie in der [SAS-Dokumentation](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
+Ausführliche Informationen zu SAS finden Sie in der [SAS-Dokumentation](../../../storage/common/storage-sas-overview.md).
 
 Zum Generieren eines SAS-URI können Sie Folgendes verwenden:
 
 - Azure PowerShell-Modul
   - Siehe [PowerShell-Beispielskripts](../../samples/powershell-example-scripts.md)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - Klicken Sie mit der rechten Maustaste auf den Container „Shared Access Signature abrufen“ (Lesen/Auflisten für Eingabecontainer, Schreiben für Ausgabecontainer).
 - SDKs (C#, Python...)
@@ -64,11 +64,11 @@ Ein Beispiel für die Verwendung von Shared Access Signatures bei der Ressourcen
 Zum Starten der Konvertierung eines Modells müssen Sie es hochladen, indem Sie eine der folgenden Optionen verwenden:
 
 - [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/): Komfortable Benutzeroberfläche zum Hochladen, Herunterladen und Verwalten von Dateien in Azure-Blobspeicher
-- [Azure-Befehlszeile](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Azure-Befehlszeile](../../../storage/blobs/storage-quickstart-blobs-cli.md)
+- [Azure PowerShell-Modul](/powershell/azure/install-az-ps?view=azps-2.2.0)
   - Siehe [PowerShell-Beispielskripts](../../samples/powershell-example-scripts.md)
-- [Verwenden eines Storage-SDK (Python, C#...)](https://docs.microsoft.com/azure/storage/)
-- [Verwenden der Azure Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+- [Verwenden eines Storage-SDK (Python, C#...)](../../../storage/index.yml)
+- [Verwenden der Azure Storage-REST-API](/rest/api/storageservices/blob-service-rest-api)
 
 Ein Beispiel für das Hochladen von Daten für die Konvertierung finden Sie in der Datei „Conversion.ps1“ unter den [PowerShell-Beispielskripts](../../samples/powershell-example-scripts.md#script-conversionps1).
 

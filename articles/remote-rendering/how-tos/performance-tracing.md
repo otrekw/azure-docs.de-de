@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d4ce68bdda5fbc3dfdb7396141289a58dab5bd1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021159"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204094"
 ---
 # <a name="create-client-side-performance-traces"></a>Erstellen clientseitiger Leistungsüberwachungen
 
@@ -24,7 +24,7 @@ Falls Sie noch nicht mit der :::no-loc text="performance tracing":::-Funktionali
 
 ### <a name="installation"></a>Installation
 
-Die Anwendungen für die Ablaufverfolgung mithilfe von ARR sind universelle Tools, die generell für die Entwicklung unter Windows genutzt werden können. Sie werden über das [Windows Performance Toolkit](https://docs.microsoft.com/windows-hardware/test/wpt/) bereitgestellt. Sie erhalten dieses Toolkit, indem Sie das [Windows Assessment and Deployment Kit](https://docs.microsoft.com/windows-hardware/get-started/adk-install) (Windows ADK) herunterladen.
+Die Anwendungen für die Ablaufverfolgung mithilfe von ARR sind universelle Tools, die generell für die Entwicklung unter Windows genutzt werden können. Sie werden über das [Windows Performance Toolkit](/windows-hardware/test/wpt/) bereitgestellt. Sie erhalten dieses Toolkit, indem Sie das [Windows Assessment and Deployment Kit](/windows-hardware/get-started/adk-install) (Windows ADK) herunterladen.
 
 ### <a name="terminology"></a>Begriff
 
@@ -35,13 +35,13 @@ Wenn Sie sich über Leistungsablaufverfolgungen informieren möchten, sind einig
 * `WPR`
 * `WPA`
 
-**ETW** steht für Ereignisablaufverfolgung für Windows-Ereignisse ([**E**vent **T**racing for **W**indows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing)). Dies ist einfach der allgemeine Name für die in Windows integrierte effiziente Ablaufverfolgungsfunktion auf Kernelebene. Sie wird als *Ereignis*ablaufverfolgung bezeichnet, da Anwendungen, die ETW unterstützen, Ereignisse zur Protokollierung von Aktionen ausgeben, anhand derer Sie Leistungsprobleme nachverfolgen können. Standardmäßig gibt das Betriebssystem bereits Ereignisse für Datenträgerzugriffe, Programmumschaltung und Ähnliches aus. Anwendungen wie ARR geben zusätzlich benutzerdefinierte Ereignisse aus, z. B. zu gelöschten Frames, Netzwerkverzögerungen usw.
+**ETW** steht für Ereignisablaufverfolgung für Windows-Ereignisse ([**E**vent **T**racing for **W**indows](/windows/win32/etw/about-event-tracing)). Dies ist einfach der allgemeine Name für die in Windows integrierte effiziente Ablaufverfolgungsfunktion auf Kernelebene. Sie wird als *Ereignis*ablaufverfolgung bezeichnet, da Anwendungen, die ETW unterstützen, Ereignisse zur Protokollierung von Aktionen ausgeben, anhand derer Sie Leistungsprobleme nachverfolgen können. Standardmäßig gibt das Betriebssystem bereits Ereignisse für Datenträgerzugriffe, Programmumschaltung und Ähnliches aus. Anwendungen wie ARR geben zusätzlich benutzerdefinierte Ereignisse aus, z. B. zu gelöschten Frames, Netzwerkverzögerungen usw.
 
 **ETL** steht für Ereignisablaufverfolgung (**E**vent **T**race **L**ogging). Das bedeutet einfach, dass eine Ablaufverfolgung erfasst (protokolliert) wurde, und ETW wird daher in der Regel als Dateierweiterung für Dateien verwendet wird, in denen die Ablaufverfolgungsdaten gespeichert werden. Wenn Sie also eine Ablaufverfolgung durchführen, verfügen Sie in der Regel über eine Datei \*.etl.
 
-**WPR** steht für Windows-Leistungsaufzeichnung ([**W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder)); dies ist der Name einer Anwendung, welche die Aufzeichnung von Ereignisablaufverfolgungen startet und beendet. WPR akzeptiert eine Profildatei (\*.wprp), in der konfiguriert ist, welche konkreten Ereignisse zu protokollieren sind. Eine solche `wprp`-Datei wird mit dem ARR SDK bereitgestellt. Beim Ausführen von Ablaufverfolgungen auf einem Desktop-PC können Sie WPR direkt starten. Beim Ausführen einer Ablaufverfolgung auf HoloLens nutzen Sie stattdessen normalerweise die Weboberfläche.
+**WPR** steht für Windows-Leistungsaufzeichnung ([**W**indows **P**erformance **R**ecorder](/windows-hardware/test/wpt/windows-performance-recorder)); dies ist der Name einer Anwendung, welche die Aufzeichnung von Ereignisablaufverfolgungen startet und beendet. WPR akzeptiert eine Profildatei (\*.wprp), in der konfiguriert ist, welche konkreten Ereignisse zu protokollieren sind. Eine solche `wprp`-Datei wird mit dem ARR SDK bereitgestellt. Beim Ausführen von Ablaufverfolgungen auf einem Desktop-PC können Sie WPR direkt starten. Beim Ausführen einer Ablaufverfolgung auf HoloLens nutzen Sie stattdessen normalerweise die Weboberfläche.
 
-**WPA** steht für Windows-Leistungsanalyse ([**W**indows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer)); dies ist der Name der GUI-Anwendung, mit der Sie Dateien vom Typ \*.etl öffnen und die Daten durchsuchen, um Leistungsprobleme zu ermitteln. Mit WPA können Sie die Daten nach verschiedenen Kriterien sortieren, die Daten auf verschiedene Weise anzeigen lassen, Details genauer untersuchen und Informationen korrelieren.
+**WPA** steht für Windows-Leistungsanalyse ([**W**indows **P**erformance **A**nalyzer](/windows-hardware/test/wpt/windows-performance-analyzer)); dies ist der Name der GUI-Anwendung, mit der Sie Dateien vom Typ \*.etl öffnen und die Daten durchsuchen, um Leistungsprobleme zu ermitteln. Mit WPA können Sie die Daten nach verschiedenen Kriterien sortieren, die Daten auf verschiedene Weise anzeigen lassen, Details genauer untersuchen und Informationen korrelieren.
 
 ETL-Ablaufverfolgungen können zwar auf jedem Windows-Gerät (lokaler PC, HoloLens, Cloudserver usw.) erstellt werden, sie werden jedoch in der Regel auf einem Datenträger gespeichert und mit WPA auf einem Desktop-PC analysiert. ETL-Dateien können zur weiteren Untersuchung an andere Entwickler gesendet werden. Beachten Sie jedoch, dass in ETL-Ablaufverfolgungen auch vertrauliche Informationen erfasst werden können, z. B. Dateipfade und IP-Adressen. Sie haben zwei Möglichkeiten, ETW zu verwenden: zum Aufzeichnen von Ablaufverfolgungen oder zum Analysieren von Ablaufverfolgungen. Das Aufzeichnen von Ablaufverfolgungen ist ein direkter Vorgang, und es ist nur ein minimales Setup erforderlich. Für das Analysieren von Ablaufverfolgungen ist hingegen ein grundlegendes Verständnis sowohl hinsichtlich des WPA-Tools als auch in Bezug auf das untersuchte Problem erforderlich. Im Folgenden finden Sie allgemeine Informationen zum Kennenlernen von WPA sowie Richtlinien für die Interpretation von ARR-spezifischen Ablaufverfolgungen.
 
@@ -51,7 +51,7 @@ Zum Identifizieren von ARR-Leistungsproblemen sollten Sie eine Ablaufverfolgung 
 
 ### <a name="wpr-configuration"></a>WPR-Konfiguration
 
-1. Starten Sie die [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) im *Startmenü*.
+1. Starten Sie die [:::no-loc text="Windows Performance Recorder":::](/windows-hardware/test/wpt/windows-performance-recorder) im *Startmenü*.
 1. Erweitern Sie **Mehr Optionen**
 1. Klicken Sie auf **Add Profiles...** (Profile hinzufügen).
 1. Wählen Sie die Datei *AzureRemoteRenderingNetworkProfiling.wprp* aus. Sie finden diese Datei im ARR SDK unter *Tools/ETLProfiles*.
@@ -95,7 +95,7 @@ Sie verfügen nun über eine ETL-Datei, die Sie entweder direkt in WPA öffnen o
 
 Die Windows-Leistungsanalyse (Windows Performance Analyzer, WPA) ist das Standardtool zum Öffnen von ETL-Dateien und zum Untersuchen der Ablaufverfolgungen. Eine Beschreibung der Funktionsweise von WPA überschreitet den Rahmen dieses Artikels. Schauen Sie sich zunächst die folgenden Ressourcen an:
 
-* Sehen Sie sich die [Einführungsvideos](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) an, um einen ersten Überblick zu erhalten.
+* Sehen Sie sich die [Einführungsvideos](/windows-hardware/test/wpt/windows-performance-analyzer) an, um einen ersten Überblick zu erhalten.
 * WPA selbst weist eine Registerkarte *Erste Schritte* auf, auf der häufig ausgeführte Schritte erläutert werden. Werfen Sie einen Blick auf die verfügbaren Themen. Insbesondere unter „Daten anzeigen“ erhalten Sie eine kurze Einführung zum Erstellen von Diagrammen für bestimmte Daten.
 * [Diese Website](https://randomascii.wordpress.com/2015/09/24/etw-central/) ist eine hervorragende Informationsquelle, nicht alle Informationen sind jedoch für Einsteiger relevant.
 

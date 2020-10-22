@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330875"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105990"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
-In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDocs) für Azure Monitor beschrieben. Dazu gehören die Definitionen für Webhooks, Azur Logic Apps, Azure Functions und Azure Automation Runbooks. 
+In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](./alerts-common-schema.md) für Azure Monitor beschrieben. Dazu gehören die Definitionen für Webhooks, Azur Logic Apps, Azure Functions und Azure Automation Runbooks. 
 
 Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der Warnung. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
 * **Zusammenfassung**: Eine Gruppe standardisierter Felder (für alle Warnungstypen gleich), die beschreiben, auf welcher Ressource sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z.B. Schweregrad oder Beschreibung). 
@@ -541,5 +541,5 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
-- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](./alerts-common-schema-integrations.md). 
+- Erfahren Sie mehr über das [allgemeine Warnungsschema](./alerts-common-schema.md).
+- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](./alerts-common-schema-integrations.md).

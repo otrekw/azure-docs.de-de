@@ -3,12 +3,12 @@ title: Abrufen von Ressourcenänderungen
 description: Erfahren Sie, wie Sie feststellen können, wann eine Ressource geändert wurde, und wie Sie eine Liste der geänderten Eigenschaften abrufen und die Unterschiede auswerten.
 ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057568"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203465"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -28,7 +28,7 @@ Die Erkennung und die Details von Änderungen sind in folgenden Beispielszenarie
 In diesem Artikel wird erläutert, wie diese Informationen über das Resource Graph-SDK erfasst werden. Beachten Sie für das Anzeigen dieser Informationen im Azure-Portal die Beschreibung unter [Änderungsverlauf](../../policy/how-to/determine-non-compliance.md#change-history) von Azure Policy bzw. [Änderungsverlauf](../../../azure-monitor/platform/activity-log.md#view-the-activity-log) des Azure-Aktivitätsprotokolls. Ausführliche Informationen zu Änderungen an Ihren Anwendungen von der Infrastrukturebene bis hin zur Anwendungsbereitstellung finden Sie unter [Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor](../../../azure-monitor/app/change-analysis.md).
 
 > [!NOTE]
-> Die Änderungsdetails in Resource Graph beziehen sich auf Resource Manager-Eigenschaften. Informationen zur Nachverfolgung von Änderungen in einem virtuellen Computer finden Sie unter [Änderungsnachverfolgung](../../../automation/change-tracking.md) für Azure Automation oder unter [Guest Configuration für virtuelle Computer](../../policy/concepts/guest-configuration.md) für Azure Policy.
+> Die Änderungsdetails in Resource Graph beziehen sich auf Resource Manager-Eigenschaften. Informationen zur Nachverfolgung von Änderungen in einem virtuellen Computer finden Sie unter [Änderungsnachverfolgung](../../../automation/change-tracking/overview.md) für Azure Automation oder unter [Guest Configuration für virtuelle Computer](../../policy/concepts/guest-configuration.md) für Azure Policy.
 
 > [!IMPORTANT]
 > Der Änderungsverlauf in Azure Resource Graph befindet sich in der öffentlichen Vorschau.

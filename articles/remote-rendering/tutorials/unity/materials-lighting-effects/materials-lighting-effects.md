@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021067"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203244"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Tutorial: Optimieren von Materialien, Beleuchtung und Effekten
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Visuelles Feedback ist für den Benutzer ein wichtiger Bestandteil der Benutzererfahrung in jeder Anwendung. Azure Remote Rendering bietet über [hierarchische Zustandsaußerkraftsetzungen](../../../overview/features/override-hierarchical-state.md) visuelle Feedbackmechanismen. Die hierarchischen Zustandsaußerkraftsetzungen werden mit Komponenten implementiert, die an lokale Modellinstanzen angefügt sind. Wir haben gelernt, wie diese lokalen Instanzen in [Synchronisieren des Remoteobjektgraphs mit der Unity-Hierarchie](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy) erstellt werden.
 
-Zunächst erstellen wir einen Wrapper um die Komponente [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent). Die Komponente **HierarchicalStateOverrideComponent** ist das lokale Skript, das die Außerkraftsetzungen für die Remoteentität steuert. Die [**Tutorialressourcen**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) beinhalten eine abstrakte Basisklasse mit dem Namen **BaseEntityOverrideController**, die zum Erstellen des Wrappers erweitert wird.
+Zunächst erstellen wir einen Wrapper um die Komponente [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent). Die Komponente **HierarchicalStateOverrideComponent** ist das lokale Skript, das die Außerkraftsetzungen für die Remoteentität steuert. Die [**Tutorialressourcen**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) beinhalten eine abstrakte Basisklasse mit dem Namen **BaseEntityOverrideController**, die zum Erstellen des Wrappers erweitert wird.
 
 1. Erstellen Sie ein neues Skript namens **EntityOverrideController**, und ersetzen Sie seinen Inhalt durch den folgenden Code:
 

@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Service Fabric
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure Service Fabric verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: erikadoyle
 ms.author: edoyle
 ms.service: service-fabric
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1a3e0c505ce7d9c36f84edf403b6b4751bd001bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3102c602f76dde7bf7a80ea83b1cc9b2b7175898
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816303"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316686"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-fabric"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Service Fabric
 

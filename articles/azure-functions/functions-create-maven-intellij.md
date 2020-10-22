@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373367"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105038"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Erstellen Ihrer ersten Azure-Funktion mit Java und IntelliJ
 
@@ -29,7 +29,7 @@ In diesem Artikel lernen Sie Folgendes:
 Installieren Sie die folgende Software, um eine Funktion mit Java und IntelliJ zu entwickeln:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-+ Ein von [Azure unterstütztes Java Development Kit (JDK)](https://aka.ms/azure-jdks) für Java 8
++ Ein von [Azure unterstütztes Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support) für Java 8
 + Eine installierte Instanz von [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) (Ultimate Edition oder Community Edition)
 + [Maven 3.5.0 oder höher](https://maven.apache.org/download.cgi)
 + Aktuelle Version von [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)

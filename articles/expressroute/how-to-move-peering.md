@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401417"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206287"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -31,7 +31,7 @@ Um eine Verbindung mit Microsoft-Peering herstellen zu können, müssen Sie die 
 > [!Warning]
 > Der Microsoft angekündigte NAT-IP-Adresspool muss nicht im Internet angekündigt werden. Ansonsten wird die Verbindung mit anderen Microsoft-Diensten unterbrochen.
 
-Informieren Sie sich unter [Asymmetrisches Routing mit mehreren Netzwerkpfaden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) über die Einschränkungen des asymmetrischen Routings, bevor Sie das Microsoft-Peering konfigurieren.
+Informieren Sie sich unter [Asymmetrisches Routing mit mehreren Netzwerkpfaden](./expressroute-asymmetric-routing.md) über die Einschränkungen des asymmetrischen Routings, bevor Sie das Microsoft-Peering konfigurieren.
 
 * Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../azure-sql/database/vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
 * Führen Sie die Schritte in diesem Artikel in der angegebenen Reihenfolge aus, damit es bei der Umstellung auf Microsoft-Peering zu keinen Ausfällen kommt.

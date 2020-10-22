@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie lokale virtuelle Hyper-V-Computer mit de
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0643a13a07572dc24ef895062593e00188a0752f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442332"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317164"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Tutorial: Ermitteln virtueller Hyper-V-Computer mit der Serverbewertung
 
@@ -204,7 +204,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
    
    Die Anmeldung mit einer PIN wird nicht unterstützt.
 3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück. 
-4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](tutorial-prepare-hyper-v.md#prepare-azure) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
+4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen Berechtigungen für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
 
 

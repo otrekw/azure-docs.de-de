@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: d9a7d7db93e00b9fcccab08522b3363935badf26
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653161"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203839"
 ---
 # <a name="tutorial-manipulating-models"></a>Tutorial: Bearbeiten von Modellen
 
@@ -237,7 +237,7 @@ Zunächst erstellen wir einen statischen Wrapper um die Remote-Raycastabfragen. 
     ```
 
     > [!NOTE]
-    > Unity verfügt über eine Klasse mit dem Namen [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html), und Azure Remote Rendering verfügt über eine Klasse mit dem Namen [**RayCastHit**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.raycasthit). Der Großbuchstabe **C** ist ein wichtiger Unterschied, der Kompilierungsfehler verhindert.
+    > Unity verfügt über eine Klasse mit dem Namen [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html), und Azure Remote Rendering verfügt über eine Klasse mit dem Namen [**RayCastHit**](/dotnet/api/microsoft.azure.remoterendering.raycasthit). Der Großbuchstabe **C** ist ein wichtiger Unterschied, der Kompilierungsfehler verhindert.
 
     **RemoteRayCaster** bietet einen allgemeinen Zugriffspunkt zum Umwandeln von Remotestrahlen in die aktuelle Sitzung. Als Nächstes soll ein MRTK-Zeigerhandler implementiert werden. Das Skript implementiert die `IMixedRealityPointerHandler`-Schnittstelle, die MRTK anweist, dass dieses Skript auf [Mixed Reality-Zeiger](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/Input/Pointers.html)-Ereignisse lauschen soll.
 

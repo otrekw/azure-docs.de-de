@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d9740e05bf4236f1b2b722c9a91b3644533fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a3c5274a1b63d486bb7eb48b89560d5684db2e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707899"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317008"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell für Azure AD-Rollen in Privileged Identity Management (PIM)
 
@@ -54,7 +54,7 @@ Dieser Artikel enthält Anweisungen für die Verwendung von Azure Active Directo
     ![Suchen der Organisations-ID in den Eigenschaften für die Azure AD-Organisation](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> In den folgenden Abschnitten finden Sie einfache Beispiele, die Ihnen beim Start helfen. Unter [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) finden Sie eine ausführlichere Dokumentation zu den folgenden Cmdlets. Sie müssen jedoch „azureResources“ im Parameter „providerID“ durch „aadRoles“ ersetzen. Sie müssen auch daran denken, die Mandanten-ID für Ihre Azure AD-Organisation als Parameter „ResourceId“ zu verwenden.
+> In den folgenden Abschnitten finden Sie einfache Beispiele, die Ihnen beim Start helfen. Unter [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) finden Sie eine ausführlichere Dokumentation zu den folgenden Cmdlets. Sie müssen jedoch „azureResources“ im Parameter „providerID“ durch „aadRoles“ ersetzen. Sie müssen auch daran denken, die Mandanten-ID für Ihre Azure AD-Organisation als Parameter „ResourceId“ zu verwenden.
 
 ## <a name="retrieving-role-definitions"></a>Abrufen von Rollendefinitionen
 

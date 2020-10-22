@@ -3,12 +3,12 @@ title: Hinzufügen von Bewertungstools in Azure Migrate
 description: Hier erfahren Sie, wie Sie Bewertungstools in Azure Migrate hinzufügen.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dee9ec2210bf6e04255b07cf641ced6807c8b5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86122114"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317362"
 ---
 # <a name="add-assessment-tools"></a>Hinzufügen von Bewertungstools
 
@@ -60,4 +60,4 @@ In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](./migrate-service
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Probieren Sie eine Bewertung aus, indem Sie die Azure Migrate-Serverbewertung für [VMware](tutorial-prepare-vmware.md)-VMs, [Hyper-V](tutorial-prepare-hyper-v.md) oder [physische Server](tutorial-prepare-physical.md) verwenden.
+Probieren Sie eine Bewertung aus, indem Sie die Azure Migrate-Serverbewertung für [VMware](./tutorial-discover-vmware.md)-VMs, [Hyper-V](./tutorial-discover-hyper-v.md) oder [physische Server](./tutorial-discover-physical.md) verwenden.

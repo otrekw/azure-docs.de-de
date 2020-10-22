@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252866"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316394"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Tutorial: Erstellen von DNS-Einträgen in einer benutzerdefinierten Domäne für eine Web-App 
 
@@ -38,12 +38,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Hinzufügen benutzerdefinierter Hostnamen zu Ihrer Web-App
 > * Testen der benutzerdefinierten Hostnamen
 
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -56,6 +53,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    2. Befolgen Sie zum Delegieren Ihrer Zone an Azure DNS die Schritte unter [Delegieren von DNS-Zonen mit Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Nach dem Erstellen einer Zone und ihrer Delegierung an Azure DNS können Sie Einträge für Ihre benutzerdefinierte Domäne erstellen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>Erstellen eines A-Eintrags und eines TXT-Eintrags
 

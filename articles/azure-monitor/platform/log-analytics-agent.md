@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c09b50272ce73fe084e84d49be7d9d81cbe725aa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309998"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207137"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält die Arten von Daten, mit denen Sie einen Log Anal
 Der Log Analytics-Agent sendet Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor. Der Windows-Agent kann mehrfach vernetzt werden, um Daten an mehrere Arbeitsbereiche und System Center Operations Manager-Verwaltungsgruppen zu senden. Der Linux-Agent kann nur an ein einzelnes Ziel senden, entweder einen Arbeitsbereich oder eine Verwaltungsgruppe.
 
 ## <a name="other-services"></a>Sonstige Dienste
-Der Agent für Linux und Windows dient nicht nur zum Herstellen einer Verbindung mit Azure Monitor. Andere Dienste wie Azure Security Center und Azure Sentinel setzen ebenfalls auf dem Agent und dessen verbundenem Log Analytics-Arbeitsbereich auf. Der Agent unterstützt auch Azure Automation zum Hosten der Hybrid Runbook Worker-Rolle und anderer Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking.md), [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) und [Azure Security Center](../../security-center/security-center-intro.md). Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Der Agent für Linux und Windows dient nicht nur zum Herstellen einer Verbindung mit Azure Monitor. Andere Dienste wie Azure Security Center und Azure Sentinel setzen ebenfalls auf dem Agent und dessen verbundenem Log Analytics-Arbeitsbereich auf. Der Agent unterstützt auch Azure Automation zum Hosten der Hybrid Runbook Worker-Rolle und anderer Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking/overview.md), [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) und [Azure Security Center](../../security-center/security-center-intro.md). Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Einschränkungen für Arbeitsbereich und Verwaltungsgruppe
 
@@ -148,4 +148,3 @@ Beispiel: `https://user01:password@proxy01.contoso.com:30443`
 * Lesen Sie [Datenquellen](agent-data-sources.md), um die Datenquellen zu verstehen, die für die Erfassung von Daten aus Ihrem Windows- oder Linux-System zur Verfügung stehen. 
 * Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 * Erfahren Sie mehr über [Überwachungslösungen](../insights/solutions.md), die Azure Monitor um zusätzliche Funktionen erweitern und ebenfalls Daten für den Log Analytics-Arbeitsbereich sammeln.
-

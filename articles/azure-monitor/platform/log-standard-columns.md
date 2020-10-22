@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 01c0b6f280b8179760c6ecc55fd7feca3ddf2080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038895"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104239"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardspalten in Azure Monitor-Protokollen
-Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../log-query/logs-structure.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutigen Satz von Spalten verfügt. Viele Datentypen weisen Standardspalten auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Spalten beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
+Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](./data-platform-logs.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutigen Satz von Spalten verfügt. Viele Datentypen weisen Standardspalten auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Spalten beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
 
 Arbeitsbereichsbasierte Anwendungen in Application Insights speichern ihre Daten in einem Log Analytics-Arbeitsbereich und verwenden dieselben Standardspalten wie andere Tabellen im Arbeitsbereich. Klassische Anwendungen speichern ihre Daten separat und weisen unterschiedliche Standardspalten auf, wie es in diesem Artikel beschrieben ist.
 
@@ -212,4 +212,3 @@ union withsource = tt *
 - Erfahren Sie mehr zum [Speichern von Azure Monitor-Protokolldaten](../log-query/log-query-overview.md).
 - Arbeiten Sie eine Lektion zum [Schreiben von Protokollabfragen ](../log-query/get-started-queries.md) durch.
 - Arbeiten Sie eine Lektion zum [Verknüpfen von Tabellen in Protokollabfragen](../log-query/joins.md) durch.
-

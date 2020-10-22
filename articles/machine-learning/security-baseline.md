@@ -3,16 +3,17 @@ title: Azure-Sicherheitsbaseline für Azure Machine Learning
 description: Die Azure Machine Learning-Sicherheitsbaseline enthält schrittweise Anleitungen und Ressourcen für die Implementierung der Sicherheitsempfehlungen, die im Vergleichstest für die Azure-Sicherheit angegeben sind.
 author: msmbaldwin
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461018"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204332"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-Sicherheitsbaseline für Azure Machine Learning
 
@@ -720,7 +721,7 @@ Entfernen Sie Azure-Ressourcen, wenn diese nicht mehr benötigt werden.
 
 - [Verwenden der Dateiintegritätsüberwachung](../security-center/security-center-file-integrity-monitoring.md)
 
-- [Grundlegendes zu Azure Automation-Änderungsnachverfolgung und -Bestand](../automation/change-tracking.md)
+- [Grundlegendes zu Azure Automation-Änderungsnachverfolgung und -Bestand](../automation/change-tracking/overview.md)
 
 - [Aktivieren des Bestands an virtuellen Azure-Computern](../automation/automation-tutorial-installed-software.md)
 

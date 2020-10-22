@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650475"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207528"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Tutorial: Schützen von Azure-Remote Rendering und Modellspeicher
 
@@ -188,11 +188,11 @@ Ein weiteres „Kennwort“ (AccountKey) muss aus der lokalen Anwendung entfernt
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory-Authentifizierung (Azure AD)
 
-Mit der AAD-Authentifizierung können Sie feststellen, welche Personen oder Gruppen ARR auf kontrolliertere Weise verwenden. ARR verfügt über integrierte Unterstützung für die Annahme von [Zugriffstoken](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) anstelle eines Kontoschlüssels. Sie können sich Zugriffstoken als einen zeitlich begrenzten, benutzerspezifischen Schlüssel vorstellen, der nur bestimmte Teile der spezifischen Ressource freischaltet, für die er angefordert wurde.
+Mit der AAD-Authentifizierung können Sie feststellen, welche Personen oder Gruppen ARR auf kontrolliertere Weise verwenden. ARR verfügt über integrierte Unterstützung für die Annahme von [Zugriffstoken](../../../../active-directory/develop/access-tokens.md) anstelle eines Kontoschlüssels. Sie können sich Zugriffstoken als einen zeitlich begrenzten, benutzerspezifischen Schlüssel vorstellen, der nur bestimmte Teile der spezifischen Ressource freischaltet, für die er angefordert wurde.
 
 Das Skript **RemoteRenderingCoordinator** verfügt über einen Delegaten namens **ARRCredentialGetter**, der eine Methode beinhaltet, die ein Objekt **AzureFrontendAccountInfo** zurückgibt. Dieses wird zur Konfiguration der Remotesitzungsverwaltung verwendet. Wir können **ARRCredentialGetter** eine andere Methode zuweisen, sodass wir einen Azure-Anmeldeflow verwenden können. Dadurch wird ein **AzureFrontendAccountInfo**-Objekt generiert, das ein Azure-Zugriffstoken enthält. Dieses Zugriffstoken wird speziell für den Benutzer verwendet, der sich anmeldet.
 
-1. Befolgen Sie die [Anleitung: Konfigurieren der Authentifizierung: Authentifizierung für bereitgestellte Anwendungen](../../../how-tos/authentication.md#authentication-for-deployed-applications). Insbesondere befolgen Sie die Anweisungen in der Dokumentation für Azure Spatial Anchors [Azure AD-Benutzerauthentifizierung](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication). Dies umfasst das Registrieren einer neuen Azure Active Directory-Anwendung und das Konfigurieren des Zugriffs auf Ihre ARR-Instanz.
+1. Befolgen Sie die [Anleitung: Konfigurieren der Authentifizierung: Authentifizierung für bereitgestellte Anwendungen](../../../how-tos/authentication.md#authentication-for-deployed-applications). Insbesondere befolgen Sie die Anweisungen in der Dokumentation für Azure Spatial Anchors [Azure AD-Benutzerauthentifizierung](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication). Dies umfasst das Registrieren einer neuen Azure Active Directory-Anwendung und das Konfigurieren des Zugriffs auf Ihre ARR-Instanz.
 1. Überprüfen Sie nach dem Konfigurieren der neuen AAD-Anwendung, ob Ihre AAD-Anwendung den folgenden Abbildungen gleicht:
 
     **AAD-Anwendung > Authentifizierung** ![App-Authentifizierung](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ Da nun alle Azure-Einstellungen getätigt sind, müssen wir nun ändern, wie Ihr
 
 Der Code versucht zunächst, das Token mithilfe von **AquireTokenSilent** im Hintergrund zu erhalten. Dies ist erfolgreich, wenn der Benutzer diese Anwendung zuvor authentifiziert hat. Wenn dies nicht erfolgreich ist, müssen Sie eine Methode anwenden, die den Benutzer stärker involviert.
 
-Für diesen Code verwenden wir den [Gerätecodeflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code), um ein Zugriffstoken abzurufen. Mithilfe dieses Flows kann der Benutzer sich bei seinem Azure-Konto auf einem Computer oder mobilen Gerät anmelden, und das resultierende Token wird an die HoloLens-Anwendung zurückgesendet.
+Für diesen Code verwenden wir den [Gerätecodeflow](../../../../active-directory/develop/v2-oauth2-device-code.md), um ein Zugriffstoken abzurufen. Mithilfe dieses Flows kann der Benutzer sich bei seinem Azure-Konto auf einem Computer oder mobilen Gerät anmelden, und das resultierende Token wird an die HoloLens-Anwendung zurückgesendet.
 
 Der wichtigste Teil dieser Klasse im Hinblick auf ARR ist diese Zeile:
 

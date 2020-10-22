@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77523035"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104375"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -36,7 +36,7 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
 [Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
-[Aktualisieren Ihrer Erweiterungen]: ./install-update-binding-extensions-manual.md
+[Aktualisieren Ihrer Erweiterungen]: ./functions-bindings-register.md
 [Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 Ausführliche Informationen zum Konfigurieren und Verwenden von SignalR Service und Azure Functions finden Sie unter [Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md).
@@ -56,4 +56,4 @@ Um die SignalR Service-Anmerkungen in Java-Funktionen verwenden zu können, mü
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zurückgeben der Dienstendpunkt-URL und des Zugriffstokens (Eingabebindung)](./functions-bindings-signalr-service-input.md)
-- [Senden von SignalR Service-Nachrichten (Ausgabebindung)](./functions-bindings-signalr-service-output.md) 
+- [Senden von SignalR Service-Nachrichten (Ausgabebindung)](./functions-bindings-signalr-service-output.md)

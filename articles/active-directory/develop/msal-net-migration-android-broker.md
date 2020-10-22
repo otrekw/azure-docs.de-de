@@ -12,16 +12,16 @@ ms.date: 08/31/2020
 ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47902b29da1dfe20fb54d633a0559e6a337fd771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89183503"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206668"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>Migrieren von Android-Anwendungen, die einen Broker verwenden, von ADAL.NET zu MSAL.NET
 
-Wenn Sie eine Xamarin Android-App besitzen, die derzeit die Azure Active Directory-Authentifizierungsbibliothek für .NET (ADAL.NET) und einen [Authentifizierungsbroker](brokered-auth.md) nutzt, ist es an der Zeit, zur [Microsoft-Authentifizierungsbibliothek für .NET ](msal-overview.md) (MSAL.NET) zu migrieren.
+Wenn Sie eine Xamarin Android-App besitzen, die derzeit die Azure Active Directory-Authentifizierungsbibliothek für .NET (ADAL.NET) und einen [Authentifizierungsbroker](msal-android-single-sign-on.md) nutzt, ist es an der Zeit, zur [Microsoft-Authentifizierungsbibliothek für .NET ](msal-overview.md) (MSAL.NET) zu migrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

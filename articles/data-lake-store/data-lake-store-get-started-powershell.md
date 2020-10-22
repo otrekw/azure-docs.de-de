@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba51c96e3195f75a0ccf49baded67737f4665615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077737"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103729"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Erste Schritte mit Azure Data Lake Storage Gen1 mithilfe von Azure PowerShell
 
@@ -36,7 +36,7 @@ Erfahren Sie, wie Sie mit Azure PowerShell ein Azure Data Lake Storage Gen1-Kont
 
 ## <a name="authentication"></a>Authentifizierung
 
-In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Storage Gen1 verwendet, bei dem Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert werden. Die Zugriffsebene für das Data Lake Storage Gen1-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Storage Gen1 stehen mit der Endbenutzerauthentifizierung oder der Dienst-zu-Dienst-Authentifizierung aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Endbenutzerauthentifizierung](data-lake-store-end-user-authenticate-using-active-directory.md) oder [Dienst-zu-Dienst-Authentifizierung](data-lake-store-authenticate-using-active-directory.md).
+In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Storage Gen1 verwendet, bei dem Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert werden. Die Zugriffsebene für das Data Lake Storage Gen1-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Storage Gen1 stehen mit der Endbenutzerauthentifizierung oder der Dienst-zu-Dienst-Authentifizierung aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Endbenutzerauthentifizierung](data-lake-store-end-user-authenticate-using-active-directory.md) oder [Dienst-zu-Dienst-Authentifizierung](./data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Erstellen eines Data Lake Storage Gen1-Kontos
 

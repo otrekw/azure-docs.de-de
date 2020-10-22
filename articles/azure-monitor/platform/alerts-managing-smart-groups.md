@@ -4,16 +4,16 @@ description: Verwalten von intelligenten Gruppen, die über Ihre Warnungsinstanz
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: a84e1ed514bce0f4dda496a5304cbfa0665c7c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763bfefcf71b0be43722b99f31641015a5991607
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983075"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105837"
 ---
 # <a name="manage-smart-groups"></a>Verwalten intelligenter Gruppen
 
-[Intelligente Gruppen](https://aka.ms/smart-groups) verwenden Machine Learning-Algorithmen, um Warnungen auf der Grundlage des gemeinsamen Auftretens oder der Ähnlichkeit zu gruppieren, sodass der Benutzer nun intelligente Gruppen verwalten kann, anstatt alle Warnungen einzeln verwalten zu müssen. Dieser Artikel führt Sie durch die Vorgehensweise beim Zugreifen auf und Verwenden von intelligenten Gruppen in Azure Monitor.
+[Intelligente Gruppen](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) verwenden Machine Learning-Algorithmen, um Warnungen auf der Grundlage des gemeinsamen Auftretens oder der Ähnlichkeit zu gruppieren, sodass der Benutzer nun intelligente Gruppen verwalten kann, anstatt alle Warnungen einzeln verwalten zu müssen. Dieser Artikel führt Sie durch die Vorgehensweise beim Zugreifen auf und Verwenden von intelligenten Gruppen in Azure Monitor.
 
 1. Führen Sie einen der folgenden Schritte aus, um die für Ihre Warnungsinstanzen erstellten intelligenten Gruppen anzuzeigen:
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090279"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317376"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gängige Szenarien, Beispiele, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
 
@@ -126,7 +126,7 @@ Sie können Logik-Apps mithilfe von Visual Studio, Azure DevOps oder beliebigen 
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Behandeln von Inhaltstypen, Konvertierungen und Transformationen
 
-Mithilfe der vielen Funktionen in der [Workflowdefinitionssprache](https://aka.ms/logicappsdocs) von Azure Logic Apps können Sie auf mehrere Inhaltstypen zugreifen, sie konvertieren und transformieren. Beispielsweise können Sie mit den Workflowausdrücken `@json()` und `@xml()` zwischen einer Zeichenfolge, JSON und XML konvertieren. Die Logic Apps-Engine behält Inhaltstypen bei, um die verlustfreie Übertragung von Inhalten zwischen Diensten zu unterstützen.
+Mithilfe der vielen Funktionen in der [Workflowdefinitionssprache](./logic-apps-workflow-definition-language.md) von Azure Logic Apps können Sie auf mehrere Inhaltstypen zugreifen, sie konvertieren und transformieren. Beispielsweise können Sie mit den Workflowausdrücken `@json()` und `@xml()` zwischen einer Zeichenfolge, JSON und XML konvertieren. Die Logic Apps-Engine behält Inhaltstypen bei, um die verlustfreie Übertragung von Inhalten zwischen Diensten zu unterstützen.
 
 * [Behandeln von Inhaltstypen in Azure Logic Apps](../logic-apps/logic-apps-content-type.md) wie `application/`, `application/octet-stream` und `multipart/formdata`
 * [Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate](../logic-apps/workflow-definition-language-functions-reference.md)
