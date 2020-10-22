@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 0398c035eeac7d02ac38f798cb58c513279fc709
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91820002"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368654"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
@@ -114,13 +114,13 @@ Um Ihr eigenes „SecretProviderClass“-Objekt mit anbieterspezifischen Paramet
 
 Tragen Sie in der YAML-Beispieldatei „SecretProviderClass“ die fehlenden Parameter ein. Die folgenden Parameter sind erforderlich:
 
-* **userAssignedIdentityID**: # [ERFORDERLICH] Verwenden Sie bei Nutzung eines Dienstprinzipals die Client-ID, um die benutzerseitig zugewiesene verwaltete Identität anzugeben, die verwendet werden soll. Wenn Sie eine benutzerseitig zugewiesene Identität als verwaltete Identität des virtuellen Computers verwenden, geben Sie die Client-ID der Identität an. Ist der Wert leer, wird standardmäßig die systemseitig zugewiesene Identität auf dem virtuellen Computer verwendet. 
+* **userAssignedIdentityID**: # [REQUIRED] If you're using a service principal, use the client ID to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client ID. If the value is empty, it defaults to use the system-assigned identity on the VM 
 * **keyvaultName**: Der Name Ihres Schlüsseltresors.
 * **objects**: Der Container für den gesamten Geheimnisinhalt, den Sie einbinden möchten.
     * **objectName**: Der Name des Geheimnisinhalts.
     * **objectType**: Der Objekttyp (Geheimnis, Schlüssel, Zertifikat).
-* **resourceGroup**: Der Name der Ressourcengruppe # [ERFORDERLICH für Versionen ab 0.0.4] Die Ressourcengruppe des Schlüsseltresors
-* **subscriptionId**: Die Abonnement-ID des Schlüsseltresors # [ERFORDERLICH für Versionen ab 0.0.4] Die Abonnement-ID des Schlüsseltresors
+* **resourceGroup**: The name of the resource group  # [REQUIRED for version < 0.0.4] the resource group of the KeyVault
+* **subscriptionId**: The subscription ID of your key vault # [REQUIRED for version < 0.0.4] the subscription ID of the KeyVault
 * **tenantID**: Die Mandanten-ID oder Verzeichnis-ID Ihres Schlüsseltresors.
 
 Eine Dokumentation aller erforderlichen Felder finden Sie hier: [Link](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
@@ -185,6 +185,7 @@ Wenn Sie einen Dienstprinzipal verwenden, gewähren Sie diesem Berechtigungen zu
 1. Gewähren Sie dem Dienstprinzipal Berechtigungen zum Abrufen von Geheimnissen:
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
+    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
     ```
 
 1. Sie haben Ihren Dienstprinzipal nun so konfiguriert, dass er über Berechtigungen zum Lesen von Geheimnissen auf Ihrem Schlüsseltresor verfügt. **$AZURE_CLIENT_SECRET** ist das Kennwort für Ihren Dienstprinzipal. Fügen Sie die Anmeldeinformationen des Dienstprinzipals als Kubernetes-Geheimnis hinzu, auf das der Secrets Store CSI-Treiber zugreifen kann:
@@ -214,8 +215,6 @@ Wenn Sie verwaltete Identitäten verwenden, weisen Sie dem AKS-Cluster, den Sie 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
-
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
@@ -239,6 +238,7 @@ Wenn Sie verwaltete Identitäten verwenden, weisen Sie dem AKS-Cluster, den Sie 
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
+    az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
     ```
 
 ## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>Bereitstellen Ihres Pods mit eingebundenen Geheimnissen aus Ihrem Schlüsseltresor
@@ -311,8 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:
-          name: secrets-store-creds 
+        nodePublishSecretRef:           # Only required when using service principal mode
+          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 Führen Sie den folgenden Befehl aus, um Ihren Pod bereitzustellen:

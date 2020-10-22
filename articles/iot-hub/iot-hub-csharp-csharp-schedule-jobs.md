@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018500"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142462"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Planen und Übertragen von Aufträgen (.NET)
 
@@ -261,7 +261,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mithilfe von C#), die 
     ```
 
     > [!NOTE]
-    > Weitere Informationen zur Abfragesyntax finden Sie unter [IoT Hub-Abfragesprache](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
+    > Weitere Informationen zur Abfragesyntax finden Sie unter [IoT Hub-Abfragesprache](./iot-hub-devguide-query-language.md).
     >
 
 1. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
@@ -311,4 +311,4 @@ In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode fü
 
 * Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie im [Tutorial: Durchführen eines Firmwareupdates](tutorial-firmware-update.md).
 
-* Informationen zum Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge finden Sie unter [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../iot-edge/tutorial-simulate-device-linux.md).
+* Informationen zum Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge finden Sie unter [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../iot-edge/quickstart-linux.md).

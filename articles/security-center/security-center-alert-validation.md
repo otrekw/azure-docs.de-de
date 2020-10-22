@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971607"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340817"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -68,4 +68,4 @@ In diesem Artikel wurden Sie in den Prozess der Warnungsüberprüfung eingeführ
 * [Überprüfen der Azure Key Vault-Bedrohungserkennung in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verstehen der Sicherheitswarnungen in Azure Security Center](security-center-alerts-type.md): Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
+* [Verstehen der Sicherheitswarnungen in Azure Security Center](./security-center-alerts-overview.md): Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.

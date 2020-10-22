@@ -2,7 +2,6 @@
 title: Schemas für Azure Security Center-Warnungen
 description: In diesem Artikel werden die verschiedenen Schemas beschrieben, die von Azure Security Center für Sicherheitswarnungen verwendet werden.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901350"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341939"
 ---
 # <a name="security-alerts-schemas"></a>Schemas für Sicherheitswarnungen
 
@@ -25,9 +24,9 @@ Wenn für Ihr Abonnement Azure Defender aktiviert ist, erhalten Sie Sicherheitsw
 
 Sie können diese Sicherheitswarnungen auf der Seite **Bedrohungsschutz** von Azure Security Center oder mithilfe externer Tools anzeigen, wie z. B.:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/): die cloudnative SIEM-Lösung von Microsoft. Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet diese an den [Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) für Azure Sentinel.
-- SIEM-Lösungen von Drittanbietern: Verwenden Sie die Tools von Security Center für den [fortlaufenden Export](continuous-export.md), um Daten an [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) zu senden. Integrieren Sie anschließend Ihre Event Hub-Daten in eine SIEM-Lösung eines Drittanbieters.
-- [Die REST-API](https://docs.microsoft.com/rest/api/securitycenter/): Wenn Sie die REST-API für den Zugriff auf Warnungen verwenden, finden Sie weitere Informationen in der [Online-API-Dokumentation zu Warnungen](https://docs.microsoft.com/rest/api/securitycenter/alerts).
+- [Azure Sentinel](../sentinel/index.yml): die cloudnative SIEM-Lösung von Microsoft. Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet diese an den [Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md) für Azure Sentinel.
+- SIEM-Lösungen von Drittanbietern: Verwenden Sie die Tools von Security Center für den [fortlaufenden Export](continuous-export.md), um Daten an [Azure Event Hubs](../event-hubs/index.yml) zu senden. Integrieren Sie anschließend Ihre Event Hub-Daten in eine SIEM-Lösung eines Drittanbieters.
+- [Die REST-API](/rest/api/securitycenter/): Wenn Sie die REST-API für den Zugriff auf Warnungen verwenden, finden Sie weitere Informationen in der [Online-API-Dokumentation zu Warnungen](/rest/api/securitycenter/alerts).
 
 Wenn Sie programmgesteuerte Methoden verwenden, um die Warnungen zu verarbeiten, benötigen Sie das richtige Schema, um die für Sie relevanten Felder zu finden. Wenn Sie in einen Event Hub exportieren oder die Workflowautomatisierung mit generischen HTTP-Connectors auslösen möchten, verwenden Sie die Schemas, um die JSON-Objekte ordnungsgemäß zu analysieren.
 
@@ -61,7 +60,7 @@ Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet di
 
 Zum Erstellen eines Sentinel-Falls oder -Vorfalls mithilfe von Security Center-Warnungen benötigen Sie das Schema für die unten angezeigten Warnungen. 
 
-Weitere Informationen finden Sie in der [Dokumentation zu Azure Sentinel](https://docs.microsoft.com/azure/sentinel/).
+Weitere Informationen finden Sie in der [Dokumentation zu Azure Sentinel](../sentinel/index.yml).
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -173,7 +172,7 @@ Sie können die Sicherheitswarnungen im Aktivitätsprotokoll anzeigen, indem Sie
 
 Microsoft Graph ist das Gateway zu Daten und Intelligence in Microsoft 365. Microsoft Graph bietet ein einheitliches Programmierbarkeitsmodell, mit dem Sie auf die enormen Datenmengen in Microsoft 365, Windows 10 und Enterprise Mobility + Security zugreifen können. Verwenden Sie die Vielzahl von Daten in Microsoft Graph, um Apps für Organisationen und Consumer zu erstellen, die mit Millionen von Benutzern interagieren.
 
-Das Schema und eine JSON-Darstellung für Sicherheitswarnungen, die an MS Graph gesendet werden, sind in der [Microsoft Graph-Dokumentation](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0) verfügbar.
+Das Schema und eine JSON-Darstellung für Sicherheitswarnungen, die an MS Graph gesendet werden, sind in der [Microsoft Graph-Dokumentation](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0) verfügbar.
 
 ---
 
@@ -184,7 +183,7 @@ In diesem Artikel wurden die Schemas beschrieben, die von den Tools zum Bedrohun
 
 Weitere Informationen zu den Möglichkeiten, wie Sie auf Sicherheitswarnungen außerhalb von Security Center zugreifen können, finden Sie auf den folgenden Seiten:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/): die cloudnative SIEM-Lösung von Microsoft
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/): der vollständig verwaltete Microsoft-Dienst für die Datenerfassung in Echtzeit
+- [Azure Sentinel](../sentinel/index.yml): die cloudnative SIEM-Lösung von Microsoft
+- [Azure Event Hubs](../event-hubs/index.yml): der vollständig verwaltete Microsoft-Dienst für die Datenerfassung in Echtzeit
 - Das [Feature für den fortlaufenden Export](continuous-export.md) von Security Center
-- [Log Analytics-Arbeitsbereiche](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace): Azure Monitor speichert die Protokolldaten in einem Log Analytics-Arbeitsbereich, einem Container, der Daten und Konfigurationsinformationen enthält.
+- [Log Analytics-Arbeitsbereiche](../azure-monitor/learn/quick-create-workspace.md): Azure Monitor speichert die Protokolldaten in einem Log Analytics-Arbeitsbereich, einem Container, der Daten und Konfigurationsinformationen enthält.

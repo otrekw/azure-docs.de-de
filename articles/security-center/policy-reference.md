@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Security Center
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Security Center. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0c445dc882c40724c20c773b3a5e191fb06970a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7478199e4bb6f1e9ad986193370d4ea8610bd7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823149"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340902"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Integrierte Azure Policy-Definitionen für Azure Security Center
 
@@ -52,5 +52,5 @@ In diesem Artikel haben Sie sich über Azure Policy-Sicherheitsrichtliniendefin
 - [Planungs- und Betriebshandbuch für Azure Security Center](./security-center-planning-and-operations-guide.md): Hier erfahren Sie, wie Sie Entwurfsaspekte in Azure Security Center planen und verstehen.
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](./security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](./security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](./security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+- [Überwachen von Partnerlösungen mit Azure Security Center](./security-center-partner-integration.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 - [Azure Policy](../governance/policy/overview.md): Hier erfahren Sie, wie Sie Ihre Azure-Ressourcen überwachen und steuern.

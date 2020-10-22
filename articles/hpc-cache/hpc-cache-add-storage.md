@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611282"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340307"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -74,9 +74,9 @@ Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Hinzufügen der Zugriffssteuerungsrollen zu Ihrem Konto
 
-Azure HPC Cache verwendet die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index), um den Cachedienst für den Zugriff auf Ihr Speicherkonto für Azure-Blobspeicherziele zu autorisieren.
+Azure HPC Cache verwendet die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/index.yml), um den Cachedienst für den Zugriff auf Ihr Speicherkonto für Azure-Blobspeicherziele zu autorisieren.
 
-Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) und [Mitwirkender an Storage-Blobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) für den Benutzer „HPC Cache-Ressourcenanbieter“ explizit hinzufügen.
+Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](../role-based-access-control/built-in-roles.md#storage-account-contributor) und [Mitwirkender an Storage-Blobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) für den Benutzer „HPC Cache-Ressourcenanbieter“ explizit hinzufügen.
 
 Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite klicken, auf der Sie ein Blobspeicherziel hinzufügen. Beachten Sie, dass es bis zu fünf Minuten dauern kann, bis die Rolleneinstellungen in der Azure-Umgebung weitergegeben werden. Daher sollten Sie nach dem Hinzufügen der Rollen einige Minuten warten, bevor Sie ein Speicherziel erstellen.
 

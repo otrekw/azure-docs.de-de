@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613983"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281562"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Gremlin-API in Azure Cosmos DB
 
@@ -99,7 +99,7 @@ Die RU-Gebühr basiert auf dem Arbeits-DataSet des Durchlaufs und nicht auf dem 
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Welche maximale Skalierung kann eine Graphdatenbank in der Azure Cosmos DB-Gremlin-API aufweisen?
 
-Azure Cosmos DB nutzt [horizontale Partitionierung](partition-data.md), um einem Anstieg der Speicher- und Durchsatzanforderungen automatisch gerecht zu werden. Das Höchstmaß an Durchsatz und Speicherkapazität einer Workload richtet sich nach der Menge von Partitionen, die einem bestimmten Container zugeordnet sind. Ein Gremlin-API-Container weist jedoch einen bestimmten Satz von Richtlinien auf, um eine optimale bedarfsorientierte Leistung zu gewährleisten. Weitere Informationen zur Partitionierung und zu Best Practices finden Sie im Artikel [Partitionieren und horizontales Skalieren in Azure Cosmos DB](partition-data.md).
+Azure Cosmos DB nutzt [horizontale Partitionierung](partitioning-overview.md), um einem Anstieg der Speicher- und Durchsatzanforderungen automatisch gerecht zu werden. Das Höchstmaß an Durchsatz und Speicherkapazität einer Workload richtet sich nach der Menge von Partitionen, die einem bestimmten Container zugeordnet sind. Ein Gremlin-API-Container weist jedoch einen bestimmten Satz von Richtlinien auf, um eine optimale bedarfsorientierte Leistung zu gewährleisten. Weitere Informationen zur Partitionierung und zu Best Practices finden Sie im Artikel [Partitionieren und horizontales Skalieren in Azure Cosmos DB](partitioning-overview.md).
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Soll ich für die C#/.NET-Entwicklung das Paket „Microsoft.Azure.Graphs“ oder Gremlin.NET verwenden?
 

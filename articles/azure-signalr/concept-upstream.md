@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514236"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143237"
 ---
 # <a name="upstream-settings"></a>Upstreameinstellungen
 
@@ -88,7 +88,7 @@ Wenn Sie `ManagedIdentity` auswählen, müssen Sie im Voraus eine verwaltete Ide
 
 ## <a name="create-upstream-settings-via-resource-manager-template"></a>Erstellen von Upstreameinstellungen über Resource Manager-Vorlage
 
-Um Upstreameinstellungen unter Verwendung einer [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) zu erstellen, legen Sie die `upstream`-Eigenschaft in der `properties`-Eigenschaft fest. Der folgende Codeausschnitt zeigt, wie die `upstream`-Eigenschaft zum Erstellen und Aktualisieren von Upstreameinstellungen festgelegt werden kann.
+Um Upstreameinstellungen unter Verwendung einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) zu erstellen, legen Sie die `upstream`-Eigenschaft in der `properties`-Eigenschaft fest. Der folgende Codeausschnitt zeigt, wie die `upstream`-Eigenschaft zum Erstellen und Aktualisieren von Upstreameinstellungen festgelegt werden kann.
 
 ```JSON
 {

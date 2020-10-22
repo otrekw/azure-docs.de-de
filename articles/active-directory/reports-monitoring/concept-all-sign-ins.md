@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340588"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319776"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Berichte zu Azure Active Directory-Anmeldeaktivitäten – Vorschau
 
@@ -32,8 +32,8 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
     - **Anmeldungen** – Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen.
     - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
 - **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
+    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
 Der klassische Bericht zu Anmeldeaktivitäten in Azure AD bietet Ihnen einen Überblick über interaktive Benutzeranmeldungen. Außerdem haben Sie jetzt Zugriff auf drei zusätzliche Anmeldeberichte, die sich zurzeit in der Vorschau befinden:
 
@@ -86,7 +86,7 @@ Auf dem Blatt mit dem Bericht zu Anmeldeaktivitäten können Sie zwischen folgen
 
 - **Dienstprinzipalanmeldungen** – Anmeldungen durch Apps und Dienstprinzipale, bei denen kein Benutzer beteiligt ist. Bei diesen Anmeldungen stellt die App oder der Dienst eigene Anmeldeinformationen für die Authentifizierung oder den Zugriff auf Ressourcen bereit.
 
-- **Verwaltete Identitäten für Azure-Ressourcenanmeldungen** – Anmeldungen durch Azure-Ressourcen mit Geheimnissen, die von Azure verwaltet werden. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). 
+- **Verwaltete Identitäten für Azure-Ressourcenanmeldungen** – Anmeldungen durch Azure-Ressourcen mit Geheimnissen, die von Azure verwaltet werden. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md). 
 
 
 ![Arten von Berichten zu Anmeldeaktivitäten](./media/concept-all-sign-ins/sign-ins-report-types.png)

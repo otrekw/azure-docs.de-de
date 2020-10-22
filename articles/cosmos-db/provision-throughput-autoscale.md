@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b9d645a16a59e34d1915cf9febde6b1f8a789355
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570733"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282101"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 
@@ -85,6 +85,6 @@ Weitere Informationen finden Sie in diesem [Dokument](how-to-choose-offer.md), i
 * Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.md).
 * Erfahren Sie, wie Sie sich [zwischen manuellem Durchsatz und automatisch skaliertem Durchsatz entscheiden](how-to-choose-offer.md).
 * Erfahren Sie mehr über das [Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md).
-* Erfahren Sie mehr über die [Partitionierung](partition-data.md) in Azure Cosmos DB.
+* Erfahren Sie mehr über die [Partitionierung](partitioning-overview.md) in Azure Cosmos DB.
 
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018968"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282058"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Lesen des Azure Cosmos DB-Änderungsfeeds
 
@@ -39,7 +39,7 @@ Die Verwendung eines Pushmodells stellt die einfachste Möglichkeit dar, aus dem
 
 ### <a name="azure-functions"></a>Azure-Funktionen
 
-Azure Functions ist die einfachste Option, wenn Sie nur die ersten Schritte mit dem Änderungsfeed durchführen möchten. Aufgrund der Einfachheit ist es auch die empfohlene Option für die meisten Anwendungsfälle mit dem Änderungsfeed. Wenn Sie einen Azure Functions-Trigger für Azure Cosmos DB erstellen, wählen Sie den Container aus, mit dem eine Verbindung hergestellt werden soll. Die Azure-Funktion wird immer dann ausgelöst, wenn eine Änderung am diesem Container erfolgt. Da Azure Functions im Hintergrund den Änderungsfeedprozessor verwendet, wird die Änderungsverarbeitung automatisch über die [Partitionen](partition-data.md) des Containers parallelisiert.
+Azure Functions ist die einfachste Option, wenn Sie nur die ersten Schritte mit dem Änderungsfeed durchführen möchten. Aufgrund der Einfachheit ist es auch die empfohlene Option für die meisten Anwendungsfälle mit dem Änderungsfeed. Wenn Sie einen Azure Functions-Trigger für Azure Cosmos DB erstellen, wählen Sie den Container aus, mit dem eine Verbindung hergestellt werden soll. Die Azure-Funktion wird immer dann ausgelöst, wenn eine Änderung am diesem Container erfolgt. Da Azure Functions im Hintergrund den Änderungsfeedprozessor verwendet, wird die Änderungsverarbeitung automatisch über die [Partitionen](partitioning-overview.md) des Containers parallelisiert.
 
 Die Entwicklung mit Azure Functions ist sehr einfach und kann schneller sein als eine eigene Bereitstellung des Änderungsfeedprozessors. Trigger können im Azure Functions-Portal oder programmgesteuert über SDKs erstellt werden. Visual Studio und VS Code bieten Unterstützung für das Schreiben von Azure-Funktionen, und Sie können sogar die Azure Functions-CLI zur plattformübergreifenden Entwicklung verwenden. Sie können den Code auf Ihrem Desktop schreiben und debuggen und dann die Funktion mit einem Klick bereitstellen. Weitere Informationen finden Sie in den Artikeln [Serverloses Datenbankcomputing mithilfe von Azure Functions](serverless-computing-database.md) und [Verwenden des Änderungsfeeds mit Azure Functions](change-feed-functions.md).
 

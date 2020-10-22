@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876242"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107571"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio-Dashboards
 
-[Azure Data Studio](https://aka.ms/azuredatastudio) bietet eine ähnliche Darstellung wie das Azure-Portal für Informationen zu Ihren Azure Arc-Ressourcen.  Bei diesen Ansichten handelt es sich um sogenannte **Dashboards**, deren Layout und Optionen denjenigen ähneln, die im Azure-Portal für bestimmte Ressourcen angezeigt werden. In Dashboards sind diese Informationen jedoch auch dann lokal in Ihrer Umgebung verfügbar, wenn keine Verbindung mit Azure besteht.
+[Azure Data Studio](/sql/azure-data-studio/what-is) bietet eine ähnliche Darstellung wie das Azure-Portal für Informationen zu Ihren Azure Arc-Ressourcen.  Bei diesen Ansichten handelt es sich um sogenannte **Dashboards**, deren Layout und Optionen denjenigen ähneln, die im Azure-Portal für bestimmte Ressourcen angezeigt werden. In Dashboards sind diese Informationen jedoch auch dann lokal in Ihrer Umgebung verfügbar, wenn keine Verbindung mit Azure besteht.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "91876242"
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Herunterladen von [Azure Data Studio](https://aka.ms/getazuredatastudio)
+- Herunterladen von [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - Installation der Azure Arc-Erweiterung
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>Ermitteln der Endpunkt-URL der Datencontroller-Server-API

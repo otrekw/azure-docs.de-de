@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181509"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056428"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -34,7 +34,7 @@ Frankreich, Mitte; Frankreich, Süden; Deutschland, Nordosten; Deutschland, Mitt
 - Wenn ein virtueller Computer nicht mit dem Recovery Services-Tresor zwischen Abonnements oder in eine neue Ressourcengruppe verschoben wird, bleiben die aktuellen VM-Wiederherstellungspunkte im Tresor intakt, bis sie ablaufen.
 - Unabhängig davon, ob die VM mit dem Tresor verschoben wird oder nicht, können Sie die VM immer anhand des Sicherungsverlaufs im Tresor wiederherstellen.
 - Azure Disk Encryption setzt voraus, dass der Schlüsseltresor und die VMs zur selben Azure-Region und zum selben Azure-Abonnement gehören.
-- Informationen zum Verschieben eines virtuellen Computers mit verwalteten Datenträgern finden Sie in diesem [Artikel](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
+- Informationen zum Verschieben eines virtuellen Computers mit verwalteten Datenträgern finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription).
 - Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich in Abhängigkeit davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. Weitere Informationen finden Sie in [diesem Artikel](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Für den Tresor definierte Sicherungsrichtlinien werden beibehalten, nachdem der Tresor zwischen Abonnements oder in eine neue Ressourcengruppe verschoben worden ist.
 - Sie können nur Tresore verschieben, die eine der folgenden Typen von Sicherungselementen enthalten. Alle Sicherungselemente von Typen, die nicht unten aufgeführt sind, müssen beendet werden, und die Daten müssen vor dem Verschieben des Tresors dauerhaft gelöscht werden.
@@ -142,6 +142,50 @@ Um Ressourcen in ein neues Abonnement zu verschieben, geben Sie den Parameter`--
 
 1. Legen Sie die Zugriffssteuerungen für die Ressourcengruppen fest, bzw. überprüfen Sie sie.  
 2. Die Backup-Funktion zur Berichterstellung und Überwachung muss nach Abschluss des Verschiebevorgangs für den Tresor neu konfiguriert werden. Die vorherige Konfiguration geht während des Verschiebevorgangs verloren.
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>Verschieben Sie einen virtuellen Azure-Computer in einen anderen Recovery Services-Tresor. 
+
+Wenn Sie einen virtuellen Azure-Computer verschieben möchten, auf dem Azure Backup aktiviert ist, haben Sie zwei Möglichkeiten. Diese hängen von Ihren Geschäftsanforderungen ab:
+
+- [Zuvor gesicherte Daten müssen nicht aufbewahrt werden](#dont-need-to-preserve-previous-backed-up-data)
+- [Zuvor gesicherte Daten müssen aufbewahrt werden](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>Zuvor gesicherte Daten müssen nicht aufbewahrt werden
+
+Zum Schutz von Workloads in einem neuen Tresor müssen der aktuelle Schutz und die Daten im alten Tresor gelöscht und die Sicherungen erneut konfiguriert werden.
+
+>[!WARNING]
+>Der folgende Vorgang ist destruktiv und kann nicht rückgängig gemacht werden. Alle Sicherungsdaten und Sicherungselemente, die dem geschützten Server zugeordnet sind, werden dauerhaft gelöscht. Gehen Sie daher mit Bedacht vor.
+
+**Beenden und Löschen des aktuellen Schutzes für den alten Tresor:**
+
+1. Deaktivieren Sie in den Eigenschaften des Tresors vorläufiges Löschen. Führen Sie [die folgenden Schritte](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) aus, um das vorläufige Löschen zu deaktivieren.
+
+2. Beenden Sie den Schutz, und löschen Sie die Sicherungen aus dem aktuellen Tresor. Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungselemente** aus. Die hier aufgelisteten Elemente, die in den neuen Tresor verschoben werden müssen, müssen zusammen mit den zugehörigen Sicherungsdaten entfernt werden. Weitere Informationen finden Sie unter [Löschen von geschützten Elementen in der Cloud](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) und [Löschen von geschützten lokalen Elementen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+
+3. Wenn Sie planen, Azure-Dateifreigaben (AFS), SQL-Server oder SAP HANA-Server zu verschieben, müssen Sie auch deren Registrierung aufheben. Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** aus. Weitere Informationen finden Sie unter [Aufheben der Registrierung von SQL-Servern](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [Aufheben der Registrierung von Speicherkonten, die mit Azure-Dateifreigaben verknüpft sind](manage-afs-backup.md#unregister-a-storage-account) und [Aufheben der Registrierung einer SAP HANA-Instanz](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+
+4. Nachdem Sie diese aus dem alten Tresor entfernt haben, fahren Sie mit dem Konfigurieren der Sicherungen für Ihre Workload im neuen Tresor fort.
+
+### <a name="must-preserve-previous-backed-up-data"></a>Zuvor gesicherte Daten müssen aufbewahrt werden
+
+Wenn Sie die aktuell geschützten Daten im alten Tresor aufbewahren und den Schutz in einem neuen Tresor fortsetzen müssen, gibt es für einige der Workloads nur eingeschränkte Optionen:
+
+- Bei MARS können Sie [Beendigung des Schutzes mit Beibehaltung der Daten](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) auswählen und den Agent im neuen Tresor registrieren.
+
+  - Der Azure Backup-Dienst behält weiterhin alle vorhandenen Wiederherstellungspunkte des alten Tresors bei.
+  - Die Beihaltung der Wiederherstellungspunkte im alten Tresor ist kostenpflichtig.
+  - Für die Wiederherstellung gesicherter Daten können Sie nur nicht abgelaufene Wiederherstellungspunkte im alten Tresor auswählen.
+  - Im neuen Tresor muss ein neues Erstreplikat der Daten erstellt werden.
+
+- Bei einem virtuellen Azure-Computer können Sie [Beendigung des Schutzes mit Beibehaltung der Daten](backup-azure-manage-vms.md#stop-protecting-a-vm) für den virtuellen Computer im alten Tresor auswählen, den virtuellen Computer in eine andere Ressourcengruppe verschieben und dann den virtuellen Computer im neuen Tresor schützen. Weitere Informationen zum Verschieben eines virtuellen Computers in eine andere Ressourcengruppe finden Sie unter [Anleitungen und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations).
+
+  Ein virtueller Computer kann jeweils nur in einem Tresor geschützt werden. Der virtuelle Computer in der neuen Ressourcengruppe kann aber im neuen Tresor geschützt werden, da er als anderer virtueller Computer betrachtet wird.
+
+  - Der Azure Backup-Dienst behält die Wiederherstellungspunkte bei, die im alten Tresor gesichert wurden.
+  - Die Beibehaltung der Wiederherstellungspunkte im alten Tresor ist kostenpflichtig (Einzelheiten finden Sie unter [Azure Backup – Preise](azure-backup-pricing.md)).
+  - Sie können den virtuellen Computer bei Bedarf aus dem alten Tresor wiederherstellen.
+  - Die erste Sicherung des virtuellen Computers in der neuen Ressourcengruppe im neuen Tresor erfolgt als Erstreplikat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

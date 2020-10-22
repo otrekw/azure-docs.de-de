@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Virtual Machines
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Virtual Machines. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b7d35cbf01abbb0b19257e6c0dfd5ceb3be2e715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8005b8d804dbe78b98ff0f9d3e86f833c869a406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825165"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331633"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Integrierte Azure Policy-Definitionen für Azure Virtual Machines
 

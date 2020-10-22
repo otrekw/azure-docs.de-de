@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440769"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339729"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 In diesem Artikel wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisation bedarfsorientiert verwalten, indem Sie Sicherheitsrichtlinien auf alle Azure-Abonnements anwenden, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind.
@@ -33,10 +33,10 @@ Die Stammverwaltungsgruppe wird automatisch erstellt, wenn Sie die folgenden Akt
 2. Erstellen Sie eine Verwaltungsgruppe über einen API-Aufruf.
 3. Erstellen Sie eine Verwaltungsgruppe mit PowerShell.
 
-Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md).
+Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md).
 
 ## <a name="create-a-management-group-in-the-azure-portal"></a>Erstellen einer Verwaltungsgruppe im Azure-Portal
-Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governancerichtlinien auf die Verwaltungsgruppen anwenden. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Für das Security Center-Onboarding sind Verwaltungsgruppen zwar nicht erforderlich, aber es wird dringend empfohlen, mindestens eine Verwaltungsgruppe zu erstellen, damit die Stammverwaltungsgruppe erstellt wird. Nachdem die Gruppe erstellt wurde, werden alle Abonnements unter Ihrem Azure AD-Mandanten damit verknüpft. Eine Anleitung für PowerShell und weitere Informationen finden Sie unter [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../azure-resource-manager/management-groups-create.md).
+Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governancerichtlinien auf die Verwaltungsgruppen anwenden. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Für das Security Center-Onboarding sind Verwaltungsgruppen zwar nicht erforderlich, aber es wird dringend empfohlen, mindestens eine Verwaltungsgruppe zu erstellen, damit die Stammverwaltungsgruppe erstellt wird. Nachdem die Gruppe erstellt wurde, werden alle Abonnements unter Ihrem Azure AD-Mandanten damit verknüpft. Eine Anleitung für PowerShell und weitere Informationen finden Sie unter [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../governance/management-groups/create-management-group-portal.md).
 
  
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.

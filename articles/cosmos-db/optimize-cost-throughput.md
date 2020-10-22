@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801323"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281058"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Sie können Durchsatz für Datenbanken oder Container bereitstellen, und jede St
 
 * Wenn Sie Durchsatz für eine Datenbank bereitstellen, können alle Container (z. B. Sammlungen/Tabellen/Diagramme) in dieser Datenbank auf Basis der Last den Durchsatz gemeinsam nutzen. Auf Datenbankebene reservierter Durchsatz wird ungleichmäßig gemeinsam genutzt und richtet sich nach der Workload einer bestimmten Containergruppe.
 
-* Wenn Sie Durchsatz für einen Container bereitstellen, ist der Durchsatz für diesen Container garantiert und wird durch SLA zugesichert. Die Auswahl eines logischen Partitionsschlüssels ist dabei entscheidend für die gleichmäßige Verteilung der Last über alle logischen Partitionen eines Containers. Ausführlichere Informationen finden Sie in den Artikeln [Partitionieren](partitioning-overview.md) und [Horizontale Skalierung](partition-data.md).
+* Wenn Sie Durchsatz für einen Container bereitstellen, ist der Durchsatz für diesen Container garantiert und wird durch SLA zugesichert. Die Auswahl eines logischen Partitionsschlüssels ist dabei entscheidend für die gleichmäßige Verteilung der Last über alle logischen Partitionen eines Containers. Ausführlichere Informationen finden Sie in den Artikeln [Partitionieren](partitioning-overview.md) und [Horizontale Skalierung](partitioning-overview.md).
 
 Die folgenden Richtlinien können bei der Entscheidung für eine Durchsatzbereitstellungsstrategie hilfreich sein:
 

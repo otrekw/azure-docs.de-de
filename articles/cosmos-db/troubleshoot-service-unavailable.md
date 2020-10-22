@@ -7,12 +7,12 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 749592b778612c6903c9c15e336de3fb00978199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40787e1b7c40e5c238b2e400f6b449ad8963dd1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870866"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277134"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Diagnose und Troubleshooting der Ausnahme „Azure Cosmos DB nicht verfügbar“
 Das SDK war nicht in der Lage, eine Verbindung mit Azure Cosmos DB herzustellen.
@@ -21,7 +21,7 @@ Das SDK war nicht in der Lage, eine Verbindung mit Azure Cosmos DB herzustellen
 Die folgende Liste enthält bekannte Gründe und Lösungen für Ausnahmen, dass ein Dienst nicht verfügbar ist.
 
 ### <a name="the-required-ports-are-being-blocked"></a>Die erforderlichen Ports werden blockiert
-Vergewissern Sie sich, dass alle [erforderlichen Ports](performance-tips-dotnet-sdk-v3-sql.md#networking) aktiviert sind.
+Vergewissern Sie sich, dass alle [erforderlichen Ports](sql-sdk-connection-modes.md#service-port-ranges) aktiviert sind.
 
 ### <a name="client-side-transient-connectivity-issues"></a>Clientseitige vorübergehende Konnektivitätsprobleme
 Ausnahmen vom Typ „Dienst nicht verfügbar“ können auftreten, wenn vorübergehende Konnektivitätsprobleme auftreten, die Timeouts verursachen. In der Regel enthält die Stapelüberwachung im Zusammenhang mit diesem Szenario einen `TransportException`-Fehler. Beispiel:

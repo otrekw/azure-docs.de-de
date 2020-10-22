@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301447"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341684"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Häufig gestellte Fragen – allgemeine Fragen zu Azure Security Center
 
@@ -62,7 +62,7 @@ Weitere Informationen dazu, wie eine Sicherheitsrichtlinie konfiguriert wird, fi
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden mögliche Sicherheitsrisiken festgestellt, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess des Konfigurierens des erforderlichen Sicherheitsmechanismus geführt. Beispiele:
 
 * Bereitstellung von Antischadsoftware, um bösartige Software zu erkennen und zu entfernen
-* [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) und Regeln, um Datenverkehr zu virtuellen Computern zu steuern
+* [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) und Regeln, um Datenverkehr zu virtuellen Computern zu steuern
 * Bereitstellung einer Web Application Firewall als Schutz vor Angriffen, die auf Ihre Webanwendungen abzielen
 * Bereitstellen von fehlenden Systemupdates
 * Behandeln von Betriebssystemkonfigurationen, die nicht den empfohlenen Basisregeln entsprechen

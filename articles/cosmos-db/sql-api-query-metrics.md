@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008691"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280521"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](how-to-sql-query.md
 
 ## <a name="about-sql-query-execution"></a>Informationen über die Ausführung von SQL-Abfragen
 
-In Azure Cosmos DB speichern Sie Daten in Containern, die auf eine beliebige [Speichergröße oder einen beliebigen Anforderungsdurchsatz](partition-data.md) erweitert werden können. Azure Cosmos DB skaliert Daten nahtlos im Hintergrund über physische Partitionen hinweg, um das Datenwachstum im bereitgestellten Durchsatz zu verarbeiten. Sie können mit der REST-API oder einem der unterstützten [SQL-SDKs](sql-api-sdk-dotnet.md) SQL-Abfragen an einen beliebigen Container ausgeben.
+In Azure Cosmos DB speichern Sie Daten in Containern, die auf eine beliebige [Speichergröße oder einen beliebigen Anforderungsdurchsatz](partitioning-overview.md) erweitert werden können. Azure Cosmos DB skaliert Daten nahtlos im Hintergrund über physische Partitionen hinweg, um das Datenwachstum im bereitgestellten Durchsatz zu verarbeiten. Sie können mit der REST-API oder einem der unterstützten [SQL-SDKs](sql-api-sdk-dotnet.md) SQL-Abfragen an einen beliebigen Container ausgeben.
 
 Ein kurzer Überblick über die Partitionierung: Sie definieren einen Partitionsschlüssel wie „city“, der bestimmt, wie Daten auf physischen Partitionen aufgeteilt werden. Daten, die zu einem einzelnen Partitionsschlüssel gehören (z.B. „city“ == „Seattle“), werden auf einer physischen Partition gespeichert, wobei eine einzelne physische Partition in der Regel jedoch mehrere Partitionsschlüssel aufweist. Wenn eine Partition die Speichergröße erreicht, teilt der Dienst die Partition nahtlos in zwei neue Partitionen auf und teilt den Partitionsschlüssel gleichmäßig auf diese Partitionen auf. Da Partitionen vorübergehend sind, verwenden die APIs eine Abstraktion eines „Partitionsschlüsselbereichs“, der die Bereiche von Partitionsschlüsselhashes bezeichnet. 
 
@@ -163,7 +163,7 @@ Bei Azure Cosmos DB werden Abfragen in der Regel in der Reihenfolge von den schn
 
 Abfragen, bei denen alle Partitionen abgefragt werden müssen, verursachen höhere Latenzen und verbrauchen mehr RUs. Da jede Partition über eine automatische Indizierung für alle Eigenschaften verfügt, kann die Abfrage in diesem Fall effizient über den Index verarbeitet werden. Mithilfe der Optionen für die Parallelverarbeitung können Sie partitionsübergreifende Abfragen schneller erstellen.
 
-Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren in Azure Cosmos DB](partition-data.md).
+Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren in Azure Cosmos DB](partitioning-overview.md).
 
 ### <a name="sdk-and-query-options"></a>SDK und Abfrageoptionen
 Unter [Leistungstipps](performance-tips.md) und [Leistungstests](performance-testing.md) finden Sie Informationen darüber, wie die ideale clientseitige Leistung von Azure Cosmos DB erzielt wird. Dies umfasst die Verwendung aktueller SDKs, die Konfiguration plattformspezifischer Konfigurationen wie die Standardanzahl von Verbindungen, die Häufigkeit von Garbage Collections und die Verwendung einfacher Konnektivitätsoptionen wie Direkt/TCP. 
