@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800499"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143920"
 ---
 # <a name="azure-resource-logs"></a>Azure-Ressourcenprotokolle
 Azure-Ressourcenprotokolle sind [Plattformprotokolle](platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.
@@ -27,7 +27,7 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie u
 - Verwenden von Protokollabfragen zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Protokolldaten
 - Verwenden von Protokollwarnungen mit komplexer Warnungslogik
 
-[Erstellen Sie eine Diagnoseeinstellung](diagnostic-settings.md), um Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Diese Daten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](../log-query/logs-structure.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
+[Erstellen Sie eine Diagnoseeinstellung](diagnostic-settings.md), um Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Diese Daten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](./data-platform-logs.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
 
 - Azure-Diagnose: Alle Daten werden in die Tabelle _AzureDiagnostics_ geschrieben.
 - Ressourcenspezifisch: Daten werden für jede Kategorie der Ressource in eine individuelle Tabelle geschrieben.

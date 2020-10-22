@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3910b6ffcce6c5bc4a8d565071c4b07db9e3ff63
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488302"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279016"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -4767,7 +4767,21 @@ xpath('<xml>', '<xpath>')
 
 Angenommen, es liegt diese XML-Zeichenfolge `'items'` vor: 
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In diesem Beispiel wird der XPath-Ausdruck `'/produce/item/name'` übergeben, um die mit dem Knoten `<name></name>` in der XML-Zeichenfolge `'items'` übereinstimmenden Knoten zu suchen, und es wird ein Array mit diesen Knotenwerten zurückgegeben:
 
@@ -4799,7 +4813,21 @@ Hier ist das Ergebnis: `Honeycrisp`
 
 In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` auch die Attribute `expired='true'` und `expired='false'` enthält:
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In diesem Beispiel wird der XPath-Ausdruck `'//name[@expired]'` übergeben, um alle `name`-Elemente zu suchen, die über das Attribut `expired` verfügen:
 
@@ -4811,7 +4839,21 @@ Hier ist das Ergebnis: `[ Gala, Honeycrisp ]`
 
 In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` nur das Attribut `expired = 'true'` enthält:
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In diesem Beispiel wird der XPath-Ausdruck `'//name[@expired = 'true']'` übergeben, um alle `name`-Elemente zu suchen, die über das Attribut `expired = 'true'` verfügen:
 
@@ -4826,7 +4868,21 @@ In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` auch dies
 * `expired='true' price='12'`
 * `expired='false' price='40'`
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true' price='12'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false' price='40'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In diesem Beispiel wird der XPath-Ausdruck `'//name[price>35]'` übergeben, um alle `name`-Elemente zu suchen, die über `price > 35` verfügen:
 
@@ -4838,7 +4894,21 @@ Hier ist das Ergebnis: `Honeycrisp`
 
 In diesem Beispiel wird angenommen, dass Ihre XML-Zeichenfolge `items` mit der in Beispiel 1 übereinstimmt:
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 In diesem Beispiel wird nach Knoten gesucht, die mit dem Knoten `<count></count>` übereinstimmen, und diese Knotenwerte werden mit der `sum()`-Funktion addiert:
 
@@ -4850,7 +4920,9 @@ Hier ist das Ergebnis: `30`
 
 In diesem Beispiel wird angenommen, dass Sie über diese XML-Zeichenfolge verfügen, die den XML-Dokumentnamespace `xmlns="http://contoso.com"` enthält:
 
-`"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
+```xml
+<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+```
 
 In diesen Ausdrücken wird einer der XPath-Ausdrücke `/*[name()="file"]/*[name()="location"]` oder `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` verwendet, um nach Knoten zu suchen, die mit dem Knoten `<location></location>` übereinstimmen. Diese Beispiele zeigen die Syntax, die Sie im Logik-App-Designer oder im Ausdrucks-Editor verwenden:
 

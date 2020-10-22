@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327617"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150908"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
 
@@ -356,13 +356,13 @@ Für eine in Azure ausgeführte Funktions-App wird ein Azure Storage-Konto benö
 
 ### <a name="configure-function-app-for-authentication"></a>Konfigurieren der Funktions-App für die Authentifizierung
 
-Bisher funktioniert die Chat-App anonym. In Azure verwenden Sie zum Authentifizieren von Benutzern die [App Service-Authentifizierung](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization). Die Benutzer-ID oder der Benutzername des authentifizierten Benutzers kann an die *SignalRConnectionInfo*-Bindung übergeben werden, um Verbindungsinformationen zu generieren, die als der entsprechende Benutzer authentifiziert sind.
+Bisher funktioniert die Chat-App anonym. In Azure verwenden Sie zum Authentifizieren von Benutzern die [App Service-Authentifizierung](../app-service/overview-authentication-authorization.md). Die Benutzer-ID oder der Benutzername des authentifizierten Benutzers kann an die *SignalRConnectionInfo*-Bindung übergeben werden, um Verbindungsinformationen zu generieren, die als der entsprechende Benutzer authentifiziert sind.
 
 Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen Clients oder nur an die Clients gesendet werden soll, die für einen bestimmten Benutzer authentifiziert wurde.
 
 1. Öffnen Sie in VS Code die Datei **negotiate/function.json**.
 
-1. Fügen Sie in der Eigenschaft *userId* der *SignalRConnectionInfo*-Bindung einen [Bindungsausdruck](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) ein: `{headers.x-ms-client-principal-name}`. Damit wird der Wert auf den Benutzernamen des authentifizierten Benutzers festgelegt. Das Attribut sollte nun wie folgt aussehen:
+1. Fügen Sie in der Eigenschaft *userId* der *SignalRConnectionInfo*-Bindung einen [Bindungsausdruck](../azure-functions/functions-triggers-bindings.md) ein: `{headers.x-ms-client-principal-name}`. Damit wird der Wert auf den Benutzernamen des authentifizierten Benutzers festgelegt. Das Attribut sollte nun wie folgt aussehen:
 
     ```json
     {
@@ -431,11 +431,11 @@ App Service-Authentifizierung unterstützt die Authentifizierung über Azure Act
 
 1. Befolgen Sie zum Abschließen der Konfiguration die Anweisungen in der Dokumentation des ausgewählten Anmeldeanbieters.
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
-    - [Microsoft-Konto](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
-    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
+    - [Azure Active Directory](../app-service/configure-authentication-provider-aad.md)
+    - [Facebook](../app-service/configure-authentication-provider-facebook.md)
+    - [Twitter](../app-service/configure-authentication-provider-twitter.md)
+    - [Microsoft-Konto](../app-service/configure-authentication-provider-microsoft.md)
+    - [Google](../app-service/configure-authentication-provider-google.md)
 
 ### <a name="update-the-web-app"></a>Aktualisieren der Web-App
 
@@ -517,4 +517,3 @@ In diesem Tutorial haben Sie erfahren, wie Sie Azure Functions mit Azure SignalR
 > [Erstellen von Echtzeit-Apps mit Azure Functions](signalr-concept-azure-functions.md)
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsauth)
-

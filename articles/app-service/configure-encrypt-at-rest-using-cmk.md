@@ -3,12 +3,12 @@ title: Verschlüsseln Ihrer Anwendungsquelle im Ruhezustand
 description: Erfahren Sie, wie Sie Ihre Anwendungsdaten in Azure Storage verschlüsseln und als Paketdatei bereitstellen.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978480"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146045"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Verschlüsselung im Ruhezustand mithilfe von Kunden verwalteter Schlüssel
 
@@ -22,7 +22,7 @@ Zum Verschlüsseln der Anwendungsdaten Ihrer Web-App im Ruhezustand sind ein Azu
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-[Erstellen Sie zunächst ein Azure Storage-Konto](../storage/common/storage-account-create.md), und [verschlüsseln Sie es mit vom Kunden verwalteten Schlüsseln](../storage/common/encryption-customer-managed-keys.md). Sobald das Konto erstellt ist, laden Sie mit dem [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) die Paketdateien hoch.
+[Erstellen Sie zunächst ein Azure Storage-Konto](../storage/common/storage-account-create.md), und [verschlüsseln Sie es mit vom Kunden verwalteten Schlüsseln](../storage/common/customer-managed-keys-overview.md). Sobald das Konto erstellt ist, laden Sie mit dem [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) die Paketdateien hoch.
 
 Verwenden Sie als nächstes den Storage-Explorer, um [eine SAS zu generieren](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer). 
 

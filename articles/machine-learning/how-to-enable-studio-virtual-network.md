@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da8dc11212d33627a165dc5e11acc64087fb6c43
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776084"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131818"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -106,7 +106,7 @@ Für __Azure Blob Storage__ wird die vom Arbeitsbereich verwaltete Identität au
 
 Sie können den Datenzugriff innerhalb eines virtuellen Netzwerks mit RBAC- und POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) steuern.
 
-Um RBAC zu verwenden, fügen Sie die vom Arbeitsbereich verwaltete Identität der [Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)-Rolle hinzu. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control).
+Um RBAC zu verwenden, fügen Sie die vom Arbeitsbereich verwaltete Identität der [Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)-Rolle hinzu. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 Um ACLs zu verwenden, kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzip Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

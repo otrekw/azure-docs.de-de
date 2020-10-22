@@ -8,16 +8,16 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 8810309fef5dbbb35465a2af15d42fa8a59d5401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa97c2cb062f30b1260ec7f80f85a3caccf932f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84302102"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152312"
 ---
 # <a name="use-service-tags-for-azure-signalr-service"></a>Verwenden von Diensttags für Azure SignalR Service
 
-Sie können [Diensttags](../virtual-network/security-overview.md#service-tags) für Azure SignalR Service verwenden, wenn Sie [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#network-security-groups) konfigurieren. So können Sie Sicherheitsregeln für ausgehenden Datenverkehr zu Azure SignalR Service-Endpunkten definieren, ohne dass dafür IP-Adressen hartcodiert werden müssen.
+Sie können [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags) für Azure SignalR Service verwenden, wenn Sie [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#network-security-groups) konfigurieren. So können Sie Sicherheitsregeln für ausgehenden Datenverkehr zu Azure SignalR Service-Endpunkten definieren, ohne dass dafür IP-Adressen hartcodiert werden müssen.
 
 Azure SignalR Service verwaltet diese Diensttags. Sie können kein eigenes Diensttag erstellen oder ein vorhandenes Tag ändern. Microsoft verwaltet diese Adresspräfixe, die dem Diensttag entsprechen, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
@@ -46,4 +46,4 @@ Sie können ausgehenden Datenverkehr zu Azure SignalR Service zulassen, indem Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Netzwerksicherheitsgruppen: Diensttags](../virtual-network/security-overview.md#security-rules)
+- [Netzwerksicherheitsgruppen: Diensttags](../virtual-network/network-security-groups-overview.md#security-rules)

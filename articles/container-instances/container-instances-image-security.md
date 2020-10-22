@@ -4,12 +4,12 @@ description: Empfehlungen zum Schutz von Images und Secrets für Azure Container
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922233"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148670"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Sicherheitsüberlegungen für Azure Container Instances
 
@@ -34,7 +34,7 @@ Ein öffentlich verfügbares Containerimage garantiert keine Sicherheit. Contain
 
 Nutzen Sie Lösungen zum Überprüfen von Containerimages in einer privaten Registrierung und zum Identifizieren potenzieller Sicherheitsrisiken. Es ist wichtig, die Tiefe der Bedrohungserkennung zu verstehen, die die verschiedenen Lösungen bieten.
 
-Beispielsweise kann Azure Security Center optional [mit Azure Container Registry integriert](../security-center/azure-container-registry-integration.md) werden, um automatisch alle Linux-Images zu überprüfen, die in eine Registrierung gepusht werden. Der integrierte Qualys-Scanner von Azure Security Center erkennt Sicherheitsrisiken von Images, klassifiziert sie und stellt Anleitungen zur Wartung bereit.
+Beispielsweise kann Azure Security Center optional [mit Azure Container Registry integriert](../security-center/defender-for-container-registries-introduction.md) werden, um automatisch alle Linux-Images zu überprüfen, die in eine Registrierung gepusht werden. Der integrierte Qualys-Scanner von Azure Security Center erkennt Sicherheitsrisiken von Images, klassifiziert sie und stellt Anleitungen zur Wartung bereit.
 
 Lösungen zur Sicherheitsüberwachung und Imageüberprüfung wie [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) und [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) sind ebenfalls über den Azure Marketplace verfügbar.  
 
@@ -138,7 +138,7 @@ Wie in jeder IT-Umgebung sollten Sie die Aktivitäten und den Benutzerzugriff au
 
 Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff auf Ihr Containerökosystem, einschließlich Ihres Kubernetes-Clusters, der Containerregistrierung und der Containerimages. Diese Protokolle können für Überprüfungszwecke erforderlich sein und sind als forensische Beweise nach einem Sicherheitsvorfall nützlich. Zu Azure-Lösungen zählen z. B. folgende:
 
-* [Integration von Azure Kubernetes Service in Azure Security Center](../security-center/azure-kubernetes-service-integration.md) zum Überwachen der Sicherheitskonfiguration der Clusterumgebung und zum Generieren von Sicherheitsempfehlungen
+* [Integration von Azure Kubernetes Service in Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) zum Überwachen der Sicherheitskonfiguration der Clusterumgebung und zum Generieren von Sicherheitsempfehlungen
 * [Azure-Containerüberwachungslösung](../azure-monitor/insights/containers.md)
 * Ressourcenprotokolle für [Azure Container Instances](container-instances-log-analytics.md) und [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 

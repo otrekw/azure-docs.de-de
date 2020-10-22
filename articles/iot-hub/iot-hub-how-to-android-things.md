@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673394"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151717"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Entwickeln für die Android Things-Plattform mithilfe von Azure IoT-SDKs
 
-[Azure IoT Hub-SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) bieten direkte Unterstützung für gängige Plattformen, z.B. Windows, Linux, OSX, MBED, und mobile Plattformen wie Android und iOS.  Da wir die Auswahlmöglichkeiten und Flexibilität bei der IoT-Bereitstellungen ständig erweitern, unterstützt das Java SDK auch die Plattform [Android Things](https://developer.android.com/things/).  Entwickler können die Vorteile des Android Things-Betriebssystems auf der Geräteseite nutzen und [Azure IoT Hub](about-iot-hub.md) als zentralen Nachrichtenhub verwenden, der für Millionen gleichzeitig verbundene Geräte skaliert werden kann.
+[Azure IoT Hub-SDKs](./iot-hub-devguide-sdks.md) bieten direkte Unterstützung für gängige Plattformen, z.B. Windows, Linux, OSX, MBED, und mobile Plattformen wie Android und iOS.  Da wir die Auswahlmöglichkeiten und Flexibilität bei der IoT-Bereitstellungen ständig erweitern, unterstützt das Java SDK auch die Plattform [Android Things](https://developer.android.com/things/).  Entwickler können die Vorteile des Android Things-Betriebssystems auf der Geräteseite nutzen und [Azure IoT Hub](about-iot-hub.md) als zentralen Nachrichtenhub verwenden, der für Millionen gleichzeitig verbundene Geräte skaliert werden kann.
 
 In diesem Tutorial werden die Schritte zum Erstellen einer geräteseitigen Anwendung auf Android Things mit dem Azure IoT-Java SDK beschrieben.
 

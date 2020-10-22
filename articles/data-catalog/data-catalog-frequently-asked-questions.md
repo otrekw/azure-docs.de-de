@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397299"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151968"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -87,7 +87,7 @@ Die spezifischen Eigenschaften variieren je nach Datenquelle, aber im Allgemeine
 >
 
 > [!NOTE]
-> Für Datenquellen wie SQL Server Analysis Services, die über eine leistungsstarke **Description**-Eigenschaft verfügen, wird dieser Eigenschaftswert vom Data Catalog-Datenquellen-Registrierungstool extrahiert. Für *lokale* relationale SQL Server-Datenbanken ohne leistungsstarke **Description**-Eigenschaft extrahiert das Data Catalog-Datenquellen-Registrierungstool den Wert aus der erweiterten **ms_description**-Eigenschaft für Objekte und Spalten. Diese Eigenschaft wird mit SQL Azure nicht unterstützt. Weitere Informationen finden Sie unter [Verwenden von erweiterten Eigenschaften für Datenbankobjekte](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Für Datenquellen wie SQL Server Analysis Services, die über eine leistungsstarke **Description**-Eigenschaft verfügen, wird dieser Eigenschaftswert vom Data Catalog-Datenquellen-Registrierungstool extrahiert. Für *lokale* relationale SQL Server-Datenbanken ohne leistungsstarke **Description**-Eigenschaft extrahiert das Data Catalog-Datenquellen-Registrierungstool den Wert aus der erweiterten **ms_description**-Eigenschaft für Objekte und Spalten. Diese Eigenschaft wird mit SQL Azure nicht unterstützt. Weitere Informationen finden Sie unter [Verwenden von erweiterten Eigenschaften für Datenbankobjekte](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 
@@ -122,7 +122,7 @@ Data Catalog ist ein Clouddienst, der sowohl Clouddatenquellen als auch lokale D
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>Können aus den von mir registrierten Datenquellen auch mehr oder umfangreichere Metadaten extrahiert werden?
 Wir arbeiten derzeit daran, die Funktionen von Data Catalog zu erweitern. Wenn zusätzliche Metadaten während der Registrierung aus der Datenquelle extrahiert werden sollen, können Sie dies in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder einen bereits vorhandenen Vorschlag unterstützen). 
 
-Falls Sie Spalten-/Schemametadaten, Vorschauversionen oder Datenprofile einbinden möchten, können Sie für Datenquellen, bei denen diese Metadaten nicht vom Datenquellen-Registrierungstool extrahiert werden, die Data Catalog-API zum Hinzufügen dieser Metadaten verwenden. Weitere Informationen finden Sie unter [Azure Data Catalog](https://docs.microsoft.com/rest/api/datacatalog/).
+Falls Sie Spalten-/Schemametadaten, Vorschauversionen oder Datenprofile einbinden möchten, können Sie für Datenquellen, bei denen diese Metadaten nicht vom Datenquellen-Registrierungstool extrahiert werden, die Data Catalog-API zum Hinzufügen dieser Metadaten verwenden. Weitere Informationen finden Sie unter [Azure Data Catalog](/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Wie kann ich die Sichtbarkeit der registrierten Datenobjekte so einschränken, dass nur bestimmte Personen sie ermitteln können?
 Wählen Sie die Datenobjekte in Data Catalog aus, und klicken Sie auf die Schaltfläche **Besitz übernehmen**. Besitzer von Datenobjekten in Data Catalog können die Einstellungen zur Sichtbarkeit ändern, um entweder für alle Benutzer die Ermittlung der im Besitz befindlichen Ressourcen zuzulassen oder die Sichtbarkeit auf bestimmte Benutzer zu beschränken. Weitere Informationen finden Sie unter [Verwalten von Datenobjekten in Azure Data Catalog](data-catalog-how-to-manage.md).

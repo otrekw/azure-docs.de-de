@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: f3ecf8ef22d3f1d66b7148b809475a830c7e9f13
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259012"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318594"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -28,8 +28,8 @@ In der folgenden Tabelle sind die unterstützten Datenquellen für Azure Data Sh
 | Azure Blob Storage |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL-Datenbank |Öffentliche Vorschau | |
-| Azure Synapse Analytics (ehemals Azure SQL DW) |Öffentliche Vorschau | |
+| Azure SQL-Datenbank |✓ | |
+| Azure Synapse Analytics (ehemals Azure SQL DW) |✓ | |
 | Azure-Daten-Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Datenspeicher-Unterstützungsmatrix

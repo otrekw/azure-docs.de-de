@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462035"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152157"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -93,7 +93,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klonen des Quellcodes und Initialisieren
 
-1. Installieren Sie die Workload [Desktop development with C++](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) für Visual Studio 2019. Visual Studio 2017 und 2015 werden ebenfalls unterstützt.
+1. Installieren Sie die Workload [Desktop development with C++](/cpp/build/vscpp-step-0-installation?view=vs-2019) für Visual Studio 2019. Visual Studio 2017 und 2015 werden ebenfalls unterstützt.
 
 1. Installieren Sie [CMake](https://cmake.org/). Stellen Sie sicher, dass das Tool sich in Ihrem `PATH` befindet, indem Sie an einer Eingabeaufforderung `cmake -version` eingeben.
 
@@ -115,7 +115,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
     cmake ..
     ```
 
-    Wenn `cmake` Ihren C++-Compiler nicht finden kann, treten beim Ausführen des obigen Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus. 
+    Wenn `cmake` Ihren C++-Compiler nicht finden kann, treten beim Ausführen des obigen Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](/dotnet/framework/tools/developer-command-prompt-for-vs) aus. 
 
     Nach erfolgreicher Erstellung ähneln die letzten Ausgabezeilen der folgenden Ausgabe:
 
@@ -234,7 +234,7 @@ Um den Prozentsatz der in der Cloud zu überwachenden Nachrichten zu ändern, m�
 
 ### <a name="bulk-update-for-multiple-devices"></a>Massenaktualisierung für mehrere Geräte
 
-Verwenden Sie zum Aktualisieren der Samplingkonfiguration der verteilten Ablaufverfolgung für mehrere Geräte die [automatische Gerätekonfiguration](iot-hub-auto-device-config.md). Befolgen Sie dazu das folgende Schema für Gerätezwillinge:
+Verwenden Sie zum Aktualisieren der Samplingkonfiguration der verteilten Ablaufverfolgung für mehrere Geräte die [automatische Gerätekonfiguration](./iot-hub-automatic-device-management.md). Befolgen Sie dazu das folgende Schema für Gerätezwillinge:
 
 ```json
 {
@@ -260,7 +260,7 @@ Um alle von einer IoT Hub-Instanz protokollierten Ablaufverfolgungen anzuzeigen,
 
 ### <a name="query-using-log-analytics"></a>Abfragen mithilfe von Log Analytics
 
-Wenn Sie [Log Analytics mit Diagnoseprotokollen](../azure-monitor/platform/resource-logs-collect-storage.md) eingerichtet haben, führen Sie die Abfragen durch Suchen von Protokollen in der Kategorie `DistributedTracing` durch. In der folgenden Abfrage sind beispielsweise alle protokollierten Ablaufverfolgungen aufgeführt:
+Wenn Sie [Log Analytics mit Diagnoseprotokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) eingerichtet haben, führen Sie die Abfragen durch Suchen von Protokollen in der Kategorie `DistributedTracing` durch. In der folgenden Abfrage sind beispielsweise alle protokollierten Ablaufverfolgungen aufgeführt:
 
 ```Kusto
 // All distributed traces 
@@ -282,7 +282,7 @@ Eine Beschreibung der unterschiedlichen Protokolltypen finden Sie unter [Azure I
 
 ### <a name="application-map"></a>Anwendungszuordnung
 
-Um den Fluss von IoT-Nachrichten zu visualisieren, richten Sie die Beispiel-App für die Anwendungsübersicht ein. Die Beispiel-App sendet die Protokolle der verteilten Ablaufverfolgung mithilfe einer Azure-Funktion und einem Event Hub an die [Anwendungsübersicht](../application-insights/app-insights-app-map.md).
+Um den Fluss von IoT-Nachrichten zu visualisieren, richten Sie die Beispiel-App für die Anwendungsübersicht ein. Die Beispiel-App sendet die Protokolle der verteilten Ablaufverfolgung mithilfe einer Azure-Funktion und einem Event Hub an die [Anwendungsübersicht](../azure-monitor/app/app-map.md).
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Beispiel von GitHub abrufen</a>
@@ -295,11 +295,11 @@ In dieser Abbildung ist die verteilte Ablaufverfolgung mit drei Routingendpunkte
 
 ### <a name="context"></a>Kontext
 
-Viele IoT-Lösungen, einschließlich unserer eigenen [Referenzarchitektur](https://aka.ms/iotrefarchitecture) (nur Englisch) folgen in der Regel einer Variante der [Microservicearchitektur](https://docs.microsoft.com/azure/architecture/microservices/). Mit zunehmender Komplexität einer IoT-Lösung nutzen Sie schließlich ein Dutzend oder mehr Microservices. Diese Microservices können von Azure oder anderen Anbietern stammen. Die genaue Ermittlung, an welcher Stelle IoT-Nachrichten gelöscht oder langsamer übertragen werden, kann sich schwierig gestalten. Angenommen, Ihre IoT-Lösung nutzt 5 unterschiedliche Azure-Dienste und umfasst 1.500 aktive Geräte. Jedes Gerät sendet 10 Gerät-zu-Cloud-Nachrichten pro Sekunde (also insgesamt 15.000 Nachrichten/Sekunde), aber bei Ihrer Web-App kommen pro Sekunde nur 10.000 Nachrichten an. Wo liegt das Problem? Wie finden Sie den Verursacher?
+Viele IoT-Lösungen, einschließlich unserer eigenen [Referenzarchitektur](https://aka.ms/iotrefarchitecture) (nur Englisch) folgen in der Regel einer Variante der [Microservicearchitektur](/azure/architecture/microservices/). Mit zunehmender Komplexität einer IoT-Lösung nutzen Sie schließlich ein Dutzend oder mehr Microservices. Diese Microservices können von Azure oder anderen Anbietern stammen. Die genaue Ermittlung, an welcher Stelle IoT-Nachrichten gelöscht oder langsamer übertragen werden, kann sich schwierig gestalten. Angenommen, Ihre IoT-Lösung nutzt 5 unterschiedliche Azure-Dienste und umfasst 1.500 aktive Geräte. Jedes Gerät sendet 10 Gerät-zu-Cloud-Nachrichten pro Sekunde (also insgesamt 15.000 Nachrichten/Sekunde), aber bei Ihrer Web-App kommen pro Sekunde nur 10.000 Nachrichten an. Wo liegt das Problem? Wie finden Sie den Verursacher?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Muster der verteilten Ablaufverfolgung in der Microservicearchitektur
 
-Damit der Weg einer IoT-Nachricht in den verschiedenen Diensten nachvollzogen werden kann, muss in jedem Dienst eine *Korrelations-ID* vergeben werden, mit der die Nachricht eindeutig identifiziert wird. Nach der Erfassung in einem zentralen System können Sie anhand der Korrelations-IDs den Fluss der Nachricht anzeigen. Diese Methode wird als [Muster der verteilten Ablaufverfolgung](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing) bezeichnet.
+Damit der Weg einer IoT-Nachricht in den verschiedenen Diensten nachvollzogen werden kann, muss in jedem Dienst eine *Korrelations-ID* vergeben werden, mit der die Nachricht eindeutig identifiziert wird. Nach der Erfassung in einem zentralen System können Sie anhand der Korrelations-IDs den Fluss der Nachricht anzeigen. Diese Methode wird als [Muster der verteilten Ablaufverfolgung](/azure/architecture/microservices/logging-monitoring#distributed-tracing) bezeichnet.
 
 Zur Unterstützung einer größeren Akzeptanz der verteilten Ablaufverfolgung beteiligt sich Microsoft am [Vorschlag für den W3C-Standard für die verteilte Ablaufverfolgung](https://w3c.github.io/trace-context/).
 
@@ -328,5 +328,5 @@ Nach der Aktivierung erfolgt die Unterstützung der verteilten Ablaufverfolgung 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum allgemeinen Muster der verteilten Ablaufverfolgung in Microservices finden Sie unter [Microservice architecture pattern: distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html) (Microservicearchitekturmuster: Verteilte Ablaufverfolgung).
-- Informationen zum Einrichten der Konfiguration zur Anwendung von Einstellungen der verteilten Ablaufverfolgung auf eine große Anzahl von Geräten finden Sie unter [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](iot-hub-auto-device-config.md).
+- Informationen zum Einrichten der Konfiguration zur Anwendung von Einstellungen der verteilten Ablaufverfolgung auf eine große Anzahl von Geräten finden Sie unter [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](./iot-hub-automatic-device-management.md).
 - Weitere Informationen zu Azure Monitor finden Sie unter [Was ist Azure Monitor?](../azure-monitor/overview.md).

@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294593"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164549"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Benutzerdefinierte Azure Functions-Handler (Vorschau)
 
@@ -566,7 +566,7 @@ Der Functions-Host gibt zusätzliche Protokollmeldungen mit Informationen zum be
 
 Lokal werden Protokolle in der Konsole ausgegeben.
 
-In Azure können Sie [Application Insights-Ablaufverfolgungen abfragen](functions-monitoring.md#query-telemetry-data), um die Protokollmeldungen anzuzeigen. Falls von Ihrer App eine große Menge an Protokollen erzeugt wird, wird nur ein Teil der Protokollmeldungen an Application Insights gesendet. [Deaktivieren Sie das Sampling](functions-monitoring.md#configure-sampling), um sicherzustellen, dass alle Meldungen protokolliert werden.
+In Azure können Sie [Application Insights-Ablaufverfolgungen abfragen](analyze-telemetry-data.md#query-telemetry-data), um die Protokollmeldungen anzuzeigen. Falls von Ihrer App eine große Menge an Protokollen erzeugt wird, wird nur ein Teil der Protokollmeldungen an Application Insights gesendet. [Deaktivieren Sie das Sampling](configure-monitoring.md#configure-sampling), um sicherzustellen, dass alle Meldungen protokolliert werden.
 
 ### <a name="test-custom-handler-in-isolation"></a>Isoliertes Testen eines benutzerdefinierten Handlers
 

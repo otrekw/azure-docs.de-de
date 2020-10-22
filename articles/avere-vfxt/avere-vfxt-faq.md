@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272690"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342364"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT für Azure: Häufig gestellte Fragen
 
@@ -160,7 +160,7 @@ Das Trennen und erneute Anfügen von SSDs wird nicht unterstützt. Metadaten ode
 
 ### <a name="does-the-system-encrypt-the-cache"></a>Verschlüsselt das System den Cache?
 
-Die Daten werden über die Datenträger verteilt, aber nicht verschlüsselt. Die Datenträger selbst können jedoch verschlüsselt werden. Weitere Informationen finden Sie unter [Absichern und Verwenden von Richtlinien auf virtuellen Computern in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Die Daten werden über die Datenträger verteilt, aber nicht verschlüsselt. Die Datenträger selbst können jedoch verschlüsselt werden. Weitere Informationen finden Sie unter [Absichern und Verwenden von Richtlinien auf virtuellen Computern in Azure](../virtual-machines/security-policy.md#encryption).
 
 ## <a name="technical-networking"></a>Technisch: Netzwerk
 
@@ -259,7 +259,7 @@ Nein. Die Vereinbarung zum Servicelevel (SLA) für Archivspeicher ist nicht komp
 
 BLOB Storage der kalten Ebene („Cool“) wird in der Regel nicht für eine Avere vFXT for Azure-Kernspeichereinheit empfohlen. Die kalte Ebene bietet geringere Speicherkosten, aber höhere Betriebskosten. (Weitere Informationen finden Sie unter [Blockblob – Preise](<https://azure.microsoft.com/pricing/details/storage/blobs/>).) Wenn auf Daten häufig zugegriffen wird und diese häufig geändert oder gelöscht werden, sollten Sie die heiße Speicherebene Ebene („Hot“) verwenden.
 
-Unter [Zugriffsebenen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) finden Sie weitere Informationen dazu, wann es sinnvoll ist, Speicher der kalten Ebene als vFXT-Kernspeichereinheit zu verwenden.
+Unter [Zugriffsebenen](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) finden Sie weitere Informationen dazu, wann es sinnvoll ist, Speicher der kalten Ebene als vFXT-Kernspeichereinheit zu verwenden.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Wie verschlüssele ich den Blobcontainer?
 

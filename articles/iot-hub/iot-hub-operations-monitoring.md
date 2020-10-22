@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022019"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139338"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-Vorgangsüberwachung (veraltet)
 
@@ -191,7 +191,7 @@ Die Kategorie „Nachrichtenweiterleitung“ verfolgt Fehler, die während der A
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Herstellen einer Verbindung mit dem Überwachungsendpunkt
 
-Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) .
+Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
 
 Zum Herstellen einer Verbindung mit dem Überwachungsendpunkt benötigen Sie eine Verbindungszeichenfolge und den Endpunktnamen. Führen Sie die folgenden Schritte aus, um die erforderlichen Werte im Portal zu ermitteln:
 
@@ -271,4 +271,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
 
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/quickstart-linux.md)

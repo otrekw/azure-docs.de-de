@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: c31d3136ec4bcdf6da7680d41de078f8bd03d256
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447104"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341345"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Verwalten von Sicherheitsvorfällen in Azure Security Center
 
 Das Selektieren und Untersuchen von Sicherheitswarnungen kann auch für sehr erfahrene Sicherheitsanalysten zeitaufwändig sein. Häufig ist nur schwer zu erkennen, wo überhaupt begonnen werden soll. 
 
-Security Center verwendet [Analysen](security-center-detection-capabilities.md), um die Informationen zwischen verschiedenen [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) zu verbinden. Mithilfe dieser Verbindungen kann Security Center eine Einzelansicht einer Angriffskampagne und der zugehörigen Warnungen bereitstellen, damit Sie die Aktionen des Angreifers und die betroffenen Ressourcen besser verstehen können.
+Security Center verwendet [Analysen](./security-center-alerts-overview.md), um die Informationen zwischen verschiedenen [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) zu verbinden. Mithilfe dieser Verbindungen kann Security Center eine Einzelansicht einer Angriffskampagne und der zugehörigen Warnungen bereitstellen, damit Sie die Aktionen des Angreifers und die betroffenen Ressourcen besser verstehen können.
 
 Diese Seite enthält eine Übersicht über die Vorfälle in Security Center.
 

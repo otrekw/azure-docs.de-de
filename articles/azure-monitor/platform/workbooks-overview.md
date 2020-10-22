@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932395"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143635"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
@@ -97,7 +97,7 @@ Wenn Sie die Schaltfläche „Bearbeiten“ direkt unterhalb des Rasters mit Anf
 
 ![Screenshot der zugrunde liegenden Kusto-Abfrage](./media/workbooks-overview/kusto.png)
 
-Wenn Sie auf die anderen Schaltflächen **Bearbeiten** auf der rechten Seite klicken, wird eine Reihe von Kernkomponenten angezeigt, aus denen sich Arbeitsmappen zusammensetzen, wie markdownbasierte [Textfelder](workbooks-visualizations.md#text), Benutzeroberflächenelemente für die [Parameterauswahl](workbooks-parameters.md) und andere [Diagramm-/Visualisierungstypen](workbooks-visualizations.md). 
+Wenn Sie auf die anderen Schaltflächen **Bearbeiten** auf der rechten Seite klicken, wird eine Reihe von Kernkomponenten angezeigt, aus denen sich Arbeitsmappen zusammensetzen, wie markdownbasierte [Textfelder](workbooks-text-visualizations.md), Benutzeroberflächenelemente für die [Parameterauswahl](workbooks-parameters.md) und andere [Diagramm-/Visualisierungstypen](#visualizations). 
 
 Das Erkunden der vordefinierten Vorlagen im Bearbeitungsmodus, das anschließende Anpassen an Ihre Anforderungen und das Speichern Ihrer eigenen benutzerdefinierten Arbeitsmappe ist eine hervorragende Möglichkeit, um zu erfahren, welche Möglichkeiten Azure Monitor-Arbeitsmappen bieten.
 
@@ -129,5 +129,5 @@ Sobald Sie mit dem Erstellen Ihrer eigenen Arbeitsmappenvorlagen beginnen, könn
 
 ## <a name="next-step"></a>Nächster Schritt
 
-* [Erfahren Sie mehr](workbooks-visualizations.md) über die vielen umfassenden Visualisierungsoptionen für Arbeitsmappen.
+* [Erfahren Sie mehr](#visualizations) über die vielen umfassenden Visualisierungsoptionen für Arbeitsmappen.
 * [Steuern](workbooks-access-control.md) Sie den Zugriff auf Ihre Arbeitsmappenressourcen, und geben Sie diese frei.

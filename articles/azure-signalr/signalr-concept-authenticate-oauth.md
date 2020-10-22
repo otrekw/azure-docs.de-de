@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294239"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151229"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service-Authentifizierung
 
@@ -48,7 +48,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Ein auf [GitHub](https://github.com/) erstelltes Konto
 * [Git-Client](https://git-scm.com/)
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Konfigurierte Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [Konfigurierte Azure Cloud Shell](../cloud-shell/quickstart.md)
 * Laden Sie das GitHub-Repository [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) herunter, oder klonen Sie es.
 
 ## <a name="create-an-oauth-app"></a>Erstellen einer OAuth-App
@@ -388,7 +388,7 @@ In diesem Abschnitt aktivieren Sie die echte Authentifizierung, indem Sie der Hu
 
 ## <a name="deploy-the-app-to-azure"></a>Bereitstellen der Anwendung in Azure
 
-In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle (CLI) aus Azure Cloud Shell, um eine neue Web-App in [Azure App Service](https://docs.microsoft.com/azure/app-service/) zum Hosten Ihrer ASP.NET-Anwendung in Azure zu erstellen. Die Web-App wird so konfiguriert, dass sie die lokale Git-Bereitstellung verwendet. Die Web-App wird auch mit Ihrer SignalR-Verbindungszeichenfolge, den geheimen GitHub-OAuth-App-Daten und einem Bereitstellungsbenutzer konfiguriert.
+In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle (CLI) aus Azure Cloud Shell, um eine neue Web-App in [Azure App Service](../app-service/index.yml) zum Hosten Ihrer ASP.NET-Anwendung in Azure zu erstellen. Die Web-App wird so konfiguriert, dass sie die lokale Git-Bereitstellung verwendet. Die Web-App wird auch mit Ihrer SignalR-Verbindungszeichenfolge, den geheimen GitHub-OAuth-App-Daten und einem Bereitstellungsbenutzer konfiguriert.
 
 Für die Schritte in diesem Abschnitt wird die Erweiterung *signalr* für die Azure CLI verwendet. Führen Sie den folgenden Befehl aus, um die Erweiterung *signalr* für die Azure CLI zu installieren:
 

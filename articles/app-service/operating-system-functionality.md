@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080197"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150166"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
-In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
+In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](./overview.md) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
 
 > [!NOTE] 
 > [Linux-Apps](overview.md#app-service-on-linux) in App Service werden in eigenen Containern ausgeführt. Es wird kein Zugriff auf das Hostbetriebssystem gewährt, Sie erhalten Rootzugriff auf den Container. Ebenso erhalten Sie für [in Windows-Containern ausgeführte Apps](quickstart-custom-container.md?pivots=container-windows) Verwaltungszugriff auf die Container, aber keinen Zugriff auf das Hostbetriebssystem. 
@@ -126,4 +126,3 @@ App Service stellt keinen Remotedesktopzugriff auf die VM-Instanzen bereit.
 ## <a name="more-information"></a>Weitere Informationen
 
 [Azure App Service-Sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox): Aktuelle Informationen zur Ausführungsumgebung von App Service. Diese Seite wird direkt vom App Service-Entwicklungsteam betreut.
-

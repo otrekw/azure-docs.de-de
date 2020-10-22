@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung physischer Server mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f7dea69c78bb038c06e5cb276628eba0381bb2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660348"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319304"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -74,4 +74,4 @@ Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Vorbereiten auf die Bewertung und Migration physischer Server zu Azure](tutorial-prepare-physical.md)
+[Vorbereiten auf die Bewertung und Migration physischer Server zu Azure](./tutorial-discover-physical.md)

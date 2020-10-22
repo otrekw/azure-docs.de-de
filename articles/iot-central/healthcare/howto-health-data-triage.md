@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497045"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127079"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Tutorial: Erstellen eines Power BI-Anbieterdashboards
 
@@ -44,14 +44,14 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Eine Azure IoT Central-Vorlage für eine Anwendung zur kontinuierlichen Patientenüberwachung. Wenn Sie noch nicht über eine solche Vorlage verfügen, führen Sie die Schritte zum [Bereitstellen einer Anwendungsvorlage](overview-iot-central-healthcare.md) aus.
 
-* Ein Azure [Event Hubs-Namespace und ein Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+* Ein Azure [Event Hubs-Namespace und ein Event Hub](../../event-hubs/event-hubs-create.md).
 
-* Die Logik-App, in der Sie auf Ihren Event Hub zugreifen möchten. Um Ihre Logik-App mit einem Azure Event Hubs-Trigger starten zu können, benötigen Sie eine [leere Logik-App](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow).
+* Die Logik-App, in der Sie auf Ihren Event Hub zugreifen möchten. Um Ihre Logik-App mit einem Azure Event Hubs-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Ein Power BI-Dienstkonto. Wenn Sie noch nicht über ein solches Konto verfügen, können Sie [ein kostenloses Testkonto für den Power BI-Dienst erstellen](https://app.powerbi.com/). Wenn Sie Power BI noch nicht verwendet haben, sollten Sie zunächst das Tutorial [Erste Schritte mit Power BI](https://docs.microsoft.com/power-bi/service-get-started) lesen.
+* Ein Power BI-Dienstkonto. Wenn Sie noch nicht über ein solches Konto verfügen, können Sie [ein kostenloses Testkonto für den Power BI-Dienst erstellen](https://app.powerbi.com/). Wenn Sie Power BI noch nicht verwendet haben, sollten Sie zunächst das Tutorial [Erste Schritte mit Power BI](/power-bi/service-get-started) lesen.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Einrichten eines kontinuierlichen Datenexports nach Azure Event Hubs
-Sie müssen zuerst einen kontinuierlichen Datenexport aus Ihrer Azure IoT Central-App-Vorlage an die Azure Event Hub-Instanz in Ihrem Abonnement einrichten. Befolgen Sie dazu die Schritte zum [Exportieren nach Event Hubs](https://docs.microsoft.com/azure/iot-central/core/howto-export-data) im vorliegenden Azure IoT Central-Tutorial. Für dieses Tutorial müssen Sie nur die Telemetriedaten exportieren.
+Sie müssen zuerst einen kontinuierlichen Datenexport aus Ihrer Azure IoT Central-App-Vorlage an die Azure Event Hub-Instanz in Ihrem Abonnement einrichten. Befolgen Sie dazu die Schritte zum [Exportieren nach Event Hubs](../core/howto-export-data.md) im vorliegenden Azure IoT Central-Tutorial. Für dieses Tutorial müssen Sie nur die Telemetriedaten exportieren.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Erstellen eines Power BI-Streamingdatasets
 
@@ -72,10 +72,10 @@ Sie müssen zuerst einen kontinuierlichen Datenexport aus Ihrer Azure IoT Centra
     >[!div class="mx-imgBorder"] 
     >![Eingeben von Datasetwerten](media/enter-dataset-values.png)
 
-Weitere Informationen zu Streamingdatasets in Power BI finden Sie im Dokument [Echtzeitstreaming in Power BI](https://docs.microsoft.com/power-bi/service-real-time-streaming).
+Weitere Informationen zu Streamingdatasets in Power BI finden Sie im Dokument [Echtzeitstreaming in Power BI](/power-bi/service-real-time-streaming).
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Herstellen einer Verbindung zwischen Ihrer Logik-App und Azure Event Hubs
-Um eine Verbindung zwischen Ihrer Logik-App und Azure Event Hubs herzustellen, befolgen Sie die Anweisungen im Dokument [Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Im Folgenden finden Sie einige empfohlene Parameter:
+Um eine Verbindung zwischen Ihrer Logik-App und Azure Event Hubs herzustellen, befolgen Sie die Anweisungen im Dokument [Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action). Im Folgenden finden Sie einige empfohlene Parameter:
 
 |Parameter|Wert|
 |---|---|
@@ -91,7 +91,7 @@ Am Ende dieses Schritts sollte Ihr Logik-App-Designer wie folgt aussehen:
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Streamen von Daten aus Ihrer Logik-App nach Power BI
 Im nächsten Schritt analysieren Sie die Daten aus Ihrem Event Hub, um sie in die zuvor erstellten Power BI-Datasets zu streamen.
 
-1. Bevor Sie diesen Schritt ausführen, müssen Sie die JSON-Nutzlast kennen, die von Ihrem Gerät an Ihren Event Hub gesendet wird. Sehen Sie sich dafür dieses [Beispielschema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) an, und ändern Sie es so, dass es Ihrem Schema entspricht, oder verwenden Sie den [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), um die Meldungen zu untersuchen. Wenn Sie die Anwendungen zur kontinuierlichen Patientenüberwachung verwenden, sehen die Meldungen etwa wie folgt aus:
+1. Bevor Sie diesen Schritt ausführen, müssen Sie die JSON-Nutzlast kennen, die von Ihrem Gerät an Ihren Event Hub gesendet wird. Sehen Sie sich dafür dieses [Beispielschema](../core/howto-export-data.md#telemetry-format) an, und ändern Sie es so, dass es Ihrem Schema entspricht, oder verwenden Sie den [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), um die Meldungen zu untersuchen. Wenn Sie die Anwendungen zur kontinuierlichen Patientenüberwachung verwenden, sehen die Meldungen etwa wie folgt aus:
 
 **Smart Vitals Patch-Telemetrie**
 

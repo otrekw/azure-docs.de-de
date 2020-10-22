@@ -1,18 +1,16 @@
 ---
 title: Erste Schritte mit der U-SQL-Sprache in Azure Data Lake Analytics
 description: Hier werden die Grundlagen der U-SQL-Sprache in Azure Data Lake Analytics vermittelt. Schreiben Sie Ihre erste Abfrage mithilfe von Variablen, um Daten aus Dateien zu extrahieren, das Rowset zu transformieren und Daten zu aggregieren.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128844"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219920"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Erste Schritte mit U-SQL in Azure Data Lake Analytics
 
@@ -21,7 +19,7 @@ U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kom
 ## <a name="learning-resources"></a>Schulungsressourcen
 
 * Im [U-SQL-Tutorial](https://aka.ms/usqltutorial) wird U-SQL ausführlich vorgestellt. Dieses Dokument wird für alle Entwickler empfohlen, die sich mit U-SQL vertraut machen möchten.
-* Ausführliche Informationen zur **Syntax der U-SQL-Sprache** finden Sie unter [U-SQL Language Reference](https://docs.microsoft.com/u-sql/) (Referenz zur U-SQL-Sprache).
+* Ausführliche Informationen zur **Syntax der U-SQL-Sprache** finden Sie unter [U-SQL Language Reference](/u-sql/) (Referenz zur U-SQL-Sprache).
 * Informationen zur **Entwurfsphilosophie von U-SQL** finden Sie im Visual Studio-Blogbeitrag [Introducing U-SQL – A Language that Makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/) (Einführung in U-SQL: eine Sprache, die die Verarbeitung von Big Data vereinfacht).
 
 ## <a name="prerequisites"></a>Voraussetzungen

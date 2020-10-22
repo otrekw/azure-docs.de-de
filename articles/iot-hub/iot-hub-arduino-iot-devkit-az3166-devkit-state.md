@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337941"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148788"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -28,7 +28,7 @@ Sie können dieses Beispiel verwenden, um mithilfe von Azure IoT Hub-Gerätezwil
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-- Richten Sie Ihre Entwicklungsumgebung anhand des [Leitfadens zu den ersten Schritten](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) ein.
+- Richten Sie Ihre Entwicklungsumgebung anhand des [Leitfadens zu den ersten Schritten](./iot-hub-arduino-iot-devkit-az3166-get-started.md) ein.
 
 - Geben Sie in Ihrem GitBash-Terminalfenster (oder an einer anderen Git-Befehlszeilenschnittstelle) die folgenden Befehle ein:
 
@@ -114,4 +114,4 @@ Folgendes wurde vermittelt:
 - Herstellen der Verbindung des MXChip IoT DevKit-Geräts mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung.
 - Verwenden der Gerätezwillingsfunktion von Azure IoT, um die Farbe der RGB-LED des DevKit zu erkennen und zu steuern
 
-Wir empfehlen, mit dem folgenden Schritt fortzufahren: [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
+Wir empfehlen, mit dem folgenden Schritt fortzufahren: [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](/azure/iot-suite/)

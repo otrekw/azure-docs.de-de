@@ -1,18 +1,16 @@
 ---
 title: Verwenden von Azure Data Lake Tools für Visual Studio Code
 description: Erfahren Sie, wie Sie Azure Data Lake Tools für Visual Studio Code verwenden, um U-SQL-Skripts zu erstellen, zu testen und auszuführen.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126481"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221246"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Verwenden von Azure Data Lake Tools für Visual Studio Code
 
@@ -22,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Tools für Visual Studio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Azure Data Lake Tools für VS Code unterstützt Windows, Linux und MacOS. Das lokale Ausführung von U-SQL und lokales Debuggen funktioniert ausschließlich in Windows.
+Azure Data Lake Tools für VS Code unterstützt Windows, Linux und MacOS.  Das lokale Ausführung von U-SQL und lokales Debuggen funktioniert ausschließlich in Windows.
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -67,15 +65,15 @@ Sie müssen eine U-SQL-Datei oder einen entsprechenden Ordner öffnen, um mit U-
 4. Geben Sie den folgenden Code in die Datei „Unbenannt-1“ ein:
 
    ```usql
-   @departments  =
-       SELECT * FROM
-           (VALUES
-               (31,    "Sales"),
-               (33,    "Engineering"),
-               (34,    "Clerical"),
-               (35,    "Marketing")
-           ) AS
-                 D( DepID, DepName );
+   @departments  =
+       SELECT * FROM
+           (VALUES
+               (31,    "Sales"),
+               (33,    "Engineering"),
+               (34,    "Clerical"),
+               (35,    "Marketing")
+           ) AS
+                 D( DepID, DepName );
    ```
 
    OUTPUT @departments     TO "/Output/departments.csv" USING Outputters.Csv();
@@ -146,7 +144,7 @@ Azure Data Lake Tools unterstützt mehrere benutzerdefinierte Codes. Anweisungen
 
 ## <a name="work-with-assemblies"></a>Arbeiten mit Assemblys
 
-Weitere Informationen zum Entwickeln von Assemblys finden Sie unter [Entwickeln von U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-assemblies.md).
+Weitere Informationen zum Entwickeln von Assemblys finden Sie unter [Entwickeln von U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge]().
 
 Sie können mit Data Lake Tools benutzerdefinierte Codeassemblys im Data Lake Analytics-Katalog registrieren.
 

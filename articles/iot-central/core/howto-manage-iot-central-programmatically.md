@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/19/2020
 ms.topic: how-to
-ms.openlocfilehash: ba0ee0a610299bbe6b7e550f204cd2fd50d6d71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773793c7681890098fea1a37cc5b9912c0ecb75c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83748629"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122993"
 ---
 # <a name="manage-iot-central-programmatically"></a>Programmgesteuertes Verwalten von IoT Central
 
@@ -35,7 +35,7 @@ In der folgenden Tabelle sind die Repositorys und Paketinstallationsbefehle für
 
 ## <a name="samples"></a>Beispiele
 
-Das Repository [Azure IoT Central ARM SDK samples](https://docs.microsoft.com/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) enthält Codebeispiele für mehrere Programmiersprachen, die zeigen, wie Sie Azure IoT Central-Anwendungen erstellen, aktualisieren, auflisten und löschen.
+Das Repository [Azure IoT Central ARM SDK samples](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) enthält Codebeispiele für mehrere Programmiersprachen, die zeigen, wie Sie Azure IoT Central-Anwendungen erstellen, aktualisieren, auflisten und löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Azure Container Instances mit Containerorche
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74533663"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148595"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances und Containerorchestratoren
 
@@ -54,7 +54,7 @@ Anstatt die Anzahl der virtuellen Computer in Ihrem Cluster horizontal hochzuska
 
 Um Anwendungsworkloads in einem [Azure Kubernetes Service-Cluster](../aks/intro-kubernetes.md) (AKS) schnell zu skalieren, können Sie *virtuelle Knoten* verwenden, die dynamisch in Azure Container Instances erstellt wurden. Virtuelle Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in ACI und dem AKS-Cluster ausgeführt werden. 
 
-Aktuell werden Linux-Containerinstanzen von virtuellen Knoten unterstützt. Verwenden Sie für erste Schritte mit virtuellen Knoten die [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) oder das [Azure-Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
+Aktuell werden Linux-Containerinstanzen von virtuellen Knoten unterstützt. Verwenden Sie für erste Schritte mit virtuellen Knoten die [Azure CLI](../aks/virtual-nodes-cli.md) oder das [Azure-Portal](../aks/virtual-nodes-portal.md).
 
 Virtuelle Knoten verwenden das Open Source-Kubelet [Virtual Kubelet][aci-connector-k8s], um das [Kubelet][kubelet-doc] von Kubernetes durch Registrierung als Knoten mit unbegrenzter Kapazität nachzuahmen. Das Virtual Kubelet veranlasst die Erstellung von [Pods][pod-doc] als Containergruppen in Azure Container Instances.
 

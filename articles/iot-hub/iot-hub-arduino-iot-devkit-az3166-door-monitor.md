@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337873"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148798"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Türüberwachung: Senden einer E-Mail mithilfe von Azure Functions und SendGrid beim Öffnen einer Tür           
 
@@ -171,7 +171,7 @@ Die Verbindungszeichenfolge, die im Schritt [Bereitstellen von Azure-Diensten](#
 
 Anschließend startet VS Code die Überprüfung und den Upload des Arduino-Sketchs in das DevKit.
 
-![device-upload](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
+![Der Screenshot zeigt Visual Studio Code beim Überprüfen und Hochladen des Arduino-Sketches.](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
 Das DevKit startet neu und beginnt mit der Ausführung des Codes.
 
@@ -197,4 +197,4 @@ Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT-Remoteüberwachungslösung verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Wir empfehlen, mit dem folgenden Schritt fortzufahren: [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
+Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT-Remoteüberwachungslösung verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Wir empfehlen, mit dem folgenden Schritt fortzufahren: [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](/azure/iot-suite/)

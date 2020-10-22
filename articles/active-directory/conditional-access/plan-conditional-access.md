@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992861"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145287"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -291,11 +291,7 @@ Mit Azure Active Directory können Sie [benannte Standorte](location-condition.m
 
 ### <a name="plan-your-policy-deployment"></a>Planen der Richtlinienbereitstellung
 
-Wenn neue Richtlinien für Ihre Umgebung bereit sind, vergewissern Sie sich, dass Sie jede Richtlinie überprüfen, bevor Sie sie freigeben, um unerwünschte Ergebnisse zu vermeiden. In der folgenden Dokumentation finden Sie wichtige Informationen dazu, wie Richtlinien angewendet und wie Probleme vermieden werden.
-
-* [Wichtige Informationen](best-practices.md)
-
-* [Das sollten Sie vermeiden](best-practices.md)
+Wenn neue Richtlinien für Ihre Umgebung bereit sind, vergewissern Sie sich, dass Sie jede Richtlinie überprüfen, bevor Sie sie freigeben, um unerwünschte Ergebnisse zu vermeiden.
 
 ## <a name="common-policies"></a>Allgemeine Richtlinien
 
@@ -462,10 +458,6 @@ Mit der Standortbedingung einer Richtlinie für bedingten Zugriff können Sie di
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 
 Vor dem Zugriff auf bestimmte Cloud-Apps in Ihrer Umgebung können Sie die Zustimmung von Benutzern erlangen, indem diese Ihre Nutzungsbedingungen akzeptieren. Befolgen Sie diesen [Schnellstart zum Erstellen der Nutzungsbedingungen](require-tou.md).
-
-### <a name="classic-policies"></a>Klassische Richtlinien
-
-Im [Azure-Portal](https://portal.azure.com/) finden Sie Ihre Richtlinien für bedingten Zugriff unter „Azure Active Directory > Sicherheit > Bedingter Zugriff“. In Ihrer Organisation können auch ältere Richtlinien für bedingten Zugriff vorhanden sein, die nicht mithilfe dieser Seite erstellt wurden. Diese Richtlinien werden als „klassische Richtlinien“ bezeichnet. Es wird empfohlen, diese [klassischen Richtlinien in das Azure-Portal zu migrieren](best-practices.md).
 
 ## <a name="troubleshoot-conditional-access"></a>Problembehandlung für bedingten Zugriff
 
