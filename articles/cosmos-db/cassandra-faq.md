@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167605"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278185"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Cassandra-API in Azure Cosmos DB
 
@@ -79,11 +79,11 @@ Diagnoseprotokolle werden im Artikel [Diagnoseprotokollierung für Azure Cosmos 
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Entspricht die Primärschlüsselzuordnung dem Konzept von Partitionsschlüsseln von Azure Cosmos DB?
 
-Ja. Der Partitionsschlüssel wird verwendet, um die Entität am richtigen Speicherort zu platzieren. In Azure Cosmos DB wird er zum Suchen der richtigen logischen Partition auf einer physischen Partition verwendet. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert. Die wesentliche Lektion ist hierbei, dass eine logische Partition die 20-GB-Grenze nicht überschreiten sollte.
+Ja. Der Partitionsschlüssel wird verwendet, um die Entität am richtigen Speicherort zu platzieren. In Azure Cosmos DB wird er zum Suchen der richtigen logischen Partition auf einer physischen Partition verwendet. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partitioning-overview.md) sehr gut erläutert. Die wesentliche Lektion ist hierbei, dass eine logische Partition die 20-GB-Grenze nicht überschreiten sollte.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Was passiert, wenn ich eine Benachrichtigung darüber erhalte, dass eine Partition voll ist?
 
-Azure Cosmos DB ist ein auf einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) basierendes System, das unbegrenzte Skalierbarkeit mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Dieser unbegrenzte Speicher basiert auf einer horizontalen Skalierung der Daten mit der Partitionierung als grundlegendem Konzept. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert.
+Azure Cosmos DB ist ein auf einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) basierendes System, das unbegrenzte Skalierbarkeit mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Dieser unbegrenzte Speicher basiert auf einer horizontalen Skalierung der Daten mit der Partitionierung als grundlegendem Konzept. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partitioning-overview.md) sehr gut erläutert.
 
 Sie sollten das Limit von 20 GB für die Anzahl von Entitäten oder Elementen pro logischer Partition einhalten. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, sollten Sie *keine* Hot Partition erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen. Dieser Fehler kann nur bei einer Datenscherung auftreten, also wenn Sie über viele Daten für einen Partitionsschlüssel (mehr als 20 GB) verfügen. Sie können die Verteilung der Daten mithilfe des Storage-Portals ermitteln. Um diesen Fehler zu beheben, müssen Sie die Tabelle neu erstellen und einen präzisen Primärschlüssel (Partitionsschlüssel) auswählen, der eine bessere Verteilung der Daten ermöglicht.
 

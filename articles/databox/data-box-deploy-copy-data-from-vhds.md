@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739866"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124012"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box zum Importieren von Daten als verwaltete Datenträger in Azure
 
@@ -38,7 +38,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 4. Sie haben sich mit Folgendem vertraut gemacht:
 
     - Unterstützte Größen für verwaltete Datenträger und [Größenbeschränkungen für das Azure-Objekt](data-box-limits.md#azure-object-size-limits)
-    - [Einführung in verwaltete Azure-Datenträger](/azure/virtual-machines/windows/managed-disks-overview) 
+    - [Einführung in verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) 
 
 5. Sie haben eine Kopie der Quelldaten aufbewahrt, bis Sie bestätigt haben, dass Ihre Daten von Data Box in Azure Storage übertragen wurden.
 
@@ -183,4 +183,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Data Bo
 
 > [!div class="nextstepaction"]
 > [Zurücksenden der Azure Data Box an Microsoft](./data-box-deploy-picked-up.md)
-

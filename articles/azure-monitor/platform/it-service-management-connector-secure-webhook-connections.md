@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328852"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107758"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinden von Azure mit ITSM-Tools unter Verwendung von Secure Export
 
@@ -51,7 +51,7 @@ Secure Export bietet Unterstützung für BMC Helix. Nachfolgend sind einige Vort
 
 * **Bessere Authentifizierung**: Azure AD bietet eine sicherere Authentifizierung ohne die Timeouts, die bei ITSMC häufig auftreten.
 * **Warnungen werden im ITSM-Tool behandelt**: Bei Metrikwarnungen werden die Status „ausgelöst“ und „behoben“ verwendet. Wenn die Bedingung erfüllt ist, lautet der Warnungsstatus „ausgelöst“. Ist die Bedingung nicht mehr erfüllt, lautet der Status der Warnung „behoben“. In ITSMC können Warnungen nicht automatisch behandelt werden. Bei Secure Export wird der Status „behoben“ an das ITSM-Tool übermittelt und automatisch aktualisiert.
-* **[Einheitliches Warnungsschema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)** : In ITSMC variiert das Schema der Nutzdaten einer Warnung basierend auf dem Warnungstyp. In Secure Export wird ein einheitliches Schema für alle Warnungstypen verwendet. Dieses gemeinsame Schema umfasst das Konfigurationselement für alle Warnungstypen. Sämtliche Warnungstypen können ihr Konfigurationselement an die CMDB binden.
+* **[Einheitliches Warnungsschema](./alerts-common-schema.md)** : In ITSMC variiert das Schema der Nutzdaten einer Warnung basierend auf dem Warnungstyp. In Secure Export wird ein einheitliches Schema für alle Warnungstypen verwendet. Dieses gemeinsame Schema umfasst das Konfigurationselement für alle Warnungstypen. Sämtliche Warnungstypen können ihr Konfigurationselement an die CMDB binden.
 
 Führen Sie die folgenden Schritte aus, um den ITSM-Connector zu verwenden:
 
@@ -63,7 +63,7 @@ Führen Sie die folgenden Schritte aus, um den ITSM-Connector zu verwenden:
 
 Führen Sie diese Schritte aus, um die Anwendung bei Azure AD zu registrieren:
 
-1. Befolgen Sie die unter [Registrieren einer Anwendung bei Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) beschriebenen Schritte.
+1. Befolgen Sie die unter [Registrieren einer Anwendung bei Microsoft Identity Platform](../../active-directory/develop/quickstart-register-app.md) beschriebenen Schritte.
 1. Wählen Sie in Azure AD die Option **Anwendung verfügbar machen** aus.
 1. Wählen Sie für **Anwendungs-ID-URI** die Option **Festlegen** aus.
 
@@ -75,7 +75,7 @@ Führen Sie diese Schritte aus, um die Anwendung bei Azure AD zu registrieren:
 Nachdem Ihre Anwendung bei Azure AD registriert wurde, können Sie basierend auf Azure-Warnungen Arbeitselemente in Ihrem ITSM-Tool erstellen. Dazu verwenden Sie die Aktion „Sicherer Webhook“ in den Aktionsgruppen.
 
 Aktionsgruppen bieten eine modulare und wiederverwendbare Methode zum Auslösen von Aktionen für Azure-Warnungen. Sie können Aktionsgruppen im Azure-Portal mit Metrikwarnungen, Aktivitätsprotokollwarnungen und Azure Log Analytics-Warnungen verwenden.
-Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md).
 
 Führen Sie in der BMC Helix-Umgebung die folgenden Schritte aus:
 
@@ -89,7 +89,7 @@ Befolgen Sie diese Anweisungen für sichere Webhooks, um einen Webhook zu einer 
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach dem Eintrag **Überwachen**, und wählen Sie ihn aus. Im Bereich **Überwachen** sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
 1. Wählen Sie **Warnungen** > **Aktionen verwalten** aus.
-1. Wählen Sie [Aktionsgruppe hinzufügen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal), und füllen Sie die Felder aus.
+1. Wählen Sie [Aktionsgruppe hinzufügen](./action-groups.md#create-an-action-group-by-using-the-azure-portal), und füllen Sie die Felder aus.
 1. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 1. Wählen Sie **Sicherer Webhook** aus.
 1. Legen Sie folgende Einstellungen fest:
@@ -140,4 +140,4 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](./itsmc-overview.md)

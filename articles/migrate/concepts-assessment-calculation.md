@@ -3,12 +3,12 @@ title: Azure VM-Bewertungen mit der Azure Migrate-Serverbewertung
 description: Erfahren Sie mehr über Bewertungen mit der Azure Migrate-Serverbewertung.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275522"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319315"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Serverbewertungsübersicht (Migration zu Azure-VMs)
 
@@ -54,7 +54,7 @@ Wenn Sie eine Azure Migrate-Appliance bereitstellen, um lokale Server zu ermitte
 
 Wenn die Appliance mit der Ermittlung von Computern begonnen hat, können Sie die Computer, die Sie bewerten möchten, zu einer Gruppe hinzufügen und eine Bewertung für diese Gruppe mit dem Bewertungstyp **Azure VM** durchführen.
 
-Führen Sie diese Schritte zum Testen des Verfahrens mit unseren Tutorials für [VMware](tutorial-prepare-vmware.md), [Hyper-V](tutorial-prepare-hyper-v.md) oder [physische Server](tutorial-prepare-physical.md) aus.
+Führen Sie diese Schritte zum Testen des Verfahrens mit unseren Tutorials für [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md) oder [physische Server](./tutorial-discover-physical.md) aus.
 
 ## <a name="how-do-i-assess-with-imported-data"></a>Wie führe ich eine Bewertung mit importierten Daten durch?
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 und alle SPs | Azure bietet vollständige Unterstützung.
 Windows Server 2012 und alle SPs | Azure bietet vollständige Unterstützung. | Bereit für Azure.
 Windows Server 2008 R2 mit allen SPs | Azure bietet vollständige Unterstützung.| Bereit für Azure.
 Windows Server 2008 (32-Bit und 64-Bit) | Azure bietet vollständige Unterstützung. | Bereit für Azure.
-Windows Server 2003 und Windows Server 2003 R2 | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Für die Unterstützung in Azure wird eine [benutzerdefinierte Supportvereinbarung](https://aka.ms/WSosstatement) (Custom Support Agreement, CSA) benötigt. | Bedingt bereit für Azure. Ziehen Sie vor der Migration zu Azure ein Upgrade des Betriebssystems in Erwägung.
+Windows Server 2003 und Windows Server 2003 R2 | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Für die Unterstützung in Azure wird eine [benutzerdefinierte Supportvereinbarung](/troubleshoot/azure/virtual-machines/server-software-support) (Custom Support Agreement, CSA) benötigt. | Bedingt bereit für Azure. Ziehen Sie vor der Migration zu Azure ein Upgrade des Betriebssystems in Erwägung.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3.1 und MS-DOS | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Der Computer startet möglicherweise in Azure, aber Azure stellt keine Betriebssystemunterstützung bereit. | Bedingt bereit für Azure. Es wird empfohlen, vor der Migration zu Azure ein Upgrade des Betriebssystems auszuführen.
 Windows 7, Windows 8 und Windows 10 | Azure bietet [nur mit einem Visual Studio-Abonnement](../virtual-machines/windows/client-images.md) Unterstützung. | Bedingt bereit für Azure.
 Windows 10 Pro | Azure bietet Unterstützung mit [mehrinstanzenfähigen Hostingrechten](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md). | Bedingt bereit für Azure.
@@ -297,6 +297,6 @@ Kosten werden in der Währung angezeigt, die in den Bewertungseinstellungen fest
 
 [Bewährte Methoden für die Erstellung von Bewertungen](best-practices-assessment.md) 
 
-- Erfahren Sie etwas über das Ausführen von Bewertungen für [virtuelle VMware-Computer](tutorial-prepare-vmware.md), [virtuelle Hyper-V-Computer](tutorial-prepare-hyper-v.md) und [physische Server](tutorial-prepare-physical.md).
-- Erfahren Sie etwas über die Bewertung von [mithilfe einer CSV-Datei importierten](tutorial-assess-import.md) Servern.
+- Erfahren Sie etwas über das Ausführen von Bewertungen für [virtuelle VMware-Computer](./tutorial-discover-vmware.md), [virtuelle Hyper-V-Computer](./tutorial-discover-hyper-v.md) und [physische Server](./tutorial-discover-physical.md).
+- Erfahren Sie etwas über die Bewertung von [mithilfe einer CSV-Datei importierten](./tutorial-discover-import.md) Servern.
 - Erfahren Sie etwas über das Einrichten der [Visualisierung von Abhängigkeiten](concepts-dependency-visualization.md).

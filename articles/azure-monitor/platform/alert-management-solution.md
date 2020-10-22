@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322396"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108404"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
 ![Symbol „Alert Management“](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor unterstützt jetzt erweiterte Funktionen zum [Verwalten von skalierbaren Warnungen](https://aka.ms/azure-alerts-overview), einschließlich der von [Überwachungstools wie System Center Operations Manager, Zabbix oder Nagios](https://aka.ms/managing-alerts-other-monitoring-services) generierten.
+>  Azure Monitor unterstützt jetzt erweiterte Funktionen zum [Verwalten von skalierbaren Warnungen](./alerts-overview.md), einschließlich der von [Überwachungstools wie System Center Operations Manager, Zabbix oder Nagios](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json) generierten.
 >  
 
 
@@ -120,4 +120,3 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Warnungsdatens
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie sich die Details zum Generieren von Warnungen aus Log Analytics unter [Warnungen in Log Analytics](./alerts-overview.md) durch.
-

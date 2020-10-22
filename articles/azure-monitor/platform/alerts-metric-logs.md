@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446179"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108846"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Erstellen von Metrikwarnungen für Protokolle in Azure Monitor
 
@@ -62,7 +62,7 @@ Bevor die Metrik für Protokolle, die über Log Analytics-Daten erfasst wurden, 
 
  Metrikwarnungen können über das Azure-Portal, Resource Manager-Vorlagen, REST-API, PowerShell und die Azure CLI erstellt und verwaltet werden. Da Metrikwarnungen für Protokolle eine Variante von Metrikwarnungen sind, können nach Erfüllung der Voraussetzungen Metrikwarnungen für Protokolle für den angegebenen Log Analytics-Arbeitsbereich erstellt werden. Alle Merkmale und Funktionalitäten von [Metrikwarnungen](./alerts-metric-near-real-time.md) gelten auch für Metrikwarnungen für Protokolle; einschließlich Nutzlastschema, anwendbaren Kontingentgrenzen und fakturiertem Preis.
 
-Schritt-für-Schritt-Anleitungen und Beispiele finden Sie unter [Erstellen und Verwalten von Metrikwarnungen](https://aka.ms/createmetricalert). Befolgen Sie insbesondere für Metrikwarnungen für Protokolle die Anweisungen zur Verwaltung von Metrikwarnungen, und stellen Sie Folgendes sicher:
+Schritt-für-Schritt-Anleitungen und Beispiele finden Sie unter [Erstellen und Verwalten von Metrikwarnungen](./alerts-metric.md). Befolgen Sie insbesondere für Metrikwarnungen für Protokolle die Anweisungen zur Verwaltung von Metrikwarnungen, und stellen Sie Folgendes sicher:
 
 - Ziel der Metrikwarnung ist ein gültiger *Log Analytics-Arbeitsbereich*.
 - Das für die Metrikwarnung für den ausgewählten *Log Analytics-Arbeitsbereich* gewählte Signal besitzt den Typ **Metrik**.
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - Erfahren Sie mehr über die [Metrikwarnungen](alerts-metric.md).
 - Erfahren Sie mehr über [Protokollwarnungen in Azure](./alerts-unified-log.md).
 - Erfahren Sie mehr über [Warnungen in Azure](alerts-overview.md).
-

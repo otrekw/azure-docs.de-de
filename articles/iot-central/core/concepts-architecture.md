@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337142"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126172"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
@@ -104,7 +104,7 @@ Azure IoT Central verwendet Azure IoT Hub als Cloudgateway, das Gerätekonnektiv
 - Geräteverwaltung
 - Sichere Gerätekonnektivität
 
-Weitere Informationen zu IoT Hub finden Sie unter [Dokumentation zu IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Weitere Informationen zu IoT Hub finden Sie unter [Dokumentation zu IoT Hub](../../iot-hub/index.yml).
 
 Weitere Informationen zur Gerätekonnektivität in Azure IoT Central finden Sie unter [Gerätekonnektivität](concepts-get-connected.md).
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873471"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124893"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Tutorial: Ändern und Erstellen der Gatewaymodule für die Livevideoanalyse
 
@@ -28,8 +28,8 @@ Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
 * [Node.js](https://nodejs.org/en/download/) v10 oder höher
 * [Visual Studio Code](https://code.visualstudio.com/Download) mit installierter [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)-Erweiterung
 * [Docker](https://www.docker.com/products/docker-desktop)-Engine
-* Eine Instanz von [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) zum Hosten Ihrer Versionen der Module.
-* Ein [Azure Media Services](https://docs.microsoft.com/azure/media-services/)-Konto. Wenn Sie die vorherigen Tutorials durchgearbeitet haben, können Sie das zuvor erstellte Konto wiederverwenden.
+* Eine Instanz von [Azure Container Registry](../../container-registry/index.yml) zum Hosten Ihrer Versionen der Module.
+* Ein [Azure Media Services](../../media-services/index.yml)-Konto. Wenn Sie die vorherigen Tutorials durchgearbeitet haben, können Sie das zuvor erstellte Konto wiederverwenden.
 
 ## <a name="clone-the-repository"></a>Klonen des Repositorys
 

@@ -6,39 +6,40 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48ee6de28bcd76d4c484b77c981062bad1a3754d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551028"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219750"
 ---
-# <a name="tutorial-install-azure-fxt-edge-filer"></a>Tutorial: Installieren von Azure FXT Edge Filer 
+# <a name="tutorial-install-azure-fxt-edge-filer"></a>Tutorial: Installieren von Azure FXT Edge Filer
 
 In diesem Tutorial erfahren Sie, wie Sie einen Hardwareknoten für den Azure FXT Edge Filer-Hybridspeichercache installieren. Für einen Azure FXT Edge Filer-Cluster müssen mindestens drei Hardwareknoten installiert werden.
 
-Die Installation umfasst das Auspacken und die Rackmontage des Geräts sowie das Anbringen des Kabelführungsarms (Cable Management Arm, CMA) und der Frontblende. Das Anschließen der Netzwerkkabel und das Herstellen der Stromversorgung werden in einem separaten Tutorial beschrieben. 
+Die Installation umfasst das Auspacken und die Rackmontage des Geräts sowie das Anbringen des Kabelführungsarms (Cable Management Arm, CMA) und der Frontblende. Das Anschließen der Netzwerkkabel und das Herstellen der Stromversorgung werden in einem separaten Tutorial beschrieben.
 
-Die Installation eines Azure FXT Edge Filer-Knotens dauert etwa eine Stunde. 
+Die Installation eines Azure FXT Edge Filer-Knotens dauert etwa eine Stunde.
 
-Dieses Tutorial umfasst folgende Einrichtungsschritte: 
+Dieses Tutorial umfasst folgende Einrichtungsschritte:
 
 > [!div class="checklist"]
+>
 > * Auspacken des Geräts
 > * Montieren des Geräts in einem Rack
 > * Anbringen der Frontblende (optional)
 
-## <a name="installation-prerequisites"></a>Voraussetzungen für die Installation 
+## <a name="installation-prerequisites"></a>Voraussetzungen für die Installation
 
 Vergewissern Sie sich zunächst, dass das Rechenzentrum und das für die Montage vorgesehene Rack über Folgendes verfügen:
 
 * Freier Einschub mit 1 HE in dem Rack, in dem Sie das Gerät montieren möchten
 * Stromversorgungs- und Kühlsysteme, die die Anforderungen des Azure FXT Edge Filer-Geräts erfüllen. (Hilfreiche Informationen zur Planung und Dimensionierung der Installation finden Sie unter [Power and thermal specifications](fxt-specs.md#power-and-thermal-specifications) (Leistungs- und Temperaturangaben).)  
 
-  > [!NOTE] 
+  > [!NOTE]
   > Verwenden Sie Stromverteilereinheiten mit zwei verschiedenen Verzweigungsleitungen, um die beiden redundanten Netzteile (Power Supply Units, PSUs) optimal zu nutzen. Ausführliche Informationen finden Sie unter [Anschließen der Netzkabel](fxt-network-power.md#connect-power-cables).  
 
-## <a name="unpack-the-hardware-node"></a>Auspacken des Hardwareknotens 
+## <a name="unpack-the-hardware-node"></a>Auspacken des Hardwareknotens
 
 Jeder Azure FXT Edge Filer-Knoten wird in einem einzelnen Karton ausgeliefert. Gehen Sie zum Auspacken eines Geräts wie folgt vor:
 
@@ -56,7 +57,7 @@ Jeder Azure FXT Edge Filer-Knoten wird in einem einzelnen Karton ausgeliefert
    * Anleitung für die Rackmontage (Booklet)
    * Informationen zu Sicherheit, Umwelt und rechtlichen Aspekten (Booklet)
 
-Sollte etwas fehlen, wenden Sie sich an den Gerätehersteller. 
+Sollte etwas fehlen, wenden Sie sich an den Gerätehersteller.
 
 Warten Sie, bis das Gerät Raumtemperatur erreicht hat, bevor Sie es installieren oder einschalten. Sollte sich an dem Gerät Kondensfeuchtigkeit gebildet haben, warten Sie mindestens 24 Stunden mit der Installation.
 
@@ -64,20 +65,20 @@ Im nächsten Schritt wird das Gerät in ein Rack eingebaut.
 
 ## <a name="rack-the-device"></a>Montieren des Geräts in einem Rack
 
-Das Azure FXT Edge Filer-Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. 
+Das Azure FXT Edge Filer-Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden.
 
-Der Azure FXT Edge Filer-Hybridcachespeicher besteht aus drei oder mehr Azure FXT Edge Filer-Geräten. Wiederholen Sie die Schritte für die Rackinstallation für jedes Gerät, das Teil Ihres Systems ist. 
+Der Azure FXT Edge Filer-Hybridcachespeicher besteht aus drei oder mehr Azure FXT Edge Filer-Geräten. Wiederholen Sie die Schritte für die Rackinstallation für jedes Gerät, das Teil Ihres Systems ist.
 
 ### <a name="rack-install-prerequisites"></a>Voraussetzungen für die Rackinstallation
 
 * Machen Sie sich zunächst mit den Sicherheitsanweisungen vertraut. Diese finden Sie im beiliegenden Booklet mit den Informationen zu Sicherheit, Umwelt und rechtlichen Aspekten.
 
   > [!NOTE]
-  > Heben Sie den Knoten immer zu zweit an. Das gilt auch, wenn Sie ihn in einem Rack installieren oder daraus entfernen. 
+  > Heben Sie den Knoten immer zu zweit an. Das gilt auch, wenn Sie ihn in einem Rack installieren oder daraus entfernen.
 
-* Ermitteln Sie die Art der Schieneninstallation für Ihr Rack. 
+* Ermitteln Sie die Art der Schieneninstallation für Ihr Rack.
   * Verwenden Sie bei Racks, die über einen Einrastmechanismus (Vierkant- oder Rundlöcher) verfügen, die Anleitung für die Schienenmontage ohne Werkzeug.
-  * Bei Racks mit Gewindelöchern muss die Anleitung für die Schienenmontage mit Werkzeug verwendet werden. 
+  * Bei Racks mit Gewindelöchern muss die Anleitung für die Schienenmontage mit Werkzeug verwendet werden.
   
     Für die Schienenmontage mit Werkzeug benötigen Sie acht Schrauben vom Typ 10-32, 12-24, M5 oder M6. Der Durchmesser des Schraubenkopfs muss weniger als 10 mm (0,4") betragen.
 
@@ -92,7 +93,7 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 
 ### <a name="rail-assembly---tool-less-rails-square-hole-or-round-hole-racks"></a>Schienenmontage ohne Werkzeug (Racks mit Vierkant- oder Rundlöchern)
 
-Gehen Sie bei Racks, die über einen Einrastmechanismus (Vierkant- oder Rundlöcher) verfügen, wie folgt vor, um die Schienen zu montieren: 
+Gehen Sie bei Racks, die über einen Einrastmechanismus (Vierkant- oder Rundlöcher) verfügen, wie folgt vor, um die Schienen zu montieren:
 
 1. Positionieren Sie das mit **FRONT** gekennzeichnete Endstück der linken und rechten Schiene so, dass es nach innen zeigt. Befestigen Sie die Endstücke mithilfe der Löcher auf der Vorderseite der vertikalen Rackflansche. (1)
 
@@ -121,7 +122,7 @@ Gehen Sie bei Racks mit Gewindelöchern wie folgt vor, um die Schienen zu montie
 Gehen Sie wie folgt vor, um das Azure FXT Edge Filer-Gerät im Rack zu montieren:
 
 1. Ziehen Sie die inneren Gleitschienen aus dem Rack, bis sie einrasten. (1)
-1. Setzen Sie den hinteren Schienenabstandshalter auf beiden Seiten des Geräts von oben in die hinteren J-förmigen Schlitze der Schienenbaugruppen ein. (2) 
+1. Setzen Sie den hinteren Schienenabstandshalter auf beiden Seiten des Geräts von oben in die hinteren J-förmigen Schlitze der Schienenbaugruppen ein. (2)
 1. Drehen Sie das Gerät nach unten, bis alle Schienenabstandshalter in den J-förmigen Schlitzen platziert sind. (3)
 1. Schieben Sie das Gerät nach innen, bis die Arretierhebel einrasten.
 1. Drücken Sie auf den Schienenentriegelungsmechanismus an beiden Schienen (4), und schieben Sie das Gerät in das Rack.
@@ -130,7 +131,7 @@ Gehen Sie wie folgt vor, um das Azure FXT Edge Filer-Gerät im Rack zu montie
 
 ### <a name="remove-the-system-from-the-rack"></a>Entfernen des Systems aus dem Rack
 
-Wenn Sie das Gerät aus dem Rack entfernen möchten, gehen Sie wie folgt vor: 
+Wenn Sie das Gerät aus dem Rack entfernen möchten, gehen Sie wie folgt vor:
 
 1. Suchen Sie an der Seite der inneren Schienen nach den Arretierhebeln (1).
 2. Entriegeln Sie den Mechanismus, indem Sie die Hebel jeweils nach oben in die geöffnete Position drehen (2).
@@ -141,7 +142,7 @@ Wenn Sie das Gerät aus dem Rack entfernen möchten, gehen Sie wie folgt vor:
 ### <a name="engage-the-slam-latch"></a>Verwenden des Schnappmechanismus
 
 1. Suchen Sie an der Vorderseite auf beiden Seiten des Systems nach dem Schnappmechanismus (1).
-2. Der Mechanismus rastet automatisch ein, wenn das System in das Rack geschoben wird. 
+2. Der Mechanismus rastet automatisch ein, wenn das System in das Rack geschoben wird.
 
 Zum Entriegeln müssen die beiden Riegel nach oben gezogen werden (2).
 
@@ -149,50 +150,50 @@ Für den Transport oder in instabilen Umgebungen kann das System bei Bedarf mith
 
 ![Nummerierte Abbildung zur Verwendung des Schnappmechanismus](media/fxt-install/engaging-releasing-slam-latch-400.png)
 
-### <a name="install-the-cable-management-arm"></a>Installieren des Kabelführungsarms 
+### <a name="install-the-cable-management-arm"></a>Installieren des Kabelführungsarms
 
-Dem FXT Edge Filer-Gerät liegt ein optionaler Kabelführungsarm (Cable Management Arm, CMA) bei. Im Lieferumfang ist auch ein gedrucktes Booklet mit einer Installationsanleitung enthalten. 
+Dem FXT Edge Filer-Gerät liegt ein optionaler Kabelführungsarm (Cable Management Arm, CMA) bei. Im Lieferumfang ist auch ein gedrucktes Booklet mit einer Installationsanleitung enthalten.
 
 1. Packen Sie die Komponenten des Kabelführungsarms aus:
    * CMA-Einsatz (1)
    * CMA (2)
    * Nylon-Kabelbinder (3)
    * CMA-Befestigungsklammern (4)
-   * Kabel für die Statusanzeige (5) 
+   * Kabel für die Statusanzeige (5)
 
-   > [!TIP] 
+   > [!TIP]
    > Falls Sie das Rack transportieren möchten, während sich der Kabelführungsarm darin befindet, fassen Sie die beiden Kabelkanäle und den Einsatz mithilfe der Kabelbinder zusammen, und ziehen Sie sie gut fest. Diese Methode kann auch verwendet werden, um das System in instabilen Umgebungen zu schützen.
 
    ![Abbildung der CMA-Komponenten](media/fxt-install/cma-kit-400.png)
 
 2. Installieren Sie den CMA-Einsatz.
 
-   Der CMA-Einsatz sorgt für Stabilität und fungiert als Halterung für den Kabelführungsarm. 
+   Der CMA-Einsatz sorgt für Stabilität und fungiert als Halterung für den Kabelführungsarm.
 
-   1. Richten Sie die Seiten des Einsatzes an den Aufnahmeklammern auf der Innenseite der Schienen aus, und befestigen Sie den Einsatz. 
+   1. Richten Sie die Seiten des Einsatzes an den Aufnahmeklammern auf der Innenseite der Schienen aus, und befestigen Sie den Einsatz.
    1. Schieben Sie den Einsatz hinein, bis er einrastet. (1)
    1. Wenn Sie den Einsatz entfernen möchten, betätigen Sie den Entriegelungsmechanismus, indem Sie die Entriegelungsknöpfe zur Mitte hin drücken, und ziehen Sie den Einsatz aus den Aufnahmeklammern heraus (2).
 
    ![Abbildung der Installation des CMA-Einsatzes](media/fxt-install/cma-tray-install-400.png)
 
-3. Installieren Sie die CMA-Befestigungsklammern. 
+3. Installieren Sie die CMA-Befestigungsklammern.
 
    > [!NOTE]
    >
-   > * Der Kabelführungsarm kann an der linken oder an der rechten Montageschiene befestigt werden (je nachdem, wie Sie die Kabel des Systems verlegen möchten). 
-   > * Es empfiehlt sich, den Kabelführungsarm auf der gegenüberliegenden Seite der Netzteile (Seite A) zu montieren. Wenn Sie ihn auf der Seite B montieren, muss er gelöst werden, um das äußere Netzteil entfernen zu können. 
-   > * Vor dem Entfernen der Netzteile muss immer erst der Einsatz entfernt werden. 
+   > * Der Kabelführungsarm kann an der linken oder an der rechten Montageschiene befestigt werden (je nachdem, wie Sie die Kabel des Systems verlegen möchten).
+   > * Es empfiehlt sich, den Kabelführungsarm auf der gegenüberliegenden Seite der Netzteile (Seite A) zu montieren. Wenn Sie ihn auf der Seite B montieren, muss er gelöst werden, um das äußere Netzteil entfernen zu können.
+   > * Vor dem Entfernen der Netzteile muss immer erst der Einsatz entfernt werden.
 
    ![Abbildung der Installation der CMA-Befestigungsklammern](media/fxt-install/cma-bracket-l-r-install-400.png)
 
    1. Wählen Sie die passende CMA-Befestigungsklammer für die Seite, auf der Sie den Kabelführungsarm montieren möchten (Seite B oder Seite A).
    1. Bringen Sie die entsprechend gekennzeichnete CMA-Befestigungsklammer für Seite A oder B am hinteren Ende der Gleitschiene an.
-   1. Richten Sie die Löcher der Klammer an den Stiften der Gleitschiene aus. Drücken Sie die Klammer nach unten, bis sie einrastet. 
+   1. Richten Sie die Löcher der Klammer an den Stiften der Gleitschiene aus. Drücken Sie die Klammer nach unten, bis sie einrastet.
 
 4. Installieren Sie den Kabelführungsarm.
 
-   1. Lassen Sie auf der Rückseite des Systems den Schnappmechanismus, der sich am vorderen Ende des Kabelführungsarms befindet, an der inneren Klammer der Schienenbaugruppe einrasten (1). 
-   1. Lassen Sie den anderen Schnappmechanismus am Ende der äußeren Klammer einrasten (2). 
+   1. Lassen Sie auf der Rückseite des Systems den Schnappmechanismus, der sich am vorderen Ende des Kabelführungsarms befindet, an der inneren Klammer der Schienenbaugruppe einrasten (1).
+   1. Lassen Sie den anderen Schnappmechanismus am Ende der äußeren Klammer einrasten (2).
    1. Wenn Sie den Kabelführungsarm entfernen möchten, betätigen Sie den Entriegelungsmechanismus, der sich jeweils an der Oberseite der inneren und äußeren Vorrichtung mit dem Schnappmechanismus befindet (3).
 
    ![Abbildung der Installation des eigentlichen Kabelführungsarms](media/fxt-install/cma-install-400.png)
@@ -203,20 +204,21 @@ Dem FXT Edge Filer-Gerät liegt ein optionaler Kabelführungsarm (Cable Manage
 
 ## <a name="install-the-front-bezel-optional"></a>Anbringen der Frontblende (optional)
 
-In diesem Abschnitt erfahren Sie, wie Sie die Frontblende für die Azure FXT Edge Filer-Hardware anbringen und entfernen. 
+In diesem Abschnitt erfahren Sie, wie Sie die Frontblende für die Azure FXT Edge Filer-Hardware anbringen und entfernen.
 
-So bringen Sie die Frontblende an: 
+So bringen Sie die Frontblende an:
 
-1. Entnehmen Sie den Blendenschlüssel aus dem Paket mit der Blende. 
-1. Richten Sie die Blende an der Vorderseite des Gehäuses aus, und führen Sie die Stifte auf der rechten Seite der Blende in die Aufnahmelöcher des rechten Flanschs für die Rackmontage des Knotens ein. 
+1. Entnehmen Sie den Blendenschlüssel aus dem Paket mit der Blende.
+1. Richten Sie die Blende an der Vorderseite des Gehäuses aus, und führen Sie die Stifte auf der rechten Seite der Blende in die Aufnahmelöcher des rechten Flanschs für die Rackmontage des Knotens ein.
 1. Positionieren Sie die linke Seite der Blende ordnungsgemäß am Gehäuse. Drücken Sie die Blende gegen das Gehäuse, bis sie auf der linken Seite einrastet.
 1. Verriegeln Sie die Blende mithilfe des Schlüssels.
 
-So entfernen Sie die Frontblende: 
+So entfernen Sie die Frontblende:
+
 1. Entriegeln Sie die Blende mithilfe des Blendenschlüssels.
 1. Drücken Sie links auf die Entriegelungstaste, und ziehen Sie die linke Seite der Blende vom Gehäuse weg.
 1. Hängen Sie die rechte Seite aus, und entfernen Sie die Blende.
-   
+
    ![Abbildung der Entriegelungstaste auf der linken Seite der Blende sowie der Vorgehensweise zum Entfernen der Blende durch Herausziehen der linken Seite](media/fxt-install/remove-bezel-edited-600.png)
 
 ## <a name="next-steps"></a>Nächste Schritte

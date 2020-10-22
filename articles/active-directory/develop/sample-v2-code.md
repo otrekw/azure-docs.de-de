@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 948eea168b071813cf20e03d3a0744a824fd4c8c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e4327d8426a5dc1668993efd418c3f21624d407d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773891"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327653"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)
 
@@ -28,9 +28,6 @@ Sie können mit der Microsoft Identity Platform folgende Aktionen ausführen:
 
 In diesem Artikel wird der Microsoft Identity Platform-Endpunkt kurz erläutert, und es werden Links zu Beispielen für den Endpunkt angegeben. Anhand dieser Beispiele wird die Vorgehensweise erläutert, und es werden Codeausschnitte bereitgestellt, die Sie in Ihren Anwendungen verwenden können. Auf der Seite mit den Codebeispielen finden Sie ausführliche Infothemen mit hilfreichen Angaben zu Anforderungen, Installation und Einrichtung. Außerdem enthält der Code Kommentare, die die wichtigsten Abschnitte besser verständlich machen.
 
-> [!NOTE]
-> Wenn Sie an Beispielen zu v1.0 interessiert sind, sehen Sie unter [Azure AD-Codebeispiele (v1.0-Endpunkt)](../azuread-dev/sample-v1-code.md) nach.
-
 Informationen zum grundlegenden Szenario für die einzelnen Beispieltypen finden Sie unter [App-Typen für den Microsoft Identity Platform-Endpunkt](v2-app-types.md).
 
 Sie können auch Beiträge zu den Beispielen auf GitHub schreiben. Wie das geht, erfahren Sie unter [Microsoft Azure Active Directory – Beispiele und Dokumentation](https://github.com/Azure-Samples?page=3&query=active-directory).
@@ -39,7 +36,7 @@ Sie können auch Beiträge zu den Beispielen auf GitHub schreiben. Wie das geht,
 
 Diese Beispiele zeigen, wie Sie eine Single-Page-Webanwendung schreiben, die mit Microsoft Identity Platform geschützt ist. Diese Beispiele verwenden eine der Arten von MSAL.js.
 
-| Plattform | BESCHREIBUNG | Link |
+| Plattform | Beschreibung | Link |
 | -------- | --------------------- | -------- |
 | ![Diese Abbildung zeigt das JavaScript-Logo.](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA ruft Microsoft Graph auf |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Diese Abbildung zeigt das JavaScript-Logo.](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA ruft Microsoft Graph mithilfe des Authentifizierungscodeflows mit PKCE auf |[javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -142,5 +139,4 @@ Die folgenden Beispiele veranschaulichen, wie Sie mit „HttpTrigger“ eine Azu
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Entwicklerhandbuch zu Azure Active Directory (v1.0)](../azuread-dev/v1-overview.md)
-- [Microsoft Graph-API – Konzepte und Referenz](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[Microsoft Graph-API – Konzepte und Referenz](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)

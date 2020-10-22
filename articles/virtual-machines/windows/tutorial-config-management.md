@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448870"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216435"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
-Per [Änderungsnachverfolgung](../../automation/change-tracking.md) und [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) von Azure können Sie auf einfache Weise Änderungen auf Ihren virtuellen Windows-Computern in Azure ermitteln und Betriebssystemupdates für diese VMs verwalten.
+Per [Änderungsnachverfolgung](../../automation/change-tracking/overview.md) und [Updateverwaltung](../../automation/update-management/overview.md) von Azure können Sie auf einfache Weise Änderungen auf Ihren virtuellen Windows-Computern in Azure ermitteln und Betriebssystemupdates für diese VMs verwalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -112,10 +112,10 @@ Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicke
 | --- | --- |
 | **Name** |Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein. |
 |**Betriebssystem**| Wählen Sie **Linux** oder **Windows** aus.|
-| **Zu aktualisierende Gruppen** |Definieren Sie für virtuelle Computer, die in Azure gehostet werden, eine Abfrage, die auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags basiert. Mit dieser Abfrage wird eine dynamische Gruppe mit in Azure gehosteten virtuellen Computern erstellt, die Teil der Bereitstellung sein sollen. </br></br>Wählen Sie für virtuelle Computer, die nicht in Azure gehostet werden, eine vorhandene gespeicherte Suche aus. Mit dieser Suche können Sie eine Gruppe dieser virtuellen Computer für die Bereitstellung auswählen. </br></br> Weitere Informationen finden Sie unter [Dynamische Gruppen](../../automation/update-management/update-mgmt-groups.md).|
+| **Zu aktualisierende Gruppen** |Definieren Sie für virtuelle Computer, die in Azure gehostet werden, eine Abfrage, die auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags basiert. Mit dieser Abfrage wird eine dynamische Gruppe mit in Azure gehosteten virtuellen Computern erstellt, die Teil der Bereitstellung sein sollen. </br></br>Wählen Sie für virtuelle Computer, die nicht in Azure gehostet werden, eine vorhandene gespeicherte Suche aus. Mit dieser Suche können Sie eine Gruppe dieser virtuellen Computer für die Bereitstellung auswählen. </br></br> Weitere Informationen finden Sie unter [Dynamische Gruppen](../../automation/update-management/configure-groups.md).|
 | **Zu aktualisierende Computer** |Wählen Sie **Gespeicherte Suche**, **Importierte Gruppe** oder **Computer** aus.<br/><br/>Bei der Option **Computer** können Sie in der Dropdownliste einzelne Computer auswählen. Die Bereitschaft der einzelnen Computer wird in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** der Tabelle angezeigt.</br></br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/platform/computer-groups.md). |
 |**Updateklassifizierungen**|Wählen Sie alle erforderlichen Updateklassifizierungen aus.|
-|**Updates einschließen/ausschließen**|Wählen Sie diese Option aus, um den Bereich **Einschließen/ausschließen** zu öffnen. Die ein- und auszuschließenden Updates befinden sich auf separaten Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Planen einer Updatebereitstellung](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment). |
+|**Updates einschließen/ausschließen**|Wählen Sie diese Option aus, um den Bereich **Einschließen/ausschließen** zu öffnen. Die ein- und auszuschließenden Updates befinden sich auf separaten Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Planen einer Updatebereitstellung](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Zeitplaneinstellungen**|Wählen Sie eine Startzeit und dann entweder **Einmalig** oder **Wiederholt** aus.|
 | **Vor und nach dem Vorgang auszuführende Skripts**|Wählen Sie die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen.|
 | **Wartungsfenster** | Geben Sie die Anzahl von Minuten ein, die für Updates festgelegt werden soll. Der gültige Bereich reicht von 30 bis 360 Minuten. |

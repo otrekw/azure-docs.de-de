@@ -1,18 +1,17 @@
 ---
 title: Ausführen von U-SQL-Aufträgen in Python, R und C# – Azure Data Lake Analytics
 description: Hier erfahren Sie, wie Sie CodeBehind mit Python, R und C# verwenden, um Aufträge in Azure Data Lake zu übermitteln.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876205"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219971"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code
 Hier erfahren Sie, wie Sie Visual Studio Code (VSCode) verwenden, um Python-, R- und C#-CodeBehind-Dateien mit U-SQL zu schreiben und Aufträge an den Azure Data Lake-Dienst zu übermitteln. Weitere Informationen zu Azure Data Lake Tools für VSCode finden Sie unter [Verwenden von Azure Data Lake Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -183,4 +182,4 @@ Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. 
 * [Erste Schritte mit Data Lake Analytics mithilfe von PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 * [Verwenden von Data Lake-Tools für Visual Studio zum Entwickeln von U-SQL-Anwendungen](data-lake-analytics-data-lake-tools-get-started.md)
-* [Verwenden des Azure Data Lake Analytics-Katalogs (U-SQL)](data-lake-analytics-use-u-sql-catalog.md)
+* [Verwenden des Azure Data Lake Analytics-Katalogs (U-SQL)](./data-lake-analytics-u-sql-get-started.md)

@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225603"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127096"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure-Sicherheitsbaseline für Azure Data Box
 
 Die Azure-Sicherheitsbaseline für Azure Data Box enthält Empfehlungen, mithilfe derer Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
-Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Schützen von Azure-Ressourcen in virtuellen Netzwerken
 
@@ -70,9 +70,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Leitfaden: Die von Azure Data Box verwendeten Endpunkte werden alle von Microsoft verwaltet. Sie sind für alle zusätzlichen Steuerfunktionen verantwortlich, die Sie für Ihre lokalen Systeme bereitstellen möchten.
 
-* [Grundlegendes zur Azure Data Box-Sicherheit](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Grundlegendes zur Azure Data Box-Sicherheit](./data-box-security.md)
 
-* [Portinformationen für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [Portinformationen für Azure Data Box](./data-box-system-requirements.md#port-requirements)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -120,7 +120,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Verwenden von genehmigten Zeitsynchronisierungsquellen
 
@@ -134,7 +134,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Für jeden Schritt in Ihrem Data Box-Auftrag können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag nachzuverfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -144,7 +144,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Für jeden Schritt in Ihrem Data Box-Auftrag können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag nachzuverfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -170,7 +170,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Für jeden Schritt in Ihrem Data Box-Auftrag können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag nachzuverfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -180,7 +180,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Für jeden Schritt in Ihrem Data Box-Auftrag können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag nachzuverfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Grundlegendes zur Nachverfolgung und Ereignisprotokollierung für Azure Data Box](./data-box-logs.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -212,17 +212,17 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
 **Leitfaden**: Verwalten Sie ein Inventar der Benutzerkonten, die über Administratorzugriff auf Azure Data Box verfügen. Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie Azure-Rollen in verschiedenen Gültigkeitsbereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine Azure-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützter Zugriff, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
 
-* [Grundlegendes zu benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [Grundlegendes zu benutzerdefinierten Rollen](../role-based-access-control/custom-roles.md)
 
-* [Konfigurieren von Azure RBAC in Arbeitsmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Konfigurieren von Azure RBAC in Arbeitsmappen](../sentinel/quickstart-get-visibility.md)
 
-* [Grundlegendes zum Einrichten der Zugriffssteuerung für den Auftrag](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Grundlegendes zum Einrichten der Zugriffssteuerung für den Auftrag](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center-Überwachung**: Nein
 
@@ -245,9 +245,9 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 
-* [Überwachen der Identität und des Zugriffs](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Überwachen der Identität und des Zugriffs](../security-center/security-center-identity-access.md)
 
-* [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -273,9 +273,9 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 **Leitfaden**: Verwenden Sie eine Arbeitsstation mit privilegiertem Zugriff (Privileged Access Workstation, PAW) mit Azure Multi-Factor Authentication (Azure MFA), um sich anzumelden und Ihre Data Box-Aufträge zu konfigurieren.
 
-* [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -287,9 +287,9 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte zu riskantem Benutzerverhalten anzuzeigen.
 
-* [Bereitstellen von Azure AD Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Bereitstellen von Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure Active Directory-Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure Active Directory-Risikoerkennungen](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -299,7 +299,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 **Leitfaden**: Verwenden Sie benannte Standorte mit bedingtem Zugriff, um den Zugriff auf das Azure-Portal nur über bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
 
-* [Konfigurieren benannter Standorte in Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Konfigurieren benannter Standorte in Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -309,7 +309,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 **Leitfaden**: Verwenden Sie nach Möglichkeit Azure Active Directory (AD) als zentrales Authentifizierungs- und Autorisierungssystem. Azure AD schützt Daten durch eine starke Verschlüsselung für ruhende und übertragene Daten. Außerdem werden in Azure AD Salts und Hashs verwendet, und Anmeldeinformationen werden sicher gespeichert.
 
-* [Erstellen und Konfigurieren einer Azure AD-Instanz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Erstellen und Konfigurieren einer Azure AD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -321,9 +321,9 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 Für die Data Box-Appliance wird dies in Echtzeit nicht unterstützt. Sie können die Protokolle am Ende des Auftrags überprüfen.
 
-* [Grundlegendes zur Azure AD-Berichterstellung](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
-* [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -339,9 +339,9 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich geschrieben.
 
-* [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Schnellstart: Ausführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -351,11 +351,11 @@ Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich
 
 **Leitfaden**: Verwenden Sie für abweichendes Verhalten bei der Kontoanmeldung auf Steuerungsebene (z. B. Azure-Portal) Azure AD Identity Protection und Risikoerkennungsfeatures, um automatisierte Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten zu konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
 
-* [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Durchführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -365,7 +365,7 @@ Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich
 
 **Leitfaden**: Die Kunden-Lockbox wird für Azure Data Box derzeit nicht unterstützt.
 
-* [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -373,7 +373,7 @@ Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich
 
 ## <a name="data-protection"></a>Schutz von Daten
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
@@ -389,7 +389,7 @@ Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich
 
 Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der Dienst, der zum Hochladen der Daten verwendet wird, isoliert.
 
-* [Erste Schritte mit Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Erste Schritte mit Azure Data Box](./data-box-quickstart-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -399,7 +399,7 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 **Leitfaden**: Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Data Box und hat strenge Kontrollen implementiert, um den Verlust oder die Offenlegung von Kundendaten zu verhindern. Wenn Data Box am Kundenstandort verwendet wird, befolgen Sie die bewährten Methoden, um sicherzustellen, dass vertrauliche Daten bei der Übertragung geschützt sind.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -409,9 +409,9 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 **Leitfaden**: Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Data Box und hat strenge Kontrollen implementiert, um den Verlust oder die Offenlegung von Kundendaten zu verhindern. Wenn Data Box am Kundenstandort verwendet wird, befolgen Sie die bewährten Methoden, um sicherzustellen, dass vertrauliche Daten bei der Übertragung geschützt sind.
 
-* [Grundlegendes zur Datenmigration in Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [Grundlegendes zur Datenmigration in Azure Data Box](./data-box-faq.md)
 
-* [Data Box-Sicherheitsübersicht](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box-Sicherheitsübersicht](./data-box-security.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -421,7 +421,7 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 **Leitfaden**: Derzeit nicht verfügbar. Features zur Identifizierung und Klassifizierung von Daten sowie zum Schutz vor Datenverlust sind für Azure Data Box noch nicht verfügbar. Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Data Box und hat strenge Kontrollen implementiert, um den Verlust oder die Gefährdung von Kundendaten zu verhindern.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -431,9 +431,9 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 **Leitfaden**: Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich). Sie können die Data Box-Rollen „Leser“ und „Mitwirkender“ auch auf Ressourcenebene definieren.
 
-* [Grundlegendes zu den ersten Schritten mit Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Grundlegendes zu den ersten Schritten mit Azure Data Box](./data-box-quickstart-portal.md)
 
-* [Grundlegendes zum Einrichten der Zugriffssteuerung](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Grundlegendes zum Einrichten der Zugriffssteuerung](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -443,7 +443,7 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen. Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Data Box und hat strenge Kontrollen implementiert, um den Verlust oder die Offenlegung von Kundendaten zu verhindern.
 
-* [Schutz der Azure-Kundendaten](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Schutz der Azure-Kundendaten](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -455,9 +455,9 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Außerdem schützt Azure Data Box den Schlüssel für die Geräteentsperrung (auch als Gerätekennwort bezeichnet), der zum Sperren des Geräts über einen Verschlüsselungsschlüssel verwendet wird. Standardmäßig wird der Schlüssel für die Geräteentsperrung für einen Data Box-Auftrag mit einem von Microsoft verwalteten Schlüssel verschlüsselt. Um zusätzliche Kontrolle über den Schlüssel für die Geräteentsperrung zu erhalten, können Sie auch kundenseitig verwaltete Schlüssel bereitstellen. Kundenseitig verwaltete Schlüssel müssen in Azure Key Vault erstellt und gespeichert werden.
 
-* [Grundlegendes zum Schutz von Data Box-Daten](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Grundlegendes zum Schutz von Data Box-Daten](./data-box-security.md)
 
-* [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -467,7 +467,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure Data Box und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -475,7 +475,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
@@ -519,7 +519,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Verwenden der automatisierten Asset Discovery-Lösung
 
@@ -605,7 +605,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 **Leitfaden**: Konfigurieren Sie bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur „Verwaltung von Microsoft Azure“ konfigurieren.
 
-* [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -629,7 +629,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
 
@@ -715,7 +715,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 **Leitfaden**: Kundenseitig verwaltete Schlüssel müssen in Azure Key Vault erstellt und gespeichert werden.
 
-* [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -725,7 +725,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 **Leitfaden**: Nicht zutreffend; Azure Data Box nutzt keine verwalteten Identitäten.
 
-* [Azure-Dienste mit Unterstützung verwalteter Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [Azure-Dienste mit Unterstützung verwalteter Identitäten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -743,7 +743,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Verwenden einer zentral verwalteten Antischadsoftware
 
@@ -773,7 +773,7 @@ Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf com
 
 ## <a name="data-recovery"></a>Datenwiederherstellung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
@@ -809,7 +809,7 @@ Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf com
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
@@ -831,9 +831,9 @@ Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf com
 
 Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion) mithilfe von Tags, und erstellen Sie ein Namenssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren, insbesondere solche, die vertrauliche Daten verarbeiten. Die Priorisierung der Behebung von Warnungen basierend auf der Wichtigkeit der Azure-Ressourcen und der Umgebung, in der der Vorfall aufgetreten ist, liegt in Ihrer Verantwortung.
 
-* [Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Verwenden von Tags zum Organisieren von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -853,7 +853,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Daten zugegriffen haben. Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
 
-* [Festlegen der Kontaktinformationen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -863,9 +863,9 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Exportieren Sie die Azure Security Center-Warnungen und -Empfehlungen über die Funktion „Fortlaufender Export“, um Risiken für Azure-Ressourcen zu ermitteln. Über „Fortlaufender Export“ können Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich exportieren. Sie können den Azure Security Center-Datenconnector verwenden, um die Warnungen an Azure Sentinel zu streamen.
 
-* [Konfigurieren des fortlaufenden Exports](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Konfigurieren des fortlaufenden Exports](../security-center/continuous-export.md)
 
-* [Streamen von Warnungen in Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -875,7 +875,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Verwenden Sie die Funktion „Workflowautomatisierung“ in Azure Security Center, um über Logic Apps automatisch Reaktionen auf Sicherheitswarnungen und -empfehlungen auszulösen und dadurch Ihre Azure-Ressourcen noch besser zu schützen.
 
-* [Konfigurieren von Workflowautomatisierung und Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Konfigurieren von Workflowautomatisierung und Logic Apps](../security-center/workflow-automation.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -883,7 +883,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Durchführen regelmäßiger Penetrationstests Ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnissen
 
@@ -899,5 +899,5 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957459"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107469"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -75,7 +75,7 @@ Arnold 2017-Befehlszeile|kick.exe|ARNOLD_2017_EXEC|
 
 Wie bei anderen Workloads variieren die Systemanforderungen für Renderinganwendungen, und die Leistungsanforderungen fallen je nach Aufträgen und Projekten unterschiedlich aus.  Abhängig von Ihren Anforderungen (z.B. niedrigste Kosten, bestes Preis-Leistungs-Verhältnis, beste Leistung usw.) stehen in Azure verschiedenste VM-Familien zur Verfügung.
 Einige Renderinganwendungen, z.B. Arnold, sind CPU-basiert. In anderen wie V-Ray und Blender Cycles können CPUs und/oder GPUs verwendet werden.
-Eine Beschreibung der verfügbaren VM-Familien und VM-Größen finden Sie unter [Arten und Größen von virtuellen Computern](../virtual-machines/windows/sizes.md).
+Eine Beschreibung der verfügbaren VM-Familien und VM-Größen finden Sie unter [Arten und Größen von virtuellen Computern](../virtual-machines/sizes.md).
 
 ### <a name="low-priority-vms"></a>Virtuelle Computer mit niedriger Priorität
 

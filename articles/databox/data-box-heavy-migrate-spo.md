@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396857"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127113"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 
@@ -21,9 +21,9 @@ Verwenden Sie die Azure Data Box Heavy und das SharePoint-Migrationstool (SPMT),
 
 Die Microsoft Azure Data Box ist ein Dienst, mit dem Sie ein Gerät aus dem Microsoft Azure-Portal bestellen können. Anschließend können Sie Terabytes an Daten von Ihren Servern auf das Gerät kopieren. Nach dem Zurücksenden an Microsoft werden die Daten in Azure kopiert. Abhängig von der Größe der Daten, die Sie übertragen möchten, können Sie Folgendes wählen:
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) mit einer nutzbaren Kapazität von 35 TB pro Bestellung für Datasets geringer bis mittlerer Größe.
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) mit einer nutzbaren Kapazität von 80 TB pro Gerät für Datasets mittlerer Größe bis große Datasets.
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) mit einer nutzbaren Kapazität von 770 TB pro Gerät für große Datasets.
+- [Data Box Disk](./data-box-disk-overview.md) mit einer nutzbaren Kapazität von 35 TB pro Bestellung für Datasets geringer bis mittlerer Größe.
+- [Data Box](./data-box-overview.md) mit einer nutzbaren Kapazität von 80 TB pro Gerät für Datasets mittlerer Größe bis große Datasets.
+- [Data Box Heavy](./data-box-heavy-overview.md) mit einer nutzbaren Kapazität von 770 TB pro Gerät für große Datasets.
 
 In diesem Artikel wird erläutert, wie Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online verwendet wird.
 
@@ -37,7 +37,7 @@ In diesem Artikel wird erläutert, wie Data Box Heavy zum Migrieren von Dateifre
 
 ### <a name="for-sharepoint-online"></a>Für SharePoint Online
 
-- Lesen Sie die [Mindestanforderungen für das SharePoint-Migrationstool (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Lesen Sie die [Mindestanforderungen für das SharePoint-Migrationstool (SPMT)](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 ## <a name="workflow-overview"></a>Übersicht über Workflow
 
@@ -84,7 +84,7 @@ Für optimale Leistung und Konnektivität empfehlen wir, einen virtuellen Azure-
 3. [Laden Sie das SharePoint-Migrationstool herunter](https://spmtreleasescus.blob.core.windows.net/install/default.htm), und installieren Sie es auf dem virtuellen Azure-Computer.
 4. Starten Sie die SharePoint-Migrationstool. Klicken Sie auf **Anmelden**, und geben Sie den Benutzernamen und das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto ein.
 5. Wenn **Wo sind Ihre Daten?** angezeigt wird, wählen Sie **Dateifreigabe** aus. Geben Sie den Pfad zu der Azure-Dateifreigabe ein, die Ihre Daten enthält.
-6. Befolgen Sie die restlichen Eingabeaufforderungen, einschließlich der Angabe des Zielspeicherorts. Weitere Informationen finden Sie unter [Verwenden des SharePoint-Migrationstools](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+6. Befolgen Sie die restlichen Eingabeaufforderungen, einschließlich der Angabe des Zielspeicherorts. Weitere Informationen finden Sie unter [Verwenden des SharePoint-Migrationstools](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
 > - Die Geschwindigkeit, mit der Daten in SharePoint Online erfasst werden, hängt von mehreren Faktoren ab, unabhängig davon, ob sich die Daten bereits in Azure befinden. Die Kenntnis dieser Faktoren hilft Ihnen bei der Planung der Migration und der Erhöhung ihrer Effizienz.  Weitere Informationen finden Sie unter [Best Practices zum Steigern der Migrationsleistung von SharePoint und OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).

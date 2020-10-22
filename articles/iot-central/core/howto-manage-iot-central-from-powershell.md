@@ -9,18 +9,18 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 77327689911a0fc36df14f69ef4d48e5cb120375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 832147fd06dbc7439500b911efbbde6d9b1d81fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067755"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123061"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Verwalten von IoT Central über Azure PowerShell
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Statt IoT Central-Anwendungen auf der Website Seite [IoT Central-Anwendungs-Manager](https://aka.ms/iotcentral) zu erstellen und zu verwalten, können Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) verwenden, um Ihre Anwendungen zu verwalten.
+Statt IoT Central-Anwendungen auf der Website Seite [IoT Central-Anwendungs-Manager](https://aka.ms/iotcentral) zu erstellen und zu verwalten, können Sie [Azure PowerShell](/powershell/azure/) verwenden, um Ihre Anwendungen zu verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,14 +28,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie Azure PowerShell auf Ihrem lokalen Computer ausführen möchten, lesen Sie [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps). Wenn Sie Azure PowerShell lokal ausführen, verwenden Sie das Cmdlet **Connect-AzAccount**, um sich bei Azure anzumelden, bevor Sie die Cmdlets verwenden, die in diesem Artikel aufgeführt sind.
+Wenn Sie Azure PowerShell auf Ihrem lokalen Computer ausführen möchten, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie Azure PowerShell lokal ausführen, verwenden Sie das Cmdlet **Connect-AzAccount**, um sich bei Azure anzumelden, bevor Sie die Cmdlets verwenden, die in diesem Artikel aufgeführt sind.
 
 > [!TIP]
 > Wenn Sie Ihre PowerShell-Befehle in einem anderen Azure-Abonnement ausführen müssen, finden Sie weitere Informationen unter [Ändern des aktiven Abonnements](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription).
 
 ## <a name="install-the-iot-central-module"></a>Installieren des IoT Central-Moduls
 
-Führen Sie den folgenden Befehl aus, um zu überprüfen, ob das [IoT Central-Modul](https://docs.microsoft.com/powershell/module/az.iotcentral/) in Ihre PowerShell-Umgebung installiert ist:
+Führen Sie den folgenden Befehl aus, um zu überprüfen, ob das [IoT Central-Modul](/powershell/module/az.iotcentral/) in Ihre PowerShell-Umgebung installiert ist:
 
 ```powershell
 Get-InstalledModule -name Az.I*
@@ -49,7 +49,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 
-Verwenden Sie das Cmdlet [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp), um eine IoT Central-Anwendung in Ihrem Azure-Abonnement zu erstellen. Beispiel:
+Verwenden Sie das Cmdlet [New-AzIotCentralApp](/powershell/module/az.iotcentral/New-AzIotCentralApp), um eine IoT Central-Anwendung in Ihrem Azure-Abonnement zu erstellen. Beispiel:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -81,11 +81,11 @@ Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe in der Regio
 
 ## <a name="view-your-iot-central-applications"></a>Anzeigen Ihrer IoT Central-Anwendungen
 
-Verwenden Sie das Cmdlet [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp), um Ihre IoT Central-Anwendungen aufzulisten und die Metadaten anzuzeigen.
+Verwenden Sie das Cmdlet [Get-AzIotCentralApp](/powershell/module/az.iotcentral/Get-AzIotCentralApp), um Ihre IoT Central-Anwendungen aufzulisten und die Metadaten anzuzeigen.
 
 ## <a name="modify-an-application"></a>Ändern einer Anwendung
 
-Verwenden Sie das Cmdlet [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp), um die Metadaten einer IoT Central-Anwendung zu aktualisieren. Den Anzeigenamen Ihrer Anwendung können Sie beispielsweise wie folgt ändern:
+Verwenden Sie das Cmdlet [Set-AzIotCentralApp](/powershell/module/az.iotcentral/set-aziotcentralapp), um die Metadaten einer IoT Central-Anwendung zu aktualisieren. Den Anzeigenamen Ihrer Anwendung können Sie beispielsweise wie folgt ändern:
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -95,7 +95,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Entfernen einer Anwendung
 
-Verwenden Sie das Cmdlet [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp), um eine IoT Central-Anwendung zu löschen. Beispiel:
+Verwenden Sie das Cmdlet [Remove-AzIotCentralApp](/powershell/module/az.iotcentral/Remove-AzIotCentralApp), um eine IoT Central-Anwendung zu löschen. Beispiel:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

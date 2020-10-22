@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203514"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124168"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -35,9 +35,9 @@ In diesem Abschnitt werden die Grenzwerte für den Azure Storage-Dienst und die 
 
 Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährte Vorgehensweisen für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
 
-- [Benennen und Referenzieren von Containern, Blobs und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Verstehen von Blockblobs, Anfügeblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Benennen und Referenzieren von Containern, Blobs und Metadaten](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Verstehen von Blockblobs, Anfügeblobs und Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > Wenn Dateien oder Verzeichnisse die Grenzwerte des Azure Storage-Diensts überschreiten oder nicht den Benennungskonventionen für Azure Files/-Blobs entsprechen, werden diese Dateien oder Verzeichnisse nicht über den Data Box-Dienst in Azure Storage erfasst.
@@ -64,7 +64,7 @@ Dies sind die Grenzwerte für die Datenmenge, die in ein Speicherkonto kopiert w
 
 | Datentyp             | Standardlimit          |
 |--------------------------|------------------------|
-| Blockblob, Seitenblob    | Aktuelle Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [Skalierbarkeitsziele für Standardspeicherkonten](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts) und [Skalierungsziele für Dateifreigaben und Dateien](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> Die Grenzwerte schließen Daten aus allen Quellen ein, einschließlich Data Box Disk.|
+| Blockblob, Seitenblob    | Aktuelle Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Skalierbarkeitsziele für Standardspeicherkonten](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Skalierungsziele für Dateifreigaben und Dateien](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> Die Grenzwerte schließen Daten aus allen Quellen ein, einschließlich Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Größenbeschränkungen für das Azure-Objekt
