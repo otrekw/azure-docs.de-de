@@ -4,12 +4,12 @@ description: Wählen aus den verfügbaren VM-Größen für Computeknoten in Azur
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271306"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107503"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -24,7 +24,7 @@ Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Pools in der Konfiguration des virtuellen Computers
 
-Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu alle VM-Größen ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Größen und Einschränkungen.
+Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu alle VM-Größen ([Linux](../virtual-machines/sizes.md), [Windows](../virtual-machines/sizes.md)). In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Größen und Einschränkungen.
 
 | VM-Serie  | Unterstützte Größen |
 |------------|---------|

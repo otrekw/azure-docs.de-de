@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723859"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107962"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Datensammlungsregeln in Azure Monitor (Vorschau)
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin die Daten gesendet bzw. wo sie gespeichert werden sollen. Dieser Artikel enthält eine Übersicht über die Datensammlungsregeln, z. B. zu Inhalt und Struktur und zur Erstellung und Nutzung.
@@ -68,7 +68,7 @@ In der folgenden Tabelle sind die Grenzwerte angegeben, die derzeit für die ein
 Es gibt derzeit zwei verfügbare Methoden zum Erstellen einer Datensammlungsregel:
 
 - [Verwenden Sie das Azure-Portal](data-collection-rule-azure-monitor-agent.md), um eine Datensammlungsregel zu erstellen und einem oder mehreren virtuellen Computern zuzuordnen.
-- Bearbeiten Sie die Datensammlungsregel direkt in JSON, und [übermitteln Sie sie mit der REST-API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
+- Bearbeiten Sie die Datensammlungsregel direkt in JSON, und [übermitteln Sie sie mit der REST-API](/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Beispielregel für die Datensammlung
 Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Computer mit Azure-Verwaltungs-Agent und verfügt über die folgenden Details:

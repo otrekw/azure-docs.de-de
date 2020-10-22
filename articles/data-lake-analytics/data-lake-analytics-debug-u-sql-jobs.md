@@ -1,22 +1,20 @@
 ---
 title: Debuggen von C#-Code für Azure Data Lake U-SQL-Aufträge
 description: In diesem Artikel erfahren Sie, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131870"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218016"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
 
-Für U-SQL wird ein Erweiterbarkeitsmodell mit C# bereitgestellt. In U-SQL-Skripts ist es einfach, C#-Funktionen aufzurufen und Analysefunktionen durchzuführen, die von einer SQL-ähnlichen deklarativen Sprache nicht unterstützt werden. Weitere Informationen zur U-SQL-Erweiterbarkeit finden Sie im [U-SQL-Programmierbarkeitshandbuch](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+Für U-SQL wird ein Erweiterbarkeitsmodell mit C# bereitgestellt. In U-SQL-Skripts ist es einfach, C#-Funktionen aufzurufen und Analysefunktionen durchzuführen, die von einer SQL-ähnlichen deklarativen Sprache nicht unterstützt werden. Weitere Informationen zur U-SQL-Erweiterbarkeit finden Sie im [U-SQL-Programmierbarkeitshandbuch](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
 In der Praxis muss das Debuggen ggf. für jeden Code durchgeführt werden. Aber es ist schwierig, einen verteilten Auftrag mit benutzerdefiniertem Code in der Cloud zu debuggen, wenn nur eingeschränkte Protokolldateien vorhanden sind. [Azure Data Lake Tools für Visual Studio](https://aka.ms/adltoolsvs) enthalten ein Feature zum **Debuggen von Vertexfehlern**, mit dem das Debuggen von Fehlern in Ihrem benutzerdefinierten Code vereinfacht wird. Wenn für den U-SQL-Auftrag ein Fehler auftritt, behält der Dienst den Fehlerstatus bei, und das Tool unterstützt Sie beim Herunterladen der Cloudfehlerumgebung auf den lokalen Computer für das Debuggen. Der lokale Download umfasst die gesamte Cloudumgebung, einschließlich Eingabedaten und Benutzercode.
 

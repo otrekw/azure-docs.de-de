@@ -3,12 +3,12 @@ title: Konfigurieren von Knotenendpunkten in Azure Batch-Pools
 description: Konfigurieren oder Deaktivieren des Zugriffs auf SSH- oder RDP-Ports auf Computeknoten in einem Azure Batch-Pool.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7df7da539be75ef1befdff4b4e1fe5244c1702
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83780287"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109305"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurieren oder Deaktivieren des Remotezugriffs auf Computeknoten in einem Azure Batch-Pool
 
@@ -19,7 +19,7 @@ In Ihrer Umgebung müssen Sie diese Standardeinstellungen für den externen Zugr
 ## <a name="about-the-pool-endpoint-configuration"></a>Informationen zur Poolendpunktkonfiguration
 Die Endpunktkonfiguration besteht aus einem oder mehreren [Pools für die Netzwerkadressübersetzung (NAT)](/rest/api/batchservice/pool/add#inboundnatpool) von Front-End-Ports. (Verwechseln Sie NAT-Pools nicht mit dem Batch-Pool von Computeknoten.) Sie können festlegen, dass jeder NAT-Pool die Standardverbindungseinstellungen für Serverknoten auf den Computeknoten des Pools überschreibt. 
 
-Jede NAT-Pool-Konfiguration enthält eine oder mehrere [Regeln für die Netzwerksicherheitsgruppe (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Jede NSG-Regel erlaubt oder verweigert bestimmten Netzwerkdatenverkehr zum Endpunkt. Sie können den kompletten Datenverkehr, durch ein [Diensttag](../virtual-network/security-overview.md#service-tags) (wie „Internet“) identifizierten Datenverkehr oder Datenverkehr von bestimmten IP-Adressen oder Subnetzen zulassen oder verweigern.
+Jede NAT-Pool-Konfiguration enthält eine oder mehrere [Regeln für die Netzwerksicherheitsgruppe (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Jede NSG-Regel erlaubt oder verweigert bestimmten Netzwerkdatenverkehr zum Endpunkt. Sie können den kompletten Datenverkehr, durch ein [Diensttag](../virtual-network/network-security-groups-overview.md#service-tags) (wie „Internet“) identifizierten Datenverkehr oder Datenverkehr von bestimmten IP-Adressen oder Subnetzen zulassen oder verweigern.
 
 ### <a name="considerations"></a>Überlegungen
 * Die Konfiguration des Poolendpunkts ist Teil der [Netzwerkkonfiguration](/rest/api/batchservice/pool/add#networkconfiguration) des Pools. Die Netzwerkkonfiguration kann optional Einstellungen zum Verknüpfen des Pools mit einem [virtuellen Azure-Netzwerk](batch-virtual-network.md) enthalten. Wenn Sie den Pool in einem virtuellen Netzwerk einrichten, können Sie NSG-Regeln erstellen, die Adresseinstellungen im virtuellen Netzwerk verwenden.
@@ -121,4 +121,4 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
-- Weitere Informationen zu NSG-Regeln in Azure finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
+- Weitere Informationen zu NSG-Regeln in Azure finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).

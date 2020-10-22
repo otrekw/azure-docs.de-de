@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210219"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108234"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
@@ -256,7 +256,7 @@ Verwenden Sie den [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp
 
     - Sie müssen der Projektadministrator in Azure DevOps sein.
 
-    - Sie müssen die Berechtigung zum Erstellen eines persönlichen GitHub-Zugriffstokens (PAT) mit ausreichenden Berechtigungen besitzen. Weitere Informationen finden Sie unter [GitHub-PAT-Berechtigungsanforderungen.](https://aka.ms/azure-devops-source-repos)
+    - Sie müssen die Berechtigung zum Erstellen eines persönlichen GitHub-Zugriffstokens (PAT) mit ausreichenden Berechtigungen besitzen. Weitere Informationen finden Sie unter [GitHub-PAT-Berechtigungsanforderungen.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
     - Sie müssen die Berechtigung zum Committen des Masterbranches in Ihrem GitHub-Repository besitzen, um die automatisch generierte YAML-Datei zu committen.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322090"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108880"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 
@@ -17,7 +17,7 @@ In diesem Artikel wird erläutert, wie Sie eine Logik-App erstellen, die das all
 
 ## <a name="overview"></a>Übersicht
 
-Das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) stellt ein standardisiertes und erweiterbares JSON-Schema für alle verschiedenen Warnungstypen bereit. Das allgemeine Warnungsschema entfaltet seinen größten Nutzen bei programmgesteuerter Verwendung – durch Webhooks, Runbooks und Logik-Apps. In diesem Artikel wird veranschaulicht, wie eine einzelne Logik-App zur Verarbeitung aller Warnungen erstellt werden kann. Die gleichen Prinzipien können auch auf andere programmgesteuerte Methoden angewendet werden. Die in diesem Artikel beschriebene Logik-App erstellt klar definierte Variablen für die [Felder in „Essentials“](alerts-common-schema-definitions.md#essentials) und veranschaulicht zudem, wie die Logik je nach [Warnungstyp](alerts-common-schema-definitions.md#alert-context) verarbeitet wird.
+Das [allgemeine Warnungsschema](./alerts-common-schema.md) stellt ein standardisiertes und erweiterbares JSON-Schema für alle verschiedenen Warnungstypen bereit. Das allgemeine Warnungsschema entfaltet seinen größten Nutzen bei programmgesteuerter Verwendung – durch Webhooks, Runbooks und Logik-Apps. In diesem Artikel wird veranschaulicht, wie eine einzelne Logik-App zur Verarbeitung aller Warnungen erstellt werden kann. Die gleichen Prinzipien können auch auf andere programmgesteuerte Methoden angewendet werden. Die in diesem Artikel beschriebene Logik-App erstellt klar definierte Variablen für die [Felder in „Essentials“](alerts-common-schema-definitions.md#essentials) und veranschaulicht zudem, wie die Logik je nach [Warnungstyp](alerts-common-schema-definitions.md#alert-context) verarbeitet wird.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
@@ -138,5 +138,4 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie mehr über Aktionsgruppen](./action-groups.md).
-* [Erfahren Sie mehr über das allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
-
+* [Erfahren Sie mehr über das allgemeine Warnungsschema](./alerts-common-schema.md).

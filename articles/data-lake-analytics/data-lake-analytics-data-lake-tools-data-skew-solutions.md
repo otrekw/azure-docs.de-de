@@ -1,17 +1,16 @@
 ---
 title: Auflösen der Datenschiefe – Azure Data Lake Tools für Visual Studio
 description: Problembehandlung bei möglichen Lösungen für Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio.
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/16/2016
-ms.openlocfilehash: 5e9359582c07a78feb2d04b2ea87f046887238a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b82ce187c06afa69e54ea93931e1745f0d52674
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129932"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219189"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio
 

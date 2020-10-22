@@ -6,22 +6,22 @@ ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01c34304ac0e3e7faa42611758d77893e149a2f8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184872"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218730"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Sicheres Ausschalten von Azure FXT Edge Filer-Hardware
 
 Sie können zwar den physischen Netzschalter verwenden, um einen einzelnen Knoten einzuschalten, aber Sie sollten ihn im Normalfall nicht nutzen, um die Einheit herunterzufahren.
 
-Sobald ein Azure FXT Edge Filer-Knoten als Teil eines Clusters verwendet wird, sollte die Hardware über die Systemsteuerungssoftware des Clusters heruntergefahren werden. 
+Sobald ein Azure FXT Edge Filer-Knoten als Teil eines Clusters verwendet wird, sollte die Hardware über die Systemsteuerungssoftware des Clusters heruntergefahren werden.
 
-> [!NOTE] 
+> [!NOTE]
 > Verwenden Sie zur Vermeidung von Datenverlust oder -beschädigungen immer die Systemsteuerungssoftware, um einen Azure FXT Edge Filer herunterzufahren. Nutzen Sie den physischen Netzschalter nur dann zum Herunterfahren, wenn Sie vom Microsoft-Kundendienst und -Support (CSS) dazu aufgefordert werden.
-> 
+>
 > Ziehen Sie in einem elektrischen Notfall die Netzkabel ab, oder verwenden Sie den Mechanismus, der in Ihrem Rechenzentrum für das Schalten in den stromlosen Zustand vorgesehen ist.
 
 ## <a name="shut-down-a-node-from-the-control-panel"></a>Herunterfahren eines Knotens über die Systemsteuerung
@@ -30,7 +30,7 @@ Befolgen Sie diese Anleitung, um einen Azure FXT Edge Filer-Knoten sicher auszus
 
 1. Melden Sie sich an der Systemsteuerung des Clusters an. (Anleitung unter [Öffnen der Einstellungsseiten](fxt-cluster-create.md#open-the-settings-pages))
 1. Klicken Sie auf die Registerkarte **Einstellungen**, und laden Sie anschließend die Seite **Cluster** > **FXT Nodes** (FXT-Knoten).
-1. Suchen Sie in der Liste mit den Clusterknoten nach dem Knoten, den Sie herunterfahren möchten. Klicken Sie in der zugehörigen Spalte **Aktionen** auf die Schaltfläche **Ausschalten**. 
+1. Suchen Sie in der Liste mit den Clusterknoten nach dem Knoten, den Sie herunterfahren möchten. Klicken Sie in der zugehörigen Spalte **Aktionen** auf die Schaltfläche **Ausschalten**.
 1. Warten Sie einen Moment. Der Knoten wird heruntergefahren und schaltet sich selbst aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

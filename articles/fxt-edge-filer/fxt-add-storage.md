@@ -6,42 +6,43 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79223137"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217523"
 ---
-# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Tutorial: Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace 
+# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Tutorial: Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace
 
-Dieses Tutorial erklärt, wie Sie Back-Edge-Speicher für Ihren Cache hinzufügen und das clientseitige virtuelle Dateisystem einrichten. 
+Dieses Tutorial erklärt, wie Sie Back-Edge-Speicher für Ihren Cache hinzufügen und das clientseitige virtuelle Dateisystem einrichten.
 
-Der Cluster stellt eine Verbindung mit Back-End-Speichersystemen her, um auf die Datenclients-Anforderung zuzugreifen und Änderungen auf beständigere Weise als im Cache zu speichern. 
+Der Cluster stellt eine Verbindung mit Back-End-Speichersystemen her, um auf die Datenclients-Anforderung zuzugreifen und Änderungen auf beständigere Weise als im Cache zu speichern.
 
-Der Namespace ist das clientseitige Pseudo-Dateisystem, mit dem Sie den Back-End-Speicher austauschen können, ohne die clientseitigen Workflows zu ändern. 
+Der Namespace ist das clientseitige Pseudo-Dateisystem, mit dem Sie den Back-End-Speicher austauschen können, ohne die clientseitigen Workflows zu ändern.
 
-In diesem Lernprogramm lernen Sie Folgendes: 
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Hinzufügen von Back-End-Speicher zum Azure FXT Edge Filer-Cluster 
+>
+> * Hinzufügen von Back-End-Speicher zum Azure FXT Edge Filer-Cluster
 > * Definieren des clientseitigen Pfads für den Speicher
 
 ## <a name="about-back-end-storage"></a>Informationen zu Back-End-Speicher
 
 Der Azure FXT Edge Filer-Cluster verwendet eine *Kernspeichereinheit*-Definition, um ein Back-End-Speichersystem mit dem FXT-Cluster zu verknüpfen.
 
-Azure FXT Edge Filer ist mit mehreren gängigen NAS-Hardwaresystemen kompatibel und kann leere Container von Azure Blob oder andere Cloudspeicher verwenden. 
+Azure FXT Edge Filer ist mit mehreren gängigen NAS-Hardwaresystemen kompatibel und kann leere Container von Azure Blob oder andere Cloudspeicher verwenden.
 
 Cloudspeichercontainer müssen beim Hinzufügen leer sein, damit das FXT-Betriebssystem alle Daten auf dem Cloudspeichervolume vollständig verwalten kann. Sie können Ihre vorhandenen Daten in den Cloudcontainer verschieben, nachdem Sie den Container als Kernspeichereinheit zum Cluster hinzugefügt haben.
 
 Verwenden Sie die Einstellungen, um Ihrem System eine Kernspeichereinheit hinzuzufügen.
 
 > [!NOTE]
-> 
+>
 > Wenn Sie Amazon AWS- oder Google Cloud-Speicher verwenden möchten, müssen Sie eine Featurelizenz für FlashCloud<sup>TM</sup> installieren. Wenden Sie sich an Ihren Microsoft-Vertreter, um einen Lizenzschlüssel zu erhalten, und folgen Sie dann den Anweisungen im Legacy-Konfigurationsleitfaden für [das Hinzufügen oder Entfernen von Featurelizenzen](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/install_licenses.html#install-licenses).
-> 
-> Unterstützung für Azure Blob-Speicher ist in der Azure FXT Edge Filer-Softwarelizenz enthalten. 
+>
+> Unterstützung für Azure Blob-Speicher ist in der Azure FXT Edge Filer-Softwarelizenz enthalten.
 
 Ausführlichere Informationen zum Hinzufügen von Kernspeichereinheiten finden Sie in diesen Abschnitten des Cluster-Konfigurationsleitfadens:
 
@@ -59,7 +60,7 @@ Definieren Sie eine Kernspeichereinheit, indem Sie auf der Einstellungsseite **C
 
 ![Klicken auf die Schaltfläche „Erstellen“ oberhalb der Liste auf der Seite „Kernspeichereinheiten verwalten“](media/fxt-cluster-config/create-core-filer-button.png)
 
-Der Assistent zum **Hinzufügen einer neuen Kernspeichereinheit** führt Sie durch den Prozess der Erstellung einer Kernspeichereinheit, die mit Ihrem Back-End-Speicher verknüpft ist. Der Cluster-Konfigurationsleitfaden enthält Schritt-für-Schritt-Beschreibungen des Prozesses, der sich für NFS/NAS-Speicher und Cloud-Speicher unterscheidet (Links finden Sie oben). 
+Der Assistent zum **Hinzufügen einer neuen Kernspeichereinheit** führt Sie durch den Prozess der Erstellung einer Kernspeichereinheit, die mit Ihrem Back-End-Speicher verknüpft ist. Der Cluster-Konfigurationsleitfaden enthält Schritt-für-Schritt-Beschreibungen des Prozesses, der sich für NFS/NAS-Speicher und Cloud-Speicher unterscheidet (Links finden Sie oben).
 
 Subtasks umfassen:
 
@@ -71,15 +72,15 @@ Subtasks umfassen:
 
 * Geben Sie für NAS-Kernspeichereinheiten den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse an. Der FQDN wird für alle Kernspeichereinheit empfohlen und ist für SMB-Zugriff erforderlich.
 
-* Wählen Sie eine Cacherichtlinie aus – die zweite Seite des Assistenten listet die verfügbaren Cacherichtlinien für die neue Kernspeichereinheit auf. Weitere Informationen finden Sie im Abschnitt zu [Cacherichtlinien in der Anleitung zur Clusterkonfiguration](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html). 
+* Wählen Sie eine Cacherichtlinie aus – die zweite Seite des Assistenten listet die verfügbaren Cacherichtlinien für die neue Kernspeichereinheit auf. Weitere Informationen finden Sie im Abschnitt zu [Cacherichtlinien in der Anleitung zur Clusterkonfiguration](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html).
 
   ![Zweite Seite des Assistenten für neue Kernspeichereinheiten für NAS-Hardware; das Dropdownmenü für die Cacherichtlinie ist geöffnet und zeigt mehrere deaktivierte Optionen und drei gültige Cacherichtlinienoptionen (Umgehung, Zwischenspeichern von Lesevorgängen und Zwischenspeichern von Lese-/Schreibvorgängen).](media/fxt-cluster-config/new-nas-choose-cache-policy.png)
 
 * Für Cloudspeicher müssen Sie unter anderem den Clouddienst und die Zugangsdaten angeben. Ausführliche Informationen finden Sie unter [Cloud Service and Protocol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) (Clouddienst und Protokoll) in der Anleitung zur Clusterkonfiguration.
 
-  ![Informationen zur Cloud-Kernspeichereinheit im Assistenten für neue Kernspeichereinheiten](media/fxt-cluster-config/new-core-filer-cloud3.png) 
+  ![Informationen zur Cloud-Kernspeichereinheit im Assistenten für neue Kernspeichereinheiten](media/fxt-cluster-config/new-core-filer-cloud3.png)
   
-  Wenn Sie bereits Cloud-Zugangsdaten für diesen Cluster hinzugefügt haben, werden diese in der Liste angezeigt. Sie können Anmeldeinformationen auf der Einstellungsseite **Cluster** > **Cloudanmeldeinformationen** aktualisieren und hinzufügen. 
+  Wenn Sie bereits Cloud-Zugangsdaten für diesen Cluster hinzugefügt haben, werden diese in der Liste angezeigt. Sie können Anmeldeinformationen auf der Einstellungsseite **Cluster** > **Cloudanmeldeinformationen** aktualisieren und hinzufügen.
 
 Nach der Angabe aller erforderlichen Einstellungen im Assistenten klicken Sie auf die Schaltfläche **Add Filer** (Speichereinheit hinzufügen), um die Änderung zu übermitteln.
 
@@ -91,14 +92,14 @@ Der Kernspeichereinheit auf diesem Screenshot fehlt eine VServer-Instanz. Sie m�
 
 ## <a name="configure-the-namespace"></a>Konfigurieren des Namespace
 
-Der Azure FXT Edge Filer-Cluster erstellt ein virtuelles Dateisystem, das als *Cluster-Namespace* bezeichnet wird. Dieses vereinfacht den Clientzugriff auf Daten, die auf verschiedenen Back-End-Systemen gespeichert sind. Da Clients Dateien über einen virtuellen Pfad anfordern, können Speichersysteme ohne Änderung des Client-Workflows hinzugefügt oder ersetzt werden. 
+Der Azure FXT Edge Filer-Cluster erstellt ein virtuelles Dateisystem, das als *Cluster-Namespace* bezeichnet wird. Dieses vereinfacht den Clientzugriff auf Daten, die auf verschiedenen Back-End-Systemen gespeichert sind. Da Clients Dateien über einen virtuellen Pfad anfordern, können Speichersysteme ohne Änderung des Client-Workflows hinzugefügt oder ersetzt werden.
 
-Mit dem Cluster-Namespace können Sie auch Cloud- und NAS-Speichersysteme in einer ähnlichen Dateistruktur darstellen. 
+Mit dem Cluster-Namespace können Sie auch Cloud- und NAS-Speichersysteme in einer ähnlichen Dateistruktur darstellen.
 
-Die VServer-Instanzen des Clusters verwalten den Namespace und das Bereitstellen von Inhalt für Clients. Die Erstellung des Cluster-Namespace erfolgt in zwei Schritten: 
+Die VServer-Instanzen des Clusters verwalten den Namespace und das Bereitstellen von Inhalt für Clients. Die Erstellung des Cluster-Namespace erfolgt in zwei Schritten:
 
-1. Erstellen einer VServer-Instanz 
-1. Einrichten von Verbindungen zwischen den Back-End-Speichersystemen und den clientseitigen Dateisystempfaden 
+1. Erstellen einer VServer-Instanz
+1. Einrichten von Verbindungen zwischen den Back-End-Speichersystemen und den clientseitigen Dateisystempfaden
 
 ### <a name="create-a-vserver"></a>Erstellen einer VServer-Instanz
 
@@ -109,7 +110,7 @@ VServer-Instanzen sind virtuelle Dateiserver, die den Datenfluss zwischen dem Cl
 * VServer-Instanzen erzwingen Dateizugriffssteuerungen, einschließlich Exportrichtlinien für Kernspeichereinheiten und Benutzerauthentifizierungssystemen.
 * VServer-Instanzen stellen die SMB-Infrastruktur bereit.
 
-Bevor Sie mit der Konfiguration einer Cluster-VServer-Instanz beginnen, lesen Sie die verlinkte Dokumentation, und wenden Sie sich an Ihren Microsoft-Vertreter, um Hilfe beim Verständnis von Namespaces und VServer-Instanzen zu erhalten. Wenn Sie VLANs verwenden [erstellen](fxt-configure-network.md#adjust-network-settings) sie diese vor dem Erstellen der VServer-Instanz. 
+Bevor Sie mit der Konfiguration einer Cluster-VServer-Instanz beginnen, lesen Sie die verlinkte Dokumentation, und wenden Sie sich an Ihren Microsoft-Vertreter, um Hilfe beim Verständnis von Namespaces und VServer-Instanzen zu erhalten. Wenn Sie VLANs verwenden [erstellen](fxt-configure-network.md#adjust-network-settings) sie diese vor dem Erstellen der VServer-Instanz.
 
 Diese Abschnitte in der Anleitung zur Clusterkonfiguration helfen Ihnen, sich mit FXT VServer und globalen Namespace-Funktionen vertraut zu machen:
 
@@ -117,7 +118,7 @@ Diese Abschnitte in der Anleitung zur Clusterkonfiguration helfen Ihnen, sich mi
 * [Verwenden eines globalen Namespace](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)
 * [Erstellen einer VServer-Instanz](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)
 
-Sie benötigen mindestens eine VServer-Instanz für Ihren Cluster. 
+Sie benötigen mindestens eine VServer-Instanz für Ihren Cluster.
 
 Zum Erstellen einer neuen VServer-Instanz benötigen Sie die folgenden Informationen:
 
@@ -129,7 +130,7 @@ Zum Erstellen einer neuen VServer-Instanz benötigen Sie die folgenden Informati
 
 * Das für diese VServer-Instanz zu verwendende VLAN, wenn Ihr Netzwerk über VLANs verfügt
 
-Verwenden Sie die Einstellungsseite **VServer** > **Manage VServers** (VServer > VServer verwalten), um eine neue VServer-Instanz zu erstellen. Details finden Sie unter [Creating a VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) (Erstellen einer VServer-Instanz) in der Anleitung zur Clusterkonfiguration. 
+Verwenden Sie die Einstellungsseite **VServer** > **Manage VServers** (VServer > VServer verwalten), um eine neue VServer-Instanz zu erstellen. Details finden Sie unter [Creating a VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) (Erstellen einer VServer-Instanz) in der Anleitung zur Clusterkonfiguration.
 
 ![Popupfenster für das Erstellen einer neuen VServer-Instanz](media/fxt-cluster-config/new-vserver.png)
 
@@ -154,7 +155,6 @@ Fügen Sie zunächst über die Seite **VServer** > **Export Rules** (Exportregel
 Verwenden Sie dann die Seite **VServer** > **Export Policies** (Exportrichtlinien), um die angepasste Richtlinie auf Exporte Ihrer Kernspeichereinheit anzuwenden, wenn über diese VServer-Instanz darauf zugegriffen wird.
 
 Details finden Sie im Artikel [Controlling Access to Core Filer Exports](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) (Steuern des Zugriffs auf Exporte der Kernspeichereinheit) in der Anleitung zur Clusterkonfiguration.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

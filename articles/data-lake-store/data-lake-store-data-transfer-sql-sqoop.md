@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323076"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109186"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopieren von Daten zwischen Data Lake Storage Gen1 und Azure SQL-Datenbank mithilfe von Sqoop
 
@@ -31,7 +31,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Ein Azure Data Lake Storage Gen1-Konto**. Eine Anleitung zum Erstellen des Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 * **Ein Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen1-Konto. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). In diesem Artikel wird davon ausgegangen, dass Sie einen HDInsight-Linux-Cluster mit Data Lake Storage Gen1-Zugriff verwenden.
-* **Azure SQL-Datenbank**. Anweisungen zum Erstellen einer Datenbank in Azure SQL-Datenbank finden Sie unter [Erstellen einer Datenbank in Azure SQL-Datenbank](../sql-database/sql-database-get-started.md)
+* **Azure SQL-Datenbank**. Anweisungen zum Erstellen einer Datenbank in Azure SQL-Datenbank finden Sie unter [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md)
 
 ## <a name="create-sample-tables-in-the-database"></a>Erstellen von Beispieltabellen in der Datenbank
 
@@ -121,29 +121,29 @@ In einem HDInsight-Cluster sind die Sqoop-Pakete bereits verfügbar. Wenn Sie de
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Jede **part-m** *-Datei entspricht einer Zeile in der Quelltabelle **Table1**. Sie können den Inhalt der part-m-*-Dateien anzeigen und überprüfen.
+   Jede **part-m** *-Datei entspricht einer Zeile in der Quelltabelle **Table1**.
 
-### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Exportieren von Daten aus Data Lake Storage Gen1 in Azure SQL-Datenbank
+### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Sie können den Inhalt der part-m-*-Dateien anzeigen und überprüfen.
 
-1. Exportieren Sie die Daten aus dem Data Lake Storage Gen1-Konto in die leere Tabelle **Table2** in Azure SQL-Datenbank. Verwenden Sie die folgende Syntax.
+1. Exportieren von Daten aus Data Lake Storage Gen1 in Azure SQL-Datenbank Exportieren Sie die Daten aus dem Data Lake Storage Gen1-Konto in die leere Tabelle **Table2** in Azure SQL-Datenbank.
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-   Beispiel:
+   Verwenden Sie die folgende Syntax.
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-1. Stellen Sie sicher, dass die Daten in die SQL-Datenbanktabelle hochgeladen wurden. Stellen Sie mit [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) oder Visual Studio eine Verbindung mit Azure SQL-Datenbank her, und führen Sie dann die folgende Abfrage aus:
+1. Beispiel: Stellen Sie sicher, dass die Daten in die SQL-Datenbanktabelle hochgeladen wurden.
 
     ```tsql
     SELECT * FROM TABLE2
     ```
 
-   Dieser Befehl führt zu folgender Ausgabe:
+   Stellen Sie mit [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) oder Visual Studio eine Verbindung mit Azure SQL-Datenbank her, und führen Sie dann die folgende Abfrage aus:
 
     ```output
      ID  FName    LName
@@ -154,13 +154,13 @@ In einem HDInsight-Cluster sind die Sqoop-Pakete bereits verfügbar. Wenn Sie de
     4    Annette  Simpson
     ```
 
-## <a name="performance-considerations-while-using-sqoop"></a>Überlegungen zur Leistung bei der Verwendung von Sqoop
+## <a name="performance-considerations-while-using-sqoop"></a>Dieser Befehl führt zu folgender Ausgabe:
 
-Informationen zur Leistungsoptimierung Ihres Sqoop-Auftrags zum Kopieren von Daten in Data Lake Storage Gen1 finden Sie im [Blogbeitrag zur Sqoop-Leistung](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
+Überlegungen zur Leistung bei der Verwendung von Sqoop
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Informationen zur Leistungsoptimierung Ihres Sqoop-Auftrags zum Kopieren von Daten in Data Lake Storage Gen1 finden Sie im [Blogbeitrag zur Sqoop-Leistung](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
 
+* Nächste Schritte
 * [Kopieren von Daten aus Azure Storage-Blobs in Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Erstellen von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen1 im Azure-Portal](data-lake-store-hdinsight-hadoop-use-portal.md)

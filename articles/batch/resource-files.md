@@ -3,12 +3,12 @@ title: Erstellen und Verwenden von Ressourcendateien
 description: Erfahren Sie, wie Sie Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einer VM platziert werden.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230941"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109288"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Eine Alternative zum Generieren einer SAS-URL ist die Aktivierung eines anonymen öffentlichen Lesezugriffs auf einen Container und dessen Blobs in Azure Blob Storage. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine SAS zu erfordern. Öffentlicher Lesezugriff wird in der Regel für Szenarien verwendet, in denen bestimmte Blobs stets für anonymen Lesezugriff zur Verfügung stehen sollen. Wenn dieses Szenario zu Ihrer Lösung passt, lesen Sie den Artikel [Anonymer Zugriff auf Blobs](../storage/blobs/storage-manage-access-to-resources.md), um mehr über die Verwaltung des Zugriffs auf Ihre Blobdaten zu erfahren.
+Eine Alternative zum Generieren einer SAS-URL ist die Aktivierung eines anonymen öffentlichen Lesezugriffs auf einen Container und dessen Blobs in Azure Blob Storage. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine SAS zu erfordern. Öffentlicher Lesezugriff wird in der Regel für Szenarien verwendet, in denen bestimmte Blobs stets für anonymen Lesezugriff zur Verfügung stehen sollen. Wenn dieses Szenario zu Ihrer Lösung passt, lesen Sie den Artikel [Anonymer Zugriff auf Blobs](../storage/blobs/anonymous-read-access-configure.md), um mehr über die Verwaltung des Zugriffs auf Ihre Blobdaten zu erfahren.
 
 ### <a name="storage-container-name"></a>Speichercontainername
 

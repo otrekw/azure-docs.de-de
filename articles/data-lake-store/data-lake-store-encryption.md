@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497181"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109152"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
 
@@ -33,7 +33,7 @@ Daten im Übergang (auch als „Daten in Bewegung“ bezeichnet) werden in Data 
 
 Die Verschlüsselung für Data Lake Storage Gen1 wird während der Kontoerstellung eingerichtet und ist standardmäßig immer aktiviert. Sie können die Schlüssel entweder selbst verwalten oder die Verwaltung durch Data Lake Storage Gen1 zulassen (dies ist die Standardeinstellung).
 
-Weitere Informationen finden Sie in den [Ersten Schritten](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Weitere Informationen finden Sie in den [Ersten Schritten](./data-lake-store-get-started-portal.md).
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>Funktionsweise der Verschlüsselung in Data Lake Storage Gen1
 
@@ -105,7 +105,7 @@ Das folgende Diagramm veranschaulicht dieses Konzepte:
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 
-Wenn Sie vom Kunden verwaltete Schlüssel verwenden, ist eine Rotation des MEK möglich. Informationen zum Einrichten eines Data Lake Storage Gen1-Kontos mit vom Kunden verwalteten Schlüsseln finden Sie in den [Ersten Schritten](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Wenn Sie vom Kunden verwaltete Schlüssel verwenden, ist eine Rotation des MEK möglich. Informationen zum Einrichten eines Data Lake Storage Gen1-Kontos mit vom Kunden verwalteten Schlüsseln finden Sie in den [Ersten Schritten](./data-lake-store-get-started-portal.md).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -135,4 +135,4 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
 Der Vorgang dauert in der Regel weniger als zwei Minuten, und bei der Schlüsselrotation sind keine Ausfallzeiten zu erwarten. Nach Abschluss des Vorgangs wird die neue Version des Schlüssels verwendet.
 
 > [!IMPORTANT]
-> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln Ihrer Daten verwendet.  Allerdings können im seltenen Fall eines unerwarteten Fehlers, von dem selbst redundante Kopien Ihrer Daten betroffen sind, Daten aus einer Sicherung wiederhergestellt werden, die weiterhin den alten Schlüssel verwendet. Bewahren Sie daher eine Kopie der früheren Version Ihres Verschlüsselungsschlüssels auf, um in einem solchen Fall auf Ihre Daten zugreifen zu können. Bewährte Methoden für Ihre Notfallwiederherstellungsplanung finden Sie unter [Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md). 
+> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln Ihrer Daten verwendet.  Allerdings können im seltenen Fall eines unerwarteten Fehlers, von dem selbst redundante Kopien Ihrer Daten betroffen sind, Daten aus einer Sicherung wiederhergestellt werden, die weiterhin den alten Schlüssel verwendet. Bewahren Sie daher eine Kopie der früheren Version Ihres Verschlüsselungsschlüssels auf, um in einem solchen Fall auf Ihre Daten zugreifen zu können. Bewährte Methoden für Ihre Notfallwiederherstellungsplanung finden Sie unter [Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016092"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107605"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
 
@@ -29,22 +29,6 @@ Für Azure Analysis Services umfasst das erstmalige Einrichten des Gateways vier
 - **Erstellen einer Gatewayressource in Azure:** In diesem Schritt erstellen Sie eine Gatewayressource in Azure.
 
 - **Verbinden der Gatewayressource mit Servern:** Nachdem Sie eine Gatewayressource eingerichtet haben, können Sie damit beginnen, Server mit dieser zu verbinden. Sie können mehrere Server und andere Ressourcen verbinden, sofern sie sich in derselben Region befinden.
-
-
-
-## <a name="how-it-works"></a>Funktionsweise
-Das Gateway, das Sie auf einem Computer im Netzwerk Ihrer Organisation installieren, wird als Windows-Dienst mit dem Namen **Lokales Datengateway** ausgeführt. Dieser lokale Dienst wird über Azure Service Bus beim Gateway-Clouddienst registriert. Anschließend erstellen Sie eine lokale Datengatewayressource für ein Azure-Abonnement. Ihre Azure Analysis Services-Server werden anschließend mit der Azure-Gatewayressource verbunden. Wenn Modelle auf Ihrem Server für Abfragen oder die Verarbeitung mit Ihren lokalen Datenquellen verbunden werden müssen, durchläuft ein Abfrage- und Datenfluss die Gatewayressource, Azure Service Bus, den lokalen Datengateway-Dienst und Ihre Datenquellen. 
-
-![Funktionsweise](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-Abfragen und Datenfluss:
-
-1. Vom Clouddienst wird eine Abfrage mit den verschlüsselten Anmeldeinformationen für die lokale Datenquelle erstellt. Sie wird dann an eine Warteschlange für die Verarbeitung durch das Gateway gesendet.
-2. Der Gatewayclouddienst analysiert die Abfrage und überträgt die Anforderung per Push an den [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
-3. Das lokale Datengateway fragt den Azure Service Bus nach ausstehenden Anforderungen ab.
-4. Das Gateway ruft die Abfrage ab, entschlüsselt die Anmeldeinformationen und stellt anhand dieser Anmeldeinformationen eine Verbindung mit den Datenquellen her.
-5. Das Gateway sendet die Abfrage zur Ausführung an die Datenquelle.
-6. Die Ergebnisse werden aus der Datenquelle zurück an das Gateway und dann an den Clouddienst und Ihren Server gesendet.
 
 ## <a name="installing"></a>Installation
 
@@ -76,16 +60,6 @@ Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gatew
 | *.msftncsi.com |443 |Wird verwendet, um die Internetkonnektivität zu testen, falls der Power BI-Dienst das Gateway nicht erreicht. |
 | *.microsoftonline-p.com |443 |Wird je nach Konfiguration für die Authentifizierung verwendet. |
 | dc.services.visualstudio.com    |443 |Werden von AppInsights zur Erfassung von Telemetrie verwendet. |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>Erzwingen von HTTPS-Kommunikation mit Azure Service Bus
-
-Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und nicht direkt über TCP) kommuniziert. Dies kann allerdings erheblich die Leistung beeinträchtigen. Sie können die Datei *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ändern, indem Sie den Wert von `AutoDetect` in `Https` ändern. Diese Datei befindet sich standardmäßig in *C:\Programme\On-premises data gateway*.
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

@@ -1,17 +1,16 @@
 ---
 title: Erweitern von U-SQL-Skripts mit R in Azure Data Lake Analytics
 description: Hier erfahren Sie, wie Sie R-Code in U-SQL-Skripts unter Verwendung von Azure Data Lake Analytics ausführen. Betten Sie R-Code als Inline-Code ein, oder verweisen Sie aus Dateien darauf.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127399"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217999"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Erweitern von U-SQL-Skripts mit R-Code in Azure Data Lake Analytics
 
@@ -212,4 +211,4 @@ OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
+* [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](./data-lake-analytics-u-sql-get-started.md)

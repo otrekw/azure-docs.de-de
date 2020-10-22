@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3990f9533aa6746011b1f070139b39ec884711c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcb971cd0bd0addd3190e2a3a5f9c6740494b7fd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305847"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318965"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Airstack für die automatische Benutzerbereitstellung
 
@@ -89,7 +89,7 @@ Vor dem Konfigurieren von Airstack für die automatische Benutzerbereitstellung 
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern und/oder Gruppen in Airstack auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Airstack aktivieren. Befolgen Sie dazu die Anweisungen im [Tutorial für einmaliges Anmelden mit Airstack](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für Airstack aktivieren. Befolgen Sie dazu die Anweisungen im [Tutorial für einmaliges Anmelden mit Airstack](./airstack-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Airstack in Azure AD:
 
@@ -153,4 +153,3 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
-

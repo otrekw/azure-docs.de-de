@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b076c757c8f86941c79da4f0be598aaa5ea6761
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773504"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317958"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -84,7 +84,7 @@ Die Azure AD Connect-Cloudbereitstellungsaktualisierung (Public Preview) bietet
  
 Wenn IT-Administratoren oder Endbenutzer den BitLocker-Wiederherstellungsschlüssel lesen, auf den sie zugreifen können, generiert Azure Active Directory jetzt ein Überwachungsprotokoll, das erfasst, wer auf den Wiederherstellungsschlüssel zugegriffen hat. Dieselbe Überwachung liefert Details zu dem Gerät, dem der BitLocker-Schlüssel zugeordnet ist.
 
-Endbenutzer können [über das Portal „Mein Konto“ auf ihre Wiederherstellungsschlüssel zugreifen](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). IT-Administratoren können über die [BitLocker-Wiederherstellungsschlüssel-API in der Betaversion](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta,) oder über das Azure AD-Portal auf Wiederherstellungsschlüssel zugreifen. Weitere Informationen finden Sie unter [Anzeigen oder Kopieren von BitLocker-Schlüsseln im Azure AD-Portal](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys).
+Endbenutzer können [über das Portal „Mein Konto“ auf ihre Wiederherstellungsschlüssel zugreifen](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). IT-Administratoren können über die [BitLocker-Wiederherstellungsschlüssel-API in der Betaversion](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) oder über das Azure AD-Portal auf Wiederherstellungsschlüssel zugreifen. Weitere Informationen finden Sie unter [Anzeigen oder Kopieren von BitLocker-Schlüsseln im Azure AD-Portal](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys).
 
 ---
 
@@ -412,7 +412,7 @@ Ein [Hotfixrollup-Paket (Build 4.6.263.0)](https://support.microsoft.com/help/4
  
 Mit dem allgemein verfügbaren Release der Client-Apps-Bedingung für den bedingten Zugriff gelten neue Richtlinien jetzt standardmäßig für alle Clientanwendungen. Dies schließt auch Clients mit Legacyauthentifizierung ein. Vorhandene Richtlinien bleiben unverändert, jedoch wird die Option *Configure Yes/No* (Ja/Nein konfigurieren) aus vorhandenen Richtlinien entfernt, damit Sie mühelos erkennen können, auf welche Client-Apps die Richtlinie angewendet wird. 
 
-Stellen Sie beim Erstellen einer neuen Richtlinie sicher, dass Sie Benutzer und Dienstkonten ausschließen, die immer noch die Legacy-Authentifizierung nutzen. Wenn Sie dies nicht tun, werden sie gesperrt. [Weitere Informationen](https://aka.ms/caclientapps)
+Stellen Sie beim Erstellen einer neuen Richtlinie sicher, dass Sie Benutzer und Dienstkonten ausschließen, die immer noch die Legacy-Authentifizierung nutzen. Wenn Sie dies nicht tun, werden sie gesperrt. [Weitere Informationen](../conditional-access/concept-conditional-access-conditions.md)
  
 ---
 
@@ -978,7 +978,7 @@ Die in einem Token ausgestellten Gruppenansprüche können jetzt auf die Gruppen
 **Dienstkategorie:** App-Bereitstellung  
 **Produktfunktion:** Identity Lifecycle Management
  
-Wir haben die Workday Writeback-Bereitstellungs-App erweitert, um jetzt das Rückschreiben von Geschäftstelefonnummer- und Mobilnummerattributen zu unterstützen. Zusätzlich zu E-Mail-Adresse und Benutzername können Sie nun die Workday Writeback-Bereitstellungs-App so konfigurieren, dass Telefonnummerwerte von Azure AD an Workday weitergeleitet werden. Weitere Informationen zum Konfigurieren des Rückschreibens von Telefonnummern finden Sie im Tutorial zur [Workday Writeback](https://aka.ms/WorkdayWriteback)-App. 
+Wir haben die Workday Writeback-Bereitstellungs-App erweitert, um jetzt das Rückschreiben von Geschäftstelefonnummer- und Mobilnummerattributen zu unterstützen. Zusätzlich zu E-Mail-Adresse und Benutzername können Sie nun die Workday Writeback-Bereitstellungs-App so konfigurieren, dass Telefonnummerwerte von Azure AD an Workday weitergeleitet werden. Weitere Informationen zum Konfigurieren des Rückschreibens von Telefonnummern finden Sie im Tutorial zur [Workday Writeback](../saas-apps/workday-writeback-tutorial.md)-App. 
 
 ---
 
@@ -1025,7 +1025,7 @@ Um zu der neuen Benutzeroberfläche zu gelangen, navigieren Sie im Azure AD B2
 
 Die Azure AD B2C-Benutzeroberfläche für App-Registrierungen basiert auf der allgemeinen [Oberfläche für App-Registrierungen](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) bei einem Azure AD-Mandanten, ist jedoch an die Anforderungen von Azure AD B2C angepasst. Die ältere „Anwendungen“-Benutzeroberfläche wird in Zukunft als veraltet eingestuft.
 
-Weitere Informationen finden Sie unter [Die neue App-Registrierungsbenutzeroberfläche für Azure AD B2C](https://aka.ms/b2cappregtraining).
+Weitere Informationen finden Sie unter [Die neue App-Registrierungsbenutzeroberfläche für Azure AD B2C](../../active-directory-b2c/app-registrations-training-guide.md).
 
 ---
 
@@ -1051,7 +1051,7 @@ Die Umgebung für die kombinierte Registrierung für Multi-Factor Authentication
 
 **Produktfunktion:** Identitätssicherheit und -schutz
 
-Die fortlaufende Zugriffsevaluierung ist ein neues Sicherheitsfeature, das bei Ereignissen in Azure AD (z. B. Löschen von Benutzerkonten) die Durchsetzung von Richtlinien in nahezu Echtzeit bei den vertrauenden Seiten ermöglicht, die Azure AD-Zugriffstoken verwenden. Dieses Feature wird zuerst für Teams- und Outlook-Clients eingeführt. Weitere Einzelheiten finden Sie in unserem [Blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) und der [Dokumentation](./concept-fundamentals-continuous-access-evaluation.md).
+Die fortlaufende Zugriffsevaluierung ist ein neues Sicherheitsfeature, das bei Ereignissen in Azure AD (z. B. Löschen von Benutzerkonten) die Durchsetzung von Richtlinien in nahezu Echtzeit bei den vertrauenden Seiten ermöglicht, die Azure AD-Zugriffstoken verwenden. Dieses Feature wird zuerst für Teams- und Outlook-Clients eingeführt. Weitere Einzelheiten finden Sie in unserem [Blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) und der [Dokumentation](../conditional-access/concept-continuous-access-evaluation.md).
 
 ---
 
@@ -1127,7 +1127,7 @@ Im April 2020 haben wir diese 31 neuen Apps mit Verbundunterstützung in den App
 
 [SincroPool Apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [Float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT Procurement Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 Mover](https://app.mover.io/login), [Speaker Engage](https://speakerengage.com/login.php), [Honestly](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 People](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [Harmony](../saas-apps/harmony-tutorial.md), [Timetabling Solutions](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet CLICK](../saas-apps/synchronet-click-tutorial.md), [empower](https://www.made-in-office.com/en/), [Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md), [Litmus](../saas-apps/litmus-tutorial.md), [GroupTalk](https://recorder.grouptalk.com/), [Frontify](../saas-apps/frontify-tutorial.md), [MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md), [COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro Productivity Suite](../saas-apps/nitro-productivity-suite-tutorial.md) , [Trend Micro Web Security(TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
 
-Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration mit Azure Active Directory](https://aka.ms/appstutorial). Weitere Informationen zum Listen Ihrer Anwendung im Azure AD-App-Katalog finden Sie unter [Listen Ihrer Anwendung im Azure Active Directory-Anwendungskatalog](https://aka.ms/azureadapprequest).
+Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration mit Azure Active Directory](../saas-apps/tutorial-list.md). Weitere Informationen zum Listen Ihrer Anwendung im Azure AD-App-Katalog finden Sie unter [Listen Ihrer Anwendung im Azure Active Directory-Anwendungskatalog](../azuread-dev/howto-app-gallery-listing.md).
 
 ---
 
@@ -1211,7 +1211,7 @@ Mit Verwaltungseinheiten kann ein zentraler Administrator folgende Aktionen ausf
 - Zuweisen einer Rolle mit Administratorberechtigungen nur für Azure AD-Benutzer in einer Verwaltungseinheit
 - Auffüllen der Verwaltungseinheiten mit Benutzern und Gruppen nach Bedarf
 
-Weitere Informationen finden Sie unter [Verwalten von Verwaltungseinheiten in Azure Active Directory (Vorschau)](https://aka.ms/AdminUnitsDocs).
+Weitere Informationen finden Sie unter [Verwalten von Verwaltungseinheiten in Azure Active Directory (Vorschau)](../users-groups-roles/directory-administrative-units.md).
 
 ---
 
@@ -1282,7 +1282,7 @@ Weitere Informationen finden Sie über die folgenden Links:
 
 **Produktfunktion:**
 
-„Meine Mitarbeiter“ bietet Managern in Service und Produktion (z. B. Geschäftsführer) die Möglichkeit sicherzustellen, dass ihre Mitarbeiter auf ihre Azure AD-Konten zugreifen können. Anstatt einen zentralen Helpdesk zu verwenden, können Organisationen häufige Aufgaben wie das Zurücksetzen von Kennwörtern oder das Ändern von Telefonnummern an einen Manager in Service oder Produktion delegieren. Bei Verwendung von „Meine Mitarbeiter“ kann ein Benutzer, der nicht auf sein Konto zugreifen kann, ohne die Hilfe des Helpdesks oder der IT-Abteilung mit wenigen Klicks den Zugriff wiedererlangen. Weitere Informationen finden Sie unter [Verwalten von Benutzern mit „Meine Mitarbeiter“ (Vorschau)](https://aka.ms/MyStaffAdminDocs) und [Delegieren der Benutzerverwaltung mit „Meine Mitarbeiter“ (Vorschau)](https://aka.ms/MyStaffUserDocs).
+„Meine Mitarbeiter“ bietet Managern in Service und Produktion (z. B. Geschäftsführer) die Möglichkeit sicherzustellen, dass ihre Mitarbeiter auf ihre Azure AD-Konten zugreifen können. Anstatt einen zentralen Helpdesk zu verwenden, können Organisationen häufige Aufgaben wie das Zurücksetzen von Kennwörtern oder das Ändern von Telefonnummern an einen Manager in Service oder Produktion delegieren. Bei Verwendung von „Meine Mitarbeiter“ kann ein Benutzer, der nicht auf sein Konto zugreifen kann, ohne die Hilfe des Helpdesks oder der IT-Abteilung mit wenigen Klicks den Zugriff wiedererlangen. Weitere Informationen finden Sie unter [Verwalten von Benutzern mit „Meine Mitarbeiter“ (Vorschau)](../users-groups-roles/my-staff-configure.md) und [Delegieren der Benutzerverwaltung mit „Meine Mitarbeiter“ (Vorschau)](../user-help/my-staff-team-manager.md).
 
 ---
 

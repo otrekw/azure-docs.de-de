@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9e4e45cdefc9342ec5727bae8ea10fe133df1627
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715890"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318840"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Alibaba Cloud Service (rollenbasiertes SSO)
 
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Alibaba Cloud Service (rollenbasiertes 
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei Alibaba Cloud Service (rollenbasiertes SSO) anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!Note]
     > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
 
-1. Für Alibaba Cloud Service (rollenbasiertes SSO) müssen Rollen in Azure AD konfiguriert werden. Der Rollenanspruch ist vorkonfiguriert und muss nicht von Ihnen konfiguriert werden, Sie müssen ihn aber dennoch in Azure AD erstellen. Informationen dazu finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+1. Für Alibaba Cloud Service (rollenbasiertes SSO) müssen Rollen in Azure AD konfiguriert werden. Der Rollenanspruch ist vorkonfiguriert und muss nicht von Ihnen konfiguriert werden, Sie müssen ihn aber dennoch in Azure AD erstellen. Informationen dazu finden Sie in [diesem Artikel](../develop/active-directory-enterprise-app-role-management.md).
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -250,11 +250,10 @@ Nach Abschluss die vorherigen Konfigurationen testen Sie Alibaba Cloud Service (
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Alibaba Cloud Service (rollenbasiertes SSO) mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

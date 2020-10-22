@@ -3,12 +3,12 @@ title: Lebenszyklusverwaltung von Azure VMware Solution-VMs
 description: Erfahren Sie, wie Sie alle Aspekte des Lebenszyklus Ihrer Azure VMware Solution-VMs mit nativen Tools in Microsoft Azure verwalten.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950362"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216248"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Lebenszyklusverwaltung von Azure VMware Solution-VMs
 
@@ -53,8 +53,8 @@ Der **Log Analytics-Arbeitsbereich** ermöglicht das Sammeln von Protokollen und
 Die **Azure-Updateverwaltung** in Azure Automation verwaltet Betriebssystemupdates für Ihre Windows- und Linux-Computer in einer Hybridumgebung. Sie überwacht die Konformität von Patches und leitet Warnungen zu Abweichungen bei Patches zur Korrektur an Azure Monitor weiter. Die Azure-Updateverwaltung muss eine Verbindung mit Ihrem Log Analytics-Arbeitsbereich herstellen, um gespeicherte Daten zum Bewerten des Status von Updates auf Ihren VMs verwenden zu können.
 - Zum Hinzufügen von Log Analytics zur Azure-Updateverwaltung müssen Sie zuerst [ein Azure Automation-Konto erstellen](../automation/automation-create-standalone-account.md).
 - Informationen zum Verknüpfen Ihres Log Analytics-Arbeitsbereichs mit Ihrem Automation-Konto finden Sie unter [Log Analytics-Arbeitsbereich und Automation-Konto](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
-- Informationen zum Aktivieren der Azure-Updateverwaltung für Ihre VMs finden Sie unter [Aktivieren der Updateverwaltung über ein Automation-Konto](../automation/update-management/update-mgmt-enable-automation-account.md).
-- Nachdem Sie der Azure-Updateverwaltung VMs hinzugefügt haben, können Sie [Updates auf VMs bereitstellen und die Ergebnisse überprüfen](../automation/update-management/update-mgmt-deploy-updates.md). 
+- Informationen zum Aktivieren der Azure-Updateverwaltung für Ihre VMs finden Sie unter [Aktivieren der Updateverwaltung über ein Automation-Konto](../automation/update-management/enable-from-automation-account.md).
+- Nachdem Sie der Azure-Updateverwaltung VMs hinzugefügt haben, können Sie [Updates auf VMs bereitstellen und die Ergebnisse überprüfen](../automation/update-management/deploy-updates.md). 
 
 **Azure Security Center** bietet lokal und in der Cloud erweiterten Bedrohungsschutz für alle Ihre Hybridworkloads. Die Lösung bewertet das Sicherheitsrisiko von Azure VMware Solution-VMs und gibt bei Bedarf Warnungen aus. Diese Sicherheitswarnungen können zur Behebung an Azure Monitor weitergeleitet werden.
 - Azure Security Center muss nicht bereitgestellt werden. Weitere Informationen finden Sie in der Liste der [unterstützten Features für virtuelle Computer](../security-center/security-center-services.md).

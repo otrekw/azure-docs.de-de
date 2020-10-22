@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance für VMware
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f20bb77c29d98ab4e3549bfed43d47d1f1f7dc0c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448654"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318216"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -58,7 +58,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
-3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen [Einstellungen](./tutorial-assess-vmware.md#verify-security) entsprechen.
+3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen [Einstellungen](./tutorial-discover-vmware.md#verify-security) entsprechen.
 
 
 
@@ -117,7 +117,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
    
    Die Anmeldung mit einer PIN wird nicht unterstützt.
 3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück. 
-4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](tutorial-prepare-vmware.md#prepare-azure) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
+4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](./tutorial-discover-vmware.md#prepare-an-azure-user-account) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
 
 
@@ -126,7 +126,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um die Konfigurations- und Leistungsdaten der VMs zu ermitteln.
 
 1. Wählen Sie in **Schritt 1: Geben Sie die vCenter Server-Anmeldeinformationen** ein, klicken Sie auf **Anmeldeinformationen hinzufügen**, um einen Anzeigenamen für die Anmeldeinformationen anzugeben, fügen Sie **Benutzername** und **Kennwort** für das vCenter Server-Konto hinzu, das die Appliance verwendet, um VMs auf der vCenter Server-Instanz zu ermitteln.
-    - Sie sollten im [vorherigen Tutorial](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
+    - Sie sollten im [vorherigen Tutorial](./tutorial-discover-vmware.md#create-an-account-to-access-vcenter) ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
     - Wenn Sie die Ermittlung auf bestimmte VMware-Objekte (vCenter Server-Rechenzentren, Cluster, einen Ordner mit Clustern, Hosts, einen Ordner mit Hosts oder einzelne VMs) begrenzen möchten, hilft Ihnen die Anleitung in [diesem Artikel](set-discovery-scope.md) beim Einschränken des von Azure Migrate genutzten Kontos weiter.
 1. Geben Sie in **Step 2: Geben Sie vCenter Server-Details** ein, klicken Sie auf **Ermittlungsquelle hinzufügen**, um den Anzeigenamen für die Anmeldeinformationen aus der Dropdownliste auszuwählen, geben Sie den **IP-Adresse/FQDN**-Wert der vCenter Server-Instanz an. Sie können für **Port** den Standardwert (443) beibehalten oder einen benutzerdefinierten Port angeben, den vCenter Server überwacht, und dann auf **Speichern** klicken.
 1. Wenn Sie auf „Speichern“ klicken, versucht die Appliance, die Verbindung zum vCenter Server mit den angegebenen Anmeldeinformationen zu überprüfen, und zeigt den **Überprüfungszustand** in der Tabelle für die vCenter Server-IP-Adresse/FQDN an.
@@ -145,4 +145,4 @@ Die Ermittlung funktioniert wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die Tutorials zur [VMware-Bewertung](tutorial-assess-vmware.md) und zur [Migration ohne Agent](tutorial-migrate-vmware.md).
+Lesen Sie die Tutorials zur [VMware-Bewertung](./tutorial-assess-vmware-azure-vm.md) und zur [Migration ohne Agent](tutorial-migrate-vmware.md).

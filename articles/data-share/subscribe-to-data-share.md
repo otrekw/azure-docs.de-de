@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489917"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216571"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -34,7 +34,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 
 ### <a name="receive-data-into-a-storage-account"></a>Empfangen von Daten in einem Speicherkonto: 
 
-* Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
+* Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](../storage/common/storage-account-create.md). 
 * Berechtigung zum Schreiben in das Speicherkonto (unter *Microsoft.Storage/storageAccounts/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
 * Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden.  
 
@@ -62,7 +62,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Empfangen von Daten in einem Azure Data Explorer-Cluster: 
 
-* Ein Azure Data Explorer-Cluster im gleichen Azure-Rechenzentrum wie der Data Explorer-Cluster des Datenanbieters: Sollten Sie über keinen solchen Cluster verfügen, können Sie einen [Azure Data Explorer-Cluster erstellen](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Falls Ihnen das Azure-Rechenzentrum des Datenanbieterclusters nicht bekannt ist, können Sie den Cluster später in diesem Prozess erstellen.
+* Ein Azure Data Explorer-Cluster im gleichen Azure-Rechenzentrum wie der Data Explorer-Cluster des Datenanbieters: Sollten Sie über keinen solchen Cluster verfügen, können Sie einen [Azure Data Explorer-Cluster erstellen](/azure/data-explorer/create-cluster-database-portal). Falls Ihnen das Azure-Rechenzentrum des Datenanbieterclusters nicht bekannt ist, können Sie den Cluster später in diesem Prozess erstellen.
 * Berechtigung zum Schreiben in den Azure Data Explorer-Cluster (unter *Microsoft.Kusto/clusters/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
 * Berechtigung zum Hinzufügen einer Rollenzuweisung zum Azure Data Explorer-Cluster (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
 

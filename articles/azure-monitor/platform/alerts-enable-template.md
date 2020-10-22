@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb44b7133e5644991d7413f4f824a8b55ffdd75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87849018"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108370"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -400,6 +400,5 @@ Eine Warnung in einer Resource Manager-Vorlage ist sehr nützlich, wenn bei der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu Warnungen](alerts-overview.md)
-* [Hinzufügen von Diagnoseeinstellungen](./diagnostic-settings-template.md) zu Ihrer Resource Manager-Vorlage
+* [Hinzufügen von Diagnoseeinstellungen](../samples/resource-manager-diagnostic-settings.md) zu Ihrer Resource Manager-Vorlage
 * Informationen zur JSON-Syntax und zu den Eigenschaften finden Sie in der Vorlagenreferenz für [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules).
-

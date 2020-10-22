@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534198"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107877"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -91,7 +91,7 @@ Benutzer haben zwei Möglichkeiten, auf die Daten zuzugreifen:
     > - Service Fabric
     > - Application Insights
     >
-    > Sie können testen, ob Protokolle ordnungsgemäß ihrer Ressource zugeordnet wurden, indem Sie eine Abfrage ausführen und die Datensätze überprüfen, an denen Sie interessiert sind. Wenn sich die richtige Ressourcen-ID in der Eigenschaft [_ResourceId](log-standard-properties.md#_resourceid) befindet, stehen Daten für ressourcenbezogene Abfragen zur Verfügung.
+    > Sie können testen, ob Protokolle ordnungsgemäß ihrer Ressource zugeordnet wurden, indem Sie eine Abfrage ausführen und die Datensätze überprüfen, an denen Sie interessiert sind. Wenn sich die richtige Ressourcen-ID in der Eigenschaft [_ResourceId](./log-standard-columns.md#_resourceid) befindet, stehen Daten für ressourcenbezogene Abfragen zur Verfügung.
 
 Azure Monitor bestimmt automatisch den richtigen Modus je nach Kontext, aus dem Sie die Protokollsuche ausführen. Der Bereich wird immer im oberen linken Abschnitt von Log Analytics angezeigt.
 
@@ -164,4 +164,3 @@ Beachten Sie beim Planen der Migration zu diesem Modell die folgenden Punkte:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Implementieren der in diesem Leitfaden empfohlenen Sicherheitsberechtigungen und -kontrollen finden Sie unter [Verwalten des Zugriffs auf Protokolle](manage-access.md).
-

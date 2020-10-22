@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48336b65ec564f834ef8a1e8f4911c89b1a37f31
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802061"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107945"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -20,7 +20,7 @@ In diesem Artikel werden die unterschiedlichen Quellen für Überwachungsdaten b
 
 ## <a name="application-tiers"></a>Anwendungsebenen
 
-Quellen für Überwachungsdaten von Azure-Anwendungen können in Ebenen organisiert sein, wobei die höchste Ebene Ihre Anwendung selbst und die niedrigste Ebene die Komponenten der Azure-Plattform darstellen. Die Methode für den Zugriff auf Daten der jeweiligen Ebene ist unterschiedlich. Die Anwendungsebenen sind in der folgenden Tabelle zusammengefasst, und die Quellen für Überwachungsdaten der einzelnen Ebene sind in den folgenden Abschnitten aufgeführt. Eine Beschreibung der einzelnen Speicherorte und des Zugriffs auf die jeweiligen Daten finden Sie unter [Speicherorte für Überwachungsdaten in Azure](data-locations.md).
+Quellen für Überwachungsdaten von Azure-Anwendungen können in Ebenen organisiert sein, wobei die höchste Ebene Ihre Anwendung selbst und die niedrigste Ebene die Komponenten der Azure-Plattform darstellen. Die Methode für den Zugriff auf Daten der jeweiligen Ebene ist unterschiedlich. Die Anwendungsebenen sind in der folgenden Tabelle zusammengefasst, und die Quellen für Überwachungsdaten der einzelnen Ebene sind in den folgenden Abschnitten aufgeführt. Eine Beschreibung der einzelnen Speicherorte und des Zugriffs auf die jeweiligen Daten finden Sie unter [Speicherorte für Überwachungsdaten in Azure](../monitor-reference.md).
 
 
 ![Überwachungsebenen](../media/overview/overview.png)
@@ -208,4 +208,4 @@ Sonstige Dienste in Azure schreiben Daten auf die Azure Monitor-Datenplattform. 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Typen der von Azure Monitor gesammelten Überwachungsdaten](data-platform.md) und wie diese Daten angezeigt und analysiert werden.
-- Listen Sie die [verschiedenen Speicherorte auf, an denen Azure-Ressourcen Daten speichern](data-locations.md), und erfahren Sie, wie Sie darauf zugreifen können. 
+- Listen Sie die [verschiedenen Speicherorte auf, an denen Azure-Ressourcen Daten speichern](../monitor-reference.md), und erfahren Sie, wie Sie darauf zugreifen können.

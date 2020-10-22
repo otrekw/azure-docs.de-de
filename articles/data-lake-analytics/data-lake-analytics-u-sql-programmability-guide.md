@@ -1,18 +1,16 @@
 ---
 title: U-SQL-Programmierbarkeitshandbuch für Azure Data Lake
 description: Hier finden Sie Informationen zu den Diensten in Azure Data Lake Analytics, mit denen Sie eine cloudbasierte Big Data-Plattform erstellen können.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0e914b5f36d58ec3aab24099c8b3787f0cf648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288944"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215449"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
@@ -121,7 +119,7 @@ Der folgende Code zeigt, wie Sie auf eine Assembly verweisen:
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Eine ausführlichere Beschreibung dieses Themas finden Sie unter [How to register U-SQL Assemblies in your U-SQL Catalog](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) (Registrieren von U-SQL-Assemblys im U-SQL-Katalog).
+Eine ausführlichere Beschreibung dieses Themas finden Sie unter [How to register U-SQL Assemblies in your U-SQL Catalog](/archive/blogs/azuredatalake/how-to-register-u-sql-assemblies-in-your-u-sql-catalog) (Registrieren von U-SQL-Assemblys im U-SQL-Katalog).
 
 
 ### <a name="use-assembly-versioning"></a>Verwenden der Versionsverwaltung für Assemblys

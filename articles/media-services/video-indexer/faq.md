@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046963"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217727"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
@@ -183,7 +183,7 @@ Derzeit bestehen einige Überlappungen bei den von der Video Indexer-API und der
 
 Die Video Indexer-API enthält eine Autorisierungs-API und eine Operations-API. Die Autorisierungs-API enthält Aufrufe, über die Sie Zugriffstoken erhalten. Jeder Aufruf der Operations-API sollte einem Zugriffstoken zugeordnet sein und mit dem Autorisierungsbereich des Aufrufs übereinstimmen.
 
-Zugriffstoken sind bei der Verwendung von Video Indexer-APIs aus Sicherheitsgründen erforderlich. Dadurch wird sichergestellt, dass alle Aufrufe von Ihnen oder zugriffsberechtigten Personen auf Ihr Konto stammen. 
+Zugriffstoken sind bei der Verwendung von Video Indexer-APIs aus Sicherheitsgründen erforderlich. Dadurch wird sichergestellt, dass alle Aufrufe von Ihnen oder zugriffsberechtigten Personen auf Ihr Konto stammen. 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Was ist der Unterschied zwischen Zugriffstoken für Konten, Benutzer und Videos?
 
@@ -217,4 +217,5 @@ Ja, Video Indexer stellt eine kostenlose Testversion bereit, die einen vollstän
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht](video-indexer-overview.md)
+* [Übersicht](video-indexer-overview.md)
+* [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)
