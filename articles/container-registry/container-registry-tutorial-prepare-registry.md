@@ -4,16 +4,16 @@ description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erst
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259526"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148394"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
-Eine Azure-Containerregistrierung ist eine private Docker-Registrierung, die in Azure bereitgestellt wird und die Sie netzwerknah zu Ihren Bereitstellungen anordnen können. In diesen drei Tutorialartikeln wird beschrieben, wie Sie die Georeplikation zum Bereitstellen einer ASP.NET Core-Webanwendung, die in einem Linux-Container ausgeführt wird, auf zwei Instanzen vom Typ [Web-Apps für Container](../app-service/containers/index.yml) verwenden. Es wird veranschaulicht, wie das Image von Azure aus dem jeweils nächstgelegenen georeplizierten Repository automatisch auf den einzelnen Web-App-Instanzen bereitgestellt wird.
+Eine Azure-Containerregistrierung ist eine private Docker-Registrierung, die in Azure bereitgestellt wird und die Sie netzwerknah zu Ihren Bereitstellungen anordnen können. In diesen drei Tutorialartikeln wird beschrieben, wie Sie die Georeplikation zum Bereitstellen einer ASP.NET Core-Webanwendung, die in einem Linux-Container ausgeführt wird, auf zwei Instanzen vom Typ [Web-Apps für Container](../app-service/index.yml) verwenden. Es wird veranschaulicht, wie das Image von Azure aus dem jeweils nächstgelegenen georeplizierten Repository automatisch auf den einzelnen Web-App-Instanzen bereitgestellt wird.
 
 Dieses Tutorial ist der erste Teil einer dreiteiligen Serie:
 

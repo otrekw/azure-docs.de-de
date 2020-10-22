@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336155"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089042"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
 
@@ -68,7 +68,7 @@ Falls beim Debuggen die Anwendung abstürzt, sollten Sie zunächst den Ausführu
 
 
 
-Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
 ::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Meine Anwendung hat eine hohe CPU- oder Speicherauslastung.
@@ -91,7 +91,7 @@ Weitere Informationen finden Sie unter [Metriken für Azure Spring Cloud](spring
 
 Wenn alle Instanzen aktiv sind und ausgeführt werden, wechseln Sie zu Azure Log Analytics, um Ihre Anwendungsprotokolle abzufragen und Ihre Codelogik zu überprüfen. Hiermit können Sie feststellen, ob diese sich ggf. auf die Skalierungspartitionierung auswirken. Weitere Informationen finden Sie unter [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](diagnostic-services.md).
 
-Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Fragen Sie die Protokolle mit der [Kusto-Abfragesprache](https://docs.microsoft.com/azure/kusto/query/) ab.
+Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md). Fragen Sie die Protokolle mit der [Kusto-Abfragesprache](/azure/kusto/query/) ab.
 
 ::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Prüfliste für die Bereitstellung Ihrer Spring-Anwendung in Azure Spring Cloud
@@ -113,14 +113,14 @@ Bevor Sie ein Onboarding Ihrer Anwendung durchführen, vergewissern Sie sich, da
 
 Wenn Sie über das Azure-Portal eine Instanz eines Azure Spring Cloud-Diensts bereitstellen, wird die Überprüfung von Azure Spring Cloud für Sie durchgeführt.
 
-Wenn Sie jedoch versuchen, die Dienstinstanz von Azure Spring Cloud mithilfe der Vorlage [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) oder [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) einzurichten, überprüfen Sie, dass:
+Wenn Sie jedoch versuchen, die Dienstinstanz von Azure Spring Cloud mithilfe der Vorlage [Azure CLI](/cli/azure/get-started-with-azure-cli) oder [Azure Resource Manager](../azure-resource-manager/index.yml) einzurichten, überprüfen Sie, dass:
 
 * Das Abonnement ist aktiv.
 * der Standort von Azure Spring Cloud [unterstützt](spring-cloud-faq.md) wird.
 * Die Ressourcengruppe für die Instanz wurde bereits erstellt.
 * Der Ressourcenname entspricht der Benennungsregel. die Instanz nur Kleinbuchstaben, Zahlen und Bindestriche enthält. Das erste Zeichen muss ein Buchstabe sein. Das letzte Zeichen muss ein Buchstabe oder eine Zahl sein. Der Wert muss zwischen 2 und 32 Zeichen lang sein.
 
-Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Vorlage „Resource Manager“ einrichten möchten, lesen Sie zunächst den Artikel [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
+Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Vorlage „Resource Manager“ einrichten möchten, lesen Sie zunächst den Artikel [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 Der Name der Azure Spring Cloud-Dienstinstanz wird verwendet, um den Namen der Unterdomäne unter `azureapps.io` anzufordern. Die Bereitstellung ist nicht erfolgreich, wenn für den Namen ein Konflikt mit einem bereits vorhandenen Namen besteht. Sie werden möglicherweise weitere Informationen in den Aktivitätsprotokollen finden.
 
@@ -129,7 +129,7 @@ Der Name der Azure Spring Cloud-Dienstinstanz wird verwendet, um den Namen der U
 
 Sie können keine *ZIP*-Datei für eine .NET Core-Steeltoe-App über das Azure-Portal oder die Resource Manager-Vorlage hochladen.
 
-Wenn Sie Ihr Anwendungspaket über die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) bereitstellen, wird in regelmäßigen Abständen der Bereitstellungsfortschritt durch die Azure CLI abgerufen und am Ende das Bereitstellungsergebnis angezeigt.
+Wenn Sie Ihr Anwendungspaket über die [Azure CLI](/cli/azure/get-started-with-azure-cli) bereitstellen, wird in regelmäßigen Abständen der Bereitstellungsfortschritt durch die Azure CLI abgerufen und am Ende das Bereitstellungsergebnis angezeigt.
 
 Stellen Sie sicher, dass Ihre Anwendung im richtigen *ZIP*-Dateiformat gepackt ist. Wenn die Anwendung nicht ordnungsgemäß gepackt ist, reagiert der Prozess nicht mehr, oder Sie erhalten eine Fehlermeldung.
 ::: zone-end
@@ -139,7 +139,7 @@ Stellen Sie sicher, dass Ihre Anwendung im richtigen *ZIP*-Dateiformat gepackt i
 
 Sie können keine JAR-Datei (Java Archive) oder kein Quellpaket über das Azure-Portal oder die Resource Manager-Vorlage hochladen.
 
-Wenn Sie Ihr Anwendungspaket über die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) bereitstellen, wird in regelmäßigen Abständen der Bereitstellungsfortschritt durch die Azure CLI abgerufen und am Ende das Bereitstellungsergebnis angezeigt.
+Wenn Sie Ihr Anwendungspaket über die [Azure CLI](/cli/azure/get-started-with-azure-cli) bereitstellen, wird in regelmäßigen Abständen der Bereitstellungsfortschritt durch die Azure CLI abgerufen und am Ende das Bereitstellungsergebnis angezeigt.
 
 Sollte der Abruf unterbrochen werden, können Sie mithilfe des folgenden Befehls die Bereitstellungsprotokolle abrufen:
 
@@ -153,7 +153,7 @@ Stellen Sie sicher, dass Ihre Anwendung im richtigen [ausführbaren JAR-Format](
 
 Sie können keine JAR-Datei oder kein Quellpaket über das Azure-Portal oder die Resource Manager-Vorlage hochladen.
 
-Wenn Sie Ihr Anwendungspaket über die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) bereitstellen, wird in regelmäßigen Abständen der Bereitstellungsfortschritt durch die Azure CLI abgerufen und am Ende das Bereitstellungsergebnis angezeigt.
+Wenn Sie Ihr Anwendungspaket über die [Azure CLI](/cli/azure/get-started-with-azure-cli) bereitstellen, wird in regelmäßigen Abständen der Bereitstellungsfortschritt durch die Azure CLI abgerufen und am Ende das Bereitstellungsergebnis angezeigt.
 
 Sollte der Abruf unterbrochen werden, können Sie mithilfe des folgenden Befehls die Build- und Bereitstellungsprotokolle abrufen:
 
@@ -171,7 +171,7 @@ Stellen Sie beim Migrieren einer vorhandenen Spring Cloud-basierten Lösung zu A
 
 Sie können die Clientprotokolle der _Dienstregistrierung_ auch in Azure Log Analytics überprüfen. Weitere Informationen finden Sie unter [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](diagnostic-services.md).
 
-Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Fragen Sie die Protokolle mit der [Kusto-Abfragesprache](https://docs.microsoft.com/azure/kusto/query/) ab.
+Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md). Fragen Sie die Protokolle mit der [Kusto-Abfragesprache](/azure/kusto/query/) ab.
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Ich möchte die Umgebungsvariablen meiner Anwendung überprüfen.
 
@@ -231,7 +231,7 @@ Navigieren Sie zu **App-Verwaltung**, um sicherzustellen, dass für die Anwendun
 </dependency>
 ```
 
-Wenn Ihre Anwendungsprotokolle in einem Speicherkonto archiviert, aber nicht an Azure Log Analytics gesendet werden können, überprüfen Sie, ob Sie [Ihren Arbeitsbereich ordnungsgemäß eingerichtet haben](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Falls Sie einen kostenlosen Tarif von Azure Log Analytics verwenden, sollten Sie beachten, dass [für den kostenlosen Tarif keine SLA gilt](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Wenn Ihre Anwendungsprotokolle in einem Speicherkonto archiviert, aber nicht an Azure Log Analytics gesendet werden können, überprüfen Sie, ob Sie [Ihren Arbeitsbereich ordnungsgemäß eingerichtet haben](../azure-monitor/learn/quick-create-workspace.md). Falls Sie einen kostenlosen Tarif von Azure Log Analytics verwenden, sollten Sie beachten, dass [für den kostenlosen Tarif keine SLA gilt](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 ::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte

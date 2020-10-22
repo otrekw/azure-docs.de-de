@@ -4,12 +4,12 @@ description: 'Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstman
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017589"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313565"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht
@@ -158,7 +158,7 @@ Im Folgenden finden Sie ein Beispiel für ein ApplicationManifest, das die für 
 
 Für Linux-Cluster wird für den **MY**-Speicher standardmäßig der Ordner **/var/lib/sfcerts** verwendet.
 
-Ein Beispiel für eine vollständige Anwendung, in der ein HTTPS-Endpunkt genutzt wird, finden Sie unter [Definieren eines HTTPS-Endpunkts im Dienstmanifest](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest).
+Ein Beispiel für eine vollständige Anwendung, in der ein HTTPS-Endpunkt genutzt wird, finden Sie unter [Definieren eines HTTPS-Endpunkts im Dienstmanifest](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
 
 ## <a name="port-acling-for-http-endpoints"></a>Verwenden von Port-ACLs für HTTP-Endpunkte
 Service Fabric verwendet automatisch ACLs für HTTP(S)-Endpunkte, die standardmäßig angegeben werden. Es erfolgt **keine** automatische Verwendung von ACLs, wenn einem Endpunkt keine [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) zugeordnet ist und Service Fabric für die Ausführung mit einem Konto mit Administratorberechtigungen konfiguriert ist.

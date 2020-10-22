@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004339"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147862"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Verwenden von IoT DevKit AZ3166 mit Azure Functions und Cognitive Services zum Erstellen eines Sprachübersetzers
 
@@ -26,7 +26,7 @@ Das [MXChip IoT DevKit](https://aka.ms/iot-devkit) ist ein mit Arduino kompatibl
 
 Um die Schritte in diesem Tutorial auszuführen, erledigen Sie zuerst die folgenden Aufgaben:
 
-* Bereiten Sie Ihr DevKit vor, indem Sie die in [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) beschriebenen Schritte ausführen.
+* Bereiten Sie Ihr DevKit vor, indem Sie die in [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud](./iot-hub-arduino-iot-devkit-az3166-get-started.md) beschriebenen Schritte ausführen.
 
 ## <a name="create-azure-cognitive-service"></a>Erstellen von Azure Cognitive Services
 
@@ -152,4 +152,4 @@ Sie haben erfahren, wie Sie das IoT DevKit mithilfe von Azure Functions und Cogn
 Wechseln Sie zu den anderen Tutorials, um Folgendes zu lernen:
 
 > [!div class="nextstepaction"]
-> [Verbinden von IoT DevKit AZ3166 mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Verbinden von IoT DevKit AZ3166 mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung](./iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)

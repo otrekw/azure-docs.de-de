@@ -4,12 +4,12 @@ description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Cont
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328688"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148423"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App aus einer georeplizierten Azure-Containerregistrierung
 
@@ -27,7 +27,7 @@ Im nächsten Artikel der Reihe aktualisieren Sie die Anwendung und übertragen a
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatisches Bereitstellen in Web-App für Container
 
-Azure Container Registry unterstützt die direkte Bereitstellung containerbasierter Anwendungen in [Web-Apps für Container](../app-service/containers/index.yml). In diesem Tutorial verwenden Sie das Azure-Portal, um das im vorherigen Tutorial erstellte Containerimage in zwei Web-App-Plänen in unterschiedlichen Azure-Regionen bereitzustellen.
+Azure Container Registry unterstützt die direkte Bereitstellung containerbasierter Anwendungen in [Web-Apps für Container](../app-service/index.yml). In diesem Tutorial verwenden Sie das Azure-Portal, um das im vorherigen Tutorial erstellte Containerimage in zwei Web-App-Plänen in unterschiedlichen Azure-Regionen bereitzustellen.
 
 Wenn Sie eine Web-App auf der Grundlage eines Containerimages in Ihrer Registrierung bereitstellen und in der gleichen Region über eine georeplizierte Registrierung verfügen, erstellt Azure Container Registry automatisch einen [Webhook](container-registry-webhook.md) für die Imagebereitstellung. Wenn Sie ein neues Image mithilfe von Push an Ihr Containerrepository übertragen, übernimmt der Webhook die Änderung und stellt automatisch das neue Containerimage für Ihre Web-App bereit.
 

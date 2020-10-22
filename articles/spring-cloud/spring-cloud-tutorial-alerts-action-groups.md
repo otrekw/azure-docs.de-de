@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892533"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089977"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
@@ -113,7 +113,7 @@ Eine Regel kann auch über die Seite **Metriken** erstellt werden:
 In diesem Tutorial haben Sie erfahren, wie Sie Warnungen und Aktionsgruppen für Ihre Azure Spring Cloud-Anwendung einrichten können. Hier erfahren Sie mehr über Aktionsgruppen:
 
 > [!div class="nextstepaction"]
-> [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [SMS-Warnungsverhalten in Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [SMS-Warnungsverhalten in Aktionsgruppen](../azure-monitor/platform/alerts-sms-behavior.md)

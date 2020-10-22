@@ -3,12 +3,12 @@ title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migra
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 074f58a2f6c24f106de6b2b5003ce2dfd428f356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577270"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312922"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -50,7 +50,7 @@ Hinweis: Falls einer der Leistungsindikatoren fehlt, greift die Azure Migrate-S
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Weshalb weist meine Bewertung eine niedrige Zuverlässigkeitsstufe auf?
 
-Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ anhand des Prozentsatzes von [verfügbaren Datenpunkten](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) berechnet, die zum Berechnen der Bewertung benötigt werden. Im Folgenden werden mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
+Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ anhand des Prozentsatzes von [verfügbaren Datenpunkten](./concepts-assessment-calculation.md#ratings) berechnet, die zum Berechnen der Bewertung benötigt werden. Im Folgenden werden mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
 
 - Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie beispielsweise eine Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie nach dem Start der Ermittlung mindestens eine Woche warten, damit alle Datenpunkte erfasst werden können. Falls Sie nicht so lange warten können, sollten Sie die Leistungsdauer in einen kürzeren Zeitraum ändern und die Bewertung neu berechnen (Option „Neu berechnen“).
  
@@ -58,7 +58,7 @@ Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ 
 
 - Nach dem Start der Ermittlung in der Serverbewertung wurden wenige VMs erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
 
-[Weitere Informationen](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) zur Zuverlässigkeitsstufe.
+[Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based) zur Zuverlässigkeitsstufe.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Es werden bei der Erstellung einer Bewertung vom Typ „Azure VMware Solution (AVS)“ einige Gruppen nicht angezeigt.
 

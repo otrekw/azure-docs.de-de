@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597500"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362806"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -42,7 +42,7 @@ Eine detaillierte Demonstration der Bereitstellung der Azure Active Directory-Be
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-Sie können ein Zugriffspaket mithilfe von Microsoft Graph auch programmgesteuert erstellen. Ein Tutorial, das zeigt, wie Sie ein Zugriffspaket programmgesteuert erstellen, finden Sie unter [Berechtigungsverwaltungs-API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+Sie können ein Zugriffspaket mithilfe von Microsoft Graph auch programmgesteuert erstellen. Ein Tutorial, das zeigt, wie Sie ein Zugriffspaket programmgesteuert erstellen, finden Sie unter [Berechtigungsverwaltungs-API](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -118,10 +118,10 @@ Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles.png)
     >[!IMPORTANT]
-    >Die einem Zugriffspaket hinzugefügten Gruppen, denen Rollen zugewiesen werden können, werden mit dem Untertyp **Rolle zuweisbar** angegeben. Weitere Informationen zu Gruppen, die Azure AD-Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md). Wenn eine Gruppe, der Rollen zugewiesen werden können und die Sie hinzufügen möchten, nicht angezeigt wird, oder wenn Sie eine solche Gruppe nicht hinzufügen können, stellen Sie sicher, dass Sie über die erforderliche Azure AD-Rolle und -Berechtigungsverwaltungsrolle zum Ausführen dieses Vorgangs verfügen. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >Die einem Zugriffspaket hinzugefügten Gruppen, denen Rollen zugewiesen werden können, werden mit dem Untertyp **Rolle zuweisbar** angegeben. Weitere Informationen zu Gruppen, die Azure AD-Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md). Wenn eine Gruppe, der Rollen zugewiesen werden können und die Sie hinzufügen möchten, nicht angezeigt wird, oder wenn Sie eine solche Gruppe nicht hinzufügen können, stellen Sie sicher, dass Sie über die erforderliche Azure AD-Rolle und -Berechtigungsverwaltungsrolle zum Ausführen dieses Vorgangs verfügen. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
-    > Bei der Verwendung von [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) sind außer „Besitzer“ keine anderen Rollen verfügbar. Dies ist beabsichtigt.
+    > Bei der Verwendung von [dynamischen Gruppen](../enterprise-users/groups-create-rule.md) sind außer „Besitzer“ keine anderen Rollen verfügbar. Dies ist beabsichtigt.
     > ![Übersicht über das Szenario](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
     
 

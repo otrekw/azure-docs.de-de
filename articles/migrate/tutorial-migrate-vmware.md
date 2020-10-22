@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Migration virtueller VMware-Com
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530521"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310633"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -36,8 +36,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüllt sein:
 
-1. [Arbeiten Sie das erste Tutorial durch](tutorial-prepare-vmware.md), um Azure und VMware für die Migration vorzubereiten.
-2. Wir empfehlen, dass Sie das zweite Tutorial zum [Bewerten von VMware-VMS](tutorial-assess-vmware.md) durcharbeiten, bevor Sie sie zu Azure migrieren. Dies ist aber nicht unbedingt erforderlich. 
+1. [Arbeiten Sie das erste Tutorial durch](./tutorial-discover-vmware.md), um Azure und VMware für die Migration vorzubereiten.
+2. Wir empfehlen, dass Sie das zweite Tutorial zum [Bewerten von VMware-VMS](./tutorial-assess-vmware-azure-vm.md) durcharbeiten, bevor Sie sie zu Azure migrieren. Dies ist aber nicht unbedingt erforderlich. 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Hinzufügen des Tools für die Azure Migrate-Servermigration
@@ -59,7 +59,7 @@ Wenn Sie noch kein Azure Migrate-Projekt eingerichtet haben, [erledigen Sie dies
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Einrichten der Azure Migrate-Appliance
 
-Die Azure Migrate-Servermigration führt eine einfache VMware VM-Appliance aus, die für die Ermittlung, Bewertung und Migration ohne Agent von VMware-VMs verwendet wird. Wenn Sie dem [Bewertungs-Tutorial](tutorial-assess-vmware.md) folgen, haben Sie die Appliance bereits eingerichtet. Falls dies noch nicht geschehen ist, richten Sie die Appliance jetzt mit einer der folgenden Methoden ein:
+Die Azure Migrate-Servermigration führt eine einfache VMware VM-Appliance aus, die für die Ermittlung, Bewertung und Migration ohne Agent von VMware-VMs verwendet wird. Wenn Sie dem [Bewertungs-Tutorial](./tutorial-assess-vmware-azure-vm.md) folgen, haben Sie die Appliance bereits eingerichtet. Falls dies noch nicht geschehen ist, richten Sie die Appliance jetzt mit einer der folgenden Methoden ein:
 
 - **OVA-Vorlage**: [Einrichten](how-to-set-up-appliance-vmware.md) auf einer VMware-VM mit einer heruntergeladenen OVA-Vorlage.
 - **Script:** [Einrichten](deploy-appliance-script.md) auf einer VMware-VM oder einem physischen Computer mithilfe eines PowerShell-Installationsskripts. Diese Methode sollte verwendet werden, wenn Sie eine VM nicht mithilfe einer OVA-Vorlage einrichten können oder wenn Sie in Azure Government arbeiten.
@@ -210,7 +210,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
     - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von Site Recovery in eine sekundäre Region replizieren. [Weitere Informationen](../site-recovery/azure-to-azure-tutorial-enable-replication.md)
 - Beachten Sie zur Steigerung der Sicherheit Folgendes:
     - Sperren und beschränken Sie den Zugriff von eingehendem Datenverkehr mit der [Just-in-Time-Verwaltung im Azure Security Center](../security-center/security-center-just-in-time.md).
-    - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) auf Verwaltungsendpunkte.
+    - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) auf Verwaltungsendpunkte.
     - Stellen Sie [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) bereit, um Datenträger und Daten vor Diebstahl und unbefugtem Zugriff zu schützen.
     - Erfahren Sie mehr über das [Sichern von IaaS-Ressourcen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), und besuchen Sie die Website [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Beachten Sie zur Überwachung und Verwaltung Folgendes:

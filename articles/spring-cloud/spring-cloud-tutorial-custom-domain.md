@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945769"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088753"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Zuordnen einer bereits vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 
@@ -26,7 +26,7 @@ Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zert
 * Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md), oder verwenden Sie eine bereits vorhandene App.
 * Ein Domänenname mit Zugriff auf die DNS-Registrierung für den Domänenanbieter (beispielsweise GoDaddy).
 * Ein privates Zertifikat (d. h. ihr selbst signiertes Zertifikat) von einem Drittanbieter. Das Zertifikat muss der Domäne entsprechen.
-* Eine bereitgestellte Instanz von [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+* Eine bereitgestellte Instanz von [Azure Key Vault](../key-vault/general/overview.md).
 
 ## <a name="import-certificate"></a>Importieren des Zertifikats
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Vorbereiten der Zertifikatsdatei als PFX (optional)
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 Navigieren Sie nach Abschluss des Vorgangs zu einer beliebigen HTTPS-URL, die auf Ihre App verweist. Beachten Sie, dass HTTP-URLs nicht funktionieren.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Was ist der Azure-Schlüsseltresor?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Importieren eines Zertifikats](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Starten einer Spring Cloud-App mit der Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
+* [Importieren eines Zertifikats](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [Starten einer Spring Cloud-App mit der Azure CLI](./spring-cloud-quickstart.md)

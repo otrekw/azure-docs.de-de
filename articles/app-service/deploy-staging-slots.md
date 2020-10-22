@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962161"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150325"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
 
-Im Tarif **Standard**, **Premium** oder **I** des App Service-Plans können Sie für die Bereitstellung Ihrer Web-App, Ihrer Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) anstelle des Standardproduktionsslots einen separaten Bereitstellungsslot verwenden. Bereitstellungsslots sind aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. 
+Im Tarif **Standard**, **Premium** oder **I** des App Service-Plans können Sie für die Bereitstellung Ihrer Web-App, Ihrer Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [Azure App Service](./overview.md) anstelle des Standardproduktionsslots einen separaten Bereitstellungsslot verwenden. Bereitstellungsslots sind aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. 
 
 Die Bereitstellung von Anwendungen in einem produktionsfremden Slot hat folgende Vorteile:
 

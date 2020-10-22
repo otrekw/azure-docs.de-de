@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766976"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147696"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -24,7 +24,7 @@ Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, defi
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub sind eher mit [Event Hubs](/azure/event-hubs/)-*Ereignissen* vergleichbar als mit [Service Bus](/azure/service-bus-messaging/)-*Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
+IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub sind eher mit [Event Hubs](../event-hubs/index.yml)-*Ereignissen* vergleichbar als mit [Service Bus](../service-bus-messaging/index.yml)-*Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
 
 Eine IoT Hub-Nachricht enthält Folgendes:
 

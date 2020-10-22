@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1410b9e8287b34c8b40e841ff513de784e1730a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842817"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150553"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware
 
 Unter Umständen müssen Sie die Firmware auf den Geräten aktualisieren, die mit Ihrem IoT Hub verbunden sind. Es kann beispielsweise sein, dass Sie der Firmware neue Features hinzufügen oder Sicherheitspatches anwenden möchten. In vielen IoT-Szenarien ist es unpraktisch, physisch vor Ort manuell Firmwareupdates auf Ihre Geräte anzuwenden. In diesem Tutorial wird veranschaulicht, wie Sie den Prozess für Firmwareupdates per Remotezugriff über eine Back-End-Anwendung, die mit Ihrem Hub verbunden ist, starten und überwachen können.
 
-Zum Erstellen und Überwachen des Prozesses für Firmwareupdates erstellt die Back-End-Anwendung in diesem Tutorial eine _Konfiguration_ auf Ihrem IoT Hub. Für die [automatische IoT Hub-Geräteverwaltung](iot-hub-auto-device-config.md) wird diese Konfiguration verwendet, um eine Gruppe mit gewünschten _Eigenschaften von Gerätezwillingen_ auf Ihren gesamten Kältemaschinen zu aktualisieren. Über die gewünschten Eigenschaften werden die Details zum erforderlichen Firmwareupdate angegeben. Während die Kältemaschinen den Prozess für das Firmwareupdate ausführen, wird der Status zurück an die Back-End-Anwendung gemeldet, indem _gemeldete Eigenschaften von Gerätezwillingen_ verwendet werden. Die Back-End-Anwendung kann die Konfiguration nutzen, um die vom Gerät gesendeten gemeldeten Eigenschaften zu überwachen und den Prozess für das Firmwareupdate bis zum Abschluss nachzuverfolgen:
+Zum Erstellen und Überwachen des Prozesses für Firmwareupdates erstellt die Back-End-Anwendung in diesem Tutorial eine _Konfiguration_ auf Ihrem IoT Hub. Für die [automatische IoT Hub-Geräteverwaltung](./iot-hub-automatic-device-management.md) wird diese Konfiguration verwendet, um eine Gruppe mit gewünschten _Eigenschaften von Gerätezwillingen_ auf Ihren gesamten Kältemaschinen zu aktualisieren. Über die gewünschten Eigenschaften werden die Details zum erforderlichen Firmwareupdate angegeben. Während die Kältemaschinen den Prozess für das Firmwareupdate ausführen, wird der Status zurück an die Back-End-Anwendung gemeldet, indem _gemeldete Eigenschaften von Gerätezwillingen_ verwendet werden. Die Back-End-Anwendung kann die Konfiguration nutzen, um die vom Gerät gesendeten gemeldeten Eigenschaften zu überwachen und den Prozess für das Firmwareupdate bis zum Abschluss nachzuverfolgen:
 
 ![Prozess für das Firmwareupdate](media/tutorial-firmware-update/Process.png)
 

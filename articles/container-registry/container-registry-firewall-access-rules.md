@@ -3,12 +3,12 @@ title: Firewallzugriffsregeln
 description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API („Whitelist“) und die Domänennamen oder dienstspezifischen IP-Adressbereiche des Datenendpunkts zulassen.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246978"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148503"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall
 
@@ -113,7 +113,7 @@ Suchen Sie nach einer bestimmten Region, z.B. **Storage.AustraliaCentral**.
 
 ## <a name="allow-access-by-service-tag"></a>Zulassen des Zugriffs nach Diensttag
 
-Verwenden Sie in einem virtuellen Azure-Netzwerk Netzwerksicherheitsregeln, um den Datenverkehr von einer Ressource wie z.B. einem virtuellen Computer zu einer Containerregistrierung zu filtern. Um die Erstellung der Azure-Netzwerkregeln zu vereinfachen, verwenden Sie das [Diensttag](../virtual-network/security-overview.md#service-tags) **AzureContainerRegistry**. Ein Diensttag repräsentiert eine Gruppe von IP-Adresspräfixen, mit denen global oder pro Azure-Region auf einen Azure-Dienst zugegriffen werden kann. Das Tag wird automatisch aktualisiert, wenn sich Adressen ändern. 
+Verwenden Sie in einem virtuellen Azure-Netzwerk Netzwerksicherheitsregeln, um den Datenverkehr von einer Ressource wie z.B. einem virtuellen Computer zu einer Containerregistrierung zu filtern. Um die Erstellung der Azure-Netzwerkregeln zu vereinfachen, verwenden Sie das [Diensttag](../virtual-network/network-security-groups-overview.md#service-tags) **AzureContainerRegistry**. Ein Diensttag repräsentiert eine Gruppe von IP-Adresspräfixen, mit denen global oder pro Azure-Region auf einen Azure-Dienst zugegriffen werden kann. Das Tag wird automatisch aktualisiert, wenn sich Adressen ändern. 
 
 Erstellen Sie z.B. eine ausgehende Netzwerksicherheitsgruppen-Regel mit dem Ziel **AzureContainerRegistry**, um Datenverkehr zu einer Azure-Containerregistrierung zuzulassen. Um den Zugriff auf das Diensttag nur in einer bestimmten Region zuzulassen, geben Sie die Region in folgendem Format an: **AzureContainerRegistry**.[*Regionsname*].
 
@@ -183,7 +183,7 @@ Wenn Sie von hinter einer Firewall auf Microsoft Container Registry (MCR) zugrei
 
 * Informationen zu [bewährten Methoden für die Netzwerksicherheit](../security/fundamentals/network-best-practices.md)
 
-* Weitere Informationen zu [Sicherheitsgruppen](../virtual-network/security-overview.md) in einem virtuellen Azure-Netzwerk
+* Weitere Informationen zu [Sicherheitsgruppen](../virtual-network/network-security-groups-overview.md) in einem virtuellen Azure-Netzwerk
 
 * Erfahren Sie mehr über das Einrichten von [Private Link](container-registry-private-link.md) für eine Containerregistrierung.
 

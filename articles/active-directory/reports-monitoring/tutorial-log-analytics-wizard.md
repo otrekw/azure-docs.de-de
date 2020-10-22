@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361907"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362568"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Tutorial: Konfigurieren des Protokollanalyseassistenten
 
@@ -45,7 +45,7 @@ Machen Sie sich mit diesen Artikeln vertraut:
 
 - [Integrieren von Aktivitätsprotokollen mit Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Verwalten eines Kontos für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md)
+- [Verwalten eines Kontos für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md)
 
 - [KQL-Kurzübersicht](/azure/data-explorer/kql-quick-reference)
 

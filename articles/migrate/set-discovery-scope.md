@@ -3,12 +3,12 @@ title: Festlegen des Bereichs für die Ermittlung von VMware-VMs mit Azure Migra
 description: In diesem Artikel wird beschrieben, wie Sie den Suchbereich für die Bewertung und Migration von VMware-VMs mithilfe von Azure Migrate festlegen.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919725"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314030"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Festlegen des Suchbereichs für VMware-VMs
 
@@ -21,7 +21,7 @@ Wenn Sie das Gerät einrichten, stellt es eine Verbindung mit vCenter Server her
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Wenn Sie kein vCenter-Benutzerkonto eingerichtet haben, das Azure Migrate für die Ermittlung verwendet, tun Sie dies jetzt für die [Bewertung](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) oder [Migration ohne Agent](tutorial-prepare-vmware.md#assign-permissions-to-an-account).
+Wenn Sie kein vCenter-Benutzerkonto eingerichtet haben, das Azure Migrate für die Ermittlung verwendet, tun Sie dies jetzt für die [Bewertung](./tutorial-discover-vmware.md#prepare-vmware) oder [Migration ohne Agent](./migrate-support-matrix-vmware-migration.md#agentless-migration).
 
 
 ## <a name="assign-permissions-and-roles"></a>Zuweisen von Berechtigungen und Rollen

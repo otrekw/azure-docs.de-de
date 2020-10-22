@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: e6006444e933dd93467dde01affd29c5d0c4a146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a02dc94c0dc0939e6c1eef624fc6fe65fb98ac6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019545"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147009"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Java)
 
@@ -52,7 +52,7 @@ Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -284,4 +284,4 @@ In diesem Tutorial haben Sie gelernt, wie Sie die IoT Hub-Funktionen zum Hochlad
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Simulieren eines Geräts mit IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Simulieren eines Geräts mit IoT Edge](../iot-edge/quickstart-linux.md)

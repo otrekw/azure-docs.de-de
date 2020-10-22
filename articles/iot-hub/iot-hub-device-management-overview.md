@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324725"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148337"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Übersicht über die Geräteverwaltung mit IoT Hub
 
@@ -78,7 +78,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
   
     *Weitere nützliche Informationen*:
     * [Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
-    * [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](iot-hub-auto-device-config.md)
+    * [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](./iot-hub-automatic-device-management.md)
     * [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung](iot-hub-configuration-best-practices.md)
 
 * **Überwachung:** Überwachen Sie die allgemeine Geräteintegrität und den Status laufender Vorgänge, und weisen Sie Bediener auf Probleme hin, die ggf. ihre Aufmerksamkeit erfordern.  Wenden Sie den Gerätezwilling an, um es Geräten zu ermöglichen, Bedingungen und den Status von Updatevorgängen in Echtzeit zu melden. Erstellen Sie leistungsfähige Dashboardberichte, die mithilfe von Abfragen für den Gerätezwilling über neueste Probleme informieren.
@@ -86,7 +86,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
     *Weitere nützliche Informationen*: 
     * [Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
     * [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md)
-    * [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](iot-hub-auto-device-config.md)
+    * [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](./iot-hub-automatic-device-management.md)
     * [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung](iot-hub-configuration-best-practices.md)
 
 * **Ausmusterung**: Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255195"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150226"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
 Da App Service-Umgebungen eine in einem virtuellen Netzwerk bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede physische Anwendungsschicht gewähren können.
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 Nach Anwendung der Netzwerksicherheitsgruppe auf das Subnetz sind Aufrufe an die „apiase“-Umgebung nur noch für die drei App Service-Upstreamumgebungen sowie die App Service-Umgebung, die das API-Back-End umfasst, zulässig.
 
 ## <a name="additional-links-and-information"></a>Zusätzliche Links und Informationen
-Informationen zu [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)
+Informationen zu [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)
 
 Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen.
 

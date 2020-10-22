@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie Zertifikatdateien in einen Service Fabric-Con
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050742"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313695"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Importieren einer Zertifikatdatei in einen Container, der unter Service Fabric ausgeführt wird
 
 > [!NOTE]
-> Für Service Fabric-Cluster, die in Azure ausgeführt werden, wird empfohlen, die [verwaltete Service Fabric-Anwendungsidentität](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) zu verwenden, um Anwendungszertifikate aus einem Container heraus bereitzustellen. Die verwaltete Identität ermöglicht die Isolation von geheimen Schlüsseln und Zertifikaten auf Dienstebene und ermöglicht die Bereitstellung von Anwendungszertifikaten im Workflow der Anwendung, anstatt diese im Infrastrukturworkflow bereitzustellen. Der CertificateRef-Mechanismus wird in einer zukünftigen Version als veraltet markiert.
+> Für Service Fabric-Cluster, die in Azure ausgeführt werden, wird empfohlen, die [verwaltete Service Fabric-Anwendungsidentität](./concepts-managed-identity.md) zu verwenden, um Anwendungszertifikate aus einem Container heraus bereitzustellen. Die verwaltete Identität ermöglicht die Isolation von geheimen Schlüsseln und Zertifikaten auf Dienstebene und ermöglicht die Bereitstellung von Anwendungszertifikaten im Workflow der Anwendung, anstatt diese im Infrastrukturworkflow bereitzustellen. Der CertificateRef-Mechanismus wird in einer zukünftigen Version als veraltet markiert.
 
 Containerdienste können durch Angabe eines Zertifikats geschützt werden. Service Fabric bietet einen Mechanismus, über den Dienste innerhalb eines Containers auf ein Zertifikat zugreifen können, das auf den Knoten eines Windows- oder Linux-Clusters (ab Version 5.7) installiert ist. Das Zertifikat muss in einem Zertifikatspeicher unter LocalMachine auf allen Knoten des Clusters installiert werden. Der mit dem Zertifikat übereinstimmende private Schlüssel muss verfügbar, zugänglich und – unter Windows – exportierbar sein. Die Zertifikatinformationen werden im Anwendungsmanifest unter dem Tag `ContainerHostPolicies` angegeben, wie im folgenden Codeausschnitt zu sehen:
 

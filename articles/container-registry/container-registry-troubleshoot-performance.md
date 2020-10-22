@@ -3,12 +3,12 @@ title: Beheben von Problemen mit der Registrierungsleistung
 description: Symptome, Ursachen und Lösung von häufigen Problemen mit der Leistung einer Registrierung.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88226937"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148409"
 ---
 # <a name="troubleshoot-registry-performance"></a>Beheben von Problemen mit der Registrierungsleistung
 
@@ -115,7 +115,5 @@ Wenn Sie Ihr Problem hier nicht lösen können, sehen Sie sich die folgenden Opt
   * [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md)
   * [Beheben von Netzwerkproblemen mit der Registrierung](container-registry-troubleshoot-access.md)
 * Optionen für [Support durch die Community](https://azure.microsoft.com/support/community/)
-* [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A (Fragen und Antworten)](/answers/products/)
 * [Öffnen eines Supporttickets](https://azure.microsoft.com/support/create-ticket/)
-
-

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356066"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147891"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Nutzung des Bewegungssensors zum Abrufen einer Twitter-Nachricht mit Azure Functions
 
@@ -23,7 +23,7 @@ In diesem Projekt erfahren Sie, wie Sie den Bewegungssensor verwenden, um mithil
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started), um folgende Voraussetzungen zu erfüllen:
+Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](./iot-hub-arduino-iot-devkit-az3166-get-started.md), um folgende Voraussetzungen zu erfüllen:
 
 * Stellen Sie eine Wi-Fi-Verbindung mit dem DevKit her.
 * Bereiten Sie die Entwicklungsumgebung vor.
@@ -207,4 +207,4 @@ Wenn andere Probleme auftreten, helfen Ihnen die Informationen in den [häufig g
 
 Nachdem Sie nun erfahren haben, wie Sie die Verbindung eines DevKit-Geräts mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung herstellen und einen Tweet abrufen, werden die folgenden nächsten Schritte empfohlen:
 
-* [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
+* [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](/azure/iot-suite/)

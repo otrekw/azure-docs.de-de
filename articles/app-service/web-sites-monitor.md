@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044529"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148113"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
+[Azure App Service](./overview.md) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
 
 Im Azure-Portal können Sie *Kontingente* und *Metriken* für eine App sowie den App Service-Plan einsehen und Regeln für *Warnungen* und die *automatische Skalierung* auf Grundlage von Metriken einrichten.
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ba5a9561242219652d3f72300f0b0559cfb867b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74e9e3df1e532d23c99add39f5fd3b0d439c6e55
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504838"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281949"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Erstellen einer Tabelle für Azure Cosmos DB – Tabellen-API
 
@@ -48,5 +48,3 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
-
-Zusätzliche PowerShell-Skriptbeispiele für Azure Cosmos DB finden Sie unter [PowerShell-Skripts für Azure Cosmos DB](../../../powershell-samples.md).

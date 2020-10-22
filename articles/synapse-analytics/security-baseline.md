@@ -3,16 +3,17 @@ title: Azure-Sicherheitsbaseline für Synapse Analytics
 description: Die Synapse Analytics-Sicherheitsbaseline enthält Schrittanleitungen und Ressourcen für die Implementierung der Sicherheitsempfehlungen, die im Azure-Sicherheitsvergleichstest angegeben sind.
 author: msmbaldwin
 ms.service: synapse-analytics
+ms.subservice: security
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bbec83c655d568b43b319f30a96da0a8fc1effe8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7e464520556790afe22177c0b2245ce93e48873
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230652"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088906"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-Sicherheitsbaseline für Synapse Analytics
 

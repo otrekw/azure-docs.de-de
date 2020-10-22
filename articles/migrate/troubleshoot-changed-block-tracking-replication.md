@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871178"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314728"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Behandeln von Replikationsproblemen bei der Migration virtueller VMware-Computer ohne Agent
 
@@ -90,7 +90,7 @@ Die Komponente, die versucht, Daten in Azure zu replizieren, ist entweder ausgef
     
     **Schritte zum Ausführen des Leistungsbenchmarktests:**
     
-      1. [Laden Sie „azcopy“ herunter](https://go.microsoft.com/fwlink/?linkid=2138966).
+      1. [Laden Sie „azcopy“ herunter](../storage/common/storage-use-azcopy-v10.md).
         
       2. Suchen Sie das Speicherkonto der Appliance in der Ressourcengruppe. Das Speicherkonto weist einen Namen auf, der „migrategwsa\*\*\*\*\*\*\*\*\*\*“ ähnlich ist. Dies ist der Wert des Parameters [account] im obigen Befehl.
         
@@ -170,7 +170,7 @@ Mögliche Ursachen:
     
     **Schritte zum Ausführen des Leistungsbenchmarktests:**
     
-      1. [Laden Sie „azcopy“ herunter](https://go.microsoft.com/fwlink/?linkid=2138966).
+      1. [Laden Sie „azcopy“ herunter](../storage/common/storage-use-azcopy-v10.md).
         
       2. Suchen Sie das Speicherkonto der Appliance in der Ressourcengruppe. Das Speicherkonto weist einen Namen ähnlich wie „migratelsa\*\*\*\*\*\*\*\*\*\*“ auf. Dies ist der Wert des Parameters [account] im obigen Befehl.
         
@@ -295,4 +295,4 @@ Dies geschieht, wenn der NFC-Hostpuffer nicht über genügend Arbeitsspeicher ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fortsetzen der VM-Replikation und Ausführen einer [Testmigration](https://go.microsoft.com/fwlink/?linkid=2139333)
+Fortsetzen der VM-Replikation und Ausführen einer [Testmigration](./tutorial-migrate-vmware.md#run-a-test-migration)

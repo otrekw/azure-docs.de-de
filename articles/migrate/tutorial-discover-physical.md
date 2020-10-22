@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie lokale physische Server mit der Azure M
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7cbd7939248686a251fdf56bf1a5f1acc952a3a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442296"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314083"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Tutorial: Ermitteln physischer Server mit der Serverbewertung
 
@@ -208,7 +208,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
    
    Die Anmeldung mit einer PIN wird nicht unterstützt.
 3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück. 
-4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](tutorial-prepare-physical.md) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
+4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen]() für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
 
 
@@ -245,5 +245,3 @@ Nach Abschluss der Ermittlung können Sie überprüfen, ob die Server im Portal 
 
 - [Bewerten Sie physische Server](tutorial-assess-physical.md) für die Migration zu Azure.
 - [Informieren Sie sich über die Daten](migrate-appliance.md#collected-data---physical), die von der Appliance im Zuge der Ermittlung gesammelt werden.
-
-

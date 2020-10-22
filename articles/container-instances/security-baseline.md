@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393427"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148629"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-Sicherheitsbaseline für Container Instances
 
@@ -73,7 +73,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 * [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/threat-protection.md)
+* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
 * [Grundlegendes zur adaptiven Netzwerkhärtung von Azure Security Center](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 * [Grundlegendes zu Diensttags und deren Verwendung](../virtual-network/service-tags-overview.md) 
 
-* [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](../virtual-network/security-overview.md#application-security-groups)
+* [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy-Beispiele für Netzwerke](/azure/governance/policy/samples/#network)
+* [Azure Policy-Beispiele für Netzwerke](../governance/policy/samples/built-in-policies.md#network)
 
 * [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ Versehen Sie Containerregistrierungen mit Tags und Versionen zur Hilfe bei der N
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 * [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integration von Security Center in Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -652,7 +652,7 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 * [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integration von Security Center in Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -664,7 +664,7 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 * [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integration von Security Center in Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -707,7 +707,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 * [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 * [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
-* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integration von Security Center in Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -825,7 +825,7 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 * [Sicherheitsempfehlungen für die Überwachung und Überprüfung von Containern für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Integration von Security Center in Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)
 * [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ Sichern Sie optional Containerimages, indem Sie sie aus einer Registrierung in e
 
 **Leitfaden**: Sie können das vorläufige Löschen in Azure Key Vault aktivieren, um Schlüssel vor dem versehentlichen oder böswilligen Löschen zu schützen.
 
-* [Vorläufiges Löschen für Blobspeicher](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Vorläufiges Löschen für Blobspeicher](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

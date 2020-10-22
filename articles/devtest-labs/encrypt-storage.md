@@ -3,12 +3,12 @@ title: Verschlüsseln eines von einem Lab verwendeten Azure-Speicherkontos in Az
 description: Erfahren Sie, wie Sie die Verschlüsselung eines von einem Lab verwendeten Azure-Speichers in Azure DevTest Labs konfigurieren.
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433501"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149303"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Verschlüsseln eines von einem Lab verwendeten Azure-Speichers in Azure DevTest Labs
 Jedes Lab, das in Azure DevTest Labs erstellt wird, wird mit einem zugeordneten Azure-Speicherkonto erstellt. Dieses Speicherkonto dient den folgenden Zwecken: 
@@ -36,13 +36,13 @@ Jedes Lab, das in Azure DevTest Labs erstellt wird, wird mit einem zugeordneten 
 ## <a name="encrypt-the-lab-storage-account"></a>Verschlüsseln des Speicherkontos des Labs
 Mit Azure Storage werden Ihre Daten beim persistenten Speichern in der Cloud automatisch verschlüsselt. Durch Azure Storage-Verschlüsselung werden Ihre Daten ausreichend geschützt, um den Sicherheits- und Complianceanforderungen Ihrer Organisation gerecht zu werden. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
 
-Daten im Lab-Speicherkonto werden mit **von Microsoft verwalteten Schlüsseln** verschlüsselt. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihrer Daten nutzen oder die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten. Wenn Sie die Verschlüsselung mit ihren eigenen Schlüsseln für das Speicherkonto des Labs verwalten möchten, können Sie einen **kundenseitig verwalteten Schlüssel** mit Azure Key Vault angeben, der zum Verschlüsseln/Entschlüsseln von Daten im Blobspeicher und in Azure Files verwendet werden soll. Weitere Informationen zu kundenseitig verwalteten Schlüssels finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung](../storage/common/encryption-customer-managed-keys.md).
+Daten im Lab-Speicherkonto werden mit **von Microsoft verwalteten Schlüsseln** verschlüsselt. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihrer Daten nutzen oder die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten. Wenn Sie die Verschlüsselung mit ihren eigenen Schlüsseln für das Speicherkonto des Labs verwalten möchten, können Sie einen **kundenseitig verwalteten Schlüssel** mit Azure Key Vault angeben, der zum Verschlüsseln/Entschlüsseln von Daten im Blobspeicher und in Azure Files verwendet werden soll. Weitere Informationen zu kundenseitig verwalteten Schlüssels finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung](../storage/common/customer-managed-keys-overview.md).
 
 Informationen dazu, wie Sie kundenseitig verwaltete Schlüssel für Azure Storage-Verschlüsselung konfigurieren, finden Sie in den folgenden Artikeln: 
 
-- [Azure portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure-Befehlszeilenschnittstelle](../storage/common/storage-encryption-keys-cli.md)
+- [Azure portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure-Befehlszeilenschnittstelle](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
@@ -101,8 +101,6 @@ Beispielsweise wird die folgende Regel verwendet, um einen Ablaufzeitraum von 90
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen dazu, wie Sie kundenseitig verwaltete Schlüssel für Azure Storage-Verschlüsselung konfigurieren, finden Sie in den folgenden Artikeln: 
 
-- [Azure portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure-Befehlszeilenschnittstelle](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure-Befehlszeilenschnittstelle](../storage/common/customer-managed-keys-configure-key-vault.md)

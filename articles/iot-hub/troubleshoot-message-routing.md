@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793281"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150581"
 ---
 # <a name="troubleshooting-message-routing"></a>Behandeln von Problemen mit dem Nachrichtenrouting
 
@@ -42,7 +42,7 @@ Alle routingbezogenen [IoT Hub-Metriken](iot-hub-devguide-endpoints.md) beginne
 Sehen Sie sich die [Diagnoseprotokolle](iot-hub-monitor-resource-health.md#routes) der Kategorie **Routen** an, um weitere Informationen zu [Routing- und Endpunktvorgängen](#operation-names) zu erhalten oder Fehler und relevante [Fehlercodes](#common-error-codes) zu ermitteln, um das Problem besser zu verstehen. Der Vorgangsname **RouteEvaluationError** im Protokoll bedeutet beispielsweise, dass die Route aufgrund eines Problems mit dem Nachrichtenformat nicht ausgewertet werden konnte. Nutzen Sie bei der Problembehandlung die für den jeweiligen [Vorgangsnamen](#operation-names) angegebenen Tipps. Wenn ein Ereignis als Fehler protokolliert wird, enthält das Protokoll auch weitere Informationen dazu, warum die Auswertung nicht erfolgreich war. Lautet der Vorgangsname also beispielsweise **EndpointUnhealthy**, wird etwa durch den [Fehlercode](#common-error-codes) 403004 angegeben, dass für den Endpunkt nicht mehr genügend Speicherplatz zur Verfügung stand.
 
 #### <a name="the-health-of-the-endpoint"></a>Die Integrität des Endpunkts
-Verwenden Sie die REST-API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen), um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. Die API *Get Endpoint Health* (Endpunktintegrität abrufen) liefert auch Informationen zum Zeitpunkt der letzten erfolgreichen Übermittlung einer Nachricht an den Endpunkt, zum [letzten bekannten Fehler](#last-known-errors-for-iot-hub-routing-endpoints), zum Zeitpunkt des letzten bekannten Fehlers und zum letzten Übermittlungsversuch für den Endpunkt. Verwenden Sie die mögliche Abhilfe, die für den spezifischen [letzten bekannten Fehler](#last-known-errors-for-iot-hub-routing-endpoints) angegeben ist.
+Verwenden Sie die REST-API [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen), um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. Die API *Get Endpoint Health* (Endpunktintegrität abrufen) liefert auch Informationen zum Zeitpunkt der letzten erfolgreichen Übermittlung einer Nachricht an den Endpunkt, zum [letzten bekannten Fehler](#last-known-errors-for-iot-hub-routing-endpoints), zum Zeitpunkt des letzten bekannten Fehlers und zum letzten Übermittlungsversuch für den Endpunkt. Verwenden Sie die mögliche Abhilfe, die für den spezifischen [letzten bekannten Fehler](#last-known-errors-for-iot-hub-routing-endpoints) angegeben ist.
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>Ich erhalte plötzlich keine Nachrichten mehr am integrierten Endpunkt.
 
@@ -52,9 +52,9 @@ Analysieren Sie Folgendes:
 Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Konfigurieren Sie eine Route zum Endpunkt *events*, um sicherzustellen, dass Nachrichten weiterhin an den integrierten Endpunkt weitergeleitet werden, wenn eine neue Route hinzugefügt wird. 
 
 #### <a name="was-the-fallback-route-disabled"></a>Wurde die Fallbackroute deaktiviert?
-Durch die Fallbackroute werden alle Nachrichten, die die Abfragebedingungen für die vorhandenen Routen nicht erfüllen, an den [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md) (messages/events) gesendet, der mit [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
+Durch die Fallbackroute werden alle Nachrichten, die die Abfragebedingungen für die vorhandenen Routen nicht erfüllen, an den [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md) (messages/events) gesendet, der mit [Event Hubs](../event-hubs/index.yml) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
 
-Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
+Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>Letzte bekannte Fehler für IoT Hub-Routingendpunkte
 

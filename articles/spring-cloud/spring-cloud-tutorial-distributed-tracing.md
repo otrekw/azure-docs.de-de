@@ -8,16 +8,16 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908297"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088634"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
-Mit den Tools zur verteilten Ablaufverfolgung in Azure Spring Cloud können Sie komplexe Probleme problemlos debuggen und überwachen. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
+Mit den Tools zur verteilten Ablaufverfolgung in Azure Spring Cloud können Sie komplexe Probleme problemlos debuggen und überwachen. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in [Azure Application Insights](../azure-monitor/app/app-insights-overview.md). Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
 
 ::: zone pivot="programming-language-csharp"
 In diesem Artikel erfahren Sie, wie Sie eine .NET Core-Steeltoe-App aktivieren, um verteilte Ablaufverfolgung zu verwenden.
@@ -144,15 +144,15 @@ Wenn Sie bereits eine Anwendung erstellt und bereitgestellt haben, können Sie d
 
 ## <a name="view-the-application-map"></a>Anzeigen der Anwendungsübersicht
 
-Kehren Sie zur Seite **Verteilte Ablaufverfolgung** zurück, und wählen Sie **Anwendungsübersicht anzeigen** aus. Überprüfen Sie die visuelle Darstellung Ihrer Anwendungs- und Überwachungseinstellungen. Informationen zur Verwendung der Anwendungsübersicht finden Sie unter [Anwendungsübersicht: Selektieren verteilter Anwendungen](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+Kehren Sie zur Seite **Verteilte Ablaufverfolgung** zurück, und wählen Sie **Anwendungsübersicht anzeigen** aus. Überprüfen Sie die visuelle Darstellung Ihrer Anwendungs- und Überwachungseinstellungen. Informationen zur Verwendung der Anwendungsübersicht finden Sie unter [Anwendungsübersicht: Selektieren verteilter Anwendungen](../azure-monitor/app/app-map.md).
 
 ## <a name="use-search"></a>Verwenden der Suche
 
-Verwenden Sie die Suchfunktion, um andere spezifische Telemetrieelemente abzufragen. Wählen Sie auf der Seite **Distributed Tracing** (Verteilte Ablaufverfolgung) die Option **Suchen** aus. Weitere Informationen zur Verwendung der Suchfunktionen finden Sie unter [Verwenden von Search in Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
+Verwenden Sie die Suchfunktion, um andere spezifische Telemetrieelemente abzufragen. Wählen Sie auf der Seite **Distributed Tracing** (Verteilte Ablaufverfolgung) die Option **Suchen** aus. Weitere Informationen zur Verwendung der Suchfunktionen finden Sie unter [Verwenden von Search in Application Insights](../azure-monitor/app/diagnostic-search.md).
 
 ## <a name="use-application-insights"></a>Verwenden von Application Insights
 
-Application Insights bietet neben Anwendungsübersicht und Suchfunktion auch Überwachungsfunktionen. Suchen Sie im Azure-Portal nach dem Namen Ihrer Anwendung, und öffnen Sie dann eine Application Insights-Seite, um Überwachungsinformationen zu erhalten. Weitere Informationen zur Verwendung dieser Tools finden Sie unter [Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Application Insights bietet neben Anwendungsübersicht und Suchfunktion auch Überwachungsfunktionen. Suchen Sie im Azure-Portal nach dem Namen Ihrer Anwendung, und öffnen Sie dann eine Application Insights-Seite, um Überwachungsinformationen zu erhalten. Weitere Informationen zur Verwendung dieser Tools finden Sie unter [Protokollabfragen in Azure Monitor](/azure/data-explorer/kusto/query/).
 
 ## <a name="disable-application-insights"></a>Deaktivieren von Application Insights
 

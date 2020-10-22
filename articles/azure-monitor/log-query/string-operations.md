@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/16/2018
-ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 7838f9f1febcab073633dbb4af011e99acbe22d3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75397471"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310290"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen
 
@@ -74,8 +74,8 @@ Operator       |BESCHREIBUNG                         |Groß-/Kleinschreibung|Bei
 `!startswith_cs`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Ja        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja             |`"Fabrikam" endswith_cs "kam"`
+`!endswith_cs`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja         |`"Fabrikam" !endswith_cs "brik"`
 `matches regex`|Linker Ausdruck enthält eine Übereinstimmung mit rechtem Ausdruck        |Ja           |`"Fabrikam" matches regex "b.*k"`
 `in`           |Entspricht einem der Elemente       |Ja           |`"abc" in ("123", "345", "abc")`
 `!in`          |Entspricht keinem der Elemente   |Ja           |`"bca" !in ("123", "345", "abc")`

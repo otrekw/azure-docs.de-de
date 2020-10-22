@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6d3661128008c13e5d4d459f6f8e7925aa18a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e30daa3f81ed5dcae1323e721bf85cfed8fa9614
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322770"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147811"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über das Azure-Portal
 
@@ -242,8 +242,8 @@ In diesem Artikel haben Sie erfahren, wie IoT-Geräte bedarfsgerecht konfigurier
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/quickstart-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 
 
-* [Azure IoT Hub Device Provisioning-Dienst](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning-Dienst](../iot-dps/index.yml)

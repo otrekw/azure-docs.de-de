@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e5b8dc325fa7eaceaa0274029049f546db5b6995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6aa56eeab59dee3f080895d5f15285a2b2d41591
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888537"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088770"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Bereitstellen von Azure Spring Cloud-Anwendungen mithilfe von IntelliJ
 
@@ -23,7 +23,7 @@ Das IntelliJ-Plug-In für Azure Spring Cloud unterstützt die Anwendungsbereitst
 Bevor Sie dieses Beispiel ausführen, können Sie den [grundlegenden Schnellstart](spring-cloud-quickstart.md) ausprobieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable&preserve-view=true)
+* [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
 * [Maven 3.5.0 oder höher](https://maven.apache.org/download.cgi)
 * [IntelliJ IDEA, Community/Ultimate Edition, Version 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
@@ -57,7 +57,7 @@ Mit den folgenden Prozeduren wird eine Hallo Welt Anwendung mithilfe von Intelli
     ![Importieren des Projekts](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>In Azure Spring Cloud bereitstellen
-Für die Bereitstellung in Azure müssen Sie sich bei Ihrem Azure-Konto anmelden und Ihr Abonnement auswählen.  Anmeldeinformationen finden Sie unter [Installation und Anmeldung](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Für die Bereitstellung in Azure müssen Sie sich bei Ihrem Azure-Konto anmelden und Ihr Abonnement auswählen.  Anmeldeinformationen finden Sie unter [Installation und Anmeldung](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. Klicken Sie im Projektexplorer von IntelliJ mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Azure** -> **In Azure Spring Cloud bereitstellen** aus.
 
@@ -104,5 +104,5 @@ Abrufen der Protokolle:
     ![Ausgabe des Streamingprotokolls](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Vorbereiten der Spring-Anwendung für Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [Weitere Informationen zum Azure Toolkit für IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Vorbereiten der Spring-Anwendung für Azure Spring Cloud](./spring-cloud-tutorial-prepare-app-deployment.md)
+* [Weitere Informationen zum Azure Toolkit für IntelliJ](/azure/developer/java/toolkit-for-intellij/)

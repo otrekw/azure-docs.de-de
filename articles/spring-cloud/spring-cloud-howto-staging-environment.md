@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888476"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090708"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Einrichten einer Stagingumgebung in Azure Spring Cloud
 
@@ -22,7 +22,7 @@ In diesem Artikel wird erläutert, wie Sie unter Verwendung des Blaugrün-Bereit
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie die PiggyMetrics-Anwendung aus dem [Tutorial zum Starten einer Azure Spring Cloud-Anwendung](spring-cloud-quickstart-launch-app-portal.md) bereits bereitgestellt haben. PiggyMetrics umfasst drei Anwendungen: „gateway“, „account-service“ und „auth-service“.  
+In diesem Artikel wird davon ausgegangen, dass Sie die PiggyMetrics-Anwendung aus dem [Tutorial zum Starten einer Azure Spring Cloud-Anwendung](./spring-cloud-quickstart.md) bereits bereitgestellt haben. PiggyMetrics umfasst drei Anwendungen: „gateway“, „account-service“ und „auth-service“.  
 
 Wenn Sie eine andere Anwendung für dieses Beispiel verwenden möchten, müssen Sie eine kleine Änderung am öffentlichen Teil der Anwendung vornehmen.  Durch diese Änderung wird die Stagingbereitstellung von der Produktion unterschieden.
 

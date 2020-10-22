@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331198"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311223"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -73,7 +73,7 @@ In diesem Projekt definieren Sie die Zielgruppen, die Berichte nutzen und überw
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Diese können Sie vermeiden, indem Sie [sicherstellen, dass Sie die richtigen Beteiligten](https://aka.ms/deploymentplans) hinzuziehen. Achten Sie zudem darauf, die Rolle der Beteiligten im Projekt präzise zu definieren, indem Sie die Beteiligten, ihren Projektbeitrag und ihre Zuständigkeiten dokumentieren.
+Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Diese können Sie vermeiden, indem Sie [sicherstellen, dass Sie die richtigen Beteiligten](../fundamentals/active-directory-deployment-plans.md) hinzuziehen. Achten Sie zudem darauf, die Rolle der Beteiligten im Projekt präzise zu definieren, indem Sie die Beteiligten, ihren Projektbeitrag und ihre Zuständigkeiten dokumentieren.
 
 ### <a name="plan-communications"></a>Planen der Benachrichtigungen
 
@@ -133,7 +133,7 @@ Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Az
 
 Das Weiterleiten von Protokollen an eine Azure-Event Hub ermöglicht die Integration mit SIEM-Drittanbietertools. Diese Integration ermöglicht es Ihnen, Daten des Azure AD-Aktivitätsprotokolls mit anderen Daten zu kombinieren, die von Ihrer SIEM-Lösung verwaltetet werden, um umfassendere Einblicke in Ihre Umgebung zu gewähren. 
 
-Informationen zum Streamen von Protokollen an einen Event Hub finden Sie [hier](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Informationen zum Streamen von Protokollen an einen Event Hub finden Sie [hier](./tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Planen von Vorgängen und Sicherheit für die Azure AD-Berichterstellung und -Überwachung
 
