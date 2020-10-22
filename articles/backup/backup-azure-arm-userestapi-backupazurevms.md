@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506626"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171453"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -437,7 +437,7 @@ Wenn der virtuelle Azure-Computer bereits gesichert wurde, können Sie die Liste
 > [!IMPORTANT]
 > Der obige Anforderungstext ist immer die endgültige Kopie der aus- oder einzuschließenden Datenträger für Daten. Dadurch wird die vorherige Konfiguration nicht *erweitert*. Beispiel: Wenn Sie den Schutz zunächst als „Datenträger 1 ausschließen“ aktualisieren und dann mit „Datenträger 2 ausschließen“ wiederholen, wird in den nachfolgenden Sicherungen *nur Datenträger 2 ausgeschlossen*, und Datenträger 1 wird eingeschlossen. Es ist immer die letzte Liste, die in den nachfolgenden Sicherungen ein-/ausgeschlossen wird.
 
-Wenn Sie die aktuelle Liste der aus- oder eingeschlossenen Datenträger abrufen möchten, erhalten Sie die Informationen zu den geschützten Objekten wie [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/get) erwähnt. Die Antwort liefert die Liste der Datenträger-LUNs und gibt an, ob sie ein- oder ausgeschlossen werden.
+Wenn Sie die aktuelle Liste der aus- oder eingeschlossenen Datenträger abrufen möchten, erhalten Sie die Informationen zu den geschützten Objekten wie [hier](/rest/api/backup/protecteditems/get) erwähnt. Die Antwort liefert die Liste der Datenträger-LUNs und gibt an, ob sie ein- oder ausgeschlossen werden.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Beenden des Schutzes, jedoch Beibehalten vorhandener Daten
 

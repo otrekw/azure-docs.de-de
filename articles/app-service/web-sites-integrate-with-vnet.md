@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018626"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150143"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 
-In diesem Artikel wird die Azure App Service-Funktion für die VNet-Integration beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Network][VNETOverview] (VNET) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann. Die VNet-Integrationsfunktion ermöglicht Ihren Apps den Zugriff auf Ressourcen in einem oder über ein VNet. Die VNet-Integration ermöglicht keinen privaten Zugriff auf Ihre Apps.
+In diesem Artikel wird die Azure App Service-Funktion für die VNet-Integration beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](./overview.md) einrichten. Mit [Azure Virtual Network][VNETOverview] (VNET) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann. Die VNet-Integrationsfunktion ermöglicht Ihren Apps den Zugriff auf Ressourcen in einem oder über ein VNet. Die VNet-Integration ermöglicht keinen privaten Zugriff auf Ihre Apps.
 
 Azure App Service weist zwei Variationen der VNet-Integrationsfunktion auf:
 

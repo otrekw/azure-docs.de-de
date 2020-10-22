@@ -6,19 +6,19 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3179daec361aa287b79c5e9a468908d0ccdd2982
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759426"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143962"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie wurden in Arbeitsmappen umgewandelt, die einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals bieten. Dieser Artikel unterstützt Sie beim Übergang vom Ansichts-Designer zu Arbeitsmappen. 
 
 
 ## <a name="workbooks-overview"></a>Übersicht über Arbeitsmappen
-[Arbeitsmappen](../insights/vminsights-workbooks.md) kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), Metriken und Parameter zu umfassenden interaktiven Berichten. Teammitglieder mit demselben Zugriff auf Azure-Ressourcen können auch Arbeitsmappen bearbeiten.
+[Arbeitsmappen](../insights/vminsights-workbooks.md) kombinieren Text,  [Protokollabfragen](/azure/data-explorer/kusto/query/), Metriken und Parameter zu umfassenden interaktiven Berichten. Teammitglieder mit demselben Zugriff auf Azure-Ressourcen können auch Arbeitsmappen bearbeiten.
 
 Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 

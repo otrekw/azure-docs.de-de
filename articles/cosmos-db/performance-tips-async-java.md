@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a44848e81e974d8294b84471d68ded8509f4ddf6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067609"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282815"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Leistungstipps für das Azure Cosmos DB Async Java SDK v2
 
@@ -119,7 +119,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
   
   Einige wichtige Programmiertipps bei der Verwendung des direkten Modus:
   
-  * **Verwenden Sie Multithreading in der Anwendung für eine effiziente TCP-Datenübertragung**: Nachdem Sie eine Anforderung übermittelt haben, sollte Ihre Anwendung den Empfang von Daten in einem anderen Thread abonnieren. Andernfalls wird ein unbeabsichtigter „Halbduplexvorgang“ erzwungen, und die nachfolgenden Anforderungen werden blockiert, um auf die Antwort der vorherigen Anforderung zu warten.
+  **Verwenden Sie Multithreading in der Anwendung für eine effiziente TCP-Datenübertragung**: Nachdem Sie eine Anforderung übermittelt haben, sollte Ihre Anwendung den Empfang von Daten in einem anderen Thread abonnieren. Andernfalls wird ein unbeabsichtigter „Halbduplexvorgang“ erzwungen, und die nachfolgenden Anforderungen werden blockiert, um auf die Antwort der vorherigen Anforderung zu warten.
   
   * **Führen Sie rechenintensive Workloads in einem dedizierten Thread aus**: Aus ähnlichen Gründen wie beim vorherigen Tipp sollten Vorgänge wie komplexe Datenverarbeitungen am besten in einem separaten Thread ausgeführt werden. Wenn eine Anforderung Daten aus einem anderen Datenspeicher abruft (z. B. wenn der Thread Azure Cosmos DB und Spark-Datenspeicher gleichzeitig verwendet), kann dies zu einer längeren Wartezeit führen. Es empfiehlt sich daher, einen zusätzlichen Thread zu erzeugen, der auf eine Antwort vom anderen Datenspeicher wartet.
   
@@ -137,13 +137,13 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
     Es ist wichtig zu beachten, dass sich für parallele Abfragen die größten Vorteile ergeben, wenn die Daten in Bezug auf die Abfrage gleichmäßig auf alle Partitionen verteilt werden. Wenn die partitionierte Auflistung so partitioniert ist, dass sich alle Daten bzw. die meisten Daten, die von einer Abfrage zurückgegeben werden, auf einigen wenigen Partitionen befinden (schlimmstenfalls nur auf einer Partition), können aufgrund dieser Partitionierung Engpässe bei der Leistung auftreten.
 
-  * ***Optimieren von setMaxBufferedItemCount\:***
+  ***Optimieren von setMaxBufferedItemCount\:***
     
     Parallele Abfragen sind so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch der Ergebnisse verarbeitet. Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage. setMaxBufferedItemCount begrenzt die Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie „setMaxBufferedItemCount“ auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
 
     Das vorherige Abrufen funktioniert unabhängig von MaxDegreeOfParallelism, und es ist nur ein Puffer für die Daten aller Partitionen vorhanden.
 
-* **Implementieren von Backoff in getRetryAfterInMilliseconds-Intervallen**
+**Implementieren von Backoff in getRetryAfterInMilliseconds-Intervallen**
 
   Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet.
 
@@ -304,4 +304,4 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Entwerfen einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md).
+Weitere Informationen zum Entwerfen einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](partitioning-overview.md).

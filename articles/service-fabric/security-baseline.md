@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227711"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309154"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-Sicherheitsbaseline für Service Fabric
 
@@ -78,7 +78,7 @@ Stellen Sie die Azure Web Application Firewall (WAF) vor kritischen Webanwendung
 
 * [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
 
-* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/threat-protection.md)
+* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -226,7 +226,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 * [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -488,7 +488,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für AAD-
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 * [Grundlegendes zur Verschlüsselung ruhender Daten in Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](../storage/common/storage-encryption-keys-portal.md)
+* [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Windows](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ Verwenden Sie für die Durchführung von Sicherheitsrisikobewertungen für Netzw
 
 * [Auslösen von kontrolliertem Chaos in Service Fabric-Clustern](./service-fabric-controlled-chaos.md)
 
-* [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
@@ -698,7 +698,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 * [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ Wenn Sie vom Kunden verwaltete Schlüssel verwenden, sollten Sie sicherstellen, 
 
 * [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md)
 
-* [Aktivieren des vorläufigen Löschens in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Aktivieren des vorläufigen Löschens in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

@@ -3,12 +3,12 @@ title: Konfigurieren eines Labs für die Verwendung eines Remotedesktopgateways 
 description: Erfahren Sie, wie Sie ein Lab in Azure DevTest Labs mit einem Remotedesktopgateway konfigurieren, um sicheren Zugriff auf die virtuellen Computer (VMs) des Labs ohne Offenlegung des RDP-Ports zu gewährleisten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288078"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144699"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurieren Ihres Labs in Azure DevTest Labs zum Verwenden eines Remotedesktopgateways
 Sie können in Azure DevTest Labs ein Remotedesktopgateway für Ihr Lab konfigurieren, um sicheren Zugriff auf die virtuellen Computer (VMs) des Labs ohne Offenlegung des RDP-Ports zu gewährleisten. Das Lab bietet einen zentralen Ort für Ihre Lab-Benutzer zum Anzeigen aller virtuellen Computer, auf die sie Zugriff haben, sowie für den Zugriff auf diese. Die Schaltfläche **Verbinden** auf der Seite **Virtueller Computer** erstellt eine computerspezifische RDP-Datei, die Sie öffnen können, um eine Verbindung mit dem Computer herzustellen. Sie können die RDP-Verbindung weiter anpassen und sichern, indem Sie Ihr Lab mit einem Remotedesktopgateway verbinden. 
@@ -79,7 +79,7 @@ Konfigurieren Sie das Lab für die Verwendung der Tokenauthentifizierung anhand 
 1. **Speichern** Sie die Änderungen.
 
     > [!NOTE] 
-    > Durch Klicken auf **Speichern** stimmen Sie den [Lizenzbedingungen des Remotedesktopgateways](https://www.microsoft.com/licensing/product-licensing/products) zu. Weitere Informationen zu Remotegateways finden Sie unter [Willkommen bei den Remotedesktopdiensten](https://aka.ms/rds) und [Bereitstellen einer Remotedesktopumgebung](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Durch Klicken auf **Speichern** stimmen Sie den [Lizenzbedingungen des Remotedesktopgateways](https://www.microsoft.com/licensing/product-licensing/products) zu. Weitere Informationen zu Remotegateways finden Sie unter [Willkommen bei den Remotedesktopdiensten](/windows-server/remote/remote-desktop-services/Welcome-to-rds) und [Bereitstellen einer Remotedesktopumgebung](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
 Falls Sie das Konfigurieren des Lab automatisieren möchten, finden Sie unter [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) ein PowerShell-Beispielskript, mit dem die Einstellungen **Gatewayhostname** und **Gatewaytokengeheimnis** festgelegt werden können. Die [GitHub-Repository zu Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) enthält auch eine Azure Resource Manager-Vorlage, die ein Lab mit den Einstellungen **Gatewayhostname** und **Gatewaytokengeheimnis** erstellt oder aktualisiert.
@@ -94,7 +94,7 @@ Die folgende Beispiel-NSG erlaubt nur Datenverkehr über das Gateway an die Lab-
 ## <a name="sample-to-create-a-remote-desktop-gateway"></a>Beispiel für das Erstellen eines Remotedesktopgateways
 
 > [!NOTE] 
-> Mit der Verwendung der Beispielvorlagen stimmen Sie den [Lizenzbedingungen des Remotedesktopgateways](https://www.microsoft.com/licensing/product-licensing/products) zu. Weitere Informationen zu Remotegateways finden Sie unter [Willkommen bei den Remotedesktopdiensten](https://aka.ms/rds) und [Bereitstellen einer Remotedesktopumgebung](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Mit der Verwendung der Beispielvorlagen stimmen Sie den [Lizenzbedingungen des Remotedesktopgateways](https://www.microsoft.com/licensing/product-licensing/products) zu. Weitere Informationen zu Remotegateways finden Sie unter [Willkommen bei den Remotedesktopdiensten](/windows-server/remote/remote-desktop-services/Welcome-to-rds) und [Bereitstellen einer Remotedesktopumgebung](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 Das [GitHub-Repository zu Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) enthält einige Beispiele, die Ihnen beim Einrichten der Ressourcen helfen, die Sie für die Verwendung der Tokenauthentifizierung und eines Remotedesktopgateways mit DevTest Labs benötigen. Diese Beispiele enthalten Azure Resource Manager-Vorlagen für Gatewaycomputer, Labeinstellungen und Funktions-Apps.
 

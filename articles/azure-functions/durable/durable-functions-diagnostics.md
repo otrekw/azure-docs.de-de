@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: f91cdaa81e18105eb39af442ab6152bfd2888ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319706"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168140"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnose in Durable Functions in Azure
 
@@ -99,7 +99,7 @@ Zum Aktivieren der Ausgabe der Wiedergabeereignisse mit ausführlicher Orchestri
 ```
 
 > [!NOTE]
-> Standardmäßig werden für die Application Insights-Telemetriedaten von der Azure Functions-Laufzeit Stichproben erstellt, um zu verhindern, dass Daten zu häufig ausgegeben werden. Dies kann dazu führen, dass Nachverfolgungsinformationen verloren gehen, wenn viele Lebenszyklusereignisse in kurzer Zeit auftreten. Im [Artikel zur Azure Functions-Überwachung](../functions-monitoring.md#configure-sampling) wird beschrieben, wie Sie dieses Verhalten konfigurieren.
+> Standardmäßig werden für die Application Insights-Telemetriedaten von der Azure Functions-Laufzeit Stichproben erstellt, um zu verhindern, dass Daten zu häufig ausgegeben werden. Dies kann dazu führen, dass Nachverfolgungsinformationen verloren gehen, wenn viele Lebenszyklusereignisse in kurzer Zeit auftreten. Im [Artikel zur Azure Functions-Überwachung](../configure-monitoring.md#configure-sampling) wird beschrieben, wie Sie dieses Verhalten konfigurieren.
 
 ### <a name="single-instance-query"></a>Abfrage für einzelne Instanzen
 

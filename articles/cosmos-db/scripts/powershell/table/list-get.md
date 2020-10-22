@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/31/2020
 ms.author: mjbrown
-ms.openlocfilehash: c882b16733b19619f5df5d4e9e0c440a6711c1fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab4313f02d233b3eac33b7da202fca559bffa147
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504739"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281922"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Auflisten und Abrufen von Tabellen für Azure Cosmos DB – Tabellen-API
 
@@ -48,5 +48,3 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
-
-Zusätzliche PowerShell-Skriptbeispiele für Azure Cosmos DB finden Sie unter [PowerShell-Skripts für Azure Cosmos DB](../../../powershell-samples.md).

@@ -5,12 +5,12 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 84336051fc3d653fbe73f650f2fc2badb2ec58da
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326455"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148941"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netzwerksicherheit für Azure Event Grid-Ressourcen
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Grid verwenden: 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen 
 ## <a name="service-tags"></a>Diensttags
 Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen aus einem bestimmten Azure-Dienst. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert. Weitere Informationen zu Diensttags finden Sie unter [Diensttags: Übersicht](../virtual-network/service-tags-overview.md).
 
-Sie können mithilfe von Diensttags Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#security-rules)  oder  [Azure Firewall](../firewall/service-tags.md) definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (z. B. **AzureEventGrid**) im entsprechenden Feld *Quelle*  oder  *Ziel*  einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
+Sie können mithilfe von Diensttags Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules)  oder  [Azure Firewall](../firewall/service-tags.md) definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (z. B. **AzureEventGrid**) im entsprechenden Feld *Quelle*  oder  *Ziel*  einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
 
 | Diensttag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|

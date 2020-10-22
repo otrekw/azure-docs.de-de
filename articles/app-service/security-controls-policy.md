@@ -1,16 +1,16 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure App Service
 description: Hier sind Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgelistet, die für Azure App Service verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.service: app-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9e48e7ac8b410798875f85611373931b35cc9158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f9a6bdc846246be622fe13d9174d289cb0c0d03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827112"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310328"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-service"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure App Service
 

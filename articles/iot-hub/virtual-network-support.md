@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613899"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149083"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -224,7 +224,7 @@ Nun ist Ihr benutzerdefinierter Service Bus-Endpunkt für die Verwendung der vom
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>Ausgehende Konnektivität zu Speicherkonten für den Dateiupload
 
-Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von Dateien in ein Speicherkonto, das im Besitz von Kunden ist. Sowohl Geräte als auch IoT Hub müssen eine Verbindung mit dem Speicherkonto herstellen, damit der Dateiuploadvorgang funktioniert. Wenn Firewalleinschränkungen für das Speicherkonto vorhanden sind, müssen Ihre Geräte einen der unterstützten Mechanismen des Speicherkontos verwenden (z. B. [private Endpunkte](../private-link/create-private-endpoint-storage-portal.md), [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) oder eine [direkte Firewallkonfiguration](../storage/common/storage-network-security.md)), um die Verbindung herzustellen. Wenn Firewalleinschränkungen im Speicherkonto vorhanden sind, muss IoT Hub entsprechend konfiguriert werden, um über die Ausnahme für vertrauenswürdige Microsoft-Dienste auf die Speicherressource zuzugreifen. Zu diesem Zweck muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die RBAC-Berechtigung für den Zugriff auf Ihr Speicherkonto zu erteilen.
+Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von Dateien in ein Speicherkonto, das im Besitz von Kunden ist. Sowohl Geräte als auch IoT Hub müssen eine Verbindung mit dem Speicherkonto herstellen, damit der Dateiuploadvorgang funktioniert. Wenn Firewalleinschränkungen für das Speicherkonto vorhanden sind, müssen Ihre Geräte einen der unterstützten Mechanismen des Speicherkontos verwenden (z. B. [private Endpunkte](../private-link/tutorial-private-endpoint-storage-portal.md), [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) oder eine [direkte Firewallkonfiguration](../storage/common/storage-network-security.md)), um die Verbindung herzustellen. Wenn Firewalleinschränkungen im Speicherkonto vorhanden sind, muss IoT Hub entsprechend konfiguriert werden, um über die Ausnahme für vertrauenswürdige Microsoft-Dienste auf die Speicherressource zuzugreifen. Zu diesem Zweck muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die RBAC-Berechtigung für den Zugriff auf Ihr Speicherkonto zu erteilen.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -252,7 +252,7 @@ Diese Funktion erfordert Konnektivität von IoT Hub mit dem Speicherkonto. Damit
 
 3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 
-Sie können jetzt die Azure IoT-REST-APIs zum [Erstellen von Import-/Exportaufträgen](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) verwenden, um Informationen zur Verwendung der Funktion für Massenimporte/-exporte zu erhalten. Sie müssen `storageAuthenticationType="identityBased"` im Anforderungstext bereitstellen und `inputBlobContainerUri="https://..."` und `outputBlobContainerUri="https://..."` als Eingabe- bzw. Ausgabe-URLs des Speicherkontos verwenden.
+Sie können jetzt die Azure IoT-REST-APIs zum [Erstellen von Import-/Exportaufträgen](/rest/api/iothub/service/jobs/getimportexportjobs) verwenden, um Informationen zur Verwendung der Funktion für Massenimporte/-exporte zu erhalten. Sie müssen `storageAuthenticationType="identityBased"` im Anforderungstext bereitstellen und `inputBlobContainerUri="https://..."` und `outputBlobContainerUri="https://..."` als Eingabe- bzw. Ausgabe-URLs des Speicherkontos verwenden.
 
 Azure IoT Hub SDKs unterstützen diese Funktion im Registrierungs-Manager des Dienstclients. Der folgende Codeausschnitt zeigt, wie ein Importauftrag bzw. ein Exportauftrag mithilfe des C# SDK ausgelöst werden.
 
@@ -295,4 +295,4 @@ Verwenden Sie die unten angegebenen Links, um weitere Informationen zu IoT Hub-F
 
 * [Nachrichtenrouting](./iot-hub-devguide-messages-d2c.md)
 * [Hochladen von Dateien mit IoT Hub](./iot-hub-devguide-file-upload.md)
-* [Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang](./iot-hub-bulk-identity-mgmt.md) 
+* [Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang](./iot-hub-bulk-identity-mgmt.md)

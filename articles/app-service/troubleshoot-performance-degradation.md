@@ -7,15 +7,15 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958251"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147512"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
-In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
+In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](./overview.md) beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 

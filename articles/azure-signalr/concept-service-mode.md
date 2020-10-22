@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514733"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143251"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Dienstmodi in Azure SignalR Service
 
@@ -51,11 +51,11 @@ Außerdem gibt es in diesem Modus keine Serververbindung (wenn Sie versuchen, da
 > [!NOTE]
 > Sowohl das Verfahren mit REST-APIs als auch das mit WebSockets wird über das [Verwaltungs-SDK](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md) von SignalR Service unterstützt. Wenn Sie eine andere Sprache als .NET verwenden, können Sie die REST-APIs auch manuell aufrufen. Nutzen Sie dazu diese [Spezifikation](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md).
 >
-> Wenn Sie Azure Functions verwenden, können Sie [SignalR Service-Bindungen für Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) (im Folgenden als Funktionsbindung bezeichnet) verwenden, um Nachrichten als Ausgabebindung zu senden.
+> Wenn Sie Azure Functions verwenden, können Sie [SignalR Service-Bindungen für Azure Functions](../azure-functions/functions-bindings-signalr-service.md) (im Folgenden als Funktionsbindung bezeichnet) verwenden, um Nachrichten als Ausgabebindung zu senden.
 
 Auch Ihre Serveranwendung kann Nachrichten und Verbindungsereignisse von Clients empfangen. Der Dienst übermittelt Nachrichten und Verbindungsereignisse an vorkonfigurierte Endpunkte (als Upstream bezeichnet) mithilfe von Webhooks. Im Vergleich zum Standardmodus gibt es keine Garantie für die dauerhafte Bindung, und HTTP-Anforderungen sind eventuell weniger effizient als WebSocket-Verbindungen.
 
-Weitere Informationen zum Konfigurieren von Upstreamübertragungen finden Sie in diesem [Dokument](https://docs.microsoft.com/azure/azure-signalr/concept-upstream).
+Weitere Informationen zum Konfigurieren von Upstreamübertragungen finden Sie in diesem [Dokument](./concept-upstream.md).
 
 Im folgenden Diagramm wird die Funktionsweise des serverlosen Modus veranschaulicht:
 

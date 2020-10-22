@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600499"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308945"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -60,7 +60,7 @@ So greifen Sie im Microsoft 365 Admin Center auf den Bericht **Benutzer mit Ris
 Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren und Ihre Umgebung zu schützen:
 
 1.  [Überprüfen Sie die Informationen](https://aka.ms/MFAValid) für die mehrstufige Authentifizierung und die Self-Service-Kennwortzurücksetzung. 
-2.  [Aktivieren Sie die mehrstufige Authentifizierung](https://aka.ms/MFAuth) für alle Benutzer. 
+2.  [Aktivieren Sie die mehrstufige Authentifizierung](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) für alle Benutzer. 
 3.  Verwenden Sie [dieses Bereinigungsskript](https://aka.ms/remediate), um für jedes betroffene Konto automatisch folgende Schritte auszuführen: 
 
     a. Zurücksetzen des Kennworts, um das Konto zu schützen und die Beendigung aktiver Sitzungen zu erzwingen
@@ -85,8 +85,8 @@ Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren
 
 Darüber hinaus empfiehlt sich Folgendes:
 
-- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](https://aka.ms/fixaccount). 
-- [Aktivieren Sie die Überwachungspipeline](https://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
+- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account). 
+- [Aktivieren Sie die Überwachungspipeline](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
 - Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](https://aka.ms/delegateforwardrules) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte

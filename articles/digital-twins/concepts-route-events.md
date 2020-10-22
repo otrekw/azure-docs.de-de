@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800465"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044291"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -21,7 +21,7 @@ Azure Digital Twins verwendet **Ereignisrouten** zum Senden von Daten an Consume
 Während der Vorschauphase gibt es zwei Hauptfälle für das Senden von Daten aus Azure Digital Twins:
 * Der erste Fall ist das Senden von Daten von einem Zwilling im Azure Digital Twins-Graph an einen anderen. Wenn sich beispielsweise eine Eigenschaft in einem digitalen Zwilling ändert, sollten Sie einen anderen digitalen Zwilling entsprechend benachrichtigen und aktualisieren.
 * Der zweite Fall ist das Senden von Daten an Downstreamdatendienste zur zusätzlichen Speicherung oder Verarbeitung (auch als *ausgehende Daten* bezeichnet). Beispiel:
-  - Ein Krankenhaus möchte möglicherweise Azure Digital Twins-Ereignisdaten an [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md) senden, um Zeitreihendaten von Ereignissen im Zusammenhang mit Händewaschen für eine Massenanalyse aufzuzeichnen.
+  - Ein Krankenhaus möchte möglicherweise Azure Digital Twins-Ereignisdaten an [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) senden, um Zeitreihendaten von Ereignissen im Zusammenhang mit Händewaschen für eine Massenanalyse aufzuzeichnen.
   - Ein Unternehmen, das bereits [Azure Maps](../azure-maps/about-azure-maps.md) verwendet, möchte möglicherweise Azure Digital Twins verwenden, um seine Lösung zu verbessern. Nach dem Einrichten von Azure Digital Twins kann es schnell eine Azure Maps-Instanz aktivieren, Azure Maps-Entitäten in Azure Digital Twins als [digitale Zwillinge](concepts-twins-graph.md) in den Zwillingsgraphen aufnehmen oder leistungsstarke Abfragen ausführen, die sowohl die Daten aus Azure Maps als auch aus Azure Digital Twins nutzen.
 
 Ereignisrouten werden in beiden Szenarios verwendet.
@@ -55,7 +55,9 @@ Entwickler müssen erst Endpunkte definieren, um eine Ereignisroute definieren z
 * Event Hub
 * Service Bus
 
-Endpunkte werden mithilfe von Steuerungsebenen-APIs (von der [Azure Digital Twins-CLI](how-to-use-cli.md) unterstützt) oder über das Azure-Portal eingerichtet. Eine Endpunktdefinition enthält die folgenden Angaben:
+Um einen Endpunkt zu erstellen, können Sie die [**Steuerungsebenen-APIs**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins) von Azure Digital Twins, [**CLI-Befehle**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli) oder das [**Azure-Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) verwenden. 
+
+Beim Definieren eines Endpunkts müssen Sie Folgendes angeben:
 * Name des Endpunkts
 * Endpunkttyp (Event Grid, Event Hub oder Service Bus)
 * Primäre und sekundäre Verbindungszeichenfolge für die Authentifizierung 
@@ -69,15 +71,24 @@ In der Steuerungsebene sind Endpunkt-APIs für Folgendes verfügbar:
 
 ## <a name="create-an-event-route"></a>Erstellen einer Ereignisroute
  
-Ereignisrouten werden in einer Clientanwendung mit dem folgenden [.NET SDK-Aufruf (C#)](how-to-use-apis-sdks.md) erstellt: 
+Um eine Ereignisroute zu erstellen, können Sie die [**Datenebenen-APIs**](how-to-manage-routes-apis-cli.md#create-an-event-route) von Azure Digital Twins, [**CLI-Befehle**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli) oder das [**Azure-Portal**](how-to-manage-routes-portal.md#create-an-event-route) verwenden. 
+
+Im Folgenden finden Sie ein Beispiel für das Erstellen einer Ereignisroute in einer Clientanwendung mithilfe des [.NET (C#) SDK](how-to-use-apis-sdks.md)-Aufrufs `CreateEventRoute`: 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
-* `endpoint-name` identifiziert einen Endpunkt, z. B. einen Event Hub, Event Grid oder Service Bus. Diese Endpunkte müssen vor diesem Registrierungsaufruf in Ihrem Abonnement erstellt und mithilfe von Steuerungsebenen-APIs an Azure Digital Twins angehängt werden.
+1. Zuerst wird ein `EventRoute`-Objekt erstellt, und der-Konstruktor nimmt den Namen eines Endpunkts an. Dieses Feld `endpointName` identifiziert einen Endpunkt, z. B. einen Event Hub, ein Event Grid oder einen Service Bus. Diese Endpunkte müssen vor diesem Registrierungsaufruf in Ihrem Abonnement erstellt und mithilfe von Steuerungsebenen-APIs an Azure Digital Twins angehängt werden.
 
-Das an `EventRoutes.Add` übergebene Ereignisroutenobjekt verwendet auch einen [**Filterparameter**](./how-to-manage-routes-apis-cli.md#filter-events), der zum Einschränken der Arten von Ereignissen für diese Route verwendet werden kann.
+2. Das Ereignisroutenobjekt verwendet auch ein Feld [**Filter**](./how-to-manage-routes-apis-cli.md#filter-events), das zum Einschränken der Arten von Ereignissen für diese Route verwendet werden kann. Ein Filter `true` aktiviert die Route ohne zusätzliche Filterung (ein Filter mit dem Wert `false` deaktiviert die Route). 
+
+3. Dieses Ereignisroutenobjekt wird dann zusammen mit einem Namen für die Route an `CreateEventRoute` übergeben.
+
+> [!TIP]
+> Alle SDK-Funktionen sind in synchronen und asynchronen Versionen enthalten.
 
 Routen können auch über die [Azure Digital Twins-CLI](how-to-use-cli.md) erstellt werden.
 
