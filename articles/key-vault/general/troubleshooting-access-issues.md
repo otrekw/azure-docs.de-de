@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 3110e02c2c4cb8b254e80a55997577db95ba1be0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595987"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075653"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
@@ -52,6 +52,8 @@ Für die Anwendung muss dem Schlüsseltresor darüber hinaus mindestens eine IAM
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Wie kann ich Key Vault per ARM-Vorlage erneut bereitstellen, ohne vorhandene Zugriffsrichtlinien zu löschen?
 
 Derzeit werden bei der erneuten Key Vault-Bereitstellung alle Zugriffsrichtlinien in Key Vault gelöscht und durch die Zugriffsrichtlinie in der ARM-Vorlage ersetzt. Für Key Vault-Zugriffsrichtlinien steht keine inkrementelle Option zur Verfügung. Wenn die Zugriffsrichtlinien in Key Vault erhalten bleiben sollen, müssen Sie die vorhandene Zugriffsrichtlinien in Key Vault lesen und die ARM-Vorlage mit diesen Richtlinien auffüllen, um Ausfälle beim Zugriff zu vermeiden.
+
+Eine weitere für dieses Szenario hilfreiche Option ist die Verwendung von RBAC-Rollen als Alternative zu Zugriffsrichtlinien. Mit RBAC können Sie den Schlüsseltresor erneut bereitstellen, ohne die Richtlinie erneut anzugeben. [Hier](https://docs.microsoft.com/azure/key-vault/general/rbac-guide) finden Sie weitere Informationen zu dieser Lösung.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Empfohlene Schritte zur Problembehandlung bei folgenden Fehlertypen
 

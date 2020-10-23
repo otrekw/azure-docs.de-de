@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 10/05/2020
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052714"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964994"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
@@ -41,11 +41,13 @@ In der folgenden Tabelle sind die Richtlinien für Benutzernamen aufgeführt, di
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD-Kennwortrichtlinien
 
-Eine Kennwortrichtlinie wird auf alle Benutzerkonten angewandt, die direkt in Azure AD erstellt und verwaltet werden. Diese Kennwortrichtlinie kann nicht geändert werden, Sie können jedoch [benutzerdefinierte gesperrte Kennwörter für den Azure AD-Kennwortschutz konfigurieren](tutorial-configure-custom-password-protection.md).
+Eine Kennwortrichtlinie wird auf alle Benutzerkonten angewandt, die direkt in Azure AD erstellt und verwaltet werden. Einige dieser Kennwortrichtlinien können zwar nicht geändert werden, aber Sie können [benutzerdefinierte gesperrte Kennwörter für den Azure AD-Kennwortschutz](tutorial-configure-custom-password-protection.md) oder Parameter für Kontosperrungen konfigurieren.
 
-Die Kennwortrichtlinien betreffen keine Benutzerkonten, die über Azure AD Connect aus einer lokalen AD DS-Umgebung synchronisiert werden, sofern Sie nicht EnforceCloudPasswordPolicyForPasswordSyncedUsers aktivieren.
+Nach 10 nicht erfolgreichen Anmeldeversuchen mit einem falschen Kennwort wird das Konto standardmäßig gesperrt. Der Benutzer wird dann für eine Minute gesperrt. Mit jeder weiteren fehlerhaften Anmeldeversuch verlängert sich die Dauer, die der Benutzer gesperrt ist. [Smart Lockout](howto-password-smart-lockout.md) verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht. Sie können den Grenzwert und die Dauer von Smart Lockout-Maßnahmen festlegen.
 
-Die folgenden Optionen für Kennwortrichtlinien sind definiert:
+Die Azure AD-Kennwortrichtlinie gilt nicht für Benutzerkonten, die über Azure AD Connect aus einer lokalen AD DS-Umgebung synchronisiert werden, sofern Sie nicht *EnforceCloudPasswordPolicyForPasswordSyncedUsers* aktivieren.
+
+Die folgenden Optionen für Azure AD-Kennwortrichtlinien sind definiert: Sofern nichts anderes angegeben ist, können Sie die folgenden Einstellungen nicht ändern:
 
 | Eigenschaft | Requirements (Anforderungen) |
 | --- | --- |
@@ -57,11 +59,10 @@ Die folgenden Optionen für Kennwortrichtlinien sind definiert:
 | Kennwortablauf (Kennwort läuft nie ab) |<ul><li>Standardwert: **false** (gibt an, dass Kennwörter ein Ablaufdatum aufweisen).</li><li>Der Wert kann mit dem Cmdlet `Set-MsolUser` für einzelne Benutzerkonten konfiguriert werden.</li></ul> |
 | Verlauf der Kennwortänderungen | Das letzte Kennwort *kann nicht* erneut verwendet werden, wenn der Benutzer ein Kennwort ändert. |
 | Verlauf der Kennwortzurücksetzungen | Das letzte Kennwort *kann* erneut verwendet werden, wenn der Benutzer ein vergessenes Kennwort zurücksetzt. |
-| Kontosperrung | Nach 10 nicht erfolgreichen Anmeldeversuchen mit einem falschen Kennwort wird der Benutzer für eine Minute gesperrt. Mit jeder weiteren fehlerhaften Anmeldeversuch verlängert sich die Dauer, die der Benutzer gesperrt ist. [Smart Lockout](howto-password-smart-lockout.md) verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht. |
 
 ## <a name="administrator-reset-policy-differences"></a>Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern
 
-Microsoft erzwingt eine starke standardmäßige *Zwei-Gate*-Kennwortzurücksetzungs-Richtlinie für jede Azure-Administratorrolle. Diese Richtlinie kann sich von der Richtlinie unterscheiden, die Sie für Ihre Benutzer definiert haben, und diese Richtlinie kann nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
+Standardmäßig ist die Self-Service-Kennwortzurücksetzung für Administratorkonten aktiviert, und es wird eine strenge Standardrichtlinie für die *zweistufige* Kennwortzurücksetzung erzwungen. Diese Richtlinie kann sich von der Richtlinie unterscheiden, die Sie für Ihre Benutzer definiert haben, und diese Richtlinie kann nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
 
 Mit einer Zwei-Gate-Richtlinie haben Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden.
 
@@ -93,6 +94,8 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
 * Wenn 30 Tage in einem Testabonnement abgelaufen sind, oder
 * eine benutzerdefinierte Domäne für Ihren Azure AD-Mandanten konfiguriert wurde, z. B. *contoso.com*, oder
 * Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
+
+Sie können die Verwendung der Self-Service-Kennwortzurücksetzung für Administratorkonten über das PowerShell-Cmdlet[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) deaktivieren. Mithilfe des Parameters `-SelfServePasswordResetEnabled $False` wird die Self-Service-Kennwortzurücksetzung für Administratoren deaktiviert.
 
 ### <a name="exceptions"></a>Ausnahmen
 

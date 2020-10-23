@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903193"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952215"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Arc in einem Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -68,11 +68,11 @@ Damit Sie Azure Arc im Kubernetes-Cluster aktivieren können, müssen Sie `Micro
 
 1. Wählen Sie einen Ressourcenanbieter und dann oben auf der Befehlsleiste die Option **Registrieren** aus. Die Registrierung dauert einige Minuten. 
 
-    ![Registrieren von Kubernetes-Ressourcenanbietern](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![Registrieren von Kubernetes-Ressourcenanbietern 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. Aktualisieren Sie die Benutzeroberfläche, bis angezeigt wird, dass der Ressourcenanbieter registriert ist. Führen Sie diese Schritte für beide Ressourcenanbieter aus.
     
-    ![Registrieren von Kubernetes-Ressourcenanbietern](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![Registrieren von Kubernetes-Ressourcenanbietern 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 Sie können Ressourcenanbieter außerdem über `az cli` registrieren. Weitere Informationen finden Sie unter [Registrieren der beiden Anbieter für Kubernetes mit Azure Arc-Aktivierung](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes).
 

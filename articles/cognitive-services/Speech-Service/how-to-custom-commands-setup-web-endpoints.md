@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362109"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843123"
 ---
 # <a name="set-up-web-endpoints"></a>Einrichten von Webendpunkten
 
@@ -79,7 +79,7 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
     Geben Sie im **einfachen Editor** `{SubjectDevice} is {OnOff}` ein.
    
    > [!div class="mx-imgBorder"]
-   > ![Aktion für Webendpunkte bei Erfolg aufrufen](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![Screenshot: Bildschirm „Bei Erfolg – Auszuführende Aktion“](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------- | --------------- | ----------- |
@@ -107,7 +107,7 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
 - Antwort bei Erfolg\
 Speichern, Trainieren und Testen
    > [!div class="mx-imgBorder"]
-   > ![Aktion für Webendpunkte bei Erfolg aufrufen](media/custom-commands/setup-web-endpoint-on-success-response.png)
+   > ![Screenshot: Antwort bei Erfolg](media/custom-commands/setup-web-endpoint-on-success-response.png)
 - Antwort bei Fehler\
 Entfernen Sie einen der Abfrageparameter, und führen Sie Speicherung, erneutes Training und Test durch.
    > [!div class="mx-imgBorder"]
