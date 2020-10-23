@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119530"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91660903"
 ---
 # <a name="publish-an-integrated-solution"></a>Veröffentlichen einer integrierten Lösung
 
@@ -52,7 +52,7 @@ Einen Überblick über das Programm für integrierte Lösungen erhalten Sie im [
 
 ## <a name="submit-a-nomination"></a>Einreichen einer Nominierung
 
-Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angeben, mit denen sie zusammenarbeiten möchten. Sie sollten das Formular zur [Nominierung für integrierte Lösungen](https://aka.ms/AA5qicu) ausfüllen. Das Programmteam für integrierte Lösungen überprüft die Nominierung und antwortet innerhalb von 10 Werktagen. Das Team gibt dabei die Genehmigung und die nächsten Schritte aus.
+Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angeben, mit denen sie zusammenarbeiten möchten. Sie sollten das [Formular zur Nominierung für integrierte Lösungen](https://aka.ms/AA5qicu) ausfüllen. Das Programmteam für integrierte Lösungen überprüft die Nominierung und antwortet innerhalb von 10 Werktagen. Das Team gibt dabei die Genehmigung und die nächsten Schritte aus.
 
 ## <a name="develop-an-integrated-solution"></a>Entwickeln einer integrierten Lösung
 
@@ -114,4 +114,4 @@ Wenn Ihre Lösung in Microsoft AppSource oder Azure Marketplace live geschaltet 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Erwerb einer integrierten Lösung im Marketplace finden Sie unter [Integrierte Lösungen](./integrated-solutions.md).
+- [Formular zur Nominierung für integrierte Lösungen](https://aka.ms/AA5qicu)

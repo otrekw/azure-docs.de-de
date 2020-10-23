@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611655"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123714"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Verwalten von Azure Data Box und Azure Data Box Heavy über das Azure-Portal
 
@@ -222,8 +222,8 @@ Hier finden Sie die Status für einen Importauftrag.
 |Empfangen     | Ihr Gerät wurde im Azure-Rechenzentrum empfangen und gescannt. <br> Nach Überprüfung der Sendung beginnt das Hochladen der Daten auf dem Gerät.      |
 |Daten kopieren     | Die Daten werden gerade kopiert. Verfolgen Sie den Kopierfortschritt Ihres Auftrags im Azure-Portal. <br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist. |
 |Abgeschlossen       |Der Auftrag wurde erfolgreich abgeschlossen.<br> Vergewissern Sie sich, dass sich Ihre Daten in Azure befinden, bevor Sie die lokalen Daten von Servern löschen.         |
-|Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Fehlern abgeschlossen wurde](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Abgeschlossen mit Warnungen| Das Kopieren der Daten wurde abgeschlossen, Ihre Daten wurden jedoch geändert. Die Daten hatten unkritische Blob- oder Dateinamensfehler, die durch Ändern der Datei- oder Blobnamen behoben wurden. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Beachten Sie sich die Änderungen in Ihren Daten. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Warnungen abgeschlossen wurde](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Fehlern abgeschlossen wurde](./data-box-logs.md#upload-completed-with-errors).   |
+|Abgeschlossen mit Warnungen| Das Kopieren der Daten wurde abgeschlossen, Ihre Daten wurden jedoch geändert. Die Daten hatten unkritische Blob- oder Dateinamensfehler, die durch Ändern der Datei- oder Blobnamen behoben wurden. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Beachten Sie sich die Änderungen in Ihren Daten. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Warnungen abgeschlossen wurde](./data-box-logs.md#upload-completed-with-warnings).   |
 |Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
 |Bereinigung | Die Daten auf den Datenträgern des Geräts werden gelöscht. Die Gerätebereinigung gilt als abgeschlossen, wenn der Auftragsverlauf im Azure-Portal zum Download zur Verfügung steht.|
 
@@ -238,9 +238,9 @@ Hier finden Sie die Status für einen Exportauftrag.
 |Verarbeitet     | Die Auftragsverarbeitung ist abgeschlossen. Gemäß Ihrem Auftrag wird das Gerät für das Kopieren der Daten im Rechenzentrum vorbereitet. Gerätefreigaben werden erstellt.         |
 |Daten werden kopiert     | Die Daten aus dem angegebenen Azure Storage-Konto werden auf das Gerät kopiert. Verfolgen Sie den Kopierfortschritt Ihres Auftrags im Azure-Portal. <br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist. |
 |Kopiervorgang abgeschlossen     | Die Daten aus den angegebenen Azure Storage-Konten wurden auf das Gerät kopiert. In Ihrem Speicherkonto werden eine ausführliche Protokolldatei (wenn diese Option für den Auftrag aktiviert wurde) und ein Kopierprotokoll erstellt. Das ausführliche Protokoll enthält die Informationen zu allen Dateien (Name, Pfad, Berechnungsprüfsumme), die auf das Gerät kopiert wurden. Das Kopierprotokoll enthält die Zusammenfassung des Kopiervorgangs einschließlich einer Liste der Dateien, die aufgrund von Fehlern nicht kopiert werden konnten.<br> Die Daten im Speicherkonto bleiben unverändert. |
-|Kopiervorgang mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Der Kopiervorgang wurde mit Warnungen abgeschlossen| Der Kopiervorgang der Daten aus dem Azure Storage-Konto wurde abgeschlossen, aber die Daten wiesen nicht schwerwiegende Fehler auf. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Notieren Sie sich die nicht schwerwiegenden Fehler. Weitere Informationen finden Sie unter [Upload mit Warnungen abgeschlossen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
-|Fehler beim Kopieren| Der Kopiervorgang der Daten aus dem Azure Storage-Konto ist fehlgeschlagen, und der Auftrag wurde beendet. Es wird kein Gerät versendet.<br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Kopiervorgang mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](./data-box-logs.md#upload-completed-with-errors).   |
+|Der Kopiervorgang wurde mit Warnungen abgeschlossen| Der Kopiervorgang der Daten aus dem Azure Storage-Konto wurde abgeschlossen, aber die Daten wiesen nicht schwerwiegende Fehler auf. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Notieren Sie sich die nicht schwerwiegenden Fehler. Weitere Informationen finden Sie unter [Upload mit Warnungen abgeschlossen](./data-box-logs.md#upload-completed-with-warnings).   |
+|Fehler beim Kopieren| Der Kopiervorgang der Daten aus dem Azure Storage-Konto ist fehlgeschlagen, und der Auftrag wurde beendet. Es wird kein Gerät versendet.<br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](./data-box-logs.md#upload-completed-with-errors).   |
 |Versandt     |Der Auftrag wurde versandt. Verwenden Sie die in Ihrem Auftrag im Portal angezeigte Sendungsverfolgungs-ID, um die Sendung zu verfolgen.        |
 |Geliefert     |Der Auftrag wurde an die im Auftrag angegebene Adresse geliefert.        |
 |Abgeholt     |Ihre Rücksendung wurde vom Zusteller abgeholt und gescannt.         |

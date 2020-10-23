@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3fbb92c2e3623f5fd9571cd94ae521a41139dd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505578"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536986"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Genehmigen von Aktivierungsanforderungen für Mitglieder und Besitzer privilegierter Zugriffsgruppen (Vorschau)
 
@@ -46,7 +46,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Suchen Sie nach der zu genehmigenden Anforderung, und wählen Sie diese aus. Wählen Sie anschließend **Genehmigen** aus.
 
-    ![Anforderungen genehmigen: Bereich zum Genehmigen oder Ablehnen von Anforderungen mit Details und dem Feld „Begründung“](./media/groups-approval-workflow/groups-confirm-approval.png)
+    ![Screenshot: Seite „Anforderungen genehmigen“ mit den hervorgehobenen Schaltflächen „Genehmigen“ und „Bestätigen“](./media/groups-approval-workflow/groups-confirm-approval.png)
 
 1. Geben Sie im Feld **Begründung** die geschäftliche Begründung ein.
 

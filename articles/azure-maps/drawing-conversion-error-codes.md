@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682004"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361533"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Fehler und Warnungen bei der Zeichnungskonvertierung
 
@@ -35,9 +35,9 @@ Da auf der Grundlage einer ungültigen Entität kein Kartenfeature erstellt werd
 
 * Die beiden folgenden Bilder zeigen Beispiele für sich selbst schneidende Polygone:
 
-     ![Beispiel für ein sich selbst schneidendes Polygon](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![Beispiel für ein sich selbst schneidendes Polygon (Beispiel 1)](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![Beispiel für ein sich selbst schneidendes Polygon](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![Beispiel für ein sich selbst schneidendes Polygon (Beispiel 2)](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * Das folgende Bild zeigt eine nicht geschlossene Polylinie: Gehen Sie davon aus, dass in der Schicht nur geschlossene Geometrie unterstützt wird.
 

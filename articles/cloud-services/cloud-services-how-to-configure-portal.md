@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223736"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576658"
 ---
 # <a name="how-to-configure-cloud-services"></a>Konfigurieren von Clouddiensten
 
@@ -48,7 +48,7 @@ Wenn eine Ausrichtung auf eine bestimmte Betriebssystemversion erforderlich ist,
 
 Sie können Ihrem Clouddienst Warnungen hinzufügen. Klicken Sie auf **Einstellungen** > **Warnungsregeln** > **Warnung hinzufügen**.
 
-![Screenshot des Einstellungsbereichs, in dem die Optionen „Warnungsregeln“ und „Warnung hinzufügen“ rot umrandet sind.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![Screenshot des Einstellungsbereichs, in dem die Optionen „Warnungsregeln“ und „Warnung hinzufügen“ rot umrandet sind](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **Metrik** können Sie eine Warnung für die folgenden Datentypen einrichten.
 

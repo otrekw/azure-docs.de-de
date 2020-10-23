@@ -3,12 +3,12 @@ title: Authentifizieren einer Anwendung für den Zugriff auf Azure Event Hubs-Re
 description: Dieser Artikel enthält Informationen zur Authentifizierung einer Anwendung mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91566328"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer Anwendung mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen
 Microsoft Azure bietet eine integrierte Verwaltung der Zugriffssteuerung für Ressourcen und Anwendungen, basierend auf Azure Active Directory (Azure AD). Ein wesentlicher Vorteil der Verwendung von Azure AD mit Azure Event Hubs besteht darin, dass Sie Ihre Anmeldeinformationen nicht mehr im Code speichern müssen. Stattdessen können Sie ein OAuth 2.0-Zugriffstoken von der Microsoft Identity Platform anfordern. Der Ressourcenname zum Anfordern eines Tokens lautet `https://eventhubs.azure.net/`. (Für Kafka-Clients ist die Ressource zum Anfordern eines Tokens `https://<namespace>.servicebus.windows.net`.) Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD ein Zugriffstoken an die Anwendung zurück, und die Anwendung kann dann das Zugriffstoken zum Autorisieren von Anforderungen an Azure Event Hubs verwenden.
@@ -24,6 +24,8 @@ Azure stellt die folgenden integrierten Azure-Rollen zum Autorisieren des Zugrif
 - [Azure Event Hubs-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Mit dieser Rolle gewähren Sie Vollzugriff auf Event Hubs-Ressourcen.
 - [Azure Event Hubs-Datensender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Mit dieser Rolle gewähren Sie Sendezugriff auf Event Hubs-Ressourcen.
 - [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Mit dieser Rolle gewähren Sie Empfangszugriff auf Event Hubs-Ressourcen.   
+
+Informationen zu den integrierten Rollen für die Schemaregistrierung finden Sie unter [Schemaregistrierungsrollen](schema-registry-overview.md#role-based-access-control).
 
 > [!IMPORTANT]
 > In unserer Vorschauversion wurde das Hinzufügen von Event Hubs-Datenzugriffsberechtigungen für die Rollen „Besitzer“ und „Mitwirkender“ unterstützt. Datenzugriffsberechtigungen für die Rollen „Besitzer“ und „Mitwirkender“ werden jedoch nicht mehr berücksichtigt. Wenn Sie die Rolle „Besitzer“ oder „Mitwirkender“ verwenden, wechseln Sie zur Verwendung der Rolle „Azure Event Hubs-Datenbesitzer“.

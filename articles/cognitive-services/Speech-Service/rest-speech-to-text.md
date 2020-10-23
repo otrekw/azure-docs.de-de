@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532516"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
 Als Alternative zum [Speech SDK](speech-sdk.md) ermöglicht der Speech-Dienst das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten. Die Möglichkeiten der REST-API sind stark eingeschränkt. Daher sollte die REST-API nur verwendet werden, wenn das [Speech SDK](speech-sdk.md) nicht verwendet werden kann.
 
-Vor der Verwendung der Spracherkennungs-REST-API müssen Sie Folgendes verstanden haben:
+Beachten Sie Folgendes, bevor Sie die Spracherkennungs-REST-API verwenden:
 
 * Anforderungen, die die REST-API verwenden und Audiodaten direkt übertragen, dürfen nur bis zu 60 Sekunden Audiodaten enthalten.
 * Die Spracherkennung-REST-API gibt nur Endergebnisse zurück. Teilergebnisse werden nicht bereitgestellt.
 
 Wenn das Senden von längerem Audio eine Anforderung für Ihre Anwendung ist, verwenden Sie das [Speech SDK](speech-sdk.md) oder eine dateibasierte REST-API wie die [Batchtranskription](batch-transcription.md).
+
+> [!TIP]
+> Informationen zu Endpunkten zur Government-Cloud (FairFax) finden Sie in der [Azure Government-Dokumentation](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 

@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715411"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149029"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
+[Azure App Service](./overview.md) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -96,11 +96,11 @@ Führen Sie den folgenden CLI-Befehl aus, um Standardauthentifizierungszugriff a
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Um zu bestätigen, dass die Anmeldeinformationen für das Veröffentlichungsprofil für WebDeploy blockiert werden, versuchen Sie, eine [Web-App mit Visual Studio 2019 zu veröffentlichen](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Um zu bestätigen, dass die Anmeldeinformationen für das Veröffentlichungsprofil für WebDeploy blockiert werden, versuchen Sie, eine [Web-App mit Visual Studio 2019 zu veröffentlichen](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 ### <a name="disable-access-to-the-api"></a>Deaktivieren des Zugriffs auf die API
 
-Die API im vorherigen Abschnitt basiert auf rollenbasierter Zugriffssteuerung von Azure (Azure RBAC). Das bedeutet, dass Sie eine [benutzerdefinierte Rolle erstellen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) und der Rolle Benutzer mit niedrigeren Berechtigungen zuweisen können, sodass diese keine Standardauthentifizierung für beliebige Websites aktivieren können. Um die benutzerdefinierte Rolle zu konfigurieren, [befolgen Sie diese Anweisungen](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Die API im vorherigen Abschnitt basiert auf rollenbasierter Zugriffssteuerung von Azure (Azure RBAC). Das bedeutet, dass Sie eine [benutzerdefinierte Rolle erstellen](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) und der Rolle Benutzer mit niedrigeren Berechtigungen zuweisen können, sodass diese keine Standardauthentifizierung für beliebige Websites aktivieren können. Um die benutzerdefinierte Rolle zu konfigurieren, [befolgen Sie diese Anweisungen](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 Sie können auch [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) verwenden, um alle erfolgreichen Authentifizierungsanforderungen zu überwachen, sowie [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy), um diese Konfiguration für alle Standorte in Ihrem Abonnement zu erzwingen.
 

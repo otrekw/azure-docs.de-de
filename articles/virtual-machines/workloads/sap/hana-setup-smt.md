@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616992"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541151"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Einrichten eines SMT-Servers für SUSE Linux
 SAP HANA-Einheiten (große Instanzen) haben keine direkte Verbindung mit dem Internet. Daher ist das Registrieren einer solchen Einheit beim Betriebssystemanbieter und das Herunterladen und Anwenden von Updates kein ganz einfacher Vorgang. Eine mögliche Lösung für SUSE Linux ist die Einrichtung eines SMT-Servers auf einem virtuellen Azure-Computer. Hosten Sie den virtuellen Computer in einem virtuellen Azure-Netzwerk, das mit der HANA-Einheit (große Instanzen) verbunden ist. Mit einem SMT-Server dieser Art kann die HANA-Einheit (große Instanzen) Updates registrieren und herunterladen. 
@@ -44,7 +44,7 @@ Der bereitgestellte virtuelle Computer ist kleiner und hat im virtuellen Azure-N
 
 Fügen Sie einen Datenträger an den virtuellen Computer an. Sie benötigen diesen Datenträger zum Speichern der Updates, und der Startdatenträger ist dafür möglicherweise zu klein. Hier wurde der Datenträger unter „/srv/www/htdocs“ bereitgestellt, wie im folgenden Screenshot gezeigt. Ein Datenträger mit 100 GB sollte hierfür ausreichen.
 
-![Screenshot der VM-Bereitstellung für den SMT-Server](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![Screenshot: Hinzugefügter Datenträger im PuTTY-Fenster](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 Melden Sie sich bei der HANA-Einheit bzw. den HANA-Einheiten (große Instanzen) an, verwalten Sie „/etc/hosts“, und überprüfen Sie, ob Sie den virtuellen Azure-Computer erreichen können, auf dem der SMT-Server über das Netzwerk ausgeführt werden soll.
 

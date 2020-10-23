@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613712"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203091"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -276,7 +276,7 @@ Wenn die Installation erfolgreich war, sollte die importierte Bibliothek wie auf
 Wenn der Cluster mit einer Nicht-ML-Runtime 7.1 oder höher für Databricks erstellt wurde, führen Sie den folgenden Befehl in der ersten Zelle Ihres Notebooks aus, um das AML SDK zu installieren.
 
 ```
-%pip install -r https://aka.ms/automl_linux_requirements.txt
+%pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
 ```
 Für eine Nicht-ML-Runtime 7.0 oder niedriger für Databricks installieren Sie das AML SDK mithilfe des [init-Skripts](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
 

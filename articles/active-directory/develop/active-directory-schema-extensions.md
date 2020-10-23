@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115610"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631272"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Verwenden von Verzeichnisschema-Erweiterungsattributen in Ansprüchen
 
@@ -35,7 +35,7 @@ Der Bezeichner für ein Verzeichnisschema-Erweiterungsattribut hat die Form *Ext
 Verzeichnisschema-Erweiterungsattribute können auf zweierlei Art und Weise registriert und aufgefüllt werden:
 
 - Konfigurieren von AD Connect zum Erstellen der Attribute und zum Synchronisieren der enthaltenen Daten aus dem lokalem Active Directory. Informationen hierzu finden Sie unter [Azure AD Connect Sync: Verzeichniserweiterungen](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
-- Verwenden von Microsoft Graph zum Registrieren der Attribute, zum Festlegen der Werte und zum Lesen der Verzeichnisschema-Erweiterungsattribute (siehe [Verzeichnisschemaerweiterungen | Graph-API Konzepte](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) und/oder PowerShell+ [Verwalten von Erweiterungsattributen mit Azure AD PowerShell-Cmdlets](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)).
+- Verwenden von Microsoft Graph für die Registrierung, Festlegen der Werte und Lesen aus [Schemaerweiterungen](/graph/extensibility-overview). [PowerShell-Cmdlets](/powershell/azure/active-directory/using-extension-attributes-sample) sind ebenfalls verfügbar.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Ausgeben von Ansprüchen mit Daten aus den mit AD Connect erstellten Verzeichnisschema-Erweiterungsattributen
 Mit AD Connect erstellte und synchronisierte Verzeichnisschema-Erweiterungsattribute sind immer der Anwendungs-ID zugeordnet, die von AD Connect verwendet wird. Sie können diese Attribute als Quelle für Ansprüche verwenden, indem Sie sie in der Portalumgebung für SAML-Anwendungen (in der Konfigurationsumgebung der Katalog- oder Nicht-Katalog-Anwendung unter **Unternehmensanwendungen** registriert) bei der Konfiguration der **Unternehmensanwendungen** als Ansprüche konfigurieren, oder indem Sie eine Richtlinie zum Zuordnen von Ansprüchen für Anwendungen verwenden, die in der Anwendungsregistrierungsumgebung registriert wurden.  Sobald sich ein über AD Connect erstelltes Verzeichniserweiterungsattribut im Verzeichnis befindet, wird es auf der Benutzeroberfläche für die SAML-SSO-Anspruchskonfiguration angezeigt.
@@ -58,7 +58,7 @@ Nachfolgend finden Sie beispielsweise eine Richtlinie für die Anspruchszuordnun
                 "Source": "User",
                 "ExtensionID": "extension_xxxxxxx_test",
                 "JWTClaimType": "http://schemas.contoso.com/identity/claims/exampleclaim"
-            }, 
+            },
         ]
     }
 }
@@ -72,5 +72,5 @@ Dabei ist *xxxxxxx* die Anwendungs-ID, mit der die Erweiterung registriert wurde
 > Der Parameter „Id“ im Anspruchsschema, das für integrierte Verzeichnisattribute verwendet wird, lautet „ExtensionID“ für Verzeichniserweiterungsattribute.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informationen zum [Hinzufügen benutzerdefinierter oder zusätzlicher Ansprüche zu den SAML 2.0- und JWT-Token (JSON Web Token)](active-directory-optional-claims.md). 
+- Informationen zum [Hinzufügen benutzerdefinierter oder zusätzlicher Ansprüche zu den SAML 2.0- und JWT-Token (JSON Web Token)](active-directory-optional-claims.md).
 - Informationen zum [Anpassen von Ansprüchen, die in Token für eine bestimmte App ausgegeben werden](active-directory-claims-mapping.md).

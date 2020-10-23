@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979415"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91447006"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -146,7 +146,7 @@ Es können nur ausstehende Anforderungen abgebrochen werden, die noch nicht übe
     | P1 | Bestimmte Benutzer und Gruppen in Ihrem Verzeichnis ODER bestimmte verbundene Organisationen |
     | P2 | Alle Mitglieder in Ihrem Verzeichnis (Gastbenutzer ausgeschlossen) |
     | P3 | Alle Benutzer in Ihrem Verzeichnis (Gastbenutzer eingeschlossen) ODER bestimmte verbundene Organisationen |
-    | P4 | Alle verbundenen Organisationen ODER alle Benutzer (alle verbundenen Organisationen und neue externe Benutzer) |
+    | P4 | Alle konfigurierten verbundenen Organisationen ODER alle Benutzer (alle verbundenen Organisationen und neue externe Benutzer) |
     
     Fällt eine Richtlinie in eine Kategorie mit höherer Priorität, werden die Kategorien mit niedrigerer Priorität ignoriert. Ein Beispiel dafür, wie dem Anforderer mehrere Richtlinien mit gleicher Priorität angezeigt werden, finden Sie unter [Auswählen einer Richtlinie](entitlement-management-request-access.md#select-a-policy).
 

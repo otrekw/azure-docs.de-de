@@ -8,19 +8,77 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907619"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530673"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
 
 
-In diesem Artikel wird beschrieben, wie Sie Azure Machine Learning-Pipelines und -Bereitstellungen mit Visual Studio Code (VS Code) und [debugpy](https://github.com/microsoft/debugpy/) interaktiv debuggen.
+In diesem Artikel wird beschrieben, wie Sie Azure Machine Learning-Experimente, -Pipelines und -Bereitstellungen mit Visual Studio Code (VS Code) und [debugpy](https://github.com/microsoft/debugpy/) interaktiv debuggen.
+
+## <a name="run-and-debug-experiments-locally"></a>Lokales Ausführen und Debuggen von Experimenten
+
+Verwenden Sie die Azure Machine Learning-Erweiterung zum Überprüfen, Ausführen und Debuggen Ihrer Machine Learning-Experimente, bevor Sie sie an die Cloud senden.
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+* Azure Machine Learning-Erweiterung für VS Code (Vorschau). Weitere Informationen finden Sie unter [Einrichten der Azure Machine Learning-Erweiterung für VS Code](tutorial-setup-vscode-extension.md).
+* [Docker](https://www.docker.com/get-started)
+  * Docker Desktop für Mac und Windows
+  * Docker-Engine für Linux.
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> Stellen Sie unter Windows sicher, dass Sie [in Docker konfigurieren, dass Linux-Container verwendet werden](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+> [!TIP]
+> Für Windows wird die Verwendung von [Docker mit dem Windows-Subsystem für Linux (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop) dringend empfohlen, auch wenn dies nicht erforderlich ist.
+
+> [!IMPORTANT]
+> Bevor Sie Ihr Experiment lokal ausführen, stellen Sie sicher, dass Docker ausgeführt wird.
+
+### <a name="debug-experiment-locally"></a>Lokales Debuggen eines Experiments
+
+1. Öffnen Sie in VS Code die Azure Machine Learning-Erweiterung.
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält. Wenn Sie noch keines haben, können Sie [mit der Erweiterung einen Azure Machine Learning-Arbeitsbereich erstellen](how-to-manage-resources-vscode.md#create-a-workspace).
+1. Erweitern Sie den Arbeitsbereichsknoten.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten **Experiments** (Experimente), und wählen Sie **Create experiment** (Experiment erstellen) aus. Geben Sie in der Eingabeaufforderung einen Namen für das Experiment ein.
+1. Erweitern Sie den Knoten **Experiments** (Experimente), und klicken Sie mit der rechten Maustaste auf das Experiment, das Sie ausführen möchten. Klicken Sie anschließend auf **Run Experiment** (Experiment ausführen).
+1. Wählen Sie in der Liste der Optionen zum Ausführen des Experiments **Locally** (Lokal) aus.
+1. **Nur bei erstmaliger Verwendung unter Windows:** Wenn Sie aufgefordert werden, die Dateifreigabe zuzulassen, wählen Sie **Yes** (Ja) aus. Wenn Sie die Dateifreigabe aktivieren, kann Docker das Verzeichnis mit dem Skript in den Container einbinden. Außerdem kann Docker so die Protokolle und Ausgaben Ihrer Ausführung in einem temporären Verzeichnis auf Ihrem System speichern.
+1. Wählen Sie **Yes** aus, um das Experiment zu Debuggen. Klicken Sie andernfalls auf **Nein**. Wenn Sie „No“ auswählen, wird das Experiment lokal ohne Anfügen an den Debugger ausgeführt.
+1. Klicken Sie auf **Create new Run Configuration** (Neue Laufzeitkonfiguration erstellen), um Ihre Laufzeitkonfiguration zu erstellen. Die Laufzeitkonfiguration definiert das Skript, das Sie ausführen möchten, sowie Abhängigkeiten und verwendete Datasets. Wenn Sie bereits über eine Laufzeitkonfiguration verfügen, wählen Sie diese aus der Dropdownliste aus.
+    1. Wählen Sie Ihre Umgebung aus. Sie können eine beliebige [von Azure Machine Learning vorgeschlagene Umgebung](resource-curated-environments.md) wählen oder eine eigene erstellen.
+    1. Geben Sie den Namen des Skripts an, das Sie ausführen möchten. Der Pfad ist relativ zum Verzeichnis, das in VS Code geöffnet ist.
+    1. Wählen Sie aus, ob Sie ein Azure Machine Learning-Dataset verwenden möchten. Mithilfe der Erweiterung können Sie [Azure Machine Learning-Datasets](how-to-manage-resources-vscode.md#create-dataset) erstellen.
+    1. Debugpy ist erforderlich, um den Debugger an den Container anzufügen, der Ihr Experiment ausführt. Klicken Sie auf **Add debugpy** (Debugpy hinzufügen), um debugpy als Abhängigkeit hinzuzufügen. Klicken Sie andernfalls auf **Skip** (Überspringen). Wenn Sie debugpy nicht als Abhängigkeit hinzufügen, wird das Experiment ohne Anfügen an den Debugger ausgeführt.
+    1. Eine Konfigurationsdatei mit den Einstellungen für die Laufzeitkonfiguration wird im Editor geöffnet. Wenn Sie mit den Einstellungen zufrieden sind, klicken Sie auf **Submit experiment** (Experiment übermitteln). Öffnen Sie alternativ die Befehlspalette (**View > Command Palette**; Ansicht > Befehlspalette) in der Menüleiste, und geben Sie den Befehl `Azure ML: Submit experiment` in das Textfeld ein.
+1. Nachdem das Experiment übermittelt wurde, wird ein Docker-Image erstellt, das Ihr Skript und die in der Laufzeitkonfiguration angegebenen Konfigurationen enthält.
+
+    Wenn der Buildprozess für das Docker-Image beginnt, wird der Inhalt der `60_control_log.txt`-Datei an die Ausgabekonsole in VS Code gestreamt.
+
+    > [!NOTE]
+    > Wenn das Docker-Image zum ersten Mal erstellt wird, kann das mehrere Minuten in Anspruch nehmen.
+
+1. Nachdem das Image erstellt wurde, wird eine Eingabeaufforderung angezeigt, um den Debugger zu starten. Legen Sie die Breakpoints in Ihrem Skript fest, und klicken Sie auf **Start debugger** (Debugger starten), wenn Sie mit dem Debuggen beginnen möchten. Dadurch wird der VS Code-Debugger an den Container angefügt, der das Experiment ausgeführt hat. Alternativ können Sie in der Azure Machine Learning-Erweiterung mit dem Mauszeiger auf den Knoten für die aktuelle Ausführung zeigen und auf das Wiedergabesymbol klicken, um den Debugger zu starten.
+
+    > [!IMPORTANT]
+    > Für ein einzelnes Experiment können nicht mehrere Debugsitzungen gleichzeitig vorhanden sein. Sie können jedoch zwei oder mehr Experimente mithilfe mehrerer VS Code-Instanzen debuggen.
+
+Jetzt sollten Sie in der Lage sein, Ihren Code mit VS Code schrittweise zu durchlaufen und zu debuggen.
+
+Wenn Sie an einem beliebigen Punkt die Ausführung abbrechen möchten, klicken Sie mit der rechten Maustaste auf den Ausführungsknoten, und klicken Sie auf **Cancel run** (Ausführung abbrechen).
+
+Ähnlich wie bei Remoteexperimentausführungen können Sie den Ausführungsknoten erweitern, um die Protokolle und Ausgaben anzuzeigen.
+
+> [!TIP]
+> Docker-Images, die dieselben Abhängigkeiten verwenden, die in Ihrer Umgebung definiert sind, werden zwischen den Ausführungen wiederverwendet. Wenn Sie ein Experiment jedoch mit einer neuen oder einer anderen Umgebung ausführen, wird ein neues Image erstellt. Da diese Images in Ihrem lokalen Speicher gespeichert werden, wird empfohlen, alte oder nicht verwendete Docker-Images zu löschen. Verwenden Sie zum Entfernen von Images aus Ihrem System die [Docker-CLI](https://docs.docker.com/engine/reference/commandline/rmi/) oder die [Docker-Erweiterung für VS Code](https://code.visualstudio.com/docs/containers/overview).
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 
@@ -281,7 +339,7 @@ Speichern Sie den Wert von `ip_address`. Sie werden im nächsten Abschnitt verwe
 In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Python-Code ggf. interaktiv debuggen. Dies ist beispielsweise der Fall, wenn das Einstiegsskript fehlschlägt und der Grund nicht durch zusätzliche Protokollierung ermittelt werden kann. Mit VS Code und debugpy können Sie Elemente an den Code anfügen, der im Docker-Container ausgeführt wird.
 
 > [!IMPORTANT]
-> Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.
+> Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.
 
 Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Weitere Informationen zum Verwenden von Docker finden Sie in der [Docker-Dokumentation](https://docs.docker.com/). Beachten Sie bei Verwendung von Compute-Instanzen, dass Docker bereits installiert ist.
 
@@ -416,7 +474,7 @@ Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation 
 
 An diesem Punkt stellt VS Code eine Verbindung mit debugpy im Docker-Container her und hält an dem von Ihnen zuvor festgelegten Breakpoint an. Sie können den Code jetzt während der Ausführung schrittweise durchlaufen, Variablen anzeigen usw.
 
-Weitere Informationen zum Verwenden von VS Code zum Debuggen von Python finden Sie unter [Debuggen von Python-Code](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+Weitere Informationen zum Verwenden von VS Code zum Debuggen von Python finden Sie unter [Debuggen von Python-Code](https://code.visualstudio.com/docs/python/debugging).
 
 ### <a name="stop-the-container"></a>Beenden des Containers
 
@@ -428,6 +486,6 @@ docker stop debug
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Visual Studio Code Remote eingerichtet haben, können Sie eine Compute-Instanz als Remotecompute-Instanz aus Visual Studio Code verwenden, um den Code interaktiv zu debuggen. 
+Nachdem Sie die VS Code-Remoteerweiterung eingerichtet haben, können Sie eine Compute-Instanz als Remotecompute-Instanz über VS Code verwenden, um den Code interaktiv zu debuggen. 
 
 [Tutorial: Trainieren Ihres ersten ML-Modells](tutorial-1st-experiment-sdk-train.md) zeigt, wie eine Compute-Instanz mit einem integrierten Notebook verwendet wird.

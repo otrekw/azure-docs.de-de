@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993613"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340868"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Verbinden Ihrer Nicht-Azure-Computer mit Security Center
 
@@ -86,7 +86,7 @@ Zum Hinzufügen von Azure Stack-VMs benötigen Sie die Informationen auf der Sei
 1. Melden Sie sich bei Ihrem **Azure Stack**-Portal an, und öffnen Sie die Seite **Virtuelle Computer**.
 1. Wählen Sie den virtuellen Computer aus, der mit Security Center geschützt werden soll.
     >[!TIP]
-    > Informationen zum Erstellen einer VM in Azure Stack finden Sie im [Schnellstart für Windows-VMs ](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) oder im [Schnellstart für Linux-VMs](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
+    > Informationen zum Erstellen einer VM in Azure Stack finden Sie im [Schnellstart für Windows-VMs ](/azure-stack/user/azure-stack-quick-windows-portal) oder im [Schnellstart für Linux-VMs](/azure-stack/user/azure-stack-quick-linux-portal).
 1. Wählen Sie **Erweiterungen**. Die Liste der auf dieser VM installierten VM-Erweiterungen wird angezeigt.
 1. Wählen Sie die Registerkarte **Hinzufügen** aus. Im Menü **Neue Ressource** wird eine Liste der verfügbaren VM-Erweiterungen angezeigt.
 1. Wählen Sie die Erweiterung **Azure Monitor-, Update- und Konfigurationsverwaltung** und dann **Erstellen** aus. Die Konfigurationsseite **Erweiterung installieren** wird geöffnet.

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575570"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122465"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box (Vorschau)
 
@@ -164,7 +164,7 @@ Wenn Sie **XML-Datei verwenden** auswählen, können Sie bestimmte Container und
 2. Wählen Sie **+ Container**, um einen Container zu erstellen.
     ![Screenshot des Abschnitts „Container“](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. Fügen Sie auf der Registerkarte **Neuer Container**, die auf der rechten Seite des Azure-Portals angezeigt wird, einen Namen für den Container hinzu. Der Name darf nur Kleinbuchstaben enthalten, und Sie können Zahlen und Bindestriche „-“ einschließen. Wählen Sie dann im Dropdownlistenfeld die **Öffentliche Zugriffsebene** aus. Sie sollten **Privat (nicht anonymer Zugriff)** auszuwählen, um andere Personen am Zugriff auf Ihre Daten zu hindern. Weitere Informationen zu Zugriffsebenen für Container finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
+3. Fügen Sie auf der Registerkarte **Neuer Container**, die auf der rechten Seite des Azure-Portals angezeigt wird, einen Namen für den Container hinzu. Der Name darf nur Kleinbuchstaben enthalten, und Sie können Zahlen und Bindestriche „-“ einschließen. Wählen Sie dann im Dropdownlistenfeld die **Öffentliche Zugriffsebene** aus. Sie sollten **Privat (nicht anonymer Zugriff)** auszuwählen, um andere Personen am Zugriff auf Ihre Daten zu hindern. Weitere Informationen zu Zugriffsebenen für Container finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
    ![Screenshot der Registerkarte „Neuer Container“, bei dem die Option „Privat (kein anonymer Zugriff)“ ausgewählt ist](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
@@ -228,7 +228,7 @@ Der folgende XML-Code ist ein Beispiel für Blobnamen, Blobpräfixe und Azure-Da
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
+   <!-- BlobList/prefix/Container list for Blob storage for export  -->
    <BlobList>
       <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
       <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
@@ -237,7 +237,7 @@ Der folgende XML-Code ist ein Beispiel für Blobnamen, Blobpräfixe und Azure-Da
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

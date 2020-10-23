@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242745"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530543"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Lokales Debuggen von Azure-Funktionen mit Event Grid-Trigger
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 Während das Hilfsprogramm eingerichtet wird, sollte das Befehlsfenster in etwa wie im folgenden Screenshot aussehen:
 
-![ngrok starten](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Screenshot: Eingabeaufforderung nach dem Start des Hilfsprogramms „ngrok“](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 Kopieren Sie die **HTTPS**-URL, die beim Ausführen von *ngrok* generiert wird. Dieser Wert wird beim Konfigurieren des Event Grid-Ereignisendpunkts verwendet.
 

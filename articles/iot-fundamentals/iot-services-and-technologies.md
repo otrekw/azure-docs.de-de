@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977560"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206083"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Welche Azure-Technologien und -Dienste können Sie zum Erstellen von IoT-Lösungen verwenden?
 
@@ -61,7 +61,7 @@ Sie können die Art, wie Sie den eingebetteten Code für Ihre Geräte erstellen,
 
 Mit [Azure IoT Edge](../iot-edge/about-iot-edge.md) können Sie Teile ihrer IoT-Arbeitsauslastung von Ihren Azure-Clouddiensten auf Ihre Geräte auslagern. IoT Edge kann die Latenz in Ihrer Lösung verringern sowie die Datenmenge, die Ihre Geräte mit der Cloud austauschen, und Offlineszenarien aktivieren. Sie können IoT Edge-Geräte über IoT Central und einige Solution Accelerators verwalten.
 
-[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) ist eine abgesicherte Anwendungsplattform auf hoher Ebene mit integrierten Kommunikations- und Sicherheitsfunktionen für mit dem Internet verbundene Geräte. Sie umfasst einen geschützten Mikrocontroller, ein spezielles Linux-basiertes Betriebssystem sowie einen cloudbasierten Sicherheitsdienst, der für kontinuierliche und erneuerbare Sicherheit sorgt.
+[Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) ist eine abgesicherte Anwendungsplattform auf hoher Ebene mit integrierten Kommunikations- und Sicherheitsfunktionen für mit dem Internet verbundene Geräte. Sie umfasst einen geschützten Mikrocontroller, ein spezielles Linux-basiertes Betriebssystem sowie einen cloudbasierten Sicherheitsdienst, der für kontinuierliche und erneuerbare Sicherheit sorgt.
 
 ### <a name="cloud-connectivity"></a>Cloudkonnektivität
 
@@ -76,7 +76,7 @@ IoT Hub ist eine Kernkomponente der Solution Accelerators, mit der Sie Herausfor
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>Überbrückung der Lücke zwischen der physischen und digitalen Welt
 
-[Azure Digital Twins](../digital-twins/about-digital-twins.md) ist ein IoT-Dienst, mit dem Sie Modelle einer physischen Umgebung erstellen können. Mit dem bereitgestellten Raumintelligenzgraphen können Beziehungen zwischen Personen, Bereichen und Geräten modelliert werden. Das Korrellieren von Daten aus der digitalen und physischen Welt ermöglicht die Erstellung kontextbezogener Lösungen.
+[Azure Digital Twins](../digital-twins/overview.md) ist ein IoT-Dienst, mit dem Sie Modelle einer physischen Umgebung erstellen können. Mit dem bereitgestellten Raumintelligenzgraphen können Beziehungen zwischen Personen, Bereichen und Geräten modelliert werden. Das Korrellieren von Daten aus der digitalen und physischen Welt ermöglicht die Erstellung kontextbezogener Lösungen.
 
 IoT Central verwendet digitale Zwillinge zum Synchronisieren von Geräten und Daten in der realen Welt mit den digitalen Modellen, die Benutzern ermöglichen, diese verbundenen Geräte zu überwachen und zu verwalten.
 
@@ -84,7 +84,7 @@ IoT Central verwendet digitale Zwillinge zum Synchronisieren von Geräten und Da
 
 IoT-Geräte generieren in der Regel große Mengen an Zeitreihendaten, z. B. Temperaturmessungen von Sensoren. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) kann eine Verbindung mit einem IoT Hub herstellen, den Telemetriedatenstrom von Ihren Geräten lesen, diese Daten speichern und Ihnen deren Abfrage und Visualisierung ermöglichen.
 
-[Azure Maps](/azure/azure-maps) ist eine Sammlung von Geodiensten, bei denen aktuelle Kartendaten verwendet werden, um einen präzisen geografischen Kontext für Webanwendungen und mobile Anwendungen bereitzustellen. Sie können für die Erstellung Ihrer Anwendungen eine REST-API, ein webbasiertes JavaScript-Steuerelement oder ein Android SDK verwenden.
+[Azure Maps](../azure-maps/index.yml) ist eine Sammlung von Geodiensten, bei denen aktuelle Kartendaten verwendet werden, um einen präzisen geografischen Kontext für Webanwendungen und mobile Anwendungen bereitzustellen. Sie können für die Erstellung Ihrer Anwendungen eine REST-API, ein webbasiertes JavaScript-Steuerelement oder ein Android SDK verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396687"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Leitfaden zum Einrichten eines Windows-Vorlagencomputers in Azure Lab Services
 
@@ -61,7 +61,7 @@ Wenn Sie mit einem Computer arbeiten, der Active Directory nicht verwendet, kön
 
 Wenn Ihr virtueller Computer mit Active Directory verbunden ist, können Sie den Vorlagencomputer so festlegen, dass die Kursteilnehmer automatisch aufgefordert werden, bekannte Ordner in OneDrive zu verschieben.  
 
-Sie müssen zunächst Ihre Office-Mandanten-ID abrufen.  Weitere Anweisungen finden Sie unter [Ermitteln Ihrer Office 365-Mandanten-ID](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  Sie können die Office 365-Mandanten-ID auch mit den folgenden PowerShell-Befehlen abrufen.
+Sie müssen zunächst Ihre Organisations-ID abrufen.  Weitere Anweisungen finden Sie unter [Abrufen Ihrer Microsoft 365-Organisations-ID](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  Sie können die Organisations-ID auch mit den folgenden PowerShell-Befehlen abrufen.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -71,7 +71,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Sobald Ihre Office 365-Mandanten-ID bekannt ist, legen Sie für OneDrive mithilfe des folgenden PowerShell-Befehls fest, dass eine Aufforderung zum Verschieben bekannter Ordner in OneDrive erfolgt.
+Wenn Sie über Ihre Organisations-ID verfügen, legen Sie für OneDrive über den folgenden PowerShell-Befehl fest, dass eine Aufforderung zum Verschieben bekannter Ordner in OneDrive angezeigt wird.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -95,7 +95,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="silently-sign-in-users-to-onedrive"></a>Automatisches Anmelden von Benutzern bei OneDrive
 
-OneDrive kann so eingerichtet werden, dass die Anmeldung automatisch mit Windows-Anmeldeinformationen des angemeldeten Benutzers erfolgt.  Die automatische Anmeldung ist nützlich für Kurse, bei denen sich Kursteilnehmer mit den Anmeldeinformationen ihrer Schule oder Universität für Office 365 anmelden.
+OneDrive kann so eingerichtet werden, dass die Anmeldung automatisch mit Windows-Anmeldeinformationen des angemeldeten Benutzers erfolgt.  Die automatische Anmeldung ist nützlich für Kurse, bei denen sich Kursteilnehmer mit ihren Schul- oder Unianmeldeinformationen anmelden.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -115,7 +115,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Maximale Größe einer Datei festlegen, die automatisch heruntergeladen wird
 
-Diese Einstellung wird in Verbindung mit der unbeaufsichtigten Anmeldung von Benutzern beim OneDrive-Synchronisierungsclient mit ihren Windows-Anmeldeinformationen auf Geräten verwendet, auf denen „OneDrive-Dateien bei Bedarf“ nicht aktiviert ist. Jeder Benutzer, der über einen OneDrive-Speicher verfügt, der größer als der angegebene Schwellenwert (in MB) ist, wird aufgefordert, die Ordner auszuwählen, die synchronisiert werden sollen, bevor der OneDrive-Synchronisierungsclient („OneDrive.exe“) die Dateien herunterlädt.  In unserem Beispiel ist „1111-2222-3333-4444“ die Office 365-Mandanten-ID, und 0005000 legt einen Schwellenwert von 5 GB fest.
+Diese Einstellung wird in Verbindung mit der unbeaufsichtigten Anmeldung von Benutzern beim OneDrive-Synchronisierungsclient mit ihren Windows-Anmeldeinformationen auf Geräten verwendet, auf denen „OneDrive-Dateien bei Bedarf“ nicht aktiviert ist. Jeder Benutzer, der über einen OneDrive-Speicher verfügt, der größer als der angegebene Schwellenwert (in MB) ist, wird aufgefordert, die Ordner auszuwählen, die synchronisiert werden sollen, bevor der OneDrive-Synchronisierungsclient („OneDrive.exe“) die Dateien herunterlädt.  Im folgenden Beispiel ist „1111-2222-3333-4444“ die Organisations-ID, und mit „0005000“ wird ein Schwellenwert von 5 GB festgelegt.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -124,23 +124,23 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Installieren und Konfigurieren von Microsoft Office 365
+## <a name="install-and-configure-microsoft-365"></a>Installieren und Konfigurieren von Microsoft 365
 
-### <a name="install-microsoft-office-365"></a>Installieren von Microsoft Office 365
+### <a name="install-microsoft-365"></a>Installieren von Microsoft 365
 
-Wenn Ihr Vorlagencomputer Office benötigt, empfehlen wir die Installation von Office über das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117 ). Sie müssen eine wiederverwendbare Konfigurationsdatei mit dem [Office 365-Clientkonfigurationsdienst](https://config.office.com/) erstellen, um die Architektur, die erforderlichen Features von Office und die Updatehäufigkeit auszuwählen.
+Wenn Ihr Vorlagencomputer Office benötigt, empfehlen wir die Installation von Office über das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117). Sie müssen im [Microsoft 365 Apps Admin Center](https://config.office.com/) eine wiederverwendbare Konfigurationsdatei erstellen, um die Architektur, die benötigten Office-Features und die Updatehäufigkeit auszuwählen.
 
-1. Navigieren Sie zum [Office 365-Clientkonfigurationsdienst](https://config.office.com/), und laden Sie Ihre eigene Konfigurationsdatei herunter.
+1. Navigieren Sie zum [Microsoft 365 Apps Admin Center](https://config.office.com/), und laden Sie Ihre eigene Konfigurationsdatei herunter.
 2. Laden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117) herunter.  Die heruntergeladene Datei trägt den Namen `setup.exe`.
 3. Führen Sie `setup.exe /download configuration.xml` aus, um Office-Komponenten herunterzuladen.
 4. Führen Sie `setup.exe /configure configuration.xml` aus, um Office-Komponenten zu installieren.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Ändern des Microsoft Office 365-Updatekanals
+### <a name="change-the-microsoft-365-update-channel"></a>Ändern des Microsoft 365-Updatekanals
 
-Mit dem Office-Konfigurationstool können Sie festlegen, wie häufig Office Updates erhält. Wenn Sie ändern müssen, wie häufig Office nach der Installation Updates erhält, können Sie die URL des Updatekanals ändern. Die URL-Adressen für den Updatekanal finden Sie unter [Ändern des Office 365 ProPlus-Updatekanals für Geräte in Ihrer Organisation](https://docs.microsoft.com/deployoffice/change-update-channels). Im folgenden Beispiel wird gezeigt, wie Office 365 für die Verwendung des monatlichen Updatekanals eingerichtet wird.
+Mit dem Office-Konfigurationstool können Sie festlegen, wie häufig Office Updates erhält. Wenn Sie ändern müssen, wie häufig Office nach der Installation Updates erhält, können Sie die URL des Updatekanals ändern. Die URL-Adressen für den Updatekanal finden Sie unter [Ändern des Updatekanals für Microsoft 365 Apps für Geräte in Ihrer Organisation](https://docs.microsoft.com/deployoffice/change-update-channels). Im folgenden Beispiel wird gezeigt, wie Sie Microsoft 365 für die Verwendung des monatlichen Updatekanals einrichten.
 
 ```powershell
-# Update to the Office 365 Monthly Channel
+# Update to the Microsoft 365 Monthly Channel
 Set-ItemProperty
     -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration\CDNBaseUrl"
     -Name "CDNBaseUrl"
@@ -228,7 +228,7 @@ Installieren Sie andere Apps, die häufig für den Unterricht verwendet werden, 
 
 ## <a name="conclusion"></a>Zusammenfassung
 
-In diesem Artikel wurden optionale Schritte zum Vorbereiten Ihrer Windows-Vorlagen-VM für einen effektive Kurs gezeigt.  Die Schritte umfassen das Installieren von OneDrive und das Installieren von Office 365, das Installieren der Updates für Windows und das Installieren von Updates für Microsoft Store-Apps.  Außerdem wurde erläutert, wie Updates gemäß einem Zeitplan festgelegt werden, der für Ihren Kurs am besten geeignet ist.  
+In diesem Artikel wurden optionale Schritte zum Vorbereiten Ihrer Windows-Vorlagen-VM für einen effektive Kurs gezeigt.  Die Schritte umfassen das Installieren von OneDrive und Microsoft 365 sowie der Updates für Windows und der für Microsoft Store-Apps.  Außerdem wurde erläutert, wie Updates gemäß einem Zeitplan festgelegt werden, der für Ihren Kurs am besten geeignet ist.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwaltung von Kosten finden Sie im Artikel zum Steuern des Verhaltens beim Herunterfahren von Windows: [Leitfaden zum Steuern des Verhaltens beim Herunterfahren von Windows](how-to-windows-shutdown.md)

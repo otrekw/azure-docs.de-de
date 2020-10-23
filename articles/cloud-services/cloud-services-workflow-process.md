@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c427982854e1d328b5d1553aa86866ad298eea1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71162150"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91461313"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Workflow der klassischen Windows-Azure-VM-Architektur 
 Dieser Artikel bietet eine Übersicht über die Workflowprozesse, die beim Bereitstellen oder Aktualisieren einer Azure-Ressource (z. B. einer VM) stattfinden. 
@@ -29,7 +29,7 @@ Dieser Artikel bietet eine Übersicht über die Workflowprozesse, die beim Berei
 
 Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 
-![Azure-Workflow](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="Abbildung: Azure-Workflow":::
 
 ## <a name="workflow-basics"></a>Grundlagen des Workflows
    
@@ -69,11 +69,9 @@ Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 
 **I**. WaWorkerHost ist der Standardhostprozess für normale Workerrollen. Dieser Hostprozess hostet alle DLLs sowie den Code für den Einstiegspunkt der Rolle (z. B. „OnStart“ und „Run“).
 
-**J**. WaWebHost ist der Standardhostprozess für Webrollen, sofern sie zur Verwendung des SDK 1.2-kompatiblen hostfähigen Webkerns (Hostable Web Core, HWC) konfiguriert sind. Rollen können den HWC-Modus durch Entfernen des Elements aus der Dienstdefinition (.csdef) aktivieren. In diesem Modus werden der gesamte Code und alle DLLs des Diensts über den WaWebHost-Prozess ausgeführt. IIS (w3wp) wird nicht verwendet, und es werden keine AppPools im IIS-Manager konfiguriert, da IIS in „WaWebHost.exe“ gehostet wird.
+**J**. WaIISHost ist für Webrollen, die die IIS-Vollversion verwenden, der Hostprozess für den Code für den Einstiegspunkt der Rolle. Der Prozess lädt die erste gefundene DLL mit der **RoleEntryPoint**-Klasse und führt den Code über diese Klasse aus (OnStart, Run, OnStop). Alle in der RoleEntryPoint-Klasse erstellten **RoleEnvironment**-Ereignisse (z. B. „StatusCheck“ und „Changed“) werden in diesem Prozess ausgelöst.
 
-**K**. WaIISHost ist für Webrollen, die die IIS-Vollversion verwenden, der Hostprozess für den Code für den Einstiegspunkt der Rolle. Der Prozess lädt die erste gefundene DLL mit der **RoleEntryPoint**-Klasse und führt den Code über diese Klasse aus (OnStart, Run, OnStop). Alle in der RoleEntryPoint-Klasse erstellten **RoleEnvironment**-Ereignisse (z. B. „StatusCheck“ und „Changed“) werden in diesem Prozess ausgelöst.
-
-**L**. W3WP ist der IIS-Standardworkerprozess, der verwendet wird, wenn die Rolle zur Verwendung der IIS-Vollversion konfiguriert ist. Dieser Prozess führt den über IISConfigurator konfigurierten AppPool aus. Alle RoleEnvironment-Ereignisse (z. B. „StatusCheck“ und „Changed“), die hier erstellt werden, werden in diesem Prozess ausgelöst. Beachten Sie, dass RoleEnvironment-Ereignisse sowohl in WaIISHost als auch „w3wp.exe“ ausgelöst werden, wenn Sie Ereignisse in beiden Prozessen abonnieren.
+**K**. W3WP ist der IIS-Standardworkerprozess, der verwendet wird, wenn die Rolle zur Verwendung der IIS-Vollversion konfiguriert ist. Dieser Prozess führt den über IISConfigurator konfigurierten AppPool aus. Alle RoleEnvironment-Ereignisse (z. B. „StatusCheck“ und „Changed“), die hier erstellt werden, werden in diesem Prozess ausgelöst. Beachten Sie, dass RoleEnvironment-Ereignisse sowohl in WaIISHost als auch „w3wp.exe“ ausgelöst werden, wenn Sie Ereignisse in beiden Prozessen abonnieren.
 
 ## <a name="workflow-processes"></a>Workflowprozesse
 
@@ -87,8 +85,7 @@ Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 8. Für Webrollen mit der IIS-Vollversion weist WaHostBootstrapper IISConfigurator an, den IIS-AppPool zu konfigurieren, und verweist die Website auf `E:\Sitesroot\<index>`, wobei `<index>` ein 0-basierter Index für die Anzahl von `<Sites>`-Elementen ist, die für den Dienst definiert sind.
 9. WaHostBootstrapper startet den Hostprozess je nach Rollentyp:
     1. **Workerrolle**: „WaWorkerHost.exe“ wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu (falls Eingabeendpunkte definiert sind). Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
-    1. **SDK 1.2-HWC-Webrolle**: WaWebHost wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu. WaWebHost gibt eine Aufwärmanforderung aus (GET /do.rd_runtime_init). Alle Webanforderungen werden an „WaWebHost.exe“ gesendet. Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
-    1. **Webrolle mit der IIS-Vollversion**: aIISHost wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet er die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu. Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
+    2. **Webrolle mit der IIS-Vollversion**: aIISHost wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet er die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu. Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
 10. Eingehende Webanforderungen an eine Webrolle mit der IIS-Vollversion lösen wie in einer lokalen IIS-Umgebung IIS aus, um den W3WP-Prozess zu starten und die Anforderung zu verarbeiten.
 
 ## <a name="log-file-locations"></a>Speicherort der Protokolldateien
@@ -103,10 +100,6 @@ Dieses Protokoll enthält Statusaktualisierungen sowie Heartbeatbenachrichtigung
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
@@ -123,7 +116,3 @@ Dieses Protokoll enthält Statusaktualisierungen sowie Heartbeatbenachrichtigung
 **Windows-Ereignisprotokolle**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

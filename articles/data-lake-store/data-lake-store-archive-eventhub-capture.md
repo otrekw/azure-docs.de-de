@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190272"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578239"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Verwenden von Azure Data Lake Storage Gen1 zum Erfassen von Daten von Event Hubs
 
@@ -42,11 +42,11 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
 
     a. Klicken Sie auf **Daten-Explorer**, wählen Sie den Stamm des Data Lake Storage Gen1-Kontos aus, und klicken Sie dann auf **Zugriff**.
 
-    ![Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm")
+    ![Screenshot: Daten-Explorer mit Hervorhebung des Stamms des Kontos und der Option „Zugriff“](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm")
 
     b. Klicken Sie unter **Zugriff** auf **Hinzufügen** und dann auf **Benutzer oder Gruppe auswählen**, und suchen Sie anschließend nach `Microsoft.EventHubs`. 
 
-    ![Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm")
+    ![Screenshot: Seite „Zugriff“ mit den hervorgehobenen Optionen „Hinzufügen“, „Benutzer oder Gruppe auswählen“ und „Microsoft.EventHubs“](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm")
     
     Klicken Sie auf **Auswählen**.
 
@@ -55,7 +55,7 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
     > [!IMPORTANT]
     > Wenn Sie eine neue Ordnerhierarchie für die Erfassung der von Azure Event Hubs empfangenen Daten erstellen, ist dies eine einfache Möglichkeit, den Zugriff auf den Zielordner sicherzustellen.  Das Hinzufügen von Berechtigungen zu allen untergeordneten Ordnern eines Ordners auf oberster Ebene mit vielen untergeordneten Dateien und Ordnern kann jedoch lange dauern.  Wenn Ihr Stammordner eine große Anzahl von Dateien und Ordnern enthält, kann es schneller sein, die Berechtigung **Ausführen** für `Microsoft.EventHubs` jedem Ordner im Pfad zu Ihrem endgültigen Zielordner einzeln hinzuzufügen. 
 
-    ![Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm")
+    ![Screenshot: Abschnitt „Berechtigungen zuweisen“ mit hervorgehobener Option „Berechtigungen auswählen“, daneben der Abschnitt „Berechtigungen auswählen“ mit den hervorgehobenen Optionen „Ausführen“, „Add to“ (Hinzufügen zu) und „Add as“ (Hinzufügen als)](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Stamm")
 
     Klicken Sie auf **OK**.
 
@@ -63,17 +63,17 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
 
     a. Klicken Sie auf **Daten-Explorer**, wählen Sie den Ordner im Data Lake Storage Gen1-Konto aus, und klicken Sie dann auf **Zugriff**.
 
-    ![Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner")
+    ![Screenshot: Daten-Explorer mit Hervorhebung eines Ordners im Konto und der Option „Zugriff“](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner")
 
     b. Klicken Sie unter **Zugriff** auf **Hinzufügen** und dann auf **Benutzer oder Gruppe auswählen**, und suchen Sie anschließend nach `Microsoft.EventHubs`. 
 
-    ![Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner")
+    ![Screenshot: Seite „Zugriff“ im Daten-Explorer mit den hervorgehobenen Optionen „Hinzufügen“, „Benutzer oder Gruppe auswählen“ und „Microsoft.EventHubs“](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner")
     
     Klicken Sie auf **Auswählen**.
 
     c. Klicken Sie unter **Berechtigungen zuweisen** auf **Berechtigungen auswählen**. Legen Sie **Berechtigungen** auf **Read, Write** (Lesen, Schreiben) und **Ausführen** fest. Legen Sie **Add to** (Hinzufügen zu) auf **Diesen Ordner und alle untergeordneten Ordner** fest. Legen Sie abschließend **Add as** (Hinzufügen als) auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** fest.
 
-    ![Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner")
+    ![Screenshot: Abschnitt „Berechtigungen zuweisen“ mit hervorgehobener Option „Berechtigungen auswählen“, daneben der Abschnitt „Berechtigungen auswählen“ mit den hervorgehobenen Optionen „Lesen“, „Schreiben“, „Ausführen“ sowie „Add to“ (Hinzufügen zu) und „Add as“ (Hinzufügen als)](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Zuweisen von Berechtigungen für den Data Lake Storage Gen1-Ordner")
     
     Klicken Sie auf **OK**. 
 
@@ -83,11 +83,11 @@ In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Nam
 
 1. Klicken Sie im Bereich **Übersicht** des Event Hubs-Namespaces auf **+ Event Hub**.
 
-    ![Erstellen des Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Erstellen des Event Hubs")
+    ![Screenshot: Übersichtsbereich mit hervorgehobener Option „Event Hub“](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Erstellen des Event Hubs")
 
 1. Geben Sie die folgenden Werte an, um Event Hubs zum Erfassen von Daten in Data Lake Storage Gen1 zu konfigurieren.
 
-    ![Erstellen des Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Erstellen des Event Hubs")
+    ![Screenshot: Dialogfeld „Event Hub erstellen“, in dem das Textfeld „Name“ sowie die Optionen „Capture“, „Anbieter erfassen“, „Data Lake Store auswählen“ und „Data Lake-Pfad“ hervorgehoben sind](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Erstellen des Event Hubs")
 
     a. Geben Sie einen Namen für den Event Hub an.
     

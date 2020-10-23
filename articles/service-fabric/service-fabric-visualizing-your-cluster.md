@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256253"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357215"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 
@@ -106,7 +106,7 @@ Sie können Service Fabric Explorer auch verwenden, um Anwendungsinstanzen für 
 ## <a name="event-store"></a>EventStore
 EventStore ist eine Funktion der Plattform, mit der Ereignisse der Service Fabric-Plattform bereitgestellt werden, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).   
 
-![EventStore][sfx-eventstore]
+![Screenshot: Der Bereich „Knoten“ mit ausgewählten Ereignissen][sfx-eventstore]
 
 >[!NOTE]
 >Ab Service Fabric-Version 6.4 ist EventStore nicht mehr standardmäßig aktiviert und muss in der Resource Manager-Vorlage aktiviert werden.

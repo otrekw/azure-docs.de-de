@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425855"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357164"
 ---
 # <a name="agent-based-migration-architecture"></a>Agent-basierte Migrationsarchitektur
 
@@ -34,7 +34,7 @@ Die Agent-basierte Migration wird zum Migrieren von lokalen virtuellen VMware-Co
 
 Das Diagramm veranschaulicht die Komponenten, die bei der Agent-basierten Migration beteiligt sind.
 
-![Aufbau](./media/agent-based-replication-architecture/architecture.png)
+![Das Diagramm zeigt die Komponenten für die Agent-basierte Migration, die in einer Tabelle erläutert werden.](./media/agent-based-replication-architecture/architecture.png)
 
 In der Tabelle sind die Komponenten zusammengefasst, die für die Agent-basierte Migration verwendet werden.
 

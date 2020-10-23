@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206296"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91354971"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit
 
@@ -106,6 +106,20 @@ Ab dem 18. November 2019 ist für Gastbenutzer in Ihrem Verzeichnis (Benutzerkon
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In einem Mandanten der Azure-Cloud für US-Behörden kann ich keinen Gastbenutzer der B2B-Zusammenarbeit einladen
 
 Innerhalb der Azure-Cloud für US-Behörden wird die B2B-Zusammenarbeit derzeit nur zwischen Mandanten unterstützt, die sich in der Azure-Cloud für US-Behörden befinden und die B2B-Zusammenarbeit unterstützen. Wenn Sie einen Benutzer zu einem Mandanten einladen, der nicht zur Azure-Cloud für US-Behörden gehört oder die B2B-Zusammenarbeit noch nicht unterstützt, wird eine Fehlermeldung angezeigt. Weitere Einzelheiten und Informationen zu Einschränkungen finden Sie unter [Azure Active Directory Premium P1 und P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Ich erhalte die Fehlermeldung, dass Azure AD die App „aad-extensions-app“ in meinem Mandanten nicht findet
+
+Wenn Features wie benutzerdefinierte Benutzerattribute oder Benutzerflows für die Self-Service-Registrierung verwendet werden, wird automatisch eine App mit dem Namen `aad-extensions-app. Do not modify. Used by AAD for storing user data.` erstellt. Diese wird von externen Azure AD-Identitäten verwendet, um Informationen zu Benutzern, die sich registrieren, und zu erfassten benutzerdefinierten Attributen zu speichern.
+
+Wenn Sie die App `aad-extensions-app` versehentlich gelöscht haben, haben Sie 30 Tage Zeit, sie wiederherzustellen. Sie können die App mithilfe des Azure AD PowerShell-Moduls wiederherstellen.
+
+1. Starten Sie das Azure AD PowerShell-Modul, und führen Sie `Connect-AzureAD` aus.
+1. Melden Sie sich als globaler Administrator für den Azure AD-Mandanten an, für den Sie die gelöschte App wiederherstellen möchten.
+1. Führen Sie den PowerShell-Befehl `Get-AzureADDeletedApplication` aus.
+1. Sie finden die Anwendung, indem Sie in der Liste nach einem Anzeigenamen suchen, der mit `ObjectId` beginnt. Kopieren Sie anschließend den Eigenschaftswert `aad-extensions-app`.
+1. Führen Sie den PowerShell-Befehl `Restore-AzureADDeletedApplication -ObjectId {id}` aus. Ersetzen Sie den Teil `{id}` des Befehls durch die `ObjectId` aus dem vorherigen Schritt.
+
+Sie sollten jetzt die wiederhergestellte App im Azure-Portal sehen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

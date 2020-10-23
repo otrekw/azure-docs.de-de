@@ -1,17 +1,17 @@
 ---
 title: 'Erweiterungen: Azure Database for PostgreSQL Flexible Server'
 description: In diesem Artikel erhalten Sie Informationen zu den verfügbaren Postgres-Erweiterungen in Azure Database for PostgreSQL Flexible Server.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710582"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL Flexible Server
 
@@ -33,6 +33,8 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > [!div class="mx-tableFixed"]
 > | **Erweiterung**| **Erweiterungsversion** | **Beschreibung** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | Wird verwendet, um eine Adresse in dessen zugehörige Elemente zu analysieren. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Adressenstandardisierung: US-Datasetbeispiel|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1.2             | Funktionen zum Überprüfen der Beziehungsintegrität|
 > |[bloom](https://www.postgresql.org/docs/12/bloom.html)                    | 1.0             | Bloom-Zugriffsmethode: Index, der auf einer Signaturdatei basiert|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | Unterstützung für die Indizierung häufiger Datentypen in GIN|
@@ -61,7 +63,11 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
-> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS: Geometrie, Geografie und räumliche Rastertypen und -funktionen|
+> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS-Geometrie, -Geografie |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS-Rastertypen und -Funktionen| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL-Funktionen|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS Tiger: Geocoder und Reverse-Geocoder|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | PostGIS-Topologie: Räumliche Typen und Funktionen|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1.0             | Fremddaten-Wrapper für PostgreSQL-Remoteserver|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1.2             | Informationen zu SSL-Zertifikaten|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1.0             |  TABLESAMPLE-Methode, die die Anzahl von Zeilen als Grenzwert akzeptiert|
@@ -76,6 +82,8 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > [!div class="mx-tableFixed"]
 > | **Erweiterung**| **Erweiterungsversion** | **Beschreibung** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Wird verwendet, um eine Adresse in dessen zugehörige Elemente zu analysieren. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adressenstandardisierung: US-Datasetbeispiel|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1.1             | Funktionen zum Überprüfen der Beziehungsintegrität|
 > |[bloom](https://www.postgresql.org/docs/11/bloom.html)                    | 1.0             | Bloom-Zugriffsmethode: Index, der auf einer Signaturdatei basiert|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | Unterstützung für die Indizierung häufiger Datentypen in GIN|
@@ -105,6 +113,9 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS: Geometrie, Geografie und räumliche Rastertypen und -funktionen|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL-Funktionen|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger: Geocoder und Reverse-Geocoder|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS-Topologie: Räumliche Typen und Funktionen|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | Fremddaten-Wrapper für PostgreSQL-Remoteserver|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1.2             | Informationen zu SSL-Zertifikaten|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | Funktionen zum Bearbeiten gesamter Tabellen, einschließlich Kreuztabelle|
@@ -114,9 +125,21 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Generierung von UUIDs (Universally Unique Identifiers)|
 
 
+## <a name="dblink-and-postgres_fdw"></a>„dblink“ und „postgres_fdw“
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) und [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) ermöglichen Ihnen das Herstellen einer Verbindung von einem PostgreSQL-Server mit einem anderen oder mit einer anderen Datenbank auf demselben Server. Der sendende Server muss ausgehende Verbindungen vom empfangenden Server zulassen. Der empfangende Server muss Verbindungen vom sendenden Server zulassen.
+
+Es wird empfohlen, die Server mit [VNet-Integration](concepts-networking.md) bereitzustellen, wenn Sie beabsichtigen, diese beiden Erweiterungen zu verwenden. Standardmäßig lässt die VNet-Integration Verbindungen zwischen Servern im VNET zu. Sie können auch [VNet-Netzwerksicherheitsgruppen](../../virtual-network/manage-network-security-group.md) verwenden, um den Zugriff anzupassen.
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 Die pg_prewarm-Erweiterung lädt relationale Daten in den Cache. Durch das Vorwärmen der Caches weisen Ihre Abfragen bei der ersten Ausführung nach einem Neustart bessere Reaktionszeiten auf. Die automatische prewarm-Funktion ist in Azure Database for PostgreSQL Flexible Server aktuell nicht verfügbar.
+
+## <a name="pg_stat_statements"></a>pg_stat_statements
+Die [Erweiterung „pg_stat_statements“](https://www.postgresql.org/docs/current/pgstatstatements.html) wird auf jedem flexiblen Server von Azure Database for PostgreSQL vorab geladen, um für Sie eine Möglichkeit zur Nachverfolgung von Ausführungsstatistiken von SQL-Anweisungen zu schaffen.
+Die Einstellung `pg_stat_statements.track`, die steuert, welche Anweisungen von der Erweiterung gezählt werden, ist standardmäßig auf `top` festgelegt, was bedeutet, dass alle Anweisungen, die direkt von Clients ausgestellt werden, nachverfolgt werden. Die beiden anderen Nachverfolgungsebenen sind `none` und `all`. Diese Einstellung kann als Serverparameter konfiguriert werden.
+
+Zwischen den von pg_stat_statements bereitgestellten Abfrageausführungsinformationen und der Auswirkung auf die Serverleistung besteht ein Kompromiss, da jede SQL-Anweisung protokolliert wird. Wenn Sie die pg_stat_statements-Erweiterung nicht aktiv verwenden, empfiehlt es sich, `pg_stat_statements.track` auf `none` festzulegen. Beachten Sie, dass sich einige Überwachungsdienste von Drittanbietern auf pg_stat_statements beziehen können, um Statistiken zur Abfrageleistung zu liefern. Bestätigen Sie also, ob dieser Fall auf Sie zutrifft oder nicht.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

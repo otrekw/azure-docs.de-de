@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883239"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439095"
 ---
 # <a name="train-pytorch-model"></a>Trainieren eines PyTorch-Modells
 
@@ -49,7 +49,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Train Pytorch Model*
 
 8.  Geben Sie für **Patience** (Geduld) an, nach wie vielen Epochen das Training vorzeitig abgebrochen werden soll, wenn der Validierungsverlust nicht konsekutiv abnimmt. Die Standardeinstellung ist 3.
 
-9.  Übermitteln Sie die Pipeline. Wenn es sich um ein größeres Dataset handelt, kann dies eine Weile dauern.
+9.  Übermitteln Sie die Pipeline. Wenn es sich um ein größeres Dataset handelt, kann dies eine Weile dauern, und es wird eine GPU-Computeressource empfohlen.
 
 ## <a name="results"></a>Ergebnisse
 

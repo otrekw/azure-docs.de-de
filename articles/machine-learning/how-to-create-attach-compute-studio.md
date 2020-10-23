@@ -11,19 +11,22 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898068"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708394"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
 In diesem Artikel erfahren Sie, wie Sie Computeziele in Azure Machine Learning Studio erstellen und verwalten.  Sie können Computeziele auch mit folgenden Komponenten erstellen und verwalten:
 
-* [Azure Machine Learning SDK](how-to-create-attach-compute-sdk.md) 
-* [CLI-Erweiterung](reference-azure-machine-learning-cli.md#resource-management) für Azure Machine Learning
+* Azure Machine Learning SDK- oder CLI-Erweiterung für Azure Machine Learning
+  * [Compute-Instanz](how-to-create-manage-compute-instance.md)
+  * [Computecluster](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes Service-Cluster](how-to-create-attach-kubernetes.md)
+  * [Weitere Berechnungsressourcen](how-to-attach-compute-targets.md)
 * [VS Code-Erweiterung](how-to-manage-resources-vscode.md#compute-clusters) für Azure Machine Learning
 
 
@@ -56,11 +59,11 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 
 1. Wenn Sie keine Computeziele besitzen, wählen Sie in der Mitte der Seite **Erstellen** aus.
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Erstellen eines Computeziels":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Anzeigen der Liste mit Computezielen":::
 
 1. Wenn eine Liste der Computeressourcen angezeigt wird, wählen Sie oberhalb der Liste **+ Neu** aus.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Auswählen von „Neu“":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Anzeigen der Liste mit Computezielen":::
 
 
 1. Füllen Sie das Formular für Ihren Computetyp aus:
@@ -74,14 +77,14 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 
 1. Sie können den Status des Erstellungsvorgangs anzeigen, indem Sie das Computeziel in der Liste auswählen:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Anzeigen des Computestatus in einer Liste":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Anzeigen der Liste mit Computezielen":::
 
 
 ### <a name="compute-instance"></a>Compute-Instanz
 
 Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um die Compute-Instanz zu erstellen.  Füllen Sie das Formular anschließend wie folgt aus:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Erstellen einer neuen Compute-Instanz":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Anzeigen der Liste mit Computezielen":::
 
 
 |Feld  |BESCHREIBUNG  |
@@ -107,7 +110,7 @@ Erstellen Sie einen Computecluster mit einem oder mehreren Knoten für Ihre Work
 |Maximale Knotenanzahl | Maximale Anzahl von Knoten, die Sie bereitstellen möchten. Beim Übermitteln eines Auftrags wird die Computeressource automatisch auf den Höchstwert dieser Knotenanzahl skaliert. |
 |Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](how-to-enable-virtual-network.md#compute-instance) für VNET.   Fügen Sie außerdem [verwaltete Identitäten](#managed-identity) an, um Zugriff auf Ressourcen zu gewähren.     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> Einrichten einer verwalteten Identität
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Einrichten einer verwalteten Identität
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 

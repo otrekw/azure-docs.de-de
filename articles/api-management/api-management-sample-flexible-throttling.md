@@ -15,27 +15,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214000"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537343"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Erweiterte Anforderungsbegrenzung mit Azure API Management
 Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für Azure API Management von großer Bedeutung. Mit API Management lässt sich entweder die Rate der Anforderungen oder die Gesamtzahl der Anforderungen bzw. die Gesamtmenge der übertragenen Daten steuern. Dies ermöglicht es den API-Anbietern, ihre APIs vor Missbrauch zu schützen und mit verschiedenen API-Produkttarifen Mehrwert zu schaffen.
 
+## <a name="rate-limits-and-quotas"></a>Ratenbegrenzungen und Kontingente
+Ratenbegrenzungen und Kontingente werden für verschiedene Zwecke verwendet.
+
+### <a name="rate-limits"></a>Ratenbegrenzungen
+Ratenbegrenzungen werden in der Regel zum Schutz vor kurzen, hohen Volumenspitzen verwendet. Wenn Sie z. B. wissen, dass es bei der Datenbank des Back-End-Diensts bei einem hohen Aufrufvolumen zu einem Engpass kommt, können Sie mithilfe dieser Einstellung in einer `rate-limit-by-key`-Richtlinie festlegen, dass ein hohes Aufrufvolumen nicht zugelassen wird.
+
+### <a name="quotas"></a>Kontingente
+Kontingente werden in der Regel zum Steuern von Aufrufraten über einen längeren Zeitraum verwendet. Mit ihnen kann z. B. die Gesamtanzahl von Aufrufen durch einen bestimmten Abonnenten in einem bestimmten Monat festgelegt werden. Beim Monetarisieren Ihrer API können Sie bei Abonnements mit mehreren Tarifen auch verschiedene Kontingente festgelegen. Beispielsweise können mit einem Abonnement mit dem Tarif „Basic“möglicherweise nicht mehr als 10.000 Aufrufe pro Monat getätigt werden, mit dem Tarif „Premium“ jedoch bis zu 100.000.000.
+
+In Azure API Management werden Ratenbegrenzungen in der Regel schneller an die Knoten übermittelt, um sie vor Spitzen zu schützen. Nutzungskontingentinformationen werden hingegen über einen längeren Zeitraum verwendet und daher anders implementiert.
+
+> [!CAUTION]
+> Da die Einschränkungsarchitektur verteilt ist, ist die Begrenzung der Rate nie ganz genau. Die Differenz zwischen der konfigurierten und der tatsächlichen Anzahl zugelassener Anforderungen variiert basierend auf Anforderungsvolumen und -rate, Back-End-Latenz und anderen Faktoren.
+
 ## <a name="product-based-throttling"></a>Produktbasierte Drosselung
 Bisher konnte die Rate nur auf der Basis eines bestimmten Produktabonnements gedrosselt werden, das im Azure-Portal definiert wurde. Dies ist nützlich, wenn der API-Anbieter Beschränkungen für Entwickler einführen möchte, die sich für die Nutzung der API registriert haben. Es hilft aber beispielsweise nicht bei der Drosselung einzelner Endbenutzer der API. Daher ist es möglich, dass ein einzelner Benutzer der Anwendung eines Entwicklers das gesamte Kontingent in Anspruch nimmt und dadurch andere Kunden des Entwicklers an der Nutzung der Anwendung hindert. Außerdem können verschiedene Kunden gemeinsam ein so hohes Anforderungsvolumen generieren, dass der Zugriff für gelegentliche Benutzer beschränkt wird.
 
-## <a name="custom-key-based-throttling"></a>Benutzerdefinierte Drosselung auf der Basis von Schlüsseln
+## <a name="custom-key-based-throttling"></a>Benutzerdefinierte schlüsselbasierte Drosselung
 
 > [!NOTE]
 > Im Verbrauchstarif von Azure API Management sind die Richtlinien `rate-limit-by-key` und `quota-by-key` nicht verfügbar. 
 
 Die neuen Richtlinien [rate-limit-by-key](./api-management-access-restriction-policies.md#LimitCallRateByKey) und [quota-by-key](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) bieten mehr Flexibilität bei der Steuerung des Datenverkehrs. Mit diesen neuen Richtlinien können Sie in selbst definierten Ausdrücken Schlüssel angeben, die zum Nachverfolgen der Datenverkehrsnutzung verwendet werden. Wie das funktioniert, lässt sich am einfachsten anhand eines Beispiels veranschaulichen. 
 
-## <a name="ip-address-throttling"></a>Drosselung nach IP-Adresse
+## <a name="ip-address-throttling"></a>Drosselung basierend auf der IP-Adresse
 Die folgenden Richtlinien beschränken eine einzelne Client-IP-Adresse auf nur 10 Aufrufe pro Minute bei einer Gesamtanzahl von 1.000.000 Aufrufen und 10.000 Kilobyte Bandbreite pro Monat. 
 
 ```xml
